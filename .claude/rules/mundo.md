@@ -2,6 +2,8 @@
 paths:
   - "src/motor/mundo/**"
   - "src/lib/mundo/**"
+  - "src/app/(ar)/sueldo-en-el-mundo/**"
+  - "src/components/mundo/**"
   - "scripts/mundo/**"
   - "scripts/check_mundo.ts"
   - "src/paises/*/calculadoras/*sueldo*.ts"
@@ -48,3 +50,9 @@ Historia y porqués: `docs/decisiones/mundo.md`.
   check_mundo falla si la grilla no lo supera.
 - La OG lee la bandera del disco (`public/banderas`, sumada al trace en `next.config.ts`), nunca de
   `req.url`.
+- calcular.ar tiene su página en `src/app/(ar)/sueldo-en-el-mundo` (no `PaginaMundo`): links de países
+  a calcularya, tokens `--cy-*` propios en `estilos-ar.css`, `data-sin-herramientas` (sin eso la barra
+  de calcular.ar mete el sueldo en el hash). El traspaso de AR es `guardarTraspasoAR` y `PAGAS_AR` sale
+  de `src/lib/mundo/pagas-ar.ts`: no importar `ar.ts` desde el navegador.
+- Afiliados (`ui/Afiliados.tsx`): apagados sin `NEXT_PUBLIC_AFILIADO_*_URL`. Detalle en
+  `docs/decisiones/afiliados.md`.

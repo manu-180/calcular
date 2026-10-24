@@ -9,6 +9,8 @@
 // - un clúster de más de MAX_HREFLANG_HEAD no está entero en el sitemap del mercado (xhtml:link) o
 //   sigue en el <head>, o uno chico no está en el <head> o aparece repetido en el sitemap.
 // No necesita server: corre en check-all.
+import "./sin-server-only";
+import { paginasHoras } from "../src/motor/horas/publicacion";
 import type { ModoPublicacion, Registro } from "../src/motor/registro";
 import type { Idiomas } from "../src/motor/seo";
 
@@ -66,6 +68,8 @@ async function main() {
   const mapa = await import("../src/motor/mapa");
   const sitio = await import("../src/motor/sitio");
   const { hoyEn } = await import("../src/motor/vigencia");
+  const { publicacionHoras } = await import("../src/lib/horas/indice");
+  const pubHoras = publicacionHoras();
 
   // Prueba negativa: el checker tiene que ver un clúster roto.
   const a = "https://calcularya.com/aa/x";
@@ -97,7 +101,7 @@ async function main() {
     const publicadas = new Set<string>();
     const enSitemap = new Map<string, Idiomas>();
     for (const m of registro.mercados(modo)) {
-      for (const e of mapa.entradasDelMercado(registro, m.codigo, { conAlternos: true }) ?? []) {
+      for (const e of mapa.entradasDelMercado(registro, m.codigo, { conAlternos: true, horas: pubHoras }) ?? []) {
         publicadas.add(e.url);
         if (e.alternos) enSitemap.set(e.url, e.alternos);
       }
@@ -145,6 +149,67 @@ async function main() {
     const global = registro.mercados(modo).find((m) => m.codigo === "global");
     if (global) fallas.push(...revisarClusteres(mundo, publicadas, mundoSeo.urlMundo(global), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
     revisadas += mundo.length;
+
+    // Rankings de países: el índice y cada ranking forman su propio clúster con todas las ediciones.
+    const rk = await import("../src/motor/rankings/seo");
+    const rutasRk = await import("../src/motor/rankings/rutas");
+    const urlsRk = await import("../src/motor/rankings/urls");
+    const clusteresRk: { concepto: string; idiomas: Idiomas | undefined; url: (m: (typeof mercados)[number]) => string }[] = [
+      { concepto: "rankings", idiomas: rk.hreflangIndice(registro, modo), url: (m) => urlsRk.urlIndice(m) },
+      ...rutasRk.IDS_RANKING.map((id) => ({ concepto: `ranking-${id}`, idiomas: rk.hreflangRanking(registro, modo, id), url: (m: (typeof mercados)[number]) => urlsRk.urlRanking(m, id) })),
+    ];
+    for (const c of clusteresRk) {
+      const paginasRk: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: c.url(m), locale: m.locale, concepto: c.concepto, idiomas: c.idiomas }));
+      for (const p of paginasRk) {
+        if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «${c.concepto}» no está en el sitemap del mercado`);
+        const sitemap = enSitemap.get(p.url);
+        const vaAlSitemap = seo.hreflangVaAlSitemap(c.idiomas);
+        if (vaAlSitemap && JSON.stringify(Object.entries(sitemap ?? {}).sort()) !== JSON.stringify(Object.entries(c.idiomas ?? {}).sort())) fallas.push(`[${modo}] ${p.url}: el sitemap no lista el clúster entero`);
+        if (!vaAlSitemap && sitemap) fallas.push(`[${modo}] ${p.url}: clúster chico repetido en el sitemap`);
+      }
+      if (global) fallas.push(...revisarClusteres(paginasRk, publicadas, c.url(global), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
+      revisadas += paginasRk.length;
+    }
+    // «¿Cuántas horas de trabajo cuesta?»: el índice y cada producto publicado (menos el del índice, que
+    // lleva canonical al índice), un clúster por página entre ediciones. Lo no publicado no va al sitemap.
+    const horasSeo = await import("../src/motor/horas/ui/seo");
+    const { PRODUCTOS } = await import("../src/motor/horas/productos");
+    const paginasH = paginasHoras(pubHoras);
+    for (const producto of [undefined, ...PRODUCTOS.map((x) => x.id)]) {
+      if (!paginasH.includes(producto)) {
+        for (const m of registro.mercados(modo)) if (publicadas.has(horasSeo.urlHoras(m, producto))) fallas.push(`[${modo}] ${horasSeo.urlHoras(m, producto)}: «horas de trabajo» no se publica (o es el producto del índice) y está en el sitemap`);
+        continue;
+      }
+      const idiomasHoras = horasSeo.hreflangHoras(registro, modo, producto);
+      const horas: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: horasSeo.urlHoras(m, producto), locale: m.locale, concepto: `horas:${producto ?? "indice"}`, idiomas: idiomasHoras }));
+      for (const p of horas) {
+        if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «horas de trabajo» no está en el sitemap del mercado`);
+        const sitemap = enSitemap.get(p.url);
+        const vaAlSitemap = seo.hreflangVaAlSitemap(idiomasHoras);
+        if (vaAlSitemap && JSON.stringify(Object.entries(sitemap ?? {}).sort()) !== JSON.stringify(Object.entries(idiomasHoras ?? {}).sort())) fallas.push(`[${modo}] ${p.url}: el sitemap no lista el clúster entero`);
+        if (!vaAlSitemap && sitemap) fallas.push(`[${modo}] ${p.url}: clúster chico repetido en el sitemap`);
+      }
+      if (global) fallas.push(...revisarClusteres(horas, publicadas, horasSeo.urlHoras(global, producto), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
+      revisadas += horas.length;
+    }
+    // Calendario laboral: una página por edición con fechas por delante; las ediciones de un mismo
+    // país forman su clúster (x-default en la edición principal) y un país de una sola edición no lleva.
+    const cal = await import("../src/motor/calendario/rutas");
+    const porPais = new Map<string, PaginaConIdiomas[]>();
+    for (const m of mercados) {
+      if (!cal.calendarioPublicado(registro, m, modo)) continue;
+      const url = cal.urlCalendario(m);
+      if (!publicadas.has(url)) fallas.push(`[${modo}] ${url}: el calendario se publica y no está en el sitemap del mercado`);
+      if (enSitemap.has(url)) fallas.push(`[${modo}] ${url}: clúster chico del calendario repetido en el sitemap`);
+      const idiomas = cal.hreflangCalendario(registro, m.codigo, modo);
+      if (registro.ediciones(m.codigo, modo).filter((e) => cal.calendarioPublicado(registro, e, modo)).length > 1 && !idiomas) fallas.push(`[${modo}] ${url}: país con varias ediciones y el calendario sin hreflang`);
+      porPais.set(m.pais, [...(porPais.get(m.pais) ?? []), { url, locale: m.locale, concepto: `calendario-${m.pais}`, idiomas }]);
+    }
+    for (const grupo of porPais.values()) {
+      const xd = grupo.find((p) => p.idiomas)?.idiomas?.["x-default"];
+      if (xd) fallas.push(...revisarClusteres(grupo, publicadas, xd, false).map((e) => `[${modo}] ${e}`));
+      revisadas += grupo.length;
+    }
   }
 
   for (const f of fallas) console.error(`❌ ${f}`);
