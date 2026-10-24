@@ -3,10 +3,18 @@ import { escrituraZh } from "./escritura";
 
 export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 
-type Formas = Readonly<Record<UnidadDeTiempo, { uno: string; otros: string }>>;
-
 // La forma se elige con Intl.PluralRules del locale: "uno" es la categoría "one" y "otros" todas las
-// demás. Alcanza para estos idiomas; uno con dual o paucal (ar, ru, pl) va a pedir más formas.
+// demás. En ruso "pocos" es la categoría "few" (2 дня, 3 недели) y "muchos" la "many" (5 лет);
+// "otros" queda para las fracciones, que van en genitivo singular (1,5 года).
+export interface FormasUnidad {
+  uno: string;
+  otros: string;
+  pocos?: string;
+  muchos?: string;
+}
+
+type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad>>;
+
 // ja, ko y zh no tienen plural: las dos formas son iguales y la unidad va pegada al número (3日).
 export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   es: { dias: { uno: "día", otros: "días" }, semanas: { uno: "semana", otros: "semanas" }, horas: { uno: "hora", otros: "horas" }, meses: { uno: "mes", otros: "meses" }, anios: { uno: "año", otros: "años" } },
@@ -19,6 +27,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   ja: { dias: { uno: "日", otros: "日" }, semanas: { uno: "週間", otros: "週間" }, horas: { uno: "時間", otros: "時間" }, meses: { uno: "か月", otros: "か月" }, anios: { uno: "年", otros: "年" } },
   ko: { dias: { uno: "일", otros: "일" }, semanas: { uno: "주", otros: "주" }, horas: { uno: "시간", otros: "시간" }, meses: { uno: "개월", otros: "개월" }, anios: { uno: "년", otros: "년" } },
   zh: { dias: { uno: "天", otros: "天" }, semanas: { uno: "週", otros: "週" }, horas: { uno: "小時", otros: "小時" }, meses: { uno: "個月", otros: "個月" }, anios: { uno: "年", otros: "年" } },
+  ru: {
+    dias: { uno: "день", pocos: "дня", muchos: "дней", otros: "дня" },
+    semanas: { uno: "неделя", pocos: "недели", muchos: "недель", otros: "недели" },
+    horas: { uno: "час", pocos: "часа", muchos: "часов", otros: "часа" },
+    meses: { uno: "месяц", pocos: "месяца", muchos: "месяцев", otros: "месяца" },
+    anios: { uno: "год", pocos: "года", muchos: "лет", otros: "года" },
+  },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

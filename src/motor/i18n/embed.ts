@@ -1,4 +1,5 @@
 import type { Idioma, Trato } from "../tipos";
+import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Textos de la calculadora embebible (src/motor/embed) y del generador del código. Va aparte del
@@ -486,7 +487,43 @@ const zh: Diccionario<TextosEmbed> = {
   regional: { "zh-CN": zhHans, "zh-SG": zhHans },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Ruso (ADR 0002, D17): «вы» con minúscula y el imperativo cortés, como en Kaspi y egov.kz.
+const ru: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Калькулятор CalcularYa",
+    marcaNuevaPestana: "(откроется в новой вкладке)",
+    noDisponible: { titulo: "Этот калькулятор недоступен", texto: "Возможно, изменился его адрес." },
+    insertar: "Добавьте на свой сайт",
+    pagina: {
+      titulo: (pais) => [`Бесплатные калькуляторы для вашего сайта | ${pais}`, "Бесплатные калькуляторы для вашего сайта"],
+      descripcion: (pais) => `Выберите калькулятор ${GRAMATICA.ru.para(pais)}, скопируйте код и вставьте его в свой блог или на сайт. Бесплатно, с официальными данными, которые всегда актуальны.`,
+      h1: "Добавьте калькулятор на свой сайт",
+      bajada: "Выберите калькулятор, скопируйте код и вставьте его куда нужно. Бесплатно, а данные обновляются сами.",
+      calculadora: "Калькулятор",
+      buscar: "Найдите калькулятор",
+      sinResultados: "Нет калькулятора, который подходит под ваш запрос.",
+      tema: "Оформление",
+      claro: "Светлое",
+      oscuro: "Темное",
+      ancho: "Ширина",
+      anchoCompleto: "На всю ширину",
+      acento: "Цвет акцента",
+      colores: ["Зеленый", "Синий", "Оранжевый", "Розовый", "Графитовый"],
+      credito: "Показывать ссылку на источник под калькулятором",
+      vistaPrevia: "Предпросмотр",
+      codigo: "Код для вставки",
+      copiar: "Скопировать код",
+      copiado: "Код скопирован",
+      ayudaScript: "Скрипт необязателен: он подстраивает высоту калькулятора под его содержимое.",
+      ventajas: ["Бесплатно, без регистрации", "Всегда актуальные официальные данные", "Подстраивается под любую ширину"],
+      nota: "Под калькулятором есть ссылка на CalcularYa. Пожалуйста, не удаляйте ее.",
+      verTodas: (pais) => `Посмотреть все калькуляторы ${GRAMATICA.ru.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Калькулятор CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ru };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

@@ -54,6 +54,16 @@ function esEditable(t: EventTarget | null): boolean {
   return t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName);
 }
 
+// «1 resultado», «5 resultados»; en ruso también la forma «few» (2 a 4, 22 a 24: «3 результата») y el
+// singular en 21, 31 («21 результат»), con la regla de Intl.PluralRules("ru").
+function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "resultadosPlural" | "resultadosPocos">): string {
+  if (t.resultadosPocos === undefined) return `${n} ${n === 1 ? t.resultado : t.resultadosPlural}`;
+  const d = n % 10;
+  const c = n % 100;
+  if (d === 1 && c !== 11) return `${n} ${t.resultado}`;
+  return `${n} ${d >= 2 && d <= 4 && (c < 12 || c > 14) ? t.resultadosPocos : t.resultadosPlural}`;
+}
+
 function plano(s: string): string {
   return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
@@ -63,9 +73,9 @@ function plano(s: string): string {
 function resaltar(titulo: string, q: string): ReactNode {
   const base = plano(titulo);
   const marcas: Array<[number, number]> = [];
-  for (const t of new Set(plano(q).split(/[^a-z0-9]+/).filter((x) => x.length >= 2))) {
+  for (const t of new Set(plano(q).split(/[^a-z0-9Ѐ-ӿ]+/).filter((x) => x.length >= 2))) {
     let i = base.indexOf(t);
-    while (i > 0 && /[a-z0-9]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
+    while (i > 0 && /[a-z0-9Ѐ-ӿ]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
     if (i >= 0) marcas.push([i, i + t.length]);
   }
   if (!marcas.length) return titulo;
@@ -401,7 +411,7 @@ export function Buscador({ fuente }: { fuente?: FuenteBuscador } = {}) {
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain [scrollbar-width:thin]">{cuerpo}</div>
 
         <p className="sr-only" aria-live="polite">
-          {buscando && motor ? `${opciones.length} ${opciones.length === 1 ? t.resultado : t.resultadosPlural}` : ""}
+          {buscando && motor ? cuantosResultados(opciones.length, t) : ""}
         </p>
 
         <div className="hidden shrink-0 items-center gap-4 border-t border-zinc-100 px-4 py-2.5 text-xs text-zinc-500 sm:flex">

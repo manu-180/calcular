@@ -226,6 +226,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       "zh-SG": ZH_HANS_COMPARTIR,
     },
   },
+  // Ruso (ADR 0002, D17): «вы» con minúscula y el imperativo cortés.
+  ru: {
+    base: {
+      boton: "Поделиться",
+      botonAria: "Поделиться этим калькулятором",
+      menuTitulo: "Поделиться в",
+      copiar: "Скопировать ссылку",
+      copiado: "Ссылка скопирована",
+      compartido: "Отправлено",
+      errorCorto: "Не удалось скопировать",
+      errorAyuda: "Не удалось скопировать ссылку. Скопируйте ее из адресной строки браузера.",
+      nuevaPestana: "откроется в новой вкладке",
+      mensaje: (nombre) => `${nombre}. Бесплатно, расчет занимает минуту.`,
+      puenteIntro: "А в других странах?",
+      puenteEnlace: (n) => `Посмотрите, сколько вы получали бы на руки в более чем ${n} странах`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

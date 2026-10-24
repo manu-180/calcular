@@ -259,4 +259,111 @@ const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `
 // 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
 const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh };
+// Ruso (ADR 0002, D17): el nombre del país se declina. `de(p)` da el genitivo suelto («Казахстана»,
+// «Германии»), que va detrás del sustantivo («калькуляторы Казахстана»); `en(p)` el lugar con su
+// preposición («в Казахстане», «во Франции», «на Кипре») y `para(p)` «для» + genitivo. Los nombres
+// llegan como los escribe Intl.DisplayNames en ru, así que la regla cubre los de una palabra (-ия da
+// -ии; -а da -ы o -и tras г, к, х, ж, ч, ш, щ y -е en el lugar; -я da -и y -е; los masculinos en
+// consonante, -а y -е; -й y -ь, -я y -е; -ий, -ия e -ии) y los compuestos (los adjetivos de delante en
+// -ая, -ые/-ие, -ый/-ий/-ой, -ое o el posesivo -ы; los plurales en -ы dan -ов y -ах). La tabla lleva
+// los irregulares (vocal que cae, femeninos en -ь, plurales sin -ов, aposiciones como «Республика
+// Корея») y CON_NA los nombres de isla que van con «на». La preposición es «во» ante в o ф seguidas de
+// consonante («во Франции», «во Вьетнаме») y «в» en el resto; Украина va con «в», como en la prensa de
+// Kazajistán. Lo que termina en otra vocal (Чили, Перу, Марокко, Никарагуа) y las siglas (США, ОАЭ) no
+// se declinan.
+const ru: GramaticaPais = (() => {
+  // [genitivo, locativo] sin preposición.
+  const TABLA: Readonly<Record<string, readonly [string, string]>> = {
+    Беларусь: ["Беларуси", "Беларуси"],
+    Египет: ["Египта", "Египте"],
+    Бангладеш: ["Бангладеш", "Бангладеш"],
+    Филиппины: ["Филиппин", "Филиппинах"],
+    Мальдивы: ["Мальдив", "Мальдивах"],
+    Багамы: ["Багам", "Багамах"],
+    Коморы: ["Комор", "Коморах"],
+    Гренадины: ["Гренадин", "Гренадинах"],
+    "Гвинея-Бисау": ["Гвинеи-Бисау", "Гвинее-Бисау"],
+    "Республика Корея": ["Республики Корея", "Республике Корея"],
+    "Республика Конго": ["Республики Конго", "Республике Конго"],
+    "Демократическая Республика Конго": ["Демократической Республики Конго", "Демократической Республике Конго"],
+    "Конго - Киншаса": ["Конго - Киншаса", "Конго - Киншаса"],
+    "Конго - Браззавиль": ["Конго - Браззавиль", "Конго - Браззавиль"],
+  };
+  const CON_NA = new Set([
+    "Филиппины", "Кипр", "Мальта", "Куба", "Ямайка", "Маврикий", "Мадагаскар", "Багамы", "Мальдивы", "Барбадос", "Гаити",
+    "Фиджи", "Шри-Ланка", "Тайвань", "Гренада", "Доминика", "Сент-Люсия", "Сент-Винсент и Гренадины", "Сент-Китс и Невис",
+    "Тринидад и Тобаго", "Антигуа и Барбуда", "Кабо-Верде", "Коморы", "Самоа", "Тонга", "Науру", "Тувалу", "Палау",
+    "Кирибати", "Сан-Томе и Принсипи", "Мартиника", "Гваделупа", "Реюньон",
+  ]);
+  const VOCAL = /[аеёиоуыэюя]$/;
+  const SIGLA = /^[А-ЯЁ]{2,}$/;
+  // Un sustantivo (la última palabra, o la última parte de un compuesto con guion).
+  const sustantivo = (w: string): readonly [string, string] => {
+    if (TABLA[w]) return TABLA[w];
+    const guion = w.lastIndexOf("-");
+    if (guion > 0) {
+      const [g, l] = sustantivo(w.slice(guion + 1));
+      return [w.slice(0, guion + 1) + g, w.slice(0, guion + 1) + l];
+    }
+    if (SIGLA.test(w)) return [w, w];
+    const raiz = w.slice(0, -1);
+    if (/ия$/.test(w)) return [`${raiz}и`, `${raiz}и`];
+    if (/я$/.test(w)) return [`${raiz}и`, `${raiz}е`];
+    if (/[аеёиоуыэюя]а$/.test(w)) return [w, w];
+    if (/а$/.test(w)) return [`${raiz}${/[гкхжчшщ]$/.test(raiz) ? "и" : "ы"}`, `${raiz}е`];
+    if (/ы$/.test(w)) return [`${raiz}ов`, `${raiz}ах`];
+    if (/ий$/.test(w)) return [`${raiz}я`, `${raiz}и`];
+    if (/[йь]$/.test(w)) return [`${raiz}я`, `${raiz}е`];
+    if (VOCAL.test(w)) return [w, w];
+    if (/[бвгджзклмнпрстфхцчшщ]$/.test(w)) return [`${w}а`, `${w}е`];
+    return [w, w];
+  };
+  // Un adjetivo delante del sustantivo: «Новая», «Соединенные», «Восточный», «Американское»,
+  // «Соломоновы».
+  const adjetivo = (w: string): readonly [string, string] => {
+    if (/ая$/.test(w)) return [`${w.slice(0, -2)}ой`, `${w.slice(0, -2)}ой`];
+    if (/яя$/.test(w)) return [`${w.slice(0, -2)}ей`, `${w.slice(0, -2)}ей`];
+    if (/[ыи]е$/.test(w)) return [`${w.slice(0, -1)}х`, `${w.slice(0, -1)}х`];
+    if (/[ыио]й$/.test(w)) return [`${w.slice(0, -2)}ого`, `${w.slice(0, -2)}ом`];
+    if (/ое$/.test(w)) return [`${w.slice(0, -2)}ого`, `${w.slice(0, -2)}ом`];
+    if (/ы$/.test(w)) return [`${w}х`, `${w}х`];
+    return [w, w];
+  };
+  const frase = (p: string): readonly [string, string] => {
+    const palabras = p.split(" ");
+    const formas = palabras.map((w, i) => (i === palabras.length - 1 ? sustantivo(w) : adjetivo(w)));
+    return [formas.map((f) => f[0]).join(" "), formas.map((f) => f[1]).join(" ")];
+  };
+  const formas = (p: string): readonly [string, string] => {
+    if (TABLA[p]) return TABLA[p];
+    // «Гонконг (САР)», «Мьянма (Бирма)»: se declina lo de antes del paréntesis.
+    const parentesis = p.indexOf(" (");
+    if (parentesis > 0) {
+      const [g, l] = formas(p.slice(0, parentesis));
+      return [g + p.slice(parentesis), l + p.slice(parentesis)];
+    }
+    const coma = p.indexOf(", ");
+    if (coma > 0) {
+      const [g, l] = formas(p.slice(0, coma));
+      return [g + p.slice(coma), l + p.slice(coma)];
+    }
+    // «Папуа — Новая Гвинея»: se declina la última parte.
+    const raya = p.lastIndexOf(" — ");
+    if (raya > 0) {
+      const [g, l] = formas(p.slice(raya + 3));
+      return [p.slice(0, raya + 3) + g, p.slice(0, raya + 3) + l];
+    }
+    if (p.includes(" и ")) {
+      const partes = p.split(" и ").map(formas);
+      return [partes.map((f) => f[0]).join(" и "), partes.map((f) => f[1]).join(" и ")];
+    }
+    return frase(p);
+  };
+  const en = (p: string) => {
+    const loc = formas(p)[1];
+    return `${CON_NA.has(p) ? "на" : /^[ВвФф][^аеёиоуыэюяАЕЁИОУЫЭЮЯ]/.test(loc) ? "во" : "в"} ${loc}`;
+  };
+  return { nombre: (p) => p, de: (p) => formas(p)[0], en, para: (p) => `для ${formas(p)[0]}` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, ru };
