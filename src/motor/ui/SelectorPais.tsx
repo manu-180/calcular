@@ -25,6 +25,8 @@ const normal = (s: string) =>
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
+    // «Oʻzbekiston» también con «o'» o sin el signo (ADR 0002, D16).
+    .replace(/[ʻʼ]/g, "").replace(/([og])[‘’'`](?=\p{L})/gu, "$1")
     .trim();
 
 interface Item extends OpcionPais {

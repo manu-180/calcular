@@ -1,4 +1,5 @@
 import type { Idioma, Trato } from "../tipos";
+import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Textos de la calculadora embebible (src/motor/embed) y del generador del código. Va aparte del
@@ -486,7 +487,43 @@ const zh: Diccionario<TextosEmbed> = {
   regional: { "zh-CN": zhHans, "zh-SG": zhHans },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Uzbeko latino (ADR 0002, D16): «Siz» con las formas corteses, como en soliq.uz y los bancos.
+const uz: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa kalkulyatori",
+    marcaNuevaPestana: "(yangi varaqda ochiladi)",
+    noDisponible: { titulo: "Bu kalkulyator mavjud emas", texto: "Uning manzili oʻzgargan boʻlishi mumkin." },
+    insertar: "Saytingizga joylang",
+    pagina: {
+      titulo: (pais) => [`Saytingiz uchun bepul kalkulyatorlar | ${pais}`, "Saytingiz uchun bepul kalkulyatorlar"],
+      descripcion: (pais) => `${GRAMATICA.uz.para(pais)} kalkulyatorni tanlang, kodini nusxalang va blogingiz yoki saytingizga joylang. Bepul, rasmiy maʼlumotlar doim dolzarb.`,
+      h1: "Saytingizga kalkulyator joylang",
+      bajada: "Kalkulyatorni tanlang, kodini nusxalang va kerakli joyga qoʻying. Bepul, maʼlumotlar oʻzi yangilanadi.",
+      calculadora: "Kalkulyator",
+      buscar: "Kalkulyatorni qidiring",
+      sinResultados: "Qidiruvingizga mos kalkulyator topilmadi.",
+      tema: "Koʻrinish",
+      claro: "Yorugʻ",
+      oscuro: "Qorongʻi",
+      ancho: "Kenglik",
+      anchoCompleto: "Toʻliq kenglik",
+      acento: "Asosiy rang",
+      colores: ["Yashil", "Koʻk", "Toʻq sariq", "Pushti", "Kulrang"],
+      credito: "Kalkulyator ostiga manba havolasini qoʻshish",
+      vistaPrevia: "Oldindan koʻrish",
+      codigo: "Joylash uchun kod",
+      copiar: "Kodni nusxalash",
+      copiado: "Kod nusxalandi",
+      ayudaScript: "Skript ixtiyoriy: u kalkulyator balandligini mazmuniga qarab moslaydi.",
+      ventajas: ["Bepul, roʻyxatdan oʻtmasdan", "Doim dolzarb rasmiy maʼlumotlar", "Har qanday kenglikka moslashadi"],
+      nota: "Kalkulyator ostida CalcularYa saytiga havola boʻladi. Iltimos, uni olib tashlamang.",
+      verTodas: (pais) => `${GRAMATICA.uz.para(pais)} barcha kalkulyatorlarni koʻring`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa kalkulyatori`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, uz };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

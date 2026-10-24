@@ -21,6 +21,10 @@ export function normalizar(texto: string): string {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
+    // Uzbeko latino: oʻ, gʻ y la tutuq belgisi (ʼ) se buscan sin el signo, y quien escribe «o'» o «g'»
+    // con el apóstrofo del teclado encuentra lo mismo («oʻrtacha», «o'rtacha» y «ortacha»).
+    .replace(/[ʻʼ]/g, "")
+    .replace(/([og])[‘’'`](?=[a-z])/g, "$1")
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 }
