@@ -351,6 +351,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       "zh-SG": ZH_HANS_MOTOR,
     },
   },
+  // Bengalí (ADR 0002, D14): «আপনি» con el imperativo cortés (লিখুন, বেছে নিন), dari «।» al final.
+  bn: {
+    base: {
+      calcular: "হিসাব করুন",
+      resultado: "ফলাফল",
+      si: "হ্যাঁ",
+      no: "না",
+      sinResultado: "এই ফলাফলটি আপাতত দেখানো হচ্ছে না।",
+      errores: {
+        requerido: "এই ঘরটি পূরণ করুন।",
+        "numero-invalido": "একটি সংখ্যা লিখুন, যেমন {ejemplo}।",
+        "entero-invalido": "দশমিক ছাড়া পূর্ণসংখ্যা লিখুন।",
+        "menor-que-min": "সর্বনিম্ন মান {min}।",
+        "mayor-que-max": "সর্বোচ্চ মান {max}।",
+        "fecha-invalida": "সঠিক একটি তারিখ বেছে নিন।",
+        "hora-invalida": "সঠিক একটি সময় বেছে নিন।",
+        "opcion-invalida": "তালিকা থেকে একটি বেছে নিন।",
+        "region-invalida": "একটি অঞ্চল বেছে নিন।",
+        "calculo-fallido": "এই তথ্য দিয়ে হিসাব করা গেল না। মানগুলো আবার দেখে নিয়ে আরেকবার চেষ্টা করুন।",
+      },
+      milesAmbiguos: "আপনি কি {sugerido} লিখতে চেয়েছেন? {signos} ছাড়া লিখুন।",
+      separadores: { punto: "বিন্দু (.)", coma: "কমা (,)" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

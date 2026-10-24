@@ -133,6 +133,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       "zh-SG": ZH_HANS_CALCULADORA,
     },
   },
+  bn: {
+    base: {
+      datos: "আপনার তথ্য",
+      resultado: "ফলাফল",
+      vacio: "তথ্যগুলো লিখে ‘হিসাব করুন’ চাপুন, ফলাফল এখানে দেখা যাবে।",
+      sinResultado: "এই ফলাফলটি আপাতত দেখানো হচ্ছে না।",
+      avisos: { info: "জেনে রাখুন", cautela: "সতর্কতা", bloquea: "ফলাফল কেন দেখানো হচ্ছে না" },
+      fuenteDelAviso: "সূত্র",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

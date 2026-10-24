@@ -259,4 +259,29 @@ const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `
 // 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
 const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh };
+// El bengalí no tiene artículos y marca el caso con un sufijo pegado al nombre. Genitivo: «-এর» tras
+// consonante (বাংলাদেশের, ভারতের, জাপানের) y «-র» tras vocal (কানাডার, ইতালির, মেক্সিকোর). Locativo:
+// «-এ» tras consonante (বাংলাদেশে, জাপানে), «-য়» tras «া» (কানাডায়, অস্ট্রেলিয়ায়) y «-তে» tras las
+// demás vocales (ইতালিতে, মেক্সিকোতে). El destino es el genitivo con «জন্য» (বাংলাদেশের জন্য). Tras
+// «ং» o «ঃ» el sufijo lleva «য়» (হংকংয়ের, হংকংয়ে). Un nombre que termina en letra latina o número
+// (raro en DisplayNames bn) lleva el sufijo separado por guion, como se escribe en la prensa.
+const bn: GramaticaPais = (() => {
+  const SIGNO_VOCAL = /[\u09BE-\u09CC\u09D7]$/u;
+  const VOCAL_LIBRE = /[\u0985-\u0994]$/u;
+  const NASAL = /[\u0982\u0983]$/u;
+  const BENGALI = /[\u0980-\u09FF]$/u;
+  const de = (p: string) => {
+    if (!BENGALI.test(p)) return `${p}-এর`;
+    if (NASAL.test(p)) return `${p}য়ের`;
+    return SIGNO_VOCAL.test(p) || VOCAL_LIBRE.test(p) ? `${p}র` : `${p}ের`;
+  };
+  const en = (p: string) => {
+    if (!BENGALI.test(p)) return `${p}-এ`;
+    if (NASAL.test(p)) return `${p}য়ে`;
+    if (/া$/u.test(p)) return `${p}য়`;
+    return SIGNO_VOCAL.test(p) || VOCAL_LIBRE.test(p) ? `${p}তে` : `${p}ে`;
+  };
+  return { nombre: (p) => p, de, en, para: (p) => `${de(p)} জন্য` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, bn };

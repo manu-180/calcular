@@ -9,7 +9,10 @@ import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
-import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { anchoVisual } from "../src/motor/ancho";
+import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { cifrasBn } from "../src/motor/i18n/bengali";
+import { GRAMATICA } from "../src/motor/i18n/gramatica";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
@@ -54,6 +57,16 @@ igual("porcentaje es-PE", sinNbsp(formatearPorcentaje(9, "es-PE")), "9%");
 igual("porcentaje es-CO", sinNbsp(formatearPorcentaje(1.37, "es-CO")), "1,37%");
 igual("moneda es-PA con símbolo local", sinNbsp(formatearMoneda(1250.5, "es-PA", "USD", undefined, "B/.")), "B/. 1,250.50");
 igual("fecha es-MX", formatearFecha("2026-12-20", "es-MX"), "20 de diciembre de 2026");
+// Bengalí (ADR 0002, D14): dígitos bengalíes y miles en lakh y crore, taka detrás del número.
+igual("número bn-BD en lakh con dígitos bengalíes", formatearNumero(1234567.5, "bn-BD"), "১২,৩৪,৫৬৭.৫");
+igual("moneda bn-BD sin decimales", sinNbsp(formatearMoneda(2500000, "bn-BD", "BDT", 0)), "২৫,০০,০০০৳");
+igual("porcentaje bn-BD", formatearPorcentaje(15.5, "bn-BD"), "১৫.৫%");
+igual("fecha bn-BD", formatearFecha("2026-10-24", "bn-BD"), "২৪ অক্টোবর, ২০২৬");
+igual("cifrasBn de un año y de un texto ya bengalí", [cifrasBn(2026), cifrasBn("৩ দিন")], ["২০২৬", "৩ দিন"]);
+igual("genitivo y locativo bengalí", [GRAMATICA.bn.de("বাংলাদেশ"), GRAMATICA.bn.de("কানাডা"), GRAMATICA.bn.en("বাংলাদেশ"), GRAMATICA.bn.en("কানাডা"), GRAMATICA.bn.en("ইতালি"), GRAMATICA.bn.para("ভারত")], ["বাংলাদেশের", "কানাডার", "বাংলাদেশে", "কানাডায়", "ইতালিতে", "ভারতের জন্য"]);
+// El ancho de SEO no cuenta el hasanta ni los signos que van sobre o bajo la letra (ু); los vocálicos
+// del costado (ি) cuentan medio latino y la letra uno y medio.
+igual("ancho visual bengalí", [anchoVisual("কি"), anchoVisual("ক্ষ"), anchoVisual("কু"), anchoVisual("abc")], [2, 3, 1.5, 3]);
 
 // Parseo por locale: el error que multiplica por mil.
 const parseos: [string, string, number | null][] = [
@@ -85,6 +98,15 @@ const parseos: [string, string, number | null][] = [
   ["es-PE", "", null],
   ["es-PE", "1,", null],
   ["es-PE", "1,2345", null],
+  // Teclado bengalí (Avro, Bijoy, Gboard): dígitos ০-৯, miles en lakh y crore o de a tres.
+  ["bn-BD", "১২,৩৪,৫৬৭.৫০", 1234567.5],
+  ["bn-BD", "১২৩৪৫৬৭", 1234567],
+  ["bn-BD", "12,34,567", 1234567],
+  ["bn-BD", "৳ ২৫,০০০", 25000],
+  ["bn-BD", "২৫,০০,০০০৳", 2500000],
+  ["bn-BD", "-১২.৫", -12.5],
+  ["bn-BD", "১,২৩৪.৫", 1234.5],
+  ["bn-BD", "১২,৩৪৫,৬৭", null],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -99,9 +121,12 @@ const ambiguos: [string, string, number | null][] = [
   ["es-MX", "5,000.000", 5000],
   ["es-CL", "5,000", null],
   ["es-CO", "5.000", 5000],
+  ["bn-BD", "৫.০০০", null],
+  ["bn-BD", "৫,০০০", 5000],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
+igual("sugerencia de miles con los dígitos que escribió la persona", sugerenciaMiles("৫.০০০", "bn-BD")?.sugerido, "৫০০০");
 // Unidades de 10⁴ en ja, zh y ko, y dígitos de ancho completo del IME: «3万» no puede dar 3.
 const cjk: [string, string, number | null][] = [
   ["ja-JP", "3万", 30000],
@@ -455,6 +480,10 @@ igual("marcadoresDe con fila de escala y región", marcadoresDe("{{ca.x[2].tasa@
 igual("semanas en inglés", formatearValorUnidad(2, "semanas", "en-CA"), "2 weeks");
 igual("semana en singular (de)", formatearValorUnidad(1, "semanas", "de-DE"), "1 Woche");
 igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 weken");
+// Bengalí: sin plural después del número y con dígitos bengalíes.
+igual("días en bengalí", formatearValorUnidad(3, "dias", "bn-BD"), "৩ দিন");
+igual("un año en bengalí", formatearValorUnidad(1, "anios", "bn-BD"), "১ বছর");
+igual("fracción de año en bengalí", formatearValorUnidad(1.5, "anios", "bn-BD"), "১.৫ বছর");
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).
