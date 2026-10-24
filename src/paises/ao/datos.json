@@ -180,6 +180,744 @@
           }
         }
       ]
+    },
+    {
+      "id": "ao.salario-minimo",
+      "nombre": "Salário mínimo nacional",
+      "tipo": "numero",
+      "unidad": "AOA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-09-15",
+          "hasta": "2025-09-14",
+          "valor": 70000,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Decreto Presidencial n.º 152/24, de 17 de julho, I Série n.º 135, artigo 1.º, n.º 1, e artigo 6.º",
+            "url": "https://www.maptss.gov.ao/wp-content/uploads/2024/09/DECRETO-PRESIDENCIAL-152_24-FIXA-O-NOVO-SALARIO-MINIMO-NACIONAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-09-15",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Decreto Presidencial n.º 152/24, de 17 de julho, I Série n.º 135, artigo 1.º, n.º 2",
+            "url": "https://www.maptss.gov.ao/wp-content/uploads/2024/09/DECRETO-PRESIDENCIAL-152_24-FIXA-O-NOVO-SALARIO-MINIMO-NACIONAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.salario-minimo-micro",
+      "nombre": "Salário mínimo das micro-empresas e startups",
+      "tipo": "numero",
+      "unidad": "AOA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-09-15",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Decreto Presidencial n.º 152/24, de 17 de julho, I Série n.º 135, artigo 1.º, n.º 3",
+            "url": "https://www.maptss.gov.ao/wp-content/uploads/2024/09/DECRETO-PRESIDENCIAL-152_24-FIXA-O-NOVO-SALARIO-MINIMO-NACIONAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.inss-trabalhador",
+      "nombre": "Contribuição do trabalhador para o INSS",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Decreto Presidencial n.º 227/18, de 27 de setembro, I Série n.º 146, artigo 12.º, n.º 1",
+            "url": "https://portal.inss.gov.ao/wp-content/uploads/2021/10/227_18.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.inss-empregador",
+      "nombre": "Contribuição da entidade empregadora para o INSS",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Decreto Presidencial n.º 227/18, de 27 de setembro, I Série n.º 146, artigo 12.º, n.º 1",
+            "url": "https://portal.inss.gov.ao/wp-content/uploads/2021/10/227_18.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.inss-reformado",
+      "nombre": "Contribuição do trabalhador já reformado para o INSS",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Decreto Presidencial n.º 227/18, de 27 de setembro, I Série n.º 146, artigo 12.º, n.º 2",
+            "url": "https://portal.inss.gov.ao/wp-content/uploads/2021/10/227_18.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ferias-dias",
+      "nombre": "Dias úteis de férias por ano",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 204.º, n.º 1",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ferias-dias-por-mes",
+      "nombre": "Dias úteis de férias por mês completo no ano de admissão",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 204.º, n.º 2",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ferias-minimo-admissao",
+      "nombre": "Mínimo de dias úteis de férias no ano de admissão",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 204.º, n.º 2",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.gratificacao-ferias",
+      "nombre": "Gratificação (subsídio) de férias mínima",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 238.º, n.º 1, alínea a",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.subsidio-natal",
+      "nombre": "Subsídio de Natal mínimo",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 238.º, n.º 1, alínea b",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.horas-semanais",
+      "nombre": "Período normal de trabalho semanal máximo",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 44,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 148.º, n.º 1",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.he-adicional-1",
+      "nombre": "Adicional das primeiras horas extraordinárias do mês",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 188.º, n.º 1",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.he-limite-1",
+      "nombre": "Horas extraordinárias por mês com o primeiro adicional",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 188.º, n.º 1",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.he-adicional-2",
+      "nombre": "Adicional das horas extraordinárias acima do limite mensal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 188.º, n.º 2",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.descanso-semanal-adicional",
+      "nombre": "Adicional do trabalho no dia de descanso semanal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 194.º",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.descanso-semanal-minimo-horas",
+      "nombre": "Horas mínimas pagas pelo trabalho no dia de descanso semanal",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 194.º",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.nocturno-adicional",
+      "nombre": "Adicional do trabalho nocturno",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 182.º, n.º 1",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.compensacao-anos-inteiros",
+      "nombre": "Anos de antiguidade pagos a um salário-base inteiro na compensação",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 308.º",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.compensacao-acima",
+      "nombre": "Percentagem do salário-base por ano acima do limite",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 308.º",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.compensacao-caducidade",
+      "nombre": "Percentagem do salário-base por ano na caducidade, insolvência ou extinção do empregador",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 307.º",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.indemnizacao-nao-reintegracao",
+      "nombre": "Percentagem do salário-base por ano na indemnização por não reintegração",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 309.º",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.indemnizacao-ilicito-minimo",
+      "nombre": "Indemnização mínima por despedimento ilícito, em salários-base",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 310.º, n.º 3",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.antiguidade-fraccao",
+      "nombre": "Fracção de ano que conta como ano inteiro de antiguidade",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 311.º",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.aviso-previo-trabalhador",
+      "nombre": "Aviso prévio do trabalhador que se demite",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 305.º, n.º 1",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.aviso-previo-empregador",
+      "nombre": "Aviso prévio do empregador no despedimento por causas objectivas",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-26",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 12/23, de 27 de dezembro (Lei Geral do Trabalho), I Série n.º 245, artigo 286.º, n.º 1",
+            "url": "https://faolex.fao.org/docs/pdf/ang223057.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ip-detencao",
+      "nombre": "Imposto Predial sobre a detenção de prédios urbanos",
+      "tipo": "escala",
+      "unidad": "AOA",
+      "nota": "Até 5 milhões paga 0,1 % do valor patrimonial; de 5 a 6 milhões, um valor fixo de 5 000 Kz; acima de 6 milhões, 0,5 % sobre o excesso de 5 milhões.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000000,
+              "tasa": 0.1
+            },
+            {
+              "desde": 5000000,
+              "hasta": 6000000,
+              "tasa": 0,
+              "cuotaFija": 5000
+            },
+            {
+              "desde": 6000000,
+              "hasta": null,
+              "tasa": 0.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 16.º, n.º 1",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ip-terreno",
+      "nombre": "Imposto Predial sobre terreno para construção",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.6,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 16.º, n.º 2",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ip-renda",
+      "nombre": "Imposto Predial sobre prédios arrendados",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 16.º, n.º 4",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ip-renda-deducao",
+      "nombre": "Dedução das rendas para conservação e manutenção",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 8.º, n.º 4",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ip-transmissao",
+      "nombre": "Imposto Predial sobre a transmissão de imóveis",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "A regra já vigorava antes; o tramo começa no ano em que a conferimos.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 20/20, de 9 de julho (Código do Imposto Predial), I Série n.º 101, artigo 18.º",
+            "url": "https://portaldocontribuinte.minfin.gov.ao/legislacao",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ip-habitacao-isencao",
+      "nombre": "Valor até ao qual a compra de habitação está isenta",
+      "tipo": "numero",
+      "unidad": "AOA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40000000,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 14/25, de 30 de dezembro (OGE 2026), I Série n.º 244, artigo 27.º, n.º 1",
+            "url": "https://tcontas.ao/wp-content/uploads/2026/09/Lei-14-25-de-30-de-Dezembro-OGE-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ip-habitacao-reducao-limite",
+      "nombre": "Valor até ao qual a compra de habitação tem a taxa reduzida a metade",
+      "tipo": "numero",
+      "unidad": "AOA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000000,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 14/25, de 30 de dezembro (OGE 2026), I Série n.º 244, artigo 27.º, n.º 2",
+            "url": "https://tcontas.ao/wp-content/uploads/2026/09/Lei-14-25-de-30-de-Dezembro-OGE-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.ip-habitacao-reducao",
+      "nombre": "Redução da taxa na compra de habitação entre os dois limites",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Diário da República",
+            "titulo": "Lei n.º 14/25, de 30 de dezembro (OGE 2026), I Série n.º 244, artigo 27.º, n.º 2",
+            "url": "https://tcontas.ao/wp-content/uploads/2026/09/Lei-14-25-de-30-de-Dezembro-OGE-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.taxa-bna",
+      "nombre": "Taxa BNA (taxa básica de juro do Banco Nacional de Angola)",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "O registo do BNA não indica a data da reunião; o tramo começa na data da última actualização do registo.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-15",
+          "valor": 14.75,
+          "fuente": {
+            "organismo": "Banco Nacional de Angola",
+            "titulo": "Taxa BNA publicada no portal do BNA (registo actualizado a 15 de setembro de 2026)",
+            "url": "https://www.bna.ao/service/rest/generic/sharepoint/generic?whichUrl=Taxa%20BNA",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ao.iva-geral",
+      "nombre": "Taxa geral do IVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 14,
+          "motivo": "Não conseguimos abrir o Código do IVA republicado (Lei n.º 14/23) numa fonte oficial: o portal da AGT não publica o texto e o Diário da República é pago."
+        }
+      ]
     }
   ]
 }
