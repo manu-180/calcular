@@ -35,6 +35,7 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     anios: { uno: "rok", pocos: "lata", muchos: "lat", otros: "roku" },
   },
   sv: { dias: { uno: "dag", otros: "dagar" }, semanas: { uno: "vecka", otros: "veckor" }, horas: { uno: "timme", otros: "timmar" }, meses: { uno: "månad", otros: "månader" }, anios: { uno: "år", otros: "år" } },
+  da: { dias: { uno: "dag", otros: "dage" }, semanas: { uno: "uge", otros: "uger" }, horas: { uno: "time", otros: "timer" }, meses: { uno: "måned", otros: "måneder" }, anios: { uno: "år", otros: "år" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

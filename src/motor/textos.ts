@@ -397,6 +397,29 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "punkter", coma: "kommatecken" },
     },
   },
+  da: {
+    base: {
+      calcular: "Beregn",
+      resultado: "Resultat",
+      si: "Ja",
+      no: "Nej",
+      sinResultado: "Vi viser ikke dette resultat lige nu.",
+      errores: {
+        requerido: "Udfyld dette felt.",
+        "numero-invalido": "Skriv et tal, for eksempel {ejemplo}.",
+        "entero-invalido": "Skriv et helt tal uden decimaler.",
+        "menor-que-min": "Den laveste værdi er {min}.",
+        "mayor-que-max": "Den højeste værdi er {max}.",
+        "fecha-invalida": "Vælg en gyldig dato.",
+        "hora-invalida": "Vælg et gyldigt tidspunkt.",
+        "opcion-invalida": "Vælg en mulighed.",
+        "region-invalida": "Vælg et område.",
+        "calculo-fallido": "Vi kunne ikke regne med disse oplysninger. Tjek værdierne, og prøv igen.",
+      },
+      milesAmbiguos: "Mente du {sugerido}? Skriv tallet uden {signos}.",
+      separadores: { punto: "punktummer", coma: "kommaer" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

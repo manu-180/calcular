@@ -153,6 +153,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Källa",
     },
   },
+  da: {
+    base: {
+      datos: "Dine oplysninger",
+      resultado: "Resultat",
+      vacio: "Udfyld oplysningerne, og tryk på Beregn for at se resultatet.",
+      sinResultado: "Vi viser ikke dette resultat lige nu.",
+      avisos: { info: "Godt at vide", cautela: "Bemærk", bloquea: "Derfor viser vi ikke et resultat" },
+      fuenteDelAviso: "Kilde",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

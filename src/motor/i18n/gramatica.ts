@@ -305,5 +305,6 @@ const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `
 
 // Sueco, danés y noruego no declinan el nombre del país: «i Sverige», «för Sverige».
 const sv: GramaticaPais = { nombre: (p) => p, de: (p) => `för ${p}`, en: (p) => `i ${p}`, para: (p) => `för ${p}` };
+const da: GramaticaPais = { nombre: (p) => p, de: (p) => `for ${p}`, en: (p) => `i ${p}`, para: (p) => `for ${p}` };
 
 export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv };
