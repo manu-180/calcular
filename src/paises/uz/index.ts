@@ -34,6 +34,10 @@ import yerSoligiKalkulyatori from "./calculadoras/yer-soligi-kalkulyatori";
 import contenidoYerSoligiKalkulyatori from "./contenido/yer-soligi-kalkulyatori";
 import inflyatsiyaKalkulyatori from "./calculadoras/inflyatsiya-kalkulyatori";
 import contenidoInflyatsiyaKalkulyatori from "./contenido/inflyatsiya-kalkulyatori";
+import depozitKalkulyatori from "./calculadoras/depozit-kalkulyatori";
+import contenidoDepozitKalkulyatori from "./contenido/depozit-kalkulyatori";
+import valyutaKalkulyatori from "./calculadoras/valyuta-kalkulyatori";
+import contenidoValyutaKalkulyatori from "./contenido/valyuta-kalkulyatori";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -63,6 +67,8 @@ export default definirPais({
     { definicion: molMulkSoligiKalkulyatori, contenido: contenidoMolMulkSoligiKalkulyatori, cliente: () => import("./calculadoras/mol-mulk-soligi-kalkulyatori.cliente") },
     { definicion: yerSoligiKalkulyatori, contenido: contenidoYerSoligiKalkulyatori, cliente: () => import("./calculadoras/yer-soligi-kalkulyatori.cliente") },
     { definicion: inflyatsiyaKalkulyatori, contenido: contenidoInflyatsiyaKalkulyatori, cliente: () => import("./calculadoras/inflyatsiya-kalkulyatori.cliente") },
+    { definicion: depozitKalkulyatori, contenido: contenidoDepozitKalkulyatori, cliente: () => import("./calculadoras/depozit-kalkulyatori.cliente") },
+    { definicion: valyutaKalkulyatori, contenido: contenidoValyutaKalkulyatori, cliente: () => import("./calculadoras/valyuta-kalkulyatori.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "uz.qqs" } }] },
   novedades,

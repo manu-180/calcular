@@ -1,4 +1,20 @@
 {
   "mercado": "uz",
-  "avisos": []
+  "avisos": [
+    {
+      "id": "uz.mahalliy-koeffitsiyentlar",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "hasta": "2026-12-31",
+      "aplicaA": ["uz.yer-soligi-kalkulyatori", "uz.mol-mulk-soligi-kalkulyatori"],
+      "texto": "Mahalliy Kengashlar stavkalarga oʻz koeffitsiyentini qoʻllaydi. Aniq summa soliq organining toʻlov xabarnomasida boʻladi, kalkulyator uni oldindan baholash uchun.",
+      "fuente": {
+        "organismo": "Lex.uz (Adliya vazirligi)",
+        "titulo": "Soliq kodeksi, 422 va 437-moddalar",
+        "url": "https://lex.uz/uz/docs/-4674902",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
 }
