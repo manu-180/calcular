@@ -42,6 +42,8 @@ import kalkulyatorInflyatsii from "./calculadoras/kalkulyator-inflyatsii";
 import contenidoKalkulyatorInflyatsii from "./contenido/kalkulyator-inflyatsii";
 import pensionnyeNakopleniya from "./calculadoras/pensionnye-nakopleniya";
 import contenidoPensionnyeNakopleniya from "./contenido/pensionnye-nakopleniya";
+import kalkulyatorDepozita from "./calculadoras/kalkulyator-depozita";
+import contenidoKalkulyatorDepozita from "./contenido/kalkulyator-depozita";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -75,6 +77,7 @@ export default definirPais({
     { definicion: kursValyut, contenido: contenidoKursValyut, cliente: () => import("./calculadoras/kurs-valyut.cliente") },
     { definicion: kalkulyatorInflyatsii, contenido: contenidoKalkulyatorInflyatsii, cliente: () => import("./calculadoras/kalkulyator-inflyatsii.cliente") },
     { definicion: pensionnyeNakopleniya, contenido: contenidoPensionnyeNakopleniya, cliente: () => import("./calculadoras/pensionnye-nakopleniya.cliente") },
+    { definicion: kalkulyatorDepozita, contenido: contenidoKalkulyatorDepozita, cliente: () => import("./calculadoras/kalkulyator-depozita.cliente") },
   ],
   universales: "todas",
   novedades,

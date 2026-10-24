@@ -81,7 +81,28 @@ function detectorAkta(id: string, kod: string, nazvanie: string, datos: readonly
   };
 }
 
+// Страница фонда перечисляет пределы «не более N млн» по видам вкладов: другой набор чисел значит,
+// что пределы изменились.
+async function limityKfgd(http: Http, url: string): Promise<readonly HallazgoNorma[] | null> {
+  const html = await http.texto(url);
+  const chisla = [...html.replace(/<[^>]+>/g, " ").matchAll(/не более\s+(\d+)\s*млн/g)].map((m) => Number(m[1]));
+  if (chisla.length === 0) return null;
+  const izvestnye = new Set([20, 10, 5]);
+  if (chisla.every((n) => izvestnye.has(n))) return [];
+  return [{ titulo: `Пределы гарантии КФГД изменились: ${chisla.join(", ")} млн тенге`, url, fecha: VERIFICADO }];
+}
+
 export const detectores: readonly Detector[] = [
+  {
+    id: "kz.kfgd-limity",
+    carril: "norma",
+    datos: ["kz.kdif-limity"],
+    metodo: "html",
+    url: "https://kdif.kz/ru/what-we-guarantee",
+    traer(http) {
+      return limityKfgd(http, this.url);
+    },
+  },
   detectorKursa("USD", { min: 350, max: 650, saltoRelativoMax: 0.06 }),
   detectorKursa("EUR", { min: 400, max: 750, saltoRelativoMax: 0.06 }),
   detectorKursa("RUB", { min: 3.5, max: 9, saltoRelativoMax: 0.08 }),

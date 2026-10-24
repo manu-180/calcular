@@ -1240,6 +1240,37 @@
           }
         }
       ]
+    },
+    {
+      "id": "kz.kdif-limity",
+      "nombre": "Максимальный размер гарантийного возмещения по депозитам физических лиц",
+      "tipo": "mapa",
+      "unidad": "KZT",
+      "etiquetas": {
+        "sberegatelnyy": "Сберегательный депозит в тенге",
+        "nesberegatelnyy": "Другой депозит в тенге",
+        "valyuta": "Депозит в иностранной валюте",
+        "sovokupno": "Все депозиты в одном банке вместе"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": {
+            "sberegatelnyy": 20000000,
+            "nesberegatelnyy": 10000000,
+            "valyuta": 5000000,
+            "sovokupno": 20000000
+          },
+          "fuente": {
+            "organismo": "Казахстанский фонд гарантирования депозитов",
+            "titulo": "Что мы гарантируем",
+            "url": "https://kdif.kz/ru/what-we-guarantee",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
     }
   ]
 }
