@@ -2450,7 +2450,169 @@ const zhHans: TextosMundo = {
 
 const zh: Diccionario<TextosMundo> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── tr ─────────────────────────────
+
+// Turco (ADR 0002, D12): «siz» con las formas corteses; la tarjeta y el texto para compartir, en
+// primera persona. La fecha va en el medio de la oración y el sufijo nunca se pega a una cifra
+// («24 Ekim 2026 tarihine kadar»), así la armonía vocálica no depende del número.
+const gTr = GRAMATICA.tr;
+const SEO_TR = "Vergi Özgürlük Günü ve ülkelere göre net maaş";
+
+const tr: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Maaşınız dünyada ne eder",
+    seo: {
+      titulo: (pais) => [`${SEO_TR} | ${pais}`, SEO_TR, "Ülkelere göre net maaş"],
+      tituloGlobal: [SEO_TR, "Ülkelere göre net maaş"],
+      descripcion: (pais, n) => `${gTr.en(pais)} bir maaşla yılın hangi gününe kadar devlet için çalıştığınızı ve ${n} ülkede elinize ne geçeceğini görün. Ücretsiz, üyelik gerekmez.`,
+      descripcionGlobal: (n) => `Yılın hangi gününe kadar devlet için çalıştığınızı ve ${n} ülkede elinize ne geçeceğini görün. Ücretsiz, üyelik gerekmez.`,
+    },
+    ceja: "Vergi Özgürlük Gününüz",
+    h1: "Yılın hangi gününe kadar devlet için çalışıyorsunuz?",
+    bajada: (n) => `Tarihinizi görmek için brüt maaşınızı girin. Sonra aynı alım gücüyle ve her ülkenin vergi kurallarıyla ${n} ülkede karşılaştırın.`,
+    form: {
+      titulo: "Maaşınız",
+      sueldo: "Brüt maaş",
+      mes: "Aylık",
+      anio: "Yıllık",
+      periodo: "Maaş dönemi",
+      pais: "Çalıştığınız ülke",
+      ejemplo: "Örnek",
+      ejemploAyuda: "Bu bir örnek maaş. Kendi maaşınızı yazın, tüm rakamlar hemen güncellenir.",
+      propio: "Önceki hesaplamanızdan alındı.",
+      invalido: "Sıfırdan büyük bir tutar girin.",
+      pagas: "Bordronuzdaki aylık maaş: yasanın zorunlu kıldığı ek ödemeleri (13. ya da 14. maaş) biz ekleriz. Net maaş, 12 ayın ortalamasıdır.",
+    },
+    heroe: {
+      hasta: (fecha) => `Devlet için ${fecha} tarihine kadar çalışıyorsunuz`,
+      tasa: (pct) => `Maaşınızın ${pct} kadarı gelir vergisine ve zorunlu primlere gidiyor.`,
+      dias: (n, total) => `${total} günün ${n} günü`,
+      enMano: "Elinize geçen",
+      porMes: "aylık",
+      anio: (anio, n, total) => `${anio}: ${total} günün ${n} günü devlet için.`,
+      resto: "Ertesi günden itibaren kazandığınız her şey sizin.",
+    },
+    ranking: {
+      titulo: "Aynı maaş, ülke ülke",
+      bajada: "Aynı alım gücüyle her ülkede elinize geçecek net maaş bu. Her satır, o ülkenin resmî hesaplama aracından gelir.",
+      lista: "Net maaşa göre sıralanan ülkeler",
+      buscar: "Ülke arayın",
+      filtrar: "Bölgeye göre süzün",
+      todas: "Tümü",
+      regiones: { americas: "Amerika", europa: "Avrupa", asia: "Asya ve Okyanusya", africa: "Afrika ve Orta Doğu" },
+      tuPais: "Ülkeniz",
+      mejor: "En avantajlı",
+      enMano: "Aylık net maaş",
+      enTuMoneda: "Kendi para biriminizle",
+      vsTuPais: "Ülkenize göre",
+      verTodos: (n) => `${n} ülkenin tümünü görün`,
+      verMenos: "Daha az göster",
+      sinResultados: (q) => `“${q}” ile eşleşen ülke yok.`,
+      abrir: (pais) => `${gTr.para(pais)} hesaplama aracını açın`,
+      mas: (pct) => `${pct} daha fazla`,
+      menos: (pct) => `${pct} daha az`,
+      igual: "Aynı",
+      puesto: (p, total) => `Ülkeniz ${total} ülke arasında ${p}. sırada.`,
+    },
+    tarjeta: {
+      titulo: "Paylaşmak için kartınız",
+      bajada: "Kartta tarihiniz ve yüzdeleriniz görünür. Ne kazandığınız hiçbir zaman görünmez.",
+      hasta: (fecha) => `Devlet için ${fecha} tarihine kadar çalışıyorum`,
+      tasa: (pct) => `Maaşımın ${pct} kadarı vergiye gidiyor`,
+      mejor: (pais, pct) => `Maaşımla ${gTr.en(pais)} elime ${pct} daha fazla geçerdi`,
+      mejorPropio: (pais) => `Maaşımla en avantajlı ülke ${gTr.nombre(pais)}`,
+      yVos: "Peki ya siz?",
+      cta: "Kendi tarihinizi öğrenin:",
+      generica: "Yılın hangi gününe kadar devlet için çalışıyorsunuz?",
+      genericaBajada: (n) => `Maaşınız ${n} ülkede, her ülkenin resmî hesaplama aracıyla`,
+      compartir: "Kartımı paylaş",
+      compartirDuelo: "Meydan okumaya karşılık ver",
+      descargar: "Görseli indir",
+      copiado: "Bağlantı kopyalandı. İstediğiniz yere yapıştırın.",
+      compartido: "Tamam, paylaşıldı.",
+      error: "Paylaşılamadı. Tekrar deneyin.",
+      texto: (fecha) => `Devlet için ${fecha} tarihine kadar çalışıyorum. Peki ya siz?`,
+      alt: "Kartınızın önizlemesi",
+    },
+    duelo: {
+      amigo: (fecha) => `Arkadaşınız devlet için ${fecha} tarihine kadar çalışıyor.`,
+      yVos: "Peki ya siz?",
+      invitacion: "Karşılaştırmak için maaşınızı girin.",
+      vos: "Siz",
+      elAmigo: "Arkadaşınız",
+      dia: "Devlet için çalıştığı son gün",
+      tasa: "Vergi ve primler",
+      mejorPais: "En avantajlı ülke",
+      antes: (d) => `Arkadaşınızdan ${d} gün önce özgürsünüz.`,
+      despues: (d) => `Arkadaşınız sizden ${d} gün önce özgür.`,
+      empate: "İkiniz de aynı gün özgürsünüz.",
+      desde: (pais) => `${gTr.en(pais)} çalışıyor`,
+    },
+    cero: {
+      dia: "sıfır gün",
+      heroeAntes: "Devlet için çalıştığınız süre",
+      tarjetaAntes: "Devlet için çalıştığım süre",
+      motivo: "Bu maaşta gelir vergisi ya da zorunlu prim kesintisi yok.",
+      texto: "Bu yıl devlet için tek bir gün bile çalışmıyorum. Peki ya siz?",
+      amigo: "Arkadaşınız devlet için tek bir gün bile çalışmıyor.",
+    },
+    metodo: {
+      titulo: "Nasıl hesaplıyoruz",
+      estimacion: "Bu, ülkeleri karşılaştırmak için bir tahmindir, bordro değildir. İndirimler, çocuklar ya da ikramiyeler rakamınızı değiştirebilir.",
+      supuestos: [
+        "Çocuksuz, bekâr bir kişi; her ülkenin hesaplama aracındaki varsayılan değerlerle.",
+        "Net maaş, gelir vergisi ve çalışanın kendi ödediği primler düştükten sonra kalan tutardır. Tüketim vergileri ve işverenin ödediği primler hesaba katılmaz.",
+        "13. maaş ya da zorunlu diğer ek ödemeler, her ülkenin yasasına göre yıla yayılır.",
+        "Amerika Birleşik Devletleri'nde eyalet ya da yerel gelir vergisi eklenmez: yalnızca federal vergi ve bordro primleri.",
+        "Maaşınızı başka bir ülkeye taşımak için satın alma gücü paritesini (SGP) kullanırız: bugünkü kur değil, aynı yaşam standardı.",
+        "Arjantin'in SGP değeri, Dünya Bankası yalnızca 2021'e kadar yayımladığı için INDEC'in tüketici fiyat endeksiyle güncellenir.",
+        "Özgürlük gününüz, vergilerinizi 1 Ocak'tan başlayarak yıla dağıtır. Maaşınızın %30'u vergiye gidiyorsa yılın %30'u boyunca devlet için çalışırsınız.",
+      ],
+      ppaTitulo: "Satın alma gücü paritesi",
+      bancoMundial: "Dünya Bankası",
+      ppa: (organismo, indicador, anio) => `${organismo}, ${indicador} göstergesi, mevcut son yıl: ${anio}.`,
+      consultado: (fecha) => `Kontrol tarihi: ${fecha}.`,
+      verFuente: "Kaynağı görün",
+      fuentesTitulo: "Her ülkenin kaynağı",
+      fuentesBajada: "Her satır, o ülkenin net maaş hesaplama aracını ve resmî verilerini kullanır.",
+      verificado: (fecha) => `Verilerin doğrulandığı tarih: ${fecha}`,
+      sello: (fecha) => `Resmî veriler her ülkenin kaynağında kontrol edildi. En eski kontrol tarihi: ${fecha}.`,
+    },
+    faqTitulo: "Sık sorulan sorular",
+    faq: (n) => [
+      {
+        pregunta: "Vergi Özgürlük Günü nedir?",
+        respuesta:
+          "1 Ocak'tan itibaren kazandığınız her şey önce devlete gitseydi, yılın vergilerinizi ödemeyi bitirdiğiniz günüdür. Burada bu gün ülke ortalamasından değil, sizin maaşınızdan hesaplanır.",
+      },
+      {
+        pregunta: "Neden alım gücüyle karşılaştırılıyor?",
+        respuesta: "Döviz kuru, güne göre bir maaşı çok büyük ya da çok küçük gösterebilir. SGP, o paranın her ülkede gerçekten neler satın alabildiğini karşılaştırır.",
+      },
+      {
+        pregunta: "Maaşım kaydediliyor mu?",
+        respuesta: "Hayır. Hesaplama tarayıcınızda yapılır. Paylaştığınız şey yalnızca tarihleri, yüzdeleri ve ülkeleri içerir.",
+      },
+      {
+        pregunta: "Gerçek net maaşım neden farklı?",
+        respuesta:
+          "Çocuksuz, bekâr bir kişiyi ve varsayılan değerleri esas alıyoruz. İndirimler, ikramiyeler ya da özel rejimler rakamı değiştirir. Kendi durumunuzun kesin hesabı için ülkenizin hesaplama aracını açın.",
+      },
+      {
+        pregunta: "Hangi ülkeler var?",
+        respuesta: `Bugün ${n} ülke var; her birinin kendi net maaş hesaplama aracı ve resmî verileri bulunuyor. Vergi kurallarını doğruladıkça yeni ülkeler ekliyoruz.`,
+      },
+    ],
+    destacado: {
+      ceja: "Dünya karşılaştırması",
+      titulo: "Yılın hangi gününe kadar devlet için çalışıyorsunuz?",
+      texto: "Maaşınızı girin, başka ülkelerde elinize ne geçeceğini görün.",
+      ir: "Tarihimi öğren",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, tr };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

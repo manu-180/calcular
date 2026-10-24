@@ -1,4 +1,5 @@
 import type { Idioma, Trato } from "../tipos";
+import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Textos de la calculadora embebible (src/motor/embed) y del generador del código. Va aparte del
@@ -486,7 +487,43 @@ const zh: Diccionario<TextosEmbed> = {
   regional: { "zh-CN": zhHans, "zh-SG": zhHans },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Turco (ADR 0002, D12): «siz» con las formas corteses, como en los bancos y en e-Devlet.
+const tr: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa hesaplama aracı",
+    marcaNuevaPestana: "(yeni sekmede açılır)",
+    noDisponible: { titulo: "Bu hesaplama aracı kullanılamıyor", texto: "Adresi değişmiş olabilir." },
+    insertar: "Sitenize ekleyin",
+    pagina: {
+      titulo: (pais) => [`Siteniz için ücretsiz hesaplama araçları | ${pais}`, "Siteniz için ücretsiz hesaplama araçları"],
+      descripcion: (pais) => `${GRAMATICA.tr.para(pais)} bir hesaplama aracı seçin, kodunu kopyalayın ve blogunuza ya da sitenize yapıştırın. Ücretsiz, resmî verileri hep güncel.`,
+      h1: "Sitenize hesaplama aracı ekleyin",
+      bajada: "Bir hesaplama aracı seçin, kodunu kopyalayın ve istediğiniz yere yapıştırın. Ücretsiz ve verileri kendiliğinden güncellenir.",
+      calculadora: "Hesaplama aracı",
+      buscar: "Hesaplama aracı arayın",
+      sinResultados: "Aramanızla eşleşen bir hesaplama aracı yok.",
+      tema: "Görünüm",
+      claro: "Açık",
+      oscuro: "Koyu",
+      ancho: "Genişlik",
+      anchoCompleto: "Tam genişlik",
+      acento: "Vurgu rengi",
+      colores: ["Yeşil", "Mavi", "Turuncu", "Pembe", "Taş grisi"],
+      credito: "Hesaplama aracının altına kaynak bağlantısı ekle",
+      vistaPrevia: "Önizleme",
+      codigo: "Yapıştırılacak kod",
+      copiar: "Kodu kopyala",
+      copiado: "Kod kopyalandı",
+      ayudaScript: "Bu betik isteğe bağlıdır: hesaplama aracının yüksekliği içeriğine göre ayarlanır.",
+      ventajas: ["Ücretsiz, üyelik gerekmez", "Her zaman güncel resmî veriler", "Her genişliğe uyum sağlar"],
+      nota: "Hesaplama aracının altında CalcularYa'ya giden bir bağlantı bulunur. Lütfen kaldırmayın.",
+      verTodas: (pais) => `${GRAMATICA.tr.para(pais)} tüm hesaplama araçlarını görün`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa hesaplama aracı`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, tr };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);
