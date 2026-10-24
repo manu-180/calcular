@@ -87,7 +87,35 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     informal: [{ re: palabras("je|jij|jou|jouw|jezelf"), nombre: "je-vorm" }],
     formal: [{ re: palabras("u|uw|uzelf"), nombre: "u-vorm" }],
   },
+  // Uzbeko: un solo registro, el de soliq.uz, my.gov.uz y los bancos («Siz» con formas corteses;
+  // ADR 0002, D16). Se atrapa el «sen»: el pronombre y sus casos, y la segunda persona del singular
+  // en los tiempos que no se confunden con otra cosa (presente -asan/-ysan y condicional -sang), cuya
+  // forma cortés lleva -siz y -sangiz. El pasado -ding choca con el imperativo cortés de las raíces en
+  // t y d («kiriting», «kuting») y no se busca. Los posesivos de «sen» en -ing chocan con
+  // ese mismo imperativo, así que solo van los más comunes.
+  uz: {
+    informal: [
+      { re: palabras("sen|seni|senga|sening|senda|sendan|senlar|o\u02BBzing|o\u02BBzingni"), nombre: "«sen»" },
+      { re: /\p{L}{2,}[ay]san(?!\p{L})/u, nombre: "presente de «sen» (va -siz)" },
+      { re: /\p{L}{2,}sang(?!\p{L})/u, nombre: "condicional de «sen» (va -sangiz)" },
+      { re: palabras("puling|pulingni|maoshing|daromading|kreditingni|oyliging"), nombre: "posesivo de «sen» (va -ingiz)" },
+    ],
+    formal: [],
+  },
 };
+
+// Uzbeko latino (ADR 0002, D16): oʻ y gʻ van con U+02BB («ʻ») y la tutuq belgisi con U+02BC («ʼ»),
+// como el alfabeto oficial; el apóstrofo recto, el tipográfico o el acento grave entre letras son
+// copias de teclado. «ʻ» solo va detrás de o y g; tras o y g la «ʼ» es una oʻ o gʻ mal escrita. Sin
+// cirílico mezclado: el ruso sería otra edición.
+function reglasUz(texto: string): string[] {
+  const p: string[] = [];
+  if (/[oOgG][\u2018\u2019'`\u02BC]/u.test(texto)) p.push("oʻ o gʻ con el signo equivocado (va U+02BB «ʻ»)");
+  if (/(?<![oOgG])\p{L}[\u2018\u2019'`](?=\p{L})/u.test(texto)) p.push("tutuq belgisi con el signo equivocado (va U+02BC «ʼ»)");
+  if (/(?<![oOgG])\u02BB/u.test(texto)) p.push("«ʻ» que no sigue a o ni a g");
+  if (/\p{sc=Cyrillic}/u.test(texto)) p.push("cirílico mezclado en uzbeko latino");
+  return p;
+}
 
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {
   const r = REGISTRO[idioma];
@@ -158,5 +186,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
     return p;
   }
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
+  if (idioma === "uz") p.push(...reglasUz(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

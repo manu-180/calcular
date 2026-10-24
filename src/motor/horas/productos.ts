@@ -36,7 +36,7 @@ export const PRODUCTOS: readonly ProductoHoras[] = [
     nombreLd: "iPhone 17",
     periodo: "unico",
     rangoPpa: [300, 6000],
-    conArticulo: { es: "un iPhone 17", pt: "um iPhone 17", en: "an iPhone 17", fr: "un iPhone 17", de: "ein iPhone 17", it: "un iPhone 17", nl: "een iPhone 17", ja: "iPhone 17", ko: "아이폰 17", zh: "iPhone 17" },
+    conArticulo: { es: "un iPhone 17", pt: "um iPhone 17", en: "an iPhone 17", fr: "un iPhone 17", de: "ein iPhone 17", it: "un iPhone 17", nl: "een iPhone 17", ja: "iPhone 17", ko: "아이폰 17", zh: "iPhone 17", uz: "iPhone 17" },
   },
   {
     id: "iphone-18-pro",
@@ -46,7 +46,7 @@ export const PRODUCTOS: readonly ProductoHoras[] = [
     nombreLd: "iPhone 18 Pro",
     periodo: "unico",
     rangoPpa: [400, 8000],
-    conArticulo: { es: "un iPhone 18 Pro", pt: "um iPhone 18 Pro", en: "an iPhone 18 Pro", fr: "un iPhone 18 Pro", de: "ein iPhone 18 Pro", it: "un iPhone 18 Pro", nl: "een iPhone 18 Pro", ja: "iPhone 18 Pro", ko: "아이폰 18 Pro", zh: "iPhone 18 Pro" },
+    conArticulo: { es: "un iPhone 18 Pro", pt: "um iPhone 18 Pro", en: "an iPhone 18 Pro", fr: "un iPhone 18 Pro", de: "ein iPhone 18 Pro", it: "un iPhone 18 Pro", nl: "een iPhone 18 Pro", ja: "iPhone 18 Pro", ko: "아이폰 18 Pro", zh: "iPhone 18 Pro", uz: "iPhone 18 Pro" },
   },
   {
     id: "macbook-air",
@@ -56,7 +56,7 @@ export const PRODUCTOS: readonly ProductoHoras[] = [
     nombreLd: "MacBook Air",
     periodo: "unico",
     rangoPpa: [400, 8000],
-    conArticulo: { es: "una MacBook Air", pt: "um MacBook Air", en: "a MacBook Air", fr: "un MacBook Air", de: "ein MacBook Air", it: "un MacBook Air", nl: "een MacBook Air", ja: "MacBook Air", ko: "맥북 에어", zh: "MacBook Air" },
+    conArticulo: { es: "una MacBook Air", pt: "um MacBook Air", en: "a MacBook Air", fr: "un MacBook Air", de: "ein MacBook Air", it: "un MacBook Air", nl: "een MacBook Air", ja: "MacBook Air", ko: "맥북 에어", zh: "MacBook Air", uz: "MacBook Air" },
     conArticuloRegional: { "es-ES": "un MacBook Air" },
   },
   {
@@ -65,7 +65,7 @@ export const PRODUCTOS: readonly ProductoHoras[] = [
     nombre: "Spotify Premium",
     periodo: "mes",
     rangoPpa: [1, 40],
-    conArticulo: { es: "Spotify Premium", pt: "o Spotify Premium", en: "Spotify Premium", fr: "Spotify Premium", de: "Spotify Premium", it: "Spotify Premium", nl: "Spotify Premium", ja: "Spotify Premium", ko: "스포티파이 프리미엄", zh: "Spotify Premium" },
+    conArticulo: { es: "Spotify Premium", pt: "o Spotify Premium", en: "Spotify Premium", fr: "Spotify Premium", de: "Spotify Premium", it: "Spotify Premium", nl: "Spotify Premium", ja: "Spotify Premium", ko: "스포티파이 프리미엄", zh: "Spotify Premium", uz: "Spotify Premium" },
   },
 ];
 

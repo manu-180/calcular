@@ -49,8 +49,10 @@ export type EstadoPublicacion = "borrador" | "interno" | "publicado";
 // voseo, que solo existe en español. Los nombres quedaron en español por historia del repo.
 // ja, ko y zh tienen un solo registro para la web y sus mercados van con "usted": です/ます en
 // japonés, 해요체 en coreano y 您 en chino (ADR 0002, D8). Los diccionarios lo escriben en base.
+// El uzbeko (escritura latina) también: «Siz» con las formas corteses («kiriting», «hisoblang»), el
+// registro de soliq.uz, my.gov.uz y los bancos (ADR 0002, D16).
 export type Trato = "vos" | "tu" | "usted";
-export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh"] as const;
+export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "uz"] as const;
 export type Idioma = (typeof IDIOMAS)[number];
 export type SistemaUnidades = "metrico" | "imperial";
 
