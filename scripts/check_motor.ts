@@ -11,6 +11,7 @@ import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
 import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
+import { GRAMATICA } from "../src/motor/i18n/gramatica";
 import { textosSitio } from "../src/motor/i18n";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
@@ -85,6 +86,13 @@ const parseos: [string, string, number | null][] = [
   ["es-PE", "", null],
   ["es-PE", "1,", null],
   ["es-PE", "1,2345", null],
+  // Uzbeko: miles con espacio (U+00A0 de Intl o el espacio del teclado), coma decimal y «soʻm» detrás.
+  ["uz-UZ", "1\u00a0234,50", 1234.5],
+  ["uz-UZ", "1 234,50", 1234.5],
+  ["uz-UZ", "1 500 000 soʻm", 1500000],
+  ["uz-UZ", "12 345 678,25 soʻm", 12345678.25],
+  ["uz-UZ", "-250,75", -250.75],
+  ["uz-UZ", "12,5%", 12.5],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -99,6 +107,8 @@ const ambiguos: [string, string, number | null][] = [
   ["es-MX", "5,000.000", 5000],
   ["es-CL", "5,000", null],
   ["es-CO", "5.000", 5000],
+  ["uz-UZ", "5.000", 5000],
+  ["uz-UZ", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -400,8 +410,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-uz/yarim-yillik-mukofot"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-uz"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -455,6 +465,20 @@ igual("marcadoresDe con fila de escala y región", marcadoresDe("{{ca.x[2].tasa@
 igual("semanas en inglés", formatearValorUnidad(2, "semanas", "en-CA"), "2 weeks");
 igual("semana en singular (de)", formatearValorUnidad(1, "semanas", "de-DE"), "1 Woche");
 igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 weken");
+// Uzbeko: sin plural después del número y decimal con coma.
+igual("días en uzbeko", formatearValorUnidad(3, "dias", "uz-UZ"), "3 kun");
+igual("fracción de año en uzbeko", formatearValorUnidad(1.5, "anios", "uz-UZ"), "1,5 yil");
+igual("soʻm en uz-UZ", formatearMoneda(1500000.5, "uz-UZ", "UZS"), "1\u00a0500\u00a0000,50\u00a0soʻm");
+// Sufijos de caso pegados al nombre, sin apóstrofo ni armonía: genitivo -ning, locativo -da, «uchun».
+igual(
+  "gramática uzbeka",
+  ["Oʻzbekiston", "AQSh", "Kongo Demokratik Respublikasi"].map((p) => [GRAMATICA.uz.de(p), GRAMATICA.uz.en(p), GRAMATICA.uz.para(p)]),
+  [
+    ["Oʻzbekistonning", "Oʻzbekistonda", "Oʻzbekiston uchun"],
+    ["AQShning", "AQShda", "AQSh uchun"],
+    ["Kongo Demokratik Respublikasining", "Kongo Demokratik Respublikasida", "Kongo Demokratik Respublikasi uchun"],
+  ],
+);
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).
