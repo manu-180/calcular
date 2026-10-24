@@ -17,6 +17,7 @@ import {
 import { etiquetaMes, smvmVigente } from "@/lib/desempleo";
 import { variacionMensual } from "@/lib/salario-minimo";
 import { formatARS } from "@/lib/formato";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 function datosDelMes() {
   const SMVM = smvmVigente().mes;
@@ -389,6 +390,7 @@ export default function SalarioMinimoPage() {
           . Consultada el {SMVM_FUENTES.consultadoEl}.
         </p>
       </section>
+      <OtrosPaises concepto="salario-minimo" />
     </article>
   );
 }

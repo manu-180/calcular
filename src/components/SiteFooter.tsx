@@ -3,6 +3,7 @@ import { FirmaAutor } from "@/components/FirmaAutor";
 import { SesionLink } from "@/components/SesionLink";
 import { UltimoCambio } from "@/components/novedades/UltimoCambio";
 import { GRUPOS_DE_CALCULADORAS, grupo, paginasDelGrupo } from "@/data/navegacion";
+import { urlIntl } from "@/motor/seo";
 
 const SITIO = [
   { href: "/novedades", label: "Novedades" },
@@ -100,6 +101,9 @@ export default function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a href={urlIntl("global")}>CalcularYa: calculadoras para otros países</a>
+              </li>
             </ul>
           </div>
         </div>

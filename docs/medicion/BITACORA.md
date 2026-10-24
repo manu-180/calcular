@@ -14,6 +14,23 @@ Formato:
 - Evaluado: <cambio anterior> → <resultado con números> · <se queda | se revierte>
 ```
 
+## 2026-10-24 (calcular.ar → calcularya: links por concepto)
+- **13 calculadoras de calcular.ar** (`/sueldo-neto`, `/aguinaldo`, `/indemnizacion`, `/vacaciones`,
+  `/horas-extras`, `/salario-minimo`, `/empleada-domestica`, `/ganancias`, `/monotributo`,
+  `/inflacion`, `/plazo-fijo`, `/cuota-alimentaria`, `/jubilacion`) y el footer de todo el sitio
+  - Cambio: al final de cada calculadora, «¿Vivís o trabajás en otro país?» con links dofollow
+    «<concepto> en <país>» a la calculadora equivalente de calcularya (`src/components/OtrosPaises.tsx`,
+    sale de `registro.equivalentes` del concepto en modo producción: un país nuevo se suma solo). Ocho
+    a la vista (Uruguay, Chile, España, México, Brasil, Paraguay, Estados Unidos, Italia primero) y el
+    resto en un desplegable. 367 links a 367 URLs distintas de calcularya, todas con 200 al probarlas.
+    Footer: «CalcularYa: calculadoras para otros países» a la home · directo
+  - Hipótesis: calcularya no tiene autoridad propia; los links desde calcular.ar (~5.000 clics/mes de
+    Google) son lo único que le pasa peso entre dominios.
+  - Antes: calcularya sin propiedad en Search Console (se da de alta hoy); casi ningún link de
+    calcular.ar hacia calcularya (solo `/sueldo-en-el-mundo`).
+  - Se evalúa: 2026-11-21 a 2026-12-05 (4 a 6 semanas), mirando impresiones y páginas indexadas de
+    calcularya en Search Console, por país de las calculadoras enlazadas.
+
 ## 2026-10-24 (corrida del agente, publicada)
 - Se retoman los dos cambios «listos para la próxima corrida», revalidados con el mismo informe
   (`informes/2026-10-23.md`: siguen siendo las fugas 1 y 2 de Google). Publicados con la regla de
