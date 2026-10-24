@@ -46,7 +46,8 @@ export function lugarEnPagina(nombre: string, idioma: Idioma): string {
   return mayuscula(GRAMATICA[idioma].en(nombre));
 }
 
-export function datosCliente(indice: IndiceHoras, idioma: Idioma, locale: string): DatosHorasCliente {
+// publicados: los productos con página (publicacionDe); el selector no ofrece uno cuya URL da 404.
+export function datosCliente(indice: IndiceHoras, idioma: Idioma, locale: string, publicados?: readonly string[]): DatosHorasCliente {
   const paises = indice.filas.map((f): PaisHorasCliente => {
     const nombre = nombreEnPagina(f.iso, idioma, locale);
     const celdas: Record<string, CeldaCliente> = {};
@@ -54,6 +55,6 @@ export function datosCliente(indice: IndiceHoras, idioma: Idioma, locale: string
     return { iso: f.iso, nombre, en: lugarEnPagina(nombre, idioma), moneda: f.minimo.moneda, porHora: Math.round(f.minimo.porHora * 100) / 100, celdas };
   });
   paises.sort((a, b) => a.nombre.localeCompare(b.nombre, locale));
-  const productos = PRODUCTOS.filter((p) => paises.some((x) => x.celdas[p.id])).map((p) => ({ id: p.id, nombre: p.nombre, conArticulo: conArticulo(p, idioma, locale), periodo: p.periodo }));
+  const productos = PRODUCTOS.filter((p) => (publicados ? publicados.includes(p.id) : paises.some((x) => x.celdas[p.id]))).map((p) => ({ id: p.id, nombre: p.nombre, conArticulo: conArticulo(p, idioma, locale), periodo: p.periodo }));
   return { productos, paises };
 }

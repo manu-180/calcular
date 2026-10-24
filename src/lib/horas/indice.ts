@@ -5,6 +5,7 @@ import "server-only";
 import { horasDe, porHoraDe, precioVigente, VIGENCIA_PRECIO_DIAS } from "@/motor/horas/calculo";
 import { MINIMOS, type DeclaracionMinimo, type JornadaDeclarada, type RefDato } from "@/motor/horas/minimos";
 import { PRODUCTOS } from "@/motor/horas/productos";
+import { publicacionDe, SIN_HORAS, type PublicacionHoras } from "@/motor/horas/publicacion";
 import type { ArchivoPrecios, CambioUsado, CeldaHoras, ConversionHora, ExclusionHoras, FilaHoras, FuenteHoras, IndiceHoras, InformeHoras, MinimoHora } from "@/motor/horas/tipos";
 import { msHastaCambioDeDia, type TablaPpa } from "@/motor/mundo/grilla";
 import tablaPpa from "@/motor/mundo/ppa.json";
@@ -213,7 +214,9 @@ function esPrincipal(p: PaisDefinido): boolean {
   return c !== "global" && !esMercadoDePrueba(c) && !p.edicionDe && !!p.mercado.pais && c === p.mercado.pais.toLowerCase();
 }
 
-export function construirInformeHoras(ahora: Date = new Date()): InformeHoras {
+// preciosAl: fecha contra la que se mide el vencimiento de los precios (por defecto, el día de cada país).
+// check_horas la fija en el día de la última lectura para separar «faltan datos» de «pasó el tiempo».
+export function construirInformeHoras(ahora: Date = new Date(), opciones: { preciosAl?: FechaISO } = {}): InformeHoras {
   const filas: FilaHoras[] = [];
   const excluidos: ExclusionHoras[] = [];
   const agregar = (minimo: MinimoHora | string, iso: string, mercado: string, pais: PaisDefinido | null, fecha: FechaISO) => {
@@ -221,7 +224,7 @@ export function construirInformeHoras(ahora: Date = new Date()): InformeHoras {
       excluidos.push({ iso, mercado, motivo: minimo });
       return;
     }
-    const celdas = celdasDe(minimo, pais, fecha, fecha, excluidos);
+    const celdas = celdasDe(minimo, pais, fecha, opciones.preciosAl ?? fecha, excluidos);
     if (!Object.keys(celdas).length) {
       excluidos.push({ iso, mercado, motivo: "ningún producto con precio vigente en la tienda oficial" });
       return;
@@ -275,4 +278,13 @@ export function informeHoras(): InformeHoras {
 
 export function indiceHoras(): IndiceHoras {
   return informeHoras().indice;
+}
+
+export function publicacionHoras(): PublicacionHoras {
+  try {
+    return publicacionDe(indiceHoras());
+  } catch (err) {
+    console.error("[horas] publicacionHoras", err);
+    return SIN_HORAS;
+  }
 }

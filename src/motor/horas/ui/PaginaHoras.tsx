@@ -102,13 +102,13 @@ function FuentePais({ f, t, locale, idioma }: { f: FilaHoras; t: TextosHoras; lo
   );
 }
 
-export function PaginaHoras({ ctx, indice, producto, esIndice, pais }: { ctx: ContextoSitio; indice: IndiceHoras; producto: string; esIndice: boolean; pais: string | null }) {
+export function PaginaHoras({ ctx, indice, producto, esIndice, pais, inicial, productos }: { ctx: ContextoSitio; indice: IndiceHoras; producto: string; esIndice: boolean; pais: string | null; inicial: string; productos: readonly string[] }) {
   const m = ctx.mercado;
   const t = textosHoras(m.idioma, m.trato, m.locale);
-  const datos = datosCliente(indice, m.idioma, m.locale);
+  const datos = datosCliente(indice, m.idioma, m.locale, productos);
   const n = indice.filas.length;
   const p = productoDe(producto) ?? PRODUCTOS[0];
-  const url = urlHoras(m, esIndice ? undefined : p.id);
+  const url = urlHoras(m, esIndice || p.id === inicial ? undefined : p.id);
   const base = urlHoras(m);
   const nombrePais = m.codigo === "global" ? "" : nombreEnPagina(m.pais.toUpperCase(), m.idioma, m.locale);
   const descripcion = m.codigo === "global" ? rellenarHoras(t.seo.descripcionGlobal, { n }) : rellenarHoras(t.seo.descripcion, { en: GRAMATICA[m.idioma].en(nombrePais), n });
@@ -140,7 +140,7 @@ export function PaginaHoras({ ctx, indice, producto, esIndice, pais }: { ctx: Co
         <p className="cy-horas-intro">{rellenarHoras(t.bajada, { n })}</p>
       </header>
 
-      <HorasCliente datos={datos} t={t} locale={m.locale} productoInicial={p.id} paisInicial={paisInicialDe(indice, ctx, pais)} base={base} slug={SLUG_HORAS[m.idioma]} />
+      <HorasCliente datos={datos} t={t} locale={m.locale} productoInicial={p.id} productoIndice={inicial} paisInicial={paisInicialDe(indice, ctx, pais)} base={base} slug={SLUG_HORAS[m.idioma]} />
 
       <section className="cy-horas-metodo" aria-labelledby="cy-horas-metodo-titulo">
         <div className="cy-horas-seccion-cabeza">

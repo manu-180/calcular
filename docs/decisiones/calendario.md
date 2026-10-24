@@ -9,8 +9,9 @@ mínimo 2027 en Perú») y que la gente vuelva.
 
 - **De dónde salen las fechas.** Del registro, nunca de texto propio. Fuentes aceptadas: tramos nuevos
   de datos.json (con tramo anterior o cargados antes de regir), puntos de series de unidades de
-  referencia (UTM, UR), novedades con `vigenteDesde` (si coinciden con un tramo el mismo día y la
-  misma calculadora, se fusionan: título de la nota, valor del tramo) y el campo opcional
+  referencia (UTM, UR), novedades con `vigenteDesde` (se fusionan con un tramo del mismo día solo si es el
+  único dato que cambia ese día entre los que pide la primera calculadora de la nota y ninguna otra nota
+  lo tomó: título de la nota, valor del tramo; si no, la nota es un evento aparte) y el campo opcional
   `Dato.calendario` para días fijos de pago.
 - **Lo que se descartó.** Avisos (su `desde` es la ventana de visibilidad, no la norma: cl.reajuste-imm
   arranca el 1/10 y habla del 1/1). Puntos de IPC y demás índices (fecha del período medido). Tramos
@@ -33,3 +34,14 @@ mínimo 2027 en Perú») y que la gente vuelva.
 19 ediciones con calendario y 63 fechas. Ninguna fecha de pago de bono todavía: 33 calculadoras de
 bono sin `calendario` declarado (lista en `check_calendario`). ca-fr sin calendario porque los nombres
 de `ca.minimum-wage` y `ca.rrsp-dollar-limit` no están traducidos en la edición.
+
+## Correcciones del 24/10/2026 (rama `claude/fase2-fix-datos`)
+
+- **Nota pegada al tramo equivocado.** La fusión tomaba el primer tramo del día que compartiera alguna
+  calculadora con la nota: en Suiza el 2027-01-01 cambian el tarifario federal, la rebaja por hijo, el tope
+  del pilar 3a y la renta AHV, y el tope del 3a salía titulado «Bundessteuer 2027». Ahora se fusiona solo
+  con candidato único (ver arriba). check_calendario arma ese escenario con un registro de prueba.
+- **Año del título.** Salía de los años de las fechas por delante: en octubre de 2026 Perú decía
+  «Calendario laboral 2027». Ahora es el período de la grilla de 12 meses que muestra la página
+  («2026-2027», o un solo año si la grilla arranca en enero), en título, ceja y OG, en los 10 idiomas.
+- **.ics:** escapa también un retorno de carro suelto y solo escribe `URL:` si es https.

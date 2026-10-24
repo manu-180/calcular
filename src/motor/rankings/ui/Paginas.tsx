@@ -209,7 +209,7 @@ export function PaginaRanking({ ctx, grilla, vista, vistas }: { ctx: ContextoSit
           { nombre: vista.corto },
         ]}
       />
-      <Cabeza ceja={t.nombre} h1={vista.titulo} bajada={vista.bajada} actualizado={t.actualizado(vista.fecha)} fecha={grilla.generadoEl} />
+      <Cabeza ceja={t.nombre} h1={vista.titulo} bajada={vista.bajada} actualizado={t.actualizado(vista.fecha)} fecha={vista.fechaIso} />
       {vista.fuera ? <p className="cy-rk-fuera">{vista.fuera}</p> : null}
 
       <RankingCliente vista={vista} textos={textosCliente(t, vista)} />
@@ -251,7 +251,8 @@ export function PaginaIndice({ ctx, grilla, vistas }: { ctx: ContextoSitio; gril
   const url = urlIndice(m);
   const origen = origenPublicoIntl();
   const [b, me, a] = nivelesFormateados(m.locale);
-  const fecha = grilla.generadoEl ? formatoFecha(grilla.generadoEl, m.locale, true) : "";
+  const dia = vistas[0]?.fechaIso ?? grilla.generadoEl;
+  const fecha = dia ? formatoFecha(dia, m.locale, true) : "";
   const citaSugerida = `CalcularYa (${grilla.generadoEl.slice(0, 4)}). ${t.nombre}. ${url}`;
   const dataset = {
     "@type": "Dataset",
@@ -290,7 +291,7 @@ export function PaginaIndice({ ctx, grilla, vistas }: { ctx: ContextoSitio; gril
         ])}
       />
       <Migas etiqueta={ctx.textos.migas.etiqueta} items={[{ nombre: m.codigo === "global" ? ctx.textos.migas.inicio : m.nombre, href: rutaIntl(m.codigo) }, { nombre: t.nombre }]} />
-      <Cabeza ceja={t.ceja} h1={t.h1} bajada={t.bajada(n)} actualizado={t.actualizado(fecha)} fecha={grilla.generadoEl} />
+      <Cabeza ceja={t.ceja} h1={t.h1} bajada={t.bajada(n)} actualizado={t.actualizado(fecha)} fecha={dia} />
       {vistas[0]?.fuera ? <p className="cy-rk-fuera">{vistas[0].fuera}</p> : null}
 
       <div className="cy-rk-tarjetas" data-cuantas={vistas.length}>

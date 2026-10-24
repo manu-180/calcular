@@ -15,7 +15,7 @@ import { clasificar, paisDeEdicion, RANKINGS, rankingDe, todosLosRankings } from
 import { fotoAnterior, fotoDe, RE_MES, type FotoMensual } from "../src/motor/rankings/historial";
 import { FOTOS } from "../src/motor/rankings/historial/indice";
 import { ARCHIVOS_DATOS, IDS_RANKING, SEGMENTO_DATOS, SLUG_RANKINGS, SLUGS_RANKING } from "../src/motor/rankings/rutas";
-import { vistaRanking, vistasDeRankings } from "../src/motor/rankings/vista";
+import { diaActualizacion, vistaRanking, vistasDeRankings } from "../src/motor/rankings/vista";
 import { IDIOMAS } from "../src/motor/tipos";
 import { registro } from "../src/paises";
 
@@ -175,6 +175,18 @@ const csv = csvDe(datos).trimEnd().split("\n");
 const columnas = csv[0].split(",").length;
 if (csv.length !== datos.countries.length + 1) fallas.push(`CSV: ${csv.length - 1} filas para ${datos.countries.length} países`);
 for (const l of csv.slice(1)) if (l.replace(/"[^"]*"/g, "x").split(",").length !== columnas) fallas.push(`CSV: fila con otra cantidad de columnas: ${l.slice(0, 60)}`);
+
+const inyeccion = csvDe({ ...datos, countries: datos.countries.slice(0, 1).map((c) => ({ ...c, name: "=HYPERLINK(1)", edition: "-x", currency: "+y", calculatorUrl: "@z" })) }).split("\n")[1] ?? "";
+if (!inyeccion.startsWith(`${datos.countries[0]?.iso ?? ""},'=HYPERLINK(1),'-x,'+y,`) || !inyeccion.trimEnd().endsWith(",'@z")) fallas.push(`CSV: una celda de texto que empieza con = + - @ no lleva apóstrofo: ${inyeccion.slice(0, 80)}`);
+
+// ---------- Fecha de actualización ----------
+// La grilla se fecha en la zona más adelantada; la página muestra el día de la edición (UTC en global).
+if (diaActualizacion("2026-10-25", "2026-10-24") !== "2026-10-24") fallas.push("fecha: con la edición todavía en el 24 la página diría 25");
+if (diaActualizacion("2026-10-25", "2026-10-26") !== "2026-10-25") fallas.push("fecha: la página mostraría un día posterior al de la grilla");
+if (mx) {
+  const v = vistaRanking({ grilla: { ...grilla, generadoEl: "2026-10-25" }, mercado: mx, id: "rinde", origenAR: "https://calcular.ar", fotos: [], hoy: "2026-10-24" });
+  if (v && v.fechaIso !== "2026-10-24") fallas.push(`fecha: la vista de ${mx.codigo} muestra ${v.fechaIso} con la edición en el 24`);
+}
 
 // ---------- Grilla vacía ----------
 const vacia: GrillaMundo = { version: 1, generadoEl: "", fuentePpa: grilla.fuentePpa, paises: [] };

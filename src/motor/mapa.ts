@@ -7,7 +7,7 @@ import type { CodigoMercado, EntradaCalculadora, FechaISO, Mercado } from "./tip
 import { hoyEn } from "./vigencia";
 import { hreflangMundo, urlMundo } from "./mundo/ui/seo";
 import { hreflangIndice, hreflangRanking, urlsRankings } from "./rankings/seo";
-import { PRODUCTOS } from "./horas/productos";
+import { paginasHoras, SIN_HORAS, type PublicacionHoras } from "./horas/publicacion";
 import { hreflangHoras, urlHoras } from "./horas/ui/seo";
 import { calendarioPublicado, urlCalendario } from "./calendario/rutas";
 
@@ -85,10 +85,12 @@ function entradasRankings(registro: Registro, m: Mercado, modo: ReturnType<typeo
   });
 }
 
-// «¿Cuántas horas de trabajo cuesta?»: el índice y una página por producto, cada una con su clúster entre
-// ediciones. Sin lastmod por la misma razón que el mundo (los precios viven del lado del servidor).
-function entradasHoras(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean): EntradaSitemap[] {
-  return [undefined, ...PRODUCTOS.map((p) => p.id)].map((producto) => {
+// «¿Cuántas horas de trabajo cuesta?»: el índice y una página por producto publicado (menos el que muestra
+// el índice, que lleva canonical ahí), cada una con su clúster entre ediciones. Qué se publica lo dice
+// `horas` (publicacionHoras() de src/lib/horas, del lado del servidor): sin eso no se lista nada, así un
+// precio vencido nunca deja en el sitemap una página que da 404. Sin lastmod por la misma razón.
+function entradasHoras(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean, horas: PublicacionHoras): EntradaSitemap[] {
+  return paginasHoras(horas).map((producto) => {
     const idiomas = conAlternos ? hreflangHoras(registro, modo, producto) : undefined;
     return { url: urlHoras(m, producto), ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
   });
@@ -102,7 +104,7 @@ function entradaCalendario(registro: Registro, m: Mercado, modo: ReturnType<type
   return [{ url: urlCalendario(m), lastmod: masNueva(c.eventos.flatMap((e) => [e.fecha, e.fuente.verificadoEl]), c.fecha) }];
 }
 
-function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false): EntradaSitemap[] {
+function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false, horas: PublicacionHoras = SIN_HORAS): EntradaSitemap[] {
   const fecha = hoyEn(m);
   const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).map((c) => {
     const alternos = conAlternos ? alternosEnSitemap(registro, c, fecha, modo) : undefined;
@@ -116,7 +118,7 @@ function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof 
     { url: urlIntl(m.codigo), lastmod: inicio },
     entradaMundo(registro, m, modo, conAlternos),
     ...entradasRankings(registro, m, modo, conAlternos),
-    ...entradasHoras(registro, m, modo, conAlternos),
+    ...entradasHoras(registro, m, modo, conAlternos, horas),
     ...entradaCalendario(registro, m, modo),
     ...calculadoras,
     ...PAGINAS_MERCADO.map((p) => ({ url: urlIntl(m.codigo, p), lastmod: porPagina[p] })),
@@ -132,13 +134,14 @@ export function actualizacionDeInicioPais(registro: Registro, m: Mercado, modo: 
 // route handlers y check_hreflang (para que sitemap y hreflang hablen de las mismas páginas).
 // conAlternos: el sitemap del mercado (mapa-xml) y check_hreflang; el índice, llms.txt y las fechas
 // solo necesitan url y lastmod.
-export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, opciones: { conAlternos?: boolean } = {}): EntradaSitemap[] | null {
+export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, opciones: { conAlternos?: boolean; horas?: PublicacionHoras } = {}): EntradaSitemap[] | null {
   if (!intlActivo()) return null;
   const modo = modoPublicacion();
   const mercados = registro.mercados(modo);
   const m = mercados.find((x) => x.codigo === codigo);
   if (!m) return null;
-  if (m.codigo !== "global") return entradasDePais(registro, m, modo, opciones.conAlternos);
+  const horas = opciones.horas ?? SIN_HORAS;
+  if (m.codigo !== "global") return entradasDePais(registro, m, modo, opciones.conAlternos, horas);
   const paises = mercados.filter((x) => x.codigo !== "global");
   const inicio = masNueva(
     paises.map((p) => entradasDePais(registro, p, modo)[0].lastmod),
@@ -148,7 +151,7 @@ export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, op
     { url: urlIntl("global"), lastmod: inicio },
     entradaMundo(registro, m, modo, opciones.conAlternos ?? false),
     ...entradasRankings(registro, m, modo, opciones.conAlternos ?? false),
-    ...entradasHoras(registro, m, modo, opciones.conAlternos ?? false),
+    ...entradasHoras(registro, m, modo, opciones.conAlternos ?? false, horas),
     ...PAGINAS_GLOBALES.map((p) => ({ url: urlIntl("global", p), lastmod: ACTUALIZACION_PAGINAS_GLOBALES })),
   ];
 }

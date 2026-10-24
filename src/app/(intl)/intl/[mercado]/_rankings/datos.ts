@@ -5,6 +5,7 @@ import { vistasDeRankings, type VistaRanking } from "@/motor/rankings/vista";
 import { origenAR } from "@/motor/sitio";
 import type { CodigoMercado, Idioma } from "@/motor/tipos";
 import { contextoSitio, type ContextoSitio } from "@/motor/ui/contexto";
+import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
 import { grillaPublicada } from "../_mundo/datos";
 
@@ -23,7 +24,8 @@ export async function resolverRankings(idioma: Idioma, mercado: string): Promise
     if (!ctx || ctx.mercado.idioma !== idioma) return null;
     const grilla = await grillaPublicada();
     if (!grilla.paises.length) return null;
-    const vistas = vistasDeRankings({ grilla, mercado: ctx.mercado, origenAR: origenAR(), fotos: FOTOS });
+    const hoy = ctx.mercado.codigo === "global" ? hoyEn({ zonaHoraria: "UTC" }) : ctx.fecha;
+    const vistas = vistasDeRankings({ grilla, mercado: ctx.mercado, origenAR: origenAR(), fotos: FOTOS, hoy });
     return vistas.length ? { ctx, grilla, vistas } : null;
   } catch (err) {
     console.error("[rankings] no se pudo armar la página", err);

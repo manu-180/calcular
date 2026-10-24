@@ -169,6 +169,8 @@ function armar(registro: Registro, codigo: CodigoMercado, fecha: FechaISO, modo:
   const nombreRegion = (id: string) => m.regiones?.find((r) => r.id === id)?.nombre ?? id;
   const eventos: EventoCalendario[] = [];
   const excluidos: Excluido[] = [];
+  const datoDelEvento = new Map<EventoCalendario, string>();
+  const tomados = new Set<EventoCalendario>();
 
   for (const dato of pais.datos) {
     const porRegion = new Map<string, TramoVerificado[]>();
@@ -204,7 +206,7 @@ function armar(registro: Registro, codigo: CodigoMercado, fecha: FechaISO, modo:
       const previos = grupo.flatMap((g) => (g.previo ? [g.previo.valor] : []));
       const regiones = grupo.map((g) => g.t.region).filter((r): r is string => Boolean(r));
       const todas = dato.regiones?.length ?? 0;
-      eventos.push({
+      const evento: EventoCalendario = {
         id,
         fecha: dia,
         tipo: tipoDe(conceptos(calcs), dato),
@@ -215,7 +217,9 @@ function armar(registro: Registro, codigo: CodigoMercado, fecha: FechaISO, modo:
         ...(regiones.length && regiones.length < todas && regiones.length <= 3 ? { zonas: regiones.map(nombreRegion) } : {}),
         fuente: fuenteDe(grupo[0].t.fuente),
         calculadoras: calcs.map((c) => c.definicion.slug),
-      });
+      };
+      eventos.push(evento);
+      datoDelEvento.set(evento, dato.id);
     }
 
     for (const f of dato.calendario ?? []) {
@@ -307,13 +311,22 @@ function armar(registro: Registro, codigo: CodigoMercado, fecha: FechaISO, modo:
       continue;
     }
     const calcs = ordenar(publicadas.filter((c) => n.calculadoras.includes(c.definicion.id)));
-    const slugs = new Set(calcs.map((c) => c.definicion.slug));
     // La nota y el tramo que anuncia son el mismo cambio: el evento queda uno, con el título humano de
-    // la nota y el valor del tramo.
-    const mismo = eventos.find((e) => e.origen === "dato" && e.fecha === dia && e.calculadoras.some((s) => slugs.has(s)));
-    if (mismo) {
-      mismo.titulo = n.titulo;
-      mismo.texto = n.texto;
+    // la nota y el valor del tramo. Solo si no hay duda: el dato lo pide la calculadora de la nota (la
+    // primera que nombra, la del tema), ese día cambia un único dato de los que pide y ninguna otra nota
+    // se lo llevó. Con dos candidatos la nota va aparte: Suiza 2027-01-01 cambia el tarifario federal
+    // y el tope del pilar 3a, y la nota del tarifario le ponía «Bundessteuer 2027» al tope del 3a.
+    const propia = publicadas.find((c) => c.definicion.id === n.calculadoras[0]);
+    const candidatos = propia
+      ? eventos.filter((e) => {
+          const id = datoDelEvento.get(e);
+          return e.origen === "dato" && e.fecha === dia && id !== undefined && Object.prototype.hasOwnProperty.call(propia.definicion.requiere, id);
+        })
+      : [];
+    if (candidatos.length === 1 && !tomados.has(candidatos[0])) {
+      tomados.add(candidatos[0]);
+      candidatos[0].titulo = n.titulo;
+      candidatos[0].texto = n.texto;
       continue;
     }
     if (!calcs.length) {

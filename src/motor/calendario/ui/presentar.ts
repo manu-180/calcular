@@ -146,9 +146,12 @@ export function vistaCalendario(ctx: ContextoSitio, c: Calendario): VistaCalenda
   const eventos = c.eventos.map((e) => presentarEvento(ctx, e, t));
   const proximos = eventos.filter((e) => e.fecha >= c.fecha);
   const pasados = eventos.filter((e) => e.fecha < c.fecha).reverse();
-  const anios = lista(m.locale, [...new Set(proximos.map((e) => e.fecha.slice(0, 4)))]);
   const meses: VistaCalendario["meses"] = [];
   const [a0, m0] = c.fecha.split("-").map(Number);
+  // El período es el de la grilla de 12 meses que muestra la página, no el año de las fechas por delante:
+  // en octubre de 2026 con todo lo próximo en 2027, «Calendario 2027» hacía creer que faltaba el resto de 2026.
+  const aFin = a0 + Math.floor((m0 - 1 + 11) / 12);
+  const anios = aFin === a0 ? String(a0) : `${a0}-${aFin}`;
   const nombreMes = new Intl.DateTimeFormat(m.locale, { month: "long", timeZone: "UTC" });
   for (let i = 0; i < 12; i++) {
     const anio = a0 + Math.floor((m0 - 1 + i) / 12);

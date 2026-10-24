@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
 import { rellenarHoras, textosHoras, type TextosHoras } from "@/motor/i18n/horas";
-import { conArticulo, PRODUCTO_INICIAL, productoDe } from "@/motor/horas/productos";
+import { conArticulo, productoDe } from "@/motor/horas/productos";
 import type { FilaHoras } from "@/motor/horas/tipos";
 import { lugarEnPagina, nombreEnPagina } from "@/motor/horas/ui/datos-cliente";
 import { formatoHoras, formatoNumero, formatoPrecioConCodigo, textoJornadas } from "@/motor/horas/ui/formato";
@@ -23,7 +23,8 @@ const SUAVE = "rgba(244,240,230,0.64)";
 const VERDE = "#34d399";
 const VERDE_APAGADO = "rgba(52,211,153,0.16)";
 
-const CABECERAS = { "cache-control": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800" };
+// Un día en el CDN: la imagen muestra horas que cambian con cada refresco de precios o salario.
+const CABECERAS = { "cache-control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400" };
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
 const ESPERA_FUENTE_MS = 3000;
 const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC" };
@@ -231,8 +232,9 @@ export function crearOgHoras(idioma: Idioma) {
     const iso = busqueda.get("pais");
     if (iso !== null && !/^[A-Z]{2}$/.test(iso)) return new Response("No encontrado", { status: 404 });
 
-    const indice = await indicePublicado();
-    const producto = productoDe(pedido ?? PRODUCTO_INICIAL)!;
+    const { indice, publicacion } = await indicePublicado();
+    if (!publicacion.inicial || (pedido !== null && !publicacion.productos.includes(pedido))) return new Response("No encontrado", { status: 404 });
+    const producto = productoDe(pedido ?? publicacion.inicial)!;
     const art = conArticulo(producto, m.idioma, m.locale);
     const conProducto = indice.filas.filter((f) => f.celdas[producto.id]).sort((a, b) => a.celdas[producto.id].horas - b.celdas[producto.id].horas);
     const fila: FilaHoras | undefined = iso ? conProducto.find((f) => f.iso === iso) : undefined;

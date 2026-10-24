@@ -105,8 +105,10 @@ export function datosAbiertos(grilla: GrillaMundo, p: { origen: string; origenAR
   };
 }
 
+// Una celda de texto que empieza con = + - @ la planilla la toma como fórmula (inyección CSV): el
+// apóstrofo la deja como texto. Los números no se tocan: un -0,5 tiene que seguir siendo número.
 const celda = (x: string | number) => {
-  const s = String(x);
+  const s = typeof x === "string" && /^[=+\-@]/.test(x) ? `'${x}` : String(x);
   return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 };
 

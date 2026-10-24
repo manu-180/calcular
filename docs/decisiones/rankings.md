@@ -37,10 +37,22 @@ kit de prensa (cita copiable, compartir, PNG en 2400 x 1260). Más un JSON y un 
 ## Foto mensual
 
 `npx tsx scripts/rankings/foto_mensual.ts` guarda `historial/AAAA-MM.json` y reescribe
-`historial/indice.ts`; no pisa una foto existente sin `--forzar`. GitHub Actions está frenado por
-billing: se agenda como tarea programada de Windows el día 1 de cada mes (`schtasks /Create /SC MONTHLY
-/D 1 /TN CalcularYa-FotoRankings /TR "<script que corre el comando, commitea los dos archivos y pushea>"`)
-o la corre el Horno en su ronda mensual. Sin la foto la página sigue andando, solo sin variación.
+`historial/indice.ts`; no pisa una foto existente sin `--forzar`. Desde el 24/10/2026 la corre la ronda
+mensual (`scripts/cron/mensual.ts`: tarea programada `CalcularYa-Mensual` el día 1, y
+`.github/workflows/mensual.yml` cuando vuelva Actions), que valida y pushea los dos archivos a main.
+Detalle en `docs/decisiones/horas.md` § «Refresco automático». Sin la foto la página sigue andando, solo
+sin variación.
+
+## Fecha de actualización
+
+La grilla se fecha con la zona más adelantada del planeta (`hoyMasAdelantado`), así que el 24 a la noche
+en América la página decía «Actualizado el 25 de octubre». La vista muestra el día de la zona de la
+edición (UTC en global), nunca posterior al de la grilla (`diaActualizacion` en vista.ts).
+
+## CSV
+
+Una celda de texto que empieza con `=`, `+`, `-` o `@` va con `'` adelante: si no, la planilla la toma
+como fórmula. Los números no se tocan.
 
 ## Verificación
 

@@ -23,8 +23,10 @@ Historia y porqués: `docs/decisiones/rankings.md`.
   romper. El diccionario es impersonal en todos los idiomas: un solo `base`, sin parches de trato.
 - La OG vive en `/<m>/<índice>/og?r=&v=` y no debajo de cada ranking: next.config.ts suma las banderas
   al trace de `/intl/*/*/og`. Mover la ruta sin tocar ese trace deja la imagen sin bandera en Vercel.
-- `historial/indice.ts` lo escribe `scripts/rankings/foto_mensual.ts`; check_rankings falla si el
-  índice y los JSON no coinciden. Sin foto de un mes anterior no se muestra variación.
+- `historial/indice.ts` lo escribe `scripts/rankings/foto_mensual.ts` (lo corre la ronda mensual,
+  `scripts/cron/mensual.ts`); check_rankings falla si el índice y los JSON no coinciden. Sin foto de un
+  mes anterior no se muestra variación.
+- La fecha «Actualizado el…» es la de la zona de la edición (UTC en global), no `grilla.generadoEl`.
 - Datos abiertos solo en global (`/data/country-rankings.{json,csv}`, regla en hosts.ts). Agregar
   claves, nunca renombrar: hay quien consume el archivo.
 - Una función exportada desde `RankingCliente.tsx` ("use client") no se puede llamar en el servidor:
