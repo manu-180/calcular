@@ -126,7 +126,7 @@ export function usePanelDatos(inicial: PanelDatos, demo: string | null) {
   const datos = propio ?? cache[ultimoConDatos.current] ?? inicial;
 
   const pendientesDelPais: Partial<Record<Rango, boolean>> = {};
-  for (const r of RANGOS) pendientesDelPais[r] = !!pendientes[clave({ rango: r, mercado: vista.mercado })];
+  for (const r of [...RANGOS, vista.rango]) pendientesDelPais[r] = !!pendientes[clave({ rango: r, mercado: vista.mercado })];
 
   return {
     rango: vista.rango,

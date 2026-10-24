@@ -6,6 +6,7 @@
 // Uso: npx tsx scripts/check_i18n.ts
 import { DICCIONARIOS_SITIO } from "../src/motor/i18n";
 import { DICCIONARIOS_CALCULADORA } from "../src/motor/i18n/calculadora";
+import { DICCIONARIOS_EMBED } from "../src/motor/i18n/embed";
 import { GRAMATICA } from "../src/motor/i18n/gramatica";
 import { resolverLegales } from "../src/motor/i18n/legales";
 import { resolver, type Diccionarios } from "../src/motor/i18n/resolver";
@@ -13,6 +14,7 @@ import { nombresUnidad } from "../src/motor/i18n/unidades";
 import { DICCIONARIOS_MOTOR } from "../src/motor/textos";
 import { IDIOMAS, type Idioma, type Trato } from "../src/motor/tipos";
 import { DICCIONARIOS_INICIO } from "../src/motor/ui/textos-inicio";
+import { DICCIONARIOS_MUNDO } from "../src/motor/i18n/mundo";
 import { anchoVisual } from "../src/motor/ancho";
 import { problemasDeTexto } from "./reglas_idioma";
 
@@ -22,6 +24,8 @@ const MUESTRA = "7";
 // Textos que pueden coincidir con el español porque son la misma palabra en ese idioma, una sigla o
 // una marca. Clave: "idioma:diccionario.ruta" (ruta sin el trato); "*:" vale para todos los idiomas.
 const IGUALES_PERMITIDOS = new Set([
+  "*:mundo.ranking.regiones.europa",
+  "pt:mundo.metodo.bancoMundial",
   "*:sitio.marca.nombre",
   "*:sitio.footer.sitio",
   "*:sitio.footer.derechos",
@@ -55,6 +59,19 @@ const IGUALES_PERMITIDOS = new Set([
   "pt:unidades.horas.otros",
   "pt:unidades.meses.otros",
   // la misma palabra en ese idioma
+  "de:embed.pagina.colores.3",
+  "it:embed.pagina.colores.0",
+  "it:embed.pagina.colores.3",
+  "it:embed.pagina.tema",
+  "pt:embed.pagina.buscar",
+  "pt:embed.pagina.calculadora",
+  "pt:embed.pagina.claro",
+  "pt:embed.pagina.colores.0",
+  "pt:embed.pagina.colores.1",
+  "pt:embed.pagina.colores.3",
+  "pt:embed.pagina.copiado",
+  "pt:embed.pagina.copiar",
+  "pt:embed.pagina.tema",
   "en:motor.no",
   "it:motor.no",
   "it:sitio.fuentes.region",
@@ -90,8 +107,10 @@ const desde = <T>(nombre: string, dics: Diccionarios<T>): Fuente => ({ nombre, r
 const FUENTES: readonly Fuente[] = [
   desde("sitio", DICCIONARIOS_SITIO),
   desde("calculadora", DICCIONARIOS_CALCULADORA),
+  desde("embed", DICCIONARIOS_EMBED),
   desde("motor", DICCIONARIOS_MOTOR),
   desde("inicio", DICCIONARIOS_INICIO),
+  desde("mundo", DICCIONARIOS_MUNDO),
   { nombre: "legales", resolver: (i, t, l) => resolverLegales(i, t, { actualizado: "13/10/2026", mail: "correo@calcularya.test" }, l) },
   { nombre: "unidades", resolver: (i, _t, l) => nombresUnidad(i, l ?? i) },
 ];

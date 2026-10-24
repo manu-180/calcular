@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { esAdminEmail } from "@/lib/auth/admin";
 import { usuarioActual } from "@/lib/auth/sesion";
 import { cargarPanel, leerMercado } from "@/lib/panel/datos";
-import { RANGOS, type Rango } from "@/lib/panel/tipos";
+import { hoyAR, leerRango } from "@/lib/panel/fechas";
 
 export const dynamic = "force-dynamic";
 
@@ -14,8 +14,7 @@ function responder(cuerpo: unknown, status = 200) {
 
 export async function GET(req: NextRequest) {
   const q = req.nextUrl.searchParams;
-  const r = q.get("r") ?? "";
-  const rango = (RANGOS as string[]).includes(r) ? (r as Rango) : null;
+  const rango = leerRango(q.get("r"), hoyAR());
   const demo = q.get("demo");
   const mercado = leerMercado(q.get("m"));
 

@@ -1,9 +1,11 @@
 import type { ComponentType } from "react";
 import { categoriaDe } from "../i18n";
+import { textosEmbed } from "../i18n/embed";
 import type { PaginaResuelta } from "../registro";
 import { rutaIntl } from "../seo";
 import type { PropsCalculadora } from "../tipos";
 import { Bandera } from "./Bandera";
+import { IconoFlecha } from "./Iconos";
 import { calculadorasDe, nombreEnPagina, tarjetaDe, type ContextoSitio } from "./contexto";
 
 const MAX_OTROS_PAISES = 24;
@@ -125,6 +127,10 @@ export function PaginaCalculadora({ ctx, pagina, Cliente }: { ctx: ContextoSitio
       ) : null}
 
       <Sello sello={pagina.sello} usados={pagina.usados} locale={mercado.locale} trato={mercado.trato} textos={t} hrefFuentes={rutaIntl(mercado.codigo, "fuentes")} />
+      <a className="cy-enlace-flecha" style={{ alignSelf: "flex-start" }} href={`${rutaIntl(mercado.codigo, "embed")}?c=${calculadora.slug}`}>
+        {textosEmbed(mercado.idioma, mercado.trato, mercado.locale).insertar}
+        <IconoFlecha />
+      </a>
       <AvisoDePais ctx={ctx} concepto={calculadora.concepto} />
     </article>
   );

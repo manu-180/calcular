@@ -1,6 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 import { esMercadoIntl, mercadoDeRuta, type Sitio } from "@/lib/medicion/mercados";
 import { esTipoEvento, limpiarRuta, type TipoEvento } from "@/lib/rastreo";
+import { ORIGENES_COMPARTIR, ORIGENES_CORTOS, REF_VALIDO, VARIANTES_PUENTE } from "@/motor/compartir/ref";
 import { origenIntl } from "@/motor/sitio";
 
 export const MAX_CUERPO = 8192;
@@ -132,6 +133,48 @@ export function limpiarProps(x: unknown): Props | null | undefined {
   return claves.length ? out : null;
 }
 
+type Regla = (v: unknown) => boolean;
+const enLista = (lista: readonly string[]): Regla => (v) => typeof v === "string" && lista.includes(v);
+const conForma = (re: RegExp): Regla => (v) => typeof v === "string" && re.test(v);
+const booleano: Regla = (v) => typeof v === "boolean";
+
+// Ids de calculadora del motor: `mx.sueldo-neto`, `ca-fr.impot`, `pk.short-term-savings-certificate-calculator`.
+const CALCULADORA = /^(?=.{4,72}$)(?:[a-z]{2}(?:-[a-z]{2,3})?|global)\.[a-z0-9-]+$/;
+// «link» es el de la barra de calcular.ar (src/components/herramientas/Barra.tsx); el resto, de src/motor/compartir.
+const CANALES = ["nativo", "copiar", "whatsapp", "x", "telegram", "linkedin", "link"] as const;
+const VARIANTE = enLista(VARIANTES_PUENTE);
+
+type Esquema = { requeridas: Readonly<Record<string, Regla>>; opcionales?: Readonly<Record<string, Regla>> };
+
+// Los eventos del boca en boca se guardan con una lista cerrada de props por tipo: una clave de más se
+// tira y un valor que no cumple tira el evento. Así no entra un monto ni un texto libre por ahí, aunque
+// alguien arme el beacon a mano. Ninguna de estas props es numérica a propósito.
+const ESQUEMAS: Partial<Record<TipoEvento, Esquema>> = {
+  llegada: { requeridas: { ref: conForma(REF_VALIDO) }, opcionales: { origen: enLista(ORIGENES_CORTOS), nuevo: booleano } },
+  puente_visto: { requeridas: { v: VARIANTE } },
+  puente_clic: { requeridas: { v: VARIANTE } },
+  compartir: {
+    requeridas: { canal: enLista(CANALES) },
+    opcionales: { origen: enLista(ORIGENES_COMPARTIR), calc: conForma(CALCULADORA), ref: conForma(REF_VALIDO), v: VARIANTE },
+  },
+};
+
+function propsDeEsquema(esquema: Esquema, x: unknown): Props | undefined {
+  const pp = x === undefined ? {} : x;
+  if (!esObjeto(pp)) return undefined;
+  const out: Props = {};
+  for (const [k, ok] of Object.entries(esquema.requeridas)) {
+    if (!ok(pp[k])) return undefined;
+    out[k] = pp[k] as string | boolean;
+  }
+  for (const [k, ok] of Object.entries(esquema.opcionales ?? {})) {
+    if (!(k in pp)) continue;
+    if (!ok(pp[k])) return undefined;
+    out[k] = pp[k] as string | boolean;
+  }
+  return out;
+}
+
 const entero = (x: unknown, max: number): number | null =>
   typeof x === "number" && Number.isFinite(x) && x >= 0 ? Math.min(Math.round(x), max) : null;
 
@@ -191,9 +234,10 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
       });
     } else if (it.t === "e") {
       const path = it.p === undefined ? null : limpiarPath(it.p);
-      const props = limpiarProps(it.pp);
-      const valorOk = it.va === undefined || (typeof it.va === "number" && Number.isFinite(it.va) && Math.abs(it.va) <= 1e10);
-      const productoOk = it.pr === undefined || esProducto(it.pr);
+      const esquema = esTipoEvento(it.k) ? ESQUEMAS[it.k] : undefined;
+      const props = esquema ? propsDeEsquema(esquema, it.pp) : limpiarProps(it.pp);
+      const valorOk = it.va === undefined || (!esquema && typeof it.va === "number" && Number.isFinite(it.va) && Math.abs(it.va) <= 1e10);
+      const productoOk = it.pr === undefined || (!esquema && esProducto(it.pr));
       const vistaOk = it.v === undefined || esUuid(it.v);
       if (!esTipoEvento(it.k) || (it.p !== undefined && !path) || props === undefined || !valorOk || !productoOk || !vistaOk || !mercadoOk(it.m)) {
         lote.descartados.push("evento");

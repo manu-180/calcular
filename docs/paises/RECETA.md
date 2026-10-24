@@ -358,6 +358,35 @@ la definición: `index.ts`, el cliente o los casos).
 
 `check_paises.ts` falla si una calculadora `publicado` no se puede publicar hoy.
 
+### `mundo`: el sueldo neto en «Tu sueldo en el mundo»
+
+La calculadora de concepto `sueldo-neto` de la edición principal del país (código ISO, sin sufijo)
+entra sola a la comparación entre países: el motor la corre en 56 brutos anuales (en dólares
+internacionales, pasados a tu moneda con la PPA del Banco Mundial) y guarda el neto. Supuestos fijos:
+persona soltera, sin hijos, empleo formal, valores por defecto de cada campo y región por defecto.
+El neto tiene que ser **después del impuesto a la renta y de los aportes de la persona**.
+
+Para leer tu calculadora el motor la infiere (primer campo `moneda` = bruto, período por la etiqueta
+o por un selector mensual/anual, fila `destacada` = neto) y solo la acepta si pasa la validación: neto
+positivo, no mayor al bruto, al menos el 25 % del bruto y que no baje al subir el bruto.
+`npx tsx scripts/check_mundo.ts` dice si entró y, si no, por qué. Si quedó excluida, o si la ley paga
+13.º o 14.º sueldo, declarás `mundo` en la definición (es tu carpeta):
+
+```ts
+mundo: { bruto: "sueldo", periodoBruto: "mes", neto: "neto", periodoNeto: "mes", pagasAnuales: 13, entrada: { periodo: "mensual" } },
+```
+
+| Campo | Qué es |
+|---|---|
+| `bruto`, `periodoBruto` | id del campo de moneda con el bruto y si es `"mes"` o `"anio"` |
+| `neto`, `periodoNeto` | clave del resultado con el neto y su período |
+| `pagasAnuales` | sueldos que paga la ley en el año (13 con aguinaldo); sin esto, 12 |
+| `entrada` | valores fijos para otros campos (un selector de período, un subsidio que no es sueldo) |
+| `brutoResultado` | clave del resultado con el bruto real cuando el campo no lo es (un CTC con aportes del empleador) |
+
+Si tu neto no descuenta el impuesto a la renta (porque se paga aparte), la inferencia no lo nota:
+declarás `mundo: { excluir: "el neto no descuenta el impuesto a la renta" }` y lo contás en el reporte.
+
 ## 8. Cliente: `calculadoras/<slug>.cliente.tsx`
 
 Siempre estas cuatro líneas, cambiando solo el nombre:
@@ -598,9 +627,11 @@ npx tsx scripts/check_paises_casos.ts <m>
 npx tsx scripts/check_textos_paises.ts <m>
 npx tsx scripts/check_fronteras.ts
 npx tsx scripts/check_motor.ts
+npx tsx scripts/check_mundo.ts
 ```
 
-Los avisos (⚠️) no fallan pero leelos: un tramo que vence en menos de 30 días, una serie vieja.
+`check_mundo` no falla por tu país: si tu sueldo neto sale excluido, el motivo está en la lista
+(§7, `mundo`). Los avisos (⚠️) no fallan pero leelos: un tramo que vence en menos de 30 días, una serie vieja.
 
 ## 17. Errores comunes
 

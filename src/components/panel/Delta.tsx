@@ -1,16 +1,16 @@
 import type { Rango } from "@/lib/panel/tipos";
-import { ANTES, CONTRA, porcentaje, textoVariacion, variacion } from "@/lib/panel/formato";
+import { antes, contra, porcentaje, textoVariacion, variacion } from "@/lib/panel/formato";
 
 export function Delta({ valor, anterior, rango }: { valor: number; anterior: number; rango: Rango }) {
   const v = variacion(valor, anterior);
   const completo =
     v.tipo === "sube" || v.tipo === "baja"
-      ? `${textoVariacion(v)} que ${CONTRA[rango]}`
+      ? `${textoVariacion(v)} que ${contra(rango)}`
       : v.tipo === "nuevo"
-        ? `nuevo: ${ANTES[rango]} no hubo`
+        ? `nuevo: ${antes(rango)} no hubo`
         : v.tipo === "igual"
-          ? `igual que ${CONTRA[rango]}`
-          : `sin movimiento, tampoco ${ANTES[rango]}`;
+          ? `igual que ${contra(rango)}`
+          : `sin movimiento, tampoco ${antes(rango)}`;
   const base = "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium tabular-nums ring-1 ring-inset";
   let visible: string;
   let clase: string;
@@ -50,7 +50,7 @@ export function DeltaTexto({ valor, anterior, rango }: { valor: number; anterior
     v.tipo === "sube" ? "text-emerald-700" : v.tipo === "baja" ? "text-rose-700" : "text-zinc-600";
   const flecha = v.tipo === "sube" ? "↑ " : v.tipo === "baja" ? "↓ " : "";
   const texto =
-    v.tipo === "nuevo" ? `Nuevo: ${ANTES[rango]} no hubo` : `${textoVariacion(v)} que ${CONTRA[rango]}`;
+    v.tipo === "nuevo" ? `Nuevo: ${antes(rango)} no hubo` : `${textoVariacion(v)} que ${contra(rango)}`;
   return (
     <span className={`text-sm font-medium ${color}`}>
       <span aria-hidden>{flecha}</span>

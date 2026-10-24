@@ -1,7 +1,7 @@
 "use client";
 
 import type { FilaPagina, PanelDatos, Rango } from "@/lib/panel/tipos";
-import { hrefInterno, PERIODO, compacto, deCada100, duracion, numero, plural } from "@/lib/panel/formato";
+import { hrefInterno, periodo, compacto, deCada100, duracion, numero, plural } from "@/lib/panel/formato";
 import { EmbudoTarjeta } from "./Embudos";
 import { Grafico } from "./Grafico";
 import { IcoCerrar, IcoExterno } from "./iconos";
@@ -23,7 +23,7 @@ export function DetallePagina({
   const tiempos = kpiDe(datos, "usos").serie.map((p) => p.t);
   const puntos = fila.serieUsos.map((v, i) => ({ t: tiempos[i] ?? tiempos[tiempos.length - 1] ?? datos.hasta, v }));
   const embudo = fila.producto ? datos.embudos.find((e) => e.producto === fila.producto) : undefined;
-  const texto = `De ${plural(fila.visitantes, "persona que entró", "personas que entraron")} ${PERIODO[rango]}, ${
+  const texto = `De ${plural(fila.visitantes, "persona que entró", "personas que entraron")} ${periodo(rango)}, ${
     fila.usos === 1 ? "1 la usó" : `${numero(fila.usos)} la usaron`
   } (${deCada100(fila.tasaUso)}).${
     fila.usos > 0 ? ` La mitad se queda más de ${duracion(fila.tiempoMedianoMs)}.` : ""
@@ -79,7 +79,7 @@ export function DetallePagina({
 
       {puntos.length > 1 ? (
         <div className="mt-5">
-          <h4 className="mb-2 text-sm font-semibold text-zinc-900">Usos {PERIODO[rango]}</h4>
+          <h4 className="mb-2 text-sm font-semibold text-zinc-900">Usos {periodo(rango)}</h4>
           <Grafico
             key={`${fila.path}-${datos.rango}`}
             puntos={puntos}
@@ -113,7 +113,7 @@ export function DetallePagina({
             <h4 className="text-sm font-semibold text-zinc-900">No ofrece ninguna planilla</h4>
             <p className="mt-1 text-sm leading-relaxed text-zinc-600">
               {fila.usos > 0
-                ? `Con ${plural(fila.usos, "uso", "usos")} ${PERIODO[rango]}, es un lugar para pensar qué se le podría ofrecer.`
+                ? `Con ${plural(fila.usos, "uso", "usos")} ${periodo(rango)}, es un lugar para pensar qué se le podría ofrecer.`
                 : "Por ahora no tiene uso suficiente como para ofrecer algo."}
             </p>
           </>

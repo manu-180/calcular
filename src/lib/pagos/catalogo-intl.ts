@@ -5,7 +5,7 @@ import { RE_CODIGO_MERCADO, type CodigoMercado } from "@/motor/tipos";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
 import { FAMILIAS, PRECIO_PLANILLA_CENTAVOS, type ClaveFamilia, type FamiliaInforme, type TipoProducto } from "./ofertas-intl";
-import { diccionarioVenta, rellenar, resolver, textosFamilia, tieneVenta } from "./textos";
+import { diccionarioVenta, rellenar, resolverTrato, textosFamilia, tieneVenta } from "./textos";
 import type { ProductoVenta } from "./tipos";
 
 // Planillas que vende calcularya.com. Cada una es de un país: el id es `<mercado>/<slug>` y el
@@ -61,7 +61,7 @@ export function definirProductoIntl(d: DefinicionProductoIntl): ProductoIntl {
 function planillaSueldo(d: { mercado: string; titulo: string; tituloCorto: string; paraQuien: string; incluye: string; normas: string; disparador: string }): ProductoIntl {
   const anio = () => anioPlanillaIntl(d.mercado);
   const m = registro.pais(d.mercado as CodigoMercado)!.mercado;
-  const cat = resolver(diccionarioVenta(m.idioma).catalogo, m.trato);
+  const cat = resolverTrato(diccionarioVenta(m.idioma, m.locale).catalogo, m.trato);
   const producto = definirProductoIntl({
     mercado: d.mercado,
     slug: "sueldo-y-liquidacion",
@@ -94,7 +94,7 @@ export function archivoPlanillaSueldo(anio: number): string {
 function informe(f: FamiliaInforme, mercado: string): ProductoIntl {
   const m = registro.pais(mercado as CodigoMercado)!.mercado;
   const tx = textosFamilia(f.clave, m.idioma, m.trato, m.locale);
-  const cat = diccionarioVenta(m.idioma).catalogo;
+  const cat = diccionarioVenta(m.idioma, m.locale).catalogo;
   return definirProductoIntl({
     mercado,
     slug: f.slug,

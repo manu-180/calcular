@@ -5,6 +5,7 @@ import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import type { CodigoMercado } from "@/motor/tipos";
 import { AcordeonesFluidos } from "@/components/AcordeonesFluidos";
 import { Rastreador } from "@/components/Rastreador";
+import { CapturaLlegada } from "@/motor/compartir/CapturaLlegada";
 import { EncabezadoIntl, EXTERNOS } from "@/components/shell/EncabezadoIntl";
 import { PieIntl } from "@/components/shell/PieIntl";
 import { contextoSitio, listaCompacta } from "@/motor/ui/contexto";
@@ -83,6 +84,7 @@ export default async function LayoutIntl({ children, params }: { children: React
             <PieIntl ctx={ctx} />
           </div>
         </ProveedorPaises>
+        <CapturaLlegada />
         <Rastreador sitio="intl" mercado={ctx.mercado.codigo} />
         <AcordeonesFluidos />
       </body>
