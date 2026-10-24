@@ -39,6 +39,7 @@ function check(nombre: string, cond: boolean, detalle?: unknown) {
  */
 const EXCLUIDAS = new Set<string>([
   "/", // la home ya es el encabezado del archivo
+  "/sueldos-reales", // llms.txt es estático y la página es indexable solo con datos publicados (docs/decisiones/sueldos.md)
   "/contacto",
   "/privacidad",
   "/terminos",
