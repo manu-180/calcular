@@ -9,14 +9,14 @@ import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
-import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
-import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
+import { decimalesDeMoneda, formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
 import { textosMotor } from "../src/motor/textos";
-import type { Dato, FechaISO, Mercado, PaisDefinido, PropsCalculadora, Serie, Tramo } from "../src/motor/tipos";
+import type { ContextoSerializado, Dato, FechaISO, Mercado, PaisDefinido, PropsCalculadora, Serie, Tramo } from "../src/motor/tipos";
 import { validarPais } from "../src/motor/validar";
 import { fechaEnZona, hoyEn, sumarDias, valorSerie, vigente } from "../src/motor/vigencia";
 import zz from "../src/paises/zz";
@@ -24,6 +24,7 @@ import bono from "../src/paises/zz/calculadoras/bono";
 import datosZz from "../src/paises/zz/datos.json";
 import { detectores } from "../src/paises/zz/fuentes";
 import { registro as registroReal } from "../src/paises";
+import { crudoDeNumero } from "../src/lib/prefill/intl-cliente";
 
 delete process.env.CALCULAR_HOY;
 delete process.env.CALCULAR_HOY_BUILD;
@@ -59,6 +60,8 @@ igual("fecha es-MX", formatearFecha("2026-12-20", "es-MX"), "20 de diciembre de 
 const parseos: [string, string, number | null][] = [
   ["es-PE", "1,474.77", 1474.77],
   ["es-PE", "S/ 1,474.77", 1474.77],
+  ["es-PE", "S/. 1,474.77", 1474.77],
+  ["es-PA", "B/. 1,250.50", 1250.5],
   ["es-PE", "1474.77", 1474.77],
   ["es-PE", "1474,77", 1474.77],
   ["es-PE", "1,230", 1230],
@@ -102,6 +105,42 @@ const ambiguos: [string, string, number | null][] = [
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
+// Monedas de 3 decimales (TND, KWD, BHD, OMR, JOD, LYD): «1544,136» dinares es un monto, no miles
+// ambiguos, y los dígitos arábigo-índicos de ar-KW («١٬٥٤٤٫١٣٦») se leen.
+const tresDecimales: [string, string, number, number | null][] = [
+  ["fr-TN", "1544,136", 3, 1544.136],
+  ["fr-TN", "1 544,136", 3, 1544.136],
+  ["fr-TN", "1 544,136 DT", 3, 1544.136],
+  ["fr-TN", "1.544,136", 3, 1544.136],
+  ["fr-TN", "5.000", 3, 5000],
+  ["fr-TN", "1544,136", 2, null],
+  ["ar-KW", "١٥٤٤٫١٣٦", 3, 1544.136],
+  ["ar-KW", "١٬٥٤٤٫١٣٦ د.ك.", 3, 1544.136],
+  ["ar-KW", "1544.136", 3, 1544.136],
+  ["ar-KW", "1,544.136", 3, 1544.136],
+  ["ar-KW", "۱۵۴۴٫۱۳۶", 3, 1544.136],
+  ["en-KW", "1544.136", 3, 1544.136],
+  ["en-KW", "KWD 1,544.136", 3, 1544.136],
+  ["en-KW", "5.000", 3, 5],
+  ["en-KW", "5,000", 3, 5000],
+  ["ar-BH", "١٢٫٥٠٠", 3, 12.5],
+  ["ar-JO", "-١٬٢٣٤٫٥", 3, -1234.5],
+];
+for (const [locale, texto, decimales, esperado] of tresDecimales) igual(`parsear moneda de ${decimales} decimales ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true, decimales }), esperado);
+igual("decimales de TND en fr-TN", decimalesDeMoneda("TND", "fr-TN"), 3);
+igual("decimales de KWD en ar-KW", decimalesDeMoneda("KWD", "ar-KW"), 3);
+igual("decimales de KWD en en-KW", decimalesDeMoneda("KWD", "en-KW"), 3);
+// Ida y vuelta del formulario: el valor inicial y el prefill (crudoDeNumero) se vuelven a leer igual.
+for (const [locale, moneda] of [["fr-TN", "TND"], ["ar-KW", "KWD"], ["en-KW", "KWD"]] as const) {
+  const campo = { id: "monto", tipo: "moneda", etiqueta: "Monto", porDefecto: 1544.136 } as const;
+  const ctx = { locale, moneda, idioma: locale.slice(0, 2), trato: "usted" } as unknown as ContextoSerializado;
+  const inicial = valoresIniciales([campo], ctx, {});
+  igual(`valor inicial ${locale} ${moneda} con 3 decimales`, parsearNumero(String(inicial.monto), locale), 1544.136);
+  for (const crudo of [String(inicial.monto), crudoDeNumero(1544.136, locale), sinNbsp(formatearMoneda(1544.136, locale, moneda))]) {
+    const r = parsearEntrada([campo], { monto: crudo }, ctx, {});
+    igual(`formulario ${locale} ${moneda} lee «${crudo}»`, r.ok ? r.entrada.monto : r.errores, 1544.136);
+  }
+}
 // Unidades de 10⁴ en ja, zh y ko, y dígitos de ancho completo del IME: «3万» no puede dar 3.
 const cjk: [string, string, number | null][] = [
   ["ja-JP", "3万", 30000],
