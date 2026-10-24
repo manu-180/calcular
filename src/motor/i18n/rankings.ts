@@ -1,0 +1,1371 @@
+import type { IdNivel } from "../rankings/calculo";
+import type { IdRanking } from "../rankings/rutas";
+import type { Idioma, Trato } from "../tipos";
+import { resolver, type Diccionario, type Diccionarios } from "./resolver";
+
+// Rankings de países. Todo el texto es impersonal (sin tú, vos, usted, du, Sie, tu, vous, je, u):
+// la misma frase sirve en cualquier trato y lo que se cita en la prensa no le habla a nadie. Así
+// cada idioma tiene un solo `base`. Lo de la persona (supuestos, fuentes, PPA) sale del diccionario
+// de «Tu sueldo en el mundo», ya resuelto en el trato de la edición.
+//
+// La frase de posición va en aposición («México, puesto 27 de 41»): sin verbo no hay concordancia
+// que romper con «los Países Bajos» o «les États-Unis», y es como titula la prensa.
+
+export interface TextosRankingUno {
+  titulo: string;
+  // Nombre corto para tarjetas, la cita y la imagen.
+  corto: string;
+  // Candidatos de title, de mayor a menor (elegirTitulo toma el primero que entra en 60).
+  seo: readonly string[];
+  descripcion: (paises: number) => string;
+  bajada: string;
+  metrica: string;
+  carga: string;
+  como: string;
+}
+
+export interface TextosRankings {
+  nombre: string;
+  seo: { titulo: readonly string[]; descripcion: (paises: number) => string };
+  ceja: string;
+  h1: string;
+  bajada: (paises: number) => string;
+  actualizado: (fecha: string) => string;
+  ver: string;
+  niveles: { titulo: string; nombres: Record<IdNivel, string>; anual: (monto: string) => string };
+  tramos: { titulo: string; nombre: (desde: string, hasta: string) => string };
+  // Qué sueldo se usó, para la bajada de la tabla y la cita: «sueldo bruto de 30.000 dólares
+  // internacionales al año».
+  referencia: { nivel: (monto: string) => string; tramo: (desde: string, hasta: string) => string };
+  posicion: (pais: string, puesto: number, total: number) => string;
+  // Al lado del puesto grande: «de 41».
+  de: (total: number) => string;
+  empate: (otros: number) => string;
+  fuera: (pais: string) => string;
+  lider: string;
+  global: (paises: number) => string;
+  valores: { porMes: (monto: string) => string; ningunDia: string; deCada: (n: string) => string; carga: (pct: string) => string; cargaAumento: (pct: string) => string };
+  cambio: { titulo: (mes: string) => string; sube: (n: number) => string; baja: (n: number) => string; igual: string; nuevo: string };
+  tabla: { caption: (titulo: string, referencia: string) => string; puesto: string; pais: string; edicion: string; unidad: string };
+  kit: {
+    titulo: string;
+    bajada: string;
+    compartir: string;
+    descargar: string;
+    copiar: string;
+    copiado: string;
+    enlace: string;
+    compartido: string;
+    error: string;
+    cita: (frase: string, ranking: string, referencia: string, fecha: string) => string;
+    texto: (frase: string, ranking: string) => string;
+    alt: (ranking: string) => string;
+  };
+  metodo: { titulo: string; bajada: string; niveles: (bajo: string, medio: string, alto: string) => string; empates: string; historial: string; actualizacion: string; ver: string };
+  datos: { titulo: string; bajada: string; json: string; csv: string; licencia: string; atribucion: string };
+  mundo: { titulo: string; texto: (nombre: string) => string; ir: string };
+  otros: string;
+  rankings: Record<IdRanking, TextosRankingUno>;
+}
+
+// ───────────────────────────── es ─────────────────────────────
+
+
+const es: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Rankings de países",
+    seo: {
+      titulo: ["Rankings de sueldos e impuestos por país", "Rankings de países"],
+      descripcion: (n) => `Dónde rinde más un mismo sueldo, el día de libertad tributaria y cuánto queda de un aumento en ${n} países. Con datos oficiales, al día.`,
+    },
+    ceja: "Datos abiertos",
+    h1: "Sueldos e impuestos, país por país",
+    bajada: (n) => `${n} países comparados con el mismo poder de compra y la calculadora oficial de cada uno. Los rankings se actualizan solos cada día.`,
+    actualizado: (f) => `Actualizado el ${f}`,
+    ver: "Ver el ranking",
+    niveles: { titulo: "Sueldo de referencia", nombres: { bajo: "Sueldo bajo", medio: "Sueldo medio", alto: "Sueldo alto" }, anual: (m) => `${m} al año` },
+    tramos: { titulo: "Tramo del aumento", nombre: (a, b) => `De ${a} a ${b}` },
+    referencia: {
+      nivel: (m) => `sueldo bruto de ${m} dólares internacionales al año`,
+      tramo: (a, b) => `aumento de ${a} a ${b} dólares internacionales brutos al año`,
+    },
+    posicion: (pais, p, total) => `${pais}, puesto ${p} de ${total}`,
+    de: (t) => `de ${t}`,
+    empate: (o) => (o === 1 ? "empatado con otro país" : `empatado con otros ${o} países`),
+    fuera: (pais) => `${pais} todavía no está en estos rankings: falta una calculadora de sueldo neto que entre en la comparación.`,
+    lider: "Encabeza el ranking",
+    global: (n) => `${n} países, del primero al último`,
+    valores: {
+      porMes: (m) => `${m} por mes`,
+      ningunDia: "Ningún día",
+      deCada: (n) => `${n} de cada 100`,
+      carga: (pct) => `${pct} en impuesto y aportes`,
+      cargaAumento: (pct) => `${pct} del aumento se va en impuesto y aportes`,
+    },
+    cambio: {
+      titulo: (mes) => `Cambio desde ${mes}`,
+      sube: (n) => (n === 1 ? "Sube 1 puesto" : `Sube ${n} puestos`),
+      baja: (n) => (n === 1 ? "Baja 1 puesto" : `Baja ${n} puestos`),
+      igual: "Mismo puesto",
+      nuevo: "Nuevo en el ranking",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, con un ${ref}`,
+      puesto: "Puesto",
+      pais: "País",
+      edicion: "Esta edición",
+      unidad: "En dólares internacionales",
+    },
+    kit: {
+      titulo: "Para citar",
+      bajada: "La frase, el gráfico y el link de este ranking, listos para publicar.",
+      compartir: "Compartir",
+      descargar: "Descargar el gráfico",
+      copiar: "Copiar la cita",
+      copiado: "Cita copiada",
+      enlace: "Link copiado",
+      compartido: "Compartido",
+      error: "No se pudo copiar. El texto está arriba para copiarlo a mano.",
+      cita: (frase, ranking, ref, fecha) => `${frase} en «${ranking}» (${ref}). Fuente: CalcularYa, datos al ${fecha}.`,
+      texto: (frase, ranking) => `${frase} en «${ranking}».`,
+      alt: (ranking) => `Gráfico del ranking «${ranking}»`,
+    },
+    metodo: {
+      titulo: "Cómo se arma",
+      bajada: "Cada país pasa por su calculadora oficial de sueldo neto, con las reglas vigentes hoy. Después se compara con el mismo poder de compra.",
+      niveles: (b, m, a) => `Sueldos de referencia: ${b}, ${m} y ${a} dólares internacionales brutos al año.`,
+      empates: "Dos países con el mismo valor en la tabla comparten el puesto, y el siguiente salta (1, 2, 2, 4).",
+      historial: "El cambio de puesto se mide contra la foto del ranking que se guarda cada mes. Sin foto del mes anterior, no se muestra.",
+      actualizacion: "La grilla se rehace cada día con los datos vigentes de cada país. Un país nuevo entra solo apenas tiene su calculadora.",
+      ver: "Ver la metodología completa",
+    },
+    datos: {
+      titulo: "Datos abiertos",
+      bajada: "Los números de estos rankings, país por país, en JSON y CSV. Se actualizan cada día.",
+      json: "Datos en JSON",
+      csv: "Datos en CSV",
+      licencia: "Licencia CC BY 4.0: se pueden usar, reproducir y publicar citando a CalcularYa con un link a esta página.",
+      atribucion: "Cita sugerida",
+    },
+    mundo: { titulo: "Con un sueldo en particular", texto: (n) => `Para hacer la cuenta con un sueldo propio y ver la fecha de cada país, está «${n}».`, ir: "Hacer la cuenta" },
+    otros: "Otros rankings",
+    rankings: {
+      rinde: {
+        titulo: "Dónde rinde más un mismo sueldo",
+        corto: "Sueldo que rinde",
+        seo: ["Dónde rinde más el sueldo: ranking de países", "Dónde rinde más un mismo sueldo"],
+        descripcion: (n) => `El mismo sueldo, con el mismo poder de compra, en ${n} países: cuánto queda en mano con la ley de cada uno. Actualizado cada día.`,
+        bajada: "El mismo sueldo bruto, con el mismo poder de compra, pasa por la ley de cada país. Arriba, donde más queda en mano.",
+        metrica: "En mano por mes",
+        carga: "Impuesto y aportes",
+        como: "El neto por mes es el promedio de los 12 meses, en dólares internacionales.",
+      },
+      libertad: {
+        titulo: "Día de libertad tributaria por país",
+        corto: "Día de libertad tributaria",
+        seo: ["Día de libertad tributaria por país: ranking", "Día de libertad tributaria por país"],
+        descripcion: (n) => `Hasta qué día del año se trabaja para pagar el impuesto a la renta y los aportes, con el mismo sueldo en ${n} países.`,
+        bajada: "Hasta qué día del año se trabaja para pagar el impuesto a la renta y los aportes, con el mismo sueldo en todos los países. Arriba, donde se termina antes.",
+        metrica: "Para el Estado hasta el",
+        carga: "Impuesto y aportes",
+        como: "La fecha reparte la carga desde el 1 de enero: con un 30 % de carga, se trabaja para el Estado el 30 % del año.",
+      },
+      aumento: {
+        titulo: "Cuánto queda de un aumento de sueldo",
+        corto: "Lo que queda de un aumento",
+        seo: ["Cuánto queda de un aumento de sueldo, por país", "Cuánto queda de un aumento"],
+        descripcion: (n) => `De cada 100 que se suman al sueldo, cuánto llega al bolsillo después del impuesto y los aportes, en ${n} países.`,
+        bajada: "De cada 100 que se suman al sueldo bruto, cuánto llega al bolsillo después del impuesto y los aportes. Arriba, donde más queda.",
+        metrica: "Queda de cada 100",
+        carga: "Tasa marginal",
+        como: "Es la tasa marginal entre dos sueldos: la parte del aumento que se va en impuesto y aportes.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── en ─────────────────────────────
+
+
+function ordinalEn(n: number): string {
+  const regla = new Intl.PluralRules("en", { type: "ordinal" }).select(n);
+  return `${n}${{ one: "st", two: "nd", few: "rd", other: "th" }[regla as "one" | "two" | "few" | "other"] ?? "th"}`;
+}
+
+const en: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Country rankings",
+    seo: {
+      titulo: ["Pay and tax rankings by country", "Country rankings"],
+      descripcion: (n) => `Where the same salary goes furthest, Tax Freedom Day and how much of a raise is kept, in ${n} countries. Official data, updated daily.`,
+    },
+    ceja: "Open data",
+    h1: "Pay and tax, country by country",
+    bajada: (n) => `${n} countries compared at the same purchasing power, each run through its own official calculator. The rankings update themselves every day.`,
+    actualizado: (f) => `Updated ${f}`,
+    ver: "See the ranking",
+    niveles: { titulo: "Reference salary", nombres: { bajo: "Low salary", medio: "Middle salary", alto: "High salary" }, anual: (m) => `${m} a year` },
+    tramos: { titulo: "Size of the raise", nombre: (a, b) => `From ${a} to ${b}` },
+    referencia: {
+      nivel: (m) => `gross salary of ${m} international dollars a year`,
+      tramo: (a, b) => `raise from ${a} to ${b} international dollars gross a year`,
+    },
+    posicion: (pais, p, total) => `${pais}, ${ordinalEn(p)} of ${total}`,
+    de: (t) => `of ${t}`,
+    empate: (o) => (o === 1 ? "tied with one other country" : `tied with ${o} other countries`),
+    fuera: (pais) => `${pais} isn't in these rankings yet: it still needs a take-home pay calculator that fits the comparison.`,
+    lider: "Top of the ranking",
+    global: (n) => `${n} countries, first to last`,
+    valores: {
+      porMes: (m) => `${m} a month`,
+      ningunDia: "Not a single day",
+      deCada: (n) => `${n} of every 100`,
+      carga: (pct) => `${pct} in income tax and contributions`,
+      cargaAumento: (pct) => `${pct} of the raise goes in tax and contributions`,
+    },
+    cambio: {
+      titulo: (mes) => `Change since ${mes}`,
+      sube: (n) => (n === 1 ? "Up 1 place" : `Up ${n} places`),
+      baja: (n) => (n === 1 ? "Down 1 place" : `Down ${n} places`),
+      igual: "Same place",
+      nuevo: "New in the ranking",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, on a ${ref}`,
+      puesto: "Rank",
+      pais: "Country",
+      edicion: "This edition",
+      unidad: "In international dollars",
+    },
+    kit: {
+      titulo: "For the press",
+      bajada: "The line, the chart and the link for this ranking, ready to publish.",
+      compartir: "Share",
+      descargar: "Download the chart",
+      copiar: "Copy the quote",
+      copiado: "Quote copied",
+      enlace: "Link copied",
+      compartido: "Shared",
+      error: "Couldn't copy. The text is above to copy by hand.",
+      cita: (frase, ranking, ref, fecha) => `${frase} in “${ranking}” (${ref}). Source: CalcularYa, data as of ${fecha}.`,
+      texto: (frase, ranking) => `${frase} in “${ranking}”.`,
+      alt: (ranking) => `Chart of the “${ranking}” ranking`,
+    },
+    metodo: {
+      titulo: "How it's built",
+      bajada: "Every country goes through its official take-home pay calculator, with today's rules. Then they're compared at the same purchasing power.",
+      niveles: (b, m, a) => `Reference salaries: ${b}, ${m} and ${a} international dollars gross a year.`,
+      empates: "Two countries with the same value in the table share the rank, and the next one skips (1, 2, 2, 4).",
+      historial: "The change in rank is measured against the snapshot of the ranking saved each month. Without last month's snapshot, it isn't shown.",
+      actualizacion: "The grid is rebuilt every day with each country's current data. A new country joins as soon as its calculator is live.",
+      ver: "See the full methodology",
+    },
+    datos: {
+      titulo: "Open data",
+      bajada: "The numbers behind these rankings, country by country, in JSON and CSV. Updated every day.",
+      json: "Data in JSON",
+      csv: "Data in CSV",
+      licencia: "CC BY 4.0 licence: free to use, reproduce and publish with credit to CalcularYa and a link to this page.",
+      atribucion: "Suggested citation",
+    },
+    mundo: { titulo: "With a specific salary", texto: (n) => `To run the numbers on a salary of your own and see each country's date, there's “${n}”.`, ir: "Run the numbers" },
+    otros: "More rankings",
+    rankings: {
+      rinde: {
+        titulo: "Where the same salary goes furthest",
+        corto: "Pay that goes furthest",
+        seo: ["Where the same salary goes furthest: country ranking", "Where the same salary goes furthest"],
+        descripcion: (n) => `The same salary, at the same purchasing power, in ${n} countries: what's left after each country's tax rules. Updated daily.`,
+        bajada: "The same gross salary, at the same purchasing power, goes through each country's rules. At the top, where the most is left in hand.",
+        metrica: "Take-home a month",
+        carga: "Tax and contributions",
+        como: "Monthly take-home pay is the average over 12 months, in international dollars.",
+      },
+      libertad: {
+        titulo: "Tax Freedom Day by country",
+        corto: "Tax Freedom Day",
+        seo: ["Tax Freedom Day by country: ranking", "Tax Freedom Day by country"],
+        descripcion: (n) => `The day of the year when income tax and contributions are paid off, on the same salary in ${n} countries. Updated daily.`,
+        bajada: "The day of the year when income tax and contributions are paid off, on the same salary in every country. At the top, where it comes earliest.",
+        metrica: "Working for the state until",
+        carga: "Tax and contributions",
+        como: "The date spreads the tax over the year from 1 January: with a 30% tax burden, 30% of the year is spent working for the state.",
+      },
+      aumento: {
+        titulo: "How much of a pay raise is kept",
+        corto: "What's kept from a raise",
+        seo: ["How much of a pay raise is kept, by country", "How much of a raise is kept"],
+        descripcion: (n) => `Of every 100 added to gross pay, how much is left after income tax and contributions, in ${n} countries. Updated daily.`,
+        bajada: "Of every 100 added to gross pay, how much reaches the pocket after income tax and contributions. At the top, where the most is kept.",
+        metrica: "Kept of every 100",
+        carga: "Marginal rate",
+        como: "This is the marginal rate between two salaries: the share of the raise that goes in tax and contributions.",
+      },
+    },
+  },
+  regional: {
+    "en-US": {
+      datos: { licencia: "CC BY 4.0 license: free to use, reproduce and publish with credit to CalcularYa and a link to this page." },
+      rankings: { libertad: { como: "The date spreads the tax over the year from January 1: with a 30% tax burden, 30% of the year is spent working for the state." } },
+    },
+  },
+};
+
+// ───────────────────────────── pt ─────────────────────────────
+
+
+const pt: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Ranking dos países",
+    seo: {
+      titulo: ["Ranking de salários e impostos por país", "Ranking dos países"],
+      descripcion: (n) => `Onde o mesmo salário rende mais, o dia da liberdade de impostos e quanto fica de um aumento em ${n} países. Com dados oficiais, em dia.`,
+    },
+    ceja: "Dados abertos",
+    h1: "Salários e impostos, país por país",
+    bajada: (n) => `${n} países comparados com o mesmo poder de compra e a calculadora oficial de cada um. Os rankings se atualizam sozinhos todo dia.`,
+    actualizado: (f) => `Atualizado em ${f}`,
+    ver: "Ver o ranking",
+    niveles: { titulo: "Salário de referência", nombres: { bajo: "Salário baixo", medio: "Salário médio", alto: "Salário alto" }, anual: (m) => `${m} por ano` },
+    tramos: { titulo: "Faixa do aumento", nombre: (a, b) => `De ${a} para ${b}` },
+    referencia: {
+      nivel: (m) => `salário bruto de ${m} dólares internacionais por ano`,
+      tramo: (a, b) => `aumento de ${a} para ${b} dólares internacionais brutos por ano`,
+    },
+    posicion: (pais, p, total) => `${pais}, ${p}º lugar entre ${total}`,
+    de: (t) => `de ${t}`,
+    empate: (o) => (o === 1 ? "empatado com outro país" : `empatado com outros ${o} países`),
+    fuera: (pais) => `${pais} ainda não está nestes rankings: falta uma calculadora de salário líquido que entre na comparação.`,
+    lider: "Lidera o ranking",
+    global: (n) => `${n} países, do primeiro ao último`,
+    valores: {
+      porMes: (m) => `${m} por mês`,
+      ningunDia: "Nenhum dia",
+      deCada: (n) => `${n} a cada 100`,
+      carga: (pct) => `${pct} em imposto de renda e contribuições`,
+      cargaAumento: (pct) => `${pct} do aumento vai para imposto e contribuições`,
+    },
+    cambio: {
+      titulo: (mes) => `Mudança desde ${mes}`,
+      sube: (n) => (n === 1 ? "Sobe 1 posição" : `Sobe ${n} posições`),
+      baja: (n) => (n === 1 ? "Cai 1 posição" : `Cai ${n} posições`),
+      igual: "Mesma posição",
+      nuevo: "Novo no ranking",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, com um ${ref}`,
+      puesto: "Posição",
+      pais: "País",
+      edicion: "Esta edição",
+      unidad: "Em dólares internacionais",
+    },
+    kit: {
+      titulo: "Para a imprensa",
+      bajada: "A frase, o gráfico e o link deste ranking, prontos para publicar.",
+      compartir: "Compartilhar",
+      descargar: "Baixar o gráfico",
+      copiar: "Copiar a citação",
+      copiado: "Citação copiada",
+      enlace: "Link copiado. É só colar onde quiser.",
+      compartido: "Compartilhado",
+      error: "Não foi possível copiar. O texto está acima para copiar à mão.",
+      cita: (frase, ranking, ref, fecha) => `${frase} em “${ranking}” (${ref}). Fonte: CalcularYa, dados de ${fecha}.`,
+      texto: (frase, ranking) => `${frase} em “${ranking}”.`,
+      alt: (ranking) => `Gráfico do ranking “${ranking}”`,
+    },
+    metodo: {
+      titulo: "Como é feito",
+      bajada: "Cada país passa pela sua calculadora oficial de salário líquido, com as regras em vigor hoje. Depois a comparação é feita com o mesmo poder de compra.",
+      niveles: (b, m, a) => `Salários de referência: ${b}, ${m} e ${a} dólares internacionais brutos por ano.`,
+      empates: "Dois países com o mesmo valor na tabela dividem a posição, e a seguinte pula (1, 2, 2, 4).",
+      historial: "A mudança de posição é medida contra a foto do ranking guardada a cada mês. Sem a foto do mês anterior, ela não aparece.",
+      actualizacion: "A grade é refeita todo dia com os dados em vigor de cada país. Um país novo entra sozinho assim que tem a sua calculadora.",
+      ver: "Ver a metodologia completa",
+    },
+    datos: {
+      titulo: "Dados abertos",
+      bajada: "Os números destes rankings, país por país, em JSON e CSV. Atualizados todo dia.",
+      json: "Dados em JSON",
+      csv: "Dados em CSV",
+      licencia: "Licença CC BY 4.0: podem ser usados, reproduzidos e publicados citando a CalcularYa com um link para esta página.",
+      atribucion: "Citação sugerida",
+    },
+    mundo: { titulo: "Com um salário específico", texto: (n) => `Para fazer a conta com um salário próprio e ver a data de cada país, existe “${n}”.`, ir: "Fazer a conta" },
+    otros: "Outros rankings",
+    rankings: {
+      rinde: {
+        titulo: "Onde o mesmo salário rende mais",
+        corto: "Salário que rende",
+        seo: ["Onde o salário rende mais: ranking de países", "Onde o mesmo salário rende mais"],
+        descripcion: (n) => `O mesmo salário, com o mesmo poder de compra, em ${n} países: quanto fica no bolso com a lei de cada um. Atualizado todo dia.`,
+        bajada: "O mesmo salário bruto, com o mesmo poder de compra, passa pela lei de cada país. No topo, onde mais fica no bolso.",
+        metrica: "Líquido por mês",
+        carga: "Imposto e contribuições",
+        como: "O líquido por mês é a média dos 12 meses, em dólares internacionais.",
+      },
+      libertad: {
+        titulo: "Dia da liberdade de impostos por país",
+        corto: "Dia da liberdade de impostos",
+        seo: ["Dia da liberdade de impostos por país: ranking", "Dia da liberdade de impostos por país"],
+        descripcion: (n) => `Até que dia do ano se trabalha para pagar o imposto de renda e as contribuições, com o mesmo salário em ${n} países.`,
+        bajada: "Até que dia do ano se trabalha para pagar o imposto de renda e as contribuições, com o mesmo salário em todos os países. No topo, onde isso termina antes.",
+        metrica: "Para o Estado até",
+        carga: "Imposto e contribuições",
+        como: "A data distribui a carga a partir de 1º de janeiro: com 30 % de carga, trabalha-se para o Estado 30 % do ano.",
+      },
+      aumento: {
+        titulo: "Quanto fica de um aumento de salário",
+        corto: "O que fica de um aumento",
+        seo: ["Quanto fica de um aumento de salário, por país", "Quanto fica de um aumento"],
+        descripcion: (n) => `De cada 100 somados ao salário, quanto chega ao bolso depois do imposto e das contribuições, em ${n} países.`,
+        bajada: "De cada 100 somados ao salário bruto, quanto chega ao bolso depois do imposto e das contribuições. No topo, onde mais fica.",
+        metrica: "Fica de cada 100",
+        carga: "Alíquota marginal",
+        como: "É a alíquota marginal entre dois salários: a parte do aumento que vai para imposto e contribuições.",
+      },
+    },
+  },
+  regional: {
+    "pt-PT": {
+      bajada: (n) => `${n} países comparados com o mesmo poder de compra e a calculadora oficial de cada um. Os rankings atualizam-se sozinhos todos os dias.`,
+      kit: { compartir: "Partilhar", descargar: "Descarregar o gráfico", compartido: "Partilhado" },
+      valores: { carga: (pct) => `${pct} em imposto sobre o rendimento e contribuições` },
+      cambio: { sube: (n) => (n === 1 ? "Sobe 1 lugar" : `Sobe ${n} lugares`), baja: (n) => (n === 1 ? "Desce 1 lugar" : `Desce ${n} lugares`), igual: "Mesmo lugar" },
+      metodo: { actualizacion: "A grelha é refeita todos os dias com os dados em vigor de cada país. Um país novo entra sozinho assim que tem a sua calculadora." },
+      rankings: {
+        rinde: { descripcion: (n) => `O mesmo salário, com o mesmo poder de compra, em ${n} países: quanto fica no bolso com a lei de cada um. Atualizado todos os dias.` },
+        libertad: {
+          descripcion: (n) => `Até que dia do ano se trabalha para pagar o imposto sobre o rendimento e as contribuições, com o mesmo salário em ${n} países.`,
+          bajada: "Até que dia do ano se trabalha para pagar o imposto sobre o rendimento e as contribuições, com o mesmo salário em todos os países. No topo, onde isso termina mais cedo.",
+          como: "A data distribui a carga a partir de 1 de janeiro: com 30 % de carga, trabalha-se para o Estado 30 % do ano.",
+        },
+        aumento: { carga: "Taxa marginal", como: "É a taxa marginal entre dois salários: a parte do aumento que vai para imposto e contribuições." },
+      },
+    },
+  },
+};
+
+// ───────────────────────────── fr ─────────────────────────────
+
+
+const fr: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Classements des pays",
+    seo: {
+      titulo: ["Classements des salaires et des impôts par pays", "Classements des pays"],
+      descripcion: (n) => `Où un même salaire rapporte le plus, le jour de libération fiscale et ce qui reste d'une augmentation dans ${n} pays. Données officielles, à jour.`,
+    },
+    ceja: "Données ouvertes",
+    h1: "Salaires et impôts, pays par pays",
+    bajada: (n) => `${n} pays comparés à pouvoir d'achat égal, chacun avec son calculateur officiel. Les classements se mettent à jour seuls chaque jour.`,
+    actualizado: (f) => `Mis à jour le ${f}`,
+    ver: "Voir le classement",
+    niveles: { titulo: "Salaire de référence", nombres: { bajo: "Salaire bas", medio: "Salaire moyen", alto: "Salaire élevé" }, anual: (m) => `${m} par an` },
+    tramos: { titulo: "Tranche de l'augmentation", nombre: (a, b) => `De ${a} à ${b}` },
+    referencia: {
+      nivel: (m) => `salaire brut de ${m} dollars internationaux par an`,
+      tramo: (a, b) => `passage de ${a} à ${b} dollars internationaux bruts par an`,
+    },
+    posicion: (pais, p, total) => `${pais}, ${p === 1 ? "1er" : `${p}e`} sur ${total}`,
+    de: (t) => `sur ${t}`,
+    empate: (o) => (o === 1 ? "à égalité avec un autre pays" : `à égalité avec ${o} autres pays`),
+    fuera: (pais) => `${pais} n'est pas encore dans ces classements : il manque un calculateur de salaire net qui entre dans la comparaison.`,
+    lider: "En tête du classement",
+    global: (n) => `${n} pays, du premier au dernier`,
+    valores: {
+      porMes: (m) => `${m} par mois`,
+      ningunDia: "Aucun jour",
+      deCada: (n) => `${n} sur 100`,
+      carga: (pct) => `${pct} en impôt sur le revenu et cotisations`,
+      cargaAumento: (pct) => `${pct} de l'augmentation part en impôt et cotisations`,
+    },
+    cambio: {
+      titulo: (mes) => `Évolution depuis ${mes}`,
+      sube: (n) => (n === 1 ? "Gagne 1 place" : `Gagne ${n} places`),
+      baja: (n) => (n === 1 ? "Perd 1 place" : `Perd ${n} places`),
+      igual: "Même place",
+      nuevo: "Nouveau dans le classement",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, avec un ${ref}`,
+      puesto: "Rang",
+      pais: "Pays",
+      edicion: "Cette édition",
+      unidad: "En dollars internationaux",
+    },
+    kit: {
+      titulo: "Pour la presse",
+      bajada: "La phrase, le graphique et le lien de ce classement, prêts à publier.",
+      compartir: "Partager",
+      descargar: "Télécharger le graphique",
+      copiar: "Copier la citation",
+      copiado: "Citation copiée",
+      enlace: "Lien copié",
+      compartido: "Partagé",
+      error: "Copie impossible. Le texte est au-dessus pour le copier à la main.",
+      cita: (frase, ranking, ref, fecha) => `${frase} dans « ${ranking} » (${ref}). Source : CalcularYa, données au ${fecha}.`,
+      texto: (frase, ranking) => `${frase} dans « ${ranking} ».`,
+      alt: (ranking) => `Graphique du classement « ${ranking} »`,
+    },
+    metodo: {
+      titulo: "Comment c'est calculé",
+      bajada: "Chaque pays passe par son calculateur officiel de salaire net, avec les règles en vigueur aujourd'hui. Puis la comparaison se fait à pouvoir d'achat égal.",
+      niveles: (b, m, a) => `Salaires de référence : ${b}, ${m} et ${a} dollars internationaux bruts par an.`,
+      empates: "Deux pays avec la même valeur dans le tableau partagent le rang, et le suivant saute (1, 2, 2, 4).",
+      historial: "L'évolution du rang se mesure par rapport à la photo du classement enregistrée chaque mois. Sans photo du mois précédent, elle n'est pas affichée.",
+      actualizacion: "La grille est refaite chaque jour avec les données en vigueur de chaque pays. Un nouveau pays entre seul dès que son calculateur est en ligne.",
+      ver: "Voir la méthode complète",
+    },
+    datos: {
+      titulo: "Données ouvertes",
+      bajada: "Les chiffres de ces classements, pays par pays, en JSON et CSV. Mis à jour chaque jour.",
+      json: "Données en JSON",
+      csv: "Données en CSV",
+      licencia: "Licence CC BY 4.0 : utilisation, reproduction et publication libres en citant CalcularYa avec un lien vers cette page.",
+      atribucion: "Citation suggérée",
+    },
+    mundo: { titulo: "Avec un salaire précis", texto: (n) => `Pour faire le calcul avec un salaire précis et voir la date de chaque pays, il y a « ${n} ».`, ir: "Faire le calcul" },
+    otros: "Autres classements",
+    rankings: {
+      rinde: {
+        titulo: "Où un même salaire rapporte le plus",
+        corto: "Salaire qui rapporte",
+        seo: ["Où le salaire rapporte le plus : classement des pays", "Où un même salaire rapporte le plus"],
+        descripcion: (n) => `Un même salaire, à pouvoir d'achat égal, dans ${n} pays : ce qui reste net avec les règles de chacun. Mis à jour chaque jour.`,
+        bajada: "Le même salaire brut, à pouvoir d'achat égal, passe par les règles de chaque pays. En haut, là où il reste le plus en net.",
+        metrica: "Net par mois",
+        carga: "Impôt et cotisations",
+        como: "Le net par mois est la moyenne des 12 mois, en dollars internationaux.",
+      },
+      libertad: {
+        titulo: "Jour de libération fiscale par pays",
+        corto: "Jour de libération fiscale",
+        seo: ["Jour de libération fiscale par pays : classement", "Jour de libération fiscale par pays"],
+        descripcion: (n) => `Jusqu'à quel jour de l'année on travaille pour payer l'impôt sur le revenu et les cotisations, avec le même salaire dans ${n} pays.`,
+        bajada: "Jusqu'à quel jour de l'année on travaille pour payer l'impôt sur le revenu et les cotisations, avec le même salaire partout. En haut, là où c'est le plus tôt.",
+        metrica: "Pour l'État jusqu'au",
+        carga: "Impôt et cotisations",
+        como: "La date répartit la charge à partir du 1er janvier : avec 30 % de charge, on travaille pour l'État 30 % de l'année.",
+      },
+      aumento: {
+        titulo: "Ce qui reste d'une augmentation de salaire",
+        corto: "Ce qui reste d'une augmentation",
+        seo: ["Ce qui reste d'une augmentation, par pays", "Ce qui reste d'une augmentation"],
+        descripcion: (n) => `Sur 100 ajoutés au salaire brut, ce qui reste après l'impôt et les cotisations, dans ${n} pays. Mis à jour chaque jour.`,
+        bajada: "Sur 100 ajoutés au salaire brut, ce qui arrive dans la poche après l'impôt et les cotisations. En haut, là où il en reste le plus.",
+        metrica: "Reste sur 100",
+        carga: "Taux marginal",
+        como: "C'est le taux marginal entre deux salaires : la part de l'augmentation qui part en impôt et cotisations.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── de ─────────────────────────────
+
+const de: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Länder-Rankings",
+    seo: {
+      titulo: ["Rankings zu Gehalt und Steuern nach Land", "Länder-Rankings"],
+      descripcion: (n) => `Wo dasselbe Gehalt am meisten bringt, der Steuerzahlergedenktag und was von einer Erhöhung bleibt, in ${n} Ländern. Amtliche Daten, aktuell.`,
+    },
+    ceja: "Offene Daten",
+    h1: "Gehalt und Steuern, Land für Land",
+    bajada: (n) => `${n} Länder im Vergleich, bei gleicher Kaufkraft und mit dem offiziellen Rechner jedes Landes. Die Rankings aktualisieren sich täglich von selbst.`,
+    actualizado: (f) => `Aktualisiert am ${f}`,
+    ver: "Zum Ranking",
+    niveles: { titulo: "Referenzgehalt", nombres: { bajo: "Niedriges Gehalt", medio: "Mittleres Gehalt", alto: "Hohes Gehalt" }, anual: (m) => `${m} im Jahr` },
+    tramos: { titulo: "Spanne der Erhöhung", nombre: (a, b) => `Von ${a} auf ${b}` },
+    referencia: {
+      nivel: (m) => `Bruttogehalt von ${m} internationalen Dollar im Jahr`,
+      tramo: (a, b) => `Erhöhung von ${a} auf ${b} internationale Dollar brutto im Jahr`,
+    },
+    posicion: (pais, p, total) => `${pais}: Platz ${p} von ${total}`,
+    de: (t) => `von ${t}`,
+    empate: (o) => (o === 1 ? "gleichauf mit einem anderen Land" : `gleichauf mit ${o} anderen Ländern`),
+    fuera: (pais) => `${pais} ist noch nicht in diesen Rankings: Es fehlt ein Nettolohnrechner, der in den Vergleich passt.`,
+    lider: "Spitze des Rankings",
+    global: (n) => `${n} Länder, vom ersten bis zum letzten Platz`,
+    valores: {
+      porMes: (m) => `${m} im Monat`,
+      ningunDia: "Kein einziger Tag",
+      deCada: (n) => `${n} von 100`,
+      carga: (pct) => `${pct} Einkommensteuer und Sozialabgaben`,
+      cargaAumento: (pct) => `${pct} der Erhöhung gehen an Steuern und Abgaben`,
+    },
+    cambio: {
+      titulo: (mes) => `Veränderung seit ${mes}`,
+      sube: (n) => (n === 1 ? "1 Platz besser" : `${n} Plätze besser`),
+      baja: (n) => (n === 1 ? "1 Platz schlechter" : `${n} Plätze schlechter`),
+      igual: "Gleicher Platz",
+      nuevo: "Neu im Ranking",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, bei einem ${ref}`,
+      puesto: "Platz",
+      pais: "Land",
+      edicion: "Diese Ausgabe",
+      unidad: "In internationalen Dollar",
+    },
+    kit: {
+      titulo: "Für die Presse",
+      bajada: "Der Satz, die Grafik und der Link zu diesem Ranking, bereit zur Veröffentlichung.",
+      compartir: "Teilen",
+      descargar: "Grafik herunterladen",
+      copiar: "Zitat kopieren",
+      copiado: "Zitat kopiert",
+      enlace: "Link kopiert",
+      compartido: "Geteilt",
+      error: "Kopieren nicht möglich. Der Text steht oben zum Kopieren von Hand.",
+      cita: (frase, ranking, ref, fecha) => `${frase} im Ranking „${ranking}“ (${ref}). Quelle: CalcularYa, Datenstand ${fecha}.`,
+      texto: (frase, ranking) => `${frase} im Ranking „${ranking}“.`,
+      alt: (ranking) => `Grafik des Rankings „${ranking}“`,
+    },
+    metodo: {
+      titulo: "So entsteht das Ranking",
+      bajada: "Jedes Land läuft durch seinen offiziellen Nettolohnrechner, mit den heute geltenden Regeln. Danach wird bei gleicher Kaufkraft verglichen.",
+      niveles: (b, m, a) => `Referenzgehälter: ${b}, ${m} und ${a} internationale Dollar brutto im Jahr.`,
+      empates: "Zwei Länder mit demselben Wert in der Tabelle teilen sich den Platz, der nächste wird übersprungen (1, 2, 2, 4).",
+      historial: "Die Veränderung wird an einem monatlichen Schnappschuss des Rankings gemessen. Ohne Schnappschuss aus dem Vormonat wird sie nicht angezeigt.",
+      actualizacion: "Das Raster wird jeden Tag mit den geltenden Daten jedes Landes neu berechnet. Ein neues Land kommt von selbst dazu, sobald sein Rechner online ist.",
+      ver: "Zur vollständigen Methodik",
+    },
+    datos: {
+      titulo: "Offene Daten",
+      bajada: "Die Zahlen hinter diesen Rankings, Land für Land, als JSON und CSV. Täglich aktualisiert.",
+      json: "Daten als JSON",
+      csv: "Daten als CSV",
+      licencia: "Lizenz CC BY 4.0: Nutzung, Vervielfältigung und Veröffentlichung frei, mit Nennung von CalcularYa und einem Link auf diese Seite.",
+      atribucion: "Zitiervorschlag",
+    },
+    mundo: { titulo: "Mit einem bestimmten Gehalt", texto: (n) => `Für die Rechnung mit einem eigenen Gehalt und das Datum jedes Landes gibt es „${n}“.`, ir: "Jetzt rechnen" },
+    otros: "Weitere Rankings",
+    rankings: {
+      rinde: {
+        titulo: "Wo dasselbe Gehalt am meisten bringt",
+        corto: "Was das Gehalt bringt",
+        seo: ["Wo das Gehalt am meisten bringt: Länder-Ranking", "Wo dasselbe Gehalt am meisten bringt"],
+        descripcion: (n) => `Dasselbe Gehalt bei gleicher Kaufkraft in ${n} Ländern: was nach den Regeln jedes Landes netto bleibt. Täglich aktualisiert.`,
+        bajada: "Dasselbe Bruttogehalt bei gleicher Kaufkraft läuft durch die Regeln jedes Landes. Oben steht, wo netto am meisten bleibt.",
+        metrica: "Netto im Monat",
+        carga: "Steuern und Abgaben",
+        como: "Das Netto im Monat ist der Durchschnitt über 12 Monate, in internationalen Dollar.",
+      },
+      libertad: {
+        titulo: "Steuerzahlergedenktag nach Land",
+        corto: "Steuerzahlergedenktag",
+        seo: ["Steuerzahlergedenktag nach Land: Ranking", "Steuerzahlergedenktag nach Land"],
+        descripcion: (n) => `Bis zu welchem Tag im Jahr für Einkommensteuer und Sozialabgaben gearbeitet wird, beim selben Gehalt in ${n} Ländern.`,
+        bajada: "Bis zu welchem Tag im Jahr für Einkommensteuer und Sozialabgaben gearbeitet wird, beim selben Gehalt in allen Ländern. Oben steht, wo das am frühesten endet.",
+        metrica: "Für den Staat bis",
+        carga: "Steuern und Abgaben",
+        como: "Das Datum verteilt die Last ab dem 1. Januar: Bei 30 % Last wird 30 % des Jahres für den Staat gearbeitet.",
+      },
+      aumento: {
+        titulo: "Was von einer Gehaltserhöhung bleibt",
+        corto: "Was von der Erhöhung bleibt",
+        seo: ["Was von einer Gehaltserhöhung bleibt, nach Land", "Was von einer Gehaltserhöhung bleibt"],
+        descripcion: (n) => `Von 100 mehr brutto: was nach Einkommensteuer und Sozialabgaben bleibt, in ${n} Ländern. Täglich aktualisiert.`,
+        bajada: "Von 100 mehr brutto: wie viel nach Einkommensteuer und Sozialabgaben ankommt. Oben steht, wo am meisten bleibt.",
+        metrica: "Bleibt von 100",
+        carga: "Grenzbelastung",
+        como: "Das ist die Grenzbelastung zwischen zwei Gehältern: der Teil der Erhöhung, der an Steuern und Abgaben geht.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── it ─────────────────────────────
+
+
+const it: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Classifiche dei paesi",
+    seo: {
+      titulo: ["Classifiche di stipendi e tasse per paese", "Classifiche dei paesi"],
+      descripcion: (n) => `Dove lo stesso stipendio rende di più, il giorno di liberazione fiscale e quanto resta di un aumento in ${n} paesi. Dati ufficiali, aggiornati.`,
+    },
+    ceja: "Dati aperti",
+    h1: "Stipendi e tasse, paese per paese",
+    bajada: (n) => `${n} paesi a confronto con lo stesso potere d'acquisto e il calcolatore ufficiale di ciascuno. Le classifiche si aggiornano da sole ogni giorno.`,
+    actualizado: (f) => `Aggiornato il ${f}`,
+    ver: "Vedere la classifica",
+    niveles: { titulo: "Stipendio di riferimento", nombres: { bajo: "Stipendio basso", medio: "Stipendio medio", alto: "Stipendio alto" }, anual: (m) => `${m} all'anno` },
+    tramos: { titulo: "Fascia dell'aumento", nombre: (a, b) => `Da ${a} a ${b}` },
+    referencia: {
+      nivel: (m) => `stipendio lordo di ${m} dollari internazionali all'anno`,
+      tramo: (a, b) => `aumento da ${a} a ${b} dollari internazionali lordi all'anno`,
+    },
+    posicion: (pais, p, total) => `${pais}, ${p}° posto su ${total}`,
+    de: (t) => `su ${t}`,
+    empate: (o) => (o === 1 ? "a pari merito con un altro paese" : `a pari merito con altri ${o} paesi`),
+    fuera: (pais) => `${pais} non è ancora in queste classifiche: manca un calcolatore dello stipendio netto adatto al confronto.`,
+    lider: "In testa alla classifica",
+    global: (n) => `${n} paesi, dal primo all'ultimo`,
+    valores: {
+      porMes: (m) => `${m} al mese`,
+      ningunDia: "Nessun giorno",
+      deCada: (n) => `${n} su 100`,
+      carga: (pct) => `${pct} tra imposta sul reddito e contributi`,
+      cargaAumento: (pct) => `${pct} dell'aumento va in tasse e contributi`,
+    },
+    cambio: {
+      titulo: (mes) => `Variazione da ${mes}`,
+      sube: (n) => (n === 1 ? "Sale di 1 posto" : `Sale di ${n} posti`),
+      baja: (n) => (n === 1 ? "Scende di 1 posto" : `Scende di ${n} posti`),
+      igual: "Stesso posto",
+      nuevo: "Nuovo in classifica",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, con uno ${ref}`,
+      puesto: "Posto",
+      pais: "Paese",
+      edicion: "Questa edizione",
+      unidad: "In dollari internazionali",
+    },
+    kit: {
+      titulo: "Per la stampa",
+      bajada: "La frase, il grafico e il link di questa classifica, pronti da pubblicare.",
+      compartir: "Condividere",
+      descargar: "Scaricare il grafico",
+      copiar: "Copiare la citazione",
+      copiado: "Citazione copiata",
+      enlace: "Link copiato",
+      compartido: "Condiviso",
+      error: "Copia non riuscita. Il testo è qui sopra per copiarlo a mano.",
+      cita: (frase, ranking, ref, fecha) => `${frase} nella classifica «${ranking}» (${ref}). Fonte: CalcularYa, dati al ${fecha}.`,
+      texto: (frase, ranking) => `${frase} nella classifica «${ranking}».`,
+      alt: (ranking) => `Grafico della classifica «${ranking}»`,
+    },
+    metodo: {
+      titulo: "Come si costruisce",
+      bajada: "Ogni paese passa dal suo calcolatore ufficiale dello stipendio netto, con le regole in vigore oggi. Poi il confronto si fa con lo stesso potere d'acquisto.",
+      niveles: (b, m, a) => `Stipendi di riferimento: ${b}, ${m} e ${a} dollari internazionali lordi all'anno.`,
+      empates: "Due paesi con lo stesso valore in tabella condividono il posto, e il successivo salta (1, 2, 2, 4).",
+      historial: "La variazione di posto si misura sulla fotografia della classifica salvata ogni mese. Senza la fotografia del mese precedente non compare.",
+      actualizacion: "La griglia viene rifatta ogni giorno con i dati in vigore di ciascun paese. Un nuovo paese entra da solo appena il suo calcolatore è online.",
+      ver: "Vedere la metodologia completa",
+    },
+    datos: {
+      titulo: "Dati aperti",
+      bajada: "I numeri di queste classifiche, paese per paese, in JSON e CSV. Aggiornati ogni giorno.",
+      json: "Dati in JSON",
+      csv: "Dati in CSV",
+      licencia: "Licenza CC BY 4.0: uso, riproduzione e pubblicazione liberi citando CalcularYa con un link a questa pagina.",
+      atribucion: "Citazione consigliata",
+    },
+    mundo: { titulo: "Con uno stipendio preciso", texto: (n) => `Per fare il calcolo con uno stipendio preciso e vedere la data di ogni paese c'è «${n}».`, ir: "Fare il calcolo" },
+    otros: "Altre classifiche",
+    rankings: {
+      rinde: {
+        titulo: "Dove lo stesso stipendio rende di più",
+        corto: "Stipendio che rende",
+        seo: ["Dove lo stipendio rende di più: classifica dei paesi", "Dove lo stesso stipendio rende di più"],
+        descripcion: (n) => `Lo stesso stipendio, con lo stesso potere d'acquisto, in ${n} paesi: quanto resta netto con le regole di ciascuno. Aggiornato ogni giorno.`,
+        bajada: "Lo stesso stipendio lordo, con lo stesso potere d'acquisto, passa dalle regole di ogni paese. In cima, dove resta di più in tasca.",
+        metrica: "Netto al mese",
+        carga: "Tasse e contributi",
+        como: "Il netto al mese è la media dei 12 mesi, in dollari internazionali.",
+      },
+      libertad: {
+        titulo: "Giorno di liberazione fiscale per paese",
+        corto: "Giorno di liberazione fiscale",
+        seo: ["Giorno di liberazione fiscale per paese: classifica", "Giorno di liberazione fiscale per paese"],
+        descripcion: (n) => `Fino a che giorno dell'anno si lavora per pagare imposta sul reddito e contributi, con lo stesso stipendio in ${n} paesi.`,
+        bajada: "Fino a che giorno dell'anno si lavora per pagare imposta sul reddito e contributi, con lo stesso stipendio in tutti i paesi. In cima, dove finisce prima.",
+        metrica: "Per lo Stato fino al",
+        carga: "Tasse e contributi",
+        como: "La data distribuisce il carico dal 1° gennaio: con un carico del 30 %, si lavora per lo Stato il 30 % dell'anno.",
+      },
+      aumento: {
+        titulo: "Quanto resta di un aumento di stipendio",
+        corto: "Quanto resta di un aumento",
+        seo: ["Quanto resta di un aumento di stipendio, per paese", "Quanto resta di un aumento"],
+        descripcion: (n) => `Su 100 in più di stipendio lordo, quanto resta dopo imposta sul reddito e contributi, in ${n} paesi. Aggiornato ogni giorno.`,
+        bajada: "Su 100 in più di stipendio lordo, quanto arriva in tasca dopo imposta sul reddito e contributi. In cima, dove ne resta di più.",
+        metrica: "Resta su 100",
+        carga: "Aliquota marginale",
+        como: "È l'aliquota marginale tra due stipendi: la parte dell'aumento che va in tasse e contributi.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── nl ─────────────────────────────
+
+const nl: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Landenranglijsten",
+    seo: {
+      titulo: ["Ranglijsten van salaris en belasting per land", "Landenranglijsten"],
+      descripcion: (n) => `Waar hetzelfde salaris het meest oplevert, de belastingvrijheidsdag en wat er overblijft van een loonsverhoging, in ${n} landen. Officiële data.`,
+    },
+    ceja: "Open data",
+    h1: "Salaris en belasting, land voor land",
+    bajada: (n) => `${n} landen vergeleken bij gelijke koopkracht, elk met de eigen officiële rekentool. De ranglijsten worden elke dag vanzelf bijgewerkt.`,
+    actualizado: (f) => `Bijgewerkt op ${f}`,
+    ver: "Ranglijst bekijken",
+    niveles: { titulo: "Referentiesalaris", nombres: { bajo: "Laag salaris", medio: "Middensalaris", alto: "Hoog salaris" }, anual: (m) => `${m} per jaar` },
+    tramos: { titulo: "Omvang van de verhoging", nombre: (a, b) => `Van ${a} naar ${b}` },
+    referencia: {
+      nivel: (m) => `brutosalaris van ${m} internationale dollar per jaar`,
+      tramo: (a, b) => `verhoging van ${a} naar ${b} internationale dollar bruto per jaar`,
+    },
+    posicion: (pais, p, total) => `${pais}: plaats ${p} van ${total}`,
+    de: (t) => `van ${t}`,
+    empate: (o) => (o === 1 ? "gedeeld met één ander land" : `gedeeld met ${o} andere landen`),
+    fuera: (pais) => `${pais} staat nog niet in deze ranglijsten: er ontbreekt een nettoloonrekentool die in de vergelijking past.`,
+    lider: "Bovenaan de ranglijst",
+    global: (n) => `${n} landen, van de eerste tot de laatste`,
+    valores: {
+      porMes: (m) => `${m} per maand`,
+      ningunDia: "Geen enkele dag",
+      deCada: (n) => `${n} van elke 100`,
+      carga: (pct) => `${pct} aan inkomstenbelasting en premies`,
+      cargaAumento: (pct) => `${pct} van de verhoging gaat naar belasting en premies`,
+    },
+    cambio: {
+      titulo: (mes) => `Verandering sinds ${mes}`,
+      sube: (n) => (n === 1 ? "1 plaats hoger" : `${n} plaatsen hoger`),
+      baja: (n) => (n === 1 ? "1 plaats lager" : `${n} plaatsen lager`),
+      igual: "Zelfde plaats",
+      nuevo: "Nieuw in de ranglijst",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, bij een ${ref}`,
+      puesto: "Plaats",
+      pais: "Land",
+      edicion: "Deze editie",
+      unidad: "In internationale dollar",
+    },
+    kit: {
+      titulo: "Voor de pers",
+      bajada: "De zin, de grafiek en de link van deze ranglijst, klaar om te publiceren.",
+      compartir: "Delen",
+      descargar: "Grafiek downloaden",
+      copiar: "Citaat kopiëren",
+      copiado: "Citaat gekopieerd",
+      enlace: "Link gekopieerd",
+      compartido: "Gedeeld",
+      error: "Kopiëren lukte niet. De tekst staat hierboven om met de hand te kopiëren.",
+      cita: (frase, ranking, ref, fecha) => `${frase} in de ranglijst ‘${ranking}’ (${ref}). Bron: CalcularYa, gegevens van ${fecha}.`,
+      texto: (frase, ranking) => `${frase} in de ranglijst ‘${ranking}’.`,
+      alt: (ranking) => `Grafiek van de ranglijst ‘${ranking}’`,
+    },
+    metodo: {
+      titulo: "Zo werkt het",
+      bajada: "Elk land gaat door de eigen officiële nettoloonrekentool, met de regels van vandaag. Daarna wordt vergeleken bij gelijke koopkracht.",
+      niveles: (b, m, a) => `Referentiesalarissen: ${b}, ${m} en ${a} internationale dollar bruto per jaar.`,
+      empates: "Twee landen met dezelfde waarde in de tabel delen de plaats, en de volgende plaats valt weg (1, 2, 2, 4).",
+      historial: "De verandering wordt gemeten tegen de momentopname van de ranglijst die elke maand wordt bewaard. Zonder momentopname van vorige maand wordt ze niet getoond.",
+      actualizacion: "Het raster wordt elke dag opnieuw berekend met de geldende gegevens van elk land. Een nieuw land komt er vanzelf bij zodra de rekentool online staat.",
+      ver: "Volledige methode bekijken",
+    },
+    datos: {
+      titulo: "Open data",
+      bajada: "De cijfers achter deze ranglijsten, land voor land, in JSON en CSV. Elke dag bijgewerkt.",
+      json: "Gegevens in JSON",
+      csv: "Gegevens in CSV",
+      licencia: "Licentie CC BY 4.0: vrij te gebruiken, te verspreiden en te publiceren met bronvermelding van CalcularYa en een link naar deze pagina.",
+      atribucion: "Voorgestelde bronvermelding",
+    },
+    mundo: { titulo: "Met een eigen salaris", texto: (n) => `Om te rekenen met een eigen salaris en de datum van elk land te zien, is er ‘${n}’.`, ir: "Nu rekenen" },
+    otros: "Meer ranglijsten",
+    rankings: {
+      rinde: {
+        titulo: "Waar hetzelfde salaris het meest oplevert",
+        corto: "Wat het salaris oplevert",
+        seo: ["Waar salaris het meest oplevert: landenranglijst", "Waar hetzelfde salaris het meest oplevert"],
+        descripcion: (n) => `Hetzelfde salaris bij gelijke koopkracht in ${n} landen: wat er netto overblijft met de regels van elk land. Elke dag bijgewerkt.`,
+        bajada: "Hetzelfde brutosalaris bij gelijke koopkracht gaat door de regels van elk land. Bovenaan staat waar netto het meest overblijft.",
+        metrica: "Netto per maand",
+        carga: "Belasting en premies",
+        como: "Het netto per maand is het gemiddelde over 12 maanden, in internationale dollar.",
+      },
+      libertad: {
+        titulo: "Belastingvrijheidsdag per land",
+        corto: "Belastingvrijheidsdag",
+        seo: ["Belastingvrijheidsdag per land: ranglijst", "Belastingvrijheidsdag per land"],
+        descripcion: (n) => `Tot welke dag van het jaar er wordt gewerkt voor inkomstenbelasting en premies, met hetzelfde salaris in ${n} landen.`,
+        bajada: "Tot welke dag van het jaar er wordt gewerkt voor inkomstenbelasting en premies, met hetzelfde salaris in alle landen. Bovenaan staat waar dat het vroegst klaar is.",
+        metrica: "Voor de staat tot",
+        carga: "Belasting en premies",
+        como: "De datum verdeelt de last vanaf 1 januari: bij 30 % last wordt 30 % van het jaar voor de staat gewerkt.",
+      },
+      aumento: {
+        titulo: "Wat er overblijft van een loonsverhoging",
+        corto: "Wat er van de verhoging overblijft",
+        seo: ["Wat er overblijft van een loonsverhoging, per land", "Wat er overblijft van een loonsverhoging"],
+        descripcion: (n) => `Van elke 100 extra bruto: wat er overblijft na inkomstenbelasting en premies, in ${n} landen. Elke dag bijgewerkt.`,
+        bajada: "Van elke 100 extra bruto: hoeveel er na inkomstenbelasting en premies overblijft. Bovenaan staat waar het meest overblijft.",
+        metrica: "Blijft van 100",
+        carga: "Marginaal tarief",
+        como: "Dit is het marginale tarief tussen twee salarissen: het deel van de verhoging dat naar belasting en premies gaat.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── ja ─────────────────────────────
+
+const ja: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "国別ランキング",
+    seo: {
+      titulo: ["給与と税金の国別ランキング", "国別ランキング"],
+      descripcion: (n) => `同じ給与がいちばん手元に残る国、納税者解放日、昇給分のうち残る額を ${n} か国で比較。公的データで毎日更新します。`,
+    },
+    ceja: "オープンデータ",
+    h1: "給与と税金を国ごとに比較",
+    bajada: (n) => `${n} か国を同じ購買力で、各国の公式な計算方法に沿って比較しています。ランキングは毎日自動で更新されます。`,
+    actualizado: (f) => `${f}更新`,
+    ver: "ランキングを見る",
+    niveles: { titulo: "基準となる給与", nombres: { bajo: "低めの給与", medio: "中くらいの給与", alto: "高めの給与" }, anual: (m) => `年 ${m}` },
+    tramos: { titulo: "昇給の幅", nombre: (a, b) => `${a}から${b}へ` },
+    referencia: {
+      nivel: (m) => `額面年収 ${m} 国際ドル`,
+      tramo: (a, b) => `額面年収 ${a} から ${b} 国際ドルへの昇給`,
+    },
+    posicion: (pais, p, total) => `${pais}：${total} か国中 ${p} 位`,
+    de: (t) => `位（${t} か国中）`,
+    empate: (o) => `ほかの ${o} か国と同順位`,
+    fuera: (pais) => `${pais}はまだこのランキングに入っていません。比較に使える手取り計算ツールがまだないためです。`,
+    lider: "ランキング 1 位",
+    global: (n) => `${n} か国の全順位`,
+    valores: {
+      porMes: (m) => `月 ${m}`,
+      ningunDia: "0 日",
+      deCada: (n) => `100 のうち ${n}`,
+      carga: (pct) => `所得税と社会保険料で ${pct}`,
+      cargaAumento: (pct) => `昇給分のうち ${pct} が税と社会保険料に`,
+    },
+    cambio: {
+      titulo: (mes) => `${mes}からの変化`,
+      sube: (n) => `${n} 位上昇`,
+      baja: (n) => `${n} 位下降`,
+      igual: "順位変わらず",
+      nuevo: "新しくランクイン",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}（${ref}）`,
+      puesto: "順位",
+      pais: "国",
+      edicion: "この版の国",
+      unidad: "国際ドル",
+    },
+    kit: {
+      titulo: "報道・引用向け",
+      bajada: "このランキングの一文、グラフ、リンクをそのまま掲載できます。",
+      compartir: "共有する",
+      descargar: "グラフをダウンロード",
+      copiar: "引用文をコピー",
+      copiado: "引用文をコピーしました",
+      enlace: "リンクをコピーしました",
+      compartido: "共有しました",
+      error: "コピーできませんでした。上の文を手動でコピーしてください。",
+      cita: (frase, ranking, ref, fecha) => `${frase}（「${ranking}」、${ref}）。出典：CalcularYa、${fecha}時点のデータ。`,
+      texto: (frase, ranking) => `${frase}（「${ranking}」）`,
+      alt: (ranking) => `「${ranking}」ランキングのグラフ`,
+    },
+    metodo: {
+      titulo: "算出方法",
+      bajada: "各国の公式な手取り計算に、現在有効なルールで通しています。そのうえで同じ購買力で比較します。",
+      niveles: (b, m, a) => `基準となる給与：額面年収 ${b}、${m}、${a} 国際ドル。`,
+      empates: "表で同じ値になった国は同じ順位になり、次の順位は飛びます（1、2、2、4）。",
+      historial: "順位の変化は、毎月保存するランキングの記録と比べています。前月の記録がない場合は表示しません。",
+      actualizacion: "データは各国の現行の数値で毎日作り直します。新しい国は計算ツールが公開されると自動で加わります。",
+      ver: "算出方法をすべて見る",
+    },
+    datos: {
+      titulo: "オープンデータ",
+      bajada: "このランキングの数値を国ごとに JSON と CSV で公開しています。毎日更新されます。",
+      json: "JSON データ",
+      csv: "CSV データ",
+      licencia: "ライセンスは CC BY 4.0 です。CalcularYa の名前とこのページへのリンクを示せば、利用・転載・公開ができます。",
+      atribucion: "引用の例",
+    },
+    mundo: { titulo: "特定の給与で計算するには", texto: (n) => `自分の給与で計算し、各国の日付を見るには「${n}」をご利用ください。`, ir: "計算する" },
+    otros: "ほかのランキング",
+    rankings: {
+      rinde: {
+        titulo: "同じ給与がいちばん手元に残る国",
+        corto: "手元に残る給与",
+        seo: ["同じ給与がいちばん手元に残る国ランキング", "同じ給与がいちばん手元に残る国"],
+        descripcion: (n) => `同じ購買力の同じ給与が、${n} か国それぞれのルールでいくら手元に残るかを比較。毎日更新します。`,
+        bajada: "同じ購買力の同じ額面給与を、各国のルールで計算しています。上位ほど手元に多く残ります。",
+        metrica: "月の手取り",
+        carga: "税と社会保険料",
+        como: "月の手取りは 12 か月の平均で、国際ドルで示しています。",
+      },
+      libertad: {
+        titulo: "国別の納税者解放日",
+        corto: "納税者解放日",
+        seo: ["国別の納税者解放日ランキング", "国別の納税者解放日"],
+        descripcion: (n) => `所得税と社会保険料を払い終えるまで一年の何日目まで働くかを、${n} か国の同じ給与で比較します。`,
+        bajada: "所得税と社会保険料を払い終えるのが一年の何日目かを、すべての国で同じ給与のもとで比べています。上位ほど早く終わります。",
+        metrica: "税のために働く日",
+        carga: "税と社会保険料",
+        como: "1 月 1 日から負担を割り振った日付です。負担が 30% なら、一年の 30% を税のために働く計算です。",
+      },
+      aumento: {
+        titulo: "昇給分のうち手元に残る割合",
+        corto: "昇給分で残る額",
+        seo: ["昇給分のうち手元に残る割合の国別ランキング", "昇給分のうち手元に残る割合"],
+        descripcion: (n) => `額面給与が 100 増えたとき、所得税と社会保険料を引いていくら残るかを ${n} か国で比較。毎日更新します。`,
+        bajada: "額面給与が 100 増えたとき、所得税と社会保険料を引いて手元にいくら残るかを示しています。上位ほど多く残ります。",
+        metrica: "100 のうち残る額",
+        carga: "限界負担率",
+        como: "2 つの給与の間の限界負担率です。昇給分のうち税と社会保険料に回る割合を指します。",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── ko ─────────────────────────────
+
+const ko: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "국가별 순위",
+    seo: {
+      titulo: ["급여와 세금 국가별 순위", "국가별 순위"],
+      descripcion: (n) => `같은 급여가 가장 많이 남는 나라, 세금 해방일, 인상분 중 남는 금액을 ${n}개국에서 비교해요. 공식 데이터로 매일 업데이트돼요.`,
+    },
+    ceja: "공개 데이터",
+    h1: "급여와 세금, 나라별 비교",
+    bajada: (n) => `${n}개국을 같은 구매력으로, 나라마다 공식 계산 방식에 따라 비교해요. 순위는 매일 자동으로 업데이트돼요.`,
+    actualizado: (f) => `${f} 업데이트`,
+    ver: "순위 보기",
+    niveles: { titulo: "기준 급여", nombres: { bajo: "낮은 급여", medio: "중간 급여", alto: "높은 급여" }, anual: (m) => `연 ${m}` },
+    tramos: { titulo: "인상 구간", nombre: (a, b) => `${a}에서 ${b}로` },
+    referencia: {
+      nivel: (m) => `세전 연봉 ${m} 국제 달러`,
+      tramo: (a, b) => `세전 연봉 ${a}에서 ${b} 국제 달러로 인상`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${total}개국 중 ${p}위`,
+    de: (t) => `위 (${t}개국 중)`,
+    empate: (o) => `다른 ${o}개국과 공동 순위`,
+    fuera: (pais) => `${pais}은(는) 아직 이 순위에 없어요. 비교에 쓸 수 있는 실수령액 계산기가 아직 없어서예요.`,
+    lider: "순위 1위",
+    global: (n) => `${n}개국 전체 순위`,
+    valores: {
+      porMes: (m) => `월 ${m}`,
+      ningunDia: "0일",
+      deCada: (n) => `100 중 ${n}`,
+      carga: (pct) => `소득세와 사회보험료 ${pct}`,
+      cargaAumento: (pct) => `인상분의 ${pct}가 세금과 사회보험료로`,
+    },
+    cambio: {
+      titulo: (mes) => `${mes} 대비 변화`,
+      sube: (n) => `${n}계단 상승`,
+      baja: (n) => `${n}계단 하락`,
+      igual: "순위 변동 없음",
+      nuevo: "새로 진입",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "순위",
+      pais: "국가",
+      edicion: "이 에디션의 국가",
+      unidad: "국제 달러",
+    },
+    kit: {
+      titulo: "언론·인용용",
+      bajada: "이 순위의 문장, 그래프, 링크를 바로 게재할 수 있어요.",
+      compartir: "공유하기",
+      descargar: "그래프 다운로드",
+      copiar: "인용문 복사",
+      copiado: "인용문을 복사했어요",
+      enlace: "링크를 복사했어요",
+      compartido: "공유했어요",
+      error: "복사하지 못했어요. 위의 문장을 직접 복사해 주세요.",
+      cita: (frase, ranking, ref, fecha) => `${frase} (“${ranking}”, ${ref}). 출처: CalcularYa, ${fecha} 기준 데이터.`,
+      texto: (frase, ranking) => `${frase} (“${ranking}”)`,
+      alt: (ranking) => `“${ranking}” 순위 그래프`,
+    },
+    metodo: {
+      titulo: "산출 방법",
+      bajada: "나라마다 공식 실수령액 계산기에 현재 규정을 적용해요. 그다음 같은 구매력으로 비교해요.",
+      niveles: (b, m, a) => `기준 급여: 세전 연봉 ${b}, ${m}, ${a} 국제 달러.`,
+      empates: "표에서 값이 같은 나라는 같은 순위를 받고, 다음 순위는 건너뛰어요 (1, 2, 2, 4).",
+      historial: "순위 변화는 매달 저장하는 순위 기록과 비교해요. 지난달 기록이 없으면 표시하지 않아요.",
+      actualizacion: "데이터는 나라별 현행 수치로 매일 다시 만들어요. 새 나라는 계산기가 공개되면 자동으로 추가돼요.",
+      ver: "산출 방법 전체 보기",
+    },
+    datos: {
+      titulo: "공개 데이터",
+      bajada: "이 순위의 숫자를 나라별로 JSON과 CSV로 공개해요. 매일 업데이트돼요.",
+      json: "JSON 데이터",
+      csv: "CSV 데이터",
+      licencia: "라이선스는 CC BY 4.0이에요. CalcularYa 이름과 이 페이지 링크를 밝히면 사용, 전재, 게재할 수 있어요.",
+      atribucion: "인용 예시",
+    },
+    mundo: { titulo: "특정 급여로 계산하려면", texto: (n) => `내 급여로 계산하고 나라별 날짜를 보려면 “${n}”을 이용해 보세요.`, ir: "계산하기" },
+    otros: "다른 순위",
+    rankings: {
+      rinde: {
+        titulo: "같은 급여가 가장 많이 남는 나라",
+        corto: "손에 남는 급여",
+        seo: ["같은 급여가 가장 많이 남는 나라 순위", "같은 급여가 가장 많이 남는 나라"],
+        descripcion: (n) => `같은 구매력의 같은 급여가 ${n}개국 각각의 규정으로 얼마나 남는지 비교해요. 매일 업데이트돼요.`,
+        bajada: "같은 구매력의 같은 세전 급여를 나라마다 규정에 따라 계산해요. 위로 갈수록 손에 많이 남아요.",
+        metrica: "월 실수령액",
+        carga: "세금과 사회보험료",
+        como: "월 실수령액은 12개월 평균이며 국제 달러로 표시해요.",
+      },
+      libertad: {
+        titulo: "국가별 세금 해방일",
+        corto: "세금 해방일",
+        seo: ["국가별 세금 해방일 순위", "국가별 세금 해방일"],
+        descripcion: (n) => `소득세와 사회보험료를 다 내기까지 1년 중 며칠째까지 일하는지 ${n}개국의 같은 급여로 비교해요.`,
+        bajada: "소득세와 사회보험료를 다 내는 날이 1년 중 며칠째인지 모든 나라에서 같은 급여로 비교해요. 위로 갈수록 빨리 끝나요.",
+        metrica: "세금을 위해 일하는 날",
+        carga: "세금과 사회보험료",
+        como: "1월 1일부터 부담을 나눈 날짜예요. 부담이 30%이면 1년의 30%를 세금을 위해 일하는 셈이에요.",
+      },
+      aumento: {
+        titulo: "급여 인상분 중 손에 남는 몫",
+        corto: "인상분 중 남는 몫",
+        seo: ["급여 인상분 중 손에 남는 몫 국가별 순위", "급여 인상분 중 손에 남는 몫"],
+        descripcion: (n) => `세전 급여가 100 늘 때 소득세와 사회보험료를 빼고 얼마가 남는지 ${n}개국에서 비교해요. 매일 업데이트돼요.`,
+        bajada: "세전 급여가 100 늘 때 소득세와 사회보험료를 빼고 손에 얼마가 남는지 보여 줘요. 위로 갈수록 많이 남아요.",
+        metrica: "100 중 남는 몫",
+        carga: "한계 부담률",
+        como: "두 급여 사이의 한계 부담률이에요. 인상분 중 세금과 사회보험료로 나가는 비율이에요.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── zh ─────────────────────────────
+// 繁體為底（zh-TW、zh-HK），zh-CN 與 zh-SG 用簡體的完整版本（手寫，不是轉換）。
+
+const zhHant: TextosRankings = {
+  nombre: "國家排名",
+  seo: {
+    titulo: ["各國薪資與稅負排名", "國家排名"],
+    descripcion: (n) => `比較 ${n} 個國家：同樣的薪資在哪裡實領最多、稅務自由日，以及加薪後能留下多少。官方資料，每日更新。`,
+  },
+  ceja: "開放資料",
+  h1: "各國薪資與稅負比較",
+  bajada: (n) => `以相同購買力比較 ${n} 個國家，每一國都依其官方計算方式。排名每天自動更新。`,
+  actualizado: (f) => `更新於${f}`,
+  ver: "查看排名",
+  niveles: { titulo: "參考薪資", nombres: { bajo: "較低薪資", medio: "中等薪資", alto: "較高薪資" }, anual: (m) => `每年 ${m}` },
+  tramos: { titulo: "加薪區間", nombre: (a, b) => `從 ${a} 到 ${b}` },
+  referencia: {
+    nivel: (m) => `稅前年薪 ${m} 國際元`,
+    tramo: (a, b) => `稅前年薪從 ${a} 加到 ${b} 國際元`,
+  },
+  posicion: (pais, p, total) => `${pais}：在 ${total} 個國家中排名第 ${p}`,
+  de: (t) => `名（共 ${t} 個國家）`,
+  empate: (o) => `與另外 ${o} 個國家並列`,
+  fuera: (pais) => `${pais}尚未列入這些排名，因為還沒有可用於比較的實領薪資計算工具。`,
+  lider: "排名第一",
+  global: (n) => `${n} 個國家的完整排名`,
+  valores: {
+    porMes: (m) => `每月 ${m}`,
+    ningunDia: "0 天",
+    deCada: (n) => `每 100 留下 ${n}`,
+    carga: (pct) => `所得稅與社會保險費占 ${pct}`,
+    cargaAumento: (pct) => `加薪部分有 ${pct} 用於稅與社會保險費`,
+  },
+  cambio: {
+    titulo: (mes) => `與${mes}相比`,
+    sube: (n) => `上升 ${n} 名`,
+    baja: (n) => `下降 ${n} 名`,
+    igual: "名次不變",
+    nuevo: "新進榜",
+  },
+  tabla: {
+    caption: (titulo, ref) => `${titulo}（${ref}）`,
+    puesto: "名次",
+    pais: "國家",
+    edicion: "本版國家",
+    unidad: "國際元",
+  },
+  kit: {
+    titulo: "供媒體引用",
+    bajada: "這份排名的句子、圖表和連結，可直接刊登。",
+    compartir: "分享",
+    descargar: "下載圖表",
+    copiar: "複製引用文字",
+    copiado: "已複製引用文字",
+    enlace: "已複製連結",
+    compartido: "已分享",
+    error: "無法複製。請手動複製上方的文字。",
+    cita: (frase, ranking, ref, fecha) => `${frase}（「${ranking}」，${ref}）。資料來源：CalcularYa，${fecha}的資料。`,
+    texto: (frase, ranking) => `${frase}（「${ranking}」）`,
+    alt: (ranking) => `「${ranking}」排名圖表`,
+  },
+  metodo: {
+    titulo: "計算方式",
+    bajada: "每個國家都經過其官方實領薪資計算，採用目前有效的規則。之後以相同購買力比較。",
+    niveles: (b, m, a) => `參考薪資：稅前年薪 ${b}、${m} 和 ${a} 國際元。`,
+    empates: "表中數值相同的國家名次並列，下一個名次順延（1、2、2、4）。",
+    historial: "名次變化是與每月保存的排名紀錄比較。沒有上個月的紀錄時不顯示。",
+    actualizacion: "資料每天以各國現行數字重新計算。新國家的計算工具一上線就會自動加入。",
+    ver: "查看完整計算方式",
+  },
+  datos: {
+    titulo: "開放資料",
+    bajada: "這些排名的數字，按國家以 JSON 和 CSV 公開，每天更新。",
+    json: "JSON 資料",
+    csv: "CSV 資料",
+    licencia: "授權為 CC BY 4.0。註明 CalcularYa 並附上本頁連結，即可使用、轉載與發布。",
+    atribucion: "建議引用格式",
+  },
+  mundo: { titulo: "用特定薪資計算", texto: (n) => `想用自己的薪資計算並查看各國日期，請使用「${n}」。`, ir: "開始計算" },
+  otros: "其他排名",
+  rankings: {
+    rinde: {
+      titulo: "同樣的薪資在哪裡實領最多",
+      corto: "實領最多的薪資",
+      seo: ["同樣的薪資在哪裡實領最多：國家排名", "同樣的薪資在哪裡實領最多"],
+      descripcion: (n) => `相同購買力的同樣薪資，依 ${n} 個國家各自的規則，實領能剩多少。每日更新。`,
+      bajada: "相同購買力的同樣稅前薪資，依各國規則計算。名次越前，實領越多。",
+      metrica: "每月實領",
+      carga: "稅與社會保險費",
+      como: "每月實領是 12 個月的平均，以國際元表示。",
+    },
+    libertad: {
+      titulo: "各國稅務自由日",
+      corto: "稅務自由日",
+      seo: ["各國稅務自由日排名", "各國稅務自由日"],
+      descripcion: (n) => `以 ${n} 個國家的同樣薪資，比較一年要工作到哪一天，才繳完所得稅與社會保險費。`,
+      bajada: "比較一年中到哪一天才繳完所得稅與社會保險費，所有國家都用同樣的薪資。名次越前，越早結束。",
+      metrica: "為稅工作到",
+      carga: "稅與社會保險費",
+      como: "日期是從 1 月 1 日起分配負擔：負擔 30% 時，一年有 30% 的時間在為稅工作。",
+    },
+    aumento: {
+      titulo: "加薪後能留下多少",
+      corto: "加薪留下的部分",
+      seo: ["加薪後能留下多少：國家排名", "加薪後能留下多少"],
+      descripcion: (n) => `稅前薪資每多 100，扣除所得稅與社會保險費後還剩多少，比較 ${n} 個國家。每日更新。`,
+      bajada: "稅前薪資每多 100，扣除所得稅與社會保險費後實際留下多少。名次越前，留下越多。",
+      metrica: "每 100 留下",
+      carga: "邊際負擔率",
+      como: "這是兩個薪資之間的邊際負擔率，也就是加薪部分用於稅與社會保險費的比例。",
+    },
+  },
+};
+
+const zhHans: TextosRankings = {
+  nombre: "国家排名",
+  seo: {
+    titulo: ["各国工资与税负排名", "国家排名"],
+    descripcion: (n) => `比较 ${n} 个国家：同样的工资在哪里到手最多、税务自由日，以及加薪后能留下多少。官方数据，每日更新。`,
+  },
+  ceja: "开放数据",
+  h1: "各国工资与税负对比",
+  bajada: (n) => `按相同购买力对比 ${n} 个国家，每个国家都按其官方计算方式。排名每天自动更新。`,
+  actualizado: (f) => `更新于${f}`,
+  ver: "查看排名",
+  niveles: { titulo: "参考工资", nombres: { bajo: "较低工资", medio: "中等工资", alto: "较高工资" }, anual: (m) => `每年 ${m}` },
+  tramos: { titulo: "加薪区间", nombre: (a, b) => `从 ${a} 到 ${b}` },
+  referencia: {
+    nivel: (m) => `税前年薪 ${m} 国际元`,
+    tramo: (a, b) => `税前年薪从 ${a} 涨到 ${b} 国际元`,
+  },
+  posicion: (pais, p, total) => `${pais}：在 ${total} 个国家中排名第 ${p}`,
+  de: (t) => `名（共 ${t} 个国家）`,
+  empate: (o) => `与另外 ${o} 个国家并列`,
+  fuera: (pais) => `${pais}暂未列入这些排名，因为还没有可用于对比的税后工资计算工具。`,
+  lider: "排名第一",
+  global: (n) => `${n} 个国家的完整排名`,
+  valores: {
+    porMes: (m) => `每月 ${m}`,
+    ningunDia: "0 天",
+    deCada: (n) => `每 100 留下 ${n}`,
+    carga: (pct) => `个人所得税和社保占 ${pct}`,
+    cargaAumento: (pct) => `加薪部分有 ${pct} 用于缴税和社保`,
+  },
+  cambio: {
+    titulo: (mes) => `与${mes}相比`,
+    sube: (n) => `上升 ${n} 名`,
+    baja: (n) => `下降 ${n} 名`,
+    igual: "名次不变",
+    nuevo: "新上榜",
+  },
+  tabla: {
+    caption: (titulo, ref) => `${titulo}（${ref}）`,
+    puesto: "名次",
+    pais: "国家",
+    edicion: "本版国家",
+    unidad: "国际元",
+  },
+  kit: {
+    titulo: "供媒体引用",
+    bajada: "这份排名的句子、图表和链接，可直接刊发。",
+    compartir: "分享",
+    descargar: "下载图表",
+    copiar: "复制引用文字",
+    copiado: "已复制引用文字",
+    enlace: "已复制链接",
+    compartido: "已分享",
+    error: "无法复制。请手动复制上方的文字。",
+    cita: (frase, ranking, ref, fecha) => `${frase}（“${ranking}”，${ref}）。数据来源：CalcularYa，${fecha}的数据。`,
+    texto: (frase, ranking) => `${frase}（“${ranking}”）`,
+    alt: (ranking) => `“${ranking}”排名图表`,
+  },
+  metodo: {
+    titulo: "计算方法",
+    bajada: "每个国家都经过其官方税后工资计算，采用当前有效的规则。之后按相同购买力对比。",
+    niveles: (b, m, a) => `参考工资：税前年薪 ${b}、${m} 和 ${a} 国际元。`,
+    empates: "表中数值相同的国家名次并列，下一个名次顺延（1、2、2、4）。",
+    historial: "名次变化是与每月保存的排名记录对比。没有上个月的记录时不显示。",
+    actualizacion: "数据每天按各国现行数字重新计算。新国家的计算工具一上线就会自动加入。",
+    ver: "查看完整计算方法",
+  },
+  datos: {
+    titulo: "开放数据",
+    bajada: "这些排名的数字，按国家以 JSON 和 CSV 公开，每天更新。",
+    json: "JSON 数据",
+    csv: "CSV 数据",
+    licencia: "许可协议为 CC BY 4.0。注明 CalcularYa 并附上本页链接，即可使用、转载和发布。",
+    atribucion: "建议引用格式",
+  },
+  mundo: { titulo: "用特定工资计算", texto: (n) => `想用自己的工资计算并查看各国日期，请使用“${n}”。`, ir: "开始计算" },
+  otros: "其他排名",
+  rankings: {
+    rinde: {
+      titulo: "同样的工资在哪里到手最多",
+      corto: "到手最多的工资",
+      seo: ["同样的工资在哪里到手最多：国家排名", "同样的工资在哪里到手最多"],
+      descripcion: (n) => `相同购买力的同样工资，按 ${n} 个国家各自的规则，到手能剩多少。每日更新。`,
+      bajada: "相同购买力的同样税前工资，按各国规则计算。名次越靠前，到手越多。",
+      metrica: "每月到手",
+      carga: "税和社保",
+      como: "每月到手是 12 个月的平均值，以国际元表示。",
+    },
+    libertad: {
+      titulo: "各国税务自由日",
+      corto: "税务自由日",
+      seo: ["各国税务自由日排名", "各国税务自由日"],
+      descripcion: (n) => `以 ${n} 个国家的同样工资，对比一年要工作到哪一天，才缴完个人所得税和社保。`,
+      bajada: "对比一年中到哪一天才缴完个人所得税和社保，所有国家都用同样的工资。名次越靠前，越早结束。",
+      metrica: "为税工作到",
+      carga: "税和社保",
+      como: "日期是从 1 月 1 日起分配负担：负担 30% 时，一年有 30% 的时间在为税工作。",
+    },
+    aumento: {
+      titulo: "加薪后能留下多少",
+      corto: "加薪留下的部分",
+      seo: ["加薪后能留下多少：国家排名", "加薪后能留下多少"],
+      descripcion: (n) => `税前工资每多 100，扣除个人所得税和社保后还剩多少，对比 ${n} 个国家。每日更新。`,
+      bajada: "税前工资每多 100，扣除个人所得税和社保后实际留下多少。名次越靠前，留下越多。",
+      metrica: "每 100 留下",
+      carga: "边际负担率",
+      como: "这是两个工资之间的边际负担率，也就是加薪部分用于缴税和社保的比例。",
+    },
+  },
+};
+
+const zh: Diccionario<TextosRankings> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+
+export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
+  return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);
+}

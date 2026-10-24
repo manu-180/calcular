@@ -28,6 +28,8 @@ import {
   tituloSugerido,
 } from "@/lib/formulario";
 import { rastrear } from "@/lib/rastreo";
+import { conRef } from "@/motor/compartir";
+import { codigoCompartido } from "@/motor/compartir/ref";
 import { haySesion } from "@/lib/sesion-cliente";
 import { CUENTAS_ACTIVAS } from "@/lib/funciones";
 import type { Contexto, Motivo } from "./HerramientasCalculo";
@@ -164,6 +166,14 @@ function datosImpresion(pathname: string): Impresion {
 
 function campania(pathname: string): string {
   return pathname.split("/").filter(Boolean)[0] || "inicio";
+}
+
+// El mismo esquema de compartido que calcularya (src/motor/compartir): un código nuevo por cada
+// compartido viaja en el link (?r=) y en el evento, y la llegada que trae ese link (CapturaLlegada,
+// montada por el Rastreador) lleva el mismo código. /api/e valida `calc` con la forma <mercado>.<id>.
+function propsCompartir(canal: "nativo" | "link", ref: string, pathname: string) {
+  const calc = `ar.${pathname.split("/").filter(Boolean).join("-") || "inicio"}`;
+  return { canal, origen: "calculadora", ref, ...(/^(?=.{4,72}$)ar\.[a-z0-9-]+$/.test(calc) ? { calc } : {}) };
 }
 
 export default function Barra({ pathname, motivo, ctx }: { pathname: string; motivo: Motivo; ctx: Contexto }) {
@@ -431,7 +441,8 @@ export default function Barra({ pathname, motivo, ctx }: { pathname: string; mot
     const hash = hashDe(campos());
     const nativo = typeof navigator.share === "function" && window.matchMedia("(pointer: coarse)").matches;
     const canal = nativo ? "nativo" : "link";
-    const url = `${window.location.origin}${pathname}?utm_source=${canal}&utm_medium=share&utm_campaign=${campania(pathname)}${hash ?? ""}`;
+    const ref = codigoCompartido();
+    const url = `${conRef(`${window.location.origin}${pathname}?utm_source=${canal}&utm_medium=share&utm_campaign=${campania(pathname)}`, ref, "calculadora")}${hash ?? ""}`;
     if (!hash) setAviso({ tipo: "largo" });
     if (nativo) {
       try {
@@ -440,13 +451,13 @@ export default function Barra({ pathname, motivo, ctx }: { pathname: string; mot
           text: `Mirá este cálculo de ${tituloPagina(main)} en calcular.ar`,
           url,
         });
-        rastrear("compartir", { props: { canal: "nativo" } });
+        rastrear("compartir", { props: propsCompartir("nativo", ref, pathname) });
         return;
       } catch (e) {
         if ((e as DOMException)?.name === "AbortError") return;
       }
     }
-    rastrear("compartir", { props: { canal: "link" } });
+    rastrear("compartir", { props: propsCompartir("link", ref, pathname) });
     if (await copiar(url)) {
       setCopiado(true);
       anunciar("Link copiado. Pegalo donde quieras compartir el cálculo.");

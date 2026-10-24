@@ -44,14 +44,16 @@ export async function generateMetadata({
   if (idx === -1) return {};
   const mes = MESES_COMERCIO[idx];
   const nombre = mes.etiqueta.toLowerCase();
-  const baseBasico = mes.basicos["maestranza-a"];
+  // «Desde» el total más bajo de la escala: responde «sueldo comercio <mes>» con una cifra de
+  // bolsillo, no con el básico de una categoría que nadie busca (bitácora 2026-10-24).
+  const desde = Math.min(...CATEGORIAS_COMERCIO.map((c) => totalMes(mes, c.id)));
 
   return {
-    title: `Sueldo de Comercio ${nombre}: Maestranza A ${formatARS(baseBasico, 0)}`,
+    title: `Sueldo de Comercio ${nombre}: desde ${formatARS(desde, 0)}`,
     description:
       mes.noRemunerativo > 0
-        ? `Escala de ${nombre} del CCT 130/75 por categoría, con ${formatARS(mes.noRemunerativo, 0)} no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.`
-        : `Escala de ${nombre} del CCT 130/75 por categoría, con los no remunerativos ya en el básico y la variación mensual. Verificada contra la circular de FAECYS.`,
+        ? `Cuánto cobra un empleado de comercio en ${nombre}, categoría por categoría: escala del CCT 130/75 con ${formatARS(mes.noRemunerativo, 0)} no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.`
+        : `Cuánto cobra un empleado de comercio en ${nombre}, categoría por categoría: escala del CCT 130/75 con los no remunerativos ya en el básico y la variación mensual. Verificada contra la circular de FAECYS.`,
     alternates: { canonical: `/convenios/comercio/${mes.id}` },
     openGraph: {
       images: [

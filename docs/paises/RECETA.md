@@ -652,3 +652,30 @@ npx tsx scripts/check_mundo.ts
 En tu informe final: rama y commit; lista de calculadoras con su estado y por qué las que quedaron
 en borrador; tabla de datos con estado (verificado con URL, o no verificado con motivo); resultado
 de los seis comandos con números; pedidos al motor si hubo.
+
+## 19. Fechas de calendario (opcional)
+
+El calendario laboral de cada edición (`/<m>/calendario-laboral`, slug por idioma en
+`src/motor/calendario/rutas.ts`) se arma solo con el registro: tramos nuevos de `datos.json`, puntos de
+UTM/UR y novedades con `vigenteDesde`. Lo que no puede inferir es el **día fijo de pago de un bono**
+(aguinaldo hasta el 20 de diciembre, décimo cuarto hasta el 15 de agosto). Eso se declara en el dato
+cuya norma lo fija, con `calendario`:
+
+```json
+{
+  "id": "mx.dias-aguinaldo",
+  "calendario": [
+    { "id": "pago-aguinaldo", "tipo": "pago", "mes": 12, "dia": 20, "titulo": "Fecha límite para pagar el aguinaldo", "texto": "La ley obliga a pagarlo antes del 20 de diciembre.", "calculadora": "mx.aguinaldo" }
+  ]
+}
+```
+
+- La fecha tiene que estar en la misma norma que la `fuente` del tramo (el artículo que fija los días
+  suele fijar el plazo). Sin tramo verificado ese día, la fecha no sale.
+- `tipo`: `pago` (un pago a la persona) o `vencimiento` (otro plazo). `mes` 1 a 12, `dia` que exista
+  en un año no bisiesto (nada de 29 de febrero).
+- Dato por región: `region` obligatoria, una entrada por región (EC costa y sierra).
+- Ediciones en otro idioma (ca-fr, ch-it): `traducciones: { "fr": { "titulo": "...", "texto": "..." } }`.
+  Sin traducción la fecha no sale en esa edición.
+- `npx tsx scripts/check_calendario.ts` lista en «Falta en el registro» cada calculadora de bono sin
+  su fecha de pago, y falla si una fecha declarada es inválida.

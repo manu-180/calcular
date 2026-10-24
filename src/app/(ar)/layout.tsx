@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AdSense from "@/components/AdSense";
+import { ScriptExperimentos } from "@/components/Experimentos";
 import { Rastreador } from "@/components/Rastreador";
 import { AcordeonesFluidos } from "@/components/AcordeonesFluidos";
 import { HerramientasCalculo } from "@/components/herramientas/HerramientasCalculo";
@@ -73,7 +74,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-AR" className={`${geistSans.variable} h-full antialiased`}>
+    // suppressHydrationWarning: ScriptExperimentos le pone data-x-* a <html> antes de que React hidrate.
+    <html lang="es-AR" className={`${geistSans.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <ScriptExperimentos />
+      </head>
       <body className="font-sans">
         <meta name={META_HOY} content={hoyAR()} />
         <JsonLd data={GRAFO_DEL_SITIO} />

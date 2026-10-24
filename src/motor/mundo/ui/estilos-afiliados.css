@@ -1,0 +1,132 @@
+/* Enlaces patrocinados de «Tu sueldo en el mundo» (AfiliadosBloque.tsx). Se baja solo con el bloque.
+   Más callado que el ranking a propósito: aro fino, sin relleno de color, la etiqueta de patrocinio
+   siempre a la vista. Sombras negras; el hover mueve la flecha, no el bloque. */
+
+.cy-afiliados {
+  display: grid;
+  gap: 1rem;
+  /* Pegado al ranking (el gap de .cy-mundo-app es de 4.5rem): es una nota sobre esa lista, no otra sección. */
+  margin-top: -2.5rem;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: rgb(255 255 255 / 0.6);
+  box-shadow: inset 0 0 0 1px var(--cy-linea);
+}
+
+.cy-afiliados-cabeza {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.cy-afiliados-titulo {
+  font-size: 1rem;
+  font-weight: 620;
+  line-height: 1.4;
+  color: var(--cy-tinta);
+  text-wrap: balance;
+}
+
+.cy-afiliados-etiqueta {
+  flex: none;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--cy-linea-fuerte);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cy-zinc-600);
+}
+
+.cy-afiliados-lista {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cy-afiliados-enlace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "nombre icono" "texto icono";
+  column-gap: 1rem;
+  row-gap: 0.125rem;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-inline: -0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.875rem;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.3s var(--ease-fluid);
+}
+
+.cy-afiliados-nombre {
+  grid-area: nombre;
+  font-size: 0.9375rem;
+  font-weight: 620;
+  color: var(--cy-tinta);
+}
+
+.cy-afiliados-texto {
+  grid-area: texto;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--cy-zinc-600);
+  text-wrap: pretty;
+}
+
+.cy-afiliados-icono {
+  grid-area: icono;
+  width: 1rem;
+  height: 1rem;
+  color: var(--cy-zinc-500);
+  transition:
+    transform 0.35s var(--ease-fluid),
+    color 0.3s var(--ease-fluid);
+}
+
+.cy-afiliados-enlace:focus-visible {
+  outline: 2px solid var(--cy-emerald-500);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-afiliados-enlace:hover {
+    background-color: var(--cy-papel-hondo);
+  }
+
+  .cy-afiliados-enlace:hover .cy-afiliados-icono {
+    color: var(--cy-acento-tinta);
+    transform: translate(2px, -2px);
+  }
+}
+
+.cy-afiliados-nota {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--cy-zinc-500);
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) {
+  .cy-afiliados {
+    padding: 1.5rem 1.75rem;
+  }
+
+  .cy-afiliados-lista {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    column-gap: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-afiliados-enlace,
+  .cy-afiliados-icono {
+    transition: none;
+  }
+}
