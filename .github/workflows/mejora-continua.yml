@@ -1,0 +1,95 @@
+name: mejora-continua
+
+# Cada lunes: informe de fugas con datos reales (ca_fugas + Search Console) y, sobre ese informe, un
+# agente de Claude que cierra experimentos con veredicto y aplica hasta dos mejoras (docs/medicion/AGENTE.md).
+# Cuesta ~30 min de Actions por semana. Para correr sólo el informe: workflow_dispatch con agente=false.
+
+on:
+  schedule:
+    - cron: "0 13 * * 1"
+  workflow_dispatch:
+    inputs:
+      agente:
+        description: "Correr el agente después del informe"
+        required: false
+        default: true
+        type: boolean
+
+concurrency:
+  group: mejora-continua
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  informe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Informe de fugas
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: npx tsx scripts/medicion/informe.ts
+
+      - name: Publicar el informe
+        run: |
+          git config user.name "manu-180"
+          git config user.email "157671390+manu-180@users.noreply.github.com"
+          git add docs/medicion
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "medicion: informe de fugas $(date -u +%F)"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+  agente:
+    needs: informe
+    if: github.event_name == 'schedule' || inputs.agente
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      # Vercel deja BLOCKED un deploy cuyo autor no es el dueño del proyecto: los commits del agente
+      # salen con el noreply de manu-180, igual que los de datos-vivos.
+      - run: |
+          git config user.name "manu-180"
+          git config user.email "157671390+manu-180@users.noreply.github.com"
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            REPO: ${{ github.repository }} · rama main · fecha ${{ github.run_started_at }}
+            Leé docs/medicion/AGENTE.md y seguilo al pie de la letra. Trabajás en español.
+          claude_args: |
+            --model claude-opus-5-5
+            --max-turns 120
+            --allowedTools "Read,Edit,Write,Glob,Grep,Bash(npm:*),Bash(npx:*),Bash(node:*),Bash(git:*),Bash(ls:*),Bash(cat:*)"
