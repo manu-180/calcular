@@ -12,6 +12,8 @@ import kalkulatorCutiTahunan from "./calculadoras/kalkulator-cuti-tahunan";
 import contenidoKalkulatorCutiTahunan from "./contenido/kalkulator-cuti-tahunan";
 import kalkulatorGajiBersih from "./calculadoras/kalkulator-gaji-bersih";
 import contenidoKalkulatorGajiBersih from "./contenido/kalkulator-gaji-bersih";
+import kalkulatorInflasi from "./calculadoras/kalkulator-inflasi";
+import contenidoKalkulatorInflasi from "./contenido/kalkulator-inflasi";
 import kalkulatorLembur from "./calculadoras/kalkulator-lembur";
 import contenidoKalkulatorLembur from "./contenido/kalkulator-lembur";
 import kalkulatorPajakPesangon from "./calculadoras/kalkulator-pajak-pesangon";
@@ -34,6 +36,8 @@ import kalkulatorTerPph21 from "./calculadoras/kalkulator-ter-pph-21";
 import contenidoKalkulatorTerPph21 from "./contenido/kalkulator-ter-pph-21";
 import kalkulatorThr from "./calculadoras/kalkulator-thr";
 import contenidoKalkulatorThr from "./contenido/kalkulator-thr";
+import kalkulatorZakatPenghasilan from "./calculadoras/kalkulator-zakat-penghasilan";
+import contenidoKalkulatorZakatPenghasilan from "./contenido/kalkulator-zakat-penghasilan";
 import kursJisdor from "./calculadoras/kurs-jisdor";
 import contenidoKursJisdor from "./contenido/kurs-jisdor";
 import upahMinimumProvinsi from "./calculadoras/upah-minimum-provinsi";
@@ -56,6 +60,7 @@ export default definirPais({
     { definicion: kalkulatorBpjsKetenagakerjaan, contenido: contenidoKalkulatorBpjsKetenagakerjaan, cliente: () => import("./calculadoras/kalkulator-bpjs-ketenagakerjaan.cliente") },
     { definicion: kalkulatorCutiTahunan, contenido: contenidoKalkulatorCutiTahunan, cliente: () => import("./calculadoras/kalkulator-cuti-tahunan.cliente") },
     { definicion: kalkulatorGajiBersih, contenido: contenidoKalkulatorGajiBersih, cliente: () => import("./calculadoras/kalkulator-gaji-bersih.cliente") },
+    { definicion: kalkulatorInflasi, contenido: contenidoKalkulatorInflasi, cliente: () => import("./calculadoras/kalkulator-inflasi.cliente") },
     { definicion: kalkulatorLembur, contenido: contenidoKalkulatorLembur, cliente: () => import("./calculadoras/kalkulator-lembur.cliente") },
     { definicion: kalkulatorPajakPesangon, contenido: contenidoKalkulatorPajakPesangon, cliente: () => import("./calculadoras/kalkulator-pajak-pesangon.cliente") },
     { definicion: kalkulatorPajakSewa, contenido: contenidoKalkulatorPajakSewa, cliente: () => import("./calculadoras/kalkulator-pajak-sewa.cliente") },
@@ -67,6 +72,7 @@ export default definirPais({
     { definicion: kalkulatorPpn, contenido: contenidoKalkulatorPpn, cliente: () => import("./calculadoras/kalkulator-ppn.cliente") },
     { definicion: kalkulatorTerPph21, contenido: contenidoKalkulatorTerPph21, cliente: () => import("./calculadoras/kalkulator-ter-pph-21.cliente") },
     { definicion: kalkulatorThr, contenido: contenidoKalkulatorThr, cliente: () => import("./calculadoras/kalkulator-thr.cliente") },
+    { definicion: kalkulatorZakatPenghasilan, contenido: contenidoKalkulatorZakatPenghasilan, cliente: () => import("./calculadoras/kalkulator-zakat-penghasilan.cliente") },
     { definicion: kursJisdor, contenido: contenidoKursJisdor, cliente: () => import("./calculadoras/kurs-jisdor.cliente") },
     { definicion: upahMinimumProvinsi, contenido: contenidoUpahMinimumProvinsi, cliente: () => import("./calculadoras/upah-minimum-provinsi.cliente") },
   ],
