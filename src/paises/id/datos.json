@@ -1091,6 +1091,48 @@
       ]
     },
     {
+      "id": "id.pph-bunga-deposito",
+      "nombre": "Tarif PPh final bunga deposito dan tabungan",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2001-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 131 Tahun 2000, Pasal 2 dan Pasal 3",
+            "url": "https://jdih.kemenkeu.go.id/api/download/fulltext/2000/131TAHUN2000PP.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "PP 123/2015 solo agrega reglas para depósitos de divisas de exportación."
+          }
+        }
+      ]
+    },
+    {
+      "id": "id.deposito-batas-tidak-dipotong",
+      "nombre": "Jumlah deposito dan tabungan yang bunganya tidak dipotong PPh",
+      "tipo": "numero",
+      "unidad": "IDR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2001-01-01",
+          "valor": 7500000,
+          "fuente": {
+            "organismo": "Kementerian Keuangan (JDIH)",
+            "titulo": "PP Nomor 131 Tahun 2000, Pasal 2 dan Pasal 3",
+            "url": "https://jdih.kemenkeu.go.id/api/download/fulltext/2000/131TAHUN2000PP.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "PP 123/2015 solo agrega reglas para depósitos de divisas de exportación."
+          }
+        }
+      ]
+    },
+    {
       "id": "id.pph-sewa",
       "nombre": "Tarif PPh final sewa tanah dan/atau bangunan",
       "tipo": "numero",

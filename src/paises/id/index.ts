@@ -10,8 +10,12 @@ import kalkulatorBpjsKetenagakerjaan from "./calculadoras/kalkulator-bpjs-ketena
 import contenidoKalkulatorBpjsKetenagakerjaan from "./contenido/kalkulator-bpjs-ketenagakerjaan";
 import kalkulatorCutiTahunan from "./calculadoras/kalkulator-cuti-tahunan";
 import contenidoKalkulatorCutiTahunan from "./contenido/kalkulator-cuti-tahunan";
+import kalkulatorDeposito from "./calculadoras/kalkulator-deposito";
+import contenidoKalkulatorDeposito from "./contenido/kalkulator-deposito";
 import kalkulatorGajiBersih from "./calculadoras/kalkulator-gaji-bersih";
 import contenidoKalkulatorGajiBersih from "./contenido/kalkulator-gaji-bersih";
+import kalkulatorGrossUpPph21 from "./calculadoras/kalkulator-gross-up-pph-21";
+import contenidoKalkulatorGrossUpPph21 from "./contenido/kalkulator-gross-up-pph-21";
 import kalkulatorInflasi from "./calculadoras/kalkulator-inflasi";
 import contenidoKalkulatorInflasi from "./contenido/kalkulator-inflasi";
 import kalkulatorLembur from "./calculadoras/kalkulator-lembur";
@@ -59,7 +63,9 @@ export default definirPais({
     { definicion: kalkulatorBpjsKesehatan, contenido: contenidoKalkulatorBpjsKesehatan, cliente: () => import("./calculadoras/kalkulator-bpjs-kesehatan.cliente") },
     { definicion: kalkulatorBpjsKetenagakerjaan, contenido: contenidoKalkulatorBpjsKetenagakerjaan, cliente: () => import("./calculadoras/kalkulator-bpjs-ketenagakerjaan.cliente") },
     { definicion: kalkulatorCutiTahunan, contenido: contenidoKalkulatorCutiTahunan, cliente: () => import("./calculadoras/kalkulator-cuti-tahunan.cliente") },
+    { definicion: kalkulatorDeposito, contenido: contenidoKalkulatorDeposito, cliente: () => import("./calculadoras/kalkulator-deposito.cliente") },
     { definicion: kalkulatorGajiBersih, contenido: contenidoKalkulatorGajiBersih, cliente: () => import("./calculadoras/kalkulator-gaji-bersih.cliente") },
+    { definicion: kalkulatorGrossUpPph21, contenido: contenidoKalkulatorGrossUpPph21, cliente: () => import("./calculadoras/kalkulator-gross-up-pph-21.cliente") },
     { definicion: kalkulatorInflasi, contenido: contenidoKalkulatorInflasi, cliente: () => import("./calculadoras/kalkulator-inflasi.cliente") },
     { definicion: kalkulatorLembur, contenido: contenidoKalkulatorLembur, cliente: () => import("./calculadoras/kalkulator-lembur.cliente") },
     { definicion: kalkulatorPajakPesangon, contenido: contenidoKalkulatorPajakPesangon, cliente: () => import("./calculadoras/kalkulator-pajak-pesangon.cliente") },
