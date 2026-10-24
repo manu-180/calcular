@@ -137,9 +137,11 @@ Neo/Malgun Gothic, PingFang TC/HK/SC, Microsoft JhengHei/YaHei), con Noto Sans J
 respaldo si está instalada. `line-break: strict` en ja y zh, `word-break: keep-all` en ko, tracking 0
 en títulos CJK. El peso de las páginas latinas no cambia.
 
-**Ofertas.** El diccionario de venta (`src/lib/pagos/textos`) sigue en los siete idiomas de antes:
-`IDIOMAS_VENTA`. Un mercado ja, ko o zh no genera informes ni ofertas, y `check_ofertas_intl` falla si
-se registra un país real de esos idiomas sin su diccionario de venta. Traducirlo es el paso siguiente.
+**Ofertas.** El diccionario de venta (`src/lib/pagos/textos`) está en ja, ko y zh. El chino tiene
+dos diccionarios completos (`zh.ts` tradicional y `zh-hans.ts` simplificado) y las funciones de venta
+reciben el locale del mercado para elegir. La carta del informe usa puntuación de ancho completo en ja y
+zh (`informe.anchoCompleto`); en coreano la carta va en 합니다체, que es el registro de una carta formal
+(`check_ofertas_intl` la exime de la regla del 해요체).
 
 **Prueba.** `zz-ja` (Zetaland en japonés) es una edición interna como `zz-en`. `check_universales`
 prueba ja-JP, ko-KR, zh-TW, zh-HK y zh-CN, con nombres de país largos.

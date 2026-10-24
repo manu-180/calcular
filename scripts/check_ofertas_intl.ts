@@ -1,7 +1,7 @@
 // Ofertas dentro del resultado de calcularya.com (src/lib/pagos/ofertas-intl.ts y ofertas-servidor.ts):
 // - catálogo: cada informe con id, precio (USD 3 a 9) y familia válidos; ningún id hostil resuelve;
-// - cobertura: todo concepto tiene familia salvo los de SIN_FAMILIA; toda calculadora publicada de
-//   un concepto con familia tiene su informe; las que la familia promete con tabla la declaran; y la
+// - cobertura: todo concepto tiene familia salvo los de SIN_FAMILIA (hoy ninguno); toda calculadora
+//   publicada tiene un informe a la venta y el de la familia de su concepto; las que la familia promete con tabla la declaran; y la
 //   tabla concepto → oferta → países sale impresa;
 // - informe: con las entradas de los .casos.ts (y los valores por defecto) el viaje
 //   entrada → validación del servidor → texto del formulario → entrada da lo mismo, y los números del
@@ -30,8 +30,10 @@ import { hoyEn } from "../src/motor/vigencia";
 import { registro } from "../src/paises";
 import { PRODUCTOS_INTL, productoIntl, productoIntlDe, leerReferenciaIntl, type ProductoIntl } from "../src/lib/pagos/catalogo-intl";
 import { FAMILIAS, SIN_FAMILIA, campoEscenario, familiaDeConcepto, nombreDeCalculo, precioUSD } from "../src/lib/pagos/ofertas-intl";
-import { DICCIONARIOS, FAMILIAS_POR_LOCALE, IDIOMAS_VENTA, resolver, tieneVenta, type IdiomaVenta } from "../src/lib/pagos/textos";
+import { DICCIONARIOS, FAMILIAS_POR_LOCALE, IDIOMAS_VENTA, resolverTrato, tieneVenta, type DiccionarioVenta, type IdiomaVenta } from "../src/lib/pagos/textos";
+import { zhHans } from "../src/lib/pagos/textos/zh-hans";
 import { idiomaDeLocale } from "../src/motor/i18n/resolver";
+import { problemasDeTexto } from "./reglas_idioma";
 import { bloqueDe, calculadorasDeProducto, mapaDePlanillaIntl, ofertasDeMercado, planillaConDatos, validarDatosDeProducto } from "../src/lib/pagos/ofertas-servidor";
 import { calcularEscenarios, estadoDelInforme, filaClave } from "../src/lib/pagos/informe-intl";
 import { valorDeCelda } from "../src/lib/pagos/mapa-planilla-intl";
@@ -119,6 +121,7 @@ function checkCobertura(): Map<string, { oferta: string; paises: Set<string> }[]
       const de = ofertas.porCalculadora[def.id];
       const f = familiaDeConcepto(def.concepto);
       if (f && !de?.ofertas.some((o) => o.tipo === "informe" && o.familia === f.clave)) fallo(`${def.id}: el concepto ${def.concepto} tiene la familia ${f.clave} y la calculadora no la ofrece`);
+      if (!de?.ofertas.some((o) => o.tipo === "informe")) fallo(`${def.id}: publicada sin oferta de venta (concepto ${def.concepto})`);
       if (de && de.calc !== def.slug) fallo(`${def.id}: la oferta apunta a ${de.calc}`);
       if (de && (!de.nombre || /\{\{/.test(de.nombre))) fallo(`${def.id}: nombre del cálculo raro «${de.nombre}»`);
       if (f && (f.conTabla ?? []).includes(def.concepto) && !def.tablas?.length) fallo(`${def.id}: la familia ${f.clave} promete la tabla completa y la calculadora no declara tablas`);
@@ -336,10 +339,12 @@ const VOSEO = /(?<![\p{L}])(tenés|podés|pagás|cambiás|querés|elegí|revisá
 const TUTEO = /(?<![\p{L}])(tú|tu|tus|te|ti|puedes|tienes|pagas|quieres|llévate|ábrelo|escríbenos|corrígelo|cambias|aportas|imprimes|guardas|pagarías|terminas|ahorras|cobras|facturas|necesitas|buscas|calculaste|cargaste|usaste|comes|mueves|duermes|sientes|pones|ganas|llegas|consigues)(?![\p{L}])/iu;
 const VOSEO_EN_VOS_NO = /(?<![\p{L}])(puedes|tienes|pagas|quieres|ábrelo|escríbenos|corrígelo|imprimes|guardas|cambias|aportas|terminas|ahorras|cobras|facturas|necesitas|buscas|comes|mueves|duermes|sientes|pones|ganas|llegas|consigues)(?![\p{L}])/iu;
 
-function revisarTexto(origen: string, idioma: Idioma, trato: Trato, s: string) {
+// carta: la nota es una carta formal que firma la persona (en coreano va en 합니다체, no en el 해요체 del sitio).
+function revisarTexto(origen: string, idioma: Idioma, trato: Trato, s: string, locale?: string, carta = false) {
   if (!s.trim()) fallo(`${origen}: texto vacío`);
   if (RAYA.test(s)) fallo(`${origen}: raya en «${s}»`);
   if (EMOJI.test(s)) fallo(`${origen}: emoji en «${s}»`);
+  if (idioma === "ja" || idioma === "ko" || idioma === "zh") for (const p of problemasDeTexto(s, idioma, trato, locale)) if (!(carta && p.startsWith("합니다체"))) fallo(`${origen}: ${p} en «${s.slice(0, 60)}»`);
   if (idioma !== "es") return;
   if (trato !== "vos" && VOSEO.test(s)) fallo(`${origen} (${trato}): voseo «${VOSEO.exec(s)![0]}» en «${s}»`);
   if (trato === "usted" && TUTEO.test(s)) fallo(`${origen} (usted): tuteo «${TUTEO.exec(s)![0]}» en «${s}»`);
@@ -353,7 +358,13 @@ function textosDe(valor: unknown, salida: string[] = []): string[] {
   return salida;
 }
 
-const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"] };
+const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"] };
+
+// Cada diccionario que se revisa, con el locale de su escritura (el chino simplificado es aparte).
+const REVISADOS: readonly { nombre: string; idioma: IdiomaVenta; locale?: string; d: DiccionarioVenta }[] = [
+  ...IDIOMAS_VENTA.map((idioma) => ({ nombre: idioma as string, idioma, d: DICCIONARIOS[idioma] })),
+  { nombre: "zh-CN", idioma: "zh", locale: "zh-CN", d: zhHans },
+];
 
 // Las piezas de cada familia tienen que ser las mismas en todos los idiomas: un paso, un punto o
 // una nota que falta en un idioma es una promesa que en ese país no se cumple.
@@ -365,10 +376,10 @@ function checkTextos() {
   let revisados = 0;
   for (const f of FAMILIAS) {
     const base = forma(DICCIONARIOS.es.familias[f.clave]);
-    for (const idioma of IDIOMAS_VENTA) {
-      const tf = DICCIONARIOS[idioma].familias[f.clave];
-      if (forma(tf) !== base) fallo(`familia ${f.clave} (${idioma}): piezas distintas del español ${forma(tf)} vs ${base}`);
-      if (!!f.escenarios !== !!tf.escenarios) fallo(`familia ${f.clave} (${idioma}): la estructura ${f.escenarios ? "tiene" : "no tiene"} escenarios y el texto no coincide`);
+    for (const { nombre, d } of REVISADOS) {
+      const tf = d.familias[f.clave];
+      if (forma(tf) !== base) fallo(`familia ${f.clave} (${nombre}): piezas distintas del español ${forma(tf)} vs ${base}`);
+      if (!!f.escenarios !== !!tf.escenarios) fallo(`familia ${f.clave} (${nombre}): la estructura ${f.escenarios ? "tiene" : "no tiene"} escenarios y el texto no coincide`);
     }
     for (const [locale, familias] of Object.entries(FAMILIAS_POR_LOCALE)) {
       const tf = familias[f.clave];
@@ -379,22 +390,23 @@ function checkTextos() {
         fallo(`familia ${f.clave} (${locale}): el locale no es de un idioma con diccionario de venta`);
         continue;
       }
-      for (const trato of TRATOS[idiomaLocale]) for (const s of textosDe(resolver(tf, trato))) (revisarTexto(`${locale} familia ${f.clave}`, idiomaLocale, trato, s), revisados++);
+      for (const trato of TRATOS[idiomaLocale]) for (const s of textosDe(resolverTrato(tf, trato))) (revisarTexto(`${locale} familia ${f.clave}`, idiomaLocale, trato, s), revisados++);
     }
   }
-  for (const idioma of IDIOMAS_VENTA) {
-    const d = DICCIONARIOS[idioma];
-    for (const trato of TRATOS[idioma]) {
-      const { planillas: _p, correo: _c, catalogo: _k, tarjeta, ...resto } = resolver(d, trato);
-      for (const [clave, f] of Object.entries(resto.familias)) for (const s of textosDe(f)) (revisarTexto(`${idioma} familia ${clave}`, idioma, trato, s), revisados++);
-      for (const s of textosDe([resto.general, resto.aviso, resto.planilla, resto.informe])) {
-        revisarTexto(`${idioma} ofertas`, idioma, trato, s);
-        if (PLANTILLA.test(s)) fallo(`${idioma} ofertas: marca de plantilla en «${s}»`);
+  for (const { nombre: idioma, idioma: id, locale, d } of REVISADOS) {
+    for (const trato of TRATOS[id]) {
+      const rev = (origen: string, t: string) => revisarTexto(origen, id, trato, t, locale);
+      const carta = new Set(Object.values(resolverTrato(d.familias, trato)).flatMap((f) => (f.nota ? [f.nota.pedido, f.nota.cierre] : [])));
+      const { planillas: _p, correo: _c, catalogo: _k, tarjeta, ...resto } = resolverTrato(d, trato);
+      for (const [clave, f] of Object.entries(resto.familias)) for (const t of textosDe(f)) (revisarTexto(`${idioma} familia ${clave}`, id, trato, t, locale, carta.has(t)), revisados++);
+      for (const t of textosDe([resto.general, resto.aviso, resto.planilla, resto.informe])) {
+        rev(`${idioma} ofertas`, t);
+        if (PLANTILLA.test(t)) fallo(`${idioma} ofertas: marca de plantilla en «${t}»`);
         revisados++;
       }
-      for (const s of textosDe(tarjeta)) (revisarTexto(`${idioma} tarjeta`, idioma, trato, s), revisados++);
+      for (const t of textosDe(tarjeta)) (rev(`${idioma} tarjeta`, t), revisados++);
       if (!/\{monto\}/.test(tarjeta.equivale) || !/\{hoja\}/.test(tarjeta.bajadaPlanillaHoja)) fallo(`${idioma} tarjeta: falta {monto} o {hoja}`);
-      for (const s of textosDe([_p, _c, _k])) (revisarTexto(`${idioma} planillas, mail y catálogo`, idioma, trato, s), revisados++);
+      for (const t of textosDe([_p, _c, _k])) (rev(`${idioma} planillas, mail y catálogo`, t), revisados++);
     }
   }
   for (const pais of registro.paises) {

@@ -84,7 +84,7 @@ export async function PaginaCompra({ params, searchParams, tipo }: ParamsCompra 
         </form>
       ) : (
         <div style={{ maxWidth: "30rem" }}>
-          <AvisoPronto producto={p.id} textos={textosTarjeta(m.idioma, m.trato).aviso} />
+          <AvisoPronto producto={p.id} textos={textosTarjeta(m.idioma, m.trato, m.locale).aviso} />
         </div>
       )}
     </div>

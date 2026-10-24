@@ -834,6 +834,40 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: AUTRES_MONTANTS,
   },
+  "informe-calculo": {
+    nombre: "Rapport de calcul",
+    tituloCorto: "rapport de calcul",
+    paraQuien: F(
+      "Pour avoir ce calcul par écrit, avec tes chiffres, ses hypothèses et la source de chaque valeur officielle",
+      "Pour avoir ce calcul par écrit, avec vos chiffres, ses hypothèses et la source de chaque valeur officielle",
+    ),
+    descripcion: [
+      F(
+        "Un rapport PDF du calcul que tu viens de faire, étape par étape et avec tes données : le résultat, les hypothèses retenues et chaque valeur officielle avec sa source et la date de vérification.",
+        "Un rapport PDF du calcul que vous venez de faire, étape par étape et avec vos données : le résultat, les hypothèses retenues et chaque valeur officielle avec sa source et la date de vérification.",
+      ),
+      F(
+        "À garder dans tes dossiers ou à montrer à ton comptable, à ton employeur ou à toute personne qui doit le vérifier, sans tout réexpliquer.",
+        "À garder dans vos dossiers ou à montrer à votre comptable, à votre employeur ou à toute personne qui doit le vérifier, sans tout réexpliquer.",
+      ),
+    ],
+    gancho: F("Garde ce calcul par écrit, avec ses sources", "Gardez ce calcul par écrit, avec ses sources"),
+    incluye: [
+      { titulo: "Le résultat avec tes données", texto: F("Tel que tu l'as calculé, prêt à imprimer.", "Tel que vous l'avez calculé, prêt à imprimer.") },
+      { titulo: "Comment il se calcule", texto: "Les étapes et les hypothèses, pour retrouver l'origine de chaque chiffre." },
+      { titulo: "Les sources officielles", texto: "Chaque valeur avec l'organisme, le lien et la date de vérification." },
+    ],
+    pasos: {
+      titulo: "Avant de l'utiliser",
+      items: [
+        F("Vérifie que les données en haut sont bien les tiennes : le résultat en dépend.", "Vérifiez que les données en haut sont bien les vôtres : le résultat en dépend."),
+        F(
+          "Si une valeur officielle a changé, refais le calcul : le rapport utilise celles en vigueur le jour de l'achat.",
+          "Si une valeur officielle a changé, refaites le calcul : le rapport utilise celles en vigueur le jour de l'achat.",
+        ),
+      ],
+    },
+  },
 };
 
 export const fr: DiccionarioVenta = {
