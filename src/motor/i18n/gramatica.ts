@@ -306,5 +306,56 @@ const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `
 // Sueco, danés y noruego no declinan el nombre del país: «i Sverige», «för Sverige».
 const sv: GramaticaPais = { nombre: (p) => p, de: (p) => `för ${p}`, en: (p) => `i ${p}`, para: (p) => `för ${p}` };
 const da: GramaticaPais = { nombre: (p) => p, de: (p) => `for ${p}`, en: (p) => `i ${p}`, para: (p) => `for ${p}` };
+const nb: GramaticaPais = { nombre: (p) => p, de: (p) => `for ${p}`, en: (p) => `i ${p}`, para: (p) => `for ${p}` };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv };
+// En finés el nombre se declina y no lleva preposición: «Suomi», «Suomen» (genitivo), «Suomessa»
+// (inesivo) o «Maltalla» (adesivo, islas y algunos países). `de` y `para` devuelven el genitivo, que
+// va DELANTE del sustantivo («Suomen laskurit», «Suomen viralliset tiedot»); `en` devuelve el caso de
+// lugar entero («Suomessa»). La tabla cubre los nombres compuestos, los plurales y los que van con
+// -lla; el resto sale por regla: gradación consonántica en la última sílaba (Islanti → Islannin,
+// Kreikka → Kreikan, Itävalta → Itävallan), -in/-issa tras consonante y armonía vocálica según la
+// última palabra del nombre (Ruotsissa, Sveitsissä).
+const fi: GramaticaPais = (() => {
+  const TAULU: Readonly<Record<string, readonly [string, string]>> = {
+    Suomi: ["Suomen", "Suomessa"],
+    Yhdysvallat: ["Yhdysvaltojen", "Yhdysvalloissa"],
+    "Iso-Britannia": ["Ison-Britannian", "Isossa-Britanniassa"],
+    "Uusi-Seelanti": ["Uuden-Seelannin", "Uudessa-Seelannissa"],
+    Alankomaat: ["Alankomaiden", "Alankomaissa"],
+    Filippiinit: ["Filippiinien", "Filippiineillä"],
+    "Arabiemiirikunnat": ["Arabiemiirikuntien", "Arabiemiirikunnissa"],
+    "Yhdistyneet arabiemiirikunnat": ["Yhdistyneiden arabiemiirikuntien", "Yhdistyneissä arabiemiirikunnissa"],
+    Seychellit: ["Seychellien", "Seychelleillä"],
+    Malediivit: ["Malediivien", "Malediiveilla"],
+    Bahama: ["Bahaman", "Bahamalla"],
+    Venäjä: ["Venäjän", "Venäjällä"],
+    Malta: ["Maltan", "Maltalla"],
+    Kypros: ["Kyproksen", "Kyproksella"],
+    Barbados: ["Barbadoksen", "Barbadoksella"],
+    Mauritius: ["Mauritiuksen", "Mauritiuksella"],
+    Jamaika: ["Jamaikan", "Jamaikalla"],
+    Madagaskar: ["Madagaskarin", "Madagaskarilla"],
+    Liechtenstein: ["Liechtensteinin", "Liechtensteinissa"],
+    Belize: ["Belizen", "Belizessä"],
+  };
+  const VOKAALI = /[aeiouyäö]$/;
+  const taka = (p: string) => /[aou]/.test(p.split(/[\s-]/).pop()!.toLowerCase());
+  // Gradación consonántica de la última sílaba, solo en los patrones que aparecen en nombres de país.
+  const vartalo = (p: string) =>
+    p
+      .replace(/nti$/, "nni")
+      .replace(/lta$/, "lla")
+      .replace(/kk([aeiouyäö])$/, "k$1")
+      .replace(/tt([aeiouyäö])$/, "t$1")
+      .replace(/pp([aeiouyäö])$/, "p$1");
+  const muodot = (p: string): readonly [string, string] => {
+    if (TAULU[p]) return TAULU[p];
+    const ssa = taka(p) ? "ssa" : "ssä";
+    if (!VOKAALI.test(p)) return [`${p}in`, `${p}i${ssa}`];
+    const v = vartalo(p);
+    return [`${v}n`, `${v}${ssa}`];
+  };
+  return { nombre: (p) => p, de: (p) => muodot(p)[0], en: (p) => muodot(p)[1], para: (p) => muodot(p)[0] };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi };
