@@ -535,6 +535,428 @@
           }
         }
       ]
+    },
+    {
+      "id": "ci.duree-legale-travail",
+      "nombre": "Durée normale du travail (hors établissements agricoles)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-20",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Loi n° 2015-532 du 20 juillet 2015 portant Code du travail, modifiée",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.heures-sup-majorations",
+      "nombre": "Majorations minimales des heures supplémentaires",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "premieres": "De la 41e à la 46e heure",
+        "suivantes": "Au-delà de la 46e heure",
+        "nuit": "Heures de nuit",
+        "dimanche-jour": "Dimanches et jours fériés, de jour",
+        "dimanche-nuit": "Dimanches et jours fériés, de nuit"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-03-07",
+          "valor": {
+            "premieres": 15,
+            "suivantes": 50,
+            "nuit": 75,
+            "dimanche-jour": 75,
+            "dimanche-nuit": 100
+          },
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Décret n° 96-203 du 7 mars 1996 relatif à la durée du travail, article 24",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.heures-sup-premiere-tranche",
+      "nombre": "Nombre d'heures supplémentaires majorées au premier taux chaque semaine",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-03-07",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Décret n° 96-203 du 7 mars 1996 relatif à la durée du travail, article 24",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.licenciement-taux",
+      "nombre": "Indemnité de licenciement : pourcentage du salaire global mensuel moyen par année de présence",
+      "tipo": "escala",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-03-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5,
+              "tasa": 30
+            },
+            {
+              "desde": 5,
+              "hasta": 10,
+              "tasa": 35
+            },
+            {
+              "desde": 10,
+              "hasta": null,
+              "tasa": 40
+            }
+          ],
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Décret n° 2017-210 du 30 mars 2017 relatif à l'indemnité de licenciement et à l'indemnité de départ à la retraite",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.licenciement-anciennete-min",
+      "nombre": "Ancienneté minimale pour l'indemnité de licenciement",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-03-30",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Décret n° 2017-210 du 30 mars 2017 relatif à l'indemnité de licenciement et à l'indemnité de départ à la retraite",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.fin-contrat-taux",
+      "nombre": "Indemnité de fin de contrat à durée déterminée",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-20",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Loi n° 2015-532 du 20 juillet 2015 portant Code du travail, modifiée",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.conges-jours-par-mois",
+      "nombre": "Congé payé acquis par mois de service effectif",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-12-22",
+          "valor": 2.2,
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Loi n° 2015-532 du 20 juillet 2015 portant Code du travail, modifiée",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.conges-supplement-anciennete",
+      "nombre": "Jours de congé supplémentaires par an selon l'ancienneté",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "5": "Après 5 ans",
+        "10": "Après 10 ans",
+        "15": "Après 15 ans",
+        "20": "Après 20 ans",
+        "25": "Après 25 ans",
+        "30": "Après 30 ans"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-12-22",
+          "valor": {
+            "5": 1,
+            "10": 2,
+            "15": 3,
+            "20": 5,
+            "25": 7,
+            "30": 8
+          },
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Loi n° 2015-532 du 20 juillet 2015 portant Code du travail, modifiée",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.conges-allocation-diviseur",
+      "nombre": "Allocation de congé : fraction de la rémunération totale de la période (diviseur)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-28",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Décret n° 98-39 du 28 janvier 1998 relatif au régime des congés payés, article 12",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.preavis-mois",
+      "nombre": "Durée du préavis en mois",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "jusqu-6-ans": "Jusqu'à 6 ans",
+        "6-11-ans": "De 6 à 11 ans",
+        "11-16-ans": "De 11 à 16 ans",
+        "plus-16-ans": "Au-delà de 16 ans",
+        "cadres-jusqu-16-ans": "6e catégorie et au-delà, jusqu'à 16 ans",
+        "cadres-plus-16-ans": "6e catégorie et au-delà, au-delà de 16 ans"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-03-07",
+          "valor": {
+            "jusqu-6-ans": 1,
+            "6-11-ans": 2,
+            "11-16-ans": 3,
+            "plus-16-ans": 4,
+            "cadres-jusqu-16-ans": 3,
+            "cadres-plus-16-ans": 4
+          },
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Décret n° 96-200 du 7 mars 1996 relatif à la durée du préavis de rupture du contrat de travail",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.preavis-jours",
+      "nombre": "Durée du préavis en jours des travailleurs payés à l'heure, à la journée, à la semaine ou à la quinzaine",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "moins-6-mois": "Jusqu'à 6 mois",
+        "6-mois-1-an": "De 6 mois à 1 an"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-03-07",
+          "valor": {
+            "moins-6-mois": 8,
+            "6-mois-1-an": 15
+          },
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Décret n° 96-200 du 7 mars 1996 relatif à la durée du préavis de rupture du contrat de travail",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.prime-anciennete-taux",
+      "nombre": "Prime d'ancienneté : taux en pourcentage du salaire minimum de la catégorie",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "initial": "Taux après la durée minimale",
+        "par-annee": "Taux par année supplémentaire"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1977-07-19",
+          "valor": {
+            "initial": 2,
+            "par-annee": 1
+          },
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Convention collective interprofessionnelle du 19 juillet 1977, articles 53 et 55",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.prime-anciennete-annees",
+      "nombre": "Prime d'ancienneté : années de service",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "debut": "Ancienneté ouvrant droit à la prime",
+        "plafond": "Dernière année prise en compte"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1977-07-19",
+          "valor": {
+            "debut": 2,
+            "plafond": 25
+          },
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Convention collective interprofessionnelle du 19 juillet 1977, articles 53 et 55",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.prime-fin-annee",
+      "nombre": "Prime de fin d'année minimale, en pourcentage du salaire minimum conventionnel mensuel",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1977-07-19",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Journal officiel de Côte d'Ivoire",
+            "titulo": "Convention collective interprofessionnelle du 19 juillet 1977, articles 53 et 55",
+            "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18",
+            "nota": "Texte lu dans le recueil « Le Code du travail ivoirien et la Convention collective interprofessionnelle, édition 2025 » publié par l'Université virtuelle de Côte d'Ivoire, qui reproduit les textes parus au Journal officiel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.parite-euro",
+      "nombre": "Parité fixe du franc CFA (XOF) avec l'euro",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-01-01",
+          "valor": 655.957,
+          "fuente": {
+            "organismo": "BCEAO",
+            "titulo": "Page d'accueil de la BCEAO : cours des devises et taux directeurs",
+            "url": "https://www.bceao.int/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ci.bceao-taux-directeurs",
+      "nombre": "Taux directeurs de la BCEAO",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "minimum-soumission": "Taux minimum de soumission aux appels d'offres",
+        "pret-marginal": "Taux du guichet de prêt marginal"
+      },
+      "proximaRevision": "2026-12-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-16",
+          "valor": {
+            "minimum-soumission": 3,
+            "pret-marginal": 5
+          },
+          "fuente": {
+            "organismo": "BCEAO",
+            "titulo": "Page d'accueil de la BCEAO : cours des devises et taux directeurs",
+            "url": "https://www.bceao.int/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-18"
+          }
+        }
+      ]
     }
   ]
 }

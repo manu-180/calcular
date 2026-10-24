@@ -1,4 +1,25 @@
 {
   "mercado": "ci",
-  "series": []
+  "series": [
+    {
+      "id": "ci.usd-xof",
+      "nombre": "Dollar US en francs CFA (moyenne des cours d'achat et de vente de la BCEAO)",
+      "unidad": "XOF",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "BCEAO",
+        "titulo": "Cours des devises publiés sur la page d'accueil de la BCEAO",
+        "url": "https://www.bceao.int/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-23"
+      },
+      "puntos": [
+        [
+          "2026-10-23",
+          586
+        ]
+      ]
+    }
+  ]
 }
