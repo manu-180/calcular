@@ -358,6 +358,35 @@ la definición: `index.ts`, el cliente o los casos).
 
 `check_paises.ts` falla si una calculadora `publicado` no se puede publicar hoy.
 
+### `mundo`: el sueldo neto en «Tu sueldo en el mundo»
+
+La calculadora de concepto `sueldo-neto` de la edición principal del país (código ISO, sin sufijo)
+entra sola a la comparación entre países: el motor la corre en 56 brutos anuales (en dólares
+internacionales, pasados a tu moneda con la PPA del Banco Mundial) y guarda el neto. Supuestos fijos:
+persona soltera, sin hijos, empleo formal, valores por defecto de cada campo y región por defecto.
+El neto tiene que ser **después del impuesto a la renta y de los aportes de la persona**.
+
+Para leer tu calculadora el motor la infiere (primer campo `moneda` = bruto, período por la etiqueta
+o por un selector mensual/anual, fila `destacada` = neto) y solo la acepta si pasa la validación: neto
+positivo, no mayor al bruto, al menos el 25 % del bruto y que no baje al subir el bruto.
+`npx tsx scripts/check_mundo.ts` dice si entró y, si no, por qué. Si quedó excluida, o si la ley paga
+13.º o 14.º sueldo, declarás `mundo` en la definición (es tu carpeta):
+
+```ts
+mundo: { bruto: "sueldo", periodoBruto: "mes", neto: "neto", periodoNeto: "mes", pagasAnuales: 13, entrada: { periodo: "mensual" } },
+```
+
+| Campo | Qué es |
+|---|---|
+| `bruto`, `periodoBruto` | id del campo de moneda con el bruto y si es `"mes"` o `"anio"` |
+| `neto`, `periodoNeto` | clave del resultado con el neto y su período |
+| `pagasAnuales` | sueldos que paga la ley en el año (13 con aguinaldo); sin esto, 12 |
+| `entrada` | valores fijos para otros campos (un selector de período, un subsidio que no es sueldo) |
+| `brutoResultado` | clave del resultado con el bruto real cuando el campo no lo es (un CTC con aportes del empleador) |
+
+Si tu neto no descuenta el impuesto a la renta (porque se paga aparte), la inferencia no lo nota:
+declarás `mundo: { excluir: "el neto no descuenta el impuesto a la renta" }` y lo contás en el reporte.
+
 ## 8. Cliente: `calculadoras/<slug>.cliente.tsx`
 
 Siempre estas cuatro líneas, cambiando solo el nombre:
@@ -598,9 +627,11 @@ npx tsx scripts/check_paises_casos.ts <m>
 npx tsx scripts/check_textos_paises.ts <m>
 npx tsx scripts/check_fronteras.ts
 npx tsx scripts/check_motor.ts
+npx tsx scripts/check_mundo.ts
 ```
 
-Los avisos (⚠️) no fallan pero leelos: un tramo que vence en menos de 30 días, una serie vieja.
+`check_mundo` no falla por tu país: si tu sueldo neto sale excluido, el motivo está en la lista
+(§7, `mundo`). Los avisos (⚠️) no fallan pero leelos: un tramo que vence en menos de 30 días, una serie vieja.
 
 ## 17. Errores comunes
 
@@ -621,3 +652,30 @@ Los avisos (⚠️) no fallan pero leelos: un tramo que vence en menos de 30 dí
 En tu informe final: rama y commit; lista de calculadoras con su estado y por qué las que quedaron
 en borrador; tabla de datos con estado (verificado con URL, o no verificado con motivo); resultado
 de los seis comandos con números; pedidos al motor si hubo.
+
+## 19. Fechas de calendario (opcional)
+
+El calendario laboral de cada edición (`/<m>/calendario-laboral`, slug por idioma en
+`src/motor/calendario/rutas.ts`) se arma solo con el registro: tramos nuevos de `datos.json`, puntos de
+UTM/UR y novedades con `vigenteDesde`. Lo que no puede inferir es el **día fijo de pago de un bono**
+(aguinaldo hasta el 20 de diciembre, décimo cuarto hasta el 15 de agosto). Eso se declara en el dato
+cuya norma lo fija, con `calendario`:
+
+```json
+{
+  "id": "mx.dias-aguinaldo",
+  "calendario": [
+    { "id": "pago-aguinaldo", "tipo": "pago", "mes": 12, "dia": 20, "titulo": "Fecha límite para pagar el aguinaldo", "texto": "La ley obliga a pagarlo antes del 20 de diciembre.", "calculadora": "mx.aguinaldo" }
+  ]
+}
+```
+
+- La fecha tiene que estar en la misma norma que la `fuente` del tramo (el artículo que fija los días
+  suele fijar el plazo). Sin tramo verificado ese día, la fecha no sale.
+- `tipo`: `pago` (un pago a la persona) o `vencimiento` (otro plazo). `mes` 1 a 12, `dia` que exista
+  en un año no bisiesto (nada de 29 de febrero).
+- Dato por región: `region` obligatoria, una entrada por región (EC costa y sierra).
+- Ediciones en otro idioma (ca-fr, ch-it): `traducciones: { "fr": { "titulo": "...", "texto": "..." } }`.
+  Sin traducción la fecha no sale en esa edición.
+- `npx tsx scripts/check_calendario.ts` lista en «Falta en el registro» cada calculadora de bono sin
+  su fecha de pago, y falla si una fecha declarada es inválida.

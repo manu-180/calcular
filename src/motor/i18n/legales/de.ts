@@ -57,13 +57,14 @@ export const de: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Das Land des Besuchs",
           parrafos: [
             "Um die Rechner des passenden Landes vorzuschlagen, prüfen wir, aus welchem Land ein Besuch kommt. Unser Hosting-Anbieter leitet das aus der IP-Adresse ab.",
-            "Wir speichern weder die IP-Adresse noch das Land. Die Angabe bleibt für die Dauer des Besuchs im Browser.",
+            "Wir speichern die IP-Adresse nicht. Die Angabe bleibt für die Dauer des Besuchs im Browser.",
           ],
         },
         {
           titulo: "Was der Browser speichert",
           parrafos: [
-            "Im Sitzungsspeicher des Browsers merken wir uns das gewählte Land und ob der Hinweis dazu geschlossen wurde. Beim Schließen des Tabs wird beides gelöscht.",
+            "Im Sitzungsspeicher des Browsers, der beim Schließen des Tabs gelöscht wird, merken wir uns das Land des Besuchs, ob der Hinweis dazu geschlossen wurde und, wenn der Besuch über einen geteilten Link kam, den Code dieses Links.",
+            "Im lokalen Speicher, der bleibt, bis er im Browser gelöscht wird, liegen das selbst gewählte Land, eine Zufallszahl zum Zählen der Besuche und die angezeigte Version eines Designtests, damit die Website bei jedem Besuch gleich aussieht. Nichts davon verrät, wer die Person ist.",
             "Wir verwenden keine Werbe- oder Tracking-Cookies.",
           ],
         },
@@ -72,10 +73,27 @@ export const de: DiccionarioLegal = ({ actualizado, mail }) => ({
           parrafos: ["Die Website wird bei Vercel gehostet. Wie jeder Server protokolliert er technische Daten zu jedem Besuch (IP-Adresse und Browser), damit die Website funktioniert und sicher bleibt."],
         },
         {
+          titulo: "Wie wir Besuche zählen",
+          parrafos: [
+            "Wir messen die Nutzung der Website mit einem eigenen Werkzeug: welche Seiten geöffnet und wie stark sie genutzt werden, von welcher Website der Besuch kommt, die Art des Geräts und das Land. Mit der Zufallszahl im Browser unterscheiden wir einen neuen Besuch von einem wiederkehrenden. Wir speichern weder die IP-Adresse noch Eingaben in einen Rechner.",
+            "Links, die von der Website aus geteilt werden, tragen einen Zufallscode, der bei jedem Teilen neu ist. Damit zählen wir, wie viele Besuche ein Link bringt. Der Code identifiziert niemanden.",
+            "Beträge, die in einen Rechner eingegeben werden, verlassen den Browser nie in einem Link.",
+          ],
+        },
+        {
           titulo: "Änderungen und Fragen",
           parrafos: [
             "Ändert sich etwas daran (zum Beispiel durch Werbung), kündigen wir es auf dieser Seite an, bevor es gilt.",
             `Fragen zu personenbezogenen Daten beantworten wir unter ${mail}.`,
+          ],
+        },
+        {
+          titulo: "Geteilte Gehälter",
+          parrafos: [
+            "Bei „Echte Gehälter“ lässt sich ein Gehalt anonym und freiwillig beitragen, nur nach ausdrücklicher Zustimmung. Gespeichert werden das Land, der Beruf (aus einer festen Liste), die Erfahrungsstufe, das monatliche Bruttogehalt auf zwei signifikante Stellen gerundet und der Monat. Nicht gespeichert werden IP-Adresse, Browser oder Konto. Bis zur Aktualisierung am nächsten Tag werden außerdem der Tag des Beitrags und ein Fingerabdruck der Verbindung gespeichert, verschlüsselt mit einem Schlüssel, der sich täglich ändert und keinen Rückschluss auf die IP-Adresse erlaubt; beides wird am Ende des Tages gelöscht.",
+            "Die Werte werden einmal täglich veröffentlicht. Ein Beruf erscheint ab 10 Beiträgen, gemacht an mehreren Tagen und in mindestens zwei verschiedenen Monaten. Gezeigt werden nur Median und Spanne, gerundet, und die Zahl der Beiträge in Spannen. So lässt sich das Gehalt einer Person nicht herausfinden, indem man die Seite an zwei Tagen vergleicht. Ein einzelnes Gehalt wird nie gezeigt.",
+            "Damit dasselbe Land nicht zweimal im selben Monat beigetragen wird, merkt sich der Browser im lokalen Speicher Land und Monat des Beitrags, nie den Betrag.",
+            "Da ein Beitrag mit niemandem verknüpft ist, lässt er sich später nicht wiederfinden und löschen.",
           ],
         },
       ],

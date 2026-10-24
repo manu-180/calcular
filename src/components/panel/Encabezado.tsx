@@ -2,7 +2,9 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { RANGOS, type PanelDatos, type Rango } from "@/lib/panel/tipos";
-import { CONTRA, NOMBRE_RANGO, PERIODO, haceCuanto, numero } from "@/lib/panel/formato";
+import { esPreset } from "@/lib/panel/fechas";
+import { SelectorFechas } from "./Calendario";
+import { contra, nombreRango, periodo, haceCuanto, numero } from "@/lib/panel/formato";
 import { useAhora } from "./hooks";
 import { IcoRefrescar } from "./iconos";
 import { tituloDePagina } from "./meta";
@@ -58,7 +60,7 @@ export function Encabezado({
             {titulo(datos, mercado)}
           </h1>
           <p className="mt-1.5 text-[15px] text-zinc-600">
-            Lo que pasó {PERIODO[rango]}
+            Lo que pasó {periodo(rango)}
             {rango === "hoy" ? ", hasta ahora" : ""}.
           </p>
         </div>
@@ -68,7 +70,10 @@ export function Encabezado({
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
           <SelectorPais datos={datos} mercado={mercado} pendiente={cargando} onMercado={onMercado} onPrecargar={onPrecargar} />
-          <SelectorRango rango={rango} pendientes={pendientes} onRango={onRango} />
+          <div className="relative flex w-full items-center gap-2 sm:w-auto">
+            <SelectorRango rango={rango} pendientes={pendientes} onRango={onRango} />
+            <SelectorFechas rango={rango} pendiente={!!pendientes[rango]} onRango={onRango} />
+          </div>
         </div>
         <div className="flex items-center gap-2 text-sm text-zinc-600">
           <span className="tabular-nums">
@@ -87,7 +92,7 @@ export function Encabezado({
           </button>
         </div>
       </div>
-      <p className="sr-only">Las variaciones comparan contra {CONTRA[rango]}.</p>
+      <p className="sr-only">Las variaciones comparan contra {contra(rango)}.</p>
     </header>
   );
 }
@@ -101,17 +106,22 @@ function SelectorRango({
   pendientes: Partial<Record<Rango, boolean>>;
   onRango: (r: Rango) => void;
 }) {
-  const i = RANGOS.indexOf(rango);
+  const preset = esPreset(rango);
+  // Con fechas del calendario la píldora se apaga en el lugar donde estaba, para volver desde ahí.
+  const ultimo = useRef(0);
+  if (preset) ultimo.current = RANGOS.indexOf(rango);
   return (
     <div
       role="group"
       aria-label="Período"
-      className="relative grid w-full grid-cols-4 rounded-full bg-zinc-900/[0.05] p-1 ring-1 ring-inset ring-zinc-900/[0.06] sm:w-auto"
+      className="relative grid min-w-0 flex-1 grid-cols-4 rounded-full bg-zinc-900/[0.05] p-1 ring-1 ring-inset ring-zinc-900/[0.06] sm:flex-none"
     >
       <span
         aria-hidden
-        className="absolute inset-y-1 left-1 w-[calc((100%-0.5rem)/4)] rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.08),0_4px_12px_-4px_rgba(0,0,0,0.16)] transition-transform duration-300 ease-snappy"
-        style={{ transform: `translateX(${i * 100}%)` }}
+        className={`absolute inset-y-1 left-1 w-[calc((100%-0.5rem)/4)] rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.08),0_4px_12px_-4px_rgba(0,0,0,0.16)] transition-[transform,opacity] duration-300 ease-snappy ${
+          preset ? "" : "opacity-0"
+        }`}
+        style={{ transform: `translateX(${ultimo.current * 100}%)` }}
       />
       {RANGOS.map((r) => {
         const activo = r === rango;
@@ -125,7 +135,7 @@ function SelectorRango({
               activo ? "text-zinc-900" : "text-zinc-600 hover:text-zinc-900"
             }`}
           >
-            {NOMBRE_RANGO[r]}
+            {nombreRango(r)}
             {activo && pendientes[r] ? (
               <span className="size-1.5 animate-pulse rounded-full bg-emerald-500" aria-hidden />
             ) : null}

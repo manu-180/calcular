@@ -57,13 +57,14 @@ export const es: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "El país de la visita",
           parrafos: [
             "Para sugerir las calculadoras del país correcto, consultamos desde qué país llega la visita. Lo deduce nuestro proveedor de hosting a partir de la dirección IP.",
-            "No guardamos ni la IP ni el país. La respuesta queda en el navegador mientras dura la visita.",
+            "No guardamos la IP. La respuesta queda en el navegador mientras dura la visita.",
           ],
         },
         {
           titulo: "Lo que guarda el navegador",
           parrafos: [
-            "Usamos el almacenamiento de sesión del navegador para recordar el país elegido y si se cerró el aviso que lo sugiere. Se borra al cerrar la pestaña.",
+            "En el almacenamiento de sesión del navegador, que se borra al cerrar la pestaña, recordamos el país de la visita, si se cerró el aviso que lo sugiere y, si se llegó por un enlace compartido, el código de ese enlace.",
+            "En el almacenamiento local, que queda hasta que se borra desde el navegador, guardamos el país que se eligió a mano, un número al azar para contar visitas y la versión que se muestra de una prueba de diseño, para que el sitio se vea igual en cada visita. Nada de eso dice quién es la persona.",
             "No usamos cookies de publicidad ni de seguimiento.",
           ],
         },
@@ -72,10 +73,27 @@ export const es: DiccionarioLegal = ({ actualizado, mail }) => ({
           parrafos: ["El sitio está alojado en Vercel. Como todo servidor, registra datos técnicos de cada visita (la dirección IP y el navegador) para que el sitio funcione y sea seguro."],
         },
         {
+          titulo: "Cómo contamos las visitas",
+          parrafos: [
+            "Medimos el uso del sitio con una herramienta propia: qué páginas se abren y cuánto se usan, desde qué sitio se llegó, el tipo de dispositivo y el país. El número al azar que guarda el navegador sirve para distinguir una visita nueva de una que vuelve. No guardamos la IP ni lo que se escribe en una calculadora.",
+            "Los enlaces que se comparten desde el sitio llevan un código al azar, distinto en cada compartido, para contar cuántas visitas trae cada uno. Ese código no identifica a nadie.",
+            "Los montos que se escriben en una calculadora nunca salen del navegador dentro de un enlace.",
+          ],
+        },
+        {
           titulo: "Cambios y consultas",
           parrafos: [
             "Si algo de esto cambia (por ejemplo, si sumamos publicidad), lo vamos a contar en esta página antes de que empiece a regir.",
             `Para cualquier pregunta sobre datos personales, nuestro correo es ${mail}.`,
+          ],
+        },
+        {
+          titulo: "Los sueldos que se aportan",
+          parrafos: [
+            "En «Sueldos reales» se puede sumar un sueldo de forma anónima y opcional, solo con un consentimiento explícito. Se guarda el país, la ocupación (de una lista cerrada), el rango de años de experiencia, el sueldo bruto por mes redondeado a dos cifras y el mes. No se guarda la IP, el navegador ni una cuenta. Hasta la publicación del día siguiente también se guarda el día del aporte y una huella de la conexión, cifrada con una clave que cambia cada día y que no permite volver a la IP; al cerrar el día se borran las dos.",
+            "Las cifras se publican una vez por día. Una ocupación aparece con 10 aportes o más, cargados en varios días y en al menos dos meses distintos. Solo se muestran la mediana y el rango, redondeados, y la cantidad de aportes en rangos, así nadie puede deducir el sueldo de una persona comparando la página de dos días. Nunca se muestra un sueldo individual.",
+            "Para no cargar dos veces el mismo país en el mismo mes, el navegador recuerda en su almacenamiento local el país y el mes del aporte, nunca el monto.",
+            "Como el aporte no queda ligado a nadie, no hay forma de encontrarlo después para borrarlo.",
           ],
         },
       ],

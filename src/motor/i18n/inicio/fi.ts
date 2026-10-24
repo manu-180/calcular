@@ -1,0 +1,87 @@
+import { GRAMATICA } from "../gramatica";
+import type { Diccionario } from "../resolver";
+import type { TextosInicio } from "./tipos";
+
+const g = GRAMATICA.fi;
+
+const base: TextosInicio = {
+  arranque: {
+    estasEn: (pais) => `Olet ${g.en(pais)}`,
+    resumen: (calculadoras) => `${calculadoras} voimassa olevilla virallisilla arvoilla.`,
+    ultimoDato: "Viimeksi ladattu arvo",
+    ir: (pais) => `${g.de(pais)} laskureihin`,
+    otro: "Valitse toinen maa",
+    argentina: "Laskurisi löytyvät osoitteesta calcular.ar, Argentiinan virallisilla luvuilla.",
+    argentinaIr: "Siirry osoitteeseen calcular.ar",
+    neutroTitulo: (paises) => `${paises} maata, joilla jokaisella on omat lakinsa ja oma valuuttansa`,
+    neutroTexto: "Käymme virallisia lähteitä läpi joka päivä.",
+    neutroIr: "Katso maat",
+  },
+  selector: {
+    buscar: "Hae maata",
+    sinResultados: (q) => `Haulla «${q}» ei löytynyt maata`,
+    ubicacion: "Nykyinen sijainti",
+    mismaCalculadora: "Sama laskuri",
+    paises: "Maat",
+  },
+  aviso: { mismaCalculadora: (pais) => `Laske ${g.de(pais)} luvuilla` },
+  vivo: {
+    titulo: "Viralliset luvut, jotka päivittyvät automaattisesti",
+    vigilado: "Automaattinen prosessi käy viralliset lähteet läpi joka päivä. Muuttuneet säännöt lisätään tarkistuksen jälkeen.",
+    sinVigilar: "Jokaisen arvon kohdalla näkyy virallinen lähde ja päivä, jolloin tarkistimme sen.",
+    verificado: "Sääntöjen viimeisin tarkistus",
+    automatico: "Viimeisin automaattinen arvo",
+    fuentes: "Viralliset lähteet",
+    nFuentes: (n) => (Number(n) === 1 ? "1 virallinen asiakirja" : `${n} virallista asiakirjaa`),
+    verFuentes: "Katso lähteet",
+    verNovedades: "Katso muutokset",
+    hoy: "tänään",
+    ayer: "eilen",
+    elDia: (fecha) => `${fecha}`,
+    actualizadoSerie: (serie, cuando) => `${serie}, ${cuando}`,
+  },
+  sello: {
+    verificado: (fecha) => `Luvut tarkistettiin virallisesta lähteestä ${fecha}.`,
+    serie: (serie, cuando, organismo) => `${serie}: päivitetty ${cuando}, uusin arvo lähteestä ${organismo}.`,
+    diario: "Käymme viralliset lähteet läpi automaattisesti joka päivä.",
+    actualizado: "Päivitetty",
+  },
+  novedades: {
+    pildora: "Muutokset",
+    titulo: (pais) => `Mitä ${g.de(pais)} virallisissa luvuissa on muuttunut`,
+    acento: "samana päivänä kuin muutos",
+    bajada: "Kirjaamme tähän jokaisen laskureihin tulevan uuden arvon: mikä muuttui, mistä alkaen se on voimassa ja mistä se tulee.",
+    ultimoCambio: "Viimeisin muutos",
+    revision: "Lähteiden tarkistus",
+    diaria: "Joka päivä",
+    porNorma: "Jokaisen uuden säännön kohdalla",
+    siguiendo: "Seuraamamme lähteet",
+    masOrganismos: (n) => `ja ${n} muuta`,
+    proximos: "Julkaistu, voimassa pian",
+    proximosTexto: "Viralliset arvot, jotka on jo ladattu ja jotka tulevat voimaan lähipäivinä.",
+    registro: "Muutosloki",
+    rss: "Seuraa RSS:llä",
+    vacio: "Tälle maalle ei ole vielä kirjattu muutoksia.",
+    etiqueta: { editorial: "Sääntö", dato: "Uusi arvo", proximo: "Voimassa pian", serie: "Automaattinen", revision: "Tarkistus" },
+    rige: (fecha) => `Voimassa ${fecha} alkaen`,
+    rigeDesdeHasta: (desde, hasta) => `Voimassa ${desde} alkaen ${hasta} asti`,
+    antes: (valor, fecha) => `Aiemmin: ${valor} (${fecha})`,
+    revisados: (n) => (Number(n) === 1 ? "Tarkistimme 1 arvon virallisesta lähteestä" : `Tarkistimme ${n} arvoa virallisesta lähteestä`),
+    revisadosTexto: (organismos) => `Voimassa olevat arvot on vahvistettu lähteestä ${organismos}.`,
+    verDatos: (n) => (Number(n) === 1 ? "Katso arvo" : `Katso kaikki ${n} arvoa`),
+    calculadoras: "Käyttävät laskurit",
+    rango: (min, max, zonas) => `${min} ja ${max} välillä alueen mukaan (${zonas} aluetta)`,
+    tabla: (filas) => `taulukko, jossa ${filas} porrasta`,
+    valores: (n) => `${n} arvoa`,
+    pasosTitulo: "Näin pidämme luvut ajan tasalla",
+    pasos: [
+      { titulo: "Viranomainen julkaisee", texto: "Asetus, indeksi tai valuuttakurssi ilmestyy viralliseen lähteeseen." },
+      { titulo: "Tarkistetaan ennen käyttöä", texto: "Indeksit ja valuuttakurssit tulevat automaattisesti, ja niiden järkevyys tarkistetaan. Säännöt lisäämme virallisen asiakirjan kanssa." },
+      { titulo: "Laskurit päivittyvät", texto: "Laskurit käyttävät uutta arvoa, ja muutos näkyy täällä lähteineen." },
+    ],
+    feedTitulo: (pais) => `CalcularYa: muutokset ${g.en(pais)}`,
+    feedSubtitulo: (pais) => `Muutokset ${g.de(pais)} laskureiden taustalla oleviin virallisiin lukuihin, voimaantulopäivineen ja lähteineen.`,
+  },
+};
+
+export const fi: Diccionario<TextosInicio> = { base };

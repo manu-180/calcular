@@ -1,0 +1,895 @@
+/* «¿Cuántas horas de trabajo cuesta?». Mismo lenguaje que «Tu sueldo en el mundo» (tinta, esmeralda,
+   cifras enormes, papel del sitio) con identidad propia: la tarjeta de fichaje, una grilla de cuadros
+   que se llenan como horas marcadas. Vetos de Manuel: sin marquee, sin fondo plano, sombras siempre
+   negras, sin numerar secciones. Todo movimiento tiene camino con prefers-reduced-motion. */
+
+.cy-horas {
+  --cy-horas-tinta: #0b1110;
+  --cy-horas-crema: #f4f0e6;
+  --cy-horas-crema-suave: rgb(244 240 230 / 0.66);
+  --cy-horas-verde: #34d399;
+  --cy-horas-verde-apagado: rgb(52 211 153 / 0.16);
+  display: grid;
+  gap: 4.5rem;
+  padding-block: 1.5rem 3rem;
+}
+
+.cy-horas,
+.cy-horas-app,
+.cy-horas-cabeza,
+.cy-horas-panel-nucleo,
+.cy-horas-resultado,
+.cy-horas-ranking,
+.cy-horas-lista,
+.cy-horas-metodo,
+.cy-horas-compartir {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cy-horas-app {
+  display: grid;
+  gap: 4.5rem;
+}
+
+.cy-horas-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Encabezado ---------- */
+
+.cy-horas-cabeza {
+  display: grid;
+  justify-items: start;
+  gap: 1.25rem;
+  padding-top: 1.5rem;
+}
+
+.cy-horas-ceja {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.375rem 0.875rem 0.375rem 0.625rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.72);
+  box-shadow: inset 0 0 0 1px var(--cy-linea);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cy-texto-suave);
+}
+
+/* Un reloj de una línea: esfera y dos agujas. */
+.cy-horas-reloj {
+  position: relative;
+  flex: none;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px var(--cy-acento);
+}
+
+.cy-horas-reloj::before,
+.cy-horas-reloj::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 0.75px);
+  bottom: 50%;
+  width: 1.5px;
+  border-radius: 2px;
+  background: var(--cy-acento-tinta);
+  transform-origin: bottom center;
+}
+
+.cy-horas-reloj::before {
+  height: 0.3rem;
+}
+
+.cy-horas-reloj::after {
+  height: 0.22rem;
+  transform: rotate(90deg);
+}
+
+.cy-horas-h1 {
+  max-width: 17ch;
+  font-size: clamp(2.375rem, 1.1rem + 5.2vw, 5.25rem);
+  font-weight: 680;
+  line-height: 0.98;
+  letter-spacing: -0.046em;
+  text-wrap: balance;
+}
+
+.cy-horas-intro {
+  max-width: 52ch;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--cy-zinc-600);
+}
+
+.cy-horas-h2 {
+  font-size: clamp(1.75rem, 1.3rem + 1.9vw, 2.75rem);
+  font-weight: 660;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--cy-tinta);
+}
+
+.cy-horas-h3 {
+  font-size: 1.375rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--cy-tinta);
+}
+
+.cy-horas-seccion-cabeza {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 46rem;
+}
+
+.cy-horas-bajada {
+  color: var(--cy-zinc-600);
+  line-height: 1.6;
+}
+
+:is(.cy-cuerpo:lang(ja), .cy-cuerpo:lang(ko), .cy-cuerpo:lang(zh)) :is(.cy-horas-h1, .cy-horas-h2, .cy-horas-numero) {
+  letter-spacing: 0;
+}
+
+/* ---------- Panel en tinta ---------- */
+
+.cy-horas-panel {
+  padding: 0.375rem;
+  border-radius: 2rem;
+  background: rgb(24 24 27 / 0.05);
+  box-shadow:
+    inset 0 0 0 1px rgb(24 24 27 / 0.07),
+    var(--cy-sombra-flotante);
+}
+
+.cy-horas-panel-nucleo {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  padding: 1.25rem 1.125rem 1.5rem;
+  border-radius: calc(2rem - 0.375rem);
+  color: var(--cy-horas-crema);
+  background:
+    radial-gradient(38rem 24rem at 0% 0%, rgb(52 211 153 / 0.2), transparent 60%),
+    radial-gradient(30rem 22rem at 100% 100%, rgb(244 240 230 / 0.06), transparent 62%),
+    repeating-linear-gradient(90deg, rgb(244 240 230 / 0.035) 0 1px, transparent 1px 28px),
+    var(--cy-horas-tinta);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+  overflow: hidden;
+}
+
+.cy-horas-controles {
+  display: grid;
+  gap: 1rem;
+}
+
+.cy-horas-productos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.cy-horas-producto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0 0.375rem;
+  min-height: 2.875rem;
+  padding: 0.5rem 0.875rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(244 240 230 / 0.07);
+  box-shadow: inset 0 0 0 1px rgb(244 240 230 / 0.14);
+  color: var(--cy-horas-crema);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.16s var(--ease-fluid);
+}
+
+.cy-horas-producto span {
+  white-space: nowrap;
+}
+
+.cy-horas-producto small {
+  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-horas-producto:hover {
+    background: rgb(244 240 230 / 0.12);
+  }
+}
+
+.cy-horas-producto:active {
+  transform: scale(0.97);
+}
+
+.cy-horas-producto[aria-pressed="true"] {
+  background: var(--cy-horas-crema);
+  color: var(--cy-horas-tinta);
+  box-shadow: none;
+}
+
+.cy-horas-producto:focus-visible,
+.cy-horas-select select:focus-visible,
+.cy-horas-fila:focus-visible,
+.cy-horas-ver:focus-visible,
+.cy-horas-boton:focus-visible {
+  outline: 2px solid var(--cy-horas-verde);
+  outline-offset: 3px;
+}
+
+.cy-horas-pais {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.cy-horas-pais label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cy-horas-crema-suave);
+}
+
+.cy-horas-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cy-horas-select .cy-horas-bandera {
+  position: absolute;
+  left: 1rem;
+  pointer-events: none;
+}
+
+.cy-horas-select select {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0 2.75rem 0 3.25rem;
+  border: 0;
+  border-radius: 1rem;
+  appearance: none;
+  background: rgb(244 240 230 / 0.07);
+  box-shadow: inset 0 0 0 1px rgb(244 240 230 / 0.16);
+  color: var(--cy-horas-crema);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cy-horas-select select option {
+  color: #18181b;
+  background: #fff;
+}
+
+.cy-horas-select svg {
+  position: absolute;
+  right: 1rem;
+  width: 1rem;
+  height: 1rem;
+  color: var(--cy-horas-crema-suave);
+  pointer-events: none;
+}
+
+.cy-horas-bandera {
+  flex: none;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12);
+}
+
+/* ---------- La cifra ---------- */
+
+.cy-horas-resultado {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.cy-horas-antes {
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  color: var(--cy-horas-crema-suave);
+  text-wrap: balance;
+}
+
+.cy-horas-cifra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.75rem;
+  margin-top: 0.25rem;
+  animation: cy-horas-entra 0.5s var(--ease-fluid) both;
+}
+
+.cy-horas-numero {
+  font-size: clamp(4.5rem, 2.4rem + 11vw, 9.5rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums;
+  color: var(--cy-horas-crema);
+}
+
+.cy-horas-unidad {
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--cy-horas-verde);
+}
+
+.cy-horas-despues {
+  font-size: 1.0625rem;
+  color: var(--cy-horas-crema);
+}
+
+.cy-horas-jornadas {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cy-horas-verde);
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes cy-horas-entra {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+/* La tarjeta de fichaje. Por horas: 5 filas (días) de 8. Por semanas: 4 filas de 13 (un trimestre cada una). */
+.cy-horas-fichaje {
+  display: grid;
+  gap: 0.625rem;
+  margin: 1.25rem 0 0;
+}
+
+.cy-horas-celdas {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 0.3125rem;
+  max-width: 22rem;
+}
+
+.cy-horas-fichaje[data-escala="semanas"] .cy-horas-celdas {
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+  gap: 0.25rem;
+  max-width: 30rem;
+}
+
+.cy-horas-celdas i {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 0.25rem;
+  background: rgb(244 240 230 / 0.08);
+  box-shadow: inset 0 0 0 1px rgb(244 240 230 / 0.08);
+  overflow: hidden;
+}
+
+.cy-horas-celdas i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cy-horas-verde);
+  transform: scaleX(var(--l));
+  transform-origin: left center;
+  transition: transform 0.45s var(--ease-fluid);
+  transition-delay: calc(var(--i) * 5ms);
+}
+
+.cy-horas-celdas i[data-lleno]::after {
+  background: var(--cy-horas-verde);
+}
+
+.cy-horas-fichaje figcaption {
+  font-size: 0.8125rem;
+  color: var(--cy-horas-crema-suave);
+}
+
+.cy-horas-datos {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(244 240 230 / 0.12);
+}
+
+.cy-horas-datos div {
+  display: grid;
+  gap: 0.125rem;
+}
+
+.cy-horas-datos dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cy-horas-crema-suave);
+}
+
+.cy-horas-datos dd {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--cy-horas-crema);
+}
+
+.cy-horas-mejor {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  color: var(--cy-horas-crema-suave);
+}
+
+.cy-horas-vacio {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--cy-horas-crema);
+  max-width: 32ch;
+}
+
+/* ---------- Compartir ---------- */
+
+.cy-horas-compartir {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.cy-horas-compartir-texto {
+  display: grid;
+  gap: 0.75rem;
+  color: var(--cy-zinc-600);
+}
+
+.cy-horas-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.cy-horas-boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0.375rem 0.375rem 0.375rem 1.375rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cy-tinta);
+  color: #fff;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  box-shadow: var(--cy-sombra-alzada);
+  transition: transform 0.16s var(--ease-fluid);
+}
+
+.cy-horas-boton:active {
+  transform: scale(0.98);
+}
+
+.cy-horas-boton-icono {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.12);
+  transition: transform 0.3s var(--ease-fluid);
+}
+
+.cy-horas-boton-icono svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-horas-boton:hover .cy-horas-boton-icono {
+    transform: translateY(-2px) scale(1.05);
+  }
+}
+
+.cy-horas-enlace {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 600;
+  color: var(--cy-acento-tinta);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.cy-horas-aviso {
+  min-height: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--cy-acento-tinta);
+}
+
+.cy-horas-vista {
+  width: 100%;
+  height: auto;
+  border-radius: 1.25rem;
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.06),
+    var(--cy-sombra-alzada);
+  background: var(--cy-horas-tinta);
+}
+
+/* ---------- Ranking ---------- */
+
+.cy-horas-ranking {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.cy-horas-lista {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cy-horas-lista li {
+  position: relative;
+}
+
+.cy-horas-lista li[data-salto] {
+  margin-top: 1.25rem;
+}
+
+.cy-horas-lista li[data-salto]::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: -0.875rem;
+  border-top: 2px dotted var(--cy-zinc-300);
+}
+
+.cy-horas-fila {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr) auto;
+  grid-template-areas:
+    "pos pais horas"
+    "pos barra barra";
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 0;
+  border-radius: 1.25rem;
+  background: var(--cy-papel-claro);
+  box-shadow:
+    inset 0 0 0 1px rgb(24 24 27 / 0.06),
+    var(--cy-sombra-apoyo);
+  color: var(--cy-texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.3s var(--ease-fluid),
+    box-shadow 0.3s var(--ease-fluid);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-horas-fila:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 0 0 1px rgb(24 24 27 / 0.08),
+      var(--cy-sombra-alzada);
+  }
+}
+
+.cy-horas-fila:active {
+  transform: scale(0.99);
+}
+
+.cy-horas-pos {
+  grid-area: pos;
+  align-self: start;
+  padding-top: 0.125rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--cy-zinc-400);
+}
+
+.cy-horas-fila-pais {
+  grid-area: pais;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.cy-horas-fila-texto {
+  display: grid;
+  min-width: 0;
+}
+
+.cy-horas-fila-nombre {
+  font-weight: 650;
+  color: var(--cy-tinta);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cy-horas-fila-precio {
+  font-size: 0.8125rem;
+  color: var(--cy-zinc-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-horas-fila-horas {
+  grid-area: horas;
+  justify-self: end;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--cy-tinta);
+  white-space: nowrap;
+}
+
+.cy-horas-barra {
+  grid-area: barra;
+  display: block;
+  height: 0.375rem;
+  border-radius: 999px;
+  background: var(--cy-zinc-100);
+  overflow: hidden;
+}
+
+.cy-horas-barra span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--cy-emerald-500);
+  transform-origin: left center;
+  transition: transform 0.6s var(--ease-fluid);
+}
+
+.cy-horas-lista li[data-elegido] .cy-horas-fila {
+  background: var(--cy-horas-tinta);
+  box-shadow: var(--cy-sombra-alzada);
+  color: var(--cy-horas-crema);
+}
+
+.cy-horas-lista li[data-elegido] :is(.cy-horas-fila-nombre, .cy-horas-fila-horas) {
+  color: var(--cy-horas-crema);
+}
+
+.cy-horas-lista li[data-elegido] :is(.cy-horas-fila-precio, .cy-horas-pos) {
+  color: var(--cy-horas-crema-suave);
+}
+
+.cy-horas-lista li[data-elegido] .cy-horas-barra {
+  background: rgb(244 240 230 / 0.14);
+}
+
+.cy-horas-lista li[data-elegido] .cy-horas-barra span {
+  background: var(--cy-horas-verde);
+}
+
+.cy-horas-ver {
+  justify-self: start;
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cy-papel-claro);
+  box-shadow: inset 0 0 0 1px var(--cy-linea-fuerte);
+  color: var(--cy-tinta);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cy-horas-nota {
+  font-size: 0.875rem;
+  color: var(--cy-zinc-500);
+}
+
+/* ---------- Método y fuentes ---------- */
+
+.cy-horas-metodo {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.cy-horas-formula {
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  background: var(--cy-acento-suave);
+  color: var(--cy-acento-tinta);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.cy-horas-supuestos {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 50rem;
+  padding-left: 1.125rem;
+  color: var(--cy-texto);
+  line-height: 1.6;
+}
+
+.cy-horas-fuentes ul {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.cy-horas-fuentes li {
+  display: grid;
+  gap: 0.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--cy-linea);
+}
+
+.cy-horas-fuente-pais {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cy-tinta);
+}
+
+.cy-horas-fuentes dl {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.cy-horas-fuentes dt {
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cy-zinc-500);
+}
+
+.cy-horas-fuentes dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cy-texto);
+  overflow-wrap: anywhere;
+}
+
+.cy-horas-enlace-fuente {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 600;
+  color: var(--cy-acento-tinta);
+}
+
+.cy-horas-enlace-fuente svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.cy-horas-sello {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  color: var(--cy-zinc-600);
+}
+
+/* ---------- Tablet y escritorio ---------- */
+
+@media (min-width: 768px) {
+  .cy-horas-panel-nucleo {
+    padding: 2rem 2.25rem 2.25rem;
+  }
+
+  .cy-horas-productos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .cy-horas-pais {
+    max-width: 24rem;
+  }
+
+  .cy-horas-datos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cy-horas-compartir {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 3rem;
+  }
+
+  .cy-horas-fila {
+    grid-template-columns: 2.25rem minmax(0, 15rem) minmax(0, 1fr) 7.5rem;
+    grid-template-areas: "pos pais barra horas";
+  }
+
+  .cy-horas-pos {
+    align-self: center;
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .cy-horas-controles {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    align-items: end;
+    gap: 1.5rem;
+  }
+
+  .cy-horas-resultado {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 28rem);
+    column-gap: 3rem;
+  }
+
+  .cy-horas-resultado > :not(.cy-horas-fichaje) {
+    grid-column: 1;
+  }
+
+  .cy-horas-fichaje {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    align-self: center;
+    margin: 0;
+  }
+
+  .cy-horas-celdas,
+  .cy-horas-fichaje[data-escala="semanas"] .cy-horas-celdas {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-horas-cifra {
+    animation: none;
+  }
+
+  .cy-horas-celdas i::after,
+  .cy-horas-barra span,
+  .cy-horas-fila,
+  .cy-horas-producto,
+  .cy-horas-boton,
+  .cy-horas-boton-icono {
+    transition: none;
+  }
+}

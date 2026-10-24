@@ -40,6 +40,10 @@ export function tratoDe(mercado: string): Trato {
   return registro.pais(mercado as CodigoMercado)?.mercado.trato ?? "tu";
 }
 
+export function localeDe(mercado: string): string | undefined {
+  return registro.pais(mercado as CodigoMercado)?.mercado.locale;
+}
+
 export function idiomaDe(mercado: string): Idioma {
   return registro.pais(mercado as CodigoMercado)?.mercado.idioma ?? "es";
 }
@@ -92,11 +96,12 @@ async function entregarPorEmail(pago: PagoVerificado, producto: ProductoIntl, em
     const ok = await sendSingle({
       from: FROM_INTL,
       to: [email],
-      subject: asuntoEntregaIntl(producto, idiomaDe(producto.mercado), tratoDe(producto.mercado)),
+      subject: asuntoEntregaIntl(producto, idiomaDe(producto.mercado), tratoDe(producto.mercado), localeDe(producto.mercado)),
       html: entregaIntlHtml({
         producto,
         idioma: idiomaDe(producto.mercado),
         trato: tratoDe(producto.mercado),
+        locale: localeDe(producto.mercado),
         urlDescarga: `${origen}${rutaEntregaIntl(producto, pago.proveedor, pago.id)}`,
         urlLanding: `${origen}${rutaLandingIntl(producto)}`,
         origen,

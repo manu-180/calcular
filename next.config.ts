@@ -2,6 +2,7 @@ import { execFileSync } from "node:child_process";
 import { readdirSync } from "node:fs";
 import path from "node:path";
 import type { NextConfig } from "next";
+import { reglasEmbed, RAIZ_INTERNA_EMBED, SEGMENTO_EMBED } from "./src/motor/embed/rutas";
 import { reglasPorHost } from "./src/motor/hosts";
 import { PAGINAS_GLOBALES } from "./src/motor/paginas";
 import { entornoDePrueba, modoPublicacion, origenAR, origenIntl } from "./src/motor/sitio";
@@ -49,10 +50,11 @@ process.stdout.write(JSON.stringify(r.mercados(modo).map((x) => x.codigo)));`;
 }
 
 const ORIGEN_INTL = origenIntl();
+const MERCADOS_INTL = ORIGEN_INTL ? mercadosDelRegistro(modoPublicacion()) : [];
 const REGLAS_HOSTS = reglasPorHost({
   origenIntl: ORIGEN_INTL,
   origenAR: origenAR(),
-  mercados: ORIGEN_INTL ? mercadosDelRegistro(modoPublicacion()) : [],
+  mercados: MERCADOS_INTL,
   paginasGlobales: PAGINAS_GLOBALES,
   rutasAR: RUTAS_AR,
   // La cookie sitio=intl (la pone /api/dev/sitio) deja ver calcularya en los previews de *.vercel.app.
@@ -62,6 +64,10 @@ const REGLAS_HOSTS = reglasPorHost({
   // next.config (ver mercadosDelRegistro).
   cuentas: process.env.NEXT_PUBLIC_CUENTAS_ACTIVAS === "1",
 });
+
+// Mismo origen de mercados que REGLAS_HOSTS: las reglas de la calculadora embebida (/<m>/embed/<slug>)
+// van antes y llevan el pedido a su propio layout, sin el header ni el footer del sitio.
+const REGLAS_EMBED = reglasEmbed({ origenIntl: ORIGEN_INTL, mercados: MERCADOS_INTL, cookiePreview: entornoDePrueba() });
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -119,6 +125,10 @@ const nextConfig: NextConfig = {
     // en runtime las ofertas, el checkout, la compra y las landings (src/lib/pagos/ofertas-servidor.ts).
     "/api/pagos/**": ["./private/intl/**/*.mapa.json"],
     "/intl/**": ["./private/intl/**/*.mapa.json"],
+    // La OG de «Tu sueldo en el mundo» lee la bandera del disco (src/app/(intl)/intl/[mercado]/_mundo/og.tsx).
+    "/intl/*/*/og": ["./public/banderas/*.svg"],
+    "/sueldo-en-el-mundo/og": ["./public/banderas/*.svg"],
+    "/sueldos-reales/og": ["./public/banderas/*.svg"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
   // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.
@@ -137,6 +147,14 @@ const nextConfig: NextConfig = {
       { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
       { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
       { key: "Content-Security-Policy", value: `frame-ancestors 'self'; base-uri 'self'; object-src 'none'${upgrade}` },
+    ];
+    // La calculadora embebida es lo único que se puede enmarcar desde cualquier sitio: ni el resto de
+    // calcularya ni las pantallas privadas. Va después de `base` y le pisa el frame-ancestors. Se
+    // matchea la URL pública y la interna por si alguien entra directo a la segunda. `*` no cubre
+    // data: ni file:, que no son sitios.
+    const embebible = [
+      { key: "Content-Security-Policy", value: `frame-ancestors *; base-uri 'self'; object-src 'none'${upgrade}` },
+      { key: "X-Robots-Tag", value: "noindex, follow" },
     ];
     const privado = [
       { key: "Content-Security-Policy", value: `frame-ancestors 'none'; base-uri 'self'; object-src 'none'${upgrade}` },
@@ -165,6 +183,10 @@ const nextConfig: NextConfig = {
     ];
     return [
       { source: "/:path*", headers: base },
+      { source: `/:mercado([a-z]{2}(?:-[a-z]{2,3})?)/${SEGMENTO_EMBED}/:slug`, headers: embebible },
+      { source: `/${RAIZ_INTERNA_EMBED}/:mercado/:slug`, headers: embebible },
+      // El script que ajusta el alto lo piden todos los sitios que insertan una calculadora.
+      { source: "/embed.js", headers: [{ key: "Cache-Control", value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" }] },
       ...rutasPrivadas.flatMap((r) => [
         { source: r, headers: privado },
         { source: `${r}/:path*`, headers: privado },
@@ -195,7 +217,7 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
-    return { beforeFiles: REGLAS_HOSTS.beforeFiles, afterFiles: [], fallback: REGLAS_HOSTS.fallback };
+    return { beforeFiles: [...REGLAS_EMBED, ...REGLAS_HOSTS.beforeFiles], afterFiles: [], fallback: REGLAS_HOSTS.fallback };
   },
 };
 

@@ -55,13 +55,14 @@ export const en: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Your country",
           parrafos: [
             "To suggest the right country's calculators, we look up which country your visit comes from. Our hosting provider infers it from your IP address.",
-            "We don't store your IP address or your country. The answer stays in your browser for the length of the visit.",
+            "We don't store your IP address. The answer stays in your browser for the length of the visit.",
           ],
         },
         {
           titulo: "What your browser stores",
           parrafos: [
-            "We use your browser's session storage to remember the country you chose and whether you closed the notice that suggests it. It's cleared when you close the tab.",
+            "Your browser's session storage, which is cleared when you close the tab, remembers your visit's country, whether you closed the notice that suggests it and, if you arrived through a shared link, that link's code.",
+            "Local storage, which stays until you clear it in your browser, keeps the country you picked yourself, a random number used to count visits, and the version of a design test you're shown, so the site looks the same every time you come back. None of it says who you are.",
             "We don't use advertising or tracking cookies.",
           ],
         },
@@ -70,10 +71,27 @@ export const en: DiccionarioLegal = ({ actualizado, mail }) => ({
           parrafos: ["The site is hosted on Vercel. Like any server, it logs technical data for each visit (IP address and browser) so the site works and stays secure."],
         },
         {
+          titulo: "How we count visits",
+          parrafos: [
+            "We measure how the site is used with our own tool: which pages are opened and how much they're used, which site you came from, your device type and your country. The random number your browser keeps tells a new visit from a returning one. We don't store your IP address or anything you type into a calculator.",
+            "Links shared from the site carry a random code, different every time something is shared, so we can count how many visits each one brings. That code doesn't identify anyone.",
+            "The amounts you type into a calculator never leave your browser inside a link.",
+          ],
+        },
+        {
           titulo: "Changes and questions",
           parrafos: [
             "If any of this changes (for example, if we add advertising), we'll say so on this page before it takes effect.",
             `For any question about your data, email us at ${mail}.`,
+          ],
+        },
+        {
+          titulo: "Salaries people share",
+          parrafos: [
+            "On “Real salaries” anyone can add a salary anonymously, and only after ticking an explicit consent box. We store the country, the occupation (from a fixed list), the experience range, the gross monthly salary rounded to two significant figures and the month. We do not store the IP address, the browser or an account. Until the next day's update we also keep the day of the entry and a fingerprint of the connection, encrypted with a key that changes every day and that cannot be turned back into the IP address; both are deleted when the day closes.",
+            "Figures are published once a day. An occupation appears once it has 10 or more entries, made on several days and in at least two different months. We only show the median and the range, rounded, and the number of entries in ranges, so nobody can work out a person's salary by comparing the page on two days. No individual salary is ever shown.",
+            "To avoid adding the same country twice in one month, the browser keeps the country and month of the entry in local storage, never the amount.",
+            "Because an entry is not linked to anyone, there is no way to find it later to delete it.",
           ],
         },
       ],

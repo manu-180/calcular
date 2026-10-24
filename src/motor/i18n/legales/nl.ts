@@ -57,13 +57,14 @@ export const nl: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Het land van het bezoek",
           parrafos: [
             "Om de rekenhulpen van het juiste land voor te stellen, kijken we uit welk land een bezoek komt. Onze hostingprovider leidt dat af uit het IP-adres.",
-            "We bewaren het IP-adres en het land niet. Het antwoord blijft in de browser zolang het bezoek duurt.",
+            "We bewaren het IP-adres niet. Het antwoord blijft in de browser zolang het bezoek duurt.",
           ],
         },
         {
           titulo: "Wat de browser bewaart",
           parrafos: [
-            "Via de sessieopslag van de browser onthouden we het gekozen land en of de melding met dat voorstel gesloten is. Alles wordt gewist bij het sluiten van het tabblad.",
+            "In de sessieopslag van de browser, die gewist wordt bij het sluiten van het tabblad, onthouden we het land van het bezoek, of de melding met dat voorstel gesloten is en, als het bezoek via een gedeelde link kwam, de code van die link.",
+            "In de lokale opslag, die blijft tot hij in de browser gewist wordt, bewaren we het zelf gekozen land, een willekeurig getal om bezoeken te tellen en de getoonde versie van een ontwerptest, zodat de site er bij elk bezoek hetzelfde uitziet. Niets daarvan zegt wie iemand is.",
             "We gebruiken geen advertentie- of trackingcookies.",
           ],
         },
@@ -72,10 +73,27 @@ export const nl: DiccionarioLegal = ({ actualizado, mail }) => ({
           parrafos: ["De site wordt gehost bij Vercel. Zoals elke server legt die technische gegevens van elk bezoek vast (IP-adres en browser), zodat de site werkt en veilig blijft."],
         },
         {
+          titulo: "Hoe we bezoeken tellen",
+          parrafos: [
+            "We meten het gebruik van de site met een eigen hulpmiddel: welke pagina's worden geopend en hoeveel ze worden gebruikt, van welke site het bezoek komt, het soort apparaat en het land. Met het willekeurige getal in de browser onderscheiden we een nieuw bezoek van een terugkerend. We bewaren het IP-adres niet en ook niet wat in een rekenhulp wordt ingevuld.",
+            "Links die vanaf de site worden gedeeld, krijgen een willekeurige code die bij elke keer delen anders is, om te tellen hoeveel bezoeken elke link oplevert. Die code identificeert niemand.",
+            "Bedragen die in een rekenhulp worden ingevuld, verlaten de browser nooit in een link.",
+          ],
+        },
+        {
           titulo: "Wijzigingen en vragen",
           parrafos: [
             "Verandert hier iets aan (bijvoorbeeld als er advertenties bijkomen), dan melden we dat op deze pagina voordat het ingaat.",
             `Voor vragen over persoonsgegevens is ons e-mailadres ${mail}.`,
+          ],
+        },
+        {
+          titulo: "Gedeelde salarissen",
+          parrafos: [
+            "Bij ‘Echte salarissen’ kan iedereen anoniem en vrijwillig een salaris toevoegen, alleen na uitdrukkelijke toestemming. We bewaren het land, het beroep (uit een vaste lijst), de ervaringsgroep, het bruto maandsalaris afgerond op twee significante cijfers en de maand. We bewaren geen IP-adres, browser of account. Tot de update van de volgende dag bewaren we ook de dag van de bijdrage en een vingerafdruk van de verbinding, versleuteld met een sleutel die elke dag verandert en waarmee het IP-adres niet te achterhalen is; aan het eind van de dag worden beide gewist.",
+            "De cijfers worden één keer per dag gepubliceerd. Een beroep verschijnt vanaf 10 bijdragen, gedaan op meerdere dagen en in minstens twee verschillende maanden. We tonen alleen de mediaan en de spreiding, afgerond, en het aantal bijdragen in bereiken. Zo kan niemand het salaris van een persoon afleiden door de pagina op twee dagen te vergelijken. Een individueel salaris wordt nooit getoond.",
+            "Om te voorkomen dat hetzelfde land twee keer in dezelfde maand wordt toegevoegd, onthoudt de browser in de lokale opslag het land en de maand van de bijdrage, nooit het bedrag.",
+            "Omdat een bijdrage aan niemand gekoppeld is, is ze later niet terug te vinden om te verwijderen.",
           ],
         },
       ],

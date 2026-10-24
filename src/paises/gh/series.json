@@ -1,0 +1,75 @@
+{
+  "mercado": "gh",
+  "series": [
+    {
+      "id": "gh.usd-ghs",
+      "nombre": "Bank of Ghana interbank mid rate, cedis per US dollar",
+      "unidad": "GHS",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Bank of Ghana",
+        "titulo": "Daily Interbank FX Rates",
+        "url": "https://www.bog.gov.gh/treasury-and-the-markets/daily-interbank-fx-rates/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-18"
+      },
+      "puntos": [
+        [
+          "2026-10-16",
+          11.665
+        ],
+        ["2026-10-23", 11.65]
+      ]
+    },
+    {
+      "id": "gh.policy-rate",
+      "nombre": "Bank of Ghana monetary policy rate",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 120,
+      "fuente": {
+        "organismo": "Bank of Ghana",
+        "titulo": "Policy Rate Trends",
+        "url": "https://www.bog.gov.gh/monetary-policy/policy-rate-trends/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-18",
+        "nota": "Un punto por reunión del MPC, en la fecha de vigencia que publica el BoG."
+      },
+      "puntos": [
+        [
+          "2025-07-30",
+          25.0
+        ],
+        [
+          "2025-09-17",
+          21.5
+        ],
+        [
+          "2025-11-26",
+          18.0
+        ],
+        [
+          "2026-01-28",
+          15.5
+        ],
+        [
+          "2026-03-18",
+          14.0
+        ],
+        [
+          "2026-05-20",
+          14.0
+        ],
+        [
+          "2026-07-22",
+          14.0
+        ],
+        [
+          "2026-09-24",
+          14.0
+        ]
+      ]
+    }
+  ]
+}

@@ -643,6 +643,28 @@ const familias: Record<ClaveFamilia, TextosFamilia> = {
     },
     escenarios: INNE_KWOTY,
   },
+  "informe-calculo": {
+    nombre: "Raport z obliczenia",
+    tituloCorto: "raport z obliczenia",
+    paraQuien: "Żeby mieć to obliczenie na piśmie, z twoimi liczbami, jego założeniami i źródłem każdej wartości oficjalnej",
+    descripcion: [
+      "Raport PDF z tym obliczeniem rozpisanym krok po kroku z twoimi danymi: wynik, założenia, na których się opiera, i każda wartość oficjalna ze źródłem i datą sprawdzenia.",
+      "Do zachowania w dokumentach albo do pokazania księgowej, pracodawcy lub komuś, kto musi to sprawdzić, bez tłumaczenia każdej liczby od nowa.",
+    ],
+    gancho: "Miej to obliczenie na piśmie, razem ze źródłami",
+    incluye: [
+      { titulo: "Wynik z twoimi danymi", texto: "Dokładnie tak, jak wyszedł, gotowy do druku." },
+      { titulo: "Jak to się liczy", texto: "Kroki i założenia, żeby każdą liczbę dało się prześledzić." },
+      { titulo: "Oficjalne źródła", texto: "Każda wartość z instytucją, linkiem i datą sprawdzenia." },
+    ],
+    pasos: {
+      titulo: "Zanim go użyjesz",
+      items: [
+        "Sprawdź, czy dane na górze są twoje: od nich zależy wynik.",
+        "Jeśli zmieniła się jakaś wartość oficjalna, policz jeszcze raz: raport korzysta z wartości obowiązujących w dniu zakupu.",
+      ],
+    },
+  },
 };
 
 export const pl: DiccionarioVenta = {

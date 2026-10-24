@@ -163,6 +163,26 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Kilde",
     },
   },
+  nb: {
+    base: {
+      datos: "Opplysningene dine",
+      resultado: "Resultat",
+      vacio: "Fyll ut opplysningene og trykk på Beregn for å se resultatet.",
+      sinResultado: "Vi viser ikke dette resultatet akkurat nå.",
+      avisos: { info: "Greit å vite", cautela: "Merk deg", bloquea: "Derfor viser vi ikke noe resultat" },
+      fuenteDelAviso: "Kilde",
+    },
+  },
+  fi: {
+    base: {
+      datos: "Tietosi",
+      resultado: "Tulos",
+      vacio: "Täytä tiedot ja paina Laske, niin näet tuloksen.",
+      sinResultado: "Emme näytä tätä tulosta juuri nyt.",
+      avisos: { info: "Hyvä tietää", cautela: "Huomaa", bloquea: "Siksi emme näytä tulosta" },
+      fuenteDelAviso: "Lähde",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

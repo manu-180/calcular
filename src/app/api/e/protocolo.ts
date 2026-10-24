@@ -1,6 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 import { esMercadoIntl, mercadoDeRuta, type Sitio } from "@/lib/medicion/mercados";
 import { esTipoEvento, limpiarRuta, type TipoEvento } from "@/lib/rastreo";
+import { ORIGENES_COMPARTIR, ORIGENES_CORTOS, REF_VALIDO, VARIANTES_PUENTE } from "@/motor/compartir/ref";
 import { origenIntl } from "@/motor/sitio";
 
 export const MAX_CUERPO = 8192;
@@ -26,15 +27,30 @@ export type FilaVista = {
   pais: string | null;
   sitio?: "intl";
   mercado?: string;
+  exp?: Record<string, string>;
 };
 
+// Los campos que no vinieron quedan afuera del objeto: ca_cerrar_vista2 los toma como null y no pisa
+// lo que la vista ya tenía. Un lote puede traer sólo los vitals de una vista que cerró en otro lote.
 export type ArgsCierre = {
   p_id: string;
-  p_activo_ms: number;
-  p_interacciones: number;
-  p_scroll: number;
-  p_uso: boolean;
+  p_activo_ms?: number;
+  p_interacciones?: number;
+  p_scroll?: number;
+  p_uso?: boolean;
+  p_resultado_ms?: number;
+  p_campo_ult?: string;
+  p_rabia?: number;
+  p_rabia_el?: string;
+  p_lcp_ms?: number;
+  p_inp_ms?: number;
+  p_cls_milli?: number;
+  p_ttfb_ms?: number;
+  p_lcp_el?: string;
+  p_inp_el?: string;
 };
+
+export const CLAVES_BASE_CIERRE = ["p_id", "p_activo_ms", "p_interacciones", "p_scroll", "p_uso"] as const;
 
 export type Props = Record<string, string | number | boolean | null>;
 
@@ -132,8 +148,105 @@ export function limpiarProps(x: unknown): Props | null | undefined {
   return claves.length ? out : null;
 }
 
+type Regla = (v: unknown) => boolean;
+const enLista = (lista: readonly string[]): Regla => (v) => typeof v === "string" && lista.includes(v);
+const conForma = (re: RegExp): Regla => (v) => typeof v === "string" && re.test(v);
+const booleano: Regla = (v) => typeof v === "boolean";
+
+// Ids de calculadora del motor: `mx.sueldo-neto`, `ca-fr.impot`, `pk.short-term-savings-certificate-calculator`.
+const CALCULADORA = /^(?=.{4,72}$)(?:[a-z]{2}(?:-[a-z]{2,3})?|global)\.[a-z0-9-]+$/;
+// «link» es el de la barra de calcular.ar (src/components/herramientas/Barra.tsx); el resto, de src/motor/compartir.
+const CANALES = ["nativo", "copiar", "whatsapp", "x", "telegram", "linkedin", "link"] as const;
+const VARIANTE = enLista(VARIANTES_PUENTE);
+
+type Esquema = { requeridas: Readonly<Record<string, Regla>>; opcionales?: Readonly<Record<string, Regla>> };
+
+// Los eventos del boca en boca se guardan con una lista cerrada de props por tipo: una clave de más se
+// tira y un valor que no cumple tira el evento. Así no entra un monto ni un texto libre por ahí, aunque
+// alguien arme el beacon a mano. Ninguna de estas props es numérica a propósito.
+const ESQUEMAS: Partial<Record<TipoEvento, Esquema>> = {
+  llegada: { requeridas: { ref: conForma(REF_VALIDO) }, opcionales: { origen: enLista(ORIGENES_CORTOS), nuevo: booleano } },
+  puente_visto: { requeridas: { v: VARIANTE } },
+  puente_clic: { requeridas: { v: VARIANTE } },
+  afiliado_clic: { requeridas: { socio: enLista(["wise", "deel"]) }, opcionales: { pais: conForma(/^[A-Z]{2}$/) } },
+  compartir: {
+    requeridas: { canal: enLista(CANALES) },
+    opcionales: { origen: enLista(ORIGENES_COMPARTIR), calc: conForma(CALCULADORA), ref: conForma(REF_VALIDO), v: VARIANTE },
+  },
+};
+
+function propsDeEsquema(esquema: Esquema, x: unknown): Props | undefined {
+  const pp = x === undefined ? {} : x;
+  if (!esObjeto(pp)) return undefined;
+  const out: Props = {};
+  for (const [k, ok] of Object.entries(esquema.requeridas)) {
+    if (!ok(pp[k])) return undefined;
+    out[k] = pp[k] as string | boolean;
+  }
+  for (const [k, ok] of Object.entries(esquema.opcionales ?? {})) {
+    if (!(k in pp)) continue;
+    if (!ok(pp[k])) return undefined;
+    out[k] = pp[k] as string | boolean;
+  }
+  return out;
+}
+
 const entero = (x: unknown, max: number): number | null =>
   typeof x === "number" && Number.isFinite(x) && x >= 0 ? Math.min(Math.round(x), max) : null;
+
+const EXP_ID = /^[a-z0-9-]{1,24}$/;
+const EXP_VARIANTE = /^[a-z]$/;
+
+// La variante que vio cada experimento: sólo ids y una letra, nunca otra cosa.
+export function limpiarExp(x: unknown): Record<string, string> | null | undefined {
+  if (x === undefined) return null;
+  if (!esObjeto(x)) return undefined;
+  const claves = Object.keys(x);
+  if (claves.length > 4) return undefined;
+  const out: Record<string, string> = {};
+  for (const k of claves) {
+    const v = x[k];
+    if (!EXP_ID.test(k) || typeof v !== "string" || !EXP_VARIANTE.test(v)) return undefined;
+    out[k] = v;
+  }
+  return claves.length ? out : null;
+}
+
+// Selectores CSS de web-vitals o del clic de rabia: sirven para saber QUÉ elemento frena, no traen
+// datos de la persona. Se queda la cola (lo más específico) y se tira todo carácter raro.
+export function limpiarSelector(x: unknown): string | null {
+  if (typeof x !== "string" || x.length > 500) return null;
+  const s = x.replace(/[^A-Za-z0-9_\-#.>: ]+/g, "").replace(/\s+/g, " ").trim();
+  return s ? s.slice(-80) : null;
+}
+
+// El campo donde quedó trabada la persona: el name, el id o el texto del label. Es texto de la página,
+// pero igual pasa por limpiarTexto por si un name lleva algo tipeado.
+export function limpiarCampo(x: unknown): string | null {
+  if (typeof x !== "string" || x.length > 200) return null;
+  const s = limpiarTexto(x).slice(0, 40).trim();
+  return s || null;
+}
+
+const conValor = <T extends Record<string, unknown>>(o: T): Partial<T> =>
+  Object.fromEntries(Object.entries(o).filter(([, v]) => v !== null && v !== undefined)) as Partial<T>;
+
+function fusionar(previo: ArgsCierre | undefined, nuevo: ArgsCierre): ArgsCierre {
+  if (!previo) return nuevo;
+  const max = (a?: number, b?: number) => (a === undefined ? b : b === undefined ? a : Math.max(a, b));
+  return conValor({
+    ...previo,
+    ...nuevo,
+    p_activo_ms: max(previo.p_activo_ms, nuevo.p_activo_ms),
+    p_interacciones: max(previo.p_interacciones, nuevo.p_interacciones),
+    p_scroll: max(previo.p_scroll, nuevo.p_scroll),
+    p_uso: previo.p_uso || nuevo.p_uso ? true : (nuevo.p_uso ?? previo.p_uso),
+    p_rabia: max(previo.p_rabia, nuevo.p_rabia),
+    p_inp_ms: max(previo.p_inp_ms, nuevo.p_inp_ms),
+    p_cls_milli: max(previo.p_cls_milli, nuevo.p_cls_milli),
+    p_resultado_ms: previo.p_resultado_ms ?? nuevo.p_resultado_ms,
+  }) as ArgsCierre;
+}
 
 export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: string } {
   if (!esObjeto(cuerpo)) return { error: "cuerpo" };
@@ -155,11 +268,13 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
     }
     if (it.t === "v") {
       const path = limpiarPath(it.p);
-      if (!esUuid(it.id) || !path || lote.vistas.length >= MAX_VISTAS || !mercadoOk(it.m)) {
+      const exp = limpiarExp(it.x);
+      if (!esUuid(it.id) || !path || lote.vistas.length >= MAX_VISTAS || !mercadoOk(it.m) || exp === undefined) {
         lote.descartados.push("vista");
         continue;
       }
       lote.vistas.push({
+        ...(exp ? { exp } : {}),
         id: it.id.toLowerCase(),
         vid: vid.toLowerCase(),
         sid: sid.toLowerCase(),
@@ -181,19 +296,44 @@ export function validarLote(cuerpo: unknown, ctx: Contexto): Lote | { error: str
         continue;
       }
       const id = it.id.toLowerCase();
-      const previo = cierres.get(id);
-      cierres.set(id, {
-        p_id: id,
-        p_activo_ms: Math.max(a, previo?.p_activo_ms ?? 0),
-        p_interacciones: Math.max(n, previo?.p_interacciones ?? 0),
-        p_scroll: Math.max(s, previo?.p_scroll ?? 0),
-        p_uso: it.u || !!previo?.p_uso,
+      cierres.set(
+        id,
+        fusionar(
+          cierres.get(id),
+          conValor({
+            p_id: id,
+            p_activo_ms: a,
+            p_interacciones: n,
+            p_scroll: s,
+            p_uso: it.u,
+            p_resultado_ms: entero(it.r, TOPE_ACTIVO_MS),
+            p_campo_ult: limpiarCampo(it.c),
+            p_rabia: entero(it.g, 1000),
+            p_rabia_el: limpiarSelector(it.ge),
+          }) as ArgsCierre,
+        ),
+      );
+    } else if (it.t === "w") {
+      const w = conValor({
+        p_lcp_ms: entero(it.lcp, 120_000),
+        p_inp_ms: entero(it.inp, 120_000),
+        p_cls_milli: entero(it.cls, 100_000),
+        p_ttfb_ms: entero(it.ttfb, 120_000),
+        p_lcp_el: limpiarSelector(it.le),
+        p_inp_el: limpiarSelector(it.ie),
       });
+      if (!esUuid(it.id) || !Object.keys(w).length) {
+        lote.descartados.push("vitals");
+        continue;
+      }
+      const id = it.id.toLowerCase();
+      cierres.set(id, fusionar(cierres.get(id), { p_id: id, ...w } as ArgsCierre));
     } else if (it.t === "e") {
       const path = it.p === undefined ? null : limpiarPath(it.p);
-      const props = limpiarProps(it.pp);
-      const valorOk = it.va === undefined || (typeof it.va === "number" && Number.isFinite(it.va) && Math.abs(it.va) <= 1e10);
-      const productoOk = it.pr === undefined || esProducto(it.pr);
+      const esquema = esTipoEvento(it.k) ? ESQUEMAS[it.k] : undefined;
+      const props = esquema ? propsDeEsquema(esquema, it.pp) : limpiarProps(it.pp);
+      const valorOk = it.va === undefined || (!esquema && typeof it.va === "number" && Number.isFinite(it.va) && Math.abs(it.va) <= 1e10);
+      const productoOk = it.pr === undefined || (!esquema && esProducto(it.pr));
       const vistaOk = it.v === undefined || esUuid(it.v);
       if (!esTipoEvento(it.k) || (it.p !== undefined && !path) || props === undefined || !valorOk || !productoOk || !vistaOk || !mercadoOk(it.m)) {
         lote.descartados.push("evento");

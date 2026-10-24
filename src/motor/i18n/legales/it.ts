@@ -57,13 +57,14 @@ export const it: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Il paese della visita",
           parrafos: [
             "Per suggerire i calcolatori del paese giusto, verifichiamo da quale paese arriva la visita. Lo ricava il nostro fornitore di hosting dall'indirizzo IP.",
-            "Non conserviamo né l'IP né il paese. L'informazione resta nel browser per la durata della visita.",
+            "Non conserviamo l'IP. L'informazione resta nel browser per la durata della visita.",
           ],
         },
         {
           titulo: "Cosa conserva il browser",
           parrafos: [
-            "Usiamo l'archiviazione di sessione del browser per ricordare il paese scelto e se l'avviso che lo suggerisce è stato chiuso. Tutto si cancella alla chiusura della scheda.",
+            "Nell'archiviazione di sessione del browser, che si cancella alla chiusura della scheda, ricordiamo il paese della visita, se l'avviso che lo suggerisce è stato chiuso e, se la visita arriva da un link condiviso, il codice di quel link.",
+            "Nell'archiviazione locale, che resta finché non viene cancellata dal browser, conserviamo il paese scelto a mano, un numero casuale per contare le visite e la versione mostrata di un test di design, perché il sito si veda uguale a ogni visita. Niente di tutto questo dice chi è la persona.",
             "Non usiamo cookie pubblicitari né di tracciamento.",
           ],
         },
@@ -72,10 +73,27 @@ export const it: DiccionarioLegal = ({ actualizado, mail }) => ({
           parrafos: ["Il sito è ospitato su Vercel. Come ogni server, registra dati tecnici di ogni visita (indirizzo IP e browser) perché il sito funzioni e resti sicuro."],
         },
         {
+          titulo: "Come contiamo le visite",
+          parrafos: [
+            "Misuriamo l'uso del sito con uno strumento nostro: quali pagine si aprono e quanto si usano, da quale sito arriva la visita, il tipo di dispositivo e il paese. Il numero casuale conservato nel browser serve a distinguere una visita nuova da una di ritorno. Non conserviamo l'IP né ciò che si inserisce in un calcolatore.",
+            "I link condivisi dal sito portano un codice casuale, diverso a ogni condivisione, per contare quante visite porta ciascuno. Quel codice non identifica nessuno.",
+            "Gli importi inseriti in un calcolatore non escono mai dal browser dentro un link.",
+          ],
+        },
+        {
           titulo: "Modifiche e domande",
           parrafos: [
             "Se qualcosa cambia (per esempio, se aggiungiamo pubblicità), lo diremo in questa pagina prima che entri in vigore.",
             `Per qualsiasi domanda sui dati personali, la nostra email è ${mail}.`,
+          ],
+        },
+        {
+          titulo: "Gli stipendi condivisi",
+          parrafos: [
+            "In «Stipendi reali» è possibile aggiungere uno stipendio in forma anonima e facoltativa, solo dopo un consenso esplicito. Salviamo il paese, la professione (da un elenco chiuso), la fascia di anni di esperienza, lo stipendio lordo mensile arrotondato a due cifre significative e il mese. Non salviamo l'indirizzo IP, il browser né un account. Fino all'aggiornamento del giorno dopo salviamo anche il giorno del contributo e un'impronta della connessione, cifrata con una chiave che cambia ogni giorno e che non permette di risalire all'indirizzo IP; a fine giornata vengono cancellati entrambi.",
+            "Le cifre si pubblicano una volta al giorno. Una professione compare con almeno 10 contributi, inviati in più giorni e in almeno due mesi diversi. Mostriamo solo la mediana e l'intervallo, arrotondati, e il numero di contributi per fasce: così nessuno può ricavare lo stipendio di una persona confrontando la pagina di due giorni. Nessuno stipendio individuale viene mostrato.",
+            "Per evitare di aggiungere due volte lo stesso paese nello stesso mese, il browser ricorda nella memoria locale il paese e il mese del contributo, mai l'importo.",
+            "Poiché un contributo non è legato a nessuno, non è possibile ritrovarlo in seguito per cancellarlo.",
           ],
         },
       ],

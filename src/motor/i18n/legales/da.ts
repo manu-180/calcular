@@ -55,19 +55,28 @@ export const da: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Besøgets land",
           parrafos: [
             "For at foreslå det rigtige lands beregnere ser vi, hvilket land et besøg kommer fra. Vores hostingudbyder udleder det af IP-adressen.",
-            "Vi gemmer hverken IP-adressen eller landet. Svaret bliver i browseren, så længe besøget varer.",
+            "Vi gemmer ikke IP-adressen. Svaret bliver i browseren, så længe besøget varer.",
           ],
         },
         {
           titulo: "Det, browseren gemmer",
           parrafos: [
-            "I browserens sessionslager husker vi det valgte land, og om beskeden med forslaget er lukket. Alt slettes, når fanen lukkes.",
+            "I browserens sessionslager, som tømmes, når fanen lukkes, husker vi besøgets land, om beskeden med forslaget er lukket, og, hvis du kom via et delt link, linkets kode.",
+            "I det lokale lager, som bliver, til du sletter det i browseren, ligger det land, du selv har valgt, et tilfældigt tal til at tælle besøg og den version af en designtest, du ser, så sitet ser ens ud hver gang. Intet af det siger, hvem du er.",
             "Vi bruger ingen cookies til annoncer eller sporing.",
           ],
         },
         {
           titulo: "Webhotel",
           parrafos: ["Sitet ligger hos Vercel. Som alle servere registrerer de tekniske oplysninger om hvert besøg (IP-adresse og browser), så sitet virker og er sikkert."],
+        },
+        {
+          titulo: "Sådan tæller vi besøg",
+          parrafos: [
+            "Vi måler brugen af sitet med vores eget værktøj: hvilke sider der åbnes, og hvor meget de bruges, hvilket site besøget kommer fra, typen af enhed og landet. Det tilfældige tal i browseren skelner et nyt besøg fra et, der vender tilbage. Vi gemmer ikke IP-adressen og intet af det, du skriver i en beregner.",
+            "Links, der deles fra sitet, har en tilfældig kode, som er ny, hver gang noget deles. Med den tæller vi, hvor mange besøg hvert link giver. Koden identificerer ingen.",
+            "Beløb, du skriver i en beregner, forlader aldrig browseren i et link.",
+          ],
         },
         {
           titulo: "Ændringer og spørgsmål",
