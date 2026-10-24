@@ -1,5 +1,6 @@
 "use client";
 
+import { coma } from "../i18n/direccion";
 import { useContext, useEffect, useId, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { rastrear } from "@/lib/rastreo";
 import {
@@ -263,7 +264,9 @@ function Tarjeta({
             data-ubicacion="calculadora-secundaria"
             onClick={() => guardar(secundaria)}
           >
-            {secundaria.tituloCorto.charAt(0).toUpperCase() + secundaria.tituloCorto.slice(1)}, {precioUSD(secundaria.precioCentavos, locale)}
+            {secundaria.tituloCorto.charAt(0).toUpperCase() + secundaria.tituloCorto.slice(1)}
+            {coma(contexto.idioma)}
+            {precioUSD(secundaria.precioCentavos, locale)}
           </a>
         </p>
       ) : null}

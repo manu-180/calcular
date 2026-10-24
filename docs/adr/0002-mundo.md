@@ -151,8 +151,9 @@ prueba ja-JP, ko-KR, zh-TW, zh-HK y zh-CN, con nombres de país largos.
 (D9 queda para el motor europeo pl/sv/da/nb/fi, que corre en paralelo en `claude/mundo-motor-eu`.)
 
 `IDIOMAS` suma `ar`. Motor, sitio, inicio, novedades, legales, mensajes de error, compartir, embed,
-«Tu sueldo en el mundo» y el diccionario de venta están en árabe. Las 41 universales las escribe
-aparte `claude/mundo-trad-ar`.
+«Tu sueldo en el mundo», el calendario laboral, «¿Cuántas horas de trabajo cuesta?», los rankings de
+países, «Sueldos reales», los enlaces de afiliados y el diccionario de venta están en árabe. Las 41
+universales las escribe aparte `claude/mundo-trad-ar`.
 
 **Registro.** Un solo registro para la web, el árabe estándar moderno (فصحى) de los bancos y los
 portales de gobierno del Golfo y de Egipto, y los mercados van con `trato: "usted"`. Se le habla a la
@@ -169,7 +170,11 @@ del motor, de la oferta, del mundo y del puente de compartir usan propiedades l�
 `padding-inline`, `text-align: end`); las flechas de avance se espejan en rtl (`scale: -1 1`) y los
 empujones de hover van hacia la izquierda, mientras que la flecha externa y los chevrons de acordeón no
 se espejan. La carta del informe aísla el monto con `<bdi>` y el mail lleva `dir="rtl"` en `<html>` y
-en la tabla del contenido (Gmail y Outlook descartan el primero).
+en la tabla del contenido (Gmail y Outlook descartan el primero). Las hojas que trajo main después
+(calendario, horas, rankings, sueldos reales) siguen la misma regla; en rtl sus barras se llenan desde
+la derecha, salvo la barra de rango de «Sueldos reales», que es un eje de montos y va de izquierda a
+derecha en todos los idiomas. Lo que el código pone entre dos textos (nombre y fecha, una lista de
+organismos) va con `coma()` y `puntoYComa()` de `direccion.ts`: «، » y «؛ » en árabe.
 
 **Cifras.** Los mercados árabes muestran dígitos occidentales (0-9): el locale lleva
 `-u-ca-gregory-nu-latn` (por ejemplo `ar-EG-u-ca-gregory-nu-latn`). Es lo que usan la banca en línea y
@@ -195,8 +200,12 @@ ningún elemento (separa las letras ligadas).
 transliteración del árabe no tiene un sistema que la gente escriba (rawatib, rawateb, ratib), un slug en
 letras árabes viaja codificado en porcentaje y en el Golfo mucha gente busca estas calculadoras en
 inglés («end of service calculator», «salary calculator»). Las calculadoras locales siguen la misma
-regla: término en inglés si se usa, y si no la transliteración simple sin diacríticos. «Tu sueldo en
-el mundo» va con la transliteración `rawatib-alalam` (رواتب العالم), igual que ja, ko y zh tienen la suya.
+regla: término en inglés si se usa, y si no la transliteración simple sin diacríticos. Las páginas con
+una carpeta por idioma no pueden repetir la del inglés y van con la transliteración, como las de ja, ko
+y zh: «Tu sueldo en el mundo» en `rawatib-alalam` (رواتب العالم), el calendario en `taqwim-alrawatib`
+(تقويم الرواتب), las horas de trabajo en `saat-alamal` (ساعات العمل), los rankings en `tartib-alduwal`
+(ترتيب الدول) y «Sueldos reales» en `rawatib-haqiqiya` (رواتب حقيقية). Los rankings de adentro usan el
+slug en inglés (`take-home-pay`, `tax-freedom-day`, `pay-raise`).
 
 **Reglas de texto** (`scripts/reglas_idioma.ts`): sin exclamaciones; puntuación árabe (، ؛ ؟) y no la
 latina pegada a una letra árabe; comillas «»; sin dígitos arábigo-índicos en los textos; sin tatweel
@@ -207,7 +216,7 @@ venta y al mail.
 **Ofertas.** `src/lib/pagos/textos/ar.ts` está en `IDIOMAS_VENTA`, con las mismas piezas por familia
 que el español. Un mercado árabe vende desde el día en que se registra.
 
-**Prueba.** `zz-ar` (زيتالاند) es una edición interna de zz en `ar-EG-u-ca-gregory-nu-latn`.
+**Prueba.** `zz-ar` (زيتالاند) es una edición interna de zz en `ar-001-u-ca-gregory-nu-latn` (árabe sin país, como `en-001` y `ja-001`): con `ar-EG` compartía locale con Egipto y sumaba fallas de hreflang en modo interno.
 `check_universales` prueba eg, sa, ma-ar y un nombre de país largo; `check_motor` prueba el parseo
 de dígitos arábigo-índicos y los plurales.
 

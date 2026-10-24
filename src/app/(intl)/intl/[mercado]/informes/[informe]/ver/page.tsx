@@ -1,3 +1,4 @@
+import { coma } from "@/motor/i18n/direccion";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
@@ -193,7 +194,9 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
             <ul className="cy-informe-fuentes">
               {pagina.sello.fuentes.map((f) => (
                 <li key={f.url}>
-                  <strong>{f.organismo}</strong>. {f.titulo}, {tv.verificado} {formatearFecha(f.verificadoEl, m.locale)}.{" "}
+                  <strong>{f.organismo}</strong>. {f.titulo}
+                  {coma(m.idioma)}
+                  {tv.verificado} {formatearFecha(f.verificadoEl, m.locale)}.{" "}
                   <a href={f.url} rel="noopener" target="_blank">
                     {f.url}
                   </a>

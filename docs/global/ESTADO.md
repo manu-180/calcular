@@ -24,10 +24,12 @@ desde `PAISES` en `src/paises/index.ts`.
 ## 24/10/2026 · Motor árabe RTL (`claude/mundo-motor-ar`)
 
 `ar` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
-«Tu sueldo en el mundo» (`rawatib-alalam`) y diccionario de venta (`IDIOMAS_VENTA`). Decisiones en
+«Tu sueldo en el mundo» (`rawatib-alalam`), calendario (`taqwim-alrawatib`), horas de trabajo
+(`saat-alamal`), rankings (`tartib-alduwal`), «Sueldos reales» (`rawatib-haqiqiya`), afiliados y
+diccionario de venta (`IDIOMAS_VENTA`). Decisiones en
 ADR 0002, D10: árabe estándar moderno de banco y gobierno con segunda persona en masculino genérico,
 dígitos occidentales (`-u-ca-gregory-nu-latn`), CSS con propiedades lógicas y flechas espejadas, slugs
-en inglés para las universales. Edición de prueba `zz-ar` (interna).
+en inglés para las universales. Edición de prueba `zz-ar` (interna, `ar-001`).
 - Falta: las 41 universales en árabe (`claude/mundo-trad-ar`, otro agente). Hasta que entren, un
   mercado árabe solo tiene sus calculadoras locales.
 - Con esto se pueden escribir ediciones árabes de los países ya publicados en inglés (ae, kw) y
