@@ -57,19 +57,28 @@ export const de: DiccionarioLegal = ({ actualizado, mail }) => ({
           titulo: "Das Land des Besuchs",
           parrafos: [
             "Um die Rechner des passenden Landes vorzuschlagen, prüfen wir, aus welchem Land ein Besuch kommt. Unser Hosting-Anbieter leitet das aus der IP-Adresse ab.",
-            "Wir speichern weder die IP-Adresse noch das Land. Die Angabe bleibt für die Dauer des Besuchs im Browser.",
+            "Wir speichern die IP-Adresse nicht. Die Angabe bleibt für die Dauer des Besuchs im Browser.",
           ],
         },
         {
           titulo: "Was der Browser speichert",
           parrafos: [
-            "Im Sitzungsspeicher des Browsers merken wir uns das gewählte Land und ob der Hinweis dazu geschlossen wurde. Beim Schließen des Tabs wird beides gelöscht.",
+            "Im Sitzungsspeicher des Browsers, der beim Schließen des Tabs gelöscht wird, merken wir uns das Land des Besuchs, ob der Hinweis dazu geschlossen wurde und, wenn der Besuch über einen geteilten Link kam, den Code dieses Links.",
+            "Im lokalen Speicher, der bleibt, bis er im Browser gelöscht wird, liegen das selbst gewählte Land, eine Zufallszahl zum Zählen der Besuche und die angezeigte Version eines Designtests, damit die Website bei jedem Besuch gleich aussieht. Nichts davon verrät, wer die Person ist.",
             "Wir verwenden keine Werbe- oder Tracking-Cookies.",
           ],
         },
         {
           titulo: "Hosting",
           parrafos: ["Die Website wird bei Vercel gehostet. Wie jeder Server protokolliert er technische Daten zu jedem Besuch (IP-Adresse und Browser), damit die Website funktioniert und sicher bleibt."],
+        },
+        {
+          titulo: "Wie wir Besuche zählen",
+          parrafos: [
+            "Wir messen die Nutzung der Website mit einem eigenen Werkzeug: welche Seiten geöffnet und wie stark sie genutzt werden, von welcher Website der Besuch kommt, die Art des Geräts und das Land. Mit der Zufallszahl im Browser unterscheiden wir einen neuen Besuch von einem wiederkehrenden. Wir speichern weder die IP-Adresse noch Eingaben in einen Rechner.",
+            "Links, die von der Website aus geteilt werden, tragen einen Zufallscode, der bei jedem Teilen neu ist. Damit zählen wir, wie viele Besuche ein Link bringt. Der Code identifiziert niemanden.",
+            "Beträge, die in einen Rechner eingegeben werden, verlassen den Browser nie in einem Link.",
+          ],
         },
         {
           titulo: "Änderungen und Fragen",

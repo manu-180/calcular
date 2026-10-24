@@ -100,7 +100,7 @@ export function muestraDePlanilla(ctx: ContextoSitio, producto: ProductoIntl): M
   for (const c of def.campos) {
     if (filas.length >= MAX_ENTRADAS) break;
     if (!(c.id in b.muestra!)) continue;
-    const texto = textoEntrada(c, entrada[c.id], props.contexto, diccionarioVenta(m.idioma).general);
+    const texto = textoEntrada(c, entrada[c.id], props.contexto, diccionarioVenta(m.idioma, m.locale).general);
     const celda = b.celdas[c.id];
     if (texto === null || !celda) continue;
     filas.push({ fila: Number(celda.ref.replace(/^[A-Z]+/, "")), etiqueta: c.etiqueta, valor: texto, tono: "entrada" });
