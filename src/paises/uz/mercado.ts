@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["UZS"],
   zonaHoraria: "Asia/Tashkent",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 0, modo: "mitad-arriba" },
   escala: 12000,
 };
