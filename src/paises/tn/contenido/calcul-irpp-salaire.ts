@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Calcul de l'IRPP sur salaire en Tunisie",
   title: "Calcul IRPP Tunisie 2026 : impôt sur salaire et CSS",
   description:
-    "Calculez la retenue à la source de l'IRPP sur votre salaire en Tunisie avec le barème en vigueur, les déductions familiales et la contribution sociale de solidarité.",
+    "Calculez la retenue à la source de l'IRPP sur votre salaire en Tunisie : barème en vigueur, déductions familiales et contribution sociale de solidarité.",
   intro: [
     "Depuis le 1er janvier 2025, l'impôt sur le revenu des personnes physiques suit un barème de huit tranches, de {{tn.irpp-bareme[0].tasa}} à {{tn.irpp-bareme[-1].tasa}}. L'employeur retient cet impôt chaque mois sur le salaire, avec la contribution sociale de solidarité.",
     "Indiquez votre salaire brut mensuel et votre situation de famille pour connaître la retenue mensuelle et annuelle.",

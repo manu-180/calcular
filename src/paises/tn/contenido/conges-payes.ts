@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.conges-payes",
   h1: "Calcul des congés payés en Tunisie",
-  title: "Congés payés Tunisie : combien de jours selon le code du travail",
+  title: "Congés payés Tunisie : nombre de jours selon la loi",
   description:
     "Calculez vos jours de congé annuel payé en Tunisie : {{tn.conges-payes[par-mois]}} par mois de travail, jusqu'à {{tn.conges-payes[plafond]}}, davantage pour les moins de 20 ans.",
   intro: [
