@@ -36,6 +36,18 @@ import okresWypowiedzenia from "./calculadoras/okres-wypowiedzenia";
 import contenidoOkresWypowiedzenia from "./contenido/okres-wypowiedzenia";
 import kalkulatorChorobowego from "./calculadoras/kalkulator-chorobowego";
 import contenidoKalkulatorChorobowego from "./contenido/kalkulator-chorobowego";
+import kalkulatorWalut from "./calculadoras/kalkulator-walut";
+import contenidoKalkulatorWalut from "./contenido/kalkulator-walut";
+import kalkulatorInflacji from "./calculadoras/kalkulator-inflacji";
+import contenidoKalkulatorInflacji from "./contenido/kalkulator-inflacji";
+import kalkulatorOdsetekUstawowych from "./calculadoras/kalkulator-odsetek-ustawowych";
+import contenidoKalkulatorOdsetekUstawowych from "./contenido/kalkulator-odsetek-ustawowych";
+import kalkulatorLokat from "./calculadoras/kalkulator-lokat";
+import contenidoKalkulatorLokat from "./contenido/kalkulator-lokat";
+import podatekBelki from "./calculadoras/podatek-belki";
+import contenidoPodatekBelki from "./contenido/podatek-belki";
+import kalkulatorPcc from "./calculadoras/kalkulator-pcc";
+import contenidoKalkulatorPcc from "./contenido/kalkulator-pcc";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -66,6 +78,12 @@ export default definirPais({
     { definicion: odprawa, contenido: contenidoOdprawa, cliente: () => import("./calculadoras/odprawa.cliente") },
     { definicion: okresWypowiedzenia, contenido: contenidoOkresWypowiedzenia, cliente: () => import("./calculadoras/okres-wypowiedzenia.cliente") },
     { definicion: kalkulatorChorobowego, contenido: contenidoKalkulatorChorobowego, cliente: () => import("./calculadoras/kalkulator-chorobowego.cliente") },
+    { definicion: kalkulatorWalut, contenido: contenidoKalkulatorWalut, cliente: () => import("./calculadoras/kalkulator-walut.cliente") },
+    { definicion: kalkulatorInflacji, contenido: contenidoKalkulatorInflacji, cliente: () => import("./calculadoras/kalkulator-inflacji.cliente") },
+    { definicion: kalkulatorOdsetekUstawowych, contenido: contenidoKalkulatorOdsetekUstawowych, cliente: () => import("./calculadoras/kalkulator-odsetek-ustawowych.cliente") },
+    { definicion: kalkulatorLokat, contenido: contenidoKalkulatorLokat, cliente: () => import("./calculadoras/kalkulator-lokat.cliente") },
+    { definicion: podatekBelki, contenido: contenidoPodatekBelki, cliente: () => import("./calculadoras/podatek-belki.cliente") },
+    { definicion: kalkulatorPcc, contenido: contenidoKalkulatorPcc, cliente: () => import("./calculadoras/kalkulator-pcc.cliente") },
   ],
   universales: "todas",
   novedades,

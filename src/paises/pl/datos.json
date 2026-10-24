@@ -161,6 +161,26 @@
       ]
     },
     {
+      "id": "pl.podatek-od-zbycia",
+      "nombre": "Podatek od zysków ze sprzedaży papierów wartościowych, funduszy i walut wirtualnych (art. 30b)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 19,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
       "id": "pl.koszty-pracownicze",
       "nombre": "Miesięczne koszty uzyskania przychodu z umowy o pracę (art. 22 ust. 2)",
       "tipo": "mapa",
