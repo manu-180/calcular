@@ -1,6 +1,8 @@
 import { entradasDelMercado } from "@/motor/mapa";
 import { urlMundo } from "@/motor/mundo/ui/seo";
-import { urlIntl } from "@/motor/seo";
+import { rutaDatos } from "@/motor/rankings/rutas";
+import { urlIndice } from "@/motor/rankings/urls";
+import { origenPublicoIntl, urlIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
@@ -35,6 +37,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
         "",
         `- [${m.nombre}: calculators](${urlIntl(m.codigo)}): every calculator for the country, grouped by topic.`,
         `- [${m.nombre}: salary around the world](${urlMundo(m)}): the day of the year you stop working for the government on a salary in this country, and what that salary would leave in hand in every country at the same purchasing power.`,
+        `- [${m.nombre}: country rankings](${urlIndice(m)}): where the same salary goes furthest, Tax Freedom Day and how much of a raise is kept, with this country's rank in each, updated daily.`,
         ...lineas,
         `- [${m.nombre}: official sources](${urlIntl(m.codigo, "fuentes")}): every value the calculators use, with its effective dates, a link to the rule and the date it was checked.`,
         `- [${m.nombre}: updates](${urlIntl(m.codigo, "novedades")}): rule changes that affect the calculators.`,
@@ -47,6 +50,9 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
 If a value can't be confirmed in the official source, the calculator that uses it isn't published. Results are estimates. Each country's pages are written in that country's language.
 
 - [Your salary around the world](${urlMundo({ codigo: "global", idioma: "en" })}): your personal Tax Freedom Day and what the same salary would leave in hand in every country, by purchasing power parity, run through each country's official take-home pay calculator.
+- [Country rankings](${urlIndice({ codigo: "global", idioma: "en" })}): where the same salary goes furthest, Tax Freedom Day by country and how much of a raise is kept, ranked at three reference salaries and updated daily. Includes the methodology and every country's source.
+- [Open data, JSON](${origenPublicoIntl()}${rutaDatos("json")}): the same figures country by country (take-home pay, effective rate and Tax Freedom Day at five gross salaries in international dollars, plus every rank). Licence CC BY 4.0, credit CalcularYa.
+- [Open data, CSV](${origenPublicoIntl()}${rutaDatos("csv")}): the same file as a spreadsheet, one row per country.
 - [About us and how we work](${urlIntl("global", "sobre")})
 - [Contact](${urlIntl("global", "contacto")})
 

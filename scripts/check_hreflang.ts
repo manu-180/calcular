@@ -145,6 +145,27 @@ async function main() {
     const global = registro.mercados(modo).find((m) => m.codigo === "global");
     if (global) fallas.push(...revisarClusteres(mundo, publicadas, mundoSeo.urlMundo(global), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
     revisadas += mundo.length;
+
+    // Rankings de países: el índice y cada ranking forman su propio clúster con todas las ediciones.
+    const rk = await import("../src/motor/rankings/seo");
+    const rutasRk = await import("../src/motor/rankings/rutas");
+    const urlsRk = await import("../src/motor/rankings/urls");
+    const clusteresRk: { concepto: string; idiomas: Idiomas | undefined; url: (m: (typeof mercados)[number]) => string }[] = [
+      { concepto: "rankings", idiomas: rk.hreflangIndice(registro, modo), url: (m) => urlsRk.urlIndice(m) },
+      ...rutasRk.IDS_RANKING.map((id) => ({ concepto: `ranking-${id}`, idiomas: rk.hreflangRanking(registro, modo, id), url: (m: (typeof mercados)[number]) => urlsRk.urlRanking(m, id) })),
+    ];
+    for (const c of clusteresRk) {
+      const paginasRk: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: c.url(m), locale: m.locale, concepto: c.concepto, idiomas: c.idiomas }));
+      for (const p of paginasRk) {
+        if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «${c.concepto}» no está en el sitemap del mercado`);
+        const sitemap = enSitemap.get(p.url);
+        const vaAlSitemap = seo.hreflangVaAlSitemap(c.idiomas);
+        if (vaAlSitemap && JSON.stringify(Object.entries(sitemap ?? {}).sort()) !== JSON.stringify(Object.entries(c.idiomas ?? {}).sort())) fallas.push(`[${modo}] ${p.url}: el sitemap no lista el clúster entero`);
+        if (!vaAlSitemap && sitemap) fallas.push(`[${modo}] ${p.url}: clúster chico repetido en el sitemap`);
+      }
+      if (global) fallas.push(...revisarClusteres(paginasRk, publicadas, c.url(global), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
+      revisadas += paginasRk.length;
+    }
   }
 
   for (const f of fallas) console.error(`❌ ${f}`);
