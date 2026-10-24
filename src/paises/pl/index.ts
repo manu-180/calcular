@@ -22,6 +22,20 @@ import kalkulatorB2b from "./calculadoras/kalkulator-b2b";
 import contenidoKalkulatorB2b from "./contenido/kalkulator-b2b";
 import kalkulatorRyczaltu from "./calculadoras/kalkulator-ryczaltu";
 import contenidoKalkulatorRyczaltu from "./contenido/kalkulator-ryczaltu";
+import urlopWypoczynkowy from "./calculadoras/urlop-wypoczynkowy";
+import contenidoUrlopWypoczynkowy from "./contenido/urlop-wypoczynkowy";
+import ekwiwalentZaUrlop from "./calculadoras/ekwiwalent-za-urlop";
+import contenidoEkwiwalentZaUrlop from "./contenido/ekwiwalent-za-urlop";
+import nadgodziny from "./calculadoras/nadgodziny";
+import contenidoNadgodziny from "./contenido/nadgodziny";
+import wymiarCzasuPracy from "./calculadoras/wymiar-czasu-pracy";
+import contenidoWymiarCzasuPracy from "./contenido/wymiar-czasu-pracy";
+import odprawa from "./calculadoras/odprawa";
+import contenidoOdprawa from "./contenido/odprawa";
+import okresWypowiedzenia from "./calculadoras/okres-wypowiedzenia";
+import contenidoOkresWypowiedzenia from "./contenido/okres-wypowiedzenia";
+import kalkulatorChorobowego from "./calculadoras/kalkulator-chorobowego";
+import contenidoKalkulatorChorobowego from "./contenido/kalkulator-chorobowego";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -45,6 +59,13 @@ export default definirPais({
     { definicion: malyZusPlus, contenido: contenidoMalyZusPlus, cliente: () => import("./calculadoras/maly-zus-plus.cliente") },
     { definicion: kalkulatorB2b, contenido: contenidoKalkulatorB2b, cliente: () => import("./calculadoras/kalkulator-b2b.cliente") },
     { definicion: kalkulatorRyczaltu, contenido: contenidoKalkulatorRyczaltu, cliente: () => import("./calculadoras/kalkulator-ryczaltu.cliente") },
+    { definicion: urlopWypoczynkowy, contenido: contenidoUrlopWypoczynkowy, cliente: () => import("./calculadoras/urlop-wypoczynkowy.cliente") },
+    { definicion: ekwiwalentZaUrlop, contenido: contenidoEkwiwalentZaUrlop, cliente: () => import("./calculadoras/ekwiwalent-za-urlop.cliente") },
+    { definicion: nadgodziny, contenido: contenidoNadgodziny, cliente: () => import("./calculadoras/nadgodziny.cliente") },
+    { definicion: wymiarCzasuPracy, contenido: contenidoWymiarCzasuPracy, cliente: () => import("./calculadoras/wymiar-czasu-pracy.cliente") },
+    { definicion: odprawa, contenido: contenidoOdprawa, cliente: () => import("./calculadoras/odprawa.cliente") },
+    { definicion: okresWypowiedzenia, contenido: contenidoOkresWypowiedzenia, cliente: () => import("./calculadoras/okres-wypowiedzenia.cliente") },
+    { definicion: kalkulatorChorobowego, contenido: contenidoKalkulatorChorobowego, cliente: () => import("./calculadoras/kalkulator-chorobowego.cliente") },
   ],
   universales: "todas",
   novedades,
