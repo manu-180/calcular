@@ -1,0 +1,37 @@
+import { definirPais } from "@/motor/registro";
+import avisos from "./avisos.json";
+import ishHaqiKalkulyatori from "./calculadoras/ish-haqi-kalkulyatori";
+import contenidoIshHaqiKalkulyatori from "./contenido/ish-haqi-kalkulyatori";
+import sofIshHaqiHisoblash from "./calculadoras/sof-ish-haqi-hisoblash";
+import contenidoSofIshHaqiHisoblash from "./contenido/sof-ish-haqi-hisoblash";
+import ijtimoiySoliqKalkulyatori from "./calculadoras/ijtimoiy-soliq-kalkulyatori";
+import contenidoIjtimoiySoliqKalkulyatori from "./contenido/ijtimoiy-soliq-kalkulyatori";
+import daromadSoligiKalkulyatori from "./calculadoras/daromad-soligi-kalkulyatori";
+import contenidoDaromadSoligiKalkulyatori from "./contenido/daromad-soligi-kalkulyatori";
+import engKamIshHaqi from "./calculadoras/eng-kam-ish-haqi";
+import contenidoEngKamIshHaqi from "./contenido/eng-kam-ish-haqi";
+import bhmKalkulyatori from "./calculadoras/bhm-kalkulyatori";
+import contenidoBhmKalkulyatori from "./contenido/bhm-kalkulyatori";
+import datos from "./datos.json";
+import { detectores } from "./fuentes";
+import { mercado } from "./mercado";
+import { novedades } from "./novedades";
+import series from "./series.json";
+
+export default definirPais({
+  mercado,
+  datos,
+  series,
+  avisos,
+  calculadoras: [
+    { definicion: ishHaqiKalkulyatori, contenido: contenidoIshHaqiKalkulyatori, cliente: () => import("./calculadoras/ish-haqi-kalkulyatori.cliente") },
+    { definicion: sofIshHaqiHisoblash, contenido: contenidoSofIshHaqiHisoblash, cliente: () => import("./calculadoras/sof-ish-haqi-hisoblash.cliente") },
+    { definicion: ijtimoiySoliqKalkulyatori, contenido: contenidoIjtimoiySoliqKalkulyatori, cliente: () => import("./calculadoras/ijtimoiy-soliq-kalkulyatori.cliente") },
+    { definicion: daromadSoligiKalkulyatori, contenido: contenidoDaromadSoligiKalkulyatori, cliente: () => import("./calculadoras/daromad-soligi-kalkulyatori.cliente") },
+    { definicion: engKamIshHaqi, contenido: contenidoEngKamIshHaqi, cliente: () => import("./calculadoras/eng-kam-ish-haqi.cliente") },
+    { definicion: bhmKalkulyatori, contenido: contenidoBhmKalkulyatori, cliente: () => import("./calculadoras/bhm-kalkulyatori.cliente") },
+  ],
+  universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "uz.qqs" } }] },
+  novedades,
+  detectores,
+});
