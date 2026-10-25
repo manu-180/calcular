@@ -70,9 +70,10 @@ async function satsside(http: Http, url: string): Promise<readonly HallazgoNorma
   return fecha > VERIFICADO ? [{ titulo: `Satssiden er opdateret ${fecha}`, url, fecha }] : [];
 }
 
-// Siden har et afsnit med årstallet for satserne ("Satser 2026", "Sats 2026").
+// Siden har et afsnit eller et link med årstallet for satserne ("Sats 2026", "satser-for-2026").
 async function aarstal(http: Http, url: string, moenster: RegExp): Promise<readonly HallazgoNorma[] | null> {
-  const tekst = (await http.texto(url)).replace(/<[^>]+>/g, " ");
+  const html = await http.texto(url);
+  const tekst = `${html} ${html.replace(/<[^>]+>/g, " ")}`;
   const aar = [...tekst.matchAll(moenster)].map((m) => Number(m[1]));
   if (!aar.length) return null;
   const nyeste = Math.max(...aar);
