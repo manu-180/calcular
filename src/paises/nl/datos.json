@@ -266,6 +266,17 @@
             "verificadoEl": "2026-10-14"
           }
         }
+      ],
+      "calendario": [
+        {
+          "id": "betaling-vakantiegeld",
+          "tipo": "pago",
+          "mes": 6,
+          "dia": 30,
+          "titulo": "Uiterste datum voor het vakantiegeld",
+          "texto": "Volgens de Wet minimumloon en minimumvakantiebijslag (artikel 17) wordt het vakantiegeld in de maand juni uitbetaald, tenzij een cao of schriftelijke afspraak een ander moment vastlegt (minstens één keer per jaar).",
+          "calculadora": "nl.vakantiegeld-berekenen"
+        }
       ]
     },
     {

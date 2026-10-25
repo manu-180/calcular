@@ -45,3 +45,16 @@ de `ca.minimum-wage` y `ca.rrsp-dollar-limit` no están traducidos en la edició
   «Calendario laboral 2027». Ahora es el período de la grilla de 12 meses que muestra la página
   («2026-2027», o un solo año si la grilla arranca en enero), en título, ceja y OG, en los 10 idiomas.
 - **.ics:** escapa también un retorno de carro suelto y solo escribe `URL:` si es https.
+
+## Fechas de pago de bonos cargadas (2026-10-24)
+
+Leídas en el texto de la misma fuente del tramo: MX LFT art. 87 (antes del 20/12 → 19/12), GT
+Decreto 76-78 art. 2 (50 % hasta el 15/12, 50 % hasta el 31/1) y Decreto 42-92 art. 3 (Bono 14,
+15/7), DO Código de Trabajo art. 220 (20/12), HN Decreto 112-82 art. 11 (diciembre → 31/12) y
+Acuerdo 02-95 art. 5 (junio → 30/6), SV Código de Trabajo art. 200 (1/10 al 20/12), PE Ley 27735
+art. 5 (15/7 y 15/12), EC Acuerdo MDT-2015-0087 (15/3 Costa e Insular, 15/8 Sierra y Amazonía) y
+NL Wet minimumloon art. 17 (vakantiegeld en junio → 30/6). «En el mes de X» se carga como el último
+día del mes. Quedan sin fecha, con motivo: los que la ley fija relativa a otro hecho (MX PTU, PE y
+EC utilidades, DO bonificación, VE, BO prima), los que no la fija (CL, ES, IT, AT, CH, CO por la
+fuente del dato), los que no tienen dato propio en el registro (PT, UY, CR, PY), NI (digesto con
+403), BR (la fecha está en la Lei 4.749, no en la fuente del dato) y BO aguinaldo (instructivo anual).
