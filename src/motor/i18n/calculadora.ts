@@ -183,6 +183,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Lähde",
     },
   },
+  ar: {
+    base: {
+      datos: "بياناتك",
+      resultado: "النتيجة",
+      vacio: "أدخل البيانات واضغط «احسب» لتظهر النتيجة.",
+      sinResultado: "لا نعرض هذه النتيجة في الوقت الحالي.",
+      avisos: { info: "معلومة مفيدة", cautela: "تنبيه", bloquea: "لماذا لا نعرض النتيجة" },
+      fuenteDelAviso: "المصدر",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

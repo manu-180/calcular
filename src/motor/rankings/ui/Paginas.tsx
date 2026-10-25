@@ -1,3 +1,4 @@
+import { etiquetaIdioma } from "../../i18n/direccion";
 import type { CSSProperties } from "react";
 import { textosMundo } from "../../i18n/mundo";
 import { textosRankings, type TextosRankings } from "../../i18n/rankings";
@@ -260,7 +261,7 @@ export function PaginaIndice({ ctx, grilla, vistas }: { ctx: ContextoSitio; gril
     name: t.seo.titulo[0],
     description: t.seo.descripcion(n),
     url,
-    inLanguage: m.locale,
+    inLanguage: etiquetaIdioma(m.locale),
     isAccessibleForFree: true,
     license: "https://creativecommons.org/licenses/by/4.0/",
     creator: { "@type": "Organization", name: "CalcularYa", url: `${origen}/` },

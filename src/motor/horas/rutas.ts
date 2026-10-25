@@ -19,6 +19,7 @@ export const SLUG_HORAS: Record<Idioma, string> = {
   da: "arbejdstimer",
   nb: "arbeidstimer",
   fi: "tyotunnit",
+  ar: "saat-alamal",
 };
 
 export function rutaHoras(mercado: string, idioma: Idioma, producto?: string, iso?: string): string {

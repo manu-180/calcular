@@ -300,7 +300,12 @@ export function InformeVivo({
               </p>
             ) : (
               <p>
-                {textos.nota.pedido} <strong>{clave.texto}</strong> ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLowerCase() : clave.etiqueta}).
+                {textos.nota.pedido}{" "}
+                {/* bdi: en rtl el monto (cifras latinas, símbolo de moneda) no se mezcla con el paréntesis. */}
+                <strong>
+                  <bdi>{clave.texto}</bdi>
+                </strong>{" "}
+                ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLowerCase() : clave.etiqueta}).
               </p>
             )}
             <p>{textos.nota.cierre}</p>

@@ -1,3 +1,4 @@
+import { etiquetaIdioma } from "../i18n/direccion";
 import { edicionPrincipal } from "../mundo/rutas";
 import type { ModoPublicacion, Registro } from "../registro";
 import { urlIntl, type Idiomas } from "../seo";
@@ -16,7 +17,7 @@ export function urlSueldosIntl(m: Pick<Mercado, "codigo" | "idioma">): string {
 export function hreflangSueldos(registro: Registro, modo: ModoPublicacion, principal: string): Idiomas | undefined {
   const idiomas: Idiomas = {};
   for (const m of registro.mercados(modo)) {
-    if (m.codigo !== "global" && edicionPrincipal(m.codigo) === principal) idiomas[m.locale] = urlSueldosIntl(m);
+    if (m.codigo !== "global" && edicionPrincipal(m.codigo) === principal) idiomas[etiquetaIdioma(m.locale)] = urlSueldosIntl(m);
   }
   return Object.keys(idiomas).length < 2 ? undefined : idiomas;
 }

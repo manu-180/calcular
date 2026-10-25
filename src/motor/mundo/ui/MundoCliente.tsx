@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { usarCompartir } from "../../compartir";
+import { simboloLegible } from "../../i18n/direccion";
 import type { RegionMundo } from "../../i18n/mundo";
 import { cargaDesde, codificarCarga, compararDesde, decodificarCarga, diaDeCarga, diasDelAnio, fechaDelDia, type FilaMundo } from "../calculo";
 import { AporteSueldo } from "../../sueldos/ui/AporteSueldo";
@@ -90,8 +91,12 @@ function usarFormatos(locale: string) {
     const dia = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", timeZone: "UTC" });
     const frances = locale.toLowerCase().startsWith("fr");
     return {
-      dinero: (n: number, m: string) => moneda(m).format(n),
-      simbolo: (m: string) => moneda(m).formatToParts(0).find((p) => p.type === "currency")?.value ?? m,
+      dinero: (n: number, m: string) =>
+        moneda(m)
+          .formatToParts(n)
+          .map((p) => (p.type === "currency" ? simboloLegible(p.value, locale) : p.value))
+          .join(""),
+      simbolo: (m: string) => simboloLegible(moneda(m).formatToParts(0).find((p) => p.type === "currency")?.value ?? m, locale),
       simboloAntes: (m: string) => {
         const partes = moneda(m).formatToParts(0);
         return partes.findIndex((p) => p.type === "currency") < partes.findIndex((p) => p.type === "integer");

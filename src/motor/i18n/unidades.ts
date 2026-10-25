@@ -1,11 +1,13 @@
 import type { Idioma } from "../tipos";
+import type { FormasAr } from "./arabe";
 import { escrituraZh } from "./escritura";
 
 export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 
 // La forma se elige con Intl.PluralRules del locale: "uno" es la categoría "one" y "otros" todas las
 // demás. En polaco "pocos" es la categoría "few" (2 dni, 3 tygodnie) y "muchos" la "many" (5 lat);
-// "otros" queda para las fracciones, que van en genitivo singular (1,5 roku).
+// "otros" queda para las fracciones, que van en genitivo singular (1,5 roku). Un idioma con dual
+// (ar) trae todas las formas de FormasAr, con {n} donde va el número.
 export interface FormasUnidad {
   uno: string;
   otros: string;
@@ -13,7 +15,7 @@ export interface FormasUnidad {
   muchos?: string;
 }
 
-type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad>>;
+type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad | FormasAr>>;
 
 // ja, ko y zh no tienen plural: las dos formas son iguales y la unidad va pegada al número (3日).
 export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
@@ -39,6 +41,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   nb: { dias: { uno: "dag", otros: "dager" }, semanas: { uno: "uke", otros: "uker" }, horas: { uno: "time", otros: "timer" }, meses: { uno: "måned", otros: "måneder" }, anios: { uno: "år", otros: "år" } },
   // Finés: tras un número distinto de 1 (fracciones incluidas) el sustantivo va en partitivo singular.
   fi: { dias: { uno: "päivä", otros: "päivää" }, semanas: { uno: "viikko", otros: "viikkoa" }, horas: { uno: "tunti", otros: "tuntia" }, meses: { uno: "kuukausi", otros: "kuukautta" }, anios: { uno: "vuosi", otros: "vuotta" } },
+  ar: {
+    dias: { uno: "يوم واحد", dos: "يومان", pocos: "{n} أيام", muchos: "{n} يومًا", otros: "{n} يوم" },
+    semanas: { uno: "أسبوع واحد", dos: "أسبوعان", pocos: "{n} أسابيع", muchos: "{n} أسبوعًا", otros: "{n} أسبوع" },
+    horas: { uno: "ساعة واحدة", dos: "ساعتان", pocos: "{n} ساعات", muchos: "{n} ساعة", otros: "{n} ساعة" },
+    meses: { uno: "شهر واحد", dos: "شهران", pocos: "{n} أشهر", muchos: "{n} شهرًا", otros: "{n} شهر" },
+    anios: { uno: "سنة واحدة", dos: "سنتان", pocos: "{n} سنوات", muchos: "{n} سنة", otros: "{n} سنة" },
+  },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

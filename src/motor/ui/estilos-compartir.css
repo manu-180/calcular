@@ -46,6 +46,10 @@
   transform: translateX(3px);
 }
 
+[dir="rtl"] .cy-puente-enlace:hover .cy-puente-flecha {
+  transform: translateX(-3px);
+}
+
 /* ---------- Botón Compartir ---------- */
 
 .cy-compartir {

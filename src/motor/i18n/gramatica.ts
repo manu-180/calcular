@@ -358,4 +358,13 @@ const fi: GramaticaPais = (() => {
   return { nombre: (p) => p, de: (p) => muodot(p)[0], en: (p) => muodot(p)[1], para: (p) => muodot(p)[0] };
 })();
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi };
+// La pertenencia va por idafa (el nombre suelto detrás del sustantivo, que no lleva «ال»: «حاسبات مصر»);
+// «ل» se pega al nombre y con artículo queda «لل» («للسعودية»).
+const ar: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => p,
+  en: (p) => `في ${p}`,
+  para: (p) => (p.startsWith("ال") ? `لل${p.slice(2)}` : `ل${p}`),
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar };

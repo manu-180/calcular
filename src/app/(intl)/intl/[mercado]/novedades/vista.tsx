@@ -1,3 +1,4 @@
+import { coma } from "@/motor/i18n/direccion";
 import type { ReactNode } from "react";
 import { frescuraDePais } from "@/motor/frescura";
 import type { EntradaFeed } from "@/motor/novedades";
@@ -182,7 +183,7 @@ export function NovedadesVivas({ ctx }: { ctx: ContextoSitio }) {
             <div>
               <dt>{tn.siguiendo}</dt>
               <dd>
-                {visibles.join(", ")}
+                {visibles.join(coma(m.idioma))}
                 {organismos.length > visibles.length ? ` ${tn.masOrganismos(organismos.length - visibles.length)}` : ""}
               </dd>
             </div>

@@ -306,6 +306,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Katso, paljonko käteen jää yli ${n} maassa`,
     },
   },
+  ar: {
+    base: {
+      boton: "مشاركة",
+      botonAria: "مشاركة هذه الحاسبة",
+      menuTitulo: "المشاركة عبر",
+      copiar: "نسخ الرابط",
+      copiado: "تم نسخ الرابط",
+      compartido: "تمت المشاركة",
+      errorCorto: "تعذّر النسخ",
+      errorAyuda: "تعذّر نسخ الرابط. انسخه من شريط العنوان في المتصفح.",
+      nuevaPestana: "يُفتح في علامة تبويب جديدة",
+      mensaje: (nombre) => `${nombre}. مجانية، والحساب يستغرق دقيقة.`,
+      puenteIntro: "وفي الدول الأخرى؟",
+      puenteEnlace: (n) => `اعرف صافي راتبك في أكثر من ${n} دولة`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

@@ -9,7 +9,7 @@ import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
-import { decimalesDeMoneda, formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { decimalesDeMoneda, formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
@@ -55,6 +55,14 @@ igual("porcentaje es-PE", sinNbsp(formatearPorcentaje(9, "es-PE")), "9%");
 igual("porcentaje es-CO", sinNbsp(formatearPorcentaje(1.37, "es-CO")), "1,37%");
 igual("moneda es-PA con símbolo local", sinNbsp(formatearMoneda(1250.5, "es-PA", "USD", undefined, "B/.")), "B/. 1,250.50");
 igual("fecha es-MX", formatearFecha("2026-12-20", "es-MX"), "20 de diciembre de 2026");
+igual("fecha ar-SA gregoriana con dígitos latinos", formatearFecha("2026-12-20", "ar-SA-u-ca-gregory-nu-latn"), "20 ديسمبر 2026");
+// En rtl el «$» de «US$» se iría al otro lado de las letras: lleva una LRM detrás (formatearMoneda).
+igual("moneda USD en ar-EG con LRM tras el símbolo", formatearMoneda(2849, "ar-EG-u-ca-gregory-nu-latn", "USD").endsWith("US$\u200e"), true);
+igual("moneda EGP en ar-EG sin LRM", formatearMoneda(2849, "ar-EG-u-ca-gregory-nu-latn", "EGP").includes("\u200e"), false);
+igual("número ar-EG con dígitos latinos", formatearNumero(1234567.5, "ar-EG-u-ca-gregory-nu-latn"), "1,234,567.5");
+igual("dual árabe", formatearValorUnidad(2, "dias", "ar-EG-u-ca-gregory-nu-latn"), "يومان");
+igual("plural árabe de 3 a 10", formatearValorUnidad(3, "meses", "ar-EG-u-ca-gregory-nu-latn"), "3 أشهر");
+igual("plural árabe de 11 a 99", formatearValorUnidad(11, "anios", "ar-EG-u-ca-gregory-nu-latn"), "11 سنة");
 
 // Parseo por locale: el error que multiplica por mil.
 const parseos: [string, string, number | null][] = [
@@ -98,6 +106,16 @@ const parseos: [string, string, number | null][] = [
   ["da-DK", "1.234,50", 1234.5],
   ["da-DK", "1 234,50", 1234.5],
   ["da-DK", "-1.000", -1000],
+  ["ar-EG-u-ca-gregory-nu-latn", "٣٬٥٠٠٫٧٥", 3500.75],
+  ["ar-EG-u-ca-gregory-nu-latn", "١٢٫٥", 12.5],
+  ["ar-EG-u-ca-gregory-nu-latn", "٢٥٠٠٠", 25000],
+  ["ar-EG-u-ca-gregory-nu-latn", "3,500.75", 3500.75],
+  ["ar-EG-u-ca-gregory-nu-latn", "-١٢", -12],
+  ["ar-EG-u-ca-gregory-nu-latn", "١٢،٥", 12.5],
+  ["ar-EG-u-ca-gregory-nu-latn", "۱۲۰۰", 1200],
+  ["ar-MA-u-ca-gregory-nu-latn", "1.234,5", 1234.5],
+  ["ar-MA-u-ca-gregory-nu-latn", "١٫٢٥", 1.25],
+  ["ar-EG", "٣٬٥٠٠٫٧٥", 3500.75],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -452,8 +470,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);

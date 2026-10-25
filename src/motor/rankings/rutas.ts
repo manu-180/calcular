@@ -20,13 +20,14 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   da: "landerangliste",
   nb: "landrangering",
   fi: "maiden-vertailu",
+  ar: "tartib-alduwal",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
 export type IdRanking = (typeof IDS_RANKING)[number];
 
-// Slug de cada ranking dentro del índice (/<m>/<índice>/<ranking>). ja, ko y zh van con el slug en
-// inglés, como las universales (ADR 0002, D8). Ninguno puede ser «og»: esa carpeta es la imagen.
+// Slug de cada ranking dentro del índice (/<m>/<índice>/<ranking>). ja, ko, zh y ar van con el slug en
+// inglés, como las universales (ADR 0002, D8 y D10). Ninguno puede ser «og»: esa carpeta es la imagen.
 export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   es: { rinde: "donde-rinde-mas-el-sueldo", libertad: "dia-de-libertad-tributaria", aumento: "cuanto-queda-de-un-aumento" },
   pt: { rinde: "onde-o-salario-rende-mais", libertad: "dia-da-liberdade-de-impostos", aumento: "quanto-fica-de-um-aumento" },
@@ -43,6 +44,7 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   da: { rinde: "hvor-lonnen-raekker-laengst", libertad: "skattefridag", aumento: "hvad-der-er-tilbage-af-en-lonforhojelse" },
   nb: { rinde: "der-lonnen-gir-mest", libertad: "skattefridagen", aumento: "hva-som-blir-igjen-av-et-lonnstillegg" },
   fi: { rinde: "missa-palkka-riittaa-pisimmalle", libertad: "verovapauden-paiva", aumento: "paljonko-palkankorotuksesta-jaa" },
+  ar: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

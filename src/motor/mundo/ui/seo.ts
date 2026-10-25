@@ -1,4 +1,5 @@
 import type { ModoPublicacion, Registro } from "../../registro";
+import { etiquetaIdioma } from "../../i18n/direccion";
 import { urlIntl, type Idiomas } from "../../seo";
 import { hreflangARActivo, origenAR } from "../../sitio";
 import type { Mercado } from "../../tipos";
@@ -15,7 +16,7 @@ export function urlMundo(m: Pick<Mercado, "codigo" | "idioma">): string {
 export function hreflangMundo(registro: Registro, modo: ModoPublicacion): Idiomas | undefined {
   const mercados = registro.mercados(modo);
   const idiomas: Idiomas = {};
-  for (const m of mercados) idiomas[m.locale] = urlMundo(m);
+  for (const m of mercados) idiomas[etiquetaIdioma(m.locale)] = urlMundo(m);
   // calcular.ar entra al clúster (es-AR) recién con el flag de hreflang AR (ADR 0001, D6): apagado, ni
   // calcularya ni calcular.ar cambian un byte.
   if (hreflangARActivo()) idiomas["es-AR"] = `${origenAR()}${RUTA_MUNDO_AR}`;

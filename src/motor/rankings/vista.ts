@@ -1,3 +1,4 @@
+import { coma } from "../i18n/direccion";
 import { textosMundo } from "../i18n/mundo";
 import { textosRankings, type TextosRankings } from "../i18n/rankings";
 import type { GrillaMundo, PaisMundo } from "../mundo/tipos";
@@ -150,9 +151,9 @@ export function hrefDe(p: PaisMundo, origenAR: string): string {
   return p.sitio === "ar" ? `${origenAR}${p.ruta}` : p.ruta;
 }
 
-export function frasePosicion(t: TextosRankings, nombre: string, puesto: number, total: number, empatados: number): string {
+export function frasePosicion(t: TextosRankings, nombre: string, puesto: number, total: number, empatados: number, separador = ", "): string {
   const base = t.posicion(nombre, puesto, total);
-  return empatados > 1 ? `${base}, ${t.empate(empatados - 1)}` : base;
+  return empatados > 1 ? `${base}${separador}${t.empate(empatados - 1)}` : base;
 }
 
 export interface EntradaVista {
@@ -209,7 +210,7 @@ export function vistaRanking({ grilla, mercado: m, id, origenAR, fotos, hoy }: E
     const paisDestacado = porMercado.get(filaDestacada.iso)!;
     const val = valoresDe(t, r, f, m.locale, filaDestacada);
     const nombre = nombrePais(paisDestacado, m.locale);
-    const frase = frasePosicion(t, nombre, filaDestacada.puesto, total, filaDestacada.empatados);
+    const frase = frasePosicion(t, nombre, filaDestacada.puesto, total, filaDestacada.empatados, coma(m.idioma));
     variantes.push({
       id: v,
       ...et,

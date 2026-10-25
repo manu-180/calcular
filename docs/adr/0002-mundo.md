@@ -38,7 +38,7 @@ por el clúster hreflang y se mide en Search Console antes de abrir más países
 ### D2. Idiomas
 
 - `Idioma` pasa a ser una lista abierta en `src/motor/tipos.ts` (`IDIOMAS`). Fase 1: `es pt en fr
-  de it nl`. Después: `ar` (RTL) `ru tr pl id ms vi th ja ko zh hi ...` a medida que entran países.
+  de it nl`. Después: `ar` (RTL, D10) `ru tr pl id ms vi th ja ko zh hi ...` a medida que entran países.
 - `Trato` se reinterpreta como registro en cualquier idioma: `tu` informal (tú, você, tu, du, you),
   `usted` formal (usted, vous, Sie, Lei, u), `vos` voseo (solo español). Los nombres quedan por
   historia; no se renombra nada.
@@ -204,6 +204,80 @@ imperativo plural de los verbos de formulario (no se busca -kaa suelto: «aikaa�
 **Prueba.** Ediciones internas `zz-pl`, `zz-sv`, `zz-da`, `zz-nb` y `zz-fi` (Zetaland, Zetalandia,
 Zetamaa) con locale `<idioma>-001`, como `zz-ja`. `check_universales` prueba pl-PL, sv-SE, sv-FI,
 da-DK, nb-NO y fi-FI (con Suomi, Malta por el adesivo y San Vicente por el nombre largo).
+
+### D10. Árabe y escritura de derecha a izquierda (2026-10-24)
+
+(D9 queda para el motor europeo pl/sv/da/nb/fi, que corre en paralelo en `claude/mundo-motor-eu`.)
+
+`IDIOMAS` suma `ar`. Motor, sitio, inicio, novedades, legales, mensajes de error, compartir, embed,
+«Tu sueldo en el mundo», el calendario laboral, «¿Cuántas horas de trabajo cuesta?», los rankings de
+países, «Sueldos reales», los enlaces de afiliados y el diccionario de venta están en árabe. Las 41
+universales las escribe aparte `claude/mundo-trad-ar`.
+
+**Registro.** Un solo registro para la web, el árabe estándar moderno (فصحى) de los bancos y los
+portales de gobierno del Golfo y de Egipto, y los mercados van con `trato: "usted"`. Se le habla a la
+persona en segunda persona del singular en masculino genérico (اختر، أدخل، تعمل), que es lo que hacen
+esos sitios; donde se puede, la frase va impersonal para no marcar género (تم النسخ، يُفتح). Nada de
+dialecto, ni de «يا», ni de fórmulas de venta. Excepciones: la carta del informe va en primera persona
+y con el tono de un escrito formal, y la familia de embarazo le habla en femenino a la persona
+gestante (خذي، اسألي), como los sitios de salud en árabe.
+
+**Dirección.** `src/motor/i18n/direccion.ts` decide la dirección por idioma (`ar` es rtl), no por
+mercado. El layout intl pone `dir` y `lang` en `<html>`; `lang`, `hreflang`, `og:locale` e
+`inLanguage` van con la etiqueta base (`ar-EG`), sin las extensiones del locale. Las hojas de estilo
+del motor, de la oferta, del mundo y del puente de compartir usan propiedades lógicas (`inset-inline`,
+`padding-inline`, `text-align: end`); las flechas de avance se espejan en rtl (`scale: -1 1`) y los
+empujones de hover van hacia la izquierda, mientras que la flecha externa y los chevrons de acordeón no
+se espejan. La carta del informe aísla el monto con `<bdi>` y el mail lleva `dir="rtl"` en `<html>` y
+en la tabla del contenido (Gmail y Outlook descartan el primero). Las hojas que trajo main después
+(calendario, horas, rankings, sueldos reales) siguen la misma regla; en rtl sus barras se llenan desde
+la derecha, salvo la barra de rango de «Sueldos reales», que es un eje de montos y va de izquierda a
+derecha en todos los idiomas. Lo que el código pone entre dos textos (nombre y fecha, una lista de
+organismos) va con `coma()` y `puntoYComa()` de `direccion.ts`: «، » y «؛ » en árabe.
+
+**Cifras.** Los mercados árabes muestran dígitos occidentales (0-9): el locale lleva
+`-u-ca-gregory-nu-latn` (por ejemplo `ar-EG-u-ca-gregory-nu-latn`). Es lo que usan la banca en línea y
+los portales de servicios de Arabia Saudita, Emiratos y Egipto, lo que se ve en los recibos de sueldo y
+en las facturas electrónicas, y evita mezclar dos sistemas en una página con montos, porcentajes y
+códigos en cifras latinas. Sin `nu-latn`, Intl daría dígitos arábigo-índicos en ar-EG y ar-SA y latinos
+en ar-AE. El calendario es el gregoriano, el de los plazos laborales y fiscales que calculan las
+calculadoras. `parsearNumero` sí acepta lo que escribe un teclado árabe: dígitos arábigo-índicos y
+persas (٣٬٥٠٠٫٧٥), el ٫ decimal, el ٬ de miles y la coma «،».
+
+**Plurales y gramática.** El árabe tiene seis categorías (Intl.PluralRules: zero, one, two, few, many,
+other) y el sustantivo cambia en cada una: `FormasAr` y `pluralAr` en `src/motor/i18n/arabe.ts`
+(يوم واحد، يومان، 3 أيام، 11 يومًا، 100 يوم). Las unidades de tiempo traen esas formas con `{n}` donde va
+el número, porque el dual («يومان») no lo lleva. Detrás de «بـ» el dual va en genitivo (بيومين).
+`GRAMATICA.ar`: la pertenencia va por idafa («حاسبات مصر»), «في» para el lugar y «ل» pegada al nombre
+(«للسعودية» cuando el nombre lleva artículo).
+
+**Tipografía.** Noto Sans Arabic por `next/font`, que se baja solo en páginas con texto árabe; Geist
+sigue para el latín y las cifras. En árabe el interlineado sube a 1.7 y no hay `letter-spacing` en
+ningún elemento (separa las letras ligadas).
+
+**Slugs.** Las universales usan el slug en inglés del catálogo (columna `en`), como D8: la
+transliteración del árabe no tiene un sistema que la gente escriba (rawatib, rawateb, ratib), un slug en
+letras árabes viaja codificado en porcentaje y en el Golfo mucha gente busca estas calculadoras en
+inglés («end of service calculator», «salary calculator»). Las calculadoras locales siguen la misma
+regla: término en inglés si se usa, y si no la transliteración simple sin diacríticos. Las páginas con
+una carpeta por idioma no pueden repetir la del inglés y van con la transliteración, como las de ja, ko
+y zh: «Tu sueldo en el mundo» en `rawatib-alalam` (رواتب العالم), el calendario en `taqwim-alrawatib`
+(تقويم الرواتب), las horas de trabajo en `saat-alamal` (ساعات العمل), los rankings en `tartib-alduwal`
+(ترتيب الدول) y «Sueldos reales» en `rawatib-haqiqiya` (رواتب حقيقية). Los rankings de adentro usan el
+slug en inglés (`take-home-pay`, `tax-freedom-day`, `pay-raise`).
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`): sin exclamaciones; puntuación árabe (، ؛ ؟) y no la
+latina pegada a una letra árabe; comillas «»; sin dígitos arábigo-índicos en los textos; sin tatweel
+de adorno (sí vale detrás de un prefijo de una letra o del artículo delante de algo que no es letra
+árabe: «بـ7 أيام», «لـ «راتب»», «الـ7»). `check_ofertas_intl` aplica las mismas reglas al diccionario de
+venta y al mail.
+
+**Ofertas.** `src/lib/pagos/textos/ar.ts` está en `IDIOMAS_VENTA`, con las mismas piezas por familia
+que el español. Un mercado árabe vende desde el día en que se registra.
+
+**Prueba.** `zz-ar` (زيتالاند) es una edición interna de zz en `ar-001-u-ca-gregory-nu-latn` (árabe sin país, como `en-001` y `ja-001`): con `ar-EG` compartía locale con Egipto y sumaba fallas de hreflang en modo interno.
+`check_universales` prueba eg, sa, ma-ar y un nombre de país largo; `check_motor` prueba el parseo
+de dígitos arábigo-índicos y los plurales.
 
 ## 3. Catálogo de universales
 

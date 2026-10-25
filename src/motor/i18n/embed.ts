@@ -666,7 +666,44 @@ const fi: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi };
+// Árabe: «حاسبات مصر» va por idafa (GRAMATICA.ar.de) y «في مصر» con en.
+const gAr = GRAMATICA.ar;
+const ar: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "حاسبة من CalcularYa",
+    marcaNuevaPestana: "(يُفتح في علامة تبويب جديدة)",
+    noDisponible: { titulo: "هذه الحاسبة غير متاحة", texto: "ربما تغيّر عنوانها." },
+    insertar: "أضفها إلى موقعك",
+    pagina: {
+      titulo: (pais) => [`حاسبات مجانية لموقعك | ${pais}`, "حاسبات مجانية لموقعك"],
+      descripcion: (pais) => `اختر حاسبة ${gAr.en(pais)} وانسخ الشيفرة والصقها في مدونتك أو موقعك. مجانية، وبياناتها الرسمية محدّثة دائمًا.`,
+      h1: "أضف حاسبة إلى موقعك",
+      bajada: "اختر الحاسبة وانسخ الشيفرة والصقها حيث تريد. مجانية، وتتحدّث بياناتها تلقائيًا.",
+      calculadora: "الحاسبة",
+      buscar: "ابحث عن حاسبة",
+      sinResultados: "لا توجد حاسبة بهذا الاسم.",
+      tema: "المظهر",
+      claro: "فاتح",
+      oscuro: "داكن",
+      ancho: "العرض",
+      anchoCompleto: "العرض الكامل",
+      acento: "لون التمييز",
+      colores: ["أخضر", "أزرق", "برتقالي", "وردي", "رمادي داكن"],
+      credito: "إضافة رابط الإشارة إلى المصدر أسفل الحاسبة",
+      vistaPrevia: "معاينة",
+      codigo: "الشيفرة للّصق",
+      copiar: "نسخ الشيفرة",
+      copiado: "تم النسخ",
+      ayudaScript: "السكربت اختياري، ويضبط ارتفاع الحاسبة تلقائيًا.",
+      ventajas: ["مجانية وبلا تسجيل", "بيانات رسمية محدّثة دائمًا", "تناسب أي عرض"],
+      nota: "أسفل الحاسبة رابط إلى CalcularYa. نرجو إبقاءه كما هو.",
+      verTodas: (pais) => `عرض كل حاسبات ${gAr.de(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | حاسبة من CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

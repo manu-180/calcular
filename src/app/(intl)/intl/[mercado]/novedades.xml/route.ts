@@ -5,6 +5,7 @@ import type { CodigoMercado, FechaISO } from "@/motor/tipos";
 import { contextoSitio } from "@/motor/ui/contexto";
 import { registro } from "@/paises";
 import { registroNovedades, textoDe } from "../novedades/entradas";
+import { etiquetaIdioma } from "@/motor/i18n/direccion";
 
 // Feed Atom de /<m>/novedades: las mismas entradas que la página (entradas.ts), con un id estable por
 // entrada. Cada punto nuevo de una serie o tramo nuevo es una entrada nueva, así un lector de feeds
@@ -37,7 +38,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
   </entry>`;
   });
   const xml = `<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="${escapar(m.locale)}">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="${escapar(etiquetaIdioma(m.locale))}">
   <id>${escapar(pagina)}</id>
   <title>${escapar(r.tn.feedTitulo(m.nombre))}</title>
   <subtitle>${escapar(r.tn.feedSubtitulo(m.nombre))}</subtitle>

@@ -1,3 +1,4 @@
+import { etiquetaIdioma } from "../i18n/direccion";
 import type { ModoPublicacion, Registro } from "../registro";
 import { rutaIntl, urlIntl, type Idiomas } from "../seo";
 import type { CodigoMercado, Idioma, Mercado } from "../tipos";
@@ -23,6 +24,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   da: "lonkalender",
   nb: "lonnskalender",
   fi: "palkkakalenteri",
+  ar: "taqwim-alrawatib",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";
@@ -47,7 +49,7 @@ export function hreflangCalendario(registro: Registro, codigo: CodigoMercado, mo
   const ediciones = registro.ediciones(codigo, modo).filter((e) => calendarioPublicado(registro, e, modo));
   if (ediciones.length < 2) return undefined;
   const idiomas: Idiomas = {};
-  for (const e of ediciones) idiomas[e.locale] = urlCalendario(e);
+  for (const e of ediciones) idiomas[etiquetaIdioma(e.locale)] = urlCalendario(e);
   const principal = ediciones.find((e) => !e.codigo.includes("-")) ?? ediciones[0];
   idiomas["x-default"] = urlCalendario(principal);
   return idiomas;

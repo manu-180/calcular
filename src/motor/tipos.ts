@@ -50,7 +50,9 @@ export type EstadoPublicacion = "borrador" | "interno" | "publicado";
 // ja, ko y zh tienen un solo registro para la web y sus mercados van con "usted": です/ます en
 // japonés, 해요체 en coreano y 您 en chino (ADR 0002, D8). Los diccionarios lo escriben en base.
 export type Trato = "vos" | "tu" | "usted";
-export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "pl", "sv", "da", "nb", "fi"] as const;
+// ar tiene un solo registro (árabe estándar moderno) y sus mercados van con "usted"; la dirección
+// de escritura sale del idioma (i18n/direccion.ts), no del mercado.
+export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "pl", "sv", "da", "nb", "fi", "ar"] as const;
 export type Idioma = (typeof IDIOMAS)[number];
 export type SistemaUnidades = "metrico" | "imperial";
 

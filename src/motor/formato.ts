@@ -1,5 +1,7 @@
+import { formaAr } from "./i18n/arabe";
+import { simboloLegible } from "./i18n/direccion";
 import { idiomaDeLocale } from "./i18n/resolver";
-import { nombresUnidad, UNIDAD_PEGADA, type FormasUnidad } from "./i18n/unidades";
+import { nombresUnidad, UNIDAD_PEGADA } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
 import type { FechaISO, Moneda, ReglaRedondeo, Unidad } from "./tipos";
 import { esMoneda, UNIDADES_REFERENCIA } from "./tipos";
@@ -47,10 +49,10 @@ export function formatearMoneda(n: number, locale: string, moneda: Moneda, decim
     minimumFractionDigits: d,
     maximumFractionDigits: d,
   });
-  if (!simbolo) return f.format(n);
+  if (!simbolo && !/^ar(?:-|$)/i.test(locale)) return f.format(n);
   return f
     .formatToParts(n)
-    .map((p) => (p.type === "currency" ? simbolo : p.value))
+    .map((p) => (p.type === "currency" ? simboloLegible(simbolo ?? p.value, locale) : p.value))
     .join("");
 }
 
@@ -88,12 +90,12 @@ export function formatearFecha(fecha: FechaISO, locale: string, estilo: "larga" 
 function nombreDeUnidad(n: number, unidad: string, locale: string): string | null {
   const nombres = nombresUnidad(idiomaDeLocale(locale) ?? "es", locale);
   if (!(unidad in nombres)) return null;
-  const formas: FormasUnidad = nombres[unidad as keyof typeof nombres];
+  const formas = nombres[unidad as keyof typeof nombres];
+  if ("dos" in formas) return formaAr(n, formas);
   const categoria = new Intl.PluralRules(locale).select(n);
-  if (categoria === "one") return formas.uno;
-  if (categoria === "few") return formas.pocos ?? formas.otros;
-  if (categoria === "many") return formas.muchos ?? formas.otros;
-  return formas.otros;
+  const forma = categoria === "one" ? formas.uno : categoria === "few" ? (formas.pocos ?? formas.otros) : categoria === "many" ? (formas.muchos ?? formas.otros) : formas.otros;
+  const pegada = UNIDAD_PEGADA.has(idiomaDeLocale(locale) ?? "es");
+  return `{n}${pegada ? "" : " "}${forma}`;
 }
 
 function decimalesPropios(n: number): number {
@@ -111,7 +113,7 @@ export function formatearValorUnidad(n: number, unidad: Unidad, locale: string, 
   }
   if (unidad === "%") return formatearPorcentaje(n, locale, 4);
   const nombre = nombreDeUnidad(n, unidad, locale);
-  if (nombre) return `${formatearNumero(n, locale)}${UNIDAD_PEGADA.has(idiomaDeLocale(locale) ?? "es") ? "" : " "}${nombre}`;
+  if (nombre) return nombre.replace("{n}", formatearNumero(n, locale));
   if ((UNIDADES_REFERENCIA as readonly string[]).includes(unidad)) return `${formatearNumero(n, locale, undefined)} ${unidad}`;
   return formatearNumero(n, locale, n % 1 === 0 ? 0 : undefined);
 }

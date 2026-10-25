@@ -152,7 +152,9 @@ for (const fuente of FUENTES) {
           continue;
         }
         const enEs = es.get(ruta);
-        if (enEs !== undefined && marcadores(enEs) !== marcadores(texto)) fallas.push(`${donde}: marcadores {${marcadores(texto)}} distintos de los del español {${marcadores(enEs)}}`);
+        // Las unidades de un idioma con dual (ar) llevan {n} donde va el número (FormasAr): «يومان» no lo lleva.
+        const marcadoresOk = fuente.nombre === "unidades" ? /^(n)?$/.test(marcadores(texto)) : marcadores(enEs ?? "") === marcadores(texto);
+        if (enEs !== undefined && !marcadoresOk) fallas.push(`${donde}: marcadores {${marcadores(texto)}} distintos de los del español {${marcadores(enEs)}}`);
         if (idioma !== "es" && enEs === texto) {
           const clave = `${fuente.nombre}.${ruta}`;
           const permitida = [`${idioma}:${clave}`, `*:${clave}`].find((k) => IGUALES_PERMITIDOS.has(k));
