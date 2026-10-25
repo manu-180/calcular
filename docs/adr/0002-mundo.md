@@ -146,6 +146,121 @@ zh (`informe.anchoCompleto`); en coreano la carta va en 합니다체, que es el 
 **Prueba.** `zz-ja` (Zetaland en japonés) es una edición interna como `zz-en`. `check_universales`
 prueba ja-JP, ko-KR, zh-TW, zh-HK y zh-CN, con nombres de país largos.
 
+### D21. Húngaro (2026-10-24)
+
+D9 a D20 los usan otras ramas sin mergear (`claude/mundo-motor-eu`, `claude/mundo-motor-tr`,
+`claude/mundo-motor-cs` y las demás); esta entrada toma el D21 para no chocar al mergear.
+
+`IDIOMAS` suma `hu`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`fizetes-a-vilagban`), rankings (`orszagok-rangsora`), horas de
+trabajo (`hany-ora-munka`), calendario (`fizetesi-naptar`), sueldos reales (`valodi-fizetesek`), el
+diccionario de venta completo (familias, informes, planillas y mails) y las 41 universales están en
+húngaro.
+
+**Trato.** Un solo registro: tegezés. Es el de OTP, K&H, Revolut, Wise y las calculadoras de los
+portales húngaros de finanzas y de empleo, que es el tipo de sitio que es calcularya; NAV y
+Ügyfélkapu usan magázás («Ön», «adja meg»), pero son la web del Estado, con trámites y
+obligaciones, y una calculadora en magázás suena a formulario oficial. Los mercados van con
+`trato: "tu"` y los diccionarios escriben solo `base`. Las oraciones usan el imperativo de segunda
+del singular («add meg», «válaszd ki», «számold ki») y los botones el sustantivo de acción
+(«Kiszámítás») o la primera persona («Kérem a kimutatást», «Hozzáadom a fizetésemet»), como esos
+sitios. Las cartas del informe (para un tercero) van en el registro neutro de una carta. Vocabulario
+real: nettó bér kalkulátor, bruttó bér, SZJA, TB-járulék, ÁFA, lakáshitel kalkulátor, kamat, THM,
+törlesztőrészlet, futamidő, önerő. Las universales quedan neutrales de país (nada de NAV, MNB ni
+CSOK en el texto visible; la tasa de ÁFA sale del dato del país).
+
+**Sin plural detrás de un número.** El húngaro usa el singular después de un numeral («3 év», «5
+nap», «41 kalkulátor»). `Intl.PluralRules("hu")` tiene one y other, pero las dos formas de las
+unidades de tiempo son iguales («1 év», «3 év», «1,5 év») y los diccionarios escriben `${n} ország`
+sin elegir forma. El contador del buscador dice «találat» siempre. `reglas_idioma` atrapa los
+plurales frecuentes detrás de una cifra («3 napok»).
+
+**Artículo a/az.** «az» delante de vocal y «a» delante de consonante. Delante de una cifra cuenta
+cómo se lee: `neveloHu(x)` da «az» para 1 (egy), 5 (öt), 50, 500, 1 000 (ezer), 1 500 (ezerötszáz),
+1 000 000 (egymillió) y «a» para 10 (tíz), 15, 100 (száz), 10 000 (tízezer); también lee montos
+formateados («az 1 500 000 Ft») y palabras («az eredmény»). `conNeveloHu(x)` devuelve el artículo y lo
+que sigue. Las siglas que se leen letra por letra («az SZJA», «az ÁFA», frente a «a NAV») no se
+adivinan: el texto las escribe a mano. En las plantillas, una cifra variable con artículo delante va
+con `conNeveloHu` o la frase se arma sin artículo.
+
+**Gramática del país.** El nombre no lleva preposición: el caso es un sufijo pegado a la última
+palabra con armonía vocálica. `esetekHu(p)` (en `gramatica.ts`) da `nev` (con artículo si lo lleva),
+`hol` (lugar), `hova` (dirección), `honnan` (origen) y `nak` (dativo). Dos grupos: casi todos los
+países van con -ban/-ben, -ba/-be, -ból/-ből («Németországban», «Kanadába»); Magyarország, las islas
+y los estados insulares (tabla FELSZIN: Ciprus, Málta, Kuba, Srí Lanka, Tajvan...) y lo que termina
+en -sziget(ek), -föld, -land, -part o -terület van con -on/-en/-ön, -ra/-re, -ról/-ről
+(«Magyarországon», «Cipruson», «Thaiföldön», «Új-Zélandon», «Elefántcsontparton»). La armonía la
+decide la última vocal no neutra (i, í son neutras) de la última palabra: «Maliban», «Izraelben»,
+«Chilében», «Fidzsin»; la ö/ő/ü/ű da -ön en el superesivo. La a, e, o y ö finales se alargan antes del
+sufijo («Kanadában», «Chilében», «Togóban», «Puerto Ricón»). Los nombres que son una frase con
+sustantivo común (Köztársaság, Királyság, Államok, Emírségek, -szigetek, Terület, Vatikán) llevan
+artículo en todas las formas («az Egyesült Államokban», «a Fülöp-szigeteken», «a Dominikai
+Köztársaságból»). Una tabla lleva los que Intl escribe con un agregado («Hongkong KKT» da
+«Hongkongban», «Kongó – Kinshasa» da «a Kongói Demokratikus Köztársaságban») y los de e o -que
+finales mudas, con guion («Belize-ben», «Guadeloupe-on», «Jersey-n»). Probado con los ~250 nombres
+de Intl en hu. `GRAMATICA.hu`: `nombre(p)` = `nev`; `de(p)` = `nev`, el poseedor sin sufijo, porque
+en húngaro el posesivo va en el poseído («Magyarország adórendszere», «az Egyesült Államok
+kalkulátorai»); `en(p)` = `hol`; `para(p)` = «nev számára», una posposición que no cambia el nombre.
+Si una forma con artículo abre la oración, el texto la pasa por `mayusculaHu`.
+
+**Ningún sufijo pegado a cifras ni marcadores.** La forma del sufijo depende de cómo se lee el
+número («5-ben», «6-ban», «10-ben», «2026-ban») y en una plantilla el número cambia, así que en los
+textos las cifras, fechas y marcadores van tras dos puntos («A legkisebb megengedett érték: {min}»),
+entre paréntesis, con una posposición («${n} ország alapján», «${n} óra munkával») o detrás de una
+fecha larga con «napján/napjáig» («2026. október 24. napjáig», que no pega nada a la cifra porque la
+fecha termina en punto). Las cifras fijas que llevarían sufijo se escriben en letras («ötvenkettővel
+szorzol», «január elsejétől»). `reglas_idioma` atrapa una cifra o un % seguidos de guion y sufijo
+(«5-ben», «27%-os»). Queda una excepción tolerada en textos fijos: el sufijo detrás de una
+abreviatura de unidad («100 km-en», «kW-ban»), que es la escritura normal y no depende de un número
+variable.
+
+**Formato.** Intl de hu-HU: miles con espacio (U+00A0) desde cinco cifras («1234,5», «12 345,5»),
+decimal con coma, el forint sin decimales y con «Ft» detrás («1 234 568 Ft»), el porcentaje pegado
+(«27%»). `parsearNumero` no cambia (casos nuevos en `check_motor`, con y sin espacio de miles). Fechas
+largas «2026. október 24.», con el punto final de la fecha: los textos no le agregan otro.
+`inferir.ts` reconoce «éves», «évi», «évente», «havi» y «havonta». Geist suma el subconjunto
+`latin-ext` en los layouts intl y embebido para la ő y la ű (el mismo cambio que la rama cs; con
+unicode-range solo se baja en las páginas que lo usan).
+
+**Comillas.** „ ” (abre abajo, cierra arriba a la derecha). `reglas_idioma` rechaza «», "" y “, y la
+” abriendo.
+
+**Slugs.** ASCII en kebab-case sin diacríticos (á→a, é→e, ő→o, ű→u), sobre lo que busca la gente,
+con «kalkulator» donde es la búsqueda real: `hitelkalkulator`, `lakashitel-kalkulator`,
+`afa-kalkulator`, `kamat-kalkulator`, `kamatos-kamat-kalkulator`, `effektiv-kamatlab-kalkulator`,
+`hitelkartya-torlesztes`, `berlet-vagy-vasarlas`, `nyugdijcelu-megtakaritas`,
+`megtakaritas-kalkulator`, `vesztartalek-kalkulator`, `50-30-20-szabaly`,
+`auto-fenntartasi-koltseg`, `hozam-kalkulator`, `arres-kalkulator`, `fedezeti-pont-kalkulator`,
+`szabaduszo-oradij-kalkulator`, `oraber-kalkulator`, `fizetesemeles-kalkulator`,
+`munkaido-kalkulator`, `szazalekszamitas`, `szazalekos-valtozas`, `kedvezmeny-kalkulator`,
+`aranyossag-kalkulator`, `atlag-kalkulator`, `borravalo-kalkulator`, `koltsegek-megosztasa`,
+`eletkor-kalkulator`, `napok-ket-datum-kozott`, `datum-kalkulator`, `bmi-kalkulator`,
+`kaloriaszukseglet-kalkulator`, `szules-varhato-idopontja`, `ovulacios-kalkulator`,
+`futotempo-kalkulator`, `uzemanyagkoltseg-kalkulator`, `aramfogyasztas-kalkulator`,
+`festekszukseglet-kalkulator`, `negyzetmeter-kalkulator`, `csempe-kalkulator` y
+`beton-kalkulator`. `nettober-kalkulator` queda libre para la calculadora local de sueldo neto de
+Hungría. Rankings: `hol-er-tobbet-a-fizetes`, `adoszabadsag-napja`,
+`mennyi-marad-a-fizetesemelesbol`. Los títulos escriben «Lakáshitel kalkulátor» con espacio, como se
+busca; la ortografía académica pide guion y queda para la revisión nativa.
+
+**Universales.** Textos nativos para un lector húngaro y neutrales de país. Los ejemplos se calculan
+con las funciones de cada `definicion.ts`. Salud con la oración de que no reemplaza la consulta con
+un profesional («fordulj orvoshoz»).
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): sin exclamaciones, rayas ni guion como pausa; se atrapa la magázás («Ön» y sus casos con
+mayúscula, porque en minúscula «önt» es un verbo, y los imperativos corteses de un formulario:
+«kattintson», «adja meg», «válassza ki», «írja be», «töltse ki», «ellenőrizze», «forduljon»), las
+comillas que no son „ ”, el sufijo pegado a una cifra y el plural detrás de un número. Los
+imperativos corteses coinciden con la tercera persona del indicativo definido («a bolt adja meg»):
+el texto se reescribe («tünteti fel») en lugar de abrir excepciones.
+
+**Prueba.** `zz-hu` (Zetaország, locale `hu-001`, Északi y Déli megye) es una edición interna como
+`zz-ja`. `check_universales` prueba hu-HU con HUF, «Saint Vincent és a Grenadine-szigetek» por el
+nombre largo con artículo y sufijo de isla y «Németország» por el compuesto en -ország.
+`check_motor` prueba el parseo, las unidades, el forint, la fecha larga, el artículo y los casos del
+país.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.
