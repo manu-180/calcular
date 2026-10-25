@@ -193,7 +193,7 @@ export const detectores: readonly Detector[] = [
     "cz.vypovedni-doba",
     "cz.nahrada-mzdy-nemoc",
   ]),
-  detectorZakona("cz.zpl-nemocenske", "2006-187", "Zákon o nemocenském pojištění", "2026-01-01", ["cz.nemocenske-sazby", "cz.ppm-sazba", "cz.ppm-podpurci-doba"]),
+  detectorZakona("cz.zpl-nemocenske", "2006-187", "Zákon o nemocenském pojištění", "2026-07-01", ["cz.nemocenske-sazby", "cz.ppm-sazba", "cz.ppm-podpurci-doba"]),
   detectorZakona("cz.zpl-statni-socialni-podpora", "1995-117", "Zákon o státní sociální podpoře", "2026-09-01", [
     "cz.rodicovsky-prispevek",
     "cz.rodicovsky-limit",
