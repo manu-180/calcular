@@ -1,6 +1,7 @@
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
 import { GRAMATICA } from "./gramatica";
+import { formaBg, pluralBg } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Calendario laboral y fiscal de cada edición. Los textos no le hablan a nadie en segunda persona a
@@ -739,7 +740,82 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Búlgaro (ADR 0002, D24): impersonal como los demás; el país va con GRAMATICA.bg y los días con
+// formaBg/pluralBg («1 ден», «3 дни»).
+const gBg = GRAMATICA.bg;
+const bg: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Работен и данъчен календар",
+    seo: {
+      titulo: (pais, anios) => [
+        `Работен и данъчен календар ${gBg.para(pais)} ${anios}: важни дати`,
+        `Работен и данъчен календар ${gBg.para(pais)} ${anios}`,
+        `Работен календар ${gBg.para(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Датите, които променят заплатата ${gBg.en(pais)}, с официален източник: ${proximas}. Всяка със свой калкулатор.`,
+      descripcionSin: (pais) => `Датите, които променят заплатата ${gBg.en(pais)}, с официален източник и калкулатор за всяка. Могат да се добавят в календара на телефона.`,
+    },
+    ceja: (anios) => `Календар ${anios}`,
+    h1: (pais) => `Работен и данъчен календар ${gBg.para(pais)}`,
+    acento: "датите, от които зависи заплатата",
+    bajada: "Всяка дата идва от официален източник и води към калкулатора, който засяга. Страницата се обновява сама, когато бъде публикувана нова стойност.",
+    proxima: "Следваща дата",
+    cuenta: {
+      hoy: "Днес",
+      manana: "Утре",
+      ayer: "Вчера",
+      en: (n) => `След ${pluralBg(n, "ден", "дни")}`,
+      hace: (n) => `Преди ${pluralBg(n, "ден", "дни")}`,
+      dias: (n) => formaBg(n, "ден", "дни"),
+    },
+    queViene: "Предстои",
+    yaRige: "Вече е в сила",
+    mesPorMes: "Годината месец по месец",
+    sinFechas: "Няма обявени промени",
+    filtro: "Филтър по тема",
+    todo: "Всички",
+    tipos: { pago: "Плащания", "salario-minimo": "Минимална заплата", impuestos: "Данъци", aportes: "Осигуровки и пенсии", laboral: "Трудови правила", indices: "Референтни стойности" },
+    pasa: (antes, despues) => `Променя се от ${antes} на ${despues}`,
+    queda: (valor) => `Определено: ${valor}`,
+    cambian: "Сумите се променят",
+    zonas: (lista) => `Региони: ${lista}`,
+    limite: "Краен срок",
+    agregar: "Добави в моя календар",
+    descargar: "Apple, Outlook и други (файл .ics)",
+    google: "Google Календар",
+    calcular: "Изчисли",
+    tambien: "Също и в калкулаторите",
+    fuente: (organismo, fecha) => `Източник: ${organismo}. Проверено на ${fecha}`,
+    verificado: (fecha) => `Проверено на ${fecha}`,
+    suscribir: {
+      titulo: "Целият календар, винаги актуален",
+      texto: "С един абонамент новите дати се появяват сами в календара на телефона или компютъра.",
+      boton: "Абонирай се за календара",
+      copiar: "Копирай линка",
+      copiado: "Линкът е копиран",
+    },
+    fuentes: {
+      titulo: "Откъде идва всяка дата",
+      texto: "Тук влизат само дати, които вече са определени с нормативен акт или със стойност, публикувана от официална институция. Каквото още не е публикувано, го няма тук.",
+    },
+    vacio: "През следващите дванадесет месеца няма дати по тази тема.",
+    destacado: {
+      ceja: "Календар на плащанията",
+      titulo: "Датите, от които зависи заплатата тази година",
+      ir: "Виж календара",
+      proxima: (titulo, fecha) => `Следваща: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Работен и данъчен календар ${gBg.para(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Дати за плащания и данъци ${gBg.en(pais)} от официални източници.`,
+      calculadora: "Калкулатор",
+      fuente: "Източник",
+    },
+    og: { proxima: "Следваща дата", mas: (n) => `И още ${pluralBg(n, "дата", "дати")} тази година` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, bg };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

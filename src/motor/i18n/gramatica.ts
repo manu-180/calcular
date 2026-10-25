@@ -259,4 +259,39 @@ const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `
 // 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
 const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh };
+// Búlgaro (ADR 0002, D24): no hay casos, pero sí artículo definido pospuesto. Los nombres propios de
+// país van sin artículo («България», «Германия»); los que son una frase con sustantivo común
+// («Съединени щати», «Доминиканска република», «Бахамски острови») o un plural («Филипини»,
+// «Малдиви») lo llevan en la primera palabra («Съединените щати», «Доминиканската република»,
+// «Филипините»). `de(p)` = «на» + nombre; `en(p)` = «в» + nombre, «във» delante de в o ф («във
+// Франция», «във Виетнам») y «на» en los archipiélagos («на Малдивите», «на Бахамските острови»);
+// `para(p)` = «за» + nombre. Los nombres llegan como los escribe Intl.DisplayNames en bg.
+const bg: GramaticaPais = (() => {
+  const SUSTANTIVO_COMUN = new Set(["щати", "емирства", "република", "острови", "кралство", "федерация"]);
+  const PLURALES = new Set(["Филипини", "Малдиви", "Сейшели", "Бахами", "Комори"]);
+  const ARCHIPIELAGOS = new Set(["Малдиви", "Сейшели", "Бахами", "Комори"]);
+  const YA_ARTICULADO = /(?:те|та|то|ят)$/;
+  const articular = (w: string): string => {
+    if (YA_ARTICULADO.test(w)) return w;
+    if (/и$/.test(w)) return `${w}те`;
+    if (/[ая]$/.test(w)) return `${w}та`;
+    if (/о$/.test(w)) return `${w}то`;
+    return w;
+  };
+  const nombre = (p: string): string => {
+    if (PLURALES.has(p)) return `${p}те`;
+    const palabras = p.split(" ");
+    if (palabras.length >= 2 && !/[,(]/.test(p) && SUSTANTIVO_COMUN.has(palabras[palabras.length - 1])) {
+      return [articular(palabras[0]), ...palabras.slice(1)].join(" ");
+    }
+    return p;
+  };
+  const en = (p: string): string => {
+    const n = nombre(p);
+    if (ARCHIPIELAGOS.has(p) || / острови$/.test(p)) return `на ${n}`;
+    return `${/^[ВвФф]/.test(n) ? "във" : "в"} ${n}`;
+  };
+  return { nombre, de: (p) => `на ${nombre(p)}`, en, para: (p) => `за ${nombre(p)}` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, bg };

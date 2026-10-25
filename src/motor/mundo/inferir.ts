@@ -3,11 +3,12 @@ import type { Campo, DefinicionCalculadora, MundoCalculadora, PeriodoMundo } fro
 export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; motivo: string };
 
 // Palabras de período en los idiomas del motor. Se compara por palabra (o prefijo de palabra
-// compuesta, como Monatslohn o Jahresgehalt), nunca por substring: «mano» no es «año».
-const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "年", "연", "연봉", "年収", "年薪"];
-const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year"];
-const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "月", "월", "월급", "月給", "月薪"];
-const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil"];
+// compuesta, como Monatslohn o Jahresgehalt), nunca por substring: «mano» no es «año». En búlgaro, «година»/«месец» y los
+// prefijos «годиш» y «месеч» («годишна», «месечна»; ADR 0002, D24).
+const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "година", "年", "연", "연봉", "年収", "年薪"];
+const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "годиш"];
+const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "месец", "月", "월", "월급", "月給", "月薪"];
+const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "месеч"];
 
 function palabras(texto: string): string[] {
   return texto
