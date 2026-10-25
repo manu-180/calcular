@@ -492,6 +492,53 @@
       ]
     },
     {
+      "id": "dk.koerselsfradrag-km",
+      "nombre": "Kilometergrænser for kørselsfradrag pr. dag (tur-retur)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "uden-fradrag": "Ingen fradrag til og med",
+        "lav-sats-over": "Lavere sats over"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "uden-fradrag": 24,
+            "lav-sats-over": 120
+          },
+          "fuente": {
+            "organismo": "Skattestyrelsen (skat.dk)",
+            "titulo": "Satser for kørselsfradrag 2026",
+            "url": "https://skat.dk/borger/fradrag/koerselsfradrag/beregn-dit-koerselsfradrag",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.koerselsgodtgoerelse-km",
+      "nombre": "Kilometergrænse for den høje sats for kørselsgodtgørelse",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
       "id": "dk.koerselsgodtgoerelse",
       "nombre": "Skattefri kørselsgodtgørelse pr. km",
       "tipo": "mapa",

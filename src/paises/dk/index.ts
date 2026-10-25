@@ -32,6 +32,18 @@ import grundskyld from "./calculadoras/grundskyld";
 import contenidoGrundskyld from "./contenido/grundskyld";
 import gaveafgift from "./calculadoras/gaveafgift";
 import contenidoGaveafgift from "./contenido/gaveafgift";
+import valutaomregner from "./calculadoras/valutaomregner";
+import contenidoValutaomregner from "./contenido/valutaomregner";
+import inflationsberegner from "./calculadoras/inflationsberegner";
+import contenidoInflationsberegner from "./contenido/inflationsberegner";
+import folkepension from "./calculadoras/folkepension";
+import contenidoFolkepension from "./contenido/folkepension";
+import morarenter from "./calculadoras/morarenter";
+import contenidoMorarenter from "./contenido/morarenter";
+import koerselsfradrag from "./calculadoras/koerselsfradrag";
+import contenidoKoerselsfradrag from "./contenido/koerselsfradrag";
+import koerselsgodtgoerelse from "./calculadoras/koerselsgodtgoerelse";
+import contenidoKoerselsgodtgoerelse from "./contenido/koerselsgodtgoerelse";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +72,12 @@ export default definirPais({
     { definicion: ejendomsvaerdiskat, contenido: contenidoEjendomsvaerdiskat, cliente: () => import("./calculadoras/ejendomsvaerdiskat.cliente") },
     { definicion: grundskyld, contenido: contenidoGrundskyld, cliente: () => import("./calculadoras/grundskyld.cliente") },
     { definicion: gaveafgift, contenido: contenidoGaveafgift, cliente: () => import("./calculadoras/gaveafgift.cliente") },
+    { definicion: valutaomregner, contenido: contenidoValutaomregner, cliente: () => import("./calculadoras/valutaomregner.cliente") },
+    { definicion: inflationsberegner, contenido: contenidoInflationsberegner, cliente: () => import("./calculadoras/inflationsberegner.cliente") },
+    { definicion: folkepension, contenido: contenidoFolkepension, cliente: () => import("./calculadoras/folkepension.cliente") },
+    { definicion: morarenter, contenido: contenidoMorarenter, cliente: () => import("./calculadoras/morarenter.cliente") },
+    { definicion: koerselsfradrag, contenido: contenidoKoerselsfradrag, cliente: () => import("./calculadoras/koerselsfradrag.cliente") },
+    { definicion: koerselsgodtgoerelse, contenido: contenidoKoerselsgodtgoerelse, cliente: () => import("./calculadoras/koerselsgodtgoerelse.cliente") },
   ],
   universales: "todas",
   novedades,

@@ -50,6 +50,22 @@ export function heleMaaneder(fra: string, til: string): number {
   return n;
 }
 
+export function maanedNavn(maaned: number): string {
+  return MAANEDER[maaned - 1];
+}
+
+// Dagnummer (proleptisk gregoriansk kalender), så forskellen mellem to datoer er antal dage.
+export function dagNummer(d: string): number {
+  const [aar, maaned, dag] = dele(d);
+  const a = maaned <= 2 ? aar - 1 : aar;
+  const m = maaned <= 2 ? maaned + 12 : maaned;
+  return Math.floor(365.25 * (a + 4716)) + Math.floor(30.6001 * (m + 1)) + dag + 2 - Math.floor(a / 100) + Math.floor(a / 400);
+}
+
+export function dageMellem(fra: string, til: string): number {
+  return dagNummer(til) - dagNummer(fra);
+}
+
 export function datoTekst(d: string): string {
   const [a, m, dag] = dele(d);
   return `${dag}. ${MAANEDER[m - 1]} ${a}`;
