@@ -18,6 +18,14 @@ import epidomaAdeias from "./calculadoras/epidoma-adeias";
 import contenidoEpidomaAdeias from "./contenido/epidoma-adeias";
 import imeresAdeias from "./calculadoras/imeres-adeias";
 import contenidoImeresAdeias from "./contenido/imeres-adeias";
+import apozimiosiApolysis from "./calculadoras/apozimiosi-apolysis";
+import contenidoApozimiosiApolysis from "./contenido/apozimiosi-apolysis";
+import proeidopoiisiApolysis from "./calculadoras/proeidopoiisi-apolysis";
+import contenidoProeidopoiisiApolysis from "./contenido/proeidopoiisi-apolysis";
+import ypologismosYperorion from "./calculadoras/ypologismos-yperorion";
+import contenidoYpologismosYperorion from "./contenido/ypologismos-yperorion";
+import nychteriniErgasiaKyriaki from "./calculadoras/nychterini-ergasia-kyriaki";
+import contenidoNychteriniErgasiaKyriaki from "./contenido/nychterini-ergasia-kyriaki";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -39,6 +47,10 @@ export default definirPais({
     { definicion: doroPascha, contenido: contenidoDoroPascha, cliente: () => import("./calculadoras/doro-pascha.cliente") },
     { definicion: epidomaAdeias, contenido: contenidoEpidomaAdeias, cliente: () => import("./calculadoras/epidoma-adeias.cliente") },
     { definicion: imeresAdeias, contenido: contenidoImeresAdeias, cliente: () => import("./calculadoras/imeres-adeias.cliente") },
+    { definicion: apozimiosiApolysis, contenido: contenidoApozimiosiApolysis, cliente: () => import("./calculadoras/apozimiosi-apolysis.cliente") },
+    { definicion: proeidopoiisiApolysis, contenido: contenidoProeidopoiisiApolysis, cliente: () => import("./calculadoras/proeidopoiisi-apolysis.cliente") },
+    { definicion: ypologismosYperorion, contenido: contenidoYpologismosYperorion, cliente: () => import("./calculadoras/ypologismos-yperorion.cliente") },
+    { definicion: nychteriniErgasiaKyriaki, contenido: contenidoNychteriniErgasiaKyriaki, cliente: () => import("./calculadoras/nychterini-ergasia-kyriaki.cliente") },
   ],
   universales: "todas",
   novedades,
