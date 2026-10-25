@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { ESCALA_VACACIONES, VACACIONES_FUENTES } from "@/data/vacaciones";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 export const metadata: Metadata = {
   title: "Calculadora de vacaciones 2026: días y cuánto cobrás",
@@ -327,6 +328,7 @@ export default function VacacionesPage() {
           .
         </p>
       </section>
+      <OtrosPaises concepto="vacaciones" />
     </article>
   );
 }

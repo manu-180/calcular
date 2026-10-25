@@ -19,6 +19,7 @@ import {
 } from "@/data/casas-particulares";
 import { escalaDe } from "@/data/casas-particulares";
 import { formatARS } from "@/lib/formato";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 function datosDelMes() {
   const NOVIEMBRE = ESCALAS_POR_MES.find((m) => m.id === "2026-11")!;
@@ -393,6 +394,7 @@ export default function EmpleadaDomesticaPage() {
           Consultada el {CASAS_PARTICULARES_FUENTES.consultadoEl}.
         </p>
       </section>
+      <OtrosPaises concepto="trabajo-domestico" />
     </article>
   );
 }
