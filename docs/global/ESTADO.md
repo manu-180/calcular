@@ -47,6 +47,7 @@ varias veces por límite de uso.
 | Angola | claude/pais-ao | en curso |
 | Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
 | Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Motor griego (el) | claude/mundo-motor-el | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -76,6 +77,33 @@ Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/z
 - Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
 
 El cron datos-paises no está actualizando uy, hn y bo.
+
+## 24/10/2026 · Motor griego (`claude/mundo-motor-el`)
+
+el en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`misthos-ston-kosmo`), rankings (`katataxi-choron`), horas de trabajo
+(`poses-ores-douleias`), calendario (`imerologio-misthodosias`), sueldos reales
+(`pragmatikoi-misthoi`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con slugs ELOT 743 en
+ASCII (`ypologismos-dosis-daneiou`, `ypologismos-fpa`, `ypologismos-stegastikou-daneiou`...).
+Registro: πληθυντικός ευγενείας, el de myAADE, gov.gr y los bancos; mercados con `trato: "usted"`.
+Preguntas con «;» (U+003B), comillas «», monotónico, mayúsculas sin tono. Plurales one/other
+(`pluralEl`). `GRAMATICA.el` y `casosEl` ponen artículo y caso al país («στην Ελλάδα», «της
+Κύπρου», «για τον Καναδά»). Geist no trae griego: fuente del sistema en `:lang(el)` y Noto Sans en las
+OG. Decisiones en ADR 0002, D20. Edición de prueba `zz-el`.
+
+Falta para publicar Grecia y Chipre:
+- Los países en sí (BRIEF-PAIS): υπολογισμός καθαρού μισθού (φόρος εισοδήματος por κλίμακα,
+  εισφορές ΕΦΚΑ en Grecia; GHS y Κοινωνικές Ασφαλίσεις en Chipre), ελεύθεροι επαγγελματίες, κατώτατος
+  μισθός, ΦΠΑ (tasas general y reducidas de cada país), δώρα εορτών y επίδομα αδείας, ENFIA, con
+  datos verificados en fuentes oficiales (aade.gr, efka.gov.gr, gov.gr, minfin.gov.gr, mof.gov.cy,
+  mlsi.gov.cy).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- Al mergear con `claude/mundo-motor-cs`, `claude/mundo-motor-eu` y las demás ramas de motor:
+  `src/motor/i18n/plural.ts` choca (todas lo crean) y hay que dejar `formaEl`/`pluralEl` junto a las
+  funciones de los otros idiomas; las listas de `IDIOMAS`, `IDIOMAS_VENTA`, los Record de diccionarios
+  y `GRAMATICA` suman cada idioma; el `FUENTE_CJK` de las OG suma `el: "Noto Sans"` junto a lo que
+  agreguen las otras (ru también usa Noto Sans); las mayúsculas de las OG con `toLocaleUpperCase` y la
+  normalización del buscador (rango griego y sigma final) se suman a la del cirílico de la rama ru.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 
