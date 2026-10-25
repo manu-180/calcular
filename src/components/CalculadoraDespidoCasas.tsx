@@ -57,6 +57,7 @@ export function CalculadoraDespidoCasas({ oferta }: { oferta?: DatosOferta }) {
             zonaDesfavorable: false,
             extrasComunes: 0,
             extrasFinDeSemana: 0,
+            aniosAntiguedad: 0,
           })
         : null,
     [oferta, modalidad],

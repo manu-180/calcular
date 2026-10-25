@@ -2,8 +2,10 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
+  ANTIGUEDAD,
   escalaVigente,
   JORNADA,
+  maxAniosAntiguedad,
   vigenciaCasas,
   ZONA_DESFAVORABLE,
 } from "@/data/casas-particulares";
@@ -29,6 +31,7 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
   const [zona, setZona] = useState(false);
   const [extrasComunes, setExtrasComunes] = useState("");
   const [extrasFinde, setExtrasFinde] = useState("");
+  const [anios, setAnios] = useState("");
   const [tocado, setTocado] = useState(false);
 
   const categoria = categoriaPorId(categoriaId);
@@ -38,7 +41,10 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
   const error = primerError({
     "Horas extras de día común": errorCantidad(extrasComunes),
     "Horas extras de sábado, domingo o feriado": errorCantidad(extrasFinde),
+    "Años de antigüedad": errorCantidad(anios, 60),
   });
+  const aniosAntiguedad = Math.floor(parseDecimal(anios));
+  const topeAnios = maxAniosAntiguedad(vigenciaCasas().mesId);
 
   const res = useMemo(
     () =>
@@ -49,8 +55,9 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
         zonaDesfavorable: zona,
         horasExtrasComunes: parseDecimal(extrasComunes),
         horasExtrasFinDeSemana: parseDecimal(extrasFinde),
+        aniosAntiguedad,
       }),
-    [categoriaId, modalidadEfectiva, horasSemanales, zona, extrasComunes, extrasFinde],
+    [categoriaId, modalidadEfectiva, horasSemanales, zona, extrasComunes, extrasFinde, aniosAntiguedad],
   );
 
   // Lo mismo que se ve acá viaja con la compra y se escribe en la planilla que se descarga. El mes
@@ -66,9 +73,10 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
             zonaDesfavorable: zona,
             extrasComunes: parseDecimal(extrasComunes),
             extrasFinDeSemana: parseDecimal(extrasFinde),
+            aniosAntiguedad,
           })
         : null,
-    [res, categoriaId, modalidadEfectiva, horasSemanales, zona, extrasComunes, extrasFinde],
+    [res, categoriaId, modalidadEfectiva, horasSemanales, zona, extrasComunes, extrasFinde, aniosAntiguedad],
   );
   // Sólo después de que la persona tocó algo: los valores por defecto no son «tus datos», y la
   // compra no tiene por qué salir con ellos. Un caso que la planilla no aceptaría borra el anterior.
@@ -183,6 +191,25 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
             </label>
           </div>
 
+          <div className="sm:col-span-2">
+            <label htmlFor="ant" className="block text-sm font-semibold text-zinc-800">
+              Años completos de antigüedad
+            </label>
+            <p className="mt-0.5 text-xs text-zinc-500">
+              Suma {ANTIGUEDAD.porcentajePorAnio}% del básico por año. Se cuentan desde el{" "}
+              {ANTIGUEDAD.cuentaDesdeTexto}, aunque haya entrado antes: hoy el máximo es {topeAnios}{" "}
+              {topeAnios === 1 ? "año" : "años"}.
+            </p>
+            <input
+              id="ant"
+              inputMode="numeric"
+              placeholder="0"
+              value={anios}
+              onChange={(e) => setAnios(e.target.value)}
+              className="mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 sm:w-40"
+            />
+          </div>
+
           <div>
             <label htmlFor="ex1" className="block text-sm font-semibold text-zinc-800">
               Horas extras del mes <span className="font-normal text-zinc-400">(día común)</span>
@@ -244,6 +271,14 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
                 <dt className="text-zinc-600">Mínimo mensual (jornada completa)</dt>
                 <dd className="font-medium text-zinc-900">{formatARS(res.minimoMensual, 0)}</dd>
               </div>
+              {res.adicionalAntiguedad > 0 && (
+                <div className="flex justify-between border-b border-zinc-200 pb-1.5">
+                  <dt className="text-zinc-600">
+                    Antigüedad ({res.aniosAntiguedad} {res.aniosAntiguedad === 1 ? "año" : "años"})
+                  </dt>
+                  <dd className="font-medium text-zinc-900">{formatARS(res.adicionalAntiguedad, 0)}</dd>
+                </div>
+              )}
               {res.extrasComunes > 0 && (
                 <div className="flex justify-between border-b border-zinc-200 pb-1.5">
                   <dt className="text-zinc-600">Extras al 50%</dt>
