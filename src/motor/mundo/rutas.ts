@@ -14,6 +14,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   ko: "segye-yeonbong",
   zh: "shijie-gongzi",
   ar: "rawatib-alalam",
+  he: "sachar-baolam",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";

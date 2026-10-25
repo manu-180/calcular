@@ -20,6 +20,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   ko: "geupyeo-dallyeok",
   zh: "gongzi-rili",
   ar: "taqwim-alrawatib",
+  he: "luach-maskorot",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";

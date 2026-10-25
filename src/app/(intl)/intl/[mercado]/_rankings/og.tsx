@@ -7,6 +7,7 @@ import { altosFranja } from "@/motor/rankings/franja";
 import { intlActivo } from "@/motor/sitio";
 import type { Idioma } from "@/motor/tipos";
 import { BanderaPlana } from "@/motor/ui/BanderaPlana";
+import { TextoOg } from "@/motor/ui/og-rtl";
 import { resolverRankings } from "./datos";
 
 // Gráfico de un ranking: /<m>/<índice>/og?r=<ranking>&v=<variante> (1200 x 630, la vista previa del
@@ -23,7 +24,8 @@ const VERDE = "#34d399";
 const CABECERAS = { "cache-control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" };
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
 const ESPERA_FUENTE_MS = 3000;
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC" };
+// Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", he: "Noto Sans Hebrew" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 
@@ -154,8 +156,12 @@ export function crearOgRankings(idioma: Idioma) {
             CalcularYa
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12 * k, padding: `${8 * k}px ${18 * k}px`, borderRadius: 999, border: `${1 * k}px solid rgba(244,240,230,0.18)`, fontSize: 20 * k, color: SUAVE }}>
-            <div style={{ display: "flex", color: CREMA, fontWeight: 700 }}>{vista.corto}</div>
-            <div style={{ display: "flex" }}>{`${v.etiqueta} · ${v.sub}`}</div>
+            <div style={{ display: "flex", color: CREMA, fontWeight: 700 }}>
+              <TextoOg texto={vista.corto} idioma={m.idioma} />
+            </div>
+            <div style={{ display: "flex" }}>
+              <TextoOg texto={`${v.etiqueta} · ${v.sub}`} idioma={m.idioma} />
+            </div>
           </div>
         </div>
 
@@ -163,14 +169,22 @@ export function crearOgRankings(idioma: Idioma) {
           <div style={{ display: "flex", flexDirection: "column", maxWidth: 560 * k }}>
             <div style={{ display: "flex", alignItems: "center", gap: 16 * k, fontSize: 34 * k, fontWeight: 700 }}>
               <Bandera iso={d.iso} ancho={48 * k} src={bandera} />
-              <div style={{ display: "flex" }}>{d.nombre}</div>
+              <div style={{ display: "flex" }}>
+                <TextoOg texto={d.nombre} idioma={m.idioma} />
+              </div>
             </div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 18 * k, marginTop: 6 * k }}>
               <div style={{ display: "flex", fontSize: tamPuesto * k, fontWeight: 700, letterSpacing: -12 * k, lineHeight: 1 }}>{String(d.puesto)}</div>
-              <div style={{ display: "flex", fontSize: 40 * k, color: SUAVE, fontWeight: 500 }}>{t.de(d.total)}</div>
+              <div style={{ display: "flex", fontSize: 40 * k, color: SUAVE, fontWeight: 500 }}>
+                <TextoOg texto={t.de(d.total)} idioma={m.idioma} />
+              </div>
             </div>
-            <div style={{ display: "flex", fontSize: 30 * k, color: VERDE, fontWeight: 700 }}>{d.valor}</div>
-            <div style={{ display: "flex", marginTop: 6 * k, fontSize: 22 * k, color: SUAVE }}>{d.detalle}</div>
+            <div style={{ display: "flex", fontSize: 30 * k, color: VERDE, fontWeight: 700 }}>
+              <TextoOg texto={d.valor} idioma={m.idioma} />
+            </div>
+            <div style={{ display: "flex", marginTop: 6 * k, fontSize: 22 * k, color: SUAVE }}>
+              <TextoOg texto={d.detalle} idioma={m.idioma} />
+            </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "stretch", width: 470 * k, gap: 12 * k }}>
             <div style={{ display: "flex", alignItems: "flex-end", height: 300 * k, gap: Math.max(2, 3 * k) }}>
@@ -195,9 +209,13 @@ export function crearOgRankings(idioma: Idioma) {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 20 * k, color: SUAVE }}>
-          <div style={{ display: "flex", maxWidth: 640 * k }}>{v.referencia}</div>
+          <div style={{ display: "flex", maxWidth: 640 * k }}>
+            <TextoOg texto={v.referencia} idioma={m.idioma} />
+          </div>
           <div style={{ display: "flex", gap: 16 * k }}>
-            <div style={{ display: "flex" }}>{t.actualizado(vista.fecha)}</div>
+            <div style={{ display: "flex" }}>
+              <TextoOg texto={t.actualizado(vista.fecha)} idioma={m.idioma} />
+            </div>
             <div style={{ display: "flex", color: CREMA, fontWeight: 700 }}>calcularya.com</div>
           </div>
         </div>

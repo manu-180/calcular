@@ -15,6 +15,7 @@ export const SLUG_HORAS: Record<Idioma, string> = {
   ko: "nodong-sigan",
   zh: "gongzuo-shijian",
   ar: "saat-alamal",
+  he: "kama-shaot-avoda",
 };
 
 export function rutaHoras(mercado: string, idioma: Idioma, producto?: string, iso?: string): string {

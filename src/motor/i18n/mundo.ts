@@ -1,4 +1,5 @@
 import { pluralAr } from "./arabe";
+import { DIAS_HE, pluralHe, prefijoHe, type FormasHe } from "./hebreo";
 import { GRAMATICA } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import type { Idioma, Trato } from "../tipos";
@@ -2613,7 +2614,167 @@ const ar: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar };
+// ───────────────────────────── he ─────────────────────────────
+
+// Hebreo con el plural inclusivo del resto del sitio (ADR 0002, D22): «הזינו», «אתם עובדים». La
+// tarjeta habla en primera persona. Los días y los países van con pluralHe (dual: «יומיים»).
+const gHe = GRAMATICA.he;
+const SEO_HE = "יום החופש ממס ושכר נטו בעולם";
+const PAISES_HE: FormasHe = { uno: "מדינה אחת", dos: "שתי מדינות", otros: "{n} מדינות" };
+
+const he: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "השכר שלכם בעולם",
+    seo: {
+      titulo: (pais) => [`${SEO_HE} | ${pais}`, SEO_HE, "השכר שלכם בעולם"],
+      tituloGlobal: [SEO_HE, "השכר שלכם בעולם"],
+      descripcion: (pais, n) => `עד איזה יום בשנה אתם עובדים בשביל המדינה עם השכר שלכם ${gHe.en(pais)}, וכמה נשאר לכם ממנו ב-${pluralHe(n, PAISES_HE)}. בחינם ובלי הרשמה.`,
+      descripcionGlobal: (n) => `עד איזה יום בשנה אתם עובדים בשביל המדינה, וכמה נשאר לכם מהשכר ב-${pluralHe(n, PAISES_HE)}. בחינם ובלי הרשמה.`,
+    },
+    ceja: "יום החופש ממס שלכם",
+    h1: "עד איזה יום בשנה אתם עובדים בשביל המדינה?",
+    bajada: (n) => `הזינו את השכר ברוטו כדי לראות את התאריך שלכם. אחר כך השוו אותו ב-${pluralHe(n, PAISES_HE)}, באותו כוח קנייה ולפי כללי המס של כל מדינה.`,
+    form: {
+      titulo: "השכר שלכם",
+      sueldo: "שכר ברוטו",
+      mes: "חודשי",
+      anio: "שנתי",
+      periodo: "תקופת השכר",
+      pais: "המדינה שבה אתם עובדים",
+      ejemplo: "דוגמה",
+      ejemploAyuda: "זה שכר לדוגמה. הזינו את השכר שלכם והתוצאות יתעדכנו מיד.",
+      propio: "הועבר מהחישוב הקודם שלכם.",
+      invalido: "הזינו סכום גדול מאפס.",
+      pagas: "זה השכר החודשי שבתלוש, ואנחנו מוסיפים לו את התשלומים הנוספים שהחוק מחייב. השכר נטו הוא הממוצע על פני 12 חודשים.",
+    },
+    heroe: {
+      hasta: (fecha) => `אתם עובדים בשביל המדינה עד ${fecha}`,
+      tasa: (pct) => `${pct} מהשכר שלכם הולכים למס הכנסה ולביטוח הסוציאלי.`,
+      dias: (n, total) => `${n} מתוך ${pluralHe(total, DIAS_HE)}`,
+      enMano: "נשאר לכם",
+      porMes: "לחודש",
+      anio: (anio, n, total) => `${anio}: ${n} מתוך ${pluralHe(total, DIAS_HE)} בשביל המדינה.`,
+      resto: "מהיום שאחרי, מה שאתם מרוויחים נשאר לכם.",
+    },
+    ranking: {
+      titulo: "אותו שכר, מדינה אחרי מדינה",
+      bajada: "באותו כוח קנייה, זה מה שנשאר לכם בכל מדינה. כל שורה מגיעה מהמחשבון הרשמי של אותה מדינה.",
+      lista: "המדינות לפי שכר נטו",
+      buscar: "חיפוש מדינה",
+      filtrar: "סינון לפי אזור",
+      todas: "הכול",
+      regiones: { americas: "אמריקה", europa: "אירופה", asia: "אסיה ואוקיאניה", africa: "אפריקה והמזרח התיכון" },
+      tuPais: "המדינה שלכם",
+      mejor: "הנטו הגבוה ביותר",
+      enMano: "נטו לחודש",
+      enTuMoneda: "במטבע שלכם",
+      vsTuPais: "לעומת המדינה שלכם",
+      verTodos: (n) => `לכל ${n} המדינות`,
+      verMenos: "להציג פחות",
+      sinResultados: (q) => `אין מדינה שמתאימה ל-"${q}".`,
+      abrir: (pais) => `לפתיחת המחשבון ${gHe.de(pais)}`,
+      mas: (pct) => `${pct} יותר`,
+      menos: (pct) => `${pct} פחות`,
+      igual: "אותו דבר",
+      puesto: (p, total) => `המדינה שלכם במקום ${p} מתוך ${total}.`,
+    },
+    tarjeta: {
+      titulo: "הכרטיס שלכם לשיתוף",
+      bajada: "מוצגים בו רק התאריך והאחוזים, אף פעם לא השכר.",
+      hasta: (fecha) => `השכר שלי הולך למדינה עד ${fecha}`,
+      tasa: (pct) => `${pct} מהשכר שלי הולכים למסים`,
+      mejor: (pais, pct) => `עם אותו שכר, ${gHe.en(pais)} היה נשאר לי ${pct} יותר`,
+      mejorPropio: (pais) => `עם אותו שכר, אין מדינה שמשאירה לי יותר ${prefijoHe("מ", gHe.nombre(pais))}`,
+      yVos: "ואתם?",
+      cta: "גלו את התאריך שלכם באתר",
+      generica: "עד איזה יום בשנה אתם עובדים בשביל המדינה?",
+      genericaBajada: (n) => `השכר שלכם ב-${pluralHe(n, PAISES_HE)}, לפי המחשבון הרשמי של כל מדינה`,
+      compartir: "לשיתוף הכרטיס שלי",
+      compartirDuelo: "להשיב לאתגר",
+      descargar: "להורדת התמונה",
+      copiado: "הקישור הועתק. אפשר להדביק אותו איפה שרוצים.",
+      compartido: "שותף.",
+      error: "השיתוף נכשל. נסו שוב.",
+      texto: (fecha) => `השכר שלי הולך למדינה עד ${fecha}. ואתם?`,
+      alt: "תצוגה מקדימה של הכרטיס שלכם",
+    },
+    duelo: {
+      amigo: (fecha) => `החבר שלכם עובד בשביל המדינה עד ${fecha}.`,
+      yVos: "ואתם?",
+      invitacion: "הזינו את השכר שלכם כדי להשוות.",
+      vos: "אתם",
+      elAmigo: "החבר שלכם",
+      dia: "עובד בשביל המדינה עד",
+      tasa: "מסים וביטוח סוציאלי",
+      mejorPais: "הנטו הגבוה ביותר ב",
+      antes: (d) => `אתם משתחררים ${pluralHe(d, DIAS_HE)} לפני החבר שלכם.`,
+      despues: (d) => `החבר שלכם משתחרר ${pluralHe(d, DIAS_HE)} לפניכם.`,
+      empate: "שניכם משתחררים באותו יום.",
+      desde: (pais) => `עובד ${gHe.en(pais)}`,
+    },
+    cero: {
+      dia: "אפס ימים",
+      heroeAntes: "אתם עובדים בשביל המדינה",
+      tarjetaAntes: "ימי העבודה שלי בשביל המדינה:",
+      motivo: "עם השכר הזה לא מנוכים מס הכנסה ולא ביטוח סוציאלי.",
+      texto: "השנה אין לי אף יום עבודה בשביל המדינה. ואתם?",
+      amigo: "החבר שלכם לא עובד אף יום בשביל המדינה.",
+    },
+    metodo: {
+      titulo: "איך חישבנו",
+      estimacion: "זו הערכה להשוואה בין מדינות, לא תלוש שכר. ניכויים, ילדים או בונוסים יכולים לשנות את המספר שלכם.",
+      supuestos: [
+        "אדם רווק בלי ילדים, עם ערכי ברירת המחדל של המחשבון של כל מדינה.",
+        "שכר נטו הוא מה שנשאר אחרי מס הכנסה והתשלומים של העובד לביטוח הסוציאלי. הוא לא כולל מס על קניות ולא את מה שהמעסיק משלם.",
+        "משכורת שלוש עשרה ותשלומים חובה אחרים מחולקים על פני השנה, כמו שקובע החוק בכל מדינה.",
+        "בארצות הברית לא נוסף מס הכנסה של המדינה או של העיר: רק המס הפדרלי והביטוח הסוציאלי.",
+        "כדי להעביר את השכר שלכם למדינה אחרת אנחנו משתמשים בשווי כוח קנייה (PPP), כלומר באותה רמת חיים, ולא בשער החליפין של היום.",
+        "שווי כוח הקנייה של ארגנטינה מעודכן לפי מדד המחירים לצרכן של INDEC, כי הבנק העולמי מפרסם אותו רק עד 2021.",
+        "יום החופש ממס מחלק את המס שלכם על פני השנה החל מ-1 בינואר. אם 30% מהשכר הולכים למסים, אתם עובדים בשביל המדינה 30% מהשנה.",
+      ],
+      ppaTitulo: "שווי כוח קנייה",
+      bancoMundial: "הבנק העולמי",
+      ppa: (organismo, indicador, anio) => `${organismo}, מדד ${indicador}, השנה האחרונה שזמינה: ${anio}.`,
+      consultado: (fecha) => `נבדק ב-${fecha}.`,
+      verFuente: "למקור",
+      fuentesTitulo: "המקור של כל מדינה",
+      fuentesBajada: "כל שורה משתמשת במחשבון השכר נטו של אותה מדינה ובנתונים הרשמיים שלה.",
+      verificado: (fecha) => `הנתונים אומתו ב-${fecha}`,
+      sello: (fecha) => `נתונים רשמיים שבדקנו במקור של כל מדינה. הבדיקה הוותיקה ביותר: ${fecha}.`,
+    },
+    faqTitulo: "שאלות נפוצות",
+    faq: (n) => [
+      {
+        pregunta: "מה זה יום החופש ממס?",
+        respuesta: "זה היום בשנה שבו מסיימים לשלם את המסים, אם כל מה שהרווחתם מ-1 בינואר היה הולך קודם למדינה. כאן הוא מחושב לפי השכר שלכם, לא לפי הממוצע הארצי.",
+      },
+      {
+        pregunta: "למה משווים לפי כוח קנייה?",
+        respuesta: "שער החליפין גורם לשכר להיראות ענק או זעיר, תלוי ביום. שווי כוח קנייה משווה את מה שבאמת אפשר לקנות בכסף הזה בכל מדינה.",
+      },
+      {
+        pregunta: "האם השכר שלי נשמר?",
+        respuesta: "לא. החישוב נעשה בדפדפן שלכם, ומה שמשתפים כולל רק תאריכים, אחוזים ושמות של מדינות.",
+      },
+      {
+        pregunta: "למה השכר נטו האמיתי שלי שונה?",
+        respuesta: "אנחנו מניחים אדם רווק בלי ילדים ועם ערכי ברירת המחדל. ניכויים, בונוסים או הסדרים מיוחדים משנים את המספר. למקרה שלכם, פתחו את המחשבון של המדינה שלכם.",
+      },
+      {
+        pregunta: "אילו מדינות כלולות?",
+        respuesta: `היום ${pluralHe(n, PAISES_HE)}, לכל אחת מחשבון שכר נטו משלה ונתונים רשמיים. אנחנו מוסיפים עוד ככל שאנחנו בודקים את כללי המס שלהן.`,
+      },
+    ],
+    destacado: {
+      ceja: "השוואה עולמית",
+      titulo: "עד איזה יום בשנה אתם עובדים בשביל המדינה?",
+      texto: "הזינו את השכר שלכם וגלו כמה נשאר לכם במדינות אחרות.",
+      ir: "לגלות את התאריך שלי",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar, he };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

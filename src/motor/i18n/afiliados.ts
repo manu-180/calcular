@@ -163,6 +163,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "يُفتح في علامة تبويب جديدة",
     },
   },
+  // Hebreo (ADR 0002, D22), impersonal como los demás.
+  he: {
+    base: {
+      titulo: "עוברים לחו\"ל או מקבלים תשלום ממדינה אחרת?",
+      etiqueta: "קישורים ממומנים",
+      socios: {
+        wise: "חשבון רב-מטבעי לשליחה ולקבלה של כסף בין מדינות לפי שער החליפין האמצעי בשוק, עם עמלה שמוצגת מראש.",
+        deel: "חוזים ותשלומים למי שעובד ממדינה אחת עבור חברה במדינה אחרת.",
+      },
+      nota: "אם נפתח חשבון דרך הקישורים האלה, האתר עשוי לקבל עמלה. מי שנרשם לא משלם על כך יותר.",
+      nuevaPestana: "נפתח בכרטיסייה חדשה",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

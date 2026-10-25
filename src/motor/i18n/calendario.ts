@@ -2,6 +2,7 @@ import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
 import { GRAMATICA } from "./gramatica";
+import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Calendario laboral y fiscal de cada edición. Los textos no le hablan a nadie en segunda persona a
@@ -816,7 +817,82 @@ const ar: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar };
+// ───────────────────────────── he ─────────────────────────────
+
+// Hebreo, impersonal como el resto del calendario (ADR 0002, D22). Los días van con pluralHe: el dual
+// dice el 2 con la palabra («בעוד יומיים», «לפני יומיים»).
+const gHe = GRAMATICA.he;
+const MAS_FECHAS_HE: FormasHe = { uno: "ועוד מועד אחד", dos: "ועוד שני מועדים", otros: "ועוד {n} מועדים" };
+const he: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "לוח המועדים של השכר והמסים",
+    seo: {
+      titulo: (pais, anios) => [`לוח מועדי שכר ומסים ${gHe.en(pais)} ${anios}: התאריכים החשובים`, `לוח מועדי שכר ומסים ${gHe.en(pais)} ${anios}`, `לוח מועדי שכר ${gHe.en(pais)}`],
+      descripcion: (pais, proximas) => `התאריכים שמשנים את השכר ${gHe.en(pais)}, ממקורות רשמיים: ${proximas}. לכל מועד יש מחשבון משלו.`,
+      descripcionSin: (pais) => `התאריכים שמשנים את השכר ${gHe.en(pais)}, ממקורות רשמיים, ולכל מועד מחשבון משלו. אפשר להוסיף אותם ליומן בטלפון.`,
+    },
+    ceja: (anios) => `לוח ${anios}`,
+    h1: (pais) => `לוח מועדי השכר והמסים ${gHe.en(pais)}`,
+    acento: "התאריכים שמזיזים את השכר",
+    bajada: "כל תאריך מגיע ממקור רשמי ומקושר למחשבון שהוא משנה. כשמתפרסם נתון חדש, הדף מתעדכן לבד.",
+    proxima: "המועד הבא",
+    cuenta: {
+      hoy: "היום",
+      manana: "מחר",
+      ayer: "אתמול",
+      en: (n) => `בעוד ${pluralHe(n, DIAS_HE)}`,
+      hace: (n) => `לפני ${pluralHe(n, DIAS_HE)}`,
+      // La unidad debajo de la cifra grande: el número ya está a la vista, así que el 2 lleva el plural y no el dual.
+      dias: (n) => formaHe(n, { uno: "יום", dos: "ימים", otros: "ימים" }),
+    },
+    queViene: "בקרוב",
+    yaRige: "כבר בתוקף",
+    mesPorMes: "השנה חודש אחרי חודש",
+    sinFechas: "לא הוכרזו שינויים",
+    filtro: "סינון לפי נושא",
+    todo: "הכול",
+    tipos: { pago: "תשלומים", "salario-minimo": "שכר מינימום", impuestos: "מסים", aportes: "ביטוח לאומי ופנסיה", laboral: "דיני עבודה", indices: "ערכי ייחוס" },
+    pasa: (antes, despues) => `מ-${antes} ל-${despues}`,
+    queda: (valor) => `נקבע על ${valor}`,
+    cambian: "הסכומים משתנים",
+    zonas: (lista) => `באזורים: ${lista}`,
+    limite: "מועד אחרון",
+    agregar: "להוספה ליומן",
+    descargar: "Apple, Outlook ועוד (קובץ ics)",
+    google: "יומן Google",
+    calcular: "לחישוב",
+    tambien: "גם במחשבונים:",
+    fuente: (organismo, fecha) => `מקור: ${organismo}. נבדק ב-${fecha}.`,
+    verificado: (fecha) => `נבדק ב-${fecha}`,
+    suscribir: {
+      titulo: "הלוח המלא, מעודכן תמיד",
+      texto: "מנוי אחד מספיק: המועדים החדשים מופיעים לבד ביומן בטלפון או במחשב.",
+      boton: "להרשמה ללוח",
+      copiar: "העתקת הקישור",
+      copiado: "הקישור הועתק",
+    },
+    fuentes: {
+      titulo: "המקור של כל תאריך",
+      texto: "נכנס רק מה שנקבע בחוק או בתקנה, או סכום שהגוף הרשמי פרסם. מה שעוד לא פורסם לא מופיע.",
+    },
+    vacio: "אין מועדים בנושא הזה ב-12 החודשים הקרובים.",
+    destacado: {
+      ceja: "לוח מועדי השכר",
+      titulo: "התאריכים שמזיזים את השכר השנה",
+      ir: "לצפייה בלוח",
+      proxima: (titulo, fecha) => `המועד הבא: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `לוח מועדי השכר והמסים ${gHe.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `מועדי השכר והמסים ${gHe.en(pais)}, ממקורות רשמיים.`,
+      calculadora: "מחשבון",
+      fuente: "מקור",
+    },
+    og: { proxima: "המועד הבא", mas: (n) => `${pluralHe(n, MAS_FECHAS_HE)} השנה` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar, he };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

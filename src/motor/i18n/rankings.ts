@@ -2,6 +2,7 @@ import type { IdNivel } from "../rankings/calculo";
 import type { IdRanking } from "../rankings/rutas";
 import type { Idioma, Trato } from "../tipos";
 import { pluralAr } from "./arabe";
+import { pluralHe, type FormasHe } from "./hebreo";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Rankings de países. Todo el texto es impersonal (sin tú, vos, usted, du, Sie, tu, vous, je, u):
@@ -1487,7 +1488,128 @@ const ar: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar };
+// ───────────────────────────── he ─────────────────────────────
+
+// Hebreo, impersonal (ADR 0002, D22). La posición va en aposición: «ישראל, מקום 27 מתוך 41». Los
+// cambios de puesto van como sustantivo («עלייה של 2 מקומות») para no conjugar un verbo con el género
+// del país. En las cuentas el 2 va con cifra («2 מדינות»): así la frase siempre dice el número.
+const PAISES_HE: FormasHe = { uno: "מדינה אחת", dos: "{n} מדינות", otros: "{n} מדינות" };
+const PUESTOS_HE: FormasHe = { uno: "מקום אחד", dos: "{n} מקומות", otros: "{n} מקומות" };
+
+const he: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "דירוג מדינות",
+    seo: {
+      titulo: ["דירוג מדינות לפי שכר ומסים", "דירוג מדינות"],
+      descripcion: (n) => `איפה אותו שכר שווה יותר, יום החופש ממס וכמה נשאר מהעלאת שכר ב-${pluralHe(n, PAISES_HE)}. נתונים רשמיים שמתעדכנים כל יום.`,
+    },
+    ceja: "נתונים פתוחים",
+    h1: "שכר ומסים, מדינה אחרי מדינה",
+    bajada: (n) => `השוואה בין ${pluralHe(n, PAISES_HE)} באותו כוח קנייה, כל אחת לפי המחשבון הרשמי שלה. הדירוגים מתעדכנים לבד כל יום.`,
+    actualizado: (f) => `עודכן ב-${f}`,
+    ver: "לדירוג",
+    niveles: { titulo: "שכר ייחוס", nombres: { bajo: "שכר נמוך", medio: "שכר בינוני", alto: "שכר גבוה" }, anual: (m) => `${m} לשנה` },
+    tramos: { titulo: "גובה ההעלאה", nombre: (a, b) => `מ-${a} ל-${b}` },
+    referencia: {
+      nivel: (m) => `שכר ברוטו של ${m} דולר בינלאומי לשנה`,
+      tramo: (a, b) => `העלאה מ-${a} ל-${b} דולר בינלאומי ברוטו לשנה`,
+    },
+    posicion: (pais, p, total) => `${pais}, מקום ${p} מתוך ${total}`,
+    de: (t) => `מתוך ${t}`,
+    empate: (o) => `בתיקו עם ${pluralHe(o, { uno: "מדינה נוספת", dos: "{n} מדינות נוספות", otros: "{n} מדינות נוספות" })}`,
+    fuera: (pais) => `${pais} עוד לא נכללת בדירוגים האלה: חסר מחשבון שכר נטו שמתאים להשוואה.`,
+    lider: "בראש הדירוג",
+    global: (n) => `${pluralHe(n, PAISES_HE)}, מהראשונה עד האחרונה`,
+    valores: {
+      porMes: (m) => `${m} לחודש`,
+      ningunDia: "אף יום",
+      deCada: (n) => `${n} מכל 100`,
+      carga: (pct) => `${pct} מס וביטוח סוציאלי`,
+      cargaAumento: (pct) => `${pct} מההעלאה הולכים למס ולביטוח סוציאלי`,
+    },
+    cambio: {
+      titulo: (mes) => `שינוי מאז ${mes}`,
+      sube: (n) => `עלייה של ${pluralHe(n, PUESTOS_HE)}`,
+      baja: (n) => `ירידה של ${pluralHe(n, PUESTOS_HE)}`,
+      igual: "אותו מקום",
+      nuevo: "חדשה בדירוג",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, לפי ${ref}`,
+      puesto: "מקום",
+      pais: "מדינה",
+      edicion: "המהדורה הזו",
+      unidad: "בדולרים בינלאומיים",
+    },
+    kit: {
+      titulo: "לציטוט",
+      bajada: "המשפט, הגרף והקישור של הדירוג הזה, מוכנים לפרסום.",
+      compartir: "שיתוף",
+      descargar: "להורדת הגרף",
+      copiar: "העתקת הציטוט",
+      copiado: "הציטוט הועתק",
+      enlace: "הקישור הועתק",
+      compartido: "שותף",
+      error: "ההעתקה נכשלה. הטקסט מופיע למעלה ואפשר להעתיק אותו ידנית.",
+      cita: (frase, ranking, ref, fecha) => `${frase} בדירוג "${ranking}" (${ref}). מקור: CalcularYa, נתונים נכון ל-${fecha}.`,
+      texto: (frase, ranking) => `${frase} בדירוג "${ranking}".`,
+      alt: (ranking) => `גרף של הדירוג "${ranking}"`,
+    },
+    metodo: {
+      titulo: "איך הדירוג בנוי",
+      bajada: "כל מדינה עוברת במחשבון השכר נטו הרשמי שלה, לפי הכללים שבתוקף היום. אחר כך ההשוואה נעשית באותו כוח קנייה.",
+      niveles: (b, m, a) => `שכר ייחוס: ${b}, ${m} ו-${a} דולר בינלאומי ברוטו לשנה.`,
+      empates: "שתי מדינות עם אותו ערך בטבלה חולקות את המקום, והמקום הבא מדלג (1, 2, 2, 4).",
+      historial: "השינוי במקום נמדד מול תמונת הדירוג שנשמרת כל חודש. בלי תמונה של החודש הקודם, הוא לא מוצג.",
+      actualizacion: "הטבלה נבנית מחדש כל יום עם הנתונים שבתוקף בכל מדינה. מדינה חדשה נכנסת לבד ברגע שיש לה מחשבון.",
+      ver: "למתודולוגיה המלאה",
+    },
+    datos: {
+      titulo: "נתונים פתוחים",
+      bajada: "המספרים של הדירוגים האלה, מדינה אחרי מדינה, בפורמט JSON ו-CSV. מתעדכנים כל יום.",
+      json: "הנתונים ב-JSON",
+      csv: "הנתונים ב-CSV",
+      licencia: "רישיון CC BY 4.0: מותר להשתמש, להעתיק ולפרסם עם ציון CalcularYa וקישור לדף הזה.",
+      atribucion: "ציטוט מוצע",
+    },
+    mundo: { titulo: "עם שכר מסוים", texto: (n) => `כדי לחשב עם שכר משלכם ולראות את התאריך של כל מדינה, יש את "${n}".`, ir: "לחישוב" },
+    otros: "דירוגים נוספים",
+    rankings: {
+      rinde: {
+        titulo: "איפה אותו שכר שווה יותר",
+        corto: "השכר ששווה יותר",
+        seo: ["איפה השכר שווה יותר: דירוג מדינות", "איפה אותו שכר שווה יותר"],
+        descripcion: (n) => `אותו שכר, באותו כוח קנייה, ב-${pluralHe(n, PAISES_HE)}: כמה נשאר נטו לפי החוק של כל מדינה. מתעדכן כל יום.`,
+        bajada: "אותו שכר ברוטו, באותו כוח קנייה, עובר בחוק של כל מדינה. למעלה, איפה שנשאר הכי הרבה נטו.",
+        metrica: "נטו לחודש",
+        carga: "מס וביטוח סוציאלי",
+        como: "הנטו לחודש הוא הממוצע של 12 החודשים, בדולרים בינלאומיים.",
+      },
+      libertad: {
+        titulo: "יום החופש ממס לפי מדינה",
+        corto: "יום החופש ממס",
+        seo: ["יום החופש ממס לפי מדינה: דירוג", "יום החופש ממס לפי מדינה"],
+        descripcion: (n) => `עד איזה יום בשנה עובדים כדי לשלם מס הכנסה וביטוח סוציאלי, עם אותו שכר ב-${pluralHe(n, PAISES_HE)}.`,
+        bajada: "עד איזה יום בשנה עובדים כדי לשלם מס הכנסה וביטוח סוציאלי, עם אותו שכר בכל המדינות. למעלה, איפה שזה נגמר מוקדם יותר.",
+        metrica: "בשביל המדינה עד",
+        carga: "מס וביטוח סוציאלי",
+        como: "התאריך מחלק את הנטל החל מ-1 בינואר: עם נטל של 30%, עובדים בשביל המדינה 30% מהשנה.",
+      },
+      aumento: {
+        titulo: "כמה נשאר מהעלאת שכר",
+        corto: "מה שנשאר מהעלאה",
+        seo: ["כמה נשאר מהעלאת שכר, לפי מדינה", "כמה נשאר מהעלאת שכר"],
+        descripcion: (n) => `מכל 100 שנוספים לשכר, כמה מגיע לכיס אחרי מס הכנסה וביטוח סוציאלי, ב-${pluralHe(n, PAISES_HE)}.`,
+        bajada: "מכל 100 שנוספים לשכר ברוטו, כמה מגיע לכיס אחרי המס והביטוח הסוציאלי. למעלה, איפה שנשאר הכי הרבה.",
+        metrica: "נשאר מכל 100",
+        carga: "שיעור המס השולי",
+        como: "זה שיעור המס השולי בין שני שכרים: החלק מההעלאה שהולך למס ולביטוח סוציאלי.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar, he };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

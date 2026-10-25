@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
 import type { Idioma } from "@/motor/tipos";
+import { TextoOg } from "@/motor/ui/og-rtl";
 
 // Tarjeta de «Sueldos reales» (1200 x 630) para calcularya y calcular.ar. Sin montos: título del país y
 // cuántas ocupaciones tienen datos. Misma receta que la del mundo: Satori con Geist (y Noto en CJK)
@@ -15,7 +16,8 @@ const VERDE = "#34d399";
 
 const CABECERAS = { "cache-control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" };
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC" };
+// Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", he: "Noto Sans Hebrew" };
 const ESPERA_MS = 3000;
 
 async function fuente(familia: string, peso: number, texto: string): Promise<ArrayBuffer | null> {
@@ -96,8 +98,12 @@ export async function ogSueldos(d: DatosOgSueldos): Promise<Response> {
         ) : null}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
-        <div style={{ display: "flex", fontSize: 26, color: VERDE, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase" }}>{d.ceja}</div>
-        <div style={{ display: "flex", fontSize: largo ? 76 : 96, fontWeight: 700, letterSpacing: d.idioma === "ja" || d.idioma === "ko" || d.idioma === "zh" ? 0 : -3, lineHeight: 1.02, maxWidth: 1000 }}>{d.titulo}</div>
+        <div style={{ display: "flex", fontSize: 26, color: VERDE, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase" }}>
+          <TextoOg texto={d.ceja} idioma={d.idioma} />
+        </div>
+        <div style={{ display: "flex", fontSize: largo ? 76 : 96, fontWeight: 700, letterSpacing: d.idioma === "ja" || d.idioma === "ko" || d.idioma === "zh" ? 0 : -3, lineHeight: 1.02, maxWidth: 1000 }}>
+          <TextoOg texto={d.titulo} idioma={d.idioma} />
+        </div>
         <div style={{ display: "flex", gap: 10 }}>
           {Array.from({ length: 10 }, (_, i) => (
             <div key={i} style={{ display: "flex", width: 18, height: 18, borderRadius: 18, backgroundColor: i < 7 ? VERDE : "transparent", border: i < 7 ? "none" : `2px solid ${SUAVE}` }} />
@@ -105,7 +111,9 @@ export async function ogSueldos(d: DatosOgSueldos): Promise<Response> {
         </div>
       </div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 28 }}>
-        <div style={{ display: "flex", color: SUAVE }}>{d.bajada}</div>
+        <div style={{ display: "flex", color: SUAVE }}>
+          <TextoOg texto={d.bajada} idioma={d.idioma} />
+        </div>
         <div style={{ display: "flex", padding: "10px 20px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 24, fontWeight: 700 }}>{d.dominio}</div>
       </div>
     </div>
