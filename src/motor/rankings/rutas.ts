@@ -23,6 +23,8 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   ar: "tartib-alduwal",
   id: "peringkat-negara",
   tr: "ulke-siralamasi",
+  // bn transliterado, como bishwe-beton (ADR 0002, D14).
+  bn: "desher-ranking",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -51,6 +53,7 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   id: { rinde: "gaji-paling-bernilai", libertad: "hari-bebas-pajak", aumento: "sisa-kenaikan-gaji" },
   // tr en ASCII turco con la búsqueda de Google Turquía (ADR 0002, D12).
   tr: { rinde: "maasin-alim-gucu", libertad: "vergi-ozgurluk-gunu", aumento: "zamdan-ne-kalir" },
+  bn: { rinde: "kothay-beton-beshi-chole", libertad: "kor-mukti-dibos", aumento: "beton-briddhir-koto-thake" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

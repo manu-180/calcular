@@ -8,7 +8,7 @@ import { anchoVisual } from "../src/motor/ancho";
 import { ErrorEntrada, crearContexto } from "../src/motor/calculo";
 import { CONCEPTOS } from "../src/motor/conceptos";
 import { formatearFilas } from "../src/motor/formulario";
-import type { CodigoMercado, ContextoSerializado, Idioma, Moneda, ResultadoBase, TablaResultado, Trato } from "../src/motor/tipos";
+import { IDIOMAS, type CodigoMercado, type ContextoSerializado, type Idioma, type Moneda, type ResultadoBase, type TablaResultado, type Trato } from "../src/motor/tipos";
 import { variantesDeLocale, PT_LUSOFONIA } from "../src/motor/i18n/variantes";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe, instanciar, type ContextoUniversal } from "../src/motor/universales/tipos";
@@ -104,11 +104,18 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent ve Grenadinler", locale: "tr-TR", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "cd" as CodigoMercado, pais: "CD", nombrePais: "Demokratik Kongo Cumhuriyeti", locale: "tr-TR", trato: "usted", moneda: "CDF" as Moneda, escala: 2800 },
   ],
+  // Bengalí (ADR 0002, D14): taka en la escala de BDT (cientos de miles y lakhs) y un nombre largo.
+  bn: [
+    { mercado: "bd" as CodigoMercado, pais: "BD", nombrePais: "বাংলাদেশ", locale: "bn-BD", trato: "usted", moneda: "BDT" as Moneda, escala: 120 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "সেন্ট ভিনসেন্ট ও গ্রেনাডিনস", locale: "bn-BD", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
 };
 
-// En ja, ko, zh y los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr...) las reglas de
-// puntuación, registro y escritura (scripts/reglas_idioma.ts) corren sobre toda la página.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "pl", "sv", "da", "nb", "fi", "ar", "id", "tr"]);
+// En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)
+// las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren sobre toda la página:
+// solo los traductores de los siete idiomas latinos del principio no las necesitaban.
+const IDIOMAS_LATINOS_INICIALES: readonly Idioma[] = ["es", "pt", "en", "fr", "de", "it", "nl"];
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(IDIOMAS.filter((i) => !IDIOMAS_LATINOS_INICIALES.includes(i)));
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy

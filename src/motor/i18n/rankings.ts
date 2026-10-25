@@ -2,6 +2,7 @@ import type { IdNivel } from "../rankings/calculo";
 import type { IdRanking } from "../rankings/rutas";
 import type { Idioma, Trato } from "../tipos";
 import { pluralAr } from "./arabe";
+import { cifrasBn } from "./bengali";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Rankings de países. Todo el texto es impersonal (sin tú, vos, usted, du, Sie, tu, vous, je, u):
@@ -2307,7 +2308,125 @@ const tr: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr };
+// ───────────────────────────── bn ─────────────────────────────
+
+// Bengalí (ADR 0002, D14): «আপনি» con las formas corteses, dari «।» y dígitos bengalíes (cifrasBn
+// para lo que llega como número). El puesto va como «৫ নম্বরে», sin sufijo ordinal pegado a la cifra.
+const cBn = cifrasBn;
+const bn: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "দেশের র‍্যাঙ্কিং",
+    seo: {
+      titulo: ["দেশ অনুযায়ী বেতন ও করের র‍্যাঙ্কিং", "দেশের র‍্যাঙ্কিং"],
+      descripcion: (n) => `একই বেতন কোথায় বেশি চলে, কর মুক্তি দিবস আর বেতন বাড়লে কত থাকে: ${cBn(n)}টি দেশ। সরকারি তথ্য, প্রতিদিন হালনাগাদ।`,
+    },
+    ceja: "উন্মুক্ত তথ্য",
+    h1: "বেতন আর কর, দেশে দেশে",
+    bajada: (n) => `${cBn(n)}টি দেশ, একই ক্রয়ক্ষমতায় আর প্রতিটি দেশের সরকারি ক্যালকুলেটরে তুলনা করা। র‍্যাঙ্কিং প্রতিদিন নিজে থেকেই হালনাগাদ হয়।`,
+    actualizado: (f) => `হালনাগাদ: ${cBn(f)}`,
+    ver: "র‍্যাঙ্কিং দেখুন",
+    niveles: { titulo: "উদাহরণের বেতন", nombres: { bajo: "কম বেতন", medio: "মাঝারি বেতন", alto: "বেশি বেতন" }, anual: (m) => `বছরে ${cBn(m)}` },
+    tramos: { titulo: "বেতন বৃদ্ধির ধাপ", nombre: (a, b) => `আগে ${cBn(a)}, পরে ${cBn(b)}` },
+    referencia: {
+      nivel: (m) => `বছরে ${cBn(m)} আন্তর্জাতিক ডলার মোট বেতন`,
+      tramo: (a, b) => `মোট বেতন বছরে ${cBn(a)} থেকে ${cBn(b)} আন্তর্জাতিক ডলারে বাড়লে`,
+    },
+    posicion: (pais, p, total) => `${pais}, ${cBn(total)}টির মধ্যে ${cBn(p)} নম্বরে`,
+    de: (t) => `${cBn(t)}টির মধ্যে`,
+    empate: (o) => (o === 1 ? "আরও একটি দেশের সঙ্গে সমান" : `আরও ${cBn(o)}টি দেশের সঙ্গে সমান`),
+    fuera: (pais) => `${pais} এখনো এই র‍্যাঙ্কিংয়ে নেই: তুলনার উপযোগী হাতে পাওয়া বেতনের ক্যালকুলেটর দরকার।`,
+    lider: "র‍্যাঙ্কিংয়ের শীর্ষে",
+    global: (n) => `${cBn(n)}টি দেশ, প্রথম থেকে শেষ পর্যন্ত`,
+    valores: {
+      porMes: (m) => `মাসে ${cBn(m)}`,
+      ningunDia: "একদিনও না",
+      deCada: (n) => `প্রতি ১০০ এককে ${cBn(n)}`,
+      carga: (pct) => `কর ও চাঁদায়: ${cBn(pct)}`,
+      cargaAumento: (pct) => `বাড়তি অংশের যা কর ও চাঁদায় যায়: ${cBn(pct)}`,
+    },
+    cambio: {
+      titulo: (mes) => `পরিবর্তন, তুলনার মাস: ${cBn(mes)}`,
+      sube: (n) => `${cBn(n)} ধাপ ওপরে`,
+      baja: (n) => `${cBn(n)} ধাপ নিচে`,
+      igual: "অবস্থান একই আছে",
+      nuevo: "র‍্যাঙ্কিংয়ে নতুন",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}: ${ref}`,
+      puesto: "অবস্থান",
+      pais: "দেশ",
+      edicion: "এই সংস্করণ",
+      unidad: "আন্তর্জাতিক ডলারে",
+    },
+    kit: {
+      titulo: "উদ্ধৃতির জন্য",
+      bajada: "এই র‍্যাঙ্কিংয়ের বাক্য, চার্ট আর লিংক, প্রকাশের জন্য তৈরি।",
+      compartir: "শেয়ার করুন",
+      descargar: "চার্ট ডাউনলোড করুন",
+      copiar: "উদ্ধৃতি কপি করুন",
+      copiado: "উদ্ধৃতি কপি হয়েছে",
+      enlace: "লিংক কপি হয়েছে",
+      compartido: "শেয়ার হয়েছে",
+      error: "কপি করা যায়নি। লেখাটি ওপরে আছে, হাতে কপি করে নিন।",
+      cita: (frase, ranking, ref, fecha) => `«${ranking}» র‍্যাঙ্কিং: ${frase} (${ref})। সূত্র: CalcularYa, তথ্যের তারিখ ${cBn(fecha)}।`,
+      texto: (frase, ranking) => `«${ranking}» র‍্যাঙ্কিং: ${frase}।`,
+      alt: (ranking) => `«${ranking}» র‍্যাঙ্কিংয়ের চার্ট`,
+    },
+    metodo: {
+      titulo: "যেভাবে তৈরি হয়",
+      bajada: "প্রতিটি দেশের হিসাব হয় আজকের নিয়মে, সেই দেশের নিজস্ব সরকারি হাতে পাওয়া বেতনের ক্যালকুলেটরে। তারপর একই ক্রয়ক্ষমতায় তুলনা করা হয়।",
+      niveles: (b, m, a) => `উদাহরণের বেতন: বছরে ${cBn(b)}, ${cBn(m)} আর ${cBn(a)} আন্তর্জাতিক ডলার মোট।`,
+      empates: "সারণিতে একই মানের দুটি দেশ একই অবস্থান ভাগ করে নেয়, আর পরেরটি একটি অবস্থান বাদ দিয়ে বসে (১, ২, ২, ৪)।",
+      historial: "অবস্থানের পরিবর্তন মেলানো হয় প্রতি মাসে রাখা র‍্যাঙ্কিংয়ের ছবির সঙ্গে। আগের মাসের ছবি না থাকলে পরিবর্তন দেখানো হয় না।",
+      actualizacion: "সারণিটি প্রতিদিন প্রতিটি দেশের চালু তথ্য দিয়ে আবার তৈরি হয়। নতুন কোনো দেশের ক্যালকুলেটর চালু হলেই সেটি নিজে থেকে যোগ হয়।",
+      ver: "পুরো পদ্ধতি দেখুন",
+    },
+    datos: {
+      titulo: "উন্মুক্ত তথ্য",
+      bajada: "এই র‍্যাঙ্কিংয়ের পেছনের সংখ্যা, দেশ অনুযায়ী, JSON আর CSV ফরম্যাটে। প্রতিদিন হালনাগাদ।",
+      json: "JSON তথ্য",
+      csv: "CSV তথ্য",
+      licencia: "ক্রিয়েটিভ কমন্স অ্যাট্রিবিউশন ৪.০ (CC BY) লাইসেন্স: CalcularYa-র নাম আর এই পাতার লিংক উল্লেখ করে স্বাধীনভাবে ব্যবহার, অনুলিপি ও প্রকাশ করতে পারেন।",
+      atribucion: "প্রস্তাবিত উদ্ধৃতি",
+    },
+    mundo: { titulo: "আপনার আসল বেতন দিয়ে", texto: (n) => `নিজের বেতন দিয়ে হিসাব করে প্রতিটি দেশে আপনার তারিখ দেখতে «${n}» পাতাটি আছে।`, ir: "হিসাব করে দেখুন" },
+    otros: "অন্যান্য র‍্যাঙ্কিং",
+    rankings: {
+      rinde: {
+        titulo: "একই বেতন কোথায় বেশি চলে",
+        corto: "বেশি চলে যে বেতন",
+        seo: ["একই বেতন কোথায় বেশি চলে: দেশের র‍্যাঙ্কিং", "একই বেতন কোথায় বেশি চলে"],
+        descripcion: (n) => `একই ক্রয়ক্ষমতার একই বেতন ${cBn(n)}টি দেশে: প্রতিটি দেশের করের নিয়মের পর হাতে কত থাকে। প্রতিদিন হালনাগাদ।`,
+        bajada: "একই ক্রয়ক্ষমতার একই মোট বেতন প্রতিটি দেশের নিয়মে হিসাব করা হয়। ওপরে সেই দেশগুলো, যেখানে হাতে সবচেয়ে বেশি থাকে।",
+        metrica: "মাসে হাতে পাওয়া",
+        carga: "কর ও চাঁদা",
+        como: "মাসিক হাতে পাওয়া বেতন ১২ মাসের গড়, আন্তর্জাতিক ডলারে।",
+      },
+      libertad: {
+        titulo: "দেশ অনুযায়ী কর মুক্তি দিবস",
+        corto: "কর মুক্তি দিবস",
+        seo: ["দেশ অনুযায়ী কর মুক্তি দিবস: র‍্যাঙ্কিং", "দেশ অনুযায়ী কর মুক্তি দিবস"],
+        descripcion: (n) => `যেদিন আয়কর আর চাঁদা দেওয়া শেষ হয়, একই বেতনে ${cBn(n)}টি দেশে। প্রতিদিন হালনাগাদ।`,
+        bajada: "যেদিন আয়কর আর চাঁদা দেওয়া শেষ হয়, প্রতিটি দেশে একই বেতনে। ওপরে সেই দেশগুলো, যেখানে দিনটি সবচেয়ে আগে আসে।",
+        metrica: "রাষ্ট্রের জন্য কাজের শেষ দিন",
+        carga: "কর ও চাঁদা",
+        como: "তারিখটি ১ জানুয়ারি থেকে করের ভার সারা বছরে ভাগ করে বের করা হয়: করের ভার ৩০% হলে বছরের ৩০% সময় রাষ্ট্রের জন্য কাজ।",
+      },
+      aumento: {
+        titulo: "বেতন বাড়লে কত থাকে",
+        corto: "বেতন বৃদ্ধির যা থাকে",
+        seo: ["বেতন বাড়লে কত থাকে: দেশ অনুযায়ী", "বেতন বাড়লে কত থাকে"],
+        descripcion: (n) => `মোট বেতনে প্রতি ১০০ একক বাড়লে আয়কর আর চাঁদার পর কত থাকে, ${cBn(n)}টি দেশে। প্রতিদিন হালনাগাদ।`,
+        bajada: "মোট বেতনে প্রতি ১০০ একক বাড়লে আয়কর আর চাঁদার পর কতটা হাতে আসে। ওপরে সেই দেশগুলো, যেখানে সবচেয়ে বেশি থাকে।",
+        metrica: "প্রতি ১০০ এককে যা থাকে",
+        carga: "প্রান্তিক হার",
+        como: "এটি দুই বেতনের মধ্যের প্রান্তিক হার: বাড়তি অংশের যতটা কর আর চাঁদায় যায়।",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

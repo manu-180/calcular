@@ -35,6 +35,7 @@ export type TextosInforme = {
     documento: string;
     etiquetaEnMinuscula: boolean;
     anchoCompleto: boolean;
+    puntoFinal: string;
   } | null;
 };
 
@@ -305,7 +306,7 @@ export function InformeVivo({
                 <strong>
                   <bdi>{clave.texto}</bdi>
                 </strong>{" "}
-                ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLocaleLowerCase(props.contexto.locale) : clave.etiqueta}).
+                ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLocaleLowerCase(props.contexto.locale) : clave.etiqueta}){textos.nota.puntoFinal}
               </p>
             )}
             <p>{textos.nota.cierre}</p>

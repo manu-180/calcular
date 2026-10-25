@@ -417,6 +417,91 @@ calendario, horas y rankings impersonales, sueldos y afiliados con «siz»; las 
 van sueltos o tras dos puntos («Doğrulama tarihi: ...», «Sıra: 3 / 40»). Las imágenes OG no suman
 fuente de respaldo: Geist cubre ç, ğ, ı, İ, ö, ş y ü.
 
+### D14. Bengalí (2026-10-24)
+
+D9 a D13 los usan otras ramas sin mergear (pl/sv/da/nb/fi, árabe, indonesio y los frentes que siguen);
+esta entrada toma el 14 para no chocar al mergear. Pensada para Bangladés (bn-BD); sirve también para
+Bengala Occidental (bn-IN) sin cambios en el motor.
+
+`IDIOMAS` suma `bn`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+«Tu sueldo en el mundo» (`bishwe-beton`), el diccionario de venta completo (las 27 familias,
+`informe-calculo` incluida, informes, planillas y mails) y las 41 universales están en bengalí.
+
+**Trato.** Un solo registro, el de los bancos y servicios digitales de Bangladés (bKash, Sonali Bank,
+NBR e-Return): «আপনি» con las formas verbales corteses (করুন, দিন, লিখুন, দেখুন, বেছে নিন), sin
+«তুমি» ni «তুই». Es la forma de respeto estándar para hablarle a un desconocido; «তুমি» en una web de
+servicio suena a publicidad o a trato entre amigos. Los mercados van con `trato: "usted"`, como ja, ko,
+zh e id, y los diccionarios escriben solo `base`. Las cartas del informe van en primera persona formal
+(«আমি») y las tarjetas para compartir también en primera persona. Vocabulario de allá: বেতন
+ক্যালকুলেটর, আয়কর, ভ্যাট, ঋণের কিস্তি (EMI), সুদ, সঞ্চয়পত্র, ঐকিক নিয়ম (la regla de tres de la
+escuela). Las universales son neutrales de país (no nombran NBR ni Bangladesh Bank).
+
+**Cifras.** Los montos visibles van con dígitos bengalíes (০-৯), como en las páginas en bangla de NBR,
+Bangladesh Bank y los bancos del país, y como formatea Intl de bn-BD por defecto (numberingSystem
+`beng`). No hay extensión `-u-nu-latn` como en el árabe (D10): en Bangladés los dígitos latinos son de
+las páginas en inglés. Miles en lakh y crore (৳ detrás, como CLDR: «২৫,০০,০০০৳»), decimal con punto.
+Para lo que llega como número suelto (un año, un contador, el argumento de una función de diccionario)
+está `cifrasBn` (`src/motor/i18n/bengali.ts`), idempotente; todo diccionario bn la aplica a cada
+parámetro. Los resultados de formato `texto` y las celdas de texto de las tablas pasan por
+`textoDelLocale` (el ritmo «৫:৩০» de `ritmo-de-carrera`).
+
+**Parseo.** `parsearNumero` pasa a ASCII los dígitos ০-৯ que escribe un teclado bengalí (Avro, Bijoy,
+Gboard) antes de las reglas; los separadores de bn son los latinos, así que el resto no cambia. Se
+aceptan lakh («১২,৩৪,৫৬৭.৫০») y grupos de a tres («১,২৩৪.৫»), y `conLakhs` reconoce bn-BD aunque Intl
+devuelva dígitos bengalíes. `sugerenciaMiles` responde con los dígitos que escribió la persona («৫.০০০»
+da «৫০০০»). Casos en `check_motor`.
+
+**Plural y gramática.** El bengalí no flexiona el sustantivo detrás de un número (৩ দিন, ১ বছর, ১.৫
+বছর): las dos formas de cada unidad son iguales, separadas del número por un espacio. `GRAMATICA.bn`
+pega el sufijo de caso al nombre del país: genitivo «-এর» tras consonante y «-র» tras vocal
+(বাংলাদেশের, কানাডার), locativo «-এ», «-য়» tras «া» y «-তে» tras las demás vocales (বাংলাদেশে,
+কানাডায়, ইতালিতে), y el destino es el genitivo con «জন্য».
+
+**Slugs.** El slug en inglés del catálogo para las 41 universales, como D8 (`loan`, `bmi`, `vat`,
+`age`...). En Bangladés las búsquedas de calculadoras en alfabeto latino son en inglés («loan
+calculator», «emi calculator», «age calculator»), y una transliteración (`boyos-calculator`,
+`sud-calculator`) sería larga, con grafías que compiten entre sí y sin un estándar de uso. Los títulos,
+h1 y FAQ sí van con la búsqueda en bengalí («লোন ক্যালকুলেটর», «বয়স ক্যালকুলেটর»). Para las
+calculadoras locales del país: el término en inglés que usa el sitio oficial (`income-tax`, `vat`,
+`sanchayapatra` solo si el agente de país lo encuentra así en las búsquedas). «Tu sueldo en el mundo»:
+`bishwe-beton` (transliteración de «বিশ্বে বেতন», como las romanizaciones de D8 para esa página).
+Las piezas que sumó main después (24/10) siguen esa transliteración: rankings en `desher-ranking`
+(`kothay-beton-beshi-chole`, `kor-mukti-dibos`, `beton-briddhir-koto-thake`), horas de trabajo en
+`koto-ghonta-kaj`, calendario en `beton-calendar` y sueldos reales en `asol-beton`. Los productos del
+índice de horas van en bengalí (আইফোন ১৭, ম্যাকবুক এয়ার), como se escriben en la prensa del país.
+Los `rellenar` de plantillas con {marcas} (horas, sueldos y los textos de mundo en el navegador) pasan
+a dígitos bengalíes los valores cuando la plantilla está en bengalí (`valorPara`); el resto de los
+idiomas queda igual.
+
+**Largos de SEO.** `anchoVisual` (`src/motor/ancho.ts`) mide el bengalí con los avances de Nirmala UI
+contra Arial: una letra o un dígito bengalí vale 1,5; el hasanta y los signos que van sobre o bajo la
+letra (ু, ূ, ৃ, ঁ, nukta) valen 0; los signos vocálicos del costado (া, ি, ী, ে) y ং, ঃ valen 0,5, y
+«ো», «ৌ», que rodean la consonante, 1,5. Con `.length` cada signo contaba como una letra y los
+conjuntos como tres. En una muestra de títulos el modelo queda a menos de 10 % del ancho medido glifo por glifo. En
+textos latinos y CJK no cambia nada (los signos combinantes sueltos valen 0 en cualquier escritura).
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en universales, sitio y
+ofertas): sin exclamaciones; la oración cierra con el dari «।» (un punto latino tras letra bengalí,
+dígito, % o paréntesis es falla), sin espacio antes del dari y con espacio después; sin cifras latinas
+sueltas (una cifra latina delata un número que no pasó por Intl ni por `cifrasBn`); sin «তুমি», «তুই»
+ni sus formas, ni los imperativos de তুমি (করো, দাও, দেখো). No se buscan «নাও» («নাও হতে পারে») ni
+«কর», que es «impuesto». `check_i18n` llama las funciones de bn con «৭» de muestra en vez de «7».
+
+**Tipografía.** Sin descargar fuentes: Geist para el latín y la fuente del sistema para el bengalí
+(Noto Sans Bengali en Android y Linux, Kohinoor Bangla en macOS e iOS, Nirmala UI y Vrinda en
+Windows). Títulos sin tracking negativo y con interlineado 1,35 por los signos que suben y bajan. La
+imagen OG de «Tu sueldo en el mundo» pide Noto Sans Bengali por los glifos, pero Satori no reordena
+los signos vocálicos: la tarjeta en bn puede salir con algún conjunto mal armado. La carta del informe
+cierra con `nota.puntoFinal` («।»).
+
+**Prueba.** `zz-bn` (Zetaland, locale `bn-001`) es una edición interna como `zz-ja`.
+`check_universales` prueba bn-BD con BDT (escala 120) y «সেন্ট ভিনসেন্ট ও গ্রেনাডিনস» por el nombre
+largo.
+
+**Pendiente para el país.** En Bangladés el viernes es día de descanso (y el sábado también en la
+administración pública), y `dias-entre-fechas` y `sumar-dias` cuentan días hábiles de lunes a viernes: los textos bn lo
+advierten, y el agente de país tiene que decidir si suma una opción de fin de semana al motor.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

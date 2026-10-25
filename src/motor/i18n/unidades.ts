@@ -52,6 +52,9 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   id: { dias: { uno: "hari", otros: "hari" }, semanas: { uno: "minggu", otros: "minggu" }, horas: { uno: "jam", otros: "jam" }, meses: { uno: "bulan", otros: "bulan" }, anios: { uno: "tahun", otros: "tahun" } },
   // El turco no pone plural después de un número (3 gün, 1,5 yıl): las dos formas son iguales.
   tr: { dias: { uno: "gün", otros: "gün" }, semanas: { uno: "hafta", otros: "hafta" }, horas: { uno: "saat", otros: "saat" }, meses: { uno: "ay", otros: "ay" }, anios: { uno: "yıl", otros: "yıl" } },
+  // El bengalí no flexiona el sustantivo detrás de un número (৩ দিন, ১ বছর, ১.৫ বছর): las dos formas
+  // son iguales. Va separado del número por un espacio.
+  bn: { dias: { uno: "দিন", otros: "দিন" }, semanas: { uno: "সপ্তাহ", otros: "সপ্তাহ" }, horas: { uno: "ঘণ্টা", otros: "ঘণ্টা" }, meses: { uno: "মাস", otros: "মাস" }, anios: { uno: "বছর", otros: "বছর" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

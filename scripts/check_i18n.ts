@@ -24,6 +24,10 @@ import { problemasDeTexto } from "./reglas_idioma";
 
 const TRATOS: readonly Trato[] = ["tu", "usted", "vos"];
 const MUESTRA = "7";
+// En bengalí las reglas no aceptan cifras latinas (ADR 0002, D14) y un parámetro de muestra «7» que
+// hace de nombre de país o de búsqueda daría una falla falsa: la muestra va con el dígito bengalí. Los
+// números que llegan sueltos se cubren igual, porque los diccionarios bn los pasan por cifrasBn.
+const MUESTRA_DE: Readonly<Partial<Record<Idioma, string>>> = { bn: "৭" };
 
 // Textos que pueden coincidir con el español porque son la misma palabra en ese idioma, una sigla o
 // una marca. Clave: "idioma:diccionario.ruta" (ruta sin el trato); "*:" vale para todos los idiomas.
@@ -102,11 +106,11 @@ const IGUALES_PERMITIDOS = new Set([
 
 type Hoja = { ruta: string; texto: string };
 
-function hojas(valor: unknown, ruta: string, salida: Hoja[]): Hoja[] {
+function hojas(valor: unknown, ruta: string, salida: Hoja[], muestra = MUESTRA): Hoja[] {
   if (typeof valor === "string") salida.push({ ruta, texto: valor });
-  else if (typeof valor === "function") hojas((valor as (...a: string[]) => unknown)(...Array.from({ length: valor.length }, () => MUESTRA)), ruta, salida);
-  else if (Array.isArray(valor)) valor.forEach((v, i) => hojas(v, `${ruta}.${i}`, salida));
-  else if (valor && typeof valor === "object") for (const [k, v] of Object.entries(valor)) hojas(v, ruta ? `${ruta}.${k}` : k, salida);
+  else if (typeof valor === "function") hojas((valor as (...a: string[]) => unknown)(...Array.from({ length: valor.length }, () => muestra)), ruta, salida, muestra);
+  else if (Array.isArray(valor)) valor.forEach((v, i) => hojas(v, `${ruta}.${i}`, salida, muestra));
+  else if (valor && typeof valor === "object") for (const [k, v] of Object.entries(valor)) hojas(v, ruta ? `${ruta}.${k}` : k, salida, muestra);
   else salida.push({ ruta, texto: "" });
   return salida;
 }
@@ -143,7 +147,7 @@ for (const fuente of FUENTES) {
   for (const trato of TRATOS) {
     const es = new Map(hojas(fuente.resolver("es", trato), "", []).map((h) => [h.ruta, h.texto]));
     for (const idioma of IDIOMAS) for (const locale of variantes(idioma)) {
-      const lista = hojas(fuente.resolver(idioma, trato, locale), "", []);
+      const lista = hojas(fuente.resolver(idioma, trato, locale), "", [], MUESTRA_DE[idioma]);
       const rutas = new Set(lista.map((h) => h.ruta));
       for (const r of es.keys()) if (!rutas.has(r) && !/\.\d+(?:\.|$)/.test(r)) fallas.push(`${idioma}/${trato} ${fuente.nombre}.${r}: falta`);
       for (const { ruta, texto } of lista) {

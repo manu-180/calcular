@@ -775,7 +775,44 @@ const tr: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr };
+// Bengalí (ADR 0002, D14): «আপনি» con las formas corteses, como en la web de los bancos del país.
+const gBn = GRAMATICA.bn;
+const bn: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa-র ক্যালকুলেটর",
+    marcaNuevaPestana: "(নতুন ট্যাবে খুলবে)",
+    noDisponible: { titulo: "এই ক্যালকুলেটরটি পাওয়া যাচ্ছে না", texto: "এর ঠিকানা হয়তো বদলে গেছে।" },
+    insertar: "আপনার সাইটে বসান",
+    pagina: {
+      titulo: (pais) => [`আপনার সাইটের জন্য ফ্রি ক্যালকুলেটর | ${pais}`, "আপনার সাইটের জন্য ফ্রি ক্যালকুলেটর"],
+      descripcion: (pais) => `${gBn.para(pais)} একটি ক্যালকুলেটর বেছে নিন, কোড কপি করে আপনার ব্লগ বা সাইটে বসিয়ে দিন। বিনা মূল্যে, সরকারি তথ্য সবসময় হালনাগাদ।`,
+      h1: "আপনার সাইটে ক্যালকুলেটর বসান",
+      bajada: "ক্যালকুলেটর বেছে নিন, কোড কপি করুন, তারপর যেখানে চান সেখানে বসিয়ে দিন। বিনা মূল্যে, তথ্য নিজে থেকেই হালনাগাদ হয়।",
+      calculadora: "ক্যালকুলেটর",
+      buscar: "ক্যালকুলেটর খুঁজুন",
+      sinResultados: "আপনার খোঁজার সঙ্গে মেলে এমন কোনো ক্যালকুলেটর নেই।",
+      tema: "থিম",
+      claro: "হালকা",
+      oscuro: "গাঢ়",
+      ancho: "প্রস্থ",
+      anchoCompleto: "পুরো প্রস্থ",
+      acento: "মূল রং",
+      colores: ["সবুজ", "নীল", "কমলা", "গোলাপি", "ধূসর"],
+      credito: "ক্যালকুলেটরের নিচে সূত্রের লিংক রাখুন",
+      vistaPrevia: "প্রিভিউ",
+      codigo: "বসানোর কোড",
+      copiar: "কোড কপি করুন",
+      copiado: "কোড কপি হয়েছে",
+      ayudaScript: "এই স্ক্রিপ্ট ঐচ্ছিক: এতে ক্যালকুলেটরের উচ্চতা নিজে থেকে কনটেন্টের মাপে বদলায়।",
+      ventajas: ["বিনা মূল্যে, নিবন্ধন ছাড়া", "সরকারি তথ্য, সবসময় হালনাগাদ", "যেকোনো প্রস্থে মানিয়ে যায়"],
+      nota: "ক্যালকুলেটরের নিচে CalcularYa-র একটি লিংক থাকে। দয়া করে সেটি মুছবেন না।",
+      verTodas: (pais) => `${gBn.de(pais)} সব ক্যালকুলেটর দেখুন`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa-র ক্যালকুলেটর`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

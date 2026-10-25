@@ -219,6 +219,35 @@ function reglasAr(texto: string): string[] {
   return p;
 }
 
+// Bengalí (ADR 0002, D14). Un solo registro, el de los bancos y servicios digitales de Bangladés
+// (bKash, Sonali Bank, NBR e-Return): «আপনি» con las formas verbales corteses (করুন, দিন, লিখুন). Se
+// atrapan «তুমি» y «তুই» con sus formas y los imperativos de তুমি más comunes (করো, দাও, দেখো). No se
+// busca «নাও», que también es «না ও» («নাও হতে পারে»), ni «কর», que es «impuesto». La oración termina
+// con el dari «।», no con punto latino; los montos van con dígitos bengalíes (০-৯) porque el motor
+// formatea bn-BD así: una cifra latina suelta delata un número que no pasó por Intl.
+const palabrasBn = (lista: string) => new RegExp(`(?<![\\p{L}\\p{M}])(?:${lista})(?![\\p{L}\\p{M}])`, "u");
+const TUMI_TUI = palabrasBn("তুমি|তোমার|তোমাকে|তোমায়|তোমরা|তোমাদের|তোমারই|তুই|তোর|তোকে|তোদের|তোরা");
+const IMPERATIVO_TUMI = palabrasBn("করো|দাও|দেখো|লেখো|জানাও|চাপো|রাখো|পড়ো|শোনো|বলো|এসো|যাও|ভাবো|নিও|দিও|কোরো");
+const PUNTO_LATINO_BN = /[\p{sc=Beng}%)]\.(?=\s|$)/u;
+
+// Lo que va entre {{ }} es un marcador que el motor rellena con el número ya formateado en bn-BD (o
+// una expresión, como el índice [1] de una escala): se mide como una cifra bengalí, «০», para que ni
+// su índice latino ni el «।» que lo sigue cuenten como error.
+const MARCADOR_BN = /\{\{[\s\S]*?\}\}/g;
+
+function reglasBn(original: string): string[] {
+  const texto = original.replace(MARCADOR_BN, "০");
+  const p: string[] = [];
+  if (texto.includes("!")) p.push("signo de exclamación");
+  if (PUNTO_LATINO_BN.test(texto)) p.push("punto latino al final de una oración en bengalí (va el dari «।»)");
+  if (/\s।/.test(texto)) p.push("espacio antes del dari «।»");
+  if (/।(?=[\p{L}\p{N}])/u.test(texto)) p.push("dari «।» pegado a la palabra siguiente");
+  if (/(?<![A-Za-z0-9])[0-9]+(?![A-Za-z])/.test(texto)) p.push("cifra latina en bengalí (van dígitos ০-৯, con formatearNumero o cifrasBn)");
+  if (TUMI_TUI.test(texto)) p.push("«তুমি»/«তুই» en un mercado de «আপনি»");
+  if (IMPERATIVO_TUMI.test(texto)) p.push(`imperativo de তুমি («${IMPERATIVO_TUMI.exec(texto)![0]}») en un mercado de «আপনি» (va করুন, দিন, দেখুন)`);
+  return p;
+}
+
 export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, locale?: string): string[] {
   const p: string[] = [];
   if (RAYA.test(texto)) p.push("raya («—» o «–»): usá paréntesis o dos oraciones");
@@ -229,6 +258,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
     for (const mul of MULETILLAS_ES) if (bajo.includes(mul)) p.push(`muletilla «${mul}»`);
     return [...p, ...tratoEs(texto, trato)];
   }
+  if (idioma === "bn") return [...p, ...reglasBn(texto)];
   if (idioma === "ja" || idioma === "ko" || idioma === "zh") {
     p.push(...reglasCjk(texto, idioma));
     if (idioma === "zh") p.push(...problemasDeEscritura(texto, locale ?? "zh-TW"));

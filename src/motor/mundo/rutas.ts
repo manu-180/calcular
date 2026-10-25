@@ -21,6 +21,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   ar: "rawatib-alalam",
   id: "gaji-di-dunia",
   tr: "ulkelere-gore-maas",
+  bn: "bishwe-beton",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";

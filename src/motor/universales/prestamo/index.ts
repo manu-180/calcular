@@ -1,6 +1,7 @@
 import { definirUniversal } from "../tipos";
 import { casos } from "./casos";
 import { contenidoAr } from "./contenido/ar";
+import { contenidoBn } from "./contenido/bn";
 import { contenidoDa } from "./contenido/da";
 import { contenidoDe } from "./contenido/de";
 import { contenidoEn } from "./contenido/en";
@@ -20,6 +21,7 @@ import { contenidoTr } from "./contenido/tr";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiPrestamo } from "./definicion";
 import { textosAr } from "./textos/ar";
+import { textosBn } from "./textos/bn";
 import { textosDa } from "./textos/da";
 import { textosDe } from "./textos/de";
 import { textosEn } from "./textos/en";
@@ -42,7 +44,7 @@ export default definirUniversal<UiPrestamo>({
   id: "prestamo",
   concepto: "prestamo",
   definir,
-  textos: { ar: textosAr, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, tr: textosTr, zh: textosZh },
-  contenido: { ar: contenidoAr, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, tr: contenidoTr, zh: contenidoZh },
+  textos: { ar: textosAr, bn: textosBn, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, tr: textosTr, zh: textosZh },
+  contenido: { ar: contenidoAr, bn: contenidoBn, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, tr: contenidoTr, zh: contenidoZh },
   casos,
 });

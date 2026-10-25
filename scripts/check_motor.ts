@@ -9,7 +9,9 @@ import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
+import { anchoVisual } from "../src/motor/ancho";
 import { decimalesDeMoneda, formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, mayusculaInicial, minusculaInicial, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { cifrasBn } from "../src/motor/i18n/bengali";
 import { GRAMATICA } from "../src/motor/i18n/gramatica";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
@@ -64,6 +66,16 @@ igual("número ar-EG con dígitos latinos", formatearNumero(1234567.5, "ar-EG-u-
 igual("dual árabe", formatearValorUnidad(2, "dias", "ar-EG-u-ca-gregory-nu-latn"), "يومان");
 igual("plural árabe de 3 a 10", formatearValorUnidad(3, "meses", "ar-EG-u-ca-gregory-nu-latn"), "3 أشهر");
 igual("plural árabe de 11 a 99", formatearValorUnidad(11, "anios", "ar-EG-u-ca-gregory-nu-latn"), "11 سنة");
+// Bengalí (ADR 0002, D14): dígitos bengalíes y miles en lakh y crore, taka detrás del número.
+igual("número bn-BD en lakh con dígitos bengalíes", formatearNumero(1234567.5, "bn-BD"), "১২,৩৪,৫৬৭.৫");
+igual("moneda bn-BD sin decimales", sinNbsp(formatearMoneda(2500000, "bn-BD", "BDT", 0)), "২৫,০০,০০০৳");
+igual("porcentaje bn-BD", formatearPorcentaje(15.5, "bn-BD"), "১৫.৫%");
+igual("fecha bn-BD", formatearFecha("2026-10-24", "bn-BD"), "২৪ অক্টোবর, ২০২৬");
+igual("cifrasBn de un año y de un texto ya bengalí", [cifrasBn(2026), cifrasBn("৩ দিন")], ["২০২৬", "৩ দিন"]);
+igual("genitivo y locativo bengalí", [GRAMATICA.bn.de("বাংলাদেশ"), GRAMATICA.bn.de("কানাডা"), GRAMATICA.bn.en("বাংলাদেশ"), GRAMATICA.bn.en("কানাডা"), GRAMATICA.bn.en("ইতালি"), GRAMATICA.bn.para("ভারত")], ["বাংলাদেশের", "কানাডার", "বাংলাদেশে", "কানাডায়", "ইতালিতে", "ভারতের জন্য"]);
+// El ancho de SEO no cuenta el hasanta ni los signos que van sobre o bajo la letra (ু); los vocálicos
+// del costado (ি) cuentan medio latino y la letra uno y medio.
+igual("ancho visual bengalí", [anchoVisual("কি"), anchoVisual("ক্ষ"), anchoVisual("কু"), anchoVisual("abc")], [2, 3, 1.5, 3]);
 
 // Parseo por locale: el error que multiplica por mil.
 const parseos: [string, string, number | null][] = [
@@ -127,6 +139,15 @@ const parseos: [string, string, number | null][] = [
   ["tr-TR", "₺12.345.678,25", 12345678.25],
   ["tr-TR", "-250,75", -250.75],
   ["tr-TR", "%20", 20],
+  // Teclado bengalí (Avro, Bijoy, Gboard): dígitos ০-৯, miles en lakh y crore o de a tres.
+  ["bn-BD", "১২,৩৪,৫৬৭.৫০", 1234567.5],
+  ["bn-BD", "১২৩৪৫৬৭", 1234567],
+  ["bn-BD", "12,34,567", 1234567],
+  ["bn-BD", "৳ ২৫,০০০", 25000],
+  ["bn-BD", "২৫,০০,০০০৳", 2500000],
+  ["bn-BD", "-১২.৫", -12.5],
+  ["bn-BD", "১,২৩৪.৫", 1234.5],
+  ["bn-BD", "১২,৩৪৫,৬৭", null],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -148,6 +169,8 @@ const ambiguos: [string, string, number | null][] = [
   ["id-ID", "5,000", null],
   ["tr-TR", "5.000", 5000],
   ["tr-TR", "5,000", null],
+  ["bn-BD", "৫.০০০", null],
+  ["bn-BD", "৫,০০০", 5000],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -187,6 +210,7 @@ for (const [locale, moneda] of [["fr-TN", "TND"], ["ar-KW", "KWD"], ["en-KW", "K
     igual(`formulario ${locale} ${moneda} lee «${crudo}»`, r.ok ? r.entrada.monto : r.errores, 1544.136);
   }
 }
+igual("sugerencia de miles con los dígitos que escribió la persona", sugerenciaMiles("৫.০০০", "bn-BD")?.sugerido, "৫০০০");
 // Unidades de 10⁴ en ja, zh y ko, y dígitos de ancho completo del IME: «3万» no puede dar 3.
 const cjk: [string, string, number | null][] = [
   ["ja-JP", "3万", 30000],
@@ -485,8 +509,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -563,6 +587,10 @@ igual("gramática turca: para", GRAMATICA.tr.para("Türkiye"), "Türkiye için")
 // Mayúscula inicial con la i del turco: «iş» da «İş», no «Iş».
 igual("mayúscula inicial en turco", mayusculaInicial("iş bankası", "tr-TR"), "İş bankası");
 igual("minúscula inicial en turco", minusculaInicial("Isparta", "tr-TR"), "ısparta");
+// Bengalí: sin plural después del número y con dígitos bengalíes.
+igual("días en bengalí", formatearValorUnidad(3, "dias", "bn-BD"), "৩ দিন");
+igual("un año en bengalí", formatearValorUnidad(1, "anios", "bn-BD"), "১ বছর");
+igual("fracción de año en bengalí", formatearValorUnidad(1.5, "anios", "bn-BD"), "১.৫ বছর");
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).

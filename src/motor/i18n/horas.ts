@@ -1,5 +1,6 @@
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import type { Idioma, Trato } from "../tipos";
+import { valorPara } from "./bengali";
 
 // «¿Cuántas horas de trabajo cuesta?». Todo es texto plano con {marcas}: el servidor y el navegador los
 // rellenan con `rellenarHoras` (las funciones no cruzan a un Client Component). El copy es impersonal a
@@ -72,7 +73,8 @@ export interface TextosHoras {
 }
 
 export function rellenarHoras(plantilla: string, valores: Readonly<Record<string, string | number>>): string {
-  return plantilla.replace(/\{(\w+)\}/g, (todo, clave: string) => (clave in valores ? String(valores[clave]) : todo));
+  const valor = valorPara(plantilla);
+  return plantilla.replace(/\{(\w+)\}/g, (todo, clave: string) => (clave in valores ? valor(valores[clave]) : todo));
 }
 
 // ───────────────────────────── es ─────────────────────────────
@@ -2083,7 +2085,113 @@ const tr: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr };
+// ───────────────────────────── bn ─────────────────────────────
+
+// Bengalí (ADR 0002, D14): «আপনি» donde hace falta, dari «।» y dígitos bengalíes. rellenarHoras pasa
+// a dígitos bengalíes los valores de una plantilla bengalí ({n}, {h}, {d}), y {en} ya trae el locativo
+// pegado al nombre («বাংলাদেশে»).
+const bn: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "কত ঘণ্টা কাজের দাম?",
+    seo: {
+      titulo: ["{en} একটি আইফোনের জন্য কত ঘণ্টা কাজ করতে হয়", "{en} আইফোনের দাম কত ঘণ্টা কাজের সমান", "কত ঘণ্টা কাজের দাম?"],
+      tituloGlobal: ["বিশ্বজুড়ে একটি আইফোনের জন্য কত ঘণ্টা কাজ করতে হয়", "কত ঘণ্টা কাজের দাম?"],
+      tituloProducto: ["{en} {producto}-এর জন্য কত ঘণ্টা কাজ করতে হয়", "{en} {producto} কত ঘণ্টা কাজের সমান", "{producto}-এর জন্য কত ঘণ্টা কাজ করতে হয়"],
+      tituloProductoGlobal: ["বিশ্বজুড়ে {producto}-এর জন্য কত ঘণ্টা কাজ করতে হয়", "{producto}-এর জন্য কত ঘণ্টা কাজ করতে হয়"],
+      descripcion: "আইফোন, ম্যাকবুক আর স্পটিফাইয়ের দাম {en} আর {n}টি দেশে ন্যূনতম মজুরিতে কত ঘণ্টা কাজের সমান। সরকারি দাম আর প্রতিটি সংখ্যার সূত্রসহ।",
+      descripcionGlobal: "আইফোন, ম্যাকবুক আর স্পটিফাইয়ের দাম {n}টি দেশে ন্যূনতম মজুরিতে কত ঘণ্টা কাজের সমান। সরকারি দাম আর প্রতিটি সংখ্যার সূত্রসহ।",
+      descripcionProducto: "{en} {producto} ন্যূনতম মজুরিতে এতটা কাজের সমান: {horas}। {n}টি দেশের র‍্যাঙ্কিং, সরকারি দাম আর সূত্রসহ।",
+      descripcionProductoGlobal: "{producto} {n}টি দেশে ন্যূনতম মজুরিতে কত ঘণ্টা কাজের সমান। অফিশিয়াল স্টোরের দাম আর প্রতিটি সংখ্যার সূত্রসহ।",
+    },
+    ceja: "সূচক, {mes}",
+    h1: "কত ঘণ্টা কাজের দাম?",
+    h1Producto: "{producto} কত ঘণ্টা কাজের সমান?",
+    bajada: "একই পণ্যের সরকারি দাম {n}টি দেশে ন্যূনতম মজুরির কাজের ঘণ্টায় হিসাব করা।",
+    form: { producto: "পণ্য", pais: "দেশ", porMes: "প্রতি মাসে" },
+    heroe: {
+      antes: "{en} {producto}-এর জন্য ন্যূনতম মজুরিতে",
+      despues: "কাজ করতে হয়",
+      despuesMes: "প্রতি মাসে কাজ করতে হয়",
+      jornadaUno: "৮ ঘণ্টার কর্মদিবসে {n} দিন",
+      jornadaOtras: "৮ ঘণ্টার কর্মদিবসে {n} দিন",
+      precio: "সরকারি দাম: {precio}",
+      salario: "ন্যূনতম মজুরি: ঘণ্টায় {monto}",
+      sinPrecio: "{en} এই পণ্য বিক্রি করে এমন কোনো অফিশিয়াল স্টোর নেই।",
+      mejor: "{en} এর জন্য {horas} যথেষ্ট।",
+      mejorPropio: "সূচকের কোনো দেশেই এর জন্য এর চেয়ে কম ঘণ্টা কাজ করতে হয় না।",
+      puesto: "অবস্থান: {total}টির মধ্যে {p}",
+      escalaHoras: "প্রতিটি ঘর এক ঘণ্টার কাজ",
+      escalaSemanas: "প্রতিটি ঘর ৪০ ঘণ্টার এক সপ্তাহ",
+      masDeUnAnio: "এক বছরের বেশি কাজ",
+    },
+    ranking: {
+      titulo: "দেশে দেশে",
+      bajada: "সবচেয়ে কম ঘণ্টা থেকে সবচেয়ে বেশি। প্রতিটি দাম সেই দেশে নির্মাতার সরকারি দাম।",
+      lista: "কাজের ঘণ্টা অনুযায়ী সাজানো দেশ",
+      verTodos: "সব দেশ দেখুন ({n})",
+      verMenos: "কম দেখান",
+      elegido: "বাছাই করা",
+      sinPrecio: "সূচকের {n}টি দেশের তথ্য নেই: সেখানে অফিশিয়াল স্টোর এই পণ্য বিক্রি করে না।",
+      horas: "ঘণ্টা",
+      precio: "সরকারি দাম",
+    },
+    compartir: {
+      titulo: "শেয়ার করার কার্ড",
+      bajada: "এতে শুধু উন্মুক্ত তথ্য থাকে: সরকারি দাম আর ন্যূনতম মজুরিতে কাজের ঘণ্টা।",
+      boton: "কার্ড শেয়ার করুন",
+      descargar: "স্টোরির জন্য ডাউনলোড করুন",
+      copiado: "লিংক কপি হয়েছে।",
+      compartido: "শেয়ার হয়েছে।",
+      error: "এখন শেয়ার করা গেল না।",
+      texto: "{en} {producto} ন্যূনতম মজুরিতে এতটা কাজের সমান: {horas}। অন্য দেশে কত?",
+      alt: "কার্ডের প্রিভিউ",
+    },
+    metodo: {
+      titulo: "আমরা যেভাবে হিসাব করি",
+      estimacion: "ঘণ্টা = সরকারি দাম ÷ ঘণ্টাপ্রতি ন্যূনতম মজুরি। এটি সরকারি দামের তুলনা, কেনার প্রস্তাব নয়।",
+      supuestos: [
+        "দাম হলো নির্মাতার অফিশিয়াল স্টোরে সবচেয়ে সস্তা সংস্করণের দাম, যা প্রতিটি দেশের পাতায় দেখে নেওয়া হয়।",
+        "স্পটিফাই প্রিমিয়াম মানে এক মাসের ব্যক্তিগত প্ল্যান, শুরুর অফার ছাড়া।",
+        "ন্যূনতম মজুরি হলো আজ চালু সাধারণ অঙ্ক, পূর্ণ সময় কাজ করা প্রাপ্তবয়স্ক কর্মীর জন্য। খাত বা অঞ্চলভেদে একাধিক থাকলে প্রধান অঞ্চলের বাণিজ্য খাতের অঙ্ক ধরা হয়।",
+        "আইনে ন্যূনতম অঙ্ক মাস বা দিন হিসেবে ঠিক করা থাকলে, সেই দেশের আইনি কর্মসপ্তাহ দিয়ে তা ঘণ্টায় রূপান্তর করা হয়।",
+        "স্পেন আর পর্তুগাল বছরে ১৪ বার ন্যূনতম মজুরি দেয়: Eurostat-এর মতো তা ১২ মাসে ভাগ করা হয়।",
+        "স্টোর মার্কিন ডলারে বিক্রি করলে দামটি সেই দেশের সরকারি বিনিময় হারে রূপান্তর করা হয়।",
+        "দিনের তুলনার জন্য সব দেশে কর্মদিবস ৮ ঘণ্টা ধরা হয়।",
+      ],
+      fuentesTitulo: "প্রতিটি সংখ্যার সূত্র",
+      fuentesBajada: "প্রতিটি দেশ তার ন্যূনতম মজুরি, কর্মসপ্তাহ আর স্টোরে দেখা দামসহ, প্রতিটির যাচাইয়ের তারিখসহ।",
+      salario: "ন্যূনতম মজুরি",
+      jornada: "কর্মসপ্তাহ",
+      precio: "দাম",
+      cambio: "বিনিময় হার",
+      consultado: "দেখা হয়েছে {fecha} তারিখে",
+      verificado: "যাচাই {fecha} তারিখে",
+      verFuente: "সূত্র দেখুন",
+      sello: "দাম দেখা হয়েছে {desde} থেকে {hasta} পর্যন্ত। ১২০ দিনের পুরোনো দাম দেখানো হয় না।",
+      conversion: {
+        hora: "আইনে ঘণ্টাপ্রতি অঙ্ক ঠিক করা আছে।",
+        mes: "মাসিক × ১২ ÷ ৫২ সপ্তাহ ÷ সপ্তাহে {h} ঘণ্টা।",
+        mesPagas: "মাসিক × {p} বার ÷ ৫২ সপ্তাহ ÷ সপ্তাহে {h} ঘণ্টা।",
+        anio: "বার্ষিক ÷ ৫২ সপ্তাহ ÷ সপ্তাহে {h} ঘণ্টা।",
+        semana: "সাপ্তাহিক ÷ {h} ঘণ্টা।",
+        dia: "দৈনিক ÷ কর্মদিবসের {h} ঘণ্টা।",
+        diaPagado: "দৈনিক × {d}টি বেতনসহ দিন ÷ সপ্তাহে {h} ঘণ্টা।",
+        divisor: "মাসিক ÷ {d}, আইনে ঠিক করা ঘণ্টার ভাজক।",
+      },
+    },
+    faqTitulo: "সাধারণ প্রশ্ন",
+    faq: [
+      { pregunta: "ঘণ্টা কীভাবে হিসাব করা হয়?", respuesta: "পণ্যের সরকারি দামকে দেশের ঘণ্টাপ্রতি ন্যূনতম মজুরি দিয়ে ভাগ করা হয়। আইনে ন্যূনতম অঙ্ক মাস বা দিন হিসেবে ঠিক করা থাকলে, সেই দেশের আইনি কর্মসপ্তাহ দিয়ে তা ঘণ্টায় রূপান্তর করা হয়।" },
+      { pregunta: "ন্যূনতম মজুরি কেন ধরা হয়?", respuesta: "প্রায় সব দেশে আইন এটি ঠিক করে, আর সরকারি সূত্রে যাচাই করা যায়। গড় বেতন প্রতিটি দেশ আলাদাভাবে মাপে, তাই একইভাবে তুলনা করা যায় না।" },
+      { pregunta: "দামে কি কর ধরা আছে?", respuesta: "এটি প্রতিটি দেশের অফিশিয়াল স্টোরে দেখানো দাম। যুক্তরাষ্ট্র আর কানাডায় এই দামে বিক্রয় কর ধরা থাকে না, অন্য দেশেও পরিশোধের সময় স্টোর কর যোগ করতে পারে।" },
+      { pregunta: "কিছু দেশ নেই কেন?", respuesta: "শুধু সেই দেশগুলো থাকে, যার যাচাই করা চালু ন্যূনতম মজুরি আর অফিশিয়াল স্টোরে দেখা দাম আছে। অফিশিয়াল অনলাইন স্টোর না থাকলে সেই পণ্যের তথ্য থাকে না। পুনর্বিক্রেতার দাম কখনো ধরা হয় না।" },
+      { pregunta: "কত দিন পরপর হালনাগাদ হয়?", respuesta: "দাম প্রতিটি স্টোরে দেখে নেওয়া হয় আর ১২০ দিন পর পুরোনো হয়ে যায়: পুরোনো দাম দেখানো হয় না। ন্যূনতম মজুরি আসে প্রতিটি দেশের সরকারি তথ্য থেকে, আর আইন বদলালে হালনাগাদ হয়।" },
+    ],
+    og: { de: "ন্যূনতম মজুরিতে কাজ", deMes: "ন্যূনতম মজুরিতে কাজ, প্রতি মাসে", generica: "{producto} কত ঘণ্টা কাজের সমান?", genericaBajada: "সরকারি দাম ন্যূনতম মজুরির ঘণ্টায়, {n}টি দেশে", menos: "সবচেয়ে কম ঘণ্টা", cta: "সব দেশ:" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

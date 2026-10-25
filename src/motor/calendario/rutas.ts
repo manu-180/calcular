@@ -27,6 +27,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   ar: "taqwim-alrawatib",
   id: "kalender-gaji",
   tr: "maas-takvimi",
+  bn: "beton-calendar",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";

@@ -1,4 +1,5 @@
 import type { Idioma, Trato } from "../tipos";
+import { cifrasBn } from "./bengali";
 import { resolver, type Diccionarios } from "./resolver";
 
 // Textos de «Compartir» y de la línea que lleva a «Tu sueldo en el mundo». Viajan en el JS de la
@@ -352,6 +353,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       mensaje: (nombre) => `${nombre}. Ücretsiz, hesaplaması bir dakika sürer.`,
       puenteIntro: "Başka ülkelerde durum ne?",
       puenteEnlace: (n) => `En az ${n} ülkede net maaşınızın ne kadar olduğunu görün`,
+    },
+  },
+  // Bengalí (ADR 0002, D14): el mensaje que se comparte va sin segunda persona; la invitación, con «আপনি».
+  bn: {
+    base: {
+      boton: "শেয়ার করুন",
+      botonAria: "এই ক্যালকুলেটরটি শেয়ার করুন",
+      menuTitulo: "যেখানে শেয়ার করবেন",
+      copiar: "লিংক কপি করুন",
+      copiado: "লিংক কপি হয়েছে",
+      compartido: "শেয়ার হয়েছে",
+      errorCorto: "কপি করা যায়নি",
+      errorAyuda: "লিংকটি কপি করা যায়নি। ব্রাউজারের ঠিকানার ঘর থেকে সরাসরি কপি করুন।",
+      nuevaPestana: "নতুন ট্যাবে খুলবে",
+      mensaje: (nombre) => `${nombre}। বিনা মূল্যে, এক মিনিটেই হিসাব হয়ে যায়।`,
+      puenteIntro: "অন্য দেশে কেমন?",
+      puenteEnlace: (n) => `${cifrasBn(n)}টির বেশি দেশে আপনার হাতে কত বেতন থাকে দেখুন`,
     },
   },
 };

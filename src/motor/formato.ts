@@ -146,19 +146,28 @@ const ESPACIOS = /[\s   ]/g;
 const MENOS = /−/g;
 const normalizar = (texto: string) => texto.replace(ESPACIOS, "").replace(MENOS, "-");
 
-// Teclados árabes y persas escriben ٣٬٥٠٠٫٧٥ (dígitos arábigo-índicos, ٬ de miles y ٫ decimal) y la
-// coma «،». Se pasan a ASCII antes de las reglas: ٫ y ٬ dicen sin ambigüedad qué son, así que van
-// al decimal y al separador de miles del locale; «،» se lee como una coma más.
+// Dígitos de otras escrituras: se pasan a ASCII antes de las reglas (\d de JavaScript solo ve 0-9 y
+// los tiraría como letras).
+// - Teclados árabes y persas escriben ٣٬٥٠٠٫٧٥ (dígitos arábigo-índicos, ٬ de miles y ٫ decimal) y la
+//   coma «،»: ٫ y ٬ dicen sin ambigüedad qué son, así que van al decimal y al separador de miles del
+//   locale; «،» se lee como una coma más.
+// - bn-BD formatea con dígitos bengalíes (১২,৩৪,৫৬৭) y los teclados bengalíes (Avro, Bijoy, Gboard)
+//   escriben ০-৯. Los separadores de bn son los latinos («.» decimal y «,» de miles), así que no cambian.
 const DIGITO_ARABE = /[٠-٩۰-۹]/g;
+const DIGITO_BENGALI = /[০-৯]/g;
+const HAY_BENGALI = /[০-৯]/;
 
-function aLatino(texto: string, seps: Separadores): string {
-  if (!/[؀-ۿ]/.test(texto)) return texto;
-  return texto
+function aLatino(texto: string, seps: Separadores = { decimal: ".", grupo: "," }): string {
+  const t = texto.replace(DIGITO_BENGALI, (d) => String(d.charCodeAt(0) - 0x09e6));
+  if (!/[؀-ۿ]/.test(t)) return t;
+  return t
     .replace(DIGITO_ARABE, (d) => String(d.charCodeAt(0) & 0xf))
     .replace(/٫/g, seps.decimal)
     .replace(/٬/g, seps.grupo)
     .replace(/،/g, ",");
 }
+
+const aBengali = (texto: string): string => texto.replace(/\d/g, (d) => String.fromCharCode(0x09e6 + Number(d)));
 
 function separadoresAscii(locale: string): Separadores {
   const { decimal, grupo } = separadoresDe(locale);
@@ -171,9 +180,9 @@ function sinPuntosDeSimbolo(texto: string): string {
   return texto.replace(/(?<=[\p{L}/])[.,]+|[.,]+(?=[\p{L}/])/gu, "");
 }
 
-// en-IN agrupa en lakhs y crores («12,00,000»): el formulario muestra los valores así y tiene que
-// poder leerlos de vuelta. Solo se acepta en los locales que formatean de esa manera.
-const conLakhs = (locale: string): boolean => new Intl.NumberFormat(locale).format(1234567).replace(/\D/g, ",") === "12,34,567";
+// en-IN y bn-BD agrupan en lakhs y crores («12,00,000»): el formulario muestra los valores así y tiene
+// que poder leerlos de vuelta. Solo se acepta en los locales que formatean de esa manera.
+const conLakhs = (locale: string): boolean => aLatino(new Intl.NumberFormat(locale).format(1234567)).replace(/\D/g, ",") === "12,34,567";
 
 function gruposValidos(entero: string, separador: string, locale: string): boolean {
   const partes = entero.split(separador);
@@ -293,7 +302,8 @@ export function parsearNumero(texto: string, locale: string, opciones: OpcionesP
 }
 
 // El número que la persona probablemente quiso escribir cuando parsearNumero lo rechazó por
-// milesAmbiguos ("5.000" da "5000"); null si el texto no es ese caso.
+// milesAmbiguos ("5.000" da "5000"); null si el texto no es ese caso. El sugerido va con los mismos
+// dígitos que escribió la persona («৫.০০০» da «৫০০০»).
 export function sugerenciaMiles(texto: string, locale: string): { sugerido: string; separador: string } | null {
   const seps = separadoresAscii(locale);
   const sinEspacios = sinPuntosDeSimbolo(normalizar(aLatino(texto, seps).normalize("NFKC")));
@@ -304,7 +314,14 @@ export function sugerenciaMiles(texto: string, locale: string): { sugerido: stri
   const partes = limpio.split(dec);
   if (partes.length !== 2 || !/^\d*[1-9]\d*$/.test(partes[0]) || !/^\d{3}$/.test(partes[1])) return null;
   const negativo = /^[^\d]*-/.test(sinEspacios);
-  return { sugerido: `${negativo ? "-" : ""}${String(Number(partes.join("")))}`, separador: dec };
+  const sugerido = `${negativo ? "-" : ""}${String(Number(partes.join("")))}`;
+  return { sugerido: HAY_BENGALI.test(texto) ? aBengali(sugerido) : sugerido, separador: dec };
+}
+
+// Un resultado de texto armado por la calculadora («5:30», «3 de 10») trae cifras ASCII; en bengalí van
+// con dígitos ০-৯ como el resto de la página (ADR 0002, D14). En los demás idiomas queda igual.
+export function textoDelLocale(texto: string, locale: string): string {
+  return idiomaDeLocale(locale) === "bn" ? aBengali(texto) : texto;
 }
 
 export function parsearEntero(texto: string, locale: string): number | null {

@@ -249,6 +249,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "yeni sekmede açılır",
     },
   },
+  // Bengalí (ADR 0002, D14): «আপনি» con las formas corteses y dari «।».
+  bn: {
+    base: {
+      titulo: "অন্য দেশে যাওয়ার কথা ভাবছেন, বা বিদেশ থেকে আয় করেন?",
+      etiqueta: "স্পনসর করা লিংক",
+      socios: {
+        wise: "কয়েকটি মুদ্রার একটি অ্যাকাউন্ট: বাজারের মধ্যবর্তী হারে দেশ থেকে দেশে টাকা পাঠান ও গ্রহণ করুন, ফি আগেই দেখানো হয়।",
+        deel: "এক দেশে থেকে অন্য দেশের কোম্পানির জন্য যাঁরা কাজ করেন, তাঁদের চুক্তি আর পেমেন্টের ব্যবস্থা।",
+      },
+      nota: "এই লিংক দিয়ে অ্যাকাউন্ট খুললে সাইটটি কমিশন পেতে পারে। এর জন্য আপনাকে বাড়তি কিছু দিতে হয় না।",
+      nuevaPestana: "নতুন ট্যাবে খুলবে",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

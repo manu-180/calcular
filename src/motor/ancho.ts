@@ -3,8 +3,28 @@
 // unidades: en un texto latino da lo mismo que .length.
 const ANCHO_DOBLE = /[\p{sc=Han}\p{sc=Hiragana}\p{sc=Katakana}\p{sc=Hangul}　-〿＀-￯]/u;
 
+// Bengalí (ADR 0002, D14), medido con los avances de Nirmala UI contra Arial: una letra o un dígito
+// ocupa un latino y medio; los signos que se dibujan sobre o bajo la consonante (hasanta «্», «ু», «ূ»,
+// «ৃ», «ঁ», nukta) no ocupan ancho propio; los signos vocálicos que van al costado («া», «ি», «ী», «ে»)
+// y «ং», «ঃ» ocupan medio latino, salvo «ো» y «ৌ», que rodean la consonante por los dos lados. Con
+// .length cada signo contaba como una letra. Los conjuntos (consonante + hasanta + consonante) quedan
+// algo sobrestimados, del lado seguro. ZWJ y ZWNJ no ocupan ancho.
+const BENGALI = /\p{sc=Beng}/u;
+const SIN_ANCHO = /[\p{Mn}\p{Me}‌‍]/u;
+const MEDIO = /\p{Mc}/u;
+const BENGALI_RODEA = /[োৌ]/u;
+
+function anchoDe(c: string): number {
+  if (SIN_ANCHO.test(c)) return 0;
+  if (BENGALI.test(c)) {
+    if (BENGALI_RODEA.test(c)) return 1.5;
+    return MEDIO.test(c) ? 0.5 : 1.5;
+  }
+  return ANCHO_DOBLE.test(c) ? 2 : 1;
+}
+
 export function anchoVisual(texto: string): number {
   let ancho = 0;
-  for (const c of texto) ancho += ANCHO_DOBLE.test(c) ? 2 : 1;
+  for (const c of texto) ancho += anchoDe(c);
   return ancho;
 }
