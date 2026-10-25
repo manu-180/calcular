@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["HUF"],
   zonaHoraria: "Europe/Budapest",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 0, modo: "mitad-arriba" },
   escala: 350,
 };
