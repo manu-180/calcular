@@ -1,0 +1,755 @@
+{
+  "mercado": "il",
+  "datos": [
+    {
+      "id": "il.mas-hachnasa",
+      "nombre": "מדרגות מס הכנסה חודשיות על הכנסה מיגיעה אישית",
+      "tipo": "escala",
+      "unidad": "ILS",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 7010, "tasa": 10 },
+            { "desde": 7010, "hasta": 10060, "tasa": 14 },
+            { "desde": 10060, "hasta": 19000, "tasa": 20 },
+            { "desde": 19000, "hasta": 25100, "tasa": 31 },
+            { "desde": 25100, "hasta": 46690, "tasa": 35 },
+            { "desde": 46690, "hasta": null, "tasa": 47 }
+          ],
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "לוח עזר לחישוב מס הכנסה ממשכורת ושכר עבודה לחודש ינואר 2026 ואילך (מעודכן לאפריל 2026), פרק ב",
+            "url": "https://www.gov.il/BlobFolder/generalpage/income-tax-monthly-deductions-booklet/he/generalInformation_income-tax-monthly-deductions-booklet_monthly-deductions-booklet-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "המדרגות אחרי ריווח מדרגות מס הכנסה (חוק ההתייעלות הכלכלית 2026, תיקון סעיף 121 לפקודה מ-31.3.2026), בתוקף מינואר 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.mas-yasaf",
+      "nombre": "מס נוסף על הכנסות גבוהות (סעיף 121ב)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": { "shiur": "שיעור המס הנוסף (%)", "saf-chodshi": "הסף החודשי (ש\"ח)" },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "shiur": 3, "saf-chodshi": 60130 },
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "לוח עזר לחישוב מס הכנסה ממשכורת ושכר עבודה לחודש ינואר 2026 ואילך, מס נוסף על הכנסות גבוהות",
+            "url": "https://www.gov.il/BlobFolder/generalpage/income-tax-monthly-deductions-booklet/he/generalInformation_income-tax-monthly-deductions-booklet_monthly-deductions-booklet-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "3% על ההכנסה החייבת העולה על 721,560 ש\"ח בשנה (60,130 ש\"ח בחודש)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.nekudat-zikui",
+      "nombre": "שווי נקודת זיכוי לחודש",
+      "tipo": "numero",
+      "unidad": "ILS",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 242,
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "לוח עזר לחישוב מס הכנסה ממשכורת ושכר עבודה לחודש ינואר 2026 ואילך, פרק ג (סכומים מתואמים)",
+            "url": "https://www.gov.il/BlobFolder/generalpage/income-tax-monthly-deductions-booklet/he/generalInformation_income-tax-monthly-deductions-booklet_monthly-deductions-booklet-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.nekudot-bsis",
+      "nombre": "נקודות זיכוי בסיסיות",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": { "toshav": "תושב ישראל", "isha": "תוספת לאישה" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": { "toshav": 2.25, "isha": 0.5 },
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "מדריך למילוי טופס דין וחשבון של יחיד על ההכנסה של שנת 2024 (נקודות זיכוי לתושב וחצי נקודת זיכוי לאישה)",
+            "url": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.zikui-pensia",
+      "nombre": "זיכוי ממס בעד הפרשת העובד לקופת גמל לקצבה (סעיף 45א)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "shiur-zikui": "שיעור הזיכוי", "achuz-mezake": "שיעור ההפרשה המזכה מהשכר" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": { "shiur-zikui": 35, "achuz-mezake": 7 },
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "מדריך למילוי טופס דין וחשבון של יחיד על ההכנסה של שנת 2024, זיכוי לפי סעיף 45א",
+            "url": "https://www.gov.il/BlobFolder/generalpage/income-tax-guide-knowyourright/he/Guides_IncomeTax_da-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.zikui-pensia-tikra",
+      "nombre": "תקרת ההכנסה המזכה מעבודה לזיכוי בעד הפרשה לפנסיה (לחודש)",
+      "tipo": "numero",
+      "unidad": "ILS",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 9700,
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "לוח עזר לחישוב מס הכנסה ממשכורת ושכר עבודה לחודש ינואר 2026 ואילך, פרק ג (תקרת הכנסה מזכה מהכנסת עבודה)",
+            "url": "https://www.gov.il/BlobFolder/generalpage/income-tax-monthly-deductions-booklet/he/generalInformation_income-tax-monthly-deductions-booklet_monthly-deductions-booklet-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.bl-tikrot",
+      "nombre": "תקרות ההכנסה לדמי ביטוח לאומי ודמי ביטוח בריאות (לחודש)",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": { "mufchat": "תקרת השיעור המופחת", "merbit": "ההכנסה המרבית לגביית דמי ביטוח" },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "mufchat": 7703, "merbit": 51910 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעורי דמי ביטוח לעובדים שכירים",
+            "url": "https://www.btl.gov.il/Insurance/Rates/Pages/%D7%9C%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%20%D7%A9%D7%9B%D7%99%D7%A8%D7%99%D7%9D.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.bl-oved",
+      "nombre": "דמי ביטוח לאומי שמנוכים מהעובד",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "mufchat": "שיעור מופחת", "male": "שיעור מלא" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-01",
+          "valor": { "mufchat": 1.04, "male": 7 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעורי דמי ביטוח לעובדים שכירים",
+            "url": "https://www.btl.gov.il/Insurance/Rates/Pages/%D7%9C%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%20%D7%A9%D7%9B%D7%99%D7%A8%D7%99%D7%9D.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.mas-briut",
+      "nombre": "דמי ביטוח בריאות שמנוכים מהעובד",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "mufchat": "שיעור מופחת", "male": "שיעור מלא" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-01",
+          "valor": { "mufchat": 3.23, "male": 5.17 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעורי דמי ביטוח לעובדים שכירים",
+            "url": "https://www.btl.gov.il/Insurance/Rates/Pages/%D7%9C%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%20%D7%A9%D7%9B%D7%99%D7%A8%D7%99%D7%9D.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.bl-maasik",
+      "nombre": "דמי ביטוח לאומי שמשלם המעסיק",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "mufchat": "שיעור מופחת", "male": "שיעור מלא" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": { "mufchat": 4.51, "male": 7.6 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעורי דמי ביטוח לעובדים שכירים",
+            "url": "https://www.btl.gov.il/Insurance/Rates/Pages/%D7%9C%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%20%D7%A9%D7%9B%D7%99%D7%A8%D7%99%D7%9D.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.pensia-maasik",
+      "nombre": "הפרשת המעסיק לתגמולים לפי צו ההרחבה לפנסיה",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 6.5,
+          "fuente": {
+            "organismo": "רשות שוק ההון, ביטוח וחיסכון",
+            "titulo": "דוח פעילות רשות שוק ההון לשנת 2016, פרק א (צו ההרחבה מ-23 במאי 2016)",
+            "url": "https://www.gov.il/BlobFolder/reports/head-of-the-authority-reports/he/Home_memone-reports_2016_report2016_chapter1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.pitzuyim-hafrasha",
+      "nombre": "הפרשת המעסיק לרכיב פיצויי הפיטורים",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "basis": "השיעור הבסיסי", "male": "שיעור מלא (סעיף 14)" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": { "basis": 6, "male": 8.33 },
+          "fuente": {
+            "organismo": "משרד העבודה",
+            "titulo": "הפרשות לפיצויי פיטורים",
+            "url": "https://www.gov.il/he/pages/provisions-for-severance-pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.sachar-minimum",
+      "nombre": "שכר מינימום (מגיל 18)",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "chodshi": "לחודש",
+        "shaa-182": "לשעה (182 שעות בחודש)",
+        "shaa-186": "לשעה (186 שעות בחודש)",
+        "yom-5": "ליום (5 ימי עבודה בשבוע)",
+        "yom-6": "ליום (6 ימי עבודה בשבוע)"
+      },
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": { "chodshi": 6247.67, "shaa-182": 34.32, "shaa-186": 33.58, "yom-5": 288.35, "yom-6": 249.9 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שכר מינימום (נתונים כלליים)",
+            "url": "https://www.btl.gov.il/Mediniyut/GeneralData/Pages/%D7%A9%D7%9B%D7%A8%20%D7%9E%D7%99%D7%A0%D7%99%D7%9E%D7%95%D7%9D.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": { "chodshi": 6443.85, "shaa-182": 35.4, "shaa-186": 34.64, "yom-5": 297.4, "yom-6": 257.75 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שכר מינימום (נתונים כלליים)",
+            "url": "https://www.btl.gov.il/Mediniyut/GeneralData/Pages/%D7%A9%D7%9B%D7%A8%20%D7%9E%D7%99%D7%A0%D7%99%D7%9E%D7%95%D7%9D.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.pitzuyim-ptor",
+      "nombre": "תקרת הפטור ממס למענק פרישה (לכל שנת עבודה)",
+      "tipo": "numero",
+      "unidad": "ILS",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 13750,
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "לוח עזר לחישוב מס הכנסה ממשכורת ושכר עבודה לחודש ינואר 2026 ואילך, פרק ג (סעיף 9(7א)(א))",
+            "url": "https://www.gov.il/BlobFolder/generalpage/income-tax-monthly-deductions-booklet/he/generalInformation_income-tax-monthly-deductions-booklet_monthly-deductions-booklet-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.pitzuyim-chodashim",
+      "nombre": "פיצויי פיטורים לעובד במשכורת: משכורות לכל שנת עבודה",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי (נוסח החוק)",
+            "titulo": "חוק פיצויי פיטורים, התשכ\"ג-1963, סעיפים 1 ו-12",
+            "url": "https://www.btl.gov.il/Laws1/00_0040_000000.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.havraa-yamim",
+      "nombre": "ימי הבראה לפי ותק (ההסכם הקיבוצי הכללי במגזר הפרטי)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "shana-1": "שנה ראשונה",
+        "shanim-2-3": "שנים 2 עד 3",
+        "shanim-4-10": "שנים 4 עד 10",
+        "shanim-11-15": "שנים 11 עד 15",
+        "shanim-16-19": "שנים 16 עד 19",
+        "shanim-20": "20 שנים ויותר"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-24",
+          "valor": { "shana-1": 5, "shanim-2-3": 6, "shanim-4-10": 7, "shanim-11-15": 8, "shanim-16-19": 9, "shanim-20": 10 },
+          "fuente": {
+            "organismo": "משרד העבודה",
+            "titulo": "קצובת הבראה (דמי הבראה), חישוב קצובת ההבראה",
+            "url": "https://www.gov.il/he/pages/convalescence-pay",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.chufsha-chok",
+      "nombre": "ימי חופשה שנתית לפי החוק (ימי עבודה נטו)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "5-1": "שבוע של 5 ימים, שנים 1 עד 5",
+        "5-6": "שבוע של 5 ימים, שנה 6",
+        "5-7": "שבוע של 5 ימים, שנה 7",
+        "5-8": "שבוע של 5 ימים, שנה 8",
+        "5-9": "שבוע של 5 ימים, שנה 9",
+        "5-10": "שבוע של 5 ימים, שנה 10",
+        "5-11": "שבוע של 5 ימים, שנה 11",
+        "5-12": "שבוע של 5 ימים, שנה 12 ואילך",
+        "6-1": "שבוע של 6 ימים, שנים 1 עד 5",
+        "6-6": "שבוע של 6 ימים, שנה 6",
+        "6-7": "שבוע של 6 ימים, שנה 7",
+        "6-8": "שבוע של 6 ימים, שנה 8",
+        "6-9": "שבוע של 6 ימים, שנה 9",
+        "6-10": "שבוע של 6 ימים, שנה 10",
+        "6-11": "שבוע של 6 ימים, שנה 11",
+        "6-12": "שבוע של 6 ימים, שנה 12",
+        "6-13": "שבוע של 6 ימים, שנה 13 ואילך"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": {
+            "5-1": 12, "5-6": 14, "5-7": 15, "5-8": 16, "5-9": 17, "5-10": 18, "5-11": 19, "5-12": 20,
+            "6-1": 14, "6-6": 16, "6-7": 18, "6-8": 19, "6-9": 20, "6-10": 21, "6-11": 22, "6-12": 23, "6-13": 24
+          },
+          "fuente": {
+            "organismo": "משרד העבודה",
+            "titulo": "חופשה שנתית, מספר ימי חופשה לפי החוק (החל מ-1.1.2017)",
+            "url": "https://www.gov.il/he/pages/annual-vacations",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.chufsha-tzav",
+      "nombre": "ימי חופשה שנתית לפי צו ההרחבה לשבוע עבודה מקוצר (ימי עבודה נטו)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "5-1": "שבוע של 5 ימים, שנים 1 עד 2",
+        "5-3": "שבוע של 5 ימים, שנים 3 עד 4",
+        "5-5": "שבוע של 5 ימים, שנה 5",
+        "5-6": "שבוע של 5 ימים, שנים 6 עד 8",
+        "5-9": "שבוע של 5 ימים, שנה 9 ואילך",
+        "6-1": "שבוע של 6 ימים, שנים 1 עד 2",
+        "6-3": "שבוע של 6 ימים, שנים 3 עד 4",
+        "6-5": "שבוע של 6 ימים, שנה 5",
+        "6-6": "שבוע של 6 ימים, שנים 6 עד 8",
+        "6-9": "שבוע של 6 ימים, שנה 9 ואילך"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": { "5-1": 10, "5-3": 11, "5-5": 12, "5-6": 17, "5-9": 23, "6-1": 12, "6-3": 13, "6-5": 14, "6-6": 19, "6-9": 26 },
+          "fuente": {
+            "organismo": "משרד העבודה",
+            "titulo": "חופשה שנתית, מספר ימי חופשה לפי צו ההרחבה",
+            "url": "https://www.gov.il/he/pages/annual-vacations",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.machala",
+      "nombre": "דמי מחלה לפי חוק דמי מחלה",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "yom-1": "היום הראשון (% מהשכר)",
+        "yamim-2-3": "הימים השני והשלישי (% מהשכר)",
+        "yom-4": "מהיום הרביעי (% מהשכר)",
+        "tzvira": "ימי מחלה שנצברים לכל חודש עבודה מלא",
+        "merbi": "מספר ימי המחלה המרבי שאפשר לצבור"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": { "yom-1": 0, "yamim-2-3": 50, "yom-4": 100, "tzvira": 1.5, "merbi": 90 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי (נוסח החוק)",
+            "titulo": "חוק דמי מחלה, התשל\"ו-1976, סעיפים 2, 4 ו-5",
+            "url": "https://www.btl.gov.il/Laws1/00_098_000000.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.hodaa-mukdemet",
+      "nombre": "הודעה מוקדמת לפיטורים ולהתפטרות",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "maskoret-yom-lechodesh": "עובד במשכורת: יום לכל אחד מששת החודשים הראשונים",
+        "maskoret-acharei-6": "עובד במשכורת: ימים לכל חודש נוסף",
+        "maskoret-max": "עובד במשכורת: לכל היותר בשנה הראשונה",
+        "sachar-shana-2": "עובד בשכר: בסיס השנה השנייה",
+        "sachar-shana-3": "עובד בשכר: בסיס השנה השלישית"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-24",
+          "valor": { "maskoret-yom-lechodesh": 1, "maskoret-acharei-6": 2.5, "maskoret-max": 21, "sachar-shana-2": 14, "sachar-shana-3": 21 },
+          "fuente": {
+            "organismo": "משרד העבודה",
+            "titulo": "הודעה מוקדמת לפיטורים ולהתפטרות, תקופת ההודעה המוקדמת",
+            "url": "https://www.gov.il/he/pages/notice-of-dismissal-and-resignation",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.shaot-nosafot",
+      "nombre": "גמול שעות נוספות (סעיף 16(א) לחוק שעות עבודה ומנוחה)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": { "rishonot": "שתי השעות הנוספות הראשונות ביום", "nosafot": "כל שעה נוספת שאחריהן" },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-02-03",
+          "valor": { "rishonot": 125, "nosafot": 150 },
+          "fuente": {
+            "organismo": "משרד העבודה, הלשכה המשפטית",
+            "titulo": "חוק שעות עבודה ומנוחה: גמישות בשעות העבודה בעידן המודרני (מצטט את סעיף 16(א) לחוק)",
+            "url": "https://www.gov.il/BlobFolder/legalinfo/rest-flexibility/he/workers-rights_rest-flexibility.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "שתי השעות הנוספות הראשונות ביום: לא פחות מ-1.25 מהשכר הרגיל. כל שעה שאחריהן: לא פחות מ-1.5."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.dmei-leida-max",
+      "nombre": "דמי לידה: הסכום המרבי ליום",
+      "tipo": "numero",
+      "unidad": "ILS",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1752.33,
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "סכום דמי הלידה",
+            "url": "https://www.btl.gov.il/benefits/maternity/Childbirth_Allowance/Pages/ShiureyLeda.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.dmei-leida-yamim",
+      "nombre": "דמי לידה: תקופת הזכאות",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "male": "זכאות מרבית",
+        "chelki": "זכאות חלקית",
+        "tosefet-male": "תוספת לכל יילוד נוסף בזכאות מרבית",
+        "tosefet-chelki": "תוספת לכל יילוד נוסף בזכאות חלקית"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "male": 105, "chelki": 56, "tosefet-male": 21, "tosefet-chelki": 14 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "תקופת הזכאות לדמי לידה",
+            "url": "https://www.btl.gov.il/benefits/maternity/Childbirth_Allowance/Pages/%D7%AA%D7%A7%D7%95%D7%A4%D7%AA%20%D7%94%D7%96%D7%9B%D7%90%D7%95%D7%AA%20%D7%94%D7%9E%D7%A8%D7%91%D7%99%D7%AA.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.avtala-schumim",
+      "nombre": "דמי אבטלה: סכום בסיסי ליום והסכומים המרביים",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": { "bsisi": "הסכום הבסיסי ליום", "max-125": "מרבי ליום ב-125 ימי התשלום הראשונים", "max-acharei": "מרבי ליום מהיום ה-126" },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "bsisi": 415, "max-125": 550.76, "max-acharei": 367.17 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "איך מחשבים את דמי האבטלה?",
+            "url": "https://www.btl.gov.il/benefits/Unemployment/Pages/hisuv.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.avtala-shiurim",
+      "nombre": "דמי אבטלה: שיעור התשלום לכל חלק מהשכר היומי",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "28-1": "מגיל 28: עד מחצית הסכום הבסיסי",
+        "28-2": "מגיל 28: ממחצית ועד שלושה רבעים",
+        "28-3": "מגיל 28: משלושה רבעים ועד הסכום הבסיסי",
+        "28-4": "מגיל 28: מעל הסכום הבסיסי",
+        "tzair-1": "עד גיל 28: עד מחצית הסכום הבסיסי",
+        "tzair-2": "עד גיל 28: ממחצית ועד שלושה רבעים",
+        "tzair-3": "עד גיל 28: משלושה רבעים ועד הסכום הבסיסי",
+        "tzair-4": "עד גיל 28: מעל הסכום הבסיסי"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "28-1": 80, "28-2": 50, "28-3": 45, "28-4": 30, "tzair-1": 60, "tzair-2": 40, "tzair-3": 35, "tzair-4": 25 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "איך מחשבים את דמי האבטלה?",
+            "url": "https://www.btl.gov.il/benefits/Unemployment/Pages/hisuv.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.avtala-yamim",
+      "nombre": "דמי אבטלה: מספר הימים המרבי",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "ad-25": "עד גיל 25",
+        "25-28": "מגיל 25 עד 28",
+        "28-35": "מגיל 28 עד 35",
+        "35-45": "מגיל 35 עד 45",
+        "45": "מגיל 45",
+        "ad-25-3": "עד גיל 25, עם 3 תלויים או יותר",
+        "25-28-3": "מגיל 25 עד 28, עם 3 תלויים או יותר",
+        "28-35-3": "מגיל 28 עד 35, עם 3 תלויים או יותר",
+        "35-45-3": "מגיל 35 עד 45, עם 3 תלויים או יותר",
+        "45-3": "מגיל 45, עם 3 תלויים או יותר"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "ad-25": 50, "25-28": 67, "28-35": 100, "35-45": 138, "45": 175, "ad-25-3": 138, "25-28-3": 138, "28-35-3": 138, "35-45-3": 175, "45-3": 175 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "כמה זמן אפשר לקבל דמי אבטלה?",
+            "url": "https://www.btl.gov.il/benefits/Unemployment/Pages/tkufat_zakaut.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.kitzbat-yeladim",
+      "nombre": "קצבת ילדים לחודש (הסכום הבסיסי לפי פסקה (2))",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": { "rishon": "הילד הראשון", "sheni-revii": "הילד השני, השלישי והרביעי", "chamishi": "הילד החמישי ואילך" },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "rishon": 173, "sheni-revii": 219, "chamishi": 173 },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "עדכון קצבאות ינואר 2026 (חוזר מינהל המחקר והתכנון מ-30 בדצמבר 2025)",
+            "url": "https://www.btl.gov.il/Publications/benefits_update/Documents/hozerkizba2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.maam",
+      "nombre": "שיעור המע\"מ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "היסטוריית שיעורי מס ערך מוסף",
+            "url": "https://www.gov.il/he/pages/vat-history",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.mas-rechisha-yechida",
+      "nombre": "מדרגות מס רכישה לדירת מגורים יחידה",
+      "tipo": "escala",
+      "unidad": "ILS",
+      "proximaRevision": "2028-01-16",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-16",
+          "hasta": "2028-01-15",
+          "valor": [
+            { "desde": 0, "hasta": 1978745, "tasa": 0 },
+            { "desde": 1978745, "hasta": 2347040, "tasa": 3.5 },
+            { "desde": 2347040, "hasta": 6055070, "tasa": 5 },
+            { "desde": 6055070, "hasta": 20183565, "tasa": 8 },
+            { "desde": 20183565, "hasta": null, "tasa": 10 }
+          ],
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "הוראת ביצוע מיסוי מקרקעין 1/2025: עדכון הסכומים והקפאת הסכומים בחוק מיסוי מקרקעין ובתקנות מס רכישה",
+            "url": "https://www.gov.il/BlobFolder/policy/inst-01-2025-3/he/realestate_inst-01-2025-3.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "המדרגות מוקפאות מ-16.1.2025 ועד 15.1.2028."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.mas-rechisha-nosefet",
+      "nombre": "מדרגות מס רכישה לדירת מגורים שאינה דירה יחידה (הוראת שעה)",
+      "tipo": "escala",
+      "unidad": "ILS",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-16",
+          "hasta": "2026-12-31",
+          "valor": [
+            { "desde": 0, "hasta": 6055070, "tasa": 8 },
+            { "desde": 6055070, "hasta": null, "tasa": 10 }
+          ],
+          "fuente": {
+            "organismo": "רשות המסים בישראל",
+            "titulo": "הוראת ביצוע מיסוי מקרקעין 1/2025: עדכון הסכומים והקפאת הסכומים בחוק מיסוי מקרקעין ובתקנות מס רכישה",
+            "url": "https://www.gov.il/BlobFolder/policy/inst-01-2025-3/he/realestate_inst-01-2025-3.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "הוראת השעה ברכישת דירה נוספת הוארכה עד 31.12.2026."
+          }
+        }
+      ]
+    }
+  ]
+}
