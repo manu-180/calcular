@@ -847,7 +847,9 @@
   box-shadow: var(--cy-sombra-flotante);
 }
 
+/* El color va explícito: la regla global `h1, h2, h3` pone --cy-tinta y no se hereda del fondo oscuro. */
 .cy-su-vacio h2 {
+  color: var(--cy-su-crema);
   font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
   font-weight: 660;
   letter-spacing: -0.03em;
