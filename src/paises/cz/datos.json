@@ -445,6 +445,38 @@
       ]
     },
     {
+      "id": "cz.pausalni-dan-slozky",
+      "nombre": "Složení měsíční paušální zálohy (daň, sociální a zdravotní pojištění)",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "prvni-dan": 100,
+            "prvni-socialni": 5756,
+            "prvni-zdravotni": 3306,
+            "druhe-dan": 4963,
+            "druhe-socialni": 8191,
+            "druhe-zdravotni": 3591,
+            "treti-dan": 9320,
+            "treti-socialni": 12527,
+            "treti-zdravotni": 5292
+          },
+          "fuente": {
+            "organismo": "Finanční správa",
+            "titulo": "Informace k institutu paušální daně pro rok 2025 a 2026",
+            "url": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/pausalni-dan/informace-k-institutu-pausalni-dane-pro-rok-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
       "id": "cz.pausalni-dan-limity",
       "nombre": "Rozhodné příjmy pro pásma paušálního režimu",
       "tipo": "mapa",
