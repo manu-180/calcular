@@ -134,6 +134,8 @@ export interface TextosShell {
     resultados: string;
     resultado: string;
     resultadosPlural: string;
+    // Forma «few» de los idiomas eslavos (2 a 4: «3 результати»); sin ella, resultadosPlural.
+    resultadosPocos?: string;
   };
   paises: { titulo: string; cambiar: string };
   pie: {

@@ -3,6 +3,7 @@ import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { GRAMATICA } from "./gramatica";
+import { formaUk, pluralUk } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Calendario laboral y fiscal de cada edición. Los textos no le hablan a nadie en segunda persona a
@@ -1418,7 +1419,82 @@ const th: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th };
+// Ucraniano (ADR 0002, D15): impersonal como los demás; el país se declina con GRAMATICA.uk y los
+// días con formaUk/pluralUk (one/few/many).
+const gUk = GRAMATICA.uk;
+const uk: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Календар зарплати і податків",
+    seo: {
+      titulo: (pais, anios) => [
+        `Календар зарплати і податків ${gUk.para(pais)} ${anios}: ключові дати`,
+        `Календар зарплати і податків ${gUk.para(pais)} ${anios}`,
+        `Календар виплат ${gUk.para(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Дати, які змінюють зарплату ${gUk.en(pais)}, з офіційних джерел: ${proximas}. До кожної є свій калькулятор.`,
+      descripcionSin: (pais) => `Дати, які змінюють зарплату ${gUk.en(pais)}, з офіційних джерел і з калькулятором до кожної. Додайте їх у календар телефона.`,
+    },
+    ceja: (anios) => `Календар на ${anios}`,
+    h1: (pais) => `Календар зарплати і податків ${gUk.para(pais)}`,
+    acento: "дати, від яких залежить зарплата",
+    bajada: "Кожна дата взята з офіційного джерела і веде до калькулятора, на який вона впливає. Сторінка оновлюється сама, коли публікують нове значення.",
+    proxima: "Найближча дата",
+    cuenta: {
+      hoy: "Сьогодні",
+      manana: "Завтра",
+      ayer: "Учора",
+      en: (n) => `Через ${pluralUk(n, "день", "дні", "днів")}`,
+      hace: (n) => `${pluralUk(n, "день", "дні", "днів")} тому`,
+      dias: (n) => formaUk(n, "день", "дні", "днів"),
+    },
+    queViene: "Незабаром",
+    yaRige: "Уже діє",
+    mesPorMes: "Рік по місяцях",
+    sinFechas: "Змін не оголошено",
+    filtro: "Фільтр за темою",
+    todo: "Усе",
+    tipos: { pago: "Виплати", "salario-minimo": "Мінімальна зарплата", impuestos: "Податки", aportes: "Внески і пенсії", laboral: "Трудові правила", indices: "Довідкові значення" },
+    pasa: (antes, despues) => `Змінюється з ${antes} на ${despues}`,
+    queda: (valor) => `Встановлено: ${valor}`,
+    cambian: "Суми змінюються",
+    zonas: (lista) => `Регіони: ${lista}`,
+    limite: "Кінцевий строк",
+    agregar: "Додати в мій календар",
+    descargar: "Apple, Outlook та інші (файл .ics)",
+    google: "Google Календар",
+    calcular: "Розрахувати",
+    tambien: "Також у калькуляторах",
+    fuente: (organismo, fecha) => `Джерело: ${organismo}. Перевірено ${fecha}.`,
+    verificado: (fecha) => `Перевірено ${fecha}`,
+    suscribir: {
+      titulo: "Увесь календар, завжди актуальний",
+      texto: "Підпишіться один раз, і нові дати самі зʼявлятимуться в календарі на телефоні чи компʼютері.",
+      boton: "Підписатися на календар",
+      copiar: "Скопіювати посилання",
+      copiado: "Посилання скопійовано",
+    },
+    fuentes: {
+      titulo: "Звідки береться кожна дата",
+      texto: "Сюди потрапляють лише дати, уже встановлені нормативним актом або значенням, яке опублікувала офіційна установа. Якщо чогось ще не опубліковано, його тут немає.",
+    },
+    vacio: "Найближчі дванадцять місяців дат на цю тему немає.",
+    destacado: {
+      ceja: "Календар виплат",
+      titulo: "Дати, від яких залежить зарплата цього року",
+      ir: "Переглянути календар",
+      proxima: (titulo, fecha) => `Найближча: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Календар зарплати і податків ${gUk.para(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Дати виплат і податків ${gUk.en(pais)} з офіційних джерел.`,
+      calculadora: "Калькулятор",
+      fuente: "Джерело",
+    },
+    og: { proxima: "Найближча дата", mas: (n) => `І ще ${pluralUk(n, "дата", "дати", "дат")} цього року` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

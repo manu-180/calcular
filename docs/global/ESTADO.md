@@ -65,6 +65,7 @@ varias veces por límite de uso.
 | Motor turco (tr) | claude/mundo-motor-tr | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
 | Motor bengalí (bn) | claude/mundo-motor-bn | terminado el 24/10 (núcleo, venta y las 41 universales); falta el país bd |
 | Motor tailandés (th) | claude/mundo-motor-th | terminado el 24/10 (núcleo, venta y las 41 universales) |
+| Motor ucraniano (uk) | claude/mundo-motor-uk | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -181,6 +182,27 @@ Falta para publicar Tailandia:
 - La OG de las calculadoras intl (`og/[[...slug]]`) no carga fuentes CJK ni tailandesas (igual que hoy
   para ja/ko/zh): con un título tailandés puede salir con cuadritos. Solo la tarjeta del mundo carga
   Noto Sans Thai.
+
+## 24/10/2026 · Motor ucraniano (`claude/mundo-motor-uk`)
+
+uk en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`zarplata-u-sviti`), rankings, horas de trabajo, calendario, sueldos reales, venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con slugs en la transliteración oficial ucraniana
+(`kalkuliator-kredytu`, `kalkuliator-pdv`, `skladni-vidsotky`...). Registro «ви» con minúscula y
+formas corteses, el de Дія y los bancos; mercados con `trato: "usted"`. Plurales one/few/many/other
+(`pluralUk`, unidades de tiempo con `pocos`/`muchos`). `GRAMATICA.uk` declina el país («в Україні»,
+«для України», «на Кіпрі»). El buscador ahora indexa cirílico. Decisiones en ADR 0002, D15. Edición de
+prueba `zz-uk`.
+
+Falta para publicar Ucrania:
+- El país en sí (BRIEF-PAIS): калькулятор зарплати з ПДФО, військовим збором і ЄСВ del
+  empleador, ФОП (групи єдиного податку), відпускні, лікарняні, мінімальна зарплата, прожитковий
+  мінімум, ПДВ, con datos verificados en fuentes oficiales (zakon.rada.gov.ua, tax.gov.ua, bank.gov.ua,
+  ukrstat.gov.ua).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar (las dudas de
+  vocabulario de los forks están en el cuerpo del PR).
+- Al mergear con `claude/mundo-motor-eu`: `src/motor/i18n/plural.ts` choca (los dos lo crean) y hay
+  que dejar `pluralPl` y `formaUk`/`pluralUk` juntos; `FormasUnidad` en `unidades.ts` es la misma.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 

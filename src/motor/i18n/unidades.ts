@@ -5,9 +5,10 @@ import { escrituraZh } from "./escritura";
 export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 
 // La forma se elige con Intl.PluralRules del locale: "uno" es la categoría "one" y "otros" todas las
-// demás. En polaco "pocos" es la categoría "few" (2 dni, 3 tygodnie) y "muchos" la "many" (5 lat);
-// "otros" queda para las fracciones, que van en genitivo singular (1,5 roku). Un idioma con dual
-// (ar) trae todas las formas de FormasAr, con {n} donde va el número.
+// demás. En polaco y ucraniano "pocos" es la categoría "few" (2 dni, 3 tygodnie; 2 дні, 3 тижні) y
+// "muchos" la "many" (5 lat; 5 років); "otros" queda para las fracciones, que van en genitivo singular
+// (1,5 roku; 1,5 року). Un idioma con dual (ar) trae todas las formas de FormasAr, con {n} donde va el
+// número.
 export interface FormasUnidad {
   uno: string;
   otros: string;
@@ -57,6 +58,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   bn: { dias: { uno: "দিন", otros: "দিন" }, semanas: { uno: "সপ্তাহ", otros: "সপ্তাহ" }, horas: { uno: "ঘণ্টা", otros: "ঘণ্টা" }, meses: { uno: "মাস", otros: "মাস" }, anios: { uno: "বছর", otros: "বছর" } },
   // El tailandés no marca el plural (3 วัน, 1.5 ปี) y la unidad va separada del número por un espacio.
   th: { dias: { uno: "วัน", otros: "วัน" }, semanas: { uno: "สัปดาห์", otros: "สัปดาห์" }, horas: { uno: "ชั่วโมง", otros: "ชั่วโมง" }, meses: { uno: "เดือน", otros: "เดือน" }, anios: { uno: "ปี", otros: "ปี" } },
+  uk: {
+    dias: { uno: "день", pocos: "дні", muchos: "днів", otros: "дня" },
+    semanas: { uno: "тиждень", pocos: "тижні", muchos: "тижнів", otros: "тижня" },
+    horas: { uno: "година", pocos: "години", muchos: "годин", otros: "години" },
+    meses: { uno: "місяць", pocos: "місяці", muchos: "місяців", otros: "місяця" },
+    anios: { uno: "рік", pocos: "роки", muchos: "років", otros: "року" },
+  },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

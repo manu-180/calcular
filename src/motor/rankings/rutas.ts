@@ -26,6 +26,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   // bn transliterado, como bishwe-beton (ADR 0002, D14).
   bn: "desher-ranking",
   th: "andap-prathet",
+  uk: "reitynh-krain",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -56,6 +57,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   tr: { rinde: "maasin-alim-gucu", libertad: "vergi-ozgurluk-gunu", aumento: "zamdan-ne-kalir" },
   bn: { rinde: "kothay-beton-beshi-chole", libertad: "kor-mukti-dibos", aumento: "beton-briddhir-koto-thake" },
   th: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
+  // uk con la transliteración oficial ucraniana (resolución 55/2010; ADR 0002, D15).
+  uk: { rinde: "kupivelna-spromozhnist-zarplaty", libertad: "den-podatkovoi-svobody", aumento: "skilky-zalyshaietsia-vid-pidvyshchennia" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

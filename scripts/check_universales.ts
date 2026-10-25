@@ -114,6 +114,14 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "th" as CodigoMercado, pais: "TH", nombrePais: "ไทย", locale: "th-TH", trato: "usted", moneda: "THB" as Moneda, escala: 35 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "เซนต์วินเซนต์และเกรนาดีนส์", locale: "th-TH", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  // Ucraniano (ADR 0002, D15): гривня con «₴» detrás y espacio de miles, un nombre largo que se declina
+  // por partes («на Сент-Вінсенті і Гренадинах») y uno con adjetivos delante («в Обʼєднаних Арабських
+  // Еміратах»).
+  uk: [
+    { mercado: "ua" as CodigoMercado, pais: "UA", nombrePais: "Україна", locale: "uk-UA", trato: "usted", moneda: "UAH" as Moneda, escala: 41 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент-Вінсент і Гренадіни", locale: "uk-UA", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Обʼєднані Арабські Емірати", locale: "uk-UA", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)

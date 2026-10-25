@@ -848,7 +848,43 @@ const th: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th };
+// Ucraniano (ADR 0002, D15): «ви» con minúscula y las formas corteses, como en Дія y los bancos.
+const uk: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Калькулятор CalcularYa",
+    marcaNuevaPestana: "(відкривається в новій вкладці)",
+    noDisponible: { titulo: "Цей калькулятор недоступний", texto: "Можливо, змінилася його адреса." },
+    insertar: "Додайте на свій сайт",
+    pagina: {
+      titulo: (pais) => [`Безкоштовні калькулятори для вашого сайту | ${pais}`, "Безкоштовні калькулятори для вашого сайту"],
+      descripcion: (pais) => `Оберіть калькулятор ${GRAMATICA.uk.para(pais)}, скопіюйте код і вставте його у свій блог чи на сайт. Безкоштовно, з офіційними даними, які завжди актуальні.`,
+      h1: "Додайте калькулятор на свій сайт",
+      bajada: "Оберіть калькулятор, скопіюйте код і вставте його куди потрібно. Безкоштовно, а дані оновлюються самі.",
+      calculadora: "Калькулятор",
+      buscar: "Знайдіть калькулятор",
+      sinResultados: "Немає калькулятора, що відповідає вашому запиту.",
+      tema: "Оформлення",
+      claro: "Світле",
+      oscuro: "Темне",
+      ancho: "Ширина",
+      anchoCompleto: "На всю ширину",
+      acento: "Колір акценту",
+      colores: ["Зелений", "Синій", "Помаранчевий", "Рожевий", "Графітовий"],
+      credito: "Показувати посилання на джерело під калькулятором",
+      vistaPrevia: "Попередній перегляд",
+      codigo: "Код для вставлення",
+      copiar: "Скопіювати код",
+      copiado: "Код скопійовано",
+      ayudaScript: "Скрипт необовʼязковий: він підлаштовує висоту калькулятора під його вміст.",
+      ventajas: ["Безкоштовно, без реєстрації", "Завжди актуальні офіційні дані", "Підлаштовується під будь-яку ширину"],
+      nota: "Під калькулятором є посилання на CalcularYa. Будь ласка, не видаляйте його.",
+      verTodas: (pais) => `Переглянути всі калькулятори ${GRAMATICA.uk.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Калькулятор CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

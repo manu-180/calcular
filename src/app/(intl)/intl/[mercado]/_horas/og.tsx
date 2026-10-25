@@ -28,7 +28,8 @@ const CABECERAS = { "cache-control": "public, max-age=3600, s-maxage=86400, stal
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
 const ESPERA_FUENTE_MS = 3000;
 // bn con Noto Sans Bengali: Geist no trae la escritura bengalí (ADR 0002, D14).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali" };
+// uk va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D15).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 

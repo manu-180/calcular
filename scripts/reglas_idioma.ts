@@ -131,6 +131,22 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Ucraniano: un solo registro, el de Дія, ПриватБанк, monobank y la ДПС («ви» con minúscula y las
+  // formas corteses; ADR 0002, D15). Se atrapa el «ти» (pronombre y posesivos), los imperativos y
+  // presentes de segunda del singular que aparecen en un formulario y el «Ви» con mayúscula a mitad
+  // de oración, que en la web de servicio se escribe con minúscula.
+  uk: {
+    informal: [
+      { re: palabras("ти|тебе|тобі|тобою|твій|твоя|твоє|твої|твого|твоєї|твоїх|твоїм|твоєму|твоїми|твою"), nombre: "«ти»" },
+      {
+        re: palabras("введи|розрахуй|обери|вибери|натисни|дізнайся|перевір|порівняй|спробуй|заповни|вкажи|подивись|подивися|отримай|скопіюй|поділися|завантаж|відкрий|додай|збережи|зверни|почни|напиши"),
+        nombre: "imperativo de «ти» (va -іть/-йте)",
+      },
+      { re: palabras("можеш|маєш|хочеш|знаєш|отримаєш|платиш|заробляєш|бачиш|працюєш|витрачаєш|економиш|повинен|повинна"), nombre: "segunda persona de «ти»" },
+      { re: /[^.?!:«(\s]\s+(?:Ви|Вас|Вам|Вами|Ваш|Ваша|Ваше|Ваші|Вашого|Вашої|Вашим|Вашій|Вашу|Ваших|Вашими|Вашому)(?!\p{L})/u, nombre: "«Ви» con mayúscula (va «ви»)" },
+    ],
+    formal: [],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -139,6 +155,19 @@ function reglasTr(texto: string): string[] {
   const p: string[] = [];
   if (/\p{L}’\p{L}/u.test(texto)) p.push("apóstrofo tipográfico (en turco va «'»)");
   if (/\d ?%(?![\p{L}\d])/u.test(texto)) p.push("porcentaje detrás del número (en turco va «%20»)");
+  return p;
+}
+
+// Ucraniano: comillas «», apóstrofo ʼ (U+02BC, el de Intl) o ', nada de letras que solo tiene el ruso
+// y nada de los calcos del ruso más frecuentes en textos de servicio.
+const CALCOS_UK = palabras("являється|являються|слідуюч\\p{L}*|получ\\p{L}*|на протязі|приймати участь|співпада\\p{L}*|міроприємств\\p{L}*|в залежності від|у відповідності з");
+function reglasUk(texto: string): string[] {
+  const p: string[] = [];
+  if (/[ыэёъЫЭЁЪ]/.test(texto)) p.push("letra del ruso (ы, э, ё, ъ) en un texto ucraniano");
+  if (/["“”„](?=\p{sc=Cyrillic})|(?<=\p{sc=Cyrillic}[.,?:;]?)["“”„]/u.test(texto)) p.push("comillas: en ucraniano van «»");
+  if (/\p{sc=Cyrillic}[’‘`´]\p{sc=Cyrillic}/u.test(texto)) p.push("apóstrofo: en ucraniano va ʼ o '");
+  const calco = CALCOS_UK.exec(texto);
+  if (calco) p.push(`calco del ruso «${calco[0]}»`);
   return p;
 }
 
@@ -296,5 +325,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "th") return [...p, ...reglasTh(texto)];
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
   if (idioma === "tr") p.push(...reglasTr(texto));
+  if (idioma === "uk") p.push(...reglasUk(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

@@ -24,6 +24,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   bn: "bishwe-beton",
   // «เงินเดือนทั่วโลก» en RTGS (ADR 0002, D13): salary-around-the-world ya es la ruta del inglés.
   th: "ngoen-duean-thua-lok",
+  uk: "zarplata-u-sviti",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";

@@ -443,4 +443,92 @@ const bn: GramaticaPais = (() => {
 // para el destino, pegados al nombre como se escribe en tailandés («ในประเทศไทย»).
 const th: GramaticaPais = { nombre: (p) => p, de: (p) => `ของ${p}`, en: (p) => `ใน${p}`, para: (p) => `สำหรับ${p}` };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th };
+// Ucraniano (ADR 0002, D15): el nombre del país se declina. `de(p)` da el genitivo suelto
+// («України», «Німеччини»), que va detrás del sustantivo («калькулятори України»); `en(p)` el lugar
+// con su preposición («в Україні», «у Німеччині», «на Філіппінах») y `para(p)` «для» + genitivo. Los
+// nombres llegan como los escribe Intl.DisplayNames en uk, así que la regla cubre los de una palabra
+// (-ія da -ії; -а da -и/-і, con к→ц, г→з y х→с en el locativo; los masculinos en consonante, -у e -і;
+// -й y -ь, -ю e -ї/-і; en -к el locativo también es -у: «в Іраку», «у Мозамбіку») y los compuestos (los adjetivos de delante en -а, -і, -е o -ий; los plurales
+// en -и dan -ів y -ах). La tabla lleva los irregulares y los plurales femeninos, y CON_NA los nombres
+// de isla que van con «на». La preposición es «в» ante vocal y «у» ante consonante (nunca «на
+// Україні»). Lo que termina en otra vocal (Чилі, Перу, Марокко) y las siglas no se declinan.
+const uk: GramaticaPais = (() => {
+  // [genitivo, locativo] sin preposición.
+  const TABLA: Readonly<Record<string, readonly [string, string]>> = {
+    Білорусь: ["Білорусі", "Білорусі"],
+    Єгипет: ["Єгипту", "Єгипті"],
+    Філіппіни: ["Філіппін", "Філіппінах"],
+    Багами: ["Багам", "Багамах"],
+    Бангладеш: ["Бангладеш", "Бангладеш"],
+    "Сент-Вінсент і Гренадіни": ["Сент-Вінсенту і Гренадин", "Сент-Вінсенті і Гренадинах"],
+    "Демократична Республіка Конго": ["Демократичної Республіки Конго", "Демократичній Республіці Конго"],
+  };
+  const CON_NA = new Set([
+    "Філіппіни", "Кіпр", "Мальта", "Куба", "Ямайка", "Маврикій", "Мадагаскар", "Багами", "Багамські Острови", "Мальдіви",
+    "Сейшельські Острови", "Барбадос", "Гаїті", "Фіджі", "Шрі-Ланка", "Сент-Вінсент і Гренадіни", "Соломонові Острови",
+    "Маршаллові Острови", "Кабо-Верде", "Коморські Острови", "Бермудські Острови", "Кайманові Острови", "Фарерські Острови",
+  ]);
+  const VOCAL = /^[АЕЄИІЇОУЮЯаеєиіїоуюя]/;
+  const SIGLA = /^[А-ЩЬЮЯЄІЇҐ]{2,}$/;
+  // Un sustantivo (la última palabra, o la última parte de un compuesto con guion).
+  const sustantivo = (w: string): readonly [string, string] => {
+    const guion = w.lastIndexOf("-");
+    if (guion > 0) {
+      const [g, l] = sustantivo(w.slice(guion + 1));
+      return [w.slice(0, guion + 1) + g, w.slice(0, guion + 1) + l];
+    }
+    if (SIGLA.test(w)) return [w, w];
+    const raiz = w.slice(0, -1);
+    if (/ія$/.test(w)) return [`${w.slice(0, -2)}ії`, `${w.slice(0, -2)}ії`];
+    if (/[аеєиіїоуюя]я$/.test(w)) return [`${raiz}ї`, `${raiz}ї`];
+    if (/ій$/.test(w)) return [`${w.slice(0, -2)}ію`, `${w.slice(0, -2)}ії`];
+    if (/[аеєиіїоуюя]а$/.test(w)) return [w, w];
+    if (/а$/.test(w)) {
+      const c = raiz.at(-1) ?? "";
+      const gen = "жчшщ".includes(c) ? `${raiz}і` : `${raiz}и`;
+      const base = raiz.slice(0, -1);
+      const loc = c === "к" ? `${base}ці` : c === "г" ? `${base}зі` : c === "х" ? `${base}сі` : `${raiz}і`;
+      return [gen, loc];
+    }
+    if (/и$/.test(w)) return [`${raiz}ів`, `${raiz}ах`];
+    if (/й$/.test(w)) return [`${raiz}ю`, `${raiz}ї`];
+    if (/ь$/.test(w)) return [`${raiz}ю`, `${raiz}і`];
+    if (/г$/.test(w)) return [`${w}у`, `${raiz}зі`];
+    if (/к$/.test(w)) return [`${w}у`, `${w}у`];
+    if (/[бвґджзклмнпрстфхцчшщ]$/.test(w)) return [`${w}у`, `${w}і`];
+    return [w, w];
+  };
+  // Un adjetivo delante del sustantivo: «Велика», «Сполучені», «Сполучене».
+  const adjetivo = (w: string): readonly [string, string] => {
+    if (/а$/.test(w)) return [`${w.slice(0, -1)}ої`, `${w.slice(0, -1)}ій`];
+    if (/і$/.test(w)) return [`${w.slice(0, -1)}их`, `${w.slice(0, -1)}их`];
+    if (/е$/.test(w)) return [`${w.slice(0, -1)}ого`, `${w.slice(0, -1)}ому`];
+    if (/ий$/.test(w)) return [`${w.slice(0, -2)}ого`, `${w.slice(0, -2)}ому`];
+    return [w, w];
+  };
+  const frase = (p: string): readonly [string, string] => {
+    const palabras = p.split(" ");
+    const formas = palabras.map((w, i) => (i === palabras.length - 1 ? sustantivo(w) : adjetivo(w)));
+    return [formas.map((f) => f[0]).join(" "), formas.map((f) => f[1]).join(" ")];
+  };
+  const formas = (p: string): readonly [string, string] => {
+    if (TABLA[p]) return TABLA[p];
+    const coma = p.indexOf(", ");
+    if (coma > 0) {
+      const [g, l] = formas(p.slice(0, coma));
+      return [g + p.slice(coma), l + p.slice(coma)];
+    }
+    if (p.includes(" і ")) {
+      const partes = p.split(" і ").map(formas);
+      return [partes.map((f) => f[0]).join(" і "), partes.map((f) => f[1]).join(" і ")];
+    }
+    return frase(p);
+  };
+  const en = (p: string) => {
+    const loc = formas(p)[1];
+    return `${CON_NA.has(p) ? "на" : VOCAL.test(loc) ? "в" : "у"} ${loc}`;
+  };
+  return { nombre: (p) => p, de: (p) => formas(p)[0], en, para: (p) => `для ${formas(p)[0]}` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk };

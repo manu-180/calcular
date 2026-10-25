@@ -389,6 +389,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `ดูเงินเดือนสุทธิในกว่า ${n} ประเทศ`,
     },
   },
+  // Ucraniano (ADR 0002, D15): «ви» con minúscula y las formas corteses.
+  uk: {
+    base: {
+      boton: "Поділитися",
+      botonAria: "Поділитися цим калькулятором",
+      menuTitulo: "Поділитися в",
+      copiar: "Скопіювати посилання",
+      copiado: "Посилання скопійовано",
+      compartido: "Надіслано",
+      errorCorto: "Не вдалося скопіювати",
+      errorAyuda: "Не вдалося скопіювати посилання. Скопіюйте його з адресного рядка браузера.",
+      nuevaPestana: "відкривається в новій вкладці",
+      mensaje: (nombre) => `${nombre}. Безкоштовно, розрахунок займає хвилину.`,
+      puenteIntro: "А в інших країнах?",
+      puenteEnlace: (n) => `Подивіться, скільки ви отримували б на руки в понад ${n} країнах`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

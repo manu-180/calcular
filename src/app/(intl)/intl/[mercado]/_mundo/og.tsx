@@ -32,7 +32,8 @@ const ESPERA_FUENTE_MS = 3000;
 // vocálicos (ি va antes de la consonante), así que la tarjeta en bn puede salir con algún conjunto mal
 // armado (ADR 0002, D14).
 // Geist no trae CJK ni tailandés: sin esta fuente la tarjeta saldría con cuadritos (ADR 0002, D8 y D13).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", th: "Noto Sans Thai" };
+// uk va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D15).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", th: "Noto Sans Thai", uk: "Noto Sans" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 

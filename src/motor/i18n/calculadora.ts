@@ -233,6 +233,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "แหล่งที่มา",
     },
   },
+  uk: {
+    base: {
+      datos: "Ваші дані",
+      resultado: "Результат",
+      vacio: "Введіть дані й натисніть «Розрахувати», щоб побачити результат.",
+      sinResultado: "Наразі ми не показуємо цей результат.",
+      avisos: { info: "Варто знати", cautela: "Зверніть увагу", bloquea: "Чому ми не показуємо результат" },
+      fuenteDelAviso: "Джерело",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {
