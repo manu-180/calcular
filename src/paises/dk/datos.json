@@ -1507,6 +1507,26 @@
       ]
     },
     {
+      "id": "dk.ferie-uger",
+      "nombre": "Betalt ferie pr. ferieår",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Retsinformation (Beskæftigelses- og Ligestillingsministeriet)",
+            "titulo": "Ferieloven, LBK nr. 152 af 20/02/2024, §§ 4, 5 og 16",
+            "url": "https://www.retsinformation.dk/eli/lta/2024/152",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
       "id": "dk.ferie-optjening",
       "nombre": "Optjent ferie pr. måneds ansættelse",
       "tipo": "numero",

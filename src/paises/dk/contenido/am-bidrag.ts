@@ -26,7 +26,7 @@ export default definirContenido({
     },
     {
       pregunta: "Betaler jeg am-bidrag af min pension?",
-      respuesta: "Ikke af den pension, der trækkes i lønnen. Am-bidraget betales i stedet ikke igen, når pensionen udbetales. Arbejdsgiverens indbetaling til en arbejdsmarkedspension er heller ikke med i am-grundlaget her.",
+      respuesta: "Den pension, du selv indbetaler via lønnen, trækkes fra, før am-bidraget af lønnen beregnes. Derfor sænker en højere pensionsindbetaling am-bidraget på lønsedlen.",
     },
   ],
   glosario: [

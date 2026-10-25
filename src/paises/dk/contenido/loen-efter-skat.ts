@@ -12,20 +12,20 @@ export default definirContenido({
   ],
   comoSeCalcula: [
     "Am-bidraget er {{dk.am-bidrag}} af lønnen efter din egen pension og ATP. Resten er din personlige indkomst.",
-    "Fra den personlige indkomst trækkes beskæftigelsesfradraget ({{dk.beskaeftigelsesfradrag-sats}} af lønnen, højst {{dk.beskaeftigelsesfradrag-max}}) og jobfradraget (højst {{dk.jobfradrag-max}}). Det giver den skattepligtige indkomst.",
+    "Fra den personlige indkomst trækkes beskæftigelsesfradraget ({{dk.beskaeftigelsesfradrag-sats}} af lønnen før am-bidrag, højst {{dk.beskaeftigelsesfradrag-max}}) og jobfradraget (højst {{dk.jobfradrag-max}}). Det giver den skattepligtige indkomst.",
     "Kommuneskat og kirkeskat betales af den skattepligtige indkomst over personfradraget på {{dk.personfradrag}}. I København er kommuneskatten {{dk.kommuneskat[koebenhavn]}}.",
     "Bundskatten er {{dk.bundskat}} af den personlige indkomst over personfradraget.",
     "Over {{dk.mellemskat-graense}} betaler du {{dk.mellemskat-sats}} i mellemskat, over {{dk.topskat-graense}} {{dk.topskat-sats}} i topskat og over {{dk.toptopskat-graense}} {{dk.toptopskat-sats}} i toptopskat. Grænserne gælder den personlige indkomst efter am-bidrag.",
     "Skatteloftet på {{dk.skatteloft}} sætter mellemskatten ned i kommuner med høj kommuneskat.",
   ],
   ejemplo: [
-    "Med 40.000 kr. om måneden i København og kirkeskat betaler du 38.304,96 kr. i am-bidrag og 124.361,83 kr. i skat om året. Du får 26.345,43 kr. udbetalt om måneden.",
+    "Med 40.000 kr. om måneden i København og kirkeskat betaler du 38.304,96 kr. i am-bidrag og 124.325,19 kr. i skat om året. Du får 26.348,49 kr. udbetalt om måneden.",
   ],
   faq: [
     {
       pregunta: "Hvor meget får jeg udbetalt af 40.000 kr. før skat?",
       respuesta:
-        "I København med kirkeskat og fuldt ATP-bidrag får du cirka 26.345 kr. om måneden. Bor du i en kommune med højere skat, bliver beløbet lidt mindre.",
+        "I København med kirkeskat og fuldt ATP-bidrag får du cirka 26.348 kr. om måneden. Bor du i en kommune med højere skat, bliver beløbet lidt mindre.",
     },
     {
       pregunta: "Hvornår betaler jeg mellemskat og topskat?",

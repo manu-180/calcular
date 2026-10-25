@@ -8,6 +8,14 @@ import amBidrag from "./calculadoras/am-bidrag";
 import contenidoAmBidrag from "./contenido/am-bidrag";
 import kommuneskat from "./calculadoras/kommuneskat";
 import contenidoKommuneskat from "./contenido/kommuneskat";
+import feriepenge from "./calculadoras/feriepenge";
+import contenidoFeriepenge from "./contenido/feriepenge";
+import fratraedelsesgodtgoerelse from "./calculadoras/fratraedelsesgodtgoerelse";
+import contenidoFratraedelsesgodtgoerelse from "./contenido/fratraedelsesgodtgoerelse";
+import opsigelsesvarsel from "./calculadoras/opsigelsesvarsel";
+import contenidoOpsigelsesvarsel from "./contenido/opsigelsesvarsel";
+import momsberegner from "./calculadoras/momsberegner";
+import contenidoMomsberegner from "./contenido/momsberegner";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -24,6 +32,10 @@ export default definirPais({
     { definicion: topskat, contenido: contenidoTopskat, cliente: () => import("./calculadoras/topskat.cliente") },
     { definicion: amBidrag, contenido: contenidoAmBidrag, cliente: () => import("./calculadoras/am-bidrag.cliente") },
     { definicion: kommuneskat, contenido: contenidoKommuneskat, cliente: () => import("./calculadoras/kommuneskat.cliente") },
+    { definicion: feriepenge, contenido: contenidoFeriepenge, cliente: () => import("./calculadoras/feriepenge.cliente") },
+    { definicion: fratraedelsesgodtgoerelse, contenido: contenidoFratraedelsesgodtgoerelse, cliente: () => import("./calculadoras/fratraedelsesgodtgoerelse.cliente") },
+    { definicion: opsigelsesvarsel, contenido: contenidoOpsigelsesvarsel, cliente: () => import("./calculadoras/opsigelsesvarsel.cliente") },
+    { definicion: momsberegner, contenido: contenidoMomsberegner, cliente: () => import("./calculadoras/momsberegner.cliente") },
   ],
   universales: "todas",
   novedades,

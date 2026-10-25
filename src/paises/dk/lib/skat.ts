@@ -77,8 +77,9 @@ export function satser(v: ValoresSkat): SatserSkat {
   };
 }
 
-// Årsskat af lønindkomst for en person over 18 år uden kapitalindkomst. Am-bidraget beregnes af lønnen
-// efter egen pension og ATP; beskæftigelses- og jobfradrag af samme grundlag (LL §§ 9 J og 9 K).
+// Årsskat af lønindkomst for en person over 18 år uden kapitalindkomst. Am-bidraget af lønnen beregnes
+// efter egen pension og ATP (am-bidraget af pensionen trækker pensionsselskabet). Beskæftigelses- og
+// jobfradrag (LL §§ 9 J og 9 K) beregnes af arbejdsindkomsten, hvor pension og ATP indgår: her lønnen.
 // Skatteloftet (PSL § 19) nedsætter mellemskatten med det, kommuneskat, bundskat og mellemskat
 // tilsammen overstiger loftet. Kirkeskatten tæller ikke med.
 export function aarsskat(
@@ -93,8 +94,9 @@ export function aarsskat(
   const amGrundlag = Math.max(0, loen - egenPension - atp);
   const am = redondear(porcentaje(amGrundlag, s.am));
   const personlig = amGrundlag - am;
-  const besk = redondear(Math.min(porcentaje(amGrundlag, s.beskSats), s.beskMax));
-  const job = redondear(Math.min(porcentaje(Math.max(0, amGrundlag - s.jobGraense), s.jobSats), s.jobMax));
+  const arbejdsindkomst = Math.max(0, loen);
+  const besk = redondear(Math.min(porcentaje(arbejdsindkomst, s.beskSats), s.beskMax));
+  const job = redondear(Math.min(porcentaje(Math.max(0, arbejdsindkomst - s.jobGraense), s.jobSats), s.jobMax));
   const skattepligtig = Math.max(0, personlig - besk - job);
   const kommunalBase = Math.max(0, skattepligtig - s.personfradrag);
   const kommuneskat = redondear(porcentaje(kommunalBase, kommune));
@@ -114,8 +116,8 @@ export function aarsskat(
   if (personlig > s.mellemGraense) satsEfterAm += mellemSats;
   if (personlig > s.topGraense) satsEfterAm += s.topSats;
   if (personlig > s.toptopGraense) satsEfterAm += s.toptopSats;
-  const jobUnderMax = amGrundlag > s.jobGraense && porcentaje(amGrundlag - s.jobGraense, s.jobSats) < s.jobMax;
-  const fradragAndel = (porcentaje(amGrundlag, s.beskSats) < s.beskMax ? s.beskSats / 100 : 0) + (jobUnderMax ? s.jobSats / 100 : 0);
+  const jobUnderMax = arbejdsindkomst > s.jobGraense && porcentaje(arbejdsindkomst - s.jobGraense, s.jobSats) < s.jobMax;
+  const fradragAndel = (porcentaje(arbejdsindkomst, s.beskSats) < s.beskMax ? s.beskSats / 100 : 0) + (jobUnderMax ? s.jobSats / 100 : 0);
   const kommunalAndel = skattepligtig > s.personfradrag ? ((kommune + kirke) / 100) * fradragAndel : 0;
   const marginal = (s.am / 100 + efterAm * (satsEfterAm / 100) - kommunalAndel) * 100;
   return {
