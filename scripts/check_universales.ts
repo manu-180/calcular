@@ -109,6 +109,11 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "bd" as CodigoMercado, pais: "BD", nombrePais: "বাংলাদেশ", locale: "bn-BD", trato: "usted", moneda: "BDT" as Moneda, escala: 120 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "সেন্ট ভিনসেন্ট ও গ্রেনাডিনস", locale: "bn-BD", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  // Tailandés (ADR 0002, D13): baht con escala de THB, fechas en พ.ศ. (th-TH) y un nombre de país largo.
+  th: [
+    { mercado: "th" as CodigoMercado, pais: "TH", nombrePais: "ไทย", locale: "th-TH", trato: "usted", moneda: "THB" as Moneda, escala: 35 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "เซนต์วินเซนต์และเกรนาดีนส์", locale: "th-TH", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)

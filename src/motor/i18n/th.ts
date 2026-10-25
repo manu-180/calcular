@@ -1,0 +1,182 @@
+import { GRAMATICA } from "./gramatica";
+import type { Diccionario } from "./resolver";
+import type { TextosSitio } from "./tipos";
+
+const g = GRAMATICA.th;
+const MUNDO = "ทั่วโลก";
+// Los años visibles van en พุทธศักราช, como en los sitios del gobierno y de los bancos (ADR 0002, D13).
+const be = (anio: number) => anio + 543;
+
+// Tailandés: un solo registro para la web, el de los bancos y servicios digitales del país (SCB,
+// Kasikorn, กรมสรรพากร). Cortés y neutro, sin pronombre de segunda persona (el sujeto se omite), sin
+// partículas ครับ/ค่ะ, «กรุณา» para pedir algo y sin punto al final de la oración. Los mercados van con
+// trato "usted" y el diccionario se escribe en base (ADR 0002, D13).
+const base: TextosSitio = {
+  marca: { nombre: "CalcularYa", lema: "เครื่องคำนวณพร้อมข้อมูลทางการ" },
+  saltar: "ข้ามไปยังเนื้อหา",
+  header: {
+    inicio: "หน้าแรก",
+    elegirPais: "เลือกประเทศ",
+    paisActual: (pais) => `ประเทศ: ${pais}`,
+    cerrar: "ปิด",
+    todos: "ทุกประเทศ",
+    latinoamerica: MUNDO,
+  },
+  footer: {
+    paises: "ประเทศ",
+    sitio: "CalcularYa",
+    fuentes: "แหล่งข้อมูลทางการ",
+    novedades: "อัปเดตข้อมูล",
+    privacidad: "นโยบายความเป็นส่วนตัว",
+    terminos: "ข้อกำหนดการใช้งาน",
+    contacto: "ติดต่อเรา",
+    sobre: "เกี่ยวกับเรา",
+    argentina: "อยู่ในอาร์เจนตินาใช่ไหม เครื่องคำนวณสำหรับอาร์เจนตินาอยู่ที่ calcular.ar",
+    descargo: "ผลการคำนวณเป็นค่าประมาณ ก่อนตัดสินใจเรื่องสำคัญ ควรตรวจสอบกับหน่วยงานทางการหรือผู้เชี่ยวชาญอีกครั้ง",
+    derechos: (anio) => `© ${be(anio)} CalcularYa`,
+  },
+  sello: {
+    titulo: "ข้อมูลทางการล่าสุด",
+    verificado: (organismos, fecha) => `ตรวจสอบข้อมูลกับแหล่งที่มาจาก${organismos} อัปเดตเมื่อ ${fecha}`,
+    serie: (nombre, organismo, fecha) => `${nombre} อัปเดตอัตโนมัติจาก${organismo} ข้อมูลล่าสุด ${fecha}`,
+    verTodas: "ดูแหล่งข้อมูลทั้งหมด",
+  },
+  calculadora: {
+    comoSeCalcula: "วิธีคำนวณ",
+    ejemplo: "ตัวอย่าง",
+    faq: "คำถามที่พบบ่อย",
+    glosario: "คำศัพท์ที่ควรรู้",
+    relacionadas: "เครื่องคำนวณอื่น ๆ",
+    otrosPaises: "การคำนวณเดียวกันในประเทศอื่น",
+  },
+  global: {
+    eyebrow: "ข้อมูลทางการของแต่ละประเทศ",
+    titulo: "เครื่องคำนวณเรื่องงาน การเงิน และชีวิตประจำวัน ด้วยข้อมูลของแต่ละประเทศ",
+    bajada: "เงินเดือน สินเชื่อ ภาษี วันที่ และอื่น ๆ หากผลลัพธ์ขึ้นอยู่กับกฎหมาย ตัวเลขจะมาจากแหล่งทางการ พร้อมวันที่และลิงก์ให้ตรวจสอบได้",
+    elegir: "เลือกประเทศ",
+    calculadoras: (n) => `เครื่องคำนวณ ${n} รายการ`,
+    vacio: "กำลังเพิ่มประเทศใหม่ กรุณากลับมาอีกครั้งเร็ว ๆ นี้",
+    promesaTitulo: "หลักการทำงานของเรา",
+    promesas: [
+      { titulo: "ตัวเลขทางการพร้อมแหล่งที่มา", texto: "ทุกค่าระบุหน่วยงานที่ประกาศ ลิงก์ไปยังเอกสาร และวันที่ที่เราตรวจสอบ" },
+      { titulo: "อัปเดตอยู่เสมอ", texto: "เมื่อค่าใดเปลี่ยน เครื่องคำนวณจะเปลี่ยนตาม และทุกการเปลี่ยนแปลงจะบันทึกไว้ในหน้าอัปเดตข้อมูล" },
+      { titulo: "ใช้ฟรี ไม่ต้องสมัคร", texto: "การคำนวณทำงานในเบราว์เซอร์ และไม่มีการขอข้อมูลส่วนบุคคล" },
+    ],
+  },
+  pais: {
+    eyebrow: "ข้อมูลทางการล่าสุด",
+    titulo: (pais) => `เครื่องคำนวณ${g.para(pais)}`,
+    bajada: (pais) => `ใช้ค่าที่มีผลบังคับ${g.en(pais)} พร้อมแหล่งที่มาของแต่ละค่าและวันที่ที่เราตรวจสอบ`,
+    novedades: "อัปเดตล่าสุด",
+    verNovedades: "ดูอัปเดตทั้งหมด",
+    sinCalculadoras: "ยังไม่มีเครื่องคำนวณสำหรับประเทศนี้",
+    descripcion: (pais) => `เครื่องคำนวณเงินเดือน ภาษี สินเชื่อ เงินออม สุขภาพ วันที่ และบ้าน${g.para(pais)} พร้อมตัวเลขทางการที่มีผลบังคับและแหล่งที่มา`,
+    irASeccion: "ไปยังหมวด",
+  },
+  fuentes: {
+    titulo: (pais) => `แหล่งที่มาและข้อมูล${g.para(pais)}`,
+    bajada: "ทุกค่าที่เครื่องคำนวณใช้ พร้อมช่วงเวลาที่มีผลและลิงก์ไปยังแหล่งทางการ",
+    vigente: "ค่าที่มีผลบังคับ",
+    desde: "ตั้งแต่",
+    hasta: "ถึง",
+    fuente: "แหล่งที่มา",
+    verificado: "ตรวจสอบเมื่อ",
+    region: "พื้นที่",
+    series: "ค่าที่อัปเดตอัตโนมัติ",
+    ultimoDato: "ข้อมูลล่าสุด",
+    proximo: (valor, fecha) => `ประกาศแล้วสำหรับวันที่ ${fecha}: ${valor}`,
+    sinVerificar: "ยังไม่มีตัวเลขที่ตรวจสอบแล้วสำหรับวันนี้",
+    tramos: (n) => `ตาราง ${n} ขั้น`,
+    description: (pais) => `ข้อมูลทางการ${g.para(pais)}ที่เครื่องคำนวณใช้ ได้แก่ ค่าที่มีผลบังคับ วันที่เริ่มมีผล แหล่งที่มา และวันที่ตรวจสอบ`,
+  },
+  novedades: {
+    titulo: (pais) => `อัปเดตข้อมูล${g.de(pais)}`,
+    bajada: "การเปลี่ยนแปลงกฎเกณฑ์ที่เครื่องคำนวณใช้ พร้อมวันที่เริ่มมีผล",
+    vigenteDesde: (fecha) => `มีผลตั้งแต่ ${fecha}`,
+    vacio: "ยังไม่มีอัปเดตสำหรับประเทศนี้",
+    description: (pais) => `การเปลี่ยนแปลงค่าจ้างขั้นต่ำ เงินสมทบ และกฎเกณฑ์อื่น${g.en(pais)} พร้อมวันที่มีผลและแหล่งทางการ`,
+  },
+  avisoPais: {
+    texto: (pais) => `ดูเหมือนกำลังใช้งานจาก${pais}`,
+    ir: (pais) => `ดูเครื่องคำนวณ${g.para(pais)}`,
+    cerrar: "ปิดการแจ้งเตือน",
+  },
+  noEncontrada: {
+    titulo: "ไม่พบหน้านี้",
+    texto: "ที่อยู่อาจพิมพ์ผิด หรือหน้านี้อาจไม่มีแล้ว",
+    volver: "กลับหน้าแรก",
+    paises: "หรือเลือกประเทศ",
+  },
+  categorias: {
+    sueldo: "เงินเดือนและสวัสดิการ",
+    fin: "การออกจากงาน",
+    impuestos: "เงินสมทบและภาษี",
+    dinero: "เงินและดัชนี",
+    finanzas: "สินเชื่อ เงินออม และการลงทุน",
+    negocio: "ธุรกิจและฟรีแลนซ์",
+    calculos: "คำนวณด่วน",
+    fechas: "วันที่และอายุ",
+    salud: "สุขภาพและการออกกำลังกาย",
+    hogar: "บ้าน รถ และงานซ่อมแซม",
+    familia: "ครอบครัวและครัวเรือน",
+    otras: "เครื่องคำนวณอื่น ๆ",
+  },
+  migas: { inicio: "หน้าแรก", etiqueta: "ตำแหน่งปัจจุบัน" },
+  seo: {
+    tituloGlobal: "CalcularYa: เครื่องคำนวณฟรีพร้อมข้อมูลทางการ",
+    descripcionGlobal: "เครื่องคำนวณฟรีสำหรับเงินเดือน สินเชื่อ ภาษี และอื่น ๆ ในแต่ละประเทศ พร้อมตัวเลขทางการที่มีผลบังคับและแหล่งที่มา",
+    tituloPais: (pais, anio) => [`คำนวณเงินเดือนและภาษี${g.de(pais)} ${be(anio)}`, `เครื่องคำนวณ${g.para(pais)} ${be(anio)}`, `เครื่องคำนวณ${g.para(pais)}`],
+    tituloFuentes: (pais) => [`ข้อมูลทางการ${g.de(pais)}ที่มีผลบังคับ: แหล่งที่มาและวันที่`, `แหล่งที่มาและข้อมูล${g.de(pais)}`],
+    tituloNovedades: (pais, anio) => [`อัปเดตเงินเดือนและภาษี${g.de(pais)} ${be(anio)}`, `อัปเดตข้อมูล${g.de(pais)} ${be(anio)}`, `อัปเดตข้อมูล${g.de(pais)}`],
+  },
+  og: {
+    datosOficiales: "ข้อมูลทางการพร้อมแหล่งที่มา",
+    actualizado: (fecha) => `อัปเดตเมื่อ ${fecha}`,
+    gratis: "ใช้ฟรี ไม่ต้องสมัคร",
+    paises: (n) => `${n} ประเทศ`,
+  },
+  shell: {
+    irAlInicio: "ไปหน้าแรก",
+    menu: { trabajo: "เงินเดือนและงาน", impuestos: "ภาษี", dinero: "เงินและดัชนี", vida: "ชีวิตประจำวัน", novedades: "อัปเดตข้อมูล", planillas: "สเปรดชีต" },
+    encabezado: {
+      principal: "เมนูหลัก",
+      buscar: "ค้นหา",
+      buscarCalculadora: "ค้นหาเครื่องคำนวณ",
+      abrirMenu: "เปิดเมนู",
+      cerrarMenu: "ปิดเมนู",
+      menu: "เมนู",
+      todas: "เครื่องคำนวณทั้งหมด",
+      pieCajon: "ข้อมูลจากแหล่งทางการ · ทำในอาร์เจนตินา",
+    },
+    buscador: {
+      dialogo: "ค้นหาใน CalcularYa",
+      pregunta: "ต้องการคำนวณอะไร",
+      recientes: "ทำต่อจากครั้งล่าสุด",
+      masUsado: "ใช้บ่อยที่สุด",
+      sinResultados: "ไม่พบผลลัพธ์สำหรับ “{q}”",
+      sugerencia: "ลองใช้คำอื่น เช่น “เงินเดือน” “สินเชื่อ” หรือ “ภาษี”",
+      verTodas: "ดูเครื่องคำนวณทั้งหมด",
+      borrar: "ล้างคำค้นหา",
+      cerrar: "ปิด",
+      cerrarBuscador: "ปิดการค้นหา",
+      moverte: "เพื่อเลื่อน",
+      abrir: "เพื่อเปิด",
+      desdeCualquier: "จากทุกหน้า",
+      resultados: "ผลการค้นหา",
+      resultado: "รายการ",
+      resultadosPlural: "รายการ",
+    },
+    paises: { titulo: "ประเทศ", cambiar: "เปลี่ยนประเทศ" },
+    pie: {
+      bajada: (lugar) =>
+        `เครื่องคำนวณที่เข้าใจง่าย${lugar === MUNDO ? "สำหรับทุกประเทศ" : g.para(lugar)} ทุกตัวเลขมาจากเอกสารทางการที่กำหนดค่านั้น พร้อมวันที่ที่เราตรวจสอบ`,
+      todas: "เครื่องคำนวณทั้งหมด",
+      cuenta: "บัญชีผู้ใช้",
+      cuentaNota: "จะมีบัญชีหรือไม่ก็ได้ ใช้สำหรับบันทึกการคำนวณไว้เปิดดูอีกครั้ง",
+      hecho: "ทำในอาร์เจนตินา",
+      escrito: "เขียนและตรวจสอบโดย",
+    },
+  },
+};
+
+export const th: Diccionario<TextosSitio> = { base };

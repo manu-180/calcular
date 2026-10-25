@@ -223,6 +223,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "সূত্র",
     },
   },
+  th: {
+    base: {
+      datos: "ข้อมูลสำหรับคำนวณ",
+      resultado: "ผลการคำนวณ",
+      vacio: "กรอกข้อมูลแล้วกด “คำนวณ” เพื่อดูผลลัพธ์",
+      sinResultado: "ขณะนี้ยังไม่แสดงผลลัพธ์นี้",
+      avisos: { info: "ข้อควรทราบ", cautela: "โปรดระวัง", bloquea: "เหตุใดจึงไม่แสดงผลลัพธ์" },
+      fuenteDelAviso: "แหล่งที่มา",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

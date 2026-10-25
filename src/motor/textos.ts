@@ -562,6 +562,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "বিন্দু (.)", coma: "কমা (,)" },
     },
   },
+  // Tailandés (ADR 0002, D13): sin punto final, «กรุณา» para pedir y sin ครับ/ค่ะ.
+  th: {
+    base: {
+      calcular: "คำนวณ",
+      resultado: "ผลการคำนวณ",
+      si: "ใช่",
+      no: "ไม่ใช่",
+      sinResultado: "ขณะนี้ยังไม่แสดงผลลัพธ์นี้",
+      errores: {
+        requerido: "กรุณากรอกข้อมูลในช่องนี้",
+        "numero-invalido": "กรุณากรอกตัวเลข เช่น {ejemplo}",
+        "entero-invalido": "กรุณากรอกจำนวนเต็มโดยไม่มีทศนิยม",
+        "menor-que-min": "ค่าต่ำสุดคือ {min}",
+        "mayor-que-max": "ค่าสูงสุดคือ {max}",
+        "fecha-invalida": "กรุณาเลือกวันที่ที่ถูกต้อง",
+        "hora-invalida": "กรุณาเลือกเวลาที่ถูกต้อง",
+        "opcion-invalida": "กรุณาเลือกหนึ่งตัวเลือก",
+        "region-invalida": "กรุณาเลือกพื้นที่",
+        "calculo-fallido": "ไม่สามารถคำนวณจากข้อมูลนี้ได้ กรุณาตรวจสอบค่าที่กรอกแล้วลองอีกครั้ง",
+      },
+      milesAmbiguos: "หมายถึง {sugerido} หรือไม่ กรุณาพิมพ์โดยไม่ใส่{signos}",
+      separadores: { punto: "จุด", coma: "จุลภาค" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

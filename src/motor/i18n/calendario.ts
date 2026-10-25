@@ -1349,7 +1349,76 @@ const bn: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn };
+// Tailandés (ADR 0002, D13): sin pronombre ni ครับ/ค่ะ, sin punto final. `anios` llega en gregoriano
+// («2026» o «2026-2027») y se escribe en พ.ศ., como las fechas que formatea Intl con th.
+const gTh = GRAMATICA.th;
+const aniosBe = (anios: string) => anios.replace(/\d{4}/g, (a) => String(Number(a) + 543));
+const th: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "ปฏิทินเงินเดือนและภาษี",
+    seo: {
+      titulo: (pais, anios) => [
+        `ปฏิทินเงินเดือนและภาษี${gTh.de(pais)} พ.ศ. ${aniosBe(anios)} วันสำคัญ`,
+        `ปฏิทินเงินเดือนและภาษี${gTh.de(pais)} พ.ศ. ${aniosBe(anios)}`,
+        `ปฏิทินเงินเดือน${gTh.de(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `วันที่ทำให้เงินเดือน${gTh.en(pais)}เปลี่ยน จากแหล่งทางการ: ${proximas} แต่ละวันเชื่อมกับเครื่องคำนวณที่เกี่ยวข้อง`,
+      descripcionSin: (pais) => `วันที่ทำให้เงินเดือน${gTh.en(pais)}เปลี่ยน จากแหล่งทางการ พร้อมเครื่องคำนวณของแต่ละวัน และเพิ่มลงในปฏิทินบนมือถือได้`,
+    },
+    ceja: (anios) => `ปฏิทิน พ.ศ. ${aniosBe(anios)}`,
+    h1: (pais) => `ปฏิทินเงินเดือนและภาษี${gTh.para(pais)}`,
+    acento: "วันที่เงินเดือนเปลี่ยน",
+    bajada: "ทุกวันที่มาจากแหล่งทางการและเชื่อมกับเครื่องคำนวณที่ได้รับผล หน้านี้อัปเดตเองเมื่อมีการประกาศตัวเลขใหม่",
+    proxima: "วันถัดไป",
+    cuenta: { hoy: "วันนี้", manana: "พรุ่งนี้", ayer: "เมื่อวาน", en: (n) => `อีก ${n} วัน`, hace: (n) => `${n} วันที่แล้ว`, dias: () => "วัน" },
+    queViene: "ที่กำลังจะมาถึง",
+    yaRige: "มีผลแล้ว",
+    mesPorMes: "ทั้งปีแยกรายเดือน",
+    sinFechas: "ยังไม่มีการประกาศการเปลี่ยนแปลง",
+    filtro: "กรองตามหัวข้อ",
+    todo: "ทั้งหมด",
+    tipos: { pago: "การจ่ายเงิน", "salario-minimo": "ค่าจ้างขั้นต่ำ", impuestos: "ภาษี", aportes: "เงินสมทบและบำนาญ", laboral: "กฎการจ้างงาน", indices: "ค่าอ้างอิง" },
+    pasa: (antes, despues) => `เปลี่ยนจาก ${antes} เป็น ${despues}`,
+    queda: (valor) => `กำหนดไว้ที่ ${valor}`,
+    cambian: "ตัวเลขเปลี่ยน",
+    zonas: (lista) => `ใน${lista}`,
+    limite: "วันครบกำหนด",
+    agregar: "เพิ่มลงในปฏิทิน",
+    descargar: "Apple, Outlook และอื่น ๆ (ไฟล์ .ics)",
+    google: "Google ปฏิทิน",
+    calcular: "คำนวณ",
+    tambien: "ที่เกี่ยวข้อง",
+    fuente: (organismo, fecha) => `แหล่งที่มา: ${organismo} ตรวจสอบเมื่อ ${fecha}`,
+    verificado: (fecha) => `ตรวจสอบเมื่อ ${fecha}`,
+    suscribir: {
+      titulo: "ปฏิทินทั้งหมด อัปเดตอยู่เสมอ",
+      texto: "สมัครรับเพียงครั้งเดียว วันที่ใหม่จะปรากฏในปฏิทินบนมือถือหรือคอมพิวเตอร์เอง",
+      boton: "สมัครรับปฏิทิน",
+      copiar: "คัดลอกลิงก์",
+      copiado: "คัดลอกลิงก์แล้ว",
+    },
+    fuentes: {
+      titulo: "วันที่แต่ละวันมาจากไหน",
+      texto: "แสดงเฉพาะวันที่ที่กำหนดไว้ในกฎหมายหรือในตัวเลขที่หน่วยงานทางการประกาศแล้ว สิ่งที่ยังไม่ประกาศจะไม่แสดง",
+    },
+    vacio: "ไม่มีวันที่ในหัวข้อนี้ในอีกสิบสองเดือนข้างหน้า",
+    destacado: {
+      ceja: "ปฏิทินเงินเดือน",
+      titulo: "วันที่เงินเดือนเปลี่ยนในปีนี้",
+      ir: "ดูปฏิทิน",
+      proxima: (titulo, fecha) => `ถัดไป: ${titulo} ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `ปฏิทินเงินเดือนและภาษี${gTh.de(pais)} (CalcularYa)`,
+      descripcion: (pais) => `วันที่เกี่ยวกับเงินเดือนและภาษี${gTh.en(pais)} จากแหล่งทางการ`,
+      calculadora: "เครื่องคำนวณ",
+      fuente: "แหล่งที่มา",
+    },
+    og: { proxima: "วันถัดไป", mas: (n) => `และอีก ${n} วันในปีนี้` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

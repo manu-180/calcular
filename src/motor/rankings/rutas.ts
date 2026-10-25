@@ -25,13 +25,14 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   tr: "ulke-siralamasi",
   // bn transliterado, como bishwe-beton (ADR 0002, D14).
   bn: "desher-ranking",
+  th: "andap-prathet",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
 export type IdRanking = (typeof IDS_RANKING)[number];
 
-// Slug de cada ranking dentro del índice (/<m>/<índice>/<ranking>). ja, ko, zh y ar van con el slug en
-// inglés, como las universales (ADR 0002, D8 y D10). Ninguno puede ser «og»: esa carpeta es la imagen.
+// Slug de cada ranking dentro del índice (/<m>/<índice>/<ranking>). ja, ko, zh, ar y th van con el slug
+// en inglés, como las universales (ADR 0002, D8, D10 y D13). Ninguno puede ser «og»: esa carpeta es la imagen.
 export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   es: { rinde: "donde-rinde-mas-el-sueldo", libertad: "dia-de-libertad-tributaria", aumento: "cuanto-queda-de-un-aumento" },
   pt: { rinde: "onde-o-salario-rende-mais", libertad: "dia-da-liberdade-de-impostos", aumento: "quanto-fica-de-um-aumento" },
@@ -54,6 +55,7 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   // tr en ASCII turco con la búsqueda de Google Turquía (ADR 0002, D12).
   tr: { rinde: "maasin-alim-gucu", libertad: "vergi-ozgurluk-gunu", aumento: "zamdan-ne-kalir" },
   bn: { rinde: "kothay-beton-beshi-chole", libertad: "kor-mukti-dibos", aumento: "beton-briddhir-koto-thake" },
+  th: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

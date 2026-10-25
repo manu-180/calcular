@@ -55,6 +55,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   // El bengalí no flexiona el sustantivo detrás de un número (৩ দিন, ১ বছর, ১.৫ বছর): las dos formas
   // son iguales. Va separado del número por un espacio.
   bn: { dias: { uno: "দিন", otros: "দিন" }, semanas: { uno: "সপ্তাহ", otros: "সপ্তাহ" }, horas: { uno: "ঘণ্টা", otros: "ঘণ্টা" }, meses: { uno: "মাস", otros: "মাস" }, anios: { uno: "বছর", otros: "বছর" } },
+  // El tailandés no marca el plural (3 วัน, 1.5 ปี) y la unidad va separada del número por un espacio.
+  th: { dias: { uno: "วัน", otros: "วัน" }, semanas: { uno: "สัปดาห์", otros: "สัปดาห์" }, horas: { uno: "ชั่วโมง", otros: "ชั่วโมง" }, meses: { uno: "เดือน", otros: "เดือน" }, anios: { uno: "ปี", otros: "ปี" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

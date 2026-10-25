@@ -262,6 +262,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "নতুন ট্যাবে খুলবে",
     },
   },
+  // Tailandés (ADR 0002, D13): sin pronombre ni ครับ/ค่ะ, sin punto final.
+  th: {
+    base: {
+      titulo: "กำลังจะย้ายไปต่างประเทศ หรือรับเงินจากต่างประเทศอยู่หรือไม่",
+      etiqueta: "ลิงก์ที่ได้รับการสนับสนุน",
+      socios: {
+        wise: "บัญชีหลายสกุลเงินสำหรับรับและโอนเงินระหว่างประเทศ ด้วยอัตราแลกเปลี่ยนกลางของตลาดและค่าธรรมเนียมที่แจ้งไว้ชัดเจน",
+        deel: "สัญญาจ้างและการรับเงินสำหรับผู้ที่ทำงานจากประเทศหนึ่งให้บริษัทในอีกประเทศหนึ่ง",
+      },
+      nota: "หากเปิดบัญชีผ่านลิงก์เหล่านี้ เว็บไซต์อาจได้รับค่าคอมมิชชัน ผู้สมัครไม่ต้องจ่ายเพิ่ม",
+      nuevaPestana: "เปิดในแท็บใหม่",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

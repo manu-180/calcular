@@ -2,13 +2,17 @@
 // signos de ancho completo) ocupa lo que dos latinos. Los límites de 60 y 160 se miden en estas
 // unidades: en un texto latino da lo mismo que .length.
 const ANCHO_DOBLE = /[\p{sc=Han}\p{sc=Hiragana}\p{sc=Katakana}\p{sc=Hangul}　-〿＀-￯]/u;
+// Las marcas que se apilan sobre o bajo la letra anterior no ocupan ancho: en tailandés las vocales
+// de arriba y de abajo (ิ ี ึ ื ุ ู ั) y los tonos (่ ้ ๊ ๋ ์), que en .length cuentan como un carácter más
+// (ADR 0002, D13). Vale para cualquier escritura: en un texto latino en NFC no aparecen. SIN_ANCHO,
+// más abajo, las junta con las del bengalí.
 
 // Bengalí (ADR 0002, D14), medido con los avances de Nirmala UI contra Arial: una letra o un dígito
 // ocupa un latino y medio; los signos que se dibujan sobre o bajo la consonante (hasanta «্», «ু», «ূ»,
 // «ৃ», «ঁ», nukta) no ocupan ancho propio; los signos vocálicos que van al costado («া», «ি», «ী», «ে»)
 // y «ং», «ঃ» ocupan medio latino, salvo «ো» y «ৌ», que rodean la consonante por los dos lados. Con
 // .length cada signo contaba como una letra. Los conjuntos (consonante + hasanta + consonante) quedan
-// algo sobrestimados, del lado seguro. ZWJ y ZWNJ no ocupan ancho.
+// algo sobrestimados, del lado seguro. ZWJ y ZWNJ no ocupan ancho (las marcas Mn/Me del tailandés tampoco).
 const BENGALI = /\p{sc=Beng}/u;
 const SIN_ANCHO = /[\p{Mn}\p{Me}‌‍]/u;
 const MEDIO = /\p{Mc}/u;

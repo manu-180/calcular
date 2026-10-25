@@ -28,6 +28,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   id: "kalender-gaji",
   tr: "maas-takvimi",
   bn: "beton-calendar",
+  th: "patithin-ngoen-duean",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";

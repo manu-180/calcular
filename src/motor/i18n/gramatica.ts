@@ -439,4 +439,8 @@ const bn: GramaticaPais = (() => {
   return { nombre: (p) => p, de, en, para: (p) => `${de(p)} জন্য` };
 })();
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn };
+// El tailandés no declina ni tiene artículos: «ของ» para el poseedor, «ใน» para el lugar y «สำหรับ»
+// para el destino, pegados al nombre como se escribe en tailandés («ในประเทศไทย»).
+const th: GramaticaPais = { nombre: (p) => p, de: (p) => `ของ${p}`, en: (p) => `ใน${p}`, para: (p) => `สำหรับ${p}` };
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th };

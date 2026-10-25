@@ -502,6 +502,80 @@ largo.
 administración pública), y `dias-entre-fechas` y `sumar-dias` cuentan días hábiles de lunes a viernes: los textos bn lo
 advierten, y el agente de país tiene que decidir si suma una opción de fin de semana al motor.
 
+### D13. Tailandés (2026-10-24)
+
+D9 a D12 los usan otras ramas sin mergear (`claude/mundo-motor-eu`, `claude/mundo-motor-ar`,
+`claude/mundo-motor-id` y la que siga); esta entrada toma el D13 para no chocar al mergear.
+
+`IDIOMAS` suma `th`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+«Tu sueldo en el mundo», el calendario laboral, «¿Cuántas horas de trabajo cuesta?», los rankings de
+países, «Sueldos reales», los enlaces de afiliados, el diccionario de venta completo (todas las
+familias, `informe-calculo` incluida, informes, planillas y mails) y las 41 universales están en
+tailandés.
+
+**Trato.** Un solo registro, el de los bancos y servicios digitales de Tailandia (SCB, Kasikorn,
+กรมสรรพากร): cortés y neutro. Sin pronombre de segunda persona (ni คุณ ni ท่าน): el tailandés omite el
+sujeto con naturalidad y, cuando hace falta, se usa el rol (ผู้กู้, ลูกจ้าง, ผู้ซื้อ). Sin partículas de
+cortesía (ครับ/ค่ะ), que marcan el género de quien habla y en una interfaz suenan a chat. «กรุณา» para
+pedir algo («กรุณากรอกตัวเลข»), imperativo corto en botones y etiquetas («คำนวณ», «เลือกประเทศ»). Los
+mercados van con `trato: "usted"`, como ja, ko, zh e id, y los diccionarios escriben solo `base`. La
+carta del informe usa «ข้าพเจ้า», la primera persona formal sin género.
+
+**Gramática del país.** Sin artículos ni declinación. `GRAMATICA.th`: «ของ» para el poseedor, «ใน» para
+el lugar y «สำหรับ» para el destino, pegados al nombre como se escribe («ในประเทศไทย», «สำหรับไทย»).
+
+**Puntuación y espacios.** El tailandés no separa palabras con espacios: el espacio separa frases y
+oraciones, y la oración no lleva punto ni signo de pregunta al final (las preguntas terminan en
+อะไร, อย่างไร, เท่าไร, ไหม o หรือไม่). Las abreviaturas con punto sí van (พ.ศ., ต.ค., กม., ตร.ม.).
+«ๆ» con espacio antes y después, como recomienda la ราชบัณฑิตยสภา (อื่น ๆ). Comillas “”.
+
+**Formato.** Intl de th-TH: cifras arábigas (no los dígitos tailandeses, que la web de servicios casi no
+usa), miles con coma y decimales con punto («฿1,234.50», «1.5 ปี»). Unidades sin plural y separadas por
+un espacio («3 วัน»). `parsearNumero` pasa los dígitos tailandeses a arábigos y lee las palabras de unidad
+con que se escriben montos a mano («2.5 ล้าน», «1 ล้าน 5 แสน», «3 หมื่น»): sin eso «2 ล้าน» daba 2, un
+error de un millón de veces, como pasaba con 万 en D8.
+
+**Calendario.** Las fechas visibles van en พุทธศักราช (พ.ศ., año gregoriano + 543), como en los sitios
+del gobierno (กรมสรรพากร, ราชกิจจานุเบกษา) y en los resúmenes de los bancos; el año fiscal, la edad y
+los plazos se piensan en พ.ศ. No hace falta `-u-ca-buddhist`: es el calendario por defecto de `th` en
+Intl (con o sin región, también en `th-001`), así que todo `Intl.DateTimeFormat(locale)` ya lo escribe
+(«24 ตุลาคม 2569», «24/10/2569»). Se descartó `-u-ca-gregory` (ค.ศ.) porque obligaba a cambiar el
+locale del mercado, que también arma el hreflang, y porque en tailandés el año gregoriano lleva la
+marca ค.ศ. y suena a traducción. Los diccionarios que reciben un año como número lo pasan a พ.ศ.
+(títulos del país y de novedades, ©, PPA del mundo). Internamente todo sigue en ISO gregoriano.
+
+**Slugs.** Las universales usan el slug en inglés del catálogo, como D8: la romanización del tailandés
+(RTGS) es larga y ambigua (no marca tonos ni vocales largas, y casi nadie busca así),
+y el slug en inglés es corto, estable y ya está curado. Para las calculadoras locales de Tailandia:
+término en inglés si se usa (`vat`, `withholding-tax`), y si no RTGS sin tonos. Las páginas que tienen
+una carpeta por idioma no pueden repetir la del inglés, así que van en RTGS, como las de ja, ko y zh:
+«Tu sueldo en el mundo» en `ngoen-duean-thua-lok` (เงินเดือนทั่วโลก), el calendario en
+`patithin-ngoen-duean` (ปฏิทินเงินเดือน), las horas de trabajo en `chua-mong-tham-ngan` (ชั่วโมงทำงาน),
+los rankings en `andap-prathet` (อันดับประเทศ) y «Sueldos reales» en `ngoen-duean-ching` (เงินเดือนจริง).
+Los rankings de adentro usan el slug en inglés (`take-home-pay`, `tax-freedom-day`, `pay-raise`).
+
+**Largos de SEO.** `anchoVisual` no cuenta las marcas combinantes (`\p{Mn}`): las vocales de arriba y
+de abajo y los tonos se apilan sobre la consonante y no ocupan ancho, aunque en `.length` cuenten. Así
+«ภาษีมูลค่าเพิ่ม» mide 10, no 15. En textos latinos en NFC no cambia nada. Los títulos usan las búsquedas
+reales («คำนวณเงินเดือน», «คำนวณสินเชื่อบ้าน», «คำนวณ VAT ภาษีมูลค่าเพิ่ม», «คำนวณดอกเบี้ย»).
+
+**Tipografía y corte de línea.** Geist no trae tailandés: cae en la fuente del sistema (Thonburi en
+Apple, Leelawadee UI en Windows), con Noto Sans Thai y Tahoma de respaldo, sin descargar nada.
+`word-break: normal` en `:lang(th)`: los navegadores cortan el tailandés por diccionario sin partir
+palabras; `keep-all` no cortaría nunca y `break-all` partiría las palabras al medio. Nada de U+200B a
+mano. Interlineado 1.65 por las vocales y tonos apilados, y tracking 0 en los títulos (el negativo de
+Geist encima los tonos). La tarjeta OG del mundo carga Noto Sans Thai.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): sin exclamaciones, rayas ni guion como pausa; sin espacios raros (U+200B y parecidos, espacio
+duro o fino, doble espacio, vocal o tono suelto tras un espacio); sin punto ni «?» al final de una
+oración tailandesa; sin ครับ/ค่ะ/คะ; sin คุณ ni ท่าน como pronombre (no cuentan คุณภาพ, คุณสมบัติ,
+คุณค่า, ขอบคุณ ni เท่านั้น) ni ผม/ดิฉัน/ฉัน; sin dígitos tailandeses; sin ค.ศ. ni «ปี 2026».
+
+**Prueba.** `zz-th` (Zetaland, locale `th-001`) es una edición interna como `zz-ja`. `check_universales`
+prueba th-TH con THB (escala 35) y «เซนต์วินเซนต์และเกรนาดีนส์» por el nombre largo; `check_motor`
+prueba el parseo, las unidades, las fechas en พ.ศ. y el ancho visual.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

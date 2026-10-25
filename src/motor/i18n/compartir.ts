@@ -372,6 +372,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `${cifrasBn(n)}টির বেশি দেশে আপনার হাতে কত বেতন থাকে দেখুন`,
     },
   },
+  // Tailandés (ADR 0002, D13): sin pronombre ni ครับ/ค่ะ.
+  th: {
+    base: {
+      boton: "แชร์",
+      botonAria: "แชร์เครื่องคำนวณนี้",
+      menuTitulo: "แชร์ผ่าน",
+      copiar: "คัดลอกลิงก์",
+      copiado: "คัดลอกลิงก์แล้ว",
+      compartido: "แชร์แล้ว",
+      errorCorto: "คัดลอกไม่สำเร็จ",
+      errorAyuda: "คัดลอกลิงก์ไม่ได้ กรุณาคัดลอกจากแถบที่อยู่ของเบราว์เซอร์",
+      nuevaPestana: "เปิดในแท็บใหม่",
+      mensaje: (nombre) => `${nombre} ใช้ฟรี คำนวณเสร็จในหนึ่งนาที`,
+      puenteIntro: "ประเทศอื่นเป็นอย่างไร",
+      puenteEnlace: (n) => `ดูเงินเดือนสุทธิในกว่า ${n} ประเทศ`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

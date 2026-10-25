@@ -248,6 +248,34 @@ function reglasBn(original: string): string[] {
   return p;
 }
 
+// Tailandés (ADR 0002, D13). Se escribe sin espacios entre palabras: el espacio separa frases y
+// oraciones, y la oración no lleva punto ni signo de pregunta al final. Registro cortés y neutro de
+// los bancos y servicios digitales: sin partículas de cortesía (ครับ, ค่ะ), sin pronombre de segunda
+// persona (คุณ, ท่าน: el sujeto se omite) ni de primera con género. Fechas en พ.ศ. y cifras arábigas.
+const TH = String.raw`[ก-๎]`;
+// «คุณ» también es parte de palabras comunes (คุณภาพ, คุณสมบัติ, คุณค่า, ขอบคุณ): esas no cuentan.
+const CUN_PRONOMBRE = /(?<!ขอบ)คุณ(?!ภาพ|สมบัติ|ค่า|ประโยชน์|ลักษณะ|ธรรม|วุฒิ|งาม|ูปการ|ากร|นาย)/u;
+// Un punto detrás de tres o más letras tailandesas es fin de oración; las abreviaturas (พ.ศ., ต.ค.,
+// กม., ตร.ม., มี.ค.) tienen como mucho dos letras entre puntos.
+const PUNTO_FINAL_TH = new RegExp(`${TH}{3,}[.?](?=\\s|$|["”)])`, "u");
+
+function reglasTh(texto: string): string[] {
+  const p: string[] = [];
+  if (/[!！]/.test(texto)) p.push("signo de exclamación");
+  if (/[​-‍⁠﻿]/.test(texto)) p.push("espacio invisible (U+200B y parecidos): el navegador ya corta el tailandés por palabras");
+  if (/[   　]/.test(texto)) p.push("espacio raro (duro, fino o de ancho completo): va el espacio común");
+  if (/ {2,}/.test(texto)) p.push("doble espacio");
+  if (/\s\p{Mn}/u.test(texto)) p.push("vocal o tono suelto después de un espacio");
+  if (/[๐-๙]/.test(texto)) p.push("dígitos tailandeses (van cifras arábigas)");
+  if (PUNTO_FINAL_TH.test(texto)) p.push("punto o signo de pregunta al final de una oración tailandesa (va sin signo)");
+  if (/ครับ|ค่ะ|นะคะ|จ้ะ|คะ(?=$|[\s,.?)"”])/u.test(texto)) p.push("partícula de cortesía (ครับ/ค่ะ) en la interfaz");
+  // «ท่าน» está dentro de «เท่านั้น» y «เท่านี้» (solo), que sí van.
+  if (CUN_PRONOMBRE.test(texto) || /(?<!เ)ท่าน(?!้ำ)/u.test(texto)) p.push("pronombre de segunda persona (คุณ/ท่าน): se omite el sujeto");
+  if (/ผม|ดิฉัน|ฉัน/u.test(texto)) p.push("pronombre de primera persona con género (ผม/ดิฉัน/ฉัน)");
+  if (/ค\.ศ\./u.test(texto) || /(?:ปี|พ\.ศ\.)\s?(?:19|20)\d{2}(?!\d)/u.test(texto)) p.push("año gregoriano: las fechas y los años van en พ.ศ. (año + 543)");
+  return p;
+}
+
 export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, locale?: string): string[] {
   const p: string[] = [];
   if (RAYA.test(texto)) p.push("raya («—» o «–»): usá paréntesis o dos oraciones");
@@ -265,6 +293,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
     return p;
   }
   if (idioma === "ar") return [...p, ...reglasAr(texto)];
+  if (idioma === "th") return [...p, ...reglasTh(texto)];
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
   if (idioma === "tr") p.push(...reglasTr(texto));
   return [...p, ...registro(texto, idioma, trato)];

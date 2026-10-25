@@ -105,7 +105,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-:is(.cy-cuerpo:lang(ja), .cy-cuerpo:lang(ko), .cy-cuerpo:lang(zh), .cy-cuerpo:lang(bn)) :is(.cy-mundo-h1, .cy-mundo-h2, .cy-mundo-fecha, .cy-th-fecha) {
+:is(.cy-cuerpo:lang(ja), .cy-cuerpo:lang(ko), .cy-cuerpo:lang(zh), .cy-cuerpo:lang(bn), .cy-cuerpo:lang(th)) :is(.cy-mundo-h1, .cy-mundo-h2, .cy-mundo-fecha, .cy-th-fecha) {
   letter-spacing: 0;
 }
 
