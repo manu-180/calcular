@@ -12,8 +12,8 @@ export default definirContenido({
   ],
   comoSeCalcula: [
     "Ancienniteten regnes i hele år fra ansættelsen til fratrædelsesdagen.",
-    "Efter 12 års uafbrudt ansættelse er godtgørelsen {{dk.fratraedelsesgodtgoerelse[12-aar]}} løn.",
-    "Efter 17 års uafbrudt ansættelse er godtgørelsen {{dk.fratraedelsesgodtgoerelse[17-aar]}} løn.",
+    "Efter 12 års uafbrudt ansættelse er godtgørelsen løn for {{dk.fratraedelsesgodtgoerelse[12-aar]}}.",
+    "Efter 17 års uafbrudt ansættelse er godtgørelsen løn for {{dk.fratraedelsesgodtgoerelse[17-aar]}}.",
   ],
   ejemplo: ["Er du ansat 1. januar 2009 og fratræder 1. februar 2026 med 45.000 kr. om måneden, har du 17 års anciennitet. Godtgørelsen er 135.000 kr. før skat."],
   faq: [

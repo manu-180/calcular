@@ -7,13 +7,13 @@ export default definirContenido({
   description:
     "Beregn dine feriepenge på {{dk.feriegodtgoerelse}} af lønnen eller ferietillægget på {{dk.ferietillaeg}}. Se også hvor mange feriedage du har optjent efter ferieloven.",
   intro: [
-    "Efter ferieloven optjener du {{dk.ferie-optjening}} feriedage for hver måned, du er ansat. Det giver 5 ugers betalt ferie om året.",
+    "Efter ferieloven optjener du {{dk.ferie-optjening}} ferie for hver måned, du er ansat. Det giver {{dk.ferie-uger}} betalt ferie om året.",
     "Har du timeløn, eller er du fratrådt, får du feriepenge på {{dk.feriegodtgoerelse}} af lønnen. Har du fast månedsløn, får du løn under ferien og et ferietillæg på {{dk.ferietillaeg}}.",
   ],
   comoSeCalcula: [
     "Feriepenge (feriegodtgørelse) er {{dk.feriegodtgoerelse}} af al skattepligtig løn i optjeningsperioden, også din egen pension og am-bidraget.",
     "Ferietillæg er {{dk.ferietillaeg}} af lønnen. Det kommer oven i din almindelige løn under ferien.",
-    "Feriedagene er {{dk.ferie-optjening}} dage pr. måneds ansættelse, højst 5 uger om året.",
+    "Du optjener {{dk.ferie-optjening}} ferie pr. måneds ansættelse, højst {{dk.ferie-uger}} om året.",
   ],
   ejemplo: ["Har du tjent 400.000 kr. på et ferieår med timeløn, er dine feriepenge 50.000 kr. før skat. Det er 2.003,21 kr. pr. feriedag."],
   faq: [
@@ -31,7 +31,7 @@ export default definirContenido({
     },
     {
       pregunta: "Hvor mange feriedage optjener jeg om måneden?",
-      respuesta: "Du optjener {{dk.ferie-optjening}} dage for hver måneds ansættelse. Ferieåret går fra 1. september til 31. august.",
+      respuesta: "Du optjener {{dk.ferie-optjening}} ferie for hver måneds ansættelse. Ferieåret går fra 1. september til 31. august.",
     },
   ],
   glosario: [

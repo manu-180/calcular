@@ -30,7 +30,7 @@ export default definirContenido({
     },
     {
       pregunta: "Hvor lang tid skal jeg give, hvis jeg selv siger op?",
-      respuesta: "Som funktionær skal du give {{dk.opsigelsesvarsel[funktionaer]}} varsel til fratræden ved en måneds udgang, medmindre din kontrakt siger andet.",
+      respuesta: "Som funktionær skal du give et varsel på {{dk.opsigelsesvarsel[funktionaer]}} til fratræden ved en måneds udgang, medmindre din kontrakt siger andet.",
     },
     {
       pregunta: "Gælder reglerne, hvis jeg ikke er funktionær?",

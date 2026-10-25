@@ -16,6 +16,14 @@ import opsigelsesvarsel from "./calculadoras/opsigelsesvarsel";
 import contenidoOpsigelsesvarsel from "./contenido/opsigelsesvarsel";
 import momsberegner from "./calculadoras/momsberegner";
 import contenidoMomsberegner from "./contenido/momsberegner";
+import boerneOgUngeydelse from "./calculadoras/boerne-og-ungeydelse";
+import contenidoBoerneOgUngeydelse from "./contenido/boerne-og-ungeydelse";
+import suBeregner from "./calculadoras/su-beregner";
+import contenidoSuBeregner from "./contenido/su-beregner";
+import dagpenge from "./calculadoras/dagpenge";
+import contenidoDagpenge from "./contenido/dagpenge";
+import atpBidrag from "./calculadoras/atp-bidrag";
+import contenidoAtpBidrag from "./contenido/atp-bidrag";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: fratraedelsesgodtgoerelse, contenido: contenidoFratraedelsesgodtgoerelse, cliente: () => import("./calculadoras/fratraedelsesgodtgoerelse.cliente") },
     { definicion: opsigelsesvarsel, contenido: contenidoOpsigelsesvarsel, cliente: () => import("./calculadoras/opsigelsesvarsel.cliente") },
     { definicion: momsberegner, contenido: contenidoMomsberegner, cliente: () => import("./calculadoras/momsberegner.cliente") },
+    { definicion: boerneOgUngeydelse, contenido: contenidoBoerneOgUngeydelse, cliente: () => import("./calculadoras/boerne-og-ungeydelse.cliente") },
+    { definicion: suBeregner, contenido: contenidoSuBeregner, cliente: () => import("./calculadoras/su-beregner.cliente") },
+    { definicion: dagpenge, contenido: contenidoDagpenge, cliente: () => import("./calculadoras/dagpenge.cliente") },
+    { definicion: atpBidrag, contenido: contenidoAtpBidrag, cliente: () => import("./calculadoras/atp-bidrag.cliente") },
   ],
   universales: "todas",
   novedades,
