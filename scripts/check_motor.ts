@@ -9,7 +9,8 @@ import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
-import { decimalesDeMoneda, formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { decimalesDeMoneda, formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, mayusculaInicial, minusculaInicial, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { GRAMATICA } from "../src/motor/i18n/gramatica";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
@@ -120,6 +121,12 @@ const parseos: [string, string, number | null][] = [
   ["id-ID", "Rp 1.500.000", 1500000],
   ["id-ID", "Rp 12.345.678,25", 12345678.25],
   ["id-ID", "-250,75", -250.75],
+  // Turco: miles con punto, decimal con coma y la lira y el porcentaje delante («₺1.234,50», «%20»).
+  ["tr-TR", "1.234,50", 1234.5],
+  ["tr-TR", "₺1.500.000", 1500000],
+  ["tr-TR", "₺12.345.678,25", 12345678.25],
+  ["tr-TR", "-250,75", -250.75],
+  ["tr-TR", "%20", 20],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -139,6 +146,8 @@ const ambiguos: [string, string, number | null][] = [
   ["pl-PL", "5 000", 5000],
   ["id-ID", "5.000", 5000],
   ["id-ID", "5,000", null],
+  ["tr-TR", "5.000", 5000],
+  ["tr-TR", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -476,8 +485,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -535,6 +544,25 @@ igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 
 igual("días en indonesio", formatearValorUnidad(3, "dias", "id-ID"), "3 hari");
 igual("un año en indonesio", formatearValorUnidad(1, "anios", "id-ID"), "1 tahun");
 igual("fracción de año en indonesio", formatearValorUnidad(1.5, "anios", "id-ID"), "1,5 tahun");
+// Turco: sin plural después del número y decimal con coma.
+igual("días en turco", formatearValorUnidad(3, "dias", "tr-TR"), "3 gün");
+igual("un año en turco", formatearValorUnidad(1, "anios", "tr-TR"), "1 yıl");
+igual("fracción de año en turco", formatearValorUnidad(1.5, "anios", "tr-TR"), "1,5 yıl");
+// Sufijos de caso detrás del nombre del país: armonía vocálica, d/t, n tras vocal, siglas y posesivo.
+igual(
+  "gramática turca: locativo",
+  ["Türkiye", "Almanya", "Kuveyt", "Fas", "ABD", "Peru", "Senegal", "Dominik Cumhuriyeti", "Saint Vincent ve Grenadinler"].map((p) => GRAMATICA.tr.en(p)),
+  ["Türkiye'de", "Almanya'da", "Kuveyt'te", "Fas'ta", "ABD'de", "Peru'da", "Senegal'de", "Dominik Cumhuriyeti'nde", "Saint Vincent ve Grenadinler'de"],
+);
+igual(
+  "gramática turca: genitivo",
+  ["Türkiye", "Almanya", "Peru", "Hong Kong", "Irak", "BAE", "Birleşik Arap Emirlikleri"].map((p) => GRAMATICA.tr.de(p)),
+  ["Türkiye'nin", "Almanya'nın", "Peru'nun", "Hong Kong'un", "Irak'ın", "BAE'nin", "Birleşik Arap Emirlikleri'nin"],
+);
+igual("gramática turca: para", GRAMATICA.tr.para("Türkiye"), "Türkiye için");
+// Mayúscula inicial con la i del turco: «iş» da «İş», no «Iş».
+igual("mayúscula inicial en turco", mayusculaInicial("iş bankası", "tr-TR"), "İş bankası");
+igual("minúscula inicial en turco", minusculaInicial("Isparta", "tr-TR"), "ısparta");
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).

@@ -5,7 +5,7 @@ import { calcularEscenarios, estadoDelInforme, filaClave, tablasDelInforme, type
 import type { EscenarioFamilia } from "@/lib/pagos/ofertas-intl";
 import { crudosDeEntrada, leerDatosIntl } from "@/lib/prefill/intl-cliente";
 import type { DefinicionVisible } from "@/motor/cliente";
-import { formatearMoneda, formatearNumero, parsearNumero } from "@/motor/formato";
+import { formatearMoneda, formatearNumero, formatearPorcentaje, parsearNumero } from "@/motor/formato";
 import { mensajeDeError, opcionesDe, type Crudos, type EstadoCalculo } from "@/motor/formulario";
 import { textosMotor } from "@/motor/textos";
 import type { Campo, DefinicionCalculadora, PropsCalculadora } from "@/motor/tipos";
@@ -51,7 +51,7 @@ function textoCrudo(c: Campo, v: string | boolean | undefined, props: PropsCalcu
       const moneda = c.moneda ?? props.contexto.moneda;
       return formatearMoneda(n, props.contexto.locale, moneda, undefined, props.contexto.simbolos?.[moneda]);
     }
-    return c.tipo === "porcentaje" ? `${formatearNumero(n, props.contexto.locale)} %` : formatearNumero(n, props.contexto.locale);
+    return c.tipo === "porcentaje" ? formatearPorcentaje(n, props.contexto.locale) : formatearNumero(n, props.contexto.locale);
   }
   return String(v ?? "");
 }
@@ -305,7 +305,7 @@ export function InformeVivo({
                 <strong>
                   <bdi>{clave.texto}</bdi>
                 </strong>{" "}
-                ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLowerCase() : clave.etiqueta}).
+                ({textos.nota.etiquetaEnMinuscula ? clave.etiqueta.toLocaleLowerCase(props.contexto.locale) : clave.etiqueta}).
               </p>
             )}
             <p>{textos.nota.cierre}</p>

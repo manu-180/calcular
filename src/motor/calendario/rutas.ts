@@ -26,6 +26,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   fi: "palkkakalenteri",
   ar: "taqwim-alrawatib",
   id: "kalender-gaji",
+  tr: "maas-takvimi",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";

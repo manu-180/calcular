@@ -50,6 +50,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   },
   // El indonesio no marca el plural después de un número (3 hari, 1,5 tahun): las dos formas son iguales.
   id: { dias: { uno: "hari", otros: "hari" }, semanas: { uno: "minggu", otros: "minggu" }, horas: { uno: "jam", otros: "jam" }, meses: { uno: "bulan", otros: "bulan" }, anios: { uno: "tahun", otros: "tahun" } },
+  // El turco no pone plural después de un número (3 gün, 1,5 yıl): las dos formas son iguales.
+  tr: { dias: { uno: "gün", otros: "gün" }, semanas: { uno: "hafta", otros: "hafta" }, horas: { uno: "saat", otros: "saat" }, meses: { uno: "ay", otros: "ay" }, anios: { uno: "yıl", otros: "yıl" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

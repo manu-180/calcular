@@ -54,7 +54,7 @@ const Tilde = ({ tamano = 16 }: { tamano?: number }) => (
   </svg>
 );
 
-const sinTildes = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const sinTildes = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ı/g, "i");
 
 export function Generador({
   mercado,

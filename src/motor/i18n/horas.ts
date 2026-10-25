@@ -1963,7 +1963,127 @@ const idn: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn };
+// ───────────────────────────── tr ─────────────────────────────
+// Turco (ADR 0002, D12): impersonal como los demás. {en} ya trae el sufijo de lugar de GRAMATICA.tr
+// («Türkiye'de»); nada se pega a {horas}, {producto}, {n} ni a las fechas: van sueltos o tras dos puntos.
+
+const tr: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Kaç saat çalışmak gerekir?",
+    seo: {
+      titulo: ["{en} bir iPhone için kaç saat çalışmak gerekir", "{en} iPhone için kaç saat çalışmak gerekir", "Kaç saat çalışmak gerekir?"],
+      tituloGlobal: ["Dünyada bir iPhone için kaç saat çalışmak gerekir", "Kaç saat çalışmak gerekir?"],
+      tituloProducto: ["{en} {producto} için kaç saat çalışmak gerekir", "{en} {producto} için kaç saat çalışılır", "{producto} için kaç saat çalışmak gerekir"],
+      tituloProductoGlobal: ["Dünyada {producto} için kaç saat çalışmak gerekir", "{producto} için kaç saat çalışmak gerekir"],
+      descripcion: "{en} ve toplam {n} ülkede bir iPhone, MacBook ya da Spotify için asgari ücretle kaç saat çalışmak gerektiği. Resmî fiyatlar ve her verinin kaynağı.",
+      descripcionGlobal: "{n} ülkede bir iPhone, MacBook ya da Spotify için asgari ücretle kaç saat çalışmak gerektiği. Resmî fiyatlar ve her verinin kaynağı.",
+      descripcionProducto: "{en} {producto} için asgari ücretle şu kadar çalışmak gerekiyor: {horas}. Resmî fiyatı ve her verinin kaynağıyla {n} ülkelik sıralama.",
+      descripcionProductoGlobal: "{n} ülkede {producto} için asgari ücretle kaç saat çalışmak gerektiği. Her mağazanın resmî fiyatı ve her verinin kaynağı.",
+    },
+    ceja: "Endeks dönemi: {mes}",
+    h1: "Kaç saat çalışmak gerekir?",
+    h1Producto: "{producto} için kaç saat çalışmak gerekir?",
+    bajada: "Aynı ürünün resmî fiyatı, {n} ülkede asgari ücretle kaç saatlik çalışmaya denk geliyor.",
+    form: { producto: "Ürün", pais: "Ülke", porMes: "aylık" },
+    heroe: {
+      antes: "{en} {producto} için",
+      despues: "asgari ücretle çalışmak gerekiyor",
+      despuesMes: "asgari ücretle her ay çalışmak gerekiyor",
+      jornadaUno: "8 saatlik iş günü: {n}",
+      jornadaOtras: "8 saatlik iş günü: {n}",
+      precio: "Resmî fiyat: {precio}",
+      salario: "Saatlik asgari ücret: {monto}",
+      sinPrecio: "{en} bu ürünü satan resmî bir mağaza yok.",
+      mejor: "{en} şu kadarı yetiyor: {horas}.",
+      mejorPropio: "Endeksteki hiçbir ülkede daha az saatle alınamıyor.",
+      puesto: "Sıra: {p} / {total}",
+      escalaHoras: "Her kare bir saatlik çalışma",
+      escalaSemanas: "Her kare 40 saatlik bir hafta",
+      masDeUnAnio: "Bir yıldan uzun çalışma",
+    },
+    ranking: {
+      titulo: "Ülke ülke",
+      bajada: "En az saatten en çok saate. Her fiyat, üreticinin o ülkedeki resmî fiyatıdır.",
+      lista: "Çalışma saatine göre sıralanan ülkeler",
+      verTodos: "Tüm ülkeleri gör ({n})",
+      verMenos: "Daha az göster",
+      elegido: "Seçili",
+      sinPrecio: "Endeksteki bazı ülkeler için veri yok ({n}): bu ürünü satan resmî bir mağaza bulunmuyor.",
+      horas: "Saat",
+      precio: "Resmî fiyat",
+    },
+    compartir: {
+      titulo: "Paylaşmak için kart",
+      bajada: "Hepsi kamuya açık veriler: resmî fiyat ve asgari ücretle gereken çalışma saati.",
+      boton: "Kartı paylaş",
+      descargar: "Hikâye için indir",
+      copiado: "Bağlantı kopyalandı.",
+      compartido: "Tamam, paylaşıldı.",
+      error: "Şu anda paylaşılamadı.",
+      texto: "{en} {producto} için asgari ücretle şu kadar çalışmak gerekiyor: {horas}. Başka ülkelerde durum ne?",
+      alt: "Kartın önizlemesi",
+    },
+    metodo: {
+      titulo: "Nasıl hesaplıyoruz",
+      estimacion: "Saat = resmî fiyat ÷ saatlik asgari ücret. Bu, resmî fiyatların karşılaştırmasıdır; bir satın alma bütçesi değildir.",
+      supuestos: [
+        "Fiyat, üreticinin resmî mağazasındaki en ucuz sürümün liste fiyatıdır ve her ülkenin kendi sayfasından okunur.",
+        "Spotify Premium, giriş kampanyaları olmadan bir aylık bireysel plandır.",
+        "Asgari ücret, tam zamanlı çalışan yetişkin bir kişi için bugün yürürlükte olan genel asgari ücrettir. Sektöre ya da bölgeye göre birden fazla varsa ana bölgedeki ticaret sektörününki kullanılır.",
+        "Yasa asgari ücreti aylık ya da günlük belirliyorsa ülkenin yasal çalışma süresiyle saate çevrilir.",
+        "İspanya ve Portekiz'de asgari ücret yılda 14 kez ödenir: Eurostat'ın yaptığı gibi 12 aya yayılır.",
+        "Mağaza dolarla satış yapıyorsa fiyat, ülkenin resmî döviz kuruyla yerel paraya çevrilir.",
+        "Karşılaştırma yapılabilsin diye iş günü bütün ülkelerde 8 saat kabul edilir.",
+      ],
+      fuentesTitulo: "Her verinin kaynağı",
+      fuentesBajada: "Her ülke; asgari ücreti, çalışma süresi ve mağazadan okunan fiyatlarıyla, her okumanın tarihiyle birlikte.",
+      salario: "Asgari ücret",
+      jornada: "Çalışma süresi",
+      precio: "Fiyat",
+      cambio: "Döviz kuru",
+      consultado: "Kontrol tarihi: {fecha}",
+      verificado: "Doğrulama tarihi: {fecha}",
+      verFuente: "Kaynağı gör",
+      sello: "Fiyatların okunduğu dönem: {desde} ile {hasta} arası. 120 günden eski bir fiyat artık gösterilmez.",
+      conversion: {
+        hora: "Yasa saatlik tutarı belirler.",
+        mes: "Aylık × 12 ÷ 52 hafta ÷ haftalık saat ({h}).",
+        mesPagas: "Aylık × yıllık ödeme sayısı ({p}) ÷ 52 hafta ÷ haftalık saat ({h}).",
+        anio: "Yıllık ÷ 52 hafta ÷ haftalık saat ({h}).",
+        semana: "Haftalık ÷ haftalık saat ({h}).",
+        dia: "Günlük ÷ günlük çalışma saati ({h}).",
+        diaPagado: "Günlük × ücretli gün ({d}) ÷ haftalık saat ({h}).",
+        divisor: "Aylık ÷ mevzuattaki saat böleni ({d}).",
+      },
+    },
+    faqTitulo: "Sık sorulan sorular",
+    faq: [
+      {
+        pregunta: "Saatler nasıl hesaplanıyor?",
+        respuesta: "Ürünün resmî fiyatı, ülkenin saatlik asgari ücretine bölünür. Yasa asgari ücreti aylık ya da günlük belirliyorsa o ülkenin yasal çalışma süresiyle saate çevrilir.",
+      },
+      {
+        pregunta: "Neden asgari ücret?",
+        respuesta: "Asgari ücret neredeyse her ülkede yasayla belirlenir ve resmî kaynaktan kontrol edilebilir. Ortalama maaş her ülkede farklı ölçülür, bu yüzden aynı şekilde karşılaştırılamaz.",
+      },
+      {
+        pregunta: "Fiyatlara vergi dahil mi?",
+        respuesta: "Fiyat, her ülkenin resmî mağazasında görünen liste fiyatıdır. ABD ve Kanada'da bu fiyata satış vergisi dahil değildir; başka ülkelerde de mağaza ödeme sırasında vergi ekleyebilir.",
+      },
+      {
+        pregunta: "Bir ülke neden listede yok?",
+        respuesta: "Yalnızca asgari ücreti doğrulanmış ve yürürlükte olan, fiyatı resmî mağazadan okunmuş ülkeler yer alır. Çevrim içi resmî mağaza yoksa o ürün için veri olmaz. Bayi fiyatları hiçbir zaman kullanılmaz.",
+      },
+      {
+        pregunta: "Ne sıklıkla güncelleniyor?",
+        respuesta: "Fiyatlar her mağazadan okunur ve 120 gün sonra geçerliliğini yitirir: daha eski bir fiyat artık gösterilmez. Asgari ücret her ülkenin resmî verilerinden gelir ve yasa değiştiğinde değişir.",
+      },
+    ],
+    og: { de: "asgari ücretle çalışma", deMes: "asgari ücretle aylık çalışma", generica: "{producto} için kaç saat çalışmak gerekir?", genericaBajada: "{n} ülkede resmî fiyatın asgari ücretle saat karşılığı", menos: "En az saat", cta: "Tüm ülkeler:" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

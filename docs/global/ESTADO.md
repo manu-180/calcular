@@ -62,6 +62,7 @@ varias veces por límite de uso.
 | Motor árabe RTL | claude/mundo-motor-ar | terminado el 24/10 salvo universales (ver arriba); ae y kw salieron en inglés |
 | Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | terminado el 24/10 (núcleo de los cinco idiomas; universales en ramas mundo-trad) |
 | Motor indonesio (id) | claude/mundo-motor-id | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
+| Motor turco (tr) | claude/mundo-motor-tr | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -122,6 +123,24 @@ rankings (`peringkat-negara`), «Sueldos reales» (`gaji-sebenarnya`) y afiliado
 Falta para publicar Indonesia:
 - El país en sí (BRIEF-PAIS): PPh 21 con TER, BPJS Kesehatan y Ketenagakerjaan, UMP/UMK por provincia,
   PPN, THR, pesangon, con datos verificados en fuentes oficiales (pajak.go.id, bpjs, kemnaker).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+
+## 24/10/2026 · Motor turco (`claude/mundo-motor-tr`)
+
+tr en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`ulkelere-gore-maas`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con slugs en turco ASCII
+(`kredi-hesaplama`, `konut-kredisi-hesaplama`, `kdv-hesaplama`...). Registro «siz» con formas
+corteses, el de los bancos y e-Devlet; mercados con `trato: "usted"`. `GRAMATICA.tr` pone los sufijos
+de caso con apóstrofo y armonía vocálica («Türkiye'de», «Almanya'nın»). Mayúsculas con el locale
+(`mayusculaInicial`) por la i con y sin punto. Decisiones en ADR 0002, D12. Edición de prueba `zz-tr`.
+
+Puesta al día con main 7d190a68: calendario (`maas-takvimi`), horas de trabajo (`kac-saatlik-calisma`),
+rankings (`ulke-siralamasi`), «Sueldos reales» (`gercek-maaslar`) y afiliados en turco.
+
+Falta para publicar Turquía:
+- El país en sí (BRIEF-PAIS): brütten nete maaş hesaplama (gelir vergisi dilimleri, SGK ve işsizlik
+  primleri, damga vergisi, asgari ücret istisnası), kıdem ve ihbar tazminatı, KDV, asgari ücret, con
+  datos verificados en fuentes oficiales (gib.gov.tr, sgk.gov.tr, Resmî Gazete, csgb.gov.tr).
 - Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)

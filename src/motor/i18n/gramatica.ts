@@ -371,4 +371,47 @@ const ar: GramaticaPais = {
 // («pajak Indonesia», «kalkulator Malaysia»), el lugar con «di» y el destino con «untuk».
 const idn: GramaticaPais = { nombre: (p) => p, de: (p) => p, en: (p) => `di ${p}`, para: (p) => `untuk ${p}` };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn };
+// El turco no tiene artículos: el caso va como sufijo detrás del nombre, separado con apóstrofo por
+// ser nombre propio («Türkiye'de», «Almanya'nın»). El sufijo sigue la armonía vocálica de la última
+// vocal (a/ı/o/u atrás, e/i/ö/ü adelante) y la consonante final: tras f, s, t, k, ç, ş, h, p el
+// locativo endurece la d («Kuveyt'te», «Fas'ta»). Tras vocal, el genitivo suma n («Peru'nun»). Una
+// sigla se lee por el nombre de sus letras («ABD'de», «BAE'nin»). Un nombre compuesto con posesivo
+// («Dominik Cumhuriyeti», «Birleşik Arap Emirlikleri») toma la n pronominal: «Cumhuriyeti'nde».
+// Las minúsculas van con la i del turco (toLocaleLowerCase("tr-TR"): «I» es «ı» e «İ» es «i»).
+const tr: GramaticaPais = (() => {
+  const VOCALES = "aıoueiöü";
+  const ATRAS = new Set(["a", "ı", "o", "u"]);
+  const SORDAS = new Set(["f", "s", "t", "k", "ç", "ş", "h", "p"]);
+  // Vocales con acento de nombres extranjeros, a su vocal turca.
+  const PLANAS: Readonly<Record<string, string>> = { â: "a", á: "a", à: "a", ä: "e", î: "i", í: "i", ì: "i", û: "u", ú: "u", ù: "u", é: "e", è: "e", ê: "e", ë: "e", ó: "o", ò: "o", ô: "o" };
+  const POSESIVO = /(?:Cumhuriyeti|Devletleri|Emirlikleri|Adaları|Sahili|Federasyonu|Prensliği|Krallığı|Bölgesi|Topluluğu|Birliği)$/u;
+  // La sigla se pronuncia por letras: la última suena «ka» (K) o con e («be», «de», «ce»).
+  const sonidoDeSigla = (letra: string) => (VOCALES.includes(letra) ? letra : letra === "k" ? "ka" : `${letra}e`);
+  const sonido = (p: string): string => {
+    const ultima = p.trim().split(/\s+/).at(-1) ?? p;
+    const limpia = ultima.replace(/[^\p{L}]/gu, "");
+    const esSigla = limpia.length > 1 && limpia === limpia.toLocaleUpperCase("tr-TR") && limpia !== limpia.toLocaleLowerCase("tr-TR");
+    const baja = [...limpia.toLocaleLowerCase("tr-TR")].map((c) => PLANAS[c] ?? c).join("");
+    return esSigla ? sonidoDeSigla(baja.at(-1) ?? "e") : baja;
+  };
+  // La l final de algunos préstamos es palatal y pide sufijo de adelante («Senegal'de», «Nepal'de»).
+  const L_PALATAL = /^(?:senegal|nepal)$/u;
+  const ultimaVocal = (s: string) => (L_PALATAL.test(s) ? "e" : ([...s].reverse().find((c) => VOCALES.includes(c)) ?? "e"));
+  // Armonía de dos formas (a/e) y de cuatro (ı/i/u/ü).
+  const a2 = (v: string) => (ATRAS.has(v) ? "a" : "e");
+  const i4 = (v: string) => (v === "a" || v === "ı" ? "ı" : v === "e" || v === "i" ? "i" : v === "o" || v === "u" ? "u" : "ü");
+  const de = (p: string) => {
+    const s = sonido(p);
+    const trasVocal = VOCALES.includes(s.at(-1) ?? "") || POSESIVO.test(p);
+    return `${p}'${trasVocal ? "n" : ""}${i4(ultimaVocal(s))}n`;
+  };
+  const en = (p: string) => {
+    const s = sonido(p);
+    const v = a2(ultimaVocal(s));
+    if (POSESIVO.test(p)) return `${p}'nd${v}`;
+    return `${p}'${SORDAS.has(s.at(-1) ?? "") ? "t" : "d"}${v}`;
+  };
+  return { nombre: (p) => p, de, en, para: (p) => `${p} için` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr };

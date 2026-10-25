@@ -56,6 +56,16 @@ export function formatearMoneda(n: number, locale: string, moneda: Moneda, decim
     .join("");
 }
 
+// Mayúscula o minúscula en la primera letra con las reglas del locale: en turco «i» sube a «İ» e «I»
+// baja a «ı» (toUpperCase daría «Iş» en vez de «İş»).
+export function mayusculaInicial(s: string, locale: string): string {
+  return s ? s.charAt(0).toLocaleUpperCase(locale) + s.slice(1) : s;
+}
+
+export function minusculaInicial(s: string, locale: string): string {
+  return s ? s.charAt(0).toLocaleLowerCase(locale) + s.slice(1) : s;
+}
+
 // decimales fija los decimales; sin él van de 0 a `maximo` (2 si no se dice: un monto en KWD o TND
 // lleva 3 y el formulario pasa los de la moneda para no perder el último).
 export function formatearNumero(n: number, locale: string, decimales?: number, maximo = 2): string {

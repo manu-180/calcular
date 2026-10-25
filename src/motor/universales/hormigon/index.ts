@@ -16,6 +16,7 @@ import { contenidoNl } from "./contenido/nl";
 import { contenidoPl } from "./contenido/pl";
 import { contenidoPt } from "./contenido/pt";
 import { contenidoSv } from "./contenido/sv";
+import { contenidoTr } from "./contenido/tr";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiHormigon } from "./definicion";
 import { textosAr } from "./textos/ar";
@@ -34,13 +35,14 @@ import { textosNl } from "./textos/nl";
 import { textosPl } from "./textos/pl";
 import { textosPt } from "./textos/pt";
 import { textosSv } from "./textos/sv";
+import { textosTr } from "./textos/tr";
 import { textosZh } from "./textos/zh";
 
 export default definirUniversal<UiHormigon>({
   id: "hormigon",
   concepto: "hormigon",
   definir,
-  textos: { ar: textosAr, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, zh: textosZh },
-  contenido: { ar: contenidoAr, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, zh: contenidoZh },
+  textos: { ar: textosAr, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, tr: textosTr, zh: textosZh },
+  contenido: { ar: contenidoAr, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, tr: contenidoTr, zh: contenidoZh },
   casos,
 });

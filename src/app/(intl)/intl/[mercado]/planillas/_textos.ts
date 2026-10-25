@@ -2,15 +2,14 @@ import type { Mercado } from "@/motor/tipos";
 import type { ProductoIntl } from "@/lib/pagos/catalogo-intl";
 import { precioUSD } from "@/lib/pagos/ofertas-intl";
 import { rellenar, textosVenta } from "@/lib/pagos/textos";
+import { mayusculaInicial, minusculaInicial } from "@/motor/formato";
 
 export function precioIntl(p: ProductoIntl, locale: string): string {
   return precioUSD(p.precioCentavos, locale);
 }
 
-const minuscula = (s: string) => `${s.charAt(0).toLowerCase()}${s.slice(1)}`;
-const mayuscula = (s: string) => `${s.charAt(0).toUpperCase()}${s.slice(1)}`;
-
 // Los textos de las páginas de catálogo, landing, compra y gracias, en el idioma y el trato del país.
+// La mayúscula y la minúscula iniciales siguen el locale: en turco «i» sube a «İ» e «I» baja a «ı».
 export function textosPlanillas(m: Mercado) {
   const x = textosVenta(m.idioma, m.trato, m.locale).planillas;
   const conPais = (s: string) => rellenar(s, { pais: m.nombre });
@@ -26,9 +25,9 @@ export function textosPlanillas(m: Mercado) {
     pronto: x.pronto,
     incluye: x.incluye,
     incluyeLista: (p: ProductoIntl) =>
-      p.tipo === "informe" ? [...x.incluyeInforme] : x.incluyePlanilla.map((s) => rellenar(s, { disparador: minuscula(p.disparadorActualizacion) })),
+      p.tipo === "informe" ? [...x.incluyeInforme] : x.incluyePlanilla.map((s) => rellenar(s, { disparador: minusculaInicial(p.disparadorActualizacion, m.locale) })),
     pagoUnico: x.pagoUnico,
-    comprarTitulo: (p: ProductoIntl) => (p.tipo === "informe" ? mayuscula(p.tituloCorto) : rellenar(x.comprarPlanilla, { titulo: p.tituloCorto })),
+    comprarTitulo: (p: ProductoIntl) => (p.tipo === "informe" ? mayusculaInicial(p.tituloCorto, m.locale) : rellenar(x.comprarPlanilla, { titulo: p.tituloCorto })),
     comprarBajada: (p: ProductoIntl) => (p.tipo === "informe" ? x.comprarBajadaInforme : x.comprarBajadaPlanilla),
     etiquetaEmail: x.etiquetaEmail,
     seguirPago: x.seguirPago,

@@ -2189,7 +2189,125 @@ const idn: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn };
+// ───────────────────────────── tr ─────────────────────────────
+
+// Turco (ADR 0002, D12): impersonal, como el resto de los rankings. Ningún sufijo va pegado a una
+// cifra ni a un valor interpolado: la posición usa el ordinal con punto («5. sıra») y los montos van
+// sueltos o detrás de dos puntos.
+const tr: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Ülke sıralamaları",
+    seo: {
+      titulo: ["Ülkelere göre maaş ve vergi sıralaması", "Ülke sıralamaları"],
+      descripcion: (n) => `Aynı maaşın en çok yettiği yer, Vergi Özgürlük Günü ve zamdan ne kaldığı, ${n} ülkede. Resmî veriler, her gün güncel.`,
+    },
+    ceja: "Açık veri",
+    h1: "Maaş ve vergi, ülke ülke",
+    bajada: (n) => `Aynı alım gücüyle karşılaştırılan ${n} ülke, her biri kendi resmî hesaplama aracıyla. Sıralamalar her gün kendiliğinden güncellenir.`,
+    actualizado: (f) => `Güncelleme tarihi: ${f}`,
+    ver: "Sıralamayı gör",
+    niveles: { titulo: "Referans maaş", nombres: { bajo: "Düşük maaş", medio: "Orta maaş", alto: "Yüksek maaş" }, anual: (m) => `yıllık ${m}` },
+    tramos: { titulo: "Zammın büyüklüğü", nombre: (a, b) => `${a} ile ${b} arası` },
+    referencia: {
+      nivel: (m) => `yıllık ${m} uluslararası dolar brüt maaş`,
+      tramo: (a, b) => `yıllık brüt maaşta ${a} uluslararası dolardan ${b} uluslararası dolara zam`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${total} ülke içinde ${p}. sıra`,
+    de: (t) => `toplam ${t} ülke`,
+    empate: (o) => (o === 1 ? "bir ülkeyle aynı sırada" : `${o} ülkeyle aynı sırada`),
+    fuera: (pais) => `${pais} henüz bu sıralamalarda yok: karşılaştırmaya girecek bir net maaş hesaplama aracı eksik.`,
+    lider: "Sıralamanın başında",
+    global: (n) => `${n} ülke, birinciden sonuncuya`,
+    valores: {
+      porMes: (m) => `aylık ${m}`,
+      ningunDia: "Tek bir gün bile yok",
+      deCada: (n) => `Her 100 birimden ${n} birim`,
+      carga: (pct) => `Gelir vergisi ve primler: ${pct}`,
+      cargaAumento: (pct) => `Zammın ${pct} kadarı vergi ve primlere gidiyor`,
+    },
+    cambio: {
+      titulo: (mes) => `${mes} döneminden bu yana değişim`,
+      sube: (n) => `${n} sıra yükseldi`,
+      baja: (n) => `${n} sıra geriledi`,
+      igual: "Aynı sırada",
+      nuevo: "Sıralamaya yeni girdi",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Sıra",
+      pais: "Ülke",
+      edicion: "Bu sürüm",
+      unidad: "Uluslararası dolar cinsinden",
+    },
+    kit: {
+      titulo: "Basın için",
+      bajada: "Bu sıralamanın cümlesi, grafiği ve bağlantısı, yayımlanmaya hazır.",
+      compartir: "Paylaş",
+      descargar: "Grafiği indir",
+      copiar: "Alıntıyı kopyala",
+      copiado: "Alıntı kopyalandı",
+      enlace: "Bağlantı kopyalandı",
+      compartido: "Paylaşıldı",
+      error: "Kopyalanamadı. Metin yukarıda, elle kopyalanabilir.",
+      cita: (frase, ranking, ref, fecha) => `${frase}, “${ranking}” sıralaması (${ref}). Kaynak: CalcularYa, ${fecha} tarihli veriler.`,
+      texto: (frase, ranking) => `${frase}, “${ranking}” sıralaması.`,
+      alt: (ranking) => `“${ranking}” sıralamasının grafiği`,
+    },
+    metodo: {
+      titulo: "Nasıl hazırlanıyor",
+      bajada: "Her ülke, bugünkü kurallarla kendi resmî net maaş hesaplama aracından geçer. Ardından ülkeler aynı alım gücüyle karşılaştırılır.",
+      niveles: (b, m, a) => `Referans maaşlar: yıllık brüt ${b}, ${m} ve ${a} uluslararası dolar.`,
+      empates: "Tabloda aynı değere sahip iki ülke aynı sırayı paylaşır ve sonraki sıra atlanır (1, 2, 2, 4).",
+      historial: "Sıra değişimi, her ay kaydedilen sıralama görüntüsüyle karşılaştırılarak ölçülür. Önceki aya ait görüntü yoksa değişim gösterilmez.",
+      actualizacion: "Tablo her gün her ülkenin güncel verileriyle yeniden hesaplanır. Yeni bir ülke, hesaplama aracı yayına girer girmez kendiliğinden eklenir.",
+      ver: "Yöntemin tamamını gör",
+    },
+    datos: {
+      titulo: "Açık veri",
+      bajada: "Bu sıralamaların rakamları, ülke ülke, JSON ve CSV biçiminde. Her gün güncellenir.",
+      json: "JSON verisi",
+      csv: "CSV verisi",
+      licencia: "CC BY 4.0 lisansı: CalcularYa kaynak gösterilip bu sayfaya bağlantı verildiği sürece kullanılabilir, çoğaltılabilir ve yayımlanabilir.",
+      atribucion: "Önerilen kaynak gösterimi",
+    },
+    mundo: { titulo: "Belirli bir maaşla", texto: (n) => `Kendi maaşıyla hesap yapmak ve her ülkenin tarihini görmek isteyenler için “${n}” sayfası var.`, ir: "Hesapla" },
+    otros: "Diğer sıralamalar",
+    rankings: {
+      rinde: {
+        titulo: "Aynı maaş en çok nerede yetiyor",
+        corto: "En çok yeten maaş",
+        seo: ["Maaş en çok nerede yetiyor: ülke sıralaması", "Aynı maaş en çok nerede yetiyor"],
+        descripcion: (n) => `Aynı alım gücüyle aynı maaş, ${n} ülkede: her ülkenin vergi kurallarından sonra ele ne geçiyor. Her gün güncel.`,
+        bajada: "Aynı alım gücüyle aynı brüt maaş, her ülkenin kurallarından geçer. En üstte, ele en çok paranın geçtiği ülkeler var.",
+        metrica: "Aylık net",
+        carga: "Vergi ve primler",
+        como: "Aylık net maaş, 12 ayın ortalamasıdır ve uluslararası dolar cinsindendir.",
+      },
+      libertad: {
+        titulo: "Ülkelere göre Vergi Özgürlük Günü",
+        corto: "Vergi Özgürlük Günü",
+        seo: ["Ülkelere göre Vergi Özgürlük Günü: sıralama", "Ülkelere göre Vergi Özgürlük Günü"],
+        descripcion: (n) => `Gelir vergisini ve primleri ödemek için yılın hangi gününe kadar çalışıldığı, aynı maaşla ${n} ülkede.`,
+        bajada: "Gelir vergisini ve primleri ödemek için yılın hangi gününe kadar çalışıldığı, tüm ülkelerde aynı maaşla. En üstte, bu günün en erken geldiği ülkeler var.",
+        metrica: "Devlet için çalışılan son gün",
+        carga: "Vergi ve primler",
+        como: "Tarih, yükü 1 Ocak'tan başlayarak yıla dağıtır. Örneğin yük %30 ise yılın %30 kadarı devlet için çalışılır.",
+      },
+      aumento: {
+        titulo: "Maaş zammından ne kalıyor",
+        corto: "Zamdan kalan",
+        seo: ["Maaş zammından ne kalıyor: ülke sıralaması", "Maaş zammından ne kalıyor"],
+        descripcion: (n) => `Brüt maaşa eklenen her 100 birimden gelir vergisi ve primlerden sonra cebe ne kaldığı, ${n} ülkede.`,
+        bajada: "Brüt maaşa eklenen her 100 birimden gelir vergisi ve primlerden sonra cebe ne kaldığı. En üstte, en çok kalan ülkeler var.",
+        metrica: "Her 100 birimden kalan",
+        carga: "Marjinal oran",
+        como: "İki maaş arasındaki marjinal orandır: zammın vergi ve primlere giden kısmı.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

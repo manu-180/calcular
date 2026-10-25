@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosTr: TextosUi<UiCalorias> = {
+  slug: "kalori-ihtiyaci-hesaplama",
+  ui: () => ({
+    sexo: "Cinsiyet",
+    mujer: "Kadın",
+    hombre: "Erkek",
+    edad: "Yaş",
+    peso: (u) => `Kilo (${u})`,
+    altura: (u) => `Boy (${u})`,
+    pies: "Boy: fit (ft)",
+    pulgadas: "Boy: inç (in)",
+    actividad: "Hareket düzeyi",
+    sedentaria: "Az ya da hiç",
+    ligera: "Hafif (haftada 1 ile 3 gün)",
+    moderada: "Orta (haftada 3 ile 5 gün)",
+    alta: "Yüksek (haftada 6 ya da 7 gün)",
+    muyAlta: "Çok yüksek (yoğun antrenman ya da bedensel iş)",
+    objetivo: "Hedef",
+    mantener: "Kilomu korumak",
+    bajar: "Yavaş yavaş kilo vermek",
+    subir: "Yavaş yavaş kilo almak",
+    basal: "Bazal metabolizma hızı (kcal/gün)",
+    basalAyuda: "Vücudunuzun tam dinlenme hâlinde harcadığı enerji.",
+    mantenimiento: "Kilonuzu korumak için kalori (kcal/gün)",
+    calObjetivo: "Hedefiniz için kalori (kcal/gün)",
+    calObjetivoAyuda: "Ölçülü bir değişiklik: kilo vermek için günde 500 kcal eksik, almak için 300 kcal fazla.",
+    errorEdad: "Formül 15 ile 100 yaş arasındaki kişiler içindir.",
+    errorPeso: "Kilo sıfırdan büyük olmalıdır.",
+    errorAltura: "Boy sıfırdan büyük olmalıdır.",
+    notaMinimo: (kcal) => `Kilo verme hedefinde rakam günde ${kcal} kcal altına inmez. Bundan az yemek için bir uzmandan destek alın.`,
+    aviso: "Bu, Mifflin-St Jeor formülüyle yapılmış bir tahmindir. Her vücut farklıdır: bir sağlık ya da beslenme uzmanına danışmanın yerini tutmaz.",
+  }),
+};

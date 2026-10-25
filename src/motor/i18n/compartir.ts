@@ -338,6 +338,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Lihat berapa gaji bersih Anda di lebih dari ${n} negara`,
     },
   },
+  tr: {
+    base: {
+      boton: "Paylaş",
+      botonAria: "Bu hesaplama aracını paylaşın",
+      menuTitulo: "Şununla paylaşın",
+      copiar: "Bağlantıyı kopyala",
+      copiado: "Bağlantı kopyalandı",
+      compartido: "Paylaşıldı",
+      errorCorto: "Kopyalanamadı",
+      errorAyuda: "Bağlantı kopyalanamadı. Tarayıcının adres çubuğundan kopyalayın.",
+      nuevaPestana: "yeni sekmede açılır",
+      mensaje: (nombre) => `${nombre}. Ücretsiz, hesaplaması bir dakika sürer.`,
+      puenteIntro: "Başka ülkelerde durum ne?",
+      puenteEnlace: (n) => `En az ${n} ülkede net maaşınızın ne kadar olduğunu görün`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

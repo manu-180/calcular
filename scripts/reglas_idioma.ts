@@ -115,7 +115,32 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Turco: un solo registro, el de los bancos y e-Devlet («siz» con formas corteses; ADR 0002, D12).
+  // Se atrapa el «sen»: el pronombre, la segunda persona del singular en los tiempos que no se
+  // confunden con otra cosa (-abilirsin, -iyorsun, -eceksin, -melisin, el condicional -rsen) y los
+  // posesivos de sustantivos terminados en vocal (kredin, paran), que no chocan con el genitivo.
+  // También la jerga de chat. El genitivo de los terminados en consonante («maaşın», «faizin») es
+  // legítimo y no se busca.
+  tr: {
+    informal: [
+      { re: palabras("sen|seni|sana|senin|sende|senden|seninle|sence|kendin"), nombre: "«sen»" },
+      { re: /\p{L}{2,}(?:abilir|ebilir|[ıiuü]yor|acak|ecek|malı|meli)s[ıiuü]n(?!\p{L})/u, nombre: "segunda persona de «sen» (va -siniz)" },
+      { re: /\p{L}{2,}[aeıiouöü]rs[ae]n(?!\p{L})/u, nombre: "condicional de «sen» (va -rseniz)" },
+      { re: palabras("kredin|paran|bütçen|araban|kiran|ailen"), nombre: "posesivo de «sen» (va -niz)" },
+      { re: palabras("hadi|haydi|kanka|abi|abla|falan|valla|vallahi"), nombre: "jerga de chat" },
+    ],
+    formal: [],
+  },
 };
+
+// En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
+// y el signo de porcentaje va delante del número («%20»), como lo da Intl en tr-TR.
+function reglasTr(texto: string): string[] {
+  const p: string[] = [];
+  if (/\p{L}’\p{L}/u.test(texto)) p.push("apóstrofo tipográfico (en turco va «'»)");
+  if (/\d ?%(?![\p{L}\d])/u.test(texto)) p.push("porcentaje detrás del número (en turco va «%20»)");
+  return p;
+}
 
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {
   const r = REGISTRO[idioma];
@@ -211,5 +236,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   }
   if (idioma === "ar") return [...p, ...reglasAr(texto)];
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
+  if (idioma === "tr") p.push(...reglasTr(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

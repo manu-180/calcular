@@ -338,6 +338,85 @@ por salario mínimo (el término general; UMP y UMK son los de cada provincia o 
 aportes y «kiriman» por cada sueldo aportado. Las imágenes OG no suman fuente de respaldo: Geist cubre
 el alfabeto latino del indonesio.
 
+### D12. Turco (2026-10-24)
+
+D9 (pl, sv, da, nb, fi), D10 (árabe) y D11 (indonesio) están en ramas sin mergear
+(`claude/mundo-motor-eu`, `claude/mundo-motor-ar`, `claude/mundo-motor-id`); esta entrada toma el
+número siguiente para no chocar al mergear.
+
+`IDIOMAS` suma `tr`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+«Tu sueldo en el mundo» (`ulkelere-gore-maas`), el diccionario de venta completo (todas las familias,
+`informe-calculo` incluida, informes, planillas y mails) y las 41 universales están en turco.
+
+**Trato.** Un solo registro, el de los bancos y servicios digitales de Turquía (Garanti, İş Bankası,
+e-Devlet, GİB): «siz» con las formas corteses en las oraciones («hesaplayın», «girin», «seçin»,
+«maaşınız»), nunca «sen». Los botones y enlaces cortos van en imperativo breve («Hesapla», «Kodu
+kopyala»), como los botones de esos mismos sitios. Los mercados van con `trato: "usted"`, como ja, ko,
+zh e id; los diccionarios escriben solo `base`. Las cartas del informe van en primera persona formal
+(«talep ederim») y cierran la oración antes de la cifra con dos puntos («... toplam tutar:»), porque en
+turco el verbo va al final. La tarjeta para compartir va en primera persona.
+
+**Gramática del país.** El turco no tiene artículos: el caso va como sufijo detrás del nombre, con
+apóstrofo por ser nombre propio. `GRAMATICA.tr`: `nombre(p)` = p; `de(p)` es el genitivo
+(«Türkiye'nin», «Almanya'nın», «Peru'nun», «Irak'ın»); `en(p)` el locativo («Türkiye'de», «Almanya'da»,
+«Kuveyt'te», «Fas'ta») y `para(p)` = «p için». El sufijo sigue la armonía vocálica de la última vocal y
+el locativo endurece la d tras f, s, t, k, ç, ş, h, p. Las siglas se leen por sus letras («ABD'de»,
+«BAE'nin»), los compuestos con posesivo toman la n pronominal («Dominik Cumhuriyeti'nde», «Birleşik Arap
+Emirlikleri'nin») y la l palatal de Senegal y Nepal pide sufijo de adelante. Los diccionarios no pegan
+sufijos a cifras ni a valores interpolados (la armonía dependería de cómo se lee el número): la fecha va
+en el medio («24 Ekim 2026 tarihine kadar») y los montos después de dos puntos.
+
+**Mayúsculas.** La i del turco tiene dos letras (i/İ, ı/I): `toUpperCase` daría «Iş» en vez de «İş».
+`formato.ts` suma `mayusculaInicial` y `minusculaInicial` con el locale, y las usan el menú, la oferta
+secundaria, las planillas y la carta del informe (`toLocaleLowerCase`). Los buscadores (sitio, país,
+mundo, embed) pasan la ı a i, que NFD no descompone, para que «kalıp» y «kalip» coincidan.
+
+**Formato.** Intl de tr-TR: miles con punto, decimal con coma, la lira y el porcentaje delante
+(«₺1.500.000», «%20»); `parsearNumero` no cambia (casos nuevos en `check_motor`). El informe muestra los
+campos de porcentaje con `formatearPorcentaje`, que da «%20» en turco. Fechas largas «24 Ekim 2026». El
+sustantivo no va en plural después de un número: las dos formas de cada unidad son iguales («3 gün»,
+«1,5 yıl»). `inferir.ts` reconoce «aylık» y «yıllık».
+
+**Slugs.** ASCII en turco (ç ğ ı ö ş ü pasan a c g i o s u), con la búsqueda real de Google Turquía,
+casi siempre con el sufijo «hesaplama»: `kredi-hesaplama`, `konut-kredisi-hesaplama`, `kdv-hesaplama`,
+`efektif-faiz-hesaplama`, `bilesik-faiz-hesaplama`, `basit-faiz-hesaplama`, `birikim-hesaplama`,
+`emeklilik-birikimi-hesaplama`, `kredi-karti-borc-hesaplama`, `butce-hesaplama`,
+`acil-durum-fonu-hesaplama`, `arac-masrafi-hesaplama`, `yatirim-getirisi-hesaplama`,
+`kar-marji-hesaplama`, `basabas-noktasi-hesaplama`, `freelance-ucret-hesaplama`,
+`saatlik-ucret-hesaplama`, `maas-zammi-hesaplama`, `calisma-saati-hesaplama`, `yuzde-hesaplama`,
+`yuzde-degisim-hesaplama`, `oran-oranti-hesaplama`, `indirim-hesaplama`, `bahsis-hesaplama`,
+`hesap-bolme-hesaplama`, `agirlikli-ortalama-hesaplama`, `yas-hesaplama`,
+`iki-tarih-arasi-gun-hesaplama`, `vucut-kitle-indeksi-hesaplama`, `kalori-ihtiyaci-hesaplama`,
+`tahmini-dogum-tarihi-hesaplama`, `yumurtlama-donemi-hesaplama`, `kosu-temposu-hesaplama`,
+`yakit-hesaplama`, `elektrik-tuketimi-hesaplama`, `boya-hesaplama`, `metrekare-hesaplama`,
+`fayans-hesaplama`, `beton-hesaplama`; sin sufijo donde la búsqueda es una frase
+(`ev-almak-mi-kira-mi`, `tarihe-gun-ekleme`). «Tu sueldo en el mundo»: `ulkelere-gore-maas`.
+
+**Universales.** Textos nativos de Turquía y neutrales de país (el turco también se usa en el norte de
+Chipre): taksit, vade, peşinat, anapara, yıllık nominal y efektif faiz, KDV dahil/hariç, matrah, kâr
+marjı, başabaş noktası, kasko, VKİ, son adet tarihi, fire payı, çimento torbası; sin organismos de un
+solo país (nada de SGK, GİB, BDDK ni DASK) y sin cifras legales tipeadas: la tasa de `iva` sale del dato
+del país. Como en Turquía los bancos anuncian la tasa mensual, la ayuda de crédito y tarjeta dice cómo
+pasarla a anual. Los ejemplos se calculan con las funciones de cada `definicion.ts`.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): sin exclamaciones, rayas ni guion como pausa; se atrapan «sen» y sus formas que no se
+confunden con otra cosa (-abilirsin, -iyorsun, -eceksin, -melisin, el condicional -rsen), los posesivos
+de «sen» en sustantivos terminados en vocal (kredin, paran, que no chocan con el genitivo), la jerga de
+chat, el apóstrofo tipográfico y el porcentaje detrás del número.
+
+**Prueba.** `zz-tr` (Zetaland, locale `tr-001`) es una edición interna como `zz-ja`. `check_universales`
+prueba tr-TR con TRY, «Saint Vincent ve Grenadinler» por el nombre largo y «Demokratik Kongo
+Cumhuriyeti» por el largo con posesivo.
+
+**Puesta al día con main (7d190a68).** Calendario laboral y fiscal (`maas-takvimi`), «¿Cuántas horas de
+trabajo cuesta?» (`kac-saatlik-calisma`, con el nombre «Kaç saat çalışmak gerekir?», la frase que se
+busca en Turquía), rankings (`ulke-siralamasi`: `maasin-alim-gucu`, `vergi-ozgurluk-gunu`,
+`zamdan-ne-kalir`), «Sueldos reales» (`gercek-maaslar`) y afiliados en turco, con las mismas reglas:
+calendario, horas y rankings impersonales, sueldos y afiliados con «siz»; las cifras, fechas y montos
+van sueltos o tras dos puntos («Doğrulama tarihi: ...», «Sıra: 3 / 40»). Las imágenes OG no suman
+fuente de respaldo: Geist cubre ç, ğ, ı, İ, ö, ş y ü.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.
