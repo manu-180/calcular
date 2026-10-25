@@ -531,4 +531,11 @@ const uk: GramaticaPais = (() => {
   return { nombre: (p) => p, de: (p) => formas(p)[0], en, para: (p) => `для ${formas(p)[0]}` };
 })();
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk };
+// El uzbeko no tiene artículos: el caso va como sufijo pegado al nombre, sin apóstrofo y sin armonía
+// vocálica (la ortografía latina de 1995 escribe «Oʻzbekistonda», «Germaniyaning», «AQShda»). Genitivo
+// -ning, locativo -da y «para» con la posposición suelta «uchun». Un nombre compuesto toma el sufijo
+// en la última palabra («Kongo Demokratik Respublikasida»). Los diccionarios no pegan sufijos a cifras
+// ni a valores interpolados (ADR 0002, D16).
+const uz: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}ning`, en: (p) => `${p}da`, para: (p) => `${p} uchun` };
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz };

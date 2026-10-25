@@ -2660,7 +2660,125 @@ const uk: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk };
+// ───────────────────────────── uz ─────────────────────────────
+
+// Uzbeko latino (ADR 0002, D16). El ordinal uzbeko se escribe con guion pegado al número («5-oʻrin»);
+// como ningún sufijo va pegado a una cifra interpolada, el puesto va como «oʻrni: 5» y el total con
+// «ta» suelto («41 tadan»).
+const uz: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Mamlakatlar reytingi",
+    seo: {
+      titulo: ["Mamlakatlar boʻyicha ish haqi va soliqlar reytingi", "Mamlakatlar reytingi"],
+      descripcion: (n) => `Bir xil maosh qayerda koʻproq yetadi, soliqdan ozodlik kuni va oshgan maoshdan qancha qoladi: ${n} ta mamlakat. Rasmiy maʼlumotlar, har kuni yangilanadi.`,
+    },
+    ceja: "Ochiq maʼlumotlar",
+    h1: "Ish haqi va soliqlar, mamlakatma-mamlakat",
+    bajada: (n) => `${n} ta mamlakat bir xil xarid qobiliyati bilan va har birining rasmiy kalkulyatori orqali solishtirilgan. Reytinglar har kuni oʻzi yangilanadi.`,
+    actualizado: (f) => `Yangilangan sana: ${f}`,
+    ver: "Reytingni koʻrish",
+    niveles: { titulo: "Namunaviy maosh", nombres: { bajo: "Past maosh", medio: "Oʻrtacha maosh", alto: "Yuqori maosh" }, anual: (m) => `yiliga ${m}` },
+    tramos: { titulo: "Maosh oshishi oraligʻi", nombre: (a, b) => `Oldin ${a}, keyin ${b}` },
+    referencia: {
+      nivel: (m) => `yiliga ${m} xalqaro dollar yalpi maosh`,
+      tramo: (a, b) => `yalpi maoshning yiliga ${a} xalqaro dollardan ${b} xalqaro dollargacha oshishi`,
+    },
+    posicion: (pais, p, total) => `${pais}, oʻrni: ${p} (jami ${total})`,
+    de: (t) => `${t} tadan`,
+    empate: (o) => (o === 1 ? "yana bir mamlakat bilan teng" : `yana ${o} ta mamlakat bilan teng`),
+    fuera: (pais) => `${pais} hali bu reytinglarda yoʻq: solishtirishga mos keladigan qoʻlga tegadigan maosh kalkulyatori kerak.`,
+    lider: "Reyting boshida",
+    global: (n) => `${n} ta mamlakat, birinchisidan oxirgisigacha`,
+    valores: {
+      porMes: (m) => `oyiga ${m}`,
+      ningunDia: "Bir kun ham emas",
+      deCada: (n) => `har 100 birlikdan ${n}`,
+      carga: (pct) => `soliq va badallarga: ${pct}`,
+      cargaAumento: (pct) => `oshgan qismning soliq va badallarga ketadigani: ${pct}`,
+    },
+    cambio: {
+      titulo: (mes) => `Oʻzgarish, solishtirish oyi: ${mes}`,
+      sube: (n) => `${n} pogʻona yuqoriga`,
+      baja: (n) => `${n} pogʻona pastga`,
+      igual: "Oʻrni oʻzgarmagan",
+      nuevo: "Reytingda yangi",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}: ${ref}`,
+      puesto: "Oʻrin",
+      pais: "Mamlakat",
+      edicion: "Shu nashr",
+      unidad: "Xalqaro dollarda",
+    },
+    kit: {
+      titulo: "Iqtibos uchun",
+      bajada: "Bu reytingning jumlasi, grafigi va havolasi, eʼlon qilishga tayyor.",
+      compartir: "Ulashish",
+      descargar: "Grafikni yuklab olish",
+      copiar: "Iqtibosni nusxalash",
+      copiado: "Iqtibos nusxalandi",
+      enlace: "Havola nusxalandi",
+      compartido: "Ulashildi",
+      error: "Nusxalab boʻlmadi. Matn yuqorida, uni qoʻlda nusxalash mumkin.",
+      cita: (frase, ranking, ref, fecha) => `«${ranking}» reytingi: ${frase} (${ref}). Manba: CalcularYa, maʼlumotlar sanasi: ${fecha}.`,
+      texto: (frase, ranking) => `«${ranking}» reytingi: ${frase}.`,
+      alt: (ranking) => `«${ranking}» reytingi grafigi`,
+    },
+    metodo: {
+      titulo: "Qanday tuziladi",
+      bajada: "Har bir mamlakat bugungi qoidalar bilan oʻzining rasmiy qoʻlga tegadigan maosh kalkulyatori orqali hisoblanadi. Keyin bir xil xarid qobiliyati bilan solishtiriladi.",
+      niveles: (b, m, a) => `Namunaviy maoshlar: yiliga ${b}, ${m} va ${a} xalqaro dollar yalpi.`,
+      empates: "Jadvalda qiymati bir xil boʻlgan ikki mamlakat bir oʻrinni boʻlishadi, keyingisi esa bitta oʻrinni tashlab oʻtadi (1, 2, 2, 4).",
+      historial: "Oʻrin oʻzgarishi har oy saqlanadigan reyting surati bilan solishtiriladi. Oʻtgan oy surati boʻlmasa, koʻrsatilmaydi.",
+      actualizacion: "Jadval har kuni har bir mamlakatning amaldagi maʼlumotlari bilan qayta tuziladi. Yangi mamlakat kalkulyatori ishga tushishi bilan oʻzi qoʻshiladi.",
+      ver: "Toʻliq metodologiyani koʻrish",
+    },
+    datos: {
+      titulo: "Ochiq maʼlumotlar",
+      bajada: "Bu reytinglar ortidagi raqamlar, mamlakatma-mamlakat, JSON va CSV formatida. Har kuni yangilanadi.",
+      json: "JSON maʼlumotlari",
+      csv: "CSV maʼlumotlari",
+      licencia: "CC BY 4.0 litsenziyasi: CalcularYa nomini va shu sahifaga havolani koʻrsatgan holda bemalol foydalanish, koʻpaytirish va eʼlon qilish mumkin.",
+      atribucion: "Tavsiya etilgan iqtibos",
+    },
+    mundo: { titulo: "Aniq maosh bilan", texto: (n) => `Oʻz maoshingiz bilan hisoblab, har bir mamlakatdagi sanani koʻrish uchun «${n}» sahifasi bor.`, ir: "Hisoblab koʻrish" },
+    otros: "Boshqa reytinglar",
+    rankings: {
+      rinde: {
+        titulo: "Bir xil maosh qayerda koʻproq yetadi",
+        corto: "Koʻproq yetadigan maosh",
+        seo: ["Bir xil maosh qayerda koʻproq yetadi: mamlakatlar reytingi", "Bir xil maosh qayerda koʻproq yetadi"],
+        descripcion: (n) => `Bir xil xarid qobiliyatidagi bir xil maosh ${n} ta mamlakatda: har bir mamlakat soliq qoidalaridan keyin qancha qoladi. Har kuni yangilanadi.`,
+        bajada: "Bir xil xarid qobiliyatidagi bir xil yalpi maosh har bir mamlakat qoidalaridan oʻtadi. Yuqorida qoʻlga eng koʻp tegadigan mamlakatlar.",
+        metrica: "Oyiga qoʻlga tegadigan",
+        carga: "Soliq va badallar",
+        como: "Oylik qoʻlga tegadigan maosh 12 oyning oʻrtachasi, xalqaro dollarda.",
+      },
+      libertad: {
+        titulo: "Mamlakatlar boʻyicha soliqdan ozodlik kuni",
+        corto: "Soliqdan ozodlik kuni",
+        seo: ["Mamlakatlar boʻyicha soliqdan ozodlik kuni: reyting", "Mamlakatlar boʻyicha soliqdan ozodlik kuni"],
+        descripcion: (n) => `Daromad soligʻi va badallar toʻlab boʻlinadigan kun, bir xil maosh bilan ${n} ta mamlakatda. Har kuni yangilanadi.`,
+        bajada: "Daromad soligʻi va badallar toʻlab boʻlinadigan kun, har bir mamlakatda bir xil maosh bilan. Yuqorida bu kun eng erta keladigan mamlakatlar.",
+        metrica: "Davlat uchun ishlanadigan oxirgi kun",
+        carga: "Soliq va badallar",
+        como: "Sana soliqni 1-yanvardan boshlab yilga taqsimlaydi: soliq yuki 30% boʻlsa, yilning 30% davlat uchun ishlanadi.",
+      },
+      aumento: {
+        titulo: "Oshgan maoshdan qancha qoladi",
+        corto: "Oshgan maoshdan qoladigani",
+        seo: ["Oshgan maoshdan qancha qoladi: mamlakatlar boʻyicha", "Oshgan maoshdan qancha qoladi"],
+        descripcion: (n) => `Yalpi maoshga qoʻshilgan har 100 birlikdan daromad soligʻi va badallardan keyin qancha qoladi, ${n} ta mamlakatda. Har kuni yangilanadi.`,
+        bajada: "Yalpi maoshga qoʻshilgan har 100 birlikdan daromad soligʻi va badallardan keyin qanchasi qoʻlga tegadi. Yuqorida eng koʻp qoladigan mamlakatlar.",
+        metrica: "Har 100 birlikdan qoladigani",
+        carga: "Marjinal stavka",
+        como: "Bu ikki maosh orasidagi marjinal stavka: oshgan qismning soliq va badallarga ketadigan ulushi.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

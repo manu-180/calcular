@@ -2402,7 +2402,112 @@ const uk: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk };
+// ───────────────────────────── uz ─────────────────────────────
+
+// Uzbeko latino (ADR 0002, D16): impersonal como los demás. {en} ya trae el locativo pegado al nombre
+// («Oʻzbekistonda»); a las cifras y a las demás marcas no se les pega ningún sufijo.
+const uz: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Bu necha soatlik mehnatga teng?",
+    seo: {
+      titulo: ["{en} iPhone uchun necha soat ishlash kerak", "{en} iPhone necha soatlik mehnatga teng", "Bu necha soatlik mehnatga teng?"],
+      tituloGlobal: ["Dunyo boʻyicha iPhone uchun necha soat ishlash kerak", "Bu necha soatlik mehnatga teng?"],
+      tituloProducto: ["{en} {producto} uchun necha soat ishlash kerak", "{en} {producto} necha soatlik mehnatga teng", "{producto} uchun necha soat ishlash kerak"],
+      tituloProductoGlobal: ["Dunyo boʻyicha {producto} uchun necha soat ishlash kerak", "{producto} uchun necha soat ishlash kerak"],
+      descripcion: "iPhone, MacBook va Spotify narxi {en} va {n} ta mamlakatda eng kam ish haqi bilan necha soatlik mehnatga tengligi. Rasmiy narxlar va har bir raqamning manbasi.",
+      descripcionGlobal: "iPhone, MacBook va Spotify narxi {n} ta mamlakatda eng kam ish haqi bilan necha soatlik mehnatga tengligi. Rasmiy narxlar va har bir raqamning manbasi.",
+      descripcionProducto: "{en} {producto} eng kam ish haqi bilan quyidagi mehnatga teng: {horas}. {n} ta mamlakat reytingi, rasmiy narxlar va manbalar bilan.",
+      descripcionProductoGlobal: "{producto} {n} ta mamlakatda eng kam ish haqi bilan necha soatlik mehnatga teng. Rasmiy doʻkon narxlari va har bir raqamning manbasi.",
+    },
+    ceja: "Indeks, {mes}",
+    h1: "Bu necha soatlik mehnatga teng?",
+    h1Producto: "{producto} necha soatlik mehnatga teng?",
+    bajada: "Bir xil mahsulotning rasmiy narxi {n} ta mamlakatda eng kam ish haqi boʻyicha mehnat soatlariga aylantirilgan.",
+    form: { producto: "Mahsulot", pais: "Mamlakat", porMes: "oyiga" },
+    heroe: {
+      antes: "{en} {producto} uchun eng kam ish haqi bilan",
+      despues: "ishlash kerak",
+      despuesMes: "har oy ishlash kerak",
+      jornadaUno: "8 soatlik ish kuni bilan {n} kun",
+      jornadaOtras: "8 soatlik ish kuni bilan {n} kun",
+      precio: "Rasmiy narx: {precio}",
+      salario: "Eng kam ish haqi: soatiga {monto}",
+      sinPrecio: "{en} bu mahsulotni sotadigan rasmiy doʻkon yoʻq.",
+      mejor: "{en} buning uchun {horas} yetadi.",
+      mejorPropio: "Indeksdagi hech bir mamlakatda buning uchun bundan kam soat ishlash kerak emas.",
+      puesto: "Oʻrin: {p} / {total}",
+      escalaHoras: "Har bir katak bir soatlik mehnat",
+      escalaSemanas: "Har bir katak 40 soatlik bir hafta",
+      masDeUnAnio: "Bir yildan ortiq mehnat",
+    },
+    ranking: {
+      titulo: "Mamlakatma-mamlakat",
+      bajada: "Eng kam soatdan eng koʻpiga qarab. Har bir narx ishlab chiqaruvchining shu mamlakatdagi rasmiy narxi.",
+      lista: "Mehnat soatlari boʻyicha saralangan mamlakatlar",
+      verTodos: "Barcha mamlakatlarni koʻrish ({n})",
+      verMenos: "Kamroq koʻrsatish",
+      elegido: "Tanlangan",
+      sinPrecio: "Indeksdagi {n} ta mamlakat uchun maʼlumot yoʻq: u yerda bu mahsulotni rasmiy doʻkon sotmaydi.",
+      horas: "Soat",
+      precio: "Rasmiy narx",
+    },
+    compartir: {
+      titulo: "Ulashish uchun karta",
+      bajada: "Unda faqat ochiq maʼlumotlar bor: rasmiy narx va eng kam ish haqi boʻyicha mehnat soatlari.",
+      boton: "Kartani ulashish",
+      descargar: "Stories uchun yuklab olish",
+      copiado: "Havola nusxalandi.",
+      compartido: "Tayyor, ulashildi.",
+      error: "Hozir ulashib boʻlmadi.",
+      texto: "{en} {producto} eng kam ish haqi bilan shuncha mehnatga teng: {horas}. Boshqa mamlakatlarda-chi?",
+      alt: "Karta koʻrinishi",
+    },
+    metodo: {
+      titulo: "Qanday hisoblaymiz",
+      estimacion: "Soatlar = rasmiy narx ÷ soatlik eng kam ish haqi. Bu rasmiy narxlarni solishtirish, xarid uchun taklif emas.",
+      supuestos: [
+        "Narx ishlab chiqaruvchining rasmiy doʻkonidagi eng arzon variantning narxi; u har bir mamlakat sahifasida koʻrib chiqiladi.",
+        "Spotify Premium bir oylik shaxsiy tarif, boshlangʻich takliflarsiz.",
+        "Eng kam ish haqi bugun amalda boʻlgan umumiy miqdor, toʻliq stavkada ishlaydigan voyaga yetgan xodim uchun. Soha yoki hudud boʻyicha bir nechta boʻlsa, asosiy hududdagi savdo sohasining miqdori olinadi.",
+        "Qonun eng kam miqdorni oy yoki kun boʻyicha belgilagan boʻlsa, u mamlakatning qonuniy ish haftasi bilan soatga aylantiriladi.",
+        "Ispaniya va Portugaliya eng kam ish haqini yiliga 14 marta toʻlaydi: Eurostat kabi u 12 oyga taqsimlanadi.",
+        "Doʻkon AQSh dollarida sotsa, narx shu mamlakatning rasmiy kursi boʻyicha aylantiriladi.",
+        "Kunlarni solishtirish uchun ish kuni hamma mamlakatda 8 soat deb olinadi.",
+      ],
+      fuentesTitulo: "Har bir raqamning manbasi",
+      fuentesBajada: "Har bir mamlakat eng kam ish haqi, ish haftasi va doʻkonda koʻrilgan narxlari bilan, har birining tekshirilgan sanasi bilan.",
+      salario: "Eng kam ish haqi",
+      jornada: "Ish haftasi",
+      precio: "Narx",
+      cambio: "Valyuta kursi",
+      consultado: "Koʻrib chiqilgan sana: {fecha}",
+      verificado: "Tekshirilgan sana: {fecha}",
+      verFuente: "Manbani koʻrish",
+      sello: "Narxlar koʻrib chiqilgan davr boshi: {desde}, oxiri: {hasta}. 120 kundan eski narx koʻrsatilmaydi.",
+      conversion: {
+        hora: "Qonun soatlik miqdorni belgilaydi.",
+        mes: "Oylik × 12 ÷ 52 hafta ÷ haftasiga {h} soat.",
+        mesPagas: "Oylik × {p} ta toʻlov ÷ 52 hafta ÷ haftasiga {h} soat.",
+        anio: "Yillik ÷ 52 hafta ÷ haftasiga {h} soat.",
+        semana: "Haftalik ÷ {h} soat.",
+        dia: "Kunlik ÷ ish kunidagi {h} soat.",
+        diaPagado: "Kunlik × {d} ta haq toʻlanadigan kun ÷ haftasiga {h} soat.",
+        divisor: "Oylik ÷ {d}, qonunda belgilangan soatlik boʻluvchi.",
+      },
+    },
+    faqTitulo: "Koʻp beriladigan savollar",
+    faq: [
+      { pregunta: "Soatlar qanday hisoblanadi?", respuesta: "Mahsulotning rasmiy narxi mamlakatdagi soatlik eng kam ish haqiga boʻlinadi. Qonun eng kam miqdorni oy yoki kun boʻyicha belgilagan boʻlsa, u shu mamlakatning qonuniy ish haftasi bilan soatga aylantiriladi." },
+      { pregunta: "Nega eng kam ish haqi olinadi?", respuesta: "Uni deyarli har bir mamlakatda qonun belgilaydi va rasmiy manbada tekshirish mumkin. Oʻrtacha ish haqi har bir mamlakatda boshqacha oʻlchanadi va bir xil solishtirib boʻlmaydi." },
+      { pregunta: "Narxlarga soliqlar kiradimi?", respuesta: "Bu har bir mamlakatdagi rasmiy doʻkon koʻrsatadigan narx. AQSh va Kanadada bu narxga savdo soligʻi kirmaydi, boshqa mamlakatlarda ham doʻkon toʻlov paytida soliq qoʻshishi mumkin." },
+      { pregunta: "Nega ayrim mamlakatlar yoʻq?", respuesta: "Faqat tekshirilgan va amaldagi eng kam ish haqi hamda rasmiy doʻkonda koʻrilgan narxi bor mamlakatlar kiritiladi. Rasmiy onlayn doʻkon boʻlmasa, u mahsulot uchun maʼlumot boʻlmaydi. Qayta sotuvchilar narxi hech qachon olinmaydi." },
+      { pregunta: "Qanchalik tez-tez yangilanadi?", respuesta: "Narxlar har bir doʻkonda koʻrib chiqiladi va 120 kundan keyin eskiradi: eski narx koʻrsatilmaydi. Eng kam ish haqi har bir mamlakatning rasmiy maʼlumotlaridan olinadi va qonun oʻzgarganda yangilanadi." },
+    ],
+    og: { de: "eng kam ish haqi bilan mehnat", deMes: "eng kam ish haqi bilan mehnat, har oy", generica: "{producto} necha soatlik mehnatga teng?", genericaBajada: "Rasmiy narx eng kam ish haqi soatlarida, {n} ta mamlakatda", menos: "Eng kam soat", cta: "Barcha mamlakatlar:" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

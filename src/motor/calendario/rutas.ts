@@ -30,6 +30,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   bn: "beton-calendar",
   th: "patithin-ngoen-duean",
   uk: "kalendar-vyplat",
+  uz: "ish-haqi-kalendari",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";

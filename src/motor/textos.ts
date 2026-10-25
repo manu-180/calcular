@@ -612,6 +612,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "крапок", coma: "ком" },
     },
   },
+  // Uzbeko en escritura latina (ADR 0002, D16): «Siz» con las formas corteses (-ing, -ingiz), como en
+  // soliq.uz, my.gov.uz y los bancos. El botón va como en esos sitios, con el nombre de la acción
+  // («Hisoblash»); las oraciones, en imperativo cortés («kiriting», «tanlang»).
+  uz: {
+    base: {
+      calcular: "Hisoblash",
+      resultado: "Natija",
+      si: "Ha",
+      no: "Yoʻq",
+      sinResultado: "Bu natijani hozircha koʻrsatmaymiz.",
+      errores: {
+        requerido: "Bu maydonni toʻldiring.",
+        "numero-invalido": "Raqam kiriting (masalan, {ejemplo}).",
+        "entero-invalido": "Kasr qismisiz butun son kiriting.",
+        "menor-que-min": "Eng kichik qiymat: {min}.",
+        "mayor-que-max": "Eng katta qiymat: {max}.",
+        "fecha-invalida": "Toʻgʻri sanani tanlang.",
+        "hora-invalida": "Toʻgʻri vaqtni tanlang.",
+        "opcion-invalida": "Variantlardan birini tanlang.",
+        "region-invalida": "Hududni tanlang.",
+        "calculo-fallido": "Bu maʼlumotlar bilan hisoblab boʻlmadi. Qiymatlarni tekshirib, qaytadan urinib koʻring.",
+      },
+      milesAmbiguos: "{sugerido} demoqchimisiz? Iltimos, {signos} qoʻymasdan yozing.",
+      separadores: { punto: "nuqta", coma: "vergul" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

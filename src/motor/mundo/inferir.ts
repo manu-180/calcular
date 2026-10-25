@@ -7,7 +7,7 @@ export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; mo
 // «річна»/«місячна» y sus formas van por prefijo («річн», «місячн»).
 const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "yillik", "yil", "рік", "року", "年", "연", "연봉", "年収", "年薪"];
 const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "річн"];
-const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "aylik", "місяць", "місяця", "月", "월", "월급", "月給", "月薪"];
+const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "aylik", "oylik", "місяць", "місяця", "月", "월", "월급", "月給", "月薪"];
 const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "місячн"];
 
 function palabras(texto: string): string[] {

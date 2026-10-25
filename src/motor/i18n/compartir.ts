@@ -406,6 +406,24 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Подивіться, скільки ви отримували б на руки в понад ${n} країнах`,
     },
   },
+  // Uzbeko latino (ADR 0002, D16): el mensaje que se comparte va en primera persona; lo demás, con
+  // «Siz» y los botones con el nombre de la acción, como en los bancos.
+  uz: {
+    base: {
+      boton: "Ulashish",
+      botonAria: "Bu kalkulyatorni ulashing",
+      menuTitulo: "Qayerga ulashasiz",
+      copiar: "Havolani nusxalash",
+      copiado: "Havola nusxalandi",
+      compartido: "Ulashildi",
+      errorCorto: "Nusxalab boʻlmadi",
+      errorAyuda: "Havolani nusxalab boʻlmadi. Uni brauzerning manzil satridan nusxalang.",
+      nuevaPestana: "yangi varaqda ochiladi",
+      mensaje: (nombre) => `${nombre}. Bepul, hisoblash bir daqiqa oladi.`,
+      puenteIntro: "Boshqa mamlakatlarda qanday?",
+      puenteEnlace: (n) => `Qoʻlga tegadigan maoshingiz ${n} tadan ortiq mamlakatda qancha boʻlishini koʻring`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

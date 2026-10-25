@@ -660,6 +660,89 @@ mayúscula a mitad de oración, las letras que solo tiene el ruso (ы, э, ё, �
 `check_universales` prueba uk-UA con UAH, «Сент-Вінсент і Гренадіни» por el nombre largo que se
 declina por partes y «Обʼєднані Арабські Емірати» por los adjetivos delante.
 
+### D16. Uzbeko latino (2026-10-24)
+
+D9 a D15 los usan otras ramas sin mergear (`claude/mundo-motor-eu`, `-ar`, `-id`, `-tr`, `-th`, `-uk`,
+`-bn`); esta entrada toma D16 para no chocar al mergear.
+
+`IDIOMAS` suma `uz`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+«Tu sueldo en el mundo» (`mamlakatlar-boyicha-ish-haqi`), el diccionario de venta completo (todas las
+familias, `informe-calculo` incluida, informes, planillas y mails), las 41 universales y los módulos
+que main sumó después del modelo tr (horas de trabajo, rankings, sueldos reales, calendario y
+afiliados) están en uzbeko.
+
+**Escritura.** El uzbeko oficial de Uzbekistán es el latino (alfabeto de 1995 con las reformas
+posteriores), el de soliq.uz, my.gov.uz y los bancos. oʻ y gʻ van con U+02BB («ʻ», modifier letter
+turned comma) y la tutuq belgisi con U+02BC («ʼ», modifier letter apostrophe: maʼlumot, eʼlon,
+taʼminot), nunca con el apóstrofo recto, el tipográfico (’ ‘) ni el acento grave, que son copias de
+teclado. El cirílico, todavía muy usado en la web uzbeka, no se mezcla: el ruso o el uzbeko cirílico
+serían otra edición. Los buscadores (sitio, país, mundo, embed) comparan sin «ʻ» ni «ʼ» y aceptan
+«o'» y «g'» con el apóstrofo del teclado: «oʻrtacha», «o'rtacha» y «ortacha» encuentran lo mismo.
+Geist no trae U+02BB: las imágenes OG de mundo, horas, rankings, calendario y sueldos piden Noto Sans
+como respaldo para uz (en la página el navegador cae solo a otra fuente para ese glifo).
+
+**Trato.** Un solo registro, el de soliq.uz, my.gov.uz y los bancos (Kapitalbank, Hamkorbank): «Siz»
+con las formas corteses, imperativo en -ing («kiriting», «tanlang», «hisoblang»), posesivo en -ingiz
+(«maoshingiz», «kreditingiz») y verbos en -siz («toʻlaysiz»); nunca «sen». El botón principal va con
+el nombre de la acción («Hisoblash»), como en las calculadoras de esos bancos. Los mercados van con
+`trato: "usted"`, como ja, ko y zh; los diccionarios escriben solo `base`. Las cartas del informe van
+en primera persona formal («soʻrayman») con la cifra después de dos puntos, y la tarjeta para
+compartir en primera persona.
+
+**Gramática del país.** El uzbeko no tiene artículos ni armonía vocálica en los sufijos de caso, y el
+sufijo se pega al nombre propio sin apóstrofo. `GRAMATICA.uz`: `nombre(p)` = p; `de(p)` el genitivo
+(«Oʻzbekistonning», «AQShning»); `en(p)` el locativo («Oʻzbekistonda», «Kongo Demokratik
+Respublikasida»); `para(p)` = «p uchun». Los diccionarios no pegan sufijos a cifras, a valores
+interpolados ni a marcadores: «Muddat: {x}», «{fecha} sanasigacha» (el sufijo cae en «sana»), «{n} ta
+mamlakat» con el contador «ta» suelto, «15 foizdan» con la palabra en vez de «15%dan». Los ordinales
+de fechas fijas siguen la norma con guion («1-yanvar»).
+
+**Formato.** Intl de Node (ICU 78) tiene datos de uz y uz-Latn-UZ, y `Intl.NumberFormat("uz-UZ")` da
+el formato oficial: miles con espacio (U+00A0), coma decimal y la moneda detrás («1 234 567,50 soʻm»,
+ya con U+02BB), porcentaje «12%». Se usa `uz-UZ` tal cual. Fechas largas de Intl: «24-oktabr, 2026».
+`parsearNumero` no cambia (casos nuevos en `check_motor`: espacio común o U+00A0, «soʻm» detrás,
+«5.000» con miles ambiguos). El sustantivo no va en plural después de un número: las dos formas de
+cada unidad son iguales («3 kun», «1,5 yil»). `inferir.ts` reconoce «oylik» y «yillik». Los decimales
+del soʻm quedan en lo que da Intl (2); el país decide su redondeo en su mercado.
+
+**Slugs.** Uzbeko latino en ASCII (oʻ y gʻ pasan a o y g, sin apóstrofos), con la búsqueda real,
+casi siempre «… kalkulyatori»: `kredit-kalkulyatori`, `ipoteka-kalkulyatori`, `qqs-kalkulyatori`,
+`samarali-foiz-stavkasi`, `murakkab-foiz-kalkulyatori`, `oddiy-foiz-kalkulyatori`,
+`jamgarma-kalkulyatori`, `pensiya-jamgarmasi-kalkulyatori`, `kredit-karta-kalkulyatori`,
+`byudjet-kalkulyatori`, `favqulodda-jamgarma-kalkulyatori`, `avtomobil-xarajatlari-kalkulyatori`,
+`investitsiya-daromadi-kalkulyatori`, `foyda-marjasi-kalkulyatori`,
+`zararsizlik-nuqtasi-kalkulyatori`, `frilans-narxi-kalkulyatori`, `soatlik-ish-haqi-kalkulyatori`,
+`ish-haqi-oshishi-kalkulyatori`, `ish-soatlari-kalkulyatori`, `foiz-hisoblash`,
+`foiz-ozgarishi-kalkulyatori`, `proporsiya-kalkulyatori`, `chegirma-kalkulyatori`,
+`choychaqa-kalkulyatori`, `ortacha-qiymat-kalkulyatori`, `yosh-kalkulyatori`,
+`tana-massasi-indeksi-kalkulyatori`, `kaloriya-kalkulyatori`, `tugruq-sanasi-kalkulyatori`,
+`ovulyatsiya-kalkulyatori`, `yugurish-tempi-kalkulyatori`, `yoqilgi-sarfi-kalkulyatori`,
+`elektr-energiyasi-kalkulyatori`, `boyoq-kalkulyatori`, `kvadrat-metr-kalkulyatori`,
+`kafel-kalkulyatori`, `beton-kalkulyatori`; frases donde la búsqueda lo es: `ijara-yoki-uy-sotib-olish`,
+`xarajatlarni-bolish`, `sanalar-orasidagi-kunlar`, `sanaga-kun-qoshish`. Páginas del idioma:
+`mamlakatlar-boyicha-ish-haqi` (mundo), `necha-soatlik-mehnat` (horas), `ish-haqi-kalendari`
+(calendario), `haqiqiy-maoshlar` (sueldos reales), `mamlakatlar-reytingi` (rankings, con
+`maosh-qayerda-kop-yetadi`, `soliqdan-ozodlik-kuni` y `oshgan-maoshdan-qancha-qoladi`).
+
+**Universales.** Textos nativos de Uzbekistán y neutrales de país: kredit, ipoteka, foiz stavkasi
+(yillik, nominal, samarali), oylik toʻlov, asosiy qarz, boshlangʻich toʻlov, toʻlov jadvali, omonat,
+jamgʻarma, QQS bilan / QQSsiz, tannarx, ustama, zararsizlik nuqtasi, TMI, tugʻruq sanasi, zaxira,
+sement qopi; sin organismos de un solo país (nada de Soliq qoʻmitasi, Markaziy bank ni JShShIR) y sin
+cifras legales tipeadas: la tasa de `iva` sale del dato del país. Salud informativa, con la oración
+de que no reemplaza la consulta médica. Los ejemplos se calculan con las funciones de cada
+`definicion.ts`.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): sin exclamaciones, rayas ni guion como pausa; oʻ y gʻ con U+02BB y la tutuq con U+02BC
+(se atrapa el apóstrofo recto, el tipográfico y el grave entre letras, la «ʼ» detrás de o o g y la «ʻ»
+suelta); sin cirílico; el «sen» (pronombre y casos, presente -asan/-ysan, condicional -sang y los
+posesivos más comunes). El pasado -ding no se busca porque choca con el imperativo cortés de las
+raíces en t y d («kiriting»).
+
+**Prueba.** `zz-uz` (Zetalend, locale `uz-001`) es una edición interna como `zz-ja`.
+`check_universales` prueba uz-UZ con UZS, «Sent-Vinsent va Grenadin» por el nombre largo y «Kongo
+Demokratik Respublikasi» por el compuesto que toma el sufijo en la última palabra.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

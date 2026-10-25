@@ -122,6 +122,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент-Вінсент і Гренадіни", locale: "uk-UA", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Обʼєднані Арабські Емірати", locale: "uk-UA", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
   ],
+  // Uzbeko (ADR 0002, D16): soʻm con espacio de miles y coma decimal («1 234 567,50 soʻm»), el nombre
+  // largo de siempre y uno largo compuesto que toma el sufijo en la última palabra.
+  uz: [
+    { mercado: "uz" as CodigoMercado, pais: "UZ", nombrePais: "Oʻzbekiston", locale: "uz-UZ", trato: "usted", moneda: "UZS" as Moneda, escala: 12500 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sent-Vinsent va Grenadin", locale: "uz-UZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "cd" as CodigoMercado, pais: "CD", nombrePais: "Kongo Demokratik Respublikasi", locale: "uz-UZ", trato: "usted", moneda: "CDF" as Moneda, escala: 2800 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)

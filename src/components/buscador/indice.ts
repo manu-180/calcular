@@ -23,6 +23,10 @@ export function normalizar(texto: string): string {
     .replace(/[̀-ͯ]/g, "")
     // La ı del turco no se descompone en NFD: sin esto quedaría como separador («yıllık», «y ll k»).
     .replace(/ı/g, "i")
+    // Uzbeko latino: oʻ, gʻ y la tutuq belgisi (ʼ) se buscan sin el signo, y quien escribe «o'» o «g'»
+    // con el apóstrofo del teclado encuentra lo mismo («oʻrtacha», «o'rtacha» y «ortacha»).
+    .replace(/[ʻʼ]/g, "")
+    .replace(/([og])[‘’'`](?=[a-z])/g, "$1")
     // El cirílico (ucraniano) cuenta como letra: sin esto «кредит» quedaba vacío.
     .replace(/[^a-z0-9Ѐ-ӿ]+/g, " ")
     .trim();

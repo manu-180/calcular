@@ -54,10 +54,12 @@ export type EstadoPublicacion = "borrador" | "interno" | "publicado";
 // y de e-Devlet (ADR 0002, D12).
 // El bengalí también: «আপনি» con las formas verbales corteses (ADR 0002, D14).
 // El tailandés también: cortés y neutro, sin pronombre ni partículas ครับ/ค่ะ (ADR 0002, D13).
+// El uzbeko (escritura latina) también: «Siz» con las formas corteses («kiriting», «hisoblang»), el
+// registro de soliq.uz, my.gov.uz y los bancos (ADR 0002, D16).
 export type Trato = "vos" | "tu" | "usted";
 // ar tiene un solo registro (árabe estándar moderno) y sus mercados van con "usted"; la dirección
 // de escritura sale del idioma (i18n/direccion.ts), no del mercado.
-export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "pl", "sv", "da", "nb", "fi", "ar", "id", "tr", "bn", "th", "uk"] as const;
+export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "pl", "sv", "da", "nb", "fi", "ar", "id", "tr", "bn", "th", "uk", "uz"] as const;
 export type Idioma = (typeof IDIOMAS)[number];
 export type SistemaUnidades = "metrico" | "imperial";
 

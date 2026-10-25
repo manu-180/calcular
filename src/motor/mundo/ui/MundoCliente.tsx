@@ -179,7 +179,7 @@ function Ranking({
   const propia = filas.find((x) => x.pais.mercado === origen);
   const max = filas.reduce((a, x) => Math.max(a, x.netoMensualEquivalente), 0) || 1;
   const regiones = ORDEN_REGIONES.filter((r) => filas.some((x) => porMercado.get(x.pais.mercado)?.region === r));
-  const normal = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().replace(/ı/g, "i");
+  const normal = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().replace(/ı/g, "i").replace(/[ʻʼ]/g, "").replace(/([og])[‘’'`](?=\p{L})/gu, "$1");
   const filtro = normal(q.trim());
   const filtradas = filas
     .map((x, i) => ({ x, puesto: i + 1, info: porMercado.get(x.pais.mercado)! }))

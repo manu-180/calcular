@@ -243,6 +243,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Джерело",
     },
   },
+  uz: {
+    base: {
+      datos: "Maʼlumotlaringiz",
+      resultado: "Natija",
+      vacio: "Maʼlumotlarni kiriting va natijani koʻrish uchun «Hisoblash» tugmasini bosing.",
+      sinResultado: "Bu natijani hozircha koʻrsatmaymiz.",
+      avisos: { info: "Eslatma", cautela: "Diqqat", bloquea: "Natija nega koʻrsatilmaydi" },
+      fuenteDelAviso: "Manba",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

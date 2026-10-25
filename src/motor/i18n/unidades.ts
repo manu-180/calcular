@@ -65,6 +65,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     meses: { uno: "місяць", pocos: "місяці", muchos: "місяців", otros: "місяця" },
     anios: { uno: "рік", pocos: "роки", muchos: "років", otros: "року" },
   },
+  // El uzbeko no pone plural después de un número («3 kun», «1,5 yil»): las dos formas son iguales.
+  uz: { dias: { uno: "kun", otros: "kun" }, semanas: { uno: "hafta", otros: "hafta" }, horas: { uno: "soat", otros: "soat" }, meses: { uno: "oy", otros: "oy" }, anios: { uno: "yil", otros: "yil" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

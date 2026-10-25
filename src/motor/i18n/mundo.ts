@@ -4203,7 +4203,169 @@ const uk: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk };
+// ───────────────────────────── uz ─────────────────────────────
+
+// Uzbeko latino (ADR 0002, D16): «Siz» con las formas corteses; la tarjeta y el texto para compartir,
+// en primera persona. La fecha va en el medio de la oración y el sufijo cae en la palabra que la
+// sigue («24-oktabr, 2026 sanasigacha»), nunca pegado a una cifra; los conteos van con «ta» suelto.
+const gUz = GRAMATICA.uz;
+const SEO_UZ = "Soliqdan ozodlik kuni va mamlakatlar boʻyicha maosh";
+
+const uz: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Maoshingiz dunyoda qancha turadi",
+    seo: {
+      titulo: (pais) => [`${SEO_UZ} | ${pais}`, SEO_UZ, "Mamlakatlar boʻyicha maosh"],
+      tituloGlobal: [SEO_UZ, "Mamlakatlar boʻyicha maosh"],
+      descripcion: (pais, n) => `${gUz.en(pais)} maosh bilan yilning qaysi kunigacha davlat uchun ishlashingizni va ${n} ta mamlakatda qoʻlingizga qancha tegishini koʻring. Bepul, roʻyxatdan oʻtmasdan.`,
+      descripcionGlobal: (n) => `Yilning qaysi kunigacha davlat uchun ishlashingizni va ${n} ta mamlakatda qoʻlingizga qancha tegishini koʻring. Bepul, roʻyxatdan oʻtmasdan.`,
+    },
+    ceja: "Soliqdan ozodlik kuningiz",
+    h1: "Yilning qaysi kunigacha davlat uchun ishlaysiz?",
+    bajada: (n) => `Sanangizni koʻrish uchun yalpi maoshingizni kiriting. Keyin uni xuddi shu xarid qobiliyati va har bir mamlakatning soliq qoidalari bilan ${n} ta mamlakatda solishtiring.`,
+    form: {
+      titulo: "Maoshingiz",
+      sueldo: "Yalpi maosh",
+      mes: "Oylik",
+      anio: "Yillik",
+      periodo: "Maosh davri",
+      pais: "Ishlaydigan mamlakatingiz",
+      ejemplo: "Misol",
+      ejemploAyuda: "Bu misol uchun olingan maosh. Oʻz maoshingizni yozing, barcha raqamlar darhol yangilanadi.",
+      propio: "Oldingi hisobingizdan olindi.",
+      invalido: "Noldan katta summa kiriting.",
+      pagas: "Hisob varaqangizdagi oylik maosh: qonun majburiy qilgan qoʻshimcha toʻlovlarni (oʻn uchinchi yoki oʻn toʻrtinchi maosh) biz qoʻshamiz. Qoʻlga tegadigan maosh 12 oyning oʻrtachasi.",
+    },
+    heroe: {
+      hasta: (fecha) => `Davlat uchun ${fecha} sanasigacha ishlaysiz`,
+      tasa: (pct) => `Maoshingizning ${pct} qismi daromad soligʻi va majburiy badallarga ketadi.`,
+      dias: (n, total) => `${total} kun ichida ${n} kun`,
+      enMano: "Qoʻlingizga tegadi",
+      porMes: "oyiga",
+      anio: (anio, n, total) => `${anio} yil: ${total} kun ichida ${n} kun davlat uchun.`,
+      resto: "Ertasi kundan boshlab ishlab topganingizning hammasi sizniki.",
+    },
+    ranking: {
+      titulo: "Bir xil maosh, mamlakatma-mamlakat",
+      bajada: "Xuddi shu xarid qobiliyati bilan har bir mamlakatda qoʻlingizga tegadigan maosh. Har bir qator oʻsha mamlakatning rasmiy kalkulyatoridan olinadi.",
+      lista: "Qoʻlga tegadigan maosh boʻyicha tartiblangan mamlakatlar",
+      buscar: "Mamlakatni qidiring",
+      filtrar: "Mintaqa boʻyicha saralang",
+      todas: "Hammasi",
+      regiones: { americas: "Amerika", europa: "Yevropa", asia: "Osiyo va Okeaniya", africa: "Afrika va Yaqin Sharq" },
+      tuPais: "Mamlakatingiz",
+      mejor: "Eng foydali",
+      enMano: "Oylik qoʻlga tegadigan maosh",
+      enTuMoneda: "Oʻz valyutangizda",
+      vsTuPais: "Mamlakatingizga nisbatan",
+      verTodos: (n) => `Barcha ${n} ta mamlakatni koʻring`,
+      verMenos: "Kamroq koʻrsatish",
+      sinResultados: (q) => `«${q}» boʻyicha mamlakat topilmadi.`,
+      abrir: (pais) => `${gUz.para(pais)} kalkulyatorni oching`,
+      mas: (pct) => `${pct} koʻproq`,
+      menos: (pct) => `${pct} kamroq`,
+      igual: "Bir xil",
+      puesto: (p, total) => `Mamlakatingiz oʻrni: ${p} (jami ${total} ta mamlakat).`,
+    },
+    tarjeta: {
+      titulo: "Ulashish uchun kartangiz",
+      bajada: "Kartada sanangiz va foizlaringiz koʻrinadi. Qancha ishlab topishingiz hech qachon koʻrinmaydi.",
+      hasta: (fecha) => `Davlat uchun ${fecha} sanasigacha ishlayman`,
+      tasa: (pct) => `Maoshimning ${pct} qismi soliqqa ketadi`,
+      mejor: (pais, pct) => `Shu maosh bilan ${gUz.en(pais)} qoʻlimga ${pct} koʻproq tegardi`,
+      mejorPropio: (pais) => `Maoshim uchun eng foydali mamlakat: ${gUz.nombre(pais)}`,
+      yVos: "Sizchi?",
+      cta: "Oʻz sanangizni bilib oling:",
+      generica: "Yilning qaysi kunigacha davlat uchun ishlaysiz?",
+      genericaBajada: (n) => `Maoshingiz ${n} ta mamlakatda, har birining rasmiy kalkulyatori bilan`,
+      compartir: "Kartamni ulashish",
+      compartirDuelo: "Bellashuvga javob berish",
+      descargar: "Rasmni yuklab olish",
+      copiado: "Havola nusxalandi. Uni istalgan joyga qoʻying.",
+      compartido: "Tayyor, ulashildi.",
+      error: "Ulashib boʻlmadi. Qaytadan urinib koʻring.",
+      texto: (fecha) => `Davlat uchun ${fecha} sanasigacha ishlayman. Sizchi?`,
+      alt: "Kartangizni oldindan koʻrish",
+    },
+    duelo: {
+      amigo: (fecha) => `Doʻstingiz davlat uchun ${fecha} sanasigacha ishlaydi.`,
+      yVos: "Sizchi?",
+      invitacion: "Solishtirish uchun maoshingizni kiriting.",
+      vos: "Siz",
+      elAmigo: "Doʻstingiz",
+      dia: "Davlat uchun ishlagan oxirgi kun",
+      tasa: "Soliqlar va badallar",
+      mejorPais: "Eng foydali mamlakat",
+      antes: (d) => `Siz doʻstingizdan ${d} kun oldin ozod boʻlasiz.`,
+      despues: (d) => `Doʻstingiz sizdan ${d} kun oldin ozod boʻladi.`,
+      empate: "Ikkalangiz bir kunda ozod boʻlasiz.",
+      desde: (pais) => `${gUz.en(pais)} ishlaydi`,
+    },
+    cero: {
+      dia: "nol kun",
+      heroeAntes: "Davlat uchun ishlaydigan vaqtingiz",
+      tarjetaAntes: "Davlat uchun ishlaydigan vaqtim",
+      motivo: "Bu maoshdan daromad soligʻi ham, majburiy badallar ham ushlanmaydi.",
+      texto: "Bu yil davlat uchun bir kun ham ishlamayman. Sizchi?",
+      amigo: "Doʻstingiz davlat uchun bir kun ham ishlamaydi.",
+    },
+    metodo: {
+      titulo: "Qanday hisoblaymiz",
+      estimacion: "Bu mamlakatlarni solishtirish uchun taxmin, hisob varaqasi emas. Imtiyozlar, farzandlar yoki mukofotlar raqamingizni oʻzgartirishi mumkin.",
+      supuestos: [
+        "Farzandsiz, yolgʻiz yashaydigan shaxs; har bir mamlakat kalkulyatorining standart qiymatlari bilan.",
+        "Qoʻlga tegadigan maosh: daromad soligʻi va xodimning oʻzi toʻlaydigan badallar ayirilgandan keyin qolgan summa. Isteʼmol soliqlari va ish beruvchi toʻlaydigan badallar hisobga olinmaydi.",
+        "Oʻn uchinchi maosh yoki boshqa majburiy qoʻshimcha toʻlovlar har bir mamlakat qonuniga koʻra yilga taqsimlanadi.",
+        "Amerika Qoʻshma Shtatlarida shtat yoki mahalliy daromad soligʻi qoʻshilmaydi: faqat federal soliq va ish haqi badallari.",
+        "Maoshingizni boshqa mamlakatga koʻchirish uchun xarid qobiliyati paritetidan (XQP) foydalanamiz: bugungi kurs emas, bir xil turmush darajasi.",
+        "Argentinaning XQP qiymati INDEC isteʼmol narxlari indeksi bilan yangilanadi, chunki Jahon banki bu koʻrsatkichni 2021 yildan keyin eʼlon qilmagan.",
+        "Ozodlik kuningiz soliqlaringizni 1-yanvardan boshlab yilga taqsimlaydi. Maoshingizning 30% qismi soliqqa ketsa, yilning 30% qismi davomida davlat uchun ishlaysiz.",
+      ],
+      ppaTitulo: "Xarid qobiliyati pariteti",
+      bancoMundial: "Jahon banki",
+      ppa: (organismo, indicador, anio) => `${organismo}, koʻrsatkich: ${indicador}, mavjud oxirgi yil: ${anio}.`,
+      consultado: (fecha) => `Tekshirilgan sana: ${fecha}.`,
+      verFuente: "Manbani koʻring",
+      fuentesTitulo: "Har bir mamlakatning manbasi",
+      fuentesBajada: "Har bir qator oʻsha mamlakatning qoʻlga tegadigan maosh kalkulyatori va rasmiy maʼlumotlaridan foydalanadi.",
+      verificado: (fecha) => `Maʼlumotlar tekshirilgan sana: ${fecha}`,
+      sello: (fecha) => `Rasmiy maʼlumotlar har bir mamlakat manbasida tekshirildi. Eng eski tekshiruv sanasi: ${fecha}.`,
+    },
+    faqTitulo: "Koʻp beriladigan savollar",
+    faq: (n) => [
+      {
+        pregunta: "Soliqdan ozodlik kuni nima?",
+        respuesta:
+          "1-yanvardan boshlab ishlab topganingizning hammasi avval davlatga ketganda, soliqlaringizni toʻlab boʻladigan kuningiz. Bu yerda u mamlakat oʻrtachasidan emas, sizning maoshingizdan hisoblanadi.",
+      },
+      {
+        pregunta: "Nega xarid qobiliyati bilan solishtiriladi?",
+        respuesta: "Valyuta kursi kunga qarab maoshni juda katta yoki juda kichik qilib koʻrsatishi mumkin. XQP bu pulga har bir mamlakatda haqiqatan nima sotib olish mumkinligini solishtiradi.",
+      },
+      {
+        pregunta: "Maoshim saqlanadimi?",
+        respuesta: "Yoʻq. Hisob brauzeringizda bajariladi. Siz ulashadigan narsada faqat sanalar, foizlar va mamlakatlar boʻladi.",
+      },
+      {
+        pregunta: "Nega haqiqiy qoʻlga tegadigan maoshim boshqacha?",
+        respuesta:
+          "Farzandsiz, yolgʻiz shaxs va standart qiymatlarni asos qilib olamiz. Imtiyozlar, mukofotlar yoki maxsus rejimlar raqamni oʻzgartiradi. Oʻz holatingizning aniq hisobi uchun mamlakatingiz kalkulyatorini oching.",
+      },
+      {
+        pregunta: "Qaysi mamlakatlar bor?",
+        respuesta: `Hozir ${n} ta mamlakat bor, har birining oʻz qoʻlga tegadigan maosh kalkulyatori va rasmiy maʼlumotlari bilan. Soliq qoidalarini tasdiqlaganimiz sari yangi mamlakatlar qoʻshamiz.`,
+      },
+    ],
+    destacado: {
+      ceja: "Dunyo boʻyicha solishtirish",
+      titulo: "Yilning qaysi kunigacha davlat uchun ishlaysiz?",
+      texto: "Maoshingizni kiriting va boshqa mamlakatlarda qoʻlingizga qancha tegishini koʻring.",
+      ir: "Sanamni bilish",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);
