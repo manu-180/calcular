@@ -793,6 +793,26 @@
       ]
     },
     {
+      "id": "cz.nahrada-mzdy-koeficient",
+      "nombre": "Koeficient pro redukční hranice náhrady mzdy (§ 192 odst. 2)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.175,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 262/2006 Sb., zákoník práce, znění od 29. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-262",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
       "id": "cz.ppm-sazba",
       "nombre": "Peněžitá pomoc v mateřství z denního vyměřovacího základu",
       "tipo": "numero",
