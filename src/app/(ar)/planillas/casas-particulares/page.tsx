@@ -16,7 +16,7 @@ const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
 export const metadata: Metadata = {
   title: "Planilla de sueldo de empleada doméstica 2026 (Excel)",
   description:
-    "Excel y Google Sheets para liquidar casas particulares: escala de la CNTCP, horas extras, zona, aguinaldo, lo que se paga a ARCA y recibo. Pago único.",
+    "Excel y Google Sheets para liquidar casas particulares: escala de la CNTCP, horas extras, zona, antigüedad, aguinaldo, lo que se paga a ARCA y recibo. Pago único.",
   alternates: { canonical: "/planillas/casas-particulares" },
   openGraph: openGraphDe({
     ruta: "/planillas/casas-particulares",
@@ -46,6 +46,7 @@ function datosDelMes() {
     zonaDesfavorable: false,
     extrasComunes: 0,
     extrasFinDeSemana: 0,
+    aniosAntiguedad: 0,
   })!;
   return { CATEGORIA, HORAS, EJEMPLO };
 }
@@ -70,7 +71,7 @@ export default function PlanillaCasasPage() {
           La planilla de sueldo de casas particulares es una hoja de <strong>Excel y Google Sheets</strong> con la
           escala oficial de la <strong>Resolución CNTCP 6/2026</strong> ya cargada, mes por mes. Elegís la categoría,
           si es con o sin retiro y cuántas horas trabaja por semana. Te calcula el{" "}
-          <strong>sueldo del mes con horas extras y zona desfavorable</strong>, el aguinaldo, las vacaciones y{" "}
+          <strong>sueldo del mes con horas extras, zona desfavorable y antigüedad</strong>, el aguinaldo, las vacaciones y{" "}
           <strong>lo que tenés que pagarle a ARCA</strong>. Si trabaja menos de 16 horas, también te dice cuánto
           falta para que tenga obra social. Pago único de <strong>${PRECIO}</strong>, con las actualizaciones del
           año incluidas y 7 días para pedir la devolución si no te sirve.
@@ -84,7 +85,7 @@ export default function PlanillaCasasPage() {
         {
           titulo: "Liquidador",
           descripcion:
-            "Categoría, modalidad, horas, zona y horas extras. Te da el valor de la hora, el básico (con la regla de los dos pisos: por hora o mínimo mensual), el total del mes, el aguinaldo que genera y lo que le pagás a ARCA.",
+            "Categoría, modalidad, horas, zona, antigüedad y horas extras. Te da el valor de la hora, el básico (con la regla de los dos pisos: por hora o mínimo mensual), el adicional del 1% por año de antigüedad, el total del mes, el aguinaldo que genera y lo que le pagás a ARCA.",
         },
         {
           titulo: "Pagos del año",
@@ -119,7 +120,7 @@ export default function PlanillaCasasPage() {
         },
         {
           q: "¿Viene con mis datos o la tengo que completar?",
-          a: "Si hiciste la cuenta en la calculadora del sitio en los últimos 7 días, desde este mismo navegador, la planilla te llega con esos datos ya cargados: categoría, modalidad, horas, zona y horas extras. Si no, viene con un ejemplo y la completás en un minuto: son desplegables.",
+          a: "Si hiciste la cuenta en la calculadora del sitio en los últimos 7 días, desde este mismo navegador, la planilla te llega con esos datos ya cargados: categoría, modalidad, horas, zona, antigüedad y horas extras. Si no, viene con un ejemplo y la completás en un minuto: son desplegables.",
         },
         {
           q: "¿Sirve si trabaja por horas y no todo el mes?",

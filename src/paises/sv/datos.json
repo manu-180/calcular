@@ -530,6 +530,17 @@
             "nota": "Coincide con el comunicado del MTPS del 23/12/2025: https://www.mtps.gob.sv/2025/12/23/mtps-orienta-a-ciudadanos-sobre-el-pago-del-aguinaldo/"
           }
         }
+      ],
+      "calendario": [
+        {
+          "id": "pago-aguinaldo",
+          "tipo": "pago",
+          "mes": 12,
+          "dia": 20,
+          "titulo": "Fecha límite para pagar el aguinaldo",
+          "texto": "El Código de Trabajo (artículo 200) manda pagarlo entre el 1 de octubre y el 20 de diciembre; la fecha exacta la fija cada patrono dentro de ese período.",
+          "calculadora": "sv.aguinaldo"
+        }
       ]
     },
     {

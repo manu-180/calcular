@@ -684,6 +684,17 @@
             "verificadoEl": "2026-10-07"
           }
         }
+      ],
+      "calendario": [
+        {
+          "id": "pago-regalia-pascual",
+          "tipo": "pago",
+          "mes": 12,
+          "dia": 20,
+          "titulo": "Fecha límite para pagar el salario de Navidad",
+          "texto": "El Código de Trabajo (artículo 220) manda pagar la regalía pascual a más tardar el 20 de diciembre.",
+          "calculadora": "do.regalia-pascual"
+        }
       ]
     },
     {

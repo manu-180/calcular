@@ -163,6 +163,26 @@
             "verificadoEl": "2026-10-07"
           }
         }
+      ],
+      "calendario": [
+        {
+          "id": "pago-aguinaldo-diciembre",
+          "tipo": "pago",
+          "mes": 12,
+          "dia": 15,
+          "titulo": "Fecha límite de la primera mitad del aguinaldo",
+          "texto": "El Decreto 76-78 (artículo 2) manda pagar el 50 % del aguinaldo en la primera quincena de diciembre.",
+          "calculadora": "gt.aguinaldo"
+        },
+        {
+          "id": "pago-aguinaldo-enero",
+          "tipo": "pago",
+          "mes": 1,
+          "dia": 31,
+          "titulo": "Fecha límite de la segunda mitad del aguinaldo",
+          "texto": "El 50 % restante del aguinaldo se paga en la segunda quincena de enero (Decreto 76-78, artículo 2), salvo que el patrono haya pagado el 100 % en diciembre.",
+          "calculadora": "gt.aguinaldo"
+        }
       ]
     },
     {
@@ -202,6 +222,17 @@
             "tipo": "primaria",
             "verificadoEl": "2026-10-07"
           }
+        }
+      ],
+      "calendario": [
+        {
+          "id": "pago-bono-14",
+          "tipo": "pago",
+          "mes": 7,
+          "dia": 15,
+          "titulo": "Fecha límite para pagar el Bono 14",
+          "texto": "El Decreto 42-92 (artículo 3) manda pagarlo durante la primera quincena de julio de cada año.",
+          "calculadora": "gt.bono-14"
         }
       ]
     },

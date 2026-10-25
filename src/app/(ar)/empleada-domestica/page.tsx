@@ -8,7 +8,9 @@ import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import {
   CASAS_PARTICULARES_FUENTES,
   ESCALAS_POR_MES,
+  ANTIGUEDAD,
   escalaVigente,
+  maxAniosAntiguedad,
   SUMA_NO_REMUNERATIVA,
   HORAS_EXTRAS,
   JORNADA,
@@ -85,6 +87,10 @@ const crearFaqs = ({ NOVIEMBRE, GENERALES }: DatosDelMes) => [
   {
     q: "¿Cómo se calcula el aguinaldo?",
     a: `Es el ${SAC.porcentaje}% de ${SAC.base} (art. 26 de la Ley 26.844) y se paga en dos cuotas: el último día de trabajo de junio y el de diciembre. Ojo con un detalle: la base es el sueldo más alto del semestre, no el promedio ni el último, así que un mes con muchas horas extras sube todo el aguinaldo.`,
+  },
+  {
+    q: "¿Cobra un adicional por antigüedad?",
+    a: `Sí: ${ANTIGUEDAD.porcentajePorAnio}% del básico por cada año completo (${ANTIGUEDAD.articulo}, B.O. 25/6/2021). La trampa es desde cuándo se cuenta: los años arrancan el ${ANTIGUEDAD.cuentaDesdeTexto}, sin efecto retroactivo, así que aunque haya entrado mucho antes, en ${vigenciaCasas().vigenteEn} suma como máximo ${maxAniosAntiguedad(vigenciaCasas().mesId)} años. Para las vacaciones y la indemnización, en cambio, cuenta toda la antigüedad.`,
   },
   {
     q: "¿Cuántos días de vacaciones le corresponden?",
