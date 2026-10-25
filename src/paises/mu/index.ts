@@ -32,6 +32,16 @@ import retirementGratuityCalculator from "./calculadoras/retirement-gratuity-cal
 import contenidoRetirementGratuityCalculator from "./contenido/retirement-gratuity-calculator";
 import vatCalculator from "./calculadoras/vat-calculator";
 import contenidoVatCalculator from "./contenido/vat-calculator";
+import registrationDutyCalculator from "./calculadoras/registration-duty-calculator";
+import contenidoRegistrationDutyCalculator from "./contenido/registration-duty-calculator";
+import csgIncomeAllowanceCalculator from "./calculadoras/csg-income-allowance-calculator";
+import contenidoCsgIncomeAllowanceCalculator from "./contenido/csg-income-allowance-calculator";
+import pensionAgeCalculator from "./calculadoras/pension-age-calculator";
+import contenidoPensionAgeCalculator from "./contenido/pension-age-calculator";
+import rupeeExchangeRate from "./calculadoras/rupee-exchange-rate";
+import contenidoRupeeExchangeRate from "./contenido/rupee-exchange-rate";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +70,11 @@ export default definirPais({
     { definicion: severanceAllowanceCalculator, contenido: contenidoSeveranceAllowanceCalculator, cliente: () => import("./calculadoras/severance-allowance-calculator.cliente") },
     { definicion: retirementGratuityCalculator, contenido: contenidoRetirementGratuityCalculator, cliente: () => import("./calculadoras/retirement-gratuity-calculator.cliente") },
     { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
+    { definicion: registrationDutyCalculator, contenido: contenidoRegistrationDutyCalculator, cliente: () => import("./calculadoras/registration-duty-calculator.cliente") },
+    { definicion: csgIncomeAllowanceCalculator, contenido: contenidoCsgIncomeAllowanceCalculator, cliente: () => import("./calculadoras/csg-income-allowance-calculator.cliente") },
+    { definicion: pensionAgeCalculator, contenido: contenidoPensionAgeCalculator, cliente: () => import("./calculadoras/pension-age-calculator.cliente") },
+    { definicion: rupeeExchangeRate, contenido: contenidoRupeeExchangeRate, cliente: () => import("./calculadoras/rupee-exchange-rate.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
 universales: "todas",
   novedades,
