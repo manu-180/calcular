@@ -34,6 +34,16 @@ import forosEleftheronEpangelmation from "./calculadoras/foros-eleftheron-epange
 import contenidoForosEleftheronEpangelmation from "./contenido/foros-eleftheron-epangelmation";
 import eisforesEleftheronEpangelmation from "./calculadoras/eisfores-eleftheron-epangelmation";
 import contenidoEisforesEleftheronEpangelmation from "./contenido/eisfores-eleftheron-epangelmation";
+import ypologismosPlithorismou from "./calculadoras/ypologismos-plithorismou";
+import contenidoYpologismosPlithorismou from "./contenido/ypologismos-plithorismou";
+import forosMetavivasisAkinitou from "./calculadoras/foros-metavivasis-akinitou";
+import contenidoForosMetavivasisAkinitou from "./contenido/foros-metavivasis-akinitou";
+import forosEnoikion from "./calculadoras/foros-enoikion";
+import contenidoForosEnoikion from "./contenido/foros-enoikion";
+import tokoiKatatheseon from "./calculadoras/tokoi-katatheseon";
+import contenidoTokoiKatatheseon from "./contenido/tokoi-katatheseon";
+import elachistoTekmartoEisodima from "./calculadoras/elachisto-tekmarto-eisodima";
+import contenidoElachistoTekmartoEisodima from "./contenido/elachisto-tekmarto-eisodima";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -63,6 +73,11 @@ export default definirPais({
     { definicion: ypologismosForouEisodimatos, contenido: contenidoYpologismosForouEisodimatos, cliente: () => import("./calculadoras/ypologismos-forou-eisodimatos.cliente") },
     { definicion: forosEleftheronEpangelmation, contenido: contenidoForosEleftheronEpangelmation, cliente: () => import("./calculadoras/foros-eleftheron-epangelmation.cliente") },
     { definicion: eisforesEleftheronEpangelmation, contenido: contenidoEisforesEleftheronEpangelmation, cliente: () => import("./calculadoras/eisfores-eleftheron-epangelmation.cliente") },
+    { definicion: ypologismosPlithorismou, contenido: contenidoYpologismosPlithorismou, cliente: () => import("./calculadoras/ypologismos-plithorismou.cliente") },
+    { definicion: forosMetavivasisAkinitou, contenido: contenidoForosMetavivasisAkinitou, cliente: () => import("./calculadoras/foros-metavivasis-akinitou.cliente") },
+    { definicion: forosEnoikion, contenido: contenidoForosEnoikion, cliente: () => import("./calculadoras/foros-enoikion.cliente") },
+    { definicion: tokoiKatatheseon, contenido: contenidoTokoiKatatheseon, cliente: () => import("./calculadoras/tokoi-katatheseon.cliente") },
+    { definicion: elachistoTekmartoEisodima, contenido: contenidoElachistoTekmartoEisodima, cliente: () => import("./calculadoras/elachisto-tekmarto-eisodima.cliente") },
   ],
   universales: "todas",
   novedades,

@@ -6,7 +6,7 @@
       "nombre": "Γενικός Δείκτης Τιμών Καταναλωτή ΕΛΣΤΑΤ (2020=100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 75,
+      "maxAntiguedadDias": 90,
       "fuente": {
         "organismo": "ΕΛΣΤΑΤ",
         "titulo": "Δείκτης Τιμών Καταναλωτή: μηνιαία εξέλιξη του Γενικού ΔΤΚ (2020=100,0), χρονοσειρά από τον Ιανουάριο του 1959",
