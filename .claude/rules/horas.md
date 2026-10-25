@@ -29,5 +29,8 @@ Historia y porqués: `docs/decisiones/horas.md`.
   queda excluido con motivo. Para sumarlo: su jornada semanal leída en la fuente oficial.
 - El diccionario (`src/motor/i18n/horas.ts`) es impersonal a propósito (sin tú/vos/usted) y en
   plantillas `{marca}`: así no hace falta parche de trato y el cliente no recibe funciones.
-- Compartir usa `origen: "horas"`: hasta que `ORIGENES_COMPARTIR` lo sume, /api/e descarta el evento
-  (el link funciona igual).
+- «Con un sueldo real» (`Propio` en HorasCliente): el sueldo se escribe o llega del traspaso del mundo
+  (sessionStorage) y nunca sale del navegador. La tarjeta recibe `h` = horas propias en décimas; la OG
+  deduce la proporción sobre el mínimo (horas del mínimo ÷ h) y con eso arma el resto de los países. El
+  link compartido es el de la página pública, sin `h`.
+- `horasMes` (datos-cliente.ts) es `porHoraDe` dado vuelta: si cambia la conversión, cambian las dos.

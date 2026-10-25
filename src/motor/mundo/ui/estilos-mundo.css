@@ -1565,3 +1565,9 @@
     transition: none;
   }
 }
+
+/* El panel de redes (src/motor/compartir/Redes.tsx) trae su propia vista previa: una sola columna. */
+.cy-mundo-compartir.cy-mundo-compartir-redes {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}

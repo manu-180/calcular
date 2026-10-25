@@ -2,11 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { rastrear } from "./medir";
-import { codigoCompartido, ORIGENES_COMPARTIR, origenCorto, type OrigenCompartir, type VariantePuente } from "./ref";
+import { CANALES_COMPARTIR, codigoCompartido, ORIGENES_COMPARTIR, origenCorto, type OrigenCompartir, type VariantePuente } from "./ref";
 
-export type EstadoCompartir = "listo" | "compartido" | "copiado" | "error";
+export type EstadoCompartir = "listo" | "compartido" | "copiado" | "error" | "historia" | "descargado";
 
-export type CanalCompartir = "nativo" | "copiar" | "whatsapp" | "x" | "telegram" | "linkedin";
+export type CanalCompartir = (typeof CANALES_COMPARTIR)[number];
 
 export interface OpcionesCompartir {
   // De dónde sale el compartido, para medir: "calculadora:<id>", "mundo" o "duelo". /api/e descarta
@@ -20,6 +20,9 @@ export interface OpcionesCompartir {
   // URL que una función: se precarga una vez por URL, mientras que una función nueva en cada render
   // obliga a precargar de nuevo.
   imagen?: string | (() => Promise<Blob | null>);
+  // La imagen vertical (1080 x 1920) para Instagram, que no acepta links web: en el celular se manda
+  // como archivo a la hoja del sistema y en escritorio se descarga. Sin ella no hay botón de Instagram.
+  historia?: string;
   // Se suman a las props del evento `compartir`. /api/e solo acepta la variante del A/B.
   datos?: Readonly<{ v?: VariantePuente }>;
 }
@@ -69,7 +72,9 @@ async function copiarAlPortapapeles(texto: string): Promise<boolean> {
   }
 }
 
-export function enlaceDeCanal(canal: Exclude<CanalCompartir, "nativo" | "copiar">, texto: string, url: string): string {
+export type CanalWeb = Exclude<CanalCompartir, "nativo" | "copiar" | "instagram">;
+
+export function enlaceDeCanal(canal: CanalWeb, texto: string, url: string): string {
   const t = encodeURIComponent(texto);
   const u = encodeURIComponent(url);
   switch (canal) {
@@ -81,6 +86,9 @@ export function enlaceDeCanal(canal: Exclude<CanalCompartir, "nativo" | "copiar"
       return `https://t.me/share/url?url=${u}&text=${t}`;
     case "linkedin":
       return `https://www.linkedin.com/sharing/share-offsite/?url=${u}`;
+    // Facebook ya no toma el texto del sharer: arma la vista previa con la OG de la URL.
+    case "facebook":
+      return `https://www.facebook.com/sharer/sharer.php?u=${u}`;
   }
 }
 
@@ -93,6 +101,17 @@ async function bajarImagen(url: string, senal: AbortSignal): Promise<Blob | null
   return r.ok ? await r.blob() : null;
 }
 
+function descargar(blob: Blob, archivo: string) {
+  const enlace = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = enlace;
+  a.download = archivo;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(enlace), 30_000);
+}
+
 function esOrigenCompartir(x: string): x is OrigenCompartir {
   return (ORIGENES_COMPARTIR as readonly string[]).includes(x);
 }
@@ -102,7 +121,8 @@ export function usarCompartir(opciones: OpcionesCompartir) {
   const soportaNativo = useSyncExternalStore(sinSuscripcion, haySharePorToque, () => false);
   const reloj = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const imagenLista = useRef<Blob | null>(null);
-  const { origen, url, titulo, texto, imagen, datos } = opciones;
+  const historiaLista = useRef<Blob | null>(null);
+  const { origen, url, titulo, texto, imagen, historia, datos } = opciones;
 
   useEffect(() => () => clearTimeout(reloj.current), []);
 
@@ -125,6 +145,24 @@ export function usarCompartir(opciones: OpcionesCompartir) {
       corte.abort();
     };
   }, [imagen, soportaNativo]);
+
+  // La de Instagram también se precarga en el celular, por la misma razón: la hoja sale en el toque.
+  useEffect(() => {
+    historiaLista.current = null;
+    if (!historia || !soportaNativo) return;
+    const corte = new AbortController();
+    const espera = setTimeout(() => {
+      bajarImagen(historia, corte.signal)
+        .then((blob) => {
+          if (!corte.signal.aborted) historiaLista.current = blob;
+        })
+        .catch(() => {});
+    }, PRECARGA_MS);
+    return () => {
+      clearTimeout(espera);
+      corte.abort();
+    };
+  }, [historia, soportaNativo]);
 
   const avisar = useCallback((e: EstadoCompartir) => {
     clearTimeout(reloj.current);
@@ -186,6 +224,46 @@ export function usarCompartir(opciones: OpcionesCompartir) {
     await copiar();
   }, [soportaNativo, compartirNativo, copiar]);
 
+  // Instagram no recibe links: va la imagen vertical y el link queda copiado para el sticker «Enlace».
+  // En el celular, la hoja del sistema con el archivo (ahí está Instagram > Historias); en escritorio
+  // o sin la imagen precargada, se descarga. El portapapeles se escribe antes del share, sin await,
+  // para no gastar la activación del toque.
+  const compartirInstagram = useCallback(
+    async (archivo: string): Promise<boolean> => {
+      if (!historia) return false;
+      const codigo = codigoCompartido();
+      const enlace = conRef(url, codigo, origen);
+      const copia = copiarAlPortapapeles(enlace);
+      const blob = historiaLista.current;
+      if (soportaNativo && blob) {
+        const file = new File([blob], archivo, { type: blob.type || "image/png" });
+        if (navigator.canShare?.({ files: [file] })) {
+          try {
+            await navigator.share({ files: [file] });
+            avisar("historia");
+            medir("instagram", codigo);
+            return true;
+          } catch (e) {
+            if (e instanceof DOMException && e.name === "AbortError") return false;
+          }
+        }
+      }
+      try {
+        const bajada = blob ?? (await bajarImagen(historia, new AbortController().signal));
+        if (!bajada) throw new Error("sin imagen");
+        descargar(bajada, archivo);
+        await copia;
+        avisar("descargado");
+        medir("instagram", codigo);
+        return true;
+      } catch {
+        avisar("error");
+        return false;
+      }
+    },
+    [historia, url, origen, soportaNativo, avisar, medir],
+  );
+
   const compartirEn = useCallback(
     async (canal: CanalCompartir) => {
       if (canal === "copiar") {
@@ -196,13 +274,17 @@ export function usarCompartir(opciones: OpcionesCompartir) {
         await compartir();
         return;
       }
+      if (canal === "instagram") {
+        await compartirInstagram("calcularya-historia.png");
+        return;
+      }
       const codigo = codigoCompartido();
       const enlace = enlaceDeCanal(canal, texto, conRef(url, codigo, origen));
       window.open(enlace, "_blank", "noopener,noreferrer");
       medir(canal, codigo);
     },
-    [copiar, compartir, texto, url, origen, medir],
+    [copiar, compartir, compartirInstagram, texto, url, origen, medir],
   );
 
-  return { compartir, estado, soportaNativo, compartirEn };
+  return { compartir, estado, soportaNativo, compartirEn, compartirInstagram };
 }

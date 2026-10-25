@@ -56,3 +56,5 @@ Historia y porqués: `docs/decisiones/mundo.md`.
   de `src/lib/mundo/pagas-ar.ts`: no importar `ar.ts` desde el navegador.
 - Afiliados (`ui/Afiliados.tsx`): apagados sin `NEXT_PUBLIC_AFILIADO_*_URL`. Detalle en
   `docs/decisiones/afiliados.md`.
+- La OG de calcularya acepta `formato=historia|cuadrado`; la de calcular.ar solo historia (por eso
+  `conCuadrado={false}` en mundo-ar.tsx).

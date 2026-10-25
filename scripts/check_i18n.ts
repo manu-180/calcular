@@ -18,6 +18,8 @@ import { DICCIONARIOS_MUNDO } from "../src/motor/i18n/mundo";
 import { DICCIONARIOS_RANKINGS } from "../src/motor/i18n/rankings";
 import { DICCIONARIOS_HORAS } from "../src/motor/i18n/horas";
 import { DICCIONARIOS_CALENDARIO } from "../src/motor/i18n/calendario";
+import { DICCIONARIOS_REDES } from "../src/motor/i18n/redes";
+import { DICCIONARIOS_HORAS_PROPIO } from "../src/motor/i18n/horas-propio";
 import { anchoVisual } from "../src/motor/ancho";
 import { problemasDeTexto } from "./reglas_idioma";
 
@@ -122,6 +124,8 @@ const FUENTES: readonly Fuente[] = [
   desde("rankings", DICCIONARIOS_RANKINGS),
   desde("horas", DICCIONARIOS_HORAS),
   desde("calendario", DICCIONARIOS_CALENDARIO),
+  desde("redes", DICCIONARIOS_REDES),
+  desde("horas-propio", DICCIONARIOS_HORAS_PROPIO),
   { nombre: "legales", resolver: (i, t, l) => resolverLegales(i, t, { actualizado: "13/10/2026", mail: "correo@calcularya.test" }, l) },
   { nombre: "unidades", resolver: (i, _t, l) => nombresUnidad(i, l ?? i) },
 ];
