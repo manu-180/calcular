@@ -1,5 +1,5 @@
 // Ronda mensual de calcularya, sin GitHub Actions: refresca los precios de «¿Cuántas horas de trabajo
-// cuesta?», saca la foto mensual de los rankings, valida con check_horas y check_rankings y, si algo
+// cuesta?» (los de las tiendas y los oficiales de calcular.ar: INDEC y surtidores), saca la foto mensual de los rankings, valida con check_horas y check_rankings y, si algo
 // cambió, commitea SOLO esos archivos de datos y los pushea a main (= deploy en Vercel), como datos-vivos.
 // Lo corre el día 1 la tarea programada CalcularYa-Mensual (scripts/cron/mensual.ps1, que deja un
 // checkout limpio en origin/main) y, cuando vuelva el billing, .github/workflows/mensual.yml.
@@ -21,8 +21,9 @@ import path from "node:path";
 
 const RAIZ = path.resolve(import.meta.dirname, "..", "..");
 const PRECIOS = "src/lib/horas/precios.json";
+const COTIDIANOS = "src/lib/horas/cotidianos-ar.json";
 const HISTORIAL = "src/motor/rankings/historial";
-const DATOS = [PRECIOS, HISTORIAL];
+const DATOS = [PRECIOS, COTIDIANOS, HISTORIAL];
 // El autor tiene que ser manu-180: Vercel bloquea (BLOCKED, sin avisar) un deploy cuyo autor no es del equipo.
 const AUTOR = ["-c", "user.name=manu-180", "-c", "user.email=157671390+manu-180@users.noreply.github.com"];
 
@@ -92,23 +93,29 @@ function main(): number {
   const precios = leerJson<{ actualizadoEl?: string }>(PRECIOS);
   const preciosAlDia = !!precios?.actualizadoEl?.startsWith(mesActual);
   const tocaPrecios = forzar || !preciosAlDia;
+  const cotidianos = leerJson<{ actualizadoEl?: string }>(COTIDIANOS);
+  const tocaCotidianos = forzar || !cotidianos?.actualizadoEl?.startsWith(mesActual);
+  log(`cotidianos-ar.json leído el ${cotidianos?.actualizadoEl ?? "?"}: ${tocaCotidianos ? "toca releer INDEC y surtidores" : "ya es de este mes"}`);
   const fotoExiste = existsSync(path.join(RAIZ, HISTORIAL, `${mesActual}.json`));
   log(`precios.json leído el ${precios?.actualizadoEl ?? "?"}: ${tocaPrecios ? "toca releer las tiendas" : "ya es de este mes, no se relee"}`);
   // foto_mensual.ts es idempotente (no pisa la foto del mes de la grilla): corre siempre.
   log(`foto de rankings ${mesActual}: ${fotoExiste ? "ya existe, no se rehace" : "falta, se saca"}`);
 
   if (seco) {
-    log(`(seco) correría: ${[tocaPrecios ? "scripts/horas/actualizar_precios.ts" : "", "scripts/rankings/foto_mensual.ts", "scripts/check_horas.ts", "scripts/check_rankings.ts"].filter(Boolean).join(" → ")}`);
+    log(`(seco) correría: ${[tocaPrecios ? "scripts/horas/actualizar_precios.ts" : "", tocaCotidianos ? "scripts/horas/actualizar_cotidianos_ar.ts" : "", "scripts/rankings/foto_mensual.ts", "scripts/check_horas.ts", "scripts/check_horas_ar.ts", "scripts/check_rankings.ts"].filter(Boolean).join(" → ")}`);
     log(`(seco) commitearía solo ${DATOS.join(" y ")} con autor manu-180 y pushearía a main (pull --rebase, 3 intentos)`);
     const okHoras = correr("check_horas (estado de hoy)", "scripts/check_horas.ts");
+    const okHorasAr = correr("check_horas_ar (estado de hoy)", "scripts/check_horas_ar.ts");
     const okRankings = correr("check_rankings (estado de hoy)", "scripts/check_rankings.ts");
-    log(`(seco) validación de hoy: ${okHoras && okRankings ? "verde" : "ROJA, no publicaría"}`);
+    log(`(seco) validación de hoy: ${okHoras && okHorasAr && okRankings ? "verde" : "ROJA, no publicaría"}`);
     return 0;
   }
 
   if (tocaPrecios && !correr("precios de horas", "scripts/horas/actualizar_precios.ts")) return fallar("el refresco de precios falló");
+  if (tocaCotidianos && !correr("precios oficiales de calcular.ar", "scripts/horas/actualizar_cotidianos_ar.ts")) return fallar("el refresco de precios oficiales falló");
   if (!correr("foto de rankings", "scripts/rankings/foto_mensual.ts")) return fallar("la foto de rankings falló");
   if (!correr("check_horas", "scripts/check_horas.ts")) return fallar("check_horas en rojo: no se publica");
+  if (!correr("check_horas_ar", "scripts/check_horas_ar.ts")) return fallar("check_horas_ar en rojo: no se publica");
   if (!correr("check_rankings", "scripts/check_rankings.ts")) return fallar("check_rankings en rojo: no se publica");
 
   const lista = cambios();
@@ -123,8 +130,8 @@ function main(): number {
   }
 
   git("add", "--", ...DATOS);
-  const partes = [lista.some((f) => f.startsWith(PRECIOS)) ? "precios de horas" : "", lista.some((f) => f.startsWith(HISTORIAL)) ? "foto de rankings" : ""].filter(Boolean);
-  git(...AUTOR, "commit", "-q", "-m", `datos(mensual): ${partes.join(" y ")} ${mesActual}`, "-m", "Ronda mensual automática (scripts/cron/mensual.ts): datos validados con check_horas y check_rankings.");
+  const partes = [lista.some((f) => f.startsWith(PRECIOS)) ? "precios de horas" : "", lista.some((f) => f.startsWith(COTIDIANOS)) ? "precios oficiales de horas en calcular.ar" : "", lista.some((f) => f.startsWith(HISTORIAL)) ? "foto de rankings" : ""].filter(Boolean);
+  git(...AUTOR, "commit", "-q", "-m", `datos(mensual): ${partes.join(" y ")} ${mesActual}`, "-m", "Ronda mensual automática (scripts/cron/mensual.ts): datos validados con check_horas, check_horas_ar y check_rankings.");
   log(`commit ${git("log", "--oneline", "-1")}`);
 
   for (let intento = 1; intento <= 3; intento++) {

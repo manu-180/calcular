@@ -26,7 +26,12 @@ import "./estilos-ar.css";
 
 const LOCALE = "es-AR";
 export const MARCA_AR: MarcaMundo = { nombre: NOMBRE_SITIO, dominio: "calcular.ar" };
-const TITULO = "Día de libertad tributaria: tu sueldo en el mundo";
+const TITULO = "¿Cuánto te quedaría en mano en otro país? Tu sueldo en el mundo";
+// El enganche de calcular.ar es comparar países; el día de libertad tributaria queda como dato del
+// resultado. Va acá y no en src/motor/i18n/mundo.ts porque el trato «vos» lo comparten otras ediciones.
+const H1 = "¿Cuánto te quedaría en mano en otro país?";
+const CEJA = "Tu sueldo en el mundo";
+const bajada = (n: number) => `Poné tu sueldo bruto y mirá cuánto cobrarías en ${n} países, con el mismo poder de compra y la ley de cada uno. De paso, ves hasta qué día del año trabajás para el Estado.`;
 
 const t = textosMundo("es", "vos", LOCALE);
 
@@ -71,7 +76,7 @@ function fechaCorta(dia: number, anio: number): string {
 }
 
 function descripcion(n: number): string {
-  return `Mirá hasta qué día del año trabajás para el Estado con tu sueldo argentino y cuánto te quedaría en mano en ${n} países, con el mismo poder de compra.`;
+  return `Mirá cuánto te quedaría en mano con tu sueldo argentino en ${n} países, con el mismo poder de compra, y hasta qué día del año trabajás para el Estado.`;
 }
 
 function preguntas(n: number): PreguntaMundo[] {
@@ -180,10 +185,10 @@ export function PaginaMundoAR({ c }: { c?: string }) {
       <header className="cy-mundo-cabeza" data-duelo={carga ? "" : undefined}>
         <p className="cy-mundo-ceja">
           <span className="cy-punto-vivo" aria-hidden="true" />
-          {t.ceja}
+          {CEJA}
         </p>
-        <h1 className="cy-mundo-h1">{t.h1}</h1>
-        <p className="cy-mundo-intro">{t.bajada(n)}</p>
+        <h1 className="cy-mundo-h1">{H1}</h1>
+        <p className="cy-mundo-intro">{bajada(n)}</p>
       </header>
 
       <MundoCliente
