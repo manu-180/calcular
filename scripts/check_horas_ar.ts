@@ -6,7 +6,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { ITEMS_COTIDIANOS, itemCotidiano, RUTA_HORAS_AR, type ArchivoCotidianos } from "../src/lib/horas-ar/catalogo";
 import { datosHorasAR } from "../src/lib/horas-ar/datos";
-import { codigoHoras, duracion, fraseCompartir, leerCodigoHoras, minutosDe, valorHora } from "../src/lib/horas-ar/formato";
+import { codigoHoras, duracion, ESCALA_COMPARTIDA, fraseCompartir, leerCodigoHoras, minutosCompartidos, minutosDe, valorHora } from "../src/lib/horas-ar/formato";
 import { hoyAR } from "../src/lib/hoy";
 
 const RAIZ = path.resolve(import.meta.dirname, "..");
@@ -80,9 +80,42 @@ check("duración: 45 min", duracion(45).texto === "45 min");
 check("duración: 2 h 10 min", duracion(130).texto === "2 h 10 min");
 check("duración: 3 h", duracion(180).texto === "3 h");
 check("duración: desde 100 horas sin minutos", duracion(312 * 60 + 20).texto === "312 h");
-check("código ida y vuelta", JSON.stringify(leerCodigoHoras(codigoHoras("asado", 130))) === JSON.stringify({ id: "asado", minutos: 130 }));
+check("código: 140 minutos viajan como 150", codigoHoras("asado", 140) === "asado.150", codigoHoras("asado", 140));
+check("código canónico ida y vuelta", JSON.stringify(leerCodigoHoras("asado.150")) === JSON.stringify({ id: "asado", minutos: 150, canonico: true }));
+check("código no canónico: se redirige al valor de la escala", JSON.stringify(leerCodigoHoras("asado.140")) === JSON.stringify({ id: "asado", minutos: 150, canonico: false }));
 for (const malo of ["asado", "asado.0", "asado.013", "asado.1.5", "inventado.10", "asado.123456789", "Asado.10", "asado.10?x=1"]) check(`código inválido: ${malo}`, leerCodigoHoras(malo) === null);
-check("la frase compartida no lleva pesos", !/\$|\d{4,}/.test(fraseCompartir("un kilo de asado", 130)), fraseCompartir("un kilo de asado", 130));
+check("la frase compartida no lleva pesos", !/\$|\d{4,}/.test(fraseCompartir("un kilo de asado", 150)), fraseCompartir("un kilo de asado", 150));
+
+// Privacidad del link (como las franjas de «Tu sueldo en el mundo»): cada valor compartido tiene que
+// corresponder a un rango de valor hora de ±10 % o más (razón entre puntas ≥ 1,1 / 0,9), para cualquier
+// ítem. Como valor hora = precio ÷ minutos, la razón del rango de valor hora es la del tramo de minutos.
+const RANGO_MINIMO = 1.1 / 0.9;
+const e = ESCALA_COMPARTIDA;
+check("escala estrictamente creciente", e.every((v, i) => i === 0 || v > e[i - 1]));
+check("cada valor de la escala es su propio redondeo", e.every((v) => minutosCompartidos(v) === v));
+let masAngosto = { v: 0, razon: Infinity };
+for (let i = 1; i < e.length - 1; i++) {
+  const razon = Math.sqrt(e[i + 1] / e[i - 1]);
+  if (razon < masAngosto.razon) masAngosto = { v: e[i], razon };
+}
+check(`cada valor compartido cubre ±10 % de valor hora (el más angosto: ${duracion(masAngosto.v).texto}, razón ${masAngosto.razon.toFixed(3)})`, masAngosto.razon >= RANGO_MINIMO);
+// Y con el redondeo real: la página pasa a minutos enteros (minutosDe) antes de elegir el valor, así que
+// el tramo de un valor son los minutos enteros k que caen en él, y cada k viene de minutos reales en
+// [k − 0,5, k + 0,5). Como minutos = precio × 60 ÷ valor hora, la razón del rango de valor hora es la misma
+// para cualquier ítem y cualquier precio: alcanza con medirla una vez por valor de la escala.
+let peorEntero = { v: 0, razon: Infinity };
+for (let i = 1; i < e.length - 1; i++) {
+  const kmin = Math.ceil(Math.sqrt(e[i - 1] * e[i]));
+  const kmax = Math.ceil(Math.sqrt(e[i] * e[i + 1])) - 1;
+  const razon = (kmax + 0.5) / (kmin - 0.5);
+  if (razon < peorEntero.razon) peorEntero = { v: e[i], razon };
+}
+check(`con minutos enteros, ningún link deja deducir el valor hora con menos de ±10 % (el más angosto: ${duracion(peorEntero.v).texto}, razón ${peorEntero.razon.toFixed(4)})`, peorEntero.razon >= RANGO_MINIMO - 1e-9);
+for (const i of d.items) {
+  const h = 5000;
+  const v = minutosCompartidos(minutosDe(i.monto, h));
+  check(`${i.id}: el link con un valor hora de $5.000 no lleva los minutos exactos`, ESCALA_COMPARTIDA.includes(v) && leerCodigoHoras(codigoHoras(i.id, v))?.canonico === true, v);
+}
 
 // La página existe donde dice la navegación
 const nav = readFileSync(path.join(RAIZ, "src/data/navegacion.ts"), "utf8");

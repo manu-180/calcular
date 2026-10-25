@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useId, useMemo, useState, type CSSProperties } from "react";
 import { estimarGananciasAnual } from "@/lib/ganancias";
 import { RUTA_HORAS_AR } from "@/lib/horas-ar/catalogo";
-import { duracion, duracionLarga, codigoHoras, fraseCompartir, mayuscula, minutosDe, valorHora } from "@/lib/horas-ar/formato";
+import { duracion, duracionLarga, codigoHoras, fraseCompartir, mayuscula, minutosCompartidos, minutosDe, valorHora } from "@/lib/horas-ar/formato";
 import { guardarTraspasoAR } from "@/lib/mundo/traspaso-ar";
 import { PAGAS_AR } from "@/lib/mundo/pagas-ar";
 import { brutoANeto, netoABruto } from "@/lib/sueldo";
@@ -150,13 +150,15 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
 
   const ordenados = useMemo(() => [...datos.items].sort((a, b) => a.monto - b.monto), [datos.items]);
 
-  const codigo = item && propios && minutos ? codigoHoras(item.id, minutos) : item?.id;
+  // La pantalla muestra los minutos exactos; lo que sale (link, tarjeta, texto) va redondeado a la escala.
+  const compartidos = propios && minutos ? minutosCompartidos(minutos) : null;
+  const codigo = item && compartidos ? codigoHoras(item.id, compartidos) : item?.id;
   // Relativa: la vista previa y la descarga salen del mismo sitio que sirve la página (también en una preview).
   const imagen = `${RUTA_HORAS_AR}/og?c=${codigo ?? ""}`;
-  const url = propios && item && minutos ? `${base}/${codigoHoras(item.id, minutos)}` : base;
+  const url = item && compartidos ? `${base}/${codigoHoras(item.id, compartidos)}` : base;
   const opciones = useMemo(
-    () => ({ origen: "horas" as const, url, titulo: "¿Cuántas horas de trabajo te cuesta?", texto: item ? fraseCompartir(item.nombre, propios ? minutos : null) : "", imagen: `${imagen}&formato=historia`, historia: `${imagen}&formato=historia` }),
-    [url, item, propios, minutos, imagen],
+    () => ({ origen: "horas" as const, url, titulo: "¿Cuántas horas de trabajo te cuesta?", texto: item ? fraseCompartir(item.nombre, compartidos) : "", imagen: `${imagen}&formato=historia`, historia: `${imagen}&formato=historia` }),
+    [url, item, compartidos, imagen],
   );
 
   const jornada = minutos ? minutos / 60 / horasDia : 0;
@@ -238,7 +240,7 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
               <Fichaje minutos={minutos} />
               {amigo && amigoItem?.id === item.id && propios ? (
                 <p className="ca-hs-duelo">
-                  {minutos < amigo.minutos ? "A vos te cuesta menos." : minutos > amigo.minutos ? "A vos te cuesta más." : "Les cuesta lo mismo."} Tu amigo: {duracion(amigo.minutos).texto}. Vos: {duracion(minutos).texto}.
+                  {minutos < amigo.minutos ? "A vos te cuesta menos." : minutos > amigo.minutos ? "A vos te cuesta más." : "Les cuesta lo mismo."} Tu amigo: cerca de {duracion(amigo.minutos).texto}. Vos: {duracion(minutos).texto}.
                 </p>
               ) : null}
             </>
@@ -286,7 +288,7 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
               {propios ? `Muestra lo que te cuesta ${item.nombre} en horas. Ni tu sueldo ni lo que vale tu hora aparecen en la imagen ni en el link.` : "Cuando pongas tu sueldo, la tarjeta muestra tus horas. Nunca tu sueldo."}
             </p>
           </div>
-          <Redes t={redes} opciones={opciones} cuadrado={`${imagen}&formato=cuadrado`} archivo="calcular-horas" alt={propios && minutos ? fraseCompartir(item.nombre, minutos) : `¿Cuántas horas de trabajo te cuesta ${item.nombre}?`} />
+          <Redes t={redes} opciones={opciones} cuadrado={`${imagen}&formato=cuadrado`} archivo="calcular-horas" alt={compartidos ? fraseCompartir(item.nombre, compartidos) : `¿Cuántas horas de trabajo te cuesta ${item.nombre}?`} />
         </section>
       ) : null}
 

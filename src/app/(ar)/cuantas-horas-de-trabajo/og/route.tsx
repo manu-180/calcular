@@ -142,7 +142,7 @@ function Tarjeta({ formato, nombre, minutos }: Datos & { formato: Formato }) {
         <div style={{ display: "flex", flexDirection: h ? "row" : "column", alignItems: h ? "center" : "flex-start", justifyContent: "space-between", gap: 48 * s }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", fontSize: 66 * s, fontWeight: 700, lineHeight: 1.08, letterSpacing: -1.5 * s, maxWidth: h ? 640 : 900 }}>{mayuscula(nombre)}</div>
-            <div style={{ display: "flex", fontSize: 52 * s, color: SUAVE, marginTop: 6 * s, marginBottom: 18 * s }}>me cuesta</div>
+            <div style={{ display: "flex", fontSize: 52 * s, color: SUAVE, marginTop: 6 * s, marginBottom: 18 * s }}>me cuesta cerca de</div>
             <Cifra minutos={minutos} tam={tamCifra} />
             <div style={{ display: "flex", fontSize: 52 * s, color: SUAVE, marginTop: 14 * s }}>de trabajo.</div>
           </div>
@@ -174,11 +174,13 @@ export async function GET(req: Request) {
 
   const c = q.get("c") ?? ITEM_INICIAL;
   const leido = leerCodigoHoras(c);
+  // Solo valores de la escala compartida: unos minutos exactos dirían el valor hora de quien comparte.
+  if (leido && !leido.canonico) return new Response("No encontrado", { status: 404 });
   const item = itemCotidiano(leido?.id ?? c);
   if (!item) return new Response("No encontrado", { status: 404 });
   const datos: Datos = { nombre: item.nombre, minutos: leido?.minutos ?? null };
 
-  const texto = ["CalculAR calcular.ar 0123456789 hmin ¿?.", mayuscula(item.nombre), item.nombre, "me cuesta de trabajo ¿Y a vos? Calculá tus horas ¿Cuántas horas de trabajo te cuesta Poné tu sueldo y tus horas. Precios oficiales."].join(" ");
+  const texto = ["CalculAR calcular.ar 0123456789 hmin ¿?.", mayuscula(item.nombre), item.nombre, "me cuesta cerca de trabajo ¿Y a vos? Calculá tus horas ¿Cuántas horas de trabajo te cuesta Poné tu sueldo y tus horas. Precios oficiales."].join(" ");
   const unicos = [...new Set(texto)].join("");
   const pedidas = await Promise.all([fuente(400, unicos), fuente(700, unicos)]);
   const pesos = [400, 700] as const;

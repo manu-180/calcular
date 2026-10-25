@@ -13,7 +13,8 @@ import { RUTA_MUNDO_AR } from "@/motor/mundo/rutas";
 import type { CargaCompartida, GrillaMundo } from "@/motor/mundo/tipos";
 import { compactar, type GrillaCliente } from "@/motor/mundo/ui/compacta";
 import { textosRedes } from "@/motor/i18n/redes";
-import { MundoCliente, type MarcaMundo } from "@/motor/mundo/ui/MundoCliente";
+import { lugarEnPagina } from "@/motor/horas/ui/datos-cliente";
+import { MundoCliente, type MarcaMundo, type TextosEnManoPrimero } from "@/motor/mundo/ui/MundoCliente";
 import { textosCliente } from "@/motor/mundo/ui/textos-cliente";
 import { origenAR, origenIntl } from "@/motor/sitio";
 import type { FechaISO } from "@/motor/tipos";
@@ -96,6 +97,15 @@ function preguntas(n: number): PreguntaMundo[] {
     },
     ...resto,
   ];
+}
+
+// El resultado abre con lo que queda en mano y dónde rinde más; la fecha va como dato chico.
+function enManoPrimero(paises: readonly { iso: string; nombre: string }[]): TextosEnManoPrimero {
+  return {
+    mejor: Object.fromEntries(paises.map((p) => [p.iso, `${lugarEnPagina(p.nombre, "es")} te quedaría {pct} más en mano, con el mismo poder de compra.`])),
+    mejorPropio: "Con tu sueldo, ningún país te deja más en mano que la Argentina.",
+    fecha: "Hasta acá trabajás para el Estado",
+  };
 }
 
 type Resuelto = { grilla: GrillaMundo; carga: CargaCompartida | null; canonica: boolean };
@@ -203,6 +213,7 @@ export function PaginaMundoAR({ c }: { c?: string }) {
         redes={textosRedes("es", "vos", LOCALE)}
         conCuadrado={false}
         marca={MARCA_AR}
+        enManoPrimero={enManoPrimero(cliente.paises)}
       />
 
       <section className="cy-mundo-metodo" aria-labelledby="cy-mundo-metodo-titulo">

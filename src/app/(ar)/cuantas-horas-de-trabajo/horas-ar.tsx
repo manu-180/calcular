@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { HorasAR } from "@/components/horas/HorasAR";
 import { JsonLd } from "@/components/JsonLd";
 import { ITEM_INICIAL, RUTA_HORAS_AR } from "@/lib/horas-ar/catalogo";
 import { datosHorasAR, type DatosHorasAR } from "@/lib/horas-ar/datos";
-import { duracion, duracionLarga, leerCodigoHoras, mayuscula, minutosDe } from "@/lib/horas-ar/formato";
+import { codigoHoras, duracion, duracionLarga, leerCodigoHoras, mayuscula, minutosDe } from "@/lib/horas-ar/formato";
 import { ORGANIZACION } from "@/lib/schema";
 import { NOMBRE_SITIO } from "@/lib/seo";
 import { textosRedes } from "@/motor/i18n/redes";
@@ -31,7 +31,7 @@ function datos(): DatosHorasAR {
   }
 }
 
-type Resuelto = { datos: DatosHorasAR; amigo: { id: string; minutos: number } | null };
+type Resuelto = { datos: DatosHorasAR; amigo: { id: string; minutos: number; canonico: boolean } | null };
 
 function resolver(c?: string): Resuelto | null {
   const d = datos();
@@ -42,7 +42,8 @@ function resolver(c?: string): Resuelto | null {
 
 export function metadataHorasAR(c?: string): Metadata {
   const r = resolver(c);
-  if (!r) return {};
+  // Una carga que no es la canónica va con 308 a la canónica (cada tarjeta tiene una sola URL en caché).
+  if (!r || (r.amigo && !r.amigo.canonico)) return {};
   const base: Metadata = {
     title: { absolute: TITULO },
     description: DESCRIPCION,
@@ -59,7 +60,7 @@ export function metadataHorasAR(c?: string): Metadata {
   };
   if (!r.amigo || !c) return base;
   const item = r.datos.items.find((i) => i.id === r.amigo!.id);
-  const titulo = `Tu amigo trabaja ${duracion(r.amigo.minutos).texto} por ${item?.nombre ?? "esto"}. ¿Y vos?`;
+  const titulo = `Tu amigo trabaja cerca de ${duracion(r.amigo.minutos).texto} por ${item?.nombre ?? "esto"}. ¿Y vos?`;
   return {
     ...base,
     title: { absolute: titulo },
@@ -98,6 +99,7 @@ function preguntas(d: DatosHorasAR) {
 export function PaginaHorasAR({ c }: { c?: string }) {
   const r = resolver(c);
   if (!r) notFound();
+  if (r.amigo && !r.amigo.canonico) permanentRedirect(`${RUTA_HORAS_AR}/${codigoHoras(r.amigo.id, r.amigo.minutos)}`);
   const { datos: d, amigo } = r;
   const url = urlBase();
   const faq = preguntas(d);
@@ -121,7 +123,7 @@ export function PaginaHorasAR({ c }: { c?: string }) {
           <p className="ca-hs-amigo" role="note">
             <span className="ca-hs-amigo-punto" aria-hidden="true" />
             <span>
-              Tu amigo trabaja <strong>{duracion(amigo.minutos).texto}</strong> por {d.items.find((i) => i.id === amigo.id)?.nombre ?? "esto"}. ¿Y vos?{" "}
+              Tu amigo trabaja cerca de <strong>{duracion(amigo.minutos).texto}</strong> por {d.items.find((i) => i.id === amigo.id)?.nombre ?? "esto"}. ¿Y vos?{" "}
               <a className="ca-hs-amigo-cta" href="#calculadora">
                 Calculá tus horas
               </a>

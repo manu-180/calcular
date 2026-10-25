@@ -38,10 +38,15 @@ Se actualizan solos en la ronda mensual (`scripts/cron/mensual.ts` y `.github/wo
 
 ## Link compartido y privacidad
 
-`/cuantas-horas-de-trabajo/<ítem>.<minutos>` (noindex, canonical a la página). Lleva solo el ítem y los
-minutos: nunca el sueldo ni el valor hora. Ojo: con el precio público, los minutos permiten deducir el
-valor hora aproximado de quien comparte; es el mismo grado de exposición que la tarjeta de calcularya.
-La tarjeta OG (`og?c=…&formato=historia|cuadrado`) lee solo `c` y `formato`; cualquier otro parámetro es 404.
+`/cuantas-horas-de-trabajo/<ítem>.<minutos>` (noindex, canonical a la página). Lleva solo el ítem y un
+valor de `ESCALA_COMPARTIDA` (`lib/horas-ar/formato.ts`), nunca los minutos exactos ni el sueldo: con el
+precio público, los minutos exactos dejaban deducir el valor hora con ±0,5 %. La escala es casi geométrica
+(5, 10, 15, 20, 25, 30, 40, 50 min; 1 h, 1 h 15, 1 h 30, 2, 2 h 30, 3, 4, 5, 6, 8, 10, 12, 15, 20 h…) y
+cada valor cubre un rango de valor hora de ±10 % o más, igual que las franjas de «Tu sueldo en el mundo».
+`check_horas_ar` lo prueba con el redondeo a minutos enteros (el más angosto, 25 min, da justo 1,1 / 0,9).
+La pantalla propia muestra los minutos exactos; el link, la tarjeta y el texto dicen «cerca de» y el valor
+de la escala. Un valor fuera de la escala va con 308 al que le toca; uno inválido es 404. La tarjeta OG
+(`og?c=…&formato=historia|cuadrado`) lee solo `c` y `formato`, y da 404 con un valor fuera de la escala.
 
 ## Puente desde /sueldo-neto
 

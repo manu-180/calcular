@@ -43,21 +43,47 @@ export function duracionLarga(minutos: number): string {
   return `${h} ${h === 1 ? "hora" : "horas"} y ${resto} ${resto === 1 ? "minuto" : "minutos"}`;
 }
 
-// El link compartido lleva el ítem y los minutos, nunca el sueldo: «asado.130».
+// Lo que se comparte (link, tarjeta, texto) nunca son los minutos exactos: con el precio público se
+// deduciría el valor hora de quien comparte. Viaja un valor de esta escala, casi geométrica: dos valores
+// separados por uno siempre están a 1,5 veces o más, así que el tramo que cae en cada valor (entre las
+// medias geométricas con sus vecinos) mide al menos √1,5 ≈ 1,22 veces de punta a punta. Para cualquier
+// ítem, cada valor compartido corresponde a un valor hora de ±10 % o más (check_horas_ar lo prueba).
+// Lo mismo hizo «Tu sueldo en el mundo» con las franjas (docs/decisiones/mundo.md).
+const MANTISA = [1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+const MANTISA_LARGA = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8];
+export const ESCALA_COMPARTIDA: readonly number[] = [
+  5, 10, 15, 20, 25, 30, 40, 50,
+  ...MANTISA.map((m) => m * 60),
+  ...[10, 100, 1000, 10_000, 100_000].flatMap((e) => MANTISA_LARGA.map((m) => Math.round(m * e * 60))),
+  1_000_000 * 60,
+];
+
+// El valor de la escala cuyo tramo contiene `minutos` (cortes en la media geométrica entre vecinos).
+export function minutosCompartidos(minutos: number): number {
+  const e = ESCALA_COMPARTIDA;
+  for (let i = 0; i < e.length - 1; i++) if (minutos < Math.sqrt(e[i] * e[i + 1])) return e[i];
+  return e[e.length - 1];
+}
+
+// El link compartido lleva el ítem y un valor de la escala, nunca el sueldo: «asado.150».
 const CODIGO = /^([a-z]+)\.([1-9]\d{0,7})$/;
 
 export function codigoHoras(id: string, minutos: number): string {
-  return `${id}.${Math.round(minutos)}`;
+  return `${id}.${minutosCompartidos(minutos)}`;
 }
 
-export function leerCodigoHoras(c: string | null | undefined): { id: string; minutos: number } | null {
+// canonico: false si los minutos no son un valor de la escala (la página redirige al valor que toca).
+export function leerCodigoHoras(c: string | null | undefined): { id: string; minutos: number; canonico: boolean } | null {
   const m = c ? CODIGO.exec(c) : null;
   if (!m || !itemCotidiano(m[1])) return null;
-  return { id: m[1], minutos: Number(m[2]) };
+  const crudo = Number(m[2]);
+  const minutos = minutosCompartidos(crudo);
+  return { id: m[1], minutos, canonico: minutos === crudo };
 }
 
 export const mayuscula = (s: string) => (s ? s[0].toLocaleUpperCase("es-AR") + s.slice(1) : s);
 
+// `minutos` ya tiene que ser un valor de la escala compartida: por eso dice «cerca de».
 export function fraseCompartir(nombre: string, minutos: number | null): string {
-  return minutos ? `${mayuscula(nombre)} me cuesta ${duracion(minutos).texto} de trabajo. ¿Y a vos?` : `¿Cuántas horas de trabajo te cuesta ${nombre}? Calculalo con tu sueldo:`;
+  return minutos ? `${mayuscula(nombre)} me cuesta cerca de ${duracion(minutos).texto} de trabajo. ¿Y a vos?` : `¿Cuántas horas de trabajo te cuesta ${nombre}? Calculalo con tu sueldo:`;
 }
