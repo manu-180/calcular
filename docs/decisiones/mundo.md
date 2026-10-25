@@ -138,7 +138,7 @@ página sale del `<main>` de 56rem a 72rem (el ancho de calcularya): a 56rem la 
 **Barra de herramientas.** El `<article>` lleva `data-sin-herramientas`: si no, la barra de calcular.ar
 serializaba el sueldo en el hash del link que comparte, justo lo que la página promete no hacer.
 
-**Puente.** `src/components/mundo/PuenteMundo.tsx`, debajo del resultado de sueldo neto, con el mismo A/B
+**Puente.** Desde el 25/10/2026 la línea de sueldo neto lleva a las horas de trabajo (`src/components/horas/PuenteHoras.tsx`, ver `horas-ar.md`) y el mundo queda a un toque desde ahí. Antes era `PuenteMundo.tsx`, debajo del resultado de sueldo neto, con el mismo A/B
 50 % (`variantePuente`) y los eventos `puente_visto` / `puente_clic`. El traspaso va por
 `src/lib/mundo/traspaso-ar.ts`: bruto del recibo × `PAGAS_AR`, que ahora vive en `pagas-ar.ts` para que
 el navegador no cargue `ar.ts` (IPC, registro, escalas).

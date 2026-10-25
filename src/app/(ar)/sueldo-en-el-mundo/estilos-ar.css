@@ -89,6 +89,12 @@
   }
 }
 
+/* En calcular.ar el número grande es el sueldo en mano (enManoPrimero), más largo que una fecha. */
+.ca-mundo .cy-mundo-fecha[data-dinero] {
+  font-size: clamp(2.75rem, 1.4rem + 4.6vw, 4.75rem);
+  white-space: nowrap;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ca-mundo .cy-punto-vivo::after {
     animation: none;

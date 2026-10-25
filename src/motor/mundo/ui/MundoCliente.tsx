@@ -29,6 +29,16 @@ export interface PropsMundo {
   conCuadrado?: boolean;
   // El sitio que firma la tarjeta: calcular.ar usa la suya en su página (sin esto, CalcularYa).
   marca?: MarcaMundo;
+  // Con esto, el resultado abre con lo que queda en mano y el país donde más rinde, y la fecha pasa a
+  // dato secundario (calcular.ar). Sin esto, abre con la fecha, como siempre en calcularya.
+  enManoPrimero?: TextosEnManoPrimero;
+}
+
+export interface TextosEnManoPrimero {
+  // Por ISO del país donde más rinde, con {pct}: «En España te quedaría {pct} más en mano…».
+  mejor: Readonly<Record<string, string>>;
+  mejorPropio: string;
+  fecha: string;
 }
 
 export interface MarcaMundo {
@@ -305,7 +315,7 @@ function Compartir({ t, tr, url, imagen, texto, duelo, archivo, conCuadrado }: {
 
 // ─────────────────────────────── página ───────────────────────────────
 
-export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, meses, base, carga: cargaInicial, redes, conCuadrado = true, marca = MARCA_INTL }: PropsMundo) {
+export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, meses, base, carga: cargaInicial, redes, conCuadrado = true, marca = MARCA_INTL, enManoPrimero }: PropsMundo) {
   const f = usarFormatos(locale);
   const contrato = useMemo(() => expandir(grilla), [grilla]);
   const porMercado = useMemo(() => new Map(grilla.paises.map((p) => [p.mercado, p])), [grilla]);
@@ -511,31 +521,63 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
             </div>
           </form>
 
-          <div className="cy-mundo-resultado">
-            <p className="cy-mundo-antes">{cero ? t.cero.heroeAntes : t.heroe.hasta[0]}</p>
-            <p className="cy-mundo-fecha" key={cero ? "cero" : fecha}>
-              {propia && carga ? (cero ? t.cero.dia : fecha) : " "}
-            </p>
-            {cero ? <p className="cy-mundo-antes">{t.cero.motivo}</p> : t.heroe.hasta[1] ? <p className="cy-mundo-antes">{t.heroe.hasta[1]}</p> : null}
-            {propia && carga ? (
-              <div className="cy-mundo-cifras">
-                <div>
-                  <p className="cy-mundo-cifra" aria-describedby={`${idAyuda}-t`}>
-                    {tasa}
-                  </p>
-                  <p className="cy-mundo-cifra-texto" id={`${idAyuda}-t`}>
-                    {t.duelo.tasa}
-                  </p>
+          {enManoPrimero ? (
+            <div className="cy-mundo-resultado" data-en-mano="">
+              <p className="cy-mundo-antes">
+                {t.heroe.enMano} · {t.heroe.porMes}
+              </p>
+              <p className="cy-mundo-fecha" data-dinero="" key={propia ? propia.netoMensualLocal : "vacio"}>
+                {propia ? f.dinero(propia.netoMensualLocal, propia.pais.moneda) : " "}
+              </p>
+              {carga && pais ? (
+                <p className="cy-mundo-antes">
+                  {mejorIso && mejorIso !== pais.iso && carga.ventaja > 0 ? rellenar(enManoPrimero.mejor[mejorIso] ?? "", { pct: f.pct(carga.ventaja / 100) }) : enManoPrimero.mejorPropio}
+                </p>
+              ) : null}
+              {propia && carga ? (
+                <div className="cy-mundo-cifras">
+                  <div>
+                    <p className="cy-mundo-cifra">{cero ? t.cero.dia : fecha}</p>
+                    <p className="cy-mundo-cifra-texto">{enManoPrimero.fecha}</p>
+                  </div>
+                  <div>
+                    <p className="cy-mundo-cifra" aria-describedby={`${idAyuda}-t`}>
+                      {tasa}
+                    </p>
+                    <p className="cy-mundo-cifra-texto" id={`${idAyuda}-t`}>
+                      {t.duelo.tasa}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="cy-mundo-cifra">{f.dinero(propia.netoMensualLocal, propia.pais.moneda)}</p>
-                  <p className="cy-mundo-cifra-texto">
-                    {t.heroe.enMano} · {t.heroe.porMes}
-                  </p>
+              ) : null}
+            </div>
+          ) : (
+            <div className="cy-mundo-resultado">
+              <p className="cy-mundo-antes">{cero ? t.cero.heroeAntes : t.heroe.hasta[0]}</p>
+              <p className="cy-mundo-fecha" key={cero ? "cero" : fecha}>
+                {propia && carga ? (cero ? t.cero.dia : fecha) : " "}
+              </p>
+              {cero ? <p className="cy-mundo-antes">{t.cero.motivo}</p> : t.heroe.hasta[1] ? <p className="cy-mundo-antes">{t.heroe.hasta[1]}</p> : null}
+              {propia && carga ? (
+                <div className="cy-mundo-cifras">
+                  <div>
+                    <p className="cy-mundo-cifra" aria-describedby={`${idAyuda}-t`}>
+                      {tasa}
+                    </p>
+                    <p className="cy-mundo-cifra-texto" id={`${idAyuda}-t`}>
+                      {t.duelo.tasa}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="cy-mundo-cifra">{f.dinero(propia.netoMensualLocal, propia.pais.moneda)}</p>
+                    <p className="cy-mundo-cifra-texto">
+                      {t.heroe.enMano} · {t.heroe.porMes}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ) : null}
-          </div>
+              ) : null}
+            </div>
+          )}
 
           <div className="cy-mundo-anio-caja">
             <Anio anio={anio} dia={dia} meses={meses} etiqueta={rellenar(t.heroe.anio, { anio, n: dia, total })} />
