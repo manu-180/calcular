@@ -124,6 +124,31 @@ const soloInf = candidatosDelRegistro(registro, new Date(), { soloInferencia: tr
 const conInf = construirGrillaMundo({ candidatos: soloInf.candidatos, excluidos: soloInf.excluidos, ppa: tablaPpa as TablaPpa, generadoEl: grilla.generadoEl });
 console.log(`Solo con inferencia entrarían ${conInf.grilla.paises.length} de ${grilla.paises.filter((p) => p.sitio === "intl").length} países del registro: ${conInf.grilla.paises.map((p) => p.iso).join(" ")}`);
 
+// Bélgica y Países Bajos salen con 1-3 % de carga en el nivel medio de los rankings (30.000 dólares
+// internacionales ≈ 23.000 € al año): parece un error y no lo es. Cerca del mínimo legal el werkbonus
+// (BE, socialsecurity.be, desde 1/9/2026) anula el aporte personal y la bedrijfsvoorheffing, y la
+// algemene heffingskorting + arbeidskorting (NL, Belastingdienst 2026) se comen casi todo el box 1.
+// Netos calculados a mano con las fórmulas oficiales el 2026-10-24 (detalle en docs/decisiones/mundo.md).
+// Rigen para 2026: con los tramos de 2027 la ancla se recalcula.
+const ANCLAS_2026: { mercado: string; brutoAnual: number; neto: number; cuenta: string }[] = [
+  { mercado: "nl", brutoAnual: 23_000, neto: 22_310.34, cuenta: "35,75 % × 23.000 = 8.222,50 − AHK 3.115 − AK (996 + 31,009 % × 11.035) = 689,66" },
+  { mercado: "nl", brutoAnual: 57_500, neto: 42_855.23, cuenta: "13.900,67 + 37,56 % × 18.617 − AHK 1.338,66 − AK 4.909,79 = 14.644,77" },
+  { mercado: "be", brutoAnual: 24_000, neto: 23_487.48, cuenta: "2.000/maand: RSZ 261,40 − werkbonus 261,40; BV 167,01 − fiscale werkbonus 126,60 = 40,41; BBSZ 2,30; × 12" },
+];
+if (grilla.generadoEl < "2027-01-01") {
+  for (const a of ANCLAS_2026) {
+    const c = candidatos.find((x) => x.mercado === a.mercado);
+    const r = c?.netoAnual(a.brutoAnual);
+    if (!r?.ok) fallas.push(`${a.mercado}: la ancla de ${a.brutoAnual} € no corre${r && !r.ok ? ` (${r.motivo})` : ""}`);
+    else if (Math.abs(r.neto - a.neto) > 0.05) fallas.push(`${a.mercado}: neto de ${a.brutoAnual} € al año dio ${r.neto.toFixed(2)}, la cuenta oficial da ${a.neto} (${a.cuenta})`);
+  }
+  for (const [mercado, desde, hasta] of [["be", 0, 0.02], ["nl", 0.02, 0.04]] as const) {
+    const p = grilla.paises.find((x) => x.mercado === mercado);
+    const t = p ? tasaEfectiva(p, 30_000) : -1;
+    if (t < desde || t > hasta) fallas.push(`${mercado}: carga en 30.000 dólares internacionales ${(t * 100).toFixed(1)} %, la cuenta oficial la pone entre ${desde * 100} y ${hasta * 100} %`);
+  }
+}
+
 // El link de cada calculadora de sueldo dice «más de PAISES_PUENTE países»: no puede mentir.
 if (grilla.paises.length <= PAISES_PUENTE) fallas.push(`la grilla tiene ${grilla.paises.length} países y el link de las calculadoras promete más de ${PAISES_PUENTE} (PAISES_PUENTE en src/motor/mundo/rutas.ts)`);
 console.log(`\nGrilla armada en ${informe.ms} ms (${grilla.paises.length} países; el link promete más de ${PAISES_PUENTE}).`);
