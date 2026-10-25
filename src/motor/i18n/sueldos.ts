@@ -1374,7 +1374,7 @@ const hu: TextosSueldos = {
     cerca: "majdnem kész",
     lejos: "még több kell",
     cta: "Hozzáadom a fizetésemet",
-    ctaBajada: "Egy perc az egész, „A fizetésed a világban” összehasonlításban.",
+    ctaBajada: "Egy perc az egész, és a fizetéseket országonként összehasonlító oldalon teheted meg.",
     actualizado: "Bejegyzések {desde} és {hasta} között. A számok naponta egyszer frissülnek.",
     metodoTitulo: "Hogyan számolunk",
     metodo: [
