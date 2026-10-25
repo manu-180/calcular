@@ -1,0 +1,36 @@
+{
+  "mercado": "mu",
+  "avisos": [
+    {
+      "id": "mu.csg-income-allowance-ends",
+      "nivel": "cautela",
+      "desde": "2026-07-01",
+      "hasta": "2027-06-30",
+      "aplicaA": ["mu.csg-income-allowance-calculator"],
+      "titulo": "The allowance is being phased out",
+      "texto": "If you are not on the Social Register of Mauritius, the CSG income allowance is paid only up to June 2027. From July 2026 it is a third of what people on the Register get.",
+      "fuente": {
+        "organismo": "Mauritius Revenue Authority",
+        "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 30B(3) and Seventh Schedule",
+        "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "mu.pension-age-reform",
+      "nivel": "info",
+      "desde": "2026-08-13",
+      "aplicaA": ["mu.pension-age-calculator"],
+      "titulo": "Pension age is rising to 65",
+      "texto": "The Finance Act 2026 replaced the phasing in of pension age and created the State Age Pension. The calculator follows the Tenth Schedule of the National Pensions Act as amended on 13 August 2026.",
+      "fuente": {
+        "organismo": "Mauritius Revenue Authority",
+        "titulo": "The Finance Act 2026 (Act No. 14 of 2026), section 12: National Pensions Act amended",
+        "url": "https://www.mra.mu/download/FinanceAct2026.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}

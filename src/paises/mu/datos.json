@@ -1,0 +1,1378 @@
+{
+  "mercado": "mu",
+  "datos": [
+    {
+      "id": "mu.income-tax-bands",
+      "nombre": "Income tax bands for individuals (annual chargeable income)",
+      "tipo": "escala",
+      "unidad": "MUR",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 500000,
+              "tasa": 0
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 10
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 20
+            }
+          ],
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Letter to all employers: Personal Income Tax, PAYE, income year 1 July 2025 to 30 June 2026",
+            "url": "https://www.mra.mu/download/PayrollTaxes.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 500000,
+              "tasa": 0
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 10
+            },
+            {
+              "desde": 1000000,
+              "hasta": 12000000,
+              "tasa": 20
+            },
+            {
+              "desde": 12000000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "The Finance Act 2026 (Act No. 14 of 2026), section 7(v): new Part I of the First Schedule to the Income Tax Act",
+            "url": "https://www.mra.mu/download/FinanceAct2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Section 28(12): applies from the income year starting on 1 July 2026. Assented on 12 August 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.dependent-deduction",
+      "nombre": "Deduction for dependents (a year)",
+      "tipo": "mapa",
+      "unidad": "MUR",
+      "etiquetas": {
+        "0": "No dependents",
+        "1": "1 dependent",
+        "2": "2 dependents",
+        "3": "3 dependents",
+        "4": "4 or more dependents"
+      },
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "0": 0,
+            "1": 110000,
+            "2": 190000,
+            "3": 275000,
+            "4": 355000
+          },
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Guide on Pay As You Earn (PAYE), December 2025, Table A",
+            "url": "https://www.mra.mu/download/PAYEGuide.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The Finance Act 2026 does not change the deduction for dependents."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.paye-pay-periods",
+      "nombre": "Pay periods in the cumulative PAYE year (12 months and the end of year bonus)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Letter to all employers: Personal Income Tax, PAYE, income year 1 July 2025 to 30 June 2026",
+            "url": "https://www.mra.mu/download/PayrollTaxes.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.csg-threshold",
+      "nombre": "CSG: monthly basic wage up to which the lower rates apply",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-09-01",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 4 and First Schedule",
+            "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.csg-employee-low",
+      "nombre": "CSG paid by the employee, basic wage up to the threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-09-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 4 and First Schedule",
+            "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.csg-employee-high",
+      "nombre": "CSG paid by the employee, basic wage above the threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-09-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 4 and First Schedule",
+            "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.csg-employer-low",
+      "nombre": "CSG paid by the employer, basic wage up to the threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-09-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 4 and First Schedule",
+            "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.csg-employer-high",
+      "nombre": "CSG paid by the employer, basic wage above the threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-09-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 4 and First Schedule",
+            "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.nsf-employee",
+      "nombre": "NSF contribution paid by the employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "NPF / NSF Contributions and Training Levy",
+            "url": "https://www.mra.mu/index.php/employers/npf-nsf-contributions",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Minimum and maximum basic wage for NSF from 1 July 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.nsf-employer",
+      "nombre": "NSF contribution paid by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "NPF / NSF Contributions and Training Levy",
+            "url": "https://www.mra.mu/index.php/employers/npf-nsf-contributions",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Minimum and maximum basic wage for NSF from 1 July 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.nsf-minimum-wage",
+      "nombre": "NSF: minimum monthly basic wage for contributions (employees other than household)",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 4580,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "NPF / NSF Contributions and Training Levy",
+            "url": "https://www.mra.mu/index.php/employers/npf-nsf-contributions",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Minimum and maximum basic wage for NSF from 1 July 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.nsf-maximum-wage",
+      "nombre": "NSF: maximum monthly basic wage for contributions",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 29710,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "NPF / NSF Contributions and Training Levy",
+            "url": "https://www.mra.mu/index.php/employers/npf-nsf-contributions",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Minimum and maximum basic wage for NSF from 1 July 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.training-levy",
+      "nombre": "Training levy (HRDC) paid by the employer on the basic wage",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "NPF / NSF Contributions and Training Levy",
+            "url": "https://www.mra.mu/index.php/employers/npf-nsf-contributions",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Minimum and maximum basic wage for NSF from 1 July 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.prgf-rate",
+      "nombre": "PRGF contribution paid by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 4.5,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights (Portable Retirement Gratuity Fund) Regulations 2020, First Schedule",
+            "url": "https://www.mra.mu/download/GN39WRA.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.prgf-wage-ceiling",
+      "nombre": "PRGF: workers earning a monthly basic wage up to this amount can join",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-08-05",
+          "valor": 200000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 90(1)(e)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Value Added Tax Act, consolidated to the Finance Act 2026, Fourth Schedule",
+            "url": "https://www.mra.mu/download/VATAct.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.minimum-wage",
+      "nombre": "National minimum wage for a full-time worker (a month)",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 17110,
+          "fuente": {
+            "organismo": "Ministry of Labour and Industrial Relations",
+            "titulo": "National Minimum Wage (Amendment) Regulations 2025, GN No. 8 of 2025",
+            "url": "https://labour.govmu.org/Documents/NWCC/The%20NMW_Amd%20Reg%202025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 17745,
+          "fuente": {
+            "organismo": "Ministry of Labour and Industrial Relations",
+            "titulo": "National Minimum Wage (Amendment) Regulations 2026, GN No. 8 of 2026",
+            "url": "https://labour.govmu.org/Documents/Legislations/NWCC/The%20National%20Minimum%20Wage_Amd_Regulations%202026%20gazetted%20on%2017.1.2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.salary-compensation",
+      "nombre": "Additional remuneration (salary compensation) 2026 for a full-time worker (a month)",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 635,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights (Additional Remuneration) (2026) Regulations 2026, GN No. 7 of 2026",
+            "url": "https://www.mra.mu/download/GN15WRA.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Government Gazette No. 4 of 17 January 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.salary-compensation-ceiling",
+      "nombre": "Additional remuneration 2026: highest monthly basic wage that qualifies",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights (Additional Remuneration) (2026) Regulations 2026, GN No. 7 of 2026",
+            "url": "https://www.mra.mu/download/GN15WRA.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Government Gazette No. 4 of 17 January 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.salary-compensation-part-time-rate",
+      "nombre": "Additional remuneration 2026: rate for part-time workers below the threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3.7,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights (Additional Remuneration) (2026) Regulations 2026, GN No. 7 of 2026",
+            "url": "https://www.mra.mu/download/GN15WRA.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Government Gazette No. 4 of 17 January 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.salary-compensation-part-time-threshold",
+      "nombre": "Additional remuneration 2026: part-time basic wage below which the rate applies",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 17110,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights (Additional Remuneration) (2026) Regulations 2026, GN No. 7 of 2026",
+            "url": "https://www.mra.mu/download/GN15WRA.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Government Gazette No. 4 of 17 January 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.normal-week-hours",
+      "nombre": "Normal working week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-10-24",
+          "valor": 45,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 20(1)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.hours-per-month",
+      "nombre": "Hours in a month for the basic hourly rate (full-time worker)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-20",
+          "valor": 195,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 25",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.overtime-weekday",
+      "nombre": "Overtime on a week day",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-27",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 24(4)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.overtime-holiday-normal",
+      "nombre": "Work on a public holiday during normal hours",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-27",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 24(3)(a)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.overtime-holiday-extra",
+      "nombre": "Work on a public holiday after normal hours",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-27",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 24(3)(b)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.worker-wage-ceiling",
+      "nombre": "Annual basic wage above which most leave and overtime rules do not apply",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 600000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 2, definition of worker",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.annual-leave-days",
+      "nombre": "Annual leave after 12 months of continuous employment",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-20",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 45(1)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.extra-leave-days",
+      "nombre": "Extra leave days every year for every worker",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-20",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 45(2)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.sick-leave-days",
+      "nombre": "Sick leave on full pay after 12 months of continuous employment",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 46(1)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.maternity-weeks",
+      "nombre": "Maternity leave on full pay",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-07",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 52(1)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.maternity-weeks-after-birth",
+      "nombre": "Maternity leave that has to be taken right after the birth",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-07",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 52(1)(a)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.maternity-extra-weeks",
+      "nombre": "Extra maternity leave for twins, multiple births or a premature baby",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-07",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 52(1A)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.paternity-weeks",
+      "nombre": "Paternity leave with pay",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-07",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 53(1)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.maternity-allowance",
+      "nombre": "Maternity allowance after 12 months with the same employer",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-20",
+          "valor": 3000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, Fourth Schedule item 2",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.bonus-first-share",
+      "nombre": "End of year bonus: share to pay at least 5 clear working days before 25 December",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-08-05",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 54(1)(b)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.bonus-wage-ceiling",
+      "nombre": "End of year bonus: highest monthly basic wage covered by section 54",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-08-07",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 54(4)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.bonus-resign-months",
+      "nombre": "End of year bonus: months of service needed before resigning",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-08-05",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 54(3)(c)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.notice-days",
+      "nombre": "Minimum notice of termination",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-27",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 63(4)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.severance-months",
+      "nombre": "Severance allowance for every 12 months of continuous employment",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-23",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 70(1)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.gratuity-days",
+      "nombre": "Retirement gratuity for every 12 months of continuous employment",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-20",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 109(3)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.gratuity-days-in-month",
+      "nombre": "Days in a month for the daily rate of a gratuity",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-20",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 109(6)(b)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.gratuity-wage-ceiling",
+      "nombre": "Retirement gratuity: monthly basic wage above which section 109 does not apply without a private scheme",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-20",
+          "valor": 200000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 109(5)(b)",
+            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.registration-duty",
+      "nombre": "Registration duty on the transfer of immovable property (paid by the buyer)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Registration Duty Act, consolidated to Act 14 of 2026, section 3 and First Schedule Part I (J)",
+            "url": "https://www.mra.mu/download/TheRegistrationDutyAct.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.land-transfer-tax",
+      "nombre": "Land transfer tax on the transfer of immovable property (paid by the seller)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Land (Duties and Taxes) Act, consolidated to Act 14 of 2026, section 4 and Second Schedule Part A",
+            "url": "https://www.mra.mu/download/TheLandAct.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.first-home-relief-house",
+      "nombre": "Reduction of registration duty: residential lot, house or apartment",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 300000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Registration Duty Act, consolidated to Act 14 of 2026, section 27(3) and (5)",
+            "url": "https://www.mra.mu/download/TheRegistrationDutyAct.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The Finance Act 2026 raised the reductions from Rs 125,000 and Rs 250,000 with effect from 13 August 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.first-home-relief-land",
+      "nombre": "Reduction of registration duty: bare land to build a home",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Registration Duty Act, consolidated to Act 14 of 2026, section 27(3) and (5)",
+            "url": "https://www.mra.mu/download/TheRegistrationDutyAct.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The Finance Act 2026 raised the reductions from Rs 125,000 and Rs 250,000 with effect from 13 August 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.first-home-income-cap",
+      "nombre": "Reduction of registration duty: highest total income of the buyer in the income year",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 2000000,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Registration Duty Act, consolidated to Act 14 of 2026, section 27(3) and (5)",
+            "url": "https://www.mra.mu/download/TheRegistrationDutyAct.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The Finance Act 2026 raised the reductions from Rs 125,000 and Rs 250,000 with effect from 13 August 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.basic-pension",
+      "nombre": "Basic retirement pension or State Age Pension under age 90 (a month)",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15555,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "National Pensions Act, consolidated to Act 14 of 2026, Second Schedule item 1",
+            "url": "https://www.mra.mu/download/TheNationalPensionsAct1976.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Rates from 1 January 2026 (GN 29 of 2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.state-age-pension-3a",
+      "nombre": "State Age Pension basis: people who turn 60 from January 2026 to August 2029 (a month)",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 15555,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "National Pensions Act, consolidated to Act 14 of 2026, sections 3A and 3B and Eleventh Schedule",
+            "url": "https://www.mra.mu/download/TheNationalPensionsAct1976.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.state-age-pension-3b",
+      "nombre": "State Age Pension basis: people who turn 60 from September 2029 (a month)",
+      "tipo": "numero",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 16555,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "National Pensions Act, consolidated to Act 14 of 2026, sections 3A and 3B and Eleventh Schedule",
+            "url": "https://www.mra.mu/download/TheNationalPensionsAct1976.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.pension-early-reduction",
+      "nombre": "State Age Pension: reduction for every month taken before pension age",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "National Pensions Act, consolidated to Act 14 of 2026, sections 3A and 3B and Eleventh Schedule",
+            "url": "https://www.mra.mu/download/TheNationalPensionsAct1976.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.pension-deferral-before-65",
+      "nombre": "State Age Pension: increase for every month deferred after pension age, up to 65",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "National Pensions Act, consolidated to Act 14 of 2026, sections 3A and 3B and Eleventh Schedule",
+            "url": "https://www.mra.mu/download/TheNationalPensionsAct1976.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.pension-deferral-after-65",
+      "nombre": "State Age Pension: increase for every month deferred after 65, up to 70",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-13",
+          "valor": 0.75,
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "National Pensions Act, consolidated to Act 14 of 2026, sections 3A and 3B and Eleventh Schedule",
+            "url": "https://www.mra.mu/download/TheNationalPensionsAct1976.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.csg-income-allowance-register",
+      "nombre": "CSG income allowance: people on the Social Register of Mauritius (a month)",
+      "tipo": "escala",
+      "unidad": "MUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20000,
+              "tasa": 0,
+              "cuotaFija": 3000
+            },
+            {
+              "desde": 20000.01,
+              "hasta": 25000,
+              "tasa": 0,
+              "cuotaFija": 2500
+            },
+            {
+              "desde": 25000.01,
+              "hasta": 30000,
+              "tasa": 0,
+              "cuotaFija": 2000
+            },
+            {
+              "desde": 30000.01,
+              "hasta": 50000,
+              "tasa": 0,
+              "cuotaFija": 1500
+            },
+            {
+              "desde": 50000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 30B and Seventh Schedule Part I",
+            "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mu.csg-income-allowance-other",
+      "nombre": "CSG income allowance: people not on the Social Register (a month)",
+      "tipo": "escala",
+      "unidad": "MUR",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20000,
+              "tasa": 0,
+              "cuotaFija": 2000
+            },
+            {
+              "desde": 20000.01,
+              "hasta": 25000,
+              "tasa": 0,
+              "cuotaFija": 1667
+            },
+            {
+              "desde": 25000.01,
+              "hasta": 30000,
+              "tasa": 0,
+              "cuotaFija": 1333
+            },
+            {
+              "desde": 30000.01,
+              "hasta": 50000,
+              "tasa": 0,
+              "cuotaFija": 1000
+            },
+            {
+              "desde": 50000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 30B and Seventh Schedule Part I",
+            "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20000,
+              "tasa": 0,
+              "cuotaFija": 1000
+            },
+            {
+              "desde": 20000.01,
+              "hasta": 25000,
+              "tasa": 0,
+              "cuotaFija": 833
+            },
+            {
+              "desde": 25000.01,
+              "hasta": 30000,
+              "tasa": 0,
+              "cuotaFija": 667
+            },
+            {
+              "desde": 30000.01,
+              "hasta": 50000,
+              "tasa": 0,
+              "cuotaFija": 500
+            },
+            {
+              "desde": 50000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 30B and Seventh Schedule Part I",
+            "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20000.01,
+              "hasta": 25000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 25000.01,
+              "hasta": 30000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 30000.01,
+              "hasta": 50000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 50000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "Mauritius Revenue Authority",
+            "titulo": "Social Contribution and Social Benefits Act 2021, consolidated to Act 14 of 2026, section 30B and Seventh Schedule Part I",
+            "url": "https://www.mra.mu/download/SocialContributionAndSocialBenefitsAct2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Section 30B(3)(b): people not on the Social Register are paid only for July 2025 to June 2027."
+          }
+        }
+      ]
+    }
+  ]
+}
