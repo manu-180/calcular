@@ -40,6 +40,14 @@ import prisbasbelopp from "./calculadoras/prisbasbelopp";
 import contenidoPrisbasbelopp from "./contenido/prisbasbelopp";
 import drojsmalsranta from "./calculadoras/drojsmalsranta";
 import contenidoDrojsmalsranta from "./contenido/drojsmalsranta";
+import traktamente from "./calculadoras/traktamente";
+import contenidoTraktamente from "./contenido/traktamente";
+import reseavdrag from "./calculadoras/reseavdrag";
+import contenidoReseavdrag from "./contenido/reseavdrag";
+import fastighetsavgift from "./calculadoras/fastighetsavgift";
+import contenidoFastighetsavgift from "./contenido/fastighetsavgift";
+import lagfart from "./calculadoras/lagfart";
+import contenidoLagfart from "./contenido/lagfart";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -72,6 +80,10 @@ export default definirPais({
     { definicion: valutaomvandlare, contenido: contenidoValutaomvandlare, cliente: () => import("./calculadoras/valutaomvandlare.cliente") },
     { definicion: prisbasbelopp, contenido: contenidoPrisbasbelopp, cliente: () => import("./calculadoras/prisbasbelopp.cliente") },
     { definicion: drojsmalsranta, contenido: contenidoDrojsmalsranta, cliente: () => import("./calculadoras/drojsmalsranta.cliente") },
+    { definicion: traktamente, contenido: contenidoTraktamente, cliente: () => import("./calculadoras/traktamente.cliente") },
+    { definicion: reseavdrag, contenido: contenidoReseavdrag, cliente: () => import("./calculadoras/reseavdrag.cliente") },
+    { definicion: fastighetsavgift, contenido: contenidoFastighetsavgift, cliente: () => import("./calculadoras/fastighetsavgift.cliente") },
+    { definicion: lagfart, contenido: contenidoLagfart, cliente: () => import("./calculadoras/lagfart.cliente") },
   ],
   universales: "todas",
   novedades,
