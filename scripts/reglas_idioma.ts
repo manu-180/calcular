@@ -488,6 +488,33 @@ function reglasTh(texto: string): string[] {
   return p;
 }
 
+// Hebreo (ADR 0002, D22). La interfaz va sin niqqud (vocales y signos de cantilación, U+0591 a U+05C7:
+// los sitios israelíes escriben en כתיב מלא sin puntos). La puntuación es la latina, como en Israel,
+// pero bien puesta: sin espacio delante de , . : ; ? y con espacio detrás de la coma; nada de «،» ni
+// «؛» árabes. Comillas y abreviaturas con los signos del teclado, como gov.il y los bancos: «"» para
+// citar y para los gershayim (מע"מ, ש"ח), «'» para el geresh (צ'ק). Por eso no van «» “” „ ni ״ ׳:
+// una sola forma en todo el sitio, la que la gente escribe en el buscador.
+const LETRA_HEBREA = String.raw`[א-ת]`;
+const NIQQUD = /[֑-ׇֽֿׁׂׅׄ]/u;
+const ESPACIO_ANTES_DE_SIGNO_HE = new RegExp(`${LETRA_HEBREA} +[,.:;?](?:\s|$)`, "u");
+const COMA_PEGADA_HE = new RegExp(`${LETRA_HEBREA},${LETRA_HEBREA}`, "u");
+const COMILLAS_AJENAS_HE = /[«»“”„״׳]/u;
+// Registro: plural inclusivo («הזינו», «בחרו», «לחצו») y botones en infinitivo o sustantivo; nada de
+// imperativo en singular masculino ni femenino, que le habla a una sola persona con género.
+const IMPERATIVO_SINGULAR_HE = /(?<![א-ת])(?:הזן|הזיני|בחרי|הקלד|הקלידי|הכנס|הכניסי|תזין|תזיני|תבחר|תבחרי|חשבי|שים לב|שימי לב)(?![א-ת])/u;
+
+function reglasHe(texto: string): string[] {
+  const p: string[] = [];
+  if (/[!！]/.test(texto)) p.push("signo de exclamación");
+  if (NIQQUD.test(texto)) p.push("niqqud (puntos vocálicos) en la interfaz");
+  if (/[،؛؟]/.test(texto)) p.push("puntuación árabe en hebreo (va , ; ?)");
+  if (ESPACIO_ANTES_DE_SIGNO_HE.test(texto)) p.push("espacio delante de un signo de puntuación");
+  if (COMA_PEGADA_HE.test(texto)) p.push("coma sin espacio detrás");
+  if (IMPERATIVO_SINGULAR_HE.test(texto)) p.push("imperativo en singular con género (va el plural inclusivo: הזינו, בחרו, שימו לב)");
+  if (COMILLAS_AJENAS_HE.test(texto)) p.push('comillas o gershayim tipográficos en hebreo (van " y \' del teclado)');
+  return p;
+}
+
 export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, locale?: string): string[] {
   const p: string[] = [];
   if (RAYA.test(texto)) p.push("raya («—» o «–»): usá paréntesis o dos oraciones");
@@ -506,6 +533,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   }
   if (idioma === "ar") return [...p, ...reglasAr(texto)];
   if (idioma === "th") return [...p, ...reglasTh(texto)];
+  if (idioma === "he") return [...p, ...reglasHe(texto)];
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
   if (idioma === "tr") p.push(...reglasTr(texto));
   if (idioma === "uk") p.push(...reglasUk(texto));

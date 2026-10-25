@@ -171,6 +171,11 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent és a Grenadine-szigetek", locale: "hu-HU", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "de" as CodigoMercado, pais: "DE", nombrePais: "Németország", locale: "hu-HU", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
   ],
+  he: [
+    { mercado: "il" as CodigoMercado, pais: "IL", nombrePais: "ישראל", locale: "he-IL", trato: "usted", moneda: "ILS" as Moneda, escala: 3.7 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "סנט וינסנט והגרנדינים", locale: "he-IL", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "gb" as CodigoMercado, pais: "GB", nombrePais: "הממלכה המאוחדת", locale: "he-001", trato: "usted", moneda: "GBP" as Moneda, escala: 1 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)

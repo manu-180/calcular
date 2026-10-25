@@ -1,5 +1,6 @@
 import { formaAr } from "./i18n/arabe";
-import { simboloLegible } from "./i18n/direccion";
+import { LOCALE_RTL, simboloLegible } from "./i18n/direccion";
+import { formaHe } from "./i18n/hebreo";
 import { idiomaDeLocale } from "./i18n/resolver";
 import { nombresUnidad, UNIDAD_PEGADA } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
@@ -49,7 +50,7 @@ export function formatearMoneda(n: number, locale: string, moneda: Moneda, decim
     minimumFractionDigits: d,
     maximumFractionDigits: d,
   });
-  if (!simbolo && !/^ar(?:-|$)/i.test(locale)) return f.format(n);
+  if (!simbolo && !LOCALE_RTL.test(locale)) return f.format(n);
   return f
     .formatToParts(n)
     .map((p) => (p.type === "currency" ? simboloLegible(simbolo ?? p.value, locale) : p.value))
@@ -101,7 +102,8 @@ function nombreDeUnidad(n: number, unidad: string, locale: string): string | nul
   const nombres = nombresUnidad(idiomaDeLocale(locale) ?? "es", locale);
   if (!(unidad in nombres)) return null;
   const formas = nombres[unidad as keyof typeof nombres];
-  if ("dos" in formas) return formaAr(n, formas);
+  // Dual: el árabe trae además "pocos" y "muchos" (FormasAr); el hebreo, solo uno, dos y otros (FormasHe).
+  if ("dos" in formas) return "pocos" in formas ? formaAr(n, formas) : formaHe(n, formas);
   const categoria = new Intl.PluralRules(locale).select(n);
   const forma = categoria === "one" ? formas.uno : categoria === "few" ? (formas.pocos ?? formas.otros) : categoria === "many" ? (formas.muchos ?? formas.otros) : formas.otros;
   const pegada = UNIDAD_PEGADA.has(idiomaDeLocale(locale) ?? "es");

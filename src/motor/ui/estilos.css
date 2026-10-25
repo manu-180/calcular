@@ -162,6 +162,14 @@
     line-height: 1.65;
   }
 
+  /* Hebreo (ADR 0002, D22): sin descargar fuente. Geist sigue para el latín y las cifras, y las letras
+     hebreas caen en la del sistema (Segoe UI y Arial en Windows, Arial Hebrew en Apple, Noto Sans
+     Hebrew en Android y Linux), que es lo que usan los sitios israelíes. */
+  .cy-cuerpo:lang(he) {
+    font-family: var(--font-geist), "Segoe UI", Arial, "Arial Hebrew", "Noto Sans Hebrew", sans-serif;
+    line-height: 1.65;
+  }
+
   input,
   textarea,
   select,
@@ -2340,8 +2348,8 @@
 }
 
 /* Fuera de @layer base a propósito: tiene que ganarle al tracking negativo de los títulos, que es
-   de Geist y en CJK y tailandés amontona los caracteres (y los tonos apilados). */
-.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn), :lang(th)) :is(h1, h2, h3, h4) {
+   de Geist y en CJK y tailandés y en hebreo amontona los caracteres (y los tonos apilados). */
+.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn), :lang(th), :lang(he)) :is(h1, h2, h3, h4) {
   letter-spacing: 0;
 }
 

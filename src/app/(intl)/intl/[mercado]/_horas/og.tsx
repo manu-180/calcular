@@ -10,6 +10,7 @@ import { intlActivo } from "@/motor/sitio";
 import type { CodigoMercado, Idioma } from "@/motor/tipos";
 import { contextoSitio } from "@/motor/ui/contexto";
 import { registro } from "@/paises";
+import { TextoOg } from "@/motor/ui/og-rtl";
 import { indicePublicado } from "./datos";
 
 // Tarjeta del índice: /<m>/<slug>/og?p=<producto>&pais=<ISO> (1200 x 630) y &formato=historia (1080 x
@@ -34,7 +35,8 @@ const ESPERA_FUENTE_MS = 3000;
 // ru va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D17).
 // ro va con Noto Sans de respaldo por si Geist no trae ș y ț con coma (U+0218 a U+021B; ADR 0002, D18).
 // el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans" };
+// Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 
@@ -108,17 +110,23 @@ interface FilaOg {
   elegido: boolean;
 }
 
-function Ranking({ filas, ancho, tam, t, max }: { filas: FilaOg[]; ancho: number; tam: number; t: TextosHoras; max: number }) {
+function Ranking({ filas, ancho, tam, t, max, idioma }: { filas: FilaOg[]; ancho: number; tam: number; t: TextosHoras; max: number; idioma: Idioma }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: tam * 0.55, width: ancho }}>
-      <div style={{ display: "flex", fontSize: tam * 0.8, color: SUAVE, textTransform: "uppercase", letterSpacing: 2 }}>{t.og.menos}</div>
+      <div style={{ display: "flex", fontSize: tam * 0.8, color: SUAVE, textTransform: "uppercase", letterSpacing: 2 }}>
+        <TextoOg texto={t.og.menos} idioma={idioma} />
+      </div>
       {filas.map((f) => (
         <div key={f.iso} style={{ display: "flex", flexDirection: "column", gap: tam * 0.3 }}>
           <div style={{ display: "flex", alignItems: "center", gap: tam * 0.5, fontSize: tam, color: f.elegido ? CREMA : SUAVE, fontWeight: f.elegido ? 700 : 400 }}>
             <div style={{ display: "flex", width: tam * 1.4, color: SUAVE }}>{String(f.pos)}</div>
             <Bandera src={f.bandera} ancho={tam * 1.3} />
-            <div style={{ display: "flex", flex: 1 }}>{f.nombre}</div>
-            <div style={{ display: "flex", fontWeight: 700, color: f.elegido ? VERDE : CREMA }}>{f.texto}</div>
+            <div style={{ display: "flex", flex: 1 }}>
+              <TextoOg texto={f.nombre} idioma={idioma} />
+            </div>
+            <div style={{ display: "flex", fontWeight: 700, color: f.elegido ? VERDE : CREMA }}>
+              <TextoOg texto={f.texto} idioma={idioma} />
+            </div>
           </div>
           <div style={{ display: "flex", height: tam * 0.28, borderRadius: 99, backgroundColor: VERDE_APAGADO }}>
             <div style={{ display: "flex", width: `${Math.max(2, (f.horas / max) * 100)}%`, height: "100%", borderRadius: 99, backgroundColor: f.elegido ? VERDE : "rgba(244,240,230,0.55)" }} />
@@ -136,6 +144,7 @@ const fondo = (ancho: number, alto: number) => ({
 
 interface Datos {
   t: TextosHoras;
+  idioma: Idioma;
   antes: string;
   numero: string;
   unidad: string;
@@ -162,25 +171,39 @@ function Horizontal(d: Datos) {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 28, color: SUAVE }}>
               <Bandera src={d.bandera} ancho={40} />
-              <div style={{ display: "flex", flex: 1 }}>{d.antes}</div>
+              <div style={{ display: "flex", flex: 1 }}>
+              <TextoOg texto={d.antes} idioma={d.idioma} />
+            </div>
             </div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginTop: 6 }}>
               <div style={{ display: "flex", fontSize: d.numero.length > 5 ? 128 : 160, fontWeight: 700, letterSpacing: -6, lineHeight: 1 }}>{d.numero}</div>
-              <div style={{ display: "flex", fontSize: 44, fontWeight: 700, color: VERDE }}>{d.unidad}</div>
+              <div style={{ display: "flex", fontSize: 44, fontWeight: 700, color: VERDE }}>
+              <TextoOg texto={d.unidad} idioma={d.idioma} />
             </div>
-            <div style={{ display: "flex", fontSize: 28 }}>{d.despues}</div>
-            <div style={{ display: "flex", marginTop: 14, fontSize: 24, color: SUAVE }}>{d.detalle}</div>
+            </div>
+            <div style={{ display: "flex", fontSize: 28 }}>
+            <TextoOg texto={d.despues} idioma={d.idioma} />
+          </div>
+            <div style={{ display: "flex", marginTop: 14, fontSize: 24, color: SUAVE }}>
+            <TextoOg texto={d.detalle} idioma={d.idioma} />
+          </div>
           </div>
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-            <div style={{ display: "flex", fontSize: 58, fontWeight: 700, letterSpacing: -2, lineHeight: 1.05 }}>{d.generica}</div>
-            <div style={{ display: "flex", fontSize: 26, color: SUAVE }}>{d.genericaBajada}</div>
+            <div style={{ display: "flex", fontSize: 58, fontWeight: 700, letterSpacing: -2, lineHeight: 1.05 }}>
+            <TextoOg texto={d.generica} idioma={d.idioma} />
+          </div>
+            <div style={{ display: "flex", fontSize: 26, color: SUAVE }}>
+            <TextoOg texto={d.genericaBajada} idioma={d.idioma} />
+          </div>
           </div>
         )}
-        <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 22, color: SUAVE }}>{`${d.t.og.cta} calcularya.com`}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 22, color: SUAVE }}>
+          <TextoOg texto={`${d.t.og.cta} calcularya.com`} idioma={d.idioma} />
+        </div>
       </div>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <Ranking filas={d.filas} ancho={400} tam={22} t={d.t} max={d.max} />
+        <Ranking filas={d.filas} ancho={400} tam={22} t={d.t} max={d.max} idioma={d.idioma} />
       </div>
     </div>
   );
@@ -197,22 +220,34 @@ function Historia(d: Datos) {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 20, fontSize: 46, color: SUAVE, lineHeight: 1.2 }}>
             <Bandera src={d.bandera} ancho={64} />
-            <div style={{ display: "flex", flex: 1 }}>{d.antes}</div>
+            <div style={{ display: "flex", flex: 1 }}>
+              <TextoOg texto={d.antes} idioma={d.idioma} />
+            </div>
           </div>
           <div style={{ display: "flex", alignItems: "baseline", gap: 22, marginTop: 10 }}>
             <div style={{ display: "flex", fontSize: d.numero.length > 5 ? 220 : 280, fontWeight: 700, letterSpacing: -10, lineHeight: 0.95 }}>{d.numero}</div>
-            <div style={{ display: "flex", fontSize: 72, fontWeight: 700, color: VERDE }}>{d.unidad}</div>
+            <div style={{ display: "flex", fontSize: 72, fontWeight: 700, color: VERDE }}>
+              <TextoOg texto={d.unidad} idioma={d.idioma} />
+            </div>
           </div>
-          <div style={{ display: "flex", fontSize: 46 }}>{d.despues}</div>
-          <div style={{ display: "flex", marginTop: 24, fontSize: 38, color: SUAVE }}>{d.detalle}</div>
+          <div style={{ display: "flex", fontSize: 46 }}>
+            <TextoOg texto={d.despues} idioma={d.idioma} />
+          </div>
+          <div style={{ display: "flex", marginTop: 24, fontSize: 38, color: SUAVE }}>
+            <TextoOg texto={d.detalle} idioma={d.idioma} />
+          </div>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          <div style={{ display: "flex", fontSize: 100, fontWeight: 700, letterSpacing: -4, lineHeight: 1.02 }}>{d.generica}</div>
-          <div style={{ display: "flex", fontSize: 44, color: SUAVE }}>{d.genericaBajada}</div>
+          <div style={{ display: "flex", fontSize: 100, fontWeight: 700, letterSpacing: -4, lineHeight: 1.02 }}>
+            <TextoOg texto={d.generica} idioma={d.idioma} />
+          </div>
+          <div style={{ display: "flex", fontSize: 44, color: SUAVE }}>
+            <TextoOg texto={d.genericaBajada} idioma={d.idioma} />
+          </div>
         </div>
       )}
-      <Ranking filas={d.filas} ancho={912} tam={38} t={d.t} max={d.max} />
+      <Ranking filas={d.filas} ancho={912} tam={38} t={d.t} max={d.max} idioma={d.idioma} />
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <div style={{ display: "flex", padding: "18px 34px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 40, fontWeight: 700 }}>calcularya.com</div>
       </div>
@@ -273,6 +308,7 @@ export function crearOgHoras(idioma: Idioma) {
     // textTransform de Satori, que no sabe el idioma; así también entra en el subconjunto de la fuente.
     const datos: Datos = {
       t: { ...t, og: { ...t.og, menos: t.og.menos.toLocaleUpperCase(m.locale) } },
+      idioma: m.idioma,
       antes: fila ? rellenarHoras(t.heroe.antes, { en: lugarEnPagina(nombrePais, m.idioma), producto: art }) : "",
       numero: horas?.numero ?? "",
       unidad: horas?.unidad ?? "",

@@ -1,5 +1,6 @@
 import type { Idioma } from "../tipos";
 import type { FormasAr } from "./arabe";
+import { ANIOS_HE, DIAS_HE, HORAS_HE, MESES_HE, SEMANAS_HE, type FormasHe } from "./hebreo";
 import { escrituraZh } from "./escritura";
 
 export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
@@ -11,8 +12,8 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // 101: «2 ani», «1,5 ani») y "otros" la "other", que lleva «de» delante del sustantivo («20 de ani»,
 // «100 de zile»; ADR 0002, D18). En checo "few" es 2 a 4 (2 dny, 3 týdny), "other" 0 y 5 en adelante
 // (5 let) y "many" las fracciones, que van en genitivo singular (1,5 roku): por eso en cs "muchos" lleva
-// la forma de fracción. Un idioma con dual (ar) trae todas las formas de FormasAr, con {n}
-// donde va el número.
+// la forma de fracción. Un idioma con dual trae sus formas con {n} donde va el número: el árabe
+// FormasAr y el hebreo FormasHe (uno, dual y plural: «יום אחד», «יומיים», «{n} ימים»).
 export interface FormasUnidad {
   uno: string;
   otros: string;
@@ -20,7 +21,7 @@ export interface FormasUnidad {
   muchos?: string;
 }
 
-type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad | FormasAr>>;
+type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad | FormasAr | FormasHe>>;
 
 // ja, ko y zh no tienen plural: las dos formas son iguales y la unidad va pegada al número (3日).
 export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
@@ -96,6 +97,7 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   el: { dias: { uno: "ημέρα", otros: "ημέρες" }, semanas: { uno: "εβδομάδα", otros: "εβδομάδες" }, horas: { uno: "ώρα", otros: "ώρες" }, meses: { uno: "μήνας", otros: "μήνες" }, anios: { uno: "έτος", otros: "έτη" } },
   // El húngaro no pone plural después de un número («3 nap», «1,5 év»): las dos formas son iguales.
   hu: { dias: { uno: "nap", otros: "nap" }, semanas: { uno: "hét", otros: "hét" }, horas: { uno: "óra", otros: "óra" }, meses: { uno: "hónap", otros: "hónap" }, anios: { uno: "év", otros: "év" } },
+  he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

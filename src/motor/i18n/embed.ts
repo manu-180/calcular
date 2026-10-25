@@ -1104,7 +1104,44 @@ const hu: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu };
+// Hebreo (ADR 0002, D22): plural inclusivo («בחרו», «העתיקו») y «של» para la pertenencia.
+const gHe = GRAMATICA.he;
+const he: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "מחשבון של CalcularYa",
+    marcaNuevaPestana: "(נפתח בכרטיסייה חדשה)",
+    noDisponible: { titulo: "המחשבון הזה לא זמין", texto: "ייתכן שהכתובת שלו השתנתה." },
+    insertar: "להטמעה באתר שלכם",
+    pagina: {
+      titulo: (pais) => [`מחשבונים בחינם לאתר שלכם | ${pais}`, "מחשבונים בחינם לאתר שלכם"],
+      descripcion: (pais) => `בחרו מחשבון עם הנתונים ${gHe.de(pais)}, העתיקו את הקוד והדביקו אותו בבלוג או באתר. בחינם, עם נתונים רשמיים מעודכנים תמיד.`,
+      h1: "הוסיפו מחשבון לאתר שלכם",
+      bajada: "בחרו מחשבון, העתיקו את הקוד והדביקו אותו איפה שתרצו. זה בחינם, והנתונים מתעדכנים לבד.",
+      calculadora: "מחשבון",
+      buscar: "חיפוש מחשבון",
+      sinResultados: "לא מצאנו את המחשבון הזה.",
+      tema: "ערכת צבעים",
+      claro: "בהירה",
+      oscuro: "כהה",
+      ancho: "רוחב",
+      anchoCompleto: "רוחב מלא",
+      acento: "צבע הדגשה",
+      colores: ["ירוק", "כחול", "כתום", "ורוד", "אפור כהה"],
+      credito: "הוספת קישור קרדיט מתחת למחשבון",
+      vistaPrevia: "תצוגה מקדימה",
+      codigo: "קוד להדבקה",
+      copiar: "העתקת הקוד",
+      copiado: "הקוד הועתק",
+      ayudaScript: "הסקריפט הוא אופציונלי: הוא רק מתאים את גובה המחשבון.",
+      ventajas: ["בחינם ובלי הרשמה", "נתונים רשמיים מעודכנים", "מתאים לכל רוחב"],
+      nota: "בתחתית המחשבון יש קישור ל-CalcularYa. נבקש לא להסיר אותו.",
+      verTodas: (pais) => `לכל המחשבונים ${gHe.de(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | מחשבון של CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

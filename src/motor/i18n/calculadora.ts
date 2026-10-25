@@ -304,6 +304,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Forrás",
     },
   },
+  he: {
+    base: {
+      datos: "הנתונים שלכם",
+      resultado: "התוצאה",
+      vacio: "מלאו את הנתונים ולחצו על \"לחישוב\" כדי לראות את התוצאה.",
+      sinResultado: "התוצאה הזו לא מוצגת כרגע.",
+      avisos: { info: "כדאי לדעת", cautela: "שימו לב", bloquea: "למה התוצאה לא מוצגת" },
+      fuenteDelAviso: "מקור",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

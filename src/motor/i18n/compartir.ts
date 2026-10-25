@@ -512,6 +512,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Nézd meg, mennyi maradna nettóban több mint ${n} országban`,
     },
   },
+  // Hebreo (ADR 0002, D22): plural inclusivo donde se le habla a la persona.
+  he: {
+    base: {
+      boton: "שיתוף",
+      botonAria: "שיתוף המחשבון הזה",
+      menuTitulo: "שיתוף דרך",
+      copiar: "העתקת הקישור",
+      copiado: "הקישור הועתק",
+      compartido: "שותף",
+      errorCorto: "ההעתקה נכשלה",
+      errorAyuda: "לא הצלחנו להעתיק את הקישור. העתיקו אותו משורת הכתובת של הדפדפן.",
+      nuevaPestana: "נפתח בכרטיסייה חדשה",
+      mensaje: (nombre) => `${nombre}. בחינם, והחישוב לוקח דקה.`,
+      puenteIntro: "ובמדינות אחרות?",
+      puenteEnlace: (n) => `בדקו כמה שכר נטו הייתם מקבלים ביותר מ-${n} מדינות`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

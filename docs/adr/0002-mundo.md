@@ -1265,6 +1265,74 @@ nombre largo con artículo y sufijo de isla y «Németország» por el compuesto
 `check_motor` prueba el parseo, las unidades, el forint, la fecha larga, el artículo y los casos del
 país.
 
+### D22. Hebreo (2026-10-24)
+
+(D9 a D21 los usan otras ramas en paralelo. Esta rama, `claude/mundo-motor-he`, se basa en
+`claude/mundo-motor-ar` y reutiliza todo el soporte rtl de D10.)
+
+`IDIOMAS` suma `he`. Motor, sitio, inicio, novedades, legales, errores, compartir, embed, «Tu sueldo en
+el mundo», calendario, horas de trabajo, rankings, «Sueldos reales», afiliados, el diccionario de venta
+y las 41 universales están en hebreo.
+
+**Registro.** Un solo registro para la web, y los mercados van con `trato: "usted"` (el hebreo no
+distingue tú y usted). El imperativo hebreo marca género; los servicios digitales israelíes (Bank
+Hapoalim, Leumi, gov.il) resolvieron eso con el plural inclusivo, y es lo que va acá: «הזינו»,
+«בחרו», «חשבו», «שימו לב». Los botones y enlaces van en infinitivo con ל o en sustantivo («לחישוב»,
+«להורדת הקובץ», «לכל המחשבונים»). Nada de imperativo singular masculino (הזן, בחר) ni femenino. La
+carta del informe va en primera persona formal. En embarazo y ovulación también va el plural inclusivo
+o la frase impersonal, sin femenino, por coherencia con el resto del sitio.
+
+**Dirección.** `direccionDe("he")` es rtl: todo lo de D10 (dir y lang en `<html>`, propiedades
+lógicas, flechas espejadas, `<bdi>` en la carta, `dir` en el mail) vale igual. `LOCALE_RTL` en
+`direccion.ts` junta ar y he para la LRM detrás de «US$». La puntuación es la latina: `coma()` y
+`puntoYComa()` devuelven «, » y «; » en hebreo.
+
+**Formato.** Intl de he-IL: coma de miles, punto decimal, «₪» con las marcas RLM que pone Intl (se ve a
+la izquierda del número en la página rtl, como en los bancos). Cifras occidentales y calendario
+gregoriano, como la banca y los portales israelíes; fechas hebreas no. El parser no necesitó cambios
+(he-IL separa como en-US).
+
+**Plurales y gramática.** Intl.PluralRules he da one, two y other. `FormasHe` y `pluralHe` en
+`src/motor/i18n/hebreo.ts`, con el dual en la palabra: «יום אחד», «יומיים», «3 ימים»; «חודשיים»,
+«שנתיים», «שעתיים». `GRAMATICA.he`: «ב» y «ל» pegadas al nombre («בישראל», «לישראל»); en los nombres
+con artículo la preposición absorbe la «ה» («בממלכה המאוחדת»), con una lista porque en הודו, הולנד o
+האיטי la «ה» es del nombre; delante de un nombre latino o una cifra va guion («ב-Zetaland», «ב-2026»,
+`prefijoHe`). La pertenencia va con «של».
+
+**Comillas y gershayim.** Los del teclado, que es lo que usan gov.il y los bancos y lo que la gente
+escribe en el buscador: «"» para citar y para los gershayim de los acrónimos (מע"מ, ש"ח, ק"מ, מ"ר),
+«'» para el geresh (צ'ק). No van «» “” „ ni ״ ׳: una sola forma en todo el sitio. «דוח» sin gershayim,
+como lo acepta la Academia.
+
+**Tipografía.** Sin descargar fuente: Geist para el latín y las cifras, y las letras hebreas en la del
+sistema (Segoe UI y Arial en Windows, Arial Hebrew en Apple, Noto Sans Hebrew en Android y Linux),
+tracking 0 en los títulos. Las imágenes OG piden Noto Sans Hebrew; Satori no aplica bidi y dibujaba
+el hebreo al revés, así que `src/motor/ui/og-rtl.tsx` (`TextoOg`) pasa el texto a orden visual solo
+en he (en los demás idiomas el HTML de la imagen no cambia).
+
+**Slugs.** Las universales usan el slug en inglés del catálogo, como D8 y D10: la transliteración del
+hebreo no tiene una forma que la gente escriba, un slug en letras hebreas viaja codificado en
+porcentaje y el slug en inglés ya está curado. Las páginas con carpeta por idioma van con
+transliteración simple: «Tu sueldo en el mundo» en `sachar-baolam` (שכר בעולם), rankings en
+`dirug-medinot` (דירוג מדינות, con los rankings de adentro en inglés), horas de trabajo en
+`kama-shaot-avoda` (כמה שעות עבודה), calendario en `luach-maskorot` (לוח משכורות) y «Sueldos reales»
+en `sachar-amiti` (שכר אמיתי). Las calculadoras locales de Israel: término en inglés si se usa, y si
+no transliteración simple (`sachar-neto`, `mas-hachnasa`).
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`): sin exclamaciones; sin niqqud (U+0591 a U+05C7) en
+la interfaz; puntuación latina bien puesta (sin espacio delante de , . : ; ? y con espacio detrás de la
+coma); sin «،» «؛» «؟»; sin comillas ni gershayim tipográficos; sin imperativo singular con género.
+`check_ofertas_intl` las aplica al diccionario de venta y al mail.
+
+**Vocabulario.** El de los sitios israelíes: «מחשבון שכר נטו», «מס הכנסה», «ביטוח לאומי», «מס
+בריאות», «מע"מ», «משכנתא», «ריבית», «לוח שפיצר», «לוח סילוקין», «הון עצמי». Las universales no nombran
+organismos ni leyes israelíes (se instancian en cualquier mercado hebreo); eso queda para el país.
+
+**Prueba.** `zz-he` (זטלנד) es una edición interna en `he-001`, como `zz-ar` en `ar-001`, para no
+compartir locale con Israel en hreflang. `check_universales` prueba he-IL con ILS, un nombre de país
+largo («סנט וינסנט והגרנדינים») y he-001 con GBP («הממלכה המאוחדת»); `check_motor` prueba el
+formato, los plurales, el parseo y la gramática.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.
