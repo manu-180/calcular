@@ -54,6 +54,22 @@ export function hoyEn(mercado: Pick<Mercado, "zonaHoraria">, ahora: Date = new D
   return fechaEnZona(ahora, mercado.zonaHoraria);
 }
 
+// La fecha de cada mercado en el mismo instante en que `mercado` está en `fecha`. Los equivalentes de una
+// página (hreflang, sitemap) se evalúan así y no con la fecha de la página para todos: cerca de la
+// medianoche, un dato que vence en un país lo sacaba del clúster de las páginas que ya estaban en el
+// día siguiente y no del resto (NI, inflación, 2026-10-24: ~1.850 fallas en check_hreflang). Con una
+// fecha que no es la de hoy se conserva la diferencia de días de ahora entre las zonas.
+export function fechasDelMismoInstante(mercado: Pick<Mercado, "zonaHoraria">, fecha: FechaISO, ahora: Date = new Date()): (m: Pick<Mercado, "zonaHoraria">) => FechaISO {
+  if (typeof window !== "undefined") return () => fecha;
+  const base = hoyEn(mercado, ahora);
+  const porZona = new Map<string, FechaISO>([[mercado.zonaHoraria, fecha]]);
+  return (m) => {
+    let f = porZona.get(m.zonaHoraria);
+    if (!f) porZona.set(m.zonaHoraria, (f = sumarDias(fecha, diasEntre(base, hoyEn(m, ahora)))));
+    return f;
+  };
+}
+
 // La fecha más adelantada del planeta (UTC+14). Sirve para validar que una verificación no esté
 // en el futuro sin rechazar a quien la cargó en su propia zona horaria.
 export function hoyMasAdelantado(ahora: Date = new Date()): FechaISO {

@@ -85,6 +85,22 @@ async function main() {
   );
   if (!roto.some((e) => e.includes("no es recíproco"))) fallas.push("la prueba negativa no detectó un clúster no recíproco");
 
+  // Cerca de la medianoche cada mercado evalúa los equivalentes con su propia fecha del mismo instante, no
+  // con la de la página (si no, un dato que vence en un país lo saca de unos clústeres y no de otros).
+  {
+    const { fechasDelMismoInstante } = await import("../src/motor/vigencia");
+    const fijada = process.env.CALCULAR_HOY;
+    delete process.env.CALCULAR_HOY;
+    const ahora = new Date("2026-10-24T23:30:00Z");
+    const managua = { zonaHoraria: "America/Managua" };
+    const londres = { zonaHoraria: "Europe/London" };
+    const hoy = fechasDelMismoInstante(managua, "2026-10-24", ahora);
+    const antes = fechasDelMismoInstante(managua, "2026-01-10", ahora);
+    if (hoy(managua) !== "2026-10-24" || hoy(londres) !== "2026-10-25") fallas.push(`fechasDelMismoInstante: ${hoy(managua)} / ${hoy(londres)}, se esperaba 2026-10-24 / 2026-10-25`);
+    if (antes(londres) !== "2026-01-11") fallas.push(`fechasDelMismoInstante con otra fecha: ${antes(londres)}, se esperaba 2026-01-11`);
+    if (fijada !== undefined) process.env.CALCULAR_HOY = fijada;
+  }
+
   // Umbral del <head>: un clúster de MAX_HREFLANG_HEAD + 1 páginas pasa al sitemap, uno justo en el tope no.
   const ficticios = (n: number) => Array.from({ length: n }, (_, i) => ({ mercado: "mx" as const, locale: `es-X${i}`, slug: `s${i}` }));
   if (seo.hreflangDelHead("bono-semestral", ficticios(seo.MAX_HREFLANG_HEAD + 1)) !== undefined) fallas.push("un clúster de más del tope sigue en el <head>");

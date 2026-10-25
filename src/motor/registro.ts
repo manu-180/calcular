@@ -4,7 +4,7 @@ import { aplicarTextos, faltantesDeTextos, type TextosEdicion } from "./edicion"
 import { formatearFecha, formatearValorUnidad } from "./formato";
 import { UNIVERSALES } from "./universales";
 import { idiomasDe, instanciar, type ContextoUniversal, type Universal } from "./universales/tipos";
-import { avisosVigentes, hoyMasAdelantado, ultimoPunto, valorSerie, vigente, vigentePorRegion } from "./vigencia";
+import { avisosVigentes, fechasDelMismoInstante, hoyMasAdelantado, ultimoPunto, valorSerie, vigente, vigentePorRegion } from "./vigencia";
 import type {
   Aviso,
   CodigoMercado,
@@ -735,7 +735,7 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
         },
         sello: selloDe(r.usados),
         usados: r.usados,
-        equivalentes: equivalentesDe(entrada, () => fecha, modo),
+        equivalentes: equivalentesDe(entrada, fechasDelMismoInstante(m, fecha), modo),
         cliente: entrada.cliente,
         ...(esUniversal(entrada) ? { universal: entrada.universal } : {}),
       };
