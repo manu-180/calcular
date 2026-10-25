@@ -20,7 +20,7 @@ export default definirContenido({
   faq: [
     {
       pregunta: "Kolik je příplatek za přesčas?",
-      respuesta: "Nejméně {{cz.priplatky[prescas]}} průměrného hodinového výdělku za každou hodinu přesčasu, navíc k mzdě. Místo příplatku si můžete dohodnout náhradní volno.",
+      respuesta: "Nejméně {{cz.priplatky[prescas]}} průměrného hodinového výdělku za každou hodinu přesčasu, navíc ke mzdě. Místo příplatku si můžete dohodnout náhradní volno.",
     },
     {
       pregunta: "Kolik přesčasů může zaměstnavatel nařídit?",

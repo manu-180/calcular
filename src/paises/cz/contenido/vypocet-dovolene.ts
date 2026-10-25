@@ -15,7 +15,7 @@ export default definirContenido({
     "Když neodpracujete celý rok, náleží vám za každý odpracovaný týden jedna dvaapadesátina roční dovolené. Nárok vzniká po 4 odpracovaných týdnech.",
     "Výsledek se zaokrouhluje na celé hodiny nahoru.",
   ],
-  ejemplo: ["Při plném úvazku 40 hodin týdně a celém odpracovaném roce máte nárok na 160 hodin, tedy 20 osmihodinových dnů. Když nastoupíte tak, že odpracujete 30 týdnů, máte nárok na 93 hodin."],
+  ejemplo: ["Při plném úvazku 40 hodin týdně a celém odpracovaném roce máte nárok na 160 hodin, tedy 20 osmihodinových dnů. Když v roce odpracujete jen 30 týdnů, máte nárok na 93 hodin."],
   faq: [
     {
       pregunta: "Kolik dní dovolené mám za rok?",

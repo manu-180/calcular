@@ -15,7 +15,7 @@ export default definirContenido({
     "Zdravotní pojištění je {{cz.zdravotni-pojisteni}} z hrubé mzdy. Zaměstnavatel platí dvě třetiny, tedy 9 % hrubé mzdy.",
     "Celkové náklady jsou hrubá mzda plus obě pojištění zaměstnavatele.",
   ],
-  ejemplo: ["Hrubá mzda 45 000 Kč stojí zaměstnavatele 60 210 Kč: k mzdě přidá 11 160 Kč na sociálním a 4 050 Kč na zdravotním pojištění."],
+  ejemplo: ["Hrubá mzda 45 000 Kč stojí zaměstnavatele 60 210 Kč: ke mzdě přidá 11 160 Kč na sociálním a 4 050 Kč na zdravotním pojištění."],
   faq: [
     {
       pregunta: "Kolik stojí zaměstnavatele mzda 45 000 Kč?",
