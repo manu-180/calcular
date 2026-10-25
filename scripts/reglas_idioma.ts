@@ -244,7 +244,7 @@ function reglasRu(texto: string): string[] {
 // «încărcare», «coborî», «neîncredere», «România», «câștig»); «sunt», no «sînt»; comillas „”; y sin
 // las palabras más comunes escritas sin diacríticos («si», «in», «daca»), que delatan un texto
 // tipeado sin teclado rumano (ADR 0002, D18).
-const PREFIJOS_RO = /^(?:ne|re|pre|dez|răs|bine|nemai|auto|semi|supra|sub|ante|contra|inter|post|extra)î/;
+const PREFIJOS_RO = /^(?:ne|re|pre|dez|răs|bine|nemai|auto|semi|supra|sub|ante|contra|inter|post|extra|micro)î/;
 const SIN_DIACRITICOS_RO = palabras("si|in|daca|fara|dupa|pana|catre|cand|tara|tarii|lunara|suma totala|sa (?:calculati|introduceti|platiti|aveti)");
 function reglasRo(texto: string): string[] {
   const p: string[] = [];
