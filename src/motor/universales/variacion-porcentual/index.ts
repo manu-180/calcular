@@ -10,6 +10,7 @@ import { contenidoKo } from "./contenido/ko";
 import { contenidoNl } from "./contenido/nl";
 import { contenidoPl } from "./contenido/pl";
 import { contenidoPt } from "./contenido/pt";
+import { contenidoSv } from "./contenido/sv";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiVariacion } from "./definicion";
 import { textosDe } from "./textos/de";
@@ -22,13 +23,14 @@ import { textosKo } from "./textos/ko";
 import { textosNl } from "./textos/nl";
 import { textosPl } from "./textos/pl";
 import { textosPt } from "./textos/pt";
+import { textosSv } from "./textos/sv";
 import { textosZh } from "./textos/zh";
 
 export default definirUniversal<UiVariacion>({
   id: "variacion-porcentual",
   concepto: "variacion-porcentual",
   definir,
-  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pl: textosPl, pt: textosPt, zh: textosZh },
-  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, zh: contenidoZh },
+  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, zh: textosZh },
+  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, zh: contenidoZh },
   casos,
 });
