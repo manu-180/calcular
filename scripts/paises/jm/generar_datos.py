@@ -306,6 +306,30 @@ datos.append(
 datos.append(num("jm.nht-max-years", "Longest NHT repayment period", "anios", [t(HOY, 40, F_NHT_LOANS)]))
 datos.append(num("jm.nht-open-market-limit", "NHT open market loan limit for one applicant", "JMD", [t("2025-07-01", 9000000, F_NHT_LIMITS)]))
 
+# Licencia de vehículos (Rates and Fees de TAJ, Motor Vehicle & Driver's Licence Related Fees).
+ETQ_CC = {
+    "up-1199": "Not exceeding 1199cc",
+    "1200-2999": "Exceeding 1199cc but not exceeding 2999cc",
+    "3000-3999": "Exceeding 2999cc but not exceeding 3999cc",
+    "over-3999": "Exceeding 3999cc",
+}
+for meses, valores in [
+    (6, {"up-1199": 4620, "1200-2999": 6300, "3000-3999": 14400, "over-3999": 21825}),
+    (12, {"up-1199": 9240, "1200-2999": 12600, "3000-3999": 28800, "over-3999": 43650}),
+    (24, {"up-1199": 18480, "1200-2999": 25200, "3000-3999": 57600, "over-3999": 87650}),
+]:
+    datos.append(
+        {
+            "id": f"jm.car-licence-{meses}m",
+            "nombre": f"Motor car licence fee for {meses} months by engine size",
+            "tipo": "mapa",
+            "unidad": "JMD",
+            "etiquetas": ETQ_CC,
+            "tramos": [t(HOY, valores, F_FEES)],
+        }
+    )
+datos.append(num("jm.fitness-fee-car", "Certificate of fitness fee for a private car", "JMD", [t(HOY, 4500, F_FEES)]))
+
 salida = os.path.join(RAIZ, "src", "paises", "jm", "datos.json")
 with open(salida, "w", encoding="utf-8", newline="\n") as fh:
     json.dump({"mercado": "jm", "datos": datos}, fh, ensure_ascii=False, indent=2)

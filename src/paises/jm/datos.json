@@ -1322,6 +1322,123 @@
           }
         }
       ]
+    },
+    {
+      "id": "jm.car-licence-6m",
+      "nombre": "Motor car licence fee for 6 months by engine size",
+      "tipo": "mapa",
+      "unidad": "JMD",
+      "etiquetas": {
+        "up-1199": "Not exceeding 1199cc",
+        "1200-2999": "Exceeding 1199cc but not exceeding 2999cc",
+        "3000-3999": "Exceeding 2999cc but not exceeding 3999cc",
+        "over-3999": "Exceeding 3999cc"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": {
+            "up-1199": 4620,
+            "1200-2999": 6300,
+            "3000-3999": 14400,
+            "over-3999": 21825
+          },
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.car-licence-12m",
+      "nombre": "Motor car licence fee for 12 months by engine size",
+      "tipo": "mapa",
+      "unidad": "JMD",
+      "etiquetas": {
+        "up-1199": "Not exceeding 1199cc",
+        "1200-2999": "Exceeding 1199cc but not exceeding 2999cc",
+        "3000-3999": "Exceeding 2999cc but not exceeding 3999cc",
+        "over-3999": "Exceeding 3999cc"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": {
+            "up-1199": 9240,
+            "1200-2999": 12600,
+            "3000-3999": 28800,
+            "over-3999": 43650
+          },
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.car-licence-24m",
+      "nombre": "Motor car licence fee for 24 months by engine size",
+      "tipo": "mapa",
+      "unidad": "JMD",
+      "etiquetas": {
+        "up-1199": "Not exceeding 1199cc",
+        "1200-2999": "Exceeding 1199cc but not exceeding 2999cc",
+        "3000-3999": "Exceeding 2999cc but not exceeding 3999cc",
+        "over-3999": "Exceeding 3999cc"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": {
+            "up-1199": 18480,
+            "1200-2999": 25200,
+            "3000-3999": 57600,
+            "over-3999": 87650
+          },
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.fitness-fee-car",
+      "nombre": "Certificate of fitness fee for a private car",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": 4500,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
     }
   ]
 }

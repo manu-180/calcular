@@ -21,6 +21,7 @@ ORDEN = [
     "transfer-tax-calculator",
     "property-tax-calculator",
     "nht-mortgage-calculator",
+    "car-licence-fee-calculator",
     "usd-to-jmd",
     "inflation-calculator",
 ]

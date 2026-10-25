@@ -146,6 +146,13 @@ export const detectores: readonly Detector[] = [
     ["Transfer Tax 2% of market value", "Consideration above or equal to $500,000 = Stamp Duty of $5,000", "surcharge (1/4 of Stamp Duty"],
     "TAJ Rates and Fees",
   ),
+  vigila(
+    "jm.taj-motor-vehicle-fees",
+    "https://www.jamaicatax.gov.jm/rates-and-fees",
+    ["jm.car-licence-6m", "jm.car-licence-12m", "jm.car-licence-24m", "jm.fitness-fee-car"],
+    ["$4,620.00", "$12,600.00", "$28,800.00", "$43,650.00", "$87,650.00", "$4,500.00"],
+    "TAJ motor vehicle licence fees",
+  ),
   {
     // La página de la rama de salarios del MLSS lista las órdenes de salario mínimo. Una orden de un año
     // posterior a 2026 trae un salario mínimo nuevo.
