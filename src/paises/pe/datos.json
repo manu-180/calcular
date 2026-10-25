@@ -133,6 +133,26 @@
             "verificadoEl": "2026-10-07"
           }
         }
+      ],
+      "calendario": [
+        {
+          "id": "pago-gratificacion-julio",
+          "tipo": "pago",
+          "mes": 7,
+          "dia": 15,
+          "titulo": "Fecha límite de la gratificación de Fiestas Patrias",
+          "texto": "La Ley 27735 (artículo 5) manda abonar la gratificación en la primera quincena de julio.",
+          "calculadora": "pe.gratificacion"
+        },
+        {
+          "id": "pago-gratificacion-diciembre",
+          "tipo": "pago",
+          "mes": 12,
+          "dia": 15,
+          "titulo": "Fecha límite de la gratificación de Navidad",
+          "texto": "La Ley 27735 (artículo 5) manda abonar la gratificación en la primera quincena de diciembre.",
+          "calculadora": "pe.gratificacion"
+        }
       ]
     },
     {

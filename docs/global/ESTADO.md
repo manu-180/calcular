@@ -21,102 +21,14 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
-## 24/10/2026 · Motor hebreo RTL (`claude/mundo-motor-he`, sobre `claude/mundo-motor-ar`)
+## 25/10/2026 · Integración de los motores de idioma (`claude/mundo-idiomas-integrado`)
 
-`he` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
-afiliados, «Tu sueldo en el mundo» (`sachar-baolam`), rankings (`dirug-medinot`), horas de trabajo
-(`kama-shaot-avoda`), calendario (`luach-maskorot`), «Sueldos reales» (`sachar-amiti`), venta completa
-(`IDIOMAS_VENTA`) y las 41 universales con el slug en inglés del catálogo. Registro: plural inclusivo
-(«הזינו», «בחרו») y botones en infinitivo («לחישוב»), como Bank Hapoalim, Leumi y gov.il; mercados con
-`trato: "usted"`. Formato he-IL (₪ por Intl, cifras occidentales, calendario gregoriano). Plurales
-one/two/other con el dual (`pluralHe`). Fuente del sistema para el hebreo y Noto Sans Hebrew en las OG
-(con orden visual a mano, `og-rtl.tsx`). Decisiones en ADR 0002, D22. Edición de prueba `zz-he`
-(interna, `he-001`).
-- Depende de `claude/mundo-motor-ar` (rtl, `direccion.ts`, CSS lógico): mergear el árabe primero.
-- Falta para publicar Israel: el país en sí (שכר נטו con מס הכנסה, נקודות זיכוי, ביטוח לאומי y מס
-  בריאות, שכר מינימום, מע"מ, פיצויי פיטורים, דמי הבראה, ימי חופשה) con datos verificados en
-  gov.il, btl.gov.il y taxes.gov.il. Revisión por hablante nativo antes de publicar.
-
-## 24/10/2026 · Motor árabe RTL (`claude/mundo-motor-ar`)
-
-`ar` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
-«Tu sueldo en el mundo» (`rawatib-alalam`), calendario (`taqwim-alrawatib`), horas de trabajo
-(`saat-alamal`), rankings (`tartib-alduwal`), «Sueldos reales» (`rawatib-haqiqiya`), afiliados y
-diccionario de venta (`IDIOMAS_VENTA`). Decisiones en
-ADR 0002, D10: árabe estándar moderno de banco y gobierno con segunda persona en masculino genérico,
-dígitos occidentales (`-u-ca-gregory-nu-latn`), CSS con propiedades lógicas y flechas espejadas, slugs
-en inglés para las universales. Edición de prueba `zz-ar` (interna, `ar-001`).
-- Falta: las 41 universales en árabe (`claude/mundo-trad-ar`, otro agente). Hasta que entren, un
-  mercado árabe solo tiene sus calculadoras locales.
-- Con esto se pueden escribir ediciones árabes de los países ya publicados en inglés (ae, kw) y
-  países árabes nuevos (eg, sa, qa, bh, om, jo). Revisión por hablante nativo antes del primero.
-
-## 19/10/2026 · CÓMO RETOMAR (leer primero)
-
-Manuel pidió cerrar los países empezados sin sumar nuevos, publicar y dejar esto listo para seguir
-país por país en otra sesión hasta completar el planeta.
-
-**En producción:** 45 países contando Argentina, y 5 ediciones (ch-fr, ch-it, ca-fr, be-fr, lu-de).
-Los últimos en salir fueron Kenia (PR #36) y Tanzania (66 calculadoras, 63 datos), que salió junto con el arreglo de la unidad
-duplicada en los textos de Kenia (`claude/fix-ke-unidades`).
-
-**Empezados y sin terminar.** Cada uno tiene su rama remota con WIP pusheado. Las sesiones se cortaron
-varias veces por límite de uso.
-
-| Frente | Rama | Dónde quedó |
-|---|---|---|
-| Japón + diccionario de venta ja/ko/zh | claude/pais-jp | depurando un 404 de `jp/take-home-pay` en el registro |
-| Ghana | claude/pais-gh | segundo bloque de calculadoras; `postJson` opcional en el Http del cron |
-| Senegal | claude/pais-sn | escribiendo contenidos (fr, vous, CGI y BCEAO) |
-| Túnez | claude/pais-tn | en curso |
-| Liechtenstein, después us-es | claude/pais-li, claude/edicion-us-es | mercado, avisos, novedades, fuentes, lib de Lohn |
-| Emiratos | claude/pais-ae | ILOE, Emiratisation y mínimo para emiratíes commiteados; depende del motor árabe |
-| Kuwait | claude/pais-kw | en curso; depende del motor árabe |
-| Pakistán | claude/pais-pk | faltaban STSC, cuenta de ahorro, tarjeta extranjera y dólar |
-| Costa de Marfil | claude/pais-ci | en curso |
-| Angola | claude/pais-ao | en curso |
-| Motor árabe RTL | claude/mundo-motor-ar | terminado el 24/10 salvo universales (ver arriba); ae y kw salieron en inglés |
-| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | terminado el 24/10 (núcleo de los cinco idiomas; universales en ramas mundo-trad) |
-| Motor indonesio (id) | claude/mundo-motor-id | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
-| Motor turco (tr) | claude/mundo-motor-tr | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
-| Motor bengalí (bn) | claude/mundo-motor-bn | terminado el 24/10 (núcleo, venta y las 41 universales); falta el país bd |
-| Motor tailandés (th) | claude/mundo-motor-th | terminado el 24/10 (núcleo, venta y las 41 universales) |
-| Motor ucraniano (uk) | claude/mundo-motor-uk | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
-| Motor uzbeko (uz, latino) | claude/mundo-motor-uz | terminado el 24/10 (núcleo, venta, módulos nuevos y las 41 universales) |
-| Motor ruso (ru) | claude/mundo-motor-ru | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Kazajistán |
-| Motor rumano (ro) | claude/mundo-motor-ro | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Rumania y Moldavia |
-| Motor checo (cs) | claude/mundo-motor-cs | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
-| Motor griego (el) | claude/mundo-motor-el | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
-| Motor húngaro (hu) | claude/mundo-motor-hu | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
-| Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
-
-Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
-`docs/global/BRIEF-PAIS.md`, y terminarlo en un worktree propio. Los agentes de esta sesión no
-sobreviven a una sesión nueva; el estado vive en las ramas.
-
-**Publicar un país terminado** (receta probada con Kenia y Tanzania):
-1. En la rama de integración: merge de `origin/main` y de la rama del país.
-2. `estado: "publicado"` en `src/paises/<m>/mercado.ts`; import y alta al final de `PAISES` en
-   `src/paises/index.ts`.
-3. `npx tsx scripts/check_motor.ts --generar-cargadores`, `npx tsx scripts/check_medicion_mercados.ts --escribir`, `npx tsc --noEmit -p .`.
-4. Build y `scripts/check-all.ts` (144 suites) en un worktree aparte, nunca en el de la sesión: el
-   hook Stop commitea lo suelto. Si falla check_hreflang por una serie vencida, correr
-   `npx tsx scripts/datos-paises/correr.ts --mercado <m>` y copiar el `series.json`.
-5. PR contra main, `gh run watch <runId>` hasta `conclusion == success`, merge, curl a una página.
-
-**Orden sugerido para seguir:** terminar la tabla de arriba (motor árabe antes que ae y kw; Japón
-antes que cualquier otro asiático), después avanzar por tiers de `docs/global/PAISES.md` (199
-países): primero los del tier 1 y 2 que faltan, después de a uno por región.
-
-**Pendientes de Manuel:** pasos 1 y 2 de `docs/global/SQL-METRICAS.md`. Verificar en navegador
-la LNT de Quebec. Revisar los borradores de Marruecos (CNSS, SMIG, preaviso) y el EPF de Malasia.
-Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/zh antes de publicar Japón.
-
-**Pedidos al motor abiertos:**
-- `post` en el Http del cron, para la PSA de Filipinas y el CBK de Kenia (Ghana lo está sumando).
-- Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
-
-El cron datos-paises no está actualizando uy, hn y bo.
+Una sola rama junta `claude/mundo-arreglos-2026-10-24` y los motores eu (pl, sv, da, nb, fi), ar, id,
+tr, bn, th, uk, uz, ru, ro, cs, el, hu y he, con las universales de pl, sv, da, nb, fi y ar, sobre
+origin/main. Reemplaza a los PR de cada rama: los choques comunes (listas de idiomas, Record<Idioma>,
+plural.ts, FormasUnidad, el contador y la normalización del buscador, formato.ts con los dígitos de
+otras escrituras, cargadores, expectativas de zz-* y el orden de D9 a D22 del ADR) quedan resueltos una
+vez. Las secciones de cada motor siguen abajo, en el orden del ADR.
 
 ## 24/10/2026 · Motor europeo: polaco, sueco, danés, noruego y finés (`claude/mundo-motor-eu`)
 
@@ -133,6 +45,20 @@ Falta para el primer país de estos idiomas (Polonia, Suecia, Dinamarca, Noruega
 - El país en sí (BRIEF-PAIS). Finlandia puede tener además la edición `fi-sv` en sueco (sv-FI ya está
   en los mercados de prueba de `check_universales`).
 - Revisión de un hablante nativo de cada idioma sobre una muestra de páginas antes de publicar.
+
+## 24/10/2026 · Motor árabe RTL (`claude/mundo-motor-ar`)
+
+`ar` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
+«Tu sueldo en el mundo» (`rawatib-alalam`), calendario (`taqwim-alrawatib`), horas de trabajo
+(`saat-alamal`), rankings (`tartib-alduwal`), «Sueldos reales» (`rawatib-haqiqiya`), afiliados y
+diccionario de venta (`IDIOMAS_VENTA`). Decisiones en
+ADR 0002, D10: árabe estándar moderno de banco y gobierno con segunda persona en masculino genérico,
+dígitos occidentales (`-u-ca-gregory-nu-latn`), CSS con propiedades lógicas y flechas espejadas, slugs
+en inglés para las universales. Edición de prueba `zz-ar` (interna, `ar-001`).
+- Falta: las 41 universales en árabe (`claude/mundo-trad-ar`, otro agente). Hasta que entren, un
+  mercado árabe solo tiene sus calculadoras locales.
+- Con esto se pueden escribir ediciones árabes de los países ya publicados en inglés (ae, kw) y
+  países árabes nuevos (eg, sa, qa, bh, om, jo). Revisión por hablante nativo antes del primero.
 
 ## 24/10/2026 · Motor indonesio (`claude/mundo-motor-id`)
 
@@ -168,23 +94,6 @@ Falta para publicar Turquía:
   datos verificados en fuentes oficiales (gib.gov.tr, sgk.gov.tr, Resmî Gazete, csgb.gov.tr).
 - Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
 
-## 24/10/2026 · Motor bengalí (`claude/mundo-motor-bn`)
-
-bn en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
-(`bishwe-beton`), venta completa (`IDIOMAS_VENTA`, las 27 familias) y las 41 universales con el slug en
-inglés del catálogo (`loan`, `bmi`, `vat`). Registro «আপনি» con las formas corteses, el de bKash, Sonali
-Bank y NBR e-Return; mercados con `trato: "usted"`. Montos con dígitos bengalíes (০-৯) y miles en lakh
-y crore; `parsearNumero` acepta lo que escribe un teclado bengalí. Decisiones en ADR 0002, D14. Edición
-de prueba `zz-bn`.
-
-Falta para publicar Bangladés:
-- El país en sí (BRIEF-PAIS): আয়কর con sus tramos y el umbral libre de impuesto, ভ্যাট (tasa general y
-  reducidas), সঞ্চয়পত্র y su উৎসে কর, PF/gratuity de la Bangladesh Labour Act, ফেস্টিভ্যাল বোনাস, con
-  datos verificados en fuentes oficiales (nbr.gov.bd, bangladesh.gov.bd, nsd.gov.bd, bb.org.bd).
-- Decidir el fin de semana de los días hábiles (viernes, y sábado en la administración pública): hoy
-  `dias-entre-fechas` y `sumar-dias` cuentan de lunes a viernes y los textos bn lo advierten.
-- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
-
 ## 24/10/2026 · Motor tailandés (`claude/mundo-motor-th`)
 
 th en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
@@ -204,6 +113,23 @@ Falta para publicar Tailandia:
 - La OG de las calculadoras intl (`og/[[...slug]]`) no carga fuentes CJK ni tailandesas (igual que hoy
   para ja/ko/zh): con un título tailandés puede salir con cuadritos. Solo la tarjeta del mundo carga
   Noto Sans Thai.
+
+## 24/10/2026 · Motor bengalí (`claude/mundo-motor-bn`)
+
+bn en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`bishwe-beton`), venta completa (`IDIOMAS_VENTA`, las 27 familias) y las 41 universales con el slug en
+inglés del catálogo (`loan`, `bmi`, `vat`). Registro «আপনি» con las formas corteses, el de bKash, Sonali
+Bank y NBR e-Return; mercados con `trato: "usted"`. Montos con dígitos bengalíes (০-৯) y miles en lakh
+y crore; `parsearNumero` acepta lo que escribe un teclado bengalí. Decisiones en ADR 0002, D14. Edición
+de prueba `zz-bn`.
+
+Falta para publicar Bangladés:
+- El país en sí (BRIEF-PAIS): আয়কর con sus tramos y el umbral libre de impuesto, ভ্যাট (tasa general y
+  reducidas), সঞ্চয়পত্র y su উৎসে কর, PF/gratuity de la Bangladesh Labour Act, ফেস্টিভ্যাল বোনাস, con
+  datos verificados en fuentes oficiales (nbr.gov.bd, bangladesh.gov.bd, nsd.gov.bd, bb.org.bd).
+- Decidir el fin de semana de los días hábiles (viernes, y sábado en la administración pública): hoy
+  `dias-entre-fechas` y `sumar-dias` cuentan de lunes a viernes y los textos bn lo advierten.
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
 
 ## 24/10/2026 · Motor ucraniano (`claude/mundo-motor-uk`)
 
@@ -375,6 +301,89 @@ Falta para publicar Hungría:
   prueba de los checks, los slugs de las páginas globales, `PAISES` con las ediciones zz-*) y las
   esperas de `check_motor` sobre las hermanas de zz/bono; se resuelven sumando los idiomas de las dos
   ramas. El cambio de Geist a `latin-ext` es el mismo que el de cs.
+
+## 24/10/2026 · Motor hebreo RTL (`claude/mundo-motor-he`, sobre `claude/mundo-motor-ar`)
+
+`he` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`sachar-baolam`), rankings (`dirug-medinot`), horas de trabajo
+(`kama-shaot-avoda`), calendario (`luach-maskorot`), «Sueldos reales» (`sachar-amiti`), venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con el slug en inglés del catálogo. Registro: plural inclusivo
+(«הזינו», «בחרו») y botones en infinitivo («לחישוב»), como Bank Hapoalim, Leumi y gov.il; mercados con
+`trato: "usted"`. Formato he-IL (₪ por Intl, cifras occidentales, calendario gregoriano). Plurales
+one/two/other con el dual (`pluralHe`). Fuente del sistema para el hebreo y Noto Sans Hebrew en las OG
+(con orden visual a mano, `og-rtl.tsx`). Decisiones en ADR 0002, D22. Edición de prueba `zz-he`
+(interna, `he-001`).
+- Depende de `claude/mundo-motor-ar` (rtl, `direccion.ts`, CSS lógico): mergear el árabe primero.
+- Falta para publicar Israel: el país en sí (שכר נטו con מס הכנסה, נקודות זיכוי, ביטוח לאומי y מס
+  בריאות, שכר מינימום, מע"מ, פיצויי פיטורים, דמי הבראה, ימי חופשה) con datos verificados en
+  gov.il, btl.gov.il y taxes.gov.il. Revisión por hablante nativo antes de publicar.
+
+## 19/10/2026 · CÓMO RETOMAR (leer primero)
+
+Manuel pidió cerrar los países empezados sin sumar nuevos, publicar y dejar esto listo para seguir
+país por país en otra sesión hasta completar el planeta.
+
+**En producción:** 45 países contando Argentina, y 5 ediciones (ch-fr, ch-it, ca-fr, be-fr, lu-de).
+Los últimos en salir fueron Kenia (PR #36) y Tanzania (66 calculadoras, 63 datos), que salió junto con el arreglo de la unidad
+duplicada en los textos de Kenia (`claude/fix-ke-unidades`).
+
+**Empezados y sin terminar.** Cada uno tiene su rama remota con WIP pusheado. Las sesiones se cortaron
+varias veces por límite de uso.
+
+| Frente | Rama | Dónde quedó |
+|---|---|---|
+| Japón + diccionario de venta ja/ko/zh | claude/pais-jp | depurando un 404 de `jp/take-home-pay` en el registro |
+| Ghana | claude/pais-gh | segundo bloque de calculadoras; `postJson` opcional en el Http del cron |
+| Senegal | claude/pais-sn | escribiendo contenidos (fr, vous, CGI y BCEAO) |
+| Túnez | claude/pais-tn | en curso |
+| Liechtenstein, después us-es | claude/pais-li, claude/edicion-us-es | mercado, avisos, novedades, fuentes, lib de Lohn |
+| Emiratos | claude/pais-ae | ILOE, Emiratisation y mínimo para emiratíes commiteados; depende del motor árabe |
+| Kuwait | claude/pais-kw | en curso; depende del motor árabe |
+| Pakistán | claude/pais-pk | faltaban STSC, cuenta de ahorro, tarjeta extranjera y dólar |
+| Costa de Marfil | claude/pais-ci | en curso |
+| Angola | claude/pais-ao | en curso |
+| Motor árabe RTL | claude/mundo-motor-ar | terminado el 24/10 salvo universales (ver arriba); ae y kw salieron en inglés |
+| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | terminado el 24/10 (núcleo de los cinco idiomas; universales en ramas mundo-trad) |
+| Motor indonesio (id) | claude/mundo-motor-id | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
+| Motor turco (tr) | claude/mundo-motor-tr | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
+| Motor bengalí (bn) | claude/mundo-motor-bn | terminado el 24/10 (núcleo, venta y las 41 universales); falta el país bd |
+| Motor tailandés (th) | claude/mundo-motor-th | terminado el 24/10 (núcleo, venta y las 41 universales) |
+| Motor ucraniano (uk) | claude/mundo-motor-uk | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
+| Motor uzbeko (uz, latino) | claude/mundo-motor-uz | terminado el 24/10 (núcleo, venta, módulos nuevos y las 41 universales) |
+| Motor ruso (ru) | claude/mundo-motor-ru | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Kazajistán |
+| Motor rumano (ro) | claude/mundo-motor-ro | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Rumania y Moldavia |
+| Motor checo (cs) | claude/mundo-motor-cs | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
+| Motor griego (el) | claude/mundo-motor-el | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
+| Motor húngaro (hu) | claude/mundo-motor-hu | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
+| Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
+
+Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
+`docs/global/BRIEF-PAIS.md`, y terminarlo en un worktree propio. Los agentes de esta sesión no
+sobreviven a una sesión nueva; el estado vive en las ramas.
+
+**Publicar un país terminado** (receta probada con Kenia y Tanzania):
+1. En la rama de integración: merge de `origin/main` y de la rama del país.
+2. `estado: "publicado"` en `src/paises/<m>/mercado.ts`; import y alta al final de `PAISES` en
+   `src/paises/index.ts`.
+3. `npx tsx scripts/check_motor.ts --generar-cargadores`, `npx tsx scripts/check_medicion_mercados.ts --escribir`, `npx tsc --noEmit -p .`.
+4. Build y `scripts/check-all.ts` (144 suites) en un worktree aparte, nunca en el de la sesión: el
+   hook Stop commitea lo suelto. Si falla check_hreflang por una serie vencida, correr
+   `npx tsx scripts/datos-paises/correr.ts --mercado <m>` y copiar el `series.json`.
+5. PR contra main, `gh run watch <runId>` hasta `conclusion == success`, merge, curl a una página.
+
+**Orden sugerido para seguir:** terminar la tabla de arriba (motor árabe antes que ae y kw; Japón
+antes que cualquier otro asiático), después avanzar por tiers de `docs/global/PAISES.md` (199
+países): primero los del tier 1 y 2 que faltan, después de a uno por región.
+
+**Pendientes de Manuel:** pasos 1 y 2 de `docs/global/SQL-METRICAS.md`. Verificar en navegador
+la LNT de Quebec. Revisar los borradores de Marruecos (CNSS, SMIG, preaviso) y el EPF de Malasia.
+Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/zh antes de publicar Japón.
+
+**Pedidos al motor abiertos:**
+- `post` en el Http del cron, para la PSA de Filipinas y el CBK de Kenia (Ghana lo está sumando).
+- Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
+
+El cron datos-paises no está actualizando uy, hn y bo.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 

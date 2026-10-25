@@ -110,3 +110,11 @@ igual que datos-vivos: main no está protegida y el push es el deploy. `--dry` m
 
 Si la ronda no corre nunca, el vencimiento de 120 días garantiza que no se muestre un precio viejo:
 la página, el sitemap y llms.txt sacan horas el mismo día.
+
+## Argentina y el aviso de fin de mes (2026-10-24)
+
+El SMVM de la Res. 4/2026 cambia cada mes, así que el mínimo de AR vence el último día de cada mes
+aunque el siguiente ya esté cargado (la escala llega a abril de 2027). check_horas avisaba «sin el
+tramo nuevo el país sale del índice» todos los meses. Ahora solo avisa si al día siguiente el país
+sale de verdad (`sigueAlOtroDia`). El aviso real va a llegar en abril de 2027 si no hay resolución
+nueva del Consejo del Salario.
