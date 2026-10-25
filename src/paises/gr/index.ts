@@ -26,6 +26,14 @@ import ypologismosYperorion from "./calculadoras/ypologismos-yperorion";
 import contenidoYpologismosYperorion from "./contenido/ypologismos-yperorion";
 import nychteriniErgasiaKyriaki from "./calculadoras/nychterini-ergasia-kyriaki";
 import contenidoNychteriniErgasiaKyriaki from "./contenido/nychterini-ergasia-kyriaki";
+import ypologismosFpa from "./calculadoras/ypologismos-fpa";
+import contenidoYpologismosFpa from "./contenido/ypologismos-fpa";
+import ypologismosForouEisodimatos from "./calculadoras/ypologismos-forou-eisodimatos";
+import contenidoYpologismosForouEisodimatos from "./contenido/ypologismos-forou-eisodimatos";
+import forosEleftheronEpangelmation from "./calculadoras/foros-eleftheron-epangelmation";
+import contenidoForosEleftheronEpangelmation from "./contenido/foros-eleftheron-epangelmation";
+import eisforesEleftheronEpangelmation from "./calculadoras/eisfores-eleftheron-epangelmation";
+import contenidoEisforesEleftheronEpangelmation from "./contenido/eisfores-eleftheron-epangelmation";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -51,6 +59,10 @@ export default definirPais({
     { definicion: proeidopoiisiApolysis, contenido: contenidoProeidopoiisiApolysis, cliente: () => import("./calculadoras/proeidopoiisi-apolysis.cliente") },
     { definicion: ypologismosYperorion, contenido: contenidoYpologismosYperorion, cliente: () => import("./calculadoras/ypologismos-yperorion.cliente") },
     { definicion: nychteriniErgasiaKyriaki, contenido: contenidoNychteriniErgasiaKyriaki, cliente: () => import("./calculadoras/nychterini-ergasia-kyriaki.cliente") },
+    { definicion: ypologismosFpa, contenido: contenidoYpologismosFpa, cliente: () => import("./calculadoras/ypologismos-fpa.cliente") },
+    { definicion: ypologismosForouEisodimatos, contenido: contenidoYpologismosForouEisodimatos, cliente: () => import("./calculadoras/ypologismos-forou-eisodimatos.cliente") },
+    { definicion: forosEleftheronEpangelmation, contenido: contenidoForosEleftheronEpangelmation, cliente: () => import("./calculadoras/foros-eleftheron-epangelmation.cliente") },
+    { definicion: eisforesEleftheronEpangelmation, contenido: contenidoEisforesEleftheronEpangelmation, cliente: () => import("./calculadoras/eisfores-eleftheron-epangelmation.cliente") },
   ],
   universales: "todas",
   novedades,
