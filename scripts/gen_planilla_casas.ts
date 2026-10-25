@@ -14,6 +14,7 @@ import ExcelJS from "exceljs";
 import path from "node:path";
 import { existsSync, mkdirSync } from "node:fs";
 import {
+  ANTIGUEDAD,
   CASAS_PARTICULARES_FUENTES,
   ESCALAS_POR_MES,
   HORAS_EXTRAS,
@@ -22,6 +23,7 @@ import {
   VACACIONES_PROPORCIONAL,
   ZONA_DESFAVORABLE,
   escalaDe,
+  maxAniosAntiguedad,
   mesVigente,
 } from "../src/data/casas-particulares";
 import {
@@ -67,25 +69,27 @@ export const CELDAS = {
   modalidad: "B7",
   horasSemanales: "B8",
   zona: "B9",
-  extrasComunes: "B10",
-  extrasFinde: "B11",
-  condicion: "B12",
-  chequeo: "B13",
-  valorHora: "B15",
-  minimoMensual: "B16",
-  horasMensuales: "B17",
-  porHoras: "B18",
-  basico: "B19",
-  montoExtrasComunes: "B20",
-  montoExtrasFinde: "B21",
-  total: "B22",
-  aguinaldo: "B23",
-  rango: "B26",
-  arcaTotal: "B27",
-  arcaArt: "B28",
-  faltaObraSocial: "B29",
-  faltaJubilacion: "B30",
-  costoTotal: "B31",
+  antiguedad: "B10",
+  extrasComunes: "B11",
+  extrasFinde: "B12",
+  condicion: "B13",
+  chequeo: "B14",
+  valorHora: "B16",
+  minimoMensual: "B17",
+  horasMensuales: "B18",
+  porHoras: "B19",
+  basico: "B20",
+  montoAntiguedad: "B21",
+  montoExtrasComunes: "B22",
+  montoExtrasFinde: "B23",
+  total: "B24",
+  aguinaldo: "B25",
+  rango: "B28",
+  arcaTotal: "B29",
+  arcaArt: "B30",
+  faltaObraSocial: "B31",
+  faltaJubilacion: "B32",
+  costoTotal: "B33",
 } as const;
 
 export const MODALIDADES = { "con-retiro": "Con retiro", "sin-retiro": "Sin retiro" } as const;
@@ -146,7 +150,7 @@ function buildInstrucciones(wb: ExcelJS.Workbook) {
   titulo(ws, "A1:B1", "Cómo usar esta planilla", "FFF57C00");
 
   const pasos: [string, string][] = [
-    ["1", "Andá a la hoja «Liquidador». Completá solo las celdas amarillas: mes, categoría, modalidad, horas por semana, zona, horas extras y la condición de la persona que trabaja en tu casa."],
+    ["1", "Andá a la hoja «Liquidador». Completá solo las celdas amarillas: mes, categoría, modalidad, horas por semana, zona, años de antigüedad, horas extras y la condición de la persona que trabaja en tu casa."],
     ["2", "Las celdas verdes se calculan solas: el sueldo del mes, el aguinaldo que va generando y lo que tenés que pagarle a ARCA. No escribas encima de ellas."],
     ["3", "En «Pagos del año» anotá lo que pagaste cada mes. Te calcula el aguinaldo de junio y de diciembre con la regla de la ley (50% del mejor sueldo del semestre) y los días de vacaciones."],
     ["4", "La hoja «Recibo» se completa sola con el mes que liquidaste. Cargá los nombres una vez, imprimila por duplicado y que cada parte se quede con una copia firmada."],
@@ -172,6 +176,7 @@ function buildInstrucciones(wb: ExcelJS.Workbook) {
     `Hay DOS pisos que conviven: un valor por hora y un mínimo mensual. Si trabaja la jornada completa (${JORNADA.horasSemanales} horas semanales), no puede cobrar menos que el mínimo mensual de su categoría. Con menos horas, se paga por hora. La planilla aplica el que corresponde.`,
     `Las horas extras se pagan con ${HORAS_EXTRAS.comunes}% de recargo en días comunes y ${HORAS_EXTRAS.finDeSemanaYFeriados}% los sábados después de las 13, los domingos y los feriados (${HORAS_EXTRAS.articulo}).`,
     `Zona desfavorable: ${ZONA_DESFAVORABLE.porcentaje}% sobre el mínimo de cada categoría desde el ${ZONA_DESFAVORABLE.desde}, en ${ZONA_DESFAVORABLE.provincias.join(", ")} y el partido de ${ZONA_DESFAVORABLE.partidoBonaerense}.`,
+    `Antigüedad: ${ANTIGUEDAD.porcentajePorAnio}% del básico por cada año (${ANTIGUEDAD.articulo}). Los años se cuentan desde el ${ANTIGUEDAD.cuentaDesdeTexto}, sin efecto retroactivo: aunque haya entrado antes, en ${mesVigente().etiqueta} suma como máximo ${maxAniosAntiguedad(mesVigente().id)} años. La planilla aplica ese tope sola.`,
     "Aguinaldo: 50% de la mayor remuneración mensual del semestre (Ley 26.844, art. 26). Se paga en junio y en diciembre.",
     `Vacaciones según antigüedad al 31 de diciembre: ${VACACIONES.map((v) => `${v.dias} días (${v.detalle})`).join("; ")}. Con menos de 6 meses, un día de descanso cada ${VACACIONES_PROPORCIONAL.diasTrabajadosPorDiaDeDescanso} días trabajados.`,
     `${REGLAS_APORTES.cuandoSePaga}`,
@@ -332,6 +337,10 @@ function buildLiquidador(wb: ExcelJS.Workbook) {
       error: "Ingresá las horas semanales (entre 0 y 48). Jornada completa = 48.",
     }],
     [CELDAS.zona, "¿Zona desfavorable (Patagonia)?", "No", desplegable(["Sí", "No"], "Elegí Sí o No.")],
+    [CELDAS.antiguedad, "Años completos de antigüedad", 0, {
+      type: "whole", operator: "between", showErrorMessage: true, formulae: [0, 60],
+      error: "Ingresá los años completos que lleva trabajando en tu casa (entre 0 y 60).",
+    }],
     [CELDAS.extrasComunes, "Horas extras del mes en días comunes", 0, {
       type: "decimal", operator: "between", showErrorMessage: true, formulae: [0, 200], error: "Entre 0 y 200 horas.",
     }],
@@ -368,39 +377,45 @@ function buildLiquidador(wb: ExcelJS.Workbook) {
   };
   ws.getCell("D13").value = { formula: `CONCATENATE(${CELDAS.condicion},"|",D12)` };
   ws.getCell("D14").value = { formula: `CONCATENATE(${CELDAS.condicion},"|","${RANGO_16.etiqueta}")` };
+  // Tope de años del adicional por antigüedad en el mes elegido: se cuentan desde el 1/9/2020.
+  ws.getCell("D15").value = { formula: `IFERROR(CHOOSE(D5,${MESES.map((m) => maxAniosAntiguedad(m.id)).join(",")}),0)` };
+  ws.getCell("D16").value = { formula: `MIN(MAX(INT(${CELDAS.antiguedad}),0),D15)` };
   ws.getColumn("D").hidden = true;
   ws.getColumn("E").hidden = true;
 
-  celdaEtiqueta(ws, "A13", "Chequeo");
+  celdaEtiqueta(ws, "A14", "Chequeo");
   const chk = ws.getCell(CELDAS.chequeo);
   chk.value = { formula: `IF(D7=0,"Esa combinación no existe en la escala oficial: los caseros son siempre sin retiro.","OK")` };
   chk.border = BORDE;
   chk.font = { italic: true, color: { argb: "FF555555" } };
 
-  bandaSeccion(ws, "A14:B14", "SUELDO DEL MES");
-  celdaResultado(ws, 15, "Valor de la hora", `IF(D7=0,0,ROUND(D7*D10,2))`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 16, `Mínimo mensual (jornada completa de ${JORNADA.horasSemanales} h)`, `ROUND(D9*D10,2)`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 17, "Horas trabajadas en el mes", `ROUND(D11*52/12,2)`, { formato: "0.00" });
-  celdaResultado(ws, 18, "Sueldo por las horas trabajadas", `ROUND(${CELDAS.valorHora}*${CELDAS.horasMensuales},2)`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 19, "Básico del mes", `IF(D11>=${JORNADA.horasSemanales},MAX(${CELDAS.porHoras},${CELDAS.minimoMensual}),${CELDAS.porHoras})`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 20, `Horas extras comunes (+${HORAS_EXTRAS.comunes}%)`, `ROUND(MAX(${CELDAS.extrasComunes},0)*${CELDAS.valorHora}*${1 + HORAS_EXTRAS.comunes / 100},2)`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 21, `Horas extras fin de semana y feriados (+${HORAS_EXTRAS.finDeSemanaYFeriados}%)`, `ROUND(MAX(${CELDAS.extrasFinde},0)*${CELDAS.valorHora}*${1 + HORAS_EXTRAS.finDeSemanaYFeriados / 100},2)`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 22, "TOTAL A PAGARLE ESTE MES", `ROUND(${CELDAS.basico}+${CELDAS.montoExtrasComunes}+${CELDAS.montoExtrasFinde},2)`, { total: true, formato: '"$"#,##0.00' });
-  celdaResultado(ws, 23, "Aguinaldo que va generando (50%)", `ROUND(${CELDAS.total}/2,2)`, { formato: '"$"#,##0.00' });
+  bandaSeccion(ws, "A15:B15", "SUELDO DEL MES");
+  celdaResultado(ws, 16, "Valor de la hora", `IF(D7=0,0,ROUND(D7*D10,2))`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 17, `Mínimo mensual (jornada completa de ${JORNADA.horasSemanales} h)`, `ROUND(D9*D10,2)`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 18, "Horas trabajadas en el mes", `ROUND(D11*52/12,2)`, { formato: "0.00" });
+  celdaResultado(ws, 19, "Sueldo por las horas trabajadas", `ROUND(${CELDAS.valorHora}*${CELDAS.horasMensuales},2)`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 20, "Básico del mes", `IF(D11>=${JORNADA.horasSemanales},MAX(${CELDAS.porHoras},${CELDAS.minimoMensual}),${CELDAS.porHoras})`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 21, `Adicional por antigüedad (${ANTIGUEDAD.porcentajePorAnio}% por año)`, `ROUND(${CELDAS.basico}*D16*${ANTIGUEDAD.porcentajePorAnio}/100,2)`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 22, `Horas extras comunes (+${HORAS_EXTRAS.comunes}%)`, `ROUND(MAX(${CELDAS.extrasComunes},0)*${CELDAS.valorHora}*${1 + HORAS_EXTRAS.comunes / 100},2)`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 23, `Horas extras fin de semana y feriados (+${HORAS_EXTRAS.finDeSemanaYFeriados}%)`, `ROUND(MAX(${CELDAS.extrasFinde},0)*${CELDAS.valorHora}*${1 + HORAS_EXTRAS.finDeSemanaYFeriados / 100},2)`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 24, "TOTAL A PAGARLE ESTE MES", `ROUND(${CELDAS.basico}+${CELDAS.montoAntiguedad}+${CELDAS.montoExtrasComunes}+${CELDAS.montoExtrasFinde},2)`, { total: true, formato: '"$"#,##0.00' });
+  celdaResultado(ws, 25, "Aguinaldo que va generando (50%)", `ROUND(${CELDAS.total}/2,2)`, { formato: '"$"#,##0.00' });
 
-  ws.getRow(24).height = 6;
-  bandaSeccion(ws, "A25:B25", "LO QUE LE PAGÁS A ARCA (aportes, contribuciones y ART)");
-  celdaResultado(ws, 26, "Rango de horas para ARCA", "D12", { formato: "@" });
-  celdaResultado(ws, 27, "Pago mensual a ARCA por esta trabajadora", `IFERROR(INDEX(${rangoApo("D")},MATCH(D13,${rangoApo("A")},0)),0)`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 28, "  · de eso, cuota de la ART", `IFERROR(INDEX(${rangoApo("G")},MATCH(D13,${rangoApo("A")},0)),0)`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 29, "Falta para que tenga obra social", `MAX(0,ROUND(IFERROR(INDEX(${rangoApo("E")},MATCH(D14,${rangoApo("A")},0)),0)-IFERROR(INDEX(${rangoApo("E")},MATCH(D13,${rangoApo("A")},0)),0),2))`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 30, "Falta para que le compute la jubilación", `MAX(0,ROUND(IFERROR(INDEX(${rangoApo("F")},MATCH(D14,${rangoApo("A")},0)),0)-IFERROR(INDEX(${rangoApo("F")},MATCH(D13,${rangoApo("A")},0)),0),2))`, { formato: '"$"#,##0.00' });
-  celdaResultado(ws, 31, "COSTO TOTAL DEL MES (sueldo + ARCA)", `ROUND(${CELDAS.total}+${CELDAS.arcaTotal},2)`, { total: true, formato: '"$"#,##0.00' });
+  ws.getRow(26).height = 6;
+  bandaSeccion(ws, "A27:B27", "LO QUE LE PAGÁS A ARCA (aportes, contribuciones y ART)");
+  celdaResultado(ws, 28, "Rango de horas para ARCA", "D12", { formato: "@" });
+  celdaResultado(ws, 29, "Pago mensual a ARCA por esta trabajadora", `IFERROR(INDEX(${rangoApo("D")},MATCH(D13,${rangoApo("A")},0)),0)`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 30, "  · de eso, cuota de la ART", `IFERROR(INDEX(${rangoApo("G")},MATCH(D13,${rangoApo("A")},0)),0)`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 31, "Falta para que tenga obra social", `MAX(0,ROUND(IFERROR(INDEX(${rangoApo("E")},MATCH(D14,${rangoApo("A")},0)),0)-IFERROR(INDEX(${rangoApo("E")},MATCH(D13,${rangoApo("A")},0)),0),2))`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 32, "Falta para que le compute la jubilación", `MAX(0,ROUND(IFERROR(INDEX(${rangoApo("F")},MATCH(D14,${rangoApo("A")},0)),0)-IFERROR(INDEX(${rangoApo("F")},MATCH(D13,${rangoApo("A")},0)),0),2))`, { formato: '"$"#,##0.00' });
+  celdaResultado(ws, 33, "COSTO TOTAL DEL MES (sueldo + ARCA)", `ROUND(${CELDAS.total}+${CELDAS.arcaTotal},2)`, { total: true, formato: '"$"#,##0.00' });
 
-  nota(ws, "A33:B33", "* Importes mínimos legales. Si pactaron un sueldo mayor, se paga el pactado.");
-  nota(ws, "A34:B34", `* ${REGLAS_APORTES.cuandoSePaga}`);
-  nota(ws, "A35:B35", "* «Falta para…» aparece con menos de 16 horas semanales: pagás en regla, pero sin completar esa diferencia la trabajadora no accede a la obra social y ese mes no le computa para jubilarse. La diferencia la puede pagar ella o la pueden acordar.");
-  ws.getRow(35).height = 40;
+  nota(ws, "A35:B35", "* Importes mínimos legales. Si pactaron un sueldo mayor, se paga el pactado.");
+  nota(ws, "A36:B36", `* ${REGLAS_APORTES.cuandoSePaga}`);
+  nota(ws, "A37:B37", "* «Falta para…» aparece con menos de 16 horas semanales: pagás en regla, pero sin completar esa diferencia la trabajadora no accede a la obra social y ese mes no le computa para jubilarse. La diferencia la puede pagar ella o la pueden acordar.");
+  ws.getRow(37).height = 40;
+  nota(ws, "A38:B38", `* Antigüedad (${ANTIGUEDAD.articulo}): ${ANTIGUEDAD.porcentajePorAnio}% del básico por año completo, contado desde el ${ANTIGUEDAD.cuentaDesdeTexto} sin efecto retroactivo. Si cargás más años de los que se pueden contar en el mes elegido, la planilla toma el máximo. Para vacaciones e indemnización vale la antigüedad completa.`);
+  ws.getRow(38).height = 40;
   ws.views = [{ state: "frozen", ySplit: 4 }];
 }
 
@@ -488,6 +503,7 @@ function buildRecibo(wb: ExcelJS.Workbook) {
     ["Modalidad", { formula: `${L}${CELDAS.modalidad}` }],
     ["Horas semanales", { formula: `${L}${CELDAS.horasSemanales}`, formato: "0.##" }],
     ["Básico", { formula: `${L}${CELDAS.basico}`, formato: '"$"#,##0.00' }],
+    [`Adicional por antigüedad (${ANTIGUEDAD.porcentajePorAnio}% por año)`, { formula: `${L}${CELDAS.montoAntiguedad}`, formato: '"$"#,##0.00' }],
     [`Horas extras comunes (+${HORAS_EXTRAS.comunes}%)`, { formula: `${L}${CELDAS.montoExtrasComunes}`, formato: '"$"#,##0.00' }],
     [`Horas extras fin de semana y feriados (+${HORAS_EXTRAS.finDeSemanaYFeriados}%)`, { formula: `${L}${CELDAS.montoExtrasFinde}`, formato: '"$"#,##0.00' }],
     ["TOTAL", { formula: `${L}${CELDAS.total}`, formato: '"$"#,##0.00' }],

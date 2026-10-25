@@ -4,7 +4,7 @@ import { aplicarTextos, faltantesDeTextos, type TextosEdicion } from "./edicion"
 import { formatearFecha, formatearValorUnidad } from "./formato";
 import { UNIVERSALES } from "./universales";
 import { idiomasDe, instanciar, type ContextoUniversal, type Universal } from "./universales/tipos";
-import { avisosVigentes, hoyMasAdelantado, ultimoPunto, valorSerie, vigente, vigentePorRegion } from "./vigencia";
+import { avisosVigentes, hoyEn, hoyMasAdelantado, ultimoPunto, valorSerie, vigente, vigentePorRegion } from "./vigencia";
 import type {
   Aviso,
   CodigoMercado,
@@ -580,6 +580,8 @@ export interface Registro {
   publicabilidad(codigo: CodigoMercado, slug: string, fecha: FechaISO, modo?: ModoPublicacion): Publicabilidad;
   pagina(codigo: CodigoMercado, slug: string, fecha: FechaISO, modo?: ModoPublicacion): PaginaResuelta | null;
   equivalentes(concepto: string, fechaDe: (m: Mercado) => FechaISO, modo?: ModoPublicacion): Equivalente[];
+  // La fecha con la que se evalúa cada mercado del clúster de una página de `codigo` (la página en `fecha`).
+  fechaDelClusterDesde(codigo: CodigoMercado, fecha: FechaISO): (m: Mercado) => FechaISO;
   // La misma calculadora en las ediciones del país (ca/vacation-pay y ca-fr/paie-de-vacances),
   // incluida ella; vacío si no tiene. Es el clúster de una calculadora "propio" entre idiomas.
   hermanas(codigo: CodigoMercado, slug: string, fechaDe: (m: Mercado) => FechaISO, modo?: ModoPublicacion): Equivalente[];
@@ -679,6 +681,13 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
     return salida;
   };
 
+  // Cada mercado del clúster se evalúa en SU fecha, no en la de la página: con la fecha de la página
+  // para todos, en el cruce de medianoche entre zonas una serie que vence (ni.ipc el 25/10/2026) dejaba
+  // a Nicaragua en el clúster de las páginas de América y afuera en las de Europa, y el hreflang dejaba
+  // de ser recíproco (1.850 fallas en check_hreflang). Así, en un mismo instante, todas las páginas
+  // describen el mismo clúster. La página misma sigue en la fecha que se le pasa.
+  const fechaDelClusterDesde = (codigo: CodigoMercado, fecha: FechaISO) => (x: Mercado): FechaISO => (x.codigo === codigo ? fecha : hoyEn(x));
+
   const unidadesPorPais = new WeakMap<PaisDefinido, Readonly<Record<string, Unidad>>>();
   const unidadesDe = (p: PaisDefinido) => {
     let u = unidadesPorPais.get(p);
@@ -735,12 +744,13 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
         },
         sello: selloDe(r.usados),
         usados: r.usados,
-        equivalentes: equivalentesDe(entrada, () => fecha, modo),
+        equivalentes: equivalentesDe(entrada, fechaDelClusterDesde(m.codigo, fecha), modo),
         cliente: entrada.cliente,
         ...(esUniversal(entrada) ? { universal: entrada.universal } : {}),
       };
     },
     equivalentes,
+    fechaDelClusterDesde,
     hermanas: (codigo, slug, fechaDe, modo = "produccion") => {
       const entrada = calculadora(codigo, slug);
       return entrada ? hermanasDe(entrada, fechaDe, modo) : [];

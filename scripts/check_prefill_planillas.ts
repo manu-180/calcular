@@ -287,15 +287,15 @@ async function checkCasas() {
 
   const ultimo = ESCALAS_POR_MES.at(-1)!.id;
   const casos: casas.Datos[] = [
-    { mesId: "2026-10", categoriaId: "tareas-generales", modalidad: "con-retiro", horasSemanales: 24, zonaDesfavorable: false, extrasComunes: 0, extrasFinDeSemana: 0 },
-    { mesId: "2026-10", categoriaId: "asistencia-personas", modalidad: "sin-retiro", horasSemanales: 48, zonaDesfavorable: true, extrasComunes: 4, extrasFinDeSemana: 2 },
-    { mesId: ultimo, categoriaId: "caseros", modalidad: "sin-retiro", horasSemanales: 48, zonaDesfavorable: false, extrasComunes: 0, extrasFinDeSemana: 0 },
-    { mesId: ESCALAS_POR_MES[0].id, categoriaId: "supervisor", modalidad: "con-retiro", horasSemanales: 10, zonaDesfavorable: false, extrasComunes: 1.5, extrasFinDeSemana: 0 },
-    { mesId: "2026-09", categoriaId: "tareas-especificas", modalidad: "con-retiro", horasSemanales: 14, zonaDesfavorable: true, extrasComunes: 0, extrasFinDeSemana: 3 },
+    { mesId: "2026-10", categoriaId: "tareas-generales", modalidad: "con-retiro", horasSemanales: 24, zonaDesfavorable: false, extrasComunes: 0, extrasFinDeSemana: 0, aniosAntiguedad: 0 },
+    { mesId: "2026-10", categoriaId: "asistencia-personas", modalidad: "sin-retiro", horasSemanales: 48, zonaDesfavorable: true, extrasComunes: 4, extrasFinDeSemana: 2, aniosAntiguedad: 6 },
+    { mesId: ultimo, categoriaId: "caseros", modalidad: "sin-retiro", horasSemanales: 48, zonaDesfavorable: false, extrasComunes: 0, extrasFinDeSemana: 0, aniosAntiguedad: 9 },
+    { mesId: ESCALAS_POR_MES[0].id, categoriaId: "supervisor", modalidad: "con-retiro", horasSemanales: 10, zonaDesfavorable: false, extrasComunes: 1.5, extrasFinDeSemana: 0, aniosAntiguedad: 2 },
+    { mesId: "2026-09", categoriaId: "tareas-especificas", modalidad: "con-retiro", horasSemanales: 14, zonaDesfavorable: true, extrasComunes: 0, extrasFinDeSemana: 3, aniosAntiguedad: 1 },
   ];
   const C = casas.CELDAS;
   for (const d of casos) {
-    const { libro, malas } = await aplicarYEvaluar(ARCHIVO_CASAS, casas.prefill, d, casas.HOJA, [C.mes, C.categoria, C.modalidad, C.horasSemanales, C.zona, C.extrasComunes, C.extrasFinde]);
+    const { libro, malas } = await aplicarYEvaluar(ARCHIVO_CASAS, casas.prefill, d, casas.HOJA, [C.mes, C.categoria, C.modalidad, C.horasSemanales, C.zona, C.antiguedad, C.extrasComunes, C.extrasFinde]);
     const r = calcularCasasParticulares({
       mesId: d.mesId,
       categoriaId: d.categoriaId,
@@ -304,6 +304,7 @@ async function checkCasas() {
       zonaDesfavorable: d.zonaDesfavorable,
       horasExtrasComunes: d.extrasComunes,
       horasExtrasFinDeSemana: d.extrasFinDeSemana,
+      aniosAntiguedad: d.aniosAntiguedad,
     })!;
     const a = calcularAportes({ horasSemanales: d.horasSemanales, condicion: "activo-mayor-18", cantidadTrabajadores: 1 });
     const total = libro.numero(casas.HOJA, C.total);
