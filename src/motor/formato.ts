@@ -197,7 +197,8 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
   if (RE_UNIDAD_CJK.test(normal)) return conUnidadesCjk(normal, locale, opciones);
   const sinEspacios = normal.replace(ESPACIOS, "");
   const negativo = /^[^\d]*-/.test(sinEspacios);
-  const limpio = sinEspacios.replace(/[^\d.,]/g, "");
+  // Las abreviaturas con punto pegadas a la cifra («din.» del dinar serbio, «Rs.») no son separadores.
+  const limpio = sinEspacios.replace(/\p{L}+\./gu, "").replace(/[^\d.,]/g, "");
   if (!/\d/.test(limpio)) return null;
   if (/[.,]{2,}/.test(limpio)) return null;
   if (/[.,]$/.test(limpio) || (/^[.,]/.test(limpio) && !/^[.,]\d+$/.test(limpio))) return null;
@@ -242,7 +243,8 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
 // milesAmbiguos ("5.000" da "5000"); null si el texto no es ese caso.
 export function sugerenciaMiles(texto: string, locale: string): { sugerido: string; separador: string } | null {
   const sinEspacios = texto.replace(ESPACIOS, "");
-  const limpio = sinEspacios.replace(/[^\d.,]/g, "");
+  // Las abreviaturas con punto pegadas a la cifra («din.» del dinar serbio, «Rs.») no son separadores.
+  const limpio = sinEspacios.replace(/\p{L}+\./gu, "").replace(/[^\d.,]/g, "");
   const dec = separadoresDe(locale).decimal;
   const otro = dec === "." ? "," : ".";
   if (limpio.includes(otro)) return null;
