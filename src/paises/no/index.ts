@@ -32,6 +32,16 @@ import dokumentavgift from "./calculadoras/dokumentavgift";
 import contenidoDokumentavgift from "./contenido/dokumentavgift";
 import formuesskatt from "./calculadoras/formuesskatt";
 import contenidoFormuesskatt from "./contenido/formuesskatt";
+import utbytteskatt from "./calculadoras/utbytteskatt";
+import contenidoUtbytteskatt from "./contenido/utbytteskatt";
+import valutakalkulator from "./calculadoras/valutakalkulator";
+import contenidoValutakalkulator from "./contenido/valutakalkulator";
+import kpiKalkulator from "./calculadoras/kpi-kalkulator";
+import contenidoKpiKalkulator from "./contenido/kpi-kalkulator";
+import forsinkelsesrente from "./calculadoras/forsinkelsesrente";
+import contenidoForsinkelsesrente from "./contenido/forsinkelsesrente";
+import grunnbelopet from "./calculadoras/grunnbelopet";
+import contenidoGrunnbelopet from "./contenido/grunnbelopet";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +70,11 @@ export default definirPais({
     { definicion: mvaKalkulator, contenido: contenidoMvaKalkulator, cliente: () => import("./calculadoras/mva-kalkulator.cliente") },
     { definicion: dokumentavgift, contenido: contenidoDokumentavgift, cliente: () => import("./calculadoras/dokumentavgift.cliente") },
     { definicion: formuesskatt, contenido: contenidoFormuesskatt, cliente: () => import("./calculadoras/formuesskatt.cliente") },
+    { definicion: utbytteskatt, contenido: contenidoUtbytteskatt, cliente: () => import("./calculadoras/utbytteskatt.cliente") },
+    { definicion: valutakalkulator, contenido: contenidoValutakalkulator, cliente: () => import("./calculadoras/valutakalkulator.cliente") },
+    { definicion: kpiKalkulator, contenido: contenidoKpiKalkulator, cliente: () => import("./calculadoras/kpi-kalkulator.cliente") },
+    { definicion: forsinkelsesrente, contenido: contenidoForsinkelsesrente, cliente: () => import("./calculadoras/forsinkelsesrente.cliente") },
+    { definicion: grunnbelopet, contenido: contenidoGrunnbelopet, cliente: () => import("./calculadoras/grunnbelopet.cliente") },
   ],
   universales: "todas",
   novedades,
