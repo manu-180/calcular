@@ -909,7 +909,7 @@
           "valor": 15,
           "fuente": {
             "organismo": "Mauritius Revenue Authority",
-            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 109(3)",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, sections 96(4), 99 and 109(3)",
             "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-24"
@@ -929,27 +929,7 @@
           "valor": 26,
           "fuente": {
             "organismo": "Mauritius Revenue Authority",
-            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 109(6)(b)",
-            "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-24"
-          }
-        }
-      ]
-    },
-    {
-      "id": "mu.gratuity-wage-ceiling",
-      "nombre": "Retirement gratuity: monthly basic wage above which section 109 does not apply without a private scheme",
-      "tipo": "numero",
-      "unidad": "MUR",
-      "tramos": [
-        {
-          "estado": "verificado",
-          "desde": "2023-07-20",
-          "valor": 200000,
-          "fuente": {
-            "organismo": "Mauritius Revenue Authority",
-            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, section 109(5)(b)",
+            "titulo": "Workers' Rights Act 2019, consolidated to Act 13 of 2026, sections 100A and 109(6)(b)",
             "url": "https://www.mra.mu/download/WorkersRightsAct2019.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-24"

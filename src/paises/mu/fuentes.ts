@@ -197,7 +197,6 @@ export const detectores: readonly Detector[] = [
       "mu.severance-months",
       "mu.gratuity-days",
       "mu.gratuity-days-in-month",
-      "mu.gratuity-wage-ceiling",
       "mu.prgf-rate",
       "mu.prgf-wage-ceiling",
       "mu.basic-pension",

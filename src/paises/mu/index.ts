@@ -24,6 +24,14 @@ import sickLeaveCalculator from "./calculadoras/sick-leave-calculator";
 import contenidoSickLeaveCalculator from "./contenido/sick-leave-calculator";
 import maternityLeaveCalculator from "./calculadoras/maternity-leave-calculator";
 import contenidoMaternityLeaveCalculator from "./contenido/maternity-leave-calculator";
+import noticePeriodCalculator from "./calculadoras/notice-period-calculator";
+import contenidoNoticePeriodCalculator from "./contenido/notice-period-calculator";
+import severanceAllowanceCalculator from "./calculadoras/severance-allowance-calculator";
+import contenidoSeveranceAllowanceCalculator from "./contenido/severance-allowance-calculator";
+import retirementGratuityCalculator from "./calculadoras/retirement-gratuity-calculator";
+import contenidoRetirementGratuityCalculator from "./contenido/retirement-gratuity-calculator";
+import vatCalculator from "./calculadoras/vat-calculator";
+import contenidoVatCalculator from "./contenido/vat-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,8 +56,12 @@ export default definirPais({
     { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
     { definicion: sickLeaveCalculator, contenido: contenidoSickLeaveCalculator, cliente: () => import("./calculadoras/sick-leave-calculator.cliente") },
     { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
+    { definicion: noticePeriodCalculator, contenido: contenidoNoticePeriodCalculator, cliente: () => import("./calculadoras/notice-period-calculator.cliente") },
+    { definicion: severanceAllowanceCalculator, contenido: contenidoSeveranceAllowanceCalculator, cliente: () => import("./calculadoras/severance-allowance-calculator.cliente") },
+    { definicion: retirementGratuityCalculator, contenido: contenidoRetirementGratuityCalculator, cliente: () => import("./calculadoras/retirement-gratuity-calculator.cliente") },
+    { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
   ],
-  universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "mu.vat" } }] },
+universales: "todas",
   novedades,
   detectores,
 });
