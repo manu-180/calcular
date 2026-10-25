@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CATALOGO } from "@/lib/mp";
 import { BuscadorHero } from "@/components/buscador/BuscadorHero";
+import { DestacadoMundo } from "@/components/inicio/DestacadoMundo";
 import { FirmaAutor } from "@/components/FirmaAutor";
 import { GRUPOS_DE_CALCULADORAS, MAS_USADAS, grupo, paginaDeRuta, paginasDelGrupo } from "@/data/navegacion";
 import { bonoVigente, prestacionesVigentes } from "@/data/prestaciones";
@@ -571,6 +572,8 @@ export default function Home() {
           ))}
         </dl>
       </section>
+
+      <DestacadoMundo />
 
       <section aria-labelledby="cifras" className="space-y-5">
         <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">

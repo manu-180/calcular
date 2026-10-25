@@ -182,6 +182,13 @@ const DEFS: Record<GrupoId, Def[]> = {
       claves: ["sueldo en mano", "bruto a neto", "neto a bruto", "aportes", "recibo", "cuanto cobro", "salario", "descuentos de ley", "17%"],
     },
     {
+      href: "/sueldo-en-el-mundo",
+      titulo: "Tu sueldo en el mundo",
+      corto: "Sueldo en el mundo",
+      descripcion: "Hasta qué día trabajás para el Estado y cuánto cobrarías afuera",
+      claves: ["dia de libertad tributaria", "trabajar para el estado", "impuestos", "otros paises", "emigrar", "sueldo en dolares", "comparar sueldo", "poder de compra"],
+    },
+    {
       href: "/aguinaldo",
       titulo: "Aguinaldo (SAC)",
       descripcion: "Cuánto cobrás en junio y diciembre",
