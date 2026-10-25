@@ -22,6 +22,14 @@ import noticePeriodCalculator from "./calculadoras/notice-period-calculator";
 import contenidoNoticePeriodCalculator from "./contenido/notice-period-calculator";
 import redundancyCalculator from "./calculadoras/redundancy-calculator";
 import contenidoRedundancyCalculator from "./contenido/redundancy-calculator";
+import gctCalculator from "./calculadoras/gct-calculator";
+import contenidoGctCalculator from "./contenido/gct-calculator";
+import transferTaxCalculator from "./calculadoras/transfer-tax-calculator";
+import contenidoTransferTaxCalculator from "./contenido/transfer-tax-calculator";
+import propertyTaxCalculator from "./calculadoras/property-tax-calculator";
+import contenidoPropertyTaxCalculator from "./contenido/property-tax-calculator";
+import nhtMortgageCalculator from "./calculadoras/nht-mortgage-calculator";
+import contenidoNhtMortgageCalculator from "./contenido/nht-mortgage-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -45,6 +53,10 @@ export default definirPais({
     { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
     { definicion: noticePeriodCalculator, contenido: contenidoNoticePeriodCalculator, cliente: () => import("./calculadoras/notice-period-calculator.cliente") },
     { definicion: redundancyCalculator, contenido: contenidoRedundancyCalculator, cliente: () => import("./calculadoras/redundancy-calculator.cliente") },
+    { definicion: gctCalculator, contenido: contenidoGctCalculator, cliente: () => import("./calculadoras/gct-calculator.cliente") },
+    { definicion: transferTaxCalculator, contenido: contenidoTransferTaxCalculator, cliente: () => import("./calculadoras/transfer-tax-calculator.cliente") },
+    { definicion: propertyTaxCalculator, contenido: contenidoPropertyTaxCalculator, cliente: () => import("./calculadoras/property-tax-calculator.cliente") },
+    { definicion: nhtMortgageCalculator, contenido: contenidoNhtMortgageCalculator, cliente: () => import("./calculadoras/nht-mortgage-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
