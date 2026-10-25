@@ -46,6 +46,7 @@ export type TextosBuscador = {
   resultado: string;
   resultadosPlural: string;
   resultadosPocos?: string;
+  resultadosDe?: string;
 };
 
 export type FuenteBuscador = {

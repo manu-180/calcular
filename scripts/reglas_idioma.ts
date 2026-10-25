@@ -162,6 +162,22 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Ruso: un solo registro, el de Kaspi, Halyk, egov.kz y Сбер («вы» con minúscula y el imperativo
+  // cortés; ADR 0002, D17). Se atrapa el «ты» (pronombre y posesivos), los imperativos y presentes de
+  // segunda del singular que aparecen en un formulario y el «Вы» con mayúscula a mitad de oración,
+  // que en la web de servicio se escribe con minúscula.
+  ru: {
+    informal: [
+      { re: palabras("ты|тебя|тебе|тобой|твой|твоя|твое|твоё|твои|твоего|твоей|твоих|твоим|твоему|твоими|твою"), nombre: "«ты»" },
+      {
+        re: palabras("введи|рассчитай|посчитай|выбери|нажми|узнай|проверь|сравни|попробуй|заполни|укажи|посмотри|получи|скопируй|поделись|загрузи|открой|добавь|сохрани|обрати|начни|напиши|сделай|оформи|подай|оплати"),
+        nombre: "imperativo de «ты» (va -ите/-йте)",
+      },
+      { re: palabras("можешь|хочешь|знаешь|получишь|платишь|зарабатываешь|видишь|работаешь|тратишь|экономишь|сможешь|будешь|сэкономишь|заплатишь"), nombre: "segunda persona de «ты»" },
+      { re: /[^.?!:«(\s]\s+(?:Вы|Вас|Вам|Вами|Ваш|Ваша|Ваше|Ваши|Вашего|Вашей|Вашим|Вашу|Ваших|Вашими|Вашему|Вашем)(?!\p{L})/u, nombre: "«Вы» con mayúscula (va «вы»)" },
+    ],
+    formal: [],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -196,6 +212,17 @@ function reglasUz(texto: string): string[] {
   if (/(?<![oOgG])\p{L}[\u2018\u2019'`](?=\p{L})/u.test(texto)) p.push("tutuq belgisi con el signo equivocado (va U+02BC «ʼ»)");
   if (/(?<![oOgG])\u02BB/u.test(texto)) p.push("«ʻ» que no sigue a o ni a g");
   if (/\p{sc=Cyrillic}/u.test(texto)) p.push("cirílico mezclado en uzbeko latino");
+  return p;
+}
+
+// Ruso: comillas «», sin «ё» (se escribe «е», como en la mayoría de los sitios de servicio; ADR 0002,
+// D17) y sin letras de otros alfabetos cirílicos (ucraniano і, ї, є, ґ; kazajo ә, ғ, қ, ң, ө, ұ, ү,
+// һ; bielorruso ў), que delatan un texto copiado de otra lengua.
+function reglasRu(texto: string): string[] {
+  const p: string[] = [];
+  if (/[ёЁ]/.test(texto)) p.push("«ё»: en ruso se escribe «е» (ADR 0002, D17)");
+  if (/[іїєґІЇЄҐәғқңөұүһӘҒҚҢӨҰҮҺўЎ]/.test(texto)) p.push("letra de otro alfabeto cirílico (ucraniano, kazajo o bielorruso) en un texto ruso");
+  if (/["“”„](?=\p{sc=Cyrillic})|(?<=\p{sc=Cyrillic}[.,?:;]?)["“”„]/u.test(texto)) p.push("comillas: en ruso van «»");
   return p;
 }
 
@@ -355,5 +382,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "tr") p.push(...reglasTr(texto));
   if (idioma === "uk") p.push(...reglasUk(texto));
   if (idioma === "uz") p.push(...reglasUz(texto));
+  if (idioma === "ru") p.push(...reglasRu(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

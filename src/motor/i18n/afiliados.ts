@@ -300,6 +300,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "yangi varaqda ochiladi",
     },
   },
+  ru: {
+    base: {
+      titulo: "Переезжаете за границу или получаете оплату из другой страны?",
+      etiqueta: "Партнерские ссылки",
+      socios: {
+        wise: "Счет в нескольких валютах, чтобы получать и отправлять деньги между странами по среднему рыночному курсу, с комиссией, которую видно заранее.",
+        deel: "Договоры и выплаты для тех, кто работает из одной страны на компанию из другой.",
+      },
+      nota: "Если счет открывают по этим ссылкам, сайт может получить комиссию. Тот, кто регистрируется, не платит из-за этого больше.",
+      nuevaPestana: "откроется в новой вкладке",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

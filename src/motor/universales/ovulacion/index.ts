@@ -16,6 +16,7 @@ import { contenidoNb } from "./contenido/nb";
 import { contenidoNl } from "./contenido/nl";
 import { contenidoPl } from "./contenido/pl";
 import { contenidoPt } from "./contenido/pt";
+import { contenidoRu } from "./contenido/ru";
 import { contenidoSv } from "./contenido/sv";
 import { contenidoTh } from "./contenido/th";
 import { contenidoTr } from "./contenido/tr";
@@ -39,6 +40,7 @@ import { textosNb } from "./textos/nb";
 import { textosNl } from "./textos/nl";
 import { textosPl } from "./textos/pl";
 import { textosPt } from "./textos/pt";
+import { textosRu } from "./textos/ru";
 import { textosSv } from "./textos/sv";
 import { textosTh } from "./textos/th";
 import { textosTr } from "./textos/tr";
@@ -50,7 +52,7 @@ export default definirUniversal<UiOvulacion>({
   id: "ovulacion",
   concepto: "ovulacion",
   definir,
-  textos: { ar: textosAr, bn: textosBn, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bn: contenidoBn, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bn: textosBn, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ru: textosRu, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bn: contenidoBn, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ru: contenidoRu, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });

@@ -67,6 +67,7 @@ varias veces por límite de uso.
 | Motor tailandés (th) | claude/mundo-motor-th | terminado el 24/10 (núcleo, venta y las 41 universales) |
 | Motor ucraniano (uk) | claude/mundo-motor-uk | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Motor uzbeko (uz, latino) | claude/mundo-motor-uz | terminado el 24/10 (núcleo, venta, módulos nuevos y las 41 universales) |
+| Motor ruso (ru) | claude/mundo-motor-ru | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Kazajistán |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -222,6 +223,31 @@ Falta para publicar Uzbekistán:
 - Revisión de un hablante nativo sobre una muestra de páginas antes de publicar (dudas anotadas en
   los commits de las universales: choychaqa, daromadlilik, marjinal daromad, temp).
 - Una edición en ruso, si se decide, sería aparte.
+
+## 24/10/2026 · Motor ruso (`claude/mundo-motor-ru`)
+
+ru en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`zarplata-v-mire`), rankings (`reyting-stran`), horas de trabajo (`skolko-chasov-raboty`),
+calendario (`kalendar-zarplaty`), sueldos reales (`realnye-zarplaty`), venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con slugs transliterados (`kalkulyator-kredita`,
+`kalkulyator-nds`, `kalkulyator-ipoteki`...). Registro «вы» con minúscula e imperativo cortés, el de
+Kaspi, Halyk, egov.kz y Сбер; mercados con `trato: "usted"`; sin «ё». Plurales one/few/many/other
+(`pluralRu`, unidades de tiempo con `pocos`/`muchos`). `GRAMATICA.ru` declina el país («в
+Казахстане», «для Казахстана», «во Франции», «на Кипре»). El buscador indexa cirílico. Textos
+neutrales de país para Kazajistán, Kirguistán, Uzbekistán (edición) y otros. Decisiones en ADR 0002,
+D17 (por qué Kazajistán sale en ruso primero y el kazajo queda como edición futura `kz-kk`). Edición
+de prueba `zz-ru`; `check_universales` prueba ru-KZ con KZT.
+
+Falta para publicar Kazajistán:
+- El país en sí (BRIEF-PAIS): калькулятор зарплаты с ИПН, ОПВ, ВОСМС y los aportes del empleador
+  (СО, ОПВР, ООСМС), МРП y МЗП del año, НДС, отпускные, больничные, пособия, ипотека «Отбасы»,
+  депозиты con ГЭСВ, con datos verificados en fuentes oficiales (adilet.zan.kz, kgd.gov.kz,
+  egov.kz, nationalbank.kz, stat.gov.kz).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- Al mergear con `claude/mundo-motor-eu` y `claude/mundo-motor-uk`: `src/motor/i18n/plural.ts` choca
+  (las tres lo crean) y hay que dejar `pluralPl`, `formaUk`/`pluralUk` y `formaRu`/`pluralRu` juntos;
+  `FormasUnidad` en `unidades.ts`, `resultadosPocos` en el buscador y el cirílico del índice son los
+  mismos cambios. `IDIOMAS`, los `Record<Idioma>` y `src/paises/index.ts` chocan por la lista.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 

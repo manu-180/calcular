@@ -28,7 +28,8 @@ export function normalizar(texto: string): string {
     .replace(/[ʻʼ]/g, "")
     .replace(/([og])[‘’'`](?=[a-z])/g, "$1")
     // El cirílico (ucraniano) cuenta como letra: sin esto «кредит» quedaba vacío.
-    .replace(/[^a-z0-9Ѐ-ӿ]+/g, " ")
+    // El cirílico (ruso) cuenta como letra: sin esto «кредит» quedaba vacío.
+    .replace(/[^a-z0-9Ѐ-ӿЀ-ӿ]+/g, " ")
     .trim();
 }
 

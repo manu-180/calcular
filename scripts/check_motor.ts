@@ -16,6 +16,7 @@ import { GRAMATICA } from "../src/motor/i18n/gramatica";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
 import { pluralUk } from "../src/motor/i18n/plural";
+import { pluralRu } from "../src/motor/i18n/plural";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
@@ -172,6 +173,13 @@ const parseos: [string, string, number | null][] = [
   ["uz-UZ", "12 345 678,25 soʻm", 12345678.25],
   ["uz-UZ", "-250,75", -250.75],
   ["uz-UZ", "12,5%", 12.5],
+  // Ruso: miles con espacio (U+00A0, como lo da Intl), decimal con coma y el tenge o el rublo detrás.
+  ["ru-KZ", "1 234,50", 1234.5],
+  ["ru-KZ", "1 234 567,25 ₸", 1234567.25],
+  ["ru-KZ", "250 000 тг", 250000],
+  ["ru-RU", "25 000 ₽", 25000],
+  ["ru-KZ", "-250,75", -250.75],
+  ["ru-KZ", "12,5 %", 12.5],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -201,6 +209,8 @@ const ambiguos: [string, string, number | null][] = [
   ["uk-UA", "5,000", null],
   ["uz-UZ", "5.000", 5000],
   ["uz-UZ", "5,000", null],
+  ["ru-KZ", "5 000", 5000],
+  ["ru-KZ", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -539,8 +549,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -661,6 +671,28 @@ igual(
     ["Kongo Demokratik Respublikasining", "Kongo Demokratik Respublikasida", "Kongo Demokratik Respublikasi uchun"],
   ],
 );
+// Ruso: one/few/many/other de Intl.PluralRules («1 год», «3 года», «5 лет», «1,5 года»).
+igual(
+  "años en ruso",
+  [1, 3, 5, 11, 21, 22, 1.5].map((n) => formatearValorUnidad(n, "anios", "ru-KZ")),
+  ["1 год", "3 года", "5 лет", "11 лет", "21 год", "22 года", "1,5 года"],
+);
+igual("días en ruso", [1, 2, 7].map((n) => formatearValorUnidad(n, "dias", "ru-KZ")), ["1 день", "2 дня", "7 дней"]);
+igual("semanas en ruso", [1, 4, 40].map((n) => formatearValorUnidad(n, "semanas", "ru-RU")), ["1 неделя", "4 недели", "40 недель"]);
+igual("pluralRu", [1, 3, 12, 24, 25].map((n) => pluralRu(n, "калькулятор", "калькулятора", "калькуляторов")), ["1 калькулятор", "3 калькулятора", "12 калькуляторов", "24 калькулятора", "25 калькуляторов"]);
+// Casos del nombre del país en ruso: lugar con «в/во/на», genitivo y «для».
+igual(
+  "gramática rusa: lugar",
+  ["Казахстан", "Киргизия", "Узбекистан", "Россия", "Германия", "Франция", "Вьетнам", "Мексика", "Китай", "Соединенные Штаты", "Великобритания", "Филиппины", "Чили", "Мальта", "Израиль", "Беларусь", "ОАЭ", "Гонконг (САР)"].map((p) => GRAMATICA.ru.en(p)),
+  ["в Казахстане", "в Киргизии", "в Узбекистане", "в России", "в Германии", "во Франции", "во Вьетнаме", "в Мексике", "в Китае", "в Соединенных Штатах", "в Великобритании", "на Филиппинах", "в Чили", "на Мальте", "в Израиле", "в Беларуси", "в ОАЭ", "в Гонконге (САР)"],
+);
+igual(
+  "gramática rusa: genitivo",
+  ["Казахстан", "Польша", "Египет", "Объединенные Арабские Эмираты", "Южно-Африканская Республика", "Сент-Винсент и Гренадины", "Коста-Рика", "Никарагуа", "Республика Корея", "Новая Зеландия", "Нидерланды", "Парагвай"].map((p) => GRAMATICA.ru.de(p)),
+  ["Казахстана", "Польши", "Египта", "Объединенных Арабских Эмиратов", "Южно-Африканской Республики", "Сент-Винсента и Гренадин", "Коста-Рики", "Никарагуа", "Республики Корея", "Новой Зеландии", "Нидерландов", "Парагвая"],
+);
+igual("gramática rusa: para", GRAMATICA.ru.para("Казахстан"), "для Казахстана");
+igual("gramática rusa: isla con «на»", GRAMATICA.ru.en("Сент-Винсент и Гренадины"), "на Сент-Винсенте и Гренадинах");
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).

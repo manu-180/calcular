@@ -134,8 +134,11 @@ export interface TextosShell {
     resultados: string;
     resultado: string;
     resultadosPlural: string;
-    // Forma «few» de los idiomas eslavos (2 a 4: «3 результати»); sin ella, resultadosPlural.
+    // Forma «few» de los idiomas eslavos (2 a 4: «3 результати», «3 результата», «3 výsledky»); sin ella,
+    // resultadosPlural.
     resultadosPocos?: string;
+    // Rumano: de 20 en adelante el sustantivo va con «de» («20 de rezultate»); sin ella, resultadosPlural.
+    resultadosDe?: string;
   };
   paises: { titulo: string; cambiar: string };
   pie: {

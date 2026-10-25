@@ -54,14 +54,20 @@ function esEditable(t: EventTarget | null): boolean {
   return t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName);
 }
 
-// «1 resultado», «5 resultados»; en ucraniano también la forma «few» (2 a 4, 22 a 24: «3 результати»)
-// y el singular en 21, 31 («21 результат»), con la regla de Intl.PluralRules("uk").
-function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "resultadosPlural" | "resultadosPocos">): string {
-  if (t.resultadosPocos === undefined) return `${n} ${n === 1 ? t.resultado : t.resultadosPlural}`;
-  const d = n % 10;
+// «1 resultado», «5 resultados». Con la forma «few» de los idiomas eslavos (resultadosPocos: uk, ru, cs)
+// la categoría sale de Intl.PluralRules con el idioma de la página: «3 результати», «21 результат»,
+// «3 výsledky», «5 výsledků». En rumano, de 20 en adelante (y en 100, 120...) va «de» delante del
+// sustantivo (resultadosDe: «20 de rezultate»).
+function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "resultadosPlural" | "resultadosPocos" | "resultadosDe">): string {
+  if (t.resultadosPocos !== undefined) {
+    const lang = typeof document === "undefined" ? "" : document.documentElement.lang;
+    const categoria = lang ? new Intl.PluralRules(lang).select(n) : n === 1 ? "one" : "other";
+    return `${n} ${categoria === "one" ? t.resultado : categoria === "few" ? t.resultadosPocos : t.resultadosPlural}`;
+  }
+  if (n === 1) return `${n} ${t.resultado}`;
   const c = n % 100;
-  if (d === 1 && c !== 11) return `${n} ${t.resultado}`;
-  return `${n} ${d >= 2 && d <= 4 && (c < 12 || c > 14) ? t.resultadosPocos : t.resultadosPlural}`;
+  if (t.resultadosDe !== undefined && n >= 20 && (c === 0 || c >= 20)) return `${n} ${t.resultadosDe}`;
+  return `${n} ${t.resultadosPlural}`;
 }
 
 function plano(s: string): string {

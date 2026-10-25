@@ -129,6 +129,14 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sent-Vinsent va Grenadin", locale: "uz-UZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "cd" as CodigoMercado, pais: "CD", nombrePais: "Kongo Demokratik Respublikasi", locale: "uz-UZ", trato: "usted", moneda: "CDF" as Moneda, escala: 2800 },
   ],
+  // Ruso (ADR 0002, D17): Kazajistán con el tenge («₸» detrás y espacio de miles), un nombre largo que
+  // se declina por partes («на Сент-Винсенте и Гренадинах») y uno con adjetivos delante («в
+  // Объединенных Арабских Эмиратах»).
+  ru: [
+    { mercado: "kz" as CodigoMercado, pais: "KZ", nombrePais: "Казахстан", locale: "ru-KZ", trato: "usted", moneda: "KZT" as Moneda, escala: 500 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент-Винсент и Гренадины", locale: "ru-KZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Объединенные Арабские Эмираты", locale: "ru-RU", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)

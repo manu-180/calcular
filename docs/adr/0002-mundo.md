@@ -743,6 +743,111 @@ raíces en t y d («kiriting»).
 `check_universales` prueba uz-UZ con UZS, «Sent-Vinsent va Grenadin» por el nombre largo y «Kongo
 Demokratik Respublikasi» por el compuesto que toma el sufijo en la última palabra.
 
+### D17. Ruso, primero para Kazajistán (2026-10-24)
+
+D9 a D16 los usan otras ramas sin mergear (`claude/mundo-motor-eu`, `claude/mundo-motor-tr`,
+`claude/mundo-motor-uk` con D15, `claude/mundo-motor-uz` con D16 y las demás); esta entrada toma el
+D17 para no chocar al mergear.
+
+**Por qué ruso y por qué Kazajistán primero.** En Kazajistán el ruso es lengua oficial junto al
+kazajo (artículo 7 de la Constitución: el kazajo es la lengua del Estado y el ruso se usa
+oficialmente a la par) y es la lengua en la que se buscan las calculadoras: «калькулятор зарплаты»,
+«калькулятор ипотеки», «калькулятор НДС», «калькулятор депозита». Los bancos y servicios del país
+(Kaspi, Halyk, egov.kz) tienen su web completa en ruso y en kazajo, y el ruso sigue siendo el idioma
+de búsqueda más usado. Con un solo motor ruso entran después Kirguistán (el ruso también es oficial),
+Uzbekistán como edición rusa (el uzbeko tiene su propio motor, D16) y otros países de habla rusa. El
+kazajo queda como edición futura `kz-kk` del mismo país, cuando exista su motor: hoy un sitio
+kazajo-solo perdería la mayoría de las búsquedas, y uno ruso-solo es lo que ya hacen las calculadoras
+de la competencia.
+
+`IDIOMAS` suma `ru`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`zarplata-v-mire`), rankings (`reyting-stran`), horas de trabajo
+(`skolko-chasov-raboty`), calendario (`kalendar-zarplaty`), sueldos reales (`realnye-zarplaty`), el
+diccionario de venta completo y las 41 universales están en ruso.
+
+**Trato.** Un solo registro, el de los bancos y servicios digitales (Kaspi, Halyk, egov.kz, Сбер):
+«вы» siempre con minúscula (la «Вы» con mayúscula es de carta personal, no de la web de servicio) y
+el imperativo cortés en las oraciones («введите», «рассчитайте», «выберите», «ваша зарплата»),
+nunca «ты». Los botones van en infinitivo («Рассчитать», «Скопировать ссылку») o en imperativo
+cortés breve («Выберите страну»). Los mercados van con `trato: "usted"`, como ja, ko, zh, uk y tr; los
+diccionarios escriben solo `base`. La tarjeta para compartir va en primera persona y sin concordar
+con el género («на руки оставалось бы на 12% больше», no «я получал бы»). Vocabulario estándar:
+калькулятор зарплаты, ипотека, кредит, НДС, проценты, вклад/депозит, переплата, досрочное
+погашение, зарплата до вычета налогов / на руки.
+
+**Textos neutrales de país.** Los textos del idioma los van a usar Kazajistán, Kirguistán,
+Uzbekistán y otros: nada de organismos de un solo país (ni Нацбанк, ni ЦБ, ni КГД, ni ФНС, ni ЕНПФ),
+nada de «копейка» ni «тиын», y la moneda siempre con el formato del mercado. Las cifras legales
+(tasa del НДС, mínimos) salen del dato del país.
+
+**Escritura.** Sin «ё»: se escribe «е» («еще», «расчет», «учет»), como la mayoría de los sitios de
+servicio; así el texto es parejo entre archivos y el buscador no depende de la letra. Comillas «».
+Sin rayas: en ruso la raya es la cópula de las definiciones («Ипотека — это...»), y la guía de
+redacción la prohíbe, así que las definiciones se reescriben («Ипотекой называют...», «X означает
+...», o dos oraciones) y las fórmulas usan «=».
+
+**Plurales.** El ruso tiene cuatro categorías en `Intl.PluralRules("ru")`: one (1, 21, 31...), few (2
+a 4, 22 a 24...), many (0, 5 a 20, 25...) y other (las fracciones, en genitivo singular: «1,5 года»).
+`src/motor/i18n/plural.ts` da `formaRu` y `pluralRu(n, uno, pocos, muchos, fracción?)`; las unidades
+de tiempo suman `pocos` y `muchos` (`FormasUnidad`, la misma interfaz que las ramas eu y uk) y
+`formatearValorUnidad` elige por categoría («1 год», «3 года», «5 лет», «1 неделя», «40 недель»). Ojo
+con «в N странах»: con 21, 31, 41 va en singular («в 41 стране»), así que los diccionarios de las
+páginas globales lo arman con `formaRu` y las plantillas con marcadores (horas, sueldos) dejan el
+número detrás de dos puntos o entre paréntesis. El contador del buscador usa `resultadosPocos`
+(«3 результата»).
+
+**Gramática del país.** El nombre se declina. `GRAMATICA.ru`: `nombre(p)` = p; `de(p)` el genitivo
+suelto («калькуляторы Казахстана»); `en(p)` el lugar con su preposición («в Казахстане», «во
+Франции», «во Вьетнаме», «на Кипре»; «во» ante в o ф seguidas de consonante); `para(p)` = «для» +
+genitivo. Los nombres llegan como los escribe Intl.DisplayNames en ru y se declinan por regla: -ия da
+-ии; -я da -и/-е («Кореи», «в Корее»); -а da -ы, o -и tras г, к, х, ж, ч, ш, щ, y -е en el lugar
+(«Мексики», «в Мексике», «Польши»); los masculinos en consonante, -а y -е; -й y -ь masculino, -я y -е
+(«Китая», «в Израиле»); -ий, -ия e -ии; los plurales en -ы, -ов y -ах; los adjetivos de delante
+concuerdan (-ая → -ой, -ые/-ие → -ых/-их, -ый/-ий/-ой y -ое → -ого/-ом, el posesivo -ы → -ых). Una
+tabla lleva los irregulares (Беларусь, Египет, Бангладеш, los plurales femeninos Филиппины, Мальдивы,
+Багамы, Коморы, Гренадины, y las aposiciones «Республика Корея», «Гвинея-Бисау») y otra los nombres de
+isla con «на». Lo que termina en otra vocal (Чили, Перу, Марокко, Никарагуа) y las siglas (США, ОАЭ)
+no se declinan; «Гонконг (САР)» declina lo de antes del paréntesis. Украина va con «в» («в Украине»),
+como en la prensa de Kazajistán.
+
+**Formato.** Intl de ru-KZ: miles con espacio (U+00A0), decimal con coma, el tenge detrás con «₸»
+(«1 234 567,50 ₸»; «тг» también se lee al parsear) y el porcentaje con espacio («19,5 %»). Fechas
+largas «1 октября 2026 г.» (ya terminan en punto: las oraciones evitan dejar «г..»). `parsearNumero`
+no cambia (casos nuevos en `check_motor`). `inferir.ts` reconoce «год», «месяц» y los prefijos
+«годов», «месячн», «ежегодн», «ежемесячн». El índice del buscador cuenta el cirílico como letra. Las
+OG cargan Noto Sans de respaldo en ru.
+
+**Slugs.** Transliteración ASCII simple y legible, la que usa la gente al escribir en latín (я→ya,
+ю→yu, ж→zh, х→kh, ц→ts, ч→ch, ш→sh, щ→shch, ы→y, й→y, е/э/ё→e, sin ь ni ъ), sobre la frase que se
+busca: `kalkulyator-kredita`, `kalkulyator-ipoteki`, `kalkulyator-nds`, `slozhnye-protsenty`,
+`prostye-protsenty`, `effektivnaya-protsentnaya-stavka`, `pogashenie-kreditnoy-karty`,
+`dokhodnost-investitsiy`, `nakopleniya-na-pensiyu`, `kalkulyator-nakopleniy`,
+`finansovaya-podushka`, `kalkulyator-marzhi`, `tochka-bezubytochnosti`, `stavka-frilansera`,
+`zarplata-v-chas`, `povyshenie-zarplaty`, `uchet-rabochego-vremeni`, `byudzhet-50-30-20`,
+`arenda-ili-pokupka-zhilya`, `stoimost-soderzhaniya-avto`, `kalkulyator-protsentov`,
+`izmenenie-v-protsentakh`, `kalkulyator-skidki`, `chaevye`, `razdelit-schet`, `proportsiya`,
+`srednee-vzveshennoe`, `kolichestvo-dney-mezhdu-datami`, `pribavit-dni-k-date`,
+`kalkulyator-vozrasta`, `indeks-massy-tela`, `kalkulyator-kaloriy`, `data-rodov`,
+`kalkulyator-ovulyatsii`, `temp-bega`, `raskhod-topliva`, `raskhod-elektroenergii`,
+`kalkulyator-ploshchadi`, `kalkulyator-kraski`, `kalkulyator-plitki` y `kalkulyator-betona`. Se
+eligió la transliteración y no el slug en inglés (como D8) porque es lo que se lee en los resultados
+de Google en la región y no hay una norma oficial única (ГОСТ 7.79 y la de pasaportes difieren: se
+tomó la forma más común en URLs). Rankings: `pokupatelnaya-sposobnost-zarplaty`,
+`den-nalogovoy-svobody`, `skolko-ostaetsya-ot-povysheniya`. El calendario no usa `kalendar-vyplat`,
+que transliterado es igual al del ucraniano: dos idiomas no pueden compartir carpeta bajo
+`[mercado]`, así que va `kalendar-zarplaty`.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): sin exclamaciones, rayas ni guion como pausa; se atrapan «ты» y sus posesivos, los
+imperativos y presentes de segunda del singular de un formulario («введи», «можешь»), la «Вы» con
+mayúscula a mitad de oración, la «ё», las letras de otros alfabetos cirílicos (ucraniano і, ї, є, ґ;
+kazajo ә, ғ, қ, ң, ө, ұ, ү, һ; bielorruso ў) y las comillas que no son «».
+
+**Prueba.** `zz-ru` (Зеталенд, locale `ru-001`) es una edición interna como `zz-ja`.
+`check_universales` prueba ru-KZ con KZT («Казахстан»), «Сент-Винсент и Гренадины» por el nombre
+largo que se declina por partes («на Сент-Винсенте и Гренадинах») y «Объединенные Арабские Эмираты»
+(ru-RU, AED) por los adjetivos delante.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

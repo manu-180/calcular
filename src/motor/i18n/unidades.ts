@@ -5,9 +5,9 @@ import { escrituraZh } from "./escritura";
 export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 
 // La forma se elige con Intl.PluralRules del locale: "uno" es la categoría "one" y "otros" todas las
-// demás. En polaco y ucraniano "pocos" es la categoría "few" (2 dni, 3 tygodnie; 2 дні, 3 тижні) y
-// "muchos" la "many" (5 lat; 5 років); "otros" queda para las fracciones, que van en genitivo singular
-// (1,5 roku; 1,5 року). Un idioma con dual (ar) trae todas las formas de FormasAr, con {n} donde va el
+// demás. En polaco, ucraniano y ruso "pocos" es la categoría "few" (2 dni, 3 tygodnie; 2 дні, 3 тижні;
+// 2 дня, 3 недели) y "muchos" la "many" (5 lat; 5 років; 5 лет); "otros" queda para las fracciones, que
+// van en genitivo singular (1,5 roku; 1,5 року; 1,5 года). Un idioma con dual (ar) trae todas las formas de FormasAr, con {n} donde va el
 // número.
 export interface FormasUnidad {
   uno: string;
@@ -67,6 +67,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   },
   // El uzbeko no pone plural después de un número («3 kun», «1,5 yil»): las dos formas son iguales.
   uz: { dias: { uno: "kun", otros: "kun" }, semanas: { uno: "hafta", otros: "hafta" }, horas: { uno: "soat", otros: "soat" }, meses: { uno: "oy", otros: "oy" }, anios: { uno: "yil", otros: "yil" } },
+  ru: {
+    dias: { uno: "день", pocos: "дня", muchos: "дней", otros: "дня" },
+    semanas: { uno: "неделя", pocos: "недели", muchos: "недель", otros: "недели" },
+    horas: { uno: "час", pocos: "часа", muchos: "часов", otros: "часа" },
+    meses: { uno: "месяц", pocos: "месяца", muchos: "месяцев", otros: "месяца" },
+    anios: { uno: "год", pocos: "года", muchos: "лет", otros: "года" },
+  },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

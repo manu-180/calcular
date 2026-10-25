@@ -253,6 +253,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Manba",
     },
   },
+  ru: {
+    base: {
+      datos: "Ваши данные",
+      resultado: "Результат",
+      vacio: "Введите данные и нажмите «Рассчитать», чтобы увидеть результат.",
+      sinResultado: "Сейчас мы не показываем этот результат.",
+      avisos: { info: "Полезно знать", cautela: "Обратите внимание", bloquea: "Почему мы не показываем результат" },
+      fuenteDelAviso: "Источник",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

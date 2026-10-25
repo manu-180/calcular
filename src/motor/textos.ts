@@ -638,6 +638,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "nuqta", coma: "vergul" },
     },
   },
+  // Ruso (ADR 0002, D17): «вы» con minúscula y el imperativo cortés, como en Kaspi, Halyk, egov.kz y
+  // Сбер. El botón va en infinitivo («Рассчитать»), como los botones de esos sitios; las oraciones,
+  // en imperativo de cortesía («введите», «выберите»).
+  ru: {
+    base: {
+      calcular: "Рассчитать",
+      resultado: "Результат",
+      si: "Да",
+      no: "Нет",
+      sinResultado: "Сейчас мы не показываем этот результат.",
+      errores: {
+        requerido: "Заполните это поле.",
+        "numero-invalido": "Введите число, например {ejemplo}.",
+        "entero-invalido": "Введите целое число без дробной части.",
+        "menor-que-min": "Минимальное значение: {min}.",
+        "mayor-que-max": "Максимальное значение: {max}.",
+        "fecha-invalida": "Выберите правильную дату.",
+        "hora-invalida": "Выберите правильное время.",
+        "opcion-invalida": "Выберите один из вариантов.",
+        "region-invalida": "Выберите регион.",
+        "calculo-fallido": "С этими данными расчет не получился. Проверьте значения и попробуйте еще раз.",
+      },
+      milesAmbiguos: "Вы имели в виду {sugerido}? Введите число без {signos}.",
+      separadores: { punto: "точек", coma: "запятых" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {
