@@ -268,4 +268,36 @@ const ar: GramaticaPais = {
   para: (p) => (p.startsWith("ال") ? `لل${p.slice(2)}` : `ل${p}`),
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, ar };
+// Hebreo: «ב» (lugar) y «ל» (destino) van pegadas al nombre: «בישראל», «לישראל». Si el nombre lleva
+// el artículo «ה» («הממלכה המאוחדת»), la preposición lo absorbe: «בממלכה המאוחדת». Las «ה» del
+// comienzo que son parte del nombre (הודו, הולנד, האיטי, הונגריה) no se tocan: por eso va una lista.
+// Delante de un nombre en letras latinas o de una cifra la preposición lleva guion («ב-Zetaland»).
+// La pertenencia va con «של» («המחשבונים של ישראל»), que nunca cambia el nombre.
+const CON_ARTICULO_HE = new Set([
+  "הממלכה המאוחדת",
+  "האמירויות הערביות המאוחדות",
+  "האמירויות",
+  "הפיליפינים",
+  "הרפובליקה הדומיניקנית",
+  "הרפובליקה הצ'כית",
+  "הרפובליקה המרכז-אפריקאית",
+  "הרפובליקה הדמוקרטית של קונגו",
+  "הרפובליקה של קונגו",
+  "האיים המלדיביים",
+  "איי שלמה",
+  "איי מרשל",
+  "האיים הקריביים",
+  "הוותיקן",
+]);
+const preposicionHe = (letra: string, p: string): string => {
+  if (!/^[\u05d0-\u05ea]/.test(p)) return `${letra}-${p}`;
+  return CON_ARTICULO_HE.has(p) && p.startsWith("ה") ? `${letra}${p.slice(1)}` : `${letra}${p}`;
+};
+const he: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => `של ${p}`,
+  en: (p) => preposicionHe("ב", p),
+  para: (p) => preposicionHe("ל", p),
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, ar, he };

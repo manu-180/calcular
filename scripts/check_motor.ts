@@ -12,6 +12,8 @@ import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/mo
 import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
+import { GRAMATICA } from "../src/motor/i18n/gramatica";
+import { pluralHe, prefijoHe } from "../src/motor/i18n/hebreo";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
@@ -62,6 +64,30 @@ igual("número ar-EG con dígitos latinos", formatearNumero(1234567.5, "ar-EG-u-
 igual("dual árabe", formatearValorUnidad(2, "dias", "ar-EG-u-ca-gregory-nu-latn"), "يومان");
 igual("plural árabe de 3 a 10", formatearValorUnidad(3, "meses", "ar-EG-u-ca-gregory-nu-latn"), "3 أشهر");
 igual("plural árabe de 11 a 99", formatearValorUnidad(11, "anios", "ar-EG-u-ca-gregory-nu-latn"), "11 سنة");
+// Hebreo (ADR 0002, D22): Intl he-IL con coma de miles y punto decimal; el ₪ lo pone Intl con sus
+// marcas RLM. Plurales one/two/other con el dual en la palabra («יומיים», «שנתיים»).
+const sinMarcas = (s: string) => s.replace(/[\u200e\u200f\u00a0]/g, " ").replace(/\s+/g, " ").trim();
+igual("moneda ILS en he-IL", sinMarcas(formatearMoneda(1234567.89, "he-IL", "ILS")), "1,234,567.89 ₪");
+igual("moneda ILS en he-001", sinMarcas(formatearMoneda(1250.5, "he-001", "ILS")), "1,250.50 ₪");
+igual("moneda USD en he-IL con símbolo local con LRM", formatearMoneda(10, "he-IL", "USD", undefined, "US$").includes("US$\u200e"), true);
+igual("número he-IL", formatearNumero(1234567.5, "he-IL"), "1,234,567.5");
+igual("porcentaje he-IL", sinMarcas(formatearPorcentaje(17.5, "he-IL")), "17.5%");
+igual("fecha he-IL gregoriana", formatearFecha("2026-12-20", "he-IL"), "20 בדצמבר 2026");
+igual("uno hebreo", formatearValorUnidad(1, "dias", "he-IL"), "יום אחד");
+igual("dual hebreo de días", formatearValorUnidad(2, "dias", "he-IL"), "יומיים");
+igual("dual hebreo de años", formatearValorUnidad(2, "anios", "he-IL"), "שנתיים");
+igual("dual hebreo de meses", formatearValorUnidad(2, "meses", "he-IL"), "חודשיים");
+igual("plural hebreo", formatearValorUnidad(3, "meses", "he-IL"), "3 חודשים");
+igual("plural hebreo con decimales", formatearValorUnidad(1.5, "anios", "he-IL"), "1.5 שנים");
+igual("plural hebreo de 11", formatearValorUnidad(11, "horas", "he-IL"), "11 שעות");
+igual("pluralHe sin dual en la palabra", pluralHe(2, { uno: "מחשבון אחד", dos: "שני מחשבונים", otros: "{n} מחשבונים" }), "שני מחשבונים");
+igual("prefijo hebreo pegado", prefijoHe("ב", "ישראל"), "בישראל");
+igual("prefijo hebreo con guion delante de cifra", prefijoHe("ב", "2026"), "ב-2026");
+igual("gramática he: lugar", GRAMATICA.he.en("ישראל"), "בישראל");
+igual("gramática he: el artículo se absorbe", GRAMATICA.he.en("הממלכה המאוחדת"), "בממלכה המאוחדת");
+igual("gramática he: la ה del nombre se queda", GRAMATICA.he.para("הודו"), "להודו");
+igual("gramática he: nombre latino con guion", GRAMATICA.he.en("Zetaland"), "ב-Zetaland");
+igual("gramática he: pertenencia", GRAMATICA.he.de("ישראל"), "של ישראל");
 
 // Parseo por locale: el error que multiplica por mil.
 const parseos: [string, string, number | null][] = [
@@ -103,6 +129,12 @@ const parseos: [string, string, number | null][] = [
   ["ar-MA-u-ca-gregory-nu-latn", "1.234,5", 1234.5],
   ["ar-MA-u-ca-gregory-nu-latn", "١٫٢٥", 1.25],
   ["ar-EG", "٣٬٥٠٠٫٧٥", 3500.75],
+  ["he-IL", "1,234.50", 1234.5],
+  ["he-IL", "₪ 12,500", 12500],
+  ["he-IL", "\u200f12,500.75 \u200f₪", 12500.75],
+  ["he-IL", "3.5", 3.5],
+  ["he-IL", "1,2,3", null],
+  ["he-001", "2,000", 2000],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -418,8 +450,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-ar/half-year-bonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-ar"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-ar/half-year-bonus", "zz-he/half-year-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-ar", "zz-he"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);

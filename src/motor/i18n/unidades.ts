@@ -1,13 +1,15 @@
 import type { Idioma } from "../tipos";
 import type { FormasAr } from "./arabe";
+import { ANIOS_HE, DIAS_HE, HORAS_HE, MESES_HE, SEMANAS_HE, type FormasHe } from "./hebreo";
 import { escrituraZh } from "./escritura";
 
 export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 
-type Formas = Readonly<Record<UnidadDeTiempo, { uno: string; otros: string } | FormasAr>>;
+type Formas = Readonly<Record<UnidadDeTiempo, { uno: string; otros: string } | FormasAr | FormasHe>>;
 
 // La forma se elige con Intl.PluralRules del locale: "uno" es la categoría "one" y "otros" todas las
-// demás. Un idioma con dual o paucal (ar) trae todas las formas de FormasAr, con {n} donde va el número.
+// demás. Un idioma con dual o paucal (ar) trae todas las formas de FormasAr, con {n} donde va el número;
+// el hebreo trae FormasHe (uno, dual y plural: «יום אחד», «יומיים», «{n} ימים»).
 // ja, ko y zh no tienen plural: las dos formas son iguales y la unidad va pegada al número (3日).
 export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   es: { dias: { uno: "día", otros: "días" }, semanas: { uno: "semana", otros: "semanas" }, horas: { uno: "hora", otros: "horas" }, meses: { uno: "mes", otros: "meses" }, anios: { uno: "año", otros: "años" } },
@@ -27,6 +29,7 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     meses: { uno: "شهر واحد", dos: "شهران", pocos: "{n} أشهر", muchos: "{n} شهرًا", otros: "{n} شهر" },
     anios: { uno: "سنة واحدة", dos: "سنتان", pocos: "{n} سنوات", muchos: "{n} سنة", otros: "{n} سنة" },
   },
+  he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

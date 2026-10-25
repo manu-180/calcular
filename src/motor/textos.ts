@@ -374,6 +374,29 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "نقاط", coma: "فواصل" },
     },
   },
+  he: {
+    base: {
+      calcular: "לחישוב",
+      resultado: "התוצאה",
+      si: "כן",
+      no: "לא",
+      sinResultado: "התוצאה הזו לא מוצגת כרגע.",
+      errores: {
+        requerido: "יש למלא את השדה.",
+        "numero-invalido": "הזינו מספר, למשל {ejemplo}.",
+        "entero-invalido": "הזינו מספר שלם, בלי שברים.",
+        "menor-que-min": "הערך המינימלי הוא {min}.",
+        "mayor-que-max": "הערך המקסימלי הוא {max}.",
+        "fecha-invalida": "בחרו תאריך תקין.",
+        "hora-invalida": "בחרו שעה תקינה.",
+        "opcion-invalida": "בחרו אחת מהאפשרויות.",
+        "region-invalida": "בחרו אזור.",
+        "calculo-fallido": "לא הצלחנו לחשב עם הנתונים האלה. בדקו את הערכים ונסו שוב.",
+      },
+      milesAmbiguos: "האם התכוונתם ל-{sugerido}? כתבו את המספר בלי {signos}.",
+      separadores: { punto: "נקודות", coma: "פסיקים" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {
