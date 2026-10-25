@@ -89,14 +89,16 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
   },
   // Griego: un solo registro, el πληθυντικός ευγενείας de myAADE, gov.gr y los bancos (ADR 0002,
   // D20). Se atrapan los pronombres de la segunda del singular («εσύ», «σου»; «σε» no, porque también
-  // es la preposición), los imperativos del singular que aparecen en un formulario («υπολόγισε»,
-  // «επίλεξε») y los presentes de segunda del singular («μπορείς», «έχεις»).
+  // es la preposición), los imperativos del singular que no se escriben igual que el aoristo de
+  // tercera («βάλε», «κάνε», «γράψε»; «υπολόγισε», «άλλαξε» o «επίλεξε» también son «calculó»,
+  // «cambió», «eligió» y no se pueden distinguir) y los presentes de segunda del singular («μπορείς»,
+  // «έχεις»).
   el: {
     informal: [
       { re: palabras("εσύ|εσένα|σου|σένα"), nombre: "segunda del singular («εσύ», «σου»)" },
       {
         re: palabras(
-          "υπολόγισε|εισήγαγε|βάλε|διάλεξε|επίλεξε|δες|κάνε|γράψε|πάτα|πάτησε|συμπλήρωσε|βρες|μάθε|δοκίμασε|αντέγραψε|μοιράσου|κατέβασε|άνοιξε|πρόσθεσε|αφαίρεσε|άλλαξε|ξεκίνα|έλεγξε|σύγκρινε|πληκτρολόγησε",
+          "βάλε|κάνε|γράψε|πάτα|βρες|μάθε|δες|ξεκίνα|μοιράσου|πες|δώσε|πάρε|φτιάξε|κράτα|στείλε|δείξε",
         ),
         nombre: "imperativo del singular (va el de cortesía: «υπολογίστε», «επιλέξτε»)",
       },
