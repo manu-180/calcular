@@ -314,14 +314,14 @@ export const esetekHu: (pais: string) => EsetekHu = (() => {
   const TABLA: Readonly<Record<string, Omit<EsetekHu, "nev"> & { nev?: string }>> = {
     "Hongkong KKT": { nev: "Hongkong", hol: "Hongkongban", hova: "Hongkongba", honnan: "Hongkongból", nak: "Hongkongnak" },
     "Makaó KKT": { nev: "Makaó", hol: "Makaóban", hova: "Makaóba", honnan: "Makaóból", nak: "Makaónak" },
-    "Kongó – Kinshasa": {
+    "Kongó \u2013 Kinshasa": {
       nev: "a Kongói Demokratikus Köztársaság",
       hol: "a Kongói Demokratikus Köztársaságban",
       hova: "a Kongói Demokratikus Köztársaságba",
       honnan: "a Kongói Demokratikus Köztársaságból",
       nak: "a Kongói Demokratikus Köztársaságnak",
     },
-    "Kongó – Brazzaville": { nev: "a Kongói Köztársaság", hol: "a Kongói Köztársaságban", hova: "a Kongói Köztársaságba", honnan: "a Kongói Köztársaságból", nak: "a Kongói Köztársaságnak" },
+    "Kongó \u2013 Brazzaville": { nev: "a Kongói Köztársaság", hol: "a Kongói Köztársaságban", hova: "a Kongói Köztársaságba", honnan: "a Kongói Köztársaságból", nak: "a Kongói Köztársaságnak" },
     Belize: { hol: "Belize-ben", hova: "Belize-be", honnan: "Belize-ből", nak: "Belize-nek" },
     Suriname: { hol: "Suriname-ban", hova: "Suriname-ba", honnan: "Suriname-ból", nak: "Suriname-nak" },
     Zimbabwe: { hol: "Zimbabwéban", hova: "Zimbabwéba", honnan: "Zimbabwéból", nak: "Zimbabwénak" },
