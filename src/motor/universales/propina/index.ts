@@ -1,6 +1,7 @@
 import { definirUniversal } from "../tipos";
 import { casos } from "./casos";
 import { contenidoDe } from "./contenido/de";
+import { contenidoEl } from "./contenido/el";
 import { contenidoEn } from "./contenido/en";
 import { contenidoEs } from "./contenido/es";
 import { contenidoFr } from "./contenido/fr";
@@ -12,6 +13,7 @@ import { contenidoPt } from "./contenido/pt";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiPropina } from "./definicion";
 import { textosDe } from "./textos/de";
+import { textosEl } from "./textos/el";
 import { textosEn } from "./textos/en";
 import { textosEs } from "./textos/es";
 import { textosFr } from "./textos/fr";
@@ -26,7 +28,7 @@ export default definirUniversal<UiPropina>({
   id: "propina",
   concepto: "propina",
   definir,
-  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
-  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
+  textos: { de: textosDe, el: textosEl, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
+  contenido: { de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
   casos,
 });
