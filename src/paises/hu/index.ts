@@ -10,6 +10,14 @@ import minimalberKalkulator from "./calculadoras/minimalber-kalkulator";
 import contenidoMinimalberKalkulator from "./contenido/minimalber-kalkulator";
 import csaladiAdokedvezmenyKalkulator from "./calculadoras/csaladi-adokedvezmeny-kalkulator";
 import contenidoCsaladiAdokedvezmenyKalkulator from "./contenido/csaladi-adokedvezmeny-kalkulator";
+import jarulekKalkulator from "./calculadoras/jarulek-kalkulator";
+import contenidoJarulekKalkulator from "./contenido/jarulek-kalkulator";
+import atalanyadoKalkulator from "./calculadoras/atalanyado-kalkulator";
+import contenidoAtalanyadoKalkulator from "./contenido/atalanyado-kalkulator";
+import kataKalkulator from "./calculadoras/kata-kalkulator";
+import contenidoKataKalkulator from "./contenido/kata-kalkulator";
+import afaKalkulator from "./calculadoras/afa-kalkulator";
+import contenidoAfaKalkulator from "./contenido/afa-kalkulator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -27,6 +35,10 @@ export default definirPais({
     { definicion: munkaltatoiKoltsegKalkulator, contenido: contenidoMunkaltatoiKoltsegKalkulator, cliente: () => import("./calculadoras/munkaltatoi-koltseg-kalkulator.cliente") },
     { definicion: minimalberKalkulator, contenido: contenidoMinimalberKalkulator, cliente: () => import("./calculadoras/minimalber-kalkulator.cliente") },
     { definicion: csaladiAdokedvezmenyKalkulator, contenido: contenidoCsaladiAdokedvezmenyKalkulator, cliente: () => import("./calculadoras/csaladi-adokedvezmeny-kalkulator.cliente") },
+    { definicion: jarulekKalkulator, contenido: contenidoJarulekKalkulator, cliente: () => import("./calculadoras/jarulek-kalkulator.cliente") },
+    { definicion: atalanyadoKalkulator, contenido: contenidoAtalanyadoKalkulator, cliente: () => import("./calculadoras/atalanyado-kalkulator.cliente") },
+    { definicion: kataKalkulator, contenido: contenidoKataKalkulator, cliente: () => import("./calculadoras/kata-kalkulator.cliente") },
+    { definicion: afaKalkulator, contenido: contenidoAfaKalkulator, cliente: () => import("./calculadoras/afa-kalkulator.cliente") },
   ],
   universales: "todas",
   novedades,
