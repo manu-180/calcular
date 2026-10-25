@@ -21,6 +21,22 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 24/10/2026 · Motor hebreo RTL (`claude/mundo-motor-he`, sobre `claude/mundo-motor-ar`)
+
+`he` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`sachar-baolam`), rankings (`dirug-medinot`), horas de trabajo
+(`kama-shaot-avoda`), calendario (`luach-maskorot`), «Sueldos reales» (`sachar-amiti`), venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con el slug en inglés del catálogo. Registro: plural inclusivo
+(«הזינו», «בחרו») y botones en infinitivo («לחישוב»), como Bank Hapoalim, Leumi y gov.il; mercados con
+`trato: "usted"`. Formato he-IL (₪ por Intl, cifras occidentales, calendario gregoriano). Plurales
+one/two/other con el dual (`pluralHe`). Fuente del sistema para el hebreo y Noto Sans Hebrew en las OG
+(con orden visual a mano, `og-rtl.tsx`). Decisiones en ADR 0002, D22. Edición de prueba `zz-he`
+(interna, `he-001`).
+- Depende de `claude/mundo-motor-ar` (rtl, `direccion.ts`, CSS lógico): mergear el árabe primero.
+- Falta para publicar Israel: el país en sí (שכר נטו con מס הכנסה, נקודות זיכוי, ביטוח לאומי y מס
+  בריאות, שכר מינימום, מע"מ, פיצויי פיטורים, דמי הבראה, ימי חופשה) con datos verificados en
+  gov.il, btl.gov.il y taxes.gov.il. Revisión por hablante nativo antes de publicar.
+
 ## 24/10/2026 · Motor árabe RTL (`claude/mundo-motor-ar`)
 
 `ar` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
