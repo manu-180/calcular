@@ -19,7 +19,7 @@ const trazo = {
   strokeLinejoin: "round",
 } as const;
 
-const ICONOS: Record<"instagram" | "facebook" | "whatsapp" | "x" | "copiar" | "mas" | "bajar", ReactNode> = {
+export const ICONOS: Record<"instagram" | "facebook" | "whatsapp" | "x" | "copiar" | "mas" | "bajar", ReactNode> = {
   instagram: (
     <svg viewBox="0 0 24 24" {...trazo}>
       <rect x="3.5" y="3.5" width="17" height="17" rx="5" />

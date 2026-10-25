@@ -355,12 +355,6 @@
   color: var(--hs-crema);
 }
 
-.ca-hs-hora small {
-  font-size: 0.8125rem;
-  color: rgb(244 240 230 / 0.45);
-  font-variant-numeric: tabular-nums;
-}
-
 .ca-hs-heroe {
   display: grid;
   align-content: center;
@@ -470,6 +464,222 @@
 .ca-hs-fichaje figcaption {
   font-size: 0.8125rem;
   color: rgb(244 240 230 / 0.5);
+}
+
+/* Ilustraciones de cada cosa: trazo en currentColor, acento esmeralda. */
+.ca-hs-ilus {
+  --hs-acento: var(--hs-verde);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ca-hs-ilus .a {
+  fill: color-mix(in srgb, var(--hs-acento) 16%, transparent);
+}
+
+.ca-hs-ilus .h {
+  fill: var(--hs-acento);
+}
+
+.ca-hs-ilus .s {
+  opacity: 0.55;
+}
+
+.ca-hs-ilus .p {
+  fill: currentColor;
+  stroke: none;
+}
+
+.ca-hs-cosa {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "marco flechas"
+    "texto texto";
+  align-items: center;
+  gap: 1rem;
+}
+
+.ca-hs-cosa-marco {
+  grid-area: marco;
+}
+
+.ca-hs-cosa .ca-hs-antes {
+  grid-area: texto;
+}
+
+.ca-hs-flechas {
+  grid-area: flechas;
+  justify-self: end;
+}
+
+@media (min-width: 30rem) {
+  .ca-hs-cosa {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "marco texto flechas";
+  }
+}
+
+.ca-hs-cosa-marco {
+  display: grid;
+  place-items: center;
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgb(244 240 230 / 0.1);
+  background:
+    radial-gradient(120% 120% at 30% 20%, rgb(52 211 153 / 0.16), transparent 60%),
+    rgb(244 240 230 / 0.05);
+  color: var(--hs-crema);
+  animation: ca-hs-ilus-entra 0.5s var(--ease-fluid);
+}
+
+.ca-hs-cosa-marco .ca-hs-ilus {
+  width: 3.375rem;
+  height: 3.375rem;
+}
+
+@keyframes ca-hs-ilus-entra {
+  from {
+    opacity: 0;
+    transform: scale(0.85) rotate(-6deg);
+  }
+}
+
+.ca-hs-flechas {
+  display: flex;
+  gap: 0.375rem;
+}
+
+.ca-hs-flechas button {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid rgb(244 240 230 / 0.12);
+  background: rgb(244 240 230 / 0.05);
+  color: var(--hs-crema);
+  transition:
+    background-color 0.25s var(--ease-fluid),
+    border-color 0.25s var(--ease-fluid),
+    transform 0.2s var(--ease-snappy);
+}
+
+.ca-hs-flechas button:hover {
+  background: rgb(244 240 230 / 0.12);
+  border-color: rgb(244 240 230 / 0.24);
+}
+
+.ca-hs-flechas button:active {
+  transform: scale(0.92);
+}
+
+.ca-hs-flechas button:focus-visible {
+  outline: 2px solid var(--hs-verde);
+  outline-offset: 2px;
+}
+
+.ca-hs-flechas svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Compartir rápido debajo del fichaje: lo que se usa de verdad, a mano. */
+.ca-hs-rapido {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem;
+  margin-top: 1.25rem;
+  max-width: 22rem;
+}
+
+.ca-hs-rapido-titulo {
+  grid-column: 1 / -1;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--hs-crema-suave);
+}
+
+.ca-hs-rapido button {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  transition:
+    transform 0.2s var(--ease-snappy),
+    background-color 0.25s var(--ease-fluid),
+    filter 0.25s var(--ease-fluid);
+}
+
+.ca-hs-rapido button svg {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.ca-hs-rapido button:active {
+  transform: scale(0.97);
+}
+
+.ca-hs-rapido button:focus-visible {
+  outline: 2px solid var(--hs-verde);
+  outline-offset: 3px;
+}
+
+.ca-hs-rapido-ig {
+  background: linear-gradient(120deg, #f58529, #dd2a7b 45%, #8134af);
+  color: #fff;
+}
+
+.ca-hs-rapido-ig:hover {
+  filter: brightness(1.08);
+}
+
+.ca-hs-rapido-wa {
+  background: #25d366;
+  color: #062b17;
+}
+
+.ca-hs-rapido-wa:hover {
+  filter: brightness(1.06);
+}
+
+.ca-hs-rapido-aviso {
+  grid-column: 1 / -1;
+  min-height: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--hs-crema-suave);
+}
+
+.ca-hs-rapido-aviso:empty {
+  min-height: 0;
+}
+
+.ca-hs-tarjeta-ilus {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 0.25rem;
+  --hs-acento: #10b981;
+}
+
+.ca-hs-tarjeta[aria-pressed="true"] .ca-hs-tarjeta-ilus {
+  --hs-acento: var(--hs-verde);
 }
 
 /* La grilla de cosas */
@@ -750,7 +960,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ca-hs-cifra {
+  .ca-hs-cifra,
+  .ca-hs-cosa-marco {
     animation: none;
   }
 

@@ -8,10 +8,12 @@ import { duracion, duracionLarga, codigoHoras, fraseCompartir, mayuscula, minuto
 import { guardarTraspasoAR } from "@/lib/mundo/traspaso-ar";
 import { PAGAS_AR } from "@/lib/mundo/pagas-ar";
 import { brutoANeto, netoABruto } from "@/lib/sueldo";
-import { Redes } from "@/motor/compartir/Redes";
+import { usarCompartir } from "@/motor/compartir";
+import { ICONOS, Redes } from "@/motor/compartir/Redes";
 import type { TextosRedes } from "@/motor/i18n/redes";
 import { CLAVE_TRASPASO, RUTA_MUNDO_AR } from "@/motor/mundo/rutas";
 import type { DatosHorasAR, ItemPublicado } from "@/lib/horas-ar/datos";
+import { Ilustracion } from "./Ilustracion";
 import { CLAVE_SUELDO_HORAS } from "./traspaso";
 
 type Modo = "neto" | "bruto";
@@ -72,7 +74,7 @@ function Fichaje({ minutos }: { minutos: number }) {
   const porHora = horas <= SEMANA;
   const total = porHora ? SEMANA : ANIO;
   const unidades = porHora ? horas : horas / SEMANA;
-  const texto = porHora ? "Cada cuadro es una hora de una semana de 40 horas" : unidades > ANIO ? "Más de un año de trabajo. Cada cuadro es una semana de 40 horas" : "Cada cuadro es una semana de 40 horas de trabajo";
+  const texto = porHora ? "Cada cuadro es una hora" : unidades > ANIO ? "Más de un año de trabajo. Cada cuadro es una semana de 40 horas" : "Cada cuadro es una semana de 40 horas de trabajo";
   return (
     <figure className="ca-hs-fichaje" data-escala={porHora ? "horas" : "semanas"}>
       <div className="ca-hs-celdas" aria-hidden="true">
@@ -162,6 +164,13 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
   );
 
   const jornada = minutos ? minutos / 60 / horasDia : 0;
+  const posicion = item ? ordenados.findIndex((i) => i.id === item.id) : -1;
+  const mover = (paso: number) => {
+    if (posicion < 0) return;
+    setElegido(ordenados[(posicion + paso + ordenados.length) % ordenados.length].id);
+  };
+  const { compartirEn, compartirInstagram, estado } = usarCompartir(opciones);
+  const aviso = estado === "copiado" ? redes.copiado : estado === "historia" ? redes.enInstagram : estado === "descargado" ? redes.descargado : estado === "error" ? redes.error : "";
 
   return (
     <div className="ca-hs-app">
@@ -210,9 +219,6 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
             {propia ? (
               <>
                 Tu hora de trabajo vale <strong>{pesos.format(propia)}</strong>
-                <small>
-                  {numero.format(neto!)} ÷ ({dias} × {horasDia} h × 4,33 semanas)
-                </small>
               </>
             ) : datos.minimo ? (
               <>
@@ -227,9 +233,26 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
         <div className="ca-hs-heroe" aria-live="polite">
           {item && minutos ? (
             <>
-              <p className="ca-hs-antes">
-                {mayuscula(item.nombre)} {propios ? "te cuesta" : "cuesta, con el salario mínimo,"}
-              </p>
+              <div className="ca-hs-cosa">
+                <span className="ca-hs-cosa-marco" key={item.id}>
+                  <Ilustracion id={item.id} />
+                </span>
+                <p className="ca-hs-antes">
+                  {mayuscula(item.nombre)} {propios ? "te cuesta" : "cuesta, con el salario mínimo,"}
+                </p>
+                <div className="ca-hs-flechas" role="group" aria-label="Cambiar de cosa">
+                  <button type="button" aria-label="Cosa anterior" onClick={() => mover(-1)}>
+                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M10 3.5 5.5 8l4.5 4.5" />
+                    </svg>
+                  </button>
+                  <button type="button" aria-label="Cosa siguiente" onClick={() => mover(1)}>
+                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M6 3.5 10.5 8 6 12.5" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
               <p className="ca-hs-cifra" key={`${item.id}-${minutos}`}>
                 <Duracion minutos={minutos} clase="ca-hs-cifra-texto" />
               </p>
@@ -238,6 +261,22 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
                 {jornada >= 1 ? ` · ${decimal.format(jornada)} ${jornada < 1.05 ? "día" : "días"} de trabajo` : ` · el ${numero.format(Math.max(1, jornada * 100))} % de tu día de trabajo`}
               </p>
               <Fichaje minutos={minutos} />
+              <div className="ca-hs-rapido" role="group" aria-labelledby="ca-hs-rapido-titulo">
+                <p id="ca-hs-rapido-titulo" className="ca-hs-rapido-titulo">
+                  Compartilo
+                </p>
+                <button type="button" className="ca-hs-rapido-ig" onClick={() => void compartirInstagram("calcular-horas-historia.png")}>
+                  {ICONOS.instagram}
+                  Instagram
+                </button>
+                <button type="button" className="ca-hs-rapido-wa" onClick={() => void compartirEn("whatsapp")}>
+                  {ICONOS.whatsapp}
+                  WhatsApp
+                </button>
+                <p className="ca-hs-rapido-aviso" role="status" aria-live="polite">
+                  {aviso}
+                </p>
+              </div>
               {amigo && amigoItem?.id === item.id && propios ? (
                 <p className="ca-hs-duelo">
                   {minutos < amigo.minutos ? "A vos te cuesta menos." : minutos > amigo.minutos ? "A vos te cuesta más." : "Les cuesta lo mismo."} Tu amigo: cerca de {duracion(amigo.minutos).texto}. Vos: {duracion(minutos).texto}.
@@ -263,6 +302,7 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
             return (
               <li key={i.id}>
                 <button type="button" className="ca-hs-tarjeta" aria-pressed={i.id === item?.id} onClick={() => setElegido(i.id)}>
+                  <Ilustracion id={i.id} className="ca-hs-tarjeta-ilus" />
                   <span className="ca-hs-tarjeta-nombre">{i.corto}</span>
                   <span className="ca-hs-tarjeta-detalle">
                     {i.cantidad} · {pesos.format(i.monto)}
