@@ -5,11 +5,12 @@ export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; mo
 // Palabras de período en los idiomas del motor. Se compara por palabra (o prefijo de palabra
 // compuesta, como Monatslohn o Jahresgehalt), nunca por substring: «mano» no es «año». En ucraniano y
 // ruso, «річна»/«місячна» y «годовая»/«месячная» y sus formas van por prefijo («річн», «місячн»,
-// «годов», «месячн», «ежегодн», «ежемесячн»).
-const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "yillik", "yil", "рік", "року", "год", "года", "年", "연", "연봉", "年収", "年薪"];
+// «годов», «месячн», «ежегодн», «ежемесячн»). En rumano («anual», «anuală», «lunar», «lunară», «pe
+// lună») las palabras llegan sin diacríticos.
+const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "yillik", "yil", "рік", "року", "год", "года", "anuala", "anuale", "anuali", "年", "연", "연봉", "年収", "年薪"];
 const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "річн", "годов", "ежегодн"];
-const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "aylik", "oylik", "місяць", "місяця", "месяц", "месяца", "月", "월", "월급", "月給", "月薪"];
-const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "місячн", "месячн", "ежемесячн"];
+const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "aylik", "oylik", "місяць", "місяця", "месяц", "месяца", "luna", "lunii", "月", "월", "월급", "月給", "月薪"];
+const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "місячн", "месячн", "ежемесячн", "lunar"];
 
 function palabras(texto: string): string[] {
   return texto

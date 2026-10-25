@@ -137,6 +137,15 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент-Винсент и Гренадины", locale: "ru-KZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Объединенные Арабские Эмираты", locale: "ru-RU", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
   ],
+  // Rumano (ADR 0002, D18): Rumania con el leu (RON, punto de miles y coma decimal), Moldavia con el
+  // leu moldavo (MDL, ro-MD) y un nombre largo que no se declina y va con «din» («din Saint Vincent și
+  // Grenadinele»), más uno compuesto que sí («Statelor Unite ale Americii»).
+  ro: [
+    { mercado: "ro" as CodigoMercado, pais: "RO", nombrePais: "România", locale: "ro-RO", trato: "usted", moneda: "RON" as Moneda, escala: 4.6 },
+    { mercado: "md" as CodigoMercado, pais: "MD", nombrePais: "Republica Moldova", locale: "ro-MD", trato: "usted", moneda: "MDL" as Moneda, escala: 18 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent și Grenadinele", locale: "ro-RO", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "Statele Unite ale Americii", locale: "ro-RO", trato: "usted", moneda: "USD" as Moneda, escala: 1 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)

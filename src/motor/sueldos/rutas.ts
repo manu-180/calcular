@@ -26,6 +26,7 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   uk: "realni-zarplaty",
   uz: "haqiqiy-maoshlar",
   ru: "realnye-zarplaty",
+  ro: "salarii-reale",
 };
 
 export const RUTA_SUELDOS_AR = "/sueldos-reales";

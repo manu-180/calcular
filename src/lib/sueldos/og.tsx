@@ -18,7 +18,8 @@ const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=6
 // bn con Noto Sans Bengali: Geist no trae la escritura bengalí (ADR 0002, D14).
 // Fuente de respaldo por idioma para los glifos que Geist no tiene: los CJK y la «ʻ» (U+02BB) de oʻ y
 // gʻ del uzbeko latino (ADR 0002, D16).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uz: "Noto Sans" };
+// ro va con Noto Sans de respaldo por si Geist no trae ș y ț con coma (U+0218 a U+021B; ADR 0002, D18).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uz: "Noto Sans", ro: "Noto Sans" };
 const ESPERA_MS = 3000;
 
 async function fuente(familia: string, peso: number, texto: string): Promise<ArrayBuffer | null> {

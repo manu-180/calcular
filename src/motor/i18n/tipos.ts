@@ -137,7 +137,8 @@ export interface TextosShell {
     // Forma «few» de los idiomas eslavos (2 a 4: «3 результати», «3 результата», «3 výsledky»); sin ella,
     // resultadosPlural.
     resultadosPocos?: string;
-    // Rumano: de 20 en adelante el sustantivo va con «de» («20 de rezultate»); sin ella, resultadosPlural.
+    // Rumano: del 20 en adelante (salvo las que terminan en 01 a 19) va «de» delante del sustantivo
+    // («20 de rezultate», «3 rezultate»; ADR 0002, D18). Sin ella, resultadosPlural.
     resultadosDe?: string;
   };
   paises: { titulo: string; cambiar: string };

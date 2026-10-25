@@ -664,6 +664,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "точек", coma: "запятых" },
     },
   },
+  // Rumano (ADR 0002, D18): «dumneavoastră» implícito y el imperativo de 2.ª del plural, como en ANAF
+  // SPV, BCR e ING Home'Bank. Los botones también van en 2.ª del plural («Calculați»), así una misma
+  // pantalla no mezcla personas.
+  ro: {
+    base: {
+      calcular: "Calculați",
+      resultado: "Rezultat",
+      si: "Da",
+      no: "Nu",
+      sinResultado: "Deocamdată nu afișăm acest rezultat.",
+      errores: {
+        requerido: "Completați acest câmp.",
+        "numero-invalido": "Introduceți un număr, de exemplu {ejemplo}.",
+        "entero-invalido": "Introduceți un număr întreg, fără zecimale.",
+        "menor-que-min": "Valoarea minimă este {min}.",
+        "mayor-que-max": "Valoarea maximă este {max}.",
+        "fecha-invalida": "Alegeți o dată validă.",
+        "hora-invalida": "Alegeți o oră validă.",
+        "opcion-invalida": "Alegeți una dintre opțiuni.",
+        "region-invalida": "Alegeți regiunea.",
+        "calculo-fallido": "Nu am putut face calculul cu aceste date. Verificați valorile și încercați din nou.",
+      },
+      milesAmbiguos: "Ați vrut să scrieți {sugerido}? Introduceți numărul fără {signos}.",
+      separadores: { punto: "puncte", coma: "virgule" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

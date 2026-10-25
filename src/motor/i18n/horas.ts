@@ -2614,7 +2614,135 @@ const ru: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru };
+// ───────────────────────────── ro ─────────────────────────────
+
+// Rumano (ADR 0002, D18): impersonal, como el resto. {en} llega como «în România» (GRAMATICA.ro) y
+// {horas} sale de Intl con la «de» que pide el rumano a partir de 20 («20 de ore»). Las plantillas no
+// arman sustantivos con {n}: el número va después de dos puntos o entre paréntesis.
+const ro: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Câte ore de muncă costă?",
+    seo: {
+      titulo: ["Câte ore de muncă costă un iPhone {en}", "Ore de muncă pentru un iPhone {en}", "Câte ore de muncă costă?"],
+      tituloGlobal: ["Câte ore de muncă costă un iPhone în lume", "Câte ore de muncă costă?"],
+      tituloProducto: ["Câte ore de muncă costă {producto} {en}", "Ore de muncă pentru {producto} {en}", "Câte ore de muncă costă {producto}"],
+      tituloProductoGlobal: ["Câte ore de muncă costă {producto} în lume", "Câte ore de muncă costă {producto}"],
+      descripcion: "Un iPhone, un MacBook sau Spotify, transformate în ore de muncă cu salariul minim {en} și în alte țări (în total {n}). Prețuri oficiale și sursa fiecărei cifre.",
+      descripcionGlobal: "Un iPhone, un MacBook sau Spotify, transformate în ore de muncă cu salariul minim, țară cu țară (în total {n}). Prețuri oficiale și sursa fiecărei cifre.",
+      descripcionProducto: "Pentru {producto} {en} sunt necesare {horas} de muncă cu salariul minim. Clasamentul țărilor (în total {n}), cu prețul oficial și sursa fiecărei cifre.",
+      descripcionProductoGlobal: "Câte ore de muncă cu salariul minim costă {producto}, țară cu țară (în total {n}). Prețul oficial din fiecare magazin și sursa fiecărei cifre.",
+    },
+    ceja: "Indicele: {mes}",
+    h1: "Câte ore de muncă costă?",
+    h1Producto: "Câte ore de muncă costă {producto}?",
+    bajada: "Prețul oficial al aceluiași produs, transformat în ore de muncă cu salariul minim. Țări în indice: {n}.",
+    form: { producto: "Produs", pais: "Țara", porMes: "pe lună" },
+    heroe: {
+      antes: "{en}, {producto} costă",
+      despues: "de muncă cu salariul minim",
+      despuesMes: "de muncă cu salariul minim, în fiecare lună",
+      jornadaUno: "{n} zi de lucru de 8 ore",
+      jornadaOtras: "Zile de lucru de 8 ore: {n}",
+      precio: "Preț oficial {precio}",
+      salario: "Salariul minim: {monto} pe oră",
+      sinPrecio: "{en} nu există un magazin oficial care să vândă acest produs.",
+      mejor: "{en} ajung {horas}.",
+      mejorPropio: "Nicio țară din indice nu îl plătește cu mai puține ore.",
+      puesto: "Locul {p} din {total}",
+      escalaHoras: "Fiecare pătrat înseamnă o oră de muncă",
+      escalaSemanas: "Fiecare pătrat înseamnă o săptămână de 40 de ore",
+      masDeUnAnio: "Mai mult de un an de muncă",
+    },
+    ranking: {
+      titulo: "Țară cu țară",
+      bajada: "De la cele mai puține ore la cele mai multe. Fiecare preț este prețul oficial al producătorului în țara respectivă.",
+      lista: "Țări ordonate după orele de muncă",
+      verTodos: "Vedeți toate țările ({n})",
+      verMenos: "Vedeți mai puține",
+      elegido: "Selectată",
+      sinPrecio: "Țări din indice fără date: {n}. Acolo niciun magazin oficial nu vinde acest produs.",
+      horas: "Ore",
+      precio: "Preț oficial",
+    },
+    compartir: {
+      titulo: "Imagine de distribuit",
+      bajada: "Conține doar date publice: prețul oficial și orele de muncă cu salariul minim.",
+      boton: "Distribuiți imaginea",
+      descargar: "Descărcați pentru Stories",
+      copiado: "Linkul a fost copiat.",
+      compartido: "Gata, a fost trimisă.",
+      error: "De data aceasta nu s-a putut distribui.",
+      texto: "{en}, {producto} costă {horas} de muncă cu salariul minim. Dar în alte țări?",
+      alt: "Previzualizarea imaginii",
+    },
+    metodo: {
+      titulo: "Cum calculăm",
+      estimacion: "Ore = preț oficial ÷ salariul minim pe oră. Este o comparație de prețuri oficiale, nu o ofertă de cumpărare.",
+      supuestos: [
+        "Prețul este cel de listă al celei mai ieftine versiuni din magazinul oficial al producătorului, citit pe pagina fiecărei țări.",
+        "Spotify Premium este abonamentul individual pe o lună, fără oferte de început.",
+        "Salariul minim este cel general în vigoare astăzi, pentru un adult cu normă întreagă. Dacă există mai multe pe sectoare sau regiuni, se folosește cel din comerț din regiunea principală.",
+        "Dacă legea stabilește minimul pe lună sau pe zi, acesta se transformă în ore după durata legală a săptămânii de lucru din țara respectivă.",
+        "În Spania și Portugalia salariul minim se plătește de 14 ori pe an: se împarte pe 12 luni, cum face Eurostat.",
+        "Dacă magazinul afișează prețul în dolari americani, acesta se transformă în moneda locală la cursul oficial al țării.",
+        "O zi de lucru are 8 ore în toate țările, ca zilele să se poată compara.",
+      ],
+      fuentesTitulo: "Sursa fiecărei cifre",
+      fuentesBajada: "Fiecare țară cu salariul minim, durata săptămânii de lucru și prețurile citite în magazin, cu data fiecărei citiri.",
+      salario: "Salariul minim",
+      jornada: "Săptămâna de lucru",
+      precio: "Preț",
+      cambio: "Curs de schimb",
+      consultado: "Consultat la {fecha}",
+      verificado: "Verificat la {fecha}",
+      verFuente: "Vedeți sursa",
+      sello: "Prețuri citite între {desde} și {hasta}. Un preț mai vechi de 120 de zile nu se mai afișează.",
+      conversion: {
+        hora: "Legea stabilește valoarea pe oră.",
+        mes: "Lunar × 12 ÷ 52 de săptămâni ÷ {h} h pe săptămână.",
+        mesPagas: "Lunar × {p} (plăți pe an) ÷ 52 de săptămâni ÷ {h} h pe săptămână.",
+        anio: "Anual ÷ 52 de săptămâni ÷ {h} h pe săptămână.",
+        semana: "Săptămânal ÷ {h} h.",
+        dia: "Zilnic ÷ {h} h ale zilei de lucru.",
+        diaPagado: "Zilnic × {d} (zile plătite) ÷ {h} h pe săptămână.",
+        divisor: "Lunar ÷ {d}, divizorul orar stabilit de lege.",
+      },
+    },
+    faqTitulo: "Întrebări frecvente",
+    faq: [
+      {
+        pregunta: "Cum se calculează orele?",
+        respuesta: "Prețul oficial al produsului se împarte la salariul minim pe oră din țara respectivă. Dacă legea stabilește minimul pe lună sau pe zi, acesta se transformă în ore după durata legală a săptămânii de lucru din acea țară.",
+      },
+      {
+        pregunta: "De ce salariul minim?",
+        respuesta: "Este salariul stabilit prin lege în aproape toate țările și se poate verifica la sursa oficială. Salariul mediu se măsoară diferit în fiecare țară, așa că nu se compară la fel de bine.",
+      },
+      {
+        pregunta: "Prețurile includ taxele?",
+        respuesta: "Este prețul de listă afișat de magazinul oficial din fiecare țară. În Statele Unite și Canada nu include taxa pe vânzări, iar în alte țări magazinul poate adăuga taxe la finalizarea comenzii.",
+      },
+      {
+        pregunta: "De ce lipsește o țară?",
+        respuesta: "În indice intră doar țările cu un salariu minim în vigoare verificat și cu prețul din magazinul oficial. Fără un magazin online oficial pentru acest produs nu există date. Prețurile revânzătorilor nu se folosesc niciodată.",
+      },
+      {
+        pregunta: "Cât de des se actualizează datele?",
+        respuesta: "Prețurile se citesc în fiecare magazin și expiră după 120 de zile: un preț mai vechi nu se mai afișează. Salariul minim vine din datele oficiale ale fiecărei țări și se schimbă când se schimbă legea.",
+      },
+    ],
+    og: {
+      de: "de muncă cu salariul minim",
+      deMes: "de muncă cu salariul minim pe lună",
+      generica: "Câte ore de muncă costă {producto}?",
+      genericaBajada: "Prețul oficial în ore de muncă cu salariul minim, țări: {n}",
+      menos: "Cele mai puține ore",
+      cta: "Toate țările pe",
+    },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

@@ -6,6 +6,7 @@ import { cifrasBn } from "./bengali";
 import { formaUk, pluralUk } from "./plural";
 import { formaRu, pluralRu } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
+import { deRo, pluralRo } from "./plural";
 
 // Rankings de países. Todo el texto es impersonal (sin tú, vos, usted, du, Sie, tu, vous, je, u):
 // la misma frase sirve en cualquier trato y lo que se cita en la prensa no le habla a nadie. Así
@@ -2898,7 +2899,126 @@ const ru: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru };
+// ───────────────────────────── ro ─────────────────────────────
+
+// Rumano (ADR 0002, D18): impersonal, como el resto de los rankings. «în 41 de țări» con pluralRo y
+// «30.000 de dolari» con deRo (la «de» va a partir de 20). Las citas van entre „”.
+const enTariRo = (n: number) => `în ${pluralRo(n, "țară", "țări")}`;
+
+const ro: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Clasamentele țărilor",
+    seo: {
+      titulo: ["Clasamentul țărilor după salariu și impozite", "Clasamentul țărilor"],
+      descripcion: (n) => `Unde valorează cel mai mult același salariu, ziua libertății fiscale și cât rămâne dintr-o mărire ${enTariRo(n)}. Date oficiale, la zi.`,
+    },
+    ceja: "Date deschise",
+    h1: "Salarii și impozite, țară cu țară",
+    bajada: (n) => `${pluralRo(n, "țară", "țări")} comparate cu aceeași putere de cumpărare și cu calculatorul oficial al fiecăreia. Clasamentele se actualizează singure în fiecare zi.`,
+    actualizado: (f) => `Actualizat la ${f}`,
+    ver: "Vedeți clasamentul",
+    niveles: { titulo: "Salariul de referință", nombres: { bajo: "Salariu mic", medio: "Salariu mediu", alto: "Salariu mare" }, anual: (m) => `${m} pe an` },
+    tramos: { titulo: "Mărimea măririi", nombre: (a, b) => `De la ${a} la ${b}` },
+    referencia: {
+      nivel: (m) => `salariu brut de ${m} ${deRo(m)}dolari internaționali pe an`,
+      tramo: (a, b) => `mărire de la ${a} la ${b} ${deRo(b)}dolari internaționali brut pe an`,
+    },
+    posicion: (pais, p, total) => `${pais}, locul ${p} din ${total}`,
+    de: (t) => `din ${t}`,
+    empate: (o) => (Number(o) === 1 ? "la egalitate cu încă o țară" : `la egalitate cu alte ${pluralRo(o, "țară", "țări")}`),
+    fuera: (pais) => `${pais} nu apare încă în aceste clasamente: pentru comparație lipsește un calculator de salariu net.`,
+    lider: "Pe primul loc în clasament",
+    global: (n) => `${pluralRo(n, "țară", "țări")}, de la prima la ultima`,
+    valores: {
+      porMes: (m) => `${m} pe lună`,
+      ningunDia: "Nicio zi",
+      deCada: (n) => `${n} din 100`,
+      carga: (pct) => `${pct} la impozitul pe venit și contribuții`,
+      cargaAumento: (pct) => `${pct} din mărire merge la impozit și contribuții`,
+    },
+    cambio: {
+      titulo: (mes) => `Schimbarea față de ${mes}`,
+      sube: (n) => `Urcă ${pluralRo(n, "loc", "locuri")}`,
+      baja: (n) => `Coboară ${pluralRo(n, "loc", "locuri")}`,
+      igual: "Fără schimbări",
+      nuevo: "Nouă în clasament",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Locul",
+      pais: "Țara",
+      edicion: "Această ediție",
+      unidad: "În dolari internaționali",
+    },
+    kit: {
+      titulo: "Pentru presă",
+      bajada: "O frază, un grafic și linkul către acest clasament, gata de publicat.",
+      compartir: "Distribuiți",
+      descargar: "Descărcați graficul",
+      copiar: "Copiați citatul",
+      copiado: "Citatul a fost copiat",
+      enlace: "Linkul a fost copiat",
+      compartido: "Trimis",
+      error: "Nu s-a putut copia. Textul de mai sus se poate copia manual.",
+      cita: (frase, ranking, ref, fecha) => `${frase} în clasamentul „${ranking}” (${ref}). Sursa: CalcularYa, date la ${fecha}.`,
+      texto: (frase, ranking) => `${frase} în clasamentul „${ranking}”.`,
+      alt: (ranking) => `Graficul clasamentului „${ranking}”`,
+    },
+    metodo: {
+      titulo: "Cum se face clasamentul",
+      bajada: "Fiecare țară trece prin propriul calculator oficial de salariu net, cu regulile de astăzi. Apoi țările se compară cu aceeași putere de cumpărare.",
+      niveles: (b, m, a) => `Salariile de referință: ${b}, ${m} și ${a} ${deRo(a)}dolari internaționali brut pe an.`,
+      empates: "Două țări cu aceeași valoare în tabel împart locul, iar următoarea îl sare (1, 2, 2, 4).",
+      historial: "Schimbarea de loc se măsoară față de instantaneul clasamentului salvat în fiecare lună. Fără instantaneul lunii trecute, schimbarea nu se afișează.",
+      actualizacion: "Tabelul se recalculează în fiecare zi cu datele în vigoare ale fiecărei țări. O țară nouă apare imediat ce funcționează calculatorul ei.",
+      ver: "Metodologia completă",
+    },
+    datos: {
+      titulo: "Date deschise",
+      bajada: "Cifrele din spatele acestor clasamente, țară cu țară, în JSON și CSV. Se actualizează zilnic.",
+      json: "Date în JSON",
+      csv: "Date în CSV",
+      licencia: "Licență CC BY 4.0: datele se pot folosi, reproduce și publica liber, cu mențiunea CalcularYa și un link către această pagină.",
+      atribucion: "Mențiune recomandată",
+    },
+    mundo: { titulo: "Cu un salariu anume", texto: (n) => `Pentru calculul cu salariul propriu și data din fiecare țară există pagina „${n}”.`, ir: "Calculați" },
+    otros: "Alte clasamente",
+    rankings: {
+      rinde: {
+        titulo: "Unde valorează cel mai mult același salariu",
+        corto: "Salariul cel mai avantajos",
+        seo: ["Unde valorează cel mai mult același salariu: clasament", "Unde valorează cel mai mult salariul"],
+        descripcion: (n) => `Același salariu, cu aceeași putere de cumpărare, ${enTariRo(n)}: cât rămâne net după regulile fiscale ale fiecăreia. Actualizat zilnic.`,
+        bajada: "Același salariu brut, cu aceeași putere de cumpărare, trece prin regulile fiecărei țări. Sus sunt cele în care rămâne cel mai mult net.",
+        metrica: "Net pe lună",
+        carga: "Impozit și contribuții",
+        como: "Salariul net lunar este media pe 12 luni, în dolari internaționali.",
+      },
+      libertad: {
+        titulo: "Ziua libertății fiscale în fiecare țară",
+        corto: "Ziua libertății fiscale",
+        seo: ["Ziua libertății fiscale în fiecare țară: clasament", "Ziua libertății fiscale pe țări"],
+        descripcion: (n) => `Ziua din an în care impozitul pe venit și contribuțiile sunt plătite, cu același salariu ${enTariRo(n)}. Actualizat zilnic.`,
+        bajada: "Ziua din an în care impozitul pe venit și contribuțiile sunt plătite, cu același salariu în fiecare țară. Sus sunt cele în care vine cel mai devreme.",
+        metrica: "Muncă pentru stat până la",
+        carga: "Impozit și contribuții",
+        como: "Data împarte impozitele pe tot anul, începând cu 1 ianuarie: cu o povară fiscală de 30%, se lucrează pentru stat 30% din an.",
+      },
+      aumento: {
+        titulo: "Cât rămâne dintr-o mărire de salariu",
+        corto: "Ce rămâne din mărire",
+        seo: ["Cât rămâne dintr-o mărire de salariu: clasament", "Cât rămâne dintr-o mărire de salariu"],
+        descripcion: (n) => `Cât rămâne din fiecare 100 adăugați la salariul brut, după impozitul pe venit și contribuții, ${enTariRo(n)}. Actualizat zilnic.`,
+        bajada: "Cât ajunge în buzunar din fiecare 100 adăugați la salariul brut, după impozitul pe venit și contribuții. Sus sunt cele în care rămâne cel mai mult.",
+        metrica: "Rămân din 100",
+        carga: "Cota marginală",
+        como: "Este cota marginală dintre două salarii: partea din mărire care merge la impozit și contribuții.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

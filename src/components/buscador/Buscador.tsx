@@ -56,8 +56,8 @@ function esEditable(t: EventTarget | null): boolean {
 
 // «1 resultado», «5 resultados». Con la forma «few» de los idiomas eslavos (resultadosPocos: uk, ru, cs)
 // la categoría sale de Intl.PluralRules con el idioma de la página: «3 результати», «21 результат»,
-// «3 výsledky», «5 výsledků». En rumano, de 20 en adelante (y en 100, 120...) va «de» delante del
-// sustantivo (resultadosDe: «20 de rezultate»).
+// «3 výsledky», «5 výsledků». En rumano la forma con «de» va del 20 en adelante (resultadosDe:
+// «20 de rezultate», pero «101 rezultate»).
 function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "resultadosPlural" | "resultadosPocos" | "resultadosDe">): string {
   if (t.resultadosPocos !== undefined) {
     const lang = typeof document === "undefined" ? "" : document.documentElement.lang;

@@ -7,8 +7,10 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // La forma se elige con Intl.PluralRules del locale: "uno" es la categoría "one" y "otros" todas las
 // demás. En polaco, ucraniano y ruso "pocos" es la categoría "few" (2 dni, 3 tygodnie; 2 дні, 3 тижні;
 // 2 дня, 3 недели) y "muchos" la "many" (5 lat; 5 років; 5 лет); "otros" queda para las fracciones, que
-// van en genitivo singular (1,5 roku; 1,5 року; 1,5 года). Un idioma con dual (ar) trae todas las formas de FormasAr, con {n} donde va el
-// número.
+// van en genitivo singular (1,5 roku; 1,5 року; 1,5 года). En rumano "pocos" es la "few" (0, 2 a 19,
+// 101: «2 ani», «1,5 ani») y "otros" la "other", que lleva «de» delante del sustantivo («20 de ani»,
+// «100 de zile»; ADR 0002, D18). Un idioma con dual (ar) trae todas las formas de FormasAr, con {n}
+// donde va el número.
 export interface FormasUnidad {
   uno: string;
   otros: string;
@@ -73,6 +75,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     horas: { uno: "час", pocos: "часа", muchos: "часов", otros: "часа" },
     meses: { uno: "месяц", pocos: "месяца", muchos: "месяцев", otros: "месяца" },
     anios: { uno: "год", pocos: "года", muchos: "лет", otros: "года" },
+  },
+  ro: {
+    dias: { uno: "zi", pocos: "zile", otros: "de zile" },
+    semanas: { uno: "săptămână", pocos: "săptămâni", otros: "de săptămâni" },
+    horas: { uno: "oră", pocos: "ore", otros: "de ore" },
+    meses: { uno: "lună", pocos: "luni", otros: "de luni" },
+    anios: { uno: "an", pocos: "ani", otros: "de ani" },
   },
 };
 
