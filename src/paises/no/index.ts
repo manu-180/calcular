@@ -16,6 +16,14 @@ import sykepenger from "./calculadoras/sykepenger";
 import contenidoSykepenger from "./contenido/sykepenger";
 import foreldrepenger from "./calculadoras/foreldrepenger";
 import contenidoForeldrepenger from "./contenido/foreldrepenger";
+import dagpenger from "./calculadoras/dagpenger";
+import contenidoDagpenger from "./contenido/dagpenger";
+import barnetrygd from "./calculadoras/barnetrygd";
+import contenidoBarnetrygd from "./contenido/barnetrygd";
+import kontantstotte from "./calculadoras/kontantstotte";
+import contenidoKontantstotte from "./contenido/kontantstotte";
+import oppsigelsestid from "./calculadoras/oppsigelsestid";
+import contenidoOppsigelsestid from "./contenido/oppsigelsestid";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: arbeidsgiveravgift, contenido: contenidoArbeidsgiveravgift, cliente: () => import("./calculadoras/arbeidsgiveravgift.cliente") },
     { definicion: sykepenger, contenido: contenidoSykepenger, cliente: () => import("./calculadoras/sykepenger.cliente") },
     { definicion: foreldrepenger, contenido: contenidoForeldrepenger, cliente: () => import("./calculadoras/foreldrepenger.cliente") },
+    { definicion: dagpenger, contenido: contenidoDagpenger, cliente: () => import("./calculadoras/dagpenger.cliente") },
+    { definicion: barnetrygd, contenido: contenidoBarnetrygd, cliente: () => import("./calculadoras/barnetrygd.cliente") },
+    { definicion: kontantstotte, contenido: contenidoKontantstotte, cliente: () => import("./calculadoras/kontantstotte.cliente") },
+    { definicion: oppsigelsestid, contenido: contenidoOppsigelsestid, cliente: () => import("./calculadoras/oppsigelsestid.cliente") },
   ],
   universales: "todas",
   novedades,
