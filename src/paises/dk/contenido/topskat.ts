@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Topskat og mellemskat 2026: beregn hvad du betaler",
   title: "Topskat 2026: beregn mellemskat og topskat",
   description:
-    "Betaler du mellemskat eller topskat i 2026? Skriv din løn og se skatten over grænserne på {{dk.mellemskat-graense}} og {{dk.topskat-graense}}.",
+    "Betaler du mellemskat eller topskat? Skriv din løn og se skatten over grænserne på {{dk.mellemskat-graense}} og {{dk.topskat-graense}}.",
   intro: [
     "Fra 2026 er der tre skatter oven i bundskatten: mellemskat, topskat og toptopskat. Den gamle topskat hedder nu mellemskat.",
     "Beregneren viser, hvor meget af din løn der ligger over grænserne, hvad du betaler, og hvilken månedsløn der får dig over hver grænse.",
@@ -18,16 +18,16 @@ export default definirContenido({
     "I kommuner med høj kommuneskat sætter skatteloftet på {{dk.skatteloft}} mellemskatten ned.",
   ],
   ejemplo: [
-    "Med 80.000 kr. om måneden i København er din personlige indkomst 882.107,04 kr. Du betaler 18.068,03 kr. i mellemskat og 7.815,53 kr. i topskat om året.",
+    "I 2026 med 80.000 kr. om måneden i København er din personlige indkomst 882.107,04 kr. Du betaler 18.068,03 kr. i mellemskat og 7.815,53 kr. i topskat om året.",
   ],
   faq: [
     {
-      pregunta: "Hvad er topskattegrænsen i 2026?",
-      respuesta: "Topskatten på {{dk.topskat-sats}} gælder personlig indkomst efter am-bidrag over {{dk.topskat-graense}}. Mellemskatten begynder allerede ved {{dk.mellemskat-graense}}.",
+      pregunta: "Hvad er topskattegrænsen?",
+      respuesta: "Fra {{dk.topskat-graense#desde}} gælder topskatten på {{dk.topskat-sats}} personlig indkomst efter am-bidrag over {{dk.topskat-graense}}. Mellemskatten begynder allerede ved {{dk.mellemskat-graense}}.",
     },
     {
       pregunta: "Hvor meget skal jeg tjene for at betale topskat?",
-      respuesta: "Uden egen pension og med fuldt ATP-bidrag rammer du topskattegrænsen ved en månedsløn på cirka 70.561 kr. før skat. Mellemskatten begynder ved cirka 58.179 kr. om måneden.",
+      respuesta: "I 2026 rammer du uden egen pension og med fuldt ATP-bidrag topskattegrænsen ved en månedsløn på cirka 70.561 kr. før skat. Mellemskatten begynder ved cirka 58.179 kr. om måneden.",
     },
     {
       pregunta: "Hvad er forskellen på mellemskat og topskat?",

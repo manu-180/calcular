@@ -24,6 +24,14 @@ import dagpenge from "./calculadoras/dagpenge";
 import contenidoDagpenge from "./contenido/dagpenge";
 import atpBidrag from "./calculadoras/atp-bidrag";
 import contenidoAtpBidrag from "./contenido/atp-bidrag";
+import aktieskat from "./calculadoras/aktieskat";
+import contenidoAktieskat from "./contenido/aktieskat";
+import ejendomsvaerdiskat from "./calculadoras/ejendomsvaerdiskat";
+import contenidoEjendomsvaerdiskat from "./contenido/ejendomsvaerdiskat";
+import grundskyld from "./calculadoras/grundskyld";
+import contenidoGrundskyld from "./contenido/grundskyld";
+import gaveafgift from "./calculadoras/gaveafgift";
+import contenidoGaveafgift from "./contenido/gaveafgift";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +56,10 @@ export default definirPais({
     { definicion: suBeregner, contenido: contenidoSuBeregner, cliente: () => import("./calculadoras/su-beregner.cliente") },
     { definicion: dagpenge, contenido: contenidoDagpenge, cliente: () => import("./calculadoras/dagpenge.cliente") },
     { definicion: atpBidrag, contenido: contenidoAtpBidrag, cliente: () => import("./calculadoras/atp-bidrag.cliente") },
+    { definicion: aktieskat, contenido: contenidoAktieskat, cliente: () => import("./calculadoras/aktieskat.cliente") },
+    { definicion: ejendomsvaerdiskat, contenido: contenidoEjendomsvaerdiskat, cliente: () => import("./calculadoras/ejendomsvaerdiskat.cliente") },
+    { definicion: grundskyld, contenido: contenidoGrundskyld, cliente: () => import("./calculadoras/grundskyld.cliente") },
+    { definicion: gaveafgift, contenido: contenidoGaveafgift, cliente: () => import("./calculadoras/gaveafgift.cliente") },
   ],
   universales: "todas",
   novedades,

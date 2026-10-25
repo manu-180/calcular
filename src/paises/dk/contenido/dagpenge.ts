@@ -23,7 +23,7 @@ export default definirContenido({
     },
     {
       pregunta: "Hvor meget skal jeg tjene for at få højeste sats?",
-      respuesta: "Du får højeste sats som fuldtidsforsikret, når {{dk.dagpenge-procent}} af din løn efter am-bidrag er mindst {{dk.dagpenge-hoejst[fuldtid]}}. Det svarer til en månedsløn på cirka 26.620 kr. før skat.",
+      respuesta: "Du får højeste sats som fuldtidsforsikret, når {{dk.dagpenge-procent}} af din løn efter am-bidrag er mindst {{dk.dagpenge-hoejst[fuldtid]}}. I 2026 svarer det til en månedsløn på cirka 26.620 kr. før skat.",
     },
     {
       pregunta: "Hvilken løn bruger a-kassen?",

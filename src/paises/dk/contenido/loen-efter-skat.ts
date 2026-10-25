@@ -7,7 +7,7 @@ export default definirContenido({
   description:
     "Se hvad du får udbetalt af din løn efter am-bidrag, kommuneskat, bundskat og mellemskat. Vælg din kommune og se skatten måned for måned.",
   intro: [
-    "Skriv din månedsløn før skat og vælg din kommune. Beregneren trækker am-bidrag, ATP og din egen pension fra og regner skatten ud med 2026-satserne.",
+    "Skriv din månedsløn før skat og vælg din kommune. Beregneren trækker am-bidrag, ATP og din egen pension fra og regner skatten ud med de gældende satser.",
     "Resultatet er din løn efter skat i gennemsnit pr. måned. Du ser også hver skat for sig, så du kan sammenligne med din lønseddel og din forskudsopgørelse.",
   ],
   comoSeCalcula: [
@@ -19,13 +19,13 @@ export default definirContenido({
     "Skatteloftet på {{dk.skatteloft}} sætter mellemskatten ned i kommuner med høj kommuneskat.",
   ],
   ejemplo: [
-    "Med 40.000 kr. om måneden i København og kirkeskat betaler du 38.304,96 kr. i am-bidrag og 124.325,19 kr. i skat om året. Du får 26.348,49 kr. udbetalt om måneden.",
+    "I 2026 med 40.000 kr. om måneden i København og kirkeskat betaler du 38.304,96 kr. i am-bidrag og 124.325,19 kr. i skat om året. Du får 26.348,49 kr. udbetalt om måneden.",
   ],
   faq: [
     {
       pregunta: "Hvor meget får jeg udbetalt af 40.000 kr. før skat?",
       respuesta:
-        "I København med kirkeskat og fuldt ATP-bidrag får du cirka 26.348 kr. om måneden. Bor du i en kommune med højere skat, bliver beløbet lidt mindre.",
+        "I 2026 får du i København med kirkeskat og fuldt ATP-bidrag cirka 26.348 kr. om måneden. Bor du i en kommune med højere skat, bliver beløbet lidt mindre.",
     },
     {
       pregunta: "Hvornår betaler jeg mellemskat og topskat?",
@@ -38,8 +38,8 @@ export default definirContenido({
         "Skattekortet fordeler dit fradrag på årets måneder, og trækprocenten er afrundet. Pension fra arbejdsgiveren, personalegoder og fradrag for fx renter eller transport ændrer også tallet. Beregneren viser et gennemsnit over året.",
     },
     {
-      pregunta: "Hvad er personfradraget i 2026?",
-      respuesta: "Personfradraget er {{dk.personfradrag}} for personer over 18 år. Du betaler ikke bundskat, kommuneskat og kirkeskat af den del af indkomsten.",
+      pregunta: "Hvor stort er personfradraget?",
+      respuesta: "Fra {{dk.personfradrag#desde}} er personfradraget {{dk.personfradrag}} for personer over 18 år. Du betaler ikke bundskat, kommuneskat og kirkeskat af den del af indkomsten.",
     },
   ],
   glosario: [
