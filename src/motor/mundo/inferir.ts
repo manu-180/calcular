@@ -3,11 +3,13 @@ import type { Campo, DefinicionCalculadora, MundoCalculadora, PeriodoMundo } fro
 export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; motivo: string };
 
 // Palabras de período en los idiomas del motor. Se compara por palabra (o prefijo de palabra
-// compuesta, como Monatslohn o Jahresgehalt), nunca por substring: «mano» no es «año».
-const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "年", "연", "연봉", "年収", "年薪"];
-const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year"];
-const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "月", "월", "월급", "月給", "月薪"];
-const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil"];
+// compuesta, como Monatslohn o Jahresgehalt), nunca por substring: «mano» no es «año». Las palabras
+// llegan sin diacríticos (palabras() los quita): en griego «ετήσιος», «ετησίως» y «μηνιαίος»,
+// «μηνιαίως» van por prefijo («ετησι», «μηνιαι»).
+const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "ετος", "ετη", "年", "연", "연봉", "年収", "年薪"];
+const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "ετησι"];
+const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "μηνα", "μηνας", "μηνες", "月", "월", "월급", "月給", "月薪"];
+const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "μηνιαι"];
 
 function palabras(texto: string): string[] {
   return texto
