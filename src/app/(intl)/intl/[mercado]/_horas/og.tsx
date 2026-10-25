@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
 import { rellenarHoras, textosHoras, type TextosHoras } from "@/motor/i18n/horas";
+import { textosHorasPropio } from "@/motor/i18n/horas-propio";
 import { conArticulo, productoDe } from "@/motor/horas/productos";
 import type { FilaHoras } from "@/motor/horas/tipos";
 import { lugarEnPagina, nombreEnPagina } from "@/motor/horas/ui/datos-cliente";
@@ -12,10 +13,12 @@ import { contextoSitio } from "@/motor/ui/contexto";
 import { registro } from "@/paises";
 import { indicePublicado } from "./datos";
 
-// Tarjeta del índice: /<m>/<slug>/og?p=<producto>&pais=<ISO> (1200 x 630) y &formato=historia (1080 x
-// 1920). Son datos públicos (precio oficial y horas), nunca algo de la persona. Solo acepta p, pais y
-// formato; cualquier otro parámetro es 404, así nadie llena la caché con variantes. Un país o producto
-// sin dato no da error: da la tarjeta del producto con el ranking.
+// Tarjeta del índice: /<m>/<slug>/og?p=<producto>&pais=<ISO> (1200 x 630), &formato=historia (1080 x
+// 1920) y &formato=cuadrado (1080 x 1080). Con &h=<décimas> es la tarjeta con las horas propias: llegan
+// las horas que cuesta el producto con el sueldo de la persona, nunca el sueldo, y el resto de los
+// países sale del índice con la misma proporción sobre el mínimo. Solo acepta p, pais, h y formato;
+// cualquier otro parámetro es 404, así nadie llena la caché con variantes. Un país o producto sin dato
+// no da error: da la tarjeta del producto con el ranking.
 
 const TINTA = "#0b1110";
 const CREMA = "#f4f0e6";
@@ -130,6 +133,12 @@ const fondo = (ancho: number, alto: number) => ({
 interface Datos {
   t: TextosHoras;
   antes: string;
+  // Segunda línea antes de la cifra, solo en la tarjeta propia («un iPhone 17 me cuesta»).
+  antes2: string;
+  producto: string;
+  horas: number;
+  etiquetaRanking: string;
+  cta: string;
   numero: string;
   unidad: string;
   despues: string;
@@ -179,35 +188,176 @@ function Horizontal(d: Datos) {
   );
 }
 
-function Historia(d: Datos) {
+// Las tarjetas para redes (historia 9:16 y publicación 1:1): un bloque de color lleno con la cifra
+// enorme, como un resumen de fin de año, y abajo los países en tinta. Las zonas de arriba y abajo de
+// la historia quedan sin texto clave: ahí Instagram pone su barra y la caja de respuesta.
+function Fichaje({ horas, celda, hueco, columnas, leyenda }: { horas: number; celda: number; hueco: number; columnas: number; leyenda?: string }) {
+  const porHora = horas < 40;
+  const total = porHora ? 40 : 52;
+  const unidades = porHora ? horas : horas / 40;
+  const filas = Math.ceil(total / columnas);
   return (
-    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "200px 84px 220px", color: CREMA, fontFamily: d.familia, ...fondo(1080, 1920) }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 40, fontWeight: 700 }}>
-        <Marca tam={60} />
+    <div style={{ display: "flex", flexDirection: "column", gap: hueco }}>
+      {leyenda ? <div style={{ display: "flex", fontSize: celda * 0.46, color: "rgba(11,17,16,0.62)", marginBottom: hueco }}>{leyenda}</div> : null}
+      {Array.from({ length: filas }, (_, f) => (
+        <div key={f} style={{ display: "flex", gap: hueco }}>
+          {Array.from({ length: Math.min(columnas, total - f * columnas) }, (_, c) => {
+            const lleno = Math.max(0, Math.min(1, unidades - (f * columnas + c)));
+            return (
+              <div key={c} style={{ display: "flex", width: celda, height: celda, borderRadius: celda * 0.22, backgroundColor: "rgba(11,17,16,0.16)", overflow: "hidden" }}>
+                <div style={{ display: "flex", width: `${Math.round(lleno * 100)}%`, height: "100%", backgroundColor: TINTA }} />
+              </div>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function FilasRedes({ filas, tam, max }: { filas: FilaOg[]; tam: number; max: number }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: tam * 0.62 }}>
+      {filas.map((f) => (
+        <div key={f.iso} style={{ display: "flex", flexDirection: "column", gap: tam * 0.28 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: tam * 0.55, fontSize: tam, color: f.elegido ? VERDE : CREMA, fontWeight: f.elegido ? 700 : 400 }}>
+            <div style={{ display: "flex", width: tam * 1.25, color: SUAVE, fontWeight: 400 }}>{String(f.pos)}</div>
+            <Bandera src={f.bandera} ancho={tam * 1.35} />
+            <div style={{ display: "flex", flex: 1 }}>{f.nombre}</div>
+            <div style={{ display: "flex", fontWeight: 700 }}>{f.texto}</div>
+          </div>
+          <div style={{ display: "flex", height: tam * 0.22, marginLeft: tam * 1.8, borderRadius: 99, backgroundColor: "rgba(244,240,230,0.1)" }}>
+            <div style={{ display: "flex", width: `${Math.max(2, (f.horas / max) * 100)}%`, height: "100%", borderRadius: 99, backgroundColor: f.elegido ? VERDE : "rgba(244,240,230,0.5)" }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MarcaTinta({ tam, producto }: { tam: number; producto: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", color: TINTA }}>
+      <div style={{ display: "flex", alignItems: "center", gap: tam * 0.4, fontSize: tam, fontWeight: 700 }}>
+        <svg width={tam * 1.5} height={tam * 1.5} viewBox="0 0 32 32">
+          <rect width="32" height="32" rx="9" fill={TINTA} />
+          <path d="M9 12.5h14" stroke={VERDE} strokeWidth="2.6" strokeLinecap="round" />
+          <path d="M9 19.5h8.5" stroke={VERDE} strokeWidth="2.6" strokeLinecap="round" />
+          <circle cx="22.5" cy="19.5" r="1.8" fill={VERDE} />
+        </svg>
         CalcularYa
       </div>
-      {d.conPais ? (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 20, fontSize: 46, color: SUAVE, lineHeight: 1.2 }}>
-            <Bandera src={d.bandera} ancho={64} />
-            <div style={{ display: "flex", flex: 1 }}>{d.antes}</div>
+      <div style={{ display: "flex", padding: `${tam * 0.28}px ${tam * 0.6}px`, borderRadius: 999, border: `${Math.max(2, tam / 16)}px solid ${TINTA}`, fontSize: tam * 0.72, fontWeight: 700 }}>{producto}</div>
+    </div>
+  );
+}
+
+function Cifra({ d, tam }: { d: Datos; tam: number }) {
+  const largo = d.numero.length;
+  const grande = largo > 5 ? tam * 0.62 : largo > 3 ? tam * 0.8 : tam;
+  return (
+    <div style={{ display: "flex", alignItems: "baseline", gap: tam * 0.06, color: TINTA }}>
+      <div style={{ display: "flex", fontSize: grande, fontWeight: 700, letterSpacing: -grande * 0.055, lineHeight: 0.86 }}>{d.numero}</div>
+      <div style={{ display: "flex", fontSize: tam * 0.24, fontWeight: 700 }}>{d.unidad}</div>
+    </div>
+  );
+}
+
+function Historia(d: Datos) {
+  return (
+    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", color: CREMA, fontFamily: d.familia, backgroundColor: TINTA }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          height: 1140,
+          padding: "180px 84px 64px",
+          borderRadius: "0 0 72px 72px",
+          backgroundColor: VERDE,
+          backgroundImage: "radial-gradient(circle at 100% 0%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 45%), radial-gradient(circle at 0% 100%, rgba(11,17,16,0.14) 0%, rgba(11,17,16,0) 55%)",
+          color: TINTA,
+        }}
+      >
+        <MarcaTinta tam={40} producto={d.producto} />
+        {d.conPais ? (
+          <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 22, fontSize: 46, lineHeight: 1.18, fontWeight: 700 }}>
+              <Bandera src={d.bandera} ancho={70} />
+              <div style={{ display: "flex", flex: 1 }}>{d.antes}</div>
+            </div>
+            {d.antes2 ? <div style={{ display: "flex", fontSize: 46, lineHeight: 1.18, color: "rgba(11,17,16,0.72)" }}>{d.antes2}</div> : null}
+            <Cifra d={d} tam={330} />
+            <div style={{ display: "flex", fontSize: 50, fontWeight: 700 }}>{d.despues}</div>
           </div>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 22, marginTop: 10 }}>
-            <div style={{ display: "flex", fontSize: d.numero.length > 5 ? 220 : 280, fontWeight: 700, letterSpacing: -10, lineHeight: 0.95 }}>{d.numero}</div>
-            <div style={{ display: "flex", fontSize: 72, fontWeight: 700, color: VERDE }}>{d.unidad}</div>
+        ) : (
+          <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+            <div style={{ display: "flex", fontSize: 112, fontWeight: 700, letterSpacing: -5, lineHeight: 1 }}>{d.generica}</div>
+            <div style={{ display: "flex", fontSize: 44, color: "rgba(11,17,16,0.72)" }}>{d.genericaBajada}</div>
           </div>
-          <div style={{ display: "flex", fontSize: 46 }}>{d.despues}</div>
-          <div style={{ display: "flex", marginTop: 24, fontSize: 38, color: SUAVE }}>{d.detalle}</div>
+        )}
+        {d.conPais ? <Fichaje horas={d.horas} celda={d.horas < 40 ? 50 : 46} hueco={10} columnas={d.horas < 40 ? 10 : 13} leyenda={d.horas < 40 ? d.t.heroe.escalaHoras : d.horas / 40 > 52 ? d.t.heroe.masDeUnAnio : d.t.heroe.escalaSemanas} /> : <div style={{ display: "flex" }} />}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, padding: "60px 84px 230px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
+          <div style={{ display: "flex", fontSize: 30, color: SUAVE, textTransform: "uppercase", letterSpacing: 3 }}>{d.etiquetaRanking}</div>
+          <FilasRedes filas={d.filas.slice(0, 4)} tam={34} max={d.max} />
         </div>
-      ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          <div style={{ display: "flex", fontSize: 100, fontWeight: 700, letterSpacing: -4, lineHeight: 1.02 }}>{d.generica}</div>
-          <div style={{ display: "flex", fontSize: 44, color: SUAVE }}>{d.genericaBajada}</div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", fontSize: 40, fontWeight: 700 }}>{d.cta}</div>
+          <div style={{ display: "flex", padding: "16px 30px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 34, fontWeight: 700 }}>calcularya.com</div>
         </div>
-      )}
-      <Ranking filas={d.filas} ancho={912} tam={38} t={d.t} max={d.max} />
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <div style={{ display: "flex", padding: "18px 34px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 40, fontWeight: 700 }}>calcularya.com</div>
+      </div>
+    </div>
+  );
+}
+
+function Cuadrado(d: Datos) {
+  return (
+    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", color: CREMA, fontFamily: d.familia, backgroundColor: TINTA }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          height: 690,
+          padding: "64px 72px 56px",
+          borderRadius: "0 0 56px 56px",
+          backgroundColor: VERDE,
+          backgroundImage: "radial-gradient(circle at 100% 0%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 45%)",
+          color: TINTA,
+        }}
+      >
+        <MarcaTinta tam={32} producto={d.producto} />
+        {d.conPais ? (
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 36 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 34, lineHeight: 1.18, fontWeight: 700 }}>
+                <Bandera src={d.bandera} ancho={52} />
+                <div style={{ display: "flex", flex: 1 }}>{d.antes}</div>
+              </div>
+              {d.antes2 ? <div style={{ display: "flex", fontSize: 34, color: "rgba(11,17,16,0.72)" }}>{d.antes2}</div> : null}
+              <Cifra d={d} tam={250} />
+              <div style={{ display: "flex", fontSize: 36, fontWeight: 700 }}>{d.despues}</div>
+            </div>
+            <Fichaje horas={d.horas} celda={d.horas < 40 ? 30 : 22} hueco={d.horas < 40 ? 8 : 6} columnas={d.horas < 40 ? 5 : 4} />
+          </div>
+        ) : (
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            <div style={{ display: "flex", fontSize: 76, fontWeight: 700, letterSpacing: -3, lineHeight: 1.02 }}>{d.generica}</div>
+            <div style={{ display: "flex", fontSize: 32, color: "rgba(11,17,16,0.72)" }}>{d.genericaBajada}</div>
+          </div>
+        )}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, padding: "40px 72px 48px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ display: "flex", fontSize: 22, color: SUAVE, textTransform: "uppercase", letterSpacing: 2.5 }}>{d.etiquetaRanking}</div>
+          <FilasRedes filas={d.filas.slice(0, 3)} tam={28} max={d.max} />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 26 }}>
+          <div style={{ display: "flex", fontWeight: 700 }}>{d.cta}</div>
+          <div style={{ display: "flex", color: VERDE, fontWeight: 700 }}>calcularya.com</div>
+        </div>
       </div>
     </div>
   );
@@ -224,9 +374,11 @@ export function crearOgHoras(idioma: Idioma) {
     const t = textosHoras(m.idioma, m.trato, m.locale);
     const busqueda = new URL(req.url).searchParams;
     const claves = [...busqueda.keys()].filter((k) => !k.startsWith("nxtP"));
-    if (claves.some((k) => k !== "p" && k !== "pais" && k !== "formato") || claves.length !== new Set(claves).size) return new Response("No encontrado", { status: 404 });
+    if (claves.some((k) => k !== "p" && k !== "pais" && k !== "formato" && k !== "h") || claves.length !== new Set(claves).size) return new Response("No encontrado", { status: 404 });
     const formato = busqueda.get("formato");
-    if (formato !== null && formato !== "historia") return new Response("No encontrado", { status: 404 });
+    if (formato !== null && formato !== "historia" && formato !== "cuadrado") return new Response("No encontrado", { status: 404 });
+    const decimas = busqueda.get("h");
+    if (decimas !== null && !/^[1-9]\d{0,7}$/.test(decimas)) return new Response("No encontrado", { status: 404 });
     const pedido = busqueda.get("p");
     if (pedido !== null && !productoDe(pedido)) return new Response("No encontrado", { status: 404 });
     const iso = busqueda.get("pais");
@@ -240,34 +392,44 @@ export function crearOgHoras(idioma: Idioma) {
     const fila: FilaHoras | undefined = iso ? conProducto.find((f) => f.iso === iso) : undefined;
     const celda = fila?.celdas[producto.id];
     const historia = formato === "historia";
+    const cuadrado = formato === "cuadrado";
     const nombre = (x: string) => nombreEnPagina(x, m.idioma, m.locale);
+    // Cuántas veces el mínimo es el sueldo de la persona, deducido de sus horas: sin país no hay tarjeta propia.
+    const ratio = celda && decimas ? celda.horas / (Number(decimas) / 10) : null;
+    const tp = textosHorasPropio(m.idioma, m.trato, m.locale);
+    const horasDe = (f: FilaHoras) => f.celdas[producto.id].horas / (ratio ?? 1);
 
-    const tope = historia ? 6 : 5;
+    const tope = historia ? 4 : cuadrado ? 3 : 5;
     const elegidos = conProducto.slice(0, tope);
     if (fila && !elegidos.includes(fila)) elegidos.splice(tope - 1, 1, fila);
     const filas: FilaOg[] = await Promise.all(
       elegidos.map(async (f) => ({
         iso: f.iso,
         nombre: nombre(f.iso),
-        horas: f.celdas[producto.id].horas,
-        texto: formatoHoras(m.locale, f.celdas[producto.id].horas).texto,
+        horas: horasDe(f),
+        texto: formatoHoras(m.locale, horasDe(f)).texto,
         pos: conProducto.indexOf(f) + 1,
         bandera: await banderaDe(f.iso),
         elegido: f === fila,
       })),
     );
     const max = Math.max(...filas.map((f) => f.horas), 1);
-    const horas = celda ? formatoHoras(m.locale, celda.horas) : null;
+    const horas = celda && fila ? formatoHoras(m.locale, horasDe(fila)) : null;
     const nombrePais = fila ? nombre(fila.iso) : "";
     const bandera = fila ? await banderaDe(fila.iso) : null;
     const cjk = FUENTE_CJK[m.idioma];
     const familiaCjk = cjk && m.idioma === "zh" && /^zh-(CN|SG)/i.test(m.locale) ? "Noto Sans SC" : cjk;
     const datos: Datos = {
       t,
-      antes: fila ? rellenarHoras(t.heroe.antes, { en: lugarEnPagina(nombrePais, m.idioma), producto: art }) : "",
+      antes: !fila ? "" : ratio ? rellenarHoras(tp.og.antes, { en: lugarEnPagina(nombrePais, m.idioma) }) : rellenarHoras(t.heroe.antes, { en: lugarEnPagina(nombrePais, m.idioma), producto: art }),
+      antes2: fila && ratio ? rellenarHoras(tp.og.producto, { producto: art }) : "",
+      producto: producto.nombre,
+      horas: fila && celda ? horasDe(fila) : 0,
+      etiquetaRanking: ratio ? tp.og.otros : t.og.menos,
+      cta: tp.og.cta,
       numero: horas?.numero ?? "",
       unidad: horas?.unidad ?? "",
-      despues: producto.periodo === "mes" ? t.og.deMes : t.og.de,
+      despues: ratio ? (producto.periodo === "mes" ? tp.og.deMes : tp.og.de) : producto.periodo === "mes" ? t.og.deMes : t.og.de,
       detalle: celda && fila ? `${textoJornadas({ uno: t.heroe.jornadaUno, otras: t.heroe.jornadaOtras }, m.locale, celda.horas)} · ${formatoPrecioConCodigo(m.locale, celda.precio.monto, celda.precio.moneda)}` : "",
       generica: rellenarHoras(t.og.generica, { producto: art }),
       genericaBajada: rellenarHoras(t.og.genericaBajada, { n: formatoNumero(m.locale, conProducto.length) }),
@@ -281,6 +443,10 @@ export function crearOgHoras(idioma: Idioma) {
     const texto = [
       "CalcularYa calcularya.com 0123456789%.,·",
       datos.antes,
+      datos.antes2,
+      datos.producto,
+      datos.etiquetaRanking,
+      datos.cta,
       datos.numero,
       datos.unidad,
       datos.despues,
@@ -289,6 +455,9 @@ export function crearOgHoras(idioma: Idioma) {
       datos.genericaBajada,
       t.og.cta,
       t.og.menos,
+      t.heroe.escalaHoras,
+      t.heroe.escalaSemanas,
+      t.heroe.masDeUnAnio,
       ...filas.map((f) => `${f.nombre} ${f.texto}`),
     ].join(" ");
     const unicos = [...new Set(texto)].join("");
@@ -301,9 +470,9 @@ export function crearOgHoras(idioma: Idioma) {
     const pesos = [400, 700, 400, 700] as const;
     const fonts = pedidas.flatMap((data, i) => (data ? [{ name: nombres[i]!, data, weight: pesos[i], style: "normal" as const }] : []));
     const incompleta = fonts.length < pedidas.length || filas.some((f) => !f.bandera) || (fila && !bandera);
-    return new ImageResponse(historia ? <Historia {...datos} /> : <Horizontal {...datos} />, {
-      width: historia ? 1080 : 1200,
-      height: historia ? 1920 : 630,
+    return new ImageResponse(historia ? <Historia {...datos} /> : cuadrado ? <Cuadrado {...datos} /> : <Horizontal {...datos} />, {
+      width: historia || cuadrado ? 1080 : 1200,
+      height: historia ? 1920 : cuadrado ? 1080 : 630,
       headers: incompleta ? CABECERAS_INCOMPLETA : CABECERAS,
       ...(fonts.length ? { fonts } : {}),
     });

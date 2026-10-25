@@ -1,7 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 import { esMercadoIntl, mercadoDeRuta, type Sitio } from "@/lib/medicion/mercados";
 import { esTipoEvento, limpiarRuta, type TipoEvento } from "@/lib/rastreo";
-import { ORIGENES_COMPARTIR, ORIGENES_CORTOS, REF_VALIDO, VARIANTES_PUENTE } from "@/motor/compartir/ref";
+import { CANALES_COMPARTIR, ORIGENES_COMPARTIR, ORIGENES_CORTOS, REF_VALIDO, VARIANTES_PUENTE } from "@/motor/compartir/ref";
 import { origenIntl } from "@/motor/sitio";
 
 export const MAX_CUERPO = 8192;
@@ -156,7 +156,7 @@ const booleano: Regla = (v) => typeof v === "boolean";
 // Ids de calculadora del motor: `mx.sueldo-neto`, `ca-fr.impot`, `pk.short-term-savings-certificate-calculator`.
 const CALCULADORA = /^(?=.{4,72}$)(?:[a-z]{2}(?:-[a-z]{2,3})?|global)\.[a-z0-9-]+$/;
 // «link» es el de la barra de calcular.ar (src/components/herramientas/Barra.tsx); el resto, de src/motor/compartir.
-const CANALES = ["nativo", "copiar", "whatsapp", "x", "telegram", "linkedin", "link"] as const;
+const CANALES = [...CANALES_COMPARTIR, "link"] as const;
 const VARIANTE = enLista(VARIANTES_PUENTE);
 
 type Esquema = { requeridas: Readonly<Record<string, Regla>>; opcionales?: Readonly<Record<string, Regla>> };

@@ -8,6 +8,7 @@ import { JsonLd } from "../../ui/Sitio";
 import type { FechaISO } from "../../tipos";
 import type { CargaCompartida, GrillaMundo } from "../tipos";
 import { compactar } from "./compacta";
+import { textosRedes } from "../../i18n/redes";
 import { MundoCliente } from "./MundoCliente";
 import { urlMundo } from "./seo";
 import { textosCliente } from "./textos-cliente";
@@ -81,6 +82,7 @@ export function PaginaMundo({ ctx, grilla, carga }: { ctx: ContextoSitio; grilla
         meses={mesesDe(m.locale, anio)}
         base={url}
         carga={carga}
+        redes={textosRedes(m.idioma, m.trato, m.locale)}
       />
 
       <section className="cy-mundo-metodo" aria-labelledby="cy-mundo-metodo-titulo">

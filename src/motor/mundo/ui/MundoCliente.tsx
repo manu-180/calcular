@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { usarCompartir } from "../../compartir";
+import { Redes } from "../../compartir/Redes";
+import type { TextosRedes } from "../../i18n/redes";
 import type { RegionMundo } from "../../i18n/mundo";
 import { cargaDesde, codificarCarga, compararDesde, decodificarCarga, diaDeCarga, diasDelAnio, fechaDelDia, type FilaMundo } from "../calculo";
 import { AporteSueldo } from "../../sueldos/ui/AporteSueldo";
@@ -23,6 +24,9 @@ export interface PropsMundo {
   // URL absoluta de la página, sin el `c`. El link compartido es `${base}/${c}`.
   base: string;
   carga: CargaCompartida | null;
+  redes: TextosRedes;
+  // La OG de calcular.ar todavía no tiene formato cuadrado.
+  conCuadrado?: boolean;
   // El sitio que firma la tarjeta: calcular.ar usa la suya en su página (sin esto, CalcularYa).
   marca?: MarcaMundo;
 }
@@ -293,83 +297,15 @@ function Ranking({
   );
 }
 
-// ─────────────────────────────── tarjeta ───────────────────────────────
-
-export function TarjetaVista({
-  t,
-  fecha,
-  tasa,
-  frase,
-  iso,
-  cero,
-  marca = MARCA_INTL,
-}: {
-  t: TextosCliente;
-  fecha: string;
-  tasa: string;
-  frase: string;
-  iso: string | null;
-  cero: boolean;
-  marca?: MarcaMundo;
-}) {
-  const [antes, despues] = cero ? [t.cero.tarjetaAntes, ""] : t.tarjeta.hasta;
-  return (
-    <div className="cy-tarjeta-historia" aria-hidden="true">
-      <div className="cy-th-marca">
-        <span className="cy-th-logo" />
-        {marca.nombre}
-      </div>
-      <div className="cy-th-nucleo">
-        <p className="cy-th-antes">{antes}</p>
-        <p className="cy-th-fecha">{cero ? t.cero.dia : fecha}</p>
-        {despues ? <p className="cy-th-antes">{despues}</p> : null}
-        <p className="cy-th-tasa">{cero ? t.cero.motivo : rellenar(t.tarjeta.tasa, { pct: tasa })}</p>
-      </div>
-      <div className="cy-th-puntos" />
-      <p className="cy-th-frase">
-        {iso ? <Bandera iso={iso} ancho={22} /> : null}
-        {frase}
-      </p>
-      <div className="cy-th-pie">
-        <span>{t.tarjeta.yVos}</span>
-        <span className="cy-th-url">{marca.dominio}</span>
-      </div>
-    </div>
-  );
-}
-
-function Compartir({ t, url, imagen, texto, duelo, archivo }: { t: TextosCliente; url: string; imagen: string; texto: string; duelo: boolean; archivo: string }) {
-  const { compartir, estado } = usarCompartir({
-    origen: duelo ? "duelo" : "mundo",
-    url,
-    titulo: t.tarjeta.titulo2,
-    texto,
-    imagen,
-  });
-  const aviso = estado === "copiado" ? t.tarjeta.copiado : estado === "compartido" ? t.tarjeta.compartido : estado === "error" ? t.tarjeta.error : "";
-  return (
-    <div className="cy-mundo-acciones">
-      <button type="button" className="cy-mundo-boton" onClick={compartir}>
-        <span>{duelo ? t.tarjeta.compartirDuelo : t.tarjeta.compartir}</span>
-        <span className="cy-mundo-boton-icono" aria-hidden="true">
-          <svg viewBox="0 0 16 16">
-            <path d="M8 10.5V2.5M5 5.5l3-3 3 3M3.5 9v3.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </span>
-      </button>
-      <a className="cy-mundo-enlace" href={imagen} download={archivo}>
-        {t.tarjeta.descargar}
-      </a>
-      <p className="cy-mundo-aviso" role="status" aria-live="polite">
-        {aviso}
-      </p>
-    </div>
-  );
+function Compartir({ t, tr, url, imagen, texto, duelo, archivo, conCuadrado }: { t: TextosCliente; tr: TextosRedes; url: string; imagen: string; texto: string; duelo: boolean; archivo: string; conCuadrado: boolean }) {
+  const historia = `${imagen}${imagen.includes("?") ? "&" : "?"}formato=historia`;
+  const opciones = useMemo(() => ({ origen: duelo ? ("duelo" as const) : ("mundo" as const), url, titulo: t.tarjeta.titulo2, texto, imagen: historia, historia }), [duelo, url, t.tarjeta.titulo2, texto, historia]);
+  return <Redes t={tr} opciones={opciones} cuadrado={conCuadrado ? historia.replace("formato=historia", "formato=cuadrado") : undefined} archivo={archivo} alt={t.tarjeta.titulo2} />;
 }
 
 // ─────────────────────────────── página ───────────────────────────────
 
-export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, meses, base, carga: cargaInicial, marca = MARCA_INTL }: PropsMundo) {
+export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, meses, base, carga: cargaInicial, redes, conCuadrado = true, marca = MARCA_INTL }: PropsMundo) {
   const f = usarFormatos(locale);
   const contrato = useMemo(() => expandir(grilla), [grilla]);
   const porMercado = useMemo(() => new Map(grilla.paises.map((p) => [p.mercado, p])), [grilla]);
@@ -424,7 +360,7 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
   const frase = carga && mejorIso && pais ? (mejorIso === pais.iso || carga.ventaja === 0 ? t.tarjeta.mejorPropio[pais.iso] : rellenar(t.tarjeta.mejor[mejorIso] ?? "", { pct: f.pct(carga.ventaja / 100) })) : "";
   const c = carga ? codificarCarga(carga) : null;
   const urlCompartir = c ? `${base}/${c}` : base;
-  const imagen = `${base}/og?formato=historia${c ? `&c=${c}` : ""}`;
+  const imagen = `${base}/og${c ? `?c=${c}` : ""}`;
 
   // Otro país es otra moneda: el monto escrito ya no significa lo mismo, así que vuelve el ejemplo.
   const cambiarPais = (m: string) => {
@@ -617,17 +553,14 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
       {pais && filas.length ? <AporteSueldo mercado={origen} moneda={pais.moneda} ppa={pais.ppa} nombrePais={pais.nombre} locale={locale} base={base} bruto={modo !== "ejemplo" && valido ? Math.round(anual / pagas) : null} /> : null}
 
       {carga && pais ? (
-        <section className="cy-mundo-compartir" aria-labelledby="cy-mundo-compartir-titulo">
+        <section className="cy-mundo-compartir cy-mundo-compartir-redes" aria-labelledby="cy-mundo-compartir-titulo">
           <div className="cy-mundo-compartir-texto">
             <h2 id="cy-mundo-compartir-titulo" className="cy-mundo-h2">
               {t.tarjeta.titulo}
             </h2>
             <p className="cy-mundo-bajada">{t.tarjeta.bajada}</p>
-            <Compartir t={t} url={urlCompartir} imagen={imagen} texto={cero ? t.cero.texto : rellenar(t.tarjeta.texto, { fecha })} duelo={conDuelo} archivo={`${marca.dominio.split(".")[0]}.png`} />
           </div>
-          <div className="cy-mundo-compartir-vista">
-            <TarjetaVista t={t} fecha={fecha} tasa={tasa} frase={frase} iso={mejorIso} cero={cero} marca={marca} />
-          </div>
+          <Compartir t={t} tr={redes} url={urlCompartir} imagen={imagen} texto={cero ? t.cero.texto : rellenar(t.tarjeta.texto, { fecha })} duelo={conDuelo} archivo={marca.dominio.split(".")[0]} conCuadrado={conCuadrado} />
         </section>
       ) : null}
     </div>

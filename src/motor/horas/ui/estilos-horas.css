@@ -237,8 +237,7 @@
 .cy-horas-producto:focus-visible,
 .cy-horas-select select:focus-visible,
 .cy-horas-fila:focus-visible,
-.cy-horas-ver:focus-visible,
-.cy-horas-boton:focus-visible {
+.cy-horas-ver:focus-visible {
   outline: 2px solid var(--cy-horas-verde);
   outline-offset: 3px;
 }
@@ -457,6 +456,259 @@
   max-width: 32ch;
 }
 
+/* ---------- Con un sueldo real ---------- */
+
+.cy-horas-propio {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.cy-horas-propio-cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+  padding: 1.5rem;
+  border-radius: 1.75rem;
+  background:
+    radial-gradient(80% 120% at 100% 0%, rgb(52 211 153 / 0.14), rgb(52 211 153 / 0) 60%),
+    #fff;
+  box-shadow:
+    inset 0 0 0 1px var(--cy-linea),
+    var(--cy-sombra-alzada);
+}
+
+@media (min-width: 52rem) {
+  .cy-horas-propio-cuerpo {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 3rem;
+    padding: 2.25rem 2.5rem;
+    align-items: center;
+  }
+}
+
+.cy-horas-propio-campo,
+.cy-horas-propio-resultado {
+  min-width: 0;
+}
+
+.cy-horas-propio-campo {
+  display: grid;
+  gap: 0.625rem;
+}
+
+.cy-horas-propio-campo label {
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cy-zinc-600);
+}
+
+.cy-horas-propio-entrada {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.25rem 0 0.5rem;
+  border-bottom: 2px solid var(--cy-tinta);
+  transition: border-color 0.2s var(--ease-fluid);
+}
+
+.cy-horas-propio-entrada:focus-within {
+  border-bottom-color: var(--cy-emerald-500);
+}
+
+.cy-horas-propio-entrada[data-invalido] {
+  border-bottom-color: #b91c1c;
+}
+
+.cy-horas-propio-simbolo {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--cy-zinc-400);
+}
+
+.cy-horas-propio-entrada input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  font-weight: 680;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--cy-tinta);
+  outline: none;
+}
+
+.cy-horas-propio-entrada input::placeholder {
+  color: var(--cy-zinc-300, #d4d4d8);
+}
+
+.cy-horas-propio-codigo {
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  color: var(--cy-zinc-400);
+}
+
+.cy-horas-propio-ayuda {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--cy-zinc-600);
+}
+
+.cy-horas-propio-ayuda[data-invalido] {
+  color: #b91c1c;
+}
+
+.cy-horas-propio-resultado {
+  display: grid;
+  align-content: center;
+  gap: 0.25rem;
+  min-height: 12rem;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  background: var(--cy-horas-tinta);
+  color: var(--cy-horas-crema);
+}
+
+.cy-horas-propio-antes {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  color: var(--cy-horas-crema-suave);
+}
+
+.cy-horas-propio-cifra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.625rem;
+  animation: cy-horas-propio-sube 0.5s var(--ease-fluid) both;
+}
+
+.cy-horas-propio-cifra span {
+  font-size: clamp(3.75rem, 2.5rem + 6vw, 6.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-horas-propio-cifra small {
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+  font-weight: 650;
+  color: var(--cy-horas-verde);
+}
+
+@keyframes cy-horas-propio-sube {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.cy-horas-propio-nota {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--cy-horas-crema-suave);
+}
+
+.cy-horas-propio-chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: var(--cy-horas-verde-apagado);
+  color: var(--cy-horas-verde);
+  font-weight: 650;
+  font-size: 0.8125rem;
+}
+
+.cy-horas-propio-espera {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--cy-horas-crema-suave);
+}
+
+.cy-horas-propio-ranking {
+  display: grid;
+  gap: 1rem;
+}
+
+.cy-horas-propio-lista {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cy-horas-propio-lista li {
+  display: grid;
+  grid-template-columns: 1.75rem auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "pos bandera pais horas"
+    ". barra barra barra";
+  align-items: center;
+  gap: 0.375rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--cy-linea);
+}
+
+.cy-horas-propio-lista .cy-horas-bandera {
+  grid-area: bandera;
+}
+
+.cy-horas-propio-lista .cy-horas-pos {
+  padding: 0;
+  align-self: center;
+}
+
+.cy-horas-propio-pais {
+  grid-area: pais;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.cy-horas-propio-horas {
+  grid-area: horas;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.cy-horas-propio-lista li[data-elegido] {
+  background: var(--cy-horas-tinta);
+  color: var(--cy-horas-crema);
+  box-shadow: var(--cy-sombra-alzada);
+}
+
+.cy-horas-propio-lista li[data-elegido] .cy-horas-propio-horas {
+  color: var(--cy-horas-verde);
+}
+
+.cy-horas-propio-lista li[data-elegido] .cy-horas-barra {
+  background: rgb(244 240 230 / 0.12);
+}
+
+.cy-horas-propio-lista li[data-elegido] .cy-horas-barra span {
+  background: var(--cy-horas-verde);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-horas-propio-cifra {
+    animation: none;
+  }
+}
+
 /* ---------- Compartir ---------- */
 
 .cy-horas-compartir {
@@ -471,81 +723,14 @@
   color: var(--cy-zinc-600);
 }
 
-.cy-horas-acciones {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1.25rem;
-  margin-top: 0.5rem;
-}
 
-.cy-horas-boton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  min-height: 3rem;
-  padding: 0.375rem 0.375rem 0.375rem 1.375rem;
-  border: 0;
-  border-radius: 999px;
-  background: var(--cy-tinta);
-  color: #fff;
-  font: inherit;
-  font-weight: 650;
-  cursor: pointer;
-  box-shadow: var(--cy-sombra-alzada);
-  transition: transform 0.16s var(--ease-fluid);
-}
 
-.cy-horas-boton:active {
-  transform: scale(0.98);
-}
 
-.cy-horas-boton-icono {
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 999px;
-  background: rgb(255 255 255 / 0.12);
-  transition: transform 0.3s var(--ease-fluid);
-}
 
-.cy-horas-boton-icono svg {
-  width: 1rem;
-  height: 1rem;
-}
 
-@media (hover: hover) and (pointer: fine) {
-  .cy-horas-boton:hover .cy-horas-boton-icono {
-    transform: translateY(-2px) scale(1.05);
-  }
-}
 
-.cy-horas-enlace {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.75rem;
-  font-weight: 600;
-  color: var(--cy-acento-tinta);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
 
-.cy-horas-aviso {
-  min-height: 1.25rem;
-  font-size: 0.875rem;
-  color: var(--cy-acento-tinta);
-}
 
-.cy-horas-vista {
-  width: 100%;
-  height: auto;
-  border-radius: 1.25rem;
-  box-shadow:
-    0 0 0 1px rgb(0 0 0 / 0.06),
-    var(--cy-sombra-alzada);
-  background: var(--cy-horas-tinta);
-}
 
 /* ---------- Ranking ---------- */
 
@@ -834,10 +1019,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .cy-horas-compartir {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-    gap: 3rem;
-  }
 
   .cy-horas-fila {
     grid-template-columns: 2.25rem minmax(0, 15rem) minmax(0, 1fr) 7.5rem;
@@ -887,9 +1068,7 @@
   .cy-horas-celdas i::after,
   .cy-horas-barra span,
   .cy-horas-fila,
-  .cy-horas-producto,
-  .cy-horas-boton,
-  .cy-horas-boton-icono {
+  .cy-horas-producto {
     transition: none;
   }
 }

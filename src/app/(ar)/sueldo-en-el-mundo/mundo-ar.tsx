@@ -12,6 +12,7 @@ import { codificarCarga, diaDeCarga, normalizarCarga } from "@/motor/mundo/calcu
 import { RUTA_MUNDO_AR } from "@/motor/mundo/rutas";
 import type { CargaCompartida, GrillaMundo } from "@/motor/mundo/tipos";
 import { compactar, type GrillaCliente } from "@/motor/mundo/ui/compacta";
+import { textosRedes } from "@/motor/i18n/redes";
 import { MundoCliente, type MarcaMundo } from "@/motor/mundo/ui/MundoCliente";
 import { textosCliente } from "@/motor/mundo/ui/textos-cliente";
 import { origenAR, origenIntl } from "@/motor/sitio";
@@ -194,6 +195,8 @@ export function PaginaMundoAR({ c }: { c?: string }) {
         meses={mesesDe(anio)}
         base={url}
         carga={carga}
+        redes={textosRedes("es", "vos", LOCALE)}
+        conCuadrado={false}
         marca={MARCA_AR}
       />
 

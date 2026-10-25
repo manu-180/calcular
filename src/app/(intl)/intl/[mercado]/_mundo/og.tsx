@@ -13,7 +13,7 @@ import { registro } from "@/paises";
 import { grillaPublicada } from "./datos";
 
 // Tarjeta de «Tu sueldo en el mundo»: /<m>/<slug>/og (1200 x 630, la vista previa del link) y
-// ?formato=historia (1080 x 1920, la que se sube a Stories). Lee solo `c` (porcentaje y países, nunca
+// ?formato=historia (1080 x 1920, la que se sube a Stories) o ?formato=cuadrado (1080 x 1080, el feed). Lee solo `c` (porcentaje y países, nunca
 // un monto) y `formato`; cualquier otro parámetro es 404, así nadie llena la caché con variantes. Un `c`
 // inválido no da error: da la tarjeta genérica, así un link roto igual se ve bien.
 
@@ -216,39 +216,97 @@ function Horizontal({ t, carga, anio, dia, fecha, tasaLinea, frase, hasta, paise
   );
 }
 
-function Historia({ t, carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, familia, bandera }: Datos) {
-  const tamFecha = fecha.length <= 8 ? 210 : fecha.length <= 12 ? 172 : 136;
+// Las de redes (historia 9:16 y publicación 1:1) van como un resumen de fin de año: la fecha enorme en
+// un bloque de color lleno y abajo el año en puntos. Arriba y abajo de la historia no va nada clave:
+// ahí Instagram pone su barra y la caja de respuesta.
+const BLOQUE = {
+  backgroundColor: VERDE,
+  backgroundImage: "radial-gradient(circle at 100% 0%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 45%), radial-gradient(circle at 0% 100%, rgba(11,17,16,0.14) 0%, rgba(11,17,16,0) 55%)",
+  color: TINTA,
+} as const;
+
+function MarcaEnBloque({ tam }: { tam: number }) {
   return (
-    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "220px 84px 230px", color: CREMA, fontFamily: familia, ...fondo(1080, 1920) }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 40, fontWeight: 700 }}>
-        <Marca tam={60} />
-        CalcularYa
+    <div style={{ display: "flex", alignItems: "center", gap: tam * 0.4, fontSize: tam, fontWeight: 700 }}>
+      <svg width={tam * 1.5} height={tam * 1.5} viewBox="0 0 32 32">
+        <rect width="32" height="32" rx="9" fill={TINTA} />
+        <path d="M9 12.5h14" stroke={VERDE} strokeWidth="2.6" strokeLinecap="round" />
+        <path d="M9 19.5h8.5" stroke={VERDE} strokeWidth="2.6" strokeLinecap="round" />
+        <circle cx="22.5" cy="19.5" r="1.8" fill={VERDE} />
+      </svg>
+      CalcularYa
+    </div>
+  );
+}
+
+function Fecha({ d, tam, sub }: { d: Datos; tam: number; sub: number }) {
+  if (!d.carga) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: sub * 0.6 }}>
+        <div style={{ display: "flex", fontSize: tam * 0.55, fontWeight: 700, letterSpacing: -tam * 0.025, lineHeight: 1.02 }}>{d.t.tarjeta.generica}</div>
+        <div style={{ display: "flex", fontSize: sub, color: "rgba(11,17,16,0.72)" }}>{d.t.tarjeta.genericaBajada(d.paises)}</div>
       </div>
-      {carga ? (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", fontSize: 50, color: SUAVE, lineHeight: 1.2 }}>{hasta[0]}</div>
-          <div style={{ display: "flex", fontSize: tamFecha, fontWeight: 700, letterSpacing: -7, lineHeight: 0.98, marginTop: 10 }}>{fecha}</div>
-          {hasta[1] ? <div style={{ display: "flex", fontSize: 50, color: SUAVE }}>{hasta[1]}</div> : null}
-          <div style={{ display: "flex", marginTop: 34, fontSize: 52, color: VERDE, fontWeight: 700 }}>{tasaLinea}</div>
-        </div>
-      ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          <div style={{ display: "flex", fontSize: 108, fontWeight: 700, letterSpacing: -4, lineHeight: 1.02 }}>{t.tarjeta.generica}</div>
-          <div style={{ display: "flex", fontSize: 44, color: SUAVE }}>{t.tarjeta.genericaBajada(paises)}</div>
-        </div>
-      )}
-      <div style={{ display: "flex" }}>
-        <Anio dia={carga ? dia : 138} anio={anio} celda={22} hueco={8} />
+    );
+  }
+  const largo = d.fecha.length;
+  const t = largo <= 8 ? tam : largo <= 12 ? tam * 0.82 : tam * 0.64;
+  return (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex", fontSize: sub, lineHeight: 1.2, fontWeight: 700 }}>{d.hasta[0]}</div>
+      <div style={{ display: "flex", fontSize: t, fontWeight: 700, letterSpacing: -t * 0.04, lineHeight: 0.95, marginTop: sub * 0.2 }}>{d.fecha}</div>
+      {d.hasta[1] ? <div style={{ display: "flex", fontSize: sub, fontWeight: 700 }}>{d.hasta[1]}</div> : null}
+      <div style={{ display: "flex", marginTop: sub * 0.6 }}>
+        <div style={{ display: "flex", padding: `${sub * 0.22}px ${sub * 0.55}px`, borderRadius: 999, backgroundColor: TINTA, color: VERDE, fontSize: sub * 0.82, fontWeight: 700 }}>{d.tasaLinea}</div>
       </div>
-      {carga ? (
-        <div style={{ display: "flex", alignItems: "center", gap: 24, fontSize: 46, lineHeight: 1.2 }}>
-          <BanderaOChip iso={carga.mejor} ancho={72} src={bandera} />
-          <div style={{ display: "flex", flex: 1 }}>{frase}</div>
+    </div>
+  );
+}
+
+function Historia(d: Datos) {
+  return (
+    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", color: CREMA, fontFamily: d.familia, backgroundColor: TINTA }}>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: 1000, padding: "190px 84px 72px", borderRadius: "0 0 72px 72px", ...BLOQUE }}>
+        <MarcaEnBloque tam={40} />
+        <Fecha d={d} tam={212} sub={50} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, padding: "60px 84px 210px" }}>
+        <Anio dia={d.carga ? d.dia : 138} anio={d.anio} celda={21} hueco={8} />
+        {d.carga ? (
+          <div style={{ display: "flex", alignItems: "center", gap: 24, fontSize: 42, lineHeight: 1.2 }}>
+            <BanderaOChip iso={d.carga.mejor} ancho={68} src={d.bandera} />
+            <div style={{ display: "flex", flex: 1 }}>{d.frase}</div>
+          </div>
+        ) : null}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", fontSize: 52, fontWeight: 700, letterSpacing: -1.5 }}>{d.carga ? d.t.tarjeta.yVos : d.t.tarjeta.cta}</div>
+          <div style={{ display: "flex", padding: "16px 30px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 34, fontWeight: 700 }}>calcularya.com</div>
         </div>
-      ) : null}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", fontSize: 72, fontWeight: 700, letterSpacing: -2 }}>{carga ? t.tarjeta.yVos : t.tarjeta.cta}</div>
-        <div style={{ display: "flex", padding: "18px 34px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 40, fontWeight: 700 }}>calcularya.com</div>
+      </div>
+    </div>
+  );
+}
+
+function Cuadrado(d: Datos) {
+  return (
+    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", color: CREMA, fontFamily: d.familia, backgroundColor: TINTA }}>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: 620, padding: "60px 72px 56px", borderRadius: "0 0 56px 56px", ...BLOQUE }}>
+        <MarcaEnBloque tam={32} />
+        <Fecha d={d} tam={150} sub={36} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, padding: "40px 72px 48px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
+          <Anio dia={d.carga ? d.dia : 138} anio={d.anio} celda={11} hueco={5} />
+          {d.carga ? (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 18, flex: 1, fontSize: 30, lineHeight: 1.25 }}>
+              <BanderaOChip iso={d.carga.mejor} ancho={52} src={d.bandera} />
+              <div style={{ display: "flex" }}>{d.frase}</div>
+            </div>
+          ) : null}
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 28 }}>
+          <div style={{ display: "flex", fontWeight: 700 }}>{d.carga ? d.t.tarjeta.yVos : d.t.tarjeta.cta}</div>
+          <div style={{ display: "flex", color: VERDE, fontWeight: 700 }}>calcularya.com</div>
+        </div>
       </div>
     </div>
   );
@@ -268,8 +326,9 @@ export function crearOgMundo(idioma: Idioma) {
     const claves = [...busqueda.keys()].filter((k) => !k.startsWith("nxtP"));
     if (claves.some((k) => k !== "c" && k !== "formato") || busqueda.getAll("c").length > 1 || busqueda.getAll("formato").length > 1) return new Response("No encontrado", { status: 404 });
     const formato = busqueda.get("formato");
-    if (formato !== null && formato !== "historia") return new Response("No encontrado", { status: 404 });
+    if (formato !== null && formato !== "historia" && formato !== "cuadrado") return new Response("No encontrado", { status: 404 });
     const historia = formato === "historia";
+    const cuadrado = formato === "cuadrado";
     const anio = Number(ctx.fecha.slice(0, 4));
     const grilla = await grillaPublicada();
     const carga = decodificarCarga(busqueda.get("c"), grilla);
@@ -322,10 +381,10 @@ export function crearOgMundo(idioma: Idioma) {
     const pesos = [400, 700, 400, 700] as const;
     const fonts = pedidas.flatMap((data, i) => (data ? [{ name: nombres[i]!, data, weight: pesos[i], style: "normal" as const }] : []));
 
-    const elemento = historia ? <Historia {...datos} /> : <Horizontal {...datos} />;
+    const elemento = historia ? <Historia {...datos} /> : cuadrado ? <Cuadrado {...datos} /> : <Horizontal {...datos} />;
     return new ImageResponse(elemento, {
-      width: historia ? 1080 : 1200,
-      height: historia ? 1920 : 630,
+      width: historia || cuadrado ? 1080 : 1200,
+      height: historia ? 1920 : cuadrado ? 1080 : 630,
       headers: (carga && !bandera) || fonts.length < pedidas.length ? CABECERAS_INCOMPLETA : CABECERAS,
       ...(fonts.length ? { fonts } : {}),
     });
