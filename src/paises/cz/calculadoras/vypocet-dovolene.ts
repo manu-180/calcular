@@ -45,7 +45,7 @@ export default definirCalculadora({
   },
   resultado: [
     { clave: "hodiny", etiqueta: "Nárok na dovolenou", formato: "horas", decimales: 0, destacada: true },
-    { clave: "dny", etiqueta: "To odpovídá pracovním dnům (osm hodin při 40 hodinách týdně)", formato: "dias", decimales: 1 },
+    { clave: "dny", etiqueta: "Nárok v pracovních dnech", formato: "dias", decimales: 1 },
     { clave: "vymera", etiqueta: "Výměra dovolené", formato: "semanas", decimales: 0 },
     { clave: "celyRok", etiqueta: "Dovolená za celý rok", formato: "horas", decimales: 0 },
   ],

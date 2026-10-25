@@ -22,8 +22,16 @@ import kalkulackaMaterske from "./calculadoras/kalkulacka-materske";
 import contenidoKalkulackaMaterske from "./contenido/kalkulacka-materske";
 import rodicovskyPrispevek from "./calculadoras/rodicovsky-prispevek";
 import contenidoRodicovskyPrispevek from "./contenido/rodicovsky-prispevek";
+import vypocetDovolene from "./calculadoras/vypocet-dovolene";
+import contenidoVypocetDovolene from "./contenido/vypocet-dovolene";
+import nahradaMzdyZaDovolenou from "./calculadoras/nahrada-mzdy-za-dovolenou";
+import contenidoNahradaMzdyZaDovolenou from "./contenido/nahrada-mzdy-za-dovolenou";
 import prumernyVydelek from "./calculadoras/prumerny-vydelek";
 import contenidoPrumernyVydelek from "./contenido/prumerny-vydelek";
+import odstupne from "./calculadoras/odstupne";
+import contenidoOdstupne from "./contenido/odstupne";
+import vypovedniDoba from "./calculadoras/vypovedni-doba";
+import contenidoVypovedniDoba from "./contenido/vypovedni-doba";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -47,7 +55,11 @@ export default definirPais({
     { definicion: kalkulackaNemocenske, contenido: contenidoKalkulackaNemocenske, cliente: () => import("./calculadoras/kalkulacka-nemocenske.cliente") },
     { definicion: kalkulackaMaterske, contenido: contenidoKalkulackaMaterske, cliente: () => import("./calculadoras/kalkulacka-materske.cliente") },
     { definicion: rodicovskyPrispevek, contenido: contenidoRodicovskyPrispevek, cliente: () => import("./calculadoras/rodicovsky-prispevek.cliente") },
+    { definicion: vypocetDovolene, contenido: contenidoVypocetDovolene, cliente: () => import("./calculadoras/vypocet-dovolene.cliente") },
+    { definicion: nahradaMzdyZaDovolenou, contenido: contenidoNahradaMzdyZaDovolenou, cliente: () => import("./calculadoras/nahrada-mzdy-za-dovolenou.cliente") },
     { definicion: prumernyVydelek, contenido: contenidoPrumernyVydelek, cliente: () => import("./calculadoras/prumerny-vydelek.cliente") },
+    { definicion: odstupne, contenido: contenidoOdstupne, cliente: () => import("./calculadoras/odstupne.cliente") },
+    { definicion: vypovedniDoba, contenido: contenidoVypovedniDoba, cliente: () => import("./calculadoras/vypovedni-doba.cliente") },
   ],
   universales: "todas",
   novedades,
