@@ -150,6 +150,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  // Húngaro (ADR 0002, D21): tegezés.
+  hu: {
+    base: {
+      titulo: "Külföldre költözöl, vagy más országból fizetsz?",
+      etiqueta: "Partnerlinkek",
+      socios: {
+        wise: "Többdevizás számla, amellyel középárfolyamon fogadhatsz és küldhetsz pénzt országok között, előre látható díjjal.",
+        deel: "Szerződések és kifizetések azoknak, akik egy országból dolgoznak egy másik ország cégének.",
+      },
+      nota: "Ha ezeken a linkeken keresztül nyitsz számlát, az oldal jutalékot kaphat. Neked ez semmibe sem kerül.",
+      nuevaPestana: "új lapon nyílik meg",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

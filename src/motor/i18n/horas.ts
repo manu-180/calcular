@@ -1219,7 +1219,115 @@ const zhHans: TextosHoras = {
 
 const zh: Diccionario<TextosHoras> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── hu ─────────────────────────────
+
+// Húngaro (ADR 0002, D21): impersonal, como el resto. {en} llega con el sufijo de lugar de
+// GRAMATICA.hu («Magyarországon», «Németországban», «Az Egyesült Államokban» con mayúscula cuando abre
+// la oración) y {producto} con su artículo («egy iPhone 17», «a Spotify Premium»). Ningún sufijo va
+// pegado a {n} ni a {horas}: los números van tras dos puntos, entre paréntesis o delante de un
+// sustantivo en singular («{n} ország»), que en húngaro no lleva plural detrás de un número.
+const hu: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Hány óra munkába kerül?",
+    seo: {
+      titulo: ["Hány óra munkába kerül egy iPhone {en}", "Munkaórában mérve: iPhone {en}", "Hány óra munkába kerül?"],
+      tituloGlobal: ["Hány óra munkába kerül egy iPhone a világon", "Hány óra munkába kerül?"],
+      tituloProducto: ["Hány óra munkába kerül {producto} {en}", "Munkaórában mérve: {producto} {en}", "Hány óra munkába kerül {producto}"],
+      tituloProductoGlobal: ["Hány óra munkába kerül {producto} a világon", "Hány óra munkába kerül {producto}"],
+      descripcion: "iPhone, MacBook vagy Spotify munkaórára átszámolva, minimálbérrel {en}, {n} ország összevetésében. Hivatalos árak és minden szám forrása.",
+      descripcionGlobal: "iPhone, MacBook vagy Spotify munkaórára átszámolva, minimálbérrel, {n} ország összevetésében. Hivatalos árak és minden szám forrása.",
+      descripcionProducto: "{en} {producto} ára {horas} munka minimálbérrel. {n} ország rangsora, a hivatalos árral és minden szám forrásával.",
+      descripcionProductoGlobal: "Hány óra minimálbéres munkába kerül {producto}, {n} ország összevetésében. Minden bolt hivatalos ára és minden szám forrása.",
+    },
+    ceja: "Index: {mes}",
+    h1: "Hány óra munkába kerül?",
+    h1Producto: "Hány óra munkába kerül {producto}?",
+    bajada: "Ugyanannak a terméknek a hivatalos ára, minimálbéres munkaórára átszámolva, {n} ország összevetésében.",
+    form: { producto: "Termék", pais: "Ország", porMes: "havonta" },
+    heroe: {
+      antes: "{en} {producto} ára",
+      despues: "munka minimálbérrel",
+      despuesMes: "munka minimálbérrel, minden hónapban",
+      jornadaUno: "{n} nyolcórás munkanap",
+      jornadaOtras: "Nyolcórás munkanapok száma: {n}",
+      precio: "Hivatalos ár {precio}",
+      salario: "Óránkénti minimálbér {monto}",
+      sinPrecio: "{en} egyetlen hivatalos bolt sem árulja ezt a terméket.",
+      mejor: "{en} elég ennyi: {horas}.",
+      mejorPropio: "Az index egyik országában sem kerül kevesebb munkaórába.",
+      puesto: "{p}. hely ({total} országból)",
+      escalaHoras: "Minden négyzet egy munkaóra",
+      escalaSemanas: "Minden négyzet egy 40 órás munkahét",
+      masDeUnAnio: "Több mint egy év munka",
+    },
+    ranking: {
+      titulo: "Országról országra",
+      bajada: "A legkevesebb órától a legtöbbig. Minden ár a gyártó hivatalos ára az adott országban.",
+      lista: "Országok munkaórák szerint rendezve",
+      verTodos: "Az összes ország megjelenítése ({n})",
+      verMenos: "Kevesebb megjelenítése",
+      elegido: "Kiválasztva",
+      sinPrecio: "Adat nélküli országok az indexben: {n}. Ott egyetlen hivatalos bolt sem árulja ezt a terméket.",
+      horas: "Órák",
+      precio: "Hivatalos ár",
+    },
+    compartir: {
+      titulo: "Megosztható kártya",
+      bajada: "Csak nyilvános adatok vannak rajta: a hivatalos ár és a minimálbéres munkaórák.",
+      boton: "Kártya megosztása",
+      descargar: "Letöltés Storyhoz",
+      copiado: "Link kimásolva.",
+      compartido: "Kész, elküldve.",
+      error: "A megosztás most nem sikerült.",
+      texto: "{en} {producto} ára {horas} munka minimálbérrel. És más országokban?",
+      alt: "A kártya előnézete",
+    },
+    metodo: {
+      titulo: "Hogyan számolunk",
+      estimacion: "Órák = hivatalos ár ÷ óránkénti minimálbér. Ez hivatalos árak összevetése, nem vásárlási ajánlat.",
+      supuestos: [
+        "Az ár a legolcsóbb változat listaára a gyártó hivatalos boltjában, országonként leolvasva.",
+        "A Spotify Premium az egyéni, egyhavi előfizetés, bevezető akciók nélkül.",
+        "A minimálbér a ma érvényes általános összeg egy teljes munkaidőben dolgozó felnőtt munkavállalóra. Ahol ágazatonként vagy régiónként több is van, a fő régió kiskereskedelmi összegét vesszük.",
+        "Ha a törvény havi vagy napi minimumot határoz meg, az adott ország törvényes heti munkaideje alapján számoljuk át órára.",
+        "Spanyolországban és Portugáliában évente tizennégyszer fizetik a minimálbért: 12 hónapra osztjuk szét, ahogy az Eurostat is.",
+        "Ha a bolt amerikai dollárban tünteti fel az árat, az adott ország hivatalos árfolyamán számoljuk át.",
+        "A munkanap minden országban 8 óra, hogy a napok összevethetők legyenek.",
+      ],
+      fuentesTitulo: "Minden szám forrása",
+      fuentesBajada: "Minden ország a minimálbérrel, a heti munkaidővel és a bolti árakkal, minden adat mellett a leolvasás dátumával.",
+      salario: "Minimálbér",
+      jornada: "Heti munkaidő",
+      precio: "Ár",
+      cambio: "Árfolyam",
+      consultado: "Lekérdezve: {fecha}",
+      verificado: "Ellenőrizve: {fecha}",
+      verFuente: "Forrás megtekintése",
+      sello: "Az árakat {desde} és {hasta} között olvastuk le. A 120 napnál régebbi árat már nem mutatjuk.",
+      conversion: {
+        hora: "A törvény órabért határoz meg.",
+        mes: "Havi × 12 ÷ 52 hét ÷ heti {h} óra.",
+        mesPagas: "Havi × {p} kifizetés ÷ 52 hét ÷ heti {h} óra.",
+        anio: "Éves ÷ 52 hét ÷ heti {h} óra.",
+        semana: "Heti ÷ {h} óra.",
+        dia: "Napi ÷ {h} órás munkanap.",
+        diaPagado: "Napi × {d} fizetett nap ÷ heti {h} óra.",
+        divisor: "Havi ÷ {d}, a törvényben meghatározott óraosztó.",
+      },
+    },
+    faqTitulo: "Gyakori kérdések",
+    faq: [
+      { pregunta: "Hogyan számoljátok az órákat?", respuesta: "A termék hivatalos árát elosztjuk az adott ország óránkénti minimálbérével. Ha a törvény havi vagy napi minimumot határoz meg, az ország törvényes heti munkaideje alapján számoljuk át órára." },
+      { pregunta: "Miért éppen a minimálbér?", respuesta: "Szinte minden országban törvény rögzíti, és hivatalos forrásban ellenőrizhető. Az átlagbért minden ország a maga módján méri, így nem lehetne ugyanolyan megbízhatóan összevetni." },
+      { pregunta: "Benne van az adó az árban?", respuesta: "Ez az a listaár, amelyet a hivatalos bolt az adott országban mutat. Az Egyesült Államokban és Kanadában nem tartalmazza a forgalmi adót, más országokban a bolt az adókat a pénztárnál is hozzáadhatja." },
+      { pregunta: "Miért hiányzik egy-egy ország?", respuesta: "Az indexbe csak olyan ország kerül, ahol ellenőrzött, érvényes minimálbér és hivatalos bolti ár is van. Ha a terméknek nincs hivatalos webshopja, nincs adat. Viszonteladói árakat soha nem használunk." },
+      { pregunta: "Milyen gyakran frissülnek az adatok?", respuesta: "Az árakat minden boltban leolvassuk, és 120 nap után elavulnak: a régebbi árat már nem mutatjuk. A minimálbért az egyes országok hivatalos adataiból vesszük, és akkor változik, amikor a törvény." },
+    ],
+    og: { de: "munka minimálbérrel", deMes: "munka minimálbérrel, havonta", generica: "Hány óra munkába kerül {producto}?", genericaBajada: "Hivatalos ár munkaórában, minimálbérrel, {n} ország összevetésében", menos: "A legkevesebb óra", cta: "Minden ország itt:" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, hu };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

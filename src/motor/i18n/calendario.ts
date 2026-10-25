@@ -1,6 +1,6 @@
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
-import { GRAMATICA } from "./gramatica";
+import { GRAMATICA, mayusculaHu } from "./gramatica";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Calendario laboral y fiscal de cada edición. Los textos no le hablan a nadie en segunda persona a
@@ -739,7 +739,85 @@ const zhHans: TextosCalendario = {
 
 const zh: Diccionario<TextosCalendario> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// Húngaro (ADR 0002, D21): impersonal como los demás. El país va como poseedor sin sufijo delante del
+// poseído («Magyarország fizetési naptára»; mayusculaHu si el nombre lleva artículo y abre el título)
+// o con el sufijo de lugar de GRAMATICA.hu («Magyarországon»). Ningún sufijo pegado a un número: «{n}
+// nap múlva», «{n} nappal ezelőtt» llevan el sufijo en la palabra, que no cambia con el número.
+const gHu = GRAMATICA.hu;
+const delPaisHu = (pais: string) => mayusculaHu(gHu.de(pais));
+const hu: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Fizetési és adónaptár",
+    seo: {
+      titulo: (pais, anios) => [
+        `${delPaisHu(pais)} fizetési és adónaptára, ${anios}: fontos dátumok`,
+        `${delPaisHu(pais)} fizetési és adónaptára, ${anios}`,
+        `${delPaisHu(pais)} fizetési naptára`,
+      ],
+      descripcion: (pais, proximas) => `A fizetést érintő dátumok ${gHu.en(pais)}, hivatalos forrásokból: ${proximas}. Mindegyikhez tartozik kalkulátor.`,
+      descripcionSin: (pais) => `A fizetést érintő dátumok ${gHu.en(pais)}, hivatalos forrásokból és mindegyikhez kalkulátorral. A telefon naptárába is felvehetők.`,
+    },
+    ceja: (anios) => `Naptár: ${anios}`,
+    h1: (pais) => `${delPaisHu(pais)} fizetési és adónaptára`,
+    acento: "a dátumok, amelyeken a fizetés múlik",
+    bajada: "Minden dátum hivatalos forrásból származik, és ahhoz a kalkulátorhoz vezet, amelyre hatással van. Az oldal magától frissül, amint új érték jelenik meg.",
+    proxima: "A következő dátum",
+    cuenta: {
+      hoy: "Ma",
+      manana: "Holnap",
+      ayer: "Tegnap",
+      en: (n) => `${n} nap múlva`,
+      hace: (n) => `${n} nappal ezelőtt`,
+      dias: () => "nap",
+    },
+    queViene: "Hamarosan",
+    yaRige: "Már érvényes",
+    mesPorMes: "Az év hónapról hónapra",
+    sinFechas: "Nincs bejelentett változás",
+    filtro: "Szűrés téma szerint",
+    todo: "Mind",
+    tipos: { pago: "Kifizetések", "salario-minimo": "Minimálbér", impuestos: "Adók", aportes: "Járulékok és nyugdíj", laboral: "Munkajogi szabályok", indices: "Referenciaértékek" },
+    pasa: (antes, despues) => `Változás: ${antes} helyett ${despues}`,
+    queda: (valor) => `Érvényes: ${valor}`,
+    cambian: "Az összegek változnak",
+    zonas: (lista) => `Régiók: ${lista}`,
+    limite: "Határidő",
+    agregar: "Hozzáadás a naptárhoz",
+    descargar: "Apple, Outlook és más naptárak (.ics fájl)",
+    google: "Google Naptár",
+    calcular: "Kiszámítás",
+    tambien: "A kalkulátorokban is",
+    fuente: (organismo, fecha) => `Forrás: ${organismo}. Ellenőrizve: ${fecha}`,
+    verificado: (fecha) => `Ellenőrizve: ${fecha}`,
+    suscribir: {
+      titulo: "A teljes naptár, mindig naprakészen",
+      texto: "Egyetlen feliratkozás után az új dátumok maguktól megjelennek a telefon vagy a számítógép naptárában.",
+      boton: "Feliratkozás a naptárra",
+      copiar: "Link másolása",
+      copiado: "Link kimásolva",
+    },
+    fuentes: {
+      titulo: "Honnan származnak a dátumok",
+      texto: "Csak olyan dátum kerül ide, amelyet jogszabály már rögzített, vagy amely hivatalos szerv által közzétett értékhez tartozik. Ami még nem jelent meg, az itt sincs.",
+    },
+    vacio: "A következő tizenkét hónapban ebben a témában nincs dátum.",
+    destacado: {
+      ceja: "Fizetési naptár",
+      titulo: "Az idei dátumok, amelyeken a fizetés múlik",
+      ir: "A naptár megnyitása",
+      proxima: (titulo, fecha) => `A következő: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `${delPaisHu(pais)} fizetési és adónaptára (CalcularYa)`,
+      descripcion: (pais) => `Fizetési és adózási határidők ${gHu.en(pais)}, hivatalos forrásokból.`,
+      calculadora: "Kalkulátor",
+      fuente: "Forrás",
+    },
+    og: { proxima: "A következő dátum", mas: (n) => `És még ${n} határidő idén` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, hu };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

@@ -364,7 +364,9 @@ export const esetekHu: (pais: string) => EsetekHu = (() => {
     return REDONDAS.includes(v) ? "redonda" : "adelante";
   };
   const ALARGA: Readonly<Record<string, string>> = { a: "á", e: "é", o: "ó", ö: "ő" };
-  return (pais: string): EsetekHu => {
+  // String(): check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
+  return (nombre: string): EsetekHu => {
+    const pais = String(nombre);
     const fija = TABLA[pais];
     const articulo = CON_ARTICULO.test(pais) ? `${neveloHu(pais)} ` : "";
     if (fija) return { nev: fija.nev ?? `${articulo}${pais}`, hol: fija.hol, hova: fija.hova, honnan: fija.honnan, nak: fija.nak };

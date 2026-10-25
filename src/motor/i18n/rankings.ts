@@ -1364,7 +1364,125 @@ const zhHans: TextosRankings = {
 
 const zh: Diccionario<TextosRankings> = { base: zhHant, regional: { "zh-CN": zhHans, "zh-SG": zhHans } };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+// ───────────────────────────── hu ─────────────────────────────
+
+// Húngaro (ADR 0002, D21): impersonal, como el resto de los rankings. La posición va con el ordinal
+// en cifra y punto («Magyarország: 27. hely 41 ország közül»), que no concuerda con nada, y ningún
+// sufijo se pega a una cifra: «közül», «nappal», dos puntos.
+const hu: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Országok rangsora",
+    seo: {
+      titulo: ["Országok rangsora fizetés és adók szerint", "Országok rangsora"],
+      descripcion: (n) => `Hol ér többet ugyanaz a fizetés, az adószabadság napja és mennyi marad a fizetésemelésből, ${n} ország adataival. Hivatalos adatok, naponta frissítve.`,
+    },
+    ceja: "Nyílt adatok",
+    h1: "Fizetések és adók, országról országra",
+    bajada: (n) => `${n} ország azonos vásárlóerőn, mindegyik a saját hivatalos kalkulátorával. A rangsorok minden nap maguktól frissülnek.`,
+    actualizado: (f) => `Frissítve: ${f}`,
+    ver: "Rangsor megnyitása",
+    niveles: { titulo: "Kiinduló fizetés", nombres: { bajo: "Alacsony fizetés", medio: "Közepes fizetés", alto: "Magas fizetés" }, anual: (m) => `évi ${m}` },
+    tramos: { titulo: "Az emelés mértéke", nombre: (a, b) => `Emelés: ${a} helyett ${b}` },
+    referencia: {
+      nivel: (m) => `évi ${m} nemzetközi dollár bruttó fizetés`,
+      tramo: (a, b) => `bruttó fizetésemelés: évi ${a} helyett ${b} nemzetközi dollár`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${p}. hely ${total} ország közül`,
+    de: (t) => `${t} ország közül`,
+    empate: (o) => (Number(o) === 1 ? "holtversenyben egy másik országgal" : `holtversenyben további ${o} országgal`),
+    fuera: (pais) => `${pais} egyelőre nem szerepel ezekben a rangsorokban: az összevetéshez nettóbér-kalkulátor kell, és ez még nem készült el.`,
+    lider: "A rangsor élén",
+    global: (n) => `${n} ország az elsőtől az utolsóig`,
+    valores: {
+      porMes: (m) => `havi ${m}`,
+      ningunDia: "Egy nap sem",
+      deCada: (n) => `${n} egység minden 100 egységből`,
+      carga: (pct) => `SZJA és járulékok: ${pct}`,
+      cargaAumento: (pct) => `Az emelésből ennyi megy el adóra és járulékra: ${pct}`,
+    },
+    cambio: {
+      titulo: (mes) => `Változás az előző mérés óta (${mes})`,
+      sube: (n) => `${n} hellyel feljebb`,
+      baja: (n) => `${n} hellyel lejjebb`,
+      igual: "Változatlan",
+      nuevo: "Új a rangsorban",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Hely",
+      pais: "Ország",
+      edicion: "Ez a kiadás",
+      unidad: "Nemzetközi dollárban",
+    },
+    kit: {
+      titulo: "Sajtónak",
+      bajada: "Mondat, grafikon és link ehhez a rangsorhoz, közlésre készen.",
+      compartir: "Megosztás",
+      descargar: "Grafikon letöltése",
+      copiar: "Idézet másolása",
+      copiado: "Az idézetet kimásoltuk",
+      enlace: "A linket kimásoltuk",
+      compartido: "Elküldve",
+      error: "Nem sikerült a másolás. A fenti szöveg kézzel is kimásolható.",
+      cita: (frase, ranking, ref, fecha) => `${frase}. Rangsor: „${ranking}” (${ref}). Forrás: CalcularYa, adatok állapota: ${fecha}.`,
+      texto: (frase, ranking) => `${frase}. Rangsor: „${ranking}”.`,
+      alt: (ranking) => `Grafikon: „${ranking}”`,
+    },
+    metodo: {
+      titulo: "Hogyan készül a rangsor",
+      bajada: "Minden ország végigmegy a saját hivatalos nettóbér-kalkulátorán, a mai szabályokkal. Utána azonos vásárlóerőn vetjük össze őket.",
+      niveles: (b, m, a) => `Kiinduló fizetések: évi ${b}, ${m} és ${a} nemzetközi dollár bruttó.`,
+      empates: "Két ország, amelynek a táblázatban azonos az értéke, ugyanazon a helyen áll, a következő pedig kihagy egy helyet (1, 2, 2, 4).",
+      historial: "A helyezés változását a rangsor havonta mentett pillanatképéhez mérjük. Az előző havi pillanatkép nélkül a változás nem látszik.",
+      actualizacion: "A táblázat minden nap újraszámolódik az egyes országok érvényes adataival. Új ország akkor kerül be, amikor a kalkulátora elindul.",
+      ver: "A teljes módszertan",
+    },
+    datos: {
+      titulo: "Nyílt adatok",
+      bajada: "A rangsorok mögötti számok országonként, JSON és CSV formátumban. Minden nap frissülnek.",
+      json: "Adatok JSON-ban",
+      csv: "Adatok CSV-ben",
+      licencia: "CC BY 4.0 licenc: az adatok szabadon felhasználhatók, terjeszthetők és közölhetők a CalcularYa megjelölésével és erre az oldalra mutató linkkel.",
+      atribucion: "Javasolt hivatkozás",
+    },
+    mundo: { titulo: "Egy konkrét fizetéssel", texto: (n) => `A saját fizetéssel és az egyes országok dátumával számoló oldal: „${n}”.`, ir: "Kiszámítás" },
+    otros: "További rangsorok",
+    rankings: {
+      rinde: {
+        titulo: "Hol ér többet ugyanaz a fizetés",
+        corto: "Hol ér többet a fizetés",
+        seo: ["Hol ér többet ugyanaz a fizetés: országok rangsora", "Hol ér többet ugyanaz a fizetés"],
+        descripcion: (n) => `Ugyanaz a fizetés azonos vásárlóerőn ${n} országban: mennyi marad nettóban az egyes országok adószabályai szerint. Naponta frissítve.`,
+        bajada: "Ugyanaz a bruttó fizetés azonos vásárlóerőn végigmegy minden ország szabályain. Az élen azok állnak, ahol a legtöbb marad nettóban.",
+        metrica: "Nettó havonta",
+        carga: "Adók és járulékok",
+        como: "A havi nettó fizetés a 12 hónap átlaga, nemzetközi dollárban.",
+      },
+      libertad: {
+        titulo: "Az adószabadság napja országonként",
+        corto: "Adószabadság napja",
+        seo: ["Az adószabadság napja országonként: rangsor", "Az adószabadság napja országonként"],
+        descripcion: (n) => `Az a nap az évben, amikorra kifizetett a jövedelemadó és a járulék, ugyanazzal a fizetéssel ${n} országban. Naponta frissítve.`,
+        bajada: "Az a nap az évben, amikorra kifizetett a jövedelemadó és a járulék, ugyanazzal a fizetéssel minden országban. Az élen azok állnak, ahol a legkorábban jön el.",
+        metrica: "Munka az államnak eddig",
+        carga: "Adók és járulékok",
+        como: "A dátum január elsejétől osztja el az adókat az évre: 30 százalékos adóteher mellett az év 30 százalékában az államnak dolgozik az ember.",
+      },
+      aumento: {
+        titulo: "Mennyi marad a fizetésemelésből",
+        corto: "Mi marad az emelésből",
+        seo: ["Mennyi marad a fizetésemelésből: országok rangsora", "Mennyi marad a fizetésemelésből"],
+        descripcion: (n) => `Minden 100 egységnyi bruttó emelésből mennyi marad a jövedelemadó és a járulékok után, ${n} országban. Naponta frissítve.`,
+        bajada: "Minden 100 egységnyi bruttó emelésből mennyi jut valóban a pénztárcába a jövedelemadó és a járulékok után. Az élen azok állnak, ahol a legtöbb marad.",
+        metrica: "Ennyi marad 100 egységből",
+        carga: "Határadókulcs",
+        como: "Ez a két fizetés közötti határadókulcs: az emelésnek az a része, amely adóra és járulékra megy el.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, hu };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);
