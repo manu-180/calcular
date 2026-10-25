@@ -1,0 +1,1272 @@
+{
+  "mercado": "no",
+  "datos": [
+    {
+      "id": "no.trinnskatt",
+      "nombre": "Trinnskatt på personinntekt",
+      "tipo": "escala",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 226100,
+              "tasa": 0
+            },
+            {
+              "desde": 226100,
+              "hasta": 318300,
+              "tasa": 1.7
+            },
+            {
+              "desde": 318300,
+              "hasta": 725050,
+              "tasa": 4.0
+            },
+            {
+              "desde": 725050,
+              "hasta": 980100,
+              "tasa": 13.7
+            },
+            {
+              "desde": 980100,
+              "hasta": 1467200,
+              "tasa": 16.8
+            },
+            {
+              "desde": 1467200,
+              "hasta": null,
+              "tasa": 17.8
+            }
+          ],
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: trinnskatt 2026",
+            "url": "https://www.skatteetaten.no/satser/trinnskatt/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.skatt-alminnelig-inntekt",
+      "nombre": "Skatt på alminnelig inntekt",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.skatt-alminnelig-tiltakssonen",
+      "nombre": "Skatt på alminnelig inntekt i tiltakssonen (Finnmark og Nord-Troms)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18.5,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.fradrag-tiltakssonen",
+      "nombre": "Særskilt inntektsfradrag i tiltakssonen",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 45000,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.personfradrag",
+      "nombre": "Personfradrag",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 114540,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: personfradrag 2026",
+            "url": "https://www.skatteetaten.no/satser/personfradrag/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.minstefradrag-sats",
+      "nombre": "Minstefradrag, sats",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "lonn": "Lønnsinntekt",
+        "pensjon": "Pensjonsinntekt"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "lonn": 46,
+            "pensjon": 40
+          },
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: minstefradrag 2026",
+            "url": "https://www.skatteetaten.no/satser/minstefradrag/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.minstefradrag-maks",
+      "nombre": "Minstefradrag, øvre grense",
+      "tipo": "mapa",
+      "unidad": "NOK",
+      "etiquetas": {
+        "lonn": "Lønnsinntekt",
+        "pensjon": "Pensjonsinntekt"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "lonn": 95700,
+            "pensjon": 75400
+          },
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: minstefradrag 2026",
+            "url": "https://www.skatteetaten.no/satser/minstefradrag/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.trygdeavgift",
+      "nombre": "Trygdeavgift",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "lonn": "Lønn og sykepenger (17 til 69 år)",
+        "naering": "Annen næringsinntekt",
+        "pensjon": "Pensjon, og lønn under 17 eller over 69 år"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "lonn": 7.6,
+            "naering": 10.8,
+            "pensjon": 5.1
+          },
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: trygdeavgift 2026",
+            "url": "https://www.skatteetaten.no/satser/trygdeavgift/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.trygdeavgift-nedre-grense",
+      "nombre": "Trygdeavgift, nedre grense",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 99650,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: trygdeavgift 2026",
+            "url": "https://www.skatteetaten.no/satser/trygdeavgift/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.trygdeavgift-opptrapping",
+      "nombre": "Trygdeavgift, opptrappingssats over nedre grense",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: trygdeavgift 2026",
+            "url": "https://www.skatteetaten.no/satser/trygdeavgift/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.arbeidsgiveravgift",
+      "nombre": "Arbeidsgiveravgift etter sone",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1": "Sone 1",
+        "1a": "Sone 1a",
+        "2": "Sone 2",
+        "3": "Sone 3",
+        "4": "Sone 4",
+        "4a": "Sone 4a",
+        "5": "Sone 5"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 14.1,
+            "1a": 10.6,
+            "2": 10.6,
+            "3": 6.4,
+            "4": 5.1,
+            "4a": 7.9,
+            "5": 0
+          },
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: arbeidsgiveravgift 2026",
+            "url": "https://www.skatteetaten.no/satser/arbeidsgiveravgift/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.fribelop-sone-1a",
+      "nombre": "Fribeløp for redusert arbeidsgiveravgift i sone 1a",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 850000,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: arbeidsgiveravgift 2026",
+            "url": "https://www.skatteetaten.no/satser/arbeidsgiveravgift/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.mva",
+      "nombre": "Merverdiavgift",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "alminnelig": "Alminnelig sats (25 %)",
+        "naeringsmidler": "Næringsmidler (15 %)",
+        "lav": "Persontransport, overnatting, kino og lignende (12 %)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "alminnelig": 25,
+            "naeringsmidler": 15,
+            "lav": 12
+          },
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Satser: merverdiavgift",
+            "url": "https://www.skatteetaten.no/satser/merverdiavgift/?year=2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dokumentavgift",
+      "nombre": "Dokumentavgift",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Stortingsvedtak om dokumentavgift for 2026 (FOR-2025-12-18-2777)",
+            "url": "https://lovdata.no/dokument/STV/forskrift/2025-12-18-2777",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dokumentavgift-minimum",
+      "nombre": "Dokumentavgift, minstebeløp",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 250,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Stortingsvedtak om dokumentavgift for 2026 (FOR-2025-12-18-2777)",
+            "url": "https://lovdata.no/dokument/STV/forskrift/2025-12-18-2777",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.tinglysingsgebyr",
+      "nombre": "Tinglysingsgebyr for skjøte og pantedokument",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 545,
+          "fuente": {
+            "organismo": "Kartverket",
+            "titulo": "Tinglysingsgebyr, gebyr 2026",
+            "url": "https://www.kartverket.no/eiendom/dokumentavgift-og-gebyr/tinglysingsgebyr",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.grunnbelop",
+      "nombre": "Grunnbeløpet i folketrygden (G)",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-05-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-01",
+          "hasta": "2026-04-30",
+          "valor": 130160,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Grunnbeløpet i folketrygden (G)",
+            "url": "https://www.nav.no/grunnbelopet",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 136549,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Grunnbeløpet i folketrygden (G)",
+            "url": "https://www.nav.no/grunnbelopet",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.sykepenger-dekning",
+      "nombre": "Sykepenger i prosent av sykepengegrunnlaget",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "arbeidstaker": "Arbeidstaker",
+        "frilanser": "Frilanser",
+        "selvstendig": "Selvstendig næringsdrivende"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "arbeidstaker": 100,
+            "frilanser": 100,
+            "selvstendig": 80
+          },
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Sykepenger",
+            "url": "https://www.nav.no/sykepenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.ytelse-tak-g",
+      "nombre": "Øvre grense for sykepenger og foreldrepenger, i G",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Folketrygdloven § 8-10 (sykepengegrunnlag)",
+            "url": "https://lovdata.no/lov/1997-02-28-19/%C2%A78-10",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.ytelse-min-g",
+      "nombre": "Minste inntekt for sykepenger og foreldrepenger, i G",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Sykepenger",
+            "url": "https://www.nav.no/sykepenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dagsats-divisor",
+      "nombre": "Antall dager i året for dagsats (1/260)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 260,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Folketrygdloven § 8-10 (sykepengegrunnlag)",
+            "url": "https://lovdata.no/lov/1997-02-28-19/%C2%A78-10",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.arbeidsgiverperiode",
+      "nombre": "Arbeidsgiverperioden for sykepenger",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Sykepenger",
+            "url": "https://www.nav.no/sykepenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.foreldrepenger-dager",
+      "nombre": "Stønadsperiode for foreldrepenger (dager med 5 dager per uke)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "begge-100": "Begge har rett, 100 %",
+        "begge-80": "Begge har rett, 80 %",
+        "far-alene-100": "Far eller medmor alene, 100 %",
+        "far-alene-80": "Far eller medmor alene, 80 %"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": {
+            "begge-100": 245,
+            "begge-80": 306,
+            "far-alene-100": 230,
+            "far-alene-80": 291
+          },
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Foreldrepenger",
+            "url": "https://www.nav.no/foreldrepenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.engangsstonad",
+      "nombre": "Engangsstønad per barn",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 92648,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Engangsstønad",
+            "url": "https://www.nav.no/engangsstonad",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dagpenger-sats",
+      "nombre": "Dagpenger i prosent av tidligere inntekt",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 62.4,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Dagpenger",
+            "url": "https://www.nav.no/dagpenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dagpenger-krav-12",
+      "nombre": "Minste inntekt siste 12 måneder for dagpenger, i G",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Dagpenger",
+            "url": "https://www.nav.no/dagpenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dagpenger-krav-36",
+      "nombre": "Minste inntekt siste 36 måneder for dagpenger, i G",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Dagpenger",
+            "url": "https://www.nav.no/dagpenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dagpenger-grense-lang",
+      "nombre": "Inntekt som gir lengste periode med dagpenger, i G",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Dagpenger",
+            "url": "https://www.nav.no/dagpenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dagpenger-uker",
+      "nombre": "Perioden med dagpenger",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "kort": "Inntekt under 2 G",
+        "lang": "Inntekt på minst 2 G"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "kort": 52,
+            "lang": 104
+          },
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Dagpenger",
+            "url": "https://www.nav.no/dagpenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dagpenger-barnetillegg",
+      "nombre": "Barnetillegg i dagpenger per barn per dag",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 38,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Dagpenger",
+            "url": "https://www.nav.no/dagpenger",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.dagpenger-maks-andel",
+      "nombre": "Dagpenger med barnetillegg, høyst andel av dagpengegrunnlaget",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Folketrygdloven § 4-12 (dagpengenes størrelse)",
+            "url": "https://lovdata.no/lov/1997-02-28-19/%C2%A74-12",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.barnetrygd",
+      "nombre": "Barnetrygd per barn per måned",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 2012,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Barnetrygd",
+            "url": "https://www.nav.no/barnetrygd",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.barnetrygd-tillegg",
+      "nombre": "Finnmarks- og Svalbardtillegg per barn per måned",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "valor": 512,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Barnetrygd",
+            "url": "https://www.nav.no/barnetrygd",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.kontantstotte",
+      "nombre": "Full kontantstøtte per måned",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7500,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Kontantstøtte",
+            "url": "https://www.nav.no/kontantstotte",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.kontantstotte-andel",
+      "nombre": "Kontantstøtte etter avtalt tid i barnehage",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ingen": "Ingen barnehageplass",
+        "t8": "Til og med 8 timer i uken",
+        "t16": "9 til 16 timer i uken",
+        "t24": "17 til 24 timer i uken",
+        "t32": "25 til 32 timer i uken",
+        "t33": "33 timer eller mer i uken"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ingen": 100,
+            "t8": 80,
+            "t16": 60,
+            "t24": 40,
+            "t32": 20,
+            "t33": 0
+          },
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Kontantstøtte",
+            "url": "https://www.nav.no/kontantstotte",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.kontantstotte-maaneder",
+      "nombre": "Antall måneder med kontantstøtte",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Nav",
+            "titulo": "Kontantstøtte",
+            "url": "https://www.nav.no/kontantstotte",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.feriepenger-sats",
+      "nombre": "Feriepenger etter ferieloven",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10.2,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Ferieloven (LOV-1988-04-29-21), § 5 og § 10",
+            "url": "https://lovdata.no/dokument/NL/lov/1988-04-29-21",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.feriepenger-tillegg-60",
+      "nombre": "Tillegg i feriepenger for arbeidstakere over 60 år",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.3,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Ferieloven (LOV-1988-04-29-21), § 5 og § 10",
+            "url": "https://lovdata.no/dokument/NL/lov/1988-04-29-21",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.feriepenger-tak-60-g",
+      "nombre": "Grense for tillegget over 60 år, i G",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Ferieloven (LOV-1988-04-29-21), § 5 og § 10",
+            "url": "https://lovdata.no/dokument/NL/lov/1988-04-29-21",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.feriedager",
+      "nombre": "Feriefritid etter ferieloven",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "ordinaer": "Ordinær ferie (virkedager)",
+        "ekstra-60": "Ekstraferie fra fylte 60 år (virkedager)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ordinaer": 25,
+            "ekstra-60": 6
+          },
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Ferieloven (LOV-1988-04-29-21), § 5 og § 10",
+            "url": "https://lovdata.no/dokument/NL/lov/1988-04-29-21",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.oppsigelsestid",
+      "nombre": "Oppsigelsesfrister i arbeidsmiljøloven",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "grunn": "Hovedregel",
+        "fem-ar": "Ansatt i minst 5 år",
+        "ti-ar": "Ansatt i minst 10 år",
+        "ti-ar-50": "10 år og fylt 50",
+        "ti-ar-55": "10 år og fylt 55",
+        "ti-ar-60": "10 år og fylt 60",
+        "arbeidstaker-ti-ar-50": "Arbeidstaker sier opp selv, 10 år og fylt 50"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "grunn": 1,
+            "fem-ar": 2,
+            "ti-ar": 3,
+            "ti-ar-50": 4,
+            "ti-ar-55": 5,
+            "ti-ar-60": 6,
+            "arbeidstaker-ti-ar-50": 3
+          },
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Arbeidsmiljøloven § 15-3 (oppsigelsesfrister)",
+            "url": "https://lovdata.no/lov/2005-06-17-62/%C2%A715-3",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.oppsigelsestid-provetid",
+      "nombre": "Oppsigelsesfrist i prøvetiden",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Arbeidsmiljøloven § 15-3 (oppsigelsesfrister)",
+            "url": "https://lovdata.no/lov/2005-06-17-62/%C2%A715-3",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.overtidstillegg",
+      "nombre": "Overtidstillegg, minst",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Arbeidsmiljøloven § 10-6 (overtid)",
+            "url": "https://lovdata.no/lov/2005-06-17-62/%C2%A710-6",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.overtid-grenser",
+      "nombre": "Grenser for overtid",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "uke": "Per 7 dager",
+        "fire-uker": "Per 4 sammenhengende uker",
+        "ar": "Per 52 uker"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "uke": 10,
+            "fire-uker": 25,
+            "ar": 200
+          },
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Arbeidsmiljøloven § 10-6 (overtid)",
+            "url": "https://lovdata.no/lov/2005-06-17-62/%C2%A710-6",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.formuesskatt-kommune",
+      "nombre": "Formuesskatt til kommunen",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.35,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.formuesskatt-stat",
+      "nombre": "Formuesskatt til staten",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "trinn1": "Trinn 1",
+        "trinn2": "Trinn 2"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "trinn1": 0.65,
+            "trinn2": 0.75
+          },
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.formue-bunnfradrag",
+      "nombre": "Bunnfradrag i formuesskatten (enslig)",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1900000,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.formue-trinn2",
+      "nombre": "Grense for trinn 2 i formuesskatten (enslig)",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 21500000,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.formue-verdsettelse",
+      "nombre": "Formuesverdi i prosent av verdien",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "primaerbolig": "Primærbolig opp til grensen",
+        "primaerbolig-over": "Primærbolig over grensen",
+        "sekundaerbolig": "Sekundærbolig",
+        "aksjer": "Aksjer og aksjefond"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "primaerbolig": 25,
+            "primaerbolig-over": 70,
+            "sekundaerbolig": 100,
+            "aksjer": 80
+          },
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.formue-primaerbolig-grense",
+      "nombre": "Grense for høyere formuesverdi på primærbolig",
+      "tipo": "numero",
+      "unidad": "NOK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10000000,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.oppjusteringsfaktor",
+      "nombre": "Oppjusteringsfaktor for utbytte og aksjegevinst",
+      "tipo": "numero",
+      "unidad": "factor",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.72,
+          "fuente": {
+            "organismo": "Skatteetaten",
+            "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+            "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no.forsinkelsesrente",
+      "nombre": "Forsinkelsesrente",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": 12.0,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Forskrift om forsinkelsesrente og kompensasjon for inndrivelseskostnader (FOR-2025-12-18-2658)",
+            "url": "https://lovdata.no/dokument/LTI/forskrift/2025-12-18-2658",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 12.25,
+          "fuente": {
+            "organismo": "Lovdata",
+            "titulo": "Forskrift om forsinkelsesrente og kompensasjon for inndrivelseskostnader (FOR-2026-06-25-1372)",
+            "url": "https://lovdata.no/dokument/LTI/forskrift/2026-06-25-1372",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}
