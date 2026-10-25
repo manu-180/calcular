@@ -6,6 +6,7 @@ import { en } from "./en";
 import { es } from "./es";
 import { fr } from "./fr";
 import { frCA } from "./fr-ca";
+import { he } from "./he";
 import { it } from "./it";
 import { ja } from "./ja";
 import { ko } from "./ko";
@@ -20,10 +21,10 @@ export { rellenar, segunTrato, type DiccionarioVenta, type TextosFamilia, type V
 // Todo idioma de IDIOMAS que tenga mercados reales necesita su diccionario de venta: sin él, sus
 // mercados no generan informes ni ofertas (catalogo-intl, ofertas-servidor) y check_ofertas_intl
 // falla al registrar un país. Un idioma nuevo del motor entra acá cuando tiene el suyo.
-export const IDIOMAS_VENTA = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "ar"] as const satisfies readonly Idioma[];
+export const IDIOMAS_VENTA = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "ar", "he"] as const satisfies readonly Idioma[];
 export type IdiomaVenta = (typeof IDIOMAS_VENTA)[number];
 
-export const DICCIONARIOS: Readonly<Record<IdiomaVenta, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar };
+export const DICCIONARIOS: Readonly<Record<IdiomaVenta, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, ar, he };
 
 // La escritura del chino cambia el diccionario entero, no solo palabras: zh.ts es tradicional
 // (zh-TW, zh-HK) y zh-hans.ts simplificado. Por eso las funciones de abajo reciben el locale.
