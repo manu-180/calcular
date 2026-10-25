@@ -12,6 +12,7 @@ import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/mo
 import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
+import { esetekHu, GRAMATICA, neveloHu } from "../src/motor/i18n/gramatica";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
@@ -85,6 +86,13 @@ const parseos: [string, string, number | null][] = [
   ["es-PE", "", null],
   ["es-PE", "1,", null],
   ["es-PE", "1,2345", null],
+  // Húngaro: miles con espacio (U+00A0, y sin espacio con cuatro cifras, como lo da Intl: «1234,5»),
+  // decimal con coma y «Ft» detrás.
+  ["hu-HU", "1 234,50", 1234.5],
+  ["hu-HU", "1234,5", 1234.5],
+  ["hu-HU", "1 500 000 Ft", 1500000],
+  ["hu-HU", "-250,75", -250.75],
+  ["hu-HU", "27%", 27],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -99,6 +107,8 @@ const ambiguos: [string, string, number | null][] = [
   ["es-MX", "5,000.000", 5000],
   ["es-CL", "5,000", null],
   ["es-CO", "5.000", 5000],
+  ["hu-HU", "5 000", 5000],
+  ["hu-HU", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -400,8 +410,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-hu/felevi-premium"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-hu"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -455,6 +465,36 @@ igual("marcadoresDe con fila de escala y región", marcadoresDe("{{ca.x[2].tasa@
 igual("semanas en inglés", formatearValorUnidad(2, "semanas", "en-CA"), "2 weeks");
 igual("semana en singular (de)", formatearValorUnidad(1, "semanas", "de-DE"), "1 Woche");
 igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 weken");
+// Húngaro: sin plural detrás del número («3 nap», «1,5 év») y moneda con «Ft» detrás, sin decimales.
+igual("unidades en húngaro", [formatearValorUnidad(3, "dias", "hu-HU"), formatearValorUnidad(1, "anios", "hu-HU"), formatearValorUnidad(1.5, "anios", "hu-HU")], ["3 nap", "1 év", "1,5 év"]);
+igual("forint", formatearMoneda(1234567, "hu-HU", "HUF").replace(/\s/g, " "), "1 234 567 Ft");
+igual("fecha larga en húngaro", formatearFecha("2026-10-24", "hu-HU"), "2026. október 24.");
+// Artículo según cómo se lee lo que sigue: «az» delante de vocal, de 1 (egy), 5 (öt), 1 000 (ezer)...
+igual(
+  "artículo húngaro",
+  [1, 5, 10, 15, 50, 100, 1000, 1500, 10000, 1000000, "1 500 000 Ft", "27%", "1,5", "eredmény", "kalkulátor", "Észak"].map((x) => neveloHu(x)),
+  ["az", "az", "a", "a", "az", "a", "az", "az", "a", "az", "az", "a", "az", "az", "a", "az"],
+);
+// Sufijos del país: -ban/-ben dentro, -on/-en/-ön sobre (Magyarország, islas, -szigetek, -föld,
+// -land), armonía con la última vocal no neutra, alargamiento de la a/e/o final y artículo en las
+// frases con sustantivo común.
+igual(
+  "gramática húngara: lugar",
+  ["Magyarország", "Németország", "Franciaország", "Kanada", "Chile", "Izrael", "Mali", "Kuba", "Ciprus", "Thaiföld", "Új-Zéland", "Fülöp-szigetek", "Egyesült Államok", "Egyesült Arab Emírségek", "Saint Vincent és a Grenadine-szigetek", "Hongkong KKT", "Zetaország"].map((p) => GRAMATICA.hu.en(p)),
+  ["Magyarországon", "Németországban", "Franciaországban", "Kanadában", "Chilében", "Izraelben", "Maliban", "Kubán", "Cipruson", "Thaiföldön", "Új-Zélandon", "a Fülöp-szigeteken", "az Egyesült Államokban", "az Egyesült Arab Emírségekben", "a Saint Vincent és a Grenadine-szigeteken", "Hongkongban", "Zetaországban"],
+);
+igual(
+  "gramática húngara: dirección, origen y dativo",
+  ["Magyarország", "Németország", "Svédország", "Kanada", "Egyesült Királyság"].map((p) => { const e = esetekHu(p); return [e.hova, e.honnan, e.nak].join(" / "); }),
+  [
+    "Magyarországra / Magyarországról / Magyarországnak",
+    "Németországba / Németországból / Németországnak",
+    "Svédországba / Svédországból / Svédországnak",
+    "Kanadába / Kanadából / Kanadának",
+    "az Egyesült Királyságba / az Egyesült Királyságból / az Egyesült Királyságnak",
+  ],
+);
+igual("gramática húngara: para y de", [GRAMATICA.hu.para("Magyarország"), GRAMATICA.hu.de("Egyesült Államok")], ["Magyarország számára", "az Egyesült Államok"]);
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).
