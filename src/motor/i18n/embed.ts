@@ -1029,7 +1029,45 @@ const cs: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs };
+// Griego (ADR 0002, D20): πληθυντικός ευγενείας como gov.gr y los bancos; el país va con «για» y
+// acusativo con artículo (GRAMATICA.el: «για την Ελλάδα»).
+const el: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Υπολογιστής CalcularYa",
+    marcaNuevaPestana: "(ανοίγει σε νέα καρτέλα)",
+    noDisponible: { titulo: "Αυτός ο υπολογιστής δεν είναι διαθέσιμος", texto: "Ίσως η διεύθυνσή του έχει αλλάξει." },
+    insertar: "Ενσωμάτωση στον ιστότοπό σας",
+    pagina: {
+      titulo: (pais) => [`Δωρεάν υπολογιστές για τον ιστότοπό σας | ${pais}`, "Δωρεάν υπολογιστές για τον ιστότοπό σας"],
+      descripcion: (pais) =>
+        `Επιλέξτε έναν υπολογιστή ${GRAMATICA.el.para(pais)}, αντιγράψτε τον κώδικα και επικολλήστε τον στον ιστότοπό σας. Δωρεάν, με επίσημα στοιχεία πάντα ενημερωμένα.`,
+      h1: "Ενσωματώστε έναν υπολογιστή στον ιστότοπό σας",
+      bajada: "Επιλέξτε έναν υπολογιστή, αντιγράψτε τον κώδικα και επικολλήστε τον όπου θέλετε. Δωρεάν, και τα στοιχεία ενημερώνονται μόνα τους.",
+      calculadora: "Υπολογιστής",
+      buscar: "Βρείτε έναν υπολογιστή",
+      sinResultados: "Κανένας υπολογιστής δεν αντιστοιχεί στην αναζήτησή σας.",
+      tema: "Εμφάνιση",
+      claro: "Ανοιχτόχρωμη",
+      oscuro: "Σκουρόχρωμη",
+      ancho: "Πλάτος",
+      anchoCompleto: "Σε όλο το πλάτος",
+      acento: "Χρώμα έμφασης",
+      colores: ["Πράσινο", "Μπλε", "Πορτοκαλί", "Ροζ", "Γραφίτης"],
+      credito: "Εμφάνιση συνδέσμου προς την πηγή κάτω από τον υπολογιστή",
+      vistaPrevia: "Προεπισκόπηση",
+      codigo: "Κώδικας για επικόλληση",
+      copiar: "Αντιγραφή κώδικα",
+      copiado: "Ο κώδικας αντιγράφηκε",
+      ayudaScript: "Το script είναι προαιρετικό: προσαρμόζει το ύψος του υπολογιστή στο περιεχόμενό του.",
+      ventajas: ["Δωρεάν και χωρίς εγγραφή", "Επίσημα στοιχεία πάντα ενημερωμένα", "Προσαρμόζεται σε κάθε πλάτος"],
+      nota: "Κάτω από τον υπολογιστή υπάρχει σύνδεσμος προς το CalcularYa. Σας παρακαλούμε να μην τον αφαιρέσετε.",
+      verTodas: (pais) => `Δείτε όλους τους υπολογιστές ${GRAMATICA.el.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Υπολογιστής CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

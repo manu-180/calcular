@@ -154,6 +154,15 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Svatý Vincenc a Grenadiny", locale: "cs-CZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Spojené arabské emiráty", locale: "cs-CZ", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
   ],
+  // Griego (ADR 0002, D20): euro con «€» detrás y punto de miles en Grecia y en Chipre, el nombre
+  // largo masculino que se declina por partes («στον Άγιο Βικέντιο και Γρεναδίνες») y uno plural
+  // neutro («στα Ηνωμένα Αραβικά Εμιράτα»).
+  el: [
+    { mercado: "gr" as CodigoMercado, pais: "GR", nombrePais: "Ελλάδα", locale: "el-GR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "cy" as CodigoMercado, pais: "CY", nombrePais: "Κύπρος", locale: "el-CY", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Άγιος Βικέντιος και Γρεναδίνες", locale: "el-GR", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Ηνωμένα Αραβικά Εμιράτα", locale: "el-GR", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)

@@ -7,11 +7,12 @@ export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; mo
 // ruso, «річна»/«місячна» y «годовая»/«месячная» y sus formas van por prefijo («річн», «місячн»,
 // «годов», «месячн», «ежегодн», «ежемесячн»). Las palabras llegan sin diacríticos (palabras() los
 // quita): el rumano («anual», «anuală», «lunar», «lunară», «pe lună») se compara así, y en checo
-// «roční», «ročně» y «měsíční», «měsíčně» van por prefijo («rocn», «mesicn»).
-const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "yillik", "yil", "рік", "року", "год", "года", "anuala", "anuale", "anuali", "rok", "roku", "rocne", "年", "연", "연봉", "年収", "年薪"];
-const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "річн", "годов", "ежегодн", "rocn"];
-const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "aylik", "oylik", "місяць", "місяця", "месяц", "месяца", "luna", "lunii", "mesic", "mesice", "mesicne", "月", "월", "월급", "月給", "月薪"];
-const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "місячн", "месячн", "ежемесячн", "lunar", "mesicn"];
+// «roční», «ročně» y «měsíční», «měsíčně» van por prefijo («rocn», «mesicn»), como en griego
+// «ετήσιος», «ετησίως» y «μηνιαίος», «μηνιαίως» («ετησι», «μηνιαι»).
+const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "yillik", "yil", "рік", "року", "год", "года", "anuala", "anuale", "anuali", "rok", "roku", "rocne", "ετος", "ετη", "年", "연", "연봉", "年収", "年薪"];
+const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "річн", "годов", "ежегодн", "rocn", "ετησι"];
+const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "aylik", "oylik", "місяць", "місяця", "месяц", "месяца", "luna", "lunii", "mesic", "mesice", "mesicne", "μηνα", "μηνας", "μηνες", "月", "월", "월급", "月給", "月薪"];
+const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "місячн", "месячн", "ежемесячн", "lunar", "mesicn", "μηνιαι"];
 
 function palabras(texto: string): string[] {
   return texto

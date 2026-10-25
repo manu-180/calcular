@@ -31,6 +31,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   ru: "reyting-stran",
   ro: "clasamentul-tarilor",
   cs: "zebricek-zemi",
+  el: "katataxi-choron",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -70,6 +71,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   ro: { rinde: "puterea-de-cumparare-a-salariului", libertad: "ziua-libertatii-fiscale", aumento: "cat-ramane-din-marire" },
   // cs en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D19).
   cs: { rinde: "kde-mzda-vystaci-nejdal", libertad: "den-danove-svobody", aumento: "kolik-zbyde-ze-zvyseni-mzdy" },
+  // el transliterado en ASCII con ELOT 743 sin tonos, sobre lo que se busca (ADR 0002, D20).
+  el: { rinde: "pou-ftanei-o-misthos", libertad: "imera-forologikis-eleftherias", aumento: "posa-menoun-apo-tin-afxisi" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

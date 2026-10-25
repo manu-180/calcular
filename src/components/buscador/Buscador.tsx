@@ -72,17 +72,18 @@ function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "res
 
 function plano(s: string): string {
   // La ı del turco no se descompone en NFD: se pasa a i para que «kalıp» y «kalip» coincidan.
-  return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i");
+  return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").replace(/ς/g, "σ");
 }
 
-// NFD + sacar los diacríticos deja el texto en español con el mismo largo, así que los
+// NFD + sacar los diacríticos (y la sigma final por la otra) deja el texto en español y en griego
+// con el mismo largo, así que los
 // índices de `plano(titulo)` sirven para cortar el título original.
 function resaltar(titulo: string, q: string): ReactNode {
   const base = plano(titulo);
   const marcas: Array<[number, number]> = [];
-  for (const t of new Set(plano(q).split(/[^a-z0-9\u0400-\u04ff]+/).filter((x) => x.length >= 2))) {
+  for (const t of new Set(plano(q).split(/[^a-z0-9\u0400-\u04ffͰ-Ͽ]+/).filter((x) => x.length >= 2))) {
     let i = base.indexOf(t);
-    while (i > 0 && /[a-z0-9\u0400-\u04ff]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
+    while (i > 0 && /[a-z0-9\u0400-\u04ffͰ-Ͽ]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
     if (i >= 0) marcas.push([i, i + t.length]);
   }
   if (!marcas.length) return titulo;

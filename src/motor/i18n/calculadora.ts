@@ -284,6 +284,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Zdroj",
     },
   },
+  el: {
+    base: {
+      datos: "Τα στοιχεία σας",
+      resultado: "Αποτέλεσμα",
+      vacio: "Συμπληρώστε τα στοιχεία και πατήστε «Υπολογισμός». Το αποτέλεσμα θα εμφανιστεί εδώ.",
+      sinResultado: "Αυτό το αποτέλεσμα δεν εμφανίζεται ακόμη.",
+      avisos: { info: "Καλό να γνωρίζετε", cautela: "Προσοχή", bloquea: "Γιατί δεν εμφανίζεται αποτέλεσμα" },
+      fuenteDelAviso: "Πηγή",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

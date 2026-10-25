@@ -92,6 +92,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     meses: { uno: "měsíc", pocos: "měsíce", muchos: "měsíce", otros: "měsíců" },
     anios: { uno: "rok", pocos: "roky", muchos: "roku", otros: "let" },
   },
+  // Griego: one/other, como los idiomas latinos; «έτος/έτη» es el registro de los bancos y de gov.gr.
+  el: { dias: { uno: "ημέρα", otros: "ημέρες" }, semanas: { uno: "εβδομάδα", otros: "εβδομάδες" }, horas: { uno: "ώρα", otros: "ώρες" }, meses: { uno: "μήνας", otros: "μήνες" }, anios: { uno: "έτος", otros: "έτη" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

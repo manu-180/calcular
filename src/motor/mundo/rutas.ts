@@ -29,6 +29,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   ru: "zarplata-v-mire",
   ro: "salariu-in-lume",
   cs: "mzda-ve-svete",
+  el: "misthos-ston-kosmo",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";

@@ -19,6 +19,7 @@ import { pluralUk } from "../src/motor/i18n/plural";
 import { pluralRu } from "../src/motor/i18n/plural";
 import { formaRo, pluralRo } from "../src/motor/i18n/plural";
 import { pluralCs } from "../src/motor/i18n/plural";
+import { pluralEl } from "../src/motor/i18n/plural";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
@@ -195,6 +196,12 @@ const parseos: [string, string, number | null][] = [
   ["cs-CZ", "25 000 Kč", 25000],
   ["cs-CZ", "-250,75", -250.75],
   ["cs-CZ", "21 %", 21],
+  // Griego: punto de miles, coma decimal y «€» detrás con espacio (U+00A0, como lo da Intl).
+  ["el-GR", "1.234,50", 1234.5],
+  ["el-GR", "1.234.567,25 €", 1234567.25],
+  ["el-CY", "25.000 €", 25000],
+  ["el-GR", "-250,75", -250.75],
+  ["el-GR", "24%", 24],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -230,6 +237,8 @@ const ambiguos: [string, string, number | null][] = [
   ["ro-RO", "5,000", null],
   ["cs-CZ", "5 000", 5000],
   ["cs-CZ", "5,000", null],
+  ["el-GR", "5.000", 5000],
+  ["el-GR", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -568,8 +577,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -750,6 +759,25 @@ igual(
   ["Česka", "Německa", "Kanady", "Izraele", "Spojených arabských emirátů", "Jihoafrické republiky", "Svatého Vincence a Grenadin"],
 );
 igual("gramática checa: para", ["Česko", "Kanada", "Francie", "Česká republika"].map((p) => GRAMATICA.cs.para(p)), ["pro Česko", "pro Kanadu", "pro Francii", "pro Českou republiku"]);
+// Griego: one/other de Intl.PluralRules («1 έτος», «3 έτη», «1,5 έτη»).
+igual("años en griego", [1, 3, 1.5].map((n) => formatearValorUnidad(n, "anios", "el-GR")), ["1 έτος", "3 έτη", "1,5 έτη"]);
+igual("días en griego", [1, 2, 0.5].map((n) => formatearValorUnidad(n, "dias", "el-GR")), ["1 ημέρα", "2 ημέρες", "0,5 ημέρες"]);
+igual("pluralEl", [1, 5].map((n) => pluralEl(n, "υπολογισμός", "υπολογισμοί")), ["1 υπολογισμός", "5 υπολογισμοί"]);
+// Artículo, caso y contracción del nombre del país («στην Ελλάδα», «της Κύπρου», «για τη Γαλλία»).
+igual(
+  "gramática griega: lugar",
+  ["Ελλάδα", "Κύπρος", "Γαλλία", "Ιταλία", "Καναδάς", "Βέλγιο", "Ισραήλ", "Ηνωμένες Πολιτείες", "Ηνωμένα Αραβικά Εμιράτα", "Νέα Ζηλανδία", "Άγιος Βικέντιος και Γρεναδίνες"].map((p) => GRAMATICA.el.en(p)),
+  ["στην Ελλάδα", "στην Κύπρο", "στη Γαλλία", "στην Ιταλία", "στον Καναδά", "στο Βέλγιο", "στο Ισραήλ", "στις Ηνωμένες Πολιτείες", "στα Ηνωμένα Αραβικά Εμιράτα", "στη Νέα Ζηλανδία", "στον Άγιο Βικέντιο και Γρεναδίνες"],
+);
+igual(
+  "gramática griega: genitivo",
+  ["Ελλάδα", "Κύπρος", "Αίγυπτος", "Λίβανος", "Βέλγιο", "Ηνωμένο Βασίλειο", "Νότια Αφρική", "Φιλιππίνες", "Βοσνία - Ερζεγοβίνη", "Κόστα Ρίκα", "Μιανμάρ (Βιρμανία)"].map((p) => GRAMATICA.el.de(p)),
+  ["της Ελλάδας", "της Κύπρου", "της Αιγύπτου", "του Λιβάνου", "του Βελγίου", "του Ηνωμένου Βασιλείου", "της Νότιας Αφρικής", "των Φιλιππινών", "της Βοσνίας - Ερζεγοβίνης", "της Κόστα Ρίκα", "του Μιανμάρ (Βιρμανία)"],
+);
+igual("gramática griega: para", ["Ελλάδα", "Γερμανία", "Κύπρος", "Καναδάς", "Μεξικό"].map((p) => GRAMATICA.el.para(p)), ["για την Ελλάδα", "για τη Γερμανία", "για την Κύπρο", "για τον Καναδά", "για το Μεξικό"]);
+igual("gramática griega: nombre", ["Ελλάδα", "Καναδάς", "Περού", "Κάτω Χώρες"].map((p) => GRAMATICA.el.nombre(p)), ["η Ελλάδα", "ο Καναδάς", "το Περού", "οι Κάτω Χώρες"]);
+// Mayúsculas sostenidas sin tono: lo hace toLocaleUpperCase("el") (toUpperCase() los deja).
+igual("mayúsculas griegas sin tono", "Υπολογισμός μισθού".toLocaleUpperCase("el"), "ΥΠΟΛΟΓΙΣΜΟΣ ΜΙΣΘΟΥ");
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).

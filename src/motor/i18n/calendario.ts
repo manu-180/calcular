@@ -7,6 +7,7 @@ import { formaUk, pluralUk } from "./plural";
 import { formaRu, pluralRu } from "./plural";
 import { pluralRo } from "./plural";
 import { formaCs, pluralCs } from "./plural";
+import { formaEl, pluralEl } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
 // Calendario laboral y fiscal de cada edición. Los textos no le hablan a nadie en segunda persona a
@@ -1787,7 +1788,83 @@ const cs: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs };
+// Griego (ADR 0002, D20): impersonal como los demás; el país con GRAMATICA.el («στην Ελλάδα», «για
+// την Κύπρο») y los días con formaEl/pluralEl (one/other). «Ημερολόγιο μισθοδοσίας» es como se
+// busca; «φορολογίας» suma las fechas de impuestos y aportes.
+const gEl = GRAMATICA.el;
+const el: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Ημερολόγιο μισθοδοσίας και φορολογίας",
+    seo: {
+      titulo: (pais, anios) => [
+        `Ημερολόγιο μισθοδοσίας και φορολογίας ${anios} ${gEl.en(pais)}: βασικές ημερομηνίες`,
+        `Ημερολόγιο μισθοδοσίας και φορολογίας ${anios} ${gEl.en(pais)}`,
+        `Ημερολόγιο μισθοδοσίας ${gEl.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Οι ημερομηνίες που αλλάζουν τον μισθό ${gEl.en(pais)}, από επίσημες πηγές: ${proximas}. Η καθεμία με τον υπολογισμό της.`,
+      descripcionSin: (pais) => `Οι ημερομηνίες που αλλάζουν τον μισθό ${gEl.en(pais)}, από επίσημες πηγές, η καθεμία με τον υπολογισμό της. Προσθέστε τες στο ημερολόγιο του κινητού σας.`,
+    },
+    ceja: (anios) => `Ημερολόγιο ${anios}`,
+    h1: (pais) => `Ημερολόγιο μισθοδοσίας και φορολογίας ${gEl.en(pais)}`,
+    acento: "οι ημερομηνίες που αλλάζουν τον μισθό",
+    bajada: "Κάθε ημερομηνία προέρχεται από επίσημη πηγή και οδηγεί στον υπολογισμό που επηρεάζει. Η σελίδα ενημερώνεται μόνη της μόλις δημοσιευτεί νέα τιμή.",
+    proxima: "Επόμενη ημερομηνία",
+    cuenta: {
+      hoy: "Σήμερα",
+      manana: "Αύριο",
+      ayer: "Χθες",
+      en: (n) => `Σε ${pluralEl(n, "ημέρα", "ημέρες")}`,
+      hace: (n) => `Πριν από ${pluralEl(n, "ημέρα", "ημέρες")}`,
+      dias: (n) => formaEl(n, "ημέρα", "ημέρες"),
+    },
+    queViene: "Έρχεται",
+    yaRige: "Ισχύει ήδη",
+    mesPorMes: "Το έτος μήνα προς μήνα",
+    sinFechas: "Δεν έχουν ανακοινωθεί αλλαγές",
+    filtro: "Φιλτράρισμα ανά θέμα",
+    todo: "Όλα",
+    tipos: { pago: "Πληρωμές", "salario-minimo": "Κατώτατος μισθός", impuestos: "Φόροι", aportes: "Εισφορές και συντάξεις", laboral: "Εργασιακοί κανόνες", indices: "Τιμές αναφοράς" },
+    pasa: (antes, despues) => `Από ${antes} σε ${despues}`,
+    queda: (valor) => `Ορίζεται σε ${valor}`,
+    cambian: "Αλλάζουν τα ποσά",
+    zonas: (lista) => `Περιοχές: ${lista}`,
+    limite: "Προθεσμία",
+    agregar: "Προσθήκη στο ημερολόγιό μου",
+    descargar: "Apple, Outlook και άλλα (αρχείο .ics)",
+    google: "Ημερολόγιο Google",
+    calcular: "Υπολογισμός",
+    tambien: "Και στους υπολογισμούς",
+    fuente: (organismo, fecha) => `Πηγή: ${organismo}. Επαλήθευση: ${fecha}.`,
+    verificado: (fecha) => `Επαλήθευση: ${fecha}`,
+    suscribir: {
+      titulo: "Όλο το ημερολόγιο, πάντα ενημερωμένο",
+      texto: "Εγγραφείτε μία φορά και οι νέες ημερομηνίες θα εμφανίζονται μόνες τους στο ημερολόγιο του κινητού ή του υπολογιστή σας.",
+      boton: "Εγγραφή στο ημερολόγιο",
+      copiar: "Αντιγραφή συνδέσμου",
+      copiado: "Ο σύνδεσμος αντιγράφηκε",
+    },
+    fuentes: {
+      titulo: "Από πού προέρχεται κάθε ημερομηνία",
+      texto: "Εδώ μπαίνουν μόνο ημερομηνίες που έχει ήδη ορίσει ένας κανόνας ή μια τιμή που δημοσίευσε ο αρμόδιος επίσημος φορέας. Ό,τι δεν έχει δημοσιευτεί ακόμη δεν εμφανίζεται.",
+    },
+    vacio: "Δεν υπάρχουν ημερομηνίες για αυτό το θέμα τους επόμενους δώδεκα μήνες.",
+    destacado: {
+      ceja: "Ημερολόγιο μισθοδοσίας",
+      titulo: "Οι ημερομηνίες που αλλάζουν τον μισθό φέτος",
+      ir: "Δείτε το ημερολόγιο",
+      proxima: (titulo, fecha) => `Επόμενη: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Ημερολόγιο μισθοδοσίας και φορολογίας ${gEl.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Ημερομηνίες μισθοδοσίας και φορολογίας ${gEl.en(pais)}, από επίσημες πηγές.`,
+      calculadora: "Υπολογισμός",
+      fuente: "Πηγή",
+    },
+    og: { proxima: "Επόμενη ημερομηνία", mas: (n) => `Και ακόμη ${pluralEl(n, "ημερομηνία", "ημερομηνίες")} φέτος` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

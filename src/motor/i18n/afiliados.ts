@@ -337,6 +337,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "otevře se v nové kartě",
     },
   },
+  el: {
+    base: {
+      titulo: "Μετακομίζετε στο εξωτερικό ή πληρώνεστε από άλλη χώρα;",
+      etiqueta: "Συνεργαζόμενοι σύνδεσμοι",
+      socios: {
+        wise: "Λογαριασμός σε πολλά νομίσματα για να λαμβάνετε και να στέλνετε χρήματα μεταξύ χωρών με τη μέση τιμή της αγοράς, με χρέωση που βλέπετε από πριν.",
+        deel: "Συμβάσεις και πληρωμές για όσους εργάζονται από μια χώρα για εταιρεία άλλης χώρας.",
+      },
+      nota: "Αν ανοίξετε λογαριασμό μέσω αυτών των συνδέσμων, ο ιστότοπος μπορεί να λάβει προμήθεια. Εσείς δεν πληρώνετε τίποτα παραπάνω.",
+      nuevaPestana: "ανοίγει σε νέα καρτέλα",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

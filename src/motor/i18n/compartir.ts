@@ -478,6 +478,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Podívejte se, kolik by vám čistého zůstalo ve více než ${n} zemích`,
     },
   },
+  // Griego (ADR 0002, D20): πληθυντικός ευγενείας; los botones van como sustantivo.
+  el: {
+    base: {
+      boton: "Κοινοποίηση",
+      botonAria: "Κοινοποίηση αυτού του υπολογιστή",
+      menuTitulo: "Κοινοποίηση μέσω",
+      copiar: "Αντιγραφή συνδέσμου",
+      copiado: "Ο σύνδεσμος αντιγράφηκε",
+      compartido: "Στάλθηκε",
+      errorCorto: "Η αντιγραφή απέτυχε",
+      errorAyuda: "Δεν ήταν δυνατή η αντιγραφή του συνδέσμου. Αντιγράψτε τον από τη γραμμή διευθύνσεων του προγράμματος περιήγησης.",
+      nuevaPestana: "ανοίγει σε νέα καρτέλα",
+      mensaje: (nombre) => `${nombre}. Δωρεάν, ο υπολογισμός παίρνει ένα λεπτό.`,
+      puenteIntro: "Και σε άλλες χώρες;",
+      puenteEnlace: (n) => `Δείτε πόσα καθαρά θα σας έμεναν σε περισσότερες από ${n} χώρες`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

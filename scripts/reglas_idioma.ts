@@ -207,6 +207,25 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Griego: un solo registro, el πληθυντικός ευγενείας de myAADE, gov.gr y los bancos (ADR 0002,
+  // D20). Se atrapan los pronombres de la segunda del singular («εσύ», «σου»; «σε» no, porque también
+  // es la preposición), los imperativos del singular que no se escriben igual que el aoristo de
+  // tercera («βάλε», «κάνε», «γράψε»; «υπολόγισε», «άλλαξε» o «επίλεξε» también son «calculó»,
+  // «cambió», «eligió» y no se pueden distinguir) y los presentes de segunda del singular («μπορείς»,
+  // «έχεις»).
+  el: {
+    informal: [
+      { re: palabras("εσύ|εσένα|σου|σένα"), nombre: "segunda del singular («εσύ», «σου»)" },
+      {
+        re: palabras(
+          "βάλε|κάνε|γράψε|πάτα|βρες|μάθε|δες|ξεκίνα|μοιράσου|πες|δώσε|πάρε|φτιάξε|κράτα|στείλε|δείξε",
+        ),
+        nombre: "imperativo del singular (va el de cortesía: «υπολογίστε», «επιλέξτε»)",
+      },
+      { re: palabras("έχεις|μπορείς|θέλεις|ξέρεις|πληρώνεις|κερδίζεις|βγάζεις|χρειάζεσαι|είσαι|παίρνεις|δουλεύεις|ξοδεύεις|βλέπεις|πρέπει να πληρώσεις|θα πάρεις|θα πληρώσεις|μπορούσες"), nombre: "presente de segunda del singular" },
+    ],
+    formal: [],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -281,6 +300,27 @@ function reglasCs(texto: string): string[] {
   const p: string[] = [];
   if (/[«»"”]/.test(texto)) p.push("comillas: en checo van „ “");
   if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en checo abren con „ (abajo)");
+  return p;
+}
+
+// Griego: monotónico con tonos y diéresis. La pregunta cierra con «;» (el punto y coma U+003B, que es
+// la forma canónica: U+037E se normaliza a él en NFC y no se usa), nunca con «?»; las comillas son
+// «» (y “ ” solo adentro de otras, que acá no hace falta); nada de politónico (U+1F00 a U+1FFF);
+// las mayúsculas sostenidas van sin tono («ΥΠΟΛΟΓΙΣΜΟΣ», no «ΥΠΟΛΟΓΙΣΜΌΣ»: toLocaleUpperCase("el") lo
+// hace solo); y ninguna palabra mezcla letras latinas y griegas (una «o» latina en una palabra
+// griega pasa el ojo pero no el buscador).
+const GRIEGO = /\p{sc=Greek}/u;
+function reglasEl(texto: string): string[] {
+  const p: string[] = [];
+  const sinUrls = texto.replace(/https?:\/\/\S+/g, "");
+  if (/\?/.test(sinUrls) && GRIEGO.test(texto)) p.push("signo «?» en griego: la pregunta cierra con «;»");
+  if (/;/.test(texto)) p.push("U+037E: usá el punto y coma U+003B, su forma canónica");
+  if (/["“”„]/.test(texto)) p.push("comillas: en griego van «»");
+  if (/[ἀ-῿]/.test(texto)) p.push("politónico: el griego de la web es monotónico");
+  for (const w of texto.match(/\p{L}+/gu) ?? []) {
+    if (w.length > 1 && GRIEGO.test(w) && w === w.toLocaleUpperCase("el") && /[ΆΈΉΊΌΎΏ]/.test(w.slice(1))) p.push(`mayúscula sostenida con tono «${w}» (va sin tono)`);
+    if (GRIEGO.test(w) && /[A-Za-z]/.test(w)) p.push(`palabra con letras latinas y griegas «${w}»`);
+  }
   return p;
 }
 
@@ -443,5 +483,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "ru") p.push(...reglasRu(texto));
   if (idioma === "ro") p.push(...reglasRo(texto));
   if (idioma === "cs") p.push(...reglasCs(texto));
+  if (idioma === "el") p.push(...reglasEl(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

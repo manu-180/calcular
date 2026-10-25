@@ -1040,6 +1040,116 @@ imperativos y presentes de segunda del singular de un formulario («zadej», «s
 `zz-ja`. `check_universales` prueba cs-CZ con CZK, «Svatý Vincenc a Grenadiny» por el nombre largo que
 se declina por partes y «Spojené arabské emiráty» por el plural con adjetivos delante.
 
+### D20. Griego (2026-10-24)
+
+D9 a D19 los usan otras ramas sin mergear (`claude/mundo-motor-eu`, `claude/mundo-motor-cs` y las
+demás); esta entrada toma el D20 para no chocar al mergear.
+
+`IDIOMAS` suma `el`, para Grecia y Chipre. Motor, mensajes de error, calculadora, sitio, inicio,
+legales, compartir, embed, afiliados, «Tu sueldo en el mundo» (`misthos-ston-kosmo`), rankings
+(`katataxi-choron`), horas de trabajo (`poses-ores-douleias`), calendario
+(`imerologio-misthodosias`), sueldos reales (`pragmatikoi-misthoi`), el diccionario de venta completo
+(familias, informes, planillas y mails) y las 41 universales están en griego.
+
+**Trato.** Un solo registro, el de myAADE, gov.gr y la Εθνική Τράπεζα: πληθυντικός ευγενείας
+(«σας», «εισάγετε», «υπολογίστε», «επιλέξτε»), nunca la segunda del singular. Los botones van como
+sustantivo o imperativo cortés («Υπολογισμός», «Αντιγραφή συνδέσμου»). Los mercados van con
+`trato: "usted"`, como ja, ko y zh; los diccionarios escriben solo `base`. La tarjeta para compartir
+va en primera persona. Los textos evitan los participios y adjetivos con género sobre la persona
+(«το άτομο που σας έστειλε τον σύνδεσμο», no «ο φίλος σας»). La herramienta se nombra por la acción
+(«Υπολογισμός δόσης δανείου») o como «υπολογιστής», como los bancos. Vocabulario real: υπολογισμός
+καθαρού μισθού, μικτός μισθός, φόρος εισοδήματος, ασφαλιστικές εισφορές, ΦΠΑ, στεγαστικό δάνειο,
+επιτόκιο, δόση, κεφάλαιο, ανατοκισμός, ονομαστικό y πραγματικό επιτόκιο. Las universales y las
+páginas globales quedan neutrales entre Grecia y Chipre: no nombran ΑΑΔΕ, ΕΦΚΑ, ΚΤΕΟ ni organismos
+de un solo país (los nombra la capa local de cada uno).
+
+**Ortografía y puntuación.** Monotónico con tonos (ά έ ή ί ό ύ ώ) y diéresis. La pregunta cierra con
+«;», escrito con el punto y coma U+003B: es la forma canónica (U+037E, el «signo de interrogación
+griego», se normaliza a U+003B en NFC, así que cualquier capa que normalice lo convierte igual) y es
+lo que escriben gov.gr y la prensa. Comillas «». Las mayúsculas sostenidas van sin tono: en el
+navegador lo hace `text-transform: uppercase` con `lang="el"`, y en las imágenes OG el texto se pasa
+por `toLocaleUpperCase(locale)` antes de Satori (que no conoce el idioma; además así las mayúsculas
+entran en el subconjunto de la fuente). `toUpperCase()` sin locale deja los tonos («ΕΛΛΆΔΑ»): no se
+usa en griego.
+
+**Plurales.** `Intl.PluralRules("el")` tiene one (solo 1) y other (0, 2 en adelante y fracciones:
+«1,5 ώρες»), como los idiomas latinos. `src/motor/i18n/plural.ts` da `formaEl` y `pluralEl`; las
+unidades de tiempo son ημέρα/ημέρες, εβδομάδα/εβδομάδες, ώρα/ώρες, μήνας/μήνες y έτος/έτη (el registro
+de los bancos y de gov.gr, no «χρόνια»).
+
+**Gramática del país.** El griego pone artículo con género y número delante del país y lo declina.
+`GRAMATICA.el`: `nombre(p)` da el nominativo con artículo («η Ελλάδα», «ο Καναδάς», «το Περού», «οι
+Κάτω Χώρες»); `de(p)` el genitivo («της Ελλάδας», «της Κύπρου», «του Λιβάνου», «των Ηνωμένων
+Πολιτειών»); `en(p)` contrae «σε» con el acusativo («στην Ελλάδα», «στην Κύπρο», «στον Καναδά», «στο
+Βέλγιο», «στις Ηνωμένες Πολιτείες», «στα Ηνωμένα Αραβικά Εμιράτα»); `para(p)` es «για» + acusativo
+(«για την Ελλάδα», «για τη Γερμανία»). `casosEl(p)` deja los tres casos con artículo y el género para
+las frases que los necesitan sueltos. Los nombres llegan como los escribe Intl.DisplayNames en el, así
+que la regla cubre los femeninos en -α/-η de una o varias palabras (cada palabra en -α/-η suma -ς en el
+genitivo: «της Νέας Ζηλανδίας», «της Νότιας Αφρικής», «της Βοσνίας - Ερζεγοβίνης») y todo lo demás
+va como neutro indeclinable («το Ισραήλ», «του Ιράν», «στο Μονακό»). Una tabla lleva los masculinos
+(Καναδάς, Παναμάς, Ισημερινός, Λίβανος, Νίγηρας, Μαυρίκιος, los «Άγιος ...»), los femeninos en -ος
+(Κύπρος, Αίγυπτος), los neutros que se declinan (Βέλγιο, Μεξικό, Μαρόκο, Λουξεμβούργο,
+Μαυροβούνιο, Ηνωμένο Βασίλειο...), los plurales (Ηνωμένες Πολιτείες, Φιλιππίνες, Κάτω Χώρες,
+Μαλδίβες, Ηνωμένα Αραβικά Εμιράτα...) y los femeninos con palabras extranjeras que no se declinan
+(Κόστα Ρίκα, Σρι Λάνκα, Σιέρα Λεόνε, Μπουρκίνα Φάσο). «Νήσος» y «Νήσοι» delante se declinan solos y lo
+que va entre paréntesis queda igual. El artículo femenino pierde la -ν ante consonante que no sea κ,
+π, τ, ξ, ψ, μπ, ντ, γκ, τσ o τζ («στη Γαλλία», «στην Κύπρο», «στην Γκάνα»); el masculino «τον» la
+conserva siempre, como en la prensa, para no confundirse con el neutro «το». Probado con los ~280
+nombres de Intl en el. Los marcadores `{pais}` del diccionario de venta no pasan por esta función: ahí
+el país va en nominativo entre paréntesis. Las fechas largas de Intl llevan el mes en genitivo
+(«24 Οκτωβρίου 2026»): las frases las introducen con «μέχρι τις» (o «την» el día 1) o con dos puntos.
+
+**Formato.** Intl de el-GR y el-CY: punto de miles, coma decimal, el euro detrás con espacio
+(«1.234,50 €») y el porcentaje pegado («24%»; en la prosa también). `parsearNumero` no cambia (casos
+nuevos en `check_motor`, incluido «5.000» como miles con `milesAmbiguos`). `inferir.ts` reconoce
+«ετήσιος», «ετησίως», «μηνιαίος», «έτος» y «μήνας» (por prefijo y sin diacríticos).
+
+**Fuente.** Geist no trae griego (ni en Google Fonts: sus subconjuntos son latin, latin-ext, cyrillic,
+cyrillic-ext y vietnamese). En la web, `:lang(el)` usa la fuente del sistema entera (system-ui, Segoe
+UI, Roboto, Noto Sans, Helvetica Neue, Arial), que en Windows, macOS, iOS y Android trae griego
+completo; entera y no mezclada con Geist para que las cifras no cambien de fuente a mitad de la
+frase. En las OG, Noto Sans (que tiene `greek`) va de respaldo detrás de Geist, igual que Noto Sans JP
+en japonés. El buscador cuenta las letras griegas (U+0370 a U+03FF) como letras y busca la sigma final
+como la otra («μισθος» encuentra «Μισθός»).
+
+**Slugs.** Transliteración ELOT 743 (ISO 843) en ASCII, sin tonos y en kebab-case, sobre la frase que
+busca la gente en griego: η→i, υ→y, ου→ou, αυ/ευ→av/ev (af/ef ante sorda), χ→ch, ψ→ps, ξ→x, θ→th,
+γκ→gk, μπ→mp. Se eligió la transliteración y no el slug en inglés del catálogo (como D8 con ja/ko/zh)
+porque es lo que usan los sitios griegos en sus URL, se lee y Google la asocia a la búsqueda en
+griego; el alfabeto griego en la URL quedaría codificado en porcentajes. Universales:
+`ypologismos-dosis-daneiou`, `ypologismos-fpa`, `ypologismos-stegastikou-daneiou`,
+`ypologismos-posostou`, `ypologismos-ekptosis`, `anatokismos`, `aplos-tokos`, `pragmatiko-epitokio`,
+`exoflisi-pistotikis-kartas`, `enoikio-i-agora-katoikias`, `apotamiefsi-gia-syntaxi`,
+`stochos-apotamiefsis`, `apothematiko-ektaktis-anagkis`, `oikogeneiakos-proypologismos`,
+`kostos-aftokinitou`, `apodosi-ependysis`, `perithorio-kerdous`, `nekro-simeio`,
+`oriaia-chreosi-freelancer`, `metatropi-misthou`, `ypologismos-afxisis-misthou`, `ores-ergasias`,
+`posostiaia-metavoli`, `apli-methodos-ton-trion`, `ypologismos-filodorimatos`, `moirasma-exodon`,
+`ypologismos-mesou-orou`, `ypologismos-ilikias`, `imeres-metaxy-imerominion`, `prosthesi-imeron`,
+`deiktis-mazas-somatos`, `ypologismos-thermidon`, `pithani-imerominia-toketou`,
+`ypologismos-oorrixias`, `rythmos-treximatos`, `katanalosi-kafsimou`, `katanalosi-revmatos`,
+`ypologismos-chromatos`, `ypologismos-tetragonikon-metron`, `ypologismos-plakidion` y
+`ypologismos-skyrodematos`. Rankings: `pou-ftanei-o-misthos`, `imera-forologikis-eleftherias` y
+`posa-menoun-apo-tin-afxisi`.
+
+**Universales.** Textos nativos para un lector griego y neutrales entre Grecia y Chipre; las tasas
+(ΦΠΑ) salen del dato del país. Los ejemplos se calculan con las funciones de cada `definicion.ts`.
+Salud con la oración de que no reemplaza la consulta profesional.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): sin exclamaciones, rayas ni guion como pausa; «?» en un texto griego (va «;»), U+037E (va
+U+003B), comillas que no son «», politónico (U+1F00 a U+1FFF), mayúsculas sostenidas con tono y
+palabras que mezclan letras latinas y griegas (una «o» latina dentro de una palabra griega pasa el ojo
+pero no el buscador). Registro: los pronombres de la segunda del singular («εσύ», «σου»; «σε» no,
+porque también es preposición), los presentes de segunda del singular («μπορείς», «έχεις») y los
+imperativos del singular que no coinciden con el aoristo de tercera («βάλε», «κάνε», «γράψε»;
+«υπολόγισε», «άλλαξε» o «επίλεξε» también significan «calculó», «cambió», «eligió» y no se pueden
+distinguir, así que no se atrapan).
+
+**Prueba.** `zz-el` (Ζηταλάνδη, locale `el-001`, Βόρεια y Νότια Περιφέρεια) es una edición interna
+como `zz-ja`, con el slug `examiniaio-epidoma`. `check_universales` prueba el-GR y el-CY con EUR, «Άγιος
+Βικέντιος και Γρεναδίνες» por el nombre largo masculino que se declina por partes y «Ηνωμένα Αραβικά
+Εμιράτα» por el plural neutro.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

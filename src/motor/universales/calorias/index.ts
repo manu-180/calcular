@@ -5,6 +5,7 @@ import { contenidoBn } from "./contenido/bn";
 import { contenidoCs } from "./contenido/cs";
 import { contenidoDa } from "./contenido/da";
 import { contenidoDe } from "./contenido/de";
+import { contenidoEl } from "./contenido/el";
 import { contenidoEn } from "./contenido/en";
 import { contenidoEs } from "./contenido/es";
 import { contenidoFi } from "./contenido/fi";
@@ -31,6 +32,7 @@ import { textosBn } from "./textos/bn";
 import { textosCs } from "./textos/cs";
 import { textosDa } from "./textos/da";
 import { textosDe } from "./textos/de";
+import { textosEl } from "./textos/el";
 import { textosEn } from "./textos/en";
 import { textosEs } from "./textos/es";
 import { textosFi } from "./textos/fi";
@@ -56,7 +58,7 @@ export default definirUniversal<UiCalorias>({
   id: "calorias",
   concepto: "calorias",
   definir,
-  textos: { ar: textosAr, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });

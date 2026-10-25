@@ -27,9 +27,11 @@ export function normalizar(texto: string): string {
     // con el apóstrofo del teclado encuentra lo mismo («oʻrtacha», «o'rtacha» y «ortacha»).
     .replace(/[ʻʼ]/g, "")
     .replace(/([og])[‘’'`](?=[a-z])/g, "$1")
-    // El cirílico (ucraniano) cuenta como letra: sin esto «кредит» quedaba vacío.
-    // El cirílico (ruso) cuenta como letra: sin esto «кредит» quedaba vacío.
-    .replace(/[^a-z0-9Ѐ-ӿЀ-ӿ]+/g, " ")
+    // El cirílico (ucraniano, ruso) y el griego cuentan como letra: sin esto «кредит» o «δάνειο»
+    // quedaban vacíos. La sigma final se busca como la otra: quien escribe «μισθ» o «μισθος» encuentra
+    // «Μισθός».
+    .replace(/ς/g, "σ")
+    .replace(/[^a-z0-9Ѐ-ӿͰ-Ͽ]+/g, " ")
     .trim();
 }
 

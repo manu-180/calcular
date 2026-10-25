@@ -33,7 +33,8 @@ const ESPERA_FUENTE_MS = 3000;
 // gʻ del uzbeko latino (ADR 0002, D16).
 // ru va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D17).
 // ro va con Noto Sans de respaldo por si Geist no trae ș y ț con coma (U+0218 a U+021B; ADR 0002, D18).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans" };
+// el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 
@@ -268,8 +269,10 @@ export function crearOgHoras(idioma: Idioma) {
     const bandera = fila ? await banderaDe(fila.iso) : null;
     const cjk = FUENTE_CJK[m.idioma];
     const familiaCjk = cjk && m.idioma === "zh" && /^zh-(CN|SG)/i.test(m.locale) ? "Noto Sans SC" : cjk;
+    // La ceja en mayúsculas sale de toLocaleUpperCase con el locale (en griego, sin tonos) y no del
+    // textTransform de Satori, que no sabe el idioma; así también entra en el subconjunto de la fuente.
     const datos: Datos = {
-      t,
+      t: { ...t, og: { ...t.og, menos: t.og.menos.toLocaleUpperCase(m.locale) } },
       antes: fila ? rellenarHoras(t.heroe.antes, { en: lugarEnPagina(nombrePais, m.idioma), producto: art }) : "",
       numero: horas?.numero ?? "",
       unidad: horas?.unidad ?? "",
@@ -294,7 +297,7 @@ export function crearOgHoras(idioma: Idioma) {
       datos.generica,
       datos.genericaBajada,
       t.og.cta,
-      t.og.menos,
+      datos.t.og.menos,
       ...filas.map((f) => `${f.nombre} ${f.texto}`),
     ].join(" ");
     const unicos = [...new Set(texto)].join("");
