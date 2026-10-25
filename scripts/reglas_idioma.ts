@@ -92,12 +92,14 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
   // forma corta de las interfaces serbias («Izračunaj», «Kopiraj link», «Podeli», «Preuzmi»,
   // «Dodaj», «Otvori», «Prikaži», «Pošalji», «Sačuvaj»), así que esos verbos no se atrapan; sí el
   // pronombre y los posesivos de «ti», los presentes de segunda del singular y los imperativos de
-  // un formulario que en la prosa van con -te, y el «Vi» con mayúscula a mitad de oración.
+  // un formulario que en la prosa van con -te, y el «Vi» con mayúscula a mitad de oración. Los
+  // imperativos que se escriben igual que la 3.ª persona del presente («promeni», «koristi»,
+  // «proveri», «uporedi», «popuni») o que un sustantivo («pokušaj») no se buscan.
   sr: {
     informal: [
       { re: palabras("ti|tebe|tebi|tobom|tvoj|tvoja|tvoje|tvog|tvoga|tvome|tvom|tvoju|tvoji|tvojih|tvojim|tvojima"), nombre: "obraćanje na «ti»" },
       {
-        re: palabras("unesi|upiši|izaberi|odaberi|proveri|uporedi|klikni|saznaj|pokušaj|popuni|navedi|koristi|promeni|podesi|oduzmi|saberi|pomnoži|pogledaj|zapamti|obrati"),
+        re: palabras("unesi|upiši|izaberi|odaberi|klikni|saznaj|oduzmi|saberi|pogledaj"),
         nombre: "imperativo de «ti» en la prosa (va -te)",
       },
       { re: palabras("možeš|imaš|želiš|dobiješ|dobijaš|plaćaš|zarađuješ|vidiš|radiš|trošiš|uštediš|moraš|ćeš|znaš|unosiš|biraš|računaš|jesi|nisi|treba ti"), nombre: "segunda persona del singular" },
