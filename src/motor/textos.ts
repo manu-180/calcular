@@ -742,6 +742,33 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "τελείες", coma: "κόμματα" },
     },
   },
+  // Húngaro (ADR 0002, D21): tegezés, como OTP, K&H, Revolut y las calculadoras de los portales
+  // húngaros. El botón es el sustantivo de acción («Kiszámítás», como los botones de esos sitios) y
+  // los mensajes van en imperativo de segunda del singular («add meg», «válassz»). Las cifras que se
+  // interpolan van tras dos puntos, nunca con un sufijo pegado («értéke: {min}»).
+  hu: {
+    base: {
+      calcular: "Kiszámítás",
+      resultado: "Eredmény",
+      si: "Igen",
+      no: "Nem",
+      sinResultado: "Ezt az eredményt egyelőre nem mutatjuk.",
+      errores: {
+        requerido: "Töltsd ki ezt a mezőt.",
+        "numero-invalido": "Számot adj meg, például: {ejemplo}.",
+        "entero-invalido": "Egész számot adj meg, tizedesjegyek nélkül.",
+        "menor-que-min": "A legkisebb megengedett érték: {min}.",
+        "mayor-que-max": "A legnagyobb megengedett érték: {max}.",
+        "fecha-invalida": "Válassz érvényes dátumot.",
+        "hora-invalida": "Válassz érvényes időpontot.",
+        "opcion-invalida": "Válassz egyet a lehetőségek közül.",
+        "region-invalida": "Válassz megyét vagy régiót.",
+        "calculo-fallido": "Ezekkel az adatokkal nem sikerült a számítás. Ellenőrizd az értékeket, és próbáld újra.",
+      },
+      milesAmbiguos: "Erre gondoltál: {sugerido}? Írd be a számot {signos} nélkül.",
+      separadores: { punto: "pontok", coma: "vesszők" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

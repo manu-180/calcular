@@ -94,6 +94,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   },
   // Griego: one/other, como los idiomas latinos; «έτος/έτη» es el registro de los bancos y de gov.gr.
   el: { dias: { uno: "ημέρα", otros: "ημέρες" }, semanas: { uno: "εβδομάδα", otros: "εβδομάδες" }, horas: { uno: "ώρα", otros: "ώρες" }, meses: { uno: "μήνας", otros: "μήνες" }, anios: { uno: "έτος", otros: "έτη" } },
+  // El húngaro no pone plural después de un número («3 nap», «1,5 év»): las dos formas son iguales.
+  hu: { dias: { uno: "nap", otros: "nap" }, semanas: { uno: "hét", otros: "hét" }, horas: { uno: "óra", otros: "óra" }, meses: { uno: "hónap", otros: "hónap" }, anios: { uno: "év", otros: "év" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

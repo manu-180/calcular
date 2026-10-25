@@ -294,6 +294,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Πηγή",
     },
   },
+  hu: {
+    base: {
+      datos: "Az adataid",
+      resultado: "Eredmény",
+      vacio: "Töltsd ki az adatokat, és kattints a „Kiszámítás” gombra: az eredmény itt jelenik meg.",
+      sinResultado: "Ezt az eredményt egyelőre nem mutatjuk.",
+      avisos: { info: "Jó tudni", cautela: "Figyelem", bloquea: "Miért nem mutatjuk az eredményt" },
+      fuenteDelAviso: "Forrás",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

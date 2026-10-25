@@ -14,7 +14,8 @@ import "@/motor/embed/estilos-embed.css";
 // sitio, y el embed va dentro del blog de otra persona (ver src/motor/embed/rutas.ts para cómo llega
 // la URL pública /<m>/embed/<slug> hasta acá).
 // latin-ext trae las letras del checo (ř, ě, ů); con unicode-range solo se baja si la página las usa.
-const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext"], display: "optional" });
+// latin-ext trae la ő y la ű del húngaro; con unicode-range solo se baja si la página las usa.
+const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext"], display: "optional" });
 
 export const revalidate = 3600;
 

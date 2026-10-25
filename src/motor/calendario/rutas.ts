@@ -36,6 +36,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   ro: "calendar-salarial",
   cs: "vyplatni-kalendar",
   el: "imerologio-misthodosias",
+  hu: "fizetesi-naptar",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";

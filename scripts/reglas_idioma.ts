@@ -226,6 +226,20 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Húngaro: un solo registro, la tegezés de OTP, K&H, Revolut y las calculadoras de los portales
+  // (ADR 0002, D21). Se atrapa la magázás: el «Ön» con sus casos (con mayúscula, como lo escriben
+  // NAV y Ügyfélkapu; en minúscula «önt» es un verbo) y los imperativos corteses de un formulario
+  // («kattintson», «adja meg», «válassza ki»), que en tegezés son «kattints», «add meg», «válaszd ki».
+  hu: {
+    informal: [],
+    formal: [
+      { re: /(?<!\p{L})(?:Ön|Önt|Önnek|Öné|Önök|Önöket|Önöknek|Önnel|Önre|Öntől|Önhöz|Önön|Önben|Önnél|Önért|Önöké)(?!\p{L})/u, nombre: "magázás («Ön»)" },
+      {
+        re: palabras("kattintson|kattintsanak|adja meg|írja be|töltse ki|válassza ki|válasszon|ellenőrizze|számolja ki|számítsa ki|tekintse meg|nézze meg|próbálja ki|próbálja újra|olvassa el|használja ki|vegye figyelembe|vegye fel|kérjük, adja|forduljon"),
+        nombre: "imperativo de magázás (va tegezés: «kattints», «add meg»)",
+      },
+    ],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -321,6 +335,22 @@ function reglasEl(texto: string): string[] {
     if (w.length > 1 && GRIEGO.test(w) && w === w.toLocaleUpperCase("el") && /[ΆΈΉΊΌΎΏ]/.test(w.slice(1))) p.push(`mayúscula sostenida con tono «${w}» (va sin tono)`);
     if (GRIEGO.test(w) && /[A-Za-z]/.test(w)) p.push(`palabra con letras latinas y griegas «${w}»`);
   }
+  return p;
+}
+
+// Húngaro: comillas „ ” (abre abajo, cierra arriba a la derecha), nada de «», "" ni “. Ningún sufijo
+// pegado a una cifra («5-ben», «2026-ig», «27%-os»): la forma del sufijo depende de cómo se lee el
+// número y en una plantilla el número cambia, así que va tras dos puntos o con una posposición. Y
+// nada de plural detrás de un número («3 nap», nunca «3 napok»).
+const PLURAL_TRAS_NUMERO_HU =
+  /\d\s+(?:napok|hetek|hónapok|évek|órák|percek|országok|kalkulátorok|forintok|eurók|dollárok|személyek|emberek|gyerekek|részletek|tételek|alkalmak|kilométerek|literek|négyzetméterek|méterek|kilogrammok|kalóriák|százalékok|pontok|jegyek|fizetések|vendégek|barátok)(?!\p{L})/u;
+
+function reglasHu(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"“]/.test(texto)) p.push("comillas: en húngaro van „ ”");
+  if (/(?:^|[\s(])”/.test(texto)) p.push("comillas: en húngaro abren con „ (abajo)");
+  if (/[\d%]-\p{Ll}/u.test(texto)) p.push("sufijo pegado a una cifra (va tras dos puntos o con posposición)");
+  if (PLURAL_TRAS_NUMERO_HU.test(texto)) p.push("plural detrás de un número (en húngaro va en singular: «3 nap»)");
   return p;
 }
 
@@ -484,5 +514,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "ro") p.push(...reglasRo(texto));
   if (idioma === "cs") p.push(...reglasCs(texto));
   if (idioma === "el") p.push(...reglasEl(texto));
+  if (idioma === "hu") p.push(...reglasHu(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

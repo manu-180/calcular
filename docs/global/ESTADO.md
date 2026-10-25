@@ -71,6 +71,7 @@ varias veces por límite de uso.
 | Motor rumano (ro) | claude/mundo-motor-ro | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Rumania y Moldavia |
 | Motor checo (cs) | claude/mundo-motor-cs | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Motor griego (el) | claude/mundo-motor-el | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
+| Motor húngaro (hu) | claude/mundo-motor-hu | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -332,6 +333,32 @@ Falta para publicar Grecia y Chipre:
   y `GRAMATICA` suman cada idioma; el `FUENTE_CJK` de las OG suma `el: "Noto Sans"` junto a lo que
   agreguen las otras (ru también usa Noto Sans); las mayúsculas de las OG con `toLocaleUpperCase` y la
   normalización del buscador (rango griego y sigma final) se suman a la del cirílico de la rama ru.
+
+## 24/10/2026 · Motor húngaro (`claude/mundo-motor-hu`)
+
+hu en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`fizetes-a-vilagban`), rankings (`orszagok-rangsora`), horas de trabajo
+(`hany-ora-munka`), calendario (`fizetesi-naptar`), sueldos reales (`valodi-fizetesek`), venta
+completa (`IDIOMAS_VENTA`) y las 41 universales con slugs ASCII sin diacríticos (`hitelkalkulator`,
+`afa-kalkulator`, `lakashitel-kalkulator`...). Registro: tegezés, la de OTP, K&H y los portales de
+calculadoras; mercados con `trato: "tu"`. Sin plural detrás de un número. `esetekHu` y `GRAMATICA.hu`
+dan los casos del país con armonía vocálica («Magyarországon», «Németországban», «az Egyesült
+Államokban»); `neveloHu` elige «a» o «az» también delante de cifras. Ningún sufijo pegado a cifras ni
+marcadores. Geist con `latin-ext`. Decisiones en ADR 0002, D21. Edición de prueba `zz-hu`.
+
+Falta para publicar Hungría:
+- El país en sí (BRIEF-PAIS; todo lo que sigue, a verificar en fuente oficial): nettó bér kalkulátor
+  (`nettober-kalkulator`, libre: SZJA, TB-járulék,
+  családi kedvezmény, 25 év alattiak kedvezménye, első házasok), minimálbér y garantált bérminimum,
+  ÁFA y sus kulcsok, KATA y átalányadó, táppénz, végkielégítés, con datos verificados en fuentes
+  oficiales (nav.gov.hu, njt.hu, magyarkozlony.hu, ksh.hu, mnb.hu, allamkincstar.gov.hu).
+- Revisión de un hablante nativo sobre una muestra de páginas (sobre todo la tabla de sufijos de
+  países poco frecuentes y los títulos con «kalkulátor» separado).
+- Al mergear con `claude/mundo-motor-cs`, `-tr`, `-eu` y las demás ramas de motor: chocan las listas
+  por idioma (`IDIOMAS`, `GRAMATICA`, los `DICCIONARIOS_*`, `IDIOMAS_VENTA`, `TRATOS` y los mercados de
+  prueba de los checks, los slugs de las páginas globales, `PAISES` con las ediciones zz-*) y las
+  esperas de `check_motor` sobre las hermanas de zz/bono; se resuelven sumando los idiomas de las dos
+  ramas. El cambio de Geist a `latin-ext` es el mismo que el de cs.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 

@@ -1067,7 +1067,44 @@ const el: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el };
+// Húngaro (ADR 0002, D21): tegezés, como OTP y los portales húngaros; el país va con «számára»
+// (GRAMATICA.hu: «Magyarország számára»), que no cambia el nombre.
+const hu: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa kalkulátor",
+    marcaNuevaPestana: "(új lapon nyílik meg)",
+    noDisponible: { titulo: "Ez a kalkulátor nem érhető el", texto: "Lehet, hogy megváltozott a címe." },
+    insertar: "Tedd ki a saját oldaladra",
+    pagina: {
+      titulo: (pais) => [`Ingyenes kalkulátorok a weboldaladra | ${pais}`, "Ingyenes kalkulátorok a weboldaladra"],
+      descripcion: (pais) => `Válassz kalkulátort ${GRAMATICA.hu.para(pais)}, másold ki a kódot, és illeszd be a blogodba vagy a weboldaladba. Ingyenes, mindig friss hivatalos adatokkal.`,
+      h1: "Tegyél kalkulátort a weboldaladra",
+      bajada: "Válassz kalkulátort, másold ki a kódot, és illeszd be, ahová szeretnéd. Ingyenes, és az adatok maguktól frissülnek.",
+      calculadora: "Kalkulátor",
+      buscar: "Kalkulátor keresése",
+      sinResultados: "Egy kalkulátor sem felel meg a keresésnek.",
+      tema: "Megjelenés",
+      claro: "Világos",
+      oscuro: "Sötét",
+      ancho: "Szélesség",
+      anchoCompleto: "Teljes szélesség",
+      acento: "Kiemelőszín",
+      colores: ["Zöld", "Kék", "Narancs", "Rózsaszín", "Grafit"],
+      credito: "Forrásmegjelölő link a kalkulátor alatt",
+      vistaPrevia: "Előnézet",
+      codigo: "Beágyazási kód",
+      copiar: "Kód másolása",
+      copiado: "A kódot kimásoltuk",
+      ayudaScript: "A szkript nem kötelező: a kalkulátor magasságát a tartalmához igazítja.",
+      ventajas: ["Ingyenes és regisztráció nélküli", "Mindig friss hivatalos adatok", "Bármilyen szélességhez alkalmazkodik"],
+      nota: "A kalkulátor alatt egy link mutat a CalcularYa oldalra. Kérjük, ne töröld.",
+      verTodas: (pais) => `Az összes kalkulátor ${GRAMATICA.hu.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa kalkulátor`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

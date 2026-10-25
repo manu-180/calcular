@@ -18,6 +18,7 @@ import zzRu from "./zz-ru";
 import zzRo from "./zz-ro";
 import zzCs from "./zz-cs";
 import zzEl from "./zz-el";
+import zzHu from "./zz-hu";
 import cl from "./cl";
 import co from "./co";
 import mx from "./mx";
@@ -92,6 +93,6 @@ const global = definirPais({
   },
 });
 
-export const PAISES = [global, zz, zzEn, zzJa, zzPl, zzSv, zzDa, zzNb, zzFi, zzAr, zzId, zzTr, zzBn, zzTh, zzUk, zzUz, zzRu, zzRo, zzCs, zzEl, cl, co, mx, pe, uy, ec, cr, gt, py, rd, sv, pa, hn, ni, ve, bo, us, br, gb, fr, de, es, it, ca, nl, ie, at, pt, au, nz, za, ch, sg, be, chFr, chIt, caFr, beFr, inn, hk, ng, my, ph, ma, lu, luDe, ke, tz, gh, sn, pk, jp, ae, li, kw] as const;
+export const PAISES = [global, zz, zzEn, zzJa, zzPl, zzSv, zzDa, zzNb, zzFi, zzAr, zzId, zzTr, zzBn, zzTh, zzUk, zzUz, zzRu, zzRo, zzCs, zzEl, zzHu, cl, co, mx, pe, uy, ec, cr, gt, py, rd, sv, pa, hn, ni, ve, bo, us, br, gb, fr, de, es, it, ca, nl, ie, at, pt, au, nz, za, ch, sg, be, chFr, chIt, caFr, beFr, inn, hk, ng, my, ph, ma, lu, luDe, ke, tz, gh, sn, pk, jp, ae, li, kw] as const;
 
 export const registro = crearRegistro(PAISES);

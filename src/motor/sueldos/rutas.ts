@@ -29,6 +29,7 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   ro: "salarii-reale",
   cs: "skutecne-mzdy",
   el: "pragmatikoi-misthoi",
+  hu: "valodi-fizetesek",
 };
 
 export const RUTA_SUELDOS_AR = "/sueldos-reales";

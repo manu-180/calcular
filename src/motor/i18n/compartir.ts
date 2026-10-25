@@ -495,6 +495,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Δείτε πόσα καθαρά θα σας έμεναν σε περισσότερες από ${n} χώρες`,
     },
   },
+  // Húngaro (ADR 0002, D21): tegezés, como OTP y los portales húngaros.
+  hu: {
+    base: {
+      boton: "Megosztás",
+      botonAria: "A kalkulátor megosztása",
+      menuTitulo: "Megosztás itt",
+      copiar: "Link másolása",
+      copiado: "A linket kimásoltuk",
+      compartido: "Elküldve",
+      errorCorto: "Nem sikerült a másolás",
+      errorAyuda: "Nem sikerült kimásolni a linket. Másold ki a böngésző címsorából.",
+      nuevaPestana: "új lapon nyílik meg",
+      mensaje: (nombre) => `${nombre}. Ingyenes, egy perc alatt kiszámolod.`,
+      puenteIntro: "És más országokban?",
+      puenteEnlace: (n) => `Nézd meg, mennyi maradna nettóban több mint ${n} országban`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

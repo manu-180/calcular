@@ -1,6 +1,6 @@
 import { pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
-import { casosEl, GRAMATICA } from "./gramatica";
+import { casosEl, GRAMATICA, mayusculaHu } from "./gramatica";
 import { formaRu, pluralCs, pluralEl, pluralPl, pluralRo, pluralRu, pluralUk } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import { PT_LUSOFONIA } from "./variantes";
@@ -5027,7 +5027,173 @@ const el: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el };
+// ───────────────────────────── hu ─────────────────────────────
+
+// Húngaro (ADR 0002, D21): tegezés, como OTP y las calculadoras de los portales húngaros; la tarjeta
+// y el texto para compartir, en primera persona. El país va con GRAMATICA.hu («Magyarországon», «az
+// Egyesült Államokban»). Ningún sufijo se pega a una cifra ni a una fecha: la fecha va con «napjáig»
+// («2026. október 24. napjáig») y las cifras tras dos puntos o delante de un sustantivo («3 nap»).
+// Las funciones de números se llaman con centinelas (textos-cliente.ts), así que nunca se elige el
+// artículo según la cifra: las frases están armadas para no necesitarlo.
+const gHu = GRAMATICA.hu;
+const SEO_HU = "Adószabadság napja és nettó fizetés a világban";
+
+const hu: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "A fizetésed a világban",
+    seo: {
+      titulo: (pais) => [`${SEO_HU} | ${pais}`, SEO_HU, "A fizetésed a világban"],
+      tituloGlobal: [SEO_HU, "A fizetésed a világban"],
+      descripcion: (pais, n) =>
+        `Nézd meg, az év hányadik napjáig dolgozol az államnak a fizetésedből ${gHu.en(pais)}, és mennyi maradna nettóban ${n} országban. Ingyenes, regisztráció nélkül.`,
+      descripcionGlobal: (n) => `Nézd meg, az év hányadik napjáig dolgozol az államnak, és mennyi maradna a fizetésedből nettóban ${n} országban. Ingyenes, regisztráció nélkül.`,
+    },
+    ceja: "A te adószabadság-napod",
+    h1: "Az év hányadik napjáig dolgozol az államnak?",
+    bajada: (n) => `Add meg a bruttó fizetésedet, és megkapod a dátumodat. Utána összevetheted ${n} országgal, azonos vásárlóerőn és minden ország saját adószabályaival.`,
+    form: {
+      titulo: "A fizetésed",
+      sueldo: "Bruttó fizetés",
+      mes: "Havi",
+      anio: "Éves",
+      periodo: "Fizetési időszak",
+      pais: "Az ország, ahol dolgozol",
+      ejemplo: "Példa",
+      ejemploAyuda: "Ez egy mintafizetés. Írd be a sajátodat, és minden szám azonnal újraszámolódik.",
+      propio: "A saját számításodból vettük át.",
+      invalido: "Nullánál nagyobb összeget adj meg.",
+      pagas: "Havi bruttó bér a bérpapír szerint: a törvényben előírt pluszfizetéseket (13. vagy 14. havi bér) mi számoljuk hozzá. A nettó a 12 hónap átlaga.",
+    },
+    heroe: {
+      hasta: (fecha) => `Az államnak dolgozol ${fecha} napjáig`,
+      tasa: (pct) => `A fizetésedből ennyi megy el SZJA-ra és kötelező járulékokra: ${pct}.`,
+      dias: (n, total) => `${n} nap az év ${total} napjából`,
+      enMano: "Nettóban marad",
+      porMes: "havonta",
+      anio: (anio, n, total) => `${anio}: ${n} nap az államnak, az év ${total} napjából.`,
+      resto: "Másnaptól minden, amit megkeresel, a tiéd.",
+    },
+    ranking: {
+      titulo: "Ugyanaz a fizetés, országról országra",
+      bajada: "Ennyi maradna nettóban minden országban, azonos vásárlóerőn. Minden sor az adott ország hivatalos kalkulátorából jön.",
+      lista: "Az országok a nettó fizetés szerint rendezve",
+      buscar: "Ország keresése",
+      filtrar: "Szűrés régió szerint",
+      todas: "Mind",
+      regiones: { americas: "Amerika", europa: "Európa", asia: "Ázsia és Óceánia", africa: "Afrika és a Közel-Kelet" },
+      tuPais: "A te országod",
+      mejor: "Itt jársz a legjobban",
+      enMano: "Nettó havonta",
+      enTuMoneda: "A te pénznemedben",
+      vsTuPais: "A te országodhoz képest",
+      verTodos: (n) => `Az összes ország (${n})`,
+      verMenos: "Kevesebb",
+      sinResultados: (q) => `Nincs ilyen ország: „${q}”.`,
+      abrir: (pais) => `Kalkulátor megnyitása: ${gHu.nombre(pais)}`,
+      mas: (pct) => `több: ${pct}`,
+      menos: (pct) => `kevesebb: ${pct}`,
+      igual: "Ugyanannyi",
+      puesto: (p, total) => `Az országod helyezése: ${p}. hely, összesen ${total} ország közül.`,
+    },
+    tarjeta: {
+      titulo: "A megosztható kártyád",
+      bajada: "A dátumodat és a százalékot mutatja. Azt, hogy mennyit keresel, soha.",
+      hasta: (fecha) => `Az államnak dolgozom ${fecha} napjáig`,
+      tasa: (pct) => `A fizetésemből ennyi megy el adóra: ${pct}`,
+      mejor: (pais, pct) => `Ugyanebből a fizetésből ${gHu.en(pais)} több maradna nekem nettóban (+${pct})`,
+      mejorPropio: (pais) => `Ebből a fizetésből sehol sem maradna több, mint ${gHu.en(pais)}`,
+      yVos: "És te?",
+      cta: "Nézd meg a saját dátumodat:",
+      generica: "Az év hányadik napjáig dolgozol az államnak?",
+      genericaBajada: (n) => `A fizetésed ${n} országban, mindegyik ország hivatalos kalkulátorával`,
+      compartir: "Kártya megosztása",
+      compartirDuelo: "Elfogadom a kihívást",
+      descargar: "Kép letöltése",
+      copiado: "A linket kimásoltuk. Illeszd be, ahová szeretnéd.",
+      compartido: "Kész, elküldve.",
+      error: "Nem sikerült megosztani. Próbáld újra.",
+      texto: (fecha) => `Idén ${fecha} napjáig dolgozom az államnak. És te?`,
+      alt: "A kártyád előnézete",
+    },
+    duelo: {
+      amigo: (fecha) => `Aki ezt küldte neked, ${fecha} napjáig dolgozik az államnak.`,
+      yVos: "És te?",
+      invitacion: "Írd be a fizetésedet, és mérd össze magad vele.",
+      vos: "Te",
+      elAmigo: "A küldő",
+      dia: "Az államnak dolgozik eddig",
+      tasa: "Adók és járulékok",
+      mejorPais: "Itt jár a legjobban",
+      antes: (d) => `A te szabadságod ${d} nappal korábban kezdődik, mint a küldőé.`,
+      despues: (d) => `A küldő szabadsága ${d} nappal korábban kezdődik, mint a tiéd.`,
+      empate: "Mindkettőtök szabadsága ugyanazon a napon kezdődik.",
+      desde: (pais) => `${mayusculaHu(gHu.en(pais))} dolgozik`,
+    },
+    cero: {
+      dia: "nulla nap",
+      heroeAntes: "Ennyit dolgozol az államnak:",
+      tarjetaAntes: "Ennyit dolgozom az államnak:",
+      motivo: "Ebből a fizetésből nem vonnak le sem SZJA-t, sem kötelező járulékot.",
+      texto: "Idén egyetlen napot sem dolgozom az államnak. És te?",
+      amigo: "Aki ezt küldte neked, egyetlen napot sem dolgozik az államnak.",
+    },
+    metodo: {
+      titulo: "Hogyan számolunk",
+      estimacion: "Ez becslés az országok összevetéséhez, nem bérjegyzék. Adókedvezmények, gyerekek vagy prémiumok módosíthatják a te számodat.",
+      supuestos: [
+        "Egyedülálló, gyermektelen személy, minden ország kalkulátorának alapértékeivel.",
+        "A nettó fizetés az, ami a jövedelemadó és a munkavállaló által fizetett járulékok után marad. A fogyasztási adókat és a munkáltatói járulékokat nem számoljuk.",
+        "A 13. havi bért és a többi kötelező pluszfizetést úgy osztjuk el az évre, ahogy az adott ország törvénye előírja.",
+        "Az Egyesült Államokban nem számoljuk az egyes államok és a helyi önkormányzatok adóját: csak a szövetségi adót és a bérhez kötött járulékokat.",
+        "A fizetésed más országba való átszámításához vásárlóerő-paritást (PPP) használunk: azonos életszínvonalat, nem a mai árfolyamot.",
+        "Argentína vásárlóerő-paritását az INDEC fogyasztói árindexével frissítjük, mert a Világbank csak a 2021. évig közli.",
+        "Az adószabadság napja január elsejétől osztja el az adókat az évre. Ha az adók a fizetés 30 százalékát viszik el, az év 30 százalékában az államnak dolgozol.",
+      ],
+      ppaTitulo: "Vásárlóerő-paritás",
+      bancoMundial: "Világbank",
+      ppa: (organismo, indicador, anio) => `${organismo}, mutató: ${indicador}, legutóbbi elérhető év: ${anio}.`,
+      consultado: (fecha) => `Ellenőrizve: ${fecha}.`,
+      verFuente: "Forrás megnyitása",
+      fuentesTitulo: "Az egyes országok forrásai",
+      fuentesBajada: "Minden sor az adott ország nettóbér-kalkulátorát és hivatalos adatait használja.",
+      verificado: (fecha) => `Adatok ellenőrizve: ${fecha}`,
+      sello: (fecha) => `Hivatalos adatok, minden ország forrásánál ellenőrizve. A legrégebbi ellenőrzés: ${fecha}.`,
+    },
+    faqTitulo: "Gyakori kérdések",
+    faq: (n) => [
+      {
+        pregunta: "Mi az adószabadság napja?",
+        respuesta:
+          "Az a nap az évben, amikorra kifizetnéd az adókat és a járulékokat, ha mindaz, amit január elsejétől megkeresel, először az államhoz kerülne. Itt a saját fizetésedből számoljuk, nem az országos átlagból.",
+      },
+      {
+        pregunta: "Miért vásárlóerő szerint hasonlítunk össze?",
+        respuesta: "Árfolyamon számolva egy fizetés a naptól függően óriásinak vagy aprónak tűnhet. A vásárlóerő-paritás azt veti össze, mit veszel meg valójában abból a pénzből az egyes országokban.",
+      },
+      {
+        pregunta: "Elmentitek a fizetésemet?",
+        respuesta: "Nem. A számítás a böngésződben fut. Amit megosztasz, abban csak dátumok, százalékok és országok vannak.",
+      },
+      {
+        pregunta: "Miért más a valódi nettó fizetésem?",
+        respuesta:
+          "Egyedülálló, gyermektelen személlyel és alapértékekkel számolunk. Adókedvezmények, prémiumok vagy különleges szabályok módosítják az eredményt. A saját helyzeted pontos kiszámításához nyisd meg a te országod kalkulátorát.",
+      },
+      {
+        pregunta: "Mely országok szerepelnek?",
+        respuesta: `Jelenleg ${n} ország, mindegyik saját nettóbér-kalkulátorral és hivatalos adatokkal. Újabbakat is felveszünk, amint ellenőriztük az adószabályaikat.`,
+      },
+    ],
+    destacado: {
+      ceja: "Nemzetközi összevetés",
+      titulo: "Az év hányadik napjáig dolgozol az államnak?",
+      texto: "Add meg a fizetésedet, és nézd meg, mennyi maradna nettóban más országokban.",
+      ir: "Megnézem a dátumomat",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);
