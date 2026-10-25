@@ -10,6 +10,14 @@ import asfalistikesEisforesMisthoton from "./calculadoras/asfalistikes-eisfores-
 import contenidoAsfalistikesEisforesMisthoton from "./contenido/asfalistikes-eisfores-misthoton";
 import katotatosMisthos from "./calculadoras/katotatos-misthos";
 import contenidoKatotatosMisthos from "./contenido/katotatos-misthos";
+import doroChristougennon from "./calculadoras/doro-christougennon";
+import contenidoDoroChristougennon from "./contenido/doro-christougennon";
+import doroPascha from "./calculadoras/doro-pascha";
+import contenidoDoroPascha from "./contenido/doro-pascha";
+import epidomaAdeias from "./calculadoras/epidoma-adeias";
+import contenidoEpidomaAdeias from "./contenido/epidoma-adeias";
+import imeresAdeias from "./calculadoras/imeres-adeias";
+import contenidoImeresAdeias from "./contenido/imeres-adeias";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -27,6 +35,10 @@ export default definirPais({
     { definicion: kostosErgodoti, contenido: contenidoKostosErgodoti, cliente: () => import("./calculadoras/kostos-ergodoti.cliente") },
     { definicion: asfalistikesEisforesMisthoton, contenido: contenidoAsfalistikesEisforesMisthoton, cliente: () => import("./calculadoras/asfalistikes-eisfores-misthoton.cliente") },
     { definicion: katotatosMisthos, contenido: contenidoKatotatosMisthos, cliente: () => import("./calculadoras/katotatos-misthos.cliente") },
+    { definicion: doroChristougennon, contenido: contenidoDoroChristougennon, cliente: () => import("./calculadoras/doro-christougennon.cliente") },
+    { definicion: doroPascha, contenido: contenidoDoroPascha, cliente: () => import("./calculadoras/doro-pascha.cliente") },
+    { definicion: epidomaAdeias, contenido: contenidoEpidomaAdeias, cliente: () => import("./calculadoras/epidoma-adeias.cliente") },
+    { definicion: imeresAdeias, contenido: contenidoImeresAdeias, cliente: () => import("./calculadoras/imeres-adeias.cliente") },
   ],
   universales: "todas",
   novedades,
