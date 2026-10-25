@@ -16,6 +16,14 @@ import calculatorMicrointreprindere from "./calculadoras/calculator-microintrepr
 import contenidoCalculatorMicrointreprindere from "./contenido/calculator-microintreprindere";
 import impozitDividende from "./calculadoras/impozit-dividende";
 import contenidoImpozitDividende from "./contenido/impozit-dividende";
+import impozitChirie from "./calculadoras/impozit-chirie";
+import contenidoImpozitChirie from "./contenido/impozit-chirie";
+import impozitVanzareApartament from "./calculadoras/impozit-vanzare-apartament";
+import contenidoImpozitVanzareApartament from "./contenido/impozit-vanzare-apartament";
+import calculatorCass from "./calculadoras/calculator-cass";
+import contenidoCalculatorCass from "./contenido/calculator-cass";
+import calculatorDrepturiDeAutor from "./calculadoras/calculator-drepturi-de-autor";
+import contenidoCalculatorDrepturiDeAutor from "./contenido/calculator-drepturi-de-autor";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: calculatorPfa, contenido: contenidoCalculatorPfa, cliente: () => import("./calculadoras/calculator-pfa.cliente") },
     { definicion: calculatorMicrointreprindere, contenido: contenidoCalculatorMicrointreprindere, cliente: () => import("./calculadoras/calculator-microintreprindere.cliente") },
     { definicion: impozitDividende, contenido: contenidoImpozitDividende, cliente: () => import("./calculadoras/impozit-dividende.cliente") },
+    { definicion: impozitChirie, contenido: contenidoImpozitChirie, cliente: () => import("./calculadoras/impozit-chirie.cliente") },
+    { definicion: impozitVanzareApartament, contenido: contenidoImpozitVanzareApartament, cliente: () => import("./calculadoras/impozit-vanzare-apartament.cliente") },
+    { definicion: calculatorCass, contenido: contenidoCalculatorCass, cliente: () => import("./calculadoras/calculator-cass.cliente") },
+    { definicion: calculatorDrepturiDeAutor, contenido: contenidoCalculatorDrepturiDeAutor, cliente: () => import("./calculadoras/calculator-drepturi-de-autor.cliente") },
   ],
   universales: "todas",
   novedades,

@@ -569,7 +569,7 @@
       "tipo": "mapa",
       "unidad": "%",
       "etiquetas": {
-        "pana-la-3-ani": "Deținută până la 3 ani inclusiv",
+        "max-3-ani": "Deținută până la 3 ani inclusiv",
         "peste-3-ani": "Deținută mai mult de 3 ani"
       },
       "tramos": [
@@ -577,7 +577,7 @@
           "estado": "verificado",
           "desde": "2026-01-01",
           "valor": {
-            "pana-la-3-ani": 3,
+            "max-3-ani": 3,
             "peste-3-ani": 1
           },
           "fuente": {
