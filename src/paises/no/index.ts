@@ -24,6 +24,14 @@ import kontantstotte from "./calculadoras/kontantstotte";
 import contenidoKontantstotte from "./contenido/kontantstotte";
 import oppsigelsestid from "./calculadoras/oppsigelsestid";
 import contenidoOppsigelsestid from "./contenido/oppsigelsestid";
+import overtidstillegg from "./calculadoras/overtidstillegg";
+import contenidoOvertidstillegg from "./contenido/overtidstillegg";
+import mvaKalkulator from "./calculadoras/mva-kalkulator";
+import contenidoMvaKalkulator from "./contenido/mva-kalkulator";
+import dokumentavgift from "./calculadoras/dokumentavgift";
+import contenidoDokumentavgift from "./contenido/dokumentavgift";
+import formuesskatt from "./calculadoras/formuesskatt";
+import contenidoFormuesskatt from "./contenido/formuesskatt";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +56,10 @@ export default definirPais({
     { definicion: barnetrygd, contenido: contenidoBarnetrygd, cliente: () => import("./calculadoras/barnetrygd.cliente") },
     { definicion: kontantstotte, contenido: contenidoKontantstotte, cliente: () => import("./calculadoras/kontantstotte.cliente") },
     { definicion: oppsigelsestid, contenido: contenidoOppsigelsestid, cliente: () => import("./calculadoras/oppsigelsestid.cliente") },
+    { definicion: overtidstillegg, contenido: contenidoOvertidstillegg, cliente: () => import("./calculadoras/overtidstillegg.cliente") },
+    { definicion: mvaKalkulator, contenido: contenidoMvaKalkulator, cliente: () => import("./calculadoras/mva-kalkulator.cliente") },
+    { definicion: dokumentavgift, contenido: contenidoDokumentavgift, cliente: () => import("./calculadoras/dokumentavgift.cliente") },
+    { definicion: formuesskatt, contenido: contenidoFormuesskatt, cliente: () => import("./calculadoras/formuesskatt.cliente") },
   ],
   universales: "todas",
   novedades,
