@@ -146,6 +146,14 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent și Grenadinele", locale: "ro-RO", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "Statele Unite ale Americii", locale: "ro-RO", trato: "usted", moneda: "USD" as Moneda, escala: 1 },
   ],
+  // Checo (ADR 0002, D19): koruna con «Kč» detrás y espacio de miles, un nombre largo que se declina
+  // por partes («na Svatém Vincenci a Grenadinách») y uno plural con adjetivos delante («ve Spojených
+  // arabských emirátech»).
+  cs: [
+    { mercado: "cz" as CodigoMercado, pais: "CZ", nombrePais: "Česko", locale: "cs-CZ", trato: "usted", moneda: "CZK" as Moneda, escala: 23 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Svatý Vincenc a Grenadiny", locale: "cs-CZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Spojené arabské emiráty", locale: "cs-CZ", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)

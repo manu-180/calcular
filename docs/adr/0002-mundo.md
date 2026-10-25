@@ -947,6 +947,99 @@ porque también es el subjuntivo correcto de «a intra» («să intre»).
 Vincent și Grenadinele» por el nombre largo que no se declina y «Statele Unite ale Americii» por el
 compuesto que sí.
 
+### D19. Checo (2026-10-24)
+
+D9 a D18 los usan otras ramas sin mergear (`claude/mundo-motor-eu`, `claude/mundo-motor-uk` y las
+demás); esta entrada toma el D19 para no chocar al mergear.
+
+`IDIOMAS` suma `cs`. Motor, mensajes de error, calculadora, sitio, inicio, legales, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`mzda-ve-svete`), rankings (`zebricek-zemi`), horas de trabajo
+(`kolik-hodin-prace`), calendario (`vyplatni-kalendar`), sueldos reales (`skutecne-mzdy`), el
+diccionario de venta completo (familias, informes, planillas y mails) y las 41 universales están en
+checo.
+
+**Nombre del país.** El visible es «Česko», el nombre corto oficial (inscripto en la ONU en 2016) y el
+que da Intl.DisplayNames en cs; «Česká republika» se declina igual («v České republice», «pro Českou
+republiku») por si un texto formal lo pide.
+
+**Trato.** Un solo registro, el de Finanční správa, ČSOB y Česká spořitelna: vykání con «vy» en
+minúscula (como escriben esos sitios, no la «Vy» de carta) y el imperativo cortés de segunda del
+plural en las oraciones («zadejte», «vyberte», «spočítejte»), nunca tykání. Los botones van en
+infinitivo («Spočítat», «Zkopírovat odkaz»), como en esos sitios. Los mercados van con
+`trato: "usted"`, como ja, ko, zh y uk; los diccionarios escriben solo `base`. Los textos evitan los
+participios y adjetivos con género sobre la persona («byl jste», «sám») o los resuelven sin sujeto
+(«Co když nemám odpracované celé pololetí?»). Vocabulario real: výpočet čisté mzdy, hrubá mzda, daň z
+příjmů, sociální a zdravotní pojištění, DPH, hypoteční kalkulačka, úrok, RPSN, jistina, splátka,
+fixace. Las universales quedan neutrales de país (nada de ČNB ni OSVČ en el texto visible).
+
+**Plurales.** El checo tiene cuatro categorías en `Intl.PluralRules("cs")`: one (solo 1), few (2 a
+4, sin repetir por decenas: 22 ya es other), other (0 y 5 en adelante) y many (las fracciones, que van
+en genitivo singular: «1,5 roku»). `src/motor/i18n/plural.ts` da `formaCs` y `pluralCs(n, uno,
+pocos, muchos, fracción?)`, con «muchos» para 0 y 5+; las unidades de tiempo suman las formas `pocos`
+y `muchos` (`FormasUnidad`, la misma interfaz que las ramas eu y uk; en cs «muchos» lleva la forma de
+fracción porque es la categoría many) y `formatearValorUnidad` elige por categoría («1 rok», «3 roky»,
+«5 let», «1,5 roku»). El contador del buscador acepta una forma few opcional (`resultadosPocos`) y
+elige con Intl.PluralRules del `lang` de la página, que sirve igual para el ucraniano (21 en uk es
+one, en cs no).
+
+**Gramática del país.** El nombre se declina. `GRAMATICA.cs`: `nombre(p)` = p; `de(p)` es el
+genitivo suelto («Česka», «Spojených států»); `en(p)` el lugar con su preposición («v Česku», «ve
+Francii», «na Slovensku», «na Filipínách»); `para(p)` = «pro» + acusativo («pro Česko», «pro Kanadu»,
+«pro Francii»). `padyCs(p)` deja los tres casos y la preposición sueltos. Los nombres llegan como los
+escribe Intl.DisplayNames en cs, así que se declinan por regla: -o neutro da -a/-u («Německa», «v
+Německu»); -ie da -ie/-ii/-ii; -a dura da -y, el locativo con -ě o -e y la alternancia k→c, h/g→z,
+ch→š, r→ř («v Kanadě», «na Jamajce», «v Andoře», «v Guatemale») y el acusativo -u; -a blanda (tras ž,
+š, č, ř, c, j, ď, ť, ň) da -e/-i/-u; -ea da -eje/-eji/-eu («v Jižní Koreji»); el masculino en consonante
+dura da -u/-u y en blanda -e/-i; los plurales en -y dan el genitivo sin -y y el locativo en -ách
+(«na Bahamách»), y los masculinos (ostrovy, státy, emiráty) -ů/-ech. En los compuestos concuerdan los
+adjetivos de delante en -á, -ý, -é, -í y los posesivos en -ovy/-ův («ve Spojeném království», «na
+Novém Zélandu», «v Saúdské Arábii», «na Marshallových ostrovech»), las partes unidas con « a » se
+declinan por separado («v Bosně a Hercegovině», «na Svatém Vincenci a Grenadinách») y lo que va entre
+paréntesis o tras « – » queda igual. La preposición es «ve» ante v/f/w, ante «rw» y ante s, z, š, ž
+seguidas de consonante salvo r («ve Švédsku», «ve Spojených státech», pero «v Srbsku»), y «na» para
+Eslovaquia, Ucrania y las islas (tabla CON_NA y todo nombre con «ostrov»). Una tabla lleva los
+irregulares (Egypt, Izrael, Keňa, Uruguay, Paraguay, Mauricius, Spojené státy, Spojené arabské
+emiráty, Burkina Faso, Guinea-Bissau, Papua-Nová Guinea, Pobřeží slonoviny...). Lo que termina en
+-i, -u, -e o -ey (Chile, Peru, Haiti, Zimbabwe, Jersey) no se declina. Probado con los ~250 nombres de
+Intl en cs. Los marcadores `{pais}` del diccionario de venta no pasan por esta función: ahí el país va
+en nominativo entre paréntesis.
+
+**Formato.** Intl de cs-CZ: miles con espacio (U+00A0), decimal con coma, la corona detrás con «Kč»
+(«1 234,50 Kč») y el porcentaje con espacio («21 %»; en la prosa también, como en la tipografía
+checa). `parsearNumero` no cambia (casos nuevos en `check_motor`). Fechas largas «24. října 2026».
+`inferir.ts` reconoce «ročně», «měsíčně» y sus formas por prefijo (sin diacríticos, porque
+`palabras()` los quita). Geist suma el subconjunto `latin-ext` en los layouts intl y embebido para
+ř, ě, ů y las demás letras checas; con unicode-range solo se baja en las páginas que lo usan. Las
+imágenes OG ya piden Geist a Google Fonts con el texto exacto, así que traen esos glifos.
+
+**Slugs.** ASCII en kebab-case sin diacríticos (č→c, ř→r, ě→e, ů→u), sobre la frase que busca la
+gente: `kalkulacka-uveru`, `kalkulacka-dph`, `hypotecni-kalkulacka`, `vypocet-procent`,
+`vypocet-slevy`, `slozene-uroceni`, `jednoduche-uroceni`, `efektivni-urokova-sazba`,
+`splaceni-kreditni-karty`, `najem-nebo-koupe-bytu`, `sporeni-na-duchod`, `sporeni-na-cil`,
+`financni-rezerva`, `rodinny-rozpocet`, `naklady-na-auto`, `navratnost-investice`, `vypocet-marze`,
+`bod-zvratu`, `hodinova-sazba-freelance`, `hodinova-mzda`, `zvyseni-mzdy`, `odpracovane-hodiny`,
+`procentualni-zmena`, `trojclenka`, `kalkulacka-spropitneho`, `rozdeleni-uctu`, `vazeny-prumer`,
+`vypocet-veku`, `pocet-dni-mezi-daty`, `pricteni-dni-k-datu`, `kalkulacka-bmi`,
+`kalkulacka-kalorii`, `termin-porodu`, `kalkulacka-ovulace`, `kalkulacka-tempa-behu`,
+`kalkulacka-spotreby-paliva`, `spotreba-elektriny`, `spotreba-barvy`, `vypocet-metru-ctverecnich`,
+`kalkulacka-dlazby` y `kalkulacka-betonu`. Rankings: `kde-mzda-vystaci-nejdal`,
+`den-danove-svobody`, `kolik-zbyde-ze-zvyseni-mzdy`. El calendario va en `vyplatni-kalendar` porque
+`kalendar-vyplat` ya es del ucraniano.
+
+**Universales.** Textos nativos para un lector checo y neutrales de país; las tasas (DPH) salen del
+dato del país. Los ejemplos se calculan con las funciones de cada `definicion.ts`. Salud con la
+oración de que no reemplaza la consulta profesional.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`, sobre la página entera en las universales y en las
+ofertas): sin exclamaciones, rayas ni guion como pausa; se atrapan los pronombres y posesivos del
+tykání (tebe, tobě, tvůj, tvoje...; «ty» no, porque también es el demostrativo plural), los
+imperativos y presentes de segunda del singular de un formulario («zadej», «spočítej», «můžeš»), la
+«Vy» con mayúscula a mitad de oración y las comillas que no son „ “ («», "", ”, o “ abriendo).
+
+**Prueba.** `zz-cs` (Zetalandie, locale `cs-001`, kraje Severní y Jižní) es una edición interna como
+`zz-ja`. `check_universales` prueba cs-CZ con CZK, «Svatý Vincenc a Grenadiny» por el nombre largo que
+se declina por partes y «Spojené arabské emiráty» por el plural con adjetivos delante.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

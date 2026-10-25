@@ -1,5 +1,6 @@
 import { ar } from "../i18n/inicio/ar";
 import { bn } from "../i18n/inicio/bn";
+import { cs } from "../i18n/inicio/cs";
 import { de } from "../i18n/inicio/de";
 import { en } from "../i18n/inicio/en";
 import { es } from "../i18n/inicio/es";
@@ -28,7 +29,7 @@ import type { Idioma, Trato } from "../tipos";
 
 export type { TextosInicio } from "../i18n/inicio/tipos";
 
-export const DICCIONARIOS_INICIO: Diccionarios<TextosInicio> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro };
+export const DICCIONARIOS_INICIO: Diccionarios<TextosInicio> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs };
 
 export function textosInicio(idioma: Idioma, trato: Trato, locale?: string): TextosInicio {
   return resolver(DICCIONARIOS_INICIO, idioma, trato, locale);

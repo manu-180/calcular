@@ -18,6 +18,7 @@ import { textosSitio } from "../src/motor/i18n";
 import { pluralUk } from "../src/motor/i18n/plural";
 import { pluralRu } from "../src/motor/i18n/plural";
 import { formaRo, pluralRo } from "../src/motor/i18n/plural";
+import { pluralCs } from "../src/motor/i18n/plural";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
@@ -188,6 +189,12 @@ const parseos: [string, string, number | null][] = [
   ["ro-MD", "12.500,75 MDL", 12500.75],
   ["ro-RO", "-250,75", -250.75],
   ["ro-RO", "19,5 %", 19.5],
+  // Checo: miles con espacio (U+00A0, como lo da Intl), decimal con coma y «Kč» detrás.
+  ["cs-CZ", "1 234,50", 1234.5],
+  ["cs-CZ", "1 234 567,25 Kč", 1234567.25],
+  ["cs-CZ", "25 000 Kč", 25000],
+  ["cs-CZ", "-250,75", -250.75],
+  ["cs-CZ", "21 %", 21],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -221,6 +228,8 @@ const ambiguos: [string, string, number | null][] = [
   ["ru-KZ", "5,000", null],
   ["ro-RO", "5.000", 5000],
   ["ro-RO", "5,000", null],
+  ["cs-CZ", "5 000", 5000],
+  ["cs-CZ", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -559,8 +568,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -721,6 +730,26 @@ igual(
 );
 igual("gramática rumana: lugar", ["România", "Republica Moldova", "Mexic"].map((p) => GRAMATICA.ro.en(p)), ["în România", "în Republica Moldova", "în Mexic"]);
 igual("gramática rumana: para y sujeto", [GRAMATICA.ro.para("Moldova"), GRAMATICA.ro.nombre("Mexic"), GRAMATICA.ro.nombre("Filipine")], ["pentru Moldova", "Mexicul", "Filipinele"]);
+// Checo: one/few/other y many (fracciones) de Intl.PluralRules («1 rok», «3 roky», «5 let», «1,5 roku»).
+igual(
+  "años en checo",
+  [1, 3, 5, 11, 21, 22, 1.5].map((n) => formatearValorUnidad(n, "anios", "cs-CZ")),
+  ["1 rok", "3 roky", "5 let", "11 let", "21 let", "22 let", "1,5 roku"],
+);
+igual("días en checo", [1, 2, 7, 0.5].map((n) => formatearValorUnidad(n, "dias", "cs-CZ")), ["1 den", "2 dny", "7 dní", "0,5 dne"]);
+igual("pluralCs", [1, 3, 5, 12, 24].map((n) => pluralCs(n, "kalkulačka", "kalkulačky", "kalkulaček")), ["1 kalkulačka", "3 kalkulačky", "5 kalkulaček", "12 kalkulaček", "24 kalkulaček"]);
+// Casos del nombre del país: genitivo, lugar con «v/ve/na» y «pro» + acusativo.
+igual(
+  "gramática checa: lugar",
+  ["Česko", "Česká republika", "Francie", "Slovensko", "Spojené státy", "Spojené království", "Filipíny", "Kanada", "Jamajka", "Švédsko", "Srbsko", "Nový Zéland"].map((p) => GRAMATICA.cs.en(p)),
+  ["v Česku", "v České republice", "ve Francii", "na Slovensku", "ve Spojených státech", "ve Spojeném království", "na Filipínách", "v Kanadě", "na Jamajce", "ve Švédsku", "v Srbsku", "na Novém Zélandu"],
+);
+igual(
+  "gramática checa: genitivo",
+  ["Česko", "Německo", "Kanada", "Izrael", "Spojené arabské emiráty", "Jihoafrická republika", "Svatý Vincenc a Grenadiny"].map((p) => GRAMATICA.cs.de(p)),
+  ["Česka", "Německa", "Kanady", "Izraele", "Spojených arabských emirátů", "Jihoafrické republiky", "Svatého Vincence a Grenadin"],
+);
+igual("gramática checa: para", ["Česko", "Kanada", "Francie", "Česká republika"].map((p) => GRAMATICA.cs.para(p)), ["pro Česko", "pro Kanadu", "pro Francii", "pro Českou republiku"]);
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).

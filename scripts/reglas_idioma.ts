@@ -191,6 +191,22 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Checo: un solo registro, el de Finanční správa, ČSOB y Česká spořitelna (vykání con «vy» en
+  // minúscula; ADR 0002, D19). Se atrapa el tykání (pronombre y posesivos), los imperativos y
+  // presentes de segunda del singular que aparecen en un formulario y el «Vy» con mayúscula a mitad
+  // de oración, que en la web de servicio se escribe con minúscula.
+  cs: {
+    informal: [
+      { re: palabras("tebe|tobě|tebou|tvůj|tvoje|tvá|tvé|tvého|tvému|tvém|tvým|tvou|tví|tvých|tvými|sis|ses"), nombre: "tykání («ty»)" },
+      {
+        re: palabras("zadej|spočítej|vypočítej|vyber|klikni|zjisti|zkontroluj|porovnej|zkus|vyplň|uveď|podívej|získej|zkopíruj|sdílej|stáhni|otevři|přidej|ulož|začni|napiš|použij|nastav|zvol|změň|odečti|přičti"),
+        nombre: "imperativo de tykání (va -te)",
+      },
+      { re: palabras("můžeš|máš|chceš|víš|dostaneš|platíš|vyděláváš|vidíš|pracuješ|utrácíš|ušetříš|musíš|potřebuješ|zaplatíš|jsi|budeš|dáš|zadáš|vybereš"), nombre: "segunda persona de tykání" },
+      { re: /[^.?!:„(\s]\s+(?:Vy|Vás|Vám|Vámi|Váš|Vaše|Vašeho|Vašemu|Vašem|Vaším|Vaši|Vašich|Vašim|Vašimi)(?!\p{L})/u, nombre: "«Vy» con mayúscula (va «vy»)" },
+    ],
+    formal: [],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -256,6 +272,15 @@ function reglasRo(texto: string): string[] {
   if (palabras("sînt|sîntem|sînteți").test(texto)) p.push("«sînt»: la norma es «sunt»");
   if (/«|»|"(?=\p{L})|(?<=\p{L}[.,?:;]?)"/u.test(texto)) p.push("comillas: en rumano van „”");
   if (SIN_DIACRITICOS_RO.test(texto)) p.push(`palabra sin diacríticos («${SIN_DIACRITICOS_RO.exec(texto)![0]}»)`);
+  return p;
+}
+
+// Checo: comillas „ “ (abre abajo, cierra arriba), nada de «», "" ni ” (las del inglés o el
+// francés).
+function reglasCs(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en checo van „ “");
+  if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en checo abren con „ (abajo)");
   return p;
 }
 
@@ -417,5 +442,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "uz") p.push(...reglasUz(texto));
   if (idioma === "ru") p.push(...reglasRu(texto));
   if (idioma === "ro") p.push(...reglasRo(texto));
+  if (idioma === "cs") p.push(...reglasCs(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

@@ -28,6 +28,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   uz: "mamlakatlar-boyicha-ish-haqi",
   ru: "zarplata-v-mire",
   ro: "salariu-in-lume",
+  cs: "mzda-ve-svete",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";

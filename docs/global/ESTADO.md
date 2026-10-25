@@ -69,6 +69,7 @@ varias veces por límite de uso.
 | Motor uzbeko (uz, latino) | claude/mundo-motor-uz | terminado el 24/10 (núcleo, venta, módulos nuevos y las 41 universales) |
 | Motor ruso (ru) | claude/mundo-motor-ru | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Kazajistán |
 | Motor rumano (ro) | claude/mundo-motor-ro | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Rumania y Moldavia |
+| Motor checo (cs) | claude/mundo-motor-cs | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -279,6 +280,30 @@ Falta para publicar Rumania y Moldavia:
   `formato.ts` son el mismo cambio. En el buscador, `resultadosPocos` (eslavos) y `resultadosDe`
   (rumano) conviven en `cuantosResultados`. `IDIOMAS`, los `Record<Idioma>` y `src/paises/index.ts`
   chocan por la lista.
+
+## 24/10/2026 · Motor checo (`claude/mundo-motor-cs`)
+
+cs en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`mzda-ve-svete`), rankings (`zebricek-zemi`), horas de trabajo (`kolik-hodin-prace`),
+calendario (`vyplatni-kalendar`), sueldos reales (`skutecne-mzdy`), venta completa (`IDIOMAS_VENTA`)
+y las 41 universales con slugs ASCII sin diacríticos (`kalkulacka-uveru`, `kalkulacka-dph`,
+`hypotecni-kalkulacka`...). Registro: vykání con «vy» en minúscula, el de Finanční správa y los
+bancos; mercados con `trato: "usted"`. Nombre visible «Česko». Plurales one/few/many/other
+(`pluralCs`, unidades de tiempo con `pocos`/`muchos`). `GRAMATICA.cs` y `padyCs` declinan el país
+(«v Česku», «pro Česko», «na Slovensku»). Geist con `latin-ext`. Decisiones en ADR 0002, D19.
+Edición de prueba `zz-cs`.
+
+Falta para publicar Chequia:
+- El país en sí (BRIEF-PAIS): výpočet čisté mzdy (daň z příjmů, sleva na poplatníka, sociální a
+  zdravotní pojištění), OSVČ (paušální daň, výdajové paušály), minimální mzda, DPH (sazby), náhrada
+  mzdy, cestovní náhrady, con datos verificados en fuentes oficiales (financnisprava.cz, cssz.cz,
+  mpsv.cz, czso.cz, cnb.cz, zakonyprolidi.cz o e-sbirka.gov.cz).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- Al mergear con `claude/mundo-motor-eu` y `claude/mundo-motor-uk`: `src/motor/i18n/plural.ts` choca
+  (las tres lo crean) y hay que dejar `pluralPl`, `formaUk`/`pluralUk` y `formaCs`/`pluralCs` juntos;
+  `FormasUnidad` en `unidades.ts` y el cambio de `formato.ts` son los mismos; `resultadosPocos` en los
+  tipos es el mismo y `cuantosResultados` del buscador queda con la versión de esta rama
+  (Intl.PluralRules del `lang`), que sirve para uk y cs.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 

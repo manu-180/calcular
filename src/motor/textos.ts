@@ -690,6 +690,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "puncte", coma: "virgule" },
     },
   },
+  // Checo (ADR 0002, D19): vykání con «vy» en minúscula, como Finanční správa, ČSOB y Česká
+  // spořitelna. El botón va en infinitivo («Spočítat») y las oraciones en imperativo cortés de
+  // segunda del plural («zadejte», «vyberte»).
+  cs: {
+    base: {
+      calcular: "Spočítat",
+      resultado: "Výsledek",
+      si: "Ano",
+      no: "Ne",
+      sinResultado: "Tento výsledek zatím nezobrazujeme.",
+      errores: {
+        requerido: "Vyplňte toto pole.",
+        "numero-invalido": "Zadejte číslo, například {ejemplo}.",
+        "entero-invalido": "Zadejte celé číslo bez desetinných míst.",
+        "menor-que-min": "Nejnižší povolená hodnota je {min}.",
+        "mayor-que-max": "Nejvyšší povolená hodnota je {max}.",
+        "fecha-invalida": "Vyberte platné datum.",
+        "hora-invalida": "Vyberte platný čas.",
+        "opcion-invalida": "Vyberte jednu z možností.",
+        "region-invalida": "Vyberte kraj.",
+        "calculo-fallido": "S těmito údaji se výpočet nepodařil. Zkontrolujte hodnoty a zkuste to znovu.",
+      },
+      milesAmbiguos: "Myslíte {sugerido}? Zadejte číslo bez {signos}.",
+      separadores: { punto: "teček", coma: "čárek" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

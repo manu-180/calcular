@@ -34,6 +34,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   // ru no puede usar «kalendar-vyplat»: es la carpeta del ucraniano (ADR 0002, D17).
   ru: "kalendar-zarplaty",
   ro: "calendar-salarial",
+  cs: "vyplatni-kalendar",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";

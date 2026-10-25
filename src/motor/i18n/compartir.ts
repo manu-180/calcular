@@ -461,6 +461,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Vedeți cât ați primi net în peste ${pluralRo(n, "țară", "țări")}`,
     },
   },
+  // Checo (ADR 0002, D19): vykání con «vy» en minúscula.
+  cs: {
+    base: {
+      boton: "Sdílet",
+      botonAria: "Sdílet tuto kalkulačku",
+      menuTitulo: "Sdílet přes",
+      copiar: "Zkopírovat odkaz",
+      copiado: "Odkaz je zkopírovaný",
+      compartido: "Odesláno",
+      errorCorto: "Kopírování se nepovedlo",
+      errorAyuda: "Odkaz se nepodařilo zkopírovat. Zkopírujte ho z adresního řádku prohlížeče.",
+      nuevaPestana: "otevře se v nové kartě",
+      mensaje: (nombre) => `${nombre}. Zdarma, výpočet zabere minutu.`,
+      puenteIntro: "A v jiných zemích?",
+      puenteEnlace: (n) => `Podívejte se, kolik by vám čistého zůstalo ve více než ${n} zemích`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

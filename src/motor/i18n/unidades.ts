@@ -9,7 +9,9 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // 2 дня, 3 недели) y "muchos" la "many" (5 lat; 5 років; 5 лет); "otros" queda para las fracciones, que
 // van en genitivo singular (1,5 roku; 1,5 року; 1,5 года). En rumano "pocos" es la "few" (0, 2 a 19,
 // 101: «2 ani», «1,5 ani») y "otros" la "other", que lleva «de» delante del sustantivo («20 de ani»,
-// «100 de zile»; ADR 0002, D18). Un idioma con dual (ar) trae todas las formas de FormasAr, con {n}
+// «100 de zile»; ADR 0002, D18). En checo "few" es 2 a 4 (2 dny, 3 týdny), "other" 0 y 5 en adelante
+// (5 let) y "many" las fracciones, que van en genitivo singular (1,5 roku): por eso en cs "muchos" lleva
+// la forma de fracción. Un idioma con dual (ar) trae todas las formas de FormasAr, con {n}
 // donde va el número.
 export interface FormasUnidad {
   uno: string;
@@ -82,6 +84,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     horas: { uno: "oră", pocos: "ore", otros: "de ore" },
     meses: { uno: "lună", pocos: "luni", otros: "de luni" },
     anios: { uno: "an", pocos: "ani", otros: "de ani" },
+  },
+  cs: {
+    dias: { uno: "den", pocos: "dny", muchos: "dne", otros: "dní" },
+    semanas: { uno: "týden", pocos: "týdny", muchos: "týdne", otros: "týdnů" },
+    horas: { uno: "hodina", pocos: "hodiny", muchos: "hodiny", otros: "hodin" },
+    meses: { uno: "měsíc", pocos: "měsíce", muchos: "měsíce", otros: "měsíců" },
+    anios: { uno: "rok", pocos: "roky", muchos: "roku", otros: "let" },
   },
 };
 

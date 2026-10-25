@@ -5,6 +5,7 @@ import { pluralPl } from "./plural";
 import { pluralUk } from "./plural";
 import { formaRu, pluralRu } from "./plural";
 import { pluralRo } from "./plural";
+import { pluralCs } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import { PT_LUSOFONIA } from "./variantes";
 import type { Idioma, Trato } from "../tipos";
@@ -4697,7 +4698,171 @@ const ro: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro };
+// ───────────────────────────── cs ─────────────────────────────
+
+// Checo (ADR 0002, D19): vykání con «vy» en minúscula, como Finanční správa y los bancos; la
+// tarjeta y el texto para compartir, en primera persona. Nada de participios ni adjetivos sobre la
+// persona (llevan género: «byl jste», «volná»): las frases van en presente o impersonales. El país
+// se declina con GRAMATICA.cs y los días con pluralCs.
+const gCs = GRAMATICA.cs;
+const SEO_CS = "Den daňové svobody a čistá mzda ve světě";
+const diasCs = (d: number) => pluralCs(d, "den", "dny", "dní");
+
+const cs: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Vaše mzda ve světě",
+    seo: {
+      titulo: (pais) => [`${SEO_CS} | ${pais}`, SEO_CS, "Vaše mzda ve světě"],
+      tituloGlobal: [SEO_CS, "Vaše mzda ve světě"],
+      descripcion: (pais, n) => `Zjistěte, do kterého dne v roce pracujete se svou mzdou ${gCs.en(pais)} pro stát a kolik by vám zůstalo čistého v ${n} zemích. Zdarma, bez registrace.`,
+      descripcionGlobal: (n) => `Zjistěte, do kterého dne v roce pracujete pro stát a kolik by vám z vaší mzdy zůstalo čistého v ${n} zemích. Zdarma, bez registrace.`,
+    },
+    ceja: "Váš Den daňové svobody",
+    h1: "Do kterého dne v roce pracujete pro stát?",
+    bajada: (n) => `Zadejte hrubou mzdu a uvidíte své datum. Pak ho porovnejte v ${n} zemích, se stejnou kupní silou a s daňovými pravidly každé země.`,
+    form: {
+      titulo: "Vaše mzda",
+      sueldo: "Hrubá mzda",
+      mes: "Měsíčně",
+      anio: "Ročně",
+      periodo: "Období mzdy",
+      pais: "Země, kde pracujete",
+      ejemplo: "Příklad",
+      ejemploAyuda: "Toto je ukázková mzda. Zadejte svou a všechna čísla se hned přepočítají.",
+      propio: "Převzato z vašeho výpočtu.",
+      invalido: "Zadejte částku větší než nula.",
+      pagas: "Měsíční mzda podle výplatní pásky: zákonné mzdy navíc (13. nebo 14. plat) připočítáme sami. Čistá mzda je průměr za 12 měsíců.",
+    },
+    heroe: {
+      hasta: (fecha) => `Pro stát pracujete do ${fecha}`,
+      tasa: (pct) => `${pct} vaší mzdy jde na daň z příjmů a povinné pojistné.`,
+      dias: (n, total) => `${n} z ${total} dní`,
+      enMano: "Čistého vám zůstane",
+      porMes: "měsíčně",
+      anio: (anio, n, total) => `Rok ${anio}: ${n} z ${total} dní pro stát.`,
+      resto: "Ode dne, který následuje, patří všechno, co vyděláte, vám.",
+    },
+    ranking: {
+      titulo: "Stejná mzda, země po zemi",
+      bajada: "Tolik by vám čistého zůstalo v každé zemi při stejné kupní síle. Každý řádek pochází z oficiální kalkulačky dané země.",
+      lista: "Země seřazené podle čisté mzdy",
+      buscar: "Hledat zemi",
+      filtrar: "Filtrovat podle regionu",
+      todas: "Vše",
+      regiones: { americas: "Amerika", europa: "Evropa", asia: "Asie a Oceánie", africa: "Afrika a Blízký východ" },
+      tuPais: "Vaše země",
+      mejor: "Vychází nejlépe",
+      enMano: "Čistého měsíčně",
+      enTuMoneda: "Ve vaší měně",
+      vsTuPais: "Ve srovnání s vaší zemí",
+      verTodos: (n) => `Zobrazit všechny země (${n})`,
+      verMenos: "Zobrazit méně",
+      sinResultados: (q) => `Hledání „${q}“ neodpovídá žádná země.`,
+      abrir: (pais) => `Otevřít kalkulačku ${gCs.para(pais)}`,
+      mas: (pct) => `o ${pct} víc`,
+      menos: (pct) => `o ${pct} méně`,
+      igual: "Stejně",
+      puesto: (p, total) => `Vaše země je na ${p}. místě z ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Vaše karta ke sdílení",
+      bajada: "Ukazuje vaše datum a procenta. Kolik vyděláváte, na ní nikdy není.",
+      hasta: (fecha) => `Pro stát pracuji do ${fecha}`,
+      tasa: (pct) => `${pct} mé mzdy jde na daně`,
+      mejor: (pais, pct) => `S mou mzdou by mi ${gCs.en(pais)} zůstalo o ${pct} víc čistého`,
+      mejorPropio: (pais) => `S mou mzdou mi nikde nezůstane víc než ${gCs.en(pais)}`,
+      yVos: "A vy?",
+      cta: "Zjistěte své datum:",
+      generica: "Do kterého dne v roce pracujete pro stát?",
+      genericaBajada: (n) => `Vaše mzda v ${n} zemích, podle oficiální kalkulačky každé z nich`,
+      compartir: "Sdílet kartu",
+      compartirDuelo: "Odpovědět na výzvu",
+      descargar: "Stáhnout obrázek",
+      copiado: "Odkaz je zkopírovaný. Vložte ho, kam potřebujete.",
+      compartido: "Hotovo, odesláno.",
+      error: "Sdílení se nepovedlo. Zkuste to znovu.",
+      texto: (fecha) => `Pro stát pracuji do ${fecha}. A vy?`,
+      alt: "Náhled vaší karty",
+    },
+    duelo: {
+      amigo: (fecha) => `Ten, kdo vám odkaz poslal, pracuje pro stát do ${fecha}.`,
+      yVos: "A vy?",
+      invitacion: "Zadejte svou mzdu a porovnejte se.",
+      vos: "Vy",
+      elAmigo: "Odesílatel",
+      dia: "Pro stát pracuje do",
+      tasa: "Daně a pojistné",
+      mejorPais: "Nejlépe vychází",
+      antes: (d) => `Vaše svoboda začíná o ${diasCs(d)} dřív než u odesílatele.`,
+      despues: (d) => `Odesílatel má svobodu o ${diasCs(d)} dřív než vy.`,
+      empate: "Svoboda vám oběma začíná ve stejný den.",
+      desde: (pais) => `Pracuje ${gCs.en(pais)}`,
+    },
+    cero: {
+      dia: "nula dní",
+      heroeAntes: "Pro stát pracujete",
+      tarjetaAntes: "Pro stát pracuji",
+      motivo: "Z této mzdy se nestrhává daň z příjmů ani povinné pojistné.",
+      texto: "Letos nepracuji pro stát ani jeden den. A vy?",
+      amigo: "Ten, kdo vám odkaz poslal, nepracuje pro stát ani jeden den.",
+    },
+    metodo: {
+      titulo: "Jak počítáme",
+      estimacion: "Jde o odhad pro srovnání zemí, ne o výplatní pásku. Slevy na dani, děti nebo prémie mohou vaše číslo změnit.",
+      supuestos: [
+        "Svobodná osoba bez dětí, s výchozími hodnotami kalkulačky každé země.",
+        "Čistá mzda je to, co zbude po dani z příjmů a pojistném, které platí sám zaměstnanec. Daně ze spotřeby a odvody zaměstnavatele se nepočítají.",
+        "Třináctý plat nebo jiné povinné mzdy navíc se rozpočítají do roku tak, jak to stanoví zákon každé země.",
+        "Ve Spojených státech se nepřipočítává daň jednotlivých států ani místní daň: jen federální daň a odvody ze mzdy.",
+        "Pro převod vaší mzdy do jiné země používáme paritu kupní síly (PPP): stejná životní úroveň, ne dnešní směnný kurz.",
+        "PPP Argentiny se aktualizuje indexem spotřebitelských cen INDEC, protože Světová banka ji zveřejňuje jen do roku 2021.",
+        "Den svobody rozkládá daně do roku od 1. ledna. Když na daně jde 30 % mzdy, pracujete pro stát 30 % roku.",
+      ],
+      ppaTitulo: "Parita kupní síly",
+      bancoMundial: "Světová banka",
+      ppa: (organismo, indicador, anio) => `${organismo}, ukazatel ${indicador}, poslední dostupný rok: ${anio}.`,
+      consultado: (fecha) => `Ověřeno ${fecha}.`,
+      verFuente: "Zobrazit zdroj",
+      fuentesTitulo: "Zdroj každé země",
+      fuentesBajada: "Každý řádek používá kalkulačku čisté mzdy dané země a její oficiální údaje.",
+      verificado: (fecha) => `Údaje ověřeny ${fecha}`,
+      sello: (fecha) => `Oficiální údaje ověřené u zdroje každé země. Nejstarší ověření: ${fecha}.`,
+    },
+    faqTitulo: "Časté otázky",
+    faq: (n) => [
+      {
+        pregunta: "Co je Den daňové svobody?",
+        respuesta:
+          "Je to den v roce, kdy byste měli zaplacené daně a pojistné, kdyby všechno, co vyděláte od 1. ledna, šlo nejdřív státu. Tady ho počítáme z vaší mzdy, ne z průměru země.",
+      },
+      {
+        pregunta: "Proč srovnáváme podle kupní síly?",
+        respuesta: "Podle směnného kurzu může mzda působit obrovsky nebo nepatrně, podle toho, jaký je den. Parita kupní síly porovnává, co si za ty peníze v každé zemi opravdu koupíte.",
+      },
+      {
+        pregunta: "Ukládá se moje mzda?",
+        respuesta: "Ne. Výpočet probíhá ve vašem prohlížeči. To, co sdílíte, obsahuje jen data, procenta a země.",
+      },
+      {
+        pregunta: "Proč se moje skutečná čistá mzda liší?",
+        respuesta:
+          "Počítáme se svobodnou osobou bez dětí a s výchozími hodnotami. Slevy na dani, prémie nebo zvláštní režimy číslo mění. Pro přesný výpočet vaší situace otevřete kalkulačku své země.",
+      },
+      {
+        pregunta: "Které země tu jsou?",
+        respuesta: `Dnes ${pluralCs(n, "země", "země", "zemí")}, každá s vlastní kalkulačkou čisté mzdy a oficiálními údaji. Další přidáváme, jakmile ověříme jejich daňová pravidla.`,
+      },
+    ],
+    destacado: {
+      ceja: "Světové srovnání",
+      titulo: "Do kterého dne v roce pracujete pro stát?",
+      texto: "Zadejte mzdu a podívejte se, kolik by vám čistého zůstalo v jiných zemích.",
+      ir: "Zjistit své datum",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);
