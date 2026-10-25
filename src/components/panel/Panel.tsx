@@ -3,6 +3,7 @@
 import "./panel.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { KpiClave, PanelDatos } from "@/lib/panel/tipos";
+import { Boca } from "./boca/Boca";
 import { Busquedas } from "./Busquedas";
 import { Calculadoras } from "./Calculadoras";
 import { Compras } from "./Compras";
@@ -172,6 +173,7 @@ export default function Panel({ inicial, demo }: { inicial: PanelDatos; demo: st
                 onAbrir={abrirPagina}
                 onCerrar={() => setPagina(null)}
               />
+              <Boca datos={datos} rango={rango} />
               <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-6">
                 <Origen datos={datos} />
                 <Busquedas datos={datos} rango={rango} />
