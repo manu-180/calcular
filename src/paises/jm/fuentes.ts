@@ -134,7 +134,7 @@ export const detectores: readonly Detector[] = [
       const html = await http.texto(this.url, { userAgentNavegador: true });
       const advisories = [...html.matchAll(/href="([^"]*Threshold[^"]*\.pdf[^"]*)"/gi)].map((m) => m[1]);
       if (!advisories.length) return null;
-      const nuevos = advisories.filter((a) => !a.includes("Technical_Advisory_Threshold+_042025") && !/(?:2008|2009|2014|2015|2016|2019|2024)/.test(a));
+      const nuevos = advisories.filter((a) => !/gct/i.test(a) && !a.includes("Technical_Advisory_Threshold+_042025") && !/(?:2008|2009|2014|2015|2016|2019|2024)/.test(a));
       return nuevos.map((a) => ({ titulo: "New TAJ threshold advisory", url: a.startsWith("http") ? a : `https://www.jamaicatax.gov.jm${a}`, fecha: VERIFICADO }));
     },
   },

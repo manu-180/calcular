@@ -30,6 +30,10 @@ import propertyTaxCalculator from "./calculadoras/property-tax-calculator";
 import contenidoPropertyTaxCalculator from "./contenido/property-tax-calculator";
 import nhtMortgageCalculator from "./calculadoras/nht-mortgage-calculator";
 import contenidoNhtMortgageCalculator from "./contenido/nht-mortgage-calculator";
+import usdToJmd from "./calculadoras/usd-to-jmd";
+import contenidoUsdToJmd from "./contenido/usd-to-jmd";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +61,8 @@ export default definirPais({
     { definicion: transferTaxCalculator, contenido: contenidoTransferTaxCalculator, cliente: () => import("./calculadoras/transfer-tax-calculator.cliente") },
     { definicion: propertyTaxCalculator, contenido: contenidoPropertyTaxCalculator, cliente: () => import("./calculadoras/property-tax-calculator.cliente") },
     { definicion: nhtMortgageCalculator, contenido: contenidoNhtMortgageCalculator, cliente: () => import("./calculadoras/nht-mortgage-calculator.cliente") },
+    { definicion: usdToJmd, contenido: contenidoUsdToJmd, cliente: () => import("./calculadoras/usd-to-jmd.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
