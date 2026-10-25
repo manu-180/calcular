@@ -36,7 +36,7 @@ function Fila({ titulo, valores, tope }: { titulo: string; valores: { tasa: numb
                   <>
                     {cien(v.tasa)} de cada 100{" "}
                     <span className="hidden text-zinc-600 sm:inline">
-                      ({cien(v.ic[0])}–{cien(v.ic[1])})
+                      (entre {cien(v.ic[0])} y {cien(v.ic[1])})
                     </span>
                   </>
                 ) : (
@@ -98,7 +98,7 @@ export function Puente({ boca }: { boca: BocaDatos }) {
             <Cifra
               etiqueta="Tocaron la línea"
               valor={numero(a.con.clics)}
-              nota={a.con.exposiciones ? `${cien(a.clic.tasa)} de cada 100 (${cien(a.clic.ic[0])}–${cien(a.clic.ic[1])})` : "—"}
+              nota={a.con.exposiciones ? `${cien(a.clic.tasa)} de cada 100 (entre ${cien(a.clic.ic[0])} y ${cien(a.clic.ic[1])})` : "Sin datos"}
             />
           </dd>
         </div>
