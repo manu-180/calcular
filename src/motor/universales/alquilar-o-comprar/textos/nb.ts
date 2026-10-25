@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosNb: TextosUi<UiAlquilarOComprar> = {
+  slug: "leie-eller-kjope",
+  ui: () => ({
+    precio: "Kjøpesum for boligen",
+    entrada: "Egenkapital (% av kjøpesummen)",
+    gastosCompra: "Kostnader ved kjøpet (% av kjøpesummen)",
+    gastosCompraAyuda: "Dokumentavgift, tinglysing, gebyrer til banken og takst.",
+    tasa: "Rente på boliglånet (% per år)",
+    aniosHipoteca: "Nedbetalingstid på lånet i år",
+    alquiler: "Husleie per måned for en tilsvarende bolig",
+    aumentoAlquiler: "Økning i husleien per år (%)",
+    gastosPropietario: "Eierkostnader per år (% av verdien)",
+    gastosPropietarioAyuda: "Vedlikehold, eiendomsskatt og boligforsikring. Ofte mellom 1 % og 2 %.",
+    revalorizacion: "Prisvekst på boligen per år (%)",
+    rendimiento: "Avkastning på annen sparing (% per år)",
+    rendimientoAyuda: "Det du ville tjent på å investere egenkapitalen i stedet for å kjøpe.",
+    horizonte: "Antall år som skal sammenlignes",
+    veredicto: "Resultat",
+    patrimonioComprar: "Formue til slutt hvis du kjøper",
+    patrimonioAlquilar: "Formue til slutt hvis du leier",
+    diferencia: "Forskjell",
+    anioDesde: "Året da kjøp begynner å lønne seg",
+    pagadoAlquilando: "Husleie totalt",
+    pagadoComprando: "Terminbeløp og eierkostnader totalt",
+    tabla: "Sammenligning år for år",
+    colAnio: "År",
+    colComprar: "Kjøpe",
+    colAlquilar: "Leie",
+    colDiferencia: "Forskjell",
+    errorPrecio: "Skriv inn kjøpesummen for boligen.",
+    errorAlquiler: "Skriv inn hva det ville kostet å leie en tilsvarende bolig.",
+    convieneComprar: (anios, diferencia) => `Det lønner seg mest å kjøpe. Etter ${anios} år har du ${diferencia} mer.`,
+    convieneAlquilar: (anios, diferencia) => `Det lønner seg mest å leie. Etter ${anios} år har du ${diferencia} mer.`,
+    empate: (anios) => `Etter ${anios} år står de to alternativene likt.`,
+    observacionDesde: (anio) => `Kjøp går forbi leie i år ${anio} og holder seg foran etter det.`,
+    observacionMetodo:
+      "Kalkulatoren sammenligner hva du eier i hvert tilfelle. Leier du, blir egenkapitalen og det du sparer hver måned stående investert. Kostnader ved et salg er ikke trukket fra.",
+  }),
+};

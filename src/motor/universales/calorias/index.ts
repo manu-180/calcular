@@ -8,6 +8,7 @@ import { contenidoFr } from "./contenido/fr";
 import { contenidoIt } from "./contenido/it";
 import { contenidoJa } from "./contenido/ja";
 import { contenidoKo } from "./contenido/ko";
+import { contenidoNb } from "./contenido/nb";
 import { contenidoNl } from "./contenido/nl";
 import { contenidoPl } from "./contenido/pl";
 import { contenidoPt } from "./contenido/pt";
@@ -22,6 +23,7 @@ import { textosFr } from "./textos/fr";
 import { textosIt } from "./textos/it";
 import { textosJa } from "./textos/ja";
 import { textosKo } from "./textos/ko";
+import { textosNb } from "./textos/nb";
 import { textosNl } from "./textos/nl";
 import { textosPl } from "./textos/pl";
 import { textosPt } from "./textos/pt";
@@ -32,7 +34,7 @@ export default definirUniversal<UiCalorias>({
   id: "calorias",
   concepto: "calorias",
   definir,
-  textos: { da: textosDa, de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, zh: textosZh },
-  contenido: { da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, zh: contenidoZh },
+  textos: { da: textosDa, de: textosDe, en: textosEn, es: textosEs, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, zh: textosZh },
+  contenido: { da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, zh: contenidoZh },
   casos,
 });
