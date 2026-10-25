@@ -367,4 +367,8 @@ const ar: GramaticaPais = {
   para: (p) => (p.startsWith("ال") ? `لل${p.slice(2)}` : `ل${p}`),
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar };
+// El indonesio no tiene artículos ni declinación: el poseedor va detrás del sustantivo sin preposición
+// («pajak Indonesia», «kalkulator Malaysia»), el lugar con «di» y el destino con «untuk».
+const idn: GramaticaPais = { nombre: (p) => p, de: (p) => p, en: (p) => `di ${p}`, para: (p) => `untuk ${p}` };
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn };

@@ -92,11 +92,16 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "ma-ar" as CodigoMercado, pais: "MA", nombrePais: "المغرب", locale: "ar-MA-u-ca-gregory-nu-latn", trato: "usted", moneda: "MAD" as Moneda, escala: 10 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "سانت فينسنت وجزر غرينادين", locale: "ar-EG-u-ca-gregory-nu-latn", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  // Indonesio (ADR 0002, D11): rupias sin decimales y en millones (escala de IDR), y un nombre largo.
+  id: [
+    { mercado: "id" as CodigoMercado, pais: "ID", nombrePais: "Indonesia", locale: "id-ID", trato: "usted", moneda: "IDR" as Moneda, escala: 16000 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent dan Grenadine", locale: "id-ID", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
 };
 
-// En ja, ko, zh y los idiomas que entraron después (pl, sv, da, nb, fi) las reglas de puntuación,
-// registro y escritura (scripts/reglas_idioma.ts) corren sobre toda la página.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "pl", "sv", "da", "nb", "fi", "ar"]);
+// En ja, ko, zh y los idiomas que entraron después (pl, sv, da, nb, fi, ar, id...) las reglas de
+// puntuación, registro y escritura (scripts/reglas_idioma.ts) corren sobre toda la página.
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "pl", "sv", "da", "nb", "fi", "ar", "id"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy

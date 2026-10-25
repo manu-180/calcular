@@ -703,7 +703,43 @@ const ar: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar };
+// Indonesio (ADR 0002, D11): «Anda» con mayúscula, como en la web de los bancos y servicios del país.
+const idn: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulator dari CalcularYa",
+    marcaNuevaPestana: "(terbuka di tab baru)",
+    noDisponible: { titulo: "Kalkulator ini tidak tersedia", texto: "Alamatnya mungkin sudah berubah." },
+    insertar: "Pasang di situs Anda",
+    pagina: {
+      titulo: (pais) => [`Kalkulator gratis untuk situs Anda | ${pais}`, "Kalkulator gratis untuk situs Anda"],
+      descripcion: (pais) => `Pilih kalkulator untuk ${pais}, salin kodenya, lalu tempel di blog atau situs Anda. Gratis, dengan data resmi yang selalu diperbarui.`,
+      h1: "Pasang kalkulator di situs Anda",
+      bajada: "Pilih kalkulator, salin kodenya, lalu tempel di mana saja. Gratis, dan datanya diperbarui sendiri.",
+      calculadora: "Kalkulator",
+      buscar: "Cari kalkulator",
+      sinResultados: "Tidak ada kalkulator yang cocok dengan pencarian Anda.",
+      tema: "Tampilan",
+      claro: "Terang",
+      oscuro: "Gelap",
+      ancho: "Lebar",
+      anchoCompleto: "Lebar penuh",
+      acento: "Warna aksen",
+      colores: ["Hijau", "Biru", "Oranye", "Merah muda", "Abu-abu batu"],
+      credito: "Tambahkan tautan sumber di bawah kalkulator",
+      vistaPrevia: "Pratinjau",
+      codigo: "Kode untuk ditempel",
+      copiar: "Salin kode",
+      copiado: "Kode disalin",
+      ayudaScript: "Skrip ini opsional: tinggi kalkulator akan menyesuaikan isinya.",
+      ventajas: ["Gratis, tanpa daftar", "Data resmi yang selalu terbaru", "Pas di lebar berapa pun"],
+      nota: "Di bagian bawah kalkulator ada tautan ke CalcularYa. Mohon jangan dihapus.",
+      verTodas: (pais) => `Lihat semua kalkulator untuk ${pais}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulator dari CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

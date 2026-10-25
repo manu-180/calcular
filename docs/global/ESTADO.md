@@ -61,6 +61,7 @@ varias veces por límite de uso.
 | Angola | claude/pais-ao | en curso |
 | Motor árabe RTL | claude/mundo-motor-ar | terminado el 24/10 salvo universales (ver arriba); ae y kw salieron en inglés |
 | Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | terminado el 24/10 (núcleo de los cinco idiomas; universales en ramas mundo-trad) |
+| Motor indonesio (id) | claude/mundo-motor-id | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -106,6 +107,22 @@ Falta para el primer país de estos idiomas (Polonia, Suecia, Dinamarca, Noruega
 - El país en sí (BRIEF-PAIS). Finlandia puede tener además la edición `fi-sv` en sueco (sv-FI ya está
   en los mercados de prueba de `check_universales`).
 - Revisión de un hablante nativo de cada idioma sobre una muestra de páginas antes de publicar.
+
+## 24/10/2026 · Motor indonesio (`claude/mundo-motor-id`)
+
+id en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`gaji-di-dunia`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con slugs en indonesio
+(`kalkulator-kpr`, `kalkulator-pinjaman`, `kalkulator-ppn`...). Registro «Anda» con mayúscula, el de
+BCA, Mandiri, OJK y DJP Online; mercados con `trato: "usted"`. Decisiones en ADR 0002, D11. Edición de
+prueba `zz-id`.
+
+Puesta al día con main 7d190a68: calendario (`kalender-gaji`), horas de trabajo (`berapa-jam-kerja`),
+rankings (`peringkat-negara`), «Sueldos reales» (`gaji-sebenarnya`) y afiliados en indonesio.
+
+Falta para publicar Indonesia:
+- El país en sí (BRIEF-PAIS): PPh 21 con TER, BPJS Kesehatan y Ketenagakerjaan, UMP/UMK por provincia,
+  PPN, THR, pesangon, con datos verificados en fuentes oficiales (pajak.go.id, bpjs, kemnaker).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 

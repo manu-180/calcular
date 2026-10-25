@@ -21,6 +21,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   nb: "landrangering",
   fi: "maiden-vertailu",
   ar: "tartib-alduwal",
+  id: "peringkat-negara",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -45,6 +46,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   nb: { rinde: "der-lonnen-gir-mest", libertad: "skattefridagen", aumento: "hva-som-blir-igjen-av-et-lonnstillegg" },
   fi: { rinde: "missa-palkka-riittaa-pisimmalle", libertad: "verovapauden-paiva", aumento: "paljonko-palkankorotuksesta-jaa" },
   ar: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
+  // id en indonesio ASCII con la búsqueda de Google Indonesia (ADR 0002, D11).
+  id: { rinde: "gaji-paling-bernilai", libertad: "hari-bebas-pajak", aumento: "sisa-kenaikan-gaji" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

@@ -103,6 +103,18 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
   },
   pl: { informal: [], formal: [{ re: /(?<!\p{L})(?:Pan|Pani|Pana|Panu|Panią|Państwo|Państwa|Pańsk\p{L}*)(?!\p{L})/u, nombre: "forma Pan/Pani" }] },
+  // Indonesio: un solo registro, el de los bancos y servicios digitales («Anda» con mayúscula; ADR 0002,
+  // D11). Se atrapa el trato informal (kamu, aku, gue/lo), la jerga de chat y «anda» en minúscula, que
+  // en la web de servicio siempre va con mayúscula. No se busca el sufijo -mu suelto: «umum», «ilmu».
+  id: {
+    informal: [
+      { re: palabras("kamu|kau|engkau|aku|gue|gua|gw|elo|lu|lo"), nombre: "kamu/aku o jerga de pronombre" },
+      { re: palabras("yuk|ayo|dong|sih|nih|banget|gak|nggak|enggak|udah|aja|kok|deh"), nombre: "jerga de chat" },
+      { re: /(?<!\p{L})anda(?!\p{L})/u, nombre: "«anda» en minúscula (va «Anda»)" },
+      { re: palabras("gajimu|uangmu|datamu|akunmu|pinjamanmu|tabunganmu|cicilanmu|hasilmu"), nombre: "posesivo -mu" },
+    ],
+    formal: [],
+  },
 };
 
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {

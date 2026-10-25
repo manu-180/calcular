@@ -48,6 +48,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     meses: { uno: "شهر واحد", dos: "شهران", pocos: "{n} أشهر", muchos: "{n} شهرًا", otros: "{n} شهر" },
     anios: { uno: "سنة واحدة", dos: "سنتان", pocos: "{n} سنوات", muchos: "{n} سنة", otros: "{n} سنة" },
   },
+  // El indonesio no marca el plural después de un número (3 hari, 1,5 tahun): las dos formas son iguales.
+  id: { dias: { uno: "hari", otros: "hari" }, semanas: { uno: "minggu", otros: "minggu" }, horas: { uno: "jam", otros: "jam" }, meses: { uno: "bulan", otros: "bulan" }, anios: { uno: "tahun", otros: "tahun" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

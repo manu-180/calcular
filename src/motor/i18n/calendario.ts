@@ -1146,7 +1146,75 @@ const ar: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar };
+// Indonesio (ADR 0002, D11): impersonal como los demás, frases cortas. El poseedor va detrás sin
+// preposición (GRAMATICA.id: «Kalender gaji Indonesia») y tras un número no hay plural («3 hari»).
+const gId = GRAMATICA.id;
+const idn: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Kalender gaji dan pajak",
+    seo: {
+      titulo: (pais, anios) => [
+        `Kalender gaji dan pajak ${gId.de(pais)} ${anios}: tanggal penting`,
+        `Kalender gaji dan pajak ${gId.de(pais)} ${anios}`,
+        `Kalender gaji ${gId.de(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Tanggal yang mengubah gaji ${gId.en(pais)}, dari sumber resmi: ${proximas}. Masing-masing dengan kalkulatornya.`,
+      descripcionSin: (pais) => `Tanggal yang mengubah gaji ${gId.en(pais)}, dari sumber resmi dan dengan kalkulatornya. Siap ditambahkan ke kalender ponsel.`,
+    },
+    ceja: (anios) => `Kalender ${anios}`,
+    h1: (pais) => `Kalender gaji dan pajak ${gId.de(pais)}`,
+    acento: "tanggal yang memengaruhi gaji",
+    bajada: "Setiap tanggal berasal dari sumber resmi dan tertaut ke kalkulator yang terkait. Halaman ini diperbarui sendiri saat ada angka baru yang diterbitkan.",
+    proxima: "Tanggal berikutnya",
+    cuenta: { hoy: "Hari ini", manana: "Besok", ayer: "Kemarin", en: (n) => `${n} hari lagi`, hace: (n) => `${n} hari lalu`, dias: () => "hari" },
+    queViene: "Yang akan datang",
+    yaRige: "Sudah berlaku",
+    mesPorMes: "Sepanjang tahun, bulan demi bulan",
+    sinFechas: "Belum ada perubahan yang diumumkan",
+    filtro: "Saring menurut topik",
+    todo: "Semua",
+    tipos: { pago: "Pembayaran", "salario-minimo": "Upah minimum", impuestos: "Pajak", aportes: "Iuran dan pensiun", laboral: "Aturan ketenagakerjaan", indices: "Nilai acuan" },
+    pasa: (antes, despues) => `Berubah dari ${antes} menjadi ${despues}`,
+    queda: (valor) => `Ditetapkan sebesar ${valor}`,
+    cambian: "Angkanya berubah",
+    zonas: (lista) => `Berlaku di ${lista}`,
+    limite: "Batas waktu",
+    agregar: "Tambahkan ke kalender saya",
+    descargar: "Apple, Outlook, dan lainnya (berkas .ics)",
+    google: "Google Kalender",
+    calcular: "Hitung",
+    tambien: "Juga di",
+    fuente: (organismo, fecha) => `Sumber: ${organismo}. Diperiksa pada ${fecha}.`,
+    verificado: (fecha) => `Diperiksa pada ${fecha}`,
+    suscribir: {
+      titulo: "Seluruh kalender, selalu terbaru",
+      texto: "Cukup berlangganan sekali, dan tanggal baru muncul sendiri di kalender ponsel atau komputer.",
+      boton: "Berlangganan kalender",
+      copiar: "Salin tautan",
+      copiado: "Tautan disalin",
+    },
+    fuentes: {
+      titulo: "Dari mana setiap tanggal berasal",
+      texto: "Yang masuk hanya tanggal yang sudah ditetapkan dalam peraturan atau dalam angka yang diterbitkan instansi resmi. Yang belum diterbitkan tidak ditampilkan.",
+    },
+    vacio: "Tidak ada tanggal untuk topik ini dalam dua belas bulan ke depan.",
+    destacado: {
+      ceja: "Kalender gaji",
+      titulo: "Tanggal yang memengaruhi gaji tahun ini",
+      ir: "Lihat kalender",
+      proxima: (titulo, fecha) => `Berikutnya: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Kalender gaji dan pajak ${gId.de(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Tanggal gaji dan pajak ${gId.en(pais)}, dari sumber resmi.`,
+      calculadora: "Kalkulator",
+      fuente: "Sumber",
+    },
+    og: { proxima: "Tanggal berikutnya", mas: (n) => `Dan ${n} tanggal lain tahun ini` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

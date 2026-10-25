@@ -7,6 +7,7 @@ import { contenidoEn } from "./contenido/en";
 import { contenidoEs } from "./contenido/es";
 import { contenidoFi } from "./contenido/fi";
 import { contenidoFr } from "./contenido/fr";
+import { contenidoId } from "./contenido/id";
 import { contenidoIt } from "./contenido/it";
 import { contenidoJa } from "./contenido/ja";
 import { contenidoKo } from "./contenido/ko";
@@ -24,6 +25,7 @@ import { textosEn } from "./textos/en";
 import { textosEs } from "./textos/es";
 import { textosFi } from "./textos/fi";
 import { textosFr } from "./textos/fr";
+import { textosId } from "./textos/id";
 import { textosIt } from "./textos/it";
 import { textosJa } from "./textos/ja";
 import { textosKo } from "./textos/ko";
@@ -38,7 +40,7 @@ export default definirUniversal<UiTarjetaDeCredito>({
   id: "tarjeta-de-credito",
   concepto: "tarjeta-de-credito",
   definir,
-  textos: { ar: textosAr, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, zh: textosZh },
-  contenido: { ar: contenidoAr, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, zh: contenidoZh },
+  textos: { ar: textosAr, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, zh: textosZh },
+  contenido: { ar: contenidoAr, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, zh: contenidoZh },
   casos,
 });

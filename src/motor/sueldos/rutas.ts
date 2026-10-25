@@ -19,6 +19,7 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   nb: "faktiske-lonninger",
   fi: "todelliset-palkat",
   ar: "rawatib-haqiqiya",
+  id: "gaji-sebenarnya",
 };
 
 export const RUTA_SUELDOS_AR = "/sueldos-reales";

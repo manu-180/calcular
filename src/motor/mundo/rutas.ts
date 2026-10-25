@@ -19,6 +19,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   nb: "lonn-i-verden",
   fi: "palkka-maailmalla",
   ar: "rawatib-alalam",
+  id: "gaji-di-dunia",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";

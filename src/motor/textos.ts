@@ -490,6 +490,29 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "نقاط", coma: "فواصل" },
     },
   },
+  id: {
+    base: {
+      calcular: "Hitung",
+      resultado: "Hasil",
+      si: "Ya",
+      no: "Tidak",
+      sinResultado: "Hasil ini belum kami tampilkan untuk saat ini.",
+      errores: {
+        requerido: "Kolom ini wajib diisi.",
+        "numero-invalido": "Masukkan angka, misalnya {ejemplo}.",
+        "entero-invalido": "Masukkan bilangan bulat, tanpa desimal.",
+        "menor-que-min": "Nilai minimum {min}.",
+        "mayor-que-max": "Nilai maksimum {max}.",
+        "fecha-invalida": "Pilih tanggal yang valid.",
+        "hora-invalida": "Pilih jam yang valid.",
+        "opcion-invalida": "Pilih salah satu opsi.",
+        "region-invalida": "Pilih wilayah.",
+        "calculo-fallido": "Perhitungan tidak dapat dilakukan dengan data ini. Periksa kembali nilainya, lalu coba lagi.",
+      },
+      milesAmbiguos: "Maksud Anda {sugerido}? Tulis tanpa {signos}.",
+      separadores: { punto: "titik", coma: "koma" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {
