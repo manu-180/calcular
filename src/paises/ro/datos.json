@@ -683,7 +683,7 @@
       "tipo": "mapa",
       "unidad": "%",
       "etiquetas": {
-        "pana-la-7": "Până la 7 zile",
+        "max-7": "Până la 7 zile",
         "8-14": "Între 8 și 14 zile",
         "peste-14": "15 zile sau mai mult",
         "cardiovascular": "Boli cardiovasculare"
@@ -693,7 +693,7 @@
           "estado": "verificado",
           "desde": "2025-08-01",
           "valor": {
-            "pana-la-7": 55,
+            "max-7": 55,
             "8-14": 65,
             "peste-14": 75,
             "cardiovascular": 75

@@ -30,6 +30,16 @@ import calculatorInflatie from "./calculadoras/calculator-inflatie";
 import contenidoCalculatorInflatie from "./contenido/calculator-inflatie";
 import calculatorDepozitBancar from "./calculadoras/calculator-depozit-bancar";
 import contenidoCalculatorDepozitBancar from "./contenido/calculator-depozit-bancar";
+import calculatorConcediuDeOdihna from "./calculadoras/calculator-concediu-de-odihna";
+import contenidoCalculatorConcediuDeOdihna from "./contenido/calculator-concediu-de-odihna";
+import calculatorOreSuplimentare from "./calculadoras/calculator-ore-suplimentare";
+import contenidoCalculatorOreSuplimentare from "./contenido/calculator-ore-suplimentare";
+import calculatorPreaviz from "./calculadoras/calculator-preaviz";
+import contenidoCalculatorPreaviz from "./contenido/calculator-preaviz";
+import calculatorConcediuMedical from "./calculadoras/calculator-concediu-medical";
+import contenidoCalculatorConcediuMedical from "./contenido/calculator-concediu-medical";
+import indemnizatieCrestereCopil from "./calculadoras/indemnizatie-crestere-copil";
+import contenidoIndemnizatieCrestereCopil from "./contenido/indemnizatie-crestere-copil";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +67,11 @@ export default definirPais({
     { definicion: cursValutarBnr, contenido: contenidoCursValutarBnr, cliente: () => import("./calculadoras/curs-valutar-bnr.cliente") },
     { definicion: calculatorInflatie, contenido: contenidoCalculatorInflatie, cliente: () => import("./calculadoras/calculator-inflatie.cliente") },
     { definicion: calculatorDepozitBancar, contenido: contenidoCalculatorDepozitBancar, cliente: () => import("./calculadoras/calculator-depozit-bancar.cliente") },
+    { definicion: calculatorConcediuDeOdihna, contenido: contenidoCalculatorConcediuDeOdihna, cliente: () => import("./calculadoras/calculator-concediu-de-odihna.cliente") },
+    { definicion: calculatorOreSuplimentare, contenido: contenidoCalculatorOreSuplimentare, cliente: () => import("./calculadoras/calculator-ore-suplimentare.cliente") },
+    { definicion: calculatorPreaviz, contenido: contenidoCalculatorPreaviz, cliente: () => import("./calculadoras/calculator-preaviz.cliente") },
+    { definicion: calculatorConcediuMedical, contenido: contenidoCalculatorConcediuMedical, cliente: () => import("./calculadoras/calculator-concediu-medical.cliente") },
+    { definicion: indemnizatieCrestereCopil, contenido: contenidoIndemnizatieCrestereCopil, cliente: () => import("./calculadoras/indemnizatie-crestere-copil.cliente") },
   ],
   universales: "todas",
   novedades,
