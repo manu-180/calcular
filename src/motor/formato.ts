@@ -54,10 +54,12 @@ export function formatearMoneda(n: number, locale: string, moneda: Moneda, decim
     .join("");
 }
 
-export function formatearNumero(n: number, locale: string, decimales?: number): string {
+// decimales fija los decimales; sin él van de 0 a `maximo` (2 si no se dice: un monto en KWD o TND
+// lleva 3 y el formulario pasa los de la moneda para no perder el último).
+export function formatearNumero(n: number, locale: string, decimales?: number, maximo = 2): string {
   return new Intl.NumberFormat(locale, {
     minimumFractionDigits: decimales ?? 0,
-    maximumFractionDigits: decimales ?? 2,
+    maximumFractionDigits: decimales ?? Math.max(0, maximo),
   }).format(n);
 }
 
@@ -124,6 +126,31 @@ export function separadoresDe(locale: string): Separadores {
 
 const ESPACIOS = /[\s   ]/g;
 
+// Teclados árabes y persas escriben ٣٬٥٠٠٫٧٥ (dígitos arábigo-índicos, ٬ de miles y ٫ decimal) y la
+// coma «،». Se pasan a ASCII antes de las reglas: ٫ y ٬ dicen sin ambigüedad qué son, así que van
+// al decimal y al separador de miles del locale; «،» se lee como una coma más.
+const DIGITO_ARABE = /[٠-٩۰-۹]/g;
+
+function aLatino(texto: string, seps: Separadores): string {
+  if (!/[؀-ۿ]/.test(texto)) return texto;
+  return texto
+    .replace(DIGITO_ARABE, (d) => String(d.charCodeAt(0) & 0xf))
+    .replace(/٫/g, seps.decimal)
+    .replace(/٬/g, seps.grupo)
+    .replace(/،/g, ",");
+}
+
+function separadoresAscii(locale: string): Separadores {
+  const { decimal, grupo } = separadoresDe(locale);
+  return { decimal: decimal === "٫" ? "." : decimal, grupo: grupo === "٬" ? "," : grupo };
+}
+
+// El punto o la coma pegados a una letra o a «/» son del símbolo de la moneda, no del número:
+// «د.ك.» (ar-KW), «د.ب.» (ar-BH), «S/.» o «B/.». Sin esto, «١٬٥٤٤٫١٣٦ د.ك.» termina en punto y no se lee.
+function sinPuntosDeSimbolo(texto: string): string {
+  return texto.replace(/(?<=[\p{L}/])[.,]+|[.,]+(?=[\p{L}/])/gu, "");
+}
+
 // en-IN agrupa en lakhs y crores («12,00,000»): el formulario muestra los valores así y tiene que
 // poder leerlos de vuelta. Solo se acepta en los locales que formatean de esa manera.
 const conLakhs = (locale: string): boolean => new Intl.NumberFormat(locale).format(1234567).replace(/\D/g, ",") === "12,34,567";
@@ -144,7 +171,11 @@ function gruposValidos(entero: string, separador: string, locale: string): boole
 //    una sola vez con 1 o 2 dígitos detrás, se toma como decimal (quien escribe "1474,77" en es-PE).
 // 5. Con milesAmbiguos (campos de moneda y enteros): el decimal del locale como único separador,
 //    una sola vez y con exactamente 3 dígitos detrás ("5.000" en es-MX) da null. Quien lo escribe
-//    casi siempre quiso decir miles, y leerlo como 5 divide el resultado por mil sin avisar.
+//    casi siempre quiso decir miles, y leerlo como 5 divide el resultado por mil sin avisar. Salvo
+//    con decimales >= 3 (la moneda del campo los usa: KWD, BHD, OMR, JOD, TND, LYD): ahí
+//    «1544,136» en fr-TN o «5.000» en en-KW son montos con sus tres decimales.
+// 6. Los dígitos arábigo-índicos y persas, «٫», «٬» y «،» se leen (aLatino), y los puntos del
+//    símbolo de la moneda («د.ك.», «S/.») no cuentan (sinPuntosDeSimbolo).
 // Cualquier otra forma devuelve null: se le pide a la persona que lo escriba de nuevo.
 // En japonés, chino y coreano se escriben montos con unidades de 10⁴ («3万», «1億2000万», «5천만»).
 // Sin esto parsearNumero tiraría la unidad como si fuera una letra y «3万» daría 3: un error de diez
@@ -153,7 +184,7 @@ function gruposValidos(entero: string, separador: string, locale: string): boole
 const GRANDES_CJK: Readonly<Record<string, number>> = { 万: 1e4, 萬: 1e4, 만: 1e4, 億: 1e8, 亿: 1e8, 억: 1e8, 兆: 1e12, 조: 1e12 };
 const RE_UNIDAD_CJK = /[千천万萬만億亿억兆조]/;
 
-function tramoCjk(texto: string, locale: string, opciones: { milesAmbiguos?: boolean }): number | null {
+function tramoCjk(texto: string, locale: string, opciones: OpcionesParseo): number | null {
   const partes = texto.split(/[千천]/);
   if (partes.length > 2) return null;
   if (partes.length === 1) return texto ? parsearNumero(texto, locale, opciones) : 1;
@@ -163,7 +194,7 @@ function tramoCjk(texto: string, locale: string, opciones: { milesAmbiguos?: boo
   return miles * 1000 + resto;
 }
 
-function conUnidadesCjk(texto: string, locale: string, opciones: { milesAmbiguos?: boolean }): number | null {
+function conUnidadesCjk(texto: string, locale: string, opciones: OpcionesParseo): number | null {
   const negativo = /^[^\d]*-/.test(texto);
   let resto = texto.replace(/[^\d.,千천万萬만億亿억兆조]/g, "");
   let total = 0;
@@ -188,16 +219,23 @@ function conUnidadesCjk(texto: string, locale: string, opciones: { milesAmbiguos
   return negativo ? -total : total;
 }
 
-export function parsearNumero(texto: string, locale: string, opciones: { milesAmbiguos?: boolean } = {}): number | null {
-  const normal = texto.normalize("NFKC");
+export interface OpcionesParseo {
+  milesAmbiguos?: boolean;
+  // Decimales de la moneda del campo (decimalesDeMoneda); con 3 o más, la regla 5 no corre.
+  decimales?: number;
+}
+
+export function parsearNumero(texto: string, locale: string, opciones: OpcionesParseo = {}): number | null {
+  const seps = separadoresAscii(locale);
+  const normal = aLatino(texto, seps).normalize("NFKC");
   if (RE_UNIDAD_CJK.test(normal)) return conUnidadesCjk(normal, locale, opciones);
-  const sinEspacios = normal.replace(ESPACIOS, "");
+  const sinEspacios = sinPuntosDeSimbolo(normal.replace(ESPACIOS, ""));
   const negativo = /^[^\d]*-/.test(sinEspacios);
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
   if (!/\d/.test(limpio)) return null;
   if (/[.,]{2,}/.test(limpio)) return null;
   if (/[.,]$/.test(limpio) || (/^[.,]/.test(limpio) && !/^[.,]\d+$/.test(limpio))) return null;
-  const decLocale = separadoresDe(locale).decimal;
+  const decLocale = seps.decimal;
   const hayPunto = limpio.includes(".");
   const hayComa = limpio.includes(",");
   let entero = limpio;
@@ -216,7 +254,7 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
     if (sep === decLocale) {
       if (veces > 1) return null;
       [entero, fraccion] = limpio.split(sep);
-      if (opciones.milesAmbiguos && /[1-9]/.test(entero) && fraccion.length === 3) return null;
+      if (opciones.milesAmbiguos && (opciones.decimales ?? 2) < 3 && /[1-9]/.test(entero) && fraccion.length === 3) return null;
     } else {
       const [cabeza, ...resto] = limpio.split(sep);
       if (veces === 1 && resto[0].length !== 3) {
@@ -237,9 +275,10 @@ export function parsearNumero(texto: string, locale: string, opciones: { milesAm
 // El número que la persona probablemente quiso escribir cuando parsearNumero lo rechazó por
 // milesAmbiguos ("5.000" da "5000"); null si el texto no es ese caso.
 export function sugerenciaMiles(texto: string, locale: string): { sugerido: string; separador: string } | null {
-  const sinEspacios = texto.replace(ESPACIOS, "");
+  const seps = separadoresAscii(locale);
+  const sinEspacios = sinPuntosDeSimbolo(aLatino(texto, seps).normalize("NFKC").replace(ESPACIOS, ""));
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
-  const dec = separadoresDe(locale).decimal;
+  const dec = seps.decimal;
   const otro = dec === "." ? "," : ".";
   if (limpio.includes(otro)) return null;
   const partes = limpio.split(dec);

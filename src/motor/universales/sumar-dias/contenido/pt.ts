@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { aDia, aFecha, esHabil, fechaLarga } from "../../comun/fechas";
 import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
@@ -7,7 +8,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const mas90 = aFecha(aDia(inicio) + 90);
   let habil = aDia(inicio);
   for (let n = 0; n < 15; ) if (esHabil(++habil)) n++;
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Somar dias a uma data",
     title: tituloQueEntre(`Somar dias a uma data: calculadora (${ctx.nombrePais})`, `Somar dias a uma data (${ctx.nombrePais})`, "Somar dias a uma data"),

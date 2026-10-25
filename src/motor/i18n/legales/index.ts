@@ -1,5 +1,5 @@
 import type { Idioma, Trato } from "../../tipos";
-import { adaptar, ajusteDeLocale, fusionar, parcheDe } from "../resolver";
+import { adaptar, ajusteDeLocale, fusionar, parcheDe, regionalesDe } from "../resolver";
 import { de } from "./de";
 import { en } from "./en";
 import { es } from "./es";
@@ -19,8 +19,7 @@ export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = 
 export function resolverLegales(idioma: Idioma, trato: Trato, datos: DatosLegales, locale?: string): PaginasLegales {
   const dic = DICCIONARIOS_LEGALES[idioma](datos);
   let paginas = fusionar<PaginasLegales>(dic.base, parcheDe(dic, idioma, trato));
-  const regional = locale ? dic.regional?.[locale] : undefined;
-  if (regional) paginas = fusionar<PaginasLegales>(paginas, regional);
+  for (const regional of regionalesDe(dic, locale)) paginas = fusionar<PaginasLegales>(paginas, regional);
   const ajuste = ajusteDeLocale(locale);
   return ajuste ? adaptar(paginas, ajuste) : paginas;
 }

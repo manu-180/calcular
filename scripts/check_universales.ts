@@ -1,13 +1,15 @@
 // Valida las calculadoras universales (src/motor/universales) en mercados de prueba de cada idioma y
 // trato: que la definición se arme, que los casos den, que el resultado se pueda mostrar y que los
 // textos cumplan lo básico (largo de title y description, FAQ, sin rayas ni emojis). En las variantes
-// de un idioma (es-ES, pt-PT, fr-CA, de-CH) revisa además que no se cuele el vocabulario de otra.
+// de un idioma (es-ES, pt-PT, pt-AO, fr-CA, de-CH) revisa además que no se cuele el vocabulario de otra
+// (pt-AO con el de pt-PT y el de la lusofonía, en el orden de variantesDeLocale).
 // Uso: npx tsx scripts/check_universales.ts [id]
 import { anchoVisual } from "../src/motor/ancho";
 import { ErrorEntrada, crearContexto } from "../src/motor/calculo";
 import { CONCEPTOS } from "../src/motor/conceptos";
 import { formatearFilas } from "../src/motor/formulario";
 import type { CodigoMercado, ContextoSerializado, Idioma, Moneda, ResultadoBase, TablaResultado, Trato } from "../src/motor/tipos";
+import { variantesDeLocale, PT_LUSOFONIA } from "../src/motor/i18n/variantes";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe, instanciar, type ContextoUniversal } from "../src/motor/universales/tipos";
 import { problemasDeTexto } from "./reglas_idioma";
@@ -34,6 +36,8 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   pt: [
     { mercado: "br", pais: "BR", nombrePais: "Brasil", locale: "pt-BR", trato: "tu", moneda: "BRL", escala: 5 },
     { mercado: "pt" as CodigoMercado, pais: "PT", nombrePais: "Portugal", locale: "pt-PT", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    // Angola: norma europea (como todo pt-* menos pt-BR), sin lo que es propio de Portugal.
+    { mercado: "ao" as CodigoMercado, pais: "AO", nombrePais: "Angola", locale: "pt-AO", trato: "usted", moneda: "AOA" as Moneda, escala: 900 },
   ],
   fr: [
     { mercado: "fr" as CodigoMercado, pais: "FR", nombrePais: "France", locale: "fr-FR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
@@ -134,6 +138,19 @@ const VOCABULARIO: Readonly<Record<string, Vocabulario>> = {
       [/\bIPTU\b/, "IMI"],
       [/\busuário/i, "utilizador"],
       [/\bplanilha/i, "folha de cálculo"],
+    ],
+  },
+  // Lo que en la norma europea es propio de Portugal y no vale en Angola, Mozambique o Cabo Verde.
+  [PT_LUSOFONIA]: {
+    todo: true,
+    prohibidas: [
+      [/IRS/, "imposto sobre o rendimento"],
+      [/IM[IT]/, "imposto predial / impostos sobre a compra"],
+      [/IUC/, "impostos do veículo"],
+      [/PPR/, "poupança para a reforma"],
+      [/Segurança Social/, "segurança social"],
+      [/duodécimos/i, "salário de cada mês"],
+      [/Portugal/, "o país do mercado"],
     ],
   },
   "fr-CA": {
@@ -261,8 +278,7 @@ async function main() {
             for (const p of problemasDeTexto(t, idioma, ctx.trato, ctx.locale)) fallas.push(`${u.id} [${ctx.locale}]: ${p} en «${t.slice(0, 70)}»`);
           }
         }
-        const vocabulario = VOCABULARIO[ctx.locale];
-        if (vocabulario) {
+        for (const vocabulario of variantesDeLocale(ctx.locale).flatMap((k) => VOCABULARIO[k] ?? [])) {
           const ui = textosDeUi(u.textos[idioma]!.ui(ctx.trato, ctx.locale));
           const revisar = vocabulario.todo ? [...ui, ...textosVisibles(inst)] : ui;
           const vistas = new Set<string>();

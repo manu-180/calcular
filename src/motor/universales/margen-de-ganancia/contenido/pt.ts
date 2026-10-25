@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { precioConMargen } from "../definicion";
 
@@ -6,7 +7,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const p = (n: number) => `${formatearNumero(ctx, n, 2)}%`;
   const costo = montoEjemplo(ctx, 60);
   const precio = montoEjemplo(ctx, 100);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora de margem de lucro e markup",
     title: tituloQueEntre(`Calculadora de margem de lucro (${ctx.nombrePais})`, "Calculadora de margem de lucro e markup", "Calculadora de margem de lucro"),

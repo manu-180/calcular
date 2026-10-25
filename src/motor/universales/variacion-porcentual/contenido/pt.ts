@@ -1,10 +1,11 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const antes = montoEjemplo(ctx, 40);
   const despues = antes * 1.25;
   const m = (n: number) => formatearMonto(ctx, n);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora de variação percentual",
     title: tituloQueEntre(`Calculadora de variação percentual (${ctx.nombrePais})`, `Variação percentual (${ctx.nombrePais})`, "Calculadora de variação percentual"),

@@ -4,7 +4,7 @@ import { resolverValores, type DatoUsado, type PaginaResuelta, type Registro } f
 import { hreflangDe, hreflangVaAlSitemap, origenPublicoIntl, urlIntl, type Idiomas } from "./seo";
 import { intlActivo, modoPublicacion } from "./sitio";
 import type { CodigoMercado, EntradaCalculadora, FechaISO, Mercado } from "./tipos";
-import { hoyEn } from "./vigencia";
+import { fechasDesde, hoyEn } from "./vigencia";
 import { hreflangMundo, urlMundo } from "./mundo/ui/seo";
 import { hreflangIndice, hreflangRanking, urlsRankings } from "./rankings/seo";
 import { paginasHoras, SIN_HORAS, type PublicacionHoras } from "./horas/publicacion";
@@ -63,10 +63,10 @@ export interface EntradaSitemap {
   alternos?: Idiomas;
 }
 
-// Mismos equivalentes que registro.pagina() (con la fecha del mercado de la página para todos), así
-// sitemap y <head> nunca describen dos clústeres distintos.
-function alternosEnSitemap(registro: Registro, c: EntradaCalculadora, fecha: FechaISO, modo: ReturnType<typeof modoPublicacion>): Idiomas | undefined {
-  const idiomas = hreflangDe(c.definicion.concepto, registro.equivalentes(c.definicion.concepto, () => fecha, modo));
+// Mismos equivalentes que registro.pagina() (cada mercado en su fecha, vista desde la de la página),
+// así sitemap y <head> nunca describen dos clústeres distintos.
+function alternosEnSitemap(registro: Registro, m: Mercado, c: EntradaCalculadora, fecha: FechaISO, modo: ReturnType<typeof modoPublicacion>): Idiomas | undefined {
+  const idiomas = hreflangDe(c.definicion.concepto, registro.equivalentes(c.definicion.concepto, fechasDesde(m, fecha), modo));
   return hreflangVaAlSitemap(idiomas) ? idiomas : undefined;
 }
 
@@ -118,7 +118,7 @@ function entradaSueldos(registro: Registro, m: Mercado, modo: ReturnType<typeof 
 function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false, horas: PublicacionHoras = SIN_HORAS, sueldos?: ReadonlySet<string>): EntradaSitemap[] {
   const fecha = hoyEn(m);
   const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).map((c) => {
-    const alternos = conAlternos ? alternosEnSitemap(registro, c, fecha, modo) : undefined;
+    const alternos = conAlternos ? alternosEnSitemap(registro, m, c, fecha, modo) : undefined;
     return { url: urlIntl(m.codigo, c.definicion.slug), lastmod: actualizacionDeCalculadora(registro, m.codigo, c, fecha), ...(alternos ? { alternos } : {}) };
   });
   const fuentes = actualizacionDeFuentes(registro, m.codigo, fecha);

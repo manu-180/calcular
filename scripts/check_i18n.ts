@@ -10,6 +10,7 @@ import { DICCIONARIOS_EMBED } from "../src/motor/i18n/embed";
 import { GRAMATICA } from "../src/motor/i18n/gramatica";
 import { resolverLegales } from "../src/motor/i18n/legales";
 import { resolver, type Diccionarios } from "../src/motor/i18n/resolver";
+import { esPortuguesEuropeo, PT_LUSOFONIA, variantesDeLocale } from "../src/motor/i18n/variantes";
 import { nombresUnidad } from "../src/motor/i18n/unidades";
 import { DICCIONARIOS_MOTOR } from "../src/motor/textos";
 import { IDIOMAS, type Idioma, type Trato } from "../src/motor/tipos";
@@ -105,8 +106,9 @@ function hojas(valor: unknown, ruta: string, salida: Hoja[]): Hoja[] {
 
 const marcadores = (t: string) => [...t.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort().join(",");
 
-// Locales con parche regional que cambia la escritura entera: se revisan como un idioma más.
-const LOCALES: Readonly<Partial<Record<Idioma, readonly string[]>>> = { zh: ["zh-TW", "zh-HK", "zh-CN", "zh-SG"] };
+// Locales con parche regional que cambia la escritura entera: se revisan como un idioma más. En
+// portugués, la base (Brasil), Portugal y Angola como muestra de la lusofonía con la norma europea.
+const LOCALES: Readonly<Partial<Record<Idioma, readonly (string | undefined)[]>>> = { zh: ["zh-TW", "zh-HK", "zh-CN", "zh-SG"], pt: [undefined, "pt-PT", "pt-AO"] };
 const variantes = (idioma: Idioma): readonly (string | undefined)[] => LOCALES[idioma] ?? [undefined];
 
 type Fuente = { nombre: string; resolver: (idioma: Idioma, trato: Trato, locale?: string) => unknown };
@@ -166,6 +168,27 @@ for (const idioma of IDIOMAS) {
     if (anchoVisual(seo.descripcionGlobal) > 160) fallas.push(`${donde}.descripcionGlobal: ${anchoVisual(seo.descripcionGlobal)} de ancho (máximo 160)`);
   }
   if (!GRAMATICA[idioma]) fallas.push(`${idioma}: falta la gramática de países`);
+}
+
+// Norma europea del portugués: todo pt-* menos pt-BR, con una sola función (src/motor/i18n/variantes.ts).
+for (const l of ["pt-PT", "pt-AO", "pt-MZ", "pt-CV", "pt-GW", "pt-ST", "pt-TL"]) if (!esPortuguesEuropeo(l)) fallas.push(`esPortuguesEuropeo(${l}) tendría que ser true`);
+for (const l of ["pt-BR", "pt", "es-ES", "en-PT", undefined]) if (esPortuguesEuropeo(l)) fallas.push(`esPortuguesEuropeo(${l}) tendría que ser false`);
+if (variantesDeLocale("pt-AO").join() !== `pt-PT,${PT_LUSOFONIA},pt-AO`) fallas.push(`variantesDeLocale(pt-AO) da ${variantesDeLocale("pt-AO").join()}`);
+if (variantesDeLocale("pt-PT").join() !== "pt-PT" || variantesDeLocale("pt-BR").join() !== "pt-BR") fallas.push("variantesDeLocale cambió pt-PT o pt-BR");
+// Angola y Mozambique leen lo mismo que Portugal (salvo lo de la lusofonía) y nada que sea de Brasil
+// o que nombre impuestos de Portugal.
+for (const fuente of FUENTES) {
+  const pt = hojas(fuente.resolver("pt", "usted", "pt-PT"), "", []);
+  const br = new Map(hojas(fuente.resolver("pt", "usted", "pt-BR"), "", []).map((h) => [h.ruta, h.texto]));
+  for (const l of ["pt-AO", "pt-MZ"]) {
+    const otro = new Map(hojas(fuente.resolver("pt", "usted", l), "", []).map((h) => [h.ruta, h.texto]));
+    for (const h of pt) {
+      const t = otro.get(h.ruta);
+      if (t === h.texto) continue;
+      if (t === br.get(h.ruta)) fallas.push(`${l}/usted ${fuente.nombre}.${h.ruta}: sale como en Brasil («${String(t).slice(0, 60)}»), no con la norma europea`);
+    }
+    for (const [ruta, t] of otro) if (/(IRS|IMI|IMT|IUC)|Segurança Social/.test(t)) fallas.push(`${l}/usted ${fuente.nombre}.${ruta}: nombra un impuesto de Portugal («${t.slice(0, 60)}»)`);
+  }
 }
 
 for (const k of IGUALES_PERMITIDOS) if (!usadas.has(k)) fallas.push(`IGUALES_PERMITIDOS: «${k}» ya no hace falta, sacala`);
