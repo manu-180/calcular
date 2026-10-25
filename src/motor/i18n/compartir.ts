@@ -226,6 +226,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       "zh-SG": ZH_HANS_COMPARTIR,
     },
   },
+  // Serbio en latinica y ekavski (ADR 0002, D23): «vi» en minúscula; botones en la forma corta.
+  sr: {
+    base: {
+      boton: "Podeli",
+      botonAria: "Podeli ovaj kalkulator",
+      menuTitulo: "Podeli preko",
+      copiar: "Kopiraj link",
+      copiado: "Link je kopiran",
+      compartido: "Poslato",
+      errorCorto: "Kopiranje nije uspelo",
+      errorAyuda: "Link nije mogao da se kopira. Kopirajte ga iz adresne trake pregledača.",
+      nuevaPestana: "otvara se u novoj kartici",
+      mensaje: (nombre) => `${nombre}. Besplatno, obračun traje minut.`,
+      puenteIntro: "A u drugim zemljama?",
+      puenteEnlace: (n) => `Pogledajte koliko bi vam neto ostalo u više od ${n} zemalja`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

@@ -150,6 +150,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  // Serbio en latinica y ekavski (ADR 0002, D23): «vi» en minúscula.
+  sr: {
+    base: {
+      titulo: "Selite se u inostranstvo ili plaćate iz druge zemlje?",
+      etiqueta: "Partnerski linkovi",
+      socios: {
+        wise: "Račun u više valuta za primanje i slanje novca između zemalja po srednjem tržišnom kursu, sa naknadom koju vidite unapred.",
+        deel: "Ugovori i isplate za one koji iz jedne zemlje rade za firmu iz druge.",
+      },
+      nota: "Ako preko ovih linkova otvorite račun, sajt može da dobije proviziju. Vi zbog toga ne plaćate ništa više.",
+      nuevaPestana: "otvara se u novoj kartici",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {
