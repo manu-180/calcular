@@ -16,6 +16,14 @@ import salaryCompensationCalculator from "./calculadoras/salary-compensation-cal
 import contenidoSalaryCompensationCalculator from "./contenido/salary-compensation-calculator";
 import endOfYearBonusCalculator from "./calculadoras/end-of-year-bonus-calculator";
 import contenidoEndOfYearBonusCalculator from "./contenido/end-of-year-bonus-calculator";
+import overtimeCalculator from "./calculadoras/overtime-calculator";
+import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
+import annualLeaveCalculator from "./calculadoras/annual-leave-calculator";
+import contenidoAnnualLeaveCalculator from "./contenido/annual-leave-calculator";
+import sickLeaveCalculator from "./calculadoras/sick-leave-calculator";
+import contenidoSickLeaveCalculator from "./contenido/sick-leave-calculator";
+import maternityLeaveCalculator from "./calculadoras/maternity-leave-calculator";
+import contenidoMaternityLeaveCalculator from "./contenido/maternity-leave-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
     { definicion: salaryCompensationCalculator, contenido: contenidoSalaryCompensationCalculator, cliente: () => import("./calculadoras/salary-compensation-calculator.cliente") },
     { definicion: endOfYearBonusCalculator, contenido: contenidoEndOfYearBonusCalculator, cliente: () => import("./calculadoras/end-of-year-bonus-calculator.cliente") },
+    { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
+    { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
+    { definicion: sickLeaveCalculator, contenido: contenidoSickLeaveCalculator, cliente: () => import("./calculadoras/sick-leave-calculator.cliente") },
+    { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "mu.vat" } }] },
   novedades,
