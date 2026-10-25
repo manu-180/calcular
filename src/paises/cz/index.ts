@@ -32,6 +32,16 @@ import odstupne from "./calculadoras/odstupne";
 import contenidoOdstupne from "./contenido/odstupne";
 import vypovedniDoba from "./calculadoras/vypovedni-doba";
 import contenidoVypovedniDoba from "./contenido/vypovedni-doba";
+import priplatekZaPrescas from "./calculadoras/priplatek-za-prescas";
+import contenidoPriplatekZaPrescas from "./contenido/priplatek-za-prescas";
+import kurzovaKalkulacka from "./calculadoras/kurzova-kalkulacka";
+import contenidoKurzovaKalkulacka from "./contenido/kurzova-kalkulacka";
+import inflacniKalkulacka from "./calculadoras/inflacni-kalkulacka";
+import contenidoInflacniKalkulacka from "./contenido/inflacni-kalkulacka";
+import urokZProdleni from "./calculadoras/urok-z-prodleni";
+import contenidoUrokZProdleni from "./contenido/urok-z-prodleni";
+import duchodovaKalkulacka from "./calculadoras/duchodova-kalkulacka";
+import contenidoDuchodovaKalkulacka from "./contenido/duchodova-kalkulacka";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +70,11 @@ export default definirPais({
     { definicion: prumernyVydelek, contenido: contenidoPrumernyVydelek, cliente: () => import("./calculadoras/prumerny-vydelek.cliente") },
     { definicion: odstupne, contenido: contenidoOdstupne, cliente: () => import("./calculadoras/odstupne.cliente") },
     { definicion: vypovedniDoba, contenido: contenidoVypovedniDoba, cliente: () => import("./calculadoras/vypovedni-doba.cliente") },
+    { definicion: priplatekZaPrescas, contenido: contenidoPriplatekZaPrescas, cliente: () => import("./calculadoras/priplatek-za-prescas.cliente") },
+    { definicion: kurzovaKalkulacka, contenido: contenidoKurzovaKalkulacka, cliente: () => import("./calculadoras/kurzova-kalkulacka.cliente") },
+    { definicion: inflacniKalkulacka, contenido: contenidoInflacniKalkulacka, cliente: () => import("./calculadoras/inflacni-kalkulacka.cliente") },
+    { definicion: urokZProdleni, contenido: contenidoUrokZProdleni, cliente: () => import("./calculadoras/urok-z-prodleni.cliente") },
+    { definicion: duchodovaKalkulacka, contenido: contenidoDuchodovaKalkulacka, cliente: () => import("./calculadoras/duchodova-kalkulacka.cliente") },
   ],
   universales: "todas",
   novedades,
