@@ -150,6 +150,67 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  pl: {
+    base: {
+      titulo: "Przeprowadzka za granicę albo wypłata z innego kraju?",
+      etiqueta: "Linki sponsorowane",
+      socios: {
+        wise: "Konto w wielu walutach do wysyłania i odbierania pieniędzy między krajami, po średnim kursie rynkowym i z opłatą podaną z góry.",
+        deel: "Umowy i wypłaty dla osób, które pracują z jednego kraju dla firmy z innego.",
+      },
+      nota: "Jeśli ktoś otworzy konto przez te linki, serwis może dostać prowizję. Osoba, która się rejestruje, nie płaci przez to więcej.",
+      nuevaPestana: "otwiera się w nowej karcie",
+    },
+  },
+  sv: {
+    base: {
+      titulo: "Flytta utomlands eller få betalt från ett annat land?",
+      etiqueta: "Sponsrade länkar",
+      socios: {
+        wise: "Ett konto i flera valutor för att ta emot och skicka pengar mellan länder, till mittkurs och med avgiften synlig från början.",
+        deel: "Avtal och utbetalningar för den som jobbar från ett land åt ett företag i ett annat.",
+      },
+      nota: "Om ett konto öppnas via de här länkarna kan sajten få en provision. Den som registrerar sig betalar inget extra för det.",
+      nuevaPestana: "öppnas i en ny flik",
+    },
+  },
+  da: {
+    base: {
+      titulo: "Flytte til udlandet eller få løn fra et andet land?",
+      etiqueta: "Sponsorerede links",
+      socios: {
+        wise: "En konto i flere valutaer til at sende og modtage penge mellem lande til midtkursen, med gebyret vist på forhånd.",
+        deel: "Kontrakter og udbetalinger til folk, der arbejder fra ét land for en virksomhed i et andet.",
+      },
+      nota: "Bliver en konto oprettet via disse links, kan siden få en provision. Den, der opretter sig, betaler ikke mere for det.",
+      nuevaPestana: "åbner i en ny fane",
+    },
+  },
+  nb: {
+    base: {
+      titulo: "Skal flytte utenlands eller få betalt fra et annet land?",
+      etiqueta: "Sponsede lenker",
+      socios: {
+        wise: "Konto i flere valutaer for å sende og motta penger mellom land, til midtkurs og med gebyret vist på forhånd.",
+        deel: "Kontrakter og utbetalinger for dem som jobber fra ett land for et selskap i et annet.",
+      },
+      nota: "Hvis noen åpner en konto via disse lenkene, kan nettstedet få en provisjon. Den som registrerer seg, betaler ikke mer for det.",
+      nuevaPestana: "åpnes i en ny fane",
+    },
+  },
+  // Finés (ADR 0002, D9): sin segunda persona, con pasiva.
+  fi: {
+    base: {
+      titulo: "Muutto ulkomaille tai palkka toisesta maasta?",
+      etiqueta: "Sponsoroidut linkit",
+      socios: {
+        wise: "Monivaluuttatili rahan vastaanottamiseen ja lähettämiseen maasta toiseen markkinoiden keskikurssilla, palkkio näkyy etukäteen.",
+        deel: "Sopimukset ja maksut niille, jotka tekevät töitä yhdestä maasta toisen maan yritykselle.",
+      },
+      nota: "Jos tili avataan näiden linkkien kautta, sivusto voi saada palkkion. Rekisteröityvä ei maksa siitä mitään ylimääräistä.",
+      nuevaPestana: "avautuu uuteen välilehteen",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

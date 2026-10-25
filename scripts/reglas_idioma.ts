@@ -87,6 +87,22 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     informal: [{ re: palabras("je|jij|jou|jouw|jezelf"), nombre: "je-vorm" }],
     formal: [{ re: palabras("u|uw|uzelf"), nombre: "u-vorm" }],
   },
+  // pl, sv, da, nb y fi tienen un solo registro en la web (ty, du, sinä; ADR 0002, D9): no hay
+  // formas informales que prohibir y se atrapa el formal que se cuela. Mayúscula fuera del comienzo
+  // de oración, como en alemán: «De» al comienzo en danés y noruego también es «ellos».
+  sv: { informal: [], formal: [{ re: /[^.?!:\s]\s+(?:Ni|Er|Ert|Era)(?!\p{L})/u, nombre: "niande" }] },
+  da: { informal: [], formal: [{ re: /[^.?!:\s]\s+(?:De|Dem|Deres)(?!\p{L})/u, nombre: "De-form" }] },
+  nb: { informal: [], formal: [{ re: /[^.?!:\s]\s+(?:De|Dem|Deres)(?!\p{L})/u, nombre: "De-form" }] },
+  // Finés: el teitittely se delata por el pronombre con mayúscula a mitad de frase y por el
+  // imperativo plural de los verbos de formulario (no se busca -kaa suelto: «aikaa» es partitivo).
+  fi: {
+    informal: [],
+    formal: [
+      { re: /[^.?!:\s]\s+(?:Te|Teidän|Teille|Teitä|Teistä|Teillä|Teihin|Teiltä)(?!\p{L})/u, nombre: "teitittely" },
+      { re: palabras("laskekaa|valitkaa|tarkistakaa|syöttäkää|kirjoittakaa|painakaa|täyttäkää|katsokaa|lukekaa|ottakaa|pyytäkää|säilyttäkää|vertailkaa|ostakaa|avatkaa|ladatkaa"), nombre: "imperativo plural cortés" },
+    ],
+  },
+  pl: { informal: [], formal: [{ re: /(?<!\p{L})(?:Pan|Pani|Pana|Panu|Panią|Państwo|Państwa|Pańsk\p{L}*)(?!\p{L})/u, nombre: "forma Pan/Pani" }] },
 };
 
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {

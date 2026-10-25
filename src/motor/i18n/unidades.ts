@@ -3,10 +3,18 @@ import { escrituraZh } from "./escritura";
 
 export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 
-type Formas = Readonly<Record<UnidadDeTiempo, { uno: string; otros: string }>>;
-
 // La forma se elige con Intl.PluralRules del locale: "uno" es la categoría "one" y "otros" todas las
-// demás. Alcanza para estos idiomas; uno con dual o paucal (ar, ru, pl) va a pedir más formas.
+// demás. En polaco "pocos" es la categoría "few" (2 dni, 3 tygodnie) y "muchos" la "many" (5 lat);
+// "otros" queda para las fracciones, que van en genitivo singular (1,5 roku).
+export interface FormasUnidad {
+  uno: string;
+  otros: string;
+  pocos?: string;
+  muchos?: string;
+}
+
+type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad>>;
+
 // ja, ko y zh no tienen plural: las dos formas son iguales y la unidad va pegada al número (3日).
 export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   es: { dias: { uno: "día", otros: "días" }, semanas: { uno: "semana", otros: "semanas" }, horas: { uno: "hora", otros: "horas" }, meses: { uno: "mes", otros: "meses" }, anios: { uno: "año", otros: "años" } },
@@ -19,6 +27,18 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   ja: { dias: { uno: "日", otros: "日" }, semanas: { uno: "週間", otros: "週間" }, horas: { uno: "時間", otros: "時間" }, meses: { uno: "か月", otros: "か月" }, anios: { uno: "年", otros: "年" } },
   ko: { dias: { uno: "일", otros: "일" }, semanas: { uno: "주", otros: "주" }, horas: { uno: "시간", otros: "시간" }, meses: { uno: "개월", otros: "개월" }, anios: { uno: "년", otros: "년" } },
   zh: { dias: { uno: "天", otros: "天" }, semanas: { uno: "週", otros: "週" }, horas: { uno: "小時", otros: "小時" }, meses: { uno: "個月", otros: "個月" }, anios: { uno: "年", otros: "年" } },
+  pl: {
+    dias: { uno: "dzień", pocos: "dni", muchos: "dni", otros: "dnia" },
+    semanas: { uno: "tydzień", pocos: "tygodnie", muchos: "tygodni", otros: "tygodnia" },
+    horas: { uno: "godzina", pocos: "godziny", muchos: "godzin", otros: "godziny" },
+    meses: { uno: "miesiąc", pocos: "miesiące", muchos: "miesięcy", otros: "miesiąca" },
+    anios: { uno: "rok", pocos: "lata", muchos: "lat", otros: "roku" },
+  },
+  sv: { dias: { uno: "dag", otros: "dagar" }, semanas: { uno: "vecka", otros: "veckor" }, horas: { uno: "timme", otros: "timmar" }, meses: { uno: "månad", otros: "månader" }, anios: { uno: "år", otros: "år" } },
+  da: { dias: { uno: "dag", otros: "dage" }, semanas: { uno: "uge", otros: "uger" }, horas: { uno: "time", otros: "timer" }, meses: { uno: "måned", otros: "måneder" }, anios: { uno: "år", otros: "år" } },
+  nb: { dias: { uno: "dag", otros: "dager" }, semanas: { uno: "uke", otros: "uker" }, horas: { uno: "time", otros: "timer" }, meses: { uno: "måned", otros: "måneder" }, anios: { uno: "år", otros: "år" } },
+  // Finés: tras un número distinto de 1 (fracciones incluidas) el sustantivo va en partitivo singular.
+  fi: { dias: { uno: "päivä", otros: "päivää" }, semanas: { uno: "viikko", otros: "viikkoa" }, horas: { uno: "tunti", otros: "tuntia" }, meses: { uno: "kuukausi", otros: "kuukautta" }, anios: { uno: "vuosi", otros: "vuotta" } },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

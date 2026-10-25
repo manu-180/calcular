@@ -88,6 +88,16 @@ const parseos: [string, string, number | null][] = [
   ["es-PE", "", null],
   ["es-PE", "1,", null],
   ["es-PE", "1,2345", null],
+  ["pl-PL", "1 234,50", 1234.5],
+  ["pl-PL", "1234,5", 1234.5],
+  ["pl-PL", "1 234 567,25 zł", 1234567.25],
+  ["sv-SE", "1 234,50", 1234.5],
+  ["sv-SE", "−12 345,5", -12345.5],
+  ["nb-NO", "−1 000 kr", -1000],
+  ["fi-FI", "−250,75 €", -250.75],
+  ["da-DK", "1.234,50", 1234.5],
+  ["da-DK", "1 234,50", 1234.5],
+  ["da-DK", "-1.000", -1000],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -102,6 +112,9 @@ const ambiguos: [string, string, number | null][] = [
   ["es-MX", "5,000.000", 5000],
   ["es-CL", "5,000", null],
   ["es-CO", "5.000", 5000],
+  ["sv-SE", "5,000", null],
+  ["fi-FI", "−5,000", null],
+  ["pl-PL", "5 000", 5000],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -439,8 +452,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);

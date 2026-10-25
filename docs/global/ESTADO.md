@@ -46,7 +46,7 @@ varias veces por límite de uso.
 | Costa de Marfil | claude/pais-ci | en curso |
 | Angola | claude/pais-ao | en curso |
 | Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
-| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | terminado el 24/10 (núcleo de los cinco idiomas; universales en ramas mundo-trad) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y
@@ -76,6 +76,22 @@ Cargar `nz.ocr` a mano antes del 11/12. Revisión por hablante nativo de ja/ko/z
 - Un modo tolerante del parser HTTP, para las páginas de TRA de Tanzania (hoy quedan como "manual").
 
 El cron datos-paises no está actualizando uy, hn y bo.
+
+## 24/10/2026 · Motor europeo: polaco, sueco, danés, noruego y finés (`claude/mundo-motor-eu`)
+
+pl, sv, da, nb y fi en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu
+sueldo en el mundo» y venta completa (`IDIOMAS_VENTA`). Un registro informal por idioma (Ty
+implícito, du, sinä implícito). Decisiones en ADR 0002, D9. Ediciones de prueba `zz-pl`, `zz-sv`,
+`zz-da`, `zz-nb` y `zz-fi`. Puesto al día con main bb530d7a en `claude/mundo-motor-eu-al-dia`:
+calendario laboral, horas de trabajo, rankings de países, «Sueldos reales» y afiliados en los cinco,
+con sus carpetas de ruta, y las carpetas de «Tu sueldo en el mundo» que faltaban (slugs en D9).
+
+Falta para el primer país de estos idiomas (Polonia, Suecia, Dinamarca, Noruega, Finlandia):
+- Las 41 universales en cada idioma: ramas `claude/mundo-trad-<idioma>` (solo `textos/<idioma>.ts` y
+  `contenido/<idioma>.ts`; después `npx tsx scripts/gen_idiomas_universales.ts`).
+- El país en sí (BRIEF-PAIS). Finlandia puede tener además la edición `fi-sv` en sueco (sv-FI ya está
+  en los mercados de prueba de `check_universales`).
+- Revisión de un hablante nativo de cada idioma sobre una muestra de páginas antes de publicar.
 
 ## 17/10/2026 · Motor 3: japonés, coreano y chino (`claude/mundo-motor-3`)
 

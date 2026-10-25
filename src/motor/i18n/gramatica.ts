@@ -251,6 +251,50 @@ const nl: GramaticaPais = (() => {
   return { nombre, de: (p) => `van ${nombre(p)}`, en: (p) => `in ${nombre(p)}`, para: (p) => `voor ${nombre(p)}` };
 })();
 
+// En polaco el nombre se declina: «Polska», «dla Polski», «w Polsce». La tabla cubre los países con
+// forma irregular o con «na»/«we»; el resto sale por terminación (-ia y -ja dan -ii y -ji, -ka da
+// -ki y -ce, -a da -y e -ie) y, si no termina en -a, se deja sin declinar.
+const pl: GramaticaPais = (() => {
+  const TABELA: Readonly<Record<string, readonly [string, string]>> = {
+    Polska: ["Polski", "w Polsce"],
+    Niemcy: ["Niemiec", "w Niemczech"],
+    Francja: ["Francji", "we Francji"],
+    Włochy: ["Włoch", "we Włoszech"],
+    "Wielka Brytania": ["Wielkiej Brytanii", "w Wielkiej Brytanii"],
+    "Stany Zjednoczone": ["Stanów Zjednoczonych", "w Stanach Zjednoczonych"],
+    Czechy: ["Czech", "w Czechach"],
+    Słowacja: ["Słowacji", "na Słowacji"],
+    Ukraina: ["Ukrainy", "w Ukrainie"],
+    Litwa: ["Litwy", "na Litwie"],
+    Łotwa: ["Łotwy", "na Łotwie"],
+    Węgry: ["Węgier", "na Węgrzech"],
+    Niderlandy: ["Niderlandów", "w Niderlandach"],
+    Chiny: ["Chin", "w Chinach"],
+    Indie: ["Indii", "w Indiach"],
+    Filipiny: ["Filipin", "na Filipinach"],
+    Kanada: ["Kanady", "w Kanadzie"],
+    Szwecja: ["Szwecji", "w Szwecji"],
+    Meksyk: ["Meksyku", "w Meksyku"],
+    Izrael: ["Izraela", "w Izraelu"],
+    Cypr: ["Cypru", "na Cyprze"],
+    Malta: ["Malty", "na Malcie"],
+    Islandia: ["Islandii", "na Islandii"],
+    Estonia: ["Estonii", "w Estonii"],
+    Luksemburg: ["Luksemburga", "w Luksemburgu"],
+    Singapur: ["Singapuru", "w Singapurze"],
+    Japonia: ["Japonii", "w Japonii"],
+  };
+  const formy = (p: string): readonly [string, string] => {
+    if (TABELA[p]) return TABELA[p];
+    if (/[ij]a$/.test(p)) return [`${p.slice(0, -1)}i`, `w ${p.slice(0, -1)}i`];
+    if (/ka$/.test(p)) return [`${p.slice(0, -1)}i`, `w ${p.slice(0, -2)}ce`];
+    if (/[^aeiouy]a$/.test(p)) return [`${p.slice(0, -1)}y`, `w ${p.slice(0, -1)}ie`];
+    return [p, `w ${p}`];
+  };
+  return { nombre: (p) => p, de: (p) => formy(p)[0], en: (p) => formy(p)[1], para: (p) => `dla ${formy(p)[0]}` };
+})();
+
+
 // Sin artículos ni plural: el país lleva la partícula detrás. Lugar y destino cambian el orden de
 // toda la frase, así que los diccionarios de estos idiomas arman la oración con el nombre suelto y
 // usan estas formas solo donde encajan tal cual.
@@ -259,4 +303,59 @@ const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `
 // 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
 const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh };
+// Sueco, danés y noruego no declinan el nombre del país: «i Sverige», «för Sverige».
+const sv: GramaticaPais = { nombre: (p) => p, de: (p) => `för ${p}`, en: (p) => `i ${p}`, para: (p) => `för ${p}` };
+const da: GramaticaPais = { nombre: (p) => p, de: (p) => `for ${p}`, en: (p) => `i ${p}`, para: (p) => `for ${p}` };
+const nb: GramaticaPais = { nombre: (p) => p, de: (p) => `for ${p}`, en: (p) => `i ${p}`, para: (p) => `for ${p}` };
+
+// En finés el nombre se declina y no lleva preposición: «Suomi», «Suomen» (genitivo), «Suomessa»
+// (inesivo) o «Maltalla» (adesivo, islas y algunos países). `de` y `para` devuelven el genitivo, que
+// va DELANTE del sustantivo («Suomen laskurit», «Suomen viralliset tiedot»); `en` devuelve el caso de
+// lugar entero («Suomessa»). La tabla cubre los nombres compuestos, los plurales y los que van con
+// -lla; el resto sale por regla: gradación consonántica en la última sílaba (Islanti → Islannin,
+// Kreikka → Kreikan, Itävalta → Itävallan), -in/-issa tras consonante y armonía vocálica según la
+// última palabra del nombre (Ruotsissa, Sveitsissä).
+const fi: GramaticaPais = (() => {
+  const TAULU: Readonly<Record<string, readonly [string, string]>> = {
+    Suomi: ["Suomen", "Suomessa"],
+    Yhdysvallat: ["Yhdysvaltojen", "Yhdysvalloissa"],
+    "Iso-Britannia": ["Ison-Britannian", "Isossa-Britanniassa"],
+    "Uusi-Seelanti": ["Uuden-Seelannin", "Uudessa-Seelannissa"],
+    Alankomaat: ["Alankomaiden", "Alankomaissa"],
+    Filippiinit: ["Filippiinien", "Filippiineillä"],
+    "Arabiemiirikunnat": ["Arabiemiirikuntien", "Arabiemiirikunnissa"],
+    "Yhdistyneet arabiemiirikunnat": ["Yhdistyneiden arabiemiirikuntien", "Yhdistyneissä arabiemiirikunnissa"],
+    Seychellit: ["Seychellien", "Seychelleillä"],
+    Malediivit: ["Malediivien", "Malediiveilla"],
+    Bahama: ["Bahaman", "Bahamalla"],
+    Venäjä: ["Venäjän", "Venäjällä"],
+    Malta: ["Maltan", "Maltalla"],
+    Kypros: ["Kyproksen", "Kyproksella"],
+    Barbados: ["Barbadoksen", "Barbadoksella"],
+    Mauritius: ["Mauritiuksen", "Mauritiuksella"],
+    Jamaika: ["Jamaikan", "Jamaikalla"],
+    Madagaskar: ["Madagaskarin", "Madagaskarilla"],
+    Liechtenstein: ["Liechtensteinin", "Liechtensteinissa"],
+    Belize: ["Belizen", "Belizessä"],
+  };
+  const VOKAALI = /[aeiouyäö]$/;
+  const taka = (p: string) => /[aou]/.test(p.split(/[\s-]/).pop()!.toLowerCase());
+  // Gradación consonántica de la última sílaba, solo en los patrones que aparecen en nombres de país.
+  const vartalo = (p: string) =>
+    p
+      .replace(/nti$/, "nni")
+      .replace(/lta$/, "lla")
+      .replace(/kk([aeiouyäö])$/, "k$1")
+      .replace(/tt([aeiouyäö])$/, "t$1")
+      .replace(/pp([aeiouyäö])$/, "p$1");
+  const muodot = (p: string): readonly [string, string] => {
+    if (TAULU[p]) return TAULU[p];
+    const ssa = taka(p) ? "ssa" : "ssä";
+    if (!VOKAALI.test(p)) return [`${p}in`, `${p}i${ssa}`];
+    const v = vartalo(p);
+    return [`${v}n`, `${v}${ssa}`];
+  };
+  return { nombre: (p) => p, de: (p) => muodot(p)[0], en: (p) => muodot(p)[1], para: (p) => muodot(p)[0] };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi };

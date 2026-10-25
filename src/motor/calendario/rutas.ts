@@ -18,6 +18,11 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   ja: "kyuyo-karenda",
   ko: "geupyeo-dallyeok",
   zh: "gongzi-rili",
+  pl: "kalendarz-placowy",
+  sv: "lonekalender",
+  da: "lonkalender",
+  nb: "lonnskalender",
+  fi: "palkkakalenteri",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";

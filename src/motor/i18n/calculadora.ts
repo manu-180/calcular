@@ -99,6 +99,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
     },
     usted: { datos: "Uw gegevens", vacio: "Vul de gegevens in en tik op Berekenen om de uitkomst te zien." },
   },
+  pl: {
+    base: {
+      datos: "Twoje dane",
+      resultado: "Wynik",
+      vacio: "Uzupełnij dane i naciśnij Oblicz, aby zobaczyć wynik.",
+      sinResultado: "Na razie nie pokazujemy tego wyniku.",
+      avisos: { info: "Dobrze wiedzieć", cautela: "Uwaga", bloquea: "Dlaczego nie pokazujemy wyniku" },
+      fuenteDelAviso: "Źródło",
+    },
+  },
   ja: {
     base: {
       datos: "入力項目",
@@ -131,6 +141,46 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
     regional: {
       "zh-CN": ZH_HANS_CALCULADORA,
       "zh-SG": ZH_HANS_CALCULADORA,
+    },
+  },
+  sv: {
+    base: {
+      datos: "Dina uppgifter",
+      resultado: "Resultat",
+      vacio: "Fyll i uppgifterna och tryck på Beräkna för att se resultatet.",
+      sinResultado: "Vi visar inte det här resultatet just nu.",
+      avisos: { info: "Bra att veta", cautela: "Observera", bloquea: "Därför visar vi inget resultat" },
+      fuenteDelAviso: "Källa",
+    },
+  },
+  da: {
+    base: {
+      datos: "Dine oplysninger",
+      resultado: "Resultat",
+      vacio: "Udfyld oplysningerne, og tryk på Beregn for at se resultatet.",
+      sinResultado: "Vi viser ikke dette resultat lige nu.",
+      avisos: { info: "Godt at vide", cautela: "Bemærk", bloquea: "Derfor viser vi ikke et resultat" },
+      fuenteDelAviso: "Kilde",
+    },
+  },
+  nb: {
+    base: {
+      datos: "Opplysningene dine",
+      resultado: "Resultat",
+      vacio: "Fyll ut opplysningene og trykk på Beregn for å se resultatet.",
+      sinResultado: "Vi viser ikke dette resultatet akkurat nå.",
+      avisos: { info: "Greit å vite", cautela: "Merk deg", bloquea: "Derfor viser vi ikke noe resultat" },
+      fuenteDelAviso: "Kilde",
+    },
+  },
+  fi: {
+    base: {
+      datos: "Tietosi",
+      resultado: "Tulos",
+      vacio: "Täytä tiedot ja paina Laske, niin näet tuloksen.",
+      sinResultado: "Emme näytä tätä tulosta juuri nyt.",
+      avisos: { info: "Hyvä tietää", cautela: "Huomaa", bloquea: "Siksi emme näytä tulosta" },
+      fuenteDelAviso: "Lähde",
     },
   },
 };

@@ -1,5 +1,5 @@
 import { idiomaDeLocale } from "./i18n/resolver";
-import { nombresUnidad, UNIDAD_PEGADA } from "./i18n/unidades";
+import { nombresUnidad, UNIDAD_PEGADA, type FormasUnidad } from "./i18n/unidades";
 import { esFechaISO } from "./vigencia";
 import type { FechaISO, Moneda, ReglaRedondeo, Unidad } from "./tipos";
 import { esMoneda, UNIDADES_REFERENCIA } from "./tipos";
@@ -88,8 +88,12 @@ export function formatearFecha(fecha: FechaISO, locale: string, estilo: "larga" 
 function nombreDeUnidad(n: number, unidad: string, locale: string): string | null {
   const nombres = nombresUnidad(idiomaDeLocale(locale) ?? "es", locale);
   if (!(unidad in nombres)) return null;
-  const formas = nombres[unidad as keyof typeof nombres];
-  return new Intl.PluralRules(locale).select(n) === "one" ? formas.uno : formas.otros;
+  const formas: FormasUnidad = nombres[unidad as keyof typeof nombres];
+  const categoria = new Intl.PluralRules(locale).select(n);
+  if (categoria === "one") return formas.uno;
+  if (categoria === "few") return formas.pocos ?? formas.otros;
+  if (categoria === "many") return formas.muchos ?? formas.otros;
+  return formas.otros;
 }
 
 function decimalesPropios(n: number): number {
@@ -125,6 +129,10 @@ export function separadoresDe(locale: string): Separadores {
 }
 
 const ESPACIOS = /[\s   ]/g;
+// sv, nb y fi escriben el negativo con el signo menos de Unicode (U+2212) y el formulario muestra los
+// valores así: sin normalizarlo, «−12 345» se leía como 12345.
+const MENOS = /−/g;
+const normalizar = (texto: string) => texto.replace(ESPACIOS, "").replace(MENOS, "-");
 
 // Teclados árabes y persas escriben ٣٬٥٠٠٫٧٥ (dígitos arábigo-índicos, ٬ de miles y ٫ decimal) y la
 // coma «،». Se pasan a ASCII antes de las reglas: ٫ y ٬ dicen sin ambigüedad qué son, así que van
@@ -229,7 +237,7 @@ export function parsearNumero(texto: string, locale: string, opciones: OpcionesP
   const seps = separadoresAscii(locale);
   const normal = aLatino(texto, seps).normalize("NFKC");
   if (RE_UNIDAD_CJK.test(normal)) return conUnidadesCjk(normal, locale, opciones);
-  const sinEspacios = sinPuntosDeSimbolo(normal.replace(ESPACIOS, ""));
+  const sinEspacios = sinPuntosDeSimbolo(normalizar(normal));
   const negativo = /^[^\d]*-/.test(sinEspacios);
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
   if (!/\d/.test(limpio)) return null;
@@ -276,7 +284,7 @@ export function parsearNumero(texto: string, locale: string, opciones: OpcionesP
 // milesAmbiguos ("5.000" da "5000"); null si el texto no es ese caso.
 export function sugerenciaMiles(texto: string, locale: string): { sugerido: string; separador: string } | null {
   const seps = separadoresAscii(locale);
-  const sinEspacios = sinPuntosDeSimbolo(aLatino(texto, seps).normalize("NFKC").replace(ESPACIOS, ""));
+  const sinEspacios = sinPuntosDeSimbolo(normalizar(aLatino(texto, seps).normalize("NFKC")));
   const limpio = sinEspacios.replace(/[^\d.,]/g, "");
   const dec = seps.decimal;
   const otro = dec === "." ? "," : ".";
