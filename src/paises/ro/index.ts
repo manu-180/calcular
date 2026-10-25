@@ -24,6 +24,12 @@ import calculatorCass from "./calculadoras/calculator-cass";
 import contenidoCalculatorCass from "./contenido/calculator-cass";
 import calculatorDrepturiDeAutor from "./calculadoras/calculator-drepturi-de-autor";
 import contenidoCalculatorDrepturiDeAutor from "./contenido/calculator-drepturi-de-autor";
+import cursValutarBnr from "./calculadoras/curs-valutar-bnr";
+import contenidoCursValutarBnr from "./contenido/curs-valutar-bnr";
+import calculatorInflatie from "./calculadoras/calculator-inflatie";
+import contenidoCalculatorInflatie from "./contenido/calculator-inflatie";
+import calculatorDepozitBancar from "./calculadoras/calculator-depozit-bancar";
+import contenidoCalculatorDepozitBancar from "./contenido/calculator-depozit-bancar";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +54,9 @@ export default definirPais({
     { definicion: impozitVanzareApartament, contenido: contenidoImpozitVanzareApartament, cliente: () => import("./calculadoras/impozit-vanzare-apartament.cliente") },
     { definicion: calculatorCass, contenido: contenidoCalculatorCass, cliente: () => import("./calculadoras/calculator-cass.cliente") },
     { definicion: calculatorDrepturiDeAutor, contenido: contenidoCalculatorDrepturiDeAutor, cliente: () => import("./calculadoras/calculator-drepturi-de-autor.cliente") },
+    { definicion: cursValutarBnr, contenido: contenidoCursValutarBnr, cliente: () => import("./calculadoras/curs-valutar-bnr.cliente") },
+    { definicion: calculatorInflatie, contenido: contenidoCalculatorInflatie, cliente: () => import("./calculadoras/calculator-inflatie.cliente") },
+    { definicion: calculatorDepozitBancar, contenido: contenidoCalculatorDepozitBancar, cliente: () => import("./calculadoras/calculator-depozit-bancar.cliente") },
   ],
   universales: "todas",
   novedades,

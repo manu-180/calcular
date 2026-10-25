@@ -886,7 +886,7 @@
       "nombre": "Indicele armonizat al prețurilor de consum (IAPC) pentru România, 2025 = 100",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 80,
+      "maxAntiguedadDias": 90,
       "fuente": {
         "organismo": "Eurostat (date transmise de Institutul Național de Statistică)",
         "titulo": "HICP, ECOICOP ver. 2, indici lunari (prc_hicp_minr), total, România",

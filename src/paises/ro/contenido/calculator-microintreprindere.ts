@@ -14,7 +14,7 @@ export default definirContenido({
     "Impozitul micro este {{ro.cota-micro}} din veniturile impozabile, rotunjit la leu.",
     "Profitul este venitul minus cheltuielile și impozitul micro.",
     "La dividende se reține impozit de {{ro.impozit-dividende}}.",
-    "Plafonul de {{ro.plafon-micro}} se compară cu veniturile la cursul BNR. Calculatorul folosește cursul de azi: {{ro.eur}} lei pentru 1 euro.",
+    "Plafonul de {{ro.plafon-micro}} se compară cu veniturile la cursul BNR. Calculatorul folosește cursul de azi: {{ro.eur}} pentru 1 euro.",
   ],
   ejemplo: [
     "La 300.000 de lei venituri și 180.000 de lei cheltuieli, impozitul micro este 3.000 de lei. Din profitul de 117.000 de lei, impozitul pe dividende este 18.720 de lei.",
