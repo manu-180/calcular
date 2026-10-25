@@ -14,6 +14,8 @@ import dmeiLeida from "./calculadoras/dmei-leida";
 import contenidoDmeiLeida from "./contenido/dmei-leida";
 import dmeiMachala from "./calculadoras/dmei-machala";
 import contenidoDmeiMachala from "./contenido/dmei-machala";
+import hatzmadaLamadad from "./calculadoras/hatzmada-lamadad";
+import contenidoHatzmadaLamadad from "./contenido/hatzmada-lamadad";
 import hodaaMukdemet from "./calculadoras/hodaa-mukdemet";
 import contenidoHodaaMukdemet from "./contenido/hodaa-mukdemet";
 import kitzbatYeladim from "./calculadoras/kitzbat-yeladim";
@@ -22,12 +24,16 @@ import maam from "./calculadoras/maam";
 import contenidoMaam from "./contenido/maam";
 import masHachnasa from "./calculadoras/mas-hachnasa";
 import contenidoMasHachnasa from "./contenido/mas-hachnasa";
+import masRechisha from "./calculadoras/mas-rechisha";
+import contenidoMasRechisha from "./contenido/mas-rechisha";
 import pitzuyeiPiturim from "./calculadoras/pitzuyei-piturim";
 import contenidoPitzuyeiPiturim from "./contenido/pitzuyei-piturim";
 import sacharMinimum from "./calculadoras/sachar-minimum";
 import contenidoSacharMinimum from "./contenido/sachar-minimum";
 import sacharNeto from "./calculadoras/sachar-neto";
 import contenidoSacharNeto from "./contenido/sachar-neto";
+import shaarChalifin from "./calculadoras/shaar-chalifin";
+import contenidoShaarChalifin from "./contenido/shaar-chalifin";
 import shaotNosafot from "./calculadoras/shaot-nosafot";
 import contenidoShaotNosafot from "./contenido/shaot-nosafot";
 import yemeiChufsha from "./calculadoras/yemei-chufsha";
@@ -52,13 +58,16 @@ export default definirPais({
     { definicion: dmeiHavraa, contenido: contenidoDmeiHavraa, cliente: () => import("./calculadoras/dmei-havraa.cliente") },
     { definicion: dmeiLeida, contenido: contenidoDmeiLeida, cliente: () => import("./calculadoras/dmei-leida.cliente") },
     { definicion: dmeiMachala, contenido: contenidoDmeiMachala, cliente: () => import("./calculadoras/dmei-machala.cliente") },
+    { definicion: hatzmadaLamadad, contenido: contenidoHatzmadaLamadad, cliente: () => import("./calculadoras/hatzmada-lamadad.cliente") },
     { definicion: hodaaMukdemet, contenido: contenidoHodaaMukdemet, cliente: () => import("./calculadoras/hodaa-mukdemet.cliente") },
     { definicion: kitzbatYeladim, contenido: contenidoKitzbatYeladim, cliente: () => import("./calculadoras/kitzbat-yeladim.cliente") },
     { definicion: maam, contenido: contenidoMaam, cliente: () => import("./calculadoras/maam.cliente") },
     { definicion: masHachnasa, contenido: contenidoMasHachnasa, cliente: () => import("./calculadoras/mas-hachnasa.cliente") },
+    { definicion: masRechisha, contenido: contenidoMasRechisha, cliente: () => import("./calculadoras/mas-rechisha.cliente") },
     { definicion: pitzuyeiPiturim, contenido: contenidoPitzuyeiPiturim, cliente: () => import("./calculadoras/pitzuyei-piturim.cliente") },
     { definicion: sacharMinimum, contenido: contenidoSacharMinimum, cliente: () => import("./calculadoras/sachar-minimum.cliente") },
     { definicion: sacharNeto, contenido: contenidoSacharNeto, cliente: () => import("./calculadoras/sachar-neto.cliente") },
+    { definicion: shaarChalifin, contenido: contenidoShaarChalifin, cliente: () => import("./calculadoras/shaar-chalifin.cliente") },
     { definicion: shaotNosafot, contenido: contenidoShaotNosafot, cliente: () => import("./calculadoras/shaot-nosafot.cliente") },
     { definicion: yemeiChufsha, contenido: contenidoYemeiChufsha, cliente: () => import("./calculadoras/yemei-chufsha.cliente") },
   ],
