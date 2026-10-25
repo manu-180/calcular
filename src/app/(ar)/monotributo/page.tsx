@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { datosOferta } from "@/lib/oferta";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 // RECATEGORIZACION.proximaVentana se deriva de la fecha (data/monotributo.ts): revalidar cada
 // hora evita que la FAQ quede hablando de una ventana ya cerrada entre deploys.
@@ -227,6 +228,7 @@ export default function MonotributoPage() {
         desde el {VIGENCIA.desde}. La próxima actualización de las escalas está prevista para{" "}
         {VIGENCIA.proximaActualizacion}.
       </p>
+      <OtrosPaises concepto="regimen-simplificado" />
     </article>
   );
 }

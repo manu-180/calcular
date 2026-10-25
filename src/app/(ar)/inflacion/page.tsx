@@ -18,6 +18,7 @@ import {
 } from "@/lib/inflacion";
 import { formatPct } from "@/lib/formato";
 import { productoPorSlug } from "@/lib/mp";
+import { OtrosPaises } from "@/components/OtrosPaises";
 
 export const metadata: Metadata = {
   title: "Calculadora de inflación: actualizar un monto por IPC",
@@ -335,6 +336,7 @@ export default function InflacionPage() {
         headline="Avisame cuando salga el IPC nuevo"
         subtext="Cada mes el INDEC publica el nuevo índice de inflación. Te aviso apenas sale, sin que tengas que estar pendiente. Sin spam."
       />
+      <OtrosPaises concepto="inflacion" />
     </article>
   );
 }
