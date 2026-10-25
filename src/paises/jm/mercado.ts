@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   monedas: ["JMD"],
   simbolos: { JMD: "J$" },
   zonaHoraria: "America/Jamaica",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 160,
 };
