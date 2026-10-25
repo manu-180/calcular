@@ -3,6 +3,7 @@ import { adaptar, ajusteDeLocale, fusionar, parcheDe } from "../resolver";
 import { de } from "./de";
 import { en } from "./en";
 import { es } from "./es";
+import { hu } from "./hu";
 import { fr } from "./fr";
 import { it } from "./it";
 import { ja } from "./ja";
@@ -14,7 +15,7 @@ import { zh } from "./zh";
 
 export type { BloqueLegal, DatosLegales, PaginaLegal, PaginasLegales } from "./tipos";
 
-export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl, ja, ko, zh };
+export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, hu };
 
 export function resolverLegales(idioma: Idioma, trato: Trato, datos: DatosLegales, locale?: string): PaginasLegales {
   const dic = DICCIONARIOS_LEGALES[idioma](datos);

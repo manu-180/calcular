@@ -59,11 +59,19 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "cn" as CodigoMercado, pais: "CN", nombrePais: "中国", locale: "zh-CN", trato: "usted", moneda: "CNY" as Moneda, escala: 7 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "聖文森及格瑞那丁", locale: "zh-TW", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  // Húngaro (ADR 0002, D21): forintos sin decimales con «Ft» detrás y espacio de miles, un nombre largo
+  // con artículo y sufijo de isla («a Saint Vincent és a Grenadine-szigeteken») y uno compuesto en
+  // -ország («Németországban»).
+  hu: [
+    { mercado: "hu" as CodigoMercado, pais: "HU", nombrePais: "Magyarország", locale: "hu-HU", trato: "tu", moneda: "HUF" as Moneda, escala: 360 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent és a Grenadine-szigetek", locale: "hu-HU", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "de" as CodigoMercado, pais: "DE", nombrePais: "Németország", locale: "hu-HU", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
+  ],
 };
 
-// En ja, ko y zh las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
+// En ja, ko, zh y hu las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
 // sobre toda la página: los traductores de los idiomas latinos no las necesitaban.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh"]);
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "hu"]);
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy

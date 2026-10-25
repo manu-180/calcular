@@ -3,10 +3,11 @@ import type { Campo, DefinicionCalculadora, MundoCalculadora, PeriodoMundo } fro
 export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; motivo: string };
 
 // Palabras de período en los idiomas del motor. Se compara por palabra (o prefijo de palabra
-// compuesta, como Monatslohn o Jahresgehalt), nunca por substring: «mano» no es «año».
-const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "年", "연", "연봉", "年収", "年薪"];
+// compuesta, como Monatslohn o Jahresgehalt), nunca por substring: «mano» no es «año». En húngaro
+// «éves», «évi», «évente», «havi» y «havonta» llegan sin diacríticos (palabras() los quita).
+const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "eves", "evi", "evente", "年", "연", "연봉", "年収", "年薪"];
 const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year"];
-const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "月", "월", "월급", "月給", "月薪"];
+const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "havi", "havonta", "月", "월", "월급", "月給", "月薪"];
 const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil"];
 
 function palabras(texto: string): string[] {

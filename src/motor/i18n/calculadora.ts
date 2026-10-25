@@ -133,6 +133,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       "zh-SG": ZH_HANS_CALCULADORA,
     },
   },
+  hu: {
+    base: {
+      datos: "Az adataid",
+      resultado: "Eredmény",
+      vacio: "Töltsd ki az adatokat, és kattints a „Kiszámítás” gombra: az eredmény itt jelenik meg.",
+      sinResultado: "Ezt az eredményt egyelőre nem mutatjuk.",
+      avisos: { info: "Jó tudni", cautela: "Figyelem", bloquea: "Miért nem mutatjuk az eredményt" },
+      fuenteDelAviso: "Forrás",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

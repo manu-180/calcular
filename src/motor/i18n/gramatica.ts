@@ -259,4 +259,140 @@ const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `
 // 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
 const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh };
+// Húngaro (ADR 0002, D21). El artículo es «az» delante de vocal y «a» delante de consonante; delante
+// de una cifra cuenta cómo se lee: «az 1» (egy), «az 5» (öt), «az 50», «az 1 500» (ezerötszáz), «az
+// 1 000 000» (egymillió), pero «a 10» (tíz), «a 100» (száz), «a 15 %». Las siglas que se leen letra
+// por letra («az SZJA», «az ÁFA», «a NAV») no se pueden adivinar: el texto las escribe a mano.
+const VOCAL_HU = /^[aáeéiíoóöőuúüűåAÁEÉIÍOÓÖŐUÚÜŰÅ]/;
+
+export function neveloHu(siguiente: string | number): "a" | "az" {
+  const texto = String(siguiente).trim();
+  const cifra = /^[-−]?\s*(\d[\d\s  .]*)/.exec(texto);
+  if (cifra) {
+    const entero = cifra[1].replace(/[^\d]/g, "");
+    if (entero.startsWith("5")) return "az";
+    return entero.startsWith("1") && entero.length % 3 === 1 ? "az" : "a";
+  }
+  return VOCAL_HU.test(texto) ? "az" : "a";
+}
+
+// El artículo y la palabra o cifra: «az 1 500 Ft», «a 3 legjobb», «az eredmény».
+export function conNeveloHu(siguiente: string | number): string {
+  return `${neveloHu(siguiente)} ${siguiente}`;
+}
+
+// El nombre del país no lleva preposición: el caso va como sufijo pegado a la última palabra y sigue la
+// armonía vocálica. `esetekHu(p)` da el lugar («Németországban», «Magyarországon»), la dirección
+// («Németországba», «Magyarországra»), el origen («Németországból», «Magyarországról») y el dativo
+// («Németországnak»). Dos grupos: casi todos los países van con -ban/-ben (dentro), y Magyarország,
+// las islas, lo que termina en -sziget(ek), -föld o -land y algunos más (FELSZIN) van con -on/-en/-ön
+// (sobre). La armonía la decide la última vocal que no sea i/í de la última palabra (las i son
+// neutras: «Mali» da «Maliban», «Izrael» da «Izraelben», «Fidzsi» da «Fidzsin»); la a, e, o y ö
+// finales se alargan antes del sufijo («Kanadában», «Chilében», «Togóban»). Los nombres que son una
+// frase con sustantivo común («Egyesült Államok», «Dominikai Köztársaság», «Fülöp-szigetek») llevan
+// artículo en todas las formas («az Egyesült Államokban», «a Fülöp-szigeteken»). `de(p)` es el
+// poseedor sin sufijo, que va delante del poseído, y es este el que lleva el posesivo («Magyarország
+// adórendszere»); `para(p)` usa la posposición «számára», que no cambia el nombre. Ningún sufijo se
+// pega a una cifra ni a un marcador: los textos usan dos puntos o posposiciones. Si una forma con
+// artículo abre la oración, el texto la pasa por mayusculaHu.
+export interface EsetekHu {
+  // con artículo si lo lleva: «Magyarország», «az Egyesült Államok»
+  nev: string;
+  // lugar: «Magyarországon», «Németországban», «az Egyesült Államokban»
+  hol: string;
+  // dirección: «Magyarországra», «Németországba»
+  hova: string;
+  // origen: «Magyarországról», «Németországból»
+  honnan: string;
+  // dativo: «Magyarországnak», «az Egyesült Államoknak»
+  nak: string;
+}
+
+export const esetekHu: (pais: string) => EsetekHu = (() => {
+  // Formas fijas: el nombre que sale de Intl con un agregado, o un sufijo que la regla no adivina
+  // (la e o la que finales mudas van con guion: «Belize-ben», «Guadeloupe-on»).
+  const TABLA: Readonly<Record<string, Omit<EsetekHu, "nev"> & { nev?: string }>> = {
+    "Hongkong KKT": { nev: "Hongkong", hol: "Hongkongban", hova: "Hongkongba", honnan: "Hongkongból", nak: "Hongkongnak" },
+    "Makaó KKT": { nev: "Makaó", hol: "Makaóban", hova: "Makaóba", honnan: "Makaóból", nak: "Makaónak" },
+    "Kongó – Kinshasa": {
+      nev: "a Kongói Demokratikus Köztársaság",
+      hol: "a Kongói Demokratikus Köztársaságban",
+      hova: "a Kongói Demokratikus Köztársaságba",
+      honnan: "a Kongói Demokratikus Köztársaságból",
+      nak: "a Kongói Demokratikus Köztársaságnak",
+    },
+    "Kongó – Brazzaville": { nev: "a Kongói Köztársaság", hol: "a Kongói Köztársaságban", hova: "a Kongói Köztársaságba", honnan: "a Kongói Köztársaságból", nak: "a Kongói Köztársaságnak" },
+    Belize: { hol: "Belize-ben", hova: "Belize-be", honnan: "Belize-ből", nak: "Belize-nek" },
+    Suriname: { hol: "Suriname-ban", hova: "Suriname-ba", honnan: "Suriname-ból", nak: "Suriname-nak" },
+    Zimbabwe: { hol: "Zimbabwéban", hova: "Zimbabwéba", honnan: "Zimbabwéból", nak: "Zimbabwénak" },
+    "Sierra Leone": { hol: "Sierra Leonéban", hova: "Sierra Leonéba", honnan: "Sierra Leonéból", nak: "Sierra Leonénak" },
+    Guadeloupe: { hol: "Guadeloupe-on", hova: "Guadeloupe-ra", honnan: "Guadeloupe-ról", nak: "Guadeloupe-nak" },
+    Martinique: { hol: "Martinique-on", hova: "Martinique-ra", honnan: "Martinique-ról", nak: "Martinique-nak" },
+    Mayotte: { hol: "Mayotte-on", hova: "Mayotte-ra", honnan: "Mayotte-ról", nak: "Mayotte-nak" },
+    Jersey: { hol: "Jersey-n", hova: "Jersey-re", honnan: "Jersey-ről", nak: "Jersey-nek" },
+    Guernsey: { hol: "Guernsey-n", hova: "Guernsey-re", honnan: "Guernsey-ről", nak: "Guernsey-nek" },
+    "Az USA lakatlan külbirtokai": {
+      nev: "az USA lakatlan külbirtokai",
+      hol: "az USA lakatlan külbirtokain",
+      hova: "az USA lakatlan külbirtokaira",
+      honnan: "az USA lakatlan külbirtokairól",
+      nak: "az USA lakatlan külbirtokainak",
+    },
+    "Saint-Barthélemy": { hol: "Saint-Barthélemyn", hova: "Saint-Barthélemyre", honnan: "Saint-Barthélemyről", nak: "Saint-Barthélemynek" },
+  };
+  // Países e islas que van con -on/-en/-ön (además de -sziget, -szigetek, -föld, -land, -part y
+  // -terület: «Elefántcsontparton», «a Francia Déli Területeken»).
+  const FELSZIN = new Set([
+    "Magyarország", "Ciprus", "Málta", "Kuba", "Jamaica", "Haiti", "Madagaszkár", "Mauritius", "Srí Lanka", "Tajvan",
+    "Barbados", "Bermuda", "Grenada", "Dominika", "Puerto Rico", "Trinidad és Tobago", "Antigua és Barbuda", "Saint Lucia",
+    "Saint Kitts és Nevis", "Szamoa", "Amerikai Szamoa", "Tonga", "Fidzsi", "Nauru", "Tuvalu", "Palau", "Vanuatu", "Kiribati",
+    "Guam", "Aruba", "Curaçao", "Réunion", "Sint Maarten", "Saint Martin", "Szent Ilona", "Új-Kaledónia", "Anguilla",
+    "Montserrat", "Niue", "Tokelau", "Tristan da Cunha", "Diego Garcia", "Sark", "Svalbard és Jan Mayen",
+    "Wallis és Futuna", "Saint-Pierre és Miquelon", "São Tomé és Príncipe", "Francia Polinézia",
+  ]);
+  const FELSZIN_FIN = /(?:sziget|szigetek|föld|land|part|Terület|Területek)$/;
+  // Frases con sustantivo común: van con artículo.
+  const CON_ARTICULO = /(?:Köztársaság|Királyság|Államok|Emírségek|sziget|szigetek|Autonómia|Terület|Területek|külbirtokai|Unió|Szervezete|térség|Közösség)$|^(?:Vatikán$|Egyesült )/;
+  const ATRAS = "aáoóuú";
+  const REDONDAS = "öőüű";
+  const VOCALES = "aáeéiíoóöőuúüű";
+  type Armonia = "atras" | "adelante" | "redonda";
+  const armonia = (palabra: string): Armonia => {
+    const v = [...palabra.toLowerCase()].filter((c) => VOCALES.includes(c) && c !== "i" && c !== "í").at(-1);
+    if (!v) return "adelante";
+    if (ATRAS.includes(v)) return "atras";
+    return REDONDAS.includes(v) ? "redonda" : "adelante";
+  };
+  const ALARGA: Readonly<Record<string, string>> = { a: "á", e: "é", o: "ó", ö: "ő" };
+  return (pais: string): EsetekHu => {
+    const fija = TABLA[pais];
+    const articulo = CON_ARTICULO.test(pais) ? `${neveloHu(pais)} ` : "";
+    if (fija) return { nev: fija.nev ?? `${articulo}${pais}`, hol: fija.hol, hova: fija.hova, honnan: fija.honnan, nak: fija.nak };
+    const ultima = pais.split(/[\s-]/).at(-1) ?? pais;
+    const a = armonia(ultima);
+    const atras = a === "atras";
+    const final = pais.at(-1) ?? "";
+    const tema = ALARGA[final] ? pais.slice(0, -1) + ALARGA[final] : pais;
+    const terminaEnVocal = VOCALES.includes(tema.at(-1)?.toLowerCase() ?? "");
+    const sobre = FELSZIN.has(pais) || FELSZIN_FIN.test(ultima);
+    const hol = sobre ? (terminaEnVocal ? "n" : atras ? "on" : a === "redonda" ? "ön" : "en") : atras ? "ban" : "ben";
+    const hova = sobre ? (atras ? "ra" : "re") : atras ? "ba" : "be";
+    const honnan = sobre ? (atras ? "ról" : "ről") : atras ? "ból" : "ből";
+    const con = (sufijo: string) => `${articulo}${tema}${sufijo}`;
+    return { nev: `${articulo}${pais}`, hol: con(hol), hova: con(hova), honnan: con(honnan), nak: con(atras ? "nak" : "nek") };
+  };
+})();
+
+// Mayúscula inicial para una forma que abre la oración («Az Egyesült Államokban»).
+export function mayusculaHu(s: string): string {
+  return s.charAt(0).toLocaleUpperCase("hu-HU") + s.slice(1);
+}
+
+const hu: GramaticaPais = {
+  nombre: (p) => esetekHu(p).nev,
+  de: (p) => esetekHu(p).nev,
+  en: (p) => esetekHu(p).hol,
+  para: (p) => `${esetekHu(p).nev} számára`,
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, hu };

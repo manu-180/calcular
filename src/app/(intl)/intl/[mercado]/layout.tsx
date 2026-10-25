@@ -19,7 +19,8 @@ import { registro } from "@/paises";
 
 // optional y no swap: si Geist no llegó para el primer pintado se queda la fallback ajustada por
 // next/font, y el H1 (el LCP de casi todas las páginas) no se vuelve a pintar al cambiar de fuente.
-const geist = Geist({ variable: "--font-geist", subsets: ["latin"], display: "optional" });
+// latin-ext trae la ő y la ű del húngaro; con unicode-range solo se baja si la página las usa.
+const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext"], display: "optional" });
 
 // La fecha de referencia (hoyEn, en la zona del mercado) decide tramos, avisos y qué calculadoras
 // se publican. Sin esto la página quedaba con el día del build hasta el próximo deploy. Next toma el
