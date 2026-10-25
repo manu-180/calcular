@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosHu: TextosUi<UiCalorias> = {
+  slug: "kaloriaszukseglet-kalkulator",
+  ui: () => ({
+    sexo: "Nem",
+    mujer: "Nő",
+    hombre: "Férfi",
+    edad: "Életkor (év)",
+    peso: (u) => `Testsúly (${u})`,
+    altura: (u) => `Testmagasság (${u})`,
+    pies: "Magasság: láb (ft)",
+    pulgadas: "Magasság: hüvelyk (in)",
+    actividad: "Aktivitási szint",
+    sedentaria: "Kevés vagy semmi mozgás",
+    ligera: "Enyhe (heti 1 és 3 nap között)",
+    moderada: "Közepes (heti 3 és 5 nap között)",
+    alta: "Magas (heti 6 vagy 7 nap)",
+    muyAlta: "Nagyon magas (kemény edzés vagy fizikai munka)",
+    objetivo: "Cél",
+    mantener: "Megtartom a testsúlyomat",
+    bajar: "Fokozatosan fogyok",
+    subir: "Fokozatosan hízok",
+    basal: "Alapanyagcsere (kcal naponta)",
+    basalAyuda: "Ennyit éget el a szervezeted teljes nyugalomban.",
+    mantenimiento: "Kalória a testsúlyod megtartásához (kcal naponta)",
+    calObjetivo: "Kalória a célodhoz (kcal naponta)",
+    calObjetivoAyuda: "Mérsékelt változás: fogyáshoz naponta 500 kcal levonás, hízáshoz 300 kcal ráadás.",
+    errorEdad: "A képlet 15 és 100 év közötti emberekre való.",
+    errorPeso: "A testsúlynak nullánál nagyobbnak kell lennie.",
+    errorAltura: "A magasságnak nullánál nagyobbnak kell lennie.",
+    notaMinimo: (kcal) => `Fogyásnál az érték nem megy napi ${kcal} kcal alá. Ennél kevesebbet enni szakember támogatásával érdemes.`,
+    aviso: "Ez a Mifflin-St Jeor-képlettel készült becslés. Minden szervezet más: nem helyettesíti az orvos vagy a dietetikus tanácsát.",
+  }),
+};
