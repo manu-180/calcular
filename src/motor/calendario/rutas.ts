@@ -18,6 +18,7 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   ja: "kyuyo-karenda",
   ko: "geupyeo-dallyeok",
   zh: "gongzi-rili",
+  el: "imerologio-misthodosias",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";

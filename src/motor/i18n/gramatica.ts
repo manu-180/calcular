@@ -259,4 +259,133 @@ const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `
 // 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
 const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh };
+// Griego (ADR 0002, D20): el nombre del país lleva artículo con género y número, y se declina. Los
+// nombres llegan como los escribe Intl.DisplayNames en el, así que la regla cubre los femeninos en
+// -α/-η de una o varias palabras («η Ελλάδα», «της Ελλάδας», «η Νότια Αφρική», «της Νότιας
+// Αφρικής»), y lo demás (Ισραήλ, Περού, Μονακό, Ιράν) va como neutro indeclinable («το Ισραήλ», «του
+// Ισραήλ»). La tabla lleva los masculinos (Καναδάς, Λίβανος), los femeninos en -ος (Κύπρος,
+// Αίγυπτος), los neutros que se declinan (Βέλγιο, Μεξικό, Ηνωμένο Βασίλειο), los plurales
+// (Ηνωμένες Πολιτείες, Φιλιππίνες, Ηνωμένα Αραβικά Εμιράτα) y los femeninos con palabras
+// extranjeras que no se declinan (Κόστα Ρίκα, Σρι Λάνκα). «Νήσος» y «Νήσοι» delante se declinan
+// solos; lo que va entre paréntesis y la parte tras « - » de un neutro quedan igual. `en(p)` contrae
+// «σε» con el artículo («στην Ελλάδα», «στον Καναδά», «στο Βέλγιο», «στις Ηνωμένες Πολιτείες») y
+// `para(p)` es «για» + acusativo. El artículo femenino pierde la -ν ante consonante que no sea κ, π,
+// τ, ξ, ψ, μπ, ντ, γκ, τσ o τζ («στη Γαλλία», «για τη Γερμανία», pero «στην Κύπρο», «στην
+// Ιταλία»); el masculino «τον» la conserva siempre, como en la prensa, para no confundirlo con el
+// neutro. `casosEl` deja los tres casos con artículo sueltos para las frases que los necesitan.
+export type GeneroEl = "m" | "f" | "n" | "mpl" | "fpl" | "npl";
+
+export interface CasosEl {
+  genero: GeneroEl;
+  // con artículo: «η Ελλάδα», «την Ελλάδα», «της Ελλάδας»
+  nominativo: string;
+  acusativo: string;
+  genitivo: string;
+}
+
+export const casosEl: (pais: string) => CasosEl = (() => {
+  // [género, acusativo, genitivo] sin artículo; el nominativo es el nombre tal cual.
+  type Formas = readonly [GeneroEl, string, string];
+  const igual = (g: GeneroEl, p: string): Formas => [g, p, p];
+  const TABLA: Readonly<Record<string, Formas>> = {
+    Κύπρος: ["f", "Κύπρο", "Κύπρου"],
+    Αίγυπτος: ["f", "Αίγυπτο", "Αιγύπτου"],
+    Καναδάς: ["m", "Καναδά", "Καναδά"],
+    Παναμάς: ["m", "Παναμά", "Παναμά"],
+    Ισημερινός: ["m", "Ισημερινό", "Ισημερινού"],
+    Λίβανος: ["m", "Λίβανο", "Λιβάνου"],
+    Νίγηρας: ["m", "Νίγηρα", "Νίγηρα"],
+    Μαυρίκιος: ["m", "Μαυρίκιο", "Μαυρικίου"],
+    "Άγιος Μαρίνος": ["m", "Άγιο Μαρίνο", "Αγίου Μαρίνου"],
+    "Άγιος Βαρθολομαίος": ["m", "Άγιο Βαρθολομαίο", "Αγίου Βαρθολομαίου"],
+    "Άγιος Μαρτίνος": ["m", "Άγιο Μαρτίνο", "Αγίου Μαρτίνου"],
+    "Άγιος Βικέντιος και Γρεναδίνες": ["m", "Άγιο Βικέντιο και Γρεναδίνες", "Αγίου Βικεντίου και Γρεναδινών"],
+    Βέλγιο: ["n", "Βέλγιο", "Βελγίου"],
+    Μεξικό: ["n", "Μεξικό", "Μεξικού"],
+    Μαρόκο: ["n", "Μαρόκο", "Μαρόκου"],
+    Λουξεμβούργο: ["n", "Λουξεμβούργο", "Λουξεμβούργου"],
+    Μαυροβούνιο: ["n", "Μαυροβούνιο", "Μαυροβουνίου"],
+    Βατικανό: ["n", "Βατικανό", "Βατικανού"],
+    Κοσσυφοπέδιο: ["n", "Κοσσυφοπέδιο", "Κοσσυφοπεδίου"],
+    "Ηνωμένο Βασίλειο": ["n", "Ηνωμένο Βασίλειο", "Ηνωμένου Βασιλείου"],
+    "Νότιο Σουδάν": ["n", "Νότιο Σουδάν", "Νότιου Σουδάν"],
+    "Πράσινο Ακρωτήριο": ["n", "Πράσινο Ακρωτήριο", "Πράσινου Ακρωτηρίου"],
+    "Ηνωμένες Πολιτείες": ["fpl", "Ηνωμένες Πολιτείες", "Ηνωμένων Πολιτειών"],
+    Φιλιππίνες: ["fpl", "Φιλιππίνες", "Φιλιππινών"],
+    "Κάτω Χώρες": ["fpl", "Κάτω Χώρες", "Κάτω Χωρών"],
+    Μαλδίβες: ["fpl", "Μαλδίβες", "Μαλδιβών"],
+    Σεϋχέλλες: ["fpl", "Σεϋχέλλες", "Σεϋχελλών"],
+    Μπαχάμες: ["fpl", "Μπαχάμες", "Μπαχαμών"],
+    Κομόρες: ["fpl", "Κομόρες", "Κομορών"],
+    Βερμούδες: ["fpl", "Βερμούδες", "Βερμούδων"],
+    "Κανάριοι Νήσοι": ["fpl", "Κανάριους Νήσους", "Καναρίων Νήσων"],
+    "Βρετανικές Παρθένες Νήσοι": ["fpl", "Βρετανικές Παρθένες Νήσους", "Βρετανικών Παρθένων Νήσων"],
+    "Αμερικανικές Παρθένες Νήσοι": ["fpl", "Αμερικανικές Παρθένες Νήσους", "Αμερικανικών Παρθένων Νήσων"],
+    "Νήσοι Βόρειες Μαριάνες": ["fpl", "Νήσους Βόρειες Μαριάνες", "Νήσων Βόρειων Μαριανών"],
+    "Ηνωμένα Αραβικά Εμιράτα": ["npl", "Ηνωμένα Αραβικά Εμιράτα", "Ηνωμένων Αραβικών Εμιράτων"],
+    "Παλαιστινιακά Εδάφη": ["npl", "Παλαιστινιακά Εδάφη", "Παλαιστινιακών Εδαφών"],
+    "Γαλλικά Νότια Εδάφη": ["npl", "Γαλλικά Νότια Εδάφη", "Γαλλικών Νότιων Εδαφών"],
+    "Βρετανικά Εδάφη Ινδικού Ωκεανού": ["npl", "Βρετανικά Εδάφη Ινδικού Ωκεανού", "Βρετανικών Εδαφών Ινδικού Ωκεανού"],
+    "Ακτή Ελεφαντοστού": ["f", "Ακτή Ελεφαντοστού", "Ακτής Ελεφαντοστού"],
+    "Γουινέα Μπισάου": ["f", "Γουινέα Μπισάου", "Γουινέας Μπισάου"],
+    "Ολλανδία Καραϊβικής": ["f", "Ολλανδία Καραϊβικής", "Ολλανδίας Καραϊβικής"],
+    "Κόστα Ρίκα": igual("f", "Κόστα Ρίκα"),
+    "Σρι Λάνκα": igual("f", "Σρι Λάνκα"),
+    "Σιέρα Λεόνε": igual("f", "Σιέρα Λεόνε"),
+    "Μπουρκίνα Φάσο": igual("f", "Μπουρκίνα Φάσο"),
+    Σαμόα: igual("f", "Σαμόα"),
+    "Αμερικανική Σαμόα": ["f", "Αμερικανική Σαμόα", "Αμερικανικής Σαμόα"],
+    "Αντίγκουα και Μπαρμπούντα": igual("f", "Αντίγκουα και Μπαρμπούντα"),
+    "Γουάλις και Φουτούνα": igual("n", "Γουάλις και Φουτούνα"),
+    "Τριστάν ντα Κούνια": igual("n", "Τριστάν ντα Κούνια"),
+    "Απομακρυσμένες Νησίδες ΗΠΑ": ["fpl", "Απομακρυσμένες Νησίδες ΗΠΑ", "Απομακρυσμένων Νησίδων ΗΠΑ"],
+    "Ηνωμένα Έθνη": ["npl", "Ηνωμένα Έθνη", "Ηνωμένων Εθνών"],
+  };
+  // Una palabra en -α o -η (sustantivo o adjetivo: «Νέα», «Νότια», «Δημοκρατία») hace el genitivo
+  // con -ς; las extranjeras que no se declinan («Κόστα Ρίκα», «ντα») van en la tabla.
+  const genitivoFemenino = (w: string) => (/[αηάή]$/.test(w) ? `${w}ς` : w);
+  const formas = (p: string): Formas => {
+    if (TABLA[p]) return TABLA[p];
+    const paren = p.indexOf(" (");
+    if (paren > 0) {
+      const [g, a, ge] = formas(p.slice(0, paren));
+      return [g, a + p.slice(paren), ge + p.slice(paren)];
+    }
+    const guion = p.indexOf(" - ");
+    if (guion > 0) {
+      const [g, a, ge] = formas(p.slice(0, guion));
+      if (g !== "f") return [g, a + p.slice(guion), ge + p.slice(guion)];
+      const [, , resto] = formas(p.slice(guion + 3));
+      return [g, p, `${ge} - ${resto}`];
+    }
+    if (p.startsWith("Νήσος ")) return ["f", `Νήσο ${p.slice(6)}`, `Νήσου ${p.slice(6)}`];
+    if (p.startsWith("Νήσοι ")) return ["fpl", `Νήσους ${p.slice(6)}`, `Νήσων ${p.slice(6)}`];
+    if (/[αηάή]$/.test(p)) return ["f", p, p.split(" ").map(genitivoFemenino).join(" ")];
+    if (/ες$/.test(p)) return ["fpl", p, p];
+    return ["n", p, p];
+  };
+  const ARTICULOS: Readonly<Record<GeneroEl, readonly [string, string, string]>> = {
+    m: ["ο", "τον", "του"],
+    f: ["η", "την", "της"],
+    n: ["το", "το", "του"],
+    mpl: ["οι", "τους", "των"],
+    fpl: ["οι", "τις", "των"],
+    npl: ["τα", "τα", "των"],
+  };
+  const CONSERVA_NI = /^(?:[αεηιουωάέήίόύώϊϋΐΰκπτξψ]|μπ|ντ|γκ|τσ|τζ)/iu;
+  const unir = (art: string, p: string) => `${art === "την" && !CONSERVA_NI.test(p) ? "τη" : art} ${p}`;
+  return (p: string): CasosEl => {
+    const [genero, acc, gen] = formas(p);
+    const [aNom, aAcc, aGen] = ARTICULOS[genero];
+    return { genero, nominativo: `${aNom} ${p}`, acusativo: unir(aAcc, acc), genitivo: `${aGen} ${gen}` };
+  };
+})();
+
+const el: GramaticaPais = {
+  nombre: (p) => casosEl(p).nominativo,
+  de: (p) => casosEl(p).genitivo,
+  en: (p) => `σ${casosEl(p).acusativo}`,
+  para: (p) => `για ${casosEl(p).acusativo}`,
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, el };

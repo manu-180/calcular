@@ -15,6 +15,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   ja: "kunibetsu-ranking",
   ko: "gukgabyeol-sunwi",
   zh: "guojia-paiming",
+  el: "katataxi-choron",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -33,6 +34,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   ja: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   ko: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   zh: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
+  // el transliterado en ASCII con ELOT 743 sin tonos, sobre lo que se busca (ADR 0002, D20).
+  el: { rinde: "pou-ftanei-o-misthos", libertad: "imera-forologikis-eleftherias", aumento: "posa-menoun-apo-tin-afxisi" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

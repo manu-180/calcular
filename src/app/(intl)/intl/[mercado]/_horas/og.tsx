@@ -27,7 +27,8 @@ const VERDE_APAGADO = "rgba(52,211,153,0.16)";
 const CABECERAS = { "cache-control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400" };
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
 const ESPERA_FUENTE_MS = 3000;
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC" };
+// el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", el: "Noto Sans" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 
@@ -262,8 +263,10 @@ export function crearOgHoras(idioma: Idioma) {
     const bandera = fila ? await banderaDe(fila.iso) : null;
     const cjk = FUENTE_CJK[m.idioma];
     const familiaCjk = cjk && m.idioma === "zh" && /^zh-(CN|SG)/i.test(m.locale) ? "Noto Sans SC" : cjk;
+    // La ceja en mayúsculas sale de toLocaleUpperCase con el locale (en griego, sin tonos) y no del
+    // textTransform de Satori, que no sabe el idioma; así también entra en el subconjunto de la fuente.
     const datos: Datos = {
-      t,
+      t: { ...t, og: { ...t.og, menos: t.og.menos.toLocaleUpperCase(m.locale) } },
       antes: fila ? rellenarHoras(t.heroe.antes, { en: lugarEnPagina(nombrePais, m.idioma), producto: art }) : "",
       numero: horas?.numero ?? "",
       unidad: horas?.unidad ?? "",
@@ -288,7 +291,7 @@ export function crearOgHoras(idioma: Idioma) {
       datos.generica,
       datos.genericaBajada,
       t.og.cta,
-      t.og.menos,
+      datos.t.og.menos,
       ...filas.map((f) => `${f.nombre} ${f.texto}`),
     ].join(" ");
     const unicos = [...new Set(texto)].join("");

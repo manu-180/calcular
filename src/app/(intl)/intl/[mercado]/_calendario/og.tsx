@@ -17,7 +17,8 @@ const SUAVE = "rgba(244,240,230,0.62)";
 const VERDE = "#34d399";
 const CABECERAS = { "cache-control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400" };
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC" };
+// el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", el: "Noto Sans" };
 
 async function fuente(familia: string, peso: number, texto: string): Promise<ArrayBuffer | null> {
   try {
@@ -61,7 +62,9 @@ export function crearOgCalendario(idioma: Idioma) {
     const flag = await bandera(m.pais);
     const cjk = FUENTE_CJK[m.idioma];
     const familiaCjk = cjk && m.idioma === "zh" && /^zh-(CN|SG)/i.test(m.locale) ? "Noto Sans SC" : cjk;
-    const texto = [titulo, v.t.ceja(v.anios), v.t.og.proxima, e.dia, e.mesCorto, resumen, e.cambio ?? "", mas > 0 ? v.t.og.mas(mas) : "", "calcularya.com 0123456789…"].join(" ");
+    // En mayúsculas con el locale (en griego, sin tonos), no con el textTransform de Satori.
+    const proxima = v.t.og.proxima.toLocaleUpperCase(m.locale);
+    const texto = [titulo, v.t.ceja(v.anios), proxima, e.dia, e.mesCorto, resumen, e.cambio ?? "", mas > 0 ? v.t.og.mas(mas) : "", "calcularya.com 0123456789…"].join(" ");
     const unicos = [...new Set(texto)].join("");
     const pedidas = await Promise.all([fuente("Geist", 400, unicos), fuente("Geist", 700, unicos), ...(familiaCjk ? [fuente(familiaCjk, 400, unicos), fuente(familiaCjk, 700, unicos)] : [])]);
     const nombres = ["Geist", "Geist", familiaCjk, familiaCjk];
@@ -100,7 +103,7 @@ export function crearOgCalendario(idioma: Idioma) {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: 430, padding: 36, borderRadius: 32, backgroundColor: "rgba(244,240,230,0.06)", border: "1px solid rgba(244,240,230,0.14)" }}>
-            <div style={{ display: "flex", fontSize: 22, color: SUAVE, letterSpacing: 2, textTransform: "uppercase" }}>{v.t.og.proxima}</div>
+            <div style={{ display: "flex", fontSize: 22, color: SUAVE, letterSpacing: 2, textTransform: "uppercase" }}>{proxima}</div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginTop: 10 }}>
               <div style={{ display: "flex", fontSize: 132, fontWeight: 700, letterSpacing: -6, lineHeight: 1 }}>{e.dia}</div>
               <div style={{ display: "flex", fontSize: 40, fontWeight: 700, color: VERDE }}>{e.mesCorto}</div>

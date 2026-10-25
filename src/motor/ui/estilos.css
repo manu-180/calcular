@@ -127,6 +127,13 @@
   .cy-cuerpo:is(:lang(zh-CN), :lang(zh-SG), :lang(zh-Hans)) {
     font-family: var(--font-geist), "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   }
+  /* Geist no trae griego (ni en Google Fonts): el griego va entero con la fuente del sistema, que en
+     Windows, macOS, iOS y Android tiene griego completo, con Noto Sans de respaldo. Entero y no
+     mezclado (Geist para las cifras y el sistema para las letras) para que los montos no cambien de
+     fuente a mitad de la frase. text-transform: uppercase con lang="el" ya saca los tonos. */
+  .cy-cuerpo:lang(el) {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  }
   .cy-cuerpo:is(:lang(ja), :lang(zh)) {
     line-break: strict;
     word-break: normal;

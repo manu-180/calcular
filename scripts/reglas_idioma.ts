@@ -87,7 +87,45 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     informal: [{ re: palabras("je|jij|jou|jouw|jezelf"), nombre: "je-vorm" }],
     formal: [{ re: palabras("u|uw|uzelf"), nombre: "u-vorm" }],
   },
+  // Griego: un solo registro, el πληθυντικός ευγενείας de myAADE, gov.gr y los bancos (ADR 0002,
+  // D20). Se atrapan los pronombres de la segunda del singular («εσύ», «σου»; «σε» no, porque también
+  // es la preposición), los imperativos del singular que aparecen en un formulario («υπολόγισε»,
+  // «επίλεξε») y los presentes de segunda del singular («μπορείς», «έχεις»).
+  el: {
+    informal: [
+      { re: palabras("εσύ|εσένα|σου|σένα"), nombre: "segunda del singular («εσύ», «σου»)" },
+      {
+        re: palabras(
+          "υπολόγισε|εισήγαγε|βάλε|διάλεξε|επίλεξε|δες|κάνε|γράψε|πάτα|πάτησε|συμπλήρωσε|βρες|μάθε|δοκίμασε|αντέγραψε|μοιράσου|κατέβασε|άνοιξε|πρόσθεσε|αφαίρεσε|άλλαξε|ξεκίνα|έλεγξε|σύγκρινε|πληκτρολόγησε",
+        ),
+        nombre: "imperativo del singular (va el de cortesía: «υπολογίστε», «επιλέξτε»)",
+      },
+      { re: palabras("έχεις|μπορείς|θέλεις|ξέρεις|πληρώνεις|κερδίζεις|βγάζεις|χρειάζεσαι|είσαι|παίρνεις|δουλεύεις|ξοδεύεις|βλέπεις|πρέπει να πληρώσεις|θα πάρεις|θα πληρώσεις|μπορούσες"), nombre: "presente de segunda del singular" },
+    ],
+    formal: [],
+  },
 };
+
+// Griego: monotónico con tonos y diéresis. La pregunta cierra con «;» (el punto y coma U+003B, que es
+// la forma canónica: U+037E se normaliza a él en NFC y no se usa), nunca con «?»; las comillas son
+// «» (y “ ” solo adentro de otras, que acá no hace falta); nada de politónico (U+1F00 a U+1FFF);
+// las mayúsculas sostenidas van sin tono («ΥΠΟΛΟΓΙΣΜΟΣ», no «ΥΠΟΛΟΓΙΣΜΌΣ»: toLocaleUpperCase("el") lo
+// hace solo); y ninguna palabra mezcla letras latinas y griegas (una «o» latina en una palabra
+// griega pasa el ojo pero no el buscador).
+const GRIEGO = /\p{sc=Greek}/u;
+function reglasEl(texto: string): string[] {
+  const p: string[] = [];
+  const sinUrls = texto.replace(/https?:\/\/\S+/g, "");
+  if (/\?/.test(sinUrls) && GRIEGO.test(texto)) p.push("signo «?» en griego: la pregunta cierra con «;»");
+  if (/;/.test(texto)) p.push("U+037E: usá el punto y coma U+003B, su forma canónica");
+  if (/["“”„]/.test(texto)) p.push("comillas: en griego van «»");
+  if (/[ἀ-῿]/.test(texto)) p.push("politónico: el griego de la web es monotónico");
+  for (const w of texto.match(/\p{L}+/gu) ?? []) {
+    if (w.length > 1 && GRIEGO.test(w) && w === w.toLocaleUpperCase("el") && /[ΆΈΉΊΌΎΏ]/.test(w.slice(1))) p.push(`mayúscula sostenida con tono «${w}» (va sin tono)`);
+    if (GRIEGO.test(w) && /[A-Za-z]/.test(w)) p.push(`palabra con letras latinas y griegas «${w}»`);
+  }
+  return p;
+}
 
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {
   const r = REGISTRO[idioma];
@@ -158,5 +196,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
     return p;
   }
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
+  if (idioma === "el") p.push(...reglasEl(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

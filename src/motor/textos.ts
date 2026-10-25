@@ -351,6 +351,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       "zh-SG": ZH_HANS_MOTOR,
     },
   },
+  // Griego (ADR 0002, D20): πληθυντικός ευγενείας, como myAADE, gov.gr y los bancos. El botón es un
+  // sustantivo («Υπολογισμός») y las oraciones van en imperativo cortés de segunda del plural
+  // («εισάγετε», «επιλέξτε»). La pregunta cierra con «;», el signo de interrogación griego.
+  el: {
+    base: {
+      calcular: "Υπολογισμός",
+      resultado: "Αποτέλεσμα",
+      si: "Ναι",
+      no: "Όχι",
+      sinResultado: "Αυτό το αποτέλεσμα δεν εμφανίζεται ακόμη.",
+      errores: {
+        requerido: "Συμπληρώστε αυτό το πεδίο.",
+        "numero-invalido": "Εισάγετε έναν αριθμό, για παράδειγμα {ejemplo}.",
+        "entero-invalido": "Εισάγετε έναν ακέραιο αριθμό χωρίς δεκαδικά.",
+        "menor-que-min": "Η ελάχιστη επιτρεπτή τιμή είναι {min}.",
+        "mayor-que-max": "Η μέγιστη επιτρεπτή τιμή είναι {max}.",
+        "fecha-invalida": "Επιλέξτε μια έγκυρη ημερομηνία.",
+        "hora-invalida": "Επιλέξτε μια έγκυρη ώρα.",
+        "opcion-invalida": "Επιλέξτε μία από τις επιλογές.",
+        "region-invalida": "Επιλέξτε περιοχή.",
+        "calculo-fallido": "Ο υπολογισμός δεν ολοκληρώθηκε με αυτά τα στοιχεία. Ελέγξτε τις τιμές και δοκιμάστε ξανά.",
+      },
+      milesAmbiguos: "Μήπως εννοείτε {sugerido}; Εισάγετε τον αριθμό χωρίς {signos}.",
+      separadores: { punto: "τελείες", coma: "κόμματα" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

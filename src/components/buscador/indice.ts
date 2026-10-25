@@ -21,7 +21,10 @@ export function normalizar(texto: string): string {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
+    // El griego cuenta como letra (sin esto «δάνειο» quedaba vacío) y la sigma final se busca como
+    // la otra: quien escribe «μισθ» o «μισθος» encuentra «Μισθός».
+    .replace(/ς/g, "σ")
+    .replace(/[^a-z0-9Ͱ-Ͽ]+/g, " ")
     .trim();
 }
 
