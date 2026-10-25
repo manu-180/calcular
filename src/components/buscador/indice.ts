@@ -21,6 +21,8 @@ export function normalizar(texto: string): string {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
+    // La «đ» del serbio no se descompone con NFD: se escribe «dj», como en los slugs.
+    .replace(/đ/g, "dj")
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 }

@@ -133,6 +133,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       "zh-SG": ZH_HANS_CALCULADORA,
     },
   },
+  sr: {
+    base: {
+      datos: "Vaši podaci",
+      resultado: "Rezultat",
+      vacio: "Unesite podatke i kliknite na „Izračunaj“. Rezultat će se pojaviti ovde.",
+      sinResultado: "Ovaj rezultat za sada ne prikazujemo.",
+      avisos: { info: "Dobro je da znate", cautela: "Pažnja", bloquea: "Zašto ne prikazujemo rezultat" },
+      fuenteDelAviso: "Izvor",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

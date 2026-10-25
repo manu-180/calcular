@@ -3,11 +3,13 @@ import type { Campo, DefinicionCalculadora, MundoCalculadora, PeriodoMundo } fro
 export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; motivo: string };
 
 // Palabras de período en los idiomas del motor. Se compara por palabra (o prefijo de palabra
-// compuesta, como Monatslohn o Jahresgehalt), nunca por substring: «mano» no es «año».
+// compuesta, como Monatslohn o Jahresgehalt), nunca por substring: «mano» no es «año». Las palabras
+// llegan sin diacríticos (palabras() los quita): en serbio «godišnja», «godišnje» y «mesečna»,
+// «mesečno» (y el ijekavski «mjesečno») van por prefijo («godisnj», «mesecn», «mjesecn»).
 const ANUAL = ["anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "年", "연", "연봉", "年収", "年薪"];
-const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year"];
+const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "godisnj"];
 const MENSUAL = ["mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "月", "월", "월급", "月給", "月薪"];
-const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil"];
+const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "mesecn", "mjesecn"];
 
 function palabras(texto: string): string[] {
   return texto

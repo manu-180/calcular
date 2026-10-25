@@ -351,6 +351,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       "zh-SG": ZH_HANS_MOTOR,
     },
   },
+  // Serbio en latinica y ekavski (ADR 0002, D23): «vi» en minúscula, como los bancos y eUprava. El
+  // botón va en la forma corta de las interfaces serbias («Izračunaj»); las oraciones, en imperativo
+  // de segunda del plural («unesite», «izaberite»).
+  sr: {
+    base: {
+      calcular: "Izračunaj",
+      resultado: "Rezultat",
+      si: "Da",
+      no: "Ne",
+      sinResultado: "Ovaj rezultat za sada ne prikazujemo.",
+      errores: {
+        requerido: "Popunite ovo polje.",
+        "numero-invalido": "Unesite broj, na primer {ejemplo}.",
+        "entero-invalido": "Unesite ceo broj, bez decimala.",
+        "menor-que-min": "Najmanja dozvoljena vrednost je {min}.",
+        "mayor-que-max": "Najveća dozvoljena vrednost je {max}.",
+        "fecha-invalida": "Izaberite ispravan datum.",
+        "hora-invalida": "Izaberite ispravno vreme.",
+        "opcion-invalida": "Izaberite jednu od ponuđenih opcija.",
+        "region-invalida": "Izaberite region.",
+        "calculo-fallido": "Sa ovim podacima obračun nije uspeo. Proverite vrednosti i pokušajte ponovo.",
+      },
+      milesAmbiguos: "Da li ste mislili {sugerido}? Unesite broj bez {signos}.",
+      separadores: { punto: "tačaka", coma: "zareza" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

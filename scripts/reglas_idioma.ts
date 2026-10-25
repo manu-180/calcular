@@ -87,7 +87,47 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     informal: [{ re: palabras("je|jij|jou|jouw|jezelf"), nombre: "je-vorm" }],
     formal: [{ re: palabras("u|uw|uzelf"), nombre: "u-vorm" }],
   },
+  // Serbio: un solo registro, el de los bancos y eUprava (obraćanje na «vi», en minúscula, con
+  // imperativo de segunda del plural: «unesite», «izaberite»; ADR 0002, D23). Los botones van en la
+  // forma corta de las interfaces serbias («Izračunaj», «Kopiraj link», «Podeli», «Preuzmi»,
+  // «Dodaj», «Otvori», «Prikaži», «Pošalji», «Sačuvaj»), así que esos verbos no se atrapan; sí el
+  // pronombre y los posesivos de «ti», los presentes de segunda del singular y los imperativos de
+  // un formulario que en la prosa van con -te, y el «Vi» con mayúscula a mitad de oración.
+  sr: {
+    informal: [
+      { re: palabras("ti|tebe|tebi|tobom|tvoj|tvoja|tvoje|tvog|tvoga|tvome|tvom|tvoju|tvoji|tvojih|tvojim|tvojima"), nombre: "obraćanje na «ti»" },
+      {
+        re: palabras("unesi|upiši|izaberi|odaberi|proveri|uporedi|klikni|saznaj|pokušaj|popuni|navedi|koristi|promeni|podesi|oduzmi|saberi|pomnoži|pogledaj|zapamti|obrati"),
+        nombre: "imperativo de «ti» en la prosa (va -te)",
+      },
+      { re: palabras("možeš|imaš|želiš|dobiješ|dobijaš|plaćaš|zarađuješ|vidiš|radiš|trošiš|uštediš|moraš|ćeš|znaš|unosiš|biraš|računaš|jesi|nisi|treba ti"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Vi|Vas|Vama|Vaš|Vaša|Vaše|Vašeg|Vašem|Vašoj|Vašu|Vaši|Vaših|Vašim|Vašima)(?!\p{L})/u, nombre: "«Vi» con mayúscula (va «vi»)" },
+    ],
+    formal: [],
+  },
 };
+
+// Serbio: comillas „ “ (abre abajo, cierra arriba), nada de «», "" ni ”. En Serbia, ekavski: una
+// forma ijekavska («mjesec», «vrijeme», «cijena») delata un texto de Montenegro, Bosnia o Croacia;
+// el día que exista la edición montenegrina (sr-Latn-ME) esa regla se invierte por locale. Y nada
+// de palabras del croata estándar («tjedan», «tisuća», «postotak», «tvrtka», «obitelj»).
+const IJEKAVSKI = palabras(
+  "mjesec\\p{L}*|mjeseč\\p{L}*|mjer\\p{L}*|mjest\\p{L}*|promjen\\p{L}*|procjen\\p{L}*|cijen\\p{L}*|vrijem\\p{L}*|vrijed\\p{L}*|vrijeme|dijete|djec\\p{L}*|primjer\\p{L}*|nedjelj\\p{L}*|poslije|prije|uvijek|cijel\\p{L}*|lijek\\p{L}*|tijel\\p{L}*|svijet\\p{L}*|riječ\\p{L}*|dio|dijel\\p{L}*|bijel\\p{L}*|mlijek\\p{L}*|vjerovat\\p{L}*|zahtjev\\p{L}*|sjeć\\p{L}*|uvjet\\p{L}*",
+);
+const CROATA = palabras("tjedan\\p{L}*|tjedn\\p{L}*|tisuć\\p{L}*|postot\\p{L}*|kruh\\p{L}*|zrakoplov\\p{L}*|tvrtk\\p{L}*|obitelj\\p{L}*|kućanstv\\p{L}*|siječanj|veljač\\p{L}*|ožujak|travanj|svibanj|lipanj|srpanj|kolovoz|rujan|listopad|prosinac|uvjet\\p{L}*");
+function reglasSr(texto: string, locale?: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en serbio van „ “");
+  if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en serbio abren con „ (abajo)");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en la edición latina");
+  if (!locale?.endsWith("-ME")) {
+    const m = IJEKAVSKI.exec(texto);
+    if (m) p.push(`ijekavski «${m[0]}» en un mercado de Serbia (va ekavski)`);
+  }
+  const c = CROATA.exec(texto);
+  if (c) p.push(`«${c[0]}» es del croata (en serbio: nedelja, hiljada, procenat, firma, porodica...)`);
+  return p;
+}
 
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {
   const r = REGISTRO[idioma];
@@ -158,5 +198,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
     return p;
   }
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
+  if (idioma === "sr") p.push(...reglasSr(texto, locale));
   return [...p, ...registro(texto, idioma, trato)];
 }

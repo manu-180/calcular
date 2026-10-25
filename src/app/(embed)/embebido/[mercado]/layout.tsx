@@ -13,7 +13,8 @@ import "@/motor/embed/estilos-embed.css";
 // Layout raíz propio y no el de src/app/(intl)/intl/[mercado]: ese lleva el header y el footer del
 // sitio, y el embed va dentro del blog de otra persona (ver src/motor/embed/rutas.ts para cómo llega
 // la URL pública /<m>/embed/<slug> hasta acá).
-const geist = Geist({ variable: "--font-geist", subsets: ["latin"], display: "optional" });
+// latin-ext trae las letras del serbio en latinica (č, ć, đ, š, ž); con unicode-range solo se baja si la página las usa.
+const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext"], display: "optional" });
 
 export const revalidate = 3600;
 

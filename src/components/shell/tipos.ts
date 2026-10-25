@@ -45,6 +45,8 @@ export type TextosBuscador = {
   resultados: string;
   resultado: string;
   resultadosPlural: string;
+  // Forma «few» de los idiomas eslavos (2 a 4: «3 rezultata»); sin ella, resultadosPlural.
+  resultadosPocos?: string;
 };
 
 export type FuenteBuscador = {
