@@ -18,6 +18,14 @@ import kataKalkulator from "./calculadoras/kata-kalkulator";
 import contenidoKataKalkulator from "./contenido/kata-kalkulator";
 import afaKalkulator from "./calculadoras/afa-kalkulator";
 import contenidoAfaKalkulator from "./contenido/afa-kalkulator";
+import szabadsagKalkulator from "./calculadoras/szabadsag-kalkulator";
+import contenidoSzabadsagKalkulator from "./contenido/szabadsag-kalkulator";
+import vegkielegitesSzamitas from "./calculadoras/vegkielegites-szamitas";
+import contenidoVegkielegitesSzamitas from "./contenido/vegkielegites-szamitas";
+import felmondasiIdoKalkulator from "./calculadoras/felmondasi-ido-kalkulator";
+import contenidoFelmondasiIdoKalkulator from "./contenido/felmondasi-ido-kalkulator";
+import tuloraKalkulator from "./calculadoras/tulora-kalkulator";
+import contenidoTuloraKalkulator from "./contenido/tulora-kalkulator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -39,6 +47,10 @@ export default definirPais({
     { definicion: atalanyadoKalkulator, contenido: contenidoAtalanyadoKalkulator, cliente: () => import("./calculadoras/atalanyado-kalkulator.cliente") },
     { definicion: kataKalkulator, contenido: contenidoKataKalkulator, cliente: () => import("./calculadoras/kata-kalkulator.cliente") },
     { definicion: afaKalkulator, contenido: contenidoAfaKalkulator, cliente: () => import("./calculadoras/afa-kalkulator.cliente") },
+    { definicion: szabadsagKalkulator, contenido: contenidoSzabadsagKalkulator, cliente: () => import("./calculadoras/szabadsag-kalkulator.cliente") },
+    { definicion: vegkielegitesSzamitas, contenido: contenidoVegkielegitesSzamitas, cliente: () => import("./calculadoras/vegkielegites-szamitas.cliente") },
+    { definicion: felmondasiIdoKalkulator, contenido: contenidoFelmondasiIdoKalkulator, cliente: () => import("./calculadoras/felmondasi-ido-kalkulator.cliente") },
+    { definicion: tuloraKalkulator, contenido: contenidoTuloraKalkulator, cliente: () => import("./calculadoras/tulora-kalkulator.cliente") },
   ],
   universales: "todas",
   novedades,
