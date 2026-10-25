@@ -34,6 +34,18 @@ import osakesaastotiliVerotus from "./calculadoras/osakesaastotili-verotus";
 import contenidoOsakesaastotiliVerotus from "./contenido/osakesaastotili-verotus";
 import kotitalousvahennysLaskuri from "./calculadoras/kotitalousvahennys-laskuri";
 import contenidoKotitalousvahennysLaskuri from "./contenido/kotitalousvahennys-laskuri";
+import inflaatiolaskuri from "./calculadoras/inflaatiolaskuri";
+import contenidoInflaatiolaskuri from "./contenido/inflaatiolaskuri";
+import viivastyskorkolaskuri from "./calculadoras/viivastyskorkolaskuri";
+import contenidoViivastyskorkolaskuri from "./contenido/viivastyskorkolaskuri";
+import perintoverolaskuri from "./calculadoras/perintoverolaskuri";
+import contenidoPerintoverolaskuri from "./contenido/perintoverolaskuri";
+import lahjaverolaskuri from "./calculadoras/lahjaverolaskuri";
+import contenidoLahjaverolaskuri from "./contenido/lahjaverolaskuri";
+import kilometrikorvaus from "./calculadoras/kilometrikorvaus";
+import contenidoKilometrikorvaus from "./contenido/kilometrikorvaus";
+import yleVero from "./calculadoras/yle-vero";
+import contenidoYleVero from "./contenido/yle-vero";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -63,6 +75,12 @@ export default definirPais({
     { definicion: paaomatulovero, contenido: contenidoPaaomatulovero, cliente: () => import("./calculadoras/paaomatulovero.cliente") },
     { definicion: osakesaastotiliVerotus, contenido: contenidoOsakesaastotiliVerotus, cliente: () => import("./calculadoras/osakesaastotili-verotus.cliente") },
     { definicion: kotitalousvahennysLaskuri, contenido: contenidoKotitalousvahennysLaskuri, cliente: () => import("./calculadoras/kotitalousvahennys-laskuri.cliente") },
+    { definicion: inflaatiolaskuri, contenido: contenidoInflaatiolaskuri, cliente: () => import("./calculadoras/inflaatiolaskuri.cliente") },
+    { definicion: viivastyskorkolaskuri, contenido: contenidoViivastyskorkolaskuri, cliente: () => import("./calculadoras/viivastyskorkolaskuri.cliente") },
+    { definicion: perintoverolaskuri, contenido: contenidoPerintoverolaskuri, cliente: () => import("./calculadoras/perintoverolaskuri.cliente") },
+    { definicion: lahjaverolaskuri, contenido: contenidoLahjaverolaskuri, cliente: () => import("./calculadoras/lahjaverolaskuri.cliente") },
+    { definicion: kilometrikorvaus, contenido: contenidoKilometrikorvaus, cliente: () => import("./calculadoras/kilometrikorvaus.cliente") },
+    { definicion: yleVero, contenido: contenidoYleVero, cliente: () => import("./calculadoras/yle-vero.cliente") },
   ],
   universales: "todas",
   novedades,
