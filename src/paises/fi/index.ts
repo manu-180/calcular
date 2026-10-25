@@ -18,6 +18,14 @@ import ylityokorvaus from "./calculadoras/ylityokorvaus";
 import contenidoYlityokorvaus from "./contenido/ylityokorvaus";
 import irtisanomisaika from "./calculadoras/irtisanomisaika";
 import contenidoIrtisanomisaika from "./contenido/irtisanomisaika";
+import lapsilisa from "./calculadoras/lapsilisa";
+import contenidoLapsilisa from "./contenido/lapsilisa";
+import vanhempainpaivarahaLaskuri from "./calculadoras/vanhempainpaivaraha-laskuri";
+import contenidoVanhempainpaivarahaLaskuri from "./contenido/vanhempainpaivaraha-laskuri";
+import sairauspaivarahaLaskuri from "./calculadoras/sairauspaivaraha-laskuri";
+import contenidoSairauspaivarahaLaskuri from "./contenido/sairauspaivaraha-laskuri";
+import alvLaskuri from "./calculadoras/alv-laskuri";
+import contenidoAlvLaskuri from "./contenido/alv-laskuri";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -39,6 +47,10 @@ export default definirPais({
     { definicion: lomakorvauslaskuri, contenido: contenidoLomakorvauslaskuri, cliente: () => import("./calculadoras/lomakorvauslaskuri.cliente") },
     { definicion: ylityokorvaus, contenido: contenidoYlityokorvaus, cliente: () => import("./calculadoras/ylityokorvaus.cliente") },
     { definicion: irtisanomisaika, contenido: contenidoIrtisanomisaika, cliente: () => import("./calculadoras/irtisanomisaika.cliente") },
+    { definicion: lapsilisa, contenido: contenidoLapsilisa, cliente: () => import("./calculadoras/lapsilisa.cliente") },
+    { definicion: vanhempainpaivarahaLaskuri, contenido: contenidoVanhempainpaivarahaLaskuri, cliente: () => import("./calculadoras/vanhempainpaivaraha-laskuri.cliente") },
+    { definicion: sairauspaivarahaLaskuri, contenido: contenidoSairauspaivarahaLaskuri, cliente: () => import("./calculadoras/sairauspaivaraha-laskuri.cliente") },
+    { definicion: alvLaskuri, contenido: contenidoAlvLaskuri, cliente: () => import("./calculadoras/alv-laskuri.cliente") },
   ],
   universales: "todas",
   novedades,
