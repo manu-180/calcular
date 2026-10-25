@@ -155,3 +155,37 @@ así que en calcular.ar va al sitemap (`alternates.languages` de `/sueldo-en-el-
 **Pendiente fuera de esta rama.** `next.config.ts`: sumar `"/sueldo-en-el-mundo/og":
 ["./public/banderas/*.svg"]` a `outputFileTracingIncludes`. Mientras tanto la OG lee la bandera de
 `origenAR()` por red si no está en el disco.
+
+## Bélgica y Países Bajos con 1-3 % de carga a 30.000 (validado 2026-10-24)
+
+En el ranking «sueldo medio» (30.000 dólares internacionales al año) BE da 0,87 % y NL 3,00 %, los más
+bajos de la tabla. Se recalculó a mano con las fuentes oficiales: la grilla está bien. La carga es baja
+porque 30.000 dólares internacionales caen **por debajo del mínimo legal de tiempo completo** en los dos
+países y los dos sistemas devuelven casi todo en ese tramo. No se excluye a ninguno.
+
+**Bélgica** (soltero, bediende, sin hijos). Bruto = 30.000 × 0,771758 (PPA 2025) = 23.152,74 €/año =
+1.929,40 €/mes; el GGMMI desde el 1/7/2026 es 2.233,61 €.
+- RSZ 13,07 % = 252,17. Werkbonus (RSZ, instrucciones 2026/3, desde 1/9/2026, releído hoy en
+  socialsecurity.be/.../workers_reductions/workbonus.html): luik A 127,54 (S ≤ 2.937,93) + luik B
+  171,99 (S ≤ 2.300,62) = 299,53 > 252,17, así que se limita a la cotización: B = 124,63 y RSZ neta = 0.
+- Bedrijfsvoorheffing (sleutelformule 2026, FOD Financiën BEO-DR/2025-0928): anual 23.152,74 − forfait
+  30 % con tope 6.070 = 17.082,74; 4.469,93 + (17.082,74 − 16.710) × 42,80 % = 4.629,46 − belastingvrije
+  som 2.987,98 (hasta octubre; 3.089,63 desde el 1/11/2026) = 1.641,48 → 136,79 por mes. Fiscale
+  werkbonus (KB 24/7/2026): 33,14 % × 127,54 + 63 % × 124,63 = 120,79. BV = 16,00.
+- BBSZ: trimestre 5.788,19 < 5.836,14 → 0.
+- Neto 1.913,40 €/mes → 0,83 % (0,39 % desde noviembre). La grilla da 0,87 %: es la interpolación entre
+  dos brutos de la grilla en el codo donde la werkbonus deja de cubrir toda la RSZ (0,04 puntos).
+- Límite: es la retención mensual. La cuota final (personenbelasting, con el recargo comunal de ~7 %)
+  se liquida al año siguiente; a este sueldo cambia unos pocos euros por mes.
+
+**Países Bajos** (sin vakantiegeld, sin pensión, menor de la edad de la AOW). Bruto = 30.000 × 0,767344
+= 23.020,32 €/año; el WML de 21+ es 14,99 €/h (≈ 31.180 € a 40 h). Tarifas y heffingskortingen 2026 de
+la Belastingdienst (releídas hoy en belastingdienst.nl/.../voorlopige-aanslag-tarieven-en-heffingskortingen):
+- Box 1: 35,75 % hasta 38.883 → 8.229,76.
+- Algemene heffingskorting: 3.115 (sin afbouw por debajo de 29.736).
+- Arbeidskorting: 996 + 31,009 % × (23.020,32 − 11.965) = 4.424,17.
+- Impuesto 8.229,76 − 7.539,17 = 690,59 → neto 22.329,73 → 3,00 %. La grilla da 3,00 %.
+- La Zvw (6,10 %) la paga el empleador (werkgeversheffing): no sale del neto.
+
+Si el ranking quiere un «sueldo medio» que no caiga bajo el mínimo en Europa occidental, el cambio es
+del ranking (el bruto de referencia), no de estas calculadoras.

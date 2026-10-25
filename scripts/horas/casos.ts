@@ -126,6 +126,11 @@ else process.env.CALCULAR_HOY = prev;
 const ar = minimoAr("2026-10-23");
 caso("Argentina octubre 2026", typeof ar === "string" ? ar : ar.porHora, 1956);
 caso("Argentina fuera de la escala", typeof minimoAr("2031-01-01"), "string");
+const arNov = minimoAr("2026-11-02");
+caso("Argentina noviembre 2026 (Res. 4/2026)", typeof arNov === "string" ? arNov : arNov.porHora, 1994);
+const arAbr = minimoAr("2027-04-15");
+caso("Argentina: el último mes de la escala vence el 2027-04-30", typeof arAbr === "string" ? arAbr : arAbr.vigenteHasta, "2027-04-30");
+caso("Argentina: mayo de 2027 sin resolución", typeof minimoAr("2027-05-01"), "string");
 
 // El índice de hoy: todo lo publicado está vigente y las horas cierran con precio ÷ salario por hora.
 const hoy = construirInformeHoras();

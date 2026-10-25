@@ -29,6 +29,24 @@ const sinReloj = construirInformeHoras(new Date(), { preciosAl: (precios as Arch
 const fallas: string[] = [];
 const avisos: string[] = [];
 const vencenPronto = new Set<string>();
+// Un vencimiento con el tramo siguiente ya cargado no es aviso: el SMVM de AR vence cada fin de mes y la
+// escala de la resolución sigue meses después (el aviso salía todos los meses sin nada que cargar).
+const alOtroDia = new Map<string, Set<string>>();
+function sigueAlOtroDia(mercado: string, hasta: string): boolean {
+  if (!alOtroDia.has(hasta)) {
+    const dia = sumarDias(hasta as FechaISO, 1);
+    const fijada = process.env.CALCULAR_HOY;
+    process.env.CALCULAR_HOY = dia;
+    try {
+      const informe = construirInformeHoras(new Date(`${dia}T12:00:00Z`), { preciosAl: dia });
+      alOtroDia.set(hasta, new Set(informe.indice.filas.map((f) => f.mercado)));
+    } finally {
+      if (fijada === undefined) delete process.env.CALCULAR_HOY;
+      else process.env.CALCULAR_HOY = fijada;
+    }
+  }
+  return alOtroDia.get(hasta)!.has(mercado);
+}
 const fmt = (n: number) => (n >= 100 ? Math.round(n).toString() : n.toFixed(1)).padStart(7);
 
 console.log(`— Horas de trabajo · ${indice.generadoEl} · precios del ${indice.preciosActualizadosEl} —\n`);
@@ -41,7 +59,7 @@ for (const f of indice.filas) {
   const horas = PRODUCTOS.map((p) => (f.celdas[p.id] ? fmt(f.celdas[p.id].horas) : "      ·")).join(" ");
   console.log(`  ${f.iso} ${f.mercado.padEnd(3)} ${m.porHora.toFixed(2).padStart(10)} ${m.moneda}/h  ${horas}   ${via}${m.vigenteHasta ? `  vence ${m.vigenteHasta}` : ""}`);
   if (m.vigenteHasta && m.vigenteHasta < hoy) fallas.push(`${f.iso}: publica un salario o jornada que venció el ${m.vigenteHasta}`);
-  else if (m.vigenteHasta && diasEntre(hoy, m.vigenteHasta) <= AVISO_DIAS) avisos.push(`${f.iso}: el salario o la jornada vence el ${m.vigenteHasta}; sin el tramo nuevo el país sale del índice`);
+  else if (m.vigenteHasta && diasEntre(hoy, m.vigenteHasta) <= AVISO_DIAS && !sigueAlOtroDia(f.mercado, m.vigenteHasta)) avisos.push(`${f.iso}: el salario o la jornada vence el ${m.vigenteHasta}; sin el tramo nuevo el país sale del índice`);
   for (const c of Object.values(f.celdas)) {
     const vence = sumarDias(c.precio.consultadoEl as FechaISO, VIGENCIA_PRECIO_DIAS);
     if (!precioVigente(c.precio.consultadoEl, hoy)) fallas.push(`${f.iso} ${c.producto}: precio del ${c.precio.consultadoEl}, más de ${VIGENCIA_PRECIO_DIAS} días`);
