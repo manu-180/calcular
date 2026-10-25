@@ -1,0 +1,53 @@
+import { contenidoArabe } from "../../comun/arabe";
+import { pluralAr } from "../../../i18n/arabe";
+import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { aDia, fechaLarga, habilesEntre } from "../../comun/fechas";
+import { DIAS_AR } from "../textos/ar";
+
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
+  const desde = "2026-03-02";
+  const hasta = "2026-06-30";
+  const dias = aDia(hasta) - aDia(desde);
+  const habiles = habilesEntre(aDia(desde), aDia(hasta));
+  const f = (iso: string) => fechaLarga(ctx.locale, iso);
+  return {
+    h1: "حاسبة الأيام بين تاريخين",
+    title: tituloQueEntre(
+      `حاسبة الأيام بين تاريخين في ${ctx.nombrePais}`,
+      `الأيام بين تاريخين في ${ctx.nombrePais}`,
+      "حاسبة الأيام بين تاريخين",
+    ),
+    description: "احسب عدد الأيام بين تاريخين: الأيام التقويمية والأسابيع والأشهر وأيام العمل من الاثنين إلى الجمعة.",
+    intro: [
+      "اختر تاريخ البداية وتاريخ النهاية، فترى الأيام التقويمية والمدة نفسها بالأسابيع والأشهر، وأيام العمل.",
+      "استخدمها للمواعيد النهائية وتواريخ الاستحقاق والإجازات والحمل أو للعد التنازلي لمناسبة.",
+    ],
+    comoSeCalcula: [
+      "الأيام التقويمية هي كل الأيام بين التاريخين. يُحتسب يوم البداية ولا يُحتسب يوم النهاية، إلا إذا فعّلت الخيار.",
+      "أيام العمل هي أيام الاثنين إلى الجمعة في المدة نفسها، دون خصم العطلات الرسمية.",
+      "السنوات الكبيسة تُحتسب بيوم 29 فبراير.",
+    ],
+    ejemplo: [
+      `من ${f(desde)} إلى ${f(hasta)} مدة ${pluralAr(dias, DIAS_AR)} بالتقويم.`,
+      `منها ${pluralAr(habiles, DIAS_AR)} تقع بين الاثنين والجمعة.`,
+    ],
+    faq: [
+      {
+        pregunta: "هل يُحتسب اليوم الأول أم الأخير؟",
+        respuesta: "يُحتسب الأول دون الأخير، كما عند طرح تاريخين. وإذا احتجت إلى الاثنين ففعّل خيار «احتساب يوم النهاية».",
+      },
+      {
+        pregunta: "هل تُخصم العطلات الرسمية من أيام العمل؟",
+        respuesta: "لا. تُحسب أيام العمل من الاثنين إلى الجمعة. العطلات الرسمية وأيام العطلة الأسبوعية تختلف من بلد إلى آخر ومن سنة إلى أخرى، فاخصمها بنفسك.",
+      },
+      {
+        pregunta: "كم يومًا في السنة؟",
+        respuesta: "في السنة 365 يومًا، أو 366 يومًا في السنة الكبيسة. لذلك قد يختلف عدد الأيام بين التاريخين نفسيهما من سنة إلى أخرى.",
+      },
+    ],
+    glosario: [
+      { termino: "الأيام التقويمية", definicion: "كل أيام التقويم، بما فيها عطلات نهاية الأسبوع والعطلات الرسمية." },
+      { termino: "أيام العمل", definicion: "في هذه الحاسبة، من الاثنين إلى الجمعة." },
+    ],
+  };
+});

@@ -1,5 +1,6 @@
 import { definirUniversal } from "../tipos";
 import { casos } from "./casos";
+import { contenidoAr } from "./contenido/ar";
 import { contenidoDa } from "./contenido/da";
 import { contenidoDe } from "./contenido/de";
 import { contenidoEn } from "./contenido/en";
@@ -16,6 +17,7 @@ import { contenidoPt } from "./contenido/pt";
 import { contenidoSv } from "./contenido/sv";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiInteresSimple } from "./definicion";
+import { textosAr } from "./textos/ar";
 import { textosDa } from "./textos/da";
 import { textosDe } from "./textos/de";
 import { textosEn } from "./textos/en";
@@ -36,7 +38,7 @@ export default definirUniversal<UiInteresSimple>({
   id: "interes-simple",
   concepto: "interes-simple",
   definir,
-  textos: { da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, zh: textosZh },
-  contenido: { da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, zh: contenidoZh },
+  textos: { ar: textosAr, da: textosDa, de: textosDe, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, sv: textosSv, zh: textosZh },
+  contenido: { ar: contenidoAr, da: contenidoDa, de: contenidoDe, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, sv: contenidoSv, zh: contenidoZh },
   casos,
 });
