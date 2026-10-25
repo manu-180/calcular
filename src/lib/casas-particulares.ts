@@ -7,7 +7,10 @@
 // manda, que es exactamente la pregunta que la gente hace.
 
 import {
+  ANTIGUEDAD,
   escalaVigente,
+  maxAniosAntiguedad,
+  mesVigente,
   escalaDe,
   HORAS_EXTRAS,
   JORNADA,
@@ -34,6 +37,8 @@ export type EntradaCasasParticulares = {
   /** Mes de la escala (`2026-09`…). Sin él, el vigente. La planilla paga liquida cualquier mes
    *  de la serie y su check compara contra este mismo motor, mes por mes. */
   mesId?: string;
+  /** Años completos de antigüedad. Se toman hasta el tope del mes (se cuentan desde el 1/9/2020). */
+  aniosAntiguedad?: number;
 };
 
 export type AvisoCasasParticulares = { tono: "ok" | "atencion" | "bloqueante"; texto: string };
@@ -52,9 +57,13 @@ export type ResultadoCasasParticulares = {
   jornadaCompleta: boolean;
   /** El mayor entre `porHoras` y —si la jornada es completa— el mínimo mensual. */
   basico: number;
+  /** Años que se computaron: los cargados, enteros, hasta el tope del mes. */
+  aniosAntiguedad: number;
+  /** 1% del básico por año computado (Res. CNTCP 2/2021, art. 3). */
+  adicionalAntiguedad: number;
   extrasComunes: number;
   extrasFinDeSemana: number;
-  /** Básico + extras: el bruto del mes. */
+  /** Básico + antigüedad + extras: el bruto del mes. */
   total: number;
   /** Aguinaldo que va generando este sueldo (50% de la mayor remuneración del semestre). */
   aguinaldoEstimado: number;
@@ -121,7 +130,12 @@ export function calcularCasasParticulares(
       (1 + HORAS_EXTRAS.finDeSemanaYFeriados / 100),
   );
 
-  const total = redondear(basico + extrasComunes + extrasFinDeSemana);
+  const tope = maxAniosAntiguedad(e.mesId ?? mesVigente().id);
+  const aniosCargados = Number.isFinite(e.aniosAntiguedad) ? Math.max(0, Math.floor(e.aniosAntiguedad!)) : 0;
+  const aniosAntiguedad = Math.min(aniosCargados, tope);
+  const adicionalAntiguedad = redondear((basico * aniosAntiguedad * ANTIGUEDAD.porcentajePorAnio) / 100);
+
+  const total = redondear(basico + adicionalAntiguedad + extrasComunes + extrasFinDeSemana);
   const aguinaldoEstimado = redondear(total / 2);
   const adicionalZona = e.zonaDesfavorable
     ? redondear(total - total / factorZona)
@@ -141,6 +155,13 @@ export function calcularCasasParticulares(
     avisos.push({
       tono: "ok",
       texto: `Con jornada completa manda el mínimo MENSUAL de la categoría, que es más alto que la suma de las horas: por eso el básico es el mínimo mensual y no el resultado de multiplicar el valor hora. Los dos son pisos legales y se aplica el que más favorece.`,
+    });
+  }
+
+  if (aniosCargados > tope) {
+    avisos.push({
+      tono: "atencion",
+      texto: `La antigüedad para este adicional se cuenta desde el ${ANTIGUEDAD.cuentaDesdeTexto}, sin efecto retroactivo (${ANTIGUEDAD.articulo}): en este mes suma como máximo ${tope} ${tope === 1 ? "año" : "años"}, aunque la relación haya empezado antes. Para las vacaciones y la indemnización sí cuenta la antigüedad completa.`,
     });
   }
 
@@ -173,6 +194,8 @@ export function calcularCasasParticulares(
     porHoras,
     jornadaCompleta,
     basico,
+    aniosAntiguedad,
+    adicionalAntiguedad,
     extrasComunes,
     extrasFinDeSemana,
     total,

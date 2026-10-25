@@ -65,32 +65,45 @@ function seccion(nombre: string) {
 // ─── Chequeos estáticos (sin base) ──────────────────────────────────────────────────────────
 function chequeosEstaticos() {
   seccion("SQL estático");
-  // «Sueldos reales» activa RLS en un loop, usa security definer a propósito (lee tablas con FORCE RLS
-  // desde funciones que solo ejecuta service_role) y lo verifica en vivo scripts/check_sueldos.ts.
-  const todo = migraciones
-    .filter((m) => !/ca_sueldos/.test(m.f))
-    .map((m) => m.sql)
-    .join("\n");
+  const todo = migraciones.map((m) => m.sql).join("\n");
   const tablas = [...todo.matchAll(/create table if not exists public\.(ca_\w+)/g)].map((m) => m[1]);
   igual(
     tablas.sort(),
-    ["ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_opiniones", "ca_perfiles", "ca_resumen", "ca_resumen_mercado", "ca_soporte_hilos", "ca_soporte_mensajes", "ca_tipo_cambio", "ca_vistas"],
-    "están las 13 tablas",
+    [
+      "ca_calculos", "ca_checkouts", "ca_compras", "ca_eventos", "ca_limites", "ca_opiniones", "ca_perfiles", "ca_resumen", "ca_resumen_mercado", "ca_soporte_hilos", "ca_soporte_mensajes", "ca_tipo_cambio", "ca_vistas",
+      "ca_sueldos_aportes", "ca_sueldos_dias", "ca_sueldos_estado", "ca_sueldos_huellas", "ca_sueldos_pendientes", "ca_sueldos_publicados",
+    ].sort(),
+    "están las 19 tablas",
   );
-  for (const t of tablas) {
-    ok(todo.includes(`alter table public.${t} enable row level security;`), `${t}: enable row level security`);
-    ok(todo.includes(`alter table public.${t} force row level security;`), `${t}: force row level security`);
+  // Las tablas que se encierran dentro de un `foreach t in array array[...] loop` (ca_sueldos_endurecer)
+  // no llevan el `alter table public.<t>` literal: se cuentan por el arreglo, si el loop hace las dos cosas.
+  const enLoop = new Set<string>();
+  for (const [, lista, cuerpo] of todo.matchAll(/foreach t in array array\[([^\]]*)\] loop([\s\S]*?)end loop/g)) {
+    if (/enable row level security/.test(cuerpo) && /force row level security/.test(cuerpo)) {
+      for (const [, nombre] of lista.matchAll(/'(ca_\w+)'/g)) enLoop.add(nombre);
+    }
   }
+  for (const t of tablas) {
+    ok(todo.includes(`alter table public.${t} enable row level security;`) || enLoop.has(t), `${t}: enable row level security`);
+    ok(todo.includes(`alter table public.${t} force row level security;`) || enLoop.has(t), `${t}: force row level security`);
+  }
+  // Una función borrada por una migración posterior (ca_sueldos_agregados, ca_sueldos_aportar, ca_sueldos_tope)
+  // ya no existe: para definer y grants a anon sólo cuenta lo que queda vivo.
+  const viva = (nombre: string) => todo.lastIndexOf(`create or replace function public.${nombre}(`) > todo.lastIndexOf(`drop function if exists public.${nombre}(`);
+  const DEFINER = new Set(["ca_vincular_compras", "ca_sueldos_publicar", "ca_sueldos_al_dia", "ca_sueldos_sumar", "ca_sueldos_leer", "ca_sueldos_paises"]);
   const bloques = [...todo.matchAll(/create or replace function public\.(\w+)\(([\s\S]*?)\n\$\$;/g)];
-  igual(bloques.length, 39, "se encontraron las 39 definiciones de funciones");
+  igual(bloques.length, 50, "se encontraron las 50 definiciones de funciones");
   const revocadas = [...todo.matchAll(/revoke execute on function([\s\S]*?)from public, anon, authenticated;/g)].map((m) => m[1]).join("\n");
   for (const [, nombre, cuerpo] of bloques) {
     ok(/\nset search_path = ''\n/.test(cuerpo), `${nombre}: set search_path = ''`);
     ok(revocadas.includes(`public.${nombre}(`), `${nombre}: revoke execute de public, anon, authenticated`);
     const definer = /\nsecurity definer\n/.test(cuerpo);
-    ok(definer === (nombre === "ca_vincular_compras"), `${nombre}: security definer sólo en ca_vincular_compras`);
+    if (viva(nombre)) ok(definer === DEFINER.has(nombre), `${nombre}: security definer sólo en ${[...DEFINER].join(", ")}`);
   }
-  ok(!/\bto anon\b/.test(todo), "ningún grant a anon");
+  // ca_sueldos_dos_cifras es una cuenta pura (immutable, sin tablas): el único grant a anon que queda.
+  const grantsAnon = [...todo.matchAll(/grant execute on function public\.(\w+)\([^;]*\bto anon\b[^;]*;/g)].map((m) => m[1]);
+  igual(grantsAnon.filter(viva).sort(), ["ca_sueldos_dos_cifras"], "ningún grant a anon salvo la cuenta pura de sueldos");
+  ok(!/grant (all|select|insert|update|delete)[^;]*\bon (table )?public\.\w+[^;]*\bto anon\b/.test(todo), "ninguna tabla con grant a anon");
   ok(!/grant (all|select|insert|update|delete)[^;]*\bon (table )?public\.ca_(vistas|eventos|checkouts|limites|resumen|resumen_mercado|tipo_cambio)\b[^;]*\bto authenticated/.test(todo), "tablas de medición sin grants a authenticated");
 }
 

@@ -111,13 +111,10 @@ igual que datos-vivos: main no está protegida y el push es el deploy. `--dry` m
 Si la ronda no corre nunca, el vencimiento de 120 días garantiza que no se muestre un precio viejo:
 la página, el sitemap y llms.txt sacan horas el mismo día.
 
-## Argentina: el aviso de vencimiento mensual (2026-10-24, rama `claude/fase3-pendientes`)
+## Argentina y el aviso de fin de mes (2026-10-24)
 
-`minimoAr` pone `vigenteHasta` al último día del mes porque el SMVM cambia todos los meses; check_horas
-avisaba «vence el 2026-10-31; sin el tramo nuevo el país sale» cada mes aunque la Res. 4/2026 (B.O.
-2/9/2026, leída de nuevo el 2026-10-24 en boletinoficial.gob.ar/detalleAviso/primera/346775/20260902:
-noviembre 2026 = $398.800, $1.994 por hora) ya fija la escala hasta abril de 2027. Ahora el aviso solo sale
-si el país no está en el índice armado al día siguiente del vencimiento (con los precios congelados): un
-tramo siguiente ya cargado no es aviso, en ningún país. El aviso real de AR llega en abril de 2027 (escala
-hasta 2027-04-30); ahí hay que cargar la resolución nueva en `src/data/desempleo.ts`. Casos en
-`scripts/horas/casos.ts`.
+El SMVM de la Res. 4/2026 cambia cada mes, así que el mínimo de AR vence el último día de cada mes
+aunque el siguiente ya esté cargado (la escala llega a abril de 2027). check_horas avisaba «sin el
+tramo nuevo el país sale del índice» todos los meses. Ahora solo avisa si al día siguiente el país
+sale de verdad (`sigueAlOtroDia`). El aviso real va a llegar en abril de 2027 si no hay resolución
+nueva del Consejo del Salario.
