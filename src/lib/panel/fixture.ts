@@ -15,6 +15,7 @@ import type {
   Reparto,
 } from "@/lib/panel/tipos";
 import { deCada100, numero } from "@/lib/panel/formato";
+import { bocaDeEjemplo, bocaVacia } from "@/lib/panel/fixture-boca";
 
 type Opciones = { ahora?: Date; mercado?: string | null };
 
@@ -476,6 +477,7 @@ export function panelDeEjemplo(rango: Rango, opciones: Opciones = {}): PanelDato
     vivo,
     mercados,
     lecturas: lecturasDeEjemplo(rango, embudos, busquedas, paginas, fuentes, dispositivos, visitantes),
+    boca: bocaDeEjemplo(rango, ts, granularidad, opciones.mercado ?? null),
     sinDatos: false,
   };
 }
@@ -581,6 +583,7 @@ export function panelSinDatos(rango: Rango, opciones: Opciones = {}): PanelDatos
     vivo: { ahora: 0, paginas: [] },
     mercados: [],
     lecturas: [],
+    boca: bocaVacia(granularidad, ts),
     sinDatos: true,
   };
 }
