@@ -1,0 +1,20 @@
+{
+  "mercado": "ro",
+  "avisos": [
+    {
+      "id": "ro.facilitate-salariu-minim-2026",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["ro.calculator-salariu-net", "ro.calculator-salariu-brut", "ro.cost-total-angajator", "ro.salariul-minim"],
+      "texto": "Suma neimpozabilă de la salariul minim se aplică doar veniturilor din 2026. Din ianuarie 2027 calculatorul nu o mai scade, dacă nu apare o lege nouă.",
+      "fuente": {
+        "organismo": "Guvernul României (text publicat de ANAF)",
+        "titulo": "OUG nr. 89/2025, art. III alin. (6)",
+        "url": "https://static.anaf.ro/static/10/Anaf/legislatie/OUG_89_2025.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}
