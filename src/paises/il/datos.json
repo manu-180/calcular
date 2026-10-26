@@ -750,6 +750,457 @@
           }
         }
       ]
+    },
+    {
+      "id": "il.miluim",
+      "nombre": "תגמול מילואים: סכומים מזעריים ומרביים",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "min-yomi": "תגמול מזערי ליום",
+        "max-yomi": "תגמול מרבי ליום",
+        "max-chodshi": "תגמול מרבי לחודש"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "min-yomi": 328.76,
+            "max-yomi": 1730.33,
+            "max-chodshi": 51910
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "סכום התגמול (מילואים)",
+            "url": "https://www.btl.gov.il/benefits/Reserve_Service/Pages/%d7%a9%d7%99%d7%a2%d7%95%d7%a8%d7%99%20%d7%94%d7%a7%d7%a6%d7%91%d7%94.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "המינימום הוא 95% מהסכום הבסיסי והמקסימום 5 פעמים הסכום הבסיסי, החל ב-01.01.2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.miluim-pitzui",
+      "nombre": "פיצוי לעובד עצמאי המשרת במילואים",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "atzmai": "שיעור הפיצוי לעצמאי"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "atzmai": 25
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "פיצוי לעובד עצמאי (מילואים)",
+            "url": "https://www.btl.gov.il/benefits/Reserve_Service/Pages/hefreshimLeatzmayi.aspx",
+            "tipo": "primaria",
+            "nota": "25% מהתגמול לפי ההכנסה כעצמאי. התגמול והפיצוי יחד לא עולים על התגמול המרבי.",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.miluim-tosefet",
+      "nombre": "תוספת 40% לתגמול המילואים: ימי תוספת לפי שארית ימי השירות חלקי 7",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "0": "שארית 0",
+        "1": "שארית 1",
+        "2": "שארית 2",
+        "3": "שארית 3",
+        "4": "שארית 4",
+        "5": "שארית 5",
+        "6": "שארית 6"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 0,
+            "1": 0.4,
+            "2": 0.8,
+            "3": 1.2,
+            "4": 1.6,
+            "5": 2,
+            "6": 1
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "סכום התגמול (מילואים), חישוב תוספת 40%",
+            "url": "https://www.btl.gov.il/benefits/Reserve_Service/Pages/%d7%a9%d7%99%d7%a2%d7%95%d7%a8%d7%99%20%d7%94%d7%a7%d7%a6%d7%91%d7%94.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.pgia",
+      "nombre": "דמי פגיעה: שיעור וסכום מרבי ליום",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "max-yomi": "דמי פגיעה מרביים ליום"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "max-yomi": 1314.25
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעור דמי הפגיעה ליום",
+            "url": "https://www.btl.gov.il/benefits/Work_Injury/%d7%93%d7%9e%d7%99%20%d7%a4%d7%92%d7%99%d7%a2%d7%94/Pages/%d7%a9%d7%99%d7%a2%d7%95%d7%a8%20%d7%93%d7%9e%d7%99%20%d7%94%d7%a4%d7%92%d7%99%d7%a2%d7%94%20%d7%9c%d7%99%d7%95%d7%9d.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "75% מההכנסה ב-3 החודשים שקדמו לפגיעה חלקי 90, עד הסכום המרבי, החל ב-01.01.2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.pgia-shiur",
+      "nombre": "דמי פגיעה: אחוז מההכנסה",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "shiur": "אחוז מההכנסה היומית"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "shiur": 75
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעור דמי הפגיעה ליום",
+            "url": "https://www.btl.gov.il/benefits/Work_Injury/%d7%93%d7%9e%d7%99%20%d7%a4%d7%92%d7%99%d7%a2%d7%94/Pages/%d7%a9%d7%99%d7%a2%d7%95%d7%a8%20%d7%93%d7%9e%d7%99%20%d7%94%d7%a4%d7%92%d7%99%d7%a2%d7%94%20%d7%9c%d7%99%d7%95%d7%9d.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.pgia-yamim",
+      "nombre": "דמי פגיעה: תקופת התשלום",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "max": "מספר הימים המרבי",
+        "saf": "סף ההיעדרות לתשלום מהיום הראשון",
+        "hamtana": "ימים ללא תשלום בהיעדרות קצרה"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "max": 91,
+            "saf": 12,
+            "hamtana": 2
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "תקופת תשלום דמי הפגיעה",
+            "url": "https://www.btl.gov.il/benefits/Work_Injury/%d7%93%d7%9e%d7%99%20%d7%a4%d7%92%d7%99%d7%a2%d7%94/Pages/%d7%aa%d7%a9%d7%9c%d7%95%d7%9d%20%d7%93%d7%9e%d7%99%20%d7%94%d7%a4%d7%92%d7%99%d7%a2%d7%94.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "עד 13 שבועות (91 ימים). מי שנעדר פחות מ-12 ימים מקבל מהיום השלישי שלמחרת יום הפגיעה."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.zikna",
+      "nombre": "קצבת אזרח ותיק: סכומים חודשיים",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "bsisi": "קצבה בסיסית ליחיד",
+        "ben-zug": "תוספת בעד בן או בת זוג",
+        "yeled": "תוספת בעד כל אחד משני הילדים הראשונים",
+        "gil-80": "תוספת מגיל 80"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "bsisi": 1838,
+            "ben-zug": 924,
+            "yeled": 581,
+            "gil-80": 103
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "חוזר עדכון קצבאות ינואר 2026, קצבאות אזרח ותיק (סעיף 244 לחוק)",
+            "url": "https://www.btl.gov.il/Publications/benefits_update/Documents/hozerkizba2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "הקצבה הבסיסית ליחיד 17.7% מהסכום הבסיסי (10,382 ש\"ח). התוספת לבן זוג ולילד מאושרת גם בדף התוספות באתר."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.zikna-briut",
+      "nombre": "דמי ביטוח בריאות שמנוכים מקצבת אזרח ותיק בלי השלמת הכנסה",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "yachid": "יחיד",
+        "zug": "זוג"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "yachid": 237,
+            "zug": 340
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "חוזר עדכון קצבאות ינואר 2026, ביטוח בריאות",
+            "url": "https://www.btl.gov.il/Publications/benefits_update/Documents/hozerkizba2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.zikna-vetek",
+      "nombre": "קצבת אזרח ותיק: תוספת ותק",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "lashana": "תוספת לכל שנת ביטוח",
+        "max": "תוספת ותק מרבית"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "lashana": 2,
+            "max": 50
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "תוספת ותק",
+            "url": "https://www.btl.gov.il/benefits/old_age/Pages/tosefetVetek.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "2% לכל שנת ביטוח מלאה, עד 50%. לדוגמה, 15 שנות ביטוח: 30%."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.zikna-dchiya",
+      "nombre": "קצבת אזרח ותיק: תוספת דחיית קצבה",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "lashana": "תוספת לכל שנת דחייה"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "lashana": 5
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "תוספת דחיית קצבה",
+            "url": "https://www.btl.gov.il/benefits/old_age/Pages/t-dchiyatkitsba.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "5% מהקצבה (כולל תוספת הוותק) לכל שנה מגיל הפרישה ועד גיל הזכאות (70) שבה הקצבה נדחתה בגלל הכנסות מעבודה."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.gil-prisha",
+      "nombre": "גיל הפרישה בחודשים לפי מין ותאריך לידה",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "gever": "גברים",
+        "isha-1944-06": "ילידות 6/1944",
+        "isha-1944-07": "ילידות 7/1944 עד 8/1944",
+        "isha-1944-09": "ילידות 9/1944 עד 4/1945",
+        "isha-1945-05": "ילידות 5/1945 עד 12/1945",
+        "isha-1946-01": "ילידות 1/1946 עד 8/1946",
+        "isha-1946-09": "ילידות 9/1946 עד 4/1947",
+        "isha-1947-05": "ילידות 5/1947 עד 12/1959",
+        "isha-1960-01": "ילידות 1960",
+        "isha-1961-01": "ילידות 1961",
+        "isha-1962-01": "ילידות 1962",
+        "isha-1963-01": "ילידות 1963",
+        "isha-1964-01": "ילידות 1964",
+        "isha-1965-01": "ילידות 1965",
+        "isha-1966-01": "ילידות 1966",
+        "isha-1967-01": "ילידות 1967",
+        "isha-1968-01": "ילידות 1968",
+        "isha-1969-01": "ילידות 1969",
+        "isha-1970-01": "ילידות 1970 ואילך"
+      },
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "gever": 804,
+            "isha-1944-06": 720,
+            "isha-1944-07": 724,
+            "isha-1944-09": 728,
+            "isha-1945-05": 732,
+            "isha-1946-01": 736,
+            "isha-1946-09": 740,
+            "isha-1947-05": 744,
+            "isha-1960-01": 748,
+            "isha-1961-01": 752,
+            "isha-1962-01": 756,
+            "isha-1963-01": 759,
+            "isha-1964-01": 762,
+            "isha-1965-01": 765,
+            "isha-1966-01": 768,
+            "isha-1967-01": 771,
+            "isha-1968-01": 774,
+            "isha-1969-01": 777,
+            "isha-1970-01": 780
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "גיל פרישה",
+            "url": "https://www.btl.gov.il/benefits/old_age/Conditions_of_eligibility/gilMezake/Pages/gilPrisha.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "גברים 67. נשים 60 עד 65 לפי חודש ושנת הלידה. גיל הזכאות לכולם 70 (דף תוספת דחיית קצבה)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.gil-zakaut",
+      "nombre": "גיל הזכאות לקצבת אזרח ותיק בלי מבחן הכנסות",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "kulam": "גברים ונשים"
+      },
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "kulam": 70
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "תוספת דחיית קצבה",
+            "url": "https://www.btl.gov.il/benefits/old_age/Pages/t-dchiyatkitsba.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "מגיל 70 לא נבדקות ההכנסות."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.bl-atzmai",
+      "nombre": "דמי ביטוח לאומי ובריאות לעובד עצמאי (באחוזים)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "bl-mufchat": "ביטוח לאומי, שיעור מופחת",
+        "bl-male": "ביטוח לאומי, שיעור רגיל",
+        "briut-mufchat": "ביטוח בריאות, שיעור מופחת",
+        "briut-male": "ביטוח בריאות, שיעור רגיל",
+        "prisha-mufchat": "אחרי גיל פרישה בלי קצבה, שיעור מופחת",
+        "prisha-male": "אחרי גיל פרישה בלי קצבה, שיעור רגיל"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "bl-mufchat": 4.47,
+            "bl-male": 12.83,
+            "briut-mufchat": 3.23,
+            "briut-male": 5.17,
+            "prisha-mufchat": 6.92,
+            "prisha-male": 15.79
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעורי דמי ביטוח לעצמאים",
+            "url": "https://www.btl.gov.il/Insurance/Rates/Pages/%d7%9c%d7%a2%d7%a6%d7%9e%d7%90%d7%99%d7%9d.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "מגיל 18 ועד גיל הפרישה. מי שהגיע לגיל פרישה ולא מקבל קצבת אזרח ותיק משלם 6.92% ו-15.79% (כולל ביטוח בריאות). החל מ-01.01.2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.bl-atzmai-mizarit",
+      "nombre": "הכנסה מזערית לחישוב דמי ביטוח לעצמאי",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "chodshi": "הכנסה מזערית לחודש"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "chodshi": 3442
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעורי דמי ביטוח לעצמאים",
+            "url": "https://www.btl.gov.il/Insurance/Rates/Pages/%d7%9c%d7%a2%d7%a6%d7%9e%d7%90%d7%99%d7%9d.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "מי שהכנסתו נמוכה מ-3,442 ש\"ח לחודש משלם דמי ביטוח מהכנסה מזערית."
+          }
+        }
+      ]
     }
   ]
 }

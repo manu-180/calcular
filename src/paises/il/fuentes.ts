@@ -114,4 +114,44 @@ export const detectores: readonly Detector[] = [
       return fechasNuevasBtl(http, this.url, /אבטלה/, "סכומים חדשים לדמי אבטלה");
     },
   },
+  {
+    id: "il.btl-miluim",
+    carril: "norma",
+    datos: ["il.miluim", "il.miluim-tosefet"],
+    metodo: "html",
+    url: "https://www.btl.gov.il/benefits/Reserve_Service/Pages/%d7%a9%d7%99%d7%a2%d7%95%d7%a8%d7%99%20%d7%94%d7%a7%d7%a6%d7%91%d7%94.aspx",
+    traer(http) {
+      return fechasNuevasBtl(http, this.url, /מילואים|התגמול/, "סכומים חדשים לתגמולי מילואים");
+    },
+  },
+  {
+    id: "il.btl-pgia",
+    carril: "norma",
+    datos: ["il.pgia", "il.pgia-shiur"],
+    metodo: "html",
+    url: "https://www.btl.gov.il/benefits/Work_Injury/%d7%93%d7%9e%d7%99%20%d7%a4%d7%92%d7%99%d7%a2%d7%94/Pages/%d7%a9%d7%99%d7%a2%d7%95%d7%a8%20%d7%93%d7%9e%d7%99%20%d7%94%d7%a4%d7%92%d7%99%d7%a2%d7%94%20%d7%9c%d7%99%d7%95%d7%9d.aspx",
+    traer(http) {
+      return fechasNuevasBtl(http, this.url, /דמי הפגיעה|דמי פגיעה/, "סכום מרבי חדש לדמי פגיעה");
+    },
+  },
+  {
+    id: "il.btl-zikna",
+    carril: "norma",
+    datos: ["il.zikna"],
+    metodo: "html",
+    url: "https://www.btl.gov.il/benefits/old_age/Pages/%d7%aa%d7%95%d7%a1%d7%a4%d7%aa%20%d7%91%d7%a2%d7%93%20%d7%91%d7%9f%20%d7%96%d7%95%d7%92%20%d7%95%d7%99%d7%9c%d7%93%d7%99%d7%9d.aspx",
+    traer(http) {
+      return fechasNuevasBtl(http, this.url, /אזרח ותיק/, "סכומים חדשים לקצבת אזרח ותיק");
+    },
+  },
+  {
+    id: "il.btl-atzmai",
+    carril: "norma",
+    datos: ["il.bl-atzmai", "il.bl-atzmai-mizarit"],
+    metodo: "html",
+    url: "https://www.btl.gov.il/Insurance/Rates/Pages/%d7%9c%d7%a2%d7%a6%d7%9e%d7%90%d7%99%d7%9d.aspx",
+    traer(http) {
+      return fechasNuevasBtl(http, this.url, /עצמאי/, "שיעורי דמי ביטוח חדשים לעצמאים");
+    },
+  },
 ];

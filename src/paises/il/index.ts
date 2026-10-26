@@ -38,6 +38,16 @@ import shaotNosafot from "./calculadoras/shaot-nosafot";
 import contenidoShaotNosafot from "./contenido/shaot-nosafot";
 import yemeiChufsha from "./calculadoras/yemei-chufsha";
 import contenidoYemeiChufsha from "./contenido/yemei-chufsha";
+import tagmuleiMiluim from "./calculadoras/tagmulei-miluim";
+import contenidoTagmuleiMiluim from "./contenido/tagmulei-miluim";
+import dmeiPgia from "./calculadoras/dmei-pgia";
+import contenidoDmeiPgia from "./contenido/dmei-pgia";
+import kitzbatZikna from "./calculadoras/kitzbat-zikna";
+import contenidoKitzbatZikna from "./contenido/kitzbat-zikna";
+import gilPrisha from "./calculadoras/gil-prisha";
+import contenidoGilPrisha from "./contenido/gil-prisha";
+import bituachLeumiAtzmai from "./calculadoras/bituach-leumi-atzmai";
+import contenidoBituachLeumiAtzmai from "./contenido/bituach-leumi-atzmai";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -70,6 +80,11 @@ export default definirPais({
     { definicion: shaarChalifin, contenido: contenidoShaarChalifin, cliente: () => import("./calculadoras/shaar-chalifin.cliente") },
     { definicion: shaotNosafot, contenido: contenidoShaotNosafot, cliente: () => import("./calculadoras/shaot-nosafot.cliente") },
     { definicion: yemeiChufsha, contenido: contenidoYemeiChufsha, cliente: () => import("./calculadoras/yemei-chufsha.cliente") },
+    { definicion: tagmuleiMiluim, contenido: contenidoTagmuleiMiluim, cliente: () => import("./calculadoras/tagmulei-miluim.cliente") },
+    { definicion: dmeiPgia, contenido: contenidoDmeiPgia, cliente: () => import("./calculadoras/dmei-pgia.cliente") },
+    { definicion: kitzbatZikna, contenido: contenidoKitzbatZikna, cliente: () => import("./calculadoras/kitzbat-zikna.cliente") },
+    { definicion: gilPrisha, contenido: contenidoGilPrisha, cliente: () => import("./calculadoras/gil-prisha.cliente") },
+    { definicion: bituachLeumiAtzmai, contenido: contenidoBituachLeumiAtzmai, cliente: () => import("./calculadoras/bituach-leumi-atzmai.cliente") },
   ],
   universales: { todas: true },
   novedades,
