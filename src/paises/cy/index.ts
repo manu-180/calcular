@@ -24,6 +24,18 @@ import pliromePleonasmou from "./calculadoras/plirome-pleonasmou";
 import contenidoPliromePleonasmou from "./contenido/plirome-pleonasmou";
 import eisforesAutotelosErgazomenon from "./calculadoras/eisfores-autotelos-ergazomenon";
 import contenidoEisforesAutotelosErgazomenon from "./contenido/eisfores-autotelos-ergazomenon";
+import teliMetavivasis from "./calculadoras/teli-metavivasis";
+import contenidoTeliMetavivasis from "./contenido/teli-metavivasis";
+import chartosima from "./calculadoras/chartosima";
+import contenidoChartosima from "./contenido/chartosima";
+import forosKefalaiouchikonKerdon from "./calculadoras/foros-kefalaiouchikon-kerdon";
+import contenidoForosKefalaiouchikonKerdon from "./contenido/foros-kefalaiouchikon-kerdon";
+import tokoiKatatheseon from "./calculadoras/tokoi-katatheseon";
+import contenidoTokoiKatatheseon from "./contenido/tokoi-katatheseon";
+import ektaktiEisforaMerismata from "./calculadoras/ektakti-eisfora-merismata";
+import contenidoEktaktiEisforaMerismata from "./contenido/ektakti-eisfora-merismata";
+import ypologismosPlithorismou from "./calculadoras/ypologismos-plithorismou";
+import contenidoYpologismosPlithorismou from "./contenido/ypologismos-plithorismou";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +60,12 @@ export default definirPais({
     { definicion: proeidopoiisiTermatismou, contenido: contenidoProeidopoiisiTermatismou, cliente: () => import("./calculadoras/proeidopoiisi-termatismou.cliente") },
     { definicion: pliromePleonasmou, contenido: contenidoPliromePleonasmou, cliente: () => import("./calculadoras/plirome-pleonasmou.cliente") },
     { definicion: eisforesAutotelosErgazomenon, contenido: contenidoEisforesAutotelosErgazomenon, cliente: () => import("./calculadoras/eisfores-autotelos-ergazomenon.cliente") },
+    { definicion: teliMetavivasis, contenido: contenidoTeliMetavivasis, cliente: () => import("./calculadoras/teli-metavivasis.cliente") },
+    { definicion: chartosima, contenido: contenidoChartosima, cliente: () => import("./calculadoras/chartosima.cliente") },
+    { definicion: forosKefalaiouchikonKerdon, contenido: contenidoForosKefalaiouchikonKerdon, cliente: () => import("./calculadoras/foros-kefalaiouchikon-kerdon.cliente") },
+    { definicion: tokoiKatatheseon, contenido: contenidoTokoiKatatheseon, cliente: () => import("./calculadoras/tokoi-katatheseon.cliente") },
+    { definicion: ektaktiEisforaMerismata, contenido: contenidoEktaktiEisforaMerismata, cliente: () => import("./calculadoras/ektakti-eisfora-merismata.cliente") },
+    { definicion: ypologismosPlithorismou, contenido: contenidoYpologismosPlithorismou, cliente: () => import("./calculadoras/ypologismos-plithorismou.cliente") },
   ],
   universales: "todas",
   novedades,
