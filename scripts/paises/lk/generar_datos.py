@@ -17,6 +17,11 @@ def f(organismo, titulo, url, nota=None):
 APIT = f("Inland Revenue Department", "APIT Tax Table No. 01 (2025/2026): monthly tax deductions from regular profits from primary employment",
          IRD + "APIT_Tax_Tables/2025-2026/Table%20-%201/02.%20APIT_2526_Table_01_Text.pdf",
          "The summarized table gives each band as a percentage of monthly pay less a fixed relief. The fixed amount of each row here is that formula written from the start of the band.")
+APIT_4 = f("Inland Revenue Department", "APIT Tax Table No. 04 (2025/2026), Table 4.1: regular profits of non-resident employees who are not citizens",
+           IRD + "APIT_Tax_Tables/2025-2026/Table%20-%204/05.%20APIT_2526_Table_04_Text.pdf",
+           "Same form as Table 1: a percentage of monthly pay less a fixed relief, written here from the start of each band.")
+EPF_RETIRO = f("Central Bank of Sri Lanka", "Employees' Provident Fund: withdrawal of up to 30 per cent for housing or medical treatment (EPF (Amendment) Act, No. 2 of 2012)",
+               "https://www.cbsl.gov.lk/en/employees-provident-fund")
 APIT_3 = f("Inland Revenue Department", "APIT Tax Table No. 03 (2025/2026): once-and-for-all payments (terminal benefits)",
            IRD + "APIT_Tax_Tables/2025-2026/Table%20-%203/04.%20APIT_2526_Table_03_Text.pdf")
 ACT_2025 = f("Inland Revenue Department", "Inland Revenue (Amendment) Act, No. 2 of 2025",
@@ -87,6 +92,20 @@ datos = [
             fila(316667, 358333, 30, apit(316667, 30, 72500)),
             fila(358333, None, 36, apit(358333, 36, 94000)),
         ], APIT)],
+    },
+    {
+        "id": "lk.apit-table-4",
+        "nombre": "APIT Tax Table No. 04.1: monthly regular profits of non-resident, non-citizen employees",
+        "tipo": "escala",
+        "unidad": "LKR",
+        "proximaRevision": "2027-04-01",
+        "tramos": [t("2025-04-01", [
+            fila(0, 83333, 6, 0),
+            fila(83333, 125000, 18, apit(83333, 18, 10000)),
+            fila(125000, 166667, 24, apit(125000, 24, 17500)),
+            fila(166667, 208333, 30, apit(166667, 30, 27500)),
+            fila(208333, None, 36, apit(208333, 36, 40000)),
+        ], APIT_4)],
     },
     {
         "id": "lk.income-tax-bands",
@@ -180,6 +199,14 @@ datos = [
            [t("2024-01-01", 60000000, SSCL_PAGE)]),
     numero("lk.epf-employee", "EPF: minimum employee contribution", "%", [t("2024-01-01", 8, EPF)]),
     numero("lk.epf-employer", "EPF: minimum employer contribution", "%", [t("2024-01-01", 12, EPF)]),
+    numero("lk.epf-withdrawal-share", "EPF: share of the balance a member can withdraw for housing or medical treatment", "%",
+           [t("2015-01-01", 30, EPF_RETIRO)]),
+    numero("lk.epf-withdrawal-max", "EPF: most a member can withdraw for housing or medical treatment", "LKR",
+           [t("2015-01-01", 2000000, EPF_RETIRO)]),
+    numero("lk.epf-withdrawal-min-balance", "EPF: balance a member needs to exceed to withdraw", "LKR",
+           [t("2015-01-01", 300000, EPF_RETIRO)]),
+    numero("lk.epf-withdrawal-min-years", "EPF: years of service a member needs to exceed to withdraw", "anios",
+           [t("2015-01-01", 10, EPF_RETIRO)]),
     numero("lk.etf-employer", "ETF: employer contribution", "%", [t("2024-01-01", 3, ETF)]),
     numero("lk.minimum-wage-monthly", "National minimum monthly wage", "LKR", [
         t("2025-04-01", 27000, SALARIO, "2025-12-31"),

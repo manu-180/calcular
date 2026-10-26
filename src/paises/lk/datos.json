@@ -61,6 +61,59 @@
       ]
     },
     {
+      "id": "lk.apit-table-4",
+      "nombre": "APIT Tax Table No. 04.1: monthly regular profits of non-resident, non-citizen employees",
+      "tipo": "escala",
+      "unidad": "LKR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 83333,
+              "tasa": 6,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 83333,
+              "hasta": 125000,
+              "tasa": 18,
+              "cuotaFija": 4999.94
+            },
+            {
+              "desde": 125000,
+              "hasta": 166667,
+              "tasa": 24,
+              "cuotaFija": 12500.0
+            },
+            {
+              "desde": 166667,
+              "hasta": 208333,
+              "tasa": 30,
+              "cuotaFija": 22500.1
+            },
+            {
+              "desde": 208333,
+              "hasta": null,
+              "tasa": 36,
+              "cuotaFija": 34999.88
+            }
+          ],
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "APIT Tax Table No. 04 (2025/2026), Table 4.1: regular profits of non-resident employees who are not citizens",
+            "url": "https://www.ird.gov.lk/en/publications/APIT_Tax_Tables/2025-2026/Table%20-%204/05.%20APIT_2526_Table_04_Text.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Same form as Table 1: a percentage of monthly pay less a fixed relief, written here from the start of each band."
+          }
+        }
+      ]
+    },
+    {
       "id": "lk.income-tax-bands",
       "nombre": "Income tax rates for individuals on taxable income (after personal relief)",
       "tipo": "escala",
@@ -602,6 +655,86 @@
           "fuente": {
             "organismo": "Central Bank of Sri Lanka",
             "titulo": "Employees' Provident Fund: contribution rates",
+            "url": "https://www.cbsl.gov.lk/en/employees-provident-fund",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lk.epf-withdrawal-share",
+      "nombre": "EPF: share of the balance a member can withdraw for housing or medical treatment",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Central Bank of Sri Lanka",
+            "titulo": "Employees' Provident Fund: withdrawal of up to 30 per cent for housing or medical treatment (EPF (Amendment) Act, No. 2 of 2012)",
+            "url": "https://www.cbsl.gov.lk/en/employees-provident-fund",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lk.epf-withdrawal-max",
+      "nombre": "EPF: most a member can withdraw for housing or medical treatment",
+      "tipo": "numero",
+      "unidad": "LKR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 2000000,
+          "fuente": {
+            "organismo": "Central Bank of Sri Lanka",
+            "titulo": "Employees' Provident Fund: withdrawal of up to 30 per cent for housing or medical treatment (EPF (Amendment) Act, No. 2 of 2012)",
+            "url": "https://www.cbsl.gov.lk/en/employees-provident-fund",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lk.epf-withdrawal-min-balance",
+      "nombre": "EPF: balance a member needs to exceed to withdraw",
+      "tipo": "numero",
+      "unidad": "LKR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 300000,
+          "fuente": {
+            "organismo": "Central Bank of Sri Lanka",
+            "titulo": "Employees' Provident Fund: withdrawal of up to 30 per cent for housing or medical treatment (EPF (Amendment) Act, No. 2 of 2012)",
+            "url": "https://www.cbsl.gov.lk/en/employees-provident-fund",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lk.epf-withdrawal-min-years",
+      "nombre": "EPF: years of service a member needs to exceed to withdraw",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Central Bank of Sri Lanka",
+            "titulo": "Employees' Provident Fund: withdrawal of up to 30 per cent for housing or medical treatment (EPF (Amendment) Act, No. 2 of 2012)",
             "url": "https://www.cbsl.gov.lk/en/employees-provident-fund",
             "tipo": "primaria",
             "verificadoEl": "2026-10-26"

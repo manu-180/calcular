@@ -13,6 +13,7 @@ export default definirContenido({
   comoSeCalcula: [
     "Up to {{lk.apit-table-1[0].hasta}} a month there is no tax.",
     "Above that, each slice of pay has its own rate: {{lk.apit-table-1[1].tasa}} up to {{lk.apit-table-1[1].hasta}}, {{lk.apit-table-1[2].tasa}} up to {{lk.apit-table-1[2].hasta}}, {{lk.apit-table-1[3].tasa}} up to {{lk.apit-table-1[3].hasta}}, {{lk.apit-table-1[4].tasa}} up to {{lk.apit-table-1[4].hasta}} and {{lk.apit-table-1[-1].tasa}} above that.",
+    "Non-resident employees who are not Sri Lankan citizens use Table No. 04 instead. It has no tax free amount: {{lk.apit-table-4[0].tasa}} from the first rupee up to {{lk.apit-table-4[0].hasta}}, rising to {{lk.apit-table-4[-1].tasa}} above {{lk.apit-table-4[-1].desde}}.",
     "The IRD writes each band as a percentage of your whole pay less a fixed relief. For pay between {{lk.apit-table-1[3].desde}} and {{lk.apit-table-1[3].hasta}} it is {{lk.apit-table-1[3].tasa}} of pay less Rs. 53,500. The result is the same.",
   ],
   ejemplo: [
@@ -21,7 +22,7 @@ export default definirContenido({
   faq: [
     {
       pregunta: "Which APIT table applies to me?",
-      respuesta: "Table No. 01 is for resident employees, and non-resident employees who are citizens of Sri Lanka, who have given the primary declaration to their employer or have only one employment.",
+      respuesta: "Table No. 01 is for resident employees, and non-resident employees who are citizens of Sri Lanka, who have given the primary declaration to their employer or have only one employment. Table No. 04 is for non-resident employees who are not citizens.",
     },
     {
       pregunta: "What if my pay is below the limit some months and above it in others?",

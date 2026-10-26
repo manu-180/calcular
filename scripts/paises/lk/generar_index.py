@@ -8,6 +8,7 @@ SLUGS = [
     "gross-salary-calculator",
     "apit-calculator",
     "epf-etf-calculator",
+    "epf-withdrawal-calculator",
     "employer-cost-calculator",
     "income-tax-calculator",
     "freelancer-tax-calculator",

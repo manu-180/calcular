@@ -8,6 +8,8 @@ import apitCalculator from "./calculadoras/apit-calculator";
 import contenidoApitCalculator from "./contenido/apit-calculator";
 import epfEtfCalculator from "./calculadoras/epf-etf-calculator";
 import contenidoEpfEtfCalculator from "./contenido/epf-etf-calculator";
+import epfWithdrawalCalculator from "./calculadoras/epf-withdrawal-calculator";
+import contenidoEpfWithdrawalCalculator from "./contenido/epf-withdrawal-calculator";
 import employerCostCalculator from "./calculadoras/employer-cost-calculator";
 import contenidoEmployerCostCalculator from "./contenido/employer-cost-calculator";
 import incomeTaxCalculator from "./calculadoras/income-tax-calculator";
@@ -54,6 +56,7 @@ export default definirPais({
     { definicion: grossSalaryCalculator, contenido: contenidoGrossSalaryCalculator, cliente: () => import("./calculadoras/gross-salary-calculator.cliente") },
     { definicion: apitCalculator, contenido: contenidoApitCalculator, cliente: () => import("./calculadoras/apit-calculator.cliente") },
     { definicion: epfEtfCalculator, contenido: contenidoEpfEtfCalculator, cliente: () => import("./calculadoras/epf-etf-calculator.cliente") },
+    { definicion: epfWithdrawalCalculator, contenido: contenidoEpfWithdrawalCalculator, cliente: () => import("./calculadoras/epf-withdrawal-calculator.cliente") },
     { definicion: employerCostCalculator, contenido: contenidoEmployerCostCalculator, cliente: () => import("./calculadoras/employer-cost-calculator.cliente") },
     { definicion: incomeTaxCalculator, contenido: contenidoIncomeTaxCalculator, cliente: () => import("./calculadoras/income-tax-calculator.cliente") },
     { definicion: freelancerTaxCalculator, contenido: contenidoFreelancerTaxCalculator, cliente: () => import("./calculadoras/freelancer-tax-calculator.cliente") },

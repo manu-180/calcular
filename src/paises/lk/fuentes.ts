@@ -70,7 +70,7 @@ export const detectores: readonly Detector[] = [
   {
     id: "lk.ird-apit-tables",
     carril: "norma",
-    datos: ["lk.apit-table-1", "lk.terminal-retention-limit", "lk.terminal-retention-rate"],
+    datos: ["lk.apit-table-1", "lk.apit-table-4", "lk.terminal-retention-limit", "lk.terminal-retention-rate"],
     metodo: "html",
     url: `${IRD}/publications/sitepages/apit_tax_tables.aspx?menuid=1502`,
     userAgentNavegador: true,
@@ -142,5 +142,13 @@ export const detectores: readonly Detector[] = [
     /12 per cent and 8 per cent/,
     /Provident Fund/,
     "CBSL EPF page no longer shows minimum rates of 12 per cent and 8 per cent",
+  ),
+  sinCambio(
+    "lk.cbsl-epf-withdrawal",
+    "https://www.cbsl.gov.lk/en/employees-provident-fund",
+    ["lk.epf-withdrawal-share", "lk.epf-withdrawal-max", "lk.epf-withdrawal-min-balance", "lk.epf-withdrawal-min-years"],
+    /more than 10 years and EPF account balance of more than Rs\.\s?300,000 are entitled to withdraw up to 30 per cent[^.]*Maximum of Rs\.\s?2,000,000/,
+    /Provident Fund/,
+    "CBSL EPF page changed the rules for the 30 per cent withdrawal",
   ),
 ];
