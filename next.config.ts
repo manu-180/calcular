@@ -129,6 +129,7 @@ const nextConfig: NextConfig = {
     "/intl/*/*/og": ["./public/banderas/*.svg"],
     "/sueldo-en-el-mundo/og": ["./public/banderas/*.svg"],
     "/sueldos-reales/og": ["./public/banderas/*.svg"],
+    "/cuantas-horas-de-trabajo/og": ["./public/horas/*.png"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
   // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.
