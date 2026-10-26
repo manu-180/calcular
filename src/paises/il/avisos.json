@@ -1,0 +1,41 @@
+{
+  "mercado": "il",
+  "avisos": [
+    {
+      "id": "il.zchuyot-minimum",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "aplicaA": [
+        "il.yemei-chufsha",
+        "il.dmei-havraa",
+        "il.dmei-machala",
+        "il.hodaa-mukdemet",
+        "il.shaot-nosafot",
+        "il.pitzuyei-piturim"
+      ],
+      "texto": "החישוב לפי זכויות המינימום בחוק ובצווי ההרחבה הכלליים. הסכם קיבוצי, צו הרחבה בענף או חוזה אישי יכולים לתת יותר.",
+      "fuente": {
+        "organismo": "משרד העבודה",
+        "titulo": "חופשה שנתית (זכויות המינימום לפי החוק)",
+        "url": "https://www.gov.il/he/pages/annual-vacations",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "il.mas-rechisha-hora-at-shaa",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["il.mas-rechisha"],
+      "texto": "המדרגות לדירה שאינה דירה יחידה הן הוראת שעה שהוארכה עד 31 בדצמבר 2026. אחרי התאריך הזה כדאי לבדוק אם הוארכה שוב.",
+      "fuente": {
+        "organismo": "רשות המסים בישראל",
+        "titulo": "הוראת ביצוע מיסוי מקרקעין 1/2025",
+        "url": "https://www.gov.il/BlobFolder/policy/inst-01-2025-3/he/realestate_inst-01-2025-3.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}
