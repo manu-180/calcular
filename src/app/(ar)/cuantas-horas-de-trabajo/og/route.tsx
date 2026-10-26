@@ -1,6 +1,9 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { itemCotidiano, ITEM_INICIAL } from "@/lib/horas-ar/catalogo";
 import { duracion, leerCodigoHoras, mayuscula } from "@/lib/horas-ar/formato";
+import { origenAR } from "@/motor/sitio";
 
 // Tarjeta de «¿Cuántas horas de trabajo te cuesta?»: /cuantas-horas-de-trabajo/og?c=asado.130 (1200 x 630,
 // vista previa del link), &formato=historia (1080 x 1920) y &formato=cuadrado (1080 x 1080). Lee solo
@@ -15,6 +18,24 @@ const APAGADO = "rgba(244,240,230,0.12)";
 const CABECERAS = { "cache-control": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800" };
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
 const ESPERA_MS = 3000;
+
+// Primero el disco (next.config.ts suma public/horas a esta función); si no está, del sitio publicado.
+// origenAR() es fijo, nunca req.url, que lo pone quien hace el pedido.
+async function fotoDe(id: string): Promise<string | null> {
+  if (!/^[a-z]+$/.test(id)) return null;
+  try {
+    const png = await readFile(path.join(process.cwd(), "public", "horas", `${id}.png`));
+    return `data:image/png;base64,${png.toString("base64")}`;
+  } catch {}
+  try {
+    const r = await fetch(`${origenAR()}/horas/${id}.png`, { signal: AbortSignal.timeout(ESPERA_MS) });
+    if (!r.ok) return null;
+    return `data:image/png;base64,${Buffer.from(await r.arrayBuffer()).toString("base64")}`;
+  } catch (err) {
+    console.warn(`[og horas] sin foto ${id}:`, err instanceof Error ? err.message : err);
+    return null;
+  }
+}
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 
@@ -95,6 +116,7 @@ type Formato = "horizontal" | "historia" | "cuadrado";
 interface Datos {
   nombre: string;
   minutos: number | null;
+  foto: string | null;
 }
 
 function Cifra({ minutos, tam }: { minutos: number; tam: number }) {
@@ -119,7 +141,7 @@ function Pie({ tam, personal }: { tam: number; personal: boolean }) {
   );
 }
 
-function Tarjeta({ formato, nombre, minutos }: Datos & { formato: Formato }) {
+function Tarjeta({ formato, nombre, minutos, foto }: Datos & { formato: Formato }) {
   const h = formato === "horizontal";
   const historia = formato === "historia";
   const s = h ? 0.62 : historia ? 1.3 : 0.78;
@@ -128,16 +150,21 @@ function Tarjeta({ formato, nombre, minutos }: Datos & { formato: Formato }) {
   const ems = partes.reduce((n, p) => n + 0.62 * p.n.length + 0.25 * p.u.length + 0.16, 0);
   const util = h ? 640 : 912;
   const tamCifra = Math.round(Math.min(290 * s, (util / Math.max(ems, 1)) * 0.94));
-  const pad = h ? "52px 64px" : historia ? "210px 84px 230px" : "80px 84px";
+  const pad = h ? "52px 64px" : historia ? "170px 84px 190px" : "80px 84px";
   const semanas = minutos ? minutos / 60 > 40 : false;
-  const celda = h ? (semanas ? 22 : 30) : historia ? (semanas ? 58 : 86) : semanas ? 36 : 44;
+  const celda = h ? (semanas ? 22 : 30) : historia ? (semanas ? 52 : 74) : semanas ? 36 : 44;
   const hueco = h ? 6 : historia ? (semanas ? 11 : 15) : 9;
+  const tamFoto = h ? 200 : historia ? 420 : minutos ? 330 : 270;
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: pad, color: CREMA, fontFamily: "Geist", ...fondo(h ? "92% 0%" : "100% 0%") }}>
+      {foto && !historia ? (
+        <img src={foto} width={tamFoto} height={tamFoto} alt="" style={{ position: "absolute", top: h ? 12 : minutos ? 40 : 30, right: h ? 56 : 50, transform: "rotate(-4deg)" }} />
+      ) : null}
       <div style={{ display: "flex", alignItems: "center", gap: 16 * s, fontSize: 40 * s, fontWeight: 700 }}>
         <Marca tam={Math.round(58 * s)} />
         CalculAR
       </div>
+      {foto && historia ? <img src={foto} width={tamFoto} height={tamFoto} alt="" style={{ alignSelf: "flex-end", margin: "-120px -20px -40px 0", transform: "rotate(-4deg)" }} /> : null}
       {minutos ? (
         <div style={{ display: "flex", flexDirection: h ? "row" : "column", alignItems: h ? "center" : "flex-start", justifyContent: "space-between", gap: 48 * s }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -157,7 +184,7 @@ function Tarjeta({ formato, nombre, minutos }: Datos & { formato: Formato }) {
           <div style={{ display: "flex", fontSize: h ? 28 : historia ? 46 : 38, color: SUAVE }}>Poné tu sueldo y tus horas. Precios oficiales.</div>
         </div>
       )}
-      <Pie tam={h ? 44 : historia ? 76 : 60} personal={Boolean(minutos)} />
+      <Pie tam={h ? 44 : historia ? 68 : 60} personal={Boolean(minutos)} />
     </div>
   );
 }
@@ -178,7 +205,7 @@ export async function GET(req: Request) {
   if (leido && !leido.canonico) return new Response("No encontrado", { status: 404 });
   const item = itemCotidiano(leido?.id ?? c);
   if (!item) return new Response("No encontrado", { status: 404 });
-  const datos: Datos = { nombre: item.nombre, minutos: leido?.minutos ?? null };
+  const datos: Datos = { nombre: item.nombre, minutos: leido?.minutos ?? null, foto: await fotoDe(item.id) };
 
   const texto = ["CalculAR calcular.ar 0123456789 hmin ¿?.", mayuscula(item.nombre), item.nombre, "me cuesta cerca de trabajo ¿Y a vos? Calculá tus horas ¿Cuántas horas de trabajo te cuesta Poné tu sueldo y tus horas. Precios oficiales."].join(" ");
   const unicos = [...new Set(texto)].join("");
@@ -188,7 +215,7 @@ export async function GET(req: Request) {
 
   return new ImageResponse(<Tarjeta formato={formato} {...datos} />, {
     ...TAMANOS[formato],
-    headers: fonts.length < pedidas.length ? CABECERAS_INCOMPLETA : CABECERAS,
+    headers: fonts.length < pedidas.length || !datos.foto ? CABECERAS_INCOMPLETA : CABECERAS,
     ...(fonts.length ? { fonts } : {}),
   });
 }

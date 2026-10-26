@@ -235,7 +235,7 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
             <>
               <div className="ca-hs-cosa">
                 <span className="ca-hs-cosa-marco" key={item.id}>
-                  <Ilustracion id={item.id} />
+                  <Ilustracion id={item.id} prioridad />
                 </span>
                 <p className="ca-hs-antes">
                   {mayuscula(item.nombre)} {propios ? "te cuesta" : "cuesta, con el salario mínimo,"}
