@@ -10,7 +10,7 @@ export default definirCalculadora({
   requiere: REQ_SALARIU,
   campos: [
     { id: "brut", tipo: "moneda", etiqueta: "Salariul brut lunar", min: 0, porDefecto: 15000 },
-    { id: "scutire", tipo: "opcion", etiqueta: "Scutirea personală", opciones: OPTIUNI_SCUTIRE, porDefecto: "personala", ayuda: "Se aplică la un singur loc de muncă, de regulă la cel de bază. Alegeți „Fără scutire personală” dacă o folosiți la alt angajator." },
+    { id: "scutire", tipo: "opcion", etiqueta: "Scutirea personală", opciones: OPTIUNI_SCUTIRE, porDefecto: "personala", ayuda: "Scutirea anuală se scade o singură dată. Alegeți „Fără scutire personală” dacă o aplică deja alt angajator." },
     { id: "intretinuti", tipo: "entero", etiqueta: "Persoane întreținute", min: 0, max: 10, porDefecto: 0, ayuda: "Copii sau alți membri ai familiei pentru care beneficiați de scutire." },
     { id: "intretinutiDizabilitate", tipo: "entero", etiqueta: "Din care persoane întreținute cu dizabilitate", min: 0, max: 10, porDefecto: 0, ayuda: "Pentru ele scutirea este mai mare. Nu le numărați și în rândul de mai sus." },
   ],

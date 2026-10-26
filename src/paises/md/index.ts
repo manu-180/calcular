@@ -10,6 +10,16 @@ import salariulMinim from "./calculadoras/salariul-minim";
 import contenidoSalariulMinim from "./contenido/salariul-minim";
 import salariulMediuPeEconomie from "./calculadoras/salariul-mediu-pe-economie";
 import contenidoSalariulMediuPeEconomie from "./contenido/salariul-mediu-pe-economie";
+import calculatorImpozitPeVenit from "./calculadoras/calculator-impozit-pe-venit";
+import contenidoCalculatorImpozitPeVenit from "./contenido/calculator-impozit-pe-venit";
+import calculatorTva from "./calculadoras/calculator-tva";
+import contenidoCalculatorTva from "./contenido/calculator-tva";
+import impozitPeDividende from "./calculadoras/impozit-pe-dividende";
+import contenidoImpozitPeDividende from "./contenido/impozit-pe-dividende";
+import cursValutarBnm from "./calculadoras/curs-valutar-bnm";
+import contenidoCursValutarBnm from "./contenido/curs-valutar-bnm";
+import calculatorInflatie from "./calculadoras/calculator-inflatie";
+import contenidoCalculatorInflatie from "./contenido/calculator-inflatie";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -27,6 +37,11 @@ export default definirPais({
     { definicion: costTotalAngajator, contenido: contenidoCostTotalAngajator, cliente: () => import("./calculadoras/cost-total-angajator.cliente") },
     { definicion: salariulMinim, contenido: contenidoSalariulMinim, cliente: () => import("./calculadoras/salariul-minim.cliente") },
     { definicion: salariulMediuPeEconomie, contenido: contenidoSalariulMediuPeEconomie, cliente: () => import("./calculadoras/salariul-mediu-pe-economie.cliente") },
+    { definicion: calculatorImpozitPeVenit, contenido: contenidoCalculatorImpozitPeVenit, cliente: () => import("./calculadoras/calculator-impozit-pe-venit.cliente") },
+    { definicion: calculatorTva, contenido: contenidoCalculatorTva, cliente: () => import("./calculadoras/calculator-tva.cliente") },
+    { definicion: impozitPeDividende, contenido: contenidoImpozitPeDividende, cliente: () => import("./calculadoras/impozit-pe-dividende.cliente") },
+    { definicion: cursValutarBnm, contenido: contenidoCursValutarBnm, cliente: () => import("./calculadoras/curs-valutar-bnm.cliente") },
+    { definicion: calculatorInflatie, contenido: contenidoCalculatorInflatie, cliente: () => import("./calculadoras/calculator-inflatie.cliente") },
   ],
   universales: "todas",
   novedades,

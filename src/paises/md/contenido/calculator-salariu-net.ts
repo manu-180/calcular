@@ -34,8 +34,8 @@ export default definirContenido({
       respuesta: "{{md.scutire-intretinut}} pe an pentru fiecare persoană întreținută și {{md.scutire-intretinut-dizabilitate}} pentru o persoană întreținută cu dizabilitate.",
     },
     {
-      pregunta: "Pot aplica scutirea la doi angajatori?",
-      respuesta: "Nu. Scutirea se cere la un singur loc de muncă, pe baza unei cereri depuse la angajator. La al doilea angajator alegeți „Fără scutire personală”.",
+      pregunta: "Ce aleg dacă am doi angajatori?",
+      respuesta: "Scutirea anuală se scade o singură dată. Dacă o aplică deja alt angajator, alegeți „Fără scutire personală” pentru al doilea salariu.",
     },
     {
       pregunta: "De ce netul diferă puțin de cel din fișa de salariu?",
