@@ -731,6 +731,26 @@
           }
         }
       ]
+    },
+    {
+      "id": "th.annual-leave-min-days",
+      "nombre": "วันหยุดพักผ่อนประจำปีขั้นต่ำเมื่อทำงานครบ 1 ปี",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-05",
+          "valor": 6,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา (เผยแพร่โดยกระทรวงแรงงาน)",
+            "titulo": "พระราชบัญญัติคุ้มครองแรงงาน พ.ศ. 2541 ฉบับปรับปรุงถึงฉบับที่ 7 พ.ศ. 2562 มาตรา 30 และมาตรา 67",
+            "url": "https://www.mol.go.th/wp-content/uploads/sites/2/1998/01/labour_protection_2541_new62.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
     }
   ]
 }

@@ -22,6 +22,8 @@ import corporateIncomeTax from "./calculadoras/corporate-income-tax";
 import contenidoCorporateIncomeTax from "./contenido/corporate-income-tax";
 import employerCost from "./calculadoras/employer-cost";
 import contenidoEmployerCost from "./contenido/employer-cost";
+import annualLeave from "./calculadoras/annual-leave";
+import contenidoAnnualLeave from "./contenido/annual-leave";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -45,6 +47,7 @@ export default definirPais({
     { definicion: overtimePay, contenido: contenidoOvertimePay, cliente: () => import("./calculadoras/overtime-pay.cliente") },
     { definicion: corporateIncomeTax, contenido: contenidoCorporateIncomeTax, cliente: () => import("./calculadoras/corporate-income-tax.cliente") },
     { definicion: employerCost, contenido: contenidoEmployerCost, cliente: () => import("./calculadoras/employer-cost.cliente") },
+    { definicion: annualLeave, contenido: contenidoAnnualLeave, cliente: () => import("./calculadoras/annual-leave.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "th.vat" } }] },
   novedades,
