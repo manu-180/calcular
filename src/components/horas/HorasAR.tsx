@@ -113,6 +113,77 @@ function Paso({ etiqueta, valor, min, max, cambiar, unidad }: { etiqueta: string
   );
 }
 
+function veces(n: number): string {
+  return n >= 10 ? numero.format(n) : decimal.format(n);
+}
+
+// Ranking de más a menos trabajo, con Argentina en su lugar. Las barras crecen al entrar en pantalla
+// (solo transform) y se reacomodan al cambiar de cosa.
+function Afuera({ item, minutos, propios, paises }: { item: ItemPublicado; minutos: number; propios: boolean; paises: { iso: string; nombre: string; minutos: number }[] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visto, setVisto] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        setVisto(true);
+        io.disconnect();
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const filas = [{ iso: "AR", nombre: propios ? "Argentina, vos" : "Argentina", minutos, propio: true }, ...paises.map((p) => ({ ...p, propio: false }))].sort((a, b) => b.minutos - a.minutos);
+  const tope = filas[0]?.minutos ?? minutos;
+  const puesto = filas.findIndex((f) => f.propio) + 1;
+  const masBarato = paises[0];
+  const masCaro = paises[paises.length - 1];
+  const cuesta = propios ? "te cuesta" : "cuesta";
+  const titular =
+    masBarato && minutos / masBarato.minutos >= 1.15
+      ? { cifra: veces(minutos / masBarato.minutos), texto: `En ${masBarato.nombre}, ${item.nombre} ${cuesta} ${veces(minutos / masBarato.minutos)} veces menos horas de trabajo que acá.` }
+      : masCaro && masCaro.minutos / minutos >= 1.15
+        ? { cifra: veces(masCaro.minutos / minutos), texto: `Acá ${item.nombre} ${cuesta} ${veces(masCaro.minutos / minutos)} veces menos horas de trabajo que en ${masCaro.nombre}.` }
+        : null;
+
+  return (
+    <div ref={ref} className="ca-hs-ranking" data-visto={visto || undefined}>
+      {titular ? (
+        <p className="ca-hs-titular">
+          <span className="ca-hs-titular-cifra" aria-hidden="true">
+            {titular.cifra}
+            <span>×</span>
+          </span>
+          <span className="ca-hs-titular-texto">
+            {titular.texto}
+            <span className="ca-hs-titular-puesto">
+              {puesto === 1 ? "Argentina es el país donde más trabajo cuesta." : puesto === filas.length ? "Argentina es el país donde menos trabajo cuesta." : `Argentina queda ${puesto}.ª de ${filas.length}, de donde más cuesta a donde menos.`}
+            </span>
+          </span>
+        </p>
+      ) : null}
+      <ol className="ca-hs-barras">
+        {filas.map((f, i) => (
+          <li key={f.iso} data-propio={f.propio || undefined} style={{ "--i": i, "--p": Math.max(0.02, f.minutos / tope) } as CSSProperties}>
+            <span className="ca-hs-barras-pais">
+              <img src={`/banderas/${f.iso.toLowerCase()}.svg`} width={24} height={16} alt="" loading="lazy" decoding="async" />
+              {f.nombre}
+            </span>
+            <span className="ca-hs-barras-pista" aria-hidden="true">
+              <i />
+            </span>
+            <Duracion minutos={f.minutos} clase="ca-hs-afuera-horas" />
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
 export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
   const [texto, setTexto] = useState("");
   const [modo, setModo] = useState<Modo>("neto");
@@ -325,22 +396,9 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
             <h2 id="ca-hs-afuera-titulo" className="ca-hs-h2">
               ¿Y {item.nombre} afuera?
             </h2>
-            <p className="ca-hs-bajada">{propios ? "Si ganaras lo mismo que vos pero en otro país, te costaría:" : "Con el salario mínimo de cada país, cuesta:"}</p>
+            <p className="ca-hs-bajada">{propios ? "Si ganaras lo mismo que vos, pero en otro país." : "Pagándolo con el salario mínimo de cada país."}</p>
           </div>
-          <ul className="ca-hs-afuera-lista">
-            <li data-propio="">
-              <img src="/banderas/ar.svg" width={24} height={16} alt="" loading="lazy" decoding="async" />
-              <span>{propios ? "Argentina, vos" : "Argentina"}</span>
-              <Duracion minutos={minutos} clase="ca-hs-afuera-horas" />
-            </li>
-            {afuera.map((p) => (
-              <li key={p.iso}>
-                <img src={`/banderas/${p.iso.toLowerCase()}.svg`} width={24} height={16} alt="" loading="lazy" decoding="async" />
-                <span>{p.nombre}</span>
-                <Duracion minutos={p.minutos} clase="ca-hs-afuera-horas" />
-              </li>
-            ))}
-          </ul>
+          <Afuera item={item} minutos={minutos} propios={propios} paises={afuera} />
           <p className="ca-hs-afuera-nota">
             {afueraOficial
               ? `Con el precio oficial de ${item.corto} en cada país${propios ? ", y un sueldo que en cada país vale lo mismo que el tuyo acá frente al salario mínimo" : ""}.`
