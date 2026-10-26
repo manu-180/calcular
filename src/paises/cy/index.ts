@@ -16,6 +16,14 @@ import katotatosMisthos from "./calculadoras/katotatos-misthos";
 import contenidoKatotatosMisthos from "./contenido/katotatos-misthos";
 import ypologismosFpa from "./calculadoras/ypologismos-fpa";
 import contenidoYpologismosFpa from "./contenido/ypologismos-fpa";
+import etisiaAdeia from "./calculadoras/etisia-adeia";
+import contenidoEtisiaAdeia from "./contenido/etisia-adeia";
+import proeidopoiisiTermatismou from "./calculadoras/proeidopoiisi-termatismou";
+import contenidoProeidopoiisiTermatismou from "./contenido/proeidopoiisi-termatismou";
+import pliromePleonasmou from "./calculadoras/plirome-pleonasmou";
+import contenidoPliromePleonasmou from "./contenido/plirome-pleonasmou";
+import eisforesAutotelosErgazomenon from "./calculadoras/eisfores-autotelos-ergazomenon";
+import contenidoEisforesAutotelosErgazomenon from "./contenido/eisfores-autotelos-ergazomenon";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: eisforesGesy, contenido: contenidoEisforesGesy, cliente: () => import("./calculadoras/eisfores-gesy.cliente") },
     { definicion: katotatosMisthos, contenido: contenidoKatotatosMisthos, cliente: () => import("./calculadoras/katotatos-misthos.cliente") },
     { definicion: ypologismosFpa, contenido: contenidoYpologismosFpa, cliente: () => import("./calculadoras/ypologismos-fpa.cliente") },
+    { definicion: etisiaAdeia, contenido: contenidoEtisiaAdeia, cliente: () => import("./calculadoras/etisia-adeia.cliente") },
+    { definicion: proeidopoiisiTermatismou, contenido: contenidoProeidopoiisiTermatismou, cliente: () => import("./calculadoras/proeidopoiisi-termatismou.cliente") },
+    { definicion: pliromePleonasmou, contenido: contenidoPliromePleonasmou, cliente: () => import("./calculadoras/plirome-pleonasmou.cliente") },
+    { definicion: eisforesAutotelosErgazomenon, contenido: contenidoEisforesAutotelosErgazomenon, cliente: () => import("./calculadoras/eisfores-autotelos-ergazomenon.cliente") },
   ],
   universales: "todas",
   novedades,
