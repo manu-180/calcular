@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type CSSProperties } from "react";
 import { estimarGananciasAnual } from "@/lib/ganancias";
 import { RUTA_HORAS_AR } from "@/lib/horas-ar/catalogo";
-import { duracion, duracionLarga, codigoHoras, fraseCompartir, mayuscula, minutosCompartidos, minutosDe, valorHora } from "@/lib/horas-ar/formato";
+import { duracion, duracionLarga, codigoHoras, fraseCompartir, leerCodigoHoras, mayuscula, minutosCompartidos, minutosDe, valorHora } from "@/lib/horas-ar/formato";
 import { guardarTraspasoAR } from "@/lib/mundo/traspaso-ar";
 import { PAGAS_AR } from "@/lib/mundo/pagas-ar";
 import { brutoANeto, netoABruto } from "@/lib/sueldo";
 import { usarCompartir } from "@/motor/compartir";
+import { AlCelu } from "@/motor/compartir/AlCelu";
 import { ICONOS, Redes } from "@/motor/compartir/Redes";
 import type { TextosRedes } from "@/motor/i18n/redes";
 import { CLAVE_TRASPASO, RUTA_MUNDO_AR } from "@/motor/mundo/rutas";
@@ -119,6 +120,11 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
   const [horasDia, setHorasDia] = useState(8);
   const [elegido, setElegido] = useState(inicial);
   const [traido, setTraido] = useState(false);
+  // La tarjeta que llega desde el QR de la compu (?ig=asado.150): el celular la muestra igual, sin el
+  // sueldo, para mandarla a Instagram con un toque. Se suelta apenas la persona cambia algo.
+  const [heredado, setHeredado] = useState<{ id: string; minutos: number } | null>(null);
+  const [alCelu, setAlCelu] = useState(false);
+  const botonIg = useRef<HTMLButtonElement>(null);
   const idSueldo = useId();
   const idAyuda = useId();
 
@@ -129,6 +135,19 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
     setTexto(numero.format(t.monto));
     setTraido(true);
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const desdeQr = leerCodigoHoras(params.get("ig"));
+    if (!params.has("ig")) return;
+    params.delete("ig");
+    const resto = params.toString();
+    window.history.replaceState(window.history.state, "", window.location.pathname + (resto ? `?${resto}` : "") + window.location.hash);
+    if (!desdeQr || !datos.items.some((i) => i.id === desdeQr.id)) return;
+    setHeredado({ id: desdeQr.id, minutos: desdeQr.minutos });
+    setElegido(desdeQr.id);
+    requestAnimationFrame(() => botonIg.current?.scrollIntoView({ block: "end", behavior: "smooth" }));
+  }, [datos.items]);
 
   const monto = leerPesos(texto);
   const invalido = texto.trim() !== "" && monto === null;
@@ -146,14 +165,15 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
   const ratio = brutoHora && datos.minimo ? brutoHora / datos.minimo.porHora : 1;
 
   const item: ItemPublicado | undefined = datos.items.find((i) => i.id === elegido) ?? datos.items[0];
-  const minutos = item && porHora ? minutosDe(item.monto, porHora) : null;
-  const propios = Boolean(propia && minutos);
+  const delQr = heredado && !monto && item?.id === heredado.id ? heredado : null;
+  const minutos = delQr ? delQr.minutos : item && porHora ? minutosDe(item.monto, porHora) : null;
+  const propios = Boolean((propia || delQr) && minutos);
   const amigoItem = amigo ? datos.items.find((i) => i.id === amigo.id) : undefined;
 
   const ordenados = useMemo(() => [...datos.items].sort((a, b) => a.monto - b.monto), [datos.items]);
 
   // La pantalla muestra los minutos exactos; lo que sale (link, tarjeta, texto) va redondeado a la escala.
-  const compartidos = propios && minutos ? minutosCompartidos(minutos) : null;
+  const compartidos = delQr ? delQr.minutos : propios && minutos ? minutosCompartidos(minutos) : null;
   const codigo = item && compartidos ? codigoHoras(item.id, compartidos) : item?.id;
   // Relativa: la vista previa y la descarga salen del mismo sitio que sirve la página (también en una preview).
   const imagen = `${RUTA_HORAS_AR}/og?c=${codigo ?? ""}`;
@@ -169,7 +189,11 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
     if (posicion < 0) return;
     setElegido(ordenados[(posicion + paso + ordenados.length) % ordenados.length].id);
   };
-  const { compartirEn, compartirInstagram, estado } = usarCompartir(opciones);
+  const { compartirEn, compartirInstagram, bajarHistoria, estado } = usarCompartir(opciones);
+  const celu = `${base}?ig=${codigo ?? ""}`;
+  const instagram = async () => {
+    if ((await compartirInstagram("calcular-horas-historia.png")) === "celu") setAlCelu(true);
+  };
   const aviso = estado === "copiado" ? redes.copiado : estado === "historia" ? redes.enInstagram : estado === "descargado" ? redes.descargado : estado === "error" ? redes.error : "";
 
   return (
@@ -220,6 +244,8 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
               <>
                 Tu hora de trabajo vale <strong>{pesos.format(propia)}</strong>
               </>
+            ) : delQr ? (
+              "Es la tarjeta que armaste en la compu. Poné tu sueldo para recalcularla."
             ) : datos.minimo ? (
               <>
                 Mientras tanto, usamos el salario mínimo: <strong>{pesos.format(datos.minimo.porHora)}</strong> la hora
@@ -265,7 +291,7 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
                 <p id="ca-hs-rapido-titulo" className="ca-hs-rapido-titulo">
                   Compartilo
                 </p>
-                <button type="button" className="ca-hs-rapido-ig" onClick={() => void compartirInstagram("calcular-horas-historia.png")}>
+                <button ref={botonIg} type="button" className="ca-hs-rapido-ig" data-destacado={delQr ? "" : undefined} onClick={() => void instagram()}>
                   {ICONOS.instagram}
                   Instagram
                 </button>
@@ -273,10 +299,18 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
                   {ICONOS.whatsapp}
                   WhatsApp
                 </button>
+                <button type="button" className="ca-hs-rapido-fb" onClick={() => void compartirEn("facebook")}>
+                  {ICONOS.facebook}
+                  Facebook
+                </button>
+                <button type="button" className="ca-hs-rapido-x" aria-label="Compartir en X" onClick={() => void compartirEn("x")}>
+                  {ICONOS.x}X
+                </button>
                 <p className="ca-hs-rapido-aviso" role="status" aria-live="polite">
                   {aviso}
                 </p>
               </div>
+              <AlCelu abierto={alCelu} cerrar={() => setAlCelu(false)} destino={celu} pagina t={redes} bajar={() => void bajarHistoria("calcular-horas-historia.png")} />
               {amigo && amigoItem?.id === item.id && propios ? (
                 <p className="ca-hs-duelo">
                   {minutos < amigo.minutos ? "A vos te cuesta menos." : minutos > amigo.minutos ? "A vos te cuesta más." : "Les cuesta lo mismo."} Tu amigo: cerca de {duracion(amigo.minutos).texto}. Vos: {duracion(minutos).texto}.
@@ -328,7 +362,7 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
               {propios ? `Muestra lo que te cuesta ${item.nombre} en horas. Ni tu sueldo ni lo que vale tu hora aparecen en la imagen ni en el link.` : "Cuando pongas tu sueldo, la tarjeta muestra tus horas. Nunca tu sueldo."}
             </p>
           </div>
-          <Redes t={redes} opciones={opciones} cuadrado={`${imagen}&formato=cuadrado`} archivo="calcular-horas" alt={compartidos ? fraseCompartir(item.nombre, compartidos) : `¿Cuántas horas de trabajo te cuesta ${item.nombre}?`} />
+          <Redes t={redes} opciones={opciones} celu={celu} cuadrado={`${imagen}&formato=cuadrado`} archivo="calcular-horas" alt={compartidos ? fraseCompartir(item.nombre, compartidos) : `¿Cuántas horas de trabajo te cuesta ${item.nombre}?`} />
         </section>
       ) : null}
 
