@@ -351,7 +351,7 @@ export function HorasCliente({ datos, t, tp, tr, locale, productoInicial, produc
             </div>
           ) : (
             <div className="cy-horas-resultado" aria-live="polite">
-              <p className="cy-horas-vacio">{pais ? rellenarHoras(t.heroe.sinPrecio, { en: pais.en }) : t.ranking.sinPrecio.replace("{n}", "1")}</p>
+              <p className="cy-horas-vacio">{pais ? rellenarHoras(t.heroe.sinPrecio, { en: pais.en }) : rellenarHoras(t.ranking.sinPrecio, { n: formatoNumero(locale, 1) })}</p>
               {mejor ? (
                 <p className="cy-horas-mejor">
                   <Bandera iso={mejor.iso} />

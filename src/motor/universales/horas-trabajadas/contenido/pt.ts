@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { horarios, minutosTrabajados } from "../definicion";
 
@@ -9,7 +10,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const jornada = minutosTrabajados("09:00", "17:30", 30) / 60;
   const larga = minutosTrabajados("08:00", "18:00", 60) / 60;
   const extra = larga * 5 - 40;
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora de horas trabalhadas",
     title: tituloQueEntre(`Calculadora de horas trabalhadas (${ctx.nombrePais})`, `Horas trabalhadas (${ctx.nombrePais})`, "Calculadora de horas trabalhadas"),

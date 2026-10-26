@@ -167,7 +167,7 @@ html:has(dialog.ca-bloquea[open]) {
   .ca-cajon-panel {
     position: absolute;
     inset-block: 0;
-    right: 0;
+    inset-inline-end: 0;
     display: flex;
     flex-direction: column;
     width: min(88vw, 380px);
@@ -177,6 +177,10 @@ html:has(dialog.ca-bloquea[open]) {
     touch-action: pan-y;
     translate: 100% 0;
     transition: translate 0.28s var(--ease-salida);
+  }
+  [dir="rtl"] .ca-cajon-panel {
+    translate: -100% 0;
+    box-shadow: 24px 0 60px -30px rgb(0 0 0 / 0.35);
   }
   .ca-cajon[data-visible="true"] .ca-cajon-panel {
     translate: 0 0;

@@ -99,7 +99,7 @@
 }
 
 .cy-arranque-banderas .cy-bandera + .cy-bandera {
-  margin-left: -0.5rem;
+  margin-inline-start: -0.5rem;
 }
 
 .cy-arranque-bandera {
@@ -135,7 +135,7 @@
 }
 
 .cy-arranque-resumen .cy-punto-vivo {
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
   vertical-align: 0.1em;
 }
 
@@ -420,7 +420,7 @@
 
 .cy-ps-panel {
   position: absolute;
-  right: 0;
+  inset-inline-end: 0;
   top: calc(100% + 0.5rem);
   z-index: 60;
   display: grid;
@@ -999,7 +999,7 @@
   font-weight: 600;
   color: var(--cy-tinta, #18181b);
   font-variant-numeric: tabular-nums;
-  text-align: right;
+  text-align: end;
 }
 
 .cy-nov-detalle li span:last-child {
@@ -1036,7 +1036,7 @@
   }
 
   .cy-ps-panel {
-    right: 1rem;
+    inset-inline-end: 1rem;
   }
 }
 

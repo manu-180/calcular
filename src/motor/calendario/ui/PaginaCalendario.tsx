@@ -1,4 +1,6 @@
 import type { CSSProperties } from "react";
+import { coma, etiquetaIdioma, puntoYComa } from "../../i18n/direccion";
+import type { TextosCalendario } from "../../i18n/calendario";
 import { grafo, ldPagina, rutaIntl, urlIntl } from "../../seo";
 import { Bandera } from "../../ui/Bandera";
 import type { ContextoSitio } from "../../ui/contexto";
@@ -104,7 +106,9 @@ function Proxima({ e, v, cuenta }: { e: EventoVista; v: VistaCalendario; cuenta:
             <CuentaGrande fecha={e.fecha} dias={e.dias} textos={cuenta} otros={v.t.cuenta.dias(2)} />
           </p>
           <time className="cy-cal-heroe-fecha" dateTime={e.fecha}>
-            {e.semana}, {e.fechaLarga}
+            {e.semana}
+            {coma(v.m.idioma)}
+            {e.fechaLarga}
           </time>
         </div>
         <div className="cy-cal-heroe-detalle">
@@ -174,7 +178,7 @@ function Meses({ v }: { v: VistaCalendario }) {
         return (
           <li key={mes.clave} className="cy-cal-mes" data-tipos={tipos || undefined} data-vacio={primero ? undefined : ""}>
             {primero ? (
-              <a href={`#${primero.id}`} aria-label={`${mes.nombre} ${mes.anio}: ${mes.eventos.map((e) => `${e.fechaLarga}, ${e.titulo}`).join("; ")}`}>
+              <a href={`#${primero.id}`} aria-label={`${mes.nombre} ${mes.anio}: ${mes.eventos.map((e) => `${e.fechaLarga}${coma(v.m.idioma)}${e.titulo}`).join(puntoYComa(v.m.idioma))}`}>
                 {cuerpo}
               </a>
             ) : (
@@ -211,9 +215,26 @@ function ldEventos(v: VistaCalendario) {
     location: { "@type": "VirtualLocation", url: urlIntl(v.m.codigo, e.calculadora.href.split("/").pop()) },
     organizer: { "@type": "Organization", name: e.fuente.organismo, url: e.fuente.url },
     isAccessibleForFree: true,
-    inLanguage: v.m.locale,
+    inLanguage: etiquetaIdioma(v.m.locale),
     url: `${v.url}#${e.id}`,
   }));
+}
+
+// Los idiomas con dual o con formas para 3 a 10 y 11 a 99 (el árabe) necesitan una plantilla por
+// categoría: el diccionario se llama con un número de muestra de cada una y la cifra vuelve a ser {n}.
+// En los demás no se agrega nada y el HTML queda igual.
+function pluralesCuenta(t: TextosCalendario, locale: string): Pick<TextosCuenta, "plurales"> {
+  const reglas = new Intl.PluralRules(locale);
+  const muestras = new Map<string, number>();
+  for (let n = 2; n <= 200; n++) if (!muestras.has(reglas.select(n))) muestras.set(reglas.select(n), n);
+  if (muestras.size < 2) return {};
+  const plurales = { locale, en: {} as Record<string, string>, hace: {} as Record<string, string>, unidad: {} as Record<string, string> };
+  for (const [c, n] of muestras) {
+    plurales.en[c] = t.cuenta.en(n).replace(String(n), "{n}");
+    plurales.hace[c] = t.cuenta.hace(n).replace(String(n), "{n}");
+    plurales.unidad[c] = t.cuenta.dias(n);
+  }
+  return { plurales };
 }
 
 export function PaginaCalendario({ ctx, v }: { ctx: ContextoSitio; v: VistaCalendario }) {
@@ -224,6 +245,7 @@ export function PaginaCalendario({ ctx, v }: { ctx: ContextoSitio; v: VistaCalen
     ayer: t.cuenta.ayer,
     en: t.cuenta.en("{n}" as unknown as number),
     hace: t.cuenta.hace("{n}" as unknown as number),
+    ...pluralesCuenta(t, m.locale),
   };
   const [primera, ...resto] = v.proximos;
   const conteo = TIPOS_EVENTO.map((id) => ({ id, nombre: t.tipos[id], n: v.proximos.filter((e) => e.tipo === id).length })).filter((x) => x.n > 0);

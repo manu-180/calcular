@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosNb: TextosUi<UiCalorias> = {
+  slug: "kaloribehov",
+  ui: () => ({
+    sexo: "Kjønn",
+    mujer: "Kvinne",
+    hombre: "Mann",
+    edad: "Alder (år)",
+    peso: (u) => `Vekt (${u})`,
+    altura: (u) => `Høyde (${u})`,
+    pies: "Høyde: fot (ft)",
+    pulgadas: "Høyde: tommer (in)",
+    actividad: "Aktivitetsnivå",
+    sedentaria: "Lite eller ingen trening",
+    ligera: "Lett (1 til 3 dager i uka)",
+    moderada: "Moderat (3 til 5 dager i uka)",
+    alta: "Høyt (6 eller 7 dager i uka)",
+    muyAlta: "Svært høyt (hard trening eller fysisk arbeid)",
+    objetivo: "Mål",
+    mantener: "Holde vekten",
+    bajar: "Gå ned i vekt i rolig tempo",
+    subir: "Gå opp i vekt i rolig tempo",
+    basal: "Hvilestoffskifte (kcal per dag)",
+    basalAyuda: "Det kroppen forbrenner i fullstendig hvile.",
+    mantenimiento: "Kalorier for å holde vekten (kcal per dag)",
+    calObjetivo: "Kalorier for målet ditt (kcal per dag)",
+    calObjetivoAyuda: "En moderat endring: 500 kcal mindre per dag for å gå ned, 300 mer for å gå opp.",
+    errorEdad: "Formelen gjelder for personer mellom 15 og 100 år.",
+    errorPeso: "Vekten må være større enn 0.",
+    errorAltura: "Høyden må være større enn 0.",
+    notaMinimo: (kcal) => `Ved vektnedgang går beregningen ikke under ${kcal} kcal per dag. Vil du spise mindre enn det, bør du gjøre det i samråd med lege eller klinisk ernæringsfysiolog.`,
+    aviso: "Dette er et anslag etter formelen til Mifflin-St Jeor. Alle kropper er forskjellige. Kalkulatoren er veiledende og erstatter ikke en samtale med lege eller klinisk ernæringsfysiolog.",
+  }),
+};

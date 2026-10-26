@@ -3,6 +3,7 @@
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { Redes } from "../../compartir/Redes";
 import type { TextosRedes } from "../../i18n/redes";
+import { simboloLegible } from "../../i18n/direccion";
 import type { RegionMundo } from "../../i18n/mundo";
 import { cargaDesde, codificarCarga, compararDesde, decodificarCarga, diaDeCarga, diasDelAnio, fechaDelDia, type FilaMundo } from "../calculo";
 import { AporteSueldo } from "../../sueldos/ui/AporteSueldo";
@@ -104,8 +105,12 @@ function usarFormatos(locale: string) {
     const dia = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", timeZone: "UTC" });
     const frances = locale.toLowerCase().startsWith("fr");
     return {
-      dinero: (n: number, m: string) => moneda(m).format(n),
-      simbolo: (m: string) => moneda(m).formatToParts(0).find((p) => p.type === "currency")?.value ?? m,
+      dinero: (n: number, m: string) =>
+        moneda(m)
+          .formatToParts(n)
+          .map((p) => (p.type === "currency" ? simboloLegible(p.value, locale) : p.value))
+          .join(""),
+      simbolo: (m: string) => simboloLegible(moneda(m).formatToParts(0).find((p) => p.type === "currency")?.value ?? m, locale),
       simboloAntes: (m: string) => {
         const partes = moneda(m).formatToParts(0);
         return partes.findIndex((p) => p.type === "currency") < partes.findIndex((p) => p.type === "integer");
@@ -188,7 +193,7 @@ function Ranking({
   const propia = filas.find((x) => x.pais.mercado === origen);
   const max = filas.reduce((a, x) => Math.max(a, x.netoMensualEquivalente), 0) || 1;
   const regiones = ORDEN_REGIONES.filter((r) => filas.some((x) => porMercado.get(x.pais.mercado)?.region === r));
-  const normal = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+  const normal = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().replace(/ı/g, "i").replace(/[ʻʼ]/g, "").replace(/([og])[‘’'`](?=\p{L})/gu, "$1");
   const filtro = normal(q.trim());
   const filtradas = filas
     .map((x, i) => ({ x, puesto: i + 1, info: porMercado.get(x.pais.mercado)! }))

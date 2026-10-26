@@ -1,4 +1,5 @@
 import { IDIOMAS, type Idioma, type Trato } from "../tipos";
+import { variantesDeLocale } from "./variantes";
 
 type Hoja = string | number | boolean | null | undefined | ((...args: never[]) => unknown) | readonly unknown[];
 
@@ -9,7 +10,9 @@ export type Parche<T> = T extends Hoja ? T : { readonly [K in keyof T]?: Parche<
 // base va en el registro informal ("tu"). usted es el formal del idioma; vos, el voseo, solo
 // existe en español: en cualquier otro idioma un mercado de vos se resuelve como tu.
 // regional: parches por locale (pt-PT, en-GB, fr-CA) que se aplican después del trato, para la
-// palabra que cambia de un país a otro dentro del mismo idioma.
+// palabra que cambia de un país a otro dentro del mismo idioma. Van en el orden de
+// variantesDeLocale (./variantes.ts): pt-AO toma el de pt-PT, después el de la lusofonía y al final
+// el suyo, si lo tiene.
 export interface Diccionario<T> {
   readonly base: T;
   readonly usted?: Parche<T>;
@@ -60,6 +63,11 @@ export function adaptar<T>(valor: T, ajuste: (texto: string) => string): T {
   return salida as T;
 }
 
+// Los parches regionales que tocan a un locale, del más general al más específico.
+export function regionalesDe<T>(dic: Pick<Diccionario<T>, "regional">, locale: string | undefined): Parche<T>[] {
+  return variantesDeLocale(locale).flatMap((k) => (dic.regional?.[k] ? [dic.regional[k]] : []));
+}
+
 const memo = new WeakMap<object, Map<string, unknown>>();
 
 export function resolver<T>(dics: Diccionarios<T>, idioma: Idioma, trato: Trato, locale?: string): T {
@@ -69,12 +77,12 @@ export function resolver<T>(dics: Diccionarios<T>, idioma: Idioma, trato: Trato,
     memo.set(dics, cache);
   }
   const dic = dics[idioma] ?? dics.es;
-  const regional = locale ? dic.regional?.[locale] : undefined;
+  const regionales = regionalesDe(dic, locale);
   const ajuste = ajusteDeLocale(locale);
-  const clave = `${idioma}:${trato}:${regional || ajuste ? locale : ""}`;
+  const clave = `${idioma}:${trato}:${regionales.length || ajuste ? locale : ""}`;
   if (cache.has(clave)) return cache.get(clave) as T;
   let valor = fusionar(dic.base, parcheDe(dic, idioma, trato));
-  if (regional) valor = fusionar(valor, regional);
+  for (const regional of regionales) valor = fusionar(valor, regional);
   if (ajuste) valor = adaptar(valor, ajuste);
   cache.set(clave, valor);
   return valor;

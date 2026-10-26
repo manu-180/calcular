@@ -1,4 +1,4 @@
-import { conVariantes } from "../../comun/locales";
+import { conVariantes, PT_LUSOFONIA } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiTarifaFreelance } from "../definicion";
 
@@ -47,4 +47,11 @@ const portugal = (): Partial<UiTarifaFreelance> => ({
   observacionFacturables: "Se cobrar menos do que isto, vai ganhar menos do que planeou ou trabalhar mais horas.",
 });
 
-export const textosPt = conVariantes(base, { "pt-PT": portugal });
+// Fuera de Portugal (Angola, Mozambique, Cabo Verde...) la norma es la europea, pero los impuestos y
+// la seguridad social tienen otro nombre: lo propio de Portugal se dice en palabras de cualquier país.
+const lusofonia = (): Partial<UiTarifaFreelance> => ({
+  gastosAyuda: "Equipamento, programas, internet, formação, contabilista e seguro de saúde.",
+  impuestosAyuda: "O que vai para impostos e segurança social sobre o que fatura menos as despesas. Se não tiver a certeza, pergunte ao seu contabilista. 25% é um ponto de partida.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal, [PT_LUSOFONIA]: lusofonia });

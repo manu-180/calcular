@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosDa: TextosUi<UiAlquilarOComprar> = {
+  slug: "leje-eller-koebe",
+  ui: () => ({
+    precio: "Boligens pris",
+    entrada: "Udbetaling (% af prisen)",
+    gastosCompra: "Omkostninger ved købet (% af prisen)",
+    gastosCompraAyuda: "Tinglysning, gebyrer til banken, advokat og vurdering.",
+    tasa: "Rente på boliglånet (% om året)",
+    aniosHipoteca: "Lånets løbetid i år",
+    alquiler: "Månedlig husleje for en tilsvarende bolig",
+    aumentoAlquiler: "Huslejestigning om året (%)",
+    gastosPropietario: "Ejerudgifter om året (% af værdien)",
+    gastosPropietarioAyuda: "Vedligeholdelse, ejendomsskat og husforsikring. Ofte mellem 1 % og 2 %.",
+    revalorizacion: "Prisstigning på boligen om året (%)",
+    rendimiento: "Afkast på anden opsparing (% om året)",
+    rendimientoAyuda: "Det, du ville tjene ved at investere udbetalingen i stedet for at købe.",
+    horizonte: "Antal år, der skal sammenlignes",
+    veredicto: "Resultat",
+    patrimonioComprar: "Formue til sidst, hvis du køber",
+    patrimonioAlquilar: "Formue til sidst, hvis du lejer",
+    diferencia: "Forskel",
+    anioDesde: "År, hvor købet begynder at betale sig",
+    pagadoAlquilando: "Husleje i alt",
+    pagadoComprando: "Ydelser og ejerudgifter i alt",
+    tabla: "Sammenligning år for år",
+    colAnio: "År",
+    colComprar: "Købe",
+    colAlquilar: "Leje",
+    colDiferencia: "Forskel",
+    errorPrecio: "Skriv boligens pris.",
+    errorAlquiler: "Skriv, hvad det ville koste at leje en tilsvarende bolig.",
+    convieneComprar: (anios, diferencia) => `Det betaler sig bedst at købe. Efter ${anios} år har du ${diferencia} mere.`,
+    convieneAlquilar: (anios, diferencia) => `Det betaler sig bedst at leje. Efter ${anios} år har du ${diferencia} mere.`,
+    empate: (anios) => `Efter ${anios} år står de to muligheder lige.`,
+    observacionDesde: (anio) => `Købet overhaler lejen i år ${anio} og bliver foran derefter.`,
+    observacionMetodo:
+      "Beregningen sammenligner, hvad du ejer i hvert tilfælde. Lejer du, bliver udbetalingen og det, du sparer hver måned, ved med at være investeret. Omkostninger ved et salg er ikke trukket fra.",
+  }),
+};

@@ -1,4 +1,4 @@
-import { conVariantes } from "../../comun/locales";
+import { conVariantes, PT_LUSOFONIA } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiHipoteca } from "../definicion";
 
@@ -46,4 +46,11 @@ const portugal = (): Partial<UiHipoteca> => ({
   observacionCostos: "Os custos de compra (escritura, registo, IMT, imposto do selo, avaliação) não estão incluídos. Reserve esse dinheiro além da entrada.",
 });
 
-export const textosPt = conVariantes(base, { "pt-PT": portugal });
+// Fuera de Portugal (Angola, Mozambique, Cabo Verde...) la norma es la europea, pero los impuestos y
+// la seguridad social tienen otro nombre: lo propio de Portugal se dice en palabras de cualquier país.
+const lusofonia = (): Partial<UiHipoteca> => ({
+  gastosAyuda: "Imposto predial, seguros ou condomínio que paga juntamente com a prestação.",
+  observacionCostos: "Os custos de compra (escritura, registo, impostos sobre a compra, avaliação) não estão incluídos. Reserve esse dinheiro além da entrada.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal, [PT_LUSOFONIA]: lusofonia });

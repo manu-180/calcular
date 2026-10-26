@@ -1,3 +1,4 @@
+import { etiquetaIdioma } from "../i18n/direccion";
 import type { ModoPublicacion, Registro } from "../registro";
 import { rutaIntl, urlIntl, type Idiomas } from "../seo";
 import type { CodigoMercado, Idioma, Mercado } from "../tipos";
@@ -18,6 +19,25 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   ja: "kyuyo-karenda",
   ko: "geupyeo-dallyeok",
   zh: "gongzi-rili",
+  pl: "kalendarz-placowy",
+  sv: "lonekalender",
+  da: "lonkalender",
+  nb: "lonnskalender",
+  fi: "palkkakalenteri",
+  ar: "taqwim-alrawatib",
+  id: "kalender-gaji",
+  tr: "maas-takvimi",
+  bn: "beton-calendar",
+  th: "patithin-ngoen-duean",
+  uk: "kalendar-vyplat",
+  uz: "ish-haqi-kalendari",
+  // ru no puede usar «kalendar-vyplat»: es la carpeta del ucraniano (ADR 0002, D17).
+  ru: "kalendar-zarplaty",
+  ro: "calendar-salarial",
+  cs: "vyplatni-kalendar",
+  el: "imerologio-misthodosias",
+  hu: "fizetesi-naptar",
+  he: "luach-maskorot",
 };
 
 export const ARCHIVO_ICS = "calendario.ics";
@@ -42,7 +62,7 @@ export function hreflangCalendario(registro: Registro, codigo: CodigoMercado, mo
   const ediciones = registro.ediciones(codigo, modo).filter((e) => calendarioPublicado(registro, e, modo));
   if (ediciones.length < 2) return undefined;
   const idiomas: Idiomas = {};
-  for (const e of ediciones) idiomas[e.locale] = urlCalendario(e);
+  for (const e of ediciones) idiomas[etiquetaIdioma(e.locale)] = urlCalendario(e);
   const principal = ediciones.find((e) => !e.codigo.includes("-")) ?? ediciones[0];
   idiomas["x-default"] = urlCalendario(principal);
   return idiomas;

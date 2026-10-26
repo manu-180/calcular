@@ -1,3 +1,4 @@
+import { mayusculaInicial } from "../formato";
 import type { Categoria } from "../i18n";
 import { rutaIntl } from "../seo";
 import type { EntradaCalculadora } from "../tipos";
@@ -69,7 +70,7 @@ export function porGrupo(ctx: ContextoSitio, categorias: readonly { categoria: C
 }
 
 // El H1 viene con año, país y a veces un marcador ({{cl.imm}}): para el menú queda el nombre corto.
-export function nombreCorto(h1: string, pais: string): string {
+export function nombreCorto(h1: string, pais: string, locale = "es"): string {
   let t = h1.replace(/\{\{[^}]*\}\}/g, "").split(":")[0];
   t = t.replace(/\s*\([^)]*\)/g, "");
   if (pais) t = t.split(new RegExp(`\\s+en\\s+${pais.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?=[\\s,.;]|$)`, "i"))[0];
@@ -77,7 +78,7 @@ export function nombreCorto(h1: string, pais: string): string {
     .replace(/\s+20\d\d\b/g, "")
     .replace(/^(calculadora|c[aá]lculo)\s+((de\s+la|de\s+los|de\s+las|del|de)\s+)?/i, "")
     .trim();
-  return t ? t.charAt(0).toUpperCase() + t.slice(1) : h1;
+  return t ? mayusculaInicial(t, locale) : h1;
 }
 
 function titulo(h1: string): string {
@@ -93,7 +94,7 @@ export function menuDelPais(ctx: ContextoSitio): MenuDelPais {
     titulo: titulo(e.contenido.h1),
     grupo: t.categorias[categoria],
     tipo: "calculadora",
-    corto: nombreCorto(e.contenido.h1, m.nombre),
+    corto: nombreCorto(e.contenido.h1, m.nombre, m.locale),
     claves: [e.definicion.slug.replace(/-/g, " ")],
   });
   const secciones: SeccionDelMenu[] = grupos.map((g) => ({

@@ -1,3 +1,4 @@
+import { etiquetaIdioma } from "../../i18n/direccion";
 import type { TextosSueldos } from "../../i18n/sueldos";
 import type { Idioma } from "../../tipos";
 import { JsonLd } from "../../ui/Sitio";
@@ -52,7 +53,7 @@ export function PaginaSueldos({ t, idioma, locale, nombrePais, moneda, datos, k,
             name: titulo,
             description: rellenar(tp.seoDescripcion, { enPais, pais: nombrePais, k }),
             url,
-            inLanguage: locale,
+            inLanguage: etiquetaIdioma(locale),
             isAccessibleForFree: true,
             spatialCoverage: nombrePais,
             ...(datos?.desde && datos.hasta ? { temporalCoverage: `${datos.desde}/${datos.hasta}` } : {}),

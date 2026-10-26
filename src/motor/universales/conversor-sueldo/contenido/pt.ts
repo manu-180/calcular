@@ -1,8 +1,9 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const horasSemana = pt ? 40 : 44;
   const horasAnio = horasSemana * 52;
   const anual = montoEjemplo(ctx, 50000);

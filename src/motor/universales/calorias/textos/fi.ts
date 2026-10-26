@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosFi: TextosUi<UiCalorias> = {
+  slug: "kalorintarve",
+  ui: () => ({
+    sexo: "Sukupuoli",
+    mujer: "Nainen",
+    hombre: "Mies",
+    edad: "Ikä (vuotta)",
+    peso: (u) => `Paino (${u})`,
+    altura: (u) => `Pituus (${u})`,
+    pies: "Pituus: jalat (ft)",
+    pulgadas: "Pituus: tuumat (in)",
+    actividad: "Aktiivisuustaso",
+    sedentaria: "Vähän tai ei lainkaan liikuntaa",
+    ligera: "Kevyt (liikuntaa 1, 2 tai 3 päivänä viikossa)",
+    moderada: "Kohtalainen (liikuntaa 3, 4 tai 5 päivänä viikossa)",
+    alta: "Runsas (liikuntaa 6 tai 7 päivänä viikossa)",
+    muyAlta: "Erittäin runsas (kova harjoittelu tai fyysinen työ)",
+    objetivo: "Tavoite",
+    mantener: "Pidä paino ennallaan",
+    bajar: "Laihduta maltillisesti",
+    subir: "Lisää painoa maltillisesti",
+    basal: "Perusaineenvaihdunta (kcal vuorokaudessa)",
+    basalAyuda: "Energia, jonka keho kuluttaa täydessä levossa.",
+    mantenimiento: "Painon ylläpito (kcal vuorokaudessa)",
+    calObjetivo: "Kalorit tavoitteeseesi (kcal vuorokaudessa)",
+    calObjetivoAyuda: "Maltillinen muutos: 500 kcal vähemmän vuorokaudessa laihduttaessa ja 300 kcal enemmän painoa lisätessä.",
+    errorEdad: "Kaava sopii 15 vuotta täyttäneille ja enintään 100-vuotiaille.",
+    errorPeso: "Painon on oltava suurempi kuin 0.",
+    errorAltura: "Pituuden on oltava suurempi kuin 0.",
+    notaMinimo: (kcal) => `Laihduttaessa laskelma ei mene alle ${kcal} kcal vuorokaudessa. Tätä vähäisempi syöminen kannattaa tehdä terveydenhuollon ammattilaisen tuella.`,
+    aviso: "Tämä on arvio Mifflin-St Jeorin kaavalla. Jokainen keho on erilainen. Arvio ei korvaa ravitsemusterapeutin, lääkärin tai terveydenhoitajan arviota.",
+  }),
+};

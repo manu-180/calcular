@@ -18,13 +18,22 @@ export interface TextosCuenta {
   // Con «{n}» en el lugar del número: las funciones del diccionario no cruzan al navegador.
   en: string;
   hace: string;
+  // Solo en idiomas con más de dos formas de plural (el árabe: يومين، 3 أيام، 11 يومًا): una plantilla
+  // por categoría de Intl.PluralRules. Sin esto valen `en`, `hace` y la unidad que llega armada.
+  plurales?: { locale: string; en: Record<string, string>; hace: Record<string, string>; unidad: Record<string, string> };
+}
+
+function categoria(n: number, t: TextosCuenta): string {
+  return t.plurales ? new Intl.PluralRules(t.plurales.locale).select(n) : "other";
 }
 
 function rotulo(n: number, t: TextosCuenta): string {
   if (n === 0) return t.hoy;
   if (n === 1) return t.manana;
   if (n === -1) return t.ayer;
-  return (n > 0 ? t.en : t.hace).replace("{n}", String(Math.abs(n)));
+  const m = Math.abs(n);
+  const plantilla = t.plurales?.[n > 0 ? "en" : "hace"][categoria(m, t)] ?? (n > 0 ? t.en : t.hace);
+  return plantilla.replace("{n}", String(m));
 }
 
 function useDias(fecha: string, servidor: number): number {
@@ -44,7 +53,7 @@ export function CuentaGrande({ fecha, dias: servidor, textos, otros }: { fecha: 
   return (
     <>
       <span className="cy-cal-gran-numero">{n}</span>
-      <span className="cy-cal-gran-unidad">{otros}</span>
+      <span className="cy-cal-gran-unidad">{textos.plurales?.unidad[categoria(n, textos)] ?? otros}</span>
     </>
   );
 }

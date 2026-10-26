@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosHe: TextosUi<UiCalorias> = {
+  slug: "calorie-calculator",
+  ui: () => ({
+    sexo: "מין",
+    mujer: "אישה",
+    hombre: "גבר",
+    edad: "גיל (שנים)",
+    peso: (u) => `משקל (${u})`,
+    altura: (u) => `גובה (${u})`,
+    pies: "גובה: רגל (ft)",
+    pulgadas: "גובה: אינץ' (in)",
+    actividad: "רמת פעילות גופנית",
+    sedentaria: "מעט או בכלל לא",
+    ligera: "קלה (1 עד 3 ימים בשבוע)",
+    moderada: "בינונית (3 עד 5 ימים בשבוע)",
+    alta: "גבוהה (6 או 7 ימים בשבוע)",
+    muyAlta: "גבוהה מאוד (אימונים קשים או עבודה פיזית)",
+    objetivo: "מטרה",
+    mantener: "לשמור על המשקל",
+    bajar: "לרדת במשקל בהדרגה",
+    subir: "לעלות במשקל בהדרגה",
+    basal: "קצב חילוף חומרים בסיסי (קלוריות ליום)",
+    basalAyuda: "מה שהגוף שורף במנוחה מלאה.",
+    mantenimiento: "קלוריות לשמירה על המשקל (ליום)",
+    calObjetivo: "קלוריות לפי המטרה (ליום)",
+    calObjetivoAyuda: "שינוי מתון: 500 קלוריות פחות ביום לירידה במשקל, 300 יותר לעלייה.",
+    errorEdad: "הנוסחה מתאימה לגילאי 15 עד 100.",
+    errorPeso: "המשקל צריך להיות גדול מ-0.",
+    errorAltura: "הגובה צריך להיות גדול מ-0.",
+    notaMinimo: (kcal) => `בירידה במשקל הנתון לא יורד מתחת ל-${kcal} קלוריות ביום. אכילה של פחות מזה עדיפה בליווי של איש מקצוע.`,
+    aviso: "זו הערכה לפי נוסחת Mifflin-St Jeor. כל גוף שונה, והמחשבון לא מחליף ייעוץ של איש מקצוע בתחום הבריאות או התזונה.",
+  }),
+};

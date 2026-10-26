@@ -1,0 +1,182 @@
+import { cifrasBn } from "./bengali";
+import { GRAMATICA } from "./gramatica";
+import type { Diccionario } from "./resolver";
+import type { TextosSitio } from "./tipos";
+
+const g = GRAMATICA.bn;
+const MUNDO = "আন্তর্জাতিক";
+
+// Bengalí: un solo registro para la web, el de los bancos y servicios digitales de Bangladés (bKash,
+// Sonali Bank, NBR e-Return): «আপনি» con las formas verbales corteses (করুন, দিন, দেখুন), sin «তুমি»
+// ni «তুই». Las oraciones terminan con el dari «।» y toda cifra va con dígitos bengalíes (cifrasBn para
+// lo que llega como número). Los mercados van con trato "usted" y el diccionario se escribe en base
+// (ADR 0002, D14).
+const base: TextosSitio = {
+  marca: { nombre: "CalcularYa", lema: "সরকারি তথ্যসহ ক্যালকুলেটর" },
+  saltar: "মূল অংশে যান",
+  header: {
+    inicio: "প্রথম পাতা",
+    elegirPais: "দেশ বেছে নিন",
+    paisActual: (pais) => `দেশ: ${pais}`,
+    cerrar: "বন্ধ করুন",
+    todos: "সব দেশ",
+    latinoamerica: MUNDO,
+  },
+  footer: {
+    paises: "দেশসমূহ",
+    sitio: "CalcularYa",
+    fuentes: "সরকারি সূত্র",
+    novedades: "হালনাগাদ",
+    privacidad: "গোপনীয়তা নীতি",
+    terminos: "ব্যবহারের শর্তাবলি",
+    contacto: "যোগাযোগ",
+    sobre: "আমাদের সম্পর্কে",
+    argentina: "আর্জেন্টিনায় আছেন? আপনার ক্যালকুলেটরগুলো পাবেন calcular.ar সাইটে",
+    descargo: "হিসাবের ফলাফল আনুমানিক। গুরুত্বপূর্ণ কোনো সিদ্ধান্তের আগে সংশ্লিষ্ট সরকারি দপ্তর বা কোনো পেশাদারের সঙ্গে মিলিয়ে নিন।",
+    derechos: (anio) => `© ${cifrasBn(anio)} CalcularYa`,
+  },
+  sello: {
+    titulo: "হালনাগাদ সরকারি তথ্য",
+    verificado: (organismos, fecha) => `তথ্য মিলিয়ে দেখা হয়েছে এই সূত্রগুলোর সঙ্গে: ${organismos}। হালনাগাদ: ${cifrasBn(fecha)}।`,
+    serie: (nombre, organismo, fecha) => `${nombre} নিজে থেকেই হালনাগাদ হয়, সূত্র ${organismo}। সর্বশেষ তথ্য: ${cifrasBn(fecha)}।`,
+    verTodas: "সব সূত্র দেখুন",
+  },
+  calculadora: {
+    comoSeCalcula: "কীভাবে হিসাব করা হয়",
+    ejemplo: "উদাহরণ",
+    faq: "সাধারণ প্রশ্ন",
+    glosario: "দরকারি শব্দ",
+    relacionadas: "আরও ক্যালকুলেটর",
+    otrosPaises: "অন্য দেশে একই হিসাব",
+  },
+  global: {
+    eyebrow: "প্রতিটি দেশের সরকারি তথ্য",
+    titulo: "চাকরি, টাকাপয়সা আর দৈনন্দিন কাজের ক্যালকুলেটর, আপনার দেশের তথ্য দিয়ে",
+    bajada: "বেতন, ঋণ, কর, তারিখ এবং আরও অনেক কিছু। ফলাফল যেখানে কোনো নিয়মের ওপর নির্ভর করে, সেখানে সংখ্যাটি আসে সরকারি সূত্র থেকে, তারিখ আর যাচাইয়ের লিংকসহ।",
+    elegir: "আপনার দেশ বেছে নিন",
+    calculadoras: (n) => `${cifrasBn(n)}টি ক্যালকুলেটর`,
+    vacio: "আমরা নতুন দেশ যোগ করছি। কিছুদিন পর আবার দেখুন।",
+    promesaTitulo: "আমরা যেভাবে কাজ করি",
+    promesas: [
+      { titulo: "সরকারি সংখ্যা, সূত্রসহ", texto: "প্রতিটি মানের পাশে থাকে কোন প্রতিষ্ঠান সেটি প্রকাশ করেছে, তার লিংক আর আমরা কবে যাচাই করেছি।" },
+      { titulo: "সবসময় হালনাগাদ", texto: "কোনো মান বদলালে ক্যালকুলেটরও বদলে যায়। প্রতিটি পরিবর্তন হালনাগাদের পাতায় লেখা থাকে।" },
+      { titulo: "বিনা মূল্যে, নিবন্ধন ছাড়া", texto: "হিসাব হয় আপনার ব্রাউজারেই। আমরা কোনো ব্যক্তিগত তথ্য চাই না।" },
+    ],
+  },
+  pais: {
+    eyebrow: "হালনাগাদ সরকারি তথ্য",
+    titulo: (pais) => `${g.de(pais)} ক্যালকুলেটর`,
+    bajada: (pais) => `${g.en(pais)} প্রযোজ্য মান, প্রতিটি মানের সূত্র আর আমরা কবে যাচাই করেছি, সব এক জায়গায়।`,
+    novedades: "সাম্প্রতিক হালনাগাদ",
+    verNovedades: "সব হালনাগাদ দেখুন",
+    sinCalculadoras: "এই দেশের জন্য এখনো কোনো ক্যালকুলেটর নেই।",
+    descripcion: (pais) => `${g.para(pais)} বেতন, কর, ঋণ, সঞ্চয়, স্বাস্থ্য, তারিখ ও বাড়ির হিসাবের ক্যালকুলেটর, প্রযোজ্য সরকারি সংখ্যা ও সূত্রসহ।`,
+    irASeccion: "অংশে যান",
+  },
+  fuentes: {
+    titulo: (pais) => `${g.de(pais)} সূত্র ও তথ্য`,
+    bajada: "ক্যালকুলেটরে ব্যবহৃত প্রতিটি মান, কতদিন প্রযোজ্য আর সরকারি সূত্রের লিংকসহ।",
+    vigente: "প্রযোজ্য মান",
+    desde: "শুরু",
+    hasta: "শেষ",
+    fuente: "সূত্র",
+    verificado: "যাচাইয়ের তারিখ",
+    region: "অঞ্চল",
+    series: "নিজে থেকে হালনাগাদ হওয়া মান",
+    ultimoDato: "সর্বশেষ তথ্য",
+    proximo: (valor, fecha) => `${cifrasBn(fecha)} থেকে ঘোষিত মান: ${cifrasBn(valor)}।`,
+    sinVerificar: "আজকের জন্য যাচাই করা কোনো সংখ্যা নেই",
+    tramos: (n) => `${cifrasBn(n)} ধাপের সারণি`,
+    description: (pais) => `ক্যালকুলেটরে ব্যবহৃত ${g.de(pais)} সরকারি তথ্য: প্রযোজ্য মান, কার্যকর হওয়ার তারিখ, সূত্র ও যাচাইয়ের তারিখ।`,
+  },
+  novedades: {
+    titulo: (pais) => `${g.de(pais)} হালনাগাদ`,
+    bajada: "ক্যালকুলেটরে ব্যবহৃত নিয়মের পরিবর্তন, কবে থেকে কার্যকর সেই তারিখসহ।",
+    vigenteDesde: (fecha) => `${cifrasBn(fecha)} থেকে কার্যকর`,
+    vacio: "এই দেশের জন্য এখনো কোনো হালনাগাদ নেই।",
+    description: (pais) => `${g.en(pais)} ন্যূনতম মজুরি, চাঁদা ও অন্যান্য নিয়মের পরিবর্তন, কার্যকর তারিখ ও সরকারি সূত্রসহ।`,
+  },
+  avisoPais: {
+    texto: (pais) => `মনে হচ্ছে আপনি ${g.en(pais)} আছেন।`,
+    ir: (pais) => `${g.de(pais)} ক্যালকুলেটর দেখুন`,
+    cerrar: "বার্তাটি বন্ধ করুন",
+  },
+  noEncontrada: {
+    titulo: "পাতাটি পাওয়া যায়নি",
+    texto: "ঠিকানায় হয়তো কোনো ভুল আছে, অথবা পাতাটি আর নেই।",
+    volver: "প্রথম পাতায় যান",
+    paises: "অথবা একটি দেশ বেছে নিন",
+  },
+  categorias: {
+    sueldo: "বেতন ও ভাতা",
+    fin: "চাকরি ছাড়ার হিসাব",
+    impuestos: "চাঁদা ও কর",
+    dinero: "টাকা ও সূচক",
+    finanzas: "ঋণ, সঞ্চয় ও বিনিয়োগ",
+    negocio: "ব্যবসা ও ফ্রিল্যান্স",
+    calculos: "ঝটপট হিসাব",
+    fechas: "তারিখ ও বয়স",
+    salud: "স্বাস্থ্য ও ফিটনেস",
+    hogar: "বাড়ি, গাড়ি ও নির্মাণ",
+    familia: "পরিবার ও সংসার",
+    otras: "অন্যান্য ক্যালকুলেটর",
+  },
+  migas: { inicio: "প্রথম পাতা", etiqueta: "আপনি এখানে আছেন" },
+  seo: {
+    tituloGlobal: "CalcularYa: সরকারি তথ্যসহ ফ্রি ক্যালকুলেটর",
+    descripcionGlobal: "প্রতিটি দেশের বেতন, ঋণ, কর ও আরও অনেক কিছুর ফ্রি ক্যালকুলেটর, প্রযোজ্য সরকারি সংখ্যা ও সূত্রসহ।",
+    tituloPais: (pais, anio) => [`${g.de(pais)} বেতন ও কর ক্যালকুলেটর ${cifrasBn(anio)}`, `${g.de(pais)} ক্যালকুলেটর ${cifrasBn(anio)}`, `${g.de(pais)} ক্যালকুলেটর`],
+    tituloFuentes: (pais) => [`${g.de(pais)} সরকারি তথ্য: সূত্র ও তারিখ`, `${g.de(pais)} সূত্র ও তথ্য`],
+    tituloNovedades: (pais, anio) => [`${g.de(pais)} বেতন ও করের হালনাগাদ ${cifrasBn(anio)}`, `${g.de(pais)} হালনাগাদ ${cifrasBn(anio)}`, `${g.de(pais)} হালনাগাদ`],
+  },
+  og: {
+    datosOficiales: "সরকারি তথ্য, সূত্রসহ",
+    actualizado: (fecha) => `হালনাগাদ: ${cifrasBn(fecha)}`,
+    gratis: "বিনা মূল্যে, নিবন্ধন ছাড়া",
+    paises: (n) => `${cifrasBn(n)}টি দেশ`,
+  },
+  shell: {
+    irAlInicio: "প্রথম পাতায়",
+    menu: { trabajo: "বেতন ও চাকরি", impuestos: "কর", dinero: "টাকা ও সূচক", vida: "দৈনন্দিন", novedades: "হালনাগাদ", planillas: "স্প্রেডশিট" },
+    encabezado: {
+      principal: "প্রধান",
+      buscar: "খুঁজুন",
+      buscarCalculadora: "ক্যালকুলেটর খুঁজুন",
+      abrirMenu: "মেনু খুলুন",
+      cerrarMenu: "মেনু বন্ধ করুন",
+      menu: "মেনু",
+      todas: "সব ক্যালকুলেটর",
+      pieCajon: "সরকারি সূত্রের তথ্য · আর্জেন্টিনায় তৈরি",
+    },
+    buscador: {
+      dialogo: "CalcularYa-তে খুঁজুন",
+      pregunta: "কী হিসাব করতে চান?",
+      recientes: "শেষবার যেখানে ছিলেন",
+      masUsado: "সবচেয়ে বেশি ব্যবহৃত",
+      sinResultados: "“{q}” লিখে কিছু পাওয়া যায়নি",
+      sugerencia: "অন্য শব্দে খুঁজে দেখুন, যেমন “বেতন”, “ঋণ” বা “কর”।",
+      verTodas: "সব ক্যালকুলেটর দেখুন",
+      borrar: "খোঁজা মুছুন",
+      cerrar: "বন্ধ করুন",
+      cerrarBuscador: "খোঁজা বন্ধ করুন",
+      moverte: "সরতে",
+      abrir: "খুলতে",
+      desdeCualquier: "যেকোনো পাতা থেকে",
+      resultados: "ফলাফল",
+      resultado: "ফলাফল",
+      resultadosPlural: "ফলাফল",
+    },
+    paises: { titulo: "দেশসমূহ", cambiar: "দেশ বদলান" },
+    pie: {
+      bajada: (lugar) =>
+        `${lugar === MUNDO ? "প্রতিটি দেশের জন্য" : g.para(lugar)} সহজ ক্যালকুলেটর। প্রতিটি সংখ্যা নেওয়া হয় সেই সরকারি নথি থেকে, যেখানে তা নির্ধারিত হয়েছে, আমরা কবে যাচাই করেছি সেই তারিখসহ।`,
+      todas: "সব ক্যালকুলেটর",
+      cuenta: "আপনার অ্যাকাউন্ট",
+      cuentaNota: "অ্যাকাউন্ট খোলা ঐচ্ছিক। হিসাব সংরক্ষণ করে পরে সহজে খুলতে এটি ব্যবহার করুন।",
+      hecho: "আর্জেন্টিনায় তৈরি",
+      escrito: "লিখেছেন ও যাচাই করেছেন",
+    },
+  },
+};
+
+export const bn: Diccionario<TextosSitio> = { base };

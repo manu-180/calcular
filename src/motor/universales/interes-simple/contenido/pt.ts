@@ -1,9 +1,10 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const capital = montoEjemplo(ctx, 1000);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora de juros simples",
     title: tituloQueEntre(`Calculadora de juros simples (${ctx.nombrePais})`, `Juros simples (${ctx.nombrePais})`, "Calculadora de juros simples"),
