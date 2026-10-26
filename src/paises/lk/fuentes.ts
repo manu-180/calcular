@@ -70,7 +70,7 @@ export const detectores: readonly Detector[] = [
   {
     id: "lk.ird-apit-tables",
     carril: "norma",
-    datos: ["lk.apit-table-1"],
+    datos: ["lk.apit-table-1", "lk.terminal-retention-limit", "lk.terminal-retention-rate"],
     metodo: "html",
     url: `${IRD}/publications/sitepages/apit_tax_tables.aspx?menuid=1502`,
     userAgentNavegador: true,
@@ -91,6 +91,7 @@ export const detectores: readonly Detector[] = [
       "lk.wht-dividend",
       "lk.wht-rent",
       "lk.wht-rent-limit",
+      "lk.foreign-income-max-rate",
     ],
     metodo: "html",
     url: `${IRD}/Type%20of%20Taxes/SitePages/Income%20Tax.aspx?menuid=1201`,
@@ -125,6 +126,14 @@ export const detectores: readonly Detector[] = [
     /rate of 2\.5 per centum/,
     /Social Security Contribution Levy/,
     "IRD SSCL page no longer shows the 2.5 per centum rate",
+  ),
+  sinCambio(
+    "lk.ird-stamp-duty",
+    `${IRD}/Type%20of%20Taxes/SitePages/StampDuty.aspx?menuid=1209`,
+    ["lk.stamp-duty-per-1000", "lk.stamp-duty-lease-max-years"],
+    /Rs\. 20\/- per every Rs\. 1,000[\s\S]*first 20 years[\s\S]*Rs\. 10\/- per every Rs\. 1000/,
+    /Stamp Duty/,
+    "IRD stamp duty schedule no longer shows Rs. 20 per Rs. 1,000 on leases or Rs. 10 on hire purchase",
   ),
   sinCambio(
     "lk.cbsl-epf",

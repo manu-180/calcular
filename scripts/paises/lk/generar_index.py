@@ -5,10 +5,12 @@ from pathlib import Path
 
 SLUGS = [
     "salary-calculator",
+    "gross-salary-calculator",
     "apit-calculator",
     "epf-etf-calculator",
     "employer-cost-calculator",
     "income-tax-calculator",
+    "freelancer-tax-calculator",
     "gratuity-tax-calculator",
     "bonus-tax-calculator",
     "minimum-wage",
@@ -16,6 +18,7 @@ SLUGS = [
     "sscl-calculator",
     "capital-gains-tax-calculator",
     "withholding-tax-calculator",
+    "stamp-duty-calculator",
     "fixed-deposit-calculator",
     "dollar-rate",
     "gratuity-calculator",

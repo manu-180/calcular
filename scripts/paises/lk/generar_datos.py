@@ -32,6 +32,9 @@ VAT_PAGE = f("Inland Revenue Department", "Value Added Tax (VAT): rates and regi
              "https://www.ird.gov.lk/en/Type%20of%20Taxes/SitePages/Value%20Added%20Tax%20(VAT).aspx?menuid=1204")
 SSCL_PAGE = f("Inland Revenue Department", "Social Security Contribution Levy (SSCL): rate, liable turnover and threshold",
               "https://www.ird.gov.lk/en/Type%20of%20Taxes/SitePages/Social%20Security%20Contribution%20Levy%20(SSCL).aspx?menuid=1206")
+STAMP = f("Inland Revenue Department", "Stamp Duty (SD): schedule of stamp duty under the Stamp Duty (Special Provisions) Act, No. 12 of 2006",
+          "https://www.ird.gov.lk/en/Type%20of%20Taxes/SitePages/StampDuty.aspx?menuid=1209",
+          "The page gives no start date for the current schedule. The date here is only the first day we checked it was in force.")
 EPF = f("Central Bank of Sri Lanka", "Employees' Provident Fund: contribution rates",
         "https://www.cbsl.gov.lk/en/employees-provident-fund")
 ETF = f("Employees' Trust Fund Board", "Notice: mandatory electronic payment of ETF contributions (2026)",
@@ -128,6 +131,25 @@ datos = [
            [t("2023-10-01", 10, CONS)]),
     numero("lk.wht-rent-limit", "Monthly rent up to which no advance income tax is withheld", "LKR",
            [t("2023-10-01", 100000, CONS)]),
+    numero("lk.foreign-income-max-rate", "Maximum rate on foreign currency service income and foreign source income remitted through a bank", "%",
+           [t("2025-04-01", 15, ACT_2025)]),
+    {
+        "id": "lk.stamp-duty-per-1000",
+        "nombre": "Stamp duty for every Rs. 1,000 or part of it, by instrument",
+        "tipo": "mapa",
+        "unidad": "LKR",
+        "etiquetas": {
+            "lease": "Lease or hire of any property (aggregate rent)",
+            "hire-purchase": "Hire purchase agreement (aggregate amount payable)",
+            "mortgage": "Bond or mortgage for a definite sum",
+            "promissory-note": "Promissory note",
+            "insurance": "Policy of insurance",
+            "credit-card-abroad": "Credit card transactions in foreign countries",
+        },
+        "tramos": [t("2024-01-01", {"lease": 20, "hire-purchase": 10, "mortgage": 1, "promissory-note": 1, "insurance": 1, "credit-card-abroad": 25}, STAMP)],
+    },
+    numero("lk.stamp-duty-lease-max-years", "Stamp duty on a lease: years of rent counted at most", "anios",
+           [t("2024-01-01", 20, STAMP)]),
     numero("lk.vat", "VAT standard rate", "%", [
         t("2022-09-01", 15, VAT_PAGE, "2023-12-31"),
         t("2024-01-01", 18, VAT_PAGE),
