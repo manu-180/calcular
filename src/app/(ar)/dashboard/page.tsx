@@ -18,7 +18,7 @@ type Props = { searchParams: Promise<Record<string, string | string[] | undefine
 
 export default async function DashboardPage({ searchParams }: Props) {
   const sp = await searchParams;
-  const rango = leerRango(sp.r, hoyAR()) ?? "7d";
+  const rango = leerRango(sp.r, hoyAR()) ?? "hoy";
   const mercado = leerMercado(sp.mercado);
 
   // Sin variable intermedia a propósito: Next reemplaza `process.env.NODE_ENV` por un literal en
