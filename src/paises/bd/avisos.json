@@ -1,0 +1,34 @@
+{
+  "mercado": "bd",
+  "avisos": [
+    {
+      "id": "bd.sanchayapatra-rates-reset",
+      "nivel": "info",
+      "desde": "2025-07-01",
+      "aplicaA": ["bd.sanchayapatra-calculator"],
+      "texto": "সরকার প্রতি ছয় মাস পরপর সঞ্চয়পত্রের মুনাফার হার নতুন করে ঠিক করে। এখানে ৩০ জুন ২০২৫ এর প্রজ্ঞাপনের হার ধরা হয়েছে, যা জাতীয় সঞ্চয় অধিদপ্তর এখনো বিদ্যমান হার হিসেবে দেখায়। যে হারে কিনেছেন, মেয়াদ শেষ পর্যন্ত সেই হারেই মুনাফা পাবেন।",
+      "fuente": {
+        "organismo": "অভ্যন্তরীণ সম্পদ বিভাগ, জাতীয় সঞ্চয় অধিদপ্তর",
+        "titulo": "জাতীয় সঞ্চয় স্কিমসমূহের মুনাফার হার পুনঃনির্ধারণ, ৩০ জুন ২০২৫, অনুচ্ছেদ ৬",
+        "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-nationalsavings/2024/12/5123d60a893e49c2923d35d7e0c1b833.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "bd.labour-amendment-2026",
+      "nivel": "info",
+      "desde": "2026-04-10",
+      "hasta": "2027-04-09",
+      "aplicaA": ["bd.service-benefit-calculator", "bd.leave-calculator", "bd.maternity-benefit-calculator"],
+      "texto": "বাংলাদেশ শ্রম (সংশোধন) আইন, ২০২৬ ১০ এপ্রিল ২০২৬ থেকে কার্যকর। ইস্তফার ক্ষতিপূরণ, উৎসব ছুটি আর প্রসূতি কল্যাণের হিসাব নতুন বিধান অনুযায়ী করা হয়েছে।",
+      "fuente": {
+        "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+        "titulo": "বাংলাদেশ শ্রম (সংশোধন) আইন, ২০২৬ (২০২৬ সনের ৪৩ নং আইন)",
+        "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2026/3/db5604f4-8cc4-40e0-aef3-88e50cdf4b51.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}
