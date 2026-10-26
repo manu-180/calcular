@@ -11,6 +11,7 @@ import { Extras } from "./Extras";
 import { GraficoBoca } from "./GraficoBoca";
 import { Puente } from "./Puente";
 import { Repartos } from "./Repartos";
+import { SeccionNueva } from "./SeccionNueva";
 import { TablaPaginas } from "./TablaPaginas";
 import { Top } from "./Top";
 
@@ -115,6 +116,7 @@ export function Boca({ datos, rango }: { datos: PanelDatos; rango: Rango }) {
         <Bandeja>
           <div className="space-y-1.5">
             <Resumen boca={boca} rango={rango} />
+            <SeccionNueva boca={boca} />
             <div className={`${TARJETA} p-5`}>
               <h3 className="text-sm font-semibold text-zinc-900">Día por día</h3>
               <p className="mt-0.5 text-xs leading-relaxed text-zinc-600">
