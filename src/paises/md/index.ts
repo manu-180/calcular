@@ -30,6 +30,14 @@ import indemnizatieUnicaLaNastere from "./calculadoras/indemnizatie-unica-la-nas
 import contenidoIndemnizatieUnicaLaNastere from "./contenido/indemnizatie-unica-la-nastere";
 import indemnizatieDeSomaj from "./calculadoras/indemnizatie-de-somaj";
 import contenidoIndemnizatieDeSomaj from "./contenido/indemnizatie-de-somaj";
+import varstaDePensionare from "./calculadoras/varsta-de-pensionare";
+import contenidoVarstaDePensionare from "./contenido/varsta-de-pensionare";
+import politaDeAsigurareMedicala from "./calculadoras/polita-de-asigurare-medicala";
+import contenidoPolitaDeAsigurareMedicala from "./contenido/polita-de-asigurare-medicala";
+import calculatorConcediuDeOdihna from "./calculadoras/calculator-concediu-de-odihna";
+import contenidoCalculatorConcediuDeOdihna from "./contenido/calculator-concediu-de-odihna";
+import calculatorOreSuplimentare from "./calculadoras/calculator-ore-suplimentare";
+import contenidoCalculatorOreSuplimentare from "./contenido/calculator-ore-suplimentare";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +65,10 @@ export default definirPais({
     { definicion: indemnizatieCrestereCopil, contenido: contenidoIndemnizatieCrestereCopil, cliente: () => import("./calculadoras/indemnizatie-crestere-copil.cliente") },
     { definicion: indemnizatieUnicaLaNastere, contenido: contenidoIndemnizatieUnicaLaNastere, cliente: () => import("./calculadoras/indemnizatie-unica-la-nastere.cliente") },
     { definicion: indemnizatieDeSomaj, contenido: contenidoIndemnizatieDeSomaj, cliente: () => import("./calculadoras/indemnizatie-de-somaj.cliente") },
+    { definicion: varstaDePensionare, contenido: contenidoVarstaDePensionare, cliente: () => import("./calculadoras/varsta-de-pensionare.cliente") },
+    { definicion: politaDeAsigurareMedicala, contenido: contenidoPolitaDeAsigurareMedicala, cliente: () => import("./calculadoras/polita-de-asigurare-medicala.cliente") },
+    { definicion: calculatorConcediuDeOdihna, contenido: contenidoCalculatorConcediuDeOdihna, cliente: () => import("./calculadoras/calculator-concediu-de-odihna.cliente") },
+    { definicion: calculatorOreSuplimentare, contenido: contenidoCalculatorOreSuplimentare, cliente: () => import("./calculadoras/calculator-ore-suplimentare.cliente") },
   ],
   universales: "todas",
   novedades,

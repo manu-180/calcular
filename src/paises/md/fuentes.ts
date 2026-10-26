@@ -141,7 +141,7 @@ export const detectores: readonly Detector[] = [
   {
     id: "md.fonduri-aoam-mo",
     carril: "norma",
-    datos: ["md.prima-medicala", "md.prima-medicala-fixa"],
+    datos: ["md.prima-medicala", "md.prima-medicala-fixa", "md.prima-medicala-fixa-redusa"],
     metodo: "html",
     url: MONITORUL,
     traer(http) {

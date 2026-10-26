@@ -224,6 +224,28 @@
       ]
     },
     {
+      "id": "md.prima-medicala-fixa-redusa",
+      "nombre": "Prima în sumă fixă pentru persoanele de la pct. 1, 3 și 4 din anexa nr. 2 la Legea nr. 1593/2002",
+      "tipo": "numero",
+      "unidad": "MDL",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2527,
+          "fuente": {
+            "organismo": "Parlamentul Republicii Moldova (Monitorul Oficial)",
+            "titulo": "Legea nr. 321/2025 a fondurilor asigurării obligatorii de asistență medicală pentru anul 2026, art. 4 (Monitorul Oficial nr. 659-661 din 31 decembrie 2025)",
+            "url": "https://monitorul.gov.md/ro/monitorul/view/pdf/3204/part/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
       "id": "md.scutire-personala",
       "nombre": "Scutirea personală anuală",
       "tipo": "numero",
@@ -669,9 +691,9 @@
     },
     {
       "id": "md.varsta-pensionare",
-      "nombre": "Vârsta standard de pensionare, în luni, de la 1 iulie a fiecărui an",
+      "nombre": "Vârsta standard de pensionare, de la 1 iulie a fiecărui an",
       "tipo": "mapa",
-      "unidad": "meses",
+      "unidad": "anios",
       "etiquetas": {
         "barbati": "Bărbați",
         "femei-2023": "Femei, din iulie 2023",
@@ -686,13 +708,13 @@
           "estado": "verificado",
           "desde": "2026-01-01",
           "valor": {
-            "barbati": 756,
-            "femei-2023": 726,
-            "femei-2024": 732,
-            "femei-2025": 738,
-            "femei-2026": 744,
-            "femei-2027": 750,
-            "femei-2028": 756
+            "barbati": 63,
+            "femei-2023": 60.5,
+            "femei-2024": 61,
+            "femei-2025": 61.5,
+            "femei-2026": 62,
+            "femei-2027": 62.5,
+            "femei-2028": 63
           },
           "fuente": {
             "organismo": "Casa Națională de Asigurări Sociale",
