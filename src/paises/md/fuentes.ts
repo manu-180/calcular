@@ -161,7 +161,7 @@ export const detectores: readonly Detector[] = [
   {
     id: "md.indemnizatii-familii-cnas",
     carril: "norma",
-    datos: ["md.indemnizatie-nastere", "md.crestere-copil", "md.ingrijire-copil-2-ani"],
+    datos: ["md.indemnizatie-nastere", "md.crestere-copil", "md.crestere-copil-minim", "md.ingrijire-copil-2-ani"],
     metodo: "html",
     url: `${CNAS}/indemnizatii/indemnizatii-adresate-familiilor-cu-copii`,
     traer(http) {
@@ -171,7 +171,7 @@ export const detectores: readonly Detector[] = [
   {
     id: "md.indemnizatii-cnas",
     carril: "norma",
-    datos: ["md.itm", "md.plafon-salarii-medii", "md.somaj", "md.maternitate", "md.varsta-pensionare"],
+    datos: ["md.itm", "md.plafon-salarii-medii", "md.somaj-procent", "md.somaj-luni", "md.maternitate-procent", "md.maternitate-zile", "md.varsta-pensionare"],
     metodo: "html",
     url: `${CNAS}/indemnizatii/indemnizatie-pentru-incapacitate-temporara-de-munca`,
     traer(http) {

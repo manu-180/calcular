@@ -436,7 +436,7 @@
       "etiquetas": {
         "angajator": "Zilele plătite de angajator",
         "sub5": "Stagiu de cotizare de până la 5 ani",
-        "intre5si8": "Stagiu între 5 și 8 ani",
+        "intre-5-8": "Stagiu între 5 și 8 ani",
         "peste8": "Stagiu de peste 8 ani",
         "special": "Tuberculoză, SIDA, boală oncologică, accident de muncă"
       },
@@ -447,7 +447,7 @@
           "valor": {
             "angajator": 75,
             "sub5": 60,
-            "intre5si8": 70,
+            "intre-5-8": 70,
             "peste8": 90,
             "special": 100
           },
@@ -482,23 +482,41 @@
       ]
     },
     {
-      "id": "md.maternitate",
-      "nombre": "Indemnizația de maternitate",
+      "id": "md.maternitate-procent",
+      "nombre": "Indemnizația de maternitate, procent din baza de calcul",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Casa Națională de Asigurări Sociale",
+            "titulo": "Indemnizație de maternitate (Legea nr. 289/2004)",
+            "url": "https://cnas.gov.md/ro/servicii/servicii/indemnizatii/indemnizatie-de-maternitate-femeilor-asigurate-si-sotiilor-aflate-la",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "md.maternitate-zile",
+      "nombre": "Durata concediului de maternitate",
       "tipo": "mapa",
-      "unidad": "numero",
+      "unidad": "dias",
       "etiquetas": {
-        "procent": "Procent din baza de calcul",
-        "zile": "Zile calendaristice",
-        "zile-complicate": "Zile la nașteri complicate sau gemeni"
+        "normala": "Naștere fără complicații",
+        "complicata": "Naștere complicată sau doi copii"
       },
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2026-01-01",
           "valor": {
-            "procent": 100,
-            "zile": 126,
-            "zile-complicate": 140
+            "normala": 126,
+            "complicata": 140
           },
           "fuente": {
             "organismo": "Casa Națională de Asigurări Sociale",
@@ -512,14 +530,13 @@
     },
     {
       "id": "md.crestere-copil",
-      "nombre": "Indemnizația lunară pentru creșterea copilului",
+      "nombre": "Indemnizația lunară pentru creșterea copilului, procent din baza de calcul",
       "tipo": "mapa",
-      "unidad": "numero",
+      "unidad": "%",
       "etiquetas": {
-        "trei-ani": "Până la 3 ani (%)",
-        "24-luni": "24 de luni (%)",
-        "12-luni": "12 luni (%)",
-        "minim": "Indemnizația minimă (lei)"
+        "trei-ani": "Până la 3 ani",
+        "24-luni": "24 de luni",
+        "12-luni": "12 luni"
       },
       "tramos": [
         {
@@ -528,9 +545,28 @@
           "valor": {
             "trei-ani": 30,
             "24-luni": 60,
-            "12-luni": 90,
-            "minim": 740
+            "12-luni": 90
           },
+          "fuente": {
+            "organismo": "Casa Națională de Asigurări Sociale",
+            "titulo": "Indemnizații adresate familiilor cu copii (Legea nr. 289/2004)",
+            "url": "https://cnas.gov.md/ro/servicii/servicii/indemnizatii/indemnizatii-adresate-familiilor-cu-copii",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "md.crestere-copil-minim",
+      "nombre": "Indemnizația minimă lunară pentru creșterea copilului a persoanei asigurate",
+      "tipo": "numero",
+      "unidad": "MDL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 740,
           "fuente": {
             "organismo": "Casa Națională de Asigurări Sociale",
             "titulo": "Indemnizații adresate familiilor cu copii (Legea nr. 289/2004)",
@@ -583,25 +619,43 @@
       ]
     },
     {
-      "id": "md.somaj",
-      "nombre": "Indemnizația de șomaj",
+      "id": "md.somaj-procent",
+      "nombre": "Indemnizația de șomaj, procent din venitul mediu lunar asigurat",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Casa Națională de Asigurări Sociale",
+            "titulo": "Indemnizație de șomaj (Legea nr. 105/2018)",
+            "url": "https://cnas.gov.md/ro/servicii/servicii/indemnizatii/indemnizatie-de-somaj",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "md.somaj-luni",
+      "nombre": "Perioada de plată a indemnizației de șomaj",
       "tipo": "mapa",
-      "unidad": "numero",
+      "unidad": "meses",
       "etiquetas": {
-        "procent": "Procent din venitul mediu lunar asigurat",
-        "luni-sub10": "Luni de plată, stagiu de 12 luni până la 10 ani",
-        "luni-10-15": "Luni de plată, stagiu între 10 și 15 ani",
-        "luni-peste15": "Luni de plată, stagiu de peste 15 ani"
+        "sub10": "Stagiu între 12 luni și 10 ani",
+        "10-15": "Stagiu între 10 și 15 ani",
+        "peste15": "Stagiu de peste 15 ani"
       },
       "tramos": [
         {
           "estado": "verificado",
           "desde": "2026-01-01",
           "valor": {
-            "procent": 40,
-            "luni-sub10": 5,
-            "luni-10-15": 7,
-            "luni-peste15": 9
+            "sub10": 5,
+            "10-15": 7,
+            "peste15": 9
           },
           "fuente": {
             "organismo": "Casa Națională de Asigurări Sociale",

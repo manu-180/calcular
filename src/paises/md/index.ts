@@ -20,6 +20,16 @@ import cursValutarBnm from "./calculadoras/curs-valutar-bnm";
 import contenidoCursValutarBnm from "./contenido/curs-valutar-bnm";
 import calculatorInflatie from "./calculadoras/calculator-inflatie";
 import contenidoCalculatorInflatie from "./contenido/calculator-inflatie";
+import calculatorConcediuMedical from "./calculadoras/calculator-concediu-medical";
+import contenidoCalculatorConcediuMedical from "./contenido/calculator-concediu-medical";
+import indemnizatieDeMaternitate from "./calculadoras/indemnizatie-de-maternitate";
+import contenidoIndemnizatieDeMaternitate from "./contenido/indemnizatie-de-maternitate";
+import indemnizatieCrestereCopil from "./calculadoras/indemnizatie-crestere-copil";
+import contenidoIndemnizatieCrestereCopil from "./contenido/indemnizatie-crestere-copil";
+import indemnizatieUnicaLaNastere from "./calculadoras/indemnizatie-unica-la-nastere";
+import contenidoIndemnizatieUnicaLaNastere from "./contenido/indemnizatie-unica-la-nastere";
+import indemnizatieDeSomaj from "./calculadoras/indemnizatie-de-somaj";
+import contenidoIndemnizatieDeSomaj from "./contenido/indemnizatie-de-somaj";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -42,6 +52,11 @@ export default definirPais({
     { definicion: impozitPeDividende, contenido: contenidoImpozitPeDividende, cliente: () => import("./calculadoras/impozit-pe-dividende.cliente") },
     { definicion: cursValutarBnm, contenido: contenidoCursValutarBnm, cliente: () => import("./calculadoras/curs-valutar-bnm.cliente") },
     { definicion: calculatorInflatie, contenido: contenidoCalculatorInflatie, cliente: () => import("./calculadoras/calculator-inflatie.cliente") },
+    { definicion: calculatorConcediuMedical, contenido: contenidoCalculatorConcediuMedical, cliente: () => import("./calculadoras/calculator-concediu-medical.cliente") },
+    { definicion: indemnizatieDeMaternitate, contenido: contenidoIndemnizatieDeMaternitate, cliente: () => import("./calculadoras/indemnizatie-de-maternitate.cliente") },
+    { definicion: indemnizatieCrestereCopil, contenido: contenidoIndemnizatieCrestereCopil, cliente: () => import("./calculadoras/indemnizatie-crestere-copil.cliente") },
+    { definicion: indemnizatieUnicaLaNastere, contenido: contenidoIndemnizatieUnicaLaNastere, cliente: () => import("./calculadoras/indemnizatie-unica-la-nastere.cliente") },
+    { definicion: indemnizatieDeSomaj, contenido: contenidoIndemnizatieDeSomaj, cliente: () => import("./calculadoras/indemnizatie-de-somaj.cliente") },
   ],
   universales: "todas",
   novedades,
