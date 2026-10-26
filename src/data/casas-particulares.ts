@@ -324,6 +324,29 @@ export const SAC = {
   articulo: "Ley 26.844, art. 26",
 } as const;
 
+/**
+ * Adicional por antigüedad: 1% por cada año de antigüedad, sobre el salario mensual (art. 3 de la
+ * Res. CNTCP 2/2021, B.O. 25/6/2021, sigue vigente: las escalas posteriores sólo fijan importes). Se
+ * paga desde el 1/9/2021 y los años se cuentan desde el 1/9/2020 SIN efecto retroactivo: alguien que
+ * entró en 2012 suma lo mismo que alguien que entró el 1/9/2020. Por eso hay un tope por mes
+ * (`maxAniosAntiguedad`), que es la trampa de quien cuenta desde la fecha de ingreso.
+ * Se aplica sobre el básico del mes (horas o mínimo mensual, con zona si corresponde), sin las
+ * horas extras: es lo que la resolución llama «salarios mensuales».
+ */
+export const ANTIGUEDAD = {
+  porcentajePorAnio: 1,
+  cuentaDesde: "2020-09-01",
+  cuentaDesdeTexto: "1 de septiembre de 2020",
+  articulo: "art. 3 de la Resolución CNTCP 2/2021",
+} as const;
+
+/** Años completos de antigüedad que pueden computarse en un mes de la escala (`2026-10` → 6). */
+export function maxAniosAntiguedad(mesId: string): number {
+  const [a, m] = mesId.split("-").map(Number);
+  const [a0, m0] = ANTIGUEDAD.cuentaDesde.split("-").map(Number);
+  return Math.max(0, Math.floor((a * 12 + m - (a0 * 12 + m0)) / 12));
+}
+
 /** Vacaciones por antigüedad (art. 29 de la Ley 26.844) — se miden al 31 de diciembre. */
 export const VACACIONES = [
   { hastaAnios: 5, dias: 14, detalle: "más de 6 meses y hasta 5 años" },
@@ -372,6 +395,12 @@ export const CASAS_PARTICULARES_FUENTES: {
       url: "https://www.argentina.gob.ar/normativa/426540_res4-4_pdf/archivo",
       detalle:
         "B.O. 10/6/2026. Es la base sobre la que la 6/2026 calcula agosto, y la que fijó el adicional por zona desfavorable en el 31% desde el 1/4/2026.",
+    },
+    {
+      nombre: "Resolución CNTCP 2/2021: crea el adicional por antigüedad",
+      url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/246035/20210625",
+      detalle:
+        "B.O. 25/6/2021, art. 3: adicional del 1% por cada año de antigüedad sobre los salarios mensuales, que se paga desde el 1/9/2021; los años se cuentan desde el 1/9/2020, sin efecto retroactivo. Verificado el 2026-10-24.",
     },
     {
       nombre: "Ley 26.844: Régimen Especial para el Personal de Casas Particulares",

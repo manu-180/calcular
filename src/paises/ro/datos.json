@@ -1,0 +1,801 @@
+{
+  "mercado": "ro",
+  "datos": [
+    {
+      "id": "ro.salariu-minim",
+      "nombre": "Salariul de bază minim brut pe țară garantat în plată",
+      "tipo": "numero",
+      "unidad": "RON",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2026-06-30",
+          "valor": 4050,
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "HG nr. 1.506/2024 pentru stabilirea salariului de bază minim brut pe țară garantat în plată",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/HG_1506_2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 4325,
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "HG nr. 146/2026 pentru stabilirea salariului de bază minim brut pe țară garantat în plată (Monitorul Oficial nr. 196 din 13 martie 2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/HG_146_2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.salariu-minim-orar",
+      "nombre": "Salariul minim brut pe oră",
+      "tipo": "numero",
+      "unidad": "RON",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2026-06-30",
+          "valor": 24.496,
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "HG nr. 1.506/2024 pentru stabilirea salariului de bază minim brut pe țară garantat în plată",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/HG_1506_2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 25.949,
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "HG nr. 146/2026 pentru stabilirea salariului de bază minim brut pe țară garantat în plată (Monitorul Oficial nr. 196 din 13 martie 2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/HG_146_2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.ore-lunare-salariu-minim",
+      "nombre": "Program normal de lucru folosit la salariul minim (ore pe lună, în medie)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2026-06-30",
+          "valor": 165.334,
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "HG nr. 1.506/2024 pentru stabilirea salariului de bază minim brut pe țară garantat în plată",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/HG_1506_2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 166.667,
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "HG nr. 146/2026 pentru stabilirea salariului de bază minim brut pe țară garantat în plată (Monitorul Oficial nr. 196 din 13 martie 2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/HG_146_2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.salariu-minim-1-ianuarie",
+      "nombre": "Salariul minim în vigoare la 1 ianuarie (pentru plafoanele anuale de CAS și CASS)",
+      "tipo": "numero",
+      "unidad": "RON",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 4050,
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "HG nr. 1.506/2024 pentru stabilirea salariului de bază minim brut pe țară garantat în plată",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/HG_1506_2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 135^1 alin. (3): la plafoanele anuale de CAS și CASS se folosește salariul minim în vigoare la 1 ianuarie al anului de realizare a venitului."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.facilitate-salariu-minim",
+      "nombre": "Suma neimpozabilă la salariul minim (OUG nr. 89/2025)",
+      "tipo": "mapa",
+      "unidad": "RON",
+      "etiquetas": {
+        "suma": "Suma lunară neimpozabilă",
+        "plafon": "Venitul brut maxim pentru facilitate"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "suma": 300,
+            "plafon": 4300
+          },
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "OUG nr. 89/2025, art. III (Monitorul Oficial nr. 1.203 din 24 decembrie 2025)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/OUG_89_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "suma": 200,
+            "plafon": 4600
+          },
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "OUG nr. 89/2025, art. III (Monitorul Oficial nr. 1.203 din 24 decembrie 2025)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/OUG_89_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "suma": 0,
+            "plafon": 0
+          },
+          "fuente": {
+            "organismo": "Guvernul României (text publicat de ANAF)",
+            "titulo": "OUG nr. 89/2025, art. III (Monitorul Oficial nr. 1.203 din 24 decembrie 2025)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/OUG_89_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Art. III alin. (6): facilitatea se aplică doar veniturilor din lunile ianuarie-decembrie 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.cas",
+      "nombre": "Contribuția de asigurări sociale (CAS), cota angajatului",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 138 lit. a)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.cass",
+      "nombre": "Contribuția de asigurări sociale de sănătate (CASS)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 156."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.cam",
+      "nombre": "Contribuția asiguratorie pentru muncă (CAM)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.25,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 220^3 alin. (1)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.impozit-venit",
+      "nombre": "Cota impozitului pe venit",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 64 alin. (1)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.deducere-baza",
+      "nombre": "Deducerea personală de bază până la salariul minim (procent din salariul minim)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "0": "Fără persoane în întreținere",
+        "1": "O persoană în întreținere",
+        "2": "Două persoane în întreținere",
+        "3": "Trei persoane în întreținere",
+        "4": "Patru sau mai multe persoane în întreținere"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 20,
+            "1": 25,
+            "2": 30,
+            "3": 35,
+            "4": 45
+          },
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 77 alin. (4)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.deducere-plafon",
+      "nombre": "Venitul brut peste salariul minim până la care se acordă deducerea personală de bază",
+      "tipo": "numero",
+      "unidad": "RON",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2000,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 77 alin. (3)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.deducere-pas",
+      "nombre": "Tranșa de venit după care scade deducerea",
+      "tipo": "numero",
+      "unidad": "RON",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 77 alin. (4): procentul scade cu 0,5 puncte la fiecare 50 de lei peste salariul minim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.deducere-scadere",
+      "nombre": "Scăderea procentului de deducere pe fiecare tranșă",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 77 alin. (4)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.deducere-tineri",
+      "nombre": "Deducerea personală suplimentară pentru tinerii de până la 26 de ani (procent din salariul minim)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 77 alin. (10) lit. a)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.deducere-copil",
+      "nombre": "Deducerea personală suplimentară pentru fiecare copil înscris la școală",
+      "tipo": "numero",
+      "unidad": "RON",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 77 alin. (10) lit. b)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.tva",
+      "nombre": "Cotele de TVA",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "Cota standard",
+        "redusa": "Cota redusă"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "valor": {
+            "standard": 21,
+            "redusa": 11
+          },
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 291 alin. (1) și (2), în forma din Legea nr. 141/2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.cota-micro",
+      "nombre": "Cota impozitului micro (impozitul pe veniturile întreprinderilor mici)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 51 alin. (1)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.plafon-micro",
+      "nombre": "Plafonul de venituri pentru impozitul micro",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 47 alin. (1) lit. c)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.impozit-dividende",
+      "nombre": "Cota impozitului pe dividende",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 97 alin. (7): 16 % pentru dividendele distribuite începând cu 1 ianuarie 2026 (Legea nr. 141/2025)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.impozit-dobanzi",
+      "nombre": "Cota impozitului pe dobânzi",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 97 alin. (1) și (2)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.forfetar-chirii",
+      "nombre": "Cota forfetară de cheltuieli la veniturile din chirii",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 84 alin. (3)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.forfetar-drepturi-autor",
+      "nombre": "Cota forfetară de cheltuieli la drepturile de autor",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 72 alin. (2)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.impozit-transfer-imobiliar",
+      "nombre": "Impozitul la vânzarea unei proprietăți imobiliare din patrimoniul personal",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "max-3-ani": "Deținută până la 3 ani inclusiv",
+        "peste-3-ani": "Deținută mai mult de 3 ani"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "max-3-ani": 3,
+            "peste-3-ani": 1
+          },
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 111 alin. (1)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.plafoane-cass",
+      "nombre": "Plafoanele CASS pentru venituri din alte surse (număr de salarii minime)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "minim": "6 salarii minime",
+        "mediu": "12 salarii minime",
+        "maxim": "24 de salarii minime"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "minim": 6,
+            "mediu": 12,
+            "maxim": 24
+          },
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 170 alin. (2) și (3)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.plafoane-cass-pfa",
+      "nombre": "Baza CASS pentru activități independente (număr de salarii minime)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "minim": "Baza minimă",
+        "maxim": "Plafonul maxim"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "minim": 6,
+            "maxim": 72
+          },
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 170 alin. (1) și art. 174 alin. (6)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.plafoane-cas",
+      "nombre": "Plafoanele CAS pentru activități independente și drepturi de autor (număr de salarii minime)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "minim": "12 salarii minime",
+        "maxim": "24 de salarii minime"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "minim": 12,
+            "maxim": 24
+          },
+          "fuente": {
+            "organismo": "Agenția Națională de Administrare Fiscală (ANAF)",
+            "titulo": "Legea nr. 227/2015 privind Codul fiscal, text actualizat (ultima actualizare: Legea nr. 170/2026)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/Cod_fiscal_norme_2023.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Codul fiscal, art. 148 alin. (1) și (2)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.concediu-medical-procente",
+      "nombre": "Procentul indemnizației de concediu medical pentru boli obișnuite",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "max-7": "Până la 7 zile",
+        "8-14": "Între 8 și 14 zile",
+        "peste-14": "15 zile sau mai mult",
+        "cardiovascular": "Boli cardiovasculare"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "valor": {
+            "max-7": 55,
+            "8-14": 65,
+            "peste-14": 75,
+            "cardiovascular": 75
+          },
+          "fuente": {
+            "organismo": "Parlamentul României (text publicat de ANAF)",
+            "titulo": "Legea nr. 141/2025 privind unele măsuri fiscal-bugetare (Monitorul Oficial nr. 699 din 25 iulie 2025)",
+            "url": "https://static.anaf.ro/static/10/Anaf/legislatie/L_141_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Art. IX din Legea nr. 141/2025 modifică art. 17 din OUG nr. 158/2005. Legea scrie „peste 15 zile” la 75 %; cheia „peste-14” acoperă și certificatul de 15 zile."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ro.concediu-medical-plafon",
+      "nombre": "Plafonul bazei de calcul a indemnizației de concediu medical (număr de salarii minime)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "motivo": "OUG nr. 158/2005, art. 10, nu s-a putut citi în forma actualizată pe 24.10.2026 (legislatie.just.ro inaccesibil). Lipsește și textul final al OUG nr. 91/2025 privind ziua neplătită."
+        }
+      ]
+    },
+    {
+      "id": "ro.concediu-odihna-minim",
+      "nombre": "Durata minimă a concediului de odihnă anual",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "motivo": "Codul muncii (Legea nr. 53/2003) nu s-a putut citi pe 24.10.2026: legislatie.just.ro închide conexiunea și nu am găsit textul actualizat pe alt site oficial. Valoarea vine din textul cunoscut al legii și trebuie verificată."
+        }
+      ]
+    },
+    {
+      "id": "ro.spor-ore-suplimentare",
+      "nombre": "Sporul minim pentru orele suplimentare",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "motivo": "Codul muncii (Legea nr. 53/2003) nu s-a putut citi pe 24.10.2026: legislatie.just.ro închide conexiunea și nu am găsit textul actualizat pe alt site oficial. Valoarea vine din textul cunoscut al legii și trebuie verificată."
+        }
+      ]
+    },
+    {
+      "id": "ro.preaviz",
+      "nombre": "Durata preavizului (zile lucrătoare)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "concediere": "Concediere",
+        "demisie": "Demisie (funcție de execuție)",
+        "demisie-conducere": "Demisie (funcție de conducere)"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "concediere": 20,
+            "demisie": 20,
+            "demisie-conducere": 45
+          },
+          "motivo": "Codul muncii (Legea nr. 53/2003) nu s-a putut citi pe 24.10.2026: legislatie.just.ro închide conexiunea și nu am găsit textul actualizat pe alt site oficial. Valoarea vine din textul cunoscut al legii și trebuie verificată."
+        }
+      ]
+    },
+    {
+      "id": "ro.indemnizatie-copil",
+      "nombre": "Indemnizația pentru creșterea copilului",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "procent": "Procent din venitul net mediu",
+        "minim": "Minimul lunar (lei)",
+        "maxim": "Maximul lunar (lei)"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "procent": 85,
+            "minim": 1250,
+            "maxim": 8500
+          },
+          "motivo": "OUG nr. 111/2010 nu s-a putut citi în forma actualizată pe 24.10.2026: legislatie.just.ro și mmuncii.gov.ro nu răspund (verificare anti-bot). Valorile trebuie confirmate."
+        }
+      ]
+    }
+  ]
+}

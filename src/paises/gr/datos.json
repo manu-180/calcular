@@ -1,0 +1,1308 @@
+{
+  "mercado": "gr",
+  "datos": [
+    {
+      "id": "gr.klimaka-forou",
+      "nombre": "Κλίμακα φόρου εισοδήματος (μισθοί, συντάξεις, επιχειρηματική δραστηριότητα)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 10000,
+              "tasa": 9
+            },
+            {
+              "desde": 10000,
+              "hasta": 20000,
+              "tasa": 20
+            },
+            {
+              "desde": 20000,
+              "hasta": 30000,
+              "tasa": 26
+            },
+            {
+              "desde": 30000,
+              "hasta": 40000,
+              "tasa": 34
+            },
+            {
+              "desde": 40000,
+              "hasta": 60000,
+              "tasa": 39
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 44
+            }
+          ],
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5246/2025, ΦΕΚ Α' 198/11.11.2025, άρθρο 3 (άρθρο 15 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.syntelestis-a-klimakiou",
+      "nombre": "Συντελεστής του πρώτου κλιμακίου (έως 10.000 €) ανά αριθμό εξαρτώμενων τέκνων",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "0": "Χωρίς παιδιά",
+        "1": "1 παιδί",
+        "2": "2 παιδιά",
+        "3": "3 παιδιά",
+        "4": "4 παιδιά ή περισσότερα"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 9,
+            "1": 9,
+            "2": 9,
+            "3": 9,
+            "4": 0
+          },
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5246/2025, ΦΕΚ Α' 198/11.11.2025, άρθρο 3 (άρθρο 15 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.syntelestis-b-klimakiou",
+      "nombre": "Συντελεστής του δεύτερου κλιμακίου (10.000,01 έως 20.000 €) ανά αριθμό εξαρτώμενων τέκνων",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "0": "Χωρίς παιδιά",
+        "1": "1 παιδί",
+        "2": "2 παιδιά",
+        "3": "3 παιδιά",
+        "4": "4 παιδιά ή περισσότερα"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 20,
+            "1": 18,
+            "2": 16,
+            "3": 9,
+            "4": 0
+          },
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5246/2025, ΦΕΚ Α' 198/11.11.2025, άρθρο 3 (άρθρο 15 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.syntelestis-g-klimakiou",
+      "nombre": "Συντελεστής του τρίτου κλιμακίου (20.000,01 έως 30.000 €) ανά αριθμό εξαρτώμενων τέκνων",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "0": "Χωρίς παιδιά",
+        "1": "1 παιδί",
+        "2": "2 παιδιά",
+        "3": "3 παιδιά",
+        "4": "4 παιδιά"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 26,
+            "1": 24,
+            "2": 22,
+            "3": 20,
+            "4": 18
+          },
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5246/2025, ΦΕΚ Α' 198/11.11.2025, άρθρο 3 (άρθρο 15 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.meiosi-g-klimakiou-ana-paidi",
+      "nombre": "Μείωση του συντελεστή του τρίτου κλιμακίου για κάθε παιδί πέρα από το τέταρτο",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5246/2025, ΦΕΚ Α' 198/11.11.2025, άρθρο 3 (άρθρο 15 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.syntelestis-neon",
+      "nombre": "Συντελεστής των δύο πρώτων κλιμακίων (έως 20.000 €) για νέους",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ews-25": "Έως 25 ετών",
+        "26-30": "26 έως 30 ετών"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ews-25": 0,
+            "26-30": 9
+          },
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5246/2025, ΦΕΚ Α' 198/11.11.2025, άρθρο 3 (άρθρο 15 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.meiosi-forou",
+      "nombre": "Μείωση φόρου μισθωτών και συνταξιούχων ανά αριθμό εξαρτώμενων τέκνων",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "0": "Χωρίς παιδιά",
+        "1": "1 παιδί",
+        "2": "2 παιδιά",
+        "3": "3 παιδιά",
+        "4": "4 παιδιά",
+        "5": "5 παιδιά"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "0": 777,
+            "1": 900,
+            "2": 1120,
+            "3": 1340,
+            "4": 1580,
+            "5": 1780
+          },
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5045/2023, ΦΕΚ Α' 136/29.07.2023, άρθρο 43 (άρθρο 16 παρ. 1 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2023/20230100136.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.meiosi-forou-epipleon-paidi",
+      "nombre": "Πρόσθετη μείωση φόρου για κάθε παιδί μετά το πέμπτο",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 220,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5045/2023, ΦΕΚ Α' 136/29.07.2023, άρθρο 43 (άρθρο 16 παρ. 1 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2023/20230100136.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.meiosi-forou-orio",
+      "nombre": "Εισόδημα από μισθούς και συντάξεις πάνω από το οποίο περιορίζεται η μείωση φόρου",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 12000,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 4646/2019, ΦΕΚ Α' 201/12.12.2019, άρθρο 9 (άρθρο 16 παρ. 2 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2019/20190100201.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.meiosi-forou-ana-1000",
+      "nombre": "Περιορισμός της μείωσης φόρου ανά 1.000 € εισοδήματος πάνω από το όριο",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 4646/2019, ΦΕΚ Α' 201/12.12.2019, άρθρο 9 (άρθρο 16 παρ. 2 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2019/20190100201.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.meiosi-forou-paidia-xoris-periorismo",
+      "nombre": "Αριθμός παιδιών από τον οποίο η μείωση φόρου δεν περιορίζεται",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 4646/2019, ΦΕΚ Α' 201/12.12.2019, άρθρο 9 (άρθρο 16 παρ. 2 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2019/20190100201.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.klimaka-enoikion",
+      "nombre": "Κλίμακα φόρου εισοδήματος από ακίνητη περιουσία (ενοίκια)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12000,
+              "tasa": 15
+            },
+            {
+              "desde": 12000,
+              "hasta": 24000,
+              "tasa": 25
+            },
+            {
+              "desde": 24000,
+              "hasta": 36000,
+              "tasa": 35
+            },
+            {
+              "desde": 36000,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5246/2025, ΦΕΚ Α' 198/11.11.2025, άρθρο 8 (άρθρο 40 ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.ekptosi-enoikion",
+      "nombre": "Έκπτωση για δαπάνες επισκευής και συντήρησης ακινήτου (φυσικά πρόσωπα)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Υπουργείο Εθνικής Οικονομίας και Οικονομικών (Διαύγεια)",
+            "titulo": "Κωδικοποίηση ΚΦΕ, ΑΔΑ Ε7ΔΠΗ-Φ32 (άρθρο 39 παρ. 3)",
+            "url": "https://diavgeia.gov.gr/doc/%CE%957%CE%94%CE%A0%CE%97-%CE%A632",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.foros-tokon",
+      "nombre": "Φόρος τόκων (καταθέσεις)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Υπουργείο Εθνικής Οικονομίας και Οικονομικών (Διαύγεια)",
+            "titulo": "Κωδικοποίηση ΚΦΕ, ΑΔΑ Ε7ΔΠΗ-Φ32 (άρθρα 40 και 64)",
+            "url": "https://diavgeia.gov.gr/doc/%CE%957%CE%94%CE%A0%CE%97-%CE%A632",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.foros-metavivasis",
+      "nombre": "Φόρος μεταβίβασης ακινήτων",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-18",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5219/2025 (Κώδικας Φορολογίας Περιουσίας), ΦΕΚ Α' 130/18.07.2025, άρθρα 25 και 27",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100130.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.foros-metavivasis-dimoi",
+      "nombre": "Πρόσθετος φόρος υπέρ των δήμων επί του φόρου μεταβίβασης",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-18",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5219/2025 (Κώδικας Φορολογίας Περιουσίας), ΦΕΚ Α' 130/18.07.2025, άρθρα 25 και 27",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100130.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.fpa",
+      "nombre": "Συντελεστές ΦΠΑ",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "kanonikos": "Κανονικός",
+        "meiomenos": "Μειωμένος",
+        "yper-meiomenos": "Υπερμειωμένος",
+        "eidikos": "Ειδικός (4%)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "kanonikos": 24,
+            "meiomenos": 13,
+            "yper-meiomenos": 6,
+            "eidikos": 4
+          },
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5246/2025, ΦΕΚ Α' 198/11.11.2025, άρθρο 11 (άρθρο 26 Κώδικα ΦΠΑ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2025/20250100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.fpa-nisia",
+      "nombre": "Συντελεστές ΦΠΑ μειωμένοι κατά 30% σε νησιά",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "kanonikos": "Κανονικός",
+        "meiomenos": "Μειωμένος",
+        "yper-meiomenos": "Υπερμειωμένος",
+        "eidikos": "Ειδικός"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "kanonikos": 17,
+            "meiomenos": 9,
+            "yper-meiomenos": 4,
+            "eidikos": 3
+          },
+          "fuente": {
+            "organismo": "ΑΑΔΕ",
+            "titulo": "Ανακοίνωση της 31.12.2025 για τους μειωμένους συντελεστές ΦΠΑ στη Λέσβο, την Κω, τη Σάμο και τη Χίο",
+            "url": "https://www.aade.gr/sites/default/files/2025-12/dt_31.12.2025_0.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.katotatos-misthos",
+      "nombre": "Κατώτατος μηνιαίος μισθός (υπάλληλοι)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": 880,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ΚΥΑ 8233/2025, ΦΕΚ Β' 1476/27.03.2025 (κατώτατος μισθός από 1.4.2025)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/02/2025/20250201476.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 920,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ΚΥΑ 8934/2026, ΦΕΚ Β' 1759/27.03.2026 (κατώτατος μισθός από 1.4.2026)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/02/2026/20260201759.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.katotato-imeromisthio",
+      "nombre": "Κατώτατο ημερομίσθιο (εργατοτεχνίτες)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": 39.3,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ΚΥΑ 8233/2025, ΦΕΚ Β' 1476/27.03.2025 (κατώτατος μισθός από 1.4.2025)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/02/2025/20250201476.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 41.09,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ΚΥΑ 8934/2026, ΦΕΚ Β' 1759/27.03.2026 (κατώτατος μισθός από 1.4.2026)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/02/2026/20260201759.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eisfores-ergazomenou",
+      "nombre": "Εισφορές μισθωτού ΕΦΚΑ και ΔΥΠΑ ανά ΚΠΚ",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "101": "Με επικουρική (ΚΠΚ 101)",
+        "103": "Χωρίς επικουρική (ΚΠΚ 103)",
+        "105": "Βαρέα και ανθυγιεινά με επικουρική (ΚΠΚ 105)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "101": 13.37,
+            "103": 10.37,
+            "105": 16.82
+          },
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 38/2024: μείωση ασφαλιστικών εισφορών από 1.1.2025 και πίνακας ΚΠΚ",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2024-12/%CE%95%CE%93%CE%9A.%2038_2024_%CE%9C%CE%95%CE%99%CE%A9%CE%A3%CE%97%20%CE%91%CE%A3%CE%A6.%20%CE%95%CE%99%CE%A3%CE%A6%CE%9F%CE%A1%CE%A9%CE%9D%20%CE%99%CE%94%CE%99%CE%A9%CE%A4.%20%CE%94%CE%99%CE%9A%CE%91%CE%99%CE%9F%CE%A5%202025%20%28971%CE%A546%CE%9C%CE%91%CE%A0%CE%A3-348%29.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eisfores-ergodoti",
+      "nombre": "Εισφορές εργοδότη ΕΦΚΑ και ΔΥΠΑ ανά ΚΠΚ",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "101": "Με επικουρική (ΚΠΚ 101)",
+        "103": "Χωρίς επικουρική (ΚΠΚ 103)",
+        "105": "Βαρέα και ανθυγιεινά με επικουρική (ΚΠΚ 105)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "101": 21.79,
+            "103": 18.79,
+            "105": 23.94
+          },
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 38/2024: μείωση ασφαλιστικών εισφορών από 1.1.2025 και πίνακας ΚΠΚ",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2024-12/%CE%95%CE%93%CE%9A.%2038_2024_%CE%9C%CE%95%CE%99%CE%A9%CE%A3%CE%97%20%CE%91%CE%A3%CE%A6.%20%CE%95%CE%99%CE%A3%CE%A6%CE%9F%CE%A1%CE%A9%CE%9D%20%CE%99%CE%94%CE%99%CE%A9%CE%A4.%20%CE%94%CE%99%CE%9A%CE%91%CE%99%CE%9F%CE%A5%202025%20%28971%CE%A546%CE%9C%CE%91%CE%A0%CE%A3-348%29.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eisfores-ygeias",
+      "nombre": "Εισφορές υγειονομικής περίθαλψης (σε είδος και σε χρήμα)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ergazomenos": "Μισθωτός",
+        "ergodotis": "Εργοδότης"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "ergazomenos": 2.05,
+            "ergodotis": 4.05
+          },
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 38/2024: μείωση ασφαλιστικών εισφορών από 1.1.2025 και πίνακας ΚΠΚ",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2024-12/%CE%95%CE%93%CE%9A.%2038_2024_%CE%9C%CE%95%CE%99%CE%A9%CE%A3%CE%97%20%CE%91%CE%A3%CE%A6.%20%CE%95%CE%99%CE%A3%CE%A6%CE%9F%CE%A1%CE%A9%CE%9D%20%CE%99%CE%94%CE%99%CE%A9%CE%A4.%20%CE%94%CE%99%CE%9A%CE%91%CE%99%CE%9F%CE%A5%202025%20%28971%CE%A546%CE%9C%CE%91%CE%A0%CE%A3-348%29.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eisfores-dypa",
+      "nombre": "Συνεισπραττόμενες εισφορές υπέρ ΔΥΠΑ",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ergazomenos": "Μισθωτός",
+        "ergodotis": "Εργοδότης"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "ergazomenos": 1.65,
+            "ergodotis": 1.41
+          },
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 1/2023: συνεισπραττόμενες εισφορές υπέρ ΔΥΠΑ",
+            "url": "https://www.efka.gov.gr/sites/default/files/2023-02/EGK_1_2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.anotato-orio-asfalisis",
+      "nombre": "Ανώτατο όριο μηνιαίων ασφαλιστέων αποδοχών",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 7572.62,
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 3/2025: ανώτατο όριο ασφαλιστέων αποδοχών από 1.1.2025",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2025-02/EGK_3_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7761.94,
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 4/2026: ανώτατο όριο ασφαλιστέων αποδοχών από 1.1.2026",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2026-01/%CE%95%CE%93%CE%9A%CE%A5%CE%9A%CE%9B%CE%99%CE%9F%CE%A3%204%20_%20%CE%91%CE%9D%CE%91%CE%A0%CE%A1%CE%9F%CE%A3%CE%91%CE%A1%CE%9C%CE%9F%CE%93%CE%97%20%CE%91%CE%9D%CE%A9%CE%A4%CE%91%CE%A4%CE%9F%CE%A5%20%CE%9F%CE%A1%CE%99%CE%9F%CE%A5%20%CE%9A%CE%91%CE%99%20%CE%91%CE%A3%CE%A6%CE%91%CE%9B%CE%99%CE%A3%CE%A4%CE%99%CE%9A%CE%A9%CE%9D%20%CE%9A%CE%91%CE%A4%CE%97%CE%93%CE%9F%CE%A1%CE%99%CE%A9%CE%9D%20%CE%91%CE%A0%CE%9F%201.1.2026%20%28%CE%A8%CE%9C6%CE%9146%CE%9C%CE%91%CE%A0%CE%A3-%CE%9A%CE%A4%CE%A5%29.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eisfores-eleftheron",
+      "nombre": "Μηνιαία εισφορά ελεύθερων επαγγελματιών (σύνταξη και υγεία) ανά ασφαλιστική κατηγορία",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "1": "1η κατηγορία",
+        "2": "2η κατηγορία",
+        "3": "3η κατηγορία",
+        "4": "4η κατηγορία",
+        "5": "5η κατηγορία",
+        "6": "6η κατηγορία"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 250.77,
+            "2": 300.93,
+            "3": 360.63,
+            "4": 433.47,
+            "5": 519.45,
+            "6": 675.87
+          },
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 6/2026: εισφορές μη μισθωτών (ελεύθεροι επαγγελματίες, αυτοαπασχολούμενοι) για το 2026",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2026-02/%CE%91%CF%83%CF%86%CE%B1%CE%BB%CE%B9%CF%83%CF%84%CE%B9%CE%BA%CE%AD%CF%82_%CE%B5%CE%B9%CF%83%CF%86%CE%BF%CF%81%CE%AD%CF%82_%CE%AD%CF%84%CE%BF%CF%85%CF%82_2026_%CE%BC%CE%B7_%CE%BC%CE%B9%CF%83%CE%B8%CF%89%CF%84%CF%8E%CE%BD_%CE%95%CE%BB%CE%B5%CF%85%CE%B8%CE%AD%CF%81%CF%89%CE%BD_%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CF%8E%CE%BD_%CE%91%CF%85%CF%84%CE%BF%CE%B1%CF%80%CE%B1%CF%83%CF%87%CE%BF%CE%BB%CE%BF%CF%8D%CE%BC%CE%B5%CE%BD%CF%89%CE%BD_%CE%91%CE%B3%CF%81%CE%BF%CF%84%CF%8E%CE%BD_V1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eisfores-eleftheron-syntaxi",
+      "nombre": "Μηνιαία εισφορά κύριας σύνταξης ελεύθερων επαγγελματιών ανά κατηγορία",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 185.09,
+            "2": 222.12,
+            "3": 281.82,
+            "4": 354.66,
+            "5": 440.64,
+            "6": 597.06
+          },
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 6/2026: εισφορές μη μισθωτών (ελεύθεροι επαγγελματίες, αυτοαπασχολούμενοι) για το 2026",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2026-02/%CE%91%CF%83%CF%86%CE%B1%CE%BB%CE%B9%CF%83%CF%84%CE%B9%CE%BA%CE%AD%CF%82_%CE%B5%CE%B9%CF%83%CF%86%CE%BF%CF%81%CE%AD%CF%82_%CE%AD%CF%84%CE%BF%CF%85%CF%82_2026_%CE%BC%CE%B7_%CE%BC%CE%B9%CF%83%CE%B8%CF%89%CF%84%CF%8E%CE%BD_%CE%95%CE%BB%CE%B5%CF%85%CE%B8%CE%AD%CF%81%CF%89%CE%BD_%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CF%8E%CE%BD_%CE%91%CF%85%CF%84%CE%BF%CE%B1%CF%80%CE%B1%CF%83%CF%87%CE%BF%CE%BB%CE%BF%CF%8D%CE%BC%CE%B5%CE%BD%CF%89%CE%BD_%CE%91%CE%B3%CF%81%CE%BF%CF%84%CF%8E%CE%BD_V1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eisfora-anergias-eleftheron",
+      "nombre": "Μηνιαία εισφορά υπέρ του κλάδου ανεργίας για ελεύθερους επαγγελματίες",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 6/2026: εισφορές μη μισθωτών (ελεύθεροι επαγγελματίες, αυτοαπασχολούμενοι) για το 2026",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2026-02/%CE%91%CF%83%CF%86%CE%B1%CE%BB%CE%B9%CF%83%CF%84%CE%B9%CE%BA%CE%AD%CF%82_%CE%B5%CE%B9%CF%83%CF%86%CE%BF%CF%81%CE%AD%CF%82_%CE%AD%CF%84%CE%BF%CF%85%CF%82_2026_%CE%BC%CE%B7_%CE%BC%CE%B9%CF%83%CE%B8%CF%89%CF%84%CF%8E%CE%BD_%CE%95%CE%BB%CE%B5%CF%85%CE%B8%CE%AD%CF%81%CF%89%CE%BD_%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CF%8E%CE%BD_%CE%91%CF%85%CF%84%CE%BF%CE%B1%CF%80%CE%B1%CF%83%CF%87%CE%BF%CE%BB%CE%BF%CF%8D%CE%BC%CE%B5%CE%BD%CF%89%CE%BD_%CE%91%CE%B3%CF%81%CE%BF%CF%84%CF%8E%CE%BD_V1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eisfores-epikourikis-eleftheron",
+      "nombre": "Μηνιαία εισφορά επικουρικής ασφάλισης μη μισθωτών ανά κατηγορία",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "0": "Χωρίς επικουρική",
+        "1": "1η κατηγορία",
+        "2": "2η κατηγορία",
+        "3": "3η κατηγορία"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 0,
+            "1": 46.57,
+            "2": 56.13,
+            "3": 66.88
+          },
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 6/2026: εισφορές μη μισθωτών (ελεύθεροι επαγγελματίες, αυτοαπασχολούμενοι) για το 2026",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2026-02/%CE%91%CF%83%CF%86%CE%B1%CE%BB%CE%B9%CF%83%CF%84%CE%B9%CE%BA%CE%AD%CF%82_%CE%B5%CE%B9%CF%83%CF%86%CE%BF%CF%81%CE%AD%CF%82_%CE%AD%CF%84%CE%BF%CF%85%CF%82_2026_%CE%BC%CE%B7_%CE%BC%CE%B9%CF%83%CE%B8%CF%89%CF%84%CF%8E%CE%BD_%CE%95%CE%BB%CE%B5%CF%85%CE%B8%CE%AD%CF%81%CF%89%CE%BD_%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CF%8E%CE%BD_%CE%91%CF%85%CF%84%CE%BF%CE%B1%CF%80%CE%B1%CF%83%CF%87%CE%BF%CE%BB%CE%BF%CF%8D%CE%BC%CE%B5%CE%BD%CF%89%CE%BD_%CE%91%CE%B3%CF%81%CE%BF%CF%84%CF%8E%CE%BD_V1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eisfores-efapax-eleftheron",
+      "nombre": "Μηνιαία εισφορά εφάπαξ παροχών μη μισθωτών ανά κατηγορία",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "0": "Χωρίς εφάπαξ",
+        "1": "1η κατηγορία",
+        "2": "2η κατηγορία",
+        "3": "3η κατηγορία"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 0,
+            "1": 31.05,
+            "2": 37.02,
+            "3": 44.18
+          },
+          "fuente": {
+            "organismo": "e-ΕΦΚΑ",
+            "titulo": "Εγκύκλιος 6/2026: εισφορές μη μισθωτών (ελεύθεροι επαγγελματίες, αυτοαπασχολούμενοι) για το 2026",
+            "url": "https://www.e-efka.gov.gr/sites/default/files/2026-02/%CE%91%CF%83%CF%86%CE%B1%CE%BB%CE%B9%CF%83%CF%84%CE%B9%CE%BA%CE%AD%CF%82_%CE%B5%CE%B9%CF%83%CF%86%CE%BF%CF%81%CE%AD%CF%82_%CE%AD%CF%84%CE%BF%CF%85%CF%82_2026_%CE%BC%CE%B7_%CE%BC%CE%B9%CF%83%CE%B8%CF%89%CF%84%CF%8E%CE%BD_%CE%95%CE%BB%CE%B5%CF%85%CE%B8%CE%AD%CF%81%CF%89%CE%BD_%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CF%8E%CE%BD_%CE%91%CF%85%CF%84%CE%BF%CE%B1%CF%80%CE%B1%CF%83%CF%87%CE%BF%CE%BB%CE%BF%CF%8D%CE%BC%CE%B5%CE%BD%CF%89%CE%BD_%CE%91%CE%B3%CF%81%CE%BF%CF%84%CF%8E%CE%BD_V1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.doro-christougennon",
+      "nombre": "Δώρο Χριστουγέννων: ποσό και αναλογία",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "mines": "Μισθοί για όλο το διάστημα",
+        "imeromisthia": "Ημερομίσθια για όλο το διάστημα",
+        "imeres-periodou": "Ημέρες από 1 Μαΐου έως 31 Δεκεμβρίου",
+        "imeres-analogias": "Ημέρες απασχόλησης ανά μερίδιο",
+        "meridia-analogias": "Μερίδια ανά διάστημα",
+        "meridia-synolou": "Μερίδια του πλήρους δώρου"
+      },
+      "calendario": [
+        {
+          "id": "pago-doro-christougennon",
+          "tipo": "pago",
+          "mes": 12,
+          "dia": 21,
+          "titulo": "Πληρωμή του δώρου Χριστουγέννων",
+          "texto": "Ο εργοδότης καταβάλλει το δώρο Χριστουγέννων το αργότερο στις 21 Δεκεμβρίου.",
+          "calculadora": "gr.doro-christougennon"
+        }
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1981-12-09",
+          "valor": {
+            "mines": 1,
+            "imeromisthia": 25,
+            "imeres-periodou": 245,
+            "imeres-analogias": 19,
+            "meridia-analogias": 2,
+            "meridia-synolou": 25
+          },
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ΚΥΑ 19040/1981, ΦΕΚ Β' 742/9.12.1981 (δώρα Χριστουγέννων και Πάσχα)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/02/1981/19810200742.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.doro-pascha",
+      "nombre": "Δώρο Πάσχα: ποσό και αναλογία",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "mines": "Μισθοί για όλο το διάστημα",
+        "imeromisthia": "Ημερομίσθια για όλο το διάστημα",
+        "imeres-periodou": "Ημέρες από 1 Ιανουαρίου έως 30 Απριλίου",
+        "imeres-analogias": "Ημέρες απασχόλησης ανά μερίδιο",
+        "meridia-analogias": "Μερίδια ανά διάστημα",
+        "meridia-synolou": "Μερίδια του πλήρους δώρου"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1981-12-09",
+          "valor": {
+            "mines": 0.5,
+            "imeromisthia": 15,
+            "imeres-periodou": 120,
+            "imeres-analogias": 8,
+            "meridia-analogias": 1,
+            "meridia-synolou": 15
+          },
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ΚΥΑ 19040/1981, ΦΕΚ Β' 742/9.12.1981 (δώρα Χριστουγέννων και Πάσχα)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/02/1981/19810200742.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.epidoma-adeias",
+      "nombre": "Επίδομα άδειας: ανώτατο ποσό",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "mines": "Μισθοί (μηνιαίος μισθός)",
+        "imeromisthia": "Ημερομίσθια"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1966-01-01",
+          "valor": {
+            "mines": 0.5,
+            "imeromisthia": 13
+          },
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Αποδοχές άδειας και επίδομα άδειας (άρθρο 3 ν. 4504/1966)",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/adeies-ergasiakes-scheseis/etisia-kanoniki-adeia/apodoches-adeias-kai-epidoma-adeias/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.imeres-adeias",
+      "nombre": "Ημέρες ετήσιας άδειας με αποδοχές",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "5-1": "Πενθήμερο, πρώτο έτος",
+        "5-2": "Πενθήμερο, δεύτερο έτος",
+        "5-3": "Πενθήμερο, τρίτο έτος και μετά",
+        "5-10": "Πενθήμερο, 10 έτη στον ίδιο εργοδότη ή 12 συνολικά",
+        "5-25": "Πενθήμερο, 25 έτη",
+        "6-1": "Εξαήμερο, πρώτο έτος",
+        "6-2": "Εξαήμερο, δεύτερο έτος",
+        "6-3": "Εξαήμερο, τρίτο έτος και μετά",
+        "6-10": "Εξαήμερο, 10 έτη στον ίδιο εργοδότη ή 12 συνολικά",
+        "6-25": "Εξαήμερο, 25 έτη"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-04-02",
+          "valor": {
+            "5-1": 20,
+            "5-2": 21,
+            "5-3": 22,
+            "5-10": 25,
+            "5-25": 26,
+            "6-1": 24,
+            "6-2": 25,
+            "6-3": 26,
+            "6-10": 30,
+            "6-25": 31
+          },
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Ημέρες ετήσιας άδειας (άρθρο 1 ν. 3302/2004, ΕΓΣΣΕ 2000 και 2008)",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/adeies-ergasiakes-scheseis/etisia-kanoniki-adeia/imeres-adeias/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.eti-afximenis-adeias",
+      "nombre": "Έτη υπηρεσίας για την αυξημένη άδεια",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "idios-ergodotis": "Στον ίδιο εργοδότη",
+        "synolika": "Σε οποιονδήποτε εργοδότη",
+        "megisti": "Για την ανώτατη άδεια"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-04-02",
+          "valor": {
+            "idios-ergodotis": 10,
+            "synolika": 12,
+            "megisti": 25
+          },
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Ημέρες ετήσιας άδειας (άρθρο 1 ν. 3302/2004, ΕΓΣΣΕ 2000 και 2008)",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/adeies-ergasiakes-scheseis/etisia-kanoniki-adeia/imeres-adeias/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.apozimiosi-mines",
+      "nombre": "Μηνιαίοι μισθοί αποζημίωσης απόλυσης χωρίς προειδοποίηση, ανά συμπληρωμένα έτη",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "1": "1 έως 4 έτη",
+        "4": "4 έως 6 έτη",
+        "6": "6 έως 8 έτη",
+        "8": "8 έως 10 έτη",
+        "10": "10 έτη",
+        "11": "11 έτη",
+        "12": "12 έτη",
+        "13": "13 έτη",
+        "14": "14 έτη",
+        "15": "15 έτη",
+        "16": "16 έτη και άνω"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-11-12",
+          "valor": {
+            "1": 2,
+            "4": 3,
+            "6": 4,
+            "8": 5,
+            "10": 6,
+            "11": 7,
+            "12": 8,
+            "13": 9,
+            "14": 10,
+            "15": 11,
+            "16": 12
+          },
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Αποζημίωση απόλυσης (ν. 4093/2012, ν. 3198/1955, άρθρο 64 ν. 4808/2021)",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/atomikes-symvaseis/symvasi-aoristou-chronou/apozimiosi-apolysis/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.apozimiosi-orio-imeromisthia",
+      "nombre": "Ανώτατο όριο μισθού για την αποζημίωση σε ημερομίσθια ανειδίκευτου (8 × 30)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-11-12",
+          "valor": 240,
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Αποζημίωση απόλυσης (ν. 4093/2012, ν. 3198/1955, άρθρο 64 ν. 4808/2021)",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/atomikes-symvaseis/symvasi-aoristou-chronou/apozimiosi-apolysis/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.apozimiosi-metavatiki",
+      "nombre": "Επιπλέον αποζημίωση για όσους είχαν 17 έτη στον ίδιο εργοδότη στις 12.11.2012",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "eti-apo": "Έτη από τα οποία προστίθεται",
+        "orio-misthou": "Ανώτατος μισθός υπολογισμού (€)",
+        "megistoi-misthoi": "Ανώτατοι επιπλέον μισθοί"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-11-12",
+          "valor": {
+            "eti-apo": 17,
+            "orio-misthou": 2000,
+            "megistoi-misthoi": 12
+          },
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Αποζημίωση απόλυσης (ν. 4093/2012, ν. 3198/1955, άρθρο 64 ν. 4808/2021)",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/atomikes-symvaseis/symvasi-aoristou-chronou/apozimiosi-apolysis/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.proeidopoiisi-mines",
+      "nombre": "Χρόνος προειδοποίησης απόλυσης σε μήνες, ανά συμπληρωμένα έτη",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "1": "12 μήνες έως 2 έτη",
+        "2": "2 έως 5 έτη",
+        "5": "5 έως 10 έτη",
+        "10": "10 έτη και άνω"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-11-12",
+          "valor": {
+            "1": 1,
+            "2": 2,
+            "5": 3,
+            "10": 4
+          },
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Καταγγελία σύμβασης από τον εργοδότη: χρόνος προειδοποίησης",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/atomikes-symvaseis/symvasi-aoristou-chronou/katangelia-symvasis-apo-ton-ergodoti/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.prosafxiseis-yperorias",
+      "nombre": "Προσαυξήσεις υπερεργασίας και υπερωρίας",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "yperergasia": "Υπερεργασία",
+        "nomimi": "Νόμιμη υπερωρία",
+        "me-adeia": "Υπερωρία πέρα από το ετήσιο όριο με άδεια",
+        "paranomi": "Μη νόμιμη υπερωρία"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-19",
+          "valor": {
+            "yperergasia": 20,
+            "nomimi": 40,
+            "me-adeia": 60,
+            "paranomi": 120
+          },
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Υπερωρία (άρθρο 58 ν. 4808/2021)",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/amoivi/ypervasi-chronikon-orion-amoivi/yperoria-2/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.orio-yperorion",
+      "nombre": "Ανώτατο όριο νόμιμων υπερωριών",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "etos": "Ώρες τον χρόνο",
+        "imera": "Ώρες την ημέρα"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-19",
+          "valor": {
+            "etos": 150,
+            "imera": 3
+          },
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Υπερωρία (άρθρο 58 ν. 4808/2021)",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/amoivi/ypervasi-chronikon-orion-amoivi/yperoria-2/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.prosafxisi-nychtas",
+      "nombre": "Προσαύξηση νυχτερινής εργασίας (22:00 έως 06:00)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1951-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Αμοιβή νυχτερινής εργασίας",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/amoivi/nychterina-amoivi/amoivi-nychterinis-ergasias-2/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.prosafxisi-kyriakis",
+      "nombre": "Προσαύξηση εργασίας Κυριακής ή αργίας",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1951-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Επιθεώρηση Εργασίας",
+            "titulo": "Αμοιβή για απασχόληση κατά Κυριακή ή ημέρα αργίας",
+            "url": "https://www.hli.gov.gr/ergasiakes-scheseis/nomothesia-ergasiakes-scheseis/amoivi/kyriaki-argies-amoivi/amoivi-gia-apascholisi-kata-kyriaki-i-imera-argias-2/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.tekmarto-pollaplasiastis",
+      "nombre": "Μισθοί του έτους για το ετήσιο ποσό του κατώτατου μισθού στο ελάχιστο τεκμαρτό εισόδημα",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2024-01-01",
+          "valor": 14,
+          "motivo": "Το άρθρο 28Α ΚΦΕ λέει «ετήσιο ποσό του μικτού κατώτατου μισθού» χωρίς να ορίζει πόσους μισθούς. Οι 14 μισθοί (12 και τα δώρα) δεν βρέθηκαν σε εγκύκλιο της ΑΑΔΕ.",
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5162/2024, ΦΕΚ Α' 198/05.12.2024, άρθρο 6 (άρθρο 28Α ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2024/20240100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gr.tekmarto-prosafxisi",
+      "nombre": "Προσαύξηση του ελάχιστου τεκμαρτού ανά τριετία μετά την έκτη χρονιά",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Εθνικό Τυπογραφείο (ΦΕΚ)",
+            "titulo": "ν. 5162/2024, ΦΕΚ Α' 198/05.12.2024, άρθρο 6 (άρθρο 28Α ΚΦΕ)",
+            "url": "https://ia37rg02wpsa01.blob.core.windows.net/fek/01/2024/20240100198.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}

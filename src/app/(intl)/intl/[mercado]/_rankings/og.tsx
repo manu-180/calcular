@@ -24,8 +24,15 @@ const VERDE = "#34d399";
 const CABECERAS = { "cache-control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" };
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
 const ESPERA_FUENTE_MS = 3000;
+// bn con Noto Sans Bengali: Geist no trae la escritura bengalí (ADR 0002, D14).
+// uk va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D15).
+// Fuente de respaldo por idioma para los glifos que Geist no tiene: los CJK y la «ʻ» (U+02BB) de oʻ y
+// gʻ del uzbeko latino (ADR 0002, D16).
+// ru va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D17).
+// ro va con Noto Sans de respaldo por si Geist no trae ș y ț con coma (U+0218 a U+021B; ADR 0002, D18).
+// el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
 // Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", he: "Noto Sans Hebrew" };
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 

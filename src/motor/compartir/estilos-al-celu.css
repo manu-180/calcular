@@ -1,0 +1,201 @@
+/* Diálogo «Instagram se sube desde el celular» (AlCelu.tsx). Oscuro en todo sitio: el QR blanco es la
+   única luz y ahí va la mirada. Sombras negras, nunca del color de marca. */
+
+.cy-celu {
+  --cy-celu-ease: var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
+  width: min(23rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 1.75rem;
+  background: transparent;
+  color: #f4efe6;
+  overflow: visible;
+}
+
+.cy-celu::backdrop {
+  background: rgb(4 8 7 / 0.62);
+  backdrop-filter: blur(6px);
+}
+
+.cy-celu[open] {
+  animation: cy-celu-entra 0.42s var(--cy-celu-ease) both;
+}
+
+.cy-celu[open]::backdrop {
+  animation: cy-celu-fondo 0.3s ease-out both;
+}
+
+@keyframes cy-celu-entra {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+}
+
+@keyframes cy-celu-fondo {
+  from {
+    opacity: 0;
+  }
+}
+
+.cy-celu-tarjeta {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  padding: 2rem 1.75rem 1.5rem;
+  border-radius: inherit;
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgb(214 41 118 / 0.16), rgb(214 41 118 / 0) 65%),
+    #0b1110;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.08),
+    0 30px 60px -24px rgb(0 0 0 / 0.7);
+  text-align: center;
+}
+
+.cy-celu-cerrar {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.06);
+  color: rgb(244 239 230 / 0.75);
+  cursor: pointer;
+  transition:
+    background-color 0.2s var(--cy-celu-ease),
+    color 0.2s var(--cy-celu-ease);
+}
+
+.cy-celu-cerrar svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.cy-celu-cerrar:hover {
+  background: rgb(255 255 255 / 0.12);
+  color: #fff;
+}
+
+.cy-celu-codigo {
+  position: relative;
+  width: 12.5rem;
+  margin-bottom: 0.5rem;
+  padding: 3px;
+  border-radius: 1.4rem;
+  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 28%, #d62976 55%, #962fbf 80%, #4f5bd5 100%);
+}
+
+.cy-celu-qr {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.2rem;
+}
+
+.cy-celu-logo {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.55rem;
+  border: 3px solid #fff;
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 28%, #d62976 55%, #962fbf 80%, #4f5bd5 100%);
+  color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.cy-celu-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cy-celu-titulo {
+  margin: 0;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.cy-celu-bajada {
+  margin: 0;
+  max-width: 19rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgb(244 239 230 / 0.68);
+  text-wrap: pretty;
+}
+
+.cy-celu-bajar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  margin-top: 0.5rem;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(244 239 230 / 0.82);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14);
+  transition:
+    background-color 0.2s var(--cy-celu-ease),
+    transform 0.2s var(--cy-celu-ease);
+}
+
+.cy-celu-bajar span {
+  display: grid;
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.cy-celu-bajar svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cy-celu-bajar:hover {
+  background: rgb(255 255 255 / 0.07);
+}
+
+.cy-celu-bajar:active {
+  transform: scale(0.97);
+}
+
+.cy-celu-cerrar:focus-visible,
+.cy-celu-bajar:focus-visible {
+  outline: 2px solid #34d399;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-celu[open],
+  .cy-celu[open]::backdrop {
+    animation: none;
+  }
+
+  .cy-celu-bajar,
+  .cy-celu-cerrar {
+    transition: none;
+  }
+}

@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosId: TextosUi<UiCalorias> = {
+  slug: "kalkulator-kalori",
+  ui: () => ({
+    sexo: "Jenis kelamin",
+    mujer: "Perempuan",
+    hombre: "Laki-laki",
+    edad: "Usia (tahun)",
+    peso: (u) => `Berat badan (${u})`,
+    altura: (u) => `Tinggi badan (${u})`,
+    pies: "Tinggi badan: kaki (ft)",
+    pulgadas: "Tinggi badan: inci (in)",
+    actividad: "Tingkat aktivitas",
+    sedentaria: "Sedikit atau tidak ada",
+    ligera: "Ringan (1 sampai 3 hari per minggu)",
+    moderada: "Sedang (3 sampai 5 hari per minggu)",
+    alta: "Tinggi (6 atau 7 hari per minggu)",
+    muyAlta: "Sangat tinggi (latihan berat atau pekerjaan fisik)",
+    objetivo: "Tujuan",
+    mantener: "Menjaga berat badan",
+    bajar: "Menurunkan berat badan secara bertahap",
+    subir: "Menaikkan berat badan secara bertahap",
+    basal: "Laju metabolisme basal (kkal per hari)",
+    basalAyuda: "Energi yang dibakar tubuh saat benar-benar beristirahat.",
+    mantenimiento: "Kalori untuk menjaga berat badan (kkal per hari)",
+    calObjetivo: "Kalori sesuai tujuan (kkal per hari)",
+    calObjetivoAyuda: "Perubahan yang moderat: 500 kkal lebih sedikit per hari untuk turun, 300 kkal lebih banyak untuk naik.",
+    errorEdad: "Rumus ini berlaku untuk usia 15 sampai 100 tahun.",
+    errorPeso: "Berat badan harus lebih dari 0.",
+    errorAltura: "Tinggi badan harus lebih dari 0.",
+    notaMinimo: (kcal) => `Untuk menurunkan berat badan, angkanya tidak dibuat di bawah ${kcal} kkal per hari. Makan lebih sedikit dari itu sebaiknya dengan pendampingan tenaga kesehatan.`,
+    aviso: "Ini perkiraan dengan rumus Mifflin-St Jeor. Kondisi tubuh setiap orang berbeda, jadi hasil ini tidak menggantikan konsultasi dengan dokter atau ahli gizi.",
+  }),
+};

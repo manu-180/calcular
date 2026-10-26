@@ -1,34 +1,68 @@
 import { definirUniversal } from "../tipos";
 import { casos } from "./casos";
+import { contenidoAr } from "./contenido/ar";
+import { contenidoBn } from "./contenido/bn";
+import { contenidoCs } from "./contenido/cs";
+import { contenidoDa } from "./contenido/da";
 import { contenidoDe } from "./contenido/de";
+import { contenidoEl } from "./contenido/el";
 import { contenidoEn } from "./contenido/en";
 import { contenidoEs } from "./contenido/es";
+import { contenidoFi } from "./contenido/fi";
 import { contenidoFr } from "./contenido/fr";
 import { contenidoHe } from "./contenido/he";
+import { contenidoHu } from "./contenido/hu";
+import { contenidoId } from "./contenido/id";
 import { contenidoIt } from "./contenido/it";
 import { contenidoJa } from "./contenido/ja";
 import { contenidoKo } from "./contenido/ko";
+import { contenidoNb } from "./contenido/nb";
 import { contenidoNl } from "./contenido/nl";
+import { contenidoPl } from "./contenido/pl";
 import { contenidoPt } from "./contenido/pt";
+import { contenidoRo } from "./contenido/ro";
+import { contenidoRu } from "./contenido/ru";
+import { contenidoSv } from "./contenido/sv";
+import { contenidoTh } from "./contenido/th";
+import { contenidoTr } from "./contenido/tr";
+import { contenidoUk } from "./contenido/uk";
+import { contenidoUz } from "./contenido/uz";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiEdad } from "./definicion";
+import { textosAr } from "./textos/ar";
+import { textosBn } from "./textos/bn";
+import { textosCs } from "./textos/cs";
+import { textosDa } from "./textos/da";
 import { textosDe } from "./textos/de";
+import { textosEl } from "./textos/el";
 import { textosEn } from "./textos/en";
 import { textosEs } from "./textos/es";
+import { textosFi } from "./textos/fi";
 import { textosFr } from "./textos/fr";
 import { textosHe } from "./textos/he";
+import { textosHu } from "./textos/hu";
+import { textosId } from "./textos/id";
 import { textosIt } from "./textos/it";
 import { textosJa } from "./textos/ja";
 import { textosKo } from "./textos/ko";
+import { textosNb } from "./textos/nb";
 import { textosNl } from "./textos/nl";
+import { textosPl } from "./textos/pl";
 import { textosPt } from "./textos/pt";
+import { textosRo } from "./textos/ro";
+import { textosRu } from "./textos/ru";
+import { textosSv } from "./textos/sv";
+import { textosTh } from "./textos/th";
+import { textosTr } from "./textos/tr";
+import { textosUk } from "./textos/uk";
+import { textosUz } from "./textos/uz";
 import { textosZh } from "./textos/zh";
 
 export default definirUniversal<UiEdad>({
   id: "edad",
   concepto: "edad",
   definir,
-  textos: { de: textosDe, en: textosEn, es: textosEs, fr: textosFr, he: textosHe, it: textosIt, ja: textosJa, ko: textosKo, nl: textosNl, pt: textosPt, zh: textosZh },
-  contenido: { de: contenidoDe, en: contenidoEn, es: contenidoEs, fr: contenidoFr, he: contenidoHe, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nl: contenidoNl, pt: contenidoPt, zh: contenidoZh },
+  textos: { ar: textosAr, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hu: textosHu, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hu: contenidoHu, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });

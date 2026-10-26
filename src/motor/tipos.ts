@@ -49,10 +49,17 @@ export type EstadoPublicacion = "borrador" | "interno" | "publicado";
 // voseo, que solo existe en español. Los nombres quedaron en español por historia del repo.
 // ja, ko y zh tienen un solo registro para la web y sus mercados van con "usted": です/ます en
 // japonés, 해요체 en coreano y 您 en chino (ADR 0002, D8). Los diccionarios lo escriben en base.
+// El indonesio también: «Anda», el registro de bancos y servicios digitales (ADR 0002, D11).
+// El turco también: «siz» con las formas corteses («hesaplayın», «girin»), el registro de los bancos
+// y de e-Devlet (ADR 0002, D12).
+// El bengalí también: «আপনি» con las formas verbales corteses (ADR 0002, D14).
+// El tailandés también: cortés y neutro, sin pronombre ni partículas ครับ/ค่ะ (ADR 0002, D13).
+// El uzbeko (escritura latina) también: «Siz» con las formas corteses («kiriting», «hisoblang»), el
+// registro de soliq.uz, my.gov.uz y los bancos (ADR 0002, D16).
 export type Trato = "vos" | "tu" | "usted";
 // ar tiene un solo registro (árabe estándar moderno) y sus mercados van con "usted"; la dirección
 // de escritura sale del idioma (i18n/direccion.ts), no del mercado.
-export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "ar", "he"] as const;
+export const IDIOMAS = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "pl", "sv", "da", "nb", "fi", "ar", "id", "tr", "bn", "th", "uk", "uz", "ru", "ro", "cs", "el", "hu", "he"] as const;
 export type Idioma = (typeof IDIOMAS)[number];
 export type SistemaUnidades = "metrico" | "imperial";
 

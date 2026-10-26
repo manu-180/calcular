@@ -1,4 +1,4 @@
-import { conVariantes } from "../../comun/locales";
+import { conVariantes, PT_LUSOFONIA } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAhorroRetiro } from "../definicion";
 
@@ -45,4 +45,10 @@ const portugal = (): Partial<UiAhorroRetiro> => ({
   observacionPublica: "Aqui entram só as suas poupanças. Não inclui a pensão da Segurança Social que possa receber.",
 });
 
-export const textosPt = conVariantes(base, { "pt-PT": portugal });
+// Fuera de Portugal (Angola, Mozambique, Cabo Verde...) la norma es la europea, pero los impuestos y
+// la seguridad social tienen otro nombre: lo propio de Portugal se dice en palabras de cualquier país.
+const lusofonia = (): Partial<UiAhorroRetiro> => ({
+  observacionPublica: "Aqui entram só as suas poupanças. Não inclui a pensão pública que possa receber.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal, [PT_LUSOFONIA]: lusofonia });

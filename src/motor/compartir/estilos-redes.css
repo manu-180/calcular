@@ -1,0 +1,269 @@
+/* Panel de compartir con tarjeta (Redes.tsx). Usa los tokens globales del sitio (--cy-tinta, --cy-linea,
+   --cy-sombra-alzada, --ease-fluid) con valores de respaldo, así funciona igual en calcular.ar. Vetos
+   de Manuel: sombras negras (nunca del color de marca), sin marquee. El movimiento se apaga con
+   prefers-reduced-motion; la función no. */
+
+.cy-redes {
+  --cy-redes-tinta: var(--cy-tinta, #0b1110);
+  --cy-redes-linea: var(--cy-linea, rgb(11 17 16 / 0.1));
+  --cy-redes-verde: #34d399;
+  --cy-redes-ease: var(--ease-fluid, cubic-bezier(0.22, 1, 0.36, 1));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+@media (min-width: 52rem) {
+  .cy-redes {
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.cy-redes-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.cy-redes-escena {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1rem 1rem;
+  border-radius: 1.75rem;
+  background:
+    radial-gradient(120% 70% at 50% 0%, rgb(255 255 255 / 0.9), rgb(255 255 255 / 0) 70%),
+    linear-gradient(180deg, rgb(11 17 16 / 0.035), rgb(11 17 16 / 0.07));
+  box-shadow: inset 0 0 0 1px var(--cy-redes-linea);
+}
+
+.cy-redes-formatos {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.85);
+  box-shadow: inset 0 0 0 1px var(--cy-redes-linea);
+}
+
+.cy-redes-formato {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0 0.95rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(11 17 16 / 0.62);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s var(--cy-redes-ease),
+    color 0.2s var(--cy-redes-ease);
+}
+
+.cy-redes-formato[aria-checked="true"] {
+  background: var(--cy-redes-tinta);
+  color: #fff;
+}
+
+.cy-redes-forma {
+  display: block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1.5px solid currentColor;
+  border-radius: 0.15rem;
+}
+
+.cy-redes-forma[data-forma="historia"] {
+  width: 0.5rem;
+  height: 0.85rem;
+}
+
+.cy-redes-marco {
+  margin: 0;
+  width: min(15rem, 64vw);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: var(--cy-redes-tinta);
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.08),
+    0 1px 2px rgb(0 0 0 / 0.08),
+    0 24px 48px -20px rgb(0 0 0 / 0.45);
+  transition: width 0.45s var(--cy-redes-ease);
+}
+
+.cy-redes[data-formato="cuadrado"] .cy-redes-marco {
+  width: min(17.5rem, 78vw);
+  border-radius: 1.25rem;
+}
+
+.cy-redes-marco img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: cy-redes-entra 0.5s var(--cy-redes-ease) both;
+}
+
+@keyframes cy-redes-entra {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+}
+
+.cy-redes-bajar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cy-redes-tinta);
+  text-decoration: underline;
+  text-decoration-color: rgb(11 17 16 / 0.25);
+  text-underline-offset: 0.25em;
+}
+
+.cy-redes-bajar .cy-redes-icono {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.cy-redes-canales {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem;
+  align-content: start;
+}
+
+.cy-redes-canal {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 1.125rem;
+  background: #fff;
+  color: var(--cy-redes-tinta);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: start;
+  cursor: pointer;
+  box-shadow:
+    inset 0 0 0 1px var(--cy-redes-linea),
+    0 1px 2px rgb(0 0 0 / 0.04);
+  transition:
+    transform 0.2s var(--cy-redes-ease),
+    box-shadow 0.2s var(--cy-redes-ease);
+}
+
+.cy-redes-canal:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-redes-canal:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 0 0 1px rgb(11 17 16 / 0.16),
+      0 10px 24px -14px rgb(0 0 0 / 0.35);
+  }
+}
+
+.cy-redes-canal:focus-visible,
+.cy-redes-formato:focus-visible,
+.cy-redes-bajar:focus-visible {
+  outline: 2px solid var(--cy-redes-verde);
+  outline-offset: 3px;
+}
+
+.cy-redes-icono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+.cy-redes-icono svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Instagram es el canal nuevo y el que pide la tarjeta vertical: ocupa la fila entera. */
+.cy-redes-ig {
+  grid-column: 1 / -1;
+  min-height: 4.25rem;
+  padding: 0.75rem 1.25rem 0.75rem 0.75rem;
+  background:
+    radial-gradient(90% 140% at 0% 0%, rgb(52 211 153 / 0.22), rgb(52 211 153 / 0) 60%),
+    var(--cy-redes-tinta);
+  color: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+}
+
+.cy-redes-ig .cy-redes-icono {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.6rem;
+  border-radius: 0.875rem;
+  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 28%, #d62976 55%, #962fbf 80%, #4f5bd5 100%);
+  color: #fff;
+}
+
+.cy-redes-ig-texto {
+  display: grid;
+  gap: 0.0625rem;
+  font-size: 1rem;
+}
+
+.cy-redes-ig-texto small {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.66);
+  letter-spacing: 0.02em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cy-redes-ig:hover {
+    box-shadow: 0 14px 30px -14px rgb(0 0 0 / 0.55);
+  }
+}
+
+.cy-redes-aviso {
+  grid-column: 1 / -1;
+  min-height: 1.25rem;
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--cy-acento-tinta, #047857);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cy-redes-marco,
+  .cy-redes-canal,
+  .cy-redes-formato {
+    transition: none;
+  }
+
+  .cy-redes-marco img {
+    animation: none;
+  }
+
+  .cy-redes-canal:hover,
+  .cy-redes-canal:active {
+    transform: none;
+  }
+}

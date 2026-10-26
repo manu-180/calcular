@@ -150,6 +150,67 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       "zh-SG": ZH_HANS,
     },
   },
+  pl: {
+    base: {
+      titulo: "Przeprowadzka za granicę albo wypłata z innego kraju?",
+      etiqueta: "Linki sponsorowane",
+      socios: {
+        wise: "Konto w wielu walutach do wysyłania i odbierania pieniędzy między krajami, po średnim kursie rynkowym i z opłatą podaną z góry.",
+        deel: "Umowy i wypłaty dla osób, które pracują z jednego kraju dla firmy z innego.",
+      },
+      nota: "Jeśli ktoś otworzy konto przez te linki, serwis może dostać prowizję. Osoba, która się rejestruje, nie płaci przez to więcej.",
+      nuevaPestana: "otwiera się w nowej karcie",
+    },
+  },
+  sv: {
+    base: {
+      titulo: "Flytta utomlands eller få betalt från ett annat land?",
+      etiqueta: "Sponsrade länkar",
+      socios: {
+        wise: "Ett konto i flera valutor för att ta emot och skicka pengar mellan länder, till mittkurs och med avgiften synlig från början.",
+        deel: "Avtal och utbetalningar för den som jobbar från ett land åt ett företag i ett annat.",
+      },
+      nota: "Om ett konto öppnas via de här länkarna kan sajten få en provision. Den som registrerar sig betalar inget extra för det.",
+      nuevaPestana: "öppnas i en ny flik",
+    },
+  },
+  da: {
+    base: {
+      titulo: "Flytte til udlandet eller få løn fra et andet land?",
+      etiqueta: "Sponsorerede links",
+      socios: {
+        wise: "En konto i flere valutaer til at sende og modtage penge mellem lande til midtkursen, med gebyret vist på forhånd.",
+        deel: "Kontrakter og udbetalinger til folk, der arbejder fra ét land for en virksomhed i et andet.",
+      },
+      nota: "Bliver en konto oprettet via disse links, kan siden få en provision. Den, der opretter sig, betaler ikke mere for det.",
+      nuevaPestana: "åbner i en ny fane",
+    },
+  },
+  nb: {
+    base: {
+      titulo: "Skal flytte utenlands eller få betalt fra et annet land?",
+      etiqueta: "Sponsede lenker",
+      socios: {
+        wise: "Konto i flere valutaer for å sende og motta penger mellom land, til midtkurs og med gebyret vist på forhånd.",
+        deel: "Kontrakter og utbetalinger for dem som jobber fra ett land for et selskap i et annet.",
+      },
+      nota: "Hvis noen åpner en konto via disse lenkene, kan nettstedet få en provisjon. Den som registrerer seg, betaler ikke mer for det.",
+      nuevaPestana: "åpnes i en ny fane",
+    },
+  },
+  // Finés (ADR 0002, D9): sin segunda persona, con pasiva.
+  fi: {
+    base: {
+      titulo: "Muutto ulkomaille tai palkka toisesta maasta?",
+      etiqueta: "Sponsoroidut linkit",
+      socios: {
+        wise: "Monivaluuttatili rahan vastaanottamiseen ja lähettämiseen maasta toiseen markkinoiden keskikurssilla, palkkio näkyy etukäteen.",
+        deel: "Sopimukset ja maksut niille, jotka tekevät töitä yhdestä maasta toisen maan yritykselle.",
+      },
+      nota: "Jos tili avataan näiden linkkien kautta, sivusto voi saada palkkion. Rekisteröityvä ei maksa siitä mitään ylimääräistä.",
+      nuevaPestana: "avautuu uuteen välilehteen",
+    },
+  },
   // Árabe estándar moderno (ADR 0002, D10), impersonal como los demás.
   ar: {
     base: {
@@ -161,6 +222,144 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       },
       nota: "إذا فُتح حساب من هذه الروابط، قد يحصل الموقع على عمولة. ولا يدفع من يسجّل شيئًا إضافيًا مقابل ذلك.",
       nuevaPestana: "يُفتح في علامة تبويب جديدة",
+    },
+  },
+  // Indonesio (ADR 0002, D11): impersonal como los demás, frases cortas.
+  id: {
+    base: {
+      titulo: "Berencana pindah ke luar negeri atau menerima pembayaran dari negara lain?",
+      etiqueta: "Tautan bersponsor",
+      socios: {
+        wise: "Rekening multimata uang untuk mengirim dan menerima uang antarnegara dengan kurs tengah pasar. Biayanya terlihat sebelum transaksi.",
+        deel: "Kontrak dan pembayaran bagi orang yang bekerja dari satu negara untuk perusahaan di negara lain.",
+      },
+      nota: "Jika rekening dibuka lewat tautan ini, situs ini bisa mendapat komisi. Biaya untuk yang mendaftar tidak bertambah.",
+      nuevaPestana: "terbuka di tab baru",
+    },
+  },
+  tr: {
+    base: {
+      titulo: "Yurt dışına taşınmayı ya da başka bir ülkeden ödeme almayı mı düşünüyorsunuz?",
+      etiqueta: "Sponsorlu bağlantılar",
+      socios: {
+        wise: "Ülkeler arasında piyasa ortalaması kurla para almak ve göndermek için çok para birimli hesap; ücreti işlemden önce görünür.",
+        deel: "Bir ülkeden başka bir ülkedeki şirket için çalışanlara sözleşme ve ödeme hizmeti.",
+      },
+      nota: "Bu bağlantılarla hesap açılırsa site komisyon alabilir. Kaydolan kişi bu yüzden daha fazla ödemez.",
+      nuevaPestana: "yeni sekmede açılır",
+    },
+  },
+  // Bengalí (ADR 0002, D14): «আপনি» con las formas corteses y dari «।».
+  bn: {
+    base: {
+      titulo: "অন্য দেশে যাওয়ার কথা ভাবছেন, বা বিদেশ থেকে আয় করেন?",
+      etiqueta: "স্পনসর করা লিংক",
+      socios: {
+        wise: "কয়েকটি মুদ্রার একটি অ্যাকাউন্ট: বাজারের মধ্যবর্তী হারে দেশ থেকে দেশে টাকা পাঠান ও গ্রহণ করুন, ফি আগেই দেখানো হয়।",
+        deel: "এক দেশে থেকে অন্য দেশের কোম্পানির জন্য যাঁরা কাজ করেন, তাঁদের চুক্তি আর পেমেন্টের ব্যবস্থা।",
+      },
+      nota: "এই লিংক দিয়ে অ্যাকাউন্ট খুললে সাইটটি কমিশন পেতে পারে। এর জন্য আপনাকে বাড়তি কিছু দিতে হয় না।",
+      nuevaPestana: "নতুন ট্যাবে খুলবে",
+    },
+  },
+  // Tailandés (ADR 0002, D13): sin pronombre ni ครับ/ค่ะ, sin punto final.
+  th: {
+    base: {
+      titulo: "กำลังจะย้ายไปต่างประเทศ หรือรับเงินจากต่างประเทศอยู่หรือไม่",
+      etiqueta: "ลิงก์ที่ได้รับการสนับสนุน",
+      socios: {
+        wise: "บัญชีหลายสกุลเงินสำหรับรับและโอนเงินระหว่างประเทศ ด้วยอัตราแลกเปลี่ยนกลางของตลาดและค่าธรรมเนียมที่แจ้งไว้ชัดเจน",
+        deel: "สัญญาจ้างและการรับเงินสำหรับผู้ที่ทำงานจากประเทศหนึ่งให้บริษัทในอีกประเทศหนึ่ง",
+      },
+      nota: "หากเปิดบัญชีผ่านลิงก์เหล่านี้ เว็บไซต์อาจได้รับค่าคอมมิชชัน ผู้สมัครไม่ต้องจ่ายเพิ่ม",
+      nuevaPestana: "เปิดในแท็บใหม่",
+    },
+  },
+  uk: {
+    base: {
+      titulo: "Переїзд за кордон або оплата з іншої країни?",
+      etiqueta: "Партнерські посилання",
+      socios: {
+        wise: "Рахунок у кількох валютах, щоб отримувати й надсилати гроші між країнами за середнім ринковим курсом, з комісією, яку видно заздалегідь.",
+        deel: "Договори та виплати для тих, хто працює з однієї країни на компанію з іншої.",
+      },
+      nota: "Якщо рахунок відкривають за цими посиланнями, сайт може отримати комісію. Той, хто реєструється, не платить через це більше.",
+      nuevaPestana: "відкривається в новій вкладці",
+    },
+  },
+  // Uzbeko (ADR 0002, D16): impersonal, como los demás, para que sirva sin el trato del mercado.
+  uz: {
+    base: {
+      titulo: "Boshqa mamlakatga koʻchish yoki chet eldan maosh olish rejasi bormi?",
+      etiqueta: "Homiylik havolalari",
+      socios: {
+        wise: "Bir nechta valyutadagi hisob: mamlakatlar oʻrtasida bozorning oʻrtacha kursi boʻyicha pul yuborish va qabul qilish, komissiya oldindan koʻrsatiladi.",
+        deel: "Bir mamlakatda turib boshqa mamlakatdagi kompaniyaga ishlaydiganlar uchun shartnomalar va toʻlovlar.",
+      },
+      nota: "Shu havolalar orqali hisob ochilsa, sayt komissiya olishi mumkin. Roʻyxatdan oʻtgan kishi buning uchun ortiqcha toʻlamaydi.",
+      nuevaPestana: "yangi varaqda ochiladi",
+    },
+  },
+  ru: {
+    base: {
+      titulo: "Переезжаете за границу или получаете оплату из другой страны?",
+      etiqueta: "Партнерские ссылки",
+      socios: {
+        wise: "Счет в нескольких валютах, чтобы получать и отправлять деньги между странами по среднему рыночному курсу, с комиссией, которую видно заранее.",
+        deel: "Договоры и выплаты для тех, кто работает из одной страны на компанию из другой.",
+      },
+      nota: "Если счет открывают по этим ссылкам, сайт может получить комиссию. Тот, кто регистрируется, не платит из-за этого больше.",
+      nuevaPestana: "откроется в новой вкладке",
+    },
+  },
+  // Rumano (ADR 0002, D18): «dumneavoastră» implícito y 2.ª del plural.
+  ro: {
+    base: {
+      titulo: "Vă mutați în altă țară sau primiți bani din străinătate?",
+      etiqueta: "Linkuri de afiliere",
+      socios: {
+        wise: "Un cont în mai multe valute, ca să primiți și să trimiteți bani între țări la cursul mediu al pieței, cu un comision afișat dinainte.",
+        deel: "Contracte și plăți pentru cei care lucrează dintr-o țară pentru o firmă din altă țară.",
+      },
+      nota: "Dacă deschideți un cont prin aceste linkuri, site-ul poate primi un comision. Cine se înregistrează nu plătește nimic în plus din cauza asta.",
+      nuevaPestana: "se deschide într-o filă nouă",
+    },
+  },
+  cs: {
+    base: {
+      titulo: "Stěhujete se do zahraničí nebo platíte z jiné země?",
+      etiqueta: "Partnerské odkazy",
+      socios: {
+        wise: "Účet ve více měnách pro příjem a odesílání peněz mezi zeměmi za středový tržní kurz, s poplatkem, který vidíte předem.",
+        deel: "Smlouvy a výplaty pro ty, kdo pracují z jedné země pro firmu z jiné.",
+      },
+      nota: "Pokud si přes tyto odkazy otevřete účet, web může dostat provizi. Vy kvůli tomu nezaplatíte nic navíc.",
+      nuevaPestana: "otevře se v nové kartě",
+    },
+  },
+  el: {
+    base: {
+      titulo: "Μετακομίζετε στο εξωτερικό ή πληρώνεστε από άλλη χώρα;",
+      etiqueta: "Συνεργαζόμενοι σύνδεσμοι",
+      socios: {
+        wise: "Λογαριασμός σε πολλά νομίσματα για να λαμβάνετε και να στέλνετε χρήματα μεταξύ χωρών με τη μέση τιμή της αγοράς, με χρέωση που βλέπετε από πριν.",
+        deel: "Συμβάσεις και πληρωμές για όσους εργάζονται από μια χώρα για εταιρεία άλλης χώρας.",
+      },
+      nota: "Αν ανοίξετε λογαριασμό μέσω αυτών των συνδέσμων, ο ιστότοπος μπορεί να λάβει προμήθεια. Εσείς δεν πληρώνετε τίποτα παραπάνω.",
+      nuevaPestana: "ανοίγει σε νέα καρτέλα",
+    },
+  },
+  // Húngaro (ADR 0002, D21): tegezés.
+  hu: {
+    base: {
+      titulo: "Külföldre költözöl, vagy más országból fizetsz?",
+      etiqueta: "Partnerlinkek",
+      socios: {
+        wise: "Többdevizás számla, amellyel középárfolyamon fogadhatsz és küldhetsz pénzt országok között, előre látható díjjal.",
+        deel: "Szerződések és kifizetések azoknak, akik egy országból dolgoznak egy másik ország cégének.",
+      },
+      nota: "Ha ezeken a linkeken keresztül nyitsz számlát, az oldal jutalékot kaphat. Neked ez semmibe sem kerül.",
+      nuevaPestana: "új lapon nyílik meg",
     },
   },
   // Hebreo (ADR 0002, D22), impersonal como los demás.

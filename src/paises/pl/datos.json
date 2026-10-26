@@ -1,0 +1,1147 @@
+{
+  "mercado": "pl",
+  "datos": [
+    {
+      "id": "pl.placa-minimalna",
+      "nombre": "Minimalne wynagrodzenie za pracę",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "proximaRevision": "2027-09-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 4806,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Rozporządzenie Rady Ministrów z 11 września 2025 r. (Dz.U. 2025 poz. 1242)",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250001242",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 4950,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Rozporządzenie Rady Ministrów z 14 września 2026 r. (Dz.U. 2026 poz. 1213)",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001213",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.stawka-godzinowa",
+      "nombre": "Minimalna stawka godzinowa",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "proximaRevision": "2027-09-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 31.4,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Rozporządzenie Rady Ministrów z 11 września 2025 r. (Dz.U. 2025 poz. 1242)",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250001242",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 32.3,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Rozporządzenie Rady Ministrów z 14 września 2026 r. (Dz.U. 2026 poz. 1213)",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001213",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.skala-pit",
+      "nombre": "Skala podatkowa PIT (art. 27 ust. 1)",
+      "tipo": "escala",
+      "unidad": "PLN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 120000,
+              "tasa": 12
+            },
+            {
+              "desde": 120000,
+              "hasta": null,
+              "tasa": 32
+            }
+          ],
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.kwota-zmniejszajaca",
+      "nombre": "Kwota zmniejszająca podatek (roczna)",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3600,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.podatek-liniowy",
+      "nombre": "Podatek liniowy (art. 30c)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 19,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.podatek-belki",
+      "nombre": "Zryczałtowany podatek od odsetek i zysków kapitałowych (art. 30a)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 19,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.podatek-od-zbycia",
+      "nombre": "Podatek od zysków ze sprzedaży papierów wartościowych, funduszy i walut wirtualnych (art. 30b)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 19,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.koszty-pracownicze",
+      "nombre": "Miesięczne koszty uzyskania przychodu z umowy o pracę (art. 22 ust. 2)",
+      "tipo": "mapa",
+      "unidad": "PLN",
+      "etiquetas": {
+        "standard": "Pracujesz w miejscowości zamieszkania",
+        "dojazd": "Dojeżdżasz z innej miejscowości"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "standard": 250,
+            "dojazd": 300
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.koszty-procentowe",
+      "nombre": "Koszty uzyskania przychodu w procentach (art. 22 ust. 9)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "Koszty 20 %",
+        "autorskie": "Koszty autorskie 50 %"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "standard": 20,
+            "autorskie": 50
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.limit-malej-umowy",
+      "nombre": "Kwota umowy zlecenia lub o dzieło, do której pobiera się podatek zryczałtowany (art. 30 ust. 1 pkt 5a)",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 200,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.ryczalt-malej-umowy",
+      "nombre": "Zryczałtowany podatek od małych umów (art. 30 ust. 1 pkt 5a)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.limit-ulgi-dla-mlodych",
+      "nombre": "Roczny limit zwolnienia dla osób do 26. roku życia",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 85528,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku dochodowym od osób fizycznych, tekst jednolity Dz.U. 2026 poz. 592",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.skladki-pracownika",
+      "nombre": "Składki ZUS finansowane przez ubezpieczonego (art. 16 i 22)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "emerytalne": "Emerytalna",
+        "rentowe": "Rentowa",
+        "chorobowe": "Chorobowa"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "emerytalne": 9.76,
+            "rentowe": 1.5,
+            "chorobowe": 2.45
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o systemie ubezpieczeń społecznych, tekst jednolity Dz.U. 2026 poz. 199",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.skladki-platnika",
+      "nombre": "Składki ZUS finansowane przez płatnika (art. 16 i 22)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "emerytalne": "Emerytalna",
+        "rentowe": "Rentowa"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "emerytalne": 9.76,
+            "rentowe": 6.5
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o systemie ubezpieczeń społecznych, tekst jednolity Dz.U. 2026 poz. 199",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.skladka-wypadkowa",
+      "nombre": "Stopa składki wypadkowej przyjęta przez ZUS w wyliczeniach",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1.67,
+          "fuente": {
+            "organismo": "Zakład Ubezpieczeń Społecznych",
+            "titulo": "Wysokość składek na ubezpieczenia społeczne w 2026 r.",
+            "url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.fundusze",
+      "nombre": "Składki na Fundusz Pracy, Fundusz Solidarnościowy i FGŚP w 2026 r.",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "fp": "Fundusz Pracy",
+        "fs": "Fundusz Solidarnościowy",
+        "fgsp": "Fundusz Gwarantowanych Świadczeń Pracowniczych"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "fp": 1.0,
+            "fs": 1.45,
+            "fgsp": 0.1
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa budżetowa na rok 2026, art. 24 do 27",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000062",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.limit-30-krotnosci",
+      "nombre": "Roczna podstawa składek emerytalnej i rentowej (limit 30-krotności)",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 282600,
+          "fuente": {
+            "organismo": "Zakład Ubezpieczeń Społecznych",
+            "titulo": "Wysokość składek na ubezpieczenia społeczne w 2026 r.",
+            "url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.prognozowane-wynagrodzenie",
+      "nombre": "Prognozowane przeciętne wynagrodzenie miesięczne",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 9420,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa budżetowa na rok 2026, art. 24 do 27",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000062",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.podstawa-zus-pelna",
+      "nombre": "Minimalna podstawa składek przedsiębiorcy (60 % prognozowanego wynagrodzenia)",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 5652,
+          "fuente": {
+            "organismo": "Zakład Ubezpieczeń Społecznych",
+            "titulo": "Wysokość składek na ubezpieczenia społeczne w 2026 r.",
+            "url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.podstawa-zus-preferencyjna",
+      "nombre": "Preferencyjna podstawa składek (30 % minimalnego wynagrodzenia)",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1441.8,
+          "fuente": {
+            "organismo": "Zakład Ubezpieczeń Społecznych",
+            "titulo": "Wysokość składek na ubezpieczenia społeczne w 2026 r.",
+            "url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.skladka-zdrowotna",
+      "nombre": "Składka zdrowotna (art. 79 ust. 1)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o świadczeniach opieki zdrowotnej, tekst jednolity Dz.U. 2025 poz. 1461, art. 79 i 79a",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250001461",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.skladka-zdrowotna-liniowa",
+      "nombre": "Składka zdrowotna przy podatku liniowym (art. 79a)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4.9,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o świadczeniach opieki zdrowotnej, tekst jednolity Dz.U. 2025 poz. 1461, art. 79 i 79a",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250001461",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.zdrowotna-podstawa-minimalna",
+      "nombre": "Minimalna miesięczna podstawa składki zdrowotnej przedsiębiorcy (skala i liniowy)",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "proximaRevision": "2027-02-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-01",
+          "hasta": "2026-01-31",
+          "valor": 3499.5,
+          "fuente": {
+            "organismo": "Zakład Ubezpieczeń Społecznych",
+            "titulo": "Wysokość składek na ubezpieczenia społeczne w 2026 r.",
+            "url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-02-01",
+          "hasta": "2027-01-31",
+          "valor": 4806,
+          "fuente": {
+            "organismo": "Zakład Ubezpieczeń Społecznych",
+            "titulo": "Wysokość składek na ubezpieczenia społeczne w 2026 r.",
+            "url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.zdrowotna-ryczalt",
+      "nombre": "Podstawa składki zdrowotnej na ryczałcie w 2026 r.",
+      "tipo": "mapa",
+      "unidad": "PLN",
+      "etiquetas": {
+        "do-60000": "Przychód do 60 000 zł",
+        "do-300000": "Przychód od 60 000 do 300 000 zł",
+        "ponad-300000": "Przychód ponad 300 000 zł"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "do-60000": 5537.18,
+            "do-300000": 9228.64,
+            "ponad-300000": 16611.55
+          },
+          "fuente": {
+            "organismo": "Zakład Ubezpieczeń Społecznych",
+            "titulo": "Wysokość składek na ubezpieczenia społeczne w 2026 r.",
+            "url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.limit-zdrowotnej-liniowy",
+      "nombre": "Roczny limit składki zdrowotnej do odliczenia przy podatku liniowym",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 14100,
+          "fuente": {
+            "organismo": "Monitor Polski",
+            "titulo": "Obwieszczenie Ministra Finansów i Gospodarki z 12 grudnia 2025 r. (M.P. 2025 poz. 1274)",
+            "url": "https://eli.gov.pl/eli/MP/2025/1274/ogl/pol/pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.stawki-ryczaltu",
+      "nombre": "Stawki ryczałtu od przychodów ewidencjonowanych (art. 12 ust. 1)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "17": "17 % (wolne zawody)",
+        "15": "15 % (m.in. usługi doradcze i finansowe)",
+        "14": "14 % (m.in. usługi medyczne, architektoniczne, inżynierskie)",
+        "12": "12 % (m.in. usługi IT)",
+        "10": "10 % (kupno i sprzedaż nieruchomości)",
+        "8-5": "8,5 % (pozostałe usługi)",
+        "5-5": "5,5 % (produkcja, budowlanka)",
+        "3": "3 % (handel, gastronomia)",
+        "2": "2 % (sprzedaż produktów rolnych)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "17": 17,
+            "15": 15,
+            "14": 14,
+            "12": 12,
+            "10": 10,
+            "8-5": 8.5,
+            "5-5": 5.5,
+            "3": 3,
+            "2": 2
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o zryczałtowanym podatku dochodowym, tekst jednolity Dz.U. 2025 poz. 843, art. 12",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250000843",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.odliczenie-zdrowotnej-ryczalt",
+      "nombre": "Część zapłaconej składki zdrowotnej odliczana od przychodu na ryczałcie (art. 11 ust. 1a)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o zryczałtowanym podatku dochodowym, tekst jednolity Dz.U. 2025 poz. 843, art. 12",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250000843",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.wspolczynnik-malego-zus",
+      "nombre": "Współczynnik podstawy małego ZUS plus (art. 18c ust. 3)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o systemie ubezpieczeń społecznych, tekst jednolity Dz.U. 2026 poz. 199",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.limit-malego-zus",
+      "nombre": "Limit przychodu z poprzedniego roku dla małego ZUS plus",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 120000,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o systemie ubezpieczeń społecznych, tekst jednolity Dz.U. 2026 poz. 199",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.stawki-vat",
+      "nombre": "Stawki VAT",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "podstawowa": "23 %",
+        "obnizona": "8 %",
+        "obnizona-5": "5 %"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "podstawowa": 23,
+            "obnizona": 8,
+            "obnizona-5": 5
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku od towarów i usług, tekst jednolity Dz.U. 2026 poz. 1263, art. 41 i 146ef",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001263",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.stawki-pcc",
+      "nombre": "Stawki podatku od czynności cywilnoprawnych (art. 7 ust. 1)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "sprzedaz": "Sprzedaż nieruchomości lub rzeczy ruchomej",
+        "prawa": "Sprzedaż innych praw majątkowych",
+        "pozyczka": "Umowa pożyczki"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sprzedaz": 2,
+            "prawa": 1,
+            "pozyczka": 0.5
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku od czynności cywilnoprawnych, tekst jednolity Dz.U. 2026 poz. 191, art. 7 i 9",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000191",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.pcc-prog-zwolnienia",
+      "nombre": "Próg zwolnienia z PCC przy sprzedaży rzeczy ruchomych (art. 9 pkt 6)",
+      "tipo": "numero",
+      "unidad": "PLN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o podatku od czynności cywilnoprawnych, tekst jednolity Dz.U. 2026 poz. 191, art. 7 i 9",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000191",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.stopa-referencyjna",
+      "nombre": "Stopa referencyjna NBP",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-10-05",
+          "hasta": "2025-05-07",
+          "valor": 5.75,
+          "fuente": {
+            "organismo": "Narodowy Bank Polski",
+            "titulo": "Podstawowe stopy procentowe NBP, archiwum",
+            "url": "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-05-08",
+          "hasta": "2025-07-02",
+          "valor": 5.25,
+          "fuente": {
+            "organismo": "Narodowy Bank Polski",
+            "titulo": "Podstawowe stopy procentowe NBP, archiwum",
+            "url": "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-07-03",
+          "hasta": "2025-09-03",
+          "valor": 5.0,
+          "fuente": {
+            "organismo": "Narodowy Bank Polski",
+            "titulo": "Podstawowe stopy procentowe NBP, archiwum",
+            "url": "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-09-04",
+          "hasta": "2025-10-08",
+          "valor": 4.75,
+          "fuente": {
+            "organismo": "Narodowy Bank Polski",
+            "titulo": "Podstawowe stopy procentowe NBP, archiwum",
+            "url": "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-10-09",
+          "hasta": "2025-11-05",
+          "valor": 4.5,
+          "fuente": {
+            "organismo": "Narodowy Bank Polski",
+            "titulo": "Podstawowe stopy procentowe NBP, archiwum",
+            "url": "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-11-06",
+          "hasta": "2025-12-03",
+          "valor": 4.25,
+          "fuente": {
+            "organismo": "Narodowy Bank Polski",
+            "titulo": "Podstawowe stopy procentowe NBP, archiwum",
+            "url": "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-12-04",
+          "hasta": "2026-03-04",
+          "valor": 4.0,
+          "fuente": {
+            "organismo": "Narodowy Bank Polski",
+            "titulo": "Podstawowe stopy procentowe NBP, archiwum",
+            "url": "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-05",
+          "valor": 3.75,
+          "fuente": {
+            "organismo": "Narodowy Bank Polski",
+            "titulo": "Podstawowe stopy procentowe NBP, archiwum",
+            "url": "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.marza-odsetek-za-opoznienie",
+      "nombre": "Odsetki ustawowe za opóźnienie: stopa referencyjna plus (art. 481 § 2 k.c.)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5.5,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Kodeks cywilny, tekst jednolity Dz.U. 2026 poz. 795, art. 481 § 2",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000795",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.marza-odsetek-handlowych",
+      "nombre": "Odsetki za opóźnienie w transakcjach handlowych: stopa referencyjna plus",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o przeciwdziałaniu nadmiernym opóźnieniom w transakcjach handlowych, Dz.U. 2023 poz. 1790, art. 4 pkt 3",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20230001790",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.wymiar-urlopu",
+      "nombre": "Wymiar urlopu wypoczynkowego (art. 154 § 1 k.p.)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "ponizej-10": "Staż krótszy niż 10 lat",
+        "od-10": "Staż co najmniej 10 lat"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ponizej-10": 20,
+            "od-10": 26
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Kodeks pracy, tekst jednolity Dz.U. 2026 poz. 1245",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001245",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.staz-za-szkole",
+      "nombre": "Lata stażu urlopowego za ukończoną szkołę (art. 155 § 1 k.p.)",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "brak": "Bez szkoły zawodowej, średniej ani wyższej",
+        "zasadnicza": "Zasadnicza szkoła zawodowa",
+        "srednia-zawodowa": "Średnia szkoła zawodowa",
+        "srednia-ogolna": "Liceum ogólnokształcące",
+        "policealna": "Szkoła policealna",
+        "wyzsza": "Studia wyższe"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "brak": 0,
+            "zasadnicza": 3,
+            "srednia-zawodowa": 5,
+            "srednia-ogolna": 4,
+            "policealna": 6,
+            "wyzsza": 8
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Kodeks pracy, tekst jednolity Dz.U. 2026 poz. 1245",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001245",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.dodatek-za-nadgodziny",
+      "nombre": "Dodatek za pracę w godzinach nadliczbowych (art. 151¹ § 1 k.p.)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "zwykly": "Zwykły dzień pracy",
+        "noc-swieto": "Noc, niedziela, święto, dzień wolny za niedzielę"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zwykly": 50,
+            "noc-swieto": 100
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Kodeks pracy, tekst jednolity Dz.U. 2026 poz. 1245",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001245",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.okres-wypowiedzenia",
+      "nombre": "Okres wypowiedzenia umowy o pracę (art. 36 § 1 k.p.)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "krocej-niz-6-mies": "Staż krótszy niż 6 miesięcy (tygodnie)",
+        "od-6-mies": "Staż co najmniej 6 miesięcy (miesiące)",
+        "od-3-lat": "Staż co najmniej 3 lata (miesiące)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "krocej-niz-6-mies": 2,
+            "od-6-mies": 1,
+            "od-3-lat": 3
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Kodeks pracy, tekst jednolity Dz.U. 2026 poz. 1245",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001245",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.odprawa",
+      "nombre": "Odprawa przy zwolnieniu z przyczyn niedotyczących pracownika (art. 8 ust. 1), w pensjach",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "krocej-niz-2": "Staż krótszy niż 2 lata",
+        "od-2-do-8": "Staż od 2 do 8 lat",
+        "ponad-8": "Staż ponad 8 lat"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "krocej-niz-2": 1,
+            "od-2-do-8": 2,
+            "ponad-8": 3
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o szczególnych zasadach rozwiązywania stosunków pracy, Dz.U. 2026 poz. 1195, art. 8",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001195",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.limit-odprawy",
+      "nombre": "Górny limit odprawy w minimalnych wynagrodzeniach (art. 8 ust. 4)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o szczególnych zasadach rozwiązywania stosunków pracy, Dz.U. 2026 poz. 1195, art. 8",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001195",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pl.zasilek-chorobowy",
+      "nombre": "Wysokość zasiłku chorobowego (art. 11)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "podstawowy": "Zwykła choroba",
+        "ciaza": "Ciąża, wypadek w drodze do pracy, dawstwo"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "podstawowy": 80,
+            "ciaza": 100
+          },
+          "fuente": {
+            "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+            "titulo": "Ustawa o świadczeniach pieniężnych w razie choroby i macierzyństwa, Dz.U. 2026 poz. 854, art. 11",
+            "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000854",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}

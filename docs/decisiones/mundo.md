@@ -138,7 +138,7 @@ página sale del `<main>` de 56rem a 72rem (el ancho de calcularya): a 56rem la 
 **Barra de herramientas.** El `<article>` lleva `data-sin-herramientas`: si no, la barra de calcular.ar
 serializaba el sueldo en el hash del link que comparte, justo lo que la página promete no hacer.
 
-**Puente.** `src/components/mundo/PuenteMundo.tsx`, debajo del resultado de sueldo neto, con el mismo A/B
+**Puente.** Desde el 25/10/2026 la línea de sueldo neto lleva a las horas de trabajo (`src/components/horas/PuenteHoras.tsx`, ver `horas-ar.md`) y el mundo queda a un toque desde ahí. Antes era `PuenteMundo.tsx`, debajo del resultado de sueldo neto, con el mismo A/B
 50 % (`variantePuente`) y los eventos `puente_visto` / `puente_clic`. El traspaso va por
 `src/lib/mundo/traspaso-ar.ts`: bruto del recibo × `PAGAS_AR`, que ahora vive en `pagas-ar.ts` para que
 el navegador no cargue `ar.ts` (IPC, registro, escalas).
@@ -155,3 +155,28 @@ así que en calcular.ar va al sitemap (`alternates.languages` de `/sueldo-en-el-
 **Pendiente fuera de esta rama.** `next.config.ts`: sumar `"/sueldo-en-el-mundo/og":
 ["./public/banderas/*.svg"]` a `outputFileTracingIncludes`. Mientras tanto la OG lee la bandera de
 `origenAR()` por red si no está en el disco.
+
+## Bélgica y Países Bajos con 1-3 % en el nivel medio (2026-10-24): no es un error
+
+Los rankings los mostraban con 0,9 % (BE) y 3,0 % (NL) de carga en 30.000 dólares internacionales.
+Se corrieron las dos calculadoras en euros contra la cuenta a mano con las fórmulas oficiales y dan
+al centavo:
+
+- NL, 23.000 €/año: box 1 35,75 % = 8.222,50 − algemene heffingskorting 3.115 − arbeidskorting
+  (996 + 31,009 % × 11.035 = 4.417,84) = 689,66 de impuesto (3,0 %). Tarifas y kortingen 2026 de la
+  Belastingdienst («Voorlopige aanslag 2026: gebruikte tarieven en heffingskortingen»).
+- BE, 2.000 €/mes alleenstaand: RSZ 13,07 % = 261,40, anulada por el werkbonus (299,53 desde el
+  1/9/2026, socialsecurity.be); bedrijfsvoorheffing 167,01 − fiscale werkbonus 126,60 = 40,41;
+  BBSZ 2,30. Neto 1.957,29 (2,1 %).
+
+La causa es el nivel: 30.000 dólares internacionales son ~23.000 € al año con la PPA de 2025, cerca
+del mínimo legal de los dos países, donde los créditos al trabajo se comen casi todo el impuesto. Las
+anclas quedaron en check_mundo (rigen para 2026; con los tramos de 2027 se recalculan a mano).
+
+## 2026-10-26: panel simple en calcular.ar
+
+`MundoCliente` con `simple` (solo calcular.ar): se pone lo que se cobra **en mano** por mes (el bruto sale
+por bisección sobre la curva neto del país, `brutoAnualDesdeNeto`), sin selector de país ni mes/año. El
+panel abre con la fecha del Estado, «Donde más te rendiría» y compartir con puntos; el bloque «Tu tarjeta
+para compartir» de abajo no se muestra. El ranking aclara que su fila argentina reparte el aguinaldo en el
+año (por eso da más que lo escrito). calcularya no cambia.

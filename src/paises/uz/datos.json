@@ -1,0 +1,653 @@
+{
+  "mercado": "uz",
+  "datos": [
+    {
+      "id": "uz.mhtekm",
+      "nombre": "Mehnatga haq toʻlashning eng kam miqdori (oylik)",
+      "tipo": "numero",
+      "unidad": "UZS",
+      "proximaRevision": "2027-08-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "hasta": "2026-08-31",
+          "valor": 1271000,
+          "fuente": {
+            "organismo": "Oʻzbekiston Respublikasi Prezidentining rasmiy veb-sayti",
+            "titulo": "Prezidentning 2025-yil 3-iyundagi Farmoni (ish haqi, pensiyalar va nafaqalar)",
+            "url": "https://president.uz/oz/lists/view/8180",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "3-band, (b) kichik bandi"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 1360000,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Prezidentning 2026-yil 23-iyundagi PF-115-son Farmoni",
+            "url": "https://lex.uz/uz/docs/-8283656",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "3-band, (b) kichik bandi"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.bhm",
+      "nombre": "Bazaviy hisoblash miqdori (BHM)",
+      "tipo": "numero",
+      "unidad": "UZS",
+      "proximaRevision": "2027-08-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "hasta": "2026-08-31",
+          "valor": 412000,
+          "fuente": {
+            "organismo": "Oʻzbekiston Respublikasi Prezidentining rasmiy veb-sayti",
+            "titulo": "Prezidentning 2025-yil 3-iyundagi Farmoni (ish haqi, pensiyalar va nafaqalar)",
+            "url": "https://president.uz/oz/lists/view/8180",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "3-band, (b) kichik bandi"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 440000,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Prezidentning 2026-yil 23-iyundagi PF-115-son Farmoni",
+            "url": "https://lex.uz/uz/docs/-8283656",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "3-band, (b) kichik bandi"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.jshds",
+      "nombre": "Jismoniy shaxslardan olinadigan daromad soligʻi stavkalari",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "rezident-mehnat": "Rezident: ish haqi va boshqa daromadlar",
+        "rezident-dividend": "Rezident: dividend va foizlar",
+        "norezident-mehnat": "Norezident: mehnat va fuqarolik-huquqiy shartnomalar",
+        "norezident-dividend": "Norezident: dividend va foizlar"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rezident-mehnat": 12,
+            "rezident-dividend": 5,
+            "norezident-mehnat": 12,
+            "norezident-dividend": 10
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Soliq kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-4674902",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "381 va 382-moddalar"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.ijtimoiy-soliq",
+      "nombre": "Ijtimoiy soliq stavkalari",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "umumiy": "Umumiy stavka (korxonalar, tadbirkorlar)",
+        "budjet": "Budjet tashkilotlari"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "umumiy": 12,
+            "budjet": 25
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Soliq kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-4674902",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "405-modda"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.qqs",
+      "nombre": "Qoʻshilgan qiymat soligʻi (QQS) stavkasi",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Soliq kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-4674902",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "258-modda, 2022-yil 30-dekabrdagi OʻRQ-812-son Qonun tahririda"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.aylanma-soligi",
+      "nombre": "Aylanmadan olinadigan soliq stavkalari",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "umumiy": "Iqtisodiyotning barcha tarmoqlari",
+        "chakana-shahar": "Chakana savdo: aholisi 100 ming va undan koʻp shaharlar",
+        "chakana-boshqa": "Chakana savdo: boshqa aholi punktlari",
+        "chakana-togli": "Chakana savdo: borish qiyin va togʻli tumanlar",
+        "tamaki": "Tamaki mahsulotlari savdosi",
+        "ytt": "Yakka tartibdagi tadbirkor yoki oʻzini oʻzi band qilgan shaxs"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "umumiy": 4,
+            "chakana-shahar": 4,
+            "chakana-boshqa": 2,
+            "chakana-togli": 1,
+            "tamaki": 4,
+            "ytt": 1
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Soliq kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-4674902",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "467-modda, 2025-yil 25-dekabrdagi OʻRQ-1108-son Qonun tahririda"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.aylanma-chegarasi",
+      "nombre": "Aylanmadan olinadigan soliq uchun yillik daromad chegarasi",
+      "tipo": "numero",
+      "unidad": "UZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000000000,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Soliq kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-4674902",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "461-modda birinchi qismi"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.ishdan-boshatish-nafaqasi",
+      "nombre": "Ishdan boʻshatish nafaqasining eng kam miqdori",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "3-yilgacha": "Uch yilgacha",
+        "3-5-yil": "Uch yildan besh yilgacha",
+        "5-10-yil": "Besh yildan oʻn yilgacha",
+        "10-15-yil": "Oʻn yildan oʻn besh yilgacha",
+        "15-yildan-ortiq": "Oʻn besh yildan ortiq"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3-yilgacha": 50,
+            "3-5-yil": 75,
+            "5-10-yil": 100,
+            "10-15-yil": 150,
+            "15-yildan-ortiq": 200
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Mehnat kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-6257288",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "173-moddaning uchinchi qismi"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.ogohlantirish-oy",
+      "nombre": "Tashkilot tugatilganda yoki shtat qisqarganda ogohlantirish muddati",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Mehnat kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-6257288",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "165-modda birinchi qismining 1-bandi"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.ogohlantirish-kun",
+      "nombre": "Boshqa asoslarda ogohlantirish muddatlari",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "malaka": "Malaka yetarli emasligi (ish beruvchi tashabbusi)",
+        "aybli": "Xodimning aybli harakatlari (ish beruvchi tashabbusi)",
+        "xodim": "Xodimning oʻz xohishi bilan"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "malaka": 14,
+            "aybli": 3,
+            "xodim": 14
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Mehnat kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-6257288",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "165-modda (ikki hafta, uch kun) va 160-modda (oʻn toʻrt kalendar kun)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.ortiqcha-ish",
+      "nombre": "Ish vaqtidan tashqari, dam olish kuni va tungi ish uchun eng kam hissa",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "dastlabki-2-soat": "Ish vaqtidan tashqari ishning kundagi birinchi ikki soati",
+        "keyingi-soatlar": "Ikki soatdan ortiq qismi",
+        "noqulay": "Noqulay mehnat sharoitlarida har bir soat",
+        "dam-olish": "Dam olish yoki bayram kunidagi ish",
+        "tungi": "Tungi vaqtdagi ish"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-11-12",
+          "valor": {
+            "dastlabki-2-soat": 1.5,
+            "keyingi-soatlar": 2,
+            "noqulay": 2,
+            "dam-olish": 2,
+            "tungi": 1.5
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Mehnat kodeksi 262-modda (2025-yil 11-noyabrdagi OʻRQ-1095-son Qonun tahririda)",
+            "url": "https://lex.uz/uz/docs/-6257288",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "262-modda (OʻRQ-1095, rasmiy eʼlon qilingan 12.11.2025), 263 va 264-moddalar"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.tatil-kunlari",
+      "nombre": "Har yilgi asosiy eng kam mehnat taʼtili",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Mehnat kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-6257288",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "217-modda (kalendar kunlar)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.ish-kunlari-ortacha",
+      "nombre": "Ish kunlarining oʻrtacha oylik soni",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25.3,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Mehnat kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-6257288",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "257-modda"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.kasallik-staj-koeffitsiyenti",
+      "nombre": "Vaqtincha mehnatga layoqatsizlik nafaqasining staj koeffitsiyenti",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "6-96-oy": "Sugʻurta staji 6 oydan 96 oygacha",
+        "97-oy-va-ortiq": "Sugʻurta staji 97 oy va undan ortiq"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "6-96-oy": 60,
+            "97-oy-va-ortiq": 80
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Vazirlar Mahkamasining 2025-yil 17-dekabrdagi 796-son qarori (davlat ijtimoiy sugʻurtasi boʻyicha toʻlovlar nizomi)",
+            "url": "https://lex.uz/uz/docs/-7926684",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "4-ilova, 18-band; 2026-yil 1-iyuldan yuzaga kelgan hodisalarga"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.kasallik-imtiyoz",
+      "nombre": "Staj koeffitsiyentining oshirilishi (I-II guruh nogironligi, 4 va undan ortiq farzand)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Vazirlar Mahkamasining 2025-yil 17-dekabrdagi 796-son qarori (davlat ijtimoiy sugʻurtasi boʻyicha toʻlovlar nizomi)",
+            "url": "https://lex.uz/uz/docs/-7926684",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "4-ilova, 19-band"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.kasallik-kamaytirish",
+      "nombre": "Yil davomida 77 kalendar kundan oshgan davr uchun kamaytirish",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Vazirlar Mahkamasining 2025-yil 17-dekabrdagi 796-son qarori (davlat ijtimoiy sugʻurtasi boʻyicha toʻlovlar nizomi)",
+            "url": "https://lex.uz/uz/docs/-7926684",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "4-ilova, 19-band"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.homiladorlik-staj-koeffitsiyenti",
+      "nombre": "Homiladorlik va tugʻish nafaqasining staj koeffitsiyenti",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "10-24-oy": "Sugʻurta staji 10 oydan 24 oygacha",
+        "25-60-oy": "Sugʻurta staji 25 oydan 60 oygacha",
+        "61-oy-va-ortiq": "Sugʻurta staji 61 oy va undan ortiq"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "10-24-oy": 75,
+            "25-60-oy": 85,
+            "61-oy-va-ortiq": 100
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Vazirlar Mahkamasining 2025-yil 17-dekabrdagi 796-son qarori (davlat ijtimoiy sugʻurtasi boʻyicha toʻlovlar nizomi)",
+            "url": "https://lex.uz/uz/docs/-7926684",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "4-ilova, 24-band"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.homiladorlik-kunlari",
+      "nombre": "Homiladorlik va tugʻish taʼtili",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "oddiy": "Odatdagi tugʻruq (70 + 56 kun)",
+        "murakkab": "Tugʻish qiyin kechgan yoki ikki va undan ortiq bola (70 + 70 kun)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "oddiy": 126,
+            "murakkab": 140
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Vazirlar Mahkamasining 2025-yil 17-dekabrdagi 796-son qarori (davlat ijtimoiy sugʻurtasi boʻyicha toʻlovlar nizomi)",
+            "url": "https://lex.uz/uz/docs/-7926684",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "4-ilova, 2-band (tugʻruqqacha 70, tugʻruqdan keyin 56 yoki 70 kalendar kun)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.nafaqa-ish-haqi-chegarasi",
+      "nombre": "Nafaqa hisobida inobatga olinadigan oʻrtacha ish haqining chegarasi",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Vazirlar Mahkamasining 2025-yil 17-dekabrdagi 796-son qarori (davlat ijtimoiy sugʻurtasi boʻyicha toʻlovlar nizomi)",
+            "url": "https://lex.uz/uz/docs/-7926684",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "4-ilova, 26-band: MHTEKMning oʻn baravari"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.mol-mulk-soligi",
+      "nombre": "Jismoniy shaxslarning mol-mulk soligʻi stavkalari",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "asosiy": "Uy-joy, kvartira, dala hovli (200 kv.m gacha) va boshqa imoratlar",
+        "shahar-200-500": "Shahardagi uy-joy, 200 dan 500 kv.m gacha",
+        "shahar-500-dan-ortiq": "Shahardagi uy-joy, 500 kv.m dan ortiq",
+        "boshqa-200-dan-ortiq": "Boshqa aholi punktlarida, 200 kv.m dan ortiq",
+        "tadbirkorlik": "Tadbirkorlik yoki ijaraga berish uchun, noturar joylar"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "asosiy": 0.36,
+            "shahar-200-500": 0.48,
+            "shahar-500-dan-ortiq": 0.64,
+            "boshqa-200-dan-ortiq": 0.48,
+            "tadbirkorlik": 1.5
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Soliq kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-4674902",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "422-modda, 2025-yil 25-dekabrdagi OʻRQ-1108-son Qonun tahririda"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.mol-mulk-eng-kam-baza",
+      "nombre": "Mol-mulk soligʻi bazasining eng kam miqdori",
+      "tipo": "numero",
+      "unidad": "UZS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 42000000,
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Soliq kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-4674902",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "420-moddaning ikkinchi qismi"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.yer-soligi",
+      "nombre": "Jismoniy shaxslardan olinadigan yer soligʻining bazaviy stavkalari (1 kv.m uchun)",
+      "tipo": "mapa",
+      "unidad": "UZS",
+      "etiquetas": {
+        "toshkent-1": "Toshkent shahri, 1-zona",
+        "toshkent-2": "Toshkent shahri, 2-zona",
+        "toshkent-3": "Toshkent shahri, 3-zona",
+        "toshkent-4": "Toshkent shahri, 4-zona",
+        "toshkent-5": "Toshkent shahri, 5-zona",
+        "qoraqalpogiston": "Qoraqalpogʻiston Respublikasi",
+        "andijon": "Andijon viloyati",
+        "buxoro": "Buxoro viloyati",
+        "jizzax": "Jizzax viloyati",
+        "qashqadaryo": "Qashqadaryo viloyati",
+        "navoiy": "Navoiy viloyati",
+        "namangan": "Namangan viloyati",
+        "samarqand": "Samarqand viloyati",
+        "surxondaryo": "Surxondaryo viloyati",
+        "sirdaryo": "Sirdaryo viloyati",
+        "toshkent-viloyati": "Toshkent viloyati",
+        "fargona": "Fargʻona viloyati",
+        "xorazm": "Xorazm viloyati"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "toshkent-1": 1856,
+            "toshkent-2": 1574,
+            "toshkent-3": 1290,
+            "toshkent-4": 1014,
+            "toshkent-5": 725,
+            "qoraqalpogiston": 377,
+            "andijon": 463,
+            "buxoro": 377,
+            "jizzax": 377,
+            "qashqadaryo": 377,
+            "navoiy": 377,
+            "namangan": 463,
+            "samarqand": 463,
+            "surxondaryo": 353,
+            "sirdaryo": 297,
+            "toshkent-viloyati": 392,
+            "fargona": 392,
+            "xorazm": 377
+          },
+          "fuente": {
+            "organismo": "Lex.uz (Adliya vazirligi)",
+            "titulo": "Oʻzbekiston Respublikasining Soliq kodeksi (amaldagi tahrir)",
+            "url": "https://lex.uz/uz/docs/-4674902",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "437-moddaning birinchi qismi, 2025-yil 25-dekabrdagi OʻRQ-1108-son Qonun tahririda"
+          }
+        }
+      ]
+    },
+    {
+      "id": "uz.kurs-usd",
+      "nombre": "AQSh dollarining Markaziy bank belgilagan rasmiy kursi",
+      "tipo": "numero",
+      "unidad": "UZS",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-10-24",
+          "motivo": "cbu.uz (rasmiy kurslar va ularning JSON arxivi) Oʻzbekistondan tashqaridan ulanishni rad etadi; kursni birlamchi manbada oʻqib boʻlmadi."
+        }
+      ]
+    }
+  ]
+}

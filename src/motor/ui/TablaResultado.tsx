@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad } from "../formato";
+import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, textoDelLocale } from "../formato";
 import type { ColumnaTabla, ContextoSerializado, DefinicionCalculadora, FechaISO, ResultadoBase, TablaResultado as Tabla, ValorResultado } from "../tipos";
 
 const FILAS_VISIBLES = 12;
@@ -10,7 +10,7 @@ function esTabla(v: ValorResultado): v is Tabla {
 
 function celda(valor: number | string | null, formato: ColumnaTabla["formato"], contexto: ContextoSerializado): string {
   if (valor === null) return "";
-  if (formato === "texto") return String(valor);
+  if (formato === "texto") return textoDelLocale(String(valor), contexto.locale);
   if (formato === "fecha") return typeof valor === "string" ? formatearFecha(valor as FechaISO, contexto.locale, "corta") : String(valor);
   if (typeof valor !== "number" || !Number.isFinite(valor)) return String(valor);
   switch (formato) {

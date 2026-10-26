@@ -38,7 +38,7 @@ jobs:
       - name: Juntar los datos
         run: |
           mkdir -p "$RUNNER_TEMP/datos/historial"
-          cp src/lib/horas/precios.json "$RUNNER_TEMP/datos/"
+          cp src/lib/horas/precios.json src/lib/horas/cotidianos-ar.json "$RUNNER_TEMP/datos/"
           cp src/motor/rankings/historial/* "$RUNNER_TEMP/datos/historial/"
       - uses: actions/upload-artifact@v4
         with:
@@ -74,6 +74,8 @@ jobs:
           D="$RUNNER_TEMP/datos"
           node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))' "$D/precios.json"
           cp "$D/precios.json" src/lib/horas/precios.json
+          node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))' "$D/cotidianos-ar.json"
+          cp "$D/cotidianos-ar.json" src/lib/horas/cotidianos-ar.json
           for f in "$D"/historial/*; do
             n=$(basename "$f")
             case "$n" in
@@ -81,14 +83,14 @@ jobs:
               indice.ts) cp "$f" src/motor/rankings/historial/indice.ts ;;
             esac
           done
-          if [ -z "$(git status --porcelain -- src/lib/horas/precios.json src/motor/rankings/historial)" ]; then
+          if [ -z "$(git status --porcelain -- src/lib/horas/precios.json src/lib/horas/cotidianos-ar.json src/motor/rankings/historial)" ]; then
             echo "Nada que publicar: main ya tiene estos datos."
             exit 0
           fi
           git config user.name "manu-180"
           git config user.email "157671390+manu-180@users.noreply.github.com"
-          git add -- src/lib/horas/precios.json src/motor/rankings/historial
-          git commit -q -m "datos(mensual): precios de horas y foto de rankings $(date -u +%Y-%m)" -m "Ronda mensual automática (.github/workflows/mensual.yml), validada con check_horas y check_rankings."
+          git add -- src/lib/horas/precios.json src/lib/horas/cotidianos-ar.json src/motor/rankings/historial
+          git commit -q -m "datos(mensual): precios de horas y foto de rankings $(date -u +%Y-%m)" -m "Ronda mensual automática (.github/workflows/mensual.yml), validada con check_horas, check_horas_ar y check_rankings."
           for intento in 1 2 3; do
             git fetch -q origin main
             if ! git rebase -q origin/main; then

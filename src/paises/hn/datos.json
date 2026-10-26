@@ -535,6 +535,17 @@
             "verificadoEl": "2026-10-07"
           }
         }
+      ],
+      "calendario": [
+        {
+          "id": "pago-decimo-cuarto-mes",
+          "tipo": "pago",
+          "mes": 6,
+          "dia": 30,
+          "titulo": "Último día para pagar el décimo cuarto mes",
+          "texto": "El Reglamento del Décimo Cuarto Mes (Acuerdo 02-95, artículo 5) manda pagarlo en el mes de junio, salvo que las partes pacten otra fecha.",
+          "calculadora": "hn.decimo-cuarto-mes"
+        }
       ]
     },
     {
@@ -555,6 +566,17 @@
             "verificadoEl": "2026-10-12",
             "nota": "Decreto 178-86: 100 % con el año de trabajo continuo, o la proporción si al 31 de diciembre no cumple 12 meses; base de 30 días de salario ordinario."
           }
+        }
+      ],
+      "calendario": [
+        {
+          "id": "pago-decimo-tercer-mes",
+          "tipo": "pago",
+          "mes": 12,
+          "dia": 31,
+          "titulo": "Último día para pagar el décimo tercer mes",
+          "texto": "El Decreto 112-82 (artículo 11) manda pagar el aguinaldo en el mes de diciembre, salvo que las partes pacten otra fecha.",
+          "calculadora": "hn.decimo-tercer-mes"
         }
       ]
     },

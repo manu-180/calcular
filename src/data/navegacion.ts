@@ -182,6 +182,20 @@ const DEFS: Record<GrupoId, Def[]> = {
       claves: ["sueldo en mano", "bruto a neto", "neto a bruto", "aportes", "recibo", "cuanto cobro", "salario", "descuentos de ley", "17%"],
     },
     {
+      href: "/cuantas-horas-de-trabajo",
+      titulo: "¿Cuántas horas de trabajo te cuesta?",
+      corto: "Horas de trabajo",
+      descripcion: "El asado, la nafta y la canasta, en horas de tu sueldo",
+      claves: ["cuanto vale mi hora", "valor hora", "sueldo por hora", "horas de trabajo", "precio del asado", "canasta basica", "nafta", "poder adquisitivo"],
+    },
+    {
+      href: "/sueldo-en-el-mundo",
+      titulo: "Tu sueldo en el mundo",
+      corto: "Sueldo en el mundo",
+      descripcion: "Cuánto te quedaría en mano en otro país",
+      claves: ["dia de libertad tributaria", "trabajar para el estado", "impuestos", "otros paises", "emigrar", "sueldo en dolares", "comparar sueldo", "poder de compra"],
+    },
+    {
       href: "/aguinaldo",
       titulo: "Aguinaldo (SAC)",
       descripcion: "Cuánto cobrás en junio y diciembre",

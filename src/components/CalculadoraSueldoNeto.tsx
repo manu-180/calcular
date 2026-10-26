@@ -6,7 +6,7 @@ import { estimarGananciasAnual } from "@/lib/ganancias";
 import { topeSipa } from "@/data/sueldo";
 import { formatARS, parseMonto, parseDecimal } from "@/lib/formato";
 import { CompartirWhatsApp } from "@/components/CompartirWhatsApp";
-import { PuenteMundo } from "@/components/mundo/PuenteMundo";
+import { PuenteHoras } from "@/components/horas/PuenteHoras";
 import { OfertaMiSueldo } from "@/components/mi-sueldo/OfertaMiSueldo";
 import { PLANILLA_MS, prefill } from "@/lib/prefill/mi-sueldo";
 import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
@@ -339,7 +339,7 @@ export function CalculadoraSueldoNeto({ oferta }: { oferta?: DatosOferta }) {
               </p>
             )}
 
-            <PuenteMundo brutoMensual={r.d.bruto} />
+            <PuenteHoras neto={r.d.neto} bruto={r.d.bruto} />
 
             {r.tipo === "brutoANeto" && r.gan && r.gan.pagaGanancias && (
               <p className="text-xs text-zinc-400">

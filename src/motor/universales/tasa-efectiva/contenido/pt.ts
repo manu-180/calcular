@@ -1,9 +1,10 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aEfectiva, aNominal } from "../definicion";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const p = (n: number) => `${formatearNumero(ctx, n, 2)}%`;
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Conversor de taxa nominal e efetiva",
     title: tituloQueEntre(`Taxa nominal e efetiva: conversor (${ctx.nombrePais})`, "Conversor de taxa nominal e efetiva", "Taxa nominal e efetiva"),

@@ -12,7 +12,9 @@ import { codificarCarga, diaDeCarga, normalizarCarga } from "@/motor/mundo/calcu
 import { RUTA_MUNDO_AR } from "@/motor/mundo/rutas";
 import type { CargaCompartida, GrillaMundo } from "@/motor/mundo/tipos";
 import { compactar, type GrillaCliente } from "@/motor/mundo/ui/compacta";
-import { MundoCliente, type MarcaMundo } from "@/motor/mundo/ui/MundoCliente";
+import { textosRedes } from "@/motor/i18n/redes";
+import { lugarEnPagina } from "@/motor/horas/ui/datos-cliente";
+import { MundoCliente, type MarcaMundo, type TextosEnManoPrimero, type TextosSimple } from "@/motor/mundo/ui/MundoCliente";
 import { textosCliente } from "@/motor/mundo/ui/textos-cliente";
 import { origenAR, origenIntl } from "@/motor/sitio";
 import type { FechaISO } from "@/motor/tipos";
@@ -25,7 +27,12 @@ import "./estilos-ar.css";
 
 const LOCALE = "es-AR";
 export const MARCA_AR: MarcaMundo = { nombre: NOMBRE_SITIO, dominio: "calcular.ar" };
-const TITULO = "Día de libertad tributaria: tu sueldo en el mundo";
+const TITULO = "¿Cuánto te quedaría en mano en otro país? Tu sueldo en el mundo";
+// El enganche de calcular.ar es comparar países; el día de libertad tributaria queda como dato del
+// resultado. Va acá y no en src/motor/i18n/mundo.ts porque el trato «vos» lo comparten otras ediciones.
+const H1 = "¿Hasta qué día del año trabajás para el Estado?";
+const CEJA = "Tu sueldo en el mundo";
+const bajada = (n: number) => `Poné lo que cobrás en mano y mirá cuántos días del año trabajás para pagar impuestos. Y en cuál de ${n} países te rendiría más el mismo sueldo.`;
 
 const t = textosMundo("es", "vos", LOCALE);
 
@@ -70,7 +77,7 @@ function fechaCorta(dia: number, anio: number): string {
 }
 
 function descripcion(n: number): string {
-  return `Mirá hasta qué día del año trabajás para el Estado con tu sueldo argentino y cuánto te quedaría en mano en ${n} países, con el mismo poder de compra.`;
+  return `Mirá cuánto te quedaría en mano con tu sueldo argentino en ${n} países, con el mismo poder de compra, y hasta qué día del año trabajás para el Estado.`;
 }
 
 function preguntas(n: number): PreguntaMundo[] {
@@ -90,6 +97,36 @@ function preguntas(n: number): PreguntaMundo[] {
     },
     ...resto,
   ];
+}
+
+// El resultado abre con lo que queda en mano y dónde rinde más; la fecha va como dato chico.
+function enManoPrimero(paises: readonly { iso: string; nombre: string }[]): TextosEnManoPrimero {
+  return {
+    mejor: Object.fromEntries(paises.map((p) => [p.iso, `${lugarEnPagina(p.nombre, "es")} te quedaría {pct} más en mano, con el mismo poder de compra.`])),
+    mejorPropio: "Con tu sueldo, ningún país te deja más en mano que la Argentina.",
+    fecha: "Hasta acá trabajás para el Estado",
+  };
+}
+
+// El panel de calcular.ar: lo que cobrás en mano, la fecha bien grande y compartir ahí mismo.
+const SIMPLE: TextosSimple = {
+  sueldo: "¿Cuánto cobrás en mano por mes?",
+  ayuda: "Lo que te depositan, después de los descuentos.",
+  propio: "Lo trajimos de tu cálculo de sueldo.",
+  estadoAntes: "Trabajás para el Estado hasta el",
+  estadoTasa: "Se va el {tasa} de tu sueldo en impuestos y aportes.",
+  cero: t.cero.heroeAntes,
+  mejorTitulo: "Donde más te rendiría",
+  mejor: "Te quedaría {pct} más en mano, ajustado a los precios de allá.",
+  mejorPropio: "Con tu sueldo, ningún país te deja más en mano que la Argentina.",
+  textoCompartir: t.tarjeta.texto("{fecha}"),
+};
+
+// Con el sueldo en mano, la fila argentina del ranking (aguinaldo repartido en 12) da más que lo que la
+// persona escribió: la bajada lo dice para que no parezca un error.
+function textosAR(paises: Parameters<typeof textosCliente>[1]) {
+  const c = textosCliente(t, paises);
+  return { ...c, ranking: { ...c.ranking, bajada: "Lo que te quedaría en mano por mes en cada país, con el aguinaldo repartido en el año y ajustado a los precios de cada lugar." } };
 }
 
 type Resuelto = { grilla: GrillaMundo; carga: CargaCompartida | null; canonica: boolean };
@@ -179,22 +216,26 @@ export function PaginaMundoAR({ c }: { c?: string }) {
       <header className="cy-mundo-cabeza" data-duelo={carga ? "" : undefined}>
         <p className="cy-mundo-ceja">
           <span className="cy-punto-vivo" aria-hidden="true" />
-          {t.ceja}
+          {CEJA}
         </p>
-        <h1 className="cy-mundo-h1">{t.h1}</h1>
-        <p className="cy-mundo-intro">{t.bajada(n)}</p>
+        <h1 className="cy-mundo-h1">{H1}</h1>
+        <p className="cy-mundo-intro">{bajada(n)}</p>
       </header>
 
       <MundoCliente
         grilla={cliente}
-        textos={textosCliente(t, cliente.paises)}
+        textos={textosAR(cliente.paises)}
         locale={LOCALE}
         anio={anio}
         origenInicial={origenDe(g)}
         meses={mesesDe(anio)}
         base={url}
         carga={carga}
+        redes={textosRedes("es", "vos", LOCALE)}
+        conCuadrado={false}
         marca={MARCA_AR}
+        enManoPrimero={enManoPrimero(cliente.paises)}
+        simple={SIMPLE}
       />
 
       <section className="cy-mundo-metodo" aria-labelledby="cy-mundo-metodo-titulo">

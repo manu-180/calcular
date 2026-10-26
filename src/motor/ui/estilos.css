@@ -127,9 +127,22 @@
   .cy-cuerpo:is(:lang(zh-CN), :lang(zh-SG), :lang(zh-Hans)) {
     font-family: var(--font-geist), "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   }
+  /* Geist no trae griego (ni en Google Fonts): el griego va entero con la fuente del sistema, que en
+     Windows, macOS, iOS y Android tiene griego completo, con Noto Sans de respaldo. Entero y no
+     mezclado (Geist para las cifras y el sistema para las letras) para que los montos no cambien de
+     fuente a mitad de la frase. text-transform: uppercase con lang="el" ya saca los tonos. */
+  .cy-cuerpo:lang(el) {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  }
   .cy-cuerpo:is(:lang(ja), :lang(zh)) {
     line-break: strict;
     word-break: normal;
+  }
+  /* Bengalí (ADR 0002, D14): Geist no trae la escritura y no se descarga ninguna fuente. Cae en la del
+     sistema: Noto Sans Bengali (Android y Linux), Kohinoor Bangla (macOS e iOS), Nirmala UI y Vrinda
+     (Windows). Las cifras bengalíes también salen de ahí. */
+  .cy-cuerpo:lang(bn) {
+    font-family: var(--font-geist), "Noto Sans Bengali", "Kohinoor Bangla", "Nirmala UI", Vrinda, sans-serif;
   }
 
   /* El árabe va con Noto Sans Arabic (layout intl, se baja solo si hay texto árabe) y las cifras
@@ -137,6 +150,16 @@
   .cy-cuerpo:lang(ar) {
     font-family: var(--font-geist), var(--font-arabe), "Segoe UI", Tahoma, sans-serif;
     line-height: 1.7;
+  }
+  /* El tailandés no separa las palabras con espacios: el navegador corta por diccionario con
+     word-break: normal (keep-all no cortaría nunca y break-all partiría las palabras al medio). Las
+     vocales y los tonos se apilan sobre la letra, así que el interlineado es algo mayor. Fuente del
+     sistema (Thonburi en Apple, Leelawadee UI en Windows), sin descargar nada (ADR 0002, D13). */
+  .cy-cuerpo:lang(th) {
+    font-family: var(--font-geist), Thonburi, "Leelawadee UI", "Noto Sans Thai", Tahoma, sans-serif;
+    word-break: normal;
+    line-break: auto;
+    line-height: 1.65;
   }
 
   /* Hebreo (ADR 0002, D22): sin descargar fuente. Geist sigue para el latín y las cifras, y las letras
@@ -2325,8 +2348,8 @@
 }
 
 /* Fuera de @layer base a propósito: tiene que ganarle al tracking negativo de los títulos, que es
-   de Geist y en CJK y en hebreo amontona los caracteres. */
-.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(he)) :is(h1, h2, h3, h4) {
+   de Geist y en CJK y tailandés y en hebreo amontona los caracteres (y los tonos apilados). */
+.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn), :lang(th), :lang(he)) :is(h1, h2, h3, h4) {
   letter-spacing: 0;
 }
 
@@ -2350,4 +2373,10 @@
 }
 [dir="rtl"] :is(.cy-boton, .cy-tarjeta, .cy-pais):hover .cy-boton-icono {
   transform: translate(-2px, -1px) scale(1.05);
+}
+
+/* En bengalí los signos vocálicos van sobre y bajo la línea (ি, ু, ৃ): con el interlineado apretado de
+   los títulos latinos se pisan entre renglones. */
+.cy-cuerpo:lang(bn) :is(h1, h2, h3, h4) {
+  line-height: 1.35;
 }

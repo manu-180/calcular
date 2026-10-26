@@ -20,7 +20,9 @@ import { direccionDe, etiquetaIdioma } from "@/motor/i18n/direccion";
 
 // optional y no swap: si Geist no llegó para el primer pintado se queda la fallback ajustada por
 // next/font, y el H1 (el LCP de casi todas las páginas) no se vuelve a pintar al cambiar de fuente.
-const geist = Geist({ variable: "--font-geist", subsets: ["latin"], display: "optional" });
+// latin-ext trae las letras del checo (ř, ě, ů); con unicode-range solo se baja si la página las usa.
+// latin-ext trae la ő y la ű del húngaro; con unicode-range solo se baja si la página las usa.
+const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext"], display: "optional" });
 // Geist no trae árabe. Sin preload y con el unicode-range del subset, el navegador baja la fuente solo
 // en páginas con texto árabe: el resto de los mercados no paga nada por declararla acá.
 const arabe = Noto_Sans_Arabic({ variable: "--font-arabe", subsets: ["arabic"], display: "swap", preload: false });

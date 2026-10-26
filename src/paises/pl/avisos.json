@@ -1,0 +1,35 @@
+{
+  "mercado": "pl",
+  "avisos": [
+    {
+      "id": "pl.placa-minimalna-2027",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["pl.placa-minimalna", "pl.odprawa"],
+      "texto": "Od 1 stycznia 2027 r. minimalne wynagrodzenie wyniesie 4950 zł, a minimalna stawka godzinowa 32,30 zł. Do końca 2026 r. kalkulator liczy według stawek z 2026 r.",
+      "fuente": {
+        "organismo": "Dziennik Ustaw (ISAP, Kancelaria Sejmu)",
+        "titulo": "Rozporządzenie Rady Ministrów z 14 września 2026 r. (Dz.U. 2026 poz. 1213)",
+        "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260001213",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "pl.zus-2027",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["pl.skladki-zus", "pl.kalkulator-b2b", "pl.maly-zus-plus", "pl.kalkulator-ryczaltu"],
+      "texto": "Kwoty składek ZUS na 2027 r. zależą od prognozowanego wynagrodzenia z ustawy budżetowej na 2027 r. Kalkulator pokazuje składki na 2026 r.",
+      "fuente": {
+        "organismo": "Zakład Ubezpieczeń Społecznych",
+        "titulo": "Wysokość składek na ubezpieczenia społeczne w 2026 r.",
+        "url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}

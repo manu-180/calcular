@@ -1,0 +1,992 @@
+{
+  "mercado": "hu",
+  "datos": [
+    {
+      "id": "hu.minimalber",
+      "nombre": "Kötelező legkisebb munkabér (minimálbér)",
+      "tipo": "mapa",
+      "unidad": "HUF",
+      "etiquetas": {
+        "havi": "Havibér",
+        "heti": "Hetibér",
+        "napi": "Napibér",
+        "orai": "Órabér"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "havi": 322800,
+            "heti": 74210,
+            "napi": 14850,
+            "orai": 1856
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "426/2025. (XII. 23.) Korm. rendelet, 2. § (1) és (2)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2025-426-20-22",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.garantalt-berminimum",
+      "nombre": "Garantált bérminimum",
+      "tipo": "mapa",
+      "unidad": "HUF",
+      "etiquetas": {
+        "havi": "Havibér",
+        "heti": "Hetibér",
+        "napi": "Napibér",
+        "orai": "Órabér"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "havi": 373200,
+            "heti": 85800,
+            "napi": 17160,
+            "orai": 2145
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "426/2025. (XII. 23.) Korm. rendelet, 2. § (1) és (2)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2025-426-20-22",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.szja",
+      "nombre": "Személyi jövedelemadó mértéke",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1995. évi CXVII. törvény (Szja tv.), 8. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1995-117-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.tb-jarulek",
+      "nombre": "Társadalombiztosítási járulék",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18.5,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2019. évi CXXII. törvény (Tbj.), 25. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2019-122-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.nyugdijjarulek",
+      "nombre": "Nyugdíjjárulék (ellátások után)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2019. évi CXXII. törvény (Tbj.), 25. § (2) és 37. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2019-122-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.szocho",
+      "nombre": "Szociális hozzájárulási adó",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2018. évi LII. törvény (Szocho tv.), 2. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2018-52-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.csaladi-kedvezmeny",
+      "nombre": "Családi kedvezmény kedvezményezett eltartottanként, havonta",
+      "tipo": "mapa",
+      "unidad": "HUF",
+      "etiquetas": {
+        "1": "Egy eltartott",
+        "2": "Két eltartott",
+        "3": "Három vagy több eltartott"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2025-12-31",
+          "valor": {
+            "1": 100000,
+            "2": 200000,
+            "3": 330000
+          },
+          "fuente": {
+            "organismo": "Nemzeti Adó- és Vámhivatal",
+            "titulo": "Családi kedvezmény",
+            "url": "https://nav.gov.hu/ado/szja/szja-kedvezmenyek/csaladi-kedvezmeny",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 133340,
+            "2": 266660,
+            "3": 440000
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1995. évi CXVII. törvény (Szja tv.), 29/A. § (2)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1995-117-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.csaladi-kedvezmeny-beteg",
+      "nombre": "Családi kedvezmény növelése tartósan beteg vagy súlyosan fogyatékos eltartott után",
+      "tipo": "numero",
+      "unidad": "HUF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 133340,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1995. évi CXVII. törvény (Szja tv.), 29/A. § (2a)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1995-117-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.fiatalok-kedvezmenye-hatar",
+      "nombre": "25 év alatti fiatalok kedvezménye, havi felső határ",
+      "tipo": "numero",
+      "unidad": "HUF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 656785,
+          "fuente": {
+            "organismo": "Nemzeti Adó- és Vámhivatal",
+            "titulo": "25 év alatti fiatalok kedvezménye (2025)",
+            "url": "https://nav.gov.hu/ado/szja/szja-kedvezmenyek/25-ev-alatti-fiatalok-kedvezmenye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 715765,
+          "fuente": {
+            "organismo": "Nemzeti Adó- és Vámhivatal",
+            "titulo": "25 év alatti fiatalok kedvezménye (2026. 01. 06.)",
+            "url": "https://nav.gov.hu/ado/szja/25-ev-alatti-fiatalok-kedvezmenye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.elso-hazasok-kedvezmenye",
+      "nombre": "Első házasok kedvezménye, havonta (a házastársaknak együtt)",
+      "tipo": "numero",
+      "unidad": "HUF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 33335,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1995. évi CXVII. törvény (Szja tv.), 29/C. §",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1995-117-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.afa",
+      "nombre": "Általános forgalmi adó kulcsai",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "altalanos": "Általános kulcs",
+        "kedvezmenyes18": "Kedvezményes kulcs (3/A. melléklet)",
+        "kedvezmenyes5": "Kedvezményes kulcs (3. melléklet)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "altalanos": 27,
+            "kedvezmenyes18": 18,
+            "kedvezmenyes5": 5
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2007. évi CXXVII. törvény (Áfa tv.), 82. §",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2007-127-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.atalanyado-koltseghanyad",
+      "nombre": "Átalányadózás: költséghányad",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "altalanos": "Általános (a legtöbb tevékenység)",
+        "kiemelt": "A 53. § (2) szerinti tevékenységek",
+        "kiskereskedelem": "Kizárólag kiskereskedelem"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "altalanos": 45,
+            "kiemelt": 80,
+            "kiskereskedelem": 90
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1995. évi CXVII. törvény (Szja tv.), 53. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1995-117-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "altalanos": 50,
+            "kiemelt": 80,
+            "kiskereskedelem": 90
+          },
+          "fuente": {
+            "organismo": "Nemzeti Adó- és Vámhivatal",
+            "titulo": "Kedvezően változtak az átalányadózás szabályai (2026. 01. 09.)",
+            "url": "https://nav.gov.hu/sajtoszoba/hirek/Kedvezoen_valtoztak_az_atalanyadozas_szabalyai",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.atalanyado-beveteli-hatar",
+      "nombre": "Átalányadózás: bevételi határ, az éves minimálbér szorzójaként",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "altalanos": "Általános",
+        "kiskereskedelem": "Kizárólag kiskereskedelem"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "altalanos": 10,
+            "kiskereskedelem": 50
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1995. évi CXVII. törvény (Szja tv.), 52. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1995-117-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.atalanyado-adomentes-resz",
+      "nombre": "Átalányadózás: adómentes jövedelemrész (az éves minimálbér fele)",
+      "tipo": "numero",
+      "unidad": "HUF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1936800,
+          "fuente": {
+            "organismo": "Nemzeti Adó- és Vámhivatal",
+            "titulo": "Kedvezően változtak az átalányadózás szabályai (2026. 01. 09.)",
+            "url": "https://nav.gov.hu/sajtoszoba/hirek/Kedvezoen_valtoztak_az_atalanyadozas_szabalyai",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.kata-teteles-ado",
+      "nombre": "KATA: tételes adó havonta",
+      "tipo": "numero",
+      "unidad": "HUF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2022. évi XIII. törvény (Katv.), 7. §",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2022-13-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.kata-keretosszeg",
+      "nombre": "KATA: éves keretösszeg",
+      "tipo": "numero",
+      "unidad": "HUF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18000000,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2022. évi XIII. törvény (Katv.), 7. §",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2022-13-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.kata-kulonado",
+      "nombre": "KATA: különadó a keretösszeg feletti bevétel után",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2022. évi XIII. törvény (Katv.), 7. §",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2022-13-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.alapszabadsag",
+      "nombre": "Alapszabadság",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 116. §",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.potszabadsag-eletkor",
+      "nombre": "Pótszabadság életkor szerint (munkanap)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "25": "25 évesen",
+        "28": "28 évesen",
+        "31": "31 évesen",
+        "33": "33 évesen",
+        "35": "35 évesen",
+        "37": "37 évesen",
+        "39": "39 évesen",
+        "41": "41 évesen",
+        "43": "43 évesen",
+        "45": "45 évesen"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "25": 1,
+            "28": 2,
+            "31": 3,
+            "33": 4,
+            "35": 5,
+            "37": 6,
+            "39": 7,
+            "41": 8,
+            "43": 9,
+            "45": 10
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 117. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.potszabadsag-gyermek",
+      "nombre": "Pótszabadság a gyermekek után (munkanap)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "1": "Egy gyermek",
+        "2": "Két gyermek",
+        "3": "Kettőnél több gyermek (összesen)",
+        "fogyatekos": "Fogyatékos gyermekenként többlet"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 2,
+            "2": 4,
+            "3": 7,
+            "fogyatekos": 2
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 118. § (1) és (2)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.potszabadsag-egyeb",
+      "nombre": "Egyéb pótszabadság (munkanap)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "fiatal": "Fiatal munkavállaló",
+        "megvaltozott": "Megváltozott munkaképesség, vakok személyi járadéka"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "fiatal": 5,
+            "megvaltozott": 5
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 119. § (1) és 120. §",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.felmondasi-ido-alap",
+      "nombre": "Felmondási idő",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 69. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.felmondasi-ido-hosszabbitas",
+      "nombre": "A felmondási idő meghosszabbodása munkáltatói felmondásnál (nap)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "3": "Három év után",
+        "5": "Öt év után",
+        "8": "Nyolc év után",
+        "10": "Tíz év után",
+        "15": "Tizenöt év után",
+        "18": "Tizennyolc év után",
+        "20": "Húsz év után"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 5,
+            "5": 15,
+            "8": 20,
+            "10": 25,
+            "15": 30,
+            "18": 40,
+            "20": 60
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 69. § (2)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.vegkielegites",
+      "nombre": "Végkielégítés (havi távolléti díj)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "3": "Legalább három év",
+        "5": "Legalább öt év",
+        "10": "Legalább tíz év",
+        "15": "Legalább tizenöt év",
+        "20": "Legalább húsz év",
+        "25": "Legalább huszonöt év"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 1,
+            "5": 2,
+            "10": 3,
+            "15": 4,
+            "20": 5,
+            "25": 6
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 77. § (3)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.vegkielegites-emeles",
+      "nombre": "Végkielégítés emelése a nyugdíjkorhatár előtti öt évben (hónap)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "3": "Legalább három év",
+        "5": "Legalább öt év",
+        "10": "Legalább tíz év",
+        "15": "Legalább tizenöt év",
+        "20": "Legalább húsz év",
+        "25": "Legalább huszonöt év"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 1,
+            "5": 1,
+            "10": 2,
+            "15": 2,
+            "20": 3,
+            "25": 3
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 77. § (4)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.rendkivuli-munkaido-potlek",
+      "nombre": "Bérpótlék rendkívüli munkaidőre",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "munkanap": "Munkanapon, a beosztáson felül",
+        "pihenonap": "Heti pihenőnapon",
+        "pihenonap-masik": "Heti pihenőnapon, ha másik pihenőnapot kapsz",
+        "munkaszuneti": "Munkaszüneti napon"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "munkanap": 50,
+            "pihenonap": 100,
+            "pihenonap-masik": 50,
+            "munkaszuneti": 100
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 143. § (2), (4) és (5)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.oraber-oszto",
+      "nombre": "Havi alapbér osztója az órabérhez",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 174,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 139. § (3)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.betegszabadsag",
+      "nombre": "Betegszabadság",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "napok": "Munkanap naptári évenként",
+        "mertek": "A távolléti díj százaléka"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "napok": 15,
+            "mertek": 70
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "2012. évi I. törvény (Mt.), 126. § (1) és 146. § (3)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/2012-1-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.tappenz",
+      "nombre": "Táppénz mértéke",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "alap": "Legalább 730 nap biztosítási idővel",
+        "rovid": "Rövidebb biztosítási idővel",
+        "korhaz": "Kórházi ápolás alatt"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "alap": 60,
+            "rovid": 50,
+            "korhaz": 50
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1997. évi LXXXIII. törvény (Ebtv.), 48. § (7)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1997-83-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.csed",
+      "nombre": "Csecsemőgondozási díj mértéke",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1997. évi LXXXIII. törvény (Ebtv.), 42. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1997-83-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.csed-napok",
+      "nombre": "Csecsemőgondozási díj leghosszabb időtartama",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 168,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1997. évi LXXXIII. törvény (Ebtv.), 40. § (3)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1997-83-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.gyed",
+      "nombre": "Gyermekgondozási díj mértéke (a felső határ a minimálbér kétszeresének ugyanennyi százaléka)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1997. évi LXXXIII. törvény (Ebtv.), 42/D. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1997-83-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.csaladi-potlek",
+      "nombre": "Családi pótlék havi összege gyermekenként",
+      "tipo": "mapa",
+      "unidad": "HUF",
+      "etiquetas": {
+        "egy": "Egygyermekes család",
+        "egy-egyedul": "Egygyermekes egyedülálló",
+        "ketto": "Kétgyermekes család",
+        "ketto-egyedul": "Kétgyermekes egyedülálló",
+        "tobb": "Három- vagy többgyermekes család",
+        "tobb-egyedul": "Három- vagy többgyermekes egyedülálló",
+        "beteg": "Tartósan beteg vagy súlyosan fogyatékos gyermek",
+        "beteg-egyedul": "Tartósan beteg vagy súlyosan fogyatékos gyermek, egyedülálló"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "egy": 12200,
+            "egy-egyedul": 13700,
+            "ketto": 13300,
+            "ketto-egyedul": 14800,
+            "tobb": 16000,
+            "tobb-egyedul": 17000,
+            "beteg": 23300,
+            "beteg-egyedul": 25900
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1998. évi LXXXIV. törvény (Cst.), 11. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1998-84-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.illetek-kulcs",
+      "nombre": "Visszterhes vagyonátruházási illeték kulcsa",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "alap": "Ingatlanonként egymilliárd forintig",
+        "felett": "Az egymilliárd forint feletti rész után"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "alap": 4,
+            "felett": 2
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1990. évi XCIII. törvény (Itv.), 19. § (1)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1990-93-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.illetek-hatarok",
+      "nombre": "Lakásszerzési illeték: értékhatárok",
+      "tipo": "mapa",
+      "unidad": "HUF",
+      "etiquetas": {
+        "savhatar": "A 4% sávhatára ingatlanonként",
+        "maximum": "Legmagasabb illeték ingatlanonként",
+        "uj-lakas-mentes": "Új lakás: illetékmentes értékhatár",
+        "uj-lakas-kedvezmeny": "Új lakás: kedvezményes értékhatár",
+        "fiatal": "35 év alatti első lakás: értékhatár"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "savhatar": 1000000000,
+            "maximum": 200000000,
+            "uj-lakas-mentes": 15000000,
+            "uj-lakas-kedvezmeny": 30000000,
+            "fiatal": 15000000
+          },
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1990. évi XCIII. törvény (Itv.), 19. § (1), 26. § (1) f) és (6)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1990-93-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hu.illetek-fiatal-kedvezmeny",
+      "nombre": "35 év alatti első lakásszerző kedvezménye (az illeték százaléka)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Nemzeti Jogszabálytár",
+            "titulo": "1990. évi XCIII. törvény (Itv.), 26. § (6)",
+            "url": "https://njt.jog.gov.hu/jogszabaly/1990-93-00-00",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}

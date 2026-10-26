@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "actualizadoEl": "2026-10-26",
+  "indec": {
+    "asado": {
+      "monto": 16736.73,
+      "periodo": "2026-08",
+      "serie": "105.1_I2A_2016_M_14",
+      "consultadoEl": "2026-10-26"
+    },
+    "pan": {
+      "monto": 4909.98,
+      "periodo": "2026-08",
+      "serie": "105.1_I2PFF_2016_M_27",
+      "consultadoEl": "2026-10-26"
+    },
+    "leche": {
+      "monto": 2008.4,
+      "periodo": "2026-08",
+      "serie": "105.1_I2LFES_2016_M_35",
+      "consultadoEl": "2026-10-26"
+    },
+    "huevos": {
+      "monto": 3868.23,
+      "periodo": "2026-08",
+      "serie": "105.1_I2HG_2016_M_23",
+      "consultadoEl": "2026-10-26"
+    },
+    "dulce": {
+      "monto": 3873.55,
+      "periodo": "2026-08",
+      "serie": "105.1_I2DL_2016_M_20",
+      "consultadoEl": "2026-10-26"
+    },
+    "cerveza": {
+      "monto": 4485.75,
+      "periodo": "2026-08",
+      "serie": "105.1_I2CB_2016_M_24",
+      "consultadoEl": "2026-10-26"
+    },
+    "cafe": {
+      "monto": 13724.12,
+      "periodo": "2026-08",
+      "serie": "105.1_I2CM_2016_M_20",
+      "consultadoEl": "2026-10-26"
+    },
+    "gaseosa": {
+      "monto": 3786.48,
+      "periodo": "2026-08",
+      "serie": "105.1_I2GBC_2016_M_26",
+      "consultadoEl": "2026-10-26"
+    },
+    "vino": {
+      "monto": 2316,
+      "periodo": "2026-08",
+      "serie": "105.1_I2VC_2016_M_19",
+      "consultadoEl": "2026-10-26"
+    },
+    "hamburguesas": {
+      "monto": 8245.53,
+      "periodo": "2026-08",
+      "serie": "105.1_I2HC_2016_M_32",
+      "consultadoEl": "2026-10-26"
+    },
+    "queso": {
+      "monto": 14326.89,
+      "periodo": "2026-08",
+      "serie": "105.1_I2QC_2016_M_22",
+      "consultadoEl": "2026-10-26"
+    },
+    "panales": {
+      "monto": 4690.86,
+      "periodo": "2026-08",
+      "serie": "105.1_I2PD_2016_M_30",
+      "consultadoEl": "2026-10-26"
+    }
+  },
+  "nafta": {
+    "monto": 2189,
+    "consultadoEl": "2026-10-26",
+    "estaciones": 30,
+    "desde": "2026-09-29"
+  }
+}

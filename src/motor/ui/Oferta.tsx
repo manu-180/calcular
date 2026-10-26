@@ -19,6 +19,7 @@ import { olvidarDatosIntl, recordarDatosIntl } from "@/lib/prefill/intl-cliente"
 import type { DatosIntl } from "@/lib/prefill/intl";
 import type { CalculadoraControlada } from "../cliente";
 import { ContextoEmbed } from "../embed/proveedor";
+import { mayusculaInicial } from "../formato";
 import { parsearEntrada, type FilaFormateada } from "../formulario";
 import type { ContextoSerializado, OpcionDinamica } from "../tipos";
 import { IconoFlecha } from "./Iconos";
@@ -264,7 +265,7 @@ function Tarjeta({
             data-ubicacion="calculadora-secundaria"
             onClick={() => guardar(secundaria)}
           >
-            {secundaria.tituloCorto.charAt(0).toUpperCase() + secundaria.tituloCorto.slice(1)}
+            {mayusculaInicial(secundaria.tituloCorto, locale)}
             {coma(contexto.idioma)}
             {precioUSD(secundaria.precioCentavos, locale)}
           </a>

@@ -3,15 +3,16 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import { textosCompartir } from "../i18n/compartir";
 import type { ContextoSerializado } from "../tipos";
-import { usarCompartir, type CanalCompartir } from "./index";
+import { usarCompartir, type CanalCompartir, type CanalWeb } from "./index";
 import { IconoCheck, IconoCompartir } from "./iconos";
 import type { VariantePuente } from "./ref";
 
 // Se baja recién cuando hay un resultado en pantalla (PuenteResultado lo precarga en un momento
 // ocioso): el hook de compartir, el menú de escritorio y su medición no pesan en la carga de la página.
 
-const CANALES_WEB: readonly { canal: Exclude<CanalCompartir, "nativo" | "copiar">; nombre: string }[] = [
+const CANALES_WEB: readonly { canal: CanalWeb; nombre: string }[] = [
   { canal: "whatsapp", nombre: "WhatsApp" },
+  { canal: "facebook", nombre: "Facebook" },
   { canal: "x", nombre: "X" },
   { canal: "telegram", nombre: "Telegram" },
   { canal: "linkedin", nombre: "LinkedIn" },

@@ -16,8 +16,13 @@ const VERDE = "#34d399";
 
 const CABECERAS = { "cache-control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" };
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
+// bn con Noto Sans Bengali: Geist no trae la escritura bengalí (ADR 0002, D14).
+// Fuente de respaldo por idioma para los glifos que Geist no tiene: los CJK y la «ʻ» (U+02BB) de oʻ y
+// gʻ del uzbeko latino (ADR 0002, D16).
+// ro va con Noto Sans de respaldo por si Geist no trae ș y ț con coma (U+0218 a U+021B; ADR 0002, D18).
+// el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
 // Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", he: "Noto Sans Hebrew" };
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uz: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew" };
 const ESPERA_MS = 3000;
 
 async function fuente(familia: string, peso: number, texto: string): Promise<ArrayBuffer | null> {
@@ -57,7 +62,9 @@ export interface DatosOgSueldos {
 export async function ogSueldos(d: DatosOgSueldos): Promise<Response> {
   const cjk = FUENTE_CJK[d.idioma];
   const familiaCjk = cjk && d.idioma === "zh" && /^zh-(CN|SG)/i.test(d.locale) ? "Noto Sans SC" : cjk;
-  const texto = [...new Set([d.titulo, d.bajada, d.ceja, d.marca, d.dominio, "0123456789"].join(" "))].join("");
+  // La ceja en mayúsculas con el locale (en griego, sin tonos), no con el textTransform de Satori.
+  const ceja = d.ceja.toLocaleUpperCase(d.locale);
+  const texto = [...new Set([d.titulo, d.bajada, ceja, d.marca, d.dominio, "0123456789"].join(" "))].join("");
   const pedidas = await Promise.all([fuente("Geist", 400, texto), fuente("Geist", 700, texto), ...(familiaCjk ? [fuente(familiaCjk, 400, texto), fuente(familiaCjk, 700, texto)] : [])]);
   const nombres = ["Geist", "Geist", familiaCjk, familiaCjk];
   const pesos = [400, 700, 400, 700] as const;
@@ -99,7 +106,7 @@ export async function ogSueldos(d: DatosOgSueldos): Promise<Response> {
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
         <div style={{ display: "flex", fontSize: 26, color: VERDE, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase" }}>
-          <TextoOg texto={d.ceja} idioma={d.idioma} />
+          <TextoOg texto={ceja} idioma={d.idioma} />
         </div>
         <div style={{ display: "flex", fontSize: largo ? 76 : 96, fontWeight: 700, letterSpacing: d.idioma === "ja" || d.idioma === "ko" || d.idioma === "zh" ? 0 : -3, lineHeight: 1.02, maxWidth: 1000 }}>
           <TextoOg texto={d.titulo} idioma={d.idioma} />

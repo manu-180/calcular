@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosDa: TextosUi<UiCalorias> = {
+  slug: "kalorieberegner",
+  ui: () => ({
+    sexo: "Køn",
+    mujer: "Kvinde",
+    hombre: "Mand",
+    edad: "Alder (år)",
+    peso: (u) => `Vægt (${u})`,
+    altura: (u) => `Højde (${u})`,
+    pies: "Højde: fod (ft)",
+    pulgadas: "Højde: tommer (in)",
+    actividad: "Aktivitetsniveau",
+    sedentaria: "Lidt eller ingen motion",
+    ligera: "Let (1 til 3 dage om ugen)",
+    moderada: "Moderat (3 til 5 dage om ugen)",
+    alta: "Høj (6 eller 7 dage om ugen)",
+    muyAlta: "Meget høj (hård træning eller fysisk arbejde)",
+    objetivo: "Mål",
+    mantener: "Holde vægten",
+    bajar: "Tabe sig i roligt tempo",
+    subir: "Tage på i roligt tempo",
+    basal: "Basalstofskifte (kcal om dagen)",
+    basalAyuda: "Det, kroppen forbrænder i fuldstændig hvile.",
+    mantenimiento: "Kalorier for at holde vægten (kcal om dagen)",
+    calObjetivo: "Kalorier for dit mål (kcal om dagen)",
+    calObjetivoAyuda: "En moderat ændring: 500 kcal mindre om dagen for at tabe dig, 300 mere for at tage på.",
+    errorEdad: "Formlen gælder for personer mellem 15 og 100 år.",
+    errorPeso: "Vægten skal være større end 0.",
+    errorAltura: "Højden skal være større end 0.",
+    notaMinimo: (kcal) => `Ved vægttab går beregningen ikke under ${kcal} kcal om dagen. Spiser du mindre end det, bør det ske i samråd med din læge eller en diætist.`,
+    aviso: "Det er et skøn efter Mifflin-St Jeors formel. Alle kroppe er forskellige. Beregneren er vejledende og erstatter ikke en samtale med din læge eller en diætist.",
+  }),
+};

@@ -1,0 +1,674 @@
+{
+  "mercado": "sa",
+  "datos": [
+    {
+      "id": "sa.vat",
+      "nombre": "النسبة الأساسية لضريبة القيمة المضافة",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام ضريبة القيمة المضافة، المادة الثانية (معدلة بالأمر الملكي أ/638 وتاريخ 1441/10/15 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f98f4238-0289-4891-8a22-a9a700f1f538/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "تطبق النسبة الأساسية 15% منذ 1 يوليو 2020."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.rett",
+      "nombre": "نسبة ضريبة التصرفات العقارية",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-10-04",
+          "valor": 5,
+          "fuente": {
+            "organismo": "هيئة الزكاة والضريبة والجمارك",
+            "titulo": "ضريبة التصرفات العقارية",
+            "url": "https://zatca.gov.sa/ar/RulesRegulations/Taxes/Pages/RETT.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.rett-first-home",
+      "nombre": "حد دعم الدولة لضريبة المسكن الأول للمواطن",
+      "tipo": "numero",
+      "unidad": "SAR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-10-04",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "هيئة الزكاة والضريبة والجمارك",
+            "titulo": "ضريبة التصرفات العقارية",
+            "url": "https://zatca.gov.sa/ar/RulesRegulations/Taxes/Pages/RETT.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "رفع دعم الدولة لضريبة المسكن الأول للمواطن من 850 ألف ريال إلى مليون ريال."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.zakat-rate",
+      "nombre": "مقدار الزكاة في النقود والذهب والفضة وعروض التجارة",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "هيئة الزكاة والضريبة والجمارك",
+            "titulo": "الدليل المبسط للأحكام الفقهية لزكاة الأفراد",
+            "url": "https://zatca.gov.sa/ar/HelpCenter/guidelines/Documents/Simplified-Zakat-Individual.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "نصاب الذهب 85 غرامًا من الذهب الخالص عيار 24، ونصاب الفضة 595 غرامًا، والواجب ربع العشر (2.5%). نصاب الأوراق النقدية هو الأقل من النصابين، وهو عادة نصاب الفضة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.nisab-silver",
+      "nombre": "نصاب الفضة بالغرام",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 595,
+          "fuente": {
+            "organismo": "هيئة الزكاة والضريبة والجمارك",
+            "titulo": "الدليل المبسط للأحكام الفقهية لزكاة الأفراد",
+            "url": "https://zatca.gov.sa/ar/HelpCenter/guidelines/Documents/Simplified-Zakat-Individual.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "نصاب الذهب 85 غرامًا من الذهب الخالص عيار 24، ونصاب الفضة 595 غرامًا، والواجب ربع العشر (2.5%). نصاب الأوراق النقدية هو الأقل من النصابين، وهو عادة نصاب الفضة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.nisab-gold",
+      "nombre": "نصاب الذهب بالغرام (عيار 24)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 85,
+          "fuente": {
+            "organismo": "هيئة الزكاة والضريبة والجمارك",
+            "titulo": "الدليل المبسط للأحكام الفقهية لزكاة الأفراد",
+            "url": "https://zatca.gov.sa/ar/HelpCenter/guidelines/Documents/Simplified-Zakat-Individual.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "نصاب الذهب 85 غرامًا من الذهب الخالص عيار 24، ونصاب الفضة 595 غرامًا، والواجب ربع العشر (2.5%). نصاب الأوراق النقدية هو الأقل من النصابين، وهو عادة نصاب الفضة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.usd-peg",
+      "nombre": "السعر الرسمي للريال مقابل الدولار الأمريكي",
+      "tipo": "numero",
+      "unidad": "SAR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-05-04",
+          "valor": 3.75,
+          "fuente": {
+            "organismo": "البنك المركزي السعودي",
+            "titulo": "تأكيد الالتزام بسياسة ربط سعر صرف الريال بالدولار",
+            "url": "https://sama.gov.sa/ar-sa/MediaCenter/News/Pages/news-557.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "السعر الرسمي 3.75 ريال للدولار؛ البيان مؤرخ 4 مايو 2020."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.month-days",
+      "nombre": "عدد أيام الشهر في نظام العمل",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": 30,
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة الثانية: الشهر ثلاثون يومًا ما لم ينص العقد أو لائحة تنظيم العمل على خلاف ذلك."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.eos",
+      "nombre": "مكافأة نهاية الخدمة (أجر شهر عن كل سنة)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "first-5-years": "عن كل سنة من السنوات الخمس الأولى",
+        "after-5-years": "عن كل سنة بعد الخمس الأولى"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": {
+            "first-5-years": 0.5,
+            "after-5-years": 1
+          },
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة الرابعة والثمانون: أجر نصف شهر عن كل سنة من السنوات الخمس الأولى، وأجر شهر عن كل سنة تالية، على أساس الأجر الأخير."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.eos-resignation",
+      "nombre": "نصيب المستقيل من المكافأة (بالأثلاث)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "under-2": "أقل من سنتين",
+        "2-to-5": "من سنتين إلى خمس سنوات",
+        "5-to-10": "أكثر من خمس سنوات وأقل من عشر",
+        "10-plus": "عشر سنوات فأكثر"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": {
+            "under-2": 0,
+            "2-to-5": 1,
+            "5-to-10": 2,
+            "10-plus": 3
+          },
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة الخامسة والثمانون: ثلث المكافأة بعد سنتين إلى خمس سنوات، وثلثاها بعد خمس سنوات وحتى أقل من عشر، وكاملة بعد عشر سنوات."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.notice",
+      "nombre": "مهلة الإشعار في العقد غير محدد المدة",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "worker-monthly": "من العامل، والأجر شهري",
+        "employer-monthly": "من صاحب العمل، والأجر شهري",
+        "not-monthly": "من أي طرف، والأجر غير شهري"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": {
+            "worker-monthly": 30,
+            "employer-monthly": 60,
+            "not-monthly": 30
+          },
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة الخامسة والسبعون بعد تعديل م/44 (يعمل به من 1446/8/20 للهجرة الموافق 19 فبراير 2025)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.unfair-dismissal",
+      "nombre": "التعويض عن الإنهاء لسبب غير مشروع",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "days-per-year": "أيام أجر عن كل سنة خدمة (عقد غير محدد المدة)",
+        "minimum-months": "الحد الأدنى بالأشهر"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": {
+            "days-per-year": 15,
+            "minimum-months": 2
+          },
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة السابعة والسبعون: أجر خمسة عشر يومًا عن كل سنة في العقد غير محدد المدة، وأجر المدة الباقية في العقد محدد المدة، وبما لا يقل عن أجر شهرين."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.annual-leave",
+      "nombre": "الإجازة السنوية",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "base-days": "أيام الإجازة الأساسية",
+        "long-service-days": "الأيام بعد خمس سنوات متصلة",
+        "long-service-years": "سنوات الخدمة لزيادة الإجازة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": {
+            "base-days": 21,
+            "long-service-days": 30,
+            "long-service-years": 5
+          },
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة التاسعة بعد المائة: واحد وعشرون يومًا على الأقل، تزاد إلى ثلاثين يومًا بعد خمس سنوات متصلة؛ والمادة الحادية عشرة بعد المائة: أجر الأيام غير المستعملة عند ترك العمل."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.overtime-premium",
+      "nombre": "الزيادة على أجر الساعة الإضافية (من الأجر الأساسي)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": 50,
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة السابعة بعد المائة: أجر الساعة مضافًا إليه 50% من الأجر الأساسي."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.working-hours",
+      "nombre": "الحد الأعلى لساعات العمل الفعلية",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "daily": "في اليوم",
+        "weekly": "في الأسبوع",
+        "ramadan-daily": "في اليوم خلال رمضان للمسلمين",
+        "ramadan-weekly": "في الأسبوع خلال رمضان للمسلمين"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": {
+            "daily": 8,
+            "weekly": 48,
+            "ramadan-daily": 6,
+            "ramadan-weekly": 36
+          },
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة الثامنة والتسعون."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.sick-leave",
+      "nombre": "الإجازة المرضية خلال السنة",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "full-days": "أيام بأجر كامل",
+        "partial-days": "أيام بثلاثة أرباع الأجر",
+        "unpaid-days": "أيام دون أجر",
+        "partial-rate": "نسبة الأجر في الأيام التالية (%)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": {
+            "full-days": 30,
+            "partial-days": 60,
+            "unpaid-days": 30,
+            "partial-rate": 75
+          },
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة السابعة عشرة بعد المائة: السنة تبدأ من تاريخ أول إجازة مرضية."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.maternity",
+      "nombre": "إجازة الوضع",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "weeks": "أسابيع بأجر كامل",
+        "mandatory-after": "أسابيع إلزامية بعد الوضع",
+        "max-before": "أقصى ما يبدأ قبل التاريخ المرجح"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-02-19",
+          "valor": {
+            "weeks": 12,
+            "mandatory-after": 6,
+            "max-before": 4
+          },
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة الحادية والخمسون بعد المائة بعد تعديل م/44، ولها شهر إضافي بأجر كامل إذا كان المولود مريضًا أو من ذوي الإعاقة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.gosi-pension-legacy",
+      "nombre": "اشتراك فرع المعاشات لمن له مدد اشتراك قبل 3 يوليو 2024",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employee": "حصة المشترك",
+        "employer": "حصة صاحب العمل"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-03",
+          "valor": {
+            "employee": 9,
+            "employer": 9
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للتأمينات الاجتماعية",
+            "titulo": "المنصة التوعوية: نسب الاشتراكات لغير المشمولين بالنظام الجديد",
+            "url": "https://awareness.gosi.gov.sa/journey1.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.gosi-pension-new",
+      "nombre": "اشتراك فرع المعاشات في النظام الجديد لعام 1445 للهجرة",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employee": "حصة المشترك",
+        "employer": "حصة صاحب العمل"
+      },
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-03",
+          "hasta": "2025-06-30",
+          "valor": {
+            "employee": 9,
+            "employer": 9
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للتأمينات الاجتماعية",
+            "titulo": "آلية تطبيق الزيادة التدريجية لنسب اشتراك فرع المعاشات",
+            "url": "https://awareness.gosi.gov.sa/pdf/Contributions.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "جدول التدرج: 9% من 3 يوليو 2024، ثم 9.5% و10% و10.5% و11% في 1 يوليو من 2025 إلى 2028، لكل من المشترك وصاحب العمل."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "employee": 9.5,
+            "employer": 9.5
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للتأمينات الاجتماعية",
+            "titulo": "آلية تطبيق الزيادة التدريجية لنسب اشتراك فرع المعاشات",
+            "url": "https://awareness.gosi.gov.sa/pdf/Contributions.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "جدول التدرج: 9% من 3 يوليو 2024، ثم 9.5% و10% و10.5% و11% في 1 يوليو من 2025 إلى 2028، لكل من المشترك وصاحب العمل."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": {
+            "employee": 10,
+            "employer": 10
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للتأمينات الاجتماعية",
+            "titulo": "آلية تطبيق الزيادة التدريجية لنسب اشتراك فرع المعاشات",
+            "url": "https://awareness.gosi.gov.sa/pdf/Contributions.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "جدول التدرج: 9% من 3 يوليو 2024، ثم 9.5% و10% و10.5% و11% في 1 يوليو من 2025 إلى 2028، لكل من المشترك وصاحب العمل."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-07-01",
+          "hasta": "2028-06-30",
+          "valor": {
+            "employee": 10.5,
+            "employer": 10.5
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للتأمينات الاجتماعية",
+            "titulo": "آلية تطبيق الزيادة التدريجية لنسب اشتراك فرع المعاشات",
+            "url": "https://awareness.gosi.gov.sa/pdf/Contributions.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "جدول التدرج: 9% من 3 يوليو 2024، ثم 9.5% و10% و10.5% و11% في 1 يوليو من 2025 إلى 2028، لكل من المشترك وصاحب العمل."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-07-01",
+          "valor": {
+            "employee": 11,
+            "employer": 11
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للتأمينات الاجتماعية",
+            "titulo": "آلية تطبيق الزيادة التدريجية لنسب اشتراك فرع المعاشات",
+            "url": "https://awareness.gosi.gov.sa/pdf/Contributions.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "جدول التدرج: 9% من 3 يوليو 2024، ثم 9.5% و10% و10.5% و11% في 1 يوليو من 2025 إلى 2028، لكل من المشترك وصاحب العمل."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.gosi-saned",
+      "nombre": "اشتراك فرع التأمين ضد التعطل عن العمل (ساند)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employee": "حصة المشترك",
+        "employer": "حصة صاحب العمل"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-03",
+          "valor": {
+            "employee": 0.75,
+            "employer": 0.75
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للتأمينات الاجتماعية",
+            "titulo": "المنصة التوعوية: نسب الاشتراكات في نظام التأمينات الاجتماعية الجديد لعام 1445 للهجرة",
+            "url": "https://awareness.gosi.gov.sa/businessJourney.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.gosi-hazards",
+      "nombre": "اشتراك فرع الأخطار المهنية (على صاحب العمل)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-03",
+          "valor": 2,
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام التأمينات الاجتماعية لعام 1445 للهجرة، المادتان الثامنة والعشرون والتاسعة والعشرون",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/eaee8a20-3a54-4aaf-b0d9-b1ad00998962/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "يطبق الفرع على جميع العمال داخل المملكة، سعوديين وغير سعوديين."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.gosi-cap",
+      "nombre": "الحد الأعلى للأجر الخاضع للاشتراك",
+      "tipo": "numero",
+      "unidad": "SAR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-03",
+          "valor": 45000,
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام التأمينات الاجتماعية لعام 1445 للهجرة، المادة الثامنة",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/eaee8a20-3a54-4aaf-b0d9-b1ad00998962/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "الحد نفسه في نظام 1421 للهجرة (المادة الثامنة عشرة)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.gosi-pension-formula",
+      "nombre": "معاش النظام الجديد",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "accrual": "نسبة الاستحقاق عن كل سنة اشتراك (%)",
+        "minimum": "الحد الأدنى للمعاش بعد 480 شهرًا (ريال)",
+        "minimum-months": "أشهر الاشتراك للحد الأدنى الكامل",
+        "average-months": "عدد الأشهر التي يحسب منها المتوسط"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-03",
+          "valor": {
+            "accrual": 2.25,
+            "minimum": 4000,
+            "minimum-months": 480,
+            "average-months": 180
+          },
+          "fuente": {
+            "organismo": "هيئة الخبراء بمجلس الوزراء",
+            "titulo": "نظام التأمينات الاجتماعية لعام 1445 للهجرة، المادتان السابعة عشرة والسادسة والعشرون",
+            "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/eaee8a20-3a54-4aaf-b0d9-b1ad00998962/1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المعاش = 2.25% × متوسط أعلى الأجور عن 180 شهرًا × أشهر الاشتراك ÷ 12، بحد أقصى 100% من المتوسط."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sa.dependent-fee",
+      "nombre": "المقابل المالي الشهري عن كل مرافق",
+      "tipo": "numero",
+      "unidad": "SAR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2020-07-01",
+          "valor": 400,
+          "motivo": "المبلغ يظهر في الصحافة وفي قرارات 2017، لكن صفحات الجوازات ومنصة my.gov.sa لم تفتح (403) ولم نقرأه في مصدر رسمي."
+        }
+      ]
+    }
+  ]
+}

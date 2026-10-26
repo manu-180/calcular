@@ -73,6 +73,19 @@
   background: var(--cy-linea-fuerte);
 }
 
+/* En un teléfono la fecha no entra en la misma línea: va abajo, sin el separador colgando al final. */
+@media (max-width: 34rem) {
+  .cy-rk-ceja {
+    border-radius: 1rem;
+  }
+  .cy-rk-ceja-sep {
+    display: none;
+  }
+  .cy-rk-ceja time {
+    flex-basis: 100%;
+  }
+}
+
 .cy-rk-ceja-oscura {
   background: rgb(244 240 230 / 0.08);
   box-shadow: inset 0 0 0 1px rgb(244 240 230 / 0.14);

@@ -128,6 +128,7 @@ export function hojaCasas(archivo: string, d: casas.Datos): { hoja: HojaPrevia; 
     zonaDesfavorable: d.zonaDesfavorable,
     horasExtrasComunes: d.extrasComunes,
     horasExtrasFinDeSemana: d.extrasFinDeSemana,
+    aniosAntiguedad: d.aniosAntiguedad,
   });
   if (!r) return null;
   // La planilla trae «Mayor de 18 años» como condición para ARCA y el prefill no la cambia.
@@ -142,30 +143,36 @@ export function hojaCasas(archivo: string, d: casas.Datos): { hoja: HojaPrevia; 
     { fila: 7, etiqueta: "Modalidad", valor: casas.MODALIDAD_EN_PLANILLA[d.modalidad], tono: "input" },
     { fila: 8, etiqueta: "Horas por semana", valor: horas(d.horasSemanales), tono: "input" },
     { fila: 9, etiqueta: "¿Zona desfavorable?", valor: siNo(d.zonaDesfavorable), tono: "input" },
+    ...(d.aniosAntiguedad > 0
+      ? [{ fila: 10, etiqueta: "Años de antigüedad", valor: String(d.aniosAntiguedad), tono: "input" as const }]
+      : []),
     ...(d.extrasComunes > 0
-      ? [{ fila: 10, etiqueta: "Horas extras en días comunes", valor: horas(d.extrasComunes), tono: "input" as const }]
+      ? [{ fila: 11, etiqueta: "Horas extras en días comunes", valor: horas(d.extrasComunes), tono: "input" as const }]
       : []),
     ...(d.extrasFinDeSemana > 0
-      ? [{ fila: 11, etiqueta: "Horas extras fin de semana y feriados", valor: horas(d.extrasFinDeSemana), tono: "input" as const }]
+      ? [{ fila: 12, etiqueta: "Horas extras fin de semana y feriados", valor: horas(d.extrasFinDeSemana), tono: "input" as const }]
       : []),
-    { fila: 12, etiqueta: "Condición (para ARCA)", valor: "Mayor de 18 años", tono: "input" },
-    { fila: 14, etiqueta: "SUELDO DEL MES", tono: "seccion" },
-    { fila: 15, etiqueta: "Valor de la hora", valor: formatARS(r.valorHora, 2) },
-    { fila: 19, etiqueta: "Básico del mes", valor: r.basico },
+    { fila: 13, etiqueta: "Condición (para ARCA)", valor: "Mayor de 18 años", tono: "input" },
+    { fila: 15, etiqueta: "SUELDO DEL MES", tono: "seccion" },
+    { fila: 16, etiqueta: "Valor de la hora", valor: formatARS(r.valorHora, 2) },
+    { fila: 20, etiqueta: "Básico del mes", valor: r.basico },
+    ...(r.adicionalAntiguedad > 0
+      ? [{ fila: 21, etiqueta: `Adicional por antigüedad (${r.aniosAntiguedad} ${r.aniosAntiguedad === 1 ? "año" : "años"})`, valor: r.adicionalAntiguedad }]
+      : []),
     ...(r.extrasComunes > 0
-      ? [{ fila: 20, etiqueta: `Horas extras comunes (+${HORAS_EXTRAS.comunes}%)`, valor: r.extrasComunes }]
+      ? [{ fila: 22, etiqueta: `Horas extras comunes (+${HORAS_EXTRAS.comunes}%)`, valor: r.extrasComunes }]
       : []),
     ...(r.extrasFinDeSemana > 0
-      ? [{ fila: 21, etiqueta: `Horas extras fin de semana (+${HORAS_EXTRAS.finDeSemanaYFeriados}%)`, valor: r.extrasFinDeSemana }]
+      ? [{ fila: 23, etiqueta: `Horas extras fin de semana (+${HORAS_EXTRAS.finDeSemanaYFeriados}%)`, valor: r.extrasFinDeSemana }]
       : []),
-    { fila: 22, etiqueta: "TOTAL A PAGARLE ESTE MES", valor: r.total, tono: "total" },
-    { fila: 23, etiqueta: "Aguinaldo que va generando", valor: r.aguinaldoEstimado },
-    { fila: 25, etiqueta: "LO QUE LE PAGÁS A ARCA", tono: "seccion" },
-    { fila: 27, etiqueta: "Pago mensual a ARCA", valor: a.totalPorTrabajador, nota: "aportes, contribuciones y ART" },
+    { fila: 24, etiqueta: "TOTAL A PAGARLE ESTE MES", valor: r.total, tono: "total" },
+    { fila: 25, etiqueta: "Aguinaldo que va generando", valor: r.aguinaldoEstimado },
+    { fila: 27, etiqueta: "LO QUE LE PAGÁS A ARCA", tono: "seccion" },
+    { fila: 29, etiqueta: "Pago mensual a ARCA", valor: a.totalPorTrabajador, nota: "aportes, contribuciones y ART" },
     ...(a.faltaParaObraSocial > 0
-      ? [{ fila: 29, etiqueta: "Falta para que tenga obra social", valor: a.faltaParaObraSocial }]
+      ? [{ fila: 31, etiqueta: "Falta para que tenga obra social", valor: a.faltaParaObraSocial }]
       : []),
-    { fila: 31, etiqueta: "COSTO TOTAL DEL MES", valor: costo, tono: "total" },
+    { fila: 33, etiqueta: "COSTO TOTAL DEL MES", valor: costo, tono: "total" },
   ];
   return {
     hoja: { archivo, pestanas: [...PESTANAS["planilla-casas-particulares"]], hoja: casas.HOJA, filas },

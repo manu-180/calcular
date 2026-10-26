@@ -1,0 +1,58 @@
+{
+  "mercado": "jm",
+  "series": [
+    {
+      "id": "jm.usd-sell",
+      "nombre": "BOJ weighted average selling rate, Jamaican dollars per US dollar",
+      "unidad": "JMD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Bank of Jamaica",
+        "titulo": "Foreign Exchange Rates (FX spot market weighted average buy and sell rates)",
+        "url": "https://boj.org.jm/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24",
+        "nota": "The BOJ home page shows the weighted average rates of the last trading day in its Foreign Exchange Rates table."
+      },
+      "puntos": [["2026-10-23", 159.6487]]
+    },
+    {
+      "id": "jm.usd-buy",
+      "nombre": "BOJ weighted average buying rate, Jamaican dollars per US dollar",
+      "unidad": "JMD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Bank of Jamaica",
+        "titulo": "Foreign Exchange Rates (FX spot market weighted average buy and sell rates)",
+        "url": "https://boj.org.jm/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24",
+        "nota": "The BOJ home page shows the weighted average rates of the last trading day in its Foreign Exchange Rates table."
+      },
+      "puntos": [["2026-10-23", 158.1879]]
+    },
+    {
+      "id": "jm.inflation",
+      "nombre": "All Jamaica point-to-point inflation rate (CPI)",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 70,
+      "fuente": {
+        "organismo": "Statistical Institute of Jamaica (STATIN)",
+        "titulo": "Press Release: Consumer Price Index, September 2026",
+        "url": "https://wups.statinja.gov.jm/WUP/20261015_CPI_8e6311f3-6b95-461d-be10-e554a3773ece.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24",
+        "nota": "Each month is stored on its first day. June, July and August 2026 come from the press releases of July 15, August 17 and September 15, 2026."
+      },
+      "puntos": [
+        ["2026-06-01", 6.7],
+        ["2026-07-01", 7.5],
+        ["2026-08-01", 7.9],
+        ["2026-09-01", 8.6]
+      ]
+    }
+  ]
+}
