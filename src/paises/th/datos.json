@@ -751,6 +751,219 @@
           }
         }
       ]
+    },
+    {
+      "id": "th.stamp-duty-units",
+      "nombre": "จำนวนเงินต่ออากรแสตมป์ 1 บาท",
+      "tipo": "mapa",
+      "unidad": "THB",
+      "etiquetas": {
+        "lease": "เช่าที่ดิน โรงเรือน สิ่งปลูกสร้าง",
+        "shares": "โอนหุ้น หุ้นกู้ พันธบัตร",
+        "hire-purchase": "เช่าซื้อทรัพย์สิน",
+        "work": "จ้างทำของ",
+        "loan": "กู้ยืมเงิน หรือเบิกเงินเกินบัญชี"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-08-10",
+          "valor": {
+            "lease": 1000,
+            "shares": 1000,
+            "hire-purchase": 1000,
+            "work": 1000,
+            "loan": 2000
+          },
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ตารางตราสารสำหรับการยื่นแบบขอเสียอากรแสตมป์เป็นตัวเงิน (บัญชีอัตราอากรแสตมป์ ลักษณะแห่งตราสาร 1 ถึง 5)",
+            "url": "https://www.rd.go.th/fileadmin/tax_pdf/SD/document1_100861.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.stamp-duty-loan-cap",
+      "nombre": "อากรแสตมป์สูงสุดของสัญญากู้ยืมเงิน",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-08-10",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ตารางตราสารสำหรับการยื่นแบบขอเสียอากรแสตมป์เป็นตัวเงิน (บัญชีอัตราอากรแสตมป์ ลักษณะแห่งตราสาร 1 ถึง 5)",
+            "url": "https://www.rd.go.th/fileadmin/tax_pdf/SD/document1_100861.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.lease-default-years",
+      "nombre": "อายุสัญญาเช่าที่ถือเมื่อสัญญาไม่กำหนด",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-08-10",
+          "valor": 3,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ตารางตราสารสำหรับการยื่นแบบขอเสียอากรแสตมป์เป็นตัวเงิน (บัญชีอัตราอากรแสตมป์ ลักษณะแห่งตราสาร 1 ถึง 5)",
+            "url": "https://www.rd.go.th/fileadmin/tax_pdf/SD/document1_100861.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.life-insurance-cap",
+      "nombre": "ลดหย่อนเบี้ยประกันชีวิตสูงสุด",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.health-insurance-cap",
+      "nombre": "ลดหย่อนเบี้ยประกันสุขภาพสูงสุด (รวมกับประกันชีวิตไม่เกิน 100,000)",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 25000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.pension-insurance-rate",
+      "nombre": "ลดหย่อนเบี้ยประกันชีวิตแบบบำนาญ ร้อยละของเงินได้",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.pension-insurance-cap",
+      "nombre": "ลดหย่อนเบี้ยประกันชีวิตแบบบำนาญสูงสุด",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 200000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.rmf-rate",
+      "nombre": "ลดหย่อน RMF ร้อยละของเงินได้",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.retirement-group-cap",
+      "nombre": "เพดานรวมกลุ่มเงินออมเพื่อเกษียณ (RMF กองทุนสำรองเลี้ยงชีพ ประกันบำนาญ ฯลฯ)",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.home-loan-interest-cap",
+      "nombre": "ลดหย่อนดอกเบี้ยเงินกู้ซื้อที่อยู่อาศัยสูงสุด",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
     }
   ]
 }

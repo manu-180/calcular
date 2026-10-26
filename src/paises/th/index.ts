@@ -24,6 +24,10 @@ import employerCost from "./calculadoras/employer-cost";
 import contenidoEmployerCost from "./contenido/employer-cost";
 import annualLeave from "./calculadoras/annual-leave";
 import contenidoAnnualLeave from "./contenido/annual-leave";
+import stampDuty from "./calculadoras/stamp-duty";
+import contenidoStampDuty from "./contenido/stamp-duty";
+import taxDeduction from "./calculadoras/tax-deduction";
+import contenidoTaxDeduction from "./contenido/tax-deduction";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +52,8 @@ export default definirPais({
     { definicion: corporateIncomeTax, contenido: contenidoCorporateIncomeTax, cliente: () => import("./calculadoras/corporate-income-tax.cliente") },
     { definicion: employerCost, contenido: contenidoEmployerCost, cliente: () => import("./calculadoras/employer-cost.cliente") },
     { definicion: annualLeave, contenido: contenidoAnnualLeave, cliente: () => import("./calculadoras/annual-leave.cliente") },
+    { definicion: stampDuty, contenido: contenidoStampDuty, cliente: () => import("./calculadoras/stamp-duty.cliente") },
+    { definicion: taxDeduction, contenido: contenidoTaxDeduction, cliente: () => import("./calculadoras/tax-deduction.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "th.vat" } }] },
   novedades,
