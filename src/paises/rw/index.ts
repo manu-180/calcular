@@ -32,6 +32,22 @@ import capitalGainsTaxCalculator from "./calculadoras/capital-gains-tax-calculat
 import contenidoCapitalGainsTaxCalculator from "./contenido/capital-gains-tax-calculator";
 import businessIncomeTaxCalculator from "./calculadoras/business-income-tax-calculator";
 import contenidoBusinessIncomeTaxCalculator from "./contenido/business-income-tax-calculator";
+import propertyTaxCalculator from "./calculadoras/property-tax-calculator";
+import contenidoPropertyTaxCalculator from "./contenido/property-tax-calculator";
+import propertySaleTaxCalculator from "./calculadoras/property-sale-tax-calculator";
+import contenidoPropertySaleTaxCalculator from "./contenido/property-sale-tax-calculator";
+import tradingLicenceCalculator from "./calculadoras/trading-licence-calculator";
+import contenidoTradingLicenceCalculator from "./contenido/trading-licence-calculator";
+import taxPenaltyCalculator from "./calculadoras/tax-penalty-calculator";
+import contenidoTaxPenaltyCalculator from "./contenido/tax-penalty-calculator";
+import roadMaintenanceLevyCalculator from "./calculadoras/road-maintenance-levy-calculator";
+import contenidoRoadMaintenanceLevyCalculator from "./contenido/road-maintenance-levy-calculator";
+import tourismTaxCalculator from "./calculadoras/tourism-tax-calculator";
+import contenidoTourismTaxCalculator from "./contenido/tourism-tax-calculator";
+import usdToRwf from "./calculadoras/usd-to-rwf";
+import contenidoUsdToRwf from "./contenido/usd-to-rwf";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +76,14 @@ export default definirPais({
     { definicion: smallBusinessTaxCalculator, contenido: contenidoSmallBusinessTaxCalculator, cliente: () => import("./calculadoras/small-business-tax-calculator.cliente") },
     { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
     { definicion: businessIncomeTaxCalculator, contenido: contenidoBusinessIncomeTaxCalculator, cliente: () => import("./calculadoras/business-income-tax-calculator.cliente") },
+    { definicion: propertyTaxCalculator, contenido: contenidoPropertyTaxCalculator, cliente: () => import("./calculadoras/property-tax-calculator.cliente") },
+    { definicion: propertySaleTaxCalculator, contenido: contenidoPropertySaleTaxCalculator, cliente: () => import("./calculadoras/property-sale-tax-calculator.cliente") },
+    { definicion: tradingLicenceCalculator, contenido: contenidoTradingLicenceCalculator, cliente: () => import("./calculadoras/trading-licence-calculator.cliente") },
+    { definicion: taxPenaltyCalculator, contenido: contenidoTaxPenaltyCalculator, cliente: () => import("./calculadoras/tax-penalty-calculator.cliente") },
+    { definicion: roadMaintenanceLevyCalculator, contenido: contenidoRoadMaintenanceLevyCalculator, cliente: () => import("./calculadoras/road-maintenance-levy-calculator.cliente") },
+    { definicion: tourismTaxCalculator, contenido: contenidoTourismTaxCalculator, cliente: () => import("./calculadoras/tourism-tax-calculator.cliente") },
+    { definicion: usdToRwf, contenido: contenidoUsdToRwf, cliente: () => import("./calculadoras/usd-to-rwf.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
