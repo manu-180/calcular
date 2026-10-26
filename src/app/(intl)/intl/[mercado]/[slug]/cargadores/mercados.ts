@@ -71,6 +71,7 @@ export const MERCADOS: Readonly<Record<string, CargadoresMercado>> = {
   "ug": () => import("./ug"),
   "us": () => import("./us"),
   "uy": () => import("./uy"),
+  "uz": () => import("./uz"),
   "ve": () => import("./ve"),
   "za": () => import("./za"),
 };
