@@ -850,3 +850,98 @@ html:has(dialog.ca-bloquea[open]) {
   outline: 2px solid var(--color-emerald-500);
   outline-offset: 4px;
 }
+
+/* Pantallas de error (404 y fallos): un visor de calculadora que no llega a un resultado. */
+.ca-visor-error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  min-width: 13.5rem;
+  padding: 1.1rem 1.35rem 1.2rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, var(--color-zinc-900), var(--color-zinc-950));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    var(--shadow-alzada);
+  transform: rotate(2deg);
+  animation: ca-visor-entra 0.7s var(--ease-fluid) 0.1s backwards;
+}
+.ca-visor-error-operacion {
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--color-zinc-400);
+}
+.ca-visor-error-resultado {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  color: var(--color-emerald-300);
+}
+@keyframes ca-visor-entra {
+  from {
+    opacity: 0;
+    transform: rotate(-3deg) translateY(10px) scale(0.96);
+  }
+}
+@media (max-width: 639px) {
+  .ca-visor-error {
+    align-self: flex-start;
+    min-width: 0;
+    width: max-content;
+    transform: rotate(-1.5deg);
+  }
+  .ca-visor-error-resultado {
+    font-size: 2.5rem;
+  }
+}
+
+.ca-error-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.875rem;
+  padding: 0 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(24 24 27 / 0.12);
+  background: rgb(255 255 255 / 0.8);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-zinc-800);
+  cursor: pointer;
+  transition:
+    transform 0.16s var(--ease-fluid),
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+.ca-error-boton-principal {
+  border-color: transparent;
+  background: var(--color-zinc-900);
+  color: #fff;
+}
+@media (hover: hover) and (pointer: fine) {
+  .ca-error-boton:hover {
+    background: #fff;
+    border-color: rgb(24 24 27 / 0.22);
+  }
+  .ca-error-boton-principal:hover {
+    background: var(--color-zinc-800);
+    border-color: transparent;
+  }
+}
+.ca-error-boton:active {
+  transform: scale(0.96);
+}
+.ca-error-boton:focus-visible {
+  outline: none;
+  box-shadow: var(--ca-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ca-visor-error {
+    animation: none;
+  }
+}
