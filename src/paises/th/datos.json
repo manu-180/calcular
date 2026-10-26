@@ -1,0 +1,492 @@
+{
+  "mercado": "th",
+  "datos": [
+    {
+      "id": "th.pit-brackets",
+      "nombre": "อัตราภาษีเงินได้บุคคลธรรมดา (เงินได้สุทธิ)",
+      "tipo": "escala",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 150000,
+              "tasa": 0
+            },
+            {
+              "desde": 150000,
+              "hasta": 300000,
+              "tasa": 5
+            },
+            {
+              "desde": 300000,
+              "hasta": 500000,
+              "tasa": 10
+            },
+            {
+              "desde": 500000,
+              "hasta": 750000,
+              "tasa": 15
+            },
+            {
+              "desde": 750000,
+              "hasta": 1000000,
+              "tasa": 20
+            },
+            {
+              "desde": 1000000,
+              "hasta": 2000000,
+              "tasa": 25
+            },
+            {
+              "desde": 2000000,
+              "hasta": 5000000,
+              "tasa": 30
+            },
+            {
+              "desde": 5000000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "อัตราภาษีเงินได้บุคคลธรรมดาสำหรับปีภาษี 2560 เป็นต้นไป",
+            "url": "https://www.rd.go.th/59670.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.employment-expense-rate",
+      "nombre": "อัตราหักค่าใช้จ่ายเงินได้ตามมาตรา 40 (1) (2)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การปรับปรุงโครงสร้างภาษีเงินได้ (พ.ร.บ.แก้ไขเพิ่มเติมประมวลรัษฎากร ฉบับที่ 44 พ.ศ. 2560)",
+            "url": "https://www.rd.go.th/59668.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.employment-expense-cap",
+      "nombre": "เพดานหักค่าใช้จ่ายเงินได้ตามมาตรา 40 (1) (2)",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การปรับปรุงโครงสร้างภาษีเงินได้ (พ.ร.บ.แก้ไขเพิ่มเติมประมวลรัษฎากร ฉบับที่ 44 พ.ศ. 2560)",
+            "url": "https://www.rd.go.th/59668.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.personal-allowance",
+      "nombre": "ค่าลดหย่อนผู้มีเงินได้",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การปรับปรุงโครงสร้างภาษีเงินได้ (พ.ร.บ.แก้ไขเพิ่มเติมประมวลรัษฎากร ฉบับที่ 44 พ.ศ. 2560)",
+            "url": "https://www.rd.go.th/59668.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.spouse-allowance",
+      "nombre": "ค่าลดหย่อนคู่สมรสที่ไม่มีเงินได้",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การปรับปรุงโครงสร้างภาษีเงินได้ (พ.ร.บ.แก้ไขเพิ่มเติมประมวลรัษฎากร ฉบับที่ 44 พ.ศ. 2560)",
+            "url": "https://www.rd.go.th/59668.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.child-allowance",
+      "nombre": "ค่าลดหย่อนบุตร ต่อคน",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การปรับปรุงโครงสร้างภาษีเงินได้ (พ.ร.บ.แก้ไขเพิ่มเติมประมวลรัษฎากร ฉบับที่ 44 พ.ศ. 2560)",
+            "url": "https://www.rd.go.th/59668.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.child-allowance-second",
+      "nombre": "ค่าลดหย่อนบุตรคนที่ 2 เป็นต้นไปที่เกิดตั้งแต่ปี 2561",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.parent-allowance",
+      "nombre": "ค่าลดหย่อนอุปการะเลี้ยงดูบิดามารดา ต่อคน",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.sso-deduction-cap",
+      "nombre": "เพดานลดหย่อนเงินสมทบประกันสังคม",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 9000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ผู้มีเงินได้มีสิทธิหักลดหย่อนอะไรได้บ้าง (ปรับปรุง 28 ม.ค. 2568)",
+            "url": "https://www.rd.go.th/fileadmin/download/tax_deductions_update280168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.sso-rate-employee",
+      "nombre": "อัตราเงินสมทบผู้ประกันตนมาตรา 33",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา",
+            "titulo": "กฎกระทรวงกำหนดอัตราเงินสมทบกองทุนประกันสังคม พ.ศ. 2565 (ราชกิจจานุเบกษา เล่ม 139 ตอนที่ 60 ก) บัญชี ข.",
+            "url": "https://www.ocs.go.th/searchlaw/power_link/download/eyJ1dWlkIjoiZGQ0MGRkMmYtNjliYy00MGViLWI2MzUtNGU0NjE1ZTM2ODE2IiwiZmlsZW5hbWUiOiLguJswMDExIOC4geC4juC4geC4o-C4sOC4l-C4o-C4p-C4hyAyNTY1LTYw4LiBLTI2LlBERiJ9.NzuagGtnbrcfXpRGgNwsxQ7gs-rAU4UlnsBIIMj4FKk",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.sso-rate-employer",
+      "nombre": "อัตราเงินสมทบนายจ้าง",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา",
+            "titulo": "กฎกระทรวงกำหนดอัตราเงินสมทบกองทุนประกันสังคม พ.ศ. 2565 (ราชกิจจานุเบกษา เล่ม 139 ตอนที่ 60 ก) บัญชี ข.",
+            "url": "https://www.ocs.go.th/searchlaw/power_link/download/eyJ1dWlkIjoiZGQ0MGRkMmYtNjliYy00MGViLWI2MzUtNGU0NjE1ZTM2ODE2IiwiZmlsZW5hbWUiOiLguJswMDExIOC4geC4juC4geC4o-C4sOC4l-C4o-C4p-C4hyAyNTY1LTYw4LiBLTI2LlBERiJ9.NzuagGtnbrcfXpRGgNwsxQ7gs-rAU4UlnsBIIMj4FKk",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.sso-rate-government",
+      "nombre": "อัตราเงินสมทบรัฐบาล",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 2.75,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา",
+            "titulo": "กฎกระทรวงกำหนดอัตราเงินสมทบกองทุนประกันสังคม พ.ศ. 2565 (ราชกิจจานุเบกษา เล่ม 139 ตอนที่ 60 ก) บัญชี ข.",
+            "url": "https://www.ocs.go.th/searchlaw/power_link/download/eyJ1dWlkIjoiZGQ0MGRkMmYtNjliYy00MGViLWI2MzUtNGU0NjE1ZTM2ODE2IiwiZmlsZW5hbWUiOiLguJswMDExIOC4geC4juC4geC4o-C4sOC4l-C4o-C4p-C4hyAyNTY1LTYw4LiBLTI2LlBERiJ9.NzuagGtnbrcfXpRGgNwsxQ7gs-rAU4UlnsBIIMj4FKk",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.sso-wage-floor",
+      "nombre": "ค่าจ้างขั้นต่ำที่ใช้คำนวณเงินสมทบ",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1650,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา",
+            "titulo": "กฎกระทรวงกำหนดค่าจ้างขั้นต่ำและขั้นสูงที่ใช้เป็นฐานในการคำนวณเงินสมทบของผู้ประกันตนตามมาตรา 33 พ.ศ. 2568 (ราชกิจจานุเบกษา เล่ม 142 ตอนที่ 81 ก)",
+            "url": "https://www.ocs.go.th/searchlaw/law-index/item/14702",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.sso-wage-ceiling",
+      "nombre": "ค่าจ้างขั้นสูงที่ใช้คำนวณเงินสมทบ",
+      "tipo": "numero",
+      "unidad": "THB",
+      "proximaRevision": "2029-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2028-12-31",
+          "valor": 17500,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา",
+            "titulo": "กฎกระทรวงกำหนดค่าจ้างขั้นต่ำและขั้นสูงที่ใช้เป็นฐานในการคำนวณเงินสมทบของผู้ประกันตนตามมาตรา 33 พ.ศ. 2568 (ราชกิจจานุเบกษา เล่ม 142 ตอนที่ 81 ก)",
+            "url": "https://www.ocs.go.th/searchlaw/law-index/item/14702",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "hasta": "2031-12-31",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา",
+            "titulo": "กฎกระทรวงกำหนดค่าจ้างขั้นต่ำและขั้นสูงที่ใช้เป็นฐานในการคำนวณเงินสมทบของผู้ประกันตนตามมาตรา 33 พ.ศ. 2568 (ราชกิจจานุเบกษา เล่ม 142 ตอนที่ 81 ก)",
+            "url": "https://www.ocs.go.th/searchlaw/law-index/item/14702",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2032-01-01",
+          "valor": 23000,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา",
+            "titulo": "กฎกระทรวงกำหนดค่าจ้างขั้นต่ำและขั้นสูงที่ใช้เป็นฐานในการคำนวณเงินสมทบของผู้ประกันตนตามมาตรา 33 พ.ศ. 2568 (ราชกิจจานุเบกษา เล่ม 142 ตอนที่ 81 ก)",
+            "url": "https://www.ocs.go.th/searchlaw/law-index/item/14702",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.wht-rates",
+      "nombre": "อัตราภาษีหัก ณ ที่จ่าย",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "service": "ค่าบริการ",
+        "professional": "ค่าวิชาชีพอิสระ",
+        "contract": "ค่าจ้างทำของ ค่ารับเหมา",
+        "rent": "ค่าเช่าทรัพย์สิน",
+        "advertising": "ค่าโฆษณา",
+        "transport": "ค่าขนส่ง",
+        "prize": "รางวัลจากการประกวดหรือแข่งขัน",
+        "promotion": "รางวัลส่งเสริมการขาย"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "service": 3,
+            "professional": 3,
+            "contract": 3,
+            "rent": 5,
+            "advertising": 2,
+            "transport": 1,
+            "prize": 5,
+            "promotion": 3
+          },
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "คำสั่งกรมสรรพากรที่ ท.ป.4/2528 (ปรับปรุงล่าสุด 25-06-2026)",
+            "url": "https://www.rd.go.th/3479.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.inheritance-exempt",
+      "nombre": "มูลค่ามรดกที่ไม่ต้องเสียภาษี",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-01",
+          "valor": 100000000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การคำนวณภาษีและอัตราภาษีการรับมรดก",
+            "url": "https://www.rd.go.th/56662.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.inheritance-rate",
+      "nombre": "อัตราภาษีการรับมรดก",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การคำนวณภาษีและอัตราภาษีการรับมรดก",
+            "url": "https://www.rd.go.th/56662.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.inheritance-rate-family",
+      "nombre": "อัตราภาษีการรับมรดกสำหรับบุพการีหรือผู้สืบสันดาน",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การคำนวณภาษีและอัตราภาษีการรับมรดก",
+            "url": "https://www.rd.go.th/56662.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.interest-wht",
+      "nombre": "อัตราภาษีหัก ณ ที่จ่ายดอกเบี้ยเงินฝาก",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ข้อหารือ 0811/16714 ดอกเบี้ยเงินฝาก มาตรา 50 (2) (ข)",
+            "url": "https://www.rd.go.th/23286.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.savings-interest-exempt",
+      "nombre": "ดอกเบี้ยเงินฝากออมทรัพย์ที่ได้รับยกเว้นต่อปี",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ประกาศอธิบดีกรมสรรพากร เกี่ยวกับภาษีเงินได้ ฉบับที่ 55",
+            "url": "https://www.rd.go.th/3187.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    }
+  ]
+}
