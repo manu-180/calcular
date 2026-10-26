@@ -172,3 +172,11 @@ al centavo:
 La causa es el nivel: 30.000 dólares internacionales son ~23.000 € al año con la PPA de 2025, cerca
 del mínimo legal de los dos países, donde los créditos al trabajo se comen casi todo el impuesto. Las
 anclas quedaron en check_mundo (rigen para 2026; con los tramos de 2027 se recalculan a mano).
+
+## 2026-10-26: panel simple en calcular.ar
+
+`MundoCliente` con `simple` (solo calcular.ar): se pone lo que se cobra **en mano** por mes (el bruto sale
+por bisección sobre la curva neto del país, `brutoAnualDesdeNeto`), sin selector de país ni mes/año. El
+panel abre con la fecha del Estado, «Donde más te rendiría» y compartir con puntos; el bloque «Tu tarjeta
+para compartir» de abajo no se muestra. El ranking aclara que su fila argentina reparte el aguinaldo en el
+año (por eso da más que lo escrito). calcularya no cambia.

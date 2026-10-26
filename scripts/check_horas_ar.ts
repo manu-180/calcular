@@ -35,6 +35,11 @@ const BANDAS: Record<string, [number, number]> = {
   tanque: [15_000, 1_500_000],
   spotify: [500, 100_000],
   canasta: [50_000, 10_000_000],
+  gaseosa: [500, 60_000],
+  vino: [300, 60_000],
+  hamburguesas: [1000, 100_000],
+  queso: [2000, 200_000],
+  panales: [800, 100_000],
 };
 
 // Catálogo

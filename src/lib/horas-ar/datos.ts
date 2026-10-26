@@ -4,6 +4,10 @@ import "server-only";
 import { CANASTA_BASICA_FUENTE, CANASTA_BASICA_ULTIMO } from "@/data/canasta-basica";
 import { hoyAR } from "@/lib/hoy";
 import { minimoAr } from "@/lib/horas/ar";
+import { ppaArgentina } from "@/lib/mundo/ar";
+import type { TablaPpa } from "@/motor/mundo/grilla";
+import tablaPpa from "@/motor/mundo/ppa.json";
+import { registro } from "@/paises";
 import { indiceHoras } from "@/lib/horas/indice";
 import precios from "@/lib/horas/precios.json";
 import cotidianos from "@/lib/horas/cotidianos-ar.json";
@@ -14,6 +18,7 @@ import { DIAS_VIGENCIA_NAFTA, FUENTES_COTIDIANOS, finDeVigenciaPeriodo, ITEMS_CO
 
 const ARCHIVO = cotidianos as ArchivoCotidianos;
 const PRECIOS = precios as ArchivoPrecios;
+const PPA = tablaPpa as TablaPpa;
 
 const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 const mesDe = (periodo: string) => `${MESES[Number(periodo.slice(5, 7)) - 1]} de ${periodo.slice(0, 4)}`;
@@ -42,15 +47,19 @@ export interface ItemPublicado {
 export interface PaisAfuera {
   iso: string;
   nombre: string;
-  // Horas de un iPhone 17 con el salario mínimo de ese país.
-  horasMinimo: number;
+  // Salario mínimo por hora en dólares internacionales (moneda local ÷ PPA del Banco Mundial): cuánto
+  // compra una hora del mínimo de ese país. Con esto se lleva cualquier precio de acá a ese país.
+  minimoPpa: number;
+  // Horas con el mínimo de ese país según el precio oficial de la tienda, por id de ítem de acá.
+  oficial: Readonly<Record<string, number>>;
 }
 
 export interface DatosHorasAR {
   items: readonly ItemPublicado[];
   excluidos: readonly { id: string; motivo: string }[];
   minimo: { porHora: number; nombre: string; url: string } | null;
-  afuera: { producto: string; paises: readonly PaisAfuera[] } | null;
+  // El mínimo argentino en dólares internacionales, para escalar contra cada país.
+  afuera: { minimoPpa: number; paises: readonly PaisAfuera[] } | null;
 }
 
 type Resuelto = { ok: true; item: ItemPublicado } | { ok: false; motivo: string };
@@ -92,18 +101,36 @@ function resolver(i: ItemCotidiano, hoy: string): Resuelto {
   }
 }
 
-// Países con iPhone en la tienda oficial que más le dicen algo a alguien de acá.
+// Países que más le dicen algo a alguien de acá.
 const AFUERA = ["US", "ES", "BR", "CL", "UY", "MX", "IT", "DE"];
+// Ítems de acá con precio oficial de la misma tienda en cada país (src/lib/horas/precios.json).
+const OFICIALES: Readonly<Record<string, string>> = { spotify: "spotify-premium" };
 
-function afuera(): DatosHorasAR["afuera"] {
+function afuera(hoy: string): DatosHorasAR["afuera"] {
   try {
     const filas = indiceHoras().filas;
+    const minimoPpa = (iso: string) => {
+      const porHora = filas.find((x) => x.iso === iso)?.minimo.porHora;
+      const ppa = PPA.paises[iso]?.valor;
+      return porHora && ppa ? porHora / ppa : null;
+    };
+    const smvm = minimoAr(hoy);
+    const ppaAr = ppaArgentina(registro, PPA);
+    const ar = typeof smvm === "string" || typeof ppaAr === "string" ? null : smvm.porHora / ppaAr.valor;
+    if (!ar) return null;
     const paises: PaisAfuera[] = [];
     for (const iso of AFUERA) {
-      const c = filas.find((f) => f.iso === iso)?.celdas["iphone-17"];
-      if (c) paises.push({ iso, nombre: nombreEnPagina(iso, "es", "es-AR"), horasMinimo: Math.round(c.horas * 100) / 100 });
+      const m = minimoPpa(iso);
+      const fila = filas.find((f) => f.iso === iso);
+      if (!m || !fila) continue;
+      const oficial: Record<string, number> = {};
+      for (const [id, producto] of Object.entries(OFICIALES)) {
+        const c = fila.celdas[producto];
+        if (c) oficial[id] = Math.round(c.horas * 1000) / 1000;
+      }
+      paises.push({ iso, nombre: nombreEnPagina(iso, "es", "es-AR"), minimoPpa: Math.round(m * 1e4) / 1e4, oficial });
     }
-    return paises.length >= 3 ? { producto: "un iPhone 17", paises } : null;
+    return paises.length >= 3 ? { minimoPpa: Math.round(ar * 1e4) / 1e4, paises } : null;
   } catch (err) {
     console.error("[horas ar] índice internacional", err);
     return null;
@@ -127,5 +154,5 @@ export function datosHorasAR(hoy = hoyAR()): DatosHorasAR {
     const m = minimoAr(hoy);
     if (typeof m !== "string") minimo = { porHora: m.porHora, nombre: m.nombre, url: m.fuente.url };
   } catch {}
-  return { items, excluidos, minimo, afuera: afuera() };
+  return { items, excluidos, minimo, afuera: afuera(hoy) };
 }

@@ -52,3 +52,22 @@ de la escala. Un valor fuera de la escala va con 308 al que le toca; uno inváli
 
 Una sola línea (mismo A/B «con/sin»): ahora lleva a horas y deja el sueldo en sessionStorage
 (`ca-horas-sueldo`) y el bruto para el mundo. El mundo queda a un toque desde la página de horas.
+
+## 2026-10-26: más cosas, sin grilla, afuera por ítem y compartir con puntos
+
+- **Ítems nuevos** (series IPC-GBA del INDEC, unidades del cuadro `sh_ipc_precios_promedio.xls`):
+  gaseosa cola 1,5 l, vino común 1 l, hamburguesas congeladas x4, queso cremoso kg, pañales x10. Pollo
+  entero quedó afuera: la serie de la API viene en null desde 2026-08. **Helado** se pidió y no entra: el
+  INDEC no lo mide y ninguna cadena publica una lista legible; un precio de marca a mano rompe el 100 %
+  automático. Fotos: Meshy nano-banana-2, mismo prompt de estilo que las doce primeras.
+- **Sin grilla de tarjetas ni bloque «Compartila»**: se elige con las flechas del panel y se comparte desde
+  ahí. Manuel: «con que se pueda compartir desde el primero ya se entiende».
+- **«¿Y <ítem> afuera?»** sigue al ítem elegido. Spotify sale del precio oficial de cada tienda (índice
+  internacional); el resto es estimado: el precio de acá se lleva a cada país con la PPA del Banco Mundial
+  y se divide por el mínimo de ese país (`minimoPpa` = mínimo por hora ÷ PPA). Con sueldo propio, los
+  minutos escalan igual que los de acá («ganar lo mismo que vos frente al mínimo de cada país»). La nota
+  debajo dice cuál de los dos es. iPhone dejó de tener sección propia: no está en el carrusel porque Apple
+  no vende acá.
+- **Puntos** (`motor/compartir/puntos.ts`, `CompartirConPuntos.tsx`): en localStorage, sin cuenta ni
+  servidor; cada red suma una vez por tarjeta. El toque primero llena la barra y a los 600 ms abre la red:
+  más demora pierde la activación del gesto en iOS Safari (share y popups).

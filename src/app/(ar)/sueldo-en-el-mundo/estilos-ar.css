@@ -100,3 +100,107 @@
     animation: none;
   }
 }
+
+/* Panel simple de calcular.ar: la fecha del Estado manda arriba a la derecha, abajo se comparte con puntos;
+   a la izquierda, el sueldo en mano y el país donde más rinde. */
+.ca-mundo .cy-mundo-anio-caja[data-simple] {
+  gap: 1.25rem;
+}
+
+.ca-mundo .cy-mundo-estado {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.ca-mundo .cy-mundo-anio-caja[data-simple] .cy-mundo-fecha {
+  font-size: clamp(2.75rem, 1.6rem + 4vw, 4.5rem);
+  color: var(--cy-mundo-verde);
+}
+
+.ca-mundo .cy-mundo-estado-tasa {
+  font-size: 0.9375rem;
+  color: var(--cy-mundo-crema-suave);
+}
+
+.ca-mundo .cy-mundo-mejor {
+  display: grid;
+  gap: 0.625rem;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: rgb(255 255 255 / 0.04);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+
+.ca-mundo .cy-mundo-mejor-titulo {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cy-mundo-verde);
+}
+
+.ca-mundo .cy-mundo-mejor-pais {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  animation: cy-mundo-entra 0.42s var(--ease-fluid) both;
+}
+
+.ca-mundo .cy-mundo-mejor-texto {
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--cy-mundo-crema-suave);
+}
+
+.ca-mundo .cy-mundo-mejor-texto strong {
+  font-weight: 600;
+  color: var(--cy-mundo-crema);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ca-mundo .cy-mundo-mejor-pais {
+    animation: none;
+  }
+}
+
+@media (min-width: 64rem) {
+  .ca-mundo .cy-mundo-panel-nucleo:has(> [data-simple]) {
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "form anio"
+      "resultado anio"
+      "compartir anio";
+  }
+
+  .ca-mundo .cy-mundo-compartir-rapido {
+    grid-area: compartir;
+    align-self: start;
+  }
+
+  .ca-mundo .cy-mundo-panel-nucleo:has(> [data-simple]) .cy-mundo-form {
+    align-self: start;
+    align-content: start;
+  }
+
+  .ca-mundo .cy-mundo-resultado[data-simple] {
+    align-self: start;
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .ca-mundo .cy-mundo-anio-caja[data-simple] {
+    order: 1;
+  }
+
+  .ca-mundo .cy-mundo-resultado[data-simple] {
+    order: 2;
+  }
+
+  .ca-mundo .cy-mundo-compartir-rapido {
+    order: 3;
+  }
+}
