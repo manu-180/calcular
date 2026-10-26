@@ -8,6 +8,8 @@ export const mercado: Mercado = {
   idioma: "en",
   trato: "tu",
   monedas: ["RWF"],
+  // Intl escribe "RF" para en-RW; RSSB y el BNR escriben RWF.
+  simbolos: { RWF: "RWF" },
   zonaHoraria: "Africa/Kigali",
   estado: "interno",
   redondeo: { decimales: 0, modo: "mitad-arriba" },
