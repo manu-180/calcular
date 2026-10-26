@@ -10,6 +10,7 @@ SLUGS = [
     "employer-cost-calculator",
     "income-tax-calculator",
     "gratuity-tax-calculator",
+    "bonus-tax-calculator",
     "minimum-wage",
     "vat-calculator",
     "sscl-calculator",

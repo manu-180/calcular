@@ -173,6 +173,46 @@
       ]
     },
     {
+      "id": "lk.terminal-retention-limit",
+      "nombre": "Terminal benefits: total above which the employer and the ETF retain tax",
+      "tipo": "numero",
+      "unidad": "LKR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 5000000,
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "APIT Tax Table No. 03 (2025/2026): once-and-for-all payments (terminal benefits)",
+            "url": "https://www.ird.gov.lk/en/publications/APIT_Tax_Tables/2025-2026/Table%20-%203/04.%20APIT_2526_Table_03_Text.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lk.terminal-retention-rate",
+      "nombre": "Terminal benefits: share of the excess the employer and the ETF retain",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "APIT Tax Table No. 03 (2025/2026): once-and-for-all payments (terminal benefits)",
+            "url": "https://www.ird.gov.lk/en/publications/APIT_Tax_Tables/2025-2026/Table%20-%203/04.%20APIT_2526_Table_03_Text.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
       "id": "lk.cgt-rate",
       "nombre": "Tax rate on gains from the realisation of investment assets (individuals)",
       "tipo": "numero",

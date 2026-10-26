@@ -17,6 +17,8 @@ def f(organismo, titulo, url, nota=None):
 APIT = f("Inland Revenue Department", "APIT Tax Table No. 01 (2025/2026): monthly tax deductions from regular profits from primary employment",
          IRD + "APIT_Tax_Tables/2025-2026/Table%20-%201/02.%20APIT_2526_Table_01_Text.pdf",
          "The summarized table gives each band as a percentage of monthly pay less a fixed relief. The fixed amount of each row here is that formula written from the start of the band.")
+APIT_3 = f("Inland Revenue Department", "APIT Tax Table No. 03 (2025/2026): once-and-for-all payments (terminal benefits)",
+           IRD + "APIT_Tax_Tables/2025-2026/Table%20-%203/04.%20APIT_2526_Table_03_Text.pdf")
 ACT_2025 = f("Inland Revenue Department", "Inland Revenue (Amendment) Act, No. 2 of 2025",
              IRD + "Acts_Income%20Tax_2017/IR_Act_No_02-2025_E.pdf")
 CONS = f("Inland Revenue Department", "Consolidated text of the Inland Revenue Act, No. 24 of 2017 (amendments up to 31 March 2025)",
@@ -110,6 +112,10 @@ datos = [
             fila(20000000, None, 12, 600000),
         ], CONS)],
     },
+    numero("lk.terminal-retention-limit", "Terminal benefits: total above which the employer and the ETF retain tax", "LKR",
+           [t("2025-04-01", 5000000, APIT_3)]),
+    numero("lk.terminal-retention-rate", "Terminal benefits: share of the excess the employer and the ETF retain", "%",
+           [t("2025-04-01", 12, APIT_3)]),
     numero("lk.cgt-rate", "Tax rate on gains from the realisation of investment assets (individuals)", "%", [
         t("2018-04-01", 10, CONS, "2026-06-02"),
         t("2026-06-03", 15, ACT_2026),

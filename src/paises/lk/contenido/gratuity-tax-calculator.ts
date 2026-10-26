@@ -22,7 +22,11 @@ export default definirContenido({
   faq: [
     {
       pregunta: "Is my EPF withdrawal included?",
-      respuesta: "The list in the Inland Revenue Act covers commuted pension, retiring gratuity, compensation for loss of office and ETF at retirement. EPF is not in that list, so this calculator leaves it out.",
+      respuesta: "The list in the Inland Revenue Act covers commuted pension, retiring gratuity, compensation for loss of office and ETF at retirement. EPF is not in that list, so this calculator leaves it out. IRD Tax Table No. 03 also lists payments from an approved or regulated provident fund as exempt.",
+    },
+    {
+      pregunta: "Why does my employer hold back more than this tax?",
+      respuesta: "IRD Tax Table No. 03 tells the employer and the ETF to retain {{lk.terminal-retention-rate}} of whatever goes above {{lk.terminal-retention-limit}}. You then ask the IRD Clearance and Directions Unit for a direction within 90 days, and the employer follows it.",
     },
     {
       pregunta: "Which compensation counts?",

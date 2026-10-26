@@ -12,6 +12,8 @@ import incomeTaxCalculator from "./calculadoras/income-tax-calculator";
 import contenidoIncomeTaxCalculator from "./contenido/income-tax-calculator";
 import gratuityTaxCalculator from "./calculadoras/gratuity-tax-calculator";
 import contenidoGratuityTaxCalculator from "./contenido/gratuity-tax-calculator";
+import bonusTaxCalculator from "./calculadoras/bonus-tax-calculator";
+import contenidoBonusTaxCalculator from "./contenido/bonus-tax-calculator";
 import minimumWage from "./calculadoras/minimum-wage";
 import contenidoMinimumWage from "./contenido/minimum-wage";
 import vatCalculator from "./calculadoras/vat-calculator";
@@ -24,6 +26,12 @@ import withholdingTaxCalculator from "./calculadoras/withholding-tax-calculator"
 import contenidoWithholdingTaxCalculator from "./contenido/withholding-tax-calculator";
 import fixedDepositCalculator from "./calculadoras/fixed-deposit-calculator";
 import contenidoFixedDepositCalculator from "./contenido/fixed-deposit-calculator";
+import dollarRate from "./calculadoras/dollar-rate";
+import contenidoDollarRate from "./contenido/dollar-rate";
+import gratuityCalculator from "./calculadoras/gratuity-calculator";
+import contenidoGratuityCalculator from "./contenido/gratuity-calculator";
+import overtimeCalculator from "./calculadoras/overtime-calculator";
+import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -42,12 +50,16 @@ export default definirPais({
     { definicion: employerCostCalculator, contenido: contenidoEmployerCostCalculator, cliente: () => import("./calculadoras/employer-cost-calculator.cliente") },
     { definicion: incomeTaxCalculator, contenido: contenidoIncomeTaxCalculator, cliente: () => import("./calculadoras/income-tax-calculator.cliente") },
     { definicion: gratuityTaxCalculator, contenido: contenidoGratuityTaxCalculator, cliente: () => import("./calculadoras/gratuity-tax-calculator.cliente") },
+    { definicion: bonusTaxCalculator, contenido: contenidoBonusTaxCalculator, cliente: () => import("./calculadoras/bonus-tax-calculator.cliente") },
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
     { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
     { definicion: ssclCalculator, contenido: contenidoSsclCalculator, cliente: () => import("./calculadoras/sscl-calculator.cliente") },
     { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
     { definicion: withholdingTaxCalculator, contenido: contenidoWithholdingTaxCalculator, cliente: () => import("./calculadoras/withholding-tax-calculator.cliente") },
     { definicion: fixedDepositCalculator, contenido: contenidoFixedDepositCalculator, cliente: () => import("./calculadoras/fixed-deposit-calculator.cliente") },
+    { definicion: dollarRate, contenido: contenidoDollarRate, cliente: () => import("./calculadoras/dollar-rate.cliente") },
+    { definicion: gratuityCalculator, contenido: contenidoGratuityCalculator, cliente: () => import("./calculadoras/gratuity-calculator.cliente") },
+    { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
