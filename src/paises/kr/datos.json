@@ -1,0 +1,1589 @@
+{
+  "mercado": "kr",
+  "datos": [
+    {
+      "id": "kr.income-tax-brackets",
+      "nombre": "종합소득세 기본세율",
+      "tipo": "escala",
+      "unidad": "KRW",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 14000000,
+              "tasa": 6
+            },
+            {
+              "desde": 14000000,
+              "hasta": 50000000,
+              "tasa": 15
+            },
+            {
+              "desde": 50000000,
+              "hasta": 88000000,
+              "tasa": 24
+            },
+            {
+              "desde": 88000000,
+              "hasta": 150000000,
+              "tasa": 35
+            },
+            {
+              "desde": 150000000,
+              "hasta": 300000000,
+              "tasa": 38
+            },
+            {
+              "desde": 300000000,
+              "hasta": 500000000,
+              "tasa": 40
+            },
+            {
+              "desde": 500000000,
+              "hasta": 1000000000,
+              "tasa": 42
+            },
+            {
+              "desde": 1000000000,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제55조",
+            "url": "https://www.law.go.kr/법령/소득세법/제55조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "누진공제 방식의 표(84만원, 624만원, 1,536만원, 3,706만원, 9,406만원, 1억7,406만원, 3억8,406만원)와 같은 결과예요."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.earned-income-deduction",
+      "nombre": "근로소득공제",
+      "tipo": "escala",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000000,
+              "tasa": 70,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 5000000,
+              "hasta": 15000000,
+              "tasa": 40,
+              "cuotaFija": 3500000
+            },
+            {
+              "desde": 15000000,
+              "hasta": 45000000,
+              "tasa": 15,
+              "cuotaFija": 7500000
+            },
+            {
+              "desde": 45000000,
+              "hasta": 100000000,
+              "tasa": 5,
+              "cuotaFija": 12000000
+            },
+            {
+              "desde": 100000000,
+              "hasta": null,
+              "tasa": 2,
+              "cuotaFija": 14750000
+            }
+          ],
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제47조",
+            "url": "https://www.law.go.kr/법령/소득세법/제47조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.earned-income-deduction-cap",
+      "nombre": "근로소득공제 한도",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20000000,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제47조",
+            "url": "https://www.law.go.kr/법령/소득세법/제47조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.basic-deduction",
+      "nombre": "기본공제(1명당)",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1500000,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제50조",
+            "url": "https://www.law.go.kr/법령/소득세법/제50조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.earned-income-tax-credit",
+      "nombre": "근로소득세액공제",
+      "tipo": "escala",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1300000,
+              "tasa": 55,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 1300000,
+              "hasta": null,
+              "tasa": 30,
+              "cuotaFija": 715000
+            }
+          ],
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제59조",
+            "url": "https://www.law.go.kr/법령/소득세법/제59조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.earned-income-tax-credit-limits",
+      "nombre": "근로소득세액공제 한도",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "total1": "총급여 1구간 상한",
+        "limite1": "1구간 한도",
+        "total2": "총급여 2구간 상한",
+        "piso2": "2구간 최소 한도",
+        "total3": "총급여 3구간 상한",
+        "piso3": "3구간 최소 한도",
+        "piso4": "4구간 최소 한도"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "total1": 33000000,
+            "limite1": 740000,
+            "total2": 70000000,
+            "piso2": 660000,
+            "total3": 120000000,
+            "piso3": 500000,
+            "piso4": 200000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제59조",
+            "url": "https://www.law.go.kr/법령/소득세법/제59조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "한도는 총급여 3,300만원 초과분의 8/1000, 7,000만원과 1억2,000만원 초과분의 1/2씩 줄어들어요."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.standard-tax-credit",
+      "nombre": "표준세액공제(근로소득자)",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 130000,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제59조의4",
+            "url": "https://www.law.go.kr/법령/소득세법/제59조의4",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.child-tax-credit",
+      "nombre": "자녀세액공제(8세 이상)",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "uno": "1명",
+        "dos": "2명",
+        "adicional": "3명째부터 1명당"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "uno": 250000,
+            "dos": 550000,
+            "adicional": 400000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제59조의2",
+            "url": "https://www.law.go.kr/법령/소득세법/제59조의2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.meal-allowance-exempt",
+      "nombre": "비과세 식사대(월)",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 200000,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제12조",
+            "url": "https://www.law.go.kr/법령/소득세법/제12조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "제3호 러목: 식사를 제공받지 않는 근로자가 받는 월 20만원 이하의 식사대"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.local-income-tax-rate",
+      "nombre": "개인지방소득세(소득세 대비)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "지방세법 제103조의13",
+            "url": "https://www.law.go.kr/법령/지방세법/제103조의13",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "원천징수하는 소득세의 100분의 10을 특별징수해요. 종합소득분 표준세율(제92조)도 국세 세율의 10분의 1이에요."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.interest-withholding-rate",
+      "nombre": "이자소득 원천징수세율",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제129조",
+            "url": "https://www.law.go.kr/법령/소득세법/제129조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "제1항 제1호 라목: 그 밖의 이자소득 100분의 14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.national-pension-rate",
+      "nombre": "국민연금 보험료율(사업장가입자 본인 부담)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 4.75,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "국민연금법 제88조",
+            "url": "https://www.law.go.kr/법령/국민연금법/제88조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "부칙(법률, 2025.4.2) 제4조: 2026년 1만분의 475, 2027년 1만분의 500. 사용자도 같은 금액을 부담해요."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 5,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "국민연금법 제88조",
+            "url": "https://www.law.go.kr/법령/국민연금법/제88조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "부칙(법률, 2025.4.2) 제4조: 2027년 1만분의 500"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.pension-income-limits",
+      "nombre": "국민연금 기준소득월액 하한액과 상한액",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "min": "하한액",
+        "max": "상한액"
+      },
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "min": 400000,
+            "max": 6370000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "국민연금 기준소득월액 하한액과 상한액(보건복지부 고시 제2026-31호)",
+            "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000274228",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "개정 전 값(제2025-24호): 400천원, 6,370천원, 2025년 7월분부터 2026년 6월분까지"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2027-06-30",
+          "valor": {
+            "min": 410000,
+            "max": 6590000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "국민연금 기준소득월액 하한액과 상한액(보건복지부 고시 제2026-31호)",
+            "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000274228",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.health-insurance-rate",
+      "nombre": "건강보험료율(직장가입자, 노사 합계)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7.19,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "국민건강보험법 시행령 제44조",
+            "url": "https://www.law.go.kr/법령/국민건강보험법시행령/제44조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "1만분의 719, 2026년 1월분부터. 근로자와 사업주가 50%씩 부담해요(법 제76조)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.long-term-care-rate",
+      "nombre": "장기요양보험료율(소득 대비)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.9448,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "노인장기요양보험법 시행령 제4조",
+            "url": "https://www.law.go.kr/법령/노인장기요양보험법시행령/제4조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "100만분의 9,448, 2026년 1월분부터. 보험료는 건강보험료에 (장기요양보험료율 ÷ 건강보험료율)을 곱해 산정해요(법 제9조)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.employment-insurance-rate",
+      "nombre": "고용보험 실업급여 보험료율(노사 합계)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.8,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "고용보험 및 산업재해보상보험의 보험료징수 등에 관한 법률 시행령 제12조",
+            "url": "https://www.law.go.kr/법령/고용보험및산업재해보상보험의보험료징수등에관한법률시행령/제12조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "근로자는 실업급여 보험료율의 2분의 1을 부담해요(법 제13조)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.employment-stability-rate",
+      "nombre": "고용안정·직업능력개발사업 보험료율(사업주)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "u150": "150명 미만",
+        "priority": "150명 이상 우선지원대상기업",
+        "u1000": "150명 이상 1,000명 미만",
+        "o1000": "1,000명 이상, 국가·지방자치단체"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "u150": 0.25,
+            "priority": 0.45,
+            "u1000": 0.65,
+            "o1000": 0.85
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "고용보험 및 산업재해보상보험의 보험료징수 등에 관한 법률 시행령 제12조",
+            "url": "https://www.law.go.kr/법령/고용보험및산업재해보상보험의보험료징수등에관한법률시행령/제12조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.minimum-wage",
+      "nombre": "최저임금(시간급)",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "proximaRevision": "2027-08-05",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 10320,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "2026년 적용 최저임금 고시(고용노동부 고시 제2025-47호)",
+            "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000262710",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 10700,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "2027년 적용 최저임금 고시(고용노동부 고시 제2026-60호)",
+            "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000283564",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.minimum-wage-monthly-hours",
+      "nombre": "최저임금 월 환산 기준시간",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 209,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "2026년 적용 최저임금 고시(고용노동부 고시 제2025-47호)",
+            "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000262710",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "주 소정근로 40시간, 주당 유급주휴 8시간 포함. 2027년 고시도 209시간이에요."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.overtime-premiums",
+      "nombre": "연장·야간·휴일근로 가산율",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "extension": "연장근로",
+        "night": "야간근로(오후 10시~오전 6시)",
+        "holiday": "휴일근로 8시간 이내",
+        "holiday-over8": "휴일근로 8시간 초과"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "extension": 50,
+            "night": 50,
+            "holiday": 50,
+            "holiday-over8": 100
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "근로기준법 제56조",
+            "url": "https://www.law.go.kr/법령/근로기준법/제56조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.weekly-holiday-min-hours",
+      "nombre": "주휴일이 적용되는 1주 소정근로시간",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "근로기준법 제18조",
+            "url": "https://www.law.go.kr/법령/근로기준법/제18조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "제3항: 4주 평균 1주 소정근로시간이 15시간 미만이면 제55조(휴일)와 제60조(연차)를 적용하지 않아요."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.annual-leave",
+      "nombre": "연차 유급휴가 일수",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "base": "1년간 80% 이상 출근",
+        "max": "가산휴가 포함 한도",
+        "mensual": "1년 미만 근로자의 1개월 개근 시"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "base": 15,
+            "max": 25,
+            "mensual": 1
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "근로기준법 제60조",
+            "url": "https://www.law.go.kr/법령/근로기준법/제60조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.severance-days",
+      "nombre": "퇴직금(계속근로 1년당 평균임금 일수)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "근로자퇴직급여 보장법 제8조",
+            "url": "https://www.law.go.kr/법령/근로자퇴직급여보장법/제8조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.retirement-years-deduction",
+      "nombre": "퇴직소득 근속연수공제",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "hasta5": "5년 이하 1년당",
+        "base10": "5년 초과 기본",
+        "hasta10": "5~10년 1년당",
+        "base20": "10년 초과 기본",
+        "hasta20": "10~20년 1년당",
+        "base30": "20년 초과 기본",
+        "mas20": "20년 초과 1년당"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "hasta5": 1000000,
+            "base10": 5000000,
+            "hasta10": 2000000,
+            "base20": 15000000,
+            "hasta20": 2500000,
+            "base30": 40000000,
+            "mas20": 3000000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제48조",
+            "url": "https://www.law.go.kr/법령/소득세법/제48조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.retirement-converted-deduction",
+      "nombre": "퇴직소득 환산급여공제",
+      "tipo": "escala",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 8000000,
+              "tasa": 100,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 8000000,
+              "hasta": 70000000,
+              "tasa": 60,
+              "cuotaFija": 8000000
+            },
+            {
+              "desde": 70000000,
+              "hasta": 100000000,
+              "tasa": 55,
+              "cuotaFija": 45200000
+            },
+            {
+              "desde": 100000000,
+              "hasta": 300000000,
+              "tasa": 45,
+              "cuotaFija": 61700000
+            },
+            {
+              "desde": 300000000,
+              "hasta": null,
+              "tasa": 35,
+              "cuotaFija": 151700000
+            }
+          ],
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제48조",
+            "url": "https://www.law.go.kr/법령/소득세법/제48조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.unemployment-rate",
+      "nombre": "구직급여 지급률(기초일액 대비)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "고용보험법 제46조",
+            "url": "https://www.law.go.kr/법령/고용보험법/제46조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.unemployment-min-rate",
+      "nombre": "최저구직급여일액 비율(최저기초일액 대비)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "고용보험법 제46조",
+            "url": "https://www.law.go.kr/법령/고용보험법/제46조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "최저기초일액은 이직 전 1일 소정근로시간에 이직일의 시간급 최저임금을 곱한 금액이에요(제45조 제4항)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.unemployment-base-cap",
+      "nombre": "구직급여 기초일액 상한액",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 113500,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "고용보험법 시행령 제68조",
+            "url": "https://www.law.go.kr/법령/고용보험법시행령/제68조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "2026년 1월 1일 이후 이직한 사람부터 적용(부칙 제35934호). 구직급여일액 상한은 그 60%인 68,100원이에요."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.unemployment-days",
+      "nombre": "구직급여 소정급여일수",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "u50-0": 120,
+            "u50-1": 150,
+            "u50-3": 180,
+            "u50-5": 210,
+            "u50-10": 240,
+            "o50-0": 120,
+            "o50-1": 180,
+            "o50-3": 210,
+            "o50-5": 240,
+            "o50-10": 270
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "고용보험법 제50조",
+            "url": "https://www.law.go.kr/법령/고용보험법/제50조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "별표 1. 장애인은 50세 이상으로 봐요."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.parental-leave-caps",
+      "nombre": "육아휴직 급여 상한액과 하한액(월)",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "m1": "1~3개월 상한",
+        "m4": "4~6개월 상한",
+        "m7": "7개월째부터 상한",
+        "piso": "하한"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "m1": 2500000,
+            "m4": 2000000,
+            "m7": 1600000,
+            "piso": 700000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "고용보험법 시행령 제95조",
+            "url": "https://www.law.go.kr/법령/고용보험법시행령/제95조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.parental-leave-late-rate",
+      "nombre": "육아휴직 급여 7개월째부터 지급률",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "고용보험법 시행령 제95조",
+            "url": "https://www.law.go.kr/법령/고용보험법시행령/제95조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.housing-acquisition-tax",
+      "nombre": "주택 유상취득 취득세율",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "low": "6억원 이하",
+        "high": "9억원 초과"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "low": 1,
+            "high": 3
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "지방세법 제11조",
+            "url": "https://www.law.go.kr/법령/지방세법/제11조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "제1항 제8호. 6억원 초과 9억원 이하는 (취득가액 × 2/3억원 − 3) × 1/100, 소수점 다섯째 자리에서 반올림"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.housing-acquisition-brackets",
+      "nombre": "주택 취득세율 구간 경계",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "low": "1% 구간 상한",
+        "high": "3% 구간 하한"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "low": 600000000,
+            "high": 900000000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "지방세법 제11조",
+            "url": "https://www.law.go.kr/법령/지방세법/제11조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "제1항 제8호 가목부터 다목"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.local-education-tax",
+      "nombre": "지방교육세(주택 유상취득)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "rate-factor": "취득세율에 곱하는 비율",
+        "rate": "지방교육세율"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rate-factor": 50,
+            "rate": 20
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "지방세법 제151조",
+            "url": "https://www.law.go.kr/법령/지방세법/제151조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "제1항 제1호: 취득세율에 100분의 50을 곱한 세율로 산출한 금액의 100분의 20"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.rural-special-tax",
+      "nombre": "농어촌특별세(취득세분)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "base-rate": "적용 표준세율",
+        "rate": "농어촌특별세율"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "base-rate": 2,
+            "rate": 10
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "농어촌특별세법 제5조",
+            "url": "https://www.law.go.kr/법령/농어촌특별세법/제5조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "제1항 제6호. 국민주택 규모(전용 85제곱미터) 이하 주택은 비과세(제4조 제11호, 시행령 제4조)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.gift-inheritance-tax-brackets",
+      "nombre": "상속세·증여세 세율",
+      "tipo": "escala",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 100000000,
+              "tasa": 10
+            },
+            {
+              "desde": 100000000,
+              "hasta": 500000000,
+              "tasa": 20
+            },
+            {
+              "desde": 500000000,
+              "hasta": 1000000000,
+              "tasa": 30
+            },
+            {
+              "desde": 1000000000,
+              "hasta": 3000000000,
+              "tasa": 40
+            },
+            {
+              "desde": 3000000000,
+              "hasta": null,
+              "tasa": 50
+            }
+          ],
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "상속세 및 증여세법 제26조",
+            "url": "https://www.law.go.kr/법령/상속세및증여세법/제26조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "증여세도 같은 세율을 써요(제56조)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.gift-deductions",
+      "nombre": "증여재산 공제(10년 합산)",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "spouse": "배우자",
+        "lineal": "직계존속(성인 수증자)",
+        "minor": "직계존속(미성년 수증자)",
+        "descendant": "직계비속",
+        "other": "그 밖의 친족"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "spouse": 600000000,
+            "lineal": 50000000,
+            "minor": 20000000,
+            "descendant": 50000000,
+            "other": 10000000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "상속세 및 증여세법 제53조",
+            "url": "https://www.law.go.kr/법령/상속세및증여세법/제53조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.gift-inheritance-minimum",
+      "nombre": "상속세·증여세 과세최저한",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "상속세 및 증여세법 제55조",
+            "url": "https://www.law.go.kr/법령/상속세및증여세법/제55조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "과세표준이 50만원 미만이면 증여세를 부과하지 않아요. 상속세도 같아요(제25조 제2항)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.filing-tax-credit",
+      "nombre": "신고세액공제율",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "상속세 및 증여세법 제69조",
+            "url": "https://www.law.go.kr/법령/상속세및증여세법/제69조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.inheritance-deductions",
+      "nombre": "상속공제(일괄공제, 배우자공제)",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "basic": "기초공제",
+        "lump": "일괄공제",
+        "spouse-min": "배우자공제 최소",
+        "spouse-max": "배우자공제 한도",
+        "child": "자녀 1명당"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "basic": 200000000,
+            "lump": 500000000,
+            "spouse-min": 500000000,
+            "spouse-max": 3000000000,
+            "child": 50000000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "상속세 및 증여세법 제21조",
+            "url": "https://www.law.go.kr/법령/상속세및증여세법/제21조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "기초공제(제18조), 배우자 상속공제(제19조), 자녀공제(제20조)와 함께 읽었어요."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.capital-gains-basic-deduction",
+      "nombre": "양도소득 기본공제(연)",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2500000,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제103조",
+            "url": "https://www.law.go.kr/법령/소득세법/제103조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.capital-gains-short-rates",
+      "nombre": "단기 보유 양도소득세율",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "housing1": "주택 1년 미만",
+        "housing2": "주택 1년 이상 2년 미만",
+        "other1": "토지·건물 1년 미만",
+        "other2": "토지·건물 1년 이상 2년 미만"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "housing1": 70,
+            "housing2": 60,
+            "other1": 50,
+            "other2": 40
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제104조",
+            "url": "https://www.law.go.kr/법령/소득세법/제104조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.long-term-holding-general",
+      "nombre": "장기보유 특별공제율(표 1)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 6,
+            "4": 8,
+            "5": 10,
+            "6": 12,
+            "7": 14,
+            "8": 16,
+            "9": 18,
+            "10": 20,
+            "11": 22,
+            "12": 24,
+            "13": 26,
+            "14": 28,
+            "15": 30
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제95조",
+            "url": "https://www.law.go.kr/법령/소득세법/제95조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "보유 3년 이상 4년 미만 6%부터 1년마다 2%p씩, 15년 이상 30%"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.long-term-holding-one-house",
+      "nombre": "1세대 1주택 보유기간별 공제율(표 2)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "3": 12,
+            "4": 16,
+            "5": 20,
+            "6": 24,
+            "7": 28,
+            "8": 32,
+            "9": 36,
+            "10": 40
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제95조",
+            "url": "https://www.law.go.kr/법령/소득세법/제95조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "보유 3년 이상 12%부터 1년마다 4%p씩, 10년 이상 40%"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.long-term-residence-one-house",
+      "nombre": "1세대 1주택 거주기간별 공제율(표 2)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "2": 8,
+            "3": 12,
+            "4": 16,
+            "5": 20,
+            "6": 24,
+            "7": 28,
+            "8": 32,
+            "9": 36,
+            "10": 40
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 제95조",
+            "url": "https://www.law.go.kr/법령/소득세법/제95조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "거주 2년 이상 3년 미만 8%(보유 3년 이상에 한정), 3년 이상 12%부터 1년마다 4%p씩, 10년 이상 40%"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.luxury-house-threshold",
+      "nombre": "1세대 1주택 비과세 고가주택 기준",
+      "tipo": "numero",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1200000000,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "소득세법 시행령 제156조",
+            "url": "https://www.law.go.kr/법령/소득세법시행령/제156조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "고가주택의 양도차익과 장기보유 특별공제액은 (양도가액 − 12억원) ÷ 양도가액 비율로 계산해요(제160조)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.brokerage-sale",
+      "nombre": "주택 매매·교환 중개보수 상한요율",
+      "tipo": "escala",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000000,
+              "tasa": 0.6
+            },
+            {
+              "desde": 50000000,
+              "hasta": 200000000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 200000000,
+              "hasta": 900000000,
+              "tasa": 0.4
+            },
+            {
+              "desde": 900000000,
+              "hasta": 1200000000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 1200000000,
+              "hasta": 1500000000,
+              "tasa": 0.6
+            },
+            {
+              "desde": 1500000000,
+              "hasta": null,
+              "tasa": 0.7
+            }
+          ],
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "공인중개사법 시행규칙 제20조",
+            "url": "https://www.law.go.kr/법령/공인중개사법시행규칙/제20조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "별표 1. 상한요율은 거래금액 전체에 적용해요."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.brokerage-lease",
+      "nombre": "주택 임대차 중개보수 상한요율",
+      "tipo": "escala",
+      "unidad": "KRW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 50000000,
+              "hasta": 100000000,
+              "tasa": 0.4
+            },
+            {
+              "desde": 100000000,
+              "hasta": 600000000,
+              "tasa": 0.3
+            },
+            {
+              "desde": 600000000,
+              "hasta": 1200000000,
+              "tasa": 0.4
+            },
+            {
+              "desde": 1200000000,
+              "hasta": 1500000000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 1500000000,
+              "hasta": null,
+              "tasa": 0.6
+            }
+          ],
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "공인중개사법 시행규칙 제20조",
+            "url": "https://www.law.go.kr/법령/공인중개사법시행규칙/제20조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "별표 1. 보증금 외에 월세가 있으면 월세 × 100을 더하고, 그 합이 5천만원 미만이면 월세 × 70을 더해요(제5항)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.brokerage-caps",
+      "nombre": "주택 중개보수 한도액",
+      "tipo": "mapa",
+      "unidad": "KRW",
+      "etiquetas": {
+        "sale0": "매매 5천만원 미만",
+        "sale1": "매매 5천만원 이상 2억원 미만",
+        "lease0": "임대차 5천만원 미만",
+        "lease1": "임대차 5천만원 이상 1억원 미만"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sale0": 250000,
+            "sale1": 800000,
+            "lease0": 200000,
+            "lease1": 300000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "공인중개사법 시행규칙 제20조",
+            "url": "https://www.law.go.kr/법령/공인중개사법시행규칙/제20조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "별표 1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.brokerage-rent-multipliers",
+      "nombre": "월세 환산 배수(중개보수 거래금액)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "normal": "기본 배수",
+        "small": "합계가 기준 미만일 때 배수",
+        "limite": "기준 금액(원)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "normal": 100,
+            "small": 70,
+            "limite": 50000000
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "공인중개사법 시행규칙 제20조",
+            "url": "https://www.law.go.kr/법령/공인중개사법시행규칙/제20조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "제5항 제1호"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.officetel-brokerage",
+      "nombre": "오피스텔(전용 85제곱미터 이하) 중개보수 상한요율",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "sale": "매매·교환",
+        "lease": "임대차"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sale": 0.5,
+            "lease": 0.4
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "공인중개사법 시행규칙 제20조",
+            "url": "https://www.law.go.kr/법령/공인중개사법시행규칙/제20조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "별표 2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.rent-conversion",
+      "nombre": "월차임 전환 시 산정률",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "tope": "상한 비율",
+        "adicional": "기준금리에 더하는 이율"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "tope": 10,
+            "adicional": 2
+          },
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "주택임대차보호법 시행령 제9조",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제9조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "법 제7조의2: 연 10%와 한국은행 기준금리 + 연 2% 중 낮은 비율"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kr.vat",
+      "nombre": "부가가치세율",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "국가법령정보센터(법제처)",
+            "titulo": "부가가치세법 제30조",
+            "url": "https://www.law.go.kr/법령/부가가치세법/제30조",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}
