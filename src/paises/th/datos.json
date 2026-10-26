@@ -487,6 +487,26 @@
           }
         }
       ]
+    },
+    {
+      "id": "th.wht-min-payment",
+      "nombre": "ยอดจ่ายตามสัญญาขั้นต่ำที่ต้องหักภาษี ณ ที่จ่าย",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "คำสั่งกรมสรรพากรที่ ท.ป.4/2528 (ปรับปรุงล่าสุด 25-06-2026)",
+            "url": "https://www.rd.go.th/3479.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
     }
   ]
 }

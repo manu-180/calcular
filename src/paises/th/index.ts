@@ -6,6 +6,12 @@ import incomeTax from "./calculadoras/income-tax";
 import contenidoIncomeTax from "./contenido/income-tax";
 import socialSecurity from "./calculadoras/social-security";
 import contenidoSocialSecurity from "./contenido/social-security";
+import withholdingTax from "./calculadoras/withholding-tax";
+import contenidoWithholdingTax from "./contenido/withholding-tax";
+import inheritanceTax from "./calculadoras/inheritance-tax";
+import contenidoInheritanceTax from "./contenido/inheritance-tax";
+import depositInterest from "./calculadoras/deposit-interest";
+import contenidoDepositInterest from "./contenido/deposit-interest";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -21,6 +27,9 @@ export default definirPais({
     { definicion: takeHomePay, contenido: contenidoTakeHomePay, cliente: () => import("./calculadoras/take-home-pay.cliente") },
     { definicion: incomeTax, contenido: contenidoIncomeTax, cliente: () => import("./calculadoras/income-tax.cliente") },
     { definicion: socialSecurity, contenido: contenidoSocialSecurity, cliente: () => import("./calculadoras/social-security.cliente") },
+    { definicion: withholdingTax, contenido: contenidoWithholdingTax, cliente: () => import("./calculadoras/withholding-tax.cliente") },
+    { definicion: inheritanceTax, contenido: contenidoInheritanceTax, cliente: () => import("./calculadoras/inheritance-tax.cliente") },
+    { definicion: depositInterest, contenido: contenidoDepositInterest, cliente: () => import("./calculadoras/deposit-interest.cliente") },
   ],
   universales: { todas: true },
   novedades,
