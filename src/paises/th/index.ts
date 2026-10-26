@@ -36,6 +36,8 @@ import freelanceTax from "./calculadoras/freelance-tax";
 import contenidoFreelanceTax from "./contenido/freelance-tax";
 import netToGross from "./calculadoras/net-to-gross";
 import contenidoNetToGross from "./contenido/net-to-gross";
+import specificBusinessTax from "./calculadoras/specific-business-tax";
+import contenidoSpecificBusinessTax from "./contenido/specific-business-tax";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -66,6 +68,7 @@ export default definirPais({
     { definicion: bonusTax, contenido: contenidoBonusTax, cliente: () => import("./calculadoras/bonus-tax.cliente") },
     { definicion: freelanceTax, contenido: contenidoFreelanceTax, cliente: () => import("./calculadoras/freelance-tax.cliente") },
     { definicion: netToGross, contenido: contenidoNetToGross, cliente: () => import("./calculadoras/net-to-gross.cliente") },
+    { definicion: specificBusinessTax, contenido: contenidoSpecificBusinessTax, cliente: () => import("./calculadoras/specific-business-tax.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "th.vat" } }] },
   novedades,

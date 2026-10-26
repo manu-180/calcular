@@ -93,6 +93,8 @@ export const detectores: readonly Detector[] = [
   ]),
   rd("th.rd-withholding", "https://www.rd.go.th/3479.html", "คำสั่งกรมสรรพากรที่ ท.ป.4/2528", ["th.wht-rates"]),
   rd("th.rd-revenue-code-27", "https://www.rd.go.th/5943.html", "ประมวลรัษฎากร มาตรา 14 ถึง 27", ["th.surcharge-rate", "th.surcharge-rate-extended"]),
+  rd("th.rd-specific-business-tax", "https://www.rd.go.th/63775.html", "การคำนวณภาษีธุรกิจเฉพาะจากการขายอสังหาริมทรัพย์", ["th.sbt-rate", "th.sbt-local-rate"]),
+  rd("th.rd-property-stamp", "https://www.rd.go.th/63777.html", "การคำนวณอากรแสตมป์จากการขายอสังหาริมทรัพย์", ["th.property-stamp-unit"]),
   rd("th.rd-inheritance", "https://www.rd.go.th/56662.html", "อัตราภาษีการรับมรดก", ["th.inheritance-exempt", "th.inheritance-rate", "th.inheritance-rate-family"]),
   ocs("th.ocs-social-security", /ประกันสังคม|เงินสมทบ/, [
     "th.sso-rate-employee",

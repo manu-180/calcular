@@ -1004,6 +1004,66 @@
           }
         }
       ]
+    },
+    {
+      "id": "th.sbt-rate",
+      "nombre": "อัตราภาษีธุรกิจเฉพาะจากการขายอสังหาริมทรัพย์",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-11-21",
+          "valor": 3,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การคำนวณภาษีธุรกิจเฉพาะจากการขายอสังหาริมทรัพย์ (ปรับปรุงล่าสุด 21-11-2022)",
+            "url": "https://www.rd.go.th/63775.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.sbt-local-rate",
+      "nombre": "ภาษีท้องถิ่น ร้อยละของภาษีธุรกิจเฉพาะ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-11-21",
+          "valor": 10,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การคำนวณภาษีธุรกิจเฉพาะจากการขายอสังหาริมทรัพย์ (ปรับปรุงล่าสุด 21-11-2022)",
+            "url": "https://www.rd.go.th/63775.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.property-stamp-unit",
+      "nombre": "จำนวนเงินต่ออากรแสตมป์ 1 บาท เมื่อขายอสังหาริมทรัพย์",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-11-21",
+          "valor": 200,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "การคำนวณอากรแสตมป์จากการขายอสังหาริมทรัพย์ ลักษณะแห่งตราสาร 28 (ข) (ปรับปรุงล่าสุด 21-11-2022)",
+            "url": "https://www.rd.go.th/63777.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
     }
   ]
 }
