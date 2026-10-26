@@ -50,6 +50,25 @@ function haySharePorToque(): boolean {
 
 const sinSuscripcion = () => () => {};
 
+// Facebook y X en escritorio van en una ventanita centrada sobre la página, como sus botones oficiales:
+// la persona publica y vuelve sin perder la pestaña. En el celular, pestaña nueva (o la app, si la abre
+// el sistema). WhatsApp nunca en ventanita: wa.me redirige a la app o a WhatsApp Web.
+function abrirCanal(enlace: string, ventanita: boolean) {
+  if (!ventanita) {
+    window.open(enlace, "_blank", "noopener,noreferrer");
+    return;
+  }
+  const ancho = 580;
+  const alto = 660;
+  const x = Math.round(window.screenX + Math.max(0, (window.outerWidth - ancho) / 2));
+  const y = Math.round(window.screenY + Math.max(0, (window.outerHeight - alto) / 2));
+  window.open(enlace, "_blank", `popup,noopener,noreferrer,width=${ancho},height=${alto},left=${x},top=${y}`);
+}
+
+function hayMouse(): boolean {
+  return typeof window.matchMedia === "function" && window.matchMedia("(pointer: fine)").matches;
+}
+
 async function copiarAlPortapapeles(texto: string): Promise<boolean> {
   try {
     await navigator.clipboard.writeText(texto);
@@ -224,18 +243,38 @@ export function usarCompartir(opciones: OpcionesCompartir) {
     await copiar();
   }, [soportaNativo, compartirNativo, copiar]);
 
-  // Instagram no recibe links: va la imagen vertical y el link queda copiado para el sticker «Enlace».
-  // En el celular, la hoja del sistema con el archivo (ahí está Instagram > Historias); en escritorio
-  // o sin la imagen precargada, se descarga. El portapapeles se escribe antes del share, sin await,
-  // para no gastar la activación del toque.
-  const compartirInstagram = useCallback(
-    async (archivo: string): Promise<boolean> => {
+  const bajarHistoria = useCallback(
+    async (archivo: string, codigo = codigoCompartido()): Promise<boolean> => {
       if (!historia) return false;
+      try {
+        const bajada = historiaLista.current ?? (await bajarImagen(historia, new AbortController().signal));
+        if (!bajada) throw new Error("sin imagen");
+        descargar(bajada, archivo);
+        avisar("descargado");
+        medir("instagram", codigo);
+        return true;
+      } catch {
+        avisar("error");
+        return false;
+      }
+    },
+    [historia, avisar, medir],
+  );
+
+  // Instagram no recibe links ni imágenes desde una web: su «Sharing to Stories» es solo para apps
+  // nativas con App ID de Meta. Lo más cerca que llega un sitio es la hoja del sistema con el archivo
+  // (ahí está Instagram > Historias). En escritorio Instagram no sube historias, así que devuelve
+  // "celu" y el componente muestra el QR para seguir en el teléfono (AlCelu). El link se copia antes
+  // del share, sin await, para no gastar la activación del toque, y va con el sticker «Enlace».
+  const compartirInstagram = useCallback(
+    async (archivo: string): Promise<boolean | "celu"> => {
+      if (!historia) return false;
+      if (!soportaNativo && hayMouse()) return "celu";
       const codigo = codigoCompartido();
       const enlace = conRef(url, codigo, origen);
       const copia = copiarAlPortapapeles(enlace);
       const blob = historiaLista.current;
-      if (soportaNativo && blob) {
+      if (blob) {
         const file = new File([blob], archivo, { type: blob.type || "image/png" });
         if (navigator.canShare?.({ files: [file] })) {
           try {
@@ -248,20 +287,10 @@ export function usarCompartir(opciones: OpcionesCompartir) {
           }
         }
       }
-      try {
-        const bajada = blob ?? (await bajarImagen(historia, new AbortController().signal));
-        if (!bajada) throw new Error("sin imagen");
-        descargar(bajada, archivo);
-        await copia;
-        avisar("descargado");
-        medir("instagram", codigo);
-        return true;
-      } catch {
-        avisar("error");
-        return false;
-      }
+      await copia;
+      return bajarHistoria(archivo, codigo);
     },
-    [historia, url, origen, soportaNativo, avisar, medir],
+    [historia, url, origen, soportaNativo, avisar, medir, bajarHistoria],
   );
 
   const compartirEn = useCallback(
@@ -280,11 +309,11 @@ export function usarCompartir(opciones: OpcionesCompartir) {
       }
       const codigo = codigoCompartido();
       const enlace = enlaceDeCanal(canal, texto, conRef(url, codigo, origen));
-      window.open(enlace, "_blank", "noopener,noreferrer");
+      abrirCanal(enlace, canal !== "whatsapp" && hayMouse());
       medir(canal, codigo);
     },
     [copiar, compartir, compartirInstagram, texto, url, origen, medir],
   );
 
-  return { compartir, estado, soportaNativo, compartirEn, compartirInstagram };
+  return { compartir, estado, soportaNativo, compartirEn, compartirInstagram, bajarHistoria };
 }
