@@ -49,9 +49,6 @@ export interface TextosSimple {
   estadoAntes: string;
   estadoTasa: string;
   cero: string;
-  mejorTitulo: string;
-  mejor: string;
-  mejorPropio: string;
   textoCompartir: string;
 }
 
@@ -558,27 +555,6 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
                   </p>
                 </div>
               </form>
-
-              <div className="cy-mundo-resultado" data-simple="">
-                {carga && pais ? (
-                  <div className="cy-mundo-mejor">
-                    <p className="cy-mundo-mejor-titulo">{simple.mejorTitulo}</p>
-                    {mejorIso && mejorIso !== pais.iso && carga.ventaja > 0 ? (
-                      <>
-                        <p className="cy-mundo-mejor-pais" key={mejorIso}>
-                          <Bandera iso={mejorIso} ancho={34} />
-                          <span>{grilla.paises.find((x) => x.iso === mejorIso)?.nombre ?? mejorIso}</span>
-                        </p>
-                        <p className="cy-mundo-mejor-texto">
-                          <strong>{rellenar(simple.mejor, { pct: f.pct(carga.ventaja / 100) })}</strong>
-                        </p>
-                      </>
-                    ) : (
-                      <p className="cy-mundo-mejor-texto">{simple.mejorPropio}</p>
-                    )}
-                  </div>
-                ) : null}
-              </div>
 
               <div className="cy-mundo-anio-caja" data-simple="">
                 <div className="cy-mundo-estado">
