@@ -12,6 +12,12 @@ import inheritanceTax from "./calculadoras/inheritance-tax";
 import contenidoInheritanceTax from "./contenido/inheritance-tax";
 import depositInterest from "./calculadoras/deposit-interest";
 import contenidoDepositInterest from "./contenido/deposit-interest";
+import severancePay from "./calculadoras/severance-pay";
+import contenidoSeverancePay from "./contenido/severance-pay";
+import noticePay from "./calculadoras/notice-pay";
+import contenidoNoticePay from "./contenido/notice-pay";
+import overtimePay from "./calculadoras/overtime-pay";
+import contenidoOvertimePay from "./contenido/overtime-pay";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -30,8 +36,11 @@ export default definirPais({
     { definicion: withholdingTax, contenido: contenidoWithholdingTax, cliente: () => import("./calculadoras/withholding-tax.cliente") },
     { definicion: inheritanceTax, contenido: contenidoInheritanceTax, cliente: () => import("./calculadoras/inheritance-tax.cliente") },
     { definicion: depositInterest, contenido: contenidoDepositInterest, cliente: () => import("./calculadoras/deposit-interest.cliente") },
+    { definicion: severancePay, contenido: contenidoSeverancePay, cliente: () => import("./calculadoras/severance-pay.cliente") },
+    { definicion: noticePay, contenido: contenidoNoticePay, cliente: () => import("./calculadoras/notice-pay.cliente") },
+    { definicion: overtimePay, contenido: contenidoOvertimePay, cliente: () => import("./calculadoras/overtime-pay.cliente") },
   ],
-  universales: { todas: true },
+  universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "th.vat" } }] },
   novedades,
   detectores,
 });

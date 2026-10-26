@@ -35,6 +35,20 @@ async function indiceOcs(http: Http, patron: RegExp): Promise<readonly HallazgoN
   return hallazgos;
 }
 
+const LEYES_NUEVAS_RD = "https://www.rd.go.th/21221.html";
+// El último decreto de rebaja del IVA leído al verificar. La rebaja se renueva cada año con un decreto
+// de número mayor: uno nuevo es el aviso de que la tasa o el plazo cambian.
+const ULTIMO_DECRETO_IVA = 807;
+
+async function decretoIva(http: Http): Promise<readonly HallazgoNorma[] | null> {
+  const html = await http.texto(LEYES_NUEVAS_RD, { userAgentNavegador: true });
+  const numeros = [...html.matchAll(/ลดอัตราภาษีมูลค่าเพิ่ม \(ฉบับที่ (\d+)\)/g)].map((m) => Number(m[1]));
+  if (numeros.length === 0) return null;
+  const nuevo = Math.max(...numeros);
+  if (nuevo <= ULTIMO_DECRETO_IVA) return [];
+  return [{ titulo: "พระราชกฤษฎีกาว่าด้วยการลดอัตราภาษีมูลค่าเพิ่ม ฉบับที่ " + String(nuevo), url: LEYES_NUEVAS_RD, fecha: VERIFICADO }];
+}
+
 const rd = (id: string, url: `https://${string}`, titulo: string, datos: readonly string[]): Detector => ({
   id,
   carril: "norma",
@@ -60,6 +74,15 @@ const ocs = (id: string, patron: RegExp, datos: readonly string[]): Detector => 
 });
 
 export const detectores: readonly Detector[] = [
+  {
+    id: "th.rd-vat-decree",
+    carril: "norma",
+    datos: ["th.vat"],
+    metodo: "html",
+    url: LEYES_NUEVAS_RD,
+    userAgentNavegador: true,
+    traer: decretoIva,
+  },
   rd("th.rd-pit-rates", "https://www.rd.go.th/59670.html", "อัตราภาษีเงินได้บุคคลธรรมดา", ["th.pit-brackets"]),
   rd("th.rd-pit-structure", "https://www.rd.go.th/59668.html", "การปรับปรุงโครงสร้างภาษีเงินได้", [
     "th.employment-expense-rate",

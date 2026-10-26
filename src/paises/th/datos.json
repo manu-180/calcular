@@ -507,6 +507,134 @@
           }
         }
       ]
+    },
+    {
+      "id": "th.vat",
+      "nombre": "อัตราภาษีมูลค่าเพิ่ม (รวมภาษีท้องถิ่น)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "hasta": "2027-09-30",
+          "valor": 7,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "พ.ร.ฎ. ว่าด้วยการลดอัตราภาษีมูลค่าเพิ่ม (ฉบับที่ 807) พ.ศ. 2569 ร้อยละ 6.3 ถึง 30 ก.ย. 2570 รวมภาษีท้องถิ่นเป็นร้อยละ 7 ตามข่าวกรมสรรพากรที่ 18/2569",
+            "url": "https://www.rd.go.th/fileadmin/user_upload/kormor/newlaw/dc807.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.severance-days",
+      "nombre": "ค่าชดเชยตามอายุงาน (วันของค่าจ้างอัตราสุดท้าย)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "d120": "ครบ 120 วัน ไม่ครบ 1 ปี",
+        "y1": "ครบ 1 ปี ไม่ครบ 3 ปี",
+        "y3": "ครบ 3 ปี ไม่ครบ 6 ปี",
+        "y6": "ครบ 6 ปี ไม่ครบ 10 ปี",
+        "y10": "ครบ 10 ปี ไม่ครบ 20 ปี",
+        "y20": "ครบ 20 ปีขึ้นไป"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-05",
+          "valor": {
+            "d120": 30,
+            "y1": 90,
+            "y3": 180,
+            "y6": 240,
+            "y10": 300,
+            "y20": 400
+          },
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา (เผยแพร่โดยกระทรวงแรงงาน)",
+            "titulo": "พระราชบัญญัติคุ้มครองแรงงาน พ.ศ. 2541 ฉบับปรับปรุงถึงฉบับที่ 7 พ.ศ. 2562 มาตรา 118",
+            "url": "https://www.mol.go.th/wp-content/uploads/sites/2/1998/01/labour_protection_2541_new62.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.overtime-multipliers",
+      "nombre": "อัตราค่าล่วงเวลาและค่าทำงานในวันหยุด (เท่าของค่าจ้างต่อชั่วโมง)",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "workday": "ล่วงเวลาในวันทำงาน",
+        "holiday-paid": "ทำงานในวันหยุด (ลูกจ้างที่ได้ค่าจ้างวันหยุด) จ่ายเพิ่ม",
+        "holiday-unpaid": "ทำงานในวันหยุด (ลูกจ้างที่ไม่ได้ค่าจ้างวันหยุด)",
+        "holiday-overtime": "ล่วงเวลาในวันหยุด"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-08-19",
+          "valor": {
+            "workday": 1.5,
+            "holiday-paid": 1,
+            "holiday-unpaid": 2,
+            "holiday-overtime": 3
+          },
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา (เผยแพร่โดยกระทรวงแรงงาน)",
+            "titulo": "พระราชบัญญัติคุ้มครองแรงงาน พ.ศ. 2541 ฉบับปรับปรุงถึงฉบับที่ 7 พ.ศ. 2562 มาตรา 61 ถึง 63",
+            "url": "https://www.mol.go.th/wp-content/uploads/sites/2/1998/01/labour_protection_2541_new62.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.hourly-divisor-days",
+      "nombre": "จำนวนวันที่ใช้หารค่าจ้างรายเดือนเป็นค่าจ้างรายวัน",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-08-19",
+          "valor": 30,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา (เผยแพร่โดยกระทรวงแรงงาน)",
+            "titulo": "พระราชบัญญัติคุ้มครองแรงงาน พ.ศ. 2541 ฉบับปรับปรุงถึงฉบับที่ 7 พ.ศ. 2562 มาตรา 68",
+            "url": "https://www.mol.go.th/wp-content/uploads/sites/2/1998/01/labour_protection_2541_new62.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.notice-max-months",
+      "nombre": "ระยะบอกกล่าวล่วงหน้าที่ไม่ต้องเกิน",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-05",
+          "valor": 3,
+          "fuente": {
+            "organismo": "สำนักงานคณะกรรมการกฤษฎีกา (เผยแพร่โดยกระทรวงแรงงาน)",
+            "titulo": "พระราชบัญญัติคุ้มครองแรงงาน พ.ศ. 2541 ฉบับปรับปรุงถึงฉบับที่ 7 พ.ศ. 2562 มาตรา 17",
+            "url": "https://www.mol.go.th/wp-content/uploads/sites/2/1998/01/labour_protection_2541_new62.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
     }
   ]
 }
