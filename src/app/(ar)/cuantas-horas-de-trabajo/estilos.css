@@ -575,37 +575,144 @@
   stroke-linejoin: round;
 }
 
-/* Afuera */
-.ca-hs-afuera-lista {
+/* Afuera: titular con la diferencia y ranking en barras */
+.ca-hs-ranking {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+.ca-hs-titular {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1.25rem;
+  background: var(--hs-tinta);
+  color: var(--hs-crema);
+  box-shadow: 0 18px 40px -24px rgb(0 0 0 / 0.55);
+}
+
+.ca-hs-titular-cifra {
+  font-size: clamp(2.75rem, 2rem + 3vw, 4rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  color: var(--hs-verde);
+}
+
+.ca-hs-titular-cifra span {
+  margin-left: 0.05em;
+  font-size: 0.55em;
+  font-weight: 700;
+  color: var(--hs-crema-suave);
+}
+
+.ca-hs-titular-texto {
+  display: grid;
+  gap: 0.375rem;
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.1875rem);
+  font-weight: 600;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.ca-hs-titular-puesto {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--hs-crema-suave);
+}
+
+.ca-hs-barras {
+  display: grid;
+  padding: 0.5rem 1.25rem;
   border-radius: 1.25rem;
   border: 1px solid var(--cy-linea);
   background: var(--cy-papel-claro);
   box-shadow: var(--cy-sombra-apoyo);
 }
 
-.ca-hs-afuera-lista li {
+.ca-hs-barras li {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "pais horas" "pista pista";
   align-items: center;
-  gap: 0.75rem;
-  min-height: 3.5rem;
-  padding: 0.5rem 1rem;
+  gap: 0.5rem 0.75rem;
+  padding: 0.75rem 0;
   font-weight: 500;
   color: var(--cy-texto);
 }
 
-.ca-hs-afuera-lista li + li {
+.ca-hs-barras li + li {
   border-top: 1px solid var(--cy-linea);
 }
 
-.ca-hs-afuera-lista li[data-propio] {
-  background: rgb(52 211 153 / 0.1);
-  font-weight: 650;
+.ca-hs-barras-pais {
+  grid-area: pais;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-width: 0;
 }
 
-.ca-hs-afuera-lista li[data-propio] .ca-hs-n {
+.ca-hs-barras-pais img {
+  flex: none;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08);
+}
+
+.ca-hs-barras .ca-hs-afuera-horas {
+  grid-area: horas;
+  justify-content: flex-end;
+}
+
+.ca-hs-barras-pista {
+  grid-area: pista;
+  height: 0.625rem;
+  border-radius: 999px;
+  background: rgb(11 17 16 / 0.05);
+  overflow: hidden;
+}
+
+.ca-hs-barras-pista i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(11 17 16 / 0.22);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ca-hs-ranking[data-visto] .ca-hs-barras-pista i {
+  transform: scaleX(var(--p));
+  transition-delay: calc(var(--i) * 60ms);
+}
+
+.ca-hs-barras li[data-propio] {
+  margin-inline: -0.75rem;
+  padding-inline: 0.75rem;
+  border-radius: 0.875rem;
+  background: rgb(52 211 153 / 0.1);
+  font-weight: 700;
+  color: var(--cy-tinta);
+}
+
+.ca-hs-barras li[data-propio],
+.ca-hs-barras li[data-propio] + li {
+  border-top-color: transparent;
+}
+
+.ca-hs-barras li[data-propio] .ca-hs-barras-pista {
+  background: rgb(16 185 129 / 0.12);
+}
+
+.ca-hs-barras li[data-propio] .ca-hs-barras-pista i {
+  background: linear-gradient(90deg, #10b981, #047857);
+}
+
+.ca-hs-barras li[data-propio] .ca-hs-n {
   color: #047857;
 }
 
@@ -615,10 +722,6 @@
   color: var(--cy-zinc-500);
 }
 
-.ca-hs-afuera-lista img {
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08);
-}
 
 .ca-hs-afuera-horas {
   display: flex;
@@ -721,6 +824,17 @@
 }
 
 @media (min-width: 40rem) {
+  .ca-hs-barras li {
+    grid-template-columns: 11rem minmax(0, 1fr) 6.5rem;
+    grid-template-areas: "pais pista horas";
+    gap: 1rem;
+  }
+
+  .ca-hs-titular {
+    padding: 1.5rem 2rem;
+    gap: 1.75rem;
+  }
+
   .ca-hs-jornada {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -733,17 +847,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .ca-hs-afuera-lista {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .ca-hs-afuera-lista li:nth-child(2) {
-    border-top: 0;
-  }
-
-  .ca-hs-afuera-lista li:nth-child(even) {
-    border-left: 1px solid var(--cy-linea);
-  }
 }
 
 @media (min-width: 64rem) {
@@ -767,6 +870,7 @@
 
   .ca-hs-celdas i::after,
   .ca-hs-paso-control button,
+  .ca-hs-barras-pista i,
   .ca-hs-afuera-pie svg {
     transition: none;
   }
