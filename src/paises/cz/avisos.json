@@ -1,0 +1,50 @@
+{
+  "mercado": "cz",
+  "avisos": [
+    {
+      "id": "cz.minimalni-mzda-2027",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["cz.minimalni-mzda", "cz.vypocet-ciste-mzdy", "cz.naklady-zamestnavatele"],
+      "texto": "Od 1. ledna 2027 bude minimální mzda 24 900 Kč měsíčně a 148,30 Kč za hodinu. Do konce roku 2026 kalkulačka počítá s částkami pro rok 2026.",
+      "fuente": {
+        "organismo": "Sbírka zákonů (zákony pro lidi)",
+        "titulo": "Sdělení MPSV č. 171/2026 Sb. o vyhlášení minimální mzdy pro rok 2027",
+        "url": "https://www.zakonyprolidi.cz/cs/2026-171",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "cz.osvc-minimum-od-cervence-2026",
+      "nivel": "info",
+      "desde": "2026-07-01",
+      "hasta": "2027-06-30",
+      "aplicaA": ["cz.zalohy-osvc", "cz.pausalni-vydaje", "cz.pausalni-dan"],
+      "texto": "Od 1. července 2026 se minimální záloha na sociální pojištění při hlavní činnosti snížila z 5 720 Kč na 5 005 Kč a paušální záloha v prvním pásmu na 9 162 Kč. Pojistné za celý rok 2026 se počítá z nového minima, přeplatky z první poloviny roku se vrátí nebo započtou.",
+      "fuente": {
+        "organismo": "Česká správa sociálního zabezpečení",
+        "titulo": "Informace pro OSVČ o změně pojistného na důchodové pojištění od 1. 7. 2026",
+        "url": "https://www.cssz.gov.cz/-/informace-pro-osvc-o-zmene-pojistneho-na-duchodove-pojisteni-od-1-7-2026",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "cz.rodicovsky-2027",
+      "nivel": "info",
+      "desde": "2026-10-01",
+      "hasta": "2027-12-31",
+      "aplicaA": ["cz.rodicovsky-prispevek"],
+      "texto": "Na děti narozené od 1. ledna 2027 bude celková částka rodičovského příspěvku 400 000 Kč. Na děti narozené dříve zůstává 350 000 Kč.",
+      "fuente": {
+        "organismo": "Sbírka zákonů (zákony pro lidi)",
+        "titulo": "Zákon č. 152/2026 Sb., kterým se mění zákon o státní sociální podpoře",
+        "url": "https://www.zakonyprolidi.cz/cs/2026-152",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}
