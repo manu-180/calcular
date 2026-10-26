@@ -1064,6 +1064,66 @@
           }
         }
       ]
+    },
+    {
+      "id": "th.gift-exempt-family",
+      "nombre": "เงินได้จากการให้โดยเสน่หาจากบุพการี ผู้สืบสันดาน หรือคู่สมรส ที่ได้รับยกเว้นต่อปี",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-01",
+          "valor": 20000000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ประมวลรัษฎากร มาตรา 42 (27) (28) และมาตรา 48 (6) (7) (ปรับปรุงล่าสุด 21-10-2026)",
+            "url": "https://www.rd.go.th/5937.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.gift-exempt-other",
+      "nombre": "เงินได้จากการให้ตามขนบธรรมเนียมจากบุคคลอื่น ที่ได้รับยกเว้นต่อปี",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-01",
+          "valor": 10000000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ประมวลรัษฎากร มาตรา 42 (27) (28) และมาตรา 48 (6) (7) (ปรับปรุงล่าสุด 21-10-2026)",
+            "url": "https://www.rd.go.th/5937.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.gift-tax-rate",
+      "nombre": "อัตราภาษีที่เลือกเสียแยกสำหรับเงินได้จากการให้ส่วนที่เกินเกณฑ์",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ประมวลรัษฎากร มาตรา 42 (27) (28) และมาตรา 48 (6) (7) (ปรับปรุงล่าสุด 21-10-2026)",
+            "url": "https://www.rd.go.th/5937.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
     }
   ]
 }
