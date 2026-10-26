@@ -1,0 +1,939 @@
+{
+  "mercado": "mt",
+  "datos": [
+    {
+      "id": "mt.income-tax-single",
+      "nombre": "Income tax, single rates",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12000,
+              "tasa": 0
+            },
+            {
+              "desde": 12000,
+              "hasta": 16000,
+              "tasa": 15
+            },
+            {
+              "desde": 16000,
+              "hasta": 60000,
+              "tasa": 25
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 56(1)(a) and (b), as amended by Act III of 2026",
+            "url": "https://legislation.mt/eli/cap/123/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.income-tax-married",
+      "nombre": "Income tax, married rates",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 15000,
+              "tasa": 0
+            },
+            {
+              "desde": 15000,
+              "hasta": 23000,
+              "tasa": 15
+            },
+            {
+              "desde": 23000,
+              "hasta": 60000,
+              "tasa": 25
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 56(1)(a) and (b), as amended by Act III of 2026",
+            "url": "https://legislation.mt/eli/cap/123/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.income-tax-parent",
+      "nombre": "Income tax, parent rates",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 13000,
+              "tasa": 0
+            },
+            {
+              "desde": 13000,
+              "hasta": 17500,
+              "tasa": 15
+            },
+            {
+              "desde": 17500,
+              "hasta": 60000,
+              "tasa": 25
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 56(1)(a) and (b), as amended by Act III of 2026",
+            "url": "https://legislation.mt/eli/cap/123/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.income-tax-parent-one-child",
+      "nombre": "Income tax, parent rates with one child",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 14500,
+              "tasa": 0
+            },
+            {
+              "desde": 14500,
+              "hasta": 21000,
+              "tasa": 15
+            },
+            {
+              "desde": 21000,
+              "hasta": 60000,
+              "tasa": 25
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Malta Tax and Customs Administration",
+            "titulo": "New tax rates, 2026",
+            "url": "https://web.archive.org/web/20260415184943/https://mtca.gov.mt/docs/default-source/documents/2026-tax-rates.pdf?sfvrsn=37563fb2_11",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Published by the MTCA on mtca.gov.mt and read in the web.archive.org copy of 15/04/2026: gov.mt sites refuse connections from our environment. The Act subtracts 10,270 above 60,000 for this table; the MTCA publishes 10,275, the figure that keeps the bands continuous, and that is what we use."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.income-tax-parent-two-children",
+      "nombre": "Income tax, parent rates with two or more children",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 18500,
+              "tasa": 0
+            },
+            {
+              "desde": 18500,
+              "hasta": 25500,
+              "tasa": 15
+            },
+            {
+              "desde": 25500,
+              "hasta": 60000,
+              "tasa": 25
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 56(1)(a) and (b), as amended by Act III of 2026",
+            "url": "https://legislation.mt/eli/cap/123/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.income-tax-married-one-child",
+      "nombre": "Income tax, married rates with one child",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 17500,
+              "tasa": 0
+            },
+            {
+              "desde": 17500,
+              "hasta": 26500,
+              "tasa": 15
+            },
+            {
+              "desde": 26500,
+              "hasta": 60000,
+              "tasa": 25
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 56(1)(a) and (b), as amended by Act III of 2026",
+            "url": "https://legislation.mt/eli/cap/123/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.income-tax-married-two-children",
+      "nombre": "Income tax, married rates with two or more children",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 22500,
+              "tasa": 0
+            },
+            {
+              "desde": 22500,
+              "hasta": 32000,
+              "tasa": 15
+            },
+            {
+              "desde": 32000,
+              "hasta": 60000,
+              "tasa": 25
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 56(1)(a) and (b), as amended by Act III of 2026",
+            "url": "https://legislation.mt/eli/cap/123/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.vat-rates",
+      "nombre": "VAT rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "Standard rate",
+        "intermediate": "12% rate",
+        "accommodation": "7% rate",
+        "reduced": "5% rate"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-01-01",
+          "valor": {
+            "standard": 18,
+            "intermediate": 12,
+            "accommodation": 7,
+            "reduced": 5
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Value Added Tax Act (Cap. 406), article 19 and Eighth Schedule",
+            "url": "https://legislation.mt/eli/cap/406/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.minimum-wage",
+      "nombre": "National minimum wage per week",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "age-18-plus": "18 and over",
+        "age-17": "Aged 17",
+        "under-17": "Under 17"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "age-18-plus": 229.44,
+            "age-17": 222.66,
+            "under-17": 219.82
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "L.N. 289 of 2025, National Minimum Wage National Standard Order, 2025",
+            "url": "https://legislation.mt/eli/ln/2025/289/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.cola",
+      "nombre": "Cost of living increase per week",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4.66,
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "L.N. 290 of 2025, Wage Increase (Employees) National Standard Order, 2025",
+            "url": "https://legislation.mt/eli/ln/2025/290/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.statutory-bonuses",
+      "nombre": "Statutory bonus and weekly allowance",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "bonus": "Statutory bonus, each payment",
+        "bonus-per-day": "Statutory bonus per calendar day",
+        "allowance": "Weekly allowance, each payment",
+        "allowance-per-week": "Weekly allowance per working week"
+      },
+      "calendario": [
+        {
+          "id": "pago-allowance-march",
+          "tipo": "pago",
+          "mes": 3,
+          "dia": 31,
+          "titulo": "Weekly allowance paid",
+          "texto": "The weekly allowance is paid at the end of March.",
+          "calculadora": "mt.statutory-bonus"
+        },
+        {
+          "id": "pago-bonus-june",
+          "tipo": "pago",
+          "mes": 6,
+          "dia": 30,
+          "titulo": "Statutory bonus paid",
+          "texto": "The statutory bonus is paid at the end of June.",
+          "calculadora": "mt.statutory-bonus"
+        },
+        {
+          "id": "pago-allowance-september",
+          "tipo": "pago",
+          "mes": 9,
+          "dia": 30,
+          "titulo": "Weekly allowance paid",
+          "texto": "The weekly allowance is paid at the end of September.",
+          "calculadora": "mt.statutory-bonus"
+        },
+        {
+          "id": "pago-bonus-december",
+          "tipo": "pago",
+          "mes": 12,
+          "dia": 23,
+          "titulo": "Last day for the December bonus",
+          "texto": "The statutory bonus is paid between 15 and 23 December.",
+          "calculadora": "mt.statutory-bonus"
+        }
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "bonus": 135.1,
+            "bonus-per-day": 0.74,
+            "allowance": 121.16,
+            "allowance-per-week": 4.66
+          },
+          "fuente": {
+            "organismo": "Department for Industrial and Employment Relations",
+            "titulo": "Bonus and Weekly Allowances",
+            "url": "https://web.archive.org/web/20260712031603/https://dier.gov.mt/en/services/employment-conditions/wages/bonus-and-weekly-allowances/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "DIER page on dier.gov.mt read in the web.archive.org copy: gov.mt sites refuse connections from our environment."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.annual-leave-hours",
+      "nombre": "Minimum paid annual leave on a 40-hour week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 192,
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Organisation of Working Time Regulations (S.L. 452.87), regulation 8",
+            "url": "https://legislation.mt/eli/sl/452.87/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.overtime",
+      "nombre": "Overtime rule without a Wage Regulation Order",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "multiplier": "Times the normal rate",
+        "weekly-hours": "Hours a week before overtime"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "multiplier": 1.5,
+            "weekly-hours": 40
+          },
+          "fuente": {
+            "organismo": "Department for Industrial and Employment Relations",
+            "titulo": "Overtime",
+            "url": "https://web.archive.org/web/20250909064052/https://dier.gov.mt/en/services/employment-conditions/wages/overtime/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "DIER page on dier.gov.mt read in the web.archive.org copy: gov.mt sites refuse connections from our environment."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.notice-weeks",
+      "nombre": "Notice period by length of service",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "over-1-month": "More than one month, up to six months",
+        "over-6-months": "More than six months, up to two years",
+        "over-2-years": "More than two years, up to four years",
+        "over-4-years": "More than four years, up to seven years",
+        "maximum": "Maximum after seven years"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "over-1-month": 1,
+            "over-6-months": 2,
+            "over-2-years": 4,
+            "over-4-years": 8,
+            "maximum": 12
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Employment and Industrial Relations Act (Cap. 452), article 36",
+            "url": "https://legislation.mt/eli/cap/452/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.probation-months",
+      "nombre": "Probation period",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "standard": "Standard probation",
+        "managerial": "Technical, executive, administrative or managerial post paid at least twice the minimum wage"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "standard": 6,
+            "managerial": 12
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Employment and Industrial Relations Act (Cap. 452), article 36",
+            "url": "https://legislation.mt/eli/cap/452/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.duty-rates",
+      "nombre": "Duty on the transfer of immovable property",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "Normal rate",
+        "sole-residence": "Rate on the first part when buying your sole ordinary residence"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": {
+            "standard": 5,
+            "sole-residence": 3.5
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Duty on Documents and Transfers Act (Cap. 364), article 32",
+            "url": "https://legislation.mt/eli/cap/364/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.duty-thresholds",
+      "nombre": "Duty thresholds for a home",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "sole-residence": "Part charged at the lower rate for a sole ordinary residence",
+        "first-time-buyer": "Part exempt for a first-time buyer"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-10-28",
+          "valor": {
+            "sole-residence": 200000,
+            "first-time-buyer": 200000
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Exemption of Duty in terms of Article 23 Order (S.L. 364.12), article 3",
+            "url": "https://legislation.mt/eli/sl/364.12/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.property-transfer-tax",
+      "nombre": "Final tax on the transfer of immovable property",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "Normal rate",
+        "within-5-years": "Sold within five years of buying",
+        "before-2004": "Bought before 1 January 2004",
+        "inherited-gain": "Inherited after 24 November 1992 (on the gain)",
+        "inherited-before-1992": "Inherited before 25 November 1992"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": {
+            "standard": 8,
+            "within-5-years": 5,
+            "before-2004": 10,
+            "inherited-gain": 12,
+            "inherited-before-1992": 7
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 5A(4) and (5)",
+            "url": "https://legislation.mt/eli/cap/123/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.part-time-tax-rate",
+      "nombre": "Tax rate on part-time income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 90A(11), and Part-time Work Rules (S.L. 123.39), rule 3",
+            "url": "https://legislation.mt/eli/sl/123.39/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.part-time-limits",
+      "nombre": "Part-time income taxed at the flat rate",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "employment": "Part-time employment",
+        "self-employed": "Part-time self-employment"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "employment": 10000,
+            "self-employed": 12000
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 90A(11), and Part-time Work Rules (S.L. 123.39), rule 3",
+            "url": "https://legislation.mt/eli/sl/123.39/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.overtime-tax-rate",
+      "nombre": "Tax rate on qualifying overtime",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 90B, and Tax on Overtime Rules (S.L. 123.200)",
+            "url": "https://legislation.mt/eli/sl/123.200/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.overtime-tax-limits",
+      "nombre": "Qualifying overtime limits",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "max-income": "Maximum qualifying overtime income a year",
+        "max-weekly-wage": "Highest basic weekly wage that qualifies"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "max-income": 10000,
+            "max-weekly-wage": 375
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 90B, and Tax on Overtime Rules (S.L. 123.200)",
+            "url": "https://legislation.mt/eli/sl/123.200/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.ssc-rate",
+      "nombre": "Class 1 contribution rate on the basic wage",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Social Security Act (Cap. 318), article 7 and Tenth Schedule, Part I",
+            "url": "https://legislation.mt/eli/cap/318/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.ssc-weekly",
+      "nombre": "Class 1 weekly contributions",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "cat-a": "Category A, under 18 earning up to the minimum wage",
+        "cat-b": "Category B, 18 and over earning up to the minimum wage",
+        "max-1962": "Maximum, born on or after 1 January 1962",
+        "max-before-1962": "Maximum, born before 1962"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "cat-a": 6.62,
+            "cat-b": 22.94,
+            "max-1962": 55.93,
+            "max-before-1962": 49.04
+          },
+          "motivo": "The 2026 table is only published by the DSS and the MTCA on gov.mt sites, which refuse connections from our environment, and no archived copy exists. The consolidated Tenth Schedule on legislation.mt still shows the 2024 amounts. Category B and the pre-1962 maximum are 10% of the minimum wage and of the 25,500 cap in the Act; category A and the 1962 maximum come from a press article."
+        }
+      ]
+    },
+    {
+      "id": "mt.maternity-fund-rate",
+      "nombre": "Maternity Leave Trust Fund contribution",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 0.3,
+          "motivo": "Employers pay it on the basic wage, but we could not read the rule in an official source from our environment."
+        }
+      ]
+    },
+    {
+      "id": "mt.pension-age",
+      "nombre": "Pension age by year of birth",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "born-1951-or-before": "Born in 1951 or before",
+        "women-1951-or-before": "Women born in 1951 or before",
+        "born-1952-1955": "Born 1952 to 1955",
+        "born-1956-1958": "Born 1956 to 1958",
+        "born-1959-1961": "Born 1959 to 1961",
+        "born-1962-or-after": "Born in 1962 or after"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": {
+            "born-1951-or-before": 61,
+            "women-1951-or-before": 60,
+            "born-1952-1955": 62,
+            "born-1956-1958": 63,
+            "born-1959-1961": 64,
+            "born-1962-or-after": 65
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Social Security Act (Cap. 318), article 2, definition of pension age",
+            "url": "https://legislation.mt/eli/cap/318/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.inflation-index",
+      "nombre": "Index of inflation (1946 = 100)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "proximaRevision": "2027-03-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-02-06",
+          "valor": {
+            "1946": 100.0,
+            "1947": 104.9,
+            "1948": 113.9,
+            "1949": 109.7,
+            "1950": 116.9,
+            "1951": 130.1,
+            "1952": 140.3,
+            "1953": 139.1,
+            "1954": 141.2,
+            "1955": 138.8,
+            "1956": 142.0,
+            "1957": 145.7,
+            "1958": 148.3,
+            "1959": 151.1,
+            "1960": 158.8,
+            "1961": 164.84,
+            "1962": 165.16,
+            "1963": 168.18,
+            "1964": 172.0,
+            "1965": 174.7,
+            "1966": 175.65,
+            "1967": 176.76,
+            "1968": 180.42,
+            "1969": 184.71,
+            "1970": 191.55,
+            "1971": 196.0,
+            "1972": 202.52,
+            "1973": 218.26,
+            "1974": 234.16,
+            "1975": 254.77,
+            "1976": 256.2,
+            "1977": 281.84,
+            "1978": 295.14,
+            "1979": 316.21,
+            "1980": 366.06,
+            "1981": 408.16,
+            "1982": 431.83,
+            "1983": 428.06,
+            "1984": 426.18,
+            "1985": 425.17,
+            "1986": 433.67,
+            "1987": 435.47,
+            "1988": 439.62,
+            "1989": 443.39,
+            "1990": 456.61,
+            "1991": 468.21,
+            "1992": 475.89,
+            "1993": 495.6,
+            "1994": 516.06,
+            "1995": 536.61,
+            "1996": 549.95,
+            "1997": 567.08,
+            "1998": 580.61,
+            "1999": 593.0,
+            "2000": 607.07,
+            "2001": 624.85,
+            "2002": 638.54,
+            "2003": 646.84,
+            "2004": 664.88,
+            "2005": 684.88,
+            "2006": 703.88,
+            "2007": 712.68,
+            "2008": 743.05,
+            "2009": 758.58,
+            "2010": 770.07,
+            "2011": 791.02,
+            "2012": 810.16,
+            "2013": 821.34,
+            "2014": 823.89,
+            "2015": 832.95,
+            "2016": 838.29,
+            "2017": 849.77,
+            "2018": 859.63,
+            "2019": 873.73,
+            "2020": 879.32,
+            "2021": 892.51,
+            "2022": 947.4,
+            "2023": 995.62,
+            "2024": 1012.05,
+            "2025": 1035.93
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Housing (Decontrol) Ordinance (Cap. 158), article 13 and Schedule, with L.N. 36 of 2026",
+            "url": "https://legislation.mt/eli/cap/158/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "The Schedule lists 433.39 for 1989 in its first table and 443.39 in the list of legal notices; we use 443.39 (L.N. 31 of 1990). For 1997 we use the revised 567.08 given in the note to the Schedule."
+          }
+        }
+      ]
+    }
+  ]
+}
