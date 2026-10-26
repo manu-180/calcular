@@ -70,6 +70,21 @@ export function fechasDelMismoInstante(mercado: Pick<Mercado, "zonaHoraria">, fe
   };
 }
 
+// La fecha de cada mercado vista desde una página de `desde` armada para `fecha`: corre `fecha` lo
+// mismo que se corre hoy la zona de cada mercado respecto de la de `desde`. Con `fecha` = hoy de
+// `desde` da el hoy de cada uno, así dos páginas del mismo clúster (Santiago y Sídney, que a la tarde
+// de América ya están en días distintos) evalúan a cada mercado en el mismo día y listan el mismo
+// clúster aunque una serie venza justo entre las dos fechas. Con CALCULAR_HOY todos dan la misma.
+export function fechasDesde(desde: Pick<Mercado, "zonaHoraria">, fecha: FechaISO, ahora: Date = new Date()): (m: Pick<Mercado, "zonaHoraria">) => FechaISO {
+  const base = hoyEn(desde, ahora);
+  const porZona = new Map<string, FechaISO>();
+  return (m) => {
+    let f = porZona.get(m.zonaHoraria);
+    if (!f) porZona.set(m.zonaHoraria, (f = sumarDias(fecha, diasEntre(base, hoyEn(m, ahora)))));
+    return f;
+  };
+}
+
 // La fecha más adelantada del planeta (UTC+14). Sirve para validar que una verificación no esté
 // en el futuro sin rechazar a quien la cargó en su propia zona horaria.
 export function hoyMasAdelantado(ahora: Date = new Date()): FechaISO {

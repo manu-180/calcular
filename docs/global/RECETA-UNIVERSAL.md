@@ -52,7 +52,12 @@ y una línea en la lista de tu frente (`src/motor/universales/finanzas.ts` o `co
 - `ui` recibe `(trato, locale)`. El locale es el del mercado (`de-CH`, `pt-PT`, `fr-CA`) y sirve para
   lo que cambia dentro de un mismo idioma: «ss» en vez de «ß» en de-CH, el vocabulario de pt-PT
   («ecrã», «facto») frente a pt-BR, o un separador decimal que el texto escribe a mano. Quien no lo
-  necesita lo ignora: `ui: () =>` y `ui: (trato) =>` siguen valiendo. Ejemplo:
+  necesita lo ignora: `ui: () =>` y `ui: (trato) =>` siguen valiendo. La norma europea del
+  portugués vale para todo `pt-*` menos `pt-BR` (Portugal, Angola, Mozambique, Cabo Verde,
+  Guinea-Bisáu, Santo Tomé y Timor): nunca comparar con `"pt-PT"`, usar
+  `esPortuguesEuropeo(locale)` (`src/motor/i18n/variantes.ts`). Las variantes con clave `"pt-PT"`
+  (en `conVariantes`, `contenidoConVariantes` y los `regional` del motor) se aplican a todos ellos, y
+  lo propio de Portugal (IRS, IMI, Segurança Social) se pisa con la clave `PT_LUSOFONIA`. Ejemplo:
   `ui: (_trato, locale) => { const ss = (s: string) => (locale === "de-CH" ? s.replace(/ß/g, "ss") : s); ... }`.
 
 **`contenido/<idioma>.ts`**

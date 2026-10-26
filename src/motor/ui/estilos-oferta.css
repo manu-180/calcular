@@ -241,7 +241,7 @@
 }
 
 .cy-oferta-aviso-fila .cy-boton {
-  padding-right: 1.375rem;
+  padding-inline-end: 1.375rem;
 }
 
 .cy-oferta-aviso-listo {
@@ -394,7 +394,7 @@
 
 .cy-muestra-columnas span {
   padding: 0.25rem 0.375rem;
-  border-right: 1px solid rgb(24 24 27 / 0.08);
+  border-inline-end: 1px solid rgb(24 24 27 / 0.08);
   border-bottom: 1px solid rgb(24 24 27 / 0.1);
   background: #f4f4f5;
   font-weight: 600;
@@ -405,7 +405,7 @@
 .cy-muestra-celdas span {
   overflow: hidden;
   padding: 0.375rem;
-  border-right: 1px solid rgb(24 24 27 / 0.07);
+  border-inline-end: 1px solid rgb(24 24 27 / 0.07);
   border-bottom: 1px solid rgb(24 24 27 / 0.07);
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -421,7 +421,7 @@
 .cy-muestra-amarilla {
   background: #fffde7;
   font-weight: 600;
-  text-align: right;
+  text-align: end;
   box-shadow: inset 0 0 0 1px rgb(234 179 8 / 0.35);
 }
 
@@ -433,7 +433,7 @@
 }
 
 .cy-muestra-total span:nth-child(3) {
-  text-align: right;
+  text-align: end;
 }
 
 .cy-muestra-pestanas {
@@ -542,7 +542,7 @@
 
 .cy-datos-compra dd {
   font-weight: 600;
-  text-align: right;
+  text-align: end;
   font-variant-numeric: tabular-nums;
   color: var(--cy-tinta);
 }
@@ -618,7 +618,7 @@
   display: grid;
   gap: 0.125rem;
   font-size: 0.75rem;
-  text-align: right;
+  text-align: end;
   color: var(--cy-texto-suave);
 }
 
@@ -659,13 +659,13 @@
 .cy-informe-tabla td {
   padding: 0.5rem 0.25rem;
   border-bottom: 1px dashed var(--cy-linea);
-  text-align: left;
+  text-align: start;
   vertical-align: top;
 }
 
 .cy-informe-tabla td:last-child,
 .cy-informe-tabla th:last-child {
-  text-align: right;
+  text-align: end;
   font-weight: 600;
   color: var(--cy-tinta);
 }
@@ -686,12 +686,12 @@
 }
 
 .cy-informe-tabla tr[data-destacada] td:first-child {
-  padding-left: 0.75rem;
+  padding-inline-start: 0.75rem;
   border-radius: 0.625rem 0 0 0.625rem;
 }
 
 .cy-informe-tabla tr[data-destacada] td:last-child {
-  padding-right: 0.75rem;
+  padding-inline-end: 0.75rem;
   border-radius: 0 0.625rem 0.625rem 0;
   font-size: 1.125rem;
   color: var(--cy-acento-tinta);
@@ -716,14 +716,14 @@
 .cy-informe-tabla-completa th,
 .cy-informe-tabla-completa td {
   padding: 0.375rem 0.5rem;
-  text-align: right;
+  text-align: end;
   white-space: nowrap;
 }
 
 .cy-informe-tabla-completa th:first-child,
 .cy-informe-tabla-completa td:first-child {
-  padding-left: 0;
-  text-align: left;
+  padding-inline-start: 0;
+  text-align: start;
 }
 
 .cy-informe-tabla-completa td:last-child {
@@ -745,7 +745,7 @@
 .cy-informe ul.cy-informe-lista {
   display: grid;
   gap: 0.5rem;
-  padding-left: 1.25rem;
+  padding-inline-start: 1.25rem;
   font-size: 0.9375rem;
 }
 
@@ -880,7 +880,8 @@
 
   .cy-informe-papel {
     position: absolute;
-    inset: 0 auto auto 0;
+    inset-block: 0 auto;
+    inset-inline: 0 auto;
     width: 100%;
     padding: 0;
     border-radius: 0;
@@ -992,7 +993,7 @@
 
 .cy-vista-tabla thead th {
   padding: 0.25rem 0.375rem;
-  border-right: 1px solid rgb(24 24 27 / 0.08);
+  border-inline-end: 1px solid rgb(24 24 27 / 0.08);
   border-bottom: 1px solid rgb(24 24 27 / 0.1);
   background: #f4f4f5;
   font-size: 0.6875rem;
@@ -1006,23 +1007,23 @@
 
 .cy-vista-tabla thead th:last-child {
   width: 42%;
-  border-right: 0;
+  border-inline-end: 0;
 }
 
 .cy-vista-tabla tbody th,
 .cy-vista-tabla tbody td {
   padding: 0.5rem 0.625rem;
-  border-right: 1px solid rgb(24 24 27 / 0.07);
+  border-inline-end: 1px solid rgb(24 24 27 / 0.07);
   border-bottom: 1px solid rgb(24 24 27 / 0.07);
-  text-align: left;
+  text-align: start;
   font-weight: 400;
   color: var(--cy-texto);
   overflow-wrap: anywhere;
 }
 
 .cy-vista-tabla tbody td:last-child {
-  border-right: 0;
-  text-align: right;
+  border-inline-end: 0;
+  text-align: end;
 }
 
 .cy-vista-tabla tbody td.cy-vista-fila {

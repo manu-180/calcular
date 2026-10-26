@@ -1,4 +1,4 @@
-import { conVariantes } from "../../comun/locales";
+import { conVariantes, PT_LUSOFONIA } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiCostoDeUnAuto } from "../definicion";
 
@@ -50,4 +50,10 @@ const portugal = (): Partial<UiCostoDeUnAuto> => ({
     "A prestação do crédito não entra no custo real porque uma parte dela paga o próprio carro, que já está contado como valor perdido. Os juros do crédito são um custo a mais.",
 });
 
-export const textosPt = conVariantes(base, { "pt-PT": portugal });
+// Fuera de Portugal (Angola, Mozambique, Cabo Verde...) la norma es la europea, pero los impuestos y
+// la seguridad social tienen otro nombre: lo propio de Portugal se dice en palabras de cualquier país.
+const lusofonia = (): Partial<UiCostoDeUnAuto> => ({
+  otrosAyuda: "Impostos do veículo, inspeção periódica, portagens e multas, em média por mês.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal, [PT_LUSOFONIA]: lusofonia });

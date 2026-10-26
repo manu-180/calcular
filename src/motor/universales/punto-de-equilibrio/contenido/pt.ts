@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { equilibrio } from "../definicion";
 
@@ -9,7 +10,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const objetivo = montoEjemplo(ctx, 2000);
   const base = equilibrio(fijos, precio, variable);
   const meta = equilibrio(fijos + objetivo, precio, variable);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora de ponto de equilíbrio",
     title: tituloQueEntre(`Calculadora de ponto de equilíbrio (${ctx.nombrePais})`, `Ponto de equilíbrio (${ctx.nombrePais})`, "Calculadora de ponto de equilíbrio"),

@@ -8,6 +8,7 @@ import { intlActivo } from "@/motor/sitio";
 import type { CodigoMercado, Idioma } from "@/motor/tipos";
 import { BanderaPlana } from "@/motor/ui/BanderaPlana";
 import { contextoSitio } from "@/motor/ui/contexto";
+import { TextoOg } from "@/motor/ui/og-rtl";
 import { nombreDePais } from "@/motor/ui/paises";
 import { registro } from "@/paises";
 import { grillaPublicada } from "./datos";
@@ -28,7 +29,18 @@ const CABECERAS = { "cache-control": "public, max-age=86400, s-maxage=604800, st
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
 const ESPERA_FUENTE_MS = 3000;
 
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC" };
+// Escrituras que Geist no trae. El bengalí entra acá por los glifos; Satori no reordena los signos
+// vocálicos (ি va antes de la consonante), así que la tarjeta en bn puede salir con algún conjunto mal
+// armado (ADR 0002, D14).
+// Geist no trae CJK ni tailandés: sin esta fuente la tarjeta saldría con cuadritos (ADR 0002, D8 y D13).
+// uk va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D15).
+// Fuente de respaldo por idioma para los glifos que Geist no tiene: los CJK y la «ʻ» (U+02BB) de oʻ y
+// gʻ del uzbeko latino (ADR 0002, D16).
+// ru va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D17).
+// ro va con Noto Sans de respaldo por si Geist no trae ș y ț con coma (U+0218 a U+021B; ADR 0002, D18).
+// el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
+// Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", th: "Noto Sans Thai", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 
@@ -164,6 +176,7 @@ const fondo = (ancho: number, alto: number) => ({
 
 interface Datos {
   t: TextosMundo;
+  idioma: Idioma;
   carga: CargaCompartida | null;
   anio: number;
   // 0 con carga cero: el año entero queda en verde.
@@ -178,7 +191,7 @@ interface Datos {
   bandera: string | null;
 }
 
-function Horizontal({ t, carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, familia, bandera }: Datos) {
+function Horizontal({ t, idioma, carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, familia, bandera }: Datos) {
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", padding: "56px 64px", color: CREMA, fontFamily: familia, ...fondo(1200, 630) }}>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, paddingRight: 40 }}>
@@ -188,27 +201,27 @@ function Horizontal({ t, carga, anio, dia, fecha, tasaLinea, frase, hasta, paise
         </div>
         {carga ? (
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", fontSize: 30, color: SUAVE }}>{hasta[0]}</div>
-            <div style={{ display: "flex", fontSize: fecha.length > 12 ? 92 : 116, fontWeight: 700, letterSpacing: -4, lineHeight: 1.02 }}>{fecha}</div>
-            {hasta[1] ? <div style={{ display: "flex", fontSize: 30, color: SUAVE }}>{hasta[1]}</div> : null}
-            <div style={{ display: "flex", marginTop: 18, fontSize: 30, color: VERDE, fontWeight: 700 }}>{tasaLinea}</div>
+            <div style={{ display: "flex", fontSize: 30, color: SUAVE }}><TextoOg texto={hasta[0]} idioma={idioma} /></div>
+            <div style={{ display: "flex", fontSize: fecha.length > 12 ? 92 : 116, fontWeight: 700, letterSpacing: -4, lineHeight: 1.02 }}><TextoOg texto={fecha} idioma={idioma} /></div>
+            {hasta[1] ? <div style={{ display: "flex", fontSize: 30, color: SUAVE }}><TextoOg texto={hasta[1]} idioma={idioma} /></div> : null}
+            <div style={{ display: "flex", marginTop: 18, fontSize: 30, color: VERDE, fontWeight: 700 }}><TextoOg texto={tasaLinea} idioma={idioma} /></div>
           </div>
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-            <div style={{ display: "flex", fontSize: 64, fontWeight: 700, letterSpacing: -2, lineHeight: 1.05 }}>{t.tarjeta.generica}</div>
-            <div style={{ display: "flex", fontSize: 28, color: SUAVE }}>{t.tarjeta.genericaBajada(paises)}</div>
+            <div style={{ display: "flex", fontSize: 64, fontWeight: 700, letterSpacing: -2, lineHeight: 1.05 }}><TextoOg texto={t.tarjeta.generica} idioma={idioma} /></div>
+            <div style={{ display: "flex", fontSize: 28, color: SUAVE }}><TextoOg texto={t.tarjeta.genericaBajada(paises)} idioma={idioma} /></div>
           </div>
         )}
         <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 26 }}>
           {carga ? <BanderaOChip iso={carga.mejor} ancho={42} src={bandera} /> : null}
-          <div style={{ display: "flex", maxWidth: 560 }}>{carga ? frase : `${t.tarjeta.cta} calcularya.com`}</div>
+          <div style={{ display: "flex", maxWidth: 560 }}><TextoOg texto={carga ? frase : `${t.tarjeta.cta} calcularya.com`} idioma={idioma} /></div>
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-end", gap: 22 }}>
         <Anio dia={carga ? dia : 138} anio={anio} celda={11} hueco={4} />
         {carga ? (
           <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 20px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 24, fontWeight: 700 }}>
-            {`${t.tarjeta.yVos} calcularya.com`}
+            <TextoOg texto={`${t.tarjeta.yVos} calcularya.com`} idioma={idioma} />
           </div>
         ) : null}
       </div>
@@ -243,8 +256,8 @@ function Fecha({ d, tam, sub }: { d: Datos; tam: number; sub: number }) {
   if (!d.carga) {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: sub * 0.6 }}>
-        <div style={{ display: "flex", fontSize: tam * 0.55, fontWeight: 700, letterSpacing: -tam * 0.025, lineHeight: 1.02 }}>{d.t.tarjeta.generica}</div>
-        <div style={{ display: "flex", fontSize: sub, color: "rgba(11,17,16,0.72)" }}>{d.t.tarjeta.genericaBajada(d.paises)}</div>
+        <div style={{ display: "flex", fontSize: tam * 0.55, fontWeight: 700, letterSpacing: -tam * 0.025, lineHeight: 1.02 }}><TextoOg texto={d.t.tarjeta.generica} idioma={d.idioma} /></div>
+        <div style={{ display: "flex", fontSize: sub, color: "rgba(11,17,16,0.72)" }}><TextoOg texto={d.t.tarjeta.genericaBajada(d.paises)} idioma={d.idioma} /></div>
       </div>
     );
   }
@@ -252,11 +265,11 @@ function Fecha({ d, tam, sub }: { d: Datos; tam: number; sub: number }) {
   const t = largo <= 8 ? tam : largo <= 12 ? tam * 0.82 : tam * 0.64;
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <div style={{ display: "flex", fontSize: sub, lineHeight: 1.2, fontWeight: 700 }}>{d.hasta[0]}</div>
-      <div style={{ display: "flex", fontSize: t, fontWeight: 700, letterSpacing: -t * 0.04, lineHeight: 0.95, marginTop: sub * 0.2 }}>{d.fecha}</div>
-      {d.hasta[1] ? <div style={{ display: "flex", fontSize: sub, fontWeight: 700 }}>{d.hasta[1]}</div> : null}
+      <div style={{ display: "flex", fontSize: sub, lineHeight: 1.2, fontWeight: 700 }}><TextoOg texto={d.hasta[0]} idioma={d.idioma} /></div>
+      <div style={{ display: "flex", fontSize: t, fontWeight: 700, letterSpacing: -t * 0.04, lineHeight: 0.95, marginTop: sub * 0.2 }}><TextoOg texto={d.fecha} idioma={d.idioma} /></div>
+      {d.hasta[1] ? <div style={{ display: "flex", fontSize: sub, fontWeight: 700 }}><TextoOg texto={d.hasta[1]} idioma={d.idioma} /></div> : null}
       <div style={{ display: "flex", marginTop: sub * 0.6 }}>
-        <div style={{ display: "flex", padding: `${sub * 0.22}px ${sub * 0.55}px`, borderRadius: 999, backgroundColor: TINTA, color: VERDE, fontSize: sub * 0.82, fontWeight: 700 }}>{d.tasaLinea}</div>
+        <div style={{ display: "flex", padding: `${sub * 0.22}px ${sub * 0.55}px`, borderRadius: 999, backgroundColor: TINTA, color: VERDE, fontSize: sub * 0.82, fontWeight: 700 }}><TextoOg texto={d.tasaLinea} idioma={d.idioma} /></div>
       </div>
     </div>
   );
@@ -274,11 +287,11 @@ function Historia(d: Datos) {
         {d.carga ? (
           <div style={{ display: "flex", alignItems: "center", gap: 24, fontSize: 42, lineHeight: 1.2 }}>
             <BanderaOChip iso={d.carga.mejor} ancho={68} src={d.bandera} />
-            <div style={{ display: "flex", flex: 1 }}>{d.frase}</div>
+            <div style={{ display: "flex", flex: 1 }}><TextoOg texto={d.frase} idioma={d.idioma} /></div>
           </div>
         ) : null}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", fontSize: 52, fontWeight: 700, letterSpacing: -1.5 }}>{d.carga ? d.t.tarjeta.yVos : d.t.tarjeta.cta}</div>
+          <div style={{ display: "flex", fontSize: 52, fontWeight: 700, letterSpacing: -1.5 }}><TextoOg texto={d.carga ? d.t.tarjeta.yVos : d.t.tarjeta.cta} idioma={d.idioma} /></div>
           <div style={{ display: "flex", padding: "16px 30px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 34, fontWeight: 700 }}>calcularya.com</div>
         </div>
       </div>
@@ -299,12 +312,12 @@ function Cuadrado(d: Datos) {
           {d.carga ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 18, flex: 1, fontSize: 30, lineHeight: 1.25 }}>
               <BanderaOChip iso={d.carga.mejor} ancho={52} src={d.bandera} />
-              <div style={{ display: "flex" }}>{d.frase}</div>
+              <div style={{ display: "flex" }}><TextoOg texto={d.frase} idioma={d.idioma} /></div>
             </div>
           ) : null}
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 28 }}>
-          <div style={{ display: "flex", fontWeight: 700 }}>{d.carga ? d.t.tarjeta.yVos : d.t.tarjeta.cta}</div>
+          <div style={{ display: "flex", fontWeight: 700 }}><TextoOg texto={d.carga ? d.t.tarjeta.yVos : d.t.tarjeta.cta} idioma={d.idioma} /></div>
           <div style={{ display: "flex", color: VERDE, fontWeight: 700 }}>calcularya.com</div>
         </div>
       </div>
@@ -347,6 +360,7 @@ export function crearOgMundo(idioma: Idioma) {
     const bandera = carga ? await banderaDe(carga.mejor) : null;
     const datos: Datos = {
       t,
+      idioma: m.idioma,
       carga,
       anio,
       dia,

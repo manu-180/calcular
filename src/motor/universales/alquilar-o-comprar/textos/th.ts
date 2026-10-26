@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosTh: TextosUi<UiAlquilarOComprar> = {
+  slug: "rent-vs-buy",
+  ui: () => ({
+    precio: "ราคาบ้าน",
+    entrada: "เงินดาวน์ (% ของราคา)",
+    gastosCompra: "ค่าใช้จ่ายในการซื้อ (% ของราคา)",
+    gastosCompraAyuda: "ค่าธรรมเนียมการโอน ภาษี ค่าจดจำนอง และค่าประเมินราคา",
+    tasa: "อัตราดอกเบี้ยสินเชื่อบ้าน (% ต่อปี)",
+    aniosHipoteca: "ระยะเวลาผ่อนบ้าน (ปี)",
+    alquiler: "ค่าเช่าต่อเดือนของบ้านที่ใกล้เคียงกัน",
+    aumentoAlquiler: "ค่าเช่าที่เพิ่มขึ้นต่อปี (%)",
+    gastosPropietario: "ค่าใช้จ่ายของเจ้าของบ้านต่อปี (% ของมูลค่า)",
+    gastosPropietarioAyuda: "ค่าซ่อมบำรุง ภาษีที่ดินและสิ่งปลูกสร้าง และประกันบ้าน โดยทั่วไปอยู่ที่ 1% ถึง 2%",
+    revalorizacion: "ราคาบ้านที่เพิ่มขึ้นต่อปี (%)",
+    rendimiento: "ผลตอบแทนจากการลงทุนทางเลือก (% ต่อปี)",
+    rendimientoAyuda: "ผลตอบแทนที่จะได้หากนำเงินดาวน์ไปลงทุนแทนการซื้อบ้าน",
+    horizonte: "จำนวนปีที่ต้องการเปรียบเทียบ",
+    veredicto: "ผลลัพธ์",
+    patrimonioComprar: "ความมั่งคั่งสุทธิเมื่อครบกำหนดหากซื้อ",
+    patrimonioAlquilar: "ความมั่งคั่งสุทธิเมื่อครบกำหนดหากเช่า",
+    diferencia: "ส่วนต่าง",
+    anioDesde: "ปีที่การซื้อเริ่มคุ้มกว่า",
+    pagadoAlquilando: "ค่าเช่าที่จ่ายทั้งหมด",
+    pagadoComprando: "ค่างวดและค่าใช้จ่ายของเจ้าของบ้านทั้งหมด",
+    tabla: "เปรียบเทียบรายปี",
+    colAnio: "ปีที่",
+    colComprar: "ซื้อ",
+    colAlquilar: "เช่า",
+    colDiferencia: "ส่วนต่าง",
+    errorPrecio: "กรุณากรอกราคาบ้าน",
+    errorAlquiler: "กรุณากรอกค่าเช่าของบ้านที่ใกล้เคียงกัน",
+    convieneComprar: (anios, diferencia) => `ซื้อคุ้มกว่า เมื่อครบ ${anios} ปีจะมีความมั่งคั่งมากกว่า ${diferencia}`,
+    convieneAlquilar: (anios, diferencia) => `เช่าคุ้มกว่า เมื่อครบ ${anios} ปีจะมีความมั่งคั่งมากกว่า ${diferencia}`,
+    empate: (anios) => `เมื่อครบ ${anios} ปี ทั้งสองทางเลือกให้ผลเท่ากัน`,
+    observacionDesde: (anio) => `การซื้อเริ่มคุ้มกว่าการเช่าตั้งแต่ปีที่ ${anio} และคุ้มกว่าต่อเนื่องจากนั้น`,
+    observacionMetodo:
+      "การคำนวณเปรียบเทียบสิ่งที่จะมีในแต่ละกรณี หากเช่า เงินดาวน์และเงินที่เหลือในแต่ละเดือนจะนำไปลงทุนต่อ ยังไม่หักค่าใช้จ่ายในการขายบ้าน",
+  }),
+};

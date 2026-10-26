@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aDia, fechaLarga, habilesEntre } from "../../comun/fechas";
 
@@ -7,7 +8,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const dias = aDia(hasta) - aDia(desde);
   const habiles = habilesEntre(aDia(desde), aDia(hasta));
   const f = (iso: string) => fechaLarga(ctx.locale, iso);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora de dias entre datas",
     title: tituloQueEntre(`Calculadora de dias entre datas (${ctx.nombrePais})`, `Dias entre datas (${ctx.nombrePais})`, "Calculadora de dias entre datas"),

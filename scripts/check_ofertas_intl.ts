@@ -7,8 +7,9 @@
 //   entrada → validación del servidor → texto del formulario → entrada da lo mismo, y los números del
 //   informe (ejecutar) son exactamente los de calcular() con los mismos datos oficiales;
 // - prefill hostil: __proto__, tipos cambiados, otra calculadora, otro país, texto gigante: null;
-// - planilla con datos: el mapa convierte igual que el generador y la planilla cargada con los
-//   números de la persona, recalculada con HyperFormula, da lo mismo que calcular();
+// - planilla con datos: el mapa convierte igual que el generador y la planilla de hoy (armada en
+//   memoria, como en el prebuild) cargada con los números de la persona, recalculada con
+//   HyperFormula, da lo mismo que calcular();
 // - textos: los 7 idiomas con las mismas piezas por familia, sin rayas, sin emojis, sin marcas de
 //   plantilla sin llenar y, en español, en el trato del país.
 //
@@ -32,6 +33,7 @@ import { PRODUCTOS_INTL, productoIntl, productoIntlDe, leerReferenciaIntl, type 
 import { FAMILIAS, SIN_FAMILIA, campoEscenario, familiaDeConcepto, nombreDeCalculo, precioUSD } from "../src/lib/pagos/ofertas-intl";
 import { DICCIONARIOS, FAMILIAS_POR_LOCALE, IDIOMAS_VENTA, resolverTrato, tieneVenta, type DiccionarioVenta, type IdiomaVenta } from "../src/lib/pagos/textos";
 import { zhHans } from "../src/lib/pagos/textos/zh-hans";
+import { direccionDe } from "../src/motor/i18n/direccion";
 import { idiomaDeLocale } from "../src/motor/i18n/resolver";
 import { problemasDeTexto } from "./reglas_idioma";
 import { bloqueDe, calculadorasDeProducto, mapaDePlanillaIntl, ofertasDeMercado, planillaConDatos, validarDatosDeProducto } from "../src/lib/pagos/ofertas-servidor";
@@ -263,6 +265,13 @@ async function checkPlanillas() {
       }
       if (mapa.archivo !== prod.archivo) fallo(`${m}: el mapa es de ${mapa.archivo} y la planilla a la venta es ${prod.archivo}`);
       const pais = construida.libro.pais;
+      // La planilla que se carga con los datos es la de hoy, armada en memoria igual que la arma el
+      // prebuild (gen_planilla_todas, también en CI antes de check-all), no la copia de
+      // private/intl del repo: esa queda con la UF o el tipo de cambio del día en que alguien la
+      // regeneró y, en cuanto la serie suma un punto, da otro tope que la calculadora de hoy (cl: tope
+      // imponible e indemnización en UF). Que el archivo del repo y su mapa estén al día lo cuidan
+      // check_planillas_intl y el chequeo de mapa.archivo de arriba.
+      const deHoy = Buffer.from(await construida.libro.wb.xlsx.writeBuffer());
       for (const b of construida.libro.bloques) {
         const bm = bloqueDe(prod, b.calculadora);
         if (!bm) {
@@ -282,7 +291,7 @@ async function checkPlanillas() {
             const esperado = b.entradas[campo].convertir(v as ValorEntrada);
             if (!igual(valorDeCelda(celda, v), esperado)) fallo(`${m}/${b.calculadora}: el mapa convierte ${campo}=${JSON.stringify(v)} en ${JSON.stringify(valorDeCelda(celda, v))} y la hoja en ${JSON.stringify(esperado)}`);
           }
-          const bytes = await planillaConDatos(prod, datos);
+          const bytes = await planillaConDatos(prod, datos, deHoy);
           const ruta = path.join(tmp, `${m}-${b.calculadora}-${probadas}.xlsx`);
           writeFileSync(ruta, bytes);
           const libro = await abrirLibro(ruta);
@@ -344,7 +353,7 @@ function revisarTexto(origen: string, idioma: Idioma, trato: Trato, s: string, l
   if (!s.trim()) fallo(`${origen}: texto vacío`);
   if (RAYA.test(s)) fallo(`${origen}: raya en «${s}»`);
   if (EMOJI.test(s)) fallo(`${origen}: emoji en «${s}»`);
-  if (idioma === "ja" || idioma === "ko" || idioma === "zh") for (const p of problemasDeTexto(s, idioma, trato, locale)) if (!(carta && p.startsWith("합니다체"))) fallo(`${origen}: ${p} en «${s.slice(0, 60)}»`);
+  if (idioma === "ja" || idioma === "ko" || idioma === "zh" || idioma === "ar" || idioma === "id" || idioma === "tr" || idioma === "bn" || idioma === "th" || idioma === "uk" || idioma === "uz" || idioma === "ru" || idioma === "ro" || idioma === "cs" || idioma === "el" || idioma === "hu" || idioma === "he") for (const p of problemasDeTexto(s, idioma, trato, locale)) if (!(carta && p.startsWith("합니다체"))) fallo(`${origen}: ${p} en «${s.slice(0, 60)}»`);
   if (idioma !== "es") return;
   if (trato !== "vos" && VOSEO.test(s)) fallo(`${origen} (${trato}): voseo «${VOSEO.exec(s)![0]}» en «${s}»`);
   if (trato === "usted" && TUTEO.test(s)) fallo(`${origen} (usted): tuteo «${TUTEO.exec(s)![0]}» en «${s}»`);
@@ -358,7 +367,7 @@ function textosDe(valor: unknown, salida: string[] = []): string[] {
   return salida;
 }
 
-const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"] };
+const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"], pl: ["tu"], sv: ["tu"], da: ["tu"], nb: ["tu"], fi: ["tu"], ar: ["usted"], id: ["usted"], tr: ["usted"], bn: ["usted"], th: ["usted"], uk: ["usted"], uz: ["usted"], ru: ["usted"], ro: ["usted"], cs: ["usted"], el: ["usted"], hu: ["tu"], he: ["usted"] };
 
 // Cada diccionario que se revisa, con el locale de su escritura (el chino simplificado es aparte).
 const REVISADOS: readonly { nombre: string; idioma: IdiomaVenta; locale?: string; d: DiccionarioVenta }[] = [
@@ -445,8 +454,12 @@ function checkTextos() {
     for (const trato of TRATOS[idioma]) {
       for (const p of muestra) {
         const html = entregaIntlHtml({ producto: p, idioma, trato, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" });
-        if (!html.includes(`<html lang="${idioma}">`)) fallo(`mail ${idioma}: sin lang`);
-        const texto = html.replace(/<[^>]+>/g, " ");
+        if (!html.includes(`<html lang="${idioma}"${direccionDe(idioma) === "rtl" ? ' dir="rtl"' : ""}>`)) fallo(`mail ${idioma}: sin lang o sin dir`);
+        // El producto de muestra es de un mercado en español: su título («... México 2026») no es texto
+        // del diccionario del idioma y en bn daría una cifra latina falsa. Se revisa sin él. Las etiquetas
+        // y la sangría del HTML dejan espacios repetidos que no se ven: se colapsan (la regla de doble
+        // espacio del tailandés mira el texto, no el marcado).
+        const texto = html.replace(/<[^>]+>/g, " ").split(p.titulo).join(" ").replace(/\s+/g, " ");
         revisarTexto(`mail ${idioma} ${p.tipo}`, idioma, trato, texto);
         if (PLANTILLA.test(texto) || PLANTILLA.test(asuntoEntregaIntl(p, idioma, trato))) fallo(`mail ${idioma} ${p.tipo}: marca de plantilla sin llenar`);
         revisados++;

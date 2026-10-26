@@ -1,0 +1,72 @@
+{
+  "mercado": "kr",
+  "avisos": [
+    {
+      "id": "kr.pension-reform-2026",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "hasta": "2033-12-31",
+      "aplicaA": [
+        "kr.take-home-pay",
+        "kr.social-insurance"
+      ],
+      "texto": "2025년 국민연금법 개정으로 연금보험료율이 2026년 9.5%에서 해마다 0.5%포인트씩 올라 2033년에 13%가 돼요. 이 계산기는 해당 연도의 보험료율을 써요.",
+      "fuente": {
+        "organismo": "국가법령정보센터(법제처)",
+        "titulo": "국민연금법 제88조, 부칙(2025.4.2) 제4조",
+        "url": "https://www.law.go.kr/법령/국민연금법/제88조",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "kr.capital-gains-multi-house",
+      "nivel": "cautela",
+      "desde": "2026-10-24",
+      "aplicaA": [
+        "kr.capital-gains-tax"
+      ],
+      "texto": "다주택자의 조정대상지역 주택 중과세율, 비사업용 토지, 분양권, 미등기 자산의 세율은 반영하지 않았어요. 이런 경우에는 세무서에 확인하세요.",
+      "fuente": {
+        "organismo": "국가법령정보센터(법제처)",
+        "titulo": "소득세법 제104조",
+        "url": "https://www.law.go.kr/법령/소득세법/제104조",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "kr.acquisition-tax-multi-house",
+      "nivel": "cautela",
+      "desde": "2026-10-24",
+      "aplicaA": [
+        "kr.acquisition-tax"
+      ],
+      "texto": "개인이 일반세율로 주택을 사는 경우만 계산해요. 조정대상지역의 2주택 이상, 그 밖의 지역 3주택 이상, 법인의 주택 취득에 붙는 중과세율과 각종 감면은 반영하지 않았어요.",
+      "fuente": {
+        "organismo": "국가법령정보센터(법제처)",
+        "titulo": "지방세법 제13조의2",
+        "url": "https://www.law.go.kr/법령/지방세법/제13조의2",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "kr.unemployment-base-2028",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2027-12-31",
+      "aplicaA": [
+        "kr.unemployment-benefit"
+      ],
+      "texto": "2028년 1월 1일 이후 이직하는 사람은 기초일액을 이직 전 1년간 신고된 보수로 계산하도록 고용보험법이 바뀌었어요. 이 계산기는 지금 적용되는 퇴직 전 3개월 평균임금 기준이에요.",
+      "fuente": {
+        "organismo": "국가법령정보센터(법제처)",
+        "titulo": "고용보험법 제45조, 부칙(법률 제21473호, 2026.3.17) 제1조와 제3조",
+        "url": "https://www.law.go.kr/법령/고용보험법/제45조",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { proyectar } from "../definicion";
 
@@ -7,7 +8,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const aporte = montoEjemplo(ctx, 100);
   const a10 = proyectar(capital, aporte, 7, 10, "mensual")[9].saldo;
   const a20 = proyectar(capital, aporte, 7, 20, "mensual")[19].saldo;
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora de juros compostos",
     title: tituloQueEntre(`Calculadora de juros compostos (${ctx.nombrePais})`, `Juros compostos (${ctx.nombrePais})`, "Calculadora de juros compostos"),

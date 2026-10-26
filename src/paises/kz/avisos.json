@@ -1,0 +1,50 @@
+{
+  "mercado": "kz",
+  "avisos": [
+    {
+      "id": "kz.opvr-2027",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["kz.nalogi-rabotodatelya", "kz.pensionnye-nakopleniya"],
+      "texto": "С 1 января 2027 года ставка пенсионных взносов работодателя вырастет с 3,5 % до 4,5 %, а с 2028 года до 5 %. До конца 2026 года калькулятор считает по ставке 2026 года.",
+      "fuente": {
+        "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+        "titulo": "Социальный кодекс РК от 20 апреля 2023 г. № 224-VII, статья 251",
+        "url": "https://adilet.zan.kz/rus/docs/K2300000224",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "kz.nds-lekarstva-2027",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["kz.kalkulyator-nds"],
+      "texto": "С 1 января 2027 года ставка НДС на лекарства, медицинские изделия и медицинские услуги вырастет с 5 % до 10 %. Основная ставка остается 16 %.",
+      "fuente": {
+        "organismo": "ИПС «Адилет» (Министерство юстиции РК)",
+        "titulo": "Налоговый кодекс РК от 18 июля 2025 г. № 214-VIII, статья 503",
+        "url": "https://adilet.zan.kz/rus/docs/K2500000214",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "kz.mrp-2027",
+      "nivel": "info",
+      "desde": "2026-11-15",
+      "hasta": "2026-12-31",
+      "aplicaA": ["kz.mrp-v-tenge", "kz.minimalnaya-zarplata"],
+      "texto": "МРП и МЗП на 2027 год установит закон о республиканском бюджете. Пока он не принят, калькулятор показывает значения 2026 года.",
+      "fuente": {
+        "organismo": "Комитет государственных доходов (gov.kz)",
+        "titulo": "Закон РК «О республиканском бюджете на 2026-2028 годы» от 8 декабря 2025 г. № 239-VIII, статья 7",
+        "url": "https://www.gov.kz/memleket/entities/kgd-ulytau/documents/details/939202?lang=ru",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}

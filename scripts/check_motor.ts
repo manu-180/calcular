@@ -9,14 +9,19 @@ import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
-import { formatearFecha, formatearMoneda, formatearPorcentaje, formatearValorUnidad, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
-import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada } from "../src/motor/formulario";
+import { anchoVisual } from "../src/motor/ancho";
+import { decimalesDeMoneda, formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, mayusculaInicial, minusculaInicial, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
+import { cifrasBn } from "../src/motor/i18n/bengali";
+import { esetekHu, GRAMATICA, neveloHu } from "../src/motor/i18n/gramatica";
+import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
+import { formaRo, pluralCs, pluralEl, pluralRo, pluralRu, pluralUk } from "../src/motor/i18n/plural";
+import { pluralHe, prefijoHe } from "../src/motor/i18n/hebreo";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
 import { textosMotor } from "../src/motor/textos";
-import type { Dato, FechaISO, Mercado, PaisDefinido, PropsCalculadora, Serie, Tramo } from "../src/motor/tipos";
+import type { ContextoSerializado, Dato, FechaISO, Mercado, PaisDefinido, PropsCalculadora, Serie, Tramo } from "../src/motor/tipos";
 import { validarPais } from "../src/motor/validar";
 import { fechaEnZona, hoyEn, sumarDias, valorSerie, vigente } from "../src/motor/vigencia";
 import zz from "../src/paises/zz";
@@ -24,6 +29,7 @@ import bono from "../src/paises/zz/calculadoras/bono";
 import datosZz from "../src/paises/zz/datos.json";
 import { detectores } from "../src/paises/zz/fuentes";
 import { registro as registroReal } from "../src/paises";
+import { crudoDeNumero } from "../src/lib/prefill/intl-cliente";
 
 delete process.env.CALCULAR_HOY;
 delete process.env.CALCULAR_HOY_BUILD;
@@ -54,11 +60,55 @@ igual("porcentaje es-PE", sinNbsp(formatearPorcentaje(9, "es-PE")), "9%");
 igual("porcentaje es-CO", sinNbsp(formatearPorcentaje(1.37, "es-CO")), "1,37%");
 igual("moneda es-PA con símbolo local", sinNbsp(formatearMoneda(1250.5, "es-PA", "USD", undefined, "B/.")), "B/. 1,250.50");
 igual("fecha es-MX", formatearFecha("2026-12-20", "es-MX"), "20 de diciembre de 2026");
+igual("fecha ar-SA gregoriana con dígitos latinos", formatearFecha("2026-12-20", "ar-SA-u-ca-gregory-nu-latn"), "20 ديسمبر 2026");
+// En rtl el «$» de «US$» se iría al otro lado de las letras: lleva una LRM detrás (formatearMoneda).
+igual("moneda USD en ar-EG con LRM tras el símbolo", formatearMoneda(2849, "ar-EG-u-ca-gregory-nu-latn", "USD").endsWith("US$\u200e"), true);
+igual("moneda EGP en ar-EG sin LRM", formatearMoneda(2849, "ar-EG-u-ca-gregory-nu-latn", "EGP").includes("\u200e"), false);
+igual("número ar-EG con dígitos latinos", formatearNumero(1234567.5, "ar-EG-u-ca-gregory-nu-latn"), "1,234,567.5");
+igual("dual árabe", formatearValorUnidad(2, "dias", "ar-EG-u-ca-gregory-nu-latn"), "يومان");
+igual("plural árabe de 3 a 10", formatearValorUnidad(3, "meses", "ar-EG-u-ca-gregory-nu-latn"), "3 أشهر");
+igual("plural árabe de 11 a 99", formatearValorUnidad(11, "anios", "ar-EG-u-ca-gregory-nu-latn"), "11 سنة");
+// Bengalí (ADR 0002, D14): dígitos bengalíes y miles en lakh y crore, taka detrás del número.
+igual("número bn-BD en lakh con dígitos bengalíes", formatearNumero(1234567.5, "bn-BD"), "১২,৩৪,৫৬৭.৫");
+igual("moneda bn-BD sin decimales", sinNbsp(formatearMoneda(2500000, "bn-BD", "BDT", 0)), "২৫,০০,০০০৳");
+igual("porcentaje bn-BD", formatearPorcentaje(15.5, "bn-BD"), "১৫.৫%");
+igual("fecha bn-BD", formatearFecha("2026-10-24", "bn-BD"), "২৪ অক্টোবর, ২০২৬");
+igual("cifrasBn de un año y de un texto ya bengalí", [cifrasBn(2026), cifrasBn("৩ দিন")], ["২০২৬", "৩ দিন"]);
+igual("genitivo y locativo bengalí", [GRAMATICA.bn.de("বাংলাদেশ"), GRAMATICA.bn.de("কানাডা"), GRAMATICA.bn.en("বাংলাদেশ"), GRAMATICA.bn.en("কানাডা"), GRAMATICA.bn.en("ইতালি"), GRAMATICA.bn.para("ভারত")], ["বাংলাদেশের", "কানাডার", "বাংলাদেশে", "কানাডায়", "ইতালিতে", "ভারতের জন্য"]);
+// El ancho de SEO no cuenta el hasanta ni los signos que van sobre o bajo la letra (ু); los vocálicos
+// del costado (ি) cuentan medio latino y la letra uno y medio.
+igual("ancho visual bengalí", [anchoVisual("কি"), anchoVisual("ক্ষ"), anchoVisual("কু"), anchoVisual("abc")], [2, 3, 1.5, 3]);
+// Hebreo (ADR 0002, D22): Intl he-IL con coma de miles y punto decimal; el ₪ lo pone Intl con sus
+// marcas RLM. Plurales one/two/other con el dual en la palabra («יומיים», «שנתיים»).
+const sinMarcas = (s: string) => s.replace(/[\u200e\u200f\u00a0]/g, " ").replace(/\s+/g, " ").trim();
+igual("moneda ILS en he-IL", sinMarcas(formatearMoneda(1234567.89, "he-IL", "ILS")), "1,234,567.89 ₪");
+igual("moneda ILS en he-001", sinMarcas(formatearMoneda(1250.5, "he-001", "ILS")), "1,250.50 ₪");
+igual("moneda USD en he-IL con símbolo local con LRM", formatearMoneda(10, "he-IL", "USD", undefined, "US$").includes("US$\u200e"), true);
+igual("número he-IL", formatearNumero(1234567.5, "he-IL"), "1,234,567.5");
+igual("porcentaje he-IL", sinMarcas(formatearPorcentaje(17.5, "he-IL")), "17.5%");
+igual("fecha he-IL gregoriana", formatearFecha("2026-12-20", "he-IL"), "20 בדצמבר 2026");
+igual("uno hebreo", formatearValorUnidad(1, "dias", "he-IL"), "יום אחד");
+igual("dual hebreo de días", formatearValorUnidad(2, "dias", "he-IL"), "יומיים");
+igual("dual hebreo de años", formatearValorUnidad(2, "anios", "he-IL"), "שנתיים");
+igual("dual hebreo de meses", formatearValorUnidad(2, "meses", "he-IL"), "חודשיים");
+igual("plural hebreo", formatearValorUnidad(3, "meses", "he-IL"), "3 חודשים");
+igual("plural hebreo con decimales", formatearValorUnidad(1.5, "anios", "he-IL"), "1.5 שנים");
+igual("plural hebreo de 11", formatearValorUnidad(11, "horas", "he-IL"), "11 שעות");
+igual("pluralHe sin dual en la palabra", pluralHe(2, { uno: "מחשבון אחד", dos: "שני מחשבונים", otros: "{n} מחשבונים" }), "שני מחשבונים");
+igual("prefijo hebreo pegado", prefijoHe("ב", "ישראל"), "בישראל");
+igual("prefijo hebreo con guion delante de cifra", prefijoHe("ב", "2026"), "ב-2026");
+igual("gramática he: lugar", GRAMATICA.he.en("ישראל"), "בישראל");
+igual("gramática he: el artículo se absorbe", GRAMATICA.he.en("הממלכה המאוחדת"), "בממלכה המאוחדת");
+igual("gramática he: la ה del nombre se queda", GRAMATICA.he.para("הודו"), "להודו");
+igual("gramática he: nombre latino con guion", GRAMATICA.he.en("Zetaland"), "ב-Zetaland");
+igual("gramática he: pertenencia", GRAMATICA.he.de("ישראל"), "של ישראל");
 
 // Parseo por locale: el error que multiplica por mil.
 const parseos: [string, string, number | null][] = [
   ["es-PE", "1,474.77", 1474.77],
   ["es-PE", "S/ 1,474.77", 1474.77],
+  ["es-PE", "S/. 1,474.77", 1474.77],
+  ["es-PA", "B/. 1,250.50", 1250.5],
   ["es-PE", "1474.77", 1474.77],
   ["es-PE", "1474,77", 1474.77],
   ["es-PE", "1,230", 1230],
@@ -85,6 +135,107 @@ const parseos: [string, string, number | null][] = [
   ["es-PE", "", null],
   ["es-PE", "1,", null],
   ["es-PE", "1,2345", null],
+  ["pl-PL", "1 234,50", 1234.5],
+  ["pl-PL", "1234,5", 1234.5],
+  ["pl-PL", "1 234 567,25 zł", 1234567.25],
+  ["sv-SE", "1 234,50", 1234.5],
+  ["sv-SE", "−12 345,5", -12345.5],
+  ["nb-NO", "−1 000 kr", -1000],
+  ["fi-FI", "−250,75 €", -250.75],
+  ["da-DK", "1.234,50", 1234.5],
+  ["da-DK", "1 234,50", 1234.5],
+  ["da-DK", "-1.000", -1000],
+  ["ar-EG-u-ca-gregory-nu-latn", "٣٬٥٠٠٫٧٥", 3500.75],
+  ["ar-EG-u-ca-gregory-nu-latn", "١٢٫٥", 12.5],
+  ["ar-EG-u-ca-gregory-nu-latn", "٢٥٠٠٠", 25000],
+  ["ar-EG-u-ca-gregory-nu-latn", "3,500.75", 3500.75],
+  ["ar-EG-u-ca-gregory-nu-latn", "-١٢", -12],
+  ["ar-EG-u-ca-gregory-nu-latn", "١٢،٥", 12.5],
+  ["ar-EG-u-ca-gregory-nu-latn", "۱۲۰۰", 1200],
+  ["ar-MA-u-ca-gregory-nu-latn", "1.234,5", 1234.5],
+  ["ar-MA-u-ca-gregory-nu-latn", "١٫٢٥", 1.25],
+  ["ar-EG", "٣٬٥٠٠٫٧٥", 3500.75],
+  ["id-ID", "1.234,50", 1234.5],
+  ["id-ID", "Rp 1.500.000", 1500000],
+  ["id-ID", "Rp 12.345.678,25", 12345678.25],
+  ["id-ID", "-250,75", -250.75],
+  // Turco: miles con punto, decimal con coma y la lira y el porcentaje delante («₺1.234,50», «%20»).
+  ["tr-TR", "1.234,50", 1234.5],
+  ["tr-TR", "₺1.500.000", 1500000],
+  ["tr-TR", "₺12.345.678,25", 12345678.25],
+  ["tr-TR", "-250,75", -250.75],
+  ["tr-TR", "%20", 20],
+  // Teclado bengalí (Avro, Bijoy, Gboard): dígitos ০-৯, miles en lakh y crore o de a tres.
+  ["bn-BD", "১২,৩৪,৫৬৭.৫০", 1234567.5],
+  ["bn-BD", "১২৩৪৫৬৭", 1234567],
+  ["bn-BD", "12,34,567", 1234567],
+  ["bn-BD", "৳ ২৫,০০০", 25000],
+  ["bn-BD", "২৫,০০,০০০৳", 2500000],
+  ["bn-BD", "-১২.৫", -12.5],
+  ["bn-BD", "১,২৩৪.৫", 1234.5],
+  ["bn-BD", "১২,৩৪৫,৬৭", null],
+  // Tailandés (ADR 0002, D13): miles con coma, palabras de unidad (ล้าน, แสน, หมื่น) y dígitos tailandeses.
+  ["th-TH", "1,234.50", 1234.5],
+  ["th-TH", "฿1,500,000", 1500000],
+  ["th-TH", "2.5 ล้าน", 2500000],
+  ["th-TH", "1 ล้าน 5 แสน", 1500000],
+  ["th-TH", "3 หมื่นบาท", 30000],
+  ["th-TH", "1 ล้าน 250,000", 1250000],
+  ["th-TH", "๑,๒๐๐", 1200],
+  ["th-TH", "5 แสน 2 ล้าน", null],
+  ["th-TH", "1 ล้าน 2,000,000", null],
+  // Ucraniano: miles con espacio (U+00A0, como lo da Intl), decimal con coma y la grivna detrás.
+  ["uk-UA", "1 234,50", 1234.5],
+  ["uk-UA", "1\u00a0234\u00a0567,25\u00a0₴", 1234567.25],
+  ["uk-UA", "25 000 грн", 25000],
+  ["uk-UA", "-250,75", -250.75],
+  ["uk-UA", "19,5%", 19.5],
+  // Uzbeko: miles con espacio (U+00A0 de Intl o el espacio del teclado), coma decimal y «soʻm» detrás.
+  ["uz-UZ", "1\u00a0234,50", 1234.5],
+  ["uz-UZ", "1 234,50", 1234.5],
+  ["uz-UZ", "1 500 000 soʻm", 1500000],
+  ["uz-UZ", "12 345 678,25 soʻm", 12345678.25],
+  ["uz-UZ", "-250,75", -250.75],
+  ["uz-UZ", "12,5%", 12.5],
+  // Ruso: miles con espacio (U+00A0, como lo da Intl), decimal con coma y el tenge o el rublo detrás.
+  ["ru-KZ", "1 234,50", 1234.5],
+  ["ru-KZ", "1 234 567,25 ₸", 1234567.25],
+  ["ru-KZ", "250 000 тг", 250000],
+  ["ru-RU", "25 000 ₽", 25000],
+  ["ru-KZ", "-250,75", -250.75],
+  ["ru-KZ", "12,5 %", 12.5],
+  // Rumano: punto de miles, coma decimal y el leu detrás («RON», «lei», o «MDL» en Moldavia).
+  ["ro-RO", "1.234,50", 1234.5],
+  ["ro-RO", "1.234.567,25 RON", 1234567.25],
+  ["ro-RO", "4.050 lei", 4050],
+  ["ro-MD", "12.500,75 MDL", 12500.75],
+  ["ro-RO", "-250,75", -250.75],
+  ["ro-RO", "19,5 %", 19.5],
+  // Checo: miles con espacio (U+00A0, como lo da Intl), decimal con coma y «Kč» detrás.
+  ["cs-CZ", "1 234,50", 1234.5],
+  ["cs-CZ", "1 234 567,25 Kč", 1234567.25],
+  ["cs-CZ", "25 000 Kč", 25000],
+  ["cs-CZ", "-250,75", -250.75],
+  ["cs-CZ", "21 %", 21],
+  // Griego: punto de miles, coma decimal y «€» detrás con espacio (U+00A0, como lo da Intl).
+  ["el-GR", "1.234,50", 1234.5],
+  ["el-GR", "1.234.567,25 €", 1234567.25],
+  ["el-CY", "25.000 €", 25000],
+  ["el-GR", "-250,75", -250.75],
+  ["el-GR", "24%", 24],
+  // Húngaro: miles con espacio (U+00A0, y sin espacio con cuatro cifras, como lo da Intl: «1234,5»),
+  // decimal con coma y «Ft» detrás.
+  ["hu-HU", "1 234,50", 1234.5],
+  ["hu-HU", "1234,5", 1234.5],
+  ["hu-HU", "1 500 000 Ft", 1500000],
+  ["hu-HU", "-250,75", -250.75],
+  ["hu-HU", "27%", 27],
+  ["he-IL", "1,234.50", 1234.5],
+  ["he-IL", "₪ 12,500", 12500],
+  ["he-IL", "\u200f12,500.75 \u200f₪", 12500.75],
+  ["he-IL", "3.5", 3.5],
+  ["he-IL", "1,2,3", null],
+  ["he-001", "2,000", 2000],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -99,9 +250,71 @@ const ambiguos: [string, string, number | null][] = [
   ["es-MX", "5,000.000", 5000],
   ["es-CL", "5,000", null],
   ["es-CO", "5.000", 5000],
+  ["sv-SE", "5,000", null],
+  ["fi-FI", "−5,000", null],
+  ["pl-PL", "5 000", 5000],
+  ["id-ID", "5.000", 5000],
+  ["id-ID", "5,000", null],
+  ["tr-TR", "5.000", 5000],
+  ["tr-TR", "5,000", null],
+  ["bn-BD", "৫.০০০", null],
+  ["bn-BD", "৫,০০০", 5000],
+  ["th-TH", "5,000", 5000],
+  ["th-TH", "5.000", null],
+  ["uk-UA", "5 000", 5000],
+  ["uk-UA", "5,000", null],
+  ["uz-UZ", "5.000", 5000],
+  ["uz-UZ", "5,000", null],
+  ["ru-KZ", "5 000", 5000],
+  ["ru-KZ", "5,000", null],
+  ["ro-RO", "5.000", 5000],
+  ["ro-RO", "5,000", null],
+  ["cs-CZ", "5 000", 5000],
+  ["cs-CZ", "5,000", null],
+  ["el-GR", "5.000", 5000],
+  ["el-GR", "5,000", null],
+  ["hu-HU", "5 000", 5000],
+  ["hu-HU", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
+// Monedas de 3 decimales (TND, KWD, BHD, OMR, JOD, LYD): «1544,136» dinares es un monto, no miles
+// ambiguos, y los dígitos arábigo-índicos de ar-KW («١٬٥٤٤٫١٣٦») se leen.
+const tresDecimales: [string, string, number, number | null][] = [
+  ["fr-TN", "1544,136", 3, 1544.136],
+  ["fr-TN", "1 544,136", 3, 1544.136],
+  ["fr-TN", "1 544,136 DT", 3, 1544.136],
+  ["fr-TN", "1.544,136", 3, 1544.136],
+  ["fr-TN", "5.000", 3, 5000],
+  ["fr-TN", "1544,136", 2, null],
+  ["ar-KW", "١٥٤٤٫١٣٦", 3, 1544.136],
+  ["ar-KW", "١٬٥٤٤٫١٣٦ د.ك.", 3, 1544.136],
+  ["ar-KW", "1544.136", 3, 1544.136],
+  ["ar-KW", "1,544.136", 3, 1544.136],
+  ["ar-KW", "۱۵۴۴٫۱۳۶", 3, 1544.136],
+  ["en-KW", "1544.136", 3, 1544.136],
+  ["en-KW", "KWD 1,544.136", 3, 1544.136],
+  ["en-KW", "5.000", 3, 5],
+  ["en-KW", "5,000", 3, 5000],
+  ["ar-BH", "١٢٫٥٠٠", 3, 12.5],
+  ["ar-JO", "-١٬٢٣٤٫٥", 3, -1234.5],
+];
+for (const [locale, texto, decimales, esperado] of tresDecimales) igual(`parsear moneda de ${decimales} decimales ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true, decimales }), esperado);
+igual("decimales de TND en fr-TN", decimalesDeMoneda("TND", "fr-TN"), 3);
+igual("decimales de KWD en ar-KW", decimalesDeMoneda("KWD", "ar-KW"), 3);
+igual("decimales de KWD en en-KW", decimalesDeMoneda("KWD", "en-KW"), 3);
+// Ida y vuelta del formulario: el valor inicial y el prefill (crudoDeNumero) se vuelven a leer igual.
+for (const [locale, moneda] of [["fr-TN", "TND"], ["ar-KW", "KWD"], ["en-KW", "KWD"]] as const) {
+  const campo = { id: "monto", tipo: "moneda", etiqueta: "Monto", porDefecto: 1544.136 } as const;
+  const ctx = { locale, moneda, idioma: locale.slice(0, 2), trato: "usted" } as unknown as ContextoSerializado;
+  const inicial = valoresIniciales([campo], ctx, {});
+  igual(`valor inicial ${locale} ${moneda} con 3 decimales`, parsearNumero(String(inicial.monto), locale), 1544.136);
+  for (const crudo of [String(inicial.monto), crudoDeNumero(1544.136, locale), sinNbsp(formatearMoneda(1544.136, locale, moneda))]) {
+    const r = parsearEntrada([campo], { monto: crudo }, ctx, {});
+    igual(`formulario ${locale} ${moneda} lee «${crudo}»`, r.ok ? r.entrada.monto : r.errores, 1544.136);
+  }
+}
+igual("sugerencia de miles con los dígitos que escribió la persona", sugerenciaMiles("৫.০০০", "bn-BD")?.sugerido, "৫০০০");
 // Unidades de 10⁴ en ja, zh y ko, y dígitos de ancho completo del IME: «3万» no puede dar 3.
 const cjk: [string, string, number | null][] = [
   ["ja-JP", "3万", 30000],
@@ -400,8 +613,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -455,6 +668,182 @@ igual("marcadoresDe con fila de escala y región", marcadoresDe("{{ca.x[2].tasa@
 igual("semanas en inglés", formatearValorUnidad(2, "semanas", "en-CA"), "2 weeks");
 igual("semana en singular (de)", formatearValorUnidad(1, "semanas", "de-DE"), "1 Woche");
 igual("semanas en neerlandés", formatearValorUnidad(3, "semanas", "nl-NL"), "3 weken");
+// Indonesio: sin plural después del número y decimal con coma.
+igual("días en indonesio", formatearValorUnidad(3, "dias", "id-ID"), "3 hari");
+igual("un año en indonesio", formatearValorUnidad(1, "anios", "id-ID"), "1 tahun");
+igual("fracción de año en indonesio", formatearValorUnidad(1.5, "anios", "id-ID"), "1,5 tahun");
+// Turco: sin plural después del número y decimal con coma.
+igual("días en turco", formatearValorUnidad(3, "dias", "tr-TR"), "3 gün");
+igual("un año en turco", formatearValorUnidad(1, "anios", "tr-TR"), "1 yıl");
+igual("fracción de año en turco", formatearValorUnidad(1.5, "anios", "tr-TR"), "1,5 yıl");
+// Sufijos de caso detrás del nombre del país: armonía vocálica, d/t, n tras vocal, siglas y posesivo.
+igual(
+  "gramática turca: locativo",
+  ["Türkiye", "Almanya", "Kuveyt", "Fas", "ABD", "Peru", "Senegal", "Dominik Cumhuriyeti", "Saint Vincent ve Grenadinler"].map((p) => GRAMATICA.tr.en(p)),
+  ["Türkiye'de", "Almanya'da", "Kuveyt'te", "Fas'ta", "ABD'de", "Peru'da", "Senegal'de", "Dominik Cumhuriyeti'nde", "Saint Vincent ve Grenadinler'de"],
+);
+igual(
+  "gramática turca: genitivo",
+  ["Türkiye", "Almanya", "Peru", "Hong Kong", "Irak", "BAE", "Birleşik Arap Emirlikleri"].map((p) => GRAMATICA.tr.de(p)),
+  ["Türkiye'nin", "Almanya'nın", "Peru'nun", "Hong Kong'un", "Irak'ın", "BAE'nin", "Birleşik Arap Emirlikleri'nin"],
+);
+igual("gramática turca: para", GRAMATICA.tr.para("Türkiye"), "Türkiye için");
+// Mayúscula inicial con la i del turco: «iş» da «İş», no «Iş».
+igual("mayúscula inicial en turco", mayusculaInicial("iş bankası", "tr-TR"), "İş bankası");
+igual("minúscula inicial en turco", minusculaInicial("Isparta", "tr-TR"), "ısparta");
+// Bengalí: sin plural después del número y con dígitos bengalíes.
+igual("días en bengalí", formatearValorUnidad(3, "dias", "bn-BD"), "৩ দিন");
+igual("un año en bengalí", formatearValorUnidad(1, "anios", "bn-BD"), "১ বছর");
+igual("fracción de año en bengalí", formatearValorUnidad(1.5, "anios", "bn-BD"), "১.৫ বছর");
+// Tailandés: sin plural, la unidad separada por un espacio y las fechas en พ.ศ. (calendario de th-TH).
+igual("días en tailandés", formatearValorUnidad(3, "dias", "th-TH"), "3 วัน");
+igual("fracción de año en tailandés", formatearValorUnidad(1.5, "anios", "th-TH"), "1.5 ปี");
+igual("fecha larga en พ.ศ.", formatearFecha("2026-10-24", "th-TH"), "24 ตุลาคม 2569");
+igual("fecha corta en พ.ศ.", formatearFecha("2026-10-24", "th-TH", "corta"), "24/10/2569");
+igual("ancho visual sin tonos ni vocales apiladas", anchoVisual("ภาษีมูลค่าเพิ่ม"), 10);
+// Ucraniano: one/few/many/other de Intl.PluralRules («1 рік», «3 роки», «5 років», «1,5 року»).
+igual(
+  "años en ucraniano",
+  [1, 3, 5, 11, 21, 22, 1.5].map((n) => formatearValorUnidad(n, "anios", "uk-UA")),
+  ["1 рік", "3 роки", "5 років", "11 років", "21 рік", "22 роки", "1,5 року"],
+);
+igual("días en ucraniano", [1, 2, 7].map((n) => formatearValorUnidad(n, "dias", "uk-UA")), ["1 день", "2 дні", "7 днів"]);
+igual("pluralUk", [1, 3, 12, 24, 25].map((n) => pluralUk(n, "калькулятор", "калькулятори", "калькуляторів")), ["1 калькулятор", "3 калькулятори", "12 калькуляторів", "24 калькулятори", "25 калькуляторів"]);
+// Casos del nombre del país: genitivo, lugar con «в/у/на» y «для».
+igual(
+  "gramática ucraniana: lugar",
+  ["Україна", "Німеччина", "Мексика", "Люксембург", "Китай", "Сполучені Штати", "Велика Британія", "Філіппіни", "Чилі", "Мальта", "Ірак"].map((p) => GRAMATICA.uk.en(p)),
+  ["в Україні", "у Німеччині", "у Мексиці", "у Люксембурзі", "у Китаї", "у Сполучених Штатах", "у Великій Британії", "на Філіппінах", "у Чилі", "на Мальті", "в Іраку"],
+);
+igual(
+  "gramática ucraniana: genitivo",
+  ["Україна", "Польща", "Ізраїль", "Обʼєднані Арабські Емірати", "Південно-Африканська Республіка", "Сент-Вінсент і Гренадіни"].map((p) => GRAMATICA.uk.de(p)),
+  ["України", "Польщі", "Ізраїлю", "Обʼєднаних Арабських Еміратів", "Південно-Африканської Республіки", "Сент-Вінсенту і Гренадин"],
+);
+igual("gramática ucraniana: para", GRAMATICA.uk.para("Україна"), "для України");
+// Uzbeko: sin plural después del número y decimal con coma.
+igual("días en uzbeko", formatearValorUnidad(3, "dias", "uz-UZ"), "3 kun");
+igual("fracción de año en uzbeko", formatearValorUnidad(1.5, "anios", "uz-UZ"), "1,5 yil");
+igual("soʻm en uz-UZ", formatearMoneda(1500000.5, "uz-UZ", "UZS"), "1\u00a0500\u00a0000,50\u00a0soʻm");
+// Sufijos de caso pegados al nombre, sin apóstrofo ni armonía: genitivo -ning, locativo -da, «uchun».
+igual(
+  "gramática uzbeka",
+  ["Oʻzbekiston", "AQSh", "Kongo Demokratik Respublikasi"].map((p) => [GRAMATICA.uz.de(p), GRAMATICA.uz.en(p), GRAMATICA.uz.para(p)]),
+  [
+    ["Oʻzbekistonning", "Oʻzbekistonda", "Oʻzbekiston uchun"],
+    ["AQShning", "AQShda", "AQSh uchun"],
+    ["Kongo Demokratik Respublikasining", "Kongo Demokratik Respublikasida", "Kongo Demokratik Respublikasi uchun"],
+  ],
+);
+// Ruso: one/few/many/other de Intl.PluralRules («1 год», «3 года», «5 лет», «1,5 года»).
+igual(
+  "años en ruso",
+  [1, 3, 5, 11, 21, 22, 1.5].map((n) => formatearValorUnidad(n, "anios", "ru-KZ")),
+  ["1 год", "3 года", "5 лет", "11 лет", "21 год", "22 года", "1,5 года"],
+);
+igual("días en ruso", [1, 2, 7].map((n) => formatearValorUnidad(n, "dias", "ru-KZ")), ["1 день", "2 дня", "7 дней"]);
+igual("semanas en ruso", [1, 4, 40].map((n) => formatearValorUnidad(n, "semanas", "ru-RU")), ["1 неделя", "4 недели", "40 недель"]);
+igual("pluralRu", [1, 3, 12, 24, 25].map((n) => pluralRu(n, "калькулятор", "калькулятора", "калькуляторов")), ["1 калькулятор", "3 калькулятора", "12 калькуляторов", "24 калькулятора", "25 калькуляторов"]);
+// Casos del nombre del país en ruso: lugar con «в/во/на», genitivo y «для».
+igual(
+  "gramática rusa: lugar",
+  ["Казахстан", "Киргизия", "Узбекистан", "Россия", "Германия", "Франция", "Вьетнам", "Мексика", "Китай", "Соединенные Штаты", "Великобритания", "Филиппины", "Чили", "Мальта", "Израиль", "Беларусь", "ОАЭ", "Гонконг (САР)"].map((p) => GRAMATICA.ru.en(p)),
+  ["в Казахстане", "в Киргизии", "в Узбекистане", "в России", "в Германии", "во Франции", "во Вьетнаме", "в Мексике", "в Китае", "в Соединенных Штатах", "в Великобритании", "на Филиппинах", "в Чили", "на Мальте", "в Израиле", "в Беларуси", "в ОАЭ", "в Гонконге (САР)"],
+);
+igual(
+  "gramática rusa: genitivo",
+  ["Казахстан", "Польша", "Египет", "Объединенные Арабские Эмираты", "Южно-Африканская Республика", "Сент-Винсент и Гренадины", "Коста-Рика", "Никарагуа", "Республика Корея", "Новая Зеландия", "Нидерланды", "Парагвай"].map((p) => GRAMATICA.ru.de(p)),
+  ["Казахстана", "Польши", "Египта", "Объединенных Арабских Эмиратов", "Южно-Африканской Республики", "Сент-Винсента и Гренадин", "Коста-Рики", "Никарагуа", "Республики Корея", "Новой Зеландии", "Нидерландов", "Парагвая"],
+);
+igual("gramática rusa: para", GRAMATICA.ru.para("Казахстан"), "для Казахстана");
+igual("gramática rusa: isla con «на»", GRAMATICA.ru.en("Сент-Винсент и Гренадины"), "на Сент-Винсенте и Гренадинах");
+// Rumano: one/few/other de Intl.PluralRules("ro"), con «de» en other («20 de ani», «101 ani»).
+igual(
+  "años en rumano",
+  [1, 2, 19, 20, 21, 100, 101, 119, 120, 1.5].map((n) => formatearValorUnidad(n, "anios", "ro-RO")),
+  ["1 an", "2 ani", "19 ani", "20 de ani", "21 de ani", "100 de ani", "101 ani", "119 ani", "120 de ani", "1,5 ani"],
+);
+igual("días en rumano", [1, 3, 30, 365].map((n) => formatearValorUnidad(n, "dias", "ro-MD")), ["1 zi", "3 zile", "30 de zile", "365 de zile"]);
+igual("semanas en rumano", [1, 4, 40].map((n) => formatearValorUnidad(n, "semanas", "ro-RO")), ["1 săptămână", "4 săptămâni", "40 de săptămâni"]);
+igual("pluralRo", [1, 3, 20, 41, 102, "1.000", "7"].map((n) => pluralRo(n, "calculator", "calculatoare")), ["1 calculator", "3 calculatoare", "20 de calculatoare", "41 de calculatoare", "102 calculatoare", "1.000 de calculatoare", "7 calculatoare"]);
+igual("formaRo de lei", [1, 2, 20, 1250].map((n) => formaRo(n, "leu", "lei")), ["leu", "lei", "de lei", "de lei"]);
+// Nombre del país en rumano: genitivo con artículo enclítico, lugar con «în» y «pentru».
+igual(
+  "gramática rumana: genitivo",
+  ["România", "Republica Moldova", "Germania", "Franța", "Mexic", "Statele Unite ale Americii", "Regatul Unit", "Țările de Jos", "Arabia Saudită", "Coreea de Sud", "Africa de Sud", "Noua Zeelandă", "Cipru", "Chile", "Saint Vincent și Grenadinele"].map((p) => GRAMATICA.ro.de(p)),
+  ["României", "Republicii Moldova", "Germaniei", "Franței", "Mexicului", "Statelor Unite ale Americii", "Regatului Unit", "Țărilor de Jos", "Arabiei Saudite", "Coreei de Sud", "Africii de Sud", "Noii Zeelande", "Ciprului", "din Chile", "din Saint Vincent și Grenadinele"],
+);
+igual("gramática rumana: lugar", ["România", "Republica Moldova", "Mexic"].map((p) => GRAMATICA.ro.en(p)), ["în România", "în Republica Moldova", "în Mexic"]);
+igual("gramática rumana: para y sujeto", [GRAMATICA.ro.para("Moldova"), GRAMATICA.ro.nombre("Mexic"), GRAMATICA.ro.nombre("Filipine")], ["pentru Moldova", "Mexicul", "Filipinele"]);
+// Checo: one/few/other y many (fracciones) de Intl.PluralRules («1 rok», «3 roky», «5 let», «1,5 roku»).
+igual(
+  "años en checo",
+  [1, 3, 5, 11, 21, 22, 1.5].map((n) => formatearValorUnidad(n, "anios", "cs-CZ")),
+  ["1 rok", "3 roky", "5 let", "11 let", "21 let", "22 let", "1,5 roku"],
+);
+igual("días en checo", [1, 2, 7, 0.5].map((n) => formatearValorUnidad(n, "dias", "cs-CZ")), ["1 den", "2 dny", "7 dní", "0,5 dne"]);
+igual("pluralCs", [1, 3, 5, 12, 24].map((n) => pluralCs(n, "kalkulačka", "kalkulačky", "kalkulaček")), ["1 kalkulačka", "3 kalkulačky", "5 kalkulaček", "12 kalkulaček", "24 kalkulaček"]);
+// Casos del nombre del país: genitivo, lugar con «v/ve/na» y «pro» + acusativo.
+igual(
+  "gramática checa: lugar",
+  ["Česko", "Česká republika", "Francie", "Slovensko", "Spojené státy", "Spojené království", "Filipíny", "Kanada", "Jamajka", "Švédsko", "Srbsko", "Nový Zéland"].map((p) => GRAMATICA.cs.en(p)),
+  ["v Česku", "v České republice", "ve Francii", "na Slovensku", "ve Spojených státech", "ve Spojeném království", "na Filipínách", "v Kanadě", "na Jamajce", "ve Švédsku", "v Srbsku", "na Novém Zélandu"],
+);
+igual(
+  "gramática checa: genitivo",
+  ["Česko", "Německo", "Kanada", "Izrael", "Spojené arabské emiráty", "Jihoafrická republika", "Svatý Vincenc a Grenadiny"].map((p) => GRAMATICA.cs.de(p)),
+  ["Česka", "Německa", "Kanady", "Izraele", "Spojených arabských emirátů", "Jihoafrické republiky", "Svatého Vincence a Grenadin"],
+);
+igual("gramática checa: para", ["Česko", "Kanada", "Francie", "Česká republika"].map((p) => GRAMATICA.cs.para(p)), ["pro Česko", "pro Kanadu", "pro Francii", "pro Českou republiku"]);
+// Griego: one/other de Intl.PluralRules («1 έτος», «3 έτη», «1,5 έτη»).
+igual("años en griego", [1, 3, 1.5].map((n) => formatearValorUnidad(n, "anios", "el-GR")), ["1 έτος", "3 έτη", "1,5 έτη"]);
+igual("días en griego", [1, 2, 0.5].map((n) => formatearValorUnidad(n, "dias", "el-GR")), ["1 ημέρα", "2 ημέρες", "0,5 ημέρες"]);
+igual("pluralEl", [1, 5].map((n) => pluralEl(n, "υπολογισμός", "υπολογισμοί")), ["1 υπολογισμός", "5 υπολογισμοί"]);
+// Artículo, caso y contracción del nombre del país («στην Ελλάδα», «της Κύπρου», «για τη Γαλλία»).
+igual(
+  "gramática griega: lugar",
+  ["Ελλάδα", "Κύπρος", "Γαλλία", "Ιταλία", "Καναδάς", "Βέλγιο", "Ισραήλ", "Ηνωμένες Πολιτείες", "Ηνωμένα Αραβικά Εμιράτα", "Νέα Ζηλανδία", "Άγιος Βικέντιος και Γρεναδίνες"].map((p) => GRAMATICA.el.en(p)),
+  ["στην Ελλάδα", "στην Κύπρο", "στη Γαλλία", "στην Ιταλία", "στον Καναδά", "στο Βέλγιο", "στο Ισραήλ", "στις Ηνωμένες Πολιτείες", "στα Ηνωμένα Αραβικά Εμιράτα", "στη Νέα Ζηλανδία", "στον Άγιο Βικέντιο και Γρεναδίνες"],
+);
+igual(
+  "gramática griega: genitivo",
+  ["Ελλάδα", "Κύπρος", "Αίγυπτος", "Λίβανος", "Βέλγιο", "Ηνωμένο Βασίλειο", "Νότια Αφρική", "Φιλιππίνες", "Βοσνία - Ερζεγοβίνη", "Κόστα Ρίκα", "Μιανμάρ (Βιρμανία)"].map((p) => GRAMATICA.el.de(p)),
+  ["της Ελλάδας", "της Κύπρου", "της Αιγύπτου", "του Λιβάνου", "του Βελγίου", "του Ηνωμένου Βασιλείου", "της Νότιας Αφρικής", "των Φιλιππινών", "της Βοσνίας - Ερζεγοβίνης", "της Κόστα Ρίκα", "του Μιανμάρ (Βιρμανία)"],
+);
+igual("gramática griega: para", ["Ελλάδα", "Γερμανία", "Κύπρος", "Καναδάς", "Μεξικό"].map((p) => GRAMATICA.el.para(p)), ["για την Ελλάδα", "για τη Γερμανία", "για την Κύπρο", "για τον Καναδά", "για το Μεξικό"]);
+igual("gramática griega: nombre", ["Ελλάδα", "Καναδάς", "Περού", "Κάτω Χώρες"].map((p) => GRAMATICA.el.nombre(p)), ["η Ελλάδα", "ο Καναδάς", "το Περού", "οι Κάτω Χώρες"]);
+// Mayúsculas sostenidas sin tono: lo hace toLocaleUpperCase("el") (toUpperCase() los deja).
+igual("mayúsculas griegas sin tono", "Υπολογισμός μισθού".toLocaleUpperCase("el"), "ΥΠΟΛΟΓΙΣΜΟΣ ΜΙΣΘΟΥ");
+// Húngaro: sin plural detrás del número («3 nap», «1,5 év») y moneda con «Ft» detrás, sin decimales.
+igual("unidades en húngaro", [formatearValorUnidad(3, "dias", "hu-HU"), formatearValorUnidad(1, "anios", "hu-HU"), formatearValorUnidad(1.5, "anios", "hu-HU")], ["3 nap", "1 év", "1,5 év"]);
+igual("forint", formatearMoneda(1234567, "hu-HU", "HUF").replace(/\s/g, " "), "1 234 567 Ft");
+igual("fecha larga en húngaro", formatearFecha("2026-10-24", "hu-HU"), "2026. október 24.");
+// Artículo según cómo se lee lo que sigue: «az» delante de vocal, de 1 (egy), 5 (öt), 1 000 (ezer)...
+igual(
+  "artículo húngaro",
+  [1, 5, 10, 15, 50, 100, 1000, 1500, 10000, 1000000, "1 500 000 Ft", "27%", "1,5", "eredmény", "kalkulátor", "Észak"].map((x) => neveloHu(x)),
+  ["az", "az", "a", "a", "az", "a", "az", "az", "a", "az", "az", "a", "az", "az", "a", "az"],
+);
+// Sufijos del país: -ban/-ben dentro, -on/-en/-ön sobre (Magyarország, islas, -szigetek, -föld,
+// -land), armonía con la última vocal no neutra, alargamiento de la a/e/o final y artículo en las
+// frases con sustantivo común.
+igual(
+  "gramática húngara: lugar",
+  ["Magyarország", "Németország", "Franciaország", "Kanada", "Chile", "Izrael", "Mali", "Kuba", "Ciprus", "Thaiföld", "Új-Zéland", "Fülöp-szigetek", "Egyesült Államok", "Egyesült Arab Emírségek", "Saint Vincent és a Grenadine-szigetek", "Hongkong KKT", "Zetaország"].map((p) => GRAMATICA.hu.en(p)),
+  ["Magyarországon", "Németországban", "Franciaországban", "Kanadában", "Chilében", "Izraelben", "Maliban", "Kubán", "Cipruson", "Thaiföldön", "Új-Zélandon", "a Fülöp-szigeteken", "az Egyesült Államokban", "az Egyesült Arab Emírségekben", "a Saint Vincent és a Grenadine-szigeteken", "Hongkongban", "Zetaországban"],
+);
+igual(
+  "gramática húngara: dirección, origen y dativo",
+  ["Magyarország", "Németország", "Svédország", "Kanada", "Egyesült Királyság"].map((p) => { const e = esetekHu(p); return [e.hova, e.honnan, e.nak].join(" / "); }),
+  [
+    "Magyarországra / Magyarországról / Magyarországnak",
+    "Németországba / Németországból / Németországnak",
+    "Svédországba / Svédországból / Svédországnak",
+    "Kanadába / Kanadából / Kanadának",
+    "az Egyesült Királyságba / az Egyesült Királyságból / az Egyesült Királyságnak",
+  ],
+);
+igual("gramática húngara: para y de", [GRAMATICA.hu.para("Magyarország"), GRAMATICA.hu.de("Egyesült Államok")], ["Magyarország számára", "az Egyesült Államok"]);
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).

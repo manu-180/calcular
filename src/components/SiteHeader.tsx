@@ -195,7 +195,7 @@ function PanelItem({
       </div>
       <ArrowRight
         className={cx(
-          "shrink-0 -translate-x-1 text-emerald-500 opacity-0 transition-[opacity,translate] duration-200 group-hover/i:translate-x-0 group-hover/i:opacity-100",
+          "shrink-0 -translate-x-1 rtl:-scale-x-100 text-emerald-500 opacity-0 transition-[opacity,translate] duration-200 group-hover/i:translate-x-0 group-hover/i:opacity-100",
           showDesc ? "mt-0.5 size-4" : "mt-[3px] size-3.5",
         )}
       />
@@ -555,7 +555,7 @@ export default function SiteHeader({
     panelRef.current?.querySelector<HTMLElement>("a[href]")?.focus();
   }, [openKey, columnas]);
 
-  // Deslizar el cajón hacia la derecha lo cierra. Sólo con el dedo: con mouse se usa la cruz.
+  // Deslizar el cajón hacia afuera (a la derecha, o a la izquierda en una página rtl) lo cierra. Sólo con el dedo: con mouse se usa la cruz.
   // `touch-action: pan-y` deja el scroll vertical al navegador y nos manda el horizontal.
   const arrastre = useRef<{ x: number; y: number; t: number; id: number; activo: boolean; dx: number } | null>(null);
   const alApoyar = (e: ReactPointerEvent<HTMLDivElement>) => {
@@ -566,7 +566,8 @@ export default function SiteHeader({
     const a = arrastre.current;
     const panel = cajonPanelRef.current;
     if (!a || a.id !== e.pointerId || !panel) return;
-    const dx = e.clientX - a.x;
+    const sentido = getComputedStyle(panel).direction === "rtl" ? -1 : 1;
+    const dx = (e.clientX - a.x) * sentido;
     const dy = e.clientY - a.y;
     if (!a.activo) {
       if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
@@ -581,8 +582,8 @@ export default function SiteHeader({
       panel.style.transition = "none";
       return;
     }
-    a.dx = Math.max(0, e.clientX - a.x);
-    panel.style.translate = `${a.dx}px 0`;
+    a.dx = Math.max(0, (e.clientX - a.x) * sentido);
+    panel.style.translate = `${a.dx * sentido}px 0`;
   };
   const alSoltar = (e: ReactPointerEvent<HTMLDivElement>) => {
     const a = arrastre.current;

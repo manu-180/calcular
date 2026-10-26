@@ -1,10 +1,11 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const gastos = montoEjemplo(ctx, 1500);
   const aporte = montoEjemplo(ctx, 300);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const fondo = pt ? "fundo de emergência" : "reserva de emergência";
   return {
     h1: pt ? "Calculadora de fundo de emergência" : "Calculadora de reserva de emergência",

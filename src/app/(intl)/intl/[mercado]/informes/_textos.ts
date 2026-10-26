@@ -28,6 +28,7 @@ export function textosInforme(idioma: Idioma, trato: Trato, clave: ClaveFamilia,
           documento: i.documento,
           etiquetaEnMinuscula: i.etiquetaEnMinuscula,
           anchoCompleto: i.anchoCompleto ?? false,
+          puntoFinal: i.puntoFinal ?? ".",
         }
       : null,
   };

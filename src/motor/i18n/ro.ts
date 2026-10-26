@@ -1,0 +1,182 @@
+import { GRAMATICA } from "./gramatica";
+import { pluralRo } from "./plural";
+import type { Diccionario } from "./resolver";
+import type { TextosSitio } from "./tipos";
+
+const g = GRAMATICA.ro;
+const MUNDO = "Internațional";
+
+// Rumano (ADR 0002, D18): un solo registro, el de ANAF SPV, BCR e ING Home'Bank. «Dumneavoastră»
+// implícito y el imperativo de 2.ª del plural («alegeți», «calculați»); los botones también van en
+// 2.ª del plural. Los mercados van con `trato: "usted"` y el diccionario escribe solo `base`. Textos
+// neutrales entre Rumania y Moldavia: el país entra por GRAMATICA.ro.
+const base: TextosSitio = {
+  marca: { nombre: "CalcularYa", lema: "Calculatoare cu date oficiale" },
+  saltar: "Treceți la conținut",
+  header: {
+    inicio: "Acasă",
+    elegirPais: "Alegeți țara",
+    paisActual: (pais) => `Țara: ${pais}`,
+    cerrar: "Închideți",
+    todos: "Toate țările",
+    latinoamerica: MUNDO,
+  },
+  footer: {
+    paises: "Țări",
+    sitio: "CalcularYa",
+    fuentes: "Surse oficiale",
+    novedades: "Noutăți",
+    privacidad: "Confidențialitate",
+    terminos: "Termeni de utilizare",
+    contacto: "Contact",
+    sobre: "Despre noi",
+    argentina: "Sunteți în Argentina? Calculatoarele pentru Argentina sunt pe calcular.ar",
+    descargo: "Rezultatele sunt estimări. Înainte de o decizie importantă, verificați-le la instituția oficială sau cu un specialist.",
+    derechos: (anio) => `© ${anio} CalcularYa`,
+  },
+  sello: {
+    titulo: "Date oficiale la zi",
+    verificado: (organismos, fecha) => `Date verificate la ${organismos}, actualizate pe ${fecha}.`,
+    serie: (nombre, organismo, fecha) => `${nombre} se actualizează automat de la ${organismo}. Ultima valoare: ${fecha}.`,
+    verTodas: "Vedeți toate sursele",
+  },
+  calculadora: {
+    comoSeCalcula: "Cum se calculează",
+    ejemplo: "Un exemplu",
+    faq: "Întrebări frecvente",
+    glosario: "Termeni de bază",
+    relacionadas: "Alte calculatoare",
+    otrosPaises: "Același calcul în alte țări",
+  },
+  global: {
+    eyebrow: "Date oficiale pentru fiecare țară",
+    titulo: "Calculatoare pentru muncă, bani și viața de zi cu zi, cu datele țării dumneavoastră",
+    bajada: "Salariu, credite, taxe, date calendaristice și altele. Când răspunsul depinde de o regulă, cifra vine din sursa oficială, cu data și linkul pentru verificare.",
+    elegir: "Alegeți țara",
+    calculadoras: (n) => pluralRo(n, "calculator", "calculatoare"),
+    vacio: "Adăugăm țări. Reveniți în curând.",
+    promesaTitulo: "Cum lucrăm",
+    promesas: [
+      { titulo: "Cifre oficiale, cu sursa lor", texto: "Fiecare valoare arată instituția care o publică, linkul și data la care am verificat-o." },
+      { titulo: "Mereu la zi", texto: "Când o valoare se schimbă, calculatorul se schimbă odată cu ea. Fiecare modificare apare la noutăți." },
+      { titulo: "Gratuit, fără cont", texto: "Calculul se face în browserul dumneavoastră. Nu vă cerem date personale." },
+    ],
+  },
+  pais: {
+    eyebrow: "Date oficiale la zi",
+    titulo: (pais) => `Calculatoare ${g.para(pais)}`,
+    bajada: (pais) => `Cu valorile în vigoare ${g.en(pais)}, sursa fiecăreia și data la care am verificat-o.`,
+    novedades: "Ultimele noutăți",
+    verNovedades: "Vedeți toate noutățile",
+    sinCalculadoras: "Încă nu există calculatoare pentru această țară.",
+    descripcion: (pais) => `Calculatoare de salariu, impozite, credite, economii, sănătate, date calendaristice și casă ${g.para(pais)}, cu cifra oficială în vigoare și sursa ei.`,
+    irASeccion: "Mergeți la o secțiune",
+  },
+  fuentes: {
+    titulo: (pais) => `Surse și date ${g.para(pais)}`,
+    bajada: "Fiecare valoare folosită de calculatoare, cu perioada în care se aplică și linkul către sursa oficială.",
+    vigente: "Valoarea în vigoare",
+    desde: "De la",
+    hasta: "Până la",
+    fuente: "Sursa",
+    verificado: "Verificat pe",
+    region: "Regiunea",
+    series: "Valori care se actualizează automat",
+    ultimoDato: "Ultima valoare",
+    proximo: (valor, fecha) => `Publicat deja pentru ${fecha}: ${valor}.`,
+    sinVerificar: "Nicio valoare verificată pentru azi",
+    tramos: (n) => `Tabel cu ${pluralRo(n, "tranșă", "tranșe")}`,
+    description: (pais) => `Datele oficiale ${g.para(pais)} folosite de calculatoare: valoarea în vigoare, de când se aplică, sursa și data verificării.`,
+  },
+  novedades: {
+    titulo: (pais) => `Noutăți ${g.para(pais)}`,
+    bajada: "Modificările regulilor pe care se bazează calculatoarele, cu data de la care se aplică.",
+    vigenteDesde: (fecha) => `În vigoare de la ${fecha}`,
+    vacio: "Încă nu există noutăți pentru această țară.",
+    description: (pais) => `Modificări ale salariului minim, contribuțiilor și altor reguli ${g.en(pais)}, cu data intrării în vigoare și sursa oficială.`,
+  },
+  avisoPais: {
+    texto: (pais) => `Se pare că vă aflați ${g.en(pais)}.`,
+    ir: (pais) => `Vedeți calculatoarele ${g.para(pais)}`,
+    cerrar: "Închideți mesajul",
+  },
+  noEncontrada: {
+    titulo: "Nu am găsit această pagină",
+    texto: "Adresa poate conține o greșeală sau pagina nu mai există.",
+    volver: "Mergeți la pagina principală",
+    paises: "Sau alegeți o țară",
+  },
+  categorias: {
+    sueldo: "Salariu și sporuri",
+    fin: "Încetarea contractului",
+    impuestos: "Contribuții și impozite",
+    dinero: "Bani și indici",
+    finanzas: "Credite, economii și investiții",
+    negocio: "Afaceri și activitate independentă",
+    calculos: "Calcule rapide",
+    fechas: "Date calendaristice și vârstă",
+    salud: "Sănătate și formă fizică",
+    hogar: "Casă, mașină și renovări",
+    familia: "Familie și gospodărie",
+    otras: "Alte calculatoare",
+  },
+  migas: { inicio: "Acasă", etiqueta: "Vă aflați aici" },
+  seo: {
+    tituloGlobal: "CalcularYa: calculatoare gratuite cu date oficiale",
+    descripcionGlobal: "Calculatoare gratuite pentru salariu, credite, impozite și altele în fiecare țară, cu cifra oficială în vigoare și sursa ei.",
+    tituloPais: (pais, anio) => [`Calculator salariu net și impozite ${anio}: ${pais}`, `Calculatoare ${anio}: ${pais}`, `Calculatoare: ${pais}`],
+    tituloFuentes: (pais) => [`Date oficiale în vigoare: ${pais}, surse și date`, `Surse și date: ${pais}`],
+    tituloNovedades: (pais, anio) => [`Noutăți salarii și impozite ${anio}: ${pais}`, `Noutăți ${anio}: ${pais}`, `Noutăți: ${pais}`],
+  },
+  og: {
+    datosOficiales: "Date oficiale, cu sursa lor",
+    actualizado: (fecha) => `Actualizat pe ${fecha}`,
+    gratis: "Gratuit, fără cont",
+    paises: (n) => pluralRo(n, "țară", "țări"),
+  },
+  shell: {
+    irAlInicio: "mergeți la pagina principală",
+    menu: { trabajo: "Salariu și muncă", impuestos: "Impozite", dinero: "Bani și indici", vida: "Zi de zi", novedades: "Noutăți", planillas: "Foi de calcul" },
+    encabezado: {
+      principal: "Navigare principală",
+      buscar: "Căutare",
+      buscarCalculadora: "Căutați un calculator",
+      abrirMenu: "Deschideți meniul",
+      cerrarMenu: "Închideți meniul",
+      menu: "Meniu",
+      todas: "Toate calculatoarele",
+      pieCajon: "Date din surse oficiale · Făcut în Argentina",
+    },
+    buscador: {
+      dialogo: "Căutare în CalcularYa",
+      pregunta: "Ce doriți să calculați?",
+      recientes: "Continuați de unde ați rămas",
+      masUsado: "Cele mai folosite",
+      sinResultados: "Niciun rezultat pentru „{q}”",
+      sugerencia: "Încercați alt cuvânt, de exemplu „salariu”, „credit” sau „TVA”.",
+      verTodas: "Vedeți toate calculatoarele",
+      borrar: "Ștergeți căutarea",
+      cerrar: "Închideți",
+      cerrarBuscador: "Închideți căutarea",
+      moverte: "pentru a vă deplasa",
+      abrir: "pentru a deschide",
+      desdeCualquier: "de pe orice pagină",
+      resultados: "Rezultate",
+      resultado: "rezultat",
+      resultadosPlural: "rezultate",
+      resultadosDe: "de rezultate",
+    },
+    paises: { titulo: "Țara", cambiar: "Schimbați țara" },
+    pie: {
+      bajada: (lugar) =>
+        `Calculatoare clare ${lugar === MUNDO ? "pentru fiecare țară" : g.para(lugar)}. Fiecare cifră vine din documentul oficial care o stabilește, cu data la care am verificat-o.`,
+      todas: "Toate calculatoarele",
+      cuenta: "Contul dumneavoastră",
+      cuentaNota: "Este opțional. Vă ajută să salvați calculele și să le aveți la îndemână.",
+      hecho: "Făcut în Argentina",
+      escrito: "Scris și verificat de",
+    },
+  },
+};
+
+export const ro: Diccionario<TextosSitio> = { base };
