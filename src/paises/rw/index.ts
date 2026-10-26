@@ -20,6 +20,18 @@ import sickLeaveCalculator from "./calculadoras/sick-leave-calculator";
 import contenidoSickLeaveCalculator from "./contenido/sick-leave-calculator";
 import maternityLeaveCalculator from "./calculadoras/maternity-leave-calculator";
 import contenidoMaternityLeaveCalculator from "./contenido/maternity-leave-calculator";
+import vatCalculator from "./calculadoras/vat-calculator";
+import contenidoVatCalculator from "./contenido/vat-calculator";
+import withholdingTaxCalculator from "./calculadoras/withholding-tax-calculator";
+import contenidoWithholdingTaxCalculator from "./contenido/withholding-tax-calculator";
+import rentalIncomeTaxCalculator from "./calculadoras/rental-income-tax-calculator";
+import contenidoRentalIncomeTaxCalculator from "./contenido/rental-income-tax-calculator";
+import smallBusinessTaxCalculator from "./calculadoras/small-business-tax-calculator";
+import contenidoSmallBusinessTaxCalculator from "./contenido/small-business-tax-calculator";
+import capitalGainsTaxCalculator from "./calculadoras/capital-gains-tax-calculator";
+import contenidoCapitalGainsTaxCalculator from "./contenido/capital-gains-tax-calculator";
+import businessIncomeTaxCalculator from "./calculadoras/business-income-tax-calculator";
+import contenidoBusinessIncomeTaxCalculator from "./contenido/business-income-tax-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -42,6 +54,12 @@ export default definirPais({
     { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
     { definicion: sickLeaveCalculator, contenido: contenidoSickLeaveCalculator, cliente: () => import("./calculadoras/sick-leave-calculator.cliente") },
     { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
+    { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
+    { definicion: withholdingTaxCalculator, contenido: contenidoWithholdingTaxCalculator, cliente: () => import("./calculadoras/withholding-tax-calculator.cliente") },
+    { definicion: rentalIncomeTaxCalculator, contenido: contenidoRentalIncomeTaxCalculator, cliente: () => import("./calculadoras/rental-income-tax-calculator.cliente") },
+    { definicion: smallBusinessTaxCalculator, contenido: contenidoSmallBusinessTaxCalculator, cliente: () => import("./calculadoras/small-business-tax-calculator.cliente") },
+    { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
+    { definicion: businessIncomeTaxCalculator, contenido: contenidoBusinessIncomeTaxCalculator, cliente: () => import("./calculadoras/business-income-tax-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
