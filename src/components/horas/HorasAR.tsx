@@ -10,7 +10,7 @@ import { PAGAS_AR } from "@/lib/mundo/pagas-ar";
 import { brutoANeto, netoABruto } from "@/lib/sueldo";
 import { usarCompartir } from "@/motor/compartir";
 import { AlCelu } from "@/motor/compartir/AlCelu";
-import { ICONOS, Redes } from "@/motor/compartir/Redes";
+import { CompartirConPuntos } from "@/motor/compartir/CompartirConPuntos";
 import type { TextosRedes } from "@/motor/i18n/redes";
 import { CLAVE_TRASPASO, RUTA_MUNDO_AR } from "@/motor/mundo/rutas";
 import type { DatosHorasAR, ItemPublicado } from "@/lib/horas-ar/datos";
@@ -160,9 +160,6 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
   }, [monto, modo]);
   const propia = neto ? valorHora(neto, dias, horasDia) : null;
   const porHora = propia ?? datos.minimo?.porHora ?? null;
-  // Para comparar con los mínimos de otros países hace falta el bruto (los mínimos son brutos).
-  const brutoHora = monto ? valorHora(modo === "bruto" ? monto : netoABruto(monto), dias, horasDia) : null;
-  const ratio = brutoHora && datos.minimo ? brutoHora / datos.minimo.porHora : 1;
 
   const item: ItemPublicado | undefined = datos.items.find((i) => i.id === elegido) ?? datos.items[0];
   const delQr = heredado && !monto && item?.id === heredado.id ? heredado : null;
@@ -194,6 +191,21 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
   const instagram = async () => {
     if ((await compartirInstagram("calcular-horas-historia.png")) === "celu") setAlCelu(true);
   };
+  // Afuera: los mismos minutos de acá llevados a cada país por el poder de compra de su salario mínimo.
+  // Con un ítem que tiene precio oficial en cada tienda (Spotify), sale de ese precio; si no, se estima.
+  const minutosMinimo = item && datos.minimo ? minutosDe(item.monto, datos.minimo.porHora) : null;
+  const afueraOficial = Boolean(item && datos.afuera?.paises.every((p) => p.oficial[item.id]));
+  const afuera = useMemo(() => {
+    if (!datos.afuera || !item || !minutos) return [];
+    const { minimoPpa, paises } = datos.afuera;
+    return paises
+      .map((p) => {
+        const oficial = p.oficial[item.id];
+        const m = afueraOficial && oficial && minutosMinimo ? oficial * 60 * (minutos / minutosMinimo) : (minutos * minimoPpa) / p.minimoPpa;
+        return { iso: p.iso, nombre: p.nombre, minutos: m };
+      })
+      .sort((a, b) => a.minutos - b.minutos);
+  }, [datos.afuera, item, minutos, minutosMinimo, afueraOficial]);
   const aviso = estado === "copiado" ? redes.copiado : estado === "historia" ? redes.enInstagram : estado === "descargado" ? redes.descargado : estado === "error" ? redes.error : "";
 
   return (
@@ -287,29 +299,13 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
                 {jornada >= 1 ? ` · ${decimal.format(jornada)} ${jornada < 1.05 ? "día" : "días"} de trabajo` : ` · el ${numero.format(Math.max(1, jornada * 100))} % de tu día de trabajo`}
               </p>
               <Fichaje minutos={minutos} />
-              <div className="ca-hs-rapido" role="group" aria-labelledby="ca-hs-rapido-titulo">
-                <p id="ca-hs-rapido-titulo" className="ca-hs-rapido-titulo">
-                  Compartilo
-                </p>
-                <button ref={botonIg} type="button" className="ca-hs-rapido-ig" data-destacado={delQr ? "" : undefined} onClick={() => void instagram()}>
-                  {ICONOS.instagram}
-                  Instagram
-                </button>
-                <button type="button" className="ca-hs-rapido-wa" onClick={() => void compartirEn("whatsapp")}>
-                  {ICONOS.whatsapp}
-                  WhatsApp
-                </button>
-                <button type="button" className="ca-hs-rapido-fb" onClick={() => void compartirEn("facebook")}>
-                  {ICONOS.facebook}
-                  Facebook
-                </button>
-                <button type="button" className="ca-hs-rapido-x" aria-label="Compartir en X" onClick={() => void compartirEn("x")}>
-                  {ICONOS.x}X
-                </button>
-                <p className="ca-hs-rapido-aviso" role="status" aria-live="polite">
-                  {aviso}
-                </p>
-              </div>
+              <CompartirConPuntos
+                clave={codigo ?? item.id}
+                aviso={aviso}
+                destacado={delQr ? "instagram" : undefined}
+                refInstagram={botonIg}
+                acciones={{ instagram, whatsapp: () => compartirEn("whatsapp"), facebook: () => compartirEn("facebook"), x: () => compartirEn("x") }}
+              />
               <AlCelu abierto={alCelu} cerrar={() => setAlCelu(false)} destino={celu} pagina t={redes} bajar={() => void bajarHistoria("calcular-horas-historia.png")} />
               {amigo && amigoItem?.id === item.id && propios ? (
                 <p className="ca-hs-duelo">
@@ -323,70 +319,33 @@ export function HorasAR({ datos, base, redes, amigo, inicial }: PropsHorasAR) {
         </div>
       </section>
 
-      <section className="ca-hs-grilla-seccion" aria-labelledby="ca-hs-grilla-titulo">
-        <div className="ca-hs-cabeza-seccion">
-          <h2 id="ca-hs-grilla-titulo" className="ca-hs-h2">
-            {propios ? "Lo que te cuesta cada cosa en horas de tu trabajo" : "Lo que cuesta cada cosa con el salario mínimo"}
-          </h2>
-          <p className="ca-hs-bajada">Tocá una para ponerla arriba y armar tu tarjeta. Los precios son oficiales y cada uno dice de cuándo es.</p>
-        </div>
-        <ul className="ca-hs-grilla">
-          {ordenados.map((i) => {
-            const min = porHora ? minutosDe(i.monto, porHora) : null;
-            return (
-              <li key={i.id}>
-                <button type="button" className="ca-hs-tarjeta" aria-pressed={i.id === item?.id} onClick={() => setElegido(i.id)}>
-                  <Ilustracion id={i.id} className="ca-hs-tarjeta-ilus" />
-                  <span className="ca-hs-tarjeta-nombre">{i.corto}</span>
-                  <span className="ca-hs-tarjeta-detalle">
-                    {i.cantidad} · {pesos.format(i.monto)}
-                  </span>
-                  {min ? <Duracion minutos={min} clase="ca-hs-tarjeta-horas" /> : null}
-                  <span className="ca-hs-tarjeta-fuente">
-                    {i.fuente.organismo}, {i.fecha}
-                  </span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-
-      {item ? (
-        <section className="ca-hs-compartir" aria-labelledby="ca-hs-compartir-titulo">
-          <div className="ca-hs-cabeza-seccion">
-            <h2 id="ca-hs-compartir-titulo" className="ca-hs-h2">
-              {propios ? "Tu tarjeta, lista para subir" : "Compartila y que cada uno calcule la suya"}
-            </h2>
-            <p className="ca-hs-bajada">
-              {propios ? `Muestra lo que te cuesta ${item.nombre} en horas. Ni tu sueldo ni lo que vale tu hora aparecen en la imagen ni en el link.` : "Cuando pongas tu sueldo, la tarjeta muestra tus horas. Nunca tu sueldo."}
-            </p>
-          </div>
-          <Redes t={redes} opciones={opciones} celu={celu} cuadrado={`${imagen}&formato=cuadrado`} archivo="calcular-horas" alt={compartidos ? fraseCompartir(item.nombre, compartidos) : `¿Cuántas horas de trabajo te cuesta ${item.nombre}?`} />
-        </section>
-      ) : null}
-
-      {datos.afuera ? (
+      {datos.afuera && item && minutos ? (
         <section className="ca-hs-afuera" aria-labelledby="ca-hs-afuera-titulo">
           <div className="ca-hs-cabeza-seccion">
             <h2 id="ca-hs-afuera-titulo" className="ca-hs-h2">
-              ¿Y {datos.afuera.producto} afuera?
+              ¿Y {item.nombre} afuera?
             </h2>
-            <p className="ca-hs-bajada">
-              Apple no lo vende en la Argentina. {brutoHora && datos.minimo ? `Si en cada país ganaras ${decimal.format(ratio)} ${ratio >= 0.95 && ratio < 1.05 ? "vez" : "veces"} su salario mínimo, como acá, te costaría:` : "Con el salario mínimo de cada país, en la tienda oficial de Apple, cuesta:"}
-            </p>
+            <p className="ca-hs-bajada">{propios ? "Si ganaras lo mismo que vos pero en otro país, te costaría:" : "Con el salario mínimo de cada país, cuesta:"}</p>
           </div>
           <ul className="ca-hs-afuera-lista">
-            {[...datos.afuera.paises]
-              .sort((a, b) => a.horasMinimo - b.horasMinimo)
-              .map((p) => (
-                <li key={p.iso}>
-                  <img src={`/banderas/${p.iso.toLowerCase()}.svg`} width={24} height={16} alt="" loading="lazy" decoding="async" />
-                  <span>{p.nombre}</span>
-                  <Duracion minutos={(p.horasMinimo * 60) / ratio} clase="ca-hs-afuera-horas" />
-                </li>
-              ))}
+            <li data-propio="">
+              <img src="/banderas/ar.svg" width={24} height={16} alt="" loading="lazy" decoding="async" />
+              <span>{propios ? "Argentina, vos" : "Argentina"}</span>
+              <Duracion minutos={minutos} clase="ca-hs-afuera-horas" />
+            </li>
+            {afuera.map((p) => (
+              <li key={p.iso}>
+                <img src={`/banderas/${p.iso.toLowerCase()}.svg`} width={24} height={16} alt="" loading="lazy" decoding="async" />
+                <span>{p.nombre}</span>
+                <Duracion minutos={p.minutos} clase="ca-hs-afuera-horas" />
+              </li>
+            ))}
           </ul>
+          <p className="ca-hs-afuera-nota">
+            {afueraOficial
+              ? `Con el precio oficial de ${item.corto} en cada país${propios ? ", y un sueldo que en cada país vale lo mismo que el tuyo acá frente al salario mínimo" : ""}.`
+              : `Estimado: llevamos el precio de acá a cada país con el poder de compra del Banco Mundial${propios ? ", y un sueldo que en cada país vale lo mismo que el tuyo acá frente al salario mínimo" : ""}.`}
+          </p>
           <p className="ca-hs-afuera-pie">
             ¿Y cuánto te quedaría en mano en otro país?{" "}
             <Link

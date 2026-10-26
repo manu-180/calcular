@@ -14,7 +14,7 @@ import type { CargaCompartida, GrillaMundo } from "@/motor/mundo/tipos";
 import { compactar, type GrillaCliente } from "@/motor/mundo/ui/compacta";
 import { textosRedes } from "@/motor/i18n/redes";
 import { lugarEnPagina } from "@/motor/horas/ui/datos-cliente";
-import { MundoCliente, type MarcaMundo, type TextosEnManoPrimero } from "@/motor/mundo/ui/MundoCliente";
+import { MundoCliente, type MarcaMundo, type TextosEnManoPrimero, type TextosSimple } from "@/motor/mundo/ui/MundoCliente";
 import { textosCliente } from "@/motor/mundo/ui/textos-cliente";
 import { origenAR, origenIntl } from "@/motor/sitio";
 import type { FechaISO } from "@/motor/tipos";
@@ -30,9 +30,9 @@ export const MARCA_AR: MarcaMundo = { nombre: NOMBRE_SITIO, dominio: "calcular.a
 const TITULO = "¿Cuánto te quedaría en mano en otro país? Tu sueldo en el mundo";
 // El enganche de calcular.ar es comparar países; el día de libertad tributaria queda como dato del
 // resultado. Va acá y no en src/motor/i18n/mundo.ts porque el trato «vos» lo comparten otras ediciones.
-const H1 = "¿Cuánto te quedaría en mano en otro país?";
+const H1 = "¿Hasta qué día del año trabajás para el Estado?";
 const CEJA = "Tu sueldo en el mundo";
-const bajada = (n: number) => `Poné tu sueldo bruto y mirá cuánto cobrarías en ${n} países, con el mismo poder de compra y la ley de cada uno. De paso, ves hasta qué día del año trabajás para el Estado.`;
+const bajada = (n: number) => `Poné lo que cobrás en mano y mirá cuántos días del año trabajás para pagar impuestos. Y en cuál de ${n} países te rendiría más el mismo sueldo.`;
 
 const t = textosMundo("es", "vos", LOCALE);
 
@@ -106,6 +106,27 @@ function enManoPrimero(paises: readonly { iso: string; nombre: string }[]): Text
     mejorPropio: "Con tu sueldo, ningún país te deja más en mano que la Argentina.",
     fecha: "Hasta acá trabajás para el Estado",
   };
+}
+
+// El panel de calcular.ar: lo que cobrás en mano, la fecha bien grande y compartir ahí mismo.
+const SIMPLE: TextosSimple = {
+  sueldo: "¿Cuánto cobrás en mano por mes?",
+  ayuda: "Lo que te depositan, después de los descuentos.",
+  propio: "Lo trajimos de tu cálculo de sueldo.",
+  estadoAntes: "Trabajás para el Estado hasta el",
+  estadoTasa: "Se va el {tasa} de tu sueldo en impuestos y aportes.",
+  cero: t.cero.heroeAntes,
+  mejorTitulo: "Donde más te rendiría",
+  mejor: "Te quedaría {pct} más en mano, ajustado a los precios de allá.",
+  mejorPropio: "Con tu sueldo, ningún país te deja más en mano que la Argentina.",
+  textoCompartir: t.tarjeta.texto("{fecha}"),
+};
+
+// Con el sueldo en mano, la fila argentina del ranking (aguinaldo repartido en 12) da más que lo que la
+// persona escribió: la bajada lo dice para que no parezca un error.
+function textosAR(paises: Parameters<typeof textosCliente>[1]) {
+  const c = textosCliente(t, paises);
+  return { ...c, ranking: { ...c.ranking, bajada: "Lo que te quedaría en mano por mes en cada país, con el aguinaldo repartido en el año y ajustado a los precios de cada lugar." } };
 }
 
 type Resuelto = { grilla: GrillaMundo; carga: CargaCompartida | null; canonica: boolean };
@@ -203,7 +224,7 @@ export function PaginaMundoAR({ c }: { c?: string }) {
 
       <MundoCliente
         grilla={cliente}
-        textos={textosCliente(t, cliente.paises)}
+        textos={textosAR(cliente.paises)}
         locale={LOCALE}
         anio={anio}
         origenInicial={origenDe(g)}
@@ -214,6 +235,7 @@ export function PaginaMundoAR({ c }: { c?: string }) {
         conCuadrado={false}
         marca={MARCA_AR}
         enManoPrimero={enManoPrimero(cliente.paises)}
+        simple={SIMPLE}
       />
 
       <section className="cy-mundo-metodo" aria-labelledby="cy-mundo-metodo-titulo">

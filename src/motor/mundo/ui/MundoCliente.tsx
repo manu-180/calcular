@@ -1,14 +1,17 @@
 "use client";
 
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { usarCompartir } from "../../compartir";
+import { AlCelu } from "../../compartir/AlCelu";
+import { CompartirConPuntos } from "../../compartir/CompartirConPuntos";
 import { Redes } from "../../compartir/Redes";
 import type { TextosRedes } from "../../i18n/redes";
 import { simboloLegible } from "../../i18n/direccion";
 import type { RegionMundo } from "../../i18n/mundo";
-import { cargaDesde, codificarCarga, compararDesde, decodificarCarga, diaDeCarga, diasDelAnio, fechaDelDia, type FilaMundo } from "../calculo";
+import { cargaDesde, codificarCarga, compararDesde, decodificarCarga, diaDeCarga, diasDelAnio, fechaDelDia, netoAnualPpa, type FilaMundo } from "../calculo";
 import { AporteSueldo } from "../../sueldos/ui/AporteSueldo";
 import { leerTraspaso } from "../traspaso";
-import type { CargaCompartida } from "../tipos";
+import type { CargaCompartida, GrillaMundo } from "../tipos";
 import { Afiliados } from "./Afiliados";
 import { expandir, type GrillaCliente, type PaisCliente } from "./compacta";
 import { ORDEN_REGIONES } from "./regiones";
@@ -33,6 +36,23 @@ export interface PropsMundo {
   // Con esto, el resultado abre con lo que queda en mano y el país donde más rinde, y la fecha pasa a
   // dato secundario (calcular.ar). Sin esto, abre con la fecha, como siempre en calcularya.
   enManoPrimero?: TextosEnManoPrimero;
+  // Modo simple (calcular.ar): un solo país, la persona pone lo que cobra en mano por mes, el panel abre
+  // con la fecha del Estado y se comparte desde ahí con puntos. Sin esto, el comparador completo.
+  simple?: TextosSimple;
+}
+
+// Con {tasa}, {pct} y {pais} para rellenar.
+export interface TextosSimple {
+  sueldo: string;
+  ayuda: string;
+  propio: string;
+  estadoAntes: string;
+  estadoTasa: string;
+  cero: string;
+  mejorTitulo: string;
+  mejor: string;
+  mejorPropio: string;
+  textoCompartir: string;
 }
 
 export interface TextosEnManoPrimero {
@@ -130,6 +150,27 @@ function usarFormatos(locale: string) {
 }
 
 type Formatos = ReturnType<typeof usarFormatos>;
+
+// Lo que deposita por mes un bruto anual: el neto del año repartido en las pagas de ley.
+function netoMensualDe(g: GrillaMundo, mercado: string, brutoAnual: number): number {
+  const p = g.paises.find((x) => x.mercado === mercado);
+  return p && brutoAnual > 0 ? (netoAnualPpa(p, brutoAnual / p.ppa) * p.ppa) / p.pagas : 0;
+}
+
+// El bruto anual que deja ese neto por mes. El neto crece con el bruto, así que alcanza con bisección.
+function brutoAnualDesdeNeto(g: GrillaMundo, mercado: string, netoMensual: number): number {
+  const p = g.paises.find((x) => x.mercado === mercado);
+  if (!p || !(netoMensual > 0)) return 0;
+  let lo = netoMensual * p.pagas;
+  let hi = lo * 4;
+  while (netoMensualDe(g, mercado, hi) < netoMensual && hi < lo * 64) hi *= 2;
+  for (let i = 0; i < 48; i++) {
+    const mid = (lo + hi) / 2;
+    if (netoMensualDe(g, mercado, mid) < netoMensual) lo = mid;
+    else hi = mid;
+  }
+  return (lo + hi) / 2;
+}
 
 function Bandera({ iso, ancho = 24 }: { iso: string; ancho?: number }) {
   if (!/^[A-Z]{2}$/.test(iso) || iso === "ZZ") return null;
@@ -318,9 +359,26 @@ function Compartir({ t, tr, url, imagen, texto, duelo, archivo, conCuadrado }: {
   return <Redes t={tr} opciones={opciones} cuadrado={conCuadrado ? historia.replace("formato=historia", "formato=cuadrado") : undefined} archivo={archivo} alt={t.tarjeta.titulo2} />;
 }
 
+function CompartirRapido({ tr, url, imagen, texto, titulo, duelo, archivo, clave }: { tr: TextosRedes; url: string; imagen: string; texto: string; titulo: string; duelo: boolean; archivo: string; clave: string }) {
+  const historia = `${imagen}${imagen.includes("?") ? "&" : "?"}formato=historia`;
+  const opciones = useMemo(() => ({ origen: duelo ? ("duelo" as const) : ("mundo" as const), url, titulo, texto, imagen: historia, historia }), [duelo, url, titulo, texto, historia]);
+  const { compartirEn, compartirInstagram, bajarHistoria, estado } = usarCompartir(opciones);
+  const [alCelu, setAlCelu] = useState(false);
+  const instagram = async () => {
+    if ((await compartirInstagram(`${archivo}-historia.png`)) === "celu") setAlCelu(true);
+  };
+  const aviso = estado === "copiado" ? tr.copiado : estado === "historia" ? tr.enInstagram : estado === "descargado" ? tr.descargado : estado === "error" ? tr.error : "";
+  return (
+    <>
+      <CompartirConPuntos clave={clave} aviso={aviso} acciones={{ instagram, whatsapp: () => compartirEn("whatsapp"), facebook: () => compartirEn("facebook"), x: () => compartirEn("x") }} />
+      <AlCelu abierto={alCelu} cerrar={() => setAlCelu(false)} destino={historia} pagina={false} t={tr} bajar={() => void bajarHistoria(`${archivo}-historia.png`)} />
+    </>
+  );
+}
+
 // ─────────────────────────────── página ───────────────────────────────
 
-export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, meses, base, carga: cargaInicial, redes, conCuadrado = true, marca = MARCA_INTL, enManoPrimero }: PropsMundo) {
+export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, meses, base, carga: cargaInicial, redes, conCuadrado = true, marca = MARCA_INTL, enManoPrimero, simple }: PropsMundo) {
   const f = usarFormatos(locale);
   const contrato = useMemo(() => expandir(grilla), [grilla]);
   const porMercado = useMemo(() => new Map(grilla.paises.map((p) => [p.mercado, p])), [grilla]);
@@ -331,7 +389,7 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
 
   const [origen, setOrigen] = useState(origenInicial);
   const [periodo, setPeriodo] = useState<Periodo>("mes");
-  const [texto, setTexto] = useState(() => f.numero(ejemploDe(origenInicial)));
+  const [texto, setTexto] = useState(() => f.numero(simple ? dosCifras(netoMensualDe(contrato, origenInicial, ejemploDe(origenInicial) * pagasDe(origenInicial))) : ejemploDe(origenInicial)));
   const [modo, setModo] = useState<"ejemplo" | "propio" | "traspaso">("ejemplo");
   const [amigo, setAmigo] = useState<CargaCompartida | null>(cargaInicial);
   const [vivo, setVivo] = useState(false);
@@ -343,10 +401,10 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
   // la URL) y el `c` de un link viejo con ?c= en vez de /<c>.
   useEffect(() => {
     const tr = leerTraspaso();
-    if (tr && porMercado.has(tr.mercado)) {
+    if (tr && porMercado.has(tr.mercado) && (!simple || tr.mercado === origenInicial)) {
       setOrigen(tr.mercado);
       setPeriodo("mes");
-      setTexto(f.numero(Math.round(tr.brutoAnual / pagasDe(tr.mercado))));
+      setTexto(f.numero(Math.round(simple ? netoMensualDe(contrato, tr.mercado, tr.brutoAnual) : tr.brutoAnual / pagasDe(tr.mercado))));
       setModo("traspaso");
     }
     if (!cargaInicial) {
@@ -360,7 +418,7 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
   const pagas = pagasDe(origen);
   const monto = parsear(texto, locale);
   const valido = monto !== null && monto > 0;
-  const anual = valido ? (periodo === "anio" ? monto : monto * pagas) : 0;
+  const anual = useMemo(() => (!valido ? 0 : simple ? brutoAnualDesdeNeto(contrato, origen, monto) : periodo === "anio" ? monto : monto * pagas), [valido, simple, contrato, origen, monto, periodo, pagas]);
   const filas = useMemo(() => (anual > 0 ? compararDesde(contrato, origen, anual) : []), [contrato, origen, anual]);
   const propia = filas.find((x) => x.pais.mercado === origen);
   // La tasa y el día que se ven son los de la carga que se comparte (redondeados sobre la franja del
@@ -465,133 +523,216 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
 
       <section className="cy-mundo-panel" aria-label={t.form.titulo}>
         <div className="cy-mundo-panel-nucleo">
-          <form className="cy-mundo-form" onSubmit={(e) => e.preventDefault()} noValidate>
-            <div className="cy-mundo-campo cy-mundo-campo-sueldo">
-              <div className="cy-mundo-etiquetas">
-                <label htmlFor={idSueldo}>{t.form.sueldo}</label>
-                <div className="cy-mundo-segmento" role="radiogroup" aria-label={t.form.periodo} data-activo={periodo}>
-                  {(["mes", "anio"] as const).map((p) => (
-                    <button key={p} type="button" role="radio" aria-checked={periodo === p} onClick={() => cambiarPeriodo(p)}>
-                      {p === "mes" ? t.form.mes : t.form.anio}
-                    </button>
-                  ))}
+          {simple ? (
+            <>
+              <form className="cy-mundo-form" onSubmit={(e) => e.preventDefault()} noValidate>
+                <div className="cy-mundo-campo cy-mundo-campo-sueldo">
+                  <label className="cy-mundo-etiqueta-campo" htmlFor={idSueldo}>
+                    {simple.sueldo}
+                  </label>
+                  <div className="cy-mundo-monto-campo" data-invalido={!valido || undefined}>
+                    {antes ? <span className="cy-mundo-simbolo">{simbolo}</span> : null}
+                    <input
+                      id={idSueldo}
+                      inputMode="numeric"
+                      autoComplete="off"
+                      enterKeyHint="done"
+                      value={texto}
+                      aria-describedby={idAyuda}
+                      aria-invalid={!valido || undefined}
+                      onFocus={(e) => {
+                        if (modo === "ejemplo") e.currentTarget.select();
+                      }}
+                      onChange={(e) => {
+                        const digitos = e.target.value.replace(/\D/g, "").slice(0, 12);
+                        setTexto(digitos ? f.numero(Number(digitos)) : "");
+                        setModo("propio");
+                        setVivo(true);
+                      }}
+                    />
+                    {!antes ? <span className="cy-mundo-simbolo">{simbolo}</span> : null}
+                    {modo === "ejemplo" ? <span className="cy-mundo-ejemplo">{t.form.ejemplo}</span> : null}
+                  </div>
+                  <p className="cy-mundo-ayuda" id={idAyuda} data-error={!valido || undefined}>
+                    {!valido ? t.form.invalido : modo === "traspaso" ? simple.propio : simple.ayuda}
+                  </p>
                 </div>
-              </div>
-              <div className="cy-mundo-monto-campo" data-invalido={!valido || undefined}>
-                {antes ? <span className="cy-mundo-simbolo">{simbolo}</span> : null}
-                <input
-                  id={idSueldo}
-                  inputMode="decimal"
-                  autoComplete="off"
-                  enterKeyHint="done"
-                  value={texto}
-                  aria-describedby={idAyuda}
-                  aria-invalid={!valido || undefined}
-                  onFocus={(e) => {
-                    if (modo === "ejemplo") e.currentTarget.select();
-                  }}
-                  onChange={(e) => {
-                    setTexto(e.target.value);
-                    setModo("propio");
-                    setVivo(true);
-                  }}
-                  onBlur={() => {
-                    if (valido) setTexto(f.numero(Math.round(monto)));
-                  }}
-                />
-                {!antes ? <span className="cy-mundo-simbolo">{simbolo}</span> : null}
-                {modo === "ejemplo" ? <span className="cy-mundo-ejemplo">{t.form.ejemplo}</span> : null}
-              </div>
-              <p className="cy-mundo-ayuda" id={idAyuda} data-error={!valido || undefined}>
-                {ayuda}
-              </p>
-            </div>
-            <div className="cy-mundo-campo">
-              <label className="cy-mundo-etiqueta-campo" htmlFor={idPais}>
-                {t.form.pais}
-              </label>
-              <div className="cy-mundo-select">
-                {pais ? <Bandera iso={pais.iso} ancho={22} /> : null}
-                <select id={idPais} value={origen} onChange={(e) => cambiarPais(e.target.value)}>
-                  {ordenados.map((p) => (
-                    <option key={p.mercado} value={p.mercado}>
-                      {p.nombre}
-                    </option>
-                  ))}
-                </select>
-                <svg viewBox="0 0 16 16" aria-hidden="true">
-                  <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-            </div>
-          </form>
+              </form>
 
-          {enManoPrimero ? (
-            <div className="cy-mundo-resultado" data-en-mano="">
-              <p className="cy-mundo-antes">
-                {t.heroe.enMano} · {t.heroe.porMes}
-              </p>
-              <p className="cy-mundo-fecha" data-dinero="" key={propia ? propia.netoMensualLocal : "vacio"}>
-                {propia ? f.dinero(propia.netoMensualLocal, propia.pais.moneda) : " "}
-              </p>
-              {carga && pais ? (
-                <p className="cy-mundo-antes">
-                  {mejorIso && mejorIso !== pais.iso && carga.ventaja > 0 ? rellenar(enManoPrimero.mejor[mejorIso] ?? "", { pct: f.pct(carga.ventaja / 100) }) : enManoPrimero.mejorPropio}
+              <div className="cy-mundo-resultado" data-simple="">
+                {carga && pais ? (
+                  <div className="cy-mundo-mejor">
+                    <p className="cy-mundo-mejor-titulo">{simple.mejorTitulo}</p>
+                    {mejorIso && mejorIso !== pais.iso && carga.ventaja > 0 ? (
+                      <>
+                        <p className="cy-mundo-mejor-pais" key={mejorIso}>
+                          <Bandera iso={mejorIso} ancho={34} />
+                          <span>{grilla.paises.find((x) => x.iso === mejorIso)?.nombre ?? mejorIso}</span>
+                        </p>
+                        <p className="cy-mundo-mejor-texto">
+                          <strong>{rellenar(simple.mejor, { pct: f.pct(carga.ventaja / 100) })}</strong>
+                        </p>
+                      </>
+                    ) : (
+                      <p className="cy-mundo-mejor-texto">{simple.mejorPropio}</p>
+                    )}
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="cy-mundo-anio-caja" data-simple="">
+                <div className="cy-mundo-estado">
+                  <p className="cy-mundo-antes">{cero ? simple.cero : simple.estadoAntes}</p>
+                  <p className="cy-mundo-fecha" key={cero ? "cero" : fecha}>
+                    {propia && carga ? (cero ? t.cero.dia : fecha) : " "}
+                  </p>
+                  {carga && !cero ? <p className="cy-mundo-estado-tasa">{rellenar(simple.estadoTasa, { tasa })}</p> : null}
+                </div>
+                <Anio anio={anio} dia={dia} meses={meses} etiqueta={rellenar(t.heroe.anio, { anio, n: dia, total })} />
+                <p className="cy-mundo-anio-pie">
+                  <span className="cy-mundo-leyenda" data-d="e" />
+                  {rellenar(t.heroe.dias, { n: dia, total })}
+                  <span className="cy-mundo-resto">{t.heroe.resto}</span>
                 </p>
-              ) : null}
-              {propia && carga ? (
-                <div className="cy-mundo-cifras">
-                  <div>
-                    <p className="cy-mundo-cifra">{cero ? t.cero.dia : fecha}</p>
-                    <p className="cy-mundo-cifra-texto">{enManoPrimero.fecha}</p>
-                  </div>
-                  <div>
-                    <p className="cy-mundo-cifra" aria-describedby={`${idAyuda}-t`}>
-                      {tasa}
-                    </p>
-                    <p className="cy-mundo-cifra-texto" id={`${idAyuda}-t`}>
-                      {t.duelo.tasa}
-                    </p>
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          ) : (
-            <div className="cy-mundo-resultado">
-              <p className="cy-mundo-antes">{cero ? t.cero.heroeAntes : t.heroe.hasta[0]}</p>
-              <p className="cy-mundo-fecha" key={cero ? "cero" : fecha}>
-                {propia && carga ? (cero ? t.cero.dia : fecha) : " "}
-              </p>
-              {cero ? <p className="cy-mundo-antes">{t.cero.motivo}</p> : t.heroe.hasta[1] ? <p className="cy-mundo-antes">{t.heroe.hasta[1]}</p> : null}
-              {propia && carga ? (
-                <div className="cy-mundo-cifras">
-                  <div>
-                    <p className="cy-mundo-cifra" aria-describedby={`${idAyuda}-t`}>
-                      {tasa}
-                    </p>
-                    <p className="cy-mundo-cifra-texto" id={`${idAyuda}-t`}>
-                      {t.duelo.tasa}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="cy-mundo-cifra">{f.dinero(propia.netoMensualLocal, propia.pais.moneda)}</p>
-                    <p className="cy-mundo-cifra-texto">
-                      {t.heroe.enMano} · {t.heroe.porMes}
-                    </p>
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          )}
+              </div>
 
-          <div className="cy-mundo-anio-caja">
-            <Anio anio={anio} dia={dia} meses={meses} etiqueta={rellenar(t.heroe.anio, { anio, n: dia, total })} />
-            <p className="cy-mundo-anio-pie">
-              <span className="cy-mundo-leyenda" data-d="e" />
-              {rellenar(t.heroe.dias, { n: dia, total })}
-              <span className="cy-mundo-resto">{t.heroe.resto}</span>
-            </p>
-          </div>
+              {carga && pais ? (
+                <div className="cy-mundo-compartir-rapido">
+                  <CompartirRapido tr={redes} url={urlCompartir} imagen={imagen} titulo={t.tarjeta.titulo2} texto={cero ? t.cero.texto : rellenar(simple.textoCompartir, { fecha })} duelo={conDuelo} archivo={marca.dominio.split(".")[0]} clave={c ?? "mundo"} />
+                </div>
+              ) : null}
+            </>
+          ) : (
+            <>
+            <form className="cy-mundo-form" onSubmit={(e) => e.preventDefault()} noValidate>
+              <div className="cy-mundo-campo cy-mundo-campo-sueldo">
+                <div className="cy-mundo-etiquetas">
+                  <label htmlFor={idSueldo}>{t.form.sueldo}</label>
+                  <div className="cy-mundo-segmento" role="radiogroup" aria-label={t.form.periodo} data-activo={periodo}>
+                    {(["mes", "anio"] as const).map((p) => (
+                      <button key={p} type="button" role="radio" aria-checked={periodo === p} onClick={() => cambiarPeriodo(p)}>
+                        {p === "mes" ? t.form.mes : t.form.anio}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="cy-mundo-monto-campo" data-invalido={!valido || undefined}>
+                  {antes ? <span className="cy-mundo-simbolo">{simbolo}</span> : null}
+                  <input
+                    id={idSueldo}
+                    inputMode="decimal"
+                    autoComplete="off"
+                    enterKeyHint="done"
+                    value={texto}
+                    aria-describedby={idAyuda}
+                    aria-invalid={!valido || undefined}
+                    onFocus={(e) => {
+                      if (modo === "ejemplo") e.currentTarget.select();
+                    }}
+                    onChange={(e) => {
+                      setTexto(e.target.value);
+                      setModo("propio");
+                      setVivo(true);
+                    }}
+                    onBlur={() => {
+                      if (valido) setTexto(f.numero(Math.round(monto)));
+                    }}
+                  />
+                  {!antes ? <span className="cy-mundo-simbolo">{simbolo}</span> : null}
+                  {modo === "ejemplo" ? <span className="cy-mundo-ejemplo">{t.form.ejemplo}</span> : null}
+                </div>
+                <p className="cy-mundo-ayuda" id={idAyuda} data-error={!valido || undefined}>
+                  {ayuda}
+                </p>
+              </div>
+              <div className="cy-mundo-campo">
+                <label className="cy-mundo-etiqueta-campo" htmlFor={idPais}>
+                  {t.form.pais}
+                </label>
+                <div className="cy-mundo-select">
+                  {pais ? <Bandera iso={pais.iso} ancho={22} /> : null}
+                  <select id={idPais} value={origen} onChange={(e) => cambiarPais(e.target.value)}>
+                    {ordenados.map((p) => (
+                      <option key={p.mercado} value={p.mercado}>
+                        {p.nombre}
+                      </option>
+                    ))}
+                  </select>
+                  <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </form>
+
+            {enManoPrimero ? (
+              <div className="cy-mundo-resultado" data-en-mano="">
+                <p className="cy-mundo-antes">
+                  {t.heroe.enMano} · {t.heroe.porMes}
+                </p>
+                <p className="cy-mundo-fecha" data-dinero="" key={propia ? propia.netoMensualLocal : "vacio"}>
+                  {propia ? f.dinero(propia.netoMensualLocal, propia.pais.moneda) : " "}
+                </p>
+                {carga && pais ? (
+                  <p className="cy-mundo-antes">
+                    {mejorIso && mejorIso !== pais.iso && carga.ventaja > 0 ? rellenar(enManoPrimero.mejor[mejorIso] ?? "", { pct: f.pct(carga.ventaja / 100) }) : enManoPrimero.mejorPropio}
+                  </p>
+                ) : null}
+                {propia && carga ? (
+                  <div className="cy-mundo-cifras">
+                    <div>
+                      <p className="cy-mundo-cifra">{cero ? t.cero.dia : fecha}</p>
+                      <p className="cy-mundo-cifra-texto">{enManoPrimero.fecha}</p>
+                    </div>
+                    <div>
+                      <p className="cy-mundo-cifra" aria-describedby={`${idAyuda}-t`}>
+                        {tasa}
+                      </p>
+                      <p className="cy-mundo-cifra-texto" id={`${idAyuda}-t`}>
+                        {t.duelo.tasa}
+                      </p>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <div className="cy-mundo-resultado">
+                <p className="cy-mundo-antes">{cero ? t.cero.heroeAntes : t.heroe.hasta[0]}</p>
+                <p className="cy-mundo-fecha" key={cero ? "cero" : fecha}>
+                  {propia && carga ? (cero ? t.cero.dia : fecha) : " "}
+                </p>
+                {cero ? <p className="cy-mundo-antes">{t.cero.motivo}</p> : t.heroe.hasta[1] ? <p className="cy-mundo-antes">{t.heroe.hasta[1]}</p> : null}
+                {propia && carga ? (
+                  <div className="cy-mundo-cifras">
+                    <div>
+                      <p className="cy-mundo-cifra" aria-describedby={`${idAyuda}-t`}>
+                        {tasa}
+                      </p>
+                      <p className="cy-mundo-cifra-texto" id={`${idAyuda}-t`}>
+                        {t.duelo.tasa}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="cy-mundo-cifra">{f.dinero(propia.netoMensualLocal, propia.pais.moneda)}</p>
+                      <p className="cy-mundo-cifra-texto">
+                        {t.heroe.enMano} · {t.heroe.porMes}
+                      </p>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            )}
+
+            <div className="cy-mundo-anio-caja">
+              <Anio anio={anio} dia={dia} meses={meses} etiqueta={rellenar(t.heroe.anio, { anio, n: dia, total })} />
+              <p className="cy-mundo-anio-pie">
+                <span className="cy-mundo-leyenda" data-d="e" />
+                {rellenar(t.heroe.dias, { n: dia, total })}
+                <span className="cy-mundo-resto">{t.heroe.resto}</span>
+              </p>
+            </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -599,7 +740,7 @@ export function MundoCliente({ grilla, textos: t, locale, anio, origenInicial, m
       {modo !== "ejemplo" && filas.length > 1 && filas[0].pais.mercado !== origen ? <Afiliados locale={locale} mejor={filas[0].pais.iso} /> : null}
       {pais && filas.length ? <AporteSueldo mercado={origen} moneda={pais.moneda} ppa={pais.ppa} nombrePais={pais.nombre} locale={locale} base={base} bruto={modo !== "ejemplo" && valido ? Math.round(anual / pagas) : null} /> : null}
 
-      {carga && pais ? (
+      {carga && pais && !simple ? (
         <section className="cy-mundo-compartir cy-mundo-compartir-redes" aria-labelledby="cy-mundo-compartir-titulo">
           <div className="cy-mundo-compartir-texto">
             <h2 id="cy-mundo-compartir-titulo" className="cy-mundo-h2">

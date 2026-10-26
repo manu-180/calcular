@@ -575,244 +575,6 @@
   stroke-linejoin: round;
 }
 
-/* Compartir rápido debajo del fichaje: lo que se usa de verdad, a mano. */
-.ca-hs-rapido {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.625rem;
-  margin-top: 1.25rem;
-  max-width: 22rem;
-}
-
-.ca-hs-rapido-titulo {
-  grid-column: 1 / -1;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--hs-crema-suave);
-}
-
-.ca-hs-rapido button {
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 3rem;
-  padding: 0.625rem 0.875rem;
-  border-radius: 0.875rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  line-height: 1.2;
-  transition:
-    transform 0.2s var(--ease-snappy),
-    background-color 0.25s var(--ease-fluid),
-    filter 0.25s var(--ease-fluid);
-}
-
-.ca-hs-rapido button svg {
-  flex: none;
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.ca-hs-rapido button:active {
-  transform: scale(0.97);
-}
-
-.ca-hs-rapido button:focus-visible {
-  outline: 2px solid var(--hs-verde);
-  outline-offset: 3px;
-}
-
-.ca-hs-rapido-ig {
-  background: linear-gradient(120deg, #f58529, #dd2a7b 45%, #8134af);
-  color: #fff;
-}
-
-.ca-hs-rapido-ig:hover {
-  filter: brightness(1.08);
-}
-
-.ca-hs-rapido-wa {
-  background: #25d366;
-  color: #062b17;
-}
-
-.ca-hs-rapido-wa:hover {
-  filter: brightness(1.06);
-}
-
-.ca-hs-rapido-fb {
-  background: #1877f2;
-  color: #fff;
-}
-
-.ca-hs-rapido-fb:hover {
-  filter: brightness(1.08);
-}
-
-/* X es negro de marca: sobre el panel oscuro se separa con un filo claro en vez de otro color. */
-.ca-hs-rapido-x {
-  background: #000;
-  color: #fff;
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18);
-}
-
-.ca-hs-rapido-x:hover {
-  background: #14191a;
-}
-
-.ca-hs-rapido .ca-hs-rapido-fb svg,
-.ca-hs-rapido .ca-hs-rapido-x svg {
-  width: 1.125rem;
-  height: 1.125rem;
-}
-
-/* Llegó desde el QR de la compu: el botón que hay que tocar se marca con un halo que late dos veces. */
-.ca-hs-rapido-ig[data-destacado] {
-  animation: ca-hs-ig-halo 1.4s var(--ease-fluid) 0.5s 2;
-}
-
-@keyframes ca-hs-ig-halo {
-  0% {
-    box-shadow: 0 0 0 0 rgb(255 255 255 / 0.5);
-  }
-  100% {
-    box-shadow: 0 0 0 14px rgb(255 255 255 / 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ca-hs-rapido-ig[data-destacado] {
-    animation: none;
-    outline: 2px solid #dd2a7b;
-    outline-offset: 3px;
-  }
-}
-
-.ca-hs-rapido-aviso {
-  grid-column: 1 / -1;
-  min-height: 1.25rem;
-  font-size: 0.8125rem;
-  color: var(--hs-crema-suave);
-}
-
-.ca-hs-rapido-aviso:empty {
-  min-height: 0;
-}
-
-.ca-hs-tarjeta-ilus {
-  width: 4.25rem;
-  height: 4.25rem;
-  margin: -0.25rem 0 0.125rem -0.25rem;
-  transition: transform 0.45s var(--ease-fluid);
-}
-
-.ca-hs-tarjeta:hover .ca-hs-tarjeta-ilus,
-.ca-hs-tarjeta[aria-pressed="true"] .ca-hs-tarjeta-ilus {
-  transform: scale(1.06) rotate(-3deg);
-}
-
-/* La grilla de cosas */
-.ca-hs-grilla {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.ca-hs-tarjeta {
-  display: grid;
-  align-content: start;
-  gap: 0.375rem;
-  width: 100%;
-  min-height: 9.5rem;
-  padding: 1rem;
-  border-radius: 1.25rem;
-  border: 1px solid var(--cy-linea);
-  background: var(--cy-papel-claro);
-  text-align: left;
-  box-shadow: var(--cy-sombra-apoyo);
-  transition:
-    transform 0.35s var(--ease-fluid),
-    box-shadow 0.35s var(--ease-fluid),
-    border-color 0.35s var(--ease-fluid),
-    background-color 0.35s var(--ease-fluid);
-}
-
-.ca-hs-tarjeta:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--cy-sombra-alzada);
-}
-
-.ca-hs-tarjeta:active {
-  transform: translateY(0) scale(0.985);
-}
-
-.ca-hs-tarjeta:focus-visible {
-  outline: 2px solid var(--cy-acento);
-  outline-offset: 3px;
-}
-
-.ca-hs-tarjeta[aria-pressed="true"] {
-  border-color: var(--hs-tinta);
-  background: var(--hs-tinta);
-  color: var(--hs-crema);
-}
-
-.ca-hs-tarjeta-nombre {
-  font-size: 1rem;
-  font-weight: 700;
-  color: inherit;
-}
-
-.ca-hs-tarjeta-detalle {
-  font-size: 0.8125rem;
-  color: var(--cy-zinc-500);
-  font-variant-numeric: tabular-nums;
-}
-
-.ca-hs-tarjeta-horas {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: 0.4rem;
-  margin-top: auto;
-  padding-top: 0.5rem;
-}
-
-.ca-hs-tarjeta-horas > span {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.15rem;
-}
-
-.ca-hs-tarjeta-horas .ca-hs-n {
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-
-.ca-hs-tarjeta-horas .ca-hs-u {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--cy-acento-tinta);
-}
-
-.ca-hs-tarjeta-fuente {
-  font-size: 0.75rem;
-  color: var(--cy-zinc-500);
-}
-
-.ca-hs-tarjeta[aria-pressed="true"] :is(.ca-hs-tarjeta-detalle, .ca-hs-tarjeta-fuente) {
-  color: rgb(244 240 230 / 0.6);
-}
-
-.ca-hs-tarjeta[aria-pressed="true"] .ca-hs-u {
-  color: var(--hs-verde);
-}
-
 /* Afuera */
 .ca-hs-afuera-lista {
   display: grid;
@@ -836,6 +598,21 @@
 
 .ca-hs-afuera-lista li + li {
   border-top: 1px solid var(--cy-linea);
+}
+
+.ca-hs-afuera-lista li[data-propio] {
+  background: rgb(52 211 153 / 0.1);
+  font-weight: 650;
+}
+
+.ca-hs-afuera-lista li[data-propio] .ca-hs-n {
+  color: #047857;
+}
+
+.ca-hs-afuera-nota {
+  margin-top: 0.875rem;
+  font-size: 0.8125rem;
+  color: var(--cy-zinc-500);
 }
 
 .ca-hs-afuera-lista img {
@@ -944,10 +721,6 @@
 }
 
 @media (min-width: 40rem) {
-  .ca-hs-grilla {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .ca-hs-jornada {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -984,10 +757,6 @@
     gap: 3.5rem;
     padding: 3rem;
   }
-
-  .ca-hs-grilla {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -997,14 +766,8 @@
   }
 
   .ca-hs-celdas i::after,
-  .ca-hs-tarjeta,
-  .ca-hs-tarjeta-ilus,
   .ca-hs-paso-control button,
   .ca-hs-afuera-pie svg {
     transition: none;
-  }
-
-  .ca-hs-tarjeta:hover {
-    transform: none;
   }
 }
