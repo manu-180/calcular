@@ -1,4 +1,4 @@
-import type { BrazoPuente, ResumenBoca } from "@/lib/panel/tipos";
+import type { BrazoPuente, FilaBoca, ResumenBoca } from "@/lib/panel/tipos";
 
 // Por debajo de esto, cualquier diferencia entre los brazos es ruido: ni se intenta un veredicto.
 export const MIN_EXPOSICIONES = 30;
@@ -106,4 +106,25 @@ export function analizarPuente(brazos: BrazoPuente[]): AnalisisPuente {
     };
   }
   return { con, sin, hayDatos, suficiente, clic, siguieron, compartieron, veredicto };
+}
+
+// La sección que se está probando ahora, para verla aparte del resto en el panel. Es un origen de
+// src/motor/compartir/ref.ts: cuando se lance otra, se cambia acá.
+export const SECCION_NUEVA = "horas";
+
+export type LadoSeccion = { compartidos: number; llegadas: number; nuevas: number; usaron: number };
+
+// «personas» no se suma entre orígenes: la misma persona puede compartir desde dos lados.
+export function separarSeccion(origenes: FilaBoca[], clave = SECCION_NUEVA): { nueva: LadoSeccion; resto: LadoSeccion } {
+  const vacio = (): LadoSeccion => ({ compartidos: 0, llegadas: 0, nuevas: 0, usaron: 0 });
+  const nueva = vacio();
+  const resto = vacio();
+  for (const f of origenes) {
+    const lado = f.clave === clave ? nueva : resto;
+    lado.compartidos += f.compartidos;
+    lado.llegadas += f.llegadas;
+    lado.nuevas += f.nuevas;
+    lado.usaron += f.usaron;
+  }
+  return { nueva, resto };
 }
