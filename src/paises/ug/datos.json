@@ -1,0 +1,802 @@
+{
+  "mercado": "ug",
+  "datos": [
+    {
+      "id": "ug.paye-bands",
+      "nombre": "Monthly PAYE rates for resident employees",
+      "tipo": "escala",
+      "unidad": "UGX",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": [
+            { "desde": 0, "hasta": 335000, "tasa": 0 },
+            { "desde": 335000, "hasta": 410000, "tasa": 20 },
+            { "desde": 410000, "hasta": 485000, "tasa": 25 },
+            { "desde": 485000, "hasta": 10000000, "tasa": 30 },
+            { "desde": 10000000, "hasta": null, "tasa": 40 }
+          ],
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "PAYE rates for resident taxpayers (monthly)",
+            "url": "https://ura.go.ug/en/domestic-taxes/paye-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Above Ushs 10,000,000 a month URA adds 10% to the 30% band, so the top row is 40%. The Income Tax (Amendment) Bill, 2026 sets commencement on 1 July 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.paye-bands-non-resident",
+      "nombre": "Monthly PAYE rates for non-resident employees",
+      "tipo": "escala",
+      "unidad": "UGX",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": [
+            { "desde": 0, "hasta": 335000, "tasa": 10 },
+            { "desde": 335000, "hasta": 410000, "tasa": 20 },
+            { "desde": 410000, "hasta": 10000000, "tasa": 30 },
+            { "desde": 10000000, "hasta": null, "tasa": 40 }
+          ],
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "PAYE rates for non-resident taxpayers (monthly)",
+            "url": "https://ura.go.ug/en/domestic-taxes/paye-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "Value Added Tax (VAT): standard rated supplies",
+            "url": "https://ura.go.ug/en/value-added-tax-vat/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.rental-tax-rate",
+      "nombre": "Rental income tax for individuals",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "Rental Income Tax: computation for individuals",
+            "url": "https://ura.go.ug/en/rental-income-tax-4/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.rental-tax-threshold",
+      "nombre": "Yearly gross rent an individual can earn before rental tax",
+      "tipo": "numero",
+      "unidad": "UGX",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2820000,
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "Rental Income Tax: computation for individuals",
+            "url": "https://ura.go.ug/en/rental-income-tax-4/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.company-tax-rate",
+      "nombre": "Income tax rate for companies (also applied to their rental income)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "Rental Income Tax: computation for companies, trustees and retirement funds",
+            "url": "https://ura.go.ug/en/rental-income-tax-4/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Same 30% as the Income Tax Act, Cap. 338, Schedule 4, Part III."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.rental-expense-cap",
+      "nombre": "Cap on expenses a company can deduct from gross rent",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "Rental Income Tax: computation for companies, trustees and retirement funds",
+            "url": "https://ura.go.ug/en/rental-income-tax-4/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.presumptive-records",
+      "nombre": "Small business (presumptive) tax with records, by yearly turnover",
+      "tipo": "escala",
+      "unidad": "UGX",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 10000000, "tasa": 0 },
+            { "desde": 10000000, "hasta": 30000000, "tasa": 0.4 },
+            { "desde": 30000000, "hasta": 50000000, "tasa": 0.5 },
+            { "desde": 50000000, "hasta": 80000000, "tasa": 0.6 },
+            { "desde": 80000000, "hasta": null, "tasa": 0.7 }
+          ],
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "Small Business (Presumptive) Taxpayers: tax payable with records",
+            "url": "https://ura.go.ug/en/taxes-on-small-businesses/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.presumptive-no-records",
+      "nombre": "Small business (presumptive) tax without records, by yearly turnover",
+      "tipo": "escala",
+      "unidad": "UGX",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 10000000, "tasa": 0, "cuotaFija": 0 },
+            { "desde": 10000000.01, "hasta": 30000000, "tasa": 0, "cuotaFija": 80000 },
+            { "desde": 30000000.01, "hasta": 50000000, "tasa": 0, "cuotaFija": 200000 },
+            { "desde": 50000000.01, "hasta": 80000000, "tasa": 0, "cuotaFija": 400000 },
+            { "desde": 80000000.01, "hasta": null, "tasa": 0, "cuotaFija": 900000 }
+          ],
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "Small Business (Presumptive) Taxpayers: tax payable without records",
+            "url": "https://ura.go.ug/en/taxes-on-small-businesses/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.presumptive-ceiling",
+      "nombre": "Highest yearly turnover for the small business (presumptive) regime",
+      "tipo": "numero",
+      "unidad": "UGX",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 150000000,
+          "fuente": {
+            "organismo": "Uganda Revenue Authority",
+            "titulo": "Small Business (Presumptive) Taxpayers: who qualifies",
+            "url": "https://ura.go.ug/en/taxes-on-small-businesses/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.wht-rates",
+      "nombre": "Withholding tax rates by type of payment",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "goods-services": "Goods or services bought by a withholding agent",
+        "professional-fees": "Professional or management fees",
+        "interest-dividends": "Interest or dividends paid to a resident",
+        "listed-dividends": "Dividends from a listed company to an individual",
+        "non-resident": "Dividends, interest, royalties, rent or fees paid to a non-resident",
+        "betting": "Winnings from betting"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "goods-services": 6,
+            "professional-fees": 6,
+            "interest-dividends": 15,
+            "listed-dividends": 10,
+            "non-resident": 15,
+            "betting": 15
+          },
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Income Tax Act, Cap. 338, Schedule 4, Parts V, IX, X and XI",
+            "url": "https://media.ulii.org/media/legislation/112783/source_file/b86ae504ea791920/1997-11.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "URA's real estate page repeats the 6% on goods and services above Ushs 1,000,000. The Income Tax (Amendment) Bill, 2026 keeps 15% on betting and gaming winnings."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.wht-goods-threshold",
+      "nombre": "Payments for goods or services above which withholding applies",
+      "tipo": "numero",
+      "unidad": "UGX",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Income Tax Act, Cap. 338, section 136(1)",
+            "url": "https://media.ulii.org/media/legislation/112783/source_file/b86ae504ea791920/1997-11.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.nssf-employee",
+      "nombre": "NSSF contribution deducted from the employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Our Membership: 5% from the employee and 10% from the employer",
+            "url": "https://www.nssfug.org/about-us/membership/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.nssf-employer",
+      "nombre": "NSSF contribution paid by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Our Membership: 5% from the employee and 10% from the employer",
+            "url": "https://www.nssfug.org/about-us/membership/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.nssf-midterm-share",
+      "nombre": "Share of NSSF savings a member can take as midterm access",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Midterm Benefit",
+            "url": "https://www.nssfug.org/benefits-products/benefits/benefits-midterm/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.nssf-midterm-share-disability",
+      "nombre": "Share of NSSF savings a member with a disability can take as midterm access",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Midterm Benefit",
+            "url": "https://www.nssfug.org/benefits-products/benefits/benefits-midterm/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.nssf-midterm-age",
+      "nombre": "Minimum age for NSSF midterm access",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Midterm Benefit",
+            "url": "https://www.nssfug.org/benefits-products/benefits/benefits-midterm/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.nssf-midterm-age-disability",
+      "nombre": "Minimum age for NSSF midterm access for a member with a disability",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Midterm Benefit",
+            "url": "https://www.nssfug.org/benefits-products/benefits/benefits-midterm/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.nssf-midterm-years",
+      "nombre": "Years of contributions needed for NSSF midterm access",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "National Social Security Fund",
+            "titulo": "Midterm Benefit",
+            "url": "https://www.nssfug.org/benefits-products/benefits/benefits-midterm/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.lst-bands",
+      "nombre": "Local service tax a year for employees, by monthly take-home pay",
+      "tipo": "escala",
+      "unidad": "UGX",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 100000, "tasa": 0, "cuotaFija": 0 },
+            { "desde": 100000.01, "hasta": 200000, "tasa": 0, "cuotaFija": 5000 },
+            { "desde": 200000.01, "hasta": 300000, "tasa": 0, "cuotaFija": 10000 },
+            { "desde": 300000.01, "hasta": 400000, "tasa": 0, "cuotaFija": 20000 },
+            { "desde": 400000.01, "hasta": 500000, "tasa": 0, "cuotaFija": 30000 },
+            { "desde": 500000.01, "hasta": 600000, "tasa": 0, "cuotaFija": 40000 },
+            { "desde": 600000.01, "hasta": 700000, "tasa": 0, "cuotaFija": 60000 },
+            { "desde": 700000.01, "hasta": 800000, "tasa": 0, "cuotaFija": 70000 },
+            { "desde": 800000.01, "hasta": 900000, "tasa": 0, "cuotaFija": 80000 },
+            { "desde": 900000.01, "hasta": 1000000, "tasa": 0, "cuotaFija": 90000 },
+            { "desde": 1000000.01, "hasta": null, "tasa": 0, "cuotaFija": 100000 }
+          ],
+          "fuente": {
+            "organismo": "Uganda Gazette (Acts Supplement No. 5 of 7 July 2008)",
+            "titulo": "Local Governments (Amendment) (No. 2) Act, 2008, Fifth Schedule, Part II, rate 3",
+            "url": "https://faolex.fao.org/docs/pdf/uga151713.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Scan of the gazetted Act. Kampala Capital City Authority publishes the same table in its LST guide (https://kcca.go.ug/uDocs/Local_Service_Tax_FAQs.pdf)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.leave-days-per-4-months",
+      "nombre": "Annual leave days for each four months of continuous service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 53(1)(a)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.leave-min-months",
+      "nombre": "Continuous service needed before annual leave applies",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 53(4)(a)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.maternity-days",
+      "nombre": "Maternity leave in working days on full wages",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 55(1)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.paternity-days",
+      "nombre": "Paternity leave in working days on full wages",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 56(1)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.weekly-hours",
+      "nombre": "Normal working hours a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 48,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, sections 51(2) and 52(1)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.overtime-normal",
+      "nombre": "Overtime pay on normal working days, times the hourly rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 52(8)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.overtime-holiday",
+      "nombre": "Overtime pay on gazetted public holidays, times the hourly rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 52(8)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.notice-weeks-under-1y",
+      "nombre": "Notice for more than six months but less than one year of service",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 57(3)(a)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.notice-months-1-5y",
+      "nombre": "Notice for more than twelve months but less than five years of service",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 57(3)(b)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.notice-months-5-10y",
+      "nombre": "Notice for five but less than ten years of service",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 57(3)(c)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.notice-months-10y",
+      "nombre": "Notice for ten years of service or more",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 57(3)(d)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.severance-months-per-year",
+      "nombre": "Severance allowance: months of salary per year worked",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-05",
+          "valor": 1,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment (Amendment) Act, 2026 (Act 10), section 27 substituting section 88",
+            "url": "https://media.ulii.org/media/legislation/128859/source_file/107fdd589735b99e/ug-act-2026-10-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.severance-min-months",
+      "nombre": "Continuous service needed for severance allowance",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 86",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.sick-min-service-months",
+      "nombre": "Continuous service needed for sick pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment Act, Cap. 226, section 54(1)",
+            "url": "https://media.ulii.org/media/legislation/111709/source_file/ae0785212ae9a6b7/2006-6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.sick-full-pay-months",
+      "nombre": "Months of sick leave on full pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-05",
+          "valor": 2,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment (Amendment) Act, 2026 (Act 10), section 10 amending section 54",
+            "url": "https://media.ulii.org/media/legislation/128859/source_file/107fdd589735b99e/ug-act-2026-10-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.sick-half-pay-months",
+      "nombre": "Further months of sick leave on half pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-06-05",
+          "valor": 4,
+          "fuente": {
+            "organismo": "ULII (Uganda Legal Information Institute)",
+            "titulo": "Employment (Amendment) Act, 2026 (Act 10), section 10 amending section 54",
+            "url": "https://media.ulii.org/media/legislation/128859/source_file/107fdd589735b99e/ug-act-2026-10-publication-document.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ug.stamp-duty-transfer",
+      "nombre": "Stamp duty on a transfer of land or other property, share of the total value",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-07-01",
+          "valor": 1.5,
+          "motivo": "1.5% is the rate in Schedule 2, item 63(a) before 1 July 2026. The Stamp Duty (Amendment) Bill, 2026 proposed 3%; law firms say Parliament kept 1.5%, but the enacted Act is not readable (ulii.org returns 403 and URA has not published the new schedule).",
+          "fuente": {
+            "organismo": "Parliament of Uganda",
+            "titulo": "Stamp Duty (Amendment) Bill, 2026, clause 4",
+            "url": "https://firewall.parliament.go.ug/sites/default/files/Stamp%20Duty%20(Amendment)%20Bill%2C%202026.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}
