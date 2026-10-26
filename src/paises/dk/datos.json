@@ -1,0 +1,2118 @@
+{
+  "mercado": "dk",
+  "datos": [
+    {
+      "id": "dk.am-bidrag",
+      "nombre": "Arbejdsmarkedsbidrag",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser i arbejdsmarkedsbidragsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/arbejdsmarkedsbidragsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.bundskat",
+      "nombre": "Bundskat",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12.01,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.personfradrag",
+      "nombre": "Personfradrag (over 18 år)",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 54100,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 55700,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.mellemskat-sats",
+      "nombre": "Mellemskat, sats",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.mellemskat-graense",
+      "nombre": "Mellemskattegrænse (personlig indkomst efter am-bidrag)",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 641200,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 659900,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.topskat-sats",
+      "nombre": "Topskat, sats",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.topskat-graense",
+      "nombre": "Topskattegrænse (personlig indkomst efter am-bidrag)",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 777900,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 800500,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.toptopskat-sats",
+      "nombre": "Toptopskat, sats",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.toptopskat-graense",
+      "nombre": "Toptopskattegrænse (personlig indkomst efter am-bidrag)",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2592700,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 2668200,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.skatteloft",
+      "nombre": "Skatteloft for personlig indkomst",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 44.57,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.aktieindkomst-satser",
+      "nombre": "Skat af aktieindkomst",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "lav": "Laveste trin",
+        "hoej": "Højeste trin"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "lav": 27,
+            "hoej": 42
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.aktieindkomst-graense",
+      "nombre": "Progressionsgrænse for aktieindkomst",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 79400,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 89600,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i personskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.beskaeftigelsesfradrag-sats",
+      "nombre": "Beskæftigelsesfradrag, sats",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12.75,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.beskaeftigelsesfradrag-max",
+      "nombre": "Beskæftigelsesfradrag, højst",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 63300,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 65200,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.jobfradrag-sats",
+      "nombre": "Jobfradrag, sats",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4.5,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.jobfradrag-graense",
+      "nombre": "Jobfradrag, bundgrænse for grundlaget",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 235200,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 242100,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.jobfradrag-max",
+      "nombre": "Jobfradrag, højst",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3100,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 3200,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.koerselsfradrag",
+      "nombre": "Kørselsfradrag pr. km pr. dag",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "mellem": "25-120 km",
+        "over-120": "Over 120 km",
+        "yderkommune": "Yderkommuner og visse småøer, over 24 km"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "mellem": 3.17,
+            "over-120": 1.59,
+            "yderkommune": 3.51
+          },
+          "fuente": {
+            "organismo": "Skattestyrelsen (skat.dk)",
+            "titulo": "Satser for kørselsfradrag 2026",
+            "url": "https://skat.dk/borger/fradrag/koerselsfradrag/beregn-dit-koerselsfradrag",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.koerselsfradrag-km",
+      "nombre": "Kilometergrænser for kørselsfradrag pr. dag (tur-retur)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "uden-fradrag": "Ingen fradrag til og med",
+        "lav-sats-over": "Lavere sats over"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "uden-fradrag": 24,
+            "lav-sats-over": 120
+          },
+          "fuente": {
+            "organismo": "Skattestyrelsen (skat.dk)",
+            "titulo": "Satser for kørselsfradrag 2026",
+            "url": "https://skat.dk/borger/fradrag/koerselsfradrag/beregn-dit-koerselsfradrag",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.koerselsgodtgoerelse-km",
+      "nombre": "Kilometergrænse for den høje sats for kørselsgodtgørelse",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.koerselsgodtgoerelse",
+      "nombre": "Skattefri kørselsgodtgørelse pr. km",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "bil-til-20000": "Egen bil, til og med 20.000 km",
+        "bil-over-20000": "Egen bil, over 20.000 km",
+        "cykel": "Cykel, knallert eller el-løbehjul"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "bil-til-20000": 3.94,
+            "bil-over-20000": 2.28,
+            "cykel": 0.64
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ligningsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ligningsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.gaveafgift-bundfradrag",
+      "nombre": "Bundfradrag ved gaveafgift",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "afkom": "Børn, børnebørn, stedbørn og forældre",
+        "svigerboern": "Svigerbørn",
+        "bedsteforaeldre": "Bedsteforældre og stedforældre"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "afkom": 80600,
+            "svigerboern": 28200,
+            "bedsteforaeldre": 80600
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i boafgiftsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/boafgiftsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "afkom": 83000,
+            "svigerboern": 29000,
+            "bedsteforaeldre": 83000
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i boafgiftsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/boafgiftsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.gaveafgift-sats",
+      "nombre": "Gaveafgift",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "afkom": "Børn, børnebørn, stedbørn og forældre",
+        "svigerboern": "Svigerbørn",
+        "bedsteforaeldre": "Bedsteforældre og stedforældre"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "afkom": 15,
+            "svigerboern": 15,
+            "bedsteforaeldre": 36.25
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i boafgiftsloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/boafgiftsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.boerneydelse",
+      "nombre": "Børne- og ungeydelse pr. år",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "0-2": "0-2 år",
+        "3-6": "3-6 år",
+        "7-14": "7-14 år",
+        "15-17": "15-17 år"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "0-2": 21480,
+            "3-6": 16992,
+            "7-14": 13368,
+            "15-17": 13368
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i børne- og ungeydelsesloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/boerne-og-ungeydelsesloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "0-2": 21912,
+            "3-6": 17328,
+            "7-14": 13632,
+            "15-17": 13632
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i børne- og ungeydelsesloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/boerne-og-ungeydelsesloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.boerneydelse-aftrapning-graense",
+      "nombre": "Beløbsgrænse for aftrapning af børne- og ungeydelse",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 961100,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i børne- og ungeydelsesloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/boerne-og-ungeydelsesloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 989100,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i børne- og ungeydelsesloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/boerne-og-ungeydelsesloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.boerneydelse-aftrapning-sats",
+      "nombre": "Aftrapning af børne- og ungeydelse",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i børne- og ungeydelsesloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/boerne-og-ungeydelsesloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.ejendomsvaerdiskat-satser",
+      "nombre": "Ejendomsværdiskat i promille",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "alm": "Almindelig sats",
+        "progressiv": "Progressiv sats"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "alm": 5.1,
+            "progressiv": 14
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ejendomsskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ejendomsskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.ejendomsvaerdiskat-graense",
+      "nombre": "Progressionsgrænse for ejendomsværdiskat",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 9007000,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ejendomsskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ejendomsskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 9007000,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ejendomsskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ejendomsskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.beskatningsgrundlag-andel",
+      "nombre": "Beskatningsgrundlag i procent af ejendomsværdien eller grundværdien",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Satser og beløbsgrænser i ejendomsskatteloven 2026 og 2027",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/ejendomsskatteloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.moms",
+      "nombre": "Moms",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Afgiftssatser i momsloven 2026 og 2027 (§ 33)",
+            "url": "https://svmn.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/momsloven",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.kommuneskat",
+      "nombre": "Kommuneskat",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "albertslund": "Albertslund",
+        "alleroed": "Allerød",
+        "assens": "Assens",
+        "ballerup": "Ballerup",
+        "billund": "Billund",
+        "bornholm": "Bornholm",
+        "broendby": "Brøndby",
+        "broenderslev": "Brønderslev",
+        "dragoer": "Dragør",
+        "egedal": "Egedal",
+        "esbjerg": "Esbjerg",
+        "faaborg-midtfyn": "Faaborg-Midtfyn",
+        "fanoe": "Fanø",
+        "favrskov": "Favrskov",
+        "faxe": "Faxe",
+        "fredensborg": "Fredensborg",
+        "fredericia": "Fredericia",
+        "frederiksberg": "Frederiksberg",
+        "frederikshavn": "Frederikshavn",
+        "frederikssund": "Frederikssund",
+        "furesoe": "Furesø",
+        "gentofte": "Gentofte",
+        "gladsaxe": "Gladsaxe",
+        "glostrup": "Glostrup",
+        "greve": "Greve",
+        "gribskov": "Gribskov",
+        "guldborgsund": "Guldborgsund",
+        "haderslev": "Haderslev",
+        "halsnaes": "Halsnæs",
+        "hedensted": "Hedensted",
+        "helsingoer": "Helsingør",
+        "herlev": "Herlev",
+        "herning": "Herning",
+        "hilleroed": "Hillerød",
+        "hjoerring": "Hjørring",
+        "holbaek": "Holbæk",
+        "holstebro": "Holstebro",
+        "horsens": "Horsens",
+        "hvidovre": "Hvidovre",
+        "hoeje-taastrup": "Høje-Taastrup",
+        "hoersholm": "Hørsholm",
+        "ikast-brande": "Ikast-Brande",
+        "ishoej": "Ishøj",
+        "jammerbugt": "Jammerbugt",
+        "kalundborg": "Kalundborg",
+        "kerteminde": "Kerteminde",
+        "kolding": "Kolding",
+        "koebenhavn": "København",
+        "koege": "Køge",
+        "langeland": "Langeland",
+        "lejre": "Lejre",
+        "lemvig": "Lemvig",
+        "lolland": "Lolland",
+        "lyngby-taarbaek": "Lyngby-Taarbæk",
+        "laesoe": "Læsø",
+        "mariagerfjord": "Mariagerfjord",
+        "middelfart": "Middelfart",
+        "morsoe": "Morsø",
+        "norddjurs": "Norddjurs",
+        "nordfyns": "Nordfyns",
+        "nyborg": "Nyborg",
+        "naestved": "Næstved",
+        "odder": "Odder",
+        "odense": "Odense",
+        "odsherred": "Odsherred",
+        "randers": "Randers",
+        "rebild": "Rebild",
+        "ringkoebing-skjern": "Ringkøbing-Skjern",
+        "ringsted": "Ringsted",
+        "roskilde": "Roskilde",
+        "rudersdal": "Rudersdal",
+        "roedovre": "Rødovre",
+        "samsoe": "Samsø",
+        "silkeborg": "Silkeborg",
+        "skanderborg": "Skanderborg",
+        "skive": "Skive",
+        "slagelse": "Slagelse",
+        "solroed": "Solrød",
+        "soroe": "Sorø",
+        "stevns": "Stevns",
+        "struer": "Struer",
+        "svendborg": "Svendborg",
+        "syddjurs": "Syddjurs",
+        "soenderborg": "Sønderborg",
+        "thisted": "Thisted",
+        "toender": "Tønder",
+        "taarnby": "Tårnby",
+        "vallensbaek": "Vallensbæk",
+        "varde": "Varde",
+        "vejen": "Vejen",
+        "vejle": "Vejle",
+        "vesthimmerland": "Vesthimmerland",
+        "viborg": "Viborg",
+        "vordingborg": "Vordingborg",
+        "aeroe": "Ærø",
+        "aabenraa": "Aabenraa",
+        "aalborg": "Aalborg",
+        "aarhus": "Aarhus"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "albertslund": 25.6,
+            "alleroed": 25.3,
+            "assens": 26.1,
+            "ballerup": 25.5,
+            "billund": 24.0,
+            "bornholm": 26.2,
+            "broendby": 24.3,
+            "broenderslev": 26.3,
+            "dragoer": 24.8,
+            "egedal": 25.7,
+            "esbjerg": 26.1,
+            "faaborg-midtfyn": 26.1,
+            "fanoe": 26.1,
+            "favrskov": 25.7,
+            "faxe": 25.8,
+            "fredensborg": 25.3,
+            "fredericia": 25.5,
+            "frederiksberg": 24.5,
+            "frederikshavn": 26.2,
+            "frederikssund": 25.6,
+            "furesoe": 24.88,
+            "gentofte": 24.14,
+            "gladsaxe": 23.6,
+            "glostrup": 24.6,
+            "greve": 24.59,
+            "gribskov": 25.4,
+            "guldborgsund": 25.8,
+            "haderslev": 26.3,
+            "halsnaes": 25.7,
+            "hedensted": 25.52,
+            "helsingoer": 25.82,
+            "herlev": 23.7,
+            "herning": 25.4,
+            "hilleroed": 25.6,
+            "hjoerring": 26.21,
+            "holbaek": 25.3,
+            "holstebro": 25.5,
+            "horsens": 25.69,
+            "hvidovre": 25.4,
+            "hoeje-taastrup": 24.6,
+            "hoersholm": 23.7,
+            "ikast-brande": 25.1,
+            "ishoej": 25.0,
+            "jammerbugt": 25.7,
+            "kalundborg": 24.2,
+            "kerteminde": 26.1,
+            "kolding": 25.5,
+            "koebenhavn": 23.39,
+            "koege": 25.26,
+            "langeland": 26.3,
+            "lejre": 25.31,
+            "lemvig": 25.7,
+            "lolland": 26.3,
+            "lyngby-taarbaek": 24.38,
+            "laesoe": 26.3,
+            "mariagerfjord": 25.9,
+            "middelfart": 25.8,
+            "morsoe": 25.8,
+            "norddjurs": 26.0,
+            "nordfyns": 26.0,
+            "nyborg": 26.3,
+            "naestved": 25.0,
+            "odder": 25.1,
+            "odense": 25.5,
+            "odsherred": 26.3,
+            "randers": 26.0,
+            "rebild": 25.83,
+            "ringkoebing-skjern": 25.0,
+            "ringsted": 26.1,
+            "roskilde": 25.2,
+            "rudersdal": 23.47,
+            "roedovre": 25.7,
+            "samsoe": 25.9,
+            "silkeborg": 25.5,
+            "skanderborg": 26.0,
+            "skive": 25.5,
+            "slagelse": 26.1,
+            "solroed": 24.99,
+            "soroe": 26.3,
+            "stevns": 26.0,
+            "struer": 25.3,
+            "svendborg": 26.3,
+            "syddjurs": 25.9,
+            "soenderborg": 25.7,
+            "thisted": 25.5,
+            "toender": 25.3,
+            "taarnby": 24.1,
+            "vallensbaek": 25.6,
+            "varde": 25.1,
+            "vejen": 25.8,
+            "vejle": 23.4,
+            "vesthimmerland": 26.3,
+            "viborg": 25.5,
+            "vordingborg": 26.3,
+            "aeroe": 26.1,
+            "aabenraa": 25.6,
+            "aalborg": 25.6,
+            "aarhus": 24.52
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Oversigt over kommuneskatter 2026",
+            "url": "https://svmn.dk/tal-og-metode/satser/oversigt-over-kommuneskatter",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Samme satser i Danmarks Statistiks tabel PSKAT (2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.kirkeskat",
+      "nombre": "Kirkeskat",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "albertslund": "Albertslund",
+        "alleroed": "Allerød",
+        "assens": "Assens",
+        "ballerup": "Ballerup",
+        "billund": "Billund",
+        "bornholm": "Bornholm",
+        "broendby": "Brøndby",
+        "broenderslev": "Brønderslev",
+        "dragoer": "Dragør",
+        "egedal": "Egedal",
+        "esbjerg": "Esbjerg",
+        "faaborg-midtfyn": "Faaborg-Midtfyn",
+        "fanoe": "Fanø",
+        "favrskov": "Favrskov",
+        "faxe": "Faxe",
+        "fredensborg": "Fredensborg",
+        "fredericia": "Fredericia",
+        "frederiksberg": "Frederiksberg",
+        "frederikshavn": "Frederikshavn",
+        "frederikssund": "Frederikssund",
+        "furesoe": "Furesø",
+        "gentofte": "Gentofte",
+        "gladsaxe": "Gladsaxe",
+        "glostrup": "Glostrup",
+        "greve": "Greve",
+        "gribskov": "Gribskov",
+        "guldborgsund": "Guldborgsund",
+        "haderslev": "Haderslev",
+        "halsnaes": "Halsnæs",
+        "hedensted": "Hedensted",
+        "helsingoer": "Helsingør",
+        "herlev": "Herlev",
+        "herning": "Herning",
+        "hilleroed": "Hillerød",
+        "hjoerring": "Hjørring",
+        "holbaek": "Holbæk",
+        "holstebro": "Holstebro",
+        "horsens": "Horsens",
+        "hvidovre": "Hvidovre",
+        "hoeje-taastrup": "Høje-Taastrup",
+        "hoersholm": "Hørsholm",
+        "ikast-brande": "Ikast-Brande",
+        "ishoej": "Ishøj",
+        "jammerbugt": "Jammerbugt",
+        "kalundborg": "Kalundborg",
+        "kerteminde": "Kerteminde",
+        "kolding": "Kolding",
+        "koebenhavn": "København",
+        "koege": "Køge",
+        "langeland": "Langeland",
+        "lejre": "Lejre",
+        "lemvig": "Lemvig",
+        "lolland": "Lolland",
+        "lyngby-taarbaek": "Lyngby-Taarbæk",
+        "laesoe": "Læsø",
+        "mariagerfjord": "Mariagerfjord",
+        "middelfart": "Middelfart",
+        "morsoe": "Morsø",
+        "norddjurs": "Norddjurs",
+        "nordfyns": "Nordfyns",
+        "nyborg": "Nyborg",
+        "naestved": "Næstved",
+        "odder": "Odder",
+        "odense": "Odense",
+        "odsherred": "Odsherred",
+        "randers": "Randers",
+        "rebild": "Rebild",
+        "ringkoebing-skjern": "Ringkøbing-Skjern",
+        "ringsted": "Ringsted",
+        "roskilde": "Roskilde",
+        "rudersdal": "Rudersdal",
+        "roedovre": "Rødovre",
+        "samsoe": "Samsø",
+        "silkeborg": "Silkeborg",
+        "skanderborg": "Skanderborg",
+        "skive": "Skive",
+        "slagelse": "Slagelse",
+        "solroed": "Solrød",
+        "soroe": "Sorø",
+        "stevns": "Stevns",
+        "struer": "Struer",
+        "svendborg": "Svendborg",
+        "syddjurs": "Syddjurs",
+        "soenderborg": "Sønderborg",
+        "thisted": "Thisted",
+        "toender": "Tønder",
+        "taarnby": "Tårnby",
+        "vallensbaek": "Vallensbæk",
+        "varde": "Varde",
+        "vejen": "Vejen",
+        "vejle": "Vejle",
+        "vesthimmerland": "Vesthimmerland",
+        "viborg": "Viborg",
+        "vordingborg": "Vordingborg",
+        "aeroe": "Ærø",
+        "aabenraa": "Aabenraa",
+        "aalborg": "Aalborg",
+        "aarhus": "Aarhus"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "albertslund": 0.8,
+            "alleroed": 0.58,
+            "assens": 0.98,
+            "ballerup": 0.75,
+            "billund": 0.89,
+            "bornholm": 0.93,
+            "broendby": 0.8,
+            "broenderslev": 1.06,
+            "dragoer": 0.61,
+            "egedal": 0.76,
+            "esbjerg": 0.81,
+            "faaborg-midtfyn": 1.05,
+            "fanoe": 1.14,
+            "favrskov": 0.96,
+            "faxe": 1.08,
+            "fredensborg": 0.64,
+            "fredericia": 0.88,
+            "frederiksberg": 0.5,
+            "frederikshavn": 1.03,
+            "frederikssund": 0.96,
+            "furesoe": 0.7,
+            "gentofte": 0.38,
+            "gladsaxe": 0.75,
+            "glostrup": 0.8,
+            "greve": 0.81,
+            "gribskov": 0.85,
+            "guldborgsund": 1.16,
+            "haderslev": 0.95,
+            "halsnaes": 0.85,
+            "hedensted": 0.98,
+            "helsingoer": 0.63,
+            "herlev": 0.8,
+            "herning": 0.99,
+            "hilleroed": 0.69,
+            "hjoerring": 1.19,
+            "holbaek": 0.96,
+            "holstebro": 1.08,
+            "horsens": 0.79,
+            "hvidovre": 0.72,
+            "hoeje-taastrup": 0.8,
+            "hoersholm": 0.62,
+            "ikast-brande": 0.97,
+            "ishoej": 0.9,
+            "jammerbugt": 1.2,
+            "kalundborg": 1.01,
+            "kerteminde": 0.98,
+            "kolding": 0.92,
+            "koebenhavn": 0.8,
+            "koege": 0.87,
+            "langeland": 1.14,
+            "lejre": 1.05,
+            "lemvig": 1.27,
+            "lolland": 1.23,
+            "lyngby-taarbaek": 0.6,
+            "laesoe": 1.3,
+            "mariagerfjord": 1.15,
+            "middelfart": 0.9,
+            "morsoe": 1.2,
+            "norddjurs": 1.0,
+            "nordfyns": 1.04,
+            "nyborg": 1.0,
+            "naestved": 0.98,
+            "odder": 0.95,
+            "odense": 0.68,
+            "odsherred": 0.98,
+            "randers": 0.89,
+            "rebild": 1.2,
+            "ringkoebing-skjern": 1.05,
+            "ringsted": 0.95,
+            "roskilde": 0.84,
+            "rudersdal": 0.57,
+            "roedovre": 0.72,
+            "samsoe": 1.2,
+            "silkeborg": 0.94,
+            "skanderborg": 0.86,
+            "skive": 1.09,
+            "slagelse": 0.96,
+            "solroed": 0.84,
+            "soroe": 0.95,
+            "stevns": 1.1,
+            "struer": 1.2,
+            "svendborg": 1.02,
+            "syddjurs": 0.98,
+            "soenderborg": 0.91,
+            "thisted": 1.27,
+            "toender": 1.16,
+            "taarnby": 0.61,
+            "vallensbaek": 0.8,
+            "varde": 0.95,
+            "vejen": 1.06,
+            "vejle": 0.89,
+            "vesthimmerland": 1.18,
+            "viborg": 0.93,
+            "vordingborg": 1.02,
+            "aeroe": 1.07,
+            "aabenraa": 0.95,
+            "aalborg": 0.98,
+            "aarhus": 0.74
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Oversigt over kommuneskatter 2026",
+            "url": "https://svmn.dk/tal-og-metode/satser/oversigt-over-kommuneskatter",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Samme satser i Danmarks Statistiks tabel PSKAT (2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.grundskyld",
+      "nombre": "Grundskyldspromille",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "albertslund": "Albertslund",
+        "alleroed": "Allerød",
+        "assens": "Assens",
+        "ballerup": "Ballerup",
+        "billund": "Billund",
+        "bornholm": "Bornholm",
+        "broendby": "Brøndby",
+        "broenderslev": "Brønderslev",
+        "dragoer": "Dragør",
+        "egedal": "Egedal",
+        "esbjerg": "Esbjerg",
+        "faaborg-midtfyn": "Faaborg-Midtfyn",
+        "fanoe": "Fanø",
+        "favrskov": "Favrskov",
+        "faxe": "Faxe",
+        "fredensborg": "Fredensborg",
+        "fredericia": "Fredericia",
+        "frederiksberg": "Frederiksberg",
+        "frederikshavn": "Frederikshavn",
+        "frederikssund": "Frederikssund",
+        "furesoe": "Furesø",
+        "gentofte": "Gentofte",
+        "gladsaxe": "Gladsaxe",
+        "glostrup": "Glostrup",
+        "greve": "Greve",
+        "gribskov": "Gribskov",
+        "guldborgsund": "Guldborgsund",
+        "haderslev": "Haderslev",
+        "halsnaes": "Halsnæs",
+        "hedensted": "Hedensted",
+        "helsingoer": "Helsingør",
+        "herlev": "Herlev",
+        "herning": "Herning",
+        "hilleroed": "Hillerød",
+        "hjoerring": "Hjørring",
+        "holbaek": "Holbæk",
+        "holstebro": "Holstebro",
+        "horsens": "Horsens",
+        "hvidovre": "Hvidovre",
+        "hoeje-taastrup": "Høje-Taastrup",
+        "hoersholm": "Hørsholm",
+        "ikast-brande": "Ikast-Brande",
+        "ishoej": "Ishøj",
+        "jammerbugt": "Jammerbugt",
+        "kalundborg": "Kalundborg",
+        "kerteminde": "Kerteminde",
+        "kolding": "Kolding",
+        "koebenhavn": "København",
+        "koege": "Køge",
+        "langeland": "Langeland",
+        "lejre": "Lejre",
+        "lemvig": "Lemvig",
+        "lolland": "Lolland",
+        "lyngby-taarbaek": "Lyngby-Taarbæk",
+        "laesoe": "Læsø",
+        "mariagerfjord": "Mariagerfjord",
+        "middelfart": "Middelfart",
+        "morsoe": "Morsø",
+        "norddjurs": "Norddjurs",
+        "nordfyns": "Nordfyns",
+        "nyborg": "Nyborg",
+        "naestved": "Næstved",
+        "odder": "Odder",
+        "odense": "Odense",
+        "odsherred": "Odsherred",
+        "randers": "Randers",
+        "rebild": "Rebild",
+        "ringkoebing-skjern": "Ringkøbing-Skjern",
+        "ringsted": "Ringsted",
+        "roskilde": "Roskilde",
+        "rudersdal": "Rudersdal",
+        "roedovre": "Rødovre",
+        "samsoe": "Samsø",
+        "silkeborg": "Silkeborg",
+        "skanderborg": "Skanderborg",
+        "skive": "Skive",
+        "slagelse": "Slagelse",
+        "solroed": "Solrød",
+        "soroe": "Sorø",
+        "stevns": "Stevns",
+        "struer": "Struer",
+        "svendborg": "Svendborg",
+        "syddjurs": "Syddjurs",
+        "soenderborg": "Sønderborg",
+        "thisted": "Thisted",
+        "toender": "Tønder",
+        "taarnby": "Tårnby",
+        "vallensbaek": "Vallensbæk",
+        "varde": "Varde",
+        "vejen": "Vejen",
+        "vejle": "Vejle",
+        "vesthimmerland": "Vesthimmerland",
+        "viborg": "Viborg",
+        "vordingborg": "Vordingborg",
+        "aeroe": "Ærø",
+        "aabenraa": "Aabenraa",
+        "aalborg": "Aalborg",
+        "aarhus": "Aarhus"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "albertslund": 9.1,
+            "alleroed": 8.0,
+            "assens": 11.2,
+            "ballerup": 8.3,
+            "billund": 7.2,
+            "bornholm": 10.7,
+            "broendby": 4.9,
+            "broenderslev": 17.1,
+            "dragoer": 8.1,
+            "egedal": 8.8,
+            "esbjerg": 9.9,
+            "faaborg-midtfyn": 8.5,
+            "fanoe": 12.5,
+            "favrskov": 10.6,
+            "faxe": 8.0,
+            "fredensborg": 8.3,
+            "fredericia": 13.0,
+            "frederiksberg": 3.1,
+            "frederikshavn": 13.4,
+            "frederikssund": 12.0,
+            "furesoe": 7.0,
+            "gentofte": 5.1,
+            "gladsaxe": 5.9,
+            "glostrup": 6.5,
+            "greve": 5.5,
+            "gribskov": 11.1,
+            "guldborgsund": 15.9,
+            "haderslev": 12.7,
+            "halsnaes": 10.9,
+            "hedensted": 7.9,
+            "helsingoer": 9.5,
+            "herlev": 5.4,
+            "herning": 9.9,
+            "hilleroed": 6.6,
+            "hjoerring": 16.5,
+            "holbaek": 8.1,
+            "holstebro": 11.5,
+            "horsens": 8.7,
+            "hvidovre": 6.5,
+            "hoeje-taastrup": 6.3,
+            "hoersholm": 8.5,
+            "ikast-brande": 9.1,
+            "ishoej": 6.5,
+            "jammerbugt": 13.2,
+            "kalundborg": 16.6,
+            "kerteminde": 12.4,
+            "kolding": 11.1,
+            "koebenhavn": 5.1,
+            "koege": 5.3,
+            "langeland": 12.2,
+            "lejre": 9.6,
+            "lemvig": 15.4,
+            "lolland": 17.4,
+            "lyngby-taarbaek": 6.7,
+            "laesoe": 12.7,
+            "mariagerfjord": 15.7,
+            "middelfart": 6.8,
+            "morsoe": 15.3,
+            "norddjurs": 16.8,
+            "nordfyns": 15.1,
+            "nyborg": 12.8,
+            "naestved": 9.8,
+            "odder": 14.4,
+            "odense": 5.7,
+            "odsherred": 12.3,
+            "randers": 13.9,
+            "rebild": 8.9,
+            "ringkoebing-skjern": 16.4,
+            "ringsted": 7.0,
+            "roskilde": 7.4,
+            "rudersdal": 9.4,
+            "roedovre": 7.8,
+            "samsoe": 10.5,
+            "silkeborg": 11.0,
+            "skanderborg": 8.6,
+            "skive": 11.6,
+            "slagelse": 11.1,
+            "solroed": 7.9,
+            "soroe": 9.8,
+            "stevns": 8.3,
+            "struer": 15.5,
+            "svendborg": 8.8,
+            "syddjurs": 14.2,
+            "soenderborg": 13.5,
+            "thisted": 11.2,
+            "toender": 10.8,
+            "taarnby": 6.0,
+            "vallensbaek": 8.6,
+            "varde": 17.7,
+            "vejen": 9.0,
+            "vejle": 10.5,
+            "vesthimmerland": 9.3,
+            "viborg": 11.5,
+            "vordingborg": 13.5,
+            "aeroe": 11.1,
+            "aabenraa": 7.8,
+            "aalborg": 7.4,
+            "aarhus": 6.0
+          },
+          "fuente": {
+            "organismo": "Skatte- og Vækstministeriet",
+            "titulo": "Oversigt over kommuneskatter 2026",
+            "url": "https://svmn.dk/tal-og-metode/satser/oversigt-over-kommuneskatter",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Samme satser i Danmarks Statistiks tabel PSKAT (2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.feriegodtgoerelse",
+      "nombre": "Feriegodtgørelse",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12.5,
+          "fuente": {
+            "organismo": "Retsinformation (Beskæftigelses- og Ligestillingsministeriet)",
+            "titulo": "Ferieloven, LBK nr. 152 af 20/02/2024, §§ 4, 5 og 16",
+            "url": "https://www.retsinformation.dk/eli/lta/2024/152",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.ferietillaeg",
+      "nombre": "Ferietillæg",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Retsinformation (Beskæftigelses- og Ligestillingsministeriet)",
+            "titulo": "Ferieloven, LBK nr. 152 af 20/02/2024, §§ 4, 5 og 16",
+            "url": "https://www.retsinformation.dk/eli/lta/2024/152",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.ferie-uger",
+      "nombre": "Betalt ferie pr. ferieår",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Retsinformation (Beskæftigelses- og Ligestillingsministeriet)",
+            "titulo": "Ferieloven, LBK nr. 152 af 20/02/2024, §§ 4, 5 og 16",
+            "url": "https://www.retsinformation.dk/eli/lta/2024/152",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.ferie-optjening",
+      "nombre": "Optjent ferie pr. måneds ansættelse",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.08,
+          "fuente": {
+            "organismo": "Retsinformation (Beskæftigelses- og Ligestillingsministeriet)",
+            "titulo": "Ferieloven, LBK nr. 152 af 20/02/2024, §§ 4, 5 og 16",
+            "url": "https://www.retsinformation.dk/eli/lta/2024/152",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.opsigelsesvarsel",
+      "nombre": "Opsigelsesvarsel efter funktionærloven",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "foerste-6-maaneder": "Arbejdsgiver, de første 6 måneder",
+        "efter-6-maaneder": "Arbejdsgiver, efter 6 måneder",
+        "tillaeg-hvert-3-aar": "Tillæg for hvert tredje ansættelsesår",
+        "hoejst": "Arbejdsgiver, højst",
+        "funktionaer": "Funktionærens eget varsel"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "foerste-6-maaneder": 1,
+            "efter-6-maaneder": 3,
+            "tillaeg-hvert-3-aar": 1,
+            "hoejst": 6,
+            "funktionaer": 1
+          },
+          "fuente": {
+            "organismo": "Retsinformation (Beskæftigelses- og Ligestillingsministeriet)",
+            "titulo": "Funktionærloven, LBK nr. 1002 af 24/08/2017, §§ 2 og 2 a",
+            "url": "https://www.retsinformation.dk/eli/lta/2017/1002",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.fratraedelsesgodtgoerelse",
+      "nombre": "Fratrædelsesgodtgørelse efter funktionærlovens § 2 a",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "12-aar": "Efter 12 års ansættelse",
+        "17-aar": "Efter 17 års ansættelse"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "12-aar": 1,
+            "17-aar": 3
+          },
+          "fuente": {
+            "organismo": "Retsinformation (Beskæftigelses- og Ligestillingsministeriet)",
+            "titulo": "Funktionærloven, LBK nr. 1002 af 24/08/2017, §§ 2 og 2 a",
+            "url": "https://www.retsinformation.dk/eli/lta/2017/1002",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.atp-loenmodtager",
+      "nombre": "ATP-bidrag pr. måned, lønmodtagerens andel",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "fuld": "Mindst 117 timer",
+        "to-tredjedele": "78 til 116 timer",
+        "en-tredjedel": "39 til 77 timer"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "fuld": 99,
+            "to-tredjedele": 66,
+            "en-tredjedel": 33
+          },
+          "fuente": {
+            "organismo": "borger.dk (ATP Livslang Pension)",
+            "titulo": "ATP-satser for 2026 i privat virksomhed",
+            "url": "https://www.borger.dk/pension-og-efterloen/ATP-Livslang-pension-oversigt/atp-bidraget/atp-satser-for-privat-virksomhed",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.atp-arbejdsgiver",
+      "nombre": "ATP-bidrag pr. måned, arbejdsgiverens andel",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "fuld": "Mindst 117 timer",
+        "to-tredjedele": "78 til 116 timer",
+        "en-tredjedel": "39 til 77 timer"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "fuld": 198,
+            "to-tredjedele": 132,
+            "en-tredjedel": 66
+          },
+          "fuente": {
+            "organismo": "borger.dk (ATP Livslang Pension)",
+            "titulo": "ATP-satser for 2026 i privat virksomhed",
+            "url": "https://www.borger.dk/pension-og-efterloen/ATP-Livslang-pension-oversigt/atp-bidraget/atp-satser-for-privat-virksomhed",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.atp-timegraenser",
+      "nombre": "Timegrænser for ATP-bidrag pr. måned",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "fuld": "Fuldt bidrag",
+        "to-tredjedele": "To tredjedele",
+        "en-tredjedel": "En tredjedel"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "fuld": 117,
+            "to-tredjedele": 78,
+            "en-tredjedel": 39
+          },
+          "fuente": {
+            "organismo": "borger.dk (ATP Livslang Pension)",
+            "titulo": "ATP-satser for 2026 i privat virksomhed",
+            "url": "https://www.borger.dk/pension-og-efterloen/ATP-Livslang-pension-oversigt/atp-bidraget/atp-satser-for-privat-virksomhed",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.su-udeboende",
+      "nombre": "SU til udeboende på videregående uddannelser pr. måned",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 7426,
+          "fuente": {
+            "organismo": "Uddannelses- og Forskningsstyrelsen (su.dk)",
+            "titulo": "Satser for SU til udeboende på videregående uddannelser 2026",
+            "url": "https://www.su.dk/satser/videregaaende-uddannelser-satser-for-su-til-udeboende",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.su-hjemmeboende",
+      "nombre": "SU til hjemmeboende på videregående uddannelser pr. måned",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "grundsats": "Grundsats",
+        "hoejst": "Grundsats med fuldt tillæg"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "grundsats": 1154,
+            "hoejst": 3202
+          },
+          "fuente": {
+            "organismo": "Uddannelses- og Forskningsstyrelsen (su.dk)",
+            "titulo": "Satser for SU til hjemmeboende på videregående uddannelser 2026",
+            "url": "https://www.su.dk/satser/videregaaende-uddannelser-satser-for-su-til-hjemmeboende",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.su-foraeldreindkomst",
+      "nombre": "Forældreindkomst for tillæg til hjemmeboende (indkomst to år før)",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "fuldt-tillaeg": "Fuldt tillæg til og med",
+        "intet-tillaeg": "Intet tillæg fra",
+        "soeskendefradrag": "Fradrag pr. søskende under 18 år"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "fuldt-tillaeg": 419589,
+            "intet-tillaeg": 710077,
+            "soeskendefradrag": 43086
+          },
+          "fuente": {
+            "organismo": "Uddannelses- og Forskningsstyrelsen (su.dk)",
+            "titulo": "Satser for SU til hjemmeboende på videregående uddannelser 2026",
+            "url": "https://www.su.dk/satser/videregaaende-uddannelser-satser-for-su-til-hjemmeboende",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.dagpenge-hoejst",
+      "nombre": "Højeste dagpenge pr. måned",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "fuldtid": "Fuldtidsforsikret",
+        "deltid": "Deltidsforsikret"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "fuldtid": 22041,
+            "deltid": 14694
+          },
+          "fuente": {
+            "organismo": "Beskæftigelses- og Ligestillingsministeriet",
+            "titulo": "Satser for 2026: dagpenge (lov om arbejdsløshedsforsikring §§ 47 og 70)",
+            "url": "https://www.bm.dk/satser/satser-for-2026/dagpenge",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.dagpenge-procent",
+      "nombre": "Dagpenge i procent af beregningsgrundlaget",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Retsinformation (Beskæftigelses- og Ligestillingsministeriet)",
+            "titulo": "Vejledning om satser mv. på arbejdsløshedsforsikringens område 2026 (VEJ nr. 9121 af 16/01/2026)",
+            "url": "https://www.retsinformation.dk/eli/retsinfo/2026/9121",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.folkepension-grundbeloeb",
+      "nombre": "Folkepension, grundbeløb pr. år",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 90528,
+          "fuente": {
+            "organismo": "Beskæftigelses- og Ligestillingsministeriet",
+            "titulo": "Satser for 2026: folkepension (lov om social pension)",
+            "url": "https://bm.dk/satser/satser-for-2026/folkepension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.pensionstillaeg",
+      "nombre": "Folkepension, pensionstillæg pr. år",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "enlig": "Reelt enlige",
+        "gift": "Gifte og samlevende"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "enlig": 104748,
+            "gift": 53604
+          },
+          "fuente": {
+            "organismo": "Beskæftigelses- og Ligestillingsministeriet",
+            "titulo": "Satser for 2026: folkepension (lov om social pension)",
+            "url": "https://bm.dk/satser/satser-for-2026/folkepension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.pensionstillaeg-fradrag",
+      "nombre": "Fradragsbeløb ved pensionstillæg pr. år",
+      "tipo": "mapa",
+      "unidad": "DKK",
+      "etiquetas": {
+        "enlig": "Enlige",
+        "gift": "Gifte og samlevende",
+        "enlig-midlertidig": "Midlertidig forhøjelse, enlige",
+        "gift-midlertidig": "Midlertidig forhøjelse, gifte og samlevende"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "enlig": 89400,
+            "gift": 179100,
+            "enlig-midlertidig": 9800,
+            "gift-midlertidig": 19700
+          },
+          "fuente": {
+            "organismo": "Beskæftigelses- og Ligestillingsministeriet",
+            "titulo": "Satser for 2026: folkepension (lov om social pension)",
+            "url": "https://bm.dk/satser/satser-for-2026/folkepension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.pensionstillaeg-nedsaettelse",
+      "nombre": "Nedsættelse af pensionstillæg i procent af indtægtsgrundlaget",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "enlig": "Enlige",
+        "gift": "Ægtefælle eller samlever har også ret til social pension"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "enlig": 30.9,
+            "gift": 16
+          },
+          "fuente": {
+            "organismo": "Beskæftigelses- og Ligestillingsministeriet",
+            "titulo": "Satser for 2026: folkepension (lov om social pension)",
+            "url": "https://bm.dk/satser/satser-for-2026/folkepension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.folkepensionsalder",
+      "nombre": "Folkepensionsalder efter fødselsdato",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "1900-01-01": "Født 31. december 1953 eller tidligere",
+        "1954-01-01": "Født 1. januar til 30. juni 1954",
+        "1954-07-01": "Født 1. juli til 31. december 1954",
+        "1955-01-01": "Født 1. januar til 30. juni 1955",
+        "1955-07-01": "Født 1. juli 1955 til 31. december 1962",
+        "1963-01-01": "Født 1963 til 1966",
+        "1967-01-01": "Født 1967 til 1970",
+        "1971-01-01": "Født 1. januar 1971 eller senere"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1900-01-01": 65,
+            "1954-01-01": 65.5,
+            "1954-07-01": 66,
+            "1955-01-01": 66.5,
+            "1955-07-01": 67,
+            "1963-01-01": 68,
+            "1967-01-01": 69,
+            "1971-01-01": 70
+          },
+          "fuente": {
+            "organismo": "borger.dk (Udbetaling Danmark)",
+            "titulo": "Før du går på folkepension: folkepensionsalder efter fødselsdato",
+            "url": "https://www.borger.dk/pension-og-efterloen/Folkepension-oversigt/foer-du-gaar-paa-folkepension",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.referencesats",
+      "nombre": "Referencesats (Nationalbankens udlånsrente 1. januar og 1. juli)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2025-12-31",
+          "valor": 1.75,
+          "fuente": {
+            "organismo": "Danmarks Nationalbank (via Danmarks Statistik)",
+            "titulo": "Nationalbankens rente, udlån (tabel DNRENTD)",
+            "url": "https://api.statbank.dk/v1/data/DNRENTD/CSV?INSTRUMENT=OIRNAA&LAND=DK&OPGOER=E&Tid=%3E=2025M01D02",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Udlånsrenten 1. januar og 1. juli er referencesatsen efter rentelovens § 5."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": 1.75,
+          "fuente": {
+            "organismo": "Danmarks Nationalbank (via Danmarks Statistik)",
+            "titulo": "Nationalbankens rente, udlån (tabel DNRENTD)",
+            "url": "https://api.statbank.dk/v1/data/DNRENTD/CSV?INSTRUMENT=OIRNAA&LAND=DK&OPGOER=E&Tid=%3E=2025M01D02",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Udlånsrenten 1. januar og 1. juli er referencesatsen efter rentelovens § 5."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": 2.0,
+          "fuente": {
+            "organismo": "Danmarks Nationalbank (via Danmarks Statistik)",
+            "titulo": "Nationalbankens rente, udlån (tabel DNRENTD)",
+            "url": "https://api.statbank.dk/v1/data/DNRENTD/CSV?INSTRUMENT=OIRNAA&LAND=DK&OPGOER=E&Tid=%3E=2025M01D02",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Udlånsrenten 1. januar og 1. juli er referencesatsen efter rentelovens § 5."
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.morarente-tillaeg",
+      "nombre": "Tillæg til referencesatsen ved forsinket betaling",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Retsinformation (Justitsministeriet)",
+            "titulo": "Renteloven, LBK nr. 459 af 13/05/2014, §§ 5 og 9 b",
+            "url": "https://www.retsinformation.dk/eli/lta/2014/459",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dk.rykkergebyr",
+      "nombre": "Rykkergebyr, højst pr. rykker",
+      "tipo": "numero",
+      "unidad": "DKK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Retsinformation (Justitsministeriet)",
+            "titulo": "Renteloven, LBK nr. 459 af 13/05/2014, §§ 5 og 9 b",
+            "url": "https://www.retsinformation.dk/eli/lta/2014/459",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}

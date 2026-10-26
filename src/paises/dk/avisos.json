@@ -1,0 +1,35 @@
+{
+  "mercado": "dk",
+  "avisos": [
+    {
+      "id": "dk.koerselsfradrag-2026",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["dk.koerselsfradrag"],
+      "texto": "Satserne for kørselsfradrag er midlertidigt sat op i 2026. Satserne for 2027 er ikke fastsat endnu.",
+      "fuente": {
+        "organismo": "Skattestyrelsen (skat.dk)",
+        "titulo": "Satser for kørselsfradrag 2026",
+        "url": "https://skat.dk/borger/fradrag/koerselsfradrag/beregn-dit-koerselsfradrag",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "dk.kommuneskat-2027",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["dk.loen-efter-skat", "dk.topskat", "dk.kommuneskat", "dk.grundskyld"],
+      "texto": "Kommunerne fastsætter skatten for 2027 i efteråret. Beregneren bruger kommuneskat, kirkeskat og grundskyld for 2026.",
+      "fuente": {
+        "organismo": "Skatte- og Vækstministeriet",
+        "titulo": "Oversigt over kommuneskatter 2026",
+        "url": "https://svmn.dk/tal-og-metode/satser/oversigt-over-kommuneskatter",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}
