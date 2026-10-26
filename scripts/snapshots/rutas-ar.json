@@ -12,13 +12,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f2409173602e12ff",
+    "head": "a09c47920344e4d8",
     "jsonld": "97f810b1d4dc655d",
-    "main": "4963da848b39ad35",
-    "chrome": "68c14b9e112f4133"
+    "main": "b3f32df10c3d1bed",
+    "chrome": "5258fc01245f2d30"
   },
   "/82-por-ciento-movil": {
     "status": 200,
@@ -33,13 +33,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/82-por-ciento-movil",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f7251a91b7f8d92a",
+    "head": "1c6a1cd842c41996",
     "jsonld": "70e035216d0e6e3c",
     "main": "a74f4dd508b6c43c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/_global-error": {
     "status": 500,
@@ -54,7 +54,7 @@
       "<html id=\"__next_error__\">",
       "<body>"
     ],
-    "head": "7f0148fae83c1d10",
+    "head": "a55317e22a796b12",
     "chrome": "4caa75bd6168eef5"
   },
   "/_not-found": {
@@ -65,18 +65,16 @@
       "cache-control": "s-maxage=31536000",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/actualizacion-creditos-laborales": {
     "status": 200,
@@ -91,13 +89,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/actualizacion-creditos-laborales",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "e6e0a36fb6b18058",
+    "head": "c73eaddf800cbad9",
     "jsonld": "208666ce7dbb9dd8",
     "main": "a8a5aa62abeed675",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/actualizacion-de-quebrantos": {
     "status": 200,
@@ -112,13 +110,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/actualizacion-de-quebrantos",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "6c5e23ce7ff9f30e",
+    "head": "a364feab06db3271",
     "jsonld": "5e0b2f73ec8f16ce",
     "main": "4668d4a02e184ee8",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/ads.txt": {
     "status": 200,
@@ -143,13 +141,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/aguinaldo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "fc97d4477fb6c4ca",
+    "head": "51b5107cdc3724c2",
     "jsonld": "932d94f10702ffc1",
-    "main": "36713e50236c9b23",
-    "chrome": "68c14b9e112f4133"
+    "main": "f62e6c40b59090b6",
+    "chrome": "5258fc01245f2d30"
   },
   "/aguinaldo/esta-tampoco": {
     "status": 404,
@@ -159,18 +157,16 @@
       "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/aguinaldo/fechas": {
     "status": 200,
@@ -185,13 +181,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/aguinaldo/fechas",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "dc91adfcf4c15316",
+    "head": "9fbec31c54373054",
     "jsonld": "acee9e942c86c660",
     "main": "da0f5c7bde671e71",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/aguinaldo/neto": {
     "status": 200,
@@ -206,13 +202,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/aguinaldo/neto",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "82329b1ed1445611",
+    "head": "e0cbcfee3ef251ed",
     "jsonld": "6fd3d83bccc59ede",
     "main": "3d8d2168420655ef",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/aportes-empleada-domestica": {
     "status": 200,
@@ -227,13 +223,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/aportes-empleada-domestica",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "145ae325098009f9",
+    "head": "c234840178488948",
     "jsonld": "3d323715e94cdb07",
     "main": "392d424575c16b0a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/aportes-jubilatorios-obligatorios": {
     "status": 200,
@@ -248,13 +244,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/aportes-jubilatorios-obligatorios",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "7a34ddca470ac1dc",
+    "head": "c7734fe9acb2870f",
     "jsonld": "ae11bd0fd649a497",
     "main": "05ee33d0fd1d6b48",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/apple-icon": {
     "status": 200,
@@ -279,13 +275,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/art-empleada-domestica",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "a1d289b24d74ab1d",
+    "head": "f5eb5ad443fb93a5",
     "jsonld": "072f6b962420cff5",
     "main": "42c7f647d7c9ad05",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/asignaciones-familiares": {
     "status": 200,
@@ -300,13 +296,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/asignaciones-familiares",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "5fc2346f2bc2aa83",
+    "head": "e2ebe67dfec316dc",
     "jsonld": "61db11ebdc4d86b0",
     "main": "09a77a39c427616d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/auth/confirmar": {
     "status": 404,
@@ -317,18 +313,16 @@
       "cache-control": "private, no-store",
       "referrer-policy": "no-referrer"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/blog": {
     "status": 200,
@@ -343,13 +337,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "eb15b33f3c125b1b",
+    "head": "45590f899a192318",
     "jsonld": "02e6812ce1989d9d",
     "main": "296bfdd03072d39d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/aguinaldo-monotributista": {
     "status": 200,
@@ -364,13 +358,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/aguinaldo-monotributista",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "59ce199ad6435486",
+    "head": "500881cf3286760f",
     "jsonld": "407da00d9c49d28b",
     "main": "c8dc84417435c808",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/aguinaldo-paga-ganancias": {
     "status": 200,
@@ -385,13 +379,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/aguinaldo-paga-ganancias",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "12c53dd8f1658d56",
+    "head": "6b57a33f5a33b3e2",
     "jsonld": "f6c5dd5194fa4baf",
     "main": "f99793627eac92aa",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/aguinaldo-proporcional-como-se-calcula": {
     "status": 200,
@@ -406,13 +400,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/aguinaldo-proporcional-como-se-calcula",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "e5f0976c64b80c0c",
+    "head": "0cfe4e617428ad5d",
     "jsonld": "0de84890ddd6bcad",
     "main": "4c7cd2b46046651a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/aumento-comercio-agosto-2026": {
     "status": 200,
@@ -427,13 +421,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/aumento-comercio-agosto-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "b2602805e3d5821c",
+    "head": "259d89b631d1cd84",
     "jsonld": "b9cc9b2668583680",
     "main": "8e8678cdb51470aa",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/como-calcular-aguinaldo-empleado-de-comercio": {
     "status": 200,
@@ -448,13 +442,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/como-calcular-aguinaldo-empleado-de-comercio",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "033d157ea0a11795",
+    "head": "9b0c11517642c9da",
     "jsonld": "9a5e11a967a1028a",
     "main": "a07f8343581c5bb3",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/como-liquidar-sueldo-empleado-de-comercio": {
     "status": 200,
@@ -469,13 +463,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/como-liquidar-sueldo-empleado-de-comercio",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "3bae9e416c3048fc",
+    "head": "9e59c626c3e6dce5",
     "jsonld": "d8f377058291c1ce",
     "main": "600c0736ed40ec72",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/como-se-calcula-la-indemnizacion-por-despido-2026": {
     "status": 200,
@@ -490,13 +484,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/como-se-calcula-la-indemnizacion-por-despido-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "9a8a19697a7331c1",
+    "head": "8725f8908b9af8b3",
     "jsonld": "48583915d77409ef",
     "main": "e886c7ad182bfe74",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/cuanto-cuesta-criar-un-hijo-argentina": {
     "status": 200,
@@ -511,13 +505,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/cuanto-cuesta-criar-un-hijo-argentina",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "ef000e918b640baf",
+    "head": "940beb1150d78a66",
     "jsonld": "e98df6d1b33c2fe1",
     "main": "ff14faecceb99674",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/cuanto-se-cobra-de-vacaciones-plus-vacacional-2026": {
     "status": 200,
@@ -532,13 +526,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/cuanto-se-cobra-de-vacaciones-plus-vacacional-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "7ec22849e11e7ad8",
+    "head": "140c711d8860c71f",
     "jsonld": "7b6c844c0a2c4a8d",
     "main": "fa5d694960ac3d39",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/estatutos-laborales-derogados-2027": {
     "status": 200,
@@ -553,13 +547,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/estatutos-laborales-derogados-2027",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "3ec2525cb525c05f",
+    "head": "36bb47c990c0b9ea",
     "jsonld": "9b2e5124fe310428",
     "main": "407e88ed4d726779",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/modelo-recibo-de-sueldo-empleado-de-comercio": {
     "status": 200,
@@ -574,13 +568,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/modelo-recibo-de-sueldo-empleado-de-comercio",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "b33ffdaa58e483aa",
+    "head": "e316b14de7aaa90b",
     "jsonld": "079bf16827f2c93d",
     "main": "8e922ff33af0093f",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/nuevo-recibo-de-sueldo-2026": {
     "status": 200,
@@ -595,13 +589,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/nuevo-recibo-de-sueldo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4e3616a6a18bcb7e",
+    "head": "9a16f8bd06e7d983",
     "jsonld": "cb1cadd12a2f03b4",
     "main": "1ba79fa0b1993691",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/que-hacer-con-el-aguinaldo-2026": {
     "status": 200,
@@ -616,13 +610,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/que-hacer-con-el-aguinaldo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "361e441dadfcb391",
+    "head": "ae99c1e21de68452",
     "jsonld": "f9f2a42d06fd1384",
     "main": "6fa1c12d05756990",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/que-incluye-la-cuota-del-monotributo": {
     "status": 200,
@@ -637,13 +631,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/que-incluye-la-cuota-del-monotributo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "8436f6c63319f485",
+    "head": "eb466f0a4a809cce",
     "jsonld": "bf08fc93f8dcc102",
     "main": "7990bfc1a6b15b1c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/que-pasa-si-me-paso-del-limite-de-facturacion-del-monotributo": {
     "status": 200,
@@ -658,13 +652,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/que-pasa-si-me-paso-del-limite-de-facturacion-del-monotributo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "26a616bf04ef92fc",
+    "head": "11abc722958bb447",
     "jsonld": "926fcccfe029c3b6",
     "main": "38f9a98ef40f760d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/blog/tope-de-ingresos-asignaciones-familiares": {
     "status": 200,
@@ -679,13 +673,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/blog/tope-de-ingresos-asignaciones-familiares",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "b8d5a460ab9193ab",
+    "head": "4faaca33aded9899",
     "jsonld": "441fb9c28c8c3653",
     "main": "f18668fb70825989",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/caducidad-de-instancia-laboral": {
     "status": 200,
@@ -700,13 +694,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/caducidad-de-instancia-laboral",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "e81ad1b93571b7e5",
+    "head": "b2228482cad07d5b",
     "jsonld": "7d4c4acc6808e42a",
-    "main": "ec449df45b04fbec",
-    "chrome": "68c14b9e112f4133"
+    "main": "5168a1c665a9a13c",
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica": {
     "status": 200,
@@ -721,13 +715,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/canasta-basica",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "87043b4c59fe6507",
+    "head": "805725452d78088b",
     "jsonld": "f1c9ba922febafbf",
     "main": "699a7eeda1e4767e",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/abril-2024": {
     "status": 200,
@@ -742,13 +736,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/abril-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "ddf55497a2b2349a",
+    "head": "385e50fefac9f85b",
     "jsonld": "b11f61977235f63d",
     "main": "3e3b16d85240b29c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/abril-2025": {
     "status": 200,
@@ -763,13 +757,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/abril-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "70badab12465115d",
+    "head": "03ada860b7be58ff",
     "jsonld": "f6a1ed616d845bff",
     "main": "599ce3cfb720c30f",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/abril-2026": {
     "status": 200,
@@ -784,13 +778,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/abril-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f8703e24f744410b",
+    "head": "6f92fb2b8906e08f",
     "jsonld": "491cac4cf763ccc7",
     "main": "9cef62791353f21f",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/agosto-2024": {
     "status": 200,
@@ -805,13 +799,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/agosto-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f410f4f9b0388f9a",
+    "head": "7ba13424b9393a3e",
     "jsonld": "c8d9ad20292ad743",
     "main": "f185b35a5d72e13a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/agosto-2025": {
     "status": 200,
@@ -826,13 +820,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/agosto-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "93150df9546ac89d",
+    "head": "ec97b72943b85697",
     "jsonld": "8d3b174098c304e3",
     "main": "063194d013c1ff62",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/agosto-2026": {
     "status": 200,
@@ -846,13 +840,13 @@
     "description": "CBT de $ 519.578 y CBA de $ 235.103 por adulto equivalente en agosto 2026. La familia tipo necesitó $ 1.605.497 para no ser pobre. Dato del INDEC.",
     "canonical": "https://calcular.ar/canasta-basica/agosto-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "434d06b418820815",
+    "head": "54ae0893e795b71b",
     "jsonld": "a268714fd82a68e1",
     "main": "7ab63146d8d20567",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/diciembre-2024": {
     "status": 200,
@@ -867,13 +861,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/diciembre-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "877446982522cb43",
+    "head": "555a64fcb36756bc",
     "jsonld": "b8f1d0273e7b9459",
     "main": "f36202adc2c6a296",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/diciembre-2025": {
     "status": 200,
@@ -888,13 +882,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/diciembre-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "31ab77e8a6a17e56",
+    "head": "fd74f6409a19e039",
     "jsonld": "acd88c143a567cbe",
     "main": "24d5b0fb716fe1c0",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/enero-2024": {
     "status": 200,
@@ -909,13 +903,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/enero-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "aab397a7592fd79f",
+    "head": "8ffd476b69ab829d",
     "jsonld": "26247c0f0c2e83b7",
     "main": "8b25105139ff30fd",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/enero-2025": {
     "status": 200,
@@ -930,13 +924,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/enero-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "fc5fa33c8828d2b6",
+    "head": "6baf503749e860e7",
     "jsonld": "fef27d6b255ac778",
     "main": "2e8dc56de8e6a8d9",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/enero-2026": {
     "status": 200,
@@ -951,13 +945,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/enero-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "781f77a6e547a665",
+    "head": "8a25da23436c9844",
     "jsonld": "e8afd90f79989274",
     "main": "afd52937f22697ef",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/febrero-2024": {
     "status": 200,
@@ -972,13 +966,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/febrero-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "1ff8c1125462f108",
+    "head": "eb7dc825c28b4cdf",
     "jsonld": "64f804d3fca4b016",
     "main": "5e325b5dca23bfa5",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/febrero-2025": {
     "status": 200,
@@ -993,13 +987,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/febrero-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "21b9fdec94101b63",
+    "head": "01f21729b2b8df1b",
     "jsonld": "2b1d7fce72e83207",
     "main": "be8690ac19568a76",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/febrero-2026": {
     "status": 200,
@@ -1014,13 +1008,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/febrero-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "48b0ff2bc8d15bf4",
+    "head": "16430e91d7eb3c08",
     "jsonld": "f81da950feca2d93",
     "main": "2e200140c1d3b9de",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/julio-2024": {
     "status": 200,
@@ -1035,13 +1029,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/julio-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "5c5b67144402d8f2",
+    "head": "7440d3f0e242caa9",
     "jsonld": "d19853e03ee2954e",
     "main": "beb26273faaf9760",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/julio-2025": {
     "status": 200,
@@ -1056,13 +1050,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/julio-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "28718819796df101",
+    "head": "64f1b77de1995841",
     "jsonld": "b2f2ee619de5be89",
     "main": "72ffd4567b3b887c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/julio-2026": {
     "status": 200,
@@ -1076,13 +1070,13 @@
     "description": "CBT de $ 506.381 y CBA de $ 229.131 por adulto equivalente en julio 2026. La familia tipo necesitó $ 1.564.716 para no ser pobre. Dato del INDEC.",
     "canonical": "https://calcular.ar/canasta-basica/julio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "7779a0b0e64998d5",
+    "head": "fffeafea7a9e65d3",
     "jsonld": "8d0ffae3e70c4ed3",
     "main": "f0280e346e71313b",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/junio-2024": {
     "status": 200,
@@ -1097,13 +1091,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/junio-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f8260f53366d666b",
+    "head": "be92803375ba355c",
     "jsonld": "d2af71e45f63c992",
     "main": "d98158f055d723c8",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/junio-2025": {
     "status": 200,
@@ -1118,13 +1112,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/junio-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "57405a786506e746",
+    "head": "d04bee3ad10171af",
     "jsonld": "e250d6e85e244777",
     "main": "88aa5806a885d5c5",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/junio-2026": {
     "status": 200,
@@ -1138,13 +1132,13 @@
     "description": "CBT de $ 495.622 y CBA de $ 223.253 por adulto equivalente en junio 2026. La familia tipo necesitó $ 1.531.473 para no ser pobre. Dato del INDEC.",
     "canonical": "https://calcular.ar/canasta-basica/junio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "2caa76be15af2146",
+    "head": "32ad025558ef4080",
     "jsonld": "0f80202b0184be66",
     "main": "ec6e4f296009cb1d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/marzo-2024": {
     "status": 200,
@@ -1159,13 +1153,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/marzo-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f9d722c526afa399",
+    "head": "7037c9f39bb4987a",
     "jsonld": "f9cc28a64e3fb882",
     "main": "27e3d545c9b8de3c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/marzo-2025": {
     "status": 200,
@@ -1180,13 +1174,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/marzo-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "17882bcc2635dd72",
+    "head": "934569b132b37286",
     "jsonld": "4415689ae9c1e7a2",
     "main": "3e5c862a73da1388",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/marzo-2026": {
     "status": 200,
@@ -1201,13 +1195,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/marzo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "608fa522d3b4e9bb",
+    "head": "75eaef510599a835",
     "jsonld": "e3c0117679f8ac9d",
     "main": "a2183b972284542c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/mayo-2024": {
     "status": 200,
@@ -1222,13 +1216,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/mayo-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "87ddc4020922a733",
+    "head": "986e7e550e1a413e",
     "jsonld": "ce1fb86b94c0ef89",
     "main": "70b7e4cef2c94305",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/mayo-2025": {
     "status": 200,
@@ -1243,13 +1237,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/mayo-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "71f3e7d7ef51595f",
+    "head": "a541ed04ee5bf358",
     "jsonld": "fe300a81dca09e36",
     "main": "34c433d09c34994a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/mayo-2026": {
     "status": 200,
@@ -1264,13 +1258,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/mayo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0a1ee353ec838898",
+    "head": "5339f491c2e1afb9",
     "jsonld": "51266b5634815d90",
     "main": "436c26a31c6b6d4f",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/noviembre-2024": {
     "status": 200,
@@ -1285,13 +1279,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/noviembre-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0d6031699030eb87",
+    "head": "cd0e5f90d822b341",
     "jsonld": "9e6c22539c871219",
     "main": "4b4816d6052c905d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/noviembre-2025": {
     "status": 200,
@@ -1306,13 +1300,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/noviembre-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "e24df72d0a82ab35",
+    "head": "2ec4b2b780ab8926",
     "jsonld": "07c19a4bbe7c7960",
     "main": "f64e132be917c5ce",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/octubre-2024": {
     "status": 200,
@@ -1327,13 +1321,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/octubre-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "300b2c18aa55f033",
+    "head": "38f53881683f7acf",
     "jsonld": "20a78269bc55ab2e",
     "main": "eee5dfe5fbe771b5",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/octubre-2025": {
     "status": 200,
@@ -1348,13 +1342,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/octubre-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "3e3338e76f4dfe0f",
+    "head": "1296b66d224d127f",
     "jsonld": "72b226c9ca527eb5",
     "main": "9c7a1b9dbf465b02",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/septiembre-2024": {
     "status": 200,
@@ -1369,13 +1363,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/septiembre-2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "6b03fed265de91a6",
+    "head": "817eaac6db68f263",
     "jsonld": "092438d0d0be66b3",
     "main": "367293be5f7181fe",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/canasta-basica/septiembre-2025": {
     "status": 200,
@@ -1390,13 +1384,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/canasta-basica/septiembre-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "225d5ac02c90b044",
+    "head": "1abb0d71d14456a8",
     "jsonld": "730ddb4f13fb7668",
     "main": "23ffc19d6ea7ee24",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/certificado-de-trabajo": {
     "status": 200,
@@ -1411,13 +1405,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/certificado-de-trabajo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "fd9a6d4e77a995a8",
+    "head": "179af73a84408a35",
     "jsonld": "46166782aa4e3103",
     "main": "f35ddaf4f6a2eec0",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/comision-medica": {
     "status": 200,
@@ -1432,13 +1426,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/comision-medica",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "814bc28f483f722c",
+    "head": "9d14081cdb3fb759",
     "jsonld": "8ef1f7aaf7b55115",
-    "main": "7e6f981dd9ec0170",
-    "chrome": "68c14b9e112f4133"
+    "main": "7f485308d0fd80b4",
+    "chrome": "5258fc01245f2d30"
   },
   "/conservacion-de-recibos": {
     "status": 200,
@@ -1453,13 +1447,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/conservacion-de-recibos",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f1c671074843bcd1",
+    "head": "6f293ce842f3d8b0",
     "jsonld": "bfebd010ae7221f6",
     "main": "904600fd0a7fa095",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/contacto": {
     "status": 200,
@@ -1474,13 +1468,13 @@
     "robots": "noindex",
     "canonical": "https://calcular.ar/contacto",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "1b8bd8c69feb51bd",
+    "head": "2a2ea924034a82c0",
     "jsonld": "97f810b1d4dc655d",
     "main": "3567b618f8a5017b",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/contratar-persona-con-discapacidad": {
     "status": 200,
@@ -1495,13 +1489,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/contratar-persona-con-discapacidad",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "6593bc11016e1945",
+    "head": "58bd0ef76d4a2157",
     "jsonld": "9d097f483966a99f",
     "main": "c2c3b591115c4760",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenio-vencido": {
     "status": 200,
@@ -1516,13 +1510,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenio-vencido",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "ceac62306d872cef",
+    "head": "2628ca7a5beb3ce3",
     "jsonld": "282cae4a9d8f8177",
     "main": "db5143011d333b1d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios": {
     "status": 200,
@@ -1537,13 +1531,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "3425267e6f61fcfd",
+    "head": "5aab909daba41782",
     "jsonld": "895ecf0d87dbb3f6",
     "main": "8183d66e9512ce23",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros": {
     "status": 200,
@@ -1558,13 +1552,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4a87d1d09215a1fb",
+    "head": "42fac43bb10f04d2",
     "jsonld": "894e867bd4c6b25b",
     "main": "633f71358c389cd7",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/abril-2026": {
     "status": 200,
@@ -1579,13 +1573,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/abril-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0a71abe0b8dff26f",
+    "head": "f3adacd176dd31eb",
     "jsonld": "c19dac1058939053",
     "main": "2f4fa34f21b0989a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/agosto-2026": {
     "status": 200,
@@ -1600,13 +1594,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/agosto-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "49f24415151c8c1b",
+    "head": "c74455c20cf29e31",
     "jsonld": "bdba2083d0abfb66",
     "main": "90c827cbc7af90d3",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/diciembre-2026": {
     "status": 200,
@@ -1621,13 +1615,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/diciembre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f8baa8147b8b1c31",
+    "head": "1ce1294c2add5be2",
     "jsonld": "bada25c23dbf5133",
     "main": "c3eb36f15fb1b385",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/enero-2027": {
     "status": 200,
@@ -1642,13 +1636,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/enero-2027",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f28259b9121b00af",
+    "head": "96789d439a18f646",
     "jsonld": "613e97f275daf5fa",
     "main": "7476200ae95f4f71",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/febrero-2027": {
     "status": 200,
@@ -1663,13 +1657,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/febrero-2027",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "d2df39db002681fa",
+    "head": "4b3b07371b1d1b94",
     "jsonld": "9d5ff5836573edd1",
     "main": "3e0a198b3a495933",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/julio-2026": {
     "status": 200,
@@ -1684,13 +1678,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/julio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4277aa40ef7c31af",
+    "head": "cccb8ef278697053",
     "jsonld": "9a8e82d14e4a4a5a",
     "main": "3a63578c43c1b02d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/junio-2026": {
     "status": 200,
@@ -1705,13 +1699,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/junio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f9ecdd5358c9b57d",
+    "head": "0a4cd9e7b8c0354a",
     "jsonld": "d787b97a879b2390",
     "main": "8ddc9b5f69b043c8",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/marzo-2026": {
     "status": 200,
@@ -1726,13 +1720,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/marzo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "458d70bb62058820",
+    "head": "29c350806a11560a",
     "jsonld": "07ef0f30a1177f82",
     "main": "611a4a238a336c0c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/mayo-2026": {
     "status": 200,
@@ -1747,13 +1741,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/mayo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "5b95b61aac4a3991",
+    "head": "b611b47bc43678a5",
     "jsonld": "7e2f133c12ae43b4",
     "main": "efb29e1c95966f24",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/noviembre-2026": {
     "status": 200,
@@ -1768,13 +1762,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/noviembre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4c4bf0055b4aa822",
+    "head": "531a0ed528221bc7",
     "jsonld": "a55d63477a086cc2",
     "main": "3a258d92d6485c5d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/octubre-2026": {
     "status": 200,
@@ -1789,13 +1783,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/octubre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "187a8687dcd0c66d",
+    "head": "33111fd448f96413",
     "jsonld": "318f86dbe689542e",
     "main": "2a3311256096ac6f",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/camioneros/septiembre-2026": {
     "status": 200,
@@ -1810,13 +1804,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/camioneros/septiembre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "52620a183c91f32f",
+    "head": "d10b31e05064f12e",
     "jsonld": "ba35229720c0853d",
     "main": "f21133a43cc6fb6c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio": {
     "status": 200,
@@ -1826,18 +1820,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio 2026: calculadora y escala FAECYS",
-    "description": "Cuánto cobra un empleado de comercio en 2026 por categoría, con antigüedad, presentismo y jornada parcial. Escala oficial de FAECYS mes a mes.",
+    "title": "Sueldo de Comercio octubre 2026: $ 1.458.545 por 8 horas",
+    "description": "Cuánto cobra un empleado de comercio por 8 horas en octubre 2026: $ 1.458.545 brutos un Vendedor B con presentismo, unos $ 1.228.792 en mano. Por 4 horas, la mitad. Calculá tu categoría con la escala de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "998ec19cae31427e",
+    "head": "6708d63a481b988a",
     "jsonld": "d4900114950bb15d",
     "main": "b1e6e8ea60f22e36",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/abril-2026": {
     "status": 200,
@@ -1847,18 +1841,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio abril 2026: Maestranza A $ 1.078.911",
-    "description": "Escala de abril 2026 del CCT 130/75 por categoría, con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
+    "title": "Sueldo de Comercio abril 2026: desde $ 1.198.911",
+    "description": "Cuánto cobra un empleado de comercio en abril 2026, categoría por categoría: escala del CCT 130/75 con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/abril-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "e437b45e7eaa61cf",
+    "head": "a37a3624791ca110",
     "jsonld": "2a92ca4b7006ebfc",
     "main": "321eaffb25bcaf83",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/agosto-2026": {
     "status": 200,
@@ -1868,18 +1862,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio agosto 2026: Maestranza A $ 1.160.461",
-    "description": "Escala de agosto 2026 del CCT 130/75 por categoría, con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
+    "title": "Sueldo de Comercio agosto 2026: desde $ 1.280.461",
+    "description": "Cuánto cobra un empleado de comercio en agosto 2026, categoría por categoría: escala del CCT 130/75 con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/agosto-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "fde773ffe4919f74",
+    "head": "d248402794e30333",
     "jsonld": "8acd06c741d03f08",
     "main": "ee8ba8261d4b2fae",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/diciembre-2026": {
     "status": 200,
@@ -1889,18 +1883,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio diciembre 2026: Maestranza A $ 1.203.900",
-    "description": "Escala de diciembre 2026 del CCT 130/75 por categoría, con $ 100.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
+    "title": "Sueldo de Comercio diciembre 2026: desde $ 1.303.900",
+    "description": "Cuánto cobra un empleado de comercio en diciembre 2026, categoría por categoría: escala del CCT 130/75 con $ 100.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/diciembre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "b3e8de2cdeb7c207",
+    "head": "f68d09e8ba8417f0",
     "jsonld": "61f4bb158bbebce3",
     "main": "cb84cf1ec4a1e5d8",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/julio-2026": {
     "status": 200,
@@ -1910,18 +1904,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio julio 2026: Maestranza A $ 1.137.023",
-    "description": "Escala de julio 2026 del CCT 130/75 por categoría, con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
+    "title": "Sueldo de Comercio julio 2026: desde $ 1.257.023",
+    "description": "Cuánto cobra un empleado de comercio en julio 2026, categoría por categoría: escala del CCT 130/75 con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/julio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "3c9857f6e97544b2",
+    "head": "38d372e894dd79bb",
     "jsonld": "9ce4ec7ddd50cb4c",
     "main": "a8ce5b0e28cd9fc3",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/junio-2026": {
     "status": 200,
@@ -1931,18 +1925,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio junio 2026: Maestranza A $ 1.113.585",
-    "description": "Escala de junio 2026 del CCT 130/75 por categoría, con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
+    "title": "Sueldo de Comercio junio 2026: desde $ 1.233.585",
+    "description": "Cuánto cobra un empleado de comercio en junio 2026, categoría por categoría: escala del CCT 130/75 con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/junio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4490cfbea3758293",
+    "head": "fa05dfd1f5123bf4",
     "jsonld": "6bc50f3a053b14f8",
     "main": "c9f494753402cac7",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/mayo-2026": {
     "status": 200,
@@ -1952,18 +1946,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio mayo 2026: Maestranza A $ 1.096.248",
-    "description": "Escala de mayo 2026 del CCT 130/75 por categoría, con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
+    "title": "Sueldo de Comercio mayo 2026: desde $ 1.216.248",
+    "description": "Cuánto cobra un empleado de comercio en mayo 2026, categoría por categoría: escala del CCT 130/75 con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/mayo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "bebdf742adf625af",
+    "head": "bdb333345b863bed",
     "jsonld": "0a69f678d870a67a",
     "main": "fdfcaaab7fc6e674",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/no-existe": {
     "status": 404,
@@ -1973,18 +1967,16 @@
       "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/noviembre-2026": {
     "status": 200,
@@ -1994,18 +1986,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio noviembre 2026: Maestranza A $ 1.183.900",
-    "description": "Escala de noviembre 2026 del CCT 130/75 por categoría, con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
+    "title": "Sueldo de Comercio noviembre 2026: desde $ 1.303.900",
+    "description": "Cuánto cobra un empleado de comercio en noviembre 2026, categoría por categoría: escala del CCT 130/75 con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/noviembre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "aa8da6f76071fbaf",
+    "head": "11950ff108a71ea6",
     "jsonld": "745aea53429e8b91",
     "main": "51615bfe026a4806",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/octubre-2026": {
     "status": 200,
@@ -2015,18 +2007,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio octubre 2026: Maestranza A $ 1.183.900",
-    "description": "Escala de octubre 2026 del CCT 130/75 por categoría, con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
+    "title": "Sueldo de Comercio octubre 2026: desde $ 1.303.900",
+    "description": "Cuánto cobra un empleado de comercio en octubre 2026, categoría por categoría: escala del CCT 130/75 con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/octubre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "7107e891a73672cd",
+    "head": "d9431524a6d85c03",
     "jsonld": "c4e447b0e798be1b",
     "main": "e6f9877aa96b66d1",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/por-horas": {
     "status": 200,
@@ -2041,13 +2033,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/por-horas",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "6699ae4e0294f765",
+    "head": "9de3422dcc4f19b2",
     "jsonld": "db408d0a77cfa61b",
     "main": "2ef7ccddcbe6f939",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/comercio/septiembre-2026": {
     "status": 200,
@@ -2057,18 +2049,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Sueldo de Comercio septiembre 2026: Maestranza A $ 1.183.900",
-    "description": "Escala de septiembre 2026 del CCT 130/75 por categoría, con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
+    "title": "Sueldo de Comercio septiembre 2026: desde $ 1.303.900",
+    "description": "Cuánto cobra un empleado de comercio en septiembre 2026, categoría por categoría: escala del CCT 130/75 con $ 120.000 no remunerativos y la variación contra el mes anterior. Verificada contra la circular de FAECYS.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/comercio/septiembre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "938f539ca2a98597",
+    "head": "a804bf21aff67a3a",
     "jsonld": "3d740af2c9461391",
     "main": "0140cce952166e32",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/uocra": {
     "status": 200,
@@ -2083,13 +2075,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/uocra",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "860b9ac5bd342c24",
+    "head": "a1fe9aa77df56ea5",
     "jsonld": "114d51b84c80fbd8",
     "main": "8d2acb9260b39c46",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/uocra/abril-2026": {
     "status": 200,
@@ -2104,13 +2096,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/uocra/abril-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "664087ae1cc51b7f",
+    "head": "99e911f9f5c5fa71",
     "jsonld": "d2b4f91369408520",
     "main": "29e3e2ec1dad918b",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/uocra/agosto-2026": {
     "status": 200,
@@ -2125,13 +2117,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/uocra/agosto-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "885a7dc20c42749b",
+    "head": "32547afa60001d5f",
     "jsonld": "2fa671e90e77db29",
     "main": "dfca7aba5a1ed658",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/uocra/julio-2026": {
     "status": 200,
@@ -2146,13 +2138,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/uocra/julio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "a634d217f04ae19c",
+    "head": "b43f99df5256f088",
     "jsonld": "55a336f3ad39cc26",
     "main": "2de846d7f6769ae6",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/uocra/junio-2026": {
     "status": 200,
@@ -2167,13 +2159,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/uocra/junio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "aa982d94b73582cb",
+    "head": "73306e32c0eed3ca",
     "jsonld": "c63686cb32851470",
     "main": "1e7faa44f122fb54",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/uocra/mayo-2026": {
     "status": 200,
@@ -2188,13 +2180,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/uocra/mayo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "210737cd8d73e9fa",
+    "head": "b29680d9e0102701",
     "jsonld": "ada5f56b0b1e9c20",
     "main": "93a86827b7366930",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/uocra/noviembre-2026": {
     "status": 200,
@@ -2209,13 +2201,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/uocra/noviembre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4b91f19116e63c4a",
+    "head": "9fe710f962c249e0",
     "jsonld": "f6e33744f9c067d5",
     "main": "2c156a476e1091ea",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/uocra/octubre-2026": {
     "status": 200,
@@ -2230,13 +2222,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/uocra/octubre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "a2112e3c895a9475",
+    "head": "57b91661c9f554f2",
     "jsonld": "408791c31be7ea3b",
     "main": "2bef499f037ea6f1",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/convenios/uocra/septiembre-2026": {
     "status": 200,
@@ -2251,13 +2243,34 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/convenios/uocra/septiembre-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "8fe7f8eca5991b84",
+    "head": "ee60356147b2f3b9",
     "jsonld": "e4789834a74ee8a0",
     "main": "f7c7b531c886cbd7",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
+  },
+  "/cuantas-horas-de-trabajo": {
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "content-security-policy": "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests",
+      "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
+      "referrer-policy": "strict-origin-when-cross-origin"
+    },
+    "title": "¿Cuántas horas de trabajo te cuesta? Asado, nafta, canasta y más",
+    "description": "Poné tu sueldo y tus horas y mirá cuánto de tu trabajo se va en un kilo de asado, un litro de nafta o la canasta básica, con precios oficiales del INDEC y la Secretaría de Energía.",
+    "robots": "index, follow",
+    "canonical": "https://calcular.ar/cuantas-horas-de-trabajo",
+    "raiz": [
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
+      "<body class=\"font-sans\">"
+    ],
+    "head": "488c7542e852bb56",
+    "jsonld": "ed56f690d0189be9",
+    "main": "67ba6f3fd1ca4c76",
+    "chrome": "5258fc01245f2d30"
   },
   "/cuenta": {
     "status": 404,
@@ -2268,18 +2281,16 @@
       "cache-control": "private, no-store",
       "referrer-policy": "no-referrer"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/cuenta/clave": {
     "status": 404,
@@ -2290,18 +2301,16 @@
       "cache-control": "private, no-store",
       "referrer-policy": "no-referrer"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/cuenta/compras": {
     "status": 404,
@@ -2312,18 +2321,16 @@
       "cache-control": "private, no-store",
       "referrer-policy": "no-referrer"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria": {
     "status": 200,
@@ -2338,13 +2345,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "652896733bb77f95",
+    "head": "0778c64fadc1aa26",
     "jsonld": "248e5df91c5e9957",
-    "main": "4eb9d7cdaac35b3f",
-    "chrome": "68c14b9e112f4133"
+    "main": "a492f59321fa1a8f",
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/abril-2025": {
     "status": 200,
@@ -2359,13 +2366,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/abril-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "836e3d9d573cf944",
+    "head": "59ec77dd1b6666b8",
     "jsonld": "71bbed9fb024a4c8",
     "main": "b3cc65546aad26db",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/abril-2026": {
     "status": 200,
@@ -2380,13 +2387,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/abril-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "3b8dbc6caaff7823",
+    "head": "ded3406f345819c4",
     "jsonld": "47627c1fffe9a263",
     "main": "975668f716651aef",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/agosto-2025": {
     "status": 200,
@@ -2401,13 +2408,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/agosto-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "74b852b5039a5799",
+    "head": "28a4858e8db8aa94",
     "jsonld": "88189ee2d85c8e1f",
     "main": "dc6d57940ff51b04",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/agosto-2026": {
     "status": 200,
@@ -2421,13 +2428,13 @@
     "description": "Cuánto costaba criar un hijo en agosto 2026 según el INDEC: de $ 557.303 a $ 713.070 por mes, abierto en bienes y cuidado y actualizado a hoy.",
     "canonical": "https://calcular.ar/cuota-alimentaria/agosto-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "c440a21f09f2ffbe",
+    "head": "f83d11321a421d08",
     "jsonld": "8556c17593e4bb0f",
     "main": "c466f42ed5fde4ba",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/diciembre-2025": {
     "status": 200,
@@ -2442,13 +2449,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/diciembre-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "bf389d7a84be05d3",
+    "head": "d8736b8c06377dba",
     "jsonld": "6bdec8e87b889c98",
     "main": "1805eebf1962cdd3",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/enero-2025": {
     "status": 200,
@@ -2463,13 +2470,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/enero-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0b9838f5d140d97d",
+    "head": "946cfdf5251834c5",
     "jsonld": "d791a96d7e12627b",
     "main": "5ca9f2eaa97a1b84",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/enero-2026": {
     "status": 200,
@@ -2484,13 +2491,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/enero-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0e1459ff05d43c3b",
+    "head": "2c4683d99f73ef04",
     "jsonld": "9c0fdba8e958c4a5",
     "main": "619b1cb85cc2828c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/febrero-2025": {
     "status": 200,
@@ -2505,13 +2512,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/febrero-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "d9aa6b87f65c5068",
+    "head": "7fe7cfc798f790e8",
     "jsonld": "3446aad0f67d75ca",
     "main": "95bec23149d37150",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/febrero-2026": {
     "status": 200,
@@ -2526,13 +2533,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/febrero-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "a3477449a4212ac7",
+    "head": "bae80717f008f067",
     "jsonld": "3c18f44255e778c2",
     "main": "ae6e5332b787d008",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/julio-2025": {
     "status": 200,
@@ -2547,13 +2554,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/julio-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "623aee46e57cd60a",
+    "head": "cb55a869e1bd1c3d",
     "jsonld": "025671cf9c9c8ca4",
     "main": "8691d16368bd1d60",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/julio-2026": {
     "status": 200,
@@ -2567,13 +2574,13 @@
     "description": "Cuánto costaba criar un hijo en julio 2026 según el INDEC: de $ 545.683 a $ 697.268 por mes, abierto en bienes y cuidado y actualizado a hoy.",
     "canonical": "https://calcular.ar/cuota-alimentaria/julio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "04f7232819f9b25d",
+    "head": "b5ae55df08807a8e",
     "jsonld": "207876bc8317fdc5",
     "main": "c48425e89e5d8058",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/junio-2025": {
     "status": 200,
@@ -2588,13 +2595,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/junio-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "ea7890340f15e244",
+    "head": "da894fcdb08ce865",
     "jsonld": "191f4908bd5a6010",
     "main": "0d49357bac9d2cf4",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/junio-2026": {
     "status": 200,
@@ -2608,13 +2615,13 @@
     "description": "Cuánto costaba criar un hijo en junio 2026 según el INDEC: de $ 529.539 a $ 678.308 por mes, abierto en bienes y cuidado y actualizado a hoy.",
     "canonical": "https://calcular.ar/cuota-alimentaria/junio-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4ac9ac3f32882cdf",
+    "head": "3de4da085562b9d9",
     "jsonld": "36dfa310c94a8e47",
     "main": "476288d23aae5757",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/marzo-2025": {
     "status": 200,
@@ -2629,13 +2636,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/marzo-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "d11f104a1eba4aa3",
+    "head": "dd181bd0840f991d",
     "jsonld": "f83bc2167973b568",
     "main": "2777dbdcb51fe53a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/marzo-2026": {
     "status": 200,
@@ -2650,13 +2657,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/marzo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "10e9e88476001dd1",
+    "head": "395e4c9ce010c9a5",
     "jsonld": "381433d93f9dfdff",
     "main": "9a0e466622d72db6",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/mayo-2025": {
     "status": 200,
@@ -2671,13 +2678,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/mayo-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "195e8c41341df4ba",
+    "head": "4ed8ea5f7e48f636",
     "jsonld": "f9f5a908bb9ed69b",
     "main": "5f782ef9666c4736",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/mayo-2026": {
     "status": 200,
@@ -2692,13 +2699,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/mayo-2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "ea544f01d52213af",
+    "head": "ae31001f29ba190e",
     "jsonld": "f00e513370322d09",
     "main": "76409561dd8e92cd",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/noviembre-2025": {
     "status": 200,
@@ -2713,13 +2720,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/noviembre-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "771e0b0a4e62288b",
+    "head": "295b59588f3cce4a",
     "jsonld": "1027b526ce40ec71",
     "main": "42766794493561e1",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/octubre-2025": {
     "status": 200,
@@ -2734,13 +2741,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/octubre-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "8b198308448c36e7",
+    "head": "e0922d1743e5591a",
     "jsonld": "dd2a925b25ef8a3e",
     "main": "ead8263fbb361cb9",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/cuota-alimentaria/septiembre-2025": {
     "status": 200,
@@ -2755,13 +2762,13 @@
     "robots": "noindex, follow",
     "canonical": "https://calcular.ar/cuota-alimentaria/septiembre-2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "d5af194d1559fd25",
+    "head": "f02f9c90469d6a17",
     "jsonld": "cebcf1e4b465c33f",
     "main": "8bf6b93e990a2bdd",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/dashboard": {
     "status": 404,
@@ -2772,18 +2779,16 @@
       "cache-control": "private, no-store",
       "referrer-policy": "no-referrer"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/deduccion-alquiler": {
     "status": 200,
@@ -2798,13 +2803,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/deduccion-alquiler",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "98621391240cedc5",
+    "head": "c5cee94aa7ef0a5e",
     "jsonld": "443e9ae117490e01",
     "main": "0ad625c9feff09ed",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/deduccion-empleada-domestica": {
     "status": 200,
@@ -2819,13 +2824,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/deduccion-empleada-domestica",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "fdf8782ba5e5969e",
+    "head": "992881a9a7104866",
     "jsonld": "ea7270e37e0e93f3",
     "main": "57eefed3c9fd3bbb",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/deducciones-generales-ganancias": {
     "status": 200,
@@ -2840,13 +2845,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/deducciones-generales-ganancias",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "750100c9df5ab5af",
+    "head": "3994b7cb1ec458f8",
     "jsonld": "287e1813f96957c6",
     "main": "ee40c3486700b9a0",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/derechohabientes-art": {
     "status": 200,
@@ -2861,13 +2866,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/derechohabientes-art",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "e356bedb0d45490b",
+    "head": "2eb91263c26545a0",
     "jsonld": "9b9dea63e56f109b",
     "main": "89a0bbcadebbf6e1",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/derivar-aportes-a-prepaga": {
     "status": 200,
@@ -2882,13 +2887,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/derivar-aportes-a-prepaga",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4c4083bf89cf9ed4",
+    "head": "ea8b77239dc1df85",
     "jsonld": "dff8d3506216550f",
     "main": "cc251ed50092eb09",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/descuento-pami": {
     "status": 200,
@@ -2903,13 +2908,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/descuento-pami",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "6d8adab25ee626fe",
+    "head": "f54a8ad9ae8c6fe4",
     "jsonld": "f1d2486599f14e70",
     "main": "474e151d09b6530b",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/descuentos-del-sueldo": {
     "status": 200,
@@ -2924,13 +2929,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/descuentos-del-sueldo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "d98a58a7638e3ef3",
+    "head": "802794509e4aa4fb",
     "jsonld": "4e1c98cb95f0e7f2",
     "main": "2444a4ab31b52b7d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/desempleo": {
     "status": 200,
@@ -2945,13 +2950,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/desempleo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "6b0c72176c8be9f3",
+    "head": "6536c9c59db8b647",
     "jsonld": "034e08897e128315",
     "main": "a32b97bbe306e59d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/despido-de-delegado-gremial": {
     "status": 200,
@@ -2966,13 +2971,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/despido-de-delegado-gremial",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0abe67b78b969946",
+    "head": "98941456c9a7dbba",
     "jsonld": "f34fbfc56d232f51",
     "main": "6bb0c95adb87dcb5",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/despido-empleada-domestica": {
     "status": 200,
@@ -2987,13 +2992,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/despido-empleada-domestica",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "a9e7c4cc2c92a335",
+    "head": "1c14bab9d426559e",
     "jsonld": "f090361b2a7f7b20",
-    "main": "214974622dac0029",
-    "chrome": "68c14b9e112f4133"
+    "main": "91af537f93ef3b48",
+    "chrome": "5258fc01245f2d30"
   },
   "/despido-plazo-fijo": {
     "status": 200,
@@ -3008,13 +3013,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/despido-plazo-fijo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "bcf8bc827157aa78",
+    "head": "41bac620f04a43f7",
     "jsonld": "20aa15562dd8dd90",
     "main": "c9ebdff855b8f643",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/despido-trabajador-rural": {
     "status": 200,
@@ -3029,13 +3034,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/despido-trabajador-rural",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "39ea7e113da3e968",
+    "head": "1c2e3ebe83bda7d8",
     "jsonld": "7600892ec5fb8abf",
     "main": "65165caf740807fb",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/dia-del-empleado-de-comercio": {
     "status": 200,
@@ -3050,13 +3055,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/dia-del-empleado-de-comercio",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "ea5fb5672bf97439",
+    "head": "7cbedb1717051a84",
     "jsonld": "a17b7300c44e5dcc",
     "main": "c0443b9a89547355",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/edad-avanzada": {
     "status": 200,
@@ -3071,13 +3076,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/edad-avanzada",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "9dbfa6d60e405d6f",
+    "head": "0e74464d11a6dc43",
     "jsonld": "345953915e049a88",
     "main": "bb37973edc63743b",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/empleada-domestica": {
     "status": 200,
@@ -3092,13 +3097,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/empleada-domestica",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "87ac814425bd3908",
-    "jsonld": "52cc61b5dad612d1",
-    "main": "eb84f12d70ef20bd",
-    "chrome": "68c14b9e112f4133"
+    "head": "4aa92e37c19ac2e2",
+    "jsonld": "99b199f3f3b09e21",
+    "main": "414a8d3f3c99892d",
+    "chrome": "5258fc01245f2d30"
   },
   "/empleador-sin-art": {
     "status": 200,
@@ -3113,13 +3118,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/empleador-sin-art",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "823461ab9023f559",
+    "head": "fd8d8633234d8e24",
     "jsonld": "d6e72ccc23e21633",
     "main": "94468f4f03401ad1",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/esta-pagina-no-existe": {
     "status": 404,
@@ -3129,18 +3134,16 @@
       "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/fondo-de-asistencia-laboral": {
     "status": 200,
@@ -3155,13 +3158,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/fondo-de-asistencia-laboral",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "d2215c9aac9cc987",
+    "head": "b8dc5847dd7b899c",
     "jsonld": "ac3a293034a338d8",
     "main": "fc37402e04ffc994",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/ganancias": {
     "status": 200,
@@ -3176,13 +3179,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/ganancias",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "83a7176fbf2ecd52",
+    "head": "1be7f9eb816db841",
     "jsonld": "5f2eb9abedcf78dd",
-    "main": "f2d1924b5b18ca52",
-    "chrome": "68c14b9e112f4133"
+    "main": "91baedef8e710ac5",
+    "chrome": "5258fc01245f2d30"
   },
   "/ganancias-autonomos": {
     "status": 200,
@@ -3197,13 +3200,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/ganancias-autonomos",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f92f83b6772b4123",
+    "head": "1879a57ef43b2a3a",
     "jsonld": "bdbd45aea0c62961",
     "main": "049969a24df09be5",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/ganancias-jubilados": {
     "status": 200,
@@ -3218,13 +3221,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/ganancias-jubilados",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "561e3f749b456205",
+    "head": "20bf62520e85bb26",
     "jsonld": "b8c63c28bf124ac8",
     "main": "1de6c1b792d5192e",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/ganancias-sociedades": {
     "status": 200,
@@ -3239,13 +3242,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/ganancias-sociedades",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "07360d1e9b1e21ef",
+    "head": "a16258778f20af3f",
     "jsonld": "18e6c42561d45dd5",
     "main": "41070b9dc93c533d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/hasta-cuando-tengo-obra-social": {
     "status": 200,
@@ -3260,13 +3263,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/hasta-cuando-tengo-obra-social",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "03e3e2baf2a0462e",
+    "head": "0e5e3af45dc2ecd9",
     "jsonld": "9e35b55eb26606c2",
     "main": "301b7fc0b43a36d1",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/honorarios-periciales": {
     "status": 200,
@@ -3281,13 +3284,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/honorarios-periciales",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "09e9e375edb54932",
+    "head": "20829c5419d61ed9",
     "jsonld": "1c2c0d743d696c49",
     "main": "2e0e717d612b7a0a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/horas-extras": {
     "status": 200,
@@ -3302,13 +3305,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/horas-extras",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4ab1c8031c76fb06",
+    "head": "623a1cf11d536c25",
     "jsonld": "681e3080e36abcbe",
-    "main": "a7cead73487d002d",
-    "chrome": "68c14b9e112f4133"
+    "main": "612de387e7f05be0",
+    "chrome": "5258fc01245f2d30"
   },
   "/icon.svg": {
     "status": 200,
@@ -3333,13 +3336,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/impuestos-internos",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "5ddfbdfe6255b94d",
+    "head": "a2a7a235c3cf5aaf",
     "jsonld": "1931d81ddfa1d066",
     "main": "7af3eb14e41b1afd",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/indemnizacion": {
     "status": 200,
@@ -3354,13 +3357,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/indemnizacion",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4a17544b236fea0c",
+    "head": "e9f78ea7f9f24a51",
     "jsonld": "1a5d1185728bf496",
-    "main": "9ed7ff47a082df3e",
-    "chrome": "68c14b9e112f4133"
+    "main": "2d0fce0f5215a531",
+    "chrome": "5258fc01245f2d30"
   },
   "/indemnizacion-art": {
     "status": 200,
@@ -3375,13 +3378,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/indemnizacion-art",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "e49327a81fc66038",
+    "head": "4ddb9ab25f7cc2a3",
     "jsonld": "ff41da8b3f5ba6af",
     "main": "e67bb541f2179fc8",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/indemnizacion-periodista": {
     "status": 200,
@@ -3396,13 +3399,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/indemnizacion-periodista",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "45434b05c9685462",
+    "head": "3b6bc19f68b97b32",
     "jsonld": "616ba736bd06f442",
     "main": "63d947dde64584e5",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/indemnizacion-por-clientela": {
     "status": 200,
@@ -3417,13 +3420,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/indemnizacion-por-clientela",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "5de5a03d9012f1ce",
+    "head": "c1eb2f1abc509be5",
     "jsonld": "a02c9dcd0aaa3329",
     "main": "899643a794b5ab6c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/indemnizacion-por-fallecimiento": {
     "status": 200,
@@ -3438,13 +3441,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/indemnizacion-por-fallecimiento",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "c3aa13db34e001ff",
+    "head": "2c34122607e0d779",
     "jsonld": "4178241eb59ad673",
     "main": "d04794268eec1e31",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion": {
     "status": 200,
@@ -3459,13 +3462,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "238e047da4f8bbf0",
+    "head": "aae9fef63be09455",
     "jsonld": "6ca4b89af0c18acd",
-    "main": "9f4233b920ff60c5",
-    "chrome": "68c14b9e112f4133"
+    "main": "32b22c7fc2373c32",
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/1900": {
     "status": 404,
@@ -3475,18 +3478,16 @@
       "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2017": {
     "status": 200,
@@ -3501,13 +3502,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2017",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "d7f9c324d260bf0b",
+    "head": "ca29f24b97c17290",
     "jsonld": "0a264aab90f3b4a3",
     "main": "e570c69a3756b2c1",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2018": {
     "status": 200,
@@ -3522,13 +3523,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2018",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "31b6a33c144fd9d1",
+    "head": "8bc0dbdda9cc0025",
     "jsonld": "b774e78aca197184",
     "main": "e1e80a82af91bf89",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2019": {
     "status": 200,
@@ -3543,13 +3544,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2019",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "9261422e58b7de76",
+    "head": "e0337cfdde4654e7",
     "jsonld": "4275c210ac4b9c1a",
     "main": "fe1a1cb26ab9b60a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2020": {
     "status": 200,
@@ -3564,13 +3565,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2020",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "5e3f25b017d05252",
+    "head": "d18e857637e54f03",
     "jsonld": "57d282fce2439510",
     "main": "8877ff1858ee3ee1",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2021": {
     "status": 200,
@@ -3585,13 +3586,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2021",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "16076d1f131f2f4a",
+    "head": "004d8df16ac798b8",
     "jsonld": "9474cc32a6db8cbd",
     "main": "bf96bb23a0ce8c26",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2022": {
     "status": 200,
@@ -3606,13 +3607,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2022",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "73ed0fd4c2c6e574",
+    "head": "cb30dbd93b530c65",
     "jsonld": "8781deab8d2c6f08",
     "main": "784b6cf55ce748c5",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2023": {
     "status": 200,
@@ -3627,13 +3628,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2023",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "fc75a96899a2596f",
+    "head": "ac3bc8196c306544",
     "jsonld": "a401462d2ffa88ad",
     "main": "328f4fbbd48b1dd2",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2024": {
     "status": 200,
@@ -3648,13 +3649,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2024",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "c23007cccc629fe6",
+    "head": "b6d87726b44f77ee",
     "jsonld": "46dc6b916339c02d",
     "main": "c320e4a6ed553a61",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2025": {
     "status": 200,
@@ -3669,13 +3670,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2025",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "b4038bb44d977e01",
+    "head": "361e27b10c4552cc",
     "jsonld": "907cac83d26bee15",
     "main": "9fd8556e56ac6b98",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/2026": {
     "status": 200,
@@ -3690,13 +3691,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/2026",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "31d3436f242bd8c6",
+    "head": "cdb0120601e9f020",
     "jsonld": "5af7188cbd81667a",
     "main": "929bdccd2efa068f",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/inflacion/alquiler": {
     "status": 200,
@@ -3711,13 +3712,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/inflacion/alquiler",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "c83f7de19c857131",
+    "head": "78d8a8c2da81d329",
     "jsonld": "7cec2e8e791a116b",
     "main": "884b19e4b0b0b7ad",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/informes/credito-laboral": {
     "status": 200,
@@ -3732,13 +3733,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/informes/credito-laboral",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "039876d42795493e",
+    "head": "f36e2b31c1f25588",
     "jsonld": "01fd288586c00208",
     "main": "6a8f77bb961bcda0",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/informes/cuota-alimentaria": {
     "status": 200,
@@ -3753,13 +3754,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/informes/cuota-alimentaria",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "151c6d0927b13715",
+    "head": "ed81bd5d80dc9bbc",
     "jsonld": "5b64465b7e5734ec",
     "main": "cfc0ab95b0e095cb",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/informes/ganancias": {
     "status": 200,
@@ -3774,13 +3775,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/informes/ganancias",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "bed5027f23eb2c3b",
+    "head": "63c6aca528156fb1",
     "jsonld": "58190dd52fd9a9ee",
     "main": "cd379fced2071aa9",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/informes/indemnizacion": {
     "status": 200,
@@ -3795,13 +3796,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/informes/indemnizacion",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "6f29dfb09d0d91f4",
+    "head": "2a80f29d9d63c04a",
     "jsonld": "6629b968a52d7477",
     "main": "503aa54e54e817ce",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/informes/indemnizacion/ver": {
     "status": 200,
@@ -3817,13 +3818,13 @@
     "robots": "noindex, nofollow, nocache",
     "canonical": "https://calcular.ar/informes/indemnizacion/ver",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "59030fa2c702e389",
+    "head": "88a09929f0f196af",
     "jsonld": "97f810b1d4dc655d",
     "main": "8b385f3f37944df1",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/informes/inflacion": {
     "status": 200,
@@ -3838,13 +3839,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/informes/inflacion",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "c2520236909a90d5",
+    "head": "b6613210ab3a527e",
     "jsonld": "dd6549184632420e",
     "main": "e4e5345f33447856",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/intl/uy/aguinaldo": {
     "status": 404,
@@ -3854,18 +3855,16 @@
       "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/ius-variandi": {
     "status": 200,
@@ -3880,13 +3879,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/ius-variandi",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "82c8afa2f9640ffe",
+    "head": "d78ea9340e633dd2",
     "jsonld": "8d1d293b38cbd489",
     "main": "7b39dfbdc1c0bad9",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/jubilacion": {
     "status": 200,
@@ -3901,13 +3900,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/jubilacion",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4e0fb94a53f7b515",
+    "head": "134be7ef3a0cdca3",
     "jsonld": "795f9a4c909a1852",
-    "main": "8641d03f86006403",
-    "chrome": "68c14b9e112f4133"
+    "main": "d41a6c29b52cac1c",
+    "chrome": "5258fc01245f2d30"
   },
   "/jubilaciones": {
     "status": 308,
@@ -3926,7 +3925,7 @@
       "<html id=\"__next_error__\">",
       "<body>"
     ],
-    "head": "de28e70bb43e4f53",
+    "head": "b819327c6cac3bb7",
     "chrome": "e3b0c44298fc1c14"
   },
   "/libro-de-sueldos": {
@@ -3942,13 +3941,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/libro-de-sueldos",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "07d20040c1843665",
+    "head": "b86210e8742019e7",
     "jsonld": "5859710b05950a32",
     "main": "f9d773323ea8c580",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/licencia-por-enfermedad": {
     "status": 200,
@@ -3963,13 +3962,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/licencia-por-enfermedad",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4d7c80dfb6b7cecf",
+    "head": "516299f8748239ea",
     "jsonld": "075b17f6367d24a3",
     "main": "fc5133f39ec3274a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/licencia-por-maternidad": {
     "status": 200,
@@ -3984,13 +3983,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/licencia-por-maternidad",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "7d2560cfe2129ce5",
+    "head": "6b624311ee47c13e",
     "jsonld": "605f3aef0892d3ca",
     "main": "03ce2112c3601488",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/licencias-especiales": {
     "status": 200,
@@ -4005,13 +4004,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/licencias-especiales",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0c3bc74d58d1e3cf",
+    "head": "7dce4efca1aebe1e",
     "jsonld": "4893f1d549498d85",
     "main": "4088e9f2d80363a2",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/llms.txt": {
     "status": 200,
@@ -4021,7 +4020,7 @@
       "cache-control": "public, max-age=0",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "cuerpo": "7f1da848c9c923c6"
+    "cuerpo": "d6f55a5c08507740"
   },
   "/login": {
     "status": 404,
@@ -4032,18 +4031,16 @@
       "cache-control": "private, no-store",
       "referrer-policy": "no-referrer"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/monotributo": {
     "status": 200,
@@ -4058,13 +4055,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/monotributo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "9f2c801f178f9164",
+    "head": "535c4fda0799f8a1",
     "jsonld": "ca69ad806bdaca66",
-    "main": "200ff80daf611615",
-    "chrome": "68c14b9e112f4133"
+    "main": "78b876ca21a3567f",
+    "chrome": "5258fc01245f2d30"
   },
   "/monotributo/categorias": {
     "status": 200,
@@ -4079,13 +4076,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/monotributo/categorias",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "b686eb21d9441c39",
+    "head": "ec251c90480193a2",
     "jsonld": "df7f0510c9b93182",
     "main": "f53995814715d88c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/monotributo/recategorizacion": {
     "status": 200,
@@ -4100,13 +4097,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/monotributo/recategorizacion",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "797cd19e78379f7f",
+    "head": "49c172723b03651f",
     "jsonld": "bb883e99bc959ac1",
     "main": "4d0b74b8d7ff2475",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/multas-arca": {
     "status": 200,
@@ -4121,13 +4118,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/multas-arca",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "7067a1031dfd1a5a",
+    "head": "20a4fea469bb89f6",
     "jsonld": "53b6fa52582af8b5",
     "main": "fe4cb130358e8681",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/negociacion-de-buena-fe": {
     "status": 200,
@@ -4142,13 +4139,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/negociacion-de-buena-fe",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "98ba3c6f259f1823",
+    "head": "abc9c92a4863a3c8",
     "jsonld": "0b71b4824d8f390e",
     "main": "6793454d5b87b71f",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/novedades": {
     "status": 200,
@@ -4166,13 +4163,13 @@
       "type=application/rss+xml href=https://calcular.ar/novedades/feed.xml"
     ],
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "adff71581d4f7d0e",
+    "head": "264d2e1d79362022",
     "jsonld": "8134099092903f9a",
     "main": "093f658c21457147",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/novedades/feed.xml": {
     "status": 200,
@@ -4197,13 +4194,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/obra-social-monotributo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "fb7c17085131ac0e",
+    "head": "f5a5752f88e1e473",
     "jsonld": "af683b82c05eb3a5",
-    "main": "54684aee175fbc0a",
-    "chrome": "68c14b9e112f4133"
+    "main": "a46405ad4db41643",
+    "chrome": "5258fc01245f2d30"
   },
   "/og": {
     "status": 200,
@@ -4228,13 +4225,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/pension-no-contributiva",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "5fed1afd4e8d9175",
+    "head": "6d431899e354d6b1",
     "jsonld": "68dd2cb328dcabab",
     "main": "ae0c245c80f29b2a",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/pension-veteranos-malvinas": {
     "status": 200,
@@ -4249,13 +4246,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/pension-veteranos-malvinas",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "7278a57040792d4c",
+    "head": "2515b45aead7f25a",
     "jsonld": "f00d3abeb06a2b53",
     "main": "29937d05d81bc5f8",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/periodo-de-prueba": {
     "status": 200,
@@ -4270,13 +4267,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/periodo-de-prueba",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "2c7a805cf95685dd",
+    "head": "c55616d015f6f841",
     "jsonld": "502b768a15fa701b",
     "main": "f02ed01dca401971",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/planillas": {
     "status": 200,
@@ -4291,13 +4288,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/planillas",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0e7d3c560e4e16c1",
+    "head": "ebd538d59e4b694c",
     "jsonld": "cb67070fe430b528",
     "main": "c69d48e3b506620f",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/planillas/alquileres": {
     "status": 200,
@@ -4312,13 +4309,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/planillas/alquileres",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "52032a6eae70ed7c",
+    "head": "f5d4fddbf4a72a53",
     "jsonld": "e9cccc11c902f8ca",
     "main": "19c41d62376c4988",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/planillas/camioneros": {
     "status": 200,
@@ -4333,13 +4330,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/planillas/camioneros",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "cdb98032419e9d8e",
+    "head": "c5e0bfe2467d042a",
     "jsonld": "d2a80c379238584f",
     "main": "53d33b948ba78421",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/planillas/casas-particulares": {
     "status": 200,
@@ -4350,17 +4347,17 @@
       "referrer-policy": "strict-origin-when-cross-origin"
     },
     "title": "Planilla de sueldo de empleada doméstica 2026 (Excel)",
-    "description": "Excel y Google Sheets para liquidar casas particulares: escala de la CNTCP, horas extras, zona, aguinaldo, lo que se paga a ARCA y recibo. Pago único.",
+    "description": "Excel y Google Sheets para liquidar casas particulares: escala de la CNTCP, horas extras, zona, antigüedad, aguinaldo, lo que se paga a ARCA y recibo. Pago único.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/planillas/casas-particulares",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "a4ad7fec16c84ed6",
-    "jsonld": "3dd0f90f955dc25d",
-    "main": "bf0f3d3b179d1aa1",
-    "chrome": "68c14b9e112f4133"
+    "head": "76002c1d93925b13",
+    "jsonld": "e2621bf65ad63e04",
+    "main": "e59f93ad2595644b",
+    "chrome": "5258fc01245f2d30"
   },
   "/planillas/comprar": {
     "status": 404,
@@ -4370,15 +4367,15 @@
       "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "CalculAR: calculadoras claras para la Argentina",
+    "title": "Esta página no existe | CalculAR",
     "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
+    "robots": "noindex | noindex, follow",
     "canonical": "https://calcular.ar/planillas/comprar",
     "raiz": [
       "<html id=\"__next_error__\">",
       "<body>"
     ],
-    "head": "91c9a45fe512e81c",
+    "head": "f2da50694b652eb1",
     "chrome": "e3b0c44298fc1c14"
   },
   "/planillas/comprar?producto=no-existe": {
@@ -4389,15 +4386,15 @@
       "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "CalculAR: calculadoras claras para la Argentina",
+    "title": "Esta página no existe | CalculAR",
     "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
+    "robots": "noindex | noindex, follow",
     "canonical": "https://calcular.ar/planillas/comprar",
     "raiz": [
       "<html id=\"__next_error__\">",
       "<body>"
     ],
-    "head": "91c9a45fe512e81c",
+    "head": "f2da50694b652eb1",
     "chrome": "e3b0c44298fc1c14"
   },
   "/planillas/mi-sueldo": {
@@ -4413,13 +4410,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/planillas/mi-sueldo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0f961598e9585755",
+    "head": "85076f5e381f1f3d",
     "jsonld": "e6cd620136fee345",
     "main": "615a85d190e5978e",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/planillas/monotributo": {
     "status": 200,
@@ -4434,13 +4431,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/planillas/monotributo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "7a7e9c595ec219b5",
+    "head": "1434a78961238eec",
     "jsonld": "80ea17bfbb38fee4",
     "main": "8433747997557455",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/planillas/plazo-fijo": {
     "status": 200,
@@ -4455,13 +4452,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/planillas/plazo-fijo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "d387c4bb11cf0c23",
+    "head": "0d6185013817a2a4",
     "jsonld": "cf30e1048545e6bd",
     "main": "7d72ecaadfb501a3",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/planillas/uocra": {
     "status": 200,
@@ -4476,13 +4473,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/planillas/uocra",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f1b853b0c6b510ee",
+    "head": "6797921b1e77215b",
     "jsonld": "2b3440d58230d5c9",
     "main": "5fc7a0f234a36c76",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/planillas/vacaciones": {
     "status": 200,
@@ -4497,13 +4494,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/planillas/vacaciones",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "18c890aa036ace7c",
+    "head": "905313fa260caf61",
     "jsonld": "9e89e1befea4eaf9",
-    "main": "0c78e6963a96a347",
-    "chrome": "68c14b9e112f4133"
+    "main": "096f338cd392978b",
+    "chrome": "5258fc01245f2d30"
   },
   "/plazo-fijo": {
     "status": 200,
@@ -4518,13 +4515,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/plazo-fijo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "a872c9b3d298b007",
+    "head": "51fb1fc7821cdc05",
     "jsonld": "af7356a1bee77ca6",
-    "main": "3f57d575be1d2e9c",
-    "chrome": "68c14b9e112f4133"
+    "main": "36421fc209cd4f0a",
+    "chrome": "5258fc01245f2d30"
   },
   "/pluriempleo-art": {
     "status": 200,
@@ -4539,13 +4536,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/pluriempleo-art",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "007a3ca95270ac7d",
+    "head": "c49af5c557308313",
     "jsonld": "ff116490e4b1663f",
     "main": "2714520873e1567b",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/practicas-desleales-sindicales": {
     "status": 200,
@@ -4560,13 +4557,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/practicas-desleales-sindicales",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "e39bcc801bb1cb12",
+    "head": "a88d0d4020fc2456",
     "jsonld": "69dad7f6559037c3",
     "main": "2ea637aa17502e88",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/prescripcion-deuda-arca": {
     "status": 200,
@@ -4581,13 +4578,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/prescripcion-deuda-arca",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "a98e44d009376e2f",
+    "head": "155d3e7b1e90957e",
     "jsonld": "3b34fcdeea3b0d8f",
     "main": "f330bd2f75c9cd3b",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/privacidad": {
     "status": 200,
@@ -4602,13 +4599,13 @@
     "robots": "noindex",
     "canonical": "https://calcular.ar/privacidad",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "b0732c187c3238f9",
+    "head": "45d994b9095df536",
     "jsonld": "97f810b1d4dc655d",
-    "main": "721652d83689980f",
-    "chrome": "68c14b9e112f4133"
+    "main": "42fcf0e38d48b323",
+    "chrome": "5258fc01245f2d30"
   },
   "/propinas": {
     "status": 200,
@@ -4623,13 +4620,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/propinas",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "559844d61e496ac7",
+    "head": "259fe45dff95eb8f",
     "jsonld": "dc29061850401ef3",
     "main": "e322c27ff53945bf",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/puam": {
     "status": 200,
@@ -4644,13 +4641,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/puam",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "411240285ac7ee19",
+    "head": "ed35f050b486aae3",
     "jsonld": "3a4df7a62811f4e7",
     "main": "5edd72ade60418a9",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/radar": {
     "status": 308,
@@ -4672,13 +4669,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/rechazo-art",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "1b1495d702cc77d2",
+    "head": "fec49e5f1f3910c3",
     "jsonld": "c9757c4093396d3b",
     "main": "3a5568c58a77882d",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/recuperar": {
     "status": 404,
@@ -4689,18 +4686,16 @@
       "cache-control": "private, no-store",
       "referrer-policy": "no-referrer"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/registro": {
     "status": 404,
@@ -4711,18 +4706,16 @@
       "cache-control": "private, no-store",
       "referrer-policy": "no-referrer"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/reingreso": {
     "status": 200,
@@ -4737,13 +4730,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/reingreso",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "7185f40e759fb8ab",
+    "head": "f3bf7613ff0328bb",
     "jsonld": "071e260a8d545bfb",
     "main": "d9d559f12a743177",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/renuncia": {
     "status": 200,
@@ -4758,13 +4751,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/renuncia",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "32ec66774e52eb66",
+    "head": "2962aa49daaaabcf",
     "jsonld": "2989bd66bc916f6c",
     "main": "1b7f7e54f1c2024b",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/repartidores-de-apps": {
     "status": 200,
@@ -4779,13 +4772,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/repartidores-de-apps",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "807b1f5e3b031de4",
+    "head": "5eb821c1213b70fa",
     "jsonld": "6a3381d26d66afe1",
     "main": "f990b984995021d6",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/reserva-del-empleo": {
     "status": 200,
@@ -4800,13 +4793,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/reserva-del-empleo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "5c8e946c1f80a299",
+    "head": "8c4efc901e79817d",
     "jsonld": "bb8b3da031e0ff9c",
     "main": "e1cf2dcb7b57c8d2",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/rifl": {
     "status": 200,
@@ -4821,13 +4814,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/rifl",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "31092703482e83e4",
+    "head": "f91e56767f7dac6a",
     "jsonld": "09d2d3ff26ae7d2c",
-    "main": "a7c550bdd6bb6ae8",
-    "chrome": "68c14b9e112f4133"
+    "main": "2802c06dd7f8987a",
+    "chrome": "5258fc01245f2d30"
   },
   "/rimi-inversiones": {
     "status": 200,
@@ -4842,13 +4835,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/rimi-inversiones",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "61e68fe1ca8daf73",
+    "head": "c9cfa648a4aebbb8",
     "jsonld": "7e5260e2b1c162fb",
     "main": "b79f53736d1bde96",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/robots.txt": {
     "status": 200,
@@ -4873,13 +4866,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/salario-minimo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "18dede0eb8dd9ec6",
+    "head": "37f49cd5ed2c8b66",
     "jsonld": "02ccc9ed342ebba6",
-    "main": "6270edde2de6e79a",
-    "chrome": "68c14b9e112f4133"
+    "main": "9d2dd8b19a895344",
+    "chrome": "5258fc01245f2d30"
   },
   "/servicios-esenciales-huelga": {
     "status": 200,
@@ -4894,13 +4887,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/servicios-esenciales-huelga",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "0673d6492fca99e1",
+    "head": "ad1692b2a8469709",
     "jsonld": "93824902c88a4651",
     "main": "daa4fc75cb760eab",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/sitemap.xml": {
     "status": 200,
@@ -4910,7 +4903,7 @@
       "cache-control": "public, max-age=0, must-revalidate",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "cuerpo": "daca98285d83c17e"
+    "cuerpo": "be9087b28bee8939"
   },
   "/sobre": {
     "status": 200,
@@ -4925,13 +4918,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/sobre",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "3526616c66ac9bc6",
+    "head": "87e0130243dbbe5e",
     "jsonld": "d96e5298783d49bb",
     "main": "14eed2f36d09a5a0",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/sueldo-en-el-mundo": {
     "status": 200,
@@ -4941,18 +4934,18 @@
       "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "Día de libertad tributaria: tu sueldo en el mundo",
-    "description": "Mirá hasta qué día del año trabajás para el Estado con tu sueldo argentino y cuánto te quedaría en mano en 41 países, con el mismo poder de compra.",
+    "title": "¿Cuánto te quedaría en mano en otro país? Tu sueldo en el mundo",
+    "description": "Mirá cuánto te quedaría en mano con tu sueldo argentino en 68 países, con el mismo poder de compra, y hasta qué día del año trabajás para el Estado.",
     "robots": "index, follow",
     "canonical": "https://calcular.ar/sueldo-en-el-mundo",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "361bd3eedbfea0e9",
-    "jsonld": "953a8e117ae13822",
-    "main": "ab609afa515b1ebc",
-    "chrome": "68c14b9e112f4133"
+    "head": "c3542022f31b522f",
+    "jsonld": "ba85c238e117e20b",
+    "main": "2067e373d11d07be",
+    "chrome": "5258fc01245f2d30"
   },
   "/sueldo-neto": {
     "status": 200,
@@ -4967,13 +4960,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/sueldo-neto",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "5f244484cbb6e020",
+    "head": "0f6879f4df059f90",
     "jsonld": "bd491af61a6d3fa4",
-    "main": "5c4cca3035ca957a",
-    "chrome": "68c14b9e112f4133"
+    "main": "988edefd2f42bf54",
+    "chrome": "5258fc01245f2d30"
   },
   "/sueldo-neto/camioneros": {
     "status": 200,
@@ -4988,13 +4981,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/sueldo-neto/camioneros",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "f52e7e8a9daf8566",
+    "head": "7772104aa7c0979e",
     "jsonld": "71023766bc66a8ad",
     "main": "7c1e64c1095558ee",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/sueldo-neto/comercio": {
     "status": 200,
@@ -5009,13 +5002,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/sueldo-neto/comercio",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "bbade29d7087f176",
+    "head": "ec2b964c84068a34",
     "jsonld": "44a69991700e4583",
     "main": "ae25a51fe487cd8c",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/sueldo-neto/construccion": {
     "status": 200,
@@ -5030,13 +5023,34 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/sueldo-neto/construccion",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "cb00d27db2b9fb7c",
+    "head": "77e6d5fb7f0707d2",
     "jsonld": "2c51abf88ce863b7",
     "main": "a67cae302f125c1f",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
+  },
+  "/sueldos-reales": {
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "content-security-policy": "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests",
+      "cache-control": "s-maxage=3600, stale-while-revalidate=31532400",
+      "referrer-policy": "strict-origin-when-cross-origin"
+    },
+    "title": "Sueldos reales en Argentina por ocupación",
+    "description": "Cuánto gana la gente en Argentina en cada ocupación, según sueldos aportados de forma anónima. Publicamos con 10 aportes o más.",
+    "robots": "noindex, follow",
+    "canonical": "https://calcular.ar/sueldos-reales",
+    "raiz": [
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
+      "<body class=\"font-sans\">"
+    ],
+    "head": "2fa1ed24d729601f",
+    "jsonld": "97f810b1d4dc655d",
+    "main": "4406dfe9a07c4347",
+    "chrome": "5258fc01245f2d30"
   },
   "/temeridad-y-malicia": {
     "status": 200,
@@ -5051,13 +5065,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/temeridad-y-malicia",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "c85b35cd7d2b20b3",
+    "head": "d1fb9ff55d30cfad",
     "jsonld": "3330d5e04d2234d3",
     "main": "69cc312475578a38",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/terminos": {
     "status": 200,
@@ -5072,13 +5086,13 @@
     "robots": "noindex",
     "canonical": "https://calcular.ar/terminos",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "9e8e5d3dd7484b3e",
+    "head": "65d67316494a7629",
     "jsonld": "97f810b1d4dc655d",
     "main": "521de20679659fbc",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/tiempo-parcial": {
     "status": 200,
@@ -5093,13 +5107,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/tiempo-parcial",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "28fef59ce2fb9eff",
+    "head": "7c4f2dc884dd79cb",
     "jsonld": "c42113e7f785cdfd",
     "main": "08910492d92261cf",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/trabajo-de-mujeres": {
     "status": 200,
@@ -5114,13 +5128,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/trabajo-de-mujeres",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "283db1b633a3a6c1",
+    "head": "b169b49cb4950ede",
     "jsonld": "62cc1a05d838f3ae",
     "main": "efecbac1d3c8adc4",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/transferencia-del-establecimiento": {
     "status": 200,
@@ -5135,13 +5149,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/transferencia-del-establecimiento",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "8d7563f0ee0d7a99",
+    "head": "841dec5c052dc958",
     "jsonld": "1192966582cb83e9",
     "main": "e10573aa406a4163",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   },
   "/uy/aguinaldo": {
     "status": 404,
@@ -5151,18 +5165,16 @@
       "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
       "referrer-policy": "strict-origin-when-cross-origin"
     },
-    "title": "404: This page could not be found.",
-    "description": "Calculadoras gratuitas y actualizadas para la Argentina: monotributo, aguinaldo, vacaciones y más. Datos oficiales, resultados claros y sin vueltas.",
-    "robots": "noindex | index, follow",
-    "canonical": "https://calcular.ar/_not-found",
+    "title": "Esta página no existe | CalculAR",
+    "robots": "noindex | noindex, follow",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "4f66536cfd50b038",
+    "head": "6f6a0c9233152e4d",
     "jsonld": "97f810b1d4dc655d",
-    "main": "5399b21f97e2a199",
-    "chrome": "68c14b9e112f4133"
+    "main": "f397188a611cb4da",
+    "chrome": "5258fc01245f2d30"
   },
   "/vacaciones": {
     "status": 200,
@@ -5177,13 +5189,13 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/vacaciones",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "e0ec99008e693f3b",
+    "head": "d688b7be11aff7d4",
     "jsonld": "b98268c1123aa83a",
-    "main": "0dbc57322ad1903e",
-    "chrome": "68c14b9e112f4133"
+    "main": "5629b22a593f61ca",
+    "chrome": "5258fc01245f2d30"
   },
   "/venta-de-inmuebles": {
     "status": 200,
@@ -5198,12 +5210,12 @@
     "robots": "index, follow",
     "canonical": "https://calcular.ar/venta-de-inmuebles",
     "raiz": [
-      "<html lang=\"es-AR\" class=\"__variable_8eaea4 h-full antialiased\">",
+      "<html lang=\"es-AR\" class=\"geist_a71539c9-module__T19VSG__variable h-full antialiased\">",
       "<body class=\"font-sans\">"
     ],
-    "head": "ed827f5ed6679f03",
+    "head": "a9f016a888393e14",
     "jsonld": "f747b8ccee6d95e5",
     "main": "ef4b41edd216b4cf",
-    "chrome": "68c14b9e112f4133"
+    "chrome": "5258fc01245f2d30"
   }
 }
