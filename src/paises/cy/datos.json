@@ -1,0 +1,975 @@
+{
+  "mercado": "cy",
+  "datos": [
+    {
+      "id": "cy.eisfora-ka-misthotou",
+      "nombre": "Εισφορά μισθωτού στο Ταμείο Κοινωνικών Ασφαλίσεων",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2029-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2028-12-31",
+          "valor": 8.8,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός Εργοδότη: ποσοστά εισφορών στα Ταμεία",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/E7935B990CDA4E8DC2257C9200462145?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "hasta": "2033-12-31",
+          "valor": 9.3,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός Εργοδότη: ποσοστά εισφορών στα Ταμεία",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/E7935B990CDA4E8DC2257C9200462145?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.eisfora-ka-ergodoti",
+      "nombre": "Εισφορά εργοδότη στο Ταμείο Κοινωνικών Ασφαλίσεων",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2029-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2028-12-31",
+          "valor": 8.8,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός Εργοδότη: ποσοστά εισφορών στα Ταμεία",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/E7935B990CDA4E8DC2257C9200462145?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "hasta": "2033-12-31",
+          "valor": 9.3,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός Εργοδότη: ποσοστά εισφορών στα Ταμεία",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/E7935B990CDA4E8DC2257C9200462145?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.eisfora-ka-autotelos",
+      "nombre": "Εισφορά αυτοτελώς εργαζομένου στο Ταμείο Κοινωνικών Ασφαλίσεων",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2029-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2028-12-31",
+          "valor": 16.6,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός Ασφαλισμένου: εισφορές μισθωτών και αυτοτελώς εργαζομένων",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/445196CDBAC862C4C2257C93003824CD?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "hasta": "2033-12-31",
+          "valor": 17.6,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός Ασφαλισμένου: εισφορές μισθωτών και αυτοτελώς εργαζομένων",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/445196CDBAC862C4C2257C93003824CD?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.anotato-orio-ka",
+      "nombre": "Ανώτατο μηνιαίο ποσό ασφαλιστέων αποδοχών",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-04",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-06",
+          "hasta": "2026-01-04",
+          "valor": 5551,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Βασικές ασφαλιστέες αποδοχές 1981-2026 (πίνακας xlsx)",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/109C23F9B530F193C2257DB700288564?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "valor": 5742,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Βασικές ασφαλιστέες αποδοχές 1981-2026 (πίνακας xlsx)",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/109C23F9B530F193C2257DB700288564?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.anotato-orio-ka-evdomada",
+      "nombre": "Ανώτατο εβδομαδιαίο ποσό ασφαλιστέων αποδοχών",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-04",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-06",
+          "hasta": "2026-01-04",
+          "valor": 1281,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Βασικές ασφαλιστέες αποδοχές 1981-2026 (πίνακας xlsx)",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/109C23F9B530F193C2257DB700288564?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "valor": 1325,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Επαγγελματικές κατηγορίες και ποσά ασφαλιστέων αποδοχών αυτοτελώς εργαζομένων 2026",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/1AFCD6556B9763F3C2258D6500224FE1?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.vasikes-asfalistees-evdomada",
+      "nombre": "Εβδομαδιαίο ποσό βασικών ασφαλιστέων αποδοχών",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-04",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-06",
+          "hasta": "2026-01-04",
+          "valor": 213.54,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Βασικές ασφαλιστέες αποδοχές 1981-2026 (πίνακας xlsx)",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/109C23F9B530F193C2257DB700288564?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "valor": 220.76,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Βασικές ασφαλιστέες αποδοχές 1981-2026 (πίνακας xlsx)",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/109C23F9B530F193C2257DB700288564?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.syntelestes-ae",
+      "nombre": "Συντελεστής κατώτατου ποσού ασφαλιστέων αποδοχών ανά επαγγελματική κατηγορία αυτοτελώς εργαζομένων",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "proximaRevision": "2027-01-04",
+      "etiquetas": {
+        "3": "3. Διευθυντές (επιχειρηματίες), κτηματομεσίτες, χονδρέμποροι",
+        "5": "5. Οικοδόμοι και συναφή επαγγέλματα",
+        "6": "6. Γεωργοί, κτηνοτρόφοι, πτηνοτρόφοι, αλιείς",
+        "7": "7. Οδηγοί, χειριστές εκσκαφέων",
+        "8": "8. Τεχνικοί βοηθοί, συνεργάτες ΜΜΕ, χειριστές μηχανημάτων",
+        "9": "9. Γραφείς, δακτυλογράφοι, ταμίες, γραμματείς",
+        "10": "10. Τεχνίτες άλλων κατηγοριών",
+        "11": "11. Καταστηματάρχες",
+        "12": "12. Κρεοπώλες, αρτοποιοί, ζαχαροπλάστες",
+        "13": "13. Πλανοδιοπώλες, διανομείς",
+        "14": "14. Καθαριστές, κλητήρες, φύλακες",
+        "15": "15. Σχεδιαστές, χειριστές υπολογιστών, μηχανικοί πλοίων",
+        "16": "16. Άλλα επαγγέλματα",
+        "1a": "1. Ιατροί, φαρμακοποιοί, ειδικοί υγείας (έως 10 έτη)",
+        "1b": "1. Ιατροί, φαρμακοποιοί, ειδικοί υγείας (πάνω από 10 έτη)",
+        "2a": "2. Λογιστές, οικονομολόγοι, δικηγόροι, ελεύθεροι επαγγελματίες (έως 10 έτη)",
+        "2b": "2. Λογιστές, οικονομολόγοι, δικηγόροι, ελεύθεροι επαγγελματίες (πάνω από 10 έτη)",
+        "4a": "4. Καθηγητές και δάσκαλοι (έως 10 έτη)",
+        "4b": "4. Καθηγητές και δάσκαλοι (πάνω από 10 έτη)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "valor": {
+            "3": 4.45,
+            "5": 2.7,
+            "6": 1.5,
+            "7": 2.15,
+            "8": 2.15,
+            "9": 2.15,
+            "10": 2.15,
+            "11": 2.05,
+            "12": 1.65,
+            "13": 1.5,
+            "14": 2.05,
+            "15": 2.2,
+            "16": 2.2,
+            "1a": 2.2,
+            "1b": 4.45,
+            "2a": 2.2,
+            "2b": 4.45,
+            "4a": 2.15,
+            "4b": 4.3
+          },
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Επαγγελματικές κατηγορίες και ποσά ασφαλιστέων αποδοχών αυτοτελώς εργαζομένων 2026",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/1AFCD6556B9763F3C2258D6500224FE1?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.eisfores-gesy",
+      "nombre": "Ποσοστά εισφορών στο ΓεΣΥ",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "misthotos": "Μισθωτός",
+        "ergodotis": "Εργοδότης",
+        "autotelos": "Αυτοτελώς εργαζόμενος",
+        "syntaxiouchos": "Συνταξιούχος",
+        "eisodimatias": "Εισοδηματίας (ενοίκια, τόκοι, μερίσματα)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "misthotos": 2.65,
+            "ergodotis": 2.9,
+            "autotelos": 4,
+            "syntaxiouchos": 2.65,
+            "eisodimatias": 2.65
+          },
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Γενικού Συστήματος Υγείας Νόμος 89(I)/2001, άρθρο 19",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/2001_1_89/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.anotato-orio-gesy",
+      "nombre": "Ανώτατο ετήσιο ποσό εισοδημάτων για εισφορές ΓεΣΥ",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 180000,
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Γενικού Συστήματος Υγείας Νόμος 89(I)/2001, άρθρο 19",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/2001_1_89/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.eisfores-tameion-ergodoti",
+      "nombre": "Εισφορές του εργοδότη σε άλλα Ταμεία",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pleonasmos": "Ταμείο για Πλεονάζον Προσωπικό",
+        "anaptyxi": "Ταμείο Ανάπτυξης Ανθρώπινου Δυναμικού",
+        "synochi": "Ταμείο Κοινωνικής Συνοχής",
+        "adeies": "Κεντρικό Ταμείο Αδειών"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "pleonasmos": 1.2,
+            "anaptyxi": 0.5,
+            "synochi": 2,
+            "adeies": 8
+          },
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός Εργοδότη: ποσοστά εισφορών στα Ταμεία",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/E7935B990CDA4E8DC2257C9200462145?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.klimaka-forou",
+      "nombre": "Κλίμακα φόρου εισοδήματος φυσικών προσώπων",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 22000,
+              "tasa": 0
+            },
+            {
+              "desde": 22000,
+              "hasta": 32000,
+              "tasa": 20
+            },
+            {
+              "desde": 32000,
+              "hasta": 42000,
+              "tasa": 25
+            },
+            {
+              "desde": 42000,
+              "hasta": 72000,
+              "tasa": 30
+            },
+            {
+              "desde": 72000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Φορολογίας του Εισοδήματος Νόμος 118(I)/2002, άρθρο 33 (όπως τροποποιήθηκε με τον Ν. 244(I)/2025)",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/2002_1_118/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.orio-ekptosis-eisforon",
+      "nombre": "Ανώτατη έκπτωση για εισφορές και ασφάλιστρα (ποσοστό του φορολογητέου εισοδήματος)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Φορολογίας του Εισοδήματος Νόμος 118(I)/2002, άρθρο 14(2)",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/2002_1_118/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.ekptosi-teknou",
+      "nombre": "Έκπτωση για κάθε εξαρτώμενο τέκνο",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "1": "Πρώτο τέκνο",
+        "2": "Δεύτερο τέκνο",
+        "3": "Τρίτο και κάθε επόμενο τέκνο"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1": 1000,
+            "2": 1250,
+            "3": 1500
+          },
+          "fuente": {
+            "organismo": "Τμήμα Φορολογίας",
+            "titulo": "Επεξηγηματικός οδηγός εφαρμογής της φορολογικής μεταρρύθμισης για φυσικά πρόσωπα (Ιανουάριος 2026)",
+            "url": "https://www.businessincyprus.gov.cy/wp-content/uploads/2026/01/%CE%95%CF%80%CE%B5%CE%BE%CE%B7%CE%B3%CE%B7%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CF%8C%CF%82-o%CE%B4%CE%B7%CE%B3%CF%8C%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82-%CF%84%CE%B7%CF%82-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%AE%CF%82-%CE%BC%CE%B5%CF%84%CE%B1%CF%81%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7%CF%82-%CE%B3%CE%B9%CE%B1-%CF%86%CF%85%CF%83%CE%B9%CE%BA%CE%AC-%CF%80%CF%81%CF%8C%CF%83%CF%89%CF%80%CE%B1-%CF%80%CE%BF%CF%85-%CE%B5%CE%AF%CE%BD%CE%B1%CE%B9-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%BF%CE%AF-%CE%BA%CE%AC%CF%84%CE%BF%CE%B9%CE%BA%CE%BF%CE%B9-%CE%9A%CF%8D%CF%80%CF%81%CE%BF%CF%85_0901.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.ekptosi-stegasis",
+      "nombre": "Έκπτωση για ενοίκιο ή τόκο στεγαστικού δανείου κύριας κατοικίας",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2000,
+          "fuente": {
+            "organismo": "Τμήμα Φορολογίας",
+            "titulo": "Επεξηγηματικός οδηγός εφαρμογής της φορολογικής μεταρρύθμισης για φυσικά πρόσωπα (Ιανουάριος 2026)",
+            "url": "https://www.businessincyprus.gov.cy/wp-content/uploads/2026/01/%CE%95%CF%80%CE%B5%CE%BE%CE%B7%CE%B3%CE%B7%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CF%8C%CF%82-o%CE%B4%CE%B7%CE%B3%CF%8C%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82-%CF%84%CE%B7%CF%82-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%AE%CF%82-%CE%BC%CE%B5%CF%84%CE%B1%CF%81%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7%CF%82-%CE%B3%CE%B9%CE%B1-%CF%86%CF%85%CF%83%CE%B9%CE%BA%CE%AC-%CF%80%CF%81%CF%8C%CF%83%CF%89%CF%80%CE%B1-%CF%80%CE%BF%CF%85-%CE%B5%CE%AF%CE%BD%CE%B1%CE%B9-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%BF%CE%AF-%CE%BA%CE%AC%CF%84%CE%BF%CE%B9%CE%BA%CE%BF%CE%B9-%CE%9A%CF%8D%CF%80%CF%81%CE%BF%CF%85_0901.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.ekptosi-energeias",
+      "nombre": "Έκπτωση για ενεργειακή αναβάθμιση κατοικίας ή ηλεκτρικό όχημα",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Τμήμα Φορολογίας",
+            "titulo": "Επεξηγηματικός οδηγός εφαρμογής της φορολογικής μεταρρύθμισης για φυσικά πρόσωπα (Ιανουάριος 2026)",
+            "url": "https://www.businessincyprus.gov.cy/wp-content/uploads/2026/01/%CE%95%CF%80%CE%B5%CE%BE%CE%B7%CE%B3%CE%B7%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CF%8C%CF%82-o%CE%B4%CE%B7%CE%B3%CF%8C%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82-%CF%84%CE%B7%CF%82-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%AE%CF%82-%CE%BC%CE%B5%CF%84%CE%B1%CF%81%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7%CF%82-%CE%B3%CE%B9%CE%B1-%CF%86%CF%85%CF%83%CE%B9%CE%BA%CE%AC-%CF%80%CF%81%CF%8C%CF%83%CF%89%CF%80%CE%B1-%CF%80%CE%BF%CF%85-%CE%B5%CE%AF%CE%BD%CE%B1%CE%B9-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%BF%CE%AF-%CE%BA%CE%AC%CF%84%CE%BF%CE%B9%CE%BA%CE%BF%CE%B9-%CE%9A%CF%8D%CF%80%CF%81%CE%BF%CF%85_0901.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.ekptosi-asfalisis-katoikias",
+      "nombre": "Έκπτωση για ασφάλιστρα κατοικίας έναντι φυσικών καταστροφών",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500,
+          "fuente": {
+            "organismo": "Τμήμα Φορολογίας",
+            "titulo": "Επεξηγηματικός οδηγός εφαρμογής της φορολογικής μεταρρύθμισης για φυσικά πρόσωπα (Ιανουάριος 2026)",
+            "url": "https://www.businessincyprus.gov.cy/wp-content/uploads/2026/01/%CE%95%CF%80%CE%B5%CE%BE%CE%B7%CE%B3%CE%B7%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CF%8C%CF%82-o%CE%B4%CE%B7%CE%B3%CF%8C%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82-%CF%84%CE%B7%CF%82-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%AE%CF%82-%CE%BC%CE%B5%CF%84%CE%B1%CF%81%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7%CF%82-%CE%B3%CE%B9%CE%B1-%CF%86%CF%85%CF%83%CE%B9%CE%BA%CE%AC-%CF%80%CF%81%CF%8C%CF%83%CF%89%CF%80%CE%B1-%CF%80%CE%BF%CF%85-%CE%B5%CE%AF%CE%BD%CE%B1%CE%B9-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%BF%CE%AF-%CE%BA%CE%AC%CF%84%CE%BF%CE%B9%CE%BA%CE%BF%CE%B9-%CE%9A%CF%8D%CF%80%CF%81%CE%BF%CF%85_0901.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.eisodimatika-kritiria",
+      "nombre": "Εισοδηματικά κριτήρια για τις νέες προσωπικές εκπτώσεις",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "monires": "Μονήρες πρόσωπο",
+        "tekna-0-2": "Οικογένεια χωρίς τέκνα ή με 1 έως 2 τέκνα",
+        "tekna-3-4": "Οικογένεια με 3 ή 4 τέκνα",
+        "tekna-5": "Οικογένεια με 5 ή περισσότερα τέκνα"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "monires": 40000,
+            "tekna-0-2": 100000,
+            "tekna-3-4": 150000,
+            "tekna-5": 200000
+          },
+          "fuente": {
+            "organismo": "Τμήμα Φορολογίας",
+            "titulo": "Επεξηγηματικός οδηγός εφαρμογής της φορολογικής μεταρρύθμισης για φυσικά πρόσωπα (Ιανουάριος 2026)",
+            "url": "https://www.businessincyprus.gov.cy/wp-content/uploads/2026/01/%CE%95%CF%80%CE%B5%CE%BE%CE%B7%CE%B3%CE%B7%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CF%8C%CF%82-o%CE%B4%CE%B7%CE%B3%CF%8C%CF%82-%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CE%BF%CE%B3%CE%AE%CF%82-%CF%84%CE%B7%CF%82-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%AE%CF%82-%CE%BC%CE%B5%CF%84%CE%B1%CF%81%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7%CF%82-%CE%B3%CE%B9%CE%B1-%CF%86%CF%85%CF%83%CE%B9%CE%BA%CE%AC-%CF%80%CF%81%CF%8C%CF%83%CF%89%CF%80%CE%B1-%CF%80%CE%BF%CF%85-%CE%B5%CE%AF%CE%BD%CE%B1%CE%B9-%CF%86%CE%BF%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%BF%CE%AF-%CE%BA%CE%AC%CF%84%CE%BF%CE%B9%CE%BA%CE%BF%CE%B9-%CE%9A%CF%8D%CF%80%CF%81%CE%BF%CF%85_0901.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.katotatos-misthos",
+      "nombre": "Κατώτατος μηνιαίος μισθός πλήρους απασχόλησης",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1088,
+          "fuente": {
+            "organismo": "Επίσημη Εφημερίδα (ΚΔΠ)",
+            "titulo": "ΚΔΠ 427/2025, περί Κατωτάτου Ορίου Μισθών (Τροποποιητικό) Διάταγμα του 2025, Ε.Ε. Παρ. ΙΙΙ(Ι) Αρ. 5989, 31.12.2025",
+            "url": "https://www.cylaw.org/KDP/data/2025_1_427.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.katotatos-misthos-proslipsis",
+      "nombre": "Κατώτατος μηνιαίος μισθός τους πρώτους έξι μήνες στον ίδιο εργοδότη",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 979,
+          "fuente": {
+            "organismo": "Επίσημη Εφημερίδα (ΚΔΠ)",
+            "titulo": "ΚΔΠ 427/2025, περί Κατωτάτου Ορίου Μισθών (Τροποποιητικό) Διάταγμα του 2025, Ε.Ε. Παρ. ΙΙΙ(Ι) Αρ. 5989, 31.12.2025",
+            "url": "https://www.cylaw.org/KDP/data/2025_1_427.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.fpa",
+      "nombre": "Συντελεστές ΦΠΑ",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "0": "0% μηδενικός",
+        "3": "3% μειωμένος",
+        "5": "5% μειωμένος",
+        "9": "9% μειωμένος",
+        "19": "19% κανονικός"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 0,
+            "3": 3,
+            "5": 5,
+            "9": 9,
+            "19": 19
+          },
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Φόρου Προστιθέμενης Αξίας Νόμος 95(I)/2000, άρθρα 17, 18, 18Α και 18Β",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/2000_1_95/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.imeres-adeias",
+      "nombre": "Ετήσια άδεια μετ' απολαβών σε εργάσιμες ημέρες",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "5": "Πενθήμερη εβδομάδα",
+        "6": "Εξαήμερη εβδομάδα"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "5": 20,
+            "6": 24
+          },
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Ετησίων Αδειών μετ' Απολαβών Νόμος 8/1967, άρθρο 5",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/1967_1_8/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.evdomades-adeias",
+      "nombre": "Εβδομάδες εργασίας για πλήρη ετήσια άδεια",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 48,
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Ετησίων Αδειών μετ' Απολαβών Νόμος 8/1967, άρθρο 5",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/1967_1_8/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.proeidopoiisi-ergodoti",
+      "nombre": "Ελάχιστη προειδοποίηση από τον εργοδότη (εβδομάδες), ανά εβδομάδες συνεχούς απασχόλησης",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "26": 1,
+            "52": 2,
+            "104": 4,
+            "156": 5,
+            "208": 6,
+            "260": 7,
+            "312": 8
+          },
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός για την περί Τερματισμού Απασχολήσεως Νομοθεσία",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/86986D538DF8B898C2257C920047C455?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.proeidopoiisi-ergazomenou",
+      "nombre": "Ελάχιστη προειδοποίηση από τον εργοδοτούμενο (εβδομάδες), ανά εβδομάδες συνεχούς απασχόλησης",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "26": 1,
+            "52": 2,
+            "260": 3
+          },
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός για την περί Τερματισμού Απασχολήσεως Νομοθεσία",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/86986D538DF8B898C2257C920047C455?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.pleonasmos-evdomades",
+      "nombre": "Εβδομάδες ημερομισθίων ανά έτος απασχόλησης για πληρωμή λόγω πλεονασμού (έως το έτος)",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "4": 2,
+            "10": 2.5,
+            "15": 3,
+            "20": 3.5,
+            "25": 4
+          },
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Τερματισμού Απασχολήσεως Νόμος 24/1967, Τέταρτος Πίνακας",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/1967_1_24/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.pleonasmos-elachisti",
+      "nombre": "Ελάχιστη συνεχής απασχόληση για πληρωμή λόγω πλεονασμού",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 104,
+          "fuente": {
+            "organismo": "Υπηρεσίες Κοινωνικών Ασφαλίσεων",
+            "titulo": "Οδηγός για την περί Τερματισμού Απασχολήσεως Νομοθεσία",
+            "url": "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/86986D538DF8B898C2257C920047C455?OpenDocument",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.pleonasmos-anotato-pollaplasio",
+      "nombre": "Ανώτατες εβδομαδιαίες αποδοχές για πλεονασμό (πολλαπλάσιο των βασικών ασφαλιστέων αποδοχών)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Τερματισμού Απασχολήσεως Νόμος 24/1967, Τέταρτος Πίνακας",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/1967_1_24/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.teli-metavivasis",
+      "nombre": "Τέλη μεταβίβασης ακινήτου στο Κτηματολόγιο",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 85000,
+              "tasa": 3
+            },
+            {
+              "desde": 85000,
+              "hasta": 170000,
+              "tasa": 5
+            },
+            {
+              "desde": 170000,
+              "hasta": null,
+              "tasa": 8
+            }
+          ],
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Κτηματολογικού και Χωρομετρικού Τμήματος (Τέλη και Δικαιώματα) Νόμος, Κεφ. 219, άρθρο 10 και Κεφάλαιο 17 του Πίνακα",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/0_219/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.meiosi-telon-metavivasis",
+      "nombre": "Μείωση των τελών μεταβίβασης όταν δεν επιβάλλεται ΦΠΑ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Κτηματολογικού και Χωρομετρικού Τμήματος (Τέλη και Δικαιώματα) Νόμος, Κεφ. 219, άρθρο 10 και Κεφάλαιο 17 του Πίνακα",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/0_219/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.chartosima",
+      "nombre": "Τέλος χαρτοσήμου σε συμβάσεις με καθορισμένο ποσό",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000,
+              "tasa": 0
+            },
+            {
+              "desde": 5000,
+              "hasta": 170000,
+              "tasa": 0.15
+            },
+            {
+              "desde": 170000,
+              "hasta": null,
+              "tasa": 0.2
+            }
+          ],
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Χαρτοσήμων Νόμος 19/1963, Πρώτο Παράρτημα, άρθρο 3",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/1963_1_19/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.chartosima-anotato",
+      "nombre": "Ανώτατο τέλος χαρτοσήμου ανά σύμβαση",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Χαρτοσήμων Νόμος 19/1963, Πρώτο Παράρτημα, άρθρο 3",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/1963_1_19/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.foros-kefalaiouchikon-kerdon",
+      "nombre": "Συντελεστής φόρου κεφαλαιουχικών κερδών",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Φορολογίας Κεφαλαιουχικών Κερδών Νόμος 52/1980, άρθρα 4 και 5",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/1980_1_52/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.exairesi-kefalaiouchikon-kerdon",
+      "nombre": "Εξαιρέσεις φυσικών προσώπων από τον φόρο κεφαλαιουχικών κερδών (μία φορά σε όλη τη ζωή)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "geniki": "Γενική εξαίρεση",
+        "georgiki": "Γεωργική γη από γεωργό",
+        "katoikia": "Κύρια κατοικία (5 έτη ιδιοκατοίκησης)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "geniki": 30000,
+            "georgiki": 50000,
+            "katoikia": 150000
+          },
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Φορολογίας Κεφαλαιουχικών Κερδών Νόμος 52/1980, άρθρα 4 και 5",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/1980_1_52/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cy.ektakti-eisfora-amynas",
+      "nombre": "Έκτακτη εισφορά για την άμυνα φυσικών προσώπων κατοίκων Κύπρου",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "tokoi": "Τόκοι",
+        "merismata": "Μερίσματα από κέρδη του 2026 και μετά",
+        "merismata-palaia": "Μερίσματα από κέρδη έως το 2025"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "tokoi": 17,
+            "merismata": 5,
+            "merismata-palaia": 17
+          },
+          "fuente": {
+            "organismo": "CyLaw (Παγκύπριος Δικηγορικός Σύλλογος)",
+            "titulo": "Ο περί Έκτακτης Εισφοράς για την Άμυνα της Δημοκρατίας Νόμος 117(I)/2002, άρθρα 3 και 3Β",
+            "url": "https://www.cylaw.org/nomoi/enop/non-ind/2002_1_117/full.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    }
+  ]
+}
