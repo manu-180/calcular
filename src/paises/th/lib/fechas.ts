@@ -32,3 +32,21 @@ export function proximoPago(f: string, quincenal: boolean): string {
   if (d <= fin) return f.slice(0, 8) + String(fin).padStart(2, "0");
   return f;
 }
+
+// El mismo día n meses después; si ese mes no tiene el día, el último del mes.
+export function sumarMeses(f: string, meses: number): string {
+  const [a, m, d] = partes(f);
+  const total = a * 12 + (m - 1) + meses;
+  const anio = Math.floor(total / 12);
+  const mes = (total % 12) + 1;
+  const ultimo = new Date(Date.UTC(anio, mes, 0)).getUTCDate();
+  return String(anio) + "-" + String(mes).padStart(2, "0") + "-" + String(Math.min(d, ultimo)).padStart(2, "0");
+}
+
+// Meses o fracción de mes desde el día siguiente al vencimiento hasta el pago (artículo 27).
+export function mesesOFraccion(vencimiento: string, pago: string): number {
+  if (pago <= vencimiento) return 0;
+  let meses = 0;
+  while (sumarMeses(vencimiento, meses + 1) < pago) meses += 1;
+  return meses + 1;
+}

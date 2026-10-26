@@ -964,6 +964,46 @@
           }
         }
       ]
+    },
+    {
+      "id": "th.surcharge-rate",
+      "nombre": "เงินเพิ่มกรณีชำระภาษีล่าช้า ต่อเดือนหรือเศษของเดือน",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1985-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ประมวลรัษฎากร มาตรา 27 (ปรับปรุงล่าสุด 08-07-2026)",
+            "url": "https://www.rd.go.th/5943.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.surcharge-rate-extended",
+      "nombre": "เงินเพิ่มเมื่อได้รับอนุมัติขยายเวลาและชำระภายในเวลาที่ขยาย",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1985-01-01",
+          "valor": 0.75,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "ประมวลรัษฎากร มาตรา 27 (ปรับปรุงล่าสุด 08-07-2026)",
+            "url": "https://www.rd.go.th/5943.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
     }
   ]
 }

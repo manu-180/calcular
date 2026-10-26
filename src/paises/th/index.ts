@@ -28,6 +28,8 @@ import stampDuty from "./calculadoras/stamp-duty";
 import contenidoStampDuty from "./contenido/stamp-duty";
 import taxDeduction from "./calculadoras/tax-deduction";
 import contenidoTaxDeduction from "./contenido/tax-deduction";
+import taxSurcharge from "./calculadoras/tax-surcharge";
+import contenidoTaxSurcharge from "./contenido/tax-surcharge";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -54,6 +56,7 @@ export default definirPais({
     { definicion: annualLeave, contenido: contenidoAnnualLeave, cliente: () => import("./calculadoras/annual-leave.cliente") },
     { definicion: stampDuty, contenido: contenidoStampDuty, cliente: () => import("./calculadoras/stamp-duty.cliente") },
     { definicion: taxDeduction, contenido: contenidoTaxDeduction, cliente: () => import("./calculadoras/tax-deduction.cliente") },
+    { definicion: taxSurcharge, contenido: contenidoTaxSurcharge, cliente: () => import("./calculadoras/tax-surcharge.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "th.vat" } }] },
   novedades,
