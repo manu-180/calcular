@@ -18,6 +18,10 @@ import noticePay from "./calculadoras/notice-pay";
 import contenidoNoticePay from "./contenido/notice-pay";
 import overtimePay from "./calculadoras/overtime-pay";
 import contenidoOvertimePay from "./contenido/overtime-pay";
+import corporateIncomeTax from "./calculadoras/corporate-income-tax";
+import contenidoCorporateIncomeTax from "./contenido/corporate-income-tax";
+import employerCost from "./calculadoras/employer-cost";
+import contenidoEmployerCost from "./contenido/employer-cost";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -39,6 +43,8 @@ export default definirPais({
     { definicion: severancePay, contenido: contenidoSeverancePay, cliente: () => import("./calculadoras/severance-pay.cliente") },
     { definicion: noticePay, contenido: contenidoNoticePay, cliente: () => import("./calculadoras/notice-pay.cliente") },
     { definicion: overtimePay, contenido: contenidoOvertimePay, cliente: () => import("./calculadoras/overtime-pay.cliente") },
+    { definicion: corporateIncomeTax, contenido: contenidoCorporateIncomeTax, cliente: () => import("./calculadoras/corporate-income-tax.cliente") },
+    { definicion: employerCost, contenido: contenidoEmployerCost, cliente: () => import("./calculadoras/employer-cost.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "th.vat" } }] },
   novedades,

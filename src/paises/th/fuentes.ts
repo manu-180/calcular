@@ -100,7 +100,11 @@ export const detectores: readonly Detector[] = [
     "th.sso-wage-floor",
     "th.sso-wage-ceiling",
   ]),
-  ocs("th.ocs-revenue-code", /ประมวลรัษฎากร|เงินได้บุคคลธรรมดา/, [
+  ocs("th.ocs-revenue-code", /ประมวลรัษฎากร|เงินได้บุคคลธรรมดา|เงินได้นิติบุคคล/, [
+    "th.cit-rate",
+    "th.cit-sme-brackets",
+    "th.sme-capital-cap",
+    "th.sme-revenue-cap",
     "th.pit-brackets",
     "th.child-allowance-second",
     "th.parent-allowance",

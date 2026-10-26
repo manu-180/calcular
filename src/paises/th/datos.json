@@ -635,6 +635,102 @@
           }
         }
       ]
+    },
+    {
+      "id": "th.cit-rate",
+      "nombre": "อัตราภาษีเงินได้นิติบุคคลทั่วไป",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "คู่มือภาษีเงินได้นิติบุคคลสำหรับผู้ประกอบการ SME (พ.ร.ฎ. ฉบับที่ 530 แก้ไขโดยฉบับที่ 583 และ 603)",
+            "url": "https://www.rd.go.th/fileadmin/user_upload/lorkhor/newsbanner/2022/CIT_SME.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.cit-sme-brackets",
+      "nombre": "อัตราภาษีเงินได้นิติบุคคล SME (กำไรสุทธิ)",
+      "tipo": "escala",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 300000,
+              "tasa": 0
+            },
+            {
+              "desde": 300000,
+              "hasta": 3000000,
+              "tasa": 15
+            },
+            {
+              "desde": 3000000,
+              "hasta": null,
+              "tasa": 20
+            }
+          ],
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "คู่มือภาษีเงินได้นิติบุคคลสำหรับผู้ประกอบการ SME (พ.ร.ฎ. ฉบับที่ 530 แก้ไขโดยฉบับที่ 583 และ 603)",
+            "url": "https://www.rd.go.th/fileadmin/user_upload/lorkhor/newsbanner/2022/CIT_SME.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.sme-capital-cap",
+      "nombre": "ทุนชำระแล้วสูงสุดของ SME",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 5000000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "คู่มือภาษีเงินได้นิติบุคคลสำหรับผู้ประกอบการ SME (พ.ร.ฎ. ฉบับที่ 530 แก้ไขโดยฉบับที่ 583 และ 603)",
+            "url": "https://www.rd.go.th/fileadmin/user_upload/lorkhor/newsbanner/2022/CIT_SME.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "th.sme-revenue-cap",
+      "nombre": "รายได้จากการขายสินค้าและบริการสูงสุดของ SME",
+      "tipo": "numero",
+      "unidad": "THB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 30000000,
+          "fuente": {
+            "organismo": "กรมสรรพากร",
+            "titulo": "คู่มือภาษีเงินได้นิติบุคคลสำหรับผู้ประกอบการ SME (พ.ร.ฎ. ฉบับที่ 530 แก้ไขโดยฉบับที่ 583 และ 603)",
+            "url": "https://www.rd.go.th/fileadmin/user_upload/lorkhor/newsbanner/2022/CIT_SME.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
     }
   ]
 }
