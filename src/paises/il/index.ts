@@ -48,6 +48,12 @@ import gilPrisha from "./calculadoras/gil-prisha";
 import contenidoGilPrisha from "./contenido/gil-prisha";
 import bituachLeumiAtzmai from "./calculadoras/bituach-leumi-atzmai";
 import contenidoBituachLeumiAtzmai from "./contenido/bituach-leumi-atzmai";
+import maanakLeida from "./calculadoras/maanak-leida";
+import contenidoMaanakLeida from "./contenido/maanak-leida";
+import kitzbatNechut from "./calculadoras/kitzbat-nechut";
+import contenidoKitzbatNechut from "./contenido/kitzbat-nechut";
+import bituachLeumiLoOved from "./calculadoras/bituach-leumi-lo-oved";
+import contenidoBituachLeumiLoOved from "./contenido/bituach-leumi-lo-oved";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -85,6 +91,9 @@ export default definirPais({
     { definicion: kitzbatZikna, contenido: contenidoKitzbatZikna, cliente: () => import("./calculadoras/kitzbat-zikna.cliente") },
     { definicion: gilPrisha, contenido: contenidoGilPrisha, cliente: () => import("./calculadoras/gil-prisha.cliente") },
     { definicion: bituachLeumiAtzmai, contenido: contenidoBituachLeumiAtzmai, cliente: () => import("./calculadoras/bituach-leumi-atzmai.cliente") },
+    { definicion: maanakLeida, contenido: contenidoMaanakLeida, cliente: () => import("./calculadoras/maanak-leida.cliente") },
+    { definicion: kitzbatNechut, contenido: contenidoKitzbatNechut, cliente: () => import("./calculadoras/kitzbat-nechut.cliente") },
+    { definicion: bituachLeumiLoOved, contenido: contenidoBituachLeumiLoOved, cliente: () => import("./calculadoras/bituach-leumi-lo-oved.cliente") },
   ],
   universales: { todas: true },
   novedades,

@@ -154,4 +154,34 @@ export const detectores: readonly Detector[] = [
       return fechasNuevasBtl(http, this.url, /עצמאי/, "שיעורי דמי ביטוח חדשים לעצמאים");
     },
   },
+  {
+    id: "il.btl-maanak-leida",
+    carril: "norma",
+    datos: ["il.maanak-leida"],
+    metodo: "html",
+    url: "https://www.btl.gov.il/benefits/maternity/maanakleda/Pages/ShiurMaanakLeda.aspx",
+    traer(http) {
+      return fechasNuevasBtl(http, this.url, /מענק/, "סכומים חדשים למענק לידה");
+    },
+  },
+  {
+    id: "il.btl-nechut",
+    carril: "norma",
+    datos: ["il.nechut-kitzba", "il.nechut-yeled", "il.nechut-zug"],
+    metodo: "html",
+    url: "https://www.btl.gov.il/benefits/Disability/Pages/%D7%A9%D7%99%D7%A2%D7%95%D7%A8%D7%99%20%D7%94%D7%A7%D7%A6%D7%91%D7%94.aspx",
+    traer(http) {
+      return fechasNuevasBtl(http, this.url, /קצב/, "סכומים חדשים לקצבת נכות כללית");
+    },
+  },
+  {
+    id: "il.btl-lo-oved",
+    carril: "norma",
+    datos: ["il.bl-lo-oved", "il.bl-lo-oved-schumim"],
+    metodo: "html",
+    url: "https://www.btl.gov.il/Insurance/Rates/Pages/%D7%9E%D7%99%20%D7%A9%D7%90%D7%99%D7%A0%D7%9D%20%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%20%D7%95%D7%91%D7%A2%D7%9C%D7%99%20%D7%94%D7%9B%D7%A0%D7%A1%D7%94%20%D7%A9%D7%9C%D7%90%20%D7%9E%D7%A2%D7%91%D7%95%D7%93%D7%94.aspx",
+    traer(http) {
+      return fechasNuevasBtl(http, this.url, /דמי ביטוח/, "סכומים חדשים לדמי ביטוח של מי שלא עובד");
+    },
+  },
 ];

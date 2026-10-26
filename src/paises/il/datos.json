@@ -1201,6 +1201,208 @@
           }
         }
       ]
+    },
+    {
+      "id": "il.maanak-leida",
+      "nombre": "מענק לידה לפי מספר הילדים במשפחה ולפי לידה מרובת עוברים",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "rishon": "הילד הראשון",
+        "sheni": "הילד השני",
+        "shlishi": "הילד השלישי ואילך",
+        "teomim": "תאומים",
+        "shlishiya": "שלישייה",
+        "nosaf": "כל ילד נוסף בלידה מרובת עוברים"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rishon": 2103,
+            "sheni": 946,
+            "shlishi": 631,
+            "teomim": 10514,
+            "shlishiya": 15771,
+            "nosaf": 5257
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "סכום המענק, מענק לידה",
+            "url": "https://www.btl.gov.il/benefits/maternity/maanakleda/Pages/ShiurMaanakLeda.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "הסכומים החל ב-01.01.2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.nechut-kitzba",
+      "nombre": "קצבת נכות כללית לחודש לפי דרגת אי-הכושר",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "chelki-60": "דרגה חלקית 60%",
+        "chelki-65": "דרגה חלקית 65%",
+        "chelki-74": "דרגה חלקית 74%",
+        "male": "דרגה מלאה (100% או 75%)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "chelki-60": 2718,
+            "chelki-65": 2894,
+            "chelki-74": 3211,
+            "male": 4711
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "סכום הקצבה, נכות כללית",
+            "url": "https://www.btl.gov.il/benefits/Disability/Pages/%D7%A9%D7%99%D7%A2%D7%95%D7%A8%D7%99%20%D7%94%D7%A7%D7%A6%D7%91%D7%94.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "סכומי הקצבאות החל מ-01.01.2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.nechut-yeled",
+      "nombre": "קצבת נכות כללית: תוספת לחודש עבור כל ילד (עד שני ילדים)",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "chelki-60": "דרגה חלקית 60%",
+        "chelki-65": "דרגה חלקית 65%",
+        "chelki-74": "דרגה חלקית 74%",
+        "male": "דרגה מלאה (100% או 75%)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "chelki-60": 728,
+            "chelki-65": 789,
+            "chelki-74": 898,
+            "male": 1214
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "סכום הקצבה, נכות כללית: תוספת עבור ילדים",
+            "url": "https://www.btl.gov.il/benefits/Disability/Pages/%D7%A9%D7%99%D7%A2%D7%95%D7%A8%D7%99%20%D7%94%D7%A7%D7%A6%D7%91%D7%94.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "התוספת משולמת עבור שני הילדים הראשונים."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.nechut-zug",
+      "nombre": "קצבת נכות כללית: תוספת לחודש עבור בן או בת זוג",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "chelki-60": "דרגה חלקית 60%",
+        "chelki-65": "דרגה חלקית 65%",
+        "chelki-74": "דרגה חלקית 74%",
+        "male": "דרגה מלאה (100% או 75%)",
+        "tikrat-hachnasa": "הכנסה מרבית של בן הזוג (ברוטו לחודש)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "chelki-60": 911,
+            "chelki-65": 987,
+            "chelki-74": 1123,
+            "male": 1518,
+            "tikrat-hachnasa": 7848
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "סכום הקצבה, נכות כללית: תוספת עבור בן/בת זוג",
+            "url": "https://www.btl.gov.il/benefits/Disability/Pages/%D7%A9%D7%99%D7%A2%D7%95%D7%A8%D7%99%20%D7%94%D7%A7%D7%A6%D7%91%D7%94.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "בתנאי שבן הזוג מרוויח עד 7,848 ש\"ח ברוטו בחודש ואינו מקבל קצבה אחרת."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.bl-lo-oved",
+      "nombre": "דמי ביטוח לאומי ובריאות על הכנסה שלא מעבודה (באחוזים)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "bl-mufchat": "ביטוח לאומי, שיעור מופחת",
+        "bl-male": "ביטוח לאומי, שיעור רגיל",
+        "briut-mufchat": "ביטוח בריאות, שיעור מופחת",
+        "briut-male": "ביטוח בריאות, שיעור רגיל"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "bl-mufchat": 6.92,
+            "bl-male": 7,
+            "briut-mufchat": 5.17,
+            "briut-male": 5.17
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעורי וסכומי דמי ביטוח למי שאינם עובדים ולבעלי הכנסה שלא מעבודה",
+            "url": "https://www.btl.gov.il/Insurance/Rates/Pages/%D7%9E%D7%99%20%D7%A9%D7%90%D7%99%D7%A0%D7%9D%20%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%20%D7%95%D7%91%D7%A2%D7%9C%D7%99%20%D7%94%D7%9B%D7%A0%D7%A1%D7%94%20%D7%A9%D7%9C%D7%90%20%D7%9E%D7%A2%D7%91%D7%95%D7%93%D7%94.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "שיעור מופחת עד 7,703 ש\"ח ושיעור רגיל עד 51,910 ש\"ח. החל מ-01.01.2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "il.bl-lo-oved-schumim",
+      "nombre": "דמי ביטוח למי שלא עובד: הכנסה פטורה ותשלום מינימלי לחודש",
+      "tipo": "mapa",
+      "unidad": "ILS",
+      "etiquetas": {
+        "ptor": "הכנסה פטורה מדמי ביטוח",
+        "minimum-bl": "ביטוח לאומי מינימלי",
+        "minimum-briut": "ביטוח בריאות מינימלי"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ptor": 3442,
+            "minimum-bl": 143,
+            "minimum-briut": 123
+          },
+          "fuente": {
+            "organismo": "המוסד לביטוח לאומי",
+            "titulo": "שיעורי וסכומי דמי ביטוח למי שאינם עובדים ולבעלי הכנסה שלא מעבודה",
+            "url": "https://www.btl.gov.il/Insurance/Rates/Pages/%D7%9E%D7%99%20%D7%A9%D7%90%D7%99%D7%A0%D7%9D%20%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%20%D7%95%D7%91%D7%A2%D7%9C%D7%99%20%D7%94%D7%9B%D7%A0%D7%A1%D7%94%20%D7%A9%D7%9C%D7%90%20%D7%9E%D7%A2%D7%91%D7%95%D7%93%D7%94.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "מי שלא עובד ואין לו הכנסות משלם 143 ש\"ח ביטוח לאומי ו-123 ש\"ח ביטוח בריאות, 266 ש\"ח בחודש."
+          }
+        }
+      ]
     }
   ]
 }
