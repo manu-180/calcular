@@ -1,0 +1,819 @@
+{
+  "mercado": "na",
+  "datos": [
+    {
+      "id": "na.income-tax-bands",
+      "nombre": "Income tax rates for individuals",
+      "tipo": "escala",
+      "unidad": "NAD",
+      "proximaRevision": "2027-03-01",
+      "nota": "An Income Tax Amendment Bill that revises the bands was tabled in 2026. Until it is passed and gazetted, these bands apply.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 100000,
+              "tasa": 0
+            },
+            {
+              "desde": 100000,
+              "hasta": 150000,
+              "tasa": 18
+            },
+            {
+              "desde": 150000,
+              "hasta": 350000,
+              "tasa": 25
+            },
+            {
+              "desde": 350000,
+              "hasta": 550000,
+              "tasa": 28
+            },
+            {
+              "desde": 550000,
+              "hasta": 850000,
+              "tasa": 30
+            },
+            {
+              "desde": 850000,
+              "hasta": 1550000,
+              "tasa": 32
+            },
+            {
+              "desde": 1550000,
+              "hasta": null,
+              "tasa": 37
+            }
+          ],
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Income Tax Amendment Act, 2024 (Act No. 4 of 2024), Schedule 4 paragraph 1, Government Gazette No. 8442",
+            "url": "https://archive.gazettes.africa/archive/na/2024/na-government-gazette-dated-2024-09-16-no-8442.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Applies from the year of assessment starting 1 March 2024. No later amendment to the rates was gazetted up to 16 October 2026. NamRA's online calculator (itas.namra.org.na/tax/income-tax/calculator) uses the same bands."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.retirement-deduction-cap",
+      "nombre": "Yearly cap on pension, provident, retirement annuity and education policy deductions",
+      "tipo": "numero",
+      "unidad": "NAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-01",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "Namibia Revenue Agency",
+            "titulo": "Taxation of individuals who earn a salary (brochure, rates as of 1 March 2024)",
+            "url": "https://itas.namra.org.na/assets/documents/other-forms/Tax%20on%20Individuals%20Brochure.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The brochure sets the cap at N$150,000 from the 2023 tax year. NamRA's online calculator applies the same cap."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.ssc-employee-rate",
+      "nombre": "Social Security employee contribution (Maternity Leave, Sick Leave and Death Benefit Fund)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-11-01",
+          "valor": 0.9,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Regulations under the Social Security Act, 1994, regulation 8: Government Notice No. 198, Government Gazette No. 1181 of 1 November 1995",
+            "url": "https://archive.gazettes.africa/archive/na/1995/na-government-gazette-dated-1995-11-01-no-1181.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Social Security Commission's employer portal (ssc.org.na) applies a combined rate of 1.8% for every period since 1995."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.ssc-employer-rate",
+      "nombre": "Social Security employer contribution (Maternity Leave, Sick Leave and Death Benefit Fund)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-11-01",
+          "valor": 0.9,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Regulations under the Social Security Act, 1994, regulation 8: Government Notice No. 198, Government Gazette No. 1181 of 1 November 1995",
+            "url": "https://archive.gazettes.africa/archive/na/1995/na-government-gazette-dated-1995-11-01-no-1181.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Social Security Commission's employer portal (ssc.org.na) applies a combined rate of 1.8% for every period since 1995."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.ssc-ceiling",
+      "nombre": "Maximum monthly basic wage for Social Security contributions",
+      "tipo": "numero",
+      "unidad": "NAD",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "hasta": "2026-02-28",
+          "valor": 11000,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Amendment of regulations under Social Security Act, 1994: Government Notice No. 275 of 2024, Government Gazette No. 8461",
+            "url": "https://archive.gazettes.africa/archive/na/2024/na-government-gazette-dated-2024-10-01-no-8461.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2027-02-28",
+          "valor": 12500,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Amendment of regulations under Social Security Act, 1994: Government Notice No. 236 of 2026, Government Gazette No. 8975",
+            "url": "https://archive.gazettes.africa/archive/na/2026/na-government-gazette-dated-2026-07-15-no-8975.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Published on 15 July 2026 with effect from 1 March 2026. The Social Security Commission's employer portal applies N$12,500 from 1 September 2026."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-03-01",
+          "hasta": "2028-02-29",
+          "valor": 14000,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Government Notice No. 236 of 2026, table of maximum basic salary, Government Gazette No. 8975",
+            "url": "https://archive.gazettes.africa/archive/na/2026/na-government-gazette-dated-2026-07-15-no-8975.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-03-01",
+          "hasta": "2029-02-28",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Government Notice No. 236 of 2026, table of maximum basic salary, Government Gazette No. 8975",
+            "url": "https://archive.gazettes.africa/archive/na/2026/na-government-gazette-dated-2026-07-15-no-8975.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-03-01",
+          "valor": 16000,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Government Notice No. 236 of 2026, table of maximum basic salary, Government Gazette No. 8975",
+            "url": "https://archive.gazettes.africa/archive/na/2026/na-government-gazette-dated-2026-07-15-no-8975.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.ssc-floor",
+      "nombre": "Minimum monthly basic wage for Social Security contributions",
+      "tipo": "numero",
+      "unidad": "NAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "valor": 500,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Amendment of regulations under Social Security Act, 1994: Government Notice No. 275 of 2024, Government Gazette No. 8461",
+            "url": "https://archive.gazettes.africa/archive/na/2024/na-government-gazette-dated-2024-10-01-no-8461.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.ssc-maternity-rate",
+      "nombre": "Social Security maternity benefit as a share of basic wage",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Amendment of regulations under Social Security Act: Government Notice No. 305 of 2026, regulation 9(1), Government Gazette No. 9037",
+            "url": "https://archive.gazettes.africa/archive/na/2026/na-government-gazette-dated-2026-09-29-no-9037.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.ssc-maternity-cap",
+      "nombre": "Maximum Social Security maternity benefit a month",
+      "tipo": "numero",
+      "unidad": "NAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Amendment of regulations under Social Security Act: Government Notice No. 305 of 2026, regulation 9(1), Government Gazette No. 9037",
+            "url": "https://archive.gazettes.africa/archive/na/2026/na-government-gazette-dated-2026-09-29-no-9037.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.minimum-wage",
+      "nombre": "National minimum wage per hour",
+      "tipo": "mapa",
+      "unidad": "NAD",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "general": "Most employees",
+        "domestic": "Domestic workers",
+        "agricultural": "Agricultural workers",
+        "security": "Security workers"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": {
+            "general": 18,
+            "domestic": 12,
+            "agricultural": 10,
+            "security": 13.5
+          },
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Wage Order for Setting National Minimum Wage for Employees: Government Notice No. 218 of 2024, as amended by Government Notice No. 6 of 2025 (Government Gazette No. 8562)",
+            "url": "https://archive.gazettes.africa/archive/na/2025/na-government-gazette-dated-2025-01-15-no-8562.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Original order in Government Gazette No. 8409: https://archive.gazettes.africa/archive/na/2024/na-government-gazette-dated-2024-08-07-no-8409.pdf. Government Notice No. 265 of 2025 changed only paragraph 6 (deductions)."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "general": 18,
+            "domestic": 15,
+            "agricultural": 14,
+            "security": 16
+          },
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Wage Order for Setting National Minimum Wage for Employees: Government Notice No. 218 of 2024, as amended by Government Notice No. 6 of 2025 (Government Gazette No. 8562)",
+            "url": "https://archive.gazettes.africa/archive/na/2025/na-government-gazette-dated-2025-01-15-no-8562.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Original order in Government Gazette No. 8409: https://archive.gazettes.africa/archive/na/2024/na-government-gazette-dated-2024-08-07-no-8409.pdf. Government Notice No. 265 of 2025 changed only paragraph 6 (deductions)."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "general": 18,
+            "domestic": 18,
+            "agricultural": 18,
+            "security": 18
+          },
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Wage Order for Setting National Minimum Wage for Employees: Government Notice No. 218 of 2024, as amended by Government Notice No. 6 of 2025 (Government Gazette No. 8562)",
+            "url": "https://archive.gazettes.africa/archive/na/2025/na-government-gazette-dated-2025-01-15-no-8562.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Original order in Government Gazette No. 8409: https://archive.gazettes.africa/archive/na/2024/na-government-gazette-dated-2024-08-07-no-8409.pdf. Government Notice No. 265 of 2025 changed only paragraph 6 (deductions)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.max-weekly-hours",
+      "nombre": "Maximum ordinary hours of work a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 16(1)(a), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.weeks-per-month",
+      "nombre": "Weeks in a month for converting pay rates",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 4.333,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 10(3), Table 1, Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.overtime-factor",
+      "nombre": "Overtime pay multiplier",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 17(2), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.overtime-sunday-holiday-factor",
+      "nombre": "Overtime multiplier on a Sunday or public holiday you normally work",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 17(2), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.night-work-rate",
+      "nombre": "Night work allowance (20h00 to 07h00)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 19(1), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.sunday-factor",
+      "nombre": "Pay multiplier for Sunday work",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 21(5), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.public-holiday-factor",
+      "nombre": "Pay multiplier for work on a public holiday that is not a normal work day",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 22(7), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.annual-leave-weeks",
+      "nombre": "Annual leave a year",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 23(2), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.sick-leave-days",
+      "nombre": "Sick leave per 36-month cycle",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "five-days": "Five-day week",
+        "six-days": "Six-day week"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": {
+            "five-days": 30,
+            "six-days": 36
+          },
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 24(1) and section 1 (sick leave cycle), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.sick-leave-first-year-divisor",
+      "nombre": "Days worked for each sick leave day in the first year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 24(1), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.maternity-weeks",
+      "nombre": "Maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 26(1), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.severance-weeks-per-year",
+      "nombre": "Severance pay for each year of continuous service",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 35(3), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.notice-period",
+      "nombre": "Minimum notice period",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "days-up-to-4-weeks": "Days, employed four weeks or less",
+        "weeks-up-to-1-year": "Weeks, employed more than four weeks and up to one year",
+        "months-over-1-year": "Months, employed more than one year"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-11-01",
+          "valor": {
+            "days-up-to-4-weeks": 1,
+            "weeks-up-to-1-year": 1,
+            "months-over-1-year": 1
+          },
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Labour Act, 2007 (Act No. 11 of 2007), section 30(1), Government Gazette No. 3971",
+            "url": "https://archive.gazettes.africa/archive/na/2007/na-government-gazette-dated-2007-12-31-no-3971.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.transfer-duty-natural",
+      "nombre": "Transfer duty for natural persons (property other than agricultural land)",
+      "tipo": "escala",
+      "unidad": "NAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1100000,
+              "tasa": 0
+            },
+            {
+              "desde": 1100000,
+              "hasta": 1580000,
+              "tasa": 1
+            },
+            {
+              "desde": 1580000,
+              "hasta": 3150000,
+              "tasa": 5
+            },
+            {
+              "desde": 3150000,
+              "hasta": 12100000,
+              "tasa": 8
+            },
+            {
+              "desde": 12100000,
+              "hasta": null,
+              "tasa": 11
+            }
+          ],
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Transfer Duty Amendment Act, 2024 (Act No. 6 of 2024), section 3, Government Gazette No. 8444",
+            "url": "https://archive.gazettes.africa/archive/na/2024/na-government-gazette-dated-2024-09-16-no-8444.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "In force from 1 October 2024 (Government Notice No. 280 of 2024, Gazette No. 8460)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.transfer-duty-other",
+      "nombre": "Transfer duty for buyers who are not natural persons",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Namibia Revenue Agency",
+            "titulo": "Stamp and Transfer Duties brochure (14 July 2024)",
+            "url": "https://itas.namra.org.na/assets/documents/other-forms/Stamp%20and%20Transfer%20Duties%20-%2014%20July%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Transfer Duty Amendment Act, 2024 changed only the rates for natural persons, so the 12% for other buyers in this brochure still applies."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.stamp-duty-transfer",
+      "nombre": "Stamp duty on transfer deeds for natural persons",
+      "tipo": "mapa",
+      "unidad": "NAD",
+      "etiquetas": {
+        "exempt-up-to": "Exempt up to",
+        "per-1000": "Duty for every N$1,000 or part above the exempt amount"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-10-01",
+          "valor": {
+            "exempt-up-to": 1100000,
+            "per-1000": 10
+          },
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Stamp Duties Amendment Act, 2024 (Act No. 7 of 2024), section 4, Government Gazette No. 8445",
+            "url": "https://archive.gazettes.africa/archive/na/2024/na-government-gazette-dated-2024-09-16-no-8445.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "In force from 1 October 2024 (Government Notice No. 279 of 2024, Gazette No. 8460)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.corporate-tax-rate",
+      "nombre": "Company income tax rate (non-mining)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Government Gazette of the Republic of Namibia",
+            "titulo": "Income Tax Amendment Act, 2024 (Act No. 4 of 2024), Schedule 4 paragraph 3(1)(a), Government Gazette No. 8442",
+            "url": "https://archive.gazettes.africa/archive/na/2024/na-government-gazette-dated-2024-09-16-no-8442.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "30 cents per dollar for years of assessment starting on or after 1 January 2025; 31 cents for years starting in 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.withholding-tax",
+      "nombre": "Withholding tax on payments to non-residents",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "services": "Management, consultancy and entertainment fees",
+        "interest": "Interest",
+        "royalties": "Royalties",
+        "dividends-25": "Dividends to a company holding at least 25%",
+        "dividends-other": "Other dividends"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-14",
+          "valor": {
+            "services": 10,
+            "interest": 10,
+            "royalties": 10,
+            "dividends-25": 10,
+            "dividends-other": 20
+          },
+          "fuente": {
+            "organismo": "Namibia Revenue Agency",
+            "titulo": "Types of taxes: withholding tax on interest, services and royalties, and non-resident shareholders tax",
+            "url": "https://itas.namra.org.na/taxes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The same rates appear in the NamRA brochure Withholding Tax on Services (14 July 2024)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.vet-levy-rate",
+      "nombre": "Vocational Education and Training levy",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-04-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Namibia Training Authority",
+            "titulo": "VET Levy",
+            "url": "https://www.nta.com.na/vet-levy/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.vet-levy-threshold",
+      "nombre": "Yearly payroll from which employers pay the VET levy",
+      "tipo": "numero",
+      "unidad": "NAD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-04-01",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "Namibia Training Authority",
+            "titulo": "VET Levy",
+            "url": "https://www.nta.com.na/vet-levy/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "na.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-11-27",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Namibia Revenue Agency",
+            "titulo": "Types of taxes: Value Added Tax",
+            "url": "https://itas.namra.org.na/taxes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}
