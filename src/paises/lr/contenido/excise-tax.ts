@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "lr.excise-tax",
   h1: "Excise tax calculator Liberia",
   title: "Liberia excise tax on beer, spirits, tobacco and drinks",
-  description: "Work out Liberia's excise tax on beer, wine, spirits, sweet drinks, water and tobacco with the specific US dollar rates of the Tax Amendment Act of December 2025.",
+  description: "Work out Liberia's excise tax on beer, wine, spirits, sweet drinks, water and tobacco with the US dollar rates of the Tax Amendment Act of December 2025.",
   intro: [
     "Pick a product and enter a quantity to see the excise tax due under the new tariff.",
     "Beer and wine pay {{lr.excise-specific[beer]}} a litre and spirits {{lr.excise-specific[spirits]}} a litre, whether imported or made in Liberia.",

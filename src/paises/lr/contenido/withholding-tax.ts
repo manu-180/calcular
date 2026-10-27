@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lr.withholding-tax",
   h1: "Withholding tax calculator Liberia",
-  title: "Liberia withholding tax calculator: rent, services, dividends",
+  title: "Liberia withholding tax: rent, services, dividends",
   description: "Work out the withholding tax on rent, services, contracts, interest, dividends, board fees and gambling in Liberia with the LRA monthly rates.",
   intro: [
     "Choose the type of payment and enter the gross amount to see how much tax to withhold and pay to the LRA.",
