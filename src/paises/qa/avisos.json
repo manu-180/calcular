@@ -1,0 +1,19 @@
+{
+  "mercado": "qa",
+  "avisos": [
+    {
+      "id": "qa.labour-law-scope",
+      "nivel": "info",
+      "desde": "2026-10-26",
+      "aplicaA": ["qa.gratuity-calculator", "qa.annual-leave", "qa.overtime-calculator", "qa.notice-period", "qa.final-settlement", "qa.sick-leave-pay", "qa.maternity-leave-pay", "qa.ramadan-working-hours"],
+      "texto": "This follows the Qatar Labour Law. It doesn't cover government staff, the armed forces and police, seafarers, state oil and gas companies, casual workers, domestic workers, farm workers or part-time and freelance workers, who have their own rules.",
+      "fuente": {
+        "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+        "titulo": "Law No. 9 of 2026 amending the Labour Law (new Article 3)",
+        "url": "https://almeezan.qa/legislations/26995a3e-c468-5031-9136-991d00916ac7",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-26"
+      }
+    }
+  ]
+}
