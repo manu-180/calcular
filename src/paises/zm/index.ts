@@ -16,6 +16,14 @@ import minimumWage from "./calculadoras/minimum-wage";
 import contenidoMinimumWage from "./contenido/minimum-wage";
 import overtimeCalculator from "./calculadoras/overtime-calculator";
 import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
+import leaveDaysCalculator from "./calculadoras/leave-days-calculator";
+import contenidoLeaveDaysCalculator from "./contenido/leave-days-calculator";
+import gratuityCalculator from "./calculadoras/gratuity-calculator";
+import contenidoGratuityCalculator from "./contenido/gratuity-calculator";
+import redundancyPayCalculator from "./calculadoras/redundancy-pay-calculator";
+import contenidoRedundancyPayCalculator from "./contenido/redundancy-pay-calculator";
+import noticePeriodCalculator from "./calculadoras/notice-period-calculator";
+import contenidoNoticePeriodCalculator from "./contenido/notice-period-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: skillsDevelopmentLevyCalculator, contenido: contenidoSkillsDevelopmentLevyCalculator, cliente: () => import("./calculadoras/skills-development-levy-calculator.cliente") },
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
     { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
+    { definicion: leaveDaysCalculator, contenido: contenidoLeaveDaysCalculator, cliente: () => import("./calculadoras/leave-days-calculator.cliente") },
+    { definicion: gratuityCalculator, contenido: contenidoGratuityCalculator, cliente: () => import("./calculadoras/gratuity-calculator.cliente") },
+    { definicion: redundancyPayCalculator, contenido: contenidoRedundancyPayCalculator, cliente: () => import("./calculadoras/redundancy-pay-calculator.cliente") },
+    { definicion: noticePeriodCalculator, contenido: contenidoNoticePeriodCalculator, cliente: () => import("./calculadoras/notice-period-calculator.cliente") },
   ],
   universales: "todas",
   novedades,

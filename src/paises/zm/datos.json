@@ -921,6 +921,26 @@
       ]
     },
     {
+      "id": "zm.notice-hours-monthly",
+      "nombre": "Notice for a contract of up to one month",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 24,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
       "id": "zm.notice-days-short",
       "nombre": "Notice for a contract of more than one month and up to three months",
       "tipo": "numero",

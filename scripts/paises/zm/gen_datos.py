@@ -217,6 +217,7 @@ datos = [
     numero("zm.paternity-days", "Paternity leave", "dias", 5, F_ECA, ECA_DESDE),
     numero("zm.sick-days-short", "Sick leave days on full pay, then on half pay (short-term contract)", "dias", 26, F_ECA, ECA_DESDE),
     numero("zm.sick-months-long", "Sick leave months on full pay, then on half pay (long-term contract)", "meses", 3, F_ECA, ECA_DESDE),
+    numero("zm.notice-hours-monthly", "Notice for a contract of up to one month", "horas", 24, F_ECA, ECA_DESDE),
     numero("zm.notice-days-short", "Notice for a contract of more than one month and up to three months", "dias", 14, F_ECA, ECA_DESDE),
     numero("zm.notice-days-long", "Notice for a contract of more than three months", "dias", 30, F_ECA, ECA_DESDE),
 ]
