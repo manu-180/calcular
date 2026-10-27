@@ -126,6 +126,12 @@ import bf from "./bf";
 import tg from "./tg";
 import na from "./na";
 import mw from "./mw";
+import bw from "./bw";
+import tt from "./tt";
+import lr from "./lr";
+import gm from "./gm";
+import lso from "./ls";
+import sr from "./sr";
 
 // "global" no es un país: es la home de calcularya.com con el selector y el x-default de cada clúster
 // hreflang, en inglés (ADR 0002, D2). No tiene datos ni calculadoras. Un global con errores de datos
@@ -145,6 +151,6 @@ const global = definirPais({
   },
 });
 
-export const PAISES = [global, zz, zzEn, zzJa, zzPl, zzSv, zzDa, zzNb, zzFi, zzAr, zzId, zzTr, zzBn, zzTh, zzUk, zzUz, zzRu, zzRo, zzCs, zzEl, zzHu, zzHe, cl, co, mx, pe, uy, ec, cr, gt, py, rd, sv, pa, hn, ni, ve, bo, us, br, gb, fr, de, es, it, ca, nl, ie, at, pt, au, nz, za, ch, sg, be, chFr, chIt, caFr, beFr, inn, hk, ng, my, ph, ma, lu, luDe, ke, tz, gh, sn, pk, jp, ae, li, kw, ci, ao, tn, ug, kr, jm, mu, pl, se, dk, no, fi, idn, tr, bd, eg, sa, jo, ua, uz, kz, ro, cz, gr, usEs, hu, il, cy, cyEn, th, md, rw, lk, mt, qa, qaAr, om, omEn, cm, cmEn, mz, zm, et, kg, dz, dzAr, ml, bf, tg, na, mw] as const;
+export const PAISES = [global, zz, zzEn, zzJa, zzPl, zzSv, zzDa, zzNb, zzFi, zzAr, zzId, zzTr, zzBn, zzTh, zzUk, zzUz, zzRu, zzRo, zzCs, zzEl, zzHu, zzHe, cl, co, mx, pe, uy, ec, cr, gt, py, rd, sv, pa, hn, ni, ve, bo, us, br, gb, fr, de, es, it, ca, nl, ie, at, pt, au, nz, za, ch, sg, be, chFr, chIt, caFr, beFr, inn, hk, ng, my, ph, ma, lu, luDe, ke, tz, gh, sn, pk, jp, ae, li, kw, ci, ao, tn, ug, kr, jm, mu, pl, se, dk, no, fi, idn, tr, bd, eg, sa, jo, ua, uz, kz, ro, cz, gr, usEs, hu, il, cy, cyEn, th, md, rw, lk, mt, qa, qaAr, om, omEn, cm, cmEn, mz, zm, et, kg, dz, dzAr, ml, bf, tg, na, mw, bw, tt, lr, gm, lso, sr] as const;
 
 export const registro = crearRegistro(PAISES);

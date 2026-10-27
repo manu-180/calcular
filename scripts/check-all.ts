@@ -49,10 +49,14 @@ for (const archivo of checks) {
   const started = Date.now();
   // Comando como string único (no args + shell): evita DEP0190 y resuelve npx.cmd en Windows.
   // El path lo controlamos nosotros (readdirSync de nuestro propio scripts/), sin espacios.
+  // TSX_DISABLE_CACHE: en Windows la caché de tsx (4.23) deja abierto ~1 handle por .ts importado;
+  // con 113 mercados cargarPaises pasa el tope de ~8192 del proceso y todo check que lee el registro
+  // muere con EMFILE (27/10). Sin caché el conteo queda plano.
   const r = spawnSync(`npx -y tsx scripts/${archivo}`, {
     cwd: calcularRoot,
     shell: true,
     encoding: "utf8",
+    env: { ...process.env, TSX_DISABLE_CACHE: "1" },
   });
   const ms = Date.now() - started;
   const salida = `${r.stdout ?? ""}${r.stderr ?? ""}`.trim();

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mw.personal-income-tax-calculator",
   h1: "Personal income tax calculator Malawi",
-  title: "Personal income tax calculator Malawi 2026",
+  title: "Personal income tax calculator Malawi {{anio}}",
   description:
     "Work out income tax on your yearly taxable income in Malawi: the first {{mw.personal-tax-bands[0].hasta}} is tax free and the rest is taxed at {{mw.personal-tax-bands[1].tasa}}.",
   intro: [

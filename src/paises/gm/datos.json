@@ -1,0 +1,765 @@
+{
+  "mercado": "gm",
+  "datos": [
+    {
+      "id": "gm.paye-bands",
+      "nombre": "Annual employment income tax bands",
+      "tipo": "escala",
+      "unidad": "GMD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 36000,
+              "tasa": 0
+            },
+            {
+              "desde": 36000,
+              "hasta": 46000,
+              "tasa": 5
+            },
+            {
+              "desde": 46000,
+              "hasta": 56000,
+              "tasa": 10
+            },
+            {
+              "desde": 56000,
+              "hasta": 66000,
+              "tasa": 15
+            },
+            {
+              "desde": 66000,
+              "hasta": 76000,
+              "tasa": 20
+            },
+            {
+              "desde": 76000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Income Tax Table 2025",
+            "url": "https://www.gra.gm/download-file/2a69ec11-c633-11ef-b086-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Las tasas salen de la tabla mensual de la GRA (de D3,000 a D100,000 al mes) y coinciden con el folleto de PAYE, su ejemplo de D50,000 al mes y la fórmula (ingreso - 76,000) x 25% + 5,000. El umbral exento de D36,000 lo confirma la FAQ de la GRA."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.vat-rate",
+      "nombre": "Standard VAT rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 15,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Value Added Tax brochure",
+            "url": "https://www.gra.gm/download-file/8d0cfa28-d217-11ed-9b31-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.vat-registration-threshold",
+      "nombre": "Taxable supplies a year that make VAT registration compulsory",
+      "tipo": "numero",
+      "unidad": "GMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 2000000,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Value Added Tax brochure",
+            "url": "https://www.gra.gm/download-file/8d0cfa28-d217-11ed-9b31-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.vat-voluntary-threshold",
+      "nombre": "Taxable supplies a year from which voluntary VAT registration is allowed",
+      "tipo": "numero",
+      "unidad": "GMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Value Added Tax brochure",
+            "url": "https://www.gra.gm/download-file/8d0cfa28-d217-11ed-9b31-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.npf-employee-rate",
+      "nombre": "National Provident Fund contribution deducted from the employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 5,
+          "fuente": {
+            "organismo": "SSHFC",
+            "titulo": "National Provident Fund",
+            "url": "https://www.sshfc.gm/national-provident-fund",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.npf-employer-rate",
+      "nombre": "National Provident Fund contribution paid by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 10,
+          "fuente": {
+            "organismo": "SSHFC",
+            "titulo": "National Provident Fund",
+            "url": "https://www.sshfc.gm/national-provident-fund",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.npf-late-penalty-rate",
+      "nombre": "Penalty on late SSHFC contributions for each month or part of a month",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "SSHFC",
+            "titulo": "National Provident Fund",
+            "url": "https://www.sshfc.gm/national-provident-fund",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.fps-rate",
+      "nombre": "Federated Pension Scheme contribution paid by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 15,
+          "fuente": {
+            "organismo": "SSHFC",
+            "titulo": "Federated Pension Scheme",
+            "url": "https://www.sshfc.gm/federated-pension-scheme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.iicf-rate",
+      "nombre": "Industrial Injuries Compensation Fund contribution paid by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 1,
+          "fuente": {
+            "organismo": "SSHFC",
+            "titulo": "Industrial Injuries Compensation Fund",
+            "url": "https://www.sshfc.gm/industrial-injury-compensation-fund",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.iicf-cap",
+      "nombre": "Maximum Industrial Injuries Compensation Fund contribution a month",
+      "tipo": "numero",
+      "unidad": "GMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 15,
+          "fuente": {
+            "organismo": "SSHFC",
+            "titulo": "Industrial Injuries Compensation Fund",
+            "url": "https://www.sshfc.gm/industrial-injury-compensation-fund",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "La página dice «maximum contribution ceiling of D15»; las contribuciones se pagan cada mes."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.cgt-rates",
+      "nombre": "Capital gains tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "individual-gain": "Individuals, share of the gain",
+        "individual-consideration": "Individuals, share of the price",
+        "company-gain": "Companies, partnerships and trustees, share of the gain",
+        "company-consideration": "Companies, partnerships and trustees, share of the price"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "individual-gain": 15,
+            "individual-consideration": 5,
+            "company-gain": 25,
+            "company-consideration": 10
+          },
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Capital Gains Tax brochure",
+            "url": "https://www.gra.gm/download-file/8d0c6de0-d217-11ed-9b31-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.cgt-exempt-gain",
+      "nombre": "Capital gain up to which no capital gains tax is due",
+      "tipo": "numero",
+      "unidad": "GMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 24000,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Capital Gains Tax brochure",
+            "url": "https://www.gra.gm/download-file/8d0c6de0-d217-11ed-9b31-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.rental-tax-rates",
+      "nombre": "Rental income tax rates on gross rent",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "residential": "Residential rent",
+        "commercial": "Commercial rent"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "residential": 8,
+            "commercial": 15
+          },
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Rental Income Tax brochure",
+            "url": "https://www.gra.gm/download-file/8d0ce2c1-d217-11ed-9b31-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.dividend-tax-rate",
+      "nombre": "Dividend income tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 15,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Dividend Income Tax brochure",
+            "url": "https://www.gra.gm/download-file/8d0c84c3-d217-11ed-9b31-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.fringe-benefits-rate",
+      "nombre": "Fringe benefits tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 27,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Fringe Benefits Tax brochure",
+            "url": "https://www.gra.gm/download-file/8d0ca971-d217-11ed-9b31-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.corporate-tax-rate",
+      "nombre": "Corporation income tax rate on net profit",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 27,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Domestic Taxes FAQs",
+            "url": "https://www.gra.gm/domestic-faqs",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.minimum-tax-turnover",
+      "nombre": "Minimum tax on turnover",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "audited": "Audited accounts",
+        "unaudited": "Other accounts"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "audited": 1,
+            "unaudited": 2
+          },
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Domestic Taxes FAQs",
+            "url": "https://www.gra.gm/domestic-faqs",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.presumptive-turnover-limit",
+      "nombre": "Business turnover a year under which the 3% final turnover tax applies",
+      "tipo": "numero",
+      "unidad": "GMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Domestic Taxes FAQs",
+            "url": "https://www.gra.gm/domestic-faqs",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.presumptive-rate",
+      "nombre": "Final turnover tax for small businesses",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 3,
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Domestic Taxes FAQs",
+            "url": "https://www.gra.gm/domestic-faqs",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.informal-sector-tax",
+      "nombre": "Informal sector income tax a year by trade",
+      "tipo": "mapa",
+      "unidad": "GMD",
+      "etiquetas": {
+        "painters": "Painters and sign writers",
+        "firewood-charcoal": "Firewood and charcoal vendors",
+        "bicycle-mechanics": "Bicycle mechanics",
+        "electronics-repair": "Radio, TV and mobile phone repairers",
+        "barbers": "Barbers",
+        "masons": "Masons",
+        "building-contractors": "Building contractors",
+        "electricians": "Electrical workers",
+        "plumbers": "Plumbers",
+        "video-shops": "Video and DVD shop owners",
+        "dvd-vendors": "DVD and cassette vendors or rentals",
+        "newspaper-vendors": "Newspaper vendors",
+        "telecentres": "Telecentre and cyber cafe operators",
+        "beach-bars": "Beach bar proprietors",
+        "handicrafts": "Handicraft, batik and wood carving vendors",
+        "fishmongers": "Fishmongers (individuals)",
+        "canoe-owners": "Canoe owners",
+        "fruit-vegetable-vendors": "Flower, fruit and vegetable vendors",
+        "market-stalls": "Market stalls",
+        "tyre-repairs": "Vehicle tyre repairers",
+        "market-butchers": "Market butchers",
+        "market-fish-vendors": "Market fish vendors",
+        "motor-mechanics": "Motor mechanics",
+        "carpenters": "Carpenters",
+        "bakery-ovens": "Bakery oven owners",
+        "bakery-others": "Other bakeries",
+        "iron-benders": "Iron benders",
+        "welders": "Welders",
+        "tailors-1": "Tailors with one machine",
+        "tailors-2": "Tailors with two machines",
+        "tailors-3": "Tailors with three machines or more",
+        "butchers-cattle": "Butchers (cattle)",
+        "butchers-small": "Butchers (small ruminants)",
+        "cattle-dealers": "Cattle dealers (cattle)",
+        "small-ruminant-dealers": "Dealers in small ruminants",
+        "meat-roasters": "Meat roasters (afra)",
+        "forex-bureaus": "Foreign exchange bureaus",
+        "hairdressers-small": "Hairdressers (small shops)",
+        "salon-owners": "Salon owners",
+        "blacksmiths": "Blacksmiths",
+        "goldsmiths": "Gold and silver smiths",
+        "photographers": "Freelance photographers",
+        "photo-studios": "Photo studio owners",
+        "visiting-artists": "Visiting musicians, artistes and entertainers (non-Gambians)",
+        "gambian-musicians": "Gambian musicians",
+        "drivers": "Taxi, gele-gele and van drivers",
+        "corner-shops": "Corner shops",
+        "others": "Other trades not listed"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "painters": 3200,
+            "firewood-charcoal": 3000,
+            "bicycle-mechanics": 1500,
+            "electronics-repair": 5000,
+            "barbers": 2000,
+            "masons": 5000,
+            "building-contractors": 10000,
+            "electricians": 5000,
+            "plumbers": 5000,
+            "video-shops": 5000,
+            "dvd-vendors": 1000,
+            "newspaper-vendors": 1000,
+            "telecentres": 5000,
+            "beach-bars": 5000,
+            "handicrafts": 4000,
+            "fishmongers": 2000,
+            "canoe-owners": 5000,
+            "fruit-vegetable-vendors": 3000,
+            "market-stalls": 3000,
+            "tyre-repairs": 2000,
+            "market-butchers": 3500,
+            "market-fish-vendors": 2000,
+            "motor-mechanics": 5000,
+            "carpenters": 5000,
+            "bakery-ovens": 5000,
+            "bakery-others": 3000,
+            "iron-benders": 2500,
+            "welders": 10000,
+            "tailors-1": 1500,
+            "tailors-2": 2500,
+            "tailors-3": 5000,
+            "butchers-cattle": 5000,
+            "butchers-small": 3000,
+            "cattle-dealers": 10000,
+            "small-ruminant-dealers": 5000,
+            "meat-roasters": 3000,
+            "forex-bureaus": 30000,
+            "hairdressers-small": 2000,
+            "salon-owners": 10000,
+            "blacksmiths": 1500,
+            "goldsmiths": 5000,
+            "photographers": 2000,
+            "photo-studios": 5000,
+            "visiting-artists": 50000,
+            "gambian-musicians": 5000,
+            "drivers": 3000,
+            "corner-shops": 3000,
+            "others": 5000
+          },
+          "fuente": {
+            "organismo": "GRA",
+            "titulo": "Informal Sector Income Tax brochure",
+            "url": "https://www.gra.gm/download-file/8d0cb474-d217-11ed-9b31-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.expatriate-payroll-tax",
+      "nombre": "Expatriate quota payroll tax a year per expatriate",
+      "tipo": "mapa",
+      "unidad": "GMD",
+      "etiquetas": {
+        "ecowas": "ECOWAS citizen or special status",
+        "other": "Not an ECOWAS citizen"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-10",
+          "valor": {
+            "ecowas": 30000,
+            "other": 100000
+          },
+          "fuente": {
+            "organismo": "Ministry of Finance and Economic Affairs (publicado por la GRA)",
+            "titulo": "Expatriate Quota Pay Roll Tax Notice, 2026",
+            "url": "https://www.gra.gm/download-file/221f7a81-6596-11f1-b086-029254d29bb1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Aviso firmado por el ministro el 10 de marzo de 2026 (fecha manuscrita). La FAQ de la GRA todavía muestra los montos anteriores (D10,000 y D50,000), que no se cargaron."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.notice-periods",
+      "nombre": "Minimum notice periods under section 91",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "monthly-months": "Paid monthly (months)",
+        "biweekly-short-weeks": "Paid every two weeks, under six years (weeks)",
+        "biweekly-long-months": "Paid every two weeks, six years or more (months)",
+        "weekly-short-weeks": "Paid weekly, under two years (weeks)",
+        "weekly-mid-weeks": "Paid weekly, two to six years (weeks)",
+        "weekly-long-months": "Paid weekly, six years or more (months)",
+        "daily-short-days": "Paid daily or hourly, under six months (days)",
+        "daily-mid-weeks": "Paid daily or hourly, six months to two years (weeks)",
+        "daily-long-weeks": "Paid daily or hourly, two to six years (weeks)",
+        "six-years-months": "Six years or more of continuous service (months)",
+        "employee-six-years-months": "Notice the employee gives after six years (months)",
+        "fixed-term-days": "Fixed-term contract (days)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-06-12",
+          "valor": {
+            "monthly-months": 1,
+            "biweekly-short-weeks": 2,
+            "biweekly-long-months": 1,
+            "weekly-short-weeks": 1,
+            "weekly-mid-weeks": 2,
+            "weekly-long-months": 1,
+            "daily-short-days": 1,
+            "daily-mid-weeks": 1,
+            "daily-long-weeks": 2,
+            "six-years-months": 2,
+            "employee-six-years-months": 1,
+            "fixed-term-days": 14
+          },
+          "fuente": {
+            "organismo": "National Assembly",
+            "titulo": "Labour Act, 2023",
+            "url": "https://assembly.gm/documents/16/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "El texto no trae fecha de sanción; 12 de junio de 2023 es la fecha de adopción que registra NATLEX (OIT)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.redundancy-notice-months",
+      "nombre": "Notice for a redundancy dismissal",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-06-12",
+          "valor": 6,
+          "fuente": {
+            "organismo": "National Assembly",
+            "titulo": "Labour Act, 2023",
+            "url": "https://assembly.gm/documents/16/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "El texto no trae fecha de sanción; 12 de junio de 2023 es la fecha de adopción que registra NATLEX (OIT)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.severance-months-per-year",
+      "nombre": "Severance pay in months of basic pay for each year served",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-06-12",
+          "valor": 2,
+          "fuente": {
+            "organismo": "National Assembly",
+            "titulo": "Labour Act, 2023",
+            "url": "https://assembly.gm/documents/16/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "El texto no trae fecha de sanción; 12 de junio de 2023 es la fecha de adopción que registra NATLEX (OIT)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.fixed-term-gratuity-rate",
+      "nombre": "Minimum gratuity on a fixed-term contract, share of basic pay earned",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-06-12",
+          "valor": 25,
+          "fuente": {
+            "organismo": "National Assembly",
+            "titulo": "Labour Act, 2023",
+            "url": "https://assembly.gm/documents/16/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "El texto no trae fecha de sanción; 12 de junio de 2023 es la fecha de adopción que registra NATLEX (OIT)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.maternity-leave-months",
+      "nombre": "Paid maternity leave",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-06-12",
+          "valor": 6,
+          "fuente": {
+            "organismo": "National Assembly",
+            "titulo": "Labour Act, 2023",
+            "url": "https://assembly.gm/documents/16/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "El texto no trae fecha de sanción; 12 de junio de 2023 es la fecha de adopción que registra NATLEX (OIT)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.paternity-leave-days",
+      "nombre": "Paid paternity leave in working days",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-06-12",
+          "valor": 10,
+          "fuente": {
+            "organismo": "National Assembly",
+            "titulo": "Labour Act, 2023",
+            "url": "https://assembly.gm/documents/16/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "El texto no trae fecha de sanción; 12 de junio de 2023 es la fecha de adopción que registra NATLEX (OIT)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gm.retirement-age",
+      "nombre": "Retirement age for employees",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-06-12",
+          "valor": 60,
+          "fuente": {
+            "organismo": "National Assembly",
+            "titulo": "Labour Act, 2023",
+            "url": "https://assembly.gm/documents/16/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "El texto no trae fecha de sanción; 12 de junio de 2023 es la fecha de adopción que registra NATLEX (OIT)."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1016 @@
+{
+  "mercado": "tt",
+  "datos": [
+    {
+      "id": "tt.personal-allowance",
+      "nombre": "Personal allowance (resident individual)",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 90000,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Deductions and Required Supporting Documents (Individual Income Tax)",
+            "url": "https://www.ird.gov.tt/individual/deductions-and-required-supporting-documents",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "tt.income-tax-rate",
+      "nombre": "Income tax rate on chargeable income up to the higher band",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "General Guidelines for Severance and Gratuity",
+            "url": "https://www.ird.gov.tt/general-guidelines-for-severance-gratuity",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The page gives the individual rates: 25% up to $1,000,000 and 30% in excess of $1,000,000. It does not give the date they started."
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "tt.income-tax-higher-rate",
+      "nombre": "Income tax rate on chargeable income above the higher band",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "General Guidelines for Severance and Gratuity",
+            "url": "https://www.ird.gov.tt/general-guidelines-for-severance-gratuity",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The page gives the individual rates: 25% up to $1,000,000 and 30% in excess of $1,000,000. It does not give the date they started."
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "tt.income-tax-higher-band",
+      "nombre": "Chargeable income taxed at the lower rate",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "General Guidelines for Severance and Gratuity",
+            "url": "https://www.ird.gov.tt/general-guidelines-for-severance-gratuity",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The page gives the individual rates: 25% up to $1,000,000 and 30% in excess of $1,000,000. It does not give the date they started."
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "tt.nis-deductible-share",
+      "nombre": "Share of employee NIS contributions you can deduct",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Deductions and Required Supporting Documents (Individual Income Tax)",
+            "url": "https://www.ird.gov.tt/individual/deductions-and-required-supporting-documents",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.pension-nis-deduction-cap",
+      "nombre": "Limit on the deduction for pension plans, annuities and 70% of NIS",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Deductions and Required Supporting Documents (Individual Income Tax)",
+            "url": "https://www.ird.gov.tt/individual/deductions-and-required-supporting-documents",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.severance-exemption",
+      "nombre": "Tax exemption for severance payments",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-30",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "General Guidelines for Severance and Gratuity",
+            "url": "https://www.ird.gov.tt/general-guidelines-for-severance-gratuity",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.health-surcharge-high",
+      "nombre": "Health Surcharge, higher weekly rate",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8.25,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Health Surcharge",
+            "url": "https://www.ird.gov.tt/health-surcharge",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The page shows the rates in force without a start date."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.health-surcharge-low",
+      "nombre": "Health Surcharge, lower weekly rate",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4.8,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Health Surcharge",
+            "url": "https://www.ird.gov.tt/health-surcharge",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The page shows the rates in force without a start date."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.health-surcharge-threshold-monthly",
+      "nombre": "Monthly emoluments above which the higher Health Surcharge applies",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 469.99,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Health Surcharge",
+            "url": "https://www.ird.gov.tt/health-surcharge",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The page shows the rates in force without a start date."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.health-surcharge-threshold-weekly",
+      "nombre": "Weekly emoluments above which the higher Health Surcharge applies",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 109.0,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Health Surcharge",
+            "url": "https://www.ird.gov.tt/health-surcharge",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The page shows the rates in force without a start date."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.nis-employee-weekly",
+      "nombre": "NIS employee contribution a week, by weekly earnings",
+      "tipo": "escala",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "valor": [
+            {
+              "desde": 200,
+              "hasta": 339.99,
+              "tasa": 0,
+              "cuotaFija": 14.6
+            },
+            {
+              "desde": 340,
+              "hasta": 449.99,
+              "tasa": 0,
+              "cuotaFija": 21.3
+            },
+            {
+              "desde": 450,
+              "hasta": 609.99,
+              "tasa": 0,
+              "cuotaFija": 28.6
+            },
+            {
+              "desde": 610,
+              "hasta": 759.99,
+              "tasa": 0,
+              "cuotaFija": 37.0
+            },
+            {
+              "desde": 760,
+              "hasta": 929.99,
+              "tasa": 0,
+              "cuotaFija": 45.6
+            },
+            {
+              "desde": 930,
+              "hasta": 1119.99,
+              "tasa": 0,
+              "cuotaFija": 55.4
+            },
+            {
+              "desde": 1120,
+              "hasta": 1299.99,
+              "tasa": 0,
+              "cuotaFija": 65.3
+            },
+            {
+              "desde": 1300,
+              "hasta": 1489.99,
+              "tasa": 0,
+              "cuotaFija": 75.3
+            },
+            {
+              "desde": 1490,
+              "hasta": 1709.99,
+              "tasa": 0,
+              "cuotaFija": 86.4
+            },
+            {
+              "desde": 1710,
+              "hasta": 1909.99,
+              "tasa": 0,
+              "cuotaFija": 97.7
+            },
+            {
+              "desde": 1910,
+              "hasta": 2139.99,
+              "tasa": 0,
+              "cuotaFija": 109.4
+            },
+            {
+              "desde": 2140,
+              "hasta": 2379.99,
+              "tasa": 0,
+              "cuotaFija": 122.0
+            },
+            {
+              "desde": 2380,
+              "hasta": 2629.99,
+              "tasa": 0,
+              "cuotaFija": 135.3
+            },
+            {
+              "desde": 2630,
+              "hasta": 2919.99,
+              "tasa": 0,
+              "cuotaFija": 149.9
+            },
+            {
+              "desde": 2920,
+              "hasta": 3137.99,
+              "tasa": 0,
+              "cuotaFija": 163.6
+            },
+            {
+              "desde": 3138,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 169.5
+            }
+          ],
+          "fuente": {
+            "organismo": "National Insurance Board of Trinidad and Tobago",
+            "titulo": "Earnings Classes and Contributions from 05 January 2026 (contribution rate of 16.2%)",
+            "url": "https://nibtt.net/Contribution_Rates/NISContributions_20260105.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-04"
+    },
+    {
+      "id": "tt.nis-employer-weekly",
+      "nombre": "NIS employer contribution a week, by weekly earnings",
+      "tipo": "escala",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "valor": [
+            {
+              "desde": 200,
+              "hasta": 339.99,
+              "tasa": 0,
+              "cuotaFija": 29.2
+            },
+            {
+              "desde": 340,
+              "hasta": 449.99,
+              "tasa": 0,
+              "cuotaFija": 42.6
+            },
+            {
+              "desde": 450,
+              "hasta": 609.99,
+              "tasa": 0,
+              "cuotaFija": 57.2
+            },
+            {
+              "desde": 610,
+              "hasta": 759.99,
+              "tasa": 0,
+              "cuotaFija": 74.0
+            },
+            {
+              "desde": 760,
+              "hasta": 929.99,
+              "tasa": 0,
+              "cuotaFija": 91.2
+            },
+            {
+              "desde": 930,
+              "hasta": 1119.99,
+              "tasa": 0,
+              "cuotaFija": 110.8
+            },
+            {
+              "desde": 1120,
+              "hasta": 1299.99,
+              "tasa": 0,
+              "cuotaFija": 130.6
+            },
+            {
+              "desde": 1300,
+              "hasta": 1489.99,
+              "tasa": 0,
+              "cuotaFija": 150.6
+            },
+            {
+              "desde": 1490,
+              "hasta": 1709.99,
+              "tasa": 0,
+              "cuotaFija": 172.8
+            },
+            {
+              "desde": 1710,
+              "hasta": 1909.99,
+              "tasa": 0,
+              "cuotaFija": 195.4
+            },
+            {
+              "desde": 1910,
+              "hasta": 2139.99,
+              "tasa": 0,
+              "cuotaFija": 218.8
+            },
+            {
+              "desde": 2140,
+              "hasta": 2379.99,
+              "tasa": 0,
+              "cuotaFija": 244.0
+            },
+            {
+              "desde": 2380,
+              "hasta": 2629.99,
+              "tasa": 0,
+              "cuotaFija": 270.6
+            },
+            {
+              "desde": 2630,
+              "hasta": 2919.99,
+              "tasa": 0,
+              "cuotaFija": 299.8
+            },
+            {
+              "desde": 2920,
+              "hasta": 3137.99,
+              "tasa": 0,
+              "cuotaFija": 327.2
+            },
+            {
+              "desde": 3138,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 339.0
+            }
+          ],
+          "fuente": {
+            "organismo": "National Insurance Board of Trinidad and Tobago",
+            "titulo": "Earnings Classes and Contributions from 05 January 2026 (contribution rate of 16.2%)",
+            "url": "https://nibtt.net/Contribution_Rates/NISContributions_20260105.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-04"
+    },
+    {
+      "id": "tt.nis-employee-monthly",
+      "nombre": "NIS employee contribution a week, by monthly earnings",
+      "tipo": "escala",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "valor": [
+            {
+              "desde": 867,
+              "hasta": 1472.99,
+              "tasa": 0,
+              "cuotaFija": 14.6
+            },
+            {
+              "desde": 1473,
+              "hasta": 1949.99,
+              "tasa": 0,
+              "cuotaFija": 21.3
+            },
+            {
+              "desde": 1950,
+              "hasta": 2642.99,
+              "tasa": 0,
+              "cuotaFija": 28.6
+            },
+            {
+              "desde": 2643,
+              "hasta": 3292.99,
+              "tasa": 0,
+              "cuotaFija": 37.0
+            },
+            {
+              "desde": 3293,
+              "hasta": 4029.99,
+              "tasa": 0,
+              "cuotaFija": 45.6
+            },
+            {
+              "desde": 4030,
+              "hasta": 4852.99,
+              "tasa": 0,
+              "cuotaFija": 55.4
+            },
+            {
+              "desde": 4853,
+              "hasta": 5632.99,
+              "tasa": 0,
+              "cuotaFija": 65.3
+            },
+            {
+              "desde": 5633,
+              "hasta": 6456.99,
+              "tasa": 0,
+              "cuotaFija": 75.3
+            },
+            {
+              "desde": 6457,
+              "hasta": 7409.99,
+              "tasa": 0,
+              "cuotaFija": 86.4
+            },
+            {
+              "desde": 7410,
+              "hasta": 8276.99,
+              "tasa": 0,
+              "cuotaFija": 97.7
+            },
+            {
+              "desde": 8277,
+              "hasta": 9272.99,
+              "tasa": 0,
+              "cuotaFija": 109.4
+            },
+            {
+              "desde": 9273,
+              "hasta": 10312.99,
+              "tasa": 0,
+              "cuotaFija": 122.0
+            },
+            {
+              "desde": 10313,
+              "hasta": 11396.99,
+              "tasa": 0,
+              "cuotaFija": 135.3
+            },
+            {
+              "desde": 11397,
+              "hasta": 12652.99,
+              "tasa": 0,
+              "cuotaFija": 149.9
+            },
+            {
+              "desde": 12653,
+              "hasta": 13599.99,
+              "tasa": 0,
+              "cuotaFija": 163.6
+            },
+            {
+              "desde": 13600,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 169.5
+            }
+          ],
+          "fuente": {
+            "organismo": "National Insurance Board of Trinidad and Tobago",
+            "titulo": "Earnings Classes and Contributions from 05 January 2026 (contribution rate of 16.2%)",
+            "url": "https://nibtt.net/Contribution_Rates/NISContributions_20260105.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-04"
+    },
+    {
+      "id": "tt.nis-employer-monthly",
+      "nombre": "NIS employer contribution a week, by monthly earnings",
+      "tipo": "escala",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "valor": [
+            {
+              "desde": 867,
+              "hasta": 1472.99,
+              "tasa": 0,
+              "cuotaFija": 29.2
+            },
+            {
+              "desde": 1473,
+              "hasta": 1949.99,
+              "tasa": 0,
+              "cuotaFija": 42.6
+            },
+            {
+              "desde": 1950,
+              "hasta": 2642.99,
+              "tasa": 0,
+              "cuotaFija": 57.2
+            },
+            {
+              "desde": 2643,
+              "hasta": 3292.99,
+              "tasa": 0,
+              "cuotaFija": 74.0
+            },
+            {
+              "desde": 3293,
+              "hasta": 4029.99,
+              "tasa": 0,
+              "cuotaFija": 91.2
+            },
+            {
+              "desde": 4030,
+              "hasta": 4852.99,
+              "tasa": 0,
+              "cuotaFija": 110.8
+            },
+            {
+              "desde": 4853,
+              "hasta": 5632.99,
+              "tasa": 0,
+              "cuotaFija": 130.6
+            },
+            {
+              "desde": 5633,
+              "hasta": 6456.99,
+              "tasa": 0,
+              "cuotaFija": 150.6
+            },
+            {
+              "desde": 6457,
+              "hasta": 7409.99,
+              "tasa": 0,
+              "cuotaFija": 172.8
+            },
+            {
+              "desde": 7410,
+              "hasta": 8276.99,
+              "tasa": 0,
+              "cuotaFija": 195.4
+            },
+            {
+              "desde": 8277,
+              "hasta": 9272.99,
+              "tasa": 0,
+              "cuotaFija": 218.8
+            },
+            {
+              "desde": 9273,
+              "hasta": 10312.99,
+              "tasa": 0,
+              "cuotaFija": 244.0
+            },
+            {
+              "desde": 10313,
+              "hasta": 11396.99,
+              "tasa": 0,
+              "cuotaFija": 270.6
+            },
+            {
+              "desde": 11397,
+              "hasta": 12652.99,
+              "tasa": 0,
+              "cuotaFija": 299.8
+            },
+            {
+              "desde": 12653,
+              "hasta": 13599.99,
+              "tasa": 0,
+              "cuotaFija": 327.2
+            },
+            {
+              "desde": 13600,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 339.0
+            }
+          ],
+          "fuente": {
+            "organismo": "National Insurance Board of Trinidad and Tobago",
+            "titulo": "Earnings Classes and Contributions from 05 January 2026 (contribution rate of 16.2%)",
+            "url": "https://nibtt.net/Contribution_Rates/NISContributions_20260105.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-04"
+    },
+    {
+      "id": "tt.minimum-wage-hourly",
+      "nombre": "National minimum wage per hour",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 20.5,
+          "fuente": {
+            "organismo": "Government Printer (Trinidad and Tobago Gazette)",
+            "titulo": "Legal Notice No. 390 of 2023, Minimum Wages (Amendment) Order, 2023",
+            "url": "https://www.printery.gov.tt/e-gazette/2023/Legal%20Notices/Legal%20Notice%20No.%20390%20of%202023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.minimum-wage-daily",
+      "nombre": "National minimum wage for an 8-hour day",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 164.0,
+          "fuente": {
+            "organismo": "Government Printer (Trinidad and Tobago Gazette)",
+            "titulo": "Legal Notice No. 390 of 2023, Minimum Wages (Amendment) Order, 2023",
+            "url": "https://www.printery.gov.tt/e-gazette/2023/Legal%20Notices/Legal%20Notice%20No.%20390%20of%202023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.minimum-wage-weekly",
+      "nombre": "National minimum wage for a 40-hour week",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 820.0,
+          "fuente": {
+            "organismo": "Government Printer (Trinidad and Tobago Gazette)",
+            "titulo": "Legal Notice No. 390 of 2023, Minimum Wages (Amendment) Order, 2023",
+            "url": "https://www.printery.gov.tt/e-gazette/2023/Legal%20Notices/Legal%20Notice%20No.%20390%20of%202023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.minimum-wage-monthly",
+      "nombre": "National minimum wage for a month (173.3334 hours)",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 3553.33,
+          "fuente": {
+            "organismo": "Government Printer (Trinidad and Tobago Gazette)",
+            "titulo": "Legal Notice No. 390 of 2023, Minimum Wages (Amendment) Order, 2023",
+            "url": "https://www.printery.gov.tt/e-gazette/2023/Legal%20Notices/Legal%20Notice%20No.%20390%20of%202023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.vat-standard",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12.5,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Value Added Tax (VAT)",
+            "url": "https://www.ird.gov.tt/VAT",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The page shows the standard rate and the registration threshold without a start date."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.vat-registration-threshold",
+      "nombre": "VAT registration threshold (supplies in 12 months)",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 600000,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Value Added Tax (VAT)",
+            "url": "https://www.ird.gov.tt/VAT",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The page shows the standard rate and the registration threshold without a start date."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.stamp-duty-residential",
+      "nombre": "Stamp duty on residential property with a dwelling house",
+      "tipo": "escala",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-10-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 850000,
+              "tasa": 0
+            },
+            {
+              "desde": 850000,
+              "hasta": 1250000,
+              "tasa": 3
+            },
+            {
+              "desde": 1250000,
+              "hasta": 1750000,
+              "tasa": 5
+            },
+            {
+              "desde": 1750000,
+              "hasta": null,
+              "tasa": 7.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Stamp Duty Rates (with effect from October 1st 2008)",
+            "url": "https://www.ird.gov.tt/news/stamp-duty-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.stamp-duty-land",
+      "nombre": "Stamp duty on residential land only",
+      "tipo": "escala",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-10-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 450000,
+              "tasa": 0
+            },
+            {
+              "desde": 450000,
+              "hasta": 650000,
+              "tasa": 2
+            },
+            {
+              "desde": 650000,
+              "hasta": 850000,
+              "tasa": 5
+            },
+            {
+              "desde": 850000,
+              "hasta": null,
+              "tasa": 7
+            }
+          ],
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Stamp Duty Rates (with effect from October 1st 2008)",
+            "url": "https://www.ird.gov.tt/news/stamp-duty-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.stamp-duty-first-home-exemption",
+      "nombre": "Stamp duty exemption for first-time homeowners (house and land)",
+      "tipo": "numero",
+      "unidad": "TTD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 1500000,
+          "fuente": {
+            "organismo": "Inland Revenue Division, Ministry of Finance",
+            "titulo": "Stamp Duty FAQs",
+            "url": "https://www.ird.gov.tt/stamp-duty/FAQs",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.maternity-leave-weeks",
+      "nombre": "Maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Ministry of the Attorney General and Legal Affairs",
+            "titulo": "Maternity Protection Act, Chap. 45:57, sections 9(1) to 9(3)",
+            "url": "https://laws.gov.tt/ttdll-web2/revision/download/79174?type=act",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Consolidated text updated to December 31, 2014, including Act 7 of 2012."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.maternity-leave-before-birth-weeks",
+      "nombre": "Weeks before the expected birth when leave can start",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Ministry of the Attorney General and Legal Affairs",
+            "titulo": "Maternity Protection Act, Chap. 45:57, sections 9(1) to 9(3)",
+            "url": "https://laws.gov.tt/ttdll-web2/revision/download/79174?type=act",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Consolidated text updated to December 31, 2014, including Act 7 of 2012."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.maternity-full-pay-months",
+      "nombre": "Months of maternity leave the employer pays in full",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministry of the Attorney General and Legal Affairs",
+            "titulo": "Maternity Protection Act, Chap. 45:57, sections 9(1) to 9(3)",
+            "url": "https://laws.gov.tt/ttdll-web2/revision/download/79174?type=act",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Consolidated text updated to December 31, 2014, including Act 7 of 2012."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tt.maternity-half-pay-months",
+      "nombre": "Months of maternity leave the employer pays at half pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of the Attorney General and Legal Affairs",
+            "titulo": "Maternity Protection Act, Chap. 45:57, sections 9(1) to 9(3)",
+            "url": "https://laws.gov.tt/ttdll-web2/revision/download/79174?type=act",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Consolidated text updated to December 31, 2014, including Act 7 of 2012."
+          }
+        }
+      ]
+    }
+  ]
+}
