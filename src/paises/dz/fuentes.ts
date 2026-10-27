@@ -44,6 +44,8 @@ export const detectores: readonly Detector[] = [
       "dz.snmg-horaire",
       "dz.allocation-chomage",
       "dz.allocation-chomage-duree",
+      "dz.maternite",
+      "dz.maternite-taux",
       "dz.heures-mensuelles",
       "dz.duree-legale",
       "dz.heures-supplementaires",

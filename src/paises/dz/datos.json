@@ -486,6 +486,55 @@
       ]
     },
     {
+      "id": "dz.maternite",
+      "nombre": "Congé de maternité : durée indemnisée",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "duree": "Durée indemnisée",
+        "avant-max": "Début au plus tôt avant la date présumée"
+      },
+      "nota": "Article 29 de la loi n° 83-11 : quatorze semaines consécutives, qui commencent au plus tôt six semaines avant la date présumée de l'accouchement. Un accouchement avant la date présumée ne réduit pas la période.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": {
+            "duree": 14,
+            "avant-max": 6
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), articles 11 et 12 modifiant les articles 28 et 29",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.maternite-taux",
+      "nombre": "Congé de maternité : indemnité journalière",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 28 de la loi n° 83-11 : 100 % du salaire journalier soumis à cotisation, après déduction de la cotisation de sécurité sociale et de l'impôt.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), articles 11 et 12 modifiant les articles 28 et 29",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
       "id": "dz.heures-mensuelles",
       "nombre": "Durée mensuelle correspondant à la durée légale",
       "tipo": "numero",

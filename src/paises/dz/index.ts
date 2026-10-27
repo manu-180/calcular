@@ -36,6 +36,8 @@ import impotSurDividendes from "./calculadoras/impot-sur-dividendes";
 import contenidoImpotSurDividendes from "./contenido/impot-sur-dividendes";
 import allocationChomage from "./calculadoras/allocation-chomage";
 import contenidoAllocationChomage from "./contenido/allocation-chomage";
+import congeMaternite from "./calculadoras/conge-maternite";
+import contenidoCongeMaternite from "./contenido/conge-maternite";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -66,6 +68,7 @@ export default definirPais({
     { definicion: calculIrgPrime, contenido: contenidoCalculIrgPrime, cliente: () => import("./calculadoras/calcul-irg-prime.cliente") },
     { definicion: impotSurDividendes, contenido: contenidoImpotSurDividendes, cliente: () => import("./calculadoras/impot-sur-dividendes.cliente") },
     { definicion: allocationChomage, contenido: contenidoAllocationChomage, cliente: () => import("./calculadoras/allocation-chomage.cliente") },
+    { definicion: congeMaternite, contenido: contenidoCongeMaternite, cliente: () => import("./calculadoras/conge-maternite.cliente") },
   ],
   universales: "todas",
   novedades,
