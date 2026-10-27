@@ -1,0 +1,1207 @@
+{
+  "mercado": "bj",
+  "datos": [
+    {
+      "id": "bj.smig",
+      "nombre": "Salaire minimum interprofessionnel garanti (SMIG), mensuel",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 52000,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Décret n° 2022-692 du 07 décembre 2022 portant relèvement du salaire minimum interprofessionnel garanti",
+            "url": "https://sgg.gouv.bj/doc/decret-2022-692/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article premier : SMIG relevé de 40 000 à 52 000 francs CFA pour compter du 1er janvier 2023."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.its-bareme",
+      "nombre": "Barème mensuel de l'impôt sur les traitements et salaires (ITS)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 60000,
+              "tasa": 0
+            },
+            {
+              "desde": 60000,
+              "hasta": 150000,
+              "tasa": 10
+            },
+            {
+              "desde": 150000,
+              "hasta": 250000,
+              "tasa": 15
+            },
+            {
+              "desde": 250000,
+              "hasta": 500000,
+              "tasa": 19
+            },
+            {
+              "desde": 500000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 125, paragraphe 1."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.its-redevance-ortb",
+      "nombre": "Redevance ORTB ajoutée à l'ITS",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "mars": "Salaire de mars",
+        "juin": "Salaire de juin"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "mars": 1000,
+            "juin": 3000
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 125, paragraphe 2 : 1 000 F sur le salaire de mars, 3 000 F sur celui de juin ; exonération des 3 000 F si le revenu imposable ne dépasse pas la première tranche."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.its-abattement-exceptionnel",
+      "nombre": "Abattement sur les indemnités de fin de carrière et primes de départ volontaire",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 126, paragraphe 3 b."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.cnss-taux",
+      "nombre": "Taux des cotisations CNSS (pension et prestations familiales)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pension-salarie": "Pension, part du salarié",
+        "pension-employeur": "Pension, part de l'employeur",
+        "prestations-familiales": "Prestations familiales (employeur)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1994-08-10",
+          "valor": {
+            "pension-salarie": 3.6,
+            "pension-employeur": 6.4,
+            "prestations-familiales": 9
+          },
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Décret n° 94-258 du 10 août 1994 portant fixation des taux de cotisations des branches des pensions et des prestations familiales",
+            "url": "https://sgg.gouv.bj/doc/decret-1994-258/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Articles 1 à 3 : pension 10 % de l'ensemble des rémunérations (6,40 % employeur, 3,60 % travailleur), prestations familiales 9 % à la charge de l'employeur."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.vps-taux",
+      "nombre": "Taux du versement patronal sur salaires (VPS)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Cas général",
+        "enseignement-prive": "Établissements d'enseignement privé"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 4,
+            "enseignement-prive": 2
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 194."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tva",
+      "nombre": "Taux de la taxe sur la valeur ajoutée (TVA)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 241."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tps-taux",
+      "nombre": "Taux de la taxe professionnelle synthétique (TPS)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 183, paragraphe 1."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tps-minimum",
+      "nombre": "Montant minimum de la TPS",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 183, paragraphe 2."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tps-redevance-ortb",
+      "nombre": "Redevance ORTB perçue en sus de la TPS",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4000,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 183, paragraphe 3."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.is-taux",
+      "nombre": "Taux de l'impôt sur les sociétés (IS)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Cas général",
+        "industrie-enseignement": "Industrie (hors extraction) et écoles privées"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 30,
+            "industrie-enseignement": 25
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 46."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.is-minimum-taux",
+      "nombre": "Minimum de perception de l'IS, en pourcentage des produits encaissables",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Cas général",
+        "btp": "Bâtiment et travaux publics",
+        "immobilier": "Sociétés à prépondérance immobilière"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 1,
+            "btp": 3,
+            "immobilier": 10
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 47, paragraphe 1."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.iba-taux",
+      "nombre": "Taux de l'impôt sur les bénéfices d'affaires (IBA)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Cas général",
+        "enseignement": "Établissements privés d'enseignement"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 30,
+            "enseignement": 25
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 63."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.iba-minimum-taux",
+      "nombre": "Minimum de perception de l'IBA, en pourcentage des produits encaissables",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Cas général",
+        "btp": "Bâtiment et travaux publics",
+        "immobilier": "Entreprises à prépondérance immobilière"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 1.5,
+            "btp": 3,
+            "immobilier": 10
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 64, paragraphes 1 et 2."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.impot-minimum-plancher",
+      "nombre": "Montant plancher de l'IS et de l'IBA",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 250000,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 47, paragraphe 3, et article 64, paragraphe 3 a."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.irf-taux",
+      "nombre": "Taux de l'impôt sur les revenus fonciers (IRF)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 104, paragraphe 1."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.irf-redevance-ortb",
+      "nombre": "Redevance ORTB ajoutée à l'IRF",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4000,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 104, paragraphe 2."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.irf-retenue",
+      "nombre": "Retenue à la source sur les loyers",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Cas général",
+        "bailleur-entreprise": "Bailleur soumis à l'IBA ou à l'IS"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 12,
+            "bailleur-entreprise": 10
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 106, paragraphe 1."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tpvi-taux",
+      "nombre": "Taux de la taxe sur les plus-values immobilières (TPVI)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 115, paragraphe 1."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tpvi-minimum",
+      "nombre": "Minimum de la TPVI, en pourcentage du prix de cession",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 115, paragraphe 2."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tpvi-plus-value-construction",
+      "nombre": "Plus-value forfaitaire sur une construction, en pourcentage de son prix de cession",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 113."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.ircm-taux",
+      "nombre": "Taux de l'impôt sur le revenu des capitaux mobiliers (IRCM)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "dividendes": "Dividendes (cas général)",
+        "dividendes-cotees": "Dividendes de sociétés cotées à la BRVM ou versés à un non-résident",
+        "obligations": "Revenus d'obligations",
+        "obligations-publiques": "Obligations publiques UEMOA de 5 à 10 ans",
+        "creances": "Intérêts de créances, dépôts et cautionnements"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "dividendes": 10,
+            "dividendes-cotees": 5,
+            "obligations": 6,
+            "obligations-publiques": 3,
+            "creances": 15
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Articles 86, 87 et 88."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.aib-taux",
+      "nombre": "Taux de l'acompte sur impôt assis sur les bénéfices (AIB)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ifu": "Importations, achats et travaux avec IFU",
+        "services-ifu": "Prestations de services avec IFU",
+        "sans-ifu": "Sans IFU"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ifu": 1,
+            "services-ifu": 3,
+            "sans-ifu": 5
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 132, paragraphe 2."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tvm-prive",
+      "nombre": "Taxe sur les véhicules à moteur, transport privé, selon la puissance",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "jusqu-7": "7 CV ou moins",
+        "8-10": "De 8 à 10 CV",
+        "11-15": "De 11 à 15 CV",
+        "plus-15": "Plus de 15 CV"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "jusqu-7": 20000,
+            "8-10": 30000,
+            "11-15": 40000,
+            "plus-15": 60000
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 168, paragraphe 1."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tvm-societes",
+      "nombre": "Taxe sur les véhicules à moteur, véhicules de tourisme des sociétés",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "jusqu-7": "7 CV ou moins",
+        "plus-7": "Plus de 7 CV"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "jusqu-7": 150000,
+            "plus-7": 200000
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 168, paragraphe 4."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tvm-public-personnes",
+      "nombre": "Taxe sur les véhicules à moteur, transport public de personnes",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "0-9": "De 0 à 9 places",
+        "10-20": "De 10 à 20 places",
+        "plus-20": "Plus de 20 places"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0-9": 38000,
+            "10-20": 57000,
+            "plus-20": 86800
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 168, paragraphe 2."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tvm-public-marchandises",
+      "nombre": "Taxe sur les véhicules à moteur, transport public de marchandises",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "jusqu-2-5": "Jusqu'à 2,5 tonnes",
+        "2-6-5": "De 2,6 à 5 tonnes",
+        "5-10": "De 5,01 à 10 tonnes",
+        "plus-10": "Plus de 10 tonnes"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "jusqu-2-5": 49500,
+            "2-6-5": 57000,
+            "5-10": 86800,
+            "plus-10": 136400
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 168, paragraphe 2."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.tvm-trois-roues",
+      "nombre": "Taxe sur les véhicules à moteur à trois roues",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 168, paragraphe 3."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.avantages-nature-logement",
+      "nombre": "Avantage en nature logement, en pourcentage du salaire de base",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 123, paragraphe 3."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.avantages-nature-forfaits",
+      "nombre": "Avantages en nature évalués au forfait, par mois",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "electricite-cadre": "Électricité, dirigeants et cadres",
+        "electricite-employe": "Électricité, employés",
+        "eau-cadre": "Eau, dirigeants et cadres",
+        "eau-employe": "Eau, employés",
+        "telephone-cadre": "Téléphone, dirigeants et cadres",
+        "telephone-employe": "Téléphone, employés",
+        "nourriture-cadre": "Nourriture, dirigeants et cadres",
+        "nourriture-employe": "Nourriture, employés",
+        "vehicule-4-cadre": "Véhicule à 4 roues, dirigeants et cadres",
+        "vehicule-4-employe": "Véhicule à 4 roues, employés",
+        "vehicule-2-cadre": "Véhicule à 2 roues, dirigeants et cadres",
+        "vehicule-2-employe": "Véhicule à 2 roues, employés"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "electricite-cadre": 50000,
+            "electricite-employe": 20000,
+            "eau-cadre": 10000,
+            "eau-employe": 5000,
+            "telephone-cadre": 15000,
+            "telephone-employe": 5000,
+            "nourriture-cadre": 50000,
+            "nourriture-employe": 30000,
+            "vehicule-4-cadre": 30000,
+            "vehicule-4-employe": 15000,
+            "vehicule-2-cadre": 10000,
+            "vehicule-2-employe": 5000
+          },
+          "fuente": {
+            "organismo": "Direction générale des Impôts (DGI)",
+            "titulo": "Code général des impôts 2026 (loi n° 2021-15, à jour de la loi de finances n° 2025-22 pour 2026)",
+            "url": "https://apisiteweb.impots.bj/media/6adcbd46ab83b_B%C3%A9nin-Code%20G%C3%A9n%C3%A9ral%20des%20Imp%C3%B4ts%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 123, paragraphes 3 et 4 (tarifs divisés par deux pour le personnel de maison)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.duree-legale-travail",
+      "nombre": "Durée légale du travail hebdomadaire (hors agriculture)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 142."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.heures-sup-majorations",
+      "nombre": "Majorations minimales des heures supplémentaires",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "41-48": "De la 41e à la 48e heure",
+        "au-dela-48": "Au-delà de la 48e heure",
+        "dimanche-jour": "Dimanche ou jour férié, de jour",
+        "nuit": "Nuit en semaine",
+        "dimanche-nuit": "Nuit, dimanche ou jour férié"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": {
+            "41-48": 12,
+            "au-dela-48": 35,
+            "dimanche-jour": 50,
+            "nuit": 50,
+            "dimanche-nuit": 100
+          },
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 147 : de jour 12 % de la 41e à la 48e heure, 35 % au-delà, 50 % les dimanches et jours fériés ; de nuit (21 h à 5 h) 50 % en semaine, 100 % les dimanches et jours fériés."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.heures-sup-premiere-tranche",
+      "nombre": "Nombre d'heures supplémentaires de la première tranche (41e à 48e heure)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 147, point a."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.heures-sup-plafond-annuel",
+      "nombre": "Plafond annuel d'heures supplémentaires sans autorisation de l'inspecteur",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": 240,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 145."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.conges-jours-par-mois",
+      "nombre": "Congé payé acquis par mois de service effectif",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 158, premier alinéa (jours ouvrables)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.conges-supplement-anciennete",
+      "nombre": "Jours de congé en plus selon l'ancienneté (années de service)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "20": "Après 20 ans",
+        "25": "Après 25 ans",
+        "30": "Après 30 ans"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": {
+            "20": 2,
+            "25": 4,
+            "30": 6
+          },
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 158, troisième alinéa."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.conges-plafond",
+      "nombre": "Plafond du congé principal augmenté du supplément d'ancienneté",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 158, troisième alinéa."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.conges-meres",
+      "nombre": "Congé supplémentaire des mères salariées par enfant à charge",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "par-enfant": "Jours par enfant",
+        "reduit": "Jours par enfant si le congé normal est court",
+        "seuil-reduction": "Congé normal en dessous duquel le supplément est réduit",
+        "rang-apres-21-ans": "Rang de l'enfant à partir duquel le supplément s'applique après 21 ans"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": {
+            "par-enfant": 2,
+            "reduit": 1,
+            "seuil-reduction": 6,
+            "rang-apres-21-ans": 4
+          },
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 158, quatrième alinéa : deux jours par enfant de moins de 15 ans pour les mères de moins de 21 ans, à partir du quatrième enfant au-delà de 21 ans ; un jour si le congé normal ne dépasse pas six jours."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.preavis-duree",
+      "nombre": "Durée du préavis selon la catégorie",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "horaire": "Travailleurs payés à l'heure",
+        "employe": "Employés, ouvriers et manœuvres",
+        "cadre": "Agents de maîtrise, cadres et assimilés"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": {
+            "horaire": 15,
+            "employe": 30,
+            "cadre": 90
+          },
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 53 : quinze jours pour les travailleurs payés à l'heure, un mois pour les employés, ouvriers et manœuvres, trois mois pour les agents de maîtrise, cadres et assimilés (un mois compté ici pour 30 jours)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.preavis-jours-liberte",
+      "nombre": "Jours de liberté payés par semaine de préavis pour chercher un emploi",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-01-27",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+            "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 54, deuxième alinéa."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.licenciement-abusif-mois",
+      "nombre": "Réparation d'un licenciement abusif, en mois de salaire brut",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "minimum": "Minimum",
+        "maximum": "Maximum"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-08-29",
+          "valor": {
+            "minimum": 3,
+            "maximum": 9
+          },
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 2017-05 du 29 août 2017 fixant les conditions et la procédure d'embauche, de placement de la main-d'œuvre et de résiliation du contrat de travail",
+            "url": "https://sgg.gouv.bj/doc/loi-2017-05/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Articles 30 et 31 : réparation d'au moins 3 et d'au plus 9 mois de salaire brut, sur la base du salaire mensuel brut moyen des 12 derniers mois."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.licenciement-irregulier-mois",
+      "nombre": "Indemnité maximale pour licenciement irrégulier en la forme, en mois de salaire brut",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-08-29",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 2017-05 du 29 août 2017 fixant les conditions et la procédure d'embauche, de placement de la main-d'œuvre et de résiliation du contrat de travail",
+            "url": "https://sgg.gouv.bj/doc/loi-2017-05/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 29 : au plus deux mois de salaire brut, due à partir d'un an de travail effectif."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.licenciement-irregulier-anciennete",
+      "nombre": "Ancienneté minimale pour l'indemnité de licenciement irrégulier",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-08-29",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement (SGG)",
+            "titulo": "Loi n° 2017-05 du 29 août 2017 fixant les conditions et la procédure d'embauche, de placement de la main-d'œuvre et de résiliation du contrat de travail",
+            "url": "https://sgg.gouv.bj/doc/loi-2017-05/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 29, dernier alinéa."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.parite-euro",
+      "nombre": "Parité fixe du franc CFA avec l'euro (francs CFA pour 1 euro)",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-01-01",
+          "valor": 655.957,
+          "fuente": {
+            "organismo": "BCEAO",
+            "titulo": "Histoire du franc CFA (parité fixe avec l'euro)",
+            "url": "https://www.bceao.int/fr/content/histoire-du-franc-cfa",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bj.bceao-taux-directeurs",
+      "nombre": "Taux directeurs de la BCEAO",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "minimum-soumission": "Taux minimum de soumission aux appels d'offres",
+        "pret-marginal": "Taux du guichet de prêt marginal"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-16",
+          "valor": {
+            "minimum-soumission": 3,
+            "pret-marginal": 5
+          },
+          "fuente": {
+            "organismo": "BCEAO",
+            "titulo": "Page d'accueil de la BCEAO : taux directeurs",
+            "url": "https://www.bceao.int/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}
