@@ -1,15 +1,23 @@
 import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
+import annualLeaveCalculator from "./calculadoras/annual-leave-calculator";
+import contenidoAnnualLeaveCalculator from "./contenido/annual-leave-calculator";
 import employeeCostCalculator from "./calculadoras/employee-cost-calculator";
 import contenidoEmployeeCostCalculator from "./contenido/employee-cost-calculator";
 import endOfServiceGratuity from "./calculadoras/end-of-service-gratuity";
 import contenidoEndOfServiceGratuity from "./contenido/end-of-service-gratuity";
 import inflationCalculator from "./calculadoras/inflation-calculator";
 import contenidoInflationCalculator from "./contenido/inflation-calculator";
+import maternityLeaveCalculator from "./calculadoras/maternity-leave-calculator";
+import contenidoMaternityLeaveCalculator from "./contenido/maternity-leave-calculator";
 import noticePeriod from "./calculadoras/notice-period";
 import contenidoNoticePeriod from "./contenido/notice-period";
+import overtimeCalculator from "./calculadoras/overtime-calculator";
+import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
 import salaryCalculator from "./calculadoras/salary-calculator";
 import contenidoSalaryCalculator from "./contenido/salary-calculator";
+import sickLeaveCalculator from "./calculadoras/sick-leave-calculator";
+import contenidoSickLeaveCalculator from "./contenido/sick-leave-calculator";
 import spfContributionCalculator from "./calculadoras/spf-contribution-calculator";
 import contenidoSpfContributionCalculator from "./contenido/spf-contribution-calculator";
 import vatCalculator from "./calculadoras/vat-calculator";
@@ -27,11 +35,15 @@ export default definirPais({
   series,
   avisos,
   calculadoras: [
+    { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
     { definicion: employeeCostCalculator, contenido: contenidoEmployeeCostCalculator, cliente: () => import("./calculadoras/employee-cost-calculator.cliente") },
     { definicion: endOfServiceGratuity, contenido: contenidoEndOfServiceGratuity, cliente: () => import("./calculadoras/end-of-service-gratuity.cliente") },
     { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
+    { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
     { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
+    { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
     { definicion: salaryCalculator, contenido: contenidoSalaryCalculator, cliente: () => import("./calculadoras/salary-calculator.cliente") },
+    { definicion: sickLeaveCalculator, contenido: contenidoSickLeaveCalculator, cliente: () => import("./calculadoras/sick-leave-calculator.cliente") },
     { definicion: spfContributionCalculator, contenido: contenidoSpfContributionCalculator, cliente: () => import("./calculadoras/spf-contribution-calculator.cliente") },
     { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
   ],
