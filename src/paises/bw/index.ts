@@ -20,6 +20,12 @@ import vatCalculator from "./calculadoras/vat-calculator";
 import contenidoVatCalculator from "./contenido/vat-calculator";
 import companyTaxCalculator from "./calculadoras/company-tax-calculator";
 import contenidoCompanyTaxCalculator from "./contenido/company-tax-calculator";
+import withholdingTaxCalculator from "./calculadoras/withholding-tax-calculator";
+import contenidoWithholdingTaxCalculator from "./contenido/withholding-tax-calculator";
+import capitalGainsTax from "./calculadoras/capital-gains-tax";
+import contenidoCapitalGainsTax from "./contenido/capital-gains-tax";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -42,6 +48,9 @@ export default definirPais({
     { definicion: taxFreeSalaryGrossUp, contenido: contenidoTaxFreeSalaryGrossUp, cliente: () => import("./calculadoras/tax-free-salary-gross-up.cliente") },
     { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
     { definicion: companyTaxCalculator, contenido: contenidoCompanyTaxCalculator, cliente: () => import("./calculadoras/company-tax-calculator.cliente") },
+    { definicion: withholdingTaxCalculator, contenido: contenidoWithholdingTaxCalculator, cliente: () => import("./calculadoras/withholding-tax-calculator.cliente") },
+    { definicion: capitalGainsTax, contenido: contenidoCapitalGainsTax, cliente: () => import("./calculadoras/capital-gains-tax.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
   universales: { todas: true },
   novedades,

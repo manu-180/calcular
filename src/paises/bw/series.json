@@ -6,7 +6,7 @@
       "nombre": "National CPI, annual inflation rate",
       "unidad": "%",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 75,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Statistics Botswana",
         "titulo": "Consumer Price Index September 2026 (Table 2) and the national inflation chart on statsbots.org.bw",
