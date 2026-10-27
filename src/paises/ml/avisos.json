@@ -1,0 +1,20 @@
+{
+  "mercado": "ml",
+  "avisos": [
+    {
+      "id": "ml.minimums-legaux",
+      "nivel": "info",
+      "desde": "2017-06-12",
+      "aplicaA": ["ml.indemnite-licenciement", "ml.indemnite-depart-retraite", "ml.indemnite-services-rendus", "ml.conges-payes", "ml.heures-supplementaires", "ml.preavis"],
+      "titulo": "Minimums légaux",
+      "texto": "Le calcul donne le minimum prévu par le Code du travail. Votre convention collective, un accord d'établissement ou votre contrat peut prévoir davantage.",
+      "fuente": {
+        "organismo": "Secrétariat général du Gouvernement",
+        "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021)",
+        "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      }
+    }
+  ]
+}
