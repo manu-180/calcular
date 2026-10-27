@@ -1,0 +1,701 @@
+{
+  "mercado": "qa",
+  "datos": [
+    {
+      "id": "qa.minimum-wage",
+      "nombre": "Minimum wage and allowances",
+      "tipo": "mapa",
+      "unidad": "QAR",
+      "etiquetas": {
+        "basic": "Minimum basic wage per month",
+        "housing": "Minimum housing allowance when housing is not provided",
+        "food": "Minimum food allowance when food is not provided"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-03-20",
+          "valor": {
+            "basic": 1000,
+            "housing": 500,
+            "food": 300
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Ministerial Decision No. 25 of 2020 on the minimum wage for workers and domestic workers",
+            "url": "https://almeezan.qa/legislations/7e23dbda-5259-49ce-874a-aec930b8e0b4",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.gratuity-weeks",
+      "nombre": "End-of-service gratuity: minimum weeks of basic wage per year (Labour Law, Article 54)",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.gratuity-min-service",
+      "nombre": "End-of-service gratuity: minimum continuous service (Labour Law, Article 54)",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.annual-leave",
+      "nombre": "Annual leave (Labour Law, Article 79)",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "under-threshold": "With less than five years of service",
+        "from-threshold": "With five years of service or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": {
+            "under-threshold": 3,
+            "from-threshold": 4
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.annual-leave-threshold",
+      "nombre": "Years of service for the longer annual leave (Labour Law, Article 79)",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.working-hours",
+      "nombre": "Working hours (Labour Law, Articles 73 and 74)",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "weekly": "Normal hours per week",
+        "daily": "Normal hours per day",
+        "ramadan-weekly": "Hours per week in Ramadan",
+        "ramadan-daily": "Hours per day in Ramadan",
+        "max-daily": "Maximum hours per day with overtime"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": {
+            "weekly": 48,
+            "daily": 8,
+            "ramadan-weekly": 36,
+            "ramadan-daily": 6,
+            "max-daily": 10
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.overtime",
+      "nombre": "Overtime premiums (Labour Law, Article 74)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "normal": "Overtime premium",
+        "night": "Premium for work between 9 pm and 3 am"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": {
+            "normal": 25,
+            "night": 50
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.notice",
+      "nombre": "Notice period (Labour Law, Article 49 as amended)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "first-years": "During the first two years of service",
+        "later-years": "After the second year of service"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-09-09",
+          "valor": {
+            "first-years": 1,
+            "later-years": 2
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.notice-threshold",
+      "nombre": "Years of service after which the longer notice applies (Labour Law, Article 49)",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-09-09",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.sick-leave",
+      "nombre": "Sick leave (Labour Law, Article 82)",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "full-pay": "On full pay",
+        "half-pay": "On half pay after that",
+        "max-weeks": "Total after which the employer may end the contract"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": {
+            "full-pay": 2,
+            "half-pay": 4,
+            "max-weeks": 12
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.sick-leave-qualifying",
+      "nombre": "Service before paid sick leave applies (Labour Law, Article 82)",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.maternity",
+      "nombre": "Maternity leave (Labour Law, Article 96)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "days": "Leave on full pay",
+        "after-birth": "Minimum part after the birth"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": {
+            "days": 50,
+            "after-birth": 35
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.maternity-qualifying",
+      "nombre": "Service required for paid maternity leave (Labour Law, Article 96)",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.social-insurance",
+      "nombre": "Social insurance contribution rates (Law No. 1 of 2022, Article 11)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employee": "Deducted from the insured person",
+        "employer": "Paid by the employer"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-03",
+          "valor": {
+            "employee": 7,
+            "employer": 14
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Social Insurance Law issued by Law No. 1 of 2022 (in force six months after publication on 3 July 2022)",
+            "url": "https://almeezan.qa/legislations/ff5e6696-5502-42af-b342-c2f9882cec6a",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.social-insurance-caps",
+      "nombre": "Social insurance salary limits (Law No. 1 of 2022, Articles 11 and 12)",
+      "tipo": "mapa",
+      "unidad": "QAR",
+      "etiquetas": {
+        "cap": "Maximum contribution salary per month",
+        "housing-cap": "Maximum housing allowance counted per month"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-03",
+          "valor": {
+            "cap": 100000,
+            "housing-cap": 6000
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Social Insurance Law issued by Law No. 1 of 2022 (in force six months after publication on 3 July 2022)",
+            "url": "https://almeezan.qa/legislations/ff5e6696-5502-42af-b342-c2f9882cec6a",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.pension-ages",
+      "nombre": "Retirement pension ages and periods (Law No. 1 of 2022, Articles 24, 34 and 36)",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "full-years": "Contribution years that earn a pension equal to the pension salary",
+        "min-years": "Minimum contribution period",
+        "min-actual-years": "Minimum actual service",
+        "retirement-age": "Minimum retirement age",
+        "min-age-resignation": "Minimum age to draw a pension after resigning",
+        "reference-men": "Reference age for the early pension reduction (men)",
+        "reference-women": "Reference age for the early pension reduction (women)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-03",
+          "valor": {
+            "full-years": 30,
+            "min-years": 25,
+            "min-actual-years": 20,
+            "retirement-age": 60,
+            "min-age-resignation": 50,
+            "reference-men": 60,
+            "reference-women": 55
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Social Insurance Law issued by Law No. 1 of 2022 (in force six months after publication on 3 July 2022)",
+            "url": "https://almeezan.qa/legislations/ff5e6696-5502-42af-b342-c2f9882cec6a",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.pension-reduction",
+      "nombre": "Pension reduction per year before the reference age after resigning (Law No. 1 of 2022, Article 36)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-03",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Social Insurance Law issued by Law No. 1 of 2022 (in force six months after publication on 3 July 2022)",
+            "url": "https://almeezan.qa/legislations/ff5e6696-5502-42af-b342-c2f9882cec6a",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.domestic-worker",
+      "nombre": "Domestic workers: gratuity and annual leave (Law No. 15 of 2017)",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "gratuity-weeks": "Minimum weeks of wage per year of service",
+        "leave-weeks": "Paid annual leave per year"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-09-12",
+          "valor": {
+            "gratuity-weeks": 3,
+            "leave-weeks": 3
+          },
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Law No. 15 of 2017 on domestic workers",
+            "url": "https://almeezan.qa/legislations/edd0d2bb-71a1-45e5-bca9-abcb9c1b1236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.domestic-worker-hours",
+      "nombre": "Domestic workers: maximum working hours per day (Law No. 15 of 2017)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-09-12",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Law No. 15 of 2017 on domestic workers",
+            "url": "https://almeezan.qa/legislations/edd0d2bb-71a1-45e5-bca9-abcb9c1b1236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.salary-income-tax",
+      "nombre": "Income tax on salaries and wages",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-13",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Official Gazette (via Al Meezan)",
+            "titulo": "Law No. 24 of 2018 issuing the Income Tax Law, Article 2 of the issuing law",
+            "url": "https://files.almeezan.gov.qa/almeezan/a7e59942-bb09-4274-bd86-8e474f0f9829.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.corporate-tax",
+      "nombre": "Income tax rate on taxable income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-13",
+          "valor": 10,
+          "fuente": {
+            "organismo": "General Tax Authority (GTA)",
+            "titulo": "Taxes information: income tax, withholding tax and excise tax",
+            "url": "https://www.gta.gov.qa/en/taxes-info",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.withholding-tax",
+      "nombre": "Withholding tax on payments to non-residents",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-13",
+          "valor": 5,
+          "fuente": {
+            "organismo": "General Tax Authority (GTA)",
+            "titulo": "Taxes information: income tax, withholding tax and excise tax",
+            "url": "https://www.gta.gov.qa/en/taxes-info",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.excise",
+      "nombre": "Excise tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "tobacco": "Tobacco products",
+        "energy": "Energy drinks",
+        "special": "Special-category goods"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": {
+            "tobacco": 100,
+            "energy": 100,
+            "special": 100
+          },
+          "fuente": {
+            "organismo": "General Tax Authority (GTA)",
+            "titulo": "Taxes information: income tax, withholding tax and excise tax",
+            "url": "https://www.gta.gov.qa/en/taxes-info",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.sugar-tax",
+      "nombre": "Excise tax on sweetened drinks per litre",
+      "tipo": "mapa",
+      "unidad": "QAR",
+      "etiquetas": {
+        "medium": "Medium sugar (5 to 7.99 g per 100 ml)",
+        "high": "High sugar (8 g per 100 ml or more)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-06",
+          "valor": {
+            "medium": 0.77,
+            "high": 1.06
+          },
+          "fuente": {
+            "organismo": "General Tax Authority (GTA)",
+            "titulo": "Taxes information: income tax, withholding tax and excise tax",
+            "url": "https://www.gta.gov.qa/en/taxes-info",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.sugar-tax-tiers",
+      "nombre": "Sugar content that starts each tier (grams per 100 ml)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "medium": "Medium tier from",
+        "high": "High tier from"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-06",
+          "valor": {
+            "medium": 5,
+            "high": 8
+          },
+          "fuente": {
+            "organismo": "General Tax Authority (GTA)",
+            "titulo": "Taxes information: income tax, withholding tax and excise tax",
+            "url": "https://www.gta.gov.qa/en/taxes-info",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.property-registration-rates",
+      "nombre": "Real estate registration fees as a share of the value",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "sale": "Sale (of the property value)",
+        "gift-other": "Gift outside parents, children and spouse (of the property value)",
+        "mortgage": "Mortgage (of the secured debt)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-16",
+          "valor": {
+            "sale": 0.25,
+            "gift-other": 0.25,
+            "mortgage": 0.025
+          },
+          "fuente": {
+            "organismo": "Official Gazette (via Al Meezan)",
+            "titulo": "Minister of Justice Decision No. 5 of 2026, Table 2 (real estate registration fees)",
+            "url": "https://files.almeezan.gov.qa/almeezan/3b60f0cf-4a4a-42d5-a91a-41877a516863.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.property-registration-fixed",
+      "nombre": "Fixed real estate registration fees",
+      "tipo": "mapa",
+      "unidad": "QAR",
+      "etiquetas": {
+        "gift-family": "Gift to parents, children or spouse",
+        "inheritance": "Transfer by inheritance, per property"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-16",
+          "valor": {
+            "gift-family": 500,
+            "inheritance": 500
+          },
+          "fuente": {
+            "organismo": "Official Gazette (via Al Meezan)",
+            "titulo": "Minister of Justice Decision No. 5 of 2026, Table 2 (real estate registration fees)",
+            "url": "https://files.almeezan.gov.qa/almeezan/3b60f0cf-4a4a-42d5-a91a-41877a516863.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qa.usd-peg",
+      "nombre": "Qatari riyal parity rate (QAR per US dollar)",
+      "tipo": "numero",
+      "unidad": "QAR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2001-07-09",
+          "valor": 3.64,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Decree No. 34 of 2001 fixing the parity rate of the Qatari riyal",
+            "url": "https://almeezan.qa/legislations/b7e20ea2-d65f-4828-a542-3b002c857f22",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    }
+  ]
+}
