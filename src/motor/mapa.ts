@@ -137,7 +137,8 @@ function entradaSueldos(registro: Registro, m: Mercado, modo: ReturnType<typeof 
 
 function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos = false, horas: PublicacionHoras = SIN_HORAS, sueldos?: ReadonlySet<string>): EntradaSitemap[] {
   const fecha = hoyEn(m);
-  const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).map((c) => {
+  // Una universal podada sigue publicada (noindex, follow) pero no se le pide a Google que la rastree.
+  const calculadoras = registro.calculadorasPublicables(m.codigo, fecha, modo).filter((c) => !registro.podada(m.codigo, c.definicion.slug)).map((c) => {
     const alternos = conAlternos ? alternosEnSitemap(registro, m.codigo, c, fecha, modo) : undefined;
     return { url: urlIntl(m.codigo, c.definicion.slug), lastmod: actualizacionDeCalculadora(registro, m.codigo, c, fecha), ...(alternos ? { alternos } : {}) };
   });
