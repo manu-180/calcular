@@ -11,9 +11,9 @@ export default definirContenido({
     "أدخل أجرك الشامل وأيام الإجازة السابقة والحالية في العام نفسه، فيظهر لك الأجر المستحق ومن يدفعه.",
   ],
   comoSeCalcula: [
-    "حتى اليوم {{om.sick-leave[0].hasta}}: {{om.sick-leave[0].tasa}} من الأجر.",
-    "من بعده حتى اليوم {{om.sick-leave[1].hasta}}: {{om.sick-leave[1].tasa}}.",
-    "من بعده حتى اليوم {{om.sick-leave[2].hasta}}: {{om.sick-leave[2].tasa}}، ثم {{om.sick-leave[3].tasa}} حتى نهاية الحد السنوي.",
+    "في أول {{om.sick-leave[0].hasta}} من الإجازة في العام: {{om.sick-leave[0].tasa}} من الأجر.",
+    "بعدها حتى تبلغ الإجازة {{om.sick-leave[1].hasta}}: {{om.sick-leave[1].tasa}}.",
+    "بعدها حتى تبلغ {{om.sick-leave[2].hasta}}: {{om.sick-leave[2].tasa}}، ثم {{om.sick-leave[3].tasa}} حتى نهاية الحد السنوي.",
     "للعماني تدفع جهة العمل أول {{om.sick-employer-days}} بكامل الأجر، ويدفع صندوق الحماية الاجتماعية الباقي بالنسب نفسها.",
   ],
   ejemplo: [
