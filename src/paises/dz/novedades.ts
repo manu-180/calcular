@@ -2,6 +2,22 @@ import type { Novedad } from "@/motor/tipos";
 
 export const novedades: readonly Novedad[] = [
   {
+    id: "dz.allocation-chomage-2026",
+    fecha: "2026-10-27",
+    titulo: "Allocation chômage : 18 000 dinars par mois et une année supplémentaire",
+    texto:
+      "Le décret exécutif n° 26-87 porte l'allocation chômage des primo-demandeurs d'emploi à 18 000 DA par mois à compter du 1er janvier 2026. Il ajoute une année supplémentaire de versement et maintient l'allocation pendant une formation.",
+    vigenteDesde: "2026-01-01",
+    calculadoras: ["dz.allocation-chomage"],
+    fuente: {
+      organismo: "Journal officiel de la République algérienne (SGG)",
+      titulo: "Décret exécutif n° 26-87 du 21 janvier 2026 modifiant le décret exécutif n° 22-70 relatif à l'allocation chômage (JO n° 6 de 2026)",
+      url: "https://www.joradp.dz/FTP/jo-francais/2026/F2026006.pdf",
+      tipo: "primaria",
+      verificadoEl: "2026-10-27",
+    },
+  },
+  {
     id: "dz.snmg-2026",
     fecha: "2026-10-27",
     titulo: "Le SNMG passe à 24 000 dinars depuis le 1er janvier 2026",

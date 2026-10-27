@@ -285,6 +285,28 @@
       ]
     },
     {
+      "id": "dz.irg-dividendes",
+      "nombre": "IRG sur les produits des actions et parts sociales",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-4-a du CIDTA : retenue à la source libératoire sur les produits visés aux articles 45 à 48.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 25-17 du 14 décembre 2025 portant loi de finances pour 2026 (JO n° 88), article 11 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2025/F2025088.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
       "id": "dz.irg-loyers",
       "nombre": "IRG sur revenus locatifs : taux",
       "tipo": "mapa",
@@ -404,6 +426,59 @@
             "organismo": "Journal officiel de la République algérienne (SGG)",
             "titulo": "Décret présidentiel n° 26-01 du 7 janvier 2026 fixant le salaire national minimum garanti (JO n° 1 de 2026)",
             "url": "https://www.joradp.dz/FTP/jo-francais/2026/F2026001.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.allocation-chomage",
+      "nombre": "Allocation chômage des primo-demandeurs d'emploi (mensuelle)",
+      "tipo": "numero",
+      "unidad": "DZD",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 7 du décret exécutif n° 22-70, modifié par le décret exécutif n° 26-87, qui prend effet le 1er janvier 2026.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18000,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Décret exécutif n° 26-87 du 21 janvier 2026 modifiant le décret exécutif n° 22-70 relatif à l'allocation chômage (JO n° 6 de 2026), articles 2 et 3",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2026/F2026006.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.allocation-chomage-duree",
+      "nombre": "Allocation chômage : durée de versement",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "initiale": "Durée initiale",
+        "renouvellement": "Renouvellement unique",
+        "supplementaire": "Année supplémentaire (article 7 bis)"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 7 : une année, renouvelable une seule fois. Article 7 bis : une année supplémentaire, dans les conditions d'ancienneté prévues.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "initiale": 12,
+            "renouvellement": 12,
+            "supplementaire": 12
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Décret exécutif n° 26-87 du 21 janvier 2026 modifiant le décret exécutif n° 22-70 relatif à l'allocation chômage (JO n° 6 de 2026), articles 2 et 3",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2026/F2026006.pdf",
             "tipo": "primaria",
             "verificadoEl": "2026-10-27"
           }

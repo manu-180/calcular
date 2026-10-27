@@ -32,6 +32,10 @@ import irgActivitesOccasionnelles from "./calculadoras/irg-activites-occasionnel
 import contenidoIrgActivitesOccasionnelles from "./contenido/irg-activites-occasionnelles";
 import calculIrgPrime from "./calculadoras/calcul-irg-prime";
 import contenidoCalculIrgPrime from "./contenido/calcul-irg-prime";
+import impotSurDividendes from "./calculadoras/impot-sur-dividendes";
+import contenidoImpotSurDividendes from "./contenido/impot-sur-dividendes";
+import allocationChomage from "./calculadoras/allocation-chomage";
+import contenidoAllocationChomage from "./contenido/allocation-chomage";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -60,6 +64,8 @@ export default definirPais({
     { definicion: irgRevenusLocatifs, contenido: contenidoIrgRevenusLocatifs, cliente: () => import("./calculadoras/irg-revenus-locatifs.cliente") },
     { definicion: irgActivitesOccasionnelles, contenido: contenidoIrgActivitesOccasionnelles, cliente: () => import("./calculadoras/irg-activites-occasionnelles.cliente") },
     { definicion: calculIrgPrime, contenido: contenidoCalculIrgPrime, cliente: () => import("./calculadoras/calcul-irg-prime.cliente") },
+    { definicion: impotSurDividendes, contenido: contenidoImpotSurDividendes, cliente: () => import("./calculadoras/impot-sur-dividendes.cliente") },
+    { definicion: allocationChomage, contenido: contenidoAllocationChomage, cliente: () => import("./calculadoras/allocation-chomage.cliente") },
   ],
   universales: "todas",
   novedades,
