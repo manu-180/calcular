@@ -31,13 +31,18 @@ export function diasEntre(desde: FechaISO, hasta: FechaISO): number {
   return Math.round((Date.parse(`${hasta}T00:00:00Z`) - Date.parse(`${desde}T00:00:00Z`)) / 86_400_000);
 }
 
+// Un Intl.DateTimeFormat por zona, no por llamada: hoyEn() corre una vez por cada miembro de cada clúster
+// de cada página (fechaDelClusterDesde), millones de veces en check_hreflang y en el sitemap, y cada
+// constructor arma un objeto ICU de varios KB (la tercera corrida que tumbó la PC por RAM, 27/10/2026).
+const formatosPorZona = new Map<string, Intl.DateTimeFormat>();
+
 export function fechaEnZona(instante: Date, zonaHoraria: string): FechaISO {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: zonaHoraria,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(instante) as FechaISO;
+  let f = formatosPorZona.get(zonaHoraria);
+  if (!f) {
+    f = new Intl.DateTimeFormat("en-CA", { timeZone: zonaHoraria, year: "numeric", month: "2-digit", day: "2-digit" });
+    formatosPorZona.set(zonaHoraria, f);
+  }
+  return f.format(instante) as FechaISO;
 }
 
 // CALCULAR_HOY fija el día a mano (pruebas, fotos de rutas). CALCULAR_HOY_BUILD NO se lee a
