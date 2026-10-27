@@ -16,6 +16,12 @@ import maternityLeaveCalculator from "./calculadoras/maternity-leave-calculator"
 import contenidoMaternityLeaveCalculator from "./contenido/maternity-leave-calculator";
 import severanceTaxCalculator from "./calculadoras/severance-tax-calculator";
 import contenidoSeveranceTaxCalculator from "./contenido/severance-tax-calculator";
+import vatCalculator from "./calculadoras/vat-calculator";
+import contenidoVatCalculator from "./contenido/vat-calculator";
+import stampDutyCalculator from "./calculadoras/stamp-duty-calculator";
+import contenidoStampDutyCalculator from "./contenido/stamp-duty-calculator";
+import usdToTtd from "./calculadoras/usd-to-ttd";
+import contenidoUsdToTtd from "./contenido/usd-to-ttd";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +42,9 @@ export default definirPais({
     { definicion: minimumWageCalculator, contenido: contenidoMinimumWageCalculator, cliente: () => import("./calculadoras/minimum-wage-calculator.cliente") },
     { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
     { definicion: severanceTaxCalculator, contenido: contenidoSeveranceTaxCalculator, cliente: () => import("./calculadoras/severance-tax-calculator.cliente") },
+    { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
+    { definicion: stampDutyCalculator, contenido: contenidoStampDutyCalculator, cliente: () => import("./calculadoras/stamp-duty-calculator.cliente") },
+    { definicion: usdToTtd, contenido: contenidoUsdToTtd, cliente: () => import("./calculadoras/usd-to-ttd.cliente") },
   ],
   universales: "todas",
   novedades,
