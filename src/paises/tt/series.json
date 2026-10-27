@@ -1,0 +1,173 @@
+{
+  "mercado": "tt",
+  "series": [
+    {
+      "id": "tt.usd-buy",
+      "nombre": "Central Bank buying rate, TT dollars per US dollar",
+      "unidad": "TTD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Trinidad and Tobago",
+        "titulo": "Exchange Rates (home page table, buying and selling)",
+        "url": "https://www.central-bank.org.tt/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
+      },
+      "puntos": [
+        [
+          "2026-10-26",
+          6.7135
+        ]
+      ]
+    },
+    {
+      "id": "tt.usd-sell",
+      "nombre": "Central Bank selling rate, TT dollars per US dollar",
+      "unidad": "TTD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Trinidad and Tobago",
+        "titulo": "Exchange Rates (home page table, buying and selling)",
+        "url": "https://www.central-bank.org.tt/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
+      },
+      "puntos": [
+        [
+          "2026-10-26",
+          6.7879
+        ]
+      ]
+    },
+    {
+      "id": "tt.cad-buy",
+      "nombre": "Central Bank buying rate, TT dollars per Canadian dollar",
+      "unidad": "TTD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Trinidad and Tobago",
+        "titulo": "Exchange Rates (home page table, buying and selling)",
+        "url": "https://www.central-bank.org.tt/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
+      },
+      "puntos": [
+        [
+          "2026-10-26",
+          4.8195
+        ]
+      ]
+    },
+    {
+      "id": "tt.cad-sell",
+      "nombre": "Central Bank selling rate, TT dollars per Canadian dollar",
+      "unidad": "TTD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Trinidad and Tobago",
+        "titulo": "Exchange Rates (home page table, buying and selling)",
+        "url": "https://www.central-bank.org.tt/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
+      },
+      "puntos": [
+        [
+          "2026-10-26",
+          5.4339
+        ]
+      ]
+    },
+    {
+      "id": "tt.gbp-buy",
+      "nombre": "Central Bank buying rate, TT dollars per pound sterling",
+      "unidad": "TTD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Trinidad and Tobago",
+        "titulo": "Exchange Rates (home page table, buying and selling)",
+        "url": "https://www.central-bank.org.tt/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
+      },
+      "puntos": [
+        [
+          "2026-10-26",
+          9.0078
+        ]
+      ]
+    },
+    {
+      "id": "tt.gbp-sell",
+      "nombre": "Central Bank selling rate, TT dollars per pound sterling",
+      "unidad": "TTD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Trinidad and Tobago",
+        "titulo": "Exchange Rates (home page table, buying and selling)",
+        "url": "https://www.central-bank.org.tt/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
+      },
+      "puntos": [
+        [
+          "2026-10-26",
+          10.8091
+        ]
+      ]
+    },
+    {
+      "id": "tt.eur-buy",
+      "nombre": "Central Bank buying rate, TT dollars per euro",
+      "unidad": "TTD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Trinidad and Tobago",
+        "titulo": "Exchange Rates (home page table, buying and selling)",
+        "url": "https://www.central-bank.org.tt/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
+      },
+      "puntos": [
+        [
+          "2026-10-26",
+          7.7475
+        ]
+      ]
+    },
+    {
+      "id": "tt.eur-sell",
+      "nombre": "Central Bank selling rate, TT dollars per euro",
+      "unidad": "TTD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Trinidad and Tobago",
+        "titulo": "Exchange Rates (home page table, buying and selling)",
+        "url": "https://www.central-bank.org.tt/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
+      },
+      "puntos": [
+        [
+          "2026-10-26",
+          8.2831
+        ]
+      ]
+    }
+  ]
+}
