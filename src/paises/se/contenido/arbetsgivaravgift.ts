@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.arbetsgivaravgift",
   h1: "Räkna ut arbetsgivaravgift",
-  title: "Arbetsgivaravgift 2026: räkna ut kostnaden för en anställd",
+  title: "Arbetsgivaravgift {{anio}}: räkna ut kostnaden för en anställd",
   description:
     "Räkna ut arbetsgivaravgiften på en lön: {{se.arbetsgivaravgift}} i full avgift, sänkt avgift för unga och {{se.alderspensionsavgift}} för den som fyllt 67 år.",
   intro: [

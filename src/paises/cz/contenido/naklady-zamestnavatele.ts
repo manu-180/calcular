@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.naklady-zamestnavatele",
   h1: "Náklady zaměstnavatele na zaměstnance",
-  title: "Kolik stojí zaměstnanec: náklady zaměstnavatele 2026",
+  title: "Kolik stojí zaměstnanec: náklady zaměstnavatele {{anio}}",
   description:
     "Spočítejte, kolik zaměstnavatele stojí hrubá mzda: sociální pojištění {{cz.socialni-zamestnavatel}}, zdravotní pojištění a celková cena práce za měsíc i za rok.",
   intro: [

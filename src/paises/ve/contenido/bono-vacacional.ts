@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ve.bono-vacacional",
   h1: "Calculadora de bono vacacional en Venezuela",
-  title: "Bono vacacional en Venezuela 2026: cuánto te toca",
+  title: "Bono vacacional en Venezuela {{anio}}: cuánto te toca",
   description:
     "Calcula tu bono vacacional con la LOTTT: {{ve.bono-vacacional-dias-base}} de salario el primer año y uno más por año, hasta {{ve.bono-vacacional-dias-tope}}. En bolívares o en dólares.",
   intro: [

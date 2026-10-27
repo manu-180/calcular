@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ao.subsidio-de-natal",
   h1: "Calcular o subsídio de Natal",
-  title: "Subsídio de Natal em Angola 2026: calcule o valor",
+  title: "Subsídio de Natal em Angola {{anio}}: calcule o valor",
   description: "O subsídio de Natal é de pelo menos {{ao.subsidio-natal}} do salário base. Calcule o valor proporcional aos meses trabalhados e o desconto do INSS.",
   intro: [
     "Todos os trabalhadores têm direito a um subsídio de Natal de pelo menos {{ao.subsidio-natal}} do salário base por ano de efectivo serviço.",

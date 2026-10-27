@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.inheritance-tax",
   h1: "상속세 계산기",
-  title: "상속세 계산기 2026 | 일괄공제·배우자공제 반영",
+  title: "상속세 계산기 {{anio}} | 일괄공제·배우자공제 반영",
   description:
     "상속재산과 채무, 배우자와 자녀 수를 넣으면 일괄공제와 배우자 상속공제를 반영해 상속세를 계산해요. 신고세액공제도 넣었어요.",
   intro: [

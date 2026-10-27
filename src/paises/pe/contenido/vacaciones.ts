@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.vacaciones",
   h1: "Calculadora de vacaciones truncas y vencidas en Perú",
-  title: "Calculadora de vacaciones truncas 2026 en Perú",
+  title: "Calculadora de vacaciones truncas {{anio}} en Perú",
   description:
     "Calcula tus vacaciones truncas, el pago de vacaciones vencidas y la indemnización por no tomarlas. Régimen general ({{pe.vacaciones-por-regimen[general]}}) y REMYPE. Pon tu sueldo.",
   intro: [

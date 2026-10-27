@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.bonus-tax",
   h1: "Bonus tax calculator",
-  title: "Bonus Tax Calculator 2026: what you keep after withholding",
+  title: "Bonus Tax Calculator {{anio}}: what you keep after withholding",
   description:
-    "See how much of your bonus you take home after the {{us.supplemental-rate}} federal withholding, Social Security and Medicare. Uses the IRS supplemental wage rules for 2026.",
+    "See how much of your bonus you take home after the {{us.supplemental-rate}} federal withholding, Social Security and Medicare. Uses the IRS supplemental wage rules for {{anio}}.",
   intro: [
     "Bonuses feel taxed harder because employers usually withhold a flat {{us.supplemental-rate}} of federal income tax, plus Social Security and Medicare.",
     "Enter your bonus to see each piece and what reaches your account.",

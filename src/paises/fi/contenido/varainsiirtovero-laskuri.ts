@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.varainsiirtovero-laskuri",
   h1: "Varainsiirtoverolaskuri: asunnon ja kiinteistön varainsiirtovero",
-  title: "Varainsiirtovero 2026: laske asuntokaupan vero",
+  title: "Varainsiirtovero {{anio}}: laske asuntokaupan vero",
   description:
     "Laske varainsiirtovero asunto-osakkeesta ({{fi.varainsiirtovero[asunto-osake]}} velattomasta hinnasta), kiinteistöstä ({{fi.varainsiirtovero[kiinteisto]}}) tai muista arvopapereista.",
   intro: [

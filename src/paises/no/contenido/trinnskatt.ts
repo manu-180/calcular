@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "no.trinnskatt",
-  h1: "Trinnskatt 2026: kalkulator og satser",
-  title: "Trinnskatt 2026: kalkulator med alle fem trinn",
+  h1: "Trinnskatt {{anio}}: kalkulator og satser",
+  title: "Trinnskatt {{anio}}: kalkulator med alle fem trinn",
   description:
-    "Regn ut trinnskatten for 2026. Trinn 1 starter på {{no.trinnskatt[1].desde}} med {{no.trinnskatt[1].tasa}}, og trinn 5 er {{no.trinnskatt[-1].tasa}}. Se skatten i hvert trinn.",
+    "Regn ut trinnskatten for {{anio}}. Trinn 1 starter på {{no.trinnskatt[1].desde}} med {{no.trinnskatt[1].tasa}}, og trinn 5 er {{no.trinnskatt[-1].tasa}}. Se skatten i hvert trinn.",
   intro: [
     "Trinnskatt er en skatt på personinntekten din, altså lønn før fradrag. Den har fem trinn, og satsen øker jo høyere inntekten er.",
     "Skriv inn årslønnen, så ser du trinnskatten for 2026 og hvor mye som faller i hvert trinn.",

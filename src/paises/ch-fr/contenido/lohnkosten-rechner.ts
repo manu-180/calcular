@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-fr.lohnkosten-rechner",
   h1: "Coût employeur en Suisse : ce que coûte un poste",
-  title: "Coût employeur Suisse : cotisations patronales 2026",
+  title: "Coût employeur Suisse : cotisations patronales {{anio}}",
   description: "Que coûte un salaire brut à l'employeur ? AVS/AI/APG, AC, caisse de pension, caisse d'allocations familiales et accidents professionnels par mois et par an.",
   intro: [
     "Au salaire brut s'ajoutent pour l'employeur ses propres cotisations sociales. Il paie la moitié de l'AVS/AI/APG et de l'AC, au moins la moitié de la caisse de pension et toute la prime d'assurance contre les accidents professionnels.",

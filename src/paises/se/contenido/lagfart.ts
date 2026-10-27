@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.lagfart",
   h1: "Räkna ut kostnaden för lagfart och pantbrev",
-  title: "Lagfart 2026: räkna ut stämpelskatt och pantbrev",
+  title: "Lagfart {{anio}}: räkna ut stämpelskatt och pantbrev",
   description:
     "Räkna ut vad lagfarten kostar när du köper hus: {{se.stampelskatt[privat]}} i stämpelskatt plus {{se.lantmateriet-avgift[lagfart]}}, och {{se.stampelskatt[pantbrev]}} för nya pantbrev.",
   intro: [

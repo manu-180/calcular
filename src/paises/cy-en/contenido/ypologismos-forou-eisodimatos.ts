@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cy-en.ypologismos-forou-eisodimatos",
-  h1: "Cyprus income tax calculator 2026",
-  title: "Cyprus income tax 2026: new bands and deductions",
-  description: "Work out your income tax with the 2026 bands: {{cy.klimaka-forou[0].hasta}} tax-free, plus deductions for children, rent and energy upgrades.",
+  h1: "Cyprus income tax calculator {{anio}}",
+  title: "Cyprus income tax {{anio}}: new bands and deductions",
+  description: "Work out your income tax with the {{anio}} bands: {{cy.klimaka-forou[0].hasta}} tax-free, plus deductions for children, rent and energy upgrades.",
   intro: [
     "Enter your gross income for the year and your deductions. You'll see the tax, your average rate and what's left after tax.",
     "The tax reform applies from tax year 2026. The 2026 return is due by 31 July 2027.",

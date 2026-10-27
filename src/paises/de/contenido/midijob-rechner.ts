@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.midijob-rechner",
-  h1: "Midijob-Rechner: Übergangsbereich 2026",
-  title: "Midijob-Rechner 2026: Sozialabgaben im Übergangsbereich",
+  h1: "Midijob-Rechner: Übergangsbereich {{anio}}",
+  title: "Midijob-Rechner {{anio}}: Sozialabgaben im Übergangsbereich",
   description:
     "Im Midijob bis {{de.uebergangsbereich-obergrenze}} zahlen Sie weniger Sozialabgaben. Der Rechner zeigt Ihren Anteil, die Ersparnis und den Beitrag des Arbeitgebers.",
   intro: [

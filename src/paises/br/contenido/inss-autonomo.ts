@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "br.inss-autonomo",
   h1: "Calculadora de INSS para autônomo e contribuinte individual",
-  title: "INSS autônomo 2026: quanto pagar na GPS",
-  description: "Calcule a contribuição ao INSS de autônomo, contribuinte individual ou facultativo em 2026: plano normal de {{br.inss-individual}}, simplificado de {{br.inss-simplificado}} ou baixa renda.",
+  title: "INSS autônomo {{anio}}: quanto pagar na GPS",
+  description: "Calcule a contribuição ao INSS de autônomo, contribuinte individual ou facultativo em {{anio}}: plano normal de {{br.inss-individual}}, simplificado de {{br.inss-simplificado}} ou baixa renda.",
   intro: [
     "Quem trabalha por conta própria ou quer contribuir sem ter emprego paga o INSS por conta própria, numa guia mensal (GPS).",
     "Escolha o plano e, no plano normal, quanto quer declarar como salário de contribuição.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.liquidacion",
   h1: "Calculadora de liquidación final en Paraguay",
-  title: "Liquidación laboral Paraguay 2026: calculá tu finiquito",
+  title: "Liquidación laboral Paraguay {{anio}}: calculá tu finiquito",
   description: "Calculá tu liquidación por despido o renuncia: preaviso, indemnización, vacaciones y aguinaldo proporcional, concepto por concepto. Gratis.",
   intro: [
     "La liquidación final en Paraguay suma lo que te deben al terminar el trabajo: el aguinaldo proporcional y las vacaciones siempre, y el preaviso y la indemnización si te despidieron sin causa.",

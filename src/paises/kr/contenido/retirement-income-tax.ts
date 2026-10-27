@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.retirement-income-tax",
   h1: "퇴직소득세 계산기",
-  title: "퇴직소득세 계산기 2026 | 퇴직금 세금 계산",
+  title: "퇴직소득세 계산기 {{anio}} | 퇴직금 세금 계산",
   description:
     "퇴직금과 근속연수를 넣으면 근속연수공제, 환산급여공제를 거쳐 퇴직소득세와 지방소득세, 세후 퇴직금을 계산해요.",
   intro: [

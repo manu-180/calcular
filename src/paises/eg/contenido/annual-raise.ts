@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.annual-raise",
   h1: "حساب العلاوة الدورية السنوية في القطاع الخاص",
-  title: "حساب العلاوة الدورية 2026 للقطاع الخاص في مصر",
+  title: "حساب العلاوة الدورية {{anio}} للقطاع الخاص في مصر",
   description:
     "العلاوة الدورية لا تقل عن {{eg.raise-rate}} من الأجر التأميني ولا عن {{eg.raise-min}} في الشهر. احسب علاوتك ومرتبك بعدها.",
   intro: [

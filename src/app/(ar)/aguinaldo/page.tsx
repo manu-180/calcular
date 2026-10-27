@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraAguinaldo } from "@/components/CalculadoraAguinaldo";
 import { datosOferta } from "@/lib/oferta";
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   title: "Calculadora de aguinaldo 2026: cuánto cobrás de SAC",
   description:
     "Calculá tu aguinaldo 2026: 50% del mejor sueldo del semestre, proporcional por días. Bruto y en mano, con las fechas de pago de junio y diciembre.",
-  alternates: { canonical: "/aguinaldo" },
+  alternates: { canonical: "/aguinaldo", languages: hreflangHeadAR("/aguinaldo") },
   openGraph: openGraphDe({
     ruta: "/aguinaldo",
     titulo: "Calculadora de aguinaldo 2026",

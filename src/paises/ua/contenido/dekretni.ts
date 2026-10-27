@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ua.dekretni",
-  h1: "Калькулятор декретних 2026",
-  title: "Розрахунок декретних 2026: допомога по вагітності",
+  h1: "Калькулятор декретних {{anio}}",
+  title: "Розрахунок декретних {{anio}}: допомога по вагітності",
   description:
     "Порахуйте декретні: 100 % середньоденної зарплати за {{ua.dekretni-dni[zvychaini]}} або {{ua.dekretni-dni[uskladneni]}} відпустки, з мінімумом і максимумом, які встановлює закон.",
   intro: [

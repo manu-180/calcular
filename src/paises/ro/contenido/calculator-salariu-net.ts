@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.calculator-salariu-net",
-  h1: "Calculator salariu net 2026",
-  title: "Calculator salariu net 2026: cât primiți în mână",
+  h1: "Calculator salariu net {{anio}}",
+  title: "Calculator salariu net {{anio}}: cât primiți în mână",
   description:
     "Calculați salariul net din brut: CAS {{ro.cas}}, CASS {{ro.cass}}, impozit {{ro.impozit-venit}} și deducerea personală, cu salariul minim de {{ro.salariu-minim}}.",
   intro: [

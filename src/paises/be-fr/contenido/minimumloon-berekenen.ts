@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be-fr.minimumloon-berekenen",
   h1: "Salaire minimum en Belgique",
-  title: "Salaire minimum Belgique 2026 : {{be.ggmmi}} brut par mois",
+  title: "Salaire minimum Belgique {{anio}} : {{be.ggmmi}} brut par mois",
   description:
     "Le salaire minimum en Belgique est de {{be.ggmmi}} brut par mois pour un temps plein dès 18 ans. Calculez le minimum pour vos heures, par heure et par an.",
   intro: [

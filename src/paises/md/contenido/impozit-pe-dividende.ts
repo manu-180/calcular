@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "md.impozit-pe-dividende",
   h1: "Calculator impozit pe dividende",
-  title: "Impozit pe dividende 2026: cota de {{md.impozit-dividende}}",
+  title: "Impozit pe dividende {{anio}}: cota de {{md.impozit-dividende}}",
   description: "Calculați impozitul pe dividende de {{md.impozit-dividende}} și dividendul net care ajunge la asociat, din brut sau din net.",
   intro: [
     "Când o firmă din regimul general împarte profitul asociaților, reține din dividend un impozit de {{md.impozit-dividende}} și îl virează la buget.",

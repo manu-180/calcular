@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.cotisations-cnas",
   h1: "Calcul des cotisations CNAS",
-  title: "Cotisations CNAS 2026 : part salariale et patronale",
+  title: "Cotisations CNAS {{anio}} : part salariale et patronale",
   description:
     "Calculez les cotisations de sécurité sociale versées à la CNAS : {{dz.cnas[salarie]}} à la charge du travailleur, {{dz.cnas[employeur]}} à la charge de l'employeur.",
   intro: [

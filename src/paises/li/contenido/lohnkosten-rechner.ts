@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "li.lohnkosten-rechner",
   h1: "Lohnkosten in Liechtenstein berechnen",
-  title: "Lohnkosten Liechtenstein 2026: Arbeitgeberbeiträge",
-  description: "Was kostet ein Lohn den Arbeitgeber in Liechtenstein? AHV/IV/FAK mit Verwaltungskosten, ALV, Pensionskasse und Berufsunfallversicherung nach den Sätzen 2026.",
+  title: "Lohnkosten Liechtenstein {{anio}}: Arbeitgeberbeiträge",
+  description: "Was kostet ein Lohn den Arbeitgeber in Liechtenstein? AHV/IV/FAK mit Verwaltungskosten, ALV, Pensionskasse und Berufsunfallversicherung nach den Sätzen {{anio}}.",
   intro: [
     "Zum Bruttolohn kommen die Arbeitgeberbeiträge an AHV, IV und FAK, die Verwaltungskosten, die Arbeitslosenversicherung, die Pensionskasse und die Berufsunfallversicherung.",
     "Der Rechner zeigt die Kosten pro Monat und pro Jahr.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.salario-liquido",
   h1: "Calculadora de salario líquido en El Salvador",
-  title: "Salario líquido 2026 El Salvador: AFP, ISSS y renta",
+  title: "Salario líquido {{anio}} El Salvador: AFP, ISSS y renta",
   description: "Calcule cuánto recibe en mano: le restamos la AFP del {{sv.afp-trabajador}}, el ISSS del {{sv.isss-trabajador}} y la renta con la tabla vigente de Hacienda.",
   intro: [
     "El salario líquido es lo que recibe en mano después de los descuentos de ley: la AFP ({{sv.afp-trabajador}}), el ISSS ({{sv.isss-trabajador}}, con un techo de {{sv.isss-salario-maximo}}) y la retención de renta.",

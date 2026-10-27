@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy.ektakti-eisfora-merismata",
   h1: "Έκτακτη εισφορά για την άμυνα σε μερίσματα",
-  title: "Εισφορά άμυνας σε μερίσματα 2026: {{cy.ektakti-eisfora-amynas[merismata]}}",
-  description: "Υπολογίστε το καθαρό μέρισμα μετά την έκτακτη εισφορά για την άμυνα ({{cy.ektakti-eisfora-amynas[merismata]}} από το 2026) και την εισφορά ΓεΣΥ {{cy.eisfores-gesy[eisodimatias]}}.",
+  title: "Εισφορά άμυνας σε μερίσματα {{anio}}: {{cy.ektakti-eisfora-amynas[merismata]}}",
+  description: "Υπολογίστε το καθαρό μέρισμα μετά την έκτακτη εισφορά για την άμυνα ({{cy.ektakti-eisfora-amynas[merismata]}} από το {{anio}}) και την εισφορά ΓεΣΥ {{cy.eisfores-gesy[eisodimatias]}}.",
   intro: [
     "Από τη φορολογική μεταρρύθμιση, η έκτακτη εισφορά για την άμυνα στα μερίσματα των φορολογικών κατοίκων Κύπρου είναι {{cy.ektakti-eisfora-amynas[merismata]}}.",
     "Για μερίσματα από παλαιότερα κέρδη ισχύει ακόμη ο παλιός συντελεστής. Διαλέξτε από ποια κέρδη προέρχεται το μέρισμα.",

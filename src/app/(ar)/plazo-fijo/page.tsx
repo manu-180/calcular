@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
 import { CalculadoraPlazoFijo } from "@/components/CalculadoraPlazoFijo";
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   title: "Calculadora de plazo fijo 2026 con la tasa del BCRA",
   description:
     "Simulá tu plazo fijo con la tasa actualizada del BCRA: interés, total al vencimiento, TEA y renovaciones, y mirá si le ganás a la inflación.",
-  alternates: { canonical: "/plazo-fijo" },
+  alternates: { canonical: "/plazo-fijo", languages: hreflangHeadAR("/plazo-fijo") },
 };
 
 const faqs = [

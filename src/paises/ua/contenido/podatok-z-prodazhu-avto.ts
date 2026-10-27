@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ua.podatok-z-prodazhu-avto",
   h1: "Податок з продажу авто",
-  title: "Податок з продажу авто 2026: коли платити і скільки",
+  title: "Податок з продажу авто {{anio}}: коли платити і скільки",
   description:
     "Порахуйте податок з продажу автомобіля: перший продаж за рік без податку, другий {{ua.pdfo-prodazh-maina[pilhova]}}, третій {{ua.pdfo-prodazh-maina[zahalna]}} ПДФО плюс військовий збір {{ua.viiskovyi-zbir}}.",
   intro: [

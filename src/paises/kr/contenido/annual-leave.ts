@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.annual-leave",
   h1: "연차 계산기(연차 일수와 연차수당)",
-  title: "연차 계산기 2026 | 연차 일수·미사용 연차수당",
+  title: "연차 계산기 {{anio}} | 연차 일수·미사용 연차수당",
   description:
     "입사일을 넣으면 올해 생기는 연차 일수를 계산하고, 쓰지 못한 연차의 수당까지 알려 줘요. 근로기준법 제60조 기준이에요.",
   intro: [

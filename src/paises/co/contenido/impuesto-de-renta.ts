@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.impuesto-de-renta",
   h1: "Calculadora del impuesto de renta para personas naturales",
-  title: "Impuesto de renta personas naturales 2026",
+  title: "Impuesto de renta personas naturales {{anio}}",
   description:
     "Calcula tu impuesto de renta con la tabla del artículo 241 del Estatuto Tributario y la UVT del año que declaras. Muestra la tarifa marginal y la efectiva.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lk.capital-gains-tax-calculator",
   h1: "Capital gains tax calculator Sri Lanka",
-  title: "Capital gains tax Sri Lanka 2026: the new 15% rate",
+  title: "Capital gains tax Sri Lanka {{anio}}: the new 15% rate",
   description:
     "Work out capital gains tax at {{lk.cgt-rate}} on the sale of land, a house that is not your home, or shares. Rate in force since {{lk.cgt-rate#desde}}.",
   intro: [

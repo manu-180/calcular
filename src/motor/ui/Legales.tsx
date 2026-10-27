@@ -1,6 +1,6 @@
 import { formatearFecha } from "../formato";
 import { ACTUALIZACION_PAGINAS_GLOBALES, type PaginaGlobal } from "../paginas";
-import { grafo, ldMigas, ldPagina, rutaIntl, urlIntl } from "../seo";
+import { grafo, ldMigas, ldPagina, ldPersona, rutaIntl, urlIntl } from "../seo";
 import { resolverLegales, type PaginasLegales } from "../i18n/legales";
 import type { Idioma, Trato } from "../tipos";
 import type { ContextoSitio } from "./contexto";
@@ -28,12 +28,15 @@ const paginasDe = (ctx: ContextoSitio) => paginasLegales(ctx.mercado.idioma, ctx
 
 function ldLegal(ctx: ContextoSitio, slug: PaginaGlobal) {
   const p = paginasDe(ctx)[slug];
-  const url = urlIntl("global", slug);
+  const url = urlIntl(ctx.mercado.codigo, slug);
   const tipo = slug === "sobre" ? "AboutPage" : slug === "contacto" ? "ContactPage" : "WebPage";
+  // Quiénes somos lleva a la persona que responde por los números (E-E-A-T): es la única página donde
+  // vale el byte, y es la que un evaluador abre para saber quién está detrás.
+  const persona = slug === "sobre" ? ldPersona() : undefined;
   return grafo([
-    ldPagina({ tipo, url, nombre: p.title, descripcion: p.description, locale: ctx.mercado.locale, actualizado: ACTUALIZACION_PAGINAS_GLOBALES }),
+    ldPagina({ tipo, url, nombre: p.title, descripcion: p.description, locale: ctx.mercado.locale, actualizado: ACTUALIZACION_PAGINAS_GLOBALES, ...(persona ? { principal: persona } : {}) }),
     ldMigas([
-      { nombre: ctx.textos.migas.inicio, url: urlIntl("global") },
+      { nombre: ctx.textos.migas.inicio, url: urlIntl(ctx.mercado.codigo) },
       { nombre: p.h1, url },
     ]),
   ]);
@@ -44,7 +47,7 @@ export function PaginaLegalVista({ ctx, slug }: { ctx: ContextoSitio; slug: Pagi
   return (
     <div className="cy-pagina cy-legal">
       <JsonLd datos={ldLegal(ctx, slug)} />
-      <Migas etiqueta={ctx.textos.migas.etiqueta} items={[{ nombre: ctx.textos.migas.inicio, href: rutaIntl("global") }, { nombre: p.h1 }]} />
+      <Migas etiqueta={ctx.textos.migas.etiqueta} items={[{ nombre: ctx.textos.migas.inicio, href: rutaIntl(ctx.mercado.codigo) }, { nombre: p.h1 }]} />
       <header className="cy-heroe cy-heroe-chico">
         <h1 className="cy-titular">{p.h1}</h1>
         <p className="cy-bajada">{conMail(p.bajada)}</p>

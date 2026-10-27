@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ng.paye-calculator",
-  h1: "PAYE tax calculator 2026",
-  title: "PAYE calculator 2026: Nigeria Tax Act income tax",
+  h1: "PAYE tax calculator {{anio}}",
+  title: "PAYE calculator {{anio}}: Nigeria Tax Act income tax",
   description:
     "Work out your personal income tax and monthly PAYE under the Nigeria Tax Act 2025, with the new rent relief of {{ng.rent-relief-rate}} up to {{ng.rent-relief-cap}}.",
   intro: [

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
 import { CalculadoraGanancias } from "@/components/CalculadoraGanancias";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: "Calculadora de Ganancias 2026: retención mes a mes",
   description:
     "Calculá cuánto te retiene tu empleador de Ganancias 4ª categoría cada mes con el método acumulado de ARCA y la escala del segundo semestre 2026.",
-  alternates: { canonical: "/ganancias" },
+  alternates: { canonical: "/ganancias", languages: hreflangHeadAR("/ganancias") },
   openGraph: {
     images: [
       {

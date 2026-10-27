@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fr.conges-payes",
   h1: "Calcul des congés payés : jours acquis et indemnité",
-  title: "Calcul congés payés : jours acquis et indemnité 2026",
+  title: "Calcul congés payés : jours acquis et indemnité {{anio}}",
   description:
     "Combien de jours de congés payés avez-vous acquis et combien serez-vous payé ? Comparaison de la règle du dixième et du maintien de salaire.",
   intro: [

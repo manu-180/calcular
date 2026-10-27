@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be-fr.rsz-berekenen",
   h1: "Calcul des cotisations ONSS et du bonus à l'emploi",
-  title: "Cotisations ONSS 2026 : {{be.rsz-werknemer}} et bonus à l'emploi",
+  title: "Cotisations ONSS {{anio}} : {{be.rsz-werknemer}} et bonus à l'emploi",
   description:
     "Calculez vos cotisations personnelles ONSS de {{be.rsz-werknemer}}, le bonus à l'emploi pour les bas salaires et la cotisation spéciale de sécurité sociale.",
   intro: [

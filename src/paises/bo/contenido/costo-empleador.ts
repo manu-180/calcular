@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.costo-empleador",
   h1: "Calculadora de costo de un empleado",
-  title: "Costo de un empleado en Bolivia 2026: calcúlelo",
+  title: "Costo de un empleado en Bolivia {{anio}}: calcúlelo",
   description: "Calcule cuánto le cuesta un trabajador por mes y por año: caja de salud, aportes patronales a la Gestora y provisiones de aguinaldo e indemnización.",
   intro: [
     "Un sueldo le cuesta a la empresa más que el total ganado: hay aportes que paga el empleador y beneficios que conviene ir guardando cada mes.",

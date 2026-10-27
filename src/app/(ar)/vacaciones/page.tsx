@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraVacaciones } from "@/components/CalculadoraVacaciones";
 import { datosOferta } from "@/lib/oferta";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   title: "Calculadora de vacaciones 2026: días y cuánto cobrás",
   description:
     "Calculá tus días de vacaciones por antigüedad (art. 150 LCT) y cuánto cobrás con el plus vacacional de sueldo dividido 25, con la Ley 27.802.",
-  alternates: { canonical: "/vacaciones" },
+  alternates: { canonical: "/vacaciones", languages: hreflangHeadAR("/vacaciones") },
 };
 
 const faqs = [

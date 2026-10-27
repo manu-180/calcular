@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gh.vat-calculator",
   h1: "VAT calculator Ghana",
-  title: "VAT calculator Ghana 2026: VAT, NHIL and GETFund",
-  description: "Add or remove VAT of {{gh.vat-rates[vat]}}, NHIL of {{gh.vat-rates[nhil]}} and GETFund Levy of {{gh.vat-rates[getfund]}}, all on the same value as the GRA rules since 2026.",
+  title: "VAT calculator Ghana {{anio}}: VAT, NHIL and GETFund",
+  description: "Add or remove VAT of {{gh.vat-rates[vat]}}, NHIL of {{gh.vat-rates[nhil]}} and GETFund Levy of {{gh.vat-rates[getfund]}}, all on the same value as the GRA rules since {{anio}}.",
   intro: [
     "Since 1 January 2026, VAT, NHIL and the GETFund Levy are all charged on the same value of the supply, and the 1% COVID-19 levy no longer applies.",
     "Enter a price without tax to add them, or a total price to see how much of it is tax.",

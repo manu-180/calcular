@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "li.lohnsteuer-rechner",
   h1: "Lohnsteuer in Liechtenstein schätzen",
-  title: "Lohnsteuer Liechtenstein 2026: Steuer vom Lohn schätzen",
+  title: "Lohnsteuer Liechtenstein {{anio}}: Steuer vom Lohn schätzen",
   description: "Wie viel Steuer zahlen Sie in Liechtenstein auf Ihren Lohn? Schätzung der Landes- und Gemeindesteuer mit Abzügen, Kinderabzug und Gemeindezuschlag.",
   intro: [
     "In Liechtenstein besteht die Steuer auf dem Lohn aus der Landessteuer und dem Zuschlag der Wohngemeinde. Der Arbeitgeber zieht laufend einen Steuerabzug ab, die Steuerverwaltung rechnet danach mit der Veranlagung ab.",

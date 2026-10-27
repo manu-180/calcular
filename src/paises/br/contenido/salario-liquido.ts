@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.salario-liquido",
-  h1: "Calculadora de salário líquido 2026",
-  title: "Salário líquido 2026: calcule INSS e IRRF",
+  h1: "Calculadora de salário líquido {{anio}}",
+  title: "Salário líquido {{anio}}: calcule INSS e IRRF",
   description:
-    "Descubra quanto cai na conta a partir do salário bruto, com a tabela do INSS de 2026, o IRRF e a redução para quem ganha até {{br.reducao-mensal-isencao}}.",
+    "Descubra quanto cai na conta a partir do salário bruto, com a tabela do INSS de {{anio}}, o IRRF e a redução para quem ganha até {{br.reducao-mensal-isencao}}.",
   intro: [
     "O salário líquido é o que sobra do bruto depois dos descontos obrigatórios: a contribuição ao INSS e o imposto de renda retido na fonte (IRRF).",
     "Informe o salário bruto e, se tiver, os dependentes e a pensão alimentícia. A conta usa as tabelas oficiais de 2026 e já aplica a redução do imposto da Lei nº 15.270/2025.",

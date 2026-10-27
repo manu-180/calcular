@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.gelir-vergisi-hesaplama",
-  h1: "Gelir vergisi hesaplama 2026",
-  title: "Gelir Vergisi Hesaplama 2026: Vergi Dilimleri",
+  h1: "Gelir vergisi hesaplama {{anio}}",
+  title: "Gelir Vergisi Hesaplama {{anio}}: Vergi Dilimleri",
   description:
-    "Yıllık matrahınıza 2026 gelir vergisi tarifesini uygulayın: {{tr.gv-tarife-ucret[0].tasa}} ile {{tr.gv-tarife-ucret[-1].tasa}} arasındaki dilimler, ücret ve ücret dışı gelirler için ayrı.",
+    "Yıllık matrahınıza {{anio}} gelir vergisi tarifesini uygulayın: {{tr.gv-tarife-ucret[0].tasa}} ile {{tr.gv-tarife-ucret[-1].tasa}} arasındaki dilimler, ücret ve ücret dışı gelirler için ayrı.",
   intro: [
     "Gelir vergisi artan oranlı bir tarifeyle alınır: matrahın her dilime düşen kısmı o dilimin oranıyla vergilenir. Ücretlerde üçüncü dilim daha geniştir.",
     "Yıllık vergi matrahınızı ve gelirin türünü seçin. Hesaplama makinesi toplam vergiyi, ortalama oranı ve dilim dilim hesabı gösterir.",

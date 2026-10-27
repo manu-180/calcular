@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy.teli-metavivasis",
   h1: "Υπολογισμός τελών μεταβίβασης ακινήτου",
-  title: "Τέλη μεταβίβασης ακινήτου στο Κτηματολόγιο 2026",
+  title: "Τέλη μεταβίβασης ακινήτου στο Κτηματολόγιο {{anio}}",
   description: "Υπολογίστε τα τέλη μεταβίβασης ακινήτου: κλίμακα {{cy.teli-metavivasis[0].tasa}}, {{cy.teli-metavivasis[1].tasa}} και {{cy.teli-metavivasis[2].tasa}}, μείωση {{cy.meiosi-telon-metavivasis}} και απαλλαγή με ΦΠΑ.",
   intro: [
     "Όταν αγοράζετε ακίνητο, πληρώνετε στο Τμήμα Κτηματολογίου και Χωρομετρίας τέλη για τη μεταβίβαση του τίτλου.",

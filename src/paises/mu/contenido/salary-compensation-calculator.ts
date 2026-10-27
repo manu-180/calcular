@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mu.salary-compensation-calculator",
-  h1: "Salary compensation 2026 calculator",
-  title: "Salary compensation 2026 Mauritius: {{mu.salary-compensation}} a month",
+  h1: "Salary compensation {{anio}} calculator",
+  title: "Salary compensation {{anio}} Mauritius: {{mu.salary-compensation}} a month",
   description:
-    "Check the 2026 salary compensation in Mauritius: {{mu.salary-compensation}} a month for basic wages up to {{mu.salary-compensation-ceiling}}, and {{mu.salary-compensation-part-time-rate}} for some part-time workers.",
+    "Check the {{anio}} salary compensation in Mauritius: {{mu.salary-compensation}} a month for basic wages up to {{mu.salary-compensation-ceiling}}, and {{mu.salary-compensation-part-time-rate}} for some part-time workers.",
   intro: [
     "Every year the government sets an additional remuneration that employers add to the basic wage from January. People call it the salary compensation.",
     "For 2026 it is {{mu.salary-compensation}} a month for a full-time worker earning up to {{mu.salary-compensation-ceiling}}.",

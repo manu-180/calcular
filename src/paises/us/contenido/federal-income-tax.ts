@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.federal-income-tax",
   h1: "Federal income tax calculator",
-  title: "Federal Income Tax Calculator 2026: brackets and refund",
+  title: "Federal Income Tax Calculator {{anio}}: brackets and refund",
   description:
-    "Estimate your 2026 federal income tax with the IRS brackets, the {{us.standard-deduction[single]}} standard deduction and the new senior deduction. See your refund or balance due.",
+    "Estimate your {{anio}} federal income tax with the IRS brackets, the {{us.standard-deduction[single]}} standard deduction and the new senior deduction. See your refund or balance due.",
   intro: [
     "Enter your filing status and your adjusted gross income to see your federal income tax for 2026, your top bracket and your effective rate.",
     "If you add what was withheld from your paychecks, you also get an estimate of your refund or of what you still owe.",

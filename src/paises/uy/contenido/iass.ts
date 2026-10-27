@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.iass",
   h1: "Calculadora del IASS para jubilados y pensionistas",
-  title: "IASS 2026: cuánto le descuentan a tu jubilación",
+  title: "IASS {{anio}}: cuánto le descuentan a tu jubilación",
   description:
     "Calculá el IASS de tu jubilación o pensión: exento hasta 9 BPC por mes y después por franjas, con la BPC de {{uy.bpc}}. Anticipo mensual y total del año.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "id.kalkulator-bpjs-kesehatan",
   h1: "Kalkulator Iuran BPJS Kesehatan",
-  title: "Kalkulator BPJS Kesehatan 2026: iuran pekerja dan mandiri",
+  title: "Kalkulator BPJS Kesehatan {{anio}}: iuran pekerja dan mandiri",
   description: "Hitung iuran BPJS Kesehatan per bulan untuk pekerja penerima upah (1% dan 4%) atau peserta mandiri kelas I, II dan III sesuai Perpres 64/2020.",
   intro: [
     "Pilih apakah Anda didaftarkan oleh kantor atau membayar sendiri sebagai peserta mandiri.",

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.algemene-heffingskorting-berekenen",
-  h1: "Algemene heffingskorting berekenen 2026",
-  title: "Algemene heffingskorting 2026: maximaal {{nl.ahk[max]}}",
+  h1: "Algemene heffingskorting berekenen {{anio}}",
+  title: "Algemene heffingskorting {{anio}}: maximaal {{nl.ahk[max]}}",
   description:
-    "Bereken je algemene heffingskorting over 2026. Maximaal {{nl.ahk[max]}}, en boven {{nl.ahk[afbouwgrens]}} verzamelinkomen gaat er {{nl.ahk-afbouw}} per euro af.",
+    "Bereken je algemene heffingskorting over {{anio}}. Maximaal {{nl.ahk[max]}}, en boven {{nl.ahk[afbouwgrens]}} verzamelinkomen gaat er {{nl.ahk-afbouw}} per euro af.",
   intro: [
     "De algemene heffingskorting is een korting op je inkomstenbelasting waar iedereen recht op heeft, ook als je niet werkt. Hoe hoger je inkomen, hoe lager de korting.",
     "Vul je verzamelinkomen in en je ziet hoeveel algemene heffingskorting je in 2026 krijgt.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch.kinderzulagen-rechner",
   h1: "Kinderzulagen-Rechner: Kinder- und Ausbildungszulagen",
-  title: "Kinderzulagen Rechner Schweiz 2026: Familienzulagen",
+  title: "Kinderzulagen Rechner Schweiz {{anio}}: Familienzulagen",
   description:
     "Familienzulagen in der Schweiz: Kinderzulage mindestens {{ch.kinderzulage}}, Ausbildungszulage mindestens {{ch.ausbildungszulage}} pro Monat. Mit höheren Ansätzen Ihres Kantons.",
   intro: [

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.calculator-pfa",
-  h1: "Calculator PFA 2026: CAS, CASS și impozit",
-  title: "Calculator PFA 2026: CAS, CASS și impozit pe venit",
+  h1: "Calculator PFA {{anio}}: CAS, CASS și impozit",
+  title: "Calculator PFA {{anio}}: CAS, CASS și impozit pe venit",
   description:
-    "Calculați taxele unui PFA în sistem real sau la normă de venit: CAS {{ro.cas}}, CASS {{ro.cass}} și impozit {{ro.impozit-venit}}, cu plafoanele din 2026.",
+    "Calculați taxele unui PFA în sistem real sau la normă de venit: CAS {{ro.cas}}, CASS {{ro.cass}} și impozit {{ro.impozit-venit}}, cu plafoanele din {{anio}}.",
   intro: [
     "Calculatorul estimează ce plătiți în Declarația unică pentru veniturile dintr-un PFA, o întreprindere individuală sau o profesie liberală.",
     "Plafoanele se socotesc în salarii minime brute. Pentru veniturile din 2026 se folosește salariul minim de la 1 ianuarie 2026, {{ro.salariu-minim-1-ianuarie}}, chiar dacă minimul a crescut în cursul anului.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.asignacion-familiar",
   h1: "Calculadora de asignación familiar del BPS",
-  title: "Asignación familiar 2026: cuánto cobrás por hijo",
+  title: "Asignación familiar {{anio}}: cuánto cobrás por hijo",
   description:
     "Calculá la asignación familiar común (Ley 15.084): {{uy.afam-15084[monto1]}} por hijo si el hogar gana hasta {{uy.afam-15084[tope1]}} y {{uy.afam-15084[monto2]}} en la segunda franja.",
   intro: [

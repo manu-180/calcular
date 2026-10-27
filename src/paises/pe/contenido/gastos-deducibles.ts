@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.gastos-deducibles",
   h1: "Calculadora de gastos deducibles (deducción de 3 UIT)",
-  title: "Gastos deducibles 2026: calcula tu devolución de impuestos",
+  title: "Gastos deducibles {{anio}}: calcula tu devolución de impuestos",
   description:
     "Calcula cuánto te deduces por restaurantes ({{pe.gasto-deducible[restaurantes]}}), alquiler y médicos ({{pe.gasto-deducible[alquiler]}}) hasta 3 UIT, y cuánto impuesto ahorras o te devuelve SUNAT.",
   intro: [

@@ -34,7 +34,7 @@ export function generateStaticParams({ params }: { params: { mercado: string } }
     .filter((c) => familiaDeConcepto(c.definicion.concepto) !== null)
     .map((c) => ({ slug: c.definicion.slug }));
   // novedades tiene ruta propia (../novedades/page.tsx), que le gana a [slug]: no se genera dos veces.
-  return [...calculadoras, ...PAGINAS_MERCADO.filter((slug) => slug !== "novedades").map((slug) => ({ slug }))];
+  return [...calculadoras, ...PAGINAS_MERCADO.filter((slug) => slug !== "novedades").map((slug) => ({ slug })), ...PAGINAS_GLOBALES.map((slug) => ({ slug }))];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   "calculadora": "tz.paye-calculator",
   "h1": "PAYE calculator Tanzania",
-  "title": "PAYE calculator Tanzania 2026: monthly tax on your salary",
+  "title": "PAYE calculator Tanzania {{anio}}: monthly tax on your salary",
   "description": "Work out the PAYE your employer deducts in Tanzania Mainland, after NSSF, with the TRA bands from {{tz.paye-bands[1].tasa}} to {{tz.paye-bands[-1].tasa}}.",
   "intro": [
     "Enter your gross monthly salary to see the PAYE your employer should withhold. Your NSSF contribution comes off first, because contributions to an approved fund are not taxed.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.incapacidad",
   h1: "Calculadora de incapacidad de la CCSS",
-  title: "Incapacidad CCSS 2026: cuánto paga la Caja por enfermedad",
+  title: "Incapacidad CCSS {{anio}}: cuánto paga la Caja por enfermedad",
   description:
     "Calcule el subsidio por incapacidad de la CCSS: el porcentaje de su salario que paga la Caja, desde qué día y cuánto recibe en total.",
   intro: [

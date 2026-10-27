@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jo.income-tax-calculator",
   h1: "حاسبة ضريبة الدخل في الأردن",
-  title: "حساب ضريبة الدخل في الأردن 2026 للأفراد",
+  title: "حساب ضريبة الدخل في الأردن {{anio}} للأفراد",
   description:
     "احسب ضريبة الدخل السنوية على راتبك بشرائح القانون والإعفاء الشخصي {{jo.personal-exemption}} وإعفاء المعالين والفواتير، مع المساهمة الوطنية.",
   intro: [

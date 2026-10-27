@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.chartosima",
   h1: "Stamp duty calculator for Cyprus contracts",
-  title: "Cyprus stamp duty on contracts: 2026 calculator",
+  title: "Cyprus stamp duty on contracts: {{anio}} calculator",
   description: "Work out stamp duty on Cyprus contracts with a fixed amount, such as property sale agreements, up to {{cy.chartosima-anotato}}.",
   intro: [
     "Contracts with a fixed amount, like a property sale agreement, must be stamped.",

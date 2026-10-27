@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hu.minimalber-kalkulator",
   h1: "Minimálbér és garantált bérminimum",
-  title: "Minimálbér 2026: bruttó, nettó, órabér és bérminimum",
+  title: "Minimálbér {{anio}}: bruttó, nettó, órabér és bérminimum",
   description:
     "A minimálbér {{hu.minimalber[havi]}}, a garantált bérminimum {{hu.garantalt-berminimum[havi]}} bruttó. Nettó összeg, heti-, napi- és órabér, részmunkaidőre is.",
   intro: [

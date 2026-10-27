@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.despido-ineficaz",
   h1: "Despido de mujer embarazada y despido ineficaz en Ecuador",
-  title: "Despido de embarazada Ecuador: indemnización en 2026",
+  title: "Despido de embarazada Ecuador: indemnización en {{anio}}",
   description: "Si te despidieron embarazada, en lactancia o por ser dirigente sindical, calcula la indemnización de un año de sueldo más el despido y el desahucio.",
   intro: [
     "En Ecuador el despido de una trabajadora embarazada o en lactancia, o de un dirigente sindical, es ineficaz: la ley lo trata como si no hubiera pasado. Puedes pedir volver al trabajo.",

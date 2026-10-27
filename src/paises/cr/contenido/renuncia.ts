@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.renuncia",
   h1: "Cuánto me pagan si renuncio en Costa Rica",
-  title: "Liquidación por renuncia en Costa Rica: cálculo 2026",
+  title: "Liquidación por renuncia en Costa Rica: cálculo {{anio}}",
   description:
     "Calcule lo que le corresponde si renuncia: vacaciones pendientes y aguinaldo proporcional. Vea también cuánto preaviso debe dar según su antigüedad.",
   intro: [

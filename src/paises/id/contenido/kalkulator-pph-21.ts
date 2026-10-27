@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "id.kalkulator-pph-21",
   h1: "Kalkulator PPh 21 Tahunan",
-  title: "Kalkulator PPh 21 2026: hitung pajak penghasilan setahun",
+  title: "Kalkulator PPh 21 {{anio}}: hitung pajak penghasilan setahun",
   description: "Hitung PPh 21 setahun dengan tarif Pasal 17, PTKP dan biaya jabatan, lalu cek berapa potongan PPh 21 di bulan Desember. Sesuai PMK 168/2023.",
   intro: [
     "Kalkulator ini menghitung PPh 21 terutang setahun untuk pegawai tetap, cara yang sama dengan hitungan pemberi kerja di bulan Desember.",

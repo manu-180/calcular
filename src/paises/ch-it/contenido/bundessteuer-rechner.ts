@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-it.bundessteuer-rechner",
   h1: "Calcolo dell'imposta federale diretta",
-  title: "Imposta federale diretta 2026: calcola l'IFD",
-  description: "Imposta federale diretta 2026 per persone sole, coniugi e famiglie: tariffa dell'art. 36 LIFD, riduzione di {{ch.dbst-kinderermaessigung}} per figlio, aliquota marginale.",
+  title: "Imposta federale diretta {{anio}}: calcola l'IFD",
+  description: "Imposta federale diretta {{anio}} per persone sole, coniugi e famiglie: tariffa dell'art. 36 LIFD, riduzione di {{ch.dbst-kinderermaessigung}} per figlio, aliquota marginale.",
   intro: [
     "L'imposta federale diretta è la parte dell'imposta sul reddito che spetta alla Confederazione. Cantone e comune riscuotono in aggiunta le proprie imposte, che qui non sono comprese.",
     "La tariffa è uguale in tutto il Paese. Il Dipartimento federale delle finanze adegua gli scaglioni a causa della progressione a freddo, da ultimo per il 2026 e il 2027. Il calcolatore usa la tariffa dell'anno in cui calcoli.",

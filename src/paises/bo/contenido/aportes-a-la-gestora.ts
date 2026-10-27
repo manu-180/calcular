@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.aportes-a-la-gestora",
   h1: "Calculadora de aportes a la Gestora",
-  title: "Aportes a la Gestora 2026: dependiente e independiente",
+  title: "Aportes a la Gestora {{anio}}: dependiente e independiente",
   description: "Calcule sus aportes a la Gestora (ex AFP): la parte del trabajador, la del empleador y el Aporte Nacional Solidario. También para independientes y consultores.",
   intro: [
     "Cada mes se aporta a la Gestora Pública de la Seguridad Social de Largo Plazo para la jubilación y los riesgos. El dependiente aporta una parte y su empleador otra; el independiente aporta solo.",

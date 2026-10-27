@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.teli-metavivasis",
   h1: "Property transfer fees calculator for Cyprus",
-  title: "Cyprus property transfer fees at the Land Registry 2026",
+  title: "Cyprus property transfer fees at the Land Registry {{anio}}",
   description: "Work out Cyprus property transfer fees: {{cy.teli-metavivasis[0].tasa}}, {{cy.teli-metavivasis[1].tasa}} and {{cy.teli-metavivasis[2].tasa}} bands, a {{cy.meiosi-telon-metavivasis}} reduction and no fees with VAT.",
   intro: [
     "When you buy property you pay the Department of Lands and Surveys fees to transfer the title.",

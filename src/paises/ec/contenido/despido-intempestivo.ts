@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.despido-intempestivo",
   h1: "Calculadora de despido intempestivo en Ecuador",
-  title: "Despido intempestivo Ecuador 2026: cuánto te pagan",
+  title: "Despido intempestivo Ecuador {{anio}}: cuánto te pagan",
   description: "Calcula la indemnización por despido intempestivo: {{ec.despido-meses-minimo}} de sueldo hasta {{ec.despido-anios-base}}, un mes por año después y el desahucio del {{ec.desahucio}}.",
   intro: [
     "Si tu empleador te despide sin una causa legal, es un despido intempestivo. Te tiene que pagar una indemnización según los años que trabajaste, más la bonificación por desahucio.",

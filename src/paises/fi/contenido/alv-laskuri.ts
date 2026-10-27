@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.alv-laskuri",
   h1: "Alv-laskuri: lisää tai poista arvonlisävero",
-  title: "Alv-laskuri 2026: {{fi.alv[yleinen]}}, {{fi.alv[alennettu]}} ja {{fi.alv[erityinen]}}",
+  title: "Alv-laskuri {{anio}}: {{fi.alv[yleinen]}}, {{fi.alv[alennettu]}} ja {{fi.alv[erityinen]}}",
   description:
     "Laske arvonlisävero Suomen verokannoilla: yleinen {{fi.alv[yleinen]}}, elintarvikkeet ja ravintolat {{fi.alv[alennettu]}}, lehdet {{fi.alv[erityinen]}}. Lisää tai poista alv yhdellä kertaa.",
   intro: [

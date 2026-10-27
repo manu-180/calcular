@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mu.minimum-wage",
-  h1: "Minimum wage in Mauritius 2026",
-  title: "Minimum wage Mauritius 2026: {{mu.minimum-wage}} a month",
+  h1: "Minimum wage in Mauritius {{anio}}",
+  title: "Minimum wage Mauritius {{anio}}: {{mu.minimum-wage}} a month",
   description:
     "The national minimum wage in Mauritius is {{mu.minimum-wage}} a month for a full-time worker since {{mu.minimum-wage#desde}}. Check your pay and the hourly rate.",
   intro: [

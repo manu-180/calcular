@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "no.feriepenger",
   h1: "Beregne feriepenger etter ferieloven",
-  title: "Feriepenger 2026: beregn feriepengene dine",
+  title: "Feriepenger {{anio}}: beregn feriepengene dine",
   description:
     "Beregn feriepenger med {{no.feriepenger-sats}} etter ferieloven, egen sats etter avtale eller med tillegget på {{no.feriepenger-tillegg-60}} for deg som er over 60 år.",
   intro: [

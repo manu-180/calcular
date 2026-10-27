@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "dk.kommuneskat",
-  h1: "Kommuneskat 2026 for alle 98 kommuner",
-  title: "Kommuneskat 2026: se skatteprocenten i din kommune",
-  description: "Find kommuneskat, kirkeskat og grundskyld for 2026 i din kommune. I København er kommuneskatten {{dk.kommuneskat[koebenhavn]}}.",
+  h1: "Kommuneskat {{anio}} for alle 98 kommuner",
+  title: "Kommuneskat {{anio}}: se skatteprocenten i din kommune",
+  description: "Find kommuneskat, kirkeskat og grundskyld for {{anio}} i din kommune. I København er kommuneskatten {{dk.kommuneskat[koebenhavn]}}.",
   intro: [
     "Vælg din kommune og se kommuneskat, kirkeskat og den samlede skatteprocent med bundskatten for 2026.",
     "Skriv din skattepligtige indkomst, hvis du vil se kommuneskatten i kroner.",

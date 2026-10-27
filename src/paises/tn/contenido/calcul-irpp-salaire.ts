@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.calcul-irpp-salaire",
   h1: "Calcul de l'IRPP sur salaire en Tunisie",
-  title: "Calcul IRPP Tunisie 2026 : impôt sur salaire et CSS",
+  title: "Calcul IRPP Tunisie {{anio}} : impôt sur salaire et CSS",
   description:
     "Calculez la retenue à la source de l'IRPP sur votre salaire en Tunisie : barème en vigueur, déductions familiales et contribution sociale de solidarité.",
   intro: [

@@ -468,8 +468,12 @@ function filaDeEscala(valor: unknown, indice: string, campo: CampoFila): unknown
   return fila && typeof fila === "object" ? (fila as Record<string, unknown>)[campo] : undefined;
 }
 
+// {{anio}}: el año de la fecha del mercado. Va en title, description y h1 («Aguinaldo {{anio}}»): el
+// año que la gente escribe en la búsqueda cambia cada 1 de enero y 1.379 textos lo tenían tipeado.
+const RE_ANIO = /\{\{\s*anio\s*\}\}/g;
+
 export function hayLlavesSueltas(texto: string): boolean {
-  return /\{\{|\}\}/.test(texto.replace(RE_MARCADOR, ""));
+  return /\{\{|\}\}/.test(texto.replace(RE_MARCADOR, "").replace(RE_ANIO, ""));
 }
 
 interface ContextoRelleno {
@@ -478,12 +482,14 @@ interface ContextoRelleno {
   unidades: Readonly<Record<string, Unidad>>;
   locale: string;
   simbolos?: Mercado["simbolos"];
+  // Año de {{anio}}; sin él, el del reloj (checks y validaciones sin fecha de mercado).
+  anio?: number;
   // Sin esto, un marcador que no se resuelve queda en el texto y sale por console.error.
   alFallar?: (marcador: string) => void;
 }
 
 function rellenar(texto: string, ctx: ContextoRelleno): string {
-  return texto.replace(RE_MARCADOR, (todo, id: string, clave?: string, campo?: CampoFila, region?: string, desde?: string) => {
+  return texto.replace(RE_ANIO, String(ctx.anio ?? new Date().getFullYear())).replace(RE_MARCADOR, (todo, id: string, clave?: string, campo?: CampoFila, region?: string, desde?: string) => {
     let unidad: Unidad | undefined = ctx.unidades[id];
     let valor: unknown = ctx.valores[id];
     if (desde) {
@@ -725,7 +731,7 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
       return {
         mercado: m,
         calculadora: { id: def.id, slug: def.slug, concepto: def.concepto, ...(def.producto ? { producto: def.producto } : {}) },
-        contenido: rellenarContenido(entrada.contenido, { valores: r.valores, usados: r.usados, unidades: unidadesDe(p), locale: m.locale, simbolos: m.simbolos }),
+        contenido: rellenarContenido(entrada.contenido, { valores: r.valores, usados: r.usados, unidades: unidadesDe(p), locale: m.locale, simbolos: m.simbolos, anio: Number(fecha.slice(0, 4)) }),
         props: {
           valores: r.valores,
           contexto: {

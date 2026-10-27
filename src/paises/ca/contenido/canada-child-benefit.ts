@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.canada-child-benefit",
-  h1: "Canada child benefit calculator (July 2026 to June 2027)",
+  h1: "Canada child benefit calculator (July {{anio}} to June 2027)",
   title: "CCB calculator 2026-2027: Canada child benefit",
-  description: "Estimate your Canada child benefit for July 2026 to June 2027: up to {{ca.ccb-maximum[under-6]}} a year per child under 6 and {{ca.ccb-maximum[6-to-17]}} per child aged 6 to 17.",
+  description: "Estimate your Canada child benefit for July {{anio}} to June 2027: up to {{ca.ccb-maximum[under-6]}} a year per child under 6 and {{ca.ccb-maximum[6-to-17]}} per child aged 6 to 17.",
   intro: [
     "Enter how many children you have and your adjusted family net income for 2025 to estimate your CCB payments from July 2026 to June 2027.",
     "It follows the amounts and reduction rates published by the Canada Revenue Agency. Provincial child benefits and the child disability benefit are not included.",

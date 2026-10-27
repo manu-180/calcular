@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ma.impot-sur-les-societes",
   h1: "Calcul de l'impôt sur les sociétés (IS) au Maroc",
-  title: "Impôt sur les sociétés Maroc 2026 : taux de {{ma.is-taux[normal]}}",
+  title: "Impôt sur les sociétés Maroc {{anio}} : taux de {{ma.is-taux[normal]}}",
   description:
-    "Calculez l'impôt sur les sociétés au Maroc pour les exercices ouverts en 2026 : {{ma.is-taux[normal]}}, {{ma.is-taux[grandes-entreprises]}} pour les très gros bénéfices et {{ma.is-taux[etablissements-financiers]}} pour les banques et assurances.",
+    "Calculez l'impôt sur les sociétés au Maroc pour les exercices ouverts en {{anio}} : {{ma.is-taux[normal]}}, {{ma.is-taux[grandes-entreprises]}} pour les très gros bénéfices et {{ma.is-taux[etablissements-financiers]}} pour les banques et assurances.",
   intro: [
     "La réforme de l'impôt sur les sociétés lancée par la loi de finances 2023 arrive à son terme : pour les exercices ouverts à partir du 1er janvier 2026, le taux normal est de {{ma.is-taux[normal]}}.",
     "Les sociétés dont le bénéfice net atteint {{ma.is-seuil}} paient {{ma.is-taux[grandes-entreprises]}}, et les établissements de crédit, Bank Al-Maghrib, la CDG et les entreprises d'assurance {{ma.is-taux[etablissements-financiers]}}.",

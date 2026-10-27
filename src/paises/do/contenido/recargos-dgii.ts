@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.recargos-dgii",
   h1: "Calculadora de recargos e intereses de la DGII",
-  title: "Recargos DGII 2026: calcula mora e interés por atraso",
+  title: "Recargos DGII {{anio}}: calcula mora e interés por atraso",
   description: "Calcula el recargo por mora de {{do.recargo-mora}} y el interés indemnizatorio de {{do.interes-indemnizatorio}} por cada mes o fracción de atraso en un impuesto.",
   intro: [
     "Si pagas un impuesto después de la fecha límite, la DGII suma un recargo por mora y un interés indemnizatorio por cada mes o fracción de atraso.",

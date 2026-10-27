@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Netto-Brutto-Rechner Schweiz",
   title: "Netto-Brutto-Rechner Schweiz: Bruttolohn für Ihr Netto",
   description:
-    "Welcher Bruttolohn ergibt den gewünschten Nettolohn? Mit AHV/IV/EO, ALV, Pensionskasse und NBU nach den Sätzen 2026, für 12 oder 13 Monatslöhne.",
+    "Welcher Bruttolohn ergibt den gewünschten Nettolohn? Mit AHV/IV/EO, ALV, Pensionskasse und NBU nach den Sätzen {{anio}}, für 12 oder 13 Monatslöhne.",
   intro: [
     "Wer für die Lohnverhandlung einen bestimmten Betrag netto im Kopf hat, braucht den passenden Bruttolohn. Der Rechner zeigt, wie hoch er sein muss, damit Ihnen der gewünschte Betrag bleibt.",
     "Gerechnet wird mit den Sozialabzügen ohne Steuern: AHV/IV/EO, ALV, die gesetzliche Pensionskasse und die NBU-Prämie, die Sie eingeben.",

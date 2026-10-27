@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.despido-arbitrario",
   h1: "Calculadora de indemnización por despido arbitrario en Perú",
-  title: "Indemnización por despido arbitrario 2026: calculadora",
+  title: "Indemnización por despido arbitrario {{anio}}: calculadora",
   description:
     "Calcula tu indemnización por despido arbitrario en Perú: una remuneración y media por año, con tope de 12. Para contrato indefinido, plazo fijo y REMYPE.",
   intro: [

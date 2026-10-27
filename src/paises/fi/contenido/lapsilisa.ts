@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.lapsilisa",
   h1: "Lapsilisä: paljonko lapsilisää saat",
-  title: "Lapsilisä 2026: laske lapsilisän määrä",
+  title: "Lapsilisä {{anio}}: laske lapsilisän määrä",
   description:
     "Laske perheesi lapsilisät. Ensimmäisestä lapsesta saat {{fi.lapsilisa[1]}} kuukaudessa, ja määrä kasvaa lapsiluvun mukaan. Mukana alle 3-vuotiaiden korotus.",
   intro: [

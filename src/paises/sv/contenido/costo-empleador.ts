@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.costo-empleador",
   h1: "Calculadora de costo de un empleado en El Salvador",
-  title: "Costo de un empleado en El Salvador 2026: calculadora",
+  title: "Costo de un empleado en El Salvador {{anio}}: calculadora",
   description: "Sepa cuánto le cuesta un trabajador por mes: ISSS patronal del {{sv.isss-patrono}}, AFP del {{sv.afp-patrono}}, aguinaldo, vacaciones y Quincena 25.",
   intro: [
     "Un trabajador le cuesta más que su salario. Como patrono paga el {{sv.isss-patrono}} al ISSS, el {{sv.afp-patrono}} a la AFP y, una vez al año, aguinaldo, vacaciones con recargo y la Quincena 25.",

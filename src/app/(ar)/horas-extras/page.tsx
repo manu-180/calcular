@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraHorasExtras } from "@/components/CalculadoraHorasExtras";
 import { JsonLd } from "@/components/JsonLd";
@@ -20,7 +21,7 @@ import { OtrosPaises } from "@/components/OtrosPaises";
 export const metadata: Metadata = {
   title: "Horas extras 2026: cuánto se pagan al 50% y al 100%",
   description: `Calculá tus horas extra con recargo del 50% y del 100%, el tope de ${TOPES_DECRETO_484.mensual} horas por mes y los francos del banco de horas de la Ley 27.802.`,
-  alternates: { canonical: "/horas-extras" },
+  alternates: { canonical: "/horas-extras", languages: hreflangHeadAR("/horas-extras") },
   openGraph: {
     title: "Horas extras: qué cambió el 6/3/2026",
     description:

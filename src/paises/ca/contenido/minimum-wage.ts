@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.minimum-wage",
-  h1: "Minimum wage in Canada by province (2026)",
-  title: "Minimum wage in Canada 2026 by province",
+  h1: "Minimum wage in Canada by province ({{anio}})",
+  title: "Minimum wage in Canada {{anio}} by province",
   description: "Current minimum wage in every province and territory, plus the federal minimum of {{ca.federal-minimum-wage}}. Weekly, monthly and yearly pay at the minimum.",
   intro: [
     "Choose your province or territory to see the general minimum wage today and what it adds up to over a week, a month and a year.",

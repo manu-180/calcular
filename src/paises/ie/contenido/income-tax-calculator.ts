@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ie.income-tax-calculator",
-  h1: "Income tax calculator Ireland 2026",
-  title: "Income tax calculator Ireland 2026: bands and credits",
+  h1: "Income tax calculator Ireland {{anio}}",
+  title: "Income tax calculator Ireland {{anio}}: bands and credits",
   description:
-    "Work out your 2026 Income Tax in Ireland: rate bands at 20% and 40%, personal and employee tax credits, joint assessment and the Rent Tax Credit.",
+    "Work out your {{anio}} Income Tax in Ireland: rate bands at 20% and 40%, personal and employee tax credits, joint assessment and the Rent Tax Credit.",
   intro: [
     "Choose your tax status, enter your yearly income and see the Income Tax you owe for 2026, after your tax credits.",
     "It covers single people, single parents and married couples or civil partners with one or two incomes, using the bands and credits published by Revenue.",

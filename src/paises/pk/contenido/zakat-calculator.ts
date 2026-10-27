@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pk.zakat-calculator",
   h1: "Zakat calculator Pakistan",
-  title: "Zakat calculator 2026 with the official nisab",
+  title: "Zakat calculator {{anio}} with the official nisab",
   description: "Work out zakat at {{pk.zakat-rate}} on your cash, gold, silver and savings, with the official nisab of {{pk.nisab}} for Zakat Year 1446-1447.",
   intro: [
     "Add up your cash, bank balances, gold, silver and investments, take off what you owe, and see whether you reach the nisab and how much zakat to pay.",

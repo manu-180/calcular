@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.feriado-trabajado",
   h1: "Calculadora de pago por feriado trabajado",
-  title: "Feriado trabajado 2026: cuánto te deben pagar",
+  title: "Feriado trabajado {{anio}}: cuánto te deben pagar",
   description:
     "Si trabajas un feriado o tu día de descanso sin otro día libre, cobras la jornada más {{pe.sobretasa-descanso-trabajado}} de sobretasa. Calcula el pago triple.",
   intro: [

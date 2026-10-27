@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.calcul-salaire-brut",
   h1: "حساب الأجر الإجمالي انطلاقًا من الصافي في الجزائر",
-  title: "من الأجر الصافي إلى الإجمالي في الجزائر 2026",
+  title: "من الأجر الصافي إلى الإجمالي في الجزائر {{anio}}",
   description:
     "اعرف الأجر الإجمالي الذي يعطي الصافي الذي تريده في الجزائر، مع اشتراك الضمان الاجتماعي بنسبة {{dz.cnas[salarie]}} والضريبة على الدخل الإجمالي المقتطعة من المصدر.",
   intro: [

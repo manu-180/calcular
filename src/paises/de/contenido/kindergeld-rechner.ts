@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "de.kindergeld-rechner",
   h1: "Kindergeldrechner: {{de.kindergeld}} pro Kind",
-  title: "Kindergeld 2026: {{de.kindergeld}} pro Kind, Rechner",
+  title: "Kindergeld {{anio}}: {{de.kindergeld}} pro Kind, Rechner",
   description:
     "Kindergeld beträgt {{de.kindergeld}} im Monat für jedes Kind. Rechnen Sie Ihren Betrag aus und vergleichen Sie ihn mit der Wirkung der Kinderfreibeträge.",
   intro: [

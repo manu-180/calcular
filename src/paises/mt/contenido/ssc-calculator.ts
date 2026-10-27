@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mt.ssc-calculator",
   h1: "Social security contributions calculator Malta",
-  title: "SSC calculator Malta: Class 1 contributions 2026",
+  title: "SSC calculator Malta: Class 1 contributions {{anio}}",
   description: "See the Class 1 social security you and your employer pay each week in Malta, from your basic weekly wage, age and year of birth.",
   intro: [
     "Enter your basic weekly wage. You get the weekly Class 1 contribution you pay, the same amount your employer pays and the yearly total.",

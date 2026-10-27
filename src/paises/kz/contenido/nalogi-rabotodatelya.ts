@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "kz.nalogi-rabotodatelya",
-  h1: "Налоги и взносы работодателя за работника в 2026 году",
-  title: "Налоги работодателя за работника 2026: ОПВР, СО, ОСМС",
+  h1: "Налоги и взносы работодателя за работника в {{anio}} году",
+  title: "Налоги работодателя за работника {{anio}}: ОПВР, СО, ОСМС",
   description:
     "Сколько стоит работник для компании: ОПВР {{kz.opvr}}, социальные отчисления {{kz.so}}, ООСМС {{kz.oosms}} и социальный налог {{kz.sotsialnyy-nalog}}. Расчет по новому Налоговому кодексу.",
   intro: [

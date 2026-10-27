@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch.lohnkosten-rechner",
   h1: "Lohnkosten-Rechner Schweiz: was eine Stelle den Arbeitgeber kostet",
-  title: "Lohnkosten-Rechner Schweiz: Arbeitgeberbeiträge 2026",
+  title: "Lohnkosten-Rechner Schweiz: Arbeitgeberbeiträge {{anio}}",
   description:
     "Was kostet ein Bruttolohn den Arbeitgeber? AHV/IV/EO, ALV, Pensionskasse, Familienausgleichskasse und Berufsunfall pro Monat und pro Jahr berechnen.",
   intro: [

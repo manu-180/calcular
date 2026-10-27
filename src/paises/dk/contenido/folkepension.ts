@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.folkepension",
   h1: "Folkepension: hvornår og hvor meget?",
-  title: "Folkepension 2026: beregn alder og beløb",
+  title: "Folkepension {{anio}}: beregn alder og beløb",
   description:
-    "Se din folkepensionsalder ud fra din fødselsdato, og beregn folkepensionen i 2026: grundbeløb på {{dk.folkepension-grundbeloeb}} plus pensionstillæg.",
+    "Se din folkepensionsalder ud fra din fødselsdato, og beregn folkepensionen i {{anio}}: grundbeløb på {{dk.folkepension-grundbeloeb}} plus pensionstillæg.",
   intro: [
     "Folkepensionen består af et grundbeløb og et pensionstillæg. Pensionstillægget bliver mindre, hvis du har anden indkomst.",
     "Skriv din fødselsdato, om du bor alene, og din anden indkomst. Beregneren viser din folkepensionsalder og pensionen før skat.",

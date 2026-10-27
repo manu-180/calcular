@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.debo-declarar-renta",
   h1: "¿Tengo que declarar renta?",
-  title: "¿Debo declarar renta en 2026? Calculadora de topes",
+  title: "¿Debo declarar renta en {{anio}}? Calculadora de topes",
   description:
     "Revisa si tienes que declarar renta: compara tus ingresos, patrimonio, consumos y consignaciones con los topes en UVT del año gravable.",
   intro: [

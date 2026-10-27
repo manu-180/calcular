@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy.eisfores-gesy",
   h1: "Υπολογισμός εισφορών ΓεΣΥ",
-  title: "Εισφορές ΓεΣΥ 2026: μισθωτοί, αυτοτελώς, συνταξιούχοι",
+  title: "Εισφορές ΓεΣΥ {{anio}}: μισθωτοί, αυτοτελώς, συνταξιούχοι",
   description: "Υπολογίστε την εισφορά σας στο ΓεΣΥ: {{cy.eisfores-gesy[misthotos]}} για μισθούς και συντάξεις, {{cy.eisfores-gesy[autotelos]}} για αυτοτελώς εργαζόμενους, μέχρι {{cy.anotato-orio-gesy}}.",
   intro: [
     "Το Γενικό Σύστημα Υγείας χρηματοδοτείται με εισφορές πάνω σε όλα τα εισοδήματα. Εισάγετε τα εισοδήματα του έτους και δείτε πόσα πληρώνετε.",

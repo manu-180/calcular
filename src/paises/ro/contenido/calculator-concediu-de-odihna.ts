@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ro.calculator-concediu-de-odihna",
   h1: "Calculator concediu de odihnă și indemnizație",
-  title: "Calculator concediu de odihnă 2026: zile și indemnizație",
+  title: "Calculator concediu de odihnă {{anio}}: zile și indemnizație",
   description:
     "Aflați câte zile de concediu de odihnă vi se cuvin pentru lunile lucrate și cât este indemnizația, din media salariului pe ultimele 3 luni.",
   intro: [

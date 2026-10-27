@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.liquidacion",
-  h1: "Calculadora de liquidación laboral 2026 en Colombia",
-  title: "Calculadora de liquidación laboral 2026 en Colombia",
+  h1: "Calculadora de liquidación laboral {{anio}} en Colombia",
+  title: "Calculadora de liquidación laboral {{anio}} en Colombia",
   description:
     "Calcula tu liquidación de contrato con tus fechas y tu salario: cesantías, intereses, prima, vacaciones e indemnización si te despidieron. Gratis y al instante.",
   intro: [

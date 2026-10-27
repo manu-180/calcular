@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.trabajo-domestico",
   h1: "Salario de trabajo doméstico en Costa Rica",
-  title: "Salario mínimo de trabajo doméstico 2026 en Costa Rica",
+  title: "Salario mínimo de trabajo doméstico {{anio}} en Costa Rica",
   description:
     "Calcule el salario mínimo de una persona trabajadora doméstica según sus horas: {{cr.salario-minimo-mes[trabajo-domestico]}} por jornada completa, valor por día y hora, y rebajos de la Caja.",
   intro: [

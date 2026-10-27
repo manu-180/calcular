@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mu.paye-calculator",
   h1: "PAYE calculator Mauritius",
-  title: "PAYE Mauritius 2026: monthly tax on your salary",
+  title: "PAYE Mauritius {{anio}}: monthly tax on your salary",
   description:
     "Find the PAYE your employer withholds each month under the cumulative MRA system, with the {{mu.income-tax-bands[1].tasa}}, {{mu.income-tax-bands[2].tasa}} and {{mu.income-tax-bands[-1].tasa}} bands for 2026-27.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fr.droits-de-donation",
   h1: "Calcul des droits de donation",
-  title: "Droits de donation 2026 : abattements et calcul",
+  title: "Droits de donation {{anio}} : abattements et calcul",
   description:
     "Calculez les droits à payer sur une donation : abattement de {{fr.abattement-ligne-directe}} pour un enfant, {{fr.abattement-don-epoux}} entre époux, barème selon le lien de parenté.",
   intro: [

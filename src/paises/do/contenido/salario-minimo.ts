@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.salario-minimo",
-  h1: "Salario mínimo 2026 en República Dominicana",
-  title: "Salario mínimo en RD 2026: {{do.salario-minimo[grande]}} en empresa grande",
+  h1: "Salario mínimo {{anio}} en República Dominicana",
+  title: "Salario mínimo en RD {{anio}}: {{do.salario-minimo[grande]}} en empresa grande",
   description:
     "Salario mínimo vigente desde el {{do.salario-minimo#desde}}: {{do.salario-minimo[grande]}} en empresas grandes. Míralo por mes, quincena, día y hora, y el del trabajo del hogar.",
   intro: [

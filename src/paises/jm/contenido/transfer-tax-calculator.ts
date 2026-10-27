@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jm.transfer-tax-calculator",
   h1: "Transfer tax and stamp duty calculator Jamaica",
-  title: "Transfer tax and stamp duty calculator Jamaica 2026",
+  title: "Transfer tax and stamp duty calculator Jamaica {{anio}}",
   description:
     "Work out the transfer tax at {{jm.transfer-tax-rate}} of market value and the stamp duty on a property sale and mortgage in Jamaica, with the TAJ rates.",
   intro: [

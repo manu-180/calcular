@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "zm.paye-calculator",
   h1: "PAYE calculator Zambia",
-  title: "PAYE calculator Zambia 2026: tax on your monthly pay",
+  title: "PAYE calculator Zambia {{anio}}: tax on your monthly pay",
   description:
-    "Work out the PAYE on your monthly pay with the 2026 ZRA tax bands. The first {{zm.paye-bands[0].hasta}} is tax free and the top rate is {{zm.paye-bands[-1].tasa}}.",
+    "Work out the PAYE on your monthly pay with the {{anio}} ZRA tax bands. The first {{zm.paye-bands[0].hasta}} is tax free and the top rate is {{zm.paye-bands[-1].tasa}}.",
   intro: [
     "Enter your gross pay for the month and see how much PAYE your employer should deduct, band by band.",
     "The calculator uses the monthly tax bands the Zambia Revenue Authority publishes for 2026.",

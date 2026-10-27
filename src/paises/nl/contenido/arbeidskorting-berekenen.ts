@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.arbeidskorting-berekenen",
-  h1: "Arbeidskorting berekenen 2026",
-  title: "Arbeidskorting 2026 berekenen: maximaal {{nl.arbeidskorting-grenzen[max3]}}",
+  h1: "Arbeidskorting berekenen {{anio}}",
+  title: "Arbeidskorting {{anio}} berekenen: maximaal {{nl.arbeidskorting-grenzen[max3]}}",
   description:
-    "Bereken je arbeidskorting over 2026. De korting loopt op tot {{nl.arbeidskorting-grenzen[max3]}} en wordt boven {{nl.arbeidskorting-grenzen[grens3]}} arbeidsinkomen weer afgebouwd.",
+    "Bereken je arbeidskorting over {{anio}}. De korting loopt op tot {{nl.arbeidskorting-grenzen[max3]}} en wordt boven {{nl.arbeidskorting-grenzen[grens3]}} arbeidsinkomen weer afgebouwd.",
   intro: [
     "De arbeidskorting is een heffingskorting voor iedereen die werkt, in loondienst of als ondernemer. Ze gaat direct van je belasting af.",
     "Hoe hoog de korting is, hangt af van je arbeidsinkomen. Vul je loon of winst per jaar in en je ziet je arbeidskorting voor 2026.",

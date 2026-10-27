@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.nuevo-rus",
   h1: "Calculadora del Nuevo RUS: tu categoría y tu cuota",
-  title: "Nuevo RUS 2026: calcula tu categoría y tu cuota",
+  title: "Nuevo RUS {{anio}}: calcula tu categoría y tu cuota",
   description:
     "Calcula en qué categoría del Nuevo RUS estás y cuánto pagas al mes según tus ventas y compras. Con los límites mensual y anual de la SUNAT.",
   intro: [

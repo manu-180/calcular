@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mt.employer-cost",
   h1: "Employer cost calculator Malta",
-  title: "Cost of an employee in Malta 2026",
+  title: "Cost of an employee in Malta {{anio}}",
   description: "See what an employee costs in Malta: basic salary, statutory bonuses, employer social security and the Maternity Leave Trust Fund.",
   intro: [
     "Enter the gross basic salary. You get the yearly and monthly cost of the employee to the business.",

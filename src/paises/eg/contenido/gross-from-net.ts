@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.gross-from-net",
   h1: "حساب إجمالي المرتب من الصافي",
-  title: "حساب إجمالي المرتب من الصافي في مصر 2026",
+  title: "حساب إجمالي المرتب من الصافي في مصر {{anio}}",
   description:
     "اتفقت على مرتب صافٍ؟ اعرف الإجمالي الذي يحققه بعد التأمينات الاجتماعية وضريبة كسب العمل بالشرائح الحالية، وتكلفته على صاحب العمل.",
   intro: [

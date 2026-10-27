@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.valor-hora",
   h1: "Calculadora del valor de la hora de trabajo",
-  title: "Valor de la hora de trabajo 2026 en Colombia",
+  title: "Valor de la hora de trabajo {{anio}} en Colombia",
   description:
     "Calcula cuánto vale tu hora ordinaria y tu día de trabajo con la jornada máxima vigente de {{co.jornada-semanal}} a la semana.",
   intro: [

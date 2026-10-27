@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.solidaritaetszuschlag-rechner",
-  h1: "Soli-Rechner 2026",
-  title: "Solidaritätszuschlag 2026 berechnen: Freigrenze und Satz",
+  h1: "Soli-Rechner {{anio}}",
+  title: "Solidaritätszuschlag {{anio}} berechnen: Freigrenze und Satz",
   description:
     "Zahlen Sie noch Soli? Der Rechner prüft die Freigrenze von {{de.soli-freigrenze}}, die Milderungszone und den vollen Satz von {{de.soli-satz}} auf Ihre Steuer.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.gratificacion-trunca",
   h1: "Calculadora de gratificación trunca",
-  title: "Gratificación trunca 2026: calcula cuánto te toca",
+  title: "Gratificación trunca {{anio}}: calcula cuánto te toca",
   description:
     "Calcula tu gratificación trunca con tus fechas de ingreso y salida. Incluye la bonificación del {{pe.bonificacion-extraordinaria[essalud]}} y la RMV de {{pe.rmv}}.",
   intro: [

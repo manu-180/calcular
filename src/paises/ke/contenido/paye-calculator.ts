@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ke.paye-calculator",
   h1: "PAYE calculator Kenya",
-  title: "PAYE calculator Kenya 2026: monthly tax with KRA bands",
+  title: "PAYE calculator Kenya {{anio}}: monthly tax with KRA bands",
   description:
     "Work out your monthly PAYE with the KRA bands from {{ke.paye-bands[0].tasa}} to {{ke.paye-bands[-1].tasa}}, after NSSF, SHIF and Housing Levy, less the personal relief of {{ke.personal-relief}}.",
   intro: [

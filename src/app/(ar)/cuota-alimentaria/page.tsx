@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraCuotaAlimentaria } from "@/components/CalculadoraCuotaAlimentaria";
 import { EmailCapture } from "@/components/EmailCapture";
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   title: `Cuota alimentaria por hijo 2026: de ${formatARS(CANASTA_CRIANZA_ULTIMO.valores["menor-1"].total, 0)} a ${formatARS(CANASTA_CRIANZA_ULTIMO.valores["6-a-12"].total, 0)}`,
   description:
     "Calculá la cuota alimentaria de referencia con el último dato del INDEC: cuánto cuesta criar a cada hijo por mes y cómo se reparte entre los progenitores.",
-  alternates: { canonical: "/cuota-alimentaria" },
+  alternates: { canonical: "/cuota-alimentaria", languages: hreflangHeadAR("/cuota-alimentaria") },
 };
 
 const U = CANASTA_CRIANZA_ULTIMO;

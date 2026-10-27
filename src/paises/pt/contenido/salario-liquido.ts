@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.salario-liquido",
   h1: "Simulador de salário líquido",
-  title: "Salário líquido 2026: do bruto ao líquido com IRS e SS",
+  title: "Salário líquido {{anio}}: do bruto ao líquido com IRS e SS",
   description:
-    "Calcule o salário líquido a partir do bruto com as tabelas de retenção na fonte de 2026 e os {{pt.ss-trabalhador}} de Segurança Social.",
+    "Calcule o salário líquido a partir do bruto com as tabelas de retenção na fonte de {{anio}} e os {{pt.ss-trabalhador}} de Segurança Social.",
   intro: [
     "O salário líquido é o que chega à conta depois de descontar a Segurança Social e a retenção na fonte de IRS.",
     "Indique o salário bruto, a situação familiar e o número de dependentes. O cálculo usa as tabelas de retenção de 2026 do continente.",

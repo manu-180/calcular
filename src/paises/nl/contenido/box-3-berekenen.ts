@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.box-3-berekenen",
-  h1: "Box 3 berekenen 2026: belasting over sparen en beleggen",
-  title: "Box 3 berekenen 2026: belasting over sparen en beleggen",
+  h1: "Box 3 berekenen {{anio}}: belasting over sparen en beleggen",
+  title: "Box 3 berekenen {{anio}}: belasting over sparen en beleggen",
   description:
-    "Bereken je box 3-belasting over 2026 met de rekenmethode van de Belastingdienst: heffingsvrij vermogen {{nl.box3-heffingsvrij}} per persoon en een tarief van {{nl.box3-tarief}}.",
+    "Bereken je box 3-belasting over {{anio}} met de rekenmethode van de Belastingdienst: heffingsvrij vermogen {{nl.box3-heffingsvrij}} per persoon en een tarief van {{nl.box3-tarief}}.",
   intro: [
     "In box 3 betaal je belasting over je vermogen: spaargeld, beleggingen, een tweede woning en schulden. De Belastingdienst rekent niet met wat je echt verdiende, maar met een forfaitair rendement per soort vermogen.",
     "In 2026 is dat {{nl.box3-rendement[banktegoeden]}} voor banktegoeden, {{nl.box3-rendement[overige]}} voor beleggingen en andere bezittingen en {{nl.box3-rendement[schulden]}} voor schulden. Over het rendement betaal je {{nl.box3-tarief}} belasting, maar alleen over het deel van je vermogen boven het heffingsvrij vermogen.",

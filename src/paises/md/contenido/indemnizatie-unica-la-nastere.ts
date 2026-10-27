@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "md.indemnizatie-unica-la-nastere",
-  h1: "Indemnizația unică la nașterea copilului 2026",
-  title: "Indemnizația unică la naștere 2026: {{md.indemnizatie-nastere}}",
+  h1: "Indemnizația unică la nașterea copilului {{anio}}",
+  title: "Indemnizația unică la naștere {{anio}}: {{md.indemnizatie-nastere}}",
   description: "Pentru copiii născuți din {{md.indemnizatie-nastere#desde}}, mama primește {{md.indemnizatie-nastere}} pentru fiecare copil. Vedeți și indemnizația lunară de îngrijire.",
   intro: [
     "La nașterea unui copil, statul plătește mamei o indemnizație unică, pentru fiecare copil născut viu, inclusiv la gemeni.",

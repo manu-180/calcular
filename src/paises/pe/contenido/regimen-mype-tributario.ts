@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.rmt",
   h1: "Calculadora del Régimen MYPE Tributario (RMT)",
-  title: "Régimen MYPE Tributario 2026: pago a cuenta e impuesto",
+  title: "Régimen MYPE Tributario {{anio}}: pago a cuenta e impuesto",
   description:
     "Calcula tu pago a cuenta mensual del RMT ({{pe.pago-cuenta-rmt}} de tus ingresos) y el impuesto anual: 10 % hasta 15 UIT y 29.5 % sobre el exceso. Con la UIT de {{pe.uit}}.",
   intro: [

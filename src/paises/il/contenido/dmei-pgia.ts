@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.dmei-pgia",
   h1: "מחשבון דמי פגיעה בעבודה",
-  title: "מחשבון דמי פגיעה 2026: כמה משלם ביטוח לאומי אחרי תאונת עבודה",
+  title: "מחשבון דמי פגיעה {{anio}}: כמה משלם ביטוח לאומי אחרי תאונת עבודה",
   description:
     "חישוב דמי פגיעה לשכיר ולעצמאי: {{il.pgia-shiur[shiur]}} מההכנסה ב-3 החודשים שלפני הפגיעה חלקי 90, עד {{il.pgia[max-yomi]}} ליום ועד {{il.pgia-yamim[max]}}.",
   intro: [

@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.take-home-pay",
   h1: "Calculadora de cheque de pago",
-  title: "Calculadora de cheque de pago 2026: sueldo neto",
-  description: "Mira cuánto te queda en cada cheque de pago después del impuesto federal, el Seguro Social y Medicare de 2026, con 401(k) y seguro médico.",
+  title: "Calculadora de cheque de pago {{anio}}: sueldo neto",
+  description: "Mira cuánto te queda en cada cheque de pago después del impuesto federal, el Seguro Social y Medicare de {{anio}}, con 401(k) y seguro médico.",
   intro: [
     "Escribe tu salario y cada cuánto te pagan para ver lo que llega a tu cuenta después de los impuestos federales.",
     "El resultado usa los tramos de 2026, la deducción estándar de tu estado civil y la base salarial actual del Seguro Social de {{us.social-security-wage-base}}.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.lon-efter-skatt",
   h1: "Räkna ut lön efter skatt",
-  title: "Lön efter skatt 2026: räkna ut nettolönen i din kommun",
+  title: "Lön efter skatt {{anio}}: räkna ut nettolönen i din kommun",
   description:
     "Räkna ut din lön efter skatt med skattesatsen i din kommun. Samma skattetabell som på lönebeskedet, med jobbskatteavdrag och statlig skatt.",
   intro: [

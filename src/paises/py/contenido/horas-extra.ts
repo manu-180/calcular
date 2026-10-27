@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.horas-extra",
   h1: "Calculadora de horas extras en Paraguay",
-  title: "Horas extras Paraguay 2026: calculá cuánto te pagan",
+  title: "Horas extras Paraguay {{anio}}: calculá cuánto te pagan",
   description: "Calculá tus horas extras de día (recargo del {{py.recargo-hora-extra}}), de noche (del {{py.recargo-extra-nocturna}}) y en feriados (del {{py.recargo-feriado}}), según el Código del Trabajo. Gratis.",
   intro: [
     "En Paraguay la hora extra de día se paga con un recargo del {{py.recargo-hora-extra}}. La de noche lleva un {{py.recargo-extra-nocturna}} sobre la hora nocturna, y cada hora en un feriado, un {{py.recargo-feriado}}.",

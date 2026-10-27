@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.child-tax-credit",
   h1: "Calculadora del crédito tributario por hijos",
-  title: "Crédito tributario por hijos 2026: {{us.ctc-amount}} por hijo",
-  description: "Calcula tu crédito tributario por hijos de 2026: {{us.ctc-amount}} por hijo menor de 17, hasta {{us.actc-max}} reembolsable, y {{us.odc-amount}} por otros dependientes.",
+  title: "Crédito tributario por hijos {{anio}}: {{us.ctc-amount}} por hijo",
+  description: "Calcula tu crédito tributario por hijos de {{anio}}: {{us.ctc-amount}} por hijo menor de 17, hasta {{us.actc-max}} reembolsable, y {{us.odc-amount}} por otros dependientes.",
   intro: [
     "El crédito tributario por hijos baja tu impuesto federal por cada hijo menor de 17 años. Si el crédito es mayor que tu impuesto, una parte puede volver como reembolso.",
     "Escribe cuántos hijos tienes, tus ingresos y tu impuesto para ver cuánto del crédito recibes.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.impot-sur-les-societes",
   h1: "Calcul de l'impôt sur les sociétés en Tunisie",
-  title: "Impôt sur les sociétés Tunisie 2026 : taux IS et CSS",
+  title: "Impôt sur les sociétés Tunisie {{anio}} : taux IS et CSS",
   description:
     "Calculez l'impôt sur les sociétés tunisien au taux de {{tn.is-taux[normal]}}, {{tn.is-taux[reduit]}} ou {{tn.is-taux[majore]}}, avec la contribution sociale de solidarité et son minimum.",
   intro: [

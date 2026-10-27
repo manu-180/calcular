@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "et.severance-pay-calculator",
   h1: "Severance pay calculator Ethiopia",
-  title: "Severance pay calculator Ethiopia 2026",
+  title: "Severance pay calculator Ethiopia {{anio}}",
   description:
     "Work out severance pay under Articles 39 to 41 of the Labour Proclamation, with the extra pay for closure, redundancy or leaving because of the employer.",
   intro: [

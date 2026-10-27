@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.paaomatulovero",
   h1: "Pääomatulovero: myyntivoiton, osingon ja vuokratulon vero",
-  title: "Pääomatulovero 2026: laske myyntivoiton ja osingon vero",
+  title: "Pääomatulovero {{anio}}: laske myyntivoiton ja osingon vero",
   description:
     "Laske pääomatulovero osakkeiden myyntivoitosta, pörssiosingosta tai vuokratulosta. Vero on {{fi.paaomatulovero[0].tasa}} ja yli {{fi.paaomatulovero[1].desde}} menevältä osalta {{fi.paaomatulovero[1].tasa}}.",
   intro: [

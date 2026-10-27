@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uz.eng-kam-ish-haqi",
-  h1: "Eng kam ish haqi 2026: {{uz.mhtekm}}",
-  title: "Eng kam ish haqi 2026: oyiga {{uz.mhtekm}}",
+  h1: "Eng kam ish haqi {{anio}}: {{uz.mhtekm}}",
+  title: "Eng kam ish haqi {{anio}}: oyiga {{uz.mhtekm}}",
   description:
     "Mehnatga haq toʻlashning eng kam miqdori {{uz.mhtekm#desde}} sanasidan oyiga {{uz.mhtekm}}. Yarim stavka uchun eng kam maoshni va qoʻlga tegadigan summani toping.",
   intro: [

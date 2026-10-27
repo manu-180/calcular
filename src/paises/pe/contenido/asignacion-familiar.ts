@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.monto-asignacion-familiar",
-  h1: "Asignación familiar 2026: cuánto es y cuánto suma al año",
-  title: "Asignación familiar 2026: cuánto es y cuánto suma",
+  h1: "Asignación familiar {{anio}}: cuánto es y cuánto suma al año",
+  title: "Asignación familiar {{anio}}: cuánto es y cuánto suma",
   description:
     "La asignación familiar es el {{pe.asignacion-familiar}} de la remuneración mínima de {{pe.rmv}}. Mira cuánto suma al mes y al año con gratificaciones y CTS.",
   intro: [

@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.lahjaverolaskuri",
   h1: "Lahjaverolaskuri: paljonko lahjaveroa maksat",
-  title: "Lahjaverolaskuri 2026: laske lahjavero",
+  title: "Lahjaverolaskuri {{anio}}: laske lahjavero",
   description:
-    "Laske lahjavero lahjan arvosta ja veroluokasta. Vuodesta 2026 alle {{fi.lahjavero-1[1].desde}} lahja on verovapaa. Mukana kolmen vuoden aikana saadut lahjat.",
+    "Laske lahjavero lahjan arvosta ja veroluokasta. Vuodesta {{anio}} alle {{fi.lahjavero-1[1].desde}} lahja on verovapaa. Mukana kolmen vuoden aikana saadut lahjat.",
   intro: [
     "Lahjaveroa maksaa lahjan saaja. Laskuri laskee veron lahjan arvosta ja ottaa huomioon samalta lahjoittajalta aiemmin saadut lahjat.",
     "Veroluokka riippuu siitä, kuka lahjan antaa. Lähimmiltä sukulaisilta saadusta lahjasta vero on pienempi.",

@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ie.local-property-tax",
-  h1: "Local Property Tax calculator 2026",
-  title: "LPT calculator 2026: Local Property Tax by band",
-  description: "Work out your Local Property Tax for 2026 from your home's value on 1 November 2025, with the new bands and your council's Local Adjustment Factor.",
+  h1: "Local Property Tax calculator {{anio}}",
+  title: "LPT calculator {{anio}}: Local Property Tax by band",
+  description: "Work out your Local Property Tax for {{anio}} from your home's value on 1 November 2025, with the new bands and your council's Local Adjustment Factor.",
   intro: [
     "Local Property Tax (LPT) is a yearly tax on residential property. From 2026 it is based on the value of your home on 1 November 2025, for the valuation period from 2026 to 2030.",
     "Enter your home's value and your local authority to see your 2026 charge.",

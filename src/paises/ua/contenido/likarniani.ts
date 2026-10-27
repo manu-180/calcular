@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ua.likarniani",
-  h1: "Калькулятор лікарняних 2026",
-  title: "Розрахунок лікарняних 2026: скільки заплатять",
+  h1: "Калькулятор лікарняних {{anio}}",
+  title: "Розрахунок лікарняних {{anio}}: скільки заплатять",
   description:
     "Порахуйте лікарняні за середньоденною зарплатою і страховим стажем: від {{ua.likarniani[do-3]}} до {{ua.likarniani[ponad-8]}}, хто платить перші дні і скільки на руки.",
   intro: [

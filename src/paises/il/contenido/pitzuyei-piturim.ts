@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.pitzuyei-piturim",
   h1: "מחשבון פיצויי פיטורים",
-  title: "חישוב פיצויי פיטורים 2026: משכורת לכל שנת עבודה",
+  title: "חישוב פיצויי פיטורים {{anio}}: משכורת לכל שנת עבודה",
   description:
     "חישוב פיצויי פיטורים לפי החוק: משכורת חודשית אחת לכל שנת עבודה, כולל חלק יחסי משנה. עם החלק הפטור ממס עד {{il.pitzuyim-ptor}} לשנה.",
   intro: [

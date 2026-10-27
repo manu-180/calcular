@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.ektakti-eisfora-merismata",
   h1: "Special Defence Contribution on dividends",
-  title: "Cyprus dividend tax 2026: {{cy.ektakti-eisfora-amynas[merismata]}} defence contribution",
-  description: "Work out your net dividend after the Special Defence Contribution ({{cy.ektakti-eisfora-amynas[merismata]}} from 2026) and GeSY of {{cy.eisfores-gesy[eisodimatias]}}.",
+  title: "Cyprus dividend tax {{anio}}: {{cy.ektakti-eisfora-amynas[merismata]}} defence contribution",
+  description: "Work out your net dividend after the Special Defence Contribution ({{cy.ektakti-eisfora-amynas[merismata]}} from {{anio}}) and GeSY of {{cy.eisfores-gesy[eisodimatias]}}.",
   intro: [
     "Since the tax reform, the Special Defence Contribution on dividends for Cyprus tax residents is {{cy.ektakti-eisfora-amynas[merismata]}}.",
     "Dividends from older profits still pay the old rate. Choose which profits the dividend comes from.",

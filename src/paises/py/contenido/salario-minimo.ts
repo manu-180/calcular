@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "py.salario-minimo",
-  h1: "Salario mínimo en Paraguay 2026",
-  title: "Salario mínimo Paraguay 2026: {{py.minimos[mensual]}}, por día y hora",
+  h1: "Salario mínimo en Paraguay {{anio}}",
+  title: "Salario mínimo Paraguay {{anio}}: {{py.minimos[mensual]}}, por día y hora",
   description: "El salario mínimo vigente en Paraguay es {{py.minimos[mensual]}} por mes desde el {{py.minimos#desde}}. Mirá cuánto es por día, por hora, de noche y a tiempo parcial.",
   intro: [
     "El salario mínimo vigente en Paraguay es {{py.minimos[mensual]}} por mes, desde el {{py.minimos#desde}}. Es el mínimo para actividades diversas no especificadas en jornada diurna.",

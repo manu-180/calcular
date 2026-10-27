@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "md.salariul-mediu-pe-economie",
-  h1: "Salariul mediu pe economie 2026",
-  title: "Salariul mediu pe economie 2026: {{md.salariu-mediu}}",
-  description: "Salariul mediu lunar pe economie prognozat pentru 2026 este {{md.salariu-mediu}}. Comparați-vă salariul și vedeți plafonul pentru indemnizații.",
+  h1: "Salariul mediu pe economie {{anio}}",
+  title: "Salariul mediu pe economie {{anio}}: {{md.salariu-mediu}}",
+  description: "Salariul mediu lunar pe economie prognozat pentru {{anio}} este {{md.salariu-mediu}}. Comparați-vă salariul și vedeți plafonul pentru indemnizații.",
   intro: [
     "Guvernul aprobă în fiecare an salariul mediu lunar pe economie prognozat. Valoarea se folosește la plafoane, deduceri și indemnizații.",
     "Introduceți salariul dumneavoastră brut ca să vedeți cum se situează față de medie.",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraMonotributo } from "@/components/CalculadoraMonotributo";
 import { CATEGORIAS, RECATEGORIZACION, VIGENCIA } from "@/data/monotributo";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   title: "Calculadora de monotributo 2026: categoría y cuota",
   description:
     "Calculá tu categoría de monotributo y cuánto pagás por mes en 2026, con los valores oficiales de ARCA y el desglose de impuesto, jubilación y obra social.",
-  alternates: { canonical: "/monotributo" },
+  alternates: { canonical: "/monotributo", languages: hreflangHeadAR("/monotributo") },
 };
 
 const faqs = [

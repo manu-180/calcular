@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mu.end-of-year-bonus-calculator",
   h1: "End of year bonus calculator Mauritius",
-  title: "End of year bonus calculator Mauritius 2026",
+  title: "End of year bonus calculator Mauritius {{anio}}",
   description:
     "Work out your 13th month in Mauritius: one twelfth of what you earned this year, with {{mu.bonus-first-share}} paid before Christmas and the rest by 31 December.",
   intro: [

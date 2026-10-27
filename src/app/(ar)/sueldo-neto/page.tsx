@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraSueldoNeto } from "@/components/CalculadoraSueldoNeto";
 import { EmailCapture } from "@/components/EmailCapture";
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   title: "Calculadora de sueldo neto 2026: de bruto a en mano",
   description:
     "Calculá tu sueldo en mano con jubilación 11%, PAMI 3% y obra social 3%, tope SIPA, cuota sindical y Ganancias. También de neto a bruto.",
-  alternates: { canonical: "/sueldo-neto" },
+  alternates: { canonical: "/sueldo-neto", languages: hreflangHeadAR("/sueldo-neto") },
   openGraph: {
     images: [
       {

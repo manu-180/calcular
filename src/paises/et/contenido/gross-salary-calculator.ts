@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "et.gross-salary-calculator",
   h1: "Net to gross salary calculator Ethiopia",
-  title: "Net to gross salary calculator Ethiopia 2026",
+  title: "Net to gross salary calculator Ethiopia {{anio}}",
   description:
     "Agreed a net salary? Find the gross salary that leaves that amount after employment income tax and the {{et.pension-employee}} pension contribution.",
   intro: [

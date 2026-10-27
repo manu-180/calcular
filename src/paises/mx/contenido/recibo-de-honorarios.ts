@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.recibo-de-honorarios",
-  h1: "Calculadora de recibo de honorarios con retenciones 2026",
-  title: "Recibo de honorarios 2026: IVA y retenciones",
+  h1: "Calculadora de recibo de honorarios con retenciones {{anio}}",
+  title: "Recibo de honorarios {{anio}}: IVA y retenciones",
   description:
     "Calcula tu factura de honorarios: IVA, retención de ISR del {{mx.retencion-isr-honorarios}} (o {{mx.retencion-isr-resico}} en RESICO) y retención de dos terceras partes del IVA.",
   intro: [

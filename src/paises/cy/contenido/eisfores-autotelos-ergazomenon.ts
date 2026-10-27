@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy.eisfores-autotelos-ergazomenon",
   h1: "Εισφορές αυτοτελώς εργαζομένων",
-  title: "Εισφορές αυτοτελώς εργαζομένων 2026: ΚΑ και ΓεΣΥ",
+  title: "Εισφορές αυτοτελώς εργαζομένων {{anio}}: ΚΑ και ΓεΣΥ",
   description: "Υπολογίστε τις εισφορές σας ως αυτοτελώς εργαζόμενος: Κοινωνικές Ασφαλίσεις {{cy.eisfora-ka-autotelos}} με κατώτατο ανά κατηγορία και ΓεΣΥ {{cy.eisfores-gesy[autotelos]}}.",
   intro: [
     "Ως αυτοτελώς εργαζόμενος πληρώνετε μόνος σας τις Κοινωνικές Ασφαλίσεις και το ΓεΣΥ. Διαλέξτε την επαγγελματική σας κατηγορία και εισάγετε το εισόδημα του έτους.",

@@ -176,7 +176,8 @@ export function ldSitio(): Ld[] {
       url: `${origen}/`,
       name: NOMBRE_SITIO_INTL,
       alternateName: "Calcular Ya",
-      inLanguage: "es",
+      // La home global está en inglés (ADR 0002, D2); cada edición declara el suyo en su WebPage.
+      inLanguage: "en",
       publisher: { "@id": idOrganizacion() },
     },
     {
@@ -185,10 +186,16 @@ export function ldSitio(): Ld[] {
       name: NOMBRE_SITIO_INTL,
       url: `${origen}/`,
       logo: { "@type": "ImageObject", url: `${origen}/og/marca`, width: 512, height: 512 },
-      founder: { "@type": "Person", name: "Manuel Navarro" },
+      founder: ldPersona(),
       sameAs: [origenAR()],
     },
   ];
+}
+
+// La persona que responde por los números, con nombre y url (Google no resuelve un @id contra otra
+// página). La misma entidad que firma calcular.ar (src/lib/schema.ts, AUTOR): sameAs las une.
+export function ldPersona(): Ld {
+  return { "@type": "Person", name: "Manuel Navarro", url: `${origenPublicoIntl()}/sobre`, sameAs: [`${origenAR()}/sobre`] };
 }
 
 function areaServida(mercado: Mercado): Ld | undefined {

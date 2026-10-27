@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.calcul-salaire-net",
   h1: "حساب الأجر الصافي في الجزائر",
-  title: "الأجر الصافي في الجزائر 2026: من الإجمالي إلى الصافي",
+  title: "الأجر الصافي في الجزائر {{anio}}: من الإجمالي إلى الصافي",
   description:
     "احسب أجرك الصافي في الجزائر: اشتراك الضمان الاجتماعي بنسبة {{dz.cnas[salarie]}}، ثم الضريبة على الدخل الإجمالي حسب الجدول والتخفيض والتمهيد.",
   intro: [

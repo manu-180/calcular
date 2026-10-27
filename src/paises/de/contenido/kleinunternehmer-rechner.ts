@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "de.kleinunternehmer-rechner",
   h1: "Kleinunternehmer-Rechner nach § 19 UStG",
-  title: "Kleinunternehmerregelung 2026: Umsatzgrenzen prüfen",
+  title: "Kleinunternehmerregelung {{anio}}: Umsatzgrenzen prüfen",
   description:
     "Sind Sie Kleinunternehmer? Prüfen Sie die Umsatzgrenzen von {{de.kleinunternehmer-grenzen[vorjahr]}} im Vorjahr und {{de.kleinunternehmer-grenzen[laufendes-jahr]}} im laufenden Jahr.",
   intro: [

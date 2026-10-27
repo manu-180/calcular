@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ke.minimum-wage",
-  h1: "Minimum wage in Kenya 2026",
-  title: "Minimum wage Kenya 2026 by occupation and town",
-  description: "Find the 2026 minimum wage for your job and area. A general labourer in Nairobi earns at least {{ke.minimum-wage-monthly[general]@cities}} a month.",
+  h1: "Minimum wage in Kenya {{anio}}",
+  title: "Minimum wage Kenya {{anio}} by occupation and town",
+  description: "Find the {{anio}} minimum wage for your job and area. A general labourer in Nairobi earns at least {{ke.minimum-wage-monthly[general]@cities}} a month.",
   intro: [
     "Kenya sets a minimum wage for each occupation and each type of area. The latest order raised the rates from 1 May 2026.",
     "Choose where you work and your job to see the monthly and hourly minimum. You can also enter your pay to compare.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "at.ueberstunden-rechner",
   h1: "Überstundenrechner mit Zuschlag",
-  title: "Überstunden 2026 berechnen: Zuschlag und steuerfrei",
+  title: "Überstunden {{anio}} berechnen: Zuschlag und steuerfrei",
   description: "Was bringen Ihre Überstunden? Grundlohn, Zuschlag von {{at.ueberstundenzuschlag}}, steuerfreier Teil bis {{at.ueberstunden-steuerfrei[hoechstbetrag]}} Euro und Zeitausgleich.",
   intro: [
     "Überstunden liegen vor, wenn Sie über die tägliche oder wöchentliche Normalarbeitszeit hinaus arbeiten. Für jede Überstunde gebührt der Grundlohn plus ein Zuschlag von {{at.ueberstundenzuschlag}}.",

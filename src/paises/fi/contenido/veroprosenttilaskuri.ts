@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.veroprosenttilaskuri",
   h1: "Veroprosenttilaskuri: palkan, eläkkeen ja etuuden vero",
-  title: "Veroprosenttilaskuri 2026: laske veroprosentti",
+  title: "Veroprosenttilaskuri {{anio}}: laske veroprosentti",
   description:
     "Laske veroprosentti palkalle, eläkkeelle tai etuudelle. Laskuri käyttää valtion tuloveroasteikkoa, kuntasi veroprosenttia ja vuoden vähennyksiä.",
   intro: [

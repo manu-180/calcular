@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ua.kalkuliator-pdv",
   h1: "Калькулятор ПДВ онлайн: нарахувати або виділити ПДВ",
-  title: "Калькулятор ПДВ 2026: нарахувати і виділити 20 %",
+  title: "Калькулятор ПДВ {{anio}}: нарахувати і виділити 20 %",
   description:
     "Нарахуйте ПДВ на суму або виділіть його із суми з ПДВ за ставками {{ua.pdv[osnovna]}}, {{ua.pdv[silhosp]}} і {{ua.pdv[likarski]}}. Офіційні ставки ДПС.",
   intro: [

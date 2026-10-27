@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "li.steuerrechner",
   h1: "Steuerrechner Liechtenstein: Landes- und Gemeindesteuer",
-  title: "Steuerrechner Liechtenstein: Erwerbssteuer 2026",
+  title: "Steuerrechner Liechtenstein: Erwerbssteuer {{anio}}",
   description: "Erwerbssteuer in Liechtenstein nach dem Steuergesetz: Landessteuer von 1 bis 8 % plus Gemeindezuschlag, für Alleinstehende, Alleinerziehende, Ehepaare.",
   intro: [
     "Der Tarif der Landessteuer steigt in Stufen von 1 bis 8 %. Dazu kommt der Zuschlag Ihrer Wohngemeinde.",

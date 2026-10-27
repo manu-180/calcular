@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.sachar-minimum",
   h1: "מחשבון שכר מינימום",
-  title: "שכר מינימום 2026: לחודש, לשעה וליום עבודה",
+  title: "שכר מינימום {{anio}}: לחודש, לשעה וליום עבודה",
   description:
     "שכר המינימום בישראל הוא {{il.sachar-minimum[chodshi]}} לחודש ו-{{il.sachar-minimum[shaa-182]}} לשעה. חשבו כמה מגיע במשרה חלקית או לפי שעות.",
   intro: [

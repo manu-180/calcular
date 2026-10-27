@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.calculo-inss",
-  h1: "Cálculo do INSS 2026",
-  title: "Cálculo do INSS 2026: desconto por faixa",
-  description: "Veja quanto o INSS desconta do seu salário em 2026, faixa por faixa, com a tabela progressiva oficial e o teto de {{br.teto-inss}}.",
+  h1: "Cálculo do INSS {{anio}}",
+  title: "Cálculo do INSS {{anio}}: desconto por faixa",
+  description: "Veja quanto o INSS desconta do seu salário em {{anio}}, faixa por faixa, com a tabela progressiva oficial e o teto de {{br.teto-inss}}.",
   intro: [
     "Quem trabalha com carteira assinada contribui ao INSS todo mês. A empresa desconta o valor do salário e recolhe para a Previdência.",
     "Desde 2020 a contribuição é progressiva: cada faixa do salário paga uma alíquota diferente. Informe o salário e veja o desconto de cada faixa.",

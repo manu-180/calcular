@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.reseavdrag",
   h1: "Räkna ut reseavdrag för resor till jobbet",
-  title: "Reseavdrag 2026: räkna ut avdraget för resor till jobbet",
+  title: "Reseavdrag {{anio}}: räkna ut avdraget för resor till jobbet",
   description:
-    "Räkna ut ditt reseavdrag för 2026. Egen bil ger {{se.reseavdrag[egen-bil]}} per mil, och du får dra av kostnaden över {{se.reseavdrag[grans]}}.",
+    "Räkna ut ditt reseavdrag för {{anio}}. Egen bil ger {{se.reseavdrag[egen-bil]}} per mil, och du får dra av kostnaden över {{se.reseavdrag[grans]}}.",
   intro: [
     "Reser du långt till jobbet kan du få göra avdrag för resorna i deklarationen. Avdraget gäller bara den del av kostnaden som är högre än beloppsgränsen.",
     "För inkomståret 2026 höjdes gränsen till {{se.reseavdrag[grans]}}. Kalkylatorn räknar ut avdraget med Skatteverkets schablon för bil eller med vad kollektivtrafiken kostar.",

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ch.bundessteuer-rechner",
-  h1: "Bundessteuer-Rechner: direkte Bundessteuer 2026",
-  title: "Bundessteuer-Rechner 2026: direkte Bundessteuer berechnen",
+  h1: "Bundessteuer-Rechner: direkte Bundessteuer {{anio}}",
+  title: "Bundessteuer-Rechner {{anio}}: direkte Bundessteuer berechnen",
   description:
-    "Direkte Bundessteuer 2026 für Alleinstehende, Verheiratete und Familien berechnen: Tarif nach Art. 36 DBG, Abzug {{ch.dbst-kinderermaessigung}} je Kind, Grenzsteuersatz.",
+    "Direkte Bundessteuer {{anio}} für Alleinstehende, Verheiratete und Familien berechnen: Tarif nach Art. 36 DBG, Abzug {{ch.dbst-kinderermaessigung}} je Kind, Grenzsteuersatz.",
   intro: [
     "Die direkte Bundessteuer ist der Teil der Einkommenssteuer, der an den Bund geht. Kanton und Gemeinde erheben ihre eigenen Steuern dazu, die hier nicht enthalten sind.",
     "Der Tarif ist im ganzen Land gleich. Das Eidgenössische Finanzdepartement passt die Tarifstufen wegen der kalten Progression an, zuletzt für 2026 und 2027. Der Rechner nimmt den Tarif des Jahres, in dem Sie rechnen.",

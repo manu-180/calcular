@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gt.bono-14",
   h1: "Calculadora del Bono 14 en Guatemala",
-  title: "Calcular Bono 14 en Guatemala 2026: cuánto le toca",
+  title: "Calcular Bono 14 en Guatemala {{anio}}: cuánto le toca",
   description:
     "Calcule su Bono 14 completo o proporcional con las fechas exactas del período (1 de julio al 30 de junio). También si renunció o lo despidieron. Decreto 42-92.",
   intro: [

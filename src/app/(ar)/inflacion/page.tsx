@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { EmailCapture } from "@/components/EmailCapture";
 import { CalculadoraInflacion } from "@/components/CalculadoraInflacion";
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   title: "Calculadora de inflación: actualizar un monto por IPC",
   description:
     "Convertí cualquier monto del pasado a pesos de hoy con el IPC oficial del INDEC y mirá si tu sueldo le ganó a la inflación. Serie desde 2017.",
-  alternates: { canonical: "/inflacion" },
+  alternates: { canonical: "/inflacion", languages: hreflangHeadAR("/inflacion") },
 };
 
 export default function InflacionPage() {

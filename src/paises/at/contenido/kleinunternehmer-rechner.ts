@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "at.kleinunternehmer-rechner",
   h1: "Kleinunternehmerregelung prüfen",
-  title: "Kleinunternehmergrenze 2026: Rechner für Österreich",
+  title: "Kleinunternehmergrenze {{anio}}: Rechner für Österreich",
   description: "Sind Sie Kleinunternehmer? Prüfen Sie die Umsatzgrenze von {{at.kleinunternehmer[grenze]}} Euro und die Toleranz im laufenden Jahr. Ohne Umsatzsteuer auf Ihren Rechnungen.",
   intro: [
     "Kleine Unternehmen sind in Österreich von der Umsatzsteuer befreit, solange ihr Umsatz unter der Kleinunternehmergrenze bleibt. Sie stellen dann keine Umsatzsteuer in Rechnung und müssen keine Umsatzsteuervoranmeldung abgeben.",

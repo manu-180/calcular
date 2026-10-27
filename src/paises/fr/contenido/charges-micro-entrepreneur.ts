@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fr.charges-micro-entrepreneur",
   h1: "Charges d'un micro-entrepreneur : cotisations et impôt",
-  title: "Charges micro-entrepreneur 2026 : cotisations Urssaf",
+  title: "Charges micro-entrepreneur {{anio}} : cotisations Urssaf",
   description:
     "Calculez les cotisations sociales de votre micro-entreprise ({{fr.micro-cotisations[services]}} pour les services) et le versement libératoire de l'impôt, selon votre activité.",
   intro: [

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "no.skattekalkulator",
-  h1: "Skattekalkulator 2026: skatt, restskatt eller penger til gode",
-  title: "Skattekalkulator 2026: restskatt eller til gode",
+  h1: "Skattekalkulator {{anio}}: skatt, restskatt eller penger til gode",
+  title: "Skattekalkulator {{anio}}: restskatt eller til gode",
   description:
-    "Regn ut skatten for 2026 med lønn, renter og fradrag. Legg inn skatten som er trukket, så ser du om du får restskatt eller penger til gode.",
+    "Regn ut skatten for {{anio}} med lønn, renter og fradrag. Legg inn skatten som er trukket, så ser du om du får restskatt eller penger til gode.",
   intro: [
     "Kalkulatoren regner ut skatten for hele inntektsåret 2026: skatt på alminnelig inntekt, trinnskatt og trygdeavgift.",
     "Skriver du inn hvor mye skatt som er trukket av lønnen i år, ser du om du kan vente penger til gode eller restskatt i skatteoppgjøret.",

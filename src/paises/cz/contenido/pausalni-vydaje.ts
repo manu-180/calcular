@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.pausalni-vydaje",
   h1: "Paušální výdaje: výpočet daně a pojištění OSVČ",
-  title: "Paušální výdaje 2026: kalkulačka daně a odvodů OSVČ",
+  title: "Paušální výdaje {{anio}}: kalkulačka daně a odvodů OSVČ",
   description:
-    "Spočítejte daň z příjmů, sociální a zdravotní pojištění OSVČ s výdaji procentem z příjmů. Se slevou na poplatníka, dětmi a minimálními odvody 2026.",
+    "Spočítejte daň z příjmů, sociální a zdravotní pojištění OSVČ s výdaji procentem z příjmů. Se slevou na poplatníka, dětmi a minimálními odvody {{anio}}.",
   intro: [
     "Osoba samostatně výdělečně činná může místo skutečných nákladů uplatnit výdaje procentem z příjmů. Kalkulačka z ročních příjmů spočítá základ daně, daň a obě pojištění za celý rok.",
     "Výsledek odpovídá daňovému přiznání a přehledům pro ČSSZ a zdravotní pojišťovnu, pokud nemáte jiné příjmy.",

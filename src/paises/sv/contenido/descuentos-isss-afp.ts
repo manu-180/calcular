@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.descuentos-isss-afp",
   h1: "Calculadora de descuentos de ISSS y AFP",
-  title: "Descuento de ISSS y AFP 2026 en El Salvador: calculadora",
+  title: "Descuento de ISSS y AFP {{anio}} en El Salvador: calculadora",
   description: "Calcule cuánto le descuentan de AFP ({{sv.afp-trabajador}}) e ISSS ({{sv.isss-trabajador}}) y cuánto aporta su patrono. Con el techo de {{sv.isss-salario-maximo}} del ISSS.",
   intro: [
     "De su salario le descuentan el {{sv.afp-trabajador}} para la AFP y el {{sv.isss-trabajador}} para el ISSS. Su patrono aporta aparte el {{sv.afp-patrono}} a la AFP y el {{sv.isss-patrono}} al ISSS.",

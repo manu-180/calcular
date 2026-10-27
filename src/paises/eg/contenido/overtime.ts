@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.overtime",
   h1: "حساب أجر ساعات العمل الإضافية",
-  title: "حساب الساعات الإضافية 2026 بقانون العمل الجديد في مصر",
+  title: "حساب الساعات الإضافية {{anio}} بقانون العمل الجديد في مصر",
   description:
     "احسب أجر العمل الإضافي: زيادة {{eg.overtime[day]}} عن الساعة النهارية و{{eg.overtime[night]}} عن الليلية، وأجر يوم كامل إضافي عن يوم الراحة، وفق المادة 121 من قانون العمل.",
   intro: [

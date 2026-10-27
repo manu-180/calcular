@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.periode-d-essai",
   h1: "Période d'essai en Tunisie",
-  title: "Période d'essai Tunisie 2026 : durée et date de fin",
+  title: "Période d'essai Tunisie {{anio}} : durée et date de fin",
   description:
     "Calculez la fin de votre période d'essai en Tunisie selon la loi n° 2025-9 : {{tn.periode-essai[mois-max]}} mois au plus, un seul renouvellement et un délai de prévenance de 15 jours.",
   intro: [

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.salario-neto",
-  h1: "Calculadora de salario neto 2026 en Colombia",
-  title: "Calculadora de salario neto 2026 en Colombia",
+  h1: "Calculadora de salario neto {{anio}} en Colombia",
+  title: "Calculadora de salario neto {{anio}} en Colombia",
   description:
     "Escribe tu salario y mira cuánto te consignan: descuentos de salud ({{co.salud-trabajador}}), pensión, Fondo de Solidaridad y retención en la fuente, más el auxilio de transporte.",
   intro: [

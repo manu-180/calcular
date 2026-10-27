@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uz.kasallik-nafaqasi",
   h1: "Kasallik nafaqasini hisoblash (bolnichniy)",
-  title: "Kasallik nafaqasi 2026: bolnichniy pulini hisoblang",
+  title: "Kasallik nafaqasi {{anio}}: bolnichniy pulini hisoblang",
   description:
     "Vaqtincha mehnatga layoqatsizlik nafaqasini yangi tartib boʻyicha hisoblang: oʻrtacha ish haqi, sugʻurta staji ({{uz.kasallik-staj-koeffitsiyenti[6-96-oy]}} yoki {{uz.kasallik-staj-koeffitsiyenti[97-oy-va-ortiq]}}) va kunlar.",
   intro: [

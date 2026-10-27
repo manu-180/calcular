@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.utilidades",
-  h1: "Calculadora de utilidades 2026",
-  title: "Utilidades 2026 Ecuador: calcula tu parte del {{ec.utilidades}}",
+  h1: "Calculadora de utilidades {{anio}}",
+  title: "Utilidades {{anio}} Ecuador: calcula tu parte del {{ec.utilidades}}",
   description: "Calcula cuánto te toca de utilidades: el {{ec.utilidades-partes-iguales}} en partes iguales y el {{ec.utilidades-cargas}} según tus cargas familiares, en proporción al tiempo trabajado.",
   intro: [
     "Las utilidades son el {{ec.utilidades}} de la utilidad líquida (la ganancia) de la empresa, que se reparte entre el personal: el {{ec.utilidades-partes-iguales}} en partes iguales y el {{ec.utilidades-cargas}} según las cargas familiares. Te corresponden aunque no hayas trabajado el año completo.",

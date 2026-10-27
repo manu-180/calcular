@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "et.income-tax-calculator",
   h1: "Employment income tax calculator Ethiopia",
-  title: "Ethiopia income tax calculator 2026: salary tax bands",
+  title: "Ethiopia income tax calculator {{anio}}: salary tax bands",
   description:
     "Find the monthly income tax on your salary with the six bands of Proclamation 1395/2025, from 0% up to {{et.employment-income-tax[-1].tasa}}. See your band and its deduction.",
   intro: [

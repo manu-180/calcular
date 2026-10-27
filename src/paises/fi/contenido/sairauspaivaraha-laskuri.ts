@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.sairauspaivaraha-laskuri",
   h1: "Sairauspäivärahalaskuri: paljonko sairauspäivärahaa saat",
-  title: "Sairauspäiväraha laskuri 2026: laske Kelan päiväraha",
+  title: "Sairauspäiväraha laskuri {{anio}}: laske Kelan päiväraha",
   description:
     "Laske Kelan sairauspäiväraha vuosituloistasi. Näet päivärahan arkipäivältä, arvion kuukaudessa ja summan omavastuuajan jälkeen.",
   intro: [

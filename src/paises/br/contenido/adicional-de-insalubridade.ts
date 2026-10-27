@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.insalubridade",
-  h1: "Cálculo do adicional de insalubridade 2026",
-  title: "Adicional de insalubridade 2026: grau mínimo, médio e máximo",
-  description: "Calcule o adicional de insalubridade de 2026: {{br.insalubridade[minimo]}}, {{br.insalubridade[medio]}} ou {{br.insalubridade[maximo]}} do salário mínimo de {{br.salario-minimo}}.",
+  h1: "Cálculo do adicional de insalubridade {{anio}}",
+  title: "Adicional de insalubridade {{anio}}: grau mínimo, médio e máximo",
+  description: "Calcule o adicional de insalubridade de {{anio}}: {{br.insalubridade[minimo]}}, {{br.insalubridade[medio]}} ou {{br.insalubridade[maximo]}} do salário mínimo de {{br.salario-minimo}}.",
   intro: [
     "Quem trabalha exposto a agentes nocivos à saúde acima dos limites do Ministério do Trabalho recebe o adicional de insalubridade.",
     "O grau (mínimo, médio ou máximo) sai do laudo técnico. Escolha o grau e veja o valor por mês.",

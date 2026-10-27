@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.aportes-iess",
   h1: "Calculadora de aportes al IESS",
-  title: "Aportes al IESS 2026: personal {{ec.aporte-personal-iess}} y patronal",
-  description: "Calcula cuánto te descuentan para el IESS ({{ec.aporte-personal-iess}}) y cuánto paga tu empleador ({{ec.aporte-patronal-iess}}). Con el salario básico 2026 de {{ec.sbu}}.",
+  title: "Aportes al IESS {{anio}}: personal {{ec.aporte-personal-iess}} y patronal",
+  description: "Calcula cuánto te descuentan para el IESS ({{ec.aporte-personal-iess}}) y cuánto paga tu empleador ({{ec.aporte-patronal-iess}}). Con el salario básico {{anio}} de {{ec.sbu}}.",
   intro: [
     "Cada mes se descuenta de tu sueldo el aporte personal al IESS, y tu empleador paga además el aporte patronal. Los dos van a tus seguros de salud, pensiones, riesgos del trabajo y cesantía.",
     "Pon tu remuneración mensual y te mostramos cada parte.",

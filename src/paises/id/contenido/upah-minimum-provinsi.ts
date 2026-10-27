@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "id.upah-minimum-provinsi",
-  h1: "UMP 2026: Upah Minimum Provinsi",
-  title: "UMP 2026 per provinsi: upah minimum bulanan dan harian",
-  description: "Cek UMP 2026 provinsi Anda dari keputusan gubernur, lalu lihat setara upah harian dan per jam. Bandingkan dengan gaji Anda.",
+  h1: "UMP {{anio}}: Upah Minimum Provinsi",
+  title: "UMP {{anio}} per provinsi: upah minimum bulanan dan harian",
+  description: "Cek UMP {{anio}} provinsi Anda dari keputusan gubernur, lalu lihat setara upah harian dan per jam. Bandingkan dengan gaji Anda.",
   intro: [
     "Pilih provinsi untuk melihat upah minimum provinsi (UMP) 2026 yang berlaku sejak 1 Januari 2026.",
     "Kami hanya memuat provinsi yang keputusan gubernurnya sudah kami baca di situs resmi pemerintah provinsi. Provinsi lain akan ditambahkan setelah diperiksa.",

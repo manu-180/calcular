@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ke.net-salary-calculator",
   h1: "Net salary calculator Kenya",
-  title: "Net salary calculator Kenya 2026: gross to take-home pay",
+  title: "Net salary calculator Kenya {{anio}}: gross to take-home pay",
   description:
-    "See your take-home pay after PAYE, NSSF, SHIF at {{ke.shif-rate}} and the Housing Levy at {{ke.housing-levy-rate}}. Uses the KRA bands and the 2026 NSSF limits.",
+    "See your take-home pay after PAYE, NSSF, SHIF at {{ke.shif-rate}} and the Housing Levy at {{ke.housing-levy-rate}}. Uses the KRA bands and the {{anio}} NSSF limits.",
   intro: [
     "Enter your gross monthly salary and see what lands in your account. You get every deduction line by line, the same way it shows on your payslip.",
     "The calculator uses the current PAYE bands, the NSSF Year 4 limits, SHIF and the Affordable Housing Levy.",

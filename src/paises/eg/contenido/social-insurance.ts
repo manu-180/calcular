@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.social-insurance",
   h1: "حساب التأمينات الاجتماعية: حصة العامل وصاحب العمل",
-  title: "حساب التأمينات الاجتماعية 2026: حصة العامل وصاحب العمل",
+  title: "حساب التأمينات الاجتماعية {{anio}}: حصة العامل وصاحب العمل",
   description:
     "احسب اشتراك التأمينات على أجرك بقانون 148 لسنة 2019، بين الحد الأدنى {{eg.si-wage-min}} والحد الأقصى {{eg.si-wage-max}} لأجر الاشتراك.",
   intro: [
