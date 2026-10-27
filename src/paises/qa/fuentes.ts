@@ -46,7 +46,7 @@ export const detectores: readonly Detector[] = [
     carril: "norma",
     datos: ["qa.minimum-wage", "qa.domestic-worker", "qa.domestic-worker-hours"],
     metodo: "api-json",
-    url: busqueda("الأجور"),
+    url: busqueda("المستخدمين في المنازل"),
     traer(http) {
       return normasNuevas(http, this.url, /الحد الأدنى لأجور|الحد الأدنى للأجور|المستخدمين في المنازل|minimum wage|domestic workers/i);
     },
@@ -76,7 +76,7 @@ export const detectores: readonly Detector[] = [
     carril: "norma",
     datos: ["qa.property-registration-rates", "qa.property-registration-fixed"],
     metodo: "api-json",
-    url: busqueda("رسوم"),
+    url: busqueda("التسجيل العقاري"),
     traer(http) {
       return normasNuevas(http, this.url, /رسوم بعض الخدمات التي تقدمها وزارة العدل|التسجيل العقاري|fees for certain services provided by the Ministry of Justice|real estate registration/i);
     },
