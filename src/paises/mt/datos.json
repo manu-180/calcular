@@ -934,6 +934,57 @@
           }
         }
       ]
+    },
+    {
+      "id": "mt.rental-income-tax-rate",
+      "nombre": "Final tax on gross rental income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Income Tax Act (Cap. 123), article 31D(2)",
+            "url": "https://legislation.mt/eli/cap/123/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mt.maternity-leave",
+      "nombre": "Maternity leave",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "total": "Total maternity leave",
+        "paid": "Weeks paid in full by the employer",
+        "before": "Weeks before the expected date",
+        "after": "Weeks that must be taken after the birth"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": {
+            "total": 18,
+            "paid": 14,
+            "before": 4,
+            "after": 6
+          },
+          "fuente": {
+            "organismo": "Legislation Unit, Government of Malta",
+            "titulo": "Protection of Maternity (Employment) Regulations (S.L. 452.91), regulations 6 and 7",
+            "url": "https://legislation.mt/eli/sl/452.91/eng",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
     }
   ]
 }

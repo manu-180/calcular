@@ -14,6 +14,8 @@ import fixedTermContract from "./calculadoras/fixed-term-contract";
 import contenidoFixedTermContract from "./contenido/fixed-term-contract";
 import inflationCalculator from "./calculadoras/inflation-calculator";
 import contenidoInflationCalculator from "./contenido/inflation-calculator";
+import maternityLeave from "./calculadoras/maternity-leave";
+import contenidoMaternityLeave from "./contenido/maternity-leave";
 import minimumWage from "./calculadoras/minimum-wage";
 import contenidoMinimumWage from "./contenido/minimum-wage";
 import noticePeriod from "./calculadoras/notice-period";
@@ -30,6 +32,10 @@ import probationPeriod from "./calculadoras/probation-period";
 import contenidoProbationPeriod from "./contenido/probation-period";
 import propertyTransferTax from "./calculadoras/property-transfer-tax";
 import contenidoPropertyTransferTax from "./contenido/property-transfer-tax";
+import publicHolidays from "./calculadoras/public-holidays";
+import contenidoPublicHolidays from "./contenido/public-holidays";
+import rentalIncomeTax from "./calculadoras/rental-income-tax";
+import contenidoRentalIncomeTax from "./contenido/rental-income-tax";
 import sscCalculator from "./calculadoras/ssc-calculator";
 import contenidoSscCalculator from "./contenido/ssc-calculator";
 import stampDutyCalculator from "./calculadoras/stamp-duty-calculator";
@@ -57,6 +63,7 @@ export default definirPais({
     { definicion: employerCost, contenido: contenidoEmployerCost, cliente: () => import("./calculadoras/employer-cost.cliente") },
     { definicion: fixedTermContract, contenido: contenidoFixedTermContract, cliente: () => import("./calculadoras/fixed-term-contract.cliente") },
     { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
+    { definicion: maternityLeave, contenido: contenidoMaternityLeave, cliente: () => import("./calculadoras/maternity-leave.cliente") },
     { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
     { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
     { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
@@ -65,6 +72,8 @@ export default definirPais({
     { definicion: pensionAge, contenido: contenidoPensionAge, cliente: () => import("./calculadoras/pension-age.cliente") },
     { definicion: probationPeriod, contenido: contenidoProbationPeriod, cliente: () => import("./calculadoras/probation-period.cliente") },
     { definicion: propertyTransferTax, contenido: contenidoPropertyTransferTax, cliente: () => import("./calculadoras/property-transfer-tax.cliente") },
+    { definicion: publicHolidays, contenido: contenidoPublicHolidays, cliente: () => import("./calculadoras/public-holidays.cliente") },
+    { definicion: rentalIncomeTax, contenido: contenidoRentalIncomeTax, cliente: () => import("./calculadoras/rental-income-tax.cliente") },
     { definicion: sscCalculator, contenido: contenidoSscCalculator, cliente: () => import("./calculadoras/ssc-calculator.cliente") },
     { definicion: stampDutyCalculator, contenido: contenidoStampDutyCalculator, cliente: () => import("./calculadoras/stamp-duty-calculator.cliente") },
     { definicion: statutoryBonus, contenido: contenidoStatutoryBonus, cliente: () => import("./calculadoras/statutory-bonus.cliente") },
