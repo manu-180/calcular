@@ -2,8 +2,14 @@ import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
 import salaryCalculator from "./calculadoras/salary-calculator";
 import contenidoSalaryCalculator from "./contenido/salary-calculator";
+import netToGrossCalculator from "./calculadoras/net-to-gross-calculator";
+import contenidoNetToGrossCalculator from "./contenido/net-to-gross-calculator";
+import weeklyPayCalculator from "./calculadoras/weekly-pay-calculator";
+import contenidoWeeklyPayCalculator from "./contenido/weekly-pay-calculator";
 import incomeTaxCalculator from "./calculadoras/income-tax-calculator";
 import contenidoIncomeTaxCalculator from "./contenido/income-tax-calculator";
+import bonusTaxCalculator from "./calculadoras/bonus-tax-calculator";
+import contenidoBonusTaxCalculator from "./contenido/bonus-tax-calculator";
 import nisCalculator from "./calculadoras/nis-calculator";
 import contenidoNisCalculator from "./contenido/nis-calculator";
 import healthSurchargeCalculator from "./calculadoras/health-surcharge-calculator";
@@ -35,7 +41,10 @@ export default definirPais({
   avisos,
   calculadoras: [
     { definicion: salaryCalculator, contenido: contenidoSalaryCalculator, cliente: () => import("./calculadoras/salary-calculator.cliente") },
+    { definicion: netToGrossCalculator, contenido: contenidoNetToGrossCalculator, cliente: () => import("./calculadoras/net-to-gross-calculator.cliente") },
+    { definicion: weeklyPayCalculator, contenido: contenidoWeeklyPayCalculator, cliente: () => import("./calculadoras/weekly-pay-calculator.cliente") },
     { definicion: incomeTaxCalculator, contenido: contenidoIncomeTaxCalculator, cliente: () => import("./calculadoras/income-tax-calculator.cliente") },
+    { definicion: bonusTaxCalculator, contenido: contenidoBonusTaxCalculator, cliente: () => import("./calculadoras/bonus-tax-calculator.cliente") },
     { definicion: nisCalculator, contenido: contenidoNisCalculator, cliente: () => import("./calculadoras/nis-calculator.cliente") },
     { definicion: healthSurchargeCalculator, contenido: contenidoHealthSurchargeCalculator, cliente: () => import("./calculadoras/health-surcharge-calculator.cliente") },
     { definicion: employerCostCalculator, contenido: contenidoEmployerCostCalculator, cliente: () => import("./calculadoras/employer-cost-calculator.cliente") },

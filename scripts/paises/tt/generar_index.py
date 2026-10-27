@@ -4,7 +4,10 @@ from pathlib import Path
 
 SLUGS = [
     "salary-calculator",
+    "net-to-gross-calculator",
+    "weekly-pay-calculator",
     "income-tax-calculator",
+    "bonus-tax-calculator",
     "nis-calculator",
     "health-surcharge-calculator",
     "employer-cost-calculator",

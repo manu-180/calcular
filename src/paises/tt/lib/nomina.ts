@@ -97,3 +97,39 @@ export function impuestoAnual(ingreso: number, nisAnual: number, pensionAnual: n
   const impuestoAlto = porcentaje(Math.max(0, imponible - tramo), v["tt.income-tax-higher-rate"]);
   return { deduccionNisPension, imponible, impuestoBajo, impuestoAlto, impuesto: impuestoBajo + impuestoAlto };
 }
+
+export type ValoresNomina = ValoresPaye & ValoresSurcharge & { "tt.nis-employee-monthly": readonly FilaEscala[] };
+
+export interface NominaMensual {
+  clase: number;
+  nisSemana: number;
+  surchargeSemana: number;
+  nis: number;
+  surcharge: number;
+  paye: number;
+  pension: number;
+  total: number;
+  neto: number;
+  anual: ImpuestoAnual;
+}
+
+/** Descuentos de un sueldo mensual: NIS y Health Surcharge por lunes del mes, PAYE como un doceavo del impuesto del año. */
+export function nominaMensual(
+  bruto: number,
+  lunes: LunesDelMes,
+  pension: number,
+  mayor60: boolean,
+  v: ValoresNomina,
+  redondear: (n: number) => number,
+): NominaMensual {
+  const semanas = semanasDelMes(lunes);
+  const escala = v["tt.nis-employee-monthly"];
+  const nisSemana = aporteSemanal(escala, bruto);
+  const surchargeSemana = mayor60 ? 0 : surchargeSemanal(bruto, true, v);
+  const nis = redondear(nisSemana * semanas);
+  const surcharge = redondear(surchargeSemana * semanas);
+  const anual = impuestoAnual(bruto * 12, nisSemana * SEMANAS_POR_ANIO, pension * 12, 0, v);
+  const paye = redondear(anual.impuesto / 12);
+  const total = redondear(nis + surcharge + paye + pension);
+  return { clase: claseNis(escala, bruto), nisSemana, surchargeSemana, nis, surcharge, paye, pension: redondear(pension), total, neto: redondear(bruto - total), anual };
+}

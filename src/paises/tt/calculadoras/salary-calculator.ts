@@ -1,16 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import {
-  aporteSemanal,
-  claseNis,
-  impuestoAnual,
-  OPCIONES_LUNES,
-  REQUIERE_NIS,
-  REQUIERE_PAYE,
-  REQUIERE_SURCHARGE,
-  SEMANAS_POR_ANIO,
-  semanasDelMes,
-  surchargeSemanal,
-} from "../lib/nomina";
+import { nominaMensual, OPCIONES_LUNES, REQUIERE_NIS, REQUIERE_PAYE, REQUIERE_SURCHARGE, SEMANAS_POR_ANIO } from "../lib/nomina";
 
 export default definirCalculadora({
   id: "tt.salary-calculator",
@@ -42,18 +31,8 @@ export default definirCalculadora({
   calcular(e, v, { redondear }) {
     if (e.bruto <= 0) throw new ErrorEntrada("Enter your gross monthly salary.", "bruto");
     if (e.pension < 0 || e.pension >= e.bruto) throw new ErrorEntrada("Enter a pension contribution below your gross salary.", "pension");
-    const semanas = semanasDelMes(e.lunes);
-    const escala = v["tt.nis-employee-monthly"];
-    const clase = claseNis(escala, e.bruto);
-    const nisSemana = aporteSemanal(escala, e.bruto);
-    const nis = redondear(nisSemana * semanas);
-    const surchargeSemana = e.mayor60 ? 0 : surchargeSemanal(e.bruto, true, v);
-    const surcharge = redondear(surchargeSemana * semanas);
-    const anual = impuestoAnual(e.bruto * 12, nisSemana * SEMANAS_POR_ANIO, e.pension * 12, 0, v);
-    const paye = redondear(anual.impuesto / 12);
-    const pension = redondear(e.pension);
-    const total = redondear(nis + surcharge + paye + pension);
-    const neto = redondear(e.bruto - total);
+    const n = nominaMensual(e.bruto, e.lunes, e.pension, e.mayor60, v, redondear);
+    const { clase, nis, surcharge, paye, pension, total, neto, anual } = n;
     const observaciones: string[] = [];
     if (clase === 0) observaciones.push("Your pay is below the lowest NIS earnings class, so the table has no contribution for it. Check with the NIBTT.");
     if (paye === 0) observaciones.push("Your yearly income stays within the personal allowance and deductions, so no PAYE is due.");
@@ -68,7 +47,7 @@ export default definirCalculadora({
       total,
       clase,
       imponible: redondear(anual.imponible),
-      netoAnual: redondear(e.bruto * 12 - (nisSemana + surchargeSemana) * SEMANAS_POR_ANIO - anual.impuesto - e.pension * 12),
+      netoAnual: redondear(e.bruto * 12 - (n.nisSemana + n.surchargeSemana) * SEMANAS_POR_ANIO - anual.impuesto - e.pension * 12),
       porcentajeNeto: (neto / e.bruto) * 100,
       observaciones,
     };
