@@ -42,6 +42,8 @@ import kursValyut from "./calculadoras/kurs-valyut";
 import contenidoKursValyut from "./contenido/kurs-valyut";
 import kalkulyatorInflyatsii from "./calculadoras/kalkulyator-inflyatsii";
 import contenidoKalkulyatorInflyatsii from "./contenido/kalkulyator-inflyatsii";
+import alimenty from "./calculadoras/alimenty";
+import contenidoAlimenty from "./contenido/alimenty";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -75,6 +77,7 @@ export default definirPais({
     { definicion: dekretnye, contenido: contenidoDekretnye, cliente: () => import("./calculadoras/dekretnye.cliente") },
     { definicion: kursValyut, contenido: contenidoKursValyut, cliente: () => import("./calculadoras/kurs-valyut.cliente") },
     { definicion: kalkulyatorInflyatsii, contenido: contenidoKalkulyatorInflyatsii, cliente: () => import("./calculadoras/kalkulyator-inflyatsii.cliente") },
+    { definicion: alimenty, contenido: contenidoAlimenty, cliente: () => import("./calculadoras/alimenty.cliente") },
   ],
   universales: "todas",
   novedades,

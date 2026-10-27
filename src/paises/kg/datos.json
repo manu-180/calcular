@@ -641,6 +641,64 @@
           }
         }
       ]
+    },
+    {
+      "id": "kg.alimenty-dolya",
+      "nombre": "Доля заработка на алименты (1/4, 1/3, 1/2): знаменатель",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "odin": "Один ребенок",
+        "dva": "Двое детей",
+        "tri": "Трое и более детей"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-04",
+          "valor": {
+            "odin": 4,
+            "dva": 3,
+            "tri": 2
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Семейный кодекс КР от 30 августа 2003 года № 201, статья 86",
+            "url": "https://cbd.minjust.gov.kg/3-21/edition/36036/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.alimenty-minimum-mzp",
+      "nombre": "Минимальные алименты для трудоспособного родителя, в минимальных зарплатах",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "odin": "Один ребенок",
+        "dva": "Двое детей",
+        "tri": "Трое и более детей"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-04",
+          "valor": {
+            "odin": 1,
+            "dva": 1.5,
+            "tri": 2
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Семейный кодекс КР от 30 августа 2003 года № 201, статья 86",
+            "url": "https://cbd.minjust.gov.kg/3-21/edition/36036/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
     }
   ]
 }

@@ -135,5 +135,6 @@ export const detectores: readonly Detector[] = [
     "kg.bolnichnye-porog-rp",
     "kg.dekretnye-rp",
   ]),
+  detectorAkta("kg.semeynyy-kodeks", "3-21", "Семейный кодекс", ["kg.alimenty-dolya", "kg.alimenty-minimum-mzp"]),
   detectorAkta("kg.raschetnyy-pokazatel", "6-2385", "Постановление Жогорку Кенеша о размере расчетного показателя", ["kg.rp"]),
 ];
