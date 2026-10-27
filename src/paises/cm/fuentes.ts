@@ -29,6 +29,11 @@ const DATOS_FISCAUX = [
   "cm.avantages-nature",
   "cm.rcm-taux",
   "cm.taxe-fonciere",
+  "cm.patente-taux",
+  "cm.patente-plancher",
+  "cm.patente-plafond",
+  "cm.timbre-automobile",
+  "cm.droits-mutation",
 ] as const;
 
 function aujourdhui(): FechaISO | null {

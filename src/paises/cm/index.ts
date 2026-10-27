@@ -32,6 +32,12 @@ import taxeFonciere from "./calculadoras/taxe-fonciere";
 import contenidoTaxeFonciere from "./contenido/taxe-fonciere";
 import congesPayes from "./calculadoras/conges-payes";
 import contenidoCongesPayes from "./contenido/conges-payes";
+import calculPatente from "./calculadoras/calcul-patente";
+import contenidoCalculPatente from "./contenido/calcul-patente";
+import vignetteAutomobile from "./calculadoras/vignette-automobile";
+import contenidoVignetteAutomobile from "./contenido/vignette-automobile";
+import droitsDeMutation from "./calculadoras/droits-de-mutation";
+import contenidoDroitsDeMutation from "./contenido/droits-de-mutation";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -61,6 +67,9 @@ export default definirPais({
     { definicion: salaireNetEnBrut, contenido: contenidoSalaireNetEnBrut, cliente: () => import("./calculadoras/salaire-net-en-brut.cliente") },
     { definicion: impotRevenusCapitauxMobiliers, contenido: contenidoImpotRevenusCapitauxMobiliers, cliente: () => import("./calculadoras/impot-revenus-capitaux-mobiliers.cliente") },
     { definicion: taxeFonciere, contenido: contenidoTaxeFonciere, cliente: () => import("./calculadoras/taxe-fonciere.cliente") },
+    { definicion: calculPatente, contenido: contenidoCalculPatente, cliente: () => import("./calculadoras/calcul-patente.cliente") },
+    { definicion: vignetteAutomobile, contenido: contenidoVignetteAutomobile, cliente: () => import("./calculadoras/vignette-automobile.cliente") },
+    { definicion: droitsDeMutation, contenido: contenidoDroitsDeMutation, cliente: () => import("./calculadoras/droits-de-mutation.cliente") },
     { definicion: congesPayes, contenido: contenidoCongesPayes, cliente: () => import("./calculadoras/conges-payes.cliente") },
   ],
   universales: "todas",

@@ -861,6 +861,167 @@
       ]
     },
     {
+      "id": "cm.patente-taux",
+      "nombre": "Taux de la contribution des patentes sur le chiffre d'affaires",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "grande": "Grande entreprise",
+        "moyenne": "Moyenne entreprise",
+        "petite": "Petite entreprise"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "grande": 0.159,
+            "moyenne": 0.283,
+            "petite": 0.494
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), livre troisième (fiscalité locale), article C 13",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.patente-plancher",
+      "nombre": "Contribution des patentes minimale",
+      "tipo": "mapa",
+      "unidad": "XAF",
+      "etiquetas": {
+        "grande": "Grande entreprise",
+        "moyenne": "Moyenne entreprise",
+        "petite": "Petite entreprise"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "grande": 5000000,
+            "moyenne": 141500,
+            "petite": 50000
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), livre troisième (fiscalité locale), article C 13",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.patente-plafond",
+      "nombre": "Contribution des patentes maximale",
+      "tipo": "mapa",
+      "unidad": "XAF",
+      "etiquetas": {
+        "grande": "Grande entreprise",
+        "moyenne": "Moyenne entreprise",
+        "petite": "Petite entreprise"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "grande": 2500000000,
+            "moyenne": 4500000,
+            "petite": 140000
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), livre troisième (fiscalité locale), article C 13",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.timbre-automobile",
+      "nombre": "Droit de timbre automobile annuel selon la puissance fiscale",
+      "tipo": "mapa",
+      "unidad": "XAF",
+      "etiquetas": {
+        "transport-2-7": "Transport public, 2 à 7 CV",
+        "transport-8-13": "Transport public, 8 à 13 CV",
+        "transport-14-20": "Transport public, 14 à 20 CV",
+        "transport-21": "Transport public, plus de 20 CV",
+        "autre-2-7": "Autres véhicules, 2 à 7 CV",
+        "autre-8-13": "Autres véhicules, 8 à 13 CV",
+        "autre-14-20": "Autres véhicules, 14 à 20 CV",
+        "autre-21": "Autres véhicules, plus de 20 CV",
+        "moto-2-roues": "Motocyclette à deux roues",
+        "moto-3-roues": "Motocyclette à trois roues"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "transport-2-7": 15000,
+            "transport-8-13": 25000,
+            "transport-14-20": 50000,
+            "transport-21": 150000,
+            "autre-2-7": 30000,
+            "autre-8-13": 50000,
+            "autre-14-20": 75000,
+            "autre-21": 200000,
+            "moto-2-roues": 10000,
+            "moto-3-roues": 15000
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), articles 597 et 598 ter",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.droits-mutation",
+      "nombre": "Droit de mutation d'immeubles selon la nature du bien",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "urbain-bati": "Immeuble urbain bâti",
+        "urbain-non-bati": "Terrain urbain non bâti",
+        "rural-bati": "Immeuble rural bâti",
+        "rural-non-bati": "Terrain rural non bâti"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "urbain-bati": 10,
+            "urbain-non-bati": 5,
+            "rural-bati": 5,
+            "rural-non-bati": 2
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), livre troisième (fiscalité locale), article C 57",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
       "id": "cm.conges-jours-par-mois",
       "nombre": "Congé payé acquis par mois de service effectif",
       "tipo": "mapa",
