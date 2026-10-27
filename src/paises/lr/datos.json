@@ -1,0 +1,530 @@
+{
+  "mercado": "lr",
+  "datos": [
+    {
+      "id": "lr.pit-bands",
+      "nombre": "Personal income tax bands for employees",
+      "tipo": "escala",
+      "unidad": "LRD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 70000, "tasa": 0 },
+            { "desde": 70000, "hasta": 200000, "tasa": 5 },
+            { "desde": 200000, "hasta": 800000, "tasa": 15, "cuotaFija": 6500 },
+            { "desde": 800000, "hasta": null, "tasa": 25, "cuotaFija": 96500 }
+          ],
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Tax Education: Personal Income Tax (PIT) table",
+            "url": "https://revenue.lra.gov.lr/domestic-tax/tax-education/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "La página de la LRA no dice desde cuándo rige la tabla; se carga desde el inicio del año fiscal 2026. La Tax Amendment Act de diciembre de 2025 no toca el impuesto a la renta personal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.non-cash-exemption",
+      "nombre": "Annual exemption on non-cash benefits",
+      "tipo": "numero",
+      "unidad": "LRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Tax Education: How is PIT calculated? (Section 202-C)",
+            "url": "https://revenue.lra.gov.lr/domestic-tax/tax-education/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.gst-rate",
+      "nombre": "Goods and services tax (GST), standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Liberia Tax Amendment Act of December 2025, Sections 1000(b)(3) and 1021(b)(1)",
+            "url": "https://revenue.lra.gov.lr/wp-content/uploads/2026/04/LRC-Amendment-December-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "13 % sobre bienes y servicios, 0 % en exportaciones. La ley rige desde su publicación (1 de abril de 2026); la LRA la aplica desde el 1 de mayo de 2026 según su aviso del 7 de abril de 2026 (https://revenue.lra.gov.lr/important-revenue-noticeadjustment-to-goods-and-services-tax-gst-rates/)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.nasscorp-employee",
+      "nombre": "NASSCORP National Pension Scheme, employee contribution",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "NASSCORP",
+            "titulo": "FAQ: Who pays contributions under the National Pension Scheme?",
+            "url": "https://nasscorp.org.lr/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.nasscorp-employer",
+      "nombre": "NASSCORP National Pension Scheme, employer contribution",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "NASSCORP",
+            "titulo": "FAQ: Who pays contributions under the National Pension Scheme?",
+            "url": "https://nasscorp.org.lr/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.nasscorp-injury",
+      "nombre": "NASSCORP Employment Injury Scheme, employer contribution",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "NASSCORP",
+            "titulo": "FAQ: Who pays the contribution under the Employment Injury Scheme?",
+            "url": "https://nasscorp.org.lr/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.pension-base-rate",
+      "nombre": "NASSCORP retirement pension, base rate of average monthly earnings",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "NASSCORP",
+            "titulo": "FAQ: How is my pension calculated?",
+            "url": "https://nasscorp.org.lr/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.pension-increment",
+      "nombre": "NASSCORP retirement pension, increase for every 10 extra monthly contributions",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "NASSCORP",
+            "titulo": "FAQ: How is my pension calculated?",
+            "url": "https://nasscorp.org.lr/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.pension-min-months",
+      "nombre": "NASSCORP retirement pension, minimum monthly contributions by year of birth",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "before-1980": "Born before 1980",
+        "from-1980": "Born in 1980 or later"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "before-1980": 100, "from-1980": 144 },
+          "fuente": {
+            "organismo": "NASSCORP",
+            "titulo": "FAQ: What are the conditions to receive my Retirement Pension?",
+            "url": "https://nasscorp.org.lr/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.pension-age",
+      "nombre": "NASSCORP retirement age",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "NASSCORP",
+            "titulo": "FAQ: What are the conditions to receive my Retirement Pension?",
+            "url": "https://nasscorp.org.lr/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.pension-grant-months",
+      "nombre": "NASSCORP retirement grant, minimum monthly contributions",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "NASSCORP",
+            "titulo": "FAQ: What are the conditions to receive my Retirement Pension?",
+            "url": "https://nasscorp.org.lr/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.real-property-rates",
+      "nombre": "Real property tax rates on developed property",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "residential": "Residential property",
+        "commercial": "Commercial or industrial property",
+        "farm-urban": "Farmland within urban areas",
+        "farm-rural": "Farm outside urban areas",
+        "public-commercial": "Commercial building on public land",
+        "public-residential": "Residential building on public land"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "residential": 0.25,
+            "commercial": 1.5,
+            "farm-urban": 0.33,
+            "farm-rural": 0.25,
+            "public-commercial": 1,
+            "public-residential": 0.14
+          },
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Real Property Taxes",
+            "url": "https://revenue.lra.gov.lr/real-property-taxes/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Las tasas de terrenos baldíos no se cargaron: la misma página da dos valores distintos para lotes urbanos (5 % y 3,5 %)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.withholding-rates",
+      "nombre": "Monthly withholding tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "rent-resident": "Rent paid to a resident landlord",
+        "rent-non-resident": "Rent paid to a non-resident landlord",
+        "interest-dividends": "Interest and dividends",
+        "board-resident": "Board and management fees, resident",
+        "board-non-resident": "Board and management fees, non-resident",
+        "services": "Payment for services",
+        "contracts": "Contracts on services rendered",
+        "gambling": "Gambling winnings"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rent-resident": 10,
+            "rent-non-resident": 15,
+            "interest-dividends": 15,
+            "board-resident": 10,
+            "board-non-resident": 15,
+            "services": 6,
+            "contracts": 10,
+            "gambling": 20
+          },
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Tax Education: Monthly Withholding Taxes",
+            "url": "https://revenue.lra.gov.lr/domestic-tax/tax-education/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.presumptive-rates",
+      "nombre": "Quarterly presumptive and advance tax rates on turnover",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "small": "Small Tax Division (turnover below L$3,000,000)",
+        "medium-large": "Medium and Large Tax Divisions"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "small": 4, "medium-large": 2 },
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Tax Education: Business Income Tax (BIT) and quarterly taxes",
+            "url": "https://revenue.lra.gov.lr/domestic-tax/tax-education/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.small-turnover-limit",
+      "nombre": "Annual turnover limit of the Small Tax Division",
+      "tipo": "numero",
+      "unidad": "LRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3000000,
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Tax Education: Business Income Tax (BIT)",
+            "url": "https://revenue.lra.gov.lr/domestic-tax/tax-education/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.corporate-rates",
+      "nombre": "Corporate income tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "regular": "Regular corporate income tax",
+        "mining": "Mining",
+        "petroleum": "Petroleum project",
+        "rice": "Rice production"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": { "regular": 25, "mining": 30, "petroleum": 30, "rice": 15 },
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Tax Education: Annual taxes",
+            "url": "https://revenue.lra.gov.lr/domestic-tax/tax-education/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.excise-specific",
+      "nombre": "Specific excise tax rates (US$ per unit)",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "beer": "Beer, wine and other fermented drinks (per litre)",
+        "spirits": "Spirits and liqueurs (per litre)",
+        "juice": "Juices (per litre)",
+        "water-imported": "Unsweetened water, imported (per litre)",
+        "water-local": "Unsweetened water, made in Liberia (per litre)",
+        "sweetened": "Sugar-sweetened and flavoured drinks (per litre)",
+        "cigarettes": "Cigarettes (per pack of 20)",
+        "cigars": "Cigars, cheroots and cigarillos (per pack of 20)",
+        "tobacco": "Unmanufactured and other manufactured tobacco (per kg)",
+        "nicotine": "Heated tobacco and nicotine products (per kg)",
+        "vape": "Vaping liquid for e-cigarettes (per mL)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": {
+            "beer": 1,
+            "spirits": 3,
+            "juice": 0.45,
+            "water-imported": 0.15,
+            "water-local": 0,
+            "sweetened": 0.45,
+            "cigarettes": 0.5,
+            "cigars": 0.5,
+            "tobacco": 25,
+            "nicotine": 15,
+            "vape": 0.1
+          },
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Liberia Tax Amendment Act of December 2025, Schedule 1: Excise Tariff",
+            "url": "https://revenue.lra.gov.lr/wp-content/uploads/2026/04/LRC-Amendment-December-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Columna «Proposed» del Schedule 1 de la ley sancionada, igual para importado y local salvo el agua sin azúcar. La LRA aplica la ley desde el 1 de mayo de 2026. Desde el 1 de enero de 2027 las tasas se indexan cada año (Sección 1108(e))."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.minimum-wage",
+      "nombre": "Minimum wage (US$)",
+      "tipo": "mapa",
+      "unidad": "USD",
+      "etiquetas": {
+        "formal-hour": "Formal sector, per hour",
+        "formal-day": "Formal sector, per day",
+        "domestic-hour": "Domestic and casual workers, per hour",
+        "domestic-day": "Domestic and casual workers, per day"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": { "formal-hour": 0.68, "formal-day": 5.5, "domestic-hour": 0.43, "domestic-day": 3.5 },
+          "motivo": "Decent Work Act 2015, Sección 16.1A, leída en una copia de liblaw.org: el Ministerio de Trabajo no publica el texto en un sitio oficial (mol.gov.lr no responde). Además el Ministro de Trabajo habló en 2026 de un piso de US$143 por mes que no encontramos en ninguna orden publicada de la Minimum Wage Board."
+        }
+      ]
+    },
+    {
+      "id": "lr.overtime-premium",
+      "nombre": "Overtime premium above the normal rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "motivo": "Decent Work Act 2015, Sección 17.5(a)(ii), leída solo en una copia de liblaw.org; falta el texto en un sitio oficial del gobierno."
+        }
+      ]
+    },
+    {
+      "id": "lr.ordinary-hours",
+      "nombre": "Ordinary hours of work in a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 48,
+          "motivo": "Decent Work Act 2015, Sección 17.1, leída solo en una copia de liblaw.org; falta el texto en un sitio oficial del gobierno."
+        }
+      ]
+    },
+    {
+      "id": "lr.annual-leave-weeks",
+      "nombre": "Annual leave in weeks by months of continuous service",
+      "tipo": "escala",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 12, "tasa": 1 },
+            { "desde": 12, "hasta": 36, "tasa": 2 },
+            { "desde": 36, "hasta": 60, "tasa": 3 },
+            { "desde": 60, "hasta": null, "tasa": 4 }
+          ],
+          "motivo": "Decent Work Act 2015, Sección 18.1, leída solo en una copia de liblaw.org; falta el texto en un sitio oficial del gobierno. La columna tasa guarda semanas, no porcentaje."
+        }
+      ]
+    },
+    {
+      "id": "lr.severance-weeks",
+      "nombre": "Redundancy severance pay, weeks per completed year of service",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "motivo": "Decent Work Act 2015, Sección 14.5(c), leída solo en una copia de liblaw.org; falta el texto en un sitio oficial del gobierno."
+        }
+      ]
+    },
+    {
+      "id": "lr.notice-weeks",
+      "nombre": "Minimum notice of termination in weeks by months of service",
+      "tipo": "escala",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            { "desde": 0, "hasta": 3, "tasa": 1 },
+            { "desde": 3, "hasta": 6, "tasa": 2 },
+            { "desde": 6, "hasta": 12, "tasa": 3 },
+            { "desde": 12, "hasta": null, "tasa": 4 }
+          ],
+          "motivo": "Decent Work Act 2015, Sección 14.6(b), leída solo en una copia de liblaw.org con la tabla mal escaneada; falta el texto en un sitio oficial del gobierno. La columna tasa guarda semanas, no porcentaje."
+        }
+      ]
+    }
+  ]
+}
