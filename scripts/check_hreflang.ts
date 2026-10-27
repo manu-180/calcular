@@ -31,6 +31,9 @@ export interface PaginaConIdiomas {
 export function revisarClusteres(paginas: readonly PaginaConIdiomas[], publicadas: ReadonlySet<string>, xDefault: string, hreflangAR: boolean): string[] {
   const errores: string[] = [];
   const porUrl = new Map(paginas.map((p) => [p.url, p]));
+  // Una firma por página, no un JSON.stringify por cada par: con clústeres de 100 páginas eran 1,5 millones
+  // de serializaciones de 5 KB por modo (minutos y gigas de basura), ahora son 15 mil.
+  const firmas = new Map(paginas.map((p) => [p.url, p.idiomas ? JSON.stringify(Object.entries(p.idiomas).sort()) : ""]));
   const porConcepto = new Map<string, PaginaConIdiomas[]>();
   for (const p of paginas) porConcepto.set(p.concepto, [...(porConcepto.get(p.concepto) ?? []), p]);
 
@@ -54,7 +57,7 @@ export function revisarClusteres(paginas: readonly PaginaConIdiomas[], publicada
       const otra = porUrl.get(href);
       if (!otra) continue;
       if (!otra.idiomas || otra.idiomas[p.locale] !== p.url) errores.push(`${p.url} -> ${href}: no es recíproco`);
-      else if (JSON.stringify(Object.entries(otra.idiomas).sort()) !== JSON.stringify(Object.entries(p.idiomas).sort())) {
+      else if (firmas.get(otra.url) !== firmas.get(p.url)) {
         errores.push(`${p.url} y ${href}: el clúster no lista las mismas páginas`);
       }
     }
