@@ -16,6 +16,14 @@ import calculTva from "./calculadoras/calcul-tva";
 import contenidoCalculTva from "./contenido/calcul-tva";
 import heuresSupplementaires from "./calculadoras/heures-supplementaires";
 import contenidoHeuresSupplementaires from "./contenido/heures-supplementaires";
+import congesPayes from "./calculadoras/conges-payes";
+import contenidoCongesPayes from "./contenido/conges-payes";
+import impotSurLesSocietes from "./calculadoras/impot-sur-les-societes";
+import contenidoImpotSurLesSocietes from "./contenido/impot-sur-les-societes";
+import calculIfu from "./calculadoras/calcul-ifu";
+import contenidoCalculIfu from "./contenido/calcul-ifu";
+import vignetteAutomobile from "./calculadoras/vignette-automobile";
+import contenidoVignetteAutomobile from "./contenido/vignette-automobile";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -36,6 +44,10 @@ export default definirPais({
     { definicion: snmgAlgerie, contenido: contenidoSnmgAlgerie, cliente: () => import("./calculadoras/snmg-algerie.cliente") },
     { definicion: calculTva, contenido: contenidoCalculTva, cliente: () => import("./calculadoras/calcul-tva.cliente") },
     { definicion: heuresSupplementaires, contenido: contenidoHeuresSupplementaires, cliente: () => import("./calculadoras/heures-supplementaires.cliente") },
+    { definicion: congesPayes, contenido: contenidoCongesPayes, cliente: () => import("./calculadoras/conges-payes.cliente") },
+    { definicion: impotSurLesSocietes, contenido: contenidoImpotSurLesSocietes, cliente: () => import("./calculadoras/impot-sur-les-societes.cliente") },
+    { definicion: calculIfu, contenido: contenidoCalculIfu, cliente: () => import("./calculadoras/calcul-ifu.cliente") },
+    { definicion: vignetteAutomobile, contenido: contenidoVignetteAutomobile, cliente: () => import("./calculadoras/vignette-automobile.cliente") },
   ],
   universales: "todas",
   novedades,
