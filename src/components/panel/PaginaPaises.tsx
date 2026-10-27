@@ -43,6 +43,12 @@ const ORDENES: { clave: Orden; texto: string }[] = [
 const MIN_VISITAS_CONVERSION = 20;
 
 const alfabetico = new Intl.Collator("es");
+// Lo cobrado en cada moneda. ingresosUsd queda en 0 cuando la venta no tiene cotización (p. ej. pesos
+// sin dólar del día): el país igual vendió y la plata se ve en su moneda.
+const plataDe = (p: Pais) => {
+  const partes = p.ingresos.filter((i) => i.monto > 0).map((i) => importe(i.monto, i.moneda));
+  return partes.length ? partes.join(" + ") : p.ingresosUsd > 0 ? dolares(p.ingresosUsd) : "";
+};
 const conversion = (p: Pais) => (p.visitantes > 0 ? p.ventas / p.visitantes : 0);
 const pct = (f: number) => porcentaje(f, f > 0 && f < 0.01 ? 2 : 1);
 
@@ -76,7 +82,7 @@ function armarPaises(datos: PanelDatos, nombre: (c: string) => string): { paises
 
 function ordenar(lista: Pais[], orden: Orden): Pais[] {
   const valor = (p: Pais) =>
-    orden === "conversion" ? (p.visitantes >= MIN_VISITAS_CONVERSION ? conversion(p) : -1) : orden === "ingresos" ? p.ingresosUsd : orden === "nombre" ? 0 : p[orden];
+    orden === "conversion" ? (p.visitantes >= MIN_VISITAS_CONVERSION ? conversion(p) : -1) : orden === "ingresos" ? p.ingresosUsd * 1e6 + p.ventas : orden === "nombre" ? 0 : p[orden];
   return [...lista].sort((a, b) => valor(b) - valor(a) || b.visitantes - a.visitantes || alfabetico.compare(a.nombre, b.nombre));
 }
 
@@ -94,8 +100,10 @@ export function PaginaPaises({ inicial, demo, nombres }: { inicial: PanelDatos; 
     const visitantes = paises.reduce((a, x) => a + x.visitantes, 0);
     const ventas = paises.reduce((a, x) => a + x.ventas, 0);
     const usd = paises.reduce((a, x) => a + x.ingresosUsd, 0);
+    const otras = new Map<string, number>();
+    for (const x of paises) for (const i of x.ingresos) if (i.moneda !== "USD" && i.monto > 0) otras.set(i.moneda, (otras.get(i.moneda) ?? 0) + i.monto);
     const banderas = new Set(paises.map((x) => x.pais ?? x.codigo)).size;
-    return { conVisitas: conVisitas.length, conVentas: paises.filter((x) => x.ventas > 0).length, visitantes, ventas, usd, banderas };
+    return { conVisitas: conVisitas.length, conVentas: paises.filter((x) => x.ventas > 0).length, visitantes, ventas, usd, otras: [...otras], banderas };
   }, [paises]);
 
   return (
@@ -184,7 +192,7 @@ function Resumen({
   inicio,
 }: {
   paises: Pais[];
-  totales: { conVisitas: number; conVentas: number; visitantes: number; ventas: number; usd: number };
+  totales: { conVisitas: number; conVentas: number; visitantes: number; ventas: number; usd: number; otras: [string, number][] };
   inicio: FilaMercado | null;
 }) {
   const cubiertos = paises.length ? totales.conVisitas / paises.length : 0;
@@ -208,8 +216,14 @@ function Resumen({
     },
     {
       etiqueta: "Ingresos",
-      valor: dolares(totales.usd),
-      nota: totales.usd > 0 ? "Todo pasado a dólares al día de cada venta" : "Cuando entre una venta, la ves acá",
+      valor: totales.usd === 0 && totales.otras.length ? importe(totales.otras[0][1], totales.otras[0][0]) : dolares(totales.usd),
+      nota: totales.otras.length
+        ? totales.usd === 0
+          ? `${totales.otras.length > 1 ? `Y ${totales.otras.slice(1).map(([m, n]) => importe(n, m)).join(" + ")}. ` : ""}Sin pasar a dólares todavía`
+          : `Más ${totales.otras.map(([m, n]) => importe(n, m)).join(" + ")} que todavía no se pasó a dólares`
+        : totales.usd > 0
+          ? "Todo pasado a dólares al día de cada venta"
+          : "Cuando entre una venta, la ves acá",
     },
   ];
   return (
@@ -251,8 +265,8 @@ function Destacados({ paises }: { paises: Pais[] }) {
     },
     {
       titulo: "Donde más plata entra",
-      pais: masPlata?.ingresosUsd ? masPlata : null,
-      dato: masPlata ? `${dolares(masPlata.ingresosUsd)} en ${masPlata.ventas === 1 ? "1 venta" : `${numero(masPlata.ventas)} ventas`}` : "",
+      pais: masPlata && (masPlata.ventas > 0 || masPlata.ingresosUsd > 0) ? masPlata : null,
+      dato: masPlata ? `${plataDe(masPlata) || "Sin importe"} en ${masPlata.ventas === 1 ? "1 venta" : `${numero(masPlata.ventas)} ventas`}` : "",
       vacio: "Sin ventas en este período.",
       icono: <IcoBolsa className="size-4" />,
     },
@@ -514,9 +528,9 @@ function CartaPais({ pais: x, puesto, tope, totalVisitas, href }: { pais: Pais; 
         </div>
         <div>
           <dt className="text-xs text-zinc-500">Ingresos</dt>
-          <dd className={`mt-0.5 font-semibold tabular-nums ${x.ingresosUsd ? "text-emerald-700" : "text-zinc-400"}`}>
-            {x.ingresosUsd ? dolares(x.ingresosUsd) : "—"}
-            {otras.map((i) => (
+          <dd className={`mt-0.5 font-semibold tabular-nums ${x.ingresosUsd || otras.length ? "text-emerald-700" : "text-zinc-400"}`}>
+            {x.ingresosUsd ? dolares(x.ingresosUsd) : otras.length ? importe(otras[0].monto, otras[0].moneda) : "—"}
+            {(x.ingresosUsd ? otras : otras.slice(1)).map((i) => (
               <span key={i.moneda} className="block text-[11px] font-normal text-zinc-500">
                 {importe(i.monto, i.moneda)}
               </span>
