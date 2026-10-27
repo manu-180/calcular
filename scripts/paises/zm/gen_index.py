@@ -26,6 +26,11 @@ for s in slugs:
     if c[0].isdigit():
         c = "c" + c
     C = c[0].upper() + c[1:]
+    cliente = f"{BASE}/calculadoras/{s}.cliente.tsx"
+    if not os.path.exists(cliente):
+        open(cliente, "w", encoding="utf-8", newline="\n").write(
+            f'"use client";\nimport {{ crearCalculadoraCliente }} from "@/motor/cliente";\nimport {c} from "./{s}";\nexport default crearCalculadoraCliente({c});\n'
+        )
     imp.append(f'import {c} from "./calculadoras/{s}";')
     imp.append(f'import contenido{C} from "./contenido/{s}";')
     filas.append(f'    {{ definicion: {c}, contenido: contenido{C}, cliente: () => import("./calculadoras/{s}.cliente") }},')
