@@ -98,6 +98,26 @@
       ]
     },
     {
+      "id": "qa.annual-leave-min-service",
+      "nombre": "Continuous service before annual leave is due (Labour Law, Article 79)",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2005-01-02",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Al Meezan, Qatar Legal Portal (Ministry of Justice)",
+            "titulo": "Labour Law No. 14 of 2004, consolidated text",
+            "url": "https://almeezan.qa/legislations/800cf3cc-7799-4405-a5eb-c16408300d73",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
       "id": "qa.annual-leave-threshold",
       "nombre": "Years of service for the longer annual leave (Labour Law, Article 79)",
       "tipo": "numero",
