@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   monedas: ["TTD"],
   simbolos: { TTD: "TT$" },
   zonaHoraria: "America/Port_of_Spain",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 7,
 };

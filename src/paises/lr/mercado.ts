@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["LRD", "USD"],
   zonaHoraria: "Africa/Monrovia",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   simbolos: { LRD: "L$" },
   escala: 200,
