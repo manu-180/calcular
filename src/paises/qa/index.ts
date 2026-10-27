@@ -10,10 +10,18 @@ import gratuityCalculator from "./calculadoras/gratuity-calculator";
 import contenidoGratuityCalculator from "./contenido/gratuity-calculator";
 import grsiaContributionCalculator from "./calculadoras/grsia-contribution-calculator";
 import contenidoGrsiaContributionCalculator from "./contenido/grsia-contribution-calculator";
+import maternityLeavePay from "./calculadoras/maternity-leave-pay";
+import contenidoMaternityLeavePay from "./contenido/maternity-leave-pay";
+import minimumWage from "./calculadoras/minimum-wage";
+import contenidoMinimumWage from "./contenido/minimum-wage";
 import noticePeriod from "./calculadoras/notice-period";
 import contenidoNoticePeriod from "./contenido/notice-period";
 import overtimeCalculator from "./calculadoras/overtime-calculator";
 import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
+import pensionCalculator from "./calculadoras/pension-calculator";
+import contenidoPensionCalculator from "./contenido/pension-calculator";
+import sickLeavePay from "./calculadoras/sick-leave-pay";
+import contenidoSickLeavePay from "./contenido/sick-leave-pay";
 import takeHomePay from "./calculadoras/take-home-pay";
 import contenidoTakeHomePay from "./contenido/take-home-pay";
 import datos from "./datos.json";
@@ -33,8 +41,12 @@ export default definirPais({
     { definicion: finalSettlement, contenido: contenidoFinalSettlement, cliente: () => import("./calculadoras/final-settlement.cliente") },
     { definicion: gratuityCalculator, contenido: contenidoGratuityCalculator, cliente: () => import("./calculadoras/gratuity-calculator.cliente") },
     { definicion: grsiaContributionCalculator, contenido: contenidoGrsiaContributionCalculator, cliente: () => import("./calculadoras/grsia-contribution-calculator.cliente") },
+    { definicion: maternityLeavePay, contenido: contenidoMaternityLeavePay, cliente: () => import("./calculadoras/maternity-leave-pay.cliente") },
+    { definicion: minimumWage, contenido: contenidoMinimumWage, cliente: () => import("./calculadoras/minimum-wage.cliente") },
     { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
     { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
+    { definicion: pensionCalculator, contenido: contenidoPensionCalculator, cliente: () => import("./calculadoras/pension-calculator.cliente") },
+    { definicion: sickLeavePay, contenido: contenidoSickLeavePay, cliente: () => import("./calculadoras/sick-leave-pay.cliente") },
     { definicion: takeHomePay, contenido: contenidoTakeHomePay, cliente: () => import("./calculadoras/take-home-pay.cliente") },
   ],
   universales: "todas",
