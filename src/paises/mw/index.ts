@@ -18,6 +18,14 @@ import winningsTaxCalculator from "./calculadoras/winnings-tax-calculator";
 import contenidoWinningsTaxCalculator from "./contenido/winnings-tax-calculator";
 import withholdingTaxCalculator from "./calculadoras/withholding-tax-calculator";
 import contenidoWithholdingTaxCalculator from "./contenido/withholding-tax-calculator";
+import fringeBenefitTaxCalculator from "./calculadoras/fringe-benefit-tax-calculator";
+import contenidoFringeBenefitTaxCalculator from "./contenido/fringe-benefit-tax-calculator";
+import presumptiveTaxCalculator from "./calculadoras/presumptive-tax-calculator";
+import contenidoPresumptiveTaxCalculator from "./contenido/presumptive-tax-calculator";
+import personalIncomeTaxCalculator from "./calculadoras/personal-income-tax-calculator";
+import contenidoPersonalIncomeTaxCalculator from "./contenido/personal-income-tax-calculator";
+import capitalGainsTaxCalculator from "./calculadoras/capital-gains-tax-calculator";
+import contenidoCapitalGainsTaxCalculator from "./contenido/capital-gains-tax-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -39,6 +47,10 @@ export default definirPais({
     { definicion: transferLevyCalculator, contenido: contenidoTransferLevyCalculator, cliente: () => import("./calculadoras/transfer-levy-calculator.cliente") },
     { definicion: winningsTaxCalculator, contenido: contenidoWinningsTaxCalculator, cliente: () => import("./calculadoras/winnings-tax-calculator.cliente") },
     { definicion: withholdingTaxCalculator, contenido: contenidoWithholdingTaxCalculator, cliente: () => import("./calculadoras/withholding-tax-calculator.cliente") },
+    { definicion: fringeBenefitTaxCalculator, contenido: contenidoFringeBenefitTaxCalculator, cliente: () => import("./calculadoras/fringe-benefit-tax-calculator.cliente") },
+    { definicion: presumptiveTaxCalculator, contenido: contenidoPresumptiveTaxCalculator, cliente: () => import("./calculadoras/presumptive-tax-calculator.cliente") },
+    { definicion: personalIncomeTaxCalculator, contenido: contenidoPersonalIncomeTaxCalculator, cliente: () => import("./calculadoras/personal-income-tax-calculator.cliente") },
+    { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
   ],
   universales: "todas",
   novedades,

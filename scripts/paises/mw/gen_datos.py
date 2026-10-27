@@ -245,7 +245,7 @@ series = {
             "nombre": "Consumer price index (1970 = 100)",
             "unidad": "numero",
             "frecuencia": "mensual",
-            "maxAntiguedadDias": 70,
+            "maxAntiguedadDias": 85,
             "fuente": F_CPI,
             "puntos": puntos_cpi,
         },
