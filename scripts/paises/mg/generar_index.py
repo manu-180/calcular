@@ -12,6 +12,10 @@ ORDEN = [
     "calcul-impot-sur-les-revenus",
     "calcul-ircm",
     "impot-plus-value-immobiliere",
+    "droits-de-mutation-immobiliere",
+    "droit-enregistrement-bail",
+    "droits-enregistrement-cession",
+    "droits-de-donation",
 ]
 
 

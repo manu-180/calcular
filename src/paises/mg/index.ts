@@ -6,6 +6,10 @@ import calculIrsa from "./calculadoras/calcul-irsa";
 import calculSalaireNet from "./calculadoras/calcul-salaire-net";
 import calculTva from "./calculadoras/calcul-tva";
 import convertisseurAriaryEuro from "./calculadoras/convertisseur-ariary-euro";
+import droitEnregistrementBail from "./calculadoras/droit-enregistrement-bail";
+import droitsDeDonation from "./calculadoras/droits-de-donation";
+import droitsDeMutationImmobiliere from "./calculadoras/droits-de-mutation-immobiliere";
+import droitsEnregistrementCession from "./calculadoras/droits-enregistrement-cession";
 import impotPlusValueImmobiliere from "./calculadoras/impot-plus-value-immobiliere";
 import impotSynthetique from "./calculadoras/impot-synthetique";
 import contenidoCalculImpotSurLesRevenus from "./contenido/calcul-impot-sur-les-revenus";
@@ -14,6 +18,10 @@ import contenidoCalculIrsa from "./contenido/calcul-irsa";
 import contenidoCalculSalaireNet from "./contenido/calcul-salaire-net";
 import contenidoCalculTva from "./contenido/calcul-tva";
 import contenidoConvertisseurAriaryEuro from "./contenido/convertisseur-ariary-euro";
+import contenidoDroitEnregistrementBail from "./contenido/droit-enregistrement-bail";
+import contenidoDroitsDeDonation from "./contenido/droits-de-donation";
+import contenidoDroitsDeMutationImmobiliere from "./contenido/droits-de-mutation-immobiliere";
+import contenidoDroitsEnregistrementCession from "./contenido/droits-enregistrement-cession";
 import contenidoImpotPlusValueImmobiliere from "./contenido/impot-plus-value-immobiliere";
 import contenidoImpotSynthetique from "./contenido/impot-synthetique";
 import datos from "./datos.json";
@@ -38,6 +46,10 @@ export default definirPais({
     { definicion: calculImpotSurLesRevenus, contenido: contenidoCalculImpotSurLesRevenus, cliente: () => import("./calculadoras/calcul-impot-sur-les-revenus.cliente") },
     { definicion: calculIrcm, contenido: contenidoCalculIrcm, cliente: () => import("./calculadoras/calcul-ircm.cliente") },
     { definicion: impotPlusValueImmobiliere, contenido: contenidoImpotPlusValueImmobiliere, cliente: () => import("./calculadoras/impot-plus-value-immobiliere.cliente") },
+    { definicion: droitsDeMutationImmobiliere, contenido: contenidoDroitsDeMutationImmobiliere, cliente: () => import("./calculadoras/droits-de-mutation-immobiliere.cliente") },
+    { definicion: droitEnregistrementBail, contenido: contenidoDroitEnregistrementBail, cliente: () => import("./calculadoras/droit-enregistrement-bail.cliente") },
+    { definicion: droitsEnregistrementCession, contenido: contenidoDroitsEnregistrementCession, cliente: () => import("./calculadoras/droits-enregistrement-cession.cliente") },
+    { definicion: droitsDeDonation, contenido: contenidoDroitsDeDonation, cliente: () => import("./calculadoras/droits-de-donation.cliente") },
   ],
   universales: "todas",
 });

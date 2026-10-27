@@ -24,7 +24,7 @@ export default definirContenido({
     },
     {
       pregunta: "Qui est soumis à l'IR plutôt qu'à l'impôt synthétique ?",
-      respuesta: "Les entreprises dont le chiffre d'affaires annuel atteint {{mg.is-seuil}}, les sociétés de capitaux et ceux qui optent pour le régime du réel.",
+      respuesta: "Les entreprises dont le chiffre d'affaires annuel atteint {{mg.is-seuil}}, et celles qui optent pour le régime du réel.",
     },
     {
       pregunta: "Existe-t-il des réductions d'impôt ?",
