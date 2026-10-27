@@ -10,6 +10,12 @@ import healthSurchargeCalculator from "./calculadoras/health-surcharge-calculato
 import contenidoHealthSurchargeCalculator from "./contenido/health-surcharge-calculator";
 import employerCostCalculator from "./calculadoras/employer-cost-calculator";
 import contenidoEmployerCostCalculator from "./contenido/employer-cost-calculator";
+import minimumWageCalculator from "./calculadoras/minimum-wage-calculator";
+import contenidoMinimumWageCalculator from "./contenido/minimum-wage-calculator";
+import maternityLeaveCalculator from "./calculadoras/maternity-leave-calculator";
+import contenidoMaternityLeaveCalculator from "./contenido/maternity-leave-calculator";
+import severanceTaxCalculator from "./calculadoras/severance-tax-calculator";
+import contenidoSeveranceTaxCalculator from "./contenido/severance-tax-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -27,6 +33,9 @@ export default definirPais({
     { definicion: nisCalculator, contenido: contenidoNisCalculator, cliente: () => import("./calculadoras/nis-calculator.cliente") },
     { definicion: healthSurchargeCalculator, contenido: contenidoHealthSurchargeCalculator, cliente: () => import("./calculadoras/health-surcharge-calculator.cliente") },
     { definicion: employerCostCalculator, contenido: contenidoEmployerCostCalculator, cliente: () => import("./calculadoras/employer-cost-calculator.cliente") },
+    { definicion: minimumWageCalculator, contenido: contenidoMinimumWageCalculator, cliente: () => import("./calculadoras/minimum-wage-calculator.cliente") },
+    { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
+    { definicion: severanceTaxCalculator, contenido: contenidoSeveranceTaxCalculator, cliente: () => import("./calculadoras/severance-tax-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
