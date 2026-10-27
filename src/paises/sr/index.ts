@@ -2,6 +2,8 @@ import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
 import brutoNettoSalaris from "./calculadoras/bruto-netto-salaris";
 import contenidoBrutoNettoSalaris from "./contenido/bruto-netto-salaris";
+import nettoNaarBrutoBerekenen from "./calculadoras/netto-naar-bruto-berekenen";
+import contenidoNettoNaarBrutoBerekenen from "./contenido/netto-naar-bruto-berekenen";
 import loonbelastingBerekenen from "./calculadoras/loonbelasting-berekenen";
 import contenidoLoonbelastingBerekenen from "./contenido/loonbelasting-berekenen";
 import inkomstenbelastingBerekenen from "./calculadoras/inkomstenbelasting-berekenen";
@@ -20,6 +22,14 @@ import vakantietoelageBerekenen from "./calculadoras/vakantietoelage-berekenen";
 import contenidoVakantietoelageBerekenen from "./contenido/vakantietoelage-berekenen";
 import bonusBelastingBerekenen from "./calculadoras/bonus-belasting-berekenen";
 import contenidoBonusBelastingBerekenen from "./contenido/bonus-belasting-berekenen";
+import uitkeringIneensBelasting from "./calculadoras/uitkering-ineens-belasting";
+import contenidoUitkeringIneensBelasting from "./contenido/uitkering-ineens-belasting";
+import hypotheekrenteaftrekBerekenen from "./calculadoras/hypotheekrenteaftrek-berekenen";
+import contenidoHypotheekrenteaftrekBerekenen from "./contenido/hypotheekrenteaftrek-berekenen";
+import huurwaardebelastingBerekenen from "./calculadoras/huurwaardebelasting-berekenen";
+import contenidoHuurwaardebelastingBerekenen from "./contenido/huurwaardebelasting-berekenen";
+import inflatieBerekenen from "./calculadoras/inflatie-berekenen";
+import contenidoInflatieBerekenen from "./contenido/inflatie-berekenen";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -33,6 +43,7 @@ export default definirPais({
   avisos,
   calculadoras: [
     { definicion: brutoNettoSalaris, contenido: contenidoBrutoNettoSalaris, cliente: () => import("./calculadoras/bruto-netto-salaris.cliente") },
+    { definicion: nettoNaarBrutoBerekenen, contenido: contenidoNettoNaarBrutoBerekenen, cliente: () => import("./calculadoras/netto-naar-bruto-berekenen.cliente") },
     { definicion: loonbelastingBerekenen, contenido: contenidoLoonbelastingBerekenen, cliente: () => import("./calculadoras/loonbelasting-berekenen.cliente") },
     { definicion: inkomstenbelastingBerekenen, contenido: contenidoInkomstenbelastingBerekenen, cliente: () => import("./calculadoras/inkomstenbelasting-berekenen.cliente") },
     { definicion: aovPremieBerekenen, contenido: contenidoAovPremieBerekenen, cliente: () => import("./calculadoras/aov-premie-berekenen.cliente") },
@@ -42,6 +53,10 @@ export default definirPais({
     { definicion: vakantiedagenBerekenen, contenido: contenidoVakantiedagenBerekenen, cliente: () => import("./calculadoras/vakantiedagen-berekenen.cliente") },
     { definicion: vakantietoelageBerekenen, contenido: contenidoVakantietoelageBerekenen, cliente: () => import("./calculadoras/vakantietoelage-berekenen.cliente") },
     { definicion: bonusBelastingBerekenen, contenido: contenidoBonusBelastingBerekenen, cliente: () => import("./calculadoras/bonus-belasting-berekenen.cliente") },
+    { definicion: uitkeringIneensBelasting, contenido: contenidoUitkeringIneensBelasting, cliente: () => import("./calculadoras/uitkering-ineens-belasting.cliente") },
+    { definicion: hypotheekrenteaftrekBerekenen, contenido: contenidoHypotheekrenteaftrekBerekenen, cliente: () => import("./calculadoras/hypotheekrenteaftrek-berekenen.cliente") },
+    { definicion: huurwaardebelastingBerekenen, contenido: contenidoHuurwaardebelastingBerekenen, cliente: () => import("./calculadoras/huurwaardebelasting-berekenen.cliente") },
+    { definicion: inflatieBerekenen, contenido: contenidoInflatieBerekenen, cliente: () => import("./calculadoras/inflatie-berekenen.cliente") },
   ],
   universales: "todas",
   novedades,
