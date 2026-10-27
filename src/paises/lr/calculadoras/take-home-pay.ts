@@ -1,5 +1,11 @@
 import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 import { impuestoAnual, tasaMarginal } from "../lib/impuestos";
+import series from "../series.json";
+
+// La PPA del Banco Mundial para Liberia está en dólares: la comparación entre países entra con el sueldo
+// en US$ y lo pasa a L$ con el último punto de compra del CBL que tenga el repo (lo actualiza el cron).
+const compra = series.series.find((s) => s.id === "lr.usd-lrd-buying")?.puntos.at(-1)?.[1];
+const TIPO_MUNDO = typeof compra === "number" ? compra : 0;
 
 export default definirCalculadora({
   id: "lr.take-home-pay",
@@ -73,5 +79,5 @@ export default definirCalculadora({
     { clave: "marginal", etiqueta: "Your top band rate", formato: "porcentaje", decimales: 0 },
     { clave: "tasa", etiqueta: "Exchange rate used (L$ per US$1)", formato: "numero", decimales: 4 },
   ],
-  mundo: { bruto: "salario", periodoBruto: "mes", neto: "neto", periodoNeto: "mes", entrada: { divisa: "lrd", beneficios: 0 } },
+  mundo: { bruto: "salario", periodoBruto: "mes", neto: "netoUsd", periodoNeto: "mes", entrada: { divisa: "usd", tipoCambio: TIPO_MUNDO, beneficios: 0 } },
 });
