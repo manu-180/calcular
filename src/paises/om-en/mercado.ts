@@ -7,5 +7,5 @@ export const mercado: MercadoEdicion = {
   locale: "en-OM",
   idioma: "en",
   trato: "tu",
-  estado: "interno",
+  estado: "publicado",
 };

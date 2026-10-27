@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["MZN"],
   zonaHoraria: "Africa/Maputo",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 64,
   simbolos: { MZN: "MT" },

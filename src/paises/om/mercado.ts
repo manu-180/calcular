@@ -11,7 +11,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["OMR"],
   zonaHoraria: "Asia/Muscat",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 3, modo: "mitad-arriba" },
   escala: 0.4,
 };
