@@ -15,7 +15,7 @@ export default definirContenido({
     "The entitlement applies once within every {{mw.maternity-cycle}}.",
     "The pay for the weeks of leave is your monthly pay times 12, divided by 52 and multiplied by the weeks.",
   ],
-  ejemplo: ["Leave starting on 2 November 2026 ends on 27 December 2026 and you are back on 28 December. On K300,000 a month the eight weeks are worth about K553,846."],
+  ejemplo: ["Leave starting on 2 November 2026 ends on 27 December 2026 and you are back on 28 December. On MK 300,000 a month the eight weeks are worth about MK 553,846."],
   faq: [
     {
       pregunta: "Do I keep my benefits while on leave?",

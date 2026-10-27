@@ -14,11 +14,11 @@ export default definirContenido({
     "The payer withholds {{mw.winnings-tax}} of the win before paying you.",
     "What you receive is the win less that tax.",
   ],
-  ejemplo: ["On a win of K500,000 the tax is K75,000 and you receive K425,000."],
+  ejemplo: ["On a win of MK 500,000 the tax is MK 75,000 and you receive MK 425,000."],
   faq: [
     {
       pregunta: "Is there still a tax-free amount on small wins?",
-      respuesta: "No. The thresholds of K100,000 for betting and K500,000 for lotteries were removed, so every win is taxed.",
+      respuesta: "No. The thresholds of MK 100,000 for betting and MK 500,000 for lotteries were removed, so every win is taxed.",
     },
     {
       pregunta: "Who sends the tax to the MRA?",

@@ -14,7 +14,7 @@ export default definirContenido({
     "To add VAT, multiply the price by {{mw.vat}} and add the result to the price.",
     "To take VAT out, divide the price that includes VAT by 1 plus the rate. What is left over is the VAT.",
   ],
-  ejemplo: ["A price of K10,000 before VAT carries K1,750 of VAT, so you pay K11,750. Taking VAT out of K11,750 gives back K10,000."],
+  ejemplo: ["A price of MK 10,000 before VAT carries MK 1,750 of VAT, so you pay MK 11,750. Taking VAT out of MK 11,750 gives back MK 10,000."],
   faq: [
     {
       pregunta: "When did VAT go up to 17.5%?",

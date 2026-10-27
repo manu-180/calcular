@@ -18,7 +18,7 @@ export default definirContenido({
     "Utilities, household items, travel and domestic services: the full cost.",
     "Fringe benefit tax is {{mw.fbt-rate}} of the taxable value.",
   ],
-  ejemplo: ["A car that cost K30,000,000 has a taxable value of K4,500,000 a year. The fringe benefit tax is K1,350,000, or K337,500 a quarter."],
+  ejemplo: ["A car that cost MK 30,000,000 has a taxable value of MK 4,500,000 a year. The fringe benefit tax is MK 1,350,000, or MK 337,500 a quarter."],
   faq: [
     {
       pregunta: "When is fringe benefit tax paid?",

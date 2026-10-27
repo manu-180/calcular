@@ -119,7 +119,7 @@ export const detectores: readonly Detector[] = [
     carril: "norma",
     datos: [...DATOS_MEDIDAS, "mw.tevet-rate"],
     metodo: "api-json",
-    url: `${MRA_API}/download/getAllDomestic?per_page=30&page=1`,
+    url: `${MRA_API}/download/getAllDomestic?per_page=10&page=1`,
     async traer(http) {
       const json = (await http.json(this.url, { encabezados: MRA_ENCABEZADOS })) as { data?: unknown };
       if (!Array.isArray(json?.data)) return null;

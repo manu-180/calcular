@@ -14,14 +14,14 @@ export default definirContenido({
     "Mobile money: transfers above {{mw.transfer-levy-threshold}} pay {{mw.transfer-levy-rate}} of the amount sent. Smaller transfers pay nothing.",
     "Bank transfers: every transfer through a bank's electronic system pays {{mw.transfer-levy-rate}} of the amount.",
   ],
-  ejemplo: ["Sending K250,000 by mobile money costs K125 of levy. Sending K50,000 by bank costs K25."],
+  ejemplo: ["Sending MK 250,000 by mobile money costs MK 125 of levy. Sending MK 50,000 by bank costs MK 25."],
   faq: [
     {
       pregunta: "Who pays the levy, the sender or the receiver?",
       respuesta: "The sender. The MRA notice says the levy is payable by the sender on the transaction amount.",
     },
     {
-      pregunta: "Is a mobile money transfer of exactly K100,000 charged?",
+      pregunta: "Is a mobile money transfer of exactly MK 100,000 charged?",
       respuesta: "No. Only mobile money transfers in excess of {{mw.transfer-levy-threshold}} are charged.",
     },
     {

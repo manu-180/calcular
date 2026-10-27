@@ -15,7 +15,7 @@ export default definirContenido({
     "Kwacha to dollars: divide the kwacha by the same rate.",
     "The rate in use is {{mw.usd}} per US dollar, from {{mw.usd#desde}}.",
   ],
-  ejemplo: ["At a middle rate of K1,734.0118, US$100 is K173,401.18."],
+  ejemplo: ["At a middle rate of MK 1,734.0118, US$100 is MK 173,401.18."],
   faq: [
     {
       pregunta: "Why is my bank's rate different?",

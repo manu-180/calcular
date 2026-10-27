@@ -30,7 +30,7 @@ export default definirCalculadora({
     const levy = aplica ? redondear(porcentaje(e.monto, v["mw.transfer-levy-rate"])) : 0;
     const observaciones = aplica
       ? []
-      : [`Mobile money transfers of up to K${umbral.toLocaleString("en-MW")} do not pay the levy.`];
+      : [`Mobile money transfers of up to MK ${umbral.toLocaleString("en-MW")} do not pay the levy.`];
     return { levy, total: redondear(e.monto + levy), observaciones };
   },
   resultado: [

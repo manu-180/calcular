@@ -15,7 +15,7 @@ export default definirContenido({
     "Pension: {{mw.pension-employee}} of your pay if you belong to your employer's scheme. Your employer adds its own share on top, which does not come out of your pay.",
     "Take-home pay is gross pay less PAYE and the pension contribution.",
   ],
-  ejemplo: ["On K500,000 a month PAYE is K99,000 and the pension contribution is K25,000. You take home K376,000."],
+  ejemplo: ["On MK 500,000 a month PAYE is MK 99,000 and the pension contribution is MK 25,000. You take home MK 376,000."],
   faq: [
     {
       pregunta: "How much does my employer put into my pension?",

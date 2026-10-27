@@ -15,7 +15,7 @@ export default definirContenido({
     "TEVET levy: {{mw.tevet-rate}} of the basic payroll, collected by the MRA for TEVETA.",
     "PAYE and the employee's own pension come out of gross pay, so they do not add to the cost.",
   ],
-  ejemplo: ["For basic pay of K500,000 the employer pays K50,000 into the pension and K5,000 of TEVET levy. The employee costs K555,000 a month."],
+  ejemplo: ["For basic pay of MK 500,000 the employer pays MK 50,000 into the pension and MK 5,000 of TEVET levy. The employee costs MK 555,000 a month."],
   faq: [
     {
       pregunta: "Is the TEVET levy deductible for income tax?",

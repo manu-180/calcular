@@ -15,7 +15,7 @@ export default definirContenido({
     "You can pay it in monthly instalments over up to twelve months.",
     "If it goes unpaid, an extra {{mw.tevet-penalty}} of the unpaid levy becomes due as a penalty.",
   ],
-  ejemplo: ["A business with a basic payroll of K60,000,000 a year owes K600,000, or K50,000 a month over twelve months."],
+  ejemplo: ["A business with a basic payroll of MK 60,000,000 a year owes MK 600,000, or MK 50,000 a month over twelve months."],
   faq: [
     {
       pregunta: "Who has to pay the TEVET levy?",

@@ -16,7 +16,7 @@ export default definirContenido({
     "Carriage and haulage, and contractors in the building industry: {{mw.wht-rates[haulage]}}.",
     "Supplies to traders and institutions: {{mw.wht-rates[supplies]}}. Sales of farm produce: {{mw.wht-rates[farm-produce]}} as a final tax.",
   ],
-  ejemplo: ["The MRA's own example: a transporter paid K500,000 for haulage has K50,000 withheld and receives K450,000."],
+  ejemplo: ["The MRA's own example: a transporter paid MK 500,000 for haulage has MK 50,000 withheld and receives MK 450,000."],
   faq: [
     {
       pregunta: "When do I send the tax to the MRA?",

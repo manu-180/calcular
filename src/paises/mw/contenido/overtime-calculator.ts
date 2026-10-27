@@ -15,7 +15,7 @@ export default definirContenido({
     "Day-off overtime, worked on a day you would otherwise be off, is paid at no less than {{mw.overtime-day-off}} times.",
     "Holiday overtime, worked on a public holiday, is paid at no less than {{mw.overtime-holiday}} times the normal hourly rate.",
   ],
-  ejemplo: ["At K1,000 an hour, ten hours of ordinary overtime earn K15,000. Eight hours on a public holiday earn another K16,000."],
+  ejemplo: ["At MK 1,000 an hour, ten hours of ordinary overtime earn MK 15,000. Eight hours on a public holiday earn another MK 16,000."],
   faq: [
     {
       pregunta: "How many hours can my employer make me work?",

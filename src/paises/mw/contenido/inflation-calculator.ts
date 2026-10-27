@@ -15,7 +15,7 @@ export default definirContenido({
     "Multiply your amount by that factor to bring it to today's prices.",
     "The latest index is for the month starting {{mw.cpi#desde}}.",
   ],
-  ejemplo: ["K100,000 in September 2025 has the same buying power as about K119,375 in September 2026."],
+  ejemplo: ["MK 100,000 in September 2025 has the same buying power as about MK 119,375 in September 2026."],
   faq: [
     {
       pregunta: "Where do the figures come from?",

@@ -18,7 +18,7 @@ export default definirContenido({
     "Each rate only applies to the slice of pay inside its band, so a pay rise never leaves you with less.",
   ],
   ejemplo: [
-    "On K500,000 a month the first K170,000 is tax free and the other K330,000 is taxed at 30%. PAYE is K99,000 and you keep K401,000, the same figures the MRA calculator gives.",
+    "On MK 500,000 a month the first MK 170,000 is tax free and the other MK 330,000 is taxed at 30%. PAYE is MK 99,000 and you keep MK 401,000, the same figures the MRA calculator gives.",
   ],
   faq: [
     {
@@ -27,7 +27,7 @@ export default definirContenido({
     },
     {
       pregunta: "What are the annual bands?",
-      respuesta: "The first K2,040,000 a year is tax free, the next K16,800,000 is taxed at 30%, the next K101,160,000 at 35% and anything above K120,000,000 at 40%. They are the monthly bands times twelve.",
+      respuesta: "The first MK 2,040,000 a year is tax free, the next MK 16,800,000 is taxed at 30%, the next MK 101,160,000 at 35% and anything above MK 120,000,000 at 40%. They are the monthly bands times twelve.",
     },
     {
       pregunta: "Is my pension contribution taken off before PAYE?",

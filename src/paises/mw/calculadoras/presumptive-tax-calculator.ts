@@ -16,7 +16,7 @@ export default definirCalculadora({
     const techo = tabla[tabla.length - 1].hasta ?? 0;
     if (e.ventas > techo) {
       throw new ErrorEntrada(
-        `Presumptive tax is only for businesses with a turnover up to K${techo.toLocaleString("en-MW")} a year. Above that the normal income tax rules apply.`,
+        `Presumptive tax is only for businesses with a turnover up to MK ${techo.toLocaleString("en-MW")} a year. Above that the normal income tax rules apply.`,
         "ventas",
       );
     }

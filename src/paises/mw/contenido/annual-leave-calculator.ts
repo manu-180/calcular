@@ -15,7 +15,7 @@ export default definirContenido({
     "If you worked only part of the year, you get leave in proportion to your service: months worked divided by 12.",
     "Leave pay is at least the wage you were earning right before the leave or before your job ended.",
   ],
-  ejemplo: ["After seven months on a five-day week you have earned 8.75 days. At K10,000 a day that is K87,500."],
+  ejemplo: ["After seven months on a five-day week you have earned 8.75 days. At MK 10,000 a day that is MK 87,500."],
   faq: [
     {
       pregunta: "When do I have to take my leave?",

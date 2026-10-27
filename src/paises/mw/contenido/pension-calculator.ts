@@ -15,7 +15,7 @@ export default definirContenido({
     "Your employer contributes at least {{mw.pension-employer}} on top of your salary.",
     "Both amounts go into the mandatory occupational pension scheme.",
   ],
-  ejemplo: ["On pensionable pay of K500,000 you put in K25,000 and your employer K50,000, K75,000 a month in total."],
+  ejemplo: ["On pensionable pay of MK 500,000 you put in MK 25,000 and your employer MK 50,000, MK 75,000 a month in total."],
   faq: [
     {
       pregunta: "Can the rates be higher?",

@@ -14,7 +14,7 @@ export default definirContenido({
     "The first {{mw.personal-tax-bands[0].hasta}} of taxable income a year is taxed at {{mw.personal-tax-bands[0].tasa}}.",
     "Everything above {{mw.personal-tax-bands[1].desde}} is taxed at {{mw.personal-tax-bands[1].tasa}}.",
   ],
-  ejemplo: ["On taxable income of K6,000,000 the first K2,040,000 is tax free and K3,960,000 is taxed at 30%. The tax is K1,188,000."],
+  ejemplo: ["On taxable income of MK 6,000,000 the first MK 2,040,000 is tax free and MK 3,960,000 is taxed at 30%. The tax is MK 1,188,000."],
   faq: [
     {
       pregunta: "Is salary taxed with these rates?",
@@ -22,11 +22,11 @@ export default definirContenido({
     },
     {
       pregunta: "Does this apply to a small business?",
-      respuesta: "A business with a turnover up to K12.5 million a year usually pays presumptive tax instead, unless it chose the normal rules.",
+      respuesta: "A business with a turnover up to MK 12.5 million a year usually pays presumptive tax instead, unless it chose the normal rules.",
     },
     {
       pregunta: "What rate do companies pay?",
-      respuesta: "Companies pay corporate income tax: 30% on annual taxable income up to K5 billion and 40% in excess of K5 billion, under the 2025 amendments.",
+      respuesta: "Companies pay corporate income tax: 30% on annual taxable income up to MK 5 billion and 40% in excess of MK 5 billion, under the 2025 amendments.",
     },
   ],
   glosario: [

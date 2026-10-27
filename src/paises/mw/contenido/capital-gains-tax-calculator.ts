@@ -17,7 +17,7 @@ export default definirContenido({
     "Provisional tax: {{mw.cgt-provisional-rate}} of the gain. A loss pays no provisional tax.",
   ],
   ejemplo: [
-    "The MRA's example: a house that cost K1,000,000 to build in March 1992 and sold for K85,000,000 in June 2014. The factor is 73.95, the adjusted cost K73,950,000, the gain K11,050,000 and the provisional tax K3,315,000.",
+    "The MRA's example: a house that cost MK 1,000,000 to build in March 1992 and sold for MK 85,000,000 in June 2014. The factor is 73.95, the adjusted cost MK 73,950,000, the gain MK 11,050,000 and the provisional tax MK 3,315,000.",
   ],
   faq: [
     {

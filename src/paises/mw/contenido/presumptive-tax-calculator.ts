@@ -17,7 +17,7 @@ export default definirContenido({
     "Above {{mw.presumptive-tax[3].desde}} and up to {{mw.presumptive-tax[3].hasta}}: {{mw.presumptive-tax[3].cuotaFija}} a year.",
     "You pay it in four quarterly instalments, due by the 14th of the month after each quarter.",
   ],
-  ejemplo: ["A shop with a turnover of K8,000,000 a year pays K170,000, or K42,500 each quarter."],
+  ejemplo: ["A shop with a turnover of MK 8,000,000 a year pays MK 170,000, or MK 42,500 each quarter."],
   faq: [
     {
       pregunta: "Which income is left out?",

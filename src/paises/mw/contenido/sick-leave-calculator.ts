@@ -15,7 +15,7 @@ export default definirContenido({
     "After that come up to {{mw.sick-half-pay}} on half pay.",
     "Sick leave beyond those weeks is not paid under the Act, though your contract can give more.",
   ],
-  ejemplo: ["Six weeks off sick at K50,000 a week: four weeks on full pay (K200,000) and two on half pay (K50,000), K250,000 in total."],
+  ejemplo: ["Six weeks off sick at MK 50,000 a week: four weeks on full pay (MK 200,000) and two on half pay (MK 50,000), MK 250,000 in total."],
   faq: [
     {
       pregunta: "Do I need a doctor's note?",
