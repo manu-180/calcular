@@ -24,6 +24,14 @@ import calculIfu from "./calculadoras/calcul-ifu";
 import contenidoCalculIfu from "./contenido/calcul-ifu";
 import vignetteAutomobile from "./calculadoras/vignette-automobile";
 import contenidoVignetteAutomobile from "./contenido/vignette-automobile";
+import droitsEnregistrement from "./calculadoras/droits-enregistrement";
+import contenidoDroitsEnregistrement from "./contenido/droits-enregistrement";
+import irgRevenusLocatifs from "./calculadoras/irg-revenus-locatifs";
+import contenidoIrgRevenusLocatifs from "./contenido/irg-revenus-locatifs";
+import irgActivitesOccasionnelles from "./calculadoras/irg-activites-occasionnelles";
+import contenidoIrgActivitesOccasionnelles from "./contenido/irg-activites-occasionnelles";
+import calculIrgPrime from "./calculadoras/calcul-irg-prime";
+import contenidoCalculIrgPrime from "./contenido/calcul-irg-prime";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +56,10 @@ export default definirPais({
     { definicion: impotSurLesSocietes, contenido: contenidoImpotSurLesSocietes, cliente: () => import("./calculadoras/impot-sur-les-societes.cliente") },
     { definicion: calculIfu, contenido: contenidoCalculIfu, cliente: () => import("./calculadoras/calcul-ifu.cliente") },
     { definicion: vignetteAutomobile, contenido: contenidoVignetteAutomobile, cliente: () => import("./calculadoras/vignette-automobile.cliente") },
+    { definicion: droitsEnregistrement, contenido: contenidoDroitsEnregistrement, cliente: () => import("./calculadoras/droits-enregistrement.cliente") },
+    { definicion: irgRevenusLocatifs, contenido: contenidoIrgRevenusLocatifs, cliente: () => import("./calculadoras/irg-revenus-locatifs.cliente") },
+    { definicion: irgActivitesOccasionnelles, contenido: contenidoIrgActivitesOccasionnelles, cliente: () => import("./calculadoras/irg-activites-occasionnelles.cliente") },
+    { definicion: calculIrgPrime, contenido: contenidoCalculIrgPrime, cliente: () => import("./calculadoras/calcul-irg-prime.cliente") },
   ],
   universales: "todas",
   novedades,
