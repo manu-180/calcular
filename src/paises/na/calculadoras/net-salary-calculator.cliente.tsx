@@ -1,4 +1,4 @@
 "use client";
 import { crearCalculadoraCliente } from "@/motor/cliente";
-import calc from "./net-salary-calculator";
-export default crearCalculadoraCliente(calc);
+import netSalaryCalculator from "./net-salary-calculator";
+export default crearCalculadoraCliente(netSalaryCalculator);
