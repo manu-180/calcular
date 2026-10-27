@@ -12,10 +12,28 @@
           "estado": "verificado",
           "desde": "2026-01-01",
           "valor": [
-            { "desde": 0, "hasta": 70000, "tasa": 0 },
-            { "desde": 70000, "hasta": 200000, "tasa": 5 },
-            { "desde": 200000, "hasta": 800000, "tasa": 15, "cuotaFija": 6500 },
-            { "desde": 800000, "hasta": null, "tasa": 25, "cuotaFija": 96500 }
+            {
+              "desde": 0,
+              "hasta": 70000,
+              "tasa": 0
+            },
+            {
+              "desde": 70000,
+              "hasta": 200000,
+              "tasa": 5
+            },
+            {
+              "desde": 200000,
+              "hasta": 800000,
+              "tasa": 15,
+              "cuotaFija": 6500
+            },
+            {
+              "desde": 800000,
+              "hasta": null,
+              "tasa": 25,
+              "cuotaFija": 96500
+            }
           ],
           "fuente": {
             "organismo": "LRA",
@@ -183,7 +201,10 @@
         {
           "estado": "verificado",
           "desde": "2026-01-01",
-          "valor": { "before-1980": 100, "from-1980": 144 },
+          "valor": {
+            "before-1980": 100,
+            "from-1980": 144
+          },
           "fuente": {
             "organismo": "NASSCORP",
             "titulo": "FAQ: What are the conditions to receive my Retirement Pension?",
@@ -322,7 +343,10 @@
         {
           "estado": "verificado",
           "desde": "2026-01-01",
-          "valor": { "small": 4, "medium-large": 2 },
+          "valor": {
+            "small": 4,
+            "medium-large": 2
+          },
           "fuente": {
             "organismo": "LRA",
             "titulo": "Tax Education: Business Income Tax (BIT) and quarterly taxes",
@@ -368,7 +392,12 @@
         {
           "estado": "verificado",
           "desde": "2026-01-01",
-          "valor": { "regular": 25, "mining": 30, "petroleum": 30, "rice": 15 },
+          "valor": {
+            "regular": 25,
+            "mining": 30,
+            "petroleum": 30,
+            "rice": 15
+          },
           "fuente": {
             "organismo": "LRA",
             "titulo": "Tax Education: Annual taxes",
@@ -427,6 +456,54 @@
       ]
     },
     {
+      "id": "lr.non-resident-rate",
+      "nombre": "Withholding on interest, dividends, royalties and similar payments to non-residents",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Liberia Tax Amendment Act of December 2025, Section 806(b)",
+            "url": "https://revenue.lra.gov.lr/wp-content/uploads/2026/04/LRC-Amendment-December-2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "La LRA aplica la ley desde el 1 de mayo de 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lr.property-penalty",
+      "nombre": "Late payment penalty on real property tax",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "por-mes": "Penalty for each month after 31 July",
+        "tope": "Maximum penalty"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "por-mes": 5,
+            "tope": 25
+          },
+          "fuente": {
+            "organismo": "LRA",
+            "titulo": "Tax Education: What happens if my Real Property payment is after the deadline? (Section 2002)",
+            "url": "https://revenue.lra.gov.lr/domestic-tax/tax-education/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
       "id": "lr.minimum-wage",
       "nombre": "Minimum wage (US$)",
       "tipo": "mapa",
@@ -441,7 +518,12 @@
         {
           "estado": "no-verificado",
           "desde": "2026-01-01",
-          "valor": { "formal-hour": 0.68, "formal-day": 5.5, "domestic-hour": 0.43, "domestic-day": 3.5 },
+          "valor": {
+            "formal-hour": 0.68,
+            "formal-day": 5.5,
+            "domestic-hour": 0.43,
+            "domestic-day": 3.5
+          },
           "motivo": "Decent Work Act 2015, Sección 16.1A, leída en una copia de liblaw.org: el Ministerio de Trabajo no publica el texto en un sitio oficial (mol.gov.lr no responde). Además el Ministro de Trabajo habló en 2026 de un piso de US$143 por mes que no encontramos en ninguna orden publicada de la Minimum Wage Board."
         }
       ]
@@ -484,10 +566,26 @@
           "estado": "no-verificado",
           "desde": "2026-01-01",
           "valor": [
-            { "desde": 0, "hasta": 12, "tasa": 1 },
-            { "desde": 12, "hasta": 36, "tasa": 2 },
-            { "desde": 36, "hasta": 60, "tasa": 3 },
-            { "desde": 60, "hasta": null, "tasa": 4 }
+            {
+              "desde": 0,
+              "hasta": 12,
+              "tasa": 1
+            },
+            {
+              "desde": 12,
+              "hasta": 36,
+              "tasa": 2
+            },
+            {
+              "desde": 36,
+              "hasta": 60,
+              "tasa": 3
+            },
+            {
+              "desde": 60,
+              "hasta": null,
+              "tasa": 4
+            }
           ],
           "motivo": "Decent Work Act 2015, Sección 18.1, leída solo en una copia de liblaw.org; falta el texto en un sitio oficial del gobierno. La columna tasa guarda semanas, no porcentaje."
         }
@@ -517,10 +615,26 @@
           "estado": "no-verificado",
           "desde": "2026-01-01",
           "valor": [
-            { "desde": 0, "hasta": 3, "tasa": 1 },
-            { "desde": 3, "hasta": 6, "tasa": 2 },
-            { "desde": 6, "hasta": 12, "tasa": 3 },
-            { "desde": 12, "hasta": null, "tasa": 4 }
+            {
+              "desde": 0,
+              "hasta": 3,
+              "tasa": 1
+            },
+            {
+              "desde": 3,
+              "hasta": 6,
+              "tasa": 2
+            },
+            {
+              "desde": 6,
+              "hasta": 12,
+              "tasa": 3
+            },
+            {
+              "desde": 12,
+              "hasta": null,
+              "tasa": 4
+            }
           ],
           "motivo": "Decent Work Act 2015, Sección 14.6(b), leída solo en una copia de liblaw.org con la tabla mal escaneada; falta el texto en un sitio oficial del gobierno. La columna tasa guarda semanas, no porcentaje."
         }
