@@ -30,6 +30,14 @@ import overtimeCalculator from "./calculadoras/overtime-calculator";
 import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
 import annualLeaveCalculator from "./calculadoras/annual-leave-calculator";
 import contenidoAnnualLeaveCalculator from "./contenido/annual-leave-calculator";
+import noticePeriodCalculator from "./calculadoras/notice-period-calculator";
+import contenidoNoticePeriodCalculator from "./contenido/notice-period-calculator";
+import sickLeaveCalculator from "./calculadoras/sick-leave-calculator";
+import contenidoSickLeaveCalculator from "./contenido/sick-leave-calculator";
+import maternityLeaveCalculator from "./calculadoras/maternity-leave-calculator";
+import contenidoMaternityLeaveCalculator from "./contenido/maternity-leave-calculator";
+import severancePayCalculator from "./calculadoras/severance-pay-calculator";
+import contenidoSeverancePayCalculator from "./contenido/severance-pay-calculator";
 import dollarToKwacha from "./calculadoras/dollar-to-kwacha";
 import contenidoDollarToKwacha from "./contenido/dollar-to-kwacha";
 import inflationCalculator from "./calculadoras/inflation-calculator";
@@ -61,6 +69,10 @@ export default definirPais({
     { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
     { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
     { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
+    { definicion: noticePeriodCalculator, contenido: contenidoNoticePeriodCalculator, cliente: () => import("./calculadoras/notice-period-calculator.cliente") },
+    { definicion: sickLeaveCalculator, contenido: contenidoSickLeaveCalculator, cliente: () => import("./calculadoras/sick-leave-calculator.cliente") },
+    { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
+    { definicion: severancePayCalculator, contenido: contenidoSeverancePayCalculator, cliente: () => import("./calculadoras/severance-pay-calculator.cliente") },
     { definicion: dollarToKwacha, contenido: contenidoDollarToKwacha, cliente: () => import("./calculadoras/dollar-to-kwacha.cliente") },
     { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
