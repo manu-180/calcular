@@ -490,6 +490,136 @@
       ]
     },
     {
+      "id": "tg.tpu-forfait-commerce",
+      "nombre": "TPU forfaitaire des activités commerciales (montant annuel par tranche de chiffre d'affaires)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2500000,
+              "tasa": 0,
+              "cuotaFija": 10000
+            },
+            {
+              "desde": 2500000.01,
+              "hasta": 5000000,
+              "tasa": 0,
+              "cuotaFija": 40000
+            },
+            {
+              "desde": 5000000.01,
+              "hasta": 10000000,
+              "tasa": 0,
+              "cuotaFija": 115000
+            },
+            {
+              "desde": 10000000.01,
+              "hasta": 15000000,
+              "tasa": 0,
+              "cuotaFija": 190000
+            },
+            {
+              "desde": 15000000.01,
+              "hasta": 20000000,
+              "tasa": 0,
+              "cuotaFija": 265000
+            },
+            {
+              "desde": 20000000.01,
+              "hasta": 25000000,
+              "tasa": 0,
+              "cuotaFija": 340000
+            },
+            {
+              "desde": 25000000.01,
+              "hasta": 30000000,
+              "tasa": 0,
+              "cuotaFija": 415000
+            }
+          ],
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 135, point 5, du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.tpu-forfait-services",
+      "nombre": "TPU forfaitaire des prestations de services non artisanales (montant annuel par tranche de chiffre d'affaires)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2500000,
+              "tasa": 0,
+              "cuotaFija": 20000
+            },
+            {
+              "desde": 2500000.01,
+              "hasta": 5000000,
+              "tasa": 0,
+              "cuotaFija": 187500
+            },
+            {
+              "desde": 5000000.01,
+              "hasta": 10000000,
+              "tasa": 0,
+              "cuotaFija": 375000
+            },
+            {
+              "desde": 10000000.01,
+              "hasta": 15000000,
+              "tasa": 0,
+              "cuotaFija": 625000
+            },
+            {
+              "desde": 15000000.01,
+              "hasta": 20000000,
+              "tasa": 0,
+              "cuotaFija": 875000
+            },
+            {
+              "desde": 20000000.01,
+              "hasta": 25000000,
+              "tasa": 0,
+              "cuotaFija": 1125000
+            },
+            {
+              "desde": 25000000.01,
+              "hasta": 30000000,
+              "tasa": 0,
+              "cuotaFija": 1375000
+            }
+          ],
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 135, point 5, du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
       "id": "tg.plus-value-taux",
       "nombre": "Taxe sur les plus-values immobilières et de cession de titres",
       "tipo": "numero",

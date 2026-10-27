@@ -22,6 +22,24 @@ import indemniteFinDeContrat from "./calculadoras/indemnite-fin-de-contrat";
 import contenidoIndemniteFinDeContrat from "./contenido/indemnite-fin-de-contrat";
 import heuresSupplementaires from "./calculadoras/heures-supplementaires";
 import contenidoHeuresSupplementaires from "./contenido/heures-supplementaires";
+import taxeProfessionnelleUnique from "./calculadoras/taxe-professionnelle-unique";
+import contenidoTaxeProfessionnelleUnique from "./contenido/taxe-professionnelle-unique";
+import impotSurLesSocietes from "./calculadoras/impot-sur-les-societes";
+import contenidoImpotSurLesSocietes from "./contenido/impot-sur-les-societes";
+import plusValueImmobiliere from "./calculadoras/plus-value-immobiliere";
+import contenidoPlusValueImmobiliere from "./contenido/plus-value-immobiliere";
+import impotSurLesDividendes from "./calculadoras/impot-sur-les-dividendes";
+import contenidoImpotSurLesDividendes from "./contenido/impot-sur-les-dividendes";
+import vignetteAuto from "./calculadoras/vignette-auto";
+import contenidoVignetteAuto from "./contenido/vignette-auto";
+import taxeFonciere from "./calculadoras/taxe-fonciere";
+import contenidoTaxeFonciere from "./contenido/taxe-fonciere";
+import allocationsFamiliales from "./calculadoras/allocations-familiales";
+import contenidoAllocationsFamiliales from "./contenido/allocations-familiales";
+import convertisseurEuroFcfa from "./calculadoras/convertisseur-euro-fcfa";
+import contenidoConvertisseurEuroFcfa from "./contenido/convertisseur-euro-fcfa";
+import convertisseurDollarFcfa from "./calculadoras/convertisseur-dollar-fcfa";
+import contenidoConvertisseurDollarFcfa from "./contenido/convertisseur-dollar-fcfa";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -47,6 +65,15 @@ export default definirPais({
     { definicion: congesPayes, contenido: contenidoCongesPayes, cliente: () => import("./calculadoras/conges-payes.cliente") },
     { definicion: indemniteFinDeContrat, contenido: contenidoIndemniteFinDeContrat, cliente: () => import("./calculadoras/indemnite-fin-de-contrat.cliente") },
     { definicion: heuresSupplementaires, contenido: contenidoHeuresSupplementaires, cliente: () => import("./calculadoras/heures-supplementaires.cliente") },
+    { definicion: taxeProfessionnelleUnique, contenido: contenidoTaxeProfessionnelleUnique, cliente: () => import("./calculadoras/taxe-professionnelle-unique.cliente") },
+    { definicion: impotSurLesSocietes, contenido: contenidoImpotSurLesSocietes, cliente: () => import("./calculadoras/impot-sur-les-societes.cliente") },
+    { definicion: plusValueImmobiliere, contenido: contenidoPlusValueImmobiliere, cliente: () => import("./calculadoras/plus-value-immobiliere.cliente") },
+    { definicion: impotSurLesDividendes, contenido: contenidoImpotSurLesDividendes, cliente: () => import("./calculadoras/impot-sur-les-dividendes.cliente") },
+    { definicion: vignetteAuto, contenido: contenidoVignetteAuto, cliente: () => import("./calculadoras/vignette-auto.cliente") },
+    { definicion: taxeFonciere, contenido: contenidoTaxeFonciere, cliente: () => import("./calculadoras/taxe-fonciere.cliente") },
+    { definicion: allocationsFamiliales, contenido: contenidoAllocationsFamiliales, cliente: () => import("./calculadoras/allocations-familiales.cliente") },
+    { definicion: convertisseurEuroFcfa, contenido: contenidoConvertisseurEuroFcfa, cliente: () => import("./calculadoras/convertisseur-euro-fcfa.cliente") },
+    { definicion: convertisseurDollarFcfa, contenido: contenidoConvertisseurDollarFcfa, cliente: () => import("./calculadoras/convertisseur-dollar-fcfa.cliente") },
   ],
   universales: "todas",
 });

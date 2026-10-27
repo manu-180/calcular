@@ -98,6 +98,15 @@ def escala(filas):
     return out
 
 
+def forfait(filas, fin):
+    out = []
+    for i, (desde, monto) in enumerate(filas):
+        # La loi écrit « de 2 500 001 à 5 000 000 » : la tranche suivante commence un centime après.
+        hasta = filas[i + 1][0] if i + 1 < len(filas) else fin
+        out.append({"desde": desde + 0.01 if i > 0 else 0, "hasta": hasta, "tasa": 0, "cuotaFija": monto})
+    return out
+
+
 F25 = "2025-01-01"
 CT_DESDE = "2021-06-18"
 REV = "2027-01-01"
@@ -162,6 +171,12 @@ datos = [
          {"forfaitaire": 30000000, "maximum": 60000000}, F25, CGI, revision=REV,
          etiquetas={"forfaitaire": "Plafond du régime forfaitaire", "maximum": "Plafond de la TPU"},
          nota="Articles 130 et 131 du CGI. " + CGI["nota"]),
+    dato("tpu-forfait-commerce", "TPU forfaitaire des activités commerciales (montant annuel par tranche de chiffre d'affaires)", "escala", "XOF",
+         forfait([(0, 10000), (2500000, 40000), (5000000, 115000), (10000000, 190000), (15000000, 265000), (20000000, 340000), (25000000, 415000)], 30000000),
+         F25, CGI, revision=REV, nota="Article 135, point 5, du CGI. " + CGI["nota"]),
+    dato("tpu-forfait-services", "TPU forfaitaire des prestations de services non artisanales (montant annuel par tranche de chiffre d'affaires)", "escala", "XOF",
+         forfait([(0, 20000), (2500000, 187500), (5000000, 375000), (10000000, 625000), (15000000, 875000), (20000000, 1125000), (25000000, 1375000)], 30000000),
+         F25, CGI, revision=REV, nota="Article 135, point 5, du CGI. " + CGI["nota"]),
     dato("plus-value-taux", "Taxe sur les plus-values immobilières et de cession de titres", "numero", "%", 7, F25, CGI, revision=REV,
          nota="Article 90 du CGI. " + CGI["nota"]),
     dato("plus-value-reduction", "Réduction de la plus-value immobilière après cinq ans de détention", "mapa", "%",
