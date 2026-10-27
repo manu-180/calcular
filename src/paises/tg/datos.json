@@ -768,6 +768,90 @@
       ]
     },
     {
+      "id": "tg.retenue-prestations",
+      "nombre": "Retenue à la source sur les prestations des professions non commerciales",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "attestation": "Bénéficiaire avec attestation de régularité fiscale",
+        "nif": "Bénéficiaire avec numéro d'identification fiscale",
+        "autres": "Autres bénéficiaires"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "attestation": 3,
+            "nif": 5,
+            "autres": 20
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 99 du Livre des procédures fiscales. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.foncier-abattement",
+      "nombre": "Déduction forfaitaire sur les revenus fonciers bruts",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 16 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.loyers-retenue",
+      "nombre": "Retenue à la source sur les loyers",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "total": "Retenue sur les loyers bruts",
+        "taxe-fonciere": "Part imputée sur la taxe foncière",
+        "irpp": "Part imputée sur l'IRPP"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "total": 8.75,
+            "taxe-fonciere": 3.75,
+            "irpp": 5
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Articles 100 et 101 du Livre des procédures fiscales. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
       "id": "tg.tvm-tarifs",
       "nombre": "Taxe sur les véhicules à moteur (vignette), tarif annuel",
       "tipo": "mapa",

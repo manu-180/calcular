@@ -30,6 +30,10 @@ import plusValueImmobiliere from "./calculadoras/plus-value-immobiliere";
 import contenidoPlusValueImmobiliere from "./contenido/plus-value-immobiliere";
 import impotSurLesDividendes from "./calculadoras/impot-sur-les-dividendes";
 import contenidoImpotSurLesDividendes from "./contenido/impot-sur-les-dividendes";
+import impotSurLesLoyers from "./calculadoras/impot-sur-les-loyers";
+import contenidoImpotSurLesLoyers from "./contenido/impot-sur-les-loyers";
+import retenueALaSource from "./calculadoras/retenue-a-la-source";
+import contenidoRetenueALaSource from "./contenido/retenue-a-la-source";
 import vignetteAuto from "./calculadoras/vignette-auto";
 import contenidoVignetteAuto from "./contenido/vignette-auto";
 import taxeFonciere from "./calculadoras/taxe-fonciere";
@@ -69,6 +73,8 @@ export default definirPais({
     { definicion: impotSurLesSocietes, contenido: contenidoImpotSurLesSocietes, cliente: () => import("./calculadoras/impot-sur-les-societes.cliente") },
     { definicion: plusValueImmobiliere, contenido: contenidoPlusValueImmobiliere, cliente: () => import("./calculadoras/plus-value-immobiliere.cliente") },
     { definicion: impotSurLesDividendes, contenido: contenidoImpotSurLesDividendes, cliente: () => import("./calculadoras/impot-sur-les-dividendes.cliente") },
+    { definicion: impotSurLesLoyers, contenido: contenidoImpotSurLesLoyers, cliente: () => import("./calculadoras/impot-sur-les-loyers.cliente") },
+    { definicion: retenueALaSource, contenido: contenidoRetenueALaSource, cliente: () => import("./calculadoras/retenue-a-la-source.cliente") },
     { definicion: vignetteAuto, contenido: contenidoVignetteAuto, cliente: () => import("./calculadoras/vignette-auto.cliente") },
     { definicion: taxeFonciere, contenido: contenidoTaxeFonciere, cliente: () => import("./calculadoras/taxe-fonciere.cliente") },
     { definicion: allocationsFamiliales, contenido: contenidoAllocationsFamiliales, cliente: () => import("./calculadoras/allocations-familiales.cliente") },

@@ -18,6 +18,8 @@ SLUGS = [
     "impot-sur-les-societes",
     "plus-value-immobiliere",
     "impot-sur-les-dividendes",
+    "impot-sur-les-loyers",
+    "retenue-a-la-source",
     "vignette-auto",
     "taxe-fonciere",
     "allocations-familiales",
