@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sr.netto-naar-bruto-berekenen",
   h1: "Van netto naar bruto rekenen",
-  title: "Netto naar bruto berekenen Suriname 2026",
+  title: "Netto naar bruto berekenen Suriname {{anio}}",
   description:
     "Weet je welk nettoloon je wilt? Reken terug naar het brutoloon, met de loonbelasting, de belastingvrije som van {{sr.belastingvrije-som}} en de AOV-premie.",
   intro: [

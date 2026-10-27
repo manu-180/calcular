@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "bw.company-tax-calculator",
   h1: "Company tax calculator Botswana",
   title: "Company tax calculator Botswana: the new 24.5% rate",
-  description: "Work out company income tax in Botswana at {{bw.company-tax[general]}} under the Income Tax Act, 2026, and the withholding tax when the profit is paid out as dividends.",
+  description: "Work out company income tax in Botswana at {{bw.company-tax[general]}} under the current Income Tax Act, and the withholding tax when the profit is paid out as dividends.",
   intro: [
     "From 1 July 2026 most companies in Botswana pay income tax at {{bw.company-tax[general]}} of their taxable income. Enter the taxable income and the type of company to see the tax and the profit left over.",
     "If the company pays dividends to resident shareholders, it withholds {{bw.wht-resident[dividends]}} from them. Add the share of the profit you plan to pay out to see that too.",

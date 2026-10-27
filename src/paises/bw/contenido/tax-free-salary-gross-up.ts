@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "bw.tax-free-salary-gross-up",
   h1: "Tax-free salary gross-up calculator",
   title: "Gross-up calculator Botswana: PAYE on a tax-free salary",
-  description: "When an employer pays a salary free of tax in Botswana, work out the grossed-up salary and the PAYE it has to pay to BURS on top, with the 2026 rates.",
+  description: "When an employer pays a salary free of tax in Botswana, work out the grossed-up salary and the PAYE it has to pay to BURS on top, with the current rates.",
   intro: [
     "Some contracts promise a net salary and leave the employer to pay the tax. The tax itself then counts as pay, so the PAYE is worked out on a grossed-up amount.",
     "Enter the net salary promised to see the PAYE the employer pays each month.",

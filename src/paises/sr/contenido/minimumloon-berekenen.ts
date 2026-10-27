@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sr.minimumloon-berekenen",
   h1: "Minimumloon berekenen in Suriname",
-  title: "Minimumloon Suriname 2026: {{sr.minimumuurloon}} per uur",
+  title: "Minimumloon Suriname {{anio}}: {{sr.minimumuurloon}} per uur",
   description:
     "Het algemeen minimum uurloon is {{sr.minimumuurloon}} sinds {{sr.minimumuurloon#desde}}. Reken uit wat dat per dag, week, maand en jaar is voor jouw aantal uren.",
   intro: [

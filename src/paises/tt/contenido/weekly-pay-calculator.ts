@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.weekly-pay-calculator",
   h1: "Weekly pay calculator Trinidad and Tobago",
-  title: "Weekly wages after tax in Trinidad and Tobago 2026",
-  description: "Paid by the week? See your weekly take-home pay after NIS, Health Surcharge and PAYE, with the 2026 NIS earnings classes.",
+  title: "Weekly wages after tax in Trinidad and Tobago {{anio}}",
+  description: "Paid by the week? See your weekly take-home pay after NIS, Health Surcharge and PAYE, with the current NIS earnings classes.",
   intro: [
     "If you are paid by the week, enter your gross weekly wages to see what you take home.",
     "NIS and Health Surcharge are weekly amounts by law, so a weekly pay packet shows them exactly.",

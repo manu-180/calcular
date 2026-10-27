@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "bw.capital-gains-tax",
   h1: "Capital gains tax calculator Botswana",
   title: "Capital gains tax calculator Botswana for individuals",
-  description: "Work out capital gains tax on selling property, shares or other assets in Botswana with the rates for individuals in the Income Tax Act, 2026.",
+  description: "Work out capital gains tax on selling property, shares or other assets in Botswana with the rates for individuals in the current Income Tax Act.",
   intro: [
     "Since 1 July 2026 an individual pays capital gains tax on the net aggregate gain for the year, on its own scale and separately from income tax.",
     "Enter the sale price and the cost of the asset, plus any other gains or losses in the same tax year.",

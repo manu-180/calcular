@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.health-surcharge-calculator",
   h1: "Health Surcharge calculator",
-  title: "Health Surcharge calculator Trinidad and Tobago 2026",
+  title: "Health Surcharge calculator Trinidad and Tobago {{anio}}",
   description: "See how much Health Surcharge comes off your pay: {{tt.health-surcharge-high}} or {{tt.health-surcharge-low}} a week, depending on what you earn.",
   intro: [
     "Health Surcharge is a small fixed charge on employment income. Your employer deducts it with PAYE and sends both to the Board of Inland Revenue.",

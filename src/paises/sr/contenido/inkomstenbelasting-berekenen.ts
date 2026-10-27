@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sr.inkomstenbelasting-berekenen",
   h1: "Inkomstenbelasting berekenen in Suriname",
-  title: "Inkomstenbelasting Suriname 2026 berekenen met AOV",
+  title: "Inkomstenbelasting Suriname {{anio}} berekenen met AOV",
   description:
     "Bereken de inkomstenbelasting over je zuiver inkomen: niets tot {{sr.ib-tarief[0].hasta}}, daarna {{sr.ib-tarief[1].tasa}} tot {{sr.ib-tarief[-1].tasa}}. Met de AOV-premie van {{sr.aov-premie}}.",
   intro: [

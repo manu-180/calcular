@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mw.paye-calculator",
   h1: "PAYE calculator Malawi",
-  title: "PAYE calculator Malawi 2026: tax on your monthly pay",
+  title: "PAYE calculator Malawi {{anio}}: tax on your monthly pay",
   description:
     "Work out PAYE on your monthly pay with the MRA bands in force since 30 December 2025. The first {{mw.paye-bands[0].hasta}} is tax free and the top rate is {{mw.paye-bands[-1].tasa}}.",
   intro: [

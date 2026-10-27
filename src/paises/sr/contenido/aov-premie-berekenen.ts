@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sr.aov-premie-berekenen",
   h1: "AOV-premie berekenen",
-  title: "AOV-premie berekenen 2026: {{sr.aov-premie}} van je zuiver loon",
+  title: "AOV-premie berekenen {{anio}}: {{sr.aov-premie}} van je zuiver loon",
   description:
     "Hoeveel AOV-premie betaal je? Werknemers en zelfstandigen betalen {{sr.aov-premie}} over hun zuiver loon of zuiver inkomen, tot 60 jaar. Bereken het per maand en per jaar.",
   intro: [

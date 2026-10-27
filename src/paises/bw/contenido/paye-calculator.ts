@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "bw.paye-calculator",
   h1: "PAYE calculator Botswana",
   title: "PAYE calculator Botswana: tax on weekly or monthly pay",
-  description: "Work out the PAYE on a weekly, fortnightly, monthly or yearly pay with the BURS rates for residents and non-residents in force from 1 July 2026.",
+  description: "Work out the PAYE on a weekly, fortnightly, monthly or yearly pay with the BURS rates for residents and non-residents currently in force.",
   intro: [
     "Enter your taxable pay and how often you are paid. The calculator gives the PAYE your employer should withhold, your yearly tax and your tax rates.",
     "Taxable pay is your salary plus taxable allowances and benefits, less any contribution you make to an approved pension fund.",

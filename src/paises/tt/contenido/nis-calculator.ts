@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.nis-calculator",
   h1: "NIS calculator Trinidad and Tobago",
-  title: "NIS calculator 2026: contributions by earnings class",
-  description: "Find your NIS earnings class and see what you and your employer pay each week and each month under the 2026 NIBTT table.",
+  title: "NIS calculator {{anio}}: contributions by earnings class",
+  description: "Find your NIS earnings class and see what you and your employer pay each week and each month under the current NIBTT table.",
   intro: [
     "National Insurance in Trinidad and Tobago is not a straight percentage. Your pay places you in one of 16 earnings classes, and each class has a fixed weekly contribution.",
     "Enter your pay to see your class, your share and your employer's share, using the table the National Insurance Board (NIBTT) applies from {{tt.nis-employee-weekly#desde}}.",

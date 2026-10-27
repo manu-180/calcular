@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sr.loonbelasting-berekenen",
   h1: "Loonbelasting berekenen in Suriname",
-  title: "Loonbelasting berekenen Suriname 2026: schijven en vrije som",
+  title: "Loonbelasting berekenen Suriname {{anio}}: schijven en vrije som",
   description:
     "Bereken je loonbelasting per maand of per jaar met de belastingvrije som van {{sr.belastingvrije-som}} en de schijven van {{sr.loonbelasting-tarief[1].tasa}} tot {{sr.loonbelasting-tarief[-1].tasa}}.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.employer-cost-calculator",
   h1: "Employer cost calculator Trinidad and Tobago",
-  title: "Cost of an employee in Trinidad and Tobago 2026",
+  title: "Cost of an employee in Trinidad and Tobago {{anio}}",
   description: "Add the employer's share of NIS to a salary and see the real monthly and yearly cost of hiring in Trinidad and Tobago.",
   intro: [
     "Before you make a job offer, check what the salary really costs your business. On top of the gross pay you owe the employer's share of National Insurance.",

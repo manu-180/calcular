@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sr.bruto-netto-salaris",
   h1: "Bruto netto salaris berekenen in Suriname",
-  title: "Bruto netto salaris Suriname 2026: loonbelasting en AOV",
+  title: "Bruto netto salaris Suriname {{anio}}: loonbelasting en AOV",
   description:
     "Reken je brutoloon om naar netto met de belastingvrije som van {{sr.belastingvrije-som}} per jaar, de loonbelasting en {{sr.aov-premie}} AOV-premie. Met de wetteksten erbij.",
   intro: [

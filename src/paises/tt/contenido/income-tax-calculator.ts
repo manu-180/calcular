@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.income-tax-calculator",
   h1: "Income tax calculator Trinidad and Tobago",
-  title: "Income tax calculator Trinidad and Tobago 2026",
+  title: "Income tax calculator Trinidad and Tobago {{anio}}",
   description:
     "Work out your yearly income tax with the {{tt.personal-allowance}} personal allowance, the NIS deduction and the {{tt.income-tax-rate}} and {{tt.income-tax-higher-rate}} rates.",
   intro: [

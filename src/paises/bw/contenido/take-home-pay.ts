@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "bw.take-home-pay",
   h1: "Take-home pay calculator Botswana",
   title: "Take-home pay calculator: salary after PAYE in Botswana",
-  description: "Work out your take-home pay after PAYE with the BURS tax table in force from July 2026, including the new 27.5% bracket and pension fund deductions.",
+  description: "Work out your take-home pay after PAYE with the current BURS tax table, including the new 27.5% bracket and pension fund deductions.",
   intro: [
     "Enter your gross monthly salary and see what is left after PAYE. If you pay into a pension or provident fund through payroll, add it for a closer match to your payslip.",
     "Botswana has no national social security deduction from salaries, so for most employees PAYE is the only statutory deduction.",

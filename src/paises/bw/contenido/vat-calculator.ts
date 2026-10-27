@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "bw.vat-calculator",
   h1: "VAT calculator Botswana",
   title: "VAT calculator Botswana: add or remove 14% VAT",
-  description: "Add VAT to a price or take it out of a VAT-inclusive price at the Botswana standard rate of {{bw.vat}}, under the Value Added Tax Act, 2026.",
+  description: "Add VAT to a price or take it out of a VAT-inclusive price at the Botswana standard rate of {{bw.vat}}, under the current Value Added Tax Act.",
   intro: [
     "Add VAT to a price before you quote it, or find out how much VAT is inside a price you paid.",
     "The standard rate is {{bw.vat}}. Zero-rated supplies, such as exports and some basic foodstuffs, carry 0%, and exempt supplies carry no VAT at all.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mw.net-salary-calculator",
   h1: "Net salary calculator Malawi",
-  title: "Net salary calculator Malawi 2026: take-home pay",
+  title: "Net salary calculator Malawi {{anio}}: take-home pay",
   description:
     "Work out your take-home pay in Malawi after PAYE and the {{mw.pension-employee}} pension contribution, with the MRA bands in force since 30 December 2025.",
   intro: [

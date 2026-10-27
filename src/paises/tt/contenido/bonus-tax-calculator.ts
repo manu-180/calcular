@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.bonus-tax-calculator",
   h1: "Bonus tax calculator Trinidad and Tobago",
-  title: "How much tax on my bonus? Trinidad and Tobago 2026",
+  title: "How much tax on my bonus? Trinidad and Tobago {{anio}}",
   description: "See the income tax on a bonus or incentive payment and what you keep, using the IRD rates and the {{tt.personal-allowance}} personal allowance.",
   intro: [
     "A bonus is taxed as part of your income for the year. What it costs you in tax depends on how much of the personal allowance your salary has already used.",

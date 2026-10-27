@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "na.minimum-wage",
   h1: "Minimum wage in Namibia",
-  title: "Minimum wage Namibia 2026: hourly and monthly",
+  title: "Minimum wage Namibia {{anio}}: hourly and monthly",
   description:
     "The national minimum wage is {{na.minimum-wage[general]}} an hour. Domestic, farm and security workers move up to it by 2027. See the monthly amount for your hours.",
   intro: [

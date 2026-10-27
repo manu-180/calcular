@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.stamp-duty-calculator",
   h1: "Stamp duty calculator Trinidad and Tobago",
-  title: "Stamp duty calculator Trinidad: house and land 2026",
+  title: "Stamp duty calculator Trinidad: house and land {{anio}}",
   description: "Work out the stamp duty on buying a house or residential land, with the {{tt.stamp-duty-first-home-exemption}} exemption for first-time homeowners.",
   intro: [
     "When you buy property, the deed of conveyance has to be stamped by the Inland Revenue Division and the duty paid. Your attorney usually handles it, but the cost is yours.",

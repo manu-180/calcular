@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.salary-calculator",
   h1: "Salary calculator Trinidad and Tobago",
-  title: "Salary calculator Trinidad 2026: net pay after PAYE and NIS",
+  title: "Salary calculator Trinidad {{anio}}: net pay after PAYE and NIS",
   description:
-    "Work out your take-home pay after PAYE, NIS and Health Surcharge. Uses the {{tt.personal-allowance}} personal allowance and the 2026 NIS table.",
+    "Work out your take-home pay after PAYE, NIS and Health Surcharge. Uses the {{tt.personal-allowance}} personal allowance and the current NIS table.",
   intro: [
     "Put in your gross monthly salary and see what lands in your account on payday. Each statutory deduction shows on its own line, the way it appears on your payslip.",
     "The figures follow the rules of the Inland Revenue Division (IRD) and the National Insurance Board (NIBTT) in force today.",

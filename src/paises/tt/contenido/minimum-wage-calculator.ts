@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.minimum-wage-calculator",
   h1: "Minimum wage calculator Trinidad and Tobago",
-  title: "Minimum wage in Trinidad and Tobago 2026: {{tt.minimum-wage-hourly}} an hour",
+  title: "Minimum wage in Trinidad and Tobago {{anio}}: {{tt.minimum-wage-hourly}} an hour",
   description: "The national minimum wage is {{tt.minimum-wage-hourly}} an hour. See it by the day, week and month, and check your own pay against it.",
   intro: [
     "Trinidad and Tobago has one national minimum wage for all workers. It has been {{tt.minimum-wage-hourly}} an hour since {{tt.minimum-wage-hourly#desde}}.",

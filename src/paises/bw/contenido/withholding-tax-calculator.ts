@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bw.withholding-tax-calculator",
   h1: "Withholding tax calculator Botswana",
-  title: "Withholding tax calculator Botswana: rates from July 2026",
-  description: "Work out the withholding tax on dividends, interest, rent, commission, construction payments and payments to non-residents in Botswana under the 2026 Act.",
+  title: "Withholding tax calculator Botswana: {{anio}} rates",
+  description: "Work out the withholding tax on dividends, interest, rent, commission, construction payments and payments to non-residents in Botswana under the current Act.",
   intro: [
     "When you pay certain kinds of income, the law makes you withhold part of it and pay it to BURS. Choose who receives the payment and what it is for to see how much to keep back.",
   ],

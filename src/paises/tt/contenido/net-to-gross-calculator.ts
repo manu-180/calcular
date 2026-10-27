@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tt.net-to-gross-calculator",
   h1: "Net to gross salary calculator Trinidad and Tobago",
-  title: "Net to gross salary calculator Trinidad and Tobago 2026",
+  title: "Net to gross salary calculator Trinidad and Tobago {{anio}}",
   description: "Know the take-home pay you need? Find the gross monthly salary to ask for once PAYE, NIS and Health Surcharge come off.",
   intro: [
     "Job offers in Trinidad and Tobago are usually quoted gross. If you know what you need in your account each month, this works backwards to the salary that gets you there.",
