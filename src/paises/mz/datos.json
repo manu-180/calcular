@@ -1,0 +1,1459 @@
+{
+  "mercado": "mz",
+  "datos": [
+    {
+      "id": "mz.irps-retencao-0",
+      "nombre": "Tabela de retenção do IRPS sobre o salário mensal (sem dependentes)",
+      "tipo": "escala",
+      "unidad": "MZN",
+      "nota": "Valor fixo do intervalo mais o coeficiente sobre a diferença entre o salário e o limite inferior. Uma linha com taxa 0 e parcela 0 é o sinal (-) da tabela: não há imposto a reter.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20249.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20250,
+              "hasta": 20749.99,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20750,
+              "hasta": 20999.99,
+              "tasa": 10,
+              "cuotaFija": 50
+            },
+            {
+              "desde": 21000,
+              "hasta": 21249.99,
+              "tasa": 10,
+              "cuotaFija": 75
+            },
+            {
+              "desde": 21250,
+              "hasta": 21749.99,
+              "tasa": 10,
+              "cuotaFija": 100
+            },
+            {
+              "desde": 21750,
+              "hasta": 22249.99,
+              "tasa": 10,
+              "cuotaFija": 150
+            },
+            {
+              "desde": 22250,
+              "hasta": 32749.99,
+              "tasa": 15,
+              "cuotaFija": 200
+            },
+            {
+              "desde": 32750,
+              "hasta": 60749.99,
+              "tasa": 20,
+              "cuotaFija": 1775
+            },
+            {
+              "desde": 60750,
+              "hasta": 144749.99,
+              "tasa": 25,
+              "cuotaFija": 7375
+            },
+            {
+              "desde": 144750,
+              "hasta": null,
+              "tasa": 32,
+              "cuotaFija": 28375
+            }
+          ],
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 11/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 65-A do Código do IRPS",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.irps-retencao-1",
+      "nombre": "Tabela de retenção do IRPS sobre o salário mensal (1 dependente)",
+      "tipo": "escala",
+      "unidad": "MZN",
+      "nota": "Valor fixo do intervalo mais o coeficiente sobre a diferença entre o salário e o limite inferior. Uma linha com taxa 0 e parcela 0 é o sinal (-) da tabela: não há imposto a reter.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20249.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20250,
+              "hasta": 20749.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20750,
+              "hasta": 20999.99,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 21000,
+              "hasta": 21249.99,
+              "tasa": 10,
+              "cuotaFija": 25
+            },
+            {
+              "desde": 21250,
+              "hasta": 21749.99,
+              "tasa": 10,
+              "cuotaFija": 50
+            },
+            {
+              "desde": 21750,
+              "hasta": 22249.99,
+              "tasa": 10,
+              "cuotaFija": 100
+            },
+            {
+              "desde": 22250,
+              "hasta": 32749.99,
+              "tasa": 15,
+              "cuotaFija": 150
+            },
+            {
+              "desde": 32750,
+              "hasta": 60749.99,
+              "tasa": 20,
+              "cuotaFija": 1725
+            },
+            {
+              "desde": 60750,
+              "hasta": 144749.99,
+              "tasa": 25,
+              "cuotaFija": 7325
+            },
+            {
+              "desde": 144750,
+              "hasta": null,
+              "tasa": 32,
+              "cuotaFija": 28325
+            }
+          ],
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 11/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 65-A do Código do IRPS",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.irps-retencao-2",
+      "nombre": "Tabela de retenção do IRPS sobre o salário mensal (2 dependentes)",
+      "tipo": "escala",
+      "unidad": "MZN",
+      "nota": "Valor fixo do intervalo mais o coeficiente sobre a diferença entre o salário e o limite inferior. Uma linha com taxa 0 e parcela 0 é o sinal (-) da tabela: não há imposto a reter.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20249.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20250,
+              "hasta": 20749.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20750,
+              "hasta": 20999.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 21000,
+              "hasta": 21249.99,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 21250,
+              "hasta": 21749.99,
+              "tasa": 10,
+              "cuotaFija": 25
+            },
+            {
+              "desde": 21750,
+              "hasta": 22249.99,
+              "tasa": 10,
+              "cuotaFija": 75
+            },
+            {
+              "desde": 22250,
+              "hasta": 32749.99,
+              "tasa": 15,
+              "cuotaFija": 125
+            },
+            {
+              "desde": 32750,
+              "hasta": 60749.99,
+              "tasa": 20,
+              "cuotaFija": 1700
+            },
+            {
+              "desde": 60750,
+              "hasta": 144749.99,
+              "tasa": 25,
+              "cuotaFija": 7300
+            },
+            {
+              "desde": 144750,
+              "hasta": null,
+              "tasa": 32,
+              "cuotaFija": 28300
+            }
+          ],
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 11/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 65-A do Código do IRPS",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.irps-retencao-3",
+      "nombre": "Tabela de retenção do IRPS sobre o salário mensal (3 dependentes)",
+      "tipo": "escala",
+      "unidad": "MZN",
+      "nota": "Valor fixo do intervalo mais o coeficiente sobre a diferença entre o salário e o limite inferior. Uma linha com taxa 0 e parcela 0 é o sinal (-) da tabela: não há imposto a reter.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20249.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20250,
+              "hasta": 20749.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20750,
+              "hasta": 20999.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 21000,
+              "hasta": 21249.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 21250,
+              "hasta": 21749.99,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 21750,
+              "hasta": 22249.99,
+              "tasa": 10,
+              "cuotaFija": 50
+            },
+            {
+              "desde": 22250,
+              "hasta": 32749.99,
+              "tasa": 15,
+              "cuotaFija": 100
+            },
+            {
+              "desde": 32750,
+              "hasta": 60749.99,
+              "tasa": 20,
+              "cuotaFija": 1675
+            },
+            {
+              "desde": 60750,
+              "hasta": 144749.99,
+              "tasa": 25,
+              "cuotaFija": 7275
+            },
+            {
+              "desde": 144750,
+              "hasta": null,
+              "tasa": 32,
+              "cuotaFija": 28275
+            }
+          ],
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 11/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 65-A do Código do IRPS",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.irps-retencao-4",
+      "nombre": "Tabela de retenção do IRPS sobre o salário mensal (4 ou mais dependentes)",
+      "tipo": "escala",
+      "unidad": "MZN",
+      "nota": "Valor fixo do intervalo mais o coeficiente sobre a diferença entre o salário e o limite inferior. Uma linha com taxa 0 e parcela 0 é o sinal (-) da tabela: não há imposto a reter.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20249.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20250,
+              "hasta": 20749.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 20750,
+              "hasta": 20999.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 21000,
+              "hasta": 21249.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 21250,
+              "hasta": 21749.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 21750,
+              "hasta": 22249.99,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 22250,
+              "hasta": 32749.99,
+              "tasa": 15,
+              "cuotaFija": 50
+            },
+            {
+              "desde": 32750,
+              "hasta": 60749.99,
+              "tasa": 20,
+              "cuotaFija": 1625
+            },
+            {
+              "desde": 60750,
+              "hasta": 144749.99,
+              "tasa": 25,
+              "cuotaFija": 7225
+            },
+            {
+              "desde": 144750,
+              "hasta": null,
+              "tasa": 32,
+              "cuotaFija": 28225
+            }
+          ],
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 11/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 65-A do Código do IRPS",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.irps-mais-valias",
+      "nombre": "Taxas de tributação autónoma das mais-valias (IRPS)",
+      "tipo": "escala",
+      "unidad": "MZN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 42000,
+              "tasa": 10
+            },
+            {
+              "desde": 42000,
+              "hasta": 168000,
+              "tasa": 15
+            },
+            {
+              "desde": 168000,
+              "hasta": 504000,
+              "tasa": 20
+            },
+            {
+              "desde": 504000,
+              "hasta": 1512000,
+              "tasa": 25
+            },
+            {
+              "desde": 1512000,
+              "hasta": null,
+              "tasa": 32
+            }
+          ],
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 11/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 54-A do Código do IRPS",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.inss-trabalhador",
+      "nombre": "Contribuição do trabalhador por conta de outrem para o INSS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-07",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Instituto Nacional de Segurança Social",
+            "titulo": "Taxa contributiva TCO",
+            "url": "https://www.inss.gov.mz/taxa-contributiva-tco/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.inss-empregador",
+      "nombre": "Contribuição da entidade empregadora para o INSS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-07",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Instituto Nacional de Segurança Social",
+            "titulo": "Taxa contributiva do contribuinte",
+            "url": "https://www.inss.gov.mz/taxa-contributiva-contribuinte/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.inss-tcp",
+      "nombre": "Contribuição do trabalhador por conta própria para o INSS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-07",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Instituto Nacional de Segurança Social",
+            "titulo": "Taxa contributiva TCP",
+            "url": "https://www.inss.gov.mz/taxa-contributiva-tcp/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.iva-geral",
+      "nombre": "Taxa do IVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 10/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 34 do Código do IVA (preço com imposto dividido por 116 e multiplicado por 100)",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ispc-comercio",
+      "nombre": "Taxas do ISPC para comércio, indústria e agricultura, por volume de negócios anual",
+      "tipo": "escala",
+      "unidad": "MZN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1000000,
+              "tasa": 3
+            },
+            {
+              "desde": 1000000.01,
+              "hasta": 2500000,
+              "tasa": 4
+            },
+            {
+              "desde": 2500000.01,
+              "hasta": 4000000,
+              "tasa": 5
+            }
+          ],
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 9/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 8 da Lei n.º 5/2009 (ISPC)",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ispc-servicos",
+      "nombre": "Taxa do ISPC para prestação de serviços",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 9/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 8 da Lei n.º 5/2009 (ISPC)",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ispc-liberais",
+      "nombre": "Taxa do ISPC para profissões liberais",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 9/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 8 da Lei n.º 5/2009 (ISPC)",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ispc-excesso",
+      "nombre": "Taxa do ISPC sobre o volume de negócios acima do limite",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 9/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 8 da Lei n.º 5/2009 (ISPC)",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ispc-limite",
+      "nombre": "Volume de negócios anual máximo para o ISPC",
+      "tipo": "numero",
+      "unidad": "MZN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4000000,
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 9/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 2 da Lei n.º 5/2009 (ISPC)",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ispc-minimo",
+      "nombre": "Imposto trimestral abaixo do qual não há pagamento de ISPC",
+      "tipo": "numero",
+      "unidad": "MZN",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500,
+          "fuente": {
+            "organismo": "Boletim da República (Autoridade Tributária)",
+            "titulo": "Lei n.º 9/2025, de 29 de Dezembro, I Série n.º 248, Suplemento, artigo 10-A da Lei n.º 5/2009 (ISPC)",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FLEI%2FBR_248_I_SERIE_SUPLEMENTO_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ferias-primeiro-ano",
+      "nombre": "Férias no primeiro ano de trabalho efectivo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 108, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ferias-anos-seguintes",
+      "nombre": "Férias nos anos seguintes",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 108, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ferias-prazo-mes",
+      "nombre": "Férias por mês de serviço nos contratos a prazo de três meses a um ano",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 108, n.º 3",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.ferias-gozo-minimo",
+      "nombre": "Dias de férias que têm de ser gozados quando o resto é pago",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 107, n.º 3",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.extra-diurno",
+      "nombre": "Acréscimo do trabalho extraordinário até às 20 horas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 125, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.extra-noite",
+      "nombre": "Acréscimo do trabalho extraordinário depois das 20 horas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 125, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.trabalho-excepcional",
+      "nombre": "Acréscimo do trabalho em dia de descanso, feriado ou tolerância de ponto",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 125, n.º 2",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.excepcional-meio-dia",
+      "nombre": "Horas de trabalho em dia de descanso que dão só meio dia de descanso compensatório",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 98, n.º 4",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.trabalho-nocturno",
+      "nombre": "Acréscimo do trabalho nocturno",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 125, n.º 3",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.extra-max-semana",
+      "nombre": "Máximo de horas extraordinárias por semana",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 99, n.º 3",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.extra-max-trimestre",
+      "nombre": "Máximo de horas extraordinárias por trimestre",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 96,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 99, n.º 3",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.extra-max-ano",
+      "nombre": "Máximo de horas extraordinárias por ano",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 200,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 99, n.º 3",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.periodo-normal-semanal",
+      "nombre": "Período normal de trabalho máximo por semana",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 48,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 93, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.indemnizacao-ate-7",
+      "nombre": "Indemnização por ano de serviço: salário até 7 salários mínimos",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 141, n.º 3, alínea a)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.indemnizacao-ate-18",
+      "nombre": "Indemnização por ano de serviço: salário de mais de 7 até 18 salários mínimos",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 141, n.º 3, alínea b)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.indemnizacao-mais-18",
+      "nombre": "Indemnização por ano de serviço: salário acima de 18 salários mínimos",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 141, n.º 3, alínea c)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.indemnizacao-limite-1",
+      "nombre": "Limite do primeiro escalão de indemnização, em salários mínimos",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 141, n.º 3",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.indemnizacao-limite-2",
+      "nombre": "Limite do segundo escalão de indemnização, em salários mínimos",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 141, n.º 3",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.indemnizacao-justa-causa",
+      "nombre": "Indemnização por rescisão com justa causa pelo trabalhador, por ano de serviço",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 45,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 139, n.º 2",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.aviso-justa-causa",
+      "nombre": "Comunicação prévia da rescisão com justa causa pelo trabalhador",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 139, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.aviso-trabalhador-curto",
+      "nombre": "Aviso prévio do trabalhador com mais de seis meses e até três anos de serviço",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 140, n.º 3, alínea a)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.aviso-trabalhador-longo",
+      "nombre": "Aviso prévio do trabalhador com mais de três anos de serviço",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 140, n.º 3, alínea b)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.aviso-prazo-certo",
+      "nombre": "Aviso prévio do trabalhador com contrato a prazo certo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 140, n.º 2",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.aviso-empregador",
+      "nombre": "Antecedência mínima da comunicação do empregador na rescisão por motivos económicos",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 142, n.º 2",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.licenca-maternidade",
+      "nombre": "Licença por maternidade",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 14, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.maternidade-antes-parto",
+      "nombre": "Dias antes da data provável do parto em que a licença pode começar",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 14, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.licenca-paternidade",
+      "nombre": "Licença por paternidade",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 15, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.probatorio-geral",
+      "nombre": "Período probatório máximo: contrato por tempo indeterminado, regra geral",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 48, n.º 1",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.probatorio-medio",
+      "nombre": "Período probatório máximo: técnicos de nível médio",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 48, n.º 1, alínea a)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.probatorio-superior",
+      "nombre": "Período probatório máximo: técnicos de nível superior e chefias",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 48, n.º 1, alínea b)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.probatorio-prazo-longo",
+      "nombre": "Período probatório máximo: contrato a prazo certo de mais de um ano",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 48, n.º 2, alínea a)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.probatorio-prazo-medio",
+      "nombre": "Período probatório máximo: contrato a prazo certo de seis meses a um ano",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 48, n.º 2, alínea b)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.probatorio-prazo-curto",
+      "nombre": "Período probatório máximo: contrato a prazo certo até seis meses ou a termo incerto",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 48, n.º 2, alíneas c) e d)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.limite-descontos",
+      "nombre": "Divisor do limite dos descontos na remuneração mensal (um terço)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 124, n.º 4",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.limite-especie",
+      "nombre": "Parte máxima da remuneração paga em espécie",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 123, n.º 1, alínea a)",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.sisa",
+      "nombre": "Taxa da Sisa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-11-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Autoridade Tributária de Moçambique",
+            "titulo": "Decreto n.º 46/2004 (Código da Sisa), artigo 10 do Código",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FDECRETO%2FDecreto%20n.%C2%BA%2046-2004%20SISA%20(C%C3%B3digo%20da%20Sisa).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.sisa-agravada",
+      "nombre": "Taxa da Sisa para adquirentes em territórios de regime fiscal mais favorável",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-11-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Autoridade Tributária de Moçambique",
+            "titulo": "Decreto n.º 46/2004 (Código da Sisa), artigo 10 do Código",
+            "url": "https://www.at.gov.mz/api/webdav?path=%2FLEGISLA%C3%87%C3%83O%2FLEGISLA%C3%87%C3%83O%20FISCAL%2FDECRETO%2FDecreto%20n.%C2%BA%2046-2004%20SISA%20(C%C3%B3digo%20da%20Sisa).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mz.salario-minimo",
+      "nombre": "Salário mínimo mensal por sector",
+      "tipo": "mapa",
+      "unidad": "MZN",
+      "etiquetas": {
+        "agricultura": "Agricultura, pecuária, caça e silvicultura",
+        "pesca": "Pesca industrial e semi-industrial",
+        "industria": "Indústria transformadora",
+        "construcao": "Construção",
+        "servicos": "Serviços e actividades não financeiras",
+        "banca": "Bancos e seguradoras"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-03-31",
+          "valor": {
+            "agricultura": 6688,
+            "pesca": 6726.88,
+            "industria": 10147.5,
+            "construcao": 8400,
+            "servicos": 10310,
+            "banca": 19043.61
+          },
+          "motivo": "Valores de 2025 lidos só num resumo de um escritório de advogados (DLA Piper). Os Diplomas Ministeriais n.º 87/2025 a 94/2025 e os de 2026 (em vigor desde 1 de Abril de 2026) não foram encontrados em fonte oficial.",
+          "fuente": {
+            "organismo": "DLA Piper Africa",
+            "titulo": "Approval of New Minimum Wages 2025",
+            "url": "https://www.dlapiperafrica.com/en/mozambique/insights/2025/Approval-of-New-Minimum-Wages-2025",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    }
+  ]
+}

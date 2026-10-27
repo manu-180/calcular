@@ -1,0 +1,43 @@
+{
+  "mercado": "om",
+  "avisos": [
+    {
+      "id": "om.labour-law-scope",
+      "nivel": "info",
+      "desde": "2026-10-26",
+      "aplicaA": [
+        "om.end-of-service-gratuity",
+        "om.final-settlement",
+        "om.annual-leave-calculator",
+        "om.overtime-calculator",
+        "om.working-hours-calculator",
+        "om.notice-period",
+        "om.unfair-dismissal-compensation",
+        "om.sick-leave-calculator",
+        "om.maternity-leave-calculator"
+      ],
+      "texto": "يتبع الحساب قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، وهو الحد الأدنى لحقوق العامل. إذا منحك عقدك أو لائحة المنشأة أكثر، فالأفضل لك هو ما يطبق.",
+      "fuente": {
+        "organismo": "وزارة العدل والشؤون القانونية",
+        "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023",
+        "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-26"
+      }
+    },
+    {
+      "id": "om.savings-scheme",
+      "nivel": "info",
+      "desde": "2026-10-26",
+      "aplicaA": ["om.end-of-service-gratuity", "om.final-settlement"],
+      "texto": "عند بدء العمل بنظام الادخار في صندوق الحماية الاجتماعية يحل محل مكافأة نهاية الخدمة لغير العمانيين عن المدة اللاحقة لبدئه. المكافأة عن المدة السابقة تبقى على صاحب العمل وفق قانون العمل.",
+      "fuente": {
+        "organismo": "وزارة العدل والشؤون القانونية",
+        "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادتان (137) و(138)",
+        "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-26"
+      }
+    }
+  ]
+}
