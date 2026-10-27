@@ -58,6 +58,7 @@ export const detectores: readonly Detector[] = [
       "dz.vignette",
       "dz.vignette-10cv",
       "dz.droits-mutation",
+      "dz.capital-deces",
       "dz.maladie-taux",
       "dz.maladie-jours-reduits",
       "dz.indemnite-diviseur",

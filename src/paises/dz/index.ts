@@ -48,6 +48,8 @@ import pensionDeRetraite from "./calculadoras/pension-de-retraite";
 import contenidoPensionDeRetraite from "./contenido/pension-de-retraite";
 import indemniteArretMaladie from "./calculadoras/indemnite-arret-maladie";
 import contenidoIndemniteArretMaladie from "./contenido/indemnite-arret-maladie";
+import capitalDeces from "./calculadoras/capital-deces";
+import contenidoCapitalDeces from "./contenido/capital-deces";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -84,6 +86,7 @@ export default definirPais({
     { definicion: plusValueCessionActions, contenido: contenidoPlusValueCessionActions, cliente: () => import("./calculadoras/plus-value-cession-actions.cliente") },
     { definicion: pensionDeRetraite, contenido: contenidoPensionDeRetraite, cliente: () => import("./calculadoras/pension-de-retraite.cliente") },
     { definicion: indemniteArretMaladie, contenido: contenidoIndemniteArretMaladie, cliente: () => import("./calculadoras/indemnite-arret-maladie.cliente") },
+    { definicion: capitalDeces, contenido: contenidoCapitalDeces, cliente: () => import("./calculadoras/capital-deces.cliente") },
   ],
   universales: "todas",
   novedades,
