@@ -33,7 +33,7 @@ export default definirCalculadora({
       hebdo,
       total: redondear(hebdo * m.duree),
       observaciones: [
-        "Le congé peut commencer plus tard que la date au plus tôt : il dure toujours quatorze semaines consécutives. Les dates de fin indiquées correspondent à un départ au plus tôt et à un départ le jour de l'accouchement.",
+        `Le congé peut commencer plus tard que la date au plus tôt : il dure toujours ${m.duree} semaines consécutives. Les dates de fin indiquées correspondent à un départ au plus tôt et à un départ le jour de l'accouchement.`,
         "L'indemnité sur la période est une estimation fondée sur le salaire net mensuel ramené à la semaine. La CNAS la calcule à partir du salaire journalier.",
         OBS_ASSIETTE,
       ],

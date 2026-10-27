@@ -38,6 +38,12 @@ import allocationChomage from "./calculadoras/allocation-chomage";
 import contenidoAllocationChomage from "./contenido/allocation-chomage";
 import congeMaternite from "./calculadoras/conge-maternite";
 import contenidoCongeMaternite from "./contenido/conge-maternite";
+import plusValueImmobiliere from "./calculadoras/plus-value-immobiliere";
+import contenidoPlusValueImmobiliere from "./contenido/plus-value-immobiliere";
+import impotInteretsEpargne from "./calculadoras/impot-interets-epargne";
+import contenidoImpotInteretsEpargne from "./contenido/impot-interets-epargne";
+import plusValueCessionActions from "./calculadoras/plus-value-cession-actions";
+import contenidoPlusValueCessionActions from "./contenido/plus-value-cession-actions";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -69,6 +75,9 @@ export default definirPais({
     { definicion: impotSurDividendes, contenido: contenidoImpotSurDividendes, cliente: () => import("./calculadoras/impot-sur-dividendes.cliente") },
     { definicion: allocationChomage, contenido: contenidoAllocationChomage, cliente: () => import("./calculadoras/allocation-chomage.cliente") },
     { definicion: congeMaternite, contenido: contenidoCongeMaternite, cliente: () => import("./calculadoras/conge-maternite.cliente") },
+    { definicion: plusValueImmobiliere, contenido: contenidoPlusValueImmobiliere, cliente: () => import("./calculadoras/plus-value-immobiliere.cliente") },
+    { definicion: impotInteretsEpargne, contenido: contenidoImpotInteretsEpargne, cliente: () => import("./calculadoras/impot-interets-epargne.cliente") },
+    { definicion: plusValueCessionActions, contenido: contenidoPlusValueCessionActions, cliente: () => import("./calculadoras/plus-value-cession-actions.cliente") },
   ],
   universales: "todas",
   novedades,

@@ -873,6 +873,222 @@
           }
         }
       ]
+    },
+    {
+      "id": "dz.pv-immo-taux",
+      "nombre": "Plus-value de cession immobilière : taux de l'IRG",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 104-II-5-a du CIDTA : 15 %, libératoire d'impôt.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-reduction",
+      "nombre": "Plus-value immobilière : réduction pour l'unique logement",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 104-II-5-a du CIDTA : réduction d'impôt de 50 % pour la cession d'un logement, collectif ou individuel, qui constitue l'unique propriété et l'habitation principale.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 24-08 du 24 novembre 2024 portant loi de finances pour 2025 (JO n° 84), article 8 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2024/F2024084.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-abattement",
+      "nombre": "Plus-value immobilière : abattement pour durée de détention",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "annuel": "Abattement par année",
+        "plafond": "Abattement maximal"
+      },
+      "nota": "Article 79 du CIDTA : abattement de 5 % par an à compter de la troisième année d'entrée en possession du bien, dans la limite de 50 %.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": {
+            "annuel": 5,
+            "plafond": 50
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 20-16 du 31 décembre 2020 portant loi de finances pour 2021 (JO n° 83), article 10 modifiant les articles 77 à 80 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2020/F2020083.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-frais",
+      "nombre": "Plus-value immobilière : plafond des frais ajoutés au prix d'acquisition",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 78 du CIDTA : les frais d'acquisition, d'entretien et d'amélioration justifiés majorent le prix d'acquisition dans la limite de 30 % de ce prix.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 24 modifiant l'article 78 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-forfait",
+      "nombre": "Plus-value immobilière : valeur d'acquisition forfaitaire",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 78 du CIDTA : lorsque le prix d'acquisition ne peut être déterminé, il est fixé à 40 % du prix de vente.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 25-17 du 14 décembre 2025 portant loi de finances pour 2026 (JO n° 88), article 9 modifiant l'article 78 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2025/F2025088.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-abattement-debut",
+      "nombre": "Plus-value immobilière : année à partir de laquelle l'abattement s'applique",
+      "tipo": "numero",
+      "unidad": "anios",
+      "nota": "Article 79 du CIDTA : l'abattement court à compter de la troisième année d'entrée en possession du bien cédé.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 20-16 du 31 décembre 2020 portant loi de finances pour 2021 (JO n° 83), article 10 modifiant les articles 77 à 80 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2020/F2020083.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-epargne",
+      "nombre": "Retenue à la source sur les intérêts des livrets d'épargne",
+      "tipo": "escala",
+      "unidad": "DZD",
+      "nota": "Article 104-II-4-b du CIDTA : 1 % libératoire jusqu'à 50 000 DA d'intérêts, 10 % au-delà, imputable sur l'imposition définitive. Les lois de finances pour 2023 à 2026 laissent ce point sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000,
+              "tasa": 1
+            },
+            {
+              "desde": 50000,
+              "hasta": null,
+              "tasa": 10
+            }
+          ],
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-creances",
+      "nombre": "Retenue à la source sur les revenus des créances, dépôts et cautionnements",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 104-II-4-b du CIDTA : 10 %, crédit d'impôt imputable sur l'imposition définitive.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-titres",
+      "nombre": "Plus-value de cession d'actions et parts sociales : taux de l'IRG",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "normal": "Taux libératoire",
+        "reinvesti": "Taux réduit en cas d'engagement de réinvestir",
+        "non-resident": "Retenue pour un cédant domicilié hors d'Algérie"
+      },
+      "nota": "Article 104-II-5-b et III du CIDTA. Le taux réduit suppose l'engagement de réinvestir la plus-value au plus tard le 31 décembre de l'année qui suit la cession, sous peine de rappel majoré de 25 %.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "normal": 15,
+            "reinvesti": 5,
+            "non-resident": 20
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 24-08 du 24 novembre 2024 portant loi de finances pour 2025 (JO n° 84), article 8 modifiant l'article 104 du CIDTA ; taux non-résidents de la loi n° 21-16 (loi de finances pour 2022, JO n° 100), article 31",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2024/F2024084.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
     }
   ]
 }
