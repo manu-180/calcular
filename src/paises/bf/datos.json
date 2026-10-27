@@ -1,0 +1,1076 @@
+{
+  "mercado": "bf",
+  "datos": [
+    {
+      "id": "bf.smig",
+      "nombre": "Salaire minimum interprofessionnel garanti (SMIG), mensuel",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-06-29",
+          "valor": 45000,
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Compte rendu du Conseil des ministres n° 020 du 29 juin 2023 (décret fixant les salaires minima interprofessionnels garantis)",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2025/10/CONSEIL-DES-MINISTRES-N%C2%B0020-DU-29-JUIN-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Le Conseil a adopté ce jour-là le décret qui remplace le décret n° 2006-655. La date de promulgation n'a pas été lue en source officielle ; le SIG confirme le 4 octobre 2026 que le SMIG est de 45 000 F CFA depuis 2023."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.smig-horaire",
+      "nombre": "Salaire minimum interprofessionnel garanti (SMIG), horaire",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-06-29",
+          "valor": 259.62,
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Compte rendu du Conseil des ministres n° 020 du 29 juin 2023 (décret fixant les salaires minima interprofessionnels garantis)",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2025/10/CONSEIL-DES-MINISTRES-N%C2%B0020-DU-29-JUIN-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Le Conseil a adopté ce jour-là le décret qui remplace le décret n° 2006-655. La date de promulgation n'a pas été lue en source officielle ; le SIG confirme le 4 octobre 2026 que le SMIG est de 45 000 F CFA depuis 2023."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.iuts-bareme",
+      "nombre": "Barème mensuel de l'impôt unique sur les traitements et salaires (IUTS)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30000,
+              "tasa": 0
+            },
+            {
+              "desde": 30000,
+              "hasta": 50000,
+              "tasa": 12.1
+            },
+            {
+              "desde": 50000,
+              "hasta": 80000,
+              "tasa": 13.9
+            },
+            {
+              "desde": 80000,
+              "hasta": 120000,
+              "tasa": 15.7
+            },
+            {
+              "desde": 120000,
+              "hasta": 170000,
+              "tasa": 18.4
+            },
+            {
+              "desde": 170000,
+              "hasta": 250000,
+              "tasa": 21.7
+            },
+            {
+              "desde": 250000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 112",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié. La loi écrit les tranches « de 30.100 à 50.000 », « de 50.100 à 80.000 » et ainsi de suite : le barème est appliqué ici en continu."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.iuts-charges-famille",
+      "nombre": "Réduction d'IUTS pour charges de famille",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1": "1 charge",
+        "2": "2 charges",
+        "3": "3 charges",
+        "4": "4 charges et plus"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "1": 8,
+            "2": 10,
+            "3": 12,
+            "4": 14
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 113",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.iuts-abattement",
+      "nombre": "Abattement forfaitaire pour frais professionnels (IUTS), en % du salaire de base",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "superieure": "Catégories P, A et B (ou 6, 1 et 2) et équivalentes",
+        "autres": "Autres catégories"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "superieure": 20,
+            "autres": 25
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 111",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.iuts-plafond-pension",
+      "nombre": "Plafond de déduction des retenues pour pension (IUTS), en % du salaire de base",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 111",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.iuts-indemnites-taux",
+      "nombre": "Part exonérée d'IUTS des indemnités, en % du salaire brut",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "logement": "Indemnité de logement",
+        "fonction": "Indemnité de fonction",
+        "transport": "Indemnité de transport ou de déplacement"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "logement": 20,
+            "fonction": 5,
+            "transport": 5
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 106",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.iuts-indemnites-plafond",
+      "nombre": "Plafond mensuel exonéré d'IUTS des indemnités",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "logement": "Indemnité de logement",
+        "fonction": "Indemnité de fonction",
+        "transport": "Indemnité de transport ou de déplacement"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "logement": 75000,
+            "fonction": 50000,
+            "transport": 30000
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 106",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.cnss-taux",
+      "nombre": "Taux des cotisations CNSS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vieillesse-salarie": "Assurance vieillesse, part du travailleur",
+        "vieillesse-employeur": "Assurance vieillesse, part de l'employeur",
+        "prestations-familiales": "Prestations familiales",
+        "risques-professionnels": "Risques professionnels"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-02-24",
+          "valor": {
+            "vieillesse-salarie": 5.5,
+            "vieillesse-employeur": 8.5,
+            "prestations-familiales": 6,
+            "risques-professionnels": 1.5
+          },
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Cotisations sociales (décret n° 2023-0129 du 24 février 2023 et arrêté n° 2022-067 du 30 août 2022)",
+            "url": "https://cnssbf.org/cotisations-sociales/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.cnss-plafond",
+      "nombre": "Plafond mensuel de l'assiette des cotisations CNSS",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-08-30",
+          "valor": 800000,
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Cotisations sociales (décret n° 2023-0129 du 24 février 2023 et arrêté n° 2022-067 du 30 août 2022)",
+            "url": "https://cnssbf.org/cotisations-sociales/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.cnss-assurance-volontaire",
+      "nombre": "Taux de cotisation de l'assurance volontaire CNSS (pensions)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-02-24",
+          "valor": 14,
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Cotisations sociales (décret n° 2023-0129 du 24 février 2023 et arrêté n° 2022-067 du 30 août 2022)",
+            "url": "https://cnssbf.org/cotisations-sociales/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.tpa-taux",
+      "nombre": "Taux de la taxe patronale et d'apprentissage (TPA)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 229",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.tpa-abattement-cga",
+      "nombre": "Abattement TPA des adhérents d'un centre de gestion agréé",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 228",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.tva-normal",
+      "nombre": "Taux normal de la TVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 317",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.tva-reduit",
+      "nombre": "Taux réduit de la TVA (hébergement et restauration des établissements agréés)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 317",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.is-taux",
+      "nombre": "Taux de l'impôt sur les sociétés",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 27.5,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 87",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.mfp-taux",
+      "nombre": "Taux du minimum forfaitaire de perception (sur le chiffre d'affaires hors taxes)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 89",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.mfp-minimum",
+      "nombre": "Montant minimum du minimum forfaitaire de perception",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "reel-normal": "Régime du réel normal",
+        "reel-simplifie": "Régime du réel simplifié"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "reel-normal": 1000000,
+            "reel-simplifie": 300000
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 89",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.mfp-reduction-cga",
+      "nombre": "Réduction du minimum forfaitaire pour les adhérents d'un centre de gestion agréé",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 89",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.bic-bareme",
+      "nombre": "Barème de l'impôt sur les bénéfices des personnes physiques",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 500000,
+              "tasa": 10
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 20
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 27.5
+            }
+          ],
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 13",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié. La loi écrit la deuxième tranche « de 501.000 à 1.000.000 » sur un bénéfice arrondi aux mille francs inférieurs."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.bic-reduction-cga",
+      "nombre": "Réduction de l'impôt sur les bénéfices pour les adhérents d'un centre de gestion agréé",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 14",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.irf-abattement",
+      "nombre": "Abattement forfaitaire sur les loyers (impôt sur les revenus fonciers)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 125",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.irf-bareme",
+      "nombre": "Barème de l'impôt sur les revenus fonciers (IRF)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 100000,
+              "tasa": 18
+            },
+            {
+              "desde": 100000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 126",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.ircm-taux",
+      "nombre": "Taux de l'impôt sur le revenu des capitaux mobiliers (IRCM)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "creances": "Revenus des créances et autres revenus sans taux spécifique",
+        "comptes": "Intérêts des comptes de dépôt et des comptes courants",
+        "obligations": "Obligations émises au Burkina Faso",
+        "dividendes": "Autres produits de valeurs mobilières (dividendes)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "creances": 25,
+            "comptes": 12.5,
+            "obligations": 6,
+            "dividendes": 12.5
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts à jour avec la loi de finances 2023, article 140",
+            "url": "https://dgi.bf/wp-content/uploads/2023/08/Code-general-des-impots-a-jour-avec-la-LF-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Texte consolidé publié par la DGI. Contrôlé contre la loi de finances 2024 (loi n° 042-2023/ALT, texte sur an.bf) et les exposés des motifs des lois de finances 2025 et 2026 publiés par la DGI : cet article n'y est pas modifié."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.parite-euro",
+      "nombre": "Parité fixe du franc CFA (XOF) avec l'euro",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-01-01",
+          "valor": 655.957,
+          "fuente": {
+            "organismo": "BCEAO",
+            "titulo": "Histoire du franc CFA (parité fixe avec l'euro depuis le 1er janvier 1999)",
+            "url": "https://www.bceao.int/fr/content/histoire-du-franc-cfa",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.duree-legale",
+      "nombre": "Durée légale hebdomadaire du travail",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 154",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.preavis-jours-horaire",
+      "nombre": "Préavis du travailleur payé à l'heure ou à la journée",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 76",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.preavis-mois",
+      "nombre": "Durée du préavis (contrat à durée indéterminée)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "employe": "Travailleur autre que cadre, agent de maîtrise ou technicien",
+        "cadre": "Cadre, agent de maîtrise, technicien et assimilés"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": {
+            "employe": 1,
+            "cadre": 3
+          },
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 76",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.essai-jours-horaire",
+      "nombre": "Durée de l'essai du travailleur payé à l'heure ou à la journée",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 49",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.essai-mois",
+      "nombre": "Durée de l'essai",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "employe": "Travailleur autre que cadre, agent de maîtrise ou technicien",
+        "cadre": "Cadre, agent de maîtrise, technicien et assimilés"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": {
+            "employe": 1,
+            "cadre": 3
+          },
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 49",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.conges-jours-par-mois",
+      "nombre": "Congé payé acquis par mois de service effectif (jours calendaires)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 180",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.conges-anciennete",
+      "nombre": "Jours de congé en plus selon l'ancienneté dans l'entreprise",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "20": "Après 20 ans de services",
+        "25": "Après 25 ans de services",
+        "30": "Après 30 ans de services"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": {
+            "20": 2,
+            "25": 4,
+            "30": 6
+          },
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 181",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.conges-par-enfant",
+      "nombre": "Congé supplémentaire par enfant à charge (salariée de moins de 22 ans)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 182",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.conges-age-mere",
+      "nombre": "Âge en dessous duquel la salariée a droit au congé supplémentaire par enfant",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 182",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.maternite-semaines",
+      "nombre": "Congé de maternité",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "total": "Durée totale",
+        "avant-max": "Départ au plus tôt avant l'accouchement",
+        "avant-min": "Départ au plus tard avant l'accouchement",
+        "apres-max": "Durée maximale après l'accouchement",
+        "prolongation": "Prolongation en cas de maladie liée à la grossesse"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": {
+            "total": 14,
+            "avant-max": 8,
+            "avant-min": 4,
+            "apres-max": 10,
+            "prolongation": 3
+          },
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 169",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.maladie-plein-salaire",
+      "nombre": "Maladie non professionnelle : mois à plein salaire selon l'ancienneté",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "0": "Moins d'un an",
+        "1": "De un à cinq ans",
+        "6": "De six à dix ans",
+        "11": "De onze à quinze ans",
+        "16": "Au-delà de quinze ans"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": {
+            "0": 1,
+            "1": 1,
+            "6": 3,
+            "11": 4,
+            "16": 5
+          },
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 113",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.maladie-demi-salaire",
+      "nombre": "Maladie non professionnelle : mois à demi-salaire selon l'ancienneté",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "0": "Moins d'un an",
+        "1": "De un à cinq ans",
+        "6": "De six à dix ans",
+        "11": "De onze à quinze ans",
+        "16": "Au-delà de quinze ans"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": {
+            "0": 1,
+            "1": 3,
+            "6": 3,
+            "11": 4,
+            "16": 5
+          },
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 113",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.rupture-irreguliere",
+      "nombre": "Indemnité pour rupture irrégulière, en mois de salaire",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "licenciement": "Licenciement sans respect de la procédure",
+        "demission": "Démission non notifiée par écrit"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": {
+            "licenciement": 3,
+            "demission": 1
+          },
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 84",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.dommages-plafond",
+      "nombre": "Plafond des dommages et intérêts pour rupture abusive, en mois de salaire",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "employeur": "Responsabilité de l'employeur",
+        "travailleur": "Responsabilité du travailleur"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-25",
+          "valor": {
+            "employeur": 24,
+            "travailleur": 6
+          },
+          "fuente": {
+            "organismo": "Gouvernement du Burkina Faso (SIG)",
+            "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP du 6 mai 2026 portant code du travail, article 87",
+            "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Document scanné publié par le gouvernement, lu page par page. La loi abroge le code du travail de 2008 (loi n° 028-2008/AN)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.age-retraite",
+      "nombre": "Âge de départ à la retraite (régime CNSS)",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "ouvrier": "Ouvriers et assimilés",
+        "employe": "Employés et assimilés",
+        "cadre": "Agents de maîtrise, cadres et assimilés",
+        "medecin": "Médecins et enseignants du supérieur"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "ouvrier": 56,
+            "employe": 58,
+            "cadre": 60,
+            "medecin": 63
+          },
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "La pension de retraite vieillesse",
+            "url": "https://cnssbf.org/la-pension-de-retraite-vieillesse/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bf.retraite-cotisation-min",
+      "nombre": "Durée minimale de cotisation pour la pension de vieillesse",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 15,
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "La pension de retraite vieillesse",
+            "url": "https://cnssbf.org/la-pension-de-retraite-vieillesse/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}
