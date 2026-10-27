@@ -35,7 +35,8 @@ const MESYATSY = ["январ", "феврал", "март", "апрел", "ма"
 
 // На главной странице Нацстаткома есть блок «Основные социально-экономические показатели в январе-
 // сентябре 2026 года» с ИПЦ к декабрю прошлого года («108.1 %»). Индекс месяца (2005 = 100) получается из
-// декабрьской точки серии; принимаем только месяц, который идет сразу за последним в серии.
+// декабрьской точки серии; принимаем только месяц, который идет сразу за последним в серии (пропуск
+// месяца значит, что точку надо внести вручную из таблицы Нацстаткома).
 async function ipcStat(http: Http, url: string): Promise<readonly PuntoSerie[] | null> {
   const tekst = (await http.texto(url)).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ");
   const period = /показатели в январе(?:-([а-яё]+))? (\d{4}) года/i.exec(tekst);
@@ -51,7 +52,9 @@ async function ipcStat(http: Http, url: string): Promise<readonly PuntoSerie[] |
   const [g, mes] = posledniy[0].split("-").map(Number);
   const sleduyushchiy = `${mes === 12 ? g + 1 : g}-${String(mes === 12 ? 1 : mes + 1).padStart(2, "0")}-01`;
   const kDekabryu = Number(ipc[2].replace(",", "."));
-  if (!esFechaISO(fecha) || fecha !== sleduyushchiy || !Number.isFinite(kDekabryu)) return null;
+  if (!esFechaISO(fecha) || !Number.isFinite(kDekabryu)) return null;
+  if (fecha <= posledniy[0]) return [];
+  if (fecha !== sleduyushchiy) return null;
   return [{ fecha, valor: Math.round(((dekabr * kDekabryu) / 100) * 10000) / 10000 }];
 }
 
