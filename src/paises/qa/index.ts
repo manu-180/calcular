@@ -2,8 +2,12 @@ import { definirPais } from "@/motor/registro";
 import avisos from "./avisos.json";
 import annualLeave from "./calculadoras/annual-leave";
 import contenidoAnnualLeave from "./contenido/annual-leave";
+import domesticWorkerGratuity from "./calculadoras/domestic-worker-gratuity";
+import contenidoDomesticWorkerGratuity from "./contenido/domestic-worker-gratuity";
 import employerCostCalculator from "./calculadoras/employer-cost-calculator";
 import contenidoEmployerCostCalculator from "./contenido/employer-cost-calculator";
+import exciseTaxCalculator from "./calculadoras/excise-tax-calculator";
+import contenidoExciseTaxCalculator from "./contenido/excise-tax-calculator";
 import finalSettlement from "./calculadoras/final-settlement";
 import contenidoFinalSettlement from "./contenido/final-settlement";
 import gratuityCalculator from "./calculadoras/gratuity-calculator";
@@ -20,8 +24,12 @@ import overtimeCalculator from "./calculadoras/overtime-calculator";
 import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
 import pensionCalculator from "./calculadoras/pension-calculator";
 import contenidoPensionCalculator from "./contenido/pension-calculator";
+import ramadanWorkingHours from "./calculadoras/ramadan-working-hours";
+import contenidoRamadanWorkingHours from "./contenido/ramadan-working-hours";
 import sickLeavePay from "./calculadoras/sick-leave-pay";
 import contenidoSickLeavePay from "./contenido/sick-leave-pay";
+import sugarTaxCalculator from "./calculadoras/sugar-tax-calculator";
+import contenidoSugarTaxCalculator from "./contenido/sugar-tax-calculator";
 import takeHomePay from "./calculadoras/take-home-pay";
 import contenidoTakeHomePay from "./contenido/take-home-pay";
 import datos from "./datos.json";
@@ -37,7 +45,9 @@ export default definirPais({
   avisos,
   calculadoras: [
     { definicion: annualLeave, contenido: contenidoAnnualLeave, cliente: () => import("./calculadoras/annual-leave.cliente") },
+    { definicion: domesticWorkerGratuity, contenido: contenidoDomesticWorkerGratuity, cliente: () => import("./calculadoras/domestic-worker-gratuity.cliente") },
     { definicion: employerCostCalculator, contenido: contenidoEmployerCostCalculator, cliente: () => import("./calculadoras/employer-cost-calculator.cliente") },
+    { definicion: exciseTaxCalculator, contenido: contenidoExciseTaxCalculator, cliente: () => import("./calculadoras/excise-tax-calculator.cliente") },
     { definicion: finalSettlement, contenido: contenidoFinalSettlement, cliente: () => import("./calculadoras/final-settlement.cliente") },
     { definicion: gratuityCalculator, contenido: contenidoGratuityCalculator, cliente: () => import("./calculadoras/gratuity-calculator.cliente") },
     { definicion: grsiaContributionCalculator, contenido: contenidoGrsiaContributionCalculator, cliente: () => import("./calculadoras/grsia-contribution-calculator.cliente") },
@@ -46,7 +56,9 @@ export default definirPais({
     { definicion: noticePeriod, contenido: contenidoNoticePeriod, cliente: () => import("./calculadoras/notice-period.cliente") },
     { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
     { definicion: pensionCalculator, contenido: contenidoPensionCalculator, cliente: () => import("./calculadoras/pension-calculator.cliente") },
+    { definicion: ramadanWorkingHours, contenido: contenidoRamadanWorkingHours, cliente: () => import("./calculadoras/ramadan-working-hours.cliente") },
     { definicion: sickLeavePay, contenido: contenidoSickLeavePay, cliente: () => import("./calculadoras/sick-leave-pay.cliente") },
+    { definicion: sugarTaxCalculator, contenido: contenidoSugarTaxCalculator, cliente: () => import("./calculadoras/sugar-tax-calculator.cliente") },
     { definicion: takeHomePay, contenido: contenidoTakeHomePay, cliente: () => import("./calculadoras/take-home-pay.cliente") },
   ],
   universales: "todas",
