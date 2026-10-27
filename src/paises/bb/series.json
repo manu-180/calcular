@@ -1,0 +1,28 @@
+{
+  "mercado": "bb",
+  "series": [
+    {
+      "id": "bb.inflation",
+      "nombre": "Retail Price Index, point-to-point change in the All Items Index",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 200,
+      "fuente": {
+        "organismo": "Barbados Statistical Service",
+        "titulo": "Statistical Bulletin: Retail Price Index, June 2026 (Base: July 2018=100)",
+        "url": "https://stats.gov.bb/wp-content/uploads/2026/08/Rebased-RPI-Bulletin-June-2026-5-pages.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "Each month is stored on its first day. The bulletin for a month comes out two to three months later (June 2026 was posted in August), so the series allows 200 days."
+      },
+      "puntos": [
+        ["2026-01-01", 1.3],
+        ["2026-02-01", 1.3],
+        ["2026-03-01", 1.5],
+        ["2026-04-01", 1.9],
+        ["2026-05-01", 2.0],
+        ["2026-06-01", 1.6]
+      ]
+    }
+  ]
+}
