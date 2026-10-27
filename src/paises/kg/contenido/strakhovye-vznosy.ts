@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kg.strakhovye-vznosy",
   h1: "Калькулятор страховых взносов в Соцфонд",
-  title: "Страховые взносы в Кыргызстане 2026: калькулятор",
+  title: "Страховые взносы в Кыргызстане {{anio}}: калькулятор",
   description:
     "Сколько страховых взносов платят работник ({{kg.sf-rabotnik}}) и работодатель с зарплаты. С предельной базой {{kg.sf-predelnaya-baza}} в месяц.",
   intro: [

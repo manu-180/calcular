@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ro.impozit-vanzare-apartament",
   h1: "Calculator impozit vânzare apartament sau casă",
-  title: "Impozit vânzare apartament 2026: {{ro.impozit-transfer-imobiliar[peste-3-ani]}} sau {{ro.impozit-transfer-imobiliar[max-3-ani]}}",
+  title: "Impozit vânzare apartament {{anio}}: {{ro.impozit-transfer-imobiliar[peste-3-ani]}} sau {{ro.impozit-transfer-imobiliar[max-3-ani]}}",
   description:
     "Calculați impozitul la vânzarea unei locuințe: {{ro.impozit-transfer-imobiliar[max-3-ani]}} dacă o dețineți de cel mult 3 ani și {{ro.impozit-transfer-imobiliar[peste-3-ani]}} după 3 ani, cu grila notarilor.",
   intro: [

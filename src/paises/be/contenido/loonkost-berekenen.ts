@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be.loonkost-berekenen",
   h1: "Loonkost berekenen: wat kost een werknemer?",
-  title: "Loonkost berekenen 2026: brutoloon plus werkgeversbijdragen",
+  title: "Loonkost berekenen {{anio}}: brutoloon plus werkgeversbijdragen",
   description:
     "Bereken wat een werknemer je als werkgever kost: brutoloon, werkgeversbijdragen RSZ, vakantiegeld van arbeiders en dubbel vakantiegeld van bedienden.",
   intro: [

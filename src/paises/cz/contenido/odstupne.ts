@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.odstupne",
   h1: "Výpočet odstupného",
-  title: "Odstupné 2026: kolik vám náleží podle zákoníku práce",
+  title: "Odstupné {{anio}}: kolik vám náleží podle zákoníku práce",
   description:
     "Spočítejte odstupné při výpovědi z organizačních důvodů nebo po pracovním úrazu: {{cz.odstupne[mene-nez-rok]}} až {{cz.odstupne[dva-a-vice]}} průměrné výdělky podle délky pracovního poměru, při úrazu {{cz.odstupne[uraz]}}.",
   intro: [

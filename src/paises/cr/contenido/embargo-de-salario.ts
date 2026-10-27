@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.embargo-de-salario",
   h1: "Calculadora de embargo de salario en Costa Rica",
-  title: "Embargo de salario 2026 en Costa Rica: cuánto rebajan",
+  title: "Embargo de salario {{anio}} en Costa Rica: cuánto rebajan",
   description:
     "Calcule cuánto le pueden embargar del salario por una deuda o por pensión alimentaria, con el mínimo inembargable vigente y el artículo 172.",
   intro: [

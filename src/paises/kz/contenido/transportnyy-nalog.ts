@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "kz.transportnyy-nalog",
-  h1: "Калькулятор налога на транспорт в Казахстане на 2026 год",
-  title: "Налог на авто 2026 Казахстан: калькулятор по объему",
+  h1: "Калькулятор налога на транспорт в Казахстане на {{anio}} год",
+  title: "Налог на авто {{anio}} Казахстан: калькулятор по объему",
   description:
     "Рассчитайте налог на легковой автомобиль по объему двигателя: ставка в МРП, надбавка {{kz.transportnyy-nalog-nadbavka}} за каждый куб. см и скидка для старых машин.",
   intro: [

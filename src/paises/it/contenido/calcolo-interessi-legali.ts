@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "it.interessi-legali",
   h1: "Calcolo interessi legali",
-  title: "Calcolo interessi legali 2026: saggio e importo",
+  title: "Calcolo interessi legali {{anio}}: saggio e importo",
   description:
     "Calcola gli interessi legali su una somma tra due date, anno per anno, con il saggio fissato ogni anno dal Ministero dell'Economia. Oggi è pari a {{it.interesse-legale}}.",
   intro: [

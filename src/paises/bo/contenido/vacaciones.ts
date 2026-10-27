@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.vacaciones",
   h1: "Calculadora de vacaciones en Bolivia",
-  title: "Vacaciones Bolivia 2026: calcule días y pago por antigüedad",
+  title: "Vacaciones Bolivia {{anio}}: calcule días y pago por antigüedad",
   description: "Calcule cuántos días de vacación le corresponden ({{bo.vacaciones-dias[hasta-5]}}, {{bo.vacaciones-dias[hasta-10]}} o {{bo.vacaciones-dias[mas-10]}} hábiles) y cuánto vale la fracción si deja el trabajo.",
   intro: [
     "En Bolivia le corresponden {{bo.vacaciones-dias[hasta-5]}} hábiles de vacación por año de 1 a 5 años de trabajo, {{bo.vacaciones-dias[hasta-10]}} de 5 a 10 años y {{bo.vacaciones-dias[mas-10]}} desde los 10 años. Se ganan al cumplir cada año de trabajo continuo.",

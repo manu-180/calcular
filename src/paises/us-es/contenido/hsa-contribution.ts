@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.hsa-contribution",
   h1: "Calculadora de aportes a la HSA",
-  title: "Calculadora de límite de HSA 2026",
-  description: "Mira tu límite de 2026 en la cuenta de ahorros para la salud: {{us.hsa-self-only}} individual, {{us.hsa-family}} familiar, más el catch-up a los 55.",
+  title: "Calculadora de límite de HSA {{anio}}",
+  description: "Mira tu límite de {{anio}} en la cuenta de ahorros para la salud: {{us.hsa-self-only}} individual, {{us.hsa-family}} familiar, más el catch-up a los 55.",
   intro: [
     "Una cuenta de ahorros para la salud (HSA) te permite apartar dinero antes de impuestos para gastos médicos si tienes un plan de salud con deducible alto.",
     "Elige tu cobertura, tu edad y los meses en que fuiste elegible para ver cuánto puedes aportar todavía este año.",

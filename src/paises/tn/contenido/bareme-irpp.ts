@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.bareme-irpp",
   h1: "Barème de l'IRPP en Tunisie : calcul par tranches",
-  title: "Barème IRPP Tunisie 2026 : calcul de l'impôt par tranche",
+  title: "Barème IRPP Tunisie {{anio}} : calcul de l'impôt par tranche",
   description:
     "Appliquez le barème progressif de l'impôt sur le revenu tunisien à votre revenu net imposable : de {{tn.irpp-bareme[0].tasa}} à {{tn.irpp-bareme[-1].tasa}}, avec la contribution sociale de solidarité.",
   intro: [

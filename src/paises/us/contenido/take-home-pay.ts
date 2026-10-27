@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.take-home-pay",
   h1: "Take-home pay calculator",
-  title: "Take-Home Pay Calculator 2026: paycheck after taxes",
+  title: "Take-Home Pay Calculator {{anio}}: paycheck after taxes",
   description:
-    "See your paycheck after federal income tax, Social Security and Medicare for 2026, with 401(k) and pre-tax health benefits. Weekly, biweekly or monthly.",
+    "See your paycheck after federal income tax, Social Security and Medicare for {{anio}}, with 401(k) and pre-tax health benefits. Weekly, biweekly or monthly.",
   intro: [
     "Enter your salary and how often you get paid to see what lands in your bank account after federal taxes.",
     "The result uses the 2026 tax brackets, the standard deduction for your filing status and the current Social Security wage base of {{us.social-security-wage-base}}.",

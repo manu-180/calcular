@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.asgari-ucret-hesaplama",
-  h1: "Asgari ücret hesaplama 2026",
-  title: "Asgari Ücret 2026: Brüt, Net ve İşveren Maliyeti",
+  h1: "Asgari ücret hesaplama {{anio}}",
+  title: "Asgari Ücret {{anio}}: Brüt, Net ve İşveren Maliyeti",
   description:
-    "2026 asgari ücreti brüt {{tr.asgari-ucret}}. Net tutarı, SGK kesintilerini, günlük ücreti ve işverene maliyetini eksik gün dahil hesaplayın.",
+    "{{anio}} asgari ücreti brüt {{tr.asgari-ucret}}. Net tutarı, SGK kesintilerini, günlük ücreti ve işverene maliyetini eksik gün dahil hesaplayın.",
   intro: [
     "2026 yılı için aylık brüt asgari ücret {{tr.asgari-ucret}} olarak belirlendi ({{tr.asgari-ucret#desde}} tarihinden itibaren).",
     "Asgari ücretten yalnızca SGK ve işsizlik sigortası primi kesilir. Gelir vergisi ve damga vergisi alınmaz. Ay içinde eksik çalıştıysanız gün sayısını girin.",

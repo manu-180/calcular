@@ -2,7 +2,7 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "my.minimum-wage",
-  h1: "Minimum wage Malaysia 2026",
+  h1: "Minimum wage Malaysia {{anio}}",
   title: "Minimum wage Malaysia: monthly, daily and hourly rates",
   description: "Check your pay against the minimum wage of {{my.minimum-wage-monthly}} a month, {{my.minimum-wage-hourly}} an hour and the daily rates in the Minimum Wages Order 2024.",
   intro: [

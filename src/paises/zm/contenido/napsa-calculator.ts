@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "zm.napsa-calculator",
   h1: "NAPSA calculator",
-  title: "NAPSA calculator Zambia 2026: your pension contribution",
+  title: "NAPSA calculator Zambia {{anio}}: your pension contribution",
   description: "Work out the NAPSA contribution on your monthly pay: {{zm.napsa-rate}} from you and the same from your employer, up to the earnings ceiling.",
   intro: [
     "Enter your gross monthly pay and see what you and your employer pay into the national pension scheme.",

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.kilometervergoeding-berekenen",
-  h1: "Kilometervergoeding berekenen 2026",
-  title: "Kilometervergoeding 2026: {{nl.kilometervergoeding}} per km onbelast",
+  h1: "Kilometervergoeding berekenen {{anio}}",
+  title: "Kilometervergoeding {{anio}}: {{nl.kilometervergoeding}} per km onbelast",
   description:
-    "Bereken je onbelaste reiskostenvergoeding voor woon-werkverkeer in 2026. Je werkgever mag {{nl.kilometervergoeding}} per kilometer onbelast vergoeden.",
+    "Bereken je onbelaste reiskostenvergoeding voor woon-werkverkeer in {{anio}}. Je werkgever mag {{nl.kilometervergoeding}} per kilometer onbelast vergoeden.",
   intro: [
     "Je werkgever mag je reiskosten vergoeden zonder dat je daar belasting over betaalt, tot {{nl.kilometervergoeding}} per kilometer. Dit heet een gerichte vrijstelling in de werkkostenregeling.",
     "Vul je afstand en het aantal dagen in en je ziet hoeveel je per jaar onbelast kunt krijgen.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.trabajo-nocturno",
   h1: "Calculadora del sueldo mínimo por trabajo nocturno",
-  title: "Trabajo nocturno 2026: sueldo mínimo con {{pe.sobretasa-nocturna}} más",
+  title: "Trabajo nocturno {{anio}}: sueldo mínimo con {{pe.sobretasa-nocturna}} más",
   description:
     "Si trabajas de 10 p.m. a 6 a.m., tu sueldo no puede ser menor que la RMV de {{pe.rmv}} más {{pe.sobretasa-nocturna}}. Calcula el mínimo y cuánto te falta.",
   intro: [

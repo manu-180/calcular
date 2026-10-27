@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hu.atalanyado-kalkulator",
   h1: "Átalányadó kalkulátor egyéni vállalkozóknak",
-  title: "Átalányadó kalkulátor 2026: SZJA, TB-járulék, szocho",
+  title: "Átalányadó kalkulátor {{anio}}: SZJA, TB-járulék, szocho",
   description:
     "Mennyi adót fizetsz átalányadózóként? Költséghányad {{hu.atalanyado-koltseghanyad[altalanos]}}, adómentes rész {{hu.atalanyado-adomentes-resz}}, SZJA, TB-járulék és szocho egy évre.",
   intro: [

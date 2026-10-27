@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu-de.salaire-brut-net",
   h1: "Nettolohn in Luxemburg berechnen",
-  title: "Brutto-Netto-Rechner Luxemburg 2026",
-  description: "Vom Brutto zum Netto in Luxemburg: Kranken-, Renten- und Pflegeversicherung 2026, Lohnsteuer nach Steuerklasse 1, 1a oder 2 und Steuerkredite CIS und CI-CO2.",
+  title: "Brutto-Netto-Rechner Luxemburg {{anio}}",
+  description: "Vom Brutto zum Netto in Luxemburg: Kranken-, Renten- und Pflegeversicherung {{anio}}, Lohnsteuer nach Steuerklasse 1, 1a oder 2 und Steuerkredite CIS und CI-CO2.",
   intro: [
     "In Luxemburg gehen vom Bruttolohn die Sozialversicherungsbeiträge des Arbeitnehmers (Kranken-, Renten- und Pflegeversicherung) und die Lohnsteuer ab. Der Steuerkredit für Arbeitnehmer (CIS) und der CI-CO2 verringern danach die Lohnsteuer.",
     "Der Rechner verwendet die Beitragssätze 2026 des Centre commun de la sécurité sociale (CCSS) und die Lohnsteuerformeln der Steuerverwaltung (ACD).",

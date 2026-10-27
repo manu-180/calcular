@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.kunnallisverolaskuri",
   h1: "Kunnallisverolaskuri: paljonko maksat kunnallisveroa",
-  title: "Kunnallisvero 2026: laske ja vertaa kuntia",
+  title: "Kunnallisvero {{anio}}: laske ja vertaa kuntia",
   description:
     "Laske kunnallisvero ja kirkollisvero kotikuntasi veroprosentilla. Vertaa toiseen kuntaan ja näe, paljonko verosi muuttuisivat muuton jälkeen.",
   intro: [

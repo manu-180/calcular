@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "md.calculator-tva",
   h1: "Calculator TVA Moldova",
-  title: "Calculator TVA 2026: adăugați sau extrageți TVA",
+  title: "Calculator TVA {{anio}}: adăugați sau extrageți TVA",
   description: "Adăugați TVA la un preț sau extrageți TVA dintr-un preț cu taxă, la cota standard de {{md.tva[standard]}} sau la cota redusă de {{md.tva[redusa]}}.",
   intro: [
     "Taxa pe valoarea adăugată se aplică la majoritatea bunurilor și serviciilor vândute în Republica Moldova. Cota standard este {{md.tva[standard]}}.",

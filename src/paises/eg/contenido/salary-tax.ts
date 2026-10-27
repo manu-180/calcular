@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.salary-tax",
   h1: "حاسبة ضريبة كسب العمل على المرتبات",
-  title: "حساب ضريبة المرتبات 2026 في مصر بالشرائح الجديدة",
+  title: "حساب ضريبة المرتبات {{anio}} في مصر بالشرائح الجديدة",
   description:
     "احسب ضريبة كسب العمل الشهرية والسنوية بشرائح القانون رقم 7 لسنة 2024، مع الإعفاء الشخصي البالغ {{eg.personal-exemption}} وأعلى نسبة {{eg.income-tax[-1].tasa}}.",
   intro: [

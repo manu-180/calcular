@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sa.salary-calculator",
   h1: "حاسبة الراتب الصافي في السعودية",
-  title: "حساب الراتب الصافي بعد خصم التأمينات 2026",
+  title: "حساب الراتب الصافي بعد خصم التأمينات {{anio}}",
   description:
     "احسب صافي راتبك الشهري من الأساسي وبدل السكن والبدلات الأخرى بعد حسم التأمينات الاجتماعية، للسعودي وغير السعودي، بالنسب الرسمية.",
   intro: [

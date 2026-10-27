@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.year-end-tax-settlement",
   h1: "연말정산 계산기(환급액 미리 계산)",
-  title: "연말정산 계산기 2026 | 환급·추가 납부 미리 계산",
+  title: "연말정산 계산기 {{anio}} | 환급·추가 납부 미리 계산",
   description:
     "총급여와 이미 낸 소득세, 부양가족, 공제 금액을 넣으면 연말정산 결정세액과 환급받을 돈 또는 더 낼 돈을 미리 계산해요.",
   intro: [

@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "sg.employer-cost-calculator",
   h1: "Employer cost calculator for Singapore",
   title: "Employer cost calculator Singapore: CPF and SDL",
-  description: "Work out what an employee really costs each month in Singapore: wages plus employer CPF at the 2026 rates and the {{sg.sdl-tasa}} Skills Development Levy.",
+  description: "Work out what an employee really costs each month in Singapore: wages plus employer CPF at the {{anio}} rates and the {{sg.sdl-tasa}} Skills Development Levy.",
   intro: [
     "Hiring someone costs more than their salary. For Singapore Citizens and PRs you pay employer CPF on top, and for all staff you pay the Skills Development Levy (SDL).",
     "Enter the monthly wages, whether the employee is a citizen, PR or foreigner, and their age group.",

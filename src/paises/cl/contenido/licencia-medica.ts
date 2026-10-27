@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cl.licencia-medica",
   h1: "Calculadora de licencia médica: cuánto te pagan",
-  title: "Licencia médica 2026: calcula cuánto te pagan",
+  title: "Licencia médica {{anio}}: calcula cuánto te pagan",
   description:
     "Calcula el subsidio de tu licencia médica: tu remuneración neta dividida por 30 por día pagado. Las licencias de {{cl.licencia-dias-sin-carencia}} o menos no pagan los primeros días.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.cdt",
   h1: "Simulador de CDT",
-  title: "Simulador de CDT 2026: cuánto te da tu inversión",
+  title: "Simulador de CDT {{anio}}: cuánto te da tu inversión",
   description:
     "Calcula cuánto ganas en un CDT con la tasa efectiva anual que te ofrece el banco, menos la retención en la fuente del {{co.cdt-retencion}} sobre los intereses.",
   intro: [

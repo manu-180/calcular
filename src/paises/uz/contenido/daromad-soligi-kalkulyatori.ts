@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uz.daromad-soligi-kalkulyatori",
   h1: "Daromad soligʻi kalkulyatori (JShDS)",
-  title: "Daromad soligʻi {{uz.jshds[rezident-mehnat]}}: JShDS kalkulyatori 2026",
+  title: "Daromad soligʻi {{uz.jshds[rezident-mehnat]}}: JShDS kalkulyatori {{anio}}",
   description:
     "Jismoniy shaxslardan olinadigan daromad soligʻini hisoblang: ish haqi {{uz.jshds[rezident-mehnat]}}, dividend va foizlar {{uz.jshds[rezident-dividend]}}, norezidentlar uchun alohida stavkalar.",
   intro: [

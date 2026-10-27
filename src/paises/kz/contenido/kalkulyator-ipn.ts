@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kz.kalkulyator-ipn",
   h1: "Калькулятор ИПН по новому Налоговому кодексу",
-  title: "Калькулятор ИПН 2026: шкала {{kz.ipn-shkala[0].tasa}} и {{kz.ipn-shkala[1].tasa}}",
+  title: "Калькулятор ИПН {{anio}}: шкала {{kz.ipn-shkala[0].tasa}} и {{kz.ipn-shkala[1].tasa}}",
   description:
     "Посчитайте индивидуальный подоходный налог за год: {{kz.ipn-shkala[0].tasa}} до {{kz.ipn-shkala[0].hasta}} МРП и {{kz.ipn-shkala[1].tasa}} сверх порога. Зарплата, доход ИП, дивиденды и частная практика.",
   intro: [

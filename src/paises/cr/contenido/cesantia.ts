@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.cesantia",
   h1: "Cálculo de cesantía en Costa Rica",
-  title: "Cálculo de cesantía en Costa Rica 2026: tabla por años",
+  title: "Cálculo de cesantía en Costa Rica {{anio}}: tabla por años",
   description:
     "Calcule su cesantía con la tabla del artículo 29: días por año trabajado, tope de {{cr.cesantia-tope-anios}} y salario promedio de 6 meses. Vea el monto exacto.",
   intro: [

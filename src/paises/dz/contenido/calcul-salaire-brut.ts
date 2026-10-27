@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.calcul-salaire-brut",
   h1: "Calcul du salaire brut à partir du net en Algérie",
-  title: "Salaire net en brut Algérie 2026 : calcul inverse",
+  title: "Salaire net en brut Algérie {{anio}} : calcul inverse",
   description:
     "Retrouvez le salaire brut qui donne le net voulu en Algérie, avec la cotisation de sécurité sociale de {{dz.cnas[salarie]}} et l'IRG retenu à la source.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "rw.trading-licence-calculator",
   h1: "Trading licence calculator Rwanda",
-  title: "Trading licence tax Rwanda 2026: amount by turnover",
+  title: "Trading licence tax Rwanda {{anio}}: amount by turnover",
   description: "Find your yearly trading licence from last year's turnover, from {{rw.trading-licence[0].cuotaFija}} up to {{rw.trading-licence[-1].cuotaFija}}, or the flat amount for your activity.",
   intro: [
     "Every business that opens in a district pays a trading licence tax to that district. Choose your activity, or enter last year's turnover, to see the amount.",

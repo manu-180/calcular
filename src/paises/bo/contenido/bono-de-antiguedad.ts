@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "bo.bono-de-antiguedad",
-  h1: "Calculadora del bono de antigüedad 2026",
-  title: "Bono de antigüedad Bolivia 2026: tabla y calculadora",
-  description: "Calcule su bono de antigüedad 2026 con la escala del D.S. 21060 y el salario mínimo de {{bo.salario-minimo}}. Del 5 % con 2 años al 50 % con 25 años o más.",
+  h1: "Calculadora del bono de antigüedad {{anio}}",
+  title: "Bono de antigüedad Bolivia {{anio}}: tabla y calculadora",
+  description: "Calcule su bono de antigüedad {{anio}} con la escala del D.S. 21060 y el salario mínimo de {{bo.salario-minimo}}. Del 5 % con 2 años al 50 % con 25 años o más.",
   intro: [
     "El bono de antigüedad en Bolivia va del 5 % (con 2 años) al 50 % (con 25 años o más) y se calcula sobre el salario mínimo de {{bo.salario-minimo}}, no sobre su sueldo. Es un pago mensual que crece con los años de trabajo en el mismo lugar.",
     "Escriba su fecha de ingreso y elija el tipo de empleador.",

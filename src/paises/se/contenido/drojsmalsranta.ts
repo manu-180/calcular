@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.drojsmalsranta",
   h1: "Beräkna dröjsmålsränta enligt räntelagen",
-  title: "Dröjsmålsränta 2026: beräkna räntan på en sen betalning",
+  title: "Dröjsmålsränta {{anio}}: beräkna räntan på en sen betalning",
   description:
     "Beräkna dröjsmålsränta på en obetald faktura: Riksbankens referensränta ({{se.referensranta}}) plus {{se.drojsmalsranta-tillagg}} procentenheter, dag för dag.",
   intro: [

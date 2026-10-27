@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be.vakantiegeld-berekenen",
   h1: "Vakantiegeld berekenen voor bedienden en arbeiders",
-  title: "Vakantiegeld berekenen 2026: dubbel, arbeiders en vertrek",
+  title: "Vakantiegeld berekenen {{anio}}: dubbel, arbeiders en vertrek",
   description:
     "Bereken je vakantiegeld: dubbel vakantiegeld van {{be.vakantiegeld[dubbel-bediende]}} van je maandloon als bediende, {{be.vakantiegeld[arbeider]}} als arbeider, of je vertrekvakantiegeld.",
   intro: [

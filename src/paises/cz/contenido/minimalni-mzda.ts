@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cz.minimalni-mzda",
-  h1: "Minimální mzda 2026",
-  title: "Minimální mzda 2026: {{cz.minimalni-mzda}} hrubého a čistá",
+  h1: "Minimální mzda {{anio}}",
+  title: "Minimální mzda {{anio}}: {{cz.minimalni-mzda}} hrubého a čistá",
   description:
-    "Minimální mzda v roce 2026 je {{cz.minimalni-mzda}} měsíčně a {{cz.minimalni-mzda-hodinova}} za hodinu. Spočítejte minimum pro zkrácený úvazek i čistou částku.",
+    "Minimální mzda v roce {{anio}} je {{cz.minimalni-mzda}} měsíčně a {{cz.minimalni-mzda-hodinova}} za hodinu. Spočítejte minimum pro zkrácený úvazek i čistou částku.",
   intro: [
     "Minimální mzda je nejnižší odměna, kterou smí zaměstnavatel zaplatit za práci v pracovním poměru i na dohodu. V roce 2026 činí {{cz.minimalni-mzda}} za měsíc při 40 hodinách týdně.",
     "Kalkulačka spočítá minimum pro váš úvazek, hodinovou sazbu podle délky stanovené pracovní doby a čistou minimální mzdu.",

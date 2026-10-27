@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.monotributo-social",
   h1: "Calculadora del Monotributo Social Mides",
-  title: "Monotributo Social Mides 2026: cuánto se paga",
+  title: "Monotributo Social Mides {{anio}}: cuánto se paga",
   description:
     "Calculá cuánto pagás de Monotributo Social Mides por mes: {{uy.monotributo-social-sin-snis[1]}} el primer año sin Fonasa, con los aportes que suben de a poco hasta el mes 37.",
   intro: [

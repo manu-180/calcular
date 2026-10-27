@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "es.paro",
   h1: "Calculadora del paro",
-  title: "Calcular el paro 2026: cuánto cobras y durante cuánto tiempo",
+  title: "Calcular el paro {{anio}}: cuánto cobras y durante cuánto tiempo",
   description:
-    "Calcula tu prestación por desempleo: cuánto cobras al mes, durante cuántos días y el total, con los topes mínimo y máximo del SEPE para 2026.",
+    "Calcula tu prestación por desempleo: cuánto cobras al mes, durante cuántos días y el total, con los topes mínimo y máximo del SEPE para {{anio}}.",
   intro: [
     "Si pierdes tu trabajo y has cotizado lo suficiente, cobras la prestación contributiva por desempleo, el paro. La paga el SEPE.",
     "Cuánto cobras depende de lo que cotizaste en los últimos seis meses. Cuánto tiempo, de lo que cotizaste en los últimos seis años.",

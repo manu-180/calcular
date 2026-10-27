@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "dz.allocation-chomage",
-  h1: "Allocation chômage en Algérie : montant et durée en 2026",
-  title: "Allocation chômage Algérie 2026 : {{dz.allocation-chomage}} par mois",
+  h1: "Allocation chômage en Algérie : montant et durée en {{anio}}",
+  title: "Allocation chômage Algérie {{anio}} : {{dz.allocation-chomage}} par mois",
   description:
     "L'allocation chômage des primo-demandeurs d'emploi est de {{dz.allocation-chomage}} par mois depuis le {{dz.allocation-chomage#desde}}. Calculez la durée et le montant restants.",
   intro: [

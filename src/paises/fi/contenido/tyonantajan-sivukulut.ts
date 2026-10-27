@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.tyonantajan-sivukulut",
   h1: "Työnantajan sivukulut: paljonko työntekijä maksaa yritykselle",
-  title: "Työnantajan sivukulut 2026: laske palkan kokonaiskustannus",
+  title: "Työnantajan sivukulut {{anio}}: laske palkan kokonaiskustannus",
   description:
     "Laske palkan sivukulut ja kokonaiskustannus: TyEL-maksu keskimäärin {{fi.tyel-tyonantaja}}, sairausvakuutusmaksu {{fi.sairausvakuutusmaksu-tyonantaja}} ja työttömyysvakuutusmaksu.",
   intro: [

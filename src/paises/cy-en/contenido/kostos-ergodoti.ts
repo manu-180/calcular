@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.kostos-ergodoti",
   h1: "Employer cost calculator for Cyprus",
-  title: "Cyprus employer cost 2026: salary plus contributions",
+  title: "Cyprus employer cost {{anio}}: salary plus contributions",
   description: "Work out what an employee costs in Cyprus: salary, Social Insurance {{cy.eisfora-ka-ergodoti}}, GeSY {{cy.eisfores-gesy[ergodotis]}} and the other funds.",
   intro: [
     "Enter the gross salary to see the total cost to the business, per month and per year.",

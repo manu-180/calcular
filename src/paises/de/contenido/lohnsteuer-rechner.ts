@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.lohnsteuer-rechner",
-  h1: "Lohnsteuerrechner 2026",
-  title: "Lohnsteuerrechner 2026 für alle Steuerklassen",
+  h1: "Lohnsteuerrechner {{anio}}",
+  title: "Lohnsteuerrechner {{anio}} für alle Steuerklassen",
   description:
-    "Lohnsteuer, Solidaritätszuschlag und Kirchensteuer für Ihren Monatslohn, nach dem amtlichen Programmablaufplan 2026 und im Vergleich aller sechs Steuerklassen.",
+    "Lohnsteuer, Solidaritätszuschlag und Kirchensteuer für Ihren Monatslohn, nach dem amtlichen Programmablaufplan {{anio}} und im Vergleich aller sechs Steuerklassen.",
   intro: [
     "Der Rechner ermittelt die Lohnsteuer, die Ihr Arbeitgeber jeden Monat einbehält. Er folgt dem Programmablaufplan, den das Bundesfinanzministerium für Lohnabrechnungen vorgibt.",
     "Zusätzlich sehen Sie, wie hoch die Lohnsteuer für denselben Lohn in jeder der sechs Steuerklassen wäre.",

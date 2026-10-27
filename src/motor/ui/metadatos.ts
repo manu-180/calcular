@@ -1,4 +1,4 @@
-import { actualizacionDeFuentes, actualizacionDeInicioPais, actualizacionDeNovedades, actualizacionDePagina } from "../mapa";
+import { actualizacionDeFuentes, actualizacionDeInicioPais, actualizacionDeNovedades, actualizacionDePagina, hreflangLegal } from "../mapa";
 import { ACTUALIZACION_PAGINAS_GLOBALES, esPaginaGlobal, type PaginaGlobal } from "../paginas";
 import type { PaginaResuelta } from "../registro";
 import type { FechaISO } from "../tipos";
@@ -7,6 +7,7 @@ import {
   elegirTitulo,
   grafo,
   hreflangDelHead,
+  hreflangVaAlSitemap,
   ldFaq,
   ldLista,
   ldSitio,
@@ -34,7 +35,8 @@ export type PaginaIntl =
 
 export function resolverPagina(ctx: ContextoSitio, slug: string): PaginaIntl | null {
   const m = ctx.mercado;
-  if (m.codigo === "global") return esPaginaGlobal(slug) ? { tipo: "legal", slug } : null;
+  if (esPaginaGlobal(slug)) return { tipo: "legal", slug };
+  if (m.codigo === "global") return null;
   if (slug === "fuentes" || slug === "novedades") return { tipo: slug };
   const pagina = ctx.registro.pagina(m.codigo, slug, ctx.fecha, ctx.modo);
   return pagina ? { tipo: "calculadora", pagina } : null;
@@ -103,6 +105,13 @@ export function hreflangDeEdiciones(ctx: ContextoSitio, slug?: "fuentes" | "nove
   return idiomas;
 }
 
+// El clúster de una legal son todas las ediciones (hreflangLegal): casi siempre pasa el tope del <head> y
+// va en el sitemap de cada mercado, como las universales.
+function hreflangDelHeadLegal(ctx: ContextoSitio, slug: PaginaGlobal): Idiomas | undefined {
+  const idiomas = hreflangLegal(ctx.registro, slug, ctx.modo);
+  return idiomas && !hreflangVaAlSitemap(idiomas) ? idiomas : undefined;
+}
+
 export function metadatosDe(ctx: ContextoSitio, r: PaginaIntl | null): MetadataSeo {
   const { title, description } = textosDe(ctx, r);
   const idiomas =
@@ -110,7 +119,7 @@ export function metadatosDe(ctx: ContextoSitio, r: PaginaIntl | null): MetadataS
       ? hreflangDelHead(r.pagina.calculadora.concepto, r.pagina.equivalentes)
       : !r || r.tipo === "fuentes" || r.tipo === "novedades"
         ? hreflangDeEdiciones(ctx, r?.tipo)
-        : undefined;
+        : hreflangDelHeadLegal(ctx, r.slug);
   return metadataDe({
     mercado: ctx.mercado,
     ...(r ? { slug: slugDe(r) } : {}),

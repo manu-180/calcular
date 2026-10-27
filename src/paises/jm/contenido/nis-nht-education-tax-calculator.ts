@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jm.nis-nht-education-tax-calculator",
   h1: "NIS, NHT and Education Tax calculator",
-  title: "NIS, NHT and Education Tax calculator Jamaica 2026",
+  title: "NIS, NHT and Education Tax calculator Jamaica {{anio}}",
   description:
     "See your statutory deductions and your employer's share: NIS at {{jm.nis-employee-rate}}, NHT at {{jm.nht-employee-rate}} and Education Tax at {{jm.education-tax-employee-rate}}. Rates from TAJ.",
   intro: [

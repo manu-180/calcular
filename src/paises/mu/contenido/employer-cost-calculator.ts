@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mu.employer-cost-calculator",
   h1: "Employer cost calculator Mauritius",
-  title: "Employer cost Mauritius 2026: CSG, NSF, levy and PRGF",
+  title: "Employer cost Mauritius {{anio}}: CSG, NSF, levy and PRGF",
   description:
     "Find what an employee really costs in Mauritius: CSG at {{mu.csg-employer-low}} or {{mu.csg-employer-high}}, NSF at {{mu.nsf-employer}}, training levy at {{mu.training-levy}} and PRGF at {{mu.prgf-rate}}.",
   intro: [

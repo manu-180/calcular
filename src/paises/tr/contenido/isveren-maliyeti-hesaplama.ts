@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.isveren-maliyeti-hesaplama",
-  h1: "İşveren maliyeti hesaplama 2026",
-  title: "İşveren Maliyeti Hesaplama 2026: SGK İşveren Payı",
+  h1: "İşveren maliyeti hesaplama {{anio}}",
+  title: "İşveren Maliyeti Hesaplama {{anio}}: SGK İşveren Payı",
   description:
     "Bir çalışanın işverene toplam maliyetini hesaplayın: brüt maaş, SGK işveren primi ve işsizlik sigortası işveren payı, 2 ve 5 puanlık indirimle.",
   intro: [

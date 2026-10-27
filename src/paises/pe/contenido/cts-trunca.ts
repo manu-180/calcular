@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.cts-trunca",
   h1: "Calculadora de CTS trunca",
-  title: "CTS trunca 2026: calcula cuánto te toca",
+  title: "CTS trunca {{anio}}: calcula cuánto te toca",
   description:
     "Calcula tu CTS trunca con tus fechas de ingreso y salida, el sexto de gratificación y tu régimen laboral. Con la RMV de {{pe.rmv}} y la norma vigente.",
   intro: [

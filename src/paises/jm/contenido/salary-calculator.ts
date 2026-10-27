@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jm.salary-calculator",
   h1: "Salary calculator Jamaica",
-  title: "Salary calculator Jamaica 2026: net pay after PAYE and NIS",
+  title: "Salary calculator Jamaica {{anio}}: net pay after PAYE and NIS",
   description:
     "Work out your take-home pay after PAYE, NIS, NHT and Education Tax. Uses the monthly income tax threshold of {{jm.paye-threshold-monthly}} from TAJ.",
   intro: [

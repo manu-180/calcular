@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hn.prestaciones-laborales",
   h1: "Cálculo de prestaciones laborales en Honduras",
-  title: "Cálculo de prestaciones laborales en Honduras 2026",
+  title: "Cálculo de prestaciones laborales en Honduras {{anio}}",
   description:
     "Calcule su preaviso y su auxilio de cesantía si lo despiden o si renuncia, con el tope de {{hn.cesantia-tope-meses[general]}} del Código del Trabajo. Vea cada monto y el total.",
   intro: [

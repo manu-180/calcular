@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.impuesto-vehicular",
   h1: "Calculadora del impuesto vehicular del SRI",
-  title: "Impuesto vehicular SRI 2026: calcula tu matrícula",
+  title: "Impuesto vehicular SRI {{anio}}: calcula tu matrícula",
   description: "Calcula el impuesto a la propiedad de tu vehículo con la tabla del SRI según el avalúo, y el {{ec.impuesto-vehiculo-usado}} si compras un auto usado.",
   intro: [
     "Cada año pagas al SRI el impuesto a la propiedad de tu vehículo, que es parte de la matrícula. Se calcula sobre el avalúo que el SRI tiene registrado, no sobre lo que pagaste.",

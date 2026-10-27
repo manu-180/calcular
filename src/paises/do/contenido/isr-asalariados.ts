@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.isr-asalariados",
-  h1: "Calculadora de ISR para asalariados 2026",
-  title: "ISR asalariados 2026 en RD: calcula tu retención mensual",
-  description: "Calcula cuánto ISR te retienen cada mes con la tabla de retención 2026 de la DGII. Puedes partir del salario bruto o del salario ya sin AFP ni SFS.",
+  h1: "Calculadora de ISR para asalariados {{anio}}",
+  title: "ISR asalariados {{anio}} en RD: calcula tu retención mensual",
+  description: "Calcula cuánto ISR te retienen cada mes con la tabla de retención {{anio}} de la DGII. Puedes partir del salario bruto o del salario ya sin AFP ni SFS.",
   intro: [
     "El ISR de un asalariado en República Dominicana se calcula sobre el salario sin SFS ni AFP, llevado a un año. La primera parte está exenta y el resto paga 15 %, 20 % o 25 % según el tramo.",
     "Tu empleador te lo retiene cada mes y lo paga a la DGII. Aquí ves cuánto es, en qué tramo estás y cuánto suma en todo el año.",

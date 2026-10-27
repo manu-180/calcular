@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.maternity-leave",
   h1: "حساب إجازة الوضع في قانون العمل الجديد",
-  title: "إجازة الوضع 2026: احسبي بدايتها ونهايتها في مصر",
+  title: "إجازة الوضع {{anio}}: احسبي بدايتها ونهايتها في مصر",
   description:
     "إجازة الوضع في قانون العمل رقم 14 لسنة 2025 مدتها {{eg.maternity-months}} مدفوعة الأجر، منها {{eg.maternity-after-days}} على الأقل بعد الولادة. احسبي تواريخها.",
   intro: [

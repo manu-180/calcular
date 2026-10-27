@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sg.property-tax-calculator",
   h1: "Property tax calculator for Singapore",
-  title: "Property tax calculator Singapore 2026 (HDB, condo)",
+  title: "Property tax calculator Singapore {{anio}} (HDB, condo)",
   description: "Work out the yearly property tax on an HDB flat, condo or landed home from its Annual Value, with the IRAS owner-occupier and non-owner-occupier rates.",
   intro: [
     "Property tax is paid every year by property owners in Singapore. It is worked out on the Annual Value, which is the yearly rent IRAS estimates your property could fetch.",

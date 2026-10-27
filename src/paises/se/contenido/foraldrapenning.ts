@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.foraldrapenning",
   h1: "Föräldrapenning kalkylator",
-  title: "Föräldrapenning 2026: räkna ut hur mycket du får per dag",
+  title: "Föräldrapenning {{anio}}: räkna ut hur mycket du får per dag",
   description:
     "Räkna ut din föräldrapenning per dag och per månad. Sjukpenningnivån är {{se.foraldrapenning[andel]}} procent av inkomsten upp till taket på {{se.foraldrapenning[tak]}} prisbasbelopp.",
   intro: [

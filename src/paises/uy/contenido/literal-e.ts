@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.literal-e",
   h1: "Calculadora del literal E: IVA mínimo y tope de facturación",
-  title: "Literal E 2026: IVA mínimo y cuánto podés facturar",
+  title: "Literal E {{anio}}: IVA mínimo y cuánto podés facturar",
   description:
-    "Calculá si entrás en el literal E y cuánto pagás de IVA fijo: {{uy.literal-e-pago}} por mes en 2026, con descuento los primeros años y tope de {{uy.literal-e-tope}} anuales.",
+    "Calculá si entrás en el literal E y cuánto pagás de IVA fijo: {{uy.literal-e-pago}} por mes en {{anio}}, con descuento los primeros años y tope de {{uy.literal-e-tope}} anuales.",
   intro: [
     "El literal E es el régimen de las empresas chicas: no cobrás IVA en tus facturas ni pagás IRAE, y a cambio pagás un IVA fijo por mes.",
     "Poné lo que facturás en el año y desde cuándo tenés la empresa. Te decimos si entrás y cuánto pagás.",

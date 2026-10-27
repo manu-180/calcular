@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gr.asfalistikes-eisfores-misthoton",
   h1: "Υπολογισμός ασφαλιστικών εισφορών μισθωτών",
-  title: "Ασφαλιστικές εισφορές μισθωτών 2026: ΕΦΚΑ και ΔΥΠΑ",
+  title: "Ασφαλιστικές εισφορές μισθωτών {{anio}}: ΕΦΚΑ και ΔΥΠΑ",
   description:
     "Δείτε πόσες εισφορές ΕΦΚΑ και ΔΥΠΑ κρατούνται από τον μισθό σας ({{gr.eisfores-ergazomenou[101]}}) και πόσες πληρώνει ο εργοδότης, ανάλογα με τον ΚΠΚ.",
   intro: [

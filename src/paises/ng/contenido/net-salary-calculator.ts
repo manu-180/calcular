@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ng.net-salary-calculator",
-  h1: "Net salary calculator Nigeria 2026",
-  title: "Net salary calculator Nigeria 2026: take-home pay",
+  h1: "Net salary calculator Nigeria {{anio}}",
+  title: "Net salary calculator Nigeria {{anio}}: take-home pay",
   description:
     "See your monthly take-home pay after pension ({{ng.pension-employee}}), National Housing Fund ({{ng.nhf-rate}}) and PAYE under the Nigeria Tax Act 2025.",
   intro: [

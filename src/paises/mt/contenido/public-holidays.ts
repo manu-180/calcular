@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mt.public-holidays",
   h1: "Public holidays in Malta",
-  title: "Public holidays Malta 2026: all 14 dates and weekdays",
+  title: "Public holidays Malta {{anio}}: all 14 dates and weekdays",
   description:
     "See the 14 national and public holidays in Malta for any year, the weekday of each and the extra leave whole-time employees get for those on a weekend.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hk.stamp-duty-calculator",
   h1: "Stamp duty calculator Hong Kong",
-  title: "Stamp duty calculator Hong Kong 2026 (AVD)",
+  title: "Stamp duty calculator Hong Kong {{anio}} (AVD)",
   description:
     "Work out the ad valorem stamp duty on a Hong Kong property purchase, residential or not, with the rates in force since {{hk.avd-residential#desde}}.",
   intro: [

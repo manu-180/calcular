@@ -225,7 +225,7 @@ async function sinServer() {
       const slugs =
         m.codigo === "global"
           ? ["privacidad", "terminos", "contacto", "sobre"]
-          : [...registro.calculadorasPublicables(m.codigo, ctx.fecha, modo).map((c) => c.definicion.slug), "fuentes", "novedades"];
+          : [...registro.calculadorasPublicables(m.codigo, ctx.fecha, modo).map((c) => c.definicion.slug), "fuentes", "novedades", "privacidad", "terminos", "contacto", "sobre"];
       const pares: { url: string; title: string; description: string }[] = [];
       for (const slug of [null, ...slugs]) {
         const r = slug ? meta.resolverPagina(ctx, slug) : null;

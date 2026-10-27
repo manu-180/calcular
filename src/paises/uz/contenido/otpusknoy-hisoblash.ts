@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uz.otpusknoy-hisoblash",
   h1: "Otpusknoy hisoblash: mehnat taʼtili puli kalkulyatori",
-  title: "Otpusknoy hisoblash 2026: taʼtil puli kalkulyatori",
+  title: "Otpusknoy hisoblash {{anio}}: taʼtil puli kalkulyatori",
   description:
     "Mehnat taʼtili uchun toʻlanadigan summani (otpusknoy) oʻrtacha ish haqi, {{uz.ish-kunlari-ortacha}} ish kuni va yakshanbalarsiz kunlar boʻyicha Mehnat kodeksiga muvofiq hisoblang.",
   intro: [

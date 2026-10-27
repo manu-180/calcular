@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.contrato-de-aprendizaje",
   h1: "Calculadora del apoyo de sostenimiento del aprendiz",
-  title: "Apoyo de sostenimiento del aprendiz SENA 2026",
+  title: "Apoyo de sostenimiento del aprendiz SENA {{anio}}",
   description:
     "Calcula el apoyo de sostenimiento mínimo de un aprendiz: {{co.aprendiz-sostenimiento[lectiva]}} del salario mínimo en la etapa lectiva y {{co.aprendiz-sostenimiento[practica]}} en la práctica.",
   intro: [

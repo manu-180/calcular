@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.droits-enregistrement",
   h1: "Calcul des droits d'enregistrement d'un bien immobilier en Algérie",
-  title: "Droits d'enregistrement Algérie 2026 : vente immobilière",
+  title: "Droits d'enregistrement Algérie {{anio}} : vente immobilière",
   description:
     "Calculez les droits d'enregistrement d'une vente immobilière en Algérie : {{dz.droits-mutation[vente]}} du prix, ou {{dz.droits-mutation[promesse]}} sur la promesse et autant sur l'acte final.",
   intro: [

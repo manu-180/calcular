@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.salario-basico",
-  h1: "Salario básico unificado 2026 en Ecuador",
-  title: "Salario básico 2026 Ecuador: {{ec.sbu}} y cuánto recibes en mano",
-  description: "El salario básico 2026 en Ecuador es {{ec.sbu}}. Mira cuánto es por día y por hora, cuánto te descuenta el IESS y lo que recibes en mano con los décimos.",
+  h1: "Salario básico unificado {{anio}} en Ecuador",
+  title: "Salario básico {{anio}} Ecuador: {{ec.sbu}} y cuánto recibes en mano",
+  description: "El salario básico {{anio}} en Ecuador es {{ec.sbu}}. Mira cuánto es por día y por hora, cuánto te descuenta el IESS y lo que recibes en mano con los décimos.",
   intro: [
     "El salario básico unificado (SBU) de 2026 en Ecuador es {{ec.sbu}} al mes y rige desde el {{ec.sbu#desde}}. Es el sueldo mínimo para una jornada completa.",
     "Con esta calculadora ves cuánto vale tu día y tu hora, cuánto te descuenta el IESS y cuánto recibes si cobras los décimos cada mes.",

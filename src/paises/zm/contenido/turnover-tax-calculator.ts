@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "zm.turnover-tax-calculator",
   h1: "Turnover tax calculator Zambia",
-  title: "Turnover tax calculator Zambia 2026: ZRA's {{zm.tot-rate}} on sales",
+  title: "Turnover tax calculator Zambia {{anio}}: ZRA's {{zm.tot-rate}} on sales",
   description:
     "Work out your monthly turnover tax: {{zm.tot-rate}} on sales, with the first {{zm.tot-exempt-monthly}} of the month at 0%, for businesses with sales up to {{zm.tot-limit}} a year.",
   intro: [

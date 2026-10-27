@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.cotisations-cnas",
   h1: "حساب اشتراكات الضمان الاجتماعي لدى CNAS",
-  title: "اشتراكات CNAS 2026: حصة العامل وحصة صاحب العمل",
+  title: "اشتراكات CNAS {{anio}}: حصة العامل وحصة صاحب العمل",
   description:
     "احسب اشتراكات الضمان الاجتماعي المدفوعة للصندوق الوطني للتأمينات الاجتماعية: {{dz.cnas[salarie]}} على العامل و{{dz.cnas[employeur]}} على صاحب العمل.",
   intro: [

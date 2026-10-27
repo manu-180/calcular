@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uz.aylanma-soligi-kalkulyatori",
-  h1: "Aylanmadan olinadigan soliq kalkulyatori 2026",
-  title: "Aylanma soligʻi 2026: {{uz.aylanma-soligi[umumiy]}} va {{uz.aylanma-soligi[ytt]}} stavkada hisoblash",
+  h1: "Aylanmadan olinadigan soliq kalkulyatori {{anio}}",
+  title: "Aylanma soligʻi {{anio}}: {{uz.aylanma-soligi[umumiy]}} va {{uz.aylanma-soligi[ytt]}} stavkada hisoblash",
   description:
     "Aylanmadan olinadigan soliqni hisoblang: umumiy stavka {{uz.aylanma-soligi[umumiy]}}, chakana savdoda stavka joyga qarab, yakka tartibdagi tadbirkor va oʻzini oʻzi band qilganlar {{uz.aylanma-soligi[ytt]}}.",
   intro: [

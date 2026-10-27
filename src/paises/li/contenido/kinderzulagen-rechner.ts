@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "li.kinderzulagen-rechner",
   h1: "Kinderzulagen Liechtenstein berechnen",
-  title: "Kinderzulage Liechtenstein 2026: Rechner",
+  title: "Kinderzulage Liechtenstein {{anio}}: Rechner",
   description: "Kinderzulagen der FAK in Liechtenstein: {{li.kinderzulage}} pro Kind, {{li.kinderzulage-erhoeht}} ab 10 Jahren und ab dem dritten Kind, plus Alleinerziehendenzulage.",
   intro: [
     "Die Kinderzulage beträgt {{li.kinderzulage}} pro Kind und Monat. Ab dem Monat, in dem das Kind das 10. Lebensjahr vollendet, steigt sie auf {{li.kinderzulage-erhoeht}}.",

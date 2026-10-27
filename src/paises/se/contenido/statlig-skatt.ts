@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.statlig-skatt",
   h1: "Räkna ut statlig skatt och brytpunkt",
-  title: "Statlig skatt 2026: brytpunkt och skatt på din lön",
+  title: "Statlig skatt {{anio}}: brytpunkt och skatt på din lön",
   description:
     "Se om du betalar statlig inkomstskatt och hur mycket. Skiktgränsen är {{se.skiktgrans}} och skatten {{se.statlig-inkomstskatt}} på det som ligger över.",
   intro: [

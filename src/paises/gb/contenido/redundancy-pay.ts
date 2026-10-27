@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gb.redundancy-pay",
   h1: "Statutory redundancy pay calculator",
-  title: "Redundancy pay calculator 2026: statutory minimum",
+  title: "Redundancy pay calculator {{anio}}: statutory minimum",
   description:
-    "Work out your statutory redundancy pay from your age, years of service and weekly pay, with the {{gb.redundancy-weekly-pay-cap}} weekly cap from 6 April 2026.",
+    "Work out your statutory redundancy pay from your age, years of service and weekly pay, with the {{gb.redundancy-weekly-pay-cap}} weekly cap from 6 April {{anio}}.",
   intro: [
     "If you are made redundant after at least 2 years with your employer, you have a legal right to statutory redundancy pay. Your contract can give you more, but never less.",
     "Enter your age, your full years of service and your weekly pay to see the minimum you are owed.",

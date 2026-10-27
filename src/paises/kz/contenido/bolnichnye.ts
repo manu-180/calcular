@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "kz.bolnichnye",
-  h1: "Расчет больничного в Казахстане в 2026 году",
-  title: "Больничные 2026 Казахстан: расчет пособия и предел",
+  h1: "Расчет больничного в Казахстане в {{anio}} году",
+  title: "Больничные {{anio}} Казахстан: расчет пособия и предел",
   description:
     "Рассчитайте пособие по временной нетрудоспособности: средний дневной заработок × рабочие дни болезни, но не больше {{kz.bolnichnye-limit-mrp}} МРП за месяц.",
   intro: [

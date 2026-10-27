@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.vignette-automobile",
   h1: "Prix de la vignette automobile en Algérie",
-  title: "Vignette automobile Algérie 2026 : tarif selon CV et âge",
+  title: "Vignette automobile Algérie {{anio}} : tarif selon CV et âge",
   description:
     "Trouvez le tarif de la vignette automobile en Algérie selon la puissance fiscale et l'âge du véhicule, de {{dz.vignette[6cv-plus-10]}} à {{dz.vignette-10cv[moins-3]}}.",
   intro: [

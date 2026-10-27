@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ug.net-salary-calculator",
   h1: "Net salary calculator Uganda",
-  title: "Net salary calculator Uganda: PAYE and NSSF 2026",
+  title: "Net salary calculator Uganda: PAYE and NSSF {{anio}}",
   description: "See your take-home pay in Uganda after PAYE and your NSSF contribution of {{ug.nssf-employee}}, with the URA rates in force from {{ug.paye-bands#desde}}.",
   intro: [
     "Your take-home pay is what reaches your account after PAYE and NSSF.",

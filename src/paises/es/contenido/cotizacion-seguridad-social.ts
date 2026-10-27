@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "es.cotizacion-seguridad-social",
-  h1: "Calculadora de cotización a la Seguridad Social 2026",
-  title: "Cotización a la Seguridad Social 2026: trabajador y empresa",
+  h1: "Calculadora de cotización a la Seguridad Social {{anio}}",
+  title: "Cotización a la Seguridad Social {{anio}}: trabajador y empresa",
   description:
-    "Calcula cuánto se cotiza a la Seguridad Social por tu sueldo en 2026: lo que te descuentan a ti y lo que paga la empresa, con MEI y cotización de solidaridad.",
+    "Calcula cuánto se cotiza a la Seguridad Social por tu sueldo en {{anio}}: lo que te descuentan a ti y lo que paga la empresa, con MEI y cotización de solidaridad.",
   intro: [
     "Cada mes, de tu sueldo sale una cotización a la Seguridad Social y tu empresa paga otra, bastante más alta. Las dos se calculan sobre la misma base.",
     "Aquí ves el desglose por conceptos con los tipos de la orden de cotización de 2026.",

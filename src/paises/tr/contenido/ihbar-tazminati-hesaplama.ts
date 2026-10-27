@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.ihbar-tazminati-hesaplama",
-  h1: "İhbar tazminatı hesaplama 2026",
-  title: "İhbar Tazminatı Hesaplama 2026: Süre ve Net Tutar",
+  h1: "İhbar tazminatı hesaplama {{anio}}",
+  title: "İhbar Tazminatı Hesaplama {{anio}}: Süre ve Net Tutar",
   description:
     "Çalışma sürenize göre ihbar sürenizi (2, 4, 6 veya 8 hafta) ve ihbar tazminatınızı hesaplayın. Gelir vergisi ve damga vergisi düşülmüş net tutar.",
   intro: [

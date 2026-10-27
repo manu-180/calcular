@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.vacaciones",
   h1: "Calculadora de vacaciones en Paraguay",
-  title: "Vacaciones Paraguay 2026: calculá días y cuánto cobrás",
+  title: "Vacaciones Paraguay {{anio}}: calculá días y cuánto cobrás",
   description: "Calculá cuántos días de vacaciones te tocan según tu antigüedad ({{py.vacaciones-dias[hasta-5]}}, {{py.vacaciones-dias[hasta-10]}} o {{py.vacaciones-dias[mas-10]}}) y cuánto te tienen que pagar. Gratis.",
   intro: [
     "En Paraguay te tocan {{py.vacaciones-dias[hasta-5]}} de vacaciones pagas por año hasta los cinco años de antigüedad, {{py.vacaciones-dias[hasta-10]}} hasta los diez y {{py.vacaciones-dias[mas-10]}} desde ahí. Las ganás después de cada año de trabajo con el mismo empleador.",

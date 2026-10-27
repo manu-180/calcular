@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.calcul-irg-salaire",
   h1: "حساب الضريبة على الدخل الإجمالي على الأجور في الجزائر",
-  title: "الضريبة على الدخل الإجمالي على الأجر 2026: الجدول والتخفيضات",
+  title: "الضريبة على الدخل الإجمالي على الأجر {{anio}}: الجدول والتخفيضات",
   description:
     "احسب الضريبة على الدخل الإجمالي المقتطعة من أجرك أو معاشك في الجزائر: جدول المادة 104، وتخفيض بنسبة {{dz.irg-abattement-taux}}، والإعفاء والتمهيد.",
   intro: [

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.ptu",
-  h1: "Calculadora de PTU 2026 (reparto de utilidades)",
-  title: "Calculadora de PTU 2026: reparto de utilidades",
+  h1: "Calculadora de PTU {{anio}} (reparto de utilidades)",
+  title: "Calculadora de PTU {{anio}}: reparto de utilidades",
   description:
     "Calcula cuánto te toca de reparto de utilidades: la parte por días y por salario, el tope de {{mx.tope-ptu-meses}} de salario y lo que no paga ISR. Según la ley vigente.",
   intro: [

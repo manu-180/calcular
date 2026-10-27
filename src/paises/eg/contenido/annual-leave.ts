@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.annual-leave",
   h1: "حساب الإجازات السنوية في قانون العمل الجديد",
-  title: "حساب رصيد الإجازات السنوية 2026 بقانون العمل الجديد",
+  title: "حساب رصيد الإجازات السنوية {{anio}} بقانون العمل الجديد",
   description:
     "كم يومًا تستحق من الإجازة السنوية؟ {{eg.annual-leave[standard]}} من السنة الثانية و{{eg.annual-leave[long]}} بعد عشر سنوات أو سن الخمسين، وفق قانون العمل رقم 14 لسنة 2025.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.calcul-tva",
   h1: "Calcul de la TVA en Algérie : {{dz.tva-normal}} et {{dz.tva-reduit}}",
-  title: "Calcul TVA Algérie 2026 : taux de {{dz.tva-normal}} et {{dz.tva-reduit}}",
+  title: "Calcul TVA Algérie {{anio}} : taux de {{dz.tva-normal}} et {{dz.tva-reduit}}",
   description:
     "Ajoutez ou retirez la TVA algérienne au taux normal de {{dz.tva-normal}} ou au taux réduit de {{dz.tva-reduit}}. Passez du hors taxe au TTC et inversement.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ro.calculator-preaviz",
   h1: "Calculator preaviz: demisie și concediere",
-  title: "Calculator preaviz demisie 2026: ultima zi de lucru",
+  title: "Calculator preaviz demisie {{anio}}: ultima zi de lucru",
   description:
     "Aflați durata preavizului la demisie sau la concediere și ultima zi estimată de lucru, în zile lucrătoare de la data comunicării.",
   intro: [

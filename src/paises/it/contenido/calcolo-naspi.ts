@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "it.naspi",
   h1: "Calcolo NASpI",
-  title: "Calcolo NASpI 2026: importo e durata della disoccupazione",
+  title: "Calcolo NASpI {{anio}}: importo e durata della disoccupazione",
   description:
-    "Calcola l'importo e la durata della NASpI 2026 dalla retribuzione degli ultimi quattro anni. Importo massimo {{it.naspi-importi[massimo]}} al mese.",
+    "Calcola l'importo e la durata della NASpI {{anio}} dalla retribuzione degli ultimi quattro anni. Importo massimo {{it.naspi-importi[massimo]}} al mese.",
   intro: [
     "La NASpI è l'indennità di disoccupazione dell'INPS per chi perde il lavoro dipendente senza averlo scelto, per esempio per un licenziamento o la fine di un contratto a termine.",
     "Con questo calcolo stimi quanto ricevi al mese, per quanto tempo e da quando l'importo comincia a scendere.",

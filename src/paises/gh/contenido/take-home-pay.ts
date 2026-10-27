@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "gh.take-home-pay",
   h1: "Take-home pay calculator Ghana",
   title: "Take-home pay calculator Ghana: salary after SSNIT and PAYE",
-  description: "See your net salary in Ghana after SSNIT and PAYE, with cash allowances and your provident fund, using the GRA bands in force since September 2026.",
+  description: "See your net salary in Ghana after SSNIT and PAYE, with cash allowances and your provident fund, using the GRA bands in force since September {{anio}}.",
   intro: [
     "Enter your basic salary and cash allowances to see what you take home after SSNIT and PAYE.",
     "SSNIT is {{gh.ssnit-employee-rate}} of your basic salary and comes off before PAYE is worked out.",

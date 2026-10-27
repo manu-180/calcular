@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mx.liquidacion",
   h1: "Calculadora de liquidación por despido injustificado",
-  title: "Calculadora de liquidación por despido 2026 (LFT)",
+  title: "Calculadora de liquidación por despido {{anio}} (LFT)",
   description:
     "Calcula tu liquidación por despido injustificado: {{mx.meses-indemnizacion}} de salario, prima de antigüedad, {{mx.dias-indemnizacion-anio}} por año y tu finiquito. Gratis y paso a paso.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.plirome-pleonasmou",
   h1: "Redundancy pay calculator for Cyprus",
-  title: "Cyprus redundancy payment 2026: what you're owed",
+  title: "Cyprus redundancy payment {{anio}}: what you're owed",
   description: "Work out your payment from the Redundancy Fund based on years of service and your weekly wage, within the legal ceiling.",
   intro: [
     "When your job is abolished for economic or organisational reasons, you're entitled to a redundancy payment from the Redundancy Fund.",

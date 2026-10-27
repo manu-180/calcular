@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gr.apozimiosi-apolysis",
   h1: "Υπολογισμός αποζημίωσης απόλυσης",
-  title: "Αποζημίωση απόλυσης 2026: υπολογισμός και προειδοποίηση",
+  title: "Αποζημίωση απόλυσης {{anio}}: υπολογισμός και προειδοποίηση",
   description:
     "Υπολογίστε την αποζημίωση απόλυσης με τα έτη στον εργοδότη: από {{gr.apozimiosi-mines[1]}} έως {{gr.apozimiosi-mines[16]}} μισθοί, με 1/6 για τα δώρα, και το μισό με προειδοποίηση.",
   intro: [

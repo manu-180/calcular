@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "no.formuesskatt",
-  h1: "Formuesskatt 2026: regn ut skatten på formuen din",
-  title: "Formuesskatt 2026: kalkulator med bunnfradrag",
+  h1: "Formuesskatt {{anio}}: regn ut skatten på formuen din",
+  title: "Formuesskatt {{anio}}: kalkulator med bunnfradrag",
   description:
-    "Regn ut formuesskatten for 2026 med bunnfradrag på {{no.formue-bunnfradrag}}, rabatt på bolig og aksjer og gjeldsreduksjon. Se skatt til kommunen og staten.",
+    "Regn ut formuesskatten for {{anio}} med bunnfradrag på {{no.formue-bunnfradrag}}, rabatt på bolig og aksjer og gjeldsreduksjon. Se skatt til kommunen og staten.",
   intro: [
     "Formuesskatt betaler du av nettoformuen over bunnfradraget: verdien av det du eier etter verdsettelsesrabatter, minus gjeld.",
     "Fyll inn verdiene, så ser du formuesverdien, nettoformuen og hvor mye du betaler til kommunen og staten.",

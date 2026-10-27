@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-fr.brutto-netto-rechner",
   h1: "Calcul du salaire net en Suisse",
-  title: "Salaire brut-net Suisse 2026 : calculer les déductions",
-  description: "Du salaire brut au salaire net : AVS/AI/APG, AC, caisse de pension et ANP avec les taux 2026. Par mois et par an, pour 12 ou 13 salaires mensuels.",
+  title: "Salaire brut-net Suisse {{anio}} : calculer les déductions",
+  description: "Du salaire brut au salaire net : AVS/AI/APG, AC, caisse de pension et ANP avec les taux {{anio}}. Par mois et par an, pour 12 ou 13 salaires mensuels.",
   intro: [
     "En Suisse, le salaire brut supporte les cotisations AVS, AI et APG, l'assurance-chômage, la caisse de pension et la prime d'assurance contre les accidents non professionnels. L'employeur et le salarié paient chacun la moitié de l'AVS/AI/APG ({{ch.ahv-iv-eo-beitragssatz}}) et de l'AC ({{ch.alv-beitragssatz}}).",
     "Le calculateur indique votre salaire net avant impôts. Un éventuel impôt à la source n'est pas déduit.",

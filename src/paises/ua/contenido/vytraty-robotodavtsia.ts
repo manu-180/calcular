@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ua.vytraty-robotodavtsia",
   h1: "Скільки коштує працівник роботодавцю",
-  title: "Витрати роботодавця на зарплату: ЄСВ і податки 2026",
+  title: "Витрати роботодавця на зарплату: ЄСВ і податки {{anio}}",
   description:
     "Порахуйте, скільки бізнес витрачає на зарплату: ЄСВ {{ua.yesv}} понад брутто, ПДФО і військовий збір, які роботодавець утримує і сплачує за працівника.",
   intro: [

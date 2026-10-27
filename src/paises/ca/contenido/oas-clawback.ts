@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ca.oas-clawback",
   h1: "OAS clawback calculator (OAS recovery tax)",
-  title: "OAS clawback calculator 2026: OAS recovery tax",
-  description: "See how much Old Age Security you repay when your income is over {{ca.oas-recovery-threshold[2026]}} (2026). You repay {{ca.oas-recovery-rate}} of the income above the threshold.",
+  title: "OAS clawback calculator {{anio}}: OAS recovery tax",
+  description: "See how much Old Age Security you repay when your income is over {{ca.oas-recovery-threshold[{{anio}}]}} ({{anio}}). You repay {{ca.oas-recovery-rate}} of the income above the threshold.",
   intro: [
     "If your net world income is above the yearly threshold, you repay part or all of your Old Age Security pension through the OAS recovery tax, often called the OAS clawback.",
     "Enter your income year, your net world income and the OAS you received to see the recovery tax.",

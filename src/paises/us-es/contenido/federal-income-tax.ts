@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.federal-income-tax",
   h1: "Calculadora de impuestos federales",
-  title: "Calculadora de impuestos federales 2026: tramos y reembolso",
-  description: "Calcula tu impuesto federal sobre el ingreso de 2026 con los tramos del IRS, la deducción estándar de {{us.standard-deduction[single]}} y la nueva deducción para mayores.",
+  title: "Calculadora de impuestos federales {{anio}}: tramos y reembolso",
+  description: "Calcula tu impuesto federal sobre el ingreso de {{anio}} con los tramos del IRS, la deducción estándar de {{us.standard-deduction[single]}} y la nueva deducción para mayores.",
   intro: [
     "Elige tu estado civil para la declaración y escribe tu ingreso bruto ajustado para ver tu impuesto federal de 2026, tu tramo más alto y tu tasa efectiva.",
     "Si agregas lo que te retuvieron de tus cheques, también verás un estimado de tu reembolso o de lo que todavía debes.",

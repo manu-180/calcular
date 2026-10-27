@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mz.salario-liquido",
   h1: "Calcular o salário líquido em Moçambique",
-  title: "Salário líquido em Moçambique: INSS e IRPS 2026",
-  description: "Do salário bruto ao líquido com os {{mz.inss-trabalhador}} do INSS e a tabela de retenção do IRPS em vigor desde 2026, conforme os dependentes.",
+  title: "Salário líquido em Moçambique: INSS e IRPS {{anio}}",
+  description: "Do salário bruto ao líquido com os {{mz.inss-trabalhador}} do INSS e a tabela de retenção do IRPS em vigor desde {{anio}}, conforme os dependentes.",
   intro: [
     "O salário líquido é o que recebe depois de a entidade empregadora descontar a segurança social e reter o IRPS.",
     "Indique o salário bruto, o que recebeu a mais no mês e quantos dependentes tem a cargo. A calculadora aplica a tabela do artigo 65-A do Código do IRPS, em vigor desde {{mz.irps-retencao-0#desde}}.",

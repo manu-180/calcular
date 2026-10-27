@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.egenavgifter",
   h1: "Räkna ut egenavgifter för enskild firma",
-  title: "Egenavgifter 2026: räkna ut avgifterna i din enskilda firma",
+  title: "Egenavgifter {{anio}}: räkna ut avgifterna i din enskilda firma",
   description:
     "Räkna ut egenavgifterna på överskottet i din enskilda firma: {{se.egenavgifter[full]}} med schablonavdrag och nedsättning, steg för steg.",
   intro: [

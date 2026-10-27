@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.calculator-cass",
-  h1: "Calculator CASS 2026 pentru chirii, dividende și dobânzi",
-  title: "Calculator CASS 2026: chirii, dividende, dobânzi",
+  h1: "Calculator CASS {{anio}} pentru chirii, dividende și dobânzi",
+  title: "Calculator CASS {{anio}}: chirii, dividende, dobânzi",
   description:
     "Aflați câtă CASS datorați pe veniturile din alte surse: chirii, dividende, dobânzi, drepturi de autor. Baza este fixă, pe trepte de salarii minime.",
   intro: [

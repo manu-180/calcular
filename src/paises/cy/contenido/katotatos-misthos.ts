@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy.katotatos-misthos",
   h1: "Κατώτατος μισθός στην Κύπρο",
-  title: "Κατώτατος μισθός Κύπρος 2026: {{cy.katotatos-misthos}} μεικτά",
+  title: "Κατώτατος μισθός Κύπρος {{anio}}: {{cy.katotatos-misthos}} μεικτά",
   description: "Ο εθνικός κατώτατος μισθός είναι {{cy.katotatos-misthos}} τον μήνα και {{cy.katotatos-misthos-proslipsis}} τους πρώτους έξι μήνες. Δείτε τα καθαρά και τη μερική απασχόληση.",
   intro: [
     "Από την 1η Ιανουαρίου 2026 ο κατώτατος μηνιαίος μισθός για πλήρη απασχόληση είναι {{cy.katotatos-misthos}}. Όσοι δεν έχουν συμπληρώσει έξι μήνες στον ίδιο εργοδότη μπορούν να παίρνουν {{cy.katotatos-misthos-proslipsis}}.",

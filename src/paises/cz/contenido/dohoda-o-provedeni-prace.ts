@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.dohoda-o-provedeni-prace",
   h1: "Dohoda o provedení práce: výpočet čisté odměny",
-  title: "DPP 2026: kalkulačka čisté odměny a daně",
+  title: "DPP {{anio}}: kalkulačka čisté odměny a daně",
   description:
-    "Spočítejte čistou odměnu z dohody o provedení práce v roce 2026: srážková daň, záloha na daň, pojištění od {{cz.rozhodny-prijem-dpp}} měsíčně a náklady zaměstnavatele.",
+    "Spočítejte čistou odměnu z dohody o provedení práce v roce {{anio}}: srážková daň, záloha na daň, pojištění od {{cz.rozhodny-prijem-dpp}} měsíčně a náklady zaměstnavatele.",
   intro: [
     "Z dohody o provedení práce (DPP) se platí daň a od určité výše i sociální a zdravotní pojištění. Kalkulačka ukáže, kolik dostanete na ruku a kolik vás dohoda stojí jako zaměstnavatele.",
     "Výsledek záleží hlavně na tom, jestli máte u zaměstnavatele podepsané prohlášení poplatníka a jestli odměna za měsíc dosáhne rozhodného příjmu {{cz.rozhodny-prijem-dpp}}.",

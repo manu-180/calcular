@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.thuiswerkvergoeding-berekenen",
-  h1: "Thuiswerkvergoeding berekenen 2026",
-  title: "Thuiswerkvergoeding 2026: {{nl.thuiswerkvergoeding}} per dag onbelast",
+  h1: "Thuiswerkvergoeding berekenen {{anio}}",
+  title: "Thuiswerkvergoeding {{anio}}: {{nl.thuiswerkvergoeding}} per dag onbelast",
   description:
-    "Bereken hoeveel thuiswerkvergoeding je werkgever je in 2026 onbelast mag geven: {{nl.thuiswerkvergoeding}} per thuiswerkdag. Per jaar en per maand.",
+    "Bereken hoeveel thuiswerkvergoeding je werkgever je in {{anio}} onbelast mag geven: {{nl.thuiswerkvergoeding}} per thuiswerkdag. Per jaar en per maand.",
   intro: [
     "Werk je thuis, dan mag je werkgever je een vergoeding geven voor de kosten van thuiswerken. Tot {{nl.thuiswerkvergoeding}} per thuiswerkdag is die onbelast.",
     "Vul in hoeveel dagen je per week thuiswerkt en je ziet hoeveel je per jaar onbelast kunt krijgen.",

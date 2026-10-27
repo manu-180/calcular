@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jp.minimum-wage",
   h1: "最低賃金の計算（令和8年度・都道府県別）",
-  title: "最低賃金 2026｜都道府県別の時給と月額",
+  title: "最低賃金 {{anio}}｜都道府県別の時給と月額",
   description:
     "令和8年度の地域別最低賃金を都道府県ごとに表示し、月の労働時間から月額と年額を計算します。いまの時給が最低賃金を下回っていないかも確認できます。",
   intro: [

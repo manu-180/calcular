@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.quarterly-estimated-taxes",
   h1: "Quarterly estimated tax calculator",
-  title: "Quarterly Estimated Tax Calculator 2026 (Form 1040-ES)",
+  title: "Quarterly Estimated Tax Calculator {{anio}} (Form 1040-ES)",
   description:
-    "Figure your 2026 estimated tax payments with the IRS safe harbor rules: {{us.safe-harbor-current}} of this year's tax or {{us.safe-harbor-prior}} to {{us.safe-harbor-prior-high}} of last year's.",
+    "Figure your {{anio}} estimated tax payments with the IRS safe harbor rules: {{us.safe-harbor-current}} of this year's tax or {{us.safe-harbor-prior}} to {{us.safe-harbor-prior-high}} of last year's.",
   intro: [
     "If you are self-employed or have income without withholding, the IRS expects you to pay tax during the year in four installments.",
     "Enter this year's expected tax, your withholding and last year's return to see the smallest payments that avoid an underpayment penalty.",

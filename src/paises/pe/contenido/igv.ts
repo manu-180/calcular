@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.igv",
-  h1: "Calculadora de IGV 2026: agrega o quita el 18 %",
-  title: "Calculadora de IGV 2026 en Perú: agrega o quita el 18 %",
+  h1: "Calculadora de IGV {{anio}}: agrega o quita el 18 %",
+  title: "Calculadora de IGV {{anio}} en Perú: agrega o quita el 18 %",
   description:
     "Agrega o quita el IGV de un precio en un clic: {{pe.tasa-igv}} de IGV más {{pe.tasa-ipm}} de promoción municipal. Incluye la tasa especial de restaurantes y hoteles MYPE.",
   intro: [

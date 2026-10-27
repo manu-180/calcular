@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "hn.salario-minimo",
-  h1: "Salario mínimo 2026 en Honduras por rama y tamaño de empresa",
-  title: "Salario mínimo Honduras 2026: tabla por rama y empleados",
+  h1: "Salario mínimo {{anio}} en Honduras por rama y tamaño de empresa",
+  title: "Salario mínimo Honduras {{anio}}: tabla por rama y empleados",
   description:
-    "Consulte el salario mínimo 2026 mensual, por jornada y por hora según la rama de actividad y el número de trabajadores de la empresa. Acuerdo SETRASS-233-2026.",
+    "Consulte el salario mínimo {{anio}} mensual, por jornada y por hora según la rama de actividad y el número de trabajadores de la empresa. Acuerdo SETRASS-233-2026.",
   intro: [
     "El salario mínimo 2026 en Honduras va de {{hn.salario-minimo-mensual[agricultura-1-10]}} al mes (agricultura, empresas de 1 a 10 trabajadores) en adelante. Cambia según la rama de actividad de la empresa y cuántos trabajadores tiene.",
     "La tabla de 2026 rige desde el 1 de enero de 2026 y la de 2027 desde el 1 de enero de 2027. Las dos salen del mismo acuerdo.",

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "dz-ar.snmg-algerie",
-  h1: "الأجر الوطني الأدنى المضمون في الجزائر سنة 2026",
-  title: "الأجر الوطني الأدنى المضمون 2026: {{dz.snmg}}",
+  h1: "الأجر الوطني الأدنى المضمون في الجزائر سنة {{anio}}",
+  title: "الأجر الوطني الأدنى المضمون {{anio}}: {{dz.snmg}}",
   description:
     "الأجر الوطني الأدنى المضمون {{dz.snmg}} في الشهر منذ {{dz.snmg#desde}}، أي {{dz.snmg-horaire}} للساعة. احسبه حسب ساعات عملك.",
   intro: [

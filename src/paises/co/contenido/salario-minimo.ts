@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.salario-minimo",
-  h1: "Salario mínimo 2026 en Colombia: valor mensual, diario y por hora",
-  title: "Salario mínimo 2026 en Colombia: {{co.smmlv}}",
+  h1: "Salario mínimo {{anio}} en Colombia: valor mensual, diario y por hora",
+  title: "Salario mínimo {{anio}} en Colombia: {{co.smmlv}}",
   description:
-    "El salario mínimo 2026 en Colombia es {{co.smmlv}} y el auxilio de transporte {{co.auxilio-transporte}}. Mira cuánto es por día, por hora y por los días que trabajaste.",
+    "El salario mínimo {{anio}} en Colombia es {{co.smmlv}} y el auxilio de transporte {{co.auxilio-transporte}}. Mira cuánto es por día, por hora y por los días que trabajaste.",
   intro: [
     "El salario mínimo en Colombia es {{co.smmlv}} al mes desde el {{co.smmlv#desde}} (Decreto 1469 de 2025). Si ganas el mínimo, también te toca el auxilio de transporte de {{co.auxilio-transporte}}.",
     "En 2026, salario y auxilio suman $2.000.000 antes de descuentos. Por día son $58.364 y la hora ordinaria vale $8.338 con la jornada de 42 horas.",

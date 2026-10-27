@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "fr.salaire-brut-net",
-  h1: "Salaire brut en net : calcul 2026",
-  title: "Salaire brut en net 2026 : calcul exact, cadre et non-cadre",
+  h1: "Salaire brut en net : calcul {{anio}}",
+  title: "Salaire brut en net {{anio}} : calcul exact, cadre et non-cadre",
   description:
-    "Passez du brut au net (ou du net au brut) avec les cotisations salariales 2026 : retraite, CSG, CRDS, cadre ou non-cadre et prélèvement à la source.",
+    "Passez du brut au net (ou du net au brut) avec les cotisations salariales {{anio}} : retraite, CSG, CRDS, cadre ou non-cadre et prélèvement à la source.",
   intro: [
     "Le salaire net, c'est le brut moins les cotisations salariales. Dans le privé, elles retirent environ 21 % du brut, hors mutuelle.",
     "Le calcul suit les taux 2026 de l'Urssaf et de l'Agirc-Arrco, cotisation par cotisation. Vous pouvez aussi partir du net pour retrouver le brut, et ajouter votre taux de prélèvement à la source.",

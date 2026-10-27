@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.urok-z-prodleni",
   h1: "Kalkulačka úroku z prodlení",
-  title: "Úrok z prodlení 2026: kalkulačka zákonného úroku",
+  title: "Úrok z prodlení {{anio}}: kalkulačka zákonného úroku",
   description:
     "Spočítejte zákonný úrok z prodlení u neuhrazené faktury nebo půjčky: repo sazba ČNB plus 8 procentních bodů za každý den po splatnosti.",
   intro: [

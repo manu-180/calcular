@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.irpf-alquileres",
   h1: "Calculadora de IRPF por alquileres",
-  title: "IRPF por alquileres 2026: cuánto pagás",
+  title: "IRPF por alquileres {{anio}}: cuánto pagás",
   description:
     "Calculá el IRPF de un alquiler: {{uy.irpf-arrendamientos}} sobre lo cobrado menos gastos, y si quedás exonerado por cobrar hasta {{uy.irpf-arrendamientos-exento}} en el año.",
   intro: [

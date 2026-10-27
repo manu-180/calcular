@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "no.forsinkelsesrente",
   h1: "Forsinkelsesrente: regn ut renten på en ubetalt regning",
-  title: "Forsinkelsesrente 2026: kalkulator med satsen nå",
+  title: "Forsinkelsesrente {{anio}}: kalkulator med satsen nå",
   description:
     "Regn ut forsinkelsesrenten på en regning som er betalt for sent. Satsen er {{no.forsinkelsesrente}} i året fra {{no.forsinkelsesrente#desde}}, og hvert halvår regnes for seg.",
   intro: [

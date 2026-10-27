@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.take-home-pay",
-  h1: "Take-home pay calculator 2026 for Canada",
-  title: "Take-home pay calculator 2026: salary after tax",
-  description: "Turn your 2026 salary into take-home pay after federal and provincial tax, CPP, CPP2 and EI. Weekly, biweekly or monthly, in every province, Quebec included.",
+  h1: "Take-home pay calculator {{anio}} for Canada",
+  title: "Take-home pay calculator {{anio}}: salary after tax",
+  description: "Turn your {{anio}} salary into take-home pay after federal and provincial tax, CPP, CPP2 and EI. Weekly, biweekly or monthly, in every province, Quebec included.",
   intro: [
     "Enter your gross salary and your province or territory to see what you take home each year, each month and each pay.",
     "It takes off federal and provincial income tax, CPP and CPP2 contributions and EI premiums with the 2026 figures published by the Canada Revenue Agency.",

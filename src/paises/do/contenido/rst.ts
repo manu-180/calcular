@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.rst",
   h1: "Calculadora del RST basado en ingresos",
-  title: "RST 2026 en RD: calcula el impuesto del régimen simplificado",
+  title: "RST {{anio}} en RD: calcula el impuesto del régimen simplificado",
   description:
     "Calcula cuánto pagas en el Régimen Simplificado de Tributación (RST) basado en ingresos, como persona física o como empresa, con el tope vigente de la DGII.",
   intro: [

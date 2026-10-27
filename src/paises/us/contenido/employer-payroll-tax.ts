@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.employer-payroll-tax",
   h1: "Employer payroll tax calculator",
-  title: "Employer Payroll Tax Calculator 2026: cost of an employee",
+  title: "Employer Payroll Tax Calculator {{anio}}: cost of an employee",
   description:
-    "Figure what an employee really costs in 2026: wages plus the employer's Social Security, Medicare, FUTA and state unemployment tax. For small business owners.",
+    "Figure what an employee really costs in {{anio}}: wages plus the employer's Social Security, Medicare, FUTA and state unemployment tax. For small business owners.",
   intro: [
     "Hiring someone costs more than the salary. As the employer you pay your own share of Social Security and Medicare, plus federal and state unemployment taxes.",
     "Enter the yearly wages to see each tax and the full cost per employee.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mt.statutory-bonus",
   h1: "Statutory bonus and weekly allowance calculator Malta",
-  title: "Statutory bonus Malta 2026: {{mt.statutory-bonuses[bonus]}} in June and December",
+  title: "Statutory bonus Malta {{anio}}: {{mt.statutory-bonuses[bonus]}} in June and December",
   description:
     "Work out your Malta statutory bonus of {{mt.statutory-bonuses[bonus]}} and weekly allowance of {{mt.statutory-bonuses[allowance]}}, including part of a period and part-time work.",
   intro: [

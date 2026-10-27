@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "de.rentenrechner",
   h1: "Rentenrechner: Wie hoch wird meine Rente?",
-  title: "Rentenrechner 2026: gesetzliche Rente mit Entgeltpunkten",
+  title: "Rentenrechner {{anio}}: gesetzliche Rente mit Entgeltpunkten",
   description:
     "Schätzen Sie Ihre gesetzliche Rente aus Gehalt und Beitragsjahren: Entgeltpunkte mal aktueller Rentenwert von {{de.rentenwert}}. Mit Ihren bisherigen Punkten.",
   intro: [

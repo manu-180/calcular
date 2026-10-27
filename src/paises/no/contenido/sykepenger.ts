@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "no.sykepenger",
   h1: "Sykepenger: regn ut hva du får når du er syk",
-  title: "Sykepenger 2026: kalkulator med 6 G og dagsats",
+  title: "Sykepenger {{anio}}: kalkulator med 6 G og dagsats",
   description:
     "Se hvor mye du får i sykepenger fra Nav: dagsats, per uke og per måned. Taket er 6 G, og grunnbeløpet er {{no.grunnbelop}} fra {{no.grunnbelop#desde}}.",
   intro: [

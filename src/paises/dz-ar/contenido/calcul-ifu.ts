@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.calcul-ifu",
   h1: "حساب الضريبة الجزافية الوحيدة في الجزائر",
-  title: "حساب الضريبة الجزافية الوحيدة في الجزائر 2026",
+  title: "حساب الضريبة الجزافية الوحيدة في الجزائر {{anio}}",
   description:
     "احسب الضريبة الجزافية الوحيدة: {{dz.ifu-taux[biens]}} لبيع السلع، و{{dz.ifu-taux[autres]}} للأنشطة الأخرى، و{{dz.ifu-taux[auto-entrepreneur]}} للمقاول الذاتي.",
   intro: [

@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "at.geringfuegig-rechner",
-  h1: "Geringfügigkeitsgrenze 2026: bin ich geringfügig beschäftigt?",
-  title: "Geringfügigkeitsgrenze 2026: Rechner für Nebenjobs",
-  description: "Die Geringfügigkeitsgrenze 2026 liegt bei {{at.beitragsgrundlage[geringfuegig]}} im Monat. Prüfen Sie mit Stundenlohn und Wochenstunden, ob Ihr Job darunter bleibt.",
+  h1: "Geringfügigkeitsgrenze {{anio}}: bin ich geringfügig beschäftigt?",
+  title: "Geringfügigkeitsgrenze {{anio}}: Rechner für Nebenjobs",
+  description: "Die Geringfügigkeitsgrenze {{anio}} liegt bei {{at.beitragsgrundlage[geringfuegig]}} im Monat. Prüfen Sie mit Stundenlohn und Wochenstunden, ob Ihr Job darunter bleibt.",
   intro: [
     "Wer im Monat nicht mehr als {{at.beitragsgrundlage[geringfuegig]}} verdient, ist in Österreich geringfügig beschäftigt und zahlt aus diesem Job keine Sozialversicherung.",
     "Der Rechner zeigt, ob Ihr Monatslohn unter der Grenze bleibt und wie viele Stunden pro Woche bei Ihrem Stundenlohn möglich sind.",

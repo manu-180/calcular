@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mt.income-tax-calculator",
-  h1: "Income tax calculator Malta 2026",
-  title: "Income tax Malta 2026: single, married and parent rates",
+  h1: "Income tax calculator Malta {{anio}}",
+  title: "Income tax Malta {{anio}}: single, married and parent rates",
   description:
-    "Work out your Malta income tax for 2026 with the single, married and parent rates, including the new rates for families with one child or two or more.",
+    "Work out your Malta income tax for {{anio}} with the single, married and parent rates, including the new rates for families with one child or two or more.",
   intro: [
     "Enter your chargeable income for 2026 and pick the rates that apply to you. You get the tax for the year, the monthly equivalent and your top band.",
     "Malta taxes the first {{mt.income-tax-single[0].hasta}} at 0% under single rates. Above that come bands at {{mt.income-tax-single[1].tasa}}, {{mt.income-tax-single[2].tasa}} and {{mt.income-tax-single[-1].tasa}}.",

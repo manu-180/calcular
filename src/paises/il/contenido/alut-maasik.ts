@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.alut-maasik",
   h1: "מחשבון עלות מעסיק",
-  title: "מחשבון עלות מעסיק 2026: כמה עולה עובד",
+  title: "מחשבון עלות מעסיק {{anio}}: כמה עולה עובד",
   description:
     "כמה עולה למעסיק עובד בשכר נתון: ביטוח לאומי של המעסיק, {{il.pensia-maasik}} לתגמולים, הפרשה לפיצויים וקרן השתלמות. חישוב לחודש ולשנה.",
   intro: [

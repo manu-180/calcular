@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.impuesto-unico",
-  h1: "Calculadora del impuesto único de segunda categoría 2026",
-  title: "Impuesto único de segunda categoría 2026: calculadora",
+  h1: "Calculadora del impuesto único de segunda categoría {{anio}}",
+  title: "Impuesto único de segunda categoría {{anio}}: calculadora",
   description:
     "Calcula el impuesto único de segunda categoría de tu sueldo con la tabla mensual del SII y la UTM del mes ({{cl.utm}}). Ves tu tramo y tu tasa efectiva.",
   intro: [

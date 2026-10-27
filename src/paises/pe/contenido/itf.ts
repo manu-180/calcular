@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.itf",
   h1: "Calculadora del ITF (impuesto a las transacciones financieras)",
-  title: "ITF 2026: calcula el impuesto de {{pe.tasa-itf}} de tu operación",
+  title: "ITF {{anio}}: calcula el impuesto de {{pe.tasa-itf}} de tu operación",
   description:
     "Calcula el ITF de un depósito, retiro o transferencia: {{pe.tasa-itf}} del monto, con el redondeo especial que manda la ley. Gratis y con la norma vigente.",
   intro: [

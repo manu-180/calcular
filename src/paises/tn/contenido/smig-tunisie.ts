@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.smig-tunisie",
   h1: "SMIG en Tunisie",
-  title: "SMIG Tunisie 2026 : salaire minimum mensuel et horaire",
+  title: "SMIG Tunisie {{anio}} : salaire minimum mensuel et horaire",
   description:
     "Le salaire minimum interprofessionnel garanti en Tunisie dans le secteur non agricole, par mois, par heure et par an, selon le régime de 48 ou de 40 heures.",
   intro: [

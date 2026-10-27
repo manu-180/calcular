@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ug.sick-pay-calculator",
   h1: "Sick pay calculator Uganda",
   title: "Sick pay calculator Uganda: 2 months full, 4 half pay",
-  description: "Work out sick pay in Uganda under the 2026 rules: full pay for {{ug.sick-full-pay-months}} and half pay for the next {{ug.sick-half-pay-months}}.",
+  description: "Work out sick pay in Uganda under the {{anio}} rules: full pay for {{ug.sick-full-pay-months}} and half pay for the next {{ug.sick-half-pay-months}}.",
   intro: [
     "If you cannot work because of sickness or injury, the Employment Act guarantees sick pay once you have worked {{ug.sick-min-service-months}} for your employer.",
     "Enter your monthly pay and how long you are off to see what you should be paid.",

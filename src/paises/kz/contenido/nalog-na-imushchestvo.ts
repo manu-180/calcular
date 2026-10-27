@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kz.nalog-na-imushchestvo",
   h1: "Налог на имущество физических лиц в Казахстане",
-  title: "Налог на имущество 2026 Казахстан: калькулятор для квартиры",
+  title: "Налог на имущество {{anio}} Казахстан: калькулятор для квартиры",
   description:
     "Посчитайте налог на квартиру, дом, дачу или гараж по шкале Налогового кодекса: от {{kz.nalog-na-imushchestvo[0].tasa}} до {{kz.nalog-na-imushchestvo[-1].tasa}} в зависимости от стоимости.",
   intro: [

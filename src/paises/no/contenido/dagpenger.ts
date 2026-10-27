@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "no.dagpenger",
   h1: "Dagpenger: regn ut hva du får når du blir arbeidsledig",
-  title: "Dagpenger 2026: kalkulator for dagsats og periode",
+  title: "Dagpenger {{anio}}: kalkulator for dagsats og periode",
   description:
     "Se om du har rett til dagpenger, hva du får per dag og per meldekort, og om du får dagpenger i 52 eller 104 uker. Med G på {{no.grunnbelop}}.",
   intro: [

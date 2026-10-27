@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.asimilados-a-salarios",
-  h1: "Calculadora de ISR para asimilados a salarios 2026",
-  title: "Asimilados a salarios 2026: calcula tu ISR y tu neto",
+  h1: "Calculadora de ISR para asimilados a salarios {{anio}}",
+  title: "Asimilados a salarios {{anio}}: calcula tu ISR y tu neto",
   description:
-    "Calcula el ISR que te retienen como asimilado a salarios con la tarifa 2026 del artículo 96, quincenal, mensual, semanal o decenal, y cuánto te queda libre.",
+    "Calcula el ISR que te retienen como asimilado a salarios con la tarifa {{anio}} del artículo 96, quincenal, mensual, semanal o decenal, y cuánto te queda libre.",
   intro: [
     "Si cobras como asimilado a salarios (honorarios asimilados, consejeros, socios de cooperativas, entre otros), te retienen ISR con la misma tarifa que a un asalariado.",
     "La diferencia es que no recibes el subsidio para el empleo y no cotizas al IMSS: no tienes descuento de cuotas, pero tampoco seguridad social por ese pago.",

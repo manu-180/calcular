@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "md.cost-total-angajator",
   h1: "Costul total al unui salariat pentru angajator",
-  title: "Cost total angajator 2026: brut plus CNAS",
+  title: "Cost total angajator {{anio}}: brut plus CNAS",
   description: "Calculați cât costă un salariat: salariul brut plus contribuția de asigurări sociale de {{md.cas-angajator}}, cu netul angajatului alături.",
   intro: [
     "Pentru firmă, un salariat costă mai mult decât brutul din contract. Peste brut se plătește contribuția de asigurări sociale de stat.",

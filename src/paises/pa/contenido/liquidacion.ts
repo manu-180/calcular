@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.liquidacion",
   h1: "Calculadora de liquidación laboral en Panamá",
-  title: "Liquidación laboral en Panamá 2026: calcula tus prestaciones",
+  title: "Liquidación laboral en Panamá {{anio}}: calcula tus prestaciones",
   description:
     "Calcula tu liquidación en Panamá: prima de antigüedad, indemnización por despido injustificado, vacaciones y décimo proporcionales. Cada parte por separado.",
   intro: [

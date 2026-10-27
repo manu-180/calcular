@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.bituach-leumi",
   h1: "מחשבון ביטוח לאומי ומס בריאות לשכיר",
-  title: "חישוב ביטוח לאומי ומס בריאות לשכיר 2026",
+  title: "חישוב ביטוח לאומי ומס בריאות לשכיר {{anio}}",
   description:
     "כמה ביטוח לאומי ומס בריאות יורדים מהשכר: שיעור מופחת עד {{il.bl-tikrot[mufchat]}} בחודש ושיעור מלא מעליו. כולל החלק שמשלם המעסיק.",
   intro: [

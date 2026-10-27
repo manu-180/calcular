@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gh.paye-calculator",
   h1: "PAYE calculator Ghana",
-  title: "PAYE calculator Ghana 2026: income tax bands",
-  description: "Work out your income tax in Ghana with the GRA bands in force since 1 September 2026, monthly or yearly, for residents and non-residents.",
+  title: "PAYE calculator Ghana {{anio}}: income tax bands",
+  description: "Work out your income tax in Ghana with the GRA bands in force since 1 September {{anio}}, monthly or yearly, for residents and non-residents.",
   intro: [
     "Enter your chargeable income for a month or a year and see the income tax due under the graduated rates for resident individuals.",
     "The bands come from the Income Tax (Amendment) Act, 2026 (Act 1178), applied by the Ghana Revenue Authority from 1 September 2026.",

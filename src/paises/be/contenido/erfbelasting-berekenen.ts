@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be.erfbelasting-berekenen",
   h1: "Erfbelasting berekenen in Vlaanderen",
-  title: "Erfbelasting berekenen in Vlaanderen: successierechten 2026",
+  title: "Erfbelasting berekenen in Vlaanderen: successierechten {{anio}}",
   description:
     "Bereken de erfbelasting (successierechten) in Vlaanderen voor partners en kinderen, broers en zussen of andere erfgenamen, met de officiële tarieven per schijf.",
   intro: [

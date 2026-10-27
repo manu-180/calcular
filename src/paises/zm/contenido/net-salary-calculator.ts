@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "zm.net-salary-calculator",
   h1: "Net salary calculator Zambia",
-  title: "Net salary calculator Zambia 2026: gross to take-home pay",
+  title: "Net salary calculator Zambia {{anio}}: gross to take-home pay",
   description:
-    "See your take-home pay after PAYE, NAPSA at {{zm.napsa-rate}} and NHIMA at {{zm.nhima-rate}} of basic pay. Uses the 2026 ZRA tax bands.",
+    "See your take-home pay after PAYE, NAPSA at {{zm.napsa-rate}} and NHIMA at {{zm.nhima-rate}} of basic pay. Uses the {{anio}} ZRA tax bands.",
   intro: [
     "Enter your basic pay and allowances and see what lands in your account, with every statutory deduction on its own line.",
     "The calculator applies the 2026 PAYE bands, your NAPSA pension contribution and your NHIMA health insurance contribution.",

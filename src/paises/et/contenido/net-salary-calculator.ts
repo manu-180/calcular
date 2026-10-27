@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "et.net-salary-calculator",
   h1: "Net salary calculator Ethiopia",
-  title: "Net salary calculator Ethiopia 2026: take-home pay",
+  title: "Net salary calculator Ethiopia {{anio}}: take-home pay",
   description:
     "Work out your take-home pay after employment income tax and the {{et.pension-employee}} pension contribution. Uses the tax bands of Proclamation 1395/2025.",
   intro: [

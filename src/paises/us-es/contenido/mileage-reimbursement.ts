@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.mileage-reimbursement",
   h1: "Calculadora de millaje del IRS",
-  title: "Calculadora de millaje 2026: tarifa del IRS por milla",
-  description: "Convierte millas en dólares con las tarifas estándar del IRS para 2026: {{us.mileage-business}} por milla de negocios hoy, más las tarifas médica y de caridad.",
+  title: "Calculadora de millaje {{anio}}: tarifa del IRS por milla",
+  description: "Convierte millas en dólares con las tarifas estándar del IRS para {{anio}}: {{us.mileage-business}} por milla de negocios hoy, más las tarifas médica y de caridad.",
   intro: [
     "El IRS fija tarifas estándar por milla que los empleadores usan para reembolsar el manejo y que los trabajadores por cuenta propia usan para deducirlo.",
     "En 2026 el IRS subió las tarifas de negocios y médica desde el 1 de julio por los precios del combustible, así que la fecha de tus viajes importa.",

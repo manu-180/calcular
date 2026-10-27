@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mt.annual-leave",
   h1: "Annual leave calculator Malta",
-  title: "Annual leave Malta 2026: hours of vacation leave",
+  title: "Annual leave Malta {{anio}}: hours of vacation leave",
   description:
     "Work out your paid annual leave in Malta: {{mt.annual-leave-hours}} hours on a 40-hour week, plus a day for each public holiday on a weekend, pro rata for part-time work.",
   intro: [

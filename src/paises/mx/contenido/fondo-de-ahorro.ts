@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.fondo-de-ahorro",
-  h1: "Calculadora de fondo de ahorro 2026",
-  title: "Fondo de ahorro 2026: tope exento y cuánto juntas",
+  h1: "Calculadora de fondo de ahorro {{anio}}",
+  title: "Fondo de ahorro {{anio}}: tope exento y cuánto juntas",
   description:
     "Calcula cuánto juntas en tu fondo de ahorro y qué parte de lo que pone tu empresa no paga ISR, con los topes de {{mx.tope-fondo-ahorro-porcentaje}} y {{mx.tope-fondo-ahorro-uma}} anuales.",
   intro: [

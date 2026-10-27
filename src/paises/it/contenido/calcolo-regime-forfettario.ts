@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "it.regime-forfettario",
   h1: "Calcolo tasse regime forfettario",
-  title: "Calcolo regime forfettario 2026: tasse e netto",
+  title: "Calcolo regime forfettario {{anio}}: tasse e netto",
   description:
     "Calcola l'imposta del regime forfettario con il coefficiente di redditività del tuo codice ATECO, l'aliquota del {{it.forfettario-aliquote[ordinaria]}} o del {{it.forfettario-aliquote[avvio]}} e i contributi versati.",
   intro: [

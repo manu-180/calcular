@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.recibo-verde",
   h1: "Simulador de recibo verde",
-  title: "Recibo verde 2026: IVA, retenção na fonte e valor a receber",
+  title: "Recibo verde {{anio}}: IVA, retenção na fonte e valor a receber",
   description: "Calcule um recibo verde: IVA, retenção na fonte de IRS de {{pt.recibo-verde-retencao[artigo-151]}} ou {{pt.recibo-verde-retencao[outros]}} e o valor que recebe do cliente.",
   intro: [
     "No recibo verde soma-se o IVA ao valor do serviço e, quando o cliente é uma empresa, desconta-se a retenção na fonte de IRS.",

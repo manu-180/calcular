@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-it.brutto-netto-rechner",
   h1: "Calcolo dello stipendio netto in Svizzera",
-  title: "Stipendio lordo-netto Svizzera 2026: calcola le deduzioni",
-  description: "Dal salario lordo al netto: AVS/AI/IPG, AD, cassa pensioni e AINP con le aliquote 2026. Al mese e all'anno, per 12 o 13 mensilità.",
+  title: "Stipendio lordo-netto Svizzera {{anio}}: calcola le deduzioni",
+  description: "Dal salario lordo al netto: AVS/AI/IPG, AD, cassa pensioni e AINP con le aliquote {{anio}}. Al mese e all'anno, per 12 o 13 mensilità.",
   intro: [
     "In Svizzera dal salario lordo si deducono i contributi AVS, AI e IPG, l'assicurazione contro la disoccupazione, la cassa pensioni e il premio per gli infortuni non professionali. Datore di lavoro e dipendente pagano ciascuno metà dell'AVS/AI/IPG ({{ch.ahv-iv-eo-beitragssatz}}) e dell'AD ({{ch.alv-beitragssatz}}).",
     "Il calcolatore mostra il tuo salario netto prima delle imposte. Un'eventuale imposta alla fonte non è dedotta.",

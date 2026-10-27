@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-it.ahv-rentenrechner",
   h1: "Calcolo della rendita AVS con la scala 44",
-  title: "Calcolo rendita AVS 2026: rendita di vecchiaia e 13a",
+  title: "Calcolo rendita AVS {{anio}}: rendita di vecchiaia e 13a",
   description: "Calcola la rendita di vecchiaia AVS: rendita completa secondo la scala 44 tra {{ch.ahv-minimalrente}} e il doppio, plafonamento per le coppie e 13a rendita.",
   intro: [
     "La rendita di vecchiaia AVS dipende dal reddito annuo medio determinante. Con una durata di contribuzione completa ammonta almeno a {{ch.ahv-minimalrente}} e al massimo al doppio al mese.",

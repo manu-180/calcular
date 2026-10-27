@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "md.polita-de-asigurare-medicala",
-  h1: "Cât costă polița de asigurare medicală în 2026",
-  title: "Polița de asigurare medicală 2026: {{md.prima-medicala-fixa}}",
-  description: "Prima de asigurare obligatorie de asistență medicală în sumă fixă este {{md.prima-medicala-fixa}} în 2026. Calculați suma pentru una sau mai multe persoane.",
+  h1: "Cât costă polița de asigurare medicală în {{anio}}",
+  title: "Polița de asigurare medicală {{anio}}: {{md.prima-medicala-fixa}}",
+  description: "Prima de asigurare obligatorie de asistență medicală în sumă fixă este {{md.prima-medicala-fixa}} în {{anio}}. Calculați suma pentru una sau mai multe persoane.",
   intro: [
     "Cine nu este asigurat prin salariu sau de stat poate cumpăra polița de asigurare obligatorie de asistență medicală, plătind prima în sumă fixă.",
     "Suma se stabilește în fiecare an prin legea fondurilor asigurării obligatorii de asistență medicală.",

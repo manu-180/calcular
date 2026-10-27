@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.kalkulacka-dph",
   h1: "Kalkulačka DPH",
-  title: "Kalkulačka DPH 2026: výpočet DPH {{cz.dph[zakladni]}} a {{cz.dph[snizena]}}",
+  title: "Kalkulačka DPH {{anio}}: výpočet DPH {{cz.dph[zakladni]}} a {{cz.dph[snizena]}}",
   description:
     "Přičtěte DPH k ceně nebo ji vypočítejte z ceny s daní. Základní sazba {{cz.dph[zakladni]}}, snížená {{cz.dph[snizena]}}, výpočet podle zákona o DPH.",
   intro: [

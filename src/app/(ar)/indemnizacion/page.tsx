@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraIndemnizacion } from "@/components/CalculadoraIndemnizacion";
 import { JsonLd } from "@/components/JsonLd";
@@ -12,12 +13,15 @@ import {
 } from "@/data/indemnizacion";
 import { OtrosPaises } from "@/components/OtrosPaises";
 
-export const metadata: Metadata = {
-  title: "Calculadora de indemnización por despido 2026",
-  description:
-    "Calculá tu indemnización por despido sin causa: antigüedad (art. 245), preaviso, integración, aguinaldo y vacaciones proporcionales, con la Ley 27.802.",
-  alternates: { canonical: "/indemnizacion" },
-};
+// Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
+export function generateMetadata(): Metadata {
+  return {
+    title: "Calculadora de indemnización por despido 2026",
+    description:
+      "Calculá tu indemnización por despido sin causa: antigüedad (art. 245), preaviso, integración, aguinaldo y vacaciones proporcionales, con la Ley 27.802.",
+    alternates: { canonical: "/indemnizacion", languages: hreflangHeadAR("/indemnizacion") },
+  };
+}
 
 const faqs = [
   {

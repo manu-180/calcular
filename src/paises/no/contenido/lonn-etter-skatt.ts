@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "no.lonn-etter-skatt",
   h1: "Lønn etter skatt: regn ut hva du får utbetalt",
-  title: "Lønn etter skatt 2026: kalkulator for nettolønn",
+  title: "Lønn etter skatt {{anio}}: kalkulator for nettolønn",
   description:
-    "Se hva du sitter igjen med etter skatt i 2026. Kalkulatoren regner trinnskatt, trygdeavgift på {{no.trygdeavgift[lonn]}} og {{no.skatt-alminnelig-inntekt}} skatt med minstefradrag.",
+    "Se hva du sitter igjen med etter skatt i {{anio}}. Kalkulatoren regner trinnskatt, trygdeavgift på {{no.trygdeavgift[lonn]}} og {{no.skatt-alminnelig-inntekt}} skatt med minstefradrag.",
   intro: [
     "Skriv inn bruttolønnen per år eller per måned, så ser du lønn etter skatt og hvor mye som går til hver del av skatten.",
     "Kalkulatoren bruker satsene Skatteetaten har fastsatt for inntektsåret 2026. Den passer for vanlige lønnstakere uten store fradrag ut over minstefradraget og personfradraget.",

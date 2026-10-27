@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.dmei-avtala",
   h1: "מחשבון דמי אבטלה",
-  title: "מחשבון דמי אבטלה 2026: כמה תקבלו ולכמה ימים",
+  title: "מחשבון דמי אבטלה {{anio}}: כמה תקבלו ולכמה ימים",
   description:
     "חישוב דמי אבטלה לפי הכנסה של 6 חודשים, גיל ומספר תלויים: הסכום ליום (עד {{il.avtala-schumim[max-125]}}), מספר הימים והסך הכולל.",
   intro: [

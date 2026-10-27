@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kg.podokhodnyy-nalog",
   h1: "Калькулятор подоходного налога",
-  title: "Подоходный налог в Кыргызстане: калькулятор 2026",
+  title: "Подоходный налог в Кыргызстане: калькулятор {{anio}}",
   description:
     "Посчитайте подоходный налог {{kg.podokhodnyy-nalog}} с зарплаты: со стандартными вычетами, вычетом страховых взносов и вычетом на иждивенцев.",
   intro: [

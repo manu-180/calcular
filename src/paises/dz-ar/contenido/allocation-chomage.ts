@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "dz-ar.allocation-chomage",
-  h1: "منحة البطالة في الجزائر: المبلغ والمدة في 2026",
-  title: "منحة البطالة 2026: {{dz.allocation-chomage}} شهريًا",
+  h1: "منحة البطالة في الجزائر: المبلغ والمدة في {{anio}}",
+  title: "منحة البطالة {{anio}}: {{dz.allocation-chomage}} شهريًا",
   description:
     "تبلغ منحة البطالة لطالبي العمل لأول مرة {{dz.allocation-chomage}} شهريًا منذ {{dz.allocation-chomage#desde}}. احسب المدة والمبلغ المتبقيين.",
   intro: [

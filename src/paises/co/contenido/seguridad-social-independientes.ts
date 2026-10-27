@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.seguridad-social-independientes",
   h1: "Calculadora de seguridad social para independientes",
-  title: "Seguridad social de independientes 2026: PILA",
+  title: "Seguridad social de independientes {{anio}}: PILA",
   description:
     "Calcula cuánto pagas de salud, pensión y ARL como independiente o contratista: se cotiza sobre el {{co.ibc-independientes}} de tus ingresos.",
   intro: [

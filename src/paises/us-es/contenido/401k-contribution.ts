@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.401k-contribution",
   h1: "Calculadora de aportes al 401(k)",
-  title: "Calculadora 401(k) 2026: límites y aporte del empleador",
-  description: "Mira cuánto entra a tu 401(k) en 2026, el aporte equivalente de tu empleador y el límite de {{us.401k-limit}}, con el catch-up desde los 50 y el mayor de 60 a 63 años.",
+  title: "Calculadora 401(k) {{anio}}: límites y aporte del empleador",
+  description: "Mira cuánto entra a tu 401(k) en {{anio}}, el aporte equivalente de tu empleador y el límite de {{us.401k-limit}}, con el catch-up desde los 50 y el mayor de 60 a 63 años.",
   intro: [
     "Escribe tu salario, el porcentaje que ahorras y el aporte equivalente de tu empleador para ver lo que entra a tu 401(k) este año.",
     "La calculadora aplica el límite del IRS para tu edad y te dice qué porcentaje te llevaría al máximo.",

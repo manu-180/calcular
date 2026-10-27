@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fr.indemnite-licenciement",
   h1: "Calcul de l'indemnité légale de licenciement",
-  title: "Indemnité de licenciement 2026 : calcul du minimum légal",
+  title: "Indemnité de licenciement {{anio}} : calcul du minimum légal",
   description:
     "Calculez l'indemnité légale de licenciement en CDI : 1/4 de mois de salaire par année jusqu'à 10 ans, 1/3 au-delà, sur le salaire le plus favorable.",
   intro: [

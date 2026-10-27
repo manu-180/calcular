@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.aktieskat",
   h1: "Aktieskat: beregn skat af aktiegevinst og udbytte",
-  title: "Aktieskat 2026: beregn skat af aktieindkomst",
+  title: "Aktieskat {{anio}}: beregn skat af aktieindkomst",
   description:
     "Beregn skatten af aktiegevinster og udbytte: {{dk.aktieindkomst-satser[lav]}} op til {{dk.aktieindkomst-graense}} og {{dk.aktieindkomst-satser[hoej]}} af resten.",
   intro: [

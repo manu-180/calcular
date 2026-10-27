@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "it.tfr",
   h1: "Calcolo TFR (trattamento di fine rapporto)",
-  title: "Calcolo TFR 2026: quota annua e rivalutazione ISTAT",
+  title: "Calcolo TFR {{anio}}: quota annua e rivalutazione ISTAT",
   description:
     "Calcola il TFR maturato: quota annua pari alla retribuzione divisa per {{it.tfr[divisore]}}, rivalutazione con l'indice ISTAT e imposta sostitutiva del {{it.tfr-imposta-rivalutazione}}.",
   intro: [

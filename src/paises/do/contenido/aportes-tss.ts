@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.aportes-tss",
-  h1: "Calculadora de aportes a la TSS 2026",
-  title: "Aportes a la TSS 2026: cuánto paga trabajador y empleador",
+  h1: "Calculadora de aportes a la TSS {{anio}}",
+  title: "Aportes a la TSS {{anio}}: cuánto paga trabajador y empleador",
   description: "Calcula los aportes a la TSS de un salario: SFS, AFP y riesgos laborales, lo que paga el trabajador, lo que paga el empleador y los topes vigentes.",
   intro: [
     "A la TSS el trabajador aporta {{do.sfs-trabajador}} de SFS y {{do.afp-trabajador}} de AFP. El empleador aporta {{do.sfs-empleador}} de SFS, {{do.afp-empleador}} de AFP y los riesgos laborales, y cada seguro tiene su tope.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ma.calcul-tva",
   h1: "Calcul de la TVA au Maroc : {{ma.tva-normal}} et {{ma.tva-reduit}}",
-  title: "Calcul TVA Maroc 2026 : taux de {{ma.tva-normal}} et {{ma.tva-reduit}}",
+  title: "Calcul TVA Maroc {{anio}} : taux de {{ma.tva-normal}} et {{ma.tva-reduit}}",
   description:
     "Ajoutez ou retirez la TVA marocaine avec le taux normal de {{ma.tva-normal}} ou le taux réduit de {{ma.tva-reduit}}. Passez du hors taxe au TTC et inversement.",
   intro: [

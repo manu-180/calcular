@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.parental-leave-benefit",
   h1: "육아휴직 급여 계산기",
-  title: "육아휴직 급여 계산기 2026 | 월별 지급액·총액",
+  title: "육아휴직 급여 계산기 {{anio}} | 월별 지급액·총액",
   description:
     "월 통상임금과 휴직 개월 수를 넣으면 1~3개월, 4~6개월, 7개월째부터의 육아휴직 급여와 총액을 계산해요. 고용보험법 시행령 기준이에요.",
   intro: [

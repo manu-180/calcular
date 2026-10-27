@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ie.illness-benefit",
-  h1: "Illness Benefit calculator Ireland 2026",
-  title: "Illness Benefit Ireland 2026: weekly rates",
-  description: "See your weekly Illness Benefit for 2026 from your average earnings, using the graduated rates in the Department of Social Protection booklet.",
+  h1: "Illness Benefit calculator Ireland {{anio}}",
+  title: "Illness Benefit Ireland {{anio}}: weekly rates",
+  description: "See your weekly Illness Benefit for {{anio}} from your average earnings, using the graduated rates in the Department of Social Protection booklet.",
   intro: [
     "Illness Benefit is a weekly payment for people who cannot work because they are ill and have enough PRSI contributions.",
     "The personal rate depends on your average gross weekly earnings. Enter yours to see your rate and what you would get over the weeks you are off.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mx.trabajadora-del-hogar",
   h1: "Calculadora para personas trabajadoras del hogar: sueldo y prestaciones",
-  title: "Trabajadora del hogar 2026: mínimo, aguinaldo y vacaciones",
+  title: "Trabajadora del hogar {{anio}}: mínimo, aguinaldo y vacaciones",
   description:
     "Calcula el aguinaldo, las vacaciones y la prima vacacional de una persona trabajadora del hogar, y revisa el salario mínimo profesional del hogar en tu zona.",
   intro: [

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.horas-extra",
-  h1: "Calculadora de horas extras 2026: dobles y triples",
-  title: "Calculadora de horas extras 2026: dobles y triples",
+  h1: "Calculadora de horas extras {{anio}}: dobles y triples",
+  title: "Calculadora de horas extras {{anio}}: dobles y triples",
   description:
-    "Calcula cuánto te pagan por horas extras dobles y triples en 2026, con el límite de {{mx.horas-extra-semana}} por semana de la reforma de 40 horas. Pon tu sueldo y tus horas.",
+    "Calcula cuánto te pagan por horas extras dobles y triples en {{anio}}, con el límite de {{mx.horas-extra-semana}} por semana de la reforma de 40 horas. Pon tu sueldo y tus horas.",
   intro: [
     "Las horas extras se pagan al doble hasta {{mx.horas-extra-semana}} por semana. Las que pasan ese límite se pagan al triple.",
     "Con la reforma de la jornada de 40 horas, ese límite cambia cada año. Hoy la jornada máxima es de {{mx.jornada-semanal}} por semana.",

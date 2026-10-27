@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.impuesto-sobre-la-renta",
   h1: "Calculadora del impuesto sobre la renta en Panamá",
-  title: "Impuesto sobre la renta en Panamá 2026: calcula tu ISR",
+  title: "Impuesto sobre la renta en Panamá {{anio}}: calcula tu ISR",
   description:
     "Calcula el impuesto sobre la renta de personas naturales en Panamá: exento hasta B/. 11,000 al año, 15% y 25% sobre el excedente (art. 700 del Código Fiscal).",
   intro: [

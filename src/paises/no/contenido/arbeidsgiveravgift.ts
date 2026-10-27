@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "no.arbeidsgiveravgift",
-  h1: "Arbeidsgiveravgift 2026: kalkulator med alle soner",
-  title: "Arbeidsgiveravgift 2026: regn ut kostnaden per sone",
+  h1: "Arbeidsgiveravgift {{anio}}: kalkulator med alle soner",
+  title: "Arbeidsgiveravgift {{anio}}: regn ut kostnaden per sone",
   description:
-    "Regn ut arbeidsgiveravgift og hva en ansatt koster i 2026. Satsene går fra {{no.arbeidsgiveravgift[1]}} i sone 1 til {{no.arbeidsgiveravgift[5]}} i sone 5, med feriepenger og pensjon.",
+    "Regn ut arbeidsgiveravgift og hva en ansatt koster i {{anio}}. Satsene går fra {{no.arbeidsgiveravgift[1]}} i sone 1 til {{no.arbeidsgiveravgift[5]}} i sone 5, med feriepenger og pensjon.",
   intro: [
     "Arbeidsgiveravgift er en avgift arbeidsgiveren betaler til folketrygden av lønn og annen godtgjørelse. Satsen avhenger av hvilken sone virksomheten hører til.",
     "Skriv inn årslønnen og velg sone. Kalkulatoren legger til feriepenger og innskudd til tjenestepensjon hvis du vil, og viser hva den ansatte koster i året.",

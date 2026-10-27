@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "et.rental-income-tax-calculator",
   h1: "Rental income tax calculator Ethiopia",
-  title: "Rental income tax calculator Ethiopia 2026 (Schedule B)",
+  title: "Rental income tax calculator Ethiopia {{anio}} (Schedule B)",
   description:
     "Work out the yearly tax on rental income of individuals with the Schedule B bands of Proclamation 1395/2025: 0% on the first {{et.rental-income-tax[1].desde}}.",
   intro: [

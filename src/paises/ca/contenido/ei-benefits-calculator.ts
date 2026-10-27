@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.ei-benefits-calculator",
-  h1: "EI benefits calculator 2026",
-  title: "EI calculator 2026: how much EI will I get?",
-  description: "Estimate your weekly EI regular benefits in 2026: {{ca.ei-benefit-rate}} of your average weekly insurable earnings, up to {{ca.ei-max-weekly-benefit}} a week.",
+  h1: "EI benefits calculator {{anio}}",
+  title: "EI calculator {{anio}}: how much EI will I get?",
+  description: "Estimate your weekly EI regular benefits in {{anio}}: {{ca.ei-benefit-rate}} of your average weekly insurable earnings, up to {{ca.ei-max-weekly-benefit}} a week.",
   intro: [
     "Enter your average weekly insurable earnings to estimate your Employment Insurance regular benefits before tax.",
     "For most people EI pays {{ca.ei-benefit-rate}} of their average weekly earnings, with a weekly maximum of {{ca.ei-max-weekly-benefit}} in 2026.",

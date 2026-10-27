@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.calculator-microintreprindere",
-  h1: "Calculator impozit micro 2026",
-  title: "Calculator impozit micro 2026: {{ro.cota-micro}} și dividende",
+  h1: "Calculator impozit micro {{anio}}",
+  title: "Calculator impozit micro {{anio}}: {{ro.cota-micro}} și dividende",
   description:
     "Calculați impozitul pe veniturile firmei micro ({{ro.cota-micro}}), profitul rămas și impozitul pe dividende de {{ro.impozit-dividende}}, cu plafonul de {{ro.plafon-micro}}.",
   intro: [

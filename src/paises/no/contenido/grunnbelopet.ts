@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "no.grunnbelopet",
-  h1: "Grunnbeløpet (G) 2026: regn om mellom G og kroner",
-  title: "Grunnbeløpet 2026: G er {{no.grunnbelop}}",
+  h1: "Grunnbeløpet (G) {{anio}}: regn om mellom G og kroner",
+  title: "Grunnbeløpet {{anio}}: G er {{no.grunnbelop}}",
   description:
     "Grunnbeløpet i folketrygden er {{no.grunnbelop}} fra {{no.grunnbelop#desde}}. Regn om fra G til kroner eller fra kroner til G, for eksempel 6 G eller 2 G.",
   intro: [

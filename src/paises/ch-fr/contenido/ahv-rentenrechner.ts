@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-fr.ahv-rentenrechner",
   h1: "Calcul de la rente AVS selon l'échelle 44",
-  title: "Calcul rente AVS 2026 : rente de vieillesse et 13e rente",
+  title: "Calcul rente AVS {{anio}} : rente de vieillesse et 13e rente",
   description: "Calculer la rente de vieillesse AVS : rente complète selon l'échelle 44 entre {{ch.ahv-minimalrente}} et le double, plafonnement pour les couples et 13e rente.",
   intro: [
     "La rente de vieillesse AVS dépend du revenu annuel moyen déterminant. Pour une durée de cotisation complète, elle s'élève au moins à {{ch.ahv-minimalrente}} et au plus au double par mois.",
