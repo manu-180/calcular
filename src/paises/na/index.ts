@@ -26,6 +26,18 @@ import noticePeriodCalculator from "./calculadoras/notice-period-calculator";
 import contenidoNoticePeriodCalculator from "./contenido/notice-period-calculator";
 import finalPayCalculator from "./calculadoras/final-pay-calculator";
 import contenidoFinalPayCalculator from "./contenido/final-pay-calculator";
+import transferDutyCalculator from "./calculadoras/transfer-duty-calculator";
+import contenidoTransferDutyCalculator from "./contenido/transfer-duty-calculator";
+import pensionTaxDeductionCalculator from "./calculadoras/pension-tax-deduction-calculator";
+import contenidoPensionTaxDeductionCalculator from "./contenido/pension-tax-deduction-calculator";
+import corporateTaxCalculator from "./calculadoras/corporate-tax-calculator";
+import contenidoCorporateTaxCalculator from "./contenido/corporate-tax-calculator";
+import withholdingTaxCalculator from "./calculadoras/withholding-tax-calculator";
+import contenidoWithholdingTaxCalculator from "./contenido/withholding-tax-calculator";
+import vetLevyCalculator from "./calculadoras/vet-levy-calculator";
+import contenidoVetLevyCalculator from "./contenido/vet-levy-calculator";
+import usdToNad from "./calculadoras/usd-to-nad";
+import contenidoUsdToNad from "./contenido/usd-to-nad";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -51,6 +63,12 @@ export default definirPais({
     { definicion: severancePayCalculator, contenido: contenidoSeverancePayCalculator, cliente: () => import("./calculadoras/severance-pay-calculator.cliente") },
     { definicion: noticePeriodCalculator, contenido: contenidoNoticePeriodCalculator, cliente: () => import("./calculadoras/notice-period-calculator.cliente") },
     { definicion: finalPayCalculator, contenido: contenidoFinalPayCalculator, cliente: () => import("./calculadoras/final-pay-calculator.cliente") },
+    { definicion: transferDutyCalculator, contenido: contenidoTransferDutyCalculator, cliente: () => import("./calculadoras/transfer-duty-calculator.cliente") },
+    { definicion: pensionTaxDeductionCalculator, contenido: contenidoPensionTaxDeductionCalculator, cliente: () => import("./calculadoras/pension-tax-deduction-calculator.cliente") },
+    { definicion: corporateTaxCalculator, contenido: contenidoCorporateTaxCalculator, cliente: () => import("./calculadoras/corporate-tax-calculator.cliente") },
+    { definicion: withholdingTaxCalculator, contenido: contenidoWithholdingTaxCalculator, cliente: () => import("./calculadoras/withholding-tax-calculator.cliente") },
+    { definicion: vetLevyCalculator, contenido: contenidoVetLevyCalculator, cliente: () => import("./calculadoras/vet-levy-calculator.cliente") },
+    { definicion: usdToNad, contenido: contenidoUsdToNad, cliente: () => import("./calculadoras/usd-to-nad.cliente") },
   ],
   universales: { todas: true, ajustes: [{ id: "iva", datos: { tasa: "na.vat" } }] },
   novedades,

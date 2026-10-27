@@ -51,7 +51,7 @@ def num(id_, nombre, unidad, valor, fuente, desde="2008-11-01"):
 
 datos = [
     {"id": "na.income-tax-bands", "nombre": "Income tax rates for individuals", "tipo": "escala", "unidad": "NAD", "proximaRevision": "2027-03-01",
-     "nota": "An Income Tax Amendment Bill that revises the bands was tabled in 2026. Until it is passed and gazetted, these bands apply.",
+     "nota": "Check the Government Gazette for a new Income Tax Amendment Act before each tax year starts on 1 March.",
      "tramos": [{"estado": "verificado", "desde": "2024-03-01",
                  "valor": esc((0, 100000, 0), (100000, 150000, 18), (150000, 350000, 25), (350000, 550000, 28), (550000, 850000, 30), (850000, 1550000, 32), (1550000, None, 37)),
                  "fuente": ITA}]},
