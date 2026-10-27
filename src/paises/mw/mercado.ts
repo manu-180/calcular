@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["MWK"],
   zonaHoraria: "Africa/Blantyre",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 1750,
 };
