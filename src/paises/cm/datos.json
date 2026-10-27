@@ -1,0 +1,920 @@
+{
+  "mercado": "cm",
+  "datos": [
+    {
+      "id": "cm.irpp-bareme",
+      "nombre": "Barème annuel de l'impôt sur le revenu des personnes physiques (IRPP) sur les salaires",
+      "tipo": "escala",
+      "unidad": "XAF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000000,
+              "tasa": 10
+            },
+            {
+              "desde": 2000000,
+              "hasta": 3000000,
+              "tasa": 15
+            },
+            {
+              "desde": 3000000,
+              "hasta": 5000000,
+              "tasa": 25
+            },
+            {
+              "desde": 5000000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 69",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.irpp-frais-professionnels",
+      "nombre": "Abattement forfaitaire pour frais professionnels sur les salaires",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 34",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.irpp-plafond-frais",
+      "nombre": "Plafond annuel de l'abattement pour frais professionnels",
+      "tipo": "numero",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4800000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 34",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.irpp-abattement",
+      "nombre": "Abattement forfaitaire annuel sur les traitements et salaires",
+      "tipo": "numero",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 29",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.irpp-seuil-retenue",
+      "nombre": "Salaire brut mensuel en dessous duquel l'employeur ne retient pas l'IRPP",
+      "tipo": "numero",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 62000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 81 et note explicative sur le barème de l'IRPP",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.cac",
+      "nombre": "Centimes additionnels communaux (CAC)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), articles 71 et C 83",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.cnps-pension",
+      "nombre": "Cotisation CNPS pensions de vieillesse, d'invalidité et de décès",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "salarie": "Part salariale",
+        "employeur": "Part patronale"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-15",
+          "valor": {
+            "salarie": 4.2,
+            "employeur": 4.2
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), annexe : décret n° 2016/072 du 15 février 2016 fixant les taux des cotisations sociales de la CNPS",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.cnps-prestations-familiales",
+      "nombre": "Cotisation CNPS prestations familiales (à la charge de l'employeur)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Régime général (y compris les domestiques)",
+        "agricole": "Régime agricole",
+        "enseignement-prive": "Enseignement privé"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-15",
+          "valor": {
+            "general": 7,
+            "agricole": 5.65,
+            "enseignement-prive": 3.7
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), annexe : décret n° 2016/072 du 15 février 2016 fixant les taux des cotisations sociales de la CNPS",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.cnps-accidents-travail",
+      "nombre": "Cotisation CNPS accidents du travail et maladies professionnelles, par groupe de risque",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "a": "Groupe A (risque faible)",
+        "b": "Groupe B (risque moyen)",
+        "c": "Groupe C (risque élevé)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-15",
+          "valor": {
+            "a": 1.75,
+            "b": 2.5,
+            "c": 5
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), annexe : décret n° 2016/072 du 15 février 2016 fixant les taux des cotisations sociales de la CNPS",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.cnps-plafond",
+      "nombre": "Plafond mensuel des rémunérations soumises aux cotisations CNPS (pensions et prestations familiales)",
+      "tipo": "numero",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-15",
+          "valor": 750000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), annexe : décret n° 2016/072 du 15 février 2016 fixant les taux des cotisations sociales de la CNPS",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.cfc-taux",
+      "nombre": "Contribution au Crédit foncier du Cameroun (CFC)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "salarie": "Part salariale",
+        "employeur": "Part patronale"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "salarie": 1,
+            "employeur": 1.5
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), annexe : loi n° 77/10 du 13 juillet 1977 modifiée, article 6",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.fne-taux",
+      "nombre": "Contribution patronale au Fonds national de l'emploi (FNE)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), annexe : loi n° 77/10 du 13 juillet 1977 modifiée, article 6",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.rav-bareme",
+      "nombre": "Redevance audiovisuelle (CRTV) mensuelle retenue sur les salaires",
+      "tipo": "escala",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 50000.01,
+              "hasta": 100000,
+              "tasa": 0,
+              "cuotaFija": 750
+            },
+            {
+              "desde": 100000.01,
+              "hasta": 200000,
+              "tasa": 0,
+              "cuotaFija": 1950
+            },
+            {
+              "desde": 200000.01,
+              "hasta": 300000,
+              "tasa": 0,
+              "cuotaFija": 3250
+            },
+            {
+              "desde": 300000.01,
+              "hasta": 400000,
+              "tasa": 0,
+              "cuotaFija": 4550
+            },
+            {
+              "desde": 400000.01,
+              "hasta": 500000,
+              "tasa": 0,
+              "cuotaFija": 5850
+            },
+            {
+              "desde": 500000.01,
+              "hasta": 600000,
+              "tasa": 0,
+              "cuotaFija": 7150
+            },
+            {
+              "desde": 600000.01,
+              "hasta": 700000,
+              "tasa": 0,
+              "cuotaFija": 8450
+            },
+            {
+              "desde": 700000.01,
+              "hasta": 800000,
+              "tasa": 0,
+              "cuotaFija": 9750
+            },
+            {
+              "desde": 800000.01,
+              "hasta": 900000,
+              "tasa": 0,
+              "cuotaFija": 11050
+            },
+            {
+              "desde": 900000.01,
+              "hasta": 1000000,
+              "tasa": 0,
+              "cuotaFija": 12350
+            },
+            {
+              "desde": 1000000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 13000
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), annexe : redevance audiovisuelle, article 3 (5)",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.tdl-bareme",
+      "nombre": "Taxe de développement local (TDL) annuelle des salariés, selon le salaire de base mensuel",
+      "tipo": "escala",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 61999.99,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 62000,
+              "hasta": 75000,
+              "tasa": 0,
+              "cuotaFija": 3000
+            },
+            {
+              "desde": 75000.01,
+              "hasta": 100000,
+              "tasa": 0,
+              "cuotaFija": 6000
+            },
+            {
+              "desde": 100000.01,
+              "hasta": 125000,
+              "tasa": 0,
+              "cuotaFija": 9000
+            },
+            {
+              "desde": 125000.01,
+              "hasta": 150000,
+              "tasa": 0,
+              "cuotaFija": 12000
+            },
+            {
+              "desde": 150000.01,
+              "hasta": 200000,
+              "tasa": 0,
+              "cuotaFija": 15000
+            },
+            {
+              "desde": 200000.01,
+              "hasta": 250000,
+              "tasa": 0,
+              "cuotaFija": 18000
+            },
+            {
+              "desde": 250000.01,
+              "hasta": 300000,
+              "tasa": 0,
+              "cuotaFija": 24000
+            },
+            {
+              "desde": 300000.01,
+              "hasta": 500000,
+              "tasa": 0,
+              "cuotaFija": 27000
+            },
+            {
+              "desde": 500000.01,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 30000
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), livre troisième (fiscalité locale), article C 86",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.tva",
+      "nombre": "Taux de la taxe sur la valeur ajoutée (TVA), en principal",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Taux général",
+        "reduit": "Taux réduit"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 17.5,
+            "reduit": 10
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 142",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.is-taux",
+      "nombre": "Taux de l'impôt sur les sociétés, en principal",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "droit-commun": "Droit commun",
+        "pme": "Chiffre d'affaires jusqu'à 3 milliards"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "droit-commun": 30,
+            "pme": 25
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), articles 17 et 17 bis",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.is-seuil-pme",
+      "nombre": "Chiffre d'affaires maximal pour le taux réduit de l'impôt sur les sociétés",
+      "tipo": "numero",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3000000000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 17 bis",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.minimum-perception",
+      "nombre": "Minimum de perception de l'impôt sur les sociétés (régime du réel), en principal",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), articles 21 et 22",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.igs-bareme",
+      "nombre": "Tarif annuel de l'impôt général synthétique (IGS) selon le chiffre d'affaires hors taxes",
+      "tipo": "escala",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 499999.99,
+              "tasa": 0,
+              "cuotaFija": 20000
+            },
+            {
+              "desde": 500000,
+              "hasta": 999999.99,
+              "tasa": 0,
+              "cuotaFija": 30000
+            },
+            {
+              "desde": 1000000,
+              "hasta": 1499999.99,
+              "tasa": 0,
+              "cuotaFija": 40000
+            },
+            {
+              "desde": 1500000,
+              "hasta": 1999999.99,
+              "tasa": 0,
+              "cuotaFija": 50000
+            },
+            {
+              "desde": 2000000,
+              "hasta": 2499999.99,
+              "tasa": 0,
+              "cuotaFija": 60000
+            },
+            {
+              "desde": 2500000,
+              "hasta": 4999999.99,
+              "tasa": 0,
+              "cuotaFija": 150000
+            },
+            {
+              "desde": 5000000,
+              "hasta": 9999999.99,
+              "tasa": 0,
+              "cuotaFija": 300000
+            },
+            {
+              "desde": 10000000,
+              "hasta": 19999999.99,
+              "tasa": 0,
+              "cuotaFija": 500000
+            },
+            {
+              "desde": 20000000,
+              "hasta": 29999999.99,
+              "tasa": 0,
+              "cuotaFija": 1000000
+            },
+            {
+              "desde": 30000000,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 2000000
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), livre troisième (fiscalité locale), article C 40",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.igs-reduction-cga",
+      "nombre": "Réduction du tarif de l'IGS pour les adhérents d'un centre de gestion agréé",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), livre troisième, article C 40 (2)",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.igs-seuils",
+      "nombre": "Chiffre d'affaires annuel hors taxes à partir duquel on relève du régime du réel",
+      "tipo": "mapa",
+      "unidad": "XAF",
+      "etiquetas": {
+        "commercial": "Activités commerciales, industrielles, artisanales ou agropastorales",
+        "liberal": "Professions libérales"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "commercial": 50000000,
+            "liberal": 30000000
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 93 quater et article C 39",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.avantages-nature",
+      "nombre": "Taux d'évaluation des avantages en nature, appliqués au salaire brut taxable",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "logement": "Logement",
+        "electricite": "Électricité",
+        "eau": "Eau",
+        "domestique": "Par domestique",
+        "vehicule": "Par véhicule",
+        "nourriture": "Nourriture",
+        "telephone": "Téléphone"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "logement": 15,
+            "electricite": 4,
+            "eau": 2,
+            "domestique": 5,
+            "vehicule": 10,
+            "nourriture": 10,
+            "telephone": 5
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 33",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.rcm-taux",
+      "nombre": "Taux libératoire de l'IRPP sur les revenus de capitaux mobiliers, en principal",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Taux général",
+        "dividendes-pme": "Dividendes d'une société au chiffre d'affaires de 3 milliards au plus",
+        "paradis-fiscal": "Bénéficiaire établi dans un paradis fiscal"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 15,
+            "dividendes-pme": 10,
+            "paradis-fiscal": 30
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), article 70",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.taxe-fonciere",
+      "nombre": "Taxe sur la propriété foncière, barème selon la valeur des propriétés",
+      "tipo": "escala",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 500000000,
+              "tasa": 0.1
+            },
+            {
+              "desde": 500000000,
+              "hasta": 1000000000,
+              "tasa": 0.2
+            },
+            {
+              "desde": 1000000000,
+              "hasta": null,
+              "tasa": 0.3
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code général des impôts, édition officielle 2026 (mis à jour au 1er janvier 2026), livre troisième (fiscalité locale), article C 53",
+            "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.smig",
+      "nombre": "Salaire minimum interprofessionnel garanti (SMIG), mensuel",
+      "tipo": "mapa",
+      "unidad": "XAF",
+      "etiquetas": {
+        "general": "Autres secteurs",
+        "agricole": "Secteur agricole et assimilé",
+        "etat": "Agents de l'État relevant du Code du travail"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-21",
+          "hasta": "2024-02-22",
+          "valor": {
+            "general": 60000,
+            "agricole": 45000,
+            "etat": 41875
+          },
+          "fuente": {
+            "organismo": "Services du Premier ministre",
+            "titulo": "Décret n° 2023/00338/PM du 21 mars 2023 fixant le salaire minimum interprofessionnel garanti (SMIG)",
+            "url": "https://spm.gov.cm/site/sites/default/files/dpm_2023-00338_s.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-02-23",
+          "valor": {
+            "general": 60000,
+            "agricole": 45000,
+            "etat": 43969
+          },
+          "fuente": {
+            "organismo": "Services du Premier ministre",
+            "titulo": "Décret n° 2024/0168/PM du 23 février 2024 fixant le SMIG des agents de l'État relevant du Code du travail",
+            "url": "https://www.spm.gov.cm/site/sites/default/files/decret_ndeg_2024_0168.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Le décret de 2024 ne fixe que le montant des agents de l'État. Les montants de 60 000 et 45 000 F CFA sont lus dans le décret n° 2023/00338/PM (https://spm.gov.cm/site/sites/default/files/dpm_2023-00338_s.pdf)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.parite-euro",
+      "nombre": "Parité fixe du franc CFA (CEMAC) avec l'euro",
+      "tipo": "numero",
+      "unidad": "XAF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-01-01",
+          "valor": 655.957,
+          "fuente": {
+            "organismo": "Banque des États de l'Afrique centrale (BEAC)",
+            "titulo": "Histoire du franc CFA",
+            "url": "https://www.beac.int/billets-pieces/histoire-franc-cfa/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.conges-jours-par-mois",
+      "nombre": "Congé payé acquis par mois de service effectif",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "general": "Cas général",
+        "moins-18-ans": "Jeunes de moins de 18 ans"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "1992-08-14",
+          "valor": {
+            "general": 1.5,
+            "moins-18-ans": 2.5
+          },
+          "motivo": "Articles 89 et 90 du Code du travail (loi n° 92/007) lus seulement sur une copie de Droit-Afrique hébergée par la FAO. Aucun site officiel camerounais ne publie le texte.",
+          "fuente": {
+            "organismo": "Droit-Afrique (copie)",
+            "titulo": "Loi n° 92/007 du 14 août 1992 portant Code du travail",
+            "url": "https://faolex.fao.org/docs/pdf/cmr198304.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cm.conges-majorations",
+      "nombre": "Jours ouvrables de congé ajoutés pour l'ancienneté (par 5 ans) et pour les mères (par enfant de moins de 6 ans)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "anciennete-5-ans": "Par période de 5 ans d'ancienneté",
+        "enfant": "Par enfant à charge (mères salariées)"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "1992-08-14",
+          "valor": {
+            "anciennete-5-ans": 2,
+            "enfant": 2
+          },
+          "motivo": "Article 90 du Code du travail lu seulement sur une copie de Droit-Afrique hébergée par la FAO. Aucun site officiel camerounais ne publie le texte.",
+          "fuente": {
+            "organismo": "Droit-Afrique (copie)",
+            "titulo": "Loi n° 92/007 du 14 août 1992 portant Code du travail",
+            "url": "https://faolex.fao.org/docs/pdf/cmr198304.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    }
+  ]
+}
