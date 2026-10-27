@@ -20,21 +20,24 @@ import { OtrosPaises } from "@/components/OtrosPaises";
 
 const ACTUALIZADO_EL = "13 de junio de 2026";
 
-export const metadata: Metadata = {
-  title: "Calculadora de sueldo neto 2026: de bruto a en mano",
-  description:
-    "Calculá tu sueldo en mano con jubilación 11%, PAMI 3% y obra social 3%, tope SIPA, cuota sindical y Ganancias. También de neto a bruto.",
-  alternates: { canonical: "/sueldo-neto", languages: hreflangHeadAR("/sueldo-neto") },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Calculadora de Sueldo Neto 2026")}&s=${encodeURIComponent("De bruto a en mano y al revés. Aportes, tope SIPA y Ganancias.")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-};
+// Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
+export function generateMetadata(): Metadata {
+  return {
+    title: "Calculadora de sueldo neto 2026: de bruto a en mano",
+    description:
+      "Calculá tu sueldo en mano con jubilación 11%, PAMI 3% y obra social 3%, tope SIPA, cuota sindical y Ganancias. También de neto a bruto.",
+    alternates: { canonical: "/sueldo-neto", languages: hreflangHeadAR("/sueldo-neto") },
+    openGraph: {
+      images: [
+        {
+          url: `/og?t=${encodeURIComponent("Calculadora de Sueldo Neto 2026")}&s=${encodeURIComponent("De bruto a en mano y al revés. Aportes, tope SIPA y Ganancias.")}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+}
 
 // Tabla "cuánto es X en mano" — neto con los aportes de ley (sin Ganancias ni sindical).
 const SUELDOS_TABLA = [800_000, 1_000_000, 1_200_000, 1_500_000, 2_000_000, 2_500_000];

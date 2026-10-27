@@ -21,12 +21,15 @@ import { formatPct } from "@/lib/formato";
 import { productoPorSlug } from "@/lib/mp";
 import { OtrosPaises } from "@/components/OtrosPaises";
 
-export const metadata: Metadata = {
-  title: "Calculadora de inflación: actualizar un monto por IPC",
-  description:
-    "Convertí cualquier monto del pasado a pesos de hoy con el IPC oficial del INDEC y mirá si tu sueldo le ganó a la inflación. Serie desde 2017.",
-  alternates: { canonical: "/inflacion", languages: hreflangHeadAR("/inflacion") },
-};
+// Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
+export function generateMetadata(): Metadata {
+  return {
+    title: "Calculadora de inflación: actualizar un monto por IPC",
+    description:
+      "Convertí cualquier monto del pasado a pesos de hoy con el IPC oficial del INDEC y mirá si tu sueldo le ganó a la inflación. Serie desde 2017.",
+    alternates: { canonical: "/inflacion", languages: hreflangHeadAR("/inflacion") },
+  };
+}
 
 export default function InflacionPage() {
   const anioActual = Number(ULTIMO_PERIODO.slice(0, 4));

@@ -18,24 +18,27 @@ import {
 } from "@/data/horas-extras";
 import { OtrosPaises } from "@/components/OtrosPaises";
 
-export const metadata: Metadata = {
-  title: "Horas extras 2026: cuánto se pagan al 50% y al 100%",
-  description: `Calculá tus horas extra con recargo del 50% y del 100%, el tope de ${TOPES_DECRETO_484.mensual} horas por mes y los francos del banco de horas de la Ley 27.802.`,
-  alternates: { canonical: "/horas-extras", languages: hreflangHeadAR("/horas-extras") },
-  openGraph: {
-    title: "Horas extras: qué cambió el 6/3/2026",
-    description:
-      "El banco de horas ya no depende solo del convenio colectivo: ahora el empleador y el trabajador pueden pactarlo uno a uno, por escrito y con cinco requisitos. Cuánto se cobra, cuántos francos equivalen y qué topes siguen vigentes.",
-    url: "https://calcular.ar/horas-extras",
-    images: [
-      {
-        url: "/og?t=Horas%20extras%3A%2050%25%2C%20100%25%20y%20banco%20de%20horas&s=LCT%20arts.%20197%20bis%2C%20198%20y%20201%20seg%C3%BAn%20la%20Ley%2027.802",
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-};
+// Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
+export function generateMetadata(): Metadata {
+  return {
+    title: "Horas extras 2026: cuánto se pagan al 50% y al 100%",
+    description: `Calculá tus horas extra con recargo del 50% y del 100%, el tope de ${TOPES_DECRETO_484.mensual} horas por mes y los francos del banco de horas de la Ley 27.802.`,
+    alternates: { canonical: "/horas-extras", languages: hreflangHeadAR("/horas-extras") },
+    openGraph: {
+      title: "Horas extras: qué cambió el 6/3/2026",
+      description:
+        "El banco de horas ya no depende solo del convenio colectivo: ahora el empleador y el trabajador pueden pactarlo uno a uno, por escrito y con cinco requisitos. Cuánto se cobra, cuántos francos equivalen y qué topes siguen vigentes.",
+      url: "https://calcular.ar/horas-extras",
+      images: [
+        {
+          url: "/og?t=Horas%20extras%3A%2050%25%2C%20100%25%20y%20banco%20de%20horas&s=LCT%20arts.%20197%20bis%2C%20198%20y%20201%20seg%C3%BAn%20la%20Ley%2027.802",
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+}
 
 const faqs = [
   {

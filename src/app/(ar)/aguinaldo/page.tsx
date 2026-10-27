@@ -11,17 +11,20 @@ import { openGraphDe } from "@/lib/seo";
 import { AGUINALDO_FUENTES, SEMESTRES_2026 } from "@/data/aguinaldo";
 import { OtrosPaises } from "@/components/OtrosPaises";
 
-export const metadata: Metadata = {
-  title: "Calculadora de aguinaldo 2026: cuánto cobrás de SAC",
-  description:
-    "Calculá tu aguinaldo 2026: 50% del mejor sueldo del semestre, proporcional por días. Bruto y en mano, con las fechas de pago de junio y diciembre.",
-  alternates: { canonical: "/aguinaldo", languages: hreflangHeadAR("/aguinaldo") },
-  openGraph: openGraphDe({
-    ruta: "/aguinaldo",
-    titulo: "Calculadora de aguinaldo 2026",
-    bajada: "Cuánto cobrás de SAC, en bruto y en mano",
-  }),
-};
+// Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
+export function generateMetadata(): Metadata {
+  return {
+    title: "Calculadora de aguinaldo 2026: cuánto cobrás de SAC",
+    description:
+      "Calculá tu aguinaldo 2026: 50% del mejor sueldo del semestre, proporcional por días. Bruto y en mano, con las fechas de pago de junio y diciembre.",
+    alternates: { canonical: "/aguinaldo", languages: hreflangHeadAR("/aguinaldo") },
+    openGraph: openGraphDe({
+      ruta: "/aguinaldo",
+      titulo: "Calculadora de aguinaldo 2026",
+      bajada: "Cuánto cobrás de SAC, en bruto y en mano",
+    }),
+  };
+}
 
 const faqs = [
   {

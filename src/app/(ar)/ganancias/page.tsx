@@ -13,21 +13,24 @@ import { OtrosPaises } from "@/components/OtrosPaises";
 
 const ACTUALIZADO_EL = "15 de junio de 2026";
 
-export const metadata: Metadata = {
-  title: "Calculadora de Ganancias 2026: retención mes a mes",
-  description:
-    "Calculá cuánto te retiene tu empleador de Ganancias 4ª categoría cada mes con el método acumulado de ARCA y la escala del segundo semestre 2026.",
-  alternates: { canonical: "/ganancias", languages: hreflangHeadAR("/ganancias") },
-  openGraph: {
-    images: [
-      {
-        url: `/og?t=${encodeURIComponent("Calculadora Ganancias 4ta Categoría 2026")}&s=${encodeURIComponent("Retención mensual real con el método acumulado de ARCA. Gratis.")}`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-};
+// Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
+export function generateMetadata(): Metadata {
+  return {
+    title: "Calculadora de Ganancias 2026: retención mes a mes",
+    description:
+      "Calculá cuánto te retiene tu empleador de Ganancias 4ª categoría cada mes con el método acumulado de ARCA y la escala del segundo semestre 2026.",
+    alternates: { canonical: "/ganancias", languages: hreflangHeadAR("/ganancias") },
+    openGraph: {
+      images: [
+        {
+          url: `/og?t=${encodeURIComponent("Calculadora Ganancias 4ta Categoría 2026")}&s=${encodeURIComponent("Retención mensual real con el método acumulado de ARCA. Gratis.")}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+}
 
 const faqs = [
   {

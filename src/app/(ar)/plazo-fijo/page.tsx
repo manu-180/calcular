@@ -36,12 +36,15 @@ const ejTeaStr = formatPct(tea(ejTna, EJ_DIAS), 0);
 const ejLeGana = tem(ejTna) >= INFLACION_DEFAULT.mensualPct;
 const ejInflStr = formatPct(INFLACION_DEFAULT.mensualPct, 1);
 
-export const metadata: Metadata = {
-  title: "Calculadora de plazo fijo 2026 con la tasa del BCRA",
-  description:
-    "Simulá tu plazo fijo con la tasa actualizada del BCRA: interés, total al vencimiento, TEA y renovaciones, y mirá si le ganás a la inflación.",
-  alternates: { canonical: "/plazo-fijo", languages: hreflangHeadAR("/plazo-fijo") },
-};
+// Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
+export function generateMetadata(): Metadata {
+  return {
+    title: "Calculadora de plazo fijo 2026 con la tasa del BCRA",
+    description:
+      "Simulá tu plazo fijo con la tasa actualizada del BCRA: interés, total al vencimiento, TEA y renovaciones, y mirá si le ganás a la inflación.",
+    alternates: { canonical: "/plazo-fijo", languages: hreflangHeadAR("/plazo-fijo") },
+  };
+}
 
 const faqs = [
   {

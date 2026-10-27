@@ -9,12 +9,15 @@ import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import { ESCALA_VACACIONES, VACACIONES_FUENTES } from "@/data/vacaciones";
 import { OtrosPaises } from "@/components/OtrosPaises";
 
-export const metadata: Metadata = {
-  title: "Calculadora de vacaciones 2026: días y cuánto cobrás",
-  description:
-    "Calculá tus días de vacaciones por antigüedad (art. 150 LCT) y cuánto cobrás con el plus vacacional de sueldo dividido 25, con la Ley 27.802.",
-  alternates: { canonical: "/vacaciones", languages: hreflangHeadAR("/vacaciones") },
-};
+// Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
+export function generateMetadata(): Metadata {
+  return {
+    title: "Calculadora de vacaciones 2026: días y cuánto cobrás",
+    description:
+      "Calculá tus días de vacaciones por antigüedad (art. 150 LCT) y cuánto cobrás con el plus vacacional de sueldo dividido 25, con la Ley 27.802.",
+    alternates: { canonical: "/vacaciones", languages: hreflangHeadAR("/vacaciones") },
+  };
+}
 
 const faqs = [
   {
