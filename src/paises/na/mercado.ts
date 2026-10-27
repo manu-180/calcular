@@ -8,6 +8,7 @@ export const mercado: Mercado = {
   idioma: "en",
   trato: "tu",
   monedas: ["NAD"],
+  simbolos: { NAD: "N$" },
   zonaHoraria: "Africa/Windhoek",
   estado: "interno",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
