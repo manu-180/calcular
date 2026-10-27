@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["LKR"],
   zonaHoraria: "Asia/Colombo",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   simbolos: { LKR: "Rs." },
   escala: 300,

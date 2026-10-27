@@ -11,7 +11,7 @@ export const mercado: Mercado = {
   // Intl escribe "RF" para en-RW; RSSB y el BNR escriben RWF.
   simbolos: { RWF: "RWF" },
   zonaHoraria: "Africa/Kigali",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 0, modo: "mitad-arriba" },
   escala: 1450,
 };

@@ -17,7 +17,7 @@ async function main() {
   for (const d of detectores) {
     const r = await d.traer(http);
     console.log(`${d.id}: ${r === null ? "null (fuente caída o cambiada)" : `${r.length} hallazgos`}`);
-    for (const h of (r ?? []).slice(0, 3)) console.log(`   ${h.fecha} ${h.titulo.slice(0, 100)}`);
+    for (const h of (r ?? []).slice(0, 3)) console.log(`   ${h.fecha} ${"titulo" in h ? h.titulo.slice(0, 100) : ""}`);
   }
 }
 
