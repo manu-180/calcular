@@ -16,6 +16,10 @@ ORDEN = [
     "droit-enregistrement-bail",
     "droits-enregistrement-cession",
     "droits-de-donation",
+    "avantages-en-nature",
+    "taxe-vehicules-a-moteur",
+    "impot-foncier-propriete-batie",
+    "taxe-sur-les-assurances",
 ]
 
 

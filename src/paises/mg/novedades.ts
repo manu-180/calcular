@@ -7,7 +7,7 @@ export const novedades: readonly Novedad[] = [
     titulo: "IRSA : une tranche à 25 % au-delà de 4 000 000 Ar par mois",
     texto: "Depuis la loi de finances initiale 2026, la part du salaire imposable mensuel qui dépasse 4 000 000 Ar est taxée à 25 % au lieu de 20 %. Les tranches inférieures ne changent pas.",
     vigenteDesde: "2026-01-01",
-    calculadoras: ["mg.calcul-irsa"],
+    calculadoras: ["mg.calcul-irsa", "mg.avantages-en-nature"],
     fuente: {
       organismo: "Direction générale des impôts (DGI)",
       titulo: "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.03.16",
