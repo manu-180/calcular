@@ -1,0 +1,938 @@
+{
+  "mercado": "mg",
+  "datos": [
+    {
+      "id": "mg.irsa-bareme",
+      "nombre": "Barème mensuel de l'IRSA (droit commun)",
+      "tipo": "escala",
+      "unidad": "MGA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 350000,
+              "tasa": 0
+            },
+            {
+              "desde": 350000,
+              "hasta": 400000,
+              "tasa": 5
+            },
+            {
+              "desde": 400000,
+              "hasta": 500000,
+              "tasa": 10
+            },
+            {
+              "desde": 500000,
+              "hasta": 600000,
+              "tasa": 15
+            },
+            {
+              "desde": 600000,
+              "hasta": 4000000,
+              "tasa": 20
+            },
+            {
+              "desde": 4000000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.03.16",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.irsa-minimum",
+      "nombre": "Minimum mensuel de l'IRSA",
+      "tipo": "numero",
+      "unidad": "MGA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.03.16",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.irsa-reduction-charge",
+      "nombre": "Réduction d'IRSA par personne à charge et par mois",
+      "tipo": "numero",
+      "unidad": "MGA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.03.19",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.irsa-deductions",
+      "nombre": "Plafonds de déduction des cotisations du revenu brut (IRSA)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "retraite": "Retraite ou pension",
+        "sante": "Organisme sanitaire ou assurance santé"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "retraite": 10,
+            "sante": 2
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.03.09",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.irsa-heures-sup",
+      "nombre": "Heures supplémentaires exonérées d'IRSA par mois",
+      "tipo": "numero",
+      "unidad": "horas",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.03.03, 9°",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.tva",
+      "nombre": "Taux de la TVA",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "normal": "Taux normal",
+        "butane": "Gaz butane et ses contenants",
+        "export": "Exportations"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "normal": 20,
+            "butane": 10,
+            "export": 0
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 06.01.12",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.tva-seuil",
+      "nombre": "Chiffre d'affaires annuel à partir duquel la TVA est obligatoire",
+      "tipo": "numero",
+      "unidad": "MGA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 400000000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 06.01.04",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.is-taux",
+      "nombre": "Taux de l'impôt synthétique",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "normal": "Taux normal",
+        "cga": "Nouvel adhérent d'un centre de gestion agréé ou nouvel immatriculé en ligne"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "normal": 5,
+            "cga": 3
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.02.05",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.is-reduction",
+      "nombre": "Réduction d'impôt synthétique sur les charges justifiées",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.02.05 bis",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.is-plancher",
+      "nombre": "Impôt synthétique minimum en pourcentage du chiffre d'affaires après réduction",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.02.05 bis",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.is-seuil",
+      "nombre": "Seuil de chiffre d'affaires de l'impôt synthétique",
+      "tipo": "numero",
+      "unidad": "MGA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 400000000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.02.02",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.ir-taux",
+      "nombre": "Taux de l'impôt sur les revenus (IR)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.01.14",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.ir-minimum-fixe",
+      "nombre": "Minimum de perception de l'IR : partie fixe",
+      "tipo": "mapa",
+      "unidad": "MGA",
+      "etiquetas": {
+        "production": "Activités agricoles, artisanales, industrielles, minières, hôtelières, touristiques",
+        "autres": "Autres entreprises",
+        "petrolier": "Compagnies pétrolières",
+        "carburant": "Vente de carburant au détail"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "production": 500000,
+            "autres": 1000000,
+            "petrolier": 1000000,
+            "carburant": 0
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.01.14",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.ir-minimum-ca",
+      "nombre": "Minimum de perception de l'IR : part du chiffre d'affaires hors taxe",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "production": "Activités agricoles, artisanales, industrielles, minières, hôtelières, touristiques",
+        "autres": "Autres entreprises",
+        "petrolier": "Compagnies pétrolières",
+        "carburant": "Vente de carburant au détail"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "production": 1,
+            "autres": 1,
+            "petrolier": 0.7,
+            "carburant": 0.1
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.01.14",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.ircm-taux",
+      "nombre": "Taux de l'impôt sur les revenus des capitaux mobiliers (IRCM)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "Taux général",
+        "cooperative": "Intérêts sur parts sociales et ristournes de coopératives"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "general": 20,
+            "cooperative": 10
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.04.04",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.ircm-abattement-dividendes",
+      "nombre": "Abattement sur les dividendes (IRCM)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.04.04",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.ipvi-taux",
+      "nombre": "Taux de l'impôt sur les plus-values immobilières (IPVI)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.05.07",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.ipvi-prix-revient",
+      "nombre": "Prix de revient forfaitaire pour l'IPVI, en pourcentage du prix de cession",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.05.04",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.droit-mutation-immeuble",
+      "nombre": "Droit d'enregistrement sur les ventes d'immeubles",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 02.02.39",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.droit-bail",
+      "nombre": "Droit d'enregistrement des baux",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "habitation": "Habitation (et baux assimilés)",
+        "autres": "Commercial, professionnel ou mixte",
+        "emphyteotique": "Bail emphytéotique"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "habitation": 1,
+            "autres": 2,
+            "emphyteotique": 5
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 02.02.12",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.droit-cession",
+      "nombre": "Droits d'enregistrement sur les cessions à titre onéreux de biens meubles",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "meubles": "Voiture ou autre bien meuble",
+        "utilitaire": "Camion, camionnette, car de plus de 10 places, engin ou tracteur agricole",
+        "occasion-concession": "Voiture d'occasion vendue par un concessionnaire",
+        "fonds": "Fonds de commerce ou clientèle",
+        "marchandises": "Marchandises neuves garnissant un fonds",
+        "parts": "Actions ou parts sociales",
+        "creances": "Créances"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "meubles": 5,
+            "utilitaire": 2,
+            "occasion-concession": 2,
+            "fonds": 5,
+            "marchandises": 2,
+            "parts": 0.5,
+            "creances": 0.5
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 02.02.22, 02.02.42, 02.02.43 et 02.02.45",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.droit-donation",
+      "nombre": "Droit sur les donations entre vifs",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 02.03.25, II",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.droit-donation-ligne-directe",
+      "nombre": "Droit fixe par donataire en ligne directe descendante",
+      "tipo": "numero",
+      "unidad": "MGA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 02.03.25, II",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.taxe-vehicules",
+      "nombre": "Taxe annuelle sur les véhicules à moteur",
+      "tipo": "mapa",
+      "unidad": "MGA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "essence-1-4-a5": 15000,
+            "essence-1-4-a10": 40000,
+            "essence-1-4-a20": 90000,
+            "essence-1-4-plus20": 115000,
+            "diesel-1-4-a5": 20000,
+            "diesel-1-4-a10": 45000,
+            "diesel-1-4-a20": 95000,
+            "diesel-1-4-plus20": 120000,
+            "electrique-1-4-a5": 5000,
+            "electrique-1-4-a10": 30000,
+            "electrique-1-4-a20": 80000,
+            "electrique-1-4-plus20": 105000,
+            "hybride-1-4-a5": 10000,
+            "hybride-1-4-a10": 35000,
+            "hybride-1-4-a20": 85000,
+            "hybride-1-4-plus20": 110000,
+            "essence-5-9-a5": 30000,
+            "essence-5-9-a10": 55000,
+            "essence-5-9-a20": 105000,
+            "essence-5-9-plus20": 130000,
+            "diesel-5-9-a5": 40000,
+            "diesel-5-9-a10": 65000,
+            "diesel-5-9-a20": 115000,
+            "diesel-5-9-plus20": 140000,
+            "electrique-5-9-a5": 10000,
+            "electrique-5-9-a10": 35000,
+            "electrique-5-9-a20": 85000,
+            "electrique-5-9-plus20": 110000,
+            "hybride-5-9-a5": 20000,
+            "hybride-5-9-a10": 45000,
+            "hybride-5-9-a20": 95000,
+            "hybride-5-9-plus20": 120000,
+            "essence-10-12-a5": 60000,
+            "essence-10-12-a10": 85000,
+            "essence-10-12-a20": 135000,
+            "essence-10-12-plus20": 160000,
+            "diesel-10-12-a5": 80000,
+            "diesel-10-12-a10": 105000,
+            "diesel-10-12-a20": 155000,
+            "diesel-10-12-plus20": 180000,
+            "electrique-10-12-a5": 20000,
+            "electrique-10-12-a10": 45000,
+            "electrique-10-12-a20": 95000,
+            "electrique-10-12-plus20": 120000,
+            "hybride-10-12-a5": 40000,
+            "hybride-10-12-a10": 65000,
+            "hybride-10-12-a20": 115000,
+            "hybride-10-12-plus20": 140000,
+            "essence-13-15-a5": 90000,
+            "essence-13-15-a10": 115000,
+            "essence-13-15-a20": 165000,
+            "essence-13-15-plus20": 190000,
+            "diesel-13-15-a5": 120000,
+            "diesel-13-15-a10": 145000,
+            "diesel-13-15-a20": 195000,
+            "diesel-13-15-plus20": 220000,
+            "electrique-13-15-a5": 30000,
+            "electrique-13-15-a10": 55000,
+            "electrique-13-15-a20": 105000,
+            "electrique-13-15-plus20": 130000,
+            "hybride-13-15-a5": 60000,
+            "hybride-13-15-a10": 85000,
+            "hybride-13-15-a20": 135000,
+            "hybride-13-15-plus20": 160000,
+            "essence-16-a5": 180000,
+            "essence-16-a10": 205000,
+            "essence-16-a20": 255000,
+            "essence-16-plus20": 280000,
+            "diesel-16-a5": 240000,
+            "diesel-16-a10": 265000,
+            "diesel-16-a20": 315000,
+            "diesel-16-plus20": 340000,
+            "electrique-16-a5": 60000,
+            "electrique-16-a10": 85000,
+            "electrique-16-a20": 135000,
+            "electrique-16-plus20": 160000,
+            "hybride-16-a5": 120000,
+            "hybride-16-a10": 145000,
+            "hybride-16-a20": 195000,
+            "hybride-16-plus20": 220000
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 02.09.06",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.ifpb",
+      "nombre": "Impôt foncier sur la propriété bâtie (IFPB)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "taux": "Taux sur la valeur locative",
+        "residence-principale": "Part de la valeur locative retenue pour la résidence principale"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "taux": 5,
+            "residence-principale": 30
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 10.02.06 et 10.02.10",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.ifpb-minimum",
+      "nombre": "IFPB minimum par immeuble",
+      "tipo": "numero",
+      "unidad": "MGA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 10.02.10",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.avantages-nature",
+      "nombre": "Évaluation des avantages en nature pour l'IRSA",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vehicule": "Véhicule : part des dépenses mensuelles",
+        "logement": "Logement : part du loyer réel",
+        "logement-plafond": "Logement : plafond en part des rémunérations fixes",
+        "telephone": "Téléphone : part des dépenses mensuelles"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vehicule": 15,
+            "logement": 50,
+            "logement-plafond": 25,
+            "telephone": 15
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.03.08",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.taxe-assurance",
+      "nombre": "Taxe sur les contrats d'assurance",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "navigation": "Navigation maritime, fluviale ou aérienne",
+        "incendie-activite": "Incendie : biens affectés à une activité professionnelle",
+        "incendie-autres": "Incendie : autres biens",
+        "vie": "Assurance vie et rentes différées de 3 ans et plus",
+        "rente-viagere": "Rente viagère",
+        "autres": "Autres assurances (automobile, responsabilité civile...)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "navigation": 4,
+            "incendie-activite": 7,
+            "incendie-autres": 20,
+            "vie": 3,
+            "rente-viagere": 5,
+            "autres": 4.5
+          },
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 02.06.02",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.sme-general",
+      "nombre": "Salaire minimum d'embauche (SME) mensuel, régime général non agricole",
+      "tipo": "numero",
+      "unidad": "MGA",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-01",
+          "hasta": "2026-02-28",
+          "valor": 262680,
+          "fuente": {
+            "organismo": "Caisse nationale de prévoyance sociale (CNaPS)",
+            "titulo": "Historique du salaire minimum d'embauche, régime général",
+            "url": "https://www.cnaps.mg/historique-sme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "hasta": "2026-09-30",
+          "valor": 300000,
+          "fuente": {
+            "organismo": "Caisse nationale de prévoyance sociale (CNaPS)",
+            "titulo": "Historique du salaire minimum d'embauche, régime général",
+            "url": "https://www.cnaps.mg/historique-sme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2026-10-01",
+          "valor": 315000,
+          "motivo": "La presse (L'Express de Madagascar, juillet 2026) rapporte, d'après la direction générale du Travail, un décret publié le 29 juin 2026 qui porte le SME à 315 000 Ar à partir d'octobre 2026. Ni le décret ni la page de la CNaPS (qui affiche encore 300 000 Ar sans date de fin) ne le confirment."
+        }
+      ]
+    },
+    {
+      "id": "mg.sme-agricole",
+      "nombre": "Salaire minimum d'embauche (SME) mensuel, régime agricole",
+      "tipo": "numero",
+      "unidad": "MGA",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-01",
+          "hasta": "2026-02-28",
+          "valor": 266500,
+          "fuente": {
+            "organismo": "Caisse nationale de prévoyance sociale (CNaPS)",
+            "titulo": "Historique du salaire minimum d'embauche, régime agricole",
+            "url": "https://www.cnaps.mg/historique-sme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": 304300,
+          "fuente": {
+            "organismo": "Caisse nationale de prévoyance sociale (CNaPS)",
+            "titulo": "Historique du salaire minimum d'embauche, régime agricole",
+            "url": "https://www.cnaps.mg/historique-sme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.plafond-cnaps-sme",
+      "nombre": "Plafond mensuel soumis à cotisation CNaPS, en nombre de SME",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Caisse nationale de prévoyance sociale (CNaPS)",
+            "titulo": "Historique du SME : le plafond mensuel soumis à cotisation vaut huit fois le SME",
+            "url": "https://www.cnaps.mg/historique-sme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.cotisation-cnaps-salarie",
+      "nombre": "Cotisation CNaPS à la charge du salarié",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "motivo": "Taux attribué à l'arrêté interministériel n° 5410/99 par des sites syndicaux et de paie ; ni l'arrêté ni une page de la CNaPS publiant le taux ne sont accessibles en ligne."
+        }
+      ]
+    },
+    {
+      "id": "mg.cotisation-sante-salarie",
+      "nombre": "Cotisation salariale à l'organisme sanitaire inter-entreprises (OSTIE, AMIT...)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "motivo": "Taux attribué au décret n° 2003-1162 par des sites de paie ; le texte n'est pas en ligne sur un site officiel et le site de l'OSTIE ne répond pas."
+        }
+      ]
+    }
+  ]
+}
