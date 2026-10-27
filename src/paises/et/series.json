@@ -1,0 +1,31 @@
+{
+  "mercado": "et",
+  "series": [
+    {
+      "id": "et.usd",
+      "nombre": "Indicative daily exchange rate, birr per US dollar (weighted average)",
+      "unidad": "ETB",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "National Bank of Ethiopia",
+        "titulo": "Indicative daily exchange rates",
+        "url": "https://nbe.gov.et/exchange/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      },
+      "puntos": [
+        ["2026-10-13", 160.9879],
+        ["2026-10-14", 160.8578],
+        ["2026-10-15", 160.6923],
+        ["2026-10-16", 160.9237],
+        ["2026-10-19", 160.8221],
+        ["2026-10-20", 160.9878],
+        ["2026-10-21", 161.1782],
+        ["2026-10-22", 160.9702],
+        ["2026-10-23", 160.9968],
+        ["2026-10-26", 160.9999]
+      ]
+    }
+  ]
+}
