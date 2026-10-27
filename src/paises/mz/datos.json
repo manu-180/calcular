@@ -819,6 +819,26 @@
       ]
     },
     {
+      "id": "mz.excepcional-meio-dia",
+      "nombre": "Horas de trabalho em dia de descanso que dão só meio dia de descanso compensatório",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-21",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Boletim da República (INSS)",
+            "titulo": "Lei n.º 13/2023, de 25 de Agosto (Lei do Trabalho), I Série n.º 165, artigo 98, n.º 4",
+            "url": "https://www.inss.gov.mz/wp-content/uploads/2025/09/NOVA-LEI-DO-TRABALHO-DE-25-DE-AGOSTO-DE-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
       "id": "mz.trabalho-nocturno",
       "nombre": "Acréscimo do trabalho nocturno",
       "tipo": "numero",
