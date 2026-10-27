@@ -24,6 +24,20 @@ import nalogNaPribyl from "./calculadoras/nalog-na-pribyl";
 import contenidoNalogNaPribyl from "./contenido/nalog-na-pribyl";
 import penyaPoNalogam from "./calculadoras/penya-po-nalogam";
 import contenidoPenyaPoNalogam from "./contenido/penya-po-nalogam";
+import otpusknye from "./calculadoras/otpusknye";
+import contenidoOtpusknye from "./contenido/otpusknye";
+import kompensatsiyaZaOtpusk from "./calculadoras/kompensatsiya-za-otpusk";
+import contenidoKompensatsiyaZaOtpusk from "./contenido/kompensatsiya-za-otpusk";
+import sverkhurochnye from "./calculadoras/sverkhurochnye";
+import contenidoSverkhurochnye from "./contenido/sverkhurochnye";
+import vykhodnoePosobie from "./calculadoras/vykhodnoe-posobie";
+import contenidoVykhodnoePosobie from "./contenido/vykhodnoe-posobie";
+import zaderzhkaZarplaty from "./calculadoras/zaderzhka-zarplaty";
+import contenidoZaderzhkaZarplaty from "./contenido/zaderzhka-zarplaty";
+import bolnichnye from "./calculadoras/bolnichnye";
+import contenidoBolnichnye from "./contenido/bolnichnye";
+import dekretnye from "./calculadoras/dekretnye";
+import contenidoDekretnye from "./contenido/dekretnye";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -48,6 +62,13 @@ export default definirPais({
     { definicion: edinyyNalog, contenido: contenidoEdinyyNalog, cliente: () => import("./calculadoras/edinyy-nalog.cliente") },
     { definicion: nalogNaPribyl, contenido: contenidoNalogNaPribyl, cliente: () => import("./calculadoras/nalog-na-pribyl.cliente") },
     { definicion: penyaPoNalogam, contenido: contenidoPenyaPoNalogam, cliente: () => import("./calculadoras/penya-po-nalogam.cliente") },
+    { definicion: otpusknye, contenido: contenidoOtpusknye, cliente: () => import("./calculadoras/otpusknye.cliente") },
+    { definicion: kompensatsiyaZaOtpusk, contenido: contenidoKompensatsiyaZaOtpusk, cliente: () => import("./calculadoras/kompensatsiya-za-otpusk.cliente") },
+    { definicion: sverkhurochnye, contenido: contenidoSverkhurochnye, cliente: () => import("./calculadoras/sverkhurochnye.cliente") },
+    { definicion: vykhodnoePosobie, contenido: contenidoVykhodnoePosobie, cliente: () => import("./calculadoras/vykhodnoe-posobie.cliente") },
+    { definicion: zaderzhkaZarplaty, contenido: contenidoZaderzhkaZarplaty, cliente: () => import("./calculadoras/zaderzhka-zarplaty.cliente") },
+    { definicion: bolnichnye, contenido: contenidoBolnichnye, cliente: () => import("./calculadoras/bolnichnye.cliente") },
+    { definicion: dekretnye, contenido: contenidoDekretnye, cliente: () => import("./calculadoras/dekretnye.cliente") },
   ],
   universales: "todas",
   novedades,

@@ -453,7 +453,7 @@
       "id": "kg.vykhodnoe-posobie",
       "nombre": "Выходное пособие в среднемесячных заработках",
       "tipo": "mapa",
-      "unidad": "meses",
+      "unidad": "numero",
       "etiquetas": {
         "likvidatsiya": "Ликвидация организации",
         "sokrashchenie": "Сокращение численности или штата",
