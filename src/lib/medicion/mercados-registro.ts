@@ -29,6 +29,7 @@ export const MERCADOS_REGISTRO: readonly (readonly [codigo: string, pais: string
   ["ec", "EC", "es"],
   ["eg", "EG", "ar"],
   ["es", "ES", "es"],
+  ["et", "ET", "en"],
   ["fi", "FI", "fi"],
   ["fr", "FR", "fr"],
   ["gb", "GB", "en"],
@@ -97,4 +98,5 @@ export const MERCADOS_REGISTRO: readonly (readonly [codigo: string, pais: string
   ["uz", "UZ", "uz"],
   ["ve", "VE", "es"],
   ["za", "ZA", "en"],
+  ["zm", "ZM", "en"],
 ];
