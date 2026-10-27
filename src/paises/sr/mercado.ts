@@ -11,5 +11,6 @@ export const mercado: Mercado = {
   zonaHoraria: "America/Paramaribo",
   estado: "interno",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
+  simbolos: { SRD: "SRD" },
   escala: 38,
 };
