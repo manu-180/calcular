@@ -1,0 +1,20 @@
+{
+  "mercado": "bf",
+  "avisos": [
+    {
+      "id": "bf.minimums-legaux",
+      "nivel": "info",
+      "desde": "2026-05-25",
+      "aplicaA": ["bf.preavis", "bf.conges-payes", "bf.periode-d-essai", "bf.conge-maternite", "bf.indemnite-maladie", "bf.rupture-irreguliere"],
+      "titulo": "Code du travail de 2026",
+      "texto": "Le calcul suit le code du travail promulgué le 25 mai 2026. Votre convention collective ou votre contrat peut prévoir des conditions plus favorables.",
+      "fuente": {
+        "organismo": "Gouvernement du Burkina Faso (SIG)",
+        "titulo": "Décret n° 2026-0613/PF du 25 mai 2026 promulguant la loi n° 013-2026/ALP portant code du travail",
+        "url": "https://gouvernement.gov.bf/wp-content/uploads/2026/06/DECRET-N%C2%B02026-0613-PF.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      }
+    }
+  ]
+}
