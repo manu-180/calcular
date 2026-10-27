@@ -44,6 +44,12 @@ import kalkulyatorInflyatsii from "./calculadoras/kalkulyator-inflyatsii";
 import contenidoKalkulyatorInflyatsii from "./contenido/kalkulyator-inflyatsii";
 import alimenty from "./calculadoras/alimenty";
 import contenidoAlimenty from "./contenido/alimenty";
+import srokPreduprezhdeniya from "./calculadoras/srok-preduprezhdeniya";
+import contenidoSrokPreduprezhdeniya from "./contenido/srok-preduprezhdeniya";
+import ispytatelnyySrok from "./calculadoras/ispytatelnyy-srok";
+import contenidoIspytatelnyySrok from "./contenido/ispytatelnyy-srok";
+import raschetPriUvolnenii from "./calculadoras/raschet-pri-uvolnenii";
+import contenidoRaschetPriUvolnenii from "./contenido/raschet-pri-uvolnenii";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -78,6 +84,9 @@ export default definirPais({
     { definicion: kursValyut, contenido: contenidoKursValyut, cliente: () => import("./calculadoras/kurs-valyut.cliente") },
     { definicion: kalkulyatorInflyatsii, contenido: contenidoKalkulyatorInflyatsii, cliente: () => import("./calculadoras/kalkulyator-inflyatsii.cliente") },
     { definicion: alimenty, contenido: contenidoAlimenty, cliente: () => import("./calculadoras/alimenty.cliente") },
+    { definicion: srokPreduprezhdeniya, contenido: contenidoSrokPreduprezhdeniya, cliente: () => import("./calculadoras/srok-preduprezhdeniya.cliente") },
+    { definicion: ispytatelnyySrok, contenido: contenidoIspytatelnyySrok, cliente: () => import("./calculadoras/ispytatelnyy-srok.cliente") },
+    { definicion: raschetPriUvolnenii, contenido: contenidoRaschetPriUvolnenii, cliente: () => import("./calculadoras/raschet-pri-uvolnenii.cliente") },
   ],
   universales: "todas",
   novedades,

@@ -126,6 +126,11 @@ export const detectores: readonly Detector[] = [
     "kg.vykhodnoe-posobie",
     "kg.zaderzhka-zarplaty",
     "kg.dekret-dni",
+    "kg.preduprezhdenie-mesyatsy",
+    "kg.preduprezhdenie-nedeli",
+    "kg.preduprezhdenie-dni",
+    "kg.preduprezhdenie-rabochie-dni",
+    "kg.ispytanie-maks",
   ]),
   detectorAkta("kg.byudzhet-2026", "4-5709", "Закон о республиканском бюджете на 2026-2028 годы", ["kg.mzp"]),
   detectorAkta("kg.posobiya", "12601", "Положение о пособиях по временной нетрудоспособности и по беременности и родам", [

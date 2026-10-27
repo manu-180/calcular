@@ -699,6 +699,139 @@
           }
         }
       ]
+    },
+    {
+      "id": "kg.preduprezhdenie-mesyatsy",
+      "nombre": "Срок предупреждения об увольнении в месяцах",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "sobstvennoe": "Работник увольняется по собственному желанию",
+        "sokrashchenie": "Ликвидация организации или сокращение штата"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": {
+            "sobstvennoe": 1,
+            "sokrashchenie": 1
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статьи 43 и 46",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.preduprezhdenie-nedeli",
+      "nombre": "Срок предупреждения об увольнении в неделях",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "nesootvetstvie": "Несоответствие должности по здоровью или квалификации"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": {
+            "nesootvetstvie": 2
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 46",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.preduprezhdenie-dni",
+      "nombre": "Срок предупреждения по договору до двух месяцев, календарных дней",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "korotkiy-rabotnik": "Работник по договору до 2 месяцев увольняется досрочно",
+        "korotkiy-rabotodatel": "Ликвидация или сокращение при договоре до 2 месяцев"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": {
+            "korotkiy-rabotnik": 3,
+            "korotkiy-rabotodatel": 3
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 169",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.preduprezhdenie-rabochie-dni",
+      "nombre": "Срок предупреждения при испытании, рабочих дней",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "ispytanie-rabotodatel": "Работник не выдержал испытание",
+        "ispytanie-rabotnik": "Работник сам уходит во время испытания"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": {
+            "ispytanie-rabotodatel": 3,
+            "ispytanie-rabotnik": 3
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 24",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.ispytanie-maks",
+      "nombre": "Максимальный испытательный срок",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "obshchiy": "Обычный работник",
+        "rukovoditel": "Руководитель, заместитель, главный бухгалтер, руководитель филиала"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": {
+            "obshchiy": 3,
+            "rukovoditel": 6
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 24",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
     }
   ]
 }
