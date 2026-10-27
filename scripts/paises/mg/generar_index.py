@@ -8,6 +8,10 @@ ORDEN = [
     "calcul-salaire-net",
     "calcul-tva",
     "convertisseur-ariary-euro",
+    "impot-synthetique",
+    "calcul-impot-sur-les-revenus",
+    "calcul-ircm",
+    "impot-plus-value-immobiliere",
 ]
 
 
@@ -22,6 +26,17 @@ archivos = sorted(
     if f.endswith(".ts") and not f.endswith(".casos.ts")
 )
 slugs = [s for s in ORDEN if s in archivos] + [s for s in archivos if s not in ORDEN]
+
+for s in slugs:
+    cliente = os.path.join(RAIZ, "calculadoras", f"{s}.cliente.tsx")
+    lineas = [
+        '"use client";',
+        'import { crearCalculadoraCliente } from "@/motor/cliente";',
+        f'import {camel(s)} from "./{s}";',
+        f"export default crearCalculadoraCliente({camel(s)});",
+    ]
+    with open(cliente, "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(lineas) + "\n")
 
 imports = ['import { definirPais } from "@/motor/registro";', 'import avisos from "./avisos.json";']
 imports += [f'import {camel(s)} from "./calculadoras/{s}";' for s in sorted(slugs)]

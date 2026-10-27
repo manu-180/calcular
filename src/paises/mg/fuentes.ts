@@ -17,6 +17,8 @@ const DATOS_FISCAUX = [
   "mg.is-reduction",
   "mg.is-plancher",
   "mg.is-seuil",
+  "mg.is-abattement-cga",
+  "mg.is-abattement-cga-plafond",
   "mg.ir-taux",
   "mg.ir-minimum-fixe",
   "mg.ir-minimum-ca",

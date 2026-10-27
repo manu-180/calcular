@@ -55,6 +55,8 @@ datos.append(dato("is-taux", "Taux de l'impôt synthétique", "mapa", "%", [ver(
                   etiquetas={"normal": "Taux normal", "cga": "Nouvel adhérent d'un centre de gestion agréé ou nouvel immatriculé en ligne"}, proximaRevision=R))
 datos.append(dato("is-reduction", "Réduction d'impôt synthétique sur les charges justifiées", "numero", "%", [ver(2, "01.02.05 bis")], proximaRevision=R))
 datos.append(dato("is-plancher", "Impôt synthétique minimum en pourcentage du chiffre d'affaires après réduction", "numero", "%", [ver(3, "01.02.05 bis")], proximaRevision=R))
+datos.append(dato("is-abattement-cga", "Abattement des adhérents d'un centre de gestion agréé sur la base de l'impôt synthétique", "numero", "%", [ver(50, "01.02.04")], proximaRevision=R))
+datos.append(dato("is-abattement-cga-plafond", "Plafond de l'abattement des adhérents d'un centre de gestion agréé", "numero", "MGA", [ver(10000000, "01.02.04")], proximaRevision=R))
 datos.append(dato("is-seuil", "Seuil de chiffre d'affaires de l'impôt synthétique", "numero", "MGA", [ver(400000000, "01.02.02")], proximaRevision=R))
 
 ETIQ_IR = {

@@ -266,6 +266,48 @@
       ]
     },
     {
+      "id": "mg.is-abattement-cga",
+      "nombre": "Abattement des adhérents d'un centre de gestion agréé sur la base de l'impôt synthétique",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.02.04",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg.is-abattement-cga-plafond",
+      "nombre": "Plafond de l'abattement des adhérents d'un centre de gestion agréé",
+      "tipo": "numero",
+      "unidad": "MGA",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10000000,
+          "fuente": {
+            "organismo": "Direction générale des impôts (DGI)",
+            "titulo": "Code des impôts mis à jour suivant la loi de finances initiale 2026, article 01.02.04",
+            "url": "https://www.impots.mg/explorer?path=/legislation/Codes%20et%20Manuels/CDI-LFI%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
       "id": "mg.is-seuil",
       "nombre": "Seuil de chiffre d'affaires de l'impôt synthétique",
       "tipo": "numero",
