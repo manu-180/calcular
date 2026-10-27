@@ -103,7 +103,8 @@ for (const archivo of archivosBajo(path.join(SRC, "motor"), EXT)) {
     const r = resolver(archivo, espec);
     const donde = `${rel(archivo)}:${linea} importa "${espec}"`;
     if (r.tipo === "paquete") {
-      if (r.nombre !== "react" && !espec.startsWith("node:")) fallas.push(`${donde}: el motor no suma dependencias`);
+      // uqr: el QR del diálogo «mandalo a tu celu» de compartir (PR #100), sin otra forma de dibujarlo.
+      if (r.nombre !== "react" && r.nombre !== "uqr" && !espec.startsWith("node:")) fallas.push(`${donde}: el motor no suma dependencias`);
       continue;
     }
     if (dentro(r.ruta, path.join(SRC, "paises"))) fallas.push(`${donde}: el motor no importa de src/paises (recibe el registro como parámetro)`);
