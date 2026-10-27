@@ -24,6 +24,14 @@ import indemniteMaladie from "./calculadoras/indemnite-maladie";
 import contenidoIndemniteMaladie from "./contenido/indemnite-maladie";
 import ruptureIrreguliere from "./calculadoras/rupture-irreguliere";
 import contenidoRuptureIrreguliere from "./contenido/rupture-irreguliere";
+import impotSurLesSocietes from "./calculadoras/impot-sur-les-societes";
+import contenidoImpotSurLesSocietes from "./contenido/impot-sur-les-societes";
+import impotSurLesBenefices from "./calculadoras/impot-sur-les-benefices";
+import contenidoImpotSurLesBenefices from "./contenido/impot-sur-les-benefices";
+import impotRevenusFonciers from "./calculadoras/impot-revenus-fonciers";
+import contenidoImpotRevenusFonciers from "./contenido/impot-revenus-fonciers";
+import calculIrcm from "./calculadoras/calcul-ircm";
+import contenidoCalculIrcm from "./contenido/calcul-ircm";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -50,6 +58,10 @@ export default definirPais({
     { definicion: congeMaternite, contenido: contenidoCongeMaternite, cliente: () => import("./calculadoras/conge-maternite.cliente") },
     { definicion: indemniteMaladie, contenido: contenidoIndemniteMaladie, cliente: () => import("./calculadoras/indemnite-maladie.cliente") },
     { definicion: ruptureIrreguliere, contenido: contenidoRuptureIrreguliere, cliente: () => import("./calculadoras/rupture-irreguliere.cliente") },
+    { definicion: impotSurLesSocietes, contenido: contenidoImpotSurLesSocietes, cliente: () => import("./calculadoras/impot-sur-les-societes.cliente") },
+    { definicion: impotSurLesBenefices, contenido: contenidoImpotSurLesBenefices, cliente: () => import("./calculadoras/impot-sur-les-benefices.cliente") },
+    { definicion: impotRevenusFonciers, contenido: contenidoImpotRevenusFonciers, cliente: () => import("./calculadoras/impot-revenus-fonciers.cliente") },
+    { definicion: calculIrcm, contenido: contenidoCalculIrcm, cliente: () => import("./calculadoras/calcul-ircm.cliente") },
   ],
   universales: "todas",
 });
