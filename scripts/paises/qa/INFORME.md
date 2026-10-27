@@ -1,7 +1,6 @@
 # Informe: Catar (`qa`, en-QA) y edición `qa-ar` (ar-QA)
 
-Rama `claude/pais-qa` (base origin/main). Commits locales: ver `git log origin/main..claude/pais-qa`.
-**El push falló** (ver Riesgos): todo está commiteado en local, nada subió.
+Rama `claude/pais-qa` (base origin/main), pusheada a origin. Commits: `git log origin/main..origin/claude/pais-qa`.
 
 ## Resumen
 
@@ -73,7 +72,7 @@ Prueba real: con la fecha de hoy los seis devuelven `[]`. Con la fecha corrida h
 
 ## Riesgos y dudas para el coordinador
 
-1. **Push bloqueado**: `git push` da 403. La cuenta activa de gh es `developers-insights`, sin permiso en `manu-180/calcular`, y el token de `manu-180` está vencido. Hay que reautenticar y correr `git push -u origin claude/pais-qa`.
+1. **Push**: los primeros intentos dieron 403 (gh activo `developers-insights`, token de `manu-180` vencido). El intento del final pasó y la rama está en origin. Conviene revisar las credenciales igual.
 2. **Conversión de mensual a semanal o diario**: la ley fija gratificación, vacaciones y licencias en semanas o días, pero no dice cómo convertir el sueldo. Se le pregunta a la persona (÷30×7 o ×12÷52; ÷30 o ×12÷365). En horas extra el divisor es ×12÷52÷jornada, y la provisión del costo empleador usa ×12÷52. Los dos están explicados en los textos.
 3. **Preaviso**: los días se cuentan a 30 por mes. Con exactamente 2 años corresponde 1 mes («durante el primer y segundo año»).
 4. **Recargo por día de descanso** (art. 75): el texto árabe dice «زيادة تعادل 150%». Va en una FAQ con la redacción literal y no se calcula.
