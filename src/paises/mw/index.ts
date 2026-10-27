@@ -26,6 +26,14 @@ import personalIncomeTaxCalculator from "./calculadoras/personal-income-tax-calc
 import contenidoPersonalIncomeTaxCalculator from "./contenido/personal-income-tax-calculator";
 import capitalGainsTaxCalculator from "./calculadoras/capital-gains-tax-calculator";
 import contenidoCapitalGainsTaxCalculator from "./contenido/capital-gains-tax-calculator";
+import overtimeCalculator from "./calculadoras/overtime-calculator";
+import contenidoOvertimeCalculator from "./contenido/overtime-calculator";
+import annualLeaveCalculator from "./calculadoras/annual-leave-calculator";
+import contenidoAnnualLeaveCalculator from "./contenido/annual-leave-calculator";
+import dollarToKwacha from "./calculadoras/dollar-to-kwacha";
+import contenidoDollarToKwacha from "./contenido/dollar-to-kwacha";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -51,6 +59,10 @@ export default definirPais({
     { definicion: presumptiveTaxCalculator, contenido: contenidoPresumptiveTaxCalculator, cliente: () => import("./calculadoras/presumptive-tax-calculator.cliente") },
     { definicion: personalIncomeTaxCalculator, contenido: contenidoPersonalIncomeTaxCalculator, cliente: () => import("./calculadoras/personal-income-tax-calculator.cliente") },
     { definicion: capitalGainsTaxCalculator, contenido: contenidoCapitalGainsTaxCalculator, cliente: () => import("./calculadoras/capital-gains-tax-calculator.cliente") },
+    { definicion: overtimeCalculator, contenido: contenidoOvertimeCalculator, cliente: () => import("./calculadoras/overtime-calculator.cliente") },
+    { definicion: annualLeaveCalculator, contenido: contenidoAnnualLeaveCalculator, cliente: () => import("./calculadoras/annual-leave-calculator.cliente") },
+    { definicion: dollarToKwacha, contenido: contenidoDollarToKwacha, cliente: () => import("./calculadoras/dollar-to-kwacha.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
