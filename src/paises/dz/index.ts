@@ -1,0 +1,43 @@
+import { definirPais } from "@/motor/registro";
+import avisos from "./avisos.json";
+import calculIrgSalaire from "./calculadoras/calcul-irg-salaire";
+import calculSalaireBrut from "./calculadoras/calcul-salaire-brut";
+import calculSalaireNet from "./calculadoras/calcul-salaire-net";
+import cotisationsCnas from "./calculadoras/cotisations-cnas";
+import contenidoCalculIrgSalaire from "./contenido/calcul-irg-salaire";
+import contenidoCalculSalaireBrut from "./contenido/calcul-salaire-brut";
+import contenidoCalculSalaireNet from "./contenido/calcul-salaire-net";
+import contenidoCotisationsCnas from "./contenido/cotisations-cnas";
+import coutEmployeur from "./calculadoras/cout-employeur";
+import contenidoCoutEmployeur from "./contenido/cout-employeur";
+import snmgAlgerie from "./calculadoras/snmg-algerie";
+import contenidoSnmgAlgerie from "./contenido/snmg-algerie";
+import calculTva from "./calculadoras/calcul-tva";
+import contenidoCalculTva from "./contenido/calcul-tva";
+import heuresSupplementaires from "./calculadoras/heures-supplementaires";
+import contenidoHeuresSupplementaires from "./contenido/heures-supplementaires";
+import datos from "./datos.json";
+import { detectores } from "./fuentes";
+import { mercado } from "./mercado";
+import { novedades } from "./novedades";
+import series from "./series.json";
+
+export default definirPais({
+  mercado,
+  datos,
+  series,
+  avisos,
+  calculadoras: [
+    { definicion: calculSalaireNet, contenido: contenidoCalculSalaireNet, cliente: () => import("./calculadoras/calcul-salaire-net.cliente") },
+    { definicion: calculIrgSalaire, contenido: contenidoCalculIrgSalaire, cliente: () => import("./calculadoras/calcul-irg-salaire.cliente") },
+    { definicion: calculSalaireBrut, contenido: contenidoCalculSalaireBrut, cliente: () => import("./calculadoras/calcul-salaire-brut.cliente") },
+    { definicion: cotisationsCnas, contenido: contenidoCotisationsCnas, cliente: () => import("./calculadoras/cotisations-cnas.cliente") },
+    { definicion: coutEmployeur, contenido: contenidoCoutEmployeur, cliente: () => import("./calculadoras/cout-employeur.cliente") },
+    { definicion: snmgAlgerie, contenido: contenidoSnmgAlgerie, cliente: () => import("./calculadoras/snmg-algerie.cliente") },
+    { definicion: calculTva, contenido: contenidoCalculTva, cliente: () => import("./calculadoras/calcul-tva.cliente") },
+    { definicion: heuresSupplementaires, contenido: contenidoHeuresSupplementaires, cliente: () => import("./calculadoras/heures-supplementaires.cliente") },
+  ],
+  universales: "todas",
+  novedades,
+  detectores,
+});
