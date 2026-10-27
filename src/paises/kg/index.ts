@@ -14,6 +14,16 @@ import minimalnayaZarplata from "./calculadoras/minimalnaya-zarplata";
 import contenidoMinimalnayaZarplata from "./contenido/minimalnaya-zarplata";
 import raschetnyyPokazatel from "./calculadoras/raschetnyy-pokazatel";
 import contenidoRaschetnyyPokazatel from "./contenido/raschetnyy-pokazatel";
+import kalkulyatorNds from "./calculadoras/kalkulyator-nds";
+import contenidoKalkulyatorNds from "./contenido/kalkulyator-nds";
+import nalogSProdazh from "./calculadoras/nalog-s-prodazh";
+import contenidoNalogSProdazh from "./contenido/nalog-s-prodazh";
+import edinyyNalog from "./calculadoras/edinyy-nalog";
+import contenidoEdinyyNalog from "./contenido/edinyy-nalog";
+import nalogNaPribyl from "./calculadoras/nalog-na-pribyl";
+import contenidoNalogNaPribyl from "./contenido/nalog-na-pribyl";
+import penyaPoNalogam from "./calculadoras/penya-po-nalogam";
+import contenidoPenyaPoNalogam from "./contenido/penya-po-nalogam";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -33,6 +43,11 @@ export default definirPais({
     { definicion: nalogiRabotodatelya, contenido: contenidoNalogiRabotodatelya, cliente: () => import("./calculadoras/nalogi-rabotodatelya.cliente") },
     { definicion: minimalnayaZarplata, contenido: contenidoMinimalnayaZarplata, cliente: () => import("./calculadoras/minimalnaya-zarplata.cliente") },
     { definicion: raschetnyyPokazatel, contenido: contenidoRaschetnyyPokazatel, cliente: () => import("./calculadoras/raschetnyy-pokazatel.cliente") },
+    { definicion: kalkulyatorNds, contenido: contenidoKalkulyatorNds, cliente: () => import("./calculadoras/kalkulyator-nds.cliente") },
+    { definicion: nalogSProdazh, contenido: contenidoNalogSProdazh, cliente: () => import("./calculadoras/nalog-s-prodazh.cliente") },
+    { definicion: edinyyNalog, contenido: contenidoEdinyyNalog, cliente: () => import("./calculadoras/edinyy-nalog.cliente") },
+    { definicion: nalogNaPribyl, contenido: contenidoNalogNaPribyl, cliente: () => import("./calculadoras/nalog-na-pribyl.cliente") },
+    { definicion: penyaPoNalogam, contenido: contenidoPenyaPoNalogam, cliente: () => import("./calculadoras/penya-po-nalogam.cliente") },
   ],
   universales: "todas",
   novedades,
