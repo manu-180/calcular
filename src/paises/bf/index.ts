@@ -16,6 +16,14 @@ import preavis from "./calculadoras/preavis";
 import contenidoPreavis from "./contenido/preavis";
 import periodeDEssai from "./calculadoras/periode-d-essai";
 import contenidoPeriodeDEssai from "./contenido/periode-d-essai";
+import congesPayes from "./calculadoras/conges-payes";
+import contenidoCongesPayes from "./contenido/conges-payes";
+import congeMaternite from "./calculadoras/conge-maternite";
+import contenidoCongeMaternite from "./contenido/conge-maternite";
+import indemniteMaladie from "./calculadoras/indemnite-maladie";
+import contenidoIndemniteMaladie from "./contenido/indemnite-maladie";
+import ruptureIrreguliere from "./calculadoras/rupture-irreguliere";
+import contenidoRuptureIrreguliere from "./contenido/rupture-irreguliere";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -38,6 +46,10 @@ export default definirPais({
     { definicion: calculTva, contenido: contenidoCalculTva, cliente: () => import("./calculadoras/calcul-tva.cliente") },
     { definicion: preavis, contenido: contenidoPreavis, cliente: () => import("./calculadoras/preavis.cliente") },
     { definicion: periodeDEssai, contenido: contenidoPeriodeDEssai, cliente: () => import("./calculadoras/periode-d-essai.cliente") },
+    { definicion: congesPayes, contenido: contenidoCongesPayes, cliente: () => import("./calculadoras/conges-payes.cliente") },
+    { definicion: congeMaternite, contenido: contenidoCongeMaternite, cliente: () => import("./calculadoras/conge-maternite.cliente") },
+    { definicion: indemniteMaladie, contenido: contenidoIndemniteMaladie, cliente: () => import("./calculadoras/indemnite-maladie.cliente") },
+    { definicion: ruptureIrreguliere, contenido: contenidoRuptureIrreguliere, cliente: () => import("./calculadoras/rupture-irreguliere.cliente") },
   ],
   universales: "todas",
 });
