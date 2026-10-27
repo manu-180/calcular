@@ -30,6 +30,18 @@ import vatCalculator from "./calculadoras/vat-calculator";
 import contenidoVatCalculator from "./contenido/vat-calculator";
 import turnoverTaxCalculator from "./calculadoras/turnover-tax-calculator";
 import contenidoTurnoverTaxCalculator from "./contenido/turnover-tax-calculator";
+import rentalIncomeTaxCalculator from "./calculadoras/rental-income-tax-calculator";
+import contenidoRentalIncomeTaxCalculator from "./contenido/rental-income-tax-calculator";
+import propertyTransferTaxCalculator from "./calculadoras/property-transfer-tax-calculator";
+import contenidoPropertyTransferTaxCalculator from "./contenido/property-transfer-tax-calculator";
+import mobileMoneyLevyCalculator from "./calculadoras/mobile-money-levy-calculator";
+import contenidoMobileMoneyLevyCalculator from "./contenido/mobile-money-levy-calculator";
+import presumptiveTaxCalculator from "./calculadoras/presumptive-tax-calculator";
+import contenidoPresumptiveTaxCalculator from "./contenido/presumptive-tax-calculator";
+import dollarToKwacha from "./calculadoras/dollar-to-kwacha";
+import contenidoDollarToKwacha from "./contenido/dollar-to-kwacha";
+import inflationCalculator from "./calculadoras/inflation-calculator";
+import contenidoInflationCalculator from "./contenido/inflation-calculator";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -57,6 +69,12 @@ export default definirPais({
     { definicion: maternityLeaveCalculator, contenido: contenidoMaternityLeaveCalculator, cliente: () => import("./calculadoras/maternity-leave-calculator.cliente") },
     { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
     { definicion: turnoverTaxCalculator, contenido: contenidoTurnoverTaxCalculator, cliente: () => import("./calculadoras/turnover-tax-calculator.cliente") },
+    { definicion: rentalIncomeTaxCalculator, contenido: contenidoRentalIncomeTaxCalculator, cliente: () => import("./calculadoras/rental-income-tax-calculator.cliente") },
+    { definicion: propertyTransferTaxCalculator, contenido: contenidoPropertyTransferTaxCalculator, cliente: () => import("./calculadoras/property-transfer-tax-calculator.cliente") },
+    { definicion: mobileMoneyLevyCalculator, contenido: contenidoMobileMoneyLevyCalculator, cliente: () => import("./calculadoras/mobile-money-levy-calculator.cliente") },
+    { definicion: presumptiveTaxCalculator, contenido: contenidoPresumptiveTaxCalculator, cliente: () => import("./calculadoras/presumptive-tax-calculator.cliente") },
+    { definicion: dollarToKwacha, contenido: contenidoDollarToKwacha, cliente: () => import("./calculadoras/dollar-to-kwacha.cliente") },
+    { definicion: inflationCalculator, contenido: contenidoInflationCalculator, cliente: () => import("./calculadoras/inflation-calculator.cliente") },
   ],
   universales: "todas",
   novedades,
