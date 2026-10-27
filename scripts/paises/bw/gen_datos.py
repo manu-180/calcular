@@ -220,6 +220,28 @@ datos = [
         "tramos": [ver("2026-07-01", 15, dict(ITA, nota="Section 28 (5): 15 per cent of taxable income."))],
     },
     {
+        "id": "bw.housing-benefit-rates",
+        "nombre": "Yearly value of employer-owned housing",
+        "tipo": "mapa",
+        "unidad": "%",
+        "etiquetas": {"rateable": "Rateable property (share of rateable value)", "not-rateable": "Not rateable (share of capital valuation)"},
+        "tramos": [ver("2026-07-01", {"rateable": 10, "not-rateable": 8}, dict(TT, nota="Part III, Income Tax Regulations (employment), regulations 19 (1) and 20 (1)."))],
+    },
+    {
+        "id": "bw.housing-capital-factor",
+        "nombre": "Capital valuation per square metre of floor area for housing that is not rateable",
+        "tipo": "numero",
+        "unidad": "BWP",
+        "tramos": [ver("2026-07-01", 2500, dict(TT, nota="Part III, regulation 20 (2). The Commissioner General can lower it to no less than P1 700."))],
+    },
+    {
+        "id": "bw.housing-benefit-cap",
+        "nombre": "Cap on the housing benefit as a share of employment income above P58 600",
+        "tipo": "numero",
+        "unidad": "%",
+        "tramos": [ver("2026-07-01", 27.5, dict(TT, nota="Housing Benefit Table (tax year 2027 onwards), regulation 22: above P58 600 the benefit is 27.5% of income."))],
+    },
+    {
         "id": "bw.car-benefit-rate",
         "nombre": "Yearly value of a company car as a share of its cost",
         "tipo": "numero",

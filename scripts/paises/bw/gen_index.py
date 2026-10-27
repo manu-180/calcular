@@ -7,7 +7,7 @@ RAIZ = pathlib.Path(__file__).resolve().parents[3]
 BW = RAIZ / "src" / "paises" / "bw"
 ORDEN = [
     "take-home-pay", "paye-calculator", "bonus-tax-calculator", "gratuity-tax-calculator",
-    "pension-lump-sum-tax", "pension-tax-relief", "company-car-benefit", "tax-free-salary-gross-up",
+    "part-year-tax-calculator", "pension-lump-sum-tax", "pension-tax-relief", "company-car-benefit", "housing-benefit-calculator", "tax-free-salary-gross-up",
     "vat-calculator", "company-tax-calculator", "withholding-tax-calculator", "capital-gains-tax",
     "inflation-calculator", "minimum-wage", "overtime-calculator", "annual-leave", "notice-period",
     "transfer-duty",
