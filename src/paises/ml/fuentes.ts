@@ -52,19 +52,22 @@ async function documentsDgi(http: Http, depuis: FechaISO): Promise<HallazgoNorma
 }
 
 // Le SGG met en ligne chaque numéro du Journal officiel sous JO/<année>/mali-jo-<année>-<numéro>.pdf.
-// On signale les numéros de l'année plus récents que le dernier lu lors de la vérification des données.
+// On signale les numéros plus récents que le dernier lu lors de la vérification des données, y compris
+// ceux des années suivantes.
 async function journauxOfficiels(http: Http, annee: number, dernierLu: number): Promise<HallazgoNorma[] | null> {
   const page = await http.texto(SGG_JO, { userAgentNavegador: true });
-  const numeros = [...page.matchAll(new RegExp(`JO/${annee}/mali-jo-${annee}-(\\d+)[^"']*\\.pdf`, "g"))];
-  if (numeros.length === 0) return null;
+  const numeros = [...page.matchAll(/JO\/(\d{4})\/mali-jo-\1-(\d+)[^"']*\.pdf/g)];
+  if (!numeros.some((m) => Number(m[1]) === annee)) return null;
   const aujourdhui = new Date().toISOString().slice(0, 10);
   if (!esFechaISO(aujourdhui)) return null;
   const vus = new Set<string>();
   const hallazgos: HallazgoNorma[] = [];
   for (const m of numeros) {
-    if (Number(m[1]) <= dernierLu || vus.has(m[0])) continue;
+    const an = Number(m[1]);
+    const numero = Number(m[2]);
+    if (an < annee || (an === annee && numero <= dernierLu) || vus.has(m[0])) continue;
     vus.add(m[0]);
-    hallazgos.push({ titulo: `Journal officiel du Mali ${annee}, n° ${Number(m[1])}`, url: `https://sgg-mali.ml/${m[0]}`, fecha: aujourdhui });
+    hallazgos.push({ titulo: `Journal officiel du Mali ${an}, n° ${numero}`, url: `https://sgg-mali.ml/${m[0]}`, fecha: aujourdhui });
   }
   return hallazgos;
 }
