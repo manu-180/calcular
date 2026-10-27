@@ -36,10 +36,14 @@ import smallBusinessTax from "./calculadoras/small-business-tax";
 import contenidoSmallBusinessTax from "./contenido/small-business-tax";
 import sshfcContribution from "./calculadoras/sshfc-contribution";
 import contenidoSshfcContribution from "./contenido/sshfc-contribution";
+import sshfcLatePenalty from "./calculadoras/sshfc-late-penalty";
+import contenidoSshfcLatePenalty from "./contenido/sshfc-late-penalty";
 import takeHomePay from "./calculadoras/take-home-pay";
 import contenidoTakeHomePay from "./contenido/take-home-pay";
 import vatCalculator from "./calculadoras/vat-calculator";
 import contenidoVatCalculator from "./contenido/vat-calculator";
+import vatRegistration from "./calculadoras/vat-registration";
+import contenidoVatRegistration from "./contenido/vat-registration";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -70,8 +74,10 @@ export default definirPais({
     { definicion: severancePay, contenido: contenidoSeverancePay, cliente: () => import("./calculadoras/severance-pay.cliente") },
     { definicion: smallBusinessTax, contenido: contenidoSmallBusinessTax, cliente: () => import("./calculadoras/small-business-tax.cliente") },
     { definicion: sshfcContribution, contenido: contenidoSshfcContribution, cliente: () => import("./calculadoras/sshfc-contribution.cliente") },
+    { definicion: sshfcLatePenalty, contenido: contenidoSshfcLatePenalty, cliente: () => import("./calculadoras/sshfc-late-penalty.cliente") },
     { definicion: takeHomePay, contenido: contenidoTakeHomePay, cliente: () => import("./calculadoras/take-home-pay.cliente") },
     { definicion: vatCalculator, contenido: contenidoVatCalculator, cliente: () => import("./calculadoras/vat-calculator.cliente") },
+    { definicion: vatRegistration, contenido: contenidoVatRegistration, cliente: () => import("./calculadoras/vat-registration.cliente") },
   ],
   universales: "todas",
   novedades,

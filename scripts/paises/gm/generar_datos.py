@@ -130,6 +130,7 @@ datos = [
     numero("gm.vat-voluntary-threshold", "Taxable supplies a year from which voluntary VAT registration is allowed", "GMD", 1000000, GRA_VAT),
     numero("gm.npf-employee-rate", "National Provident Fund contribution deducted from the employee", "%", 5, SSHFC_NPF),
     numero("gm.npf-employer-rate", "National Provident Fund contribution paid by the employer", "%", 10, SSHFC_NPF),
+    numero("gm.npf-late-penalty-rate", "Penalty on late SSHFC contributions for each month or part of a month", "%", 2.5, SSHFC_NPF),
     numero("gm.fps-rate", "Federated Pension Scheme contribution paid by the employer", "%", 15, SSHFC_FPS),
     numero("gm.iicf-rate", "Industrial Injuries Compensation Fund contribution paid by the employer", "%", 1, SSHFC_IICF),
     numero("gm.iicf-cap", "Maximum Industrial Injuries Compensation Fund contribution a month", "GMD", 15, SSHFC_IICF, nota="La página dice «maximum contribution ceiling of D15»; las contribuciones se pagan cada mes."),
