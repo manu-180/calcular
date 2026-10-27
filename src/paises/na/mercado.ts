@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   monedas: ["NAD"],
   simbolos: { NAD: "N$" },
   zonaHoraria: "Africa/Windhoek",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 18,
 };
