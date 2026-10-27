@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "id.kalkulator-pesangon",
   h1: "Kalkulator Pesangon",
-  title: "Kalkulator Pesangon 2026: hitung pesangon PHK (PP 35/2021)",
+  title: "Kalkulator Pesangon {{anio}}: hitung pesangon PHK (PP 35/2021)",
   description: "Hitung uang pesangon, uang penghargaan masa kerja dan uang penggantian hak saat PHK, dengan pengali sesuai alasan PHK di PP 35/2021.",
   intro: [
     "Saat terjadi pemutusan hubungan kerja (PHK), pengusaha wajib membayar uang pesangon dan/atau uang penghargaan masa kerja, ditambah uang penggantian hak.",

@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.capital-gains-tax",
   h1: "Calculadora del impuesto sobre ganancias de capital",
-  title: "Impuesto sobre ganancias de capital 2026: 0%, 15% y 20%",
-  description: "Calcula el impuesto federal por vender acciones, fondos o propiedades en 2026: tasas de 0%, 15% y 20%, corto plazo e impuesto de inversión de 3.8%.",
+  title: "Impuesto sobre ganancias de capital {{anio}}: 0%, 15% y 20%",
+  description: "Calcula el impuesto federal por vender acciones, fondos o propiedades en {{anio}}: tasas de 0%, 15% y 20%, corto plazo e impuesto de inversión de 3.8%.",
   intro: [
     "Cuando vendes una inversión por más de lo que pagaste, la ganancia es una ganancia de capital. Cómo se grava depende de cuánto tiempo la tuviste y del resto de tus ingresos.",
     "Escribe la ganancia, tus otros ingresos tributables y tu estado civil para ver el impuesto federal.",

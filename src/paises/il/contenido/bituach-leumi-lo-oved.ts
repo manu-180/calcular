@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.bituach-leumi-lo-oved",
   h1: "מחשבון ביטוח לאומי למי שלא עובד",
-  title: "ביטוח לאומי למי שלא עובד 2026: כמה משלמים בחודש",
+  title: "ביטוח לאומי למי שלא עובד {{anio}}: כמה משלמים בחודש",
   description:
     "כמה ביטוח לאומי ובריאות משלם מי שלא עובד: מינימום של {{il.bl-lo-oved-schumim[minimum-bl]}} ועוד {{il.bl-lo-oved-schumim[minimum-briut]}} בחודש, או אחוז מההכנסה שלא מעבודה כמו שכר דירה.",
   intro: [

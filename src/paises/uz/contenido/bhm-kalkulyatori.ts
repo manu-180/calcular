@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uz.bhm-kalkulyatori",
   h1: "BHM kalkulyatori: bazaviy hisoblash miqdori {{uz.bhm}}",
-  title: "BHM 2026: 1 BHM = {{uz.bhm}}, jarimani hisoblang",
+  title: "BHM {{anio}}: 1 BHM = {{uz.bhm}}, jarimani hisoblang",
   description:
     "Bazaviy hisoblash miqdori {{uz.bhm#desde}} sanasidan {{uz.bhm}}. BHMda belgilangan jarima, yigʻim va bojni soʻmga yoki summani BHMga oʻtkazing.",
   intro: [

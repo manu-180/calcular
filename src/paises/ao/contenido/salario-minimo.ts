@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ao.salario-minimo",
   h1: "Salário mínimo nacional em Angola",
-  title: "Salário mínimo em Angola 2026: {{ao.salario-minimo}}",
+  title: "Salário mínimo em Angola {{anio}}: {{ao.salario-minimo}}",
   description: "O salário mínimo nacional é {{ao.salario-minimo}} por mês desde {{ao.salario-minimo#desde}}. Nas micro-empresas e startups é {{ao.salario-minimo-micro}}. Veja o valor por hora.",
   intro: [
     "O salário mínimo nacional é a soma mínima que um trabalhador deve receber por um mês de trabalho. Desde {{ao.salario-minimo#desde}} é {{ao.salario-minimo}}.",

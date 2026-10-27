@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "do.regalia-pascual",
-  h1: "Calculadora de regalía pascual 2026",
-  title: "Regalía pascual 2026: calcula tu salario de Navidad",
+  h1: "Calculadora de regalía pascual {{anio}}",
+  title: "Regalía pascual {{anio}}: calcula tu salario de Navidad",
   description:
     "Calcula tu regalía pascual o doble sueldo: lo que ganaste en el año entre 12, con el tope de {{do.tope-regalia}} salarios mínimos. También si entraste o saliste este año.",
   intro: [

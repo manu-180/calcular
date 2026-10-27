@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be.rsz-berekenen",
   h1: "RSZ berekenen: persoonlijke bijdrage en werkbonus",
-  title: "RSZ berekenen 2026: {{be.rsz-werknemer}} en de werkbonus",
+  title: "RSZ berekenen {{anio}}: {{be.rsz-werknemer}} en de werkbonus",
   description:
     "Bereken je persoonlijke RSZ-bijdrage van {{be.rsz-werknemer}}, de werkbonus voor lage lonen en de bijzondere bijdrage voor de sociale zekerheid, voor bedienden en arbeiders.",
   intro: [

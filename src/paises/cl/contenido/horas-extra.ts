@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.horas-extra",
-  h1: "Calculadora de horas extras 2026 en Chile",
-  title: "Calculadora de horas extras 2026 en Chile (ley 40 horas)",
+  h1: "Calculadora de horas extras {{anio}} en Chile",
+  title: "Calculadora de horas extras {{anio}} en Chile (ley 40 horas)",
   description:
     "Calcula el valor de tu hora extra con el recargo legal de {{cl.recargo-hora-extra}} y la jornada de {{cl.jornada-maxima}} semanales de la ley de 40 horas. Fórmula de la Dirección del Trabajo.",
   intro: [

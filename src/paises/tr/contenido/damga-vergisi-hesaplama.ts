@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.damga-vergisi-hesaplama",
-  h1: "Damga vergisi hesaplama 2026",
-  title: "Damga Vergisi Hesaplama 2026: Sözleşme ve Kira",
+  h1: "Damga vergisi hesaplama {{anio}}",
+  title: "Damga Vergisi Hesaplama {{anio}}: Sözleşme ve Kira",
   description:
-    "Sözleşme, kira sözleşmesi ve ücret makbuzlarının damga vergisini hesaplayın. Binde 9,48, binde 1,89 ve binde 7,59 oranları, 2026 üst sınırıyla.",
+    "Sözleşme, kira sözleşmesi ve ücret makbuzlarının damga vergisini hesaplayın. Binde 9,48, binde 1,89 ve binde 7,59 oranları, {{anio}} üst sınırıyla.",
   intro: [
     "Damga vergisi, belli bir parayı içeren sözleşmeler, kira sözleşmeleri ve makbuzlar gibi kağıtlardan alınır. Oran kağıdın türüne göre değişir.",
     "Kağıdın türünü ve tutarı seçin. Kira sözleşmesinde aylık kirayı ve sözleşme süresini girin; vergi süre boyunca ödenecek toplam kira üzerinden hesaplanır.",

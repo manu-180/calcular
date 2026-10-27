@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.ipi",
   h1: "Calculadora del IPI en República Dominicana",
-  title: "IPI 2026: calcula tu impuesto al patrimonio inmobiliario",
-  description: "Calcula el IPI 2026: {{do.ipi-tasa}} sobre el valor de tus inmuebles que pase de {{do.ipi-exento}}. Ves el impuesto del año y cada cuota.",
+  title: "IPI {{anio}}: calcula tu impuesto al patrimonio inmobiliario",
+  description: "Calcula el IPI {{anio}}: {{do.ipi-tasa}} sobre el valor de tus inmuebles que pase de {{do.ipi-exento}}. Ves el impuesto del año y cada cuota.",
   intro: [
     "El Impuesto al Patrimonio Inmobiliario (IPI) lo pagan las personas con viviendas y solares urbanos cuyo valor total pasa de un monto exento que se ajusta cada año.",
     "Pon el valor total de tus inmuebles y ves cuánto pagas en el año y en cada cuota.",

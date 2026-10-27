@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.sjukpenning",
   h1: "Räkna ut sjukpenning från Försäkringskassan",
-  title: "Sjukpenning 2026: räkna ut hur mycket du får per dag",
+  title: "Sjukpenning {{anio}}: räkna ut hur mycket du får per dag",
   description:
     "Räkna ut din sjukpenning per dag: {{se.sjukpenning[normal]}} procent av inkomsten upp till taket, och {{se.sjukpenning[fortsattning]}} procent efter ett år.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sa.end-of-service-calculator",
   h1: "حاسبة مكافأة نهاية الخدمة",
-  title: "حساب نهاية الخدمة: حاسبة مكافأة نهاية الخدمة 2026",
+  title: "حساب نهاية الخدمة: حاسبة مكافأة نهاية الخدمة {{anio}}",
   description:
     "احسب مكافأة نهاية الخدمة وفق نظام العمل السعودي: نصف راتب عن كل سنة من الخمس الأولى وراتب كامل عن كل سنة بعدها، مع حالات الاستقالة.",
   intro: [

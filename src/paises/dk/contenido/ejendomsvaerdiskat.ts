@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.ejendomsvaerdiskat",
   h1: "Beregn ejendomsværdiskat for din bolig",
-  title: "Ejendomsværdiskat 2026: beregn din boligskat",
+  title: "Ejendomsværdiskat {{anio}}: beregn din boligskat",
   description:
     "Beregn ejendomsværdiskatten af din ejerbolig: {{dk.ejendomsvaerdiskat-satser[alm]}} promille af {{dk.beskatningsgrundlag-andel}} af ejendomsværdien og mere over grænsen.",
   intro: [

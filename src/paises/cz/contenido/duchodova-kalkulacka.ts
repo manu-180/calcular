@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cz.duchodova-kalkulacka",
-  h1: "Důchodová kalkulačka 2026",
-  title: "Důchodová kalkulačka 2026: odhad starobního důchodu",
+  h1: "Důchodová kalkulačka {{anio}}",
+  title: "Důchodová kalkulačka {{anio}}: odhad starobního důchodu",
   description:
-    "Odhadněte výši starobního důchodu přiznaného v roce 2026: základní výměra {{cz.duchod-zakladni-vymera}}, procentní výměra z výdělků a let pojištění a výchovné.",
+    "Odhadněte výši starobního důchodu přiznaného v roce {{anio}}: základní výměra {{cz.duchod-zakladni-vymera}}, procentní výměra z výdělků a let pojištění a výchovné.",
   intro: [
     "Starobní důchod se skládá ze základní výměry, která je pro všechny stejná, a z procentní výměry, která závisí na výdělcích a délce pojištění.",
     "Kalkulačka odhadne důchod podle pravidel pro důchody přiznané v roce 2026, včetně prvního kroku důchodové reformy.",

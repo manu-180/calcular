@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hu.nettober-kalkulator",
   h1: "Nettó bér kalkulátor",
-  title: "Nettó bér kalkulátor 2026: bruttóból nettó kedvezményekkel",
+  title: "Nettó bér kalkulátor {{anio}}: bruttóból nettó kedvezményekkel",
   description:
     "Számold ki a nettó béredet a bruttóból: SZJA ({{hu.szja}}), TB-járulék ({{hu.tb-jarulek}}), családi kedvezmény, 25 év alattiak és anyák kedvezménye.",
   intro: [

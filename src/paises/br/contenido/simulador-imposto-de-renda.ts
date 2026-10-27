@@ -2,7 +2,7 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.imposto-de-renda-anual",
-  h1: "Simulador do imposto de renda 2027 (ano-calendário 2026)",
+  h1: "Simulador do imposto de renda 2027 (ano-calendário {{anio}})",
   title: "Simulador de imposto de renda: restituição ou a pagar",
   description: "Simule a declaração do IRPF de 2027: compare o modelo completo e o simplificado, aplique a nova redução anual e veja se terá imposto a pagar ou a restituir.",
   intro: [

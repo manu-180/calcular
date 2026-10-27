@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.finiquito",
   h1: "Calculadora de finiquito y beneficios sociales",
-  title: "Finiquito Bolivia 2026: calcule sus beneficios sociales",
-  description: "Calcule su finiquito 2026: indemnización, desahucio, aguinaldo y vacaciones, con el método del Ministerio de Trabajo. Por despido o por renuncia.",
+  title: "Finiquito Bolivia {{anio}}: calcule sus beneficios sociales",
+  description: "Calcule su finiquito {{anio}}: indemnización, desahucio, aguinaldo y vacaciones, con el método del Ministerio de Trabajo. Por despido o por renuncia.",
   intro: [
     "El finiquito en Bolivia reúne los beneficios sociales que se pagan al terminar el trabajo: indemnización por tiempo de servicios, desahucio si lo despidieron sin causa, aguinaldo por duodécimas y vacaciones.",
     "Elija cómo terminó la relación laboral, escriba su sueldo promedio y sus fechas.",

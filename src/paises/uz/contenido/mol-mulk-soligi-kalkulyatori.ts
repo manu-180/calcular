@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uz.mol-mulk-soligi-kalkulyatori",
   h1: "Mol-mulk soligʻi kalkulyatori (jismoniy shaxslar)",
-  title: "Mol-mulk soligʻi 2026: uy-joy va kvartira uchun hisoblash",
+  title: "Mol-mulk soligʻi {{anio}}: uy-joy va kvartira uchun hisoblash",
   description:
     "Uy, kvartira yoki noturar joy uchun mol-mulk soligʻini kadastr qiymatidan hisoblang: eng past stavka {{uz.mol-mulk-soligi[asosiy]}}, pensionerlarga 60 kv.m imtiyoz.",
   intro: [

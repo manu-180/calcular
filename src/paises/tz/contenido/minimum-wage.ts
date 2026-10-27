@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   "calculadora": "tz.minimum-wage",
-  "h1": "Minimum wage in Tanzania 2026",
-  "title": "Minimum wage Tanzania 2026 by sector",
-  "description": "Find the 2026 minimum wage for your sector in Tanzania. Sectors not listed have a minimum of {{tz.minimum-wage-monthly[other]}} a month.",
+  "h1": "Minimum wage in Tanzania {{anio}}",
+  "title": "Minimum wage Tanzania {{anio}} by sector",
+  "description": "Find the {{anio}} minimum wage for your sector in Tanzania. Sectors not listed have a minimum of {{tz.minimum-wage-monthly[other]}} a month.",
   "intro": [
     "A new minimum wage order for the private sector took effect on 1 January 2026. It sets a monthly, daily and hourly minimum for each sector.",
     "Choose your sector to see the minimum, and enter your wage if you want to compare."

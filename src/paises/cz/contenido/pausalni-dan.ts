@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cz.pausalni-dan",
-  h1: "Paušální daň 2026: kalkulačka pásma a úspory",
-  title: "Paušální daň 2026: pásmo, záloha a srovnání",
+  h1: "Paušální daň {{anio}}: kalkulačka pásma a úspory",
+  title: "Paušální daň {{anio}}: pásmo, záloha a srovnání",
   description:
     "Zjistěte, do kterého pásma paušální daně patříte, kolik zaplatíte měsíčně a za rok a jestli se vám paušální režim vyplatí proti běžnému přiznání.",
   intro: [

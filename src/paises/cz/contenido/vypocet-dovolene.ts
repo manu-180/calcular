@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.vypocet-dovolene",
   h1: "Výpočet dovolené v hodinách",
-  title: "Výpočet dovolené 2026: nárok v hodinách i dnech",
+  title: "Výpočet dovolené {{anio}}: nárok v hodinách i dnech",
   description:
     "Spočítejte nárok na dovolenou podle zákoníku práce: výměra {{cz.vymera-dovolene[zakladni]}}, krácení podle odpracovaných týdnů, zkrácený úvazek a převod hodin na dny.",
   intro: [

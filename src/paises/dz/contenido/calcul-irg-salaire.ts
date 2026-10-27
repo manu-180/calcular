@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.calcul-irg-salaire",
   h1: "Calcul de l'IRG sur salaire en Algérie",
-  title: "Calcul IRG salaire Algérie 2026 : barème et abattements",
+  title: "Calcul IRG salaire Algérie {{anio}} : barème et abattements",
   description:
     "Calculez l'IRG retenu sur votre salaire ou votre pension en Algérie : barème de l'article 104, abattement de {{dz.irg-abattement-taux}}, exonération et lissage.",
   intro: [

@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "de.steuerklassen-rechner",
   h1: "Steuerklassenrechner für Ehepaare",
-  title: "Steuerklassenrechner 2026: III/V oder IV/IV?",
+  title: "Steuerklassenrechner {{anio}}: III/V oder IV/IV?",
   description:
-    "Vergleichen Sie das gemeinsame Monatsnetto mit den Steuerklassen III/V, V/III und IV/IV. Mit Lohnsteuer 2026, Soli, Kirchensteuer und Sozialabgaben.",
+    "Vergleichen Sie das gemeinsame Monatsnetto mit den Steuerklassen III/V, V/III und IV/IV. Mit Lohnsteuer {{anio}}, Soli, Kirchensteuer und Sozialabgaben.",
   intro: [
     "Verheiratete und eingetragene Lebenspartner können ihre Steuerklassen wählen. Die Wahl entscheidet, wie viel jeden Monat netto ankommt.",
     "Tragen Sie beide Bruttogehälter ein. Der Rechner zeigt das gemeinsame Netto für jede Kombination und welche am meisten bringt.",

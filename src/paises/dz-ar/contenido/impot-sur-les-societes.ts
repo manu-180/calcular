@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.impot-sur-les-societes",
   h1: "حساب الضريبة على أرباح الشركات في الجزائر",
-  title: "الضريبة على أرباح الشركات في الجزائر 2026: النسب",
+  title: "الضريبة على أرباح الشركات في الجزائر {{anio}}: النسب",
   description:
     "احسب الضريبة على أرباح الشركات في الجزائر حسب النشاط: {{dz.ibs[production]}} أو {{dz.ibs[btph-tourisme]}} أو {{dz.ibs[autres]}}، و{{dz.ibs-reinvesti}} على الأرباح المعاد استثمارها.",
   intro: [

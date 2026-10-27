@@ -45,10 +45,10 @@ export function PieIntl({ ctx }: { ctx: ContextoSitio }) {
           { href: rutaIntl(m.codigo, "novedades"), label: t.footer.novedades },
         ]
       : []),
-    { href: rutaIntl("global", "sobre"), label: t.footer.sobre },
-    { href: rutaIntl("global", "contacto"), label: t.footer.contacto },
-    { href: rutaIntl("global", "privacidad"), label: t.footer.privacidad },
-    { href: rutaIntl("global", "terminos"), label: t.footer.terminos },
+    { href: rutaIntl(enPais ? m.codigo : "global", "sobre"), label: t.footer.sobre },
+    { href: rutaIntl(enPais ? m.codigo : "global", "contacto"), label: t.footer.contacto },
+    { href: rutaIntl(enPais ? m.codigo : "global", "privacidad"), label: t.footer.privacidad },
+    { href: rutaIntl(enPais ? m.codigo : "global", "terminos"), label: t.footer.terminos },
   ];
 
   return (
@@ -71,7 +71,7 @@ export function PieIntl({ ctx }: { ctx: ContextoSitio }) {
             </div>
             <p className="text-sm text-zinc-500">
               {t.shell.pie.escrito}{" "}
-              <a href={rutaIntl("global", "sobre")} className="font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-2 hover:text-emerald-700">
+              <a href={rutaIntl(enPais ? m.codigo : "global", "sobre")} className="font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-2 hover:text-emerald-700">
                 Manuel Navarro
               </a>
             </p>

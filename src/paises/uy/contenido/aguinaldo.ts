@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.aguinaldo",
   h1: "Calculadora de aguinaldo en Uruguay",
-  title: "Aguinaldo Uruguay 2026: calculá junio, diciembre o egreso",
+  title: "Aguinaldo Uruguay {{anio}}: calculá junio, diciembre o egreso",
   description: "Calculá tu aguinaldo de junio o diciembre, o el proporcional si te vas: la doceava parte de lo cobrado en el semestre, con horas extra y comisiones. Gratis.",
   intro: [
     "El aguinaldo en Uruguay es la doceava parte de todo lo que cobraste en dinero. Se paga en dos cuotas: en junio (lo generado de diciembre a mayo) y en diciembre (lo de junio a noviembre).",

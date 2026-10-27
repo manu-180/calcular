@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.licencia-por-maternidad",
   h1: "Calculadora de licencia por maternidad en El Salvador",
-  title: "Licencia por maternidad El Salvador: fechas y pago 2026",
+  title: "Licencia por maternidad El Salvador: fechas y pago {{anio}}",
   description: "Calcule cuándo empieza y termina su licencia por maternidad de {{sv.maternidad-dias}} y cuánto le pagan el ISSS y su patrono.",
   intro: [
     "La licencia por maternidad dura {{sv.maternidad-dias}} (16 semanas). {{sv.maternidad-semanas-posparto}} de esas semanas se toman obligatoriamente después del parto.",

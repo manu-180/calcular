@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sg.buyer-stamp-duty",
   h1: "Buyer's Stamp Duty calculator",
-  title: "Buyer's Stamp Duty (BSD) calculator Singapore 2026",
+  title: "Buyer's Stamp Duty (BSD) calculator Singapore {{anio}}",
   description: "Work out the Buyer's Stamp Duty on a home, HDB flat or commercial property in Singapore, with the IRAS rates from 15 February 2023.",
   intro: [
     "Buyer's Stamp Duty (BSD) is paid on the documents you sign when you buy property in Singapore, including HDB flats.",

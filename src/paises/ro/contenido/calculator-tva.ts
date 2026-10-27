@@ -2,7 +2,7 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.calculator-tva",
-  h1: "Calculator TVA 2026",
+  h1: "Calculator TVA {{anio}}",
   title: "Calculator TVA {{ro.tva[standard]}} și {{ro.tva[redusa]}}: adăugați sau scoateți TVA",
   description:
     "Adăugați TVA la un preț sau scoateți TVA dintr-un preț cu taxa inclusă. Cota standard este {{ro.tva[standard]}}, iar cota redusă {{ro.tva[redusa]}}.",

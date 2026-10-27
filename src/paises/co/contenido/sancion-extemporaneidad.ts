@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.sancion-extemporaneidad",
   h1: "Calculadora de sanción por extemporaneidad",
-  title: "Sanción por declarar renta tarde 2026",
+  title: "Sanción por declarar renta tarde {{anio}}",
   description:
     "Calcula la sanción por presentar tarde una declaración: {{co.sancion-extemporaneidad[impuesto-mes]}} del impuesto por mes, con la sanción mínima de {{co.sancion-minima}} y las reducciones.",
   intro: [

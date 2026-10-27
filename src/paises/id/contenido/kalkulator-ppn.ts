@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "id.kalkulator-ppn",
   h1: "Kalkulator PPN {{id.ppn-tarif}}",
-  title: "Kalkulator PPN {{id.ppn-tarif}} 2026: DPP nilai lain dan barang mewah",
+  title: "Kalkulator PPN {{id.ppn-tarif}} {{anio}}: DPP nilai lain dan barang mewah",
   description: "Tambahkan atau pisahkan PPN dari harga. Barang dan jasa umum memakai DPP nilai lain {{id.ppn-dpp-pembilang}}/{{id.ppn-dpp-penyebut}}, barang mewah memakai harga jual. Sesuai PMK 131/2024.",
   intro: [
     "Tarif PPN sejak {{id.ppn-tarif#desde}} adalah {{id.ppn-tarif}}, tetapi untuk sebagian besar barang dan jasa dasar pengenaannya hanya {{id.ppn-dpp-pembilang}}/{{id.ppn-dpp-penyebut}} dari harga jual. Kolom tarif efektif di hasil menunjukkan beban PPN yang sebenarnya.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "id.kalkulator-zakat-penghasilan",
   h1: "Kalkulator Zakat Penghasilan",
-  title: "Kalkulator Zakat Penghasilan 2026: nisab dan cara menghitung",
+  title: "Kalkulator Zakat Penghasilan {{anio}}: nisab dan cara menghitung",
   description: "Hitung zakat penghasilan per bulan dari penghasilan bruto dan cek apakah penghasilan Anda sudah mencapai nisab yang ditetapkan BAZNAS.",
   intro: [
     "Zakat penghasilan dibayar dari penghasilan yang sudah mencapai nisab.",

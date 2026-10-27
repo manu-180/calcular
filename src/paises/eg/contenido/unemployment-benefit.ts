@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.unemployment-benefit",
   h1: "حساب تعويض البطالة من التأمينات",
-  title: "حساب تعويض البطالة 2026 بقانون التأمينات الجديد",
+  title: "حساب تعويض البطالة {{anio}} بقانون التأمينات الجديد",
   description:
     "تعويض البطالة يبدأ بنسبة {{eg.unemployment-rates[w1]}} من أجر الاشتراك الأخير ثم يقل كل أربعة أسابيع، لمدة {{eg.unemployment-weeks[normal]}} أو {{eg.unemployment-weeks[extendida]}}.",
   intro: [

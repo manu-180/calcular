@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.perintoverolaskuri",
   h1: "Perintöverolaskuri: paljonko perintöveroa maksat",
-  title: "Perintöverolaskuri 2026: laske perintövero",
+  title: "Perintöverolaskuri {{anio}}: laske perintövero",
   description:
-    "Laske perintövero perintöosuudestasi veroluokan I tai II mukaan. Vuodesta 2026 alle {{fi.perintovero-1[1].desde}} perintöosuus on verovapaa.",
+    "Laske perintövero perintöosuudestasi veroluokan I tai II mukaan. Vuodesta {{anio}} alle {{fi.perintovero-1[1].desde}} perintöosuus on verovapaa.",
   intro: [
     "Perintövero lasketaan jokaisen perillisen omasta perintöosuudesta. Syötä osuutesi arvo ja valitse veroluokka, niin laskuri näyttää veron.",
     "Veroluokka riippuu sukulaisuudesta. Lähimmät sukulaiset maksavat vähemmän kuin muut perilliset.",

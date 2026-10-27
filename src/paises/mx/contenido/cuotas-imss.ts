@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.cuotas-imss",
-  h1: "Calculadora de cuotas obrero patronales del IMSS 2026",
-  title: "Cuotas IMSS 2026: obrero, patronal e Infonavit",
+  h1: "Calculadora de cuotas obrero patronales del IMSS {{anio}}",
+  title: "Cuotas IMSS {{anio}}: obrero, patronal e Infonavit",
   description:
-    "Calcula las cuotas obrero patronales del IMSS, el retiro, la cesantía y el Infonavit de un sueldo, con la tabla de cesantía de 2026 y la UMA vigente.",
+    "Calcula las cuotas obrero patronales del IMSS, el retiro, la cesantía y el Infonavit de un sueldo, con la tabla de cesantía de {{anio}} y la UMA vigente.",
   intro: [
     "Cada mes la empresa paga al IMSS una parte por cada trabajador y le descuenta otra del sueldo. Con esta calculadora ves las dos, más el retiro, la cesantía y vejez y la aportación al Infonavit.",
     "Usa el salario base de cotización (SBC) de tu recibo. Si no lo tienes, lo estimamos con el aguinaldo y la prima vacacional de ley.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.katotatos-misthos",
   h1: "Cyprus minimum wage",
-  title: "Cyprus minimum wage 2026: {{cy.katotatos-misthos}} gross",
+  title: "Cyprus minimum wage {{anio}}: {{cy.katotatos-misthos}} gross",
   description: "The national minimum wage is {{cy.katotatos-misthos}} a month, or {{cy.katotatos-misthos-proslipsis}} for the first six months. See net pay and part-time amounts.",
   intro: [
     "From 1 January 2026 the monthly minimum wage for full-time work is {{cy.katotatos-misthos}}. Workers with less than six months at the same employer can be paid {{cy.katotatos-misthos-proslipsis}}.",

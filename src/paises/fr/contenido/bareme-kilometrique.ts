@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "fr.bareme-kilometrique",
-  h1: "Barème kilométrique 2026 : calcul des frais réels",
-  title: "Barème kilométrique 2026 : calcul des frais kilométriques",
+  h1: "Barème kilométrique {{anio}} : calcul des frais réels",
+  title: "Barème kilométrique {{anio}} : calcul des frais kilométriques",
   description:
     "Calculez vos frais kilométriques avec le barème fiscal des revenus 2025 : selon la puissance (CV), les kilomètres et le barème des voitures électriques.",
   intro: [

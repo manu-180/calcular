@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ro.cost-total-angajator",
   h1: "Calculator cost total angajator",
-  title: "Cost total angajator 2026: salariu brut și CAM",
+  title: "Cost total angajator {{anio}}: salariu brut și CAM",
   description:
     "Calculați cât costă un angajat pentru firmă: salariul brut plus contribuția asiguratorie pentru muncă (CAM) de {{ro.cam}}, pe lună și pe an.",
   intro: [

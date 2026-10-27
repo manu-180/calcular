@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.palkkalaskuri",
   h1: "Palkkalaskuri: nettopalkka bruttopalkasta",
-  title: "Palkkalaskuri 2026: paljonko palkasta jää käteen",
+  title: "Palkkalaskuri {{anio}}: paljonko palkasta jää käteen",
   description:
     "Laske nettopalkka bruttopalkasta. Mukana kotikunnan veroprosentti, kirkollisvero, työeläkemaksu {{fi.palkansaajan-maksut[tyel]}} ja työttömyysvakuutusmaksu.",
   intro: [

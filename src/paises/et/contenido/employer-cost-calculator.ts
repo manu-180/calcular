@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "et.employer-cost-calculator",
   h1: "Employer cost calculator Ethiopia",
-  title: "Employer cost of a salary in Ethiopia 2026",
+  title: "Employer cost of a salary in Ethiopia {{anio}}",
   description:
     "Work out what an employee really costs: gross salary plus the {{et.pension-employer}} employer pension contribution, with the tax and pension you withhold.",
   intro: [

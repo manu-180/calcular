@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.gastos-educativos",
   h1: "Calculadora de gastos educativos para el ISR",
-  title: "Gastos educativos 2026: calcula cuánto te devuelven",
+  title: "Gastos educativos {{anio}}: calcula cuánto te devuelven",
   description: "Calcula cuánto ISR te ahorras con los gastos educativos: hasta {{do.gastos-educativos-tope-ingreso}} de tu ingreso y {{do.gastos-educativos-tope-exento}} del mínimo exento, según la Ley 30-26.",
   intro: [
     "Si pagas colegio o universidad, puedes restar esos gastos de tu ingreso para el ISR. Eso baja tu impuesto del año.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ie.prsi-calculator",
   h1: "PRSI calculator for employees",
-  title: "PRSI calculator 2026: Class A employee PRSI",
+  title: "PRSI calculator {{anio}}: Class A employee PRSI",
   description: "Work out your Class A employee PRSI at {{ie.prsi-employee-rate}}, including the PRSI Credit on weekly pay between {{ie.prsi-weekly-thresholds[employee-starts]}} and {{ie.prsi-weekly-thresholds[credit-ends]}}.",
   intro: [
     "Pay Related Social Insurance (PRSI) builds your entitlement to the State Pension (Contributory), Jobseeker's Benefit, Illness Benefit and other payments.",

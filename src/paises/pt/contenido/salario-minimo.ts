@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.salario-minimo",
   h1: "Salário mínimo nacional",
-  title: "Salário mínimo nacional 2026: valor mensal, anual e à hora",
+  title: "Salário mínimo nacional {{anio}}: valor mensal, anual e à hora",
   description: "O salário mínimo nacional é de {{pt.rmmg}} por mês. Veja o valor anual com os subsídios, o valor por hora e o mínimo em tempo parcial.",
   intro: [
     "A retribuição mínima mensal garantida, conhecida como salário mínimo nacional, é de {{pt.rmmg}} desde {{pt.rmmg#desde}}.",

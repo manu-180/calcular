@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.finiquito",
-  h1: "Calculadora de finiquito 2026 por renuncia o despido",
-  title: "Calculadora de finiquito 2026: renuncia voluntaria",
+  h1: "Calculadora de finiquito {{anio}} por renuncia o despido",
+  title: "Calculadora de finiquito {{anio}}: renuncia voluntaria",
   description:
-    "Calcula tu finiquito 2026 con tus fechas de entrada y salida: días sin pagar, aguinaldo y vacaciones proporcionales, prima vacacional y de antigüedad. Gratis.",
+    "Calcula tu finiquito {{anio}} con tus fechas de entrada y salida: días sin pagar, aguinaldo y vacaciones proporcionales, prima vacacional y de antigüedad. Gratis.",
   intro: [
     "El finiquito es todo lo que tu empresa te debe cuando termina tu trabajo, renuncies o te despidan: días sin pagar, aguinaldo y vacaciones proporcionales y prima vacacional.",
     "Si te despidieron sin causa justificada, además te toca una indemnización. Eso es la liquidación, y tiene su propia calculadora.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.minimum-wage",
   h1: "الحد الأدنى للأجور في مصر",
-  title: "الحد الأدنى للأجور 2026 في مصر: القطاع الخاص والحكومة",
+  title: "الحد الأدنى للأجور {{anio}} في مصر: القطاع الخاص والحكومة",
   description:
     "الحد الأدنى للأجور في القطاع الخاص {{eg.min-wage-private}} شهريًا، وللعاملين بالدولة {{eg.min-income-public}}، ولأجر الساعة في العمل لبعض الوقت {{eg.min-wage-hourly}}.",
   intro: [

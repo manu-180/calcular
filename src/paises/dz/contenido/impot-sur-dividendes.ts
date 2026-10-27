@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.impot-sur-dividendes",
   h1: "Calcul de l'impôt sur les dividendes en Algérie",
-  title: "Impôt sur les dividendes Algérie 2026 : retenue de {{dz.irg-dividendes}}",
+  title: "Impôt sur les dividendes Algérie {{anio}} : retenue de {{dz.irg-dividendes}}",
   description:
-    "Calculez la retenue à la source sur les dividendes versés à un associé en Algérie : {{dz.irg-dividendes}} libératoire depuis la loi de finances pour 2026.",
+    "Calculez la retenue à la source sur les dividendes versés à un associé en Algérie : {{dz.irg-dividendes}} libératoire depuis la loi de finances pour {{anio}}.",
   intro: [
     "Les produits des actions et parts sociales, comme les dividendes, subissent une retenue d'IRG à la source au moment de leur distribution. La loi de finances pour 2026 a fixé ce taux à {{dz.irg-dividendes}}.",
     "Indiquez le montant brut distribué pour voir la retenue et le montant net perçu.",

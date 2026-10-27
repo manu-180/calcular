@@ -7,8 +7,25 @@ import { esFechaISO } from "./vigencia";
 import type { FechaISO, Moneda, ReglaRedondeo, Unidad } from "./tipos";
 import { esMoneda, UNIDADES_REFERENCIA } from "./tipos";
 
+// Un formateador por (locale, opciones), no por llamada: cada constructor de Intl arma un objeto ICU de
+// varios KB y rellenar() los pide miles de veces por página (ver fechaEnZona en vigencia.ts).
+const numeros = new Map<string, Intl.NumberFormat>();
+const fechas = new Map<string, Intl.DateTimeFormat>();
+function numero(locale: string, opciones: Intl.NumberFormatOptions): Intl.NumberFormat {
+  const clave = `${locale}|${JSON.stringify(opciones)}`;
+  let f = numeros.get(clave);
+  if (!f) numeros.set(clave, (f = new Intl.NumberFormat(locale, opciones)));
+  return f;
+}
+function fechaFmt(locale: string, opciones: Intl.DateTimeFormatOptions): Intl.DateTimeFormat {
+  const clave = `${locale}|${JSON.stringify(opciones)}`;
+  let f = fechas.get(clave);
+  if (!f) fechas.set(clave, (f = new Intl.DateTimeFormat(locale, opciones)));
+  return f;
+}
+
 export function decimalesDeMoneda(moneda: Moneda, locale: string): number {
-  return new Intl.NumberFormat(locale, { style: "currency", currency: moneda }).resolvedOptions().maximumFractionDigits ?? 2;
+  return numero(locale, { style: "currency", currency: moneda }).resolvedOptions().maximumFractionDigits ?? 2;
 }
 
 // Redondeo decimal sin el error binario de Math.round(x * 100) / 100 (1.005 da 1.00 con el truco
@@ -44,12 +61,7 @@ export function redondear(n: number, regla: ReglaRedondeo): number {
 // escribe "B/. 1,250.50"); el resto del formato sigue siendo el del locale.
 export function formatearMoneda(n: number, locale: string, moneda: Moneda, decimales?: number, simbolo?: string): string {
   const d = decimales ?? decimalesDeMoneda(moneda, locale);
-  const f = new Intl.NumberFormat(locale, {
-    style: "currency",
-    currency: moneda,
-    minimumFractionDigits: d,
-    maximumFractionDigits: d,
-  });
+  const f = numero(locale, { style: "currency", currency: moneda, minimumFractionDigits: d, maximumFractionDigits: d });
   if (!simbolo && !LOCALE_RTL.test(locale)) return f.format(n);
   return f
     .formatToParts(n)
@@ -70,23 +82,16 @@ export function minusculaInicial(s: string, locale: string): string {
 // decimales fija los decimales; sin él van de 0 a `maximo` (2 si no se dice: un monto en KWD o TND
 // lleva 3 y el formulario pasa los de la moneda para no perder el último).
 export function formatearNumero(n: number, locale: string, decimales?: number, maximo = 2): string {
-  return new Intl.NumberFormat(locale, {
-    minimumFractionDigits: decimales ?? 0,
-    maximumFractionDigits: decimales ?? Math.max(0, maximo),
-  }).format(n);
+  return numero(locale, { minimumFractionDigits: decimales ?? 0, maximumFractionDigits: decimales ?? Math.max(0, maximo) }).format(n);
 }
 
 export function formatearPorcentaje(porcentaje: number, locale: string, decimales = 2): string {
-  return new Intl.NumberFormat(locale, {
-    style: "percent",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: decimales,
-  }).format(porcentaje / 100);
+  return numero(locale, { style: "percent", minimumFractionDigits: 0, maximumFractionDigits: decimales }).format(porcentaje / 100);
 }
 
 // En francés el primer día del mes es ordinal («1er juin»); Intl escribe «1 juin».
 export function formatearFecha(fecha: FechaISO, locale: string, estilo: "larga" | "corta" = "larga"): string {
-  const f = new Intl.DateTimeFormat(locale, {
+  const f = fechaFmt(locale, {
     timeZone: "UTC",
     ...(estilo === "larga" ? { day: "numeric", month: "long", year: "numeric" } : { day: "2-digit", month: "2-digit", year: "numeric" }),
   });

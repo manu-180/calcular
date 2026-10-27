@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.momskalkylator",
   h1: "Momskalkylator: räkna ut moms",
-  title: "Momskalkylator 2026: räkna moms med 25, 12 och 6 procent",
+  title: "Momskalkylator {{anio}}: räkna moms med 25, 12 och 6 procent",
   description:
     "Lägg på moms eller räkna ut momsen i ett pris. Med {{se.momssatser[generell]}}, {{se.momssatser[restaurang]}} för restaurang och {{se.momssatser[livsmedel]}} för livsmedel.",
   intro: [

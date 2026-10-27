@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "it.tredicesima",
   h1: "Calcolo tredicesima",
-  title: "Calcolo tredicesima 2026: quanto ti spetta a dicembre",
+  title: "Calcolo tredicesima {{anio}}: quanto ti spetta a dicembre",
   description: "Calcola la tredicesima lorda in base alla retribuzione mensile e ai mesi lavorati nell'anno. Vale anche se hai iniziato o lasciato il lavoro a metà anno.",
   intro: [
     "La tredicesima è una mensilità in più che arriva con lo stipendio di dicembre. La prevedono i contratti collettivi nazionali.",

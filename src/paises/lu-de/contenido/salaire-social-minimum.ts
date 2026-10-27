@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu-de.salaire-social-minimum",
   h1: "Sozialer Mindestlohn in Luxemburg",
-  title: "Mindestlohn Luxemburg 2026: Beträge",
-  description: "Sozialer Mindestlohn in Luxemburg seit dem 1. Juni 2026: {{lu.ssm-non-qualifie}} unqualifiziert, {{lu.ssm-qualifie}} qualifiziert, Stundenlöhne und Jugendliche.",
+  title: "Mindestlohn Luxemburg {{anio}}: Beträge",
+  description: "Sozialer Mindestlohn in Luxemburg seit dem 1. Juni {{anio}}: {{lu.ssm-non-qualifie}} unqualifiziert, {{lu.ssm-qualifie}} qualifiziert, Stundenlöhne und Jugendliche.",
   intro: [
     "Der soziale Mindestlohn ist der niedrigste Lohn, den ein Arbeitgeber zahlen darf. Er beträgt {{lu.ssm-non-qualifie}} im Monat für einen unqualifizierten Arbeitnehmer ab 18 Jahren.",
     "Ein qualifizierter Arbeitnehmer hat Anspruch auf 20 % mehr, also {{lu.ssm-qualifie}}. Für Jugendliche ist der Mindestlohn niedriger.",

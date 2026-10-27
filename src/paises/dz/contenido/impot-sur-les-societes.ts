@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.impot-sur-les-societes",
   h1: "Calcul de l'IBS en Algérie",
-  title: "Calcul IBS Algérie 2026 : taux de {{dz.ibs[production]}}, {{dz.ibs[btph-tourisme]}}, {{dz.ibs[autres]}}",
+  title: "Calcul IBS Algérie {{anio}} : taux de {{dz.ibs[production]}}, {{dz.ibs[btph-tourisme]}}, {{dz.ibs[autres]}}",
   description:
     "Calculez l'impôt sur les bénéfices des sociétés en Algérie selon l'activité : {{dz.ibs[production]}}, {{dz.ibs[btph-tourisme]}} ou {{dz.ibs[autres]}}, et {{dz.ibs-reinvesti}} sur les bénéfices réinvestis.",
   intro: [

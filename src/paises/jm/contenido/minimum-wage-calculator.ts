@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jm.minimum-wage-calculator",
   h1: "Minimum wage calculator Jamaica",
-  title: "Minimum wage Jamaica 2026: {{jm.minimum-wage-weekly}} a week",
+  title: "Minimum wage Jamaica {{anio}}: {{jm.minimum-wage-weekly}} a week",
   description:
     "The national minimum wage in Jamaica is {{jm.minimum-wage-weekly}} for a 40-hour week, or {{jm.minimum-wage-hourly}} an hour, since {{jm.minimum-wage-weekly#desde}}. See your weekly, fortnightly and monthly minimum.",
   intro: [

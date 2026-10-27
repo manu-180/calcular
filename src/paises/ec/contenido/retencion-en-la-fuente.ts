@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.retencion-en-la-fuente",
   h1: "Calculadora de retención en la fuente del impuesto a la renta",
-  title: "Retención en la fuente 2026: porcentajes del SRI",
+  title: "Retención en la fuente {{anio}}: porcentajes del SRI",
   description: "Calcula la retención del impuesto a la renta de una factura con los porcentajes del SRI vigentes: honorarios {{ec.retencion-renta[honorarios]}}, bienes {{ec.retencion-renta[bienes]}} y más.",
   intro: [
     "Cuando una empresa o un agente de retención te paga una factura, se queda con una parte para el impuesto a la renta. Eso es la retención en la fuente.",

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "se.prisbasbelopp",
-  h1: "Prisbasbelopp 2026: räkna om till kronor",
-  title: "Prisbasbelopp 2026: {{se.prisbasbelopp}} och inkomstbasbelopp",
+  h1: "Prisbasbelopp {{anio}}: räkna om till kronor",
+  title: "Prisbasbelopp {{anio}}: {{se.prisbasbelopp}} och inkomstbasbelopp",
   description:
-    "Prisbasbeloppet för 2026 är {{se.prisbasbelopp}}, det förhöjda {{se.forhojt-prisbasbelopp}} och inkomstbasbeloppet {{se.inkomstbasbelopp}}. Räkna om basbelopp till kronor.",
+    "Prisbasbeloppet för {{anio}} är {{se.prisbasbelopp}}, det förhöjda {{se.forhojt-prisbasbelopp}} och inkomstbasbeloppet {{se.inkomstbasbelopp}}. Räkna om basbelopp till kronor.",
   intro: [
     "Många gränser i skatter och försäkringar anges i prisbasbelopp eller inkomstbasbelopp. Kalkylatorn räknar om ett antal basbelopp till kronor för 2026.",
     "Prisbasbeloppet följer prisutvecklingen och inkomstbasbeloppet följer inkomstutvecklingen. Båda fastställs för ett år i taget.",

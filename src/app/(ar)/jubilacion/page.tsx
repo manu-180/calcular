@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraJubilacion } from "@/components/CalculadoraJubilacion";
 import { JsonLd } from "@/components/JsonLd";
@@ -44,7 +45,7 @@ type DatosDelMes = ReturnType<typeof datosDelMes>;
 const metadataDelMes = ({ MES }: DatosDelMes): Metadata => ({
   title: `Jubilación ${MES}: cuánto cobrás con aumento y bono`,
   description: `Haber mínimo y bono de ${MES} según la resolución de ANSES. Poné tu haber real: si cobrás más que la mínima el bono se recorta, y acá ves cuánto.`,
-  alternates: { canonical: "/jubilacion" },
+  alternates: { canonical: "/jubilacion", languages: hreflangHeadAR("/jubilacion") },
   openGraph: {
     images: [
       {

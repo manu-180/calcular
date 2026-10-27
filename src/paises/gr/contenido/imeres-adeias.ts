@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gr.imeres-adeias",
   h1: "Υπολογισμός ημερών άδειας",
-  title: "Ημέρες άδειας 2026: πόσες δικαιούστε",
+  title: "Ημέρες άδειας {{anio}}: πόσες δικαιούστε",
   description:
     "Υπολογίστε τις ημέρες ετήσιας άδειας με αποδοχές: {{gr.imeres-adeias[5-1]}} έως {{gr.imeres-adeias[5-25]}} εργάσιμες στο πενθήμερο, ανάλογα με τα έτη στον εργοδότη και την προϋπηρεσία.",
   intro: [

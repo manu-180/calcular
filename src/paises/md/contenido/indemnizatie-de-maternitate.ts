@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "md.indemnizatie-de-maternitate",
   h1: "Calculator indemnizație de maternitate",
-  title: "Indemnizația de maternitate 2026: calculator CNAS",
-  description: "Calculați indemnizația de maternitate: {{md.maternitate-procent}} din venitul mediu lunar asigurat, pe {{md.maternitate-zile[normala]}}, cu plafonul din 2026.",
+  title: "Indemnizația de maternitate {{anio}}: calculator CNAS",
+  description: "Calculați indemnizația de maternitate: {{md.maternitate-procent}} din venitul mediu lunar asigurat, pe {{md.maternitate-zile[normala]}}, cu plafonul din {{anio}}.",
   intro: [
     "Femeile asigurate primesc în concediul de maternitate o indemnizație de la Casa Națională de Asigurări Sociale, în locul salariului.",
     "Calculatorul arată suma lunară și durata concediului.",

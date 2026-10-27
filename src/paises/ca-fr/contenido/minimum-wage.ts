@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.minimum-wage",
-  h1: "Salaire minimum au Québec et au Canada (2026)",
-  title: "Salaire minimum 2026 au Québec et par province",
+  h1: "Salaire minimum au Québec et au Canada ({{anio}})",
+  title: "Salaire minimum {{anio}} au Québec et par province",
   description: "Le salaire minimum en vigueur au Québec ({{ca.minimum-wage@qc}}) et dans chaque province et territoire, plus le minimum fédéral. Salaire par semaine, par mois et par année.",
   intro: [
     "Choisissez votre province ou votre territoire pour voir le salaire minimum général en vigueur aujourd'hui et ce qu'il représente par semaine, par mois et par année.",

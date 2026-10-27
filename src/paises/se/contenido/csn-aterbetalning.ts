@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.csn-aterbetalning",
   h1: "Räkna ut återbetalning av CSN-lån",
-  title: "CSN-lån 2026: räkna ut hur mycket du betalar per år",
+  title: "CSN-lån {{anio}}: räkna ut hur mycket du betalar per år",
   description:
-    "Räkna ut ungefär hur mycket du betalar tillbaka på ditt studielån varje år. Räntan 2026 är {{se.csn-ranta}} och lägsta årsbelopp 15 procent av prisbasbeloppet.",
+    "Räkna ut ungefär hur mycket du betalar tillbaka på ditt studielån varje år. Räntan {{anio}} är {{se.csn-ranta}} och lägsta årsbelopp 15 procent av prisbasbeloppet.",
   intro: [
     "Studielån som du har tagit efter juni 2001 är annuitetslån. Du betalar ett årsbelopp som ökar lite varje år tills lånet är betalt.",
     "Kalkylatorn visar ett ungefärligt årsbelopp, hur många år du betalar och vad lånet kostar i ränta.",

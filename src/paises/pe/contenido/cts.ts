@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.cts",
-  h1: "Calculadora de CTS noviembre 2026",
-  title: "Calculadora de CTS noviembre 2026: cuánto te depositan",
+  h1: "Calculadora de CTS noviembre {{anio}}",
+  title: "Calculadora de CTS noviembre {{anio}}: cuánto te depositan",
   description:
     "Calcula tu CTS de noviembre o de mayo: sueldo, asignación familiar y un sexto de tu gratificación, por los meses y días trabajados. Fórmula oficial del MTPE.",
   intro: [

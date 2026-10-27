@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.grundskyld",
   h1: "Beregn grundskyld i din kommune",
-  title: "Grundskyld 2026: beregn med din kommunes promille",
+  title: "Grundskyld {{anio}}: beregn med din kommunes promille",
   description:
-    "Beregn grundskylden af din grund med promillen i din kommune for 2026. I København er grundskylden {{dk.grundskyld[koebenhavn]}} promille af beskatningsgrundlaget.",
+    "Beregn grundskylden af din grund med promillen i din kommune for {{anio}}. I København er grundskylden {{dk.grundskyld[koebenhavn]}} promille af beskatningsgrundlaget.",
   intro: [
     "Grundskyld er en skat til kommunen af værdien af din grund. Promillen er forskellig fra kommune til kommune.",
     "Vælg din kommune og skriv enten grundværdien fra vurderingen eller beskatningsgrundlaget fra din ejendomsskattebillet.",

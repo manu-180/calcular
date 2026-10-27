@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ug.severance-pay-calculator",
   h1: "Severance pay calculator Uganda",
   title: "Severance pay calculator Uganda: 1 month per year",
-  description: "Work out your severance allowance in Uganda: {{ug.severance-months-per-year}} of salary for each year worked, under the Employment (Amendment) Act, 2026.",
+  description: "Work out your severance allowance in Uganda: {{ug.severance-months-per-year}} of salary for each year worked, under the Employment (Amendment) Act, {{anio}}.",
   intro: [
     "Since {{ug.severance-months-per-year#desde}}, the Employment Act sets severance allowance at one month's salary for each year worked.",
     "Enter your service, salary and the reason the job ended to see what you are owed.",

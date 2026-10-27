@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ua.rozrakhunok-vidpusknykh",
-  h1: "Розрахунок відпускних у 2026 році",
-  title: "Розрахунок відпускних 2026: калькулятор онлайн",
+  h1: "Розрахунок відпускних у {{anio}} році",
+  title: "Розрахунок відпускних {{anio}}: калькулятор онлайн",
   description:
     "Порахуйте відпускні за середньоденною зарплатою за 12 місяців: нараховану суму, ПДФО {{ua.pdfo}}, військовий збір {{ua.viiskovyi-zbir}} і суму на руки.",
   intro: [

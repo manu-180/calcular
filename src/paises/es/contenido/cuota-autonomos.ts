@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "es.cuota-autonomos",
-  h1: "Calculadora de la cuota de autónomos 2026",
-  title: "Cuota de autónomos 2026: calcula tu tramo y lo que pagas",
+  h1: "Calculadora de la cuota de autónomos {{anio}}",
+  title: "Cuota de autónomos {{anio}}: calcula tu tramo y lo que pagas",
   description:
-    "Calcula tu cuota de autónomos en 2026 según tus rendimientos netos: tramo, base mínima y máxima y cuota mensual, con las tablas de la orden de cotización.",
+    "Calcula tu cuota de autónomos en {{anio}} según tus rendimientos netos: tramo, base mínima y máxima y cuota mensual, con las tablas de la orden de cotización.",
   intro: [
     "Desde 2023 los autónomos cotizan según lo que ganan de verdad. Tus rendimientos netos te colocan en un tramo, y cada tramo tiene una base mínima y una máxima.",
     "Con esta calculadora ves en qué tramo estás en 2026 y cuánto pagas al mes según la base que elijas.",

@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.capital-gains-tax",
   h1: "Capital gains tax calculator",
-  title: "Capital Gains Tax Calculator 2026: 0%, 15% and 20% rates",
+  title: "Capital Gains Tax Calculator {{anio}}: 0%, 15% and 20% rates",
   description:
-    "Estimate the federal tax on selling stocks, funds or property in 2026: long-term rates of 0%, 15% and 20%, short-term gains and the 3.8% investment tax.",
+    "Estimate the federal tax on selling stocks, funds or property in {{anio}}: long-term rates of 0%, 15% and 20%, short-term gains and the 3.8% investment tax.",
   intro: [
     "When you sell an investment for more than you paid, the profit is a capital gain. How it's taxed depends on how long you held it and on the rest of your income.",
     "Enter the gain, your other taxable income and your filing status to see the federal tax.",

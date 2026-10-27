@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "kz.kalkulyator-zarplaty",
-  h1: "Калькулятор зарплаты в Казахстане на 2026 год",
-  title: "Калькулятор зарплаты 2026 Казахстан: сколько на руки",
+  h1: "Калькулятор зарплаты в Казахстане на {{anio}} год",
+  title: "Калькулятор зарплаты {{anio}} Казахстан: сколько на руки",
   description:
     "Рассчитайте зарплату на руки: ОПВ {{kz.opv}}, ВОСМС {{kz.vosms}}, ИПН {{kz.ipn-shkala[0].tasa}} с базовым вычетом по новому Налоговому кодексу. Расчет по месяцам за весь год.",
   intro: [

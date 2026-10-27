@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.barnbidrag",
   h1: "Räkna ut barnbidrag och flerbarnstillägg",
-  title: "Barnbidrag 2026: räkna ut barnbidrag och flerbarnstillägg",
+  title: "Barnbidrag {{anio}}: räkna ut barnbidrag och flerbarnstillägg",
   description:
     "Räkna ut barnbidraget för dina barn: {{se.barnbidrag}} per barn och månad, plus flerbarnstillägg från det andra barnet.",
   intro: [

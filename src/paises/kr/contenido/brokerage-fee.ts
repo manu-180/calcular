@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.brokerage-fee",
   h1: "부동산 중개수수료 계산기(복비)",
-  title: "중개수수료 계산기 2026 | 매매·전세·월세 복비",
+  title: "중개수수료 계산기 {{anio}} | 매매·전세·월세 복비",
   description:
     "매매가나 보증금, 월세를 넣으면 공인중개사법 시행규칙의 상한요율과 한도액으로 부동산 중개수수료(복비) 상한을 계산해요.",
   intro: [

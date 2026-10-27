@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.rmd-calculator",
   h1: "Calculadora de distribución mínima requerida (RMD)",
-  title: "Calculadora RMD 2026: distribución mínima requerida",
+  title: "Calculadora RMD {{anio}}: distribución mínima requerida",
   description: "Calcula la distribución mínima requerida de tu IRA o 401(k) con la Tabla Uniforme de Vida del IRS. Las RMD empiezan a los {{us.rmd-age}} años.",
   intro: [
     "Cuando llegas a los {{us.rmd-age}} años, el IRS te exige retirar cada año un monto mínimo de tus IRA tradicionales y planes de jubilación del trabajo.",

@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ch-fr.netto-brutto-rechner",
   h1: "Calculer le salaire brut à partir du net",
   title: "Salaire net en brut Suisse : le brut pour votre net",
-  description: "Quel salaire brut donne le salaire net souhaité ? Avec AVS/AI/APG, AC, caisse de pension et ANP selon les taux 2026, pour 12 ou 13 salaires mensuels.",
+  description: "Quel salaire brut donne le salaire net souhaité ? Avec AVS/AI/APG, AC, caisse de pension et ANP selon les taux {{anio}}, pour 12 ou 13 salaires mensuels.",
   intro: [
     "Si vous avez un montant net en tête pour une négociation salariale, il vous faut le salaire brut correspondant. Le calculateur indique le salaire brut nécessaire pour qu'il vous reste le montant souhaité.",
     "Le calcul tient compte des cotisations sociales sans les impôts : AVS/AI/APG, AC, la caisse de pension légale et la prime ANP que vous indiquez.",

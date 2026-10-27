@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gb.stamp-duty-calculator",
   h1: "Stamp Duty calculator for England and Northern Ireland",
-  title: "Stamp Duty calculator 2026: SDLT for home buyers",
+  title: "Stamp Duty calculator {{anio}}: SDLT for home buyers",
   description:
     "Work out Stamp Duty Land Tax on a home in England or Northern Ireland, with first-time buyer relief up to {{gb.sdlt-first-time-buyer-cap}} and the {{gb.sdlt-additional-surcharge}} second home surcharge.",
   intro: [

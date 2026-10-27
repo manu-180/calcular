@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.am-bidrag",
   h1: "Am-bidrag: beregn dit arbejdsmarkedsbidrag",
-  title: "Am-bidrag 2026: beregn dit arbejdsmarkedsbidrag",
+  title: "Am-bidrag {{anio}}: beregn dit arbejdsmarkedsbidrag",
   description: "Beregn am-bidraget på {{dk.am-bidrag}} af din løn pr. måned og pr. år. Med egen pension og ATP trukket fra, som på din lønseddel.",
   intro: [
     "Am-bidraget er det første, der trækkes i din løn. Det er {{dk.am-bidrag}} af lønnen, før A-skatten beregnes.",

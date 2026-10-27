@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.despido",
   h1: "Calculadora de indemnización por despido en Uruguay",
-  title: "Indemnización por despido Uruguay 2026: calculá tu despido",
+  title: "Indemnización por despido Uruguay {{anio}}: calculá tu despido",
   description:
     "Calculá tu despido en segundos: un sueldo por año o fracción, hasta {{uy.despido-tope-meses}}, o {{uy.despido-jornales-anio}} jornales por año si sos jornalero. Con la base del MTSS.",
   intro: [

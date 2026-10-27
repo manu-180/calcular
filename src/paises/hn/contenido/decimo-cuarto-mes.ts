@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hn.decimo-cuarto-mes",
   h1: "Calculadora del décimo cuarto mes en Honduras",
-  title: "Décimo cuarto mes Honduras 2026: calcule su catorceavo",
+  title: "Décimo cuarto mes Honduras {{anio}}: calcule su catorceavo",
   description:
     "Calcule su décimo cuarto mes (catorceavo) completo o proporcional, con el período del 1 de julio al 30 de junio. También si renunció o lo despidieron.",
   intro: [

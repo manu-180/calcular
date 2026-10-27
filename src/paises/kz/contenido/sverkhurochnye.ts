@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kz.sverkhurochnye",
   h1: "Оплата сверхурочных, работы в выходные и ночью",
-  title: "Сверхурочные в Казахстане 2026: калькулятор оплаты",
+  title: "Сверхурочные в Казахстане {{anio}}: калькулятор оплаты",
   description:
     "Посчитайте оплату сверхурочной работы, работы в выходные, праздники и ночное время: не меньше чем в {{kz.sverkhurochnye-koeffitsient}} раза от часовой ставки по Трудовому кодексу.",
   intro: [

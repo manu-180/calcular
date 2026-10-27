@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "kz.kalkulyator-nds",
-  h1: "Калькулятор НДС в Казахстане: ставка {{kz.nds[osnovnaya]}} с 2026 года",
-  title: "Калькулятор НДС 2026 Казахстан: начислить и выделить",
+  h1: "Калькулятор НДС в Казахстане: ставка {{kz.nds[osnovnaya]}} с {{anio}} года",
+  title: "Калькулятор НДС {{anio}} Казахстан: начислить и выделить",
   description:
     "Начислите или выделите НДС по ставке {{kz.nds[osnovnaya]}}. Есть ставки {{kz.nds[lekarstva]}} для лекарств и медицинских услуг и {{kz.nds[pechat]}} для периодической печати.",
   intro: [

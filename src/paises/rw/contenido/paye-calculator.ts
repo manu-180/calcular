@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "rw.paye-calculator",
   h1: "PAYE calculator Rwanda",
-  title: "PAYE calculator Rwanda 2026: tax on your monthly pay",
+  title: "PAYE calculator Rwanda {{anio}}: tax on your monthly pay",
   description:
     "Work out the PAYE withheld from your monthly pay with the RRA bands up to {{rw.paye-bands[3].tasa}}. Covers second jobs and casual labour.",
   intro: [

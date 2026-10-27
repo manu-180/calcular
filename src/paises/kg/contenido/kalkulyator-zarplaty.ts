@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kg.kalkulyator-zarplaty",
   h1: "Калькулятор зарплаты в Кыргызстане",
-  title: "Калькулятор зарплаты на руки в Кыргызстане 2026",
+  title: "Калькулятор зарплаты на руки в Кыргызстане {{anio}}",
   description:
     "Сколько останется на руки после страховых взносов {{kg.sf-rabotnik}} и подоходного налога {{kg.podokhodnyy-nalog}}. С персональным вычетом и вычетом на иждивенцев.",
   intro: [

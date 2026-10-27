@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.rrsp-contribution-limit",
-  h1: "RRSP contribution limit calculator 2026",
-  title: "RRSP contribution limit 2026: how much can I put in?",
+  h1: "RRSP contribution limit calculator {{anio}}",
+  title: "RRSP contribution limit {{anio}}: how much can I put in?",
   description: "Work out your RRSP deduction limit: {{ca.rrsp-earned-income-rate}} of last year's earned income up to {{ca.rrsp-dollar-limit}}, less your pension adjustment, plus unused room.",
   intro: [
     "Enter last year's earned income, your pension adjustment and any unused room to see how much you can contribute to your RRSP and deduct this year.",

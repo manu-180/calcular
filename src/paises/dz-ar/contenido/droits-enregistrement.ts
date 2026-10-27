@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.droits-enregistrement",
   h1: "حساب حقوق تسجيل العقار في الجزائر",
-  title: "حقوق التسجيل في الجزائر 2026: بيع العقارات",
+  title: "حقوق التسجيل في الجزائر {{anio}}: بيع العقارات",
   description:
     "احسب حقوق تسجيل بيع عقار في الجزائر: {{dz.droits-mutation[vente]}} من السعر، أو {{dz.droits-mutation[promesse]}} على الوعد بالبيع ومثلها على العقد النهائي.",
   intro: [

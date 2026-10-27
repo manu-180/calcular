@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "md.calculator-impozit-pe-venit",
-  h1: "Calculator impozit pe venit 2026",
-  title: "Impozitul pe venit 2026: calculator anual cu scutiri",
+  h1: "Calculator impozit pe venit {{anio}}",
+  title: "Impozitul pe venit {{anio}}: calculator anual cu scutiri",
   description: "Calculați impozitul pe venit pe un an: cota de {{md.impozit-venit}}, scutirea personală de {{md.scutire-personala}} și scutirile pentru persoane întreținute.",
   intro: [
     "Impozitul pe venit al persoanelor fizice are o singură cotă, de {{md.impozit-venit}}. Se plătește pe venitul rămas după scutiri și după prima medicală reținută din salariu.",

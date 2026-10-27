@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.koerselsfradrag",
   h1: "Beregn kørselsfradrag (befordringsfradrag)",
-  title: "Kørselsfradrag 2026: beregn dit befordringsfradrag",
+  title: "Kørselsfradrag {{anio}}: beregn dit befordringsfradrag",
   description:
-    "Beregn kørselsfradraget for turen mellem hjem og arbejde med satserne for 2026: {{dk.koerselsfradrag[mellem]}} pr. km fra 25 til 120 km. Se også fradragets værdi.",
+    "Beregn kørselsfradraget for turen mellem hjem og arbejde med satserne for {{anio}}: {{dk.koerselsfradrag[mellem]}} pr. km fra 25 til 120 km. Se også fradragets værdi.",
   intro: [
     "Har du langt til arbejde, kan du få kørselsfradrag. Fradraget regnes ud fra afstanden mellem hjem og arbejde.",
     "Skriv afstanden tur-retur og antal arbejdsdage. Beregneren viser fradraget og hvor meget det sparer dig i skat.",

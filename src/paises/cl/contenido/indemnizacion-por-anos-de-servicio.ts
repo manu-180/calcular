@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cl.indemnizacion-por-anos-de-servicio",
   h1: "Calculadora de indemnización por años de servicio",
-  title: "Indemnización por años de servicio 2026: calcúlala",
+  title: "Indemnización por años de servicio {{anio}}: calcúlala",
   description:
     "Calcula tu indemnización por años de servicio: {{cl.indemnizacion-dias-por-anio}} de remuneración por año, tope de {{cl.indemnizacion-tope-dias}} y base máxima de {{cl.tope-indemnizacion}}.",
   intro: [

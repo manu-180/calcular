@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.salario-neto",
   h1: "Calculadora de salario neto en República Dominicana",
-  title: "Salario neto en RD 2026: tu sueldo después de TSS e ISR",
+  title: "Salario neto en RD {{anio}}: tu sueldo después de TSS e ISR",
   description: "Calcula tu sueldo neto en RD: descuentos de SFS ({{do.sfs-trabajador}}), AFP ({{do.afp-trabajador}}) y retención del ISR, con los topes de la TSS y la escala de la DGII.",
   intro: [
     "Tu salario neto en República Dominicana es el bruto menos el SFS ({{do.sfs-trabajador}}), la AFP ({{do.afp-trabajador}}) y la retención del ISR. Es lo que te llega a la cuenta.",

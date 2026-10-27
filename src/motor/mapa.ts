@@ -1,5 +1,6 @@
 import { feedDe } from "./novedades";
-import { ACTUALIZACION_PAGINAS_GLOBALES, PAGINAS_GLOBALES, PAGINAS_MERCADO } from "./paginas";
+import { ACTUALIZACION_PAGINAS_GLOBALES, PAGINAS_GLOBALES, PAGINAS_MERCADO, type PaginaGlobal } from "./paginas";
+import { etiquetaIdioma } from "./i18n/direccion";
 import { resolverValores, type DatoUsado, type PaginaResuelta, type Registro } from "./registro";
 import { hreflangDe, hreflangVaAlSitemap, origenPublicoIntl, urlIntl, type Idiomas } from "./seo";
 import { intlActivo, modoPublicacion } from "./sitio";
@@ -54,6 +55,25 @@ export function actualizacionDeFuentes(registro: Registro, codigo: CodigoMercado
 // revisiones): su fecha es la de la entrada más nueva de ese registro, no solo la de las notas.
 export function actualizacionDeNovedades(registro: Registro, codigo: CodigoMercado, fecha: FechaISO): FechaISO | undefined {
   return masNueva([...(registro.pais(codigo)?.novedades ?? []).map((n) => n.fecha), ...feedDe(registro, codigo, fecha).map((e) => e.fecha)], fecha);
+}
+
+// Quiénes somos, contacto, privacidad y términos existen en cada edición, en su idioma (/mx/sobre): la
+// misma página en otro idioma forma un clúster con todas las ediciones y la versión en inglés de global
+// como x-default. Es lo que un evaluador de calidad busca en una página de plata (QRG §4.5.1 y §5.5:
+// quién responde por el sitio), en el idioma de quien la lee.
+export function hreflangLegal(registro: Registro, slug: PaginaGlobal, modo: ReturnType<typeof modoPublicacion>): Idiomas | undefined {
+  const idiomas: Idiomas = {};
+  for (const m of registro.mercados(modo)) idiomas[etiquetaIdioma(m.locale)] = urlIntl(m.codigo, slug);
+  if (Object.keys(idiomas).length < 2) return undefined;
+  idiomas["x-default"] = urlIntl("global", slug);
+  return idiomas;
+}
+
+function entradasLegales(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean): EntradaSitemap[] {
+  return PAGINAS_GLOBALES.map((slug) => {
+    const idiomas = conAlternos ? hreflangLegal(registro, slug, modo) : undefined;
+    return { url: urlIntl(m.codigo, slug), lastmod: ACTUALIZACION_PAGINAS_GLOBALES, ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
+  });
 }
 
 export interface EntradaSitemap {
@@ -134,6 +154,7 @@ function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof 
     ...entradaSueldos(registro, m, modo, conAlternos, sueldos),
     ...calculadoras,
     ...PAGINAS_MERCADO.map((p) => ({ url: urlIntl(m.codigo, p), lastmod: porPagina[p] })),
+    ...entradasLegales(registro, m, modo, conAlternos),
   ];
 }
 
@@ -164,7 +185,7 @@ export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, op
     entradaMundo(registro, m, modo, opciones.conAlternos ?? false),
     ...entradasRankings(registro, m, modo, opciones.conAlternos ?? false),
     ...entradasHoras(registro, m, modo, opciones.conAlternos ?? false, horas),
-    ...PAGINAS_GLOBALES.map((p) => ({ url: urlIntl("global", p), lastmod: ACTUALIZACION_PAGINAS_GLOBALES })),
+    ...entradasLegales(registro, m, modo, opciones.conAlternos ?? false),
   ];
 }
 

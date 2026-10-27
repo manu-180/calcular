@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.quarterly-estimated-taxes",
   h1: "Calculadora de impuestos estimados trimestrales",
-  title: "Impuestos estimados trimestrales 2026 (Formulario 1040-ES)",
-  description: "Calcula tus pagos de impuesto estimado de 2026 con las reglas de puerto seguro del IRS: {{us.safe-harbor-current}} del impuesto de este año o {{us.safe-harbor-prior}} a {{us.safe-harbor-prior-high}} del año pasado.",
+  title: "Impuestos estimados trimestrales {{anio}} (Formulario 1040-ES)",
+  description: "Calcula tus pagos de impuesto estimado de {{anio}} con las reglas de puerto seguro del IRS: {{us.safe-harbor-current}} del impuesto de este año o {{us.safe-harbor-prior}} a {{us.safe-harbor-prior-high}} del año pasado.",
   intro: [
     "Si trabajas por cuenta propia o tienes ingresos sin retención, el IRS espera que pagues impuestos durante el año en cuatro cuotas.",
     "Escribe el impuesto que esperas este año, tu retención y tu declaración del año pasado para ver los pagos más bajos que evitan la multa por pago insuficiente.",

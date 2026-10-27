@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.impozit-dividende",
-  h1: "Calculator impozit pe dividende 2026",
-  title: "Impozit pe dividende 2026: {{ro.impozit-dividende}} și CASS",
+  h1: "Calculator impozit pe dividende {{anio}}",
+  title: "Impozit pe dividende {{anio}}: {{ro.impozit-dividende}} și CASS",
   description:
-    "Calculați impozitul pe dividende de {{ro.impozit-dividende}} și CASS de {{ro.cass}} datorată de asociat, cu pragurile în salarii minime pentru veniturile din 2026.",
+    "Calculați impozitul pe dividende de {{ro.impozit-dividende}} și CASS de {{ro.cass}} datorată de asociat, cu pragurile în salarii minime pentru veniturile din {{anio}}.",
   intro: [
     "Când firma distribuie dividende, reține impozitul și vi-l plătește pe restul. Pentru dividendele distribuite din 2026 impozitul este {{ro.impozit-dividende}}.",
     "Pe lângă impozit, asociatul poate datora CASS, dacă dividendele nete și celelalte venituri din alte surse trec de un prag în salarii minime.",

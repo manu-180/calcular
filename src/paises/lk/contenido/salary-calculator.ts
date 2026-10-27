@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lk.salary-calculator",
   h1: "Salary calculator Sri Lanka",
-  title: "Salary calculator Sri Lanka 2026: take-home pay after APIT",
+  title: "Salary calculator Sri Lanka {{anio}}: take-home pay after APIT",
   description:
     "Work out your take-home pay from your gross salary. Uses the IRD APIT Table 1 for 2025/26 and EPF at {{lk.epf-employee}} of your earnings.",
   intro: [

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.inkomstenbelasting-berekenen",
-  h1: "Inkomstenbelasting berekenen 2026 (box 1)",
-  title: "Inkomstenbelasting 2026 berekenen: box 1 en kortingen",
+  h1: "Inkomstenbelasting berekenen {{anio}} (box 1)",
+  title: "Inkomstenbelasting {{anio}} berekenen: box 1 en kortingen",
   description:
-    "Bereken je inkomstenbelasting box 1 over 2026: drie schijven, algemene heffingskorting, arbeidskorting en de tariefsaanpassing voor aftrekposten.",
+    "Bereken je inkomstenbelasting box 1 over {{anio}}: drie schijven, algemene heffingskorting, arbeidskorting en de tariefsaanpassing voor aftrekposten.",
   intro: [
     "In box 1 betaal je belasting over je inkomen uit werk en woning, zoals loon, winst en het saldo van je eigen woning. In 2026 zijn er drie schijven. In de eerste schijf zitten ook de premies volksverzekeringen.",
     "Van de belasting gaan heffingskortingen af. Iedereen krijgt de algemene heffingskorting, wie werkt de arbeidskorting, en ouders van een kind jonger dan 12 soms de inkomensafhankelijke combinatiekorting.",

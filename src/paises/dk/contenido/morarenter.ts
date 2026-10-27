@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.morarenter",
   h1: "Beregn morarenter efter renteloven",
-  title: "Morarenter 2026: beregn renter ved for sen betaling",
+  title: "Morarenter {{anio}}: beregn renter ved for sen betaling",
   description:
     "Beregn morarenter af en regning, der er betalt for sent. Renten er referencesatsen plus {{dk.morarente-tillaeg}} om året, og der kan lægges rykkergebyrer på.",
   intro: [

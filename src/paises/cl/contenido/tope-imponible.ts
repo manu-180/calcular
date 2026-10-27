@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.tope-imponible",
-  h1: "Tope imponible 2026 en pesos",
-  title: "Tope imponible 2026: {{cl.tope-imponible}} en pesos de hoy",
+  h1: "Tope imponible {{anio}} en pesos",
+  title: "Tope imponible {{anio}}: {{cl.tope-imponible}} en pesos de hoy",
   description:
-    "El tope imponible 2026 es {{cl.tope-imponible}} para AFP y salud y {{cl.tope-imponible-cesantia}} para el seguro de cesantía. Míralos en pesos con la UF de hoy.",
+    "El tope imponible {{anio}} es {{cl.tope-imponible}} para AFP y salud y {{cl.tope-imponible-cesantia}} para el seguro de cesantía. Míralos en pesos con la UF de hoy.",
   intro: [
     "El tope imponible es el sueldo máximo sobre el que se pagan cotizaciones. Si ganas más, AFP y salud se calculan solo hasta ese monto.",
     "En 2026 el tope es de {{cl.tope-imponible}} para AFP, salud y accidentes del trabajo, y de {{cl.tope-imponible-cesantia}} para el seguro de cesantía. Como están en UF, en pesos cambian todos los días.",

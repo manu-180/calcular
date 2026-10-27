@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.cotizaciones-previsionales",
-  h1: "Calculadora de cotizaciones previsionales 2026",
-  title: "Cotizaciones previsionales 2026: AFP, salud y cesantía",
+  h1: "Calculadora de cotizaciones previsionales {{anio}}",
+  title: "Cotizaciones previsionales {{anio}}: AFP, salud y cesantía",
   description:
     "Calcula las cotizaciones de un sueldo: AFP ({{cl.cotizacion-afp}} más comisión), salud ({{cl.salud}}), seguro de cesantía y lo que paga el empleador con la reforma ({{cl.cotizacion-empleador-pensiones}}).",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.ganancia-capital-inmueble",
   h1: "Calculadora del impuesto a la ganancia de capital por venta de inmuebles",
-  title: "Ganancia de capital por venta de inmueble en RD 2026",
+  title: "Ganancia de capital por venta de inmueble en RD {{anio}}",
   description: "Calcula el impuesto de {{do.ganancia-capital-inmuebles}} a la ganancia por vender una casa, un apartamento o un solar, con la exención por reinversión de la Ley 30-26.",
   intro: [
     "Desde la Ley 30-26, la ganancia que obtiene una persona física al vender un inmueble paga {{do.ganancia-capital-inmuebles}} de impuesto, como pago único y definitivo.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "rw.net-salary-calculator",
   h1: "Net salary calculator Rwanda",
-  title: "Net salary calculator Rwanda 2026: gross to net pay",
+  title: "Net salary calculator Rwanda {{anio}}: gross to net pay",
   description:
     "See your take-home pay after PAYE, RSSB pension at {{rw.pension-employee}}, maternity at {{rw.maternity-employee}} and CBHI. Uses the current RRA bands.",
   intro: [

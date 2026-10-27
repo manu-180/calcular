@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.irg-revenus-locatifs",
   h1: "حساب الضريبة على المداخيل الإيجارية في الجزائر",
-  title: "ضريبة الإيجار في الجزائر 2026: الضريبة على الإيجارات",
+  title: "ضريبة الإيجار في الجزائر {{anio}}: الضريبة على الإيجارات",
   description:
     "احسب الضريبة على الدخل الإجمالي عن إيجاراتك في الجزائر: {{dz.irg-loyers[habitation]}} للسكن، و{{dz.irg-loyers[professionnel]}} للمحل المهني، محررة إلى غاية {{dz.irg-loyers-seuil}} في السنة.",
   intro: [

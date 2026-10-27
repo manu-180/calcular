@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.retencion-alquileres",
   h1: "Calculadora de retención de ISR a alquileres",
-  title: "Retención por alquiler en RD 2026: el {{do.retencion-alquileres}}",
-  description: "Calcula la retención de ISR del {{do.retencion-alquileres}} sobre alquileres que una empresa paga a una persona física. Desde julio de 2026 es pago definitivo.",
+  title: "Retención por alquiler en RD {{anio}}: el {{do.retencion-alquileres}}",
+  description: "Calcula la retención de ISR del {{do.retencion-alquileres}} sobre alquileres que una empresa paga a una persona física. Desde julio de {{anio}} es pago definitivo.",
   intro: [
     "Si una empresa te alquila un local, una casa o un bien, te retiene una parte del alquiler para el ISR. Desde el 1 de julio de 2026 es el {{do.retencion-alquileres}}.",
     "Desde esa fecha la retención es definitiva: ese alquiler ya no paga más ISR.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lk.apit-calculator",
   h1: "APIT calculator",
-  title: "APIT calculator 2026: tax on your monthly salary",
+  title: "APIT calculator {{anio}}: tax on your monthly salary",
   description:
     "Find the APIT your employer deducts each month with the IRD Tax Table No. 01 for 2025/26. No tax on the first {{lk.apit-table-1[1].desde}} a month.",
   intro: [

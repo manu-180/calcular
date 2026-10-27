@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.pension-de-alimentos",
-  h1: "Calculadora de pensión de alimentos 2026",
-  title: "Pensión de alimentos 2026: mínimo legal por hijo",
+  h1: "Calculadora de pensión de alimentos {{anio}}",
+  title: "Pensión de alimentos {{anio}}: mínimo legal por hijo",
   description:
     "Calcula la pensión de alimentos mínima: {{cl.alimentos-minimo-un-hijo}} del ingreso mínimo por un hijo y {{cl.alimentos-minimo-varios}} por cada uno si son dos o más.",
   intro: [

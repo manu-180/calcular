@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "rw.rssb-contribution-calculator",
   h1: "RSSB contribution calculator",
-  title: "RSSB contribution calculator 2026: pension, maternity, CBHI",
+  title: "RSSB contribution calculator {{anio}}: pension, maternity, CBHI",
   description:
     "Split RSSB contributions between employee and employer: pension at {{rw.pension-employee}} each, maternity at {{rw.maternity-employee}} each, CBHI and RAMA.",
   intro: [

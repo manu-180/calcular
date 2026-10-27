@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.aguinaldo",
-  h1: "Calculadora de aguinaldo 2026",
-  title: "Calculadora de aguinaldo 2026: cuánto te toca y el ISR",
+  h1: "Calculadora de aguinaldo {{anio}}",
+  title: "Calculadora de aguinaldo {{anio}}: cuánto te toca y el ISR",
   description:
-    "Calcula tu aguinaldo 2026 completo o proporcional: mínimo {{mx.dias-aguinaldo}} de salario, la parte exenta y el ISR estimado. Pon tu sueldo y listo.",
+    "Calcula tu aguinaldo {{anio}} completo o proporcional: mínimo {{mx.dias-aguinaldo}} de salario, la parte exenta y el ISR estimado. Pon tu sueldo y listo.",
   intro: [
     "El aguinaldo es de al menos {{mx.dias-aguinaldo}} de salario y te lo tienen que pagar antes del 20 de diciembre. Si no trabajaste el año completo, te toca la parte proporcional.",
     "Escribe tu sueldo y los días que trabajaste este año. Te mostramos el aguinaldo bruto, la parte que no paga ISR y lo que recibes.",

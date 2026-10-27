@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "dz.snmg-algerie",
-  h1: "SNMG en Algérie : le salaire minimum en 2026",
-  title: "SNMG Algérie 2026 : salaire minimum de {{dz.snmg}}",
+  h1: "SNMG en Algérie : le salaire minimum en {{anio}}",
+  title: "SNMG Algérie {{anio}} : salaire minimum de {{dz.snmg}}",
   description:
     "Le salaire national minimum garanti est de {{dz.snmg}} par mois depuis le {{dz.snmg#desde}}, soit {{dz.snmg-horaire}} de l'heure. Calculez-le selon vos heures.",
   intro: [

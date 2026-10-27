@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.gratificacion",
-  h1: "Calculadora de gratificación de diciembre 2026",
-  title: "Calculadora de gratificación diciembre 2026 en Perú",
+  h1: "Calculadora de gratificación de diciembre {{anio}}",
+  title: "Calculadora de gratificación diciembre {{anio}} en Perú",
   description:
     "Calcula tu gratificación de diciembre o de julio con la bonificación extraordinaria del {{pe.bonificacion-extraordinaria[essalud]}}. Completa o proporcional, con la RMV de {{pe.rmv}}. Gratis.",
   intro: [

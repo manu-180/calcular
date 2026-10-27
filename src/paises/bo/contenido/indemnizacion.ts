@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.indemnizacion",
   h1: "Calculadora de indemnización y desahucio en Bolivia",
-  title: "Indemnización y desahucio Bolivia 2026: calcule ambos",
+  title: "Indemnización y desahucio Bolivia {{anio}}: calcule ambos",
   description: "Calcule su indemnización (un sueldo por año) y el desahucio de {{bo.desahucio-sueldos}} sueldos por despido sin causa, con el método del Ministerio de Trabajo.",
   intro: [
     "La indemnización en Bolivia es un sueldo promedio por cada año trabajado, más la parte proporcional de los meses y días. Corresponde al terminar el trabajo, también si usted renunció, siempre que haya trabajado más de {{bo.indemnizacion-dias-minimos}} seguidos.",

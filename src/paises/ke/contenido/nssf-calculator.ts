@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ke.nssf-calculator",
-  h1: "NSSF calculator 2026",
-  title: "NSSF calculator 2026: Tier I and Tier II contributions",
+  h1: "NSSF calculator {{anio}}",
+  title: "NSSF calculator {{anio}}: Tier I and Tier II contributions",
   description:
     "Work out your NSSF deduction with the Year 4 limits: {{ke.nssf-rate}} of pay up to {{ke.nssf-lel}} in Tier I and up to {{ke.nssf-uel}} in Tier II.",
   intro: [

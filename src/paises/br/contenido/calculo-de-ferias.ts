@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.calculo-de-ferias",
-  h1: "Cálculo de férias 2026",
-  title: "Cálculo de férias 2026: valor com 1/3 e descontos",
-  description: "Calcule suas férias com o terço constitucional, a venda de 10 dias (abono pecuniário) e os descontos de INSS e IRRF de 2026.",
+  h1: "Cálculo de férias {{anio}}",
+  title: "Cálculo de férias {{anio}}: valor com 1/3 e descontos",
+  description: "Calcule suas férias com o terço constitucional, a venda de 10 dias (abono pecuniário) e os descontos de INSS e IRRF de {{anio}}.",
   intro: [
     "Depois de 12 meses de trabalho, você tem direito a {{br.ferias-dias}} de férias pagas com um terço a mais do salário.",
     "Informe o salário, as faltas sem justificativa e se vai vender parte das férias. A calculadora mostra o valor bruto e o que cai na conta.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.calcul-salaire-net",
   h1: "Calcul du salaire net en Algérie",
-  title: "Salaire net Algérie 2026 : du brut au net avec CNAS et IRG",
+  title: "Salaire net Algérie {{anio}} : du brut au net avec CNAS et IRG",
   description:
     "Passez du salaire brut au salaire net en Algérie : cotisation de sécurité sociale de {{dz.cnas[salarie]}}, puis IRG selon le barème, l'abattement et le lissage.",
   intro: [

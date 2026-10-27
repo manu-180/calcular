@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cl.vacaciones-proporcionales",
   h1: "Calculadora de vacaciones proporcionales en Chile",
-  title: "Calculadora de vacaciones proporcionales 2026 en Chile",
+  title: "Calculadora de vacaciones proporcionales {{anio}} en Chile",
   description:
     "Calcula los días y el monto de tus vacaciones proporcionales al terminar el contrato: {{cl.feriado-anual}} hábiles por año, con el método de la Dirección del Trabajo.",
   intro: [

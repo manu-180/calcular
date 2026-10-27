@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ao.salario-liquido",
   h1: "Calcular o salário líquido em Angola",
-  title: "Salário líquido 2026 em Angola: INSS e IRT",
-  description: "Do salário bruto ao líquido com os {{ao.inss-trabalhador}} de INSS e a tabela do IRT de 2026. Inclui os subsídios de alimentação e de transporte.",
+  title: "Salário líquido {{anio}} em Angola: INSS e IRT",
+  description: "Do salário bruto ao líquido com os {{ao.inss-trabalhador}} de INSS e a tabela do IRT de {{anio}}. Inclui os subsídios de alimentação e de transporte.",
   intro: [
     "O salário líquido é o que recebe depois de a entidade empregadora descontar a segurança social e reter o IRT.",
     "Indique o salário base e os subsídios do mês. A calculadora aplica os {{ao.inss-trabalhador}} do INSS e a tabela do Grupo A em vigor desde {{ao.irt-grupo-a#desde}}.",

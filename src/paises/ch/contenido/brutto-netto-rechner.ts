@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch.brutto-netto-rechner",
   h1: "Brutto-Netto-Rechner Schweiz",
-  title: "Brutto-Netto-Rechner Schweiz 2026: Lohnabzüge berechnen",
+  title: "Brutto-Netto-Rechner Schweiz {{anio}}: Lohnabzüge berechnen",
   description:
-    "Vom Bruttolohn zum Nettolohn: AHV/IV/EO, ALV, Pensionskasse und NBU mit den Sätzen 2026. Pro Monat und pro Jahr, für 12 oder 13 Monatslöhne.",
+    "Vom Bruttolohn zum Nettolohn: AHV/IV/EO, ALV, Pensionskasse und NBU mit den Sätzen {{anio}}. Pro Monat und pro Jahr, für 12 oder 13 Monatslöhne.",
   intro: [
     "Vom Bruttolohn gehen in der Schweiz die Beiträge an AHV, IV und EO ab, dazu die Arbeitslosenversicherung, die Pensionskasse und die Prämie für Nichtberufsunfälle. AHV/IV/EO ({{ch.ahv-iv-eo-beitragssatz}}) und ALV ({{ch.alv-beitragssatz}}) teilen sich Arbeitgeber und Arbeitnehmer je zur Hälfte.",
     "Der Rechner zeigt Ihren Nettolohn vor Steuern. Eine allfällige Quellensteuer ist nicht abgezogen.",

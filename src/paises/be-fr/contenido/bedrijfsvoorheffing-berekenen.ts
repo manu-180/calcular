@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be-fr.bedrijfsvoorheffing-berekenen",
   h1: "Calcul du précompte professionnel avec la formule-clé",
-  title: "Calcul du précompte professionnel 2026 avec la formule-clé",
+  title: "Calcul du précompte professionnel {{anio}} avec la formule-clé",
   description:
     "Calculez le précompte professionnel sur votre salaire mensuel avec la formule-clé officielle : frais forfaitaires, barème, quotité exemptée et enfants à charge.",
   intro: [

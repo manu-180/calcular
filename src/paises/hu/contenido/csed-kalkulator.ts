@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hu.csed-kalkulator",
   h1: "CSED kalkulátor",
-  title: "CSED kalkulátor: csecsemőgondozási díj 2026",
+  title: "CSED kalkulátor: csecsemőgondozási díj {{anio}}",
   description:
     "A csecsemőgondozási díj a napi átlagkereset {{hu.csed}} része, legfeljebb {{hu.csed-napok}} napig, SZJA nélkül. Számold ki, mennyit kapsz.",
   intro: [

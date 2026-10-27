@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.irg-revenus-locatifs",
   h1: "Calcul de l'IRG sur les revenus locatifs en Algérie",
-  title: "IRG location Algérie 2026 : impôt sur les loyers",
+  title: "IRG location Algérie {{anio}} : impôt sur les loyers",
   description:
     "Calculez l'IRG sur vos loyers en Algérie : {{dz.irg-loyers[habitation]}} pour un logement, {{dz.irg-loyers[professionnel]}} pour un local professionnel, libératoire jusqu'à {{dz.irg-loyers-seuil}} par an.",
   intro: [

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.impozit-chirie",
-  h1: "Calculator impozit pe chirie 2026",
-  title: "Impozit pe chirie 2026: cât plătiți la ANAF",
+  h1: "Calculator impozit pe chirie {{anio}}",
+  title: "Impozit pe chirie {{anio}}: cât plătiți la ANAF",
   description:
     "Calculați impozitul pe veniturile din chirii: cota forfetară de {{ro.forfetar-chirii}}, impozit de {{ro.impozit-venit}} pe venitul net și CASS, dacă treceți de prag.",
   intro: [

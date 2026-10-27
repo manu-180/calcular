@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.venta-inmueble",
   h1: "Calculadora del impuesto por venta de inmueble",
-  title: "Impuesto por vender un inmueble 2026: calcula tu pago",
+  title: "Impuesto por vender un inmueble {{anio}}: calcula tu pago",
   description:
     "Si vendes un departamento, casa o terreno con ganancia, pagas {{pe.tasa-renta-capital}} sobre la ganancia menos el {{pe.deduccion-renta-capital}}. Calcula cuánto pagar a SUNAT antes de la escritura.",
   intro: [

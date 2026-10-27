@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kg.nalogi-rabotodatelya",
   h1: "Сколько стоит работник работодателю",
-  title: "Налоги работодателя в Кыргызстане: калькулятор 2026",
+  title: "Налоги работодателя в Кыргызстане: калькулятор {{anio}}",
   description:
     "Расходы работодателя на зарплату: страховые взносы {{kg.sf-rabotodatel[predprinimatel]}} или {{kg.sf-rabotodatel[obshchiy]}} и доплата подоходного налога, если зарплата ниже средней по району.",
   intro: [

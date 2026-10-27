@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.isk-skatt",
   h1: "Räkna ut skatten på ditt ISK",
-  title: "Skatt på ISK 2026: räkna ut schablonskatten",
+  title: "Skatt på ISK {{anio}}: räkna ut schablonskatten",
   description:
-    "Räkna ut skatten på ditt investeringssparkonto 2026. Schablonintäkten är {{se.isk-schablonranta}} och de första {{se.isk-grundniva}} är skattefria.",
+    "Räkna ut skatten på ditt investeringssparkonto {{anio}}. Schablonintäkten är {{se.isk-schablonranta}} och de första {{se.isk-grundniva}} är skattefria.",
   intro: [
     "På ett investeringssparkonto betalar du inte skatt på vinsterna. I stället betalar du en schablonskatt varje år, räknad på värdet och insättningarna.",
     "Från 2026 är sparande upp till {{se.isk-grundniva}} skattefritt. Kalkylatorn visar kapitalunderlaget, schablonintäkten och skatten.",

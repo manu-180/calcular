@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.fica-tax",
   h1: "FICA tax calculator",
-  title: "FICA Tax Calculator 2026: Social Security and Medicare",
+  title: "FICA Tax Calculator {{anio}}: Social Security and Medicare",
   description:
-    "Figure the Social Security and Medicare tax on your wages for 2026, the Additional Medicare Tax and what your employer pays on top. Wage base of {{us.social-security-wage-base}}.",
+    "Figure the Social Security and Medicare tax on your wages for {{anio}}, the Additional Medicare Tax and what your employer pays on top. Wage base of {{us.social-security-wage-base}}.",
   intro: [
     "FICA is the payroll tax that funds Social Security and Medicare. You pay half and your employer pays the other half.",
     "Enter your wages for the year to see each piece and the total cost on your pay.",

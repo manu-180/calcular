@@ -31,6 +31,9 @@ export interface PaginaConIdiomas {
 export function revisarClusteres(paginas: readonly PaginaConIdiomas[], publicadas: ReadonlySet<string>, xDefault: string, hreflangAR: boolean): string[] {
   const errores: string[] = [];
   const porUrl = new Map(paginas.map((p) => [p.url, p]));
+  // Una firma por página, no un JSON.stringify por cada par: con clústeres de 100 páginas eran 1,5 millones
+  // de serializaciones de 5 KB por modo (minutos y gigas de basura), ahora son 15 mil.
+  const firmas = new Map(paginas.map((p) => [p.url, p.idiomas ? JSON.stringify(Object.entries(p.idiomas).sort()) : ""]));
   const porConcepto = new Map<string, PaginaConIdiomas[]>();
   for (const p of paginas) porConcepto.set(p.concepto, [...(porConcepto.get(p.concepto) ?? []), p]);
 
@@ -54,7 +57,7 @@ export function revisarClusteres(paginas: readonly PaginaConIdiomas[], publicada
       const otra = porUrl.get(href);
       if (!otra) continue;
       if (!otra.idiomas || otra.idiomas[p.locale] !== p.url) errores.push(`${p.url} -> ${href}: no es recíproco`);
-      else if (JSON.stringify(Object.entries(otra.idiomas).sort()) !== JSON.stringify(Object.entries(p.idiomas).sort())) {
+      else if (firmas.get(otra.url) !== firmas.get(p.url)) {
         errores.push(`${p.url} y ${href}: el clúster no lista las mismas páginas`);
       }
     }
@@ -242,6 +245,65 @@ async function main() {
       if (xd) fallas.push(...revisarClusteres(grupo, publicadas, xd, false).map((e) => `[${modo}] ${e}`));
       revisadas += grupo.length;
     }
+    // Legales (sobre, contacto, privacidad, términos): una por edición en su idioma, clúster de todas con
+    // la versión en inglés de global como x-default; casi siempre va por sitemap.
+    for (const slug of ["privacidad", "terminos", "contacto", "sobre"] as const) {
+      const legales: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: seo.urlIntl(m.codigo, slug), locale: etiquetaIdioma(m.locale), concepto: `legal-${slug}`, idiomas: mapa.hreflangLegal(registro, slug, modo) }));
+      for (const p of legales) {
+        if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: legal sin entrada en el sitemap del mercado`);
+        const sitemap = enSitemap.get(p.url);
+        const vaAlSitemap = seo.hreflangVaAlSitemap(p.idiomas);
+        if (vaAlSitemap && (!sitemap || JSON.stringify(sitemap) !== JSON.stringify(p.idiomas))) fallas.push(`[${modo}] ${p.url}: clúster legal grande que no está entero en el sitemap`);
+        if (!vaAlSitemap && sitemap) fallas.push(`[${modo}] ${p.url}: clúster legal chico repetido en el sitemap`);
+      }
+      fallas.push(...revisarClusteres(legales, publicadas, seo.urlIntl("global", slug), sitio.hreflangARActivo()).map((e) => `[${modo}] ${e}`));
+      revisadas += legales.length;
+    }
+  }
+
+  // calcular.ar (src/lib/hreflang-ar.ts): con el flag prendido cada calculadora de AR con concepto entra
+  // a su clúster como es-AR, en el <head> si es chico y en el sitemap de AR si es grande; calcularya la
+  // lista con la misma URL. Se prueba con el flag forzado, así el gate no depende del env de la máquina.
+  {
+    const flag = process.env.NEXT_PUBLIC_HREFLANG_AR;
+    process.env.NEXT_PUBLIC_HREFLANG_AR = "1";
+    process.env.VERCEL_ENV = "production";
+    const ar = await import("../src/lib/hreflang-ar");
+    const { armarSitemap } = await import("../src/app/sitemap");
+    const { readFileSync } = await import("node:fs");
+    const enSitemapAR = new Map<string, Idiomas>(armarSitemap().flatMap((e) => (e.alternates?.languages ? [[e.url, e.alternates.languages as Idiomas] as const] : [])));
+    const origenAR = sitio.origenAR();
+    for (const ruta of ar.rutasARConCluster()) {
+      const url = `${origenAR}${ruta}`;
+      const idiomas = ar.clusterAR(ruta);
+      if (!idiomas) {
+        fallas.push(`[ar] ${ruta}: sin clúster con el flag prendido`);
+        continue;
+      }
+      if (idiomas["es-AR"] !== url) fallas.push(`[ar] ${ruta}: el clúster no lista a calcular.ar como es-AR (${idiomas["es-AR"]})`);
+      const head = ar.hreflangHeadAR(ruta);
+      const sitemap = enSitemapAR.get(url);
+      if (seo.hreflangVaAlSitemap(idiomas)) {
+        if (head) fallas.push(`[ar] ${ruta}: clúster grande en el <head>`);
+        if (!sitemap || JSON.stringify(sitemap) !== JSON.stringify(idiomas)) fallas.push(`[ar] ${ruta}: clúster grande que no está entero en el sitemap de AR`);
+      } else {
+        if (!head) fallas.push(`[ar] ${ruta}: clúster chico sin hreflang en el <head>`);
+        if (sitemap) fallas.push(`[ar] ${ruta}: clúster chico repetido en el sitemap de AR`);
+      }
+      // La contraparte: cada equivalente de calcularya lista la misma URL de AR.
+      const concepto = ar.conceptoDeRutaAR(ruta)!;
+      for (const e of registro.equivalentes(concepto, (m) => hoyEn(m), "produccion")) {
+        const p = registro.pagina(e.mercado, e.slug, hoyEn(registro.pais(e.mercado)!.mercado), "produccion");
+        const suyo = p ? seo.hreflangDe(concepto, p.equivalentes) : undefined;
+        if (suyo?.["es-AR"] !== url) fallas.push(`[ar] ${seo.urlIntl(e.mercado, e.slug)}: no lista a ${url} como es-AR`);
+      }
+      // Cada página de AR del clúster tiene que pedir el hreflang en su metadata.
+      const archivo = `src/app/(ar)${ruta}/page.tsx`;
+      if (!readFileSync(archivo, "utf8").includes(`hreflangHeadAR("${ruta}")`)) fallas.push(`[ar] ${archivo}: no usa hreflangHeadAR("${ruta}") en alternates.languages`);
+      revisadas++;
+    }
+    if (flag === undefined) delete process.env.NEXT_PUBLIC_HREFLANG_AR;
+    else process.env.NEXT_PUBLIC_HREFLANG_AR = flag;
   }
 
   for (const f of fallas) console.error(`❌ ${f}`);

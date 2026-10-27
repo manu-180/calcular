@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy.ypologismos-katharou-misthou",
   h1: "Υπολογισμός καθαρού μισθού στην Κύπρο",
-  title: "Υπολογισμός καθαρού μισθού 2026: από μεικτό σε καθαρό",
+  title: "Υπολογισμός καθαρού μισθού {{anio}}: από μεικτό σε καθαρό",
   description:
     "Υπολογίστε τον καθαρό σας μισθό: Κοινωνικές Ασφαλίσεις {{cy.eisfora-ka-misthotou}}, ΓεΣΥ {{cy.eisfores-gesy[misthotos]}} και φόρος με αφορολόγητο {{cy.klimaka-forou[0].hasta}}.",
   intro: [

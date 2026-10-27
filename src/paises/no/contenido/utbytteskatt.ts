@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "no.utbytteskatt",
   h1: "Skatt på utbytte og aksjegevinst",
-  title: "Utbytteskatt 2026: skatt på aksjer, fond og ASK",
+  title: "Utbytteskatt {{anio}}: skatt på aksjer, fond og ASK",
   description:
-    "Regn ut skatten på utbytte, aksjegevinst og uttak fra aksjesparekonto i 2026: {{no.skatt-alminnelig-inntekt}} ganget med oppjusteringsfaktoren {{no.oppjusteringsfaktor}}.",
+    "Regn ut skatten på utbytte, aksjegevinst og uttak fra aksjesparekonto i {{anio}}: {{no.skatt-alminnelig-inntekt}} ganget med oppjusteringsfaktoren {{no.oppjusteringsfaktor}}.",
   intro: [
     "Utbytte og gevinst på aksjer og aksjefond skattlegges høyere enn vanlig kapitalinntekt. Beløpet ganges først med en oppjusteringsfaktor, og så betaler du {{no.skatt-alminnelig-inntekt}} skatt.",
     "Velg hva du skal skatte av og skriv inn beløpet. Har du skjermingsfradrag, trekkes det fra først.",

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.calculator-drepturi-de-autor",
-  h1: "Calculator drepturi de autor 2026",
-  title: "Calculator drepturi de autor 2026: impozit, CAS și CASS",
+  h1: "Calculator drepturi de autor {{anio}}",
+  title: "Calculator drepturi de autor {{anio}}: impozit, CAS și CASS",
   description:
     "Calculați netul din drepturi de autor: cota forfetară de {{ro.forfetar-drepturi-autor}}, impozit de {{ro.impozit-venit}}, plus CAS și CASS pe trepte de salarii minime.",
   intro: [

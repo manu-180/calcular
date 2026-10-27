@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.sjuklon",
   h1: "Räkna ut sjuklön och karensavdrag",
-  title: "Sjuklön 2026: räkna ut sjuklön och karensavdrag",
+  title: "Sjuklön {{anio}}: räkna ut sjuklön och karensavdrag",
   description:
     "Räkna ut din sjuklön de första 14 dagarna: {{se.sjuklon}} av lönen, minus ett karensavdrag på {{se.karensavdrag}} av en veckas sjuklön.",
   intro: [

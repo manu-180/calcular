@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "au.minimum-wage",
   h1: "Minimum wage calculator Australia",
-  title: "Minimum wage Australia 2026: {{au.salario-minimo-hora}} an hour",
-  description: "The National Minimum Wage is {{au.salario-minimo-hora}} an hour or {{au.salario-minimo-semanal}} a week from 1 July 2026. Work out your minimum pay, casual rate included.",
+  title: "Minimum wage Australia {{anio}}: {{au.salario-minimo-hora}} an hour",
+  description: "The National Minimum Wage is {{au.salario-minimo-hora}} an hour or {{au.salario-minimo-semanal}} a week from 1 July {{anio}}. Work out your minimum pay, casual rate included.",
   intro: [
     "The National Minimum Wage is {{au.salario-minimo-hora}} an hour, or {{au.salario-minimo-semanal}} for a 38-hour week, since {{au.salario-minimo-hora#desde}}.",
     "Enter your weekly hours to see the minimum for your week, fortnight and year. Casual employees get a {{au.recargo-casual}} casual loading on top.",

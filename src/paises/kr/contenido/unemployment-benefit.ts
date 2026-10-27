@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.unemployment-benefit",
   h1: "실업급여 계산기(구직급여)",
-  title: "실업급여 계산기 2026 | 구직급여 하루 금액·받는 기간",
+  title: "실업급여 계산기 {{anio}} | 구직급여 하루 금액·받는 기간",
   description:
-    "퇴직 전 3개월 임금과 고용보험 가입 기간, 나이를 넣으면 실업급여 하루 금액과 받는 날수, 총액을 계산해요. 2026년 상한액과 하한액을 써요.",
+    "퇴직 전 3개월 임금과 고용보험 가입 기간, 나이를 넣으면 실업급여 하루 금액과 받는 날수, 총액을 계산해요. {{anio}}년 상한액과 하한액을 써요.",
   intro: [
     "실업급여(구직급여)는 퇴직 전 평균임금의 {{kr.unemployment-rate}}만큼을 하루 단위로 받아요.",
     "하루 금액에는 상한과 하한이 있고, 받는 날수는 고용보험 가입 기간과 퇴직 당시 나이로 정해져요.",

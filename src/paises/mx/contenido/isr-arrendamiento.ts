@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.isr-arrendamiento",
-  h1: "Calculadora de ISR por arrendamiento 2026",
-  title: "ISR por rentas 2026: calcula tu pago mensual",
+  h1: "Calculadora de ISR por arrendamiento {{anio}}",
+  title: "ISR por rentas {{anio}}: calcula tu pago mensual",
   description:
     "Calcula el pago provisional mensual de ISR por rentar una casa o local, con la deducción opcional del {{mx.deduccion-ciega-arrendamiento}} o gastos reales, predial y retención.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.ganancia-ocasional",
   h1: "Calculadora de ganancia ocasional",
-  title: "Ganancia ocasional 2026: herencias, premios y ventas",
+  title: "Ganancia ocasional {{anio}}: herencias, premios y ventas",
   description:
     "Calcula el impuesto de ganancia ocasional: {{co.ganancia-ocasional[general]}} para herencias, donaciones y ventas, y {{co.ganancia-ocasional[loterias]}} para loterías y premios.",
   intro: [

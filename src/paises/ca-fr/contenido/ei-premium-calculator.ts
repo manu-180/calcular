@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.ei-premium-calculator",
-  h1: "Calcul des cotisations d'assurance-emploi 2026",
-  title: "Cotisations d'assurance-emploi 2026 : salarié et employeur",
-  description: "Calculez vos cotisations d'assurance-emploi 2026 : {{ca.ei-rates[employee-qc]}} au Québec ({{ca.ei-rates[employee]}} ailleurs) jusqu'à {{ca.ei-maximum}} de rémunération assurable.",
+  h1: "Calcul des cotisations d'assurance-emploi {{anio}}",
+  title: "Cotisations d'assurance-emploi {{anio}} : salarié et employeur",
+  description: "Calculez vos cotisations d'assurance-emploi {{anio}} : {{ca.ei-rates[employee-qc]}} au Québec ({{ca.ei-rates[employee]}} ailleurs) jusqu'à {{ca.ei-maximum}} de rémunération assurable.",
   intro: [
     "Inscrivez votre rémunération assurable pour voir les cotisations d'assurance-emploi retenues sur votre paie en 2026 et ce que votre employeur paie en plus.",
     "Le Québec a un taux d'assurance-emploi plus bas parce qu'il a son propre régime d'assurance parentale (RQAP).",

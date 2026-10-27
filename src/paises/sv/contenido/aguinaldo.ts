@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.aguinaldo",
   h1: "Calculadora de aguinaldo en El Salvador",
-  title: "Calcular aguinaldo en El Salvador 2026: cuánto le toca",
+  title: "Calcular aguinaldo en El Salvador {{anio}}: cuánto le toca",
   description:
     "Calcule su aguinaldo según el Código de Trabajo: {{sv.aguinaldo-dias[uno-a-tres]}}, {{sv.aguinaldo-dias[tres-a-diez]}} o {{sv.aguinaldo-dias[diez-o-mas]}} de salario según su antigüedad, o el proporcional si tiene menos de un año.",
   intro: [

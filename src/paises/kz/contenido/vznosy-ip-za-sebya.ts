@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "kz.vznosy-ip-za-sebya",
-  h1: "Взносы ИП за себя в 2026 году: ОПВ, СО и ОСМС",
-  title: "Взносы ИП за себя 2026: ОПВ, СО, ОСМС в месяц",
+  h1: "Взносы ИП за себя в {{anio}} году: ОПВ, СО и ОСМС",
+  title: "Взносы ИП за себя {{anio}}: ОПВ, СО, ОСМС в месяц",
   description:
     "Сколько ИП платит за себя в месяц: ОПВ {{kz.opv}}, социальные отчисления {{kz.so}} и взносы на ОСМС {{kz.vosms-ip[stavka]}} от {{kz.vosms-ip[baza-mzp]}} МЗП. Для упрощенки и общего режима.",
   intro: [

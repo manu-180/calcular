@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pt.simulador-irs",
-  h1: "Simulador de IRS 2026",
-  title: "Simulador de IRS 2026: escalões, deduções e reembolso",
+  h1: "Simulador de IRS {{anio}}",
+  title: "Simulador de IRS {{anio}}: escalões, deduções e reembolso",
   description:
-    "Simule o IRS de 2026 sobre salários com os novos escalões, a dedução específica, o mínimo de existência de {{pt.irs-minimo-existencia}} e as deduções à coleta.",
+    "Simule o IRS de {{anio}} sobre salários com os novos escalões, a dedução específica, o mínimo de existência de {{pt.irs-minimo-existencia}} e as deduções à coleta.",
   intro: [
     "O IRS de um ano apura-se na declaração entregue no ano seguinte. Este simulador faz as contas para rendimentos do trabalho dependente recebidos em 2026.",
     "Indique o rendimento bruto anual, os dependentes e as despesas gerais familiares. Se souber o IRS retido, vê também se terá reembolso.",

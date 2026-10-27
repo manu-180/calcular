@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.bijtelling-berekenen",
-  h1: "Bijtelling auto van de zaak berekenen 2026",
-  title: "Bijtelling 2026 berekenen: auto van de zaak en elektrisch",
+  h1: "Bijtelling auto van de zaak berekenen {{anio}}",
+  title: "Bijtelling {{anio}} berekenen: auto van de zaak en elektrisch",
   description:
-    "Bereken de bijtelling voor je auto van de zaak in 2026: {{nl.bijtelling[algemeen]}} van de cataloguswaarde, met korting voor elektrische auto's. Met wat de auto je netto kost.",
+    "Bereken de bijtelling voor je auto van de zaak in {{anio}}: {{nl.bijtelling[algemeen]}} van de cataloguswaarde, met korting voor elektrische auto's. Met wat de auto je netto kost.",
   intro: [
     "Mag je een auto van de zaak ook privé gebruiken, dan tel je een bedrag bij je inkomen op: de bijtelling. Voor de meeste auto's is dat {{nl.bijtelling[algemeen]}} van de cataloguswaarde per jaar.",
     "Voor een auto zonder CO2-uitstoot geldt een korting op de bijtelling, tot een maximale cataloguswaarde (de cap). Hoe groot die korting is, hangt af van het jaar waarin de auto voor het eerst op de weg kwam.",

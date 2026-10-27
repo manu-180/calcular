@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lk.minimum-wage",
   h1: "Minimum wage in Sri Lanka",
-  title: "Minimum wage Sri Lanka 2026: monthly and daily rates",
+  title: "Minimum wage Sri Lanka {{anio}}: monthly and daily rates",
   description:
     "The national minimum wage is {{lk.minimum-wage-monthly}} a month and {{lk.minimum-wage-daily}} a day. Check whether your wage meets it.",
   intro: [

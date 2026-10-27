@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy.eisfores-koinonikon-asfaliseon",
   h1: "Υπολογισμός εισφορών Κοινωνικών Ασφαλίσεων",
-  title: "Εισφορές Κοινωνικών Ασφαλίσεων και ΓεΣΥ 2026",
+  title: "Εισφορές Κοινωνικών Ασφαλίσεων και ΓεΣΥ {{anio}}",
   description:
     "Δείτε τις εισφορές μισθωτού και εργοδότη: Κοινωνικές Ασφαλίσεις {{cy.eisfora-ka-misthotou}}, ΓεΣΥ, Ταμείο Συνοχής, Πλεονασμού και Αδειών.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.cout-employeur",
   h1: "حساب كلفة العامل على صاحب العمل في الجزائر",
-  title: "كلفة صاحب العمل في الجزائر 2026: الأجر وأعباء CNAS",
+  title: "كلفة صاحب العمل في الجزائر {{anio}}: الأجر وأعباء CNAS",
   description:
     "احسب ما يكلفه العامل للمؤسسة في الجزائر: الأجر الإجمالي، وحصة صاحب العمل البالغة {{dz.cnas[employeur]}}، وحصة الخدمات الاجتماعية.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.vypovedni-doba",
   h1: "Výpočet výpovědní doby",
-  title: "Výpovědní doba 2026: kdy skončí pracovní poměr",
+  title: "Výpovědní doba {{anio}}: kdy skončí pracovní poměr",
   description:
     "Zjistěte, kdy skončí výpovědní doba a pracovní poměr. Od 1. 6. 2025 běží výpovědní doba ode dne doručení výpovědi, kalkulačka zná i dřívější pravidla.",
   intro: [

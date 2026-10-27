@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.conge-maternite",
   h1: "Congé de maternité et de paternité en Tunisie",
-  title: "Congé maternité Tunisie 2026 : dates et durée",
+  title: "Congé maternité Tunisie {{anio}} : dates et durée",
   description:
     "Calculez vos dates de congé de maternité en Tunisie selon la loi n° 2024-44 : prénatal, {{tn.conges-maternite[naissance-mois]}} mois de congé de naissance, postnatal et congé de paternité.",
   intro: [

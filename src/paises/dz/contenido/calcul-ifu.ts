@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.calcul-ifu",
   h1: "Calcul de l'IFU en Algérie",
-  title: "Calcul IFU Algérie 2026 : impôt forfaitaire unique",
+  title: "Calcul IFU Algérie {{anio}} : impôt forfaitaire unique",
   description:
     "Calculez l'impôt forfaitaire unique : {{dz.ifu-taux[biens]}} pour la vente de biens, {{dz.ifu-taux[autres]}} pour les autres activités, {{dz.ifu-taux[auto-entrepreneur]}} pour l'auto-entrepreneur.",
   intro: [

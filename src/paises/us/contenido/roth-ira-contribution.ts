@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.roth-ira-contribution",
   h1: "Roth IRA contribution calculator",
-  title: "Roth IRA Contribution Limit Calculator 2026",
+  title: "Roth IRA Contribution Limit Calculator {{anio}}",
   description:
-    "Find how much you can put in a Roth IRA in 2026 based on your income and filing status. Limit of {{us.ira-limit}}, catch-up at 50 and the IRS phase-out worksheet.",
+    "Find how much you can put in a Roth IRA in {{anio}} based on your income and filing status. Limit of {{us.ira-limit}}, catch-up at 50 and the IRS phase-out worksheet.",
   intro: [
     "The Roth IRA limit shrinks as your income rises and disappears above a certain level. Enter your modified AGI and filing status to see your personal limit for 2026.",
   ],

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.employer-cost",
   h1: "حساب تكلفة الموظف على صاحب العمل",
-  title: "تكلفة الموظف على الشركة في مصر 2026: المرتب والتأمينات",
+  title: "تكلفة الموظف على الشركة في مصر {{anio}}: المرتب والتأمينات",
   description:
     "احسب ما يكلفه الموظف شهريًا وسنويًا: المرتب الإجمالي مع حصة صاحب العمل في التأمينات الاجتماعية على أجر اشتراك حده الأقصى {{eg.si-wage-max}}.",
   intro: [

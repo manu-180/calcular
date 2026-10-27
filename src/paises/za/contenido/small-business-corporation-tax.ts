@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "za.small-business-corporation-tax",
   h1: "Small business corporation tax calculator",
   title: "SBC tax calculator: small business corporation rates",
-  description: "Work out company tax for a small business corporation with the SARS rates for years ending from 1 April 2026 to 31 March 2027: 0%, 7%, 21% and 27%.",
+  description: "Work out company tax for a small business corporation with the SARS rates for years ending from 1 April {{anio}} to 31 March 2027: 0%, 7%, 21% and 27%.",
   intro: [
     "A small business corporation (SBC) pays company tax on a sliding scale instead of the normal rate of {{za.company-tax-rate}}. Enter the company's taxable income to see the tax and the saving.",
     "The rates apply to years of assessment ending on any date from 1 April 2026 to 31 March 2027.",

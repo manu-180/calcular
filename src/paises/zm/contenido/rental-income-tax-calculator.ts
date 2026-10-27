@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "zm.rental-income-tax-calculator",
   h1: "Rental income tax calculator Zambia",
-  title: "Rental income tax calculator Zambia 2026",
+  title: "Rental income tax calculator Zambia {{anio}}",
   description:
     "Work out the rental income tax a landlord pays ZRA: {{zm.rental-bands-monthly[1].tasa}} up to {{zm.rental-bands-annual[1].hasta}} a year and {{zm.rental-bands-annual[2].tasa}} above it, with the first band at 0%.",
   intro: [

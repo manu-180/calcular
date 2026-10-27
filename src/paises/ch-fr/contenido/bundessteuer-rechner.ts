@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-fr.bundessteuer-rechner",
   h1: "Calcul de l'impôt fédéral direct",
-  title: "Impôt fédéral direct 2026 : calculer l'IFD",
-  description: "Impôt fédéral direct 2026 pour personnes seules, couples mariés et familles : barème de l'art. 36 LIFD, réduction de {{ch.dbst-kinderermaessigung}} par enfant, taux marginal.",
+  title: "Impôt fédéral direct {{anio}} : calculer l'IFD",
+  description: "Impôt fédéral direct {{anio}} pour personnes seules, couples mariés et familles : barème de l'art. 36 LIFD, réduction de {{ch.dbst-kinderermaessigung}} par enfant, taux marginal.",
   intro: [
     "L'impôt fédéral direct est la part de l'impôt sur le revenu qui revient à la Confédération. Le canton et la commune perçoivent leurs propres impôts en plus, qui ne sont pas compris ici.",
     "Le barème est le même dans tout le pays. Le Département fédéral des finances adapte les tranches en raison de la progression à froid, en dernier lieu pour 2026 et 2027. Le calculateur prend le barème de l'année où vous calculez.",

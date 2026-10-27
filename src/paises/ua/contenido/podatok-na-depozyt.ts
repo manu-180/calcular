@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ua.podatok-na-depozyt",
   h1: "Депозитний калькулятор з податками",
-  title: "Депозитний калькулятор 2026: дохід після податків",
+  title: "Депозитний калькулятор {{anio}}: дохід після податків",
   description:
     "Порахуйте дохід від депозиту після ПДФО {{ua.pdfo}} і військового збору {{ua.viiskovyi-zbir}}, з капіталізацією або без, і чисту дохідність у відсотках річних.",
   intro: [

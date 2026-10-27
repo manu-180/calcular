@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pk.regular-income-certificate-calculator",
   h1: "Regular Income Certificate calculator",
-  title: "Regular Income Certificate (RIC) profit calculator 2026",
+  title: "Regular Income Certificate (RIC) profit calculator {{anio}}",
   description: "Monthly profit on National Savings Regular Income Certificates at {{pk.nss-rates[ric]}}, after withholding tax for filers or non-filers.",
   intro: ["Regular Income Certificates pay you a profit every month. Enter the amount to see the income before and after tax."],
   comoSeCalcula: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "no.kontantstotte",
   h1: "Kontantstøtte: regn ut hva du får med og uten barnehage",
-  title: "Kontantstøtte 2026: satser og kalkulator",
+  title: "Kontantstøtte {{anio}}: satser og kalkulator",
   description:
     "Full kontantstøtte er {{no.kontantstotte}} i måneden. Se hva du får med deltid i barnehage, og hvor mye det blir for hele perioden på {{no.kontantstotte-maaneder}}.",
   intro: [

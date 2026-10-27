@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.calcul-tva",
   h1: "حساب الرسم على القيمة المضافة في الجزائر: {{dz.tva-normal}} و{{dz.tva-reduit}}",
-  title: "حساب الرسم على القيمة المضافة في الجزائر 2026",
+  title: "حساب الرسم على القيمة المضافة في الجزائر {{anio}}",
   description:
     "أضف الرسم على القيمة المضافة أو استخرجه بالنسبة العادية {{dz.tva-normal}} أو بالنسبة المخفضة {{dz.tva-reduit}}، وانتقل من المبلغ خارج الرسم إلى المبلغ بكل الرسوم والعكس.",
   intro: [

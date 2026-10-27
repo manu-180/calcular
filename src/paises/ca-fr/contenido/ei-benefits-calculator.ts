@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.ei-benefits-calculator",
-  h1: "Calcul des prestations d'assurance-emploi 2026",
-  title: "Assurance-emploi 2026 : combien vais-je recevoir?",
-  description: "Estimez vos prestations régulières d'assurance-emploi en 2026 : {{ca.ei-benefit-rate}} de votre rémunération hebdomadaire assurable moyenne, jusqu'à {{ca.ei-max-weekly-benefit}} par semaine.",
+  h1: "Calcul des prestations d'assurance-emploi {{anio}}",
+  title: "Assurance-emploi {{anio}} : combien vais-je recevoir?",
+  description: "Estimez vos prestations régulières d'assurance-emploi en {{anio}} : {{ca.ei-benefit-rate}} de votre rémunération hebdomadaire assurable moyenne, jusqu'à {{ca.ei-max-weekly-benefit}} par semaine.",
   intro: [
     "Inscrivez votre rémunération hebdomadaire assurable moyenne pour estimer vos prestations régulières d'assurance-emploi avant impôt.",
     "Pour la plupart des gens, l'assurance-emploi verse {{ca.ei-benefit-rate}} de la rémunération hebdomadaire moyenne, avec un maximum de {{ca.ei-max-weekly-benefit}} par semaine en 2026.",

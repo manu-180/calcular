@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.semesterdagar",
   h1: "Räkna ut hur många betalda semesterdagar du har",
-  title: "Semesterdagar 2026: räkna ut dina betalda semesterdagar",
+  title: "Semesterdagar {{anio}}: räkna ut dina betalda semesterdagar",
   description:
     "Räkna ut hur många betalda semesterdagar du har tjänat in enligt semesterlagen. Alla har rätt till {{se.semesterdagar}} semesterdagar, men alla är inte betalda.",
   intro: [

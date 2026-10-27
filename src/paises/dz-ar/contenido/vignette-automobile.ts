@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz-ar.vignette-automobile",
   h1: "سعر قسيمة السيارات في الجزائر",
-  title: "قسيمة السيارات في الجزائر 2026: التعريفة حسب القوة والعمر",
+  title: "قسيمة السيارات في الجزائر {{anio}}: التعريفة حسب القوة والعمر",
   description:
     "اعرف تعريفة قسيمة السيارات في الجزائر حسب القوة الجبائية وعمر المركبة، من {{dz.vignette[6cv-plus-10]}} إلى {{dz.vignette-10cv[moins-3]}}.",
   intro: [

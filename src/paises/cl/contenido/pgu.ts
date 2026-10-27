@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.pgu",
-  h1: "Calculadora de PGU 2026",
-  title: "PGU 2026: calcula tu Pensión Garantizada Universal",
+  h1: "Calculadora de PGU {{anio}}",
+  title: "PGU {{anio}}: calcula tu Pensión Garantizada Universal",
   description:
     "Calcula tu PGU según tu edad y tu pensión base: {{cl.pgu-maxima[menor-75]}} de 65 a 74 años y {{cl.pgu-maxima[75-o-mas]}} desde los 75. Montos de ChileAtiende.",
   intro: [

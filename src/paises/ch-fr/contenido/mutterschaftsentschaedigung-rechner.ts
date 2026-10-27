@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-fr.mutterschaftsentschaedigung-rechner",
   h1: "Calcul de l'allocation de maternité",
-  title: "Allocation de maternité : calcul de l'indemnité APG 2026",
+  title: "Allocation de maternité : calcul de l'indemnité APG {{anio}}",
   description: "Allocation de maternité APG : {{ch.eo-taggeld-satz}} du revenu, au plus {{ch.eo-hoechstbetrag-taggeld}} par jour, pendant {{ch.mutterschaft-tage}} jours. Indemnité et montant total.",
   intro: [
     "Après la naissance, les mères exerçant une activité lucrative reçoivent une allocation de maternité du régime des allocations pour perte de gain (APG). Elle s'élève à {{ch.eo-taggeld-satz}} du revenu moyen avant la naissance, au plus {{ch.eo-hoechstbetrag-taggeld}} par jour.",

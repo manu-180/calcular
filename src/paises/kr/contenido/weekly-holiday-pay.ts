@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.weekly-holiday-pay",
   h1: "주휴수당 계산기",
-  title: "주휴수당 계산기 2026 | 알바 주휴수당 계산",
+  title: "주휴수당 계산기 {{anio}} | 알바 주휴수당 계산",
   description:
     "시급과 1주 근무시간을 넣으면 주휴수당과 한 달 주휴수당, 주휴수당을 포함한 주급을 계산해요. 주 15시간 미만인지도 함께 알려 줘요.",
   intro: [

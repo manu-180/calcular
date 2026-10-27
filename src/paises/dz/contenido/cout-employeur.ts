@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dz.cout-employeur",
   h1: "Calcul du coût employeur d'un salarié en Algérie",
-  title: "Coût employeur Algérie 2026 : salaire et charges CNAS",
+  title: "Coût employeur Algérie {{anio}} : salaire et charges CNAS",
   description:
     "Calculez ce que coûte un salarié à l'entreprise en Algérie : salaire brut, part patronale de {{dz.cnas[employeur]}} et quote-part des œuvres sociales.",
   intro: [
