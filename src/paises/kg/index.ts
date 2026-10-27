@@ -38,6 +38,10 @@ import bolnichnye from "./calculadoras/bolnichnye";
 import contenidoBolnichnye from "./contenido/bolnichnye";
 import dekretnye from "./calculadoras/dekretnye";
 import contenidoDekretnye from "./contenido/dekretnye";
+import kursValyut from "./calculadoras/kurs-valyut";
+import contenidoKursValyut from "./contenido/kurs-valyut";
+import kalkulyatorInflyatsii from "./calculadoras/kalkulyator-inflyatsii";
+import contenidoKalkulyatorInflyatsii from "./contenido/kalkulyator-inflyatsii";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -69,6 +73,8 @@ export default definirPais({
     { definicion: zaderzhkaZarplaty, contenido: contenidoZaderzhkaZarplaty, cliente: () => import("./calculadoras/zaderzhka-zarplaty.cliente") },
     { definicion: bolnichnye, contenido: contenidoBolnichnye, cliente: () => import("./calculadoras/bolnichnye.cliente") },
     { definicion: dekretnye, contenido: contenidoDekretnye, cliente: () => import("./calculadoras/dekretnye.cliente") },
+    { definicion: kursValyut, contenido: contenidoKursValyut, cliente: () => import("./calculadoras/kurs-valyut.cliente") },
+    { definicion: kalkulyatorInflyatsii, contenido: contenidoKalkulyatorInflyatsii, cliente: () => import("./calculadoras/kalkulyator-inflyatsii.cliente") },
   ],
   universales: "todas",
   novedades,
