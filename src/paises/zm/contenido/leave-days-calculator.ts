@@ -5,13 +5,13 @@ export default definirContenido({
   h1: "Leave days and leave pay calculator",
   title: "Leave days calculator Zambia: days earned and leave pay",
   description:
-    "Work out your annual leave days at {{zm.leave-days-per-month}} days a month and what they are worth with the Employment Code formula: full pay × days ÷ {{zm.leave-pay-divisor}}.",
+    "Work out your annual leave days at {{zm.leave-days-per-month}} a month and what they are worth under the leave pay formula of the Employment Code.",
   intro: [
     "Enter your monthly pay, the months that count and the days you have taken. You get the days still due and the leave pay for them.",
     "Use it for leave pay on a payslip, for selling leave days back to your employer, or for the leave due when a contract ends.",
   ],
   comoSeCalcula: [
-    "You earn at least {{zm.leave-days-per-month}} days of annual leave for every month of continuous service.",
+    "You earn at least {{zm.leave-days-per-month}} of annual leave for every month of continuous service.",
     "Leave pay follows the Fifth Schedule of the Employment Code: full pay multiplied by the days due, divided by {{zm.leave-pay-divisor}}.",
   ],
   ejemplo: ["After 12 months on K5,200 a month you have 24 days due, worth K5,200 × 24 ÷ 26 = K4,800."],

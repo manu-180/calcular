@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Notice period calculator Zambia",
   title: "Notice period Zambia: how much notice the law requires",
   description:
-    "Check the minimum notice under the Employment Code when the contract says nothing: from 24 hours up to {{zm.notice-days-long}} days, with the date it runs out.",
+    "Check the minimum notice under the Employment Code when the contract says nothing: from {{zm.notice-hours-monthly}} up to {{zm.notice-days-long}}, with the date it runs out.",
   intro: [
     "Choose how long the contract of employment is and the day notice is given. You get the minimum notice and the date it runs until.",
     "These periods apply when the contract does not set its own notice period.",

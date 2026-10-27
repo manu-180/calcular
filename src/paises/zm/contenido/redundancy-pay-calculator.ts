@@ -3,17 +3,17 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "zm.redundancy-pay-calculator",
   h1: "Redundancy pay calculator Zambia",
-  title: "Redundancy pay calculator Zambia: 2 months per year",
+  title: "Redundancy pay calculator Zambia: your minimum package",
   description:
-    "Minimum redundancy package under the Employment Code: {{zm.redundancy-months}} months' basic pay per year served. Also covers death in service and medical discharge.",
+    "Minimum redundancy package under the Employment Code: {{zm.redundancy-months}} of basic pay per year served. Also covers death in service and medical discharge.",
   intro: [
     "Choose why the job ended, then enter the basic pay and the completed years of service.",
     "The result is the legal minimum. A collective agreement or your contract can give you more, never less.",
   ],
   comoSeCalcula: [
-    "Redundancy: at least {{zm.redundancy-months}} months' basic pay for every year served.",
-    "Death in service: {{zm.redundancy-months}} months' basic pay for each year served, paid to the estate if needed.",
-    "Medical discharge: at least {{zm.medical-discharge-months}} months' basic pay for each completed year of service, on top of other accrued benefits.",
+    "Redundancy: at least {{zm.redundancy-months}} of basic pay for every year served.",
+    "Death in service: {{zm.redundancy-months}} of basic pay for each year served, paid to the estate if needed.",
+    "Medical discharge: at least {{zm.medical-discharge-months}} of basic pay for each completed year of service, on top of other accrued benefits.",
   ],
   ejemplo: ["Five years on basic pay of K6,000 ends in a redundancy package of at least 10 months' pay, K60,000."],
   faq: [

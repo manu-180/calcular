@@ -25,7 +25,7 @@ export default definirContenido({
     },
     {
       pregunta: "Can my employer ask me to work extra hours without pay?",
-      respuesta: "Only if you agree and your total stays within {{zm.weekly-hours}} hours a week, or a lower limit in your contract or collective agreement. Above that, overtime has to be paid.",
+      respuesta: "Only if you agree and your total stays within {{zm.weekly-hours}} a week, or a lower limit in your contract or collective agreement. Above that, overtime has to be paid.",
     },
     {
       pregunta: "What breaks am I entitled to?",
