@@ -32,6 +32,14 @@ import impotRevenusFonciers from "./calculadoras/impot-revenus-fonciers";
 import contenidoImpotRevenusFonciers from "./contenido/impot-revenus-fonciers";
 import calculIrcm from "./calculadoras/calcul-ircm";
 import contenidoCalculIrcm from "./contenido/calcul-ircm";
+import convertisseurEuroFcfa from "./calculadoras/convertisseur-euro-fcfa";
+import contenidoConvertisseurEuroFcfa from "./contenido/convertisseur-euro-fcfa";
+import convertisseurDollarFcfa from "./calculadoras/convertisseur-dollar-fcfa";
+import contenidoConvertisseurDollarFcfa from "./contenido/convertisseur-dollar-fcfa";
+import ageDeDepartALaRetraite from "./calculadoras/age-de-depart-a-la-retraite";
+import contenidoAgeDeDepartALaRetraite from "./contenido/age-de-depart-a-la-retraite";
+import assuranceVolontaireCnss from "./calculadoras/assurance-volontaire-cnss";
+import contenidoAssuranceVolontaireCnss from "./contenido/assurance-volontaire-cnss";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -62,6 +70,10 @@ export default definirPais({
     { definicion: impotSurLesBenefices, contenido: contenidoImpotSurLesBenefices, cliente: () => import("./calculadoras/impot-sur-les-benefices.cliente") },
     { definicion: impotRevenusFonciers, contenido: contenidoImpotRevenusFonciers, cliente: () => import("./calculadoras/impot-revenus-fonciers.cliente") },
     { definicion: calculIrcm, contenido: contenidoCalculIrcm, cliente: () => import("./calculadoras/calcul-ircm.cliente") },
+    { definicion: convertisseurEuroFcfa, contenido: contenidoConvertisseurEuroFcfa, cliente: () => import("./calculadoras/convertisseur-euro-fcfa.cliente") },
+    { definicion: convertisseurDollarFcfa, contenido: contenidoConvertisseurDollarFcfa, cliente: () => import("./calculadoras/convertisseur-dollar-fcfa.cliente") },
+    { definicion: ageDeDepartALaRetraite, contenido: contenidoAgeDeDepartALaRetraite, cliente: () => import("./calculadoras/age-de-depart-a-la-retraite.cliente") },
+    { definicion: assuranceVolontaireCnss, contenido: contenidoAssuranceVolontaireCnss, cliente: () => import("./calculadoras/assurance-volontaire-cnss.cliente") },
   ],
   universales: "todas",
 });

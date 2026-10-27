@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bf.indemnite-maladie",
   h1: "Salaire pendant un arrêt maladie",
-  title: "Arrêt maladie Burkina Faso : salaire maintenu par l'employeur",
+  title: "Arrêt maladie Burkina Faso : salaire maintenu",
   description:
     "Calculez ce que l'employeur verse pendant une absence pour maladie non professionnelle : mois à plein salaire puis à demi-salaire selon l'ancienneté.",
   intro: [

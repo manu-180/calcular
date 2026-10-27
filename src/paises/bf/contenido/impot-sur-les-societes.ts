@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bf.impot-sur-les-societes",
   h1: "Calcul de l'impôt sur les sociétés",
-  title: "Impôt sur les sociétés Burkina Faso : IS et minimum forfaitaire",
+  title: "Impôt sur les sociétés Burkina Faso : IS et minimum",
   description:
     "Calculez l'impôt sur les sociétés à {{bf.is-taux}} et le minimum forfaitaire de perception de {{bf.mfp-taux}} du chiffre d'affaires. Le plus élevé est dû.",
   intro: [
