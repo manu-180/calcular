@@ -1089,6 +1089,134 @@
           }
         }
       ]
+    },
+    {
+      "id": "dz.retraite",
+      "nombre": "Pension de retraite : annuité et taux maximal",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "annuite": "Taux par année validée",
+        "plafond": "Taux maximal"
+      },
+      "nota": "Articles 12 et 17 de la loi n° 83-12 : 2,5 % du salaire mensuel soumis à cotisation par année validée ; le montant net de la pension ne peut dépasser 80 % du salaire net de cotisations et d'impôt. Ni l'ordonnance n° 97-13 ni la loi n° 16-15 ne modifient ces articles.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": {
+            "annuite": 2.5,
+            "plafond": 80
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-18 du 6 juillet 1996 modifiant et complétant la loi n° 83-12 relative à la retraite (JO n° 42 de 1996), articles 7 et 10 modifiant les articles 12 et 17",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.retraite-conditions",
+      "nombre": "Pension de retraite : conditions d'âge et de durée",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "age": "Âge minimal",
+        "age-femme": "Âge minimal pour une femme, à sa demande",
+        "duree": "Durée de travail minimale"
+      },
+      "nota": "Article 6 de la loi n° 83-12 : 60 ans au moins (55 ans révolus pour une femme qui le demande) et 15 ans de travail, dont au moins sept ans et demi de travail effectif cotisé. La retraite sans condition d'âge est abrogée depuis le 1er janvier 2017.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": {
+            "age": 60,
+            "age-femme": 55,
+            "duree": 15
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 16-15 du 31 décembre 2016 modifiant et complétant la loi n° 83-12 relative à la retraite (JO n° 78 de 2016), article 2 modifiant l'article 6",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2016/F2016078.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.maladie-taux",
+      "nombre": "Arrêt maladie : taux de l'indemnité journalière",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "reduit": "Du 1er au 15e jour",
+        "plein": "À partir du 16e jour, ou dès le 1er jour en cas de longue durée ou d'hospitalisation"
+      },
+      "nota": "Article 14 de la loi n° 83-11 : 50 % du salaire journalier net de cotisation et d'impôt du 1er au 15e jour (alinéa 2 modifié par l'ordonnance n° 96-17), 100 % à partir du 16e jour et dès le premier jour en cas de maladie de longue durée ou d'hospitalisation (alinéas 3 et 4 de 1983).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": {
+            "reduit": 50,
+            "plein": 100
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), article 7 modifiant l'article 14 ; loi n° 83-11 du 2 juillet 1983 (JO n° 28 de 1983), article 14",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.maladie-jours-reduits",
+      "nombre": "Arrêt maladie : jours indemnisés au taux réduit",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "Article 14 de la loi n° 83-11 modifié par l'ordonnance n° 96-17 : du premier au quinzième jour suivant l'arrêt de travail.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), article 7 modifiant l'article 14",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.indemnite-diviseur",
+      "nombre": "Indemnités journalières : diviseur du salaire mensuel",
+      "tipo": "numero",
+      "unidad": "factor",
+      "nota": "Article 15 de la loi n° 83-11 : l'indemnité journalière est due pour chaque jour, ouvrable ou non, et ne peut dépasser le trentième du salaire mensuel (le soixantième au taux de 50 %).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), article 8 modifiant l'article 15",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
     }
   ]
 }

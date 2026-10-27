@@ -44,6 +44,10 @@ import impotInteretsEpargne from "./calculadoras/impot-interets-epargne";
 import contenidoImpotInteretsEpargne from "./contenido/impot-interets-epargne";
 import plusValueCessionActions from "./calculadoras/plus-value-cession-actions";
 import contenidoPlusValueCessionActions from "./contenido/plus-value-cession-actions";
+import pensionDeRetraite from "./calculadoras/pension-de-retraite";
+import contenidoPensionDeRetraite from "./contenido/pension-de-retraite";
+import indemniteArretMaladie from "./calculadoras/indemnite-arret-maladie";
+import contenidoIndemniteArretMaladie from "./contenido/indemnite-arret-maladie";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -78,6 +82,8 @@ export default definirPais({
     { definicion: plusValueImmobiliere, contenido: contenidoPlusValueImmobiliere, cliente: () => import("./calculadoras/plus-value-immobiliere.cliente") },
     { definicion: impotInteretsEpargne, contenido: contenidoImpotInteretsEpargne, cliente: () => import("./calculadoras/impot-interets-epargne.cliente") },
     { definicion: plusValueCessionActions, contenido: contenidoPlusValueCessionActions, cliente: () => import("./calculadoras/plus-value-cession-actions.cliente") },
+    { definicion: pensionDeRetraite, contenido: contenidoPensionDeRetraite, cliente: () => import("./calculadoras/pension-de-retraite.cliente") },
+    { definicion: indemniteArretMaladie, contenido: contenidoIndemniteArretMaladie, cliente: () => import("./calculadoras/indemnite-arret-maladie.cliente") },
   ],
   universales: "todas",
   novedades,

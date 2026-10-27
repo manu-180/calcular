@@ -14,7 +14,7 @@ export default definirContenido({
     "Début au plus tôt = date présumée de l'accouchement moins {{dz.maternite[avant-max]}}.",
     "Fin = début du congé plus {{dz.maternite[duree]}}, quel que soit le jour réel de l'accouchement.",
     "Indemnité = {{dz.maternite-taux}} du salaire soumis à cotisation, après déduction de la cotisation de sécurité sociale et de l'IRG.",
-    "Indemnité par semaine = salaire net mensuel × 12 ÷ 52, puis multipliée par la durée du congé.",
+    "Indemnité journalière = salaire net mensuel ÷ {{dz.indemnite-diviseur}}, versée pour chaque jour du congé, ouvrable ou non.",
   ],
   faq: [
     {

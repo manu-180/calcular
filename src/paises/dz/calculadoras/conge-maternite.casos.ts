@@ -10,18 +10,18 @@ export default definirCasos(calculadora, [
       tipo: "recalculado",
       url: ORD9617,
       detalle:
-        "Articles 28 et 29 de la loi 83-11 : 14 semaines, au plus tôt 6 semaines avant le terme, à 100 % du salaire net. Début au plus tôt 3 novembre 2026, fin 8 février 2027. Net 47 558 ; par semaine 47 558 × 12 / 52 = 10 974,92 ; sur 14 semaines 153 648,88.",
+        "Articles 28 et 29 de la loi 83-11 : 14 semaines, au plus tôt 6 semaines avant le terme, à 100 % du salaire net. Début au plus tôt 3 novembre 2026, fin 8 février 2027. Net 47 558 ; indemnité journalière 47 558 / 30 = 1 585,27 (article 15) ; sur 98 jours 155 356,46.",
     },
     fecha: "2026-10-27",
     entrada: { terme: "2026-12-15", brut: 60000 },
-    esperado: { duree: 14, debut: "2026-11-03", fin: "2027-02-08", finTerme: "2027-03-22", mensuel: 47558, hebdo: 10974.92, total: 153648.88 },
+    esperado: { duree: 14, debut: "2026-11-03", fin: "2027-02-08", finTerme: "2027-03-22", mensuel: 47558, journaliere: 1585.27, jours: 98, total: 155356.46 },
   },
   {
     nombre: "SNMG de 24 000 DA brut",
-    origen: { tipo: "recalculado", url: ORD9617, detalle: "Net 21 840 sans IRG ; par semaine 5 040 ; sur 14 semaines 70 560." },
+    origen: { tipo: "recalculado", url: ORD9617, detalle: "Net 21 840 sans IRG ; 728 par jour ; sur 98 jours 71 344." },
     fecha: "2026-10-27",
     entrada: { terme: "2027-03-01", brut: 24000 },
-    esperado: { mensuel: 21840, hebdo: 5040, total: 70560, debut: "2027-01-18" },
+    esperado: { mensuel: 21840, journaliere: 728, total: 71344, debut: "2027-01-18" },
   },
   {
     nombre: "Salaire nul",
