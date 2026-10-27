@@ -1,0 +1,646 @@
+{
+  "mercado": "kg",
+  "datos": [
+    {
+      "id": "kg.rp",
+      "nombre": "Расчетный показатель",
+      "tipo": "numero",
+      "unidad": "KGS",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Постановление Жогорку Кенеша КР от 15 июня 2006 года № 1115-III «Об утверждении размера расчетного показателя»",
+            "url": "https://cbd.minjust.gov.kg/6-2385/edition/319737/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.mzp",
+      "nombre": "Минимальная заработная плата",
+      "tipo": "numero",
+      "unidad": "KGS",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3280,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Закон КР «О республиканском бюджете Кыргызской Республики на 2026 год и плановый период 2027-2028 годов» от 27 января 2026 года № 9, статья 14",
+            "url": "https://cbd.minjust.gov.kg/4-5709/edition/48719/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 3608,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Закон КР «О республиканском бюджете Кыргызской Республики на 2026 год и плановый период 2027-2028 годов» от 27 января 2026 года № 9, статья 14",
+            "url": "https://cbd.minjust.gov.kg/4-5709/edition/48719/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          },
+          "hasta": "2027-12-31"
+        }
+      ]
+    },
+    {
+      "id": "kg.podokhodnyy-nalog",
+      "nombre": "Ставка подоходного налога",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Налоговый кодекс КР от 18 января 2022 года № 3, статья 197",
+            "url": "https://cbd.minjust.gov.kg/112340/edition/57656/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.personalnyy-vychet-rp",
+      "nombre": "Персональный вычет в расчетных показателях за месяц",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 6.5,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Налоговый кодекс КР от 18 января 2022 года № 3, статья 194",
+            "url": "https://cbd.minjust.gov.kg/112340/edition/57656/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.vychet-izhdivenets-rp",
+      "nombre": "Вычет на каждого иждивенца в расчетных показателях за месяц",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Налоговый кодекс КР от 18 января 2022 года № 3, статья 194",
+            "url": "https://cbd.minjust.gov.kg/112340/edition/57656/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.sf-rabotnik",
+      "nombre": "Страховые взносы работника",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Закон КР «О тарифах страховых взносов по государственному социальному страхованию» от 24 января 2004 года № 8, статьи 2 и 2-2",
+            "url": "https://cbd.minjust.gov.kg/4-1330/edition/56528/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.sf-rabotodatel",
+      "nombre": "Страховые взносы работодателя",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "predprinimatel": "Субъект предпринимательства или НКО",
+        "obshchiy": "Бюджетная организация, банк, недропользователь, энергетика, связь, алкоголь, табак, ГСМ"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "predprinimatel": 2.25,
+            "obshchiy": 17.25
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Закон КР «О тарифах страховых взносов по государственному социальному страхованию» от 24 января 2004 года № 8, статьи 2 и 2-2",
+            "url": "https://cbd.minjust.gov.kg/4-1330/edition/56528/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.sf-predelnaya-baza",
+      "nombre": "Предельная база для страховых взносов в месяц (20 средних зарплат)",
+      "tipo": "numero",
+      "unidad": "KGS",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 720940,
+          "fuente": {
+            "organismo": "Государственная налоговая служба при Министерстве финансов КР",
+            "titulo": "ГНС: с 1 января 2026 года введен верхний предел для исчисления страховых взносов (средняя зарплата за предыдущий год 36 047 сомов, предельная база в 20 раз больше)",
+            "url": "https://sti.gov.kg/news?id=cb3108d0-4bfe-41bc-ae18-2c878edfade1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "kg.sf-minimum-dolya",
+      "nombre": "Минимальная база взносов работодателя в процентах от среднемесячной зарплаты",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "predprinimatel": "Субъект предпринимательства или НКО",
+        "obshchiy": "Организации со ставкой 17,25 %"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "predprinimatel": 100,
+            "obshchiy": 60
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Закон КР «О тарифах страховых взносов по государственному социальному страхованию» от 24 января 2004 года № 8, статья 13",
+            "url": "https://cbd.minjust.gov.kg/4-1330/edition/56528/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.nds",
+      "nombre": "Ставка НДС",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Налоговый кодекс КР от 18 января 2022 года № 3, статья 254",
+            "url": "https://cbd.minjust.gov.kg/112340/edition/57656/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.nalog-s-prodazh",
+      "nombre": "Ставки налога с продаж",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "torgovlya-nds": "Торговля и производство, с НДС",
+        "prochee-nds": "Другая деятельность, с НДС",
+        "torgovlya-bez-nds": "Торговля и производство, без НДС",
+        "prochee-bez-nds": "Другая деятельность, без НДС"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "torgovlya-nds": 1,
+            "prochee-nds": 2,
+            "torgovlya-bez-nds": 2,
+            "prochee-bez-nds": 3
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Налоговый кодекс КР от 18 января 2022 года № 3, статья 368",
+            "url": "https://cbd.minjust.gov.kg/112340/edition/57656/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.edinyy-nalog",
+      "nombre": "Ставки единого налога",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "torgovlya-do-50-mln": "Торговля, выручка за 12 месяцев до 50 млн сомов",
+        "torgovlya-nal": "Остальная торговля, наличные",
+        "torgovlya-beznal": "Остальная торговля, безналичные",
+        "proizvodstvo-nal": "Производство, переработка, туризм, разработка ПО, наличные",
+        "proizvodstvo-beznal": "Производство, переработка, туризм, разработка ПО, безналичные",
+        "prochee-nal": "Остальные виды деятельности, наличные",
+        "prochee-beznal": "Остальные виды деятельности, безналичные"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-06",
+          "valor": {
+            "torgovlya-do-50-mln": 0.5,
+            "torgovlya-nal": 4,
+            "torgovlya-beznal": 2,
+            "proizvodstvo-nal": 4,
+            "proizvodstvo-beznal": 2,
+            "prochee-nal": 6,
+            "prochee-beznal": 4
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Налоговый кодекс КР от 18 января 2022 года № 3, статья 423",
+            "url": "https://cbd.minjust.gov.kg/112340/edition/57656/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.nalog-na-pribyl",
+      "nombre": "Ставка налога на прибыль",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Налоговый кодекс КР от 18 января 2022 года № 3, статья 240",
+            "url": "https://cbd.minjust.gov.kg/112340/edition/57656/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.penya-nalog",
+      "nombre": "Пеня за каждый день просрочки налога",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 0.09,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Налоговый кодекс КР от 18 января 2022 года № 3, статья 82",
+            "url": "https://cbd.minjust.gov.kg/112340/edition/57656/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.penya-nalog-maks",
+      "nombre": "Предел пеней от суммы недоимки",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Налоговый кодекс КР от 18 января 2022 года № 3, статья 82",
+            "url": "https://cbd.minjust.gov.kg/112340/edition/57656/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.otpusk-dney",
+      "nombre": "Основной ежегодный оплачиваемый отпуск",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 68",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.dney-v-mesyatse",
+      "nombre": "Среднемесячное число календарных дней для отпускных",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": 29.6,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 95",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.sverkhurochnye",
+      "nombre": "Минимальная оплата сверхурочной работы и работы в выходной день",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "pervye-chasy": "Первые 2 часа сверхурочной работы",
+        "dalee": "Последующие сверхурочные часы",
+        "vykhodnoy": "Работа в выходной или праздничный день"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": {
+            "pervye-chasy": 1.5,
+            "dalee": 2,
+            "vykhodnoy": 2
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статьи 108 и 109",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.sverkhurochnye-polutornye-chasy",
+      "nombre": "Сверхурочные часы подряд, оплачиваемые в полуторном размере",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 108",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.vykhodnoe-posobie",
+      "nombre": "Выходное пособие в среднемесячных заработках",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "likvidatsiya": "Ликвидация организации",
+        "sokrashchenie": "Сокращение численности или штата",
+        "zdorovye": "Несоответствие должности по состоянию здоровья",
+        "pereezd": "Отказ от перевода в другую местность вместе с работодателем",
+        "prizyv": "Призыв на военную службу или перевод супруга в другую местность",
+        "vosstanovlenie": "Восстановление на этой работе прежнего работника"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": {
+            "likvidatsiya": 2,
+            "sokrashchenie": 2,
+            "zdorovye": 1,
+            "pereezd": 1,
+            "prizyv": 1,
+            "vosstanovlenie": 1
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 47",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.zaderzhka-zarplaty",
+      "nombre": "Компенсация за каждый день задержки зарплаты",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 95",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.bolnichnye-stazh",
+      "nombre": "Пособие за первые 10 рабочих дней болезни в зависимости от стажа",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "do-5": "Стаж до 5 лет",
+        "5-8": "Стаж от 5 до 8 лет",
+        "bolee-8": "Стаж свыше 8 лет"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-22",
+          "valor": {
+            "do-5": 60,
+            "5-8": 80,
+            "bolee-8": 100
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Положение о порядке предоставления пособия по временной нетрудоспособности, пособия по беременности и родам (постановление Правительства КР от 18 сентября 2018 года № 434), пункт 37",
+            "url": "https://cbd.minjust.gov.kg/12601/edition/52189/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.bolnichnye-dney-rabotodatel",
+      "nombre": "Рабочих дней, оплачиваемых по среднему заработку",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-22",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Положение о порядке предоставления пособия по временной нетрудоспособности, пособия по беременности и родам (постановление Правительства КР от 18 сентября 2018 года № 434), пункты 37 и 63",
+            "url": "https://cbd.minjust.gov.kg/12601/edition/52189/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.bolnichnye-rp",
+      "nombre": "Пособие по болезни с 11-го рабочего дня, расчетных показателей в месяц",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-22",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Положение о порядке предоставления пособия по временной нетрудоспособности, пособия по беременности и родам (постановление Правительства КР от 18 сентября 2018 года № 434), пункт 37",
+            "url": "https://cbd.minjust.gov.kg/12601/edition/52189/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.bolnichnye-porog-rp",
+      "nombre": "Зарплата, до которой больничный оплачивается полностью, расчетных показателей в месяц",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-22",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Положение о порядке предоставления пособия по временной нетрудоспособности, пособия по беременности и родам (постановление Правительства КР от 18 сентября 2018 года № 434), пункт 37",
+            "url": "https://cbd.minjust.gov.kg/12601/edition/52189/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.dekretnye-rp",
+      "nombre": "Пособие по беременности и родам с 11-го рабочего дня, расчетных показателей в месяц",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-22",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Положение о порядке предоставления пособия по временной нетрудоспособности, пособия по беременности и родам (постановление Правительства КР от 18 сентября 2018 года № 434), пункт 63",
+            "url": "https://cbd.minjust.gov.kg/12601/edition/52189/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kg.dekret-dni",
+      "nombre": "Отпуск по беременности и родам",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "obychnye": "Обычные роды (70 + 56 дней)",
+        "oslozhnennye": "Осложненные роды (70 + 70 дней)",
+        "dvoe": "Рождение двух и более детей (70 + 70 дней)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-28",
+          "valor": {
+            "obychnye": 126,
+            "oslozhnennye": 140,
+            "dvoe": 140
+          },
+          "fuente": {
+            "organismo": "Министерство юстиции КР (Централизованный банк данных правовой информации)",
+            "titulo": "Трудовой кодекс КР от 23 января 2025 года № 23, статья 148",
+            "url": "https://cbd.minjust.gov.kg/3-45/edition/57548/ru",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}
