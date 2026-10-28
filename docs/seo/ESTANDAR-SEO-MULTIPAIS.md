@@ -85,8 +85,20 @@ Lo que el check no mide y el agente tiene que hacer igual (está en el brief):
   palabras fueron estables en el core update de diciembre 2025; con ≥ 32 % fueron volátiles). Las
   universales son el riesgo: 40 por país que solo cambian moneda y ejemplo. Regla: a los 90 días de
   publicado un país, sus universales sin impresiones en Search Console salen del sitemap y pasan a
-  `noindex` (obra pendiente: automatizarlo en el Vigía; hasta entonces lo decide el informe semanal de
-  `mejora-continua`). Las locales nunca se podan por tráfico: se arreglan.
+  `noindex, follow`. Las locales nunca se podan por tráfico: se arreglan.
+  **Automático desde el 27/10/2026:** `scripts/poda-universales.ts` corre en la ronda mensual del día 1
+  (tarea `CalcularYa-Mensual`, con la cuenta de servicio de envkit `apex-manager`, y `mensual.yml` cuando
+  vuelva el billing de Actions). Lee Search Console de `sc-domain:calcularya.com` (90 días corridos 3 por
+  el atraso de la API) y suma a `src/motor/universales/podadas.json` cada universal con 0 impresiones de un
+  país publicado hace ≥ 90 días (primer commit con `estado: "publicado"` en su `mercado.ts`) y que exista
+  hace ≥ 90 días (primer commit de su carpeta). El motor la saca del sitemap, del clúster hreflang de las
+  demás ediciones y de `llms.txt`; la página sigue viva con `noindex, follow`, canonical propio y sin
+  hreflang (`check_poda`). Antes de publicar corren `check_poda` y `check_hreflang`; si dan rojo o la API
+  falla, la poda se descarta y el resto de la ronda sale igual. La poda es pegajosa: una podada no vuelve
+  sola (con noindex no junta impresiones); para devolverla se borra su línea del JSON. Si Search Console
+  devuelve 0 filas para todo el sitio no se escribe nada. Diagnóstico sin escribir:
+  `envkit run -p apex-manager --only GSC_SERVICE_ACCOUNT_JSON -- npx tsx scripts/poda-universales.ts --dry`
+  (`--sin-edad` muestra cuántas saldrían si todos los países ya tuvieran 90 días).
 - **Medir en Search Console, no en herramientas pagas**: calcular.ar y calcularya.com son dos propiedades
   (dominio); filtro Page regex `^https://calcularya\.com/mx/` + Country = MX; el export semanal por API ya
   existe (`scripts/medicion/informe.ts`) y el agente de los lunes lee las fugas por consulta.

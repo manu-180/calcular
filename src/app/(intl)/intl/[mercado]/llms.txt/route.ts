@@ -31,7 +31,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
       const lastmod = new Map((entradasDelMercado(registro, m.codigo) ?? []).map((e) => [e.url, e.lastmod]));
       const lineas = registro.calculadorasPublicables(m.codigo, fecha, modo).flatMap((c) => {
         const p = registro.pagina(m.codigo, c.definicion.slug, fecha, modo);
-        if (!p) return [];
+        if (!p || p.podada) return [];
         const url = urlIntl(m.codigo, c.definicion.slug);
         const al = lastmod.get(url);
         return [`- [${limpio(p.contenido.h1)}](${url}): ${limpio(p.contenido.description)}${al ? ` Data as of ${al}.` : ""}`];

@@ -150,6 +150,8 @@ async function main() {
           fallas.push(`[${modo}] ${m.codigo}/${c.definicion.slug}: publicable pero pagina() devuelve null`);
           continue;
         }
+        // Una universal podada no está en el sitemap ni en ningún clúster (check_poda lo revisa aparte).
+        if (p.podada) continue;
         const url = seo.urlIntl(m.codigo, c.definicion.slug);
         if (!publicadas.has(url)) fallas.push(`[${modo}] ${url}: se publica y no está en el sitemap del mercado`);
         const idiomas = seo.hreflangDe(p.calculadora.concepto, p.equivalentes);

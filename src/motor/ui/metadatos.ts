@@ -127,6 +127,7 @@ export function metadatosDe(ctx: ContextoSitio, r: PaginaIntl | null): MetadataS
     description,
     ...(idiomas ? { idiomas } : {}),
     imagen: imagenDe(ctx, r),
+    ...(r?.tipo === "calculadora" && r.pagina.podada ? { noindex: true } : {}),
   });
 }
 
