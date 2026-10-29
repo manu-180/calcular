@@ -1,0 +1,22 @@
+{
+  "mercado": "cv",
+  "avisos": [
+    {
+      "id": "cv.salario-minimo-2027",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "hasta": "2026-12-31",
+      "aplicaA": [
+        "cv.salario-minimo"
+      ],
+      "texto": "O Orçamento do Estado para 2026 prevê que o Governo promova o aumento do salário mínimo nacional para 25 000 escudos a partir de 2027. Até lá, vale o valor em vigor.",
+      "fuente": {
+        "organismo": "Boletim Oficial",
+        "titulo": "Lei n.º 69/X/2025, de 31 de dezembro (Orçamento do Estado para 2026), I Série n.º 133, suplemento, artigo 9.º",
+        "url": "https://boe.incv.cv/Bulletins/DownloadAct?id=89137",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      }
+    }
+  ]
+}
