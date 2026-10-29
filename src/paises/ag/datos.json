@@ -1,0 +1,669 @@
+{
+  "mercado": "ag",
+  "datos": [
+    {
+      "id": "ag.abst-rate",
+      "nombre": "ABST standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 17,
+          "fuente": {
+            "organismo": "Parliament of Antigua and Barbuda",
+            "titulo": "Revenue (Miscellaneous Provisions) Act, 2023 (No. 13 of 2023), section 2: amendment of section 8(3) of the Antigua and Barbuda Sales Tax Act 2006",
+            "url": "https://laws.gov.ag/wp-content/uploads/2024/02/No.-13-of-2023-Revenue-Miscellaneous-Provision-Act-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The Act was gazetted on 29 December 2023. The 1 January 2024 start date comes from the Inland Revenue Department announcement of 22 December 2023, which we could not open on ird.gov.ag."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.abst-return-days",
+      "nombre": "Days after the end of a tax period to lodge the ABST return",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Parliament of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Sales Tax (Amendment) Act 2024 (No. 1 of 2024), section 3",
+            "url": "https://laws.gov.ag/wp-content/uploads/2025/01/No.-1-of-2024-Antigua-and-Barbuda-Sales-Tax-Amendment-Act-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.ss-employee-rate",
+      "nombre": "Social Security employee contribution rate",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "private": "Private sector",
+        "public": "Public sector"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "private": 7,
+            "public": 6
+          },
+          "fuente": {
+            "organismo": "Antigua and Barbuda Social Security Board",
+            "titulo": "Media release of 31 December 2024: contribution rate adjustments for 2025",
+            "url": "https://socialsecurity.gov.ag/media-release-pension-contribution-rate-adjustments/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The table of employee and employer shares is an image on the page: private sector 7% employee and 9% employer, public sector 6% employee and 9% employer."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.ss-employer-rate",
+      "nombre": "Social Security employer contribution rate",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "private": "Private sector",
+        "public": "Public sector"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "private": 9,
+            "public": 9
+          },
+          "fuente": {
+            "organismo": "Antigua and Barbuda Social Security Board",
+            "titulo": "Media release of 31 December 2024: contribution rate adjustments for 2025",
+            "url": "https://socialsecurity.gov.ag/media-release-pension-contribution-rate-adjustments/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The table of employee and employer shares is an image on the page: private sector 7% employee and 9% employer, public sector 6% employee and 9% employer."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.ss-ceiling-monthly",
+      "nombre": "Maximum insurable earnings per month",
+      "tipo": "numero",
+      "unidad": "XCD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 6500,
+          "fuente": {
+            "organismo": "Antigua and Barbuda Social Security Board",
+            "titulo": "Contributions FAQs: maximum insurable earnings",
+            "url": "https://socialsecurity.gov.ag/contributions-faqs/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The page still quotes the 2021 rates; only the earnings ceiling is taken from it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.ss-ceiling-weekly",
+      "nombre": "Maximum insurable earnings per week",
+      "tipo": "numero",
+      "unidad": "XCD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "Antigua and Barbuda Social Security Board",
+            "titulo": "Contributions FAQs: maximum insurable earnings",
+            "url": "https://socialsecurity.gov.ag/contributions-faqs/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The page still quotes the 2021 rates; only the earnings ceiling is taken from it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.mbs-employee-rate",
+      "nombre": "Medical Benefits Scheme employee rate, aged 16 to 59",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-01-01",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Medical Benefits Regulations, 2011 (S.I. 2011 No. 27), regulation 17",
+            "url": "https://laws.gov.ag/wp-content/uploads/2020/07/No.-27-of-2011-Medical-benefits-Regulations-2011.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.mbs-employee-rate-60",
+      "nombre": "Medical Benefits Scheme employee rate, aged 60 to 69",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Medical Benefits Regulations, 2011 (S.I. 2011 No. 27), regulation 17",
+            "url": "https://laws.gov.ag/wp-content/uploads/2020/07/No.-27-of-2011-Medical-benefits-Regulations-2011.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.mbs-employer-rate",
+      "nombre": "Medical Benefits Scheme employer rate, employees under 60",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-01-01",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Medical Benefits Regulations, 2011 (S.I. 2011 No. 27), regulation 17",
+            "url": "https://laws.gov.ag/wp-content/uploads/2020/07/No.-27-of-2011-Medical-benefits-Regulations-2011.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.sickness-benefit-rate",
+      "nombre": "Social Security sickness benefit as a share of average weekly insurable earnings",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Antigua and Barbuda Social Security Board",
+            "titulo": "Sickness benefit",
+            "url": "https://socialsecurity.gov.ag/sickness/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.sickness-benefit-max-weeks",
+      "nombre": "Longest sickness benefit spell before a medical referral",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Antigua and Barbuda Social Security Board",
+            "titulo": "Sickness benefit",
+            "url": "https://socialsecurity.gov.ag/sickness/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.maternity-allowance-rate",
+      "nombre": "Maternity allowance as a share of average weekly insurable earnings",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Antigua and Barbuda Social Security Board",
+            "titulo": "Maternity benefits",
+            "url": "https://socialsecurity.gov.ag/maternity-benefits/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.maternity-allowance-weeks",
+      "nombre": "Maximum weeks of maternity allowance",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "Antigua and Barbuda Social Security Board",
+            "titulo": "Maternity benefits",
+            "url": "https://socialsecurity.gov.ag/maternity-benefits/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.maternity-min-weeks-averaged",
+      "nombre": "Fewest weeks worked used to average earnings for maternity allowance",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Antigua and Barbuda Social Security Board",
+            "titulo": "Maternity benefits",
+            "url": "https://socialsecurity.gov.ag/maternity-benefits/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.overtime-factor",
+      "nombre": "Premium pay: multiple of the basic hourly wage",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.normal-day-hours",
+      "nombre": "Hours in the standard work day",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.normal-week-hours",
+      "nombre": "Hours in the standard work week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 48,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.public-holiday-factor",
+      "nombre": "Public holiday work: multiple of the basic hourly wage, paid on top of the holiday wage",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.vacation-days-per-month",
+      "nombre": "Vacation days earned per month of employment after probation",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.sick-full-pay-days",
+      "nombre": "Sick days paid at the basic wage in each 12-month period",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.severance-days-per-month",
+      "nombre": "Severance pay: days of basic wage per month of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.severance-min-years",
+      "nombre": "Service that must be exceeded to qualify for severance pay",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.notice-max-days",
+      "nombre": "Longest statutory notice period",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.probation-max-months",
+      "nombre": "Longest probation period without a collective agreement",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Antigua and Barbuda Labour Code, Cap. 27 (consolidated text)",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/cap-27.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.ubt-sole-trader-bands",
+      "nombre": "Unincorporated Business Tax bands for a sole trader (chargeable income for the year)",
+      "tipo": "escala",
+      "unidad": "XCD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 42000,
+              "tasa": 0
+            },
+            {
+              "desde": 42000,
+              "hasta": 186000,
+              "tasa": 8
+            },
+            {
+              "desde": 186000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "Unincorporated Business Tax FAQ, questions 7, 10, 11 and 12",
+            "url": "https://ird.gov.ag/wp-content/uploads/2021/07/Unincorporated-Business-Tax-FAQ.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The document is dated 2021. We could not find a later schedule on ird.gov.ag."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.ubt-partner-step",
+      "nombre": "Amount added to each band limit for every extra partner",
+      "tipo": "numero",
+      "unidad": "XCD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-01",
+          "valor": 42000,
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "Unincorporated Business Tax FAQ, questions 7, 10, 11 and 12",
+            "url": "https://ird.gov.ag/wp-content/uploads/2021/07/Unincorporated-Business-Tax-FAQ.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The document is dated 2021. We could not find a later schedule on ird.gov.ag."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.ubt-late-filing-minimum",
+      "nombre": "Unincorporated Business Tax late filing penalty: fixed minimum",
+      "tipo": "numero",
+      "unidad": "XCD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-01",
+          "valor": 500,
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "Unincorporated Business Tax FAQ, questions 7, 10, 11 and 12",
+            "url": "https://ird.gov.ag/wp-content/uploads/2021/07/Unincorporated-Business-Tax-FAQ.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The document is dated 2021. We could not find a later schedule on ird.gov.ag."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.ubt-late-filing-rate",
+      "nombre": "Unincorporated Business Tax late filing penalty: share of tax owing",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Inland Revenue Department",
+            "titulo": "Unincorporated Business Tax FAQ, questions 7, 10, 11 and 12",
+            "url": "https://ird.gov.ag/wp-content/uploads/2021/07/Unincorporated-Business-Tax-FAQ.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The document is dated 2021. We could not find a later schedule on ird.gov.ag."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.education-levy-bands",
+      "nombre": "Education Levy bands on annual income",
+      "tipo": "escala",
+      "unidad": "XCD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "1994-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 6500,
+              "tasa": 0
+            },
+            {
+              "desde": 6500,
+              "hasta": 60000,
+              "tasa": 2.5
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 5
+            }
+          ],
+          "motivo": "Sections 13 and 14 of the Board of Education Act 1994 (laws.gov.ag, read today) set these bands but charge the levy only for the financial years 1994 to 1996. We found no current official page or later Act that confirms who pays it today and at what rate.",
+          "fuente": {
+            "organismo": "Laws of Antigua and Barbuda",
+            "titulo": "Board of Education Act 1994, sections 13 to 17",
+            "url": "https://laws.gov.ag/wp-content/uploads/2018/08/a1994-11.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ag.minimum-wage-hourly",
+      "nombre": "National minimum wage per hour",
+      "tipo": "numero",
+      "unidad": "XCD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-04-01",
+          "valor": 11.5,
+          "motivo": "Only seen in news reports and in employer guides. We found no Minimum Wage Order or Labour Department notice on an official site."
+        }
+      ]
+    },
+    {
+      "id": "ag.xcd-per-usd",
+      "nombre": "Eastern Caribbean dollars per US dollar (fixed parity)",
+      "tipo": "numero",
+      "unidad": "XCD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "1976-07-07",
+          "valor": 2.7,
+          "motivo": "The Eastern Caribbean Central Bank site returned an access error from our tools, so we could not read the parity on eccb-centralbank.org ourselves."
+        }
+      ]
+    }
+  ]
+}
