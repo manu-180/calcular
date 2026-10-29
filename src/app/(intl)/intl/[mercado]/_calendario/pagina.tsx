@@ -8,8 +8,8 @@ import type { CodigoMercado, Idioma } from "@/motor/tipos";
 import { contextoSitio } from "@/motor/ui/contexto";
 import { registro } from "@/paises";
 
-// Calendario laboral y fiscal, compartido por las carpetas de cada slug de SLUG_CALENDARIO (una por
-// idioma). Cada carpeta responde solo en las ediciones de su idioma; en otra, o sin fechas por
+// Calendario laboral y fiscal, una fábrica por idioma que usa la
+// ruta única i/calendario (src/motor/secciones.ts). Cada idioma responde solo en las ediciones de su idioma; en otra, o sin fechas por
 // delante, da el 404 intl.
 
 type Props = { params: Promise<{ mercado: string }> };

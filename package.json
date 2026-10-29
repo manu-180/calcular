@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "tsx scripts/gen_planilla_todas.ts",
-    "build": "next build",
+    "build": "node --max-old-space-size=6144 node_modules/next/dist/bin/next build --webpack",
     "start": "next start"
   },
   "dependencies": {

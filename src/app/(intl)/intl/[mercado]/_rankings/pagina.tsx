@@ -10,10 +10,10 @@ import type { Idioma } from "@/motor/tipos";
 import { registro } from "@/paises";
 import { resolverRanking, resolverRankings } from "./datos";
 
-// Índice de rankings (/<m>/<índice>) y cada ranking (/<m>/<índice>/<ranking>), compartidos por las
-// carpetas de cada slug de SLUG_RANKINGS (una por idioma). Cada carpeta solo responde en las
+// Índice de rankings (/<m>/<índice>) y cada ranking (/<m>/<índice>/<ranking>), una fábrica
+// por idioma que usa la ruta única i/rankings (src/motor/secciones.ts). Cada idioma solo responde en las
 // ediciones de su idioma; en otra da el 404 intl. Nada se prerenderiza en el build: cada edición se
-// pinta al primer pedido y queda en caché con el revalidate de la carpeta (ISR).
+// pinta al primer pedido y queda en caché con el revalidate de la ruta (ISR).
 
 type PropsIndice = { params: Promise<{ mercado: string }> };
 type PropsRanking = { params: Promise<{ mercado: string; ranking: string }> };
