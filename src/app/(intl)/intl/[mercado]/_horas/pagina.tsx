@@ -15,8 +15,8 @@ import { contextoSitio, type ContextoSitio } from "@/motor/ui/contexto";
 import { registro } from "@/paises";
 import { indicePublicado } from "./datos";
 
-// «¿Cuántas horas de trabajo cuesta?», compartida por las carpetas de cada slug de SLUG_HORAS (una por
-// idioma): /<m>/<slug> es el índice, /<m>/<slug>/<producto> la página de cada producto (indexable) y
+// «¿Cuántas horas de trabajo cuesta?», una fábrica por idioma que usa la ruta única
+// i/horas (src/motor/secciones.ts): /<m>/<slug> es el índice, /<m>/<slug>/<producto> la página de cada producto (indexable) y
 // /<m>/<slug>/<producto>/<iso> la tarjeta de un país para compartir (noindex, canonical al producto, OG
 // del país). Todo en el path y no en la query, así cada variante queda en caché (ISR).
 

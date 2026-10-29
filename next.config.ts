@@ -4,6 +4,7 @@ import path from "node:path";
 import type { NextConfig } from "next";
 import { reglasEmbed, RAIZ_INTERNA_EMBED, SEGMENTO_EMBED } from "./src/motor/embed/rutas";
 import { reglasPorHost } from "./src/motor/hosts";
+import { reglasSecciones } from "./src/motor/secciones";
 import { PAGINAS_GLOBALES } from "./src/motor/paginas";
 import { entornoDePrueba, modoPublicacion, origenAR, origenIntl } from "./src/motor/sitio";
 
@@ -218,7 +219,7 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
-    return { beforeFiles: [...REGLAS_EMBED, ...REGLAS_HOSTS.beforeFiles], afterFiles: [], fallback: REGLAS_HOSTS.fallback };
+    return { beforeFiles: [...REGLAS_EMBED, ...REGLAS_HOSTS.beforeFiles], afterFiles: reglasSecciones(), fallback: REGLAS_HOSTS.fallback };
   },
 };
 
