@@ -21,6 +21,45 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 29/10/2026 · Tanda 1 de países (grupo A): mg, bj, bb, cv, fj (`claude/paises-tanda-1`)
+
+Publicados: Madagascar (mg), Benín (bj), Barbados (bb), Cabo Verde (cv) y Fiyi (fj). Los cinco con
+`universales: "todas"` (cargadores generados, `mercados-registro.ts` regenerado, 118 mercados intl).
+Informes de cada agente en `scripts/paises/<m>/INFORME.md`.
+
+| País | Locales | Publicables | Borrador | Datos verificados |
+|---|---|---|---|---|
+| mg | 16 | 15 | calcul-salaire-net | 35 (2026-10-27, impots.mg, CGI LFI 2026) |
+| bj | 22 | 22 | ninguna | 45 (CGI 2026, Código del Trabajo, Ley 2017-05, BCEAO) |
+| bb | 19 | 17 | minimum-wage-calculator, property-transfer-tax-calculator | ver `scripts/paises/bb/INFORME.md` |
+| cv | 14 | 13 | euro-escudo | ver `scripts/paises/cv/INFORME.md` |
+| fj | 17 | 12 | annual-leave, overtime, redundancy-pay, maternity-leave, minimum-wage | 20 tramos verificados, 8 pendientes |
+
+Datos no verificados y motivo:
+- mg: calcul-salaire-net en borrador porque las cotizaciones CNaPS 1 % y OSTIE 1 % no tienen texto
+  oficial en línea.
+- bb: el aumento del salario mínimo 2026 solo está anunciado (minimum-wage-calculator en borrador);
+  la exención de 150 000 del property transfer tax no se pudo leer (property-transfer-tax-calculator
+  en borrador).
+- cv: la paridad euro-escudo no se pudo leer en bcv.cv (euro-escudo en borrador).
+- fj: la ERA 2007 no fue accesible, así que annual-leave, overtime, redundancy-pay y maternity-leave
+  quedan en borrador. El salario mínimo (FJ$4.50 desde 2024-08-01 y FJ$5.00 desde 2025-04-01) solo se
+  leyó en el discurso del presupuesto 2024-25 y la Legal Notice no fue accesible: se pasó a
+  `no-verificado` («solo leído en el discurso del presupuesto 2024-25; Legal Notice no accesible»),
+  minimum-wage pasó a borrador y se borró su `.casos.ts` (sin dato verificado no hay casos). La
+  novedad `fj.minimum-wage-5-2025` sigue publicada con su propia fuente.
+
+Riesgos:
+- bj: its-treizieme-mois interpreta el promedio del art. 126; la redevance ORTB de 4 000 F está fija
+  en el código.
+- bb: la indemnización se topa a los insurable earnings (interpretación); la pensión NIS usa solo la
+  base nueva.
+- cv: las convenciones se avisan en pantalla (día = retribución/30). Sin detectores.
+- fj: FNPF del empleador y la deducción del 150 % vencen el 31/7/2027.
+- Avisos de series: mg.convertisseur-ariary-euro y bj.convertisseur-dollar-fcfa dejan de ser
+  publicables si la serie de tipo de cambio no se actualiza (check_paises avisa a 30 días).
+- Fallas conocidas en main que siguen igual: `check_motor` forint, check_guiones de hu.
+
 ## 25/10/2026 · Integración de los motores de idioma (`claude/mundo-idiomas-integrado`)
 
 Una sola rama junta `claude/mundo-arreglos-2026-10-24` y los motores eu (pl, sv, da, nb, fi), ar, id,
