@@ -1,0 +1,648 @@
+{
+  "mercado": "ws",
+  "datos": [
+    {
+      "id": "ws.paye-fortnightly-bands",
+      "nombre": "Fortnightly PAYE bands",
+      "tipo": "escala",
+      "unidad": "WST",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-08-21",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 576,
+              "tasa": 0
+            },
+            {
+              "desde": 576,
+              "hasta": 962,
+              "tasa": 20
+            },
+            {
+              "desde": 962,
+              "hasta": null,
+              "tasa": 27
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Information Sheet IS02: Salary and Wage Tax (PAYE)",
+            "url": "https://revenue.gov.ws/wp-content/uploads/2026/10/IS02_Salary-and-Wage-Income-Tax-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.income-tax-bands",
+      "nombre": "Annual income tax bands for individuals and sole traders",
+      "tipo": "escala",
+      "unidad": "WST",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-04-28",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 15000,
+              "tasa": 0
+            },
+            {
+              "desde": 15000,
+              "hasta": 25000,
+              "tasa": 20
+            },
+            {
+              "desde": 25000,
+              "hasta": null,
+              "tasa": 27
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Information Sheet IS01: Income Tax",
+            "url": "https://revenue.gov.ws/wp-content/uploads/2026/10/IS01_Income-Tax-1-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.company-tax-rate",
+      "nombre": "Company income tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-04-28",
+          "valor": 27,
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Information Sheet IS01: Income Tax",
+            "url": "https://revenue.gov.ws/wp-content/uploads/2026/10/IS01_Income-Tax-1-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ],
+      "proximaRevision": "2027-07-01"
+    },
+    {
+      "id": "ws.resident-wht-rate",
+      "nombre": "Resident withholding tax on government contracts",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-04-28",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Information Sheet IS01: Income Tax",
+            "url": "https://revenue.gov.ws/wp-content/uploads/2026/10/IS01_Income-Tax-1-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.nonresident-wht-rate",
+      "nombre": "Non-resident withholding tax (general rate)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-04-28",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Information Sheet IS01: Income Tax",
+            "url": "https://revenue.gov.ws/wp-content/uploads/2026/10/IS01_Income-Tax-1-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.nonresident-wht-insurance-rate",
+      "nombre": "Non-resident withholding tax on life insurance premiums and reinsurance",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-04-28",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Information Sheet IS01: Income Tax",
+            "url": "https://revenue.gov.ws/wp-content/uploads/2026/10/IS01_Income-Tax-1-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.provisional-tax-instalments",
+      "nombre": "Provisional tax instalments a year",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-04-28",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Information Sheet IS01: Income Tax",
+            "url": "https://revenue.gov.ws/wp-content/uploads/2026/10/IS01_Income-Tax-1-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.provisional-tax-minimum",
+      "nombre": "Provisional tax liability below which the full amount is paid in March",
+      "tipo": "numero",
+      "unidad": "WST",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-04-28",
+          "valor": 500,
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Information Sheet IS01: Income Tax",
+            "url": "https://revenue.gov.ws/wp-content/uploads/2026/10/IS01_Income-Tax-1-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.vagst-rate",
+      "nombre": "VAGST rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Inland Revenue Services: types of taxes, VAGST and withholding tax",
+            "url": "https://revenue.gov.ws/inland-revenue-services/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ],
+      "proximaRevision": "2027-07-01"
+    },
+    {
+      "id": "ws.vagst-threshold",
+      "nombre": "VAGST registration threshold (annual turnover)",
+      "tipo": "numero",
+      "unidad": "WST",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 130000,
+          "fuente": {
+            "organismo": "Ministry for Revenue",
+            "titulo": "Inland Revenue Services: types of taxes, VAGST and withholding tax",
+            "url": "https://revenue.gov.ws/inland-revenue-services/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ],
+      "proximaRevision": "2027-07-01"
+    },
+    {
+      "id": "ws.npf-employee-rate",
+      "nombre": "SNPF employee contribution",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Samoa National Provident Fund",
+            "titulo": "Employers Guide",
+            "url": "https://www.npf.ws/employers-guide",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.npf-employer-rate",
+      "nombre": "SNPF employer contribution",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Samoa National Provident Fund",
+            "titulo": "Employers Guide",
+            "url": "https://www.npf.ws/employers-guide",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.npf-late-surcharge",
+      "nombre": "SNPF surcharge on late contributions, a month",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Samoa National Provident Fund",
+            "titulo": "Employers Guide",
+            "url": "https://www.npf.ws/employers-guide",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.npf-due-day",
+      "nombre": "SNPF contributions due day of the following month",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Samoa National Provident Fund",
+            "titulo": "Employers Guide",
+            "url": "https://www.npf.ws/employers-guide",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.min-wage-hourly",
+      "nombre": "Minimum wage per hour (private sector and state-owned enterprises)",
+      "tipo": "numero",
+      "unidad": "WST",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 5.24,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Employment: minimum wage rates",
+            "url": "https://www.mcil.gov.ws/services/employment",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          },
+          "hasta": "2027-06-30"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-07-01",
+          "valor": 5.65,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Employment: minimum wage rates",
+            "url": "https://www.mcil.gov.ws/services/employment",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          },
+          "hasta": "2028-06-30"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-07-01",
+          "valor": 6.05,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Employment: minimum wage rates",
+            "url": "https://www.mcil.gov.ws/services/employment",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.standard-week-hours",
+      "nombre": "Ordinary hours of work in a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.overtime-multiplier",
+      "nombre": "Overtime pay multiplier",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.public-holiday-multiplier",
+      "nombre": "Pay multiplier for working a public holiday that is not an ordinary working day",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.annual-leave-days",
+      "nombre": "Paid annual leave a year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.leave-carry-forward-days",
+      "nombre": "Annual leave that can be carried forward",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.sick-leave-days",
+      "nombre": "Paid sick leave a year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.maternity-full-pay-weeks",
+      "nombre": "Maternity leave on full pay (option A)",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.maternity-unpaid-weeks",
+      "nombre": "Maternity leave without pay (option A)",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.maternity-reduced-weeks",
+      "nombre": "Maternity leave on reduced pay (option B)",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.maternity-reduced-pay-share",
+      "nombre": "Share of normal pay during option B maternity leave (two-thirds)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 66.6667,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.paternity-days",
+      "nombre": "Paid paternity leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.final-pay-deadline-days",
+      "nombre": "Days after the wage period within which notice pay is payable",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ws.notice-weeks",
+      "nombre": "Notice period by length of service",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "m3-y1": "3 months to under 1 year",
+        "y1-y4": "1 year to under 4 years",
+        "y4-y7": "4 years to under 7 years",
+        "y7-y10": "7 years to under 10 years",
+        "y10-y13": "10 years to under 13 years",
+        "y13-y16": "13 years to under 16 years",
+        "y16-y19": "16 years to under 19 years",
+        "y19": "19 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "m3-y1": 1,
+            "y1-y4": 2,
+            "y4-y7": 3,
+            "y7-y10": 4,
+            "y10-y13": 5,
+            "y13-y16": 6,
+            "y16-y19": 7,
+            "y19": 8
+          },
+          "fuente": {
+            "organismo": "Ministry of Commerce, Industry and Labour",
+            "titulo": "Consolidated Labour and Employment Relations Act 2013",
+            "url": "https://www.mcil.gov.ws/sites/default/files/documents/2013-01/Consolidated-Labour-and-Employment-Relations-Act-2013.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    }
+  ]
+}
