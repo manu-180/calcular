@@ -4,14 +4,26 @@ import calculIts from "./calculadoras/calcul-its";
 import contenidoCalculIts from "./contenido/calcul-its";
 import calculTva from "./calculadoras/calcul-tva";
 import contenidoCalculTva from "./contenido/calcul-tva";
+import congesPayes from "./calculadoras/conges-payes";
+import contenidoCongesPayes from "./contenido/conges-payes";
 import cotisationsCnss from "./calculadoras/cotisations-cnss";
 import contenidoCotisationsCnss from "./contenido/cotisations-cnss";
 import coutEmployeur from "./calculadoras/cout-employeur";
 import contenidoCoutEmployeur from "./contenido/cout-employeur";
+import heuresSupplementaires from "./calculadoras/heures-supplementaires";
+import contenidoHeuresSupplementaires from "./contenido/heures-supplementaires";
+import indemniteLicenciement from "./calculadoras/indemnite-licenciement";
+import contenidoIndemniteLicenciement from "./contenido/indemnite-licenciement";
+import pensionRetraite from "./calculadoras/pension-retraite";
+import contenidoPensionRetraite from "./contenido/pension-retraite";
+import preavis from "./calculadoras/preavis";
+import contenidoPreavis from "./contenido/preavis";
 import salaireBrut from "./calculadoras/salaire-brut";
 import contenidoSalaireBrut from "./contenido/salaire-brut";
 import salaireNet from "./calculadoras/salaire-net";
 import contenidoSalaireNet from "./contenido/salaire-net";
+import smig from "./calculadoras/smig";
+import contenidoSmig from "./contenido/smig";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -27,10 +39,16 @@ export default definirPais({
   calculadoras: [
     { definicion: calculIts, contenido: contenidoCalculIts, cliente: () => import("./calculadoras/calcul-its.cliente") },
     { definicion: calculTva, contenido: contenidoCalculTva, cliente: () => import("./calculadoras/calcul-tva.cliente") },
+    { definicion: congesPayes, contenido: contenidoCongesPayes, cliente: () => import("./calculadoras/conges-payes.cliente") },
     { definicion: cotisationsCnss, contenido: contenidoCotisationsCnss, cliente: () => import("./calculadoras/cotisations-cnss.cliente") },
     { definicion: coutEmployeur, contenido: contenidoCoutEmployeur, cliente: () => import("./calculadoras/cout-employeur.cliente") },
+    { definicion: heuresSupplementaires, contenido: contenidoHeuresSupplementaires, cliente: () => import("./calculadoras/heures-supplementaires.cliente") },
+    { definicion: indemniteLicenciement, contenido: contenidoIndemniteLicenciement, cliente: () => import("./calculadoras/indemnite-licenciement.cliente") },
+    { definicion: pensionRetraite, contenido: contenidoPensionRetraite, cliente: () => import("./calculadoras/pension-retraite.cliente") },
+    { definicion: preavis, contenido: contenidoPreavis, cliente: () => import("./calculadoras/preavis.cliente") },
     { definicion: salaireBrut, contenido: contenidoSalaireBrut, cliente: () => import("./calculadoras/salaire-brut.cliente") },
     { definicion: salaireNet, contenido: contenidoSalaireNet, cliente: () => import("./calculadoras/salaire-net.cliente") },
+    { definicion: smig, contenido: contenidoSmig, cliente: () => import("./calculadoras/smig.cliente") },
   ],
   universales: { todas: true },
   novedades,
