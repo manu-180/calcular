@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["CVE"],
   zonaHoraria: "Atlantic/Cape_Verde",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 100,
   simbolos: { CVE: "CVE" },

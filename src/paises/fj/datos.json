@@ -519,29 +519,17 @@
       "proximaRevision": "2027-06-30",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2024-08-01",
           "hasta": "2025-03-31",
           "valor": 4.5,
-          "fuente": {
-            "organismo": "Fiji Government",
-            "titulo": "2024-2025 National Budget Address, national minimum wage",
-            "url": "https://www.fiji.gov.fj/2024-2025-national-budget-address/",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-29"
-          }
+          "motivo": "solo leído en el discurso del presupuesto 2024-25; Legal Notice no accesible"
         },
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2025-04-01",
           "valor": 5,
-          "fuente": {
-            "organismo": "Fiji Government",
-            "titulo": "2024-2025 National Budget Address, national minimum wage",
-            "url": "https://www.fiji.gov.fj/2024-2025-national-budget-address/",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-29"
-          }
+          "motivo": "solo leído en el discurso del presupuesto 2024-25; Legal Notice no accesible"
         }
       ]
     },

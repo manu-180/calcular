@@ -6,7 +6,7 @@ export default definirCalculadora({
   mercado: "fj",
   concepto: "salario-minimo",
   slug: "minimum-wage",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "fj.minimum-wage-hourly": "numero" },
   campos: [
     { id: "horas", tipo: "numero", etiqueta: "Hours you work in a week", min: 1, max: 168, porDefecto: 40 },

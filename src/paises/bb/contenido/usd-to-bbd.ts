@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "US dollar to Barbados dollar converter {{anio}}",
   title: "USD to BBD converter {{anio}}: the {{bb.usd-parity}} to 1 peg and the {{bb.foreign-exchange-fee}} fee",
   description:
-    "Convert US dollars to Barbados dollars at the fixed rate of {{bb.usd-parity}} to 1, and add the {{bb.foreign-exchange-fee}} foreign exchange fee that applies when you buy or pay in foreign currency.",
+    "Convert US dollars to Barbados dollars at the fixed rate of {{bb.usd-parity}} to 1, and add the {{bb.foreign-exchange-fee}} foreign exchange fee that applies when you buy or pay in foreign money.",
   intro: [
     "The Barbados dollar has been pegged to the US dollar at {{bb.usd-parity}} to 1 since {{bb.usd-parity#desde}}. The Central Bank of Barbados describes the rate as fixed, so US$1 is always Bds$2 at the official parity.",
     "What changes the final amount is the Foreign Exchange Fee. The Central Bank sets it at {{bb.foreign-exchange-fee}}, charged on the Barbados dollar value of purchases of foreign currency and payments related to foreign currency.",

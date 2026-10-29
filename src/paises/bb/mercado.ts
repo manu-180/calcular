@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   monedas: ["BBD"],
   simbolos: { BBD: "Bds$" },
   zonaHoraria: "America/Barbados",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 2,
 };
