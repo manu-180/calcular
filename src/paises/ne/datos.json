@@ -1,0 +1,399 @@
+{
+  "mercado": "ne",
+  "datos": [
+    {
+      "id": "ne.its-bareme",
+      "nombre": "Barème mensuel de l'impôt sur les traitements et salaires (ITS)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 25000,
+              "tasa": 1
+            },
+            {
+              "desde": 25000,
+              "hasta": 50000,
+              "tasa": 2
+            },
+            {
+              "desde": 50000,
+              "hasta": 100000,
+              "tasa": 6
+            },
+            {
+              "desde": 100000,
+              "hasta": 150000,
+              "tasa": 13
+            },
+            {
+              "desde": 150000,
+              "hasta": 300000,
+              "tasa": 25
+            },
+            {
+              "desde": 300000,
+              "hasta": 400000,
+              "tasa": 30
+            },
+            {
+              "desde": 400000,
+              "hasta": 700000,
+              "tasa": 32
+            },
+            {
+              "desde": 700000,
+              "hasta": 1000000,
+              "tasa": 34
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 11, nouvel article 150 du Code général des impôts, à compter du 1er janvier 2026",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Tranches mensuelles du texte : de 0 à 25 000 (1 %), de 25 001 à 50 000 (2 %), de 50 001 à 100 000 (6 %), de 100 001 à 150 000 (13 %), de 150 001 à 300 000 (25 %), de 300 001 à 400 000 (30 %), de 400 001 à 700 000 (32 %), de 700 001 à 1 000 000 (34 %), au-delà (35 %). Les bornes sont écrites ici sans le franc d'écart."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.tdta-taux",
+      "nombre": "Taxe sur les dépôts et transferts d'argent, taux de base",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 15, article 394 sexies du Code général des impôts (création)",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Le texte ne date pas cet article à part. Il fait partie de l'ordonnance de loi de finances de l'année budgétaire 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.tdta-taux-eleve",
+      "nombre": "Taxe sur les dépôts et transferts d'argent, taux au-dessus du seuil",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 15, article 394 sexies du Code général des impôts (création)",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.tdta-seuil",
+      "nombre": "Taxe sur les dépôts et transferts d'argent, seuil du taux élevé",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2000000,
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 15, article 394 sexies du Code général des impôts (création)",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.numeraire-taux",
+      "nombre": "Taxe sur les paiements en numéraire, taux",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 15, article 394 quaterdecies du Code général des impôts (création)",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.numeraire-seuil",
+      "nombre": "Taxe sur les paiements en numéraire, plafond d'exonération",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 15, article 394 duodecies du Code général des impôts (création)",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.jeux-taux",
+      "nombre": "Taxe sur les loteries et jeux de hasard, taux",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "recettes": "Paris mutuels et autres jeux (recettes brutes)",
+        "cote-fixe": "Paris à cote fixe de la Loterie Nationale (marge brute)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "recettes": 15,
+            "cote-fixe": 35
+          },
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 16, article 419 du Code général des impôts (nouveau), à compter du 1er janvier 2026",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.commande-droit",
+      "nombre": "Droit d'enregistrement sur la commande publique et les contrats privés",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "public": "Commande publique",
+        "prive": "Contrats entre personnes privées"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "public": 5,
+            "prive": 2
+          },
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 17, article 470 du Code général des impôts (nouveau), à compter du 1er janvier 2026",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Le droit est liquidé sur le prix hors TVA."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.commande-bon-seuil",
+      "nombre": "Bons de commande exemptés du droit d'enregistrement (montant inférieur à)",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 17, exemptions du droit d'enregistrement du Code général des impôts, point 58, à compter du 1er janvier 2026",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Le point 58 exempte « les bons de commandes d'un montant inférieur à un million (1 000 000) de francs CFA »."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.foncier-taux",
+      "nombre": "Droits de publicité foncière et hypothécaire proportionnels",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "superficie": "Inscription du droit de superficie (sur la mise en valeur)",
+        "mutation-totale": "Mutation totale de propriété (sur le prix du terrain)",
+        "immatriculation-habitat": "Concession définitive, immatriculation en zone d'habitat",
+        "immatriculation-activite": "Concession définitive, immatriculation en zone industrielle ou commerciale",
+        "mutation-titre": "Mutation du titre de propriété concédé",
+        "hypotheque": "Hypothèque conventionnelle ou forcée",
+        "autre-droit-reel": "Autre droit réel inscrit sur le titre foncier",
+        "morcellement": "Morcellement de titre foncier"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "superficie": 0.5,
+            "mutation-totale": 1,
+            "immatriculation-habitat": 2,
+            "immatriculation-activite": 3,
+            "mutation-titre": 1,
+            "hypotheque": 1.5,
+            "autre-droit-reel": 1.5,
+            "morcellement": 1
+          },
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 22, article 1041 du Code général des impôts (nouveau), à compter du 1er janvier 2026",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.foncier-fixes",
+      "nombre": "Droits fixes de publicité foncière",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "mainlevee": "Inscription de la mainlevée d'hypothèque",
+        "radiation": "Inscription de la radiation d'un autre droit réel",
+        "duplicata": "Duplicata de titre foncier",
+        "papier-volant": "Confirmation d'un droit réel sur papier volant",
+        "certificat": "Certificat de propriété sur imprimé",
+        "plan": "Plan de situation, renseignements ou autre formalité"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "mainlevee": 50000,
+            "radiation": 50000,
+            "duplicata": 50000,
+            "papier-volant": 10000,
+            "certificat": 10000,
+            "plan": 10000
+          },
+          "fuente": {
+            "organismo": "Ministère des Finances du Niger",
+            "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 22, article 1041 du Code général des impôts (nouveau), à compter du 1er janvier 2026",
+            "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.parite-euro",
+      "nombre": "Cours de l'euro en francs CFA (parité fixe)",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-01-01",
+          "valor": 655.957,
+          "fuente": {
+            "organismo": "BCEAO",
+            "titulo": "Page d'accueil de la BCEAO : cours des devises du 28 octobre 2026",
+            "url": "https://www.bceao.int/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Le cours de l'euro affiché est de 655,957 à l'achat comme à la vente."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.tva",
+      "nombre": "Taxe sur la valeur ajoutée (TVA), taux normal",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 19,
+          "motivo": "Le taux de 19 % se lit à l'article 226 du Code général des impôts de 2012 (copie sur niger.eregulations.org), mais le site de la DGI (impots.gouv.ne) ne répond pas et le Code général des impôts applicable depuis le 1er janvier 2026 n'a pas pu être lu. L'ordonnance 2025-44 ne modifie pas le taux. À confirmer dans le texte en vigueur.",
+          "fuente": {
+            "organismo": "Direction Générale des Impôts du Niger",
+            "titulo": "Code général des impôts (version 2012), article 226, copie hébergée par eRegulations Niger",
+            "url": "https://niger.eregulations.org/media/code%20g%C3%A9n%C3%A9rale%20des%20imp%C3%B4ts.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ne.smig",
+      "nombre": "Salaire minimum interprofessionnel garanti (SMIG) mensuel",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2025-10-22",
+          "valor": 42000,
+          "motivo": "Le communiqué du Conseil des ministres du 22 octobre 2025 annonce un projet de décret qui porte le SMIG de 30 047 à 42 000 F CFA. Le texte parle d'un taux horaire, ne donne pas de date d'entrée en vigueur et le décret publié n'a pas été lu.",
+          "fuente": {
+            "organismo": "Gouvernement du Niger",
+            "titulo": "Communiqué du Conseil des ministres du mercredi 22 octobre 2025",
+            "url": "https://www.gouv.ne/index.php/les-communiques-du-gouvernement/934-communique-du-conseil-des-ministres-du-mercredi-22-octobre-2025",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    }
+  ]
+}
