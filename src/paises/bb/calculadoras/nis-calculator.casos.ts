@@ -31,7 +31,14 @@ export default definirCasos(calculadora, [
     origen: { tipo: "recalculado", detalle: "2025 monthly ceiling 5,280. Employee NIS 580.80." },
     fecha: "2025-11-15",
     entrada: { bruto: 7000, periodo: "mes" },
-    valores: { "bb.nis-ceiling-weekly": 1219 },
+    valores: {
+      "bb.nis-ceiling-weekly": 1219,
+      "bb.nis-ceiling-monthly": 5280,
+      "bb.nis-employee-rate": 11,
+      "bb.nis-employer-rate": 12.75,
+      "bb.rrf-employee-rate": 0.25,
+      "bb.rrf-employer-rate": 0.25,
+    },
     esperado: { nisEmpleado: 580.8, tope: 5280 },
   },
   {
