@@ -1,0 +1,433 @@
+{
+  "mercado": "bt",
+  "datos": [
+    {
+      "id": "bt.notice-days-min",
+      "nombre": "Minimum notice to end a contract of employment",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 68",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.redundancy-extra-days-per-year",
+      "nombre": "Extra redundancy notice for each year of continuous employment",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 91(b)",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.redundancy-extra-days-max",
+      "nombre": "Most extra redundancy notice",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 42,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 91(b)",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.probation-max-days",
+      "nombre": "Longest probation period",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 180,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 72",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.probation-notice-days",
+      "nombre": "Notice during probation",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 72",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.probation-min-contract-months",
+      "nombre": "Shortest contract that may include probation",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 72",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.wrongful-dismissal-months-per-year",
+      "nombre": "Court compensation for wrongful dismissal: months of pay for each year of service",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 94(b)",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.wrongful-dismissal-max-months",
+      "nombre": "Court compensation for wrongful dismissal: most months of pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 94(b)",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.final-pay-days",
+      "nombre": "Days to pay wages owing after a contract ends",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 127",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.public-holidays-min",
+      "nombre": "Paid public holidays a year",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 108",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.public-holiday-premium",
+      "nombre": "Extra pay for working on a public holiday",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 110",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.night-duty-premium",
+      "nombre": "Extra pay for night duty outside the normal day shift",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 125",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.night-work-start-hour",
+      "nombre": "Night work starts at (24-hour clock)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, definitions, night work",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.night-work-end-hour",
+      "nombre": "Night work ends at (24-hour clock)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, definitions, night work",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.overtime-min-factor",
+      "nombre": "Lowest overtime rate as a multiple of the normal rate of pay",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 124",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.deduction-floor-share",
+      "nombre": "Share of the wage that must be left after deductions",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 132",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.overpayment-recovery-months",
+      "nombre": "Months back an employer may recover a mistaken overpayment",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-02-20",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Labour and Employment Act of Bhutan 2007 (text hosted by the Asian Development Bank)",
+            "titulo": "Labour and Employment Act of Bhutan 2007, section 131(g)",
+            "url": "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.pf-private-employee-min",
+      "nombre": "Private Provident Fund: lowest employee contribution as a share of basic salary",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-11-04",
+          "valor": 5,
+          "fuente": {
+            "organismo": "National Pension and Provident Fund (NPPF)",
+            "titulo": "Private Provident Fund Scheme Guidelines 2021, clause 9(A)(i)",
+            "url": "https://www.nppf.org.bt/wp-content/uploads/2024/08/PrivatePFSchemeGuidelines.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.pf-private-self-employed-min",
+      "nombre": "Private Provident Fund: lowest contribution of a self-employed member as a share of total income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-11-04",
+          "valor": 10,
+          "fuente": {
+            "organismo": "National Pension and Provident Fund (NPPF)",
+            "titulo": "Private Provident Fund Scheme Guidelines 2021, clause 9(C)(i)",
+            "url": "https://www.nppf.org.bt/wp-content/uploads/2024/08/PrivatePFSchemeGuidelines.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.pf-remit-day",
+      "nombre": "Private Provident Fund: day of the next month by which contributions are remitted",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-11-04",
+          "valor": 10,
+          "fuente": {
+            "organismo": "National Pension and Provident Fund (NPPF)",
+            "titulo": "Private Provident Fund Scheme Guidelines 2021, clauses 9(A)(v) and 9(B)(ii)",
+            "url": "https://www.nppf.org.bt/wp-content/uploads/2024/08/PrivatePFSchemeGuidelines.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt.gst-rate",
+      "nombre": "Goods and Services Tax standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "motivo": "The Department of Revenue and Customs site (drc.gov.bt) and the National Assembly site returned HTTP 503 or reset the connection on every attempt on 29 October 2026, so the rule could not be read in the Act or the DRC notice. The 5% rate from 1 January 2026 appears only in search results from KPMG, Sovos and Business Bhutan."
+        }
+      ]
+    },
+    {
+      "id": "bt.inr-per-btn",
+      "nombre": "Indian rupees per ngultrum",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "motivo": "The Royal Monetary Authority pages (rma.org.bt) returned HTTP 503 or reset the connection on 29 October 2026. The par peg appears only in search snippets of the 2026 Monetary Policy Statement, which could not be opened."
+        }
+      ]
+    }
+  ]
+}
