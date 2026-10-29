@@ -1,0 +1,116 @@
+{
+  "mercado": "np",
+  "series": [
+    {
+      "id": "np.usd",
+      "nombre": "Nepal Rastra Bank buying rate, rupees per US dollar",
+      "unidad": "NPR",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Nepal Rastra Bank",
+        "titulo": "Foreign exchange rates (daily buying and selling rates)",
+        "url": "https://www.nrb.org.np/forex/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29",
+        "nota": "NRB publishes the rates every day, weekends included."
+      },
+      "puntos": [
+        [
+          "2026-10-23",
+          151.42
+        ],
+        [
+          "2026-10-26",
+          151.61
+        ],
+        [
+          "2026-10-27",
+          152.0
+        ],
+        [
+          "2026-10-28",
+          151.89
+        ],
+        [
+          "2026-10-29",
+          152.06
+        ]
+      ]
+    },
+    {
+      "id": "np.usd-sell",
+      "nombre": "Nepal Rastra Bank selling rate, rupees per US dollar",
+      "unidad": "NPR",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Nepal Rastra Bank",
+        "titulo": "Foreign exchange rates (daily buying and selling rates)",
+        "url": "https://www.nrb.org.np/forex/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29",
+        "nota": "NRB publishes the rates every day, weekends included."
+      },
+      "puntos": [
+        [
+          "2026-10-23",
+          152.02
+        ],
+        [
+          "2026-10-26",
+          152.21
+        ],
+        [
+          "2026-10-27",
+          152.6
+        ],
+        [
+          "2026-10-28",
+          152.49
+        ],
+        [
+          "2026-10-29",
+          152.66
+        ]
+      ]
+    },
+    {
+      "id": "np.inr",
+      "nombre": "Nepal Rastra Bank buying rate, rupees per 100 Indian rupees",
+      "unidad": "NPR",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Nepal Rastra Bank",
+        "titulo": "Foreign exchange rates (daily buying and selling rates)",
+        "url": "https://www.nrb.org.np/forex/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29",
+        "nota": "The rupee is pegged at NPR 1.60 per Indian rupee."
+      },
+      "puntos": [
+        [
+          "2026-10-23",
+          160.0
+        ],
+        [
+          "2026-10-26",
+          160.0
+        ],
+        [
+          "2026-10-27",
+          160.0
+        ],
+        [
+          "2026-10-28",
+          160.0
+        ],
+        [
+          "2026-10-29",
+          160.0
+        ]
+      ]
+    }
+  ]
+}

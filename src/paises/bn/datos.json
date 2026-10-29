@@ -1,0 +1,772 @@
+{
+  "mercado": "bn",
+  "datos": [
+    {
+      "id": "bn.spk-employee-rate",
+      "nombre": "SPK employee contribution rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-15",
+          "valor": 8.5,
+          "fuente": {
+            "organismo": "Employees Trust Fund (TAP)",
+            "titulo": "SPK: members' contribution rate",
+            "url": "https://www.tap.com.bn/spk-members-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.spk-employer-bands",
+      "nombre": "SPK employer contribution by monthly salary group",
+      "tipo": "escala",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-15",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 500,
+              "tasa": 0,
+              "cuotaFija": 57.5
+            },
+            {
+              "desde": 500.01,
+              "hasta": 1500,
+              "tasa": 10.5
+            },
+            {
+              "desde": 1500.01,
+              "hasta": 2800,
+              "tasa": 9.5
+            },
+            {
+              "desde": 2800.01,
+              "hasta": null,
+              "tasa": 8.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Employees Trust Fund (TAP)",
+            "titulo": "SPK: prescribed contribution rates for employers",
+            "url": "https://www.tap.com.bn/employers-responsibilities-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.spk-employer-minimum",
+      "nombre": "SPK minimum employer contribution",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-15",
+          "valor": 57.5,
+          "fuente": {
+            "organismo": "Employees Trust Fund (TAP)",
+            "titulo": "SPK: prescribed contribution rates for employers",
+            "url": "https://www.tap.com.bn/employers-responsibilities-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.spk-payment-day",
+      "nombre": "Day of the following month by which SPK contributions are due",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-15",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Employees Trust Fund (TAP)",
+            "titulo": "Employers: complete contribution payment",
+            "url": "https://www.tap.com.bn/employers-responsibilities-complete-contribution-payment",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.personal-income-tax-rate",
+      "nombre": "Personal income tax rate on employment income",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-29",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "FAQ: corporate tax",
+            "url": "https://www.mof.gov.bn/div_revenue_faq_corporatetax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ],
+      "proximaRevision": "2027-10-29"
+    },
+    {
+      "id": "bn.corporate-tax-rate",
+      "nombre": "Corporate income tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 18.5,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.threshold-first-band",
+      "nombre": "Tax threshold: first slice of chargeable income",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.threshold-first-share",
+      "nombre": "Tax threshold: share of the rate charged on the first slice",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.threshold-second-band",
+      "nombre": "Tax threshold: next slice of chargeable income",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-01-01",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.threshold-second-share",
+      "nombre": "Tax threshold: share of the rate charged on the next slice",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2011-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.new-company-exempt",
+      "nombre": "Exempt chargeable income of a newly incorporated company",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.new-company-years",
+      "nombre": "Years of assessment of the new company exemption",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.return-failure-fine",
+      "nombre": "Fine for not filing a company income tax return",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-29",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "FAQ: corporate tax",
+            "url": "https://www.mof.gov.bn/div_revenue_faq_corporatetax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.wht-rates",
+      "nombre": "Withholding tax on payments to non-residents",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "interest": "Interest, commission or fees on a loan",
+        "royalty": "Royalties or rent of movable property",
+        "know-how": "Use of scientific, technical or industrial knowledge",
+        "technical-services": "Technical assistance or services",
+        "management": "Management fees or assistance",
+        "directors": "Non-resident directors' remuneration"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-04-01",
+          "valor": {
+            "interest": 2.5,
+            "royalty": 10,
+            "know-how": 10,
+            "technical-services": 10,
+            "management": 10,
+            "directors": 10
+          },
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Withholding of tax: tax rates",
+            "url": "https://www.mof.gov.bn/div_revenue_withholdingoftax_whtrate/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.stamp-grace-days",
+      "nombre": "Days to stamp an instrument before a penalty applies",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-04-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Stamp duty: penalty and exemptions",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_stampduty/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.stamp-window-months",
+      "nombre": "Months after which the higher stamp duty penalty applies",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-04-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Stamp duty: penalty and exemptions",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_stampduty/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.stamp-early-factor",
+      "nombre": "Stamp duty penalty after 14 days: multiple of the deficient duty",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-04-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Stamp duty: penalty and exemptions",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_stampduty/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.stamp-early-minimum",
+      "nombre": "Stamp duty penalty after 14 days: minimum",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-04-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Stamp duty: penalty and exemptions",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_stampduty/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.stamp-late-factor",
+      "nombre": "Stamp duty penalty after 3 months: multiple of the deficient duty",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-04-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Stamp duty: penalty and exemptions",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_stampduty/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.stamp-late-minimum",
+      "nombre": "Stamp duty penalty after 3 months: minimum",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-04-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Stamp duty: penalty and exemptions",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_stampduty/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.stamp-first-home-loan",
+      "nombre": "Stamp duty exemption: first home loan up to",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-29",
+          "valor": 250000,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Stamp duty: penalty and exemptions",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_stampduty/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.stamp-tenancy-rent",
+      "nombre": "Stamp duty exemption: house rental up to",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-29",
+          "valor": 2000,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Stamp duty: penalty and exemptions",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_stampduty/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.se-minimum",
+      "nombre": "Self-employed SPK: lowest contribution that earns the Government Match-Up",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-29",
+          "valor": 17.5,
+          "fuente": {
+            "organismo": "Employees Trust Fund (TAP)",
+            "titulo": "SPK self-employed: verified member contribution",
+            "url": "https://www.tap.com.bn/spk-self-employed-verified-member-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.se-maximum",
+      "nombre": "Self-employed SPK: highest contribution paid to the Retirement Account",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-29",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Employees Trust Fund (TAP)",
+            "titulo": "SPK self-employed: verified member contribution",
+            "url": "https://www.tap.com.bn/spk-self-employed-verified-member-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.se-matchup",
+      "nombre": "Self-employed SPK: Government Match-Up",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-29",
+          "valor": 17.5,
+          "fuente": {
+            "organismo": "Employees Trust Fund (TAP)",
+            "titulo": "SPK self-employed: verified member contribution",
+            "url": "https://www.tap.com.bn/spk-self-employed-verified-member-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.se-unverified-cap",
+      "nombre": "Unverified self-employed SPK: highest voluntary contribution a month",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-29",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Employees Trust Fund (TAP)",
+            "titulo": "SPK self-employed: unverified member contribution",
+            "url": "https://www.tap.com.bn/spk-self-employed-unverified-member-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.capital-industrial-initial",
+      "nombre": "Initial allowance on an industrial building",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.capital-industrial-annual",
+      "nombre": "Annual allowance on an industrial building",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.capital-plant-initial",
+      "nombre": "Initial allowance on plant and machinery",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.capital-plant-annual-low",
+      "nombre": "Lowest annual allowance rate on plant and machinery",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.capital-plant-annual-high",
+      "nombre": "Highest annual allowance rate on plant and machinery",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.capital-plant-accelerated",
+      "nombre": "Optional accelerated annual allowance on plant and machinery (3 years)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-01-01",
+          "valor": 33.3333,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.vehicle-cap",
+      "nombre": "Cap on qualifying cost of a company car",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.vehicle-passengers",
+      "nombre": "Company car cap applies to cars carrying up to this many passengers",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Ministry of Finance and Economy, Revenue Division",
+            "titulo": "Income tax: tax rates, thresholds, capital allowances and motor vehicles",
+            "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_incometax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.currency-par",
+      "nombre": "Brunei dollars per Singapore dollar",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1967-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Monetary Authority of Singapore",
+            "titulo": "Brunei-Singapore Currency Interchangeability Agreement",
+            "url": "https://www.mas.gov.sg/currency/brunei-singapore-currency-interchangeability-agreement",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "The Brunei side of the agreement is run by AMBD. The AMBD site could not be opened from our servers, so the par rate is read from the MAS page."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bn.minimum-wage-monthly",
+      "nombre": "Minimum wage, full-time employee, a month",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2023-07-12",
+          "valor": 500,
+          "motivo": "Not read from a primary source: the Labour Department files (labour.gov.bn) did not open from our servers (expired TLS certificate) and the Attorney General's Chambers site refused the request. BND 500 appears in a Legislative Council news item of 18 March 2026 (majlis-mesyuarat.gov.bn) read only through a summary, so it is kept as a hint."
+        }
+      ]
+    },
+    {
+      "id": "bn.minimum-wage-hourly",
+      "nombre": "Minimum wage, part-time employee, an hour",
+      "tipo": "numero",
+      "unidad": "BND",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2023-07-12",
+          "valor": 2.62,
+          "motivo": "Not read from a primary source: the Labour Department files (labour.gov.bn) did not open from our servers (expired TLS certificate) and the Attorney General's Chambers site refused the request. The figure comes from a search result snippet of the Labour Department minimum wage table."
+        }
+      ]
+    }
+  ]
+}
