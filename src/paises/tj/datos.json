@@ -1,0 +1,310 @@
+{
+  "mercado": "tj",
+  "datos": [
+    {
+      "id": "tj.nds",
+      "nombre": "Ставка НДС (общая)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 14,
+          "motivo": "Сайты Налогового комитета (andoz.tj), Национального центра законодательства (ncz.tj) и Министерства юстиции не открылись из нашей среды (503 или нет ответа), поэтому текст нормы не прочитан. Ставку 14 % в 2026 году называют Reanda (ст. 264 Налогового кодекса) и Asia-Plus; это вторичные источники.",
+          "fuente": {
+            "organismo": "Reanda Tajikistan (справочная страница, не официальный текст)",
+            "titulo": "Taxation in Tajikistan (ссылки на статьи Налогового кодекса РТ)",
+            "url": "https://reanda.tj/taxation-in-tajikistan/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": 13,
+          "motivo": "Сайты Налогового комитета (andoz.tj), Национального центра законодательства (ncz.tj) и Министерства юстиции не открылись из нашей среды (503 или нет ответа), поэтому текст нормы не прочитан. Снижение до 13 % с 2027 года названо только во вторичных источниках (Reanda, Asia-Plus).",
+          "fuente": {
+            "organismo": "Asia-Plus (СМИ)",
+            "titulo": "Tax Burden in Tajikistan: What Lies Behind the Numbers?",
+            "url": "https://asiaplus.news/en/2026/04/13/tax-burden-in-tajikistan-what-lies-behind-the-numbers/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.podokhodnyy-stavka",
+      "nombre": "Ставка подоходного налога с зарплаты по основному месту работы (резидент)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "motivo": "Сайты Налогового комитета (andoz.tj), Национального центра законодательства (ncz.tj) и Министерства юстиции не открылись из нашей среды (503 или нет ответа), поэтому текст нормы не прочитан. Ставка 12 % и ссылка на ст. 183 взяты из справочной страницы Reanda.",
+          "fuente": {
+            "organismo": "Reanda Tajikistan (справочная страница, не официальный текст)",
+            "titulo": "Taxation in Tajikistan (ссылки на статьи Налогового кодекса РТ)",
+            "url": "https://reanda.tj/taxation-in-tajikistan/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.lichnyy-vychet",
+      "nombre": "Личный вычет из месячного дохода",
+      "tipo": "numero",
+      "unidad": "TJS",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "Сайты Налогового комитета (andoz.tj), Национального центра законодательства (ncz.tj) и Министерства юстиции не открылись из нашей среды (503 или нет ответа), поэтому текст нормы не прочитан. Размер вычета в сомони в доступных источниках не найден, значение не вносим."
+        }
+      ]
+    },
+    {
+      "id": "tj.sn-rabotodatel",
+      "nombre": "Социальный налог работодателя, % от фонда оплаты труда",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "gosudarstvennye": "Государственные учреждения",
+        "prochie": "Остальные организации"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "gosudarstvennye": 25,
+            "prochie": 20
+          },
+          "motivo": "Сайты Налогового комитета (andoz.tj), Национального центра законодательства (ncz.tj) и Министерства юстиции не открылись из нашей среды (503 или нет ответа), поэтому текст нормы не прочитан. Ставка 20 % для негосударственных организаций указана на странице Reanda (ст. 332); 25 % для госучреждений названа в сообщении Пенсионного фонда, пересказанном СМИ.",
+          "fuente": {
+            "organismo": "Reanda Tajikistan (справочная страница, не официальный текст)",
+            "titulo": "Taxation in Tajikistan (ссылки на статьи Налогового кодекса РТ)",
+            "url": "https://reanda.tj/taxation-in-tajikistan/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.sn-rabotnik",
+      "nombre": "Взнос работника (социальный налог), % от зарплаты",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "gosudarstvennye": "Государственные учреждения",
+        "prochie": "Остальные организации"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "gosudarstvennye": 1,
+            "prochie": 2
+          },
+          "motivo": "Сайты Налогового комитета (andoz.tj), Национального центра законодательства (ncz.tj) и Министерства юстиции не открылись из нашей среды (503 или нет ответа), поэтому текст нормы не прочитан. Взнос 2 % для негосударственных организаций указан на странице Reanda (ст. 332); 1 % для госучреждений найден только в пересказе в справочном обзоре.",
+          "fuente": {
+            "organismo": "Reanda Tajikistan (справочная страница, не официальный текст)",
+            "titulo": "Taxation in Tajikistan (ссылки на статьи Налогового кодекса РТ)",
+            "url": "https://reanda.tj/taxation-in-tajikistan/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.mzp",
+      "nombre": "Минимальная заработная плата в месяц",
+      "tipo": "numero",
+      "unidad": "TJS",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2025-09-01",
+          "hasta": "2026-08-31",
+          "valor": 1000,
+          "motivo": "Сайты Национального центра законодательства (ncz.tj) и Министерства труда (mehnat.tj) не открылись из нашей среды, поэтому текст Трудового кодекса не прочитан. Размер 1000 сомони с 1 сентября 2025 года назван справочным сайтом WageIndicator; указ или постановление не найдены.",
+          "fuente": {
+            "organismo": "WageIndicator (справочный сайт)",
+            "titulo": "Minimum Wage Updated in Tajikistan from 01 September 2026",
+            "url": "https://wageindicator.org/ai/work/minimum-wage/updates/2026/minimum-wage-updated-in-tajikistan-from-01-september-2026-september-03-2026/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2026-09-01",
+          "valor": 1300,
+          "motivo": "Сайты Национального центра законодательства (ncz.tj) и Министерства труда (mehnat.tj) не открылись из нашей среды, поэтому текст Трудового кодекса не прочитан. Размер 1300 сомони с 1 сентября 2026 года назван только WageIndicator, без реквизитов акта.",
+          "fuente": {
+            "organismo": "WageIndicator (справочный сайт)",
+            "titulo": "Minimum Wage Updated in Tajikistan from 01 September 2026",
+            "url": "https://wageindicator.org/ai/work/minimum-wage/updates/2026/minimum-wage-updated-in-tajikistan-from-01-september-2026-september-03-2026/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.otpusk-dney",
+      "nombre": "Минимальная продолжительность ежегодного отпуска, календарных дней",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 24,
+          "motivo": "Сайты Национального центра законодательства (ncz.tj) и Министерства труда (mehnat.tj) не открылись из нашей среды, поэтому текст Трудового кодекса не прочитан. Цифра 24 календарных дня (ст. 91 и далее) взята из пересказа WageIndicator.",
+          "fuente": {
+            "organismo": "WageIndicator (справочный сайт)",
+            "titulo": "Ежегодный отпуск в Таджикистане",
+            "url": "https://wageindicator.org/ru-tj/rabota-v-tadzhikistane/trudovoe-pravo/ezhegodnyj-otpusk-i-dni-otdyxa/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.nedelya-chasov",
+      "nombre": "Нормальная продолжительность рабочей недели, часов",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "motivo": "Сайты Национального центра законодательства (ncz.tj) и Министерства труда (mehnat.tj) не открылись из нашей среды, поэтому текст Трудового кодекса не прочитан. Норма 40 часов в неделю взята из пересказа WageIndicator.",
+          "fuente": {
+            "organismo": "WageIndicator (справочный сайт)",
+            "titulo": "Компенсация и рабочее время в Таджикистане",
+            "url": "https://wageindicator.org/ru-tj/rabota-v-tadzhikistane/trudovoe-pravo/kompensaciya-i-rabochee-vremya/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.sverkhurochnye-mnozhitel",
+      "nombre": "Минимальный множитель оплаты сверхурочной работы",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "motivo": "Сайты Национального центра законодательства (ncz.tj) и Министерства труда (mehnat.tj) не открылись из нашей среды, поэтому текст Трудового кодекса не прочитан. Оплата не менее чем в двойном размере: пересказ WageIndicator.",
+          "fuente": {
+            "organismo": "WageIndicator (справочный сайт)",
+            "titulo": "Компенсация и рабочее время в Таджикистане",
+            "url": "https://wageindicator.org/ru-tj/rabota-v-tadzhikistane/trudovoe-pravo/kompensaciya-i-rabochee-vremya/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.sverkhurochnye-chasov-v-god",
+      "nombre": "Предельное число сверхурочных часов на одного работника в год",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 120,
+          "motivo": "Сайты Национального центра законодательства (ncz.tj) и Министерства труда (mehnat.tj) не открылись из нашей среды, поэтому текст Трудового кодекса не прочитан. Предел 120 часов в год: пересказ WageIndicator.",
+          "fuente": {
+            "organismo": "WageIndicator (справочный сайт)",
+            "titulo": "Компенсация и рабочее время в Таджикистане",
+            "url": "https://wageindicator.org/ru-tj/rabota-v-tadzhikistane/trudovoe-pravo/kompensaciya-i-rabochee-vremya/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.vykhodnoe-mesyatsev",
+      "nombre": "Выходное пособие, не меньше, среднемесячных заработков",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "obychnoe": "Обычное увольнение (сокращение, изменение условий)",
+        "likvidatsiya": "Ликвидация, сокращение штата и другие случаи единовременной выплаты"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "obychnoe": 1,
+            "likvidatsiya": 3
+          },
+          "motivo": "Сайты Национального центра законодательства (ncz.tj) и Министерства труда (mehnat.tj) не открылись из нашей среды, поэтому текст Трудового кодекса не прочитан. Размеры (не менее 1 и не менее 3 среднемесячных заработков, ст. 51 и 169) взяты из пересказа WageIndicator, который сам не уточняет, какое основание к какой выплате относится.",
+          "fuente": {
+            "organismo": "WageIndicator (справочный сайт)",
+            "titulo": "Предупреждение и выходное пособие в Таджикистане",
+            "url": "https://wageindicator.org/ru-tj/rabota-v-tadzhikistane/trudovoe-pravo/garantii-zanyatosti/preduprezhdenie-i-vyxodnoe-posobie/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tj.preduprezhdenie",
+      "nombre": "Срок письменного предупреждения работника об увольнении",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "likvidatsiya": "Ликвидация или сокращение (2 месяца, в днях 60)",
+        "kvalifikatsiya": "Недостаточная квалификация или состояние здоровья (1 месяц, в днях 30)",
+        "ispytanie": "Неудовлетворительный результат испытания (7 дней)",
+        "rabotnik": "Увольнение по инициативе работника (14 дней)"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "likvidatsiya": 60,
+            "kvalifikatsiya": 30,
+            "ispytanie": 7,
+            "rabotnik": 14
+          },
+          "motivo": "Сайты Национального центра законодательства (ncz.tj) и Министерства труда (mehnat.tj) не открылись из нашей среды, поэтому текст Трудового кодекса не прочитан. Сроки (2 месяца, 1 месяц, 7 дней, 2 недели) взяты из пересказа WageIndicator; месяцы здесь условно переведены в дни, календарный счет в самой норме не проверен.",
+          "fuente": {
+            "organismo": "WageIndicator (справочный сайт)",
+            "titulo": "Предупреждение и выходное пособие в Таджикистане",
+            "url": "https://wageindicator.org/ru-tj/rabota-v-tadzhikistane/trudovoe-pravo/garantii-zanyatosti/preduprezhdenie-i-vyxodnoe-posobie/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    }
+  ]
+}
