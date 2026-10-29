@@ -87,6 +87,7 @@ const nextConfig: NextConfig = {
     // Sin esto, con AR en src/app/(ar) y sin layout en la raíz, el 404 de calcular.ar pierde el
     // lang, el header y el footer: ver src/app/global-not-found.tsx.
     globalNotFound: true,
+    webpackMemoryOptimizations: true,
     ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
   },
   // Los <slug>.cliente.tsx de los países (docs/paises/RECETA.md) los importa el registro con
@@ -103,6 +104,19 @@ const nextConfig: NextConfig = {
         as: "*.tsx",
       },
     },
+  },
+  // La misma regla para webpack, que es con el que se buildea (package.json): con Turbopack el build
+  // pasaba los 8 GB de la máquina standard de Vercel (29/10/2026) y no se usa una más grande.
+  webpack(config, { isServer }) {
+    if (isServer) {
+      config.module.rules.push({
+        test: /\.cliente\.tsx$/,
+        include: path.join(__dirname, "src", "paises"),
+        enforce: "pre",
+        use: [path.join(__dirname, "src", "motor", "cliente-servidor.cjs")],
+      });
+    }
+    return config;
   },
   // exceljs se carga con require nativo y no dentro del bundle del servidor: abre y reescribe el
   // .xlsx de la entrega personalizada (src/lib/prefill/servidor.ts).
