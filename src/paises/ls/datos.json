@@ -1,0 +1,612 @@
+{
+  "mercado": "ls",
+  "datos": [
+    {
+      "id": "ls.income-tax-bands",
+      "nombre": "Income tax rates for resident individuals (yearly chargeable income)",
+      "tipo": "escala",
+      "unidad": "LSL",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 74040,
+              "tasa": 20
+            },
+            {
+              "desde": 74040,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Income Tax Structure for the period starting 1 April 2025 (Legal Notice No. 50 of 2025)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2026-09/2025-2026%20Income%20Tax%20structure.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 77760,
+              "tasa": 20
+            },
+            {
+              "desde": 77760,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Income Tax Structure for the period starting 1 April 2026 (Legal Notice No. 24 of 2026)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2026-09/2026%20-2027%20Income%20Tax%20structure%201.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.tax-credit",
+      "nombre": "Non-refundable tax credit for resident individuals (a year)",
+      "tipo": "numero",
+      "unidad": "LSL",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": 11640,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Income Tax Structure for the period starting 1 April 2025 (Legal Notice No. 50 of 2025)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2026-09/2025-2026%20Income%20Tax%20structure.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 12240,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Income Tax Structure for the period starting 1 April 2026 (Legal Notice No. 24 of 2026)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2026-09/2026%20-2027%20Income%20Tax%20structure%201.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.superannuation-cap",
+      "nombre": "Cap on deductible contributions to an employer superannuation fund",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Income Tax Act No. 9 of 1993 (consolidated to 1 April 2012), section 95(3)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2026-09/Income%20Tax%20Act%201993%20%20Updated%20up%20to%201%20April%202012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Empleado y empleador juntos hasta el 20 % del ingreso laboral; primero cuenta lo del empleado (s. 95(4))."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.vat-rates",
+      "nombre": "VAT rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "Standard rate (most goods and services, telecommunications)",
+        "electricity": "Electricity",
+        "zero": "Zero-rated (exports and basic commodities)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": {
+            "standard": 15,
+            "electricity": 10,
+            "zero": 0
+          },
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Tax Rates",
+            "url": "https://www.rsl.org.ls/tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.standard-rate",
+      "nombre": "Standard rate of tax",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Income Tax Act No. 9 of 1993 (consolidated to 1 April 2012), sections 2 and 99(1)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2026-09/Income%20Tax%20Act%201993%20%20Updated%20up%20to%201%20April%202012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Sección 2: «standard rate of tax» = 25 %. Sección 99(1): los pagos únicos de un fondo de pensión que cumple las condiciones tributan a esa tasa salvo que se elija sumarlos al ingreso. La página Pay As You Earn de RSL repite «standard rate 25%»."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.company-tax-rates",
+      "nombre": "Company income tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "other": "Other companies",
+        "manufacturing": "Manufacturing company",
+        "farming": "Commercial farming"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": {
+            "other": 25,
+            "manufacturing": 10,
+            "farming": 10
+          },
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Tax Rates",
+            "url": "https://www.rsl.org.ls/tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.withholding-rates",
+      "nombre": "Withholding tax rates on contract payments",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "resident-contractor": "Resident contractor",
+        "non-resident-contractor": "Non-resident contractor",
+        "technical-rsa": "Non-resident technical services (South Africa)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": {
+            "resident-contractor": 5,
+            "non-resident-contractor": 10,
+            "technical-rsa": 7.5
+          },
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Tax Rates",
+            "url": "https://www.rsl.org.ls/tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.fbt-rate",
+      "nombre": "Fringe benefits tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Tax Rates (Fringe Benefit Tax)",
+            "url": "https://www.rsl.org.ls/tax-rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "La página Tax Rates dice 40 %. La fórmula A × 1/(1 − B) sale de la sección 117 de la Income Tax Act."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.car-benefit-rate",
+      "nombre": "Car fringe benefit: share of the car's market value a year",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Income Tax Act No. 9 of 1993 (consolidated to 1 April 2012), section 119(2)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2026-09/Income%20Tax%20Act%201993%20%20Updated%20up%20to%201%20April%202012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.housing-benefit-cap",
+      "nombre": "Housing fringe benefit cap (share of yearly remuneration)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Income Tax Act No. 9 of 1993 (consolidated to 1 April 2012), section 120(3)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2026-09/Income%20Tax%20Act%201993%20%20Updated%20up%20to%201%20April%202012.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.pay-multipliers",
+      "nombre": "Minimum pay multipliers",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "overtime": "Overtime",
+        "rest-day": "Work on your weekly rest day",
+        "public-holiday": "Work on a public holiday"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": {
+            "overtime": 1.25,
+            "rest-day": 2,
+            "public-holiday": 2
+          },
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, sections 185 and 186",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.hours-divisor",
+      "nombre": "Hours used to turn wages into an hourly rate",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "monthly": "Monthly contract",
+        "weekly": "Weekly contract",
+        "monthly-watchman": "Watchman or security guard, monthly",
+        "weekly-watchman": "Watchman or security guard, weekly"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": {
+            "monthly": 195,
+            "weekly": 45,
+            "monthly-watchman": 260,
+            "weekly-watchman": 60
+          },
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 187",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.daily-hours",
+      "nombre": "Normal hours of work on a full day",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "five-day": "Five-day week",
+        "six-day": "Six-day week"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": {
+            "five-day": 9,
+            "six-day": 8
+          },
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 186(1)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.leave-days-per-month",
+      "nombre": "Annual leave earned per month of continuous employment",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 188(1)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.leave-minimum-days",
+      "nombre": "Minimum annual leave a year (working days)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 188(1)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.leave-pay-minimum-months",
+      "nombre": "Months of service needed to be paid for untaken leave on termination",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 188(4)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.sick-leave",
+      "nombre": "Paid sick leave",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "full-pay-second-half": "Full pay, months 7 to 12",
+        "full-pay-yearly": "Full pay, each year after 12 months",
+        "half-pay-yearly": "Half pay, each year after 12 months"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": {
+            "full-pay-second-half": 12,
+            "full-pay-yearly": 12,
+            "half-pay-yearly": 24
+          },
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 190",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.notice-weeks",
+      "nombre": "Notice period for short service (weeks)",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "under-6-months": "Less than six months",
+        "6-to-12-months": "Six months to under a year"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": {
+            "under-6-months": 1,
+            "6-to-12-months": 2
+          },
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 130(1)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.notice-months",
+      "nombre": "Notice period after one year or more of service",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 130(1)(a)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.severance-weeks",
+      "nombre": "Severance pay: weeks of wages for each completed year",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 136",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.maternity-weeks",
+      "nombre": "Maternity leave around confinement (weeks)",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "before": "Before the expected date",
+        "after": "After the birth",
+        "after-illness": "After the birth, if unfit from illness",
+        "stillbirth": "Stillbirth"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": {
+            "before": 7,
+            "after": 7,
+            "after-illness": 8,
+            "stillbirth": 3
+          },
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 191",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.paternity-days",
+      "nombre": "Paternity leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 191(8)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ls.nursing-months",
+      "nombre": "Months of paid nursing time after returning to work",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-02",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Revenue Services Lesotho",
+            "titulo": "Labour Act No. 3 of 2024, section 192(1)",
+            "url": "https://www.rsl.org.ls/sites/default/files/2024-06/LABOUR%20ACT%20N0.3%20OF%202024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Copia del Gazette Extraordinary Vol. 69 No. 22 publicada por RSL. La Ley rige desde su publicación, el 2 de abril de 2024."
+          }
+        }
+      ]
+    }
+  ]
+}

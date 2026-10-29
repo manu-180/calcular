@@ -1,5 +1,5 @@
 // Ronda mensual de calcularya, sin GitHub Actions: refresca los precios de «¿Cuántas horas de trabajo
-// cuesta?» (los de las tiendas y los oficiales de calcular.ar: INDEC y surtidores), saca la foto mensual de los rankings, valida con check_horas y check_rankings y, si algo
+// cuesta?» (los de las tiendas y los oficiales de calcular.ar: INDEC y surtidores), saca la foto mensual de los rankings, poda las universales sin impresiones (scripts/poda-universales.ts), valida con check_horas y check_rankings y, si algo
 // cambió, commitea SOLO esos archivos de datos y los pushea a main (= deploy en Vercel), como datos-vivos.
 // Lo corre el día 1 la tarea programada CalcularYa-Mensual (scripts/cron/mensual.ps1, que deja un
 // checkout limpio en origin/main) y, cuando vuelva el billing, .github/workflows/mensual.yml.
@@ -23,7 +23,8 @@ const RAIZ = path.resolve(import.meta.dirname, "..", "..");
 const PRECIOS = "src/lib/horas/precios.json";
 const COTIDIANOS = "src/lib/horas/cotidianos-ar.json";
 const HISTORIAL = "src/motor/rankings/historial";
-const DATOS = [PRECIOS, COTIDIANOS, HISTORIAL];
+const PODADAS = "src/motor/universales/podadas.json";
+const DATOS = [PRECIOS, COTIDIANOS, HISTORIAL, PODADAS];
 // El autor tiene que ser manu-180: Vercel bloquea (BLOCKED, sin avisar) un deploy cuyo autor no es del equipo.
 const AUTOR = ["-c", "user.name=manu-180", "-c", "user.email=157671390+manu-180@users.noreply.github.com"];
 
@@ -53,9 +54,10 @@ function intentarGit(...a: string[]): boolean {
 // npx en Windows es un .cmd: con shell para que lo encuentre. Los argumentos son fijos (sin entrada externa).
 function correr(titulo: string, script: string, extra: string[] = []): boolean {
   log(`→ ${titulo}: npx tsx ${script} ${extra.join(" ")}`.trimEnd());
-  const r = spawnSync("npx", ["tsx", script, ...extra], { cwd: RAIZ, encoding: "utf8", shell: process.platform === "win32", maxBuffer: 64 * 1024 * 1024, env: process.env });
+  // TSX_DISABLE_CACHE: sin eso check_hreflang muere con EMFILE en Windows (ver check-all.ts).
+  const r = spawnSync("npx", ["tsx", script, ...extra], { cwd: RAIZ, encoding: "utf8", shell: process.platform === "win32", maxBuffer: 64 * 1024 * 1024, env: { ...process.env, TSX_DISABLE_CACHE: "1" } });
   appendFileSync(LOG, `${r.stdout ?? ""}${r.stderr ?? ""}\n`);
-  const avisos = `${r.stdout ?? ""}`.split("\n").filter((l) => l.includes("⚠️") || l.includes("❌") || /^(OK|TODO OK|FALLAS|\s*FALLAS)/.test(l.trim()));
+  const avisos = `${r.stdout ?? ""}`.split("\n").filter((l) => l.includes("⚠️") || l.includes("❌") || /^(OK|TODO OK|FALLAS|\s*FALLAS|poda:)/.test(l.trim()));
   for (const a of avisos.slice(0, 20)) log(`   ${a.trim()}`);
   log(`  ${titulo}: exit ${r.status}`);
   return r.status === 0;
@@ -103,6 +105,7 @@ function main(): number {
 
   if (seco) {
     log(`(seco) correría: ${[tocaPrecios ? "scripts/horas/actualizar_precios.ts" : "", tocaCotidianos ? "scripts/horas/actualizar_cotidianos_ar.ts" : "", "scripts/rankings/foto_mensual.ts", "scripts/check_horas.ts", "scripts/check_horas_ar.ts", "scripts/check_rankings.ts"].filter(Boolean).join(" → ")}`);
+    correr("poda de universales (seco)", "scripts/poda-universales.ts", ["--dry"]);
     log(`(seco) commitearía solo ${DATOS.join(" y ")} con autor manu-180 y pushearía a main (pull --rebase, 3 intentos)`);
     const okHoras = correr("check_horas (estado de hoy)", "scripts/check_horas.ts");
     const okHorasAr = correr("check_horas_ar (estado de hoy)", "scripts/check_horas_ar.ts");
@@ -117,6 +120,15 @@ function main(): number {
   if (!correr("check_horas", "scripts/check_horas.ts")) return fallar("check_horas en rojo: no se publica");
   if (!correr("check_horas_ar", "scripts/check_horas_ar.ts")) return fallar("check_horas_ar en rojo: no se publica");
   if (!correr("check_rankings", "scripts/check_rankings.ts")) return fallar("check_rankings en rojo: no se publica");
+  // La poda no frena la ronda: si Search Console falla o el hreflang no cierra, se publica lo demás y la
+  // poda espera al mes siguiente. Sin GSC_SERVICE_ACCOUNT_JSON el script no toca nada.
+  if (!correr("poda de universales", "scripts/poda-universales.ts")) {
+    log("⚠️ la poda falló: se descarta y sigue la ronda");
+    intentarGit("checkout", "--", PODADAS);
+  } else if (git("status", "--porcelain", "--", PODADAS) && !(correr("check_poda", "scripts/check_poda.ts") && correr("check_hreflang", "scripts/check_hreflang.ts"))) {
+    log("⚠️ con la poda nueva check_poda o check_hreflang dan rojo: se descarta y sigue la ronda");
+    intentarGit("checkout", "--", PODADAS);
+  }
 
   const lista = cambios();
   if (!lista.length) {
@@ -130,8 +142,8 @@ function main(): number {
   }
 
   git("add", "--", ...DATOS);
-  const partes = [lista.some((f) => f.startsWith(PRECIOS)) ? "precios de horas" : "", lista.some((f) => f.startsWith(COTIDIANOS)) ? "precios oficiales de horas en calcular.ar" : "", lista.some((f) => f.startsWith(HISTORIAL)) ? "foto de rankings" : ""].filter(Boolean);
-  git(...AUTOR, "commit", "-q", "-m", `datos(mensual): ${partes.join(" y ")} ${mesActual}`, "-m", "Ronda mensual automática (scripts/cron/mensual.ts): datos validados con check_horas, check_horas_ar y check_rankings.");
+  const partes = [lista.some((f) => f.startsWith(PRECIOS)) ? "precios de horas" : "", lista.some((f) => f.startsWith(COTIDIANOS)) ? "precios oficiales de horas en calcular.ar" : "", lista.some((f) => f.startsWith(HISTORIAL)) ? "foto de rankings" : "", lista.some((f) => f.startsWith(PODADAS)) ? "poda de universales sin impresiones" : ""].filter(Boolean);
+  git(...AUTOR, "commit", "-q", "-m", `datos(mensual): ${partes.join(" y ")} ${mesActual}`, "-m", "Ronda mensual automática (scripts/cron/mensual.ts): datos validados con check_horas, check_horas_ar y check_rankings; la poda, con check_poda y check_hreflang.");
   log(`commit ${git("log", "--oneline", "-1")}`);
 
   for (let intento = 1; intento <= 3; intento++) {

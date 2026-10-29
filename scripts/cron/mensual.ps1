@@ -53,7 +53,13 @@ try {
     # Otras sesiones dejan activa la cuenta developers-insights de gh y el push a manu-180/calcular da
     # «Repository not found»: la tarea fija la cuenta antes de correr.
     gh auth switch -u manu-180 2>$null | Out-Null
-    npx tsx scripts/cron/mensual.ts @extra | Out-Null
+    # La poda de universales lee Search Console con la cuenta de servicio de envkit (apex-manager). Sin
+    # envkit la ronda corre igual y la poda no toca nada.
+    if (Get-Command envkit -ErrorAction SilentlyContinue) {
+        envkit run -p apex-manager --only GSC_SERVICE_ACCOUNT_JSON -- npx tsx scripts/cron/mensual.ts @extra | Out-Null
+    } else {
+        npx tsx scripts/cron/mensual.ts @extra | Out-Null
+    }
     $codigo = $LASTEXITCODE
     L "mensual.ts termino exit=$codigo"
     Get-ChildItem $LOGS -Filter "mensual-2*" | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-400) } | Remove-Item -Force -ErrorAction SilentlyContinue
