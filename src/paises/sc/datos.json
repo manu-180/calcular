@@ -847,16 +847,10 @@
       "unidad": "SCR",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2017-01-19",
           "valor": 45450,
-          "fuente": {
-            "organismo": "Ministry of Employment and Social Affairs",
-            "titulo": "S.I. 3 of 2017: Employment (Thirteenth month pay fixing of eligibility limit) Regulations, 2017",
-            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/si-3-of-2017-employment-thirteenth-month-pay-fixing-of-eligibility-limit-regulations-2017/download",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-29"
-          }
+          "motivo": "Section 46D of the Employment Act conditioned the thirteenth month payment for 2023 to 2025, and we could not read an official text of the 2025 amendment, so we cannot confirm that the S.I. 3 of 2017 limit and the full-month rule still apply."
         }
       ]
     }

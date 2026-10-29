@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "ws",
   concepto: "costo-empleador",
   slug: "employer-cost-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "ws.npf-employer-rate": "numero",
     "ws.standard-week-hours": "numero",

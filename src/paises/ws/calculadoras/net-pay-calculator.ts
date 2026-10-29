@@ -6,7 +6,7 @@ export default definirCalculadora({
   mercado: "ws",
   concepto: "sueldo-neto",
   slug: "net-pay-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { ...REQUIERE_PAYE, "ws.npf-employee-rate": "numero" },
   mundo: { bruto: "bruto", periodoBruto: "mes", neto: "neto", periodoNeto: "mes", entrada: { periodo: "month" } },
   campos: [

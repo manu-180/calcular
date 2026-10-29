@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "ag",
   concepto: "propio",
   slug: "sickness-benefit-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "ag.sickness-benefit-rate": "numero",
     "ag.sickness-benefit-max-weeks": "numero",

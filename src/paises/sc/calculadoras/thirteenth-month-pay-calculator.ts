@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "sc",
   concepto: "bono-semestral",
   slug: "thirteenth-month-pay-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "sc.thirteenth-limit": "numero" },
   campos: [
     { id: "basico", tipo: "moneda", etiqueta: "Basic monthly salary", min: 0, porDefecto: 25000, ayuda: "Basic salary without allowances or other money benefits." },

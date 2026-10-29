@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "ag",
   concepto: "propio",
   slug: "maternity-allowance-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "ag.maternity-allowance-rate": "numero",
     "ag.maternity-allowance-weeks": "numero",

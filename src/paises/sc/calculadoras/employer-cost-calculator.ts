@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "sc",
   concepto: "costo-empleador",
   slug: "employer-cost-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "sc.spf-employer-rate": "numero", "sc.thirteenth-limit": "numero" },
   campos: [
     { id: "bruto", tipo: "moneda", etiqueta: "Gross monthly salary", min: 0, porDefecto: 25000, ayuda: "Basic salary. Add allowances only if they are paid every month." },

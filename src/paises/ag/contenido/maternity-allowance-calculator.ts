@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ag.maternity-allowance-calculator",
   h1: "Maternity allowance calculator Antigua and Barbuda {{anio}}",
   title: "Maternity allowance calculator {{anio}}: 13 weeks",
-  description: "Estimate your Social Security maternity allowance: {{ag.maternity-allowance-rate}} of average weekly insurable earnings for up to {{ag.maternity-allowance-weeks}}.",
+  description: "Estimate your Social Security maternity allowance: {{ag.maternity-allowance-rate}} of average weekly insurable earnings, up to {{ag.maternity-allowance-weeks}}.",
   intro: [
     "Enter your insurable earnings and the weeks you worked in the qualifying period. The calculator shows the weekly allowance and the total for the full period.",
     "The Antigua and Barbuda Social Security Board pays Maternity Allowance to an insured woman who has given birth to a living child. It is paid for up to {{ag.maternity-allowance-weeks}}.",

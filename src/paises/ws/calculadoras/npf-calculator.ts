@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "ws",
   concepto: "aportes-seguridad-social",
   slug: "npf-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "ws.npf-employee-rate": "numero",
     "ws.npf-employer-rate": "numero",

@@ -245,16 +245,10 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2020-01-01",
           "valor": 10,
-          "fuente": {
-            "organismo": "Samoa National Provident Fund",
-            "titulo": "Employers Guide",
-            "url": "https://www.npf.ws/employers-guide",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-29"
-          }
+          "motivo": "The 10% comes from the SNPF Employers Guide, which is out of date and contradicts the official SNPF FAQ, which says contributions are 14% or more."
         }
       ]
     },
@@ -265,16 +259,10 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2020-01-01",
           "valor": 10,
-          "fuente": {
-            "organismo": "Samoa National Provident Fund",
-            "titulo": "Employers Guide",
-            "url": "https://www.npf.ws/employers-guide",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-29"
-          }
+          "motivo": "The 10% comes from the SNPF Employers Guide, which is out of date and contradicts the official SNPF FAQ, which says contributions are 14% or more."
         }
       ]
     },
@@ -285,16 +273,10 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2020-01-01",
           "valor": 2,
-          "fuente": {
-            "organismo": "Samoa National Provident Fund",
-            "titulo": "Employers Guide",
-            "url": "https://www.npf.ws/employers-guide",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-29"
-          }
+          "motivo": "The figure comes from the SNPF Employers Guide, which is out of date and contradicts the official SNPF FAQ on contribution rates, so we cannot rely on it."
         }
       ]
     },
@@ -305,16 +287,10 @@
       "unidad": "numero",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2020-01-01",
           "valor": 7,
-          "fuente": {
-            "organismo": "Samoa National Provident Fund",
-            "titulo": "Employers Guide",
-            "url": "https://www.npf.ws/employers-guide",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-29"
-          }
+          "motivo": "The figure comes from the SNPF Employers Guide, which is out of date and contradicts the official SNPF FAQ on contribution rates, so we cannot rely on it."
         }
       ]
     },

@@ -105,17 +105,10 @@
       "unidad": "XCD",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2021-01-01",
           "valor": 6500,
-          "fuente": {
-            "organismo": "Antigua and Barbuda Social Security Board",
-            "titulo": "Contributions FAQs: maximum insurable earnings",
-            "url": "https://socialsecurity.gov.ag/contributions-faqs/",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-29",
-            "nota": "The page still quotes the 2021 rates; only the earnings ceiling is taken from it."
-          }
+          "motivo": "The only source is the Social Security Board contributions FAQ, which still quotes the 2021 contribution rates and is out of date; we found no current official notice confirming the maximum insurable earnings."
         }
       ]
     },
@@ -126,17 +119,10 @@
       "unidad": "XCD",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2021-01-01",
           "valor": 1500,
-          "fuente": {
-            "organismo": "Antigua and Barbuda Social Security Board",
-            "titulo": "Contributions FAQs: maximum insurable earnings",
-            "url": "https://socialsecurity.gov.ag/contributions-faqs/",
-            "tipo": "primaria",
-            "verificadoEl": "2026-10-29",
-            "nota": "The page still quotes the 2021 rates; only the earnings ceiling is taken from it."
-          }
+          "motivo": "The only source is the Social Security Board contributions FAQ, which still quotes the 2021 contribution rates and is out of date; we found no current official notice confirming the maximum insurable earnings."
         }
       ]
     },

@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "ag",
   concepto: "aportes-seguridad-social",
   slug: "social-security-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "ag.ss-employee-rate": "mapa",
     "ag.ss-employer-rate": "mapa",

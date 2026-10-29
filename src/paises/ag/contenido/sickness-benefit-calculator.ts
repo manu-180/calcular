@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ag.sickness-benefit-calculator",
   h1: "Sickness benefit calculator Antigua and Barbuda {{anio}}",
   title: "Sickness benefit calculator {{anio}}: Social Security",
-  description: "Estimate the Social Security sickness benefit: {{ag.sickness-benefit-rate}} of your average weekly insurable earnings, for up to {{ag.sickness-benefit-max-weeks}}.",
+  description: "Estimate the Social Security sickness benefit: {{ag.sickness-benefit-rate}} of average weekly insurable earnings, up to {{ag.sickness-benefit-max-weeks}}.",
   intro: [
     "Enter your average weekly earnings and the weeks you expect to be off sick. The calculator shows the weekly benefit and the total.",
     "The Antigua and Barbuda Social Security Board pays sickness benefit to private-sector employees and self-employed people aged 16 or over and under pension age.",

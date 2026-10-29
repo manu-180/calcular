@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ws.npf-calculator",
   h1: "NPF contribution calculator Samoa {{anio}}",
   title: "NPF contribution calculator Samoa {{anio}}: 20% a month",
-  description: "Work out the Samoa National Provident Fund contribution: {{ws.npf-employee-rate}} from the employee and {{ws.npf-employer-rate}} from the employer, due by day {{ws.npf-due-day}}.",
+  description: "Work out the Samoa National Provident Fund contribution: {{ws.npf-employee-rate}} from the employee and {{ws.npf-employer-rate}} from the employer.",
   intro: [
     "Every employee in Samoa is a member of the National Provident Fund, and every employer must register with it. The contribution is {{ws.npf-employee-rate}} of gross wages from the employee and a matching {{ws.npf-employer-rate}} from the employer.",
     "Enter the month's gross wages to see the amount to send to NPF. You can add a voluntary extra rate, or an estimate of the surcharge if the payment is late.",

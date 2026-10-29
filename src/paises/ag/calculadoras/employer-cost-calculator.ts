@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "ag",
   concepto: "costo-empleador",
   slug: "employer-cost-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "ag.ss-employer-rate": "mapa",
     "ag.ss-ceiling-monthly": "numero",
