@@ -22,6 +22,18 @@ import nianxiujia from "./calculadoras/nianxiujia";
 import contenidoNianxiujia from "./contenido/nianxiujia";
 import chanjia from "./calculadoras/chanjia";
 import contenidoChanjia from "./contenido/chanjia";
+import shiyongqiGongzi from "./calculadoras/shiyongqi-gongzi";
+import contenidoShiyongqiGongzi from "./contenido/shiyongqi-gongzi";
+import weiqianHetongShuangbeiGongzi from "./calculadoras/weiqian-hetong-shuangbei-gongzi";
+import contenidoWeiqianHetongShuangbeiGongzi from "./contenido/weiqian-hetong-shuangbei-gongzi";
+import zengzhishui from "./calculadoras/zengzhishui";
+import contenidoZengzhishui from "./contenido/zengzhishui";
+import yinhuashui from "./calculadoras/yinhuashui";
+import contenidoYinhuashui from "./contenido/yinhuashui";
+import renminbiHuilv from "./calculadoras/renminbi-huilv";
+import contenidoRenminbiHuilv from "./contenido/renminbi-huilv";
+import guangzhouZuidiGongzi from "./calculadoras/guangzhou-zuidi-gongzi";
+import contenidoGuangzhouZuidiGongzi from "./contenido/guangzhou-zuidi-gongzi";
 import datos from "./datos.json";
 import { detectores } from "./fuentes";
 import { mercado } from "./mercado";
@@ -45,6 +57,12 @@ export default definirPais({
     { definicion: jiabanfei, contenido: contenidoJiabanfei, cliente: () => import("./calculadoras/jiabanfei.cliente") },
     { definicion: nianxiujia, contenido: contenidoNianxiujia, cliente: () => import("./calculadoras/nianxiujia.cliente") },
     { definicion: chanjia, contenido: contenidoChanjia, cliente: () => import("./calculadoras/chanjia.cliente") },
+    { definicion: shiyongqiGongzi, contenido: contenidoShiyongqiGongzi, cliente: () => import("./calculadoras/shiyongqi-gongzi.cliente") },
+    { definicion: weiqianHetongShuangbeiGongzi, contenido: contenidoWeiqianHetongShuangbeiGongzi, cliente: () => import("./calculadoras/weiqian-hetong-shuangbei-gongzi.cliente") },
+    { definicion: zengzhishui, contenido: contenidoZengzhishui, cliente: () => import("./calculadoras/zengzhishui.cliente") },
+    { definicion: yinhuashui, contenido: contenidoYinhuashui, cliente: () => import("./calculadoras/yinhuashui.cliente") },
+    { definicion: renminbiHuilv, contenido: contenidoRenminbiHuilv, cliente: () => import("./calculadoras/renminbi-huilv.cliente") },
+    { definicion: guangzhouZuidiGongzi, contenido: contenidoGuangzhouZuidiGongzi, cliente: () => import("./calculadoras/guangzhou-zuidi-gongzi.cliente") },
   ],
   novedades,
   detectores,

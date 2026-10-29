@@ -8,7 +8,7 @@
       "frecuencia": "diaria",
       "maxAntiguedadDias": 10,
       "fuente": {
-        "organismo": "中国外汇交易中心（受权公布人民币汇率中间价）",
+        "organismo": "中国外汇交易中心（根据中国人民银行授权发布）",
         "titulo": "人民币汇率中间价",
         "url": "https://www.chinamoney.com.cn/chinese/bkccpr/",
         "tipo": "primaria",
@@ -132,7 +132,7 @@
       "frecuencia": "diaria",
       "maxAntiguedadDias": 10,
       "fuente": {
-        "organismo": "中国外汇交易中心（受权公布人民币汇率中间价）",
+        "organismo": "中国外汇交易中心（根据中国人民银行授权发布）",
         "titulo": "人民币汇率中间价",
         "url": "https://www.chinamoney.com.cn/chinese/bkccpr/",
         "tipo": "primaria",
@@ -256,7 +256,7 @@
       "frecuencia": "diaria",
       "maxAntiguedadDias": 10,
       "fuente": {
-        "organismo": "中国外汇交易中心（受权公布人民币汇率中间价）",
+        "organismo": "中国外汇交易中心（根据中国人民银行授权发布）",
         "titulo": "人民币汇率中间价",
         "url": "https://www.chinamoney.com.cn/chinese/bkccpr/",
         "tipo": "primaria",
@@ -380,7 +380,7 @@
       "frecuencia": "diaria",
       "maxAntiguedadDias": 10,
       "fuente": {
-        "organismo": "中国外汇交易中心（受权公布人民币汇率中间价）",
+        "organismo": "中国外汇交易中心（根据中国人民银行授权发布）",
         "titulo": "人民币汇率中间价",
         "url": "https://www.chinamoney.com.cn/chinese/bkccpr/",
         "tipo": "primaria",
