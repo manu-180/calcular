@@ -10,6 +10,7 @@ export default definirCalculadora({
     "bj.heures-sup-majorations": "mapa",
     "bj.heures-sup-premiere-tranche": "numero",
     "bj.duree-legale-travail": "numero",
+    "bj.heures-sup-plafond-annuel": "numero",
   },
   campos: [
     {
