@@ -82,6 +82,10 @@ const nextConfig: NextConfig = {
   // `cpus` sale de una env var porque el build spawnea un worker por núcleo (acá 16) y en una
   // máquina cargada eso agota el commit charge antes que la RAM: muere con "Zone Allocation
   // failed", que se lee como un bug del código y no lo es. BUILD_CPUS=2 lo hace sobrevivir.
+  // Los tipos los chequea el CI en cada PR (.github/workflows/ci.yml, gratis en este repo público). Dentro
+  // del build de Vercel el mismo chequeo pasaba los 8 GB de la máquina standard con el sitio intl
+  // prendido (29/10/2026) y además se pagaba por minuto.
+  typescript: { ignoreBuildErrors: true },
   experimental: {
     inlineCss: false,
     // Sin esto, con AR en src/app/(ar) y sin layout en la raíz, el 404 de calcular.ar pierde el
