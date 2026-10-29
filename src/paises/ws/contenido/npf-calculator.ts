@@ -16,7 +16,7 @@ export default definirContenido({
     "Payments are due by the {{ws.npf-due-day}}th day after month end. A payment still outstanding 21 days after month end attracts a surcharge of {{ws.npf-late-surcharge}} a month.",
   ],
   ejemplo: [
-    "On monthly wages of WST 3,000, the employee share is WST 300 and the employer share is WST 300. The employer sends WST 600 to NPF by the 7th of the next month, together with the monthly schedule listing each employee.",
+    "On monthly wages of WS$3,000, the employee share is WS$300 and the employer share is WS$300. The employer sends WS$600 to NPF by the 7th of the next month, together with the monthly schedule listing each employee.",
   ],
   faq: [
     {

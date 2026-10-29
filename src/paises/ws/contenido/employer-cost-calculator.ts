@@ -15,7 +15,7 @@ export default definirContenido({
     "The hourly cost divides the monthly cost by the hours in an average month: {{ws.standard-week-hours}} hours a week, 52 weeks, divided by 12.",
   ],
   ejemplo: [
-    "An employee paid WST 3,000 a month costs WST 3,300 once the WST 300 employer NPF share is added. Over a year that is WST 39,600, or about WST 19.04 for each working hour.",
+    "An employee paid WS$3,000 a month costs WS$3,300 once the WS$300 employer NPF share is added. Over a year that is WS$39,600, or about WS$19.04 for each working hour.",
   ],
   faq: [
     {

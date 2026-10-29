@@ -15,7 +15,7 @@ export default definirContenido({
     "A business must register for VAGST when its licensed turnover is more than {{ws.vagst-threshold}} in a year, or is expected to be in the next twelve months. Foreign businesses register only if they carry on a continuous and regular activity in Samoa.",
   ],
   ejemplo: [
-    "A price of WST 1,000 plus VAGST of WST 150 gives WST 1,150. In reverse, WST 1,150 divided by 1.15 returns WST 1,000, so WST 150 of the price is VAGST.",
+    "A price of WS$1,000 plus VAGST of WS$150 gives WS$1,150. In reverse, WS$1,150 divided by 1.15 returns WS$1,000, so WS$150 of the price is VAGST.",
   ],
   faq: [
     {

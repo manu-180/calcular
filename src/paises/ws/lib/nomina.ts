@@ -12,7 +12,7 @@ export const PERIODOS: readonly { valor: PeriodoPaga; etiqueta: string }[] = [
 export const PERIODOS_ANIO: Readonly<Record<PeriodoPaga, number>> = { fortnight: 26, month: 12, year: 1 };
 
 export function wst(n: number): string {
-  return `WST ${n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  return `WS$${n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
 // IS02 publishes the PAYE table by fortnight; the annual table in IS01 is the one monthly and yearly pay

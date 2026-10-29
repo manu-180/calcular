@@ -4,19 +4,19 @@ export default definirContenido({
   calculadora: "ws.maternity-leave-calculator",
   h1: "Maternity leave calculator Samoa {{anio}}",
   title: "Maternity leave calculator Samoa {{anio}}: weeks and pay",
-  description: "See the two maternity leave payment options in Samoa: {{ws.maternity-full-pay-weeks}} weeks on full pay plus {{ws.maternity-unpaid-weeks}} unpaid, or {{ws.maternity-reduced-weeks}} weeks on two-thirds pay.",
+  description: "See the two maternity leave payment options in Samoa: {{ws.maternity-full-pay-weeks}} on full pay plus {{ws.maternity-unpaid-weeks}} unpaid, or {{ws.maternity-reduced-weeks}} on two-thirds pay.",
   intro: [
     "The Labour and Employment Relations Act 2013 does not give one fixed maternity leave package. After talking it through with the employee, the employer must offer one of two options.",
-    "Option A is {{ws.maternity-full-pay-weeks}} weeks on full pay followed by {{ws.maternity-unpaid-weeks}} weeks without pay. Option B is {{ws.maternity-reduced-weeks}} weeks on two-thirds of normal pay. Enter your start date and monthly pay to compare the two.",
+    "Option A is {{ws.maternity-full-pay-weeks}} on full pay followed by {{ws.maternity-unpaid-weeks}} without pay. Option B is {{ws.maternity-reduced-weeks}} on two-thirds of normal pay. Enter your start date and monthly pay to compare the two.",
   ],
   comoSeCalcula: [
     "Weekly pay is monthly pay times 12, divided by 52.",
-    "Option A pays {{ws.maternity-full-pay-weeks}} weeks of full weekly pay. The leave runs {{ws.maternity-full-pay-weeks}} paid weeks and {{ws.maternity-unpaid-weeks}} unpaid weeks one after the other.",
-    "Option B pays {{ws.maternity-reduced-weeks}} weeks at {{ws.maternity-reduced-pay-share}} of weekly pay, the two-thirds rate in section 44 of the Act.",
+    "Option A pays {{ws.maternity-full-pay-weeks}} of full weekly pay. The leave runs {{ws.maternity-full-pay-weeks}} paid weeks and {{ws.maternity-unpaid-weeks}} unpaid weeks one after the other.",
+    "Option B pays {{ws.maternity-reduced-weeks}} at {{ws.maternity-reduced-pay-share}} of weekly pay, the two-thirds rate in section 44 of the Act.",
     "The last day of leave is the start date plus the total number of weeks, less one day.",
   ],
   ejemplo: [
-    "On WST 3,000 a month, weekly pay is WST 692.31. Starting leave on 2 November 2026, option A pays 4 weeks, which is WST 2,769.23, and the leave ends on 13 December 2026. Option B runs the same six weeks and pays two-thirds, which is also WST 2,769.23, spread over the whole period.",
+    "On WS$3,000 a month, weekly pay is WS$692.31. Starting leave on 2 November 2026, option A pays 4 weeks, which is WS$2,769.23, and the leave ends on 13 December 2026. Option B runs the same six weeks and pays two-thirds, which is also WS$2,769.23, spread over the whole period.",
   ],
   faq: [
     {

@@ -7,15 +7,15 @@ export default definirContenido({
   description: "See your take-home pay after PAYE and your {{ws.npf-employee-rate}} NPF contribution. Uses the Ministry for Revenue bands and the NPF Employers Guide.",
   intro: [
     "Type in your gross pay and see what reaches your account. Two things come off in Samoa: PAYE, which your employer pays to the Ministry for Revenue, and your {{ws.npf-employee-rate}} share of the National Provident Fund.",
-    "Your employer adds a matching {{ws.npf-employer-rate}} to NPF on top of your pay. That part never touches your payslip.",
+    "Your employer adds a matching share to NPF on top of your pay. That part never touches your payslip.",
   ],
   comoSeCalcula: [
-    "PAYE: pay up to {{ws.paye-fortnightly-bands[1].hasta}} a fortnight is not taxed. The next slice is taxed at {{ws.paye-fortnightly-bands[1].tasa}} and the rest at {{ws.paye-fortnightly-bands[2].tasa}}. Monthly pay uses the annual bands in the same way.",
+    "PAYE: pay up to {{ws.paye-fortnightly-bands[0].hasta}} a fortnight is not taxed. The next slice is taxed at {{ws.paye-fortnightly-bands[1].tasa}} and the rest at {{ws.paye-fortnightly-bands[2].tasa}}. Monthly pay uses the annual bands in the same way.",
     "NPF: {{ws.npf-employee-rate}} of gross pay, including overtime, allowances and bonuses, is deducted from your wages.",
     "Take-home pay is gross pay less PAYE and your NPF share. PAYE is a final tax, so the NPF contribution does not reduce it.",
   ],
   ejemplo: [
-    "A monthly gross pay of WST 4,000 gives PAYE of WST 684.17 and an NPF deduction of WST 400. You take home WST 2,915.83, which is 72.9% of gross pay.",
+    "A monthly gross pay of WS$4,000 gives PAYE of WS$684.17 and an NPF deduction of WS$400. You take home WS$2,915.83, which is 72.9% of gross pay.",
   ],
   faq: [
     {

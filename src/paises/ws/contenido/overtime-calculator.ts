@@ -15,7 +15,7 @@ export default definirContenido({
     "From a monthly pay, the hourly rate is monthly pay times 12, divided by 52 weeks and by {{ws.standard-week-hours}} hours.",
   ],
   ejemplo: [
-    "With an ordinary rate of WST 20 an hour, an hour of overtime is paid at WST 30. Ten hours of overtime come to WST 300. Eight hours on a public holiday at double pay come to WST 320.",
+    "With an ordinary rate of WS$20 an hour, an hour of overtime is paid at WS$30. Ten hours of overtime come to WS$300. Eight hours on a public holiday at double pay come to WS$320.",
   ],
   faq: [
     {

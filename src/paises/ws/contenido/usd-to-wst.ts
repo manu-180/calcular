@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ws.usd-to-wst",
   h1: "USD to WST converter: US dollar to Samoan tala",
   title: "USD to WST today: US dollar to Samoan tala",
-  description: "Convert US dollars, NZ and Australian dollars, euros, pounds and Fijian dollars to Samoan tala with the Central Bank of Samoa indicative rate of {{ws.usd#desde}}.",
+  description: "Convert US, NZ, Australian and Fijian dollars, euros and pounds to Samoan tala with the Central Bank of Samoa indicative rate of {{ws.usd#desde}}.",
   intro: [
     "Convert between the Samoan tala (WST) and six foreign currencies with the indicative rates the Central Bank of Samoa publishes each working day.",
     "The latest rate for the US dollar is {{ws.usd}} per tala, posted on {{ws.usd#desde}}. The tala is set against a trade-weighted basket of currencies, so it moves with the currencies Samoa trades in.",
@@ -15,7 +15,7 @@ export default definirContenido({
     "The rate is indicative. Commercial banks quote their own buying and selling prices, and the Central Bank shows a spread around its figure.",
   ],
   ejemplo: [
-    "At 0.36201 US dollars per tala, US$100 buys 276.24 tala. At 0.64306 New Zealand dollars per tala, WST 100 is NZ$64.31.",
+    "At 0.36201 US dollars per tala, US$100 buys 276.24 tala. At 0.64306 New Zealand dollars per tala, WS$100 is NZ$64.31.",
   ],
   faq: [
     {

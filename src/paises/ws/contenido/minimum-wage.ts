@@ -15,7 +15,7 @@ export default definirContenido({
     "Ordinary hours are capped at {{ws.standard-week-hours}} a week under section 47 of the Labour and Employment Relations Act 2013. Hours beyond that are overtime and pay more.",
   ],
   ejemplo: [
-    "At WST 5.24 an hour, a {{ws.standard-week-hours}} hour week pays at least WST 209.60. That is WST 419.20 a fortnight, WST 908.27 a month and WST 10,899.20 a year.",
+    "At WS$5.24 an hour, a {{ws.standard-week-hours}} hour week pays at least WS$209.60. That is WS$419.20 a fortnight, WS$908.27 a month and WS$10,899.20 a year.",
   ],
   faq: [
     {

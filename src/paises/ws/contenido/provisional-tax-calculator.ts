@@ -15,7 +15,7 @@ export default definirContenido({
     "When you file your return by 31 March of the next year, the provisional payments are set against the tax for that year. The balance is paid the same day, and the first instalment for the new year is due then too.",
   ],
   ejemplo: [
-    "The Ministry for Revenue's own example has a liability of WST 10,000. The instalments are WST 3,333.33 on 31 March, WST 3,333.33 on 31 July and WST 3,333.34 on 31 October.",
+    "The Ministry for Revenue's own example has a liability of WS$10,000. The instalments are WS$3,333.33 on 31 March, WS$3,333.33 on 31 July and WS$3,333.34 on 31 October.",
   ],
   faq: [
     {

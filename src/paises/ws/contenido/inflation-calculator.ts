@@ -15,7 +15,7 @@ export default definirContenido({
     "The Bureau publishes the index each month, usually in the second half of the following month. The latest month is shown as provisional.",
   ],
   ejemplo: [
-    "The all-items index was 138.51 in September 2025 and 143.28 in September 2026. WST 1,000 in September 2025 needs WST 1,034.42 to buy the same things a year later, an increase of 3.4%.",
+    "The all-items index was 138.51 in September 2025 and 143.28 in September 2026. WS$1,000 in September 2025 needs WS$1,034.42 to buy the same things a year later, an increase of 3.4%.",
   ],
   faq: [
     {

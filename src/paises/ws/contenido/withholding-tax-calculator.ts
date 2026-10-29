@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Withholding tax calculator Samoa {{anio}}: 10% and 15%",
   description: "Work out the tax a payer withholds in Samoa: {{ws.resident-wht-rate}} on resident contractors paid by government, {{ws.nonresident-wht-rate}} on most payments to non-residents.",
   intro: [
-    "Withholding tax is income tax taken off a payment before it reaches the recipient. Samoa uses it in two situations: government payments for services to residents, and payments from Samoa to non-residents.",
+    "Withholding tax is income tax taken off a payment before it reaches the recipient, at {{ws.resident-wht-rate}} for residents paid by government and {{ws.nonresident-wht-rate}} for most non-residents. Samoa uses it in two situations: government payments for services to residents, and payments from Samoa to non-residents.",
     "Pick the case, enter the gross amount and the calculator shows the tax withheld and the amount paid out.",
   ],
   comoSeCalcula: [
@@ -15,7 +15,7 @@ export default definirContenido({
     "The resident tax is a credit against the contractor's final income tax. The non-resident tax is a final tax.",
   ],
   ejemplo: [
-    "A ministry pays a resident consultant a contract price of WST 10,000. It withholds {{ws.resident-wht-rate}}, which is WST 1,000, and pays WST 9,000. If the same WST 10,000 went to a non-resident consultant, the tax would be WST 1,500 and the payment WST 8,500.",
+    "A ministry pays a resident consultant a contract price of WS$10,000. It withholds {{ws.resident-wht-rate}}, which is WS$1,000, and pays WS$9,000. If the same WS$10,000 went to a non-resident consultant, the tax would be WS$1,500 and the payment WS$8,500.",
   ],
   faq: [
     {
