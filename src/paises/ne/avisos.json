@@ -1,0 +1,39 @@
+{
+  "mercado": "ne",
+  "avisos": [
+    {
+      "id": "ne.its-bareme-seul",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": [
+        "ne.calcul-its"
+      ],
+      "titulo": "Barème seul",
+      "texto": "Ce calcul applique le barème de l'article 150 au revenu net imposable que vous saisissez. Il ne déduit ni les cotisations sociales, ni les abattements pour frais professionnels ou charges de famille.",
+      "fuente": {
+        "organismo": "Ministère des Finances du Niger",
+        "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 11, nouvel article 150 du Code général des impôts",
+        "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      }
+    },
+    {
+      "id": "ne.transferts-exonerations",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": [
+        "ne.taxe-transferts-argent"
+      ],
+      "titulo": "Opérations exonérées",
+      "texto": "Les transferts au sein du réseau d'un même assujetti et les fonds destinés au paiement des impôts et taxes ne supportent pas la taxe.",
+      "fuente": {
+        "organismo": "Ministère des Finances du Niger",
+        "titulo": "Ordonnance n° 2025-44 du 31 décembre 2025 portant loi de finances pour l'année budgétaire 2026, article 15, article 394 quater du Code général des impôts (création)",
+        "url": "https://finances.gouv.ne/index.php/lois-de-finances/file/1303-ordonnance-n-2025-44",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      }
+    }
+  ]
+}
