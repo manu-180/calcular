@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.traktamente",
   h1: "Räkna ut traktamente för tjänsteresor i Sverige",
-  title: "Traktamente 2026: räkna ut skattefritt traktamente",
+  title: "Traktamente {{anio}}: räkna ut skattefritt traktamente",
   description:
-    "Räkna ut skattefritt traktamente för en tjänsteresa i Sverige: {{se.traktamente[heldag]}} per hel dag 2026, med avdrag för måltider som ingår.",
+    "Räkna ut skattefritt traktamente för en tjänsteresa i Sverige: {{se.traktamente[heldag]}} per hel dag {{anio}}, med avdrag för måltider som ingår.",
   intro: [
     "Är du på tjänsteresa med övernattning kan arbetsgivaren betala ut skattefritt traktamente för dina ökade levnadskostnader. Kalkylatorn räknar ut det högsta skattefria beloppet.",
     "Beloppet minskar om måltider ingår, till exempel frukost på hotellet, och när resan har pågått längre än tre månader på samma ort.",

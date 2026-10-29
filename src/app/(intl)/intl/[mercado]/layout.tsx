@@ -59,9 +59,31 @@ export async function generateMetadata({ params }: { params: Promise<{ mercado: 
     robots: indexable
       ? { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 }
       : { index: false, follow: false },
-    icons: { icon: [{ url: ICONO, type: "image/svg+xml" }] },
+    // Google muestra el favicon en el resultado solo si puede bajarlo de una URL estable en PNG/ICO (el SVG no
+    // está en su lista y un data: no se puede pedir): /og/marca es el mismo signo en PNG de 512. El SVG
+    // queda para los navegadores, que lo prefieren nítido.
+    icons: {
+      icon: [
+        { url: "/og/marca", type: "image/png", sizes: "512x512" },
+        { url: ICONO, type: "image/svg+xml" },
+      ],
+      apple: [{ url: "/og/marca", type: "image/png", sizes: "512x512" }],
+    },
+    ...(Object.keys(verificacion).length ? { verification: verificacion } : {}),
   };
 }
+
+// Verificación de Bing Webmaster, Yandex Webmaster y Naver Search Advisor (los motores de KR, RU, KZ, UZ,
+// CZ...). Cada uno da un token al alta; va por env y no por código para que el alta la haga Manuel y el
+// HTML no lleve metas vacías. Google ya está verificado por DNS.
+const verificacion: NonNullable<Metadata["verification"]> = {
+  ...(process.env.NEXT_PUBLIC_VERIFICACION_YANDEX ? { yandex: process.env.NEXT_PUBLIC_VERIFICACION_YANDEX } : {}),
+  other: {
+    ...(process.env.NEXT_PUBLIC_VERIFICACION_BING ? { "msvalidate.01": process.env.NEXT_PUBLIC_VERIFICACION_BING } : {}),
+    ...(process.env.NEXT_PUBLIC_VERIFICACION_NAVER ? { "naver-site-verification": process.env.NEXT_PUBLIC_VERIFICACION_NAVER } : {}),
+  },
+};
+if (!Object.keys(verificacion.other!).length) delete verificacion.other;
 
 export const viewport: Viewport = {
   themeColor: "#fafaf9",

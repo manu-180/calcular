@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jo.minimum-wage",
   h1: "الحد الأدنى للأجور في الأردن",
-  title: "الحد الأدنى للأجور في الأردن 2026: {{jo.minimum-wage}}",
+  title: "الحد الأدنى للأجور في الأردن {{anio}}: {{jo.minimum-wage}}",
   description:
     "الحد الأدنى للأجور في الأردن {{jo.minimum-wage}} في الشهر منذ {{jo.minimum-wage#desde}}. قارن راتبك به واعرف ما يعادله في اليوم والساعة والسنة.",
   intro: [

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "gr.foros-enoikion",
-  h1: "Υπολογισμός φόρου ενοικίων 2026",
-  title: "Φόρος ενοικίων 2026: υπολογισμός με τη νέα κλίμακα",
+  h1: "Υπολογισμός φόρου ενοικίων {{anio}}",
+  title: "Φόρος ενοικίων {{anio}}: υπολογισμός με τη νέα κλίμακα",
   description:
-    "Υπολογίστε τον φόρο εισοδήματος από ενοίκια με την κλίμακα 2026: {{gr.klimaka-enoikion[0].tasa}}, {{gr.klimaka-enoikion[1].tasa}}, {{gr.klimaka-enoikion[2].tasa}} και {{gr.klimaka-enoikion[3].tasa}}, μετά την έκπτωση {{gr.ekptosi-enoikion}}.",
+    "Υπολογίστε τον φόρο εισοδήματος από ενοίκια με την κλίμακα {{anio}}: {{gr.klimaka-enoikion[0].tasa}}, {{gr.klimaka-enoikion[1].tasa}}, {{gr.klimaka-enoikion[2].tasa}} και {{gr.klimaka-enoikion[3].tasa}}, μετά την έκπτωση {{gr.ekptosi-enoikion}}.",
   intro: [
     "Το εισόδημα από ενοίκια φορολογείται χωριστά από τον μισθό, με δική του κλίμακα.",
     "Εισάγετε τα ενοίκια του έτους για να δείτε τον φόρο και τι μένει καθαρά.",

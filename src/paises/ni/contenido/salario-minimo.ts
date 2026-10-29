@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ni.salario-minimo",
-  h1: "Salario mínimo en Nicaragua 2026 por sector",
-  title: "Salario mínimo en Nicaragua 2026: tabla por sector",
-  description: "Salario mínimo en Nicaragua 2026 por sector: de {{ni.salario-minimo[agropecuario]}} a {{ni.salario-minimo[construccion-financiero]}} al mes. Consultá el tuyo por mes, por día y por hora.",
+  h1: "Salario mínimo en Nicaragua {{anio}} por sector",
+  title: "Salario mínimo en Nicaragua {{anio}}: tabla por sector",
+  description: "Salario mínimo en Nicaragua {{anio}} por sector: de {{ni.salario-minimo[agropecuario]}} a {{ni.salario-minimo[construccion-financiero]}} al mes. Consultá el tuyo por mes, por día y por hora.",
   intro: [
     "El salario mínimo en Nicaragua va de {{ni.salario-minimo[agropecuario]}} al mes en el sector agropecuario a {{ni.salario-minimo[construccion-financiero]}} en construcción, finanzas y seguros. Los montos rigen desde el {{ni.salario-minimo#desde}}.",
     "Cambia según el sector donde trabajás. Lo aprueba cada año la Comisión Nacional de Salario Mínimo y lo publica el Ministerio del Trabajo (MITRAB). Elegí tu sector y te mostramos el mínimo mensual, por día y por hora.",

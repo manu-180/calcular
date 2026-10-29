@@ -1,6 +1,7 @@
 name: mensual
 
-# Ronda mensual de calcularya: precios de «¿Cuántas horas de trabajo cuesta?» y foto de los rankings.
+# Ronda mensual de calcularya: precios de «¿Cuántas horas de trabajo cuesta?», foto de los rankings y poda
+# de universales sin impresiones (scripts/poda-universales.ts, ESTANDAR-SEO-MULTIPAIS §3).
 # Hoy la corre la tarea programada CalcularYa-Mensual de la PC (scripts/cron/mensual.ps1) porque Actions
 # está frenado por billing; este workflow es el mismo trabajo para cuando vuelva. Si corren los dos no hay
 # doble commit: mensual.ts no relee precios ya leídos en el mes ni rehace la foto, y publicar no commitea
@@ -25,7 +26,10 @@ jobs:
     permissions:
       contents: read
     steps:
+      # Historia completa: la poda fecha la publicación de cada país con git log (superficial = no poda).
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -34,11 +38,12 @@ jobs:
       - name: Precios, foto y checks
         env:
           CALCULARYA_CRON_LOG: ${{ runner.temp }}/mensual.log
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
         run: npx tsx scripts/cron/mensual.ts --sin-publicar
       - name: Juntar los datos
         run: |
           mkdir -p "$RUNNER_TEMP/datos/historial"
-          cp src/lib/horas/precios.json src/lib/horas/cotidianos-ar.json "$RUNNER_TEMP/datos/"
+          cp src/lib/horas/precios.json src/lib/horas/cotidianos-ar.json src/motor/universales/podadas.json "$RUNNER_TEMP/datos/"
           cp src/motor/rankings/historial/* "$RUNNER_TEMP/datos/historial/"
       - uses: actions/upload-artifact@v4
         with:
@@ -76,6 +81,8 @@ jobs:
           cp "$D/precios.json" src/lib/horas/precios.json
           node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))' "$D/cotidianos-ar.json"
           cp "$D/cotidianos-ar.json" src/lib/horas/cotidianos-ar.json
+          node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))' "$D/podadas.json"
+          cp "$D/podadas.json" src/motor/universales/podadas.json
           for f in "$D"/historial/*; do
             n=$(basename "$f")
             case "$n" in
@@ -83,14 +90,14 @@ jobs:
               indice.ts) cp "$f" src/motor/rankings/historial/indice.ts ;;
             esac
           done
-          if [ -z "$(git status --porcelain -- src/lib/horas/precios.json src/lib/horas/cotidianos-ar.json src/motor/rankings/historial)" ]; then
+          if [ -z "$(git status --porcelain -- src/lib/horas/precios.json src/lib/horas/cotidianos-ar.json src/motor/rankings/historial src/motor/universales/podadas.json)" ]; then
             echo "Nada que publicar: main ya tiene estos datos."
             exit 0
           fi
           git config user.name "manu-180"
           git config user.email "157671390+manu-180@users.noreply.github.com"
-          git add -- src/lib/horas/precios.json src/lib/horas/cotidianos-ar.json src/motor/rankings/historial
-          git commit -q -m "datos(mensual): precios de horas y foto de rankings $(date -u +%Y-%m)" -m "Ronda mensual automática (.github/workflows/mensual.yml), validada con check_horas, check_horas_ar y check_rankings."
+          git add -- src/lib/horas/precios.json src/lib/horas/cotidianos-ar.json src/motor/rankings/historial src/motor/universales/podadas.json
+          git commit -q -m "datos(mensual): precios de horas, foto de rankings y poda de universales $(date -u +%Y-%m)" -m "Ronda mensual automática (.github/workflows/mensual.yml), validada con check_horas, check_horas_ar, check_rankings, check_poda y check_hreflang."
           for intento in 1 2 3; do
             git fetch -q origin main
             if ! git rebase -q origin/main; then

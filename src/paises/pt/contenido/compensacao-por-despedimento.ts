@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.compensacao-por-despedimento",
   h1: "Compensação por despedimento",
-  title: "Compensação por despedimento 2026: calculadora",
+  title: "Compensação por despedimento {{anio}}: calculadora",
   description: "Calcule a compensação por despedimento coletivo, extinção do posto de trabalho ou fim de contrato a termo, com os limites do Código do Trabalho.",
   intro: [
     "Quando o contrato termina por despedimento coletivo, extinção do posto de trabalho, inadaptação ou fim de um contrato a termo, o trabalhador tem direito a uma compensação calculada pela antiguidade.",

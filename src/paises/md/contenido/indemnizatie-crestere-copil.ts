@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "md.indemnizatie-crestere-copil",
   h1: "Calculator indemnizație pentru creșterea copilului",
-  title: "Indemnizația pentru creșterea copilului 2026",
+  title: "Indemnizația pentru creșterea copilului {{anio}}",
   description: "Calculați indemnizația lunară pentru creșterea copilului după opțiunea aleasă: {{md.crestere-copil[trei-ani]}}, {{md.crestere-copil[24-luni]}} sau {{md.crestere-copil[12-luni]}} din venitul asigurat.",
   intro: [
     "După concediul de maternitate, unul dintre părinții asigurați poate primi o indemnizație lunară pentru creșterea copilului. Suma depinde de venit și de opțiunea aleasă.",

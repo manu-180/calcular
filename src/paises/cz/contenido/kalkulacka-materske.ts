@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cz.kalkulacka-materske",
-  h1: "Kalkulačka mateřské 2026",
-  title: "Kalkulačka mateřské 2026: výpočet peněžité pomoci",
+  h1: "Kalkulačka mateřské {{anio}}",
+  title: "Kalkulačka mateřské {{anio}}: výpočet peněžité pomoci",
   description:
-    "Spočítejte si mateřskou (peněžitou pomoc v mateřství) z hrubé mzdy: denní částku, částku za měsíc a celkem za {{cz.ppm-podpurci-doba[jedno]}} podle hranic pro rok 2026.",
+    "Spočítejte si mateřskou (peněžitou pomoc v mateřství) z hrubé mzdy: denní částku, částku za měsíc a celkem za {{cz.ppm-podpurci-doba[jedno]}} podle hranic pro rok {{anio}}.",
   intro: [
     "Mateřská neboli peněžitá pomoc v mateřství nahrazuje příjem před porodem a po něm. Vyplácí ji okresní správa sociálního zabezpečení.",
     "Kalkulačka spočítá výši dávky z vaší průměrné hrubé mzdy za posledních 12 měsíců.",

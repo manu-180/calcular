@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.taxa-social-unica",
   h1: "Taxa Social Única (TSU)",
-  title: "TSU 2026: descontos para a Segurança Social",
+  title: "TSU {{anio}}: descontos para a Segurança Social",
   description: "Calcule os descontos para a Segurança Social sobre um salário: {{pt.ss-trabalhador}} do trabalhador e {{pt.ss-empregador}} da entidade empregadora.",
   intro: [
     "A Taxa Social Única é a contribuição para a Segurança Social sobre os salários. Uma parte é descontada ao trabalhador e outra é paga pela empresa.",

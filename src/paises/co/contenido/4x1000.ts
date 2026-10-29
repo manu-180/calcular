@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.4x1000",
   h1: "Calculadora del 4x1000",
-  title: "Calculadora del 4x1000 (GMF) 2026",
+  title: "Calculadora del 4x1000 (GMF) {{anio}}",
   description:
     "Calcula cuánto pagas de 4x1000 en un retiro o transferencia y cuánto puedes mover sin pagar con la cuenta marcada como exenta: {{co.gmf-exencion}} al mes.",
   intro: [

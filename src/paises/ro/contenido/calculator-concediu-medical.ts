@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.calculator-concediu-medical",
-  h1: "Calcul concediu medical 2026",
-  title: "Calcul concediu medical 2026: indemnizația pe zile",
+  h1: "Calcul concediu medical {{anio}}",
+  title: "Calcul concediu medical {{anio}}: indemnizația pe zile",
   description:
     "Calculați indemnizația de concediu medical după durata certificatului și venitul brut din ultimele 6 luni, cu procentele în vigoare din august 2025.",
   intro: [

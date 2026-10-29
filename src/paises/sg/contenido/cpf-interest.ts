@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sg.cpf-interest",
   h1: "CPF interest calculator",
-  title: "CPF interest calculator 2026: OA, SA, MA, RA and extra",
+  title: "CPF interest calculator {{anio}}: OA, SA, MA, RA and extra",
   description: "Estimate a year of CPF interest: {{sg.cpf-interes-oa}} on your Ordinary Account, {{sg.cpf-interes-sma}} on Special, MediSave and Retirement savings, plus the extra interest.",
   intro: [
     "Your CPF savings earn interest set by the Government every quarter, and the Government pays extra interest on the first part of your balances.",

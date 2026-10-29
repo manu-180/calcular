@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.impuesto-bienes-raices",
   h1: "Calculadora del impuesto de transferencia de bienes raíces",
-  title: "Impuesto al comprar casa o terreno en El Salvador 2026",
+  title: "Impuesto al comprar casa o terreno en El Salvador {{anio}}",
   description: "Calcule el impuesto de transferencia de bienes raíces: {{sv.bienes-raices-tasa}} sobre lo que el valor del inmueble pase de {{sv.bienes-raices-exento}}.",
   intro: [
     "Al comprar una casa, un terreno o un local se paga el impuesto sobre transferencia de bienes raíces. Es el {{sv.bienes-raices-tasa}} sobre la parte del valor que pasa de {{sv.bienes-raices-exento}}; por debajo de ese monto no se paga.",

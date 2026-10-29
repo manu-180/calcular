@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.horas-extra",
   h1: "Calculadora de horas extras en Uruguay",
-  title: "Horas extras en Uruguay 2026: calculá cuánto te pagan",
+  title: "Horas extras en Uruguay {{anio}}: calculá cuánto te pagan",
   description:
     "Calculá tus horas extras con el recargo legal: {{uy.recargo-he-habil}} en días hábiles y {{uy.recargo-he-descanso}} en feriados o descanso. Para mensuales y jornaleros, gratis.",
   intro: [

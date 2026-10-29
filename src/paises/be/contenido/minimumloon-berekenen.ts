@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be.minimumloon-berekenen",
   h1: "Minimumloon berekenen in België",
-  title: "Minimumloon België 2026: {{be.ggmmi}} bruto per maand",
+  title: "Minimumloon België {{anio}}: {{be.ggmmi}} bruto per maand",
   description:
     "Het minimumloon in België is {{be.ggmmi}} bruto per maand voor een voltijdse job vanaf 18 jaar. Bereken het minimum voor jouw uren, per uur en per jaar.",
   intro: [

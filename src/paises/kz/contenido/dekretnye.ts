@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kz.dekretnye",
   h1: "Калькулятор декретных в Казахстане: выплата ГФСС по беременности и родам",
-  title: "Декретные 2026 Казахстан: расчет выплаты ГФСС",
+  title: "Декретные {{anio}} Казахстан: расчет выплаты ГФСС",
   description:
     "Рассчитайте декретные из ГФСС: среднемесячный доход за 12 месяцев × дни отпуска / 30, минус ОПВ {{kz.opv-s-sotsvyplat}}. Нормальные и осложненные роды.",
   intro: [

@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "no.dokumentavgift",
   h1: "Dokumentavgift: regn ut avgift og tinglysingsgebyr",
-  title: "Dokumentavgift 2026: kalkulator for boligkjøp",
+  title: "Dokumentavgift {{anio}}: kalkulator for boligkjøp",
   description:
-    "Regn ut dokumentavgiften på {{no.dokumentavgift}} av markedsverdien og tinglysingsgebyret på {{no.tinglysingsgebyr}} når du kjøper bolig eller tomt i 2026.",
+    "Regn ut dokumentavgiften på {{no.dokumentavgift}} av markedsverdien og tinglysingsgebyret på {{no.tinglysingsgebyr}} når du kjøper bolig eller tomt i {{anio}}.",
   intro: [
     "Når du kjøper en selveierbolig, en tomt eller en annen fast eiendom, betaler du dokumentavgift til staten når skjøtet tinglyses. I tillegg kommer tinglysingsgebyr til Kartverket.",
     "Skriv inn markedsverdien, så ser du dokumentavgiften og de samlede kostnadene ved tinglysingen.",

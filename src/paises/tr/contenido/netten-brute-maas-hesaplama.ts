@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.netten-brute-maas-hesaplama",
-  h1: "Netten brüte maaş hesaplama 2026",
-  title: "Netten Brüte Maaş Hesaplama 2026: Brüt Ne Olmalı?",
+  h1: "Netten brüte maaş hesaplama {{anio}}",
+  title: "Netten Brüte Maaş Hesaplama {{anio}}: Brüt Ne Olmalı?",
   description:
-    "Anlaştığınız net maaş için işverenin bordroya yazması gereken brüt tutarı bulun. SGK, işsizlik, gelir ve damga vergisi 2026 oranlarıyla, ay seçerek.",
+    "Anlaştığınız net maaş için işverenin bordroya yazması gereken brüt tutarı bulun. SGK, işsizlik, gelir ve damga vergisi {{anio}} oranlarıyla, ay seçerek.",
   intro: [
     "İş görüşmelerinde çoğu zaman net maaş konuşulur, bordroda ise brüt tutar yazar. Elinize geçmesini istediğiniz net tutarı ve ayı girin, gereken brüt maaşı görün.",
     "Hesaplama, brütten nete hesabının tersidir: kesintilerin hepsi aynı kurallarla hesaplanır ve sonuçtaki brüt, girdiğiniz neti kuruşuna kadar verir.",

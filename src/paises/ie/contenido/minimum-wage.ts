@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ie.minimum-wage",
-  h1: "Minimum wage calculator Ireland 2026",
-  title: "Minimum wage Ireland 2026: {{ie.minimum-wage}} an hour",
+  h1: "Minimum wage calculator Ireland {{anio}}",
+  title: "Minimum wage Ireland {{anio}}: {{ie.minimum-wage}} an hour",
   description:
     "The National Minimum Wage is {{ie.minimum-wage}} an hour from {{ie.minimum-wage#desde}}. See the rate for your age and what it means per week, month and year.",
   intro: [

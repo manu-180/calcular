@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.rer",
   h1: "Calculadora del Régimen Especial de Renta (RER)",
-  title: "RER 2026: calcula tu cuota mensual de {{pe.tasa-rer}}",
+  title: "RER {{anio}}: calcula tu cuota mensual de {{pe.tasa-rer}}",
   description:
     "En el Régimen Especial de Renta pagas {{pe.tasa-rer}} de tus ingresos netos del mes. Calcula tu cuota y revisa si te pasas del límite de {{pe.limite-rer}} al año.",
   intro: [

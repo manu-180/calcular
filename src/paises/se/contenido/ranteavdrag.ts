@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.ranteavdrag",
   h1: "Räkna ut ränteavdrag på bolånet",
-  title: "Ränteavdrag 2026: räkna ut skattereduktionen för dina räntor",
+  title: "Ränteavdrag {{anio}}: räkna ut skattereduktionen för dina räntor",
   description:
     "Räkna ut ränteavdraget: {{se.ranteavdrag[sats]}} procent skattereduktion på underskott upp till {{se.ranteavdrag[grans]}} kronor och {{se.ranteavdrag[over]}} procent på resten.",
   intro: [

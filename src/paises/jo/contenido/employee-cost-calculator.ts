@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jo.employee-cost-calculator",
   h1: "حاسبة تكلفة الموظف على صاحب العمل",
-  title: "تكلفة الموظف على صاحب العمل في الأردن 2026",
+  title: "تكلفة الموظف على صاحب العمل في الأردن {{anio}}",
   description:
     "احسب ما يكلفه الموظف على المنشأة في الشهر والسنة: الراتب الإجمالي مع اشتراك المنشأة في الضمان الاجتماعي وأي تكاليف أخرى تدفعها.",
   intro: [

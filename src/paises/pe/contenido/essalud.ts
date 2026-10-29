@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.essalud",
   h1: "Calculadora del aporte a EsSalud",
-  title: "Aporte a EsSalud 2026: calcula el {{pe.aporte-essalud}} de tu planilla",
+  title: "Aporte a EsSalud {{anio}}: calcula el {{pe.aporte-essalud}} de tu planilla",
   description:
     "Calcula el aporte a EsSalud que paga el empleador: {{pe.aporte-essalud}} de la remuneración, con un mínimo sobre la RMV de {{pe.rmv}}. Por trabajador y para toda la planilla.",
   intro: [

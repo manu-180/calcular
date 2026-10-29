@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uz.dekret-puli-hisoblash",
   h1: "Dekret puli hisoblash: homiladorlik va tugʻish nafaqasi",
-  title: "Dekret puli hisoblash 2026: tugʻish nafaqasi",
+  title: "Dekret puli hisoblash {{anio}}: tugʻish nafaqasi",
   description:
     "Homiladorlik va tugʻish nafaqasini oʻrtacha ish haqi, sugʻurta staji (koeffitsiyent {{uz.homiladorlik-staj-koeffitsiyenti[10-24-oy]}}, {{uz.homiladorlik-staj-koeffitsiyenti[25-60-oy]}} yoki {{uz.homiladorlik-staj-koeffitsiyenti[61-oy-va-ortiq]}}) va taʼtil kunlari boʻyicha hisoblang.",
   intro: [

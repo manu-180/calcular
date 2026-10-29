@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.salario-minimo",
-  h1: "Salario mínimo 2026 en México: diario, quincenal y mensual",
-  title: "Salario mínimo 2026 en México: {{mx.salario-minimo@general}} diarios",
+  h1: "Salario mínimo {{anio}} en México: diario, quincenal y mensual",
+  title: "Salario mínimo {{anio}} en México: {{mx.salario-minimo@general}} diarios",
   description:
-    "El salario mínimo 2026 es de {{mx.salario-minimo@general}} diarios y de {{mx.salario-minimo@frontera-norte}} en la frontera norte. Mira cuánto es por semana, quincena y mes.",
+    "El salario mínimo {{anio}} es de {{mx.salario-minimo@general}} diarios y de {{mx.salario-minimo@frontera-norte}} en la frontera norte. Mira cuánto es por semana, quincena y mes.",
   intro: [
     "El salario mínimo en México es de {{mx.salario-minimo@general}} por día desde el {{mx.salario-minimo@general#desde}}. En la Zona Libre de la Frontera Norte es de {{mx.salario-minimo@frontera-norte}} por día.",
     "En 2026, al mes son 9,577.22 pesos en el resto del país y 13,402.45 pesos en la frontera norte, con el mes promedio de 30.4 días.",

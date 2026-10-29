@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.renta-tercera",
   h1: "Calculadora del impuesto a la renta de empresas (régimen general)",
-  title: "Impuesto a la renta empresas 2026: {{pe.tasa-renta-tercera}} y pago a cuenta",
+  title: "Impuesto a la renta empresas {{anio}}: {{pe.tasa-renta-tercera}} y pago a cuenta",
   description:
     "Calcula el pago a cuenta mensual del régimen general (coeficiente o {{pe.pago-cuenta-tercera}}) y el impuesto anual de {{pe.tasa-renta-tercera}} sobre la utilidad de tu empresa.",
   intro: [

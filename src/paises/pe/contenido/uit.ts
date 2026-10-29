@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.conversor-uit",
-  h1: "Valor de la UIT 2026 y conversor a soles",
-  title: "UIT 2026: {{pe.uit}}. Convierte UIT a soles y al revés",
+  h1: "Valor de la UIT {{anio}} y conversor a soles",
+  title: "UIT {{anio}}: {{pe.uit}}. Convierte UIT a soles y al revés",
   description:
-    "La UIT 2026 vale {{pe.uit}}. Convierte cualquier cantidad de UIT a soles, o soles a UIT, para multas, deducciones y trámites. Valor oficial del MEF.",
+    "La UIT {{anio}} vale {{pe.uit}}. Convierte cualquier cantidad de UIT a soles, o soles a UIT, para multas, deducciones y trámites. Valor oficial del MEF.",
   intro: [
     "La UIT vale {{pe.uit}} desde el {{pe.uit#desde}}. Es la unidad impositiva tributaria: un valor de referencia que el Estado fija cada año.",
     "Se usa para impuestos, multas, topes de deducciones y requisitos de muchos trámites. Escribe una cantidad y te la pasamos a soles.",

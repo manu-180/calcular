@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.feriados",
   h1: "Pago de feriados en Costa Rica",
-  title: "Pago de feriados 2026 en Costa Rica: doble y horas extra",
+  title: "Pago de feriados {{anio}} en Costa Rica: doble y horas extra",
   description:
     "Calcule cuánto le deben pagar por trabajar un feriado: pago doble, feriados de pago obligatorio y no obligatorio, y horas extra a triple. Según el MTSS.",
   intro: [

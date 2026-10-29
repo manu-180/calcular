@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.irpf-profesional",
   h1: "Calculadora de IRPF para profesionales y servicios personales",
-  title: "IRPF servicios personales 2026: cuánto pagás",
+  title: "IRPF servicios personales {{anio}}: cuánto pagás",
   description:
     "Calculá el IRPF de tus servicios personales fuera de la relación de dependencia: se resta un {{uy.irpf-ficto-independientes}} de gastos y se aplica la escala anual en BPC.",
   intro: [

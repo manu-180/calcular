@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu.allocations-familiales",
   h1: "Calcul des allocations familiales au Luxembourg (CAE)",
-  title: "Allocations familiales Luxembourg 2026 : montants",
+  title: "Allocations familiales Luxembourg {{anio}} : montants",
   description: "Allocations familiales au Luxembourg : {{lu.allocation-familiale}} par enfant et par mois, majorations d'âge et allocation de rentrée scolaire.",
   intro: [
     "Depuis le 1er juin 2026, l'allocation familiale s'élève à {{lu.allocation-familiale}} par enfant et par mois. Une majoration s'ajoute à partir de 6 ans, puis à partir de 12 ans.",

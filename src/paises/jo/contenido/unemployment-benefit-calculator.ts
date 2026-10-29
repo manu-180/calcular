@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jo.unemployment-benefit-calculator",
   h1: "حاسبة بدل التعطل عن العمل من الضمان",
-  title: "حساب بدل التعطل عن العمل من الضمان الاجتماعي 2026",
+  title: "حساب بدل التعطل عن العمل من الضمان الاجتماعي {{anio}}",
   description:
     "احسب بدل التعطل عن العمل من الضمان الاجتماعي شهرًا بشهر: النسب من آخر أجر، ومدة الصرف، والحد الأعلى للصافي {{jo.unemployment-benefit-cap}}.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu.droits-enregistrement",
   h1: "Calcul des droits d'enregistrement et du Bëllegen Akt",
-  title: "Droits d'enregistrement Luxembourg : Bëllegen Akt 2026",
+  title: "Droits d'enregistrement Luxembourg : Bëllegen Akt {{anio}}",
   description: "Frais d'achat d'un logement au Luxembourg : 6 % d'enregistrement et 1 % de transcription, moins le crédit d'impôt Bëllegen Akt de {{lu.bellegen-akt}} par acquéreur.",
   intro: [
     "À l'achat d'une maison, d'un appartement ou d'un terrain à bâtir, les droits s'élèvent à 7 % : {{lu.droits-enregistrement}} d'enregistrement et {{lu.droits-transcription}} de transcription.",

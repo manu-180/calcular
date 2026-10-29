@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gr.ypologismos-yperorion",
   h1: "Υπολογισμός υπερωριών και υπερεργασίας",
-  title: "Υπολογισμός υπερωριών 2026: υπερεργασία και υπερωρίες",
+  title: "Υπολογισμός υπερωριών {{anio}}: υπερεργασία και υπερωρίες",
   description:
     "Υπολογίστε την αμοιβή για υπερεργασία (+{{gr.prosafxiseis-yperorias[yperergasia]}}), νόμιμη υπερωρία (+{{gr.prosafxiseis-yperorias[nomimi]}}) και μη νόμιμη υπερωρία (+{{gr.prosafxiseis-yperorias[paranomi]}}) με το ωρομίσθιό σας.",
   intro: [

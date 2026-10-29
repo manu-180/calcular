@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hn.impuesto-sobre-la-renta",
   h1: "Calculadora del ISR para asalariados en Honduras",
-  title: "Tabla progresiva ISR 2026 Honduras: calcule su impuesto",
+  title: "Tabla progresiva ISR {{anio}} Honduras: calcule su impuesto",
   description:
-    "Calcule el ISR de su salario con la tabla progresiva 2026 del SAR y la deducción de {{hn.isr-deduccion-gastos-medicos}} por gastos médicos. Vea su tramo y la retención mensual.",
+    "Calcule el ISR de su salario con la tabla progresiva {{anio}} del SAR y la deducción de {{hn.isr-deduccion-gastos-medicos}} por gastos médicos. Vea su tramo y la retención mensual.",
   intro: [
     "El ISR de los asalariados en Honduras se calcula con la tabla progresiva del SAR: a su salario del año se le restan {{hn.isr-deduccion-gastos-medicos}} de gastos médicos, la primera parte queda exenta y lo que pasa de cada límite paga 15 %, 20 % o 25 %.",
     "El SAR actualiza la tabla cada enero con la inflación del año anterior. Esta calculadora usa la de 2026 y le muestra el impuesto del año y la retención de cada mes.",

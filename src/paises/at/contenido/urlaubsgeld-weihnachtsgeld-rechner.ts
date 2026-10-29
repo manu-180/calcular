@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "at.urlaubsgeld-weihnachtsgeld-rechner",
   h1: "Urlaubsgeld und Weihnachtsgeld netto berechnen",
-  title: "Urlaubsgeld und Weihnachtsgeld 2026: Netto-Rechner",
+  title: "Urlaubsgeld und Weihnachtsgeld {{anio}}: Netto-Rechner",
   description: "Wie viel bleibt vom 13. und 14. Gehalt? Sozialversicherung, Freibetrag von 620 Euro und 6 % Lohnsteuer auf Urlaubsgeld und Weihnachtsgeld in Österreich.",
   intro: [
     "Urlaubsgeld und Weihnachtsgeld sind die beiden Sonderzahlungen, die in Österreich zusätzlich zu den zwölf Monatsgehältern ausgezahlt werden. Wie hoch sie sind, regelt Ihr Kollektivvertrag oder Arbeitsvertrag.",

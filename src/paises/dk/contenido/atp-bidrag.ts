@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "dk.atp-bidrag",
-  h1: "ATP-bidrag 2026: hvad betaler du og din arbejdsgiver?",
-  title: "ATP-bidrag 2026: beregn dit og arbejdsgiverens bidrag",
+  h1: "ATP-bidrag {{anio}}: hvad betaler du og din arbejdsgiver?",
+  title: "ATP-bidrag {{anio}}: beregn dit og arbejdsgiverens bidrag",
   description:
     "Beregn ATP-bidraget efter dine arbejdstimer om måneden. Ved fuld tid betaler du {{dk.atp-loenmodtager[fuld]}} og arbejdsgiveren {{dk.atp-arbejdsgiver[fuld]}} om måneden.",
   intro: [

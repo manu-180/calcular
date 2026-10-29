@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "my.pcb-calculator",
-  h1: "PCB calculator 2026",
-  title: "PCB calculator 2026: monthly tax deduction (MTD)",
-  description: "Work out your PCB (MTD) with the HASiL computerised formula for 2026: EPF, reliefs, rebate, zakat and the 5 sen rounding your payroll uses.",
+  h1: "PCB calculator {{anio}}",
+  title: "PCB calculator {{anio}}: monthly tax deduction (MTD)",
+  description: "Work out your PCB (MTD) with the HASiL computerised formula for {{anio}}: EPF, reliefs, rebate, zakat and the 5 sen rounding your payroll uses.",
   intro: [
     "PCB, or MTD, is the income tax your employer takes from your salary every month and pays to HASiL. Enter your salary and EPF to see the amount for any month of the year.",
     "It follows the HASiL specification for computerised MTD calculations for 2026, the same formula payroll software has to use.",

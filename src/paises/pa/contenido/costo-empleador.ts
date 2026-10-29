@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.costo-empleador",
   h1: "Calculadora del costo de un empleado en Panamá",
-  title: "Cuánto cuesta un empleado en Panamá: cuota patronal 2026",
+  title: "Cuánto cuesta un empleado en Panamá: cuota patronal {{anio}}",
   description:
     "Calcula cuánto cuesta un empleado en Panamá: cuota patronal del {{pa.css-empleador}} a la CSS, {{pa.seguro-educativo-empleador}} de seguro educativo, riesgos profesionales y décimo.",
   intro: [

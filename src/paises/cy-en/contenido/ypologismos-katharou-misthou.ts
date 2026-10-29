@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.ypologismos-katharou-misthou",
   h1: "Net salary calculator for Cyprus",
-  title: "Cyprus net salary calculator 2026: gross to net",
+  title: "Cyprus net salary calculator {{anio}}: gross to net",
   description: "Work out your take-home pay in Cyprus: Social Insurance {{cy.eisfora-ka-misthotou}}, GeSY {{cy.eisfores-gesy[misthotos]}} and income tax with a {{cy.klimaka-forou[0].hasta}} tax-free band.",
   intro: [
     "Enter your gross monthly salary to see what you take home after Social Insurance, the GeSY contribution and income tax.",

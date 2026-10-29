@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.impuesto-salida-divisas",
   h1: "Calculadora del impuesto a la salida de divisas (ISD)",
-  title: "ISD Ecuador 2026: calcula el {{ec.isd}} con tarjeta o efectivo",
+  title: "ISD Ecuador {{anio}}: calcula el {{ec.isd}} con tarjeta o efectivo",
   description: "Calcula el impuesto a la salida de divisas del {{ec.isd}}: compras con tarjeta en el exterior, efectivo al viajar y transferencias, con sus montos exentos.",
   intro: [
     "El impuesto a la salida de divisas (ISD) es del {{ec.isd}} del dinero que sale de Ecuador, pero cada caso tiene un monto exento.",

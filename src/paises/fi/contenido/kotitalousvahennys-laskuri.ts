@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.kotitalousvahennys-laskuri",
   h1: "Kotitalousvähennyslaskuri: paljonko saat vähennystä",
-  title: "Kotitalousvähennys 2026: laske remontin vähennys",
+  title: "Kotitalousvähennys {{anio}}: laske remontin vähennys",
   description:
     "Laske kotitalousvähennys: {{fi.kotitalousvahennys-prosentit[yritys]}} yritykseltä ostetun työn osuudesta, omavastuu {{fi.kotitalousvahennys[omavastuu]}} ja enintään {{fi.kotitalousvahennys[enimmais]}} henkilöä kohden.",
   intro: [

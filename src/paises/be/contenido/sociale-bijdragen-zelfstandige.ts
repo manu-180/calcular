@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be.sociale-bijdragen-zelfstandige",
   h1: "Sociale bijdragen zelfstandige berekenen",
-  title: "Sociale bijdragen zelfstandige 2026: per kwartaal berekenen",
+  title: "Sociale bijdragen zelfstandige {{anio}}: per kwartaal berekenen",
   description:
     "Bereken je sociale bijdragen als zelfstandige in hoofdberoep of bijberoep: {{be.rsvz-tarieven[tarief-1]}} tot {{be.rsvz[grens-1]}} en {{be.rsvz-tarieven[tarief-2]}} daarboven, met minimum en maximum.",
   intro: [

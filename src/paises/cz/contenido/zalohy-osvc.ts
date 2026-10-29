@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.zalohy-osvc",
   h1: "Zálohy OSVČ na sociální a zdravotní pojištění",
-  title: "Zálohy OSVČ 2026: sociální a zdravotní pojištění",
+  title: "Zálohy OSVČ {{anio}}: sociální a zdravotní pojištění",
   description:
     "Spočítejte měsíční zálohy OSVČ na sociální a zdravotní pojištění z příjmů a výdajů za minulý rok. Minimální záloha {{cz.osvc-min-zaloha-socialni[hlavni]}} a {{cz.osvc-min-zaloha-zdravotni}}.",
   intro: [

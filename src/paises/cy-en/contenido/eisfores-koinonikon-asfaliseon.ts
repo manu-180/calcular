@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.eisfores-koinonikon-asfaliseon",
   h1: "Cyprus Social Insurance calculator",
-  title: "Cyprus Social Insurance and GeSY contributions 2026",
+  title: "Cyprus Social Insurance and GeSY contributions {{anio}}",
   description: "See employee and employer contributions in Cyprus: Social Insurance {{cy.eisfora-ka-misthotou}}, GeSY, Social Cohesion, Redundancy and Holiday funds.",
   intro: [
     "Enter your gross monthly salary to see what comes off your pay and what your employer pays into each fund.",

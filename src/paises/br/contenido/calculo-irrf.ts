@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.calculo-irrf",
-  h1: "Cálculo do IRRF 2026",
-  title: "Cálculo do IRRF 2026 com a redução da Lei 15.270",
+  h1: "Cálculo do IRRF {{anio}}",
+  title: "Cálculo do IRRF {{anio}} com a redução da Lei 15.270",
   description:
-    "Calcule o imposto de renda retido na fonte de 2026: tabela mensal, dependentes, desconto simplificado e a redução para rendimentos até {{br.reducao-mensal-limite}}.",
+    "Calcule o imposto de renda retido na fonte de {{anio}}: tabela mensal, dependentes, desconto simplificado e a redução para rendimentos até {{br.reducao-mensal-limite}}.",
   intro: [
     "O IRRF é o imposto de renda que a empresa desconta do seu salário todo mês e repassa à Receita Federal.",
     "Esta calculadora segue o passo a passo da Receita para 2026: escolhe entre deduções legais e desconto simplificado, aplica a tabela mensal e depois a redução da Lei nº 15.270/2025.",

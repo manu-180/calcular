@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.rmd-calculator",
   h1: "Required minimum distribution (RMD) calculator",
-  title: "RMD Calculator 2026: required minimum distribution",
+  title: "RMD Calculator {{anio}}: required minimum distribution",
   description:
     "Figure the required minimum distribution from your IRA or 401(k) with the IRS Uniform Lifetime Table. RMDs start at age {{us.rmd-age}}.",
   intro: [

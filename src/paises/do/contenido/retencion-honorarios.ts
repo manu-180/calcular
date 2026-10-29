@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.retencion-honorarios",
   h1: "Calculadora de retención de ISR a honorarios",
-  title: "Retención a honorarios en RD 2026: calcula el {{do.retencion-honorarios}}",
-  description: "Calcula la retención de ISR del {{do.retencion-honorarios}} sobre honorarios y servicios de personas físicas, vigente desde el 1 de julio de 2026 con la Ley 30-26.",
+  title: "Retención a honorarios en RD {{anio}}: calcula el {{do.retencion-honorarios}}",
+  description: "Calcula la retención de ISR del {{do.retencion-honorarios}} sobre honorarios y servicios de personas físicas, vigente desde el 1 de julio de {{anio}} con la Ley 30-26.",
   intro: [
     "Cuando una empresa le paga honorarios a una persona física, le retiene una parte para el ISR. Desde el 1 de julio de 2026 esa retención es del {{do.retencion-honorarios}}.",
     "Pon el monto de los honorarios y ves cuánto te retienen y cuánto recibes.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.renta-personas-juridicas",
   h1: "Impuesto sobre la renta de personas jurídicas",
-  title: "Renta de sociedades 2026 Costa Rica: pymes y {{cr.renta-personas-juridicas}}",
+  title: "Renta de sociedades {{anio}} Costa Rica: pymes y {{cr.renta-personas-juridicas}}",
   description:
     "Calcule el impuesto sobre las utilidades de una sociedad: tramos reducidos para pymes con ingresos de hasta {{cr.renta-pyme-tope-bruto}} o la tarifa general.",
   intro: [

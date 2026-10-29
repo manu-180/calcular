@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.subsidio-por-enfermedad",
   h1: "Calculadora del subsidio por enfermedad del BPS",
-  title: "Subsidio por enfermedad BPS 2026: cuánto cobrás",
+  title: "Subsidio por enfermedad BPS {{anio}}: cuánto cobrás",
   description:
     "Calculá cuánto te paga el BPS si estás certificado: el {{uy.enfermedad-porcentaje}} de tu promedio, con tope de {{uy.enfermedad-tope}} por mes, desde el cuarto día de certificación.",
   intro: [

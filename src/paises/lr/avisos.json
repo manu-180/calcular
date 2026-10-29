@@ -1,0 +1,20 @@
+{
+  "mercado": "lr",
+  "avisos": [
+    {
+      "id": "lr.vat-2027",
+      "nivel": "info",
+      "desde": "2026-10-27",
+      "hasta": "2026-12-31",
+      "aplicaA": ["lr.gst-calculator"],
+      "texto": "VAT replaces GST from 1 January 2027. The LRA has not yet published the VAT rate on its website, so this calculator still uses GST.",
+      "fuente": {
+        "organismo": "LRA",
+        "titulo": "LRA extends VAT awareness to lawyers ahead of 2027 rollout",
+        "url": "https://revenue.lra.gov.lr/lra-extends-vat-awareness-to-lawyers-ahead-of-2027-rollout/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      }
+    }
+  ]
+}

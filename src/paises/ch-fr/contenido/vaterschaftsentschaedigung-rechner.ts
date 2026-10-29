@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-fr.vaterschaftsentschaedigung-rechner",
   h1: "Calcul de l'allocation de paternité",
-  title: "Congé de paternité : calcul de l'allocation APG 2026",
+  title: "Congé de paternité : calcul de l'allocation APG {{anio}}",
   description: "Allocation pour le congé de l'autre parent : {{ch.eo-taggeld-satz}} du revenu, au plus {{ch.eo-hoechstbetrag-taggeld}} par jour, pour {{ch.vaterschaft-taggelder}} indemnités journalières.",
   intro: [
     "L'autre parent, le plus souvent le père, a droit à deux semaines de congé après la naissance. Le régime des APG verse pour cela une allocation de {{ch.eo-taggeld-satz}} du revenu, au plus {{ch.eo-hoechstbetrag-taggeld}} par jour.",

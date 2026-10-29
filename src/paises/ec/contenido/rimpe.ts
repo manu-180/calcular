@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.rimpe",
   h1: "Calculadora RIMPE: impuesto a la renta de negocios populares y emprendedores",
-  title: "Calculadora RIMPE 2026: cuánto pagas de impuesto a la renta",
+  title: "Calculadora RIMPE {{anio}}: cuánto pagas de impuesto a la renta",
   description:
     "Calcula el impuesto a la renta del RIMPE con las tablas del SRI: cuota de negocio popular hasta USD 20.000 y tabla de emprendedores hasta USD 300.000.",
   intro: [

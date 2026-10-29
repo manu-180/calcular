@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ie.redundancy-pay",
   h1: "Statutory redundancy calculator Ireland",
-  title: "Statutory redundancy calculator Ireland 2026",
+  title: "Statutory redundancy calculator Ireland {{anio}}",
   description:
     "Work out your statutory redundancy: 2 weeks' pay for every year of service plus a bonus week, with weekly pay capped at {{ie.redundancy-weekly-ceiling}}.",
   intro: [

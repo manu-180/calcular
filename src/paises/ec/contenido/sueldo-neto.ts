@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.sueldo-neto",
   h1: "Calculadora de sueldo neto en Ecuador",
-  title: "Sueldo neto Ecuador 2026: calcula tu rol de pagos",
+  title: "Sueldo neto Ecuador {{anio}}: calcula tu rol de pagos",
   description: "Pasa de sueldo bruto a neto: aporte al IESS de {{ec.aporte-personal-iess}}, retención del impuesto a la renta y décimos mensualizados, como en tu rol de pagos. Gratis.",
   intro: [
     "Tu sueldo neto es el bruto menos el aporte personal al IESS ({{ec.aporte-personal-iess}}) y la retención del impuesto a la renta, más los décimos si los cobras cada mes. Es lo que te depositan.",

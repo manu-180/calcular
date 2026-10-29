@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ng.minimum-wage",
   h1: "National minimum wage in Nigeria",
-  title: "Nigeria minimum wage 2026: {{ng.minimum-wage}} a month",
+  title: "Nigeria minimum wage {{anio}}: {{ng.minimum-wage}} a month",
   description: "The national minimum wage is {{ng.minimum-wage}} a month. Check how your pay compares and what it means for income tax.",
   intro: [
     "The national minimum wage is {{ng.minimum-wage}} a month. Enter your pay to see how it compares.",

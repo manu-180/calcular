@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.incremento-arriendo",
   h1: "Calculadora del incremento del arriendo",
-  title: "Incremento del arriendo 2026: cuánto puede subir",
+  title: "Incremento del arriendo {{anio}}: cuánto puede subir",
   description:
     "Calcula cuánto puede subir el arriendo de vivienda: hasta el IPC del año anterior, cada 12 meses. Revisa también el tope del 1 % del valor del inmueble.",
   intro: [

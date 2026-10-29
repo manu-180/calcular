@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.vacaciones",
   h1: "Calculadora de vacaciones en Panamá",
-  title: "Vacaciones en Panamá 2026: calcula tus días y tu pago",
+  title: "Vacaciones en Panamá {{anio}}: calcula tus días y tu pago",
   description:
     "Calcula tus vacaciones en Panamá: {{pa.vacaciones-dias}} por cada {{pa.vacaciones-meses}} de trabajo, o la parte proporcional. Con los descuentos de Seguro Social y seguro educativo.",
   intro: [

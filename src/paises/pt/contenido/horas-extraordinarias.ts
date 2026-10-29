@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.horas-extraordinarias",
   h1: "Calcular horas extraordinárias",
-  title: "Horas extra 2026: quanto vale o trabalho suplementar",
+  title: "Horas extra {{anio}}: quanto vale o trabalho suplementar",
   description: "Calcule o pagamento das horas extraordinárias em dias úteis, de descanso e feriados, com os acréscimos do Código do Trabalho e o limite das 100 horas.",
   intro: [
     "O trabalho suplementar, as horas extra, paga-se pelo valor da hora normal com um acréscimo que depende do dia e de quantas horas já fez no ano.",

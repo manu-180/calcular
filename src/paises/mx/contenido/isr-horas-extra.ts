@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mx.isr-horas-extra",
   h1: "¿Cuánto de mis horas extra paga ISR?",
-  title: "Horas extra exentas de ISR 2026: calcula tu parte",
+  title: "Horas extra exentas de ISR {{anio}}: calcula tu parte",
   description:
     "Calcula qué parte de tus horas extra y descansos trabajados no paga ISR: el {{mx.exencion-horas-extra-porcentaje}} con tope de {{mx.exencion-horas-extra-uma}} por semana, o todo si ganas el mínimo.",
   intro: [

@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.self-employment-tax",
   h1: "Self-employment tax calculator",
-  title: "Self-Employment Tax Calculator 2026 (Schedule SE)",
+  title: "Self-Employment Tax Calculator {{anio}} (Schedule SE)",
   description:
-    "Figure your 2026 self-employment tax for Social Security and Medicare, the deduction for half of it and what to set aside each quarter. For 1099 workers.",
+    "Figure your {{anio}} self-employment tax for Social Security and Medicare, the deduction for half of it and what to set aside each quarter. For 1099 workers.",
   intro: [
     "If you freelance, drive for an app or run a sole proprietorship, you pay both halves of Social Security and Medicare yourself. That is the self-employment tax.",
     "Enter your net profit to see the tax, the deduction you get for half of it and a quarterly amount to set aside.",

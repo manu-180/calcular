@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "gh.minimum-wage",
-  h1: "Minimum wage in Ghana 2026",
-  title: "Ghana minimum wage 2026: {{gh.minimum-wage}} a day",
-  description: "The National Daily Minimum Wage in Ghana is {{gh.minimum-wage}} from 1 January 2026. See what it comes to for the days you work in a month.",
+  h1: "Minimum wage in Ghana {{anio}}",
+  title: "Ghana minimum wage {{anio}}: {{gh.minimum-wage}} a day",
+  description: "The National Daily Minimum Wage in Ghana is {{gh.minimum-wage}} from 1 January {{anio}}. See what it comes to for the days you work in a month.",
   intro: [
     "The National Daily Minimum Wage for 2026 is {{gh.minimum-wage}}, a 9% increase over 2025, set by the National Tripartite Committee.",
     "Enter the days you work to see the monthly equivalent, or your own daily wage to compare.",

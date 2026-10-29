@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-fr.saeule-3a-rechner",
   h1: "Pilier 3a : montant maximal et économie d'impôt",
-  title: "Calcul pilier 3a 2026 : maximum et économie d'impôt",
-  description: "Pilier 3a 2026 : jusqu'à {{ch.saeule-3a-mit-pk}} avec caisse de pension, jusqu'à {{ch.saeule-3a-ohne-pk}} sans. Maximum et économie d'impôt fédéral direct.",
+  title: "Calcul pilier 3a {{anio}} : maximum et économie d'impôt",
+  description: "Pilier 3a {{anio}} : jusqu'à {{ch.saeule-3a-mit-pk}} avec caisse de pension, jusqu'à {{ch.saeule-3a-ohne-pk}} sans. Maximum et économie d'impôt fédéral direct.",
   intro: [
     "Les versements au pilier 3a se déduisent du revenu imposable, auprès de la Confédération, du canton et de la commune. Les personnes affiliées à une caisse de pension peuvent verser {{ch.saeule-3a-mit-pk}} par an.",
     "Sans caisse de pension, la limite est de {{ch.saeule-3a-ohne-pk-satz}} du revenu de l'activité lucrative, au plus {{ch.saeule-3a-ohne-pk}}. Le calculateur indique votre maximum et l'économie d'impôt fédéral direct.",

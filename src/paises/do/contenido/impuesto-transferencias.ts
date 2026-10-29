@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "do.impuesto-transferencias",
   h1: "Calculadora del impuesto a transferencias y cheques",
   title: "Impuesto a transferencias en RD: calcula el {{do.impuesto-transferencias}}",
-  description: "Calcula el impuesto del {{do.impuesto-transferencias}} sobre cheques y transferencias electrónicas a terceros, vigente desde el 3 de julio de 2026 con la Ley 30-26.",
+  description: "Calcula el impuesto del {{do.impuesto-transferencias}} sobre cheques y transferencias electrónicas a terceros, vigente desde el 3 de julio de {{anio}} con la Ley 30-26.",
   intro: [
     "Cada cheque y cada transferencia electrónica a otra persona paga un impuesto. Desde el 3 de julio de 2026 es del {{do.impuesto-transferencias}} (2 por mil).",
     "Pon el monto y ves cuánto pagas por cada operación, por mes y por año.",

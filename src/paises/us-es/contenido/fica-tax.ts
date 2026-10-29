@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.fica-tax",
   h1: "Calculadora del impuesto FICA",
-  title: "Calculadora FICA 2026: Seguro Social y Medicare",
-  description: "Calcula el Seguro Social y Medicare que se descuentan de tu salario en 2026, el impuesto adicional de Medicare y lo que paga tu empleador.",
+  title: "Calculadora FICA {{anio}}: Seguro Social y Medicare",
+  description: "Calcula el Seguro Social y Medicare que se descuentan de tu salario en {{anio}}, el impuesto adicional de Medicare y lo que paga tu empleador.",
   intro: [
     "El FICA es el impuesto de nómina que financia el Seguro Social y Medicare. Tú pagas la mitad y tu empleador paga la otra mitad.",
     "Escribe tus salarios del año para ver cada parte y el costo total sobre tu pago.",

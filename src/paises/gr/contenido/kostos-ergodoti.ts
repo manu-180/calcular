@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gr.kostos-ergodoti",
   h1: "Υπολογισμός κόστους εργοδότη",
-  title: "Κόστος εργοδότη 2026: πόσο κοστίζει ένας εργαζόμενος",
+  title: "Κόστος εργοδότη {{anio}}: πόσο κοστίζει ένας εργαζόμενος",
   description:
     "Υπολογίστε το μηνιαίο και ετήσιο κόστος ενός εργαζομένου για την επιχείρηση: μικτός μισθός και εργοδοτικές εισφορές {{gr.eisfores-ergodoti[101]}}, με 14 μισθούς.",
   intro: [

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "dk.boerne-og-ungeydelse",
-  h1: "Børne- og ungeydelse 2026: beregn din børnecheck",
-  title: "Børnecheck 2026: beregn børne- og ungeydelse",
+  h1: "Børne- og ungeydelse {{anio}}: beregn din børnecheck",
+  title: "Børnecheck {{anio}}: beregn børne- og ungeydelse",
   description:
     "Se hvor meget du får i børne- og ungeydelse for hvert barn. Med deling mellem forældre og aftrapning ved indkomst over {{dk.boerneydelse-aftrapning-graense}}.",
   intro: [

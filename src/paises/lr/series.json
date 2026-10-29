@@ -1,0 +1,133 @@
+{
+  "mercado": "lr",
+  "series": [
+    {
+      "id": "lr.usd-lrd-buying",
+      "nombre": "CBL market buying rate, Liberian dollars per US dollar",
+      "unidad": "LRD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "CBL",
+        "titulo": "Daily Exchange Rates (market buying and selling rates)",
+        "url": "https://www.cbl.org.lr/research/buying-selling-rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      },
+      "puntos": [
+        [
+          "2026-10-14",
+          169.7415
+        ],
+        [
+          "2026-10-15",
+          169.7002
+        ],
+        [
+          "2026-10-16",
+          169.6635
+        ],
+        [
+          "2026-10-17",
+          169.6172
+        ],
+        [
+          "2026-10-19",
+          169.5803
+        ],
+        [
+          "2026-10-20",
+          169.5391
+        ],
+        [
+          "2026-10-21",
+          169.5011
+        ],
+        [
+          "2026-10-22",
+          169.4593
+        ],
+        [
+          "2026-10-23",
+          169.4151
+        ],
+        [
+          "2026-10-24",
+          169.3684
+        ],
+        [
+          "2026-10-26",
+          169.3345
+        ],
+        [
+          "2026-10-27",
+          169.295
+        ]
+      ]
+    },
+    {
+      "id": "lr.usd-lrd-selling",
+      "nombre": "CBL market selling rate, Liberian dollars per US dollar",
+      "unidad": "LRD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "CBL",
+        "titulo": "Daily Exchange Rates (market buying and selling rates)",
+        "url": "https://www.cbl.org.lr/research/buying-selling-rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      },
+      "puntos": [
+        [
+          "2026-10-14",
+          171.7848
+        ],
+        [
+          "2026-10-15",
+          171.7434
+        ],
+        [
+          "2026-10-16",
+          171.7068
+        ],
+        [
+          "2026-10-17",
+          171.6612
+        ],
+        [
+          "2026-10-19",
+          171.6235
+        ],
+        [
+          "2026-10-20",
+          171.583
+        ],
+        [
+          "2026-10-21",
+          171.5444
+        ],
+        [
+          "2026-10-22",
+          171.5071
+        ],
+        [
+          "2026-10-23",
+          171.4675
+        ],
+        [
+          "2026-10-24",
+          171.4225
+        ],
+        [
+          "2026-10-26",
+          171.3878
+        ],
+        [
+          "2026-10-27",
+          171.3478
+        ]
+      ]
+    }
+  ]
+}

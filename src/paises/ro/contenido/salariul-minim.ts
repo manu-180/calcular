@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ro.salariul-minim",
-  h1: "Salariul minim pe economie 2026",
-  title: "Salariul minim 2026: {{ro.salariu-minim}} brut, net și pe oră",
+  h1: "Salariul minim pe economie {{anio}}",
+  title: "Salariul minim {{anio}}: {{ro.salariu-minim}} brut, net și pe oră",
   description:
     "Salariul minim brut pe țară este {{ro.salariu-minim}} de la {{ro.salariu-minim#desde}}, adică {{ro.salariu-minim-orar}} pe oră. Vedeți netul și costul pentru angajator.",
   intro: [

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.kinderbijslag-berekenen",
-  h1: "Kinderbijslag berekenen 2026",
-  title: "Kinderbijslag 2026 berekenen: bedrag per kind per kwartaal",
+  h1: "Kinderbijslag berekenen {{anio}}",
+  title: "Kinderbijslag {{anio}} berekenen: bedrag per kind per kwartaal",
   description:
-    "Bereken hoeveel kinderbijslag je krijgt. In 2026 is het per kind per kwartaal {{nl.kinderbijslag[0-5]}} tot {{nl.kinderbijslag[12-17]}}, afhankelijk van de leeftijd. Bedragen van de SVB.",
+    "Bereken hoeveel kinderbijslag je krijgt. In {{anio}} is het per kind per kwartaal {{nl.kinderbijslag[0-5]}} tot {{nl.kinderbijslag[12-17]}}, afhankelijk van de leeftijd. Bedragen van de SVB.",
   intro: [
     "Kinderbijslag is een bijdrage van de overheid in de kosten voor je kinderen tot 18 jaar. De SVB betaalt het per kwartaal, en het bedrag hangt af van de leeftijd van je kind.",
     "Nu krijg je per kind per kwartaal {{nl.kinderbijslag[0-5]}} voor een kind van 0 tot en met 5 jaar, {{nl.kinderbijslag[6-11]}} van 6 tot en met 11 jaar en {{nl.kinderbijslag[12-17]}} van 12 tot en met 17 jaar.",

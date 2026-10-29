@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fr.allocation-chomage",
   h1: "Calcul de l'allocation chômage (ARE)",
-  title: "Calcul allocation chômage 2026 : montant de l'ARE par jour",
+  title: "Calcul allocation chômage {{anio}} : montant de l'ARE par jour",
   description:
     "Estimez votre allocation chômage (ARE) à partir de votre salaire : formule de France Travail, minimum de {{fr.are-minimum}} par jour et dégressivité.",
   intro: [

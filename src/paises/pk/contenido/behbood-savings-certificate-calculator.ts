@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pk.behbood-savings-certificate-calculator",
   h1: "Behbood Savings Certificate calculator",
-  title: "Behbood Savings Certificate profit calculator 2026",
+  title: "Behbood Savings Certificate profit calculator {{anio}}",
   description: "Monthly profit on Behbood Savings Certificates at {{pk.nss-rates[bsc]}}, after the withholding tax for filers ({{pk.nss-wht-filer}}) or non-filers.",
   intro: ["Behbood Savings Certificates pay a monthly profit. Enter the amount to see your monthly income before and after tax."],
   comoSeCalcula: [

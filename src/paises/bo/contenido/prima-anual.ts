@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.prima-anual",
   h1: "Calculadora de prima anual",
-  title: "Prima anual Bolivia 2026: calcule cuánto le toca",
+  title: "Prima anual Bolivia {{anio}}: calcule cuánto le toca",
   description: "Calcule su prima anual por utilidades: un sueldo por gestión o sus duodécimas, y el reparto cuando el {{bo.prima-utilidades}} de las utilidades no alcanza.",
   intro: [
     "Si la empresa tuvo utilidades en la gestión, debe pagar a su personal una prima anual equivalente a un mes de sueldo. Si no trabajó todo el año, cobra la parte proporcional.",

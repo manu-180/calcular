@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.retiro-de-cts",
   h1: "¿Cuánto de mi CTS puedo retirar?",
-  title: "Retiro de CTS 2026: cuánto puedes sacar hoy",
+  title: "Retiro de CTS {{anio}}: cuánto puedes sacar hoy",
   description:
     "Hoy puedes retirar el {{pe.cts-libre-disposicion}} de tu CTS. Calcula cuánto puedes sacar según tu saldo y tu situación, con la Ley 32322.",
   intro: [

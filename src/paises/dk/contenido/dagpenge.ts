@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.dagpenge",
   h1: "Dagpengeberegner: hvor mange dagpenge får du?",
-  title: "Dagpenge 2026: beregn din dagpengesats",
+  title: "Dagpenge {{anio}}: beregn din dagpengesats",
   description:
-    "Beregn dine dagpenge i 2026 ud fra din løn. Du får {{dk.dagpenge-procent}} af lønnen efter am-bidrag, højst {{dk.dagpenge-hoejst[fuldtid]}} om måneden som fuldtidsforsikret.",
+    "Beregn dine dagpenge i {{anio}} ud fra din løn. Du får {{dk.dagpenge-procent}} af lønnen efter am-bidrag, højst {{dk.dagpenge-hoejst[fuldtid]}} om måneden som fuldtidsforsikret.",
   intro: [
     "Bliver du ledig og er medlem af en a-kasse, får du dagpenge. Satsen afhænger af din tidligere løn og af, om du er fuldtids- eller deltidsforsikret.",
     "Skriv din gennemsnitlige månedsløn før skat. Beregneren viser din sats og om du rammer den højeste sats.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.liquidacion",
   h1: "Calculadora de liquidación laboral en Costa Rica",
-  title: "Calculadora de liquidación laboral en Costa Rica 2026",
+  title: "Calculadora de liquidación laboral en Costa Rica {{anio}}",
   description:
     "Calcule su liquidación laboral: preaviso, cesantía, vacaciones y aguinaldo proporcional, por despido o por renuncia. Según el Código de Trabajo, gratis.",
   intro: [

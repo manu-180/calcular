@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "md.salariul-minim",
-  h1: "Salariul minim pe țară 2026",
-  title: "Salariul minim 2026 în Moldova: brut, net și pe oră",
+  h1: "Salariul minim pe țară {{anio}}",
+  title: "Salariul minim {{anio}} în Moldova: brut, net și pe oră",
   description: "Salariul minim pe țară este {{md.salariu-minim}} pe lună de la {{md.salariu-minim#desde}}, adică {{md.salariu-minim-orar}} pe oră. Vedeți netul și costul.",
   intro: [
     "Salariul minim pe țară se stabilește în fiecare an prin hotărâre de Guvern. Este cel mai mic salariu permis pentru un program complet de lucru.",

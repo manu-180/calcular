@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-fr.kinderzulagen-rechner",
   h1: "Calcul des allocations familiales : enfants et formation",
-  title: "Allocations familiales Suisse 2026 : calcul",
+  title: "Allocations familiales Suisse {{anio}} : calcul",
   description: "Allocations familiales en Suisse : allocation pour enfant d'au moins {{ch.kinderzulage}}, de formation d'au moins {{ch.ausbildungszulage}} par mois. Avec les taux de votre canton.",
   intro: [
     "Pour les enfants, il existe en Suisse des allocations familiales. La loi fédérale fixe des montants minimaux : {{ch.kinderzulage}} d'allocation pour enfant et {{ch.ausbildungszulage}} d'allocation de formation professionnelle par mois.",

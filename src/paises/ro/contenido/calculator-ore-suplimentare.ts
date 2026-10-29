@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ro.calculator-ore-suplimentare",
   h1: "Calculator ore suplimentare",
-  title: "Calculator ore suplimentare 2026: plata cu spor",
+  title: "Calculator ore suplimentare {{anio}}: plata cu spor",
   description:
     "Calculați cât primiți pentru orele suplimentare: tariful orar din salariul de bază plus sporul minim de {{ro.spor-ore-suplimentare}} sau sporul din contract.",
   intro: [

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mt.minimum-wage",
-  h1: "Minimum wage calculator Malta 2026",
-  title: "Minimum wage Malta 2026: {{mt.minimum-wage[age-18-plus]}} a week",
+  h1: "Minimum wage calculator Malta {{anio}}",
+  title: "Minimum wage Malta {{anio}}: {{mt.minimum-wage[age-18-plus]}} a week",
   description:
     "The national minimum wage in Malta is {{mt.minimum-wage[age-18-plus]}} a week from {{mt.minimum-wage#desde}}. See the hourly rate, part-time pay and the yearly total with bonuses.",
   intro: [

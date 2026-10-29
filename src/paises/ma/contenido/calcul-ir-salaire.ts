@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ma.calcul-ir-salaire",
   h1: "Calcul de l'IR sur salaire au Maroc",
-  title: "Calcul IR salaire Maroc 2026 : barème et charges de famille",
+  title: "Calcul IR salaire Maroc {{anio}} : barème et charges de famille",
   description:
-    "Calculez l'IR retenu sur votre salaire avec le barème 2026, les frais professionnels forfaitaires et la réduction de {{ma.charges-de-famille[par-personne]}} par personne à charge.",
+    "Calculez l'IR retenu sur votre salaire avec le barème {{anio}}, les frais professionnels forfaitaires et la réduction de {{ma.charges-de-famille[par-personne]}} par personne à charge.",
   intro: [
     "Au Maroc, l'employeur retient chaque mois l'impôt sur le revenu (IR) sur le salaire. Depuis 2025, la tranche jusqu'à {{ma.ir-bareme[0].hasta}} par an est exonérée et le taux marginal le plus élevé est de {{ma.ir-bareme[-1].tasa}}.",
     "Indiquez votre salaire brut imposable, les cotisations sociales retenues sur votre bulletin de paie et le nombre de personnes à charge. Vous voyez l'impôt par mois et par an.",

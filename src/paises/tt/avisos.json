@@ -1,0 +1,21 @@
+{
+  "mercado": "tt",
+  "avisos": [
+    {
+      "id": "tt.maternity-bill-2026",
+      "nivel": "info",
+      "desde": "2026-06-18",
+      "aplicaA": [
+        "tt.maternity-leave-calculator"
+      ],
+      "texto": "The Maternity Protection (Amendment) Bill, 2026 is before Parliament. It would add paternity and parental leave and change some rules once it is proclaimed. Until then the current Act applies, and that is what this calculator uses.",
+      "fuente": {
+        "organismo": "Government Printer (Trinidad and Tobago Gazette)",
+        "titulo": "Senate Bill No. 8 of 2026, The Maternity Protection (Amendment) Bill, 2026",
+        "url": "https://www.printery.gov.tt/e-gazette/2026/Bills/Senate/Senate_Bill_No._8_of_2026.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      }
+    }
+  ]
+}

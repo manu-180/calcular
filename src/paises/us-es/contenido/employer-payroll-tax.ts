@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.employer-payroll-tax",
   h1: "Calculadora de impuestos de nómina para empleadores",
-  title: "Impuestos de nómina del empleador 2026: costo de un empleado",
-  description: "Calcula cuánto cuesta de verdad un empleado en 2026: salario más el Seguro Social, Medicare, FUTA y SUTA que paga el empleador.",
+  title: "Impuestos de nómina del empleador {{anio}}: costo de un empleado",
+  description: "Calcula cuánto cuesta de verdad un empleado en {{anio}}: salario más el Seguro Social, Medicare, FUTA y SUTA que paga el empleador.",
   intro: [
     "Contratar a alguien cuesta más que el salario. Como empleador pagas tu parte del Seguro Social y de Medicare, más los impuestos federal y estatal de desempleo.",
     "Escribe el salario anual para ver cada impuesto y el costo total por empleado.",

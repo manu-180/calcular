@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ao.contribuicao-cambial",
   h1: "Contribuição sobre transferências para o exterior",
-  title: "CEOC 2026: contribuição sobre transferências em Angola",
+  title: "CEOC {{anio}}: contribuição sobre transferências em Angola",
   description: "As transferências para o exterior por serviços, capitais e transferências unilaterais pagam a CEOC: {{ao.ceoc[singular]}} para particulares e {{ao.ceoc[colectiva]}} para empresas.",
   intro: [
     "A Contribuição Especial sobre Operações Cambiais (CEOC) foi criada pela Lei do Orçamento Geral do Estado para 2026. O banco cobra-a no momento em que processa a transferência para o exterior.",

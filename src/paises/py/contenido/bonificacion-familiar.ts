@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.bonificacion-familiar",
   h1: "Calculadora de bonificación familiar en Paraguay",
-  title: "Bonificación familiar Paraguay 2026: cuánto cobrás por hijo",
+  title: "Bonificación familiar Paraguay {{anio}}: cuánto cobrás por hijo",
   description: "La bonificación familiar es el {{py.bonificacion-familiar}} del salario mínimo por cada hijo. Calculá cuánto te toca y si tu salario está debajo del tope. Gratis.",
   intro: [
     "La bonificación familiar en Paraguay es el {{py.bonificacion-familiar}} del salario mínimo ({{py.salario-minimo}}) por cada hijo. La cobra quien gana hasta el {{py.bonificacion-familiar-tope}} del salario mínimo.",

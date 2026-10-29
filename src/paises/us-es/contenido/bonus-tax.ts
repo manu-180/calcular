@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.bonus-tax",
   h1: "Calculadora de impuestos sobre un bono",
-  title: "Impuestos sobre un bono 2026: cuánto te queda",
-  description: "Mira cuánto te queda de tu bono después de la retención federal de {{us.supplemental-rate}}, el Seguro Social y Medicare, con las reglas del IRS de 2026.",
+  title: "Impuestos sobre un bono {{anio}}: cuánto te queda",
+  description: "Mira cuánto te queda de tu bono después de la retención federal de {{us.supplemental-rate}}, el Seguro Social y Medicare, con las reglas del IRS de {{anio}}.",
   intro: [
     "Los bonos parecen pagar más impuestos porque los empleadores suelen retener un {{us.supplemental-rate}} fijo de impuesto federal, más el Seguro Social y Medicare.",
     "Escribe el monto de tu bono para ver cada parte y lo que llega a tu cuenta.",

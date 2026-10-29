@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "es.salario-minimo",
-  h1: "Salario mínimo interprofesional 2026",
-  title: "SMI 2026: salario mínimo al mes, al día y a media jornada",
+  h1: "Salario mínimo interprofesional {{anio}}",
+  title: "SMI {{anio}}: salario mínimo al mes, al día y a media jornada",
   description:
-    "El salario mínimo de 2026 es de {{es.smi-mensual}} al mes en 14 pagas. Calcula cuánto te corresponde según tus horas, al mes, al año y al día.",
+    "El salario mínimo de {{anio}} es de {{es.smi-mensual}} al mes en 14 pagas. Calcula cuánto te corresponde según tus horas, al mes, al año y al día.",
   intro: [
     "El salario mínimo interprofesional (SMI) es lo menos que puede cobrar cualquier persona que trabaja por cuenta ajena en España, sea cual sea su sector, edad o tipo de contrato.",
     "Para 2026 es de {{es.smi-mensual}} al mes en 14 pagas, o {{es.smi-anual}} al año. Rige desde el {{es.smi-mensual#desde}}.",

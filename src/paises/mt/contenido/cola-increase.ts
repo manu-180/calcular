@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mt.cola-increase",
-  h1: "COLA calculator Malta 2026",
-  title: "COLA Malta 2026: {{mt.cola}} a week on your wage",
+  h1: "COLA calculator Malta {{anio}}",
+  title: "COLA Malta {{anio}}: {{mt.cola}} a week on your wage",
   description:
     "See your new wage after the cost of living increase of {{mt.cola}} a week in Malta, for whole-time and part-time work, and the top-up to the minimum wage.",
   intro: [

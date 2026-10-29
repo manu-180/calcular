@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.sueldo-liquido",
-  h1: "Calculadora de sueldo líquido 2026",
-  title: "Calculadora de sueldo líquido 2026: de bruto a líquido",
+  h1: "Calculadora de sueldo líquido {{anio}}",
+  title: "Calculadora de sueldo líquido {{anio}}: de bruto a líquido",
   description:
     "Pasa tu sueldo bruto a líquido en segundos: descuento de AFP, salud ({{cl.salud}}), seguro de cesantía e impuesto único del mes, con la UF y UTM del día.",
   intro: [

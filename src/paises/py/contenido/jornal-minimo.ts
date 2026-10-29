@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.jornal-minimo",
   h1: "Calculadora de jornal mínimo en Paraguay",
-  title: "Jornal mínimo Paraguay 2026: {{py.minimos[jornal]}} diurno y nocturno",
+  title: "Jornal mínimo Paraguay {{anio}}: {{py.minimos[jornal]}} diurno y nocturno",
   description: "El jornal mínimo vigente es {{py.minimos[jornal]}} por día de jornada diurna desde el {{py.minimos#desde}}. Calculá cuánto te corresponde por los días que trabajaste.",
   intro: [
     "El jornal mínimo vigente en Paraguay es {{py.minimos[jornal]}} por día en jornada diurna y {{py.minimos[jornal-nocturno]}} en jornada nocturna. Si cobrás por día trabajado (jornalero), tu pago no puede ser menor.",

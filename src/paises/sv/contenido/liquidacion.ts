@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.liquidacion",
   h1: "Calculadora de liquidación por despido en El Salvador",
-  title: "Liquidación por despido en El Salvador 2026: calculadora",
+  title: "Liquidación por despido en El Salvador {{anio}}: calculadora",
   description: "Calcule todo lo que le deben si lo despiden sin causa: indemnización de {{sv.indemnizacion-dias-por-anio}} por año, vacaciones y aguinaldo proporcionales.",
   intro: [
     "Si lo despiden sin causa justificada, su patrono le debe la indemnización, las vacaciones proporcionales con su recargo y el aguinaldo proporcional. Si le quedó salario sin pagar, también.",

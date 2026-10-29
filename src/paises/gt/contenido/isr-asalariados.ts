@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gt.isr-asalariados",
   h1: "Calculadora de ISR para asalariados en Guatemala",
-  title: "Calculadora ISR asalariados Guatemala 2026: retención",
+  title: "Calculadora ISR asalariados Guatemala {{anio}}: retención",
   description:
-    "Calcule su ISR anual y la retención de cada mes con la deducción de {{gt.isr-deduccion-gastos-personales}}, la extraordinaria de 2026, el IGSS y la planilla del IVA. Gratis.",
+    "Calcule su ISR anual y la retención de cada mes con la deducción de {{gt.isr-deduccion-gastos-personales}}, la extraordinaria de {{anio}}, el IGSS y la planilla del IVA. Gratis.",
   intro: [
     "El ISR de asalariados en Guatemala se paga sobre la renta del año menos las deducciones: {{gt.isr-deduccion-gastos-personales}} de gastos personales, {{gt.isr-deduccion-extraordinaria}} de deducción extraordinaria en 2026, el IGSS y la planilla del IVA. Su patrono le retiene una parte cada mes.",
     "En 2026, con la deducción extraordinaria, quien gana el salario mínimo no paga ISR. Escriba su salario para ver el impuesto del año y la retención mensual.",

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.vacaciones",
-  h1: "Calculadora de vacaciones en Colombia 2026",
-  title: "Calculadora de vacaciones 2026 en Colombia: días y valor",
+  h1: "Calculadora de vacaciones en Colombia {{anio}}",
+  title: "Calculadora de vacaciones {{anio}} en Colombia: días y valor",
   description:
     "Calcula cuántos días de vacaciones llevas y cuánto te pagan por ellas: {{co.vacaciones-dias}} hábiles por año trabajado, en proporción si es menos. Ideal para liquidarlas.",
   intro: [

@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.das-mei",
-  h1: "Valor do DAS MEI 2026",
-  title: "DAS MEI 2026: valor da guia mensal",
-  description: "Calcule o DAS do MEI em 2026: INSS de {{br.inss-mei}} do salário mínimo mais {{br.mei-icms}} de ICMS e {{br.mei-iss}} de ISS, conforme a atividade.",
+  h1: "Valor do DAS MEI {{anio}}",
+  title: "DAS MEI {{anio}}: valor da guia mensal",
+  description: "Calcule o DAS do MEI em {{anio}}: INSS de {{br.inss-mei}} do salário mínimo mais {{br.mei-icms}} de ICMS e {{br.mei-iss}} de ISS, conforme a atividade.",
   intro: [
     "O microempreendedor individual paga todos os impostos numa guia mensal fixa, o DAS. O valor muda quando muda o salário mínimo.",
     "Escolha a atividade e veja quanto é a guia por mês e no ano.",

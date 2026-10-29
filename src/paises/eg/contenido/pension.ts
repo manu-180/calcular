@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.pension",
   h1: "حساب المعاش في قانون التأمينات الجديد",
-  title: "حساب المعاش 2026 بقانون التأمينات 148 لسنة 2019",
+  title: "حساب المعاش {{anio}} بقانون التأمينات 148 لسنة 2019",
   description:
     "قدّر معاش الشيخوخة الشهري: جزء من {{eg.pension-divisor}} من أجر التسوية عن كل سنة اشتراك، بحد أقصى {{eg.pension-cap}} وحد أدنى مرتبط بأجر الاشتراك الأدنى.",
   intro: [

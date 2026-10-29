@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.detracciones",
   h1: "Calculadora de detracciones de servicios",
-  title: "Detracciones 2026: calcula cuánto depositar",
+  title: "Detracciones {{anio}}: calcula cuánto depositar",
   description:
     "Calcula la detracción de una factura de servicios: {{pe.detraccion-servicios[demas-servicios]}} en la mayoría, {{pe.detraccion-servicios[arrendamiento]}} en alquileres y {{pe.detraccion-servicios[construccion]}} en construcción. Tabla del anexo 3 de SUNAT.",
   intro: [

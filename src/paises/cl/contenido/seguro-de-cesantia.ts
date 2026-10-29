@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cl.seguro-de-cesantia",
   h1: "Calculadora del seguro de cesantía",
-  title: "Seguro de cesantía 2026: cuánto te pagan cada mes",
+  title: "Seguro de cesantía {{anio}}: cuánto te pagan cada mes",
   description:
     "Calcula los pagos del seguro de cesantía: {{cl.fcs-porcentaje[indefinido-1]}} de tu promedio el primer mes, con los montos mínimos y máximos vigentes hasta febrero de 2027.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pk.national-savings-account-calculator",
   h1: "National Savings Account profit calculator",
-  title: "National Savings Account profit calculator 2026",
+  title: "National Savings Account profit calculator {{anio}}",
   description: "Profit on a National Savings Account at {{pk.nss-rates[sa]}} a year, after withholding tax for filers or non-filers.",
   intro: ["The National Savings Account lets you deposit and withdraw while earning profit. Enter your balance and months to see the profit."],
   comoSeCalcula: [

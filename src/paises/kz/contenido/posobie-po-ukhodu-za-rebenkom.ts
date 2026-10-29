@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kz.posobie-po-ukhodu-za-rebenkom",
   h1: "Выплата по уходу за ребенком до полутора лет",
-  title: "Пособие по уходу за ребенком до 1,5 лет 2026: расчет",
+  title: "Пособие по уходу за ребенком до 1,5 лет {{anio}}: расчет",
   description:
     "Рассчитайте ежемесячную выплату ГФСС по уходу за ребенком: {{kz.ukhod-koeffitsient}} от среднемесячного дохода за 24 месяца, с пределом от {{kz.ukhod-maks-mzp}} МЗП, минус ОПВ.",
   intro: [

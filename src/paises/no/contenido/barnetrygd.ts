@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "no.barnetrygd",
-  h1: "Barnetrygd 2026: hvor mye får dere?",
-  title: "Barnetrygd 2026: satser og kalkulator per barn",
+  h1: "Barnetrygd {{anio}}: hvor mye får dere?",
+  title: "Barnetrygd {{anio}}: satser og kalkulator per barn",
   description:
     "Barnetrygden er {{no.barnetrygd}} per barn i måneden fra {{no.barnetrygd#desde}}. Regn ut hva dere får per måned og per år, med Finnmarks- og Svalbardtillegget.",
   intro: [

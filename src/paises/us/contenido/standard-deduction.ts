@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.standard-deduction",
   h1: "Standard deduction calculator",
-  title: "Standard Deduction 2026: calculator by filing status",
+  title: "Standard Deduction {{anio}}: calculator by filing status",
   description:
-    "Find your 2026 standard deduction: {{us.standard-deduction[single]}} single, {{us.standard-deduction[mfj]}} married filing jointly, {{us.standard-deduction[hoh]}} head of household, plus the extra for 65 and blind.",
+    "Find your {{anio}} standard deduction: {{us.standard-deduction[single]}} single, {{us.standard-deduction[mfj]}} married filing jointly, {{us.standard-deduction[hoh]}} head of household, plus the extra for 65 and blind.",
   intro: [
     "The standard deduction is the amount of income you don't pay federal income tax on if you don't itemize.",
     "Pick your filing status and the boxes for age and blindness to see yours for 2026, and compare it with your itemized deductions.",

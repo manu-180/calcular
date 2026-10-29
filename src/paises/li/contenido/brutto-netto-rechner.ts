@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "li.brutto-netto-rechner",
   h1: "Brutto-Netto-Rechner Liechtenstein",
-  title: "Brutto-Netto-Rechner Liechtenstein 2026: Lohn netto",
-  description: "Lohnrechner für Liechtenstein: vom Bruttolohn zum Nettolohn mit AHV/IV/FAK, ALV, Pensionskasse und NBU nach den Beitragssätzen 2026.",
+  title: "Brutto-Netto-Rechner Liechtenstein {{anio}}: Lohn netto",
+  description: "Lohnrechner für Liechtenstein: vom Bruttolohn zum Nettolohn mit AHV/IV/FAK, ALV, Pensionskasse und NBU nach den Beitragssätzen {{anio}}.",
   intro: [
     "In Liechtenstein gehen vom Bruttolohn die Beiträge an AHV, IV und FAK, die Arbeitslosenversicherung, die Pensionskasse und die Nichtberufsunfallversicherung ab.",
     "Der Rechner verwendet die Beitragssätze 2026 der Liechtensteinischen AHV-IV-FAK und den gesetzlichen Mindestbeitrag an die betriebliche Personalvorsorge.",

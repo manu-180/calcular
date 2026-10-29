@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.prima-dominical",
-  h1: "Calculadora de prima dominical 2026",
-  title: "Prima dominical 2026: cuánto te pagan por el domingo",
+  h1: "Calculadora de prima dominical {{anio}}",
+  title: "Prima dominical {{anio}}: cuánto te pagan por el domingo",
   description:
     "Calcula tu prima dominical: al menos {{mx.prima-dominical}} de tu salario diario por cada domingo trabajado, y la parte que no paga ISR.",
   intro: [

@@ -2,7 +2,7 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "kr.income-tax",
-  h1: "종합소득세 계산기(2026년 세율)",
+  h1: "종합소득세 계산기({{anio}}년 세율)",
   title: "종합소득세 계산기 | 세율표로 과세표준·세액 계산",
   description:
     "종합소득금액과 소득공제, 세액공제를 넣으면 과세표준, 산출세액, 결정세액과 지방소득세를 계산해요. 5월 신고 전에 미리 확인해 보세요.",

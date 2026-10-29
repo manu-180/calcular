@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.loen-efter-skat",
   h1: "Løn efter skat: beregn din nettoløn",
-  title: "Løn efter skat 2026: beregn din nettoløn",
+  title: "Løn efter skat {{anio}}: beregn din nettoløn",
   description:
     "Se hvad du får udbetalt af din løn efter am-bidrag, kommuneskat, bundskat og mellemskat. Vælg din kommune og se skatten måned for måned.",
   intro: [

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.kidem-tazminati-hesaplama",
-  h1: "Kıdem tazminatı hesaplama 2026",
-  title: "Kıdem Tazminatı Hesaplama 2026: Tavan ve Net Tutar",
+  h1: "Kıdem tazminatı hesaplama {{anio}}",
+  title: "Kıdem Tazminatı Hesaplama {{anio}}: Tavan ve Net Tutar",
   description:
-    "İşe giriş ve çıkış tarihinizle kıdem tazminatınızı hesaplayın. 2026 kıdem tavanı {{tr.kidem-tavan}}, giydirilmiş ücret, damga vergisi ve net tutar.",
+    "İşe giriş ve çıkış tarihinizle kıdem tazminatınızı hesaplayın. {{anio}} kıdem tavanı {{tr.kidem-tavan}}, giydirilmiş ücret, damga vergisi ve net tutar.",
   intro: [
     "Kıdem tazminatı, aynı işverende en az bir yıl çalışan işçiye iş sözleşmesi kanunda sayılan bir nedenle sona erdiğinde ödenir. Her tam yıl için 30 günlük brüt ücret ödenir, artan süreler oranlanır.",
     "Tarihleri ve son brüt ücretinizi girin. Yol, yemek gibi düzenli ödemeleri de eklerseniz hesap giydirilmiş ücretle yapılır. Bir yıl için ödenecek tutar, çıkış tarihindeki tavanı aşamaz.",

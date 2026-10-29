@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be.bedrijfsvoorheffing-berekenen",
   h1: "Bedrijfsvoorheffing berekenen met de sleutelformule",
-  title: "Bedrijfsvoorheffing berekenen 2026 met de sleutelformule",
+  title: "Bedrijfsvoorheffing berekenen {{anio}} met de sleutelformule",
   description:
     "Bereken de bedrijfsvoorheffing op je maandloon met de officiële sleutelformule: forfaitaire beroepskosten, schijven, belastingvrije som en kinderen ten laste.",
   intro: [

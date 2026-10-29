@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.yle-vero",
   h1: "Yle-verolaskuri: paljonko maksat yleisradioveroa",
-  title: "Yle-vero 2026: laske yleisradiovero tuloistasi",
+  title: "Yle-vero {{anio}}: laske yleisradiovero tuloistasi",
   description:
     "Laske Yle-vero eli yleisradiovero. Vero on {{fi.yle-vero}} tuloista, jotka ylittävät {{fi.yle-veron-tuloraja}}, ja enintään {{fi.yle-veron-enimmaismaara}} vuodessa.",
   intro: [

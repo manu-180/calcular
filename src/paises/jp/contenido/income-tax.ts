@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "jp.income-tax",
-  h1: "所得税の計算（2026年分）",
-  title: "所得税 計算 2026｜税率と速算表で年税額を計算",
+  h1: "所得税の計算（{{anio}}年分）",
+  title: "所得税 計算 {{anio}}｜税率と速算表で年税額を計算",
   description:
     "給与収入または所得金額から、令和8年分の所得税と復興特別所得税を計算します。基礎控除、給与所得控除、税率の速算表は国税庁の公表どおりです。",
   intro: [

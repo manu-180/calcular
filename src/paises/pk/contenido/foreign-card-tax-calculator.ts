@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pk.foreign-card-tax-calculator",
   h1: "Tax on international card payments",
-  title: "Tax on international card payments: {{pk.wht-foreign-card}} from July 2026",
-  description: "Advance tax on payments with credit, debit or prepaid cards abroad or in foreign currency is {{pk.wht-foreign-card}} from 1 July 2026.",
+  title: "Tax on international card payments: {{pk.wht-foreign-card}} from July {{anio}}",
+  description: "Advance tax on payments with credit, debit or prepaid cards abroad or in foreign currency is {{pk.wht-foreign-card}} from 1 July {{anio}}.",
   intro: ["When you pay abroad or online in foreign currency with a Pakistani card, the bank collects advance tax. Enter the amount to see it."],
   comoSeCalcula: [
     "Advance tax = amount × {{pk.wht-foreign-card}}.",

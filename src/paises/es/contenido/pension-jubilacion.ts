@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "es.jubilacion",
   h1: "Calculadora de la pensión de jubilación",
-  title: "Pensión de jubilación 2026: porcentaje y cuantía",
+  title: "Pensión de jubilación {{anio}}: porcentaje y cuantía",
   description:
-    "Calcula tu pensión de jubilación según tu base reguladora y los años cotizados: porcentaje, edad ordinaria en 2026 y tope de la pensión máxima.",
+    "Calcula tu pensión de jubilación según tu base reguladora y los años cotizados: porcentaje, edad ordinaria en {{anio}} y tope de la pensión máxima.",
   intro: [
     "La pensión de jubilación contributiva se calcula en dos pasos: tu base reguladora (la media de lo que cotizaste) y un porcentaje que depende de los años cotizados.",
     "Esta calculadora aplica los porcentajes que rigen de 2023 a 2026 y el tope de la pensión máxima de 2026.",

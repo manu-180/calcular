@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fi.vanhempainpaivaraha-laskuri",
   h1: "Vanhempainpäivärahalaskuri: paljonko vanhempainrahaa saat",
-  title: "Vanhempainpäiväraha laskuri 2026: laske vanhempainraha",
+  title: "Vanhempainpäiväraha laskuri {{anio}}: laske vanhempainraha",
   description:
     "Laske Kelan vanhempainraha vuosituloistasi. Näet päivärahan arkipäivältä, korotetun rahan ensimmäisiltä päiviltä ja arvion kuukaudessa.",
   intro: [

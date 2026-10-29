@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "my.socso-calculator",
-  h1: "SOCSO contribution calculator 2026",
-  title: "SOCSO calculator 2026: PERKESO and LINDUNG 24 Jam",
+  h1: "SOCSO contribution calculator {{anio}}",
+  title: "SOCSO calculator {{anio}}: PERKESO and LINDUNG 24 Jam",
   description: "Find the SOCSO, LINDUNG 24 Jam and EIS contributions for any monthly wage, split between you and your employer, from the PERKESO tables.",
   intro: [
     "Enter the monthly wages to see what PERKESO takes from the employee and what the employer pays on top.",

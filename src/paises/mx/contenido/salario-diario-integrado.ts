@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.salario-diario-integrado",
-  h1: "Calculadora de salario diario integrado (SDI) 2026",
-  title: "Salario diario integrado 2026: calcula tu SDI",
+  h1: "Calculadora de salario diario integrado (SDI) {{anio}}",
+  title: "Salario diario integrado {{anio}}: calcula tu SDI",
   description:
     "Calcula tu salario diario integrado con el factor de integración de aguinaldo y prima vacacional, y mira el salario base de cotización con el tope del IMSS.",
   intro: [

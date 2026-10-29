@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.cotisations-travailleur-non-salarie",
   h1: "Cotisations CNSS des travailleurs non salariés en Tunisie",
-  title: "Cotisation CNSS non salarié Tunisie 2026 : montant",
+  title: "Cotisation CNSS non salarié Tunisie {{anio}} : montant",
   description:
-    "Calculez la cotisation trimestrielle CNSS d'un travailleur indépendant en Tunisie selon sa classe de revenu : taux de {{tn.cnss-tns-taux}} et barème du 2e trimestre 2026.",
+    "Calculez la cotisation trimestrielle CNSS d'un travailleur indépendant en Tunisie selon sa classe de revenu : taux de {{tn.cnss-tns-taux}} et barème du 2e trimestre {{anio}}.",
   intro: [
     "Commerçants, artisans, professions libérales et autres travailleurs indépendants du secteur non agricole cotisent eux-mêmes à la CNSS, chaque trimestre, sur une assiette forfaitaire qu'ils choisissent parmi dix classes de revenu.",
     "Choisissez votre classe et, si vous y avez adhéré, le taux de l'assurance accidents du travail. Vous obtenez le montant à payer par trimestre et par an.",

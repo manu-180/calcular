@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.real-estate-tax",
   h1: "حساب ضريبة التصرفات العقارية",
-  title: "حساب ضريبة التصرفات العقارية {{eg.real-estate-tax}} في مصر 2026",
+  title: "حساب ضريبة التصرفات العقارية {{eg.real-estate-tax}} في مصر {{anio}}",
   description:
     "ضريبة التصرفات العقارية {{eg.real-estate-tax}} من قيمة بيع العقار أو أرض البناء، بحسب حصة البائع. احسب المبلغ المستحق قبل أن تبيع.",
   intro: [

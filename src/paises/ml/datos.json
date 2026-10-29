@@ -1,0 +1,871 @@
+{
+  "mercado": "ml",
+  "datos": [
+    {
+      "id": "ml.its-bareme",
+      "nombre": "Barème annuel de l'impôt sur les traitements et salaires (ITS)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 330000,
+              "tasa": 0
+            },
+            {
+              "desde": 330000,
+              "hasta": 578400,
+              "tasa": 5
+            },
+            {
+              "desde": 578400,
+              "hasta": 1176400,
+              "tasa": 12
+            },
+            {
+              "desde": 1176400,
+              "hasta": 1789733,
+              "tasa": 18
+            },
+            {
+              "desde": 1789733,
+              "hasta": 2384195,
+              "tasa": 26
+            },
+            {
+              "desde": 2384195,
+              "hasta": 3494130,
+              "tasa": 31
+            },
+            {
+              "desde": 3494130,
+              "hasta": null,
+              "tasa": 37
+            }
+          ],
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 10 (loi n° 2016-10)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Le Directeur général des Impôts confirme que l'article 10 reste inchangé (consultation publiée dans Impôt Com n° 38, décembre 2025 : https://www.dgi.gouv.ml/wp-content/uploads/2025/12/IMPOT_COM-38.pdf)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.its-reduction-famille",
+      "nombre": "Réduction d'ITS pour charges de famille",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "marie": "Marié(e)",
+        "enfant": "Par enfant à charge",
+        "enfant-infirme": "Par enfant majeur infirme"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": {
+            "marie": 10,
+            "enfant": 2.5,
+            "enfant-infirme": 10
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 11",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.its-enfants-max",
+      "nombre": "Nombre maximum d'enfants ouvrant droit à réduction",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, articles 11 et 12",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.its-reduction-points",
+      "nombre": "Réduction de l'ITS en points de taux réel",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, articles 12-A et 12-B (loi n° 2008-002)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.its-deduction-retraite",
+      "nombre": "Plafond de la retenue pour la retraite déductible de la base de l'ITS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 7",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.tva",
+      "nombre": "Taux de la TVA",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "normal": "Taux normal",
+        "reduit": "Taux réduit"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-01-01",
+          "valor": {
+            "normal": 18,
+            "reduit": 5
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 229 (loi n° 11-078)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.smig",
+      "nombre": "Salaire minimum interprofessionnel garanti (SMIG), mensuel",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "hasta": "2015-12-31",
+          "valor": 35000,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, note sous l'article 10 reproduisant le décret n° 2015-363/P-RM du 19 mai 2015 fixant le SMIG",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Le décret fixe 35 000 F à compter du 1er janvier 2015 et 40 000 F à compter du 1er janvier 2016. Aucun décret plus récent sur le SMIG n'a été trouvé dans les Journaux officiels 2016 à 2026 publiés sur sgg-mali.ml."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 40000,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, note sous l'article 10 reproduisant le décret n° 2015-363/P-RM du 19 mai 2015 fixant le SMIG",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Le décret fixe 35 000 F à compter du 1er janvier 2015 et 40 000 F à compter du 1er janvier 2016. Aucun décret plus récent sur le SMIG n'a été trouvé dans les Journaux officiels 2016 à 2026 publiés sur sgg-mali.ml."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.smig-horaire",
+      "nombre": "SMIG horaire",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "hasta": "2015-12-31",
+          "valor": 201.92,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, note sous l'article 10 reproduisant le décret n° 2015-363/P-RM du 19 mai 2015 fixant le SMIG",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Le décret fixe 35 000 F à compter du 1er janvier 2015 et 40 000 F à compter du 1er janvier 2016. Aucun décret plus récent sur le SMIG n'a été trouvé dans les Journaux officiels 2016 à 2026 publiés sur sgg-mali.ml."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 230.77,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, note sous l'article 10 reproduisant le décret n° 2015-363/P-RM du 19 mai 2015 fixant le SMIG",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Le décret fixe 35 000 F à compter du 1er janvier 2015 et 40 000 F à compter du 1er janvier 2016. Aucun décret plus récent sur le SMIG n'a été trouvé dans les Journaux officiels 2016 à 2026 publiés sur sgg-mali.ml."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.preavis-mois",
+      "nombre": "Durée légale du préavis en mois",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "mensuel": "Travailleur payé au mois",
+        "maitrise": "Agent de maîtrise et assimilé",
+        "cadre": "Cadre et personnel de direction"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": {
+            "mensuel": 1,
+            "maitrise": 2,
+            "cadre": 3
+          },
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.41",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.preavis-jours",
+      "nombre": "Durée légale du préavis du personnel payé à la journée ou à la semaine",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.41",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.licenciement-taux",
+      "nombre": "Pourcentages de l'indemnité de licenciement par année de service",
+      "tipo": "escala",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5,
+              "tasa": 20
+            },
+            {
+              "desde": 5,
+              "hasta": 10,
+              "tasa": 25
+            },
+            {
+              "desde": 10,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.53",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.licenciement-anciennete-min",
+      "nombre": "Ancienneté minimale pour l'indemnité de licenciement",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.53",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.services-rendus-anciennete-min",
+      "nombre": "Ancienneté minimale pour l'indemnité de services rendus",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.54",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.conges-jours-par-mois",
+      "nombre": "Congé payé acquis par mois de travail",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.151",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.conges-anciennete",
+      "nombre": "Jours ouvrables de congé en plus selon l'ancienneté",
+      "tipo": "escala",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 15,
+              "tasa": 0
+            },
+            {
+              "desde": 15,
+              "hasta": 20,
+              "tasa": 2
+            },
+            {
+              "desde": 20,
+              "hasta": 25,
+              "tasa": 4
+            },
+            {
+              "desde": 25,
+              "hasta": null,
+              "tasa": 6
+            }
+          ],
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.154",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.conges-meres-jour-par-enfant",
+      "nombre": "Jour de congé en plus par enfant de moins de 15 ans (mères de famille)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.155",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.conges-diviseur-allocation",
+      "nombre": "Diviseur de la rémunération de la période de référence pour l'allocation de congé",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.157",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.duree-legale-hebdo",
+      "nombre": "Durée légale hebdomadaire du travail (hors agriculture)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.131",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.heures-sup-majorations",
+      "nombre": "Majorations des heures supplémentaires",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "jour-41-48": "Jour ouvrable, de la 41e à la 48e heure",
+        "jour-au-dela-48": "Jour ouvrable, au-delà de la 48e heure",
+        "nuit": "Jour ouvrable, de nuit",
+        "repos-jour": "Jour non ouvrable, de jour",
+        "repos-nuit": "Jour non ouvrable, de nuit"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-06-12",
+          "valor": {
+            "jour-41-48": 10,
+            "jour-au-dela-48": 25,
+            "nuit": 50,
+            "repos-jour": 50,
+            "repos-nuit": 100
+          },
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), article L.137",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.maternite-semaines",
+      "nombre": "Congé de maternité",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "avant": "Avant la date présumée",
+        "apres": "Après l'accouchement",
+        "total": "Durée totale",
+        "prolongation-maladie": "Prolongation possible pour maladie liée à la grossesse"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-01-01",
+          "valor": {
+            "avant": 6,
+            "apres": 8,
+            "total": 14,
+            "prolongation-maladie": 3
+          },
+          "fuente": {
+            "organismo": "Secrétariat général du Gouvernement",
+            "titulo": "Code du travail (loi n° 92-020, modifiée notamment par la loi n° 2017-021), articles L.179 et L.181",
+            "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.amo-taux",
+      "nombre": "Taux de cotisation à l'Assurance maladie obligatoire (AMO)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "salarie": "Part du salarié",
+        "employeur-prive": "Part de l'employeur privé",
+        "employeur-public": "Part de l'État ou de la collectivité employeur"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-10-26",
+          "valor": {
+            "salarie": 3.06,
+            "employeur-prive": 3.5,
+            "employeur-public": 4.48
+          },
+          "fuente": {
+            "organismo": "Journal officiel du Mali",
+            "titulo": "Décret n° 10-578/P-RM du 26 octobre 2010 fixant le taux de cotisations du régime de l'Assurance maladie obligatoire (JO n° 48 du 26 novembre 2010)",
+            "url": "https://sgg-mali.ml/JO/2010/mali-jo-2010-48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.inps-retraite-salarie",
+      "nombre": "Cotisation retraite INPS à la charge du salarié",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2007-01-01",
+          "valor": 3.6,
+          "motivo": "Le taux est fixé par décret (Code de prévoyance sociale, article 192). Ni le décret ni un barème de l'INPS n'ont pu être lus : le site de l'INPS ne répond pas et le décret n'apparaît pas dans les Journaux officiels consultés. Le chiffre ne figure que dans des guides privés."
+        }
+      ]
+    },
+    {
+      "id": "ml.inps-employeur",
+      "nombre": "Cotisations INPS à la charge de l'employeur",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "retraite": "Retraite",
+        "prestations-familiales": "Prestations familiales",
+        "accidents-travail": "Accidents du travail (taux minimal)"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2007-01-01",
+          "valor": {
+            "retraite": 5.4,
+            "prestations-familiales": 8,
+            "accidents-travail": 1
+          },
+          "motivo": "Le taux est fixé par décret (Code de prévoyance sociale, article 192). Ni le décret ni un barème de l'INPS n'ont pu être lus : le site de l'INPS ne répond pas et le décret n'apparaît pas dans les Journaux officiels consultés. Le chiffre ne figure que dans des guides privés. Les guides privés se contredisent aussi sur les prestations familiales et les accidents du travail."
+        }
+      ]
+    },
+    {
+      "id": "ml.taxes-salaires",
+      "nombre": "Taxes patronales sur les salaires",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "cfe": "Contribution forfaitaire à la charge des employeurs (CFE)",
+        "tfp": "Taxe de formation professionnelle (TFP)",
+        "tej": "Taxe emploi jeunes (TEJ)",
+        "logement": "Taxe logement"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": {
+            "cfe": 3.5,
+            "tfp": 2,
+            "tej": 2,
+            "logement": 1
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, articles 160 (CFE), 184 (TFP), 185-B (TEJ) et note sur la loi n° 85-35 (taxe logement)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "La page « Les impôts à payer » de la DGI (https://www.dgi.gouv.ml/les-impots-a-payer/) donne les mêmes taux de 3,5 %, 2 %, 2 % et 1 %."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.irf-taux",
+      "nombre": "Taux de l'impôt sur les revenus fonciers (IRF)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "dur": "Immeubles en dur et semi-dur",
+        "banco": "Immeubles en banco"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-01-01",
+          "valor": {
+            "dur": 12,
+            "banco": 8
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 22 (loi de finances 2012)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.impot-synthetique-taux",
+      "nombre": "Taux de l'impôt synthétique",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 74 (lois de finances 2014 et 2015)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.impot-synthetique-seuil",
+      "nombre": "Plafond de chiffre d'affaires de l'impôt synthétique",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-01-01",
+          "valor": 50000000,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, articles 70 et 71 (loi de finances 2014)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.is-taux",
+      "nombre": "Taux de l'impôt sur les sociétés et de l'IBIC au réel",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 85 (loi n° 11-078)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.minimum-forfaitaire",
+      "nombre": "Minimum forfaitaire de perception",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 86 (lois de finances 2014 et 2015)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.irvm-taux",
+      "nombre": "Taux de l'impôt sur les revenus de valeurs mobilières (IRVM)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "dividendes": "Dividendes",
+        "dividendes-cotees": "Dividendes de sociétés cotées",
+        "obligations": "Revenus des obligations",
+        "obligations-publiques-5-10": "Obligations publiques de 5 à 10 ans",
+        "obligations-publiques-plus-10": "Obligations publiques de plus de 10 ans",
+        "depots": "Intérêts des dépôts et comptes courants",
+        "lots": "Lots payés aux porteurs d'obligations",
+        "autres": "Autres revenus de capitaux mobiliers"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": {
+            "dividendes": 10,
+            "dividendes-cotees": 7,
+            "obligations": 6,
+            "obligations-publiques-5-10": 3,
+            "obligations-publiques-plus-10": 0,
+            "depots": 9,
+            "lots": 15,
+            "autres": 18
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 42 (lois de finances 2012 et 2013)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.retenue-non-residents-taux",
+      "nombre": "Taux de la retenue à la source sur les sommes versées aux non-résidents",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 97 (loi de finances 2013)",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.retenue-non-residents-abattement",
+      "nombre": "Déduction forfaitaire pour charges avant la retenue sur les non-résidents",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "prestations": "Prestations de services",
+        "marches": "Marchés, travaux et fournitures"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": {
+            "prestations": 50,
+            "marches": 90
+          },
+          "fuente": {
+            "organismo": "DGI",
+            "titulo": "Code général des impôts du Mali, article 96",
+            "url": "https://www.dgi.gouv.ml/CGI/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ml.parite-euro",
+      "nombre": "Parité fixe du franc CFA (XOF) avec l'euro",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-01-01",
+          "valor": 655.957,
+          "fuente": {
+            "organismo": "BCEAO",
+            "titulo": "Histoire du franc CFA (arrimage à l'euro le 1er janvier 1999)",
+            "url": "https://www.bceao.int/fr/content/histoire-du-franc-cfa",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}

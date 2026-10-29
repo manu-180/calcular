@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.skatt-pa-bostadsforsaljning",
   h1: "Räkna ut skatt vid bostadsförsäljning",
-  title: "Reavinstskatt på bostad 2026: räkna ut skatten på vinsten",
+  title: "Reavinstskatt på bostad {{anio}}: räkna ut skatten på vinsten",
   description:
     "Räkna ut vinsten och reavinstskatten när du säljer villa eller bostadsrätt: {{se.skatt-bostadsvinst}} på vinsten. Vid förlust får du dra av {{se.bostadsforlust-avdrag}}.",
   intro: [

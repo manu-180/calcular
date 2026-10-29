@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.rrsp-contribution-limit",
-  h1: "Calcul du plafond de cotisation REER 2026",
-  title: "Plafond REER 2026 : combien puis-je cotiser?",
+  h1: "Calcul du plafond de cotisation REER {{anio}}",
+  title: "Plafond REER {{anio}} : combien puis-je cotiser?",
   description: "Calculez votre maximum déductible au titre des REER : {{ca.rrsp-earned-income-rate}} du revenu gagné de l'an dernier, jusqu'à {{ca.rrsp-dollar-limit}}, moins le facteur d'équivalence.",
   intro: [
     "Inscrivez votre revenu gagné de l'an dernier, votre facteur d'équivalence et vos droits inutilisés pour voir combien vous pouvez cotiser à votre REER et déduire cette année.",

@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.minimum-wage",
   h1: "Salario mínimo por estado",
-  title: "Salario mínimo por estado 2026: California, Florida y más",
-  description: "Consulta el salario mínimo de 2026 en tu estado y cuánto suma por semana, mes y año. El mínimo federal es de {{us.min-wage-federal}} por hora.",
+  title: "Salario mínimo por estado {{anio}}: California, Florida y más",
+  description: "Consulta el salario mínimo de {{anio}} en tu estado y cuánto suma por semana, mes y año. El mínimo federal es de {{us.min-wage-federal}} por hora.",
   intro: [
     "Elige tu estado para ver su salario mínimo, el mínimo federal y el que tu empleador te tiene que pagar.",
     "Escribe tus horas por semana para convertir la tarifa por hora en pago semanal, mensual y anual.",

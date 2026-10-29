@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.impot-sur-pension",
   h1: "Impôt sur la pension de retraite en Tunisie",
-  title: "Impôt sur pension de retraite en Tunisie : calcul 2026",
+  title: "Impôt sur pension de retraite en Tunisie : calcul {{anio}}",
   description:
     "Calculez l'IRPP et la contribution sociale de solidarité sur votre pension de retraite en Tunisie, après l'abattement de {{tn.abattement-pensions}} et les déductions familiales.",
   intro: [

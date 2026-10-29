@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "dk.su-beregner",
-  h1: "SU-beregner: hvor meget SU får du i 2026?",
-  title: "SU 2026: beregn din SU som ude- eller hjemmeboende",
+  h1: "SU-beregner: hvor meget SU får du i {{anio}}?",
+  title: "SU {{anio}}: beregn din SU som ude- eller hjemmeboende",
   description:
-    "Beregn din SU på en videregående uddannelse i 2026. Udeboende får {{dk.su-udeboende}} om måneden. Hjemmeboende får grundsats plus tillæg efter forældrenes indkomst.",
+    "Beregn din SU på en videregående uddannelse i {{anio}}. Udeboende får {{dk.su-udeboende}} om måneden. Hjemmeboende får grundsats plus tillæg efter forældrenes indkomst.",
   intro: [
     "SU'en på en videregående uddannelse afhænger af, om du bor hjemme. Bor du hjemme, betyder dine forældres indkomst også noget.",
     "Vælg hvor du bor. Bor du hjemme, så skriv dine forældres indkomst og antal søskende under 18 år.",

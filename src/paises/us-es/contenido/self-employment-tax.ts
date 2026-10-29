@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.self-employment-tax",
   h1: "Calculadora del impuesto sobre el trabajo por cuenta propia",
-  title: "Impuesto sobre el trabajo por cuenta propia 2026 (Anexo SE)",
-  description: "Calcula tu impuesto de 2026 por trabajo por cuenta propia (Seguro Social y Medicare), la deducción de la mitad y lo que apartar cada trimestre.",
+  title: "Impuesto sobre el trabajo por cuenta propia {{anio}} (Anexo SE)",
+  description: "Calcula tu impuesto de {{anio}} por trabajo por cuenta propia (Seguro Social y Medicare), la deducción de la mitad y lo que apartar cada trimestre.",
   intro: [
     "Si trabajas como independiente, manejas para una app o tienes un negocio propio, pagas las dos mitades del Seguro Social y de Medicare. Ese es el impuesto sobre el trabajo por cuenta propia.",
     "Escribe tu ganancia neta para ver el impuesto, la deducción que recibes por la mitad y un monto trimestral para apartar.",

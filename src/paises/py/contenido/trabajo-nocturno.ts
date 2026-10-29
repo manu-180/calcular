@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.trabajo-nocturno",
   h1: "Calculadora de salario nocturno",
-  title: "Salario nocturno Paraguay 2026: recargo del 30 %",
+  title: "Salario nocturno Paraguay {{anio}}: recargo del 30 %",
   description: "Calculá tu salario si trabajás de noche: el recargo es del {{py.recargo-nocturno}} sobre el salario diurno. También ves tu diario y tu hora nocturna.",
   intro: [
     "Si trabajás de noche (entre las 20 y las 6), tu salario lleva un recargo del {{py.recargo-nocturno}} sobre lo que cobrarías de día por el mismo trabajo.",

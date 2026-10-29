@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.gift-tax",
   h1: "증여세 계산기",
-  title: "증여세 계산기 2026 | 부모·배우자 증여 공제",
+  title: "증여세 계산기 {{anio}} | 부모·배우자 증여 공제",
   description:
     "증여받는 금액과 증여하는 사람을 고르면 증여재산 공제, 세율, 신고세액공제를 반영해 낼 증여세를 계산해요. 10년 합산 공제도 넣을 수 있어요.",
   intro: [

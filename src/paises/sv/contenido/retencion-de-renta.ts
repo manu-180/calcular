@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.retencion-de-renta",
   h1: "Calculadora de retención de renta en El Salvador",
-  title: "Tabla de retención de renta 2026 El Salvador: calculadora",
+  title: "Tabla de retención de renta {{anio}} El Salvador: calculadora",
   description:
     "Calcule la retención de renta de su salario con la tabla vigente del Ministerio de Hacienda, mensual o quincenal. Resta la AFP del {{sv.afp-trabajador}} y el ISSS.",
   intro: [

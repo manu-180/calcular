@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.sueldo-neto",
-  h1: "Calculadora de sueldo neto 2026: de bruto a neto",
-  title: "Calculadora de sueldo neto 2026: quincenal y mensual",
+  h1: "Calculadora de sueldo neto {{anio}}: de bruto a neto",
+  title: "Calculadora de sueldo neto {{anio}}: quincenal y mensual",
   description:
-    "Escribe tu sueldo bruto y ve al instante cuánto te descuentan de ISR e IMSS y cuánto te queda por quincena o por mes. Con las tarifas 2026 del SAT.",
+    "Escribe tu sueldo bruto y ve al instante cuánto te descuentan de ISR e IMSS y cuánto te queda por quincena o por mes. Con las tarifas {{anio}} del SAT.",
   intro: [
     "Tu sueldo neto es tu sueldo bruto menos el ISR y las cuotas del IMSS que te descuentan. Es lo que de verdad te llega a la cuenta cada quincena o cada mes.",
     "Escribe tu sueldo bruto y cada cuánto te pagan. La calculadora aplica la tarifa del SAT de ese periodo, el subsidio para el empleo y tus cuotas del IMSS.",

@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.simulador-imt",
   h1: "Simulador de IMT e Imposto do Selo",
-  title: "Simulador de IMT 2026 e Imposto do Selo na compra de casa",
-  description: "Calcule o IMT e o Imposto do Selo na compra de casa com os escalões de 2026, incluindo o IMT Jovem e o selo do crédito à habitação.",
+  title: "Simulador de IMT {{anio}} e Imposto do Selo na compra de casa",
+  description: "Calcule o IMT e o Imposto do Selo na compra de casa com os escalões de {{anio}}, incluindo o IMT Jovem e o selo do crédito à habitação.",
   intro: [
     "Na compra de um imóvel pagam-se dois impostos: o IMT e o Imposto do Selo. O IMT depende do valor e da finalidade do imóvel.",
     "Indique o valor, a finalidade e, se quiser, o valor do crédito para ver quanto tem de reservar para impostos.",

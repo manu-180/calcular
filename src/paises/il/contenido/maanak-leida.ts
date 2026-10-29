@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.maanak-leida",
   h1: "מחשבון מענק לידה",
-  title: "מחשבון מענק לידה 2026: כמה משלם ביטוח לאומי",
+  title: "מחשבון מענק לידה {{anio}}: כמה משלם ביטוח לאומי",
   description:
     "כמה מענק לידה תקבלו מביטוח לאומי: {{il.maanak-leida[rishon]}} לילד הראשון, {{il.maanak-leida[sheni]}} לשני ו-{{il.maanak-leida[shlishi]}} מהשלישי. לתאומים {{il.maanak-leida[teomim]}}.",
   intro: [

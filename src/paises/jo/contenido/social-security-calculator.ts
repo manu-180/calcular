@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jo.social-security-calculator",
   h1: "حاسبة اشتراكات الضمان الاجتماعي",
-  title: "حساب اشتراك الضمان الاجتماعي في الأردن 2026",
+  title: "حساب اشتراك الضمان الاجتماعي في الأردن {{anio}}",
   description:
     "احسب اشتراك الضمان الاجتماعي الشهري على العامل وعلى المنشأة، بكل تأمين على حدة، مع الحد الأعلى للأجر الخاضع للاقتطاع {{jo.ssc-wage-cap}}.",
   intro: [

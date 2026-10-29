@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "pk.minimum-wage",
   h1: "Minimum wage in Pakistan 2026-27",
   title: "Minimum wage Pakistan 2026-27: {{pk.minimum-wage}} a month",
-  description: "The federal minimum wage is {{pk.minimum-wage}} a month from 1 July 2026. Compare your salary with it.",
+  description: "The federal minimum wage is {{pk.minimum-wage}} a month from 1 July {{anio}}. Compare your salary with it.",
   intro: [
     "From 1 July 2026 the federal government raised the minimum wage from Rs. 37,000 to {{pk.minimum-wage}} a month.",
     "Provinces declare their own minimum wages for workers in their territory, so check your province's notification too.",

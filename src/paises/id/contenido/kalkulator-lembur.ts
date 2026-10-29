@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "id.kalkulator-lembur",
   h1: "Kalkulator Uang Lembur",
-  title: "Kalkulator Lembur 2026: hitung upah lembur sesuai PP 35/2021",
+  title: "Kalkulator Lembur {{anio}}: hitung upah lembur sesuai PP 35/2021",
   description: "Hitung uang lembur di hari kerja dan hari libur dengan upah sejam 1/173 upah sebulan dan pengali resmi PP 35/2021.",
   intro: [
     "Masukkan upah sebulan, kapan Anda lembur dan berapa jam. Kalkulator menerapkan pengali yang berbeda untuk jam pertama, jam berikutnya dan hari libur.",

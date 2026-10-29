@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.pendlerpauschale-rechner",
-  h1: "Pendlerpauschale-Rechner 2026",
-  title: "Pendlerpauschale 2026: {{de.entfernungspauschale}} pro Kilometer",
+  h1: "Pendlerpauschale-Rechner {{anio}}",
+  title: "Pendlerpauschale {{anio}}: {{de.entfernungspauschale}} pro Kilometer",
   description:
-    "Berechnen Sie Ihre Entfernungspauschale 2026: {{de.entfernungspauschale}} je Kilometer ab dem ersten, mit Höchstbetrag ohne Auto und geschätzter Steuerersparnis.",
+    "Berechnen Sie Ihre Entfernungspauschale {{anio}}: {{de.entfernungspauschale}} je Kilometer ab dem ersten, mit Höchstbetrag ohne Auto und geschätzter Steuerersparnis.",
   intro: [
     "Für den Weg zur Arbeit können Sie in der Steuererklärung die Entfernungspauschale ansetzen, umgangssprachlich Pendlerpauschale. Seit 2026 gilt ein einheitlicher Satz ab dem ersten Kilometer.",
     "Der Rechner zeigt die Pauschale für Ihr Jahr und wie viel davon über den Arbeitnehmer-Pauschbetrag hinausgeht, den jeder ohnehin bekommt.",

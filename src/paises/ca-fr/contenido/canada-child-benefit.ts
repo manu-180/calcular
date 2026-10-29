@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.canada-child-benefit",
-  h1: "Calcul de l'allocation canadienne pour enfants (juillet 2026 à juin 2027)",
+  h1: "Calcul de l'allocation canadienne pour enfants (juillet {{anio}} à juin 2027)",
   title: "Allocation canadienne pour enfants 2026-2027 : calcul",
-  description: "Estimez votre allocation canadienne pour enfants de juillet 2026 à juin 2027 : jusqu'à {{ca.ccb-maximum[under-6]}} par année par enfant de moins de 6 ans.",
+  description: "Estimez votre allocation canadienne pour enfants de juillet {{anio}} à juin 2027 : jusqu'à {{ca.ccb-maximum[under-6]}} par année par enfant de moins de 6 ans.",
   intro: [
     "Inscrivez le nombre d'enfants et votre revenu familial net rajusté de 2025 pour estimer vos versements de l'ACE de juillet 2026 à juin 2027.",
     "Le calcul suit les montants et les taux de réduction publiés par l'Agence du revenu du Canada. L'allocation famille du Québec et la prestation pour enfants handicapés ne sont pas incluses.",

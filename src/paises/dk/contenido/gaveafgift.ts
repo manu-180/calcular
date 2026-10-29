@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.gaveafgift",
   h1: "Gaveafgift: hvor meget må du give skattefrit?",
-  title: "Gaveafgift 2026: beregn afgift og bundfradrag",
+  title: "Gaveafgift {{anio}}: beregn afgift og bundfradrag",
   description:
     "Beregn gaveafgiften. Børn og børnebørn kan få {{dk.gaveafgift-bundfradrag[afkom]}} afgiftsfrit fra hver giver. Resten koster {{dk.gaveafgift-sats[afkom]}} i afgift.",
   intro: [

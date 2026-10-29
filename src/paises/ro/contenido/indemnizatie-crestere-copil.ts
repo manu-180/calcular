@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ro.indemnizatie-crestere-copil",
   h1: "Calculator indemnizație creștere copil",
-  title: "Calculator indemnizație creștere copil 2026",
+  title: "Calculator indemnizație creștere copil {{anio}}",
   description:
     "Calculați indemnizația lunară pentru creșterea copilului: {{ro.indemnizatie-copil[procent]}} % din venitul net mediu din ultimele 12 luni, între minim și maxim.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ua.kalkuliator-pdfo",
   h1: "Калькулятор ПДФО і військового збору з доходу",
-  title: "Калькулятор ПДФО 2026: оренда, дивіденди, виграші",
+  title: "Калькулятор ПДФО {{anio}}: оренда, дивіденди, виграші",
   description:
     "Порахуйте ПДФО {{ua.pdfo}} і військовий збір {{ua.viiskovyi-zbir}} з оренди, процентів, виграшу чи іноземного доходу, а для дивідендів {{ua.dyvidendy[rezydent]}} або {{ua.dyvidendy[inshi]}}.",
   intro: [

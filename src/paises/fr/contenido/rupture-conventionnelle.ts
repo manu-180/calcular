@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fr.rupture-conventionnelle",
   h1: "Calcul de l'indemnité de rupture conventionnelle",
-  title: "Rupture conventionnelle 2026 : indemnité minimale et impôt",
+  title: "Rupture conventionnelle {{anio}} : indemnité minimale et impôt",
   description:
     "Calculez l'indemnité minimale de rupture conventionnelle et la part exonérée d'impôt et de cotisations de l'indemnité négociée avec votre employeur.",
   intro: [

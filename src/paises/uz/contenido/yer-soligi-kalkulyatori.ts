@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uz.yer-soligi-kalkulyatori",
   h1: "Yer soligʻi kalkulyatori (jismoniy shaxslar)",
-  title: "Yer soligʻi 2026: hovli va tomorqa uchun hisoblash",
+  title: "Yer soligʻi {{anio}}: hovli va tomorqa uchun hisoblash",
   description:
     "Jismoniy shaxslardan olinadigan yer soligʻini hudud boʻyicha bazaviy stavka (Toshkent 1-zonasida 1 kv.m uchun {{uz.yer-soligi[toshkent-1]}}), maydon va koeffitsiyentdan hisoblang.",
   intro: [

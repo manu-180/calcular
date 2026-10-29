@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.cesantias",
-  h1: "Calculadora de cesantías e intereses de cesantías 2026",
-  title: "Calculadora de cesantías 2026 e intereses de cesantías",
+  h1: "Calculadora de cesantías e intereses de cesantías {{anio}}",
+  title: "Calculadora de cesantías {{anio}} e intereses de cesantías",
   description:
     "Calcula tus cesantías y los intereses del {{co.intereses-cesantias}} anual con tu salario y los días trabajados. Incluye el auxilio de transporte si te corresponde. Gratis.",
   intro: [

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "dk.topskat",
-  h1: "Topskat og mellemskat 2026: beregn hvad du betaler",
-  title: "Topskat 2026: beregn mellemskat og topskat",
+  h1: "Topskat og mellemskat {{anio}}: beregn hvad du betaler",
+  title: "Topskat {{anio}}: beregn mellemskat og topskat",
   description:
     "Betaler du mellemskat eller topskat? Skriv din løn og se skatten over grænserne på {{dk.mellemskat-graense}} og {{dk.topskat-graense}}.",
   intro: [

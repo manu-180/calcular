@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ro.calculator-depozit-bancar",
   h1: "Calculator depozit bancar: dobânda netă",
-  title: "Calculator depozit bancar 2026: dobânda după impozit",
+  title: "Calculator depozit bancar {{anio}}: dobânda după impozit",
   description:
     "Calculați dobânda la un depozit la termen, cu sau fără capitalizare, după impozitul pe dobânzi de {{ro.impozit-dobanzi}} reținut de bancă.",
   intro: [
