@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.salario-minimo",
-  h1: "Salário mínimo 2026",
-  title: "Salário mínimo 2026: {{br.salario-minimo}} por mês",
+  h1: "Salário mínimo {{anio}}",
+  title: "Salário mínimo {{anio}}: {{br.salario-minimo}} por mês",
   description: "O salário mínimo nacional é {{br.salario-minimo}} desde {{br.salario-minimo#desde}}: {{br.salario-minimo-diario}} por dia e {{br.salario-minimo-hora}} por hora.",
   intro: [
     "O salário mínimo nacional de 2026 é {{br.salario-minimo}} por mês, fixado pelo Decreto nº 12.797/2025.",

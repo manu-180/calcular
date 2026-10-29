@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.plazo-fijo",
   h1: "Calculadora de depósito a plazo fijo",
-  title: "Plazo fijo en Perú 2026: calcula tus intereses con la TEA",
+  title: "Plazo fijo en Perú {{anio}}: calcula tus intereses con la TEA",
   description:
     "Calcula cuánto ganas en un depósito a plazo fijo con la TEA que te ofrece tu banco o caja. Incluye la cobertura del Fondo de Seguro de Depósitos ({{pe.fsd-cobertura}}).",
   intro: [

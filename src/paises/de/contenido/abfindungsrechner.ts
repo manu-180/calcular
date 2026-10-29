@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "de.abfindungsrechner",
   h1: "Abfindungsrechner mit Fünftelregelung",
-  title: "Abfindungsrechner 2026: Höhe und Steuer mit Fünftelregelung",
+  title: "Abfindungsrechner {{anio}}: Höhe und Steuer mit Fünftelregelung",
   description:
     "Berechnen Sie Ihre Abfindung nach der Faustformel von einem halben Monatsgehalt pro Jahr und die Einkommensteuer darauf mit und ohne Fünftelregelung.",
   intro: [

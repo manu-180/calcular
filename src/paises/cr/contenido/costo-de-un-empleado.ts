@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.costo-de-un-empleado",
   h1: "Cuánto cuesta un empleado en Costa Rica",
-  title: "Costo de un empleado en Costa Rica 2026: salario y cargas",
+  title: "Costo de un empleado en Costa Rica {{anio}}: salario y cargas",
   description:
     "Calcule cuánto le cuesta un trabajador al mes y al año: salario, cargas sociales patronales y la reserva del aguinaldo, con los porcentajes vigentes.",
   intro: [

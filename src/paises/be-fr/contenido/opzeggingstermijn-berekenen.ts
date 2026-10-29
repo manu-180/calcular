@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be-fr.opzeggingstermijn-berekenen",
   h1: "Calcul du délai de préavis selon le statut unique",
-  title: "Calcul du préavis 2026 : licenciement et démission",
+  title: "Calcul du préavis {{anio}} : licenciement et démission",
   description:
-    "Calculez votre délai de préavis en semaines en cas de licenciement, de démission ou de contre-préavis, avec les règles en vigueur depuis le 1er août 2026.",
+    "Calculez votre délai de préavis en semaines en cas de licenciement, de démission ou de contre-préavis, avec les règles en vigueur depuis le 1er août {{anio}}.",
   intro: [
     "Depuis le statut unique, ouvriers et employés ont les mêmes délais de préavis. Le délai dépend de votre ancienneté et de la partie qui met fin au contrat.",
     "Indiquez votre date d'entrée en service et la date de notification du préavis. Vous voyez le délai en semaines, quand il commence et quand il se termine.",

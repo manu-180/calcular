@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.subsidio-de-natal",
   h1: "Calcular o subsídio de Natal",
-  title: "Subsídio de Natal 2026: valor por inteiro e proporcional",
+  title: "Subsídio de Natal {{anio}}: valor por inteiro e proporcional",
   description: "Calcule o subsídio de Natal: um mês de retribuição, ou a parte proporcional no ano de entrada, de saída ou com o contrato suspenso.",
   intro: [
     "O subsídio de Natal é um salário a mais por ano, pago até 15 de dezembro. Quem trabalhou o ano inteiro recebe um mês de retribuição.",

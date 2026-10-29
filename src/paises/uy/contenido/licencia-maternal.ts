@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.licencia-maternal",
   h1: "Calculadora de licencia maternal y paternal",
-  title: "Licencia maternal y paternal 2026: cuánto paga el BPS",
+  title: "Licencia maternal y paternal {{anio}}: cuánto paga el BPS",
   description:
-    "Calculá el subsidio por maternidad ({{uy.maternidad-semanas}} semanas), por paternidad y el medio horario para cuidados. Con el mínimo de {{uy.maternidad-minimo}} y los días de 2026.",
+    "Calculá el subsidio por maternidad ({{uy.maternidad-semanas}} semanas), por paternidad y el medio horario para cuidados. Con el mínimo de {{uy.maternidad-minimo}} y los días de {{anio}}.",
   intro: [
     "Durante la licencia maternal y la paternal no te paga la empresa: te paga el BPS. Cobrás tu promedio de los últimos seis meses, más la parte de aguinaldo, licencia y salario vacacional.",
     "Elegí qué querés calcular y poné tu promedio mensual. Te mostramos los días y el monto.",

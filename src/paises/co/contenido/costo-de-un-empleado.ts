@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.costo-de-un-empleado",
   h1: "Calculadora del costo de un empleado en Colombia",
-  title: "Costo de un empleado 2026: aportes y prestaciones",
+  title: "Costo de un empleado {{anio}}: aportes y prestaciones",
   description:
     "Calcula cuánto le cuesta al empleador un salario en Colombia: salud, pensión, ARL, caja, SENA, ICBF, prima, cesantías, intereses y vacaciones.",
   intro: [

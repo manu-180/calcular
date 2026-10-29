@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ua.kalkuliator-alimentiv",
-  h1: "Калькулятор аліментів на дитину 2026",
-  title: "Аліменти 2026: мінімальна сума і частка доходу",
+  h1: "Калькулятор аліментів на дитину {{anio}}",
+  title: "Аліменти {{anio}}: мінімальна сума і частка доходу",
   description:
     "Порахуйте аліменти на дітей: частка доходу 1/4, 1/3 або 1/2 і гарантований мінімум {{ua.alimenty-minimum}} прожиткового мінімуму для дитини відповідного віку.",
   intro: [

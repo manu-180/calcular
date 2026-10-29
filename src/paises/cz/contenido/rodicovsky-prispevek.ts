@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.rodicovsky-prispevek",
   h1: "Kalkulačka rodičovského příspěvku",
-  title: "Rodičovský příspěvek 2026: kalkulačka čerpání",
+  title: "Rodičovský příspěvek {{anio}}: kalkulačka čerpání",
   description:
     "Spočítejte, jak dlouho budete čerpat rodičovský příspěvek {{cz.rodicovsky-prispevek[do-2026]}} a kolik můžete brát měsíčně. Se stropem podle mzdy i pro děti narozené od roku 2027.",
   intro: [

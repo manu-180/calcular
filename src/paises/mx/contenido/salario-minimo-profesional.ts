@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.salario-minimo-profesional",
-  h1: "Salarios mínimos profesionales 2026",
-  title: "Salarios mínimos profesionales 2026 por oficio",
+  h1: "Salarios mínimos profesionales {{anio}}",
+  title: "Salarios mínimos profesionales {{anio}} por oficio",
   description:
-    "Consulta el salario mínimo profesional 2026 de los 61 oficios de la CONASAMI (albañil, chofer, cocinero, carpintero y más), por día, semana, quincena y mes.",
+    "Consulta el salario mínimo profesional {{anio}} de los 61 oficios de la CONASAMI (albañil, chofer, cocinero, carpintero y más), por día, semana, quincena y mes.",
   intro: [
     "Además del salario mínimo general, la CONASAMI fija un mínimo más alto para 61 oficios y profesiones. Si trabajas en uno de ellos, tu empresa no te puede pagar menos de ese monto por una jornada completa.",
     "Elige tu oficio y tu zona. En la Zona Libre de la Frontera Norte casi todos los oficios tienen el mismo mínimo que el general de la zona, {{mx.salario-minimo@frontera-norte}}.",

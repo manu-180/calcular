@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.vacaciones",
-  h1: "Calculadora de vacaciones y prima vacacional 2026",
-  title: "Vacaciones y prima vacacional 2026: tabla y calculadora",
+  h1: "Calculadora de vacaciones y prima vacacional {{anio}}",
+  title: "Vacaciones y prima vacacional {{anio}}: tabla y calculadora",
   description:
     "Mira cuántos días de vacaciones te tocan por antigüedad con la tabla de vacaciones dignas y calcula tu prima vacacional del {{mx.prima-vacacional}}. Rápido y gratis.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uz.ish-haqi-kalkulyatori",
   h1: "Ish haqi kalkulyatori: qoʻlga tegadigan maoshni hisoblash",
-  title: "Ish haqi hisoblash 2026: soliqdan keyingi maosh",
+  title: "Ish haqi hisoblash {{anio}}: soliqdan keyingi maosh",
   description:
     "Yalpi maoshdan daromad soligʻi ({{uz.jshds[rezident-mehnat]}}) ushlanganidan keyin qoʻlingizga qancha tegishini va ish beruvchi qancha ijtimoiy soliq toʻlashini hisoblang.",
   intro: [

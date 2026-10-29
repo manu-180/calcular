@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.kitzbat-nechut",
   h1: "מחשבון קצבת נכות כללית",
-  title: "מחשבון קצבת נכות כללית 2026: סכום הקצבה והתוספות",
+  title: "מחשבון קצבת נכות כללית {{anio}}: סכום הקצבה והתוספות",
   description:
     "כמה קצבת נכות כללית תקבלו לפי דרגת אי-הכושר: {{il.nechut-kitzba[male]}} בדרגה מלאה, עם תוספת עבור ילדים ועבור בן או בת זוג.",
   intro: [

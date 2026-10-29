@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "no.trygdeavgift",
-  h1: "Trygdeavgift 2026: regn ut avgiften til folketrygden",
-  title: "Trygdeavgift 2026: kalkulator for lønn og næring",
+  h1: "Trygdeavgift {{anio}}: regn ut avgiften til folketrygden",
+  title: "Trygdeavgift {{anio}}: kalkulator for lønn og næring",
   description:
-    "Regn ut trygdeavgiften for 2026: {{no.trygdeavgift[lonn]}} på lønn, {{no.trygdeavgift[naering]}} på næringsinntekt og {{no.trygdeavgift[pensjon]}} på pensjon, med nedre grense og opptrapping.",
+    "Regn ut trygdeavgiften for {{anio}}: {{no.trygdeavgift[lonn]}} på lønn, {{no.trygdeavgift[naering]}} på næringsinntekt og {{no.trygdeavgift[pensjon]}} på pensjon, med nedre grense og opptrapping.",
   intro: [
     "Trygdeavgift er medlemsavgiften til folketrygden. Den trekkes av lønn, næringsinntekt og pensjon, og den finansierer blant annet sykepenger og pensjon.",
     "Velg type inntekt og skriv inn beløpet for året. Kalkulatoren tar med den nedre grensen og opptrappingsregelen.",

@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.income-tax-calculator",
-  h1: "Income tax calculator 2026 for Canada",
-  title: "Income tax calculator 2026: federal and provincial",
-  description: "Estimate your 2026 federal and provincial income tax, average and marginal rate. Every province and territory, Quebec included, with official figures.",
+  h1: "Income tax calculator {{anio}} for Canada",
+  title: "Income tax calculator {{anio}}: federal and provincial",
+  description: "Estimate your {{anio}} federal and provincial income tax, average and marginal rate. Every province and territory, Quebec included, with official figures.",
   intro: [
     "Enter your income and your province or territory to see how much income tax you pay in 2026, split between federal and provincial tax.",
     "It uses the 2026 brackets and credits published by the Canada Revenue Agency, including the CPP and EI credits that come with a job. For Quebec it uses the Quebec tax table from Finances Québec and takes the {{ca.qc-abatement}} Quebec abatement off federal tax.",

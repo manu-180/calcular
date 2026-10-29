@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ie.maternity-benefit",
   h1: "Maternity Benefit calculator Ireland",
-  title: "Maternity Benefit Ireland 2026: {{ie.maternity-benefit-weekly}} a week",
+  title: "Maternity Benefit Ireland {{anio}}: {{ie.maternity-benefit-weekly}} a week",
   description:
     "Maternity Benefit is {{ie.maternity-benefit-weekly}} a week for {{ie.maternity-benefit-weeks}} weeks. See your total, when your paid leave ends and how it compares with your pay.",
   intro: [

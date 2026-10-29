@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu.salaire-social-minimum",
   h1: "Salaire social minimum au Luxembourg",
-  title: "Salaire social minimum Luxembourg 2026 : montants",
-  description: "Salaire social minimum au Luxembourg depuis le 1er juin 2026 : {{lu.ssm-non-qualifie}} non qualifié, {{lu.ssm-qualifie}} qualifié, montants horaires et adolescents.",
+  title: "Salaire social minimum Luxembourg {{anio}} : montants",
+  description: "Salaire social minimum au Luxembourg depuis le 1er juin {{anio}} : {{lu.ssm-non-qualifie}} non qualifié, {{lu.ssm-qualifie}} qualifié, montants horaires et adolescents.",
   intro: [
     "Le salaire social minimum (SSM) est le salaire le plus bas qu'un employeur peut verser. Il s'élève à {{lu.ssm-non-qualifie}} par mois pour un salarié non qualifié de 18 ans et plus.",
     "Un salarié qualifié a droit à 20 % de plus, soit {{lu.ssm-qualifie}}. Pour les adolescents, le minimum est réduit.",

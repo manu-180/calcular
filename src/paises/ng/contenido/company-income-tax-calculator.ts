@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ng.company-income-tax-calculator",
   h1: "Company income tax calculator Nigeria",
-  title: "Company income tax Nigeria 2026: small company check",
+  title: "Company income tax Nigeria {{anio}}: small company check",
   description:
     "Check if your business is a small company (0% tax) and work out companies income tax at {{ng.cit-rate}} plus the {{ng.development-levy}} development levy.",
   intro: [

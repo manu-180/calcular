@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cz.vypocet-ciste-mzdy",
-  h1: "Výpočet čisté mzdy 2026",
-  title: "Výpočet čisté mzdy 2026: kalkulačka z hrubé mzdy",
+  h1: "Výpočet čisté mzdy {{anio}}",
+  title: "Výpočet čisté mzdy {{anio}}: kalkulačka z hrubé mzdy",
   description:
-    "Spočítejte si čistou mzdu z hrubé: sociální a zdravotní pojištění, záloha na daň 15 % a 23 %, sleva na poplatníka a zvýhodnění na děti pro rok 2026.",
+    "Spočítejte si čistou mzdu z hrubé: sociální a zdravotní pojištění, záloha na daň 15 % a 23 %, sleva na poplatníka a zvýhodnění na děti pro rok {{anio}}.",
   intro: [
     "Kalkulačka spočítá, kolik vám z hrubé mzdy zůstane na účtu. Odečte sociální a zdravotní pojištění a zálohu na daň a připočte slevy, na které máte nárok.",
     "Počítá s pravidly pro rok 2026, s minimální mzdou {{cz.minimalni-mzda}} a průměrnou mzdou {{cz.prumerna-mzda}}. Superhrubá mzda už se nepoužívá, daň se počítá přímo z hrubé mzdy.",

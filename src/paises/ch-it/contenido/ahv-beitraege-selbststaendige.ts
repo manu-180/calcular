@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-it.ahv-beitraege-selbststaendige",
   h1: "Calcolo dei contributi AVS degli indipendenti",
-  title: "Contributi AVS indipendenti 2026: tavola scalare",
-  description: "Contributi AVS/AI/IPG degli indipendenti nel 2026: tavola scalare decrescente fino a 60’500 franchi, aliquota piena oltre e contributo minimo di {{ch.ahv-mindestbeitrag-selbststaendige}}.",
+  title: "Contributi AVS indipendenti {{anio}}: tavola scalare",
+  description: "Contributi AVS/AI/IPG degli indipendenti nel {{anio}}: tavola scalare decrescente fino a 60’500 franchi, aliquota piena oltre e contributo minimo di {{ch.ahv-mindestbeitrag-selbststaendige}}.",
   intro: [
     "Gli indipendenti pagano da soli i contributi AVS, AI e IPG. Per i redditi più bassi vale un'aliquota ridotta: la tavola scalare decrescente.",
     "Chi guadagna molto poco paga il contributo minimo di {{ch.ahv-mindestbeitrag-selbststaendige}} all'anno.",

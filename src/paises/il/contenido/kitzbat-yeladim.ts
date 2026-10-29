@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.kitzbat-yeladim",
   h1: "מחשבון קצבת ילדים",
-  title: "קצבת ילדים 2026: כמה מקבלים לפי מספר הילדים",
+  title: "קצבת ילדים {{anio}}: כמה מקבלים לפי מספר הילדים",
   description:
     "חישוב קצבת הילדים החודשית של הביטוח הלאומי: {{il.kitzbat-yeladim[rishon]}} לילד הראשון, {{il.kitzbat-yeladim[sheni-revii]}} לשני עד הרביעי ו-{{il.kitzbat-yeladim[chamishi]}} מהחמישי.",
   intro: [

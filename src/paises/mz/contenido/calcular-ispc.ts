@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mz.calcular-ispc",
   h1: "Calcular o ISPC do trimestre",
-  title: "ISPC 2026: calcular o imposto dos pequenos contribuintes",
-  description: "Quanto ISPC paga no trimestre com as taxas de 2026: {{mz.ispc-comercio[0].tasa}} a {{mz.ispc-comercio[-1].tasa}} no comércio, {{mz.ispc-servicos}} nos serviços e {{mz.ispc-liberais}} nas profissões liberais.",
+  title: "ISPC {{anio}}: calcular o imposto dos pequenos contribuintes",
+  description: "Quanto ISPC paga no trimestre com as taxas de {{anio}}: {{mz.ispc-comercio[0].tasa}} a {{mz.ispc-comercio[-1].tasa}} no comércio, {{mz.ispc-servicos}} nos serviços e {{mz.ispc-liberais}} nas profissões liberais.",
   intro: [
     "O Imposto Simplificado para Pequenos Contribuintes (ISPC) substitui o IVA e o IRPS ou o IRPC para quem tem um volume de negócios anual até {{mz.ispc-limite}} e escolhe este regime.",
     "Desde {{mz.ispc-limite#desde}} a taxa depende da actividade e o imposto é pago por trimestre, sobre as vendas ou serviços desse trimestre.",

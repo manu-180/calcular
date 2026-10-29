@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "no.foreldrepenger",
   h1: "Foreldrepenger: kalkulator for 100 % og 80 %",
-  title: "Foreldrepenger 2026: 100 % eller 80 % dekning?",
+  title: "Foreldrepenger {{anio}}: 100 % eller 80 % dekning?",
   description:
     "Sammenlign foreldrepenger med 100 % og 80 % dekning. Se dagsats, beløp per måned og hva dere får totalt, med taket på 6 G ({{no.grunnbelop}} per G).",
   intro: [

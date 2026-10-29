@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.incapacidad",
   h1: "Calculadora de incapacidad por enfermedad general",
-  title: "Incapacidad médica 2026: cuánto te pagan",
+  title: "Incapacidad médica {{anio}}: cuánto te pagan",
   description:
     "Calcula cuánto te pagan por una incapacidad de origen común: qué parte paga la empresa, cuál la EPS y cuánto pierdes frente a tu salario.",
   intro: [

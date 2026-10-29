@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.standard-deduction",
   h1: "Calculadora de la deducción estándar",
-  title: "Deducción estándar 2026: calculadora por estado civil",
-  description: "Mira tu deducción estándar de 2026: {{us.standard-deduction[single]}} soltero, {{us.standard-deduction[mfj]}} casado en conjunto, {{us.standard-deduction[hoh]}} cabeza de familia, más el extra por 65 años y ceguera.",
+  title: "Deducción estándar {{anio}}: calculadora por estado civil",
+  description: "Mira tu deducción estándar de {{anio}}: {{us.standard-deduction[single]}} soltero, {{us.standard-deduction[mfj]}} casado en conjunto, {{us.standard-deduction[hoh]}} cabeza de familia, más el extra por 65 años y ceguera.",
   intro: [
     "La deducción estándar es la parte de tu ingreso sobre la que no pagas impuesto federal si no detallas deducciones.",
     "Elige tu estado civil y las casillas por edad y ceguera para ver la tuya de 2026 y compararla con tus deducciones detalladas.",

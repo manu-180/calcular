@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "md.calculator-concediu-medical",
   h1: "Calculator concediu medical",
-  title: "Calculator concediu medical 2026: cât plătește CNAS",
+  title: "Calculator concediu medical {{anio}}: cât plătește CNAS",
   description: "Calculați indemnizația pentru incapacitate temporară de muncă: {{md.itm[sub5]}}, {{md.itm[intre-5-8]}} sau {{md.itm[peste8]}} din venitul asigurat, după stagiu.",
   intro: [
     "În concediu medical nu primiți salariu, ci o indemnizație pentru incapacitate temporară de muncă. Primele zile le plătește angajatorul, restul Casa Națională de Asigurări Sociale.",

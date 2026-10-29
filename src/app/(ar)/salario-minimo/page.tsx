@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraSalarioMinimo } from "@/components/CalculadoraSalarioMinimo";
 import { datosOferta } from "@/lib/oferta";
@@ -39,7 +40,7 @@ type DatosDelMes = ReturnType<typeof datosDelMes>;
 const metadataDelMes = ({ SMVM, MES, MES_FIN }: DatosDelMes): Metadata => ({
   title: `Salario mínimo ${MES}: cuánto es por mes y hora`,
   description: `El salario mínimo de ${MES}: ${formatARS(SMVM.mensual, 0)} por mes y ${formatARS(SMVM.porHora, 0)} por hora. Escala fijada hasta ${MES_FIN} (Resolución 4/2026) y lo que determina.`,
-  alternates: { canonical: "/salario-minimo" },
+  alternates: { canonical: "/salario-minimo", languages: hreflangHeadAR("/salario-minimo") },
   openGraph: {
     title: `Salario mínimo ${MES}: ${formatARS(SMVM.mensual, 0)}`,
     description: `Por mes, por hora y proporcional si trabajás menos horas. Con la escala completa hasta ${MES_FIN}, fijada por laudo del Consejo del Salario.`,

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-it.vaterschaftsentschaedigung-rechner",
   h1: "Calcolo dell'indennità di paternità",
-  title: "Congedo di paternità: calcolo dell'indennità IPG 2026",
+  title: "Congedo di paternità: calcolo dell'indennità IPG {{anio}}",
   description: "Indennità per il congedo dell'altro genitore: l'{{ch.eo-taggeld-satz}} del reddito, al massimo {{ch.eo-hoechstbetrag-taggeld}} al giorno, per {{ch.vaterschaft-taggelder}} indennità giornaliere.",
   intro: [
     "L'altro genitore, di solito il padre, ha diritto a due settimane di congedo dopo la nascita. Le IPG versano per questo un'indennità dell'{{ch.eo-taggeld-satz}} del reddito, al massimo {{ch.eo-hoechstbetrag-taggeld}} al giorno.",

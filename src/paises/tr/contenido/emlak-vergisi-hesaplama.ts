@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.emlak-vergisi-hesaplama",
-  h1: "Emlak vergisi hesaplama 2026",
-  title: "Emlak Vergisi Hesaplama 2026: Konut, İşyeri ve Arsa",
+  h1: "Emlak vergisi hesaplama {{anio}}",
+  title: "Emlak Vergisi Hesaplama {{anio}}: Konut, İşyeri ve Arsa",
   description:
     "Konut, işyeri, arsa ve arazinin yıllık emlak vergisini hesaplayın. Büyükşehirde artırımlı oranlar, hisse payı ve iki taksit tutarı.",
   intro: [

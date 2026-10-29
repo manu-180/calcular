@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mt.take-home-pay",
-  h1: "Take-home pay calculator Malta 2026",
-  title: "Net salary Malta 2026: take-home pay after tax and SSC",
+  h1: "Take-home pay calculator Malta {{anio}}",
+  title: "Net salary Malta {{anio}}: take-home pay after tax and SSC",
   description:
-    "Work out your net salary in Malta after income tax and Class 1 social security, with the statutory bonuses and the 2026 single, married and parent rates.",
+    "Work out your net salary in Malta after income tax and Class 1 social security, with the statutory bonuses and the {{anio}} single, married and parent rates.",
   intro: [
     "Enter your gross basic salary and the tax rates that apply to you. You get your take-home pay a year, a month and a week.",
     "Malta pays four statutory payments on top of the basic salary: two bonuses and two weekly allowances. They are taxed but do not pay social security.",

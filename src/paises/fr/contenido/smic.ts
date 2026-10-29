@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "fr.smic",
-  h1: "Smic 2026 : montant horaire, mensuel et net",
-  title: "Smic 2026 : {{fr.smic-horaire}} brut de l'heure, net et mensuel",
+  h1: "Smic {{anio}} : montant horaire, mensuel et net",
+  title: "Smic {{anio}} : {{fr.smic-horaire}} brut de l'heure, net et mensuel",
   description:
-    "Montant du Smic en 2026 : {{fr.smic-horaire}} brut de l'heure. Calculez le Smic mensuel brut et net selon vos heures, à temps plein ou à temps partiel.",
+    "Montant du Smic en {{anio}} : {{fr.smic-horaire}} brut de l'heure. Calculez le Smic mensuel brut et net selon vos heures, à temps plein ou à temps partiel.",
   intro: [
     "Le Smic est le salaire horaire minimum que doit recevoir tout salarié majeur en France. Il est aujourd'hui de {{fr.smic-horaire}} brut de l'heure.",
     "Indiquez vos heures par semaine : la calculatrice donne le Smic mensuel brut, le net après cotisations et le total sur la période qui vous intéresse.",

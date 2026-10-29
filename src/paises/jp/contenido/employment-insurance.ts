@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jp.employment-insurance",
   h1: "雇用保険料の計算（令和8年度）",
-  title: "雇用保険料 計算 2026｜本人負担と事業主負担",
+  title: "雇用保険料 計算 {{anio}}｜本人負担と事業主負担",
   description:
     "賃金と事業の種類から、令和8年度の雇用保険料を本人負担と事業主負担に分けて計算します。一般の事業、農林水産・清酒製造、建設の事業に対応しています。",
   intro: [

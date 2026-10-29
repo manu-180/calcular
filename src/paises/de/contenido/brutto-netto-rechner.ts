@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.brutto-netto-rechner",
-  h1: "Brutto-Netto-Rechner 2026",
-  title: "Brutto-Netto-Rechner 2026: Ihr Nettogehalt",
+  h1: "Brutto-Netto-Rechner {{anio}}",
+  title: "Brutto-Netto-Rechner {{anio}}: Ihr Nettogehalt",
   description:
-    "Vom Bruttogehalt zum Netto: Lohnsteuer nach dem Programmablaufplan 2026, Soli, Kirchensteuer und alle Sozialabgaben mit den Beitragssätzen 2026.",
+    "Vom Bruttogehalt zum Netto: Lohnsteuer nach dem Programmablaufplan {{anio}}, Soli, Kirchensteuer und alle Sozialabgaben mit den Beitragssätzen {{anio}}.",
   intro: [
     "Geben Sie Ihr monatliches Bruttogehalt und Ihre Steuerklasse ein. Der Rechner zieht Lohnsteuer, Solidaritätszuschlag, Kirchensteuer und die vier Sozialversicherungsbeiträge ab und zeigt, was auf Ihrem Konto ankommt.",
     "Die Lohnsteuer folgt Schritt für Schritt dem amtlichen Programmablaufplan des Bundesfinanzministeriums. Sie entspricht damit dem Betrag, den Ihr Arbeitgeber einbehält.",

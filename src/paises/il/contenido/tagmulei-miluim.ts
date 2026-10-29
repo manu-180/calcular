@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.tagmulei-miluim",
   h1: "מחשבון תגמולי מילואים",
-  title: "מחשבון תגמולי מילואים 2026: כמה מקבלים על ימי השירות",
+  title: "מחשבון תגמולי מילואים {{anio}}: כמה מקבלים על ימי השירות",
   description:
     "חישוב תגמול המילואים מהביטוח הלאומי: ההכנסה ב-3 החודשים שלפני השירות חלקי 90, בין {{il.miluim[min-yomi]}} ל-{{il.miluim[max-yomi]}} ליום, עם תוספת 40% ופיצוי לעצמאים.",
   intro: [

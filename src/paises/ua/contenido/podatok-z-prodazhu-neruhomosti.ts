@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ua.podatok-z-prodazhu-neruhomosti",
   h1: "Податок з продажу квартири чи будинку",
-  title: "Податок з продажу квартири 2026: ПДФО і військовий збір",
+  title: "Податок з продажу квартири {{anio}}: ПДФО і військовий збір",
   description:
     "Порахуйте податок з продажу нерухомості: 0, {{ua.pdfo-prodazh-maina[pilhova]}} або {{ua.pdfo-prodazh-maina[zahalna]}} ПДФО залежно від випадку і військовий збір {{ua.viiskovyi-zbir}}.",
   intro: [

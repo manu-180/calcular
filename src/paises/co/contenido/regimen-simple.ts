@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.regimen-simple",
   h1: "Calculadora del Régimen Simple de Tributación (SIMPLE)",
-  title: "Régimen Simple 2026: calcula tu tarifa e impuesto",
+  title: "Régimen Simple {{anio}}: calcula tu tarifa e impuesto",
   description:
     "Calcula el impuesto del Régimen Simple de Tributación según tus ingresos brutos del año y tu actividad, con la UVT vigente y las tarifas de la DIAN.",
   intro: [

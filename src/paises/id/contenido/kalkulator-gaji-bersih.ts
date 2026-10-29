@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "id.kalkulator-gaji-bersih",
   h1: "Kalkulator Gaji Bersih",
-  title: "Kalkulator Gaji Bersih 2026: gaji setelah PPh 21 dan BPJS",
+  title: "Kalkulator Gaji Bersih {{anio}}: gaji setelah PPh 21 dan BPJS",
   description: "Hitung gaji bersih Anda setelah PPh 21 metode TER, iuran JHT, JP dan BPJS Kesehatan. Tarif resmi PP 58/2023 dan PMK 168/2023.",
   intro: [
     "Masukkan gaji bruto per bulan dan status PTKP Anda. Hasilnya adalah gaji yang benar-benar masuk ke rekening setelah semua potongan wajib.",

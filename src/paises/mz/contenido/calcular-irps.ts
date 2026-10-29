@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mz.calcular-irps",
   h1: "Calcular o IRPS sobre o salário",
-  title: "Calcular o IRPS do salário em Moçambique (2026)",
-  description: "Quanto IRPS a entidade empregadora retém por mês, com a tabela do artigo 65-A em vigor desde 2026 e o número de dependentes.",
+  title: "Calcular o IRPS do salário em Moçambique ({{anio}})",
+  description: "Quanto IRPS a entidade empregadora retém por mês, com a tabela do artigo 65-A em vigor desde {{anio}} e o número de dependentes.",
   intro: [
     "Todos os meses a entidade empregadora retém IRPS sobre o salário e entrega-o ao Estado. O valor sai de uma tabela publicada no Código do IRPS.",
     "A tabela actual entrou em vigor em {{mz.irps-retencao-0#desde}}, com a Lei n.º 11/2025. Indique a remuneração bruta do mês e os dependentes a cargo.",

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.bruto-netto-salaris",
-  h1: "Bruto netto salaris berekenen 2026",
-  title: "Bruto netto salaris berekenen 2026: wat houd je over?",
+  h1: "Bruto netto salaris berekenen {{anio}}",
+  title: "Bruto netto salaris berekenen {{anio}}: wat houd je over?",
   description:
-    "Reken je brutosalaris om naar netto met de tarieven en heffingskortingen van 2026. Met vakantiegeld, dertiende maand en pensioenpremie.",
+    "Reken je brutosalaris om naar netto met de tarieven en heffingskortingen van {{anio}}. Met vakantiegeld, dertiende maand en pensioenpremie.",
   intro: [
     "Van je brutosalaris houdt je werkgever loonheffing in: loonbelasting en premies volksverzekeringen samen. Daar gaan de algemene heffingskorting (maximaal {{nl.ahk[max]}}) en de arbeidskorting (maximaal {{nl.arbeidskorting-grenzen[max3]}}) weer vanaf.",
     "Vul je brutosalaris in, per maand of per jaar, en je ziet wat je netto overhoudt. De berekening geldt voor werknemers die de AOW-leeftijd nog niet hebben bereikt.",

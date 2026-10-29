@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "nl.zzp-belasting-berekenen",
   h1: "Belasting berekenen als zzp'er",
-  title: "Zzp belasting berekenen 2026: hoeveel moet je opzij zetten?",
+  title: "Zzp belasting berekenen {{anio}}: hoeveel moet je opzij zetten?",
   description:
-    "Bereken je inkomstenbelasting en Zvw-bijdrage als zzp'er in 2026, met zelfstandigenaftrek van {{nl.zelfstandigenaftrek}}, startersaftrek en {{nl.mkb-winstvrijstelling}} mkb-winstvrijstelling.",
+    "Bereken je inkomstenbelasting en Zvw-bijdrage als zzp'er in {{anio}}, met zelfstandigenaftrek van {{nl.zelfstandigenaftrek}}, startersaftrek en {{nl.mkb-winstvrijstelling}} mkb-winstvrijstelling.",
   intro: [
     "Als zzp'er betaal je inkomstenbelasting over je winst, plus de inkomensafhankelijke bijdrage voor de Zorgverzekeringswet. Er houdt niemand iets voor je in, dus je moet zelf geld opzij zetten.",
     "Vul je winst in en of je aan het urencriterium voldoet. Je ziet hoeveel belasting je over 2026 betaalt en hoeveel je per maand moet reserveren.",

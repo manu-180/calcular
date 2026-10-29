@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Pension age calculator Mauritius",
   title: "Pension age in Mauritius: when you get your pension",
   description:
-    "Find your pension age under the 2026 reform, the earliest month you can claim and your State Age Pension, from a basis of {{mu.state-age-pension-3a}} a month.",
+    "Find your pension age under the {{anio}} reform, the earliest month you can claim and your State Age Pension, from a basis of {{mu.state-age-pension-3a}} a month.",
   intro: [
     "Mauritius is raising the age for the basic pension from 60 to 65, one year for each group turning 60. The Finance Act 2026 also created the State Age Pension.",
     "Enter your date of birth to see your pension age. Add a start month to see how claiming early or late changes the amount.",

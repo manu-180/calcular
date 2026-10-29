@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gt.aguinaldo",
   h1: "Calculadora de aguinaldo en Guatemala",
-  title: "Calcular aguinaldo en Guatemala 2026: diciembre y enero",
+  title: "Calcular aguinaldo en Guatemala {{anio}}: diciembre y enero",
   description:
     "Calcule su aguinaldo completo o proporcional y vea cuánto le pagan en diciembre y cuánto en enero. Período del 1 de diciembre al 30 de noviembre. Decreto 76-78.",
   intro: [

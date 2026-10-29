@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cl.uf-por-fecha",
   h1: "Valor de la UF por fecha",
-  title: "Valor UF por fecha: la UF de cualquier día de 2026",
-  description: "Busca el valor de la UF de un día de 2026 y pasa un monto en UF a pesos de esa fecha. Valores oficiales del SII.",
+  title: "Valor UF por fecha: la UF de cualquier día de {{anio}}",
+  description: "Busca el valor de la UF de un día de {{anio}} y pasa un monto en UF a pesos de esa fecha. Valores oficiales del SII.",
   intro: [
     "¿Necesitas la UF de un día pasado, por ejemplo la fecha de una escritura, un pago o un contrato? Elige el día y te damos el valor oficial.",
     "Si escribes un monto en UF, también lo pasamos a pesos con el valor de ese día.",

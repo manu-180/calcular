@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.sueldo-bruto",
-  h1: "Calculadora de sueldo bruto a partir del neto 2026",
-  title: "Sueldo neto a bruto 2026: cuánto pedir para cobrar X",
+  h1: "Calculadora de sueldo bruto a partir del neto {{anio}}",
+  title: "Sueldo neto a bruto {{anio}}: cuánto pedir para cobrar X",
   description:
-    "Escribe cuánto quieres recibir libre y te decimos el sueldo bruto que hay que pactar, con ISR, subsidio para el empleo y cuotas del IMSS de 2026.",
+    "Escribe cuánto quieres recibir libre y te decimos el sueldo bruto que hay que pactar, con ISR, subsidio para el empleo y cuotas del IMSS de {{anio}}.",
   intro: [
     "En una entrevista o una oferta casi siempre se habla de sueldo bruto, pero lo que te importa es lo que llega a tu cuenta. Esta calculadora hace la cuenta al revés: del neto que quieres al bruto que tienes que pedir.",
     "Usa las mismas tarifas del ISR, el subsidio para el empleo y las cuotas obreras del IMSS que la calculadora de sueldo neto.",

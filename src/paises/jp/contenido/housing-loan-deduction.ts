@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jp.housing-loan-deduction",
   h1: "住宅ローン控除の計算（令和8年・令和9年入居）",
-  title: "住宅ローン控除 計算 2026｜控除額と限度額",
+  title: "住宅ローン控除 計算 {{anio}}｜控除額と限度額",
   description:
     "住宅ローンの年末残高と住宅の区分から、住宅ローン控除の1年分の控除額を計算します。令和8年・令和9年に新築住宅へ入居した場合の限度額に対応しています。",
   intro: [

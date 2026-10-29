@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ao.calcular-sisa",
   h1: "Calcular a SISA na compra de um imóvel",
-  title: "SISA em Angola 2026: imposto na compra de casa",
-  description: "Na compra de um imóvel paga-se {{ao.ip-transmissao}} de Imposto Predial (a que muitos chamam SISA). Em 2026 a habitação até {{ao.ip-habitacao-isencao}} está isenta.",
+  title: "SISA em Angola {{anio}}: imposto na compra de casa",
+  description: "Na compra de um imóvel paga-se {{ao.ip-transmissao}} de Imposto Predial (a que muitos chamam SISA). Em {{anio}} a habitação até {{ao.ip-habitacao-isencao}} está isenta.",
   intro: [
     "O imposto que muitos ainda chamam SISA é hoje o Imposto Predial sobre a transmissão de imóveis. Quem compra paga {{ao.ip-transmissao}} do valor.",
     "Para 2026, o Orçamento Geral do Estado isenta a compra de habitação até {{ao.ip-habitacao-isencao}} e reduz a taxa a metade até {{ao.ip-habitacao-reducao-limite}}.",

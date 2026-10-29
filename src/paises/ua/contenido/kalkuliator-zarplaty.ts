@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ua.kalkuliator-zarplaty",
-  h1: "Калькулятор зарплати 2026: скільки ви отримаєте на руки",
-  title: "Калькулятор зарплати 2026: на руки після податків",
+  h1: "Калькулятор зарплати {{anio}}: скільки ви отримаєте на руки",
+  title: "Калькулятор зарплати {{anio}}: на руки після податків",
   description:
     "Розрахуйте зарплату на руки з брутто: ПДФО {{ua.pdfo}}, військовий збір {{ua.viiskovyi-zbir}} і ЄСВ {{ua.yesv}}, який сплачує роботодавець. Офіційні ставки з джерелом.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cl.sueldo-bruto",
   h1: "Calculadora de sueldo bruto desde el líquido",
-  title: "Sueldo bruto desde el líquido: calcúlalo en 2026",
+  title: "Sueldo bruto desde el líquido: calcúlalo en {{anio}}",
   description:
     "¿Te ofrecen un líquido y quieres saber el bruto? Calcula el sueldo bruto con AFP, salud ({{cl.salud}}), seguro de cesantía e impuesto único del mes.",
   intro: [

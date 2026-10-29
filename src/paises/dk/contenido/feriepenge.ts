@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.feriepenge",
   h1: "Beregn feriepenge og ferietillæg",
-  title: "Beregn feriepenge 2026: 12,5 % eller ferietillæg",
+  title: "Beregn feriepenge {{anio}}: 12,5 % eller ferietillæg",
   description:
     "Beregn dine feriepenge på {{dk.feriegodtgoerelse}} af lønnen eller ferietillægget på {{dk.ferietillaeg}}. Se også hvor mange feriedage du har optjent efter ferieloven.",
   intro: [

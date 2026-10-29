@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.aportes-bps",
   h1: "Calculadora de aportes al BPS",
-  title: "Aportes BPS 2026: cuánto te descuentan del sueldo",
+  title: "Aportes BPS {{anio}}: cuánto te descuentan del sueldo",
   description:
     "Calculá tus aportes personales al BPS: montepío del {{uy.aporte-jubilatorio}}, Fonasa según tu familia y FRL del {{uy.frl}}. Con el tope de aportación vigente.",
   intro: [

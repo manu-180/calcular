@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.eisfores-gesy",
   h1: "GeSY contribution calculator",
-  title: "GeSY contributions 2026: employees, self-employed, pensions",
+  title: "GeSY contributions {{anio}}: employees, self-employed, pensions",
   description: "Work out your GeSY contribution: {{cy.eisfores-gesy[misthotos]}} on salaries and pensions, {{cy.eisfores-gesy[autotelos]}} for the self-employed, up to {{cy.anotato-orio-gesy}}.",
   intro: [
     "Cyprus's General Healthcare System is funded by contributions on all income. Enter the year's income to see what you pay.",

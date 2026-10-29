@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ae.emiratisation-contribution",
   h1: "Emiratisation contribution calculator",
-  title: "Emiratisation penalty calculator UAE 2026",
+  title: "Emiratisation penalty calculator UAE {{anio}}",
   description:
     "Work out the Emiratisation contribution for missing your target: {{ae.emiratisation-contribution}} for each Emirati not hired, charged from {{ae.emiratisation-contribution#desde}}.",
   intro: [

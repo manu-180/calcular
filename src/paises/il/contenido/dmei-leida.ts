@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.dmei-leida",
   h1: "מחשבון דמי לידה",
-  title: "מחשבון דמי לידה 2026: כמה תקבלו מהביטוח הלאומי",
+  title: "מחשבון דמי לידה {{anio}}: כמה תקבלו מהביטוח הלאומי",
   description:
     "חישוב דמי לידה לשכירה: השכר ב-3 החודשים האחרונים חלקי 90, עד {{il.dmei-leida-max}} ליום, ל-{{il.dmei-leida-yamim[male]}} או ל-{{il.dmei-leida-yamim[chelki]}}.",
   intro: [

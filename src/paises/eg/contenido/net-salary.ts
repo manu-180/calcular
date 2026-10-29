@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.net-salary",
   h1: "حساب صافي المرتب في مصر",
-  title: "حساب صافي المرتب 2026 في مصر: من الإجمالي إلى الصافي",
+  title: "حساب صافي المرتب {{anio}} في مصر: من الإجمالي إلى الصافي",
   description:
     "اعرف صافي مرتبك بعد التأمينات الاجتماعية وضريبة كسب العمل، بالشرائح الحالية والإعفاء الشخصي البالغ {{eg.personal-exemption}} في السنة.",
   intro: [

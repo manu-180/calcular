@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cz.priplatek-za-prescas",
   h1: "Příplatek za přesčas, noc, víkend a svátek",
-  title: "Příplatek za přesčas 2026: výpočet podle zákoníku práce",
+  title: "Příplatek za přesčas {{anio}}: výpočet podle zákoníku práce",
   description:
     "Spočítejte příplatky za práci přesčas ({{cz.priplatky[prescas]}}), v noci, o víkendu ({{cz.priplatky[vikend]}}) a ve svátku ({{cz.priplatky[svatek]}}) z průměrného výdělku.",
   intro: [

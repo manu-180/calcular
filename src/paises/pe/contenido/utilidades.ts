@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.utilidades",
   h1: "Calculadora de utilidades para trabajadores",
-  title: "Utilidades 2026: calcula cuánto te toca",
+  title: "Utilidades {{anio}}: calcula cuánto te toca",
   description:
     "Calcula tus utilidades según la actividad de la empresa ({{pe.utilidades-por-actividad[otras]}} a {{pe.utilidades-por-actividad[industrial]}} de la renta), tus días y tus remuneraciones. Con el tope legal.",
   intro: [

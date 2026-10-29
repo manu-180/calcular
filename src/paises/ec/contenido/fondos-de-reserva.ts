@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.fondos-de-reserva",
   h1: "Calculadora de fondos de reserva del IESS",
-  title: "Fondos de reserva IESS 2026: calcula tu {{ec.fondo-reserva}} mensual",
+  title: "Fondos de reserva IESS {{anio}}: calcula tu {{ec.fondo-reserva}} mensual",
   description: "Calcula tus fondos de reserva: el {{ec.fondo-reserva}} de tu remuneración desde que cumples un año con el mismo empleador, mensualizado o acumulado en el IESS.",
   intro: [
     "El fondo de reserva es el {{ec.fondo-reserva}} de tu remuneración de cada mes, o sea, un sueldo por año. Te corresponde desde que cumples un año con el mismo empleador.",

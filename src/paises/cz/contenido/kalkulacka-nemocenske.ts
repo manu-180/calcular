@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cz.kalkulacka-nemocenske",
-  h1: "Kalkulačka nemocenské 2026",
-  title: "Kalkulačka nemocenské 2026: náhrada mzdy a nemocenská",
+  h1: "Kalkulačka nemocenské {{anio}}",
+  title: "Kalkulačka nemocenské {{anio}}: náhrada mzdy a nemocenská",
   description:
-    "Spočítejte, kolik dostanete na nemocenské: náhradu mzdy od zaměstnavatele za prvních 14 dní a nemocenskou od ČSSZ od 15. dne podle redukčních hranic 2026.",
+    "Spočítejte, kolik dostanete na nemocenské: náhradu mzdy od zaměstnavatele za prvních 14 dní a nemocenskou od ČSSZ od 15. dne podle redukčních hranic {{anio}}.",
   intro: [
     "Při pracovní neschopnosti vám první dva týdny platí zaměstnavatel náhradu mzdy. Od 15. dne vyplácí nemocenské okresní správa sociálního zabezpečení.",
     "Kalkulačka spočítá obě částky z vaší průměrné hrubé mzdy a délky nemoci.",

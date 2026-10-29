@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.sueldo-minimo",
-  h1: "Sueldo mínimo en el Perú 2026: RMV de {{pe.rmv}}",
-  title: "Sueldo mínimo 2026 en Perú: RMV de {{pe.rmv}}",
+  h1: "Sueldo mínimo en el Perú {{anio}}: RMV de {{pe.rmv}}",
+  title: "Sueldo mínimo {{anio}} en Perú: RMV de {{pe.rmv}}",
   description:
     "El sueldo mínimo en Perú es {{pe.rmv}} desde el {{pe.rmv#desde}}. Mira cuánto es por día, por hora y con asignación familiar, y compáralo con tu sueldo.",
   intro: [

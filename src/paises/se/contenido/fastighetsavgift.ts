@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.fastighetsavgift",
   h1: "Räkna ut fastighetsavgiften för ditt hus",
-  title: "Fastighetsavgift 2026: räkna ut avgiften för småhus",
+  title: "Fastighetsavgift {{anio}}: räkna ut avgiften för småhus",
   description:
-    "Räkna ut den kommunala fastighetsavgiften för ditt småhus 2026: {{se.fastighetsavgift[sats]}} procent av taxeringsvärdet, högst {{se.fastighetsavgift[tak]}} kronor.",
+    "Räkna ut den kommunala fastighetsavgiften för ditt småhus {{anio}}: {{se.fastighetsavgift[sats]}} procent av taxeringsvärdet, högst {{se.fastighetsavgift[tak]}} kronor.",
   intro: [
     "Äger du ett småhus betalar du kommunal fastighetsavgift varje år. Den beror på taxeringsvärdet men har ett tak.",
     "Nyare hus är avgiftsfria de första åren. Kalkylatorn räknar ut avgiften per år och per månad.",

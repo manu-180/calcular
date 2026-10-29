@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be-fr.vakantiegeld-berekenen",
   h1: "Calcul du pécule de vacances pour employés et ouvriers",
-  title: "Pécule de vacances 2026 : double, ouvriers et sortie",
+  title: "Pécule de vacances {{anio}} : double, ouvriers et sortie",
   description:
     "Calculez votre pécule de vacances : double pécule de {{be.vakantiegeld[dubbel-bediende]}} du salaire mensuel pour un employé, {{be.vakantiegeld[arbeider]}} pour un ouvrier, ou pécule de sortie.",
   intro: [

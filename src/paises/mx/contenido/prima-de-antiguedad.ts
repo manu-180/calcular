@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.prima-de-antiguedad",
-  h1: "Calculadora de prima de antigüedad 2026",
-  title: "Prima de antigüedad 2026: cuánto te toca y cuándo",
+  h1: "Calculadora de prima de antigüedad {{anio}}",
+  title: "Prima de antigüedad {{anio}}: cuánto te toca y cuándo",
   description:
     "Calcula tu prima de antigüedad: {{mx.dias-prima-antiguedad}} de salario por año, con el tope de dos salarios mínimos. Mira si te toca al renunciar y cuánto paga ISR.",
   intro: [

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.irpf",
-  h1: "Calculadora de IRPF 2026 sobre el sueldo",
-  title: "IRPF Uruguay 2026: calculá tu retención por franjas",
+  h1: "Calculadora de IRPF {{anio}} sobre el sueldo",
+  title: "IRPF Uruguay {{anio}}: calculá tu retención por franjas",
   description:
-    "Calculá cuánto IRPF te retienen por mes con las franjas 2026, la BPC de {{uy.bpc}} y tus deducciones por aportes e hijos. Cada paso a la vista, gratis.",
+    "Calculá cuánto IRPF te retienen por mes con las franjas {{anio}}, la BPC de {{uy.bpc}} y tus deducciones por aportes e hijos. Cada paso a la vista, gratis.",
   intro: [
     "El IRPF de tu sueldo se calcula con una escala por franjas medidas en BPC, de 0 % a 36 %, menos una parte de tus deducciones. En 2026 la BPC es {{uy.bpc}} y tu empleador te lo retiene todos los meses.",
     "Acá ves cada paso: la renta del mes, el impuesto por franjas, cuánto bajan tus deducciones y lo que te retienen al final.",

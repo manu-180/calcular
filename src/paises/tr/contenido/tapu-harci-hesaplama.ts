@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.tapu-harci-hesaplama",
-  h1: "Tapu harcı hesaplama 2026",
-  title: "Tapu Harcı Hesaplama 2026: Alıcı ve Satıcı Payı",
+  h1: "Tapu harcı hesaplama {{anio}}",
+  title: "Tapu Harcı Hesaplama {{anio}}: Alıcı ve Satıcı Payı",
   description:
     "Ev, arsa veya işyeri satışında tapu harcını hesaplayın. Alıcı ve satıcı için ayrı ayrı binde 20, emlak vergisi değerinden az olmamak üzere.",
   intro: [

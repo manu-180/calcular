@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ua.minimalna-zarplata",
-  h1: "Мінімальна зарплата в Україні у 2026 році",
-  title: "Мінімальна зарплата 2026: {{ua.minimalna-zarplata}} і на руки",
+  h1: "Мінімальна зарплата в Україні у {{anio}} році",
+  title: "Мінімальна зарплата {{anio}}: {{ua.minimalna-zarplata}} і на руки",
   description:
     "Мінімальна зарплата {{ua.minimalna-zarplata}} на місяць і {{ua.minimalna-zarplata-hodynna}} на годину. Порахуйте мінімум для неповної ставки чи годин і суму на руки.",
   intro: [

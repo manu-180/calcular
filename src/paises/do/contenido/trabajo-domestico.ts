@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.trabajo-domestico",
   h1: "Calculadora para trabajadoras del hogar en República Dominicana",
-  title: "Trabajo doméstico en RD: salario mínimo y regalía 2026",
+  title: "Trabajo doméstico en RD: salario mínimo y regalía {{anio}}",
   description: "Revisa si el salario de una trabajadora del hogar llega al mínimo de {{do.salario-minimo-hogar}} y calcula su salario de Navidad del año.",
   intro: [
     "Las trabajadoras del hogar tienen un salario mínimo propio de {{do.salario-minimo-hogar}} al mes, sin importar el tamaño de la casa.",

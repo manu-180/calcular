@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us-es.roth-ira-contribution",
   h1: "Calculadora de aportes a una Roth IRA",
-  title: "Calculadora de límite de Roth IRA 2026",
-  description: "Mira cuánto puedes poner en una Roth IRA en 2026 según tus ingresos y tu estado civil. Límite de {{us.ira-limit}}, catch-up a los 50 y la hoja de reducción del IRS.",
+  title: "Calculadora de límite de Roth IRA {{anio}}",
+  description: "Mira cuánto puedes poner en una Roth IRA en {{anio}} según tus ingresos y tu estado civil. Límite de {{us.ira-limit}}, catch-up a los 50 y la hoja de reducción del IRS.",
   intro: [
     "El límite de la Roth IRA baja a medida que suben tus ingresos y desaparece por encima de cierto nivel. Escribe tu AGI modificado y elige tu estado civil para ver tu límite personal de 2026.",
   ],

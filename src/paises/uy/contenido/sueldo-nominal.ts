@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.sueldo-nominal",
   h1: "De líquido a nominal: calculá el sueldo nominal",
-  title: "Pasar de líquido a nominal en Uruguay (2026)",
+  title: "Pasar de líquido a nominal en Uruguay ({{anio}})",
   description:
-    "Decinos cuánto querés cobrar en mano y te decimos qué sueldo nominal necesitás, con aportes al BPS, Fonasa e IRPF de 2026. Sirve para negociar un sueldo.",
+    "Decinos cuánto querés cobrar en mano y te decimos qué sueldo nominal necesitás, con aportes al BPS, Fonasa e IRPF de {{anio}}. Sirve para negociar un sueldo.",
   intro: [
     "Si te ofrecen un sueldo o vas a negociar uno, casi siempre se habla en nominal. Acá hacés la cuenta al revés: ponés el líquido que querés cobrar y te mostramos el nominal que hace falta.",
     "Usamos los mismos descuentos que el BPS aplica a todos: montepío, Fonasa, Fondo de Reconversión Laboral e IRPF.",

@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "at.familienbeihilfe-rechner",
-  h1: "Familienbeihilfe-Rechner 2026",
-  title: "Familienbeihilfe 2026 berechnen: Beträge und Staffel",
-  description: "Wie viel Familienbeihilfe bekommen Sie 2026? Beträge nach Alter, Geschwisterstaffelung, Kinderabsetzbetrag von {{at.kinderabsetzbetrag}} und Schulstartgeld.",
+  h1: "Familienbeihilfe-Rechner {{anio}}",
+  title: "Familienbeihilfe {{anio}} berechnen: Beträge und Staffel",
+  description: "Wie viel Familienbeihilfe bekommen Sie {{anio}}? Beträge nach Alter, Geschwisterstaffelung, Kinderabsetzbetrag von {{at.kinderabsetzbetrag}} und Schulstartgeld.",
   intro: [
     "Die Familienbeihilfe wird monatlich für jedes Kind ausgezahlt, gemeinsam mit dem Kinderabsetzbetrag. Die Höhe hängt vom Alter des Kindes und von der Zahl der Kinder ab.",
     "Für 2026 und 2027 bleiben die Beträge auf dem Stand von 2025.",

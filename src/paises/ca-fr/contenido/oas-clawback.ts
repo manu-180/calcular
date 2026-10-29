@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ca-fr.oas-clawback",
   h1: "Calcul de l'impôt de récupération de la Sécurité de la vieillesse",
-  title: "Récupération de la pension de la SV 2026 : calcul",
-  description: "Voyez combien de pension de la Sécurité de la vieillesse vous remboursez quand votre revenu dépasse {{ca.oas-recovery-threshold[2026]}} (2026) : {{ca.oas-recovery-rate}} de l'excédent.",
+  title: "Récupération de la pension de la SV {{anio}} : calcul",
+  description: "Voyez combien de pension de la Sécurité de la vieillesse vous remboursez quand votre revenu dépasse {{ca.oas-recovery-threshold[{{anio}}]}} ({{anio}}) : {{ca.oas-recovery-rate}} de l'excédent.",
   intro: [
     "Si votre revenu net mondial dépasse le seuil de l'année, vous remboursez une partie ou la totalité de votre pension de la Sécurité de la vieillesse au moyen de l'impôt de récupération.",
     "Inscrivez l'année de revenu, votre revenu net mondial et la pension de la SV reçue pour voir l'impôt de récupération.",

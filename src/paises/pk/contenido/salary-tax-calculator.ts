@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "pk.salary-tax-calculator",
   h1: "Salary tax calculator 2026-27",
   title: "Salary tax calculator 2026-27 (tax year 2027)",
-  description: "Work out the income tax on your salary for tax year 2027 with the new FBR slabs of the Finance Act 2026, month by month and for the year.",
+  description: "Work out the income tax on your salary for tax year 2027 with the new FBR slabs of the Finance Act {{anio}}, month by month and for the year.",
   intro: [
     "Enter your monthly taxable salary to see the tax your employer deducts each month and the total for the tax year from 1 July 2026 to 30 June 2027.",
     "These are the rates for salaried individuals, which apply when salary is more than 75% of your taxable income.",

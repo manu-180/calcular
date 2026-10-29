@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "uy.salario-minimo",
-  h1: "Salario mínimo en Uruguay 2026",
-  title: "Salario mínimo Uruguay 2026: {{uy.smn}}, por día y por hora",
+  h1: "Salario mínimo en Uruguay {{anio}}",
+  title: "Salario mínimo Uruguay {{anio}}: {{uy.smn}}, por día y por hora",
   description:
     "El salario mínimo en Uruguay es {{uy.smn}} por mes desde el {{uy.smn#desde}}. Mirá el jornal y la hora mínima, y calculá el mínimo para tus horas.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ae.emirati-minimum-wage",
   h1: "Minimum wage for Emiratis in the private sector",
-  title: "Emirati minimum wage UAE 2026: {{ae.emirati-minimum-wage}}",
+  title: "Emirati minimum wage UAE {{anio}}: {{ae.emirati-minimum-wage}}",
   description:
     "MoHRE set the minimum monthly wage for Emiratis in the private sector at {{ae.emirati-minimum-wage}} from {{ae.emirati-minimum-wage#desde}}. Check a wage against it.",
   intro: [

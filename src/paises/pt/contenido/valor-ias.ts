@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.valor-ias",
   h1: "Valor do IAS (indexante dos apoios sociais)",
-  title: "IAS 2026: valor do indexante dos apoios sociais",
-  description: "O IAS de 2026 é de {{pt.ias}}. Converta qualquer múltiplo do IAS em euros, por mês e por ano.",
+  title: "IAS {{anio}}: valor do indexante dos apoios sociais",
+  description: "O IAS de {{anio}} é de {{pt.ias}}. Converta qualquer múltiplo do IAS em euros, por mês e por ano.",
   intro: [
     "O indexante dos apoios sociais (IAS) é o valor de referência usado para fixar prestações, limites e isenções. Em 2026 é de {{pt.ias}}, desde {{pt.ias#desde}}.",
     "Indique quantos IAS quer converter para ver o valor em euros.",

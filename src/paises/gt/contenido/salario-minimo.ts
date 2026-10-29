@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "gt.salario-minimo",
-  h1: "Salario mínimo 2026 en Guatemala",
-  title: "Salario mínimo Guatemala 2026: diario, mensual y por hora",
+  h1: "Salario mínimo {{anio}} en Guatemala",
+  title: "Salario mínimo Guatemala {{anio}}: diario, mensual y por hora",
   description:
     "Salario mínimo no agrícola de {{gt.salario-minimo-mensual[no-agricola]@ce1}} al mes en el departamento de Guatemala. Vea el agrícola y el de maquila en cada región, por día y por hora.",
   intro: [

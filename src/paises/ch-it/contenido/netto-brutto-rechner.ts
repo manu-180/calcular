@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ch-it.netto-brutto-rechner",
   h1: "Calcolare il lordo partendo dal netto",
   title: "Stipendio netto-lordo Svizzera: il lordo per il tuo netto",
-  description: "Quale salario lordo dà il netto che desideri? Con AVS/AI/IPG, AD, cassa pensioni e AINP secondo le aliquote 2026, per 12 o 13 mensilità.",
+  description: "Quale salario lordo dà il netto che desideri? Con AVS/AI/IPG, AD, cassa pensioni e AINP secondo le aliquote {{anio}}, per 12 o 13 mensilità.",
   intro: [
     "Se per una trattativa salariale hai in mente un importo netto, ti serve il salario lordo corrispondente. Il calcolatore mostra quanto deve essere il lordo perché ti resti l'importo desiderato.",
     "Il calcolo considera i contributi sociali senza le imposte: AVS/AI/IPG, AD, la cassa pensioni legale e il premio AINP che inserisci.",

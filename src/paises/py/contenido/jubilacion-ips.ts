@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.jubilacion-ips",
   h1: "Calculadora de jubilación del IPS",
-  title: "Jubilación IPS 2026: calculá cuánto vas a cobrar",
+  title: "Jubilación IPS {{anio}}: calculá cuánto vas a cobrar",
   description: "Calculá tu jubilación ordinaria del IPS: el {{py.jubilacion-ips[tasa-ordinaria]}}% del promedio de tus últimos {{py.jubilacion-ips[meses-promedio]}} meses con {{py.jubilacion-ips[edad-ordinaria]}} años de edad y {{py.jubilacion-ips[anios-ordinaria]}} de aporte.",
   intro: [
     "La jubilación ordinaria del IPS se cobra con {{py.jubilacion-ips[edad-ordinaria]}} años de edad y {{py.jubilacion-ips[anios-ordinaria]}} años de aporte. Es el {{py.jubilacion-ips[tasa-ordinaria]}}% del salario promedio de los últimos {{py.jubilacion-ips[meses-promedio]}} meses.",

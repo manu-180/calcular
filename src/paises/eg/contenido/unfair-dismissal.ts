@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.unfair-dismissal",
   h1: "حساب تعويض الفصل التعسفي",
-  title: "حساب تعويض الفصل التعسفي 2026 بقانون العمل الجديد",
+  title: "حساب تعويض الفصل التعسفي {{anio}} بقانون العمل الجديد",
   description:
     "إذا فصلك صاحب العمل دون سبب مشروع تستحق عن كل سنة خدمة أجر مدة قدرها {{eg.unfair-dismissal-months}} على الأقل، ومقابل مهلة الإخطار إذا لم تُمنح لك.",
   intro: [

@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.seguro-desemprego",
-  h1: "Calculadora de seguro-desemprego 2026",
-  title: "Seguro-desemprego 2026: valor e número de parcelas",
-  description: "Calcule o valor da parcela do seguro-desemprego com a tabela de 2026 (teto de {{br.sd-teto}}) e quantas parcelas você recebe.",
+  h1: "Calculadora de seguro-desemprego {{anio}}",
+  title: "Seguro-desemprego {{anio}}: valor e número de parcelas",
+  description: "Calcule o valor da parcela do seguro-desemprego com a tabela de {{anio}} (teto de {{br.sd-teto}}) e quantas parcelas você recebe.",
   intro: [
     "Quem é demitido sem justa causa pode receber de 3 a 5 parcelas do seguro-desemprego. O valor depende da média dos últimos salários.",
     "Informe os três últimos salários, qual pedido é este e quantos meses você trabalhou com carteira nos últimos três anos.",

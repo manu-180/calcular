@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.sueldo-liquido",
   h1: "Calculadora de sueldo líquido en Uruguay",
-  title: "Sueldo líquido Uruguay 2026: pasá de nominal a líquido",
+  title: "Sueldo líquido Uruguay {{anio}}: pasá de nominal a líquido",
   description:
-    "Calculá tu sueldo líquido 2026: montepío, Fonasa, FRL e IRPF descontados del nominal, con la BPC de {{uy.bpc}}. Probalo gratis y mirá cuánto te depositan.",
+    "Calculá tu sueldo líquido {{anio}}: montepío, Fonasa, FRL e IRPF descontados del nominal, con la BPC de {{uy.bpc}}. Probalo gratis y mirá cuánto te depositan.",
   intro: [
     "Tu sueldo líquido es el nominal menos el {{uy.aporte-jubilatorio}} de montepío, el Fonasa, el {{uy.frl}} del Fondo de Reconversión Laboral y la retención del IRPF. Es lo que te depositan cada mes.",
     "Poné tu nominal y tu situación familiar. Con eso calculamos cada descuento como lo hace el recibo de sueldo, con las tasas del BPS y la DGI.",

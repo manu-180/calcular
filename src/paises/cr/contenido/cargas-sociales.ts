@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.cargas-sociales",
   h1: "Calculadora de cargas sociales en Costa Rica",
-  title: "Cargas sociales 2026 Costa Rica: CCSS obrera y patronal",
+  title: "Cargas sociales {{anio}} Costa Rica: CCSS obrera y patronal",
   description:
     "Calcule las cargas sociales de un salario: lo que se rebaja al trabajador y lo que paga el patrono a la CCSS, Banco Popular, Fodesaf, IMAS, INA, FCL y ROP.",
   intro: [

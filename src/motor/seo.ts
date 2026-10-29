@@ -123,6 +123,7 @@ export interface MetadataSeo {
     images: ImagenSeo[];
   };
   twitter: { card: "summary_large_image" };
+  robots?: { index: false; follow: true };
 }
 
 // Todo junto y por página: Next mezcla la metadata por clave y en forma plana, así que un
@@ -132,7 +133,7 @@ export interface MetadataSeo {
 // los 130 KB: sin og:locale:alternate (15 metas por clúster que solo lee Facebook) ni og:image:alt
 // ni :type (el alt repetía el título). :width y :height sí van: sin ellas las redes bajan la imagen
 // para medirla antes de mostrar la tarjeta.
-export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; description: string; idiomas?: Idiomas; imagen: string }): MetadataSeo {
+export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; description: string; idiomas?: Idiomas; imagen: string; noindex?: boolean }): MetadataSeo {
   const url = urlIntl(p.mercado.codigo, p.slug);
   const imagen: ImagenSeo = { url: p.imagen, ...MEDIDAS_OG };
   return {
@@ -150,6 +151,7 @@ export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; 
     },
     // X toma título, descripción e imagen de og:* cuando faltan los suyos: repetirlos solo suma bytes.
     twitter: { card: "summary_large_image" },
+    ...(p.noindex ? { robots: { index: false, follow: true } as const } : {}),
   };
 }
 
@@ -176,7 +178,8 @@ export function ldSitio(): Ld[] {
       url: `${origen}/`,
       name: NOMBRE_SITIO_INTL,
       alternateName: "Calcular Ya",
-      inLanguage: "es",
+      // La home global está en inglés (ADR 0002, D2); cada edición declara el suyo en su WebPage.
+      inLanguage: "en",
       publisher: { "@id": idOrganizacion() },
     },
     {
@@ -185,10 +188,16 @@ export function ldSitio(): Ld[] {
       name: NOMBRE_SITIO_INTL,
       url: `${origen}/`,
       logo: { "@type": "ImageObject", url: `${origen}/og/marca`, width: 512, height: 512 },
-      founder: { "@type": "Person", name: "Manuel Navarro" },
+      founder: ldPersona(),
       sameAs: [origenAR()],
     },
   ];
+}
+
+// La persona que responde por los números, con nombre y url (Google no resuelve un @id contra otra
+// página). La misma entidad que firma calcular.ar (src/lib/schema.ts, AUTOR): sameAs las une.
+export function ldPersona(): Ld {
+  return { "@type": "Person", name: "Manuel Navarro", url: `${origenPublicoIntl()}/sobre`, sameAs: [`${origenAR()}/sobre`] };
 }
 
 function areaServida(mercado: Mercado): Ld | undefined {

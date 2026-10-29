@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.cpp-calculator",
-  h1: "CPP contributions calculator 2026",
-  title: "CPP calculator 2026: contributions, CPP2 and maximum",
-  description: "Work out your 2026 CPP or QPP contributions, including CPP2, as an employee or self-employed. Uses the YMPE of {{ca.cpp[ympe]}} and YAMPE of {{ca.cpp[yampe]}}.",
+  h1: "CPP contributions calculator {{anio}}",
+  title: "CPP calculator {{anio}}: contributions, CPP2 and maximum",
+  description: "Work out your {{anio}} CPP or QPP contributions, including CPP2, as an employee or self-employed. Uses the YMPE of {{ca.cpp[ympe]}} and YAMPE of {{ca.cpp[yampe]}}.",
   intro: [
     "Enter your earnings to see how much you put into the Canada Pension Plan in 2026, and how much your employer adds.",
     "It covers the base contribution, the first additional contribution and the second additional contribution (CPP2), and the Quebec Pension Plan if you work in Quebec.",

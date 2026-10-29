@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.acquisition-tax",
   h1: "주택 취득세 계산기",
-  title: "취득세 계산기 2026 | 아파트 취득세·지방교육세",
+  title: "취득세 계산기 {{anio}} | 아파트 취득세·지방교육세",
   description:
     "주택 매매가를 넣으면 1~3% 취득세율에 지방교육세와 농어촌특별세를 더한 금액을 계산해요. 6억원 초과 9억원 이하 구간 세율도 반영해요.",
   intro: [

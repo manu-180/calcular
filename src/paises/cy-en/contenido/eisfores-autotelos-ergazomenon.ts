@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.eisfores-autotelos-ergazomenon",
   h1: "Self-employed contributions in Cyprus",
-  title: "Cyprus self-employed contributions 2026: SI and GeSY",
+  title: "Cyprus self-employed contributions {{anio}}: SI and GeSY",
   description: "Work out your contributions as self-employed: Social Insurance {{cy.eisfora-ka-autotelos}} with a minimum per category, and GeSY {{cy.eisfores-gesy[autotelos]}}.",
   intro: [
     "As self-employed you pay Social Insurance and GeSY yourself. Choose your occupational category and enter the year's income.",

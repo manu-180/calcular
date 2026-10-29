@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraCasasParticulares } from "@/components/CalculadoraCasasParticulares";
 import { datosOferta } from "@/lib/oferta";
@@ -35,7 +36,7 @@ type DatosDelMes = ReturnType<typeof datosDelMes>;
 const metadataDelMes = ({ MES_CORTO }: DatosDelMes): Metadata => ({
   title: `Sueldo de empleada doméstica ${MES_CORTO}: por hora y mes`,
   description: "Escala oficial de las 5 categorías de casas particulares, con y sin retiro, por hora y por mes. Calculá el sueldo por horas reales, con extras y zona.",
-  alternates: { canonical: "/empleada-domestica" },
+  alternates: { canonical: "/empleada-domestica", languages: hreflangHeadAR("/empleada-domestica") },
   openGraph: {
     images: [
       {

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.empleada-domestica",
   h1: "Calculadora de empleada doméstica: salario, aportes y prestaciones",
-  title: "Empleada doméstica 2026: cuánto pagar y aportes",
+  title: "Empleada doméstica {{anio}}: cuánto pagar y aportes",
   description:
     "Calcula lo que recibe una empleada doméstica y cuánto te cuesta al mes: salud, pensión, ARL, caja de compensación, prima, cesantías y vacaciones.",
   intro: [

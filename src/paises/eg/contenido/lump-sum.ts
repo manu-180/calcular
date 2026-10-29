@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "eg.lump-sum",
   h1: "حساب تعويض الدفعة الواحدة من التأمينات",
-  title: "حساب تعويض الدفعة الواحدة 2026 بقانون التأمينات الجديد",
+  title: "حساب تعويض الدفعة الواحدة {{anio}} بقانون التأمينات الجديد",
   description:
     "إذا لم تستحق معاشًا تصرف لك التأمينات تعويض الدفعة الواحدة: {{eg.lump-sum-rate}} من أجرك السنوي عن كل سنة اشتراك. احسب المبلغ الآن.",
   intro: [

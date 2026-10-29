@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.horas-extras",
-  h1: "Calculadora de horas extras y recargos 2026",
-  title: "Calculadora de horas extras y recargos 2026 en Colombia",
+  h1: "Calculadora de horas extras y recargos {{anio}}",
+  title: "Calculadora de horas extras y recargos {{anio}} en Colombia",
   description:
     "Calcula horas extras, recargo nocturno, dominical y festivo con la jornada de {{co.jornada-semanal}} y el recargo dominical del {{co.recargo-dominical}} (Ley 2466). Pon tu salario y tus horas.",
   intro: [

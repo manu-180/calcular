@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ph.minimum-wage",
   h1: "Minimum wage in the Philippines by region",
-  title: "Minimum wage Philippines 2026 by region (daily and monthly)",
+  title: "Minimum wage Philippines {{anio}} by region (daily and monthly)",
   description:
     "Check the current daily minimum wage in your region, from NCR at {{ph.minimum-wage-high@ncr}} to BARMM, and what it means a month for the days you work.",
   intro: [

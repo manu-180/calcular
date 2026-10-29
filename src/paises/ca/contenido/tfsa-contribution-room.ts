@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.tfsa-contribution-room",
-  h1: "TFSA contribution room calculator 2026",
-  title: "TFSA contribution room calculator 2026",
-  description: "Add up the TFSA dollar limits since you turned 18 (from 2009), add back past withdrawals and subtract contributions. The 2026 limit is {{ca.tfsa-annual-limits[2026]}}.",
+  h1: "TFSA contribution room calculator {{anio}}",
+  title: "TFSA contribution room calculator {{anio}}",
+  description: "Add up the TFSA dollar limits since you turned 18 (from 2009), add back past withdrawals and subtract contributions. The {{anio}} limit is {{ca.tfsa-annual-limits[{{anio}}]}}.",
   intro: [
     "Enter the year you became eligible, what you have contributed and what you withdrew before this year to estimate your TFSA room today.",
     "It uses the TFSA dollar limit for each year since 2009, as published by the Canada Revenue Agency.",

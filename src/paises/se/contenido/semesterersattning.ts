@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "se.semesterersattning",
   h1: "Beräkna semesterersättning och semestertillägg",
-  title: "Semesterersättning 2026: beräkna {{se.semesterlon-procent}} eller semestertillägg",
+  title: "Semesterersättning {{anio}}: beräkna {{se.semesterlon-procent}} eller semestertillägg",
   description:
     "Beräkna semesterersättning med procentregeln ({{se.semesterlon-procent}} av lönen) eller semestertillägget på {{se.semestertillagg[manad]}} per dag med sammalöneregeln.",
   intro: [

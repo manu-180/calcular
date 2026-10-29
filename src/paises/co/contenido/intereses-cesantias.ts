@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.intereses-cesantias",
   h1: "Calculadora de intereses sobre las cesantías",
-  title: "Intereses de cesantías 2026: calcula cuánto te pagan",
+  title: "Intereses de cesantías {{anio}}: calcula cuánto te pagan",
   description:
     "Calcula los intereses sobre tus cesantías: el {{co.intereses-cesantias}} anual, proporcional a los días trabajados. Te los paga la empresa a más tardar el 31 de enero.",
   intro: [

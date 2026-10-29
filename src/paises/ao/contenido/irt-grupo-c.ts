@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ao.irt-grupo-c",
   h1: "Calcular o IRT do Grupo C",
-  title: "IRT Grupo C 2026: imposto de {{ao.irt-grupo-c-taxa}} sobre as vendas",
-  description: "Comerciantes e prestadores do Grupo C com facturação até {{ao.irt-grupo-c-limite}} pagam IRT de {{ao.irt-grupo-c-taxa}} sobre as vendas. Calcule o imposto de 2026.",
+  title: "IRT Grupo C {{anio}}: imposto de {{ao.irt-grupo-c-taxa}} sobre as vendas",
+  description: "Comerciantes e prestadores do Grupo C com facturação até {{ao.irt-grupo-c-limite}} pagam IRT de {{ao.irt-grupo-c-taxa}} sobre as vendas. Calcule o imposto de {{anio}}.",
   intro: [
     "O Grupo C do IRT abrange quem exerce por conta própria actividades comerciais e industriais, como o pequeno comércio.",
     "Para 2026, quem facturou até {{ao.irt-grupo-c-limite}} em 2025 paga {{ao.irt-grupo-c-taxa}} sobre o volume de vendas e serviços. Indique a facturação de 2025 e as vendas a declarar.",

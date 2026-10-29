@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.vacaciones",
   h1: "Calculadora de vacaciones en Ecuador",
-  title: "Vacaciones Ecuador 2026: calcula días y proporcionales",
+  title: "Vacaciones Ecuador {{anio}}: calcula días y proporcionales",
   description: "Calcula tus días de vacaciones ({{ec.vacaciones-dias}} al año, más los de antigüedad) y cuánto te pagan por las proporcionales y las no tomadas, según el Código del Trabajo.",
   intro: [
     "En Ecuador te corresponden {{ec.vacaciones-dias}} de vacaciones por cada año de trabajo, contando fines de semana y feriados. Después de {{ec.vacaciones-anios-sin-adicional}} con el mismo empleador, se suma un día por año.",

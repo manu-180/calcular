@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mu.csg-calculator",
   h1: "CSG and NSF calculator Mauritius",
-  title: "CSG calculator Mauritius 2026: employee and employer",
+  title: "CSG calculator Mauritius {{anio}}: employee and employer",
   description:
     "See the CSG and NSF on a monthly basic wage, for you and for your employer. CSG is {{mu.csg-employee-low}} and {{mu.csg-employer-low}} up to {{mu.csg-threshold}}, then {{mu.csg-employee-high}} and {{mu.csg-employer-high}}.",
   intro: [

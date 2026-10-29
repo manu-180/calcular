@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.salario-de-aprendiz",
   h1: "Calculadora de salario mínimo de aprendiz",
-  title: "Salario de aprendiz en El Salvador 2026: cuánto le toca",
+  title: "Salario de aprendiz en El Salvador {{anio}}: cuánto le toca",
   description: "Un aprendiz cobra al menos el {{sv.aprendiz-porcentaje[primer-anio]}} del salario mínimo el primer año y el {{sv.aprendiz-porcentaje[segundo-anio]}} el segundo. Calcule su mínimo por sector.",
   intro: [
     "Con un contrato de aprendizaje, el salario puede ser menor que el mínimo los primeros años: al menos el {{sv.aprendiz-porcentaje[primer-anio]}} del mínimo el primer año y el {{sv.aprendiz-porcentaje[segundo-anio]}} el segundo. Desde el tercero se paga el mínimo completo.",

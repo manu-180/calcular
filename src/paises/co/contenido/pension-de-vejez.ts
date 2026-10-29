@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.pension-de-vejez",
   h1: "Calculadora de pensión de vejez en Colpensiones",
-  title: "Pensión de vejez 2026: requisitos y monto en Colpensiones",
+  title: "Pensión de vejez {{anio}}: requisitos y monto en Colpensiones",
   description:
     "Revisa si cumples edad y semanas para pensionarte en Colpensiones y estima tu mesada con la fórmula de la Ley 100. Incluye la rebaja de semanas para mujeres.",
   intro: [

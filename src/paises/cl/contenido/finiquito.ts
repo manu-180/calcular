@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.finiquito",
-  h1: "Calculadora de finiquito 2026 en Chile",
-  title: "Calculadora de finiquito 2026: años de servicio y vacaciones",
+  h1: "Calculadora de finiquito {{anio}} en Chile",
+  title: "Calculadora de finiquito {{anio}}: años de servicio y vacaciones",
   description:
     "Calcula tu finiquito en Chile: indemnización por años de servicio (tope de {{cl.tope-indemnizacion}}), mes de aviso y vacaciones proporcionales. Pon tus fechas y tu sueldo.",
   intro: [

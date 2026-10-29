@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.kitzbat-zikna",
   h1: "מחשבון קצבת אזרח ותיק (קצבת זקנה)",
-  title: "מחשבון קצבת זקנה 2026: קצבת אזרח ותיק עם תוספת ותק",
+  title: "מחשבון קצבת זקנה {{anio}}: קצבת אזרח ותיק עם תוספת ותק",
   description:
     "חישוב קצבת אזרח ותיק מהביטוח הלאומי: קצבה בסיסית של {{il.zikna[bsisi]}}, תוספת ותק של {{il.zikna-vetek[lashana]}} לכל שנת ביטוח עד {{il.zikna-vetek[max]}}, תוספת דחייה ותוספות לבן זוג ולילדים.",
   intro: [

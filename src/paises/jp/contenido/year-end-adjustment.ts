@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "jp.year-end-adjustment",
-  h1: "年末調整の還付金の計算（2026年分）",
-  title: "年末調整 計算 2026｜還付金と不足額の目安",
+  h1: "年末調整の還付金の計算（{{anio}}年分）",
+  title: "年末調整 計算 {{anio}}｜還付金と不足額の目安",
   description:
     "1年間の給与と源泉徴収された所得税から、年末調整で戻ってくる額や追加で引かれる額の目安を計算します。令和8年分の基礎控除と給与所得控除に対応しています。",
   intro: [

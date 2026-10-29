@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "jm.income-tax-calculator",
   h1: "Income tax calculator Jamaica",
-  title: "Income tax calculator Jamaica 2026: tax for the year",
+  title: "Income tax calculator Jamaica {{anio}}: tax for the year",
   description:
     "Work out your income tax for the year with the {{jm.income-tax-threshold}} threshold, the {{jm.income-tax-rate}} and {{jm.income-tax-higher-rate}} rates and the pension and age exemptions.",
   intro: [

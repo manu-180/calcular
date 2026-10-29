@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "nl.minimumloon-berekenen",
   h1: "Minimumloon berekenen per uur, week, maand en jaar",
-  title: "Minimumloon 2026: {{nl.minimumloon[21-plus]}} per uur, en per maand?",
+  title: "Minimumloon {{anio}}: {{nl.minimumloon[21-plus]}} per uur, en per maand?",
   description:
     "Het minimumloon is {{nl.minimumloon[21-plus]}} bruto per uur vanaf 21 jaar. Bereken wat dat is per week, maand en jaar voor jouw leeftijd en uren, plus je vakantiegeld.",
   intro: [

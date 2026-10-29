@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "tn.calcul-salaire-net",
   h1: "Calcul du salaire net en Tunisie",
-  title: "Salaire net Tunisie 2026 : du brut au net avec CNSS et IRPP",
+  title: "Salaire net Tunisie {{anio}} : du brut au net avec CNSS et IRPP",
   description:
     "Passez du salaire brut au salaire net en Tunisie : cotisation CNSS de {{tn.cnss-salarie}}, impôt sur le revenu selon le barème et contribution sociale de solidarité.",
   intro: [

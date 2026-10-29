@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.employer-payroll-cost",
-  h1: "Employer payroll cost calculator 2026",
-  title: "Employer cost of an employee in Canada 2026",
-  description: "See what a salary really costs an employer in 2026 with employer CPP or QPP, EI at {{ca.ei-rates[employer]}} and QPIP in Quebec. Uses CRA payroll figures.",
+  h1: "Employer payroll cost calculator {{anio}}",
+  title: "Employer cost of an employee in Canada {{anio}}",
+  description: "See what a salary really costs an employer in {{anio}} with employer CPP or QPP, EI at {{ca.ei-rates[employer]}} and QPIP in Quebec. Uses CRA payroll figures.",
   intro: [
     "Enter a yearly salary to see the employer's share of CPP or QPP, EI premiums and, in Quebec, QPIP premiums, and the total cost of the job.",
     "It is a starting point for budgeting a hire. Benefits, provincial employer health taxes and workers' compensation premiums vary by employer and are not included.",

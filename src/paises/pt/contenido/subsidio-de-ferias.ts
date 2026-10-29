@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.subsidio-de-ferias",
   h1: "Calcular o subsídio de férias",
-  title: "Subsídio de férias 2026: quanto vai receber",
+  title: "Subsídio de férias {{anio}}: quanto vai receber",
   description: "Calcule o subsídio de férias com a retribuição base e os dias de férias, incluindo o ano de admissão, em que o valor é proporcional.",
   intro: [
     "Além da retribuição normal durante as férias, o trabalhador recebe um subsídio de férias. Com o ano completo vale um mês de retribuição base.",

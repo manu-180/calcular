@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "kz.uproshchennaya-deklaratsiya",
-  h1: "Налог ИП на упрощенной декларации в 2026 году",
-  title: "Упрощенная декларация 2026: налог ИП {{kz.uproshchenka-stavka}}",
+  h1: "Налог ИП на упрощенной декларации в {{anio}} году",
+  title: "Упрощенная декларация {{anio}}: налог ИП {{kz.uproshchenka-stavka}}",
   description:
     "Рассчитайте налог за полугодие на упрощенной декларации: {{kz.uproshchenka-stavka}} от дохода без вычета расходов. Учитывает ставку маслихата и предельный доход режима.",
   intro: [

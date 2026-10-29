@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.cuarta-categoria",
-  h1: "Calculadora de recibo por honorarios 2026",
-  title: "Recibo por honorarios 2026: calcula la retención del {{pe.retencion-cuarta}}",
+  h1: "Calculadora de recibo por honorarios {{anio}}",
+  title: "Recibo por honorarios {{anio}}: calcula la retención del {{pe.retencion-cuarta}}",
   description:
     "Calcula cuánto cobras de tu recibo por honorarios tras la retención de cuarta categoría del {{pe.retencion-cuarta}} y si puedes pedir la suspensión a SUNAT. Pon el monto.",
   intro: [

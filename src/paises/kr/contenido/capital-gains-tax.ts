@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.capital-gains-tax",
   h1: "양도소득세 계산기(주택, 토지)",
-  title: "양도소득세 계산기 2026 | 1세대 1주택 비과세·장특공제",
+  title: "양도소득세 계산기 {{anio}} | 1세대 1주택 비과세·장특공제",
   description:
     "판 가격과 산 가격, 보유기간을 넣으면 장기보유 특별공제와 1세대 1주택 비과세, 고가주택 기준을 반영해 양도소득세를 계산해요.",
   intro: [

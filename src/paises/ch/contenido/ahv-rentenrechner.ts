@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch.ahv-rentenrechner",
   h1: "AHV-Rentenrechner: Altersrente mit Skala 44",
-  title: "AHV-Rentenrechner 2026: Altersrente und 13. AHV-Rente",
+  title: "AHV-Rentenrechner {{anio}}: Altersrente und 13. AHV-Rente",
   description:
     "AHV-Altersrente berechnen: Vollrente nach Skala 44 zwischen {{ch.ahv-minimalrente}} und dem Doppelten, Plafonierung für Ehepaare und 13. Altersrente.",
   intro: [

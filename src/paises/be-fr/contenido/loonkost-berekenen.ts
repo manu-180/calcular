@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be-fr.loonkost-berekenen",
   h1: "Calcul du coût employeur : combien coûte un travailleur ?",
-  title: "Calcul du coût employeur 2026 : salaire brut et cotisations",
+  title: "Calcul du coût employeur {{anio}} : salaire brut et cotisations",
   description:
     "Calculez ce que coûte un travailleur à l'employeur : salaire brut, cotisations patronales ONSS, pécule de vacances des ouvriers et double pécule des employés.",
   intro: [

@@ -95,6 +95,29 @@ idioma (están en `src/motor/universales/*/textos/<idioma>.ts`).
 - Unidad y formato `semanas` disponibles (plural según el idioma).
 - Nada de afirmaciones en FAQ sin fuente primaria: si no lo leíste en una fuente oficial, no va.
 
+## SEO del país (gate, no opcional)
+
+El motor pone solo canonical, hreflang, sitemap, schema, OG, legales en tu idioma y el sello de datos:
+no lo configurás. Lo que decide si tu país rankea es lo que vos escribís, y lo mide
+`scripts/check_seo_pais.ts <m>` (contrato completo: `docs/seo/ESTANDAR-SEO-MULTIPAIS.md`, §2):
+
+- **Slug = la consulta real del país** en su idioma y escritura, verificada en Google del país
+  (autocompletar y «otras preguntas»). No se cambia después de publicado.
+- **Año con `{{anio}}`** en `title`, `description` y `h1`, nunca tipeado. En el cuerpo va la vigencia
+  real del dato (`{{id#desde}}`), no el año del reloj. Ejercicios con rango («2026-27») y años de
+  normas («Employment Act 1955») se escriben tal cual.
+- **Title = la promesa del H1 con el dato que lo distingue**, sin marca ni país (los pone el motor),
+  description con el número vigente por marcador y una acción.
+- **≥ 3 datos propios del país por calculadora** (tramo, tope, aporte, mínimo, vigencia) citados a su
+  norma. Si solo cambia la moneda es una universal: no la dupliques como local.
+- **Cuerpo propio**: intro que da el número vigente primero, cómo se calcula, **ejemplo resuelto con un
+  monto concreto**, al menos 3 preguntas de la FAQ con la norma como respuesta, glosario. Mínimo 90
+  palabras por calculadora, objetivo 220 o más; p50 de los países publicados = 230.
+- **Con tus propias palabras**: dos países del mismo idioma y concepto no pueden compartir más del 65 %
+  de sus oraciones. Copiar el país modelo y cambiar nombres es un doorway para Google.
+- **Novedades reales** con fecha y fuente: son el `lastmod`, el feed y la sección «qué cambió» que un
+  competidor global no tiene.
+
 ## Ediciones: un país con varios idiomas (ADR 0002, D3)
 
 Canadá en francés, Suiza en francés e italiano, Bélgica en francés. La edición es otra carpeta,
@@ -179,6 +202,7 @@ npx tsx scripts/check_paises_casos.ts <m>
 npx tsx scripts/check_textos_paises.ts <m>
 npx tsx scripts/check_fronteras.ts
 npx tsx scripts/check_eol.ts
+npx tsx scripts/check_seo_pais.ts <m>
 ```
 
 y, con el país registrado localmente (sin commitear ese cambio): `npx tsx scripts/check_motor.ts`

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "il.bituach-leumi-atzmai",
   h1: "מחשבון ביטוח לאומי לעצמאים",
-  title: "מחשבון ביטוח לאומי לעצמאי 2026: דמי ביטוח לאומי ובריאות",
+  title: "מחשבון ביטוח לאומי לעצמאי {{anio}}: דמי ביטוח לאומי ובריאות",
   description:
     "חישוב דמי ביטוח לאומי ודמי ביטוח בריאות לעצמאי: {{il.bl-atzmai[bl-mufchat]}} ו-{{il.bl-atzmai[briut-mufchat]}} עד {{il.bl-tikrot[mufchat]}}, {{il.bl-atzmai[bl-male]}} ו-{{il.bl-atzmai[briut-male]}} מעל, עד {{il.bl-tikrot[merbit]}}.",
   intro: [

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.sgk-prim-hesaplama",
-  h1: "SGK prim hesaplama 2026",
-  title: "SGK Prim Hesaplama 2026: İşçi ve İşveren Payı",
+  h1: "SGK prim hesaplama {{anio}}",
+  title: "SGK Prim Hesaplama {{anio}}: İşçi ve İşveren Payı",
   description:
     "Brüt kazanç üzerinden SGK primini kalem kalem hesaplayın: malullük, yaşlılık ve ölüm, genel sağlık, kısa vadeli sigorta ve işsizlik, işçi ve işveren payıyla.",
   intro: [

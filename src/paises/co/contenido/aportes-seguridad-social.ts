@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.aportes-seguridad-social",
   h1: "Calculadora de aportes a seguridad social",
-  title: "Aportes a seguridad social 2026: salud, pensión y ARL",
+  title: "Aportes a seguridad social {{anio}}: salud, pensión y ARL",
   description:
     "Calcula los aportes de un salario: lo que se descuenta al trabajador y lo que paga la empresa en salud, pensión, ARL, caja, SENA e ICBF.",
   intro: [

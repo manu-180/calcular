@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.indemnizacion-por-despido",
   h1: "Calculadora de indemnización por despido sin justa causa",
-  title: "Indemnización por despido sin justa causa 2026: calcúlala",
+  title: "Indemnización por despido sin justa causa {{anio}}: calcúlala",
   description:
     "Calcula tu indemnización por despido sin justa causa en contrato indefinido o a término fijo con la tabla del artículo 64 del Código Sustantivo del Trabajo.",
   intro: [

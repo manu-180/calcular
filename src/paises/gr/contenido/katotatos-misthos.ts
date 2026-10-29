@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "gr.katotatos-misthos",
-  h1: "Κατώτατος μισθός 2026: μικτά και καθαρά",
-  title: "Κατώτατος μισθός 2026: {{gr.katotatos-misthos}} μικτά, πόσα καθαρά",
+  h1: "Κατώτατος μισθός {{anio}}: μικτά και καθαρά",
+  title: "Κατώτατος μισθός {{anio}}: {{gr.katotatos-misthos}} μικτά, πόσα καθαρά",
   description:
     "Ο κατώτατος μισθός είναι {{gr.katotatos-misthos}} τον μήνα και το ημερομίσθιο {{gr.katotato-imeromisthio}}. Δείτε πόσα μένουν καθαρά με τα παιδιά και την ηλικία σας.",
   intro: [

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "tr.brutten-nete-maas-hesaplama",
-  h1: "Brütten nete maaş hesaplama 2026",
-  title: "Brütten Nete Maaş Hesaplama 2026: Ay Ay Net Maaş",
+  h1: "Brütten nete maaş hesaplama {{anio}}",
+  title: "Brütten Nete Maaş Hesaplama {{anio}}: Ay Ay Net Maaş",
   description:
-    "Brüt maaşınızdan SGK primi, işsizlik sigortası, gelir vergisi ve damga vergisini düşün. Asgari ücret istisnası ve 2026 vergi dilimleriyle ay ay net maaş.",
+    "Brüt maaşınızdan SGK primi, işsizlik sigortası, gelir vergisi ve damga vergisini düşün. Asgari ücret istisnası ve {{anio}} vergi dilimleriyle ay ay net maaş.",
   intro: [
     "Aylık brüt maaşınızı ve hesaplamak istediğiniz ayı girin. Hesaplama makinesi işçi SGK primini, işsizlik sigortası primini, gelir vergisini ve damga vergisini düşer, elinize geçecek net tutarı gösterir.",
     "Gelir vergisi yıl boyunca biriken matrah üzerinden hesaplandığı için aynı brüt maaşın neti yılın sonuna doğru azalır. Bu yüzden sonuçta on iki ayın tamamını da görürsünüz.",

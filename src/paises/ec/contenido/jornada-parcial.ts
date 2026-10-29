@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.jornada-parcial",
   h1: "Calculadora de sueldo por jornada parcial en Ecuador",
-  title: "Jornada parcial Ecuador 2026: sueldo de medio tiempo",
+  title: "Jornada parcial Ecuador {{anio}}: sueldo de medio tiempo",
   description: "Calcula tu sueldo de medio tiempo o jornada parcial en proporción a las {{ec.jornada-semanal}} semanales, el mínimo legal con el básico de {{ec.sbu}} y tu aporte al IESS.",
   intro: [
     "Si trabajas menos horas que la jornada completa, tu sueldo se paga en proporción. Nunca puede ser menor a la parte proporcional del salario básico.",

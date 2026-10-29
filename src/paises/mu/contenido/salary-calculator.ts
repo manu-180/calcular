@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mu.salary-calculator",
   h1: "Salary calculator Mauritius",
-  title: "Salary calculator Mauritius 2026: net pay after PAYE",
+  title: "Salary calculator Mauritius {{anio}}: net pay after PAYE",
   description:
     "Work out your take-home pay in Mauritius after PAYE, CSG at {{mu.csg-employee-low}} or {{mu.csg-employee-high}} and NSF at {{mu.nsf-employee}}. Uses the 2026-27 MRA tax bands.",
   intro: [

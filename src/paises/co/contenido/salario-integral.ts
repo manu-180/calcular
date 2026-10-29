@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.salario-integral",
-  h1: "Calculadora de salario integral 2026",
-  title: "Salario integral 2026: mínimo, aportes y neto",
+  h1: "Calculadora de salario integral {{anio}}",
+  title: "Salario integral {{anio}}: mínimo, aportes y neto",
   description:
     "Mira si tu salario integral cumple el mínimo legal y cuánto te descuentan: los aportes se pagan sobre el {{co.salario-integral-base}} del salario.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "de.elterngeld-rechner",
   h1: "Elterngeldrechner",
-  title: "Elterngeldrechner 2026: Basiselterngeld und ElterngeldPlus",
+  title: "Elterngeldrechner {{anio}}: Basiselterngeld und ElterngeldPlus",
   description:
     "Wie viel Elterngeld bekommen Sie? Basiselterngeld und ElterngeldPlus aus Ihrem Netto vor der Geburt, mit Mindestbetrag {{de.elterngeld-betraege[mindest]}} und Höchstbetrag {{de.elterngeld-betraege[hoechst]}}.",
   intro: [

@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mt.stamp-duty-calculator",
-  h1: "Stamp duty calculator Malta 2026",
-  title: "Stamp duty Malta 2026: first-time buyers and second homes",
+  h1: "Stamp duty calculator Malta {{anio}}",
+  title: "Stamp duty Malta {{anio}}: first-time buyers and second homes",
   description:
     "Work out the duty on buying property in Malta: {{mt.duty-rates[standard]}} normally, {{mt.duty-rates[sole-residence]}} on part of a home you live in, and none on the first part for first-time buyers.",
   intro: [

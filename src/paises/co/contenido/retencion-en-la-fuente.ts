@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.retencion-en-la-fuente",
-  h1: "Calculadora de retención en la fuente por salarios 2026",
-  title: "Retención en la fuente por salarios 2026: calculadora",
+  h1: "Calculadora de retención en la fuente por salarios {{anio}}",
+  title: "Retención en la fuente por salarios {{anio}}: calculadora",
   description:
     "Calcula cuánto te retienen de tu salario cada mes con el procedimiento 1, la UVT de {{co.uvt}} y la tabla del artículo 383. Incluye dependientes y prepagada.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mx.dia-festivo-trabajado",
   h1: "¿Cuánto me pagan por trabajar un día festivo?",
-  title: "Día festivo trabajado 2026: cuánto te deben pagar",
+  title: "Día festivo trabajado {{anio}}: cuánto te deben pagar",
   description:
     "Calcula el pago por trabajar un día festivo oficial o tu día de descanso: salario doble además de tu salario normal, según la Ley Federal del Trabajo.",
   intro: [

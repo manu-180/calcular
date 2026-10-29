@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mx.jornada-laboral",
   h1: "Jornada laboral de 40 horas: cuántas horas te tocan",
-  title: "Jornada laboral 2026 a 2030: horas por semana y por día",
+  title: "Jornada laboral {{anio}} a 2030: horas por semana y por día",
   description:
     "Mira la jornada máxima semanal de este año con la reforma de 40 horas, cuántas horas son por día y cuántas horas extra se permiten.",
   intro: [

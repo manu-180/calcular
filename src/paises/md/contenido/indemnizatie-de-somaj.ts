@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "md.indemnizatie-de-somaj",
   h1: "Calculator indemnizație de șomaj",
-  title: "Indemnizația de șomaj 2026: cât și cât timp",
+  title: "Indemnizația de șomaj {{anio}}: cât și cât timp",
   description: "Calculați indemnizația de șomaj: {{md.somaj-procent}} din venitul mediu lunar asigurat, plătită {{md.somaj-luni[sub10]}}, {{md.somaj-luni[10-15]}} sau {{md.somaj-luni[peste15]}}, după stagiu.",
   intro: [
     "Persoanele înregistrate cu statut de șomer care îndeplinesc condițiile de stagiu primesc o indemnizație lunară de la Casa Națională de Asigurări Sociale.",

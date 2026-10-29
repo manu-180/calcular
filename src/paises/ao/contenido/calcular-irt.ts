@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ao.calcular-irt",
   h1: "Calcular o IRT",
-  title: "Calcular o IRT 2026: tabela do Grupo A em Angola",
-  description: "Calcule o IRT do seu salário com a tabela de 2026. Isento até {{ao.irt-grupo-a[0].hasta}} por mês, taxas de {{ao.irt-grupo-a[1].tasa}} a {{ao.irt-grupo-a[-1].tasa}}.",
+  title: "Calcular o IRT {{anio}}: tabela do Grupo A em Angola",
+  description: "Calcule o IRT do seu salário com a tabela de {{anio}}. Isento até {{ao.irt-grupo-a[0].hasta}} por mês, taxas de {{ao.irt-grupo-a[1].tasa}} a {{ao.irt-grupo-a[-1].tasa}}.",
   intro: [
     "O Imposto sobre os Rendimentos do Trabalho (IRT) é o imposto que a entidade empregadora retém todos os meses no seu salário.",
     "Indique o rendimento colectável, que é o salário sujeito a imposto já sem o desconto do INSS. A calculadora usa a tabela do Grupo A em vigor desde {{ao.irt-grupo-a#desde}}.",

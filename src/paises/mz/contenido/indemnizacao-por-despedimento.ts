@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mz.indemnizacao-por-despedimento",
   h1: "Calcular a indemnização por despedimento",
-  title: "Indemnização por despedimento em Moçambique (2026)",
+  title: "Indemnização por despedimento em Moçambique ({{anio}})",
   description: "Calcule a indemnização da Lei do Trabalho por rescisão por motivos económicos: {{mz.indemnizacao-ate-7}}, {{mz.indemnizacao-ate-18}} ou {{mz.indemnizacao-mais-18}} de salário por ano.",
   intro: [
     "Quando o empregador termina o contrato por motivos estruturais, tecnológicos ou de mercado, o trabalhador tem direito a uma indemnização (artigo 141 da Lei n.º 13/2023).",

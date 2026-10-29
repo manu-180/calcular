@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.sozialversicherungs-rechner",
-  h1: "Sozialversicherungsrechner 2026",
-  title: "Sozialversicherungsbeiträge 2026 berechnen",
+  h1: "Sozialversicherungsrechner {{anio}}",
+  title: "Sozialversicherungsbeiträge {{anio}} berechnen",
   description:
-    "Kranken-, Pflege-, Renten- und Arbeitslosenversicherung für Ihren Lohn: Ihr Anteil und der des Arbeitgebers mit den Beitragssätzen und Bemessungsgrenzen 2026.",
+    "Kranken-, Pflege-, Renten- und Arbeitslosenversicherung für Ihren Lohn: Ihr Anteil und der des Arbeitgebers mit den Beitragssätzen und Bemessungsgrenzen {{anio}}.",
   intro: [
     "Von jedem Bruttolohn über der Minijob-Grenze gehen vier Sozialversicherungsbeiträge ab. Arbeitnehmer und Arbeitgeber teilen sie sich im Grundsatz zur Hälfte.",
     "Der Rechner zeigt jeden Beitrag einzeln, für Sie und für Ihren Arbeitgeber.",

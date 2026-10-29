@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.minimum-wage",
   h1: "Minimum wage calculator by state",
-  title: "Minimum Wage by State 2026: hourly, weekly and yearly pay",
+  title: "Minimum Wage by State {{anio}}: hourly, weekly and yearly pay",
   description:
-    "Find the 2026 minimum wage in your state and what it adds up to per week, month and year. The federal minimum is {{us.min-wage-federal}} an hour. Official rates.",
+    "Find the {{anio}} minimum wage in your state and what it adds up to per week, month and year. The federal minimum is {{us.min-wage-federal}} an hour. Official rates.",
   intro: [
     "Pick your state to see its minimum wage, the federal minimum and the one your employer must pay.",
     "Enter your weekly hours to turn the hourly rate into weekly, monthly and yearly pay.",

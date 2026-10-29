@@ -432,6 +432,7 @@ export default definirContenido({
 | `{{de.einkommensteuer[2].desde}}` | el límite inferior de esa fila; también `.hasta` y `.cuotaFija` |
 | `{{de.einkommensteuer[-1].tasa}}` | la última fila (`-2` la anteúltima) |
 | `{{ca.impuesto[0].tasa@on}}` | una fila de una escala por región |
+| `{{anio}}` | el año de la fecha del mercado. Obligatorio en `title`, `description` y `h1` donde iría el año («Aguinaldo {{anio}}»); nunca un año tipeado. En el cuerpo no: ahí va la vigencia real del dato (`{{id#desde}}`) |
 
   Solo podés usar ids que estén en `requiere` de esa calculadora. Los tramos de una escala no se
   escriben a mano: con `[n].tasa` y `[n].desde` el texto cambia solo cuando cambia el año. Si al
@@ -628,7 +629,12 @@ npx tsx scripts/check_textos_paises.ts <m>
 npx tsx scripts/check_fronteras.ts
 npx tsx scripts/check_motor.ts
 npx tsx scripts/check_mundo.ts
+npx tsx scripts/check_seo_pais.ts <m>
 ```
+
+`check_seo_pais` mide lo que decide si cada calculadora vale como página propia en Google (año con
+`{{anio}}`, FAQ, cuerpo con ejemplo y palabras suficientes, sin copiar de otro país del mismo idioma): el
+contrato completo está en `docs/seo/ESTANDAR-SEO-MULTIPAIS.md` §2 y vale para todo país.
 
 `check_mundo` no falla por tu país: si tu sueldo neto sale excluido, el motivo está en la lista
 (§7, `mundo`). Los avisos (⚠️) no fallan pero leelos: un tramo que vence en menos de 30 días, una serie vieja.

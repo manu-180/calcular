@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "dk.koerselsgodtgoerelse",
   h1: "Kørselsgodtgørelse: beregn skattefri kilometerpenge",
-  title: "Kørselsgodtgørelse 2026: beregn kilometerpenge",
+  title: "Kørselsgodtgørelse {{anio}}: beregn kilometerpenge",
   description:
-    "Beregn skattefri kørselsgodtgørelse for erhvervsmæssig kørsel i egen bil: {{dk.koerselsgodtgoerelse[bil-til-20000]}} pr. km i 2026. Også for cykel og knallert.",
+    "Beregn skattefri kørselsgodtgørelse for erhvervsmæssig kørsel i egen bil: {{dk.koerselsgodtgoerelse[bil-til-20000]}} pr. km i {{anio}}. Også for cykel og knallert.",
   intro: [
     "Kører du i egen bil for din arbejdsgiver, kan du få skattefri kørselsgodtgørelse efter Skatterådets satser.",
     "Skriv antal kilometer og hvor mange kilometer, du allerede har fået godtgørelse for i år. Beregneren deler kørslen op på de to satser.",

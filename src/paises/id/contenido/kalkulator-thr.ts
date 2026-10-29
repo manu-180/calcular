@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "id.kalkulator-thr",
   h1: "Kalkulator THR",
-  title: "Kalkulator THR 2026: cara menghitung THR proporsional",
+  title: "Kalkulator THR {{anio}}: cara menghitung THR proporsional",
   description: "Hitung tunjangan hari raya (THR) Anda: satu bulan upah untuk masa kerja 12 bulan atau lebih, dan proporsional jika kurang. Sesuai Permenaker 6/2016.",
   intro: [
     "THR keagamaan wajib dibayar pemberi kerja kepada pekerja tetap maupun kontrak menjelang hari raya keagamaan masing-masing.",

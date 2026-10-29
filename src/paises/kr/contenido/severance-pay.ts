@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "kr.severance-pay",
   h1: "퇴직금 계산기",
-  title: "퇴직금 계산기 2026 | 평균임금으로 퇴직금 계산",
+  title: "퇴직금 계산기 {{anio}} | 평균임금으로 퇴직금 계산",
   description:
     "입사일, 마지막 근무일, 퇴직 전 3개월 임금을 넣으면 평균임금과 예상 퇴직금을 계산해요. 상여금과 연차수당도 반영해요.",
   intro: [

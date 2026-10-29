@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.impuesto-a-la-renta",
-  h1: "Calculadora del impuesto a la renta 2026",
-  title: "Impuesto a la renta 2026 Ecuador: calcula con la tabla SRI",
-  description: "Calcula tu impuesto a la renta 2026 como persona natural, con la tabla del SRI y la rebaja por gastos personales según tus cargas. Con la retención mensual.",
+  h1: "Calculadora del impuesto a la renta {{anio}}",
+  title: "Impuesto a la renta {{anio}} Ecuador: calcula con la tabla SRI",
+  description: "Calcula tu impuesto a la renta {{anio}} como persona natural, con la tabla del SRI y la rebaja por gastos personales según tus cargas. Con la retención mensual.",
   intro: [
     "El impuesto a la renta 2026 se calcula con la tabla del SRI. Si tu base imponible del año pasa la fracción exenta, pagas un impuesto fijo más un porcentaje sobre lo que la supera. A eso se le resta la rebaja por gastos personales. En relación de dependencia te lo retiene el empleador cada mes.",
     "La calculadora usa la tabla 2026 y descuenta la rebaja por gastos personales, que depende de tus gastos y de tus cargas familiares.",

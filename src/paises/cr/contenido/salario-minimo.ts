@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cr.salario-minimo",
-  h1: "Salario mínimo 2026 en Costa Rica por categoría",
-  title: "Salarios mínimos 2026 en Costa Rica: busque su categoría",
+  h1: "Salario mínimo {{anio}} en Costa Rica por categoría",
+  title: "Salarios mínimos {{anio}} en Costa Rica: busque su categoría",
   description:
-    "Salario mínimo 2026 por categoría del Decreto 45303-MTSS: no calificado {{cr.salario-minimo-mes[no-calificado]}}, más licenciado y doméstico. Mensual, quincenal y por hora.",
+    "Salario mínimo {{anio}} por categoría del Decreto 45303-MTSS: no calificado {{cr.salario-minimo-mes[no-calificado]}}, más licenciado y doméstico. Mensual, quincenal y por hora.",
   intro: [
     "El salario mínimo 2026 en Costa Rica para una ocupación no calificada es {{cr.salario-minimo-mes[no-calificado]}} al mes. Cada perfil de puesto tiene su propio mínimo, fijado por el Consejo Nacional de Salarios desde el 1 de enero.",
     "Elija la categoría de su puesto y le mostramos el mínimo mensual, quincenal, diario y por hora.",

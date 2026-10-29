@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cy-en.ypologismos-miktou-apo-katharo",
   h1: "Net to gross salary in Cyprus",
-  title: "Net to gross salary calculator for Cyprus 2026",
-  description: "Find the gross salary that gives you the net pay you want, with Social Insurance, GeSY and the 2026 income tax bands.",
+  title: "Net to gross salary calculator for Cyprus {{anio}}",
+  description: "Find the gross salary that gives you the net pay you want, with Social Insurance, GeSY and the {{anio}} income tax bands.",
   intro: [
     "Know what you want in your account each month and need the gross figure for a job offer? Enter the net salary and see the gross.",
     "It runs the net salary calculation backwards.",

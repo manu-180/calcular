@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.resimple",
   h1: "Calculadora del IRE RESIMPLE",
-  title: "RESIMPLE 2026: calculá cuánto pagás por trimestre",
+  title: "RESIMPLE {{anio}}: calculá cuánto pagás por trimestre",
   description: "Calculá la cuota del IRE RESIMPLE según lo que facturaste el año anterior. Es para empresas unipersonales que ganaron hasta {{py.resimple-tope}} por año.",
   intro: [
     "El RESIMPLE es el régimen más simple del impuesto a la renta empresarial (IRE). Es para empresas unipersonales chicas: vendedores, almacenes, oficios, emprendimientos.",
