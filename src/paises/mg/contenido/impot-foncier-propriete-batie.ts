@@ -6,7 +6,7 @@ export default definirContenido({
   title: "IFPB Madagascar : calcul de l'impôt foncier bâti",
   description: "Estimez l'IFPB de votre maison ou de votre immeuble à Madagascar : {{mg.ifpb[taux]}} de la valeur locative, minimum de {{mg.ifpb-minimum}} par immeuble.",
   intro: [
-    "L'impôt foncier sur la propriété bâtie (IFPB) est un impôt annuel perçu dans la commune où se trouve l'immeuble.",
+    "L'impôt foncier sur la propriété bâtie (IFPB) est un impôt annuel perçu dans la commune où se trouve l'immeuble : {{mg.ifpb[taux]}} de la valeur locative, avec un minimum de {{mg.ifpb-minimum}}.",
     "Indiquez le loyer si le bien est loué, ou la valeur locative fixée par la commune si vous y habitez.",
   ],
   comoSeCalcula: [

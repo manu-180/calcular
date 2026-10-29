@@ -3,10 +3,10 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mg.taxe-vehicules-a-moteur",
   h1: "Taxe sur les véhicules à moteur à Madagascar",
-  title: "Taxe sur les véhicules à moteur 2026 : tarif selon CV",
+  title: "Taxe sur les véhicules à moteur {{anio}} : tarif selon CV",
   description: "Trouvez la taxe annuelle de votre voiture ou de votre moto à Madagascar selon la puissance, l'énergie et l'âge : de {{mg.taxe-vehicules[electrique-1-4-a5]}} à {{mg.taxe-vehicules[diesel-16-plus20]}}.",
   intro: [
-    "Tout véhicule soumis à l'immatriculation paie chaque année la taxe sur les véhicules à moteur, qu'il roule à l'essence, au diesel, à l'électricité ou en hybride.",
+    "Tout véhicule soumis à l'immatriculation paie chaque année la taxe sur les véhicules à moteur, qu'il roule à l'essence, au diesel, à l'électricité ou en hybride, de {{mg.taxe-vehicules[electrique-1-4-a5]}} à {{mg.taxe-vehicules[diesel-16-plus20]}} selon la puissance et l'âge.",
     "Choisissez la puissance fiscale, l'énergie et l'âge du véhicule pour lire le tarif du Code des impôts.",
   ],
   comoSeCalcula: [

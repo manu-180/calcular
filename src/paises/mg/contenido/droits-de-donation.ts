@@ -6,12 +6,14 @@ export default definirContenido({
   title: "Droits de donation à Madagascar : enfants et autres",
   description: "Calculez les droits sur une donation entre vifs à Madagascar : {{mg.droit-donation-ligne-directe}} par enfant, {{mg.droit-donation}} de la valeur pour les autres bénéficiaires.",
   intro: [
-    "Une donation entre vifs s'enregistre au service des impôts contre un droit.",
+    "Une donation entre vifs s'enregistre au service des impôts contre un droit : {{mg.droit-donation-ligne-directe}} par enfant, {{mg.droit-donation}} de la valeur pour les autres bénéficiaires.",
     "Le montant dépend du lien entre le donateur et le bénéficiaire.",
   ],
   comoSeCalcula: [
     "En ligne directe descendante (enfants, petits-enfants), le droit est fixe : {{mg.droit-donation-ligne-directe}} par bénéficiaire, quelle que soit la valeur donnée.",
     "Pour tout autre bénéficiaire, le droit est de {{mg.droit-donation}} de la valeur des biens.",
+    "Le calcul se fait donation par donation et bénéficiaire par bénéficiaire : si vous donnez à deux enfants, le droit fixe est dû deux fois. La valeur retenue est celle des biens à la date de l'acte, sur laquelle l'administration peut exercer son contrôle.",
+    "L'acte est présenté à la formalité de l'enregistrement au service des impôts du lieu où il est passé, et le droit se règle à ce moment. Pour un immeuble, une inscription à la conservation foncière suit, avec ses frais propres que ce calcul n'inclut pas.",
   ],
   ejemplo: ["Un terrain de 20 000 000 Ar donné à un neveu : 1 000 000 Ar de droits. Donné à un enfant : 40 000 Ar."],
   faq: [

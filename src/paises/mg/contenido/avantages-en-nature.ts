@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Avantages en nature Madagascar : logement, voiture, IRSA",
   description: "Évaluez le logement, le véhicule et le téléphone fournis par l'employeur selon le Code des impôts malgache, pour les ajouter à la base de l'IRSA.",
   intro: [
-    "Le logement, la voiture de fonction ou le téléphone payés par l'employeur sont des avantages en nature. Ils s'ajoutent au salaire imposable à l'IRSA.",
+    "Le logement, la voiture de fonction ou le téléphone payés par l'employeur sont des avantages en nature. Ils s'ajoutent au salaire imposable à l'IRSA : {{mg.avantages-nature[logement]}} du loyer pour le logement, {{mg.avantages-nature[vehicule]}} des dépenses pour le véhicule.",
     "Le Code des impôts fixe une évaluation forfaitaire pour chacun d'eux.",
   ],
   comoSeCalcula: [

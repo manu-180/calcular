@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mg.calcul-irsa",
   h1: "Calcul de l'IRSA à Madagascar",
-  title: "Calcul IRSA 2026 Madagascar : barème et simulateur",
+  title: "Calcul IRSA {{anio}} Madagascar : barème et simulateur",
   description: "Calculez l'IRSA retenu sur votre salaire avec le barème de la loi de finances 2026, de {{mg.irsa-bareme[1].tasa}} à {{mg.irsa-bareme[-1].tasa}}, et la réduction pour personnes à charge.",
   intro: [
     "L'IRSA (impôt sur les revenus salariaux et assimilés) est retenu chaque mois par l'employeur sur le salaire.",

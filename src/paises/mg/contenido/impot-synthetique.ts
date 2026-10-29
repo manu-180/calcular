@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mg.impot-synthetique",
   h1: "Calcul de l'impôt synthétique à Madagascar",
-  title: "Impôt synthétique Madagascar 2026 : calcul et réduction",
+  title: "Impôt synthétique Madagascar {{anio}} : calcul et réduction",
   description: "Calculez l'impôt synthétique des petites entreprises malgaches : {{mg.is-taux[normal]}} du chiffre d'affaires, réduction de {{mg.is-reduction}} sur les charges justifiées et abattement CGA.",
   intro: [
     "L'impôt synthétique remplace l'impôt sur les revenus et la TVA pour les entrepreneurs dont le chiffre d'affaires annuel reste sous {{mg.is-seuil}}.",

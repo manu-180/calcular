@@ -29,6 +29,7 @@ export default definirContenido({
     },
   ],
   glosario: [
+    { termino: "Bail emphytéotique", definicion: "Bail de longue durée qui donne au preneur un droit réel sur l'immeuble loué." },
     { termino: "Bail", definicion: "Contrat de location d'un logement, d'un local ou d'un terrain." },
     { termino: "Bail emphytéotique", definicion: "Location de très longue durée qui donne au locataire un droit réel sur le bien." },
   ],

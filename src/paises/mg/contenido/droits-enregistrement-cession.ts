@@ -6,12 +6,13 @@ export default definirContenido({
   title: "Droits d'enregistrement Madagascar : voiture, parts, fonds",
   description: "Calculez les droits d'enregistrement d'une vente : {{mg.droit-cession[meubles]}} pour une voiture, {{mg.droit-cession[utilitaire]}} pour un utilitaire, {{mg.droit-cession[parts]}} pour des parts sociales.",
   intro: [
-    "La vente d'un véhicule, d'un fonds de commerce, de parts sociales ou d'une créance est soumise à un droit d'enregistrement.",
+    "La vente d'un véhicule, d'un fonds de commerce, de parts sociales ou d'une créance est soumise à un droit d'enregistrement, de {{mg.droit-cession[meubles]}} pour une voiture à {{mg.droit-cession[parts]}} pour des parts sociales.",
     "Choisissez ce qui est vendu et indiquez le prix.",
   ],
   comoSeCalcula: [
     "Voiture ou autre bien meuble : {{mg.droit-cession[meubles]}}. Camion, camionnette, car de plus de 10 places, engins et tracteurs agricoles : {{mg.droit-cession[utilitaire]}}. Voiture d'occasion vendue par un concessionnaire : {{mg.droit-cession[occasion-concession]}}.",
     "Fonds de commerce ou clientèle : {{mg.droit-cession[fonds]}}, et {{mg.droit-cession[marchandises]}} pour les marchandises neuves inventoriées à part. Actions et parts sociales : {{mg.droit-cession[parts]}}. Créances : {{mg.droit-cession[creances]}}.",
+    "Le droit se calcule sur le prix stipulé, augmenté des charges, ou sur la valeur vénale si elle est supérieure. Il est dû à l'enregistrement de l'acte, dans le délai fixé par le Code, et ne remplace ni la carte grise ni les autres formalités de transfert.",
   ],
   ejemplo: ["Une voiture vendue 30 000 000 Ar entre particuliers : 1 500 000 Ar de droits."],
   faq: [
