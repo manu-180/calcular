@@ -19,6 +19,9 @@ Con 10.308 páginas prerenderizadas, `revalidate` manda el costo del sitio, no s
   sería una invocación más transferencia. Lo dinámico queda en cuenta, informes y planillas.
 - **Un deploy de producción cuesta ~6 min de máquina y rearma las 10k páginas.** Los commits se
   juntan; no se pushea a `main` por cada ajuste. Docs, `.github` y `.claude` no construyen
-  (`ignoreCommand`).
+  (`scripts/vercel-ignorar.sh`).
+- **Los previews son opt-in**: una rama sólo construye si el mensaje del commit lleva `[preview]`.
+  Para probar un cambio alcanza con `npm run build` local o el CI; el preview es para cuando hace
+  falta una URL.
 
 Historia y números: `docs/decisiones/costo-vercel.md`.

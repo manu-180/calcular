@@ -26,5 +26,5 @@
       "schedule": "5 3 1 * *"
     }
   ],
-  "ignoreCommand": "git diff --quiet ${VERCEL_GIT_PREVIOUS_SHA:-HEAD^} HEAD -- . ':(exclude)*.md' ':(exclude)docs' ':(exclude)marketing' ':(exclude).github' ':(exclude).claude'"
+  "ignoreCommand": "bash scripts/vercel-ignorar.sh"
 }
