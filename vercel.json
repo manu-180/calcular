@@ -20,7 +20,11 @@
     {
       "path": "/api/cron/panel-mantenimiento",
       "schedule": "17 * * * *"
+    },
+    {
+      "path": "/api/cron/mes-nuevo",
+      "schedule": "5 3 1 * *"
     }
   ],
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)*.md' ':(exclude)docs' ':(exclude)marketing'"
+  "ignoreCommand": "git diff --quiet ${VERCEL_GIT_PREVIOUS_SHA:-HEAD^} HEAD -- . ':(exclude)*.md' ':(exclude)docs' ':(exclude)marketing' ':(exclude).github' ':(exclude).claude'"
 }

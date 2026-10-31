@@ -3,7 +3,7 @@ import { metadataMundoAR, PaginaMundoAR } from "../mundo-ar";
 
 type Props = { params: Promise<{ c: string }> };
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 // Ningún duelo en el build: cada uno se pinta al primer pedido y queda en caché.
 export function generateStaticParams() {

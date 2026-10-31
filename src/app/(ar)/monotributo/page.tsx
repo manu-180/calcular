@@ -12,7 +12,7 @@ import { OtrosPaises } from "@/components/OtrosPaises";
 
 // RECATEGORIZACION.proximaVentana se deriva de la fecha (data/monotributo.ts): revalidar cada
 // hora evita que la FAQ quede hablando de una ventana ya cerrada entre deploys.
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 // Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
 export function generateMetadata(): Metadata {
