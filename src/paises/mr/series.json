@@ -1,0 +1,59 @@
+{
+  "mercado": "mr",
+  "series": [
+    {
+      "id": "mr.usd",
+      "nombre": "سعر الصرف المرجعي للدولار الأمريكي لدى البنك المركزي الموريتاني",
+      "unidad": "MRU",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "البنك المركزي الموريتاني",
+        "titulo": "Cours de change de référence, dollar américain",
+        "url": "https://connect.bcm.mr/api/cours_change_reference?from=2026-10-13&to=2026-10-29&currency=USD",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29",
+        "nota": "Service qui alimente la page des taux de change de bcm.mr. Un point par jour ouvré."
+      },
+      "puntos": [
+        ["2026-10-13", 40.08],
+        ["2026-10-14", 40.03],
+        ["2026-10-15", 40.06],
+        ["2026-10-19", 40.1],
+        ["2026-10-20", 40.09],
+        ["2026-10-21", 40.08],
+        ["2026-10-22", 40.07],
+        ["2026-10-26", 40.13],
+        ["2026-10-27", 40.15],
+        ["2026-10-28", 40.41]
+      ]
+    },
+    {
+      "id": "mr.eur",
+      "nombre": "سعر الصرف المرجعي لليورو لدى البنك المركزي الموريتاني",
+      "unidad": "MRU",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "البنك المركزي الموريتاني",
+        "titulo": "Cours de change de référence, euro",
+        "url": "https://connect.bcm.mr/api/cours_change_reference?from=2026-10-13&to=2026-10-29&currency=EUR",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29",
+        "nota": "Service qui alimente la page des taux de change de bcm.mr. Un point par jour ouvré."
+      },
+      "puntos": [
+        ["2026-10-13", 44.84],
+        ["2026-10-14", 44.8],
+        ["2026-10-15", 44.94],
+        ["2026-10-19", 45.01],
+        ["2026-10-20", 44.94],
+        ["2026-10-21", 45.01],
+        ["2026-10-22", 44.89],
+        ["2026-10-26", 44.93],
+        ["2026-10-27", 44.76],
+        ["2026-10-28", 44.96]
+      ]
+    }
+  ]
+}

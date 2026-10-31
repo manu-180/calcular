@@ -1,0 +1,963 @@
+{
+  "mercado": "mr",
+  "datos": [
+    {
+      "id": "mr.tva",
+      "nombre": "النسبة العادية للضريبة على القيمة المضافة",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-10",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 230 du CGI (LFI 2022): taux normal 16 %, taux zéro à l'exportation. Les lois de finances 2024, 2025 et 2026 et les lois rectificatives 2024, 2025 et 2026 ne modifient pas l'article 230."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.tva-telephonie",
+      "nombre": "النسبة المرتفعة للضريبة على القيمة المضافة على الاتصالات الهاتفية",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-10",
+          "valor": 18,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "Loi de finances rectificative pour l'année 2023, article 3.1 (article 230 du CGI)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-08/LFR%202023-FR%20Final%201%20-%20Copie_0.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "La LFR 2023 ajoute un taux majoré de 18 % pour la téléphonie. Le PDF ne porte pas la date de promulgation; le tramo part de la loi de finances 2024 (10 janvier 2024), qui le trouve en vigueur."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.its-bareme",
+      "nombre": "جدول الضريبة على الرواتب والأجور (شهري)",
+      "tipo": "escala",
+      "unidad": "MRU",
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-13",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 9000,
+              "tasa": 15
+            },
+            {
+              "desde": 9000,
+              "hasta": 21000,
+              "tasa": 25
+            },
+            {
+              "desde": 21000,
+              "hasta": null,
+              "tasa": 40
+            }
+          ],
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 114 du CGI (LFI 2022): 15 % jusqu'à 9.000 MRU, 25 % jusqu'à 21.000 MRU, 40 % au-delà; formules I = RI x 0,25 - 900 et I = RI x 0,40 - 4.050; base arrondie à la dizaine inférieure. Aucune loi de finances postérieure lue (LFR 2023 à LFR 2026) ne modifie l'article 114."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.its-abattement",
+      "nombre": "المبلغ المعفى شهريًا من الضريبة على الرواتب",
+      "tipo": "numero",
+      "unidad": "MRU",
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-29",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 110, 1) c) du CGI: un montant de 6.000 MRU par mois de la rémunération n'est pas imposable."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.its-indemnites",
+      "nombre": "سقف التعويضات المعفاة شهريًا (غير السكن والنقل والمسؤولية والوظيفة)",
+      "tipo": "numero",
+      "unidad": "MRU",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-29",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 110, 1) b) du CGI: indemnités autres que logement, transport, responsabilité et fonction, dans la limite de 1.000 MRU par mois."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.cnss-plafond",
+      "nombre": "سقف الأجر الخاضع لاشتراكات الضمان الاجتماعي",
+      "tipo": "numero",
+      "unidad": "MRU",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Journal officiel de la République islamique de Mauritanie",
+            "titulo": "JO n° 1503: décret n° 2021-186 du 2 novembre 2021 fixant le plafond et les taux des cotisations de la sécurité sociale",
+            "url": "https://msgg.gov.mr/JO/2022/mauritanie-jo-2022-1503.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Décret n° 2021-186, article premier: plafond de 15.000 MRU par mois, avec effet au 1er janvier 2021."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.cnss-total",
+      "nombre": "النسبة الإجمالية لاشتراك الضمان الاجتماعي",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Journal officiel de la République islamique de Mauritanie",
+            "titulo": "JO n° 1503: décret n° 2021-186 du 2 novembre 2021 fixant le plafond et les taux des cotisations de la sécurité sociale",
+            "url": "https://msgg.gov.mr/JO/2022/mauritanie-jo-2022-1503.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Décret n° 2021-186, article 2: 14 % répartis en pensions 9 %, risques professionnels 2 % et prestations familiales 3 %."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.cnss-branches",
+      "nombre": "توزيع اشتراك الضمان الاجتماعي على الفروع",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pensions": "فرع المعاشات",
+        "risques": "فرع الأخطار المهنية",
+        "famille": "فرع التعويضات العائلية"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": {
+            "pensions": 9,
+            "risques": 2,
+            "famille": 3
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République islamique de Mauritanie",
+            "titulo": "JO n° 1503: décret n° 2021-186 du 2 novembre 2021 fixant le plafond et les taux des cotisations de la sécurité sociale",
+            "url": "https://msgg.gov.mr/JO/2022/mauritanie-jo-2022-1503.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Décret n° 2021-186, article 2: branche des pensions 9 %, risques professionnels 2 %, prestations familiales 3 %."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.cnss-salarie",
+      "nombre": "حصة العامل في اشتراك الضمان الاجتماعي",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Déclaration trimestrielle de rémunérations et de cotisations",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/8/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Bordereau trimestriel de la CNSS: cotisation ouvrière 1 % des rémunérations déclarées (plafonnées)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.cnss-employeur",
+      "nombre": "حصة صاحب العمل في اشتراك الضمان الاجتماعي",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Déclaration trimestrielle de rémunérations et de cotisations",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/8/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Bordereau trimestriel de la CNSS: cotisation patronale 13 % des rémunérations déclarées (plafonnées)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.medecine-travail",
+      "nombre": "اشتراك صاحب العمل في طب الشغل",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Déclaration trimestrielle de rémunérations et de cotisations",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/8/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Bordereau trimestriel de la CNSS: cotisation patronale médecine du travail 2 %, sur la même déclaration que les rémunérations plafonnées."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.cnam-salarie",
+      "nombre": "حصة العامل في اشتراك التأمين الصحي (CNAM)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-10-29",
+          "valor": 4,
+          "fuente": {
+            "organismo": "وزارة المالية (مدونة النصوص)",
+            "titulo": "Décret n° 2012-261 du 29 octobre 2012, article 4 (assurance maladie des salariés des sociétés privées)",
+            "url": "https://www.finances.gov.mr/Recueil_des_textes_relatifs_a_la_mission_du_Ministere/TEXTES/ASSURANCES/D%C3%A9cret%202012-261%20St%C3%A9%20priv%C3%A9es%20CNAM.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Décret n° 2012-261, article 4: employés des sociétés privées 4 %, sur l'ensemble des rémunérations brutes. Le décret n° 2015-089 ne change que l'article 5 (paiement trimestriel)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.cnam-employeur",
+      "nombre": "حصة صاحب العمل في اشتراك التأمين الصحي (CNAM)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-10-29",
+          "valor": 5,
+          "fuente": {
+            "organismo": "وزارة المالية (مدونة النصوص)",
+            "titulo": "Décret n° 2012-261 du 29 octobre 2012, article 4 (assurance maladie des salariés des sociétés privées)",
+            "url": "https://www.finances.gov.mr/Recueil_des_textes_relatifs_a_la_mission_du_Ministere/TEXTES/ASSURANCES/D%C3%A9cret%202012-261%20St%C3%A9%20priv%C3%A9es%20CNAM.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Décret n° 2012-261, article 4: part employeur 5 % des rémunérations brutes, sans plafond."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.taxe-apprentissage",
+      "nombre": "رسم التمهين",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-29",
+          "valor": 0.6,
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Articles 150 à 153 du CGI: 0,60 % de la masse salariale, dû par les entreprises au régime réel."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.smig-horaire",
+      "nombre": "الأجر الأدنى المضمون بين المهن للساعة",
+      "tipo": "numero",
+      "unidad": "MRU",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 28.846,
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Décret n° 2026-064 du 23 avril 2026 fixant le taux du SMIG",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2026-06/D%C3%A9cret%20n%C2%B0%202026-064%20%3B%20du%2023%20avril%202026%3B%20fixant%20%20(SMIG).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Décret n° 2026-064, article premier: 28,846 MRU de l'heure pour le régime de 40 heures par semaine, à compter du 1er avril 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.smig-horaire-agricole",
+      "nombre": "الأجر الأدنى للساعة في المؤسسات الزراعية",
+      "tipo": "numero",
+      "unidad": "MRU",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Décret n° 2026-064 du 23 avril 2026 fixant le taux du SMIG",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2026-06/D%C3%A9cret%20n%C2%B0%202026-064%20%3B%20du%2023%20avril%202026%3B%20fixant%20%20(SMIG).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Décret n° 2026-064, article 2: 25 MRU de l'heure pour les entreprises agricoles et assimilées."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.duree-legale",
+      "nombre": "المدة القانونية للعمل في الأسبوع",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-06",
+          "valor": 40,
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Loi n° 2004-017 du 6 juillet 2004 portant Code du travail",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/code_du_travail_de_rim.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 170 du Code du travail: 40 heures par semaine et 8 heures par jour dans les entreprises non agricoles."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.conges-par-mois",
+      "nombre": "أيام العطلة المكتسبة عن كل شهر عمل فعلي",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "adulte": "عامل عمره 18 سنة فأكثر",
+        "mineur": "عامل دون 18 سنة",
+        "non-resident": "عامل ليست إقامته المعتادة في موريتانيا"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-06",
+          "valor": {
+            "adulte": 1.5,
+            "mineur": 2,
+            "non-resident": 3
+          },
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Loi n° 2004-017 du 6 juillet 2004 portant Code du travail",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/code_du_travail_de_rim.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 180 du Code du travail: 1,5 jour ouvrable par mois (18 ans et plus), 2 jours (moins de 18 ans), 3 jours (travailleur sans résidence habituelle en Mauritanie)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.conges-anciennete",
+      "nombre": "أيام العطلة الإضافية حسب الأقدمية",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "10-15": "من 10 إلى 15 سنة",
+        "15-20": "من 15 إلى 20 سنة",
+        "plus-20": "أكثر من 20 سنة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-06",
+          "valor": {
+            "10-15": 1,
+            "15-20": 2,
+            "plus-20": 3
+          },
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Loi n° 2004-017 du 6 juillet 2004 portant Code du travail",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/code_du_travail_de_rim.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 181 du Code du travail: un jour de 10 à 15 ans d'ancienneté, deux de 15 à 20 ans, trois au-delà de 20 ans."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.conges-mere",
+      "nombre": "يوم العطلة الإضافي للأم عن كل طفل دون 14 سنة",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2004-07-06",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Loi n° 2004-017 du 6 juillet 2004 portant Code du travail",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/code_du_travail_de_rim.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 182 du Code du travail: un jour ouvrable supplémentaire par an pour chaque enfant vivant de moins de 14 ans."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.majoration-hs",
+      "nombre": "نسب زيادة أجر الساعات الإضافية",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "41-48": "من الساعة 41 إلى 48",
+        "49-54": "من الساعة 49 إلى 54",
+        "plus-54": "بعد الساعة 54",
+        "nuit": "ساعات الليل",
+        "repos-jour": "نهار يوم الراحة أو العطلة",
+        "repos-nuit": "ليل يوم الراحة أو العطلة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1974-02-13",
+          "valor": {
+            "41-48": 15,
+            "49-54": 40,
+            "plus-54": 50,
+            "nuit": 50,
+            "repos-jour": 50,
+            "repos-nuit": 100
+          },
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Convention collective générale du travail du 13 février 1974",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/Convention%20Collective%20G%C3%A9n%C3%A9rale%20du%20Travail.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 39 de la convention collective générale: 15 % à partir de la 41e heure, 40 % de la 49e à la 54e, 50 % au-delà de la 54e, 50 % la nuit, 50 % le jour les dimanches et jours fériés, 100 % la nuit ces jours-là. Le texte publié écrit «de la 41e à la 41e heure»: la tranche suivante commence à la 49e, d'où 41e à 48e."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.licenciement",
+      "nombre": "نسب تعويض الفصل عن كل سنة أقدمية",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1-5": "السنوات الخمس الأولى",
+        "6-10": "من السنة 6 إلى 10",
+        "plus-10": "بعد السنة العاشرة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1974-02-13",
+          "valor": {
+            "1-5": 25,
+            "6-10": 30,
+            "plus-10": 35
+          },
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Convention collective générale du travail du 13 février 1974",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/Convention%20Collective%20G%C3%A9n%C3%A9rale%20du%20Travail.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 31 de la convention collective générale: 25 % du salaire global mensuel moyen pour les cinq premières années, 30 % de la 6e à la 10e, 35 % ensuite. Le texte publié répète «sixième à dixième» pour la troisième tranche; la grille du licenciement collectif du même article la nomme «au-delà de la dixième année»."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.licenciement-collectif",
+      "nombre": "نسب تعويض الفصل الجماعي لتقليص العمال",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1-5": "السنوات الخمس الأولى",
+        "6-10": "من السنة 6 إلى 10",
+        "plus-10": "بعد السنة العاشرة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1974-02-13",
+          "valor": {
+            "1-5": 30,
+            "6-10": 40,
+            "plus-10": 50
+          },
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Convention collective générale du travail du 13 février 1974",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/Convention%20Collective%20G%C3%A9n%C3%A9rale%20du%20Travail.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 31 de la convention collective générale, licenciement collectif pour compression de personnel: 30 %, 40 % et 50 %."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.depart-retraite",
+      "nombre": "تعويض الذهاب إلى التقاعد كنسبة من تعويض الفصل",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1-5": "من سنة إلى أقل من 5 سنوات",
+        "5-10": "من 5 إلى 10 سنوات",
+        "10-20": "من 10 إلى 20 سنة",
+        "plus-20": "أكثر من 20 سنة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1974-02-13",
+          "valor": {
+            "1-5": 30,
+            "5-10": 50,
+            "10-20": 75,
+            "plus-20": 100
+          },
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Convention collective générale du travail du 13 février 1974",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/Convention%20Collective%20G%C3%A9n%C3%A9rale%20du%20Travail.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 31 de la convention collective générale: 30 % (plus d'un an et moins de 5 ans), 50 % (5 à 10 ans), 75 % (10 à 20 ans), 100 % (plus de 20 ans) de l'indemnité de licenciement."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.preavis-manoeuvre",
+      "nombre": "مهلة الإشعار للعامل اليدوي (الفئتان 1 و2)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1974-02-13",
+          "valor": 15,
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Convention collective générale du travail du 13 février 1974",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/Convention%20Collective%20G%C3%A9n%C3%A9rale%20du%20Travail.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 27 de la convention collective générale: manœuvres de 1re et 2e catégorie, 15 jours."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.preavis-mois",
+      "nombre": "مهلة الإشعار بالأشهر حسب الفئة المهنية",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "ouvrier": "العمال والمستخدمون من الفئة 3 فما فوق",
+        "maitrise": "أعوان التأطير والتقنيون",
+        "cadre": "المهندسون والأطر"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1974-02-13",
+          "valor": {
+            "ouvrier": 1,
+            "maitrise": 1,
+            "cadre": 3
+          },
+          "fuente": {
+            "organismo": "وزارة الوظيفة العمومية والعمل",
+            "titulo": "Convention collective générale du travail du 13 février 1974",
+            "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/Convention%20Collective%20G%C3%A9n%C3%A9rale%20du%20Travail.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 27 de la convention collective générale: un mois pour les ouvriers et employés à partir de la 3e catégorie et pour les agents de maîtrise et techniciens, trois mois pour les ingénieurs et cadres."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.age-retraite",
+      "nombre": "سن التقاعد في الضمان الاجتماعي",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 63,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Loi n° 2021-007 modifiant les articles 2, 52, 53, 54 et 55 de la loi n° 67-039 instituant un régime de sécurité sociale",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/11/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Loi n° 2021-007, article 52 (nouveau): pension de vieillesse à 63 ans. Le PDF ne porte pas la date de promulgation; le tramo part du 1er janvier 2021."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.pension-anciennete-min",
+      "nombre": "أقل مدة تسجيل في الصندوق للحصول على المعاش",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Loi n° 2021-007 modifiant les articles 2, 52, 53, 54 et 55 de la loi n° 67-039 instituant un régime de sécurité sociale",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/11/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Loi n° 2021-007, article 52 (nouveau), a): immatriculé à la CNSS depuis vingt ans au moins."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.pension-mois-recents",
+      "nombre": "أشهر التأمين المطلوبة خلال السنوات العشر الأخيرة",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Loi n° 2021-007 modifiant les articles 2, 52, 53, 54 et 55 de la loi n° 67-039 instituant un régime de sécurité sociale",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/11/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Loi n° 2021-007, article 52 (nouveau), b): soixante mois d'assurance au cours des dix dernières années."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.pension-taux-base",
+      "nombre": "نسبة المعاش الأساسية من متوسط الأجر",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Loi n° 2021-007 modifiant les articles 2, 52, 53, 54 et 55 de la loi n° 67-039 instituant un régime de sécurité sociale",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/11/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Loi n° 2021-007, article 54 (nouveau), 3: 20 % de la rémunération mensuelle moyenne."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.pension-majoration",
+      "nombre": "زيادة النسبة عن كل 12 شهرًا بعد 180 شهرًا",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 1.33,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Loi n° 2021-007 modifiant les articles 2, 52, 53, 54 et 55 de la loi n° 67-039 instituant un régime de sécurité sociale",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/11/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Loi n° 2021-007, article 54 (nouveau), 3: majoration de 1,33 % par période de douze mois au-delà de cent quatre-vingts mois."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.pension-mois-base",
+      "nombre": "عدد أشهر التأمين التي تغطيها النسبة الأساسية",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Loi n° 2021-007 modifiant les articles 2, 52, 53, 54 et 55 de la loi n° 67-039 instituant un régime de sécurité sociale",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/11/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Loi n° 2021-007, article 54 (nouveau), 3: seuil de cent quatre-vingts mois."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.pension-minimum",
+      "nombre": "الحد الأدنى للمعاش كنسبة من الأجر الأدنى الشهري",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Loi n° 2021-007 modifiant les articles 2, 52, 53, 54 et 55 de la loi n° 67-039 instituant un régime de sécurité sociale",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/11/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Loi n° 2021-007, article 54 (nouveau), 4: pas inférieur à 60 % du SMIG mensuel le plus élevé pour 40 heures par semaine."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.pension-plafond-minimum",
+      "nombre": "سقف الحد الأدنى للمعاش كنسبة من متوسط الأجر",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي (CNSS)",
+            "titulo": "Loi n° 2021-007 modifiant les articles 2, 52, 53, 54 et 55 de la loi n° 67-039 instituant un régime de sécurité sociale",
+            "url": "https://www.cnss.mr/api/v1/fr/documents/11/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Loi n° 2021-007, article 54 (nouveau), 4: ce minimum ne peut dépasser 80 % de la rémunération moyenne."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.is-taux",
+      "nombre": "نسبة الضريبة على الشركات",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-13",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 51 du CGI (LFI 2022): 25 % du bénéfice net imposable."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.is-minimum",
+      "nombre": "نسبة الحد الأدنى للضريبة على الشركات من رقم الأعمال",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "reel-normal": "نظام الربح الحقيقي العادي",
+        "intermediaire": "نظام الربح الحقيقي الوسيط"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-13",
+          "valor": {
+            "reel-normal": 2,
+            "intermediaire": 2.5
+          },
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 51 du CGI (LFI 2022): 2 % des produits imposables au réel normal, 2,5 % au réel intermédiaire, si ce montant dépasse 25 % du bénéfice."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.is-minimum-perception",
+      "nombre": "أدنى مبلغ للضريبة على الشركات في النظام الحقيقي العادي",
+      "tipo": "numero",
+      "unidad": "MRU",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-13",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 51 du CGI (LFI 2022): minimum de perception de 100.000 MRU au régime du bénéfice réel normal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.ircm",
+      "nombre": "نسبة الضريبة على مداخيل رؤوس الأموال المنقولة",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "general": "الحالة العامة",
+        "paradis": "فائض قيمة لمتنازل مقيم في دولة ذات ضريبة تفضيلية"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-29",
+          "valor": {
+            "general": 10,
+            "paradis": 20
+          },
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 126 du CGI: 10 % en général; 20 % pour les plus-values de cession de valeurs mobilières si le cédant est établi dans un État à fiscalité privilégiée."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mr.vignette",
+      "nombre": "الضريبة السنوية على السيارات",
+      "tipo": "mapa",
+      "unidad": "MRU",
+      "etiquetas": {
+        "perso-4": "استعمال شخصي، 4 أحصنة أو أقل",
+        "perso-5-7": "استعمال شخصي، من 5 إلى 7 أحصنة",
+        "perso-8-11": "استعمال شخصي، من 8 إلى 11 حصانًا",
+        "perso-12-16": "استعمال شخصي، من 12 إلى 16 حصانًا",
+        "perso-17": "استعمال شخصي، 17 حصانًا فأكثر",
+        "transport-4": "نقل عمومي، 4 أحصنة أو أقل",
+        "transport-5-7": "نقل عمومي، من 5 إلى 7 أحصنة",
+        "transport-8-11": "نقل عمومي، من 8 إلى 11 حصانًا",
+        "transport-12-16": "نقل عمومي، من 12 إلى 16 حصانًا",
+        "transport-17": "نقل عمومي، 17 حصانًا فأكثر"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-29",
+          "valor": {
+            "perso-4": 1620,
+            "perso-5-7": 2250,
+            "perso-8-11": 2970,
+            "perso-12-16": 4050,
+            "perso-17": 7020,
+            "transport-4": 1140,
+            "transport-5-7": 1380,
+            "transport-8-11": 1800,
+            "transport-12-16": 2400,
+            "transport-17": 3600
+          },
+          "fuente": {
+            "organismo": "Direction Générale des Impôts (وزارة المالية)",
+            "titulo": "Code général des impôts, version officielle janvier 2023 (loi n° 2019-018 modifiée)",
+            "url": "https://www.finances.gov.mr/sites/default/files/2023-03/CGI-Fr-2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "Article 140 du CGI. La LFI 2024 modifie les articles 138 et 139 (champ et exonérations), pas le tarif."
+          }
+        }
+      ]
+    }
+  ]
+}

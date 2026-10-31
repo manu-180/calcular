@@ -1,0 +1,29 @@
+{
+  "mercado": "ps",
+  "avisos": [
+    {
+      "id": "ps.labour-law-scope",
+      "nivel": "info",
+      "desde": "2026-10-29",
+      "aplicaA": [
+        "ps.end-of-service-calculator",
+        "ps.unfair-dismissal-compensation",
+        "ps.notice-period",
+        "ps.final-settlement",
+        "ps.annual-leave-calculator",
+        "ps.overtime-calculator",
+        "ps.sick-leave-calculator",
+        "ps.maternity-leave-calculator",
+        "ps.salary-deduction-calculator"
+      ],
+      "texto": "يتبع الحساب قانون العمل رقم 7 لسنة 2000. لا يسري القانون على موظفي الحكومة والهيئات المحلية ولا على خدم المنازل ولا على أفراد أسرة صاحب العمل من الدرجة الأولى. وإذا منحك عقدك أو اتفاق عمل جماعي حقوقًا أفضل فهي التي تُطبَّق.",
+      "fuente": {
+        "organismo": "وزارة المالية",
+        "titulo": "قانون العمل رقم (7) لسنة 2000م، المادتان 3 و6",
+        "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      }
+    }
+  ]
+}
