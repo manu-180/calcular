@@ -12,7 +12,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["MRU"],
   zonaHoraria: "Africa/Nouakchott",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 40,
 };
