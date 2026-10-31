@@ -61,7 +61,10 @@ export const viewport: Viewport = {
 // son estáticas para siempre y el día 1 siguen mostrando el mes anterior hasta que alguien
 // redeploye. El revalidate más bajo entre layout y página manda en toda la ruta (doc de Next 16,
 // caching-without-cache-components), así que vale para todas las páginas de (ar) sin tocarlas.
-export const revalidate = 3600;
+// 24 h y no 1 h (31/10/2026): cada regeneración es una escritura ISR que Vercel cobra, y con 10k
+// páginas el plazo de 1 h costaba más de un millón de escrituras por día. El cambio de mes lo cubre
+// /api/cron/mes-nuevo, que purga todo el día 1 a las 00:05. No bajarlo sin mirar la factura.
+export const revalidate = 86400;
 
 // Se calcula en el servidor y viaja como prop: el header sabe qué tab marcar sin cargar
 // el modelo de navegación entero en el JS de cada página.

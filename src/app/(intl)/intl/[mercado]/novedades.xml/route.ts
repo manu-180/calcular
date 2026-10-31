@@ -10,7 +10,7 @@ import { etiquetaIdioma } from "@/motor/i18n/direccion";
 // Feed Atom de /<m>/novedades: las mismas entradas que la página (entradas.ts), con un id estable por
 // entrada. Cada punto nuevo de una serie o tramo nuevo es una entrada nueva, así un lector de feeds
 // (o un agregador) recibe los cambios a medida que el cron o un PR los publican.
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 const escapar = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const instante = (f: FechaISO) => `${f}T00:00:00Z`;
