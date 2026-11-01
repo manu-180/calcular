@@ -1,0 +1,848 @@
+{
+  "mercado": "cn",
+  "datos": [
+    {
+      "id": "cn.zonghe-suode-shuilv",
+      "nombre": "综合所得税率表（全年应纳税所得额，超额累进）",
+      "tipo": "escala",
+      "unidad": "CNY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 36000,
+              "tasa": 3
+            },
+            {
+              "desde": 36000,
+              "hasta": 144000,
+              "tasa": 10
+            },
+            {
+              "desde": 144000,
+              "hasta": 300000,
+              "tasa": 20
+            },
+            {
+              "desde": 300000,
+              "hasta": 420000,
+              "tasa": 25
+            },
+            {
+              "desde": 420000,
+              "hasta": 660000,
+              "tasa": 30
+            },
+            {
+              "desde": 660000,
+              "hasta": 960000,
+              "tasa": 35
+            },
+            {
+              "desde": 960000,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国个人所得税法（2018年8月31日第七次修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf724bd0609",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.jianchu-feiyong-nian",
+      "nombre": "综合所得每年减除费用",
+      "tipo": "numero",
+      "unidad": "CNY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国个人所得税法（2018年8月31日第七次修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf724bd0609",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.jianchu-feiyong-yue",
+      "nombre": "工资薪金预扣预缴每月减除费用",
+      "tipo": "numero",
+      "unidad": "CNY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 5000,
+          "fuente": {
+            "organismo": "中国政府网（国务院公报）",
+            "titulo": "国家税务总局公告2018年第61号《个人所得税扣缴申报管理办法（试行）》及附件预扣率表",
+            "url": "https://www.gov.cn/gongbao/content/2019/content_5386991.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.laowu-feiyong-bili",
+      "nombre": "劳务报酬、稿酬、特许权使用费减除费用比例",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国个人所得税法（2018年8月31日第七次修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf724bd0609",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.gaochou-jianan-bili",
+      "nombre": "稿酬所得收入额减按比例",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国个人所得税法（2018年8月31日第七次修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf724bd0609",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.yukou-laowu-shuilv",
+      "nombre": "居民个人劳务报酬所得预扣率表（预扣率表二）",
+      "tipo": "escala",
+      "unidad": "CNY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 20000,
+              "tasa": 20
+            },
+            {
+              "desde": 20000,
+              "hasta": 50000,
+              "tasa": 30
+            },
+            {
+              "desde": 50000,
+              "hasta": null,
+              "tasa": 40
+            }
+          ],
+          "fuente": {
+            "organismo": "中国政府网（国务院公报）",
+            "titulo": "国家税务总局公告2018年第61号《个人所得税扣缴申报管理办法（试行）》及附件预扣率表",
+            "url": "https://www.gov.cn/gongbao/content/2019/content_5386991.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.yukou-feiyong-ding",
+      "nombre": "每次收入不超过4000元时的减除费用",
+      "tipo": "numero",
+      "unidad": "CNY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 800,
+          "fuente": {
+            "organismo": "中国政府网（国务院公报）",
+            "titulo": "国家税务总局公告2018年第61号《个人所得税扣缴申报管理办法（试行）》及附件预扣率表",
+            "url": "https://www.gov.cn/gongbao/content/2019/content_5386991.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.yukou-feiyong-menkan",
+      "nombre": "减除费用改按比例计算的收入门槛",
+      "tipo": "numero",
+      "unidad": "CNY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 4000,
+          "fuente": {
+            "organismo": "中国政府网（国务院公报）",
+            "titulo": "国家税务总局公告2018年第61号《个人所得税扣缴申报管理办法（试行）》及附件预扣率表",
+            "url": "https://www.gov.cn/gongbao/content/2019/content_5386991.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.yukou-gaochou-lv",
+      "nombre": "稿酬、特许权使用费所得预扣率",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "中国政府网（国务院公报）",
+            "titulo": "国家税务总局公告2018年第61号《个人所得税扣缴申报管理办法（试行）》及附件预扣率表",
+            "url": "https://www.gov.cn/gongbao/content/2019/content_5386991.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.yuedu-shuilv",
+      "nombre": "按月换算后的综合所得税率表（全年一次性奖金单独计税适用）",
+      "tipo": "escala",
+      "unidad": "CNY",
+      "proximaRevision": "2027-12-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2027-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 3000,
+              "tasa": 3
+            },
+            {
+              "desde": 3000,
+              "hasta": 12000,
+              "tasa": 10
+            },
+            {
+              "desde": 12000,
+              "hasta": 25000,
+              "tasa": 20
+            },
+            {
+              "desde": 25000,
+              "hasta": 35000,
+              "tasa": 25
+            },
+            {
+              "desde": 35000,
+              "hasta": 55000,
+              "tasa": 30
+            },
+            {
+              "desde": 55000,
+              "hasta": 80000,
+              "tasa": 35
+            },
+            {
+              "desde": 80000,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "中国政府网",
+            "titulo": "财政部 税务总局公告2023年第30号附件：按月换算后的综合所得税率表",
+            "url": "https://www.gov.cn/zhengce/zhengceku/202308/P020230828633757032068.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.jingying-suode-shuilv",
+      "nombre": "经营所得税率表（全年应纳税所得额，超额累进）",
+      "tipo": "escala",
+      "unidad": "CNY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30000,
+              "tasa": 5
+            },
+            {
+              "desde": 30000,
+              "hasta": 90000,
+              "tasa": 10
+            },
+            {
+              "desde": 90000,
+              "hasta": 300000,
+              "tasa": 20
+            },
+            {
+              "desde": 300000,
+              "hasta": 500000,
+              "tasa": 30
+            },
+            {
+              "desde": 500000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国个人所得税法（2018年8月31日第七次修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf724bd0609",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.zhuanxiang-yiyang",
+      "nombre": "子女教育、3岁以下婴幼儿照护、赡养老人专项附加扣除（每月）",
+      "tipo": "mapa",
+      "unidad": "CNY",
+      "etiquetas": {
+        "zinv": "子女教育（每个子女）",
+        "yingyouer": "3岁以下婴幼儿照护（每个婴幼儿）",
+        "shanyang-dusheng": "赡养老人（独生子女）",
+        "shanyang-fenshan": "赡养老人（非独生子女每人上限）"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "zinv": 2000,
+            "yingyouer": 2000,
+            "shanyang-dusheng": 3000,
+            "shanyang-fenshan": 1500
+          },
+          "fuente": {
+            "organismo": "国家税务总局政策法规库",
+            "titulo": "国家税务总局公告2023年第14号（贯彻执行提高专项附加扣除标准）",
+            "url": "https://fgk.chinatax.gov.cn/zcfgk/c100012/c5213592/content.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.zhuanxiang-zhufang",
+      "nombre": "住房贷款利息、住房租金、继续教育、大病医疗专项附加扣除",
+      "tipo": "mapa",
+      "unidad": "CNY",
+      "etiquetas": {
+        "daikuan": "首套住房贷款利息（每月）",
+        "zujin-yi": "住房租金：直辖市、省会、计划单列市等（每月）",
+        "zujin-er": "住房租金：市辖区户籍人口超过100万的城市（每月）",
+        "zujin-san": "住房租金：其他城市（每月）",
+        "jixu-xueli": "学历（学位）继续教育（每月）",
+        "jixu-zhengshu": "职业资格继续教育（取证当年）",
+        "dabing-qifu": "大病医疗起付额（每年）",
+        "dabing-xiane": "大病医疗扣除限额（每年）"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": {
+            "daikuan": 1000,
+            "zujin-yi": 1500,
+            "zujin-er": 1100,
+            "zujin-san": 800,
+            "jixu-xueli": 400,
+            "jixu-zhengshu": 3600,
+            "dabing-qifu": 15000,
+            "dabing-xiane": 80000
+          },
+          "fuente": {
+            "organismo": "中国政府网",
+            "titulo": "国务院关于印发个人所得税专项附加扣除暂行办法的通知（国发〔2018〕41号）",
+            "url": "https://www.gov.cn/zhengce/content/2018-12/22/content_5351181.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.yanglao-geren",
+      "nombre": "基本养老保险个人缴费比例",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "国家税务总局政策法规库",
+            "titulo": "国务院关于完善企业职工基本养老保险制度的决定（国发〔2005〕38号）第六条",
+            "url": "https://fgk.chinatax.gov.cn/zcfgk/c102440/c5193739/content.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "个人账户规模统一为本人缴费工资的8%，全部由个人缴费形成"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.yiliao-geren",
+      "nombre": "基本医疗保险职工缴费率",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1998-12-14",
+          "valor": 2,
+          "fuente": {
+            "organismo": "国家税务总局政策法规库",
+            "titulo": "国务院关于建立城镇职工基本医疗保险制度的决定（国发〔1998〕44号）",
+            "url": "https://fgk.chinatax.gov.cn/zcfgk/c102440/c5193273/content.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "职工缴费率一般为本人工资收入的2%"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.gongjijin-xiaxian",
+      "nombre": "住房公积金缴存比例下限",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-20",
+          "valor": 5,
+          "fuente": {
+            "organismo": "国家法律法规数据库（国务院）",
+            "titulo": "住房公积金管理条例（2026年8月10日修订，2026年9月20日施行）第十八条",
+            "url": "https://flk.npc.gov.cn/detail?id=ff8081819ff54a6401a01df735565134",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.jingji-buchang",
+      "nombre": "经济补偿的计算规则（劳动合同法第四十七条）",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "bannian": "不满六个月按半个月工资",
+        "beishu": "月工资封顶：上年度职工月平均工资的倍数",
+        "nianxian": "封顶时最多计算的年限"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-07-01",
+          "valor": {
+            "bannian": 0.5,
+            "beishu": 3,
+            "nianxian": 12
+          },
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国劳动合同法（2012年12月28日修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf74d7106b3",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.peichangjin-beishu",
+      "nombre": "违法解除劳动合同赔偿金的倍数（第八十七条）",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国劳动合同法（2012年12月28日修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf74d7106b3",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.shuangbei-gongzi",
+      "nombre": "未订立书面劳动合同每月支付的工资倍数（第八十二条）",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国劳动合同法（2012年12月28日修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf74d7106b3",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.shiyongqi",
+      "nombre": "试用期上限（劳动合同法第十九条）",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "duan": "合同期限三个月以上不满一年",
+        "zhong": "合同期限一年以上不满三年",
+        "chang": "三年以上固定期限或无固定期限"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-07-01",
+          "valor": {
+            "duan": 1,
+            "zhong": 2,
+            "chang": 6
+          },
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国劳动合同法（2012年12月28日修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf74d7106b3",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.shiyongqi-gongzi",
+      "nombre": "试用期工资不得低于约定工资的比例（第二十条）",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-07-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国劳动合同法（2012年12月28日修正）",
+            "url": "https://flk.npc.gov.cn/detail?id=2c909fdd678bf17901678bf74d7106b3",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.jiaban-beilv",
+      "nombre": "加班工资支付标准（劳动法第四十四条）",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "yanchang": "工作日延长工作时间",
+        "xiuxi": "休息日工作且不能补休",
+        "fading": "法定休假日工作"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-12-29",
+          "valor": {
+            "yanchang": 150,
+            "xiuxi": 200,
+            "fading": 300
+          },
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国劳动法（2018年12月29日修正）第四十四条",
+            "url": "https://flk.npc.gov.cn/detail?id=ff8080816f135f46016f20f16ee11737",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.jixin-tianshu",
+      "nombre": "月计薪天数",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 21.75,
+          "fuente": {
+            "organismo": "中国政府网",
+            "titulo": "人力资源社会保障部关于职工全年月平均工作时间和工资折算问题的通知（人社部发〔2025〕2号）",
+            "url": "https://www.gov.cn/zhengce/zhengceku/202501/content_6995777.htm",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.nianxiujia",
+      "nombre": "带薪年休假天数（按累计工作年限）",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "yi": "已满1年不满10年",
+        "shi": "已满10年不满20年",
+        "ershi": "已满20年"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": {
+            "yi": 5,
+            "shi": 10,
+            "ershi": 15
+          },
+          "fuente": {
+            "organismo": "国家法律法规数据库（国务院）",
+            "titulo": "职工带薪年休假条例（国务院令第514号）",
+            "url": "https://flk.npc.gov.cn/detail?id=ff8080816f3e98bd016f420b9b460371",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.nianxiujia-beilv",
+      "nombre": "应休未休年休假工资报酬（日工资收入的倍数）",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 300,
+          "fuente": {
+            "organismo": "国家法律法规数据库（国务院）",
+            "titulo": "职工带薪年休假条例（国务院令第514号）",
+            "url": "https://flk.npc.gov.cn/detail?id=ff8080816f3e98bd016f420b9b460371",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.chanjia",
+      "nombre": "产假天数（女职工劳动保护特别规定第七条）",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "jiben": "生育产假",
+        "chanqian": "其中产前可休",
+        "nanchan": "难产增加",
+        "duotai": "多胞胎每多1个婴儿增加",
+        "liuchan-xiao": "怀孕未满4个月流产",
+        "liuchan-da": "怀孕满4个月流产"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2012-04-28",
+          "valor": {
+            "jiben": 98,
+            "chanqian": 15,
+            "nanchan": 15,
+            "duotai": 15,
+            "liuchan-xiao": 15,
+            "liuchan-da": 42
+          },
+          "fuente": {
+            "organismo": "国家法律法规数据库（国务院）",
+            "titulo": "女职工劳动保护特别规定（国务院令第619号）第七条",
+            "url": "https://flk.npc.gov.cn/detail?id=ff8080816f3cbb3c016f410f1ed51451",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.zengzhishui",
+      "nombre": "增值税税率和征收率",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "huowu": "13%：货物、加工修理修配、有形动产租赁",
+        "dishui": "9%：交通运输、建筑、不动产、农产品等",
+        "fuwu": "6%：其他服务、无形资产",
+        "jianyi": "3%：简易计税（征收率）"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "huowu": 13,
+            "dishui": 9,
+            "fuwu": 6,
+            "jianyi": 3
+          },
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国增值税法（2024年12月25日通过，2026年1月1日施行）第十条、第十一条",
+            "url": "https://flk.npc.gov.cn/detail?id=ff808181927b083b0193fd65a0eb02cb",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.yinhuashui",
+      "nombre": "印花税税目税率",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "jiekuan": "借款合同（借款金额）",
+        "rongzi-zulin": "融资租赁合同（租金）",
+        "maimai": "买卖合同（价款）",
+        "chenglan": "承揽合同（报酬）",
+        "jianshe": "建设工程合同（价款）",
+        "yunshu": "运输合同（运输费用）",
+        "jishu": "技术合同（价款、报酬或使用费）",
+        "zulin": "租赁合同（租金）",
+        "baoguan": "保管合同（保管费）",
+        "cangchu": "仓储合同（仓储费）",
+        "baoxian": "财产保险合同（保险费）",
+        "fangdichan": "土地使用权、房屋等所有权转让书据（价款）",
+        "guquan": "股权转让书据（价款）",
+        "zhishi-chanquan": "商标、著作权、专利权、专有技术使用权转让书据（价款）",
+        "zhangbu": "营业账簿（实收资本和资本公积）"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-07-01",
+          "valor": {
+            "jiekuan": 0.005,
+            "rongzi-zulin": 0.005,
+            "maimai": 0.03,
+            "chenglan": 0.03,
+            "jianshe": 0.03,
+            "yunshu": 0.03,
+            "jishu": 0.03,
+            "zulin": 0.1,
+            "baoguan": 0.1,
+            "cangchu": 0.1,
+            "baoxian": 0.1,
+            "fangdichan": 0.05,
+            "guquan": 0.05,
+            "zhishi-chanquan": 0.03,
+            "zhangbu": 0.025
+          },
+          "fuente": {
+            "organismo": "国家法律法规数据库（全国人大常委会）",
+            "titulo": "中华人民共和国印花税法 附件《印花税税目税率表》",
+            "url": "https://flk.npc.gov.cn/detail?id=ff80818179f5da5e0179f890885b0481",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.guangzhou-zuidi-yue",
+      "nombre": "广州市全日制月最低工资标准",
+      "tipo": "numero",
+      "unidad": "CNY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 2680,
+          "fuente": {
+            "organismo": "广州市人民政府",
+            "titulo": "广州市人力资源和社会保障局关于调整我市最低工资标准的通知",
+            "url": "https://www.gz.gov.cn/xw/tzgg/content/post_10981840.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cn.guangzhou-zuidi-xiaoshi",
+      "nombre": "广州市非全日制小时最低工资标准",
+      "tipo": "numero",
+      "unidad": "CNY",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 25.4,
+          "fuente": {
+            "organismo": "广州市人民政府",
+            "titulo": "广州市人力资源和社会保障局关于调整我市最低工资标准的通知",
+            "url": "https://www.gz.gov.cn/xw/tzgg/content/post_10981840.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    }
+  ]
+}

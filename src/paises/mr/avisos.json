@@ -1,0 +1,19 @@
+{
+  "mercado": "mr",
+  "avisos": [
+    {
+      "id": "mr.convention-collective",
+      "nivel": "info",
+      "desde": "2026-10-29",
+      "aplicaA": ["mr.heures-supplementaires", "mr.indemnite-licenciement", "mr.preavis"],
+      "texto": "تتبع هذه الحاسبة الاتفاقية الجماعية العامة للشغل لسنة 1974 كما تنشرها وزارة الوظيفة العمومية والعمل. إن كان عقدك أو اتفاقية خاصة بقطاعك ينصان على غير ذلك فارجع إليهما.",
+      "fuente": {
+        "organismo": "وزارة الوظيفة العمومية والعمل",
+        "titulo": "Convention collective générale du travail du 13 février 1974",
+        "url": "https://www.fonctionpublique.gov.mr/sites/default/files/2023-11/Convention%20Collective%20G%C3%A9n%C3%A9rale%20du%20Travail.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      }
+    }
+  ]
+}
