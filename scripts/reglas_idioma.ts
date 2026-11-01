@@ -385,6 +385,19 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Bosnio: como el croata, un solo registro («vi» en minúscula con 2.ª del plural; ADR 0002, D39).
+  bs: {
+    informal: [
+      { re: palabras("ti|tebe|tebi|tobom|tvoj|tvoja|tvoje|tvog|tvoga|tvome|tvom|tvoju|tvoji|tvojih|tvojim|tvojima"), nombre: "obraćanje na «ti»" },
+      {
+        re: palabras("unesi|upiši|odaberi|izaberi|klikni|saznaj|oduzmi|zbroji|pogledaj"),
+        nombre: "imperativo de «ti» en la prosa (va -te)",
+      },
+      { re: palabras("možeš|imaš|želiš|dobiješ|dobivaš|plaćaš|zarađuješ|vidiš|radiš|trošiš|uštediš|moraš|ćeš|znaš|unosiš|biraš|računaš|jesi|nisi|treba ti"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Vi|Vas|Vama|Vaš|Vaša|Vaše|Vašeg|Vašem|Vašoj|Vašu|Vaši|Vaših|Vašim|Vašima)(?!\p{L})/u, nombre: "«Vi» con mayúscula (va «vi»)" },
+    ],
+    formal: [],
+  },
   // Esloveno: un solo registro, el de los bancos y FURS (vikanje con «vi», en minúscula, e imperativo de
   // segunda del plural: «vnesite», «izberite»; ADR 0002, D32). Los botones van en la forma corta de las
   // interfaces eslovenas («Izračunaj», «Kopiraj», «Deli», «Prenesi», «Dodaj», «Odpri», «Prikaži», «Pošlji»,
@@ -707,6 +720,26 @@ function reglasHr(texto: string): string[] {
   return p;
 }
 
+// Bosnio (ADR 0002, D39): comillas „ ”, ijekavski y vocabulario bosnio. Se atrapan las formas ekavskas y los
+// croatismos de un texto copiado de hr. «plaća» sola también es verbo («koliko plaća»), así que solo se
+// atrapan las formas que no pueden serlo y la de nominativo tras un adjetivo.
+const EKAVSKI_BS = palabras(
+  "mesec\\p{L}*|meseč\\p{L}*|cen[aeiu]|cenom|cenama|vreme|vredn\\p{L}*|vredi|vrede|svet|svetu|svetsk\\p{L}*|uvek|gde|ovde|negde|nigde|deo|delov\\p{L}*|deca|dece|dete|detet\\p{L}*|primer\\p{L}*|promen\\p{L}*|posle|ceo|cela|celo|celu|cele|mesto|mesta|reč|reči|mleko|lek|lekar\\p{L}*|telo|tela|belo|zahtev\\p{L}*|pre|podeli\\p{L}*|deli\\p{L}*|uspeo|uspelo|videti|hteti|razumeti|proveri\\p{L}*|provera|provere",
+);
+const CROATISMOS_BS = palabras(
+  "tjed\\p{L}*|tisuć\\p{L}*|plaće|plaću|plaći|plaćom|plaćama|(?:neto|bruto|minimalna|mjesečna|godišnja|prosječna|vaša|moja|ista)\\s+plaća|postot\\p{L}*|tečaj\\p{L}*|tvrtk\\p{L}*|obitelj\\p{L}*|kućanstv\\p{L}*|poveznic\\p{L}*|preglednik\\p{L}*|računal[oaue]|izbornik\\p{L}*|zbroj\\p{L}*|povijest\\p{L}*|znanost\\p{L}*|liječni\\p{L}*|mirovin\\p{L}*|točk\\p{L}*|točn\\p{L}*|točan|uvjet\\p{L}*|sustav\\p{L}*|razin[aeuio]m?|razdoblj\\p{L}*|kupnj\\p{L}*|siječ\\p{L}*|veljač\\p{L}*|ožuj\\p{L}*|travanj|travnja|svibanj|svibnja|lipanj|lipnja|srpanj|srpnja|kolovoz\\p{L}*|rujan|rujna|listopad\\p{L}*|prosinac|prosinca|tko|netko|nitko|svatko|tijekom|izvješć\\p{L}*|financ\\p{L}*|obvez\\p{L}*|skupin\\p{L}*|napojnic\\p{L}*|ljestvic\\p{L}*|stoljeć\\p{L}*|desetljeć\\p{L}*|hrvatsk\\p{L}*"
+);
+function reglasBs(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"“]/.test(texto)) p.push("comillas: en bosnio van „ ”");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en bosnio");
+  const e = EKAVSKI_BS.exec(texto);
+  if (e) p.push(`ekavski «${e[0]}» (en bosnio, ijekavski)`);
+  const c = CROATISMOS_BS.exec(texto);
+  if (c) p.push(`croatismo «${c[0]}» (en bosnio: plata, sedmica, hiljada, procenat, kurs, firma, porodica, ko, tokom...)`);
+  return p;
+}
+
 // Esloveno: comillas „ “ (abre abajo, cierra arriba, U+201E y U+201C), nada de «», "" ni ”. Y esloveno, no
 // croata adaptado: se atrapan los croatismos comunes de un texto copiado (plaća por plača, porez por davek,
 // mjesec por mesec, godina por leto, tjedan por teden, cijena por cena, «i» por «in», što por kaj,
@@ -960,6 +993,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "bg") p.push(...reglasBg(texto));
   if (idioma === "ka") p.push(...reglasKa(texto));
   if (idioma === "hr") p.push(...reglasHr(texto));
+  if (idioma === "bs") p.push(...reglasBs(texto));
   if (idioma === "mn") p.push(...reglasMn(texto));
   if (idioma === "hy") p.push(...reglasHy(texto));
   if (idioma === "sq") p.push(...reglasSq(texto));

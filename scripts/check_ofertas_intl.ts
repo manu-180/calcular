@@ -353,7 +353,7 @@ function revisarTexto(origen: string, idioma: Idioma, trato: Trato, s: string, l
   if (!s.trim()) fallo(`${origen}: texto vacío`);
   if (RAYA.test(s)) fallo(`${origen}: raya en «${s}»`);
   if (EMOJI.test(s)) fallo(`${origen}: emoji en «${s}»`);
-  if (idioma === "ja" || idioma === "ko" || idioma === "zh" || idioma === "sr" || idioma === "hr" || idioma === "hy" || idioma === "sl" || idioma === "ar" || idioma === "id" || idioma === "tr" || idioma === "bn" || idioma === "th" || idioma === "uk" || idioma === "uz" || idioma === "ru" || idioma === "ro" || idioma === "cs" || idioma === "sk" || idioma === "el" || idioma === "ka" || idioma === "hu" || idioma === "he" || idioma === "bg" || idioma === "mn" || idioma === "sq" || idioma === "et" || idioma === "is" || idioma === "lv") for (const p of problemasDeTexto(s, idioma, trato, locale)) if (!(carta && p.startsWith("합니다체"))) fallo(`${origen}: ${p} en «${s.slice(0, 60)}»`);
+  if (idioma === "ja" || idioma === "ko" || idioma === "zh" || idioma === "sr" || idioma === "hr" || idioma === "bs" || idioma === "hy" || idioma === "sl" || idioma === "ar" || idioma === "id" || idioma === "tr" || idioma === "bn" || idioma === "th" || idioma === "uk" || idioma === "uz" || idioma === "ru" || idioma === "ro" || idioma === "cs" || idioma === "sk" || idioma === "el" || idioma === "ka" || idioma === "hu" || idioma === "he" || idioma === "bg" || idioma === "mn" || idioma === "sq" || idioma === "et" || idioma === "is" || idioma === "lv") for (const p of problemasDeTexto(s, idioma, trato, locale)) if (!(carta && p.startsWith("합니다체"))) fallo(`${origen}: ${p} en «${s.slice(0, 60)}»`);
   if (idioma !== "es") return;
   if (trato !== "vos" && VOSEO.test(s)) fallo(`${origen} (${trato}): voseo «${VOSEO.exec(s)![0]}» en «${s}»`);
   if (trato === "usted" && TUTEO.test(s)) fallo(`${origen} (usted): tuteo «${TUTEO.exec(s)![0]}» en «${s}»`);
@@ -367,7 +367,7 @@ function textosDe(valor: unknown, salida: string[] = []): string[] {
   return salida;
 }
 
-const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"], pl: ["tu"], sv: ["tu"], da: ["tu"], nb: ["tu"], fi: ["tu"], ar: ["usted"], id: ["usted"], tr: ["usted"], bn: ["usted"], th: ["usted"], uk: ["usted"], uz: ["usted"], ru: ["usted"], ro: ["usted"], cs: ["usted"], el: ["usted"], hu: ["tu"], he: ["usted"], sr: ["usted"], bg: ["usted"], sk: ["usted"], ka: ["usted"], hr: ["usted"], mn: ["usted"], hy: ["usted"], sq: ["usted"], sl: ["usted"], et: ["tu"], is: ["tu"], lv: ["usted"] };
+const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"], pl: ["tu"], sv: ["tu"], da: ["tu"], nb: ["tu"], fi: ["tu"], ar: ["usted"], id: ["usted"], tr: ["usted"], bn: ["usted"], th: ["usted"], uk: ["usted"], uz: ["usted"], ru: ["usted"], ro: ["usted"], cs: ["usted"], el: ["usted"], hu: ["tu"], he: ["usted"], sr: ["usted"], bg: ["usted"], sk: ["usted"], ka: ["usted"], hr: ["usted"], bs: ["usted"], mn: ["usted"], hy: ["usted"], sq: ["usted"], sl: ["usted"], et: ["tu"], is: ["tu"], lv: ["usted"] };
 
 // Cada diccionario que se revisa, con el locale de su escritura (el chino simplificado es aparte).
 const REVISADOS: readonly { nombre: string; idioma: IdiomaVenta; locale?: string; d: DiccionarioVenta }[] = [

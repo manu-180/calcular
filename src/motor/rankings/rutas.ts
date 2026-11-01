@@ -46,6 +46,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   sk: "rebricek-krajin",
   ka: "kveqnebis-reitingi",
   hr: "ljestvica-zemalja",
+  bs: "rang-lista-drzava",
   lv: "valstu-reitings",
 };
 
@@ -113,6 +114,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   ka: { rinde: "khelpasis-msqidveloba", libertad: "sagadasakhado-tavisuplebis-dghe", aumento: "ramdeni-rcheba-momatebidan" },
   // hr en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D27).
   hr: { rinde: "gdje-placa-vrijedi-najvise", libertad: "dan-porezne-slobode", aumento: "koliko-ostaje-od-povisice" },
+  // bs en ASCII sin diacríticos, ijekavski (ADR 0002, D39).
+  bs: { rinde: "gdje-plata-vrijedi-najvise", libertad: "dan-porezne-slobode", aumento: "koliko-ostaje-od-povisice" },
   // lv en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D35).
   lv: { rinde: "kur-no-algas-paliek-visvairak", libertad: "nodoklu-brivibas-diena", aumento: "cik-paliek-no-algas-pielikuma" },
 };

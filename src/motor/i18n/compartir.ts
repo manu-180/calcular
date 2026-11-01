@@ -663,6 +663,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Pogledajte koliko bi vam neto ostalo u više od ${n} zemalja`,
     },
   },
+  // Bosnio (ADR 0002, D39): «vi» en minúscula; botones en la forma corta.
+  bs: {
+    base: {
+      boton: "Podijeli",
+      botonAria: "Podijeli ovaj kalkulator",
+      menuTitulo: "Podijeli putem",
+      copiar: "Kopiraj link",
+      copiado: "Link je kopiran",
+      compartido: "Poslano",
+      errorCorto: "Kopiranje nije uspjelo",
+      errorAyuda: "Link nije bilo moguće kopirati. Kopirajte ga iz adresne trake pretraživača.",
+      nuevaPestana: "otvara se u novoj kartici",
+      mensaje: (nombre) => `${nombre}. Besplatno, izračun traje minutu.`,
+      puenteIntro: "A u drugim zemljama?",
+      puenteEnlace: (n) => `Pogledajte koliko bi vam neto ostalo u više od ${n} zemalja`,
+    },
+  },
   // Albanés (ADR 0002, D31)
   sq: {
     base: {

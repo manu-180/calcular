@@ -177,6 +177,21 @@ export function formaHr(n: number | string, uno: string, pocos: string, muchos: 
 export function pluralHr(n: number | string, uno: string, pocos: string, muchos: string): string {
   return `${n} ${formaHr(n, uno, pocos, muchos)}`;
 }
+// Bosnio (ADR 0002, D39): las categorías de Intl.PluralRules("bs"), las mismas que en hr y sr: «1 godina»,
+// «2 godine», «5 godina», «21 godina», «1,5 godina».
+const REGLAS_BS = new Intl.PluralRules("bs");
+
+export function formaBs(n: number | string, uno: string, pocos: string, muchos: string): string {
+  const categoria = REGLAS_BS.select(Math.abs(Number(n)));
+  if (categoria === "one") return uno;
+  if (categoria === "few") return pocos;
+  return muchos;
+}
+
+// El número y la palabra: «1 kalkulator», «3 kalkulatora», «5 kalkulatora», «21 dan», «22 dana».
+export function pluralBs(n: number | string, uno: string, pocos: string, muchos: string): string {
+  return `${n} ${formaBs(n, uno, pocos, muchos)}`;
+}
 // Mongol (ADR 0002, D28): detrás de un número el sustantivo va siempre en singular («3 өдөр», «40
 // тооцоолуур»), aunque Intl.PluralRules("mn") distinga one/other. Recibe number o string porque check_i18n
 // llama a las funciones de los diccionarios con argumentos de muestra.

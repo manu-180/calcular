@@ -20,7 +20,7 @@ import { textosSitio } from "../src/motor/i18n";
 import { formaRo, pluralCs, pluralSk, pluralEl, pluralLv, pluralRo, pluralRu, pluralUk } from "../src/motor/i18n/plural";
 import { pluralHe, prefijoHe } from "../src/motor/i18n/hebreo";
 import { pluralSq, pluralSl, formaIs, pluralIs, pluralSr } from "../src/motor/i18n/plural";
-import { pluralHr } from "../src/motor/i18n/plural";
+import { pluralBs, pluralHr } from "../src/motor/i18n/plural";
 import { problemasDeTexto as problemasIs } from "./reglas_idioma";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores, tieneMarcadores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
@@ -310,6 +310,12 @@ const parseos: [string, string, number | null][] = [
   ["hr-HR", "25.000 €", 25000],
   ["hr-HR", "-250,75", -250.75],
   ["hr-HR", "20%", 20],
+  // Bosnio (bs-BA): punto de miles, coma decimal y «KM» detrás.
+  ["bs-BA", "1.234,50", 1234.5],
+  ["bs-BA", "1.234.567,25 KM", 1234567.25],
+  ["bs-BA", "25.000 KM", 25000],
+  ["bs-BA", "-250,75", -250.75],
+  ["bs-BA", "20%", 20],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -373,6 +379,8 @@ const ambiguos: [string, string, number | null][] = [
   ["sr-Latn-RS", "5,000", null],
   ["hr-HR", "5.000", 5000],
   ["hr-HR", "5,000", null],
+  ["bs-BA", "5.000", 5000],
+  ["bs-BA", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -711,8 +719,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal", "zz-hy/kisamyakayin-pargev", "zz-sq/bonus-gjashtemujor", "zz-sl/polletna-nagrada", "zz-et/poolaasta-preemia", "zz-is/halfsarsbonus", "zz-lv/pusgada-premija"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-mn", "zz-hy", "zz-sq", "zz-sl", "zz-et", "zz-is", "zz-lv"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-bs/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal", "zz-hy/kisamyakayin-pargev", "zz-sq/bonus-gjashtemujor", "zz-sl/polletna-nagrada", "zz-et/poolaasta-preemia", "zz-is/halfsarsbonus", "zz-lv/pusgada-premija"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-bs", "zz-mn", "zz-hy", "zz-sq", "zz-sl", "zz-et", "zz-is", "zz-lv"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -1163,6 +1171,22 @@ igual(
   ["Hrvatska", "Crna Gora", "Egipat", "Japan", "Maroko", "Sjedinjene Američke Države", "Cookovi Otoci", "Južnoafrička Republika"].map((p) => GRAMATICA.hr.de(p)),
   ["Hrvatske", "Crne Gore", "Egipta", "Japana", "Maroka", "Sjedinjenih Američkih Država", "Cookovih Otoka", "Južnoafričke Republike"],
 );
+// Bosnio: plurales, unidades y país (ADR 0002, D39).
+igual("años en bosnio", [1, 2, 5, 11, 21, 22, 25, 1.5].map((n) => formatearValorUnidad(n, "anios", "bs-BA")), ["1 godina", "2 godine", "5 godina", "11 godina", "21 godina", "22 godine", "25 godina", "1,5 godina"]);
+igual("semanas en bosnio", [1, 2, 5, 21].map((n) => formatearValorUnidad(n, "semanas", "bs-BA")), ["1 sedmica", "2 sedmice", "5 sedmica", "21 sedmica"]);
+igual("meses en bosnio", [1, 2, 12, 24].map((n) => formatearValorUnidad(n, "meses", "bs-BA")), ["1 mjesec", "2 mjeseca", "12 mjeseci", "24 mjeseca"]);
+igual("pluralBs", [1, 3, 5, 12, 21, 24].map((n) => pluralBs(n, "zemlja", "zemlje", "zemalja")), ["1 zemlja", "3 zemlje", "5 zemalja", "12 zemalja", "21 zemlja", "24 zemlje"]);
+igual(
+  "gramática bosnia: lugar",
+  ["Bosna i Hercegovina", "Hrvatska", "Crna Gora", "Njemačka", "Sjedinjene Države", "Ujedinjeno Kraljevstvo", "Filipini", "Kipar", "Novi Zeland", "Sveti Vinsent i Grenadin", "Ujedinjeni Arapski Emirati", "Kukova ostrva", "Južnoafrička Republika", "Obala Slonovače", "Demokratska Republika Kongo", "Hong Kong (SAR Kina)"].map((p) => GRAMATICA.bs.en(p)),
+  ["u Bosni i Hercegovini", "u Hrvatskoj", "u Crnoj Gori", "u Njemačkoj", "u Sjedinjenim Državama", "u Ujedinjenom Kraljevstvu", "na Filipinima", "na Kipru", "na Novom Zelandu", "na Svetom Vinsentu i Grenadinu", "u Ujedinjenim Arapskim Emiratima", "na Kukovim ostrvima", "u Južnoafričkoj Republici", "u Obali Slonovače", "u Demokratskoj Republici Kongo", "u Hong Kongu (SAR Kina)"],
+);
+igual(
+  "gramática bosnia: genitivo",
+  ["Bosna i Hercegovina", "Crna Gora", "Egipat", "Japan", "Maroko", "Sjedinjene Države", "Kukova ostrva", "Južna Koreja"].map((p) => GRAMATICA.bs.de(p)),
+  ["Bosne i Hercegovine", "Crne Gore", "Egipta", "Japana", "Maroka", "Sjedinjenih Država", "Kukovih ostrva", "Južne Koreje"],
+);
+igual("gramática bosnia: para", ["Bosna i Hercegovina", "Crna Gora", "Japan", "Filipini", "Kukova ostrva"].map((p) => GRAMATICA.bs.para(p)), ["za Bosnu i Hercegovinu", "za Crnu Goru", "za Japan", "za Filipine", "za Kukova ostrva"]);
 igual("gramática croata: para", ["Hrvatska", "Crna Gora", "Japan", "Filipini", "Francuska"].map((p) => GRAMATICA.hr.para(p)), ["za Hrvatsku", "za Crnu Goru", "za Japan", "za Filipine", "za Francusku"]);
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);

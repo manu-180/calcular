@@ -1641,59 +1641,31 @@ export interface PadeziHr {
   predlog: string;
 }
 
-export const padezHr: (pais: string) => PadeziHr = (() => {
-  // [genitivo, locativo, acusativo] sin preposición.
-  type Formas = readonly [string, string, string];
-  const TABLA: Readonly<Record<string, Formas>> = {
-    Egipat: ["Egipta", "Egiptu", "Egipat"],
-    Cipar: ["Cipra", "Cipru", "Cipar"],
-    Petar: ["Petra", "Petru", "Petar"],
-    Kostarika: ["Kostarike", "Kostariki", "Kostariku"],
-    "Šri Lanka": ["Šri Lanke", "Šri Lanki", "Šri Lanku"],
-    "Papua Nova Gvineja": ["Papue Nove Gvineje", "Papui Novoj Gvineji", "Papuu Novu Gvineju"],
-    "Gvineja Bisau": ["Gvineje Bisau", "Gvineji Bisau", "Gvineju Bisau"],
-    "Burkina Faso": ["Burkine Faso", "Burkini Faso", "Burkinu Faso"],
-    "Sijera Leone": ["Sijere Leone", "Sijeri Leone", "Sijeru Leone"],
-    "Obala Bjelokosti": ["Obale Bjelokosti", "Obali Bjelokosti", "Obalu Bjelokosti"],
-    "Sveti Toma i Princip": ["Svetog Tome i Principa", "Svetom Tomi i Principu", "Sveti Toma i Princip"],
-    "Timor-Leste": ["Timor-Leste", "Timor-Leste", "Timor-Leste"],
-    "PUP Hong Kong Kina": ["PUP Hong Kong Kina", "PUP Hong Kong Kina", "PUP Hong Kong Kina"],
-    "PUP Makao Kina": ["PUP Makao Kina", "PUP Makao Kina", "PUP Makao Kina"],
-    "Tristan da Cunha": ["Tristana da Cunhe", "Tristanu da Cunhi", "Tristan da Cunhu"],
-    "Diego Garcia": ["Diega Garcije", "Diegu Garciji", "Diega Garciju"],
-    Guernsey: ["Guernseyja", "Guernseyju", "Guernsey"],
-    Jersey: ["Jerseyja", "Jerseyju", "Jersey"],
-    "Saint Barthélemy": ["Saint Barthélemyja", "Saint Barthélemyju", "Saint Barthélemy"],
-    "Palestinsko područje": ["Palestinskog područja", "Palestinskom području", "Palestinsko područje"],
-    "Vanjska područja Oceanije": ["Vanjskih područja Oceanije", "Vanjskim područjima Oceanije", "Vanjska područja Oceanije"],
-    "Kokosovi (Keelingovi) Otoci": ["Kokosovih (Keelingovih) Otoka", "Kokosovim (Keelingovim) Otocima", "Kokosove (Keelingove) Otoke"],
-    "Karipski otoci Nizozemske": ["Karipskih otoka Nizozemske", "Karipskim otocima Nizozemske", "Karipske otoke Nizozemske"],
-    "Mali udaljeni otoci SAD-a": ["Malih udaljenih otoka SAD-a", "Malim udaljenim otocima SAD-a", "Male udaljene otoke SAD-a"],
-    "Južna Georgia i Otoci Južni Sandwich": ["Južne Georgije i Otoka Južni Sandwich", "Južnoj Georgiji i Otocima Južni Sandwich", "Južnu Georgiju i Otoke Južni Sandwich"],
-  };
-  const CON_NA = new Set([
-    "Cipar", "Malta", "Kuba", "Island", "Jamajka", "Filipini", "Madagaskar", "Novi Zeland", "Šri Lanka", "Tajvan",
-    "Bahami", "Maldivi", "Sejšeli", "Mauricijus", "Barbados", "Haiti", "Fidži", "Bermudi", "Dominika", "Grenada",
-    "Trinidad i Tobago", "Antigva i Barbuda", "Sveta Lucija", "Sveti Vincent i Grenadini", "Sveti Kristofor i Nevis",
-    "Sveti Toma i Princip", "Aruba", "Tonga", "Samoa", "Američka Samoa", "Kosovo", "Grenland", "Martinik",
-    "Guadalupe", "Réunion", "Nauru", "Tuvalu", "Palau", "Vanuatu", "Kiribati", "Guam", "Curaçao", "Mayotte", "Sveta Helena",
-    "Saint Barthélemy", "Saint Martin", "Sint Maarten", "Guernsey", "Jersey", "Antarktika", "Svalbard i Jan Mayen", "Tokelau", "Niue",
-    "Sark", "Montserrat", "Angvila", "Tristan da Cunha", "Komori", "Kanari",
-    "Diego Garcia", "Palestinsko područje", "Sveti Petar i Mikelon", "Wallis i Futuna", "Vanjska područja Oceanije",
-  ]);
+// [genitivo, locativo, acusativo] sin preposición.
+type FormasPadez = readonly [string, string, string];
+interface ConfigPadezi {
+  tabla: Readonly<Record<string, FormasPadez>>;
+  conNa: ReadonlySet<string>;
+  // La palabra de «islas» en plural y cómo se declina: «Otoci» en hr, «Ostrva» en bs.
+  islas: ReadonlySet<string>;
+  islasFormas: (w: string) => FormasPadez;
+  // Núcleo delante («Otok Man», «Ostrvo Man») y nombres con isla, que van con «na».
+  nucleoIsla: RegExp;
+  conNaIsla: RegExp;
+}
+
+function crearPadezi(cfg: ConfigPadezi): (pais: string) => PadeziHr {
+  type Formas = FormasPadez;
   // Sustantivos plurales: masculinos en -i (Filipini, Otoci) y femeninos en -e (Države).
   const PLURAL_M = new Set(["Filipini", "Bahami", "Maldivi", "Bermudi", "Sejšeli", "Grenadini", "Emirati", "Komori", "Kanari", "Teritoriji"]);
-  const OTOCI = new Set(["Otoci", "otoci"]);
+  const { tabla: TABLA, conNa: CON_NA, islas: OTOCI, islasFormas, nucleoIsla, conNaIsla } = cfg;
   const PLURAL_F = new Set(["Države"]);
   const esPlural = (w: string) => PLURAL_M.has(w) || OTOCI.has(w) || PLURAL_F.has(w);
   const sustantivo = (w: string): Formas => {
     if (TABLA[w]) return TABLA[w];
     if (/^[A-ZČĆŠŽĐ]{2,}$/.test(w)) return [w, w, w];
     const raiz = w.slice(0, -1);
-    if (OTOCI.has(w)) {
-      const o = w[0];
-      return [`${o}toka`, `${o}tocima`, `${o}toke`];
-    }
+    if (OTOCI.has(w)) return islasFormas(w);
     if (PLURAL_M.has(w)) return [`${raiz}a`, `${raiz}ima`, `${raiz}e`];
     if (PLURAL_F.has(w)) return [`${raiz}a`, `${raiz}ama`, w];
     // Adjetivo sustantivado (Hrvatska, Francuska, Njemačka, Češka): se declina como adjetivo.
@@ -1743,7 +1715,7 @@ export const padezHr: (pais: string) => PadeziHr = (() => {
     }
     // Núcleo delante: «Otok Man», «Otoci Turks i Caicos», «Otoci Heard i McDonald».
     const [primera, ...resto] = p.split(" ");
-    if (resto.length && /^Oto(?:k|ci)$/.test(primera)) {
+    if (resto.length && nucleoIsla.test(primera)) {
       const [g, l, a] = sustantivo(primera);
       const cola = ` ${resto.join(" ")}`;
       return [g + cola, l + cola, a + cola];
@@ -1754,10 +1726,57 @@ export const padezHr: (pais: string) => PadeziHr = (() => {
   return (p: string): PadeziHr => {
     const [genitiv, lokativ, akuzativ] = formas(p);
     const base = p.split(" (")[0];
-    const predlog = CON_NA.has(base) || /(?:^|\s)[Oo]to(?:k|ci)(?:\s|$)/.test(p) ? "na" : "u";
+    const predlog = CON_NA.has(base) || conNaIsla.test(p) ? "na" : "u";
     return { genitiv, lokativ, akuzativ, predlog };
   };
-})();
+}
+
+export const padezHr = crearPadezi({
+  tabla: {
+  Egipat: ["Egipta", "Egiptu", "Egipat"],
+  Cipar: ["Cipra", "Cipru", "Cipar"],
+  Petar: ["Petra", "Petru", "Petar"],
+  Kostarika: ["Kostarike", "Kostariki", "Kostariku"],
+  "Šri Lanka": ["Šri Lanke", "Šri Lanki", "Šri Lanku"],
+  "Papua Nova Gvineja": ["Papue Nove Gvineje", "Papui Novoj Gvineji", "Papuu Novu Gvineju"],
+  "Gvineja Bisau": ["Gvineje Bisau", "Gvineji Bisau", "Gvineju Bisau"],
+  "Burkina Faso": ["Burkine Faso", "Burkini Faso", "Burkinu Faso"],
+  "Sijera Leone": ["Sijere Leone", "Sijeri Leone", "Sijeru Leone"],
+  "Obala Bjelokosti": ["Obale Bjelokosti", "Obali Bjelokosti", "Obalu Bjelokosti"],
+  "Sveti Toma i Princip": ["Svetog Tome i Principa", "Svetom Tomi i Principu", "Sveti Toma i Princip"],
+  "Timor-Leste": ["Timor-Leste", "Timor-Leste", "Timor-Leste"],
+  "PUP Hong Kong Kina": ["PUP Hong Kong Kina", "PUP Hong Kong Kina", "PUP Hong Kong Kina"],
+  "PUP Makao Kina": ["PUP Makao Kina", "PUP Makao Kina", "PUP Makao Kina"],
+  "Tristan da Cunha": ["Tristana da Cunhe", "Tristanu da Cunhi", "Tristan da Cunhu"],
+  "Diego Garcia": ["Diega Garcije", "Diegu Garciji", "Diega Garciju"],
+  Guernsey: ["Guernseyja", "Guernseyju", "Guernsey"],
+  Jersey: ["Jerseyja", "Jerseyju", "Jersey"],
+  "Saint Barthélemy": ["Saint Barthélemyja", "Saint Barthélemyju", "Saint Barthélemy"],
+  "Palestinsko područje": ["Palestinskog područja", "Palestinskom području", "Palestinsko područje"],
+  "Vanjska područja Oceanije": ["Vanjskih područja Oceanije", "Vanjskim područjima Oceanije", "Vanjska područja Oceanije"],
+  "Kokosovi (Keelingovi) Otoci": ["Kokosovih (Keelingovih) Otoka", "Kokosovim (Keelingovim) Otocima", "Kokosove (Keelingove) Otoke"],
+  "Karipski otoci Nizozemske": ["Karipskih otoka Nizozemske", "Karipskim otocima Nizozemske", "Karipske otoke Nizozemske"],
+  "Mali udaljeni otoci SAD-a": ["Malih udaljenih otoka SAD-a", "Malim udaljenim otocima SAD-a", "Male udaljene otoke SAD-a"],
+  "Južna Georgia i Otoci Južni Sandwich": ["Južne Georgije i Otoka Južni Sandwich", "Južnoj Georgiji i Otocima Južni Sandwich", "Južnu Georgiju i Otoke Južni Sandwich"],
+},
+  conNa: new Set([
+  "Cipar", "Malta", "Kuba", "Island", "Jamajka", "Filipini", "Madagaskar", "Novi Zeland", "Šri Lanka", "Tajvan",
+  "Bahami", "Maldivi", "Sejšeli", "Mauricijus", "Barbados", "Haiti", "Fidži", "Bermudi", "Dominika", "Grenada",
+  "Trinidad i Tobago", "Antigva i Barbuda", "Sveta Lucija", "Sveti Vincent i Grenadini", "Sveti Kristofor i Nevis",
+  "Sveti Toma i Princip", "Aruba", "Tonga", "Samoa", "Američka Samoa", "Kosovo", "Grenland", "Martinik",
+  "Guadalupe", "Réunion", "Nauru", "Tuvalu", "Palau", "Vanuatu", "Kiribati", "Guam", "Curaçao", "Mayotte", "Sveta Helena",
+  "Saint Barthélemy", "Saint Martin", "Sint Maarten", "Guernsey", "Jersey", "Antarktika", "Svalbard i Jan Mayen", "Tokelau", "Niue",
+  "Sark", "Montserrat", "Angvila", "Tristan da Cunha", "Komori", "Kanari",
+  "Diego Garcia", "Palestinsko područje", "Sveti Petar i Mikelon", "Wallis i Futuna", "Vanjska područja Oceanije",
+]),
+  islas: new Set(["Otoci", "otoci"]),
+  islasFormas: (w) => {
+    const o = w[0];
+    return [`${o}toka`, `${o}tocima`, `${o}toke`];
+  },
+  nucleoIsla: /^Oto(?:k|ci)$/,
+  conNaIsla: /(?:^|\s)[Oo]to(?:k|ci)(?:\s|$)/,
+});
 
 const hr: GramaticaPais = {
   nombre: (p) => p,
@@ -1767,6 +1786,65 @@ const hr: GramaticaPais = {
     return `${f.predlog} ${f.lokativ}`;
   },
   para: (p) => `za ${padezHr(p).akuzativ}`,
+};
+
+// Bosnio (ADR 0002, D39): misma mecánica que el croata, con los nombres de Intl.DisplayNames en bs («Kipar»,
+// «Obala Slonovače», «Kukova ostrva», «Sveti Vinsent i Grenadin»). «ostrva» es neutro plural: «Kukovih
+// ostrva», «na Kukovim ostrvima», «za Kukova ostrva». `de(p)` da «Bosne i Hercegovine», `en(p)` «u Bosni i
+// Hercegovini» y `para(p)` «za Bosnu i Hercegovinu».
+export const padezBs = crearPadezi({
+  tabla: {
+    Egipat: ["Egipta", "Egiptu", "Egipat"],
+    Kipar: ["Kipra", "Kipru", "Kipar"],
+    Katar: ["Katara", "Kataru", "Katar"],
+    Kostarika: ["Kostarike", "Kostariki", "Kostariku"],
+    Kina: ["Kine", "Kini", "Kinu"],
+    "Šri Lanka": ["Šri Lanke", "Šri Lanki", "Šri Lanku"],
+    "Papua Nova Gvineja": ["Papue Nove Gvineje", "Papui Novoj Gvineji", "Papuu Novu Gvineju"],
+    "Gvineja-Bisao": ["Gvineje-Bisao", "Gvineji-Bisao", "Gvineju-Bisao"],
+    "Burkina Faso": ["Burkine Faso", "Burkini Faso", "Burkinu Faso"],
+    "Sijera Leone": ["Sijere Leone", "Sijeri Leone", "Sijeru Leone"],
+    "Obala Slonovače": ["Obale Slonovače", "Obali Slonovače", "Obalu Slonovače"],
+    "Sao Tome i Principe": ["Sao Tomea i Principa", "Sao Tomeu i Principu", "Sao Tome i Principe"],
+    "Demokratska Republika Kongo": ["Demokratske Republike Kongo", "Demokratskoj Republici Kongo", "Demokratsku Republiku Kongo"],
+    "Istočni Timor": ["Istočnog Timora", "Istočnom Timoru", "Istočni Timor"],
+    "Tristan da Cunha": ["Tristana da Cunhe", "Tristanu da Cunhi", "Tristan da Cunhu"],
+    "Dijego Garsija": ["Dijega Garsije", "Dijegu Garsiji", "Dijega Garsiju"],
+    Gernzi: ["Gernzija", "Gernziju", "Gernzi"],
+    Džerzi: ["Džerzija", "Džerziju", "Džerzi"],
+    "Sveti Bartolomej": ["Svetog Bartolomeja", "Svetom Bartolomeju", "Sveti Bartolomej"],
+    "Palestinska Teritorija": ["Palestinske Teritorije", "Palestinskoj Teritoriji", "Palestinsku Teritoriju"],
+    "Vanjska Okeanija": ["Vanjske Okeanije", "Vanjskoj Okeaniji", "Vanjsku Okeaniju"],
+    "Evropska unija": ["Evropske unije", "Evropskoj uniji", "Evropsku uniju"],
+    "Kokosova (Keelingova) ostrva": ["Kokosovih (Keelingovih) ostrva", "Kokosovim (Keelingovim) ostrvima", "Kokosova (Keelingova) ostrva"],
+    "Britanska Teritorija u Indijskom Okeanu": ["Britanske Teritorije u Indijskom Okeanu", "Britanskoj Teritoriji u Indijskom Okeanu", "Britansku Teritoriju u Indijskom Okeanu"],
+    "Francuske Južne Teritorije": ["Francuskih Južnih Teritorija", "Francuskim Južnim Teritorijama", "Francuske Južne Teritorije"],
+    "Ostrvo Heard i arhipelag McDonald": ["Ostrva Heard i arhipelaga McDonald", "Ostrvu Heard i arhipelagu McDonald", "Ostrvo Heard i arhipelag McDonald"],
+  },
+  conNa: new Set([
+    "Kipar", "Malta", "Kuba", "Island", "Jamajka", "Filipini", "Madagaskar", "Novi Zeland", "Šri Lanka", "Tajvan",
+    "Bahami", "Maldivi", "Sejšeli", "Mauricijus", "Barbados", "Haiti", "Fidži", "Bermuda", "Bermudi", "Dominika", "Grenada",
+    "Trinidad i Tobago", "Antigva i Barbuda", "Sveta Lucija", "Sveti Vinsent i Grenadin", "Sveti Kits i Nevis",
+    "Sao Tome i Principe", "Aruba", "Tonga", "Samoa", "Američka Samoa", "Kosovo", "Grenland", "Martinik",
+    "Gvadalupe", "Reunion", "Nauru", "Tuvalu", "Palau", "Vanuatu", "Kiribati", "Guam", "Kurasao", "Majote", "Sveta Helena",
+    "Sveti Bartolomej", "Sveti Martin", "Sint Marten", "Gernzi", "Džerzi", "Antarktika", "Svalbard i Jan Majen", "Tokelau", "Niue",
+    "Sark", "Monserat", "Angvila", "Tristan da Cunha", "Komori", "Kanarska ostrva",
+    "Dijego Garsija", "Palestinska Teritorija", "Sveti Petar i Mikelon", "Valis i Futuna",
+  ]),
+  islas: new Set(["Ostrva", "ostrva"]),
+  islasFormas: (w) => [w, `${w}ma`.replace(/vama$/, "vima"), w],
+  nucleoIsla: /^Ostrv[oa]$/,
+  conNaIsla: /(?:^|\s)[Oo]strv[oa](?:\s|$)/,
+});
+
+const bs: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => padezBs(p).genitiv,
+  en: (p) => {
+    const f = padezBs(p);
+    return `${f.predlog} ${f.lokativ}`;
+  },
+  para: (p) => `za ${padezBs(p).akuzativ}`,
 };
 
 // Mongol (ADR 0002, D28): los sufijos de caso dependen de la armonía vocálica y de la consonante final, y
@@ -2341,4 +2419,4 @@ const lv: GramaticaPais = {
   para: (p) => locijumiLv(p).dativs,
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, bs };

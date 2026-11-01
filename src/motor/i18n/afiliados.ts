@@ -476,6 +476,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "otvara se u novoj kartici",
     },
   },
+  // Bosnio (ADR 0002, D39): «vi» en minúscula.
+  bs: {
+    base: {
+      titulo: "Selite se u inostranstvo ili plaćate iz druge zemlje?",
+      etiqueta: "Partnerski linkovi",
+      socios: {
+        wise: "Račun u više valuta za primanje i slanje novca između zemalja po srednjem tržišnom kursu, uz naknadu koju vidite unaprijed.",
+        deel: "Ugovori i isplate za one koji iz jedne zemlje rade za firmu iz druge.",
+      },
+      nota: "Ako preko ovih linkova otvorite račun, stranica može dobiti proviziju. Vi zbog toga ne plaćate ništa više.",
+      nuevaPestana: "otvara se u novoj kartici",
+    },
+  },
   // Albanés (ADR 0002, D31)
   sq: {
     base: {

@@ -44,6 +44,7 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   sk: "skutocne-mzdy",
   ka: "realuri-khelpasebi",
   hr: "stvarne-place",
+  bs: "realne-plate",
 };
 
 export const RUTA_SUELDOS_AR = "/sueldos-reales";

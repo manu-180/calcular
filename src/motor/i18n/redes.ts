@@ -777,6 +777,27 @@ export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
     celuImagen: "Kamerom telefona ovaj kod otvara sliku spremnu za dijeljenje u priči.",
     cerrar: "Zatvori",
   }),
+  // Bosnio (ADR 0002, D39): impersonal; «priča» es la historia de Instagram.
+  bs: base({
+    grupo: "Podijeli putem:",
+    instagramSub: "Priča",
+    copiar: "Kopiraj link",
+    mas: "Još opcija",
+    nuevaPestana: "otvara se u novoj kartici",
+    formato: "Format slike",
+    historia: "Priča 9:16",
+    feed: "Objava 1:1",
+    descargar: "Preuzmi sliku",
+    copiado: "Link je kopiran.",
+    compartido: "Poslano.",
+    enInstagram: "Gotovo. Link je također kopiran i može se zalijepiti u priču pomoću naljepnice Link.",
+    descargado: "Slika je preuzeta, a link kopiran. S telefona se može objaviti kao priča, a link se dodaje naljepnicom Link.",
+    error: "Dijeljenje trenutno nije dostupno.",
+    alCelu: "Na Instagram se objavljuje s telefona",
+    celuPagina: "Kamerom telefona ovaj kod otvara karticu spremnu da se jednim dodirom pošalje u priču.",
+    celuImagen: "Kamerom telefona ovaj kod otvara sliku spremnu za dijeljenje u priči.",
+    cerrar: "Zatvori",
+  }),
   // Albanés (ADR 0002, D31)
   sq: base({
     grupo: "Shpërndani në",

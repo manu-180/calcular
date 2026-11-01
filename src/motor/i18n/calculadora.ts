@@ -397,6 +397,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Izvor",
     },
   },
+  bs: {
+    base: {
+      datos: "Vaši podaci",
+      resultado: "Rezultat",
+      vacio: "Unesite podatke i kliknite na „Izračunaj”. Rezultat će se pojaviti ovdje.",
+      sinResultado: "Ovaj rezultat zasad ne prikazujemo.",
+      avisos: { info: "Dobro je znati", cautela: "Pažnja", bloquea: "Zašto ne prikazujemo rezultat" },
+      fuenteDelAviso: "Izvor",
+    },
+  },
   // Albanés (ADR 0002, D31).
   sq: {
     base: {

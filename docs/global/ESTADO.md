@@ -304,6 +304,16 @@ idioma. Listo para que un agente de país escriba Bulgaria (`bg`). Fallas de mai
 `check_horas` (AR, salario vencido el 31/10), `check_mundo` (be, neto) y `check_guiones` (raya en
 `src/paises/hu/calculadoras/vegkielegites-szamitas.casos.ts`).
 
+## 01/11/2026 · Motor bosnio (`claude/mundo-motor-bs`)
+
+`bs` entra en `IDIOMAS` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en el
+mundo» (`plata-u-svijetu`), rankings (`rang-lista-drzava`), horas de trabajo (`koliko-sati-treba-raditi`), calendario
+(`kalendar-plata`), «Sueldos reales» (`realne-plate`), venta completa (`IDIOMAS_VENTA`) y las 41 universales
+con slug ASCII propio. Ijekavski, «vi» en minúscula con 2.ª del plural («unesite»), mercados con `trato:
+"usted"`, formato `1.234,50 KM`. Plurales one/few/other (`pluralBs`) y declinación del país (`GRAMATICA.bs`).
+Decisiones en ADR 0002, D39. Edición de prueba `zz-bs` (interna, `bs-001`).
+- Falta para publicar Bosnia y Herzegovina: el país en sí (dos entidades, FBiH y RS), con datos verificados, y revisión por hablante nativo.
+
 ## 01/11/2026 · Motor croata (`claude/mundo-motor-hr`)
 
 `hr` entra en `IDIOMAS` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en el

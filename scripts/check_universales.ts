@@ -258,6 +258,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   ],
   // Croata (ADR 0002, D27): euro detrás con punto de miles; un nombre largo que se declina por partes («na
   // Svetom Vincentu i Grenadinima») y uno plural con adjetivos delante («u Ujedinjenim Arapskim Emiratima»).
+  // Bosnio (ADR 0002, D39): marca convertible («1.234,50 KM») y un nombre largo que se declina por partes
+  // («u Bosni i Hercegovini»), otro con isla delante («na Svetom Vinsentu i Grenadinu») y uno plural.
+  bs: [
+    { mercado: "ba" as CodigoMercado, pais: "BA", nombrePais: "Bosna i Hercegovina", locale: "bs-BA", trato: "usted", moneda: "BAM" as Moneda, escala: 2 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sveti Vinsent i Grenadin", locale: "bs-BA", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Ujedinjeni Arapski Emirati", locale: "bs-BA", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
   hr: [
     { mercado: "hr" as CodigoMercado, pais: "HR", nombrePais: "Hrvatska", locale: "hr-HR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sveti Vincent i Grenadini", locale: "hr-HR", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },

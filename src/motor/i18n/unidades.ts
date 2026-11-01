@@ -152,6 +152,14 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     meses: { uno: "mjesec", pocos: "mjeseca", otros: "mjeseci" },
     anios: { uno: "godina", pocos: "godine", otros: "godina" },
   },
+  // Bosnio (ADR 0002, D39).
+  bs: {
+    dias: { uno: "dan", pocos: "dana", otros: "dana" },
+    semanas: { uno: "sedmica", pocos: "sedmice", otros: "sedmica" },
+    horas: { uno: "sat", pocos: "sata", otros: "sati" },
+    meses: { uno: "mjesec", pocos: "mjeseca", otros: "mjeseci" },
+    anios: { uno: "godina", pocos: "godine", otros: "godina" },
+  },
   // Esloveno (ADR 0002, D32): con dual. «uno» es 1, 101..., «dual» 2, 102..., «pocos» 3, 4, 103... y las
   // fracciones («1,5 leta»), «otros» el resto: «1 dan», «2 dneva», «3 dni», «5 dni»; «1 leto», «2 leti», «3 leta», «5 let».
   sl: {

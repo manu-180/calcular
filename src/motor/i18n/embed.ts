@@ -1354,8 +1354,45 @@ const hr: Diccionario<TextosEmbed> = {
       copiado: "Kod je kopiran",
       ayudaScript: "Skripta nije obavezna: prilagođava visinu kalkulatora njegovu sadržaju.",
       ventajas: ["Besplatno i bez registracije", "Službeni podaci, uvijek ažurni", "Prilagođava se svakoj širini"],
-      nota: "Ispod kalkulatora je poveznica na CalcularYa. Molimo vas da je ne uklanjate.",
+      nota: "Ispod kalkulatora je poveznica na CalcularYa. Molimo vas da ga ne uklanjate.",
       verTodas: (pais) => `Svi kalkulatori ${GRAMATICA.hr.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulator CalcularYa`,
+    },
+  },
+};
+
+// Bosnio (ADR 0002, D39): «vi» en minúscula, como los bancos y Porezna uprava FBiH y Poreska uprava RS; el país va con «za» y acusativo
+// (GRAMATICA.bs: «za Bosnu i Hercegovinu»). Botones en la forma corta («Kopiraj kod»).
+const bs: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulator CalcularYa",
+    marcaNuevaPestana: "(otvara se u novoj kartici)",
+    noDisponible: { titulo: "Ovaj kalkulator nije dostupan", texto: "Možda mu se promijenila adresa." },
+    insertar: "Postavite na svoju stranicu",
+    pagina: {
+      titulo: (pais) => [`Besplatni kalkulatori za vašu stranicu | ${pais}`, "Besplatni kalkulatori za vašu stranicu"],
+      descripcion: (pais) => `Izaberite kalkulator ${GRAMATICA.bs.para(pais)}, kopirajte kod i postavite ga na svoj blog ili stranicu. Besplatno, sa službenim podacima koji su uvijek ažurni.`,
+      h1: "Postavite kalkulator na svoju stranicu",
+      bajada: "Izaberite kalkulator, kopirajte kod i zalijepite ga gdje vam treba. Besplatno, a podaci se ažuriraju sami.",
+      calculadora: "Kalkulator",
+      buscar: "Pronađite kalkulator",
+      sinResultados: "Nijedan kalkulator ne odgovara vašoj pretrazi.",
+      tema: "Izgled",
+      claro: "Svijetla",
+      oscuro: "Tamna",
+      ancho: "Širina",
+      anchoCompleto: "Puna širina",
+      acento: "Boja isticanja",
+      colores: ["Zelena", "Plava", "Narandžasta", "Ružičasta", "Grafitna"],
+      credito: "Prikaži link na izvor ispod kalkulatora",
+      vistaPrevia: "Pregled",
+      codigo: "Kod za ugradnju",
+      copiar: "Kopiraj kod",
+      copiado: "Kod je kopiran",
+      ayudaScript: "Skripta nije obavezna: prilagođava visinu kalkulatora njegovu sadržaju.",
+      ventajas: ["Besplatno i bez registracije", "Službeni podaci, uvijek ažurni", "Prilagođava se svakoj širini"],
+      nota: "Ispod kalkulatora je link na CalcularYa. Molimo vas da ga ne uklanjate.",
+      verTodas: (pais) => `Svi kalkulatori ${GRAMATICA.bs.para(pais)}`,
       tituloIframe: (nombre) => `${nombre} | Kalkulator CalcularYa`,
     },
   },
@@ -1580,7 +1617,7 @@ const lv: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, bs };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

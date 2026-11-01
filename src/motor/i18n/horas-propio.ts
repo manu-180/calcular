@@ -780,6 +780,27 @@ export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
     texto: "{en} me {producto} košta {horas} rada. A u drugim zemljama?",
     og: { antes: "{en}, s mojom plaćom,", producto: "{producto} me košta", de: "rada", deMes: "rada mjesečno", otros: "Ista razina plaće:", cta: "Koliko sati rada to košta?" },
   }),
+  // Bosnio (ADR 0002, D39): impersonal; la tarjeta, en primera persona.
+  bs: base({
+    titulo: "Isti izračun, sa stvarnom platom",
+    bajada: "S bruto platom za mjesec dana sati se računaju prema toj plati, a ne prema minimalnoj. Iznos ostaje u ovom pretraživaču: ne ide u link ni na sliku.",
+    campo: "Bruto plata mjesečno",
+    ayuda: "U valuti {moneda}, prije odbitaka.",
+    traido: "Preuzeto iz kalkulatora plate.",
+    invalido: "Iznos mora biti veći od nule.",
+    vacio: "Sati se prikazuju kada se unese plaća.",
+    antes: "{en}, s ovom platom, {producto} košta",
+    despues: "rada",
+    despuesMes: "rada, svakog mjeseca",
+    minimo: "Uz minimalnu platu: {horas}.",
+    veces: "{x} × minimalna plata",
+    rankingTitulo: "Isti nivo plate u svakoj zemlji",
+    rankingBajada: "{x} × minimalna plata svake zemlje, preračunato u sate rada.",
+    tarjetaTitulo: "Kartica s mojim satima",
+    tarjetaBajada: "Prikazuje samo sate i zemlje. Platu nikad.",
+    texto: "{en} me {producto} košta {horas} rada. A u drugim zemljama?",
+    og: { antes: "{en}, s mojom platom,", producto: "{producto} me košta", de: "rada", deMes: "rada mjesečno", otros: "Isti nivo plate:", cta: "Koliko sati rada to košta?" },
+  }),
   // Albanés (ADR 0002, D31)
   sq: base({
     titulo: "E njëjta llogaritje, me një pagë reale",

@@ -6,7 +6,7 @@ import { casosEl, GRAMATICA, mayusculaHu } from "./gramatica";
 import { DIAS_HE, pluralHe, prefijoHe, type FormasHe } from "./hebreo";
 import { conteoMn, formaRu, pluralBg, pluralCs, pluralEl, pluralLv, pluralPl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
-import { pluralHr } from "./plural";
+import { pluralBs, pluralHr } from "./plural";
 import { rasatSq } from "./gramatica";
 import { pluralSq } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
@@ -6187,6 +6187,173 @@ const hr: Diccionario<TextosMundo> = {
   },
 };
 
+// ───────────────────────────── bs ─────────────────────────────
+
+// Bosnio (ADR 0002, D39): «vi» en minúscula, como los bancos y Porezna uprava FBiH y Poreska uprava RS; la tarjeta y el texto para
+// compartir, en primera persona. Nada de participios ni adjetivos con género sobre la persona («bio sam»,
+// «sama»): las frases van en presente o impersonales. El país se declina con GRAMATICA.bs y los días y las
+// zemlje con pluralBs. La fecha llega como la da Intl en bs («15. oktobra», en genitivo) y se dibuja
+// aparte, así que la frase termina en «do».
+const gBs = GRAMATICA.bs;
+const SEO_BS = "Dan porezne slobode i neto plata u svijetu";
+const danaBs = (d: number) => pluralBs(d, "dan", "dana", "dana");
+// Tras «u»: «u 21 zemlji», «u 22 zemlje», «u 25 zemalja».
+const zemljamaUBs = (n: number) => pluralBs(n, "zemlji", "zemlje", "zemalja");
+
+const bs: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Vaša plata u svijetu",
+    seo: {
+      titulo: (pais) => [`${SEO_BS} | ${pais}`, SEO_BS, "Vaša plata u svijetu"],
+      tituloGlobal: [SEO_BS, "Vaša plata u svijetu"],
+      descripcion: (pais, n) => `Saznajte do kojeg dana u godini sa svojom platom ${gBs.en(pais)} radite za državu i koliko bi vam neto ostalo u ${zemljamaUBs(n)}. Besplatno, bez registracije.`,
+      descripcionGlobal: (n) => `Saznajte do kojeg dana u godini radite za državu i koliko bi vam od plate neto ostalo u ${zemljamaUBs(n)}. Besplatno, bez registracije.`,
+    },
+    ceja: "Vaš Dan porezne slobode",
+    h1: "Do kojeg dana u godini radite za državu?",
+    bajada: (n) => `Unesite bruto platu i vidjet ćete svoj datum. Zatim ga uporedite u ${zemljamaUBs(n)}, uz istu kupovnu moć i porezna pravila svake zemlje.`,
+    form: {
+      titulo: "Vaša plata",
+      sueldo: "Bruto plata",
+      mes: "Mjesečno",
+      anio: "Godišnje",
+      periodo: "Period plate",
+      pais: "Zemlja u kojoj radite",
+      ejemplo: "Primjer",
+      ejemploAyuda: "Ovo je primjer plate. Unesite svoju i svi će se brojevi odmah preračunati.",
+      propio: "Preuzeto iz vašeg izračuna.",
+      invalido: "Unesite iznos veći od nule.",
+      pagas: "Mjesečna plata s platne liste: zakonske dodatne isplate (13. ili 14. plata) dodajemo mi. Neto plata je prosjek za 12 mjeseci.",
+    },
+    heroe: {
+      hasta: (fecha) => `Za državu radite do ovog datuma: ${fecha}`,
+      tasa: (pct) => `${pct} vaše plate odlazi na porez na dohodak i obavezne doprinose.`,
+      dias: (n, total) => `${n} od ${total} dana`,
+      enMano: "Neto vam ostaje",
+      porMes: "mjesečno",
+      anio: (anio, n, total) => `Godina ${anio}: ${n} od ${total} dana za državu.`,
+      resto: "Od sljedećeg dana sve što zaradite pripada vama.",
+    },
+    ranking: {
+      titulo: "Ista plata, zemlja po zemlja",
+      bajada: "Toliko bi vam neto ostalo u svakoj zemlji uz istu kupovnu moć. Svaki red dolazi iz službenog kalkulatora te zemlje.",
+      lista: "Zemlje poredane po neto plati",
+      buscar: "Pretraži zemlju",
+      filtrar: "Filtriraj po regiji",
+      todas: "Sve",
+      regiones: { americas: "Amerika", europa: "Evropa", asia: "Azija i Oceanija", africa: "Afrika i Bliski istok" },
+      tuPais: "Vaša zemlja",
+      mejor: "Najbolje prolazi",
+      enMano: "Neto mjesečno",
+      enTuMoneda: "U vašoj valuti",
+      vsTuPais: "U poređenju s vašom zemljom",
+      verTodos: (n) => `Prikaži sve zemlje (${n})`,
+      verMenos: "Prikaži manje",
+      sinResultados: (q) => `Nijedna zemlja ne odgovara pretrazi „${q}”.`,
+      abrir: (pais) => `Otvori kalkulator ${gBs.para(pais)}`,
+      mas: (pct) => `${pct} više`,
+      menos: (pct) => `${pct} manje`,
+      igual: "Isto",
+      puesto: (p, total) => `Vaša zemlja je na ${p}. mjestu od ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Vaša kartica za dijeljenje",
+      bajada: "Prikazuje vaš datum i procente. Koliko zarađujete, na njoj nikada ne piše.",
+      hasta: (fecha) => `Za državu radim do ovog datuma: ${fecha}`,
+      tasa: (pct) => `${pct} moje plate odlazi na poreze`,
+      mejor: (pais, pct) => `S mojom platom ${gBs.en(pais)} bi mi ostalo ${pct} više neto`,
+      mejorPropio: (pais) => `S mojom platom nigdje mi ne ostaje više nego ${gBs.en(pais)}`,
+      yVos: "A vi?",
+      cta: "Saznajte svoj datum:",
+      generica: "Do kojeg dana u godini radite za državu?",
+      genericaBajada: (n) => `Vaša plata u ${zemljamaUBs(n)}, prema službenom kalkulatoru svake od njih`,
+      compartir: "Podijeli karticu",
+      compartirDuelo: "Odgovori na izazov",
+      descargar: "Preuzmi sliku",
+      copiado: "Link je kopiran. Zalijepite ga gdje vam treba.",
+      compartido: "Gotovo, poslano.",
+      error: "Dijeljenje nije uspjelo. Pokušajte ponovno.",
+      texto: (fecha) => `Za državu radim do ovog datuma: ${fecha}. A vi?`,
+      alt: "Pregled vaše kartice",
+    },
+    duelo: {
+      amigo: (fecha) => `Osoba koja vam je poslala link radi za državu do ovog datuma: ${fecha}`,
+      yVos: "A vi?",
+      invitacion: "Unesite svoju platu i uporedite se.",
+      vos: "Vi",
+      elAmigo: "Pošiljalac",
+      dia: "Za državu radi do",
+      tasa: "Porezi i doprinosi",
+      mejorPais: "Najbolje prolazi",
+      antes: (d) => `Vaša sloboda počinje ${danaBs(d)} ranije nego kod pošiljaoca.`,
+      despues: (d) => `Pošiljalac ima slobodu ${danaBs(d)} ranije od vas.`,
+      empate: "Objema stranama sloboda počinje istog dana.",
+      desde: (pais) => `Radi ${gBs.en(pais)}`,
+    },
+    cero: {
+      dia: "nula dana",
+      heroeAntes: "Za državu radite",
+      tarjetaAntes: "Za državu radim",
+      motivo: "Od ove se plate ne plaćaju ni porez na dohodak ni obavezni doprinosi.",
+      texto: "Ove godine ne radim za državu nijedan dan. A vi?",
+      amigo: "Osoba koja vam je poslala link ne radi za državu nijedan dan.",
+    },
+    metodo: {
+      titulo: "Kako računamo",
+      estimacion: "Ovo je procjena za poređenje zemalja, a ne platna lista. Porezne olakšice, djeca ili bonusi mogu promijeniti vaš broj.",
+      supuestos: [
+        "Osoba bez partnera i djece, sa zadanim vrijednostima kalkulatora svake zemlje.",
+        "Neto plata je ono što ostane nakon poreza na dohodak i doprinosa koje plaća sam zaposlenik. Porezi na potrošnju i doprinosi poslodavca ne računaju se.",
+        "Trinaesta plata ili druge obavezne dodatne isplate raspoređuju se na godinu onako kako propisuje zakon svake zemlje.",
+        "U Sjedinjenim Državama ne dodaju se porezi pojedinih saveznih država ni lokalni porezi: samo savezni porez i doprinosi iz plate.",
+        "Za preračun vaše plate u drugu zemlju koristimo paritet kupovne moći (PPP): isti životni standard, a ne današnji devizni kurs.",
+        "PPP Argentine ažurira se indeksom potrošačkih cijena INDEC-a jer ga Svjetska banka objavljuje samo do 2021.",
+        "Dan slobode raspoređuje poreze na godinu od 1. januara. Kada na poreze ode 30 % plate, za državu radite 30 % godine.",
+      ],
+      ppaTitulo: "Paritet kupovne moći",
+      bancoMundial: "Svjetska banka",
+      ppa: (organismo, indicador, anio) => `${organismo}, pokazatelj ${indicador}, posljednja dostupna godina: ${anio}.`,
+      consultado: (fecha) => `Provjereno ${fecha}`,
+      verFuente: "Prikaži izvor",
+      fuentesTitulo: "Izvor za svaku zemlju",
+      fuentesBajada: "Svaki red koristi kalkulator neto plate te zemlje i njene službene podatke.",
+      verificado: (fecha) => `Podaci provjereni ${fecha}`,
+      sello: (fecha) => `Službeni podaci provjereni u izvoru svake zemlje. Najstarija provjera: ${fecha}`,
+    },
+    faqTitulo: "Česta pitanja",
+    faq: (n) => [
+      {
+        pregunta: "Šta je Dan porezne slobode?",
+        respuesta:
+          "To je dan u godini kada biste imali plaćene poreze i doprinose kada bi sve što zaradite od 1. januara najprije išlo državi. Ovdje ga računamo iz vaše plate, a ne iz prosjeka zemlje.",
+      },
+      {
+        pregunta: "Zašto upoređujemo po kupovnoj moći?",
+        respuesta: "Po deviznom kursu plata može izgledati ogromno ili sitno, ovisno o danu. Paritet kupovne moći upoređuje što za taj novac zaista možete kupiti u svakoj zemlji.",
+      },
+      {
+        pregunta: "Čuva li se moja plata?",
+        respuesta: "Ne. Izračun se radi u vašem pretraživaču. Ono što dijelite sadrži samo datume, procente i zemlje.",
+      },
+      {
+        pregunta: "Zašto se moja stvarna neto plata razlikuje?",
+        respuesta:
+          "Računamo s osobom bez partnera i djece te sa zadanim vrijednostima. Porezne olakšice, bonusi ili posebni režimi mijenjaju broj. Za tačan izračun svoje situacije otvorite kalkulator svoje zemlje.",
+      },
+      {
+        pregunta: "Koje su zemlje ovdje?",
+        respuesta: `Danas ${pluralBs(n, "zemlja", "zemlje", "zemalja")}, svaka sa svojim kalkulatorom neto plate i službenim podacima. Dodajemo nove čim provjerimo njihova porezna pravila.`,
+      },
+    ],
+    destacado: {
+      ceja: "Svjetska poređenje",
+      titulo: "Do kojeg dana u godini radite za državu?",
+      texto: "Unesite platu i pogledajte koliko bi vam neto ostalo u drugim zemljama.",
+      ir: "Izračunaj svoj datum",
+    },
+  },
+};
+
 // ───────────────────────────── mn ─────────────────────────────
 
 // Mongol (ADR 0002, D28): «та» de cortesía; la tarjeta y el texto para compartir van en primera
@@ -7327,7 +7494,7 @@ const lv: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, bs };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

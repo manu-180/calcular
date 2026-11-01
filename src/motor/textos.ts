@@ -988,6 +988,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "točaka", coma: "zareza" },
     },
   },
+  // Bosnio (ADR 0002, D39): «vi» en minúscula, como los bancos y Porezna uprava FBiH y Poreska uprava RS. El botón va en la forma corta
+  // de las interfaces croatas («Izračunaj»); las oraciones, en imperativo de segunda del plural
+  // («unesite», «izaberite»).
+  bs: {
+    base: {
+      calcular: "Izračunaj",
+      resultado: "Rezultat",
+      si: "Da",
+      no: "Ne",
+      sinResultado: "Ovaj rezultat zasad ne prikazujemo.",
+      errores: {
+        requerido: "Ispunite ovo polje.",
+        "numero-invalido": "Unesite broj, na primjer {ejemplo}.",
+        "entero-invalido": "Unesite cijeli broj, bez decimala.",
+        "menor-que-min": "Najmanja dozvoljena vrijednost je {min}.",
+        "mayor-que-max": "Najveća dozvoljena vrijednost je {max}.",
+        "fecha-invalida": "Izaberite ispravan datum.",
+        "hora-invalida": "Izaberite ispravno vrijeme.",
+        "opcion-invalida": "Izaberite jednu od ponuđenih opcija.",
+        "region-invalida": "Izaberite regiju.",
+        "calculo-fallido": "S ovim podacima izračun nije uspio. Provjerite vrijednosti i pokušajte ponovno.",
+      },
+      milesAmbiguos: "Da li ste mislili {sugerido}? Unesite broj bez {signos}.",
+      separadores: { punto: "tačaka", coma: "zareza" },
+    },
+  },
   // Albanés (ADR 0002, D31): «ju» en minúscula, como e-Albania, Tatime y Raiffeisen Albania. El botón va en
   // la forma corta de las interfaces albanesas («Llogarit»); las oraciones, en 2.ª del plural («vendosni»).
   sq: {

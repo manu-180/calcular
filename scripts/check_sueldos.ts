@@ -517,6 +517,8 @@ const IGUALES = new Set([
   "sr:ocupaciones.medicina",
   "hr:ocupaciones.marketing",
   "hr:ocupaciones.medicina",
+  "bs:ocupaciones.marketing",
+  "bs:ocupaciones.medicina",
   "ja:aporte.cargando",
   "uz:ocupaciones.marketing",
   "uz:pagina.colMediana",

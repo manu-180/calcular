@@ -1546,6 +1546,54 @@ hreflang. `check_universales` prueba `hr-HR` con EUR, un nombre largo que se dec
 Vincentu i Grenadinima») y uno plural con adjetivos («u Ujedinjenim Arapskim Emiratima»); `check_motor` prueba
 formato, plurales, parseo y gramática.
 
+### D39. Bosnio, para Bosnia y Herzegovina (2026-11-01)
+
+`IDIOMAS` suma `bs` (bosanski, escritura latina). Motor, sitio, inicio, novedades, legales, errores, compartir,
+embed, «Tu sueldo en el mundo», calendario, horas de trabajo, rankings, «Sueldos reales», afiliados, el
+diccionario de venta y las 41 universales están en bosnio. Los modelos son el croata (D27, estructura y gramática)
+y el serbio (D23): el texto parte del croata y pasa por una tabla de vocabulario, con la concordancia revisada a
+mano donde el sustantivo cambia de género («ovaj izvještaj», «jedna sedmica», «isti period», «učešće je veće»).
+
+**Lo que devuelve Intl (Node).** `bs-BA`: `1.234.567,50 KM` (la marca ya sale como «KM», no hizo falta
+`simbolos`), `1.234,50 €`, `1.234,50 USD`; `14. oktobar 2026.`, con el mes en **nominativo** (a diferencia del
+croata); PluralRules one/few/other. El parser no necesitó nada propio. Como «do», «od» y «na dan» piden genitivo, las
+universales de fechas usan `fechaGenitivBs` y «Tu sueldo en el mundo» cierra la frase en dos puntos («do ovog
+datuma: 15. oktobar»), como el esloveno (D32), porque ahí la fecha se dibuja aparte.
+
+**Registro.** Un solo registro, el de los bancos y los servicios del país (Porezna uprava FBiH, Poreska uprava RS,
+bancos que operan en las dos entidades): «vi» en minúscula con imperativo de 2.ª del plural («unesite»,
+«izračunajte», «izaberite»). Los mercados van con `trato: "usted"` y los botones en la forma corta («Izračunaj»,
+«Podijeli»).
+
+**Variante y vocabulario.** Ijekavski («mjesec», «cijena», «vrijeme») y vocabulario bosnio: «plata», «sedmica»,
+«hiljada», «procenat», «kurs», «firma», «porodica», «historija», «ljekar», «penzija», «kirija», «bakšiš», «ko»,
+«tokom», meses «januar ... decembar» (y «august»), «da li». Se quedan «porez», «doprinosi», «PDV», «kamata» y «porezna»
+(en FBiH es Porezna uprava; en RS, Poreska uprava: las universales no nombran ninguna). «Što» queda en los
+relativos y correlativos («što ranije, to bolje») y «Šta» en las preguntas. `reglas_idioma` atrapa ekavski, los croatismos
+de un texto copiado y el tuteo; «plaća» sola también es verbo («koliko plaća») y no se atrapa.
+
+**Plurales y gramática.** `formaBs`, `pluralBs` (one/few/other) y `unidades.ts`. `padezHr` pasa a ser
+`crearPadezi` con la configuración de cada idioma; `padezBs` usa los nombres de Intl en bs («Kipar», «Obala Slonovače»,
+«Sveti Vinsent i Grenadin», «ostrva», neutro plural): «u Bosni i Hercegovini», «za Bosnu i Hercegovinu», «Bosne i
+Hercegovine», «na Kukovim ostrvima». `padezHr` sigue dando lo mismo (lo prueba `check_motor`).
+
+**Comillas.** „ ” (abre abajo, cierra arriba), como en croata.
+
+**Universales neutrales.** BiH tiene dos entidades (FBiH y RS) con impuestos distintos y un Brčko Distrikt: los
+textos no nombran organismos, leyes ni moneda, salvo los genéricos «PDV» y «EKS». Lo propio de cada entidad queda
+para el agente de país.
+
+**Slugs.** ASCII sin diacríticos. De sección, distintos de los del serbio y el croata para que no choquen:
+`plata-u-svijetu`, `rang-lista-drzava`, `koliko-sati-treba-raditi`, `kalendar-plata`, `realne-plate`. Universales con
+su búsqueda real (`kalkulator-kredita`, `pdv-kalkulator`, `plata-po-satu`, `kalkulator-procenata`). `kalkulator-plate`
+queda libre para la calculadora neta del país.
+
+**Prueba.** `zz-bs` (Zetalandija) es una edición interna en `bs-001`. `check_universales` prueba `bs-BA` con BAM y
+dos nombres que se declinan por partes («na Svetom Vinsentu i Grenadinu», «u Ujedinjenim Arapskim Emiratima»);
+`check_motor` prueba formato, plurales, parseo y gramática.
+
+**Pendiente.** Revisión por hablante nativo antes de publicar el país.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.
