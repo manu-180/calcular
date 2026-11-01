@@ -79,6 +79,8 @@ export interface DiccionarioVenta {
     anchoCompleto?: boolean;
     // bn: la oración de la carta cierra con el dari «।» en vez del punto (ADR 0002, D14).
     puntoFinal?: string;
+    // hy: lo que presenta un dato en la carta va con «՝» en vez de los dos puntos (ADR 0002, D30).
+    dosPuntos?: string;
     comoSeCalcula: string;
     fuentes: string;
     verificado: string;

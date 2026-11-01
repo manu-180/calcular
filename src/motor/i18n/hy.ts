@@ -121,7 +121,7 @@ const base: TextosSitio = {
   },
   migas: { inicio: "Գլխավոր", etiqueta: "Դուք այստեղ եք" },
   seo: {
-    tituloGlobal: "CalcularYa, անվճար հաշվիչներ պաշտոնական տվյալներով",
+    tituloGlobal: "CalcularYa, հաշվիչներ պաշտոնական տվյալներով",
     descripcionGlobal: "Աշխատավարձի, վարկերի, հարկերի և այլ անվճար հաշվիչներ յուրաքանչյուր երկրի համար՝ գործող պաշտոնական արժեքով և աղբյուրով։",
     tituloPais: (pais, anio) => [
       `Աշխատավարձի և հարկերի հաշվիչներ ${g.en(pais)}, ${anio}`,

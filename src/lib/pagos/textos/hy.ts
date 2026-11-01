@@ -721,6 +721,7 @@ export const hy: DiccionarioVenta = {
     documento: "Անձը հաստատող փաստաթղթի համար",
     etiquetaEnMinuscula: true,
     puntoFinal: "։",
+    dosPuntos: "՝ ",
     comoSeCalcula: "Ինչպես է հաշվարկվում",
     fuentes: "Պաշտոնական աղբյուրներ",
     verificado: "ստուգվել է՝",
