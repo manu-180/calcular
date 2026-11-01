@@ -549,6 +549,7 @@ function reglasMk(texto: string): string[] {
   const p: string[] = [];
   if (/[ыэёъяющйьЫЭЁЪЯЮЩЙЬ]/.test(texto)) p.push("«ы э ё ъ я ю щ й ь»: no existen en macedonio");
   if (/[іїєґўћђІЇЄҐЎЋЂ]/.test(texto)) p.push("letra de otro alfabeto cirílico en un texto macedonio");
+  if (/ден\.[.,]/.test(texto)) p.push("«ден..» o «ден.,»: la frase no cierra con un monto (D36)");
   if (/[«»]|"(?=\p{sc=Cyrillic})|(?<=\p{sc=Cyrillic}[.,?:;]?)"/u.test(texto)) p.push("comillas: en macedonio van „ “");
   const a = AJENAS_MK.exec(texto);
   if (a) p.push(`«${a[0]}» no es macedonio (búlgaro, serbio o ruso)`);

@@ -17,9 +17,9 @@ import "@/motor/embed/estilos-embed.css";
 // latin-ext trae las letras del croata (č, ć, đ, š, ž).
 // latin-ext trae las letras del checo (ř, ě, ů); con unicode-range solo se baja si la página las usa.
 // latin-ext trae la ő y la ű del húngaro; con unicode-range solo se baja si la página las usa.
-// vietnamese trae ơ, ư y las vocales con tono (U+1EA0 a U+1EF9). Con display optional, sin precarga una
-// visita nueva mezclaría Geist con la fallback dentro de una misma palabra (ADR 0002, D37).
-const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext", "vietnamese"], display: "optional" });
+const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext"], display: "optional" });
+// Vietnamita: instancia aparte con swap y sin precarga, para no precargar ese archivo en todos los mercados (ADR 0002, D37).
+const geistVi = Geist({ variable: "--font-geist", subsets: ["vietnamese"], display: "swap", preload: false });
 
 export const revalidate = 86400;
 
@@ -41,7 +41,7 @@ export default async function LayoutEmbed({ children, params }: { children: Reac
   const ctx = contextoSitio(registro, mercado as CodigoMercado) ?? contextoSitio(registro, "global")!;
   return (
     // suppressHydrationWarning: SCRIPT_OPCIONES le agrega data-tema y --cye-acento a <html> antes de que React hidrate.
-    <html lang={ctx.mercado.locale} className={`${geist.variable} cye-html`} suppressHydrationWarning>
+    <html lang={ctx.mercado.locale} className={`${ctx.mercado.idioma === "vi" ? geistVi.variable : geist.variable} cye-html`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: SCRIPT_OPCIONES }} />
       </head>

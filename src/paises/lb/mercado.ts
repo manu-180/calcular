@@ -11,7 +11,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["LBP"],
   zonaHoraria: "Asia/Beirut",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 0, modo: "mitad-arriba" },
   escala: 90000,
 };

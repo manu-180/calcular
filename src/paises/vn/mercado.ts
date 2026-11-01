@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["VND"],
   zonaHoraria: "Asia/Ho_Chi_Minh",
-  estado: "interno",
+  estado: "publicado",
   regiones: [
     { id: "vung-1", nombre: "Vùng I" },
     { id: "vung-2", nombre: "Vùng II" },

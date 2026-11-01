@@ -2076,10 +2076,15 @@ conversión de sueldos usa `quy-doi-luong`: `tinh-luong-gross-net` queda libre p
 palabra: si no, el nombre del país contaría como «año» en una etiqueta.
 
 **Fuente.** Geist trae las letras vietnamitas pero no el ₫ (se miró el TTF que entrega Google Fonts). En las tarjetas OG va
-Noto Sans de respaldo. En la web se suma el subset `vietnamese` a Geist en los layouts intl y embed: con `display: optional`,
-un archivo sin precarga deja en la primera visita ơ y ư en la fallback, en medio de una palabra en Geist. El costo es un
-archivo más precargado en todos los mercados, no solo en vi. Si molesta, la alternativa es una instancia aparte sin precarga,
-como el árabe, a cambio de ese cambio de fuente. El ₫ en la web sale de la fallback del navegador.
+Noto Sans de respaldo. En la web, con `display: optional`, un archivo sin precarga deja en la primera visita ơ y ư en la
+fallback, en medio de una palabra en Geist. Sumar el subset `vietnamese` a la instancia de todos precargaba un archivo más en
+todos los mercados, y next/font precarga por archivo de ruta, no por valor de `[mercado]`: no se puede limitar a vi. Por eso
+los layouts intl y embed declaran una segunda instancia, `geistVi` (`display: swap`, `preload: false`), que solo toman los
+mercados con idioma vi. **Costo visual, solo en vi:** en una visita nueva el texto pinta con la fallback ajustada y cambia a
+Geist cuando llega el archivo (también el H1, que es el LCP), con un repintado que los demás idiomas no tienen. Además la
+precarga de latin de `geist` queda sin usar en esas páginas: el navegador baja latin otra vez bajo el nombre sin precarga y
+puede avisar en consola. El resto de los mercados no paga ningún archivo más, solo unas líneas de `@font-face` en el CSS. El
+₫ en la web sale de la fallback del navegador.
 
 La edición interna es `zz-vi` (Zetaland, vi-001). Mercados de prueba en `check_universales`: Việt Nam con VND y «Saint
 Vincent và Grenadines» con XCD.

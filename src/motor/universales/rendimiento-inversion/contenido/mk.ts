@@ -22,7 +22,7 @@ export const contenidoMk: ContenidoUniversal = (ctx) => {
       "CAGR е сложениот годишен процент што го дава истиот резултат ако се повторува секоја година.",
     ],
     ejemplo: [
-      `Ако вложите ${m(inicial)} и на крајот имате ${m(final)}, добивката е ${m(final - inicial)}, а ROI е ${p(roi(inicial, final))}.`,
+      `Ако вложите ${m(inicial)} и на крајот имате ${m(final)} на сметката, заработувате ${m(final - inicial)} и ROI е ${p(roi(inicial, final))}.`,
       `Ако тоа се случило за 5 години, годишниот поврат е ${p(cagr(inicial, final, 5))}. За 2 години е ${p(cagr(inicial, final, 2))}.`,
     ],
     faq: [

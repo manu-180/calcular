@@ -29,7 +29,7 @@ export const contenidoMk: ContenidoUniversal = (ctx) => {
     ],
     ejemplo: [
       `Стан од ${m(precio)} со сопствено учество од 20 % и станбен кредит со камата од 7 % на 25 години, наспроти кирија од ${m(alquiler)} месечно.`,
-      `На 10 години напред подобро излегува ${quien(a10)}, со разлика од ${m(Math.abs(a10.comprar - a10.alquilar))}. На 3 години напред подобро излегува ${quien(a3)}, со разлика од ${m(Math.abs(a3.comprar - a3.alquilar))}.`,
+      `На 10 години напред подобро излегува ${quien(a10)}, со ${m(Math.abs(a10.comprar - a10.alquilar))} помал вкупен трошок. На 3 години напред подобро излегува ${quien(a3)}, со ${m(Math.abs(a3.comprar - a3.alquilar))} помал вкупен трошок.`,
     ],
     faq: [
       {

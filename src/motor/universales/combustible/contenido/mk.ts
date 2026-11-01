@@ -10,7 +10,7 @@ export const contenidoMk: ContenidoUniversal = (ctx) => {
         const galones = 300 / 30;
         return [
           `Патување од 150 милји во секој правец со автомобил што минува 30 милји со галон бара ${formatearNumero(ctx, galones)} галони.`,
-          `По ${m(precio)} за галон, тоа се ${m(galones * precio)}. Поделено меѓу две лица, по ${m((galones * precio) / 2)} по лице.`,
+          `По ${m(precio)} за галон, тоа се ${m(galones * precio)} за целиот пат. Поделено меѓу две лица, по ${m((galones * precio) / 2)} по лице.`,
         ];
       })()
     : (() => {
@@ -18,7 +18,7 @@ export const contenidoMk: ContenidoUniversal = (ctx) => {
         const litros = (600 * 8) / 100;
         return [
           `Патување од 300 km во секој правец со автомобил што троши 8 литри на 100 km бара ${formatearNumero(ctx, litros)} литри.`,
-          `По ${m(precio)} за литар, тоа се ${m(litros * precio)}. Поделено меѓу две лица, по ${m((litros * precio) / 2)} по лице.`,
+          `По ${m(precio)} за литар, тоа се ${m(litros * precio)} за целиот пат. Поделено меѓу две лица, по ${m((litros * precio) / 2)} по лице.`,
         ];
       })();
   return {

@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["KHR", "USD"],
   zonaHoraria: "Asia/Phnom_Penh",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 0, modo: "mitad-arriba" },
   escala: 4000,
 };

@@ -28,7 +28,7 @@ export const contenidoMk: ContenidoUniversal = (ctx) => {
       "За посакувана добивка додајте ја на фиксните трошоци, а пресметката е иста.",
     ],
     ejemplo: [
-      `Со фиксни трошоци од ${m(fijos)}, цена од ${m(precio)} и променлив трошок од ${m(variable)}, секоја продажба остава ${m(precio - variable)} за покривање на трошоците.`,
+      `Со фиксни трошоци од ${m(fijos)} месечно, цена од ${m(precio)} по парче и променлив трошок од ${m(variable)} по парче, секоја продажба остава ${m(precio - variable)} за покривање на трошоците.`,
       `Треба да продадете ${unidades(base.unidades)} (${m(base.facturacion)}) за да ги покриете трошоците и ${unidades(meta.unidades)} за да заработувате ${m(objetivo)} месечно.`,
     ],
     faq: [

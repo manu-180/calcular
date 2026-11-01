@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["MKD"],
   zonaHoraria: "Europe/Skopje",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 0, modo: "mitad-arriba" },
   escala: 55,
 };
