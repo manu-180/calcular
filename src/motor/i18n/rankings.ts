@@ -6,7 +6,7 @@ import { cifrasBn } from "./bengali";
 import { formaUk, pluralBg, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
 import { formaRu, pluralRu } from "./plural";
-import { formaCs, pluralCs } from "./plural";
+import { formaCs, pluralCs, pluralLt } from "./plural";
 import { GRAMATICA } from "./gramatica";
 import { pluralEl } from "./plural";
 import { pluralHe, type FormasHe } from "./hebreo";
@@ -3744,7 +3744,125 @@ const bg: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Lituano (ADR 0002, D29): impersonal, como el resto de los rankings. La posición va en nominativo
+// tras el nombre suelto («Lietuva: 27 vieta iš 41»). Las cantidades van en nominativo con pluralLt o
+// tras «iš viso:», nunca pegadas a un sustantivo en otro caso.
+const saliesLt = (n: number | string) => pluralLt(n, "šalis", "šalys", "šalių");
+
+const lt: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Šalių reitingai",
+    seo: {
+      titulo: ["Šalių reitingai pagal atlyginimą ir mokesčius", "Šalių reitingai"],
+      descripcion: (n) => `Kur iš to paties atlyginimo lieka daugiausia, mokesčių laisvės diena ir kiek lieka iš atlyginimo padidinimo. Šalių iš viso: ${n}. Oficialūs duomenys, atnaujinama kasdien.`,
+    },
+    ceja: "Atviri duomenys",
+    h1: "Atlyginimai ir mokesčiai, šalis po šalies",
+    bajada: (n) => `Iš viso: ${saliesLt(n)}. Perkamoji galia ta pati, kiekviena šalis su sava oficialia skaičiuokle. Reitingai atsinaujina patys kasdien.`,
+    actualizado: (f) => `Atnaujinta: ${f}`,
+    ver: "Žiūrėti reitingą",
+    niveles: { titulo: "Pradinis atlyginimas", nombres: { bajo: "Mažas atlyginimas", medio: "Vidutinis atlyginimas", alto: "Didelis atlyginimas" }, anual: (m) => `${m} per metus` },
+    tramos: { titulo: "Padidinimo dydis", nombre: (a, b) => `Nuo ${a} iki ${b}` },
+    referencia: {
+      nivel: (m) => `atlyginimas „ant popieriaus“: ${m} tarptautinių dolerių per metus`,
+      tramo: (a, b) => `atlyginimo „ant popieriaus“ padidinimas nuo ${a} iki ${b} tarptautinių dolerių per metus`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${p} vieta iš ${total}`,
+    de: (t) => `iš ${t}`,
+    empate: (o) => (Number(o) === 1 ? "kaip ir dar viena šalis" : `kaip ir dar ${saliesLt(o)}`),
+    fuera: (pais) => `${pais}: šios šalies reitinguose kol kas nėra. Palyginimui reikia atlyginimo „į rankas“ skaičiuoklės, kuri dar neparengta.`,
+    lider: "Pirma vieta reitinge",
+    global: (n) => `${saliesLt(n)}, nuo pirmos iki paskutinės`,
+    valores: {
+      porMes: (m) => `${m} per mėnesį`,
+      ningunDia: "Nė vienos dienos",
+      deCada: (n) => `${n} iš 100`,
+      carga: (pct) => `${pct} tenka pajamų mokesčiui ir įmokoms`,
+      cargaAumento: (pct) => `${pct} padidinimo tenka mokesčiams ir įmokoms`,
+    },
+    cambio: {
+      titulo: (mes) => `Pokytis, palyginti su mėnesiu: ${mes}`,
+      sube: (n) => `${pluralLt(n, "vieta", "vietomis", "vietų")} aukščiau`,
+      baja: (n) => `${pluralLt(n, "vieta", "vietomis", "vietų")} žemiau`,
+      igual: "Be pokyčių",
+      nuevo: "Nauja reitinge",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Vieta",
+      pais: "Šalis",
+      edicion: "Ši versija",
+      unidad: "Tarptautiniais doleriais",
+    },
+    kit: {
+      titulo: "Žiniasklaidai",
+      bajada: "Sakinys, grafikas ir nuoroda į šį reitingą, paruošti skelbti.",
+      compartir: "Dalytis",
+      descargar: "Atsisiųsti grafiką",
+      copiar: "Kopijuoti citatą",
+      copiado: "Citata nukopijuota",
+      enlace: "Nuoroda nukopijuota",
+      compartido: "Išsiųsta",
+      error: "Nukopijuoti nepavyko. Tekstą viršuje galima nukopijuoti rankiniu būdu.",
+      cita: (frase, ranking, ref, fecha) => `${frase}, reitingas „${ranking}“ (${ref}). Šaltinis: CalcularYa, duomenys: ${fecha}.`,
+      texto: (frase, ranking) => `${frase}, reitingas „${ranking}“.`,
+      alt: (ranking) => `Reitingo „${ranking}“ grafikas`,
+    },
+    metodo: {
+      titulo: "Kaip sudaromas reitingas",
+      bajada: "Kiekviena šalis skaičiuojama savo oficialia atlyginimo „į rankas“ skaičiuokle pagal šiandienos taisykles. Tada šalys palyginamos esant tai pačiai perkamajai galiai.",
+      niveles: (b, m, a) => `Pradiniai atlyginimai: ${b}, ${m} ir ${a} tarptautinių dolerių „ant popieriaus“ per metus.`,
+      empates: "Dvi šalys su ta pačia reikšme lentelėje dalijasi vieta, o kita vieta praleidžiama (1, 2, 2, 4).",
+      historial: "Vietos pokytis matuojamas pagal reitingo kopiją, kuri išsaugoma kas mėnesį. Jei praėjusio mėnesio kopijos nėra, pokytis nerodomas.",
+      actualizacion: "Lentelė perskaičiuojama kasdien pagal galiojančius kiekvienos šalies duomenis. Nauja šalis atsiranda, kai pradeda veikti jos skaičiuoklė.",
+      ver: "Visa metodika",
+    },
+    datos: {
+      titulo: "Atviri duomenys",
+      bajada: "Skaičiai, kuriais remiasi šie reitingai, šalis po šalies, JSON ir CSV formatais. Atnaujinama kasdien.",
+      json: "Duomenys JSON",
+      csv: "Duomenys CSV",
+      licencia: "Licencija CC BY 4.0: duomenis galima laisvai naudoti, platinti ir skelbti, nurodant CalcularYa ir pateikiant nuorodą į šį puslapį.",
+      atribucion: "Rekomenduojama citata",
+    },
+    mundo: { titulo: "Su konkrečiu atlyginimu", texto: (n) => `Apskaičiuoti su savo atlyginimu ir kiekvienos šalies data galite puslapyje „${n}“.`, ir: "Skaičiuoti" },
+    otros: "Kiti reitingai",
+    rankings: {
+      rinde: {
+        titulo: "Kur iš to paties atlyginimo lieka daugiausia",
+        corto: "Kur lieka daugiausia",
+        seo: ["Kur iš to paties atlyginimo lieka daugiausia: šalių reitingas", "Kur iš to paties atlyginimo lieka daugiausia"],
+        descripcion: (n) => `Tas pats atlyginimas, ta pati perkamoji galia: kiek lieka „į rankas“ pagal kiekvienos šalies mokesčių taisykles. Šalių iš viso: ${n}. Atnaujinama kasdien.`,
+        bajada: "Tas pats atlyginimas „ant popieriaus“, esant tai pačiai perkamajai galiai, skaičiuojamas pagal kiekvienos šalies taisykles. Viršuje šalys, kuriose „į rankas“ lieka daugiausia.",
+        metrica: "„Į rankas“ per mėnesį",
+        carga: "Mokesčiai ir įmokos",
+        como: "Mėnesio atlyginimas „į rankas“ yra 12 mėnesių vidurkis, tarptautiniais doleriais.",
+      },
+      libertad: {
+        titulo: "Mokesčių laisvės diena pagal šalis",
+        corto: "Mokesčių laisvės diena",
+        seo: ["Mokesčių laisvės diena pagal šalis: reitingas", "Mokesčių laisvės diena pagal šalis"],
+        descripcion: (n) => `Metų diena, kai sumokėtas pajamų mokestis ir įmokos, su tuo pačiu atlyginimu. Šalių iš viso: ${n}. Atnaujinama kasdien.`,
+        bajada: "Metų diena, kai sumokėtas pajamų mokestis ir įmokos, su tuo pačiu atlyginimu kiekvienoje šalyje. Viršuje šalys, kuriose ji ateina anksčiausiai.",
+        metrica: "Valstybei dirbama iki",
+        carga: "Mokesčiai ir įmokos",
+        como: "Data mokesčius paskirsto metams nuo sausio 1 d.: kai mokesčių našta yra 30 %, valstybei dirbama 30 % metų.",
+      },
+      aumento: {
+        titulo: "Kiek lieka iš atlyginimo padidinimo",
+        corto: "Kiek lieka iš padidinimo",
+        seo: ["Kiek lieka iš atlyginimo padidinimo: šalių reitingas", "Kiek lieka iš atlyginimo padidinimo"],
+        descripcion: (n) => `Iš 100, pridėtų prie atlyginimo „ant popieriaus“, kiek lieka sumokėjus pajamų mokestį ir įmokas. Šalių iš viso: ${n}. Atnaujinama kasdien.`,
+        bajada: "Iš 100, pridėtų prie atlyginimo „ant popieriaus“, kiek iš tikrųjų pasiekia piniginę sumokėjus pajamų mokestį ir įmokas. Viršuje šalys, kuriose lieka daugiausia.",
+        metrica: "Lieka iš 100",
+        carga: "Ribinis tarifas",
+        como: "Tai ribinis tarifas tarp dviejų atlyginimų: padidinimo dalis, tenkanti mokesčiams ir įmokoms.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lt };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

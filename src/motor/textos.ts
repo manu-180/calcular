@@ -819,6 +819,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
   // Serbio en latinica y ekavski (ADR 0002, D23): «vi» en minúscula, como los bancos y eUprava. El
   // botón va en la forma corta de las interfaces serbias («Izračunaj»); las oraciones, en imperativo
   // de segunda del plural («unesite», «izaberite»).
+  // Lituano (ADR 0002, D29): imperativo de segunda del plural; el botón en infinitivo, como VMI y los bancos.
+  lt: {
+    base: {
+      calcular: "Skaičiuoti",
+      resultado: "Rezultatas",
+      si: "Taip",
+      no: "Ne",
+      sinResultado: "Šio rezultato kol kas nerodome.",
+      errores: {
+        requerido: "Užpildykite šį lauką.",
+        "numero-invalido": "Įveskite skaičių, pavyzdžiui, {ejemplo}.",
+        "entero-invalido": "Įveskite sveikąjį skaičių be dešimtainių.",
+        "menor-que-min": "Mažiausia leistina reikšmė: {min}.",
+        "mayor-que-max": "Didžiausia leistina reikšmė: {max}.",
+        "fecha-invalida": "Pasirinkite tinkamą datą.",
+        "hora-invalida": "Pasirinkite tinkamą laiką.",
+        "opcion-invalida": "Pasirinkite vieną iš galimybių.",
+        "region-invalida": "Pasirinkite regioną.",
+        "calculo-fallido": "Su šiais duomenimis apskaičiuoti nepavyko. Patikrinkite reikšmes ir bandykite dar kartą.",
+      },
+      milesAmbiguos: "Ar turėjote omenyje {sugerido}? Įveskite skaičių be {signos}.",
+      separadores: { punto: "taškų", coma: "kablelių" },
+    },
+  },
   sr: {
     base: {
       calcular: "Izračunaj",

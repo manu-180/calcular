@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosLt: TextosUi<UiCalorias> = {
+  slug: "kaloriju-skaiciuokle",
+  ui: () => ({
+    sexo: "Lytis",
+    mujer: "Moteris",
+    hombre: "Vyras",
+    edad: "Amžius",
+    peso: (u) => `Svoris (${u})`,
+    altura: (u) => `Ūgis (${u})`,
+    pies: "Ūgis: pėdos (ft)",
+    pulgadas: "Ūgis: coliai (in)",
+    actividad: "Fizinio aktyvumo lygis",
+    sedentaria: "Minimalus (sėslus gyvenimo būdas)",
+    ligera: "Lengvas (nuo 1 iki 3 dienų per savaitę)",
+    moderada: "Vidutinis (nuo 3 iki 5 dienų per savaitę)",
+    alta: "Didelis (nuo 6 iki 7 dienų per savaitę)",
+    muyAlta: "Labai didelis (intensyvios treniruotės arba fizinis darbas)",
+    objetivo: "Tikslas",
+    mantener: "Išlaikyti svorį",
+    bajar: "Palaipsniui mesti svorį",
+    subir: "Palaipsniui priaugti svorio",
+    basal: "Bazinė medžiagų apykaita (kcal per dieną)",
+    basalAyuda: "Energija, kurią organizmas sunaudoja visiškos ramybės būsenoje.",
+    mantenimiento: "Kalorijos svoriui išlaikyti (kcal per dieną)",
+    calObjetivo: "Kalorijos jūsų tikslui (kcal per dieną)",
+    calObjetivoAyuda: "Nedidelis pokytis: 500 kcal per dieną mažiau svoriui mesti ir 300 kcal daugiau svoriui priaugti.",
+    errorEdad: "Formulė skirta nuo 15 iki 100 metų amžiaus žmonėms.",
+    errorPeso: "Svoris turi būti didesnis už nulį.",
+    errorAltura: "Ūgis turi būti didesnis už nulį.",
+    notaMinimo: (kcal) => `Metant svorį dienos norma nemažinama žemiau ${kcal} kcal. Jei norite valgyti mažiau, pasitarkite su specialistu.`,
+    aviso: "Tai apytikslis įvertis pagal Mifflin-St Jeor formulę. Kiekvienas organizmas skirtingas: šis skaičiavimas nepakeičia gydytojo ar dietologo konsultacijos.",
+  }),
+};

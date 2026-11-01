@@ -3383,7 +3383,112 @@ const bg: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Lituano (ADR 0002, D29): impersonal, como el resto. {en} llega en locativo por GRAMATICA.lt
+// («Lietuvoje») y ya lleva mayúscula. {horas} sale de Intl en nominativo («2 valandos», «10 valandų»),
+// así que nunca va tras un verbo que pida acusativo: va después de dos puntos, y {n} igual o tras
+// «iš viso:».
+const lt: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Kiek darbo valandų tai kainuoja?",
+    seo: {
+      titulo: ["Kiek darbo valandų kainuoja iPhone {en}", "Darbo valandos už iPhone {en}", "Kiek darbo valandų tai kainuoja?"],
+      tituloGlobal: ["Kiek darbo valandų kainuoja iPhone pasaulyje", "Kiek darbo valandų tai kainuoja?"],
+      tituloProducto: ["Kiek darbo valandų kainuoja {producto} {en}", "Darbo valandos už {producto} {en}", "Kiek darbo valandų kainuoja {producto}"],
+      tituloProductoGlobal: ["Kiek darbo valandų kainuoja {producto} pasaulyje", "Kiek darbo valandų kainuoja {producto}"],
+      descripcion: "iPhone, MacBook ar Spotify, perskaičiuoti į darbo valandas už minimalų atlyginimą {en}, ir palyginimas tarp šalių (iš viso: {n}). Oficialios kainos ir kiekvieno skaičiaus šaltinis.",
+      descripcionGlobal: "iPhone, MacBook ar Spotify, perskaičiuoti į darbo valandas už minimalų atlyginimą, ir palyginimas tarp šalių (iš viso: {n}). Oficialios kainos ir kiekvieno skaičiaus šaltinis.",
+      descripcionProducto: "{en} {producto}: {horas} darbo už minimalų atlyginimą. Šalių reitingas (iš viso: {n}) su oficialia kaina ir kiekvieno skaičiaus šaltiniu.",
+      descripcionProductoGlobal: "Kiek darbo valandų už minimalų atlyginimą kainuoja {producto}: palyginimas tarp šalių (iš viso: {n}). Kiekvienos parduotuvės oficiali kaina ir kiekvieno skaičiaus šaltinis.",
+    },
+    ceja: "Indeksas: {mes}",
+    h1: "Kiek darbo valandų tai kainuoja?",
+    h1Producto: "Kiek darbo valandų kainuoja {producto}?",
+    bajada: "To paties produkto oficiali kaina, perskaičiuota į darbo valandas už minimalų atlyginimą. Palyginimas tarp šalių (iš viso: {n}).",
+    form: { producto: "Produktas", pais: "Šalis", porMes: "per mėnesį" },
+    heroe: {
+      antes: "{en} {producto}:",
+      despues: "darbo už minimalų atlyginimą",
+      despuesMes: "darbo už minimalų atlyginimą kas mėnesį",
+      jornadaUno: "{n} darbo diena po 8 valandas",
+      jornadaOtras: "Darbo dienų po 8 valandas: {n}",
+      precio: "Oficiali kaina {precio}",
+      salario: "Minimalus atlyginimas {monto} už valandą",
+      sinPrecio: "{en} šio produkto neparduoda nė viena oficiali parduotuvė.",
+      mejor: "Mažiausiai dirbti reikia {en}: {horas}.",
+      mejorPropio: "Nė vienoje indekso šalyje darbo valandų nereikia mažiau.",
+      puesto: "{p} vieta iš {total}",
+      escalaHoras: "Kiekvienas langelis yra viena darbo valanda",
+      escalaSemanas: "Kiekvienas langelis yra viena 40 valandų darbo savaitė",
+      masDeUnAnio: "Daugiau nei metai darbo",
+    },
+    ranking: {
+      titulo: "Šalis po šalies",
+      bajada: "Nuo mažiausio valandų skaičiaus iki didžiausio. Kiekviena kaina yra oficiali gamintojo kaina toje šalyje.",
+      lista: "Šalys pagal darbo valandas",
+      verTodos: "Rodyti visas šalis ({n})",
+      verMenos: "Rodyti mažiau",
+      elegido: "Pasirinkta",
+      sinPrecio: "Indekso šalių be duomenų: {n}. Jose šio produkto neparduoda nė viena oficiali parduotuvė.",
+      horas: "Valandos",
+      precio: "Oficiali kaina",
+    },
+    compartir: {
+      titulo: "Kortelė, kuria galite pasidalyti",
+      bajada: "Joje tik vieši duomenys: oficiali kaina ir darbo valandos už minimalų atlyginimą.",
+      boton: "Dalytis kortele",
+      descargar: "Atsisiųsti Stories formatu",
+      copiado: "Nuoroda nukopijuota.",
+      compartido: "Išsiųsta.",
+      error: "Šiuo metu pasidalyti nepavyko.",
+      texto: "{en} {producto}: {horas} darbo už minimalų atlyginimą. O kitose šalyse?",
+      alt: "Kortelės peržiūra",
+    },
+    metodo: {
+      titulo: "Kaip skaičiuojame",
+      estimacion: "Valandos = oficiali kaina ÷ minimalus valandinis atlygis. Tai oficialių kainų palyginimas, o ne pasiūlymas pirkti.",
+      supuestos: [
+        "Kaina yra pigiausios versijos kainoraščio kaina oficialioje gamintojo parduotuvėje, paimta iš kiekvienos šalies puslapio.",
+        "Spotify Premium yra individualus vieno mėnesio planas, be pradinių akcijų.",
+        "Minimalus atlyginimas yra šiandien galiojantis bendras dydis suaugusiam visą darbo laiką dirbančiam darbuotojui. Kur dydžių keli pagal sektorių ar regioną, imamas pagrindinio regiono mažmeninės prekybos dydis.",
+        "Kai įstatymas nustato mėnesio ar dienos minimumą, jis perskaičiuojamas į valandas pagal tos šalies įstatyminį savaitės darbo laiką.",
+        "Ispanija ir Portugalija minimalų atlyginimą moka 14 kartų per metus: suma paskirstoma 12 mėnesių, kaip tai daro Eurostatas.",
+        "Kai parduotuvė kainą nurodo JAV doleriais, ji perskaičiuojama tos šalies oficialiu kursu.",
+        "Darbo diena kiekvienoje šalyje trunka 8 valandas, kad dienas būtų galima palyginti.",
+      ],
+      fuentesTitulo: "Kiekvieno skaičiaus šaltinis",
+      fuentesBajada: "Kiekviena šalis su minimaliu atlyginimu, savaitės darbo laiku ir parduotuvės kainomis, prie kiekvieno duomens nurodyta paėmimo data.",
+      salario: "Minimalus atlyginimas",
+      jornada: "Savaitės darbo laikas",
+      precio: "Kaina",
+      cambio: "Valiutos kursas",
+      consultado: "Paimta: {fecha}",
+      verificado: "Patikrinta: {fecha}",
+      verFuente: "Žiūrėti šaltinį",
+      sello: "Kainos paimtos nuo {desde} iki {hasta}. Senesnė nei 120 dienų kaina neberodoma.",
+      conversion: {
+        hora: "Įstatymas nustato valandinį dydį.",
+        mes: "Mėnesio suma × 12 ÷ 52 savaitės ÷ {h} val. per savaitę.",
+        mesPagas: "Mėnesio suma × {p} (išmokos per metus) ÷ 52 savaitės ÷ {h} val. per savaitę.",
+        anio: "Metų suma ÷ 52 savaitės ÷ {h} val. per savaitę.",
+        semana: "Savaitės suma ÷ {h} val.",
+        dia: "Dienos suma ÷ {h} val. darbo dienos.",
+        diaPagado: "Dienos suma × {d} (apmokamos dienos) ÷ {h} val. per savaitę.",
+        divisor: "Mėnesio suma ÷ {d}, įstatymo nustatytas valandų daliklis.",
+      },
+    },
+    faqTitulo: "Dažniausi klausimai",
+    faq: [
+      { pregunta: "Kaip skaičiuojamos valandos?", respuesta: "Oficiali produkto kaina dalijama iš tos šalies minimalaus valandinio atlygio. Kai įstatymas nustato mėnesio ar dienos minimumą, jis perskaičiuojamas į valandas pagal tos šalies įstatyminį savaitės darbo laiką." },
+      { pregunta: "Kodėl būtent minimalus atlyginimas?", respuesta: "Tai atlyginimas, kurį įstatymas nustato beveik kiekvienoje šalyje, ir jį galima patikrinti oficialiame šaltinyje. Vidutinį atlyginimą kiekviena šalis matuoja savaip, todėl jo taip patikimai palyginti nepavyktų." },
+      { pregunta: "Ar į kainą įskaičiuotas mokestis?", respuesta: "Tai kainoraščio kaina, kurią rodo oficiali parduotuvė kiekvienoje šalyje. Jungtinėse Valstijose ir Kanadoje į ją neįskaičiuotas pardavimo mokestis, kitose šalyse parduotuvė mokesčius gali pridėti tik atsiskaitant." },
+      { pregunta: "Kodėl čia nėra kai kurios šalies?", respuesta: "Į indeksą patenka tik šalys, turinčios patikrintą galiojantį minimalų atlyginimą ir oficialios parduotuvės kainą. Jei produkto nėra oficialioje internetinėje parduotuvėje, duomenų nėra. Perpardavėjų kainos nenaudojamos." },
+      { pregunta: "Kaip dažnai atnaujinami duomenys?", respuesta: "Kainos imamos iš kiekvienos parduotuvės ir po 120 dienų pasensta: senesnė kaina neberodoma. Minimalus atlyginimas imamas iš oficialių kiekvienos šalies duomenų ir keičiasi, kai pasikeičia įstatymas." },
+    ],
+    og: { de: "darbo už minimalų atlyginimą", deMes: "darbo už minimalų atlyginimą per mėnesį", generica: "Kiek darbo valandų kainuoja {producto}?", genericaBajada: "Oficiali kaina darbo valandomis už minimalų atlyginimą. Šalių iš viso: {n}", menos: "Mažiausiai valandų", cta: "Visos šalys:" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lt };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

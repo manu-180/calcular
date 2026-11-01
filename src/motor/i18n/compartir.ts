@@ -546,6 +546,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
     },
   },
   // Serbio en latinica y ekavski (ADR 0002, D23): «vi» en minúscula; botones en la forma corta.
+  lt: {
+    base: {
+      boton: "Dalytis",
+      botonAria: "Dalytis šia skaičiuokle",
+      menuTitulo: "Dalytis per",
+      copiar: "Kopijuoti nuorodą",
+      copiado: "Nuoroda nukopijuota",
+      compartido: "Išsiųsta",
+      errorCorto: "Nukopijuoti nepavyko",
+      errorAyuda: "Nuorodos nukopijuoti nepavyko. Nukopijuokite ją iš naršyklės adreso juostos.",
+      nuevaPestana: "atsidaro naujoje kortelėje",
+      mensaje: (nombre) => `${nombre}. Nemokamai, skaičiavimas užtrunka minutę.`,
+      puenteIntro: "O kitose šalyse?",
+      puenteEnlace: (n) => `Pažiūrėkite, kiek jums liktų „į rankas“ daugiau nei ${n} šalyse`,
+    },
+  },
   sr: {
     base: {
       boton: "Podeli",

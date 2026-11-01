@@ -2,7 +2,7 @@ import { pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { casosEl, GRAMATICA, mayusculaHu } from "./gramatica";
 import { DIAS_HE, pluralHe, prefijoHe, type FormasHe } from "./hebreo";
-import { formaRu, pluralBg, pluralCs, pluralEl, pluralPl, pluralRo, pluralRu, pluralUk } from "./plural";
+import { formaRu, pluralBg, pluralCs, pluralEl, pluralLt, pluralPl, pluralRo, pluralRu, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import { PT_LUSOFONIA } from "./variantes";
@@ -5686,7 +5686,168 @@ const bg: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Lituano (ADR 0002, D29): «jūs» en minúscula, como VMI y los bancos; la tarjeta y el texto para
+// compartir, en primera persona. Sin participios sobre quien lee. El país va con GRAMATICA.lt y las
+// cantidades con pluralLt; donde el caso no sería nominativo, el número va tras «iš viso:» o dos puntos.
+const gLt = GRAMATICA.lt;
+const SEO_LT = "Mokesčių laisvės diena ir atlyginimas „į rankas“ pasaulyje";
+const diasLt = (d: number) => pluralLt(d, "diena", "dienos", "dienų");
+
+const lt: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Jūsų atlyginimas pasaulyje",
+    seo: {
+      titulo: (pais) => [`${SEO_LT} | ${pais}`, SEO_LT, "Jūsų atlyginimas pasaulyje"],
+      tituloGlobal: [SEO_LT, "Jūsų atlyginimas pasaulyje"],
+      descripcion: (pais, n) => `Sužinokite, iki kurios metų dienos su savo atlyginimu ${gLt.en(pais)} dirbate valstybei ir kiek gautumėte „į rankas“ kitose šalyse (iš viso: ${n}). Nemokamai, be registracijos.`,
+      descripcionGlobal: (n) => `Sužinokite, iki kurios metų dienos dirbate valstybei ir kiek iš jūsų atlyginimo liktų „į rankas“ kitose šalyse (iš viso: ${n}). Nemokamai, be registracijos.`,
+    },
+    ceja: "Jūsų mokesčių laisvės diena",
+    h1: "Iki kurios metų dienos dirbate valstybei?",
+    bajada: (n) => `Įveskite atlyginimą „ant popieriaus“ ir pamatysite savo datą. Tada palyginkite ją su kitomis šalimis (iš viso: ${n}): perkamoji galia ta pati, mokesčių taisyklės kiekvienos šalies savos.`,
+    form: {
+      titulo: "Jūsų atlyginimas",
+      sueldo: "Atlyginimas „ant popieriaus“",
+      mes: "Per mėnesį",
+      anio: "Per metus",
+      periodo: "Atlyginimo laikotarpis",
+      pais: "Šalis, kurioje dirbate",
+      ejemplo: "Pavyzdys",
+      ejemploAyuda: "Tai pavyzdinis atlyginimas. Įveskite savo, ir visi skaičiai iškart bus perskaičiuoti.",
+      propio: "Paimta iš jūsų skaičiavimo.",
+      invalido: "Įveskite didesnę nei nulis sumą.",
+      pagas: "Mėnesio atlyginimas pagal atlyginimo lapelį: įstatymo numatytus papildomus atlyginimus (13-ą ar 14-ą) pridedame patys. Atlyginimas „į rankas“ yra 12 mėnesių vidurkis.",
+    },
+    heroe: {
+      hasta: (fecha) => `Valstybei dirbate iki ${fecha}`,
+      tasa: (pct) => `${pct} jūsų atlyginimo tenka pajamų mokesčiui ir privalomosioms įmokoms.`,
+      dias: (n, total) => `${n} iš ${total} dienų`,
+      enMano: "Jums lieka „į rankas“",
+      porMes: "per mėnesį",
+      anio: (anio, n, total) => `${anio} m.: valstybei ${n} iš ${total} dienų.`,
+      resto: "Nuo kitos dienos viskas, ką uždirbate, priklauso jums.",
+    },
+    ranking: {
+      titulo: "Tas pats atlyginimas, šalis po šalies",
+      bajada: "Tiek gautumėte „į rankas“ kiekvienoje šalyje, kai perkamoji galia ta pati. Kiekviena eilutė apskaičiuota tos šalies oficialia skaičiuokle. Atlyginimas visur vienodas: keičiasi tik mokesčiai ir įmokos, o ne tai, kiek toje šalyje uždirbama.",
+      lista: "Šalys pagal atlyginimą „į rankas“",
+      buscar: "Ieškoti šalies",
+      filtrar: "Filtruoti pagal regioną",
+      todas: "Visos",
+      regiones: { americas: "Amerika", europa: "Europa", asia: "Azija ir Okeanija", africa: "Afrika ir Artimieji Rytai" },
+      tuPais: "Jūsų šalis",
+      mejor: "Mažiausi mokesčiai",
+      enMano: "„Į rankas“ per mėnesį",
+      enTuMoneda: "Jūsų valiuta",
+      vsTuPais: "Palyginti su jūsų šalimi",
+      verTodos: (n) => `Rodyti visas šalis (${n})`,
+      verMenos: "Rodyti mažiau",
+      sinResultados: (q) => `Pagal paiešką „${q}“ šalies nerasta.`,
+      abrir: (pais) => `Atidaryti ${gLt.de(pais)} skaičiuoklę`,
+      mas: (pct) => `${pct} daugiau`,
+      menos: (pct) => `${pct} mažiau`,
+      igual: "Tiek pat",
+      puesto: (p, total) => `Jūsų šalies vieta: ${p} iš ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Kortelė, kuria galite pasidalyti",
+      bajada: "Joje matyti jūsų data ir procentai. Kiek uždirbate, joje niekada nerodoma.",
+      hasta: (fecha) => `Valstybei dirbu iki ${fecha}`,
+      tasa: (pct) => `${pct} mano atlyginimo tenka mokesčiams`,
+      mejor: (pais, pct) => `Su tokiu pat atlyginimu ${gLt.en(pais)} mokesčių mokėčiau mažiau: „į rankas“ gaučiau ${pct} daugiau`,
+      mejorPropio: (pais) => `Su mano atlyginimu niekur neliktų daugiau nei ${gLt.en(pais)}`,
+      yVos: "O jūs?",
+      cta: "Sužinokite savo datą:",
+      generica: "Iki kurios metų dienos dirbate valstybei?",
+      genericaBajada: (n) => `Jūsų atlyginimas pasaulyje. Šalių: ${n}, kiekvienoje sava oficiali skaičiuoklė`,
+      compartir: "Dalytis kortele",
+      compartirDuelo: "Atsakyti į iššūkį",
+      descargar: "Atsisiųsti paveikslėlį",
+      copiado: "Nuoroda nukopijuota. Įklijuokite ją, kur reikia.",
+      compartido: "Išsiųsta.",
+      error: "Pasidalyti nepavyko. Bandykite dar kartą.",
+      texto: (fecha) => `Valstybei dirbu iki ${fecha}. O jūs?`,
+      alt: "Jūsų kortelės peržiūra",
+    },
+    duelo: {
+      amigo: (fecha) => `Asmuo, atsiuntęs jums šią nuorodą, valstybei dirba iki ${fecha}.`,
+      yVos: "O jūs?",
+      invitacion: "Įveskite savo atlyginimą ir palyginkite.",
+      vos: "Jūs",
+      elAmigo: "Kitas asmuo",
+      dia: "Valstybei dirba iki",
+      tasa: "Mokesčiai ir įmokos",
+      mejorPais: "Mažiausi mokesčiai",
+      antes: (d) => `Jūsų laisvės diena ateina anksčiau nei asmens, atsiuntusio nuorodą. Skirtumas: ${diasLt(d)}.`,
+      despues: (d) => `Asmens, atsiuntusio nuorodą, laisvės diena ateina anksčiau nei jūsų. Skirtumas: ${diasLt(d)}.`,
+      empate: "Jūsų laisvės dienos sutampa.",
+      desde: (pais) => `Dirba ${gLt.en(pais)}`,
+    },
+    cero: {
+      dia: "0 dienų",
+      heroeAntes: "Valstybei dirbate",
+      tarjetaAntes: "Valstybei dirbu",
+      motivo: "Iš šio atlyginimo neišskaičiuojamas nei pajamų mokestis, nei privalomosios įmokos.",
+      texto: "Šiais metais valstybei nedirbu nė vienos dienos. O jūs?",
+      amigo: "Asmuo, atsiuntęs jums šią nuorodą, valstybei nedirba nė vienos dienos.",
+    },
+    metodo: {
+      titulo: "Kaip skaičiuojame",
+      estimacion: "Tai įvertis šalims palyginti, o ne atlyginimo lapelis. Mokesčių lengvatos, vaikai ar premijos gali pakeisti jūsų skaičių.",
+      supuestos: [
+        "Asmuo be sutuoktinio ir vaikų, kiekvienos šalies skaičiuoklės numatytosios reikšmės.",
+        "Atlyginimas „į rankas“ yra tai, kas lieka sumokėjus pajamų mokestį ir paties darbuotojo įmokas. Vartojimo mokesčiai ir darbdavio įmokos neskaičiuojami.",
+        "Tryliktas atlyginimas ar kiti privalomi papildomi atlyginimai paskirstomi per metus taip, kaip nustato kiekvienos šalies įstatymai.",
+        "Jungtinėse Valstijose nepridedami valstijų ir vietos mokesčiai: tik federalinis mokestis ir įmokos nuo darbo užmokesčio.",
+        "Jūsų atlyginimui perskaičiuoti į kitą šalį naudojame perkamosios galios paritetą (PPP): tas pats gyvenimo lygis, o ne šiandienos valiutos kursas.",
+        "Argentinos PPP atnaujinamas pagal INDEC vartotojų kainų indeksą, nes Pasaulio bankas jį skelbia tik iki 2021 metų.",
+        "Laisvės diena mokesčius paskirsto metams nuo sausio 1 d. Kai mokesčiams tenka 30 % atlyginimo, valstybei dirbate 30 % metų.",
+      ],
+      ppaTitulo: "Perkamosios galios paritetas",
+      bancoMundial: "Pasaulio bankas",
+      ppa: (organismo, indicador, anio) => `${organismo}, rodiklis ${indicador}, naujausi turimi metai: ${anio}.`,
+      consultado: (fecha) => `Patikrinta: ${fecha}.`,
+      verFuente: "Žiūrėti šaltinį",
+      fuentesTitulo: "Kiekvienos šalies šaltinis",
+      fuentesBajada: "Kiekvienoje eilutėje naudojama tos šalies atlyginimo „į rankas“ skaičiuoklė ir oficialūs jos duomenys.",
+      verificado: (fecha) => `Duomenys patikrinti: ${fecha}`,
+      sello: (fecha) => `Oficialūs duomenys, patikrinti kiekvienos šalies šaltinyje. Seniausias patikrinimas: ${fecha}.`,
+    },
+    faqTitulo: "Dažniausi klausimai",
+    faq: (n) => [
+      {
+        pregunta: "Kas yra mokesčių laisvės diena?",
+        respuesta:
+          "Tai metų diena, kurią būtumėte sumokėję mokesčius ir įmokas, jei viskas, ką uždirbate nuo sausio 1 d., pirmiausia atitektų valstybei. Čia ją skaičiuojame pagal jūsų atlyginimą, o ne pagal šalies vidurkį.",
+      },
+      {
+        pregunta: "Kodėl lyginame pagal perkamąją galią?",
+        respuesta: "Pagal valiutos kursą atlyginimas gali atrodyti milžiniškas arba menkas, priklausomai nuo dienos. Perkamosios galios paritetas parodo, ką už tuos pinigus iš tikrųjų galima nusipirkti kiekvienoje šalyje.",
+      },
+      {
+        pregunta: "Ar mano atlyginimas išsaugomas?",
+        respuesta: "Ne. Skaičiuojama jūsų naršyklėje. Tai, kuo dalijatės, apima tik datas, procentus ir šalis.",
+      },
+      {
+        pregunta: "Kodėl mano tikras atlyginimas „į rankas“ skiriasi?",
+        respuesta:
+          "Skaičiuojame asmeniui be sutuoktinio ir vaikų, su numatytosiomis reikšmėmis. Mokesčių lengvatos, premijos ar specialūs režimai skaičių pakeičia. Tiksliam jūsų atvejo skaičiavimui atidarykite savo šalies skaičiuoklę.",
+      },
+      {
+        pregunta: "Kokios šalys čia yra?",
+        respuesta: `Šiandien iš viso: ${pluralLt(n, "šalis", "šalys", "šalių")}, kiekviena su sava atlyginimo „į rankas“ skaičiuokle ir oficialiais duomenimis. Naujų pridedame, kai patikriname jų mokesčių taisykles.`,
+      },
+    ],
+    destacado: {
+      ceja: "Pasaulio palyginimas",
+      titulo: "Iki kurios metų dienos dirbate valstybei?",
+      texto: "Įveskite atlyginimą ir pažiūrėkite, kiek gautumėte „į rankas“ kitose šalyse.",
+      ir: "Sužinoti savo datą",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lt };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

@@ -3,7 +3,7 @@ import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { GRAMATICA, mayusculaHu } from "./gramatica";
-import { formaBg, formaCs, formaEl, formaRu, formaUk, pluralBg, pluralCs, pluralEl, pluralRo, pluralRu, pluralUk } from "./plural";
+import { formaBg, formaCs, formaEl, formaLt, formaRu, formaUk, pluralBg, pluralCs, pluralEl, pluralLt, pluralRo, pluralRu, pluralUk } from "./plural";
 import { formaSr, pluralSr } from "./plural";
 import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
@@ -2165,7 +2165,83 @@ const bg: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Lituano (ADR 0002, D29): impersonal como los demás, imperativo con «jūs» donde se le habla a quien
+// lee. El país con GRAMATICA.lt («Lietuvoje») y los días con formaLt/pluralLt: «po» pide genitivo y
+// «prieš» acusativo.
+const gLt = GRAMATICA.lt;
+const lt: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Atlyginimo ir mokesčių kalendorius",
+    seo: {
+      titulo: (pais, anios) => [
+        `Atlyginimo ir mokesčių kalendorius ${anios} m. ${gLt.en(pais)}: svarbios datos`,
+        `Atlyginimo ir mokesčių kalendorius ${anios} m. ${gLt.en(pais)}`,
+        `Atlyginimo kalendorius ${gLt.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Datos, kurios keičia atlyginimą ${gLt.en(pais)}, iš oficialių šaltinių: ${proximas}. Prie kiekvienos yra skaičiuoklė.`,
+      descripcionSin: (pais) => `Datos, kurios keičia atlyginimą ${gLt.en(pais)}, iš oficialių šaltinių, prie kiekvienos skaičiuoklė. Pridėkite jas prie kalendoriaus telefone.`,
+    },
+    ceja: (anios) => `${anios} m. kalendorius`,
+    h1: (pais) => `Atlyginimo ir mokesčių kalendorius ${gLt.en(pais)}`,
+    acento: "datos, nuo kurių priklauso atlyginimas",
+    bajada: "Kiekviena data paimta iš oficialaus šaltinio ir veda į skaičiuoklę, kuriai ji svarbi. Puslapis atsinaujina pats, kai paskelbiama nauja reikšmė.",
+    proxima: "Artimiausia data",
+    cuenta: {
+      hoy: "Šiandien",
+      manana: "Rytoj",
+      ayer: "Vakar",
+      en: (n) => `Po ${pluralLt(n, "dienos", "dienų", "dienų")}`,
+      hace: (n) => `Prieš ${pluralLt(n, "dieną", "dienas", "dienų")}`,
+      dias: (n) => formaLt(n, "diena", "dienos", "dienų"),
+    },
+    queViene: "Netrukus",
+    yaRige: "Jau galioja",
+    mesPorMes: "Metai pagal mėnesius",
+    sinFechas: "Pakeitimų nepaskelbta",
+    filtro: "Filtruoti pagal temą",
+    todo: "Visos",
+    tipos: { pago: "Išmokos", "salario-minimo": "Minimalus atlyginimas", impuestos: "Mokesčiai", aportes: "Įmokos ir pensijos", laboral: "Darbo taisyklės", indices: "Atskaitos dydžiai" },
+    pasa: (antes, despues) => `Keičiasi: buvo ${antes}, bus ${despues}`,
+    queda: (valor) => `Galioja: ${valor}`,
+    cambian: "Sumos keičiasi",
+    zonas: (lista) => `Regionai: ${lista}`,
+    limite: "Paskutinis terminas",
+    agregar: "Pridėti į mano kalendorių",
+    descargar: "Apple, Outlook ir kiti (.ics failas)",
+    google: "Google kalendorius",
+    calcular: "Skaičiuoti",
+    tambien: "Taip pat skaičiuoklėse",
+    fuente: (organismo, fecha) => `Šaltinis: ${organismo}. Patikrinta: ${fecha}.`,
+    verificado: (fecha) => `Patikrinta: ${fecha}`,
+    suscribir: {
+      titulo: "Visas kalendorius, visada naujausias",
+      texto: "Užsiprenumeruokite vieną kartą, ir naujos datos pačios atsiras jūsų telefono ar kompiuterio kalendoriuje.",
+      boton: "Prenumeruoti kalendorių",
+      copiar: "Kopijuoti nuorodą",
+      copiado: "Nuoroda nukopijuota",
+    },
+    fuentes: {
+      titulo: "Iš kur paimta kiekviena data",
+      texto: "Čia patenka tik datos, kurias jau nustatė teisės aktas arba oficialios įstaigos paskelbta reikšmė. To, kas dar nepaskelbta, čia nėra.",
+    },
+    vacio: "Per artimiausius dvylika mėnesių šia tema datų nėra.",
+    destacado: {
+      ceja: "Atlyginimo kalendorius",
+      titulo: "Datos, nuo kurių šiais metais priklauso atlyginimas",
+      ir: "Žiūrėti kalendorių",
+      proxima: (titulo, fecha) => `Artimiausia: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Atlyginimo ir mokesčių kalendorius ${gLt.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Atlyginimo ir mokesčių terminai ${gLt.en(pais)} iš oficialių šaltinių.`,
+      calculadora: "Skaičiuoklė",
+      fuente: "Šaltinis",
+    },
+    og: { proxima: "Artimiausia data", mas: (n) => `Ir dar šiais metais: ${pluralLt(n, "data", "datos", "datų")}` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lt };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

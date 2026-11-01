@@ -325,6 +325,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "מקור",
     },
   },
+  lt: {
+    base: {
+      datos: "Jūsų duomenys",
+      resultado: "Rezultatas",
+      vacio: "Užpildykite duomenis ir spustelėkite „Skaičiuoti“, rezultatas pasirodys čia.",
+      sinResultado: "Šio rezultato kol kas nerodome.",
+      avisos: { info: "Naudinga žinoti", cautela: "Atkreipkite dėmesį", bloquea: "Kodėl rezultato nerodome" },
+      fuenteDelAviso: "Šaltinis",
+    },
+  },
   sr: {
     base: {
       datos: "Vaši podaci",

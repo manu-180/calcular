@@ -388,6 +388,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
     },
   },
   // Serbio en latinica y ekavski (ADR 0002, D23): «vi» en minúscula.
+  lt: {
+    base: {
+      titulo: "Kraustotės į užsienį arba mokate iš kitos šalies?",
+      etiqueta: "Partnerių nuorodos",
+      socios: {
+        wise: "Kelių valiutų sąskaita pinigams gauti ir siųsti tarp šalių vidutiniu rinkos kursu, su iš anksto matomu mokesčiu.",
+        deel: "Sutartys ir išmokos tiems, kurie iš vienos šalies dirba kitos šalies įmonei.",
+      },
+      nota: "Jei per šias nuorodas atidarysite sąskaitą, svetainė gali gauti komisinį atlyginimą. Jums dėl to nekainuos nieko daugiau.",
+      nuevaPestana: "atsidaro naujoje kortelėje",
+    },
+  },
   sr: {
     base: {
       titulo: "Selite se u inostranstvo ili plaćate iz druge zemlje?",

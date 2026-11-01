@@ -656,6 +656,28 @@ export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
     texto: "{en} me {producto} košta {horas} rada. A u drugim zemljama?",
     og: { antes: "{en}, sa mojom platom,", producto: "{producto} me košta", de: "rada", deMes: "rada mesečno", otros: "Isti nivo plate:", cta: "Koliko sati rada to košta?" },
   }),
+  // Lituano (ADR 0002, D29): impersonal; la tarjeta, en primera persona. {horas} va tras dos puntos,
+  // porque Intl la da en nominativo.
+  lt: base({
+    titulo: "Tas pats skaičiavimas, su tikru atlyginimu",
+    bajada: "Įvedus mėnesio atlyginimą „ant popieriaus“, valandos skaičiuojamos pagal jį, o ne pagal minimalų atlyginimą. Suma lieka šioje naršyklėje: ji nepatenka nei į nuorodą, nei į paveikslėlį.",
+    campo: "Mėnesio atlyginimas „ant popieriaus“",
+    ayuda: "Valiuta: {moneda}, prieš išskaitas.",
+    traido: "Paimta iš atlyginimo skaičiuoklės.",
+    invalido: "Reikia didesnės nei nulis sumos.",
+    vacio: "Įvedus atlyginimą, bus parodytos valandos.",
+    antes: "{en} su šiuo atlyginimu {producto}:",
+    despues: "darbo",
+    despuesMes: "darbo kas mėnesį",
+    minimo: "Už minimalų atlyginimą: {horas}.",
+    veces: "{x}× minimalus atlyginimas",
+    rankingTitulo: "Tas pats atlyginimo lygis kiekvienoje šalyje",
+    rankingBajada: "{x}× kiekvienos šalies minimalus atlyginimas, perskaičiuotas į darbo valandas.",
+    tarjetaTitulo: "Kortelė su mano valandomis",
+    tarjetaBajada: "Joje tik valandos ir šalys. Atlyginimo niekada nėra.",
+    texto: "{en} {producto} man: {horas} darbo. O kitose šalyse?",
+    og: { antes: "{en} su mano atlyginimu", producto: "{producto} man:", de: "darbo", deMes: "darbo per mėnesį", otros: "Tas pats atlyginimo lygis:", cta: "Kiek darbo valandų tai kainuoja?" },
+  }),
 };
 
 export function textosHorasPropio(idioma: Idioma, trato: Trato, locale?: string): TextosHorasPropio {

@@ -1214,7 +1214,43 @@ const bg: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Lituano (ADR 0002, D29): imperativo de segunda del plural; el país en dativo (GRAMATICA.lt: «Lietuvai»).
+const lt: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa skaičiuoklė",
+    marcaNuevaPestana: "(atsidaro naujoje kortelėje)",
+    noDisponible: { titulo: "Ši skaičiuoklė nepasiekiama", texto: "Galbūt pasikeitė jos adresas." },
+    insertar: "Įdėkite į savo svetainę",
+    pagina: {
+      titulo: (pais) => [`Nemokamos skaičiuoklės jūsų svetainei | ${pais}`, "Nemokamos skaičiuoklės jūsų svetainei"],
+      descripcion: (pais) => `Pasirinkite skaičiuoklę ${GRAMATICA.lt.para(pais)}, nukopijuokite kodą ir įdėkite jį į savo tinklaraštį ar svetainę. Nemokamai, su visada naujausiais oficialiais duomenimis.`,
+      h1: "Įdėkite skaičiuoklę į savo svetainę",
+      bajada: "Pasirinkite skaičiuoklę, nukopijuokite kodą ir įdėkite ten, kur reikia. Nemokamai, o duomenys atsinaujina patys.",
+      calculadora: "Skaičiuoklė",
+      buscar: "Raskite skaičiuoklę",
+      sinResultados: "Pagal jūsų paiešką skaičiuoklės neradome.",
+      tema: "Išvaizda",
+      claro: "Šviesi",
+      oscuro: "Tamsi",
+      ancho: "Plotis",
+      anchoCompleto: "Per visą plotį",
+      acento: "Akcento spalva",
+      colores: ["Žalia", "Mėlyna", "Oranžinė", "Rožinė", "Grafito"],
+      credito: "Rodyti šaltinio nuorodą po skaičiuokle",
+      vistaPrevia: "Peržiūra",
+      codigo: "Įdėjimo kodas",
+      copiar: "Kopijuoti kodą",
+      copiado: "Kodas nukopijuotas",
+      ayudaScript: "Skriptas neprivalomas: jis pritaiko skaičiuoklės aukštį prie jos turinio.",
+      ventajas: ["Nemokamai ir be registracijos", "Visada naujausi oficialūs duomenys", "Prisitaiko prie bet kokio pločio"],
+      nota: "Po skaičiuokle yra nuoroda į CalcularYa. Prašome jos nepašalinti.",
+      verTodas: (pais) => `Rodyti visas skaičiuokles ${GRAMATICA.lt.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa skaičiuoklė`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lt };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);
