@@ -9,7 +9,7 @@ El motor no tiene montenegrino aparte. Los textos locales van en ijekavski con v
 
 **Regla del motor, verificada:** `scripts/reglas_idioma.ts` solo atrapa lo ijekavski si el locale no termina en `-ME` (línea 390). `check_textos_paises me` pasó 827 textos con «mjesec», «vrijeme», «cijena». Las palabras del croata se siguen atrapando también en `-ME`.
 
-**Lo que queda en ekavski:** las 40 universales y el marco del sitio (inicio, legales, errores) son del motor, escritos en ekavski. Una página de Montenegro mezcla locales en ijekavski con universales en ekavski. D23 prevé que Montenegro las pise con una edición: no la hice porque son 40 traducciones y queda fuera de `src/paises/me` solo en parte. Para decidir antes de publicar.
+**Lo que queda en ekavski:** las 40 universales y el marco del sitio (inicio, legales, errores) son del motor, escritos en ekavski. Una página de Montenegro mezcla locales en ijekavski con universales en ekavski. D23 prevé que Montenegro pise esos textos con una edición. No la hice: son 40 traducciones y el marco del sitio no se puede tocar desde `src/paises/me`. Para decidir antes de publicar.
 
 ## Calculadoras: 18 locales + 40 universales = 58
 
@@ -42,9 +42,9 @@ Universales: `"todas"`. Cae solo la de IVA, por haber local del mismo concepto. 
 
 **Fuentes leídas:** textos refundidos en gov.me y sitios de organismos (Zakon o radu hasta Sl. list 51/26; Zakon o doprinosima hasta 160/25; Zakon o porezu na dohodak hasta 133/25 más las leyes 160/25 y 70/26; Uputstvo de cálculo; Zakon o obaveznom zdravstvenom osiguranju), páginas de Uprava prihoda i carina en gov.me, Službeni list, MONSTAT. Los refundidos son del «Katalog propisa» de un editor privado, publicados en sitios oficiales: los cité como tales en el título de la fuente.
 
-**poreskauprava.gov.me no resuelve DNS** (ENOTFOUND): la administración es hoy Uprava prihoda i carina, en gov.me. fzocg.me y fondpio.me no hicieron falta salvo la decisión de la pensión mínima (456 euros), que no cargué porque ninguna calculadora la usa.
+**poreskauprava.gov.me no resuelve DNS** (ENOTFOUND): la administración publica hoy como Uprava prihoda i carina, en gov.me. No abrí fondpio.me ni cbcg.me: ninguna calculadora los necesita. La pensión mínima (456 euros, decisión del Fond PIO en Službeni list) se leyó pero no se cargó.
 
-**Corrección a tu encargo:** el programa cambió el PDV a 21/15/7, como pediste verificar. El 15 % sale de la Poreska praksa (art. 24a, desde 2025). La página general de gov.me sigue diciendo solo 21 y 7: está desactualizada. La ley de PDV de Sl. list 104/26 se aplica recién desde el ingreso a la UE, según la propia Uprava.
+**PDV 21/15/7, vigente:** el 15 % sale de la Poreska praksa (art. 24a, desde 2025). La página general de gov.me sigue diciendo solo 21 y 7, así que parece desactualizada. No leí el texto refundido del art. 24a. La ley de PDV de Sl. list 104/26 se aplica recién desde el ingreso a la UE, según la propia Uprava.
 
 **No verificado:**
 - `me.porodiljsko-staz-12` y `me.porodiljsko-gornja-granica`: solo leí el art. 51 del Zakon o socijalnoj i dječjoj zaštiti en un refundido de 2022, sin las reformas posteriores. La calculadora queda en borrador, sin casos. Los días de licencia (98) sí están verificados en el Zakon o radu.
@@ -84,7 +84,9 @@ No se probó el camino con hallazgo contra una publicación real. MONSTAT public
 - `check_ofertas_intl me`: OK.
 - `check_fronteras`, `check_eol`: OK.
 
-**No corrido:** `next dev`, porque Turbopack no acepta la junction de node_modules; las páginas no se miraron renderizadas. `check_motor` tampoco se corrió en esta tanda.
+- `check_motor`: 4883 pruebas OK.
+
+**No corrido:** `next dev`, porque Turbopack no acepta la junction de node_modules; las páginas no se miraron renderizadas.
 
 ## Riesgos
 
