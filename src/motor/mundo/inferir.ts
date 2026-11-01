@@ -13,10 +13,12 @@ export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; mo
 // con la preposición pegada («לשנה», «בחודש»): palabras() corta por letra y no la separa. En búlgaro,
 // En serbio «godišnja», «godišnje» y «mesečna», «mesečno» (y el ijekavski «mjesečno») van por prefijo.
 // «година», «месец» y los prefijos «годиш» y «месеч» («годишна», «месечна»; ADR 0002, D24).
-const ANUAL = ["година", "anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "yillik", "yil", "рік", "року", "год", "года", "anuala", "anuale", "anuali", "rok", "roku", "rocne", "ετος", "ετη", "eves", "evi", "evente", "שנתי", "שנתית", "לשנה", "בשנה", "年", "연", "연봉", "年収", "年薪"];
-const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "річн", "годов", "ежегодн", "rocn", "ετησι", "godisnj", "годиш"];
-const MENSUAL = ["месец", "mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "aylik", "oylik", "місяць", "місяця", "месяц", "месяца", "luna", "lunii", "mesic", "mesice", "mesicne", "μηνα", "μηνας", "μηνες", "havi", "havonta", "חודשי", "חודשית", "לחודש", "בחודש", "月", "월", "월급", "月給", "月薪"];
-const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "місячн", "месячн", "ежемесячн", "lunar", "mesicn", "μηνιαι", "mesecn", "mjesecn", "месеч"];
+// En lituano «metai», «metų», «metus» y el prefijo «metin» («metinis»), y «mėnuo» con el prefijo «menesi»
+// («mėnesio», «mėnesį», «mėnesinis»; ADR 0002, D29).
+const ANUAL = ["metai", "metu", "metus", "година", "anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "yillik", "yil", "рік", "року", "год", "года", "anuala", "anuale", "anuali", "rok", "roku", "rocne", "ετος", "ετη", "eves", "evi", "evente", "שנתי", "שנתית", "לשנה", "בשנה", "年", "연", "연봉", "年収", "年薪"];
+const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "річн", "годов", "ежегодн", "rocn", "ετησι", "godisnj", "годиш", "metin"];
+const MENSUAL = ["menuo", "месец", "mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "aylik", "oylik", "місяць", "місяця", "месяц", "месяца", "luna", "lunii", "mesic", "mesice", "mesicne", "μηνα", "μηνας", "μηνες", "havi", "havonta", "חודשי", "חודשית", "לחודש", "בחודש", "月", "월", "월급", "月給", "月薪"];
+const PREFIJO_MENSUAL = ["monat", "maand", "month", "mensu", "mensil", "місячн", "месячн", "ежемесячн", "lunar", "mesicn", "μηνιαι", "mesecn", "mjesecn", "месеч", "menesi"];
 
 function palabras(texto: string): string[] {
   return texto

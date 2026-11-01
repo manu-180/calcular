@@ -142,3 +142,22 @@ export function formaSr(n: number | string, uno: string, pocos: string, muchos: 
 export function pluralSr(n: number | string, uno: string, pocos: string, muchos: string): string {
   return `${n} ${formaSr(n, uno, pocos, muchos)}`;
 }
+
+// Lituano (ADR 0002, D29): las categorías de Intl.PluralRules("lt"). «one» es 1, 21, 31... (no 11),
+// «few» 2 a 9, 22 a 29... (no 12 a 19), «other» 0, 10 a 20, 30, 40... (genitivo plural) y «many» las
+// fracciones («1,5 dienos», «1,5 metų»). Si no se da la forma de fracción se usa la de «other». Recibe
+// number o string porque check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
+const REGLAS_LT = new Intl.PluralRules("lt");
+
+export function formaLt(n: number | string, uno: string, pocos: string, muchos: string, fraccion?: string): string {
+  const categoria = REGLAS_LT.select(Math.abs(Number(n)));
+  if (categoria === "one") return uno;
+  if (categoria === "few") return pocos;
+  if (categoria === "many") return fraccion ?? muchos;
+  return muchos;
+}
+
+// El número y la palabra: «1 skaičiuoklė», «3 skaičiuoklės», «10 skaičiuoklių».
+export function pluralLt(n: number | string, uno: string, pocos: string, muchos: string, fraccion?: string): string {
+  return `${n} ${formaLt(n, uno, pocos, muchos, fraccion)}`;
+}

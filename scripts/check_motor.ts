@@ -15,7 +15,7 @@ import { cifrasBn } from "../src/motor/i18n/bengali";
 import { esetekHu, GRAMATICA, neveloHu } from "../src/motor/i18n/gramatica";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
-import { formaRo, pluralCs, pluralEl, pluralRo, pluralRu, pluralUk } from "../src/motor/i18n/plural";
+import { formaRo, pluralCs, pluralEl, pluralLt, pluralRo, pluralRu, pluralUk } from "../src/motor/i18n/plural";
 import { pluralHe, prefijoHe } from "../src/motor/i18n/hebreo";
 import { pluralSr } from "../src/motor/i18n/plural";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
@@ -217,6 +217,11 @@ const parseos: [string, string, number | null][] = [
   ["cs-CZ", "1 234 567,25 Kč", 1234567.25],
   ["cs-CZ", "25 000 Kč", 25000],
   ["cs-CZ", "-250,75", -250.75],
+  ["lt-LT", "1 234,50", 1234.5],
+  ["lt-LT", "1 234 567,25 €", 1234567.25],
+  ["lt-LT", "25 000 €", 25000],
+  ["lt-LT", "-250,75", -250.75],
+  ["lt-LT", "21 %", 21],
   ["cs-CZ", "21 %", 21],
   // Griego: punto de miles, coma decimal y «€» detrás con espacio (U+00A0, como lo da Intl).
   ["el-GR", "1.234,50", 1234.5],
@@ -285,6 +290,8 @@ const ambiguos: [string, string, number | null][] = [
   ["ro-RO", "5,000", null],
   ["cs-CZ", "5 000", 5000],
   ["cs-CZ", "5,000", null],
+  ["lt-LT", "5 000", 5000],
+  ["lt-LT", "5,000", null],
   ["el-GR", "5.000", 5000],
   ["el-GR", "5,000", null],
   ["bg-BG", "5 000", 5000],
@@ -631,8 +638,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-lt/pusmecio-premija"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-lt"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -813,6 +820,27 @@ igual(
   ["Česka", "Německa", "Kanady", "Izraele", "Spojených arabských emirátů", "Jihoafrické republiky", "Svatého Vincence a Grenadin"],
 );
 igual("gramática checa: para", ["Česko", "Kanada", "Francie", "Česká republika"].map((p) => GRAMATICA.cs.para(p)), ["pro Česko", "pro Kanadu", "pro Francii", "pro Českou republiku"]);
+// Lituano: one/few/other y many (fracciones) de Intl.PluralRules («1 metai», «2 metai», «10 metų», «1,5 metų»).
+igual(
+  "años en lituano",
+  [1, 2, 9, 10, 11, 20, 21, 22, 1.5].map((n) => formatearValorUnidad(n, "anios", "lt-LT")),
+  ["1 metai", "2 metai", "9 metai", "10 metų", "11 metų", "20 metų", "21 metai", "22 metai", "1,5 metų"],
+);
+igual("días en lituano", [1, 2, 10, 21, 1.5].map((n) => formatearValorUnidad(n, "dias", "lt-LT")), ["1 diena", "2 dienos", "10 dienų", "21 diena", "1,5 dienos"]);
+igual("meses en lituano", [1, 2, 10, 1.5].map((n) => formatearValorUnidad(n, "meses", "lt-LT")), ["1 mėnuo", "2 mėnesiai", "10 mėnesių", "1,5 mėnesio"]);
+igual("pluralLt", [1, 3, 10, 12, 21, 24].map((n) => pluralLt(n, "skaičiuoklė", "skaičiuoklės", "skaičiuoklių")), ["1 skaičiuoklė", "3 skaičiuoklės", "10 skaičiuoklių", "12 skaičiuoklių", "21 skaičiuoklė", "24 skaičiuoklės"]);
+// Casos del nombre del país, sin preposición en el locativo.
+igual(
+  "gramática lituana: lugar",
+  ["Lietuva", "Vokietija", "Čilė", "Egiptas", "Izraelis", "Burundis", "Urugvajus", "Nyderlandai", "Seišeliai", "Bahamos", "Jungtinės Valstijos", "Jungtinė Karalystė", "Naujoji Zelandija", "Pietų Afrika", "Peru", "Bosnija ir Hercegovina", "Mianmaras (Birma)", "Jungtiniai Arabų Emyratai"].map((p) => GRAMATICA.lt.en(p)),
+  ["Lietuvoje", "Vokietijoje", "Čilėje", "Egipte", "Izraelyje", "Burundyje", "Urugvajuje", "Nyderlanduose", "Seišeliuose", "Bahamose", "Jungtinėse Valstijose", "Jungtinėje Karalystėje", "Naujojoje Zelandijoje", "Pietų Afrikoje", "Peru", "Bosnijoje ir Hercegovinoje", "Mianmare (Birma)", "Jungtiniuose Arabų Emyratuose"],
+);
+igual(
+  "gramática lituana: genitivo",
+  ["Lietuva", "Vokietija", "Egiptas", "Burundis", "Haitis", "Urugvajus", "Jungtinės Valstijos", "Šventasis Vincentas ir Grenadinai", "Burkina Fasas"].map((p) => GRAMATICA.lt.de(p)),
+  ["Lietuvos", "Vokietijos", "Egipto", "Burundžio", "Haičio", "Urugvajaus", "Jungtinių Valstijų", "Šventojo Vincento ir Grenadinų", "Burkina Faso"],
+);
+igual("gramática lituana: para", ["Lietuva", "Čilė", "Egiptas", "Izraelis", "Nyderlandai"].map((p) => GRAMATICA.lt.para(p)), ["Lietuvai", "Čilei", "Egiptui", "Izraeliui", "Nyderlandams"]);
 // Griego: one/other de Intl.PluralRules («1 έτος», «3 έτη», «1,5 έτη»).
 igual("años en griego", [1, 3, 1.5].map((n) => formatearValorUnidad(n, "anios", "el-GR")), ["1 έτος", "3 έτη", "1,5 έτη"]);
 igual("días en griego", [1, 2, 0.5].map((n) => formatearValorUnidad(n, "dias", "el-GR")), ["1 ημέρα", "2 ημέρες", "0,5 ημέρες"]);

@@ -218,6 +218,24 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Lituano: un solo registro, el de VMI (Mano VMI), Swedbank, SEB y Sodra: «jūs» en minúscula e
+  // imperativo de segunda del plural («įveskite», «apskaičiuokite»); los botones cortos van en
+  // infinitivo («Skaičiuoti»; ADR 0002, D29). Se atrapan el pronombre y los posesivos de «tu», los
+  // imperativos de segunda del singular de un formulario, los presentes y futuros de segunda del
+  // singular que no coinciden con la tercera («gali», «turi», «nori» sí coinciden y no se atrapan) y el
+  // «Jūs» con mayúscula a mitad de oración.
+  lt: {
+    informal: [
+      { re: palabras("tu|tavo|tau|tave|tavęs|tavimi|tavyje"), nombre: "trato de «tu» (va «jūs»)" },
+      {
+        re: palabras("įvesk|apskaičiuok|pasirink|spausk|paspausk|sužinok|palygink|atsisiųsk|nukopijuok|pridėk|išsaugok|pradėk|naudok|pažiūrėk|patikrink|užpildyk|nurodyk|bandyk|pabandyk|pakeisk|atidaryk|pasidalink|pirk|sutaupyk"),
+        nombre: "imperativo de segunda del singular (va -ite)",
+      },
+      { re: palabras("esi|moki|uždirbi|gauni|sumokėsi|gausi|sutaupysi|uždirbsi|galėsi|turėsi|matysi|būsi|mokėsi|sumoki|dirbi|išleidi"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Jūs|Jūsų|Jums|Jus|Jumis)(?!\p{L})/u, nombre: "«Jūs» con mayúscula (va «jūs»)" },
+    ],
+    formal: [],
+  },
   // Griego: un solo registro, el πληθυντικός ευγενείας de myAADE, gov.gr y los bancos (ADR 0002,
   // D20). Se atrapan los pronombres de la segunda del singular («εσύ», «σου»; «σε» no, porque también
   // es la preposición), los imperativos del singular que no se escriben igual que el aoristo de
@@ -356,6 +374,15 @@ function reglasRo(texto: string): string[] {
 
 // Checo: comillas „ “ (abre abajo, cierra arriba), nada de «», "" ni ” (las del inglés o el
 // francés).
+// Lituano (ADR 0002, D29): comillas „ “ y las palabras frecuentes escritas sin diacríticos.
+function reglasLt(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en lituano van „ “");
+  if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en lituano abren con „ (abajo)");
+  if (palabras("skaiciuokle|skaiciuokles|skaiciuokliu|menesio|menesiu|menesi|palukanos|palukanu|sumoketi|ivesti|iveskite|skaiciuoti|apskaiciuokite").test(texto)) p.push("lituano sin diacríticos");
+  return p;
+}
+
 function reglasCs(texto: string): string[] {
   const p: string[] = [];
   if (/[«»"”]/.test(texto)) p.push("comillas: en checo van „ “");
@@ -613,5 +640,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "hu") p.push(...reglasHu(texto));
   if (idioma === "sr") p.push(...reglasSr(texto, locale));
   if (idioma === "bg") p.push(...reglasBg(texto));
+  if (idioma === "lt") p.push(...reglasLt(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

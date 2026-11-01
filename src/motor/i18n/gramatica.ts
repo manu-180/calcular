@@ -1338,4 +1338,95 @@ const sr: GramaticaPais = {
   para: (p) => `za ${padezSr(p).akuzativ}`,
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Lituano (ADR 0002, D29): el nombre del país se declina y el lugar no lleva preposición. `de(p)` da el
+// genitivo («Lietuvos», «Vokietijos», «Jungtinių Valstijų»), `en(p)` el locativo («Lietuvoje»,
+// «Vokietijoje», «Kanadoje», «Egipte», «Izraelyje», «Urugvajuje», «Nyderlanduose») y `para(p)` el dativo
+// («Lietuvai», «Egiptui», «Izraeliui», «Nyderlandams»). Los nombres llegan como los escribe
+// Intl.DisplayNames en lt: la regla cubre el último sustantivo por terminación (-a, -ė, -as, -is/-ys,
+// -us, plurales -ai/-iai y -os; -is con la alternancia d→dž, t→č: «Burundžio», «Džibučio»), los
+// adjetivos concordados de la tabla ADJETIVOS («Jungtinėje Karalystėje», «Naujojoje Zelandijoje») y las
+// partes unidas con « ir », que se declinan por separado. Las palabras de delante que ya están en
+// genitivo («Pietų», «Saudo», «Dominikos») o que son extranjeras («Kosta», «San», «Burkina») quedan
+// igual, lo mismo que un paréntesis final. Lo que termina en otra letra (Peru, Nauru, Kiurasao) no se
+// declina. Probado con los ~250 nombres de Intl en lt.
+export interface LinksniaiLt {
+  kilmininkas: string;
+  vietininkas: string;
+  naudininkas: string;
+}
+
+export const linksniaiLt: (pais: string) => LinksniaiLt = (() => {
+  // [genitivo, locativo, dativo]
+  type Formas = readonly [string, string, string];
+  const ADJETIVOS: Readonly<Record<string, Formas>> = {
+    Jungtinė: ["Jungtinės", "Jungtinėje", "Jungtinei"],
+    Jungtiniai: ["Jungtinių", "Jungtiniuose", "Jungtiniams"],
+    Jungtinės: ["Jungtinių", "Jungtinėse", "Jungtinėms"],
+    Naujoji: ["Naujosios", "Naujojoje", "Naujajai"],
+    Didžioji: ["Didžiosios", "Didžiojoje", "Didžiajai"],
+    Žaliasis: ["Žaliojo", "Žaliajame", "Žaliajam"],
+    Šventasis: ["Šventojo", "Šventajame", "Šventajam"],
+    Šventoji: ["Šventosios", "Šventojoje", "Šventajai"],
+    Šiaurinės: ["Šiaurinių", "Šiaurinėse", "Šiaurinėms"],
+    Mažosios: ["Mažųjų", "Mažosiose", "Mažosioms"],
+    Tolimosios: ["Tolimųjų", "Tolimosiose", "Tolimosioms"],
+  };
+  const TABLA: Readonly<Record<string, Formas>> = {
+    "Kongas-Kinšasa": ["Kongo-Kinšasos", "Konge-Kinšasoje", "Kongui-Kinšasai"],
+    "Kongas-Brazavilis": ["Kongo-Brazavilio", "Konge-Brazavilyje", "Kongui-Brazaviliui"],
+    "Svalbardas ir Janas Majenas": ["Svalbardo ir Jano Majeno", "Svalbarde ir Jane Majene", "Svalbardui ir Janui Majenui"],
+    "Ypatingasis Administracinis Kinijos Regionas Honkongas": ["Honkongo", "Honkonge", "Honkongui"],
+    "Ypatingasis Administracinis Kinijos Regionas Makao": ["Makao", "Makao", "Makao"],
+    "Tristano da Kunjos": ["Tristano da Kunjos", "Tristano da Kunjos", "Tristano da Kunjos"],
+    "Buvė Sala": ["Buvė Salos", "Buvė Saloje", "Buvė Salai"],
+    "euro zona": ["euro zonos", "euro zonoje", "euro zonai"],
+  };
+  const palatal = (raiz: string) => raiz.replace(/d$|t$/, (m) => (m === "t" ? "č" : "dž"));
+  const sustantivo = (w: string): Formas => {
+    if (/^\p{Lu}{2,}$/u.test(w)) return [w, w, w];
+    const r2 = w.slice(0, -2);
+    const r1 = w.slice(0, -1);
+    if (/iai$/.test(w)) return [`${w.slice(0, -3)}ių`, `${w.slice(0, -3)}iuose`, `${w.slice(0, -3)}iams`];
+    if (/ai$/.test(w)) return [`${r2}ų`, `${r2}uose`, `${r2}ams`];
+    if (/os$/.test(w)) return [`${r2}ų`, `${r2}ose`, `${r2}oms`];
+    if (/a$/.test(w)) return [`${r1}os`, `${r1}oje`, `${r1}ai`];
+    if (/ė$/.test(w)) return [`${r1}ės`, `${r1}ėje`, `${r1}ei`];
+    if (/as$/.test(w)) return [`${r2}o`, `${r2}e`, `${r2}ui`];
+    if (/[iy]s$/.test(w)) return [`${palatal(r2)}io`, `${r2}yje`, `${palatal(r2)}iui`];
+    if (/us$/.test(w)) return [`${r2}aus`, `${r2}uje`, `${r2}ui`];
+    return [w, w, w];
+  };
+  const unir = (partes: readonly Formas[], sep: string): Formas => [
+    partes.map((f) => f[0]).join(sep),
+    partes.map((f) => f[1]).join(sep),
+    partes.map((f) => f[2]).join(sep),
+  ];
+  const frase = (p: string): Formas => {
+    const palabras = p.split(" ");
+    const ultima = palabras.length - 1;
+    return unir(palabras.map((w, i): Formas => (i === ultima ? sustantivo(w) : (ADJETIVOS[w] ?? [w, w, w]))), " ");
+  };
+  const formas = (p: string): Formas => {
+    if (TABLA[p]) return TABLA[p];
+    const i = p.indexOf(" (");
+    if (i > 0 && p.endsWith(")")) {
+      const [g, l, d] = formas(p.slice(0, i));
+      return [g + p.slice(i), l + p.slice(i), d + p.slice(i)];
+    }
+    if (p.includes(" ir ")) return unir(p.split(" ir ").map(formas), " ir ");
+    return frase(p);
+  };
+  return (p: string): LinksniaiLt => {
+    const [kilmininkas, vietininkas, naudininkas] = formas(p);
+    return { kilmininkas, vietininkas, naudininkas };
+  };
+})();
+
+const lt: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => linksniaiLt(p).kilmininkas,
+  en: (p) => linksniaiLt(p).vietininkas,
+  para: (p) => linksniaiLt(p).naudininkas,
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lt };

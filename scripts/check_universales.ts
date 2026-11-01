@@ -154,6 +154,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Svatý Vincenc a Grenadiny", locale: "cs-CZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Spojené arabské emiráty", locale: "cs-CZ", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
   ],
+  // Lituano (ADR 0002, D29): euro detrás con espacio de miles, un nombre largo que se declina por partes
+  // («Šventajame Vincente ir Grenadinuose») y uno plural con adjetivo («Jungtiniuose Arabų Emyratuose»).
+  lt: [
+    { mercado: "lt" as CodigoMercado, pais: "LT", nombrePais: "Lietuva", locale: "lt-LT", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Šventasis Vincentas ir Grenadinai", locale: "lt-LT", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Jungtiniai Arabų Emyratai", locale: "lt-LT", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
   // Griego (ADR 0002, D20): euro con «€» detrás y punto de miles en Grecia y en Chipre, el nombre
   // largo masculino que se declina por partes («στον Άγιο Βικέντιο και Γρεναδίνες») y uno plural
   // neutro («στα Ηνωμένα Αραβικά Εμιράτα»).

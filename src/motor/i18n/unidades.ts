@@ -16,6 +16,9 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // FormasAr y el hebreo FormasHe (uno, dual y plural: «יום אחד», «יומיים», «{n} ימים»).
 // En serbio "uno" es 1, 21, 31... (no 11), "pocos" 2 a 4, 22 a 24... (no 12 a 14) y "otros" el resto,
 // fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
+// En lituano "uno" es 1, 21, 31... (no 11), "pocos" 2 a 9, 22 a 29... (no 12 a 19), "otros" 0, 10 a 20,
+// 30... en genitivo plural y "muchos" las fracciones: «1 metai», «2 metai», «10 metų», «1,5 metų»;
+// «1 diena», «2 dienos», «10 dienų», «1,5 dienos».
 export interface FormasUnidad {
   uno: string;
   otros: string;
@@ -103,6 +106,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   bg: { dias: { uno: "ден", otros: "дни" }, semanas: { uno: "седмица", otros: "седмици" }, horas: { uno: "час", otros: "часа" }, meses: { uno: "месец", otros: "месеца" }, anios: { uno: "година", otros: "години" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
   // Serbio en latinica y ekavski (ADR 0002, D23).
+  lt: {
+    dias: { uno: "diena", pocos: "dienos", muchos: "dienos", otros: "dienų" },
+    semanas: { uno: "savaitė", pocos: "savaitės", muchos: "savaitės", otros: "savaičių" },
+    horas: { uno: "valanda", pocos: "valandos", muchos: "valandos", otros: "valandų" },
+    meses: { uno: "mėnuo", pocos: "mėnesiai", muchos: "mėnesio", otros: "mėnesių" },
+    anios: { uno: "metai", pocos: "metai", muchos: "metų", otros: "metų" },
+  },
   sr: {
     dias: { uno: "dan", pocos: "dana", otros: "dana" },
     semanas: { uno: "nedelja", pocos: "nedelje", otros: "nedelja" },
