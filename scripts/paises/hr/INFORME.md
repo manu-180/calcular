@@ -89,3 +89,12 @@ HNB ya devuelve la lista con fecha de aplicación de mañana (vi 2/11 el día 1/
 - Las tasas municipales cambian: las decisiones se adoptan hasta fin de noviembre para el 1 de enero. Hay que recargar la tabla 2027 (`hr.stope-dohodak` lo detecta). `gen_datos.py` no está en el repo: la tabla se generó del xlsx oficial en el scratchpad.
 - `godisnji-odmor` usa 52 semanas para el valor del día, divisor que la ley no fija. Está dicho en los textos.
 - `porez-na-dohodak` considera todo el ingreso como sueldo para la reducción de jóvenes y no incluye el régimen de zonas asistidas ni la invalidez.
+
+## Integración (tanda 5, 1/11/2026)
+
+Zakon o radu cotejado en narodne-novine.nn.hr, leyendo el texto completo de cada reforma: NN 127/2017 (2877), 98/2019 (1940), 151/2022 (2343) y la Odluka USRH de NN 64/2023 (1077, solo art. 192). También NN 46/2023 (788: confirma el art. 77.1 y no lo cambia). La búsqueda por título en NN no muestra reformas posteriores.
+
+- Arts. 65.3 y 65.4, 77, 122.1 a 122.5 y las cifras del 126: sin cambios. Arts. 78 a 82: no los toca ninguna reforma. Las cuatro calculadoras laborales siguen publicables.
+- Art. 122.8 y 126.2 (nuevos en 151/2022): con 65 años de edad y 15 de cotización no hay otkazni rok ni otpremnina. Sumado como campo en `otkazni-rok` y `izracun-otpremnine`, con un caso cada una.
+- Art. 94.1 (reescrito en 151/2022): el recargo de domingo no puede ser menor a 50 %. Corregida la FAQ de `prekovremeni-rad`, que decía que todo dependía del contrato.
+- `reglas_idioma` exime a Hlebine y Sveta Nedelja, y las tres opciones ya tienen `etiquetas`.

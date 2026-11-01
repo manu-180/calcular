@@ -21,6 +21,69 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 01/11/2026 · Tanda 5 de países: sk, ge, hr, mn (`claude/paises-tanda-5`)
+
+Publicados: Eslovaquia (sk), Georgia (ge), Croacia (hr) y Mongolia (mn), detrás de bt. Los cuatro con
+`universales: "todas"` (40 universales; en sk, ge y hr cae la de IVA por la local, en mn queda la universal sin ajuste).
+Trae los motores eslovaco (D25), georgiano (D26), croata (D27) y mongol (D28). Informes en
+`scripts/paises/<m>/INFORME.md`. `mercados-registro.ts` regenerado: 137 mercados intl. sr y hr comparten 26 slugs de
+universales (por ejemplo `kalkulator-kredita`): no chocan, porque el registro las indexa por mercado.
+
+| País | Locales | Publicables | Borrador | Universales |
+|---|---|---|---|---|
+| sk | 25 | 24 | inflacna-kalkulacka | todas |
+| ge | 23 | 22 | saprotsento-shemosavlis-gadasakhadi | todas |
+| hr | 21 | 20 | doprinosi-za-obrtnike | todas |
+| mn | 16 | 10 | tetgever-tootsooluur, ul-khodlokh-khorongiin-tatvar, eeljiin-amraltyn-olgovor, iluu-tsagiin-khols, khalagdsany-tetgemj, ajlaas-garakh-medegdel | todas |
+
+Datos no verificados y motivo:
+- sk: `sk.inflacia-rocna`: `data.statistics.sk` rechaza la conexión.
+- ge: `ge.protsenti` (decisión de esta integración): el art. 131.5 dice que el interés de una institución licenciada no
+  tributa en la fuente y la guía de rs.ge da 5 %. Además se sacó el interés de `sashemosavlo-gadasakhadi` y la novedad
+  `ge.mpr-2026-05`. `ge.dekretuli-dakhmareba`: el monto lo fija un decreto en matsne, ilegible; no lo usa ninguna
+  calculadora.
+- hr: `hr.stope-samostalni` (15, 5 y 16,5 %): solo leídas en la página de paušalistas, Zakon o doprinosima no se pudo abrir.
+- mn: 12 datos del Хөдөлмөрийн хууль (decisión de esta integración: `mn.eeljiin-*`, `mn.iluu-tsag-koef`,
+  `mn.amralt-odor-koef`, `mn.bayar-koef`, `mn.shono-koef`, `mn.doloo-khonog-tsag`, `mn.tsutslalt-sar`, `mn.medegdel-khonog`):
+  solo el texto original de 2021 en nczd.gov.mn, y legalinfo.mn rechaza la conexión (reintentado el 1/11). Contenido y
+  casos para recuperar en `origin/claude/pais-mn`. `mn.noat`, `mn.ul-khodlokh-khuvi-dood` y `-deed`: solo extracto de
+  buscador. `mn.khkhoat` y `mn.khongololt` desde 2027, `mn.hhdh-sar` y `mn.hhdh-tsag` desde 2027 y `mn.emd-*` desde 2027:
+  reforma o decreto sin leer.
+
+Revisado: Zakon o radu de hr, cotejado en narodne-novine.nn.hr con el texto completo de NN 127/2017, 98/2019, 151/2022 y la
+Odluka USRH de NN 64/2023 (solo art. 192). Las cifras de los arts. 65, 77, 122 y 126 no cambiaron y los arts. 78 a 82 no se
+tocaron, así que las laborales siguen publicables. Sí faltaba y se sumó: sin otkazni rok ni otpremnina con 65 años de edad
+y 15 de cotización (arts. 122.8 y 126.2) y recargo de domingo de al menos 50 % (art. 94.1). Excepción de topónimos para
+Hlebine y Sveta Nedelja en `reglas_idioma` y sus `etiquetas`.
+
+Riesgos:
+- Revisión por hablante nativo: D25 a D28 la piden para eslovaco, georgiano, croata y mongol, y no se hizo. Los slugs no se
+  validaron en el autocompletar de Google de cada país, y no se cambian después de publicar.
+- mn: reforma tributaria desde el 1/1/2027. ХХОАТ, хөнгөлөлт, ЭМД y mínimo tienen `hasta: 2026-12-31`: sueldo neto, ХХОАТ,
+  НДШ, costo del empleador, mínimo y prestaciones dejan de publicarse ese día hasta cargar 2027, y eso exige un acceso que
+  llegue a legalinfo.mn. НӨАТ queda en la universal sin ajuste. Base del ХХОАТ, ЭМД sin tope y empleador sin tope son lecturas
+  propias. Solo 10 locales publicables, debajo de la barra de 15 a 25.
+- ge: matsne.gov.ge responde «Access Denied». Código Laboral leído en un PDF de sla.gov.ge, con enmiendas al menos hasta
+  2023: confirmar arts. 27, 31, 37 y 48. Art. 46.4 no cubre normas especiales del sector público. Sin salario mínimo (decreto
+  de 1999 ilegible). `ge.cpi` se carga a mano: a los 70 días `inflatsiis-kalkulatori` deja de publicarse.
+- hr: tope de la najviša osnovica aplicado solo al mirovinsko sin leer el art. 205. Regla de prebivalište vista en un extracto.
+  Series `hr.prosjecna-*` y `hr.medijalna-*` a mano (`prosjecna-placa` se cae a los 120 días). Tasas municipales, bases y
+  paušal 2027 se cargan en diciembre. Selector de 556 opciones no visto renderizado (unos 30 KB por página en cinco páginas).
+  `gen_datos.py` no está en el repo. Inflación con HICP y no IPC nacional.
+- sk: los valores anuales vencen el 31/12/2026 (mínimo 2027 de 972 sin cargar) y hay redacciones futuras sin leer en
+  595/2003, 311/2001, 222/2004, 580/2004 y 461/2003. Bono mensual, redondeo de dávky y tope de PN inferidos.
+  `rodicovsky-prispevok` con 364,80 de una página sin fecha.
+- Ningún país se miró renderizado en `next dev` y `next build` no se corrió en esta integración.
+
+Checks (`check-all`, 1/11/2026): 155 de 159 suites en la corrida completa. `check_seo_intl` (8 fallas de ancho en /ge y
+/zz-ka) y `check_textos_paises` (`ge.protsenti`, `mn.khalagdsany-tetgemj`) eran de esta tanda: arregladas y repasadas sueltas.
+Ajenas a esta tanda:
+- `check_mundo`: be (neto de 24.000).
+- `check_paises`: 27 fallas. 23 son series vencidas (bo, ca, ca-fr, ch, ch-fr, ch-it, co, cr, gb, gt, hk, kr, kw, mx, ni, pe, pk,
+  za) y 4 las llaves anidadas de `oas-clawback` y `tfsa-contribution-room` de ca y ca-fr.
+- `check_textos_paises`: 6 de ancho en bo.salario-minimo (2), bo.finiquito-atrasado, cr.tipo-de-cambio, mx.tipo-de-cambio y
+  pe.tipo-de-cambio.
+
 ## 01/11/2026 · Tanda 4 de países: rs, me, bg, tj, bt (`claude/paises-tanda-4`)
 
 Publicados: Serbia (rs), Montenegro (me), Bulgaria (bg), Tayikistán (tj) y Bután (bt), detrás de cn. Los cinco

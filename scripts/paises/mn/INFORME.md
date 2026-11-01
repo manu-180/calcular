@@ -102,3 +102,7 @@ leído en la portada con navegador, se pinta con JS): tiene `proximaRevision`.
 2. El aviso `mn.khkhoat-2027` cita ikon.mn como secundaria: no hallé otra fuente legible del paquete.
 3. Mongol revisado por reglas, sin hablante nativo. Conviene que alguien lea los términos del seguro social y los slugs.
 4. Los slugs salen de la transliteración de D28 y de los términos oficiales: no pude confirmar autocompletar de Google Mongolia.
+
+## Integración (tanda 5, 1/11/2026)
+
+Se reintentó legalinfo.mn con curl y WebFetch: conexión rechazada. No hubo otra copia oficial con las reformas. `eeljiin-amraltyn-olgovor`, `iluu-tsagiin-khols`, `khalagdsany-tetgemj` y `ajlaas-garakh-medegdel` pasaron a borrador, sin `.casos.ts`, y sus 12 datos del Хөдөлмөрийн хууль a `no-verificado` con motivo. Quedan 10 locales publicables y 6 en borrador. Para recuperarlas: los casos están en la historia de `origin/claude/pais-mn`.

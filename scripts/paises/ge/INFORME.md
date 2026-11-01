@@ -92,3 +92,7 @@ No se abrió `next dev`: exige `npm ci` real en el worktree y no aporta sobre lo
 5. **Slugs y búsquedas**: transliteración de 2002 sobre términos reales, pero WebSearch es solo de EE. UU.: no se pudo
    mirar el autocompletar de Google en Georgia.
 6. **Georgiano sin revisión nativa**, igual que el motor (D26).
+
+## Integración (tanda 5, 1/11/2026)
+
+`saprotsento-shemosavlis-gadasakhadi` pasó a borrador, sin `.casos.ts`, y `ge.protsenti` a `no-verificado`: el art. 131.5 dice que no tributa en la fuente y la guía de rs.ge da 5 %. Salió la opción de interés de `sashemosavlo-gadasakhadi` y su mención en el texto, y la novedad `ge.mpr-2026-05`, que solo apuntaba a esa calculadora. Quedan 22 locales publicables.
