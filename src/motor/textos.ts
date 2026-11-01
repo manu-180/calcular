@@ -866,6 +866,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "точки", coma: "запетаи" },
     },
   },
+  // Macedonio (ADR 0002, D36): «вие» de cortesía con minúscula, como Комерцијална банка; el botón es «Пресметај».
+  mk: {
+    base: {
+      calcular: "Пресметај",
+      resultado: "Резултат",
+      si: "Да",
+      no: "Не",
+      sinResultado: "Во моментов не го прикажуваме овој резултат.",
+      errores: {
+        requerido: "Пополнете го ова поле.",
+        "numero-invalido": "Внесете број, на пример {ejemplo}.",
+        "entero-invalido": "Внесете цел број, без децимали.",
+        "menor-que-min": "Најмалата вредност е {min}.",
+        "mayor-que-max": "Највисоката вредност е {max}.",
+        "fecha-invalida": "Изберете важечки датум.",
+        "hora-invalida": "Изберете важечко време.",
+        "opcion-invalida": "Изберете една од можностите.",
+        "region-invalida": "Изберете регион.",
+        "calculo-fallido": "Со овие податоци пресметката не успеа. Проверете ги вредностите и обидете се повторно.",
+      },
+      milesAmbiguos: "Дали мислевте на {sugerido}? Внесете го бројот без {signos}.",
+      separadores: { punto: "точки", coma: "запирки" },
+    },
+  },
   ka: {
     base: {
       calcular: "გამოთვლა",

@@ -578,6 +578,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Տեսեք, թե որքան զուտ գումար կստանայիք ավելի քան ${n} երկրում`,
     },
   },
+  mk: {
+    base: {
+      boton: "Споделување",
+      botonAria: "Споделување на овој калкулатор",
+      menuTitulo: "Споделување преку",
+      copiar: "Копирање на врската",
+      copiado: "Врската е копирана",
+      compartido: "Споделено",
+      errorCorto: "Копирањето не успеа",
+      errorAyuda: "Не успеавме да ја копираме врската. Копирајте ја од лентата за адреса на прелистувачот.",
+      nuevaPestana: "се отвора во нов таб",
+      mensaje: (nombre) => `${nombre}. Бесплатно, пресметката трае една минута.`,
+      puenteIntro: "А во другите држави?",
+      puenteEnlace: (n) => `Видете колку нето би добивале во над ${n} држави`,
+    },
+  },
   // Hebreo (ADR 0002, D22): plural inclusivo donde se le habla a la persona.
   he: {
     base: {

@@ -216,6 +216,20 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Macedonio: un solo registro, el de Комерцијална банка y УЈП (2.ª del plural, «внесете», «пресметајте»;
+  // ADR 0002, D36). «вие», «ве», «ви», «вашиот» con minúscula a mitad de oración, como escribe Комерцијална;
+  // УЈП mezcla. Se atrapa el «ти», los imperativos y presentes de 2.ª del singular y el pronombre con
+  // mayúscula a mitad de oración. La única forma en singular permitida es el botón «Пресметај», sola.
+  mk: {
+    informal: [
+      { re: palabras("ти|те|тебе|твој|твоја|твое|твои|твојот|твојата|твоето|твоите"), nombre: "«ти»" },
+      { re: /(?:^|[.?!:]\s+)(?:внеси|избери|провери|спореди|дознај|пополни|притисни|види|обиди|купи|преземи|започни|отвори|прикажи|скриј|затвори|побарај|копирај|сподели|додај|зачувај|продолжи|напиши|испрати|научи|добиј|влези|кликни|прегледај|исчисти|прочитај|користи|нарачај)(?!\p{L})/iu, nombre: "imperativo de «ти» (va -ете/-јте)" },
+      { re: /(?<!\p{L})пресметај(?=\s+\p{L})/iu, nombre: "«пресметај» con complemento (solo el botón va en singular; va «пресметајте»)" },
+      { re: palabras("можеш|сакаш|знаеш|добиваш|плаќаш|заработуваш|работиш|штедиш|имаш|добиеш|платиш|внесуваш"), nombre: "2.ª del singular" },
+      { re: /[^.?!:„(\s\p{Script=Latin}]\s+(?:Вие|Вас|Ве|Ви|Ваш|Ваша|Ваше|Ваши|Вашиот|Вашата|Вашето|Вашите)(?!\p{L})/u, nombre: "pronombre de cortesía con mayúscula a mitad de oración (va «вие», «ве», «вашиот»)" },
+    ],
+    formal: [],
+  },
   // Búlgaro: un solo registro, el de ДСК y НАП (2.ª del plural, «Вие», «Ви», «Вашият» con mayúscula;
   // ADR 0002, D24). Se atrapa el «ти» y sus formas, y el pronombre de cortesía con minúscula.
   // Armenio: un solo registro, el de ՊԵԿ, Ամերիաբանկ y Ակբա բանկ (Դուք, Ձեր, Ձեզ con mayúscula e imperativo
@@ -512,6 +526,19 @@ function reglasBg(texto: string): string[] {
   if (/(?<!\p{L})[Сс] [СсЗз]\p{L}/u.test(texto)) p.push("delante de с o з va «със»");
   const r = RUSISMOS_BG.exec(texto);
   if (r) p.push(`«${r[0]}» es ruso, no búlgaro`);
+  return p;
+}
+
+// Macedonio (ADR 0002, D36): fuera las letras que el alfabeto no tiene (ы э ё ъ я ю щ й ь) y las de otros
+// cirílicos; comillas „ “; y las palabras que delatan búlgaro, serbio o ruso sin adaptar.
+const AJENAS_MK = palabras("заплата|заплатата|зарплата|сумма|данък|данъци|лихва|лихви|лихвата|порез|порези|пдв|ддс|когато|който|които|също|че|са|от|във|със|в|с|у|је|су|који|које|једна|једно|такође|само че|ќе бъде");
+function reglasMk(texto: string): string[] {
+  const p: string[] = [];
+  if (/[ыэёъяющйьЫЭЁЪЯЮЩЙЬ]/.test(texto)) p.push("«ы э ё ъ я ю щ й ь»: no existen en macedonio");
+  if (/[іїєґўћђІЇЄҐЎЋЂ]/.test(texto)) p.push("letra de otro alfabeto cirílico en un texto macedonio");
+  if (/[«»]|"(?=\p{sc=Cyrillic})|(?<=\p{sc=Cyrillic}[.,?:;]?)"/u.test(texto)) p.push("comillas: en macedonio van „ “");
+  const a = AJENAS_MK.exec(texto);
+  if (a) p.push(`«${a[0]}» no es macedonio (búlgaro, serbio o ruso)`);
   return p;
 }
 
@@ -967,5 +994,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "et") p.push(...reglasEt(texto));
   if (idioma === "is") p.push(...reglasIs(texto));
   if (idioma === "lv") p.push(...reglasLv(texto));
+  if (idioma === "mk") p.push(...reglasMk(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

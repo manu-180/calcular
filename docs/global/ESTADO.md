@@ -294,6 +294,13 @@ genitivo (`pluralLv`), país con genitivo, locativo sin preposición y dativo (`
 queda libre para la local. Listo para que un agente de país escriba Letonia (`lv`). Falla de main ajena al frente:
 `check_mundo` (be, neto). Falta revisión por hablante nativo.
 
+## 1/11/2026 · Motor macedonio (`claude/mundo-motor-mk`, ADR 0002 D36)
+
+`mk` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición interna `zz-mk`. Registro de bancos
+(«вие» en minúscula, 2.ª del plural, botón «Пресметај»). MKD como moneda de prueba. Falta revisión por hablante nativo.
+Listo para que un agente de país escriba Macedonia del Norte (`kalkulator-za-plata` libre).
+
 ## 31/10/2026 · Motor búlgaro (`claude/mundo-motor-bg`, ADR 0002 D24)
 
 `bg` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,

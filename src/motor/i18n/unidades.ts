@@ -119,6 +119,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   bg: { dias: { uno: "ден", otros: "дни" }, semanas: { uno: "седмица", otros: "седмици" }, horas: { uno: "час", otros: "часа" }, meses: { uno: "месец", otros: "месеца" }, anios: { uno: "година", otros: "години" } },
   // El mongol no pone plural después de un número («3 өдөр», «1.5 жил»): las dos formas son iguales.
   mn: { dias: { uno: "өдөр", otros: "өдөр" }, semanas: { uno: "долоо хоног", otros: "долоо хоног" }, horas: { uno: "цаг", otros: "цаг" }, meses: { uno: "сар", otros: "сар" }, anios: { uno: "жил", otros: "жил" } },
+  // Macedonio: forma numérica de los masculinos («2 дена», «5 часа»); «месеци» es lo que escriben bancos y leyes.
+  mk: { dias: { uno: "ден", otros: "дена" }, semanas: { uno: "недела", otros: "недели" }, horas: { uno: "час", otros: "часа" }, meses: { uno: "месец", otros: "месеци" }, anios: { uno: "година", otros: "години" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
   lv: {
     dias: { uno: "diena", otros: "dienas", cero: "dienu" },

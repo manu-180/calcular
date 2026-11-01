@@ -21,6 +21,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   et: "palk-maailmas",
   is: "laun-um-allan-heim",
   lv: "alga-pasaule",
+  mk: "platata-niz-svetot",
 
   pl: "wynagrodzenie-na-swiecie",
   sv: "lon-i-varlden",

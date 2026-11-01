@@ -1580,7 +1580,43 @@ const lv: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+// Macedonio (ADR 0002, D36): 2.ª del plural con «вашиот» en minúscula; el país va con «за» (GRAMATICA.mk).
+const mk: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Калкулатор од CalcularYa",
+    marcaNuevaPestana: "(се отвора во нов таб)",
+    noDisponible: { titulo: "Овој калкулатор не е достапен", texto: "Можно е неговата адреса да се променила." },
+    insertar: "Ставете го на вашиот сајт",
+    pagina: {
+      titulo: (pais) => [`Бесплатни калкулатори за вашиот сајт | ${pais}`, "Бесплатни калкулатори за вашиот сајт"],
+      descripcion: (pais) => `Изберете калкулатор ${GRAMATICA.mk.para(pais)}, копирајте го кодот и ставете го на вашиот блог или сајт. Бесплатно, со официјални податоци што се секогаш ажурни.`,
+      h1: "Ставете калкулатор на вашиот сајт",
+      bajada: "Изберете калкулатор, копирајте го кодот и ставете го каде што сакате. Бесплатно е, а податоците се ажурираат сами.",
+      calculadora: "Калкулатор",
+      buscar: "Пребарување калкулатор",
+      sinResultados: "Нема калкулатор што одговара на пребарувањето.",
+      tema: "Тема",
+      claro: "Светла",
+      oscuro: "Темна",
+      ancho: "Ширина",
+      anchoCompleto: "Цела ширина",
+      acento: "Акцентна боја",
+      colores: ["Зелена", "Сина", "Портокалова", "Розова", "Графитна"],
+      credito: "Врска до изворот под калкулаторот",
+      vistaPrevia: "Преглед",
+      codigo: "Код за вметнување",
+      copiar: "Копирање на кодот",
+      copiado: "Кодот е копиран",
+      ayudaScript: "Скриптата не е задолжителна: таа само ја прилагодува висината на калкулаторот.",
+      ventajas: ["Бесплатно и без регистрација", "Секогаш ажурни официјални податоци", "Се прилагодува на секоја ширина"],
+      nota: "Под калкулаторот има врска до CalcularYa. Ве молиме да не ја отстранувате.",
+      verTodas: (pais) => `Сите калкулатори ${GRAMATICA.mk.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Калкулатор од CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

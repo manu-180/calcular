@@ -223,6 +223,12 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sentvinsenta un Grenadīnas", locale: "lv-LV", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Apvienotie Arābu Emirāti", locale: "lv-LV", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
   ],
+  // Macedonio (ADR 0002, D36): denar con «ден.», punto de miles; nombres largos y artículo pospuesto.
+  mk: [
+    { mercado: "mk" as CodigoMercado, pais: "MK", nombrePais: "Северна Македонија", locale: "mk-MK", trato: "usted", moneda: "MKD" as Moneda, escala: 55 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент Винсент и Гренадини", locale: "mk-MK", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Обединети Арапски Емирати", locale: "mk-MK", trato: "usted", moneda: "AED" as Moneda, escala: 4 },
+  ],
   bg: [
     { mercado: "bg" as CodigoMercado, pais: "BG", nombrePais: "България", locale: "bg-BG", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сейнт Винсънт и Гренадини", locale: "bg-BG", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
