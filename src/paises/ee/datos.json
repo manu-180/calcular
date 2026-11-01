@@ -1,0 +1,1397 @@
+{
+  "mercado": "ee",
+  "datos": [
+    {
+      "id": "ee.tulumaks",
+      "nombre": "Tulumaksu määr",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Tulumaksuseadus, § 4 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TuMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.maksuvaba-aasta",
+      "nombre": "Üldine maksuvaba tulu aastas",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8400,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Tulumaksuseadus, § 23 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TuMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.maksuvaba-kuu",
+      "nombre": "Üldine maksuvaba tulu kuus",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 700,
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Maksuvaba tulu arvestamine",
+            "url": "https://www.emta.ee/eraklient/maksud-ja-tasumine/maksusoodustused/maksuvaba-tulu-arvestamine",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.maksuvaba-pension-aasta",
+      "nombre": "Vanaduspensioniealise maksuvaba tulu aastas",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 9312,
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Maksuvaba tulu arvestamine",
+            "url": "https://www.emta.ee/eraklient/maksud-ja-tasumine/maksusoodustused/maksuvaba-tulu-arvestamine",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.maksuvaba-pension-kuu",
+      "nombre": "Vanaduspensioniealise maksuvaba tulu kuus",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 776,
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Maksuvaba tulu arvestamine",
+            "url": "https://www.emta.ee/eraklient/maksud-ja-tasumine/maksusoodustused/maksuvaba-tulu-arvestamine",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.mahaarvamiste-piir",
+      "nombre": "Koolituskulude ja annetuste mahaarvamise piir",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1200,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Tulumaksuseadus, § 282 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TuMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.iii-sammas-maar",
+      "nombre": "III samba mahaarvamise piir tulust",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Tulumaksuseadus, § 28",
+            "url": "https://www.riigiteataja.ee/akt/TuMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.iii-sammas-piir",
+      "nombre": "III samba mahaarvamise ülempiir aastas",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6000,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Tulumaksuseadus, § 28",
+            "url": "https://www.riigiteataja.ee/akt/TuMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tootuskindlustus-tootaja",
+      "nombre": "Töötaja töötuskindlustusmakse",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1.6,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötuskindlustusmakse määrad aastatel 2023 kuni 2026, VV määrus nr 88",
+            "url": "https://www.riigiteataja.ee/akt/117092022003",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tootuskindlustus-tooandja",
+      "nombre": "Tööandja töötuskindlustusmakse",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2026-12-31",
+          "valor": 0.8,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötuskindlustusmakse määrad aastatel 2023 kuni 2026, VV määrus nr 88",
+            "url": "https://www.riigiteataja.ee/akt/117092022003",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.kogumispension",
+      "nombre": "Kohustusliku kogumispensioni (II samba) makse",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "0": "Ei tee II samba makseid",
+        "2": "2%",
+        "4": "4%",
+        "6": "6%"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 0,
+            "2": 2,
+            "4": 4,
+            "6": 6
+          },
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Maksumuudatused 2026. aastal",
+            "url": "https://emta.ee/uudised/maksumuudatused-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.sotsiaalmaks",
+      "nombre": "Sotsiaalmaksu määr",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 33,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Sotsiaalmaksuseadus, § 7 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/SMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.sotsiaalmaksu-kuumaar",
+      "nombre": "Sotsiaalmaksu kuumäär",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 886,
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Maksumuudatused 2026. aastal",
+            "url": "https://emta.ee/uudised/maksumuudatused-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.sotsiaalmaksu-miinimum",
+      "nombre": "Sotsiaalmaksu minimaalne kohustus kuus",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 292.38,
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Maksumuudatused 2026. aastal",
+            "url": "https://emta.ee/uudised/maksumuudatused-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.fie-kvartal",
+      "nombre": "FIE sotsiaalmaksu avansiline makse kvartalis",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 877.14,
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Maksumuudatused 2026. aastal",
+            "url": "https://emta.ee/uudised/maksumuudatused-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.fie-sotsiaalmaksu-lagi",
+      "nombre": "FIE sotsiaalmaksu aastane maksustatav ülempiir",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 111720,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Sotsiaalmaksuseadus, § 2 lg 1 p 5, 10-kordne töötasu alammäär kuude kaupa (3 × 886 ja 9 × 946)",
+            "url": "https://www.riigiteataja.ee/akt/SMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.miinimumpalk-kuu",
+      "nombre": "Kuutasu alammäär täistööajaga",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 946,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötasu alammäära kehtestamine, VV määrus nr 36",
+            "url": "https://www.riigiteataja.ee/akt/124032026005",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.miinimumpalk-tund",
+      "nombre": "Tunnitasu alammäär",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 5.67,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötasu alammäära kehtestamine, VV määrus nr 36",
+            "url": "https://www.riigiteataja.ee/akt/124032026005",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.kaibemaks",
+      "nombre": "Käibemaksumäärad",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "tavamaar": "Tavamäär",
+        "majutus": "Majutus",
+        "vahendatud": "Raamatud, ajakirjandus, ravimid"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "tavamaar": 24,
+            "majutus": 13,
+            "vahendatud": 9
+          },
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Käibemaksuseadus, § 15",
+            "url": "https://www.riigiteataja.ee/akt/KMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.kaibemaksu-piir",
+      "nombre": "Käibemaksukohustuslaseks registreerimise piir",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40000,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Käibemaksuseadus, § 19 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/KMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.pohipuhkus",
+      "nombre": "Põhipuhkus",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töölepingu seadus, § 55",
+            "url": "https://www.riigiteataja.ee/akt/TLS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.pohipuhkus-pikk",
+      "nombre": "Alaealise ning osalise või puuduva töövõimega töötaja põhipuhkus",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töölepingu seadus, § 56 ja § 57",
+            "url": "https://www.riigiteataja.ee/akt/TLS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.uletunni-kordaja",
+      "nombre": "Ületunnitöö rahalise hüvitise kordaja",
+      "tipo": "numero",
+      "unidad": "factor",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töölepingu seadus, § 44 lg 7",
+            "url": "https://www.riigiteataja.ee/akt/TLS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.ootoo-kordaja",
+      "nombre": "Öötöö tasu kordaja",
+      "tipo": "numero",
+      "unidad": "factor",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.25,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töölepingu seadus, § 45 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TLS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.riigipuha-kordaja",
+      "nombre": "Riigipühal tehtud töö tasu kordaja",
+      "tipo": "numero",
+      "unidad": "factor",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töölepingu seadus, § 45 lg 2",
+            "url": "https://www.riigiteataja.ee/akt/TLS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.etteteatamine",
+      "nombre": "Tööandja etteteatamistähtajad",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "alla1": "Alla ühe tööaasta",
+        "kuni5": "Üks kuni viis tööaastat",
+        "kuni10": "Viis kuni kümme tööaastat",
+        "ule10": "Kümme ja enam tööaastat"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "alla1": 15,
+            "kuni5": 30,
+            "kuni10": 60,
+            "ule10": 90
+          },
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töölepingu seadus, § 97 lg 2",
+            "url": "https://www.riigiteataja.ee/akt/TLS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.etteteatamine-tootaja",
+      "nombre": "Töötaja etteteatamistähtaeg korralisel ülesütlemisel",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töölepingu seadus, § 98 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TLS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.koondamine-tooandja",
+      "nombre": "Tööandja koondamishüvitis",
+      "tipo": "numero",
+      "unidad": "meses",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töölepingu seadus, § 100 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TLS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.koondamine-tootukassa",
+      "nombre": "Töötukassa kindlustushüvitis koondamisel",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "kuni10": "Viis kuni kümme aastat",
+        "ule10": "Üle kümne aasta"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "kuni10": 1,
+            "ule10": 2
+          },
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötuskindlustuse seadus, § 142 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TKindlS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tkh-maar-algus",
+      "nombre": "Töötuskindlustushüvitis 1. kuni 100. päeval",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötuskindlustuse seadus, § 9 lg 4",
+            "url": "https://www.riigiteataja.ee/akt/TKindlS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tkh-maar-hiljem",
+      "nombre": "Töötuskindlustushüvitis alates 101. päevast",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötuskindlustuse seadus, § 9 lg 4",
+            "url": "https://www.riigiteataja.ee/akt/TKindlS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tkh-paevad",
+      "nombre": "Sissetulekupõhise hüvitise periood",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "alla5": "Staaž alla viie aasta",
+        "kuni10": "Viis kuni kümme aastat",
+        "ule10": "Kümme aastat või enam"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "alla5": 180,
+            "kuni10": 210,
+            "ule10": 300
+          },
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötuskindlustuse seadus, § 8 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TKindlS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tkh-baasmaar",
+      "nombre": "Baasmääras hüvitis kalendripäevas",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14.77,
+          "fuente": {
+            "organismo": "Eesti Töötukassa",
+            "titulo": "Töötuskindlustushüvitise suurus ja selle arvutamine",
+            "url": "https://www.tootukassa.ee/et/teenused/tootuskindlustushuvitis/tootuskindlustushuvitise-suurus-ja-selle-arvutamine",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tkh-baaspaevad",
+      "nombre": "Baasmääras hüvitise periood",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötuskindlustuse seadus, § 81 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TKindlS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tkh-max-algus",
+      "nombre": "Hüvitise ülempiir 1. kuni 100. päeval",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 101.27,
+          "fuente": {
+            "organismo": "Eesti Töötukassa",
+            "titulo": "Töötuskindlustushüvitise suurus ja selle arvutamine",
+            "url": "https://www.tootukassa.ee/et/teenused/tootuskindlustushuvitis/tootuskindlustushuvitise-suurus-ja-selle-arvutamine",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tkh-max-hiljem",
+      "nombre": "Hüvitise ülempiir alates 101. päevast",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 67.51,
+          "fuente": {
+            "organismo": "Eesti Töötukassa",
+            "titulo": "Töötuskindlustushüvitise suurus ja selle arvutamine",
+            "url": "https://www.tootukassa.ee/et/teenused/tootuskindlustushuvitis/tootuskindlustushuvitise-suurus-ja-selle-arvutamine",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tkh-staaz",
+      "nombre": "Staažinõue 36 kuu jooksul sissetulekupõhisele hüvitisele",
+      "tipo": "numero",
+      "unidad": "meses",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötuskindlustuse seadus, § 6 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TKindlS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tkh-baasstaaz",
+      "nombre": "Staažinõue 36 kuu jooksul baasmääras hüvitisele",
+      "tipo": "numero",
+      "unidad": "meses",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Töötuskindlustuse seadus, § 61 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/TKindlS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.haigus-maar",
+      "nombre": "Haigushüvitise määr",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Ravikindlustuse seadus, § 54 lg 1 p 1",
+            "url": "https://www.riigiteataja.ee/akt/RaKS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.hooldus-maar",
+      "nombre": "Hooldushüvitise määr",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Ravikindlustuse seadus, § 54 lg 1 p 11",
+            "url": "https://www.riigiteataja.ee/akt/RaKS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.tooonnetus-maar",
+      "nombre": "Hüvitise määr tööõnnetuse või kutsehaiguse korral",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Ravikindlustuse seadus, § 54 lg 1 p 6",
+            "url": "https://www.riigiteataja.ee/akt/RaKS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.haigus-ulempiir",
+      "nombre": "Tervisekassa hüvitise ülempiir kalendripäevas",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 126.87,
+          "fuente": {
+            "organismo": "Tervisekassa",
+            "titulo": "Sickness benefit",
+            "url": "https://tervisekassa.ee/en/people/benefits-provided-health-insurance-fund/sickness-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.haigus-pikim",
+      "nombre": "Haigushüvitise pikim periood",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 182,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Ravikindlustuse seadus, § 57 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/RaKS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.hooldus-pikim",
+      "nombre": "Lapse põetamise hooldushüvitise pikim periood",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Ravikindlustuse seadus, § 59 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/RaKS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.vanemahuvitis-ulempiir",
+      "nombre": "Vanemahüvitise ülempiir kuus",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3806.1,
+          "fuente": {
+            "organismo": "Sotsiaalkindlustusamet",
+            "titulo": "Vanemahüvitise ülempiir ja selle muudatused 2026. aastal",
+            "url": "https://sotsiaalkindlustusamet.ee/uudised/vanemahuvitise-ulempiir-ja-selle-muudatused-2026-aastal",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.vanemahuvitis-maar",
+      "nombre": "Vanemahüvitise määr kuus",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 886,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Perehüvitiste seadus, § 41 lg 1 ja töötasu alammäär 1.7.2025",
+            "url": "https://www.riigiteataja.ee/akt/PHS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.vanemahuvitis-paevad",
+      "nombre": "Vanemahüvitise pikim periood",
+      "tipo": "numero",
+      "unidad": "dias",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 605,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Perehüvitiste seadus, § 34 lg 2",
+            "url": "https://www.riigiteataja.ee/akt/PHS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.lapsetoetus-esimesed",
+      "nombre": "Lapsetoetus esimese ja teise lapse kohta",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Perehüvitiste seadus, § 17 lg 3",
+            "url": "https://www.riigiteataja.ee/akt/PHS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.lapsetoetus-jargmised",
+      "nombre": "Lapsetoetus kolmanda ja iga järgmise lapse kohta",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Perehüvitiste seadus, § 17 lg 3",
+            "url": "https://www.riigiteataja.ee/akt/PHS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.lasterikas-kuni6",
+      "nombre": "Lasterikka pere toetus 3 kuni 6 lapsega perele",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 450,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Perehüvitiste seadus, § 21 lg 2",
+            "url": "https://www.riigiteataja.ee/akt/PHS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.lasterikas-7",
+      "nombre": "Lasterikka pere toetus 7 või enama lapsega perele",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 650,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Perehüvitiste seadus, § 21 lg 3",
+            "url": "https://www.riigiteataja.ee/akt/PHS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.sunnitoetus",
+      "nombre": "Sünnitoetus lapse kohta",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 320,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Perehüvitiste seadus, § 22 lg 4",
+            "url": "https://www.riigiteataja.ee/akt/PHS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.sunnitoetus-mitmikud",
+      "nombre": "Sünnitoetus kolmikute või suurema arvu mitmike korral lapse kohta",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Perehüvitiste seadus, § 22 lg 5",
+            "url": "https://www.riigiteataja.ee/akt/PHS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.maamaks-alam",
+      "nombre": "Maamaksu madalaim määr",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.1,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Maamaksuseadus, § 5 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/MaaMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.maamaks-ulem",
+      "nombre": "Maamaksu kõrgeim määr sihtotstarbe järgi",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "elamu": "Elamumaa või õuemaa",
+        "maatulundus": "Muu maatulundusmaa",
+        "muu": "Muu sihtotstarve"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "elamu": 1,
+            "maatulundus": 0.5,
+            "muu": 2
+          },
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Maamaksuseadus, § 5 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/MaaMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.maamaks-soodustus",
+      "nombre": "Kodualuse maa maksusoodustuse ülempiir",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Maamaksuseadus, § 11 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/MaaMS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.pension-baasosa",
+      "nombre": "Pensioni baasosa",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 399.24,
+          "fuente": {
+            "organismo": "Sotsiaalkindlustusamet",
+            "titulo": "Pension Calculation",
+            "url": "https://sotsiaalkindlustusamet.ee/en/pension-and-benefits/pension-amount/pension-calculation",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.pension-aastahinne",
+      "nombre": "Pensioni aastahinne",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 10.477,
+          "fuente": {
+            "organismo": "Sotsiaalkindlustusamet",
+            "titulo": "Pension Calculation",
+            "url": "https://sotsiaalkindlustusamet.ee/en/pension-and-benefits/pension-amount/pension-calculation",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.pension-staaz",
+      "nombre": "Vanaduspensioni staažinõue",
+      "tipo": "numero",
+      "unidad": "anios",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Riigi Teataja",
+            "titulo": "Riikliku pensionikindlustuse seadus, § 7 lg 1",
+            "url": "https://www.riigiteataja.ee/akt/RPKS",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.rahvapension",
+      "nombre": "Rahvapension kuus",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 414.1,
+          "fuente": {
+            "organismo": "Sotsiaalministeerium",
+            "titulo": "Valitsus kinnitas tänavuse pensionitõusu",
+            "url": "https://www.sm.ee/uudised/valitsus-kinnitas-tanavuse-pensionitousu-2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.ettevotluskonto",
+      "nombre": "Ettevõtluskonto maksumäär",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "0": "Ei tee II samba makseid",
+        "2": "II sammas 2%",
+        "4": "II sammas 4%",
+        "6": "II sammas 6%"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "0": 20,
+            "2": 22,
+            "4": 24,
+            "6": 26
+          },
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Entrepreneur account",
+            "url": "https://www.emta.ee/en/private-client/taxes-and-payment/taxable-income/entrepreneur-account",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.ettevotluskonto-piir",
+      "nombre": "Ettevõtluskonto laekumiste piir aastas",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40000,
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Entrepreneur account",
+            "url": "https://www.emta.ee/en/private-client/taxes-and-payment/taxable-income/entrepreneur-account",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ee.ettevotluskonto-ravikindlustus",
+      "nombre": "Ravikindlustuseks vajalik laekumine kuus ilma II sambata",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2436.5,
+          "fuente": {
+            "organismo": "Maksu- ja Tolliamet",
+            "titulo": "Entrepreneur account",
+            "url": "https://www.emta.ee/en/private-client/taxes-and-payment/taxable-income/entrepreneur-account",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    }
+  ]
+}
