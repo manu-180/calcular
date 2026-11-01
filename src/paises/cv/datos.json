@@ -1,0 +1,694 @@
+{
+  "mercado": "cv",
+  "datos": [
+    {
+      "id": "cv.iva-taxa-normal",
+      "nombre": "Taxa normal do IVA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-08",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código do IVA (Lei n.º 21/VI/2003), republicação em anexo à Lei n.º 81/VIII/2014, I Série n.º 3, de 8 de janeiro de 2015, artigo 17.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/1957",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.iva-eletricidade-agua",
+      "nombre": "Taxa do IVA na eletricidade e na água para consumo final",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Medida da lei do Orçamento do Estado, que não indica data de fim. A tabela de IVA do Código não muda.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Lei n.º 69/X/2025, de 31 de dezembro (Orçamento do Estado para 2026), I Série n.º 133, suplemento, artigo 84.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/DownloadAct?id=89137",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.irps-taxas",
+      "nombre": "Taxas da fórmula de retenção do IRPS (trabalhador dependente)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "escalao1": "Até 80 000$00 de rendimento bruto mensal",
+        "escalao2": "De 80 000$00 a 150 000$00",
+        "escalao3": "Acima de 150 000$00"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": {
+            "escalao1": 14,
+            "escalao2": 21,
+            "escalao3": 25
+          },
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código do IRPS (Lei n.º 78/VIII/2014), republicação pela Lei n.º 116/IX/2021, I Série n.º 10, de 2 de fevereiro de 2021, artigo 71.º, n.º 4",
+            "url": "https://boe.incv.cv/Bulletins/Download/3596",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.irps-parcelas",
+      "nombre": "Parcelas a abater na fórmula de retenção do IRPS (trabalhador dependente)",
+      "tipo": "mapa",
+      "unidad": "CVE",
+      "etiquetas": {
+        "escalao1": "Até 80 000$00 de rendimento bruto mensal",
+        "escalao2": "De 80 000$00 a 150 000$00",
+        "escalao3": "Acima de 150 000$00"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": {
+            "escalao1": 5125,
+            "escalao2": 10725,
+            "escalao3": 16725
+          },
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código do IRPS (Lei n.º 78/VIII/2014), republicação pela Lei n.º 116/IX/2021, I Série n.º 10, de 2 de fevereiro de 2021, artigo 71.º, n.º 4",
+            "url": "https://boe.incv.cv/Bulletins/Download/3596",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.irps-limites",
+      "nombre": "Limites do rendimento bruto mensal na fórmula de retenção do IRPS",
+      "tipo": "mapa",
+      "unidad": "CVE",
+      "etiquetas": {
+        "escalao1": "Fim do primeiro escalão",
+        "escalao2": "Fim do segundo escalão"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": {
+            "escalao1": 80000,
+            "escalao2": 150000
+          },
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código do IRPS (Lei n.º 78/VIII/2014), republicação pela Lei n.º 116/IX/2021, I Série n.º 10, de 2 de fevereiro de 2021, artigo 71.º, n.º 4",
+            "url": "https://boe.incv.cv/Bulletins/Download/3596",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.irps-limite-retencao",
+      "nombre": "Rendimento bruto mensal a partir do qual há retenção de IRPS",
+      "tipo": "numero",
+      "unidad": "CVE",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 36607,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código do IRPS (Lei n.º 78/VIII/2014), republicação pela Lei n.º 116/IX/2021, I Série n.º 10, de 2 de fevereiro de 2021, artigo 71.º, n.º 7",
+            "url": "https://boe.incv.cv/Bulletins/Download/3596",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.irps-retencao-minima",
+      "nombre": "Retenção mínima de IRPS quando a fórmula dá menos de 100$00",
+      "tipo": "numero",
+      "unidad": "CVE",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código do IRPS (Lei n.º 78/VIII/2014), republicação pela Lei n.º 116/IX/2021, I Série n.º 10, de 2 de fevereiro de 2021, artigo 71.º, n.º 8",
+            "url": "https://boe.incv.cv/Bulletins/Download/3596",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.inps-trabalhador",
+      "nombre": "Quotização do trabalhador para o INPS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-17",
+          "valor": 8.5,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Portaria Conjunta n.º 28/2024, I Série n.º 66, de 16 de julho de 2024, artigo 2.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/5858",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.inps-empregador",
+      "nombre": "Contribuição da entidade empregadora para o INPS",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-17",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Portaria Conjunta n.º 28/2024, I Série n.º 66, de 16 de julho de 2024, artigo 2.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/5858",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.salario-minimo",
+      "nombre": "Retribuição mínima mensal garantida (trabalhadores por conta de outrem)",
+      "tipo": "numero",
+      "unidad": "CVE",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 17000,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Lei n.º 45/X/2024, de 30 de dezembro (Orçamento do Estado para 2025), I Série n.º 125, suplemento, artigo 14.º (nova redação do artigo 4.º do Decreto-Lei n.º 6/2014)",
+            "url": "https://boe.incv.cv/Bulletins/Download/6150",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.horas-semanais",
+      "nombre": "Limite do período normal de trabalho por semana",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 44,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 149.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.horas-dia",
+      "nombre": "Limite do período normal de trabalho por dia",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 149.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.semanas-ano",
+      "nombre": "Semanas do ano na fórmula da retribuição horária",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 52,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 210.º",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.he-adicional",
+      "nombre": "Acréscimo mínimo do trabalho extraordinário",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-04",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Decreto-Legislativo n.º 1/2016, de 3 de fevereiro (altera o Código Laboral), I Série n.º 6, artigo 207.º",
+            "url": "https://boe.incv.cv/Bulletins/Download/2139",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.descanso-feriado-adicional",
+      "nombre": "Acréscimo mínimo do trabalho em dia de descanso semanal ou feriado",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 208.º",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.he-limite-dia",
+      "nombre": "Limite diário de trabalho extraordinário",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 161.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.he-limite-ano",
+      "nombre": "Limite anual de trabalho extraordinário",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 160,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 161.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.he-limite-ano-consentimento",
+      "nombre": "Limite anual de trabalho extraordinário com consentimento escrito do trabalhador",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 300,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 161.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.subsidio-noturno",
+      "nombre": "Subsídio mínimo de trabalho noturno",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 169.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.noturno-inicio",
+      "nombre": "Hora em que começa o trabalho noturno",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 174.º",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.noturno-fim",
+      "nombre": "Hora em que termina o trabalho noturno",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 174.º",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.ferias-dias",
+      "nombre": "Dias úteis de férias por ano de serviço",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 52.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.ferias-primeiro-ano",
+      "nombre": "Dias úteis de férias no ano de admissão no primeiro semestre",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 53.º, n.º 5",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.ferias-acumulacao",
+      "nombre": "Máximo de dias úteis de férias acumuláveis",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 44,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 56.º, n.º 3",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.ferias-prazo-gozo",
+      "nombre": "Prazo para gozar as férias vencidas",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 56.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.ferias-primeiro-vencimento",
+      "nombre": "Meses de serviço efetivo até ao vencimento das primeiras férias",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 53.º, n.º 2",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.indemnizacao-dias-ano",
+      "nombre": "Dias de retribuição por ano de serviço na indemnização por despedimento",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-04",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Decreto-Legislativo n.º 1/2016, de 3 de fevereiro (altera o Código Laboral), I Série n.º 6, artigos 224.º, n.º 1, e 238.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/2139",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.aviso-rescisao-dias-ano",
+      "nombre": "Dias de aviso prévio por ano de serviço na rescisão pelo trabalhador",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 243.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.aviso-rescisao-maximo",
+      "nombre": "Máximo do aviso prévio supletivo na rescisão pelo trabalhador",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2007-11-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Código Laboral Cabo-verdiano (Decreto-Legislativo n.º 5/2007), I Série n.º 37, suplemento, de 16 de outubro de 2007, artigo 243.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/348",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.aviso-objetiva-comunicacao",
+      "nombre": "Antecedência da comunicação do despedimento por justa causa objetiva",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-04",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Decreto-Legislativo n.º 1/2016, de 3 de fevereiro (altera o Código Laboral), I Série n.º 6, artigo 237.º, n.º 1",
+            "url": "https://boe.incv.cv/Bulletins/Download/2139",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.aviso-objetiva-decisao",
+      "nombre": "Antecedência da decisão de despedimento por justa causa objetiva",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-04",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Decreto-Legislativo n.º 1/2016, de 3 de fevereiro (altera o Código Laboral), I Série n.º 6, artigo 237.º, n.º 3",
+            "url": "https://boe.incv.cv/Bulletins/Download/2139",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.aviso-coletivo",
+      "nombre": "Antecedência da comunicação da decisão no despedimento coletivo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-02-04",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Boletim Oficial",
+            "titulo": "Decreto-Legislativo n.º 1/2016, de 3 de fevereiro (altera o Código Laboral), I Série n.º 6, artigo 222.º, n.º 2",
+            "url": "https://boe.incv.cv/Bulletins/Download/2139",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cv.euro-paridade",
+      "nombre": "Paridade fixa do escudo cabo-verdiano com o euro",
+      "tipo": "numero",
+      "unidad": "CVE",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "1999-01-01",
+          "valor": 110.265,
+          "motivo": "O site do Banco de Cabo Verde (bcv.cv) não abriu nesta sessão (erro 503 e certificado não reconhecido). O valor de 110,265 escudos por euro só foi visto em resumos de pesquisa e em páginas de terceiros.",
+          "fuente": {
+            "organismo": "Banco de Cabo Verde",
+            "titulo": "Taxas de câmbio",
+            "url": "https://www.bcv.cv/pt/Estatisticas/Quadros%20Estatisticos/taxasdecambio/Paginas/TaxasdeC%C3%A2mbio.aspx",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    }
+  ]
+}

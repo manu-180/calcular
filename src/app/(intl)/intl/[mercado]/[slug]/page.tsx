@@ -14,7 +14,7 @@ import { registro } from "@/paises";
 import { CalculadoraIntl } from "./calculadora-intl";
 
 // Calculadora, fuentes y novedades dependen de la fecha del mercado (ver revalidate en layout.tsx).
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Props = { params: Promise<{ mercado: string; slug: string }> };
 

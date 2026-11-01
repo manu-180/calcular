@@ -1,0 +1,20 @@
+{
+  "mercado": "sc",
+  "avisos": [
+    {
+      "id": "sc.thirteenth-month-rules",
+      "nivel": "cautela",
+      "desde": "2026-01-01",
+      "hasta": "2027-12-31",
+      "aplicaA": ["sc.thirteenth-month-pay-calculator"],
+      "texto": "Section 46D of the Employment Act tied the thirteenth month pay to a performance appraisal for 2023, 2024 and 2025 only. This calculator uses the full month of section 46C. Check the Official Gazette for any change that applies to the year you are paying.",
+      "fuente": {
+        "organismo": "Ministry of Employment and Social Affairs",
+        "titulo": "Employment (Amendment) Act 2023 (Act 19 of 2023)",
+        "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/1-1-7-act-19-2023-employment-amendment-act-2023/download",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      }
+    }
+  ]
+}

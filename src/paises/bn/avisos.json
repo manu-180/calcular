@@ -1,0 +1,21 @@
+{
+  "mercado": "bn",
+  "avisos": [
+    {
+      "id": "bn.stamp-late-wording",
+      "nivel": "info",
+      "desde": "2026-10-29",
+      "aplicaA": [
+        "bn.stamp-duty-penalty-calculator"
+      ],
+      "texto": "The Revenue Division describes the late stamping penalty in two places with slightly different wording. This calculator follows the stamp duty page, which sets the higher penalty after 3 months. Ask the Revenue Division if your instrument sits near that line.",
+      "fuente": {
+        "organismo": "Ministry of Finance and Economy, Revenue Division",
+        "titulo": "Stamp duty: penalty and exemptions",
+        "url": "https://www.mof.gov.bn/div_revenue_typesoftaxes_stampduty/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      }
+    }
+  ]
+}

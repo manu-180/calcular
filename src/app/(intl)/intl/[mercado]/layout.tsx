@@ -30,8 +30,9 @@ const arabe = Noto_Sans_Arabic({ variable: "--font-arabe", subsets: ["arabic"], 
 // La fecha de referencia (hoyEn, en la zona del mercado) decide tramos, avisos y qué calculadoras
 // se publican. Sin esto la página quedaba con el día del build hasta el próximo deploy. Next toma el
 // revalidate más bajo entre layout y página, así que alcanza con este para todo el árbol intl; las
-// páginas lo repiten para que nadie lo pierda al mover el layout.
-export const revalidate = 3600;
+// páginas lo repiten para que nadie lo pierda al mover el layout. Son 24 h y no 1 h por costo: ver el
+// layout de (ar) y /api/cron/mes-nuevo, que purga todo el día 1.
+export const revalidate = 86400;
 
 // Sin dynamicParams = false a propósito: anularía el de las hojas y un slug desconocido caería en
 // el 404 de la raíz (marca de calcular.ar) en vez del not-found intl (docs/adr/0001-spike-next16.md).

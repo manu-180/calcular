@@ -11,7 +11,7 @@ import { NovedadesVivas } from "./vista";
 
 // Ruta propia (gana sobre [slug]): la página junta las notas del país con el registro automático de
 // sus datos y series. La fecha del mercado decide qué rige, así que se regenera cada hora como el resto.
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Props = { params: Promise<{ mercado: string }> };
 

@@ -12,8 +12,8 @@ import { contextoSitio, type ContextoSitio } from "@/motor/ui/contexto";
 import { registro } from "@/paises";
 import { grillaPublicada } from "./datos";
 
-// «Tu sueldo en el mundo», compartida por las carpetas de cada slug de SLUG_MUNDO (una por idioma):
-// /<m>/<slug> es la página y /<m>/<slug>/<c> el duelo (el `c` de un link compartido). Cada carpeta
+// «Tu sueldo en el mundo», una fábrica por idioma que usa la ruta única i/mundo (secciones.ts):
+// /<m>/<slug> es la página y /<m>/<slug>/<c> el duelo (el `c` de un link compartido). Cada idioma
 // solo responde en las ediciones de su idioma; en otra da el 404 intl. El duelo va en el path y no en
 // ?c= para que la página siga cacheada (ISR): una query la volvería dinámica en cada pedido y la OG
 // del link tiene que ser la del amigo.

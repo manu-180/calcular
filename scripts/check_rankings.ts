@@ -5,7 +5,7 @@
 // rutas coincidan con los slugs. También prueba la grilla vacía: nada tira y no hay páginas.
 //   npx tsx scripts/check_rankings.ts
 import "./sin-server-only";
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { construirInformeMundo } from "../src/lib/mundo/grilla";
 import { DICCIONARIOS_RANKINGS, textosRankings } from "../src/motor/i18n/rankings";
@@ -115,14 +115,13 @@ for (const idioma of IDIOMAS) {
 
 // ---------- Rutas ----------
 const indices = Object.values(SLUG_RANKINGS);
-if (new Set(indices).size !== indices.length) fallas.push("SLUG_RANKINGS repite un slug entre idiomas (comparten carpeta)");
+if (new Set(indices).size !== indices.length) fallas.push("SLUG_RANKINGS repite un slug entre idiomas (el rewrite no sabría el idioma)");
+// Una sola ruta para todos los idiomas (src/motor/secciones.ts): ya no hay carpeta por idioma.
+for (const archivo of ["page.tsx", path.join("[ranking]", "page.tsx"), path.join("og", "route.tsx")]) {
+  const ruta = path.join(APP, "i", "rankings", "[seccion]", archivo);
+  if (!existsSync(ruta)) fallas.push(`falta ${path.relative(RAIZ, ruta)}`);
+}
 for (const idioma of IDIOMAS) {
-  const carpeta = path.join(APP, SLUG_RANKINGS[idioma]);
-  for (const archivo of ["page.tsx", path.join("[ranking]", "page.tsx"), path.join("og", "route.tsx")]) {
-    const ruta = path.join(carpeta, archivo);
-    if (!existsSync(ruta)) fallas.push(`${idioma}: falta ${path.relative(RAIZ, ruta)}`);
-    else if (!readFileSync(ruta, "utf8").includes(`("${idioma}")`)) fallas.push(`${path.relative(RAIZ, ruta)}: no es la carpeta de ${idioma}`);
-  }
   const slugs = Object.values(SLUGS_RANKING[idioma]);
   if (new Set(slugs).size !== slugs.length) fallas.push(`${idioma}: dos rankings con el mismo slug`);
   if (slugs.includes("og")) fallas.push(`${idioma}: un ranking no puede llamarse «og»`);

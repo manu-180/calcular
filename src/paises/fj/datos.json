@@ -1,0 +1,607 @@
+{
+  "mercado": "fj",
+  "datos": [
+    {
+      "id": "fj.paye-bands",
+      "nombre": "Resident income tax bands (annual chargeable income)",
+      "tipo": "escala",
+      "unidad": "FJD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30000,
+              "tasa": 0
+            },
+            {
+              "desde": 30000,
+              "hasta": 50000,
+              "tasa": 18
+            },
+            {
+              "desde": 50000,
+              "hasta": 270000,
+              "tasa": 20
+            },
+            {
+              "desde": 270000,
+              "hasta": 300000,
+              "tasa": 33
+            },
+            {
+              "desde": 300000,
+              "hasta": 350000,
+              "tasa": 34
+            },
+            {
+              "desde": 350000,
+              "hasta": 400000,
+              "tasa": 35
+            },
+            {
+              "desde": 400000,
+              "hasta": 450000,
+              "tasa": 36
+            },
+            {
+              "desde": 450000,
+              "hasta": 500000,
+              "tasa": 37
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 38
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 39
+            }
+          ],
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Tax rates (individual, VAT, FBT, CGT, withholding taxes)",
+            "url": "https://frcs.org.fj/tax-rates-and-codes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.paye-bands-non-resident",
+      "nombre": "Non-resident income tax bands (annual chargeable income)",
+      "tipo": "escala",
+      "unidad": "FJD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 270000,
+              "tasa": 20
+            },
+            {
+              "desde": 270000,
+              "hasta": 300000,
+              "tasa": 33
+            },
+            {
+              "desde": 300000,
+              "hasta": 350000,
+              "tasa": 34
+            },
+            {
+              "desde": 350000,
+              "hasta": 400000,
+              "tasa": 35
+            },
+            {
+              "desde": 400000,
+              "hasta": 450000,
+              "tasa": 36
+            },
+            {
+              "desde": 450000,
+              "hasta": 500000,
+              "tasa": 37
+            },
+            {
+              "desde": 500000,
+              "hasta": 1000000,
+              "tasa": 38
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 39
+            }
+          ],
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Tax rates (individual, VAT, FBT, CGT, withholding taxes)",
+            "url": "https://frcs.org.fj/tax-rates-and-codes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.paye-secondary-rate",
+      "nombre": "PAYE rate on secondary employment (tax code S)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Employer User Guide 2026",
+            "url": "https://frcs.org.fj/files/2026/08/Employer-Guide-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.paye-no-declaration-rate",
+      "nombre": "PAYE rate when no tax code declaration is given",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Employer User Guide 2026",
+            "url": "https://frcs.org.fj/files/2026/08/Employer-Guide-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.paye-late-lodgment-penalty",
+      "nombre": "Late lodgment penalty on outstanding PAYE",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Employer User Guide 2026",
+            "url": "https://frcs.org.fj/files/2026/08/Employer-Guide-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.paye-late-payment-penalty",
+      "nombre": "Late payment penalty on unpaid PAYE and FBT",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Employer User Guide 2026",
+            "url": "https://frcs.org.fj/files/2026/08/Employer-Guide-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.redundancy-tax-exemption",
+      "nombre": "Tax-exempt part of a redundancy payment",
+      "tipo": "numero",
+      "unidad": "FJD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Employer User Guide 2026",
+            "url": "https://frcs.org.fj/files/2026/08/Employer-Guide-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "valor": 12.5,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "VAT Guide",
+            "url": "https://frcs.org.fj/our-services/taxation-section/non-individuals/reporting-and-paying-taxes/vat-guide/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.vat-threshold",
+      "nombre": "VAT registration threshold (annual turnover)",
+      "tipo": "numero",
+      "unidad": "FJD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "VAT Guide",
+            "url": "https://frcs.org.fj/our-services/taxation-section/non-individuals/reporting-and-paying-taxes/vat-guide/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.fnpf-employee-rate",
+      "nombre": "FNPF employee contribution rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Ministry of Finance, Strategic Planning, National Development and Statistics",
+            "titulo": "2026-2027 Budget Supplement",
+            "url": "https://www.finance.gov.fj/wp-content/uploads/2026/06/2026-2027-Budget-Supplement.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.fnpf-employer-rate",
+      "nombre": "FNPF mandatory employer contribution rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-07-31",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministry of Finance, Strategic Planning, National Development and Statistics",
+            "titulo": "2026-2027 Budget Supplement",
+            "url": "https://www.finance.gov.fj/wp-content/uploads/2026/06/2026-2027-Budget-Supplement.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "hasta": "2027-07-31",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Ministry of Finance, Strategic Planning, National Development and Statistics",
+            "titulo": "2026-2027 Budget Supplement",
+            "url": "https://www.finance.gov.fj/wp-content/uploads/2026/06/2026-2027-Budget-Supplement.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-08-01",
+          "valor": 10,
+          "motivo": "The Budget Supplement reduces the rate only for 1 August 2026 to 31 July 2027. The rate after that date was not stated in the sources read."
+        }
+      ]
+    },
+    {
+      "id": "fj.fnpf-incentive-cap",
+      "nombre": "Highest employer FNPF rate that earns the 150% deduction on the excess",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "hasta": "2027-07-31",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministry of Finance, Strategic Planning, National Development and Statistics",
+            "titulo": "2026-2027 Budget Supplement",
+            "url": "https://www.finance.gov.fj/wp-content/uploads/2026/06/2026-2027-Budget-Supplement.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.fnpf-excess-deduction",
+      "nombre": "Tax deduction on employer FNPF paid above the mandatory rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-07-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "hasta": "2027-07-31",
+          "valor": 150,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "2026-2027 National Budget: Summary of Revenue Policies",
+            "url": "https://frcs.org.fj/files/2026/06/FRCS-Budget-Summary-2026-2027-National-Budget.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.corporate-tax-rate",
+      "nombre": "Corporate income tax rate (standard)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Tax rates (individual, VAT, FBT, CGT, withholding taxes)",
+            "url": "https://frcs.org.fj/tax-rates-and-codes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.fbt-rate",
+      "nombre": "Fringe benefits tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Tax rates (individual, VAT, FBT, CGT, withholding taxes)",
+            "url": "https://frcs.org.fj/tax-rates-and-codes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.cgt-rate",
+      "nombre": "Capital gains tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Tax rates (individual, VAT, FBT, CGT, withholding taxes)",
+            "url": "https://frcs.org.fj/tax-rates-and-codes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.contract-withholding-rate",
+      "nombre": "Withholding on contract payments (provisional tax)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Employer User Guide 2026",
+            "url": "https://frcs.org.fj/files/2026/08/Employer-Guide-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.contract-withholding-threshold",
+      "nombre": "Contract amount above which the payer withholds",
+      "tipo": "numero",
+      "unidad": "FJD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Employer User Guide 2026",
+            "url": "https://frcs.org.fj/files/2026/08/Employer-Guide-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.withholding-rates",
+      "nombre": "Withholding tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "resident-interest": "Interest paid to a resident",
+        "nr-royalty-fees": "Royalty, management fee or professional fee paid to a non-resident",
+        "nr-interest": "Interest paid to a non-resident",
+        "nr-insurance": "Insurance premium paid to a non-resident"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "resident-interest": 10,
+            "nr-royalty-fees": 15,
+            "nr-interest": 10,
+            "nr-insurance": 3
+          },
+          "fuente": {
+            "organismo": "Fiji Revenue and Customs Service",
+            "titulo": "Tax rates (individual, VAT, FBT, CGT, withholding taxes)",
+            "url": "https://frcs.org.fj/tax-rates-and-codes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fj.minimum-wage-hourly",
+      "nombre": "National minimum wage per hour",
+      "tipo": "numero",
+      "unidad": "FJD",
+      "proximaRevision": "2027-06-30",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2024-08-01",
+          "hasta": "2025-03-31",
+          "valor": 4.5,
+          "motivo": "solo leído en el discurso del presupuesto 2024-25; Legal Notice no accesible"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2025-04-01",
+          "valor": 5,
+          "motivo": "solo leído en el discurso del presupuesto 2024-25; Legal Notice no accesible"
+        }
+      ]
+    },
+    {
+      "id": "fj.annual-leave-days",
+      "nombre": "Annual leave after 12 months of work",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2007-10-02",
+          "valor": 10,
+          "motivo": "The Employment Relations Act 2007 and its regulations could not be opened from an official site in this session (laws.gov.fj and the ILO NATLEX copy were unreachable). The value comes from memory and secondary summaries."
+        }
+      ]
+    },
+    {
+      "id": "fj.sick-leave-days",
+      "nombre": "Paid sick leave per year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2007-10-02",
+          "valor": 10,
+          "motivo": "The Employment Relations Act 2007 and its regulations could not be opened from an official site in this session (laws.gov.fj and the ILO NATLEX copy were unreachable). The value comes from memory and secondary summaries."
+        }
+      ]
+    },
+    {
+      "id": "fj.maternity-leave-days",
+      "nombre": "Maternity leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2007-10-02",
+          "valor": 84,
+          "motivo": "The Employment Relations Act 2007 and its regulations could not be opened from an official site in this session (laws.gov.fj and the ILO NATLEX copy were unreachable). The value comes from memory and secondary summaries. Later amendments may have changed the length."
+        }
+      ]
+    },
+    {
+      "id": "fj.overtime-factor",
+      "nombre": "Overtime pay factor on a normal working day (first hours)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2007-10-02",
+          "valor": 1.5,
+          "motivo": "The Employment Relations Act 2007 and its regulations could not be opened from an official site in this session (laws.gov.fj and the ILO NATLEX copy were unreachable). The value comes from memory and secondary summaries."
+        }
+      ]
+    },
+    {
+      "id": "fj.redundancy-weeks-per-year",
+      "nombre": "Redundancy pay, weeks of wages per complete year of service",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2007-10-02",
+          "valor": 1,
+          "motivo": "The FRCS Employer Guide 2026 summarises the minimum as one week's wages for each complete year, but the Act itself could not be opened to confirm it."
+        }
+      ]
+    }
+  ]
+}
