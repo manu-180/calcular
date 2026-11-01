@@ -1,0 +1,48 @@
+{
+  "mercado": "ba",
+  "avisos": [
+    {
+      "id": "ba.brcko-van-obracuna",
+      "nivel": "info",
+      "desde": "2026-11-01",
+      "aplicaA": [
+        "ba.kalkulator-plate",
+        "ba.bruto-iz-neta",
+        "ba.trosak-poslodavca",
+        "ba.porez-na-dohodak",
+        "ba.doprinosi",
+        "ba.minimalna-plata",
+        "ba.godisnji-odmor",
+        "ba.otpremnina",
+        "ba.otkazni-rok",
+        "ba.prekovremeni-rad",
+        "ba.porodiljsko-odsustvo",
+        "ba.topli-obrok-i-regres"
+      ],
+      "texto": "Računamo samo za Federaciju BiH i Republiku Srpsku. Brčko distrikt ima svoje propise, a njegove stope doprinosa i najnižu platu nismo mogli pročitati u važećem službenom izvoru, pa ga nema među opcijama.",
+      "fuente": {
+        "organismo": "Skupština Brčko distrikta BiH",
+        "titulo": "Zakon o izmjenama i dopunama Zakona o porezu na dohodak Brčko distrikta, 24/20",
+        "url": "https://www.skupstinabd.ba/3-zakon/ba/Zakon%20o%20porezu%20na%20dohodak/03B24-20%20Zakon%20o%20izmjenama%20i%20dopunama%20Zakona%20o%20porezu%20na%20dohodak.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      }
+    },
+    {
+      "id": "ba.bolovanje-samo-rs",
+      "nivel": "info",
+      "desde": "2026-11-01",
+      "aplicaA": [
+        "ba.bolovanje"
+      ],
+      "texto": "Obračun važi samo za Republiku Srpsku. Za Federaciju BiH nismo našli važeći prečišćeni tekst propisa o zdravstvenom osiguranju, pa je ona izostavljena.",
+      "fuente": {
+        "organismo": "Narodna skupština Republike Srpske",
+        "titulo": "Zakon o obaveznom zdravstvenom osiguranju, „Sl. glasnik RS” 93/22, član 83",
+        "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-obaveznom-zdravstvenom-osiguranju",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      }
+    }
+  ]
+}

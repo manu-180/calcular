@@ -1,0 +1,1151 @@
+{
+  "mercado": "ba",
+  "datos": [
+    {
+      "id": "ba.doprinosi",
+      "nombre": "Doprinosi iz plate",
+      "tipo": "mapa",
+      "unidad": "%",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "etiquetas": {
+        "pio": "Penzijsko i invalidsko osiguranje",
+        "zdravstvo": "Zdravstveno osiguranje",
+        "nezaposlenost": "Osiguranje od nezaposlenosti",
+        "djecija": "Dječija zaštita"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "pio": 17,
+            "zdravstvo": 12.5,
+            "nezaposlenost": 1.5
+          },
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o doprinosima, prečišćeni tekst sa izmjenom iz „Službenih novina FBiH” 33/25, član 10",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/2dcc6-zakon-o-doprinosima-precisceni-tekst-25.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "pio": 18.5,
+            "zdravstvo": 10.2,
+            "nezaposlenost": 0.6,
+            "djecija": 1.7
+          },
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o doprinosima („Sl. glasnik RS” 114/17, član 22), izmijenjen zakonima 112/19 i 119/21",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-izmjenama-i-dopunama-zakona-o-doprinosima-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.doprinosi-ukupno",
+      "nombre": "Doprinosi iz plate, zbirna stopa",
+      "tipo": "numero",
+      "unidad": "%",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 31,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o doprinosima, prečišćeni tekst sa izmjenom iz „Službenih novina FBiH” 33/25, član 10",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/2dcc6-zakon-o-doprinosima-precisceni-tekst-25.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 31,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o doprinosima („Sl. glasnik RS” 114/17, član 22), izmijenjen zakonima 112/19 i 119/21",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-izmjenama-i-dopunama-zakona-o-doprinosima-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.doprinosi-poslodavac-fbih",
+      "nombre": "Doprinosi na platu u FBiH, na teret poslodavca",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pio": "Penzijsko i invalidsko osiguranje",
+        "zdravstvo": "Zdravstveno osiguranje",
+        "nezaposlenost": "Osiguranje od nezaposlenosti"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "pio": 2.5,
+            "zdravstvo": 2,
+            "nezaposlenost": 0.5
+          },
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o doprinosima, „Službene novine FBiH” 33/25",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/50ea7-zakon-o-izmjenama-i-dopunama-zakona-o-doprinosima-33-25.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.doprinosi-poslodavac-fbih-ukupno",
+      "nombre": "Doprinosi na platu u FBiH, zbirno",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o doprinosima, „Službene novine FBiH” 33/25",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/50ea7-zakon-o-izmjenama-i-dopunama-zakona-o-doprinosima-33-25.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.porez",
+      "nombre": "Porez na dohodak od plate",
+      "tipo": "numero",
+      "unidad": "%",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o porezu na dohodak FBiH, članovi 9, 11 i 24 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/d9bf6-zakon-o-porezu-na-dohodak-ispravan-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o porezu na dohodak, „Sl. glasnik RS” 119/21 (član 4 i član 10)",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-izmjenama-i-dopunama-zakona-o-porezu-na-dohodak-4",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.odbitak",
+      "nombre": "Osnovni lični odbitak, godišnje",
+      "tipo": "numero",
+      "unidad": "BAM",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 3600,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o porezu na dohodak FBiH, članovi 9, 11 i 24 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/d9bf6-zakon-o-porezu-na-dohodak-ispravan-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 12000,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o porezu na dohodak, „Sl. glasnik RS” 119/21 (član 4 i član 10)",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-izmjenama-i-dopunama-zakona-o-porezu-na-dohodak-4",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.odbitak-mjesecno",
+      "nombre": "Osnovni lični odbitak, mjesečno",
+      "tipo": "numero",
+      "unidad": "BAM",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 300,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Pravilnik o primjeni Zakona o porezu na dohodak, prečišćeni tekst do „Službenih novina FBiH” 60/25",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/0491d-1-precisceni-pravilnik-o-primjeni-zakona-o-porezu-na-dohodak-60-25.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o porezu na dohodak, „Sl. glasnik RS” 119/21 (član 4 i član 10)",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-izmjenama-i-dopunama-zakona-o-porezu-na-dohodak-4",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.odbitak-clan-rs",
+      "nombre": "Odbitak za izdržavanog člana u RS, godišnje",
+      "tipo": "numero",
+      "unidad": "BAM",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-01",
+          "valor": 900,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o porezu na dohodak, „Sl. glasnik RS” 66/18 (član 10)",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-izmjenama-i-dopunama-zakona-o-porezu-na-dohodak-2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.neoporezivo-rs",
+      "nombre": "Neoporezivi dio plate u RS, neto mjesečno",
+      "tipo": "numero",
+      "unidad": "BAM",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o porezu na dohodak, „Sl. glasnik RS” 114/25 (član 8, tačka 13)",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-izmjenama-i-dopunama-zakona-o-porezu-na-dohodak-7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.minimalna-fbih",
+      "nombre": "Najniža neto plata u FBiH",
+      "tipo": "numero",
+      "unidad": "BAM",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1027,
+          "fuente": {
+            "organismo": "Vlada Federacije BiH",
+            "titulo": "Odluka o iznosu najniže plate za 2026. godinu, V. broj 1930/2025",
+            "url": "https://fbihvlada.gov.ba/bs/1094-odluka-o-iznosu-najnize-place-za-2026-godinu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "ba.minimalna-rs-neto",
+      "nombre": "Najniža neto plata u RS po spremi",
+      "tipo": "mapa",
+      "unidad": "BAM",
+      "etiquetas": {
+        "osnovna": "Bez uslova o stepenu obrazovanja",
+        "trogodisnja": "Trogodišnja srednja škola",
+        "cetverogodisnja": "Četverogodišnja srednja škola",
+        "visa": "Više obrazovanje",
+        "visoka": "Visoko obrazovanje"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "osnovna": 1000,
+            "trogodisnja": 1050,
+            "cetverogodisnja": 1100,
+            "visa": 1350,
+            "visoka": 1450
+          },
+          "fuente": {
+            "organismo": "Vlada Republike Srpske",
+            "titulo": "16. sjednica Vlade: Odluka o najnižoj plati u Republici Srpskoj za 2026. godinu („Sl. glasnik RS” 115/25)",
+            "url": "https://vladars.rs/sr-SP-Cyrl/Vlada/media/vijesti/Pages/261225-%D0%B2%D0%BB%D0%B0%D0%B4%D0%B01.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "ba.minimalna-rs-bruto",
+      "nombre": "Najniža bruto plata u RS po spremi",
+      "tipo": "mapa",
+      "unidad": "BAM",
+      "etiquetas": {
+        "osnovna": "Bez uslova o stepenu obrazovanja",
+        "trogodisnja": "Trogodišnja srednja škola",
+        "cetverogodisnja": "Četverogodišnja srednja škola",
+        "visa": "Više obrazovanje",
+        "visoka": "Visoko obrazovanje"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "osnovna": 1476.23,
+            "trogodisnja": 1558.19,
+            "cetverogodisnja": 1672.13,
+            "visa": 2081.97,
+            "visoka": 2245.9
+          },
+          "fuente": {
+            "organismo": "Vlada Republike Srpske",
+            "titulo": "16. sjednica Vlade: Odluka o najnižoj plati u Republici Srpskoj za 2026. godinu („Sl. glasnik RS” 115/25)",
+            "url": "https://vladars.rs/sr-SP-Cyrl/Vlada/media/vijesti/Pages/261225-%D0%B2%D0%BB%D0%B0%D0%B4%D0%B01.aspx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "ba.odmor-min",
+      "nombre": "Najkraći godišnji odmor",
+      "tipo": "numero",
+      "unidad": "dias",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.odmor-max-fbih",
+      "nombre": "Najduži godišnji odmor u FBiH, bez posebnog kolektivnog ugovora",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.odmor-maloljetni-fbih",
+      "nombre": "Godišnji odmor maloljetnog radnika u FBiH",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.odmor-posebni-rs",
+      "nombre": "Godišnji odmor na poslovima s posebnim uslovima u RS",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.otkazni-radnik",
+      "nombre": "Najkraći otkazni rok kad otkazuje radnik",
+      "tipo": "numero",
+      "unidad": "dias",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.otkazni-poslodavac",
+      "nombre": "Najkraći otkazni rok kad otkazuje poslodavac",
+      "tipo": "numero",
+      "unidad": "dias",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.otpremnina-godine",
+      "nombre": "Najmanje godina neprekidnog rada za otpremninu",
+      "tipo": "numero",
+      "unidad": "anios",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.otpremnina-djelilac",
+      "nombre": "Otpremnina za godinu rada: dio prosječne plate (1 od toliko)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.otpremnina-tope",
+      "nombre": "Najviša otpremnina, u prosječnim platama",
+      "tipo": "numero",
+      "unidad": "numero",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.uvecanje-rs",
+      "nombre": "Najmanje uvećanje osnovne plate u RS",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "prekovremeni": "Prekovremeni rad",
+        "nocni": "Noćni rad",
+        "praznik": "Državni praznik i neradni dan"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-07-08",
+          "valor": {
+            "prekovremeni": 25,
+            "nocni": 30,
+            "praznik": 40
+          },
+          "fuente": {
+            "organismo": "Ministarstvo rada i boračko-invalidske zaštite RS",
+            "titulo": "Odluka o utvrđivanju uvećanja plate, visine primanja po osnovu rada i visine pomoći radniku, „Sl. glasnik RS” 53/16",
+            "url": "https://vladars.rs/sr-SP-Cyrl/Vlada/Ministarstva/mpb/PAO/Documents/Odluka-Visina-uvecanja-plate.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.prekovremeno-sedmicno-fbih",
+      "nombre": "Najviše prekovremenih sati u sedmici u FBiH",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.bolovanje-rs",
+      "nombre": "Naknada za bolovanje u RS, procenat od osnova",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "opsta": "Bolest, povreda, njega člana uže porodice",
+        "izolacija": "Obavezna izolacija",
+        "trudnoca": "Komplikacije u trudnoći",
+        "maligna": "Maligna bolest, njega djeteta s malignom bolešću",
+        "davanje": "Dobrovoljno davanje organa, tkiva ili ćelija"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-10-01",
+          "valor": {
+            "opsta": 70,
+            "izolacija": 90,
+            "trudnoca": 100,
+            "maligna": 100,
+            "davanje": 100
+          },
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o obaveznom zdravstvenom osiguranju, „Sl. glasnik RS” 93/22, član 83",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-obaveznom-zdravstvenom-osiguranju",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.bolovanje-period-rs",
+      "nombre": "Period za prosjek neto plate kod bolovanja u RS",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-10-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o obaveznom zdravstvenom osiguranju, „Sl. glasnik RS” 93/22, član 83",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-obaveznom-zdravstvenom-osiguranju",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.porodiljsko",
+      "nombre": "Porodiljsko odsustvo",
+      "tipo": "numero",
+      "unidad": "meses",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.porodiljsko-blizanci-rs",
+      "nombre": "Porodiljsko odsustvo u RS za blizance i treće i naredno dijete",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.porodiljsko-prije",
+      "nombre": "Najranije prije porođaja",
+      "tipo": "numero",
+      "unidad": "dias",
+      "regiones": [
+        "fbih",
+        "rs"
+      ],
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "fbih"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "region": "rs"
+        }
+      ]
+    },
+    {
+      "id": "ba.porodiljsko-najkrace-fbih",
+      "nombre": "Najkraće porođajno odsustvo u FBiH poslije porođaja",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-11-01",
+          "valor": 42,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Zakon o radu FBiH, „Službene novine FBiH” 26/16 i 89/18 (prečišćena verzija)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/f0787-zakon-o-radu-precisceni-tekst.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.porodiljsko-otac-rs",
+      "nombre": "Otac u RS može preuzeti odsustvo nakon toliko dana",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o radu, „Sl. glasnik RS” 1/16",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.porodiljsko-prosjek-rs",
+      "nombre": "Period za prosjek plate kod porodiljske naknade u RS",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Narodna skupština Republike Srpske",
+            "titulo": "Zakon o izmjeni Zakona o radu, „Sl. glasnik RS” 112/23 (član 112)",
+            "url": "https://www.narodnaskupstinars.net/la/akti/usvojeni-zakoni/zakon-o-izmjeni-zakona-o-radu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.topli-obrok-rs",
+      "nombre": "Topli obrok u RS, procenat prosječne neto plate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-05-12",
+          "valor": 0.85,
+          "fuente": {
+            "organismo": "Ministarstvo rada i boračko-invalidske zaštite RS",
+            "titulo": "Odluka o izmjeni Odluke o utvrđivanju uvećanja plate, „Sl. glasnik RS” 39/22",
+            "url": "https://vladars.rs/sr-SP-Cyrl/Vlada/Ministarstva/mpb/PAO/Documents/Odluka%20o%20izmjeni%20Odluke%20o%20uve%c4%87anju%20plate%20-%20Izmjena%202-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.prosjecna-neto-rs-2025",
+      "nombre": "Prosječna neto plata u RS za 2025.",
+      "tipo": "numero",
+      "unidad": "BAM",
+      "proximaRevision": "2027-01-25",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-22",
+          "valor": 1528,
+          "fuente": {
+            "organismo": "Republički zavod za statistiku RS",
+            "titulo": "Prosječne plate zaposlenih, decembar 2025. (saopštenje 6/26)",
+            "url": "https://www.rzs.rs.ba/static/uploads/saopstenja/rad/mesecna_saopstenja/2025/Rad_Decembar_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.topli-obrok-fbih",
+      "nombre": "Topli obrok u FBiH, neoporezivo do procenta prosječne neto plate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Pravilnik o primjeni Zakona o porezu na dohodak, prečišćeni tekst do „Službenih novina FBiH” 60/25",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/0491d-1-precisceni-pravilnik-o-primjeni-zakona-o-porezu-na-dohodak-60-25.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.regres-fbih",
+      "nombre": "Regres u FBiH, neoporezivo do procenta prosječne neto plate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Pravilnik o primjeni Zakona o porezu na dohodak, prečišćeni tekst do „Službenih novina FBiH” 60/25",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/0491d-1-precisceni-pravilnik-o-primjeni-zakona-o-porezu-na-dohodak-60-25.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.prosjecna-neto-fbih",
+      "nombre": "Prosječna neto plata u FBiH, VIII 2026.",
+      "tipo": "numero",
+      "unidad": "BAM",
+      "proximaRevision": "2026-11-20",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": 1708,
+          "fuente": {
+            "organismo": "Federalni zavod za statistiku",
+            "titulo": "Pregled pokazatelja: prosječne plate, VIII 2026.",
+            "url": "https://fzs.ba/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.prosjecna-neto-fbih-3m",
+      "nombre": "Prosječna neto plata u FBiH, VI do VIII 2026.",
+      "tipo": "numero",
+      "unidad": "BAM",
+      "proximaRevision": "2026-11-20",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": 1726,
+          "fuente": {
+            "organismo": "Federalni zavod za statistiku",
+            "titulo": "Pregled pokazatelja: prosječne plate, VIII 2026.",
+            "url": "https://fzs.ba/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.pdv",
+      "nombre": "Standardna stopa PDV-a",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-01-01",
+          "valor": 17,
+          "fuente": {
+            "organismo": "Uprava za indirektno oporezivanje BiH",
+            "titulo": "Zakon o porezu na dodanu vrijednost, „Sl. glasnik BiH” 9/05, član 23",
+            "url": "https://www.uino.gov.ba/portal/wp-content/uploads/PROPISI/2_Porezi/1_PDV/1_Zakon_o_PDV/B/B-1-Zakon_o_PDV-b.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.pdv-prag",
+      "nombre": "Prag za obaveznu registraciju za PDV",
+      "tipo": "numero",
+      "unidad": "BAM",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-12-02",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Uprava za indirektno oporezivanje BiH",
+            "titulo": "Zakon o izmjeni Zakona o PDV-u, „Sl. glasnik BiH” 80/23 (član 57, prag 100.000 KM)",
+            "url": "https://www.uino.gov.ba/portal/wp-content/uploads/PROPISI/2_Porezi/1_PDV/1_Zakon_o_PDV/B/B-H-S-1-5-Z-o-PDV-sl-list-80-23-24-11-23.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.kurs-eur",
+      "nombre": "Kurs konvertibilne marke prema euru",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.95583,
+          "fuente": {
+            "organismo": "Centralna banka BiH",
+            "titulo": "Kursna lista CBBiH, broj 215 od 31. 10. 2026.",
+            "url": "https://www.cbbh.ba/CurrencyExchange/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ba.promet-kanton",
+      "nombre": "Porez na promet nekretnina po kantonima",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ks": "Kanton Sarajevo",
+        "zdk": "Zeničko-dobojski kanton",
+        "usk": "Unsko-sanski kanton",
+        "hnk": "Hercegovačko-neretvanski kanton"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": {
+            "ks": 5,
+            "zdk": 5,
+            "usk": 5,
+            "hnk": 5
+          },
+          "fuente": {
+            "organismo": "Porezna uprava FBiH",
+            "titulo": "Kantonalni zakoni o porezu na promet nekretnina: KS 28/18 (član 11), ZDK 6/09 (član 11), USK (član 9, najviše 5 %), HNK (član 12, najviše 5 %)",
+            "url": "https://www.pufbih.ba/v1/public/upload/zakoni/80eee-zakon-o-porezu-na-promet-nekretnina-i-porezu-na-naslijede-i-poklone-28-18.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    }
+  ]
+}
