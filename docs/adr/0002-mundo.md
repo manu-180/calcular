@@ -1680,3 +1680,43 @@ plural detrás de un número y rusismos («зарплата», «калькул�
 **Fuente.** Geist no trae ө ni ү: la tarjeta OG usa Noto Sans de respaldo, como ru y bg. La edición interna es
 `zz-mn` («Зеталанд», mn-001). Mercados de prueba en `check_universales`: Монгол Улс con MNT y nombres largos
 («Бүгд Найрамдах Доминикан Улс», «Сент-Винсент ба Гренадин», «Соломоны арлууд»).
+
+### D37. Vietnamita, para Vietnam (2026-11-01)
+
+(Hasta D36 se usan en ramas sin mergear.)
+
+**Registro.** Uno solo, el de los bancos y los servicios (Vietcombank, Techcombank, eTax): «bạn» neutro y cortés,
+frases cortas («Nhập», «Chọn»), botón «Tính». Nunca «quý khách» ni «anh/chị» (ventanilla), «mày» o «cậu» (confianza), ni
+partículas de chat («nhé»). Los mercados van con trato `usted` y el diccionario se escribe en `base`. El registro sale
+del encargo: no se contrastó en las webs de esos bancos, así que conviene que el agente de país lo mire.
+
+**Gramática del país.** Sin artículos ni casos: el nombre no cambia y la preposición va delante. `GRAMATICA.vi` da
+`en` = «tại Việt Nam», `de` = «của Việt Nam», `para` = «cho Việt Nam». «tại» va en minúscula: ninguna frase empieza con
+`en`, se reescribe.
+
+**Plural.** No hay: «3 ngày», «1,5 năm». Las dos formas de `NOMBRES_UNIDAD` son iguales y los diccionarios escriben el
+conteo literal, como el indonesio.
+
+**Formato y moneda.** vi-VN como lo da Intl: punto de miles, coma decimal, «1.234.567 ₫» con espacio y sin decimales. En
+texto corrido, «₫» o «đồng». «5.000» se lee 5000 y «5,000» se rechaza por ambiguo. La prueba es VND.
+
+**Reglas.** `reglas_idioma` exige NFC (la forma descompuesta no iguala en búsquedas y Satori la arma mal), comillas “ ”,
+el tono en la vocal de los textos oficiales («hóa», «hòa», «khỏe», «tùy», «thủy»), «hằng tháng» y no «hàng tháng» para que el
+sitio diga siempre lo mismo. Rechaza marca de plural tras un número, «1,500,000», «7.5%», «VNĐ», «1.000₫» y palabras sin
+diacríticos («luong», «thue»). «tinh», «thang», «ngay» y «nam» no se atrapan porque existen así. «nha» solo al final de frase,
+porque está en «Bồ Đào Nha». Excepciones de número: «42,195 km» y «CC BY 4.0».
+
+**Slugs.** ASCII sin diacríticos y con đ = d (`tinh-lai-vay`, `tinh-thue-gtgt`, `luong-tren-the-gioi`, `lich-tra-luong`). La
+conversión de sueldos usa `quy-doi-luong`: `tinh-luong-gross-net` queda libre para la calculadora local de Vietnam.
+
+**Período en la inferencia.** «năm» y «tháng» llegan a `inferir.ts` como «nam» y «thang». «Việt Nam» se une antes en una
+palabra: si no, el nombre del país contaría como «año» en una etiqueta.
+
+**Fuente.** Geist trae las letras vietnamitas pero no el ₫ (se miró el TTF que entrega Google Fonts). En las tarjetas OG va
+Noto Sans de respaldo. En la web se suma el subset `vietnamese` a Geist en los layouts intl y embed: con `display: optional`,
+un archivo sin precarga deja en la primera visita ơ y ư en la fallback, en medio de una palabra en Geist. El costo es un
+archivo más precargado en todos los mercados, no solo en vi. Si molesta, la alternativa es una instancia aparte sin precarga,
+como el árabe, a cambio de ese cambio de fuente. El ₫ en la web sale de la fallback del navegador.
+
+La edición interna es `zz-vi` (Zetaland, vi-001). Mercados de prueba en `check_universales`: Việt Nam con VND y «Saint
+Vincent và Grenadines» con XCD.

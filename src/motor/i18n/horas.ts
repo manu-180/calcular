@@ -3806,6 +3806,126 @@ const mn: Diccionario<TextosHoras> = {
   },
 };
 
+// ───────────────────────────── vi ─────────────────────────────
+// Vietnamita (ADR 0002, D37): impersonal como los demás, frases cortas. {en} trae «tại» en minúscula de
+// GRAMATICA.vi, así que nunca abre una frase; sin plural después de un número («120 giờ»).
+
+const vi: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Cần làm bao nhiêu giờ để mua?",
+    seo: {
+      titulo: ["Cần làm bao nhiêu giờ để mua iPhone {en}", "Số giờ làm việc để mua iPhone {en}", "Cần làm bao nhiêu giờ để mua?"],
+      tituloGlobal: ["Cần làm bao nhiêu giờ để mua iPhone trên thế giới", "Cần làm bao nhiêu giờ để mua?"],
+      tituloProducto: ["Cần làm bao nhiêu giờ để mua {producto} {en}", "Số giờ làm việc để mua {producto} {en}", "Cần làm bao nhiêu giờ để mua {producto}"],
+      tituloProductoGlobal: ["Cần làm bao nhiêu giờ để mua {producto} trên thế giới", "Cần làm bao nhiêu giờ để mua {producto}"],
+      descripcion: "iPhone, MacBook hay Spotify, tính bằng giờ làm việc với lương tối thiểu {en} và ở {n} quốc gia. Giá chính thức và nguồn của từng số liệu.",
+      descripcionGlobal: "iPhone, MacBook hay Spotify, tính bằng giờ làm việc với lương tối thiểu ở {n} quốc gia. Giá chính thức và nguồn của từng số liệu.",
+      descripcionProducto: "{producto} {en} tương đương {horas} làm việc với lương tối thiểu. Xếp hạng {n} quốc gia theo giá chính thức, có nguồn của từng số liệu.",
+      descripcionProductoGlobal: "Cần làm bao nhiêu giờ với lương tối thiểu để mua {producto} ở {n} quốc gia. Giá chính thức của từng cửa hàng và nguồn của từng số liệu.",
+    },
+    ceja: "Chỉ số {mes}",
+    h1: "Cần làm bao nhiêu giờ để mua?",
+    h1Producto: "Cần làm bao nhiêu giờ để mua {producto}?",
+    bajada: "Giá chính thức của cùng một sản phẩm, tính bằng giờ làm việc với lương tối thiểu ở {n} quốc gia.",
+    form: { producto: "Sản phẩm", pais: "Quốc gia", porMes: "mỗi tháng" },
+    heroe: {
+      antes: "{producto} {en} tương đương",
+      despues: "làm việc với lương tối thiểu",
+      despuesMes: "làm việc với lương tối thiểu, mỗi tháng",
+      jornadaUno: "{n} ngày làm việc 8 giờ",
+      jornadaOtras: "{n} ngày làm việc 8 giờ",
+      precio: "Giá chính thức {precio}",
+      salario: "Lương tối thiểu {monto} mỗi giờ",
+      sinPrecio: "Không có cửa hàng chính thức nào bán sản phẩm này {en}.",
+      mejor: "Chỉ cần {horas} {en}.",
+      mejorPropio: "Không có quốc gia nào trong chỉ số cần ít giờ hơn.",
+      puesto: "Hạng {p} trên {total}",
+      escalaHoras: "Mỗi ô là một giờ làm việc",
+      escalaSemanas: "Mỗi ô là một tuần làm việc 40 giờ",
+      masDeUnAnio: "Hơn một năm làm việc",
+    },
+    ranking: {
+      titulo: "Theo từng quốc gia",
+      bajada: "Từ ít giờ nhất đến nhiều giờ nhất. Mỗi giá là giá chính thức của nhà sản xuất tại quốc gia đó.",
+      lista: "Các quốc gia xếp theo số giờ làm việc",
+      verTodos: "Xem tất cả {n} quốc gia",
+      verMenos: "Thu gọn",
+      elegido: "Đã chọn",
+      sinPrecio: "Không có dữ liệu của {n} quốc gia trong chỉ số: không có cửa hàng chính thức nào bán sản phẩm này.",
+      horas: "Giờ",
+      precio: "Giá chính thức",
+    },
+    compartir: {
+      titulo: "Thẻ để chia sẻ",
+      bajada: "Tất cả đều là dữ liệu công khai: giá chính thức và giờ làm việc với lương tối thiểu.",
+      boton: "Chia sẻ thẻ",
+      descargar: "Tải xuống để đăng story",
+      copiado: "Đã sao chép liên kết.",
+      compartido: "Xong, đã chia sẻ.",
+      error: "Hiện không chia sẻ được.",
+      texto: "{producto} {en} tương đương {horas} làm việc với lương tối thiểu. Các quốc gia khác thì sao?",
+      alt: "Xem trước thẻ",
+    },
+    metodo: {
+      titulo: "Cách chúng tôi tính",
+      estimacion: "Số giờ = giá chính thức ÷ lương tối thiểu mỗi giờ. Đây là phép so sánh giá chính thức, không phải ngân sách mua sắm.",
+      supuestos: [
+        "Giá là giá niêm yết của phiên bản rẻ nhất tại cửa hàng chính thức của nhà sản xuất, đọc từ trang của từng quốc gia.",
+        "Spotify Premium là gói cá nhân một tháng, không tính khuyến mãi ban đầu.",
+        "Lương tối thiểu là mức lương tối thiểu chung đang áp dụng hôm nay cho người trưởng thành làm việc toàn thời gian. Nếu có nhiều mức theo ngành hoặc vùng, chúng tôi dùng mức của ngành thương mại tại vùng chính.",
+        "Nếu luật quy định lương tối thiểu theo tháng hoặc theo ngày, số tiền được đổi sang theo giờ dựa trên thời gian làm việc theo luật của quốc gia đó.",
+        "Tại Tây Ban Nha và Bồ Đào Nha, lương tối thiểu được trả 14 lần mỗi năm: số tiền được chia đều cho 12 tháng, giống cách Eurostat tính.",
+        "Nếu cửa hàng bán bằng đô la, giá được đổi sang đơn vị tiền tệ địa phương theo tỷ giá chính thức của quốc gia đó.",
+        "Để có thể so sánh, một ngày làm việc được tính là 8 giờ ở mọi quốc gia.",
+      ],
+      fuentesTitulo: "Nguồn của từng số liệu",
+      fuentesBajada: "Từng quốc gia với lương tối thiểu, thời gian làm việc và giá đọc tại cửa hàng, kèm ngày của mỗi lần đọc.",
+      salario: "Lương tối thiểu",
+      jornada: "Thời gian làm việc",
+      precio: "Giá",
+      cambio: "Tỷ giá",
+      consultado: "Đã tra cứu: {fecha}",
+      verificado: "Đã kiểm tra: {fecha}",
+      verFuente: "Xem nguồn",
+      sello: "Giá được đọc từ {desde} đến {hasta}. Giá cũ hơn 120 ngày sẽ không còn hiển thị.",
+      conversion: {
+        hora: "Luật quy định số tiền theo giờ.",
+        mes: "Lương tháng × 12 ÷ 52 tuần ÷ số giờ mỗi tuần ({h}).",
+        mesPagas: "Lương tháng × số lần trả trong năm ({p}) ÷ 52 tuần ÷ số giờ mỗi tuần ({h}).",
+        anio: "Lương năm ÷ 52 tuần ÷ số giờ mỗi tuần ({h}).",
+        semana: "Lương tuần ÷ số giờ mỗi tuần ({h}).",
+        dia: "Lương ngày ÷ số giờ làm việc mỗi ngày ({h}).",
+        diaPagado: "Lương ngày × số ngày được trả ({d}) ÷ số giờ mỗi tuần ({h}).",
+        divisor: "Lương tháng ÷ số chia giờ theo quy định ({d}).",
+      },
+    },
+    faqTitulo: "Câu hỏi thường gặp",
+    faq: [
+      {
+        pregunta: "Số giờ được tính thế nào?",
+        respuesta: "Giá chính thức của sản phẩm được chia cho lương tối thiểu mỗi giờ của quốc gia đó. Nếu luật quy định lương tối thiểu theo tháng hoặc theo ngày, số tiền được đổi sang theo giờ dựa trên thời gian làm việc theo luật của quốc gia đó.",
+      },
+      {
+        pregunta: "Vì sao dùng lương tối thiểu?",
+        respuesta: "Lương tối thiểu được quy định bằng văn bản pháp luật ở hầu hết các quốc gia và có thể kiểm tra tại nguồn chính thức. Lương trung bình được đo theo cách khác nhau ở mỗi quốc gia, nên không thể so sánh theo cùng một cách.",
+      },
+      {
+        pregunta: "Giá đã có thuế chưa?",
+        respuesta: "Đây là giá niêm yết hiển thị tại cửa hàng chính thức của từng quốc gia. Tại Hoa Kỳ và Canada, giá này chưa gồm thuế bán hàng. Ở các quốc gia khác, cửa hàng cũng có thể cộng thuế khi thanh toán.",
+      },
+      {
+        pregunta: "Vì sao có quốc gia không nằm trong danh sách?",
+        respuesta: "Chỉ có những quốc gia có lương tối thiểu đang áp dụng, đã được xác minh, và có giá đọc từ cửa hàng chính thức. Không có cửa hàng chính thức trực tuyến thì sản phẩm đó không có dữ liệu. Chúng tôi không bao giờ dùng giá của bên bán lại.",
+      },
+      {
+        pregunta: "Dữ liệu được cập nhật bao lâu một lần?",
+        respuesta: "Giá được đọc từ từng cửa hàng và hết hạn sau 120 ngày: giá cũ hơn sẽ không còn hiển thị. Lương tối thiểu lấy từ dữ liệu chính thức của từng quốc gia và thay đổi khi quy định thay đổi.",
+      },
+    ],
+    og: { de: "làm việc với lương tối thiểu", deMes: "làm việc với lương tối thiểu mỗi tháng", generica: "Cần làm bao nhiêu giờ để mua {producto}?", genericaBajada: "Giá chính thức tính bằng giờ làm việc với lương tối thiểu ở {n} quốc gia", menos: "Ít giờ nhất", cta: "Tất cả quốc gia tại" },
+  },
+};
+
 export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, vi };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {

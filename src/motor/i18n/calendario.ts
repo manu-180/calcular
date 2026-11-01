@@ -2470,6 +2470,74 @@ const mn: Diccionario<TextosCalendario> = {
   },
 };
 
+// Vietnamita (ADR 0002, D37): impersonal como los demás, frases cortas. El país va con GRAMATICA.vi, nunca
+// al inicio de una frase («tại» en minúscula), y tras un número no hay plural («3 ngày»).
+const gVi = GRAMATICA.vi;
+const vi: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Lịch lương và thuế",
+    seo: {
+      titulo: (pais, anios) => [
+        `Lịch lương và thuế ${gVi.de(pais)} ${anios}: các ngày quan trọng`,
+        `Lịch lương và thuế ${gVi.de(pais)} ${anios}`,
+        `Lịch lương ${gVi.de(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Những ngày làm thay đổi lương ${gVi.en(pais)}, từ nguồn chính thức: ${proximas}. Mỗi ngày đều có công cụ tính đi kèm.`,
+      descripcionSin: (pais) => `Những ngày làm thay đổi lương ${gVi.en(pais)}, từ nguồn chính thức, kèm công cụ tính. Sẵn sàng thêm vào lịch điện thoại.`,
+    },
+    ceja: (anios) => `Lịch ${anios}`,
+    h1: (pais) => `Lịch lương và thuế ${gVi.de(pais)}`,
+    acento: "những ngày ảnh hưởng đến lương",
+    bajada: "Mỗi ngày đều lấy từ nguồn chính thức và liên kết đến công cụ tính tương ứng. Trang tự cập nhật khi có số liệu mới được công bố.",
+    proxima: "Ngày tiếp theo",
+    cuenta: { hoy: "Hôm nay", manana: "Ngày mai", ayer: "Hôm qua", en: (n) => `Còn ${n} ngày`, hace: (n) => `${n} ngày trước`, dias: () => "ngày" },
+    queViene: "Sắp tới",
+    yaRige: "Đang áp dụng",
+    mesPorMes: "Cả năm, theo từng tháng",
+    sinFechas: "Chưa có thay đổi nào được công bố",
+    filtro: "Lọc theo chủ đề",
+    todo: "Tất cả",
+    tipos: { pago: "Trả lương", "salario-minimo": "Lương tối thiểu", impuestos: "Thuế", aportes: "Các khoản đóng và hưu trí", laboral: "Quy định lao động", indices: "Giá trị tham chiếu" },
+    pasa: (antes, despues) => `Thay đổi từ ${antes} thành ${despues}`,
+    queda: (valor) => `Ấn định ở mức ${valor}`,
+    cambian: "Số liệu thay đổi",
+    zonas: (lista) => `Áp dụng tại ${lista}`,
+    limite: "Hạn cuối",
+    agregar: "Thêm vào lịch của tôi",
+    descargar: "Apple, Outlook và ứng dụng khác (tệp .ics)",
+    google: "Lịch Google",
+    calcular: "Tính",
+    tambien: "Cũng có tại",
+    fuente: (organismo, fecha) => `Nguồn: ${organismo}. Đã kiểm tra: ${fecha}.`,
+    verificado: (fecha) => `Đã kiểm tra: ${fecha}`,
+    suscribir: {
+      titulo: "Toàn bộ lịch, luôn mới nhất",
+      texto: "Chỉ cần đăng ký một lần, các ngày mới sẽ tự xuất hiện trong lịch trên điện thoại hoặc máy tính.",
+      boton: "Đăng ký lịch",
+      copiar: "Sao chép liên kết",
+      copiado: "Đã sao chép liên kết",
+    },
+    fuentes: {
+      titulo: "Mỗi ngày đến từ đâu",
+      texto: "Chỉ có những ngày đã được ấn định trong quy định hoặc trong số liệu do cơ quan chính thức công bố. Ngày chưa công bố sẽ không hiển thị.",
+    },
+    vacio: "Không có ngày nào cho chủ đề này trong mười hai tháng tới.",
+    destacado: {
+      ceja: "Lịch lương",
+      titulo: "Những ngày ảnh hưởng đến lương trong năm nay",
+      ir: "Xem lịch",
+      proxima: (titulo, fecha) => `Tiếp theo: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Lịch lương và thuế ${gVi.de(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Các ngày về lương và thuế ${gVi.en(pais)}, từ nguồn chính thức.`,
+      calculadora: "Công cụ tính",
+      fuente: "Nguồn",
+    },
+    og: { proxima: "Ngày tiếp theo", mas: (n) => `Và ${n} ngày khác trong năm nay` },
+  },
+};
+
 export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, vi };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {

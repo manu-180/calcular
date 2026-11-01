@@ -1361,6 +1361,43 @@ const hr: Diccionario<TextosEmbed> = {
   },
 };
 
+// Vietnamita (ADR 0002, D37): «bạn» neutro y frases cortas; el país va con GRAMATICA.vi («cho Việt Nam»).
+const gVi = GRAMATICA.vi;
+const vi: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Công cụ tính của CalcularYa",
+    marcaNuevaPestana: "(mở trong thẻ mới)",
+    noDisponible: { titulo: "Công cụ tính này không khả dụng", texto: "Địa chỉ có thể đã thay đổi." },
+    insertar: "Nhúng vào trang của bạn",
+    pagina: {
+      titulo: (pais) => [`Công cụ tính miễn phí cho trang của bạn | ${pais}`, "Công cụ tính miễn phí cho trang của bạn"],
+      descripcion: (pais) => `Chọn công cụ tính ${gVi.para(pais)}, sao chép mã rồi dán vào blog hoặc trang của bạn. Miễn phí, dữ liệu chính thức luôn được cập nhật.`,
+      h1: "Nhúng công cụ tính vào trang của bạn",
+      bajada: "Chọn công cụ tính, sao chép mã rồi dán vào bất cứ đâu. Miễn phí, dữ liệu tự cập nhật.",
+      calculadora: "Công cụ tính",
+      buscar: "Tìm công cụ tính",
+      sinResultados: "Không có công cụ tính nào khớp với nội dung bạn tìm.",
+      tema: "Giao diện",
+      claro: "Sáng",
+      oscuro: "Tối",
+      ancho: "Chiều rộng",
+      anchoCompleto: "Toàn bộ chiều rộng",
+      acento: "Màu nhấn",
+      colores: ["Xanh lá", "Xanh dương", "Cam", "Hồng", "Xám đá"],
+      credito: "Thêm liên kết nguồn bên dưới công cụ tính",
+      vistaPrevia: "Xem trước",
+      codigo: "Mã để dán",
+      copiar: "Sao chép mã",
+      copiado: "Đã sao chép mã",
+      ayudaScript: "Đoạn script này không bắt buộc: chiều cao của công cụ tính sẽ tự khớp với nội dung.",
+      ventajas: ["Miễn phí, không cần đăng ký", "Dữ liệu chính thức luôn mới nhất", "Vừa với mọi chiều rộng"],
+      nota: "Bên dưới công cụ tính có liên kết đến CalcularYa. Xin giữ nguyên liên kết này.",
+      verTodas: (pais) => `Xem tất cả công cụ tính ${gVi.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Công cụ tính của CalcularYa`,
+    },
+  },
+};
+
 export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, vi };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {

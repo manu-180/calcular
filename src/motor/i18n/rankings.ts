@@ -4221,6 +4221,123 @@ const mn: Diccionario<TextosRankings> = {
   },
 };
 
+// ───────────────────────────── vi ─────────────────────────────
+
+// Vietnamita (ADR 0002, D37): impersonal, como el resto de los rankings. La posición va en aposición
+// («Việt Nam, xếp thứ 27 trên 41») y tras un número no hay plural («3 quốc gia»).
+const vi: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Bảng xếp hạng quốc gia",
+    seo: {
+      titulo: ["Bảng xếp hạng lương và thuế theo quốc gia", "Bảng xếp hạng quốc gia"],
+      descripcion: (n) => `Nơi cùng mức lương có giá trị nhất, Ngày Tự do Thuế và phần còn lại khi tăng lương ở ${n} quốc gia. Dữ liệu chính thức, cập nhật hằng ngày.`,
+    },
+    ceja: "Dữ liệu mở",
+    h1: "Lương và thuế, từng quốc gia",
+    bajada: (n) => `${n} quốc gia được so sánh với cùng sức mua, mỗi quốc gia qua công cụ tính chính thức của mình. Bảng xếp hạng tự cập nhật hằng ngày.`,
+    actualizado: (f) => `Cập nhật vào ${f}`,
+    ver: "Xem bảng xếp hạng",
+    niveles: { titulo: "Mức lương tham chiếu", nombres: { bajo: "Lương thấp", medio: "Lương trung bình", alto: "Lương cao" }, anual: (m) => `${m} mỗi năm` },
+    tramos: { titulo: "Mức tăng lương", nombre: (a, b) => `Từ ${a} lên ${b}` },
+    referencia: {
+      nivel: (m) => `lương gross ${m} đô la quốc tế mỗi năm`,
+      tramo: (a, b) => `tăng lương gross từ ${a} lên ${b} đô la quốc tế mỗi năm`,
+    },
+    posicion: (pais, p, total) => `${pais}, xếp thứ ${p} trên ${total}`,
+    de: (t) => `trên ${t}`,
+    empate: (o) => (o === 1 ? "đồng hạng với một quốc gia khác" : `đồng hạng với ${o} quốc gia khác`),
+    fuera: (pais) => `${pais} chưa có trong bảng xếp hạng này: vẫn cần công cụ tính lương net phù hợp với phép so sánh.`,
+    lider: "Đứng đầu bảng xếp hạng",
+    global: (n) => `${n} quốc gia, từ vị trí đầu đến vị trí cuối`,
+    valores: {
+      porMes: (m) => `${m} mỗi tháng`,
+      ningunDia: "Không ngày nào",
+      deCada: (n) => `${n} trên mỗi 100`,
+      carga: (pct) => `${pct} cho thuế TNCN và các khoản đóng`,
+      cargaAumento: (pct) => `${pct} phần tăng lương cho thuế và các khoản đóng`,
+    },
+    cambio: {
+      titulo: (mes) => `Thay đổi so với ${mes}`,
+      sube: (n) => `Tăng ${n} bậc`,
+      baja: (n) => `Giảm ${n} bậc`,
+      igual: "Giữ nguyên hạng",
+      nuevo: "Mới vào bảng xếp hạng",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, với ${ref}`,
+      puesto: "Hạng",
+      pais: "Quốc gia",
+      edicion: "Kỳ này",
+      unidad: "Tính bằng đô la quốc tế",
+    },
+    kit: {
+      titulo: "Dành cho báo chí",
+      bajada: "Câu trích dẫn, biểu đồ và liên kết của bảng xếp hạng này, sẵn sàng để đăng.",
+      compartir: "Chia sẻ",
+      descargar: "Tải xuống biểu đồ",
+      copiar: "Sao chép trích dẫn",
+      copiado: "Đã sao chép trích dẫn",
+      enlace: "Đã sao chép liên kết",
+      compartido: "Đã chia sẻ",
+      error: "Không sao chép được. Nội dung ở phía trên, bạn có thể sao chép thủ công.",
+      cita: (frase, ranking, ref, fecha) => `${frase} trong “${ranking}” (${ref}). Nguồn: CalcularYa, dữ liệu tính đến ${fecha}.`,
+      texto: (frase, ranking) => `${frase} trong “${ranking}”.`,
+      alt: (ranking) => `Biểu đồ bảng xếp hạng “${ranking}”`,
+    },
+    metodo: {
+      titulo: "Cách xây dựng",
+      bajada: "Mỗi quốc gia được tính bằng công cụ tính lương net chính thức của mình, theo quy định hiện hành. Sau đó tất cả được so sánh với cùng sức mua.",
+      niveles: (b, m, a) => `Mức lương tham chiếu: ${b}, ${m} và ${a} đô la quốc tế gross mỗi năm.`,
+      empates: "Hai quốc gia có cùng giá trị trong bảng sẽ đồng hạng, và hạng kế tiếp bị bỏ qua (1, 2, 2, 4).",
+      historial: "Thay đổi thứ hạng được đo so với bản lưu bảng xếp hạng hằng tháng. Nếu không có bản lưu của tháng trước, thay đổi sẽ không hiển thị.",
+      actualizacion: "Bảng được tính lại hằng ngày với dữ liệu mới nhất của từng quốc gia. Quốc gia mới được thêm ngay khi công cụ tính của quốc gia đó ra mắt.",
+      ver: "Xem toàn bộ phương pháp",
+    },
+    datos: {
+      titulo: "Dữ liệu mở",
+      bajada: "Số liệu đằng sau bảng xếp hạng này, theo từng quốc gia, ở định dạng JSON và CSV. Cập nhật hằng ngày.",
+      json: "Dữ liệu JSON",
+      csv: "Dữ liệu CSV",
+      licencia: "Giấy phép CC BY 4.0: được tự do sử dụng, sao chép và đăng lại, với điều kiện ghi nguồn CalcularYa và dẫn liên kết đến trang này.",
+      atribucion: "Trích dẫn đề xuất",
+    },
+    mundo: { titulo: "Với một mức lương cụ thể", texto: (n) => `Để tính với lương của mình và xem ngày của từng quốc gia, hãy dùng trang “${n}”.`, ir: "Tính" },
+    otros: "Các bảng xếp hạng khác",
+    rankings: {
+      rinde: {
+        titulo: "Nơi cùng mức lương có giá trị nhất",
+        corto: "Lương có giá trị nhất",
+        seo: ["Lương có giá trị nhất ở đâu: xếp hạng quốc gia", "Nơi cùng mức lương có giá trị nhất"],
+        descripcion: (n) => `Cùng mức lương, với cùng sức mua, ở ${n} quốc gia: phần còn lại sau khi áp dụng quy định thuế của từng nước. Cập nhật hằng ngày.`,
+        bajada: "Cùng mức lương gross, với cùng sức mua, được tính theo quy định của từng quốc gia. Đứng đầu là quốc gia có phần lương còn lại lớn nhất.",
+        metrica: "Net mỗi tháng",
+        carga: "Thuế và các khoản đóng",
+        como: "Lương net mỗi tháng là mức trung bình của 12 tháng, tính bằng đô la quốc tế.",
+      },
+      libertad: {
+        titulo: "Ngày Tự do Thuế theo quốc gia",
+        corto: "Ngày Tự do Thuế",
+        seo: ["Ngày Tự do Thuế theo quốc gia: bảng xếp hạng", "Ngày Tự do Thuế theo quốc gia"],
+        descripcion: (n) => `Ngày trong năm khi thuế TNCN và các khoản đóng được trả xong, với cùng mức lương ở ${n} quốc gia. Cập nhật hằng ngày.`,
+        bajada: "Ngày trong năm khi thuế TNCN và các khoản đóng được trả xong, với cùng mức lương ở mọi quốc gia. Đứng đầu là quốc gia có ngày sớm nhất.",
+        metrica: "Làm việc cho nhà nước đến",
+        carga: "Thuế và các khoản đóng",
+        como: "Ngày này phân bổ gánh nặng thuế trên cả năm, bắt đầu từ ngày 1 tháng 1: với mức 30%, 30% thời gian của năm là làm việc cho nhà nước.",
+      },
+      aumento: {
+        titulo: "Tăng lương còn lại bao nhiêu",
+        corto: "Phần còn lại khi tăng lương",
+        seo: ["Tăng lương còn lại bao nhiêu: xếp hạng quốc gia", "Tăng lương còn lại bao nhiêu"],
+        descripcion: (n) => `Với mỗi 100 lương gross tăng thêm, còn lại bao nhiêu sau thuế TNCN và các khoản đóng, ở ${n} quốc gia. Cập nhật hằng ngày.`,
+        bajada: "Với mỗi 100 lương gross tăng thêm, bao nhiêu thực sự về tay sau thuế TNCN và các khoản đóng. Đứng đầu là quốc gia có phần còn lại lớn nhất.",
+        metrica: "Còn lại trên mỗi 100",
+        carga: "Thuế suất biên",
+        como: "Đây là thuế suất biên giữa hai mức lương: phần tăng lương dành cho thuế và các khoản đóng.",
+      },
+    },
+  },
+};
+
 export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, vi };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {

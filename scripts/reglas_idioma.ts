@@ -168,7 +168,9 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
   vi: {
     informal: [
       { re: palabras("mày|tao|cậu|bạn ơi"), nombre: "pronombre de confianza (va «bạn»)" },
-      { re: palabras("nhé|nha|nhen|nhá|nè|đi nào"), nombre: "partícula de chat" },
+      { re: palabras("nhé|nhen|nhá|nè|đi nào"), nombre: "partícula de chat" },
+      // «nha» solo al final de la frase y en minúscula: «Bồ Đào Nha» y «nha khoa» sí van.
+      { re: /(?<!\p{L})nha(?=[.?]?\s*$)/u, nombre: "partícula de chat" },
       { re: palabras("quý khách|quý vị|anh/chị|anh chị"), nombre: "trato de ventanilla (va «bạn»)" },
     ],
     formal: [],
@@ -409,7 +411,7 @@ function reglasVi(texto: string): string[] {
   if (TONO_VIEJO_VI.test(texto)) p.push("tono en la vocal antigua (va «hóa», «hòa», «khỏe», «tùy», «thủy»)");
   if (palabras("hàng tháng|hàng năm|hàng ngày|hàng tuần").test(texto)) p.push("va «hằng tháng», «hằng năm», «hằng ngày», «hằng tuần»");
   if (/\d\s+(?:các|những)\s/u.test(texto)) p.push("marca de plural detrás de un número (va «3 ngày»)");
-  if (/\d,\d{3}(?!\d)/.test(texto) || /(?<![\d.])\d{1,3}\.\d{1,2}(?![\d.])/.test(texto)) p.push("número con formato inglés (miles con punto, decimales con coma)");
+  if (/\d,\d{3}(?!\d)(?!\s*km)/.test(texto) || /(?<![\d.]|CC BY )\d{1,3}\.\d{1,2}(?![\d.])/.test(texto)) p.push("número con formato inglés (miles con punto, decimales con coma)");
   if (/\d₫/.test(texto) || palabras("VNĐ").test(texto)) p.push("moneda: va «1.000 ₫» o «đồng»");
   const r = SIN_DIACRITICOS_VI.exec(texto);
   if (r) p.push(`«${r[0]}» sin diacríticos`);
