@@ -825,6 +825,7 @@ igual("mayúsculas griegas sin tono", "Υπολογισμός μισθού".toLo
 igual("unidades en georgiano", [formatearValorUnidad(3, "dias", "ka-GE"), formatearValorUnidad(1, "anios", "ka-GE"), formatearValorUnidad(1.5, "anios", "ka-GE")], ["3 დღე", "1 წელი", "1,5 წელი"]);
 igual("lari", formatearMoneda(1234567, "ka-GE", "GEL").replace(/\s/g, " "), "1 234 567,00 ₾");
 igual("fecha larga en georgiano", formatearFecha("2026-10-24", "ka-GE"), "24 ოქტომბერი, 2026");
+igual("ancho SEO del georgiano", Math.round(anchoVisual("კალკულატორი") * 10) / 10, 15.4);
 igual("georgiano sin mayúscula inicial", mayusculaInicial("კალკულატორი", "ka-GE"), "კალკულატორი");
 igual(
   "gramática georgiana: lugar",

@@ -34,7 +34,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   el: "katataxi-choron",
   hu: "orszagok-rangsora",
   he: "dirug-medinot",
-  ka: "qveqnebis-reitingi",
+  ka: "kveqnebis-reitingi",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
