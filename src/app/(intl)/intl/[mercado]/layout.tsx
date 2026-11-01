@@ -24,7 +24,9 @@ import { direccionDe, etiquetaIdioma } from "@/motor/i18n/direccion";
 // latin-ext trae las letras del croata (č, ć, đ, š, ž).
 // latin-ext trae las letras del checo (ř, ě, ů); con unicode-range solo se baja si la página las usa.
 // latin-ext trae la ő y la ű del húngaro; con unicode-range solo se baja si la página las usa.
-const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext"], display: "optional" });
+// vietnamese trae ơ, ư y las vocales con tono (U+1EA0 a U+1EF9). Con display optional, sin precarga una
+// visita nueva mezclaría Geist con la fallback dentro de una misma palabra (ADR 0002, D37).
+const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext", "vietnamese"], display: "optional" });
 // Geist no trae árabe. Sin preload y con el unicode-range del subset, el navegador baja la fuente solo
 // en páginas con texto árabe: el resto de los mercados no paga nada por declararla acá.
 const arabe = Noto_Sans_Arabic({ variable: "--font-arabe", subsets: ["arabic"], display: "swap", preload: false });

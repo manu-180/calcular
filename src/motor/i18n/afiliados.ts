@@ -374,6 +374,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "új lapon nyílik meg",
     },
   },
+  vi: {
+    base: {
+      titulo: "Bạn sắp ra nước ngoài hay nhận lương từ quốc gia khác?",
+      etiqueta: "Liên kết đối tác",
+      socios: {
+        wise: "Tài khoản đa tiền tệ: nhận và gửi tiền giữa các quốc gia theo tỷ giá trung bình, phí được báo trước.",
+        deel: "Hợp đồng và thanh toán cho người làm việc từ một quốc gia cho công ty ở quốc gia khác.",
+      },
+      nota: "Nếu bạn mở tài khoản qua các liên kết này, trang có thể nhận hoa hồng. Bạn không mất thêm chi phí.",
+      nuevaPestana: "mở trong thẻ mới",
+    },
+  },
   mn: {
     base: {
       titulo: "Гадаадад нүүж байна уу, эсвэл өөр улсаас цалин авдаг уу?",

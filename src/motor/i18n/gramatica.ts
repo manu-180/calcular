@@ -2369,4 +2369,8 @@ const lv: GramaticaPais = {
   para: (p) => locijumiLv(p).dativs,
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk };
+// Vietnamita (ADR 0002, D37): sin artículos ni casos; el país no cambia y la preposición va delante
+// («tại Việt Nam», «của Việt Nam», «cho Việt Nam»).
+const vi: GramaticaPais = { nombre: (p) => p, de: (p) => `của ${p}`, en: (p) => `tại ${p}`, para: (p) => `cho ${p}` };
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi };

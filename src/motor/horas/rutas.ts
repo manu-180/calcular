@@ -23,6 +23,7 @@ export const SLUG_HORAS: Record<Idioma, string> = {
   is: "hversu-margar-vinnustundir",
   lv: "cik-stundas-jastrada",
   mk: "kolku-chasovi-rabota",
+  vi: "bao-nhieu-gio-lam-viec",
 
   pl: "ile-godzin-pracy",
   sv: "arbetstimmar",

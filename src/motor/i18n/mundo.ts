@@ -7492,7 +7492,168 @@ const mk: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk };
+// ───────────────────────────── vi ─────────────────────────────
+
+// Vietnamita (ADR 0002, D37): «bạn», frases cortas, sin plural después de un número. `en` da «tại ...»
+// en minúscula: nunca va al inicio de una oración.
+const gVi = GRAMATICA.vi;
+const SEO_VI = "Ngày Tự do Thuế và lương net trên toàn thế giới";
+
+const vi: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Lương của bạn trên toàn thế giới",
+    seo: {
+      titulo: (pais) => [`${SEO_VI} | ${pais}`, SEO_VI, "Lương của bạn trên toàn thế giới"],
+      tituloGlobal: [SEO_VI, "Lương của bạn trên toàn thế giới"],
+      descripcion: (pais, n) => `Xem bạn làm việc để đóng thuế đến ngày nào với mức lương ${gVi.en(pais)}, và lương net của bạn ở ${n} quốc gia. Miễn phí, không cần đăng ký.`,
+      descripcionGlobal: (n) => `Xem bạn làm việc để đóng thuế đến ngày nào, và lương net của bạn ở ${n} quốc gia. Miễn phí, không cần đăng ký.`,
+    },
+    ceja: "Ngày Tự do Thuế của bạn",
+    h1: "Bạn làm việc cho nhà nước đến ngày nào?",
+    bajada: (n) => `Nhập lương gross (trước thuế) của bạn để xem ngày đó. Sau đó so sánh ở ${n} quốc gia, với cùng sức mua và quy định thuế của từng quốc gia.`,
+    form: {
+      titulo: "Lương của bạn",
+      sueldo: "Lương gross",
+      mes: "Mỗi tháng",
+      anio: "Mỗi năm",
+      periodo: "Kỳ lương",
+      pais: "Quốc gia bạn làm việc",
+      ejemplo: "Ví dụ",
+      ejemploAyuda: "Đây là mức lương ví dụ. Nhập lương của bạn và mọi con số sẽ cập nhật ngay.",
+      propio: "Lấy từ phép tính trước đó của bạn.",
+      invalido: "Nhập số tiền lớn hơn 0.",
+      pagas: "Lương tháng theo phiếu lương của bạn: chúng tôi cộng thêm khoản lương bổ sung theo luật định (lương tháng 13 hoặc tháng 14). Lương net là mức trung bình của 12 tháng.",
+    },
+    heroe: {
+      hasta: (fecha) => `Bạn làm việc cho nhà nước đến ${fecha}`,
+      tasa: (pct) => `${pct} lương của bạn dành cho thuế thu nhập cá nhân và các khoản đóng bắt buộc.`,
+      dias: (n, total) => `${n} trên ${total} ngày`,
+      enMano: "Lương net của bạn",
+      porMes: "mỗi tháng",
+      anio: (anio, n, total) => `Năm ${anio}: ${n} trên ${total} ngày cho nhà nước.`,
+      resto: "Từ ngày hôm sau, thu nhập của bạn hoàn toàn thuộc về bạn.",
+    },
+    ranking: {
+      titulo: "Cùng mức lương, từng quốc gia",
+      bajada: "Với cùng sức mua, đây là lương net của bạn ở từng quốc gia. Mỗi dòng lấy từ công cụ tính chính thức của quốc gia đó. Mức lương ở mọi quốc gia là như nhau: chỉ thuế và các khoản đóng thay đổi, không phải số tiền người dân mỗi nước kiếm được.",
+      lista: "Các quốc gia xếp theo lương net",
+      buscar: "Tìm quốc gia",
+      filtrar: "Lọc theo khu vực",
+      todas: "Tất cả",
+      regiones: { americas: "Châu Mỹ", europa: "Châu Âu", asia: "Châu Á và Châu Đại Dương", africa: "Châu Phi và Trung Đông" },
+      tuPais: "Quốc gia của bạn",
+      mejor: "Thuế thấp nhất",
+      enMano: "Lương net mỗi tháng",
+      enTuMoneda: "Theo đơn vị tiền tệ của bạn",
+      vsTuPais: "So với quốc gia của bạn",
+      verTodos: (n) => `Xem tất cả ${n} quốc gia`,
+      verMenos: "Thu gọn",
+      sinResultados: (q) => `Không có quốc gia nào khớp với “${q}”.`,
+      abrir: (pais) => `Mở công cụ tính ${gVi.para(pais)}`,
+      mas: (pct) => `Nhiều hơn ${pct}`,
+      menos: (pct) => `Ít hơn ${pct}`,
+      igual: "Bằng nhau",
+      puesto: (p, total) => `Quốc gia của bạn xếp thứ ${p} trên ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Thẻ của bạn để chia sẻ",
+      bajada: "Thẻ này hiển thị ngày và tỷ lệ phần trăm của bạn. Mức lương của bạn không bao giờ hiển thị.",
+      hasta: (fecha) => `Tôi làm việc cho nhà nước đến ${fecha}`,
+      tasa: (pct) => `${pct} lương của tôi dành cho thuế`,
+      mejor: (pais, pct) => `Với cùng mức lương, ${gVi.en(pais)} tôi đóng thuế ít hơn: nhận về nhiều hơn ${pct}`,
+      mejorPropio: (pais) => `Với cùng mức lương, không quốc gia nào có thuế thấp hơn ${gVi.nombre(pais)}`,
+      yVos: "Còn bạn thì sao?",
+      cta: "Xem ngày của bạn tại",
+      generica: "Bạn làm việc cho nhà nước đến ngày nào?",
+      genericaBajada: (n) => `Lương của bạn ở ${n} quốc gia, tính bằng công cụ tính chính thức của từng quốc gia`,
+      compartir: "Chia sẻ thẻ của tôi",
+      compartirDuelo: "Đáp lại thử thách",
+      descargar: "Tải xuống ảnh",
+      copiado: "Đã sao chép liên kết. Dán vào bất kỳ đâu.",
+      compartido: "Đã chia sẻ xong.",
+      error: "Không chia sẻ được. Vui lòng thử lại.",
+      texto: (fecha) => `Tôi làm việc cho nhà nước đến ${fecha}. Còn bạn thì sao?`,
+      alt: "Xem trước thẻ của bạn",
+    },
+    duelo: {
+      amigo: (fecha) => `Bạn của bạn làm việc cho nhà nước đến ${fecha}.`,
+      yVos: "Còn bạn thì sao?",
+      invitacion: "Nhập lương của bạn để so sánh.",
+      vos: "Bạn",
+      elAmigo: "Bạn của bạn",
+      dia: "Làm việc cho nhà nước đến",
+      tasa: "Thuế và các khoản đóng",
+      mejorPais: "Thuế thấp nhất tại",
+      antes: (d) => `Bạn được tự do sớm hơn bạn của mình ${d} ngày.`,
+      despues: (d) => `Bạn của bạn được tự do sớm hơn bạn ${d} ngày.`,
+      empate: "Bạn và bạn của mình được tự do cùng một ngày.",
+      desde: (pais) => `Làm việc ${gVi.en(pais)}`,
+    },
+    cero: {
+      dia: "0 ngày",
+      heroeAntes: "Bạn làm việc cho nhà nước",
+      tarjetaAntes: "Tôi làm việc cho nhà nước",
+      motivo: "Với mức lương này, không có khoản trừ thuế thu nhập cá nhân hay khoản đóng bắt buộc nào.",
+      texto: "Năm nay tôi không làm việc ngày nào cho nhà nước. Còn bạn thì sao?",
+      amigo: "Bạn của bạn không làm việc ngày nào cho nhà nước.",
+    },
+    metodo: {
+      titulo: "Cách chúng tôi tính",
+      estimacion: "Đây là ước tính để so sánh các quốc gia, không phải phiếu lương. Các khoản khấu trừ, người phụ thuộc là con hoặc tiền thưởng có thể làm thay đổi con số của bạn.",
+      supuestos: [
+        "Một người độc thân, không có con, với giá trị mặc định của công cụ tính từng quốc gia.",
+        "Lương net là phần lương còn lại sau thuế thu nhập cá nhân và các khoản đóng do người lao động chịu. Không tính thuế tiêu dùng và các khoản đóng do người sử dụng lao động trả.",
+        "Lương tháng 13 hoặc các khoản bổ sung bắt buộc khác được chia đều cho cả năm theo luật của từng quốc gia.",
+        "Với Hoa Kỳ, không cộng thuế thu nhập của tiểu bang hoặc địa phương: chỉ tính thuế liên bang và các khoản đóng trên lương.",
+        "Để quy đổi lương của bạn sang quốc gia khác, chúng tôi dùng ngang giá sức mua (PPP): cùng mức sống, không phải tỷ giá hôm nay.",
+        "PPP của Argentina được cập nhật theo chỉ số giá tiêu dùng của INDEC, vì Ngân hàng Thế giới chỉ công bố đến năm 2021.",
+        "Ngày tự do của bạn phân bổ số thuế của bạn trên cả năm, bắt đầu từ ngày 1 tháng 1. Nếu 30% lương của bạn dành cho thuế, bạn làm việc cho nhà nước trong 30% thời gian của năm.",
+      ],
+      ppaTitulo: "Ngang giá sức mua",
+      bancoMundial: "Ngân hàng Thế giới",
+      ppa: (organismo, indicador, anio) => `${organismo}, chỉ số ${indicador}, năm gần nhất có dữ liệu: ${anio}.`,
+      consultado: (fecha) => `Đã kiểm tra vào ${fecha}.`,
+      verFuente: "Xem nguồn",
+      fuentesTitulo: "Nguồn của từng quốc gia",
+      fuentesBajada: "Mỗi dòng dùng công cụ tính lương net của quốc gia đó và dữ liệu chính thức của quốc gia ấy.",
+      verificado: (fecha) => `Dữ liệu được xác minh vào ${fecha}`,
+      sello: (fecha) => `Dữ liệu chính thức được kiểm tra tại nguồn của từng quốc gia. Lần kiểm tra cũ nhất vào ${fecha}.`,
+    },
+    faqTitulo: "Câu hỏi thường gặp",
+    faq: (n) => [
+      {
+        pregunta: "Ngày Tự do Thuế là gì?",
+        respuesta:
+          "Ngày Tự do Thuế là ngày trong năm bạn đóng xong thuế, nếu toàn bộ thu nhập từ ngày 1 tháng 1 được nộp trước cho nhà nước. Ở đây, ngày đó được tính theo lương của bạn, không theo mức trung bình quốc gia.",
+      },
+      {
+        pregunta: "Vì sao so sánh theo sức mua?",
+        respuesta: "Tỷ giá có thể khiến mức lương trông lớn hay nhỏ tùy theo ngày. PPP so sánh những gì thực sự mua được bằng số tiền đó ở từng quốc gia.",
+      },
+      {
+        pregunta: "Lương của tôi có được lưu lại không?",
+        respuesta: "Không. Phép tính chạy trong trình duyệt của bạn. Nội dung bạn chia sẻ chỉ gồm ngày, tỷ lệ phần trăm và quốc gia.",
+      },
+      {
+        pregunta: "Vì sao lương net thực tế của tôi khác?",
+        respuesta:
+          "Chúng tôi giả định bạn độc thân, không có con, với giá trị mặc định. Các khoản khấu trừ, tiền thưởng hoặc chế độ đặc biệt có thể làm thay đổi con số. Để có kết quả chính xác cho trường hợp của bạn, hãy mở công cụ tính của quốc gia bạn.",
+      },
+      {
+        pregunta: "Có những quốc gia nào?",
+        respuesta: `Hiện có ${n} quốc gia, mỗi quốc gia có công cụ tính lương net và dữ liệu chính thức riêng. Chúng tôi thêm quốc gia mới sau khi xác minh quy định thuế của quốc gia đó.`,
+      },
+    ],
+    destacado: {
+      ceja: "So sánh toàn cầu",
+      titulo: "Bạn làm việc cho nhà nước đến ngày nào?",
+      texto: "Nhập lương của bạn và xem bạn thực nhận bao nhiêu ở các quốc gia khác.",
+      ir: "Xem ngày của tôi",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

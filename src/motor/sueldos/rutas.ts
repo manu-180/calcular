@@ -22,6 +22,7 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   is: "raunveruleg-laun",
   lv: "realas-algas",
   mk: "realni-plati",
+  vi: "luong-thuc-te",
 
   pl: "prawdziwe-zarobki",
   sv: "verkliga-loner",

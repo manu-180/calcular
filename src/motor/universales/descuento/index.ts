@@ -40,6 +40,7 @@ import { contenidoTh } from "./contenido/th";
 import { contenidoTr } from "./contenido/tr";
 import { contenidoUk } from "./contenido/uk";
 import { contenidoUz } from "./contenido/uz";
+import { contenidoVi } from "./contenido/vi";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiDescuento } from "./definicion";
 import { textosAr } from "./textos/ar";
@@ -82,13 +83,14 @@ import { textosTh } from "./textos/th";
 import { textosTr } from "./textos/tr";
 import { textosUk } from "./textos/uk";
 import { textosUz } from "./textos/uz";
+import { textosVi } from "./textos/vi";
 import { textosZh } from "./textos/zh";
 
 export default definirUniversal<UiDescuento>({
   id: "descuento",
   concepto: "descuento",
   definir,
-  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, et: textosEt, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, is: textosIs, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mk: textosMk, mn: textosMn, lv: textosLv, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sl: textosSl, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, et: contenidoEt, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, is: contenidoIs, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mk: contenidoMk, mn: contenidoMn, lv: contenidoLv, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sl: contenidoSl, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, et: textosEt, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, is: textosIs, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mk: textosMk, mn: textosMn, lv: textosLv, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sl: textosSl, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, vi: textosVi, zh: textosZh },
+  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, et: contenidoEt, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, is: contenidoIs, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mk: contenidoMk, mn: contenidoMn, lv: contenidoLv, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sl: contenidoSl, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, vi: contenidoVi, zh: contenidoZh },
   casos,
 });

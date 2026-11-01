@@ -277,6 +277,15 @@ reusa con EUR. Cirílico: edición futura (`rs-cyrl`). Decisiones en ADR 0002, D
 (interna, `sr-Latn-001`).
 - Falta para publicar Serbia y Montenegro: los países en sí, con datos verificados, y revisión por hablante nativo.
 
+## 1/11/2026 · Motor vietnamita (`claude/mundo-motor-vi`, ADR 0002 D37)
+
+`vi` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición interna `zz-vi`. Registro de bancos y
+servicios («bạn», botón «Tính»), sin contrastar en sus webs (ver D37). Subset `vietnamese` de Geist precargado en todos los
+mercados y Noto Sans en OG por el ₫. `tinh-luong-gross-net` queda libre. Listo para que un agente de país escriba Vietnam.
+Fuentes el 1/11/2026: abren vanban.chinhphu.vn y sbv.gov.vn; gdt.gov.vn rechaza la conexión y baohiemxahoi.gov.vn la corta;
+mof.gov.vn y nso.gov.vn sin probar. Falla de main ajena al frente: `check_mundo` (be, neto).
+
 ## 1/11/2026 · Motor mongol (`claude/mundo-motor-mn`, ADR 0002 D28)
 
 `mn` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
