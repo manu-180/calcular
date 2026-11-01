@@ -24,8 +24,13 @@ function fechaFmt(locale: string, opciones: Intl.DateTimeFormatOptions): Intl.Da
   return f;
 }
 
+// Monedas cuyo uso real no coincide con Intl. El dram tiene dos decimales en CLDR, pero nóminas, facturas y
+// precios no llevan luma: sin esto la tabla y las universales de Armenia decían «75 000,00 ֏». Va por moneda
+// y no por mercado.redondeo porque ese camino también cambiaría pk (PKR) y uz (UZS), hoy publicados.
+const DECIMALES_DE_USO: Readonly<Partial<Record<Moneda, number>>> = { AMD: 0 };
+
 export function decimalesDeMoneda(moneda: Moneda, locale: string): number {
-  return numero(locale, { style: "currency", currency: moneda }).resolvedOptions().maximumFractionDigits ?? 2;
+  return DECIMALES_DE_USO[moneda] ?? numero(locale, { style: "currency", currency: moneda }).resolvedOptions().maximumFractionDigits ?? 2;
 }
 
 // Redondeo decimal sin el error binario de Math.round(x * 100) / 100 (1.005 da 1.00 con el truco

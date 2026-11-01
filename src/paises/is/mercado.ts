@@ -12,7 +12,7 @@ export const mercado: Mercado = {
   // Node da «kr.» y Chromium «ISK» para la misma corona: sin esto la página no hidrata.
   simbolos: { ISK: "kr." },
   zonaHoraria: "Atlantic/Reykjavik",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 0, modo: "mitad-arriba" },
   escala: 130,
 };

@@ -21,6 +21,57 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 01/11/2026 · Tanda 6 de países: am, al, si, ee, is (`claude/paises-tanda-6`)
+
+Sale de `claude/paises-tanda-5` (PR #191, sin mergear): integrar en ese orden. Publicados Armenia (am), Albania (al), Eslovenia
+(si), Estonia (ee) e Islandia (is), detrás de mn. Trae los motores armenio (D30), albanés (D31), esloveno (D32), estonio (D33) e
+islandés (D34). Informes en `scripts/paises/<m>/INFORME.md`. `mercados-registro.ts` regenerado: 142 mercados intl. Mercado `ee` =
+Estonia con idioma `et`; mercado `et` = Etiopía con idioma `en` (`zz-et` es la edición de prueba en estonio): no se cruzan.
+
+| País | Locales | Publicables | Borrador | Universales |
+|---|---|---|---|---|
+| am | 21 | 21 | ninguno | todas (41, `iva` con `am.aah`) |
+| al | 23 | 19 | leja-vjetore, oret-shtese, afati-i-njoftimit, shperblimi-per-vjetersi | todas (cae IVA) |
+| si | 24 | 24 | ninguno | todas (cae IVA) |
+| ee | 21 | 21 | ninguno | todas (cae IVA) |
+| is | 25 | 23 | desemberuppbot, orlofsuppbot | todas (cae IVA) |
+
+Ajustes de la integración:
+- `sinMayusculas` une ka y hy en un solo regex.
+- Tarjetas: `tieneMarcadores` (registro) también cuenta `{{anio}}`. Antes un h1 con solo ese marcador y un primer párrafo sin dato
+  mostraba `{{anio}}` crudo en la tarjeta. Prueba en `check_motor`.
+- Dram: `DECIMALES_DE_USO = { AMD: 0 }` en `decimalesDeMoneda`, y `formatearMonto` lo respeta. Tabla y universales de Armenia ya
+  no dicen «75 000,00 ֏». No se hizo con `mercado.redondeo.decimales` porque ese camino cambia dos mercados publicados: pk (Intl 0,
+  redondeo 2) y uz (Intl 2, redondeo 0). **Pedido abierto:** uz tiene el mismo problema que tenía am; decidir si UZS va a la tabla.
+- ISK: `is` ya tenía `simbolos: { ISK: "kr." }`; `check_motor` exige símbolo propio en todo mercado con ISK (Node da «kr.»,
+  Chromium «ISK»; el check corre en Node, no ve el error de hidratación en sí). `zz-is` no lo lleva: hereda XTS de zz y el registro
+  rechaza símbolos de otra moneda, lo que la deja fuera del registro.
+
+Datos no verificados y motivo:
+- am: ninguno. `cba.am` corta la conexión; el tipo de cambio se leyó en el CSV oficial de `api.cba.am`.
+- al: `al.paga-maksimale-kontribute`: la noticia de Tatime responde con bloqueo y solo hay extracto (186 416, PwC dice 220 520); las
+  4 calculadoras que cotizan piden el tope en un campo opcional y, sin él, exageran la cotización en sueldos altos.
+  `al.leje-vjetore`, `al.ore-shtese`, `al.afat-njoftimi`, `al.shperblim-vjetersi`: Kodi i Punës bloqueado por firewall o solo con JavaScript.
+- si: ningún dato cargado sin verificar. Fuera del cálculo por eso: tope del nadomestilo parental (112.a ZSDP-1, avisado en pantalla)
+  y porcentaje de nadure (lo fija la convención colectiva; el 30 es un valor inicial editable).
+- ee: ninguno. `ee.fie-sotsiaalmaksu-lagi` (111 720) es derivado de SMS § 2; el PDF de EMTA no se pudo leer. `tkh-max-*` de Töötukassa, sin recalcular.
+- is: `is.desemberuppbot` (solo SA, parte del convenio) e `is.orlofsuppbot` (solo extracto). Decisión pendiente: si se acepta el
+  convenio como fuente, se verifican y publican. althingi.is responde 403: ley 30/1987 y ley del stimpilgjald sin leer.
+
+Riesgos:
+- Todos: D30 a D34 piden revisión de hablante nativo antes de publicar y no se hizo (el informe de is dice que «bloquea la
+  publicación»). Se publica en la rama por encargo: **decidir antes de mergear**. Slugs sin validar en el autocompletar de Google de cada país.
+- Cálculo en el navegador sin probar en ninguno de los cinco. am, al y ee ni miraron `next dev`; si e is lo miraron sin apretar calcular (en is, webpack no carga el cálculo).
+- am: mínimo de la ley de prestaciones tomado literal (90 000; podría ser 93 750): riesgo principal de cálculo. Seguro de salud 2026
+  como si-no. Art. 150 con cambios desde 2027 sin leer en detalle: revisar en enero.
+- al: fuentes leídas al principio con User-Agent de navegador, contra la regla; el 1/11 se releyeron con uno propio los seis PDF y el
+  texto es idéntico. Divisor de 30 días y exención de dhurata son lecturas propias. Compensación del 16,7 % sin modelar. El neto baja
+  en 50 000 y 60 000 lekë (es la ley). `al.ick` sin detector (xlsx): carga a mano, se cae hacia fines de noviembre. `kufi-zero` vence el 31/12/2029.
+- si: referendo ZIURS del **6/12/2026**: revisar después (normiranci con efecto 1/1/2026, zimski regres, tope de contribuciones). Series caen antes del 1/12 sin cron.
+- ee: FIE sin II pilar y haigushüvitis sin embarazo o donación, **sin aviso** en la página. Töötuskindlustus termina el 31/12/2026: falta el decreto 2027. THI cae el 1/12 sin cron.
+- is: `orlofslaun` publicable con porcentajes de una guía de 1993 (art. 7 sin leer). `drattarvextir` cubre solo noviembre y queda sin
+  `hasta`: revisar cada mes. `meginvextir` decide el 18/11. Pedido abierto: prueba de formato en Chromium.
+
 ## 01/11/2026 · Tanda 5 de países: sk, ge, hr, mn (`claude/paises-tanda-5`)
 
 Publicados: Eslovaquia (sk), Georgia (ge), Croacia (hr) y Mongolia (mn), detrás de bt. Los cuatro con

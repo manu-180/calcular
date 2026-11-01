@@ -1,5 +1,5 @@
 import { categoriaDe, ORDEN_CATEGORIAS, textosSitio, type Categoria, type TextosSitio } from "../i18n";
-import { marcadoresDe, type ModoPublicacion, type Registro } from "../registro";
+import { tieneMarcadores, type ModoPublicacion, type Registro } from "../registro";
 import { rutaIntl } from "../seo";
 import { modoPublicacion } from "../sitio";
 import type { CodigoMercado, EntradaCalculadora, FechaISO, Mercado } from "../tipos";
@@ -93,7 +93,7 @@ export function tarjetaDe(ctx: ContextoSitio, m: Mercado, entrada: EntradaCalcul
   if (guardada) return guardada;
   const crudo = entrada.contenido;
   const resumenCrudo = crudo.intro[0] ?? "";
-  const c = marcadoresDe(crudo.h1).length || marcadoresDe(resumenCrudo).length ? (ctx.registro.pagina(m.codigo, entrada.definicion.slug, hoyEn(m), ctx.modo)?.contenido ?? crudo) : crudo;
+  const c = tieneMarcadores(crudo.h1) || tieneMarcadores(resumenCrudo) ? (ctx.registro.pagina(m.codigo, entrada.definicion.slug, hoyEn(m), ctx.modo)?.contenido ?? crudo) : crudo;
   const tarjeta = { titulo: c.h1, resumen: c.intro[0] ?? "" };
   memo.set(clave, tarjeta);
   return tarjeta;

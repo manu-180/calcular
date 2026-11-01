@@ -10,7 +10,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["AMD"],
   zonaHoraria: "Asia/Yerevan",
-  estado: "interno",
+  estado: "publicado",
   // El dram se usa sin decimales: nóminas, facturas y precios no llevan luma.
   redondeo: { decimales: 0, modo: "mitad-arriba" },
   escala: 400,

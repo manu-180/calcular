@@ -1741,6 +1741,8 @@ libre para la calculadora local de sueldo neto de Armenia. Rankings: `ashkhatava
 hy-AM con AMD, «Սենթ Վինսենթ և Գրենադիններ» y «Միացյալ Նահանգներ». `check_motor` prueba parseo, unidades, dram, fecha, ancho, «և» inicial,
 buscador y casos del país. Los textos no tuvieron revisión de un hablante nativo: queda pendiente antes de publicar Armenia.
 
+Nota de la tanda 6: el dram quedó sin decimales (`DECIMALES_DE_USO` en `formato.ts`), por moneda y no por mercado.
+
 ### D31. Albanés, para Albania (2026-11-01)
 
 `IDIOMAS` suma `sq`. Motor, sitio, inicio, novedades, legales, errores, compartir, embed, «Tu sueldo en el
@@ -1891,6 +1893,8 @@ las universales con su búsqueda real (`laenukalkulaator`, `kaibemaksu-kalkulaat
 embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»), rankings, «Sueldos
 reales», afiliados, el diccionario de venta y las 41 universales están en islandés. Modelos: nb, da y sv (D9), con
 la estructura del esloveno (D32, en otra rama). D25 a D33 están en ramas sin mergear; por eso este número.
+
+Nota de la tanda 6: Chromium da «ISK» donde Node da «kr.», así que todo mercado en ISK lleva `simbolos: { ISK: "kr." }`.
 
 **Lo que devuelve Intl (Node).** `is-IS`: `1.234.568 kr.` (corona sin decimales, con punto de miles y «kr.» detrás;
 Intl ya da el símbolo con punto), `1.234,5` en números, `20%` sin espacio, fechas `15. október 2026`. El parser no

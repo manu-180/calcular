@@ -1,4 +1,5 @@
 import { anchoVisual } from "../ancho";
+import { decimalesDeMoneda } from "../formato";
 import type { Concepto } from "../conceptos";
 import type {
   CodigoMercado,
@@ -118,6 +119,7 @@ export function montoEjemplo(ctx: Pick<ContextoUniversal, "escala">, base: numbe
 export function formatearMonto(ctx: Pick<ContextoUniversal, "locale" | "moneda">, n: number, decimales?: number): string {
   const opciones: Intl.NumberFormatOptions = { style: "currency", currency: ctx.moneda };
   if (decimales === undefined && Math.abs(n - Math.round(n)) < 0.005) decimales = 0;
+  decimales ??= decimalesDeMoneda(ctx.moneda, ctx.locale);
   if (decimales !== undefined) {
     opciones.minimumFractionDigits = decimales;
     opciones.maximumFractionDigits = decimales;

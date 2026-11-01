@@ -22,7 +22,7 @@ import { pluralHe, prefijoHe } from "../src/motor/i18n/hebreo";
 import { pluralSq, pluralSl, formaIs, pluralIs, pluralSr } from "../src/motor/i18n/plural";
 import { pluralHr } from "../src/motor/i18n/plural";
 import { problemasDeTexto as problemasIs } from "./reglas_idioma";
-import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
+import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores, tieneMarcadores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
 import { textosMotor } from "../src/motor/textos";
@@ -945,7 +945,9 @@ igual("reglas del mongol: lo correcto pasa", problemasDeTexto("Цалингаа 
 verdad("reglas del mongol: «чи», «ъ», exclamación, sufijo en cifra y plural tras número", ["Чи оруул.", "объект", "Тооцоолно уу!", "5-д нэмнэ", "20%-ийг хасна", "3 өдрүүд", "Тооцоолоорой", "зарплата"].every((t) => problemasDeTexto(t, "mn", "usted").length > 0));
 // Armenio (ADR 0002, D30).
 igual("unidades en armenio", [formatearValorUnidad(3, "dias", "hy-AM"), formatearValorUnidad(1, "anios", "hy-AM"), formatearValorUnidad(1.5, "anios", "hy-AM")], ["3 օր", "1 տարի", "1,5 տարի"]);
-igual("dram", formatearMoneda(1234567.5, "hy-AM", "AMD").replace(/\s/g, " "), "1 234 567,50 ֏");
+igual("tieneMarcadores: {{anio}} solo, dato y texto sin nada", [tieneMarcadores("Aguinaldo {{anio}}"), tieneMarcadores("Aguinaldo {{ anio }}"), tieneMarcadores("Tope {{zz.tope}}"), tieneMarcadores("Sin nada")], [true, true, true, false]);
+igual("dram sin decimales de uso", [formatearMoneda(1234567.5, "hy-AM", "AMD").replace(/\s/g, " "), formatearMoneda(75000, "hy-AM", "AMD").replace(/\s/g, " "), decimalesDeMoneda("AMD", "hy-AM")], ["1 234 568 ֏", "75 000 ֏", 0]);
+igual("dram con decimales pedidos", formatearMoneda(1234567.5, "hy-AM", "AMD", 2).replace(/\s/g, " "), "1 234 567,50 ֏");
 igual("fecha larga en armenio", formatearFecha("2026-03-05", "hy-AM"), "5 մարտի, 2026 թ.");
 igual("ancho SEO del armenio", Math.round(anchoVisual("հաշվիչ") * 10) / 10, 7.8);
 igual("«և» inicial reformada", [mayusculaInicial("և ահա", "hy-AM"), mayusculaInicial("հաշվիչ", "hy-AM")], ["Եվ ահա", "Հաշվիչ"]);
@@ -1028,6 +1030,9 @@ igual("días en islandés", [1, 2, 11, 21, 31, 101, 111, 1.5].map((n) => formate
 igual("meses en islandés", [1, 2, 21].map((n) => formatearValorUnidad(n, "meses", "is-IS")), ["1 mánuður", "2 mánuðir", "21 mánuður"]);
 igual("pluralIs", [1, 2, 11, 21].map((n) => pluralIs(n, "land", "lönd")), ["1 land", "2 lönd", "11 lönd", "21 land"]);
 igual("formaIs con texto", formaIs("21", "dagur", "dagar"), "dagur");
+// Node da «kr.» y Chromium «ISK» (la página de Islandia no hidrataba): el símbolo tiene que ser propio.
+igual("mercados en ISK con simbolos propios", registroReal.paises.filter((p) => p.mercado.monedas.includes("ISK")).map((p) => [p.mercado.codigo, p.mercado.simbolos?.ISK]), [["is", "kr."]]);
+igual("corona con simbolo propio", formatearMoneda(1234567.5, "is-IS", "ISK", undefined, "kr.").replace(/\s/g, " "), "1.234.568 kr.");
 igual("corona en Islandia", [formatearMoneda(1234567.5, "is-IS", "ISK").replace(/\s/g, " "), formatearMoneda(1234.5, "is-IS", "ISK").replace(/\s/g, " ")], ["1.234.568 kr.", "1.235 kr."]);
 igual(
   "gramática islandesa: lugar",
