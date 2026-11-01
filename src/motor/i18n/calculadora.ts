@@ -418,6 +418,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Allikas",
     },
   },
+  is: {
+    base: {
+      datos: "Gögnin þín",
+      resultado: "Niðurstaða",
+      vacio: "Sláðu inn gögnin og smelltu á „Reikna“. Niðurstaðan birtist hér.",
+      sinResultado: "Við sýnum ekki þessa niðurstöðu að svo stöddu.",
+      avisos: { info: "Gott að vita", cautela: "Athugaðu", bloquea: "Af hverju við sýnum ekki niðurstöðuna" },
+      fuenteDelAviso: "Heimild",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

@@ -503,6 +503,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "avaneb uuel vahelehel",
     },
   },
+  // Islandés (ADR 0002, D34).
+  is: {
+    base: {
+      titulo: "Ertu að flytja til útlanda eða borga frá öðru landi?",
+      etiqueta: "Samstarfshlekkir",
+      socios: {
+        wise: "Reikningur í mörgum gjaldmiðlum til að taka við og senda peninga milli landa á miðgengi, með þóknun sem þú sérð fyrir fram.",
+        deel: "Samningar og launagreiðslur fyrir þá sem vinna frá einu landi fyrir fyrirtæki í öðru.",
+      },
+      nota: "Ef þú stofnar reikning í gegnum þessa hlekki getur vefurinn fengið þóknun. Þú borgar ekkert aukalega fyrir það.",
+      nuevaPestana: "opnast í nýjum flipa",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

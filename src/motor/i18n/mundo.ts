@@ -1,4 +1,5 @@
 import { pluralSl } from "./plural";
+import { pluralIs } from "./plural";
 import { pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { casosEl, GRAMATICA, mayusculaHu } from "./gramatica";
@@ -6999,7 +7000,172 @@ const et: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et };
+// ───────────────────────────── is ─────────────────────────────
+
+// Islandés (ADR 0002, D34): «þú» e imperativo de singular; la tarjeta y el texto para compartir, en primera
+// persona. El país se declina con GRAMATICA.is y los números con pluralIs. Intl da la fecha como «15. október»,
+// que tras «til» no cambia en el uso islandés de fechas.
+const gIs = GRAMATICA.is;
+const SEO_IS = "Skattfrelsisdagurinn og útborguð laun um allan heim";
+const dagarIs = (d: number) => pluralIs(d, "dagur", "dagar");
+// Tras «í»: «í 1 landi», «í 21 landi», «í 2 löndum».
+const londumIs = (n: number) => pluralIs(n, "landi", "löndum");
+
+const is: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Launin þín um allan heim",
+    seo: {
+      titulo: (pais) => [`${SEO_IS} | ${pais}`, SEO_IS, "Launin þín um allan heim"],
+      tituloGlobal: [SEO_IS, "Launin þín um allan heim"],
+      descripcion: (pais, n) => `Sjáðu til hvaða dags ársins þú vinnur fyrir ríkið með launum þínum ${gIs.en(pais)} og hvað þú fengir útborgað í ${londumIs(n)}. Ókeypis og án skráningar.`,
+      descripcionGlobal: (n) => `Sjáðu til hvaða dags ársins þú vinnur fyrir ríkið og hvað þú fengir útborgað í ${londumIs(n)}. Ókeypis og án skráningar.`,
+    },
+    ceja: "Skattfrelsisdagurinn þinn",
+    h1: "Til hvaða dags ársins vinnur þú fyrir ríkið?",
+    bajada: (n) => `Sláðu inn heildarlaunin og þú sérð dagsetninguna þína. Berðu hana svo saman í ${londumIs(n)}, með sama kaupmætti og skattareglum hvers lands.`,
+    form: {
+      titulo: "Launin þín",
+      sueldo: "Heildarlaun",
+      mes: "Á mánuði",
+      anio: "Á ári",
+      periodo: "Launatímabil",
+      pais: "Landið þar sem þú vinnur",
+      ejemplo: "Dæmi",
+      ejemploAyuda: "Þetta eru laun til dæmis. Sláðu inn þín eigin og allar tölur reiknast strax upp á nýtt.",
+      propio: "Sótt úr útreikningnum þínum.",
+      invalido: "Sláðu inn upphæð sem er hærri en núll.",
+      pagas: "Mánaðarlaun samkvæmt launaseðli: lögbundnum aukagreiðslum (13. eða 14. mánuði) bætum við sjálf við. Útborguð laun eru meðaltal 12 mánaða.",
+    },
+    heroe: {
+      hasta: (fecha) => `Þú vinnur fyrir ríkið til ${fecha}`,
+      tasa: (pct) => `${pct} af laununum þínum fara í tekjuskatt og lögbundin iðgjöld.`,
+      dias: (n, total) => `Dagar fyrir ríkið: ${n} af ${total}`,
+      enMano: "Þú færð útborgað",
+      porMes: "á mánuði",
+      anio: (anio, n, total) => `Árið ${anio}: dagar fyrir ríkið: ${n} af ${total}.`,
+      resto: "Frá næsta degi er allt sem þú þénar þitt.",
+    },
+    ranking: {
+      titulo: "Sömu laun, land fyrir land",
+      bajada: "Þetta fengir þú útborgað í hverju landi við sama kaupmátt. Hver lína kemur úr opinberri launareiknivél viðkomandi lands.",
+      lista: "Lönd raðað eftir útborguðum launum",
+      buscar: "Leita að landi",
+      filtrar: "Sía eftir svæði",
+      todas: "Öll",
+      regiones: { americas: "Ameríka", europa: "Evrópa", asia: "Asía og Eyjaálfa", africa: "Afríka og Miðausturlönd" },
+      tuPais: "Landið þitt",
+      mejor: "Besta niðurstaðan",
+      enMano: "Útborgað á mánuði",
+      enTuMoneda: "Í þínum gjaldmiðli",
+      vsTuPais: "Miðað við landið þitt",
+      verTodos: (n) => `Sýna öll löndin (${n})`,
+      verMenos: "Sýna færri",
+      sinResultados: (q) => `Ekkert land passar við „${q}“.`,
+      abrir: (pais) => `Opna reiknivél ${gIs.para(pais)}`,
+      mas: (pct) => `${pct} meira`,
+      menos: (pct) => `${pct} minna`,
+      igual: "Jafnt",
+      puesto: (p, total) => `Landið þitt er í ${p}. sæti af ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Spjaldið þitt til að deila",
+      bajada: "Það sýnir dagsetninguna þína og prósentur. Hvað þú þénar kemur aldrei fram á því.",
+      hasta: (fecha) => `Ég vinn fyrir ríkið til ${fecha}`,
+      tasa: (pct) => `${pct} af laununum mínum fara í skatta`,
+      mejor: (pais, pct) => `Með laununum mínum fengi ég ${pct} meira útborgað ${gIs.en(pais)}`,
+      mejorPropio: (pais) => `Með laununum mínum fæ ég hvergi meira útborgað en ${gIs.en(pais)}`,
+      yVos: "En þú?",
+      cta: "Finndu þína dagsetningu:",
+      generica: "Til hvaða dags ársins vinnur þú fyrir ríkið?",
+      genericaBajada: (n) => `Launin þín í ${londumIs(n)}, samkvæmt opinberri reiknivél hvers þeirra`,
+      compartir: "Deila spjaldi",
+      compartirDuelo: "Svara áskoruninni",
+      descargar: "Sækja mynd",
+      copiado: "Hlekkurinn var afritaður. Límdu hann þar sem þú vilt.",
+      compartido: "Búið, sent.",
+      error: "Ekki tókst að deila. Reyndu aftur.",
+      texto: (fecha) => `Ég vinn fyrir ríkið til ${fecha}. En þú?`,
+      alt: "Forskoðun á spjaldinu þínu",
+    },
+    duelo: {
+      amigo: (fecha) => `Sá sem sendi þér hlekkinn vinnur fyrir ríkið til ${fecha}`,
+      yVos: "En þú?",
+      invitacion: "Sláðu inn launin þín og berðu þig saman.",
+      vos: "Þú",
+      elAmigo: "Sendandi",
+      dia: "Vinnur fyrir ríkið til",
+      tasa: "Skattar og iðgjöld",
+      mejorPais: "Besta niðurstaðan",
+      antes: (d) => `Munur þér í hag: ${dagarIs(d)}. Frelsið þitt byrjar á undan frelsi sendandans.`,
+      despues: (d) => `Munur sendandanum í hag: ${dagarIs(d)}. Frelsi hans byrjar á undan þínu.`,
+      empate: "Frelsið byrjar sama dag hjá ykkur báðum.",
+      desde: (pais) => `Vinna ${gIs.en(pais)}`,
+    },
+    cero: {
+      dia: "enga daga",
+      heroeAntes: "Þú vinnur fyrir ríkið",
+      tarjetaAntes: "Ég vinn fyrir ríkið",
+      motivo: "Af þessum launum greiðist hvorki tekjuskattur né lögbundin iðgjöld.",
+      texto: "Í ár vinn ég ekki einn einasta dag fyrir ríkið. En þú?",
+      amigo: "Sá sem sendi þér hlekkinn vinnur ekki einn einasta dag fyrir ríkið.",
+    },
+    metodo: {
+      titulo: "Svona reiknum við",
+      estimacion: "Þetta er mat til að bera saman lönd, ekki launaseðill. Skattaafslættir, börn eða kaupaukar geta breytt tölunni þinni.",
+      supuestos: [
+        "Einstaklingur án maka og barna, með sjálfgefin gildi reiknivélar hvers lands.",
+        "Útborguð laun eru það sem eftir stendur þegar launþeginn hefur greitt tekjuskatt og iðgjöld. Neysluskattar og launatengd gjöld vinnuveitanda eru ekki tekin með.",
+        "Þrettándi mánuður og aðrar lögbundnar aukagreiðslur dreifast yfir árið eins og lög hvers lands kveða á um.",
+        "Í Bandaríkjunum bætast hvorki við skattar einstakra ríkja né staðbundnir skattar: aðeins alríkisskattur og launatengd iðgjöld.",
+        "Til að yfirfæra launin þín á annað land notum við kaupmáttarjafnvægi (PPP): sömu lífskjör, ekki gengi dagsins.",
+        "PPP Argentínu er uppfært með neysluverðsvísitölu INDEC, því Alþjóðabankinn birtir það aðeins til ársins 2021.",
+        "Skattfrelsisdagurinn dreifir sköttunum yfir árið frá 1. janúar. Ef 30% launanna fara í skatta vinnur þú fyrir ríkið 30% ársins.",
+      ],
+      ppaTitulo: "Kaupmáttarjafnvægi",
+      bancoMundial: "Alþjóðabankinn",
+      ppa: (organismo, indicador, anio) => `${organismo}, vísir ${indicador}, síðasta tiltæka ár: ${anio}.`,
+      consultado: (fecha) => `Skoðað: ${fecha}`,
+      verFuente: "Sýna heimild",
+      fuentesTitulo: "Heimild fyrir hvert land",
+      fuentesBajada: "Hver lína notar launareiknivél viðkomandi lands og opinber gögn þess.",
+      verificado: (fecha) => `Gögn staðfest: ${fecha}`,
+      sello: (fecha) => `Opinber gögn, staðfest í heimild hvers lands. Elsta staðfesting: ${fecha}`,
+    },
+    faqTitulo: "Algengar spurningar",
+    faq: (n) => [
+      {
+        pregunta: "Hvað er skattfrelsisdagurinn?",
+        respuesta:
+          "Það er dagur ársins þegar skattar og iðgjöld væru greidd, ef allt sem þú þénar frá 1. janúar rynni fyrst til ríkisins. Hér reiknum við hann út frá þínum launum, ekki meðaltali landsins.",
+      },
+      {
+        pregunta: "Af hverju berum við saman eftir kaupmætti?",
+        respuesta: "Miðað við gengi geta laun virst risastór eða örsmá, eftir því hvaða dagur er. Kaupmáttarjafnvægi ber saman hvað þú getur raunverulega keypt fyrir peningana í hverju landi.",
+      },
+      {
+        pregunta: "Eru launin mín vistuð?",
+        respuesta: "Nei. Útreikningurinn fer fram í vafranum þínum. Það sem þú deilir inniheldur aðeins dagsetningar, prósentur og lönd.",
+      },
+      {
+        pregunta: "Af hverju eru raunveruleg útborguð laun mín önnur?",
+        respuesta:
+          "Við reiknum með einstaklingi án maka og barna og með sjálfgefnum gildum. Skattaafslættir, kaupaukar eða sérreglur breyta tölunni. Til að reikna þína stöðu nákvæmlega skaltu opna reiknivél landsins þíns.",
+      },
+      {
+        pregunta: "Hvaða lönd eru hér?",
+        respuesta: `Í dag ${pluralIs(n, "land", "lönd")}, hvert með sína launareiknivél og opinber gögn. Við bætum nýjum við um leið og við höfum staðfest skattareglur þeirra.`,
+      },
+    ],
+    destacado: {
+      ceja: "Samanburður um allan heim",
+      titulo: "Til hvaða dags ársins vinnur þú fyrir ríkið?",
+      texto: "Sláðu inn launin og sjáðu hvað þú fengir útborgað í öðrum löndum.",
+      ir: "Reikna dagsetninguna þína",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

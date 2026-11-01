@@ -17,6 +17,7 @@ import { contenidoHr } from "./contenido/hr";
 import { contenidoHu } from "./contenido/hu";
 import { contenidoHy } from "./contenido/hy";
 import { contenidoId } from "./contenido/id";
+import { contenidoIs } from "./contenido/is";
 import { contenidoIt } from "./contenido/it";
 import { contenidoJa } from "./contenido/ja";
 import { contenidoKa } from "./contenido/ka";
@@ -56,6 +57,7 @@ import { textosHr } from "./textos/hr";
 import { textosHu } from "./textos/hu";
 import { textosHy } from "./textos/hy";
 import { textosId } from "./textos/id";
+import { textosIs } from "./textos/is";
 import { textosIt } from "./textos/it";
 import { textosJa } from "./textos/ja";
 import { textosKa } from "./textos/ka";
@@ -82,7 +84,7 @@ export default definirUniversal<UiRendimientoInversion>({
   id: "rendimiento-inversion",
   concepto: "rendimiento-inversion",
   definir,
-  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, et: textosEt, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mn: textosMn, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sl: textosSl, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, et: contenidoEt, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mn: contenidoMn, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sl: contenidoSl, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, et: textosEt, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, is: textosIs, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mn: textosMn, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sl: textosSl, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, et: contenidoEt, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, is: contenidoIs, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mn: contenidoMn, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sl: contenidoSl, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });

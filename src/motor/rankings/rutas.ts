@@ -21,6 +21,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   hy: "yerkrneri-varkanish",
   sl: "lestvice-drzav",
   et: "riikide-vordlus",
+  is: "rodun-landa",
 
   pl: "ranking-krajow",
   sv: "landsrankning",
@@ -75,6 +76,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   sl: { rinde: "kje-placa-najvec-zaleze", libertad: "dan-davcne-svobode", aumento: "koliko-ostane-od-povisice" },
   // et en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D33).
   et: { rinde: "kus-palk-kestab-kauem", libertad: "maksuvabaduse-paev", aumento: "kui-palju-palgatousust-jaab" },
+  // is en ASCII (þ→th, ð→d, æ→ae, ö→o, sin tildes), con las palabras que se buscan (ADR 0002, D34).
+  is: { rinde: "hvar-launin-duga-best", libertad: "skattfrelsisdagurinn", aumento: "hvad-verdur-eftir-af-launahaekkun" },
 
   pl: { rinde: "gdzie-pensja-daje-najwiecej", libertad: "dzien-wolnosci-podatkowej", aumento: "ile-zostaje-z-podwyzki" },
   sv: { rinde: "dar-lonen-racker-langst", libertad: "skattefrihetsdagen", aumento: "vad-som-blir-kvar-av-en-loneokning" },

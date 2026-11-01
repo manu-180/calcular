@@ -4249,7 +4249,114 @@ const et: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et };
+// ───────────────────────────── is ─────────────────────────────
+
+// Islandés (ADR 0002, D34): impersonal, como el resto. En el SEO {en} llega en minúscula («á Íslandi»); en la
+// página, con mayúscula y al comienzo de la oración («Á Íslandi kostar…»). Las plantillas no conjugan nada con
+// {n}: los números van detrás de dos puntos o entre paréntesis. {horas} llega como «24 klukkustundir», igual
+// en nominativo y acusativo, y por eso «kostar {horas} af vinnu» concuerda.
+const is: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Hversu margar vinnustundir?",
+    seo: {
+      titulo: ["Hversu margar vinnustundir kostar iPhone {en}", "Vinnustundir fyrir iPhone {en}", "Hversu margar vinnustundir?"],
+      tituloGlobal: ["Hversu margar vinnustundir kostar iPhone um allan heim", "Hversu margar vinnustundir?"],
+      tituloProducto: ["Hversu margar vinnustundir kostar {producto} {en}", "Vinnustundir fyrir {producto} {en}", "Hversu margar vinnustundir kostar {producto}"],
+      tituloProductoGlobal: ["Hversu margar vinnustundir kostar {producto} um allan heim", "Hversu margar vinnustundir kostar {producto}"],
+      descripcion: "iPhone, MacBook eða Spotify, umreiknað í vinnustundir á lágmarkslaunum {en} og í öðrum löndum (í vísitölunni: {n}). Opinbert verð og heimild fyrir hverri tölu.",
+      descripcionGlobal: "iPhone, MacBook eða Spotify, umreiknað í vinnustundir á lágmarkslaunum, land fyrir land (í vísitölunni: {n}). Opinbert verð og heimild fyrir hverri tölu.",
+      descripcionProducto: "{en} kostar {producto} {horas} af vinnu á lágmarkslaunum. Röðun landa ({n}) með opinberu verði og heimild fyrir hverri tölu.",
+      descripcionProductoGlobal: "Hversu margar vinnustundir á lágmarkslaunum {producto} kostar, land fyrir land (í vísitölunni: {n}). Opinbert verð hverrar verslunar og heimild fyrir hverri tölu.",
+    },
+    ceja: "Vísitala: {mes}",
+    h1: "Hversu margar vinnustundir?",
+    h1Producto: "Hversu margar vinnustundir kostar {producto}?",
+    bajada: "Opinbert verð sömu vöru, umreiknað í vinnustundir á lágmarkslaunum, land fyrir land (í vísitölunni: {n}).",
+    form: { producto: "Vara", pais: "Land", porMes: "á mánuði" },
+    heroe: {
+      antes: "{en} kostar {producto}",
+      despues: "af vinnu á lágmarkslaunum",
+      despuesMes: "af vinnu á lágmarkslaunum í hverjum mánuði",
+      jornadaUno: "{n} vinnudagur, 8 klukkustundir",
+      jornadaOtras: "Vinnudagar, 8 klukkustundir hver: {n}",
+      precio: "Opinbert verð {precio}",
+      salario: "Lágmarkslaun {monto} á klukkustund",
+      sinPrecio: "{en} selur engin opinber verslun þessa vöru.",
+      mejor: "{en} duga {horas}.",
+      mejorPropio: "Í engu landi vísitölunnar þarf færri vinnustundir.",
+      puesto: "{p}. sæti af {total}",
+      escalaHoras: "Hver reitur er ein vinnustund",
+      escalaSemanas: "Hver reitur er ein 40 stunda vinnuvika",
+      masDeUnAnio: "Meira en árs vinna",
+    },
+    ranking: {
+      titulo: "Land fyrir land",
+      bajada: "Frá fæstum til flestra vinnustunda. Hvert verð er opinbert verð framleiðandans í því landi.",
+      lista: "Lönd raðað eftir vinnustundum",
+      verTodos: "Sýna öll löndin ({n})",
+      verMenos: "Sýna færri",
+      elegido: "Valið",
+      sinPrecio: "Lönd vísitölunnar án gagna: {n}. Engin opinber verslun selur þessa vöru þar.",
+      horas: "Stundir",
+      precio: "Opinbert verð",
+    },
+    compartir: {
+      titulo: "Spjald til að deila",
+      bajada: "Inniheldur aðeins opinber gögn: opinbert verð og vinnustundir á lágmarkslaunum.",
+      boton: "Deila spjaldi",
+      descargar: "Sækja fyrir Stories",
+      copiado: "Hlekkurinn var afritaður.",
+      compartido: "Búið, sent.",
+      error: "Ekki tókst að deila núna.",
+      texto: "{en} kostar {producto} {horas} af vinnu á lágmarkslaunum. En í öðrum löndum?",
+      alt: "Forskoðun á spjaldi",
+    },
+    metodo: {
+      titulo: "Svona reiknum við",
+      estimacion: "Stundir = opinbert verð ÷ lágmarkslaun á klukkustund. Þetta er samanburður á opinberu verði, ekki kauptilboð.",
+      supuestos: [
+        "Verðið er listaverð ódýrustu útgáfunnar í opinberri verslun framleiðandans, lesið af síðu hvers lands.",
+        "Spotify Premium er einstaklingsáskrift í einn mánuð, án kynningartilboða.",
+        "Lágmarkslaun eru sú almenna upphæð sem gildir í dag fyrir fullorðinn launþega í fullu starfi. Þar sem þau eru mörg eftir atvinnugrein eða svæði er tekin upphæðin fyrir smásölu á aðalsvæðinu.",
+        "Þegar lög ákveða lágmark á mánuði eða á dag er það umreiknað í klukkustundir eftir lögbundinni vinnuviku í viðkomandi landi.",
+        "Spánn og Portúgal greiða lágmarkslaun fjórtán sinnum á ári: þeim er dreift á 12 mánuði, eins og Eurostat gerir.",
+        "Þegar verslun gefur upp verð í Bandaríkjadollurum er það umreiknað eftir opinberu gengi viðkomandi lands.",
+        "Vinnudagurinn er 8 klukkustundir í hverju landi, svo hægt sé að bera dagana saman.",
+      ],
+      fuentesTitulo: "Heimild fyrir hverri tölu",
+      fuentesBajada: "Hvert land með lágmarkslaun, vinnuviku og verð úr verslun, með lestrardagsetningu við hvert gildi.",
+      salario: "Lágmarkslaun",
+      jornada: "Vinnuvika",
+      precio: "Verð",
+      cambio: "Gengi",
+      consultado: "Lesið: {fecha}",
+      verificado: "Staðfest: {fecha}",
+      verFuente: "Sýna heimild",
+      sello: "Verð lesin á tímabilinu: {desde} til {hasta}. Verð sem er eldra en 120 daga birtist ekki lengur.",
+      conversion: {
+        hora: "Lög ákveða upphæðina á klukkustund.",
+        mes: "Á mánuði × 12 ÷ 52 vikur ÷ {h} klst. á viku.",
+        mesPagas: "Á mánuði × {p} greiðslur ÷ 52 vikur ÷ {h} klst. á viku.",
+        anio: "Á ári ÷ 52 vikur ÷ {h} klst. á viku.",
+        semana: "Á viku ÷ {h} klst.",
+        dia: "Á dag ÷ {h} klst. vinnudagur.",
+        diaPagado: "Á dag × greiddir dagar ({d}) ÷ {h} klst. á viku.",
+        divisor: "Á mánuði ÷ {d}, stundadeilir sem lög ákveða.",
+      },
+    },
+    faqTitulo: "Algengar spurningar",
+    faq: [
+      { pregunta: "Hvernig eru stundirnar reiknaðar?", respuesta: "Opinberu verði vörunnar er deilt með lágmarkslaunum á klukkustund í viðkomandi landi. Þegar lög ákveða lágmark á mánuði eða á dag er það umreiknað í klukkustundir eftir lögbundinni vinnuviku landsins." },
+      { pregunta: "Af hverju lágmarkslaun?", respuesta: "Það eru laun sem lög ákveða í nær öllum löndum og hægt er að staðfesta í opinberri heimild. Meðallaun mælir hvert land á sinn hátt og því væri ekki hægt að bera þau saman af sama öryggi." },
+      { pregunta: "Er skattur innifalinn í verðinu?", respuesta: "Þetta er listaverðið sem opinbera verslunin sýnir í hverju landi. Í Bandaríkjunum og Kanada er söluskattur ekki innifalinn og í öðrum löndum getur verslunin bætt skatti við fyrst í greiðsluferlinu." },
+      { pregunta: "Af hverju vantar eitthvert land?", respuesta: "Í vísitölunni eru aðeins lönd með staðfest gildandi lágmarkslaun og verð úr opinberri verslun. Án opinberrar vefverslunar fyrir vöruna eru engin gögn. Verð endursöluaðila notum við aldrei." },
+      { pregunta: "Hversu oft eru gögnin uppfærð?", respuesta: "Verð eru lesin í hverri verslun og fyrnast eftir 120 daga: eldra verð birtist ekki lengur. Lágmarkslaun eru tekin úr opinberum gögnum hvers lands og breytast þegar lögin breytast." },
+    ],
+    og: { de: "af vinnu á lágmarkslaunum", deMes: "af vinnu á lágmarkslaunum á mánuði", generica: "Hversu margar vinnustundir kostar {producto}?", genericaBajada: "Opinbert verð í vinnustundum á lágmarkslaunum, land fyrir land ({n})", menos: "Fæstar stundir", cta: "Öll löndin á" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

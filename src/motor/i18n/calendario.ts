@@ -1,4 +1,5 @@
 import { formaSl, pluralSl } from "./plural";
+import { formaIs, pluralIs } from "./plural";
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
@@ -2769,7 +2770,82 @@ const et: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et };
+// Islandés (ADR 0002, D34): impersonal como los demás; el país se declina con GRAMATICA.is («á Íslandi») y los
+// días con pluralIs: «eftir» lleva acusativo («eftir 3 daga») y «fyrir ... síðan» dativo («fyrir 3 dögum síðan»).
+const gIs = GRAMATICA.is;
+const is: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Launa- og skattadagatal",
+    seo: {
+      titulo: (pais, anios) => [
+        `Launa- og skattadagatal ${anios} ${gIs.en(pais)}: mikilvægar dagsetningar`,
+        `Launa- og skattadagatal ${anios} ${gIs.en(pais)}`,
+        `Launadagatal ${gIs.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Dagsetningar sem breyta launum ${gIs.en(pais)}, úr opinberum heimildum: ${proximas}. Reiknivél fylgir hverri dagsetningu.`,
+      descripcionSin: (pais) => `Dagsetningar sem breyta launum ${gIs.en(pais)}, úr opinberum heimildum, og reiknivél með hverri. Bættu þeim í dagatalið í símanum.`,
+    },
+    ceja: (anios) => `Dagatal ${anios}`,
+    h1: (pais) => `Launa- og skattadagatal ${gIs.en(pais)}`,
+    acento: "dagsetningar sem launin ráðast af",
+    bajada: "Hver dagsetning kemur úr opinberri heimild og vísar á reiknivélina sem hún hefur áhrif á. Síðan uppfærist sjálfkrafa um leið og nýtt gildi er birt.",
+    proxima: "Næsta dagsetning",
+    cuenta: {
+      hoy: "Í dag",
+      manana: "Á morgun",
+      ayer: "Í gær",
+      en: (n) => `Eftir ${pluralIs(n, "dag", "daga")}`,
+      hace: (n) => `Fyrir ${pluralIs(n, "degi", "dögum")} síðan`,
+      dias: (n) => formaIs(n, "dagur", "dagar"),
+    },
+    queViene: "Fram undan",
+    yaRige: "Þegar í gildi",
+    mesPorMes: "Árið mánuð fyrir mánuð",
+    sinFechas: "Engar breytingar boðaðar",
+    filtro: "Sía eftir efni",
+    todo: "Allt",
+    tipos: { pago: "Greiðslur", "salario-minimo": "Lágmarkslaun", impuestos: "Skattar", aportes: "Iðgjöld og lífeyrir", laboral: "Vinnureglur", indices: "Viðmiðunargildi" },
+    pasa: (antes, despues) => `Breyting: ${antes} verður ${despues}`,
+    queda: (valor) => `Gildir: ${valor}`,
+    cambian: "Upphæðirnar breytast",
+    zonas: (lista) => `Svæði: ${lista}`,
+    limite: "Lokafrestur",
+    agregar: "Bæta við dagatalið mitt",
+    descargar: "Apple, Outlook og fleiri (.ics-skrá)",
+    google: "Google Calendar",
+    calcular: "Reikna",
+    tambien: "Einnig í reiknivélum",
+    fuente: (organismo, fecha) => `Heimild: ${organismo}. Staðfest: ${fecha}`,
+    verificado: (fecha) => `Staðfest: ${fecha}`,
+    suscribir: {
+      titulo: "Allt dagatalið, alltaf uppfært",
+      texto: "Gerstu áskrifandi einu sinni og nýjar dagsetningar birtast sjálfkrafa í dagatalinu í símanum eða tölvunni.",
+      boton: "Gerast áskrifandi að dagatali",
+      copiar: "Afrita hlekk",
+      copiado: "Hlekkurinn var afritaður",
+    },
+    fuentes: {
+      titulo: "Hvaðan hver dagsetning kemur",
+      texto: "Hér eru aðeins dagsetningar sem regla hefur þegar ákveðið eða gildi sem opinber aðili hefur birt. Það sem ekki hefur verið birt er ekki hér.",
+    },
+    vacio: "Engar dagsetningar um þetta efni næstu tólf mánuði.",
+    destacado: {
+      ceja: "Launadagatal",
+      titulo: "Dagsetningar sem launin ráðast af í ár",
+      ir: "Sýna dagatal",
+      proxima: (titulo, fecha) => `Næst: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Launa- og skattadagatal ${gIs.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Frestir fyrir greiðslur og skatta ${gIs.en(pais)}, úr opinberum heimildum.`,
+      calculadora: "Reiknivél",
+      fuente: "Heimild",
+    },
+    og: { proxima: "Næsta dagsetning", mas: (n) => `Og ${pluralIs(n, "frestur", "frestir")} til viðbótar í ár` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

@@ -1038,6 +1038,31 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "punkte", coma: "komasid" },
     },
   },
+  // Islandés (ADR 0002, D34): «þú» e imperativo de singular, como Skatturinn y los bancos. El botón va en
+  // infinitivo («Reikna»).
+  is: {
+    base: {
+      calcular: "Reikna",
+      resultado: "Niðurstaða",
+      si: "Já",
+      no: "Nei",
+      sinResultado: "Við sýnum ekki þessa niðurstöðu að svo stöddu.",
+      errores: {
+        requerido: "Fylltu út þennan reit.",
+        "numero-invalido": "Sláðu inn tölu, til dæmis {ejemplo}.",
+        "entero-invalido": "Sláðu inn heila tölu, án aukastafa.",
+        "menor-que-min": "Lægsta leyfilega gildið er {min}.",
+        "mayor-que-max": "Hæsta leyfilega gildið er {max}.",
+        "fecha-invalida": "Veldu gilda dagsetningu.",
+        "hora-invalida": "Veldu gildan tíma.",
+        "opcion-invalida": "Veldu einn af möguleikunum.",
+        "region-invalida": "Veldu svæði.",
+        "calculo-fallido": "Ekki tókst að reikna með þessum gögnum. Athugaðu gildin og reyndu aftur.",
+      },
+      milesAmbiguos: "Áttir þú við {sugerido}? Sláðu inn töluna án {signos}.",
+      separadores: { punto: "punkta", coma: "kommu" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

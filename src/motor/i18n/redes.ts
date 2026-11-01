@@ -820,6 +820,27 @@ export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
     celuImagen: "Telefoni kaameraga avab see kood pildi, mida saab loos jagada.",
     cerrar: "Sulge",
   }),
+  // Islandés (ADR 0002, D34): impersonal; «saga» es la historia de Instagram.
+  is: base({
+    grupo: "Deila með:",
+    instagramSub: "Saga",
+    copiar: "Afrita hlekk",
+    mas: "Fleiri möguleikar",
+    nuevaPestana: "opnast í nýjum flipa",
+    formato: "Snið myndar",
+    historia: "Saga 9:16",
+    feed: "Færsla 1:1",
+    descargar: "Sækja mynd",
+    copiado: "Hlekkurinn var afritaður.",
+    compartido: "Sent.",
+    enInstagram: "Búið. Hlekkurinn var líka afritaður og þú getur límt hann í söguna með hlekkjalímmiða.",
+    descargado: "Myndin var sótt og hlekkurinn afritaður. Úr símanum geturðu birt hana sem sögu og bætt hlekknum við með hlekkjalímmiða.",
+    error: "Ekki er hægt að deila núna.",
+    alCelu: "Á Instagram er birt úr símanum",
+    celuPagina: "Með myndavél símans opnar þessi kóði spjald sem þú sendir í söguna með einni snertingu.",
+    celuImagen: "Með myndavél símans opnar þessi kóði mynd sem er tilbúin til að deila í sögu.",
+    cerrar: "Loka",
+  }),
 };
 
 export function textosRedes(idioma: Idioma, trato: Trato, locale?: string): TextosRedes {

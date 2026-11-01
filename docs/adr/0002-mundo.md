@@ -1884,3 +1884,54 @@ las universales con su búsqueda real (`laenukalkulaator`, `kaibemaksu-kalkulaat
 **Prueba.** `zz-et` (Zetamaa) es una edición interna en `et-001`, para no compartir locale con Estonia en hreflang.
 `check_universales` prueba `et-EE` con EUR, un nombre largo que se declina por partes («Saint Vincent ja Grenadiinid») y uno plural de tabla («Araabia Ühendemiraadid»);
 `check_motor` prueba formato, plurales, parseo, gramática y reglas. Falta revisión por hablante nativo.
+
+### D34. Islandés, para Islandia (2026-11-01)
+
+`IDIOMAS` suma `is`. Motor, sitio, inicio, novedades, legales, errores, compartir (también el panel con imagen),
+embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»), rankings, «Sueldos
+reales», afiliados, el diccionario de venta y las 41 universales están en islandés. Modelos: nb, da y sv (D9), con
+la estructura del esloveno (D32, en otra rama). D25 a D33 están en ramas sin mergear; por eso este número.
+
+**Lo que devuelve Intl (Node).** `is-IS`: `1.234.568 kr.` (corona sin decimales, con punto de miles y «kr.» detrás;
+Intl ya da el símbolo con punto), `1.234,5` en números, `20%` sin espacio, fechas `15. október 2026`. El parser no
+necesitó nada propio. Otras monedas salen con el código («1.234,50 EUR»), como las da CLDR.
+
+**Registro.** Un solo registro, el de los bancos y los servicios del país (Skatturinn, Landsbankinn, Arion banki):
+«þú» informal e imperativo de singular («sláðu inn», «reiknaðu», «veldu»). Botones en infinitivo («Reikna», «Afrita»,
+«Deila»). Los mercados van con `trato: "tu"`. La «þérun» no se usa en la web islandesa; `reglas_idioma` atrapa «yður»,
+«þér» con verbo en plural y los imperativos en -ið. «þér» suelto no se atrapa: también es el dativo de «þú» («hjá þér»).
+
+**Vocabulario.** «launareiknivél», «staðgreiðsla», «tekjuskattur», «lífeyrissjóður», «iðgjald», «virðisaukaskattur
+(VSK)», «húsnæðislán», «vextir», «árleg hlutfallstala kostnaðar (ÁHK)», «heildarlaun» y «útborguð laun», «hlekkur»,
+«vafri». Las reglas atrapan å, ø, ä, las palabras comunes del noruego y del danés (ikke, eller, beregn...), los textos
+sin letras islandesas y la corona sin punto («500 kr»).
+
+**Plurales y gramática.** Dos categorías de `Intl.PluralRules("is")`, con la regla islandesa: lo que termina en 1
+salvo en 11 va en singular («1 dagur», «21 dagur», «2 dagar», «11 dagar», «1 ár», «21 ár», «2 ár»; `formaIs`,
+`pluralIs`). Tras preposición se le pasan las formas del caso que rige («eftir 3 daga», «fyrir 3 dögum síðan», «í 21
+landi», «í 2 löndum»). El buscador elige con `resultadosPocos`, igual a la forma plural, para pasar por PluralRules
+sin código nuevo («21 niðurstaða»). El país se declina y elige preposición: `GRAMATICA.is` da genitivo («Íslands»,
+«Bandaríkjanna»), lugar con «á» o «í» y dativo («á Íslandi», «í Þýskalandi», «á Spáni», «í Bandaríkjunum», «á Sankti
+Vinsent og Grenadíneyjum») y «fyrir» con acusativo («fyrir Ísland», «fyrir Noreg»), con reglas por terminación y una
+tabla de irregulares (`fallIs`). «í Bretlandi» y «í Taílandi» por decisión: conviven con «á», son las formas más
+actuales; a confirmar con la revisión nativa. Las fechas tras «til» y «frá» no cambian («til 15. október»). Nunca se
+pega un sustantivo a una cifra sin `pluralIs`: si no, el número va tras dos puntos («Fjöldi færslna: {n}»).
+
+**Comillas.** „ “ (U+201E y U+201C), las de la ortografía islandesa. Ni «», ni "", ni ”.
+
+**Universales neutrales.** Los textos no nombran organismos, leyes ni moneda de Islandia, salvo el genérico «VSK». Lo
+propio del país queda para el agente de país. `informe.documento` del diccionario de venta dice «Kennitala», como sv
+dice «Personnummer»: es el nombre del documento, no un organismo.
+
+**Slugs.** ASCII: þ→th, ð→d, æ→ae, ö→o, tildes sin tilde. `laun-um-allan-heim`, `rodun-landa`,
+`hversu-margar-vinnustundir`, `launadagatal`, `raunveruleg-laun`, y las universales con su búsqueda real
+(`lanareiknivel`, `vsk-reiknivel`, `husnaedislan`, `thrilida`, `launaumreikningur`). `launareiknivel` queda libre para
+la calculadora de sueldo neto del país. Se suman en `secciones.ts` por los `SLUG_*`: sin carpetas por idioma.
+
+**Fuente.** þ, ð, æ, ö y las vocales con tilde están en Latin-1 (U+00C0 a U+00FF), dentro del subset `latin` de Geist,
+que el layout ya baja: no hace falta nada nuevo.
+
+**Prueba.** `zz-is` (Zetaland) es una edición interna en `is-001`, para no compartir locale con Islandia en hreflang.
+`check_universales` prueba `is-IS` con ISK y nombres largos («á Sankti Vinsent og Grenadíneyjum», «í Sameinuðu
+arabísku furstadæmunum»); `check_motor` prueba formato, plurales, parseo, gramática y reglas. Falta revisión por
+hablante nativo.

@@ -151,6 +151,14 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     meses: { uno: "mesec", dual: "meseca", pocos: "meseci", otros: "mesecev" },
     anios: { uno: "leto", dual: "leti", pocos: "leta", otros: "let" },
   },
+  // Islandés (ADR 0002, D34): one/other de Intl.PluralRules («1 dagur», «2 dagar», «21 dagur», «11 dagar»).
+  is: {
+    dias: { uno: "dagur", otros: "dagar" },
+    semanas: { uno: "vika", otros: "vikur" },
+    horas: { uno: "klukkustund", otros: "klukkustundir" },
+    meses: { uno: "mánuður", otros: "mánuðir" },
+    anios: { uno: "ár", otros: "ár" },
+  },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

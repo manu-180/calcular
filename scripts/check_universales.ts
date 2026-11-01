@@ -209,6 +209,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent ja Grenadiinid", locale: "et-EE", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Araabia Ühendemiraadid", locale: "et-EE", trato: "tu", moneda: "AED" as Moneda, escala: 3.67 },
   ],
+  // Islandés (ADR 0002, D34): coronas sin decimales con «kr.» detrás y punto de miles; un nombre largo con
+  // «á» y plural («á Sankti Vinsent og Grenadíneyjum») y uno plural con adjetivos («í Sameinuðu arabísku furstadæmunum»).
+  is: [
+    { mercado: "is" as CodigoMercado, pais: "IS", nombrePais: "Ísland", locale: "is-IS", trato: "tu", moneda: "ISK" as Moneda, escala: 150 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sankti Vinsent og Grenadíneyjar", locale: "is-IS", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Sameinuðu arabísku furstadæmin", locale: "is-IS", trato: "tu", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
   bg: [
     { mercado: "bg" as CodigoMercado, pais: "BG", nombrePais: "България", locale: "bg-BG", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сейнт Винсънт и Гренадини", locale: "bg-BG", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },

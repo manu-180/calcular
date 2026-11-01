@@ -698,6 +698,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Vaata, kui palju netopalka jääb rohkem kui ${n} riigis`,
     },
   },
+  // Islandés (ADR 0002, D34): «þú»; botones en infinitivo.
+  is: {
+    base: {
+      boton: "Deila",
+      botonAria: "Deila þessari reiknivél",
+      menuTitulo: "Deila með",
+      copiar: "Afrita hlekk",
+      copiado: "Hlekkurinn var afritaður",
+      compartido: "Sent",
+      errorCorto: "Ekki tókst að afrita",
+      errorAyuda: "Ekki tókst að afrita hlekkinn. Afritaðu hann úr veffangastiku vafrans.",
+      nuevaPestana: "opnast í nýjum flipa",
+      mensaje: (nombre) => `${nombre}. Ókeypis og tekur mínútu að reikna.`,
+      puenteIntro: "En í öðrum löndum?",
+      puenteEnlace: (n) => `Sjáðu hvað þú fengir útborgað í fleiri löndum (fjöldi landa: ${n})`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {
