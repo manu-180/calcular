@@ -2,7 +2,7 @@ import type { TextosUi } from "../../tipos";
 import type { UiDiasEntreFechas } from "../definicion";
 
 // Eesti keeles nõuab 1 ainsuse nimetavat („1 päev“) ja muud arvud ainsuse osastavat („3 päeva“).
-const hulk = (n: number, uks: string, mitu: string) => `${n} ${n === 1 ? uks : mitu}`;
+const hulk = (n: number, uks: string, mitu: string) => `${n} ${Number(n) === 1 ? uks : mitu}`;
 
 function loetelu(osad: readonly string[]): string {
   return osad.length > 1 ? `${osad.slice(0, -1).join(", ")} ja ${osad[osad.length - 1]}` : osad[0];
@@ -29,8 +29,8 @@ export const textosEt: TextosUi<UiDiasEntreFechas> = {
     habiles: "Tööpäevad",
     habilesAyuda: "Esmaspäevast reedeni. Riigipühi maha ei arvata.",
     duracion: duracionEt,
-    semanasYDias: (semanas, n, dias) => {
-      const nadalad = `${semanas} ${n === 1 ? "nädal" : "nädalat"}`;
+    semanasYDias: (semanas, _n, dias) => {
+      const nadalad = `${semanas} ${Number(semanas) === 1 ? "nädal" : "nädalat"}`;
       return dias ? `${nadalad} ja ${hulk(dias, "päev", "päeva")}` : nadalad;
     },
     notaHabiles: "Tööpäevadeks loetakse päevad esmaspäevast reedeni. Riigipühi maha ei arvata, sest need erinevad riigiti ja piirkonniti.",

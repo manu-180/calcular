@@ -16,7 +16,7 @@ export const textosEt: TextosUi<UiPresupuesto> = {
     gustos: "Muudeks kuludeks ja vabaks ajaks",
     ahorro: "Säästmiseks",
     ahorroAnual: "Sääst aastas",
-    errorIngreso: "Sisesta oma kuine sissetulek.",
+    errorIngreso: "Sisesta oma kuusissetulek.",
     errorSuma: (suma) => `Osakaalud on kokku ${suma}%. Nende summa peab olema 100%.`,
     observacionAhorroBajo: "Kui säästad alla 10%, jääb ootamatuteks kuludeks vähe varu. Kärbi võimaluse korral muid kulusid.",
   }),

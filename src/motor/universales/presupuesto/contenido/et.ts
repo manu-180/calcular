@@ -10,7 +10,7 @@ export const contenidoEt: ContenidoUniversal = (ctx) => {
       `Eelarve 50/30/20 | ${ctx.nombrePais}`,
       "Eelarve 50/30/20",
     ),
-    description: "Jaga oma netosissetulek 50/30/20 reegli järgi. Näed, kui palju läheb vajalikele kuludele, muudele kuludele ja säästmiseks, ning saad osakaale vajaduse korral muuta.",
+    description: "Jaga oma netosissetulek 50/30/20 reegli järgi. Näed, kui palju läheb vajalikele kuludele, muudele kuludele ja säästmiseks, ning saad osakaale muuta.",
     intro: [
       "Reegel 50/30/20 on lihtne viis kuu rahaasju planeerida. Pool läheb vajalikule, 30% asjadele, mis sulle meeldivad, ja 20% säästmiseks.",
       "Sisesta oma netosissetulek, siis näed, kui palju igale osale läheb. Kui sinu olukord on teistsugune, näiteks üür on kõrge, muuda protsente.",

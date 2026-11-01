@@ -17,8 +17,8 @@ export const textosEt: TextosUi<UiFechaDeParto> = {
     faltan: "Päevi jäänud",
     fechaConcepcion: "Eeldatav viljastumine",
     semanasYDias: (s, d) => {
-      const nadalad = `${s} ${s === 1 ? "nädal" : "nädalat"}`;
-      return d ? `${nadalad} ja ${d} ${d === 1 ? "päev" : "päeva"}` : nadalad;
+      const nadalad = `${s} ${Number(s) === 1 ? "nädal" : "nädalat"}`;
+      return d ? `${nadalad} ja ${d} ${Number(d) === 1 ? "päev" : "päeva"}` : nadalad;
     },
     trimestres: ["Esimene trimester", "Teine trimester", "Kolmas trimester"],
     errorFutura: "Kuupäev ei saa olla tänasest hilisem.",
