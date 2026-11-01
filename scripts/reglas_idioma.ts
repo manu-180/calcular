@@ -162,6 +162,23 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Letón: un solo registro, el de VID (EDS) y latvija.gov.lv: «jūs» en minúscula e imperativo de segunda del
+  // plural («ievadiet», «aprēķiniet», «izvēlieties»); los botones cortos van en infinitivo («Aprēķināt»;
+  // ADR 0002, D35). Se atrapan los pronombres y posesivos de «tu», los imperativos de segunda del singular
+  // de un formulario, los presentes y futuros de segunda del singular y el «Jūs» con mayúscula a mitad de
+  // oración. «maksā», «saņem» o «strādā» coinciden con la tercera y no se atrapan.
+  lv: {
+    informal: [
+      { re: palabras("tu|tavs|tava|tavu|tavi|tavas|tavam|tavai|tavā|tavos|tavām|taviem|tev|tevi|tevis"), nombre: "trato de «tu» (va «jūs»)" },
+      {
+        re: palabras("ievadi|izvēlies|nospied|noklikšķini|uzzini|salīdzini|sāc|paskaties|aizpildi|mēģini|pamēģini|maini|pērc|ietaupi"),
+        nombre: "imperativo de segunda del singular (va -iet)",
+      },
+      { re: palabras("esi|vari|nopelni|gribi|vēlies|saņemsi|maksāsi|nopelnīsi|varēsi|redzēsi|būsi|ietaupīsi|strādāsi"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Jūs|Jūsu|Jums|Jūsos)(?!\p{L})/u, nombre: "«Jūs» con mayúscula (va «jūs»)" },
+    ],
+    formal: [],
+  },
   // Búlgaro: un solo registro, el de ДСК y НАП (2.ª del plural, «Вие», «Ви», «Вашият» con mayúscula;
   // ADR 0002, D24). Se atrapa el «ти» y sus formas, y el pronombre de cortesía con minúscula.
   bg: {
@@ -356,6 +373,17 @@ function reglasRo(texto: string): string[] {
 
 // Checo: comillas „ “ (abre abajo, cierra arriba), nada de «», "" ni ” (las del inglés o el
 // francés).
+// Letón (ADR 0002, D35): comillas „ “, «%» sin espacio (como Intl lv y la norma letona) y las palabras
+// frecuentes escritas sin diacríticos.
+function reglasLv(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en letón van „ “");
+  if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en letón abren con „ (abajo)");
+  if (/\d[\s\u00a0\u202f]%/.test(texto)) p.push("porcentaje: en letón va sin espacio (21%)");
+  if (palabras("aprekinat|aprekiniet|aprekins|aprekina|izvelieties|menesi|menesa|menesu|nodoklu|majokla|kredita|sanemt|sanemsiet").test(texto)) p.push("letón sin diacríticos");
+  return p;
+}
+
 function reglasCs(texto: string): string[] {
   const p: string[] = [];
   if (/[«»"”]/.test(texto)) p.push("comillas: en checo van „ “");
@@ -613,5 +641,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "hu") p.push(...reglasHu(texto));
   if (idioma === "sr") p.push(...reglasSr(texto, locale));
   if (idioma === "bg") p.push(...reglasBg(texto));
+  if (idioma === "lv") p.push(...reglasLv(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

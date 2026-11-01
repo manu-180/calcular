@@ -16,11 +16,14 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // FormasAr y el hebreo FormasHe (uno, dual y plural: «יום אחד», «יומיים», «{n} ימים»).
 // En serbio "uno" es 1, 21, 31... (no 11), "pocos" 2 a 4, 22 a 24... (no 12 a 14) y "otros" el resto,
 // fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
+// En letón "uno" es 1, 21, 31... (no 11) y "otros" el resto (2, 10, 11, 1,5), fracciones incluidas; "cero"
+// es la forma del 0 exacto, en genitivo plural: «1 gads», «2 gadi», «10 gadi», «21 gads», «0 gadu».
 export interface FormasUnidad {
   uno: string;
   otros: string;
   pocos?: string;
   muchos?: string;
+  cero?: string;
 }
 
 type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad | FormasAr | FormasHe>>;
@@ -102,6 +105,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   // Búlgaro: «час» y «месец» van en forma numérica detrás de un número («5 часа», «3 месеца»).
   bg: { dias: { uno: "ден", otros: "дни" }, semanas: { uno: "седмица", otros: "седмици" }, horas: { uno: "час", otros: "часа" }, meses: { uno: "месец", otros: "месеца" }, anios: { uno: "година", otros: "години" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
+  lv: {
+    dias: { uno: "diena", otros: "dienas", cero: "dienu" },
+    semanas: { uno: "nedēļa", otros: "nedēļas", cero: "nedēļu" },
+    horas: { uno: "stunda", otros: "stundas", cero: "stundu" },
+    meses: { uno: "mēnesis", otros: "mēneši", cero: "mēnešu" },
+    anios: { uno: "gads", otros: "gadi", cero: "gadu" },
+  },
   // Serbio en latinica y ekavski (ADR 0002, D23).
   sr: {
     dias: { uno: "dan", pocos: "dana", otros: "dana" },

@@ -1214,7 +1214,43 @@ const bg: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Letón (ADR 0002, D35): imperativo de segunda del plural; el país en locativo (GRAMATICA.lv: «Latvijā»).
+const lv: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa kalkulators",
+    marcaNuevaPestana: "(atveras jaunā cilnē)",
+    noDisponible: { titulo: "Šis kalkulators nav pieejams", texto: "Iespējams, ir mainījusies tā adrese." },
+    insertar: "Ievietojiet savā vietnē",
+    pagina: {
+      titulo: (pais) => [`Bezmaksas kalkulatori jūsu vietnei | ${pais}`, "Bezmaksas kalkulatori jūsu vietnei"],
+      descripcion: (pais) => `Izvēlieties kalkulatoru (${pais}), nokopējiet kodu un ievietojiet to savā emuārā vai vietnē. Bez maksas, ar vienmēr aktuāliem oficiāliem datiem.`,
+      h1: "Ievietojiet kalkulatoru savā vietnē",
+      bajada: "Izvēlieties kalkulatoru, nokopējiet kodu un ievietojiet to vajadzīgajā vietā. Bez maksas, un dati atjaunojas paši.",
+      calculadora: "Kalkulators",
+      buscar: "Atrodiet kalkulatoru",
+      sinResultados: "Pēc jūsu vaicājuma kalkulators nav atrasts.",
+      tema: "Izskats",
+      claro: "Gaišs",
+      oscuro: "Tumšs",
+      ancho: "Platums",
+      anchoCompleto: "Pilnā platumā",
+      acento: "Akcenta krāsa",
+      colores: ["Zaļa", "Zila", "Oranža", "Rozā", "Grafīta"],
+      credito: "Rādīt avota saiti zem kalkulatora",
+      vistaPrevia: "Priekšskatījums",
+      codigo: "Ievietošanas kods",
+      copiar: "Kopēt kodu",
+      copiado: "Kods nokopēts",
+      ayudaScript: "Skripts nav obligāts: tas pielāgo kalkulatora augstumu saturam.",
+      ventajas: ["Bez maksas un bez reģistrācijas", "Vienmēr aktuāli oficiālie dati", "Pielāgojas jebkuram platumam"],
+      nota: "Zem kalkulatora ir saite uz CalcularYa. Lūdzu, nenoņemiet to.",
+      verTodas: (pais) => `Rādīt visus kalkulatorus ${GRAMATICA.lv.en(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa kalkulators`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lv };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

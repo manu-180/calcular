@@ -6,7 +6,7 @@ import { cifrasBn } from "./bengali";
 import { formaUk, pluralBg, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
 import { formaRu, pluralRu } from "./plural";
-import { formaCs, pluralCs } from "./plural";
+import { formaCs, pluralCs, pluralLv } from "./plural";
 import { GRAMATICA } from "./gramatica";
 import { pluralEl } from "./plural";
 import { pluralHe, type FormasHe } from "./hebreo";
@@ -3744,7 +3744,125 @@ const bg: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Letón (ADR 0002, D35): impersonal, como el resto de los rankings. La posición lleva el punto del ordinal
+// («Latvija: 27. vieta no 41»). Las cantidades van en nominativo con pluralLv o tras «kopā:», nunca
+// pegadas a un sustantivo en otro caso; «par» pide acusativo en singular y dativo en plural.
+const valstisLv = (n: number | string) => pluralLv(n, "valsts", "valstis", "valstu");
+
+const lv: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Valstu reitingi",
+    seo: {
+      titulo: ["Valstu reitingi pēc algas un nodokļiem", "Valstu reitingi"],
+      descripcion: (n) => `Kur no tās pašas algas paliek visvairāk, nodokļu brīvības diena un cik paliek no algas pielikuma. Valstu kopā: ${n}. Oficiālie dati, atjaunināti katru dienu.`,
+    },
+    ceja: "Atvērtie dati",
+    h1: "Algas un nodokļi, valsts pēc valsts",
+    bajada: (n) => `Kopā: ${valstisLv(n)}. Pirktspēja ir tā pati, katrai valstij savs oficiālais kalkulators. Reitingi atjaunojas paši katru dienu.`,
+    actualizado: (f) => `Atjaunināts: ${f}`,
+    ver: "Skatīt reitingu",
+    niveles: { titulo: "Sākuma alga", nombres: { bajo: "Maza alga", medio: "Vidēja alga", alto: "Liela alga" }, anual: (m) => `${m} gadā` },
+    tramos: { titulo: "Pielikuma apmērs", nombre: (a, b) => `No ${a} līdz ${b}` },
+    referencia: {
+      nivel: (m) => `bruto alga: ${m} starptautisko dolāru gadā`,
+      tramo: (a, b) => `bruto algas pielikums no ${a} līdz ${b} starptautiskajiem dolāriem gadā`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${p}. vieta no ${total}`,
+    de: (t) => `no ${t}`,
+    empate: (o) => (Number(o) === 1 ? "kopā ar vēl vienu valsti" : `kopā ar vēl ${pluralLv(o, "valsti", "valstīm", "valstīm")}`),
+    fuera: (pais) => `${pais}: šīs valsts reitingos pagaidām nav. Salīdzinājumam vajadzīgs neto algas kalkulators, kas vēl nav sagatavots.`,
+    lider: "Pirmā vieta reitingā",
+    global: (n) => `${valstisLv(n)}, no pirmās līdz pēdējai`,
+    valores: {
+      porMes: (m) => `${m} mēnesī`,
+      ningunDia: "Neviena diena",
+      deCada: (n) => `${n} no 100`,
+      carga: (pct) => `${pct} aiziet ienākuma nodoklim un iemaksām`,
+      cargaAumento: (pct) => `${pct} no pielikuma aiziet nodokļiem un iemaksām`,
+    },
+    cambio: {
+      titulo: (mes) => `Izmaiņas salīdzinājumā ar mēnesi: ${mes}`,
+      sube: (n) => `par ${pluralLv(n, "vietu", "vietām", "vietām")} augstāk`,
+      baja: (n) => `par ${pluralLv(n, "vietu", "vietām", "vietām")} zemāk`,
+      igual: "Bez izmaiņām",
+      nuevo: "Jauna reitingā",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Vieta",
+      pais: "Valsts",
+      edicion: "Šī versija",
+      unidad: "Starptautiskajos dolāros",
+    },
+    kit: {
+      titulo: "Medijiem",
+      bajada: "Teikums, grafiks un saite uz šo reitingu, gatavi publicēšanai.",
+      compartir: "Kopīgot",
+      descargar: "Lejupielādēt grafiku",
+      copiar: "Kopēt citātu",
+      copiado: "Citāts nokopēts",
+      enlace: "Saite nokopēta",
+      compartido: "Nosūtīts",
+      error: "Nokopēt neizdevās. Tekstu augšā var nokopēt manuāli.",
+      cita: (frase, ranking, ref, fecha) => `${frase}, reitings „${ranking}“ (${ref}). Avots: CalcularYa, dati: ${fecha}.`,
+      texto: (frase, ranking) => `${frase}, reitings „${ranking}“.`,
+      alt: (ranking) => `Reitinga „${ranking}“ grafiks`,
+    },
+    metodo: {
+      titulo: "Kā tiek veidots reitings",
+      bajada: "Katru valsti rēķina ar tās oficiālo neto algas kalkulatoru pēc šodienas noteikumiem. Pēc tam valstis salīdzina pie vienādas pirktspējas.",
+      niveles: (b, m, a) => `Sākuma algas: ${b}, ${m} un ${a} starptautisko dolāru bruto gadā.`,
+      empates: "Divas valstis ar vienādu vērtību tabulā dala vietu, un nākamā vieta tiek izlaista (1, 2, 2, 4).",
+      historial: "Vietas izmaiņas mēra pēc reitinga kopijas, ko saglabā katru mēnesi. Ja pagājušā mēneša kopijas nav, izmaiņas netiek rādītas.",
+      actualizacion: "Tabulu pārrēķina katru dienu pēc katras valsts spēkā esošajiem datiem. Jauna valsts parādās, kad sāk darboties tās kalkulators.",
+      ver: "Visa metodika",
+    },
+    datos: {
+      titulo: "Atvērtie dati",
+      bajada: "Skaitļi, uz kuriem balstīti šie reitingi, valsts pēc valsts, JSON un CSV formātā. Atjaunināti katru dienu.",
+      json: "Dati JSON",
+      csv: "Dati CSV",
+      licencia: "Licence CC BY 4.0: datus var brīvi izmantot, izplatīt un publicēt, norādot CalcularYa un saiti uz šo lapu.",
+      atribucion: "Ieteicamais citāts",
+    },
+    mundo: { titulo: "Ar konkrētu algu", texto: (n) => `Aprēķināt ar savu algu un katras valsts datumu varat lapā „${n}“.`, ir: "Aprēķināt" },
+    otros: "Citi reitingi",
+    rankings: {
+      rinde: {
+        titulo: "Kur no tās pašas algas paliek visvairāk",
+        corto: "Kur paliek visvairāk",
+        seo: ["Kur no tās pašas algas paliek visvairāk: valstu reitings", "Kur no tās pašas algas paliek visvairāk"],
+        descripcion: (n) => `Tā pati alga, tā pati pirktspēja: cik paliek uz rokas pēc katras valsts nodokļu noteikumiem. Valstu kopā: ${n}. Atjaunināts katru dienu.`,
+        bajada: "To pašu bruto algu, pie vienādas pirktspējas, rēķina pēc katras valsts noteikumiem. Augšā valstis, kurās uz rokas paliek visvairāk.",
+        metrica: "Uz rokas mēnesī",
+        carga: "Nodokļi un iemaksas",
+        como: "Mēneša neto alga ir 12 mēnešu vidējais, starptautiskajos dolāros.",
+      },
+      libertad: {
+        titulo: "Nodokļu brīvības diena pa valstīm",
+        corto: "Nodokļu brīvības diena",
+        seo: ["Nodokļu brīvības diena pa valstīm: reitings", "Nodokļu brīvības diena pa valstīm"],
+        descripcion: (n) => `Gada diena, kad samaksāts ienākuma nodoklis un iemaksas, ar to pašu algu. Valstu kopā: ${n}. Atjaunināts katru dienu.`,
+        bajada: "Gada diena, kad samaksāts ienākuma nodoklis un iemaksas, ar to pašu algu katrā valstī. Augšā valstis, kurās tā pienāk visagrāk.",
+        metrica: "Valsts labā strādā līdz",
+        carga: "Nodokļi un iemaksas",
+        como: "Datums sadala nodokļus pa gadu no 1. janvāra: ja nodokļu slogs ir 30%, valsts labā strādā 30% gada.",
+      },
+      aumento: {
+        titulo: "Cik paliek no algas pielikuma",
+        corto: "Cik paliek no pielikuma",
+        seo: ["Cik paliek no algas pielikuma: valstu reitings", "Cik paliek no algas pielikuma"],
+        descripcion: (n) => `No 100, kas pielikti bruto algai, cik paliek pēc ienākuma nodokļa un iemaksām. Valstu kopā: ${n}. Atjaunināts katru dienu.`,
+        bajada: "No 100, kas pielikti bruto algai, cik patiešām nonāk makā pēc ienākuma nodokļa un iemaksām. Augšā valstis, kurās paliek visvairāk.",
+        metrica: "Paliek no 100",
+        carga: "Robežlikme",
+        como: "Tā ir robežlikme starp divām algām: pielikuma daļa, kas aiziet nodokļiem un iemaksām.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lv };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

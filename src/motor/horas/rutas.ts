@@ -15,6 +15,7 @@ export const SLUG_HORAS: Record<Idioma, string> = {
   ko: "nodong-sigan",
   zh: "gongzuo-shijian",
   bg: "kolko-chasa-rabota",
+  lv: "cik-stundas-jastrada",
 
   pl: "ile-godzin-pracy",
   sv: "arbetstimmar",

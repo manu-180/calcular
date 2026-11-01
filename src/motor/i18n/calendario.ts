@@ -3,7 +3,7 @@ import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { GRAMATICA, mayusculaHu } from "./gramatica";
-import { formaBg, formaCs, formaEl, formaRu, formaUk, pluralBg, pluralCs, pluralEl, pluralRo, pluralRu, pluralUk } from "./plural";
+import { formaBg, formaCs, formaEl, formaLv, formaRu, formaUk, pluralBg, pluralCs, pluralEl, pluralLv, pluralRo, pluralRu, pluralUk } from "./plural";
 import { formaSr, pluralSr } from "./plural";
 import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
@@ -2165,7 +2165,83 @@ const bg: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Letón (ADR 0002, D35): impersonal como los demás, imperativo con «jūs» donde se le habla a quien lee.
+// El país con GRAMATICA.lv («Latvijā»); los días con formaLv/pluralLv: «pēc» y «pirms» piden genitivo en
+// singular y dativo en plural («pēc 1 dienas», «pēc 3 dienām»). Las fechas de Intl van tras dos puntos.
+const gLv = GRAMATICA.lv;
+const lv: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Algas un nodokļu kalendārs",
+    seo: {
+      titulo: (pais, anios) => [
+        `Algas un nodokļu kalendārs ${anios}. gadam ${gLv.en(pais)}: svarīgi datumi`,
+        `Algas un nodokļu kalendārs ${anios}. gadam ${gLv.en(pais)}`,
+        `Algas kalendārs ${gLv.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Datumi, kas maina algu ${gLv.en(pais)}, no oficiāliem avotiem: ${proximas}. Pie katra ir kalkulators.`,
+      descripcionSin: (pais) => `Datumi, kas maina algu ${gLv.en(pais)}, no oficiāliem avotiem, pie katra kalkulators. Pievienojiet tos kalendāram telefonā.`,
+    },
+    ceja: (anios) => `Kalendārs: ${anios}`,
+    h1: (pais) => `Algas un nodokļu kalendārs ${gLv.en(pais)}`,
+    acento: "datumi, no kuriem atkarīga alga",
+    bajada: "Katrs datums ņemts no oficiāla avota un ved uz kalkulatoru, kuram tas ir svarīgs. Lapa atjaunojas pati, kad tiek publicēta jauna vērtība.",
+    proxima: "Tuvākais datums",
+    cuenta: {
+      hoy: "Šodien",
+      manana: "Rīt",
+      ayer: "Vakar",
+      en: (n) => `Pēc ${pluralLv(n, "dienas", "dienām", "dienām")}`,
+      hace: (n) => `Pirms ${pluralLv(n, "dienas", "dienām", "dienām")}`,
+      dias: (n) => formaLv(n, "diena", "dienas", "dienu"),
+    },
+    queViene: "Drīzumā",
+    yaRige: "Jau spēkā",
+    mesPorMes: "Gads pa mēnešiem",
+    sinFechas: "Izmaiņas nav publicētas",
+    filtro: "Filtrēt pēc tēmas",
+    todo: "Visi",
+    tipos: { pago: "Izmaksas", "salario-minimo": "Minimālā alga", impuestos: "Nodokļi", aportes: "Iemaksas un pensijas", laboral: "Darba noteikumi", indices: "Atskaites lielumi" },
+    pasa: (antes, despues) => `Mainās: bija ${antes}, būs ${despues}`,
+    queda: (valor) => `Spēkā: ${valor}`,
+    cambian: "Summas mainās",
+    zonas: (lista) => `Reģioni: ${lista}`,
+    limite: "Pēdējais termiņš",
+    agregar: "Pievienot manam kalendāram",
+    descargar: "Apple, Outlook un citi (.ics fails)",
+    google: "Google kalendārs",
+    calcular: "Aprēķināt",
+    tambien: "Arī kalkulatoros",
+    fuente: (organismo, fecha) => `Avots: ${organismo}. Pārbaudīts: ${fecha}.`,
+    verificado: (fecha) => `Pārbaudīts: ${fecha}`,
+    suscribir: {
+      titulo: "Viss kalendārs, vienmēr aktuāls",
+      texto: "Abonējiet vienreiz, un jaunie datumi paši parādīsies jūsu telefona vai datora kalendārā.",
+      boton: "Abonēt kalendāru",
+      copiar: "Kopēt saiti",
+      copiado: "Saite nokopēta",
+    },
+    fuentes: {
+      titulo: "No kurienes ņemts katrs datums",
+      texto: "Šeit nonāk tikai datumi, ko jau noteicis normatīvais akts vai oficiālas iestādes publicēta vērtība. Tā, kas vēl nav publicēts, šeit nav.",
+    },
+    vacio: "Tuvāko divpadsmit mēnešu laikā par šo tēmu datumu nav.",
+    destacado: {
+      ceja: "Algas kalendārs",
+      titulo: "Datumi, no kuriem šogad atkarīga alga",
+      ir: "Skatīt kalendāru",
+      proxima: (titulo, fecha) => `Tuvākais: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Algas un nodokļu kalendārs ${gLv.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Algas un nodokļu termiņi ${gLv.en(pais)} no oficiāliem avotiem.`,
+      calculadora: "Kalkulators",
+      fuente: "Avots",
+    },
+    og: { proxima: "Tuvākais datums", mas: (n) => `Un vēl šogad: ${pluralLv(n, "datums", "datumi", "datumu")}` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lv };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

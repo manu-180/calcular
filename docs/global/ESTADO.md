@@ -106,6 +106,15 @@ reusa con EUR. Cirílico: edición futura (`rs-cyrl`). Decisiones en ADR 0002, D
 (interna, `sr-Latn-001`).
 - Falta para publicar Serbia y Montenegro: los países en sí, con datos verificados, y revisión por hablante nativo.
 
+## 1/11/2026 · Motor letón (`claude/mundo-motor-lv`, ADR 0002 D35)
+
+`lv` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados, redes y las 41 universales; edición interna `zz-lv`. Registro
+de VID: «jūs» en minúscula, 2.ª del plural, botones en infinitivo («Aprēķināt»). Plurales one/other con el 0 en
+genitivo (`pluralLv`), país con genitivo, locativo sin preposición y dativo (`GRAMATICA.lv`). `algas-kalkulators`
+queda libre para la local. Listo para que un agente de país escriba Letonia (`lv`). Falla de main ajena al frente:
+`check_mundo` (be, neto). Falta revisión por hablante nativo.
+
 ## 31/10/2026 · Motor búlgaro (`claude/mundo-motor-bg`, ADR 0002 D24)
 
 `bg` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,

@@ -74,6 +74,28 @@ const ZH_HANS: TextosHorasPropio = {
 const base = (t: TextosHorasPropio): Diccionario<TextosHorasPropio> => ({ base: t });
 
 export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
+  // Letón (ADR 0002, D35): impersonal; la tarjeta, en primera persona. {horas} va tras dos puntos, porque
+  // Intl la da en nominativo.
+  lv: base({
+    titulo: "Tas pats aprēķins ar īstu algu",
+    bajada: "Ievadot mēneša bruto algu, stundas tiek rēķinātas pēc tās, nevis pēc minimālās algas. Summa paliek šajā pārlūkprogrammā: tā nenonāk ne saitē, ne attēlā.",
+    campo: "Mēneša bruto alga",
+    ayuda: "Valūta: {moneda}, pirms ieturējumiem.",
+    traido: "Ņemts no algas kalkulatora.",
+    invalido: "Vajadzīga summa, kas lielāka par nulli.",
+    vacio: "Pēc algas ievadīšanas parādīsies stundas.",
+    antes: "{en} ar šo algu {producto}:",
+    despues: "darba",
+    despuesMes: "darba katru mēnesi",
+    minimo: "Par minimālo algu: {horas}.",
+    veces: "{x}× minimālā alga",
+    rankingTitulo: "Tas pats algas līmenis katrā valstī",
+    rankingBajada: "{x}× katras valsts minimālā alga, pārrēķināta darba stundās.",
+    tarjetaTitulo: "Kartīte ar manām stundām",
+    tarjetaBajada: "Tajā ir tikai stundas un valstis. Algas tajā nav nekad.",
+    texto: "{en} {producto} man: {horas} darba. Un citās valstīs?",
+    og: { antes: "{en} ar manu algu", producto: "{producto} man:", de: "darba", deMes: "darba mēnesī", otros: "Tas pats algas līmenis:", cta: "Cik darba stundu tas maksā?" },
+  }),
   es: base({
     titulo: "El mismo cálculo, con un sueldo real",
     bajada: "Con el sueldo bruto por mes, las horas salen de ese sueldo y no del mínimo. El monto queda en este navegador: no viaja en el link ni en la imagen.",

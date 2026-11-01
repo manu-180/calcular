@@ -166,6 +166,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   // Húngaro (ADR 0002, D21): forintos sin decimales con «Ft» detrás y espacio de miles, un nombre largo
   // con artículo y sufijo de isla («a Saint Vincent és a Grenadine-szigeteken») y uno compuesto en
   // -ország («Németországban»).
+  // Letón (ADR 0002, D35): euro detrás, con espacio de miles desde 5 cifras; un nombre largo que se declina
+  // por partes («Sentvinsentā un Grenadīnās») y uno plural con adjetivo («Apvienotajos Arābu Emirātos»).
+  lv: [
+    { mercado: "lv" as CodigoMercado, pais: "LV", nombrePais: "Latvija", locale: "lv-LV", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sentvinsenta un Grenadīnas", locale: "lv-LV", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Apvienotie Arābu Emirāti", locale: "lv-LV", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
   bg: [
     { mercado: "bg" as CodigoMercado, pais: "BG", nombrePais: "България", locale: "bg-BG", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сейнт Винсънт и Гренадини", locale: "bg-BG", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },

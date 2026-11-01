@@ -50,6 +50,30 @@ const ZH_HANS_MOTOR: TextosMotor = {
 
 // Solo texto con {marcadores}, sin funciones: así el diccionario se puede serializar.
 export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
+  // Letón (ADR 0002, D35): imperativo de segunda del plural; el botón en infinitivo, como VID EDS y los bancos.
+  lv: {
+    base: {
+      calcular: "Aprēķināt",
+      resultado: "Rezultāts",
+      si: "Jā",
+      no: "Nē",
+      sinResultado: "Šo rezultātu pagaidām nerādām.",
+      errores: {
+        requerido: "Aizpildiet šo lauku.",
+        "numero-invalido": "Ievadiet skaitli, piemēram, {ejemplo}.",
+        "entero-invalido": "Ievadiet veselu skaitli bez decimāldaļas.",
+        "menor-que-min": "Mazākā atļautā vērtība: {min}.",
+        "mayor-que-max": "Lielākā atļautā vērtība: {max}.",
+        "fecha-invalida": "Izvēlieties derīgu datumu.",
+        "hora-invalida": "Izvēlieties derīgu laiku.",
+        "opcion-invalida": "Izvēlieties vienu no iespējām.",
+        "region-invalida": "Izvēlieties reģionu.",
+        "calculo-fallido": "Ar šiem datiem aprēķināt neizdevās. Pārbaudiet vērtības un mēģiniet vēlreiz.",
+      },
+      milesAmbiguos: "Vai domājāt {sugerido}? Ievadiet skaitli bez {signos}.",
+      separadores: { punto: "punktiem", coma: "komatiem" },
+    },
+  },
   es: {
     base: {
       calcular: "Calcular",

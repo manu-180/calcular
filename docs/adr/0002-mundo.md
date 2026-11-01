@@ -1474,3 +1474,67 @@ la moneda de prueba es EUR y los textos hablan de «цент», no de «стот
 
 **Fuente.** Geist no trae cirílico: la tarjeta OG usa Noto Sans de respaldo, como uk y ru. La edición
 interna es `zz-bg` («Зеталандия», bg-001).
+
+### D35. Letón, para Letonia (2026-11-01)
+
+(D25 a D34 están en ramas sin mergear; esta entrada toma el D35 para no chocar al mergear.)
+
+`IDIOMAS` e `IDIOMAS_VENTA` suman `lv`. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed,
+afiliados, redes, «Tu sueldo en el mundo» (`alga-pasaule`), rankings (`valstu-reitings`), horas
+(`cik-stundas-jastrada`), calendario (`algas-kalendars`), sueldos reales (`realas-algas`), venta completa y las
+41 universales.
+
+**Registro.** Uno solo, el de los servicios del Estado: «jūs» e imperativo de 2.ª del plural («ievadiet»,
+«aprēķiniet», «izvēlieties»), botones cortos en infinitivo («Aprēķināt», «Kopēt saiti»), nunca «tu». Mercados
+con `trato: "usted"` y diccionario en `base`. Leído el 1/11/2026: vid.gov.lv usa el plural de cortesía e
+imperativos en -iet («izvērtējiet», «izvēlieties»), casi siempre con «Jūs» y «Jūsu» en mayúscula, aunque no de
+forma pareja. swedbank.lv/private/credit/loans/home confirma los botones en infinitivo («Aprēķināt»,
+«Aizpildīt pieteikumu»), pero su página comercial le habla de «tu» al cliente («Aizpildi pieteikumu», «Tev»)
+y reserva «Jūs» con mayúscula para algunas frases formales. Se sigue a VID y no a esa página. SEB y latvija.gov.lv
+no se leyeron. **Minúscula:** se escribe «jūs» y «jūsu» en minúscula salvo al inicio de oración. La mayúscula
+es la cortesía de una carta a una persona concreta y aquí el texto le habla a cualquiera; además da una sola
+regla que `reglas_idioma` puede hacer cumplir. Es una decisión, no algo leído en una norma. Se evitan participios
+y adjetivos con género sobre la persona («ievadījis», «ievadījusi»).
+
+**Plural.** `Intl.PluralRules("lv")` da one (1, 21, 31; no 11), other (2 a 9, 22 a 29, fracciones) y zero (0, 10
+a 20, 30...). La categoría zero mezcla dos casos: el 0 exacto va en genitivo plural («0 gadu») y 10, 11 o 20 en
+nominativo plural («10 gadi»). Por eso `formaLv` y `pluralLv(n, uno, otros, cero)` miran el 0 y no la categoría,
+y `FormasUnidad` suma el `cero` opcional que usa `nombreDeUnidad` en `formato.ts` (los demás idiomas no lo
+traen y no cambian): «1 gads», «2 gadi», «10 gadi», «21 gads», «0 gadu», «1,5 gadi». Excepción conocida: las
+horas del índice (`horas/ui/formato.ts`) salen del `style: "unit"` de Intl, que da «10 stundu» por CLDR; es
+correcto y se deja. Tras «pēc» y «pirms» el singular va en genitivo y el plural en dativo: «pēc 1 dienas», «pēc
+3 dienām».
+
+**Gramática del país.** Se declina y el lugar no lleva preposición. `GRAMATICA.lv`: `nombre` nominativo, `de`
+genitivo («Latvijas», «Amerikas Savienoto Valstu»), `en` locativo («Latvijā», «Vācijā», «Ēģiptē», «Vatikānā»,
+«Filipīnās», «Apvienotajos Arābu Emirātos»), `para` dativo («Latvijai», «Filipīnām»). `locijumiLv` deja los tres
+casos sueltos. Regla por terminación del último sustantivo (-a, -e, -as plural, -s masculino), tabla de adjetivos
+concordados («Apvienotajā Karalistē», «Ekvatoriālajā Gvinejā»), partes unidas con « un » declinadas por separado,
+sin cambios las palabras de delante («Saūda Arābijā») y lo que termina en otra letra (Peru, Haiti, Mali, Togo).
+Tabla para los compuestos que la regla no resuelve. Revisado con los nombres de Intl en lv. Como «X kalkulatori
+Latvijai» suena forzado, los títulos usan el locativo, y si la frase pide otro caso el país va en nominativo tras
+dos puntos. Los marcadores `{pais}` de venta no pasan por esta función: ahí va en nominativo entre paréntesis.
+
+**Formato.** Intl de lv-LV: coma decimal, «€» detrás, espacio de miles desde 5 cifras («1234,50 €», «25 000 €»,
+«1 234 567,25 €»), por el `minimumGroupingDigits` de CLDR; `parsearNumero` acepta también «1 234,50» (casos nuevos
+en `check_motor`). El porcentaje va sin espacio («21%»), como lo da Intl: `reglas_idioma` atrapa «21 %». Las fechas
+de Intl vienen en nominativo («2026. gada 1. novembris», «12. maijs»), y «līdz» o «no» pedirían otro caso: la fecha
+va siempre tras dos puntos («Spēkā no: ...», «līdz dienai: ...»). Posiciones con el punto del ordinal («27. vieta no
+41»). `inferir.ts` reconoce «gads», «gada», «gadu», «ikgadēj-» y «mēnes-», «ikmēnes-». Comillas „ “: el uso letón
+trae también „ ” y « », y las páginas leídas no son parejas; se elige una sola forma, la misma de lt y cs, para que la
+regla sea verificable. El subconjunto `latin-ext` de Geist ya está desde el checo.
+
+**Vocabulario y slugs.** alga, bruto alga, neto alga, «uz rokas», IIN, VSAOI, PVN, mājokļa kredīts, procenti, procentu
+likme, ikmēneša maksājums. Slugs ASCII sin diacríticos: `kredita-kalkulators`, `pvn-kalkulators`,
+`majokla-kredita-kalkulators`, `kmi-kalkulators`, etc. `algas-kalkulators` queda libre para la local del país. En
+mundo y rankings va «ienākuma nodoklis» y no IIN, porque cubren muchos países. Universales neutrales de país, con
+la oración de salud donde corresponde. Las secciones van por `src/motor/secciones.ts`, sin carpetas.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`): pronombres y posesivos de «tu», imperativos del singular de un
+formulario, formas de 2.ª del singular, «Jūs» con mayúscula a mitad de oración, comillas que no son „ “, «%» con
+espacio y palabras frecuentes sin diacríticos. Se dejaron fuera a propósito las formas que coinciden con otra cosa:
+«aprēķini» (plural de «aprēķins»), «pārbaudi» y «norādi» (acusativos), «maksā», «saņem», «atver» (3.ª persona).
+
+**Prueba.** `zz-lv` (Zetalande, `lv-001`) es una edición interna. `check_universales` prueba lv-LV con EUR,
+«Sentvinsenta un Grenadīnas» por el nombre largo que se declina por partes y «Apvienotie Arābu Emirāti» por el plural
+con adjetivo. El texto no lo revisó un hablante nativo.

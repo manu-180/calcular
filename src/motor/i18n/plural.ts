@@ -142,3 +142,20 @@ export function formaSr(n: number | string, uno: string, pocos: string, muchos: 
 export function pluralSr(n: number | string, uno: string, pocos: string, muchos: string): string {
   return `${n} ${formaSr(n, uno, pocos, muchos)}`;
 }
+
+// Letón (ADR 0002, D35): Intl.PluralRules("lv") da one (1, 21, 31; no 11), other (2 a 9, 22 a 29, fracciones)
+// y zero (0, 10 a 20, 30...). Solo el cero real va en genitivo plural («0 gadu»): 10, 11 o 20 van en
+// nominativo plural como el resto («10 gadi»), así que la categoría zero no decide sola. Recibe number o
+// string porque check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
+const REGLAS_LV = new Intl.PluralRules("lv");
+
+export function formaLv(n: number | string, uno: string, otros: string, cero: string): string {
+  const v = Math.abs(Number(n));
+  if (v === 0) return cero;
+  return REGLAS_LV.select(v) === "one" ? uno : otros;
+}
+
+// El número y la palabra: «1 kalkulators», «3 kalkulatori», «10 kalkulatori», «21 kalkulators», «0 kalkulatoru».
+export function pluralLv(n: number | string, uno: string, otros: string, cero: string): string {
+  return `${n} ${formaLv(n, uno, otros, cero)}`;
+}

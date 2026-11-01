@@ -3383,7 +3383,111 @@ const bg: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Letón (ADR 0002, D35): impersonal, como el resto. {en} llega en locativo por GRAMATICA.lv («Latvijā») y
+// ya lleva mayúscula. {horas} sale de Intl («2 stundas», «10 stundu») y va tras dos puntos; {n} igual o
+// tras «kopā:». «cik» pide genitivo plural: «Cik darba stundu maksā».
+const lv: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Cik darba stundu tas maksā?",
+    seo: {
+      titulo: ["Cik darba stundu maksā iPhone: {en}", "Darba stundas par iPhone: {en}", "Cik darba stundu tas maksā?"],
+      tituloGlobal: ["Cik darba stundu maksā iPhone pasaulē", "Cik darba stundu tas maksā?"],
+      tituloProducto: ["Cik darba stundu maksā {producto}: {en}", "Darba stundas par {producto}: {en}", "Cik darba stundu maksā {producto}"],
+      tituloProductoGlobal: ["Cik darba stundu maksā {producto} pasaulē", "Cik darba stundu maksā {producto}"],
+      descripcion: "iPhone, MacBook vai Spotify, pārrēķināti darba stundās par minimālo algu ({en}), un salīdzinājums starp valstīm (kopā: {n}). Oficiālās cenas un katra skaitļa avots.",
+      descripcionGlobal: "iPhone, MacBook vai Spotify, pārrēķināti darba stundās par minimālo algu, un salīdzinājums starp valstīm (kopā: {n}). Oficiālās cenas un katra skaitļa avots.",
+      descripcionProducto: "{en} {producto}: {horas} darba par minimālo algu. Valstu reitings (kopā: {n}) ar oficiālo cenu un katra skaitļa avotu.",
+      descripcionProductoGlobal: "Cik darba stundu par minimālo algu maksā {producto}: salīdzinājums starp valstīm (kopā: {n}). Katra veikala oficiālā cena un katra skaitļa avots.",
+    },
+    ceja: "Indekss: {mes}",
+    h1: "Cik darba stundu tas maksā?",
+    h1Producto: "Cik darba stundu maksā {producto}?",
+    bajada: "Tā paša produkta oficiālā cena, pārrēķināta darba stundās par minimālo algu. Salīdzinājums starp valstīm (kopā: {n}).",
+    form: { producto: "Produkts", pais: "Valsts", porMes: "mēnesī" },
+    heroe: {
+      antes: "{en} {producto}:",
+      despues: "darba par minimālo algu",
+      despuesMes: "darba par minimālo algu katru mēnesi",
+      jornadaUno: "{n} darba diena pa 8 stundām",
+      jornadaOtras: "Darba dienas pa 8 stundām: {n}",
+      precio: "Oficiālā cena {precio}",
+      salario: "Minimālā alga {monto} stundā",
+      sinPrecio: "{en} šo produktu nepārdod neviens oficiāls veikals.",
+      mejor: "Vismazāk jāstrādā: {en}, {horas}.",
+      mejorPropio: "Nevienā indeksa valstī darba stundu nav vajadzīgs mazāk.",
+      puesto: "{p}. vieta no {total}",
+      escalaHoras: "Katrs lauciņš ir viena darba stunda",
+      escalaSemanas: "Katrs lauciņš ir viena 40 stundu darba nedēļa",
+      masDeUnAnio: "Vairāk nekā gads darba",
+    },
+    ranking: {
+      titulo: "Valsts pēc valsts",
+      bajada: "No mazākā stundu skaita līdz lielākajam. Katra cena ir ražotāja oficiālā cena attiecīgajā valstī.",
+      lista: "Valstis pēc darba stundām",
+      verTodos: "Rādīt visas valstis ({n})",
+      verMenos: "Rādīt mazāk",
+      elegido: "Izvēlēts",
+      sinPrecio: "Indeksa valstis bez datiem: {n}. Tajās šo produktu nepārdod neviens oficiāls veikals.",
+      horas: "Stundas",
+      precio: "Oficiālā cena",
+    },
+    compartir: {
+      titulo: "Kartīte, ar kuru varat dalīties",
+      bajada: "Tajā ir tikai publiski dati: oficiālā cena un darba stundas par minimālo algu.",
+      boton: "Kopīgot kartīti",
+      descargar: "Lejupielādēt Stories formātā",
+      copiado: "Saite nokopēta.",
+      compartido: "Nosūtīts.",
+      error: "Kopīgot pašlaik neizdevās.",
+      texto: "{en} {producto}: {horas} darba par minimālo algu. Un citās valstīs?",
+      alt: "Kartītes priekšskatījums",
+    },
+    metodo: {
+      titulo: "Kā mēs rēķinām",
+      estimacion: "Stundas = oficiālā cena ÷ minimālā stundas likme. Tas ir oficiālo cenu salīdzinājums, nevis piedāvājums pirkt.",
+      supuestos: [
+        "Cena ir lētākās versijas cenrāža cena ražotāja oficiālajā veikalā, ņemta no katras valsts lapas.",
+        "Spotify Premium ir individuālais viena mēneša plāns, bez sākuma akcijām.",
+        "Minimālā alga ir šodien spēkā esošais vispārējais apmērs pieaugušam darbiniekam ar pilnu darba laiku. Ja apmēri pēc nozares vai reģiona ir vairāki, ņem galvenā reģiona mazumtirdzniecības apmēru.",
+        "Ja likums nosaka mēneša vai dienas minimumu, to pārrēķina stundās pēc attiecīgās valsts likumā noteiktā nedēļas darba laika.",
+        "Spānija un Portugāle minimālo algu maksā 14 reizes gadā: summu sadala 12 mēnešos, kā to dara Eurostat.",
+        "Ja veikals cenu norāda ASV dolāros, to pārrēķina pēc attiecīgās valsts oficiālā kursa.",
+        "Darba diena katrā valstī ilgst 8 stundas, lai dienas varētu salīdzināt.",
+      ],
+      fuentesTitulo: "Katra skaitļa avots",
+      fuentesBajada: "Katra valsts ar minimālo algu, nedēļas darba laiku un veikala cenām, pie katra datu punkta norādīts ņemšanas datums.",
+      salario: "Minimālā alga",
+      jornada: "Nedēļas darba laiks",
+      precio: "Cena",
+      cambio: "Valūtas kurss",
+      consultado: "Ņemts: {fecha}",
+      verificado: "Pārbaudīts: {fecha}",
+      verFuente: "Skatīt avotu",
+      sello: "Cenu ņemšanas periods: {desde} līdz {hasta}. Cena, kas vecāka par 120 dienām, vairs netiek rādīta.",
+      conversion: {
+        hora: "Likums nosaka stundas likmi.",
+        mes: "Mēneša summa × 12 ÷ 52 nedēļas ÷ {h} st. nedēļā.",
+        mesPagas: "Mēneša summa × {p} (izmaksas gadā) ÷ 52 nedēļas ÷ {h} st. nedēļā.",
+        anio: "Gada summa ÷ 52 nedēļas ÷ {h} st. nedēļā.",
+        semana: "Nedēļas summa ÷ {h} st.",
+        dia: "Dienas summa ÷ {h} st. darba dienā.",
+        diaPagado: "Dienas summa × {d} (apmaksātās dienas) ÷ {h} st. nedēļā.",
+        divisor: "Mēneša summa ÷ {d}, likumā noteiktais stundu dalītājs.",
+      },
+    },
+    faqTitulo: "Biežāk uzdotie jautājumi",
+    faq: [
+      { pregunta: "Kā tiek rēķinātas stundas?", respuesta: "Produkta oficiālo cenu dala ar attiecīgās valsts minimālo stundas likmi. Ja likums nosaka mēneša vai dienas minimumu, to pārrēķina stundās pēc attiecīgās valsts likumā noteiktā nedēļas darba laika." },
+      { pregunta: "Kāpēc tieši minimālā alga?", respuesta: "To likums nosaka gandrīz katrā valstī, un to var pārbaudīt oficiālā avotā. Vidējo algu katra valsts mēra savādāk, tāpēc to tik droši salīdzināt nevarētu." },
+      { pregunta: "Vai cenā ir iekļauts nodoklis?", respuesta: "Tā ir cenrāža cena, ko rāda oficiālais veikals katrā valstī. Amerikas Savienotajās Valstīs un Kanādā tajā nav iekļauts pārdošanas nodoklis, citās valstīs veikals nodokļus var pieskaitīt tikai norēķinoties." },
+      { pregunta: "Kāpēc šeit nav kādas valsts?", respuesta: "Indeksā iekļautas tikai valstis ar pārbaudītu spēkā esošu minimālo algu un oficiālā veikala cenu. Ja produkta nav oficiālajā interneta veikalā, datu nav. Tālākpārdevēju cenas netiek izmantotas." },
+      { pregunta: "Cik bieži dati tiek atjaunināti?", respuesta: "Cenas ņem no katra veikala, un pēc 120 dienām tās noveco: vecāka cena vairs netiek rādīta. Minimālo algu ņem no katras valsts oficiālajiem datiem, un tā mainās, kad mainās likums." },
+    ],
+    og: { de: "darba par minimālo algu", deMes: "darba par minimālo algu mēnesī", generica: "Cik darba stundu maksā {producto}?", genericaBajada: "Oficiālā cena darba stundās par minimālo algu. Valstu kopā: {n}", menos: "Vismazāk stundu", cta: "Visas valstis:" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, lv };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

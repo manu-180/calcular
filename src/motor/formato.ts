@@ -110,7 +110,7 @@ function nombreDeUnidad(n: number, unidad: string, locale: string): string | nul
   // Dual: el árabe trae además "pocos" y "muchos" (FormasAr); el hebreo, solo uno, dos y otros (FormasHe).
   if ("dos" in formas) return "pocos" in formas ? formaAr(n, formas) : formaHe(n, formas);
   const categoria = new Intl.PluralRules(locale).select(n);
-  const forma = categoria === "one" ? formas.uno : categoria === "few" ? (formas.pocos ?? formas.otros) : categoria === "many" ? (formas.muchos ?? formas.otros) : formas.otros;
+  const forma = n === 0 && formas.cero ? formas.cero : categoria === "one" ? formas.uno : categoria === "few" ? (formas.pocos ?? formas.otros) : categoria === "many" ? (formas.muchos ?? formas.otros) : formas.otros;
   const pegada = UNIDAD_PEGADA.has(idiomaDeLocale(locale) ?? "es");
   return `{n}${pegada ? "" : " "}${forma}`;
 }
