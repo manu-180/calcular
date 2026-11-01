@@ -304,6 +304,17 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Forrás",
     },
   },
+  // Búlgaro (ADR 0002, D24): el botón es «Изчислете».
+  bg: {
+    base: {
+      datos: "Вашите данни",
+      resultado: "Резултат",
+      vacio: "Въведете данните и натиснете „Изчислете“, за да видите резултата.",
+      sinResultado: "В момента не показваме този резултат.",
+      avisos: { info: "Добре е да знаете", cautela: "Обърнете внимание", bloquea: "Защо не показваме резултата" },
+      fuenteDelAviso: "Източник",
+    },
+  },
   he: {
     base: {
       datos: "הנתונים שלכם",
@@ -312,6 +323,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       sinResultado: "התוצאה הזו לא מוצגת כרגע.",
       avisos: { info: "כדאי לדעת", cautela: "שימו לב", bloquea: "למה התוצאה לא מוצגת" },
       fuenteDelAviso: "מקור",
+    },
+  },
+  sr: {
+    base: {
+      datos: "Vaši podaci",
+      resultado: "Rezultat",
+      vacio: "Unesite podatke i kliknite na „Izračunaj“. Rezultat će se pojaviti ovde.",
+      sinResultado: "Ovaj rezultat za sada ne prikazujemo.",
+      avisos: { info: "Dobro je da znate", cautela: "Pažnja", bloquea: "Zašto ne prikazujemo rezultat" },
+      fuenteDelAviso: "Izvor",
     },
   },
 };

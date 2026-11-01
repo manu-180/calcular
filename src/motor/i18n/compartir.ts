@@ -512,6 +512,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Nézd meg, mennyi maradna nettóban több mint ${n} országban`,
     },
   },
+  bg: {
+    base: {
+      boton: "Споделяне",
+      botonAria: "Споделяне на този калкулатор",
+      menuTitulo: "Споделяне чрез",
+      copiar: "Копиране на връзката",
+      copiado: "Връзката е копирана",
+      compartido: "Споделено",
+      errorCorto: "Копирането не успя",
+      errorAyuda: "Не успяхме да копираме връзката. Копирайте я от адресната лента на браузъра.",
+      nuevaPestana: "отваря се в нов раздел",
+      mensaje: (nombre) => `${nombre}. Безплатно, изчислението отнема минута.`,
+      puenteIntro: "А в други държави?",
+      puenteEnlace: (n) => `Вижте колко нето бихте получавали в над ${n} държави`,
+    },
+  },
   // Hebreo (ADR 0002, D22): plural inclusivo donde se le habla a la persona.
   he: {
     base: {
@@ -527,6 +543,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       mensaje: (nombre) => `${nombre}. בחינם, והחישוב לוקח דקה.`,
       puenteIntro: "ובמדינות אחרות?",
       puenteEnlace: (n) => `בדקו כמה שכר נטו הייתם מקבלים ביותר מ-${n} מדינות`,
+    },
+  },
+  // Serbio en latinica y ekavski (ADR 0002, D23): «vi» en minúscula; botones en la forma corta.
+  sr: {
+    base: {
+      boton: "Podeli",
+      botonAria: "Podeli ovaj kalkulator",
+      menuTitulo: "Podeli preko",
+      copiar: "Kopiraj link",
+      copiado: "Link je kopiran",
+      compartido: "Poslato",
+      errorCorto: "Kopiranje nije uspelo",
+      errorAyuda: "Link nije mogao da se kopira. Kopirajte ga iz adresne trake pregledača.",
+      nuevaPestana: "otvara se u novoj kartici",
+      mensaje: (nombre) => `${nombre}. Besplatno, obračun traje minut.`,
+      puenteIntro: "A u drugim zemljama?",
+      puenteEnlace: (n) => `Pogledajte koliko bi vam neto ostalo u više od ${n} zemalja`,
     },
   },
 };

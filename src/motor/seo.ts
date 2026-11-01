@@ -38,9 +38,9 @@ export function urlImagenOg(mercado: CodigoMercado, slug?: string, version?: Fec
 }
 
 // og:locale usa guion bajo y región de dos letras. es-419 (Latinoamérica) no tiene una: Facebook
-// usa es_LA para ese caso.
+// usa es_LA para ese caso. La escritura (sr-Latn-RS) no va en og:locale: queda sr_RS.
 export function ogLocale(locale: string): string {
-  const [idioma, region] = etiquetaIdioma(locale).split("-");
+  const [idioma, region] = etiquetaIdioma(locale).split("-").filter((p, i) => i === 0 || !/^[A-Za-z]{4}$/.test(p));
   if (!region) return idioma;
   return /^\d+$/.test(region) ? `${idioma}_LA` : `${idioma}_${region.toUpperCase()}`;
 }

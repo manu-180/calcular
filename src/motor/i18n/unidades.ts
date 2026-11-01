@@ -14,6 +14,8 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // (5 let) y "many" las fracciones, que van en genitivo singular (1,5 roku): por eso en cs "muchos" lleva
 // la forma de fracción. Un idioma con dual trae sus formas con {n} donde va el número: el árabe
 // FormasAr y el hebreo FormasHe (uno, dual y plural: «יום אחד», «יומיים», «{n} ימים»).
+// En serbio "uno" es 1, 21, 31... (no 11), "pocos" 2 a 4, 22 a 24... (no 12 a 14) y "otros" el resto,
+// fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
 export interface FormasUnidad {
   uno: string;
   otros: string;
@@ -97,7 +99,17 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   el: { dias: { uno: "ημέρα", otros: "ημέρες" }, semanas: { uno: "εβδομάδα", otros: "εβδομάδες" }, horas: { uno: "ώρα", otros: "ώρες" }, meses: { uno: "μήνας", otros: "μήνες" }, anios: { uno: "έτος", otros: "έτη" } },
   // El húngaro no pone plural después de un número («3 nap», «1,5 év»): las dos formas son iguales.
   hu: { dias: { uno: "nap", otros: "nap" }, semanas: { uno: "hét", otros: "hét" }, horas: { uno: "óra", otros: "óra" }, meses: { uno: "hónap", otros: "hónap" }, anios: { uno: "év", otros: "év" } },
+  // Búlgaro: «час» y «месец» van en forma numérica detrás de un número («5 часа», «3 месеца»).
+  bg: { dias: { uno: "ден", otros: "дни" }, semanas: { uno: "седмица", otros: "седмици" }, horas: { uno: "час", otros: "часа" }, meses: { uno: "месец", otros: "месеца" }, anios: { uno: "година", otros: "години" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
+  // Serbio en latinica y ekavski (ADR 0002, D23).
+  sr: {
+    dias: { uno: "dan", pocos: "dana", otros: "dana" },
+    semanas: { uno: "nedelja", pocos: "nedelje", otros: "nedelja" },
+    horas: { uno: "sat", pocos: "sata", otros: "sati" },
+    meses: { uno: "mesec", pocos: "meseca", otros: "meseci" },
+    anios: { uno: "godina", pocos: "godine", otros: "godina" },
+  },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

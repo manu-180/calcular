@@ -362,6 +362,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "új lapon nyílik meg",
     },
   },
+  bg: {
+    base: {
+      titulo: "Местите се в чужбина или плащате от друга държава?",
+      etiqueta: "Партньорски връзки",
+      socios: {
+        wise: "Многовалутна сметка, с която получавате и изпращате пари между държави по средния курс и с предварително известна такса.",
+        deel: "Договори и плащания за хора, които работят от една държава за фирма в друга.",
+      },
+      nota: "Ако откриете сметка през тези връзки, сайтът може да получи комисиона. За Вас това не струва нищо.",
+      nuevaPestana: "отваря се в нов раздел",
+    },
+  },
   // Hebreo (ADR 0002, D22), impersonal como los demás.
   he: {
     base: {
@@ -373,6 +385,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       },
       nota: "אם נפתח חשבון דרך הקישורים האלה, האתר עשוי לקבל עמלה. מי שנרשם לא משלם על כך יותר.",
       nuevaPestana: "נפתח בכרטיסייה חדשה",
+    },
+  },
+  // Serbio en latinica y ekavski (ADR 0002, D23): «vi» en minúscula.
+  sr: {
+    base: {
+      titulo: "Selite se u inostranstvo ili plaćate iz druge zemlje?",
+      etiqueta: "Partnerski linkovi",
+      socios: {
+        wise: "Račun u više valuta za primanje i slanje novca između zemalja po srednjem tržišnom kursu, sa naknadom koju vidite unapred.",
+        deel: "Ugovori i isplate za one koji iz jedne zemlje rade za firmu iz druge.",
+      },
+      nota: "Ako preko ovih linkova otvorite račun, sajt može da dobije proviziju. Vi zbog toga ne plaćate ništa više.",
+      nuevaPestana: "otvara se u novoj kartici",
     },
   },
 };

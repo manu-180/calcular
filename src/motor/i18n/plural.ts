@@ -1,3 +1,19 @@
+// Búlgaro (ADR 0002, D24): Intl.PluralRules("bg") tiene dos categorías, «one» (solo el 1) y «other»
+// (0, 2, 21, las fracciones). Los sustantivos masculinos que no son de persona van en forma numérica
+// detrás de un número («2 калкулатора», «5 часа», «3 месеца»), así que «otros» es esa forma y no el
+// plural común («калкулатори»). Recibe number o string porque check_i18n llama a las funciones de los
+// diccionarios con argumentos de muestra.
+const REGLAS_BG = new Intl.PluralRules("bg");
+
+export function formaBg(n: number | string, uno: string, otros: string): string {
+  return REGLAS_BG.select(Math.abs(Number(n))) === "one" ? uno : otros;
+}
+
+// El número y la palabra: «1 калкулатор», «2 калкулатора», «40 държави».
+export function pluralBg(n: number | string, uno: string, otros: string): string {
+  return `${n} ${formaBg(n, uno, otros)}`;
+}
+
 // Polaco: 1 kalkulator, 2 a 4 kalkulatory (salvo 12 a 14), el resto kalkulatorów. Recibe number o
 // string porque check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
 export function pluralPl(n: number | string, uno: string, pocos: string, muchos: string): string {
@@ -108,4 +124,21 @@ export function formaEl(n: number | string, uno: string, otros: string): string 
 // El número y la palabra: «1 αριθμομηχανή», «5 αριθμομηχανές».
 export function pluralEl(n: number | string, uno: string, otros: string): string {
   return `${n} ${formaEl(n, uno, otros)}`;
+}
+// Serbio (ADR 0002, D23): las categorías de Intl.PluralRules("sr"). «one» es 1, 21, 31, 101... (no
+// 11), «few» 2 a 4, 22 a 24... (no 12 a 14) y «other» todo lo demás, también 0 y las fracciones
+// («1,5 godina»). Recibe number o string porque check_i18n llama a las funciones de los diccionarios
+// con argumentos de muestra.
+const REGLAS_SR = new Intl.PluralRules("sr");
+
+export function formaSr(n: number | string, uno: string, pocos: string, muchos: string): string {
+  const categoria = REGLAS_SR.select(Math.abs(Number(n)));
+  if (categoria === "one") return uno;
+  if (categoria === "few") return pocos;
+  return muchos;
+}
+
+// El número y la palabra: «1 kalkulator», «3 kalkulatora», «5 kalkulatora», «21 dan», «22 dana».
+export function pluralSr(n: number | string, uno: string, pocos: string, muchos: string): string {
+  return `${n} ${formaSr(n, uno, pocos, muchos)}`;
 }

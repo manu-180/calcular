@@ -353,7 +353,7 @@ function revisarTexto(origen: string, idioma: Idioma, trato: Trato, s: string, l
   if (!s.trim()) fallo(`${origen}: texto vacío`);
   if (RAYA.test(s)) fallo(`${origen}: raya en «${s}»`);
   if (EMOJI.test(s)) fallo(`${origen}: emoji en «${s}»`);
-  if (idioma === "ja" || idioma === "ko" || idioma === "zh" || idioma === "ar" || idioma === "id" || idioma === "tr" || idioma === "bn" || idioma === "th" || idioma === "uk" || idioma === "uz" || idioma === "ru" || idioma === "ro" || idioma === "cs" || idioma === "el" || idioma === "hu" || idioma === "he") for (const p of problemasDeTexto(s, idioma, trato, locale)) if (!(carta && p.startsWith("합니다체"))) fallo(`${origen}: ${p} en «${s.slice(0, 60)}»`);
+  if (idioma === "ja" || idioma === "ko" || idioma === "zh" || idioma === "sr" || idioma === "ar" || idioma === "id" || idioma === "tr" || idioma === "bn" || idioma === "th" || idioma === "uk" || idioma === "uz" || idioma === "ru" || idioma === "ro" || idioma === "cs" || idioma === "el" || idioma === "hu" || idioma === "he" || idioma === "bg") for (const p of problemasDeTexto(s, idioma, trato, locale)) if (!(carta && p.startsWith("합니다체"))) fallo(`${origen}: ${p} en «${s.slice(0, 60)}»`);
   if (idioma !== "es") return;
   if (trato !== "vos" && VOSEO.test(s)) fallo(`${origen} (${trato}): voseo «${VOSEO.exec(s)![0]}» en «${s}»`);
   if (trato === "usted" && TUTEO.test(s)) fallo(`${origen} (usted): tuteo «${TUTEO.exec(s)![0]}» en «${s}»`);
@@ -367,7 +367,7 @@ function textosDe(valor: unknown, salida: string[] = []): string[] {
   return salida;
 }
 
-const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"], pl: ["tu"], sv: ["tu"], da: ["tu"], nb: ["tu"], fi: ["tu"], ar: ["usted"], id: ["usted"], tr: ["usted"], bn: ["usted"], th: ["usted"], uk: ["usted"], uz: ["usted"], ru: ["usted"], ro: ["usted"], cs: ["usted"], el: ["usted"], hu: ["tu"], he: ["usted"] };
+const TRATOS: Record<IdiomaVenta, readonly Trato[]> = { es: ["tu", "usted", "vos"], pt: ["tu"], en: ["tu"], fr: ["tu", "usted"], de: ["tu", "usted"], it: ["tu"], nl: ["tu"], ja: ["usted"], ko: ["usted"], zh: ["usted"], pl: ["tu"], sv: ["tu"], da: ["tu"], nb: ["tu"], fi: ["tu"], ar: ["usted"], id: ["usted"], tr: ["usted"], bn: ["usted"], th: ["usted"], uk: ["usted"], uz: ["usted"], ru: ["usted"], ro: ["usted"], cs: ["usted"], el: ["usted"], hu: ["tu"], he: ["usted"], sr: ["usted"], bg: ["usted"] };
 
 // Cada diccionario que se revisa, con el locale de su escritura (el chino simplificado es aparte).
 const REVISADOS: readonly { nombre: string; idioma: IdiomaVenta; locale?: string; d: DiccionarioVenta }[] = [
@@ -432,14 +432,14 @@ function checkTextos() {
       prods.map((p) => [p.titulo, p.paraQuien, p.descripcion, precioUSD(p.precioCentavos, m.locale)]),
     ]).filter((s) => !/^\s*$/.test(s));
     for (const s of textos) {
-      revisarTexto(`textos ${m.codigo}`, m.idioma, m.trato, s);
+      revisarTexto(`textos ${m.codigo}`, m.idioma, m.trato, s, m.locale);
       if (PLANTILLA.test(s)) fallo(`textos ${m.codigo}: marca de plantilla en «${s}»`);
       revisados++;
     }
     for (const p of prods) {
-      const html = entregaIntlHtml({ producto: p, idioma: m.idioma, trato: m.trato, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" }).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
-      const asunto = asuntoEntregaIntl(p, m.idioma, m.trato);
-      revisarTexto(`mail ${p.id}`, m.idioma, m.trato, html);
+      const html = entregaIntlHtml({ producto: p, idioma: m.idioma, trato: m.trato, locale: m.locale, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" }).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+      const asunto = asuntoEntregaIntl(p, m.idioma, m.trato, m.locale);
+      revisarTexto(`mail ${p.id}`, m.idioma, m.trato, html, m.locale);
       if (PLANTILLA.test(html) || PLANTILLA.test(asunto)) fallo(`mail ${p.id}: marca de plantilla sin llenar`);
       revisados++;
     }

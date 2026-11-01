@@ -303,6 +303,41 @@ const ko: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}의`, en: (p) => `
 // 的 y 在 se escriben igual en las dos escrituras; «para» se deja suelto porque 適用於/适用于 no.
 const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `在${p}`, para: (p) => p };
 
+// Búlgaro (ADR 0002, D24): no hay casos, pero sí artículo definido pospuesto. Los nombres propios de
+// país van sin artículo («България», «Германия»); los que son una frase con sustantivo común
+// («Съединени щати», «Доминиканска република», «Бахамски острови») o un plural («Филипини»,
+// «Малдиви») lo llevan en la primera palabra («Съединените щати», «Доминиканската република»,
+// «Филипините»). `de(p)` = «на» + nombre; `en(p)` = «в» + nombre, «във» delante de в o ф («във
+// Франция», «във Виетнам») y «на» en los archipiélagos («на Малдивите», «на Бахамските острови»);
+// `para(p)` = «за» + nombre. Los nombres llegan como los escribe Intl.DisplayNames en bg.
+const bg: GramaticaPais = (() => {
+  const SUSTANTIVO_COMUN = new Set(["щати", "емирства", "република", "острови", "кралство", "федерация"]);
+  const PLURALES = new Set(["Филипини", "Малдиви", "Сейшели", "Бахами", "Комори"]);
+  const ARCHIPIELAGOS = new Set(["Малдиви", "Сейшели", "Бахами", "Комори"]);
+  const YA_ARTICULADO = /(?:те|та|то|ят)$/;
+  const articular = (w: string): string => {
+    if (YA_ARTICULADO.test(w)) return w;
+    if (/и$/.test(w)) return `${w}те`;
+    if (/[ая]$/.test(w)) return `${w}та`;
+    if (/о$/.test(w)) return `${w}то`;
+    return w;
+  };
+  const nombre = (p: string): string => {
+    if (PLURALES.has(p)) return `${p}те`;
+    const palabras = p.split(" ");
+    if (palabras.length >= 2 && !/[,(]/.test(p) && SUSTANTIVO_COMUN.has(palabras[palabras.length - 1])) {
+      return [articular(palabras[0]), ...palabras.slice(1)].join(" ");
+    }
+    return p;
+  };
+  const en = (p: string): string => {
+    const n = nombre(p);
+    if (ARCHIPIELAGOS.has(p) || / острови$/.test(p)) return `на ${n}`;
+    return `${/^[ВвФф]/.test(n) ? "във" : "в"} ${n}`;
+  };
+  return { nombre, de: (p) => `на ${nombre(p)}`, en, para: (p) => `за ${nombre(p)}` };
+})();
+
 // Sueco, danés y noruego no declinan el nombre del país: «i Sverige», «för Sverige».
 const sv: GramaticaPais = { nombre: (p) => p, de: (p) => `för ${p}`, en: (p) => `i ${p}`, para: (p) => `för ${p}` };
 const da: GramaticaPais = { nombre: (p) => p, de: (p) => `for ${p}`, en: (p) => `i ${p}`, para: (p) => `for ${p}` };
@@ -1163,4 +1198,144 @@ const he: GramaticaPais = {
   para: (p) => preposicionHe("ל", p),
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he };
+// Serbio en latinica (ADR 0002, D23): el nombre del país se declina. `de(p)` da el genitivo suelto
+// («Srbije», «Crne Gore», «Sjedinjenih Država»), `en(p)` el lugar con su preposición («u Srbiji», «u
+// Crnoj Gori», «u Francuskoj», «na Kipru», «na Filipinima») y `para(p)` «za» + acusativo («za Srbiju»,
+// «za Crnu Goru», «za Japan»). Los nombres llegan como los escribe Intl.DisplayNames en sr-Latn, así
+// que la regla cubre los de una palabra por terminación (-a: -e/-i/-u; los adjetivos sustantivados en
+// -ska, -čka, -ška como Francuska o Nemačka: -e/-oj/-u; consonante, -o, -e y -u: -a/-u; -i del
+// singular, como Mali o Haiti: -ja/-ju) y los compuestos (adjetivos delante, que concuerdan con el
+// sustantivo; partes unidas con « i » por separado; lo que va entre paréntesis o tras « - » queda
+// igual; en un guion se declina la primera parte). La tabla lleva los irregulares (a móvil como
+// Egipat o Kipar, Jamajka con sibilarización, nombres con el núcleo delante); CON_NA, los países e
+// islas que van con «na». `padezSr` deja los tres casos y la preposición sueltos.
+export interface PadeziSr {
+  genitiv: string;
+  lokativ: string;
+  akuzativ: string;
+  // «u» o «na»
+  predlog: string;
+}
+
+export const padezSr: (pais: string) => PadeziSr = (() => {
+  // [genitivo, locativo, acusativo] sin preposición.
+  type Formas = readonly [string, string, string];
+  const TABLA: Readonly<Record<string, Formas>> = {
+    Egipat: ["Egipta", "Egiptu", "Egipat"],
+    Kipar: ["Kipra", "Kipru", "Kipar"],
+    Jamajka: ["Jamajke", "Jamajci", "Jamajku"],
+    Kostarika: ["Kostarike", "Kostariki", "Kostariku"],
+    "Papua Nova Gvineja": ["Papue Nove Gvineje", "Papui Novoj Gvineji", "Papuu Novu Gvineju"],
+    "Burkina Faso": ["Burkine Faso", "Burkini Faso", "Burkinu Faso"],
+    "Obala Slonovače": ["Obale Slonovače", "Obali Slonovače", "Obalu Slonovače"],
+    "Sao Tome i Principe": ["Sao Tomea i Principa", "Sao Tomeu i Principu", "Sao Tome i Principe"],
+    "Timor-Leste": ["Timor-Leste", "Timor-Leste", "Timor-Leste"],
+    "SAR Hongkong": ["SAR Hongkong", "SAR Hongkong", "SAR Hongkong"],
+    "SAR Makao": ["SAR Makao", "SAR Makao", "SAR Makao"],
+    "Tristan da Kunja": ["Tristan da Kunje", "Tristan da Kunji", "Tristan da Kunju"],
+    "Dijego Garsija": ["Dijega Garsije", "Dijegu Garsiji", "Dijega Garsiju"],
+    "Kokosova (Kilingova) Ostrva": ["Kokosovih (Kilingovih) Ostrva", "Kokosovim (Kilingovim) Ostrvima", "Kokosova (Kilingova) Ostrva"],
+    "Britanska teritorija Indijskog okeana": ["Britanske teritorije Indijskog okeana", "Britanskoj teritoriji Indijskog okeana", "Britansku teritoriju Indijskog okeana"],
+    "Udaljena ostrva SAD": ["Udaljenih ostrva SAD", "Udaljenim ostrvima SAD", "Udaljena ostrva SAD"],
+  };
+  const CON_NA = new Set([
+    "Kipar", "Malta", "Kuba", "Island", "Jamajka", "Filipini", "Madagaskar", "Novi Zeland", "Šri Lanka", "Tajvan",
+    "Bahami", "Maldivi", "Sejšeli", "Mauricijus", "Barbados", "Haiti", "Fidži", "Bermudi", "Dominika", "Grenada",
+    "Trinidad i Tobago", "Antigva i Barbuda", "Sveta Lucija", "Sent Vinsent i Grenadini", "Sent Kits i Nevis",
+    "Sao Tome i Principe", "Aruba", "Tonga", "Samoa", "Američka Samoa", "Kosovo", "Grenland", "Portoriko", "Martinik",
+    "Gvadelup", "Reinion", "Nauru", "Tuvalu", "Palau", "Vanuatu", "Kiribati", "Guam", "Kurasao", "Majot", "Sveta Jelena",
+    "Sveti Bartolomej", "Sveti Martin", "Gernzi", "Džerzi", "Antarktik", "Svalbard i Jan Majen", "Tokelau", "Niue",
+    "Sark", "Pitkern", "Monserat", "Angvila", "Tristan da Kunja",
+    "Dijego Garsija", "Palestinske teritorije", "Sen Pjer i Mikelon", "Valis i Futuna",
+  ]);
+  // Sustantivos plurales: masculinos en -i, femeninos en -e y neutros en -a.
+  const PLURAL_M = new Set(["Filipini", "Bahami", "Maldivi", "Bermudi", "Sejšeli", "Grenadini", "Emirati"]);
+  const PLURAL_F = new Set(["Države", "teritorije", "Teritorije"]);
+  const PLURAL_N = new Set(["Ostrva", "ostrva"]);
+  const esPlural = (w: string) => PLURAL_M.has(w) || PLURAL_F.has(w) || PLURAL_N.has(w);
+  const sustantivo = (w: string): Formas => {
+    if (TABLA[w]) return TABLA[w];
+    const guion = w.indexOf("-");
+    if (guion > 0) {
+      const [g, l, a] = sustantivo(w.slice(0, guion));
+      const resto = w.slice(guion);
+      return [g + resto, l + resto, a + resto];
+    }
+    if (/^[A-ZČĆŠŽĐ]{2,}$/.test(w)) return [w, w, w];
+    const raiz = w.slice(0, -1);
+    if (PLURAL_M.has(w)) return [`${raiz}a`, `${raiz}ima`, `${raiz}e`];
+    if (PLURAL_F.has(w)) return [`${raiz}a`, `${raiz}ama`, w];
+    if (PLURAL_N.has(w)) return [w, `${raiz}ima`, w];
+    if (w === "Republika") return ["Republike", "Republici", "Republiku"];
+    // Adjetivo sustantivado (Francuska, Nemačka, Hrvatska, Češka): se declina como adjetivo.
+    if (/(?:sk|čk|šk|ck)a$/.test(w)) return [`${raiz}e`, `${raiz}oj`, `${raiz}u`];
+    if (/a$/.test(w)) return [`${raiz}e`, `${raiz}i`, `${raiz}u`];
+    // Masculino en -i del singular (Mali, Haiti, Malavi, Burundi): Malija, u Maliju.
+    if (/i$/.test(w)) return [`${w}ja`, `${w}ju`, w];
+    // -o tras vocal (Kurasao): Kurasaoa, na Kurasaou.
+    if (/[aeiou]o$/.test(w)) return [`${w}a`, `${w}u`, w];
+    // -o (Maroko, Meksiko, Kosovo, Ostrvo): Maroka, u Maroku.
+    if (/o$/.test(w)) return [`${raiz}a`, `${raiz}u`, w];
+    // Consonante, -e y -u (Brazil, Zimbabve, Peru): Brazila, u Brazilu; Zimbabvea; Perua.
+    return [`${w}a`, `${w}u`, w];
+  };
+  // Un adjetivo delante del sustantivo, según el número del sustantivo. Lo que no termina como
+  // adjetivo (Sent, San, Sao, Šri, Sijera) queda igual.
+  const ADJETIVO = /(?:sk|čk|šk|ck|n|t|v|j|l|r|d|k)[aoie]$/;
+  const INVARIABLES = new Set(["Sent", "Sen", "San", "Sao", "Šri", "Sijera", "Kot", "SAR", "da"]);
+  const adjetivo = (w: string, plural: boolean): Formas => {
+    if (INVARIABLES.has(w) || !ADJETIVO.test(w)) return [w, w, w];
+    const r = w.slice(0, -1);
+    if (plural) return [`${r}ih`, `${r}im`, /i$/.test(w) ? `${r}e` : w];
+    if (/a$/.test(w)) return [`${r}e`, `${r}oj`, `${r}u`];
+    if (/[io]$/.test(w)) return [`${r}og`, `${r}om`, w];
+    return [w, w, w];
+  };
+  const unir = (partes: readonly Formas[], sep: string): Formas => [
+    partes.map((f) => f[0]).join(sep),
+    partes.map((f) => f[1]).join(sep),
+    partes.map((f) => f[2]).join(sep),
+  ];
+  const frase = (p: string): Formas => {
+    const palabras = p.split(" ");
+    const plural = esPlural(palabras[palabras.length - 1]);
+    return unir(palabras.map((w, i) => (i === palabras.length - 1 ? sustantivo(w) : adjetivo(w, plural))), " ");
+  };
+  const formas = (p: string): Formas => {
+    if (TABLA[p]) return TABLA[p];
+    for (const sep of [" - ", " ("]) {
+      const i = p.indexOf(sep);
+      if (i > 0) {
+        const [g, l, a] = formas(p.slice(0, i));
+        return [g + p.slice(i), l + p.slice(i), a + p.slice(i)];
+      }
+    }
+    // Núcleo delante: «Ostrvo Man», «Ostrva Turks i Kaikos», «Ostrvo Herd i Mekdonaldova ostrva».
+    const [primera, ...resto] = p.split(" ");
+    if (resto.length && /^Ostrv[oa]$/.test(primera)) {
+      const [g, l, a] = primera === "Ostrvo" ? ["Ostrva", "Ostrvu", "Ostrvo"] : sustantivo(primera);
+      const cola = ` ${resto.join(" ")}`;
+      return [g + cola, l + cola, a + cola];
+    }
+    if (p.includes(" i ")) return unir(p.split(" i ").map(formas), " i ");
+    return frase(p);
+  };
+  return (p: string): PadeziSr => {
+    const [genitiv, lokativ, akuzativ] = formas(p);
+    const base = p.split(" (")[0];
+    const predlog = CON_NA.has(base) || /(?:^|\s)[Oo]strv/.test(p) ? "na" : "u";
+    return { genitiv, lokativ, akuzativ, predlog };
+  };
+})();
+
+const sr: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => padezSr(p).genitiv,
+  en: (p) => {
+    const f = padezSr(p);
+    return `${f.predlog} ${f.lokativ}`;
+  },
+  para: (p) => `za ${padezSr(p).akuzativ}`,
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };

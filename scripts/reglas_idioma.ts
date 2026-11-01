@@ -162,6 +162,17 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Búlgaro: un solo registro, el de ДСК y НАП (2.ª del plural, «Вие», «Ви», «Вашият» con mayúscula;
+  // ADR 0002, D24). Se atrapa el «ти» y sus formas, y el pronombre de cortesía con minúscula.
+  bg: {
+    informal: [
+      { re: palabras("ти|теб|тебе|твой|твоя|твоят|твоята|твоето|твоите|твои"), nombre: "«ти»" },
+      { re: /(?:^|[.?!:]\s+)(?:въведи|избери|изчисли|провери|сравни|разбери|попълни|натисни|виж|опитай|купи|изтегли|започни|отвори|плати|покажи|скрий|затвори|потърси|копирай|сподели|добави|запази|продължи|върни|нулирай|напиши|изпрати|научи|пробвай|получи|влез|кликни|прегледай|изчисти|прочети|използвай|поръчай)(?!\p{L})/iu, nombre: "imperativo de «ти» (va -ете/-йте)" },
+      { re: palabras("можеш|искаш|знаеш|получаваш|плащаш|печелиш|работиш|спестяваш|имаш"), nombre: "2.ª del singular" },
+      { re: /(?<!\p{L})(?:вие|ви|ваш|ваша|ваше|ваши|вашия|вашият|вашата|вашето|вашите)(?!\p{L})/u, nombre: "pronombre de cortesía con minúscula (va «Вие», «Ви», «Вашият»)" },
+    ],
+    formal: [],
+  },
   // Ruso: un solo registro, el de Kaspi, Halyk, egov.kz y Сбер («вы» con minúscula y el imperativo
   // cortés; ADR 0002, D17). Se atrapa el «ты» (pronombre y posesivos), los imperativos y presentes de
   // segunda del singular que aparecen en un formulario y el «Вы» con mayúscula a mitad de oración,
@@ -240,6 +251,26 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
       },
     ],
   },
+  // Serbio: un solo registro, el de los bancos y eUprava (obraćanje na «vi», en minúscula, con
+  // imperativo de segunda del plural: «unesite», «izaberite»; ADR 0002, D23). Los botones van en la
+  // forma corta de las interfaces serbias («Izračunaj», «Kopiraj link», «Podeli», «Preuzmi»,
+  // «Dodaj», «Otvori», «Prikaži», «Pošalji», «Sačuvaj»), así que esos verbos no se atrapan; sí el
+  // pronombre y los posesivos de «ti», los presentes de segunda del singular y los imperativos de
+  // un formulario que en la prosa van con -te, y el «Vi» con mayúscula a mitad de oración. Los
+  // imperativos que se escriben igual que la 3.ª persona del presente («promeni», «koristi»,
+  // «proveri», «uporedi», «popuni») o que un sustantivo («pokušaj») no se buscan.
+  sr: {
+    informal: [
+      { re: palabras("ti|tebe|tebi|tobom|tvoj|tvoja|tvoje|tvog|tvoga|tvome|tvom|tvoju|tvoji|tvojih|tvojim|tvojima"), nombre: "obraćanje na «ti»" },
+      {
+        re: palabras("unesi|upiši|izaberi|odaberi|klikni|saznaj|oduzmi|saberi|pogledaj"),
+        nombre: "imperativo de «ti» en la prosa (va -te)",
+      },
+      { re: palabras("možeš|imaš|želiš|dobiješ|dobijaš|plaćaš|zarađuješ|vidiš|radiš|trošiš|uštediš|moraš|ćeš|znaš|unosiš|biraš|računaš|jesi|nisi|treba ti"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Vi|Vas|Vama|Vaš|Vaša|Vaše|Vašeg|Vašem|Vašoj|Vašu|Vaši|Vaših|Vašim|Vašima)(?!\p{L})/u, nombre: "«Vi» con mayúscula (va «vi»)" },
+    ],
+    formal: [],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -280,6 +311,21 @@ function reglasUz(texto: string): string[] {
 // Ruso: comillas «», sin «ё» (se escribe «е», como en la mayoría de los sitios de servicio; ADR 0002,
 // D17) y sin letras de otros alfabetos cirílicos (ucraniano і, ї, є, ґ; kazajo ә, ғ, қ, ң, ө, ұ, ү,
 // һ; bielorruso ў), que delatan un texto copiado de otra lengua.
+// Búlgaro (ADR 0002, D24): sin ы, э ni ё; letras de otros alfabetos cirílicos fuera; comillas „ “;
+// «във» delante de в/ф y «със» delante de с/з; y las palabras que delatan un texto copiado del ruso.
+const RUSISMOS_BG = palabras("зарплата|зарплаты|сумма|суммы|расчет|рассчитать|также|который|которая|которые|будет|если|только|можно|это|что|для");
+function reglasBg(texto: string): string[] {
+  const p: string[] = [];
+  if (/[ыэёЫЭЁ]/.test(texto)) p.push("«ы», «э» o «ё»: no existen en búlgaro");
+  if (/[іїєґўІЇЄҐЎ]/.test(texto)) p.push("letra de otro alfabeto cirílico en un texto búlgaro");
+  if (/[«»]|"(?=\p{sc=Cyrillic})|(?<=\p{sc=Cyrillic}[.,?:;]?)"/u.test(texto)) p.push("comillas: en búlgaro van „ “");
+  if (/(?<!\p{L})[Вв] [ВвФф]\p{L}/u.test(texto)) p.push("delante de в o ф va «във»");
+  if (/(?<!\p{L})[Сс] [СсЗз]\p{L}/u.test(texto)) p.push("delante de с o з va «със»");
+  const r = RUSISMOS_BG.exec(texto);
+  if (r) p.push(`«${r[0]}» es ruso, no búlgaro`);
+  return p;
+}
+
 function reglasRu(texto: string): string[] {
   const p: string[] = [];
   if (/[ёЁ]/.test(texto)) p.push("«ё»: en ruso se escribe «е» (ADR 0002, D17)");
@@ -351,6 +397,28 @@ function reglasHu(texto: string): string[] {
   if (/(?:^|[\s(])”/.test(texto)) p.push("comillas: en húngaro abren con „ (abajo)");
   if (/[\d%]-\p{Ll}/u.test(texto)) p.push("sufijo pegado a una cifra (va tras dos puntos o con posposición)");
   if (PLURAL_TRAS_NUMERO_HU.test(texto)) p.push("plural detrás de un número (en húngaro va en singular: «3 nap»)");
+  return p;
+}
+
+// Serbio: comillas „ “ (abre abajo, cierra arriba), nada de «», "" ni ”. En Serbia, ekavski: una
+// forma ijekavska («mjesec», «vrijeme», «cijena») delata un texto de Montenegro, Bosnia o Croacia;
+// el día que exista la edición montenegrina (sr-Latn-ME) esa regla se invierte por locale. Y nada
+// de palabras del croata estándar («tjedan», «tisuća», «postotak», «tvrtka», «obitelj»).
+const IJEKAVSKI = palabras(
+  "mjesec\\p{L}*|mjeseč\\p{L}*|mjer\\p{L}*|mjest\\p{L}*|promjen\\p{L}*|procjen\\p{L}*|cijen\\p{L}*|vrijem\\p{L}*|vrijed\\p{L}*|vrijeme|dijete|djec\\p{L}*|primjer\\p{L}*|nedjelj\\p{L}*|poslije|prije|uvijek|cijel\\p{L}*|lijek\\p{L}*|tijel\\p{L}*|svijet\\p{L}*|riječ\\p{L}*|dio|dijel\\p{L}*|bijel\\p{L}*|mlijek\\p{L}*|vjerovat\\p{L}*|zahtjev\\p{L}*|sjeć\\p{L}*|uvjet\\p{L}*",
+);
+const CROATA = palabras("tjedan\\p{L}*|tjedn\\p{L}*|tisuć\\p{L}*|postot\\p{L}*|kruh\\p{L}*|zrakoplov\\p{L}*|tvrtk\\p{L}*|obitelj\\p{L}*|kućanstv\\p{L}*|siječanj|veljač\\p{L}*|ožujak|travanj|svibanj|lipanj|srpanj|kolovoz|rujan|listopad|prosinac|uvjet\\p{L}*");
+function reglasSr(texto: string, locale?: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en serbio van „ “");
+  if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en serbio abren con „ (abajo)");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en la edición latina");
+  if (!locale?.endsWith("-ME")) {
+    const m = IJEKAVSKI.exec(texto);
+    if (m) p.push(`ijekavski «${m[0]}» en un mercado de Serbia (va ekavski)`);
+  }
+  const c = CROATA.exec(texto);
+  if (c) p.push(`«${c[0]}» es del croata (en serbio: nedelja, hiljada, procenat, firma, porodica...)`);
   return p;
 }
 
@@ -543,5 +611,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "cs") p.push(...reglasCs(texto));
   if (idioma === "el") p.push(...reglasEl(texto));
   if (idioma === "hu") p.push(...reglasHu(texto));
+  if (idioma === "sr") p.push(...reglasSr(texto, locale));
+  if (idioma === "bg") p.push(...reglasBg(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

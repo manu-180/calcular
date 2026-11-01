@@ -21,6 +21,101 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 01/11/2026 · Tanda 4 de países: rs, me, bg, tj, bt (`claude/paises-tanda-4`)
+
+Publicados: Serbia (rs), Montenegro (me), Bulgaria (bg), Tayikistán (tj) y Bután (bt), detrás de cn. Los cinco
+con `universales: "todas"` (cae sola la de IVA, porque hay local del mismo concepto). Trae los motores serbio
+(`claude/mundo-motor-sr`, D23) y búlgaro (`claude/mundo-motor-bg`, D24) y `check_ofertas_intl` con textos de
+país y mail en el locale del mercado. Informes en `scripts/paises/<m>/INFORME.md`. `mercados-registro.ts`
+regenerado: 133 mercados intl.
+
+| País | Locales | Publicables | Borrador | Universales |
+|---|---|---|---|---|
+| rs | 20 | 19 | porodiljsko-odsustvo | todas |
+| me | 18 | 16 | porodiljsko-odsustvo, prekovremeni-rad | todas |
+| bg | 21 | 18 | danak-dividenti, danak-varhu-nedvizhimi-imoti, zakonna-lihva | todas |
+| tj | 11 | 7 | otpusknye, sverkhurochnye, vykhodnoe-posobie, srok-preduprezhdeniya | todas |
+| bt | 24 | 24 | ninguna | todas |
+
+Datos no verificados y motivo:
+- rs: `rs.porodiljsko-gornja-granica`: solo en el texto de 2017 de parlament.gov.rs, sin refundido vigente.
+- me: `me.prekovremeni-uvecanje`, `me.nocni-uvecanje`, `me.praznik-uvecanje` y `me.nedjelja-uvecanje`
+  (decisión de esta integración): el Opšti kolektivni ugovor (Sl. list 150/22) no se leyó, los porcentajes
+  salen de respuestas del ministerio que lo citan, y la extensión de Sl. list 45/26 vence el 30/4/2026 sin que
+  se sepa qué rige después. `prekovremeni-rad` en borrador, sin `.casos.ts`. `me.porodiljsko-staz-12` y
+  `me.porodiljsko-gornja-granica`: art. 51 leído en un refundido de 2022, sin reformas posteriores.
+- bg: `bg.danak-dividenti` (ЗДДФЛ vigente ilegible, fuentes en desacuerdo entre 5 % y 10 %),
+  `bg.zakonna-lihva-nadbavka` (ПМС № 347/2025 en dv.parliament.bg, conexión rechazada),
+  `bg.danak-nedvizhimi-sofia` (ordenanza de Sofía y ЗМДТ ilegibles).
+- tj: 7 datos del Código de Trabajo (`tj.otpusk-dney`, `tj.nedelya-chasov`, `tj.sverkhurochnye-mnozhitel`,
+  `tj.sverkhurochnye-chasov-v-god`, `tj.vykhodnoe-mesyatsev`, `tj.preduprezhdenie`,
+  `tj.preduprezhdenie-rabotnika`): redacción hasta 2024 en copia de archive; las leyes № 2234, № 2261 y № 2312
+  de 2026 no se leyeron completas. Contenido y casos para recuperar en el commit `6ed3d1d9`.
+- bt: sin datos no verificados.
+
+Revisado: `rs.neoporezivi-iznos` 2026 queda en 34.221. La nota de mfin.gov.rs dice «sa 34.521 dinar na 37.369
+dinara» y «za 9,2 odsto», pero es errata: el 9,2 % solo cuadra con 34.221 y el refundido de la ley (docx de
+mfin.gov.rs, disposición transitoria) dice 34.221.
+
+Riesgos:
+- Revisión por hablante nativo: D23 y D24 la piden para serbio y búlgaro, y no se hizo. Los slugs de rs, me y bg
+  no se validaron en el autocompletar de Google del país, y no se cambian después de publicar.
+- me: mezcla de variantes. Las locales van en ijekavski, las 40 universales y el marco del sitio en ekavski
+  (D23 prevé una edición que los pise; no está hecha). La FAQ de `minimalna-zarada` sigue citando el art. 15 del
+  Opšti kolektivni ugovor, sin cifras. `kalkulator-plate` usa prirez de 13 % (contrastado con MONSTAT, no es un
+  valor legal). Sin tope de PIO ni contribución a la Cámara de Comercio. No se midió el 65 % de oraciones
+  compartidas contra rs.
+- rs: mínimo 2026 (371) citado de la nota del Ministerio, sin la Odluka; 405 de 2027 del comunicado del Gobierno.
+  Las osnovice no tienen tramo 2027: cargarlas en diciembre, y releer Sl. glasnik 80/2026 antes.
+- bg: 10 % y ДДС verificados en páginas del Ministerio de Economía, no en las leyes (nra.bg, parliament.bg y
+  minfin.bg no se pudieron leer). Tope neto de болнични y майчинство aproximado.
+- tj: solo 7 locales publicables, lejos de la barra de 15 a 25. Código Tributario leído en tayiko, traducción
+  propia. Salario mínimo por el comentario oficial, no el decreto. Sin detector del Código Tributario (andoz.tj
+  tiene la cadena TLS incompleta).
+- bt: salario mínimo Nu. 125 de una circular de 2013, con prensa que dice otra cosa: conviene consultar al
+  Departamento de Trabajo. El neto puede diferir un poco de la tabla de retención.
+- Series a mano o sin detector: `rs.prosecna-bruto` y `rs.prosecna-neto`, `me.ipc` (avisa antes del 1/12/2026),
+  `bg` ИПЦ (solo trae el último mes), `tj` kurs-valyut (si no corren los detectores), `bt` IPC y dólar.
+- Ningún país se miró renderizado en `next dev` (Turbopack no acepta la junction de node_modules). `next build`
+  tampoco se corrió en esta integración.
+
+Checks (`check-all`, 1/11/2026): 156 de 159 suites. `check_motor` 5052 pruebas, `check_paises_casos` 10281 casos,
+`check_hreflang` 20797 páginas, `check_ofertas_intl`, `check_guiones` y `check_fronteras` OK. Las tres que fallan
+no son de esta tanda:
+- `check_mundo`: be (neto de 24.000 da 23589,12 contra 23487,48 de la cuenta oficial).
+- `check_paises`: 26 fallas en 17 mercados. 22 son series vencidas (bo, ca, ca-fr, ch, ch-fr, ch-it, cr, gb, gt, hk,
+  kr, kw, mx, ni, pe, pk, za). Las otras 4 son llaves anidadas en la `description` de `oas-clawback` y
+  `tfsa-contribution-room` de ca y ca-fr (`{{ca.tfsa-annual-limits[{{anio}}]}}`): vienen de main y no están en la lista
+  de fallas conocidas.
+- `check_textos_paises`: 6 fallas de ancho en bo.salario-minimo (2), bo.finiquito-atrasado, cr.tipo-de-cambio,
+  mx.tipo-de-cambio y pe.tipo-de-cambio, todas calculadoras con serie vencida.
+Falló también `me.prekovremeni-rad` por ancho al pasar a borrador: se reescribió su contenido sin los porcentajes y
+se volvieron a correr `check_paises me`, `check_seo_pais me`, `check_textos_paises`, `check_guiones`, `check_eol` y
+`tsc`, sin fallas nuevas (`check-all` completo no se repitió). Arreglada la raya de hu en `check_guiones`.
+Avisos de series de la tanda antes del 1/12/2026: rs (4 calculadoras), me, bg y tj (1 cada una).
+
+## 31/10/2026 · Motor serbio latino (`claude/mundo-motor-sr`)
+
+`sr` entra en `IDIOMAS` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en el
+mundo» (`plata-u-svetu`), rankings (`rang-lista-zemalja`), horas de trabajo (`koliko-sati-rada`),
+calendario (`kalendar-isplata`), «Sueldos reales» (`stvarne-plate`), venta completa (`IDIOMAS_VENTA`) y las
+41 universales con slug ASCII propio. Alfabeto latino (`sr-Latn-RS`), ekavski, «vi» en minúscula con 2.ª
+del plural («unesite»), mercados con `trato: "usted"`, formato con «RSD» por Intl. Plurales
+one/few/other (`pluralSr`) y declinación del país (`GRAMATICA.sr`). Universales neutrales: Montenegro las
+reusa con EUR. Cirílico: edición futura (`rs-cyrl`). Decisiones en ADR 0002, D23. Edición de prueba `zz-sr`
+(interna, `sr-Latn-001`).
+- Falta para publicar Serbia y Montenegro: los países en sí, con datos verificados, y revisión por hablante nativo.
+
+## 31/10/2026 · Motor búlgaro (`claude/mundo-motor-bg`, ADR 0002 D24)
+
+`bg` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición interna `zz-bg`. Registro de
+bancos y servicios: 2.ª del plural, «Вие» con mayúscula. EUR como moneda de prueba (euro desde el 1/1/2026,
+comunicado de la BNB). Slugs con la transliteración oficial, por `src/motor/secciones.ts`, sin carpetas por
+idioma. Listo para que un agente de país escriba Bulgaria (`bg`). Fallas de main ajenas al frente:
+`check_horas` (AR, salario vencido el 31/10), `check_mundo` (be, neto) y `check_guiones` (raya en
+`src/paises/hu/calculadoras/vegkielegites-szamitas.casos.ts`).
+
 ## 29/10/2026 · Tanda 2 de países (grupo A): ag, bz, ne, bn, np, sc, ws (`claude/paises-tanda-2`)
 
 Publicados: Antigua y Barbuda (ag), Belice (bz), Níger (ne), Brunéi (bn), Nepal (np), Seychelles (sc) y

@@ -1,0 +1,1022 @@
+{
+  "mercado": "me",
+  "datos": [
+    {
+      "id": "me.porez-zarada",
+      "nombre": "Porez na dohodak od ličnih primanja, mjesečno",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 700,
+              "tasa": 0
+            },
+            {
+              "desde": 700,
+              "hasta": 1000,
+              "tasa": 9
+            },
+            {
+              "desde": 1000,
+              "hasta": null,
+              "tasa": 15
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o porezu na dohodak fizičkih lica („Sl. list CG“ 160/25), čl. 3 (član 10 tačka 1)",
+            "url": "https://wapi.gov.me/download/47bea12c-f250-4cdc-b481-3afc30fba94f?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.porez-samostalna",
+      "nombre": "Porez na dohodak od osnovne samostalne djelatnosti, godišnje",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 8400,
+              "tasa": 0
+            },
+            {
+              "desde": 8400,
+              "hasta": 12000,
+              "tasa": 9
+            },
+            {
+              "desde": 12000,
+              "hasta": null,
+              "tasa": 15
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o porezu na dohodak fizičkih lica („Sl. list CG“ 160/25), čl. 3 (član 10 tačka 2)",
+            "url": "https://wapi.gov.me/download/47bea12c-f250-4cdc-b481-3afc30fba94f?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.pio-zaposleni",
+      "nombre": "Doprinos za PIO na teret zaposlenog",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 15 st. 1 t. 1",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.pio-poslodavac",
+      "nombre": "Doprinos za PIO na teret poslodavca",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 15 st. 1 t. 1",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.nezaposlenost-zaposleni",
+      "nombre": "Doprinos za nezaposlenost na teret zaposlenog",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 18 t. 1",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.nezaposlenost-poslodavac",
+      "nombre": "Doprinos za nezaposlenost na teret poslodavca",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 18 t. 1",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.fond-rada",
+      "nombre": "Doprinos Fondu rada na teret poslodavca",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.2,
+          "fuente": {
+            "organismo": "Fond rada",
+            "titulo": "O Fondu: 0,20 % na teret poslodavca, na osnovicu doprinosa za nezaposlenost",
+            "url": "https://www.gov.me/clanak/o-fondu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.pio-preduzetnik",
+      "nombre": "Doprinos za PIO preduzetnika",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 15 st. 1 t. 2",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.nezaposlenost-preduzetnik",
+      "nombre": "Doprinos za nezaposlenost preduzetnika",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 18 t. 2",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.preduzetnik-prag-niski",
+      "nombre": "Godišnji promet preduzetnika, prvi prag za osnovicu",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 9000,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 9 t. 7",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.preduzetnik-prag-visi",
+      "nombre": "Godišnji promet preduzetnika, drugi prag za osnovicu",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 9 t. 7",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.preduzetnik-osnovica-niska",
+      "nombre": "Osnovica preduzetnika do prvog praga, dio prosječne zarade",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 9 t. 7",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.preduzetnik-osnovica-srednja",
+      "nombre": "Osnovica preduzetnika do drugog praga, dio prosječne zarade",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 9 t. 7",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.preduzetnik-osnovica-visoka",
+      "nombre": "Osnovica preduzetnika iznad drugog praga, dio prosječne zarade",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst do „Sl. list CG“ 160/25), čl. 9 t. 7",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2026/03/Zakon-o-doprinosima-za-obavezno-socijalno-osiguranje-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.pausal-limit",
+      "nombre": "Promet do kog preduzetnik može tražiti paušalni porez",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezu na dohodak fizičkih lica (prečišćen tekst), čl. 49 st. 1: promet manji od 30.000,01 eura",
+            "url": "https://wapi.gov.me/download/b8465a42-2073-4894-9be0-3b965c2f7195?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.minimalna-do-v",
+      "nombre": "Minimalna neto zarada, radna mjesta do V nivoa kvalifikacije",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 600,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 101 st. 2",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.minimalna-vi",
+      "nombre": "Minimalna neto zarada, radna mjesta sa VI i višim nivoom kvalifikacije",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 800,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 101 st. 2",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.prosjecna-bruto-2025",
+      "nombre": "Prosječna bruto zarada u 2025. godini",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1206,
+          "fuente": {
+            "organismo": "MONSTAT",
+            "titulo": "Prosječne zarade, decembar 2025, saopštenje od 30. 1. 2026",
+            "url": "https://monstat.org/uploads/files/zarade/2025/12/RAD_CG_Decembar_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.prosjecna-neto-2025",
+      "nombre": "Prosječna neto zarada u 2025. godini",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1012,
+          "fuente": {
+            "organismo": "MONSTAT",
+            "titulo": "Prosječne zarade, decembar 2025, saopštenje od 30. 1. 2026",
+            "url": "https://monstat.org/uploads/files/zarade/2025/12/RAD_CG_Decembar_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.odmor-najmanje",
+      "nombre": "Godišnji odmor, najmanje radnih dana",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 81 st. 1",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.odmor-sest-dana",
+      "nombre": "Godišnji odmor pri šestodnevnoj radnoj sedmici",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 81 st. 3",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.odmor-skraceno",
+      "nombre": "Godišnji odmor pri skraćenom radnom vremenu, najmanje",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 81 st. 2",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.otkazni-rok",
+      "nombre": "Otkazni rok, najmanje",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 177 st. 1 i čl. 166 st. 3",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.otkazni-probni",
+      "nombre": "Otkazni rok za vrijeme probnog rada, najmanje",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 35 st. 6",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.otkazni-casovi",
+      "nombre": "Odsustvo radi traženja posla za vrijeme otkaznog roka, najmanje časova sedmično",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 177 st. 5",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.otpremnina-staz",
+      "nombre": "Rad kod poslodavca potreban za otpremninu",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 169a st. 2",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.otpremnina-najmanje",
+      "nombre": "Otpremnina, najmanje prosječnih mjesečnih zarada",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 169a st. 5",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.puno-radno-vrijeme",
+      "nombre": "Puno radno vrijeme, časova sedmično",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 61 st. 1",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.prekovremeni-prosjek",
+      "nombre": "Radno vrijeme sa prekovremenim, najviše u prosjeku sedmično",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 48,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 64 st. 6",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.prekovremeni-sedmicno",
+      "nombre": "Radno vrijeme sa prekovremenim, najviše u jednoj sedmici",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 64 st. 7",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.bolovanje-stopa",
+      "nombre": "Naknada za bolovanje, najmanje od osnova",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Fond za zdravstveno osiguranje",
+            "titulo": "Zakon o obaveznom zdravstvenom osiguranju (prečišćen tekst, Katalog propisa 2024), čl. 40 st. 1",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2025/12/Zakon-o-obaveznom-zdravstvenom-osiguranju.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.bolovanje-puna",
+      "nombre": "Naknada za bolovanje u slučajevima iz zakona (povreda na radu, trudnoća i dr.)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Fond za zdravstveno osiguranje",
+            "titulo": "Zakon o obaveznom zdravstvenom osiguranju (prečišćen tekst, Katalog propisa 2024), čl. 40 st. 3 i 4",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2025/12/Zakon-o-obaveznom-zdravstvenom-osiguranju.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.bolovanje-dani-poslodavac",
+      "nombre": "Dana bolovanja koje isplaćuje poslodavac bez refundacije",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Fond za zdravstveno osiguranje",
+            "titulo": "Zakon o obaveznom zdravstvenom osiguranju (prečišćen tekst, Katalog propisa 2024), čl. 38",
+            "url": "https://amrrs.gov.me/wp-content/uploads/2025/12/Zakon-o-obaveznom-zdravstvenom-osiguranju.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.porodiljsko-dani",
+      "nombre": "Obavezno porodiljsko odsustvo",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 98,
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Zakon o radu (prečišćen tekst do „Sl. list CG“ 51/26), čl. 126 st. 1",
+            "url": "https://wapi.gov.me/download/5708ed78-5d80-492f-89f1-daa147732dc8?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.pdv-opsta",
+      "nombre": "Standardna stopa PDV",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Uprava prihoda i carina",
+            "titulo": "Porez na dodatu vrijednost: standardna stopa 21 %",
+            "url": "https://www.gov.me/clanak/porez-na-dodatu-vrijednost",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.pdv-snizena-15",
+      "nombre": "Snižena stopa PDV za smještaj i usluživanje hrane i pića",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Uprava prihoda i carina",
+            "titulo": "Poreska praksa: član 24a stav 2 Zakona o PDV, snižena stopa 15 % od početka 2025",
+            "url": "https://wapi.gov.me/download/bf337e64-f05c-4d08-9b56-73af2be7d65e?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.pdv-snizena-7",
+      "nombre": "Snižena stopa PDV",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Uprava prihoda i carina",
+            "titulo": "Porez na dodatu vrijednost: snižena stopa 7 %",
+            "url": "https://www.gov.me/clanak/porez-na-dodatu-vrijednost",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.pdv-limit",
+      "nombre": "Promet za obaveznu registraciju za PDV, 12 mjeseci",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o izmjenama i dopunama Zakona o PDV („Sl. list CG“ 12/26), član 55 stav 1",
+            "url": "https://wapi.gov.me/download/80b15e7e-da28-49b7-9ca6-de1849b9ab61?version=1.0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.porez-promet",
+      "nombre": "Porez na promet nepokretnosti",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 150000,
+              "tasa": 3
+            },
+            {
+              "desde": 150000,
+              "hasta": 500000,
+              "tasa": 5
+            },
+            {
+              "desde": 500000,
+              "hasta": null,
+              "tasa": 6
+            }
+          ],
+          "fuente": {
+            "organismo": "Uprava prihoda i carina",
+            "titulo": "Izmjene Zakona o porezu na promet nepokretnosti („Sl. list CG“ 28/23), u primjeni od 1. 1. 2024",
+            "url": "https://www.gov.me/clanak/izmjene-i-dopune-zakona-o-porezu-na-promet-nepokretnosti-u-primjeni-od-01012024",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.nepokretnosti-min",
+      "nombre": "Porez na nepokretnosti, najniža stopa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "Uprava prihoda i carina",
+            "titulo": "Porez na nepokretnosti: od 0,25 % do 1,00 % tržišne vrijednosti",
+            "url": "https://www.gov.me/clanak/porez-na-nepokretnosti",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.nepokretnosti-max",
+      "nombre": "Porez na nepokretnosti, najviša opšta stopa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Uprava prihoda i carina",
+            "titulo": "Porez na nepokretnosti: od 0,25 % do 1,00 % tržišne vrijednosti",
+            "url": "https://www.gov.me/clanak/porez-na-nepokretnosti",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.prekovremeni-uvecanje",
+      "nombre": "Uvećanje zarade za prekovremeni rad, najmanje",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-31",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2024-10-01",
+          "valor": 40,
+          "motivo": "Opšti kolektivni ugovor (Sl. list 150/22) nije pročitan: procenat je iz odgovora ministarstva koji ga citiraju. Saglasnost iz Sl. lista 45/26 produžava ga samo do 30. 4. 2026, a nije nađeno šta važi poslije.",
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Odgovori o primjeni minimalnih zarada: Opšti kolektivni ugovor, čl. 15 st. 1",
+            "url": "https://wapi.gov.me/download/93e93f14-6531-47c8-b6cc-7e9c191965e2?version=1.0",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.nocni-uvecanje",
+      "nombre": "Uvećanje zarade za noćni rad, najmanje",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-31",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2024-10-01",
+          "valor": 40,
+          "motivo": "Opšti kolektivni ugovor (Sl. list 150/22) nije pročitan: procenat je iz odgovora ministarstva koji ga citiraju. Saglasnost iz Sl. lista 45/26 produžava ga samo do 30. 4. 2026, a nije nađeno šta važi poslije.",
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Odgovori o primjeni minimalnih zarada: Opšti kolektivni ugovor, čl. 15 st. 1",
+            "url": "https://wapi.gov.me/download/93e93f14-6531-47c8-b6cc-7e9c191965e2?version=1.0",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.praznik-uvecanje",
+      "nombre": "Uvećanje zarade za rad na praznik, najmanje",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-31",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2024-10-01",
+          "valor": 150,
+          "motivo": "Opšti kolektivni ugovor (Sl. list 150/22) nije pročitan: procenat je iz odgovora ministarstva koji ga citiraju. Saglasnost iz Sl. lista 45/26 produžava ga samo do 30. 4. 2026, a nije nađeno šta važi poslije.",
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Odgovori o primjeni minimalnih zarada: Opšti kolektivni ugovor, čl. 15 st. 1",
+            "url": "https://wapi.gov.me/download/93e93f14-6531-47c8-b6cc-7e9c191965e2?version=1.0",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.nedjelja-uvecanje",
+      "nombre": "Uvećanje zarade za rad nedjeljom, najmanje",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-31",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2024-10-01",
+          "valor": 80,
+          "motivo": "Opšti kolektivni ugovor (Sl. list 150/22) nije pročitan: procenat je iz odgovora ministarstva koji ga citiraju. Saglasnost iz Sl. lista 45/26 produžava ga samo do 30. 4. 2026, a nije nađeno šta važi poslije.",
+          "fuente": {
+            "organismo": "Ministarstvo rada",
+            "titulo": "Odgovori o primjeni minimalnih zarada: Opšti kolektivni ugovor, čl. 15 st. 1",
+            "url": "https://wapi.gov.me/download/93e93f14-6531-47c8-b6cc-7e9c191965e2?version=1.0",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.porodiljsko-staz-12",
+      "nombre": "Refundacija naknade pri porodiljskom, 12 i više mjeseci rada",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "motivo": "Pročitan je prečišćen tekst Zakona o socijalnoj i dječjoj zaštiti iz Kataloga propisa 2022 (čl. 51). Nije nađen tekst sa kasnijim izmjenama, pa nije potvrđeno da važi.",
+          "fuente": {
+            "organismo": "Ministarstvo socijalnog staranja",
+            "titulo": "Zakon o socijalnoj i dječjoj zaštiti, Katalog propisa 2022, čl. 51",
+            "url": "https://wapi.gov.me/download/e10de0d2-f825-4ada-b470-c3d9d32267f3?version=1.0",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "me.porodiljsko-gornja-granica",
+      "nombre": "Gornja granica naknade pri porodiljskom, broj prosječnih zarada",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "motivo": "Isti tekst iz 2022 (čl. 51 st. 2). Nije nađen važeći prečišćen tekst.",
+          "fuente": {
+            "organismo": "Ministarstvo socijalnog staranja",
+            "titulo": "Zakon o socijalnoj i dječjoj zaštiti, Katalog propisa 2022, čl. 51",
+            "url": "https://wapi.gov.me/download/e10de0d2-f825-4ada-b470-c3d9d32267f3?version=1.0",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -769,6 +769,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "pontok", coma: "vesszők" },
     },
   },
+  // Búlgaro (ADR 0002, D24): 2.ª del plural, como ДСК y НАП. El botón va en imperativo cortés.
+  bg: {
+    base: {
+      calcular: "Изчислете",
+      resultado: "Резултат",
+      si: "Да",
+      no: "Не",
+      sinResultado: "В момента не показваме този резултат.",
+      errores: {
+        requerido: "Попълнете това поле.",
+        "numero-invalido": "Въведете число, например {ejemplo}.",
+        "entero-invalido": "Въведете цяло число, без десетични знаци.",
+        "menor-que-min": "Минималната стойност е {min}.",
+        "mayor-que-max": "Максималната стойност е {max}.",
+        "fecha-invalida": "Изберете валидна дата.",
+        "hora-invalida": "Изберете валиден час.",
+        "opcion-invalida": "Изберете една от възможностите.",
+        "region-invalida": "Изберете област.",
+        "calculo-fallido": "С тези данни изчислението не успя. Проверете стойностите и опитайте отново.",
+      },
+      milesAmbiguos: "Имахте предвид {sugerido}? Въведете числото без {signos}.",
+      separadores: { punto: "точки", coma: "запетаи" },
+    },
+  },
   he: {
     base: {
       calcular: "לחישוב",
@@ -790,6 +814,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       },
       milesAmbiguos: "האם התכוונתם ל-{sugerido}? כתבו את המספר בלי {signos}.",
       separadores: { punto: "נקודות", coma: "פסיקים" },
+    },
+  },
+  // Serbio en latinica y ekavski (ADR 0002, D23): «vi» en minúscula, como los bancos y eUprava. El
+  // botón va en la forma corta de las interfaces serbias («Izračunaj»); las oraciones, en imperativo
+  // de segunda del plural («unesite», «izaberite»).
+  sr: {
+    base: {
+      calcular: "Izračunaj",
+      resultado: "Rezultat",
+      si: "Da",
+      no: "Ne",
+      sinResultado: "Ovaj rezultat za sada ne prikazujemo.",
+      errores: {
+        requerido: "Popunite ovo polje.",
+        "numero-invalido": "Unesite broj, na primer {ejemplo}.",
+        "entero-invalido": "Unesite ceo broj, bez decimala.",
+        "menor-que-min": "Najmanja dozvoljena vrednost je {min}.",
+        "mayor-que-max": "Najveća dozvoljena vrednost je {max}.",
+        "fecha-invalida": "Izaberite ispravan datum.",
+        "hora-invalida": "Izaberite ispravno vreme.",
+        "opcion-invalida": "Izaberite jednu od ponuđenih opcija.",
+        "region-invalida": "Izaberite region.",
+        "calculo-fallido": "Sa ovim podacima obračun nije uspeo. Proverite vrednosti i pokušajte ponovo.",
+      },
+      milesAmbiguos: "Da li ste mislili {sugerido}? Unesite broj bez {signos}.",
+      separadores: { punto: "tačaka", coma: "zareza" },
     },
   },
 };

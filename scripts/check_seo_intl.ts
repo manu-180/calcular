@@ -349,7 +349,7 @@ async function conServer(base: string) {
     fallas.push(...revisarTexto(ruta, title, description));
     fallas.push(...revisarCanonical(ruta, canonical, url, origen));
     if ((html.match(/<title>/g) ?? []).length !== 1) falla(`${ruta}: más de un <title>`);
-    if (!/<html lang="[a-z]{2}-[A-Z0-9]{2,3}"/.test(html)) falla(`${ruta}: <html> sin lang de mercado`);
+    if (!/<html lang="[a-z]{2}(?:-[A-Z][a-z]{3})?-[A-Z0-9]{2,3}"/.test(html)) falla(`${ruta}: <html> sin lang de mercado`);
     for (const [attr, clave] of [
       ["property", "og:title"],
       ["property", "og:description"],
