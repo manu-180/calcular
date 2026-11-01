@@ -166,6 +166,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   // Húngaro (ADR 0002, D21): forintos sin decimales con «Ft» detrás y espacio de miles, un nombre largo
   // con artículo y sufijo de isla («a Saint Vincent és a Grenadine-szigeteken») y uno compuesto en
   // -ország («Németországban»).
+  // Albanés (ADR 0002, D31): lek sin decimales detrás; un nombre largo que se declina por partes («të
+  // Shën-Vincentit dhe Grenadineve») y uno plural con adjetivos («në Emiratet e Bashkuara Arabe»).
+  sq: [
+    { mercado: "al" as CodigoMercado, pais: "AL", nombrePais: "Shqipëri", locale: "sq-AL", trato: "usted", moneda: "ALL" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Shën-Vincent dhe Grenadine", locale: "sq-AL", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Emiratet e Bashkuara Arabe", locale: "sq-AL", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
   bg: [
     { mercado: "bg" as CodigoMercado, pais: "BG", nombrePais: "България", locale: "bg-BG", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сейнт Винсънт и Гренадини", locale: "bg-BG", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },

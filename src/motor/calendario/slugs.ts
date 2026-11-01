@@ -4,6 +4,7 @@ import type { Idioma } from "../tipos";
 // aparte de rutas.ts porque next.config lo lee (secciones.ts) y rutas.ts arrastra el registro entero.
 // check_calendario falla si una calculadora de algún país usa uno de estos slugs.
 export const SLUG_CALENDARIO: Record<Idioma, string> = {
+  sq: "kalendari-i-pagave",
   es: "calendario-laboral",
   pt: "calendario-trabalhista",
   en: "pay-calendar",

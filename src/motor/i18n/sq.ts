@@ -1,0 +1,182 @@
+import { GRAMATICA } from "./gramatica";
+import { pluralSq } from "./plural";
+import type { Diccionario } from "./resolver";
+import type { TextosSitio } from "./tipos";
+
+const g = GRAMATICA.sq;
+const MUNDO = "Ndërkombëtare";
+
+// Albanés (ADR 0002, D31): un solo registro, el de e-Albania, Tatime y Raiffeisen Albania. «ju» en
+// minúscula y el imperativo de 2.ª del plural («zgjidhni», «llogaritni»). El único botón en forma corta es
+// «Llogarit». Los mercados van con `trato: "usted"` y el diccionario escribe solo `base`. Comillas “ ”. El
+// país entra por GRAMATICA.sq («në Shqipëri», «të Shqipërisë», «për Shqipërinë»).
+const base: TextosSitio = {
+  marca: { nombre: "CalcularYa", lema: "Kalkulatorë me të dhëna zyrtare" },
+  saltar: "Kaloni te përmbajtja",
+  header: {
+    inicio: "Kreu",
+    elegirPais: "Zgjidhni vendin",
+    paisActual: (pais) => `Vendi: ${pais}`,
+    cerrar: "Mbyllni",
+    todos: "Të gjitha vendet",
+    latinoamerica: MUNDO,
+  },
+  footer: {
+    paises: "Vendet",
+    sitio: "CalcularYa",
+    fuentes: "Burimet zyrtare",
+    novedades: "Të rejat",
+    privacidad: "Privatësia",
+    terminos: "Kushtet e përdorimit",
+    contacto: "Kontakt",
+    sobre: "Rreth nesh",
+    argentina: "Jeni në Argjentinë? Kalkulatorët për Argjentinën janë në calcular.ar",
+    descargo: "Rezultatet janë përllogaritje. Para një vendimi të rëndësishëm, verifikojini në institucionin zyrtar ose me një specialist.",
+    derechos: (anio) => `© ${anio} CalcularYa`,
+  },
+  sello: {
+    titulo: "Të dhëna zyrtare të përditësuara",
+    verificado: (organismos, fecha) => `Të dhëna të verifikuara te ${organismos}, të përditësuara më ${fecha}.`,
+    serie: (nombre, organismo, fecha) => `${nombre} përditësohet automatikisht nga ${organismo}. Vlera e fundit: ${fecha}.`,
+    verTodas: "Shikoni të gjitha burimet",
+  },
+  calculadora: {
+    comoSeCalcula: "Si llogaritet",
+    ejemplo: "Një shembull",
+    faq: "Pyetje të shpeshta",
+    glosario: "Termat kryesorë",
+    relacionadas: "Kalkulatorë të tjerë",
+    otrosPaises: "E njëjta llogaritje në vende të tjera",
+  },
+  global: {
+    eyebrow: "Të dhëna zyrtare për çdo vend",
+    titulo: "Kalkulatorë për punën, paratë dhe jetën e përditshme, me të dhënat e vendit tuaj",
+    bajada: "Paga, kredi, tatime, data dhe të tjera. Kur përgjigjja varet nga një rregull, shifra vjen nga burimi zyrtar, me datën dhe lidhjen për ta verifikuar.",
+    elegir: "Zgjidhni vendin",
+    calculadoras: (n) => pluralSq(n, "kalkulator", "kalkulatorë"),
+    vacio: "Po shtojmë vende. Kthehuni së shpejti.",
+    promesaTitulo: "Si punojmë",
+    promesas: [
+      { titulo: "Shifra zyrtare, me burimin e tyre", texto: "Çdo vlerë tregon institucionin që e publikon, lidhjen dhe datën kur e verifikuam." },
+      { titulo: "Gjithmonë të përditësuara", texto: "Kur ndryshon një vlerë, ndryshon edhe kalkulatori. Çdo ndryshim shfaqet te të rejat." },
+      { titulo: "Falas, pa llogari", texto: "Llogaritja bëhet në shfletuesin tuaj. Nuk ju kërkojmë të dhëna personale." },
+    ],
+  },
+  pais: {
+    eyebrow: "Të dhëna zyrtare të përditësuara",
+    titulo: (pais) => `Kalkulatorë ${g.para(pais)}`,
+    bajada: (pais) => `Me vlerat në fuqi ${g.en(pais)}, burimin e secilës dhe datën kur e verifikuam.`,
+    novedades: "Të rejat e fundit",
+    verNovedades: "Shikoni të gjitha të rejat",
+    sinCalculadoras: "Ende nuk ka kalkulatorë për këtë vend.",
+    descripcion: (pais) => `Kalkulatorë për pagën, tatimet, kreditë, kursimet, shëndetin, datat dhe shtëpinë ${g.para(pais)}, me shifrën zyrtare në fuqi dhe burimin e saj.`,
+    irASeccion: "Shkoni te një seksion",
+  },
+  fuentes: {
+    titulo: (pais) => `Burimet dhe të dhënat ${g.para(pais)}`,
+    bajada: "Çdo vlerë që përdorin kalkulatorët, me periudhën kur zbatohet dhe lidhjen me burimin zyrtar.",
+    vigente: "Vlera në fuqi",
+    desde: "Nga",
+    hasta: "Deri më",
+    fuente: "Burimi",
+    verificado: "Verifikuar më",
+    region: "Rajoni",
+    series: "Vlera që përditësohen automatikisht",
+    ultimoDato: "Vlera e fundit",
+    proximo: (valor, fecha) => `Tashmë e publikuar për ${fecha}: ${valor}.`,
+    sinVerificar: "Asnjë vlerë e verifikuar për sot",
+    tramos: (n) => `Tabelë me ${pluralSq(n, "shkallë", "shkallë")}`,
+    description: (pais) => `Të dhënat zyrtare ${g.para(pais)} që përdorin kalkulatorët: vlera në fuqi, që kur zbatohet, burimi dhe data e verifikimit.`,
+  },
+  novedades: {
+    titulo: (pais) => `Të rejat ${g.para(pais)}`,
+    bajada: "Ndryshimet e rregullave mbi të cilat mbështeten kalkulatorët, me datën nga e cila zbatohen.",
+    vigenteDesde: (fecha) => `Në fuqi nga ${fecha}`,
+    vacio: "Ende nuk ka të reja për këtë vend.",
+    description: (pais) => `Ndryshimet e pagës minimale, të sigurimeve dhe të rregullave të tjera ${g.en(pais)}, me datën e hyrjes në fuqi dhe burimin zyrtar.`,
+  },
+  avisoPais: {
+    texto: (pais) => `Duket se ndodheni ${g.en(pais)}.`,
+    ir: (pais) => `Shikoni kalkulatorët ${g.para(pais)}`,
+    cerrar: "Mbyllni mesazhin",
+  },
+  noEncontrada: {
+    titulo: "Nuk e gjetëm këtë faqe",
+    texto: "Adresa mund të ketë një gabim ose faqja nuk ekziston më.",
+    volver: "Shkoni te faqja kryesore",
+    paises: "Ose zgjidhni një vend",
+  },
+  categorias: {
+    sueldo: "Paga dhe shtesa",
+    fin: "Përfundimi i kontratës",
+    impuestos: "Sigurime dhe tatime",
+    dinero: "Para dhe tregues",
+    finanzas: "Kredi, kursime dhe investime",
+    negocio: "Biznes dhe punë e pavarur",
+    calculos: "Llogaritje të shpejta",
+    fechas: "Data dhe mosha",
+    salud: "Shëndet dhe formë fizike",
+    hogar: "Shtëpi, makinë dhe rikonstruksion",
+    familia: "Familje dhe ekonomi shtëpie",
+    otras: "Kalkulatorë të tjerë",
+  },
+  migas: { inicio: "Kreu", etiqueta: "Ndodheni këtu" },
+  seo: {
+    tituloGlobal: "CalcularYa: kalkulatorë falas me të dhëna zyrtare",
+    descripcionGlobal: "Kalkulatorë falas për pagën, kreditë, tatimet dhe të tjera në çdo vend, me shifrën zyrtare në fuqi dhe burimin e saj.",
+    tituloPais: (pais, anio) => [`Kalkulator page neto dhe tatime ${anio}: ${pais}`, `Kalkulatorë ${anio}: ${pais}`, `Kalkulatorë: ${pais}`],
+    tituloFuentes: (pais) => [`Të dhëna zyrtare në fuqi: ${pais}, burime dhe data`, `Burime dhe të dhëna: ${pais}`],
+    tituloNovedades: (pais, anio) => [`Të reja për pagat dhe tatimet ${anio}: ${pais}`, `Të reja ${anio}: ${pais}`, `Të reja: ${pais}`],
+  },
+  og: {
+    datosOficiales: "Të dhëna zyrtare, me burimin e tyre",
+    actualizado: (fecha) => `Përditësuar më ${fecha}`,
+    gratis: "Falas, pa llogari",
+    paises: (n) => pluralSq(n, "vend", "vende"),
+  },
+  shell: {
+    irAlInicio: "shkoni te faqja kryesore",
+    menu: { trabajo: "Paga dhe puna", impuestos: "Tatime", dinero: "Para dhe tregues", vida: "Përditshmëri", novedades: "Të rejat", planillas: "Fletë llogaritëse" },
+    encabezado: {
+      principal: "Navigimi kryesor",
+      buscar: "Kërkim",
+      buscarCalculadora: "Kërkoni një kalkulator",
+      abrirMenu: "Hapni menynë",
+      cerrarMenu: "Mbyllni menynë",
+      menu: "Menyja",
+      todas: "Të gjithë kalkulatorët",
+      pieCajon: "Të dhëna nga burime zyrtare · Bërë në Argjentinë",
+    },
+    buscador: {
+      dialogo: "Kërkim në CalcularYa",
+      pregunta: "Çfarë dëshironi të llogaritni?",
+      recientes: "Vazhdoni aty ku e latë",
+      masUsado: "Më të përdorurit",
+      sinResultados: "Asnjë rezultat për “{q}”",
+      sugerencia: "Provoni një fjalë tjetër, për shembull “paga”, “kredi” ose “TVSH”.",
+      verTodas: "Shikoni të gjithë kalkulatorët",
+      borrar: "Fshini kërkimin",
+      cerrar: "Mbyllni",
+      cerrarBuscador: "Mbyllni kërkimin",
+      moverte: "për të lëvizur",
+      abrir: "për të hapur",
+      desdeCualquier: "nga çdo faqe",
+      resultados: "Rezultatet",
+      resultado: "rezultat",
+      resultadosPlural: "rezultate",
+      resultadosDe: "rezultate",
+    },
+    paises: { titulo: "Vendi", cambiar: "Ndryshoni vendin" },
+    pie: {
+      bajada: (lugar) =>
+        `Kalkulatorë të qartë ${lugar === MUNDO ? "për çdo vend" : g.para(lugar)}. Çdo shifër vjen nga dokumenti zyrtar që e përcakton, me datën kur e verifikuam.`,
+      todas: "Të gjithë kalkulatorët",
+      cuenta: "Llogaria juaj",
+      cuentaNota: "Është opsionale. Ju ndihmon të ruani llogaritjet dhe t'i keni pranë.",
+      hecho: "Bërë në Argjentinë",
+      escrito: "Shkruar dhe verifikuar nga",
+    },
+  },
+};
+
+export const sq: Diccionario<TextosSitio> = { base };

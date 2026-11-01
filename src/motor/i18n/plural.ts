@@ -142,3 +142,16 @@ export function formaSr(n: number | string, uno: string, pocos: string, muchos: 
 export function pluralSr(n: number | string, uno: string, pocos: string, muchos: string): string {
   return `${n} ${formaSr(n, uno, pocos, muchos)}`;
 }
+
+// Albanés (ADR 0002, D31): Intl.PluralRules("sq") tiene «one» (solo el 1) y «other» (también 0 y las
+// fracciones): «1 vit», «2 vjet», «1,5 vjet», «1 kalkulator», «3 kalkulatorë». Recibe number o string
+// porque check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
+const REGLAS_SQ = new Intl.PluralRules("sq");
+
+export function formaSq(n: number | string, uno: string, otros: string): string {
+  return REGLAS_SQ.select(Math.abs(Number(n))) === "one" ? uno : otros;
+}
+
+export function pluralSq(n: number | string, uno: string, otros: string): string {
+  return `${n} ${formaSq(n, uno, otros)}`;
+}

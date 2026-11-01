@@ -335,6 +335,17 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Izvor",
     },
   },
+  // Albanés (ADR 0002, D31).
+  sq: {
+    base: {
+      datos: "Të dhënat tuaja",
+      resultado: "Rezultati",
+      vacio: "Vendosni të dhënat dhe klikoni “Llogarit”. Rezultati do të shfaqet këtu.",
+      sinResultado: "Këtë rezultat nuk e shfaqim për momentin.",
+      avisos: { info: "Mirë ta dini", cautela: "Kujdes", bloquea: "Pse nuk e shfaqim rezultatin" },
+      fuenteDelAviso: "Burimi",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

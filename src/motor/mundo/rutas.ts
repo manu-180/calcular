@@ -3,6 +3,7 @@ import type { Idioma } from "../tipos";
 // Slug de «Tu sueldo en el mundo» por idioma. Es el mismo en todas las ediciones de un idioma, así el
 // clúster hreflang se arma solo para cualquier país nuevo.
 export const SLUG_MUNDO: Record<Idioma, string> = {
+  sq: "paga-ne-bote",
   es: "sueldo-en-el-mundo",
   pt: "salario-pelo-mundo",
   en: "salary-around-the-world",

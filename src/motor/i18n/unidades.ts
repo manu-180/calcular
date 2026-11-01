@@ -100,6 +100,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   // El húngaro no pone plural después de un número («3 nap», «1,5 év»): las dos formas son iguales.
   hu: { dias: { uno: "nap", otros: "nap" }, semanas: { uno: "hét", otros: "hét" }, horas: { uno: "óra", otros: "óra" }, meses: { uno: "hónap", otros: "hónap" }, anios: { uno: "év", otros: "év" } },
   // Búlgaro: «час» y «месец» van en forma numérica detrás de un número («5 часа», «3 месеца»).
+  // Albanés (ADR 0002, D31): «1 vit», «2 vjet»; ditë, javë, orë y muaj no cambian.
+  sq: { dias: { uno: "ditë", otros: "ditë" }, semanas: { uno: "javë", otros: "javë" }, horas: { uno: "orë", otros: "orë" }, meses: { uno: "muaj", otros: "muaj" }, anios: { uno: "vit", otros: "vjet" } },
   bg: { dias: { uno: "ден", otros: "дни" }, semanas: { uno: "седмица", otros: "седмици" }, horas: { uno: "час", otros: "часа" }, meses: { uno: "месец", otros: "месеца" }, anios: { uno: "година", otros: "години" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
   // Serbio en latinica y ekavski (ADR 0002, D23).
