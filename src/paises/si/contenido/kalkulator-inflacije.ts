@@ -6,12 +6,13 @@ export default definirContenido({
   title: "Kalkulator inflacije {{anio}} po podatkih SURS",
   description: "Preračunajte znesek na današnje cene z indeksom cen življenjskih potrebščin SURS. Zadnji indeks: {{si.ipc}}. Izračunajte kupno moč.",
   intro: [
-    "Koliko je danes vrednih 1.000 € iz leta 2020? Kalkulator primerja indeks cen življenjskih potrebščin za dva meseca in pove, kolikšen znesek ohranja enako kupno moč.",
-    "Podatki so iz baze SiStat Statističnega urada RS. Zadnji indeks je {{si.ipc}}, velja za ta mesec: {{si.ipc#desde}}. Indeks je preračunan na povprečje leta 2025.",
+    "Zadnji indeks cen življenjskih potrebščin je {{si.ipc}}. Koliko je danes vrednih 1.000 € iz leta 2020? Kalkulator primerja indeks cen življenjskih potrebščin za dva meseca in pove, kolikšen znesek ohranja enako kupno moč.",
+    "Podatki so iz baze SiStat Statističnega urada RS. Zadnji indeks velja za ta mesec: {{si.ipc#desde}}. Indeks je preračunan na povprečje leta 2025.",
   ],
   comoSeCalcula: [
     "Faktor = indeks končnega meseca / indeks začetnega meseca.",
     "Enaka kupna moč = znesek × faktor. Vrednost zneska v starih cenah = znesek / faktor.",
+    "Rezultat ne pomeni, da se je vaš osebni strošek spremenil za enak odstotek. Indeks meri povprečno košarico.",
     "Podatki so na voljo od decembra 2016. Če izberete mesec po zadnji objavi, računamo do zadnjega objavljenega meseca.",
   ],
   ejemplo: [

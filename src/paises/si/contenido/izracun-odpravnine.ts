@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Odpravnina {{anio}}: izračun po letih dela",
   description: "Odpravnina ob odpovedi iz poslovnega razloga ali nesposobnosti: 1/5, 1/4 ali 1/3 plače za vsako leto. Z zgornjo mejo in davčno obravnavo.",
   intro: [
-    "Delodajalec, ki odpove pogodbo iz poslovnega razloga ali nesposobnosti, mora izplačati odpravnino. Višina je po 108. členu ZDR-1 odvisna od let dela pri njem, osnova pa je povprečna plača zadnjih treh mesecev.",
+    "Delodajalec, ki odpove pogodbo iz poslovnega razloga ali nesposobnosti, mora izplačati odpravnino, pri zaposlitvi do deset let 1/{{si.odpravnina[do10]}} osnove za vsako leto. Višina je po 108. členu ZDR-1 odvisna od let dela pri njem, osnova pa je povprečna plača zadnjih treh mesecev.",
     "Odpravnina je brez dohodnine in prispevkov do desetih povprečnih mesečnih plač v Sloveniji. Zadnji podatek SURS: {{si.povprecna-placa}}.",
   ],
   comoSeCalcula: [

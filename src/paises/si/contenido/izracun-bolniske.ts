@@ -16,7 +16,8 @@ export default definirContenido({
   ],
   ejemplo: [
     "Osnova 2.000,00 € in bolezen prvih 90 dni: nadomestilo je 1.600,00 € bruto na mesec, torej 400,00 € manj od osnove.",
-    "Najnižje nadomestilo znaša 889,13 €.",
+    "Najnižje nadomestilo znaša 889,13 €. Osnova 1.000,00 € bi pri bolezni dala 800,00 €, zato v tem primeru velja najnižji znesek.",
+    "Pri poškodbi zunaj dela in isti osnovi 2.000,00 € je nadomestilo prvih 90 dni 1.400,00 €, po 90 dneh pa 1.600,00 €.",
   ],
   faq: [
     {

@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Otroški dodatek {{anio}}: znesek po razredih",
   description: "Otroški dodatek za prvega otroka je do {{si.otroski-dodatek[o1-1]}} na mesec. Izračunajte znesek po dohodku na osebo in številu otrok.",
   intro: [
-    "Otroški dodatek je dopolnilni prejemek za preživljanje, vzgojo in izobraževanje otroka do 18. leta. Višina je odvisna od povprečnega mesečnega dohodka na osebo v družini in od zaporedja otroka.",
+    "Otroški dodatek, za prvega otroka do {{si.otroski-dodatek[o1-1]}} na mesec, je dopolnilni prejemek za preživljanje, vzgojo in izobraževanje otroka do 18. leta. Višina je odvisna od povprečnega mesečnega dohodka na osebo v družini in od zaporedja otroka.",
     "Dohodkovnih razredov je osem. Prvi velja do {{si.otroski-dodatek-meje[r1]}} na osebo, zadnji do {{si.otroski-dodatek-meje[r8]}}. Zneski v tem izračunu veljajo za vloge od 1. februarja 2026 in priznanje pravice s 1. marcem 2026.",
   ],
   comoSeCalcula: [

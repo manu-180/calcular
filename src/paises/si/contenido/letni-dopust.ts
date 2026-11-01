@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Letni dopust {{anio}}: koliko dni vam pripada",
   description: "Najmanj štirje tedni dopusta in dodatni dnevi za otroke ter starejše delavce. Izračunajte število dni in sorazmerni del po ZDR-1.",
   intro: [
-    "Letni dopust po 159. členu ZDR-1 ne sme biti krajši od štirih tednov. Število dni je odvisno od tega, koliko dni na teden delate. Pri petih dneh je to najmanj 20 dni.",
+    "Najkrajši letni dopust po 159. členu ZDR-1, izražen v tednih: {{si.dopust[tedni]}}. Število dni je odvisno od tega, koliko dni na teden delate. Pri petih dneh je to najmanj 20 dni.",
     "Dodatne dneve zakon daje starejšim delavcem, invalidom, delavcem s telesno okvaro, staršem otrok s posebnimi potrebami in za vsakega otroka, mlajšega od 15 let.",
   ],
   comoSeCalcula: [

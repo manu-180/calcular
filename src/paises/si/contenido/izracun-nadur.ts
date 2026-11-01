@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Izračun nadur {{anio}}: plačilo, dodatek in meje",
   description: "Izračunajte bruto plačilo nadur z dodatkom iz vaše kolektivne pogodbe. Zakonske meje: {{si.nadure-meje[teden]}} na teden in {{si.nadure-meje[mesec]}} na mesec.",
   intro: [
-    "Za nadurno delo pripada plačilo ure in dodatek. Višine dodatka ZDR-1 ne določa: po 128. členu jo določa kolektivna pogodba na ravni dejavnosti. Zato vpišite odstotek iz svoje pogodbe.",
+    "Za nadurno delo, ki lahko traja največ {{si.nadure-meje[mesec]}} na mesec, pripada plačilo ure in dodatek. Višine dodatka ZDR-1 ne določa: po 128. členu jo določa kolektivna pogodba na ravni dejavnosti. Zato vpišite odstotek iz svoje pogodbe.",
     "Zakon pa določa meje. Nadure lahko trajajo največ {{si.nadure-meje[teden]}} na teden, {{si.nadure-meje[mesec]}} na mesec in {{si.nadure-meje[leto]}} na leto.",
   ],
   comoSeCalcula: [

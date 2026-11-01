@@ -13,6 +13,7 @@ export default definirContenido({
     "Delež = vaša bruto plača / povprečna bruto plača × 100.",
     "Razlika je vaša plača minus povprečje. Negativna razlika pomeni, da ste pod povprečjem.",
     "Serija je iz tabele SURS H285S, ki jo objavljajo mesečno, praviloma z zamikom približno dveh mesecev.",
+    "Mesečni podatek se lahko med meseci precej razlikuje, zato je za dolgoročno primerjavo primerno tudi letno povprečje {{si.povprecna-letna-placa}}.",
   ],
   ejemplo: [
     "Bruto plača 2.500,00 € pri povprečju 2.695,56 € pomeni 92,7 odstotka povprečja, razlika je 195,56 € manj.",

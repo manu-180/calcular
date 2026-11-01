@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Neto bruto kalkulator {{anio}}: koliko bruto za želeni neto",
   description: "Vpišite želeno neto plačo in dobite potrebno bruto plačo ter strošek delodajalca. Z OZP {{si.ozp}} in lestvico dohodnine za to leto.",
   intro: [
-    "Pri pogajanju za plačo običajno vemo, koliko želimo dobiti na račun, pogodba pa navaja bruto znesek. Ta kalkulator išče obratno pot: poišče bruto plačo, pri kateri po prispevkih, OZP in akontaciji ostane vaš neto.",
+    "Pri pogajanju za plačo običajno vemo, koliko želimo dobiti na račun, pogodba pa navaja bruto znesek. Ta kalkulator išče obratno pot: poišče bruto plačo, pri kateri po prispevkih, OZP {{si.ozp}} in akontaciji ostane vaš neto.",
     "Hkrati pokaže, koliko bo ta plača stala delodajalca, ki na bruto doda še {{si.prispevki-delodajalec[piz]}} za pokojninsko zavarovanje in druge svoje prispevke.",
   ],
   comoSeCalcula: [

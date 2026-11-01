@@ -12,10 +12,12 @@ export default definirContenido({
   comoSeCalcula: [
     "Iz evrov v valuto: znesek × tečaj.",
     "Iz valute v evre: znesek / tečaj.",
-    "Tečaj je kotiran kot količina tuje valute za 1 evro.",
+    "Tečaj je kotiran kot količina tuje valute za 1 evro. Višji tečaj torej pomeni močnejši evro: za isti znesek v evrih dobite več tuje valute.",
+    "Rezultat je zaokrožen na dva decimalna mesta, tečaj pa je prikazan s štirimi, tako kot v tečajnici.",
   ],
   ejemplo: [
     "Pri tečaju 1,1172 dobite za 100,00 € skupaj 111,72 USD. Za 100,00 USD dobite 89,51 €.",
+    "Pri nakupu v tujini kartični sistem praviloma ne uporabi prav tega tečaja, zato izračun razumite kot primerjalno vrednost za načrtovanje stroškov ali preverjanje računa.",
   ],
   faq: [
     {

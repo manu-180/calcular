@@ -12,7 +12,8 @@ export default definirContenido({
   comoSeCalcula: [
     "Davek = prodajna cena × {{si.davek-promet-nepremicnin}}.",
     "Prodajna cena je vse, kar prodajalec dobi od kupca: denar, stvari, storitve in prevzeti dolgovi (8. člen ZDPN-2).",
-    "Obveznost nastane ob sklenitvi pogodbe (7. člen ZDPN-2).",
+    "Obveznost nastane ob sklenitvi pogodbe (7. člen ZDPN-2). Če je za prenos potrebno dovoljenje državnega organa, zakon določa posebno pravilo.",
+    "Kalkulator ne upošteva posebnih primerov in oprostitev. Če je nepremičnina v solastništvu, davek velja za vsakega prodajalca posebej, od cene njegovega deleža.",
   ],
   ejemplo: [
     "Stanovanje za 200.000,00 €: davek je 4.000,00 €, prodajalcu po davku ostane 196.000,00 €, če nosi davek on.",
