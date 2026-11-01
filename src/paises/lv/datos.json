@@ -1,0 +1,722 @@
+{
+  "mercado": "lv",
+  "datos": [
+    {
+      "id": "lv.minimala-alga",
+      "nombre": "Minimālā mēneša darba alga",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 780,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Valsts sociālās apdrošināšanas obligātās iemaksas jaunuzņēmumiem (18.12.2025.): MK noteikumi Nr. 656, solidaritātes nodokļa piemēri",
+            "url": "https://www.vid.gov.lv/lv/media/2471/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.iin-alga",
+      "nombre": "Algas nodokļa likme",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25.5,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Iedzīvotāju ienākuma nodokļa likmes",
+            "url": "https://www.vid.gov.lv/lv/iedzivotaju-ienakuma-nodokla-likmes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.iin-gada",
+      "nombre": "Iedzīvotāju ienākuma nodokļa gada likmes",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 105300,
+              "tasa": 25.5
+            },
+            {
+              "desde": 105300,
+              "hasta": 200000,
+              "tasa": 33
+            },
+            {
+              "desde": 200000,
+              "hasta": null,
+              "tasa": 36
+            }
+          ],
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Iedzīvotāju ienākuma nodokļa likmes",
+            "url": "https://www.vid.gov.lv/lv/iedzivotaju-ienakuma-nodokla-likmes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.neapliekamais-minimums",
+      "nombre": "Neapliekamais minimums mēnesī",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 550,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Gada neapliekamais minimums",
+            "url": "https://www.vid.gov.lv/lv/neapliekamais-minimums",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.neapliekamais-pensionars",
+      "nombre": "Pensionāra neapliekamais minimums mēnesī",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Gada neapliekamais minimums",
+            "url": "https://www.vid.gov.lv/lv/neapliekamais-minimums",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.apgadajamais",
+      "nombre": "Atvieglojums par apgādājamo mēnesī",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 250,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Par apgādībā esošām personām",
+            "url": "https://www.vid.gov.lv/lv/par-apgadiba-esosam-personam",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.papildu-atvieglojums",
+      "nombre": "Papildu atvieglojums mēnesī",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "invaliditate-1-2": "I vai II grupas invaliditāte",
+        "invaliditate-3": "III grupas invaliditāte",
+        "represeta": "Politiski represētā persona vai nacionālās pretošanās kustības dalībnieks"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "invaliditate-1-2": 154,
+            "invaliditate-3": 120,
+            "represeta": 154
+          },
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Papildu nodokļa atvieglojums",
+            "url": "https://www.vid.gov.lv/lv/papildu-nodokla-atvieglojums",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.vsaoi-darba-nemejs",
+      "nombre": "VSAOI darba ņēmēja daļa",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vispariga": "Darba ņēmējs (vispārējais gadījums)",
+        "pensijas-vecums": "Sasniegts valsts vecuma pensijas vecums",
+        "izdienas": "Izdienas vai valsts speciālās invaliditātes pensijas saņēmējs"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vispariga": 10.5,
+            "pensijas-vecums": 9.25,
+            "izdienas": 9.76
+          },
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Valsts sociālās apdrošināšanas obligāto iemaksu likmes",
+            "url": "https://www.vid.gov.lv/lv/valsts-socialas-apdrosinasanas-obligato-iemaksu-likmes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.vsaoi-darba-devejs",
+      "nombre": "VSAOI darba devēja daļa",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vispariga": "Darba ņēmējs (vispārējais gadījums)",
+        "pensijas-vecums": "Sasniegts valsts vecuma pensijas vecums",
+        "izdienas": "Izdienas vai valsts speciālās invaliditātes pensijas saņēmējs"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vispariga": 23.59,
+            "pensijas-vecums": 20.77,
+            "izdienas": 21.94
+          },
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Valsts sociālās apdrošināšanas obligāto iemaksu likmes",
+            "url": "https://www.vid.gov.lv/lv/valsts-socialas-apdrosinasanas-obligato-iemaksu-likmes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.vsaoi-maksimums",
+      "nombre": "VSAOI objekta maksimālais apmērs gadā",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 105300,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Par valsts sociālās apdrošināšanas obligāto iemaksu maksimālo apmēru (13.01.2026.)",
+            "url": "https://www.vid.gov.lv/lv/media/2453/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.solidaritate-darba-nemejs",
+      "nombre": "Solidaritātes nodokļa darba ņēmēja daļa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10.5,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Valsts sociālās apdrošināšanas obligātās iemaksas jaunuzņēmumiem (18.12.2025.): MK noteikumi Nr. 656, solidaritātes nodokļa piemēri",
+            "url": "https://www.vid.gov.lv/lv/media/2471/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.solidaritate-darba-devejs",
+      "nombre": "Solidaritātes nodokļa darba devēja daļa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 23.59,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Valsts sociālās apdrošināšanas obligātās iemaksas jaunuzņēmumiem (18.12.2025.): MK noteikumi Nr. 656, solidaritātes nodokļa piemēri",
+            "url": "https://www.vid.gov.lv/lv/media/2471/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.pasnodarbinata-likme",
+      "nombre": "Pašnodarbinātā VSAOI likme",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vispariga": "Pašnodarbinātais (vispārējais gadījums)",
+        "pensijas-vecums": "Sasniegts pensijas vecums",
+        "apsaimniekotajs": "Nekustamā īpašuma apsaimniekotājs"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vispariga": 31.07,
+            "pensijas-vecums": 29.36,
+            "apsaimniekotajs": 26.59
+          },
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Valsts sociālās apdrošināšanas obligāto iemaksu likmes",
+            "url": "https://www.vid.gov.lv/lv/valsts-socialas-apdrosinasanas-obligato-iemaksu-likmes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.pasnodarbinata-pensija",
+      "nombre": "Pašnodarbinātā pensiju apdrošināšanas likme",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Pašnodarbinātā sociālās apdrošināšanas iemaksas",
+            "url": "https://www.vid.gov.lv/lv/pasnodarbinata-socialas-apdrosinasanas-iemaksas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.pasnodarbinata-objekts",
+      "nombre": "Pašnodarbinātā obligāto iemaksu minimālais objekts mēnesī",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 780,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Pašnodarbinātā sociālās apdrošināšanas iemaksas",
+            "url": "https://www.vid.gov.lv/lv/pasnodarbinata-socialas-apdrosinasanas-iemaksas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.mikro-likme",
+      "nombre": "Mikrouzņēmumu nodokļa likme",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Mikrouzņēmumu nodokļa likme",
+            "url": "https://www.vid.gov.lv/lv/mikrouznemumu-nodokla-likme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.mikro-socialajai-dalai",
+      "nombre": "Mikrouzņēmumu nodokļa daļa sociālajām iemaksām",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Mikrouzņēmumu nodoklis",
+            "url": "https://www.vid.gov.lv/lv/mikrouznemumu-nodoklis",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.pvn-slieksnis",
+      "nombre": "PVN reģistrācijas slieksnis gadā",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Īpašā PVN reģistrācijas kārtība mazajiem uzņēmumiem",
+            "url": "https://www.vid.gov.lv/lv/ipasa-pvn-registracijas-kartiba-mazajiem-uznemumiem",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.pvn",
+      "nombre": "PVN likmes",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standarta": "Standarta likme",
+        "samazinata": "Samazinātā likme (zāles, atsevišķa pārtika, pasažieru pārvadājumi)",
+        "gramatas": "Samazinātā likme (grāmatas un preses izdevumi)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "standarta": 21,
+            "samazinata": 12,
+            "gramatas": 5
+          },
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Pievienotās vērtības nodokļa likmes",
+            "url": "https://www.vid.gov.lv/lv/pievienotas-vertibas-nodokla-likmes",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.nin-min",
+      "nombre": "Nekustamā īpašuma nodokļa zemākā likme",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.2,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Nekustamā īpašuma nodoklis",
+            "url": "https://www.vid.gov.lv/lv/nekustama-ipasuma-nodoklis",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.nin-max",
+      "nombre": "Nekustamā īpašuma nodokļa augstākā likme",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Valsts ieņēmumu dienests",
+            "titulo": "Nekustamā īpašuma nodoklis",
+            "url": "https://www.vid.gov.lv/lv/nekustama-ipasuma-nodoklis",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.atvalinajums-nedelas",
+      "nombre": "Ikgadējais apmaksātais atvaļinājums",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas."
+        }
+      ]
+    },
+    {
+      "id": "lv.videja-izpelna-menesi",
+      "nombre": "Vidējās izpeļņas aprēķina periods",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas."
+        }
+      ]
+    },
+    {
+      "id": "lv.virsstundu-piemaksa",
+      "nombre": "Piemaksa par virsstundu darbu",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas."
+        }
+      ]
+    },
+    {
+      "id": "lv.atlaisanas-pabalsts",
+      "nombre": "Atlaišanas pabalsts (vidējās izpeļņas mēneši)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "lidz-5": "Mazāk nekā 5 gadi",
+        "5-10": "No 5 līdz 10 gadiem",
+        "10-20": "No 10 līdz 20 gadiem",
+        "virs-20": "Vairāk nekā 20 gadi"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "lidz-5": 1,
+            "5-10": 2,
+            "10-20": 3,
+            "virs-20": 4
+          },
+          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas. El art. 112 tuvo además una reforma de 2018 (vestnesis.lv/op/2018/225.8)."
+        }
+      ]
+    },
+    {
+      "id": "lv.uzteikums",
+      "nombre": "Darba devēja uzteikuma termiņš",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "nekavejoties": "Nekavējoties (101. panta 1. daļas 2. vai 4. punkts)",
+        "desmit-dienas": "10 dienas (1., 3. vai 5. punkts)",
+        "menesis": "Viens mēnesis (6. līdz 10. punkts)"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "nekavejoties": 0,
+            "desmit-dienas": 10,
+            "menesis": 30
+          },
+          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas."
+        }
+      ]
+    },
+    {
+      "id": "lv.slimibas-nauda-2-3",
+      "nombre": "Slimības nauda par 2. un 3. dienu",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
+        }
+      ]
+    },
+    {
+      "id": "lv.slimibas-nauda-4-9",
+      "nombre": "Slimības nauda no 4. līdz 9. dienai",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
+        }
+      ]
+    },
+    {
+      "id": "lv.slimibas-pabalsts",
+      "nombre": "Slimības pabalsts no 10. dienas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
+        }
+      ]
+    },
+    {
+      "id": "lv.maternitates-pabalsts",
+      "nombre": "Maternitātes pabalsts",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
+        }
+      ]
+    },
+    {
+      "id": "lv.vecaku-pabalsts",
+      "nombre": "Vecāku pabalsts",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "13-menesi": "13 mēneši",
+        "19-menesi": "19 mēneši"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "13-menesi": 60,
+            "19-menesi": 43.75
+          },
+          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
+        }
+      ]
+    },
+    {
+      "id": "lv.vecaku-pabalsts-stradajot",
+      "nombre": "Vecāku pabalsta daļa, ja strādājat",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
+        }
+      ]
+    },
+    {
+      "id": "lv.bezdarbnieka-stazs",
+      "nombre": "Bezdarbnieka pabalsts pēc apdrošināšanas stāža",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1-9": "No 1 līdz 9 gadiem",
+        "10-19": "No 10 līdz 19 gadiem",
+        "20-29": "No 20 līdz 29 gadiem",
+        "30": "30 gadi un vairāk"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1-9": 50,
+            "10-19": 55,
+            "20-29": 60,
+            "30": 65
+          },
+          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
+        }
+      ]
+    },
+    {
+      "id": "lv.bezdarbnieka-posmi",
+      "nombre": "Bezdarbnieka pabalsta izmaksas daļa pa mēnešiem",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1-2": "1. un 2. mēnesis",
+        "3-4": "3. un 4. mēnesis",
+        "5-6": "5. un 6. mēnesis",
+        "7-8": "7. un 8. mēnesis"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1-2": 100,
+            "3-4": 75,
+            "5-6": 50,
+            "7-8": 45
+          },
+          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
+        }
+      ]
+    }
+  ]
+}
