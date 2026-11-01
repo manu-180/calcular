@@ -23,10 +23,10 @@ export default definirCalculadora({
     };
   },
   resultado: [
-    { clave: "vchar", etiqueta: "Ձեր սոցիալական վճարն ամսական", formato: "moneda", destacada: true },
-    { clave: "petutyun", etiqueta: "Պետության լրացումն ամսական", formato: "moneda" },
-    { clave: "hatkatsum", etiqueta: "Կուտակային հատկացումն ամսական", formato: "moneda" },
-    { clave: "tarekan", etiqueta: "Կուտակային հատկացումը տարեկան", formato: "moneda" },
-    { clave: "tope", etiqueta: "Հաշվարկի առավելագույն շեմը", formato: "moneda" },
+    { clave: "vchar", etiqueta: "Ձեր սոցիալական վճարն ամսական", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "petutyun", etiqueta: "Պետության լրացումն ամսական", formato: "moneda", decimales: 0 },
+    { clave: "hatkatsum", etiqueta: "Կուտակային հատկացումն ամսական", formato: "moneda", decimales: 0 },
+    { clave: "tarekan", etiqueta: "Կուտակային հատկացումը տարեկան", formato: "moneda", decimales: 0 },
+    { clave: "tope", etiqueta: "Հաշվարկի առավելագույն շեմը", formato: "moneda", decimales: 0 },
   ],
 });

@@ -27,8 +27,8 @@ export default definirCalculadora({
     return { hark, amsakan: redondear(hark / 12), bazhin: (hark / e.arzheq) * 100 };
   },
   resultado: [
-    { clave: "hark", etiqueta: "Անշարժ գույքի հարկը տարեկան", formato: "moneda", destacada: true },
-    { clave: "amsakan", etiqueta: "Միջինը ամսական", formato: "moneda" },
+    { clave: "hark", etiqueta: "Անշարժ գույքի հարկը տարեկան", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "amsakan", etiqueta: "Միջինը ամսական", formato: "moneda", decimales: 0 },
     { clave: "bazhin", etiqueta: "Հարկը արժեքի նկատմամբ", formato: "porcentaje", decimales: 2 },
   ],
 });

@@ -32,9 +32,9 @@ export default definirCalculadora({
     return { npast: redondear(orakan * orer), orer, himan: redondear(himan), orakan: redondear(orakan), observaciones };
   },
   resultado: [
-    { clave: "npast", etiqueta: "Մայրության նպաստ", formato: "moneda", destacada: true },
+    { clave: "npast", etiqueta: "Մայրության նպաստ", formato: "moneda", decimales: 0, destacada: true },
     { clave: "orer", etiqueta: "Արձակուրդի օրեր", formato: "dias" },
-    { clave: "himan", etiqueta: "Նպաստի ամսական հիմքը", formato: "moneda" },
-    { clave: "orakan", etiqueta: "Նպաստը մեկ օրվա համար", formato: "moneda" },
+    { clave: "himan", etiqueta: "Նպաստի ամսական հիմքը", formato: "moneda", decimales: 0 },
+    { clave: "orakan", etiqueta: "Նպաստը մեկ օրվա համար", formato: "moneda", decimales: 0 },
   ],
 });

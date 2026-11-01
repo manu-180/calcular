@@ -24,8 +24,8 @@ export default definirCalculadora({
     return { hark, dedq, zut: e.yekamut - hark };
   },
   resultado: [
-    { clave: "hark", etiqueta: "Եկամտային հարկ", formato: "moneda", destacada: true },
+    { clave: "hark", etiqueta: "Եկամտային հարկ", formato: "moneda", decimales: 0, destacada: true },
     { clave: "dedq", etiqueta: "Դրույքաչափ", formato: "porcentaje" },
-    { clave: "zut", etiqueta: "Գումարը հարկումից հետո", formato: "moneda" },
+    { clave: "zut", etiqueta: "Գումարը հարկումից հետո", formato: "moneda", decimales: 0 },
   ],
 });

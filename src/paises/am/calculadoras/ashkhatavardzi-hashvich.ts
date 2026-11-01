@@ -39,13 +39,13 @@ export default definirCalculadora({
     };
   },
   resultado: [
-    { clave: "zut", etiqueta: "Զուտ աշխատավարձ ամսական", formato: "moneda", destacada: true },
-    { clave: "yekamtayin", etiqueta: "Եկամտային հարկ", formato: "moneda" },
-    { clave: "kutakayin", etiqueta: "Կուտակային սոցիալական վճար", formato: "moneda", ocultarSiCero: true },
-    { clave: "drosh", etiqueta: "Դրոշմանիշային վճար", formato: "moneda" },
-    { clave: "aha", etiqueta: "Առողջության ապահովագրավճար", formato: "moneda", ocultarSiCero: true },
-    { clave: "pahumner", etiqueta: "Պահումներն ընդամենը", formato: "moneda" },
-    { clave: "zutTarekan", etiqueta: "Զուտ աշխատավարձ տարեկան", formato: "moneda" },
+    { clave: "zut", etiqueta: "Զուտ աշխատավարձ ամսական", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "yekamtayin", etiqueta: "Եկամտային հարկ", formato: "moneda", decimales: 0 },
+    { clave: "kutakayin", etiqueta: "Կուտակային սոցիալական վճար", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "drosh", etiqueta: "Դրոշմանիշային վճար", formato: "moneda", decimales: 0 },
+    { clave: "aha", etiqueta: "Առողջության ապահովագրավճար", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "pahumner", etiqueta: "Պահումներն ընդամենը", formato: "moneda", decimales: 0 },
+    { clave: "zutTarekan", etiqueta: "Զուտ աշխատավարձ տարեկան", formato: "moneda", decimales: 0 },
   ],
   mundo: {
     bruto: "ashkhatavardz",

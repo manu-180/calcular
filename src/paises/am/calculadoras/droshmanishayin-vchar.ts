@@ -36,7 +36,7 @@ export default definirCalculadora({
     return { vchar, tarekan: ashkhatogh ? vchar * 12 : vchar };
   },
   resultado: [
-    { clave: "vchar", etiqueta: "Դրոշմանիշային վճար հաշվետու ժամանակաշրջանի համար", formato: "moneda", destacada: true },
-    { clave: "tarekan", etiqueta: "Դրոշմանիշային վճարը տարեկան", formato: "moneda" },
+    { clave: "vchar", etiqueta: "Դրոշմանիշային վճար հաշվետու ժամանակաշրջանի համար", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "tarekan", etiqueta: "Դրոշմանիշային վճարը տարեկան", formato: "moneda", decimales: 0 },
   ],
 });

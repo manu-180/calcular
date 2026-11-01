@@ -17,10 +17,10 @@ export default definirCalculadora({
     return { zut: e.shahabazhin - hark, hark, shahuyt, shahutahark, berr };
   },
   resultado: [
-    { clave: "zut", etiqueta: "Շահաբաժինը հարկումից հետո", formato: "moneda", destacada: true },
-    { clave: "hark", etiqueta: "Եկամտային հարկ", formato: "moneda" },
-    { clave: "shahuyt", etiqueta: "Համապատասխան շահույթը մինչև շահութահարկը", formato: "moneda" },
-    { clave: "shahutahark", etiqueta: "Շահութահարկը այդ շահույթից", formato: "moneda" },
+    { clave: "zut", etiqueta: "Շահաբաժինը հարկումից հետո", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "hark", etiqueta: "Եկամտային հարկ", formato: "moneda", decimales: 0 },
+    { clave: "shahuyt", etiqueta: "Համապատասխան շահույթը մինչև շահութահարկը", formato: "moneda", decimales: 0 },
+    { clave: "shahutahark", etiqueta: "Շահութահարկը այդ շահույթից", formato: "moneda", decimales: 0 },
     { clave: "berr", etiqueta: "Ընդհանուր հարկային բեռը շահույթի վրա", formato: "porcentaje", decimales: 1 },
   ],
 });

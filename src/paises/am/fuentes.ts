@@ -65,9 +65,9 @@ function detectorNorma(id: string, datos: readonly string[], url: `https://${str
     metodo: "html",
     url,
     async traer(http: Http): Promise<readonly HallazgoNorma[] | null> {
-      const html = await http.texto(url);
-      if (!ley.test(html)) return null;
-      if (cifra.test(html)) return [];
+      const texto = (await http.texto(url)).replace(/<[^>]+>|&nbsp;/g, " ");
+      if (!ley.test(texto)) return null;
+      if (cifra.test(texto)) return [];
       return [{ titulo, url, fecha: new Date().toISOString().slice(0, 10) as FechaISO }];
     },
   };

@@ -23,9 +23,9 @@ export default definirCalculadora({
     };
   },
   resultado: [
-    { clave: "vchar", etiqueta: "Վճարվող գումարն ամսական", formato: "moneda", destacada: true },
-    { clave: "tarekan", etiqueta: "Վճարվող գումարը տարեկան", formato: "moneda" },
-    { clave: "petutyun", etiqueta: "Պետության մասն ամսական", formato: "moneda", ocultarSiCero: true },
-    { clave: "yndhanur", etiqueta: "Ապահովագրավճարի ամբողջական ամսական դրույքաչափը", formato: "moneda" },
+    { clave: "vchar", etiqueta: "Վճարվող գումարն ամսական", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "tarekan", etiqueta: "Վճարվող գումարը տարեկան", formato: "moneda", decimales: 0 },
+    { clave: "petutyun", etiqueta: "Պետության մասն ամսական", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "yndhanur", etiqueta: "Ապահովագրավճարի ամբողջական ամսական դրույքաչափը", formato: "moneda", decimales: 0 },
   ],
 });

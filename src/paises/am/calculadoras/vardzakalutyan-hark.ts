@@ -17,11 +17,11 @@ export default definirCalculadora({
     return { amsakanHark: redondear(hark / 12), tarekanHark: hark, himan, lrats, tarekan, zut: tarekan - hark };
   },
   resultado: [
-    { clave: "amsakanHark", etiqueta: "Եկամտային հարկն ամսական", formato: "moneda", destacada: true },
-    { clave: "tarekanHark", etiqueta: "Եկամտային հարկը տարեկան", formato: "moneda" },
-    { clave: "himan", etiqueta: "Հիմնական հարկը", formato: "moneda" },
-    { clave: "lrats", etiqueta: "Լրացուցիչ հարկը շեմից բարձր մասի համար", formato: "moneda", ocultarSiCero: true },
-    { clave: "tarekan", etiqueta: "Տարեկան վարձակալական վճար", formato: "moneda" },
-    { clave: "zut", etiqueta: "Տարեկան գումարը հարկումից հետո", formato: "moneda" },
+    { clave: "amsakanHark", etiqueta: "Եկամտային հարկն ամսական", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "tarekanHark", etiqueta: "Եկամտային հարկը տարեկան", formato: "moneda", decimales: 0 },
+    { clave: "himan", etiqueta: "Հիմնական հարկը", formato: "moneda", decimales: 0 },
+    { clave: "lrats", etiqueta: "Լրացուցիչ հարկը շեմից բարձր մասի համար", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "tarekan", etiqueta: "Տարեկան վարձակալական վճար", formato: "moneda", decimales: 0 },
+    { clave: "zut", etiqueta: "Տարեկան գումարը հարկումից հետո", formato: "moneda", decimales: 0 },
   ],
 });

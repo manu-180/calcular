@@ -30,8 +30,8 @@ export default definirCalculadora({
     return { npast: redondear(orakan * orer), orer, orakan: redondear(orakan) };
   },
   resultado: [
-    { clave: "npast", etiqueta: "Արձակման նպաստ", formato: "moneda", destacada: true },
+    { clave: "npast", etiqueta: "Արձակման նպաստ", formato: "moneda", decimales: 0, destacada: true },
     { clave: "orer", etiqueta: "Միջին օրական աշխատավարձի բազմապատիկ", formato: "dias" },
-    { clave: "orakan", etiqueta: "Միջին օրական աշխատավարձ", formato: "moneda" },
+    { clave: "orakan", etiqueta: "Միջին օրական աշխատավարձ", formato: "moneda", decimales: 0 },
   ],
 });

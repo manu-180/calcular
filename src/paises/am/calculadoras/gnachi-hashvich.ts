@@ -30,8 +30,8 @@ export default definirCalculadora({
     };
   },
   resultado: [
-    { clave: "arzheq", etiqueta: "Նույն գնողունակությունը", formato: "moneda", destacada: true },
-    { clave: "tarberutyun", etiqueta: "Տարբերությունը գնաճի պատճառով", formato: "moneda" },
+    { clave: "arzheq", etiqueta: "Նույն գնողունակությունը", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "tarberutyun", etiqueta: "Տարբերությունը գնաճի պատճառով", formato: "moneda", decimales: 0 },
     { clave: "yndhanur", etiqueta: "Գնաճը ամբողջ ժամանակահատվածում", formato: "porcentaje", decimales: 1 },
     { clave: "skizb", etiqueta: "Սկզբի ամիս", formato: "texto" },
     { clave: "avart", etiqueta: "Ավարտի ամիս", formato: "texto" },

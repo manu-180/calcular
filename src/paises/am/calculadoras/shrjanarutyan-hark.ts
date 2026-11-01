@@ -50,9 +50,9 @@ export default definirCalculadora({
     };
   },
   resultado: [
-    { clave: "hark", etiqueta: "Շրջանառության հարկը եռամսյակի համար", formato: "moneda", destacada: true },
+    { clave: "hark", etiqueta: "Շրջանառության հարկը եռամսյակի համար", formato: "moneda", decimales: 0, destacada: true },
     { clave: "dedq", etiqueta: "Դրույքաչափ", formato: "porcentaje", decimales: 1 },
-    { clave: "skzbnakan", etiqueta: "Հարկը մինչև ծախսերի նվազեցումը", formato: "moneda" },
-    { clave: "nvazetsum", etiqueta: "Ծախսերի գծով նվազեցում", formato: "moneda", ocultarSiCero: true },
+    { clave: "skzbnakan", etiqueta: "Հարկը մինչև ծախսերի նվազեցումը", formato: "moneda", decimales: 0 },
+    { clave: "nvazetsum", etiqueta: "Ծախսերի գծով նվազեցում", formato: "moneda", decimales: 0, ocultarSiCero: true },
   ],
 });

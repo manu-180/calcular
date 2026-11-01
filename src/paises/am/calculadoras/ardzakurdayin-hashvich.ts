@@ -19,8 +19,8 @@ export default definirCalculadora({
     return { vchar: redondear(orakan * orer), orakan: redondear(orakan), orer };
   },
   resultado: [
-    { clave: "vchar", etiqueta: "Արձակուրդի վճար", formato: "moneda", destacada: true },
-    { clave: "orakan", etiqueta: "Միջին օրական աշխատավարձ", formato: "moneda" },
+    { clave: "vchar", etiqueta: "Արձակուրդի վճար", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "orakan", etiqueta: "Միջին օրական աշխատավարձ", formato: "moneda", decimales: 0 },
     { clave: "orer", etiqueta: "Արձակուրդի օրեր", formato: "dias" },
   ],
 });

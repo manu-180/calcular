@@ -31,10 +31,10 @@ export default definirCalculadora({
     return { lrats: artazhamya + gisher + ton, zham: redondear(zham), artazhamya, gisher, ton, observaciones };
   },
   resultado: [
-    { clave: "lrats", etiqueta: "Լրացուցիչ վճարն ընդամենը", formato: "moneda", destacada: true },
-    { clave: "zham", etiqueta: "Ժամային դրույք", formato: "moneda" },
-    { clave: "artazhamya", etiqueta: "Արտաժամյա աշխատանք", formato: "moneda", ocultarSiCero: true },
-    { clave: "gisher", etiqueta: "Գիշերային հավելում", formato: "moneda", ocultarSiCero: true },
-    { clave: "ton", etiqueta: "Տոնական կամ հանգստյան օր", formato: "moneda", ocultarSiCero: true },
+    { clave: "lrats", etiqueta: "Լրացուցիչ վճարն ընդամենը", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "zham", etiqueta: "Ժամային դրույք", formato: "moneda", decimales: 0 },
+    { clave: "artazhamya", etiqueta: "Արտաժամյա աշխատանք", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "gisher", etiqueta: "Գիշերային հավելում", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "ton", etiqueta: "Տոնական կամ հանգստյան օր", formato: "moneda", decimales: 0, ocultarSiCero: true },
   ],
 });

@@ -44,11 +44,11 @@ export default definirCalculadora({
     };
   },
   resultado: [
-    { clave: "nvazaguyn", etiqueta: "Նվազագույն ամսական աշխատավարձ", formato: "moneda", destacada: true },
-    { clave: "zham", etiqueta: "Նվազագույն ժամային դրույք", formato: "moneda" },
-    { clave: "hamakharn", etiqueta: "Հաշվարկային համախառն գումար՝ պահումներով", formato: "moneda", ayuda: "Օրենքով (հոդված 4) նվազագույնի մեջ հարկերն ու պարտադիր վճարները չեն ներառվում։" },
-    { clave: "pahumner", etiqueta: "Պահումներն այդ համախառնից", formato: "moneda" },
-    { clave: "tarekan", etiqueta: "Նվազագույնը տարեկան", formato: "moneda" },
-    { clave: "tarberutyun", etiqueta: "Տարբերությունը Ձեր աշխատավարձի հետ", formato: "moneda" },
+    { clave: "nvazaguyn", etiqueta: "Նվազագույն ամսական աշխատավարձ", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "zham", etiqueta: "Նվազագույն ժամային դրույք", formato: "moneda", decimales: 0 },
+    { clave: "hamakharn", etiqueta: "Հաշվարկային համախառն գումար՝ պահումներով", formato: "moneda", decimales: 0, ayuda: "Օրենքով (հոդված 4) նվազագույնի մեջ հարկերն ու պարտադիր վճարները չեն ներառվում։" },
+    { clave: "pahumner", etiqueta: "Պահումներն այդ համախառնից", formato: "moneda", decimales: 0 },
+    { clave: "tarekan", etiqueta: "Նվազագույնը տարեկան", formato: "moneda", decimales: 0 },
+    { clave: "tarberutyun", etiqueta: "Տարբերությունը Ձեր աշխատավարձի հետ", formato: "moneda", decimales: 0 },
   ],
 });

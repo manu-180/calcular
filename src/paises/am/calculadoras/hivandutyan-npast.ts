@@ -35,10 +35,10 @@ export default definirCalculadora({
     return { npast, gortatu, petutyun: npast - gortatu, himan: redondear(himan), orakan: redondear(orakan), observaciones };
   },
   resultado: [
-    { clave: "npast", etiqueta: "Հիվանդության նպաստ", formato: "moneda", destacada: true },
-    { clave: "gortatu", etiqueta: "Վճարում է գործատուն", formato: "moneda" },
-    { clave: "petutyun", etiqueta: "Վճարում է պետական բյուջեն", formato: "moneda", ocultarSiCero: true },
-    { clave: "himan", etiqueta: "Նպաստի ամսական հիմքը", formato: "moneda" },
-    { clave: "orakan", etiqueta: "Նպաստը մեկ օրվա համար", formato: "moneda" },
+    { clave: "npast", etiqueta: "Հիվանդության նպաստ", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "gortatu", etiqueta: "Վճարում է գործատուն", formato: "moneda", decimales: 0 },
+    { clave: "petutyun", etiqueta: "Վճարում է պետական բյուջեն", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "himan", etiqueta: "Նպաստի ամսական հիմքը", formato: "moneda", decimales: 0 },
+    { clave: "orakan", etiqueta: "Նպաստը մեկ օրվա համար", formato: "moneda", decimales: 0 },
   ],
 });

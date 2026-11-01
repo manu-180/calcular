@@ -40,11 +40,11 @@ export default definirCalculadora({
     };
   },
   resultado: [
-    { clave: "hamakharn", etiqueta: "Անհրաժեշտ համախառն աշխատավարձ", formato: "moneda", destacada: true },
-    { clave: "stacvogh", etiqueta: "Ձեռքին մնացող զուտ գումար", formato: "moneda" },
-    { clave: "yekamtayin", etiqueta: "Եկամտային հարկ", formato: "moneda" },
-    { clave: "kutakayin", etiqueta: "Կուտակային սոցիալական վճար", formato: "moneda", ocultarSiCero: true },
-    { clave: "drosh", etiqueta: "Դրոշմանիշային վճար", formato: "moneda" },
-    { clave: "aha", etiqueta: "Առողջության ապահովագրավճար", formato: "moneda", ocultarSiCero: true },
+    { clave: "hamakharn", etiqueta: "Անհրաժեշտ համախառն աշխատավարձ", formato: "moneda", decimales: 0, destacada: true },
+    { clave: "stacvogh", etiqueta: "Ձեռքին մնացող զուտ գումար", formato: "moneda", decimales: 0 },
+    { clave: "yekamtayin", etiqueta: "Եկամտային հարկ", formato: "moneda", decimales: 0 },
+    { clave: "kutakayin", etiqueta: "Կուտակային սոցիալական վճար", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "drosh", etiqueta: "Դրոշմանիշային վճար", formato: "moneda", decimales: 0 },
+    { clave: "aha", etiqueta: "Առողջության ապահովագրավճար", formato: "moneda", decimales: 0, ocultarSiCero: true },
   ],
 });

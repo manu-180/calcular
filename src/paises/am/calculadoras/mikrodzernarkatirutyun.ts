@@ -37,9 +37,9 @@ export default definirCalculadora({
   },
   resultado: [
     { clave: "kargavichak", etiqueta: "Շրջանառության շեմը", formato: "texto", destacada: true },
-    { clave: "mnatsord", etiqueta: "Մնացորդը մինչև շեմը", formato: "moneda" },
-    { clave: "yekamtayin", etiqueta: "Աշխատողների եկամտային հարկը տարեկան", formato: "moneda", ocultarSiCero: true },
-    { clave: "drosh", etiqueta: "Ձեռնարկատիրոջ տարեկան դրոշմանիշային վճար", formato: "moneda", ocultarSiCero: true },
-    { clave: "shrjanarutyanHark", etiqueta: "Համեմատության համար՝ շրջանառության հարկ ծառայությունների դրույքով", formato: "moneda" },
+    { clave: "mnatsord", etiqueta: "Մնացորդը մինչև շեմը", formato: "moneda", decimales: 0 },
+    { clave: "yekamtayin", etiqueta: "Աշխատողների եկամտային հարկը տարեկան", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "drosh", etiqueta: "Ձեռնարկատիրոջ տարեկան դրոշմանիշային վճար", formato: "moneda", decimales: 0, ocultarSiCero: true },
+    { clave: "shrjanarutyanHark", etiqueta: "Համեմատության համար՝ շրջանառության հարկ ծառայությունների դրույքով", formato: "moneda", decimales: 0 },
   ],
 });
