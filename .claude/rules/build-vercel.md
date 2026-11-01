@@ -16,7 +16,10 @@ no entra en 8 GB se achica el build, nunca se agranda la máquina. Lo que hoy lo
   calendario viven en `src/app/(intl)/intl/[mercado]/i/<seccion>/[seccion]/` y `next.config.ts`
   reescribe ahí cada slug localizado (`src/motor/secciones.ts`, rewrites afterFiles). Una sección
   nueva con slug por idioma se suma a `SECCIONES`; nunca 28 carpetas.
-- **Build con webpack** (`package.json`) con techo de 6 GB para Node. Turbopack pasaba los 8 GB
+- **Build con webpack** (`package.json`) con techo de 3 GB para Node (`--max-old-space-size=3072`). Con 6 GB, V8 no
+  apuraba el GC, la memoria nativa sumaba unos 2 GB más y el contenedor moría con SIGKILL en "Creating an optimized
+  production build" desde la tanda 4 (1/11/2026, deploys f4e8e669, 57fee561 y 1d142789). Medido en Windows, sin tope de
+  contenedor: pico de 5,02 GB con heap de 3072 y 1 worker; 5,83 GB con 4096 o 6144 y 2 workers. No subir este número. Turbopack pasaba los 8 GB
   compilando los ~146 países. Dev sigue con Turbopack: toda regla de `turbopack.rules` tiene su
   par en `webpack()` de `next.config.ts`.
 - **Dos workers en el build** (`BUILD_CPUS=2`, variable de entorno del proyecto en Vercel, production

@@ -6,10 +6,6 @@
 # Por eso los previews son opt-in: una rama sólo construye si el commit dice [preview] en el
 # mensaje (las ramas claude/** ya no construyen por vercel.json). Producción construye siempre
 # que el push toque algo que no sea documentación, marketing, .github o .claude.
-#
-# Otra cosa que frena a producción y no pasa por este script: Vercel bloquea el deploy de un commit
-# cuyo autor no es del equipo. Los merges a main tienen que quedar con autor manu-180 (ver
-# .claude/rules/vercel-consumo.md).
 if [ "$VERCEL_ENV" != "production" ]; then
   case "$VERCEL_GIT_COMMIT_MESSAGE" in
     *"[preview]"*) ;;
