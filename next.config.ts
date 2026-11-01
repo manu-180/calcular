@@ -92,6 +92,9 @@ const nextConfig: NextConfig = {
     // lang, el header y el footer: ver src/app/global-not-found.tsx.
     globalNotFound: true,
     webpackMemoryOptimizations: true,
+    // Minificar el server no aporta a la página y era parte del pico de memoria del build.
+    serverMinification: false,
+    serverSourceMaps: false,
     ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
   },
   // Los <slug>.cliente.tsx de los países (docs/paises/RECETA.md) los importa el registro con
@@ -111,7 +114,12 @@ const nextConfig: NextConfig = {
   },
   // La misma regla para webpack, que es con el que se buildea (package.json): con Turbopack el build
   // pasaba los 8 GB de la máquina standard de Vercel (29/10/2026) y no se usa una más grande.
-  webpack(config, { isServer }) {
+  webpack(config, { isServer, dev }) {
+    // Máquina de 8 GB: sin caché de webpack (serializarla pesa más que el build) y de a pocos módulos.
+    if (!dev) {
+      config.cache = false;
+      config.parallelism = 2;
+    }
     if (isServer) {
       config.module.rules.push({
         test: /\.cliente\.tsx$/,
