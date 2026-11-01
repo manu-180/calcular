@@ -3557,9 +3557,9 @@ const bg: Diccionario<TextosRankings> = {
     kit: {
       titulo: "За медиите",
       bajada: "Изречение, графика и линк към тази класация, готови за публикуване.",
-      compartir: "Сподели",
+      compartir: "Споделете",
       descargar: "Изтеглете графиката",
-      copiar: "Копирай цитата",
+      copiar: "Копирайте цитата",
       copiado: "Цитатът е копиран",
       enlace: "Линкът е копиран",
       compartido: "Изпратено",

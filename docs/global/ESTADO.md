@@ -21,6 +21,16 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 31/10/2026 · Motor búlgaro (`claude/mundo-motor-bg`, ADR 0002 D24)
+
+`bg` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición interna `zz-bg`. Registro de
+bancos y servicios: 2.ª del plural, «Вие» con mayúscula. EUR como moneda de prueba (euro desde el 1/1/2026,
+comunicado de la BNB). Slugs con la transliteración oficial, por `src/motor/secciones.ts`, sin carpetas por
+idioma. Listo para que un agente de país escriba Bulgaria (`bg`). Fallas de main ajenas al frente:
+`check_horas` (AR, salario vencido el 31/10), `check_mundo` (be, neto) y `check_guiones` (raya en
+`src/paises/hu/calculadoras/vegkielegites-szamitas.casos.ts`).
+
 ## 29/10/2026 · Tanda 2 de países (grupo A): ag, bz, ne, bn, np, sc, ws (`claude/paises-tanda-2`)
 
 Publicados: Antigua y Barbuda (ag), Belice (bz), Níger (ne), Brunéi (bn), Nepal (np), Seychelles (sc) y

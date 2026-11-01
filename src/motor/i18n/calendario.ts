@@ -2054,7 +2054,7 @@ const bg: Diccionario<TextosCalendario> = {
     cambian: "Сумите се променят",
     zonas: (lista) => `Региони: ${lista}`,
     limite: "Краен срок",
-    agregar: "Добави в моя календар",
+    agregar: "Добавете в моя календар",
     descargar: "Apple, Outlook и други (файл .ics)",
     google: "Google Календар",
     calcular: "Изчислете",
@@ -2065,7 +2065,7 @@ const bg: Diccionario<TextosCalendario> = {
       titulo: "Целият календар, винаги актуален",
       texto: "С един абонамент новите дати се появяват сами в календара на телефона или компютъра.",
       boton: "Абонирай се за календара",
-      copiar: "Копирай линка",
+      copiar: "Копирайте линка",
       copiado: "Линкът е копиран",
     },
     fuentes: {
