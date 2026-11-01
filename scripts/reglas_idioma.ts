@@ -162,6 +162,17 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Mongol: un solo registro, el de Хаан банк, e-Mongolia y Татварын ерөнхий газар («та», «таны» y las
+  // formas corteses «оруулна уу», «сонгоно уу»; ADR 0002, D28). Se atrapa el «чи» con sus formas, la raíz
+  // verbal sola como orden («Оруул.») y el imperativo amistoso de publicidad (-аарай, -ээрэй, -оорой, -өөрэй).
+  mn: {
+    informal: [
+      { re: palabras("чи|чиний|чамд|чамайг|чамаас|чамтай|чамруу|чинийх"), nombre: "«чи» (va «та», «таны»)" },
+      { re: /(?<!\p{L})(?:оруул|сонго|тооцоол|шалга|харьцуул|дар|бөглө|хуул|үз)(?=\s*(?:[.:;]|$))/iu, nombre: "raíz verbal como orden (va «оруулна уу», «сонгоно уу»; en un botón, «Тооцоолох»)" },
+      { re: /\p{L}{2,}(?:аарай|ээрэй|оорой|өөрэй)(?!\p{L})/u, nombre: "imperativo amistoso (va «-на уу», «-нэ үү»)" },
+    ],
+    formal: [],
+  },
   // Búlgaro: un solo registro, el de ДСК y НАП (2.ª del plural, «Вие», «Ви», «Вашият» con mayúscula;
   // ADR 0002, D24). Se atrapa el «ти» y sus formas, y el pronombre de cortesía con minúscula.
   bg: {
@@ -370,6 +381,23 @@ function reglasBg(texto: string): string[] {
   if (/(?<!\p{L})[Сс] [СсЗз]\p{L}/u.test(texto)) p.push("delante de с o з va «със»");
   const r = RUSISMOS_BG.exec(texto);
   if (r) p.push(`«${r[0]}» es ruso, no búlgaro`);
+  return p;
+}
+
+// Mongol (ADR 0002, D28): «ъ» solo aparece en préstamos rusos y aquí delata un texto copiado; letras de
+// otros cirílicos fuera; comillas «»; ningún sufijo de caso pegado a una cifra, a un símbolo o a un guion
+// («5-д», «₮-ийн», «20%-ийг»; «12-р сар» sí, es el ordinal); sin plural detrás de un número («3 өдрүүд»);
+// y las palabras que delatan ruso sin traducir. Las letras ө, ү no se revisan palabra por palabra.
+const RUSISMOS_MN = palabras("зарплата|зарплаты|сумма|суммы|расчет|рассчитать|калькулятор|калькулятора|налог|также|если|только|можно|для|будет|который|которая|которые|что|это");
+function reglasMn(texto: string): string[] {
+  const p: string[] = [];
+  if (/[ъЪ]/.test(texto)) p.push("«ъ»: no va en mongol nativo");
+  if (/[іїєґўқғңҳәұһјљњћџђІЇЄҐЎҚҒҢҲӘҰҺ]/.test(texto)) p.push("letra de otro alfabeto cirílico en un texto mongol");
+  if (/["“”„](?=\p{sc=Cyrillic})|(?<=\p{sc=Cyrillic}[.,?:;]?)["“”„]/u.test(texto)) p.push("comillas: en mongol van «»");
+  if (/[\d%₮][-‑]?(?:ийн|ын|ний|ны|ийг|ыг|д|т|г|ад|эд|од|өд|аас|ээс|оос|өөс|тай|тэй|той)(?!\p{L})/u.test(texto)) p.push("sufijo de caso pegado a una cifra (reescribir la frase, o «хувь», «төгрөг» con el sufijo)");
+  if (/\d\s+\p{L}+(?:ууд|үүд|нууд|нүүд)(?!\p{L})/u.test(texto)) p.push("plural detrás de un número (va singular: «3 өдөр»)");
+  const r = RUSISMOS_MN.exec(texto);
+  if (r) p.push(`«${r[0]}» es ruso, no mongol`);
   return p;
 }
 
@@ -730,5 +758,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "bg") p.push(...reglasBg(texto));
   if (idioma === "ka") p.push(...reglasKa(texto));
   if (idioma === "hr") p.push(...reglasHr(texto));
+  if (idioma === "mn") p.push(...reglasMn(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

@@ -3,6 +3,7 @@ import { bn } from "../i18n/inicio/bn";
 import { cs } from "../i18n/inicio/cs";
 import { he } from "../i18n/inicio/he";
 import { bg } from "../i18n/inicio/bg";
+import { mn } from "../i18n/inicio/mn";
 import { de } from "../i18n/inicio/de";
 import { el } from "../i18n/inicio/el";
 import { en } from "../i18n/inicio/en";
@@ -37,7 +38,7 @@ import type { Idioma, Trato } from "../tipos";
 
 export type { TextosInicio } from "../i18n/inicio/tipos";
 
-export const DICCIONARIOS_INICIO: Diccionarios<TextosInicio> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr };
+export const DICCIONARIOS_INICIO: Diccionarios<TextosInicio> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
 
 export function textosInicio(idioma: Idioma, trato: Trato, locale?: string): TextosInicio {
   return resolver(DICCIONARIOS_INICIO, idioma, trato, locale);

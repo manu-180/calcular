@@ -3,7 +3,7 @@ import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { GRAMATICA, mayusculaHu } from "./gramatica";
-import { formaBg, formaCs, formaEl, formaRu, formaSk, formaUk, pluralBg, pluralCs, pluralEl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
+import { conteoMn, formaBg, formaCs, formaEl, formaRu, formaSk, formaUk, pluralBg, pluralCs, pluralEl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
 import { formaSr, pluralSr } from "./plural";
 import { formaHr, pluralHr } from "./plural";
 import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
@@ -2395,7 +2395,82 @@ const hr: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr };
+// Mongol (ADR 0002, D28): impersonal como los demás; el país va con GRAMATICA.mn y los días sin plural
+// ni sufijo pegado a la cifra («3 өдөр», «3 өдрийн дараа», «3 өдрийн өмнө»).
+const gMn = GRAMATICA.mn;
+const mn: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Хөдөлмөр, татварын хуанли",
+    seo: {
+      titulo: (pais, anios) => [
+        `${gMn.para(pais)} хөдөлмөр, татварын хуанли ${anios}: чухал огноо`,
+        `${gMn.para(pais)} хөдөлмөр, татварын хуанли ${anios}`,
+        `${gMn.para(pais)} хөдөлмөрийн хуанли`,
+      ],
+      descripcion: (pais, proximas) => `${gMn.en(pais)} цалинд нөлөөлөх огноо, албан ёсны эх сурвалжтай: ${proximas}. Тус бүр өөрийн тооцоолууртай.`,
+      descripcionSin: (pais) => `${gMn.en(pais)} цалинд нөлөөлөх огноо, албан ёсны эх сурвалж, тооцоолууртай. Утасныхаа хуанлид нэмж болно.`,
+    },
+    ceja: (anios) => `Хуанли ${anios}`,
+    h1: (pais) => `${gMn.para(pais)} хөдөлмөр, татварын хуанли`,
+    acento: "цалин хамаарах огноо",
+    bajada: "Огноо бүрийг албан ёсны эх сурвалжаас авсан бөгөөд холбогдох тооцоолуур руу хөтөлнө. Шинэ утга нийтлэгдэхэд хуудас автоматаар шинэчлэгдэнэ.",
+    proxima: "Дараагийн огноо",
+    cuenta: {
+      hoy: "Өнөөдөр",
+      manana: "Маргааш",
+      ayer: "Өчигдөр",
+      en: (n) => `${conteoMn(n, "өдрийн")} дараа`,
+      hace: (n) => `${conteoMn(n, "өдрийн")} өмнө`,
+      dias: () => "өдөр",
+    },
+    queViene: "Удахгүй",
+    yaRige: "Хүчин төгөлдөр болсон",
+    mesPorMes: "Жил, сар сараар",
+    sinFechas: "Зарласан өөрчлөлт байхгүй",
+    filtro: "Сэдвээр шүүх",
+    todo: "Бүгд",
+    tipos: { pago: "Төлбөр", "salario-minimo": "Хөдөлмөрийн хөлсний доод хэмжээ", impuestos: "Татвар", aportes: "Нийгмийн даатгал, тэтгэвэр", laboral: "Хөдөлмөрийн дүрэм", indices: "Жишиг үзүүлэлт" },
+    pasa: (antes, despues) => `${antes} утгаас ${despues} болж өөрчлөгдөнө`,
+    queda: (valor) => `Тогтоосон: ${valor}`,
+    cambian: "Дүн өөрчлөгдөнө",
+    zonas: (lista) => `Бүс нутаг: ${lista}`,
+    limite: "Эцсийн хугацаа",
+    agregar: "Миний хуанлид нэмэх",
+    descargar: "Apple, Outlook болон бусад (.ics файл)",
+    google: "Google Calendar",
+    calcular: "Тооцоолох",
+    tambien: "Мөн эдгээр тооцоолуурт",
+    fuente: (organismo, fecha) => `Эх сурвалж: ${organismo}. Шалгасан огноо: ${fecha}`,
+    verificado: (fecha) => `Шалгасан огноо: ${fecha}`,
+    suscribir: {
+      titulo: "Бүх хуанли, үргэлж шинэчлэгдсэн",
+      texto: "Нэг удаа захиалснаар шинэ огноо утас, компьютерын хуанлид автоматаар гарч ирнэ.",
+      boton: "Хуанли захиалах",
+      copiar: "Холбоос хуулах",
+      copiado: "Холбоос хуулагдлаа",
+    },
+    fuentes: {
+      titulo: "Огноо бүр хаанаас ирдэг вэ",
+      texto: "Энд зөвхөн хууль тогтоомжоор тогтоосон, эсвэл албан ёсны байгууллагаас нийтэлсэн утгатай огноо орно. Нийтлэгдээгүй зүйл энд байхгүй.",
+    },
+    vacio: "Ойрын арван хоёр сард энэ сэдвээр огноо алга.",
+    destacado: {
+      ceja: "Төлбөрийн хуанли",
+      titulo: "Энэ жил цалин хамаарах огноо",
+      ir: "Хуанли үзэх",
+      proxima: (titulo, fecha) => `Дараагийнх: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `${gMn.para(pais)} хөдөлмөр, татварын хуанли (CalcularYa)`,
+      descripcion: (pais) => `${gMn.en(pais)} төлбөр, татварын огноо, албан ёсны эх сурвалжаас.`,
+      calculadora: "Тооцоолуур",
+      fuente: "Эх сурвалж",
+    },
+    og: { proxima: "Дараагийн огноо", mas: (n) => `Энэ жил дахиад ${conteoMn(n, "огноо")}` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

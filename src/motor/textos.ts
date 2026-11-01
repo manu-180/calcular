@@ -842,6 +842,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "წერტილები", coma: "მძიმეები" },
     },
   },
+  // Mongol (ADR 0002, D28): botón en «-х» («Тооцоолох») y pedidos en «-на уу», como Хаан банк.
+  mn: {
+    base: {
+      calcular: "Тооцоолох",
+      resultado: "Үр дүн",
+      si: "Тийм",
+      no: "Үгүй",
+      sinResultado: "Энэ үр дүнг одоогоор харуулахгүй байна.",
+      errores: {
+        requerido: "Энэ талбарыг бөглөнө үү.",
+        "numero-invalido": "Тоо оруулна уу, жишээ нь {ejemplo}.",
+        "entero-invalido": "Бутархайгүй бүхэл тоо оруулна уу.",
+        "menor-que-min": "Хамгийн бага утга: {min}.",
+        "mayor-que-max": "Хамгийн их утга: {max}.",
+        "fecha-invalida": "Зөв огноо сонгоно уу.",
+        "hora-invalida": "Зөв цаг сонгоно уу.",
+        "opcion-invalida": "Сонголтуудаас нэгийг сонгоно уу.",
+        "region-invalida": "Бүс нутаг сонгоно уу.",
+        "calculo-fallido": "Энэ мэдээллээр тооцоо гарсангүй. Утгуудаа шалгаад дахин оролдоно уу.",
+      },
+      milesAmbiguos: "Та {sugerido} гэж оруулах гэсэн үү? Тоог {signos} тэмдэггүй оруулна уу.",
+      separadores: { punto: "цэг", coma: "таслал" },
+    },
+  },
   he: {
     base: {
       calcular: "לחישוב",

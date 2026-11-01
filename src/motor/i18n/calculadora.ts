@@ -314,6 +314,17 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Forrás",
     },
   },
+  // Mongol (ADR 0002, D28): el botón es «Тооцоолох».
+  mn: {
+    base: {
+      datos: "Таны мэдээлэл",
+      resultado: "Үр дүн",
+      vacio: "Мэдээллээ оруулаад «Тооцоолох» товчийг дарж үр дүнгээ харна уу.",
+      sinResultado: "Энэ үр дүнг одоогоор харуулахгүй байна.",
+      avisos: { info: "Мэдэхэд хэрэгтэй", cautela: "Анхаарна уу", bloquea: "Үр дүнг яагаад харуулахгүй байна вэ" },
+      fuenteDelAviso: "Эх сурвалж",
+    },
+  },
   // Búlgaro (ADR 0002, D24): el botón es «Изчислете».
   bg: {
     base: {
