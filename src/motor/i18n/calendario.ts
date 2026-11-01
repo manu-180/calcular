@@ -3,7 +3,7 @@ import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { GRAMATICA, mayusculaHu } from "./gramatica";
-import { formaCs, formaEl, formaRu, formaUk, pluralCs, pluralEl, pluralRo, pluralRu, pluralUk } from "./plural";
+import { formaCs, formaEl, formaRu, formaSk, formaUk, pluralCs, pluralEl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
 import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
@@ -2014,7 +2014,82 @@ const he: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he };
+// Eslovaco (ADR 0002, D25): impersonal como los demás; el país se declina con GRAMATICA.sk („na
+// Slovensku“) y los días con formaSk/pluralSk (one/few/other; „pred 5 dňami“ va en instrumental).
+const gSk = GRAMATICA.sk;
+const sk: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Výplatný a daňový kalendár",
+    seo: {
+      titulo: (pais, anios) => [
+        `Výplatný a daňový kalendár ${anios} ${gSk.en(pais)}: dôležité dátumy`,
+        `Výplatný a daňový kalendár ${anios} ${gSk.en(pais)}`,
+        `Výplatný kalendár ${gSk.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Dátumy, ktoré menia mzdu ${gSk.en(pais)}, z oficiálnych zdrojov: ${proximas}. Ku každému je kalkulačka.`,
+      descripcionSin: (pais) => `Dátumy, ktoré menia mzdu ${gSk.en(pais)}, z oficiálnych zdrojov a ku každému kalkulačka. Pridajte si ich do kalendára v telefóne.`,
+    },
+    ceja: (anios) => `Kalendár na rok ${anios}`,
+    h1: (pais) => `Výplatný a daňový kalendár ${gSk.en(pais)}`,
+    acento: "dátumy, od ktorých závisí mzda",
+    bajada: "Každý dátum pochádza z oficiálneho zdroja a vedie ku kalkulačke, ktorú ovplyvňuje. Stránka sa aktualizuje sama, hneď ako sa zverejní nová hodnota.",
+    proxima: "Najbližší dátum",
+    cuenta: {
+      hoy: "Dnes",
+      manana: "Zajtra",
+      ayer: "Včera",
+      en: (n) => `O ${pluralSk(n, "deň", "dni", "dní")}`,
+      hace: (n) => `Pred ${pluralSk(n, "dňom", "dňami", "dňami")}`,
+      dias: (n) => formaSk(n, "deň", "dni", "dní"),
+    },
+    queViene: "Čoskoro",
+    yaRige: "Už platí",
+    mesPorMes: "Rok po mesiacoch",
+    sinFechas: "Neboli oznámené žiadne zmeny",
+    filtro: "Filtrovať podľa témy",
+    todo: "Všetko",
+    tipos: { pago: "Výplaty", "salario-minimo": "Minimálna mzda", impuestos: "Dane", aportes: "Odvody a dôchodky", laboral: "Pracovné pravidlá", indices: "Referenčné hodnoty" },
+    pasa: (antes, despues) => `Mení sa z ${antes} na ${despues}`,
+    queda: (valor) => `Platí: ${valor}`,
+    cambian: "Sumy sa menia",
+    zonas: (lista) => `Regióny: ${lista}`,
+    limite: "Posledný termín",
+    agregar: "Pridať do môjho kalendára",
+    descargar: "Apple, Outlook a ďalšie (súbor .ics)",
+    google: "Kalendár Google",
+    calcular: "Vypočítať",
+    tambien: "Tiež v kalkulačkách",
+    fuente: (organismo, fecha) => `Zdroj: ${organismo}. Overené ${fecha}.`,
+    verificado: (fecha) => `Overené ${fecha}`,
+    suscribir: {
+      titulo: "Celý kalendár, vždy aktuálny",
+      texto: "Prihláste sa na odber raz a nové dátumy sa vám samy objavia v kalendári v telefóne alebo počítači.",
+      boton: "Odoberať kalendár",
+      copiar: "Skopírovať odkaz",
+      copiado: "Odkaz skopírovaný",
+    },
+    fuentes: {
+      titulo: "Odkiaľ pochádza každý dátum",
+      texto: "Patria sem len dátumy, ktoré už stanovil právny predpis alebo hodnota zverejnená oficiálnym úradom. Čo ešte nie je zverejnené, tu nie je.",
+    },
+    vacio: "V nasledujúcich dvanástich mesiacoch k tejto téme nie sú žiadne dátumy.",
+    destacado: {
+      ceja: "Výplatný kalendár",
+      titulo: "Dátumy, od ktorých tento rok závisí mzda",
+      ir: "Zobraziť kalendár",
+      proxima: (titulo, fecha) => `Najbližší: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Výplatný a daňový kalendár ${gSk.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Výplatné a daňové termíny ${gSk.en(pais)} z oficiálnych zdrojov.`,
+      calculadora: "Kalkulačka",
+      fuente: "Zdroj",
+    },
+    og: { proxima: "Najbližší dátum", mas: (n) => `A ešte ${pluralSk(n, "ďalší termín", "ďalšie termíny", "ďalších termínov")} tento rok` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sk };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

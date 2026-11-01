@@ -98,6 +98,15 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   // El húngaro no pone plural después de un número («3 nap», «1,5 év»): las dos formas son iguales.
   hu: { dias: { uno: "nap", otros: "nap" }, semanas: { uno: "hét", otros: "hét" }, horas: { uno: "óra", otros: "óra" }, meses: { uno: "hónap", otros: "hónap" }, anios: { uno: "év", otros: "év" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
+  // Eslovaco: como el checo, "few" 2 a 4 (2 dni, 3 roky), "other" 0 y 5 en adelante (5 rokov) y "many"
+  // las fracciones en genitivo singular (1,5 roka): en sk "muchos" lleva la forma de fracción.
+  sk: {
+    dias: { uno: "deň", pocos: "dni", muchos: "dňa", otros: "dní" },
+    semanas: { uno: "týždeň", pocos: "týždne", muchos: "týždňa", otros: "týždňov" },
+    horas: { uno: "hodina", pocos: "hodiny", muchos: "hodiny", otros: "hodín" },
+    meses: { uno: "mesiac", pocos: "mesiace", muchos: "mesiaca", otros: "mesiacov" },
+    anios: { uno: "rok", pocos: "roky", muchos: "roka", otros: "rokov" },
+  },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

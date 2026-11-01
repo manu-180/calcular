@@ -6,6 +6,7 @@ import { cifrasBn } from "./bengali";
 import { formaUk, pluralUk } from "./plural";
 import { formaRu, pluralRu } from "./plural";
 import { formaCs, pluralCs } from "./plural";
+import { formaSk, pluralSk } from "./plural";
 import { GRAMATICA } from "./gramatica";
 import { pluralEl } from "./plural";
 import { pluralHe, type FormasHe } from "./hebreo";
@@ -3503,7 +3504,126 @@ const he: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he };
+// ───────────────────────────── sk ─────────────────────────────
+
+// Eslovaco (ADR 0002, D25): impersonal, como el resto de los rankings. La posición va con el ordinal
+// en cifra y punto (Slovensko: 27. miesto z 41), que en eslovaco no concuerda con nada.
+const krajinySk = (n: number | string) => pluralSk(n, "krajina", "krajiny", "krajín");
+
+const sk: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Rebríčky krajín",
+    seo: {
+      titulo: ["Rebríčky krajín podľa mzdy a daní", "Rebríčky krajín"],
+      descripcion: (n) => `Kde rovnaká mzda vystačí najďalej, Deň daňovej slobody a koľko zostane zo zvýšenia mzdy v ${n} krajinách. Oficiálne údaje, aktualizácia každý deň.`,
+    },
+    ceja: "Otvorené dáta",
+    h1: "Mzdy a dane, krajina po krajine",
+    bajada: (n) => `${krajinySk(n)} s rovnakou kúpnou silou, každá s vlastnou oficiálnou kalkulačkou. Rebríčky sa aktualizujú samy každý deň.`,
+    actualizado: (f) => `Aktualizované ${f}`,
+    ver: "Zobraziť rebríček",
+    niveles: { titulo: "Východisková mzda", nombres: { bajo: "Nízka mzda", medio: "Stredná mzda", alto: "Vysoká mzda" }, anual: (m) => `${m} ročne` },
+    tramos: { titulo: "Výška zvýšenia", nombre: (a, b) => `Z ${a} na ${b}` },
+    referencia: {
+      nivel: (m) => `hrubá mzda ${m} medzinárodných dolárov ročne`,
+      tramo: (a, b) => `zvýšenie hrubej mzdy z ${a} na ${b} medzinárodných dolárov ročne`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${p}. miesto z ${total}`,
+    de: (t) => `z ${t}`,
+    empate: (o) => (Number(o) === 1 ? "rovnako ako jedna ďalšia krajina" : `rovnako ako ${formaSk(o, "ďalšia", "ďalšie", "ďalších")} ${krajinySk(o)}`),
+    fuera: (pais) => `${pais} zatiaľ v týchto rebríčkoch nie je: na porovnanie je potrebná kalkulačka čistej mzdy, ktorá ešte nie je hotová.`,
+    lider: "Prvé miesto v rebríčku",
+    global: (n) => `${krajinySk(n)} od prvej po poslednú`,
+    valores: {
+      porMes: (m) => `${m} mesačne`,
+      ningunDia: "Ani jeden deň",
+      deCada: (n) => `${n} zo 100`,
+      carga: (pct) => `${pct} na daň z príjmov a odvody`,
+      cargaAumento: (pct) => `${pct} zvýšenia ide na dane a odvody`,
+    },
+    cambio: {
+      titulo: (mes) => `Zmena oproti mesiacu: ${mes}`,
+      sube: (n) => `O ${pluralSk(n, "priečku", "priečky", "priečok")} vyššie`,
+      baja: (n) => `O ${pluralSk(n, "priečku", "priečky", "priečok")} nižšie`,
+      igual: "Bez zmeny",
+      nuevo: "Novo v rebríčku",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Miesto",
+      pais: "Krajina",
+      edicion: "Táto verzia",
+      unidad: "V medzinárodných dolároch",
+    },
+    kit: {
+      titulo: "Pre médiá",
+      bajada: "Veta, graf a odkaz na tento rebríček, pripravené na zverejnenie.",
+      compartir: "Zdieľať",
+      descargar: "Stiahnuť graf",
+      copiar: "Skopírovať citáciu",
+      copiado: "Citácia je skopírovaná",
+      enlace: "Odkaz je skopírovaný",
+      compartido: "Odoslané",
+      error: "Kopírovanie sa nepodarilo. Text vyššie možno skopírovať ručne.",
+      cita: (frase, ranking, ref, fecha) => `${frase} v rebríčku „${ranking}“ (${ref}). Zdroj: CalcularYa, údaje k ${fecha}.`,
+      texto: (frase, ranking) => `${frase} v rebríčku „${ranking}“.`,
+      alt: (ranking) => `Graf rebríčka „${ranking}“`,
+    },
+    metodo: {
+      titulo: "Ako rebríček vzniká",
+      bajada: "Každá krajina prejde svojou oficiálnou kalkulačkou čistej mzdy s dnešnými pravidlami. Krajiny sa potom porovnajú pri rovnakej kúpnej sile.",
+      niveles: (b, m, a) => `Východiskové mzdy: ${b}, ${m} a ${a} medzinárodných dolárov v hrubom ročne.`,
+      empates: "Dve krajiny s rovnakou hodnotou v tabuľke zdieľajú miesto a ďalšie sa preskočí (1, 2, 2, 4).",
+      historial: "Zmena miesta sa meria oproti snímke rebríčka, ktorá sa ukladá každý mesiac. Bez snímky za minulý mesiac sa zmena nezobrazuje.",
+      actualizacion: "Tabuľka sa prepočítava každý deň s platnými údajmi každej krajiny. Nová krajina pribudne, hneď ako začne fungovať jej kalkulačka.",
+      ver: "Úplná metodika",
+    },
+    datos: {
+      titulo: "Otvorené dáta",
+      bajada: "Čísla, z ktorých tieto rebríčky vychádzajú, krajina po krajine, vo formátoch JSON a CSV. Aktualizujú sa každý deň.",
+      json: "Dáta v JSON",
+      csv: "Dáta v CSV",
+      licencia: "Licencia CC BY 4.0: dáta možno voľne používať, šíriť a zverejňovať s uvedením CalcularYa a odkazom na túto stránku.",
+      atribucion: "Odporúčaná citácia",
+    },
+    mundo: { titulo: "S konkrétnou mzdou", texto: (n) => `Na výpočet s vlastnou mzdou a dátumom každej krajiny slúži stránka „${n}“.`, ir: "Vypočítať" },
+    otros: "Ďalšie rebríčky",
+    rankings: {
+      rinde: {
+        titulo: "Kde rovnaká mzda vystačí najďalej",
+        corto: "Kde mzda vystačí najďalej",
+        seo: ["Kde rovnaká mzda vystačí najďalej: rebríček krajín", "Kde rovnaká mzda vystačí najďalej"],
+        descripcion: (n) => `Rovnaká mzda s rovnakou kúpnou silou v ${n} krajinách: koľko zostane v čistom po daňových pravidlách každej z nich. Aktualizácia každý deň.`,
+        bajada: "Rovnaká hrubá mzda s rovnakou kúpnou silou prejde pravidlami každej krajiny. Hore sú tie, kde zostane v čistom najviac.",
+        metrica: "V čistom mesačne",
+        carga: "Dane a odvody",
+        como: "Čistá mesačná mzda je priemer za 12 mesiacov, v medzinárodných dolároch.",
+      },
+      libertad: {
+        titulo: "Deň daňovej slobody podľa krajín",
+        corto: "Deň daňovej slobody",
+        seo: ["Deň daňovej slobody podľa krajín: rebríček", "Deň daňovej slobody podľa krajín"],
+        descripcion: (n) => `Deň v roku, keď sú zaplatené daň z príjmov a odvody, s rovnakou mzdou v ${n} krajinách. Aktualizácia každý deň.`,
+        bajada: "Deň v roku, keď sú zaplatené daň z príjmov a odvody, s rovnakou mzdou v každej krajine. Hore sú tie, kde príde najskôr.",
+        metrica: "Práca pre štát do",
+        carga: "Dane a odvody",
+        como: "Dátum rozkladá dane do roka od 1. januára: pri daňovom zaťažení 30 % sa pre štát pracuje 30 % roka.",
+      },
+      aumento: {
+        titulo: "Koľko zostane zo zvýšenia mzdy",
+        corto: "Čo zostane zo zvýšenia",
+        seo: ["Koľko zostane zo zvýšenia mzdy: rebríček krajín", "Koľko zostane zo zvýšenia mzdy"],
+        descripcion: (n) => `Zo 100 pridaných k hrubej mzde koľko zostane po dani z príjmov a odvodoch v ${n} krajinách. Aktualizácia každý deň.`,
+        bajada: "Zo 100 pridaných k hrubej mzde koľko sa skutočne dostane do peňaženky po dani z príjmov a odvodoch. Hore sú tie, kde zostane najviac.",
+        metrica: "Zostane zo 100",
+        carga: "Hraničná sadzba",
+        como: "Je to hraničná sadzba medzi dvoma mzdami: podiel zvýšenia, ktorý odíde na dane a odvody.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sk };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

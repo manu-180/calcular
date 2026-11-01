@@ -207,6 +207,22 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Eslovaco: un solo registro, el de Finančná správa, Slovenská sporiteľňa y Tatra banka (vykanie con
+  // «vy» en minúscula; ADR 0002, D25). Se atrapa el tykanie (pronombre y posesivos; «ti» no, porque
+  // también es el demostrativo), los imperativos y presentes de segunda del singular de un formulario
+  // y el «Vy» con mayúscula a mitad de oración.
+  sk: {
+    informal: [
+      { re: palabras("tebe|tebou|teba|tvoj|tvoja|tvoje|tvojho|tvojej|tvojmu|tvojom|tvojím|tvoju|tvoji|tvojich|tvojim|tvojimi"), nombre: "tykanie («ty»)" },
+      {
+        re: palabras("zadaj|vypočítaj|spočítaj|vyber|klikni|zisti|skontroluj|porovnaj|skús|vyplň|uveď|pozri|získaj|skopíruj|zdieľaj|stiahni|otvor|pridaj|ulož|začni|napíš|použi|nastav|zvoľ|zmeň|odpočítaj|pripočítaj"),
+        nombre: "imperativo de tykanie (va -te)",
+      },
+      { re: palabras("môžeš|máš|chceš|vieš|dostaneš|platíš|zarábaš|vidíš|pracuješ|miňaš|ušetríš|musíš|potrebuješ|zaplatíš|budeš|dáš|zadáš|vyberieš"), nombre: "segunda persona de tykanie" },
+      { re: /[^.?!:„(\s]\s+(?:Vy|Vás|Vám|Vami|Váš|Vaša|Vaše|Vášho|Vášmu|Vašom|Vaším|Vašu|Vaši|Vašich|Vašim|Vašimi)(?!\p{L})/u, nombre: "«Vy» con mayúscula (va «vy»)" },
+    ],
+    formal: [],
+  },
   // Griego: un solo registro, el πληθυντικός ευγενείας de myAADE, gov.gr y los bancos (ADR 0002,
   // D20). Se atrapan los pronombres de la segunda del singular («εσύ», «σου»; «σε» no, porque también
   // es la preposición), los imperativos del singular que no se escriben igual que el aoristo de
@@ -314,6 +330,25 @@ function reglasCs(texto: string): string[] {
   const p: string[] = [];
   if (/[«»"”]/.test(texto)) p.push("comillas: en checo van „ “");
   if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en checo abren con „ (abajo)");
+  return p;
+}
+
+// Eslovaco (ADR 0002, D25): comillas „ “, ninguna letra propia del checo (ř, ě, ů) y ninguna palabra
+// que delate un texto checo adaptado. Las que también existen en eslovaco no se listan; «pro» y «co» se
+// miran con su caja exacta para no chocar con «iPhone 18 Pro» ni con CO2.
+const PALABRAS_CHECAS_SK = palabras(
+  "nebo|když|který|která|které|kterou|kterého|protože|jsou|jste|jsem|pouze|kolik|proč|částka|částku|sazba|sazby|sazbu|výsledek|jako|jak|pokud|jiný|jiná|jiné|zadejte|spočítejte|vypočítejte|zkopírujte|zkontrolujte|zkuste|spočítat|zdarma|týden|týdny|dny|tady|zde",
+);
+function reglasSk(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en eslovaco van „ “");
+  if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en eslovaco abren con „ (abajo)");
+  const sinUrls = texto.replace(/https?:\/\/\S+/g, "");
+  const checa = /[řěůŘĚŮ]/.exec(sinUrls);
+  if (checa) p.push(`letra checa «${checa[0]}» (en eslovaco no existe)`);
+  const palabra = PALABRAS_CHECAS_SK.exec(sinUrls);
+  if (palabra) p.push(`palabra checa «${palabra[0]}»`);
+  if (/(?<!\p{L})(?:pro|[Cc]o)(?!\p{L})/u.test(sinUrls)) p.push("palabra checa «pro» o «co» (en eslovaco «pre», «čo»)");
   return p;
 }
 
@@ -541,6 +576,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "ru") p.push(...reglasRu(texto));
   if (idioma === "ro") p.push(...reglasRo(texto));
   if (idioma === "cs") p.push(...reglasCs(texto));
+  if (idioma === "sk") p.push(...reglasSk(texto));
   if (idioma === "el") p.push(...reglasEl(texto));
   if (idioma === "hu") p.push(...reglasHu(texto));
   return [...p, ...registro(texto, idioma, trato)];
