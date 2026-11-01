@@ -781,10 +781,10 @@ export const km: DiccionarioVenta = {
     asuntoPlanilla: "{titulo}៖ ទាញយក និងការធ្វើបច្ចុប្បន្នភាព",
     mismosNumeros: "តួលេខត្រូវនឹង{enlace} និងប្រើទិន្នន័យផ្លូវការ។",
     enlaceCalculadora: "ម៉ាស៊ីនគណនាឥតគិតថ្លៃរបស់ CalcularYa",
-    comprobante: "អ៊ីមែលនេះជាភស្តុតាងនៃការបញ្ជាទិញពី {marca}។",
+    comprobante: "{marca} ផ្ញើអ៊ីមែលនេះជាភស្តុតាងនៃការបញ្ជាទិញ។",
     informe: {
       encabezado: "របាយការណ៍រួចរាល់ហើយ",
-      intro: "សូមអរគុណដែលបានបញ្ជាទិញ{titulo}។ បើករបាយការណ៍បាននៅទីនេះ៖",
+      intro: "សូមអរគុណដែលបានបញ្ជាទិញ{titulo} បើករបាយការណ៍បាននៅទីនេះ៖",
       boton: "បើករបាយការណ៍",
       abre: "របាយការណ៍បើកក្នុងកម្មវិធីរុករក ហើយបោះពុម្ព ឬរក្សាទុកជា PDF បានពីទីនោះ។",
       guarda: "សូមរក្សាទុកអ៊ីមែលនេះ។",
@@ -794,7 +794,7 @@ export const km: DiccionarioVenta = {
     },
     planilla: {
       encabezado: "តារាងរួចរាល់ហើយ",
-      intro: "សូមអរគុណដែលបានបញ្ជាទិញ{titulo}។ ទាញយកបាននៅទីនេះ៖",
+      intro: "សូមអរគុណដែលបានបញ្ជាទិញ{titulo} ទាញយកបាននៅទីនេះ៖",
       boton: "ទាញយកតារាង (.xlsx)",
       abre: "បើកបានទាំងក្នុង Excel និង Google Sheets។",
       guarda: "សូមរក្សាទុកអ៊ីមែលនេះ។",

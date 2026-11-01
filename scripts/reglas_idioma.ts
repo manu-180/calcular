@@ -882,7 +882,8 @@ function reglasKm(texto: string): string[] {
   const p: string[] = [];
   if (/[!！]/.test(texto)) p.push("signo de exclamación");
   if (/[​-‍⁠﻿]/.test(texto)) p.push("espacio invisible (U+200B y parecidos): el navegador ya corta el jemer por palabras");
-  if (/[   　]/.test(texto)) p.push("espacio raro (duro o fino): va el espacio común");
+  // Intl km-KH pone un espacio duro entre la cifra y un símbolo con letras («12,000 EC$»): ese sí va.
+  if (/(?<!\d) |[  　]/.test(texto)) p.push("espacio raro (duro o fino): va el espacio común");
   if (/ {2,}/.test(texto)) p.push("doble espacio");
   if (/[០-៩]/.test(texto)) p.push("dígitos jemeres (van cifras latinas, como Intl km-KH)");
   if (PUNTO_ASCII_KM.test(texto)) p.push("punto latino al final de una oración jemer (va «។»)");

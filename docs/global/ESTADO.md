@@ -285,6 +285,14 @@ y servicios («та», «-на уу», botones en «-х»), sin confirmar en sus
 nunca el nombre ni una cifra. MNT como moneda de prueba. Listo para que un agente de país escriba Mongolia.
 Falla de main ajena al frente: `check_mundo` (be, neto).
 
+## 1/11/2026 · Motor jemer (`claude/mundo-motor-km`, ADR 0002 D38)
+
+`km` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas, calendario,
+sueldos, embed, compartir, afiliados, redes y las 41 universales; edición interna `zz-km`. Registro de ABA, ACLEDA y la GDT:
+«អ្នក» o sin pronombre, «។» al cerrar. Cifras latinas (el parser acepta ០ a ៩ y លាន, សែន, ម៉ឺន), riel sin decimales, slugs en inglés.
+Fuentes oficiales: abren tax.gov.kh, mlvt.gov.kh y nis.gov.kh; rechazan nbc.gov.kh, mef.gov.kh y nssf.gov.kh. Falla de main ajena al
+frente: `check_mundo` (be, neto). Falta revisión por hablante nativo.
+
 ## 1/11/2026 · Motor letón (`claude/mundo-motor-lv`, ADR 0002 D35)
 
 `lv` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
