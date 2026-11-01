@@ -544,6 +544,7 @@ export function tituloPagina(raiz: HTMLElement | null = raizPagina()): string {
   const doc = typeof document !== "undefined" ? document.title.split(" · ")[0] : "";
   const base = (doc || limpio(raiz?.querySelector("h1")?.textContent, 120)).split(":")[0];
   const sin = limpio(base.replace(/^calculadora\s+(de|del|para)\s+(la\s+|el\s+|los\s+|las\s+)?/i, ""), 56);
+  if (/^[\u10D0-\u10FF]/.test(sin)) return sin; // el georgiano no tiene mayúsculas (ADR 0002, D26)
   return sin ? sin.charAt(0).toUpperCase() + sin.slice(1) : "Mi cálculo";
 }
 

@@ -8,6 +8,7 @@ import { el } from "./el";
 import { en } from "./en";
 import { es } from "./es";
 import { hu } from "./hu";
+import { ka } from "./ka";
 import { fr } from "./fr";
 import { id } from "./id";
 import { he } from "./he";
@@ -35,7 +36,7 @@ export type { Categoria, TextosSitio } from "./tipos";
 
 // Un idioma nuevo entra con su archivo (base en el registro informal y, si cambia, parches de usted
 // y vos) y su línea acá; el Record obliga a que estén todos.
-export const DICCIONARIOS_SITIO: Diccionarios<TextosSitio> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he };
+export const DICCIONARIOS_SITIO: Diccionarios<TextosSitio> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, ka };
 
 export function textosSitio(idioma: Idioma, trato: Trato, locale?: string): TextosSitio {
   return resolver(DICCIONARIOS_SITIO, idioma, trato, locale);

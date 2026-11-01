@@ -769,6 +769,29 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "pontok", coma: "vesszők" },
     },
   },
+  ka: {
+    base: {
+      calcular: "გამოთვლა",
+      resultado: "შედეგი",
+      si: "დიახ",
+      no: "არა",
+      sinResultado: "ამ შედეგს ჯერ არ ვაჩვენებთ.",
+      errores: {
+        requerido: "შეავსეთ ეს ველი.",
+        "numero-invalido": "შეიყვანეთ რიცხვი, მაგალითად: {ejemplo}.",
+        "entero-invalido": "შეიყვანეთ მთელი რიცხვი, ათწილადების გარეშე.",
+        "menor-que-min": "მინიმალური დასაშვები მნიშვნელობა: {min}.",
+        "mayor-que-max": "მაქსიმალური დასაშვები მნიშვნელობა: {max}.",
+        "fecha-invalida": "აირჩიეთ სწორი თარიღი.",
+        "hora-invalida": "აირჩიეთ სწორი დრო.",
+        "opcion-invalida": "აირჩიეთ ერთ-ერთი ვარიანტი.",
+        "region-invalida": "აირჩიეთ რეგიონი.",
+        "calculo-fallido": "ამ მონაცემებით გამოთვლა ვერ მოხერხდა. შეამოწმეთ მნიშვნელობები და სცადეთ თავიდან.",
+      },
+      milesAmbiguos: "ხომ არ გულისხმობდით: {sugerido}? შეიყვანეთ რიცხვი ამ ნიშნების გარეშე: {signos}.",
+      separadores: { punto: "წერტილები", coma: "მძიმეები" },
+    },
+  },
   he: {
     base: {
       calcular: "לחישוב",

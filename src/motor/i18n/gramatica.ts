@@ -1163,4 +1163,88 @@ const he: GramaticaPais = {
   para: (p) => preposicionHe("ל", p),
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he };
+// Georgiano (ADR 0002, D26): sin artículo ni género. El país lleva sufijo. Lugar: dativo + «ში»
+// («საქართველოში», «საფრანგეთში», «კანადაში»). Genitivo: «ის» o «ს» («საფრანგეთის», «კანადის»,
+// «საქართველოს»). Destinatario: genitivo + «თვის» («საქართველოსთვის»). Se aplica solo a nombres,
+// nunca a cifras ni a marcadores. El adjetivo delante del nombre pierde la «ი» en el lugar y la
+// conserva en el genitivo («ახალ ზელანდიაში», «ახალი ზელანდიის»). En «X და Y» el primero lleva
+// «სა» en el lugar y «ისა» o «სა» en el genitivo («ტრინიდადსა და ტობაგოში», «ტრინიდადისა და ტობაგოს»).
+// La «ი» que es parte de la raíz no se cae: tabla KA_I_DE_RAIZ («მალიში», no «მალში»).
+const KA_I_DE_RAIZ = new Set(["ბურუნდი", "ბრუნეი", "ჯიბუტი", "ფიჯი", "ჰაიტი", "კირიბატი", "მალი", "მალავი", "სომალი", "ჯერსი", "გერნსი", "სარკი", "ტაიტი", "სენ-ბართელმი"]);
+// «ე» y «ა» que se caen en el genitivo salvo estos nombres, que la conservan.
+const KA_E_TRUNCA = new Set(["ეგვიპტე"]);
+
+function raizKa(palabra: string): { dativo: string; genitivo: string } {
+  const ultima = palabra.split("-").at(-1) ?? palabra;
+  if (KA_I_DE_RAIZ.has(palabra) || KA_I_DE_RAIZ.has(ultima) || /[აეოუ]ი$/.test(palabra)) return { dativo: palabra, genitivo: `${palabra}ს` };
+  if (palabra.endsWith("ი")) {
+    const tema = palabra.slice(0, -1);
+    return { dativo: tema, genitivo: `${tema}ის` };
+  }
+  if (palabra.endsWith("ა")) {
+    if (palabra.endsWith("ოა")) return { dativo: palabra, genitivo: `${palabra}ს` };
+    return { dativo: palabra, genitivo: `${palabra.slice(0, -1)}ის` };
+  }
+  if (KA_E_TRUNCA.has(palabra)) return { dativo: palabra, genitivo: `${palabra.slice(0, -1)}ის` };
+  return { dativo: palabra, genitivo: `${palabra}ს` };
+}
+
+// Las palabras delante del núcleo: las que ya están en genitivo («ამერიკის», «არაბთა») y las que no
+// llevan «ი» («სამხრეთ») quedan igual; los adjetivos pierden la «ი» solo en el lugar.
+function delanteKa(palabra: string, enLugar: boolean): string {
+  if (!enLugar || !palabra.endsWith("ი") || KA_I_DE_RAIZ.has(palabra)) return palabra;
+  return palabra.slice(0, -1);
+}
+
+function casosFraseKa(frase: string): { lugar: string; genitivo: string; primeroLugar: string; primeroGenitivo: string } {
+  const palabras = frase.split(" ");
+  const nucleo = palabras.pop() ?? frase;
+  const r = raizKa(nucleo);
+  const conDelante = (enLugar: boolean, fin: string) => [...palabras.map((p) => delanteKa(p, enLugar)), fin].join(" ");
+  return {
+    lugar: conDelante(true, `${r.dativo}ში`),
+    genitivo: conDelante(false, r.genitivo),
+    primeroLugar: conDelante(true, `${r.dativo}სა`),
+    primeroGenitivo: conDelante(false, `${r.genitivo}ა`),
+  };
+}
+
+// Nombres de Intl en ka que llevan un agregado: se declinan por la forma corta.
+const KA_CORTOS: Readonly<Record<string, string>> = {
+  "მიანმარი (ბირმა)": "მიანმარი",
+  "კონგო - კინშასა": "კონგოს დემოკრატიული რესპუბლიკა",
+  "კონგო - ბრაზავილი": "კონგოს რესპუბლიკა",
+  "ჰონკონგის სპეციალური ადმინისტრაციული რეგიონი, ჩინეთი": "ჰონკონგი",
+  "მაკაოს სპეციალური ადმინისტრაციული რეგიონი, ჩინეთი": "მაკაო",
+  "ქალაქი ვატიკანი": "ვატიკანი",
+  "ქოქოსის (კილინგის) კუნძულები": "ქოქოსის კუნძულები",
+};
+// «ცენტრალური აფრიკა» funciona como un nombre: el adjetivo no cambia delante de «რესპუბლიკა».
+const KA_FIJOS: Readonly<Record<string, { lugar: string; genitivo: string }>> = {
+  "ცენტრალური აფრიკის რესპუბლიკა": { lugar: "ცენტრალური აფრიკის რესპუბლიკაში", genitivo: "ცენტრალური აფრიკის რესპუბლიკის" },
+};
+
+export function casosKa(p: string): { lugar: string; genitivo: string } {
+  const nombre = KA_CORTOS[p] ?? p;
+  const fijo = KA_FIJOS[nombre];
+  if (fijo) return fijo;
+  // Un nombre en letras latinas lleva el sufijo con guion, como «Google-ის».
+  if (!/[\u10D0-\u10FF]/.test(nombre)) return { lugar: `${nombre}-ში`, genitivo: `${nombre}-ის` };
+  const partes = nombre.split(" და ");
+  if (partes.length === 2) {
+    const uno = casosFraseKa(partes[0]);
+    const dos = casosFraseKa(partes[1]);
+    return { lugar: `${uno.primeroLugar} და ${dos.lugar}`, genitivo: `${uno.primeroGenitivo} და ${dos.genitivo}` };
+  }
+  const c = casosFraseKa(nombre);
+  return { lugar: c.lugar, genitivo: c.genitivo };
+}
+
+const ka: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => casosKa(p).genitivo,
+  en: (p) => casosKa(p).lugar,
+  para: (p) => `${casosKa(p).genitivo}თვის`,
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, ka };

@@ -230,6 +230,18 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
   // (ADR 0002, D21). Se atrapa la magázás: el «Ön» con sus casos (con mayúscula, como lo escriben
   // NAV y Ügyfélkapu; en minúscula «önt» es un verbo) y los imperativos corteses de un formulario
   // («kattintson», «adja meg», «válassza ki»), que en tegezés son «kattints», «add meg», «válaszd ki».
+  // Georgiano: un solo registro, თქვენ con imperativo cortés, como rs.ge, TBC y Bank of Georgia
+  // (ADR 0002, D26). Se atrapa la segunda del singular.
+  ka: {
+    informal: [
+      { re: /(?<![\u10D0-\u10FF])(?:შენ|შენი|შენს|შენმა|შენთვის|შენზე|შენგან|შენთან)(?![\u10D0-\u10FF])/u, nombre: "«შენ» (va «თქვენ»)" },
+      {
+        re: /(?<![\u10D0-\u10FF])(?:შეიყვანე|აირჩიე|გამოთვალე|დააჭირე|დააწკაპუნე|შეამოწმე|ნახე|გადახედე|შეცვალე|გააზიარე|დაამატე|ჩაწერე|მიუთითე|შეავსე|გადაწყვიტე|გახსენი|გადმოწერე|იყიდე|სცადე|გაითვალისწინე|გაიგე|დაიმახსოვრე|შეინახე|დააკოპირე|აიღე|იცი|გაქვს|გინდა|შეგიძლია|გჭირდება|გეხმარება)(?![\u10D0-\u10FF])/u,
+        nombre: "segunda del singular (va la forma cortés: «შეიყვანეთ», «აირჩიეთ», «გაქვთ»)",
+      },
+    ],
+    formal: [],
+  },
   hu: {
     informal: [],
     formal: [
@@ -351,6 +363,26 @@ function reglasHu(texto: string): string[] {
   if (/(?:^|[\s(])”/.test(texto)) p.push("comillas: en húngaro abren con „ (abajo)");
   if (/[\d%]-\p{Ll}/u.test(texto)) p.push("sufijo pegado a una cifra (va tras dos puntos o con posposición)");
   if (PLURAL_TRAS_NUMERO_HU.test(texto)) p.push("plural detrás de un número (en húngaro va en singular: «3 nap»)");
+  return p;
+}
+
+// Georgiano: mkhedruli sin mayúsculas (mtavruli U+1C90 a U+1CBF y las escrituras antiguas U+10A0 a
+// U+10CF no van en la interfaz), comillas „ “, ningún sufijo pegado a una cifra o a un marcador y nada
+// de plural detrás de un número («3 დღე», nunca «3 დღეები»). Tampoco letras latinas o cirílicas
+// dentro de una palabra georgiana.
+const LETRA_KA = String.raw`[\u10D0-\u10FF]`;
+const PLURAL_TRAS_NUMERO_KA = new RegExp(String.raw`(?:\d|\}\})\s+${LETRA_KA}+(?:ები|ებს|ების|ებში|ებით|ებმა|ებზე)(?!${LETRA_KA})`, "u");
+const SUFIJO_TRAS_CIFRA_KA = new RegExp(String.raw`(?:\d|%|\}|₾)-?(?:ში|ის|ს|თვის|ზე|დან|მდე|ით|მა)(?!${LETRA_KA})`, "u");
+const MEZCLA_KA = new RegExp(String.raw`${LETRA_KA}[a-zA-Z\u0400-\u04FF]|[a-zA-Z\u0400-\u04FF]${LETRA_KA}`, "u");
+
+function reglasKa(texto: string): string[] {
+  const p: string[] = [];
+  if (/[\u1C90-\u1CBF]/u.test(texto)) p.push("mtavruli: en la interfaz va mkhedruli, sin mayúsculas");
+  if (/[\u10A0-\u10CF\u2D00-\u2D2F]/u.test(texto)) p.push("escritura georgiana antigua (asomtavruli o nuskhuri)");
+  if (/[«»”]/.test(texto) || new RegExp(`"${LETRA_KA}|${LETRA_KA}"`, "u").test(texto)) p.push("comillas: en georgiano van „ “");
+  if (MEZCLA_KA.test(texto)) p.push("palabra que mezcla letras georgianas con latinas o cirílicas");
+  if (PLURAL_TRAS_NUMERO_KA.test(texto)) p.push("plural detrás de un número (en georgiano va en singular: «3 დღე»)");
+  if (SUFIJO_TRAS_CIFRA_KA.test(texto)) p.push("sufijo pegado a una cifra o marcador (va tras dos puntos o con una palabra delante)");
   return p;
 }
 
@@ -543,5 +575,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "cs") p.push(...reglasCs(texto));
   if (idioma === "el") p.push(...reglasEl(texto));
   if (idioma === "hu") p.push(...reglasHu(texto));
+  if (idioma === "ka") p.push(...reglasKa(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

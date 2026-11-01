@@ -304,6 +304,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Forrás",
     },
   },
+  ka: {
+    base: {
+      datos: "თქვენი მონაცემები",
+      resultado: "შედეგი",
+      vacio: "შეავსეთ მონაცემები და დააჭირეთ ღილაკს „გამოთვლა“: შედეგი აქ გამოჩნდება.",
+      sinResultado: "ამ შედეგს ჯერ არ ვაჩვენებთ.",
+      avisos: { info: "კარგია იცოდეთ", cautela: "ყურადღება", bloquea: "რატომ არ ვაჩვენებთ შედეგს" },
+      fuenteDelAviso: "წყარო",
+    },
+  },
   he: {
     base: {
       datos: "הנתונים שלכם",
