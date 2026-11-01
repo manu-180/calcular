@@ -21,11 +21,11 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
-## 01/11/2026 · Tanda 6 de países: am, al, si, ee, is (`claude/paises-tanda-6`)
+## 01/11/2026 · Tanda 6 de países: am, al, si, ee, is, lv (`claude/paises-tanda-6`)
 
-Sale de `claude/paises-tanda-5` (PR #191, sin mergear): integrar en ese orden. Publicados Armenia (am), Albania (al), Eslovenia
-(si), Estonia (ee) e Islandia (is), detrás de mn. Trae los motores armenio (D30), albanés (D31), esloveno (D32), estonio (D33) e
-islandés (D34). Informes en `scripts/paises/<m>/INFORME.md`. `mercados-registro.ts` regenerado: 142 mercados intl. Mercado `ee` =
+Sale de `claude/paises-tanda-5`, ya en main, y lleva el `origin/main` con el build nuevo. Publicados Armenia (am), Albania (al),
+Eslovenia (si), Estonia (ee), Islandia (is) y Letonia (lv), detrás de mn. Trae los motores armenio (D30), albanés (D31), esloveno
+(D32), estonio (D33), islandés (D34) y letón (D35). Informes en `scripts/paises/<m>/INFORME.md`. `mercados-registro.ts` regenerado: 143 mercados intl. Mercado `ee` =
 Estonia con idioma `et`; mercado `et` = Etiopía con idioma `en` (`zz-et` es la edición de prueba en estonio): no se cruzan.
 
 | País | Locales | Publicables | Borrador | Universales |
@@ -35,9 +35,13 @@ Estonia con idioma `et`; mercado `et` = Etiopía con idioma `en` (`zz-et` es la 
 | si | 24 | 24 | ninguno | todas (cae IVA) |
 | ee | 21 | 21 | ninguno | todas (cae IVA) |
 | is | 25 | 23 | desemberuppbot, orlofsuppbot | todas (cae IVA) |
+| lv | 21 | 20 | uzteikuma-termins | todas (cae IVA) |
+
+Checks: `check-all` 156 de 159 antes de sumar main y lv; después, en verde tsc, `check_motor` (5889), `check_seo_intl` (20774 páginas), `check_hreflang` (22803) y `check_eol`. Fallan solo cosas viejas y ajenas: `check_mundo` (be), `check_paises` (28 en 175: series vencidas y llaves de ca) y `check_textos_paises` (6: bo, cr, mx, pe). `check_mundo` no volvió a correr con lv.
 
 Ajustes de la integración:
 - `sinMayusculas` une ka y hy en un solo regex.
+- Descripciones de país, fuentes y novedades en armenio acortadas: `check_seo_intl` daba 174 de ancho contra un máximo de 160.
 - Tarjetas: `tieneMarcadores` (registro) también cuenta `{{anio}}`. Antes un h1 con solo ese marcador y un primer párrafo sin dato
   mostraba `{{anio}}` crudo en la tarjeta. Prueba en `check_motor`.
 - Dram: `DECIMALES_DE_USO = { AMD: 0 }` en `decimalesDeMoneda`, y `formatearMonto` lo respeta. Tabla y universales de Armenia ya
@@ -57,11 +61,12 @@ Datos no verificados y motivo:
 - ee: ninguno. `ee.fie-sotsiaalmaksu-lagi` (111 720) es derivado de SMS § 2; el PDF de EMTA no se pudo leer. `tkh-max-*` de Töötukassa, sin recalcular.
 - is: `is.desemberuppbot` (solo SA, parte del convenio) e `is.orlofsuppbot` (solo extracto). Decisión pendiente: si se acepta el
   convenio como fuente, se verifican y publican. althingi.is responde 403: ley 30/1987 y ley del stimpilgjald sin leer.
+- lv: `lv.uzteikums` (10 días e inmediato): solo el art. 103 de 2001 en vestnesis.lv; `likumi.lv` caído todo el día y sin redacción vigente.
 
 Riesgos:
-- Todos: D30 a D34 piden revisión de hablante nativo antes de publicar y no se hizo (el informe de is dice que «bloquea la
+- Todos: D30 a D35 piden revisión de hablante nativo antes de publicar y no se hizo (el informe de is dice que «bloquea la
   publicación»). Se publica en la rama por encargo: **decidir antes de mergear**. Slugs sin validar en el autocompletar de Google de cada país.
-- Cálculo en el navegador sin probar en ninguno de los cinco. am, al y ee ni miraron `next dev`; si e is lo miraron sin apretar calcular (en is, webpack no carga el cálculo).
+- Cálculo en el navegador sin probar en ninguno de los seis. am, al, ee y lv ni miraron `next dev`; si e is lo miraron sin apretar calcular (en is, webpack no carga el cálculo).
 - am: mínimo de la ley de prestaciones tomado literal (90 000; podría ser 93 750): riesgo principal de cálculo. Seguro de salud 2026
   como si-no. Art. 150 con cambios desde 2027 sin leer en detalle: revisar en enero.
 - al: fuentes leídas al principio con User-Agent de navegador, contra la regla; el 1/11 se releyeron con uno propio los seis PDF y el
@@ -71,6 +76,9 @@ Riesgos:
 - ee: FIE sin II pilar y haigushüvitis sin embarazo o donación, **sin aviso** en la página. Töötuskindlustus termina el 31/12/2026: falta el decreto 2027. THI cae el 1/12 sin cron.
 - is: `orlofslaun` publicable con porcentajes de una guía de 1993 (art. 7 sin leer). `drattarvextir` cubre solo noviembre y queda sin
   `hasta`: revisar cada mes. `meginvextir` decide el 18/11. Pedido abierto: prueba de formato en Chromium.
+- lv: leyes leídas en extractos de LM y VDI de 2020 a 2023, sin contrastar con likumi.lv (horas extra al 100 %: en 2017 hubo un proyecto
+  para bajarla). Solidaritātes nodoklis y su deducción, 3 % sobre 200 000 y vecāku pabalsts son lecturas o aproximaciones propias. VSAA
+  leída en inglés con traducción automática. Reforma de cuidado infantil del 3/11/2026: revisar vecāku pabalsts. Serie de inflación cae el 1/12 sin cron.
 
 ## 01/11/2026 · Tanda 5 de países: sk, ge, hr, mn (`claude/paises-tanda-5`)
 
