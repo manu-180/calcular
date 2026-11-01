@@ -1,0 +1,30 @@
+{
+  "mercado": "si",
+  "avisos": [
+    {
+      "id": "si.referendum-ziurs",
+      "nivel": "cautela",
+      "desde": "2026-10-16",
+      "hasta": "2026-12-31",
+      "aplicaA": [
+        "si.izracun-place",
+        "si.neto-bruto-kalkulator",
+        "si.strosek-delodajalca",
+        "si.izracun-prispevkov",
+        "si.prispevki-sp",
+        "si.sp-normiranec",
+        "si.zimski-regres",
+        "si.minimalna-placa"
+      ],
+      "titulo": "Referendum o interventnem zakonu",
+      "texto": "Državni zbor je razpisal referendum o Zakonu o interventnih ukrepih za razvoj Slovenije (ZIURS). Glasovanje bo 6. decembra 2026. Izračun upošteva zdaj veljavna pravila. Če bo zakon uveljavljen, se lahko del zneskov spremeni.",
+      "fuente": {
+        "organismo": "Uradni list RS",
+        "titulo": "Odlok o razpisu zakonodajnega referenduma o ZIURS (OdZIURS)",
+        "url": "https://pisrs.si/api/uradni-list/objava/u20261692.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      }
+    }
+  ]
+}
