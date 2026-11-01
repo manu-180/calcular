@@ -432,14 +432,14 @@ function checkTextos() {
       prods.map((p) => [p.titulo, p.paraQuien, p.descripcion, precioUSD(p.precioCentavos, m.locale)]),
     ]).filter((s) => !/^\s*$/.test(s));
     for (const s of textos) {
-      revisarTexto(`textos ${m.codigo}`, m.idioma, m.trato, s);
+      revisarTexto(`textos ${m.codigo}`, m.idioma, m.trato, s, m.locale);
       if (PLANTILLA.test(s)) fallo(`textos ${m.codigo}: marca de plantilla en «${s}»`);
       revisados++;
     }
     for (const p of prods) {
-      const html = entregaIntlHtml({ producto: p, idioma: m.idioma, trato: m.trato, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" }).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
-      const asunto = asuntoEntregaIntl(p, m.idioma, m.trato);
-      revisarTexto(`mail ${p.id}`, m.idioma, m.trato, html);
+      const html = entregaIntlHtml({ producto: p, idioma: m.idioma, trato: m.trato, locale: m.locale, urlDescarga: "https://x", urlLanding: "https://x", origen: "https://x", contacto: "a@b.c" }).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+      const asunto = asuntoEntregaIntl(p, m.idioma, m.trato, m.locale);
+      revisarTexto(`mail ${p.id}`, m.idioma, m.trato, html, m.locale);
       if (PLANTILLA.test(html) || PLANTILLA.test(asunto)) fallo(`mail ${p.id}: marca de plantilla sin llenar`);
       revisados++;
     }
