@@ -1,11 +1,13 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 
+// Borrador: los porcentajes salen del Opšti kolektivni ugovor (Sl. list 150/22), no leído, y su extensión
+// (Sl. list 45/26) vence el 30/4/2026. Ver INFORME.
 export default definirCalculadora({
   id: "me.prekovremeni-rad",
   mercado: "me",
   concepto: "horas-extra",
   slug: "prekovremeni-rad",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "me.prekovremeni-uvecanje": "numero",
     "me.nocni-uvecanje": "numero",

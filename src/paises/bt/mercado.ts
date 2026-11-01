@@ -9,7 +9,7 @@ export const mercado: Mercado = {
   trato: "tu",
   monedas: ["BTN"],
   zonaHoraria: "Asia/Thimphu",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 85,
   simbolos: { BTN: "Nu." },

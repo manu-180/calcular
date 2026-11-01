@@ -24,7 +24,7 @@ El motor no tiene montenegrino aparte. Los textos locales van en ijekavski con v
 | godisnji-odmor | vacaciones | sí | |
 | otpremnina | indemnizacion-despido | sí | promedio nacional del semestre desde la serie MONSTAT |
 | otkazni-rok | preaviso | sí | |
-| prekovremeni-rad | horas-extra | sí, con riesgo | ver OKU abajo |
+| prekovremeni-rad | horas-extra | **no, borrador** | sin casos, ver OKU abajo |
 | bolovanje | propio | sí | texto de 2024; división por 30 días declarada como estimación |
 | porodiljsko-odsustvo | propio | **no, borrador** | sin casos, ver abajo |
 | porez-za-preduzetnike | regimen-simplificado | sí | tributación real; la escala del paušal no entra |
@@ -54,7 +54,7 @@ Universales: `"todas"`. Cae solo la de IVA, por haber local del mismo concepto. 
 
 **Para mirar:**
 - **Contraste real:** con 13 % de prirez, bruto 1.245 da 1.042,23 de neto; MONSTAT publica 1.043. Bruto 1.238 da 1.037,15; MONSTAT, 1.037. El bruto de 600 neto da 670,39, igual al dato de Eurostat que leí en prensa.
-- **Opšti kolektivni ugovor (40 / 40 / 150 / 80 %):** los porcentajes salen del art. 15 citado por el ministerio en sus respuestas sobre el salario mínimo. No leí el texto de Sl. list 150/22. La saglasnost de Sl. list 45/26 lo extiende solo **hasta el 30/4/2026** y no hallé qué rige después. El dato figura como verificado y la FAQ lo avisa, pero hay que confirmarlo antes de publicar `prekovremeni-rad`. Si no se confirma, esa calculadora debería pasar a borrador.
+- **Opšti kolektivni ugovor (40 / 40 / 150 / 80 %):** los porcentajes salen del art. 15 citado por el ministerio en sus respuestas sobre el salario mínimo. No leí el texto de Sl. list 150/22. La saglasnost de Sl. list 45/26 lo extiende solo **hasta el 30/4/2026** y no hallé qué rige después. Por eso, al integrar la tanda 4, los cuatro datos (`me.prekovremeni-uvecanje`, `me.nocni-uvecanje`, `me.praznik-uvecanje`, `me.nedjelja-uvecanje`) pasaron a `no-verificado` y `prekovremeni-rad` a borrador, sin `.casos.ts`. Una FAQ de `minimalna-zarada` (publicada) sigue citando el art. 15 sin cifras.
 - `me.fond-rada` (0,2 %) sale de la página del Fondo en gov.me. El Uputstvo también lo trae, pero conserva el 5,5 % de PIO ya derogado, así que no lo usé como fuente de tasas.
 - **La contribución a la Cámara de Comercio no se incluye.** No la verifiqué; el costo del empleador puede quedar corto si aplica.
 - `bolovanje`: refundido de 2024; un acta del Fondo menciona una propuesta de bajar los 60 días a 30. No figura como ley.

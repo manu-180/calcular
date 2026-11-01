@@ -11,7 +11,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["RSD"],
   zonaHoraria: "Europe/Belgrade",
-  estado: "interno",
+  estado: "publicado",
   // Los obračuni de zarada y el PDV se llevan con para, de ahí los dos decimales.
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 100,

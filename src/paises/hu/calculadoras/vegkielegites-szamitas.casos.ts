@@ -14,7 +14,7 @@ export default definirCasos(vegkielegitesSzamitas, [
   },
   {
     nombre: "12 év, a nyugdíjkorhatár előtti öt évben",
-    origen: { tipo: "recalculado", url: MT, detalle: "77. § (4): a c)–d) sávban kéthavi emelés; 5 × 600 000 = 3 000 000." },
+    origen: { tipo: "recalculado", url: MT, detalle: "77. § (4): a c) és d) sávban kéthavi emelés; 5 × 600 000 = 3 000 000." },
     fecha: "2026-10-24",
     entrada: { ...ALAP, tavolletiDij: 600000, evek: 12, nyugdijElott: true },
     esperado: { honapok: 5, emeles: 2, osszeg: 3000000 },

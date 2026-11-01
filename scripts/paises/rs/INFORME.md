@@ -41,7 +41,7 @@ Universales: `"todas"`. Cae solo la de IVA, por haber local del mismo concepto.
 
 **Para mirar:**
 - Mínimo 2026 (371): no se pudo abrir la Odluka (Sl. glasnik 78/2025) en el PIS. La fuente citada es la nota del Ministerio del 18/8/2026 («sa 371 na 405»). El 405 de 2027 sale del comunicado de adopción del Gobierno (20/8/2026), no de la Odluka publicada.
-- Esa nota del Ministerio dice que el neoporezivi pasa «de 34.521 a 37.369» según el resumen automático que leí. La ley (art. 7 de 109/2025) dice 34.221 y se usó esa. Conviene mirar la nota a ojo.
+- Neoporezivi 2026, revisado al integrar la tanda 4 (1/11/2026): la nota del Ministerio dice textual «sa 34.521 dinar na 37.369 dinara» y «za 9,2 odsto». Es una errata de la nota: 37.369 / 34.221 da 9,2 % (con 34.521 daría 8,2 %), y el refundido de la ley (docx de mfin.gov.rs) dice «neoporezivog iznosa zarade od 34.221 dinara». Queda 34.221.
 - `rs.neoporezivi-iznos` 2027 (37.369) ya está cargado (art. 15a, Sl. glasnik 80/2026).
 - **Las osnovice no tienen tramo 2027.** Se publican en diciembre: hay que cargarlas entonces. Un cálculo con fecha de 2027 usa las de 2026 hasta ese momento. El art. 44 (tasas) no lleva marca de la ley 80/2026.
 - Las URL del Ministerio son docx con doble barra, tal como las publica el sitio. Responden a WebFetch y dan 403 a un script propio.

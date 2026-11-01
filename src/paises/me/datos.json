@@ -896,14 +896,15 @@
       "proximaRevision": "2026-12-31",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2024-10-01",
           "valor": 40,
+          "motivo": "Opšti kolektivni ugovor (Sl. list 150/22) nije pročitan: procenat je iz odgovora ministarstva koji ga citiraju. Saglasnost iz Sl. lista 45/26 produžava ga samo do 30. 4. 2026, a nije nađeno šta važi poslije.",
           "fuente": {
             "organismo": "Ministarstvo rada",
             "titulo": "Odgovori o primjeni minimalnih zarada: Opšti kolektivni ugovor, čl. 15 st. 1",
             "url": "https://wapi.gov.me/download/93e93f14-6531-47c8-b6cc-7e9c191965e2?version=1.0",
-            "tipo": "primaria",
+            "tipo": "secundaria",
             "verificadoEl": "2026-10-31"
           }
         }
@@ -917,14 +918,15 @@
       "proximaRevision": "2026-12-31",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2024-10-01",
           "valor": 40,
+          "motivo": "Opšti kolektivni ugovor (Sl. list 150/22) nije pročitan: procenat je iz odgovora ministarstva koji ga citiraju. Saglasnost iz Sl. lista 45/26 produžava ga samo do 30. 4. 2026, a nije nađeno šta važi poslije.",
           "fuente": {
             "organismo": "Ministarstvo rada",
             "titulo": "Odgovori o primjeni minimalnih zarada: Opšti kolektivni ugovor, čl. 15 st. 1",
             "url": "https://wapi.gov.me/download/93e93f14-6531-47c8-b6cc-7e9c191965e2?version=1.0",
-            "tipo": "primaria",
+            "tipo": "secundaria",
             "verificadoEl": "2026-10-31"
           }
         }
@@ -938,14 +940,15 @@
       "proximaRevision": "2026-12-31",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2024-10-01",
           "valor": 150,
+          "motivo": "Opšti kolektivni ugovor (Sl. list 150/22) nije pročitan: procenat je iz odgovora ministarstva koji ga citiraju. Saglasnost iz Sl. lista 45/26 produžava ga samo do 30. 4. 2026, a nije nađeno šta važi poslije.",
           "fuente": {
             "organismo": "Ministarstvo rada",
             "titulo": "Odgovori o primjeni minimalnih zarada: Opšti kolektivni ugovor, čl. 15 st. 1",
             "url": "https://wapi.gov.me/download/93e93f14-6531-47c8-b6cc-7e9c191965e2?version=1.0",
-            "tipo": "primaria",
+            "tipo": "secundaria",
             "verificadoEl": "2026-10-31"
           }
         }
@@ -959,14 +962,15 @@
       "proximaRevision": "2026-12-31",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2024-10-01",
           "valor": 80,
+          "motivo": "Opšti kolektivni ugovor (Sl. list 150/22) nije pročitan: procenat je iz odgovora ministarstva koji ga citiraju. Saglasnost iz Sl. lista 45/26 produžava ga samo do 30. 4. 2026, a nije nađeno šta važi poslije.",
           "fuente": {
             "organismo": "Ministarstvo rada",
             "titulo": "Odgovori o primjeni minimalnih zarada: Opšti kolektivni ugovor, čl. 15 st. 1",
             "url": "https://wapi.gov.me/download/93e93f14-6531-47c8-b6cc-7e9c191965e2?version=1.0",
-            "tipo": "primaria",
+            "tipo": "secundaria",
             "verificadoEl": "2026-10-31"
           }
         }

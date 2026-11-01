@@ -12,7 +12,7 @@ export const mercado: Mercado = {
   monedas: ["EUR"],
   // Sin Intl propio: «€» detrás del número, como lo da sr-Latn-ME y como escriben los organismos.
   zonaHoraria: "Europe/Podgorica",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 0.9,
 };

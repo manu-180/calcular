@@ -11,7 +11,7 @@ export const mercado: Mercado = {
   trato: "usted",
   monedas: ["TJS"],
   zonaHoraria: "Asia/Dushanbe",
-  estado: "interno",
+  estado: "publicado",
   redondeo: { decimales: 2, modo: "mitad-arriba" },
   escala: 10,
 };
