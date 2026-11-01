@@ -1,0 +1,509 @@
+{
+  "mercado": "ps",
+  "datos": [
+    {
+      "id": "ps.end-of-service",
+      "nombre": "مكافأة نهاية الخدمة عن كل سنة عمل",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 45: أجر شهر عن كل سنة على أساس آخر أجر دون ساعات العمل الإضافية، وتُحتسب كسور السنة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.end-of-service-min",
+      "nombre": "مدة العمل التي تُستحق بعدها مكافأة نهاية الخدمة",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 45: للعامل الذي أمضى سنة من العمل."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.resignation-years",
+      "nombre": "حدود مدة الخدمة لحصة المستقيل من المكافأة",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "third": "حد الثلث",
+        "full": "حد المكافأة الكاملة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": {
+            "third": 5,
+            "full": 10
+          },
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 42 (2): ثلث المكافأة لمن استقال خلال السنوات الخمس الأولى، وثلثاها خلال الخمس التالية، وكاملة لمن أمضى عشر سنوات أو أكثر."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.unfair-dismissal",
+      "nombre": "التعويض عن الفصل التعسفي",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "per-year": "عن كل سنة عمل",
+        "cap": "الحد الأعلى"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": {
+            "per-year": 2,
+            "cap": 24
+          },
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 47: أجر شهرين عن كل سنة على ألا يتجاوز التعويض أجر سنتين."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.notice",
+      "nombre": "مدة الإشعار لإنهاء العقد غير محدد المدة",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 46 (1): إشعار بعلم الوصول قبل شهر من إنهاء العمل. والمادة 35: شهر للعامل بأجر شهري."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.notice-weekly",
+      "nombre": "مدة إخطار العامل المستقيل بأجر يومي أو أسبوعي أو بالقطعة",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 35: أسبوع إذا كان العامل يتقاضى أجره على أساس يومي أو أسبوعي أو بالقطعة أو بالعمولة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.probation",
+      "nombre": "أقصى مدة للتجربة",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 29: فترة تجربة مدتها ثلاثة أشهر لا تتكرر أكثر من مرة لدى صاحب العمل نفسه."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.annual-leave",
+      "nombre": "الإجازة السنوية مدفوعة الأجر",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "base": "الإجازة الأساسية",
+        "extended": "الإجازة الممددة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": {
+            "base": 2,
+            "extended": 3
+          },
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 74 (1): أسبوعان عن كل سنة، وثلاثة أسابيع في الأعمال الخطرة أو الضارة بالصحة ولمن أمضى خمس سنوات في المنشأة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.annual-leave-years",
+      "nombre": "مدة الخدمة التي ترفع الإجازة السنوية",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 74 (1): ثلاثة أسابيع لمن أمضى خمس سنوات في المنشأة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.annual-leave-carryover",
+      "nombre": "أقصى مدة لتجميع الإجازات السنوية",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 74 (4): لا يجوز تجميع الإجازات السنوية لأكثر من سنتين."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.working-hours",
+      "nombre": "ساعات العمل الفعلي في الأسبوع",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 68: ساعات العمل الفعلي في الأسبوع خمس وأربعون ساعة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.overtime-rate",
+      "nombre": "أجر الساعة الإضافية نسبةً إلى أجر الساعة",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 71 (2): يُدفع للعامل أجر ساعة ونصف عن كل ساعة عمل إضافية."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.overtime-max",
+      "nombre": "الحد الأعلى لساعات العمل الإضافية في الأسبوع",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 71 (1): ساعات عمل إضافية لا تتجاوز اثنتي عشرة ساعة في الأسبوع."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.sick-leave",
+      "nombre": "الإجازة المرضية في السنة",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "full": "بالأجر الكامل",
+        "half": "بنصف الأجر"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": {
+            "full": 14,
+            "half": 14
+          },
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 79: أربعة عشر يومًا مدفوعة الأجر، وأربعة عشر يومًا أخرى بنصف الأجر، بناءً على تقرير اللجنة الطبية."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.sick-leave-half-rate",
+      "nombre": "نسبة الأجر في المرحلة الثانية من الإجازة المرضية",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 79: بنصف الأجر لمدة أربعة عشر يومًا أخرى."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.maternity-leave",
+      "nombre": "إجازة الوضع مدفوعة الأجر",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 103 (1): إجازة وضع لمدة عشرة أسابيع مدفوعة الأجر."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.maternity-after-birth",
+      "nombre": "الحد الأدنى من إجازة الوضع بعد الولادة",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 103 (1): منها ستة أسابيع على الأقل بعد الولادة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.maternity-min-service",
+      "nombre": "مدة العمل المطلوبة قبل الولادة",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 103 (1): للمرأة العاملة التي أمضت في العمل قبل كل ولادة مدة مائة وثمانين يومًا."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.nursing-hour",
+      "nombre": "فترة الرضاعة اليومية",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 104: لا تقل في مجموعها عن ساعة يوميًا لمدة سنة من تاريخ الوضع، وتُحتسب من ساعات العمل."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.deduction-advance",
+      "nombre": "أقصى حسم لكل قسط من السلفة",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 83 (1) ب: ألا يزيد كل حسم عن 10% من الأجر الأساسي."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.deduction-total",
+      "nombre": "أقصى مجموع لحسم السلف والغرامات",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 83 (2): لا يزيد مجموع ما يُحسم للسلفة والغرامات عن 15% من الأجر الأساسي."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.fine-max",
+      "nombre": "أقصى غرامة تأديبية في الشهر",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "قانون العمل رقم (7) لسنة 2000م",
+            "url": "https://mof.gov.ps/wp-content/uploads/documnets/pal_work_law.doc",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29",
+            "nota": "المادة 84 (أ): لا يزيد مقدار الغرامة عن أجر ثلاثة أيام في الشهر."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ps.minimum-wage",
+      "nombre": "الحد الأدنى للأجور الشهري",
+      "tipo": "numero",
+      "unidad": "ILS",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 1880,
+          "motivo": "قرار مجلس الوزراء رقم 4 لسنة 2021 لم يُقرأ في مصدر رسمي: موقع وزارة العمل والجريدة الرسمية لم يفتحا في 2026-10-29. الرقم من مركز مسارات وWageIndicator فقط."
+        }
+      ]
+    }
+  ]
+}
