@@ -1,10 +1,11 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { area, FT2_POR_M2 } from "../definicion";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const n = (x: number, d = 2) => formatearNumero(ctx, x, d);
   const imperial = ctx.unidades === "imperial";
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const u = imperial ? "ft" : "m";
   const us = imperial ? "ft²" : "m²";
   const enL = imperial ? area("rectangulo", 16, 12) + area("rectangulo", 10, 6) : area("rectangulo", 5, 4) + area("rectangulo", 3, 2);

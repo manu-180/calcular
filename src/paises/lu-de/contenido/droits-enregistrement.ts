@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu-de.droits-enregistrement",
   h1: "Registrierungsgebühren und Bëllegen Akt berechnen",
-  title: "Registrierungsgebühren Luxemburg: Bëllegen Akt 2026",
+  title: "Registrierungsgebühren Luxemburg: Bëllegen Akt {{anio}}",
   description: "Kaufnebenkosten einer Wohnung in Luxemburg: 6 % Registrierung und 1 % Umschreibung, minus Steuerkredit Bëllegen Akt von {{lu.bellegen-akt}} pro Käufer.",
   intro: [
     "Beim Kauf eines Hauses, einer Wohnung oder eines Baugrundstücks betragen die Gebühren 7 %: {{lu.droits-enregistrement}} Registrierung und {{lu.droits-transcription}} Umschreibung.",

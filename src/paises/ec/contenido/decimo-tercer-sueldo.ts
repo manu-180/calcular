@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.decimo-tercer-sueldo",
-  h1: "Calculadora del décimo tercer sueldo 2026",
-  title: "Décimo tercer sueldo 2026 Ecuador: calcula tu bono navideño",
+  h1: "Calculadora del décimo tercer sueldo {{anio}}",
+  title: "Décimo tercer sueldo {{anio}} Ecuador: calcula tu bono navideño",
   description: "Calcula tu décimo tercero: la doceava parte de lo ganado del 1 de diciembre al 30 de noviembre, acumulado o mensual. Se paga hasta el 24 de diciembre.",
   intro: [
     "El décimo tercer sueldo (o bono navideño) es la doceava parte de todo lo que ganaste del 1 de diciembre al 30 de noviembre. Si lo cobras acumulado, te lo pagan hasta el 24 de diciembre.",

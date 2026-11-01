@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.licencia-de-maternidad",
   h1: "Calculadora de licencia de maternidad",
-  title: "Licencia de maternidad 2026: cuánto te pagan",
+  title: "Licencia de maternidad {{anio}}: cuánto te pagan",
   description:
     "Calcula el valor de tu licencia de maternidad de {{co.licencia-maternidad-semanas}} semanas, con las semanas extra por parto múltiple o bebé prematuro.",
   intro: [

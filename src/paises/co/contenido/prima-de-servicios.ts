@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.prima-de-servicios",
-  h1: "Calculadora de prima de servicios 2026",
-  title: "Calculadora de prima de servicios 2026 en Colombia",
+  h1: "Calculadora de prima de servicios {{anio}}",
+  title: "Calculadora de prima de servicios {{anio}} en Colombia",
   description:
     "Calcula tu prima de junio o de diciembre en segundos: tu salario por los días trabajados, con el auxilio de transporte de {{co.auxilio-transporte}} si te corresponde.",
   intro: [

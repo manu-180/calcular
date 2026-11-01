@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "fr.impot-sur-le-revenu",
-  h1: "Calcul de l'impôt sur le revenu 2026",
-  title: "Calcul impôt sur le revenu 2026 : barème, parts et décote",
+  h1: "Calcul de l'impôt sur le revenu {{anio}}",
+  title: "Calcul impôt sur le revenu {{anio}} : barème, parts et décote",
   description:
-    "Estimez votre impôt 2026 sur les revenus 2025 : barème progressif, quotient familial, plafonnement et décote. Taux marginal et taux moyen inclus.",
+    "Estimez votre impôt {{anio}} sur les revenus 2025 : barème progressif, quotient familial, plafonnement et décote. Taux marginal et taux moyen inclus.",
   intro: [
     "L'impôt sur le revenu se calcule sur le revenu net imposable du foyer, divisé par le nombre de parts. On applique le barème progressif à une part, puis on multiplie par le nombre de parts.",
     "La calculatrice reprend le barème voté pour l'imposition de 2026 (revenus de 2025), le plafonnement du quotient familial et la décote des foyers modestes.",

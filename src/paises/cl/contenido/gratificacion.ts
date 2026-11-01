@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.gratificacion",
-  h1: "Calculadora de gratificación legal 2026",
-  title: "Gratificación legal 2026: calcula tu monto y el tope",
+  h1: "Calculadora de gratificación legal {{anio}}",
+  title: "Gratificación legal {{anio}}: calcula tu monto y el tope",
   description:
     "Calcula tu gratificación legal mensual y anual: {{cl.gratificacion-porcentaje}} de tu remuneración con tope de {{cl.gratificacion-tope}} al año. Con el ingreso mínimo vigente de {{cl.imm}}.",
   intro: [

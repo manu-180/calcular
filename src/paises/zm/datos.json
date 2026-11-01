@@ -1,0 +1,984 @@
+{
+  "mercado": "zm",
+  "datos": [
+    {
+      "id": "zm.paye-bands",
+      "nombre": "Monthly PAYE tax bands",
+      "tipo": "escala",
+      "unidad": "ZMW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5100,
+              "tasa": 0
+            },
+            {
+              "desde": 5100,
+              "hasta": 7100,
+              "tasa": 20
+            },
+            {
+              "desde": 7100,
+              "hasta": 9200,
+              "tasa": 30
+            },
+            {
+              "desde": 9200,
+              "hasta": null,
+              "tasa": 37
+            }
+          ],
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Pay As You Earn (PAYE) leaflet: example calculation with the 2026 tax bands",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/PAYE.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.napsa-rate",
+      "nombre": "NAPSA employee contribution rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "ZRA PAYE calculator (NAPSA line)",
+            "url": "https://www.zra.org.zm/paye-calculator/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.napsa-ceiling",
+      "nombre": "NAPSA monthly earnings ceiling",
+      "tipo": "numero",
+      "unidad": "ZMW",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 37236,
+          "motivo": "Only seen in payroll vendor notices (Sage, PaySpace, Workpay). napsa.co.zm sits behind an Incapsula wall that blocks every request from our environment, including the Web Archive copies, and the ZRA PAYE calculator still uses an older ceiling."
+        }
+      ]
+    },
+    {
+      "id": "zm.nhima-rate",
+      "nombre": "NHIMA contribution rate (employee and employer, each)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "National Health Insurance Management Authority",
+            "titulo": "NHIMA FAQs, question 29: how are premiums calculated?",
+            "url": "https://nhima.co.zm/elementor-1783/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.sdl-rate",
+      "nombre": "Skills Development Levy rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Skills Development Levy leaflet",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2023/06/Skills-Development-Levy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Introduction to Value Added Tax leaflet",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/Introduction-to-VAT.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.vat-threshold",
+      "nombre": "VAT registration threshold a year",
+      "tipo": "numero",
+      "unidad": "ZMW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 800000,
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Introduction to Value Added Tax leaflet",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/Introduction-to-VAT.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.tot-rate",
+      "nombre": "Turnover tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Turnover Tax leaflet: rates and example for January 2026",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/Turnover-Tax.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.tot-exempt-monthly",
+      "nombre": "Turnover taxed at 0% each month",
+      "tipo": "numero",
+      "unidad": "ZMW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2500,
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Turnover Tax leaflet: rates and example for January 2026",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/Turnover-Tax.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.tot-limit",
+      "nombre": "Turnover tax limit a year",
+      "tipo": "numero",
+      "unidad": "ZMW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5000000,
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Turnover Tax leaflet: rates and example for January 2026",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/Turnover-Tax.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.rental-bands-monthly",
+      "nombre": "Monthly rental income tax bands",
+      "tipo": "escala",
+      "unidad": "ZMW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2500,
+              "tasa": 0
+            },
+            {
+              "desde": 2500,
+              "hasta": 66666.67,
+              "tasa": 4
+            },
+            {
+              "desde": 66666.67,
+              "hasta": null,
+              "tasa": 16
+            }
+          ],
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Rental Income Tax leaflet: rates, monthly bands and 2026 examples",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/Rental-Income-Tax.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.rental-bands-annual",
+      "nombre": "Annual rental income tax bands",
+      "tipo": "escala",
+      "unidad": "ZMW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30000,
+              "tasa": 0
+            },
+            {
+              "desde": 30000,
+              "hasta": 800000,
+              "tasa": 4
+            },
+            {
+              "desde": 800000,
+              "hasta": null,
+              "tasa": 16
+            }
+          ],
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Rental Income Tax leaflet: rates, monthly bands and 2026 examples",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/Rental-Income-Tax.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.ptt-rates",
+      "nombre": "Property transfer tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "land": "Land, buildings and improvements",
+        "shares": "Shares",
+        "ip": "Intellectual property",
+        "mining-licence": "Mining right for a mining licence",
+        "exploration-licence": "Mining right for an exploration licence",
+        "processing-licence": "Mineral processing licence"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "land": 8,
+            "shares": 8,
+            "ip": 8,
+            "mining-licence": 10,
+            "exploration-licence": 8,
+            "processing-licence": 10
+          },
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Property Transfer Tax leaflet: applicable rates",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/Property-Transfer.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.mmtl-bands",
+      "nombre": "Mobile money transaction levy per transaction",
+      "tipo": "escala",
+      "unidad": "ZMW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 150,
+              "tasa": 0,
+              "cuotaFija": 0.32
+            },
+            {
+              "desde": 150,
+              "hasta": 300,
+              "tasa": 0,
+              "cuotaFija": 0.4
+            },
+            {
+              "desde": 300,
+              "hasta": 500,
+              "tasa": 0,
+              "cuotaFija": 0.8
+            },
+            {
+              "desde": 500,
+              "hasta": 1000,
+              "tasa": 0,
+              "cuotaFija": 2
+            },
+            {
+              "desde": 1000,
+              "hasta": 3000,
+              "tasa": 0,
+              "cuotaFija": 4
+            },
+            {
+              "desde": 3000,
+              "hasta": 5000,
+              "tasa": 0,
+              "cuotaFija": 7.5
+            },
+            {
+              "desde": 5000,
+              "hasta": 10000,
+              "tasa": 0,
+              "cuotaFija": 8
+            },
+            {
+              "desde": 10000,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 10
+            }
+          ],
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Mobile Money Transaction Levy leaflet: chargeable rates",
+            "url": "https://www.zra.org.zm/wp-content/uploads/2026/06/Mobile-Money-Transaction-Levy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.presumptive-tax",
+      "nombre": "Presumptive tax a year per public service vehicle",
+      "tipo": "mapa",
+      "unidad": "ZMW",
+      "etiquetas": {
+        "36-49": "36 to 49 seats",
+        "22-35": "22 to 35 seats",
+        "18-21": "18 to 21 seats",
+        "12-17": "12 to 17 seats",
+        "under-12": "Fewer than 12 seats, taxis included"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "36-49": 10368,
+            "22-35": 7776,
+            "18-21": 5184,
+            "12-17": 2592,
+            "under-12": 1296
+          },
+          "fuente": {
+            "organismo": "Zambia Revenue Authority",
+            "titulo": "Tax information: Presumptive Tax for public service vehicles",
+            "url": "https://www.zra.org.zm/tax-information/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.minimum-wage-monthly",
+      "nombre": "Minimum basic pay a month by category",
+      "tipo": "mapa",
+      "unidad": "ZMW",
+      "etiquetas": {
+        "cat1": "Category I: general worker, cleaner, helper, office orderly, service station attendant",
+        "cat2": "Category II: security guard",
+        "cat3": "Category III: assistant sales person, packer, book binder, printer",
+        "cat4": "Category IV: driver, pump attendant, craft certificate holder",
+        "cat5": "Category V: typist, receptionist, telephonist",
+        "cat6": "Category VI: sales person",
+        "cat7": "Category VII: qualified clerk, machine operator"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "cat1": 1487,
+            "cat2": 1487,
+            "cat3": 1801.98,
+            "cat4": 2119.23,
+            "cat5": 2296.89,
+            "cat6": 2680.92,
+            "cat7": 2861.36
+          },
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Statutory Instrument No. 48 of 2023: Employment Code (Minimum Wages and Conditions of Employment) (General) Order, 2023",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/12/IS-NO.48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.minimum-wage-hourly",
+      "nombre": "Minimum basic pay an hour by category",
+      "tipo": "mapa",
+      "unidad": "ZMW",
+      "etiquetas": {
+        "cat1": "Category I: general worker, cleaner, helper, office orderly, service station attendant",
+        "cat2": "Category II: security guard",
+        "cat3": "Category III: assistant sales person, packer, book binder, printer",
+        "cat4": "Category IV: driver, pump attendant, craft certificate holder",
+        "cat5": "Category V: typist, receptionist, telephonist",
+        "cat6": "Category VI: sales person",
+        "cat7": "Category VII: qualified clerk, machine operator"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "cat1": 7.15,
+            "cat2": 7.15,
+            "cat3": 8.66,
+            "cat4": 10.19,
+            "cat5": 11.04,
+            "cat6": 12.89,
+            "cat7": 13.76
+          },
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Statutory Instrument No. 48 of 2023: Employment Code (Minimum Wages and Conditions of Employment) (General) Order, 2023",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/12/IS-NO.48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.transport-allowance",
+      "nombre": "Minimum transport allowance a month",
+      "tipo": "numero",
+      "unidad": "ZMW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 200,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Statutory Instrument No. 48 of 2023: Employment Code (Minimum Wages and Conditions of Employment) (General) Order, 2023",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/12/IS-NO.48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.lunch-allowance",
+      "nombre": "Minimum lunch allowance a month",
+      "tipo": "numero",
+      "unidad": "ZMW",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Statutory Instrument No. 48 of 2023: Employment Code (Minimum Wages and Conditions of Employment) (General) Order, 2023",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/12/IS-NO.48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.housing-allowance-rate",
+      "nombre": "Minimum housing allowance (share of basic pay)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Statutory Instrument No. 48 of 2023: Employment Code (Minimum Wages and Conditions of Employment) (General) Order, 2023",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/12/IS-NO.48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.night-differential",
+      "nombre": "Night shift differential (18:00 to 06:00)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Statutory Instrument No. 48 of 2023: Employment Code (Minimum Wages and Conditions of Employment) (General) Order, 2023",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/12/IS-NO.48.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.leave-days-per-month",
+      "nombre": "Annual leave earned per month",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.leave-pay-divisor",
+      "nombre": "Working days that divide full pay in the leave formula",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.weekly-hours",
+      "nombre": "Hours a week before overtime",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 48,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.guard-weekly-hours",
+      "nombre": "Hours a week before overtime for a watchperson or guard",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.overtime-factor",
+      "nombre": "Overtime rate",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.rest-day-factor",
+      "nombre": "Rate for a public holiday or weekly rest day",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.hourly-divisor",
+      "nombre": "Hours that divide monthly basic pay",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 208,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.guard-hourly-divisor",
+      "nombre": "Hours that divide monthly basic pay for a watchperson or guard",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 240,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.gratuity-rate",
+      "nombre": "Minimum gratuity on a long-term contract",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.redundancy-months",
+      "nombre": "Months of basic pay per year served on redundancy or death in service",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.medical-discharge-months",
+      "nombre": "Months of basic pay per completed year on medical discharge",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.maternity-weeks",
+      "nombre": "Maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.maternity-multiple-weeks",
+      "nombre": "Extra maternity leave for a multiple birth",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.maternity-after-birth-weeks",
+      "nombre": "Maternity leave that must follow the birth",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.paternity-days",
+      "nombre": "Paternity leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.sick-days-short",
+      "nombre": "Sick leave days on full pay, then on half pay (short-term contract)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.sick-months-long",
+      "nombre": "Sick leave months on full pay, then on half pay (long-term contract)",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.notice-hours-monthly",
+      "nombre": "Notice for a contract of up to one month",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 24,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.notice-days-short",
+      "nombre": "Notice for a contract of more than one month and up to three months",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "zm.notice-days-long",
+      "nombre": "Notice for a contract of more than three months",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-04-11",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "The Employment Code Act, No. 3 of 2019",
+            "url": "https://www.mlss.gov.zm/wp-content/uploads/2023/07/The-Employment-Code-Act-No.-3-of-2019.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    }
+  ]
+}

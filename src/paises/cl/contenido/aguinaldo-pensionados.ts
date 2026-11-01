@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.aguinaldo-pensionados",
-  h1: "Aguinaldo de Navidad 2026 para pensionados",
-  title: "Aguinaldo de Navidad 2026 pensionados: monto con cargas",
+  h1: "Aguinaldo de Navidad {{anio}} para pensionados",
+  title: "Aguinaldo de Navidad {{anio}} pensionados: monto con cargas",
   description:
-    "Calcula tu aguinaldo de pensionado: {{cl.aguinaldo-navidad-pensionados[base]}} en Navidad 2026 más {{cl.aguinaldo-navidad-pensionados[por-carga]}} por carga. Montos de la Ley 21.806.",
+    "Calcula tu aguinaldo de pensionado: {{cl.aguinaldo-navidad-pensionados[base]}} en Navidad {{anio}} más {{cl.aguinaldo-navidad-pensionados[por-carga]}} por carga. Montos de la Ley 21.806.",
   intro: [
     "Las personas pensionadas del IPS, del ISL, de las mutualidades y quienes reciben la PGU tienen dos aguinaldos al año: uno en Fiestas Patrias y otro en Navidad.",
     "El monto base sube por cada carga familiar acreditada. Elige el aguinaldo y escribe tus cargas.",

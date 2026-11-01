@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.retencion-honorarios",
   h1: "Calculadora de retención en la fuente por honorarios",
-  title: "Retención en la fuente por honorarios 2026",
+  title: "Retención en la fuente por honorarios {{anio}}",
   description:
     "Calcula la retención sobre tus honorarios: tabla del artículo 383 si eres persona natural, o tarifa del {{co.retencion-honorarios[natural]}} o {{co.retencion-honorarios[juridica]}}.",
   intro: [

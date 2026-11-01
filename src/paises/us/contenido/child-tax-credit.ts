@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.child-tax-credit",
   h1: "Child tax credit calculator",
-  title: "Child Tax Credit Calculator 2026: {{us.ctc-amount}} per child",
+  title: "Child Tax Credit Calculator {{anio}}: {{us.ctc-amount}} per child",
   description:
-    "Estimate your 2026 child tax credit: {{us.ctc-amount}} per child under 17, up to {{us.actc-max}} refundable, and {{us.odc-amount}} for other dependents. Income limits included.",
+    "Estimate your {{anio}} child tax credit: {{us.ctc-amount}} per child under 17, up to {{us.actc-max}} refundable, and {{us.odc-amount}} for other dependents. Income limits included.",
   intro: [
     "The child tax credit lowers your federal income tax for each child under 17. If the credit is bigger than your tax, part of it can come back as a refund.",
     "Enter your children, income and tax to see how much of the credit you get.",

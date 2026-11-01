@@ -1,0 +1,61 @@
+{
+  "mercado": "ua",
+  "avisos": [
+    {
+      "id": "ua.voiennyi-stan-vz",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "aplicaA": ["ua.kalkuliator-zarplaty", "ua.zarplata-na-ruky", "ua.kalkuliator-fop", "ua.podatok-na-depozyt", "ua.kalkuliator-pdfo", "ua.podatok-z-prodazhu-neruhomosti", "ua.podatok-z-prodazhu-avto"],
+      "texto": "Військовий збір діє на час воєнного стану і ще до 31 грудня третього року після року, у якому воєнний стан припинять або скасують. Калькулятор рахує за чинною ставкою.",
+      "fuente": {
+        "organismo": "Державна податкова служба України",
+        "titulo": "Закон України від 07.04.2026 № 4835-IX щодо справляння військового збору",
+        "url": "https://tax.gov.ua/zakonodavstvo/podatkove-zakonodavstvo/zakoni-ukraini/80076.html",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "ua.voiennyi-stan-vidpustky",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "aplicaA": ["ua.rozrakhunok-vidpusknykh", "ua.kompensatsiia-vidpustky"],
+      "texto": "Під час воєнного стану святкові та неробочі дні не виключають із розрахункового періоду: заробіток ділять на всі календарні дні.",
+      "fuente": {
+        "organismo": "Міністерство економіки та довкілля України",
+        "titulo": "Розʼяснення щодо обчислення середньої заробітної плати для компенсації за невикористані відпустки",
+        "url": "https://me.gov.ua/Documents/Detail?lang=uk-UA&id=ae96611c-41f1-4410-b6a1-f01c82f975d3&title=RoziasnenniaSchodoPoriadkuObchislenniaSerednoiZarobitnoiPlatiDliaViplatiKompensatsiiPaNevikoristaniVidpustki-NaYakiPratsivnikNabuvPravoDo31-12-2023-TaPislia31-12-2023",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "ua.voiennyi-stan-kredyty-625",
+      "nivel": "cautela",
+      "desde": "2026-10-24",
+      "aplicaA": ["ua.try-vidsotky-richnykh"],
+      "texto": "Позичальники за кредитними договорами звільнені від 3 % річних та інфляційних втрат за прострочення в період воєнного стану (п. 18 Прикінцевих та перехідних положень ЦК України). Для інших боргів калькулятор рахує як звичайно.",
+      "fuente": {
+        "organismo": "Верховний Суд",
+        "titulo": "Постанова КЦС ВС від 16.04.2026 у справі № 751/4086/24",
+        "url": "https://supreme.court.gov.ua/supreme/pres-centr/news/2034689/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "ua.yesv-fop-pilha",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "aplicaA": ["ua.yesv-dlia-fop", "ua.kalkuliator-fop"],
+      "texto": "ФОП може не сплачувати ЄСВ за себе за місяць, у якому роботодавець уже сплатив за нього ЄСВ не менше мінімального внеску.",
+      "fuente": {
+        "organismo": "Державна податкова служба України",
+        "titulo": "З 1 жовтня 2025 року розширено пільгу зі сплати єдиного внеску для ФОП",
+        "url": "https://tax.gov.ua/media-tsentr/novini/937695.html",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}

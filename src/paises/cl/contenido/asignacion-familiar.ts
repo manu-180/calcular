@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.asignacion-familiar",
-  h1: "Calculadora de asignación familiar 2026",
-  title: "Asignación familiar 2026: monto por carga y tramo",
-  description: "Calcula tu asignación familiar 2026 según tu ingreso y tus cargas. Montos de la Ley 21.830, vigentes desde mayo de 2026.",
+  h1: "Calculadora de asignación familiar {{anio}}",
+  title: "Asignación familiar {{anio}}: monto por carga y tramo",
+  description: "Calcula tu asignación familiar {{anio}} según tu ingreso y tus cargas. Montos de la Ley 21.830, vigentes desde mayo de {{anio}}.",
   intro: [
     "La asignación familiar es un monto mensual por cada carga que tengas reconocida (hijos, cónyuge, padres que dependen de ti). Cuánto recibes depende de tu ingreso.",
     "Escribe tu ingreso mensual y tus cargas. Te decimos tu tramo y el total al mes.",

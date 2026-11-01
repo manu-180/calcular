@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.cetes",
-  h1: "Calculadora de CETES 2026",
+  h1: "Calculadora de CETES {{anio}}",
   title: "Calculadora de CETES: cuánto ganas a 28, 91 y 364 días",
   description:
-    "Calcula cuánto ganas invirtiendo en CETES con la tasa de la última subasta de Banxico, a 28, 91, 182 o 364 días, ya con la retención de ISR de 2026.",
+    "Calcula cuánto ganas invirtiendo en CETES con la tasa de la última subasta de Banxico, a 28, 91, 182 o 364 días, ya con la retención de ISR de {{anio}}.",
   intro: [
     "Los CETES son bonos del Gobierno de México que puedes comprar en línea en Cetesdirecto. Son de los instrumentos más seguros del país y su tasa sale de la subasta semanal del Banco de México.",
     "Escribe cuánto quieres invertir y el plazo. Usamos la tasa de la subasta más reciente, que se actualiza sola cada semana.",

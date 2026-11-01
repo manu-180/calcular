@@ -21,7 +21,17 @@ export function normalizar(texto: string): string {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
+    // La ı del turco no se descompone en NFD: sin esto quedaría como separador («yıllık», «y ll k»).
+    .replace(/ı/g, "i")
+    // Uzbeko latino: oʻ, gʻ y la tutuq belgisi (ʼ) se buscan sin el signo, y quien escribe «o'» o «g'»
+    // con el apóstrofo del teclado encuentra lo mismo («oʻrtacha», «o'rtacha» y «ortacha»).
+    .replace(/[ʻʼ]/g, "")
+    .replace(/([og])[‘’'`](?=[a-z])/g, "$1")
+    // El cirílico (ucraniano, ruso), el griego, el hebreo, el árabe, el bengalí y el tailandés cuentan
+    // como letra: sin esto «кредит», «δάνειο» o «משכנתא» quedaban vacíos. La sigma final se busca como la otra: quien escribe «μισθ» o «μισθος» encuentra
+    // «Μισθός».
+    .replace(/ς/g, "σ")
+    .replace(/[^a-z0-9Ѐ-ӿͰ-Ͽ֐-׿؀-ۿঀ-৿฀-๿]+/g, " ")
     .trim();
 }
 

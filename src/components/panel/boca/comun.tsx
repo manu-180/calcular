@@ -13,6 +13,8 @@ export const NOMBRE_CANAL: Record<string, string> = {
   x: "X",
   telegram: "Telegram",
   linkedin: "LinkedIn",
+  facebook: "Facebook",
+  instagram: "Instagram (historia)",
   otro: "Sin dato",
 };
 

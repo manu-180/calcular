@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sg.seller-stamp-duty",
   h1: "Seller's Stamp Duty calculator",
-  title: "Seller's Stamp Duty (SSD) calculator Singapore 2026",
+  title: "Seller's Stamp Duty (SSD) calculator Singapore {{anio}}",
   description: "Check if you pay Seller's Stamp Duty when selling a home in Singapore and how much: from {{sg.ssd-2025[1]}} in the first year for homes bought from 4 July 2025.",
   intro: [
     "Seller's Stamp Duty (SSD) is paid when you sell a residential property within a set period after buying it. The sooner you sell, the higher the rate.",

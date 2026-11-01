@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-it.kinderzulagen-rechner",
   h1: "Calcolo degli assegni familiari: figli e formazione",
-  title: "Assegni familiari Svizzera 2026: calcolo",
+  title: "Assegni familiari Svizzera {{anio}}: calcolo",
   description: "Assegni familiari in Svizzera: assegno per i figli di almeno {{ch.kinderzulage}}, assegno di formazione di almeno {{ch.ausbildungszulage}} al mese. Con le aliquote del tuo cantone.",
   intro: [
     "Per i figli in Svizzera esistono gli assegni familiari. La legge federale fissa importi minimi: {{ch.kinderzulage}} di assegno per i figli e {{ch.ausbildungszulage}} di assegno di formazione al mese.",

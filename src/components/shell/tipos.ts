@@ -45,6 +45,10 @@ export type TextosBuscador = {
   resultados: string;
   resultado: string;
   resultadosPlural: string;
+  // Forma «few» de los idiomas eslavos (2 a 4: «3 výsledky»); sin ella, resultadosPlural.
+  resultadosPocos?: string;
+  // Rumano: la forma con «de» del 20 en adelante («20 de rezultate»).
+  resultadosDe?: string;
 };
 
 export type FuenteBuscador = {

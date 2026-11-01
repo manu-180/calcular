@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ve.utilidades",
   h1: "Calculadora de utilidades en Venezuela",
-  title: "Utilidades 2026 en Venezuela: calcula cuánto cobras",
+  title: "Utilidades {{anio}} en Venezuela: calcula cuánto cobras",
   description:
     "Calcula tus utilidades con la LOTTT: de {{ve.utilidades-dias-minimo}} a {{ve.utilidades-dias-maximo}} de salario al año, o las fraccionadas si no completaste el año. En bolívares o en dólares.",
   intro: [

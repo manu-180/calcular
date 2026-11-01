@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "bo.rc-iva",
-  h1: "Calculadora de RC-IVA para dependientes 2026",
-  title: "RC-IVA dependientes 2026: calcule su retención y facturas",
+  h1: "Calculadora de RC-IVA para dependientes {{anio}}",
+  title: "RC-IVA dependientes {{anio}}: calcule su retención y facturas",
   description: "Calcule el RC-IVA de su sueldo con el mínimo no imponible de {{bo.rc-iva-minimo-no-imponible}} salarios mínimos y vea cuántas facturas necesita en el Formulario 110.",
   intro: [
     "El RC-IVA (Régimen Complementario al IVA) de los dependientes es el {{bo.rc-iva-alicuota}} de su sueldo después de aportes y de {{bo.rc-iva-minimo-no-imponible}} salarios mínimos, menos el {{bo.rc-iva-alicuota}} de {{bo.rc-iva-computo-smn}} salario mínimo. El empleador se lo retiene cada mes, y usted lo puede bajar presentando facturas a su nombre en el Formulario 110.",

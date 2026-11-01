@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.renta-trabajador-independiente",
   h1: "Impuesto sobre la renta para trabajadores independientes",
-  title: "Renta de independientes 2026 Costa Rica: tramos y cálculo",
+  title: "Renta de independientes {{anio}} Costa Rica: tramos y cálculo",
   description:
-    "Calcule el impuesto sobre la renta de su actividad lucrativa con los tramos 2026: exento hasta ₡6.244.000 y créditos por hijo y cónyuge.",
+    "Calcule el impuesto sobre la renta de su actividad lucrativa con los tramos {{anio}}: exento hasta ₡6.244.000 y créditos por hijo y cónyuge.",
   intro: [
     "Si usted trabaja por cuenta propia o tiene un negocio a su nombre, paga renta por tramos anuales sobre su renta neta. Los primeros colones están exentos.",
     "Escriba su renta neta del año y le mostramos el impuesto y la tasa efectiva.",

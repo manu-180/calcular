@@ -1,0 +1,35 @@
+{
+  "mercado": "cm",
+  "avisos": [
+    {
+      "id": "cm.smig-decret-2024",
+      "nivel": "info",
+      "desde": "2024-02-23",
+      "aplicaA": ["cm.smig"],
+      "titulo": "Deux décrets en vigueur",
+      "texto": "Le décret de février 2024 ne fixe que le SMIG des agents de l'État relevant du Code du travail. Les montants du secteur agricole et des autres secteurs viennent du décret de mars 2023.",
+      "fuente": {
+        "organismo": "Services du Premier ministre",
+        "titulo": "Décret n° 2024/0168/PM du 23 février 2024 fixant le SMIG des agents de l'État relevant du Code du travail",
+        "url": "https://www.spm.gov.cm/site/sites/default/files/decret_ndeg_2024_0168.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-26"
+      }
+    },
+    {
+      "id": "cm.cas-particuliers-paie",
+      "nivel": "info",
+      "desde": "2026-01-01",
+      "aplicaA": ["cm.calcul-salaire-net"],
+      "titulo": "Cas particuliers",
+      "texto": "Le calcul vaut pour un salarié du régime général. Le personnel domestique et les ouvriers agricoles ne paient pas la redevance audiovisuelle, et une convention fiscale peut changer l'IRPP.",
+      "fuente": {
+        "organismo": "Direction générale des impôts (DGI)",
+        "titulo": "Code général des impôts, édition officielle 2026, annexe sur la redevance audiovisuelle (article 6) et article 69",
+        "url": "https://www.impots.cm/sites/default/files/documents/CODE%20GENERAL%20DES%20IMPOTS%202026%20SITE%20DGI%20VERSION%20FRANCAISE.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-26"
+      }
+    }
+  ]
+}

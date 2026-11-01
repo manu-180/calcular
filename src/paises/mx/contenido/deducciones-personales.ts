@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.deducciones-personales",
-  h1: "Calculadora del tope de deducciones personales 2026",
-  title: "Deducciones personales 2026: tope y cuánto ahorras",
+  h1: "Calculadora del tope de deducciones personales {{anio}}",
+  title: "Deducciones personales {{anio}}: tope y cuánto ahorras",
   description:
     "Calcula tu tope de deducciones personales para la declaración anual ({{mx.tope-deducciones-uma}} anuales o {{mx.tope-deducciones-porcentaje}} de tus ingresos) y cuánto ISR ahorras.",
   intro: [

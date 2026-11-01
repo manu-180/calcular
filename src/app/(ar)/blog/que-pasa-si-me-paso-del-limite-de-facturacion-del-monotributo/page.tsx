@@ -16,7 +16,7 @@ import { formatARS } from "@/lib/formato";
 
 // La ventana de recategorización se deriva de la fecha (data/monotributo.ts): revalidar cada
 // hora hace que el bloque de "próxima ventana" no se quede viejo entre deploys.
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 const PUBLICADO = "22 de junio de 2026";
 const PUBLICADO_ISO = "2026-06-22";

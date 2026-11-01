@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "nl.aow-berekenen",
   h1: "AOW berekenen: je AOW-leeftijd en je AOW per maand",
-  title: "AOW berekenen 2026: AOW-leeftijd en bedrag per maand",
+  title: "AOW berekenen {{anio}}: AOW-leeftijd en bedrag per maand",
   description:
     "Bereken wanneer je AOW ingaat en hoeveel AOW je krijgt. Met de AOW-leeftijden van de SVB en de bedragen voor alleenstaanden ({{nl.aow-bruto[alleenstaand]}}) en samenwonenden.",
   intro: [

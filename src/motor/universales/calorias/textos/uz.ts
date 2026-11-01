@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosUz: TextosUi<UiCalorias> = {
+  slug: "kaloriya-kalkulyatori",
+  ui: () => ({
+    sexo: "Jins",
+    mujer: "Ayol",
+    hombre: "Erkak",
+    edad: "Yosh",
+    peso: (u) => `Vazn (${u})`,
+    altura: (u) => `Boʻy (${u})`,
+    pies: "Boʻy: fut (ft)",
+    pulgadas: "Boʻy: duym (in)",
+    actividad: "Jismoniy faollik",
+    sedentaria: "Kam yoki umuman yoʻq",
+    ligera: "Yengil (haftasiga 1, 2 yoki 3 kun)",
+    moderada: "Oʻrtacha (haftasiga 3, 4 yoki 5 kun)",
+    alta: "Yuqori (haftasiga 6 yoki 7 kun)",
+    muyAlta: "Juda yuqori (qattiq mashgʻulot yoki jismoniy mehnat)",
+    objetivo: "Maqsad",
+    mantener: "Vaznimni saqlash",
+    bajar: "Asta-sekin vazn yoʻqotish",
+    subir: "Asta-sekin vazn olish",
+    basal: "Bazal metabolizm (kkal/kun)",
+    basalAyuda: "Tanangiz toʻliq tinch holatda sarflaydigan energiya.",
+    mantenimiento: "Vazningizni saqlash uchun kaloriya (kkal/kun)",
+    calObjetivo: "Maqsadingiz uchun kaloriya (kkal/kun)",
+    calObjetivoAyuda: "Meʼyoriy oʻzgarish: vazn yoʻqotish uchun kuniga 500 kkal kam, vazn olish uchun 300 kkal koʻp.",
+    errorEdad: "Formula 15 yoshdan 100 yoshgacha boʻlgan odamlar uchun moʻljallangan.",
+    errorPeso: "Vazn noldan katta boʻlishi kerak.",
+    errorAltura: "Boʻy noldan katta boʻlishi kerak.",
+    notaMinimo: (kcal) => `Vazn yoʻqotishda kunlik kaloriya bu chegaradan pastga tushirilmaydi: ${kcal} kkal. Bundan kam ovqatlanish uchun mutaxassis bilan maslahatlashing.`,
+    aviso: "Bu Mifflin-St Jeor formulasi boʻyicha taxminiy hisob. Har bir organizm har xil: natija shifokor yoki dietolog maslahatining oʻrnini bosmaydi.",
+  }),
+};

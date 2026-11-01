@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.sueldo-por-hora",
   h1: "Calculadora de sueldo por hora y por día",
-  title: "Sueldo por hora 2026: calcula cuánto ganas por hora",
+  title: "Sueldo por hora {{anio}}: calcula cuánto ganas por hora",
   description:
     "Convierte tu sueldo mensual en pago por hora, por día y por quincena. Compáralo con la hora de la remuneración mínima de {{pe.rmv}}.",
   intro: [

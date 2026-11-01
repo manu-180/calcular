@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "at.sozialversicherung-rechner",
-  h1: "Sozialversicherungsrechner: Ihre Beiträge 2026",
-  title: "Sozialversicherung 2026 berechnen: Dienstnehmeranteil",
-  description: "Wie viel Sozialversicherung zahlen Sie vom Bruttogehalt? Kranken-, Pensions- und Arbeitslosenversicherung, Umlagen und Höchstbeitragsgrundlage 2026.",
+  h1: "Sozialversicherungsrechner: Ihre Beiträge {{anio}}",
+  title: "Sozialversicherung {{anio}} berechnen: Dienstnehmeranteil",
+  description: "Wie viel Sozialversicherung zahlen Sie vom Bruttogehalt? Kranken-, Pensions- und Arbeitslosenversicherung, Umlagen und Höchstbeitragsgrundlage {{anio}}.",
   intro: [
     "Als Angestellte oder Arbeiter zahlen Sie in Österreich rund 18 % Ihres Bruttogehalts an die Sozialversicherung. Der Arbeitgeber zieht die Beiträge ab und führt sie an den Krankenversicherungsträger ab, meist die Österreichische Gesundheitskasse.",
     "Der Rechner zeigt jeden Beitrag einzeln, den Betrag auf Urlaubsgeld und Weihnachtsgeld und die Summe im Jahr.",

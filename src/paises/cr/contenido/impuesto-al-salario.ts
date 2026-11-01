@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cr.impuesto-al-salario",
-  h1: "Calculadora del impuesto al salario 2026 en Costa Rica",
-  title: "Impuesto al salario 2026 en Costa Rica: tramos y cálculo",
+  h1: "Calculadora del impuesto al salario {{anio}} en Costa Rica",
+  title: "Impuesto al salario {{anio}} en Costa Rica: tramos y cálculo",
   description:
-    "Calcule su impuesto al salario 2026 con los tramos de renta del Decreto 45333-H y los créditos de {{cr.credito-hijo}} por hijo y {{cr.credito-conyuge}} por cónyuge.",
+    "Calcule su impuesto al salario {{anio}} con los tramos de renta del Decreto 45333-H y los créditos de {{cr.credito-hijo}} por hijo y {{cr.credito-conyuge}} por cónyuge.",
   intro: [
     "En 2026 el impuesto al salario en Costa Rica se paga sobre la parte del salario mensual que pasa de ₡918.000, con tramos del 10 % al 25 %. Por debajo de ese monto no hay retención.",
     "Escriba su salario bruto del mes y, si los declara, sus hijos y su cónyuge. Le mostramos cuánta renta le retiene el patrono cada mes.",

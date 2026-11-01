@@ -1,0 +1,1595 @@
+{
+  "mercado": "cz",
+  "datos": [
+    {
+      "id": "cz.prumerna-mzda",
+      "nombre": "Průměrná mzda pro sociální pojištění a daně",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 48967,
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Přehled nejdůležitějších údajů pro sociální zabezpečení v roce 2026",
+            "url": "https://www.cssz.gov.cz/-/prehled-nejdulezitejsich-udaju-pro-socialni-zabezpeceni-v-roce-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.minimalni-mzda",
+      "nombre": "Minimální mzda měsíční (40 hodin týdně)",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-09-30",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 22400,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Sdělení MPSV č. 356/2025 Sb. o vyhlášení minimální mzdy pro rok 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2025-356",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 24900,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Sdělení MPSV č. 171/2026 Sb. o vyhlášení minimální mzdy pro rok 2027",
+            "url": "https://www.zakonyprolidi.cz/cs/2026-171",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.minimalni-mzda-hodinova",
+      "nombre": "Minimální mzda hodinová (40 hodin týdně)",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-09-30",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 134.4,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Sdělení MPSV č. 356/2025 Sb. o vyhlášení minimální mzdy pro rok 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2025-356",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 148.3,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Sdělení MPSV č. 171/2026 Sb. o vyhlášení minimální mzdy pro rok 2027",
+            "url": "https://www.zakonyprolidi.cz/cs/2026-171",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.dan-z-prijmu",
+      "nombre": "Sazba daně z příjmů fyzických osob (§ 16)",
+      "tipo": "escala",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1762812,
+              "tasa": 15
+            },
+            {
+              "desde": 1762812,
+              "hasta": null,
+              "tasa": 23
+            }
+          ],
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 586/1992 Sb., o daních z příjmů, znění od 1. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/1992-586",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Hranice 23 % je 36násobek průměrné mzdy 48 967 Kč (ČSSZ, přehled údajů pro rok 2026)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.sleva-na-poplatnika",
+      "nombre": "Základní sleva na poplatníka (ročně)",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30840,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 586/1992 Sb., o daních z příjmů, znění od 1. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/1992-586",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.zvyhodneni-na-deti",
+      "nombre": "Daňové zvýhodnění na vyživované dítě (ročně)",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "etiquetas": {
+        "prvni": "První dítě",
+        "druhe": "Druhé dítě",
+        "treti": "Třetí a každé další dítě"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "prvni": 15204,
+            "druhe": 22320,
+            "treti": 27840
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 586/1992 Sb., o daních z příjmů, znění od 1. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/1992-586",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.danovy-bonus-minimum",
+      "nombre": "Nejnižší měsíční daňový bonus",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 586/1992 Sb., o daních z příjmů, znění od 1. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/1992-586",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.srazkova-dan",
+      "nombre": "Zvláštní sazba daně (srážková daň, § 36 odst. 2)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 586/1992 Sb., o daních z příjmů, znění od 1. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/1992-586",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.socialni-zamestnanec",
+      "nombre": "Pojistné na sociální zabezpečení placené zaměstnancem",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7.1,
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Sazby pojistného",
+            "url": "https://www.cssz.gov.cz/web/cz/vyse-a-sazba",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.socialni-zamestnavatel",
+      "nombre": "Pojistné na sociální zabezpečení placené zaměstnavatelem",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24.8,
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Sazby pojistného",
+            "url": "https://www.cssz.gov.cz/web/cz/vyse-a-sazba",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.zdravotni-pojisteni",
+      "nombre": "Pojistné na veřejné zdravotní pojištění",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 13.5,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 592/1992 Sb., o pojistném na veřejné zdravotní pojištění, § 2",
+            "url": "https://www.zakonyprolidi.cz/cs/1992-592",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.max-vymerovaci-zaklad",
+      "nombre": "Maximální roční vyměřovací základ pro sociální pojištění",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2350416,
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Maximální vyměřovací základ",
+            "url": "https://www.cssz.gov.cz/maximalni-vymerovaci-zaklad",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.rozhodny-prijem-dpp",
+      "nombre": "Rozhodný příjem pro účast na pojištění u dohody o provedení práce",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 12000,
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Přehled nejdůležitějších údajů pro sociální zabezpečení v roce 2026",
+            "url": "https://www.cssz.gov.cz/-/prehled-nejdulezitejsich-udaju-pro-socialni-zabezpeceni-v-roce-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.dph",
+      "nombre": "Sazby DPH",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "zakladni": "Základní sazba",
+        "snizena": "Snížená sazba"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zakladni": 21,
+            "snizena": 12
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 235/2004 Sb., o dani z přidané hodnoty, § 47",
+            "url": "https://www.zakonyprolidi.cz/cs/2004-235",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.pausalni-vydaje",
+      "nombre": "Výdaje procentem z příjmů (paušální výdaje)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "zemedelstvi-remesla": "80 % (řemeslné živnosti, zemědělství)",
+        "zivnost": "60 % (ostatní živnosti)",
+        "jine": "40 % (svobodná povolání, autorské příjmy)",
+        "najem": "30 % (nájem obchodního majetku)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zemedelstvi-remesla": 80,
+            "zivnost": 60,
+            "jine": 40,
+            "najem": 30
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 586/1992 Sb., o daních z příjmů, znění od 1. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/1992-586",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.pausalni-vydaje-limit",
+      "nombre": "Nejvyšší částka paušálních výdajů",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "etiquetas": {
+        "zemedelstvi-remesla": "Výdaje 80 %",
+        "zivnost": "Výdaje 60 %",
+        "jine": "Výdaje 40 %",
+        "najem": "Výdaje 30 %"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zemedelstvi-remesla": 1600000,
+            "zivnost": 1200000,
+            "jine": 800000,
+            "najem": 600000
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 586/1992 Sb., o daních z příjmů, znění od 1. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/1992-586",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.pausalni-dan",
+      "nombre": "Měsíční paušální záloha podle pásma",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "etiquetas": {
+        "prvni": "První pásmo",
+        "druhe": "Druhé pásmo",
+        "treti": "Třetí pásmo"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "prvni": 9162,
+            "druhe": 16745,
+            "treti": 27139
+          },
+          "fuente": {
+            "organismo": "Finanční správa",
+            "titulo": "Informace k institutu paušální daně pro rok 2025 a 2026",
+            "url": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/pausalni-dan/informace-k-institutu-pausalni-dane-pro-rok-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Částka 9 162 Kč v prvním pásmu platí zpětně od 1. 1. 2026, poprvé splatná 20. 7. 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.pausalni-dan-slozky",
+      "nombre": "Složení měsíční paušální zálohy (daň, sociální a zdravotní pojištění)",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "prvni-dan": 100,
+            "prvni-socialni": 5756,
+            "prvni-zdravotni": 3306,
+            "druhe-dan": 4963,
+            "druhe-socialni": 8191,
+            "druhe-zdravotni": 3591,
+            "treti-dan": 9320,
+            "treti-socialni": 12527,
+            "treti-zdravotni": 5292
+          },
+          "fuente": {
+            "organismo": "Finanční správa",
+            "titulo": "Informace k institutu paušální daně pro rok 2025 a 2026",
+            "url": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/pausalni-dan/informace-k-institutu-pausalni-dane-pro-rok-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.pausalni-dan-limity",
+      "nombre": "Rozhodné příjmy pro pásma paušálního režimu",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "prvni-obecne": 1000000,
+            "prvni-60": 1500000,
+            "prvni-80": 2000000,
+            "druhe-obecne": 1500000,
+            "druhe-60": 2000000,
+            "treti": 2000000
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 586/1992 Sb., o daních z příjmů, znění od 1. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/1992-586",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.osvc-socialni-sazba",
+      "nombre": "Pojistné na důchodové pojištění OSVČ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 29.2,
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Sazby pojistného",
+            "url": "https://www.cssz.gov.cz/web/cz/vyse-a-sazba",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.osvc-podil-zakladu",
+      "nombre": "Vyměřovací základ OSVČ jako podíl ze základu daně",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "socialni": "Sociální pojištění",
+        "zdravotni": "Zdravotní pojištění"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "socialni": 55,
+            "zdravotni": 50
+          },
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Zálohy na pojistné na důchodové pojištění",
+            "url": "https://www.cssz.gov.cz/zalohy-na-pojistne-na-duchodove-pojisteni",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.osvc-min-zaloha-socialni",
+      "nombre": "Minimální měsíční záloha OSVČ na důchodové pojištění",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "etiquetas": {
+        "hlavni": "Hlavní činnost",
+        "vedlejsi": "Vedlejší činnost",
+        "zacinajici": "Hlavní činnost po 20 letech bez podnikání"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "hlavni": 5720,
+            "vedlejsi": 1574,
+            "zacinajici": 3575
+          },
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Přehled nejdůležitějších údajů pro sociální zabezpečení v roce 2026",
+            "url": "https://www.cssz.gov.cz/-/prehled-nejdulezitejsich-udaju-pro-socialni-zabezpeceni-v-roce-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "hlavni": 5005,
+            "vedlejsi": 1574,
+            "zacinajici": 3575
+          },
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Zálohy na pojistné na důchodové pojištění",
+            "url": "https://www.cssz.gov.cz/zalohy-na-pojistne-na-duchodove-pojisteni",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.osvc-min-vz-socialni",
+      "nombre": "Minimální měsíční vyměřovací základ OSVČ pro pojistné za rok 2026",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "etiquetas": {
+        "hlavni": "Hlavní činnost",
+        "vedlejsi": "Vedlejší činnost",
+        "zacinajici": "Hlavní činnost po 20 letech bez podnikání"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "hlavni": 17139,
+            "vedlejsi": 5387,
+            "zacinajici": 12242
+          },
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Informace pro OSVČ o změně pojistného na důchodové pojištění od 1. 7. 2026",
+            "url": "https://www.cssz.gov.cz/-/informace-pro-osvc-o-zmene-pojistneho-na-duchodove-pojisteni-od-1-7-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Pro pojistné za celý rok 2026 (přehled za rok 2026) se u hlavní činnosti použije 35 % průměrné mzdy."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.osvc-rozhodna-castka",
+      "nombre": "Rozhodná částka pro účast na důchodovém pojištění při vedlejší činnosti",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 117521,
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Přehled nejdůležitějších údajů pro sociální zabezpečení v roce 2026",
+            "url": "https://www.cssz.gov.cz/-/prehled-nejdulezitejsich-udaju-pro-socialni-zabezpeceni-v-roce-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.osvc-min-zaloha-zdravotni",
+      "nombre": "Minimální měsíční záloha OSVČ na zdravotní pojištění",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3306,
+          "fuente": {
+            "organismo": "Všeobecná zdravotní pojišťovna",
+            "titulo": "Platby zdravotního pojištění v roce 2026",
+            "url": "https://www.vzp.cz/o-nas/tiskove-centrum/otazky-tydne/platby-zdravotniho-pojisteni-v-roce-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.osvc-min-vz-zdravotni",
+      "nombre": "Minimální měsíční vyměřovací základ OSVČ pro zdravotní pojištění",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 24483.5,
+          "fuente": {
+            "organismo": "Všeobecná zdravotní pojišťovna",
+            "titulo": "OSVČ: minimální výše záloh",
+            "url": "https://www.vzp.cz/platci/informace/osvc/osvc-minimalni-vyse-zaloh",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.redukcni-hranice",
+      "nombre": "Redukční hranice pro denní vyměřovací základ (nemocenské pojištění)",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "etiquetas": {
+        "prvni": "První redukční hranice",
+        "druha": "Druhá redukční hranice",
+        "treti": "Třetí redukční hranice"
+      },
+      "proximaRevision": "2027-10-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "prvni": 1633,
+            "druha": 2449,
+            "treti": 4897
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Sdělení MPSV č. 397/2025 Sb. o redukčních hranicích pro rok 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2025-397",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "prvni": 1723,
+            "druha": 2584,
+            "treti": 5167
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Sdělení MPSV č. 185/2026 Sb. o redukčních hranicích pro rok 2027",
+            "url": "https://www.zakonyprolidi.cz/cs/2026-185",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.nemocenske-sazby",
+      "nombre": "Výše nemocenského z denního vyměřovacího základu",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "do-30": "Do 30. dne",
+        "do-60": "Od 31. do 60. dne",
+        "od-61": "Od 61. dne"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "do-30": 60,
+            "do-60": 66,
+            "od-61": 72
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 187/2006 Sb., o nemocenském pojištění",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-187",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.nahrada-mzdy-nemoc",
+      "nombre": "Náhrada mzdy v prvních 14 dnech nemoci",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 262/2006 Sb., zákoník práce, znění od 29. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-262",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.nahrada-mzdy-koeficient",
+      "nombre": "Koeficient pro redukční hranice náhrady mzdy (§ 192 odst. 2)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.175,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 262/2006 Sb., zákoník práce, znění od 29. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-262",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.ppm-sazba",
+      "nombre": "Peněžitá pomoc v mateřství z denního vyměřovacího základu",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 187/2006 Sb., o nemocenském pojištění",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-187",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.ppm-podpurci-doba",
+      "nombre": "Podpůrčí doba peněžité pomoci v mateřství",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "jedno": "Jedno dítě",
+        "vicercata": "Dvojčata a více dětí"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "jedno": 28,
+            "vicercata": 37
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 187/2006 Sb., o nemocenském pojištění",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-187",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.rodicovsky-prispevek",
+      "nombre": "Celková částka rodičovského příspěvku podle data narození dítěte",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "etiquetas": {
+        "do-2026": "Dítě narozené v letech 2024 až 2026",
+        "od-2027": "Dítě narozené od 1. 1. 2027"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "do-2026": 350000,
+            "od-2027": 400000
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 152/2026 Sb., kterým se mění zákon o státní sociální podpoře",
+            "url": "https://www.zakonyprolidi.cz/cs/2026-152",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "350 000 Kč podle § 30 odst. 1 zákona č. 117/1995 Sb.; 400 000 Kč pro děti narozené od 1. 1. 2027 podle čl. II zákona č. 152/2026 Sb."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.rodicovsky-limit",
+      "nombre": "Měsíční částka rodičovského příspěvku bez doloženého vyměřovacího základu",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 117/1995 Sb., o státní sociální podpoře, § 30",
+            "url": "https://www.zakonyprolidi.cz/cs/1995-117",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.rodicovsky-podil",
+      "nombre": "Strop měsíčního rodičovského příspěvku (podíl z 30násobku denního vyměřovacího základu)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 117/1995 Sb., o státní sociální podpoře, § 30",
+            "url": "https://www.zakonyprolidi.cz/cs/1995-117",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.vymera-dovolene",
+      "nombre": "Výměra dovolené v týdnech",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "zakladni": "Podnikatelský sektor (nejméně 4 týdny)",
+        "verejny": "Stát, kraje, obce a jejich organizace (5 týdnů)",
+        "pedagog": "Pedagogičtí a akademičtí pracovníci (8 týdnů)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zakladni": 4,
+            "verejny": 5,
+            "pedagog": 8
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 262/2006 Sb., zákoník práce, znění od 29. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-262",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.priplatky",
+      "nombre": "Nejnižší příplatky podle zákoníku práce",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "prescas": "Práce přesčas",
+        "svatek": "Práce ve svátek (místo náhradního volna)",
+        "noc": "Noční práce",
+        "vikend": "Práce v sobotu a v neděli"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "prescas": 25,
+            "svatek": 100,
+            "noc": 10,
+            "vikend": 10
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 262/2006 Sb., zákoník práce, znění od 29. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-262",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.odstupne",
+      "nombre": "Odstupné v násobcích průměrného měsíčního výdělku (§ 67)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "mene-nez-rok": "Pracovní poměr kratší než 1 rok",
+        "rok-az-dva": "Od 1 roku do 2 let",
+        "dva-a-vice": "2 roky a více",
+        "uraz": "Pracovní úraz nebo nemoc z povolání"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "mene-nez-rok": 1,
+            "rok-az-dva": 2,
+            "dva-a-vice": 3,
+            "uraz": 12
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 262/2006 Sb., zákoník práce, znění od 29. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-262",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.vypovedni-doba",
+      "nombre": "Nejkratší výpovědní doba",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 262/2006 Sb., zákoník práce, znění od 29. 8. 2026",
+            "url": "https://www.zakonyprolidi.cz/cs/2006-262",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.repo-sazba",
+      "nombre": "Dvoutýdenní repo sazba ČNB",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-11-05",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "hasta": "2018-02-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2018-02-02",
+          "hasta": "2018-06-27",
+          "valor": 0.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2018-06-28",
+          "hasta": "2018-08-02",
+          "valor": 1.0,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2018-08-03",
+          "hasta": "2018-09-26",
+          "valor": 1.25,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2018-09-27",
+          "hasta": "2018-11-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2018-11-02",
+          "hasta": "2019-05-02",
+          "valor": 1.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2019-05-03",
+          "hasta": "2020-02-06",
+          "valor": 2.0,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-02-07",
+          "hasta": "2020-03-16",
+          "valor": 2.25,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-03-17",
+          "hasta": "2020-03-26",
+          "valor": 1.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-03-27",
+          "hasta": "2020-05-10",
+          "valor": 1.0,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-05-11",
+          "hasta": "2021-06-23",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-06-24",
+          "hasta": "2021-08-05",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-08-06",
+          "hasta": "2021-09-30",
+          "valor": 0.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-10-01",
+          "hasta": "2021-11-04",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-11-05",
+          "hasta": "2021-12-22",
+          "valor": 2.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-12-23",
+          "hasta": "2022-02-03",
+          "valor": 3.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-02-04",
+          "hasta": "2022-03-31",
+          "valor": 4.5,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-04-01",
+          "hasta": "2022-05-05",
+          "valor": 5.0,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-05-06",
+          "hasta": "2022-06-22",
+          "valor": 5.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-06-23",
+          "hasta": "2023-12-21",
+          "valor": 7.0,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2023-12-22",
+          "hasta": "2024-02-08",
+          "valor": 6.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-02-09",
+          "hasta": "2024-03-20",
+          "valor": 6.25,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-03-21",
+          "hasta": "2024-05-02",
+          "valor": 5.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-05-03",
+          "hasta": "2024-06-27",
+          "valor": 5.25,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-06-28",
+          "hasta": "2024-08-01",
+          "valor": 4.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-08-02",
+          "hasta": "2024-09-25",
+          "valor": 4.5,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-09-26",
+          "hasta": "2024-11-07",
+          "valor": 4.25,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-11-08",
+          "hasta": "2025-02-06",
+          "valor": 4.0,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-02-07",
+          "hasta": "2025-05-08",
+          "valor": 3.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-05-09",
+          "hasta": "2026-06-18",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-06-19",
+          "valor": 3.75,
+          "fuente": {
+            "organismo": "Česká národní banka",
+            "titulo": "Vývoj dvoutýdenní repo sazby ČNB",
+            "url": "https://www.cnb.cz/cs/casto-kladene-dotazy/.galleries/vyvoj_repo_historie.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.urok-z-prodleni-prirazka",
+      "nombre": "Přirážka k repo sazbě u zákonného úroku z prodlení",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Nařízení vlády č. 351/2013 Sb., § 2 (výše úroku z prodlení)",
+            "url": "https://www.zakonyprolidi.cz/cs/2013-351",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.duchod-zakladni-vymera",
+      "nombre": "Základní výměra důchodu",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 4900,
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Přehled nejdůležitějších údajů pro sociální zabezpečení v roce 2026",
+            "url": "https://www.cssz.gov.cz/-/prehled-nejdulezitejsich-udaju-pro-socialni-zabezpeceni-v-roce-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.duchod-redukcni-hranice",
+      "nombre": "Redukční hranice pro výpočet důchodu",
+      "tipo": "mapa",
+      "unidad": "CZK",
+      "etiquetas": {
+        "prvni": "První redukční hranice",
+        "druha": "Druhá redukční hranice"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "prvni": 21546,
+            "druha": 195868
+          },
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Přehled nejdůležitějších údajů pro sociální zabezpečení v roce 2026",
+            "url": "https://www.cssz.gov.cz/-/prehled-nejdulezitejsich-udaju-pro-socialni-zabezpeceni-v-roce-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.duchod-zapocet",
+      "nombre": "Zápočet osobního vyměřovacího základu do výpočtového základu",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "do-prvni": "Do první redukční hranice",
+        "do-druhe": "Nad první do druhé redukční hranice"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "do-prvni": 99,
+            "do-druhe": 26
+          },
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 155/1995 Sb., o důchodovém pojištění, § 15 a § 34",
+            "url": "https://www.zakonyprolidi.cz/cs/1995-155",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.duchod-sazba-za-rok",
+      "nombre": "Procentní výměra za každý celý rok pojištění",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1.495,
+          "fuente": {
+            "organismo": "Sbírka zákonů (zákony pro lidi)",
+            "titulo": "Zákon č. 155/1995 Sb., o důchodovém pojištění, § 15 a § 34",
+            "url": "https://www.zakonyprolidi.cz/cs/1995-155",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz.vychovne",
+      "nombre": "Výchovné za každé vychované dítě",
+      "tipo": "numero",
+      "unidad": "CZK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500,
+          "fuente": {
+            "organismo": "Česká správa sociálního zabezpečení",
+            "titulo": "Přehled nejdůležitějších údajů pro sociální zabezpečení v roce 2026",
+            "url": "https://www.cssz.gov.cz/-/prehled-nejdulezitejsich-udaju-pro-socialni-zabezpeceni-v-roce-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}

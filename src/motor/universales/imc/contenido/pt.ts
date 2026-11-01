@@ -1,10 +1,11 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearNumero, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { KG_POR_LB, M_POR_PULGADA } from "../definicion";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const n = (x: number, d = 1) => formatearNumero(ctx, x, d);
   const imperial = ctx.unidades === "imperial";
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const m = 69 * M_POR_PULGADA;
   const ejemplo = imperial
     ? [

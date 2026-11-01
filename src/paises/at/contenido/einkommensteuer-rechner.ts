@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "at.einkommensteuer-rechner",
   h1: "Einkommensteuerrechner für Österreich",
-  title: "Einkommensteuer 2026 berechnen: Tarif und Steuersatz",
-  description: "Berechnen Sie die Einkommensteuer 2026 nach dem österreichischen Tarif, mit Durchschnitts- und Grenzsteuersatz sowie Verkehrs- und Alleinverdienerabsetzbetrag.",
+  title: "Einkommensteuer {{anio}} berechnen: Tarif und Steuersatz",
+  description: "Berechnen Sie die Einkommensteuer {{anio}} nach dem österreichischen Tarif, mit Durchschnitts- und Grenzsteuersatz sowie Verkehrs- und Alleinverdienerabsetzbetrag.",
   intro: [
     "Die Einkommensteuer steigt in Österreich in Stufen: Jeder Teil des Einkommens wird mit dem Satz seiner Stufe besteuert, nicht das ganze Einkommen mit dem höchsten Satz.",
     "Geben Sie Ihr zu versteuerndes Jahreseinkommen ein. Der Rechner zeigt die Steuer, wie viel Prozent davon im Schnitt an das Finanzamt gehen und mit welchem Satz der nächste Euro besteuert wird.",

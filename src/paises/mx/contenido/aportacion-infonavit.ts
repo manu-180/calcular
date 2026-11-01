@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.aportacion-infonavit",
-  h1: "Calculadora de aportación al Infonavit 2026",
-  title: "Aportación Infonavit 2026: cuánto se deposita cada bimestre",
+  h1: "Calculadora de aportación al Infonavit {{anio}}",
+  title: "Aportación Infonavit {{anio}}: cuánto se deposita cada bimestre",
   description:
     "Calcula cuánto aporta tu empresa al Infonavit cada bimestre: el {{mx.aportacion-vivienda}} de tu salario base de cotización, con el tope del IMSS.",
   intro: [

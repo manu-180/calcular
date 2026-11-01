@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.subsidio-al-empleo",
-  h1: "Calculadora del subsidio para el empleo 2026",
-  title: "Subsidio para el empleo 2026: cuánto te toca",
+  h1: "Calculadora del subsidio para el empleo {{anio}}",
+  title: "Subsidio para el empleo {{anio}}: cuánto te toca",
   description:
-    "Mira si te toca el subsidio para el empleo y cuánto baja tu ISR por quincena, semana o mes, con el porcentaje de la UMA y el límite de ingreso de 2026.",
+    "Mira si te toca el subsidio para el empleo y cuánto baja tu ISR por quincena, semana o mes, con el porcentaje de la UMA y el límite de ingreso de {{anio}}.",
   intro: [
     "El subsidio para el empleo baja el ISR que te retienen si ganas poco. En 2026 es el {{mx.subsidio-empleo}} de la UMA mensual y lo reciben quienes ganan hasta {{mx.subsidio-empleo-limite}} al mes.",
     "Ya no es una tabla por tramos: es un monto fijo para todos los que están debajo del límite.",

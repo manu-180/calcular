@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "nl.btw-berekenen",
   h1: "Btw berekenen: 21% en 9%",
-  title: "Btw berekenen 2026: erbij of eraf, {{nl.btw-hoog}} en {{nl.btw-laag}}",
+  title: "Btw berekenen {{anio}}: erbij of eraf, {{nl.btw-hoog}} en {{nl.btw-laag}}",
   description:
     "Reken btw uit met het algemene tarief van {{nl.btw-hoog}} of het verlaagde tarief van {{nl.btw-laag}}. Van exclusief naar inclusief btw en terug, met de tarieven van de Belastingdienst.",
   intro: [

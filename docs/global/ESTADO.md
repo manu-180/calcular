@@ -21,6 +21,400 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 29/10/2026 · Tanda 2 de países (grupo A): ag, bz, ne, bn, np, sc, ws (`claude/paises-tanda-2`)
+
+Publicados: Antigua y Barbuda (ag), Belice (bz), Níger (ne), Brunéi (bn), Nepal (np), Seychelles (sc) y
+Samoa (ws). Los siete con `universales: "todas"` (cargadores generados, `mercados-registro.ts`
+regenerado, 125 mercados intl). Informes de cada agente en `scripts/paises/<m>/INFORME.md`. Orden en
+`PAISES`: ag, bz, ne, bn, np, sc, ws. El código de mercado `bn` (Brunéi) y la edición universal `zz-bn`
+(bengalí, interna) conviven como `pl`/`zz-pl` o `id`/`zz-id`: son códigos distintos.
+
+| País | Locales | Publicables | Borrador | Universales |
+|---|---|---|---|---|
+| ag | 16 | 9 | employer-cost, maternity-allowance, sickness-benefit, social-security, minimum-wage, take-home-pay, usd-to-xcd | todas |
+| bz | 14 | 12 | income-tax, net-salary | todas |
+| ne | 10 | 8 | calcul-tva, smig | todas |
+| bn | 12 | 11 | minimum-wage | todas |
+| np | 17 | 17 | ninguna | todas |
+| sc | 18 | 16 | employer-cost, thirteenth-month-pay | todas |
+| ws | 16 | 13 | employer-cost, net-pay, npf | todas |
+
+Datos no verificados y motivo:
+- ag: el tope mensual (EC$6.500) y semanal (EC$1.500) de Social Security salen de la FAQ de
+  contribuciones del Board, que todavía cita las tasas de 2021: pasaron a `no-verificado`. Quedan en
+  borrador las cuatro calculadoras que los usan (social-security, employer-cost, maternity-allowance,
+  sickness-benefit) y se borraron sus `.casos.ts`; take-home-pay ya estaba en borrador. También sin
+  verificar: salario mínimo EC$11,50 (solo prensa), paridad XCD/USD (sitio del ECCB inaccesible) y
+  las bandas del Education Levy (la ley de 1994 las fija solo hasta 1996).
+- sc: `sc.thirteenth-limit` pasó a `no-verificado` (la s.46D condicionó el pago 2023-2025 y no hay
+  texto oficial de la enmienda 2025). thirteenth-month-pay y employer-cost (que usa el mismo dato) en
+  borrador, sin `.casos.ts`.
+- ws: las tasas SNPF (10 % empleado y 10 % empleador) salen de un Employers Guide desactualizado que
+  contradice la FAQ oficial («14% or more»): `no-verificado`, igual que el recargo por mora y el día de
+  vencimiento (misma guía). Borrador: npf, net-pay y employer-cost, sin `.casos.ts`. El título de npf
+  tiene «20 %» fijo en el texto: revisarlo al verificar las tasas. El PAYE sigue publicado.
+- bz: income-tax-exemption (29.000) y income-tax-rate (25 %): la Act 40/2024 no se pudo leer;
+  income-tax y net-salary en borrador.
+- ne: tva 19 % (CGI nuevo ilegible) y smig 42.000 F (decreto no publicado): calcul-tva y smig en
+  borrador.
+- bn: salario mínimo (BND 500 / 2,62 por hora): labour.gov.bn y agc.gov.bn inaccesibles; minimum-wage
+  en borrador.
+- np: sin datos no verificados.
+
+Riesgos:
+- ne: la Ordonnance 2026-45 (rectificativa de la ley de finanzas 2026) es un escaneo que no se leyó y
+  puede cambiar el barème del ITS o las tasas; la TDTA del 5 % se aplica a todo el monto (el texto no
+  lo precisa) y se avisa en pantalla.
+- bz: Labour Act en la edición 2020; income tax en borrador por la Act 40/2024 ilegible.
+- np: el inicio del año fiscal 2083/84 se infiere como 2026-07-17.
+- sc: sin serie de tipo de cambio.
+- ws: la serie de IPC no tiene detector, se actualiza a mano.
+- bn: Employment Order 2009 ilegible, así que no hay calculadoras laborales.
+- Avisos de series: ne (dólar-fcfa), np (dólar e inr) y ws (usd-to-wst, inflation) dejan de ser
+  publicables si las series no se actualizan (check_paises avisa a 30 días).
+- Fallas conocidas en main que siguen igual: `check_motor` forint, check_guiones de hu.
+
+No publicados en esta sesión: tj (portales del Código Tributario y laboral caídos: solo 1 local
+publicable; rama `claude/pais-tj` guardada), bt (impuesto, GST y salario mínimo ilegibles, Labour Act
+solo en copia del ADB; rama `claude/pais-bt` guardada), sz, lc y tl (portales oficiales caídos o
+inaccesibles desde el entorno; sin rama).
+
+## 29/10/2026 · Tanda 1 de países (grupo A): mg, bj, bb, cv, fj (`claude/paises-tanda-1`)
+
+Publicados: Madagascar (mg), Benín (bj), Barbados (bb), Cabo Verde (cv) y Fiyi (fj). Los cinco con
+`universales: "todas"` (cargadores generados, `mercados-registro.ts` regenerado, 118 mercados intl).
+Informes de cada agente en `scripts/paises/<m>/INFORME.md`.
+
+| País | Locales | Publicables | Borrador | Datos verificados |
+|---|---|---|---|---|
+| mg | 16 | 15 | calcul-salaire-net | 35 (2026-10-27, impots.mg, CGI LFI 2026) |
+| bj | 22 | 22 | ninguna | 45 (CGI 2026, Código del Trabajo, Ley 2017-05, BCEAO) |
+| bb | 19 | 17 | minimum-wage-calculator, property-transfer-tax-calculator | ver `scripts/paises/bb/INFORME.md` |
+| cv | 14 | 13 | euro-escudo | ver `scripts/paises/cv/INFORME.md` |
+| fj | 17 | 12 | annual-leave, overtime, redundancy-pay, maternity-leave, minimum-wage | 20 tramos verificados, 8 pendientes |
+
+Datos no verificados y motivo:
+- mg: calcul-salaire-net en borrador porque las cotizaciones CNaPS 1 % y OSTIE 1 % no tienen texto
+  oficial en línea.
+- bb: el aumento del salario mínimo 2026 solo está anunciado (minimum-wage-calculator en borrador);
+  la exención de 150 000 del property transfer tax no se pudo leer (property-transfer-tax-calculator
+  en borrador).
+- cv: la paridad euro-escudo no se pudo leer en bcv.cv (euro-escudo en borrador).
+- fj: la ERA 2007 no fue accesible, así que annual-leave, overtime, redundancy-pay y maternity-leave
+  quedan en borrador. El salario mínimo (FJ$4.50 desde 2024-08-01 y FJ$5.00 desde 2025-04-01) solo se
+  leyó en el discurso del presupuesto 2024-25 y la Legal Notice no fue accesible: se pasó a
+  `no-verificado` («solo leído en el discurso del presupuesto 2024-25; Legal Notice no accesible»),
+  minimum-wage pasó a borrador y se borró su `.casos.ts` (sin dato verificado no hay casos). La
+  novedad `fj.minimum-wage-5-2025` sigue publicada con su propia fuente.
+
+Riesgos:
+- bj: its-treizieme-mois interpreta el promedio del art. 126; la redevance ORTB de 4 000 F está fija
+  en el código.
+- bb: la indemnización se topa a los insurable earnings (interpretación); la pensión NIS usa solo la
+  base nueva.
+- cv: las convenciones se avisan en pantalla (día = retribución/30). Sin detectores.
+- fj: FNPF del empleador y la deducción del 150 % vencen el 31/7/2027.
+- Avisos de series: mg.convertisseur-ariary-euro y bj.convertisseur-dollar-fcfa dejan de ser
+  publicables si la serie de tipo de cambio no se actualiza (check_paises avisa a 30 días).
+- Fallas conocidas en main que siguen igual: `check_motor` forint, check_guiones de hu.
+
+## 25/10/2026 · Integración de los motores de idioma (`claude/mundo-idiomas-integrado`)
+
+Una sola rama junta `claude/mundo-arreglos-2026-10-24` y los motores eu (pl, sv, da, nb, fi), ar, id,
+tr, bn, th, uk, uz, ru, ro, cs, el, hu y he, con las universales de pl, sv, da, nb, fi y ar, sobre
+origin/main. Reemplaza a los PR de cada rama: los choques comunes (listas de idiomas, Record<Idioma>,
+plural.ts, FormasUnidad, el contador y la normalización del buscador, formato.ts con los dígitos de
+otras escrituras, cargadores, expectativas de zz-* y el orden de D9 a D22 del ADR) quedan resueltos una
+vez. Las secciones de cada motor siguen abajo, en el orden del ADR.
+
+## 24/10/2026 · Motor europeo: polaco, sueco, danés, noruego y finés (`claude/mundo-motor-eu`)
+
+pl, sv, da, nb y fi en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu
+sueldo en el mundo» y venta completa (`IDIOMAS_VENTA`). Un registro informal por idioma (Ty
+implícito, du, sinä implícito). Decisiones en ADR 0002, D9. Ediciones de prueba `zz-pl`, `zz-sv`,
+`zz-da`, `zz-nb` y `zz-fi`. Puesto al día con main bb530d7a en `claude/mundo-motor-eu-al-dia`:
+calendario laboral, horas de trabajo, rankings de países, «Sueldos reales» y afiliados en los cinco,
+con sus carpetas de ruta, y las carpetas de «Tu sueldo en el mundo» que faltaban (slugs en D9).
+
+Falta para el primer país de estos idiomas (Polonia, Suecia, Dinamarca, Noruega, Finlandia):
+- Las 41 universales en cada idioma: ramas `claude/mundo-trad-<idioma>` (solo `textos/<idioma>.ts` y
+  `contenido/<idioma>.ts`; después `npx tsx scripts/gen_idiomas_universales.ts`).
+- El país en sí (BRIEF-PAIS). Finlandia puede tener además la edición `fi-sv` en sueco (sv-FI ya está
+  en los mercados de prueba de `check_universales`).
+- Revisión de un hablante nativo de cada idioma sobre una muestra de páginas antes de publicar.
+
+## 24/10/2026 · Motor árabe RTL (`claude/mundo-motor-ar`)
+
+`ar` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
+«Tu sueldo en el mundo» (`rawatib-alalam`), calendario (`taqwim-alrawatib`), horas de trabajo
+(`saat-alamal`), rankings (`tartib-alduwal`), «Sueldos reales» (`rawatib-haqiqiya`), afiliados y
+diccionario de venta (`IDIOMAS_VENTA`). Decisiones en
+ADR 0002, D10: árabe estándar moderno de banco y gobierno con segunda persona en masculino genérico,
+dígitos occidentales (`-u-ca-gregory-nu-latn`), CSS con propiedades lógicas y flechas espejadas, slugs
+en inglés para las universales. Edición de prueba `zz-ar` (interna, `ar-001`).
+- Falta: las 41 universales en árabe (`claude/mundo-trad-ar`, otro agente). Hasta que entren, un
+  mercado árabe solo tiene sus calculadoras locales.
+- Con esto se pueden escribir ediciones árabes de los países ya publicados en inglés (ae, kw) y
+  países árabes nuevos (eg, sa, qa, bh, om, jo). Revisión por hablante nativo antes del primero.
+
+## 24/10/2026 · Motor indonesio (`claude/mundo-motor-id`)
+
+id en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`gaji-di-dunia`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con slugs en indonesio
+(`kalkulator-kpr`, `kalkulator-pinjaman`, `kalkulator-ppn`...). Registro «Anda» con mayúscula, el de
+BCA, Mandiri, OJK y DJP Online; mercados con `trato: "usted"`. Decisiones en ADR 0002, D11. Edición de
+prueba `zz-id`.
+
+Puesta al día con main 7d190a68: calendario (`kalender-gaji`), horas de trabajo (`berapa-jam-kerja`),
+rankings (`peringkat-negara`), «Sueldos reales» (`gaji-sebenarnya`) y afiliados en indonesio.
+
+Falta para publicar Indonesia:
+- El país en sí (BRIEF-PAIS): PPh 21 con TER, BPJS Kesehatan y Ketenagakerjaan, UMP/UMK por provincia,
+  PPN, THR, pesangon, con datos verificados en fuentes oficiales (pajak.go.id, bpjs, kemnaker).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+
+## 24/10/2026 · Motor turco (`claude/mundo-motor-tr`)
+
+tr en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`ulkelere-gore-maas`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con slugs en turco ASCII
+(`kredi-hesaplama`, `konut-kredisi-hesaplama`, `kdv-hesaplama`...). Registro «siz» con formas
+corteses, el de los bancos y e-Devlet; mercados con `trato: "usted"`. `GRAMATICA.tr` pone los sufijos
+de caso con apóstrofo y armonía vocálica («Türkiye'de», «Almanya'nın»). Mayúsculas con el locale
+(`mayusculaInicial`) por la i con y sin punto. Decisiones en ADR 0002, D12. Edición de prueba `zz-tr`.
+
+Puesta al día con main 7d190a68: calendario (`maas-takvimi`), horas de trabajo (`kac-saatlik-calisma`),
+rankings (`ulke-siralamasi`), «Sueldos reales» (`gercek-maaslar`) y afiliados en turco.
+
+Falta para publicar Turquía:
+- El país en sí (BRIEF-PAIS): brütten nete maaş hesaplama (gelir vergisi dilimleri, SGK ve işsizlik
+  primleri, damga vergisi, asgari ücret istisnası), kıdem ve ihbar tazminatı, KDV, asgari ücret, con
+  datos verificados en fuentes oficiales (gib.gov.tr, sgk.gov.tr, Resmî Gazete, csgb.gov.tr).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+
+## 24/10/2026 · Motor tailandés (`claude/mundo-motor-th`)
+
+th en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`ngoen-duean-thua-lok`), calendario (`patithin-ngoen-duean`), horas de trabajo (`chua-mong-tham-ngan`),
+rankings (`andap-prathet`), «Sueldos reales» (`ngoen-duean-ching`), afiliados, venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con el slug en inglés del catálogo (como ja, ko y zh). Registro cortés y neutro de SCB, Kasikorn y กรมสรรพากร: sin คุณ/ท่าน,
+sin ครับ/ค่ะ y sin punto final; mercados con `trato: "usted"`. Fechas en พ.ศ. (calendario por defecto de
+th en Intl) y cifras arábigas; `parsearNumero` lee «2.5 ล้าน» y los dígitos tailandeses; `anchoVisual`
+no cuenta vocales ni tonos apilados. CSS con `word-break: normal` para el corte por diccionario.
+Decisiones en ADR 0002, D13. Edición de prueba `zz-th`.
+
+Falta para publicar Tailandia:
+- El país en sí (BRIEF-PAIS): ภาษีเงินได้บุคคลธรรมดา (escala y deducciones de rd.go.th), ประกันสังคม
+  (sso.go.th, 5 % con tope), ค่าจ้างขั้นต่ำ por provincia, ภาษีมูลค่าเพิ่ม 7 %, ภาษีหัก ณ ที่จ่าย,
+  ค่าชดเชย por despido (Ley de protección laboral), con datos verificados en fuentes oficiales.
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- La OG de las calculadoras intl (`og/[[...slug]]`) no carga fuentes CJK ni tailandesas (igual que hoy
+  para ja/ko/zh): con un título tailandés puede salir con cuadritos. Solo la tarjeta del mundo carga
+  Noto Sans Thai.
+
+## 24/10/2026 · Motor bengalí (`claude/mundo-motor-bn`)
+
+bn en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`bishwe-beton`), venta completa (`IDIOMAS_VENTA`, las 27 familias) y las 41 universales con el slug en
+inglés del catálogo (`loan`, `bmi`, `vat`). Registro «আপনি» con las formas corteses, el de bKash, Sonali
+Bank y NBR e-Return; mercados con `trato: "usted"`. Montos con dígitos bengalíes (০-৯) y miles en lakh
+y crore; `parsearNumero` acepta lo que escribe un teclado bengalí. Decisiones en ADR 0002, D14. Edición
+de prueba `zz-bn`.
+
+Falta para publicar Bangladés:
+- El país en sí (BRIEF-PAIS): আয়কর con sus tramos y el umbral libre de impuesto, ভ্যাট (tasa general y
+  reducidas), সঞ্চয়পত্র y su উৎসে কর, PF/gratuity de la Bangladesh Labour Act, ফেস্টিভ্যাল বোনাস, con
+  datos verificados en fuentes oficiales (nbr.gov.bd, bangladesh.gov.bd, nsd.gov.bd, bb.org.bd).
+- Decidir el fin de semana de los días hábiles (viernes, y sábado en la administración pública): hoy
+  `dias-entre-fechas` y `sumar-dias` cuentan de lunes a viernes y los textos bn lo advierten.
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+
+## 24/10/2026 · Motor ucraniano (`claude/mundo-motor-uk`)
+
+uk en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`zarplata-u-sviti`), rankings, horas de trabajo, calendario, sueldos reales, venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con slugs en la transliteración oficial ucraniana
+(`kalkuliator-kredytu`, `kalkuliator-pdv`, `skladni-vidsotky`...). Registro «ви» con minúscula y
+formas corteses, el de Дія y los bancos; mercados con `trato: "usted"`. Plurales one/few/many/other
+(`pluralUk`, unidades de tiempo con `pocos`/`muchos`). `GRAMATICA.uk` declina el país («в Україні»,
+«для України», «на Кіпрі»). El buscador ahora indexa cirílico. Decisiones en ADR 0002, D15. Edición de
+prueba `zz-uk`.
+
+Falta para publicar Ucrania:
+- El país en sí (BRIEF-PAIS): калькулятор зарплати з ПДФО, військовим збором і ЄСВ del
+  empleador, ФОП (групи єдиного податку), відпускні, лікарняні, мінімальна зарплата, прожитковий
+  мінімум, ПДВ, con datos verificados en fuentes oficiales (zakon.rada.gov.ua, tax.gov.ua, bank.gov.ua,
+  ukrstat.gov.ua).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar (las dudas de
+  vocabulario de los forks están en el cuerpo del PR).
+- Al mergear con `claude/mundo-motor-eu`: `src/motor/i18n/plural.ts` choca (los dos lo crean) y hay
+  que dejar `pluralPl` y `formaUk`/`pluralUk` juntos; `FormasUnidad` en `unidades.ts` es la misma.
+
+## 24/10/2026 · Motor uzbeko latino (`claude/mundo-motor-uz`)
+
+uz en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu sueldo en el mundo»
+(`mamlakatlar-boyicha-ish-haqi`), horas de trabajo, rankings, sueldos reales, calendario, afiliados,
+venta completa (`IDIOMAS_VENTA`) y las 41 universales con slugs en uzbeko ASCII
+(`kredit-kalkulyatori`, `ipoteka-kalkulyatori`, `qqs-kalkulyatori`...). Escritura latina oficial con
+oʻ y gʻ en U+02BB y la tutuq en U+02BC; registro «Siz» de soliq.uz, my.gov.uz y los bancos; mercados
+con `trato: "usted"`. `GRAMATICA.uz` pega -ning/-da al nombre y usa «uchun» suelto. Formato de Intl
+uz-UZ («1 234 567,50 soʻm»). Decisiones en ADR 0002, D16. Edición de prueba `zz-uz`.
+
+Falta para publicar Uzbekistán:
+- El país en sí (BRIEF-PAIS): ish haqi kalkulyatori (daromad soligʻi, INPS y demás aportes),
+  eng kam ish haqi, BHM (bazaviy hisoblash miqdori), QQS, ijtimoiy soliq, con datos verificados en
+  fuentes oficiales (soliq.uz, lex.uz, mehnat.uz, cbu.uz). Redondeo del soʻm en su mercado.
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar (dudas anotadas en
+  los commits de las universales: choychaqa, daromadlilik, marjinal daromad, temp).
+- Una edición en ruso, si se decide, sería aparte.
+
+## 24/10/2026 · Motor ruso (`claude/mundo-motor-ru`)
+
+ru en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`zarplata-v-mire`), rankings (`reyting-stran`), horas de trabajo (`skolko-chasov-raboty`),
+calendario (`kalendar-zarplaty`), sueldos reales (`realnye-zarplaty`), venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con slugs transliterados (`kalkulyator-kredita`,
+`kalkulyator-nds`, `kalkulyator-ipoteki`...). Registro «вы» con minúscula e imperativo cortés, el de
+Kaspi, Halyk, egov.kz y Сбер; mercados con `trato: "usted"`; sin «ё». Plurales one/few/many/other
+(`pluralRu`, unidades de tiempo con `pocos`/`muchos`). `GRAMATICA.ru` declina el país («в
+Казахстане», «для Казахстана», «во Франции», «на Кипре»). El buscador indexa cirílico. Textos
+neutrales de país para Kazajistán, Kirguistán, Uzbekistán (edición) y otros. Decisiones en ADR 0002,
+D17 (por qué Kazajistán sale en ruso primero y el kazajo queda como edición futura `kz-kk`). Edición
+de prueba `zz-ru`; `check_universales` prueba ru-KZ con KZT.
+
+Falta para publicar Kazajistán:
+- El país en sí (BRIEF-PAIS): калькулятор зарплаты с ИПН, ОПВ, ВОСМС y los aportes del empleador
+  (СО, ОПВР, ООСМС), МРП y МЗП del año, НДС, отпускные, больничные, пособия, ипотека «Отбасы»,
+  депозиты con ГЭСВ, con datos verificados en fuentes oficiales (adilet.zan.kz, kgd.gov.kz,
+  egov.kz, nationalbank.kz, stat.gov.kz).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- Al mergear con `claude/mundo-motor-eu` y `claude/mundo-motor-uk`: `src/motor/i18n/plural.ts` choca
+  (las tres lo crean) y hay que dejar `pluralPl`, `formaUk`/`pluralUk` y `formaRu`/`pluralRu` juntos;
+  `FormasUnidad` en `unidades.ts`, `resultadosPocos` en el buscador y el cirílico del índice son los
+  mismos cambios. `IDIOMAS`, los `Record<Idioma>` y `src/paises/index.ts` chocan por la lista.
+
+## 24/10/2026 · Motor rumano (`claude/mundo-motor-ro`)
+
+ro en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`salariu-in-lume`), rankings (`clasamentul-tarilor`), horas de trabajo
+(`cate-ore-de-munca`), calendario (`calendar-salarial`), sueldos reales (`salarii-reale`), venta
+completa (`IDIOMAS_VENTA`) y las 41 universales con slugs ASCII (`calculator-credit`,
+`calculator-tva`, `calculator-credit-ipotecar`...). Registro de ANAF SPV, BCR e ING Home'Bank:
+«dumneavoastră» implícito y 2.ª del plural, también en los botones («Calculați»); mercados con
+`trato: "usted"`. ș y ț con coma, â/î de la Academia, comillas „”. Plurales one/few/other con «de»
+(`formaRo`/`pluralRo`/`deRo`: «20 de ani», «101 ani»). `GRAMATICA.ro` declina el país con el
+artículo enclítico («României», «Mexicului», «din Chile»). Textos neutrales para Rumania y Moldavia.
+Decisiones en ADR 0002, D18. Edición de prueba `zz-ro`; `check_universales` prueba ro-RO con RON,
+ro-MD con MDL y dos nombres largos.
+
+Falta para publicar Rumania y Moldavia:
+- Los países en sí (BRIEF-PAIS): en `ro` el calculator salariu net (CAS, CASS, impozit pe venit,
+  deducere personală), salariul minim, TVA, concediu de odihnă, indemnizație de creștere a copilului
+  y credit ipotecar, con datos verificados en fuentes oficiales (legislatie.just.ro, anaf.ro, bnr.ro,
+  insse.ro); en `md` salariu net (impozit pe venit, contribuțiile CNAS y CNAM del empleado),
+  salariul minim y TVA, con legis.md, sfs.md, bnm.md y statistica.md. Ninguna tasa está cargada
+  todavía: todas se leen en la fuente.
+- El mercado `md` tiene que fijar `simbolos: { MDL: "MDL" }` (Intl escribe «L»).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- Al mergear con `claude/mundo-motor-eu`, `-uk` y `-ru`: `src/motor/i18n/plural.ts` choca (todas lo
+  crean) y hay que dejar `pluralPl`, `formaUk`/`pluralUk`, `formaRu`/`pluralRu` y
+  `formaRo`/`pluralRo`/`deRo` juntos; `FormasUnidad` en `unidades.ts` y `nombreDeUnidad` en
+  `formato.ts` son el mismo cambio. En el buscador, `resultadosPocos` (eslavos) y `resultadosDe`
+  (rumano) conviven en `cuantosResultados`. `IDIOMAS`, los `Record<Idioma>` y `src/paises/index.ts`
+  chocan por la lista.
+
+## 24/10/2026 · Motor checo (`claude/mundo-motor-cs`)
+
+cs en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`mzda-ve-svete`), rankings (`zebricek-zemi`), horas de trabajo (`kolik-hodin-prace`),
+calendario (`vyplatni-kalendar`), sueldos reales (`skutecne-mzdy`), venta completa (`IDIOMAS_VENTA`)
+y las 41 universales con slugs ASCII sin diacríticos (`kalkulacka-uveru`, `kalkulacka-dph`,
+`hypotecni-kalkulacka`...). Registro: vykání con «vy» en minúscula, el de Finanční správa y los
+bancos; mercados con `trato: "usted"`. Nombre visible «Česko». Plurales one/few/many/other
+(`pluralCs`, unidades de tiempo con `pocos`/`muchos`). `GRAMATICA.cs` y `padyCs` declinan el país
+(«v Česku», «pro Česko», «na Slovensku»). Geist con `latin-ext`. Decisiones en ADR 0002, D19.
+Edición de prueba `zz-cs`.
+
+Falta para publicar Chequia:
+- El país en sí (BRIEF-PAIS): výpočet čisté mzdy (daň z příjmů, sleva na poplatníka, sociální a
+  zdravotní pojištění), OSVČ (paušální daň, výdajové paušály), minimální mzda, DPH (sazby), náhrada
+  mzdy, cestovní náhrady, con datos verificados en fuentes oficiales (financnisprava.cz, cssz.cz,
+  mpsv.cz, czso.cz, cnb.cz, zakonyprolidi.cz o e-sbirka.gov.cz).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- Al mergear con `claude/mundo-motor-eu` y `claude/mundo-motor-uk`: `src/motor/i18n/plural.ts` choca
+  (las tres lo crean) y hay que dejar `pluralPl`, `formaUk`/`pluralUk` y `formaCs`/`pluralCs` juntos;
+  `FormasUnidad` en `unidades.ts` y el cambio de `formato.ts` son los mismos; `resultadosPocos` en los
+  tipos es el mismo y `cuantosResultados` del buscador queda con la versión de esta rama
+  (Intl.PluralRules del `lang`), que sirve para uk y cs.
+
+## 24/10/2026 · Motor griego (`claude/mundo-motor-el`)
+
+el en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`misthos-ston-kosmo`), rankings (`katataxi-choron`), horas de trabajo
+(`poses-ores-douleias`), calendario (`imerologio-misthodosias`), sueldos reales
+(`pragmatikoi-misthoi`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con slugs ELOT 743 en
+ASCII (`ypologismos-dosis-daneiou`, `ypologismos-fpa`, `ypologismos-stegastikou-daneiou`...).
+Registro: πληθυντικός ευγενείας, el de myAADE, gov.gr y los bancos; mercados con `trato: "usted"`.
+Preguntas con «;» (U+003B), comillas «», monotónico, mayúsculas sin tono. Plurales one/other
+(`pluralEl`). `GRAMATICA.el` y `casosEl` ponen artículo y caso al país («στην Ελλάδα», «της
+Κύπρου», «για τον Καναδά»). Geist no trae griego: fuente del sistema en `:lang(el)` y Noto Sans en las
+OG. Decisiones en ADR 0002, D20. Edición de prueba `zz-el`.
+
+Falta para publicar Grecia y Chipre:
+- Los países en sí (BRIEF-PAIS): υπολογισμός καθαρού μισθού (φόρος εισοδήματος por κλίμακα,
+  εισφορές ΕΦΚΑ en Grecia; GHS y Κοινωνικές Ασφαλίσεις en Chipre), ελεύθεροι επαγγελματίες, κατώτατος
+  μισθός, ΦΠΑ (tasas general y reducidas de cada país), δώρα εορτών y επίδομα αδείας, ENFIA, con
+  datos verificados en fuentes oficiales (aade.gr, efka.gov.gr, gov.gr, minfin.gov.gr, mof.gov.cy,
+  mlsi.gov.cy).
+- Revisión de un hablante nativo sobre una muestra de páginas antes de publicar.
+- Al mergear con `claude/mundo-motor-cs`, `claude/mundo-motor-eu` y las demás ramas de motor:
+  `src/motor/i18n/plural.ts` choca (todas lo crean) y hay que dejar `formaEl`/`pluralEl` junto a las
+  funciones de los otros idiomas; las listas de `IDIOMAS`, `IDIOMAS_VENTA`, los Record de diccionarios
+  y `GRAMATICA` suman cada idioma; el `FUENTE_CJK` de las OG suma `el: "Noto Sans"` junto a lo que
+  agreguen las otras (ru también usa Noto Sans); las mayúsculas de las OG con `toLocaleUpperCase` y la
+  normalización del buscador (rango griego y sigma final) se suman a la del cirílico de la rama ru.
+
+## 24/10/2026 · Motor húngaro (`claude/mundo-motor-hu`)
+
+hu en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en
+el mundo» (`fizetes-a-vilagban`), rankings (`orszagok-rangsora`), horas de trabajo
+(`hany-ora-munka`), calendario (`fizetesi-naptar`), sueldos reales (`valodi-fizetesek`), venta
+completa (`IDIOMAS_VENTA`) y las 41 universales con slugs ASCII sin diacríticos (`hitelkalkulator`,
+`afa-kalkulator`, `lakashitel-kalkulator`...). Registro: tegezés, la de OTP, K&H y los portales de
+calculadoras; mercados con `trato: "tu"`. Sin plural detrás de un número. `esetekHu` y `GRAMATICA.hu`
+dan los casos del país con armonía vocálica («Magyarországon», «Németországban», «az Egyesült
+Államokban»); `neveloHu` elige «a» o «az» también delante de cifras. Ningún sufijo pegado a cifras ni
+marcadores. Geist con `latin-ext`. Decisiones en ADR 0002, D21. Edición de prueba `zz-hu`.
+
+Falta para publicar Hungría:
+- El país en sí (BRIEF-PAIS; todo lo que sigue, a verificar en fuente oficial): nettó bér kalkulátor
+  (`nettober-kalkulator`, libre: SZJA, TB-járulék,
+  családi kedvezmény, 25 év alattiak kedvezménye, első házasok), minimálbér y garantált bérminimum,
+  ÁFA y sus kulcsok, KATA y átalányadó, táppénz, végkielégítés, con datos verificados en fuentes
+  oficiales (nav.gov.hu, njt.hu, magyarkozlony.hu, ksh.hu, mnb.hu, allamkincstar.gov.hu).
+- Revisión de un hablante nativo sobre una muestra de páginas (sobre todo la tabla de sufijos de
+  países poco frecuentes y los títulos con «kalkulátor» separado).
+- Al mergear con `claude/mundo-motor-cs`, `-tr`, `-eu` y las demás ramas de motor: chocan las listas
+  por idioma (`IDIOMAS`, `GRAMATICA`, los `DICCIONARIOS_*`, `IDIOMAS_VENTA`, `TRATOS` y los mercados de
+  prueba de los checks, los slugs de las páginas globales, `PAISES` con las ediciones zz-*) y las
+  esperas de `check_motor` sobre las hermanas de zz/bono; se resuelven sumando los idiomas de las dos
+  ramas. El cambio de Geist a `latin-ext` es el mismo que el de cs.
+
+## 24/10/2026 · Motor hebreo RTL (`claude/mundo-motor-he`, sobre `claude/mundo-motor-ar`)
+
+`he` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`sachar-baolam`), rankings (`dirug-medinot`), horas de trabajo
+(`kama-shaot-avoda`), calendario (`luach-maskorot`), «Sueldos reales» (`sachar-amiti`), venta completa
+(`IDIOMAS_VENTA`) y las 41 universales con el slug en inglés del catálogo. Registro: plural inclusivo
+(«הזינו», «בחרו») y botones en infinitivo («לחישוב»), como Bank Hapoalim, Leumi y gov.il; mercados con
+`trato: "usted"`. Formato he-IL (₪ por Intl, cifras occidentales, calendario gregoriano). Plurales
+one/two/other con el dual (`pluralHe`). Fuente del sistema para el hebreo y Noto Sans Hebrew en las OG
+(con orden visual a mano, `og-rtl.tsx`). Decisiones en ADR 0002, D22. Edición de prueba `zz-he`
+(interna, `he-001`).
+- Depende de `claude/mundo-motor-ar` (rtl, `direccion.ts`, CSS lógico): mergear el árabe primero.
+- Falta para publicar Israel: el país en sí (שכר נטו con מס הכנסה, נקודות זיכוי, ביטוח לאומי y מס
+  בריאות, שכר מינימום, מע"מ, פיצויי פיטורים, דמי הבראה, ימי חופשה) con datos verificados en
+  gov.il, btl.gov.il y taxes.gov.il. Revisión por hablante nativo antes de publicar.
+
 ## 19/10/2026 · CÓMO RETOMAR (leer primero)
 
 Manuel pidió cerrar los países empezados sin sumar nuevos, publicar y dejar esto listo para seguir
@@ -45,8 +439,19 @@ varias veces por límite de uso.
 | Pakistán | claude/pais-pk | faltaban STSC, cuenta de ahorro, tarjeta extranjera y dólar |
 | Costa de Marfil | claude/pais-ci | en curso |
 | Angola | claude/pais-ao | en curso |
-| Motor árabe RTL | claude/mundo-motor-ar | parser y WIP; bloquea ae y kw |
-| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | pl cableado; faltaba check_universales y check_ofertas_intl |
+| Motor árabe RTL | claude/mundo-motor-ar | terminado el 24/10 salvo universales (ver arriba); ae y kw salieron en inglés |
+| Motor pl/sv/da/nb/fi | claude/mundo-motor-eu | terminado el 24/10 (núcleo de los cinco idiomas; universales en ramas mundo-trad) |
+| Motor indonesio (id) | claude/mundo-motor-id | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
+| Motor turco (tr) | claude/mundo-motor-tr | terminado el 24/10 (núcleo, venta y las 41 universales); al día con main 7d190a68 (calendario, horas, rankings, sueldos reales y afiliados) |
+| Motor bengalí (bn) | claude/mundo-motor-bn | terminado el 24/10 (núcleo, venta y las 41 universales); falta el país bd |
+| Motor tailandés (th) | claude/mundo-motor-th | terminado el 24/10 (núcleo, venta y las 41 universales) |
+| Motor ucraniano (uk) | claude/mundo-motor-uk | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
+| Motor uzbeko (uz, latino) | claude/mundo-motor-uz | terminado el 24/10 (núcleo, venta, módulos nuevos y las 41 universales) |
+| Motor ruso (ru) | claude/mundo-motor-ru | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Kazajistán |
+| Motor rumano (ro) | claude/mundo-motor-ro | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Rumania y Moldavia |
+| Motor checo (cs) | claude/mundo-motor-cs | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
+| Motor griego (el) | claude/mundo-motor-el | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
+| Motor húngaro (hu) | claude/mundo-motor-hu | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
 Para retomar un frente en una sesión nueva: `git fetch` de su rama, leer su último commit y

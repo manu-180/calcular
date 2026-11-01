@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.sueldo-neto",
-  h1: "Calculadora de sueldo neto 2026 en Perú",
-  title: "Calculadora de sueldo neto 2026 en Perú: AFP u ONP",
+  h1: "Calculadora de sueldo neto {{anio}} en Perú",
+  title: "Calculadora de sueldo neto {{anio}} en Perú: AFP u ONP",
   description:
     "Calcula tu sueldo neto en Perú: descuento de AFP ({{pe.aporte-afp}} más prima y comisión) u ONP ({{pe.aporte-onp}}) y la retención de quinta categoría. Escribe tu sueldo bruto y listo.",
   intro: [

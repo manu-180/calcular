@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.hsa-contribution",
   h1: "HSA contribution calculator",
-  title: "HSA Contribution Limit Calculator 2026",
+  title: "HSA Contribution Limit Calculator {{anio}}",
   description:
-    "Find your 2026 health savings account limit: {{us.hsa-self-only}} for self-only coverage, {{us.hsa-family}} for family coverage, plus the catch-up at 55. Prorated by month.",
+    "Find your {{anio}} health savings account limit: {{us.hsa-self-only}} for self-only coverage, {{us.hsa-family}} for family coverage, plus the catch-up at 55. Prorated by month.",
   intro: [
     "A health savings account lets you set aside pre-tax money for medical costs if you have a high deductible health plan.",
     "Enter your coverage, age and months of eligibility to see how much you can still put in this year.",

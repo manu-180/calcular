@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosTr: TextosUi<UiAlquilarOComprar> = {
+  slug: "ev-almak-mi-kira-mi",
+  ui: () => ({
+    precio: "Konutun fiyatı",
+    entrada: "Peşinat (fiyatın yüzdesi, %)",
+    gastosCompra: "Satın alma masrafları (fiyatın yüzdesi, %)",
+    gastosCompraAyuda: "Tapu ve noter masrafları, ekspertiz, kredi tahsis ücreti ve satın almadaki vergiler.",
+    tasa: "Konut kredisi faizi (yıllık, %)",
+    aniosHipoteca: "Konut kredisi vadesi (yıl)",
+    alquiler: "Benzer bir konutun aylık kirası",
+    aumentoAlquiler: "Yıllık kira artışı (%)",
+    gastosPropietario: "Ev sahibinin yıllık giderleri (konut değerinin yüzdesi, %)",
+    gastosPropietarioAyuda: "Bakım, emlak vergisi ve konut sigortası. Genellikle %1 ile %2 arasındadır.",
+    revalorizacion: "Konut fiyatlarının yıllık artışı (%)",
+    rendimiento: "Alternatif yatırımın getirisi (yıllık, %)",
+    rendimientoAyuda: "Peşinatı konuta yatırmak yerine başka bir yatırımda değerlendirseydiniz kazanacağınız getiri.",
+    horizonte: "Karşılaştırma süresi (yıl)",
+    veredicto: "Sonuç",
+    patrimonioComprar: "Satın alırsanız dönem sonundaki net varlığınız",
+    patrimonioAlquilar: "Kirada oturursanız dönem sonundaki net varlığınız",
+    diferencia: "Fark",
+    anioDesde: "Satın almanın kârlı hâle geldiği yıl",
+    pagadoAlquilando: "Ödenen toplam kira",
+    pagadoComprando: "Toplam kredi taksitleri ve ev sahibi giderleri",
+    tabla: "Yıllara göre karşılaştırma",
+    colAnio: "Yıl",
+    colComprar: "Satın alma",
+    colAlquilar: "Kira",
+    colDiferencia: "Fark",
+    errorPrecio: "Konutun fiyatını girin.",
+    errorAlquiler: "Benzer bir konutun kirasını girin.",
+    convieneComprar: (anios, diferencia) => `Satın almak daha avantajlı. Süre: ${anios} yıl. Net varlığınız şu kadar daha fazla olur: ${diferencia}.`,
+    convieneAlquilar: (anios, diferencia) => `Kirada oturmak daha avantajlı. Süre: ${anios} yıl. Net varlığınız şu kadar daha fazla olur: ${diferencia}.`,
+    empate: (anios) => `Süre: ${anios} yıl. İki seçenek de aynı sonucu verir.`,
+    observacionDesde: (anio) => `Satın alma, ${anio}. yıldan itibaren kiranın önüne geçer ve sonrasında da önde kalır.`,
+    observacionMetodo:
+      "Hesaplama, iki seçenekteki net varlığınızı karşılaştırır. Kirada oturursanız peşinat ve her ayki harcama farkı yatırımda kalır. Konutu satarken çıkan masraflar düşülmez.",
+  }),
+};

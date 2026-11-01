@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.quinquenio",
   h1: "Calculadora de quinquenio en Bolivia",
-  title: "Quinquenio Bolivia 2026: calcule cuánto puede cobrar",
+  title: "Quinquenio Bolivia {{anio}}: calcule cuánto puede cobrar",
   description: "Calcule su quinquenio: un sueldo por año, consolidado cada {{bo.quinquenio-anios}} de trabajo continuo, con el promedio de los 3 meses anteriores a la solicitud.",
   intro: [
     "El quinquenio en Bolivia es la indemnización de cada {{bo.quinquenio-anios}} de trabajo continuo, cobrada por adelantado: un sueldo promedio por cada año. Se paga a pedido suyo, por escrito.",

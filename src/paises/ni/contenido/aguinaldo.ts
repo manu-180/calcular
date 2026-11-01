@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ni.aguinaldo",
   h1: "Calculadora de aguinaldo en Nicaragua",
-  title: "Aguinaldo en Nicaragua 2026: calculá tu décimo tercer mes",
+  title: "Aguinaldo en Nicaragua {{anio}}: calculá tu décimo tercer mes",
   description: "Calculá tu aguinaldo en Nicaragua: {{ni.aguinaldo-meses}} de salario por año o la parte proporcional, sin INSS ni IR. Se paga en los primeros diez días de diciembre.",
   intro: [
     "En Nicaragua el aguinaldo es {{ni.aguinaldo-meses}} de salario por año trabajado, o la parte proporcional si no completaste el año. Te lo pagan en los primeros diez días de diciembre.",

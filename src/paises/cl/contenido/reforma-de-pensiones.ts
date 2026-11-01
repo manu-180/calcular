@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cl.reforma-de-pensiones",
   h1: "Cotización del empleador por la reforma de pensiones",
-  title: "Reforma de pensiones: cuánto paga el empleador en 2026",
+  title: "Reforma de pensiones: cuánto paga el empleador en {{anio}}",
   description:
     "Calcula la cotización del empleador de la Ley 21.735: hoy {{cl.cotizacion-empleador-pensiones}} del sueldo imponible, con tope de {{cl.tope-imponible}}. Sube cada agosto.",
   intro: [

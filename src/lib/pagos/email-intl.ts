@@ -1,3 +1,4 @@
+import { direccionDe } from "@/motor/i18n/direccion";
 import type { Idioma, Trato } from "@/motor/tipos";
 import type { ProductoIntl } from "./catalogo-intl";
 import { rellenar, textosVenta } from "./textos";
@@ -39,8 +40,11 @@ export function entregaIntlHtml(o: EntregaIntl): string {
   const enlace = `<a href="${o.urlLanding}" style="color:#059669;">${escapar(c.enlaceCalculadora)}</a>`;
   const mismos = escapar(c.mismosNumeros).replace("{enlace}", enlace);
   const comprobante = escapar(c.comprobante).replace("{marca}", `<a href="${o.origen}" style="color:#059669;">${MARCA}</a>`);
+  // En árabe el mail va de derecha a izquierda. Gmail y Outlook descartan los atributos de <html>, así
+  // que dir va también en la tabla del contenido (en ltr no se agrega nada y el HTML queda igual).
+  const dir = direccionDe(o.idioma) === "rtl" ? ' dir="rtl"' : "";
   return `<!DOCTYPE html>
-<html lang="${o.idioma}">
+<html lang="${o.idioma}"${dir}>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -48,7 +52,7 @@ export function entregaIntlHtml(o: EntregaIntl): string {
 <body style="margin:0;padding:0;background:#f4f4f5;font-family:system-ui,-apple-system,sans-serif;">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;padding:24px 0;">
 <tr><td align="center">
-<table width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;max-width:600px;width:100%;">
+<table${dir} width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;max-width:600px;width:100%;">
   <tr><td style="background:#059669;padding:20px 32px;">
     <a href="${o.origen}" style="color:#fff;font-size:20px;font-weight:700;text-decoration:none;">Calcular<span style="color:#a7f3d0;">Ya</span></a>
   </td></tr>

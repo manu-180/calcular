@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.licencia-paternidad",
   h1: "Calculadora de licencia por paternidad en Ecuador",
-  title: "Licencia de paternidad Ecuador 2026: cuántos días te tocan",
+  title: "Licencia de paternidad Ecuador {{anio}}: cuántos días te tocan",
   description: "La licencia por paternidad en Ecuador es de {{ec.paternidad-dias}} con parto normal y más si es cesárea o prematuro. Calcula tus días y cuándo vuelves al trabajo.",
   intro: [
     "Desde mayo de 2023 la licencia por paternidad en Ecuador es de {{ec.paternidad-dias}} pagados por parto normal. Hay días extra por cesárea, parto múltiple o un bebé prematuro.",

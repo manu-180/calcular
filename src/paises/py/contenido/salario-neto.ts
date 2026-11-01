@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.salario-neto",
   h1: "Calculadora de salario neto y descuento de IPS",
-  title: "Salario neto Paraguay 2026: calculá el descuento de IPS",
+  title: "Salario neto Paraguay {{anio}}: calculá el descuento de IPS",
   description: "Calculá cuánto te descuenta el IPS ({{py.ips-trabajador}}) y cuánto cobrás en mano. También ves el aporte de tu empleador ({{py.ips-empleador}}). Gratis y al instante.",
   intro: [
     "Tu salario neto es el bruto menos el {{py.ips-trabajador}} de aporte al IPS. Es lo que cobrás en mano cada mes.",

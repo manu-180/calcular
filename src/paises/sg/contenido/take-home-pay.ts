@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sg.take-home-pay",
   h1: "Take-home pay calculator for Singapore",
-  title: "Take-home pay calculator Singapore 2026 (after CPF)",
-  description: "See your monthly take-home pay after CPF, with the 2026 rates by age and the {{sg.cpf-tope-ow}} Ordinary Wage ceiling. Also shows your employer's CPF.",
+  title: "Take-home pay calculator Singapore {{anio}} (after CPF)",
+  description: "See your monthly take-home pay after CPF, with the {{anio}} rates by age and the {{sg.cpf-tope-ow}} Ordinary Wage ceiling. Also shows your employer's CPF.",
   intro: [
     "Your take-home pay is what lands in your bank account after your CPF contribution comes off your gross salary.",
     "Enter your monthly salary, whether you pay CPF and your age group. You also see how much your employer adds to your CPF on top.",

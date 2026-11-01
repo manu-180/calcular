@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.hypotheekrenteaftrek-berekenen",
-  h1: "Hypotheekrenteaftrek berekenen 2026",
-  title: "Hypotheekrenteaftrek 2026: hoeveel krijg je terug?",
+  h1: "Hypotheekrenteaftrek berekenen {{anio}}",
+  title: "Hypotheekrenteaftrek {{anio}}: hoeveel krijg je terug?",
   description:
-    "Bereken je hypotheekrenteaftrek over 2026: rente min eigenwoningforfait, tegen maximaal {{nl.aftrek-maximumtarief}}. Met het effect op je heffingskorting en je netto rentelasten.",
+    "Bereken je hypotheekrenteaftrek over {{anio}}: rente min eigenwoningforfait, tegen maximaal {{nl.aftrek-maximumtarief}}. Met het effect op je heffingskorting en je netto rentelasten.",
   intro: [
     "Betaal je rente op de hypotheek voor je eigen woning, dan mag je die aftrekken van je inkomen in box 1. Daar staat het eigenwoningforfait tegenover, een percentage van de WOZ-waarde dat je bij je inkomen telt.",
     "Vul je rente, de WOZ-waarde en je inkomen in. Je ziet hoeveel belasting je terugkrijgt en wat de rente je netto per maand kost.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.licencia-de-paternidad",
   h1: "Calculadora de licencia de paternidad",
-  title: "Licencia de paternidad 2026: días y valor",
+  title: "Licencia de paternidad {{anio}}: días y valor",
   description:
     "Calcula tu licencia de paternidad de {{co.licencia-paternidad-semanas}} semanas, proporcional a las semanas que cotizaste a salud durante el embarazo.",
   intro: [

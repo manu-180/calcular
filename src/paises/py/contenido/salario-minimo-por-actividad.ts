@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.salario-minimo-por-actividad",
   h1: "Salario mínimo por actividad y oficio",
-  title: "Salario mínimo por oficio en Paraguay 2026",
+  title: "Salario mínimo por oficio en Paraguay {{anio}}",
   description: "Buscá el salario mínimo de tu oficio: chofer, albañil, guardia de seguridad, cocinero, panadero, mecánico y más. Según la resolución del Ministerio de Trabajo.",
   intro: [
     "Además del salario mínimo general, el Ministerio de Trabajo fija mínimos propios para algunos oficios y actividades. Muchos son más altos que el general.",

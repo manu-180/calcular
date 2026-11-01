@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.liquidacion-por-egreso",
   h1: "Calculadora de liquidación por egreso",
-  title: "Liquidación por egreso Uruguay 2026: calculá cuánto cobrás",
+  title: "Liquidación por egreso Uruguay {{anio}}: calculá cuánto cobrás",
   description:
     "Calculá tu liquidación por renuncia o despido: aguinaldo, licencia no gozada, salario vacacional e indemnización, partida por partida. Gratis y al instante.",
   intro: [

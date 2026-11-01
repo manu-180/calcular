@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch.vaterschaftsentschaedigung-rechner",
   h1: "Vaterschaftsentschädigung berechnen",
-  title: "Vaterschaftsurlaub Rechner: Entschädigung der EO 2026",
+  title: "Vaterschaftsurlaub Rechner: Entschädigung der EO {{anio}}",
   description:
     "Entschädigung für den Urlaub des andern Elternteils: {{ch.eo-taggeld-satz}} des Einkommens, höchstens {{ch.eo-hoechstbetrag-taggeld}} pro Tag, für {{ch.vaterschaft-taggelder}} Taggelder.",
   intro: [

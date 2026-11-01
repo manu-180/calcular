@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.401k-contribution",
   h1: "401(k) contribution calculator",
-  title: "401(k) Contribution Calculator 2026: limits and match",
+  title: "401(k) Contribution Calculator {{anio}}: limits and match",
   description:
-    "See how much goes into your 401(k) in 2026, your employer match and the {{us.401k-limit}} limit, with catch-up contributions from 50 and the bigger one at 60 to 63.",
+    "See how much goes into your 401(k) in {{anio}}, your employer match and the {{us.401k-limit}} limit, with catch-up contributions from 50 and the bigger one at 60 to 63.",
   intro: [
     "Enter your salary, the percentage you save and your employer's match to see what goes into your 401(k) this year.",
     "The calculator applies the IRS limit for your age and tells you what percentage would max it out.",

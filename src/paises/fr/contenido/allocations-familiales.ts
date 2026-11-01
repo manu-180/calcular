@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "fr.allocations-familiales",
-  h1: "Montant des allocations familiales 2026",
-  title: "Allocations familiales 2026 : montant selon vos ressources",
+  h1: "Montant des allocations familiales {{anio}}",
+  title: "Allocations familiales {{anio}} : montant selon vos ressources",
   description:
     "Calculez vos allocations familiales selon le nombre d'enfants et les ressources du foyer : {{fr.af-montant-1[e2]}} par mois pour 2 enfants sous le premier plafond.",
   intro: [

@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.decimo-cuarto-sueldo",
-  h1: "Calculadora del décimo cuarto sueldo 2026",
-  title: "Décimo cuarto sueldo 2026 Ecuador: calcula cuánto te toca",
-  description: "Calcula tu décimo cuarto 2026 con el básico de {{ec.sbu}}: completo o proporcional, para la Sierra y Amazonía o la Costa y Galápagos. Con fecha de pago.",
+  h1: "Calculadora del décimo cuarto sueldo {{anio}}",
+  title: "Décimo cuarto sueldo {{anio}} Ecuador: calcula cuánto te toca",
+  description: "Calcula tu décimo cuarto {{anio}} con el básico de {{ec.sbu}}: completo o proporcional, para la Sierra y Amazonía o la Costa y Galápagos. Con fecha de pago.",
   intro: [
     "El décimo cuarto sueldo de 2026 es un salario básico: {{ec.sbu}}. Lo cobra toda persona con relación de dependencia, gane lo que gane. Si trabajaste menos de un año, recibes la parte proporcional.",
     "La fecha de pago depende de la región: en la Costa y Galápagos se paga hasta el 15 de marzo, y en la Sierra y Amazonía hasta el 15 de agosto.",

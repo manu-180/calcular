@@ -1,0 +1,1444 @@
+{
+  "mercado": "jm",
+  "datos": [
+    {
+      "id": "jm.paye-threshold-monthly",
+      "nombre": "Monthly income tax threshold for PAYE",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "hasta": "2025-03-31",
+          "valor": 141674,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-03-31",
+          "valor": 149948,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Technical Advisory 042025/01/IT-TA: Increase in Income Tax Threshold April 1, 2025 to December 31, 2028",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/52231399/Technical_Advisory_Threshold+_042025.pdf/c4adbf81-8ddd-9a1b-9e8b-8bdc431162df",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-03-31",
+          "valor": 158530,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Technical Advisory 042025/01/IT-TA: Increase in Income Tax Threshold April 1, 2025 to December 31, 2028",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/52231399/Technical_Advisory_Threshold+_042025.pdf/c4adbf81-8ddd-9a1b-9e8b-8bdc431162df",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-04-01",
+          "valor": 166958,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Technical Advisory 042025/01/IT-TA: Increase in Income Tax Threshold April 1, 2025 to December 31, 2028",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/52231399/Technical_Advisory_Threshold+_042025.pdf/c4adbf81-8ddd-9a1b-9e8b-8bdc431162df",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.income-tax-threshold",
+      "nombre": "Effective annual income tax threshold for the year of assessment",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2024-12-31",
+          "valor": 1650090,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Individual Income Tax Rates, Threshold and Exemptions 2013-2028 (last updated April 2025)",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/15307403/INDIVIDUAL_INCOME_TAX_RATES_THRESHOLD_AND_EXEMPTIONS_2013-2028.pdf/c0987986-f35c-7106-85a4-d488a6f52627",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 1774554,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Technical Advisory 042025/01/IT-TA: Increase in Income Tax Threshold April 1, 2025 to December 31, 2028",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/52231399/Technical_Advisory_Threshold+_042025.pdf/c4adbf81-8ddd-9a1b-9e8b-8bdc431162df",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1876614,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Technical Advisory 042025/01/IT-TA: Increase in Income Tax Threshold April 1, 2025 to December 31, 2028",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/52231399/Technical_Advisory_Threshold+_042025.pdf/c4adbf81-8ddd-9a1b-9e8b-8bdc431162df",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 1978212,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Technical Advisory 042025/01/IT-TA: Increase in Income Tax Threshold April 1, 2025 to December 31, 2028",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/52231399/Technical_Advisory_Threshold+_042025.pdf/c4adbf81-8ddd-9a1b-9e8b-8bdc431162df",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "valor": 2003496,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Technical Advisory 042025/01/IT-TA: Increase in Income Tax Threshold April 1, 2025 to December 31, 2028",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/52231399/Technical_Advisory_Threshold+_042025.pdf/c4adbf81-8ddd-9a1b-9e8b-8bdc431162df",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.income-tax-rate",
+      "nombre": "Income tax rate above the threshold",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Individual Income Tax Rates, Threshold and Exemptions 2013-2028 (last updated April 2025)",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/15307403/INDIVIDUAL_INCOME_TAX_RATES_THRESHOLD_AND_EXEMPTIONS_2013-2028.pdf/c0987986-f35c-7106-85a4-d488a6f52627",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.income-tax-higher-rate",
+      "nombre": "Income tax rate on statutory income above $6 million a year",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Individual Income Tax Rates, Threshold and Exemptions 2013-2028 (last updated April 2025)",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/15307403/INDIVIDUAL_INCOME_TAX_RATES_THRESHOLD_AND_EXEMPTIONS_2013-2028.pdf/c0987986-f35c-7106-85a4-d488a6f52627",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.income-tax-higher-band",
+      "nombre": "Annual statutory income where the 30% rate starts",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 6000000,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Individual Income Tax Rates, Threshold and Exemptions 2013-2028 (last updated April 2025)",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/15307403/INDIVIDUAL_INCOME_TAX_RATES_THRESHOLD_AND_EXEMPTIONS_2013-2028.pdf/c0987986-f35c-7106-85a4-d488a6f52627",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.income-tax-higher-band-monthly",
+      "nombre": "Monthly statutory income where the 30% rate starts",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Individual Income Tax Rates, Threshold and Exemptions 2013-2028 (last updated April 2025)",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/15307403/INDIVIDUAL_INCOME_TAX_RATES_THRESHOLD_AND_EXEMPTIONS_2013-2028.pdf/c0987986-f35c-7106-85a4-d488a6f52627",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.age-exemption",
+      "nombre": "Age exemption for people 65 and over",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2024-12-31",
+          "valor": 207530,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Individual Income Tax Rates, Threshold and Exemptions 2013-2028 (last updated April 2025)",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/15307403/INDIVIDUAL_INCOME_TAX_RATES_THRESHOLD_AND_EXEMPTIONS_2013-2028.pdf/c0987986-f35c-7106-85a4-d488a6f52627",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 250040,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Technical Advisory 042025/01/IT-TA: Increase in Income Tax Threshold April 1, 2025 to December 31, 2028",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/52231399/Technical_Advisory_Threshold+_042025.pdf/c4adbf81-8ddd-9a1b-9e8b-8bdc431162df",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.pension-exemption",
+      "nombre": "Pension income exemption",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2024-12-31",
+          "valor": 207530,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Individual Income Tax Rates, Threshold and Exemptions 2013-2028 (last updated April 2025)",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/15307403/INDIVIDUAL_INCOME_TAX_RATES_THRESHOLD_AND_EXEMPTIONS_2013-2028.pdf/c0987986-f35c-7106-85a4-d488a6f52627",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 250040,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Technical Advisory 042025/01/IT-TA: Increase in Income Tax Threshold April 1, 2025 to December 31, 2028",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/52231399/Technical_Advisory_Threshold+_042025.pdf/c4adbf81-8ddd-9a1b-9e8b-8bdc431162df",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.nis-employee-rate",
+      "nombre": "NIS contribution, employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.nis-employer-rate",
+      "nombre": "NIS contribution, employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.nht-employee-rate",
+      "nombre": "NHT contribution, employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.nht-employer-rate",
+      "nombre": "NHT contribution, employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.education-tax-employee-rate",
+      "nombre": "Education Tax, employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 2.25,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.education-tax-employer-rate",
+      "nombre": "Education Tax, employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 3.5,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.heart-rate",
+      "nombre": "HEART/NSTA Trust contribution, employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.nis-ceiling",
+      "nombre": "Annual wage ceiling for NIS contributions",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 5000000,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.heart-payroll-threshold",
+      "nombre": "Annual payroll above which the employer pays HEART/NSTA Trust",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-04-01",
+          "valor": 173328,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Payroll Taxes and Statutory Contributions (Employee / Employer), December 2025",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/105112/Pay+Roll+Taxes+and+Contribution+Rates-Employer+and+Employees_Dec2025.pdf/1d5554a1-b0e6-13bd-d16b-073c8216b753",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.gct-standard",
+      "nombre": "GCT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-04-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "General Consumption Tax: history of the standard rate",
+            "url": "https://www.jamaicatax.gov.jm/general-consumption-tax1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.transfer-tax-rate",
+      "nombre": "Transfer tax on the market value of land",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.stamp-duty-high",
+      "nombre": "Stamp duty on an agreement for sale, transfer or mortgage of $500,000 or more",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": 5000,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.stamp-duty-low",
+      "nombre": "Stamp duty when the consideration is $499,999 or less",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.stamp-duty-band",
+      "nombre": "Consideration from which the $5,000 stamp duty applies",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.stamp-duty-mortgage-surcharge",
+      "nombre": "Surcharge on the stamp duty of a mortgage of land (1/4 of the duty)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.property-tax-bands",
+      "nombre": "Property tax on unimproved value up to $30 million (after the first $400,000)",
+      "tipo": "escala",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 400000,
+              "tasa": 0
+            },
+            {
+              "desde": 400000,
+              "hasta": 800000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 800000,
+              "hasta": 1500000,
+              "tasa": 0.55
+            },
+            {
+              "desde": 1500000,
+              "hasta": 3000000,
+              "tasa": 0.6
+            },
+            {
+              "desde": 3000000,
+              "hasta": 4500000,
+              "tasa": 0.65
+            },
+            {
+              "desde": 4500000,
+              "hasta": 7000000,
+              "tasa": 0.7
+            },
+            {
+              "desde": 7000000,
+              "hasta": 12000000,
+              "tasa": 0.75
+            },
+            {
+              "desde": 12000000,
+              "hasta": null,
+              "tasa": 0.8
+            }
+          ],
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "What you need to know about Property Tax (May 2022): Property Tax Rate Schedule as at April 1, 2017",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/7675012/Feature_Layout_TAJ_Property_Tax_052022.pdf/f2d97afb-9274-e86d-5947-bea766d92f81",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.property-tax-bands-over-30m",
+      "nombre": "Property tax on unimproved value above $30 million (after the first $400,000)",
+      "tipo": "escala",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 400000,
+              "tasa": 0
+            },
+            {
+              "desde": 400000,
+              "hasta": 800000,
+              "tasa": 0.5
+            },
+            {
+              "desde": 800000,
+              "hasta": 1500000,
+              "tasa": 0.55
+            },
+            {
+              "desde": 1500000,
+              "hasta": 3000000,
+              "tasa": 0.6
+            },
+            {
+              "desde": 3000000,
+              "hasta": 4500000,
+              "tasa": 0.65
+            },
+            {
+              "desde": 4500000,
+              "hasta": 7000000,
+              "tasa": 0.7
+            },
+            {
+              "desde": 7000000,
+              "hasta": 12000000,
+              "tasa": 0.75
+            },
+            {
+              "desde": 12000000,
+              "hasta": 30000000,
+              "tasa": 0.85
+            },
+            {
+              "desde": 30000000,
+              "hasta": null,
+              "tasa": 0.9
+            }
+          ],
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "What you need to know about Property Tax (May 2022): Property Tax Rate Schedule as at April 1, 2017",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/7675012/Feature_Layout_TAJ_Property_Tax_052022.pdf/f2d97afb-9274-e86d-5947-bea766d92f81",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.property-tax-minimum",
+      "nombre": "Property tax on the first $400,000 of unimproved value",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-04-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "What you need to know about Property Tax (May 2022): Property Tax Rate Schedule as at April 1, 2017",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/7675012/Feature_Layout_TAJ_Property_Tax_052022.pdf/f2d97afb-9274-e86d-5947-bea766d92f81",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.property-tax-split",
+      "nombre": "Unimproved value where the higher property tax schedule starts",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-04-01",
+          "valor": 30000000,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "What you need to know about Property Tax (May 2022): Property Tax Rate Schedule as at April 1, 2017",
+            "url": "https://www.jamaicatax.gov.jm/documents/10194/7675012/Feature_Layout_TAJ_Property_Tax_052022.pdf/f2d97afb-9274-e86d-5947-bea766d92f81",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.minimum-wage-weekly",
+      "nombre": "National minimum wage for a 40-hour week",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "proximaRevision": "2027-06-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-01",
+          "hasta": "2026-06-30",
+          "valor": 16000,
+          "fuente": {
+            "organismo": "Jamaica Information Service (Government of Jamaica)",
+            "titulo": "Minimum Wage Moves to $16,000 June 1 (2025/26 Budget Debate)",
+            "url": "https://jis.gov.jm/minimum-wage-moves-to-16000-june-1/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 17000,
+          "fuente": {
+            "organismo": "Jamaica Information Service (Government of Jamaica)",
+            "titulo": "Minimum Wage Moves to $17,000, Up from $16,000 (House approves the National Minimum Wage (Amendment) Order, 2026)",
+            "url": "https://jis.gov.jm/minimum-wage-moves-to-17000-up-from-16000/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The Ministry of Labour has not yet posted the 2026 Order. The figures are the ones the Minister gave the House on June 23, 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.minimum-wage-hourly",
+      "nombre": "National minimum wage per hour",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "proximaRevision": "2027-06-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-01",
+          "hasta": "2026-06-30",
+          "valor": 400,
+          "fuente": {
+            "organismo": "Jamaica Information Service (Government of Jamaica)",
+            "titulo": "Minimum Wage Moves to $17,000, Up from $16,000 (House approves the National Minimum Wage (Amendment) Order, 2026)",
+            "url": "https://jis.gov.jm/minimum-wage-moves-to-17000-up-from-16000/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The Ministry of Labour has not yet posted the 2026 Order. The figures are the ones the Minister gave the House on June 23, 2026."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 425,
+          "fuente": {
+            "organismo": "Jamaica Information Service (Government of Jamaica)",
+            "titulo": "Minimum Wage Moves to $17,000, Up from $16,000 (House approves the National Minimum Wage (Amendment) Order, 2026)",
+            "url": "https://jis.gov.jm/minimum-wage-moves-to-17000-up-from-16000/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The Ministry of Labour has not yet posted the 2026 Order. The figures are the ones the Minister gave the House on June 23, 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.normal-week-hours",
+      "nombre": "Hours in a normal week under the National Minimum Wage Order",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.overtime-multiplier",
+      "nombre": "Overtime rate (time and a half)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.double-time-multiplier",
+      "nombre": "Rest day and public holiday rate (double time)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.vacation-min-days",
+      "nombre": "Days worked in the year needed to earn vacation leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 110,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.vacation-full-days",
+      "nombre": "Days worked above which the full vacation applies",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 220,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.leave-days-per",
+      "nombre": "Days worked for each day of vacation or sick leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.vacation-weeks",
+      "nombre": "Vacation leave after more than 220 days worked",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.vacation-weeks-long-service",
+      "nombre": "Vacation leave with 10 or more years of service",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.vacation-long-service-years",
+      "nombre": "Years of service for the longer vacation",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.sick-leave-weeks",
+      "nombre": "Sick leave with pay after the first 12 months",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.sick-leave-first-months",
+      "nombre": "Months during which sick leave is earned day by day",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.maternity-leave-weeks",
+      "nombre": "Maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.maternity-paid-weeks",
+      "nombre": "Paid weeks of maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.maternity-qualifying-weeks",
+      "nombre": "Continuous employment needed for paid maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 52,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.maternity-extension-weeks",
+      "nombre": "Unpaid extension on medical grounds",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.maternity-paid-times",
+      "nombre": "Times paid maternity leave can be taken with one employer",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Labour and Social Security",
+            "titulo": "Labour Management Procedures, Jamaica SPIRO project (2024): summary of the National Minimum Wage Order, the Holidays with Pay Order and the Maternity Leave Act",
+            "url": "https://www.mlss.gov.jm/wp-content/uploads/2024/07/Labour-Management-Procedures-LMP-JAMAICA-SPIRO-FINAL.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.notice-weeks",
+      "nombre": "Minimum notice from the employer by length of continuous service",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "under-5": "Less than 5 years",
+        "5-10": "5 years to less than 10",
+        "10-15": "10 years to less than 15",
+        "15-20": "15 years to less than 20",
+        "20-plus": "20 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": {
+            "under-5": 2,
+            "5-10": 4,
+            "10-15": 6,
+            "15-20": 8,
+            "20-plus": 12
+          },
+          "fuente": {
+            "organismo": "Jamaica Information Service (Government of Jamaica)",
+            "titulo": "Labour Laws: Employment (Termination and Redundancy Payments) Act, amended 2022",
+            "url": "https://jis.gov.jm/labour-laws/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "laws.moj.gov.jm is down for maintenance and the Legal Information Portal needs a captcha, so the notice periods were read in the Government's own summary of the Act."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.employee-notice-weeks",
+      "nombre": "Notice an employee must give",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Jamaica Information Service (Government of Jamaica)",
+            "titulo": "Labour Laws: Employment (Termination and Redundancy Payments) Act, amended 2022",
+            "url": "https://jis.gov.jm/labour-laws/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "laws.moj.gov.jm is down for maintenance and the Legal Information Portal needs a captcha, so the notice periods were read in the Government's own summary of the Act."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.redundancy-weeks-first-10",
+      "nombre": "Redundancy pay for each of the first 10 years",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 2,
+          "motivo": "Seen only in employer and payroll guides. The Act and its Regulations sit on laws.moj.gov.jm, which is down for maintenance, and the Legal Information Portal needs a captcha. The Government summary (JIS) does not give the amounts."
+        }
+      ]
+    },
+    {
+      "id": "jm.redundancy-weeks-after-10",
+      "nombre": "Redundancy pay for each year after 10",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 3,
+          "motivo": "Seen only in employer and payroll guides. The Act and its Regulations sit on laws.moj.gov.jm, which is down for maintenance, and the Legal Information Portal needs a captcha. The Government summary (JIS) does not give the amounts."
+        }
+      ]
+    },
+    {
+      "id": "jm.redundancy-qualifying-weeks",
+      "nombre": "Continuous employment needed for redundancy pay",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 104,
+          "motivo": "Seen only in employer and payroll guides. The Act and its Regulations sit on laws.moj.gov.jm, which is down for maintenance, and the Legal Information Portal needs a captcha. The Government summary (JIS) does not give the amounts."
+        }
+      ]
+    },
+    {
+      "id": "jm.nht-interest-rates",
+      "nombre": "NHT mortgage interest rate by weekly income",
+      "tipo": "escala",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 30001,
+              "tasa": 0
+            },
+            {
+              "desde": 30001,
+              "hasta": 42001,
+              "tasa": 2
+            },
+            {
+              "desde": 42001,
+              "hasta": 100001,
+              "tasa": 4
+            },
+            {
+              "desde": 100001,
+              "hasta": null,
+              "tasa": 5
+            }
+          ],
+          "fuente": {
+            "organismo": "National Housing Trust",
+            "titulo": "Loans: NHT interest rates by weekly income band and years to repay",
+            "url": "https://www.nht.gov.jm/index.php/loans",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.nht-max-years",
+      "nombre": "Longest NHT repayment period",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": 40,
+          "fuente": {
+            "organismo": "National Housing Trust",
+            "titulo": "Loans: NHT interest rates by weekly income band and years to repay",
+            "url": "https://www.nht.gov.jm/index.php/loans",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.nht-open-market-limit",
+      "nombre": "NHT open market loan limit for one applicant",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 9000000,
+          "fuente": {
+            "organismo": "National Housing Trust",
+            "titulo": "Loan Limits (updated July 2025)",
+            "url": "https://www.nht.gov.jm/index.php/loan-limits",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.car-licence-6m",
+      "nombre": "Motor car licence fee for 6 months by engine size",
+      "tipo": "mapa",
+      "unidad": "JMD",
+      "etiquetas": {
+        "up-1199": "Not exceeding 1199cc",
+        "1200-2999": "Exceeding 1199cc but not exceeding 2999cc",
+        "3000-3999": "Exceeding 2999cc but not exceeding 3999cc",
+        "over-3999": "Exceeding 3999cc"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": {
+            "up-1199": 4620,
+            "1200-2999": 6300,
+            "3000-3999": 14400,
+            "over-3999": 21825
+          },
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.car-licence-12m",
+      "nombre": "Motor car licence fee for 12 months by engine size",
+      "tipo": "mapa",
+      "unidad": "JMD",
+      "etiquetas": {
+        "up-1199": "Not exceeding 1199cc",
+        "1200-2999": "Exceeding 1199cc but not exceeding 2999cc",
+        "3000-3999": "Exceeding 2999cc but not exceeding 3999cc",
+        "over-3999": "Exceeding 3999cc"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": {
+            "up-1199": 9240,
+            "1200-2999": 12600,
+            "3000-3999": 28800,
+            "over-3999": 43650
+          },
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.car-licence-24m",
+      "nombre": "Motor car licence fee for 24 months by engine size",
+      "tipo": "mapa",
+      "unidad": "JMD",
+      "etiquetas": {
+        "up-1199": "Not exceeding 1199cc",
+        "1200-2999": "Exceeding 1199cc but not exceeding 2999cc",
+        "3000-3999": "Exceeding 2999cc but not exceeding 3999cc",
+        "over-3999": "Exceeding 3999cc"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": {
+            "up-1199": 18480,
+            "1200-2999": 25200,
+            "3000-3999": 57600,
+            "over-3999": 87650
+          },
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jm.fitness-fee-car",
+      "nombre": "Certificate of fitness fee for a private car",
+      "tipo": "numero",
+      "unidad": "JMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-24",
+          "valor": 4500,
+          "fuente": {
+            "organismo": "Tax Administration Jamaica",
+            "titulo": "Rates and Fees: Stamp Duty related rates and fees",
+            "url": "https://www.jamaicatax.gov.jm/rates-and-fees",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "The page gives no effective date. The tramo starts on the day we read it."
+          }
+        }
+      ]
+    }
+  ]
+}

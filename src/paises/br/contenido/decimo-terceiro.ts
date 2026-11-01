@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.decimo-terceiro",
-  h1: "Calculadora de 13º salário 2026",
-  title: "13º salário 2026: calcule as duas parcelas",
-  description: "Calcule o 13º salário integral ou proporcional, a primeira e a segunda parcela, com o INSS e o imposto de renda de 2026.",
+  h1: "Calculadora de 13º salário {{anio}}",
+  title: "13º salário {{anio}}: calcule as duas parcelas",
+  description: "Calcule o 13º salário integral ou proporcional, a primeira e a segunda parcela, com o INSS e o imposto de renda de {{anio}}.",
   intro: [
     "O 13º salário é a gratificação de Natal que toda pessoa com carteira assinada recebe no fim do ano. Vale um salário inteiro para quem trabalhou o ano todo.",
     "Informe o salário, os meses trabalhados e a média de horas extras ou comissões. A calculadora mostra quanto cai em cada parcela.",

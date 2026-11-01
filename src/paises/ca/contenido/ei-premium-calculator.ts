@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca.ei-premium-calculator",
-  h1: "EI premium calculator 2026",
-  title: "EI premium calculator 2026: employee and employer",
-  description: "Calculate your 2026 Employment Insurance premiums at {{ca.ei-rates[employee]}} ({{ca.ei-rates[employee-qc]}} in Quebec) up to {{ca.ei-maximum}} of insurable earnings, plus the employer share.",
+  h1: "EI premium calculator {{anio}}",
+  title: "EI premium calculator {{anio}}: employee and employer",
+  description: "Calculate your {{anio}} Employment Insurance premiums at {{ca.ei-rates[employee]}} ({{ca.ei-rates[employee-qc]}} in Quebec) up to {{ca.ei-maximum}} of insurable earnings, plus the employer share.",
   intro: [
     "Enter your insurable earnings to see the EI premiums that come off your pay in 2026 and what your employer pays on top.",
     "Quebec has a lower EI rate and its own parental insurance plan (QPIP).",

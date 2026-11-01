@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "es.coste-trabajador",
   h1: "Calculadora del coste de un trabajador para la empresa",
-  title: "Coste de un trabajador para la empresa en 2026",
+  title: "Coste de un trabajador para la empresa en {{anio}}",
   description:
-    "Calcula cuánto le cuesta a la empresa un trabajador en 2026: sueldo bruto más la Seguridad Social a cargo de la empresa, al mes y al año.",
+    "Calcula cuánto le cuesta a la empresa un trabajador en {{anio}}: sueldo bruto más la Seguridad Social a cargo de la empresa, al mes y al año.",
   intro: [
     "Contratar a alguien cuesta bastante más que su sueldo bruto. Encima de lo que cobra el trabajador, la empresa paga su propia cotización a la Seguridad Social.",
     "Esta calculadora suma las dos cosas con los tipos de 2026 para que sepas el coste real de un puesto.",

@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sg.cpf-allocation",
   h1: "CPF allocation calculator: OA, SA, MA and RA",
-  title: "CPF allocation calculator 2026: OA, SA, MA and RA",
-  description: "See how your monthly CPF is split between your Ordinary, Special, MediSave and Retirement Accounts, using the CPF Board's 2026 allocation rates by age.",
+  title: "CPF allocation calculator {{anio}}: OA, SA, MA and RA",
+  description: "See how your monthly CPF is split between your Ordinary, Special, MediSave and Retirement Accounts, using the CPF Board's {{anio}} allocation rates by age.",
   intro: [
     "Your CPF contribution does not go into one pot. It is split between your Ordinary Account, your Special Account (or Retirement Account from 55) and your MediSave Account.",
     "Start from your salary or from a contribution amount and pick your age group to see the split.",

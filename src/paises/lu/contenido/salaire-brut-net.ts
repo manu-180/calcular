@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu.salaire-brut-net",
   h1: "Calcul du salaire net au Luxembourg",
-  title: "Salaire brut net Luxembourg 2026 : calcul du net",
-  description: "Du brut au net au Luxembourg : cotisations maladie, pension et dépendance 2026, retenue d'impôt selon la classe 1, 1a ou 2, crédits CIS et CI-CO2.",
+  title: "Salaire brut net Luxembourg {{anio}} : calcul du net",
+  description: "Du brut au net au Luxembourg : cotisations maladie, pension et dépendance {{anio}}, retenue d'impôt selon la classe 1, 1a ou 2, crédits CIS et CI-CO2.",
   intro: [
     "Au Luxembourg, le salaire brut supporte les cotisations sociales du salarié (maladie, pension, dépendance) et la retenue d'impôt sur les salaires. Le crédit d'impôt pour salariés (CIS) et le CI-CO2 viennent ensuite réduire la retenue.",
     "Le calculateur applique les taux de cotisation 2026 publiés par le Centre commun de la sécurité sociale et les formules de retenue de l'Administration des contributions directes.",

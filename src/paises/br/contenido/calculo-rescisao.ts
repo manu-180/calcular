@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.calculo-rescisao",
-  h1: "Cálculo de rescisão trabalhista 2026",
-  title: "Cálculo de rescisão 2026: quanto você recebe",
+  h1: "Cálculo de rescisão trabalhista {{anio}}",
+  title: "Cálculo de rescisão {{anio}}: quanto você recebe",
   description: "Simule a rescisão do contrato: saldo de salário, aviso prévio, 13º, férias com 1/3 e multa do FGTS, para demissão, pedido de demissão ou acordo.",
   intro: [
     "Quando o contrato com carteira assinada termina, a empresa paga as verbas rescisórias. O que entra depende do motivo da saída e de como foi o aviso prévio.",

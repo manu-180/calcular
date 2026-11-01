@@ -7,6 +7,7 @@ import { intlActivo } from "@/motor/sitio";
 import type { CodigoMercado, Idioma } from "@/motor/tipos";
 import { contextoSitio } from "@/motor/ui/contexto";
 import { registro } from "@/paises";
+import { TextoOg } from "@/motor/ui/og-rtl";
 
 // Tarjeta del calendario (1200 x 630): la próxima fecha en grande y cuántas más vienen en el año. No
 // lee parámetros: cualquiera es 404, así nadie llena la caché con variantes.
@@ -17,8 +18,16 @@ const SUAVE = "rgba(244,240,230,0.62)";
 const VERDE = "#34d399";
 const CABECERAS = { "cache-control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400" };
 const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=600" };
+// bn con Noto Sans Bengali: Geist no trae la escritura bengalí (ADR 0002, D14).
+// uk va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D15).
+// Fuente de respaldo por idioma para los glifos que Geist no tiene: los CJK y la «ʻ» (U+02BB) de oʻ y
+// gʻ del uzbeko latino (ADR 0002, D16).
+// ru va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D17).
+// ro va con Noto Sans de respaldo por si Geist no trae ș y ț con coma (U+0218 a U+021B; ADR 0002, D18).
+// el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
+// Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
 // bg va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D24).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bg: "Noto Sans" };
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", bg: "Noto Sans" };
 
 async function fuente(familia: string, peso: number, texto: string): Promise<ArrayBuffer | null> {
   try {
@@ -62,7 +71,9 @@ export function crearOgCalendario(idioma: Idioma) {
     const flag = await bandera(m.pais);
     const cjk = FUENTE_CJK[m.idioma];
     const familiaCjk = cjk && m.idioma === "zh" && /^zh-(CN|SG)/i.test(m.locale) ? "Noto Sans SC" : cjk;
-    const texto = [titulo, v.t.ceja(v.anios), v.t.og.proxima, e.dia, e.mesCorto, resumen, e.cambio ?? "", mas > 0 ? v.t.og.mas(mas) : "", "calcularya.com 0123456789…"].join(" ");
+    // En mayúsculas con el locale (en griego, sin tonos), no con el textTransform de Satori.
+    const proxima = v.t.og.proxima.toLocaleUpperCase(m.locale);
+    const texto = [titulo, v.t.ceja(v.anios), proxima, e.dia, e.mesCorto, resumen, e.cambio ?? "", mas > 0 ? v.t.og.mas(mas) : "", "calcularya.com 0123456789…"].join(" ");
     const unicos = [...new Set(texto)].join("");
     const pedidas = await Promise.all([fuente("Geist", 400, unicos), fuente("Geist", 700, unicos), ...(familiaCjk ? [fuente(familiaCjk, 400, unicos), fuente(familiaCjk, 700, unicos)] : [])]);
     const nombres = ["Geist", "Geist", familiaCjk, familiaCjk];
@@ -87,9 +98,11 @@ export function crearOgCalendario(idioma: Idioma) {
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, paddingRight: 48 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 26, color: SUAVE }}>
               {flag ? <img src={flag} width={42} height={28} style={{ borderRadius: 5 }} alt="" /> : null}
-              {v.t.ceja(v.anios)}
+              <TextoOg texto={v.t.ceja(v.anios)} idioma={m.idioma} />
             </div>
-            <div style={{ display: "flex", fontSize: titulo.length > 40 ? 54 : 64, fontWeight: 700, letterSpacing: -2, lineHeight: 1.04 }}>{titulo}</div>
+            <div style={{ display: "flex", fontSize: titulo.length > 40 ? 54 : 64, fontWeight: 700, letterSpacing: -2, lineHeight: 1.04 }}>
+              <TextoOg texto={titulo} idioma={m.idioma} />
+            </div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 28, fontWeight: 700 }}>
               <svg width="38" height="38" viewBox="0 0 32 32">
                 <rect width="32" height="32" rx="9" fill={VERDE} />
@@ -101,14 +114,28 @@ export function crearOgCalendario(idioma: Idioma) {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: 430, padding: 36, borderRadius: 32, backgroundColor: "rgba(244,240,230,0.06)", border: "1px solid rgba(244,240,230,0.14)" }}>
-            <div style={{ display: "flex", fontSize: 22, color: SUAVE, letterSpacing: 2, textTransform: "uppercase" }}>{v.t.og.proxima}</div>
+            <div style={{ display: "flex", fontSize: 22, color: SUAVE, letterSpacing: 2, textTransform: "uppercase" }}>
+              <TextoOg texto={proxima} idioma={m.idioma} />
+            </div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginTop: 10 }}>
               <div style={{ display: "flex", fontSize: 132, fontWeight: 700, letterSpacing: -6, lineHeight: 1 }}>{e.dia}</div>
-              <div style={{ display: "flex", fontSize: 40, fontWeight: 700, color: VERDE }}>{e.mesCorto}</div>
+              <div style={{ display: "flex", fontSize: 40, fontWeight: 700, color: VERDE }}>
+                <TextoOg texto={e.mesCorto} idioma={m.idioma} />
+              </div>
             </div>
-            <div style={{ display: "flex", marginTop: 14, fontSize: 30, fontWeight: 700, lineHeight: 1.2 }}>{resumen}</div>
-            {e.cambio ? <div style={{ display: "flex", marginTop: 12, fontSize: 24, color: "#a7f3d0" }}>{e.cambio}</div> : null}
-            {mas > 0 ? <div style={{ display: "flex", marginTop: 22, fontSize: 22, color: SUAVE }}>{v.t.og.mas(mas)}</div> : null}
+            <div style={{ display: "flex", marginTop: 14, fontSize: 30, fontWeight: 700, lineHeight: 1.2 }}>
+              <TextoOg texto={resumen} idioma={m.idioma} />
+            </div>
+            {e.cambio ? (
+              <div style={{ display: "flex", marginTop: 12, fontSize: 24, color: "#a7f3d0" }}>
+                <TextoOg texto={e.cambio} idioma={m.idioma} />
+              </div>
+            ) : null}
+            {mas > 0 ? (
+              <div style={{ display: "flex", marginTop: 22, fontSize: 22, color: SUAVE }}>
+                <TextoOg texto={v.t.og.mas(mas)} idioma={m.idioma} />
+              </div>
+            ) : null}
           </div>
         </div>
       ),

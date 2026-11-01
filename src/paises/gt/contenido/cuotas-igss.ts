@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gt.cuotas-igss",
   h1: "Calculadora de cuotas del IGSS",
-  title: "Cuotas del IGSS 2026: laboral y patronal",
+  title: "Cuotas del IGSS {{anio}}: laboral y patronal",
   description:
     "Calcule la cuota laboral del IGSS que le descuentan del salario y lo que paga su patrono al IGSS, al IRTRA y al INTECAP.",
   intro: [

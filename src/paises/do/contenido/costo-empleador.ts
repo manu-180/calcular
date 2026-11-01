@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.costo-empleador",
   h1: "Calculadora del costo de un empleado en República Dominicana",
-  title: "Costo de un empleado en RD 2026: TSS y regalía",
+  title: "Costo de un empleado en RD {{anio}}: TSS y regalía",
   description: "Calcula cuánto le cuesta un empleado a la empresa: salario, aportes del empleador a la TSS (SFS {{do.sfs-empleador}}, AFP {{do.afp-empleador}}, riesgos laborales) y regalía.",
   intro: [
     "Un empleado le cuesta a la empresa más que su salario. Hay que sumar los aportes del empleador a la TSS y apartar la regalía pascual.",

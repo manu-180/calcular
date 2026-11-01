@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { aDia, aFecha, fechaLarga } from "../../comun/fechas";
 import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { DURACION } from "../definicion";
@@ -7,7 +8,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const fum = "2026-01-10";
   const fpp = aFecha(aDia(fum) + DURACION);
   const fpp32 = aFecha(aDia(fum) + DURACION + 4);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const eco = pt ? "a ecografia" : "o ultrassom";
   return {
     h1: "Calculadora da data provável do parto",

@@ -1,14 +1,20 @@
 "use client";
 
 import { useEffect, useId, useMemo, useState, type CSSProperties } from "react";
-import { usarCompartir, type OpcionesCompartir } from "../../compartir";
+import type { OpcionesCompartir } from "../../compartir";
+import { Redes } from "../../compartir/Redes";
 import { rellenarHoras, type TextosHoras } from "../../i18n/horas";
+import type { TextosHorasPropio } from "../../i18n/horas-propio";
+import type { TextosRedes } from "../../i18n/redes";
+import { CLAVE_TRASPASO, edicionPrincipal } from "../../mundo/rutas";
 import type { DatosHorasCliente, PaisHorasCliente, ProductoCliente } from "./datos-cliente";
 import { formatoHoras, formatoNumero, formatoPrecioConCodigo, textoJornadas } from "./formato";
 
 export interface PropsHoras {
   datos: DatosHorasCliente;
   t: TextosHoras;
+  tp: TextosHorasPropio;
+  tr: TextosRedes;
   locale: string;
   productoInicial: string;
   // El producto que muestra el índice: su URL es la del índice, no /<slug>/<producto>.
@@ -24,9 +30,7 @@ const TOPE = 10;
 const HORAS_SEMANA = 40;
 const SEMANAS_ANIO = 52;
 
-// Mientras /api/e no sume «horas» a ORIGENES_COMPARTIR (src/motor/compartir/ref.ts), el evento de
-// compartir se descarta: el link y la tarjeta funcionan igual, solo falta la medición.
-const ORIGEN = "horas" as OpcionesCompartir["origen"];
+const ORIGEN: OpcionesCompartir["origen"] = "horas";
 
 function Bandera({ iso }: { iso: string }) {
   return <img className="cy-horas-bandera" src={`/banderas/${iso.toLowerCase()}.svg`} width={24} height={16} alt="" decoding="async" />;
@@ -52,42 +56,174 @@ function Fichaje({ horas, t }: { horas: number; t: TextosHoras }) {
   );
 }
 
-function Compartir({ t, url, imagen, texto }: { t: TextosHoras; url: string; imagen: string; texto: string }) {
-  const { compartir, estado } = usarCompartir({ origen: ORIGEN, url, titulo: t.nombre, texto, imagen: `${imagen}&formato=historia` });
-  const aviso = estado === "copiado" ? t.compartir.copiado : estado === "compartido" ? t.compartir.compartido : estado === "error" ? t.compartir.error : "";
+// El sueldo que la persona ya cargó en la calculadora de su país (sessionStorage, nunca la URL). Se lee
+// a mano y no con leerTraspaso: ese módulo arrastra los adaptadores del mundo al JS de esta página.
+function traspasoGuardado(): { mercado: string; brutoAnual: number } | null {
+  try {
+    const t = JSON.parse(sessionStorage.getItem(CLAVE_TRASPASO) ?? "null") as { mercado?: unknown; brutoAnual?: unknown } | null;
+    return t && typeof t.mercado === "string" && typeof t.brutoAnual === "number" && t.brutoAnual > 0 ? { mercado: edicionPrincipal(t.mercado), brutoAnual: t.brutoAnual } : null;
+  } catch {
+    return null;
+  }
+}
+
+// Las horas viajan a la tarjeta en décimas y nunca el sueldo: la imagen arma el resto con el índice.
+const TOPE_DECIMAS = 10_000_000;
+
+function leerNumero(texto: string, locale: string): number | null {
+  const decimal = new Intl.NumberFormat(locale).formatToParts(1.5).find((x) => x.type === "decimal")?.value ?? ".";
+  const limpio = texto.replace(decimal === "," ? /[^\d,]/g : /[^\d.]/g, "").replace(decimal, ".");
+  if (!/\d/.test(limpio)) return null;
+  const n = Number(limpio);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+function simboloDe(locale: string, moneda: string): string {
+  try {
+    return new Intl.NumberFormat(locale, { style: "currency", currency: moneda, currencyDisplay: "narrowSymbol" }).formatToParts(0).find((x) => x.type === "currency")?.value ?? moneda;
+  } catch {
+    return moneda;
+  }
+}
+
+function Propio({
+  t,
+  tp,
+  locale,
+  pais,
+  producto,
+  ranking,
+  texto,
+  setTexto,
+  traido,
+  ratio,
+}: {
+  t: TextosHoras;
+  tp: TextosHorasPropio;
+  locale: string;
+  pais: PaisHorasCliente;
+  producto: ProductoCliente;
+  ranking: readonly PaisHorasCliente[];
+  texto: string;
+  setTexto: (v: string) => void;
+  traido: boolean;
+  ratio: number | null;
+}) {
+  const idCampo = useId();
+  const idAyuda = useId();
+  const celda = pais.celdas[producto.id];
+  const invalido = texto.trim() !== "" && ratio === null;
+  const horas = celda && ratio ? formatoHoras(locale, celda.horas / ratio) : null;
+  const filas = ratio && celda ? ranking.slice(0, 5).concat(ranking.slice(5).filter((x) => x.iso === pais.iso)) : [];
+  const max = ratio && filas.length ? Math.max(...filas.map((x) => x.celdas[producto.id].horas / ratio)) : 1;
+  const veces = ratio ? formatoNumero(locale, ratio, ratio < 10 ? 1 : 0) : "";
+
   return (
-    <section className="cy-horas-compartir" aria-labelledby="cy-horas-compartir-titulo">
-      <div className="cy-horas-compartir-texto">
-        <h2 id="cy-horas-compartir-titulo" className="cy-horas-h3">
-          {t.compartir.titulo}
+    <section className="cy-horas-propio" aria-labelledby="cy-horas-propio-titulo">
+      <div className="cy-horas-seccion-cabeza">
+        <h2 id="cy-horas-propio-titulo" className="cy-horas-h2">
+          {tp.titulo}
         </h2>
-        <p>{t.compartir.bajada}</p>
-        <div className="cy-horas-acciones">
-          <button type="button" className="cy-horas-boton" onClick={compartir}>
-            <span>{t.compartir.boton}</span>
-            <span className="cy-horas-boton-icono" aria-hidden="true">
-              <svg viewBox="0 0 16 16">
-                <path d="M8 10.5V2.5M5 5.5l3-3 3 3M3.5 9v3.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-          </button>
-          <a className="cy-horas-enlace" href={`${imagen}&formato=historia`} download="calcularya-horas.png">
-            {t.compartir.descargar}
-          </a>
-        </div>
-        <p className="cy-horas-aviso" role="status" aria-live="polite">
-          {aviso}
-        </p>
+        <p className="cy-horas-bajada">{tp.bajada}</p>
       </div>
-      <img className="cy-horas-vista" src={imagen} width={1200} height={630} alt={t.compartir.alt} loading="lazy" decoding="async" />
+      <div className="cy-horas-propio-cuerpo">
+        <div className="cy-horas-propio-campo">
+          <label htmlFor={idCampo}>{tp.campo}</label>
+          <div className="cy-horas-propio-entrada" data-invalido={invalido || undefined}>
+            <span className="cy-horas-propio-simbolo" aria-hidden="true">
+              {simboloDe(locale, pais.moneda)}
+            </span>
+            <input
+              id={idCampo}
+              type="text"
+              inputMode="decimal"
+              autoComplete="off"
+              spellCheck={false}
+              value={texto}
+              placeholder={formatoNumero(locale, Math.round(pais.porHora * pais.horasMes * 2))}
+              aria-describedby={idAyuda}
+              aria-invalid={invalido || undefined}
+              onChange={(e) => setTexto(e.target.value)}
+            />
+            <span className="cy-horas-propio-codigo" aria-hidden="true">
+              {pais.moneda}
+            </span>
+          </div>
+          <p id={idAyuda} className="cy-horas-propio-ayuda" data-invalido={invalido || undefined}>
+            {invalido ? tp.invalido : traido ? tp.traido : rellenarHoras(tp.ayuda, { moneda: pais.moneda })}
+          </p>
+        </div>
+        <div className="cy-horas-propio-resultado" aria-live="polite">
+          {!celda ? (
+            <p className="cy-horas-propio-espera">{rellenarHoras(t.heroe.sinPrecio, { en: pais.en })}</p>
+          ) : horas && ratio ? (
+            <>
+              <p className="cy-horas-propio-antes">{rellenarHoras(tp.antes, { en: pais.en, producto: producto.conArticulo })}</p>
+              <p className="cy-horas-propio-cifra" key={`${producto.id}-${pais.iso}`}>
+                <span>{horas.numero}</span>
+                <small>{horas.unidad}</small>
+              </p>
+              <p className="cy-horas-propio-antes">{producto.periodo === "mes" ? tp.despuesMes : tp.despues}</p>
+              <p className="cy-horas-propio-nota">
+                <span>{rellenarHoras(tp.minimo, { horas: formatoHoras(locale, celda.horas).texto })}</span>
+                <span className="cy-horas-propio-chip">{rellenarHoras(tp.veces, { x: veces })}</span>
+              </p>
+            </>
+          ) : (
+            <p className="cy-horas-propio-espera">{tp.vacio}</p>
+          )}
+        </div>
+      </div>
+      {ratio && celda ? (
+        <div className="cy-horas-propio-ranking">
+          <div>
+            <h3 className="cy-horas-h3">{tp.rankingTitulo}</h3>
+            <p className="cy-horas-propio-ayuda">{rellenarHoras(tp.rankingBajada, { x: veces })}</p>
+          </div>
+          <ol className="cy-horas-propio-lista">
+            {filas.map((x) => {
+              const h = x.celdas[producto.id].horas / ratio;
+              return (
+                <li key={x.iso} data-elegido={x.iso === pais.iso ? "" : undefined}>
+                  <span className="cy-horas-pos">{formatoNumero(locale, ranking.indexOf(x) + 1)}</span>
+                  <Bandera iso={x.iso} />
+                  <span className="cy-horas-propio-pais">{x.nombre}</span>
+                  <span className="cy-horas-propio-horas">{formatoHoras(locale, h).texto}</span>
+                  <span className="cy-horas-barra" aria-hidden="true">
+                    <span style={{ transform: `scaleX(${Math.max(0.015, h / max)})` }} />
+                  </span>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ) : null}
     </section>
   );
 }
 
-export function HorasCliente({ datos, t, locale, productoInicial, productoIndice, paisInicial, base, slug }: PropsHoras) {
+function Compartir({ t, tp, tr, url, imagen, texto, propio }: { t: TextosHoras; tp: TextosHorasPropio; tr: TextosRedes; url: string; imagen: string; texto: string; propio: boolean }) {
+  const historia = `${imagen}&formato=historia`;
+  const opciones = useMemo(() => ({ origen: ORIGEN, url, titulo: t.nombre, texto, imagen: historia, historia }), [url, t.nombre, texto, historia]);
+  return (
+    <section className="cy-horas-compartir" aria-labelledby="cy-horas-compartir-titulo">
+      <div className="cy-horas-compartir-texto">
+        <h2 id="cy-horas-compartir-titulo" className="cy-horas-h3">
+          {propio ? tp.tarjetaTitulo : t.compartir.titulo}
+        </h2>
+        <p>{propio ? tp.tarjetaBajada : t.compartir.bajada}</p>
+      </div>
+      <Redes t={tr} opciones={opciones} cuadrado={`${imagen}&formato=cuadrado`} archivo="calcularya-horas" alt={t.compartir.alt} />
+    </section>
+  );
+}
+
+export function HorasCliente({ datos, t, tp, tr, locale, productoInicial, productoIndice, paisInicial, base, slug }: PropsHoras) {
   const [producto, setProducto] = useState(productoInicial);
   const [iso, setIso] = useState(paisInicial);
   const [todos, setTodos] = useState(false);
+  const [sueldo, setSueldo] = useState("");
+  const [traido, setTraido] = useState(false);
   const idSelect = useId();
 
   const p: ProductoCliente = datos.productos.find((x) => x.id === producto) ?? datos.productos[0];
@@ -116,11 +252,39 @@ export function HorasCliente({ datos, t, locale, productoInicial, productoIndice
     }
   }, [p.id, slug, productoIndice]);
 
+  // Una sola vez al montar: si la persona viene de su calculadora de sueldo, su país y su sueldo mensual.
+  useEffect(() => {
+    const guardado = traspasoGuardado();
+    const suyo = guardado ? datos.paises.find((x) => x.mercado === guardado.mercado) : undefined;
+    if (!guardado || !suyo) return;
+    setIso(suyo.iso);
+    setSueldo(formatoNumero(locale, Math.round(guardado.brutoAnual / suyo.pagas)));
+    setTraido(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Otro país es otra moneda: el sueldo escrito ya no significa lo mismo.
+  const elegirPais = (nuevo: string) => {
+    if (nuevo !== iso && sueldo) {
+      setSueldo("");
+      setTraido(false);
+    }
+    setIso(nuevo);
+  };
+  const escribir = (v: string) => {
+    setSueldo(v);
+    setTraido(false);
+  };
+
+  const mensual = leerNumero(sueldo, locale);
+  // Cuántos mínimos es el sueldo: con eso salen las horas de este país y del resto del índice.
+  const ratio = pais && mensual ? mensual / pais.horasMes / pais.porHora : null;
   const horas = celda ? formatoHoras(locale, celda.horas) : null;
   const visibles = todos || ranking.length <= TOPE + 2 ? ranking : ranking.filter((x, i) => i < TOPE || x.iso === iso);
-  const imagen = `${base}/og?p=${p.id}${pais && celda ? `&pais=${pais.iso}` : ""}`;
+  const propias = celda && ratio ? Math.min(TOPE_DECIMAS, Math.max(1, Math.round((celda.horas / ratio) * 10))) : null;
+  const imagen = `${base}/og?p=${p.id}${pais && celda ? `&pais=${pais.iso}` : ""}${propias ? `&h=${propias}` : ""}`;
   const urlTarjeta = `${base}/${p.id}${pais && celda ? `/${pais.iso.toLowerCase()}` : ""}`;
-  const textoCompartir = pais && horas ? rellenarHoras(t.compartir.texto, { en: pais.en, producto: p.conArticulo, horas: horas.texto }) : rellenarHoras(t.og.generica, { producto: p.conArticulo });
+  const textoCompartir = pais && propias ? rellenarHoras(tp.texto, { en: pais.en, producto: p.conArticulo, horas: formatoHoras(locale, propias / 10).texto }) : pais && horas ? rellenarHoras(t.compartir.texto, { en: pais.en, producto: p.conArticulo, horas: horas.texto }) : rellenarHoras(t.og.generica, { producto: p.conArticulo });
 
   return (
     <div className="cy-horas-app">
@@ -140,7 +304,7 @@ export function HorasCliente({ datos, t, locale, productoInicial, productoIndice
               <label htmlFor={idSelect}>{t.form.pais}</label>
               <div className="cy-horas-select">
                 {pais ? <Bandera iso={pais.iso} /> : null}
-                <select id={idSelect} value={iso} onChange={(e) => setIso(e.target.value)}>
+                <select id={idSelect} value={iso} onChange={(e) => elegirPais(e.target.value)}>
                   {datos.paises.map((x) => (
                     <option key={x.iso} value={x.iso}>
                       {x.nombre}
@@ -187,7 +351,7 @@ export function HorasCliente({ datos, t, locale, productoInicial, productoIndice
             </div>
           ) : (
             <div className="cy-horas-resultado" aria-live="polite">
-              <p className="cy-horas-vacio">{pais ? rellenarHoras(t.heroe.sinPrecio, { en: pais.en }) : t.ranking.sinPrecio.replace("{n}", "1")}</p>
+              <p className="cy-horas-vacio">{pais ? rellenarHoras(t.heroe.sinPrecio, { en: pais.en }) : rellenarHoras(t.ranking.sinPrecio, { n: formatoNumero(locale, 1) })}</p>
               {mejor ? (
                 <p className="cy-horas-mejor">
                   <Bandera iso={mejor.iso} />
@@ -199,7 +363,9 @@ export function HorasCliente({ datos, t, locale, productoInicial, productoIndice
         </div>
       </section>
 
-      <Compartir t={t} url={urlTarjeta} imagen={imagen} texto={textoCompartir} />
+      {pais ? <Propio t={t} tp={tp} locale={locale} pais={pais} producto={p} ranking={ranking} texto={sueldo} setTexto={escribir} traido={traido} ratio={ratio} /> : null}
+
+      <Compartir t={t} tp={tp} tr={tr} url={urlTarjeta} imagen={imagen} texto={textoCompartir} propio={Boolean(propias)} />
 
       <section className="cy-horas-ranking" aria-labelledby="cy-horas-ranking-titulo">
         <div className="cy-horas-seccion-cabeza">
@@ -216,7 +382,7 @@ export function HorasCliente({ datos, t, locale, productoInicial, productoIndice
             const salto = !todos && pos > TOPE && visibles.length < ranking.length;
             return (
               <li key={x.iso} data-elegido={x.iso === iso ? "" : undefined} data-salto={salto ? "" : undefined}>
-                <button type="button" className="cy-horas-fila" aria-pressed={x.iso === iso} onClick={() => setIso(x.iso)}>
+                <button type="button" className="cy-horas-fila" aria-pressed={x.iso === iso} onClick={() => elegirPais(x.iso)}>
                   <span className="cy-horas-pos">{formatoNumero(locale, pos)}</span>
                   <span className="cy-horas-fila-pais">
                     <Bandera iso={x.iso} />

@@ -34,8 +34,8 @@ export function EncabezadoIntl({ ctx }: { ctx: ContextoSitio }) {
           { href: rutaIntl(m.codigo, "fuentes"), label: t.footer.fuentes },
         ]
       : []),
-    { href: rutaIntl("global", "sobre"), label: t.footer.sobre },
-    { href: rutaIntl("global", "contacto"), label: t.footer.contacto },
+    { href: rutaIntl(enPais ? m.codigo : "global", "sobre"), label: t.footer.sobre },
+    { href: rutaIntl(enPais ? m.codigo : "global", "contacto"), label: t.footer.contacto },
   ];
 
   return (

@@ -1,0 +1,1506 @@
+{
+  "mercado": "rw",
+  "datos": [
+    {
+      "id": "rw.paye-bands",
+      "nombre": "Monthly PAYE bands",
+      "tipo": "escala",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 60000,
+              "tasa": 0
+            },
+            {
+              "desde": 60000,
+              "hasta": 100000,
+              "tasa": 10
+            },
+            {
+              "desde": 100000,
+              "hasta": 200000,
+              "tasa": 20
+            },
+            {
+              "desde": 200000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Calculate your Employment tax (PAYE): monthly and annual rates",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/employment-tax-paye/calculate-paye",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.paye-secondary-rate",
+      "nombre": "PAYE rate withheld by an employer who is not the first employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Types of withholding tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/withholding-tax-wht/types-of-withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.casual-rate",
+      "nombre": "Tax rate on casual labourers' pay",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.casual-threshold",
+      "nombre": "Monthly casual labour income taxed at 0%",
+      "tipo": "numero",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.pension-employee",
+      "nombre": "Pension contribution, employee share",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Pension scheme contribution",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/rssb-contributions/pension-scheme-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "The page gives 6% for the employer and 6% for the employee. The doubling from 3% + 3% took effect in January 2025."
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": 7,
+          "motivo": "RSSB announced 2 points more a year from 2027, split equally, to reach 20% in 2030, but the RSSB page with the schedule now returns 404 and no gazetted order was found."
+        }
+      ]
+    },
+    {
+      "id": "rw.pension-employer",
+      "nombre": "Pension contribution, employer share",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Pension scheme contribution",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/rssb-contributions/pension-scheme-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "The page gives 6% for the employer and 6% for the employee. The doubling from 3% + 3% took effect in January 2025."
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": 7,
+          "motivo": "RSSB announced 2 points more a year from 2027, split equally, to reach 20% in 2030, but the RSSB page with the schedule now returns 404 and no gazetted order was found."
+        }
+      ]
+    },
+    {
+      "id": "rw.maternity-employee",
+      "nombre": "Maternity leave contribution, employee share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 0.3,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Maternity leave contribution",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/rssb-contributions/maternity-leave-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.maternity-employer",
+      "nombre": "Maternity leave contribution, employer share",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 0.3,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Maternity leave contribution",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/rssb-contributions/maternity-leave-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.cbhi-rate",
+      "nombre": "CBHI contribution on net salary",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "CBHI scheme contribution",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/rssb-contributions/cbhi-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.medical-employee",
+      "nombre": "RSSB medical scheme (RAMA), employee share of basic salary",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Medical scheme contribution",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/rssb-contributions/medical-scheme-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.medical-employer",
+      "nombre": "RSSB medical scheme (RAMA), employer share of basic salary",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Medical scheme contribution",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/rssb-contributions/medical-scheme-contribution",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.occupational-hazards",
+      "nombre": "Occupational hazards contribution, employer only",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2025-01-01",
+          "valor": 2,
+          "motivo": "Payroll guides give 2% of salary paid by the employer, but the RSSB page that stated it now returns 404 and the RRA pages on RSSB contributions do not list it."
+        }
+      ]
+    },
+    {
+      "id": "rw.notice-days-short",
+      "nombre": "Minimum notice, less than one year of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.notice-days-long",
+      "nombre": "Minimum notice, more than one year of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.unfair-min-months",
+      "nombre": "Unfair dismissal damages, minimum",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.unfair-max-months",
+      "nombre": "Unfair dismissal damages, maximum",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.unfair-max-months-long",
+      "nombre": "Unfair dismissal damages, maximum after more than 10 years with the employer",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.terminal-benefits",
+      "nombre": "Terminal benefits in months of average salary, by years of service",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "under-5": "Less than 5 years",
+        "5-to-10": "5 to 10 years",
+        "10-to-15": "10 to 15 years",
+        "15-to-20": "15 to 20 years",
+        "20-to-25": "20 to 25 years",
+        "over-25": "Over 25 years"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": {
+            "under-5": 2,
+            "5-to-10": 3,
+            "10-to-15": 4,
+            "15-to-20": 5,
+            "20-to-25": 6,
+            "over-25": 7
+          },
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.terminal-min-months",
+      "nombre": "Service needed for terminal benefits",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.leave-days-per-month",
+      "nombre": "Annual leave earned per month of work",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.leave-days-per-month-minor",
+      "nombre": "Annual leave per month for an employee aged 16 or 17",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.leave-extra-every-years",
+      "nombre": "Years of service for each extra day of leave",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.leave-max-days",
+      "nombre": "Most annual leave a year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.sick-short-days",
+      "nombre": "Short-term sick leave, most days",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.sick-long-months",
+      "nombre": "Long-term sick leave, most months",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.sick-full-pay-months",
+      "nombre": "Long-term sick leave on full salary",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-06",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Official Gazette of Rwanda (Ministry of Justice)",
+            "titulo": "Law N° 66/2018 of 30/08/2018 regulating labour in Rwanda, Official Gazette special of 06/09/2018",
+            "url": "https://www.minijust.gov.rw/fileadmin/user_upload/Minijust/Publications/Laws/Labour_law_2018.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law N° 027/2023 of 18/05/2023 amended Articles 24, 43, 44, 45, 56 and 57 only; the articles used here are unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.maternity-weeks",
+      "nombre": "Maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-04",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Rwanda Social Security Board",
+            "titulo": "Maternity Leave Benefit Scheme",
+            "url": "https://www.rssb.rw/schemes/maternity-leave-scheme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.maternity-rssb-weeks",
+      "nombre": "Final weeks of maternity leave reimbursed by RSSB",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-06-04",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Rwanda Social Security Board",
+            "titulo": "Maternity Leave Benefit Scheme",
+            "url": "https://www.rssb.rw/schemes/maternity-leave-scheme",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.vat-rate",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-09-05",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Declare VAT: rates, penalties and fines",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/value-added-tax/penalties-and-interest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.vat-threshold-year",
+      "nombre": "VAT registration threshold over 12 months",
+      "tipo": "numero",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 20000000,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "VAT registration",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/value-added-tax/default-title-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.vat-threshold-quarter",
+      "nombre": "VAT registration threshold over three months",
+      "tipo": "numero",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 5000000,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "VAT registration",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/value-added-tax/default-title-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.wht-rate",
+      "nombre": "Withholding tax on dividends, interest, royalties and payments to unregistered persons",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Types of withholding tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/withholding-tax-wht/types-of-withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.wht-board",
+      "nombre": "Withholding tax on board member allowances",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Types of withholding tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/withholding-tax-wht/types-of-withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.wht-imports",
+      "nombre": "Withholding tax on goods imported for commercial use",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Types of withholding tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/withholding-tax-wht/types-of-withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.wht-tenders",
+      "nombre": "Withholding tax on public tenders",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Types of withholding tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/withholding-tax-wht/types-of-withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.pit-bands",
+      "nombre": "Annual income tax bands for individuals (real regime)",
+      "tipo": "escala",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 720000,
+              "tasa": 0
+            },
+            {
+              "desde": 720000,
+              "hasta": 1200000,
+              "tasa": 10
+            },
+            {
+              "desde": 1200000,
+              "hasta": 2400000,
+              "tasa": 20
+            },
+            {
+              "desde": 2400000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.cit-rate",
+      "nombre": "Corporate income tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.flat-tax",
+      "nombre": "Flat tax for micro-enterprises by annual turnover",
+      "tipo": "escala",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 2000000.01,
+              "hasta": 4000000,
+              "tasa": 0,
+              "cuotaFija": 60000
+            },
+            {
+              "desde": 4000000.01,
+              "hasta": 7000000,
+              "tasa": 0,
+              "cuotaFija": 120000
+            },
+            {
+              "desde": 7000000.01,
+              "hasta": 10000000,
+              "tasa": 0,
+              "cuotaFija": 210000
+            },
+            {
+              "desde": 10000000.01,
+              "hasta": 12000000,
+              "tasa": 0,
+              "cuotaFija": 300000
+            }
+          ],
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.lump-sum-rate",
+      "nombre": "Lump sum tax rate for small enterprises",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.lump-sum-upper",
+      "nombre": "Top of the lump sum regime (annual turnover)",
+      "tipo": "numero",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 20000000,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.cgt-rate",
+      "nombre": "Capital gains tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-27",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.tourism-tax",
+      "nombre": "Tourism tax on accommodation",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-27",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.road-levy",
+      "nombre": "Levy on motor vehicles for road maintenance, a year",
+      "tipo": "mapa",
+      "unidad": "RWF",
+      "etiquetas": {
+        "car": "Car",
+        "jeep": "Jeep",
+        "pickup": "Pick-up",
+        "microbus": "Microbus",
+        "minibus": "Minibus",
+        "bus": "Bus",
+        "truck": "Truck",
+        "half-trailer": "Half trailer",
+        "trailer": "Trailer"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-27",
+          "valor": {
+            "car": 50000,
+            "jeep": 50000,
+            "pickup": 100000,
+            "microbus": 100000,
+            "minibus": 100000,
+            "bus": 100000,
+            "truck": 120000,
+            "half-trailer": 120000,
+            "trailer": 150000
+          },
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Basic information on Rwanda taxation system, version 2025",
+            "url": "https://www.rra.gov.rw/fileadmin/Folder_for_2025/BASIC_INFORMATION_version_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Simplified guide to Law 027/2022 on income tax as amended by Laws 051/2023 and 014/2025, Law 049/2023 on VAT, Law 013/2025 on the road maintenance levy and Law 015/2025 on the tourism tax."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.rental-bands",
+      "nombre": "Annual rental income tax bands",
+      "tipo": "escala",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 180000,
+              "tasa": 0
+            },
+            {
+              "desde": 180000,
+              "hasta": 1000000,
+              "tasa": 20
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Rental income tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/rental-income-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.rental-deduction",
+      "nombre": "Standard deduction from gross rent",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Rental income tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/rental-income-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.property-residential",
+      "nombre": "Property tax, residential building and plot",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Immovable property tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.property-residential-3",
+      "nombre": "Property tax, residential building of three floors",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Immovable property tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.property-residential-4",
+      "nombre": "Property tax, residential building of more than three floors",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.1,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Immovable property tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.property-commercial",
+      "nombre": "Property tax, commercial building and plot",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.3,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Immovable property tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.property-industrial",
+      "nombre": "Property tax, industrial or small business building and plot",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.1,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Immovable property tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.land-max",
+      "nombre": "Highest land tax a square metre",
+      "tipo": "numero",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Immovable property tax",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.sale-tax-registered",
+      "nombre": "Tax on sale of commercial property by a seller registered for income tax",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Tax on sale of immovable property",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.sale-tax-other",
+      "nombre": "Tax on sale of property by a seller not registered for income tax",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Tax on sale of immovable property",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.sale-tax-allowance",
+      "nombre": "Part of the sale value not taxed",
+      "tipo": "numero",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 5000000,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Tax on sale of immovable property",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.trading-licence",
+      "nombre": "Trading licence a year by turnover",
+      "tipo": "escala",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 12000000,
+              "hasta": 20000000,
+              "tasa": 0,
+              "cuotaFija": 160000
+            },
+            {
+              "desde": 20000000.01,
+              "hasta": 200000000,
+              "tasa": 0,
+              "cuotaFija": 280000
+            },
+            {
+              "desde": 200000000.01,
+              "hasta": 1000000000,
+              "tasa": 0,
+              "cuotaFija": 500000
+            },
+            {
+              "desde": 1000000000.01,
+              "hasta": 25000000000,
+              "tasa": 0,
+              "cuotaFija": 1000000
+            },
+            {
+              "desde": 25000000000.01,
+              "hasta": 50000000000,
+              "tasa": 0,
+              "cuotaFija": 1500000
+            },
+            {
+              "desde": 50000000000,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 2000000
+            }
+          ],
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Trading licence",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/trading-license",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.trading-licence-other",
+      "nombre": "Trading licence a year for other activities",
+      "tipo": "mapa",
+      "unidad": "RWF",
+      "etiquetas": {
+        "urban": "Business not registered for income tax, urban area",
+        "rural": "Business not registered for income tax, rural area",
+        "vehicle": "Transport by vehicle",
+        "boat": "Transport by boat",
+        "motorcycle": "Transport by motorcycle"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "urban": 60000,
+            "rural": 30000,
+            "vehicle": 40000,
+            "boat": 20000,
+            "motorcycle": 8000
+          },
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Trading licence",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/trading-license",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.late-interest",
+      "nombre": "Monthly interest for late payment by length of delay",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "up-to-6": "Up to 6 months",
+        "6-to-12": "6 to 12 months",
+        "over-12": "More than 12 months"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-31",
+          "valor": {
+            "up-to-6": 0.5,
+            "6-to-12": 1,
+            "over-12": 1.5
+          },
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Declare income tax: interest, administrative fines and penalties",
+            "url": "https://www.rra.gov.rw/en/taxes-fees/domestic-taxes/income-tax/declare-income-tax-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law 020/2023 of 31/03/2023 on tax procedures."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.fine-undeclared",
+      "nombre": "Fine for not declaring and paying on time",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "up-to-30": "Up to 30 days late",
+        "31-to-60": "31 to 60 days late",
+        "over-60": "More than 60 days late"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-31",
+          "valor": {
+            "up-to-30": 20,
+            "31-to-60": 40,
+            "over-60": 60
+          },
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Declare income tax: interest, administrative fines and penalties",
+            "url": "https://www.rra.gov.rw/en/taxes-fees/domestic-taxes/income-tax/declare-income-tax-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law 020/2023 of 31/03/2023 on tax procedures."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.fine-unpaid",
+      "nombre": "Fine for declaring on time but paying late",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "up-to-30": "Up to 30 days late",
+        "31-to-60": "31 to 60 days late",
+        "over-60": "More than 60 days late"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-03-31",
+          "valor": {
+            "up-to-30": 5,
+            "31-to-60": 10,
+            "over-60": 30
+          },
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Declare income tax: interest, administrative fines and penalties",
+            "url": "https://www.rra.gov.rw/en/taxes-fees/domestic-taxes/income-tax/declare-income-tax-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "Law 020/2023 of 31/03/2023 on tax procedures."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.local-fine",
+      "nombre": "Penalty for late or false declaration of district taxes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Penalties for late declaration and payment of local government taxes",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title-2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.local-interest",
+      "nombre": "Monthly interest on late district taxes",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Penalties for late declaration and payment of local government taxes",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title-2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.local-extra",
+      "nombre": "Extra penalty on unpaid district tax",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Penalties for late declaration and payment of local government taxes",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title-2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rw.local-extra-cap",
+      "nombre": "Cap on the extra penalty on unpaid district tax",
+      "tipo": "numero",
+      "unidad": "RWF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Rwanda Revenue Authority",
+            "titulo": "Penalties for late declaration and payment of local government taxes",
+            "url": "https://www.rra.gov.rw/en/domestic-tax-services/local-government-taxes/default-title-2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    }
+  ]
+}

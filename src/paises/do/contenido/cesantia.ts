@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.cesantia",
   h1: "Calculadora de auxilio de cesantía en República Dominicana",
-  title: "Cesantía en RD 2026: calcula tu auxilio de cesantía",
+  title: "Cesantía en RD {{anio}}: calcula tu auxilio de cesantía",
   description: "Calcula tu auxilio de cesantía según tus años de trabajo y tu salario promedio, con la tabla del artículo 80 del Código de Trabajo dominicano.",
   intro: [
     "El auxilio de cesantía es el pago que te toca cuando el empleador termina tu contrato sin causa justa. Se cuenta en días de salario según el tiempo que trabajaste.",

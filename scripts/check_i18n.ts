@@ -10,6 +10,7 @@ import { DICCIONARIOS_EMBED } from "../src/motor/i18n/embed";
 import { GRAMATICA } from "../src/motor/i18n/gramatica";
 import { resolverLegales } from "../src/motor/i18n/legales";
 import { resolver, type Diccionarios } from "../src/motor/i18n/resolver";
+import { esPortuguesEuropeo, PT_LUSOFONIA, variantesDeLocale } from "../src/motor/i18n/variantes";
 import { nombresUnidad } from "../src/motor/i18n/unidades";
 import { DICCIONARIOS_MOTOR } from "../src/motor/textos";
 import { IDIOMAS, type Idioma, type Trato } from "../src/motor/tipos";
@@ -18,11 +19,17 @@ import { DICCIONARIOS_MUNDO } from "../src/motor/i18n/mundo";
 import { DICCIONARIOS_RANKINGS } from "../src/motor/i18n/rankings";
 import { DICCIONARIOS_HORAS } from "../src/motor/i18n/horas";
 import { DICCIONARIOS_CALENDARIO } from "../src/motor/i18n/calendario";
+import { DICCIONARIOS_REDES } from "../src/motor/i18n/redes";
+import { DICCIONARIOS_HORAS_PROPIO } from "../src/motor/i18n/horas-propio";
 import { anchoVisual } from "../src/motor/ancho";
 import { problemasDeTexto } from "./reglas_idioma";
 
 const TRATOS: readonly Trato[] = ["tu", "usted", "vos"];
 const MUESTRA = "7";
+// En bengalí las reglas no aceptan cifras latinas (ADR 0002, D14) y un parámetro de muestra «7» que
+// hace de nombre de país o de búsqueda daría una falla falsa: la muestra va con el dígito bengalí. Los
+// números que llegan sueltos se cubren igual, porque los diccionarios bn los pasan por cifrasBn.
+const MUESTRA_DE: Readonly<Partial<Record<Idioma, string>>> = { bn: "৭" };
 
 // Textos que pueden coincidir con el español porque son la misma palabra en ese idioma, una sigla o
 // una marca. Clave: "idioma:diccionario.ruta" (ruta sin el trato); "*:" vale para todos los idiomas.
@@ -68,7 +75,13 @@ const IGUALES_PERMITIDOS = new Set([
   "pt:unidades.meses.otros",
   // la misma palabra en ese idioma
   "de:embed.pagina.colores.3",
+  "sv:embed.pagina.colores.3",
+  "nb:embed.pagina.colores.3",
+  "sv:embed.pagina.tema",
+  "da:embed.pagina.tema",
+  "nb:embed.pagina.tema",
   "it:embed.pagina.colores.0",
+  "ro:embed.pagina.colores.0",
   "it:embed.pagina.colores.3",
   "it:embed.pagina.tema",
   "pt:embed.pagina.buscar",
@@ -90,23 +103,26 @@ const IGUALES_PERMITIDOS = new Set([
   "nl:legales.privacidad.bloques.3.titulo",
   "it:legales.privacidad.bloques.3.titulo",
   "nl:legales.sobre.bloques.2.titulo",
+  // «Gratis» es también la palabra indonesia
+  "id:legales.sobre.bloques.2.titulo",
 ]);
 
 type Hoja = { ruta: string; texto: string };
 
-function hojas(valor: unknown, ruta: string, salida: Hoja[]): Hoja[] {
+function hojas(valor: unknown, ruta: string, salida: Hoja[], muestra = MUESTRA): Hoja[] {
   if (typeof valor === "string") salida.push({ ruta, texto: valor });
-  else if (typeof valor === "function") hojas((valor as (...a: string[]) => unknown)(...Array.from({ length: valor.length }, () => MUESTRA)), ruta, salida);
-  else if (Array.isArray(valor)) valor.forEach((v, i) => hojas(v, `${ruta}.${i}`, salida));
-  else if (valor && typeof valor === "object") for (const [k, v] of Object.entries(valor)) hojas(v, ruta ? `${ruta}.${k}` : k, salida);
+  else if (typeof valor === "function") hojas((valor as (...a: string[]) => unknown)(...Array.from({ length: valor.length }, () => muestra)), ruta, salida, muestra);
+  else if (Array.isArray(valor)) valor.forEach((v, i) => hojas(v, `${ruta}.${i}`, salida, muestra));
+  else if (valor && typeof valor === "object") for (const [k, v] of Object.entries(valor)) hojas(v, ruta ? `${ruta}.${k}` : k, salida, muestra);
   else salida.push({ ruta, texto: "" });
   return salida;
 }
 
 const marcadores = (t: string) => [...t.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort().join(",");
 
-// Locales con parche regional que cambia la escritura entera: se revisan como un idioma más.
-const LOCALES: Readonly<Partial<Record<Idioma, readonly string[]>>> = { zh: ["zh-TW", "zh-HK", "zh-CN", "zh-SG"] };
+// Locales con parche regional que cambia la escritura entera: se revisan como un idioma más. En
+// portugués, la base (Brasil), Portugal y Angola como muestra de la lusofonía con la norma europea.
+const LOCALES: Readonly<Partial<Record<Idioma, readonly (string | undefined)[]>>> = { zh: ["zh-TW", "zh-HK", "zh-CN", "zh-SG"], pt: [undefined, "pt-PT", "pt-AO"] };
 const variantes = (idioma: Idioma): readonly (string | undefined)[] => LOCALES[idioma] ?? [undefined];
 
 type Fuente = { nombre: string; resolver: (idioma: Idioma, trato: Trato, locale?: string) => unknown };
@@ -122,6 +138,8 @@ const FUENTES: readonly Fuente[] = [
   desde("rankings", DICCIONARIOS_RANKINGS),
   desde("horas", DICCIONARIOS_HORAS),
   desde("calendario", DICCIONARIOS_CALENDARIO),
+  desde("redes", DICCIONARIOS_REDES),
+  desde("horas-propio", DICCIONARIOS_HORAS_PROPIO),
   { nombre: "legales", resolver: (i, t, l) => resolverLegales(i, t, { actualizado: "13/10/2026", mail: "correo@calcularya.test" }, l) },
   { nombre: "unidades", resolver: (i, _t, l) => nombresUnidad(i, l ?? i) },
 ];
@@ -134,7 +152,7 @@ for (const fuente of FUENTES) {
   for (const trato of TRATOS) {
     const es = new Map(hojas(fuente.resolver("es", trato), "", []).map((h) => [h.ruta, h.texto]));
     for (const idioma of IDIOMAS) for (const locale of variantes(idioma)) {
-      const lista = hojas(fuente.resolver(idioma, trato, locale), "", []);
+      const lista = hojas(fuente.resolver(idioma, trato, locale), "", [], MUESTRA_DE[idioma]);
       const rutas = new Set(lista.map((h) => h.ruta));
       for (const r of es.keys()) if (!rutas.has(r) && !/\.\d+(?:\.|$)/.test(r)) fallas.push(`${idioma}/${trato} ${fuente.nombre}.${r}: falta`);
       for (const { ruta, texto } of lista) {
@@ -145,7 +163,9 @@ for (const fuente of FUENTES) {
           continue;
         }
         const enEs = es.get(ruta);
-        if (enEs !== undefined && marcadores(enEs) !== marcadores(texto)) fallas.push(`${donde}: marcadores {${marcadores(texto)}} distintos de los del español {${marcadores(enEs)}}`);
+        // Las unidades de un idioma con dual (ar) llevan {n} donde va el número (FormasAr): «يومان» no lo lleva.
+        const marcadoresOk = fuente.nombre === "unidades" ? /^(n)?$/.test(marcadores(texto)) : marcadores(enEs ?? "") === marcadores(texto);
+        if (enEs !== undefined && !marcadoresOk) fallas.push(`${donde}: marcadores {${marcadores(texto)}} distintos de los del español {${marcadores(enEs)}}`);
         if (idioma !== "es" && enEs === texto) {
           const clave = `${fuente.nombre}.${ruta}`;
           const permitida = [`${idioma}:${clave}`, `*:${clave}`].find((k) => IGUALES_PERMITIDOS.has(k));
@@ -166,6 +186,27 @@ for (const idioma of IDIOMAS) {
     if (anchoVisual(seo.descripcionGlobal) > 160) fallas.push(`${donde}.descripcionGlobal: ${anchoVisual(seo.descripcionGlobal)} de ancho (máximo 160)`);
   }
   if (!GRAMATICA[idioma]) fallas.push(`${idioma}: falta la gramática de países`);
+}
+
+// Norma europea del portugués: todo pt-* menos pt-BR, con una sola función (src/motor/i18n/variantes.ts).
+for (const l of ["pt-PT", "pt-AO", "pt-MZ", "pt-CV", "pt-GW", "pt-ST", "pt-TL"]) if (!esPortuguesEuropeo(l)) fallas.push(`esPortuguesEuropeo(${l}) tendría que ser true`);
+for (const l of ["pt-BR", "pt", "es-ES", "en-PT", undefined]) if (esPortuguesEuropeo(l)) fallas.push(`esPortuguesEuropeo(${l}) tendría que ser false`);
+if (variantesDeLocale("pt-AO").join() !== `pt-PT,${PT_LUSOFONIA},pt-AO`) fallas.push(`variantesDeLocale(pt-AO) da ${variantesDeLocale("pt-AO").join()}`);
+if (variantesDeLocale("pt-PT").join() !== "pt-PT" || variantesDeLocale("pt-BR").join() !== "pt-BR") fallas.push("variantesDeLocale cambió pt-PT o pt-BR");
+// Angola y Mozambique leen lo mismo que Portugal (salvo lo de la lusofonía) y nada que sea de Brasil
+// o que nombre impuestos de Portugal.
+for (const fuente of FUENTES) {
+  const pt = hojas(fuente.resolver("pt", "usted", "pt-PT"), "", []);
+  const br = new Map(hojas(fuente.resolver("pt", "usted", "pt-BR"), "", []).map((h) => [h.ruta, h.texto]));
+  for (const l of ["pt-AO", "pt-MZ"]) {
+    const otro = new Map(hojas(fuente.resolver("pt", "usted", l), "", []).map((h) => [h.ruta, h.texto]));
+    for (const h of pt) {
+      const t = otro.get(h.ruta);
+      if (t === h.texto) continue;
+      if (t === br.get(h.ruta)) fallas.push(`${l}/usted ${fuente.nombre}.${h.ruta}: sale como en Brasil («${String(t).slice(0, 60)}»), no con la norma europea`);
+    }
+    for (const [ruta, t] of otro) if (/(IRS|IMI|IMT|IUC)|Segurança Social/.test(t)) fallas.push(`${l}/usted ${fuente.nombre}.${ruta}: nombra un impuesto de Portugal («${t.slice(0, 60)}»)`);
+  }
 }
 
 for (const k of IGUALES_PERMITIDOS) if (!usadas.has(k)) fallas.push(`IGUALES_PERMITIDOS: «${k}» ya no hace falta, sacala`);

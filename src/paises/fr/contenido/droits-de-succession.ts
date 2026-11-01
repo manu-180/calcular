@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fr.droits-de-succession",
   h1: "Calcul des droits de succession",
-  title: "Droits de succession 2026 : abattements et barème",
+  title: "Droits de succession {{anio}} : abattements et barème",
   description:
     "Calculez les droits de succession sur votre part d'héritage : abattement de {{fr.abattement-ligne-directe}} par enfant, barème progressif de 5 % à 45 % et autres liens de parenté.",
   intro: [

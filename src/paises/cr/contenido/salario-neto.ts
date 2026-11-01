@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.salario-neto",
   h1: "Calculadora de salario neto en Costa Rica",
-  title: "Salario neto 2026 Costa Rica: calcule rebajos CCSS y renta",
+  title: "Salario neto {{anio}} Costa Rica: calcule rebajos CCSS y renta",
   description:
-    "Calcule su salario neto: le restamos la Caja ({{cr.ccss-sem-trabajador}} salud y {{cr.ccss-ivm-trabajador}} pensión), el Banco Popular y el impuesto al salario 2026. Vea cada rebajo.",
+    "Calcule su salario neto: le restamos la Caja ({{cr.ccss-sem-trabajador}} salud y {{cr.ccss-ivm-trabajador}} pensión), el Banco Popular y el impuesto al salario {{anio}}. Vea cada rebajo.",
   intro: [
     "El salario neto en Costa Rica es el bruto menos {{cr.ccss-sem-trabajador}} del Seguro de Salud, {{cr.ccss-ivm-trabajador}} del IVM, {{cr.banco-popular-trabajador}} del Banco Popular y, si corresponde, el impuesto al salario.",
     "Escriba su salario bruto mensual y le mostramos cada rebajo de ley y lo que le queda en mano.",

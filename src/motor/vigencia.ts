@@ -31,13 +31,18 @@ export function diasEntre(desde: FechaISO, hasta: FechaISO): number {
   return Math.round((Date.parse(`${hasta}T00:00:00Z`) - Date.parse(`${desde}T00:00:00Z`)) / 86_400_000);
 }
 
+// Un Intl.DateTimeFormat por zona, no por llamada: hoyEn() corre una vez por cada miembro de cada clúster
+// de cada página (fechaDelClusterDesde), millones de veces en check_hreflang y en el sitemap, y cada
+// constructor arma un objeto ICU de varios KB (la tercera corrida que tumbó la PC por RAM, 27/10/2026).
+const formatosPorZona = new Map<string, Intl.DateTimeFormat>();
+
 export function fechaEnZona(instante: Date, zonaHoraria: string): FechaISO {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: zonaHoraria,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(instante) as FechaISO;
+  let f = formatosPorZona.get(zonaHoraria);
+  if (!f) {
+    f = new Intl.DateTimeFormat("en-CA", { timeZone: zonaHoraria, year: "numeric", month: "2-digit", day: "2-digit" });
+    formatosPorZona.set(zonaHoraria, f);
+  }
+  return f.format(instante) as FechaISO;
 }
 
 // CALCULAR_HOY fija el día a mano (pruebas, fotos de rutas). CALCULAR_HOY_BUILD NO se lee a
@@ -63,6 +68,21 @@ export function fechasDelMismoInstante(mercado: Pick<Mercado, "zonaHoraria">, fe
   if (typeof window !== "undefined") return () => fecha;
   const base = hoyEn(mercado, ahora);
   const porZona = new Map<string, FechaISO>([[mercado.zonaHoraria, fecha]]);
+  return (m) => {
+    let f = porZona.get(m.zonaHoraria);
+    if (!f) porZona.set(m.zonaHoraria, (f = sumarDias(fecha, diasEntre(base, hoyEn(m, ahora)))));
+    return f;
+  };
+}
+
+// La fecha de cada mercado vista desde una página de `desde` armada para `fecha`: corre `fecha` lo
+// mismo que se corre hoy la zona de cada mercado respecto de la de `desde`. Con `fecha` = hoy de
+// `desde` da el hoy de cada uno, así dos páginas del mismo clúster (Santiago y Sídney, que a la tarde
+// de América ya están en días distintos) evalúan a cada mercado en el mismo día y listan el mismo
+// clúster aunque una serie venza justo entre las dos fechas. Con CALCULAR_HOY todos dan la misma.
+export function fechasDesde(desde: Pick<Mercado, "zonaHoraria">, fecha: FechaISO, ahora: Date = new Date()): (m: Pick<Mercado, "zonaHoraria">) => FechaISO {
+  const base = hoyEn(desde, ahora);
+  const porZona = new Map<string, FechaISO>();
   return (m) => {
     let f = porZona.get(m.zonaHoraria);
     if (!f) porZona.set(m.zonaHoraria, (f = sumarDias(fecha, diasEntre(base, hoyEn(m, ahora)))));

@@ -1,0 +1,20 @@
+{
+  "mercado": "no",
+  "avisos": [
+    {
+      "id": "no.satser-2027",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "hasta": "2026-12-31",
+      "aplicaA": ["no.lonn-etter-skatt", "no.skattekalkulator", "no.trinnskatt", "no.trygdeavgift", "no.formuesskatt"],
+      "texto": "Kalkulatoren bruker satsene for inntektsåret 2026. Satsene for 2027 kommer med statsbudsjettet, og vi legger dem inn når Skatteetaten har publisert dem.",
+      "fuente": {
+        "organismo": "Skatteetaten",
+        "titulo": "Forskuddsutskrivingen 2026 (uttalelse fra Skattedirektoratet)",
+        "url": "https://www.skatteetaten.no/rettskilder/type/uttalelser/uttalelser/forskuddsutskrivingen-2026/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}

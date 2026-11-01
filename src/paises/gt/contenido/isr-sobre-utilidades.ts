@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gt.isr-sobre-utilidades",
   h1: "Calculadora del ISR sobre utilidades",
-  title: "ISR sobre utilidades en Guatemala: calculadora 2026",
+  title: "ISR sobre utilidades en Guatemala: calculadora {{anio}}",
   description:
     "Calcule el ISR de su empresa en el régimen sobre las utilidades de actividades lucrativas: renta imponible, impuesto del año y pagos trimestrales.",
   intro: [

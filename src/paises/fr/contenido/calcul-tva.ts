@@ -2,7 +2,7 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "fr.calcul-tva",
-  h1: "Calcul de la TVA : HT, TTC et taux 2026",
+  h1: "Calcul de la TVA : HT, TTC et taux {{anio}}",
   title: "Calcul TVA : HT et TTC, taux de {{fr.tva-normal}} à {{fr.tva-particulier}}",
   description:
     "Ajoutez ou retirez la TVA en un clic avec les taux français : {{fr.tva-normal}}, {{fr.tva-intermediaire}}, {{fr.tva-reduit}} et {{fr.tva-particulier}}. Prix HT, TVA et TTC au centime près.",

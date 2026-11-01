@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.afp-o-onp",
   h1: "¿AFP u ONP? Compara cuánto te descuentan",
-  title: "AFP u ONP 2026: compara tu descuento mensual",
+  title: "AFP u ONP {{anio}}: compara tu descuento mensual",
   description:
     "Compara el descuento de la ONP ({{pe.aporte-onp}}) con el de tu AFP: aporte de {{pe.aporte-afp}}, prima de seguro y comisión. Tasas de la SBS al día.",
   intro: [

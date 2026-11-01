@@ -17,7 +17,7 @@ function normalizar(s: string) {
 }
 
 // Un mercado que ya no está en el registro (o todavía no) igual puede tener datos: se nombra por su código.
-function paisDe(codigo: string): string | null {
+export function paisDe(codigo: string): string | null {
   return mercadoMedido(codigo)?.pais ?? (codigo === MERCADO_GLOBAL ? null : codigo.slice(0, 2).toUpperCase());
 }
 
@@ -48,7 +48,7 @@ export function opcionesDePais(datos: PanelDatos): OpcionPais[] {
 }
 
 // La bandera tapa el código: los países sin dibujo (Bandera devuelve null) se ven igual, con su ISO.
-function Marca({ pais, codigo }: { pais: string | null; codigo: string | null }) {
+export function Marca({ pais, codigo }: { pais: string | null; codigo: string | null }) {
   if (pais) {
     return (
       <span aria-hidden className="relative inline-flex h-[13px] w-5 shrink-0">

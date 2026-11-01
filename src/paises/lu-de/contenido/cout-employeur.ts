@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu-de.cout-employeur",
   h1: "Arbeitgeberkosten in Luxemburg berechnen",
-  title: "Arbeitgeberkosten Luxemburg 2026: Lohnnebenkosten",
-  description: "Was ein Lohn den Arbeitgeber in Luxemburg kostet: Kranken-, Renten- und Unfallversicherung, Arbeitsmedizin und Mutualität der Arbeitgeber nach den Sätzen 2026.",
+  title: "Arbeitgeberkosten Luxemburg {{anio}}: Lohnnebenkosten",
+  description: "Was ein Lohn den Arbeitgeber in Luxemburg kostet: Kranken-, Renten- und Unfallversicherung, Arbeitsmedizin und Mutualität der Arbeitgeber nach den Sätzen {{anio}}.",
   intro: [
     "Zum Bruttolohn kommen die Arbeitgeberbeiträge: die Hälfte der Kranken- und Rentenversicherung, die Unfallversicherung, die Arbeitsmedizin und die Mutualität der Arbeitgeber.",
     "Der Satz der Mutualität hängt von der Klasse des Unternehmens ab. Wählen Sie Ihre Klasse.",

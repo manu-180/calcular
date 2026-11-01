@@ -4,8 +4,8 @@
 // fuera del componente), y eso solo cambia con un deploy nuevo. Este archivo es el cambio: el workflow
 // datos-vivos lo reescribe en cada corrida y, si el mes (o cualquier dato elegido por fecha) cambió,
 // hay diff → commit → Vercel redeploya. Además deja en git la historia de cuándo entró en vigencia
-// cada cosa. Sin Actions quedan dos redes: el revalidate de 1 h del layout de (ar) para lo que se
-// elige en el render, y el cron /api/cron/datos-vivos, que llama a VERCEL_DEPLOY_HOOK_URL cuando el
+// cada cosa. Sin Actions quedan dos redes: el revalidate de 24 h del layout de (ar), más la purga del
+// día 1 de /api/cron/mes-nuevo, para lo que se elige en el render, y el cron /api/cron/datos-vivos, que llama a VERCEL_DEPLOY_HOOK_URL cuando el
 // mes del build ya no es el de hoy.
 //
 // USO: npx -y tsx scripts/datos-vivos/vigencias.ts

@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.cpp-calculator",
-  h1: "Calcul des cotisations au RRQ et au RPC 2026",
-  title: "Cotisations RRQ 2026 : calcul, RRQ2 et maximum",
-  description: "Calculez vos cotisations 2026 au Régime de rentes du Québec (RRQ) ou au RPC, y compris la deuxième cotisation supplémentaire, salarié ou travailleur autonome.",
+  h1: "Calcul des cotisations au RRQ et au RPC {{anio}}",
+  title: "Cotisations RRQ {{anio}} : calcul, RRQ2 et maximum",
+  description: "Calculez vos cotisations {{anio}} au Régime de rentes du Québec (RRQ) ou au RPC, y compris la deuxième cotisation supplémentaire, salarié ou travailleur autonome.",
   intro: [
     "Inscrivez vos gains pour voir combien vous versez au Régime de rentes du Québec en 2026, et combien votre employeur ajoute.",
     "Le calcul couvre la cotisation de base, la première cotisation supplémentaire et la deuxième cotisation supplémentaire (RRQ2), ainsi que le Régime de pensions du Canada si vous travaillez hors Québec.",

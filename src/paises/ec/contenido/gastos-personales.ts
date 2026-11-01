@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ec.gastos-personales",
-  h1: "Calculadora de gastos personales 2026 (SRI)",
-  title: "Gastos personales 2026: calcula tu rebaja del SRI",
+  h1: "Calculadora de gastos personales {{anio}} (SRI)",
+  title: "Gastos personales {{anio}}: calcula tu rebaja del SRI",
   description: "Calcula cuánto te rebajan del impuesto a la renta por tus gastos personales: el {{ec.rebaja-gastos-personales}} de tus gastos, con tope según tus cargas familiares.",
   intro: [
     "Tus gastos de vivienda, alimentación, educación, salud, vestimenta y turismo nacional rebajan tu impuesto a la renta. La rebaja es el {{ec.rebaja-gastos-personales}} de esos gastos.",

@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.aguinaldo",
   h1: "Calculadora de aguinaldo en Paraguay",
-  title: "Aguinaldo Paraguay 2026: calculá el tuyo o el proporcional",
-  description: "Calculá tu aguinaldo 2026 o el proporcional: la doceava parte de todo lo que cobraste en el año, con horas extra y comisiones. Gratis y al instante.",
+  title: "Aguinaldo Paraguay {{anio}}: calculá el tuyo o el proporcional",
+  description: "Calculá tu aguinaldo {{anio}} o el proporcional: la doceava parte de todo lo que cobraste en el año, con horas extra y comisiones. Gratis y al instante.",
   intro: [
     "El aguinaldo en Paraguay es la doceava parte de todo lo que cobraste de enero a diciembre. Con el año completo y el mismo salario, es un salario entero, y se paga antes del 31 de diciembre.",
     "Poné tu salario, los meses que trabajaste y lo que cobraste aparte (horas extra o comisiones). Si entraste en el año, te sale el proporcional.",

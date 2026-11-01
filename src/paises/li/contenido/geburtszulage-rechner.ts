@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "li.geburtszulage-rechner",
   h1: "Geburtszulage Liechtenstein",
-  title: "Geburtszulage Liechtenstein 2026: Betrag pro Kind",
+  title: "Geburtszulage Liechtenstein {{anio}}: Betrag pro Kind",
   description: "Geburtszulage der FAK in Liechtenstein: {{li.geburtszulage}} pro Kind, {{li.geburtszulage-mehrlinge}} pro Kind bei Mehrlingsgeburten. Auch für Adoptivkinder.",
   intro: [
     "Die Geburtszulage ist eine einmalige Leistung der FAK. Sie beträgt {{li.geburtszulage}} für jedes Kind.",

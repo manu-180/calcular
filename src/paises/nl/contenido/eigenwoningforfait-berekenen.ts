@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.eigenwoningforfait-berekenen",
-  h1: "Eigenwoningforfait berekenen 2026",
-  title: "Eigenwoningforfait 2026 berekenen met je WOZ-waarde",
+  h1: "Eigenwoningforfait berekenen {{anio}}",
+  title: "Eigenwoningforfait {{anio}} berekenen met je WOZ-waarde",
   description:
-    "Bereken je eigenwoningforfait over 2026: een percentage van de WOZ-waarde van je koopwoning dat je bij je inkomen in box 1 telt. Volgens de tabel uit de wet.",
+    "Bereken je eigenwoningforfait over {{anio}}: een percentage van de WOZ-waarde van je koopwoning dat je bij je inkomen in box 1 telt. Volgens de tabel uit de wet.",
   intro: [
     "Woon je in je eigen koopwoning, dan tel je een bedrag bij je inkomen op: het eigenwoningforfait. Het is een percentage van de WOZ-waarde van je woning.",
     "Daar staat tegenover dat je de hypotheekrente mag aftrekken. Het verschil tussen die twee bepaalt of je belasting terugkrijgt of betaalt.",

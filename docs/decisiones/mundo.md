@@ -138,7 +138,7 @@ página sale del `<main>` de 56rem a 72rem (el ancho de calcularya): a 56rem la 
 **Barra de herramientas.** El `<article>` lleva `data-sin-herramientas`: si no, la barra de calcular.ar
 serializaba el sueldo en el hash del link que comparte, justo lo que la página promete no hacer.
 
-**Puente.** `src/components/mundo/PuenteMundo.tsx`, debajo del resultado de sueldo neto, con el mismo A/B
+**Puente.** Desde el 25/10/2026 la línea de sueldo neto lleva a las horas de trabajo (`src/components/horas/PuenteHoras.tsx`, ver `horas-ar.md`) y el mundo queda a un toque desde ahí. Antes era `PuenteMundo.tsx`, debajo del resultado de sueldo neto, con el mismo A/B
 50 % (`variantePuente`) y los eventos `puente_visto` / `puente_clic`. El traspaso va por
 `src/lib/mundo/traspaso-ar.ts`: bruto del recibo × `PAGAS_AR`, que ahora vive en `pagas-ar.ts` para que
 el navegador no cargue `ar.ts` (IPC, registro, escalas).
@@ -172,3 +172,11 @@ al centavo:
 La causa es el nivel: 30.000 dólares internacionales son ~23.000 € al año con la PPA de 2025, cerca
 del mínimo legal de los dos países, donde los créditos al trabajo se comen casi todo el impuesto. Las
 anclas quedaron en check_mundo (rigen para 2026; con los tramos de 2027 se recalculan a mano).
+
+## 2026-10-26: panel simple en calcular.ar
+
+`MundoCliente` con `simple` (solo calcular.ar): se pone lo que se cobra **en mano** por mes (el bruto sale
+por bisección sobre la curva neto del país, `brutoAnualDesdeNeto`), sin selector de país ni mes/año. El
+panel abre con la fecha del Estado, «Donde más te rendiría» y compartir con puntos; el bloque «Tu tarjeta
+para compartir» de abajo no se muestra. El ranking aclara que su fila argentina reparte el aguinaldo en el
+año (por eso da más que lo escrito). calcularya no cambia.

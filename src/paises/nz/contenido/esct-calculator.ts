@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "ESCT calculator",
   title: "ESCT calculator NZ: employer superannuation contribution tax",
   description:
-    "Work out the ESCT rate and amount on employer KiwiSaver contributions in New Zealand, with Inland Revenue's rate thresholds for 1 April 2026 onwards.",
+    "Work out the ESCT rate and amount on employer KiwiSaver contributions in New Zealand, with Inland Revenue's rate thresholds for 1 April {{anio}} onwards.",
   intro: [
     "Employer superannuation contribution tax (ESCT) is taken from what an employer pays into an employee's KiwiSaver or complying fund.",
     "The rate depends on the employee's salary or wages plus the employer's gross contributions. Enter both and see the rate, the tax to deduct and what reaches the fund.",

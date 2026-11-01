@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.renta-quinta",
-  h1: "Calculadora de renta de quinta categoría 2026",
-  title: "Renta de quinta categoría 2026: calculadora de retención",
+  h1: "Calculadora de renta de quinta categoría {{anio}}",
+  title: "Renta de quinta categoría {{anio}}: calculadora de retención",
   description:
     "Calcula tu impuesto a la renta de quinta categoría y la retención de cada mes con la UIT de {{pe.uit}} y la deducción de {{pe.deduccion-renta-trabajo}}. Pon tu sueldo y listo.",
   intro: [

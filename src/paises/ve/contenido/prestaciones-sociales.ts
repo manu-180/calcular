@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ve.prestaciones-sociales",
   h1: "Calculadora de prestaciones sociales en Venezuela",
-  title: "Prestaciones sociales en Venezuela 2026: calcula las tuyas",
+  title: "Prestaciones sociales en Venezuela {{anio}}: calcula las tuyas",
   description:
     "Calcula tus prestaciones sociales con la LOTTT: garantía de {{ve.prestaciones-garantia-dias}} por trimestre o {{ve.prestaciones-retroactivo-dias}} por año, lo que sea mayor. En bolívares o en dólares.",
   intro: [

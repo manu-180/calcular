@@ -1,0 +1,21 @@
+{
+  "mercado": "bd",
+  "series": [
+    {
+      "id": "bd.inflation",
+      "nombre": "সাধারণ মূল্যস্ফীতি, পয়েন্ট টু পয়েন্ট (জাতীয়)",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 70,
+      "fuente": {
+        "organismo": "বাংলাদেশ পরিসংখ্যান ব্যুরো",
+        "titulo": "ন্যাশনাল অ্যাকাউন্টিং উইং: সেপ্টেম্বর ২০২৬ এর মূল্যস্ফীতি (প্রকাশ ৭ অক্টোবর ২০২৬)",
+        "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-bbs/2026/9/4926c530-9b37-4b7f-a4a7-d693ad9e8b06.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24",
+        "nota": "প্রতিটি বিন্দু মাসের প্রথম দিনে রাখা (২০২৬-০৯-০১ মানে সেপ্টেম্বর ২০২৬)। বিবিএসের প্রথম পাতাতেও একই হার দেখানো হয়।"
+      },
+      "puntos": [["2026-09-01", 8.34]]
+    }
+  ]
+}

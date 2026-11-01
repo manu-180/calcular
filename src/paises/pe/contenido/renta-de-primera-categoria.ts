@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.renta-primera",
   h1: "Calculadora del impuesto por alquiler (renta de primera categoría)",
-  title: "Impuesto por alquiler 2026: renta de primera categoría",
+  title: "Impuesto por alquiler {{anio}}: renta de primera categoría",
   description:
     "Calcula el impuesto que pagas por alquilar un inmueble: {{pe.tasa-renta-capital}} sobre el alquiler menos el {{pe.deduccion-renta-capital}}. Mensual y anual, con la Ley del Impuesto a la Renta.",
   intro: [

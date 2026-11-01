@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.acerto-de-contas",
   h1: "Acerto de contas no fim do contrato",
-  title: "Acerto de contas 2026: quanto recebe ao sair da empresa",
+  title: "Acerto de contas {{anio}}: quanto recebe ao sair da empresa",
   description: "Calcule o acerto de contas no fim do contrato: férias e subsídios proporcionais, férias por gozar e compensação por despedimento.",
   intro: [
     "Quando o contrato termina, a empresa tem de pagar o que se venceu e não foi pago: os proporcionais de férias, de subsídio de férias e de subsídio de Natal, as férias por gozar e, em certos casos, a compensação.",

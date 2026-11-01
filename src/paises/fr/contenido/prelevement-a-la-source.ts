@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fr.prelevement-a-la-source",
   h1: "Prélèvement à la source : taux par défaut et montant",
-  title: "Prélèvement à la source 2026 : taux par défaut et montant",
+  title: "Prélèvement à la source {{anio}} : taux par défaut et montant",
   description:
-    "Calculez l'impôt prélevé chaque mois sur votre salaire : taux par défaut de la grille 2026 ou votre taux personnalisé, à partir du net imposable.",
+    "Calculez l'impôt prélevé chaque mois sur votre salaire : taux par défaut de la grille {{anio}} ou votre taux personnalisé, à partir du net imposable.",
   intro: [
     "Depuis 2019, l'impôt sur le revenu est retenu directement sur le salaire. L'employeur applique un taux au salaire net imposable et reverse la somme à l'administration fiscale.",
     "Si l'administration ne vous a pas encore calculé de taux personnalisé (premier emploi, par exemple), ou si vous avez choisi de ne pas le transmettre, votre employeur applique un taux par défaut fixé par une grille officielle.",

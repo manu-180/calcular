@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "fr.indemnites-journalieres",
   h1: "Indemnités journalières maladie : calcul pour un salarié",
-  title: "Indemnités journalières maladie 2026 : calcul et plafond",
+  title: "Indemnités journalières maladie {{anio}} : calcul et plafond",
   description:
     "Calculez vos indemnités journalières d'arrêt maladie : {{fr.ij-taux}} du salaire journalier de base, plafond de {{fr.ij-maximum}} par jour et {{fr.ij-carence}} de carence.",
   intro: [

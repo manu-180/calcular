@@ -97,7 +97,7 @@ export function Encabezado({
   );
 }
 
-function SelectorRango({
+export function SelectorRango({
   rango,
   pendientes,
   onRango,

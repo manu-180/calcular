@@ -54,18 +54,36 @@ function esEditable(t: EventTarget | null): boolean {
   return t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName);
 }
 
-function plano(s: string): string {
-  return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+// «1 resultado», «5 resultados». Con la forma «few» de los idiomas eslavos (resultadosPocos: uk, ru, cs)
+// la categoría sale de Intl.PluralRules con el idioma de la página: «3 результати», «21 результат»,
+// «3 výsledky», «5 výsledků». En rumano la forma con «de» va del 20 en adelante (resultadosDe:
+// «20 de rezultate», pero «101 rezultate»).
+function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "resultadosPlural" | "resultadosPocos" | "resultadosDe">): string {
+  if (t.resultadosPocos !== undefined) {
+    const lang = typeof document === "undefined" ? "" : document.documentElement.lang;
+    const categoria = lang ? new Intl.PluralRules(lang).select(n) : n === 1 ? "one" : "other";
+    return `${n} ${categoria === "one" ? t.resultado : categoria === "few" ? t.resultadosPocos : t.resultadosPlural}`;
+  }
+  if (n === 1) return `${n} ${t.resultado}`;
+  const c = n % 100;
+  if (t.resultadosDe !== undefined && n >= 20 && (c === 0 || c >= 20)) return `${n} ${t.resultadosDe}`;
+  return `${n} ${t.resultadosPlural}`;
 }
 
-// NFD + sacar los diacríticos deja el texto en español con el mismo largo, así que los
+function plano(s: string): string {
+  // La ı del turco no se descompone en NFD: se pasa a i para que «kalıp» y «kalip» coincidan.
+  return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").replace(/ς/g, "σ");
+}
+
+// NFD + sacar los diacríticos (y la sigma final por la otra) deja el texto en español y en griego
+// con el mismo largo, así que los
 // índices de `plano(titulo)` sirven para cortar el título original.
 function resaltar(titulo: string, q: string): ReactNode {
   const base = plano(titulo);
   const marcas: Array<[number, number]> = [];
-  for (const t of new Set(plano(q).split(/[^a-z0-9]+/).filter((x) => x.length >= 2))) {
+  for (const t of new Set(plano(q).split(/[^a-z0-9\u0400-\u04ffͰ-Ͽ]+/).filter((x) => x.length >= 2))) {
     let i = base.indexOf(t);
-    while (i > 0 && /[a-z0-9]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
+    while (i > 0 && /[a-z0-9\u0400-\u04ffͰ-Ͽ]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
     if (i >= 0) marcas.push([i, i + t.length]);
   }
   if (!marcas.length) return titulo;
@@ -401,7 +419,7 @@ export function Buscador({ fuente }: { fuente?: FuenteBuscador } = {}) {
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain [scrollbar-width:thin]">{cuerpo}</div>
 
         <p className="sr-only" aria-live="polite">
-          {buscando && motor ? `${opciones.length} ${opciones.length === 1 ? t.resultado : t.resultadosPlural}` : ""}
+          {buscando && motor ? cuantosResultados(opciones.length, t) : ""}
         </p>
 
         <div className="hidden shrink-0 items-center gap-4 border-t border-zinc-100 px-4 py-2.5 text-xs text-zinc-500 sm:flex">

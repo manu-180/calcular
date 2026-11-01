@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.arbeitgeberkosten-rechner",
-  h1: "Arbeitgeberkosten-Rechner 2026",
-  title: "Arbeitgeberkosten 2026: Was kostet ein Mitarbeiter?",
+  h1: "Arbeitgeberkosten-Rechner {{anio}}",
+  title: "Arbeitgeberkosten {{anio}}: Was kostet ein Mitarbeiter?",
   description:
-    "Was kostet ein Bruttogehalt den Arbeitgeber wirklich? Arbeitgeberanteile zur Kranken-, Pflege-, Renten- und Arbeitslosenversicherung mit den Sätzen 2026.",
+    "Was kostet ein Bruttogehalt den Arbeitgeber wirklich? Arbeitgeberanteile zur Kranken-, Pflege-, Renten- und Arbeitslosenversicherung mit den Sätzen {{anio}}.",
   intro: [
     "Zum Bruttogehalt kommt beim Arbeitgeber sein Anteil an der Sozialversicherung dazu. Bei einem normalen Gehalt sind das gut 20 Prozent.",
     "Der Rechner zeigt jeden Beitrag und die Gesamtkosten pro Monat und Jahr.",

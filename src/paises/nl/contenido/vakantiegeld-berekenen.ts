@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "nl.vakantiegeld-berekenen",
   h1: "Vakantiegeld berekenen",
-  title: "Vakantiegeld berekenen 2026: minstens {{nl.vakantiebijslag}} van je loon",
+  title: "Vakantiegeld berekenen {{anio}}: minstens {{nl.vakantiebijslag}} van je loon",
   description:
     "Bereken hoeveel bruto vakantiegeld je krijgt. Het wettelijk minimum is {{nl.vakantiebijslag}} van je brutoloon over de opbouwperiode van juni tot en met mei.",
   intro: [

@@ -1,5 +1,5 @@
 import { contextoDesdeSerializado, ErrorEntrada } from "./calculo";
-import { formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearFecha, parsearNumero, sugerenciaMiles } from "./formato";
+import { decimalesDeMoneda, formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, parsearFecha, parsearNumero, sugerenciaMiles, textoDelLocale } from "./formato";
 import { interpolar, textosMotor, type CodigoError, type TextosMotor } from "./textos";
 import type {
   AvisoResuelto,
@@ -49,6 +49,14 @@ export function opcionesDe(campo: Campo, contexto: ContextoSerializado, dinamica
 }
 
 // Un campo con visibleSi se muestra y se valida solo si cada campo nombrado tiene uno de sus valores.
+// Decimales de la moneda de un campo de moneda (KWD, BHD, OMR, JOD, TND y LYD usan 3); 0 en los demás.
+// Con 3, «1544,136» se lee como monto y no como miles ambiguos, y el valor inicial no se recorta a 2.
+function decimalesDelCampo(c: Campo, contexto: Pick<ContextoSerializado, "locale" | "moneda">): number {
+  if (c.tipo !== "moneda") return 0;
+  const moneda = c.moneda ?? contexto.moneda;
+  return moneda ? decimalesDeMoneda(moneda, contexto.locale) : 2;
+}
+
 export function campoVisible(campo: Campo, crudos: Crudos): boolean {
   if (!campo.visibleSi) return true;
   return Object.entries(campo.visibleSi).every(([otro, valores]) => valores.includes(crudos[otro] as string | boolean));
@@ -77,7 +85,7 @@ export function valoresIniciales(campos: readonly Campo[], contexto: ContextoSer
         break;
       }
       default:
-        crudos[c.id] = c.porDefecto === undefined ? "" : formatearNumero(c.porDefecto, contexto.locale, c.tipo === "entero" ? 0 : undefined);
+        crudos[c.id] = c.porDefecto === undefined ? "" : formatearNumero(c.porDefecto, contexto.locale, c.tipo === "entero" ? 0 : undefined, Math.max(2, decimalesDelCampo(c, contexto)));
     }
   }
   return crudos;
@@ -143,7 +151,7 @@ export function parsearEntrada(
       }
       default: {
         const milesAmbiguos = c.tipo === "moneda" || c.tipo === "entero";
-        const n = parsearNumero(texto, contexto.locale, { milesAmbiguos });
+        const n = parsearNumero(texto, contexto.locale, { milesAmbiguos, decimales: decimalesDelCampo(c, contexto) });
         const sugerencia = n === null && milesAmbiguos ? sugerenciaMiles(texto, contexto.locale) : null;
         if (sugerencia) errores[c.id] = { mensaje: mensajeMilesAmbiguos(sugerencia.sugerido, sugerencia.separador, contexto.idioma, contexto.trato, contexto.locale) };
         else if (n === null) errores[c.id] = { codigo: "numero-invalido", params: { ejemplo: ejemploDe(c, contexto.locale) } };
@@ -159,7 +167,7 @@ export function parsearEntrada(
 
 function textoFila(valor: ValorResultado, fila: DefinicionCalculadora["resultado"][number], contexto: ContextoSerializado): string | null {
   if (valor === null || valor === undefined) return null;
-  if (fila.formato === "texto") return typeof valor === "string" ? valor : null;
+  if (fila.formato === "texto") return typeof valor === "string" ? textoDelLocale(valor, contexto.locale) : null;
   if (fila.formato === "fecha") return typeof valor === "string" ? formatearFecha(valor as `${number}-${number}-${number}`, contexto.locale) : null;
   if (typeof valor !== "number" || !Number.isFinite(valor)) return null;
   if (fila.ocultarSiCero && valor === 0) return null;

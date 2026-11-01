@@ -4,6 +4,7 @@ import path from "node:path";
 import type { NextConfig } from "next";
 import { reglasEmbed, RAIZ_INTERNA_EMBED, SEGMENTO_EMBED } from "./src/motor/embed/rutas";
 import { reglasPorHost } from "./src/motor/hosts";
+import { reglasSecciones } from "./src/motor/secciones";
 import { PAGINAS_GLOBALES } from "./src/motor/paginas";
 import { entornoDePrueba, modoPublicacion, origenAR, origenIntl } from "./src/motor/sitio";
 
@@ -81,11 +82,16 @@ const nextConfig: NextConfig = {
   // `cpus` sale de una env var porque el build spawnea un worker por núcleo (acá 16) y en una
   // máquina cargada eso agota el commit charge antes que la RAM: muere con "Zone Allocation
   // failed", que se lee como un bug del código y no lo es. BUILD_CPUS=2 lo hace sobrevivir.
+  // Los tipos los chequea el CI en cada PR (.github/workflows/ci.yml, gratis en este repo público). Dentro
+  // del build de Vercel el mismo chequeo pasaba los 8 GB de la máquina standard con el sitio intl
+  // prendido (29/10/2026) y además se pagaba por minuto.
+  typescript: { ignoreBuildErrors: true },
   experimental: {
     inlineCss: false,
     // Sin esto, con AR en src/app/(ar) y sin layout en la raíz, el 404 de calcular.ar pierde el
     // lang, el header y el footer: ver src/app/global-not-found.tsx.
     globalNotFound: true,
+    webpackMemoryOptimizations: true,
     ...(process.env.BUILD_CPUS ? { cpus: Number(process.env.BUILD_CPUS) } : {}),
   },
   // Los <slug>.cliente.tsx de los países (docs/paises/RECETA.md) los importa el registro con
@@ -102,6 +108,19 @@ const nextConfig: NextConfig = {
         as: "*.tsx",
       },
     },
+  },
+  // La misma regla para webpack, que es con el que se buildea (package.json): con Turbopack el build
+  // pasaba los 8 GB de la máquina standard de Vercel (29/10/2026) y no se usa una más grande.
+  webpack(config, { isServer }) {
+    if (isServer) {
+      config.module.rules.push({
+        test: /\.cliente\.tsx$/,
+        include: path.join(__dirname, "src", "paises"),
+        enforce: "pre",
+        use: [path.join(__dirname, "src", "motor", "cliente-servidor.cjs")],
+      });
+    }
+    return config;
   },
   // exceljs se carga con require nativo y no dentro del bundle del servidor: abre y reescribe el
   // .xlsx de la entrega personalizada (src/lib/prefill/servidor.ts).
@@ -129,6 +148,7 @@ const nextConfig: NextConfig = {
     "/intl/*/*/og": ["./public/banderas/*.svg"],
     "/sueldo-en-el-mundo/og": ["./public/banderas/*.svg"],
     "/sueldos-reales/og": ["./public/banderas/*.svg"],
+    "/cuantas-horas-de-trabajo/og": ["./public/horas/*.png"],
   },
   // Sin script-src a propósito: AdSense, FundingChoices y Google Ads inyectan scripts de dominios
   // que rotan, y un CSP de scripts roto en las páginas públicas se paga en anuncios y conversiones.
@@ -217,7 +237,7 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
-    return { beforeFiles: [...REGLAS_EMBED, ...REGLAS_HOSTS.beforeFiles], afterFiles: [], fallback: REGLAS_HOSTS.fallback };
+    return { beforeFiles: [...REGLAS_EMBED, ...REGLAS_HOSTS.beforeFiles], afterFiles: reglasSecciones(), fallback: REGLAS_HOSTS.fallback };
   },
 };
 

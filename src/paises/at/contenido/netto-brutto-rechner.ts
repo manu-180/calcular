@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "at.netto-brutto-rechner",
   h1: "Netto-Brutto-Rechner: welches Brutto für mein Wunschnetto?",
-  title: "Netto-Brutto-Rechner 2026 für Österreich",
-  description: "Geben Sie Ihr Wunschnetto ein und sehen Sie, welches Bruttogehalt Sie dafür brauchen. Mit Sozialversicherung, Lohnsteuer und Familienbonus Plus 2026.",
+  title: "Netto-Brutto-Rechner {{anio}} für Österreich",
+  description: "Geben Sie Ihr Wunschnetto ein und sehen Sie, welches Bruttogehalt Sie dafür brauchen. Mit Sozialversicherung, Lohnsteuer und Familienbonus Plus {{anio}}.",
   intro: [
     "Bei Gehaltsverhandlungen wird in Österreich fast immer über das Brutto gesprochen, im Alltag zählt aber das Netto. Dieser Rechner geht den umgekehrten Weg: Sie nennen den Betrag, der am Konto ankommen soll, und er sucht das passende Bruttogehalt.",
     "Gerechnet wird mit 14 Gehältern und den Abzügen für Angestellte und Arbeiter im Jahr 2026.",

@@ -80,7 +80,12 @@ async function main() {
     const hoy = hoyEn(pais.mercado);
     for (const { definicion, contenido } of pais.calculadoras) {
       const r = resolverValores(pais, definicion, hoy);
-      const c = r.ok ? rellenarContenido(contenido, { valores: r.valores, usados: r.usados, unidades, locale: pais.mercado.locale }) : contenido;
+      // Sin datos resueltos igual se rellena: {{anio}} se resuelve solo con la fecha y el resto queda como
+      // está (sin ruido), así el largo se mide con el año puesto y no con el marcador.
+      const anio = Number(hoy.slice(0, 4));
+      const c = r.ok
+        ? rellenarContenido(contenido, { valores: r.valores, usados: r.usados, unidades, locale: pais.mercado.locale, anio })
+        : rellenarContenido(contenido, { valores: {}, usados: [], unidades, locale: pais.mercado.locale, anio, alFallar: () => {} });
       // Un title con {{ }} cambia de largo con el valor del día: con PAISES_TOLERANTE=1 eso es aviso.
       // Sin marcadores el largo es estructura y sigue rojo.
       const delDia = (t: string) => tolerante && marcadoresDe(t).length > 0;

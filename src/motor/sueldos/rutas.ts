@@ -14,6 +14,25 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   ko: "silje-yeonbong",
   zh: "zhenshi-xinzi",
   bg: "realni-zaplati",
+
+  pl: "prawdziwe-zarobki",
+  sv: "verkliga-loner",
+  da: "rigtige-lonninger",
+  nb: "faktiske-lonninger",
+  fi: "todelliset-palkat",
+  ar: "rawatib-haqiqiya",
+  id: "gaji-sebenarnya",
+  tr: "gercek-maaslar",
+  bn: "asol-beton",
+  th: "ngoen-duean-ching",
+  uk: "realni-zarplaty",
+  uz: "haqiqiy-maoshlar",
+  ru: "realnye-zarplaty",
+  ro: "salarii-reale",
+  cs: "skutecne-mzdy",
+  el: "pragmatikoi-misthoi",
+  hu: "valodi-fizetesek",
+  he: "sachar-amiti",
 };
 
 export const RUTA_SUELDOS_AR = "/sueldos-reales";

@@ -21,7 +21,7 @@ kit de prensa (cita copiable, compartir, PNG en 2400 x 1260). Más un JSON y un 
 
 ## Decisiones
 
-- **Rutas**: una carpeta por idioma (`SLUG_RANKINGS`) con `[ranking]` adentro (slugs de
+- **Rutas**: una ruta única `i/rankings/[seccion]` para todos los idiomas, a la que next.config reescribe cada slug de `SLUG_RANKINGS` (desde 2026-10-29, `src/motor/secciones.ts`), con `[ranking]` adentro (slugs de
   `SLUGS_RANKING`). Lista de params vacía: cada edición se pinta al primer pedido (ISR, revalidate de
   una hora por el layout intl). Grilla vacía o idioma ajeno: 404.
 - **Global**: `/country-rankings` y `/data/*` llegan por reglas propias en `hosts.ts`.

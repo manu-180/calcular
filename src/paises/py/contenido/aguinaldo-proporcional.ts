@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.aguinaldo-proporcional",
   h1: "Calculadora de aguinaldo proporcional",
-  title: "Aguinaldo proporcional Paraguay 2026: por renuncia o despido",
+  title: "Aguinaldo proporcional Paraguay {{anio}}: por renuncia o despido",
   description: "Calculá el aguinaldo proporcional que te toca si dejás el trabajo antes de diciembre o si entraste a mitad de año. Con tus fechas exactas.",
   intro: [
     "Si dejás el trabajo antes de fin de año, por renuncia o por despido, te pagan la parte del aguinaldo que ganaste hasta ese día. Lo mismo si entraste a mitad de año.",

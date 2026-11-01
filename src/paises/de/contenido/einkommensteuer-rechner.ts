@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.einkommensteuer-rechner",
-  h1: "Einkommensteuerrechner 2026",
-  title: "Einkommensteuerrechner 2026 mit Splittingtarif",
+  h1: "Einkommensteuerrechner {{anio}}",
+  title: "Einkommensteuerrechner {{anio}} mit Splittingtarif",
   description:
-    "Einkommensteuer nach dem Tarif 2026 (§ 32a EStG) für Ihr zu versteuerndes Einkommen, mit Splitting, Soli, Kirchensteuer, Durchschnitts- und Grenzsteuersatz.",
+    "Einkommensteuer nach dem Tarif {{anio}} (§ 32a EStG) für Ihr zu versteuerndes Einkommen, mit Splitting, Soli, Kirchensteuer, Durchschnitts- und Grenzsteuersatz.",
   intro: [
     "Tragen Sie Ihr zu versteuerndes Einkommen ein, also das Einkommen nach allen Werbungskosten, Sonderausgaben und Freibeträgen. Der Rechner wendet den Tarif 2026 an.",
     "Bei Zusammenveranlagung von Ehepaaren gilt der Splittingtarif. Sie sehen außerdem, wie viel Prozent Ihres Einkommens Steuer sind und wie stark ein zusätzlicher Euro belastet wird.",

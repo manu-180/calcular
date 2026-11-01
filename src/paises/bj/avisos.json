@@ -1,0 +1,42 @@
+{
+  "mercado": "bj",
+  "avisos": [
+    {
+      "id": "bj.minimums-legaux",
+      "nivel": "info",
+      "desde": "1998-01-27",
+      "aplicaA": [
+        "bj.heures-supplementaires",
+        "bj.conges-payes",
+        "bj.preavis"
+      ],
+      "titulo": "Minimums légaux",
+      "texto": "Le calcul donne le minimum prévu par le Code du travail. Votre convention collective ou votre contrat peut prévoir davantage.",
+      "fuente": {
+        "organismo": "Secrétariat général du Gouvernement (SGG)",
+        "titulo": "Loi n° 98-004 du 27 janvier 1998 portant Code du travail en République du Bénin",
+        "url": "https://sgg.gouv.bj/doc/loi-98-004/download",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      }
+    },
+    {
+      "id": "bj.cnss-risques-professionnels",
+      "nivel": "info",
+      "desde": "1994-08-10",
+      "aplicaA": [
+        "bj.cout-employeur",
+        "bj.cotisations-cnss"
+      ],
+      "titulo": "Risques professionnels",
+      "texto": "La cotisation accidents du travail et maladies professionnelles dépend de l'activité de l'entreprise. Indiquez le taux que la CNSS vous a notifié.",
+      "fuente": {
+        "organismo": "Secrétariat général du Gouvernement (SGG)",
+        "titulo": "Décret n° 94-258 du 10 août 1994 portant fixation des taux de cotisations des branches des pensions et des prestations familiales",
+        "url": "https://sgg.gouv.bj/doc/decret-1994-258/download",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      }
+    }
+  ]
+}

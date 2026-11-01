@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "at.arbeitslosengeld-rechner",
-  h1: "Arbeitslosengeld-Rechner: Schätzung für 2026",
-  title: "Arbeitslosengeld 2026 berechnen: AMS-Schätzung",
+  h1: "Arbeitslosengeld-Rechner: Schätzung für {{anio}}",
+  title: "Arbeitslosengeld {{anio}} berechnen: AMS-Schätzung",
   description: "Schätzen Sie Ihr Arbeitslosengeld: {{at.arbeitslosengeld[grundbetrag]}} % des Nettoeinkommens, Familienzuschlag von {{at.alg-werte[familienzuschlag]}} je Tag und Ergänzungsbetrag.",
   intro: [
     "Das Arbeitslosengeld besteht aus dem Grundbetrag, gegebenenfalls Familienzuschlägen und einem Ergänzungsbetrag bei niedrigem Einkommen. Ausgezahlt wird es vom AMS monatlich im Nachhinein.",

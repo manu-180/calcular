@@ -14,6 +14,26 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   ko: "segye-yeonbong",
   zh: "shijie-gongzi",
   bg: "zaplatata-po-sveta",
+
+  pl: "wynagrodzenie-na-swiecie",
+  sv: "lon-i-varlden",
+  da: "lon-i-verden",
+  nb: "lonn-i-verden",
+  fi: "palkka-maailmalla",
+  ar: "rawatib-alalam",
+  id: "gaji-di-dunia",
+  tr: "ulkelere-gore-maas",
+  bn: "bishwe-beton",
+  // «เงินเดือนทั่วโลก» en RTGS (ADR 0002, D13): salary-around-the-world ya es la ruta del inglés.
+  th: "ngoen-duean-thua-lok",
+  uk: "zarplata-u-sviti",
+  uz: "mamlakatlar-boyicha-ish-haqi",
+  ru: "zarplata-v-mire",
+  ro: "salariu-in-lume",
+  cs: "mzda-ve-svete",
+  el: "misthos-ston-kosmo",
+  hu: "fizetes-a-vilagban",
+  he: "sachar-baolam",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";

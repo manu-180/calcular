@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.sueldo-liquido",
   h1: "Calculadora de sueldo líquido (líquido pagable)",
-  title: "Sueldo líquido Bolivia 2026: calcule su líquido pagable",
+  title: "Sueldo líquido Bolivia {{anio}}: calcule su líquido pagable",
   description: "Calcule su sueldo líquido: total ganado menos los aportes a la Gestora, el Aporte Nacional Solidario y el RC-IVA, con el salario mínimo de {{bo.salario-minimo}}.",
   intro: [
     "El sueldo líquido (líquido pagable) es su total ganado menos los aportes a la Gestora, el Aporte Nacional Solidario si corresponde y la retención de RC-IVA. Es lo que recibe en mano.",

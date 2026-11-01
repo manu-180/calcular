@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "gb.minimum-wage",
-  h1: "Minimum wage calculator: National Living Wage 2026",
-  title: "National Living Wage 2026: {{gb.minimum-wage[21-and-over]}} an hour",
+  h1: "Minimum wage calculator: National Living Wage {{anio}}",
+  title: "National Living Wage {{anio}}: {{gb.minimum-wage[21-and-over]}} an hour",
   description:
-    "The National Living Wage is {{gb.minimum-wage[21-and-over]}} an hour from April 2026. See the minimum for your age, and what it means per week, month and year.",
+    "The National Living Wage is {{gb.minimum-wage[21-and-over]}} an hour from April {{anio}}. See the minimum for your age, and what it means per week, month and year.",
   intro: [
     "Since {{gb.minimum-wage#desde}} the National Living Wage for workers aged 21 and over is {{gb.minimum-wage[21-and-over]}} an hour. Workers aged 18 to 20 get at least {{gb.minimum-wage[18-to-20]}}, and under 18s and apprentices at least {{gb.minimum-wage[under-18]}}.",
     "Pick your age group and your weekly hours to see the minimum you should earn each week, month and year.",

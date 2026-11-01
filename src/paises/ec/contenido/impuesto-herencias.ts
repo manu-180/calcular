@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.impuesto-herencias",
   h1: "Calculadora del impuesto a las herencias en Ecuador",
-  title: "Impuesto a la herencia Ecuador 2026: cuánto se paga",
-  description: "Calcula el impuesto a la renta sobre herencias, legados y donaciones con la tabla 2026 del SRI. Padres e hijos pagan la mitad y los hijos menores no pagan.",
+  title: "Impuesto a la herencia Ecuador {{anio}}: cuánto se paga",
+  description: "Calcula el impuesto a la renta sobre herencias, legados y donaciones con la tabla {{anio}} del SRI. Padres e hijos pagan la mitad y los hijos menores no pagan.",
   intro: [
     "En Ecuador lo que recibes por herencia, legado o donación paga impuesto a la renta con una tabla propia. Hasta la fracción básica no se paga nada.",
     "Si heredas de tu padre, madre, hijo o hija, las tarifas se reducen a la mitad. Pon el valor neto que recibes y te decimos cuánto pagas.",

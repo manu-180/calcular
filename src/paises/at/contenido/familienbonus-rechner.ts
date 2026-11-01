@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "at.familienbonus-rechner",
   h1: "Familienbonus-Plus-Rechner",
-  title: "Familienbonus Plus 2026: Steuerersparnis berechnen",
-  description: "Berechnen Sie, wie viel Lohnsteuer Ihnen der Familienbonus Plus 2026 spart: bis zu {{at.familienbonus[unter-18]}} im Monat je Kind, auch geteilt zwischen den Eltern.",
+  title: "Familienbonus Plus {{anio}}: Steuerersparnis berechnen",
+  description: "Berechnen Sie, wie viel Lohnsteuer Ihnen der Familienbonus Plus {{anio}} spart: bis zu {{at.familienbonus[unter-18]}} im Monat je Kind, auch geteilt zwischen den Eltern.",
   intro: [
     "Der Familienbonus Plus ist ein Absetzbetrag: Er zieht für jedes Kind, für das Familienbeihilfe bezogen wird, direkt Geld von Ihrer Lohnsteuer ab.",
     "Wie viel davon tatsächlich bei Ihnen ankommt, hängt von Ihrer Steuer ab. Der Rechner zeigt, welcher Teil wirkt und wie viel mehr netto Sie im Monat haben.",

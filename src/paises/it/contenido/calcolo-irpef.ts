@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "it.irpef",
-  h1: "Calcolo IRPEF 2026",
-  title: "Calcolo IRPEF 2026: scaglioni, detrazioni e imposta netta",
+  h1: "Calcolo IRPEF {{anio}}",
+  title: "Calcolo IRPEF {{anio}}: scaglioni, detrazioni e imposta netta",
   description:
-    "Calcola l'IRPEF lorda e netta con gli scaglioni 2026, le detrazioni per lavoro dipendente o pensione e l'ulteriore detrazione del taglio del cuneo.",
+    "Calcola l'IRPEF lorda e netta con gli scaglioni {{anio}}, le detrazioni per lavoro dipendente o pensione e l'ulteriore detrazione del taglio del cuneo.",
   intro: [
     "Inserisci il tuo reddito complessivo e scopri quanta IRPEF paghi davvero: l'imposta lorda, le detrazioni e quello che resta da versare.",
     "Vedi anche l'aliquota media (quanto pesa l'IRPEF sul totale) e l'aliquota marginale (quanto paghi sull'ultimo euro guadagnato).",

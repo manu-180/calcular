@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "nl.werkgeverslasten-berekenen",
-  h1: "Werkgeverslasten berekenen 2026",
-  title: "Werkgeverslasten 2026: wat kost een werknemer echt?",
+  h1: "Werkgeverslasten berekenen {{anio}}",
+  title: "Werkgeverslasten {{anio}}: wat kost een werknemer echt?",
   description:
-    "Bereken de loonkosten van een werknemer in 2026: brutoloon, vakantiegeld, premies werknemersverzekeringen en de werkgeversheffing Zvw van {{nl.zvw-werkgeversheffing}}.",
+    "Bereken de loonkosten van een werknemer in {{anio}}: brutoloon, vakantiegeld, premies werknemersverzekeringen en de werkgeversheffing Zvw van {{nl.zvw-werkgeversheffing}}.",
   intro: [
     "Een werknemer kost meer dan zijn brutoloon. Als werkgever betaal je premies werknemersverzekeringen en de werkgeversheffing Zorgverzekeringswet, en vaak ook pensioenpremie.",
     "Vul het brutoloon en het soort contract in. Je ziet wat de werknemer je per jaar en per maand kost met de premiepercentages van 2026.",

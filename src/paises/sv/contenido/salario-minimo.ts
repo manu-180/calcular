@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "sv.salario-minimo",
-  h1: "Salario mínimo 2026 en El Salvador por sector",
-  title: "Salario mínimo El Salvador 2026: por sector, día y hora",
+  h1: "Salario mínimo {{anio}} en El Salvador por sector",
+  title: "Salario mínimo El Salvador {{anio}}: por sector, día y hora",
   description:
     "Salario mínimo vigente en El Salvador: {{sv.salario-minimo@comercio-servicios}} en comercio y servicios. Vea el de su sector por mes, quincena, día y hora, con el decreto vigente.",
   intro: [

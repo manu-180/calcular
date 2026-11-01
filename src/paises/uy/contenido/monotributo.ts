@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.monotributo",
   h1: "Calculadora de monotributo: cuánto pagás por mes al BPS",
-  title: "Monotributo en Uruguay 2026: cuánto se paga por mes",
+  title: "Monotributo en Uruguay {{anio}}: cuánto se paga por mes",
   description:
     "Calculá cuánto pagás de monotributo al BPS: aportes jubilatorios de {{uy.monotributo-jubilatorio}} más el aporte de salud según tu cobertura y tu familia.",
   intro: [

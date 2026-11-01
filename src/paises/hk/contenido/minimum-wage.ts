@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "hk.minimum-wage",
   h1: "Minimum wage calculator Hong Kong",
-  title: "Minimum wage Hong Kong 2026: {{hk.minimum-wage}} an hour",
+  title: "Minimum wage Hong Kong {{anio}}: {{hk.minimum-wage}} an hour",
   description:
     "The statutory minimum wage in Hong Kong is {{hk.minimum-wage}} an hour from {{hk.minimum-wage#desde}}. Check whether your wages for the hours you worked meet it.",
   intro: [

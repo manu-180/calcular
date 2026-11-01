@@ -77,6 +77,8 @@ export interface DiccionarioVenta {
     etiquetaEnMinuscula: boolean;
     // ja y zh: la carta va con puntuación de ancho completo (：、（）、。) en vez de la latina.
     anchoCompleto?: boolean;
+    // bn: la oración de la carta cierra con el dari «।» en vez del punto (ADR 0002, D14).
+    puntoFinal?: string;
     comoSeCalcula: string;
     fuentes: string;
     verificado: string;

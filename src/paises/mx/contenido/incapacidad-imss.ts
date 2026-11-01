@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.incapacidad-imss",
-  h1: "Calculadora de incapacidad del IMSS 2026",
-  title: "Incapacidad IMSS 2026: cuánto te pagan por día",
+  h1: "Calculadora de incapacidad del IMSS {{anio}}",
+  title: "Incapacidad IMSS {{anio}}: cuánto te pagan por día",
   description:
     "Calcula cuánto te paga el IMSS por una incapacidad: enfermedad general al {{mx.subsidio-incapacidad[enfermedad-general]}} desde el cuarto día, riesgo de trabajo y maternidad al 100 %.",
   intro: [

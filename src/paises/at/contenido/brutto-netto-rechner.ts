@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "at.brutto-netto-rechner",
   h1: "Brutto-Netto-Rechner für Österreich",
-  title: "Brutto-Netto-Rechner 2026 für Österreich",
+  title: "Brutto-Netto-Rechner {{anio}} für Österreich",
   description:
     "Rechnen Sie Ihr Bruttogehalt in netto um: Sozialversicherung, Lohnsteuer, Familienbonus Plus und Pendlerpauschale, mit Urlaubsgeld und Weihnachtsgeld.",
   intro: [

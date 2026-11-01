@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be-fr.sociale-bijdragen-zelfstandige",
   h1: "Calcul des cotisations sociales d'indépendant",
-  title: "Cotisations sociales indépendant 2026 : calcul par trimestre",
+  title: "Cotisations sociales indépendant {{anio}} : calcul par trimestre",
   description:
     "Calculez vos cotisations sociales d'indépendant à titre principal ou complémentaire : {{be.rsvz-tarieven[tarief-1]}} jusqu'à {{be.rsvz[grens-1]}} et {{be.rsvz-tarieven[tarief-2]}} au-delà.",
   intro: [

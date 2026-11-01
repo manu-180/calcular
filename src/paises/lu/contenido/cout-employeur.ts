@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu.cout-employeur",
   h1: "Coût employeur au Luxembourg : charges patronales",
-  title: "Coût employeur Luxembourg 2026 : charges patronales",
-  description: "Ce que coûte un salaire à l'employeur au Luxembourg : maladie, pension, accident, santé au travail et Mutualité des employeurs selon les taux 2026.",
+  title: "Coût employeur Luxembourg {{anio}} : charges patronales",
+  description: "Ce que coûte un salaire à l'employeur au Luxembourg : maladie, pension, accident, santé au travail et Mutualité des employeurs selon les taux {{anio}}.",
   intro: [
     "Au salaire brut s'ajoutent les charges patronales : la moitié des cotisations maladie et pension, l'assurance accident, la santé au travail et la Mutualité des employeurs.",
     "Le taux de la Mutualité dépend de la classe de l'entreprise. Choisissez la vôtre.",

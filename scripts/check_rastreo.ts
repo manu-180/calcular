@@ -380,6 +380,12 @@ async function main() {
   // ── Boca en boca: props cerradas por tipo ─────────────────────────────────────────────
   const props = (i: unknown[]) => ok(validarLote(lote(i), ctx)).eventos.map((e) => e.props);
   const cuantos = (i: unknown[]) => ok(validarLote(lote(i), ctx)).eventos.length;
+  await prueba("compartir: Facebook e Instagram son canales válidos; uno inventado se descarta", () => {
+    for (const canal of ["facebook", "instagram"]) {
+      assert.deepEqual(props([{ t: "e", k: "compartir", pp: { canal, origen: "horas", ref: "ab12cd34" } }]), [{ canal, origen: "horas", ref: "ab12cd34" }]);
+    }
+    assert.equal(cuantos([{ t: "e", k: "compartir", pp: { canal: "tiktok" } }]), 0);
+  });
   await prueba("llegada: ref, origen corto y nuevo; una clave de más se tira", () => {
     assert.deepEqual(props([{ t: "e", k: "llegada", pp: { ref: "ab12cd34", origen: "c", nuevo: true, monto: 123456, nombre: "Ana" } }]), [
       { ref: "ab12cd34", origen: "c", nuevo: true },

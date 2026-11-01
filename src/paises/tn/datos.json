@@ -1,0 +1,807 @@
+{
+  "mercado": "tn",
+  "datos": [
+    {
+      "id": "tn.tva-normal",
+      "nombre": "TVA, taux général",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 7 du code de la TVA, modifié par l'article 43 de la LF 2018.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 19,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de la TVA, édition 2026 (version arabe, article 7)",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/05/Code-TVA-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.tva-intermediaire",
+      "nombre": "TVA, taux de 13 %",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 13,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de la TVA, édition 2026 (version arabe, article 7)",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/05/Code-TVA-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.tva-reduit",
+      "nombre": "TVA, taux réduit (tableau B)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de la TVA, édition 2026 (version arabe, article 7)",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/05/Code-TVA-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.irpp-bareme",
+      "nombre": "Barème de l'impôt sur le revenu (annuel)",
+      "tipo": "escala",
+      "unidad": "TND",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 44-I du code de l'IRPP et de l'IS, modifié par l'article 36 de la LF 2025, applicable aux revenus réalisés à partir du 1er janvier 2025.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000,
+              "tasa": 0
+            },
+            {
+              "desde": 5000,
+              "hasta": 10000,
+              "tasa": 15
+            },
+            {
+              "desde": 10000,
+              "hasta": 20000,
+              "tasa": 25
+            },
+            {
+              "desde": 20000,
+              "hasta": 30000,
+              "tasa": 30
+            },
+            {
+              "desde": 30000,
+              "hasta": 40000,
+              "tasa": 33
+            },
+            {
+              "desde": 40000,
+              "hasta": 50000,
+              "tasa": 36
+            },
+            {
+              "desde": 50000,
+              "hasta": 70000,
+              "tasa": 38
+            },
+            {
+              "desde": 70000,
+              "hasta": null,
+              "tasa": 40
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.frais-professionnels-taux",
+      "nombre": "Frais professionnels forfaitaires sur les salaires",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 26-I du code de l'IRPP et de l'IS.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.frais-professionnels-plafond",
+      "nombre": "Plafond annuel des frais professionnels",
+      "tipo": "numero",
+      "unidad": "TND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 2000,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.abattement-pensions",
+      "nombre": "Abattement sur les pensions et rentes viagères",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 26-II du code de l'IRPP et de l'IS, modifié par l'article 56 de la LF 2026 : 30 % en 2027, 40 % en 2028, 50 % en 2029.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          },
+          "hasta": "2026-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          },
+          "hasta": "2027-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          },
+          "hasta": "2028-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2029-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.deductions-famille",
+      "nombre": "Déductions pour situation et charges de famille (annuelles)",
+      "tipo": "mapa",
+      "unidad": "TND",
+      "nota": "Article 40 du code de l'IRPP et de l'IS. La déduction par enfant vaut pour les quatre premiers enfants à charge.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": {
+            "chef-de-famille": 300,
+            "par-enfant": 100,
+            "enfant-etudiant": 1000,
+            "enfant-infirme": 2000
+          },
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.enfants-deduction-max",
+      "nombre": "Nombre d'enfants ouvrant droit à la déduction de base",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.css-majoration",
+      "nombre": "Contribution sociale de solidarité : majoration des taux du barème",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 53 de la LF 2018. Un demi-point pour les revenus déclarés de 2023 à 2026 (paragraphe 7, prorogé par l'article 87 de la LF 2026), soit les revenus 2022 à 2025 ; un point au-delà (paragraphe 2).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Journal officiel de la République tunisienne",
+            "titulo": "Loi n° 2025-17 du 12 décembre 2025 portant loi de finances pour l'année 2026 (JORT n° 148, article 87)",
+            "url": "https://www.finances.gov.tn/sites/default/files/2026-01/115725.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          },
+          "hasta": "2025-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Recueil des textes relatifs aux droits et taxes non incorporés dans les codes fiscaux 2026 (article 53 de la LF 2018)",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/06/RECUEIL-DES-TEXTES-RELATIFS-AUX-DROITS-ET-TAXES-NON-INCORPORES-DANS-LES-CODES-FISCAUX-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.css-seuil-exoneration",
+      "nombre": "Contribution sociale de solidarité : revenu net annuel exonéré (salariés)",
+      "tipo": "numero",
+      "unidad": "TND",
+      "nota": "Article 53-2 de la LF 2018 : pas de contribution pour les salariés dont le revenu net, après les seules déductions de l'article 40, ne dépasse pas ce montant.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 5000,
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Recueil des textes relatifs aux droits et taxes non incorporés dans les codes fiscaux 2026 (article 53 de la LF 2018)",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/06/RECUEIL-DES-TEXTES-RELATIFS-AUX-DROITS-ET-TAXES-NON-INCORPORES-DANS-LES-CODES-FISCAUX-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.is-taux",
+      "nombre": "Impôt sur les sociétés : taux",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 49-I du code de l'IRPP et de l'IS, modifié par l'article 37 de la LF 2025.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "normal": 20,
+            "reduit": 10,
+            "majore": 35,
+            "banques-et-assurances": 40
+          },
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Code de l'IRPP et de l'IS, édition 2026",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/03/Code_IRPP_IS_2026_fr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.css-is-points",
+      "nombre": "Contribution sociale de solidarité des sociétés : points de majoration",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 53-6 de la LF 2018, prorogé par l'article 87 de la LF 2026 pour les bénéfices déclarés jusqu'en 2026.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "taux-35-et-plus": 4,
+            "taux-inferieur": 3
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République tunisienne",
+            "titulo": "Loi n° 2025-17 du 12 décembre 2025 portant loi de finances pour l'année 2026 (JORT n° 148, article 87)",
+            "url": "https://www.finances.gov.tn/sites/default/files/2026-01/115725.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.css-is-minimum",
+      "nombre": "Contribution sociale de solidarité des sociétés : minimum",
+      "tipo": "mapa",
+      "unidad": "TND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "taux-35-et-plus": 500,
+            "taux-20": 400,
+            "taux-10": 200
+          },
+          "fuente": {
+            "organismo": "Ministère des Finances (DGI, jibaya.tn)",
+            "titulo": "Recueil des textes relatifs aux droits et taxes non incorporés dans les codes fiscaux 2026 (article 53 de la LF 2018)",
+            "url": "https://jibaya.tn/wp-content/uploads/2026/06/RECUEIL-DES-TEXTES-RELATIFS-AUX-DROITS-ET-TAXES-NON-INCORPORES-DANS-LES-CODES-FISCAUX-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.cnss-salarie",
+      "nombre": "Cotisation salariale de sécurité sociale (secteur non agricole)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-06-18",
+          "valor": 9.18,
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Employeurs du secteur non agricole : assiette et taux des cotisations",
+            "url": "https://www.cnss.tn/web/employeur/emp_asset_services/-/asset_publisher/sYQ8/content/emp_secteur-non_agr1_assiette?secteur=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.cnss-employeur",
+      "nombre": "Cotisation patronale de sécurité sociale (secteur non agricole)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Hors accidents du travail, à la charge de l'employeur entre 0,4 % et 4 % selon l'activité.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-06-18",
+          "valor": 16.57,
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Employeurs du secteur non agricole : assiette et taux des cotisations",
+            "url": "https://www.cnss.tn/web/employeur/emp_asset_services/-/asset_publisher/sYQ8/content/emp_secteur-non_agr1_assiette?secteur=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.accidents-travail",
+      "nombre": "Cotisation accidents du travail : fourchette",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-06-18",
+          "valor": {
+            "minimum": 0.4,
+            "maximum": 4
+          },
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Employeurs du secteur non agricole : assiette et taux des cotisations",
+            "url": "https://www.cnss.tn/web/employeur/emp_asset_services/-/asset_publisher/sYQ8/content/emp_secteur-non_agr1_assiette?secteur=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.heures-supplementaires",
+      "nombre": "Majoration des heures supplémentaires (secteur non agricole)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "Article 90 du code du travail.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-15",
+          "valor": {
+            "regime-48h": 75,
+            "regime-reduit-jusqu-a-48h": 25,
+            "regime-reduit-au-dela": 50,
+            "temps-partiel": 50
+          },
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Code du travail, version consolidée (texte arabe)",
+            "url": "https://www.social.gov.tn/sites/default/files/2023-04/%D9%85%D8%AC%D9%84%D8%A9%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.conges-payes",
+      "nombre": "Congé annuel payé (jours par mois et plafonds)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "nota": "Article 113 du code du travail.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-15",
+          "valor": {
+            "par-mois": 1,
+            "plafond": 15,
+            "par-mois-moins-de-18-ans": 2,
+            "plafond-moins-de-18-ans": 30,
+            "par-mois-18-a-20-ans": 1.5,
+            "plafond-18-a-20-ans": 22
+          },
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Code du travail, version consolidée (texte arabe)",
+            "url": "https://www.social.gov.tn/sites/default/files/2023-04/%D9%85%D8%AC%D9%84%D8%A9%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.indemnite-fin-de-service",
+      "nombre": "Indemnité de fin de service : jours de salaire par mois et plafond en mois",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1994-02-21",
+          "valor": {
+            "jours-par-mois": 1,
+            "plafond-mois": 3
+          },
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Code du travail, version consolidée (texte arabe)",
+            "url": "https://www.social.gov.tn/sites/default/files/2023-04/%D9%85%D8%AC%D9%84%D8%A9%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ],
+      "nota": "Article 22 du code du travail (loi n° 94-29). La loi n° 2025-9 modifie les articles 6-2 à 6-4, 17, 28 à 30 et 94-2, pas l'article 22."
+    },
+    {
+      "id": "tn.smig-mensuel",
+      "nombre": "SMIG mensuel (secteur non agricole)",
+      "tipo": "mapa",
+      "unidad": "TND",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2024-05-01",
+          "valor": {
+            "regime-48h": 528.32,
+            "regime-40h": 448.238
+          },
+          "motivo": "Montants du décret n° 2024-419. Le décret n° 2026-67, publié au JORT du 30 avril 2026 avec effet au 1er janvier 2026, les a relevés : son texte n'est pas publié sur social.gov.tn et iort.gov.tn ne répond pas en HTTPS. L'assiette CNSS des non-salariés du 2e trimestre 2026 suppose un SMIG horaire de 2,667 dinars (régime de 48 heures), à confirmer dans le JORT."
+        }
+      ]
+    },
+    {
+      "id": "tn.smig-horaire",
+      "nombre": "SMIG horaire (secteur non agricole)",
+      "tipo": "mapa",
+      "unidad": "TND",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2024-05-01",
+          "valor": {
+            "regime-48h": 2.54,
+            "regime-40h": 2.586
+          },
+          "motivo": "Montants du décret n° 2024-419. Le décret n° 2026-67, publié au JORT du 30 avril 2026 avec effet au 1er janvier 2026, les a relevés : son texte n'est pas publié sur social.gov.tn et iort.gov.tn ne répond pas en HTTPS. L'assiette CNSS des non-salariés du 2e trimestre 2026 suppose un SMIG horaire de 2,667 dinars (régime de 48 heures), à confirmer dans le JORT."
+        }
+      ]
+    },
+    {
+      "id": "tn.preavis",
+      "nombre": "Délai de préavis du contrat à durée indéterminée",
+      "tipo": "numero",
+      "unidad": "meses",
+      "nota": "Article 14 bis du code du travail : lettre recommandée un mois avant la fin du contrat ; le salarié peut s'absenter pendant toute la seconde moitié du préavis pour chercher un emploi.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1994-02-21",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Code du travail, version consolidée (texte arabe)",
+            "url": "https://www.social.gov.tn/sites/default/files/2023-04/%D9%85%D8%AC%D9%84%D8%A9%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.periode-essai",
+      "nombre": "Période d'essai : durée maximale, renouvellement et délai pour y mettre fin",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Article 6-3 (nouveau) du code du travail, issu de la loi n° 2025-9 : six mois au plus, renouvelables une fois pour la même durée ; chaque partie prévient l'autre par écrit quinze jours avant de mettre fin à l'essai. Pas d'essai dans un contrat à durée déterminée.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-23",
+          "valor": {
+            "mois-max": 6,
+            "renouvellements": 1,
+            "preavis-jours": 15
+          },
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Loi n° 2025-9 du 21 mai 2025 relative à l'organisation des contrats de travail et à l'interdiction de la sous-traitance (JORT n° 61 du 23 mai 2025)",
+            "url": "https://www.social.gov.tn/sites/default/files/2025-09/%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%B9%D8%AF%D8%AF%209%20%D9%84%D8%B3%D9%86%D8%A9%202025%20%D9%8A%D8%AA%D8%B9%D9%84%D9%82%20%D8%A8%D8%AA%D9%86%D8%B8%D9%8A%D9%85%20%D8%B9%D9%82%D9%88%D8%AF%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84%20%D9%88%D9%85%D9%86%D8%B9%20%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%88%D9%84%D8%A9.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.licenciement-abusif",
+      "nombre": "Dommages et intérêts pour licenciement abusif",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Article 23 bis du code du travail : un à deux mois de salaire par année d'ancienneté, sans dépasser trois ans de salaire ; un à quatre mois quand le motif est réel et sérieux mais la procédure non respectée.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1994-02-21",
+          "valor": {
+            "mois-par-an-min": 1,
+            "mois-par-an-max": 2,
+            "plafond-mois": 36,
+            "procedure-min": 1,
+            "procedure-max": 4
+          },
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Code du travail, version consolidée (texte arabe)",
+            "url": "https://www.social.gov.tn/sites/default/files/2023-04/%D9%85%D8%AC%D9%84%D8%A9%20%D8%A7%D9%84%D8%B4%D8%BA%D9%84.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.conges-maternite",
+      "nombre": "Congés de maternité et de paternité",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "nota": "Articles 3 à 6 de la loi n° 2024-44. Durées en jours ou en mois selon la clé.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-08-12",
+          "valor": {
+            "prenatal-jours": 15,
+            "naissance-mois": 3,
+            "naissance-mois-renforce": 4,
+            "mort-ne-mois": 1,
+            "postnatal-min-mois": 1,
+            "postnatal-max-mois": 4,
+            "paternite-jours": 7,
+            "paternite-jours-renforce": 10,
+            "paternite-mort-ne-jours": 3,
+            "paternite-delai-jours": 30
+          },
+          "fuente": {
+            "organismo": "Ministère des Affaires sociales",
+            "titulo": "Loi n° 2024-44 du 12 août 2024 relative à l'organisation des congés de maternité et de paternité (JORT n° 99 du 12 août 2024)",
+            "url": "https://www.social.gov.tn/sites/default/files/2024-11/%D9%82%D8%A7%D9%86%D9%80%D9%88%D9%86%20%D8%B9%D8%AF%D8%AF%2044%20%D9%84%D8%B3%D9%86%D8%A9%202024%20%D9%85%D8%A4%D8%B1%D8%AE%20%D9%81%D9%8A%2012%20%D8%A3%D9%88%D8%AA%202024%20%D9%8A%D8%AA%D8%B9%D9%84%D9%91%D9%82%20%D8%A8%D8%AA%D9%86%D8%B8%D9%8A%D9%85%20%D8%B9%D8%B7%D9%84%20%D8%A7%D9%84%D8%A3%D9%85%D9%88%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%A3%D8%A8%D9%88%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%88%D8%B8%D9%8A%D9%81%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%88%D9%85%D9%8A%D8%A9%20%D9%88%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%20%D9%88%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.allocations-familiales-taux",
+      "nombre": "Allocations familiales CNSS : taux par enfant",
+      "tipo": "mapa",
+      "unidad": "%",
+      "nota": "Pour les trois premiers enfants à charge, en pourcentage du revenu trimestriel retenu dans la limite du plafond.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-09-02",
+          "valor": {
+            "enfant-1": 18,
+            "enfant-2": 16,
+            "enfant-3": 14
+          },
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Salariés du secteur non agricole : allocations familiales (fiche en arabe)",
+            "url": "https://www.cnss.tn/web/salarie/sal_asset_services_avantages/-/asset_publisher/0xT7/content/sal-secteur_-non_agr1_prestation_familiales_allocation?secteur=1&champAppli=1&servActif=2&avantage=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.allocations-familiales-plafond",
+      "nombre": "Allocations familiales CNSS : revenu trimestriel retenu au plus",
+      "tipo": "numero",
+      "unidad": "TND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-09-02",
+          "valor": 122,
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Salariés du secteur non agricole : allocations familiales (fiche en arabe)",
+            "url": "https://www.cnss.tn/web/salarie/sal_asset_services_avantages/-/asset_publisher/0xT7/content/sal-secteur_-non_agr1_prestation_familiales_allocation?secteur=1&champAppli=1&servActif=2&avantage=1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.cnss-tns-taux",
+      "nombre": "Cotisation des travailleurs non salariés (secteur non agricole)",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Entièrement à la charge du travailleur non salarié. Assurance accidents du travail facultative en plus.",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 14.71,
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Travailleurs non salariés du secteur non agricole : cotisations (fiche en arabe)",
+            "url": "https://www.cnss.tn/web/non-salarie/non_sal_asset_services/-/asset_publisher/w1WU/content/non_sal-secteur_-non_agr1_cotisations?convention=false&categorie=1&secteur=1&champAppli=1&servActif=2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tn.cnss-tns-assiette",
+      "nombre": "Assiette trimestrielle des cotisations des non-salariés par classe de revenu",
+      "tipo": "mapa",
+      "unidad": "TND",
+      "nota": "SMIG horaire du régime de 48 heures × 2 400 heures par an, multiplié par le coefficient de la classe (1 à 18), puis divisé par quatre. Montants affichés par la CNSS à partir du 2e trimestre 2026.",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "classe-1": "Classe 1 (1 SMIG)",
+        "classe-2": "Classe 2 (1,5 SMIG)",
+        "classe-3": "Classe 3 (2 SMIG)",
+        "classe-4": "Classe 4 (3 SMIG)",
+        "classe-5": "Classe 5 (4 SMIG)",
+        "classe-6": "Classe 6 (6 SMIG)",
+        "classe-7": "Classe 7 (9 SMIG)",
+        "classe-8": "Classe 8 (12 SMIG)",
+        "classe-9": "Classe 9 (15 SMIG)",
+        "classe-10": "Classe 10 (18 SMIG)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": {
+            "classe-1": 1600.2,
+            "classe-2": 2400.3,
+            "classe-3": 3200.4,
+            "classe-4": 4800.6,
+            "classe-5": 6400.8,
+            "classe-6": 9601.2,
+            "classe-7": 14401.8,
+            "classe-8": 19202.4,
+            "classe-9": 24003,
+            "classe-10": 28803.6
+          },
+          "fuente": {
+            "organismo": "CNSS",
+            "titulo": "Travailleurs non salariés du secteur non agricole : cotisations (fiche en arabe)",
+            "url": "https://www.cnss.tn/web/non-salarie/non_sal_asset_services/-/asset_publisher/w1WU/content/non_sal-secteur_-non_agr1_cotisations?convention=false&categorie=1&secteur=1&champAppli=1&servActif=2",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}

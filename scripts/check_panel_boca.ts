@@ -10,7 +10,7 @@ import { createRequire } from "node:module";
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { analizarPuente, coeficiente, diferencia, wilson, MIN_EXPOSICIONES } from "../src/lib/panel/boca";
+import { analizarPuente, coeficiente, diferencia, separarSeccion, wilson, MIN_EXPOSICIONES } from "../src/lib/panel/boca";
 
 type Fila = Record<string, unknown>;
 interface Db {
@@ -219,6 +219,8 @@ async function probarSql(PGlite: new () => Db, mod: ModDatos) {
     igual([can.copiar?.compartidos, can.nativo?.compartidos], [1, 1], "copiar y nativo");
     const ori = por(b.origenes, "clave");
     igual([ori.calculadora?.compartidos, ori.calculadora?.llegadas, ori.mundo?.compartidos], [2, 4, 1], "origen: el código corto de la llegada se expande");
+    const sec = separarSeccion(datos.origenes, "mundo");
+    igual([sec.nueva.compartidos, sec.resto.compartidos, sec.nueva.llegadas + sec.resto.llegadas], [1, 2, 4], "la sección nueva aparte del resto, sin perder llegadas");
 
     seccion("páginas, mercados y top");
     const pag = Object.fromEntries((b.paginas as Fila[]).map((p) => [`${p.path}|${p.mercado}`, p]));

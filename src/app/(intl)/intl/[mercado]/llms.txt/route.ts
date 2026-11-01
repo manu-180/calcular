@@ -9,6 +9,7 @@ import { origenPublicoIntl, urlIntl } from "@/motor/seo";
 import { intlActivo, modoPublicacion, NOMBRE_SITIO_INTL } from "@/motor/sitio";
 import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
+import { etiquetaIdioma } from "@/motor/i18n/direccion";
 
 // /llms.txt de calcularya, en inglés como la home global (llega por rewrite, ver RUTA_LLMS en src/motor/hosts.ts). El de public/
 // describe calcular.ar y no puede salir en este dominio: check_routing_hosts.ts exige que este no
@@ -30,7 +31,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
       const lastmod = new Map((entradasDelMercado(registro, m.codigo) ?? []).map((e) => [e.url, e.lastmod]));
       const lineas = registro.calculadorasPublicables(m.codigo, fecha, modo).flatMap((c) => {
         const p = registro.pagina(m.codigo, c.definicion.slug, fecha, modo);
-        if (!p) return [];
+        if (!p || p.podada) return [];
         const url = urlIntl(m.codigo, c.definicion.slug);
         const al = lastmod.get(url);
         return [`- [${limpio(p.contenido.h1)}](${url}): ${limpio(p.contenido.description)}${al ? ` Data as of ${al}.` : ""}`];
@@ -38,7 +39,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ mercado
       return [
         `## ${m.nombre}`,
         "",
-        `Currency: ${m.monedas[0]}. Language: ${m.locale}.`,
+        `Currency: ${m.monedas[0]}. Language: ${etiquetaIdioma(m.locale)}.`,
         "",
         `- [${m.nombre}: calculators](${urlIntl(m.codigo)}): every calculator for the country, grouped by topic.`,
         `- [${m.nombre}: salary around the world](${urlMundo(m)}): the day of the year you stop working for the government on a salary in this country, and what that salary would leave in hand in every country at the same purchasing power.`,

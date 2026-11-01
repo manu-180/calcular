@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosId: TextosUi<UiAlquilarOComprar> = {
+  slug: "sewa-atau-beli-rumah",
+  ui: () => ({
+    precio: "Harga rumah",
+    entrada: "Uang muka (% dari harga)",
+    gastosCompra: "Biaya pembelian (% dari harga)",
+    gastosCompraAyuda: "Biaya notaris, akad, pajak pembelian, dan appraisal.",
+    tasa: "Bunga KPR (% per tahun)",
+    aniosHipoteca: "Tenor KPR (tahun)",
+    alquiler: "Sewa per bulan untuk rumah yang setara",
+    aumentoAlquiler: "Kenaikan sewa per tahun (%)",
+    gastosPropietario: "Biaya pemilik per tahun (% dari nilai rumah)",
+    gastosPropietarioAyuda: "Perawatan, PBB, dan asuransi rumah. Umumnya 1% sampai 2%.",
+    revalorizacion: "Kenaikan harga rumah per tahun (%)",
+    rendimiento: "Imbal hasil investasi lain (% per tahun)",
+    rendimientoAyuda: "Hasil yang Anda dapat jika uang muka diinvestasikan, bukan dipakai membeli rumah.",
+    horizonte: "Jangka waktu perbandingan (tahun)",
+    veredicto: "Hasil",
+    patrimonioComprar: "Kekayaan bersih di akhir jika membeli",
+    patrimonioAlquilar: "Kekayaan bersih di akhir jika menyewa",
+    diferencia: "Selisih",
+    anioDesde: "Tahun saat membeli mulai lebih untung",
+    pagadoAlquilando: "Total sewa yang dibayar",
+    pagadoComprando: "Total cicilan KPR dan biaya pemilik",
+    tabla: "Perbandingan per tahun",
+    colAnio: "Tahun",
+    colComprar: "Membeli",
+    colAlquilar: "Menyewa",
+    colDiferencia: "Selisih",
+    errorPrecio: "Masukkan harga rumah.",
+    errorAlquiler: "Masukkan biaya sewa untuk rumah yang setara.",
+    convieneComprar: (anios, diferencia) => `Membeli lebih untung: setelah ${anios} tahun kekayaan Anda ${diferencia} lebih besar.`,
+    convieneAlquilar: (anios, diferencia) => `Menyewa lebih untung: setelah ${anios} tahun kekayaan Anda ${diferencia} lebih besar.`,
+    empate: (anios) => `Setelah ${anios} tahun, kedua pilihan memberi hasil yang sama.`,
+    observacionDesde: (anio) => `Membeli mulai unggul dari menyewa pada tahun ke-${anio} dan tetap unggul sesudahnya.`,
+    observacionMetodo:
+      "Perhitungan membandingkan kekayaan Anda di kedua pilihan. Jika menyewa, uang muka dan selisih pengeluaran setiap bulan tetap diinvestasikan. Biaya saat menjual rumah tidak dikurangkan.",
+  }),
+};

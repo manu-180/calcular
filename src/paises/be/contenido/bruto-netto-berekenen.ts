@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be.bruto-netto-berekenen",
   h1: "Bruto netto berekenen: je nettoloon in België",
-  title: "Bruto netto berekenen 2026: van brutoloon naar nettoloon",
+  title: "Bruto netto berekenen {{anio}}: van brutoloon naar nettoloon",
   description:
     "Bereken je nettoloon uit je brutoloon: RSZ, werkbonus, bedrijfsvoorheffing en bijzondere bijdrage, volgens de officiële regels. Voor bedienden en arbeiders.",
   intro: [

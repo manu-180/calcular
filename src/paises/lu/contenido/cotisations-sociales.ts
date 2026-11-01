@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu.cotisations-sociales",
   h1: "Calcul des cotisations sociales du salarié au Luxembourg",
-  title: "Cotisations sociales Luxembourg 2026 : part salarié",
-  description: "Cotisations sociales 2026 du salarié au Luxembourg : maladie, pension et dépendance sur le salaire brut, avec le maximum cotisable de {{lu.plafond-cotisable}}.",
+  title: "Cotisations sociales Luxembourg {{anio}} : part salarié",
+  description: "Cotisations sociales {{anio}} du salarié au Luxembourg : maladie, pension et dépendance sur le salaire brut, avec le maximum cotisable de {{lu.plafond-cotisable}}.",
   intro: [
     "Le salarié paie la moitié des cotisations maladie et pension et toute la contribution dépendance. En 2026, la cotisation pension passe à {{lu.cotisation-pension}} au total.",
     "Le calculateur donne le détail par mois et sur douze mois.",

@@ -14,7 +14,7 @@ import { registro } from "@/paises";
 import { CalculadoraIntl } from "./calculadora-intl";
 
 // Calculadora, fuentes y novedades dependen de la fecha del mercado (ver revalidate en layout.tsx).
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Props = { params: Promise<{ mercado: string; slug: string }> };
 
@@ -34,7 +34,7 @@ export function generateStaticParams({ params }: { params: { mercado: string } }
     .filter((c) => familiaDeConcepto(c.definicion.concepto) !== null)
     .map((c) => ({ slug: c.definicion.slug }));
   // novedades tiene ruta propia (../novedades/page.tsx), que le gana a [slug]: no se genera dos veces.
-  return [...calculadoras, ...PAGINAS_MERCADO.filter((slug) => slug !== "novedades").map((slug) => ({ slug }))];
+  return [...calculadoras, ...PAGINAS_MERCADO.filter((slug) => slug !== "novedades").map((slug) => ({ slug })), ...PAGINAS_GLOBALES.map((slug) => ({ slug }))];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

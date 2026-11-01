@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.auxilio-de-transporte",
-  h1: "Auxilio de transporte 2026 en Colombia",
-  title: "Auxilio de transporte 2026 en Colombia: {{co.auxilio-transporte}}",
+  h1: "Auxilio de transporte {{anio}} en Colombia",
+  title: "Auxilio de transporte {{anio}} en Colombia: {{co.auxilio-transporte}}",
   description:
-    "El auxilio de transporte 2026 es {{co.auxilio-transporte}} al mes si ganas hasta {{co.auxilio-tope}}. Mira si te toca y calcula cuánto te pagan por los días trabajados.",
+    "El auxilio de transporte {{anio}} es {{co.auxilio-transporte}} al mes si ganas hasta {{co.auxilio-tope}}. Mira si te toca y calcula cuánto te pagan por los días trabajados.",
   intro: [
     "El auxilio de transporte es de {{co.auxilio-transporte}} al mes y lo recibe quien gana hasta {{co.auxilio-tope}}. Lo fija el Decreto 1470 de 2025 y se paga en proporción a los días trabajados.",
     "Escribe tu salario y los días del mes. Te decimos si te corresponde y cuánto es.",

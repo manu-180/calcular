@@ -9,6 +9,7 @@ import { aniosDisponibles, ULTIMO_PERIODO } from '@/lib/inflacion'
 import { hoyAR } from '@/lib/hoy'
 import { paisesConSueldos } from '@/lib/sueldos/lectura'
 import { ultimoCambio } from '@/lib/novedades'
+import { alternosSitemapAR } from '@/lib/hreflang-ar'
 import { SITIO } from '@/lib/seo'
 import { RUTA_MUNDO_AR } from '@/motor/mundo/rutas'
 import { hreflangMundo } from '@/motor/mundo/ui/seo'
@@ -37,7 +38,8 @@ const PAGINAS: readonly (readonly [string, string])[] = [
   [`${BASE}/convenios/comercio/por-horas`, '2026-10-16'],
   [`${BASE}/sueldo-neto/camioneros`, '2026-09-28'],
   [`${BASE}/sueldo-neto/construccion`, '2026-09-28'],
-  [`${BASE}${RUTA_MUNDO_AR}`, '2026-10-23'],
+  [`${BASE}${RUTA_MUNDO_AR}`, '2026-10-25'],
+  [`${BASE}/cuantas-horas-de-trabajo`, '2026-10-25'],
   [`${BASE}/ganancias`, '2026-06-15'],
   [`${BASE}/monotributo`, '2026-06-13'],
   [`${BASE}/monotributo/categorias`, '2026-06-18'],
@@ -231,10 +233,16 @@ export function armarSitemap(conSueldos = false): MetadataRoute.Sitemap {
   const resto = [...fijas, ...sueldos, ...hubs, ...convenios, ...cuota, ...canasta, ...inflacion, ...blog]
   const inicio: Entrada = { ruta: '/', fecha: mayor(resto.map((e) => e.fecha)) }
 
+  // Clústeres grandes de las calculadoras con concepto (src/lib/hreflang-ar.ts): con el flag apagado el
+  // mapa viene vacío y el sitemap no cambia.
   const mundo = alternosMundo()
-  return [inicio, ...resto].map((e) => ({
-    url: e.ruta === '/' ? BASE : `${BASE}${e.ruta}`,
-    ...(e.fecha ? { lastModified: e.fecha } : {}),
-    ...(mundo && e.ruta === RUTA_MUNDO_AR ? { alternates: { languages: mundo } } : {}),
-  }))
+  const clusteres = alternosSitemapAR()
+  return [inicio, ...resto].map((e) => {
+    const idiomas = e.ruta === RUTA_MUNDO_AR ? mundo : clusteres.get(e.ruta)
+    return {
+      url: e.ruta === '/' ? BASE : `${BASE}${e.ruta}`,
+      ...(e.fecha ? { lastModified: e.fecha } : {}),
+      ...(idiomas ? { alternates: { languages: idiomas } } : {}),
+    }
+  })
 }

@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosPl: TextosUi<UiCalorias> = {
+  slug: "kalkulator-kalorii",
+  ui: () => ({
+    sexo: "Płeć",
+    mujer: "Kobieta",
+    hombre: "Mężczyzna",
+    edad: "Wiek (lata)",
+    peso: (u) => `Masa ciała (${u})`,
+    altura: (u) => `Wzrost (${u})`,
+    pies: "Wzrost: stopy (ft)",
+    pulgadas: "Wzrost: cale (in)",
+    actividad: "Aktywność fizyczna",
+    sedentaria: "Niewielka albo żadna",
+    ligera: "Lekka (1 do 3 dni w tygodniu)",
+    moderada: "Umiarkowana (3 do 5 dni w tygodniu)",
+    alta: "Wysoka (6 lub 7 dni w tygodniu)",
+    muyAlta: "Bardzo wysoka (intensywne treningi albo praca fizyczna)",
+    objetivo: "Cel",
+    mantener: "Utrzymać wagę",
+    bajar: "Stopniowo schudnąć",
+    subir: "Stopniowo przytyć",
+    basal: "Podstawowa przemiana materii (kcal dziennie)",
+    basalAyuda: "Ile energii zużywa organizm w całkowitym spoczynku.",
+    mantenimiento: "Kalorie na utrzymanie wagi (kcal dziennie)",
+    calObjetivo: "Kalorie dla twojego celu (kcal dziennie)",
+    calObjetivoAyuda: "Umiarkowana zmiana: 500 kcal mniej dziennie, żeby schudnąć, albo 300 więcej, żeby przytyć.",
+    errorEdad: "Wzór jest przeznaczony dla osób w wieku od 15 do 100 lat.",
+    errorPeso: "Masa ciała musi być większa od 0.",
+    errorAltura: "Wzrost musi być większy od 0.",
+    notaMinimo: (kcal) => `Przy odchudzaniu wynik nie schodzi poniżej ${kcal} kcal dziennie. Jedzenie mniej najlepiej ustalić z dietetykiem albo lekarzem.`,
+    aviso: "To szacunek według wzoru Mifflina-St Jeora. Każdy organizm jest inny: wynik nie zastępuje konsultacji z lekarzem ani dietetykiem.",
+  }),
+};

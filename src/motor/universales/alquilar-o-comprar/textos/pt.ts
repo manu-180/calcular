@@ -1,4 +1,4 @@
-import { conVariantes } from "../../comun/locales";
+import { conVariantes, PT_LUSOFONIA } from "../../comun/locales";
 import type { TextosUi } from "../../tipos";
 import type { UiAlquilarOComprar } from "../definicion";
 
@@ -66,4 +66,11 @@ const portugal = (): Partial<UiAlquilarOComprar> => ({
     "A conta compara o património que teria em cada caso. Se arrendar, a entrada e o que sobrar todos os meses ficam investidos. Os custos de uma venda futura não são descontados.",
 });
 
-export const textosPt = conVariantes(base, { "pt-PT": portugal });
+// Fuera de Portugal (Angola, Mozambique, Cabo Verde...) la norma es la europea, pero los impuestos y
+// la seguridad social tienen otro nombre: lo propio de Portugal se dice en palabras de cualquier país.
+const lusofonia = (): Partial<UiAlquilarOComprar> => ({
+  gastosCompraAyuda: "Escritura, registo, impostos sobre a compra, comissão da imobiliária e avaliação.",
+  gastosPropietarioAyuda: "Manutenção, imposto predial, condomínio e seguro. O habitual é de 1% a 2%.",
+});
+
+export const textosPt = conVariantes(base, { "pt-PT": portugal, [PT_LUSOFONIA]: lusofonia });

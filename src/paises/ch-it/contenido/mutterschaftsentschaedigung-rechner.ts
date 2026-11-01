@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-it.mutterschaftsentschaedigung-rechner",
   h1: "Calcolo dell'indennità di maternità",
-  title: "Indennità di maternità: calcolo dell'indennità IPG 2026",
+  title: "Indennità di maternità: calcolo dell'indennità IPG {{anio}}",
   description: "Indennità di maternità IPG: l'{{ch.eo-taggeld-satz}} del reddito, al massimo {{ch.eo-hoechstbetrag-taggeld}} al giorno, per {{ch.mutterschaft-tage}} giorni. Indennità e importo totale.",
   intro: [
     "Dopo il parto le madri che esercitano un'attività lucrativa ricevono un'indennità di maternità dalle indennità di perdita di guadagno (IPG). Ammonta all'{{ch.eo-taggeld-satz}} del reddito medio prima del parto, al massimo {{ch.eo-hoechstbetrag-taggeld}} al giorno.",

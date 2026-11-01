@@ -1,14 +1,9 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import { ImageResponse } from "next/og";
 import { grillaMundo } from "@/lib/mundo/grilla";
 import { hoyAR } from "@/lib/hoy";
 import { textosMundo } from "@/motor/i18n/mundo";
 import { decodificarCarga, diaDeCarga } from "@/motor/mundo/calculo";
 import type { CargaCompartida, GrillaMundo } from "@/motor/mundo/tipos";
-import { origenAR } from "@/motor/sitio";
-import { BanderaPlana } from "@/motor/ui/BanderaPlana";
-import { nombreDePais } from "@/motor/ui/paises";
 
 // Tarjeta de «Tu sueldo en el mundo» en calcular.ar: /sueldo-en-el-mundo/og (1200 x 630, la vista previa
 // del link) y ?formato=historia (1080 x 1920, Stories). Mismo contrato que la de calcularya
@@ -56,26 +51,6 @@ function fuente(peso: number, texto: string): Promise<ArrayBuffer | null> {
   return p;
 }
 
-// Primero el disco. Si la función no trae public/banderas (falta sumar esta ruta a
-// outputFileTracingIncludes de next.config.ts), del sitio publicado: origenAR() es fijo, nunca req.url,
-// que lo pone quien hace el pedido.
-async function banderaDe(iso: string): Promise<string | null> {
-  if (!/^[A-Z]{2}$/.test(iso)) return null;
-  const archivo = `${iso.toLowerCase()}.svg`;
-  try {
-    const svg = await readFile(path.join(process.cwd(), "public", "banderas", archivo));
-    return `data:image/svg+xml;base64,${svg.toString("base64")}`;
-  } catch {}
-  try {
-    const r = await fetch(`${origenAR()}/banderas/${archivo}`, { signal: AbortSignal.timeout(ESPERA_MS) });
-    if (!r.ok) return null;
-    return `data:image/svg+xml;base64,${Buffer.from(await r.arrayBuffer()).toString("base64")}`;
-  } catch (err) {
-    console.warn(`[og mundo ar] sin bandera ${iso}:`, err instanceof Error ? err.message : err);
-    return null;
-  }
-}
-
 function Marca({ tam }: { tam: number }) {
   return (
     <svg width={tam} height={tam} viewBox="0 0 512 512">
@@ -89,24 +64,6 @@ function Marca({ tam }: { tam: number }) {
       <rect x="136" y="186" width="240" height="58" rx="29" fill="#ffffff" />
       <rect x="136" y="268" width="240" height="58" rx="29" fill="#ffffff" />
     </svg>
-  );
-}
-
-function Bandera({ iso, ancho, src }: { iso: string; ancho: number; src: string | null }) {
-  const marco = { display: "flex", borderRadius: ancho / 8, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.4)" } as const;
-  if (src) {
-    return (
-      <div style={marco}>
-        <img src={src} width={ancho} height={Math.round((ancho * 2) / 3)} alt="" />
-      </div>
-    );
-  }
-  const dibujo = BanderaPlana({ pais: iso, ancho });
-  if (dibujo) return <div style={marco}>{dibujo}</div>;
-  return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: ancho, height: (ancho * 2) / 3, borderRadius: ancho / 8, border: `2px solid ${VERDE}`, color: VERDE, fontSize: ancho * 0.32, fontWeight: 700 }}>
-      {iso}
-    </div>
   );
 }
 
@@ -142,13 +99,11 @@ interface Datos {
   dia: number;
   fecha: string;
   tasaLinea: string;
-  frase: string;
   hasta: [string, string];
   paises: number;
-  bandera: string | null;
 }
 
-function Horizontal({ carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, bandera }: Datos) {
+function Horizontal({ carga, anio, dia, fecha, tasaLinea, hasta, paises }: Datos) {
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", padding: "56px 64px", color: CREMA, fontFamily: "Geist", ...fondo(true) }}>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, paddingRight: 40 }}>
@@ -170,8 +125,7 @@ function Horizontal({ carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, 
           </div>
         )}
         <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 26 }}>
-          {carga ? <Bandera iso={carga.mejor} ancho={42} src={bandera} /> : null}
-          <div style={{ display: "flex", maxWidth: 560 }}>{carga ? frase : `${t.tarjeta.cta} calcular.ar`}</div>
+          {carga ? null : <div style={{ display: "flex", maxWidth: 560 }}>{`${t.tarjeta.cta} calcular.ar`}</div>}
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-end", gap: 22 }}>
@@ -184,7 +138,7 @@ function Horizontal({ carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, 
   );
 }
 
-function Historia({ carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, bandera }: Datos) {
+function Historia({ carga, anio, dia, fecha, tasaLinea, hasta, paises }: Datos) {
   const tamFecha = fecha.length <= 8 ? 210 : fecha.length <= 12 ? 172 : 136;
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "220px 84px 230px", color: CREMA, fontFamily: "Geist", ...fondo(false) }}>
@@ -208,12 +162,6 @@ function Historia({ carga, anio, dia, fecha, tasaLinea, frase, hasta, paises, ba
       <div style={{ display: "flex" }}>
         <Anio dia={carga ? dia : 138} anio={anio} celda={22} hueco={8} />
       </div>
-      {carga ? (
-        <div style={{ display: "flex", alignItems: "center", gap: 24, fontSize: 46, lineHeight: 1.2 }}>
-          <Bandera iso={carga.mejor} ancho={72} src={bandera} />
-          <div style={{ display: "flex", flex: 1 }}>{frase}</div>
-        </div>
-      ) : null}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", fontSize: 72, fontWeight: 700, letterSpacing: -2 }}>{carga ? t.tarjeta.yVos : t.tarjeta.cta}</div>
         <div style={{ display: "flex", padding: "18px 34px", borderRadius: 999, backgroundColor: CREMA, color: TINTA, fontSize: 40, fontWeight: 700 }}>calcular.ar</div>
@@ -251,27 +199,17 @@ export async function GET(req: Request) {
   const cero = carga?.tasa === 0;
   const pct = (n: number) => new Intl.NumberFormat(LOCALE, { style: "percent", maximumFractionDigits: 0 }).format(n / 100);
   const fecha = !carga ? "" : cero ? t.cero.dia : new Intl.DateTimeFormat(LOCALE, { day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(Date.UTC(anio, 0, dia)));
-  const nombre = (iso: string, mercado: string) => nombreDePais({ codigo: mercado, pais: iso, nombre: iso, idioma: "es" }, LOCALE);
-  const origen = carga ? g.paises.find((p) => p.mercado === carga.mercado) : undefined;
-  const frase = !carga
-    ? ""
-    : carga.ventaja === 0 || (origen && origen.iso === carga.mejor)
-      ? t.tarjeta.mejorPropio(origen ? nombre(origen.iso, origen.mercado) : nombre(carga.mejor, carga.mejor.toLowerCase()))
-      : t.tarjeta.mejor(nombre(carga.mejor, carga.mejor.toLowerCase()), pct(carga.ventaja));
-  const bandera = carga ? await banderaDe(carga.mejor) : null;
   const datos: Datos = {
     carga,
     anio,
     dia,
     fecha,
     tasaLinea: !carga ? "" : cero ? t.cero.motivo : t.tarjeta.tasa(pct(carga.tasa)),
-    frase,
     hasta: cero ? [t.cero.tarjetaAntes, ""] : partir(t.tarjeta.hasta),
     paises: g.paises.length,
-    bandera,
   };
 
-  const texto = ["CalculAR calcular.ar 0123456789%.,", datos.hasta.join(" "), fecha, datos.tasaLinea, frase, t.tarjeta.yVos, t.tarjeta.cta, t.tarjeta.generica, t.tarjeta.genericaBajada(datos.paises), carga?.mejor ?? ""].join(" ");
+  const texto = ["CalculAR calcular.ar 0123456789%.,", datos.hasta.join(" "), fecha, datos.tasaLinea, t.tarjeta.yVos, t.tarjeta.cta, t.tarjeta.generica, t.tarjeta.genericaBajada(datos.paises)].join(" ");
   const unicos = [...new Set(texto)].join("");
   const pedidas = await Promise.all([fuente(400, unicos), fuente(700, unicos)]);
   const pesos = [400, 700] as const;
@@ -280,7 +218,7 @@ export async function GET(req: Request) {
   return new ImageResponse(historia ? <Historia {...datos} /> : <Horizontal {...datos} />, {
     width: historia ? 1080 : 1200,
     height: historia ? 1920 : 630,
-    headers: (carga && !bandera) || fonts.length < pedidas.length ? CABECERAS_INCOMPLETA : CABECERAS,
+    headers: fonts.length < pedidas.length ? CABECERAS_INCOMPLETA : CABECERAS,
     ...(fonts.length ? { fonts } : {}),
   });
 }
