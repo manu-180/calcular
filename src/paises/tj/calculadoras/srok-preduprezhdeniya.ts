@@ -1,6 +1,6 @@
 import { definirCalculadora, enMapa } from "@/motor/calculo";
 
-// Трудовой кодекс: ч. 1 ст. 45 (срок в месяцах), ч. 1 ст. 41 (две недели). Месяцы считаются календарными.
+// Черновик: изменения 2026 года не прочитаны полностью (см. datos.json). Трудовой кодекс: ч. 1 ст. 45 (срок в месяцах), ч. 1 ст. 41 (две недели). Месяцы считаются календарными.
 function plyusMesyatsy(data: string, mesyatsy: number): string {
   const [g, m, d] = data.split("-").map(Number);
   const posledniy = new Date(Date.UTC(g, m - 1 + mesyatsy + 1, 0)).getUTCDate();
@@ -12,7 +12,7 @@ export default definirCalculadora({
   mercado: "tj",
   concepto: "preaviso",
   slug: "srok-preduprezhdeniya",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "tj.preduprezhdenie": "mapa", "tj.preduprezhdenie-rabotnika": "numero" },
   campos: [
     { id: "data", tipo: "fecha", etiqueta: "Дата вручения предупреждения", porDefecto: "hoy" },

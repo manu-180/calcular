@@ -1,12 +1,12 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 
-// Трудовой кодекс: ст. 67 (неделя), ч. 1 ст. 154 (множитель), ч. 6 ст. 79 (предел). Часы в месяце: неделя × 52 / 12, приближение.
+// Черновик: изменения 2026 года не прочитаны полностью (см. datos.json). Трудовой кодекс: ст. 67 (неделя), ч. 1 ст. 154 (множитель), ч. 6 ст. 79 (предел). Часы в месяце: неделя × 52 / 12, приближение.
 export default definirCalculadora({
   id: "tj.sverkhurochnye",
   mercado: "tj",
   concepto: "horas-extra",
   slug: "sverkhurochnye",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "tj.nedelya-chasov": "numero",
     "tj.sverkhurochnye-mnozhitel": "numero",

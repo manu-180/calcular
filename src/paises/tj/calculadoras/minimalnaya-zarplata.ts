@@ -7,7 +7,7 @@ export default definirCalculadora({
   concepto: "salario-minimo",
   slug: "minimalnaya-zarplata",
   estado: "publicado",
-  requiere: { "tj.mzp": "numero", "tj.nedelya-chasov": "numero" },
+  requiere: { "tj.mzp": "numero" },
   campos: [
     { id: "dolya", tipo: "porcentaje", etiqueta: "Какую часть месячной нормы вы отработали", min: 0, max: 100, porDefecto: 100 },
     { id: "zarplata", tipo: "moneda", etiqueta: "Ваша зарплата за месяц (по желанию)", min: 0, requerido: false },

@@ -1,12 +1,12 @@
 import { definirCalculadora, enMapa, ErrorEntrada } from "@/motor/calculo";
 
-// Трудовой кодекс: ч. 2 ст. 51 (три оклада) и ч. 1 ст. 169 (средний месячный заработок). Сокращение есть в обеих статьях.
+// Черновик: изменения 2026 года не прочитаны полностью (см. datos.json). Трудовой кодекс: ч. 2 ст. 51 (три оклада) и ч. 1 ст. 169 (средний месячный заработок). Сокращение есть в обеих статьях.
 export default definirCalculadora({
   id: "tj.vykhodnoe-posobie",
   mercado: "tj",
   concepto: "indemnizacion-despido",
   slug: "vykhodnoe-posobie",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "tj.vykhodnoe-mesyatsev": "mapa" },
   campos: [
     { id: "zarabotok", tipo: "moneda", etiqueta: "Среднемесячный заработок", min: 0, porDefecto: 5000 },
