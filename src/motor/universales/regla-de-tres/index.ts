@@ -29,6 +29,7 @@ import { contenidoRo } from "./contenido/ro";
 import { contenidoRu } from "./contenido/ru";
 import { contenidoSk } from "./contenido/sk";
 import { contenidoSq } from "./contenido/sq";
+import { contenidoSl } from "./contenido/sl";
 import { contenidoSr } from "./contenido/sr";
 import { contenidoSv } from "./contenido/sv";
 import { contenidoTh } from "./contenido/th";
@@ -66,6 +67,7 @@ import { textosRo } from "./textos/ro";
 import { textosRu } from "./textos/ru";
 import { textosSk } from "./textos/sk";
 import { textosSq } from "./textos/sq";
+import { textosSl } from "./textos/sl";
 import { textosSr } from "./textos/sr";
 import { textosSv } from "./textos/sv";
 import { textosTh } from "./textos/th";
@@ -78,7 +80,7 @@ export default definirUniversal<UiReglaDeTres>({
   id: "regla-de-tres",
   concepto: "regla-de-tres",
   definir,
-  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mn: textosMn, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mn: contenidoMn, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mn: textosMn, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sl: textosSl, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mn: contenidoMn, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sl: contenidoSl, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });

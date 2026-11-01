@@ -778,6 +778,27 @@ export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
     celuImagen: "Me kamerën e telefonit, ky kod hap imazhin gati për t'u shpërndarë në story.",
     cerrar: "Mbyllni",
   }),
+  // Esloveno (ADR 0002, D32): impersonal; «zgodba» es la historia de Instagram.
+  sl: base({
+    grupo: "Deli prek:",
+    instagramSub: "Zgodba",
+    copiar: "Kopiraj povezavo",
+    mas: "Več možnosti",
+    nuevaPestana: "odpre se v novem zavihku",
+    formato: "Oblika slike",
+    historia: "Zgodba 9:16",
+    feed: "Objava 1:1",
+    descargar: "Prenesi sliko",
+    copiado: "Povezava je kopirana.",
+    compartido: "Poslano.",
+    enInstagram: "Končano. Povezava je tudi kopirana in jo lahko prilepite v zgodbo z nalepko Povezava.",
+    descargado: "Slika je prenesena, povezava pa kopirana. S telefona jo lahko objavite kot zgodbo, povezavo pa dodate z nalepko Povezava.",
+    error: "Deljenje trenutno ni na voljo.",
+    alCelu: "Na Instagramu se objavlja s telefona",
+    celuPagina: "S kamero telefona ta koda odpre kartico, ki jo z enim dotikom pošljete v zgodbo.",
+    celuImagen: "S kamero telefona ta koda odpre sliko, pripravljeno za deljenje v zgodbi.",
+    cerrar: "Zapri",
+  }),
 };
 
 export function textosRedes(idioma: Idioma, trato: Trato, locale?: string): TextosRedes {

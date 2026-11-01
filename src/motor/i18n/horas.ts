@@ -4037,7 +4037,114 @@ const sq: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq };
+// ───────────────────────────── sl ─────────────────────────────
+
+// Esloveno (ADR 0002, D32): impersonal, como el resto. En el SEO {en} llega en minúscula («v Sloveniji»); en
+// la página, con mayúscula y al comienzo de la oración («V Sloveniji stane…», «Na Hrvaškem…»). Las plantillas
+// no conjugan nada con {n}: los números van detrás de dos puntos o entre paréntesis («država za državo (v
+// indeksu: {n})»), porque «država» concuerda con el número.
+const sl: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Koliko ur dela je to?",
+    seo: {
+      titulo: ["Koliko ur dela stane iPhone {en}", "Ure dela za iPhone {en}", "Koliko ur dela je to?"],
+      tituloGlobal: ["Koliko ur dela stane iPhone po svetu", "Koliko ur dela je to?"],
+      tituloProducto: ["Koliko ur dela stane {producto} {en}", "Ure dela za {producto} {en}", "Koliko ur dela stane {producto}"],
+      tituloProductoGlobal: ["Koliko ur dela stane {producto} po svetu", "Koliko ur dela stane {producto}"],
+      descripcion: "iPhone, MacBook ali Spotify, preračunani v ure dela pri minimalni plači {en} in v drugih državah (v indeksu: {n}). Uradne cene in vir vsake številke.",
+      descripcionGlobal: "iPhone, MacBook ali Spotify, preračunani v ure dela pri minimalni plači, država za državo (v indeksu: {n}). Uradne cene in vir vsake številke.",
+      descripcionProducto: "{en} {producto} stane {horas} dela pri minimalni plači. Lestvica držav ({n}) z uradno ceno in virom vsake številke.",
+      descripcionProductoGlobal: "Koliko ur dela pri minimalni plači stane {producto}, država za državo (v indeksu: {n}). Uradna cena vsake trgovine in vir vsake številke.",
+    },
+    ceja: "Indeks: {mes}",
+    h1: "Koliko ur dela je to?",
+    h1Producto: "Koliko ur dela stane {producto}?",
+    bajada: "Uradna cena istega izdelka, preračunana v ure dela pri minimalni plači, država za državo (v indeksu: {n}).",
+    form: { producto: "Izdelek", pais: "Država", porMes: "na mesec" },
+    heroe: {
+      antes: "{en} {producto} stane",
+      despues: "dela pri minimalni plači",
+      despuesMes: "dela pri minimalni plači vsak mesec",
+      jornadaUno: "{n} delovni dan po 8 ur",
+      jornadaOtras: "Delovni dnevi po 8 ur: {n}",
+      precio: "Uradna cena {precio}",
+      salario: "Minimalna plača {monto} na uro",
+      sinPrecio: "{en} nobena uradna trgovina ne prodaja tega izdelka.",
+      mejor: "{en} zadošča {horas}.",
+      mejorPropio: "V nobeni državi indeksa ni manj ur dela.",
+      puesto: "{p}. mesto od {total}",
+      escalaHoras: "Vsak kvadratek je ena ura dela",
+      escalaSemanas: "Vsak kvadratek je en teden po 40 ur",
+      masDeUnAnio: "Več kot eno leto dela",
+    },
+    ranking: {
+      titulo: "Država za državo",
+      bajada: "Od najmanjšega do največjega števila ur. Vsaka cena je uradna cena proizvajalca v tej državi.",
+      lista: "Države, razvrščene po urah dela",
+      verTodos: "Prikaži vse države ({n})",
+      verMenos: "Prikaži manj",
+      elegido: "Izbrano",
+      sinPrecio: "Države indeksa brez podatkov: {n}. Nobena uradna trgovina tam ne prodaja tega izdelka.",
+      horas: "Ure",
+      precio: "Uradna cena",
+    },
+    compartir: {
+      titulo: "Kartica za deljenje",
+      bajada: "Vsebuje samo javne podatke: uradno ceno in ure dela pri minimalni plači.",
+      boton: "Deli kartico",
+      descargar: "Prenesi za Stories",
+      copiado: "Povezava je kopirana.",
+      compartido: "Končano, poslano.",
+      error: "Deljenje zdaj ni uspelo.",
+      texto: "{en} {producto} stane {horas} dela pri minimalni plači. Kaj pa v drugih državah?",
+      alt: "Predogled kartice",
+    },
+    metodo: {
+      titulo: "Kako računamo",
+      estimacion: "Ure = uradna cena ÷ minimalna plača na uro. To je primerjava uradnih cen, ne ponudba za nakup.",
+      supuestos: [
+        "Cena je cenikovna cena najcenejše različice v uradni trgovini proizvajalca, prebrana s strani za vsako državo.",
+        "Spotify Premium je individualni paket za en mesec, brez uvodnih akcij.",
+        "Minimalna plača je splošni znesek, ki danes velja za odraslega zaposlenega s polnim delovnim časom. Kjer jih je več po dejavnosti ali regiji, se upošteva znesek za maloprodajo v glavni regiji.",
+        "Kadar zakon določa minimum na mesec ali na dan, se preračuna v ure po zakonskem tedenskem delovnem času v tej državi.",
+        "Španija in Portugalska izplačujeta minimalno plačo štirinajstkrat na leto: razporedi se na 12 mesecev, tako kot to počne Eurostat.",
+        "Kadar trgovina navaja ceno v ameriških dolarjih, se preračuna po uradnem tečaju te države.",
+        "Delovni dan ima v vsaki državi 8 ur, da je dneve mogoče primerjati.",
+      ],
+      fuentesTitulo: "Vir vsake številke",
+      fuentesBajada: "Vsaka država z minimalno plačo, tedenskim delovnim časom in cenami iz trgovine, pri vsakem podatku datum branja.",
+      salario: "Minimalna plača",
+      jornada: "Tedenski delovni čas",
+      precio: "Cena",
+      cambio: "Menjalni tečaj",
+      consultado: "Prebrano: {fecha}",
+      verificado: "Preverjeno: {fecha}",
+      verFuente: "Prikaži vir",
+      sello: "Cene, prebrane v obdobju: {desde} do {hasta}. Cena, starejša od 120 dni, se ne prikazuje več.",
+      conversion: {
+        hora: "Zakon določa znesek na uro.",
+        mes: "Na mesec × 12 ÷ 52 tednov ÷ {h} h na teden.",
+        mesPagas: "Na mesec × {p} izplačil ÷ 52 tednov ÷ {h} h na teden.",
+        anio: "Na leto ÷ 52 tednov ÷ {h} h na teden.",
+        semana: "Na teden ÷ {h} h.",
+        dia: "Na dan ÷ {h} h delovnega dne.",
+        diaPagado: "Na dan × plačani dnevi ({d}) ÷ {h} h na teden.",
+        divisor: "Na mesec ÷ {d}, urni delitelj, ki ga določa zakon.",
+      },
+    },
+    faqTitulo: "Pogosta vprašanja",
+    faq: [
+      { pregunta: "Kako se izračunajo ure?", respuesta: "Uradna cena izdelka se deli z minimalno plačo na uro v tej državi. Kadar zakon določa minimum na mesec ali na dan, se preračuna v ure po zakonskem tedenskem delovnem času v tej državi." },
+      { pregunta: "Zakaj prav minimalna plača?", respuesta: "To je plača, ki jo zakon določa skoraj v vsaki državi in jo je mogoče preveriti v uradnem viru. Povprečno plačo vsaka država meri po svoje, zato je ne bi bilo mogoče enako zanesljivo primerjati." },
+      { pregunta: "Je davek vključen v ceno?", respuesta: "To je cenikovna cena, ki jo uradna trgovina prikazuje v vsaki državi. V Združenih državah in Kanadi ne vsebuje prometnega davka, v drugih državah pa lahko trgovina davek doda šele na blagajni." },
+      { pregunta: "Zakaj kakšna država manjka?", respuesta: "V indeksu so samo države s preverjeno veljavno minimalno plačo in ceno iz uradne trgovine. Brez uradne spletne trgovine za ta izdelek ni podatkov. Cen preprodajalcev nikoli ne uporabljamo." },
+      { pregunta: "Kako pogosto se podatki posodabljajo?", respuesta: "Cene se berejo v vsaki trgovini in po 120 dneh zastarajo: starejša cena se ne prikazuje več. Minimalna plača se vzame iz uradnih podatkov vsake države in se spremeni, ko se spremeni zakon." },
+    ],
+    og: { de: "dela pri minimalni plači", deMes: "dela pri minimalni plači na mesec", generica: "Koliko ur dela stane {producto}?", genericaBajada: "Uradna cena v urah dela pri minimalni plači, država za državo ({n})", menos: "Najmanj ur", cta: "Vse države na" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

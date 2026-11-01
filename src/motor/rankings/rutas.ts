@@ -19,6 +19,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   bg: "klasatsia-na-darzhavite",
   mn: "ulsuudyn-jagsaalt",
   hy: "yerkrneri-varkanish",
+  sl: "lestvice-drzav",
 
   pl: "ranking-krajow",
   sv: "landsrankning",
@@ -69,6 +70,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   mn: { rinde: "tsalingiin-khudaldan-avakh-chadvar", libertad: "tatvaraas-choloot-odor", aumento: "nemegdlees-khed-uldekh" },
   // hy con la transliteración ASCII de ADR 0002, D30.
   hy: { rinde: "ashkhatavardzi-gnoghunakutyun", libertad: "harkayin-azatutyan-or", aumento: "inchkan-e-mnum-barcratsumits" },
+  // sl en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D32).
+  sl: { rinde: "kje-placa-najvec-zaleze", libertad: "dan-davcne-svobode", aumento: "koliko-ostane-od-povisice" },
 
   pl: { rinde: "gdzie-pensja-daje-najwiecej", libertad: "dzien-wolnosci-podatkowej", aumento: "ile-zostaje-z-podwyzki" },
   sv: { rinde: "dar-lonen-racker-langst", libertad: "skattefrihetsdagen", aumento: "vad-som-blir-kvar-av-en-loneokning" },

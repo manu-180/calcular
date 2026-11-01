@@ -1,3 +1,4 @@
+import { formaSl, pluralSl } from "./plural";
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
@@ -2620,7 +2621,82 @@ const sq: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq };
+// Esloveno (ADR 0002, D32): impersonal como los demás; el país se declina con GRAMATICA.sl («v Sloveniji») y
+// los días con formaSl/pluralSl: «čez» lleva acusativo («čez 3 dni») y «pred» instrumental («pred 3 dnevi»).
+const gSl = GRAMATICA.sl;
+const sl: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Koledar plač in davkov",
+    seo: {
+      titulo: (pais, anios) => [
+        `Koledar plač in davkov ${anios} ${gSl.en(pais)}: pomembni datumi`,
+        `Koledar plač in davkov ${anios} ${gSl.en(pais)}`,
+        `Koledar plač ${gSl.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Datumi, ki spreminjajo plačo ${gSl.en(pais)}, iz uradnih virov: ${proximas}. Pri vsakem datumu je kalkulator.`,
+      descripcionSin: (pais) => `Datumi, ki spreminjajo plačo ${gSl.en(pais)}, iz uradnih virov, pri vsakem pa kalkulator. Dodajte jih v koledar na telefonu.`,
+    },
+    ceja: (anios) => `Koledar ${anios}`,
+    h1: (pais) => `Koledar plač in davkov ${gSl.en(pais)}`,
+    acento: "datumi, od katerih je odvisna plača",
+    bajada: "Vsak datum prihaja iz uradnega vira in vodi do kalkulatorja, na katerega vpliva. Stran se sama posodobi, takoj ko je objavljena nova vrednost.",
+    proxima: "Naslednji datum",
+    cuenta: {
+      hoy: "Danes",
+      manana: "Jutri",
+      ayer: "Včeraj",
+      en: (n) => `Čez ${pluralSl(n, "dan", "dneva", "dni", "dni")}`,
+      hace: (n) => `Pred ${pluralSl(n, "dnem", "dnevoma", "dnevi", "dnevi")}`,
+      dias: (n) => formaSl(n, "dan", "dneva", "dni", "dni"),
+    },
+    queViene: "Kmalu",
+    yaRige: "Že velja",
+    mesPorMes: "Leto po mesecih",
+    sinFechas: "Sprememb ni napovedanih",
+    filtro: "Filtriraj po temi",
+    todo: "Vse",
+    tipos: { pago: "Izplačila", "salario-minimo": "Minimalna plača", impuestos: "Davki", aportes: "Prispevki in pokojnine", laboral: "Pravila dela", indices: "Referenčne vrednosti" },
+    pasa: (antes, despues) => `Sprememba: ${antes} postane ${despues}`,
+    queda: (valor) => `Velja: ${valor}`,
+    cambian: "Zneski se spreminjajo",
+    zonas: (lista) => `Regije: ${lista}`,
+    limite: "Skrajni rok",
+    agregar: "Dodaj v moj koledar",
+    descargar: "Apple, Outlook in drugi (datoteka .ics)",
+    google: "Google Koledar",
+    calcular: "Izračunaj",
+    tambien: "Tudi v kalkulatorjih",
+    fuente: (organismo, fecha) => `Vir: ${organismo}. Preverjeno: ${fecha}`,
+    verificado: (fecha) => `Preverjeno: ${fecha}`,
+    suscribir: {
+      titulo: "Celoten koledar, vedno ažuren",
+      texto: "Naročite se enkrat in novi datumi se bodo sami pojavljali v koledarju na telefonu ali računalniku.",
+      boton: "Naroči se na koledar",
+      copiar: "Kopiraj povezavo",
+      copiado: "Povezava je kopirana",
+    },
+    fuentes: {
+      titulo: "Od kod prihaja vsak datum",
+      texto: "Tukaj so samo datumi, ki jih je že določil predpis, ali vrednost, ki jo je objavil uradni organ. Česar še ni objavljeno, tukaj ni.",
+    },
+    vacio: "V naslednjih dvanajstih mesecih za to temo ni datumov.",
+    destacado: {
+      ceja: "Koledar plač",
+      titulo: "Datumi, od katerih je letos odvisna plača",
+      ir: "Prikaži koledar",
+      proxima: (titulo, fecha) => `Naslednje: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Koledar plač in davkov ${gSl.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Roki za izplačila in davke ${gSl.en(pais)}, iz uradnih virov.`,
+      calculadora: "Kalkulator",
+      fuente: "Vir",
+    },
+    og: { proxima: "Naslednji datum", mas: (n) => `In še ${pluralSl(n, "rok", "roka", "roki", "rokov")} letos` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

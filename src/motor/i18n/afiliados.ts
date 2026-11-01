@@ -477,6 +477,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "hapet në një skedë të re",
     },
   },
+  // Esloveno (ADR 0002, D32): «vi» en minúscula.
+  sl: {
+    base: {
+      titulo: "Se selite v tujino ali plačujete iz druge države?",
+      etiqueta: "Partnerske povezave",
+      socios: {
+        wise: "Račun v več valutah za prejemanje in pošiljanje denarja med državami po srednjem tržnem tečaju, s provizijo, ki jo vidite vnaprej.",
+        deel: "Pogodbe in izplačila za tiste, ki iz ene države delajo za podjetje iz druge.",
+      },
+      nota: "Če prek teh povezav odprete račun, lahko stran prejme provizijo. Vi zato ne plačate nič več.",
+      nuevaPestana: "odpre se v novem zavihku",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

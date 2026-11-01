@@ -1,3 +1,4 @@
+import { pluralSl } from "./plural";
 import { pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { casosEl, GRAMATICA, mayusculaHu } from "./gramatica";
@@ -6677,7 +6678,173 @@ const sq: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq };
+// ───────────────────────────── sl ─────────────────────────────
+
+// Esloveno (ADR 0002, D32): «vi» en minúscula, como los bancos y eDavki; la tarjeta y el texto para
+// compartir, en primera persona. Nada de participios con género sobre la persona: presente o impersonal. El
+// país se declina con GRAMATICA.sl y los números con pluralSl. La fecha llega de Intl en nominativo
+// («15. oktober») y se dibuja aparte, así que la frase termina en dos puntos: «do» pediría genitivo.
+const gSl = GRAMATICA.sl;
+const SEO_SL = "Dan davčne svobode in neto plača po svetu";
+const dniSl = (d: number) => pluralSl(d, "dan", "dneva", "dni", "dni");
+// Tras «v»: «v 1 državi», «v 2 državah», «v 25 državah».
+const drzavahSl = (n: number) => pluralSl(n, "državi", "državah", "državah", "državah");
+
+const sl: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Vaša plača po svetu",
+    seo: {
+      titulo: (pais) => [`${SEO_SL} | ${pais}`, SEO_SL, "Vaša plača po svetu"],
+      tituloGlobal: [SEO_SL, "Vaša plača po svetu"],
+      descripcion: (pais, n) => `Ugotovite, do katerega dne v letu s svojo plačo ${gSl.en(pais)} delate za državo in koliko neto bi vam ostalo v ${drzavahSl(n)}. Brezplačno, brez registracije.`,
+      descripcionGlobal: (n) => `Ugotovite, do katerega dne v letu delate za državo in koliko neto plače bi vam ostalo v ${drzavahSl(n)}. Brezplačno, brez registracije.`,
+    },
+    ceja: "Vaš dan davčne svobode",
+    h1: "Do katerega dne v letu delate za državo?",
+    bajada: (n) => `Vnesite bruto plačo in videli boste svoj datum. Nato ga primerjajte v ${drzavahSl(n)}, z enako kupno močjo in davčnimi pravili vsake države.`,
+    form: {
+      titulo: "Vaša plača",
+      sueldo: "Bruto plača",
+      mes: "Na mesec",
+      anio: "Na leto",
+      periodo: "Obdobje plače",
+      pais: "Država, v kateri delate",
+      ejemplo: "Primer",
+      ejemploAyuda: "To je primer plače. Vnesite svojo in vse številke se bodo takoj preračunale.",
+      propio: "Prevzeto iz vašega izračuna.",
+      invalido: "Vnesite znesek, večji od nič.",
+      pagas: "Mesečna plača s plačilne liste: zakonska dodatna izplačila (13. ali 14. plača) dodamo mi. Neto plača je povprečje za 12 mesecev.",
+    },
+    heroe: {
+      hasta: (fecha) => `Za državo delate do tega dne: ${fecha}`,
+      tasa: (pct) => `${pct} vaše plače gre za dohodnino in obvezne prispevke.`,
+      dias: (n, total) => `Dnevi za državo: ${n} od ${total}`,
+      enMano: "Neto vam ostane",
+      porMes: "na mesec",
+      anio: (anio, n, total) => `Leto ${anio}: dnevi za državo: ${n} od ${total}.`,
+      resto: "Od naslednjega dne je vse, kar zaslužite, vaše.",
+    },
+    ranking: {
+      titulo: "Ista plača, država za državo",
+      bajada: "Toliko neto bi vam ostalo v vsaki državi pri enaki kupni moči. Vsaka vrstica prihaja iz uradnega kalkulatorja te države.",
+      lista: "Države, razvrščene po neto plači",
+      buscar: "Poiščite državo",
+      filtrar: "Filtriraj po regiji",
+      todas: "Vse",
+      regiones: { americas: "Amerika", europa: "Evropa", asia: "Azija in Oceanija", africa: "Afrika in Bližnji vzhod" },
+      tuPais: "Vaša država",
+      mejor: "Najboljši rezultat",
+      enMano: "Neto na mesec",
+      enTuMoneda: "V vaši valuti",
+      vsTuPais: "V primerjavi z vašo državo",
+      verTodos: (n) => `Prikaži vse države (${n})`,
+      verMenos: "Prikaži manj",
+      sinResultados: (q) => `Nobena država ne ustreza iskanju „${q}“.`,
+      abrir: (pais) => `Odpri kalkulator ${gSl.para(pais)}`,
+      mas: (pct) => `${pct} več`,
+      menos: (pct) => `${pct} manj`,
+      igual: "Enako",
+      puesto: (p, total) => `Vaša država je na ${p}. mestu od ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Vaša kartica za deljenje",
+      bajada: "Prikazuje vaš datum in odstotke. Koliko zaslužite, na njej nikoli ne piše.",
+      hasta: (fecha) => `Za državo delam do tega dne: ${fecha}`,
+      tasa: (pct) => `${pct} moje plače gre za davke`,
+      mejor: (pais, pct) => `Z mojo plačo bi mi ${gSl.en(pais)} ostalo ${pct} več neto`,
+      mejorPropio: (pais) => `Z mojo plačo mi nikjer ne ostane več kot ${gSl.en(pais)}`,
+      yVos: "Kaj pa vi?",
+      cta: "Ugotovite svoj datum:",
+      generica: "Do katerega dne v letu delate za državo?",
+      genericaBajada: (n) => `Vaša plača v ${drzavahSl(n)}, po uradnem kalkulatorju vsake od njih`,
+      compartir: "Deli kartico",
+      compartirDuelo: "Odgovori na izziv",
+      descargar: "Prenesi sliko",
+      copiado: "Povezava je kopirana. Prilepite jo, kamor želite.",
+      compartido: "Končano, poslano.",
+      error: "Deljenje ni uspelo. Poskusite znova.",
+      texto: (fecha) => `Za državo delam do tega dne: ${fecha}. Kaj pa vi?`,
+      alt: "Predogled vaše kartice",
+    },
+    duelo: {
+      amigo: (fecha) => `Oseba, ki vam je poslala povezavo, dela za državo do tega dne: ${fecha}`,
+      yVos: "Kaj pa vi?",
+      invitacion: "Vnesite svojo plačo in se primerjajte.",
+      vos: "Vi",
+      elAmigo: "Pošiljatelj",
+      dia: "Za državo dela do tega dne",
+      tasa: "Davki in prispevki",
+      mejorPais: "Najboljši rezultat",
+      antes: (d) => `Razlika v vašo korist: ${dniSl(d)}. Vaša svoboda se začne prej kot pri pošiljatelju.`,
+      despues: (d) => `Razlika v korist pošiljatelja: ${dniSl(d)}. Njegova svoboda se začne prej kot vaša.`,
+      empate: "Obema se svoboda začne isti dan.",
+      desde: (pais) => `Delo ${gSl.en(pais)}`,
+    },
+    cero: {
+      dia: "nič dni",
+      heroeAntes: "Za državo delate",
+      tarjetaAntes: "Za državo delam",
+      motivo: "Od te plače se ne plačujeta niti dohodnina niti obvezni prispevki.",
+      texto: "Letos ne delam za državo niti en dan. Kaj pa vi?",
+      amigo: "Oseba, ki vam je poslala povezavo, ne dela za državo niti en dan.",
+    },
+    metodo: {
+      titulo: "Kako računamo",
+      estimacion: "To je ocena za primerjavo držav, ne plačilna lista. Davčne olajšave, otroci ali bonusi lahko spremenijo vašo številko.",
+      supuestos: [
+        "Oseba brez partnerja in otrok, s privzetimi vrednostmi kalkulatorja vsake države.",
+        "Neto plača je to, kar ostane po dohodnini in prispevkih, ki jih plača sam zaposleni. Davki na potrošnjo in prispevki delodajalca se ne upoštevajo.",
+        "Trinajsta plača ali druga obvezna dodatna izplačila se razporedijo na leto tako, kot določa zakon vsake države.",
+        "V Združenih državah se ne dodajo davki posameznih zveznih držav ali lokalni davki: samo zvezni davek in prispevki iz plače.",
+        "Za preračun vaše plače v drugo državo uporabljamo pariteto kupne moči (PKM): enak življenjski standard, ne današnjega menjalnega tečaja.",
+        "PKM Argentine se posodablja z indeksom cen življenjskih potrebščin INDEC, ker ga Svetovna banka objavlja samo do leta 2021.",
+        "Dan svobode razporedi davke na leto od 1. januarja. Če gre za davke 30 % plače, delate za državo 30 % leta.",
+      ],
+      ppaTitulo: "Pariteta kupne moči",
+      bancoMundial: "Svetovna banka",
+      ppa: (organismo, indicador, anio) => `${organismo}, kazalnik ${indicador}, zadnje razpoložljivo leto: ${anio}.`,
+      consultado: (fecha) => `Preverjeno: ${fecha}`,
+      verFuente: "Prikaži vir",
+      fuentesTitulo: "Vir za vsako državo",
+      fuentesBajada: "Vsaka vrstica uporablja kalkulator neto plače te države in njene uradne podatke.",
+      verificado: (fecha) => `Podatki preverjeni: ${fecha}`,
+      sello: (fecha) => `Uradni podatki, preverjeni pri viru vsake države. Najstarejše preverjanje: ${fecha}`,
+    },
+    faqTitulo: "Pogosta vprašanja",
+    faq: (n) => [
+      {
+        pregunta: "Kaj je dan davčne svobode?",
+        respuesta:
+          "To je dan v letu, ko bi imeli plačane davke in prispevke, če bi vse, kar zaslužite od 1. januarja, najprej šlo državi. Tukaj ga računamo iz vaše plače, ne iz povprečja države.",
+      },
+      {
+        pregunta: "Zakaj primerjamo po kupni moči?",
+        respuesta: "Po menjalnem tečaju je plača lahko videti ogromna ali drobna, odvisno od dneva. Pariteta kupne moči primerja, kaj lahko za ta denar res kupite v vsaki državi.",
+      },
+      {
+        pregunta: "Ali se moja plača shranjuje?",
+        respuesta: "Ne. Izračun poteka v vašem brskalniku. Kar delite, vsebuje samo datume, odstotke in države.",
+      },
+      {
+        pregunta: "Zakaj se moja dejanska neto plača razlikuje?",
+        respuesta:
+          "Računamo z osebo brez partnerja in otrok ter s privzetimi vrednostmi. Davčne olajšave, bonusi ali posebne ureditve spremenijo številko. Za natančen izračun svojega položaja odprite kalkulator svoje države.",
+      },
+      {
+        pregunta: "Katere države so tukaj?",
+        respuesta: `Danes ${pluralSl(n, "država", "državi", "države", "držav")}, vsaka s svojim kalkulatorjem neto plače in uradnimi podatki. Nove dodajamo, takoj ko preverimo njihova davčna pravila.`,
+      },
+    ],
+    destacado: {
+      ceja: "Svetovna primerjava",
+      titulo: "Do katerega dne v letu delate za državo?",
+      texto: "Vnesite plačo in si oglejte, koliko neto bi vam ostalo v drugih državah.",
+      ir: "Izračunaj svoj datum",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

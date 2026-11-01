@@ -664,6 +664,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Shikoni sa do të merrnit neto në më shumë se ${pluralSq(n, "vend", "vende")}`,
     },
   },
+  // Esloveno (ADR 0002, D32): «vi» en minúscula; botones en la forma corta.
+  sl: {
+    base: {
+      boton: "Deli",
+      botonAria: "Deli ta kalkulator",
+      menuTitulo: "Deli prek",
+      copiar: "Kopiraj povezavo",
+      copiado: "Povezava je kopirana",
+      compartido: "Poslano",
+      errorCorto: "Kopiranje ni uspelo",
+      errorAyuda: "Povezave ni bilo mogoče kopirati. Kopirajte jo iz naslovne vrstice brskalnika.",
+      nuevaPestana: "odpre se v novem zavihku",
+      mensaje: (nombre) => `${nombre}. Brezplačno, izračun traja minuto.`,
+      puenteIntro: "Kaj pa v drugih državah?",
+      puenteEnlace: (n) => `Oglejte si, koliko neto bi vam ostalo v več državah (število držav: ${n})`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

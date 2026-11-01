@@ -1433,7 +1433,44 @@ const sq: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq };
+// Esloveno (ADR 0002, D32): «vi» en minúscula, como los bancos y eDavki; el país va con «za» y acusativo
+// (GRAMATICA.sl: «za Slovenijo»). Botones en la forma corta («Kopiraj kodo»).
+const sl: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulator CalcularYa",
+    marcaNuevaPestana: "(odpre se v novem zavihku)",
+    noDisponible: { titulo: "Ta kalkulator ni na voljo", texto: "Morda se mu je spremenil naslov." },
+    insertar: "Vstavite na svojo stran",
+    pagina: {
+      titulo: (pais) => [`Brezplačni kalkulatorji za vašo stran | ${pais}`, "Brezplačni kalkulatorji za vašo stran"],
+      descripcion: (pais) => `Izberite kalkulator ${GRAMATICA.sl.para(pais)}, kopirajte kodo in ga vstavite na svoj blog ali stran. Brezplačno, z uradnimi podatki, ki so vedno ažurni.`,
+      h1: "Vstavite kalkulator na svojo stran",
+      bajada: "Izberite kalkulator, kopirajte kodo in jo prilepite, kamor želite. Brezplačno, podatki pa se posodabljajo sami.",
+      calculadora: "Kalkulator",
+      buscar: "Poiščite kalkulator",
+      sinResultados: "Noben kalkulator ne ustreza vašemu iskanju.",
+      tema: "Videz",
+      claro: "Svetel",
+      oscuro: "Temen",
+      ancho: "Širina",
+      anchoCompleto: "Polna širina",
+      acento: "Poudarna barva",
+      colores: ["Zelena", "Modra", "Oranžna", "Rožnata", "Grafitna"],
+      credito: "Prikaži povezavo na vir pod kalkulatorjem",
+      vistaPrevia: "Predogled",
+      codigo: "Koda za vstavljanje",
+      copiar: "Kopiraj kodo",
+      copiado: "Koda je kopirana",
+      ayudaScript: "Skripta ni obvezna: višino kalkulatorja prilagodi njegovi vsebini.",
+      ventajas: ["Brezplačno in brez registracije", "Uradni podatki, vedno ažurni", "Prilagodi se vsaki širini"],
+      nota: "Pod kalkulatorjem je povezava na CalcularYa. Prosimo, ne odstranjujte je.",
+      verTodas: (pais) => `Vsi kalkulatorji ${GRAMATICA.sl.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulator CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

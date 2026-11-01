@@ -95,6 +95,17 @@ slug ASCII propio. «ju» en minúscula con 2.ª del plural («vendosni»), bot�
 - Falta para publicar Albania: el país en sí, con datos verificados, y revisión por hablante nativo. `kalkulator-page`
   queda libre para su local. `mercado.nombre` va indefinido: «Shqipëri».
 
+## 01/11/2026 · Motor esloveno (`claude/mundo-motor-sl`, ADR 0002 D32)
+
+`sl` entra en `IDIOMAS` e `IDIOMAS_VENTA` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo
+en el mundo» (`placa-po-svetu`), rankings (`lestvice-drzav`), horas de trabajo (`koliko-ur-dela`), calendario
+(`koledar-plac`), «Sueldos reales» (`dejanske-place`), venta completa y las 41 universales con slug ASCII propio.
+Vikanje con «vi» en minúscula y 2.ª del plural («vnesite»), mercados con `trato: "usted"`, formato `1.234,50 €`.
+Plurales one/two/few/other (`pluralSl`) y declinación del país (`GRAMATICA.sl`). Edición de prueba `zz-sl` (interna, `sl-001`).
+Fuentes oficiales: fu.gov.si, gov.si, pisrs.si y bsi.si abren desde este entorno (1/11/2026), buena noticia para el
+agente de país.
+- Falta para publicar Eslovenia: el país en sí, con datos verificados, y revisión por hablante nativo.
+
 ## 01/11/2026 · Tanda 4 de países: rs, me, bg, tj, bt (`claude/paises-tanda-4`)
 
 Publicados: Serbia (rs), Montenegro (me), Bulgaria (bg), Tayikistán (tj) y Bután (bt), detrás de cn. Los cinco

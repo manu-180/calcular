@@ -18,8 +18,10 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
 // En croata "uno" es 1, 21, 31... (no 11), "pocos" 2 a 4, 22 a 24... (no 12 a 14) y "otros" el resto,
 // fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
+// En esloveno, "dual" es la categoría "two" (2, 102...): «2 dneva», «2 leti»; ADR 0002, D32.
 export interface FormasUnidad {
   uno: string;
+  dual?: string;
   otros: string;
   pocos?: string;
   muchos?: string;
@@ -136,6 +138,15 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     horas: { uno: "sat", pocos: "sata", otros: "sati" },
     meses: { uno: "mjesec", pocos: "mjeseca", otros: "mjeseci" },
     anios: { uno: "godina", pocos: "godine", otros: "godina" },
+  },
+  // Esloveno (ADR 0002, D32): con dual. «uno» es 1, 101..., «dual» 2, 102..., «pocos» 3, 4, 103... y las
+  // fracciones («1,5 leta»), «otros» el resto: «1 dan», «2 dneva», «3 dni», «5 dni»; «1 leto», «2 leti», «3 leta», «5 let».
+  sl: {
+    dias: { uno: "dan", dual: "dneva", pocos: "dni", otros: "dni" },
+    semanas: { uno: "teden", dual: "tedna", pocos: "tedni", otros: "tednov" },
+    horas: { uno: "ura", dual: "uri", pocos: "ure", otros: "ur" },
+    meses: { uno: "mesec", dual: "meseca", pocos: "meseci", otros: "mesecev" },
+    anios: { uno: "leto", dual: "leti", pocos: "leta", otros: "let" },
   },
 };
 

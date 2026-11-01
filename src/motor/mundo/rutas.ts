@@ -17,6 +17,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   bg: "zaplatata-po-sveta",
   mn: "delkhiin-tsalin",
   hy: "ashkhatavardzy-ashkharhum",
+  sl: "placa-po-svetu",
 
   pl: "wynagrodzenie-na-swiecie",
   sv: "lon-i-varlden",
