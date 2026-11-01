@@ -30,6 +30,7 @@ import datosZz from "../src/paises/zz/datos.json";
 import { detectores } from "../src/paises/zz/fuentes";
 import { registro as registroReal } from "../src/paises";
 import { crudoDeNumero } from "../src/lib/prefill/intl-cliente";
+import { problemasDeTexto } from "./reglas_idioma";
 
 delete process.env.CALCULAR_HOY;
 delete process.env.CALCULAR_HOY_BUILD;
@@ -822,6 +823,12 @@ igual(
   ["Slovenska", "Česka", "Nemecka", "Kanady", "Izraela", "Spojených arabských emirátov", "Dominikánskej republiky", "Svätého Vincenta a Grenadín", "Maldív", "Južnej Afriky"],
 );
 igual("gramática eslovaca: para", ["Slovensko", "Kanada", "Kolumbia", "Česká republika", "Dominikánska republika"].map((p) => GRAMATICA.sk.para(p)), ["pre Slovensko", "pre Kanadu", "pre Kolumbiu", "pre Českú republiku", "pre Dominikánsku republiku"]);
+// Reglas del eslovaco: atrapan lo checo y el tykanie, y dejan pasar el texto bueno.
+const reglasSk = (t: string) => problemasDeTexto(t, "sk", "usted", "sk-SK");
+igual("reglas sk: texto bueno", reglasSk("Zadajte sumu a kliknite na „Vypočítať“. Pre iPhone 18 Pro čo najskôr, CO2 zvlášť."), []);
+for (const malo of ["Výše úvěru", "Zadejte částku", "alebo nebo", "Zadaj sumu", "Môžeš to zmeniť.", "pro Slovensko", "Co je to?", "Suma «nová»", "Toto je pre Vás."]) {
+  verdad(`reglas sk: atrapa «${malo}»`, reglasSk(malo).length > 0);
+}
 // Griego: one/other de Intl.PluralRules («1 έτος», «3 έτη», «1,5 έτη»).
 igual("años en griego", [1, 3, 1.5].map((n) => formatearValorUnidad(n, "anios", "el-GR")), ["1 έτος", "3 έτη", "1,5 έτη"]);
 igual("días en griego", [1, 2, 0.5].map((n) => formatearValorUnidad(n, "dias", "el-GR")), ["1 ημέρα", "2 ημέρες", "0,5 ημέρες"]);

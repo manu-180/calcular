@@ -10,7 +10,7 @@ export const contenidoSk: ContenidoUniversal = (ctx) => {
   return {
     h1: "Hypotekárna kalkulačka",
     title: tituloQueEntre(`Hypotekárna kalkulačka: ${ctx.nombrePais}`, "Hypotekárna kalkulačka: splátka a úroky", "Hypotekárna kalkulačka"),
-    description: "Vypočítajte mesačnú splátku hypotéky podľa ceny nehnuteľnosti, vlastných zdrojov, úrokovej sadzby a doby splatnosti. Uvidíte aj úroky a zostatok úveru po rokoch.",
+    description: "Vypočítajte mesačnú splátku hypotéky podľa ceny nehnuteľnosti, vlastných zdrojov, úrokovej sadzby a doby splatnosti. Uvidíte aj úroky a zostatok po rokoch.",
     intro: [
       "Hypotéka je pre väčšinu domácností najväčší dlh, aký si kedy vezmú. Oplatí sa vidieť všetky čísla ešte pred rokovaním s bankou.",
       "Zadajte cenu nehnuteľnosti, vlastné zdroje, sadzbu a dobu splatnosti. Ak spolu s hypotékou platíte poistenie alebo daň z nehnuteľností, pridajte ich a uvidíte skutočnú mesačnú sumu.",
