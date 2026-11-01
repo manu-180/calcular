@@ -7,12 +7,13 @@ export default definirContenido({
   description: "Izračunajte najkraći otkazni rok prema godinama rada i dobi: od dva tjedna do tri mjeseca, uz produljenje nakon 50. godine, po članku 122. Zakona o radu.",
   intro: [
     "Otkazni rok ovisi o neprekidnom radu kod istog poslodavca. Ide od dva tjedna do tri mjeseca nakon dvadeset godina rada (Zakon o radu, čl. 122.).",
-    "Uz dvadeset godina rada rok je dulji za stariju dob: za dva tjedna od 50. godine života, a za mjesec dana od 55. godine. Kod skrivljenog ponašanja rok je upola kraći.",
+    "Uz dvadeset godina rada rok je dulji za stariju dob: za dva tjedna od 50. godine života, a za mjesec dana od 55. godine. Kod skrivljenog ponašanja rok je upola kraći. Radnik sa 65 godina života i 15 godina mirovinskog staža nema pravo na otkazni rok (čl. 122. st. 8.).",
   ],
   comoSeCalcula: [
     "Rok prema godinama rada: manje od godine dva tjedna, godina mjesec dana, dvije godine mjesec i dva tjedna, pet godina dva mjeseca, deset godina dva mjeseca i dva tjedna, dvadeset godina tri mjeseca.",
     "Ako ste radili dvadeset godina, dodaju se dva tjedna od 50. godine života, odnosno mjesec dana od 55. godine.",
     "Za otkaz zbog skrivljenog ponašanja rok je polovica tih rokova.",
+    "Ako u trenutku otkaza imate 65 godina života i 15 godina mirovinskog staža, zakonski rok ne pripada. Ta je iznimka dodana 2022. (NN 151/2022).",
   ],
   ejemplo: [
     "Šest godina rada i 40 godina života: dva mjeseca. Ako je otkaz uvjetovan skrivljenim ponašanjem, rok je mjesec dana.",

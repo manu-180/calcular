@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "ge",
   concepto: "propio",
   slug: "saprotsento-shemosavlis-gadasakhadi",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "ge.protsenti": "numero", "ge.mpr": "numero" },
   campos: [
     { id: "tanxa", tipo: "moneda", etiqueta: "სესხის ან ანაბრის თანხა", min: 0, porDefecto: 10000 },

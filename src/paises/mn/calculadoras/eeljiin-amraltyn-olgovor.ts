@@ -15,7 +15,7 @@ export default definirCalculadora({
   mercado: "mn",
   concepto: "vacaciones",
   slug: "eeljiin-amraltyn-olgovor",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "mn.eeljiin-undsen": "numero",
     "mn.eeljiin-buurungui": "numero",

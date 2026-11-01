@@ -556,7 +556,8 @@ function reglasHr(texto: string): string[] {
   if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en croata");
   const e = EKAVSKI_HR.exec(texto);
   if (e) p.push(`ekavski «${e[0]}» (en croata, ijekavski)`);
-  const s = SERBISMOS_HR.exec(texto);
+  // Topónimos reales que el detector leería como serbismos: Hlebine (Koprivnica) y Sveta Nedelja (dos unidades).
+  const s = SERBISMOS_HR.exec(texto.replace(/(?<!\p{L})(?:Hlebine|Sveta Nedelja)(?!\p{L})/gu, " "));
   if (s) p.push(`serbismo «${s[0]}» (en croata: plaća, tjedan, tisuća, kruh, tečaj, tvrtka...)`);
   if (DA_SERBIO_HR.test(texto)) p.push("«možete da» y similares: en croata va infinitivo («možete unijeti»)");
   if (DA_LI_HR.test(texto)) p.push("«da li»: en croata, «je li», «jeste li»");

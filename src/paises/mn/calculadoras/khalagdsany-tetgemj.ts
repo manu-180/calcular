@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "mn",
   concepto: "indemnizacion-despido",
   slug: "khalagdsany-tetgemj",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "mn.tsutslalt-sar": "mapa",
     "mn.medegdel-khonog": "numero",

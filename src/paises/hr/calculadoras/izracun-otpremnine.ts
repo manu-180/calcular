@@ -18,16 +18,17 @@ export default definirCalculadora({
     { id: "placa", tipo: "moneda", etiqueta: "Prosječna mjesečna plaća u zadnja tri mjeseca", min: 0, porDefecto: 1800 },
     { id: "godine", tipo: "entero", etiqueta: "Navršene godine rada kod poslodavca", min: 0, max: 60, porDefecto: 8 },
     { id: "skrivljeno", tipo: "si-no", etiqueta: "Otkaz zbog vašeg ponašanja", ayuda: "Tada zakonska otpremnina ne pripada.", porDefecto: false },
+    { id: "mirovina", tipo: "si-no", etiqueta: "Imate najmanje 65 godina života i 15 godina mirovinskog staža", ayuda: "Ni tada zakonska otpremnina ne pripada (čl. 126. st. 2.).", porDefecto: false },
   ],
   calcular(e, v, { redondear }) {
     if (e.placa <= 0) throw new ErrorEntrada("Unesite plaću veću od nule.", "placa");
-    const imaPravo = !e.skrivljeno && e.godine >= v["hr.otpremnina-uvjet"];
+    const imaPravo = !e.skrivljeno && !e.mirovina && e.godine >= v["hr.otpremnina-uvjet"];
     const izracun = imaPravo ? (e.placa * e.godine) / v["hr.otpremnina-nazivnik"] : 0;
     const najvise = e.placa * v["hr.otpremnina-najvise"];
     const otpremnina = redondear(Math.min(izracun, najvise));
     const neoporezivo = redondear(Math.min(otpremnina, v["hr.otpremnina-neoporezivo"] * e.godine));
     const observaciones: string[] = [];
-    if (!imaPravo) observaciones.push(e.skrivljeno ? "Kod otkaza zbog ponašanja radnika zakonska otpremnina ne pripada." : "Pravo nastaje nakon dvije godine neprekidnog rada.");
+    if (!imaPravo) observaciones.push(e.skrivljeno ? "Kod otkaza zbog ponašanja radnika zakonska otpremnina ne pripada." : e.mirovina ? "Uz 65 godina života i 15 godina mirovinskog staža zakonska otpremnina ne pripada." : "Pravo nastaje nakon dvije godine neprekidnog rada.");
     if (izracun > najvise) observaciones.push("Primijenjena je zakonska gornja granica od šest prosječnih plaća.");
     return { otpremnina, neoporezivo, oporezivo: redondear(otpremnina - neoporezivo), observaciones };
   },

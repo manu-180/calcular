@@ -6,7 +6,7 @@ export default definirCalculadora({
   mercado: "mn",
   concepto: "preaviso",
   slug: "ajlaas-garakh-medegdel",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "mn.medegdel-khonog": "numero",
   },

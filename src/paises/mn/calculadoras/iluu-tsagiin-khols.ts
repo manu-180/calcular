@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "mn",
   concepto: "horas-extra",
   slug: "iluu-tsagiin-khols",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "mn.iluu-tsag-koef": "numero",
     "mn.amralt-odor-koef": "numero",

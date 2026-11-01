@@ -302,6 +302,7 @@
     "gunja": "Gunja",
     "gvozd": "Gvozd",
     "hercegovac": "Hercegovac",
+    "hlebine": "Hlebine",
     "hrascina": "Hrašćina",
     "hrvace": "Hrvace",
     "hrvatska-dubica": "Hrvatska Dubica",
@@ -600,6 +601,8 @@
     "supetar": "Supetar",
     "sutivan": "Sutivan",
     "sveta-marija": "Sveta Marija",
+    "sveta-nedelja-4324": "Sveta Nedelja (šifra 4324)",
+    "sveta-nedelja-4367": "Sveta Nedelja (šifra 4367)",
     "sveti-djurdj": "Sveti Đurđ",
     "sveti-filip-i-jakov": "Sveti Filip i Jakov",
     "sveti-ilija": "Sveti Ilija",
@@ -1435,6 +1438,7 @@
     "gunja": "Gunja",
     "gvozd": "Gvozd",
     "hercegovac": "Hercegovac",
+    "hlebine": "Hlebine",
     "hrascina": "Hrašćina",
     "hrvace": "Hrvace",
     "hrvatska-dubica": "Hrvatska Dubica",
@@ -1733,6 +1737,8 @@
     "supetar": "Supetar",
     "sutivan": "Sutivan",
     "sveta-marija": "Sveta Marija",
+    "sveta-nedelja-4324": "Sveta Nedelja (šifra 4324)",
+    "sveta-nedelja-4367": "Sveta Nedelja (šifra 4367)",
     "sveti-djurdj": "Sveti Đurđ",
     "sveti-filip-i-jakov": "Sveti Filip i Jakov",
     "sveti-ilija": "Sveti Ilija",
@@ -3142,10 +3148,11 @@
      "valor": 3,
      "fuente": {
       "organismo": "Narodne novine",
-      "titulo": "Zakon o radu, NN 93/2014",
-      "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2014_07_93_1872.html",
+      "titulo": "Zakon o izmjenama i dopunama Zakona o radu, NN 151/2022 (novi čl. 126.)",
+      "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_12_151_2343.html",
       "tipo": "primaria",
-      "verificadoEl": "2026-11-01"
+      "verificadoEl": "2026-11-01",
+      "nota": "Članak 126. je 2022. zamijenjen: iznosi su isti kao u NN 93/2014, dodana je iznimka za radnika sa 65 godina života i 15 godina mirovinskog staža."
      }
     }
    ]
@@ -3162,10 +3169,11 @@
      "valor": 2,
      "fuente": {
       "organismo": "Narodne novine",
-      "titulo": "Zakon o radu, NN 93/2014",
-      "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2014_07_93_1872.html",
+      "titulo": "Zakon o izmjenama i dopunama Zakona o radu, NN 151/2022 (novi čl. 126.)",
+      "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_12_151_2343.html",
       "tipo": "primaria",
-      "verificadoEl": "2026-11-01"
+      "verificadoEl": "2026-11-01",
+      "nota": "Članak 126. je 2022. zamijenjen: iznosi su isti kao u NN 93/2014, dodana je iznimka za radnika sa 65 godina života i 15 godina mirovinskog staža."
      }
     }
    ]
@@ -3182,10 +3190,11 @@
      "valor": 6,
      "fuente": {
       "organismo": "Narodne novine",
-      "titulo": "Zakon o radu, NN 93/2014",
-      "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2014_07_93_1872.html",
+      "titulo": "Zakon o izmjenama i dopunama Zakona o radu, NN 151/2022 (novi čl. 126.)",
+      "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_12_151_2343.html",
       "tipo": "primaria",
-      "verificadoEl": "2026-11-01"
+      "verificadoEl": "2026-11-01",
+      "nota": "Članak 126. je 2022. zamijenjen: iznosi su isti kao u NN 93/2014, dodana je iznimka za radnika sa 65 godina života i 15 godina mirovinskog staža."
      }
     }
    ]
@@ -3202,10 +3211,11 @@
      "valor": 4,
      "fuente": {
       "organismo": "Narodne novine",
-      "titulo": "Zakon o radu, NN 93/2014",
+      "titulo": "Zakon o radu, NN 93/2014, s izmjenama NN 127/2017, 98/2019, 151/2022 i Odlukom USRH NN 64/2023",
       "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2014_07_93_1872.html",
       "tipo": "primaria",
-      "verificadoEl": "2026-11-01"
+      "verificadoEl": "2026-11-01",
+      "nota": "Pročitani i uspoređeni izvorni tekst i sve izmjene: 127/2017 (čl. 2, 41, 151, 188, 232), 98/2019 (čl. 14, 174, 179, 201, 208, 222, 223...), 151/2022, 64/2023 (samo čl. 192). Vrijednost nije promijenjena."
      }
     }
    ]
@@ -3222,10 +3232,11 @@
      "valor": 5,
      "fuente": {
       "organismo": "Narodne novine",
-      "titulo": "Zakon o radu, NN 93/2014",
+      "titulo": "Zakon o radu, NN 93/2014, s izmjenama NN 127/2017, 98/2019, 151/2022 i Odlukom USRH NN 64/2023",
       "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2014_07_93_1872.html",
       "tipo": "primaria",
-      "verificadoEl": "2026-11-01"
+      "verificadoEl": "2026-11-01",
+      "nota": "Pročitani i uspoređeni izvorni tekst i sve izmjene: 127/2017 (čl. 2, 41, 151, 188, 232), 98/2019 (čl. 14, 174, 179, 201, 208, 222, 223...), 151/2022, 64/2023 (samo čl. 192). Vrijednost nije promijenjena."
      }
     }
    ]
@@ -3242,10 +3253,11 @@
      "valor": 50,
      "fuente": {
       "organismo": "Narodne novine",
-      "titulo": "Zakon o radu, NN 93/2014",
+      "titulo": "Zakon o radu, NN 93/2014, s izmjenama NN 127/2017, 98/2019, 151/2022 i Odlukom USRH NN 64/2023",
       "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2014_07_93_1872.html",
       "tipo": "primaria",
-      "verificadoEl": "2026-11-01"
+      "verificadoEl": "2026-11-01",
+      "nota": "Pročitani i uspoređeni izvorni tekst i sve izmjene: 127/2017 (čl. 2, 41, 151, 188, 232), 98/2019 (čl. 14, 174, 179, 201, 208, 222, 223...), 151/2022, 64/2023 (samo čl. 192). Vrijednost nije promijenjena."
      }
     }
    ]
@@ -3262,10 +3274,11 @@
      "valor": 180,
      "fuente": {
       "organismo": "Narodne novine",
-      "titulo": "Zakon o radu, NN 93/2014",
+      "titulo": "Zakon o radu, NN 93/2014, s izmjenama NN 127/2017, 98/2019, 151/2022 i Odlukom USRH NN 64/2023",
       "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2014_07_93_1872.html",
       "tipo": "primaria",
-      "verificadoEl": "2026-11-01"
+      "verificadoEl": "2026-11-01",
+      "nota": "Pročitani i uspoređeni izvorni tekst i sve izmjene: 127/2017 (čl. 2, 41, 151, 188, 232), 98/2019 (čl. 14, 174, 179, 201, 208, 222, 223...), 151/2022, 64/2023 (samo čl. 192). Vrijednost nije promijenjena."
      }
     }
    ]
@@ -3297,10 +3310,11 @@
      },
      "fuente": {
       "organismo": "Narodne novine",
-      "titulo": "Zakon o radu, NN 93/2014",
+      "titulo": "Zakon o radu, NN 93/2014, s izmjenama NN 127/2017, 98/2019, 151/2022 i Odlukom USRH NN 64/2023",
       "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2014_07_93_1872.html",
       "tipo": "primaria",
-      "verificadoEl": "2026-11-01"
+      "verificadoEl": "2026-11-01",
+      "nota": "Pročitani i uspoređeni izvorni tekst i sve izmjene: 127/2017 (čl. 2, 41, 151, 188, 232), 98/2019 (čl. 14, 174, 179, 201, 208, 222, 223...), 151/2022, 64/2023 (samo čl. 192). Vrijednost nije promijenjena. Člankom 44. NN 151/2022 dodan je čl. 122. st. 8. (bez otkaznog roka uz 65 godina života i 15 godina mirovinskog staža)."
      }
     }
    ]
@@ -3324,10 +3338,11 @@
      },
      "fuente": {
       "organismo": "Narodne novine",
-      "titulo": "Zakon o radu, NN 93/2014",
+      "titulo": "Zakon o radu, NN 93/2014, s izmjenama NN 127/2017, 98/2019, 151/2022 i Odlukom USRH NN 64/2023",
       "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2014_07_93_1872.html",
       "tipo": "primaria",
-      "verificadoEl": "2026-11-01"
+      "verificadoEl": "2026-11-01",
+      "nota": "Pročitani i uspoređeni izvorni tekst i sve izmjene: 127/2017 (čl. 2, 41, 151, 188, 232), 98/2019 (čl. 14, 174, 179, 201, 208, 222, 223...), 151/2022, 64/2023 (samo čl. 192). Vrijednost nije promijenjena. Člankom 44. NN 151/2022 dodan je čl. 122. st. 8. (bez otkaznog roka uz 65 godina života i 15 godina mirovinskog staža)."
      }
     }
    ]

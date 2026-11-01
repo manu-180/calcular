@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Izračun otpremnine {{anio}}: minimum i neoporezivo",
   description: "Izračunajte najmanju otpremninu po Zakonu o radu: trećina prosječne plaće po godini rada, najviše šest plaća, neoporezivo {{hr.otpremnina-neoporezivo}} po godini.",
   intro: [
-    "Radnik kojem poslodavac otkazuje nakon dvije godine neprekidnog rada ima pravo na otpremninu, osim kad je otkaz uvjetovan njegovim ponašanjem (Zakon o radu, čl. 126.).",
+    "Radnik kojem poslodavac otkazuje nakon dvije godine neprekidnog rada ima pravo na otpremninu, osim kad je otkaz uvjetovan njegovim ponašanjem ili kad radnik ima 65 godina života i 15 godina mirovinskog staža (Zakon o radu, čl. 126.).",
     "Zakonski minimum je trećina prosječne mjesečne plaće iz zadnja tri mjeseca za svaku navršenu godinu rada. Neoporezivo je do {{hr.otpremnina-neoporezivo}} po godini rada.",
   ],
   comoSeCalcula: [

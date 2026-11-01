@@ -29,7 +29,7 @@ export default definirContenido({
     },
     {
       pregunta: "Vrijedi li povećanje i za rad nedjeljom i noću?",
-      respuesta: "Da, članak 94. pravo na povećanu plaću daje i za noćni rad, rad nedjeljom i blagdanom te za otežane uvjete. Postotak ponovno ovisi o vašem ugovoru.",
+      respuesta: "Da, članak 94. pravo na povećanu plaću daje i za noćni rad, rad nedjeljom i blagdanom te za otežane uvjete. Za svaki sat rada nedjeljom povećanje ne može biti manje od 50 % (čl. 94. st. 1.), a ostale postotke određuje vaš ugovor.",
     },
   ],
   glosario: [

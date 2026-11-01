@@ -11,7 +11,6 @@ export default definirCalculadora({
     "ge.qira": "numero",
     "ge.nameti": "numero",
     "ge.dividendi": "numero",
-    "ge.protsenti": "numero",
     "ge.pensia-dasaqmebuli": "numero",
   },
   campos: [
@@ -25,7 +24,6 @@ export default definirCalculadora({
         { valor: "qira", etiqueta: "საცხოვრებელი ფართობის გაქირავება" },
         { valor: "nameti", etiqueta: "ბინის ან ავტომობილის გაყიდვის ნამეტი" },
         { valor: "dividendi", etiqueta: "დივიდენდი" },
-        { valor: "protsenti", etiqueta: "პროცენტი (ლიცენზირებული ინსტიტუტის გარდა)" },
       ],
       porDefecto: "khelpasi",
     },
@@ -40,7 +38,6 @@ export default definirCalculadora({
       qira: v["ge.qira"],
       nameti: v["ge.nameti"],
       dividendi: v["ge.dividendi"],
-      protsenti: v["ge.protsenti"],
     }[e.tipi];
     const pensia = e.tipi === "khelpasi" && e.monatsile ? redondear((e.tanxa * v["ge.pensia-dasaqmebuli"]) / 100) : 0;
     const baza = redondear(e.tanxa - pensia);
