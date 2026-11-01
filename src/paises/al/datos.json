@@ -67,19 +67,12 @@
       "nombre": "Paga maksimale për kontributet shoqërore",
       "tipo": "numero",
       "unidad": "ALL",
-      "proximaRevision": "2027-01-01",
       "tramos": [
         {
-          "estado": "verificado",
+          "estado": "no-verificado",
           "desde": "2026-01-01",
           "valor": 186416,
-          "fuente": {
-            "organismo": "Administrata Tatimore",
-            "titulo": "Nga 1 janari 2026, rritet paga minimale dhe maksimale",
-            "url": "https://tatime.gov.al/nga-1-janari-2026-rritet-paga-minimale-dhe-maksimale/",
-            "tipo": "primaria",
-            "verificadoEl": "2026-11-01"
-          }
+          "motivo": "La noticia de Tatime responde con un bloqueo a nuestras lecturas: la cifra salió de un extracto del buscador, que no es lectura de la fuente. Además PwC publica 220 520 lekë. Falta abrir la noticia o el VKM. Mientras tanto, las calculadoras la piden como campo opcional."
         }
       ]
     },

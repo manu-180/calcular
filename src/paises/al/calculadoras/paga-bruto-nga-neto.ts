@@ -1,5 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { brutoNgaNeto, REQUIERE_PAGA } from "../lib/paga";
+import { AVISO_TAVANI, brutoNgaNeto, REQUIERE_PAGA } from "../lib/paga";
 
 export default definirCalculadora({
   id: "al.paga-bruto-nga-neto",
@@ -8,13 +8,17 @@ export default definirCalculadora({
   slug: "paga-bruto-nga-neto",
   estado: "publicado",
   requiere: REQUIERE_PAGA,
-  campos: [{ id: "neto", tipo: "moneda", etiqueta: "Paga neto që dëshironi në muaj", min: 0, porDefecto: 80000 }],
+  campos: [
+    { id: "neto", tipo: "moneda", etiqueta: "Paga neto që dëshironi në muaj", min: 0, porDefecto: 80000 },
+    { id: "tavani", tipo: "moneda", etiqueta: "Paga maksimale për kontributet (nuk është e detyrueshme)", min: 0, requerido: false, ayuda: "Vlen për paga të larta. Vendosni shifrën e fundit nga Administrata Tatimore. Nëse e lini bosh, kontributi shoqëror llogaritet mbi të gjithë pagën." },
+  ],
   calcular(e, v, { redondear }) {
     if (e.neto <= 0) throw new ErrorEntrada("Vendosni një pagë neto më të madhe se zero.", "neto");
-    const p = brutoNgaNeto(e.neto, v, redondear);
+    const p = brutoNgaNeto(e.neto, v, redondear, e.tavani);
     if (!p) throw new ErrorEntrada("Kjo pagë neto është shumë e lartë për t'u llogaritur.", "neto");
     const observaciones: string[] = [];
     if (p.neto > e.neto) observaciones.push("Rezultati është paga bruto më e ulët e lejuar, ose e para që e arrin këtë neto. Neto del pak më e lartë se ajo që kërkuat.");
+    if (e.tavani === null) observaciones.push(AVISO_TAVANI);
     return {
       bruto: p.bruto,
       netoReal: p.neto,

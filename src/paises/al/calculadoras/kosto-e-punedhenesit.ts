@@ -1,5 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { llogaritPagen, REQUIERE_PAGA } from "../lib/paga";
+import { AVISO_TAVANI, llogaritPagen, REQUIERE_PAGA } from "../lib/paga";
 
 export default definirCalculadora({
   id: "al.kosto-e-punedhenesit",
@@ -11,10 +11,11 @@ export default definirCalculadora({
   campos: [
     { id: "bruto", tipo: "moneda", etiqueta: "Paga bruto në muaj", min: 0, porDefecto: 90000 },
     { id: "punonjes", tipo: "entero", etiqueta: "Numri i punonjësve me këtë pagë", min: 1, max: 10000, porDefecto: 1 },
+    { id: "tavani", tipo: "moneda", etiqueta: "Paga maksimale për kontributet (nuk është e detyrueshme)", min: 0, requerido: false, ayuda: "Vlen për paga të larta. Vendosni shifrën e fundit nga Administrata Tatimore. Nëse e lini bosh, kontributi shoqëror llogaritet mbi të gjithë pagën." },
   ],
   calcular(e, v, { redondear }) {
     if (e.bruto <= 0) throw new ErrorEntrada("Vendosni një pagë bruto më të madhe se zero.", "bruto");
-    const p = llogaritPagen(e.bruto, v, redondear);
+    const p = llogaritPagen(e.bruto, v, redondear, e.tavani);
     return {
       kosto: redondear(p.kosto * e.punonjes),
       shoqerore: redondear(p.shoqerorePunedhenes * e.punonjes),
@@ -22,6 +23,7 @@ export default definirCalculadora({
       vjetore: redondear(p.kosto * e.punonjes * 12),
       neto: p.neto,
       perqindje: ((p.kosto - e.bruto) / e.bruto) * 100,
+      observaciones: e.tavani === null ? [AVISO_TAVANI] : [],
     };
   },
   resultado: [

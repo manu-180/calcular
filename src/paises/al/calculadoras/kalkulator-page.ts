@@ -1,5 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { llogaritPagen, REQUIERE_PAGA } from "../lib/paga";
+import { AVISO_TAVANI, llogaritPagen, REQUIERE_PAGA } from "../lib/paga";
 
 export default definirCalculadora({
   id: "al.kalkulator-page",
@@ -8,13 +8,16 @@ export default definirCalculadora({
   slug: "kalkulator-page",
   estado: "publicado",
   requiere: { ...REQUIERE_PAGA, "al.paga-mesatare": "numero" },
-  campos: [{ id: "bruto", tipo: "moneda", etiqueta: "Paga bruto në muaj", min: 0, porDefecto: 90000 }],
+  campos: [
+    { id: "bruto", tipo: "moneda", etiqueta: "Paga bruto në muaj", min: 0, porDefecto: 90000 },
+    { id: "tavani", tipo: "moneda", etiqueta: "Paga maksimale për kontributet (nuk është e detyrueshme)", min: 0, requerido: false, ayuda: "Vlen për paga të larta. Vendosni shifrën e fundit nga Administrata Tatimore. Nëse e lini bosh, kontributi shoqëror llogaritet mbi të gjithë pagën." },
+  ],
   calcular(e, v, { redondear }) {
     if (e.bruto <= 0) throw new ErrorEntrada("Vendosni një pagë bruto më të madhe se zero.", "bruto");
-    const p = llogaritPagen(e.bruto, v, redondear);
+    const p = llogaritPagen(e.bruto, v, redondear, e.tavani);
     const observaciones: string[] = [];
     if (e.bruto < v["al.paga-minimale"]) observaciones.push("Kjo pagë është nën pagën minimale. Kontributet llogariten gjithsesi mbi pagën minimale, për punë mbi 87 orë në muaj.");
-    if (e.bruto > v["al.paga-maksimale-kontribute"]) observaciones.push("Kontributi shoqëror ndalet te paga maksimale. Kontributi shëndetësor llogaritet mbi të gjithë pagën.");
+    if (e.tavani === null) observaciones.push(AVISO_TAVANI);
     return {
       neto: p.neto,
       shoqerore: p.shoqerore,

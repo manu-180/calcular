@@ -4,9 +4,9 @@ export default definirContenido({
   calculadora: "al.kontributet-e-sigurimeve",
   h1: "Kontributet e sigurimeve {{anio}}",
   title: "Kontributet e sigurimeve {{anio}}: shoqërore dhe shëndetësore",
-  description: "Kontributet mbi pagën, nga {{al.paga-minimale}} deri te {{al.paga-maksimale-kontribute}}. Llogaritni pjesën tuaj dhe të punëdhënësit, ose kontributet e të vetëpunësuarit.",
+  description: "Kontributet mbi pagën, me bazë minimale {{al.paga-minimale}}. Llogaritni pjesën tuaj dhe të punëdhënësit, ose kontributet e të vetëpunësuarit.",
   intro: [
-    "Për një të punësuar, kontributet janë gjithsej 27,9% e pagës bruto: 24,5% sigurime shoqërore dhe 3,4% sigurime shëndetësore. Baza shoqërore shkon nga paga minimale {{al.paga-minimale}} deri te paga maksimale {{al.paga-maksimale-kontribute}}.",
+    "Për një të punësuar, kontributet janë gjithsej 27,9% e pagës bruto: 24,5% sigurime shoqërore dhe 3,4% sigurime shëndetësore. Baza shoqërore fillon nga paga minimale {{al.paga-minimale}} dhe ndalet te paga maksimale, që mund ta vendosni në fushën e saj.",
     "I vetëpunësuari paguan vetë {{al.kontribute-vetepunesuar[shoqerore]}} sigurime shoqërore dhe {{al.kontribute-vetepunesuar[shendetesore]}} sigurime shëndetësore mbi dyfishin e pagës minimale.",
   ],
   comoSeCalcula: [
@@ -21,7 +21,7 @@ export default definirContenido({
   faq: [
     {
       pregunta: "Sa është paga maksimale për kontributet?",
-      respuesta: "{{al.paga-maksimale-kontribute}} në muaj, nga {{al.paga-maksimale-kontribute#desde}}. Administrata Tatimore njoftoi se u rrit nga 176 416 lekë. Sipas ligjit nr. 7703, kufiri rritet në të njëjtën kohë me pagën minimale.",
+      respuesta: "Shifrën e fundit e njofton Administrata Tatimore; kontrollojeni atje dhe vendoseni në fushën e pagës maksimale. Sipas ligjit nr. 7703, kufiri rritet me të njëjtën masë dhe në të njëjtën kohë me pagën minimale.",
     },
     {
       pregunta: "Ku shkojnë kontributet shoqërore?",

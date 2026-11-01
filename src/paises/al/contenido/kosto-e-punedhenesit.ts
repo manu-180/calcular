@@ -10,7 +10,7 @@ export default definirContenido({
     "Kalkulatori jep koston për një ose disa punonjës, në muaj dhe në vit, sipas VKM nr. 77/2015.",
   ],
   comoSeCalcula: [
-    "Sigurimet shoqërore: {{al.kontribute[shoqerore-punedhenes]}} e pagës bruto, brenda pagës minimale dhe pagës maksimale {{al.paga-maksimale-kontribute}}.",
+    "Sigurimet shoqërore: {{al.kontribute[shoqerore-punedhenes]}} e pagës bruto, nga paga minimale deri te paga maksimale, nëse e vendosni në fushën e saj.",
     "Sigurimet shëndetësore: {{al.kontribute[shendetesore-punedhenes]}} e pagës bruto, pa kufi të sipërm.",
     "Kostoja është paga bruto plus këto dy kontribute. Pjesa e punonjësit mbahet nga paga bruto dhe nuk e rrit koston.",
   ],
@@ -24,7 +24,7 @@ export default definirContenido({
     },
     {
       pregunta: "A ka tavan kostoja për paga të larta?",
-      respuesta: "Pjesa shoqërore po: ndalet te paga maksimale {{al.paga-maksimale-kontribute}}. Pjesa shëndetësore vazhdon mbi të gjithë pagën.",
+      respuesta: "Pjesa shoqërore po: ndalet te paga maksimale. Shifrën e fundit e njofton Administrata Tatimore; pa të, kalkulatori llogarit mbi të gjithë pagën. Pjesa shëndetësore vazhdon mbi të gjithë pagën.",
     },
     {
       pregunta: "Kur paguhen kontributet?",
