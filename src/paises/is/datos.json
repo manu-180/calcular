@@ -1,0 +1,1281 @@
+{
+  "mercado": "is",
+  "datos": [
+    {
+      "id": "is.skattthrep-man",
+      "nombre": "Skattþrep staðgreiðslu á mánuði",
+      "tipo": "escala",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 498122,
+              "tasa": 31.49
+            },
+            {
+              "desde": 498122,
+              "hasta": 1398450,
+              "tasa": 37.99
+            },
+            {
+              "desde": 1398450,
+              "hasta": null,
+              "tasa": 46.29
+            }
+          ],
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Til launagreiðenda, orðsending nr. 1/2026 (RSK 6.01)",
+            "url": "https://www.skatturinn.is/media/2026/rsk_0601_1_2026.is.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.skattthrep-ars",
+      "nombre": "Skattþrep staðgreiðslu á ári",
+      "tipo": "escala",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5977470,
+              "tasa": 31.49
+            },
+            {
+              "desde": 5977470,
+              "hasta": 16781397,
+              "tasa": 37.99
+            },
+            {
+              "desde": 16781397,
+              "hasta": null,
+              "tasa": 46.29
+            }
+          ],
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Til launagreiðenda, orðsending nr. 1/2026 (RSK 6.01)",
+            "url": "https://www.skatturinn.is/media/2026/rsk_0601_1_2026.is.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.personuafslattur-man",
+      "nombre": "Persónuafsláttur á mánuði",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 72492,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Staðgreiðsla 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/stadgreidsla/stadgreidsla/2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.personuafslattur-ars",
+      "nombre": "Persónuafsláttur á ári",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 869898,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Staðgreiðsla 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/stadgreidsla/stadgreidsla/2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.personuafslattur-timabil",
+      "nombre": "Persónuafsláttur eftir launatímabili",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "etiquetas": {
+        "man": "Einn mánuður",
+        "halfur": "Hálfur mánuður",
+        "fjortan": "Fjórtán dagar",
+        "vika": "Ein vika"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "man": 72492,
+            "halfur": 36246,
+            "fjortan": 33366,
+            "vika": 16683
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Staðgreiðsla 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/stadgreidsla/stadgreidsla/2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.utsvar-stadgreidsla",
+      "nombre": "Meðalútsvar í staðgreiðslu",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14.94,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Staðgreiðsla 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/stadgreidsla/stadgreidsla/2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.lifeyrir-launamadur",
+      "nombre": "Iðgjald launamanns í lífeyrissjóð",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Til launagreiðenda, orðsending nr. 1/2026 (RSK 6.01)",
+            "url": "https://www.skatturinn.is/media/2026/rsk_0601_1_2026.is.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.lifeyrir-motframlag",
+      "nombre": "Mótframlag launagreiðanda í lífeyrissjóð",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 11.5,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Til launagreiðenda, orðsending nr. 1/2026 (RSK 6.01)",
+            "url": "https://www.skatturinn.is/media/2026/rsk_0601_1_2026.is.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.sereign-hamark",
+      "nombre": "Frádráttarbært iðgjald í séreignarsparnað, hámark",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Til launagreiðenda, orðsending nr. 1/2026 (RSK 6.01)",
+            "url": "https://www.skatturinn.is/media/2026/rsk_0601_1_2026.is.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.tryggingagjald",
+      "nombre": "Tryggingagjald til staðgreiðslu",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6.35,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Til launagreiðenda, orðsending nr. 1/2026 (RSK 6.01)",
+            "url": "https://www.skatturinn.is/media/2026/rsk_0601_1_2026.is.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.tryggingagjald-sjomenn",
+      "nombre": "Tryggingagjald af launum sjómanna á fiskiskipum",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Til launagreiðenda, orðsending nr. 1/2026 (RSK 6.01)",
+            "url": "https://www.skatturinn.is/media/2026/rsk_0601_1_2026.is.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.vsk",
+      "nombre": "Virðisaukaskattur",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "almennt": "Almennt þrep",
+        "laegra": "Neðra þrep"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "almennt": 24,
+            "laegra": 11
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.vsk-afreikni",
+      "nombre": "Afreikniprósenta virðisaukaskatts",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "almennt": "Almennt þrep",
+        "laegra": "Neðra þrep"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "almennt": 19.35,
+            "laegra": 9.91
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.fjarmagnstekjuskattur",
+      "nombre": "Fjármagnstekjuskattur",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.fjarmagn-fritekjumark",
+      "nombre": "Frítekjumark fjármagnstekna",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "etiquetas": {
+        "einstaklingur": "Einstaklingur",
+        "hjon": "Hjón og sambúðarfólk"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "einstaklingur": 300000,
+            "hjon": 600000
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.leigutekjur-stofn",
+      "nombre": "Skattstofn leigutekna af íbúðarhúsnæði",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.erfdafjarskattur",
+      "nombre": "Erfðafjárskattur",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.erfdafjarskattur-fritekjumark",
+      "nombre": "Skattfrjáls fjárhæð dánarbús",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6789790,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.orlofsprosenta",
+      "nombre": "Orlofsprósenta eftir lengd orlofs",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "d24": "24 dagar (192 stundir)",
+        "d27": "27 dagar (216 stundir)",
+        "d30": "30 dagar (240 stundir)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1993-06-18",
+          "valor": {
+            "d24": 10.17,
+            "d27": 11.59,
+            "d30": 13.04
+          },
+          "fuente": {
+            "organismo": "Fjármálaráðuneytið",
+            "titulo": "Leiðbeiningar um talningu orlofsréttar, kafli 2, orlofsprósenta",
+            "url": "https://www.stjornarradid.is/media/fjarmalaraduneyti-media/media/starfsmannamal/orltalvr.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.atvinnuleysi-grunn",
+      "nombre": "Grunnatvinnuleysisbætur eftir bótarétti",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "etiquetas": {
+        "r100": "100% bótaréttur",
+        "r75": "75% bótaréttur",
+        "r50": "50% bótaréttur",
+        "r25": "25% bótaréttur"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "r100": 383870,
+            "r75": 287903,
+            "r50": 191935,
+            "r25": 95968
+          },
+          "fuente": {
+            "organismo": "Vinnumálastofnun",
+            "titulo": "Fjárhæðir atvinnuleysisbóta frá 1. janúar 2026",
+            "url": "https://island.is/redirects/www.vinnumalastofnun.is/atvinnuleitandi/fjarhaedir-og-greidslur-atvinnuleysisbota/fjarhaedir-atvinnuleysisbota",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.atvinnuleysi-tekjutenging",
+      "nombre": "Tekjutengdar atvinnuleysisbætur, hlutfall af launum",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 70,
+          "fuente": {
+            "organismo": "Vinnumálastofnun",
+            "titulo": "Fjárhæðir atvinnuleysisbóta frá 1. janúar 2026",
+            "url": "https://island.is/redirects/www.vinnumalastofnun.is/atvinnuleitandi/fjarhaedir-og-greidslur-atvinnuleysisbota/fjarhaedir-atvinnuleysisbota",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.atvinnuleysi-hamark",
+      "nombre": "Hámark tekjutengdra atvinnuleysisbóta",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 605159,
+          "fuente": {
+            "organismo": "Vinnumálastofnun",
+            "titulo": "Fjárhæðir atvinnuleysisbóta frá 1. janúar 2026",
+            "url": "https://island.is/redirects/www.vinnumalastofnun.is/atvinnuleitandi/fjarhaedir-og-greidslur-atvinnuleysisbota/fjarhaedir-atvinnuleysisbota",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.atvinnuleysi-barn",
+      "nombre": "Viðbót með hverju barni undir 18 ára",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15355,
+          "fuente": {
+            "organismo": "Vinnumálastofnun",
+            "titulo": "Fjárhæðir atvinnuleysisbóta frá 1. janúar 2026",
+            "url": "https://island.is/redirects/www.vinnumalastofnun.is/atvinnuleitandi/fjarhaedir-og-greidslur-atvinnuleysisbota/fjarhaedir-atvinnuleysisbota",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.atvinnuleysi-fritekjumark",
+      "nombre": "Frítekjumark atvinnuleysisbóta",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 94487,
+          "fuente": {
+            "organismo": "Vinnumálastofnun",
+            "titulo": "Fjárhæðir atvinnuleysisbóta frá 1. janúar 2026",
+            "url": "https://island.is/redirects/www.vinnumalastofnun.is/atvinnuleitandi/fjarhaedir-og-greidslur-atvinnuleysisbota/fjarhaedir-atvinnuleysisbota",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.faedingarorlof-hlutfall",
+      "nombre": "Greiðsla í fæðingarorlofi, hlutfall af launum",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Vinnumálastofnun",
+            "titulo": "Fæðingarorlof: upphæðir og útreikningur",
+            "url": "https://island.is/umsokn-um-faedingarorlof/upphaedir-og-utreikningur",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.faedingarorlof-hamark",
+      "nombre": "Hámarksgreiðsla í fæðingarorlofi",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 900000,
+          "fuente": {
+            "organismo": "Vinnumálastofnun",
+            "titulo": "Fæðingarorlof: upphæðir og útreikningur",
+            "url": "https://island.is/umsokn-um-faedingarorlof/upphaedir-og-utreikningur",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.faedingarorlof-lagmark",
+      "nombre": "Lágmarksgreiðsla í fæðingarorlofi",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "etiquetas": {
+        "fullt": "50 til 100% starf",
+        "hluta": "25 til 49% starf"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "fullt": 275688,
+            "hluta": 207708
+          },
+          "fuente": {
+            "organismo": "Vinnumálastofnun",
+            "titulo": "Fæðingarorlof: upphæðir og útreikningur",
+            "url": "https://island.is/umsokn-um-faedingarorlof/upphaedir-og-utreikningur",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.barnabaetur",
+      "nombre": "Barnabætur með hverju barni",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "etiquetas": {
+        "einstaett": "Einstætt foreldri",
+        "hjon": "Hjón og sambýlisfólk"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "einstaett": 514500,
+            "hjon": 345000
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Barnabætur, fjárhæðir 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/vaxtabaetur-og-barnabaetur/barnabaetur/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.barnabaetur-vidbot",
+      "nombre": "Viðbót með barni yngra en 7 ára",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 130000,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Barnabætur, fjárhæðir 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/vaxtabaetur-og-barnabaetur/barnabaetur/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.barnabaetur-skerdingarmork",
+      "nombre": "Skerðingarmörk barnabóta",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "einstaett": 5844000,
+            "hjon": 11688000
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Barnabætur, fjárhæðir 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/vaxtabaetur-og-barnabaetur/barnabaetur/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ],
+      "etiquetas": {
+        "einstaett": "Einstætt foreldri",
+        "hjon": "Hjón og sambýlisfólk"
+      }
+    },
+    {
+      "id": "is.barnabaetur-skerding",
+      "nombre": "Skerðingarhlutfall barnabóta",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Barnabætur, fjárhæðir 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/vaxtabaetur-og-barnabaetur/barnabaetur/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.vaxtabaetur-vaxtathak",
+      "nombre": "Hámark vaxtagjalda við útreikning vaxtabóta",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "etiquetas": {
+        "einhleypur": "Einhleypur",
+        "einstaett": "Einstætt foreldri",
+        "hjon": "Hjón og sambúðarfólk"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "einhleypur": 840000,
+            "einstaett": 1050000,
+            "hjon": 1260000
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Álagningarseðill og forsendur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/framtal-og-alagning/alagningarsedill-og-forsendur/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.vaxtabaetur-hamark",
+      "nombre": "Hámark vaxtabóta",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "einhleypur": 420000,
+            "einstaett": 525000,
+            "hjon": 630000
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Álagningarseðill og forsendur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/framtal-og-alagning/alagningarsedill-og-forsendur/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ],
+      "etiquetas": {
+        "einhleypur": "Einhleypur",
+        "einstaett": "Einstætt foreldri",
+        "hjon": "Hjón og sambúðarfólk"
+      }
+    },
+    {
+      "id": "is.vaxtabaetur-eign-nedri",
+      "nombre": "Eignamörk vaxtabóta, skerðing hefst",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "einhleypur": 7500000,
+            "einstaett": 7500000,
+            "hjon": 12000000
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Álagningarseðill og forsendur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/framtal-og-alagning/alagningarsedill-og-forsendur/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ],
+      "etiquetas": {
+        "einhleypur": "Einhleypur",
+        "einstaett": "Einstætt foreldri",
+        "hjon": "Hjón og sambúðarfólk"
+      }
+    },
+    {
+      "id": "is.vaxtabaetur-eign-efri",
+      "nombre": "Eignamörk vaxtabóta, bætur falla niður",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "einhleypur": 12000000,
+            "einstaett": 12000000,
+            "hjon": 19200000
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Álagningarseðill og forsendur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/framtal-og-alagning/alagningarsedill-og-forsendur/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ],
+      "etiquetas": {
+        "einhleypur": "Einhleypur",
+        "einstaett": "Einstætt foreldri",
+        "hjon": "Hjón og sambúðarfólk"
+      }
+    },
+    {
+      "id": "is.vaxtabaetur-skuldir",
+      "nombre": "Vaxtagjöld, hámark sem hlutfall af skuldum",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Álagningarseðill og forsendur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/framtal-og-alagning/alagningarsedill-og-forsendur/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.vaxtabaetur-tekjur",
+      "nombre": "Frádráttur af tekjum við útreikning vaxtabóta",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8.5,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Álagningarseðill og forsendur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/framtal-og-alagning/alagningarsedill-og-forsendur/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.vaxtabaetur-lagmark",
+      "nombre": "Lágmark vaxtabóta á mann",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5000,
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Álagningarseðill og forsendur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/framtal-og-alagning/alagningarsedill-og-forsendur/2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.stimpilgjald",
+      "nombre": "Stimpilgjald af fasteignamati",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "einstaklingur": "Einstaklingur",
+        "logadili": "Lögaðili",
+        "fyrstu": "Fyrstu kaup einstaklings"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "einstaklingur": 0.8,
+            "logadili": 1.6,
+            "fyrstu": 0.4
+          },
+          "fuente": {
+            "organismo": "Sýslumenn",
+            "titulo": "Gjaldskrá sýslumanna",
+            "url": "https://island.is/s/syslumenn/gjaldskra-syslumanna",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.thinglysingargjald",
+      "nombre": "Þinglýsingargjald á hvert skjal",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3800,
+          "fuente": {
+            "organismo": "Sýslumenn",
+            "titulo": "Þinglýsing skjala: stimpilgjald og þinglýsingargjald",
+            "url": "https://island.is/thinglysing-skjala",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.ellilifeyrir",
+      "nombre": "Ellilífeyrir á mánuði",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 365592,
+          "fuente": {
+            "organismo": "Tryggingastofnun",
+            "titulo": "Ellilífeyrir: fjárhæðir",
+            "url": "https://island.is/umsokn-um-ellilifeyri/fjarhaedir",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.heimilisuppbot",
+      "nombre": "Heimilisuppbót á mánuði",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 92384,
+          "fuente": {
+            "organismo": "Tryggingastofnun",
+            "titulo": "Ellilífeyrir: fjárhæðir",
+            "url": "https://island.is/umsokn-um-ellilifeyri/fjarhaedir",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.elli-fritekjumark",
+      "nombre": "Almennt frítekjumark ellilífeyris á mánuði",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 43658,
+          "fuente": {
+            "organismo": "Tryggingastofnun",
+            "titulo": "Ellilífeyrir: fjárhæðir",
+            "url": "https://island.is/umsokn-um-ellilifeyri/fjarhaedir",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.elli-fritekjumark-atvinna",
+      "nombre": "Sérstakt frítekjumark atvinnutekna á mánuði",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 210400,
+          "fuente": {
+            "organismo": "Tryggingastofnun",
+            "titulo": "Ellilífeyrir: fjárhæðir",
+            "url": "https://island.is/umsokn-um-ellilifeyri/fjarhaedir",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.elli-skerding",
+      "nombre": "Skerðing ellilífeyris af tekjum umfram frítekjumörk",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "Tryggingastofnun",
+            "titulo": "Ellilífeyrir: hækkun á frítekjumörkum",
+            "url": "https://island.is/s/tryggingastofnun/frett/ellilifeyrir-haekkun-a-fritekjumoerkum-og-aldursvidbot-a-ellilifeyri-til",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.drattarvextir",
+      "nombre": "Dráttarvextir",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-11-01",
+          "valor": 15.75,
+          "fuente": {
+            "organismo": "Seðlabanki Íslands",
+            "titulo": "Tilkynning um dráttarvexti og vexti af peningakröfum nr. 10/2026",
+            "url": "https://sedlabanki.is/frettir-og-utgefid-efni/grein/tilkynning-um-drattarvexti-og-vexti-af-peningakrofum-nr-10-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.vextir-peningakrofur",
+      "nombre": "Vextir af peningakröfum",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2026-12-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-11-01",
+          "valor": {
+            "overdtryggd": 8.35,
+            "verdtryggd": 4.45,
+            "skadabaetur": 5.57
+          },
+          "fuente": {
+            "organismo": "Seðlabanki Íslands",
+            "titulo": "Tilkynning um dráttarvexti og vexti af peningakröfum nr. 10/2026",
+            "url": "https://sedlabanki.is/frettir-og-utgefid-efni/grein/tilkynning-um-drattarvexti-og-vexti-af-peningakrofum-nr-10-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ],
+      "etiquetas": {
+        "overdtryggd": "Óverðtryggð útlán",
+        "verdtryggd": "Verðtryggð útlán",
+        "skadabaetur": "Skaðabótakröfur"
+      }
+    },
+    {
+      "id": "is.meginvextir",
+      "nombre": "Meginvextir Seðlabanka Íslands",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-11-18",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-07",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Seðlabanki Íslands",
+            "titulo": "Yfirlýsing peningastefnunefndar 7. október 2026",
+            "url": "https://sedlabanki.is/frettir-og-utgefid-efni/grein/yfirlysing-peningastefnunefndar-7-oktober-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.desemberuppbot",
+      "nombre": "Desemberuppbót fyrir fullt starf",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 114000,
+          "motivo": "Fjárhæðin er úr kjarasamningum á almennum vinnumarkaði. Hana birta aðilar samninga (SA, VR), en engin opinber stofnun: ekki lesin í opinberri frumheimild.",
+          "fuente": {
+            "organismo": "Samtök atvinnulífsins",
+            "titulo": "Desemberuppbót 2026",
+            "url": "https://sa.is/en/vinnumarkadsvefur/starfsmannamal/laun-og-launakostnadur/desemberuppbot-2024",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.orlofsuppbot",
+      "nombre": "Orlofsuppbót fyrir fullt starf",
+      "tipo": "numero",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 62000,
+          "motivo": "Fjárhæðin er úr kjarasamningum og aðeins lesin í leitarniðurstöðu frá SA og VR, ekki í opinberri frumheimild.",
+          "fuente": {
+            "organismo": "Samtök atvinnulífsins",
+            "titulo": "Orlofsuppbót",
+            "url": "https://sa.is/vinnumarkadsvefur/atridisord",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "is.dagpeningar",
+      "nombre": "Dagpeningar innanlands",
+      "tipo": "mapa",
+      "unidad": "ISK",
+      "proximaRevision": "2027-01-01",
+      "etiquetas": {
+        "gisting-faedi": "Gisting og fæði í einn sólarhring",
+        "gisting": "Gisting í eina nótt",
+        "heill": "Fæði, heill dagur (að minnsta kosti 10 klst.)",
+        "halfur": "Fæði, hálfur dagur (að minnsta kosti 6 klst.)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-05-31",
+          "valor": {
+            "gisting-faedi": 39700,
+            "gisting": 22200,
+            "heill": 17500,
+            "halfur": 8750
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-06-01",
+          "hasta": "2026-09-30",
+          "valor": {
+            "gisting-faedi": 56400,
+            "gisting": 38300,
+            "heill": 18100,
+            "halfur": 9050
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": {
+            "gisting-faedi": 42100,
+            "gisting": 23900,
+            "heill": 18200,
+            "halfur": 9100
+          },
+          "fuente": {
+            "organismo": "Skatturinn",
+            "titulo": "Helstu tölur og prósentur 2026",
+            "url": "https://www.skatturinn.is/einstaklingar/helstutolur/2026/helstu-tolur-og-prosentur-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    }
+  ]
+}
