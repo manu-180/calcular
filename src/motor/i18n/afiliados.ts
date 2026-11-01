@@ -400,6 +400,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "otvara se u novoj kartici",
     },
   },
+  // Eslovaco (ADR 0002, D25): vykanie con vy en minúscula.
+  sk: {
+    base: {
+      titulo: "Sťahujete sa do zahraničia alebo platíte z inej krajiny?",
+      etiqueta: "Partnerské odkazy",
+      socios: {
+        wise: "Účet vo viacerých menách na príjem a odosielanie peňazí medzi krajinami za stredový trhový kurz, s poplatkom, ktorý vidíte vopred.",
+        deel: "Zmluvy a výplaty pre tých, ktorí pracujú z jednej krajiny pre firmu z inej.",
+      },
+      nota: "Ak si cez tieto odkazy otvoríte účet, web môže dostať províziu. Vy za to nezaplatíte nič navyše.",
+      nuevaPestana: "otvorí sa na novej karte",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

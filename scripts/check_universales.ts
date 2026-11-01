@@ -149,6 +149,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   // Checo (ADR 0002, D19): koruna con «Kč» detrás y espacio de miles, un nombre largo que se declina
   // por partes («na Svatém Vincenci a Grenadinách») y uno plural con adjetivos delante («ve Spojených
   // arabských emirátech»).
+  // Eslovaco (ADR 0002, D25): euros con espacio de miles, un nombre largo que se declina por partes
+  // («na Svätom Vincente a Grenadínach») y uno plural con adjetivos delante.
+  sk: [
+    { mercado: "sk" as CodigoMercado, pais: "SK", nombrePais: "Slovensko", locale: "sk-SK", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Svätý Vincent a Grenadíny", locale: "sk-SK", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Spojené arabské emiráty", locale: "sk-SK", trato: "usted", moneda: "AED" as Moneda, escala: 4 },
+  ],
   cs: [
     { mercado: "cz" as CodigoMercado, pais: "CZ", nombrePais: "Česko", locale: "cs-CZ", trato: "usted", moneda: "CZK" as Moneda, escala: 23 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Svatý Vincenc a Grenadiny", locale: "cs-CZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },

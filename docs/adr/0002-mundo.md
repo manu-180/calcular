@@ -1380,6 +1380,62 @@ Serbia en hreflang. `check_universales` prueba `sr-Latn-RS` con RSD, `sr-Latn-ME
 que se declina por partes («na Sent Vinsentu i Grenadinima») y uno plural con adjetivos («u Ujedinjenim
 Arapskim Emiratima»); `check_motor` prueba formato, plurales, parseo y gramática.
 
+### D25. Eslovaco (2026-10-31)
+
+D23 (sr) y D24 (bg) los usan ramas sin mergear (`claude/mundo-motor-sr`, `claude/mundo-motor-bg`); esta
+entrada toma el D25 para no chocar al mergear. Por la regla de `.claude/rules/build-vercel.md`, los slugs
+entran en `src/motor/secciones.ts` y no hay carpetas por idioma.
+
+`IDIOMAS` suma `sk`. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados,
+redes, «Tu sueldo en el mundo» (`mzda-vo-svete`), rankings (`rebricek-krajin`), horas de trabajo
+(`kolko-hodin-prace`), calendario (`vyplatny-kalendar`), sueldos reales (`skutocne-mzdy`), el diccionario
+de venta completo y las 41 universales están en eslovaco. El checo fue modelo de estructura; el texto se
+escribió en eslovaco, no se adaptó letra por letra.
+
+**Trato.** Un solo registro, el de Finančná správa, Slovenská sporiteľňa y Tatra banka: vykanie con «vy»
+en minúscula e imperativo cortés («zadajte», «vyberte», «vypočítajte»), nunca tykanie. Los botones van en
+infinitivo («Vypočítať», «Skopírovať odkaz»), como en esos sitios. Los mercados van con `trato: "usted"` y
+los diccionarios escriben solo `base`. Se evitan los participios con género sobre la persona. Vocabulario:
+výpočet čistej mzdy, hrubá mzda, daň z príjmov, odvody, sociálne a zdravotné poistenie, DPH, hypotéka,
+hypotekárna kalkulačka, úrok, RPMN, istina, splátka, fixácia. «Krajina» es el país. Las universales quedan
+neutrales de país (nada de Finančná správa, NBS ni SZČO en el texto visible; el sitio nombra SZČO solo
+en la categoría de negocio, donde el checo nombra OSVČ).
+
+**Plurales.** `Intl.PluralRules("sk")` tiene las categorías del checo: one (solo 1), few (2 a 4), other (0
+y 5 en adelante) y many (fracciones, en genitivo singular). `formaSk` y `pluralSk(n, uno, pocos, muchos,
+fracción?)` en `plural.ts`; unidades con `pocos` y `muchos` («1 rok», «2 roky», «5 rokov», «1,5 roka»; «1
+deň», «2 dni», «7 dní», «0,5 dňa»).
+
+**Gramática del país.** `GRAMATICA.sk` y `padySk` declinan por regla los ~250 nombres de Intl en sk, con
+reglas propias y no las del checo: el locativo de la -a dura no alterna consonante («na Jamajke», «v
+Kanade»); -sko y -ko dan -u («na Slovensku», «v Česku») y el resto de -o da -e («v Kosove», «v Spojenom
+kráľovstve»); -ia da -e/-i/-u («v Kolumbii»); -ea da -y/-i/-u («v Južnej Kórei»); -ua da -e en el locativo («v
+Nikarague»); los plurales femeninos siguen la ley rítmica («na Bahamách», «na Filipínach») y los masculinos
+van en -ov/-och («v Spojených štátoch»). Los adjetivos concuerdan («Dominikánskej republiky», «pre Českú
+republiku»). La preposición es «vo» ante v, f y «šv» («vo Francúzsku», «vo Švédsku»), «na» para Eslovaquia,
+Ucrania y las islas, «v» para lo demás; el destino es «pre» + acusativo. La tabla lleva los irregulares
+(Egypt, Izrael, Niger, Cyprus, Maurícius, Brunej, Burkina Faso, Papua-Nová Guinea, Pobrežie Slonoviny, los
+«Svätý...»). Lo que termina en -i, -u, -e o vocal + o (Čile, Peru, Haiti, Macao) no se declina.
+
+**Formato.** Intl de sk-SK: miles con espacio (U+00A0), decimal con coma, € detrás («1 234 567,50 €») y
+porcentaje con espacio («23 %»). Fechas «24. októbra 2026». `parsearNumero` no cambia (casos nuevos en
+`check_motor`). `inferir.ts` reconoce «mesačný» y «mesiac»; «ročný» entra por el prefijo «rocn» que ya
+estaba. Geist con `latin-ext` ya cubre ľ, ĺ, ŕ, ô y ä.
+
+**Slugs.** ASCII en kebab-case sin diacríticos, sobre la frase que busca la gente: `kalkulacka-uveru`,
+`kalkulacka-dph`, `hypotekarna-kalkulacka`, `vypocet-percent`, `vypocet-zlavy`, `zlozene-urocenie`,
+`hodinova-mzda`, `kalkulacka-bmi`, `termin-porodu` y las demás. Rankings: `kde-mzda-vystaci-najdalej`,
+`den-danovej-slobody`, `kolko-zostane-zo-zvysenia-mzdy`.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`): sin exclamaciones, rayas ni guion como pausa; se atrapa el
+tykanie (pronombres, imperativos y presentes de segunda del singular) y la «Vy» con mayúscula a mitad de
+oración; las comillas que no son „ “; las letras propias del checo (ř, ě, ů) y las palabras que delatan un
+texto checo adaptado (nebo, když, který, jsou, jste, kolik, pokud, sazba, výsledek, «pro», «co»...).
+
+**Prueba.** `zz-sk` (Zetalandia, locale `sk-001`, kraje Severný y Južný) es una edición interna.
+`check_universales` prueba sk-SK con EUR, «Svätý Vincent a Grenadíny» por el nombre largo que se declina por
+partes y «Spojené arabské emiráty» por el plural con adjetivos.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

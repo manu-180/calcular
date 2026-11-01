@@ -656,6 +656,26 @@ export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
     texto: "{en} me {producto} košta {horas} rada. A u drugim zemljama?",
     og: { antes: "{en}, sa mojom platom,", producto: "{producto} me košta", de: "rada", deMes: "rada mesečno", otros: "Isti nivo plate:", cta: "Koliko sati rada to košta?" },
   }),
+  sk: base({
+    titulo: "Rovnaký výpočet so skutočnou mzdou",
+    bajada: "S hrubou mesačnou mzdou sa hodiny počítajú z nej, nie z minimálnej mzdy. Suma zostáva v tomto prehliadači: nedostane sa do odkazu ani do obrázka.",
+    campo: "Hrubá mzda za mesiac",
+    ayuda: "V {moneda}, pred zrážkami.",
+    traido: "Prevzaté z kalkulačky mzdy.",
+    invalido: "Je potrebná suma väčšia ako nula.",
+    vacio: "Hodiny sa zobrazia po zadaní mzdy.",
+    antes: "{en} stojí {producto} s touto mzdou",
+    despues: "práce",
+    despuesMes: "práce každý mesiac",
+    minimo: "Za minimálnu mzdu: {horas}.",
+    veces: "{x}× minimálna mzda",
+    rankingTitulo: "Rovnaká úroveň mzdy v každej krajine",
+    rankingBajada: "{x}× minimálna mzda každej krajiny, prepočítané na hodiny práce.",
+    tarjetaTitulo: "Karta s mojimi hodinami",
+    tarjetaBajada: "Ukazuje iba hodiny a krajiny. Mzdu nikdy.",
+    texto: "{en} ma {producto} stojí {horas} práce. A v iných krajinách?",
+    og: { antes: "{en} s mojou mzdou", producto: "ma {producto} stojí", de: "práce", deMes: "práce mesačne", otros: "Rovnaká úroveň mzdy:", cta: "Koľko hodín práce to stojí?" },
+  }),
 };
 
 export function textosHorasPropio(idioma: Idioma, trato: Trato, locale?: string): TextosHorasPropio {

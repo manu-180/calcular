@@ -655,6 +655,26 @@ export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
     celuImagen: "Kamerom telefona ovaj kod otvara sliku spremnu za deljenje u priči.",
     cerrar: "Zatvori",
   }),
+  sk: base({
+    grupo: "Zdieľať na",
+    instagramSub: "Príbeh",
+    copiar: "Skopírovať odkaz",
+    mas: "Ďalšie možnosti",
+    nuevaPestana: "otvorí sa na novej karte",
+    formato: "Formát obrázka",
+    historia: "Príbeh 9:16",
+    feed: "Príspevok 1:1",
+    descargar: "Stiahnuť obrázok",
+    copiado: "Odkaz je skopírovaný.",
+    compartido: "Hotovo, zdieľané.",
+    enInstagram: "Hotovo. Odkaz je tiež skopírovaný a dá sa vložiť do príbehu nálepkou Odkaz.",
+    descargado: "Obrázok je stiahnutý a odkaz skopírovaný. Dá sa zverejniť ako príbeh z telefónu a odkaz pridať nálepkou Odkaz.",
+    error: "Zdieľanie teraz nie je k dispozícii.",
+    alCelu: "Na Instagram sa pridáva z telefónu",
+    celuPagina: "Fotoaparátom telefónu tento kód otvorí kartu pripravenú na odoslanie do príbehu jedným ťuknutím.",
+    celuImagen: "Fotoaparátom telefónu tento kód otvorí obrázok pripravený na zdieľanie v príbehu.",
+    cerrar: "Zavrieť",
+  }),
 };
 
 export function textosRedes(idioma: Idioma, trato: Trato, locale?: string): TextosRedes {

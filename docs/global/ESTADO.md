@@ -222,6 +222,23 @@ plural.ts, FormasUnidad, el contador y la normalización del buscador, formato.t
 otras escrituras, cargadores, expectativas de zz-* y el orden de D9 a D22 del ADR) quedan resueltos una
 vez. Las secciones de cada motor siguen abajo, en el orden del ADR.
 
+## 31/10/2026 · Motor eslovaco (`claude/mundo-motor-sk`)
+
+sk en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados, redes, «Tu sueldo en
+el mundo» (`mzda-vo-svete`), rankings (`rebricek-krajin`), horas (`kolko-hodin-prace`), calendario
+(`vyplatny-kalendar`), sueldos reales (`skutocne-mzdy`), venta completa (`IDIOMAS_VENTA`) y las 41 universales
+con slugs ASCII (`kalkulacka-uveru`, `kalkulacka-dph`, `hypotekarna-kalkulacka`...). Registro: vykanie con «vy»
+en minúscula, el de Finančná správa y los bancos; mercados con `trato: "usted"`. Plurales `pluralSk`. `GRAMATICA.sk`
+y `padySk` declinan el país («na Slovensku», «v Česku», «pre Slovensko», «Slovenska»). Decisiones en ADR 0002, D25.
+Edición de prueba `zz-sk`.
+
+Falta para publicar Eslovaquia:
+- El país en sí (BRIEF-PAIS): výpočet čistej mzdy, daň z príjmov, odvody, SZČO, minimálna mzda, DPH, con datos
+  verificados en fuentes oficiales.
+- Revisión de un hablante nativo sobre una muestra de páginas.
+- Al mergear con `claude/mundo-motor-sr` y `claude/mundo-motor-bg`: chocan las listas de idiomas, los mapas
+  `Record<Idioma>` y las expectativas de zz-* de `check_motor`; D23, D24 y D25 ya tienen números propios.
+
 ## 24/10/2026 · Motor europeo: polaco, sueco, danés, noruego y finés (`claude/mundo-motor-eu`)
 
 pl, sv, da, nb y fi en motor, errores, calculadora, sitio, inicio, legales, compartir, embed, «Tu

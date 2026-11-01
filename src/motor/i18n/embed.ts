@@ -1214,7 +1214,44 @@ const bg: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Eslovaco (ADR 0002, D25): vykanie con vy en minúscula, como Finančná správa y los bancos; el país va
+// con pre y acusativo (GRAMATICA.sk).
+const sk: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulačka CalcularYa",
+    marcaNuevaPestana: "(otvorí sa na novej karte)",
+    noDisponible: { titulo: "Táto kalkulačka nie je k dispozícii", texto: "Možno sa zmenila jej adresa." },
+    insertar: "Vložte na svoj web",
+    pagina: {
+      titulo: (pais) => [`Kalkulačky zadarmo pre váš web | ${pais}`, "Kalkulačky zadarmo pre váš web"],
+      descripcion: (pais) => `Vyberte kalkulačku ${GRAMATICA.sk.para(pais)}, skopírujte kód a vložte ho na svoj blog alebo web. Zadarmo, s oficiálnymi údajmi, ktoré sú vždy aktuálne.`,
+      h1: "Vložte kalkulačku na svoj web",
+      bajada: "Vyberte kalkulačku, skopírujte kód a vložte ho, kam potrebujete. Zadarmo a údaje sa aktualizujú samy.",
+      calculadora: "Kalkulačka",
+      buscar: "Nájdite kalkulačku",
+      sinResultados: "Vášmu hľadaniu nezodpovedá žiadna kalkulačka.",
+      tema: "Vzhľad",
+      claro: "Svetlý",
+      oscuro: "Tmavý",
+      ancho: "Šírka",
+      anchoCompleto: "Na celú šírku",
+      acento: "Farba zvýraznenia",
+      colores: ["Zelená", "Modrá", "Oranžová", "Ružová", "Grafitová"],
+      credito: "Zobraziť pod kalkulačkou odkaz na zdroj",
+      vistaPrevia: "Náhľad",
+      codigo: "Kód na vloženie",
+      copiar: "Skopírovať kód",
+      copiado: "Kód je skopírovaný",
+      ayudaScript: "Skript je voliteľný: prispôsobuje výšku kalkulačky jej obsahu.",
+      ventajas: ["Zadarmo a bez registrácie", "Vždy aktuálne oficiálne údaje", "Prispôsobí sa akejkoľvek šírke"],
+      nota: "Pod kalkulačkou je odkaz na CalcularYa. Prosíme, neodstraňujte ho.",
+      verTodas: (pais) => `Zobraziť všetky kalkulačky ${GRAMATICA.sk.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulačka CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

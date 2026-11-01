@@ -716,6 +716,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "teček", coma: "čárek" },
     },
   },
+  // Eslovaco (ADR 0002, D25): vykanie con «vy» en minúscula, como Finančná správa, Slovenská sporiteľňa
+  // y Tatra banka. El botón va en infinitivo («Vypočítať») y las oraciones en imperativo cortés de
+  // segunda del plural («zadajte», «vyberte»).
+  sk: {
+    base: {
+      calcular: "Vypočítať",
+      resultado: "Výsledok",
+      si: "Áno",
+      no: "Nie",
+      sinResultado: "Tento výsledok zatiaľ nezobrazujeme.",
+      errores: {
+        requerido: "Vyplňte toto pole.",
+        "numero-invalido": "Zadajte číslo, napríklad {ejemplo}.",
+        "entero-invalido": "Zadajte celé číslo bez desatinných miest.",
+        "menor-que-min": "Najnižšia povolená hodnota je {min}.",
+        "mayor-que-max": "Najvyššia povolená hodnota je {max}.",
+        "fecha-invalida": "Vyberte platný dátum.",
+        "hora-invalida": "Vyberte platný čas.",
+        "opcion-invalida": "Vyberte jednu z možností.",
+        "region-invalida": "Vyberte kraj.",
+        "calculo-fallido": "S týmito údajmi sa výpočet nepodaril. Skontrolujte hodnoty a skúste to znova.",
+      },
+      milesAmbiguos: "Máte na mysli {sugerido}? Zadajte číslo bez {signos}.",
+      separadores: { punto: "bodiek", coma: "čiarok" },
+    },
+  },
   // Griego (ADR 0002, D20): πληθυντικός ευγενείας, como myAADE, gov.gr y los bancos. El botón es un
   // sustantivo («Υπολογισμός») y las oraciones van en imperativo cortés de segunda del plural
   // («εισάγετε», «επιλέξτε»). La pregunta cierra con «;», el signo de interrogación griego.

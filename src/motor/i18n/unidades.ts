@@ -110,6 +110,15 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     meses: { uno: "mesec", pocos: "meseca", otros: "meseci" },
     anios: { uno: "godina", pocos: "godine", otros: "godina" },
   },
+  // Eslovaco: como el checo, "few" 2 a 4 (2 dni, 3 roky), "other" 0 y 5 en adelante (5 rokov) y "many"
+  // las fracciones en genitivo singular (1,5 roka): en sk "muchos" lleva la forma de fracción.
+  sk: {
+    dias: { uno: "deň", pocos: "dni", muchos: "dňa", otros: "dní" },
+    semanas: { uno: "týždeň", pocos: "týždne", muchos: "týždňa", otros: "týždňov" },
+    horas: { uno: "hodina", pocos: "hodiny", muchos: "hodiny", otros: "hodín" },
+    meses: { uno: "mesiac", pocos: "mesiace", muchos: "mesiaca", otros: "mesiacov" },
+    anios: { uno: "rok", pocos: "roky", muchos: "roka", otros: "rokov" },
+  },
 };
 
 const ZH_SIMPLIFICADO: Formas = {

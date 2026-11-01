@@ -23,6 +23,7 @@ import { contenidoPl } from "./contenido/pl";
 import { contenidoPt } from "./contenido/pt";
 import { contenidoRo } from "./contenido/ro";
 import { contenidoRu } from "./contenido/ru";
+import { contenidoSk } from "./contenido/sk";
 import { contenidoSr } from "./contenido/sr";
 import { contenidoSv } from "./contenido/sv";
 import { contenidoTh } from "./contenido/th";
@@ -54,6 +55,7 @@ import { textosPl } from "./textos/pl";
 import { textosPt } from "./textos/pt";
 import { textosRo } from "./textos/ro";
 import { textosRu } from "./textos/ru";
+import { textosSk } from "./textos/sk";
 import { textosSr } from "./textos/sr";
 import { textosSv } from "./textos/sv";
 import { textosTh } from "./textos/th";
@@ -66,7 +68,7 @@ export default definirUniversal<UiHorasTrabajadas>({
   id: "horas-trabajadas",
   concepto: "horas-trabajadas",
   definir,
-  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hu: textosHu, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hu: contenidoHu, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hu: textosHu, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hu: contenidoHu, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });

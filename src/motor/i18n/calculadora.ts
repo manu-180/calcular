@@ -284,6 +284,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Zdroj",
     },
   },
+  sk: {
+    base: {
+      datos: "Vaše údaje",
+      resultado: "Výsledok",
+      vacio: "Vyplňte údaje a kliknite na „Vypočítať“, výsledok sa zobrazí tu.",
+      sinResultado: "Tento výsledok zatiaľ nezobrazujeme.",
+      avisos: { info: "Dobré vedieť", cautela: "Pozor", bloquea: "Prečo výsledok nezobrazujeme" },
+      fuenteDelAviso: "Zdroj",
+    },
+  },
   el: {
     base: {
       datos: "Τα στοιχεία σας",

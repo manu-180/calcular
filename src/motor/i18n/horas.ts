@@ -3383,7 +3383,114 @@ const bg: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// ───────────────────────────── sk ─────────────────────────────
+
+// Eslovaco (ADR 0002, D25): impersonal, como el resto. {en} llega declinado por GRAMATICA.sk („Na
+// Slovensku“, „Vo Francúzsku“, „V Česku“) y va siempre al comienzo de la oración, con el verbo detrás
+// („Na Slovensku stojí…“). Las plantillas no conjugan nada con {n}: los números van detrás de dos
+// puntos o entre paréntesis, o como genitivo plural de una cantidad grande („rebríček {n} krajín“).
+const sk: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Koľko hodín práce to stojí?",
+    seo: {
+      titulo: ["Koľko hodín práce stojí iPhone {en}", "Hodiny práce za iPhone {en}", "Koľko hodín práce to stojí?"],
+      tituloGlobal: ["Koľko hodín práce stojí iPhone vo svete", "Koľko hodín práce to stojí?"],
+      tituloProducto: ["Koľko hodín práce stojí {producto} {en}", "Hodiny práce za {producto} {en}", "Koľko hodín práce stojí {producto}"],
+      tituloProductoGlobal: ["Koľko hodín práce stojí {producto} vo svete", "Koľko hodín práce stojí {producto}"],
+      descripcion: "iPhone, MacBook alebo Spotify prepočítané na hodiny práce za minimálnu mzdu {en} a v porovnaní {n} krajín. Oficiálne ceny a zdroj každého čísla.",
+      descripcionGlobal: "iPhone, MacBook alebo Spotify prepočítané na hodiny práce za minimálnu mzdu v porovnaní {n} krajín. Oficiálne ceny a zdroj každého čísla.",
+      descripcionProducto: "{en} stojí {producto} {horas} práce za minimálnu mzdu. Rebríček {n} krajín s oficiálnou cenou a zdrojom každého čísla.",
+      descripcionProductoGlobal: "Koľko hodín práce za minimálnu mzdu stojí {producto} v porovnaní {n} krajín. Oficiálna cena každého obchodu a zdroj každého čísla.",
+    },
+    ceja: "Index: {mes}",
+    h1: "Koľko hodín práce to stojí?",
+    h1Producto: "Koľko hodín práce stojí {producto}?",
+    bajada: "Oficiálna cena rovnakého produktu prepočítaná na hodiny práce za minimálnu mzdu v porovnaní {n} krajín.",
+    form: { producto: "Produkt", pais: "Krajina", porMes: "mesačne" },
+    heroe: {
+      antes: "{en} stojí {producto}",
+      despues: "práce za minimálnu mzdu",
+      despuesMes: "práce za minimálnu mzdu každý mesiac",
+      jornadaUno: "{n} pracovný deň po 8 hodinách",
+      jornadaOtras: "Pracovných dní po 8 hodinách: {n}",
+      precio: "Oficiálna cena {precio}",
+      salario: "Minimálna mzda {monto} za hodinu",
+      sinPrecio: "{en} žiadny oficiálny obchod tento produkt nepredáva.",
+      mejor: "{en} stačí {horas}.",
+      mejorPropio: "V žiadnej krajine indexu to nevyjde na menej hodín práce.",
+      puesto: "{p}. miesto z {total}",
+      escalaHoras: "Každý štvorček je jedna hodina práce",
+      escalaSemanas: "Každý štvorček je jeden týždeň po 40 hodinách",
+      masDeUnAnio: "Viac ako rok práce",
+    },
+    ranking: {
+      titulo: "Krajina po krajine",
+      bajada: "Od najmenšieho počtu hodín po najväčší. Každá cena je oficiálna cena výrobcu v danej krajine.",
+      lista: "Krajiny zoradené podľa hodín práce",
+      verTodos: "Zobraziť všetky krajiny ({n})",
+      verMenos: "Zobraziť menej",
+      elegido: "Vybrané",
+      sinPrecio: "Krajín indexu bez údajov: {n}. Žiadny oficiálny obchod tam tento produkt nepredáva.",
+      horas: "Hodiny",
+      precio: "Oficiálna cena",
+    },
+    compartir: {
+      titulo: "Karta na zdieľanie",
+      bajada: "Obsahuje len verejné údaje: oficiálnu cenu a hodiny práce za minimálnu mzdu.",
+      boton: "Zdieľať kartu",
+      descargar: "Stiahnuť pre Stories",
+      copiado: "Odkaz skopírovaný.",
+      compartido: "Hotovo, odoslané.",
+      error: "Zdieľanie sa teraz nepodarilo.",
+      texto: "{en} stojí {producto} {horas} práce za minimálnu mzdu. A v iných krajinách?",
+      alt: "Náhľad karty",
+    },
+    metodo: {
+      titulo: "Ako to počítame",
+      estimacion: "Hodiny = oficiálna cena ÷ minimálna hodinová mzda. Ide o porovnanie oficiálnych cien, nie o ponuku na kúpu.",
+      supuestos: [
+        "Cena je cenníková cena najlacnejšej verzie v oficiálnom obchode výrobcu, odčítaná zo stránky pre každú krajinu.",
+        "Spotify Premium je individuálny tarif na jeden mesiac, bez úvodných akcií.",
+        "Minimálna mzda je všeobecná sadzba platná dnes pre dospelého zamestnanca na plný úväzok. Kde ich je viac podľa odvetvia alebo regiónu, berie sa sadzba pre maloobchod v hlavnom regióne.",
+        "Keď zákon stanovuje minimum za mesiac alebo za deň, prepočíta sa na hodiny podľa zákonného týždenného pracovného času v danej krajine.",
+        "Španielsko a Portugalsko vyplácajú minimálnu mzdu štrnásťkrát ročne: rozpočíta sa do 12 mesiacov, rovnako ako to robí Eurostat.",
+        "Keď obchod uvádza cenu v amerických dolároch, prepočíta sa oficiálnym kurzom danej krajiny.",
+        "Pracovný deň má v každej krajine 8 hodín, aby sa dni dali porovnať.",
+      ],
+      fuentesTitulo: "Zdroj každého čísla",
+      fuentesBajada: "Každá krajina s minimálnou mzdou, týždenným pracovným časom a cenami z obchodu, pri každom údaji s dátumom odčítania.",
+      salario: "Minimálna mzda",
+      jornada: "Týždenný pracovný čas",
+      precio: "Cena",
+      cambio: "Výmenný kurz",
+      consultado: "Zistené {fecha}",
+      verificado: "Overené {fecha}",
+      verFuente: "Zobraziť zdroj",
+      sello: "Ceny odčítané od {desde} do {hasta}. Cena staršia ako 120 dní sa už nezobrazuje.",
+      conversion: {
+        hora: "Zákon stanovuje hodinovú sadzbu.",
+        mes: "Mesačná × 12 ÷ 52 týždňov ÷ {h} h týždenne.",
+        mesPagas: "Mesačná × {p} výplat ÷ 52 týždňov ÷ {h} h týždenne.",
+        anio: "Ročná ÷ 52 týždňov ÷ {h} h týždenne.",
+        semana: "Týždenná ÷ {h} h.",
+        dia: "Denná ÷ {h} h pracovného dňa.",
+        diaPagado: "Denná × {d} platených dní ÷ {h} h týždenne.",
+        divisor: "Mesačná ÷ {d}, hodinový deliteľ stanovený zákonom.",
+      },
+    },
+    faqTitulo: "Časté otázky",
+    faq: [
+      { pregunta: "Ako sa hodiny počítajú?", respuesta: "Oficiálna cena produktu sa vydelí minimálnou hodinovou mzdou danej krajiny. Keď zákon stanovuje minimum za mesiac alebo za deň, prepočíta sa na hodiny podľa zákonného týždenného pracovného času v danej krajine." },
+      { pregunta: "Prečo práve minimálna mzda?", respuesta: "Je to mzda, ktorú stanovuje zákon takmer v každej krajine, a dá sa overiť v oficiálnom zdroji. Priemernú mzdu meria každá krajina po svojom, takže by sa nedala porovnať rovnako spoľahlivo." },
+      { pregunta: "Je v cene daň?", respuesta: "Je to cenníková cena, ktorú ukazuje oficiálny obchod v každej krajine. V Spojených štátoch a v Kanade neobsahuje daň z predaja, v iných krajinách môže obchod pripočítať dane až pri platbe." },
+      { pregunta: "Prečo tu niektorá krajina chýba?", respuesta: "Do indexu patria len krajiny s overenou platnou minimálnou mzdou a cenou z oficiálneho obchodu. Bez oficiálneho internetového obchodu pre daný produkt nie sú údaje. Ceny ďalších predajcov sa nepoužívajú nikdy." },
+      { pregunta: "Ako často sa údaje aktualizujú?", respuesta: "Ceny sa odčítavajú v každom obchode a po 120 dňoch zastarávajú: staršia cena sa už nezobrazuje. Minimálna mzda sa berie z oficiálnych údajov každej krajiny a mení sa, keď sa zmení zákon." },
+    ],
+    og: { de: "práce za minimálnu mzdu", deMes: "práce za minimálnu mzdu mesačne", generica: "Koľko hodín práce stojí {producto}?", genericaBajada: "Oficiálna cena v hodinách práce za minimálnu mzdu v porovnaní {n} krajín", menos: "Najmenej hodín", cta: "Všetky krajiny na" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

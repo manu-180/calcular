@@ -562,6 +562,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Pogledajte koliko bi vam neto ostalo u više od ${n} zemalja`,
     },
   },
+  // Eslovaco (ADR 0002, D25): vykanie con vy en minúscula.
+  sk: {
+    base: {
+      boton: "Zdieľať",
+      botonAria: "Zdieľať túto kalkulačku",
+      menuTitulo: "Zdieľať cez",
+      copiar: "Skopírovať odkaz",
+      copiado: "Odkaz je skopírovaný",
+      compartido: "Odoslané",
+      errorCorto: "Kopírovanie sa nepodarilo",
+      errorAyuda: "Odkaz sa nepodarilo skopírovať. Skopírujte ho z adresného riadka prehliadača.",
+      nuevaPestana: "otvorí sa na novej karte",
+      mensaje: (nombre) => `${nombre}. Zadarmo, výpočet zaberie minútu.`,
+      puenteIntro: "A v iných krajinách?",
+      puenteEnlace: (n) => `Pozrite sa, koľko by vám v čistom zostalo vo viac ako ${n} krajinách`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

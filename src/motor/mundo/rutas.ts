@@ -35,6 +35,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   hu: "fizetes-a-vilagban",
   he: "sachar-baolam",
   sr: "plata-u-svetu",
+  sk: "mzda-vo-svete",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";
