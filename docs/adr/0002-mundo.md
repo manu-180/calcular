@@ -1474,3 +1474,43 @@ la moneda de prueba es EUR y los textos hablan de «цент», no de «стот
 
 **Fuente.** Geist no trae cirílico: la tarjeta OG usa Noto Sans de respaldo, como uk y ru. La edición
 interna es `zz-bg` («Зеталандия», bg-001).
+
+### D28. Mongol (2026-11-01)
+
+(D25 sk, D26 ka y D27 hr quedan para sus ramas, sin mergear todavía.)
+
+**Registro.** Uno solo, el de los bancos y los servicios (Хаан банк, e-Mongolia, Татварын ерөнхий газар):
+«та», «таны» con minúscula y pedidos en «-на уу», «-нэ үү» («оруулна уу», «тооцоолно уу»); botones en la
+forma «-х» («Тооцоолох», «Сонгох»). Nunca «чи». Los mercados van con trato `usted` y el diccionario se
+escribe en `base`. El registro sale del encargo: el 1/11/2026 khanbank.com cortó la conexión y la portada
+de e-mongolia.mn no trae frases dirigidas al usuario, así que no quedó confirmado en esas webs. Conviene
+que el agente de país lo contraste al leer las fuentes de Mongolia.
+
+**Gramática del país.** Mongol nativo, sin relación con la gramática del ruso. Los sufijos de caso dependen
+de la armonía vocálica y de la consonante final, y con nombres extranjeros una regla se equivoca
+fácil («Германд» pero «Францад», «Орост»). Por eso el sufijo nunca se pega al nombre, lo lleva «улс», que
+siempre declina igual: `GRAMATICA.mn` da `en` = «Герман улсад», `de` = «Герман улсын», `para` = «Герман
+улсад зориулсан». Si el nombre ya termina en «Улс» o «арлууд» el sufijo va sobre esa palabra («Монгол Улсад»,
+«Соломоны арлуудын»). Hong Kong, Macao, Puerto Rico y Taiwán van con «нутаг дэвсгэр», para no afirmar que son
+países. Intl.DisplayNames da «Монгол» y se normaliza a «Монгол Улс». Ningún sufijo se pega a una cifra ni a
+una interpolación: las frases se escriben para no necesitarlo, y `reglas_idioma` rechaza «5-д», «₮-ийн»,
+«20%-ийг» («12-р сар» sí, es ordinal).
+
+**Plural.** `Intl.PluralRules("mn")` da one/other, pero detrás de un número el sustantivo va en singular
+(«3 өдөр», «40 тооцоолуур»): las dos formas de `NOMBRES_UNIDAD` son iguales y los diccionarios usan `conteoMn`.
+
+**Formato y moneda.** mn-MN como lo da Intl: coma de miles, punto decimal, sin espacio antes de «%» («20%»), ₮
+delante con espacio («₮ 1,234,567»). Decimales los de Intl para MNT (2 si el importe los pide). Se usa ₮ y no
+«төгрөг» porque el símbolo no se declina. La prueba es MNT.
+
+**Reglas.** Comillas «». Se rechazan ъ (solo aparece en préstamos rusos), letras de otros cirílicos, exclamaciones,
+plural detrás de un número y rusismos («зарплата», «калькулятор»). ө y ү no se revisan palabra por palabra.
+
+**Slugs.** Transliteración ASCII legible, no la norma MNS 5217: х = kh, ц = ts, ч = ch, ш = sh, ж = j, ө = o, ү = u,
+э = e, ы = y, и/й = i, я = ya, ь se omite, la vocal larga queda doble («tsalingiin-nemegdel-tootsooluur»,
+«noat-tootsooluur», «delkhiin-tsalin»). Es como se teclea en un buscador sin teclado mongol. Van en
+`src/motor/secciones.ts` vía los `SLUG_*`, sin carpetas por idioma.
+
+**Fuente.** Geist no trae ө ni ү: la tarjeta OG usa Noto Sans de respaldo, como ru y bg. La edición interna es
+`zz-mn` («Зеталанд», mn-001). Mercados de prueba en `check_universales`: Монгол Улс con MNT y nombres largos
+(«Бүгд Найрамдах Доминикан Улс», «Сент-Винсент ба Гренадин», «Соломоны арлууд»).

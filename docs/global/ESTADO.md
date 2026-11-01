@@ -106,6 +106,14 @@ reusa con EUR. Cirílico: edición futura (`rs-cyrl`). Decisiones en ADR 0002, D
 (interna, `sr-Latn-001`).
 - Falta para publicar Serbia y Montenegro: los países en sí, con datos verificados, y revisión por hablante nativo.
 
+## 1/11/2026 · Motor mongol (`claude/mundo-motor-mn`, ADR 0002 D28)
+
+`mn` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición interna `zz-mn`. Registro de bancos
+y servicios («та», «-на уу», botones en «-х»), sin confirmar en sus webs (ver D28). El sufijo de caso lo lleva «улс»,
+nunca el nombre ni una cifra. MNT como moneda de prueba. Listo para que un agente de país escriba Mongolia.
+Falla de main ajena al frente: `check_mundo` (be, neto).
+
 ## 31/10/2026 · Motor búlgaro (`claude/mundo-motor-bg`, ADR 0002 D24)
 
 `bg` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
