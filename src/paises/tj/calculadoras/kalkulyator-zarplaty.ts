@@ -1,16 +1,17 @@
 import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
-// Черновик: ставки социального налога и подоходного налога найдены только во вторичных источниках,
-// размер личного вычета не найден (сайты ncz.tj и andoz.tj не открылись). См. datos.json.
+// Налоговый кодекс: ч. 1 ст. 183 (ставка), ст. 191 (вычет в показателях, ч. 6: социальный налог работника
+// вычитается из базы), ч. 2 ст. 332 (взнос работника). Показатель: ст. 24 закона о бюджете.
 export default definirCalculadora({
   id: "tj.kalkulyator-zarplaty",
   mercado: "tj",
   concepto: "sueldo-neto",
   slug: "kalkulyator-zarplaty",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "tj.podokhodnyy-stavka": "numero",
-    "tj.lichnyy-vychet": "numero",
+    "tj.lichnyy-vychet": "mapa",
+    "tj.pokazatel": "numero",
     "tj.sn-rabotnik": "mapa",
   },
   campos: [
@@ -20,17 +21,18 @@ export default definirCalculadora({
       tipo: "opcion",
       etiqueta: "Где вы работаете",
       opciones: [
-        { valor: "prochie", etiqueta: "Негосударственная организация" },
-        { valor: "gosudarstvennye", etiqueta: "Государственное учреждение" },
+        { valor: "prochie", etiqueta: "Обычная организация" },
+        { valor: "gosudarstvennye", etiqueta: "Бюджетное учреждение" },
       ],
       porDefecto: "prochie",
     },
+    { id: "vychetTip", tipo: "opcion-dato", etiqueta: "Личный вычет", dato: "tj.lichnyy-vychet" },
   ],
   calcular(e, v, { redondear }) {
     if (e.oklad <= 0) throw new ErrorEntrada("Введите зарплату больше нуля.", "oklad");
     const vznos = redondear(porcentaje(e.oklad, enMapa(v["tj.sn-rabotnik"], e.rabotodatel)));
-    const vychet = Math.min(e.oklad, v["tj.lichnyy-vychet"]);
-    const baza = redondear(e.oklad - vychet);
+    const vychet = Math.min(redondear(e.oklad - vznos), enMapa(v["tj.lichnyy-vychet"], e.vychetTip) * v["tj.pokazatel"]);
+    const baza = redondear(e.oklad - vznos - vychet);
     const nalog = redondear(porcentaje(baza, v["tj.podokhodnyy-stavka"]));
     const netto = redondear(e.oklad - vznos - nalog);
     return {
@@ -40,16 +42,16 @@ export default definirCalculadora({
       baza,
       nalog,
       nettoZaGod: redondear(netto * 12),
-      observaciones: ["Расчет приблизительный: он не учитывает льготы и особые случаи. Точную сумму назовет бухгалтерия работодателя."],
+      observaciones: ["Расчет для основного места работы и полного месяца. Вычет не применяется, если человек был наемным работником меньше 16 календарных дней за месяц."],
     };
   },
   resultado: [
     { clave: "netto", etiqueta: "На руки в месяц", formato: "moneda", destacada: true },
-    { clave: "vznos", etiqueta: "Взнос работника", formato: "moneda" },
+    { clave: "vznos", etiqueta: "Социальный налог работника", formato: "moneda" },
     { clave: "vychet", etiqueta: "Личный вычет", formato: "moneda", ocultarSiCero: true },
     { clave: "baza", etiqueta: "Облагаемый доход", formato: "moneda" },
     { clave: "nalog", etiqueta: "Подоходный налог", formato: "moneda" },
     { clave: "nettoZaGod", etiqueta: "На руки за год", formato: "moneda" },
   ],
-  mundo: { bruto: "oklad", periodoBruto: "mes", neto: "netto", periodoNeto: "mes", entrada: { rabotodatel: "prochie" } },
+  mundo: { bruto: "oklad", periodoBruto: "mes", neto: "netto", periodoNeto: "mes", entrada: { rabotodatel: "prochie", vychetTip: "obychnyy" } },
 });

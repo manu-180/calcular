@@ -1,13 +1,13 @@
 import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
-// Черновик: ставка социального налога работодателя найдена только во вторичных источниках.
+// Налоговый кодекс: ч. 1 ст. 332.
 export default definirCalculadora({
   id: "tj.nalogi-rabotodatelya",
   mercado: "tj",
   concepto: "costo-empleador",
   slug: "nalogi-rabotodatelya",
-  estado: "borrador",
-  requiere: { "tj.sn-rabotodatel": "mapa" },
+  estado: "publicado",
+  requiere: { "tj.sn-rabotodatel": "mapa", "tj.sn-rabotnik": "mapa", "tj.mzp": "numero" },
   campos: [
     { id: "oklad", tipo: "moneda", etiqueta: "Зарплата сотрудника в месяц", min: 0, porDefecto: 5000 },
     { id: "sotrudniki", tipo: "entero", etiqueta: "Сколько сотрудников", min: 1, max: 10000, porDefecto: 1 },
@@ -16,8 +16,8 @@ export default definirCalculadora({
       tipo: "opcion",
       etiqueta: "Тип организации",
       opciones: [
-        { valor: "prochie", etiqueta: "Негосударственная организация" },
-        { valor: "gosudarstvennye", etiqueta: "Государственное учреждение" },
+        { valor: "prochie", etiqueta: "Обычная организация" },
+        { valor: "gosudarstvennye", etiqueta: "Бюджетное учреждение" },
       ],
       porDefecto: "prochie",
     },

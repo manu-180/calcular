@@ -1,12 +1,12 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 
-// Черновик: продолжительность отпуска взята из пересказа Трудового кодекса на справочном сайте.
+// Трудовой кодекс: ст. 93 (минимум дней), ст. 112 (оплата не ниже среднего заработка).
 export default definirCalculadora({
   id: "tj.otpusknye",
   mercado: "tj",
   concepto: "vacaciones",
   slug: "otpusknye",
-  estado: "borrador",
+  estado: "publicado",
   requiere: { "tj.otpusk-dney": "numero" },
   campos: [
     { id: "zarabotok", tipo: "moneda", etiqueta: "Средний дневной заработок", min: 0, porDefecto: 200 },

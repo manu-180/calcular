@@ -1,5 +1,15 @@
 import { esFechaISO } from "@/motor/vigencia";
-import type { Detector, DetectorSerie, Http, PuntoSerie } from "@/motor/tipos";
+import type { Detector, DetectorSerie, FechaISO, HallazgoNorma, Http, PuntoSerie } from "@/motor/tipos";
+
+// Страница Трудового кодекса в базе Минюста перечисляет законы об изменениях ссылками «№ 2312».
+// Закон с большим номером, чем уже просмотренный, надо прочитать.
+async function izmeneniyaTk(http: Http, url: string, posledniy: number, fecha: FechaISO): Promise<readonly HallazgoNorma[] | null> {
+  const html = await http.texto(url);
+  const nomera = [...html.matchAll(/DocumentView\?DocumentId=\d+[^>]*>\s*№\s*(\d{3,5})/g)].map((m) => Number(m[1]));
+  if (!nomera.length) return null;
+  const novyy = Math.max(...nomera);
+  return novyy > posledniy ? [{ titulo: `Закон № ${novyy} об изменениях в Трудовом кодексе`, url, fecha }] : [];
+}
 
 // Лента RSS НБТ отдает курсы на последнюю зарегистрированную дату: <pubDate>29.10.2026</pubDate> и по каждой
 // валюте строку «CURRENCY CODE: 840 | UNIT: 1 | RATE: 9.2174» (UNIT: 1, 10 или 100 единиц за курс).
@@ -35,4 +45,14 @@ export const detectores: readonly Detector[] = [
   detectorKursa("RUB", 810, { min: 0.07, max: 0.18, saltoRelativoMax: 0.08 }),
   detectorKursa("CNY", 156, { min: 1, max: 1.9, saltoRelativoMax: 0.06 }),
   detectorKursa("KZT", 398, { min: 0.012, max: 0.032, saltoRelativoMax: 0.06 }),
+  {
+    id: "tj.trudovoy-kodeks",
+    carril: "norma",
+    datos: ["tj.otpusk-dney", "tj.nedelya-chasov", "tj.sverkhurochnye-mnozhitel", "tj.sverkhurochnye-chasov-v-god", "tj.vykhodnoe-mesyatsev", "tj.preduprezhdenie", "tj.preduprezhdenie-rabotnika"],
+    metodo: "html",
+    url: "https://mmih.adlia.tj/SEARCH/DocumentView?DocumentId=127423",
+    traer(http) {
+      return izmeneniyaTk(http, this.url, 2312, "2026-10-31");
+    },
+  },
 ];

@@ -1,13 +1,13 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 
-// Черновик: размер минимальной зарплаты назван только справочным сайтом, акт не найден.
+// Указ Президента от 14.01.2026 № 1132 (официальный комментарий на president.tj). Пропорция за неполный месяц: приближение.
 export default definirCalculadora({
   id: "tj.minimalnaya-zarplata",
   mercado: "tj",
   concepto: "salario-minimo",
   slug: "minimalnaya-zarplata",
-  estado: "borrador",
-  requiere: { "tj.mzp": "numero" },
+  estado: "publicado",
+  requiere: { "tj.mzp": "numero", "tj.nedelya-chasov": "numero" },
   campos: [
     { id: "dolya", tipo: "porcentaje", etiqueta: "Какую часть месячной нормы вы отработали", min: 0, max: 100, porDefecto: 100 },
     { id: "zarplata", tipo: "moneda", etiqueta: "Ваша зарплата за месяц (по желанию)", min: 0, requerido: false },
@@ -23,6 +23,6 @@ export default definirCalculadora({
   resultado: [
     { clave: "minimum", etiqueta: "Минимум за отработанное время", formato: "moneda", destacada: true },
     { clave: "mzp", etiqueta: "Минимальная зарплата за полный месяц", formato: "moneda" },
-    { clave: "raznitsa", etiqueta: "Ваша зарплата выше минимума на", formato: "moneda" },
+    { clave: "raznitsa", etiqueta: "Разница с минимумом", formato: "moneda" },
   ],
 });

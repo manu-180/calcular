@@ -1,58 +1,86 @@
 # Tayikistán (`tj`): informe del agente
 
-- Rama: `claude/pais-tj` (base `origin/main`).
+- Rama: `claude/pais-tj` (mergeada con `origin/main` el 2026-10-31).
 - Mercado: `tj`, ruso (`ru-TJ`), TJS, `Asia/Dushanbe`, `estado: "interno"`, escala 10. `src/paises/index.ts` no se commitea.
-- Total: **51 calculadoras** = 11 locales + 40 universales (`universales: "todas"`). La universal de IVA no entra: pide un dato de tasa verificado que no existe.
+- Total: **51 calculadoras** = 11 locales (todas publicables) + 40 universales (`universales: "todas"`). 0 borradores.
 
-## Bloqueo de fuentes
+## Fuentes: qué abrió y qué no (reintento del 2026-10-31)
 
-Los sitios oficiales de Tayikistán no abrieron desde esta sesión: andoz.tj, ncz.tj, adlia.tj, mmk.tj, mehnat.tj (503 o sin respuesta del proxy). Solo abrieron nbt.tj, stat.tj, customs.tj y president.tj (portada vacía). Por eso **ningún texto de ley (Código Tributario, Código de Trabajo, salario mínimo) se leyó en fuente primaria**. Todo lo que depende de esas normas es `no-verificado` y su calculadora está en `borrador`.
+| Sitio | Resultado | Uso |
+|---|---|---|
+| andoz.tj | **Abre** (antes no). Cadena TLS incompleta: curl con el almacén de Windows valida; Node sin `--use-system-ca` falla | Código Tributario vigente (`docs/kodex/TaxKodex.pdf`, enmiendas al 17.06.2026, 319 pág.), ley de presupuesto 2026, Código de Trabajo 2016 |
+| president.tj | **Abre.** Es una SPA: el texto llega de su API pública de lectura (`controlpanel.president.tj/api/event/show`), sin login | Comentario oficial al Decreto № 1132 y Mensaje de 2024 |
+| mmih.adlia.tj (Ministerio de Justicia, base ADLIA) | **Abre**, pero el texto completo pide login. No se entró: solo el índice y el fragmento inicial públicos | Lista de leyes que enmiendan el Código de Trabajo |
+| ncz.tj | Caído (sin respuesta). **Copia en web.archive.org del 09.10.2025** de la página del Código de Trabajo | Código de Trabajo en ruso, con enmiendas 2022 y 2024 |
+| mehnat.tj, mmk.tj | Caídos. Hay copias en archive (06/2026 y 10/2026), sin nada que hiciera falta | No se usan |
+| adlia.tj, www.adlia.tj | Caídos. Copia de archive de 2023, vieja | No se usa |
+| nbt.tj, stat.tj, mfa.tj, qonunguzori.tj | Abren. qonunguzori.tj es una revista jurídica, no un registro | nbt.tj para cursos; los demás no se usan |
+| majlisioli.tj, portali-huquqi.tj, gov.tj, sugurta.tj | Sin respuesta | No se usan |
+| khovar.tj | 410 desde curl (agencia estatal) | No se usa |
+| mf.tj | Dominio estacionado, no es oficial | No se usa |
 
 ## Calculadoras locales
 
-| Slug | Concepto | Estado | Base |
+| Slug | Concepto | Publicable | Base |
 |---|---|---|---|
-| kurs-valyut | tipo-de-cambio | publicado, con detectores | nbt.tj, ficha de cursos oficial (USD, EUR, RUB, CNY, KZT) |
-| kalkulyator-zarplaty | sueldo-neto (declara `mundo`) | borrador | tasas y vichet sin leer |
-| podokhodnyy-nalog | impuesto-renta | borrador | ídem |
-| sotsialnyy-nalog | aportes-seguridad-social | borrador | ídem |
-| nalogi-rabotodatelya | costo-empleador | borrador | ídem |
-| kalkulyator-nds | iva | borrador | 14 % en 2026 y 13 % desde 2027 solo en Reanda y Asia-Plus |
-| minimalnaya-zarplata | salario-minimo | borrador | 1000 TJS (desde 01.09.2025) y 1300 TJS (desde 01.09.2026) solo en WageIndicator |
-| otpusknye | vacaciones | borrador | 24 días, resumen de WageIndicator |
-| sverkhurochnye | horas-extra | borrador | 40 h, x2 y 120 h/año, resumen de WageIndicator |
-| vykhodnoe-posobie | indemnizacion-despido | borrador | resumen de WageIndicator |
-| srok-preduprezhdeniya | preaviso | borrador | resumen de WageIndicator |
+| kurs-valyut | tipo-de-cambio | sí | nbt.tj, con detectores |
+| kalkulyator-zarplaty | sueldo-neto (declara `mundo`) | sí | CT arts. 183, 191, 332; presupuesto art. 24 |
+| podokhodnyy-nalog | impuesto-renta | sí | CT arts. 183, 191, 332; presupuesto art. 24 |
+| sotsialnyy-nalog | aportes-seguridad-social | sí | CT arts. 332, 334 |
+| nalogi-rabotodatelya | costo-empleador | sí | CT art. 332 |
+| kalkulyator-nds | iva | sí | CT arts. 264, 397(4) |
+| minimalnaya-zarplata | salario-minimo | sí | Decreto № 1132, comentario oficial |
+| otpusknye | vacaciones | sí, con riesgo 1 | CTr arts. 93, 112 |
+| sverkhurochnye | horas-extra | sí, con riesgo 1 | CTr arts. 67, 79, 154 |
+| vykhodnoe-posobie | indemnizacion-despido | sí, con riesgos 1 y 2 | CTr arts. 51, 169 |
+| srok-preduprezhdeniya | preaviso | sí, con riesgo 1 | CTr arts. 41, 45 |
 
-Mínimo de 8 locales cumplido, pero solo 1 es publicable. No se llegó a 15-25 porque sin acceso a la ley no se puede publicar nada de nómina o impuestos.
+CT = Código Tributario. CTr = Código de Trabajo. No se llegó a 15-25 locales: este encargo fue reintentar fuentes y publicar lo que las tuviera.
 
 ## Datos
 
-- **Verificados: 5 series** (USD, EUR, RUB, CNY, KZT), leídas el 2026-10-29 en `https://nbt.tj/ru/kurs/kurs.php` y su exportación por fecha (`export_xml_dynamic.php`), 59 puntos diarios cada una (01.09 a 29.10.2026). El tenge viene por 10 unidades y se guarda por unidad.
-- **No verificados: 14 tramos en 12 datos**, todos con el motivo «el sitio oficial no abrió» y, cuando existe, una fuente secundaria como pista:
-  - IVA (14 % y 13 %), tasa del impuesto a la renta (12 %), contribuciones del empleador (25 % estatales, 20 % resto) y del empleado (1 % y 2 %): Reanda y Asia-Plus.
-  - Deducción personal: **sin valor**, no apareció en ninguna fuente.
-  - Salario mínimo, vacaciones, jornada, horas extra, indemnización y preaviso: WageIndicator, que resume el Código de Trabajo de 2016.
-- La fila de PAISES.md decía «НДС 14 % (verificar)». Dos fuentes secundarias coinciden en 14 % para 2026 con baja a 13 % en 2027, pero no se leyó el artículo 264 del Código Tributario: sigue sin verificar.
-- Datos vistos y descartados: IPC (stat.tj publica el anual, «103,5 % en 2025», sin serie mensual accesible), tasa de refinanciación (7,00 % desde el 02.02.2026, nbt.tj; no se usó), salario medio de mayo de 2026 (3304,05 TJS, stat.tj; no se usó).
+**Verificados: 16 datos, 18 tramos, 0 pendientes** (más 5 series de nbt.tj). `verificadoEl` 2026-10-31 con `nota` en cada fuente que lo necesita.
+
+Lo que cambió al leer la fuente primaria (el borrador anterior venía de resúmenes):
+
+- **Deducción personal: no estaba en ninguna fuente.** Son 2 indicadores de cálculo (CT art. 191.1), 10 para categorías con beneficio (191.2), y el indicador 2026 son 78 TJS (presupuesto art. 24): 156 TJS por mes.
+- **Fórmula de renta corregida.** La base resta también el impuesto social del empleado (CT art. 191.6). El borrador no lo restaba.
+- **IVA:** 14 % hasta el 31.12.2026 y 13 % desde 2027 están en el art. 397(4); el art. 264 dice 15 %, y prevalece la norma transitoria. Se agregan las reducidas de 7 % y 5 % (264.1.2).
+- **«Государственные» pasa a «бюджетные учреждения»:** la ley dice бюджетные, no estatales. Las claves internas no cambian.
+- **Preaviso:** se quitó «7 días por período de prueba». El art. 28(8) habla de otra cosa (avisar por escrito cerca del final de la prueba) y el resumen de WageIndicator lo daba por plazo. Los plazos de 2 y 1 meses se calculan en meses calendario, no como 60 y 30 días.
+- **Indemnización:** las etiquetas ahora citan el artículo (51 y 169), porque el borrador no sabía a qué caso iba cada monto.
+
+**No verificados: ninguno.** Vistos y no usados: IPC (stat.tj solo anual) y tasa de refinanciación.
+
+## Riesgos que tiene que mirar el coordinador
+
+1. **Código de Trabajo sin confirmar en su última redacción.** Lo leído es la copia de ncz.tj del 09.10.2025 (hasta la enmienda de 2024), cotejada en parte con el PDF de 2016 de andoz.tj; el tope de 120 horas se leyó en el texto tayiko de 2016. Después hubo tres leyes: № 2234 (16.02.2026), № 2261 (17.06.2026) y № 2312 (21.10.2026). ADLIA solo muestra su inicio sin login: lo visible trata de discriminación, pago «sin efectivo» y redacción sobre calificación, sin tocar estas cifras, **pero no se leyó el texto completo**. Decisión: publicables, porque hay lectura real de la norma y el riesgo está anotado en `nota`. Si se prefiere máxima prudencia, las 4 calculadoras con riesgo 1 pasan a borrador cambiando una línea, y quedan 7 locales publicables.
+2. **Arts. 51 y 169 se superponen en la reducción de personal** (3 sueldos contra 1 sueldo más conservar el promedio en los meses 2 y 3). El Código no dice cómo se relacionan; la calculadora y el texto muestran ambos sin elegir.
+3. **Salario mínimo:** se leyó el comentario oficial en president.tj, no el texto del decreto. El tramo de 1000 TJS sale del Mensaje de 2024 y no de su decreto.
+4. **Supuestos de fórmula, declarados en el texto:** horas del mes = 40 × 52 / 12; proporción del mínimo en un mes incompleto; el salario medio diario de vacaciones lo ingresa el usuario.
+5. **El Código Tributario se leyó en tayiko** y es traducción propia. El art. 264.1.2 (sin derecho a crédito) se entendió aplicado a todo el grupo del 5 %.
+6. **Fechas `desde` de las normas laborales:** 2026-01-01 es el inicio de lo verificado, no la entrada en vigor.
 
 ## Detectores
 
-5 de tipo de cambio (`api-xml`) sobre el RSS de nbt.tj (`/ru/kurs/rss.php`; `export_xml.php` sin fecha da error). `npx tsx scripts/paises/tj/probar-detectores.ts` corrido hoy: USD 9,2174, EUR 10,2562, RUB 0,1142, CNY 1,383, KZT 0,02017, todos con fecha 2026-10-29. No hay detectores de normas: no hay un lugar oficial legible que vigilar.
+- 5 de tipo de cambio (`api-xml`, RSS de nbt.tj). Prueba real hoy: USD 9,2086, EUR 10,3118, RUB 0,1144, CNY 1,3844, KZT 0,02029, con fecha 2026-11-02.
+- 1 de norma nuevo, `tj.trudovoy-kodeks`: avisa si ADLIA lista una ley de enmienda con número mayor a 2312. Prueba real: `[]`.
+- **Sin detector del Código Tributario.** Se escribió uno sobre andoz.tj y se retiró: en Node falla por la cadena TLS incompleta del sitio (con `--use-system-ca` da `[]`), y no se desactiva la validación TLS. Pedido al coordinador: si el corredor usa `--use-system-ca`, se puede sumar. Mientras tanto, `tj.nds` y `tj.pokazatel` tienen `proximaRevision` 2027-01-01.
 
-## Checks (corridos con `tj` registrado localmente)
+## Checks (con `tj` registrado localmente)
 
 - `tsc --noEmit`: sin errores.
-- `check_paises tj`: OK, 12 datos, 5 series, 51 calculadoras. 1 aviso: `kurs-valyut` deja de ser publicable el 2026-11-28 si los detectores no corren.
-- `check_paises_casos tj`: 5 casos en 1 archivo, OK.
-- `check_textos_paises tj`: 319 textos, 0 avisos.
+- `check_paises tj`: OK, 16 datos, 18 tramos verificados, 5 series, 51 calculadoras. 1 aviso: `kurs-valyut` deja de ser publicable antes del 2026-12-01 si los detectores no corren.
+- `check_paises_casos tj`: 50 casos en 11 archivos, OK.
+- `check_textos_paises tj`: OK, 0 avisos.
 - `check_seo_pais tj`: OK, 0 avisos.
-- `check_fronteras`, `check_eol`, `check_mundo`: OK.
-- `check_motor`: 4595 OK y 1 falla (`forint`), que ya falla en main.
+- `check_ofertas_intl tj`: OK.
+- `check_fronteras`, `check_eol`, `check_motor` (4827 pruebas): OK.
+- `check_mundo`: 1 falla en `be`, país que esta rama no toca; `tj` no aparece.
+- **No se miró en `next dev`:** haría falta un `npm ci` real en el worktree.
 
-## Para completar el país (pedido al coordinador)
+## Pendientes
 
-1. Con acceso a ncz.tj o andoz.tj: leer arts. 183 (renta), 264 (IVA) y 332 (contribuciones) del Código Tributario, la deducción personal y los regímenes simplificados, y el Código de Trabajo (arts. 28 a 51, 91 a 101, 154, 169). Pasar los tramos a `verificado`, dar de alta casos y contenido completo (FAQ, ejemplo, glosario) y cambiar los 10 borradores a `publicado`.
-2. Hacer el calculador de inflación con la serie mensual de IPC de stat.tj (solo se vio el dato anual).
-3. Los contenidos de los borradores son mínimos a propósito: no citan cifras no verificadas.
-4. Supuestos de fórmula en borrador a revisar: la base del impuesto es salario menos deducción (no resta el aporte del empleado), y los plazos de preaviso en meses se pasan a días (30 por mes).
+1. Leer el texto completo de las leyes № 2234, № 2261 y № 2312 (ADLIA con acceso, o ncz.tj cuando vuelva) y cerrar el riesgo 1.
+2. Hacer la calculadora de inflación si aparece la serie mensual de IPC en stat.tj.
+3. Sumar más locales hacia 15-25 (régimen simplificado, patente, feriados). Las fuentes ya están.

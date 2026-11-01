@@ -1,12 +1,12 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 
-// Черновик: норма 40 часов, двойная оплата и предел 120 часов взяты из пересказа Трудового кодекса.
+// Трудовой кодекс: ст. 67 (неделя), ч. 1 ст. 154 (множитель), ч. 6 ст. 79 (предел). Часы в месяце: неделя × 52 / 12, приближение.
 export default definirCalculadora({
   id: "tj.sverkhurochnye",
   mercado: "tj",
   concepto: "horas-extra",
   slug: "sverkhurochnye",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "tj.nedelya-chasov": "numero",
     "tj.sverkhurochnye-mnozhitel": "numero",

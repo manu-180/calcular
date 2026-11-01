@@ -1,12 +1,12 @@
 import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
-// Черновик: ставки найдены только во вторичных источниках (см. datos.json).
+// Налоговый кодекс: ст. 332 (ставки), ст. 334 (расчет).
 export default definirCalculadora({
   id: "tj.sotsialnyy-nalog",
   mercado: "tj",
   concepto: "aportes-seguridad-social",
   slug: "sotsialnyy-nalog",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "tj.sn-rabotodatel": "mapa",
     "tj.sn-rabotnik": "mapa",
@@ -18,8 +18,8 @@ export default definirCalculadora({
       tipo: "opcion",
       etiqueta: "Тип организации",
       opciones: [
-        { valor: "prochie", etiqueta: "Негосударственная организация" },
-        { valor: "gosudarstvennye", etiqueta: "Государственное учреждение" },
+        { valor: "prochie", etiqueta: "Обычная организация" },
+        { valor: "gosudarstvennye", etiqueta: "Бюджетное учреждение" },
       ],
       porDefecto: "prochie",
     },

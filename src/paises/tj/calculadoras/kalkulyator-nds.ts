@@ -1,13 +1,13 @@
-import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
+import { definirCalculadora, enMapa, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
-// Черновик: ставка 14 % (2026) и 13 % (с 2027) названы только во вторичных источниках.
+// Налоговый кодекс: ст. 264 (пониженные ставки) и ч. 4 ст. 397 (14 % до конца 2026 года, 13 % с 2027 года).
 export default definirCalculadora({
   id: "tj.kalkulyator-nds",
   mercado: "tj",
   concepto: "iva",
   slug: "kalkulyator-nds",
-  estado: "borrador",
-  requiere: { "tj.nds": "numero" },
+  estado: "publicado",
+  requiere: { "tj.nds": "numero", "tj.nds-ponizhennaya": "mapa" },
   campos: [
     { id: "summa", tipo: "moneda", etiqueta: "Сумма", min: 0, porDefecto: 1000 },
     {
@@ -20,10 +20,21 @@ export default definirCalculadora({
       ],
       porDefecto: "dobavit",
     },
+    {
+      id: "vid",
+      tipo: "opcion",
+      etiqueta: "Ставка",
+      opciones: [
+        { valor: "obshchaya", etiqueta: "Стандартная" },
+        { valor: "stroitelstvo", etiqueta: "Пониженная: строительные работы, гостиницы, общественное питание" },
+        { valor: "selkhoz", etiqueta: "Пониженная: местная сельхозпродукция, обучение, санатории" },
+      ],
+      porDefecto: "obshchaya",
+    },
   ],
   calcular(e, v, { redondear }) {
     if (e.summa <= 0) throw new ErrorEntrada("Введите сумму больше нуля.", "summa");
-    const stavka = v["tj.nds"];
+    const stavka = e.vid === "obshchaya" ? v["tj.nds"] : enMapa(v["tj.nds-ponizhennaya"], e.vid);
     if (e.rezhim === "dobavit") {
       const nds = redondear(porcentaje(e.summa, stavka));
       return { nds, bezNds: e.summa, sNds: redondear(e.summa + nds), stavka };
