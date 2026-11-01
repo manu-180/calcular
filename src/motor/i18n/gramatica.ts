@@ -1370,6 +1370,12 @@ export const linksniaiLt: (pais: string) => LinksniaiLt = (() => {
     Šiaurinės: ["Šiaurinių", "Šiaurinėse", "Šiaurinėms"],
     Mažosios: ["Mažųjų", "Mažosiose", "Mažosioms"],
     Tolimosios: ["Tolimųjų", "Tolimosiose", "Tolimosioms"],
+    Nuošali: ["Nuošalios", "Nuošalioje", "Nuošaliai"],
+  };
+  // «sritis» es femenino en -is y no sigue la regla de los masculinos.
+  const SUSTANTIVOS: Readonly<Record<string, Formas>> = {
+    Sritis: ["Srities", "Srityje", "Sričiai"],
+    sritys: ["sričių", "srityse", "sritims"],
   };
   const TABLA: Readonly<Record<string, Formas>> = {
     "Kongas-Kinšasa": ["Kongo-Kinšasos", "Konge-Kinšasoje", "Kongui-Kinšasai"],
@@ -1384,6 +1390,7 @@ export const linksniaiLt: (pais: string) => LinksniaiLt = (() => {
   const palatal = (raiz: string) => raiz.replace(/d$|t$/, (m) => (m === "t" ? "č" : "dž"));
   const sustantivo = (w: string): Formas => {
     if (/^\p{Lu}{2,}$/u.test(w)) return [w, w, w];
+    if (SUSTANTIVOS[w]) return SUSTANTIVOS[w];
     const r2 = w.slice(0, -2);
     const r1 = w.slice(0, -1);
     if (/iai$/.test(w)) return [`${w.slice(0, -3)}ių`, `${w.slice(0, -3)}iuose`, `${w.slice(0, -3)}iams`];

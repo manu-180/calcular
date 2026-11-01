@@ -7,7 +7,7 @@ export const contenidoLt: ContenidoUniversal = (ctx) => {
   return {
     h1: "Paprastųjų palūkanų skaičiuoklė",
     title: tituloQueEntre(`Paprastųjų palūkanų skaičiuoklė ${GRAMATICA.lt.en(ctx.nombrePais)}`, "Paprastųjų palūkanų skaičiuoklė", "Paprastosios palūkanos"),
-    description: "Apskaičiuokite paprastąsias palūkanas nuo pradinės sumos pagal metinę normą už dienas, mėnesius ar metus. Pasirinkite 365 arba 360 dienų metus ir matykite visą sumą.",
+    description: "Apskaičiuokite paprastąsias palūkanas nuo pradinės sumos pagal metinę normą už dienas, mėnesius ar metus. Pasirinkite 365 arba 360 dienų metus.",
     intro: [
       "Paprastosios palūkanos visada skaičiuojamos nuo pradinės sumos: per laikotarpį palūkanos prie jos nepridedamos.",
       "Jos taikomos trumpalaikiams indėliams, paskoloms tarp pažįstamų ir daugelyje mokyklinių uždavinių.",

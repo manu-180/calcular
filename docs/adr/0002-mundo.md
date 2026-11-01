@@ -1474,3 +1474,57 @@ la moneda de prueba es EUR y los textos hablan de «цент», no de «стот
 
 **Fuente.** Geist no trae cirílico: la tarjeta OG usa Noto Sans de respaldo, como uk y ru. La edición
 interna es `zz-bg` («Зеталандия», bg-001).
+
+### D29. Lituano, para Lituania (2026-11-01)
+
+(D25 a D28 están en ramas sin mergear; esta entrada toma el D29 para no chocar al mergear.)
+
+`IDIOMAS` e `IDIOMAS_VENTA` suman `lt`. Motor, errores, calculadora, sitio, inicio, legales, compartir,
+embed, afiliados, redes, «Tu sueldo en el mundo» (`atlyginimas-pasaulyje`), rankings (`saliu-reitingas`),
+horas (`kiek-valandu-dirbti`), calendario (`atlyginimo-kalendorius`), sueldos reales (`realus-atlyginimai`),
+venta completa y las 41 universales.
+
+**Registro.** Uno solo, el de los bancos y servicios: «jūs» en minúscula, imperativo de 2.ª del plural
+(«įveskite», «apskaičiuokite»), botones cortos en infinitivo («Skaičiuoti», «Kopijuoti nuorodą»), nunca «tu».
+Mercados con `trato: "usted"` y diccionario en `base`. Swedbank (swedbank.lt/private/credit/loans/home, leído
+el 1/11/2026) confirma el imperativo y los botones («Užpildykite», «Pasirašykite», «Skaičiuoti»), pero mezcla
+«Jūsų» y «jūs»: la minúscula es una decisión para tener una sola regla que `reglas_idioma` pueda hacer
+cumplir. vmi.lt devolvió 403 ese día, así que Mano VMI quedó sin leer, y SEB y Sodra no se leyeron. Se evitan
+participios y adjetivos con género sobre la persona.
+
+**Plural.** `Intl.PluralRules("lt")` da one (1, 21, 31; no 11), few (2 a 9, 22 a 29; no 12 a 19), other (0, 10
+a 20, 30...: genitivo plural) y many (fracciones). `formaLt` y `pluralLt(n, uno, pocos, muchos, fracción?)` en
+`plural.ts`; las unidades llevan las cuatro formas: «1 metai», «2 metai», «10 metų», «1,5 metų»; «1 diena», «2
+dienos», «10 dienų», «1,5 dienos»; «1 mėnuo», «2 mėnesiai», «10 mėnesių», «1,5 mėnesio». Como el número
+concuerda en caso con la frase y un marcador `{n}` llega ya formado, un número va solo en nominativo o
+genitivo de cuenta; si la frase pide otro caso va tras dos puntos o con «iš viso: {n}».
+
+**Gramática del país.** Se declina y el lugar no lleva preposición. `GRAMATICA.lt`: `nombre` nominativo,
+`de` genitivo («Lietuvos», «Jungtinių Valstijų»), `en` locativo («Lietuvoje», «Vokietijoje», «Egipte»,
+«Izraelyje», «Urugvajuje», «Nyderlanduose»), `para` dativo («Lietuvai», «Egiptui»). `linksniaiLt` deja los
+tres casos sueltos. Regla por terminación del último sustantivo (-a, -ė, -as, -is/-ys con d→dž y t→č en
+genitivo y dativo, -us, -ai/-iai, -os), tabla de adjetivos concordados («Jungtinėje Karalystėje», «Naujojoje
+Zelandijoje»), partes unidas con « ir » declinadas por separado, y sin cambios las palabras de delante en
+genitivo o extranjeras («Pietų Afrikoje», «Kosta Rikoje», «Burkina Faso») y lo que termina en otra letra
+(Peru, Nauru). Revisado a ojo con los nombres de Intl en lt. Los marcadores `{pais}` del diccionario de venta
+no pasan por esta función: ahí el país va en nominativo entre paréntesis.
+
+**Formato.** Intl de lt-LT: miles con espacio desde 4 cifras, decimal con coma, «1 234,50 €», «21 %».
+`parsearNumero` no cambia (casos nuevos en `check_motor`). `inferir.ts` reconoce «metai», «metų», «metus»,
+«metinis» y «mėnuo», «mėnesio», «mėnesinis». Comillas „ “. El subconjunto `latin-ext` de Geist ya está desde
+el checo.
+
+**Vocabulario y slugs.** atlyginimas, atlyginimas „ant popieriaus“ e „į rankas“, GPM, PSD, VSD, PVM, būsto
+paskola, palūkanos, įmoka. Slugs ASCII sin diacríticos: `paskolos-skaiciuokle`, `pvm-skaiciuokle`,
+`busto-paskolos-skaiciuokle`, `kmi-skaiciuokle`, etc. `atlyginimo-skaiciuokle` queda libre para la local del
+país. En mundo y rankings va «pajamų mokestis» y no GPM, porque cubren muchos países. Universales neutrales de
+país, con la oración de salud donde corresponde. Las secciones van por `src/motor/secciones.ts`, sin carpetas.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`): pronombres de «tu», imperativos del singular de un
+formulario, formas de 2.ª del singular que no coinciden con la 3.ª («gali», «turi», «nori» coinciden y no se
+atrapan), «Jūs» con mayúscula a mitad de oración, comillas que no son „ “ y palabras frecuentes sin
+diacríticos.
+
+**Prueba.** `zz-lt` (Zetalandija, `lt-001`) es una edición interna. `check_universales` prueba lt-LT con EUR,
+«Šventasis Vincentas ir Grenadinai» por el nombre largo que se declina por partes y «Jungtiniai Arabų
+Emyratai» por el plural con adjetivo. El texto no lo revisó un hablante nativo.

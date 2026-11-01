@@ -10,7 +10,7 @@ export const contenidoLt: ContenidoUniversal = (ctx) => {
   return {
     h1: "Būsto paskolos skaičiuoklė",
     title: tituloQueEntre(`Būsto paskolos skaičiuoklė (${ctx.nombrePais})`, "Būsto paskolos skaičiuoklė: įmoka ir palūkanos", "Būsto paskolos skaičiuoklė"),
-    description: "Apskaičiuokite mėnesinę būsto paskolos įmoką pagal būsto kainą, pradinį įnašą, palūkanų normą ir paskolos terminą. Matysite ir palūkanas bei paskolos likutį pagal metus.",
+    description: "Apskaičiuokite mėnesinę būsto paskolos įmoką pagal būsto kainą, pradinį įnašą, palūkanų normą ir terminą. Matysite palūkanas ir likutį pagal metus.",
     intro: [
       "Daugumai namų ūkių būsto paskola yra didžiausia skola gyvenime. Verta pamatyti visus skaičius dar prieš kalbantis su banku.",
       "Įveskite būsto kainą, pradinį įnašą, palūkanų normą ir paskolos terminą. Jei kartu su paskola mokate draudimą ar nekilnojamojo turto mokestį, pridėkite juos ir matysite tikrąją mėnesio sumą.",
