@@ -142,3 +142,17 @@ export function formaSr(n: number | string, uno: string, pocos: string, muchos: 
 export function pluralSr(n: number | string, uno: string, pocos: string, muchos: string): string {
   return `${n} ${formaSr(n, uno, pocos, muchos)}`;
 }
+
+// Islandés (ADR 0002, D34): las categorías de Intl.PluralRules("is"). «one» es lo que termina en 1 salvo en
+// 11 (1, 21, 31, 101, no 11 ni 111) y «other» el resto: «1 dagur», «2 dagar», «11 dagar», «21 dagur». Recibe
+// number o string porque check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
+const REGLAS_IS = new Intl.PluralRules("is");
+
+export function formaIs(n: number | string, uno: string, otros: string): string {
+  return REGLAS_IS.select(Math.abs(Number(n))) === "one" ? uno : otros;
+}
+
+// El número y la palabra: «1 land», «21 land», «2 lönd»; «1 dagur», «21 dagur», «2 dagar».
+export function pluralIs(n: number | string, uno: string, otros: string): string {
+  return `${n} ${formaIs(n, uno, otros)}`;
+}

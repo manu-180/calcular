@@ -21,6 +21,16 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 01/11/2026 · Motor islandés (`claude/mundo-motor-is`, ADR 0002 D34)
+
+`is` entra en `IDIOMAS` e `IDIOMAS_VENTA` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo
+en el mundo» (`laun-um-allan-heim`), rankings (`rodun-landa`), horas de trabajo (`hversu-margar-vinnustundir`),
+calendario (`launadagatal`), «Sueldos reales» (`raunveruleg-laun`), venta completa y las 41 universales con slug ASCII
+propio. «þú» e imperativo de singular, mercados con `trato: "tu"`, formato `1.234.568 kr.`. Plurales one/other
+(`pluralIs`: «21 dagur») y país con caso y preposición (`GRAMATICA.is`: «á Íslandi», «í Þýskalandi»). Edición de prueba
+`zz-is` (interna, `is-001`).
+- Falta para publicar Islandia: el país en sí, con datos verificados, y revisión por hablante nativo.
+
 ## 01/11/2026 · Tanda 4 de países: rs, me, bg, tj, bt (`claude/paises-tanda-4`)
 
 Publicados: Serbia (rs), Montenegro (me), Bulgaria (bg), Tayikistán (tj) y Bután (bt), detrás de cn. Los cinco

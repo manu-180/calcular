@@ -656,6 +656,27 @@ export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
     texto: "{en} me {producto} košta {horas} rada. A u drugim zemljama?",
     og: { antes: "{en}, sa mojom platom,", producto: "{producto} me košta", de: "rada", deMes: "rada mesečno", otros: "Isti nivo plate:", cta: "Koliko sati rada to košta?" },
   }),
+  // Islandés (ADR 0002, D34): impersonal; la tarjeta, en primera persona.
+  is: base({
+    titulo: "Sami útreikningur, með raunverulegum launum",
+    bajada: "Með heildarlaunum fyrir einn mánuð eru stundirnar reiknaðar eftir þeim launum, ekki lágmarkslaunum. Upphæðin verður eftir í þessum vafra: hún fer hvorki í hlekkinn né á myndina.",
+    campo: "Heildarlaun á mánuði",
+    ayuda: "Í gjaldmiðlinum {moneda}, fyrir frádrátt.",
+    traido: "Sótt úr launareiknivélinni.",
+    invalido: "Upphæðin verður að vera hærri en núll.",
+    vacio: "Stundirnar birtast þegar laun hafa verið slegin inn.",
+    antes: "{en} með þessum launum kostar {producto}",
+    despues: "af vinnu",
+    despuesMes: "af vinnu í hverjum mánuði",
+    minimo: "Á lágmarkslaunum: {horas}.",
+    veces: "{x} × lágmarkslaun",
+    rankingTitulo: "Sama launastig í hverju landi",
+    rankingBajada: "{x} × lágmarkslaun hvers lands, umreiknað í vinnustundir.",
+    tarjetaTitulo: "Spjald með mínum stundum",
+    tarjetaBajada: "Sýnir aðeins stundir og lönd. Aldrei laun.",
+    texto: "{en} kostar {producto} mig {horas} af vinnu. En í öðrum löndum?",
+    og: { antes: "{en} með mínum launum", producto: "kostar {producto} mig", de: "af vinnu", deMes: "af vinnu á mánuði", otros: "Sama launastig:", cta: "Hversu margar vinnustundir?" },
+  }),
 };
 
 export function textosHorasPropio(idioma: Idioma, trato: Trato, locale?: string): TextosHorasPropio {

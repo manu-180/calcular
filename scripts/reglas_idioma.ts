@@ -271,6 +271,17 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Islandés: un solo registro, el de Skatturinn, Landsbankinn y Arion: «þú» informal e imperativo de
+  // singular («sláðu inn», «reiknaðu», «veldu»; ADR 0002, D34). «þér» no se atrapa suelto, porque también es
+  // el dativo de «þú» («hjá þér»): sí «yður» y «yðar», «þér» con verbo en plural y los imperativos en -ið.
+  is: {
+    informal: [],
+    formal: [
+      { re: palabras("yður|yðar|yðvar"), nombre: "«þérun» («yður»)" },
+      { re: /(?<!\p{L})þér\s+(?:getið|eigið|hafið|viljið|þurfið|fáið|sjáið|greiðið|eruð|munið|skuluð)(?!\p{L})/iu, nombre: "«þérun» («þér» con verbo en plural)" },
+      { re: palabras("reiknið|sláið|veljið|smellið|skoðið|bætið|afritið|sækið|deilið|athugið|kannið|setjið|berið"), nombre: "imperativo en plural (va «reiknaðu», «sláðu», «veldu»)" },
+    ],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -419,6 +430,24 @@ function reglasSr(texto: string, locale?: string): string[] {
   }
   const c = CROATA.exec(texto);
   if (c) p.push(`«${c[0]}» es del croata (en serbio: nedelja, hiljada, procenat, firma, porodica...)`);
+  return p;
+}
+
+// Islandés: comillas „ “ (abre abajo, cierra arriba), nada de «», "" ni ”. Las letras å, ø, ä y las palabras
+// comunes del noruego y del danés delatan un texto copiado de otro idioma nórdico. La corona va «kr.» con
+// punto, y una palabra frecuente sin sus letras («thetta», «manudur») delata un texto sin letras islandesas.
+const NORDICO_IS = palabras("ikke|eller|lønn|løn|lön|også|mellom|beregn\\p{L}*|kalkulator\\p{L}*|skriv inn");
+const SIN_LETRAS_IS = palabras("thu|thad|thetta|manudur|manadar|reiknivel");
+function reglasIs(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en islandés van „ “");
+  if (/[åøäÅØÄ]/.test(texto)) p.push("«å», «ø» o «ä»: no existen en islandés");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en islandés");
+  const n = NORDICO_IS.exec(texto);
+  if (n) p.push(`palabra de otro idioma nórdico «${n[0]}»`);
+  const s = SIN_LETRAS_IS.exec(texto);
+  if (s) p.push(`sin letras islandesas «${s[0]}»`);
+  if (/\d\s?kr(?![.\p{L}])/u.test(texto)) p.push("corona: va «kr.», con punto");
   return p;
 }
 
@@ -613,5 +642,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "hu") p.push(...reglasHu(texto));
   if (idioma === "sr") p.push(...reglasSr(texto, locale));
   if (idioma === "bg") p.push(...reglasBg(texto));
+  if (idioma === "is") p.push(...reglasIs(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

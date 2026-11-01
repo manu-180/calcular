@@ -1214,7 +1214,44 @@ const bg: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Islandés (ADR 0002, D34): «þú» e imperativo de singular; el país va con «fyrir» y acusativo (GRAMATICA.is:
+// «fyrir Ísland»). Botones en infinitivo («Afrita kóða»).
+const is: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Reiknivél frá CalcularYa",
+    marcaNuevaPestana: "(opnast í nýjum flipa)",
+    noDisponible: { titulo: "Þessi reiknivél er ekki í boði", texto: "Kannski hefur slóðin breyst." },
+    insertar: "Settu hana á síðuna þína",
+    pagina: {
+      titulo: (pais) => [`Ókeypis reiknivélar fyrir síðuna þína | ${pais}`, "Ókeypis reiknivélar fyrir síðuna þína"],
+      descripcion: (pais) => `Veldu reiknivél ${GRAMATICA.is.para(pais)}, afritaðu kóðann og settu hana á bloggið þitt eða vefinn. Ókeypis, með opinberum gögnum sem eru alltaf uppfærð.`,
+      h1: "Settu reiknivél á síðuna þína",
+      bajada: "Veldu reiknivél, afritaðu kóðann og límdu hann þar sem þú vilt. Ókeypis og gögnin uppfærast sjálfkrafa.",
+      calculadora: "Reiknivél",
+      buscar: "Leita að reiknivél",
+      sinResultados: "Engin reiknivél passar við leitina.",
+      tema: "Útlit",
+      claro: "Ljóst",
+      oscuro: "Dökkt",
+      ancho: "Breidd",
+      anchoCompleto: "Full breidd",
+      acento: "Áherslulitur",
+      colores: ["Grænn", "Blár", "Appelsínugulur", "Bleikur", "Grafítgrár"],
+      credito: "Sýna hlekk á heimild undir reiknivélinni",
+      vistaPrevia: "Forskoðun",
+      codigo: "Kóði til að setja inn",
+      copiar: "Afrita kóða",
+      copiado: "Kóðinn var afritaður",
+      ayudaScript: "Skriftan er valfrjáls: hún lagar hæð reiknivélarinnar að efninu.",
+      ventajas: ["Ókeypis og án skráningar", "Opinber gögn, alltaf uppfærð", "Lagar sig að hvaða breidd sem er"],
+      nota: "Undir reiknivélinni er hlekkur á CalcularYa. Við biðjum þig að fjarlægja hann ekki.",
+      verTodas: (pais) => `Allar reiknivélar ${GRAMATICA.is.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Reiknivél frá CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, is };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

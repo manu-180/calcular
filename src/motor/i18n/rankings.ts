@@ -1,3 +1,4 @@
+import { pluralIs } from "./plural";
 import type { IdNivel } from "../rankings/calculo";
 import type { IdRanking } from "../rankings/rutas";
 import type { Idioma, Trato } from "../tipos";
@@ -3744,7 +3745,128 @@ const bg: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// ───────────────────────────── is ─────────────────────────────
+
+// Islandés (ADR 0002, D34): impersonal, como el resto de los rankings. La posición va con el ordinal en cifra
+// y punto («Ísland: 27. sæti af 41»), que no concuerda con nada.
+const londIs = (n: number | string) => pluralIs(n, "land", "lönd");
+// Tras «í»: «í 1 landi», «í 21 landi», «í 2 löndum».
+const londumIs = (n: number | string) => pluralIs(n, "landi", "löndum");
+
+const is: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Röðun landa",
+    seo: {
+      titulo: ["Röðun landa eftir launum og sköttum", "Röðun landa"],
+      descripcion: (n) => `Hvar sömu laun duga best, skattfrelsisdagurinn og hvað verður eftir af launahækkun í ${londumIs(n)}. Opinber gögn, uppfærð daglega.`,
+    },
+    ceja: "Opin gögn",
+    h1: "Laun og skattar, land fyrir land",
+    bajada: (n) => `${londIs(n)} með sama kaupmætti, hvert með sína opinberu reiknivél. Röðunin uppfærist sjálfkrafa á hverjum degi.`,
+    actualizado: (f) => `Uppfært: ${f}`,
+    ver: "Sýna röðun",
+    niveles: { titulo: "Upphafslaun", nombres: { bajo: "Lág laun", medio: "Meðallaun", alto: "Há laun" }, anual: (m) => `${m} á ári` },
+    tramos: { titulo: "Upphæð launahækkunar", nombre: (a, b) => `Úr ${a} í ${b}` },
+    referencia: {
+      nivel: (m) => `heildarlaun ${m} alþjóðlegir dollarar á ári`,
+      tramo: (a, b) => `hækkun heildarlauna úr ${a} í ${b} alþjóðlega dollara á ári`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${p}. sæti af ${total}`,
+    de: (t) => `af ${t}`,
+    empate: (o) => (Number(o) === 1 ? "jafnt einu öðru landi" : `jafnt öðrum löndum (fjöldi: ${o})`),
+    fuera: (pais) => `${pais} er ekki enn í þessari röðun: til samanburðar þarf launareiknivél sem er ekki tilbúin.`,
+    lider: "Fyrsta sæti í röðuninni",
+    global: (n) => `${londIs(n)} frá fyrsta til síðasta sætis`,
+    valores: {
+      porMes: (m) => `${m} á mánuði`,
+      ningunDia: "Enginn dagur",
+      deCada: (n) => `${n} af 100`,
+      carga: (pct) => `${pct} í tekjuskatt og iðgjöld`,
+      cargaAumento: (pct) => `${pct} af hækkuninni fara í skatta og iðgjöld`,
+    },
+    cambio: {
+      titulo: (mes) => `Breyting miðað við mánuð: ${mes}`,
+      sube: (n) => `Upp um ${pluralIs(n, "sæti", "sæti")}`,
+      baja: (n) => `Niður um ${pluralIs(n, "sæti", "sæti")}`,
+      igual: "Óbreytt",
+      nuevo: "Nýtt í röðuninni",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Sæti",
+      pais: "Land",
+      edicion: "Þessi útgáfa",
+      unidad: "Í alþjóðlegum dollurum",
+    },
+    kit: {
+      titulo: "Fyrir fjölmiðla",
+      bajada: "Setning, graf og hlekkur á þessa röðun, tilbúið til birtingar.",
+      compartir: "Deila",
+      descargar: "Sækja graf",
+      copiar: "Afrita tilvitnun",
+      copiado: "Tilvitnunin var afrituð",
+      enlace: "Hlekkurinn var afritaður",
+      compartido: "Sent",
+      error: "Ekki tókst að afrita. Þú getur afritað textann hér að ofan handvirkt.",
+      cita: (frase, ranking, ref, fecha) => `${frase} í röðuninni „${ranking}“ (${ref}). Heimild: CalcularYa, staða gagna: ${fecha}`,
+      texto: (frase, ranking) => `${frase} í röðuninni „${ranking}“.`,
+      alt: (ranking) => `Graf röðunarinnar „${ranking}“`,
+    },
+    metodo: {
+      titulo: "Hvernig röðunin verður til",
+      bajada: "Hvert land fer í gegnum sína opinberu launareiknivél með gildandi reglum. Löndin eru svo borin saman við sama kaupmátt.",
+      niveles: (b, m, a) => `Upphafslaun: ${b}, ${m} og ${a} alþjóðlegir dollarar í heildarlaun á ári.`,
+      empates: "Lönd með sama gildi í töflunni deila sæti og næsta sæti fellur niður (1, 2, 2, 4).",
+      historial: "Breyting á sæti er mæld miðað við mynd af röðuninni sem er vistuð í hverjum mánuði. Án myndar frá fyrri mánuði birtist engin breyting.",
+      actualizacion: "Taflan er reiknuð daglega með gildandi gögnum hvers lands. Nýtt land bætist við um leið og reiknivél þess er komin í gagnið.",
+      ver: "Öll aðferðafræðin",
+    },
+    datos: {
+      titulo: "Opin gögn",
+      bajada: "Tölurnar að baki þessari röðun, land fyrir land, á JSON- og CSV-sniði. Uppfærðar daglega.",
+      json: "Gögn á JSON-sniði",
+      csv: "Gögn á CSV-sniði",
+      licencia: "Leyfi CC BY 4.0: þú mátt nota, deila og birta gögnin að vild, með tilvísun í CalcularYa og hlekk á þessa síðu.",
+      atribucion: "Tillaga að tilvísun",
+    },
+    mundo: { titulo: "Með tilteknum launum", texto: (n) => `Til að reikna með eigin launum og dagsetningu hvers lands er síðan „${n}“.`, ir: "Reikna" },
+    otros: "Önnur röðun",
+    rankings: {
+      rinde: {
+        titulo: "Hvar sömu laun duga best",
+        corto: "Hvar launin duga best",
+        seo: ["Hvar sömu laun duga best: röðun landa", "Hvar sömu laun duga best"],
+        descripcion: (n) => `Sömu laun við sama kaupmátt í ${londumIs(n)}: hvað verður eftir samkvæmt skattareglum hvers þeirra. Uppfært daglega.`,
+        bajada: "Sömu heildarlaun við sama kaupmátt fara í gegnum reglur hvers lands. Efst eru þau þar sem mest verður eftir útborgað.",
+        metrica: "Útborgað á mánuði",
+        carga: "Skattar og iðgjöld",
+        como: "Útborguð mánaðarlaun eru meðaltal 12 mánaða, í alþjóðlegum dollurum.",
+      },
+      libertad: {
+        titulo: "Skattfrelsisdagurinn eftir löndum",
+        corto: "Skattfrelsisdagurinn",
+        seo: ["Skattfrelsisdagurinn eftir löndum: röðun", "Skattfrelsisdagurinn eftir löndum"],
+        descripcion: (n) => `Dagur ársins þegar tekjuskattur og iðgjöld eru greidd, með sömu laun í ${londumIs(n)}. Uppfært daglega.`,
+        bajada: "Dagur ársins þegar tekjuskattur og iðgjöld eru greidd, með sömu laun í hverju landi. Efst eru þau þar sem hann kemur fyrst.",
+        metrica: "Unnið fyrir ríkið til",
+        carga: "Skattar og iðgjöld",
+        como: "Dagsetningin dreifir sköttunum yfir árið frá 1. janúar: við 30% skattbyrði er unnið fyrir ríkið 30% ársins.",
+      },
+      aumento: {
+        titulo: "Hvað verður eftir af launahækkun",
+        corto: "Hvað verður eftir af hækkun",
+        seo: ["Hvað verður eftir af launahækkun: röðun landa", "Hvað verður eftir af launahækkun"],
+        descripcion: (n) => `Af hverjum 100 sem bætast við heildarlaun, hvað verður eftir að loknum tekjuskatti og iðgjöldum í ${londumIs(n)}. Uppfært daglega.`,
+        bajada: "Af hverjum 100 sem bætast við heildarlaun, hvað skilar sér í raun í veskið að loknum tekjuskatti og iðgjöldum. Efst eru þau þar sem mest verður eftir.",
+        metrica: "Eftir af 100",
+        carga: "Jaðarhlutfall",
+        como: "Þetta er jaðarhlutfallið milli tveggja launa: sá hluti hækkunarinnar sem fer í skatta og iðgjöld.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, is };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

@@ -1338,4 +1338,121 @@ const sr: GramaticaPais = {
   para: (p) => `za ${padezSr(p).akuzativ}`,
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Islandés (ADR 0002, D34): el nombre del país se declina y además elige preposición. `de(p)` da el
+// genitivo suelto («Íslands», «Þýskalands», «Bandaríkjanna»), `en(p)` el lugar con «á» o «í» y dativo («á
+// Íslandi», «í Þýskalandi», «á Spáni», «í Bandaríkjunum») y `para(p)` «fyrir» con acusativo («fyrir Ísland»,
+// «fyrir Noreg»). Los nombres llegan como los escribe Intl.DisplayNames en is. Reglas por terminación: -land
+// (neutro: -landi, -lands), -eyjar (femenino plural: -eyjum, -eyja, con «á»), -eyja, -ey, -ía y -ea (débil:
+// -u en los tres casos), -lýðveldið; un nombre extranjero terminado en vocal o -s no se declina («í Perú»,
+// «í Kanada», «í Sviss») y uno en consonante suma -s en genitivo («Pakistans», «Japans»). La tabla lleva lo
+// irregular y CON_A los lugares que van con «á» (islas y los que la lengua fijó: Ísland, Spánn, Ítalía,
+// Indland, Írland, Grikkland, Nýja-Sjáland...).
+export interface FallIs {
+  // «á» o «í»
+  forsetning: string;
+  thagufall: string;
+  eignarfall: string;
+  tholfall: string;
+}
+
+export const fallIs: (pais: string) => FallIs = (() => {
+  // [dativo, genitivo, acusativo]
+  type Formas = readonly [string, string, string];
+  const igual = (p: string): Formas => [p, p, p];
+  const TABLA: Readonly<Record<string, Formas>> = {
+    Noregur: ["Noregi", "Noregs", "Noreg"],
+    Spánn: ["Spáni", "Spánar", "Spán"],
+    Danmörk: ["Danmörku", "Danmerkur", "Danmörku"],
+    Svíþjóð: ["Svíþjóð", "Svíþjóðar", "Svíþjóð"],
+    Lúxemborg: ["Lúxemborg", "Lúxemborgar", "Lúxemborg"],
+    Austurríki: ["Austurríki", "Austurríkis", "Austurríki"],
+    Malta: ["Möltu", "Möltu", "Möltu"],
+    Kúba: ["Kúbu", "Kúbu", "Kúbu"],
+    Úkraína: ["Úkraínu", "Úkraínu", "Úkraínu"],
+    Argentína: ["Argentínu", "Argentínu", "Argentínu"],
+    Moldóva: ["Moldóvu", "Moldóvu", "Moldóvu"],
+    Kostaríka: ["Kostaríku", "Kostaríku", "Kostaríku"],
+    Dóminíka: ["Dóminíku", "Dóminíku", "Dóminíku"],
+    Kýpur: igual("Kýpur"),
+    Madagaskar: igual("Madagaskar"),
+    Singapúr: igual("Singapúr"),
+    Gíbraltar: igual("Gíbraltar"),
+    "El Salvador": igual("El Salvador"),
+    Gvam: igual("Gvam"),
+    Mön: ["Mön", "Manar", "Mön"],
+    Bandaríkin: ["Bandaríkjunum", "Bandaríkjanna", "Bandaríkin"],
+    "Sameinuðu arabísku furstadæmin": ["Sameinuðu arabísku furstadæmunum", "Sameinuðu arabísku furstadæmanna", "Sameinuðu arabísku furstadæmin"],
+    "Sameinuðu þjóðirnar": ["Sameinuðu þjóðunum", "Sameinuðu þjóðanna", "Sameinuðu þjóðirnar"],
+    "Bosnía og Hersegóvína": ["Bosníu og Hersegóvínu", "Bosníu og Hersegóvínu", "Bosníu og Hersegóvínu"],
+    "Suður-Afríka": ["Suður-Afríku", "Suður-Afríku", "Suður-Afríku"],
+    Fílabeinsströndin: ["Fílabeinsströndinni", "Fílabeinsstrandarinnar", "Fílabeinsströndina"],
+    Suðurskautslandið: ["Suðurskautslandinu", "Suðurskautslandsins", "Suðurskautslandið"],
+    Vatíkanið: ["Vatíkaninu", "Vatíkansins", "Vatíkanið"],
+    Evrópusambandið: ["Evrópusambandinu", "Evrópusambandsins", "Evrópusambandið"],
+    Evrusvæðið: ["Evrusvæðinu", "Evrusvæðisins", "Evrusvæðið"],
+    "Franska Gvæjana": ["Frönsku Gvæjana", "Frönsku Gvæjana", "Frönsku Gvæjana"],
+    "Franska Pólýnesía": ["Frönsku Pólýnesíu", "Frönsku Pólýnesíu", "Frönsku Pólýnesíu"],
+    "Nýja-Kaledónía": ["Nýju-Kaledóníu", "Nýju-Kaledóníu", "Nýju-Kaledóníu"],
+    "Papúa Nýja-Gínea": ["Papúa Nýju-Gíneu", "Papúa Nýju-Gíneu", "Papúa Nýju-Gíneu"],
+    "Gínea-Bissá": ["Gíneu-Bissá", "Gíneu-Bissá", "Gíneu-Bissá"],
+    "Bandaríska Samóa": ["Bandarísku Samóa", "Bandarísku Samóa", "Bandarísku Samóa"],
+    "Sankti Lúsía": ["Sankti Lúsíu", "Sankti Lúsíu", "Sankti Lúsíu"],
+    "Sankti Helena": ["Sankti Helenu", "Sankti Helenu", "Sankti Helenu"],
+    "Svalbarði og Jan Mayen": ["Svalbarða og Jan Mayen", "Svalbarða og Jan Mayen", "Svalbarða og Jan Mayen"],
+    "Suður-Georgía og Suður-Sandvíkureyjar": ["Suður-Georgíu og Suður-Sandvíkureyjum", "Suður-Georgíu og Suður-Sandvíkureyja", "Suður-Georgíu og Suður-Sandvíkureyjar"],
+    "Heimastjórnarsvæði Palestínumanna": ["Heimastjórnarsvæði Palestínumanna", "Heimastjórnarsvæðis Palestínumanna", "Heimastjórnarsvæði Palestínumanna"],
+    "sérstjórnarsvæðið Hong Kong": ["sérstjórnarsvæðinu Hong Kong", "sérstjórnarsvæðisins Hong Kong", "sérstjórnarsvæðið Hong Kong"],
+    "sérstjórnarsvæðið Makaó": ["sérstjórnarsvæðinu Makaó", "sérstjórnarsvæðisins Makaó", "sérstjórnarsvæðið Makaó"],
+    "Karíbahafshluti Hollands": ["Karíbahafshluta Hollands", "Karíbahafshluta Hollands", "Karíbahafshluta Hollands"],
+    "Frönsku suðlægu landsvæðin": ["Frönsku suðlægu landsvæðunum", "Frönsku suðlægu landsvæðanna", "Frönsku suðlægu landsvæðin"],
+    "Bresku Indlandshafseyjar": ["Bresku Indlandshafseyjum", "Bresku Indlandshafseyja", "Bresku Indlandshafseyjar"],
+    "Smáeyjar Bandaríkjanna": ["Smáeyjum Bandaríkjanna", "Smáeyja Bandaríkjanna", "Smáeyjar Bandaríkjanna"],
+  };
+  const CON_A = new Set([
+    "Ísland", "Grænland", "Írland", "Indland", "Grikkland", "Nýja-Sjáland", "Spánn", "Ítalía", "Malta", "Kúba", "Kýpur", "Madagaskar",
+    "Srí Lanka", "Taívan", "Haítí", "Jamaíka", "Barbados", "Máritíus", "Dóminíka", "Grenada", "Arúba", "Angvilla", "Samóa", "Bandaríska Samóa",
+    "Tonga", "Vanúatú", "Nárú", "Túvalú", "Kíribatí", "Palá", "Tókelá", "Niue", "Gvam", "Mön", "Jersey", "Guernsey", "Sark", "Gíbraltar", "Martiník",
+    "Réunion", "Mayotte", "Montserrat", "Curacao", "Saint-Martin", "Sint Maarten", "Púertó Ríkó", "Fílabeinsströndin", "Suðurskautslandið",
+    "Antígva og Barbúda", "Trínidad og Tóbagó", "Saó Tóme og Prinsípe", "Sankti Kitts og Nevis", "Sankti Lúsía", "Sankti Helena",
+    "Sankti Pierre og Miquelon", "Svalbarði og Jan Mayen", "Tímor-Leste", "Nýja-Kaledónía", "Heimastjórnarsvæði Palestínumanna", "Tristan da Cunha",
+    "Diego Garcia", "Suður-Georgía og Suður-Sandvíkureyjar",
+  ]);
+  const formas = (p: string): Formas => {
+    if (TABLA[p]) return TABLA[p];
+    const parentesis = p.indexOf(" (");
+    if (parentesis > 0) {
+      const cola = p.slice(parentesis);
+      const [d, g, a] = formas(p.slice(0, parentesis));
+      return [d + cola, g + cola, a + cola];
+    }
+    if (/eyjar$/.test(p)) return [`${p.slice(0, -2)}um`, p.slice(0, -1), p];
+    if (/eyja$/.test(p)) return [`${p.slice(0, -1)}u`, `${p.slice(0, -1)}u`, `${p.slice(0, -1)}u`];
+    if (/ey$/.test(p)) return [p, `${p}jar`, p];
+    if (/land$/.test(p)) return [`${p}i`, `${p}s`, p];
+    if (/lýðveldið$/.test(p)) return [`${p.slice(0, -1)}nu`, `${p.slice(0, -1)}sins`, p];
+    if (/[íe]a$/.test(p)) {
+      const u = `${p.slice(0, -1)}u`;
+      return [u, u, u];
+    }
+    if (/[aáeéiíoóuúyýæös]$/i.test(p)) return igual(p);
+    return [p, `${p}s`, p];
+  };
+  return (p: string): FallIs => {
+    const [thagufall, eignarfall, tholfall] = formas(p);
+    const base = p.split(" (")[0];
+    const forsetning = CON_A.has(base) || (/ey(?:jar|ja)?$/.test(base) && base !== "Færeyjar") ? "á" : "í";
+    return { forsetning, thagufall, eignarfall, tholfall };
+  };
+})();
+
+const is: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => fallIs(p).eignarfall,
+  en: (p) => {
+    const f = fallIs(p);
+    return `${f.forsetning} ${f.thagufall}`;
+  },
+  para: (p) => `fyrir ${fallIs(p).tholfall}`,
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, is };
