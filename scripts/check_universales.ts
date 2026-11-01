@@ -176,6 +176,16 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "סנט וינסנט והגרנדינים", locale: "he-IL", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "gb" as CodigoMercado, pais: "GB", nombrePais: "הממלכה המאוחדת", locale: "he-001", trato: "usted", moneda: "GBP" as Moneda, escala: 1 },
   ],
+  // Serbio en latinica (ADR 0002, D23): dinar con «RSD» detrás y punto de miles; Montenegro con euro
+  // (los textos de las universales son los mismos); un nombre largo que se declina por partes («na
+  // Sent Vinsentu i Grenadinima») y uno plural con adjetivos delante («u Ujedinjenim Arapskim
+  // Emiratima»).
+  sr: [
+    { mercado: "rs" as CodigoMercado, pais: "RS", nombrePais: "Srbija", locale: "sr-Latn-RS", trato: "usted", moneda: "RSD" as Moneda, escala: 100 },
+    { mercado: "me" as CodigoMercado, pais: "ME", nombrePais: "Crna Gora", locale: "sr-Latn-ME", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sent Vinsent i Grenadini", locale: "sr-Latn-RS", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Ujedinjeni Arapski Emirati", locale: "sr-Latn-RS", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)

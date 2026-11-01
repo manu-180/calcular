@@ -21,6 +21,18 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 31/10/2026 · Motor serbio latino (`claude/mundo-motor-sr`)
+
+`sr` entra en `IDIOMAS` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en el
+mundo» (`plata-u-svetu`), rankings (`rang-lista-zemalja`), horas de trabajo (`koliko-sati-rada`),
+calendario (`kalendar-isplata`), «Sueldos reales» (`stvarne-plate`), venta completa (`IDIOMAS_VENTA`) y las
+41 universales con slug ASCII propio. Alfabeto latino (`sr-Latn-RS`), ekavski, «vi» en minúscula con 2.ª
+del plural («unesite»), mercados con `trato: "usted"`, formato con «RSD» por Intl. Plurales
+one/few/other (`pluralSr`) y declinación del país (`GRAMATICA.sr`). Universales neutrales: Montenegro las
+reusa con EUR. Cirílico: edición futura (`rs-cyrl`). Decisiones en ADR 0002, D23. Edición de prueba `zz-sr`
+(interna, `sr-Latn-001`).
+- Falta para publicar Serbia y Montenegro: los países en sí, con datos verificados, y revisión por hablante nativo.
+
 ## 29/10/2026 · Tanda 2 de países (grupo A): ag, bz, ne, bn, np, sc, ws (`claude/paises-tanda-2`)
 
 Publicados: Antigua y Barbuda (ag), Belice (bz), Níger (ne), Brunéi (bn), Nepal (np), Seychelles (sc) y

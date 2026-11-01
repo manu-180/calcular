@@ -1333,6 +1333,53 @@ compartir locale con Israel en hreflang. `check_universales` prueba he-IL con IL
 largo («סנט וינסנט והגרנדינים») y he-001 con GBP («הממלכה המאוחדת»); `check_motor` prueba el
 formato, los plurales, el parseo y la gramática.
 
+### D23. Serbio en alfabeto latino, para Serbia y Montenegro (2026-10-31)
+
+`IDIOMAS` suma `sr`. Motor, sitio, inicio, novedades, legales, errores, compartir (también el panel con
+imagen), embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»),
+rankings, «Sueldos reales», afiliados, el diccionario de venta y las 41 universales están en serbio.
+
+**Escritura.** Alfabeto latino (latinica), locale `sr-Latn-RS`: es el de la web comercial, los bancos y
+lo que la gente escribe en el buscador en Serbia. El cirílico queda como edición futura (`rs-cyrl`), no
+como un segundo registro de esta. Un locale `sr-RS` a secas daría cirílico en Intl, así que todo mercado
+serbio tiene que declarar `sr-Latn-`. `reglas_idioma` falla si se cuela una letra cirílica.
+
+**Lo que devuelve Intl (Node).** `sr-Latn-RS`: `1.234.567,50 RSD` y `1.234,50 €`; `31. oktobar 2026.`; la
+región sale «Srbija»; PluralRules one/few/other. `Intl.Locale(...).baseName` conserva la escritura
+(`sr-Latn-RS`), que es lo que va en `lang` y hreflang; `ogLocale` la saca porque og:locale solo admite
+idioma y región (`sr_RS`). El parser no necesitó nada propio: «din.» lo cubre `sinPuntosDeSimbolo`.
+
+**Registro.** Un solo registro, «vi» en minúscula con imperativo de 2.ª del plural («unesite»,
+«izračunajte», «izaberite»), como los bancos y eUprava. Los mercados van con `trato: "usted"`. Los
+botones van en la forma corta de las interfaces serbias («Izračunaj», «Kopiraj link», «Podeli»). Nada de
+«ti» ni del «Vi» con mayúscula.
+
+**Variante.** Ekavski («mesec», «cena», «vreme»), el estándar de Serbia. Vocabulario serbio y no croata
+(«nedelja», «hiljada», «procenat», «firma», «porodica»). `reglas_idioma` atrapa lo ijekavski en los
+mercados de Serbia, y deja de hacerlo en `-ME`.
+
+**Plurales y gramática.** Tres categorías: «1 dan», «2 dana», «5 dana», «21 dan», «22 dana», «1,5 godina»
+(`formaSr`, `pluralSr`; en `unidades.ts`, uno, pocos y otros). El nombre del país se declina:
+`GRAMATICA.sr` da genitivo («Srbije»), lugar con «u» o «na» («u Srbiji», «u Crnoj Gori», «na Kipru», «na
+Filipinima») y «za» con acusativo («za Srbiju»), con reglas por terminación, adjetivos que concuerdan y
+una tabla de irregulares. Las plantillas no pegan {n} a un sustantivo que tendría que concordar.
+
+**Comillas.** „ “ (abre abajo, cierra arriba). Ni «» ni "".
+
+**Universales neutrales.** Los textos no nombran organismos, leyes ni moneda de Serbia: Montenegro los
+reusa con EUR, cambiando solo el mercado. Lo propio de cada país queda para el agente de país. Un texto
+que Montenegro quiera en ijekavski lo pisa su edición.
+
+**Slugs.** ASCII sin diacríticos, con la «đ» como «dj»: `plata-u-svetu`, `rang-lista-zemalja`,
+`koliko-sati-rada`, `kalendar-isplata`, `stvarne-plate`, y las universales con su búsqueda real
+(`kalkulator-stambenog-kredita`). Se suman en `secciones.ts` por los `SLUG_*`: sin carpetas por idioma. El
+buscador normaliza la «đ» igual.
+
+**Prueba.** `zz-sr` (Zetalandija) es una edición interna en `sr-Latn-001`, para no compartir locale con
+Serbia en hreflang. `check_universales` prueba `sr-Latn-RS` con RSD, `sr-Latn-ME` con EUR, un nombre largo
+que se declina por partes («na Sent Vinsentu i Grenadinima») y uno plural con adjetivos («u Ujedinjenim
+Arapskim Emiratima»); `check_motor` prueba formato, plurales, parseo y gramática.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

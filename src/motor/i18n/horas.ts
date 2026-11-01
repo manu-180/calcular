@@ -3170,7 +3170,114 @@ const he: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he };
+// ───────────────────────────── sr ─────────────────────────────
+
+// Serbio en latinica y ekavski (ADR 0002, D23): impersonal, como el resto. En el SEO {en} llega en
+// minúscula («u Srbiji»); en la página, con mayúscula y al comienzo de la oración («U Srbiji košta…»,
+// «Na Kipru…»). Las plantillas no conjugan nada con {n}: los números van detrás de dos puntos o entre
+// paréntesis («zemlja po zemlja (u indeksu: {n})»), porque «zemlja» concuerda con el número.
+const sr: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Koliko sati rada to košta?",
+    seo: {
+      titulo: ["Koliko sati rada košta iPhone {en}", "Sati rada za iPhone {en}", "Koliko sati rada to košta?"],
+      tituloGlobal: ["Koliko sati rada košta iPhone u svetu", "Koliko sati rada to košta?"],
+      tituloProducto: ["Koliko sati rada košta {producto} {en}", "Sati rada za {producto} {en}", "Koliko sati rada košta {producto}"],
+      tituloProductoGlobal: ["Koliko sati rada košta {producto} u svetu", "Koliko sati rada košta {producto}"],
+      descripcion: "iPhone, MacBook ili Spotify preračunati u sate rada uz minimalnu zaradu {en} i u drugim zemljama (u indeksu: {n}). Zvanične cene i izvor svakog broja.",
+      descripcionGlobal: "iPhone, MacBook ili Spotify preračunati u sate rada uz minimalnu zaradu, zemlja po zemlja (u indeksu: {n}). Zvanične cene i izvor svakog broja.",
+      descripcionProducto: "{en} {producto} košta {horas} rada uz minimalnu zaradu. Rang lista zemalja ({n}) sa zvaničnom cenom i izvorom svakog broja.",
+      descripcionProductoGlobal: "Koliko sati rada uz minimalnu zaradu košta {producto}, zemlja po zemlja (u indeksu: {n}). Zvanična cena svake prodavnice i izvor svakog broja.",
+    },
+    ceja: "Indeks: {mes}",
+    h1: "Koliko sati rada to košta?",
+    h1Producto: "Koliko sati rada košta {producto}?",
+    bajada: "Zvanična cena istog proizvoda preračunata u sate rada uz minimalnu zaradu, zemlja po zemlja (u indeksu: {n}).",
+    form: { producto: "Proizvod", pais: "Zemlja", porMes: "mesečno" },
+    heroe: {
+      antes: "{en} {producto} košta",
+      despues: "rada uz minimalnu zaradu",
+      despuesMes: "rada uz minimalnu zaradu svakog meseca",
+      jornadaUno: "{n} radni dan od 8 sati",
+      jornadaOtras: "Radnih dana od 8 sati: {n}",
+      precio: "Zvanična cena {precio}",
+      salario: "Minimalna zarada {monto} po satu",
+      sinPrecio: "{en} nijedna zvanična prodavnica ne prodaje ovaj proizvod.",
+      mejor: "{en} je dovoljno {horas}.",
+      mejorPropio: "Ni u jednoj zemlji indeksa ne izlazi na manje sati rada.",
+      puesto: "{p}. mesto od {total}",
+      escalaHoras: "Svaki kvadratić je jedan sat rada",
+      escalaSemanas: "Svaki kvadratić je jedna nedelja od 40 sati",
+      masDeUnAnio: "Više od godinu dana rada",
+    },
+    ranking: {
+      titulo: "Zemlja po zemlja",
+      bajada: "Od najmanjeg do najvećeg broja sati. Svaka cena je zvanična cena proizvođača u toj zemlji.",
+      lista: "Zemlje poređane po satima rada",
+      verTodos: "Prikaži sve zemlje ({n})",
+      verMenos: "Prikaži manje",
+      elegido: "Izabrano",
+      sinPrecio: "Zemlje indeksa bez podataka: {n}. Nijedna zvanična prodavnica tamo ne prodaje ovaj proizvod.",
+      horas: "Sati",
+      precio: "Zvanična cena",
+    },
+    compartir: {
+      titulo: "Kartica za deljenje",
+      bajada: "Sadrži samo javne podatke: zvaničnu cenu i sate rada uz minimalnu zaradu.",
+      boton: "Podeli karticu",
+      descargar: "Preuzmi za Stories",
+      copiado: "Link je kopiran.",
+      compartido: "Gotovo, poslato.",
+      error: "Deljenje sada nije uspelo.",
+      texto: "{en} {producto} košta {horas} rada uz minimalnu zaradu. A u drugim zemljama?",
+      alt: "Pregled kartice",
+    },
+    metodo: {
+      titulo: "Kako računamo",
+      estimacion: "Sati = zvanična cena ÷ minimalna zarada po satu. Ovo je poređenje zvaničnih cena, a ne ponuda za kupovinu.",
+      supuestos: [
+        "Cena je cena iz cenovnika za najjeftiniju verziju u zvaničnoj prodavnici proizvođača, očitana sa stranice za svaku zemlju.",
+        "Spotify Premium je individualni paket na mesec dana, bez uvodnih akcija.",
+        "Minimalna zarada je opšti iznos koji danas važi za odraslog zaposlenog sa punim radnim vremenom. Gde ih ima više po delatnosti ili regionu, uzima se iznos za trgovinu na malo u glavnom regionu.",
+        "Kada zakon propisuje minimum po mesecu ili po danu, preračunava se u sate prema zakonskom nedeljnom radnom vremenu u toj zemlji.",
+        "Španija i Portugalija isplaćuju minimalnu zaradu četrnaest puta godišnje: raspoređuje se na 12 meseci, kao što to radi Eurostat.",
+        "Kada prodavnica navodi cenu u američkim dolarima, preračunava se po zvaničnom kursu te zemlje.",
+        "Radni dan u svakoj zemlji ima 8 sati, da bi dani mogli da se porede.",
+      ],
+      fuentesTitulo: "Izvor svakog broja",
+      fuentesBajada: "Svaka zemlja sa minimalnom zaradom, nedeljnim radnim vremenom i cenama iz prodavnice, uz svaki podatak datum očitavanja.",
+      salario: "Minimalna zarada",
+      jornada: "Nedeljno radno vreme",
+      precio: "Cena",
+      cambio: "Devizni kurs",
+      consultado: "Očitano {fecha}",
+      verificado: "Provereno {fecha}",
+      verFuente: "Prikaži izvor",
+      sello: "Cene očitane od {desde} do {hasta}. Cena starija od 120 dana se više ne prikazuje.",
+      conversion: {
+        hora: "Zakon propisuje iznos po satu.",
+        mes: "Mesečno × 12 ÷ 52 nedelje ÷ {h} h nedeljno.",
+        mesPagas: "Mesečno × {p} isplata ÷ 52 nedelje ÷ {h} h nedeljno.",
+        anio: "Godišnje ÷ 52 nedelje ÷ {h} h nedeljno.",
+        semana: "Nedeljno ÷ {h} h.",
+        dia: "Dnevno ÷ {h} h radnog dana.",
+        diaPagado: "Dnevno × {d} plaćenih dana ÷ {h} h nedeljno.",
+        divisor: "Mesečno ÷ {d}, delilac po satu koji propisuje zakon.",
+      },
+    },
+    faqTitulo: "Česta pitanja",
+    faq: [
+      { pregunta: "Kako se računaju sati?", respuesta: "Zvanična cena proizvoda deli se minimalnom zaradom po satu u toj zemlji. Kada zakon propisuje minimum po mesecu ili po danu, preračunava se u sate prema zakonskom nedeljnom radnom vremenu u toj zemlji." },
+      { pregunta: "Zašto baš minimalna zarada?", respuesta: "To je zarada koju zakon propisuje skoro u svakoj zemlji i može da se proveri u zvaničnom izvoru. Prosečnu zaradu svaka zemlja meri na svoj način, pa ne bi mogla da se poredi jednako pouzdano." },
+      { pregunta: "Da li je porez uračunat u cenu?", respuesta: "To je cena iz cenovnika koju zvanična prodavnica prikazuje u svakoj zemlji. U Sjedinjenim Državama i Kanadi ne sadrži porez na promet, a u drugim zemljama prodavnica može da doda porez tek na kasi." },
+      { pregunta: "Zašto neka zemlja nedostaje?", respuesta: "U indeksu su samo zemlje sa proverenom važećom minimalnom zaradom i cenom iz zvanične prodavnice. Bez zvanične internet prodavnice za taj proizvod nema podataka. Cene preprodavaca se nikada ne koriste." },
+      { pregunta: "Koliko često se podaci ažuriraju?", respuesta: "Cene se očitavaju u svakoj prodavnici i posle 120 dana zastarevaju: starija cena se više ne prikazuje. Minimalna zarada se uzima iz zvaničnih podataka svake zemlje i menja se kada se promeni zakon." },
+    ],
+    og: { de: "rada uz minimalnu zaradu", deMes: "rada uz minimalnu zaradu mesečno", generica: "Koliko sati rada košta {producto}?", genericaBajada: "Zvanična cena u satima rada uz minimalnu zaradu, zemlja po zemlja ({n})", menos: "Najmanje sati", cta: "Sve zemlje na" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

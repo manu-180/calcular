@@ -20,6 +20,7 @@ import { direccionDe, etiquetaIdioma } from "@/motor/i18n/direccion";
 
 // optional y no swap: si Geist no llegó para el primer pintado se queda la fallback ajustada por
 // next/font, y el H1 (el LCP de casi todas las páginas) no se vuelve a pintar al cambiar de fuente.
+// latin-ext trae las letras del serbio en latinica (č, ć, đ, š, ž).
 // latin-ext trae las letras del checo (ř, ě, ů); con unicode-range solo se baja si la página las usa.
 // latin-ext trae la ő y la ű del húngaro; con unicode-range solo se baja si la página las usa.
 const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext"], display: "optional" });

@@ -614,6 +614,27 @@ export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
     celuImagen: "במצלמת הטלפון הקוד הזה פותח את התמונה, מוכנה לשיתוף בסטורי.",
     cerrar: "סגירה",
   }),
+  // Serbio en latinica y ekavski (ADR 0002, D23): impersonal; «priča» es la historia de Instagram en serbio.
+  sr: base({
+    grupo: "Podeli preko:",
+    instagramSub: "Priča",
+    copiar: "Kopiraj link",
+    mas: "Još opcija",
+    nuevaPestana: "otvara se u novoj kartici",
+    formato: "Format slike",
+    historia: "Priča 9:16",
+    feed: "Objava 1:1",
+    descargar: "Preuzmi sliku",
+    copiado: "Link je kopiran.",
+    compartido: "Poslato.",
+    enInstagram: "Gotovo. Link je takođe kopiran i može da se nalepi u priču preko nalepnice Link.",
+    descargado: "Slika je preuzeta, a link kopiran. Sa telefona može da se objavi kao priča, a link se dodaje nalepnicom Link.",
+    error: "Deljenje trenutno nije dostupno.",
+    alCelu: "Na Instagram se objavljuje sa telefona",
+    celuPagina: "Kamerom telefona ovaj kod otvara karticu spremnu da se jednim dodirom pošalje u priču.",
+    celuImagen: "Kamerom telefona ovaj kod otvara sliku spremnu za deljenje u priči.",
+    cerrar: "Zatvori",
+  }),
 };
 
 export function textosRedes(idioma: Idioma, trato: Trato, locale?: string): TextosRedes {

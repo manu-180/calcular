@@ -17,6 +17,7 @@ import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada, val
 import { textosSitio } from "../src/motor/i18n";
 import { formaRo, pluralCs, pluralEl, pluralRo, pluralRu, pluralUk } from "../src/motor/i18n/plural";
 import { pluralHe, prefijoHe } from "../src/motor/i18n/hebreo";
+import { pluralSr } from "../src/motor/i18n/plural";
 import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
@@ -236,6 +237,13 @@ const parseos: [string, string, number | null][] = [
   ["he-IL", "3.5", 3.5],
   ["he-IL", "1,2,3", null],
   ["he-001", "2,000", 2000],
+  // Serbio (sr-Latn-RS): punto de miles, coma decimal y «RSD» o «din.» detrás.
+  ["sr-Latn-RS", "1.234,50", 1234.5],
+  ["sr-Latn-RS", "1.234.567,25 RSD", 1234567.25],
+  ["sr-Latn-RS", "25.000 din.", 25000],
+  ["sr-Latn-RS", "-250,75", -250.75],
+  ["sr-Latn-RS", "20%", 20],
+  ["sr-Latn-ME", "1.234,50 €", 1234.5],
 ];
 for (const [locale, texto, esperado] of parseos) igual(`parsear ${locale} «${texto}»`, parsearNumero(texto, locale), esperado);
 // Miles ambiguos (moneda y entero): "5.000" en un locale de punto decimal no se lee como 5.
@@ -275,6 +283,8 @@ const ambiguos: [string, string, number | null][] = [
   ["el-GR", "5,000", null],
   ["hu-HU", "5 000", 5000],
   ["hu-HU", "5,000", null],
+  ["sr-Latn-RS", "5.000", 5000],
+  ["sr-Latn-RS", "5,000", null],
 ];
 for (const [locale, texto, esperado] of ambiguos) igual(`parsear con milesAmbiguos ${locale} «${texto}»`, parsearNumero(texto, locale, { milesAmbiguos: true }), esperado);
 igual("sin milesAmbiguos sigue siendo decimal", parsearNumero("5.000", "es-MX"), 5);
@@ -613,8 +623,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -844,6 +854,27 @@ igual(
   ],
 );
 igual("gramática húngara: para y de", [GRAMATICA.hu.para("Magyarország"), GRAMATICA.hu.de("Egyesült Államok")], ["Magyarország számára", "az Egyesült Államok"]);
+// Serbio: one/few/other de Intl.PluralRules («1 godina», «2 godine», «5 godina», «21 godina»).
+igual(
+  "años en serbio",
+  [1, 2, 5, 11, 21, 22, 25, 1.5].map((n) => formatearValorUnidad(n, "anios", "sr-Latn-RS")),
+  ["1 godina", "2 godine", "5 godina", "11 godina", "21 godina", "22 godine", "25 godina", "1,5 godina"],
+);
+igual("días en serbio", [1, 3, 7, 21, 0.5].map((n) => formatearValorUnidad(n, "dias", "sr-Latn-RS")), ["1 dan", "3 dana", "7 dana", "21 dan", "0,5 dana"]);
+igual("meses en serbio", [1, 2, 12, 24].map((n) => formatearValorUnidad(n, "meses", "sr-Latn-RS")), ["1 mesec", "2 meseca", "12 meseci", "24 meseca"]);
+igual("pluralSr", [1, 3, 5, 12, 21, 24].map((n) => pluralSr(n, "zemlja", "zemlje", "zemalja")), ["1 zemlja", "3 zemlje", "5 zemalja", "12 zemalja", "21 zemlja", "24 zemlje"]);
+// Casos del nombre del país: genitivo, lugar con «u/na» y «za» + acusativo.
+igual(
+  "gramática serbia: lugar",
+  ["Srbija", "Crna Gora", "Francuska", "Nemačka", "Sjedinjene Države", "Ujedinjeno Kraljevstvo", "Filipini", "Kanada", "Jamajka", "Kipar", "Novi Zeland", "Bosna i Hercegovina", "Sent Vinsent i Grenadini", "Ujedinjeni Arapski Emirati", "Peru", "Mali"].map((p) => GRAMATICA.sr.en(p)),
+  ["u Srbiji", "u Crnoj Gori", "u Francuskoj", "u Nemačkoj", "u Sjedinjenim Državama", "u Ujedinjenom Kraljevstvu", "na Filipinima", "u Kanadi", "na Jamajci", "na Kipru", "na Novom Zelandu", "u Bosni i Hercegovini", "na Sent Vinsentu i Grenadinima", "u Ujedinjenim Arapskim Emiratima", "u Peruu", "u Maliju"],
+);
+igual(
+  "gramática serbia: genitivo",
+  ["Srbija", "Crna Gora", "Egipat", "Japan", "Maroko", "Sjedinjene Države", "Zelenortska Ostrva", "Južnoafrička Republika"].map((p) => GRAMATICA.sr.de(p)),
+  ["Srbije", "Crne Gore", "Egipta", "Japana", "Maroka", "Sjedinjenih Država", "Zelenortskih Ostrva", "Južnoafričke Republike"],
+);
+igual("gramática serbia: para", ["Srbija", "Crna Gora", "Japan", "Filipini", "Francuska"].map((p) => GRAMATICA.sr.para(p)), ["za Srbiju", "za Crnu Goru", "za Japan", "za Filipine", "za Francusku"]);
 const ctxRegiones = { fecha: "2026-10-15", mercado: "zz", locale: "es-419", idioma: "es", trato: "tu", moneda: "XTS", redondeo: { decimales: 2, modo: "mitad-arriba" }, regiones: zz.mercado.regiones ?? [] } as const;
 igual("campo region con subconjunto", opcionesDe({ id: "r", tipo: "region", etiqueta: "R", regiones: ["sur"] }, ctxRegiones, {}).map((o) => o.valor), ["sur"]);
 // Campo hora y campos condicionales (visibleSi).
