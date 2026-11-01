@@ -512,6 +512,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Nézd meg, mennyi maradna nettóban több mint ${n} országban`,
     },
   },
+  vi: {
+    base: {
+      boton: "Chia sẻ",
+      botonAria: "Chia sẻ công cụ tính này",
+      menuTitulo: "Chia sẻ qua",
+      copiar: "Sao chép liên kết",
+      copiado: "Đã sao chép liên kết",
+      compartido: "Đã chia sẻ",
+      errorCorto: "Không sao chép được",
+      errorAyuda: "Không sao chép được liên kết. Hãy sao chép từ thanh địa chỉ của trình duyệt.",
+      nuevaPestana: "mở trong thẻ mới",
+      mensaje: (nombre) => `${nombre}. Miễn phí, tính trong một phút.`,
+      puenteIntro: "Ở các quốc gia khác thì sao?",
+      puenteEnlace: (n) => `Xem lương thực nhận tại hơn ${n} quốc gia`,
+    },
+  },
   mn: {
     base: {
       boton: "Хуваалцах",

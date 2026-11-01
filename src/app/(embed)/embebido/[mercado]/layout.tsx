@@ -17,7 +17,9 @@ import "@/motor/embed/estilos-embed.css";
 // latin-ext trae las letras del croata (č, ć, đ, š, ž).
 // latin-ext trae las letras del checo (ř, ě, ů); con unicode-range solo se baja si la página las usa.
 // latin-ext trae la ő y la ű del húngaro; con unicode-range solo se baja si la página las usa.
-const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext"], display: "optional" });
+// vietnamese trae ơ, ư y las vocales con tono (U+1EA0 a U+1EF9). Con display optional, sin precarga una
+// visita nueva mezclaría Geist con la fallback dentro de una misma palabra (ADR 0002, D37).
+const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext", "vietnamese"], display: "optional" });
 
 export const revalidate = 86400;
 

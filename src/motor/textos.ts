@@ -842,6 +842,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "წერტილები", coma: "მძიმეები" },
     },
   },
+  // Vietnamita (ADR 0002, D37): frases cortas como Vietcombank y eTax, «bạn» neutro y botón «Tính».
+  vi: {
+    base: {
+      calcular: "Tính",
+      resultado: "Kết quả",
+      si: "Có",
+      no: "Không",
+      sinResultado: "Hiện chưa thể hiển thị kết quả này.",
+      errores: {
+        requerido: "Vui lòng điền trường này.",
+        "numero-invalido": "Nhập một số, ví dụ {ejemplo}.",
+        "entero-invalido": "Nhập số nguyên, không có phần thập phân.",
+        "menor-que-min": "Giá trị nhỏ nhất: {min}.",
+        "mayor-que-max": "Giá trị lớn nhất: {max}.",
+        "fecha-invalida": "Chọn một ngày hợp lệ.",
+        "hora-invalida": "Chọn một giờ hợp lệ.",
+        "opcion-invalida": "Chọn một trong các lựa chọn.",
+        "region-invalida": "Chọn một khu vực.",
+        "calculo-fallido": "Không tính được với dữ liệu này. Kiểm tra lại các giá trị và thử lại.",
+      },
+      milesAmbiguos: "Có phải bạn muốn nhập {sugerido}? Nhập số không có {signos}.",
+      separadores: { punto: "dấu chấm", coma: "dấu phẩy" },
+    },
+  },
   // Mongol (ADR 0002, D28): botón en «-х» («Тооцоолох») y pedidos en «-на уу», como Хаан банк.
   mn: {
     base: {

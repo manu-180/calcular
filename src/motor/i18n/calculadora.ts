@@ -314,6 +314,17 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Forrás",
     },
   },
+  // Vietnamita (ADR 0002, D37): el botón es «Tính».
+  vi: {
+    base: {
+      datos: "Thông tin của bạn",
+      resultado: "Kết quả",
+      vacio: "Nhập thông tin và bấm “Tính” để xem kết quả.",
+      sinResultado: "Hiện chưa thể hiển thị kết quả này.",
+      avisos: { info: "Nên biết", cautela: "Lưu ý", bloquea: "Vì sao chưa có kết quả" },
+      fuenteDelAviso: "Nguồn",
+    },
+  },
   // Mongol (ADR 0002, D28): el botón es «Тооцоолох».
   mn: {
     base: {

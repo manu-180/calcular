@@ -173,6 +173,11 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   // Húngaro (ADR 0002, D21): forintos sin decimales con «Ft» detrás y espacio de miles, un nombre largo
   // con artículo y sufijo de isla («a Saint Vincent és a Grenadine-szigeteken») y uno compuesto en
   // -ország («Németországban»).
+  // Vietnamita (ADR 0002, D37): đồng sin decimales y un nombre de país largo.
+  vi: [
+    { mercado: "vn" as CodigoMercado, pais: "VN", nombrePais: "Việt Nam", locale: "vi-VN", trato: "usted", moneda: "VND" as Moneda, escala: 25000 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent và Grenadines", locale: "vi-VN", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
   // Mongol (ADR 0002, D28): tugrik con ₮ delante y coma de miles, un nombre largo que ya trae «Улс»
   // («Бүгд Найрамдах Доминикан Улсад») y uno en plural («Соломоны арлуудад»).
   mn: [

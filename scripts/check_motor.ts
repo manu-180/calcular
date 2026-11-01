@@ -233,6 +233,12 @@ const parseos: [string, string, number | null][] = [
   ["el-GR", "24%", 24],
   // Húngaro: miles con espacio (U+00A0, y sin espacio con cuatro cifras, como lo da Intl: «1234,5»),
   // decimal con coma y «Ft» detrás.
+  // Vietnamita: miles con punto, decimal con coma y ₫ detrás.
+  ["vi-VN", "1.234,50", 1234.5],
+  ["vi-VN", "1234,5", 1234.5],
+  ["vi-VN", "1.500.000 ₫", 1500000],
+  ["vi-VN", "-250,75", -250.75],
+  ["vi-VN", "20%", 20],
   // Mongol: como en inglés, coma de miles y punto decimal, ₮ delante con espacio.
   ["mn-MN", "1,234.50", 1234.5],
   ["mn-MN", "1234.5", 1234.5],
@@ -313,6 +319,8 @@ const ambiguos: [string, string, number | null][] = [
   ["cs-CZ", "5,000", null],
   ["el-GR", "5.000", 5000],
   ["el-GR", "5,000", null],
+  ["vi-VN", "5.000", 5000],
+  ["vi-VN", "5,000", null],
   ["mn-MN", "5,000", 5000],
   ["mn-MN", "5.000", null],
   ["bg-BG", "5 000", 5000],
@@ -663,8 +671,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-mn"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal", "zz-vi/thuong-nua-nam"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-mn", "zz-vi"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -891,6 +899,11 @@ igual("gramática griega: nombre", ["Ελλάδα", "Καναδάς", "Περο�
 // Mayúsculas sostenidas sin tono: lo hace toLocaleUpperCase("el") (toUpperCase() los deja).
 igual("mayúsculas griegas sin tono", "Υπολογισμός μισθού".toLocaleUpperCase("el"), "ΥΠΟΛΟΓΙΣΜΟΣ ΜΙΣΘΟΥ");
 // Húngaro: sin plural detrás del número («3 nap», «1,5 év») y moneda con «Ft» detrás, sin decimales.
+igual("unidades en vietnamita, sin plural", [1, 3].flatMap((n) => [formatearValorUnidad(n, "dias", "vi-VN"), formatearValorUnidad(n, "horas", "vi-VN"), formatearValorUnidad(n, "anios", "vi-VN")]), ["1 ngày", "1 giờ", "1 năm", "3 ngày", "3 giờ", "3 năm"]);
+igual("đồng", formatearMoneda(1234567, "vi-VN", "VND", 0).replace(/\s/g, " "), "1.234.567 ₫");
+igual("gramática vietnamita", [GRAMATICA.vi.en("Việt Nam"), GRAMATICA.vi.de("Việt Nam"), GRAMATICA.vi.para("Saint Vincent và Grenadines")], ["tại Việt Nam", "của Việt Nam", "cho Saint Vincent và Grenadines"]);
+igual("reglas del vietnamita: lo correcto pasa", problemasDeTexto("Nhập lương của bạn rồi bấm “Tính”. Bạn nghỉ 3 ngày, trả 1.500.000 ₫ hằng tháng, lãi suất 7,5%. Hóa đơn tại Việt Nam.", "vi", "usted"), []);
+verdad("reglas del vietnamita: NFD, comillas, tono viejo, hàng tháng, plural, formato inglés, moneda, sin diacríticos, trato y exclamación", ["Nhập lương".normalize("NFD"), "Bấm «Tính».", "hoá đơn", "trả hàng tháng", "3 các ngày", "1,500,000", "7.5%", "1.000₫", "tinh luong", "Mày nhập", "Nhập nhé", "Quý khách nhập", "Tính ngay!"].every((t) => problemasDeTexto(t, "vi", "usted").length > 0));
 igual("unidades en mongol, sin plural detrás del número", [1, 3].flatMap((n) => [formatearValorUnidad(n, "dias", "mn-MN"), formatearValorUnidad(n, "horas", "mn-MN"), formatearValorUnidad(n, "anios", "mn-MN")]), ["1 өдөр", "1 цаг", "1 жил", "3 өдөр", "3 цаг", "3 жил"]);
 igual("tugrik", formatearMoneda(1234567, "mn-MN", "MNT", 0).replace(/\s/g, " "), "₮ 1,234,567");
 igual("gramática mongola: en", ["Монгол", "Монгол Улс", "Герман", "Бүгд Найрамдах Доминикан Улс", "Соломоны арлууд", "Хонг-Конг"].map(GRAMATICA.mn.en), ["Монгол Улсад", "Монгол Улсад", "Герман улсад", "Бүгд Найрамдах Доминикан Улсад", "Соломоны арлуудад", "Хонг-Конг нутаг дэвсгэрт"]);

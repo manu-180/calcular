@@ -1758,4 +1758,8 @@ const mn: GramaticaPais = (() => {
   return { nombre, de: (p) => sufijo(p, "ын", "ийн"), en, para: (p) => `${en(p)} зориулсан` };
 })();
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
+// Vietnamita (ADR 0002, D37): sin artículos ni casos; el país no cambia y la preposición va delante
+// («tại Việt Nam», «của Việt Nam», «cho Việt Nam»).
+const vi: GramaticaPais = { nombre: (p) => p, de: (p) => `của ${p}`, en: (p) => `tại ${p}`, para: (p) => `cho ${p}` };
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, vi };

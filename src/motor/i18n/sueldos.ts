@@ -4287,6 +4287,7 @@ export const DICCIONARIOS_SUELDOS: Diccionarios<TextosSueldos> = {
   ka: { base: ka },
   hr: { base: hr },
   mn: { base: mn },
+  vi: { base: vi },
 };
 
 export function textosSueldos(idioma: Idioma, trato: Trato, locale?: string): TextosSueldos {
