@@ -21,7 +21,7 @@ import { SeccionesProducto } from "../../planillas/_secciones";
 import { textosPlanillas } from "../../planillas/_textos";
 import "@/motor/ui/estilos-oferta.css";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Props = { params: Promise<{ mercado: string; informe: string }> };
 

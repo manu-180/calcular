@@ -8,7 +8,7 @@ import { contextoSitio } from "@/motor/ui/contexto";
 import { resolverPagina } from "@/motor/ui/metadatos";
 import { registro } from "@/paises";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Props = { params: Promise<{ mercado: string; slug: string }> };
 

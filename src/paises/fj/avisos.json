@@ -1,0 +1,20 @@
+{
+  "mercado": "fj",
+  "avisos": [
+    {
+      "id": "fj.fnpf-employer-8",
+      "nivel": "info",
+      "desde": "2026-08-01",
+      "hasta": "2027-07-31",
+      "aplicaA": ["fj.fnpf-calculator", "fj.employer-cost-calculator"],
+      "texto": "The mandatory FNPF employer contribution is 8% only from 1 August 2026 to 31 July 2027. The employee rate stays at 8%. Check the rate again after 31 July 2027.",
+      "fuente": {
+        "organismo": "Ministry of Finance, Strategic Planning, National Development and Statistics",
+        "titulo": "2026-2027 Budget Supplement",
+        "url": "https://www.finance.gov.fj/wp-content/uploads/2026/06/2026-2027-Budget-Supplement.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      }
+    }
+  ]
+}

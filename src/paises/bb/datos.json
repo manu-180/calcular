@@ -1,0 +1,1204 @@
+{
+  "mercado": "bb",
+  "datos": [
+    {
+      "id": "bb.income-tax",
+      "nombre": "Income tax rates on taxable income (income year)",
+      "tipo": "escala",
+      "unidad": "BBD",
+      "proximaRevision": "2027-03-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000,
+              "tasa": 12.5
+            },
+            {
+              "desde": 50000.01,
+              "hasta": null,
+              "tasa": 28.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Barbados Revenue Authority",
+            "titulo": "Policy Note OGC No. 002/2026: Compensatory Income Credit, increase in income limit (April 2026)",
+            "url": "https://bra.gov.bb/attachment?file=Attachments%2fPolicy+Note+2026_Compensatory+Income+Credit.pdf&name=Compensatory+Income+Credit+(CIC)+%e2%80%93+Increase+in+Income+Limit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The note's examples for income year 2025 deduct the same $25,000 allowance and tax the first $50,000 of taxable income at 12.5%. Policy note OGC 001/2026 gives 28.5% as the higher rate before 2026."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000,
+              "tasa": 11.5
+            },
+            {
+              "desde": 50000.01,
+              "hasta": null,
+              "tasa": 27.5
+            }
+          ],
+          "fuente": {
+            "organismo": "Barbados Revenue Authority",
+            "titulo": "Policy Note OGC No. 001/2026: Reduction of Personal Income Tax Rates (April 2026)",
+            "url": "https://bra.gov.bb/attachment?file=Attachments%2fPolicy+Note+2026_Reduction+in+Personal+Income+Tax+Rates_April+2026.pdf&name=Policy+Note+2026_Reduction+in+Personal+Income+Tax+Rates_April+2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.personal-allowance",
+      "nombre": "Personal allowance (resident individual)",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "proximaRevision": "2027-03-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 25000,
+          "fuente": {
+            "organismo": "Barbados Revenue Authority",
+            "titulo": "Policy Note OGC No. 002/2026: Compensatory Income Credit, increase in income limit (April 2026)",
+            "url": "https://bra.gov.bb/attachment?file=Attachments%2fPolicy+Note+2026_Compensatory+Income+Credit.pdf&name=Compensatory+Income+Credit+(CIC)+%e2%80%93+Increase+in+Income+Limit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The note's examples for income year 2025 deduct the same $25,000 allowance and tax the first $50,000 of taxable income at 12.5%. Policy note OGC 001/2026 gives 28.5% as the higher rate before 2026."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25000,
+          "fuente": {
+            "organismo": "Barbados Revenue Authority",
+            "titulo": "Policy Note OGC No. 001/2026: Reduction of Personal Income Tax Rates (April 2026)",
+            "url": "https://bra.gov.bb/attachment?file=Attachments%2fPolicy+Note+2026_Reduction+in+Personal+Income+Tax+Rates_April+2026.pdf&name=Policy+Note+2026_Reduction+in+Personal+Income+Tax+Rates_April+2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Both worked examples in the policy note deduct a personal allowance of $25,000 a year ($2,083.33 a month) and tax the first $50,000 of taxable income at the lower rate."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.cic-income-limit",
+      "nombre": "Compensatory Income Credit: highest annual income that qualifies",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "proximaRevision": "2027-03-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Barbados Revenue Authority",
+            "titulo": "Policy Note OGC No. 002/2026: Compensatory Income Credit, increase in income limit (April 2026)",
+            "url": "https://bra.gov.bb/attachment?file=Attachments%2fPolicy+Note+2026_Compensatory+Income+Credit.pdf&name=Compensatory+Income+Credit+(CIC)+%e2%80%93+Increase+in+Income+Limit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.cic-max",
+      "nombre": "Compensatory Income Credit: largest credit for the income year",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "proximaRevision": "2027-03-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 3125,
+          "fuente": {
+            "organismo": "Barbados Revenue Authority",
+            "titulo": "Policy Note OGC No. 002/2026: Compensatory Income Credit, increase in income limit (April 2026)",
+            "url": "https://bra.gov.bb/attachment?file=Attachments%2fPolicy+Note+2026_Compensatory+Income+Credit.pdf&name=Compensatory+Income+Credit+(CIC)+%e2%80%93+Increase+in+Income+Limit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2875,
+          "fuente": {
+            "organismo": "Barbados Revenue Authority",
+            "titulo": "Policy Note OGC No. 002/2026: Compensatory Income Credit, increase in income limit (April 2026)",
+            "url": "https://bra.gov.bb/attachment?file=Attachments%2fPolicy+Note+2026_Compensatory+Income+Credit.pdf&name=Compensatory+Income+Credit+(CIC)+%e2%80%93+Increase+in+Income+Limit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.nis-employee-rate",
+      "nombre": "NIS contribution, employee share (private sector, class R)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 11,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Contribution Rates & Earnings Ceilings (Private Sector Employees, class R)",
+            "url": "https://www.nis.gov.bb/contribution-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Rates in force from April 1, 2025, when the Resilience and Regeneration Fund replaced the Catastrophe Fund. The 0.25% fund rates are charged on gross earnings, with no ceiling."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.nis-employer-rate",
+      "nombre": "NIS contribution, employer share (private sector, class R)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 12.75,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Contribution Rates & Earnings Ceilings (Private Sector Employees, class R)",
+            "url": "https://www.nis.gov.bb/contribution-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Rates in force from April 1, 2025, when the Resilience and Regeneration Fund replaced the Catastrophe Fund. The 0.25% fund rates are charged on gross earnings, with no ceiling."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.rrf-employee-rate",
+      "nombre": "Resilience and Regeneration Fund, employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Contribution Rates & Earnings Ceilings (Private Sector Employees, class R)",
+            "url": "https://www.nis.gov.bb/contribution-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Rates in force from April 1, 2025, when the Resilience and Regeneration Fund replaced the Catastrophe Fund. The 0.25% fund rates are charged on gross earnings, with no ceiling."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.rrf-employer-rate",
+      "nombre": "Resilience and Regeneration Fund, employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 0.25,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Contribution Rates & Earnings Ceilings (Private Sector Employees, class R)",
+            "url": "https://www.nis.gov.bb/contribution-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Rates in force from April 1, 2025, when the Resilience and Regeneration Fund replaced the Catastrophe Fund. The 0.25% fund rates are charged on gross earnings, with no ceiling."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.nis-ceiling-monthly",
+      "nombre": "NIS insurable earnings ceiling for monthly paid workers",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2024-12-31",
+          "valor": 5200,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Contribution Rates & Earnings Ceilings: National Insurance (NIS) Insurable Earnings Ceilings",
+            "url": "https://www.nis.gov.bb/contribution-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 5280,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Contribution Rates & Earnings Ceilings: National Insurance (NIS) Insurable Earnings Ceilings",
+            "url": "https://www.nis.gov.bb/contribution-rates/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 5360,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Notice: Increase in Insurable Earnings Ceiling, effective January 1, 2026",
+            "url": "https://www.nis.gov.bb/increase-in-earnings-ceiling-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 5450,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Notice: Increase in Earnings Ceiling 2027, effective January 1, 2027",
+            "url": "https://www.nis.gov.bb/increase-in-earnings-ceiling-2027/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.nis-ceiling-weekly",
+      "nombre": "NIS insurable earnings ceiling for weekly paid workers",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "proximaRevision": "2028-01-03",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-05",
+          "hasta": "2027-01-03",
+          "valor": 1238,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Notice: Increase in Insurable Earnings Ceiling, effective January 1, 2026",
+            "url": "https://www.nis.gov.bb/increase-in-earnings-ceiling-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-04",
+          "valor": 1258,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Notice: Increase in Earnings Ceiling 2027, effective January 1, 2027",
+            "url": "https://www.nis.gov.bb/increase-in-earnings-ceiling-2027/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.vat",
+      "nombre": "VAT rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standard": "Standard rate (most goods and services)",
+        "tourism": "Hotel accommodation and direct tourism services",
+        "telecom": "Telecommunications services"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "standard": 17.5,
+            "tourism": 7.5,
+            "telecom": 22
+          },
+          "fuente": {
+            "organismo": "Barbados Revenue Authority",
+            "titulo": "Value Added Tax (VAT) Rates",
+            "url": "https://bra.gov.bb/Popular-Topics/Value-Added-Tax/VAT-Rates",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The BRA page lists the rates without a start date; the tranche starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.overtime-multiplier",
+      "nombre": "Overtime rate for shop assistants (multiple of ordinary rate)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Labour Department, Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Shops Act 2015-30 (Industrial Relations Section brochure)",
+            "url": "https://labour.gov.bb/wp-content/uploads/2022/05/Shops-Act-2015-30.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The brochure has no start date; the tranche starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.public-holiday-multiplier",
+      "nombre": "Pay for a public holiday or day off worked by a shop assistant (multiple of ordinary rate)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Labour Department, Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Shops Act 2015-30 (Industrial Relations Section brochure)",
+            "url": "https://labour.gov.bb/wp-content/uploads/2022/05/Shops-Act-2015-30.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The brochure has no start date; the tranche starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.shop-daily-hours",
+      "nombre": "Normal daily hours for a shop assistant",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Labour Department, Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Shops Act 2015-30 (Industrial Relations Section brochure)",
+            "url": "https://labour.gov.bb/wp-content/uploads/2022/05/Shops-Act-2015-30.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The brochure has no start date; the tranche starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.shop-weekly-hours",
+      "nombre": "Normal weekly hours for a shop assistant",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Labour Department, Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Shops Act 2015-30 (Industrial Relations Section brochure)",
+            "url": "https://labour.gov.bb/wp-content/uploads/2022/05/Shops-Act-2015-30.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The brochure has no start date; the tranche starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.holiday-weeks-under-5",
+      "nombre": "Holiday with pay, years 1 to 4",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Labour Department, Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Fact Sheet: Holidays with Pay Act 2017-3",
+            "url": "https://labour.gov.bb/wp-content/uploads/2019/10/Fact-Sheet-Holiday-With-Pay-Act-Booklet.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.holiday-weeks-5-plus",
+      "nombre": "Holiday with pay from the fifth year",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Labour Department, Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Fact Sheet: Holidays with Pay Act 2017-3",
+            "url": "https://labour.gov.bb/wp-content/uploads/2019/10/Fact-Sheet-Holiday-With-Pay-Act-Booklet.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.notice-weekly-paid",
+      "nombre": "Minimum notice from the employer, hourly, daily or weekly paid",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "under-2": "1 to 2 years",
+        "2-5": "2 to 5 years",
+        "5-10": "5 to 10 years",
+        "10-15": "10 to 15 years",
+        "15-plus": "15 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "under-2": 1,
+            "2-5": 2,
+            "5-10": 4,
+            "10-15": 6,
+            "15-plus": 10
+          },
+          "fuente": {
+            "organismo": "Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Employment Rights Act, 2012-9 (corrected copy), section 22: Minimum period of notice",
+            "url": "https://labour.gov.bb/wp-content/uploads/PDF/Employment-Rights-Act-2012-9-Corrected-Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.notice-fortnightly-paid",
+      "nombre": "Minimum notice from the employer, fortnightly paid",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "under-5": "1 to 5 years",
+        "5-10": "5 to 10 years",
+        "10-15": "10 to 15 years",
+        "15-plus": "15 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "under-5": 2,
+            "5-10": 4,
+            "10-15": 6,
+            "15-plus": 10
+          },
+          "fuente": {
+            "organismo": "Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Employment Rights Act, 2012-9 (corrected copy), section 22: Minimum period of notice",
+            "url": "https://labour.gov.bb/wp-content/uploads/PDF/Employment-Rights-Act-2012-9-Corrected-Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.notice-monthly-paid",
+      "nombre": "Minimum notice from the employer, monthly paid",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "under-10": "1 to 10 years",
+        "10-15": "10 to 15 years",
+        "15-plus": "15 years or more"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "under-10": 1,
+            "10-15": 1.5,
+            "15-plus": 2.5
+          },
+          "fuente": {
+            "organismo": "Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Employment Rights Act, 2012-9 (corrected copy), section 22: Minimum period of notice",
+            "url": "https://labour.gov.bb/wp-content/uploads/PDF/Employment-Rights-Act-2012-9-Corrected-Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.employee-notice-weeks",
+      "nombre": "Minimum notice from the employee (weekly or fortnightly paid)",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "weekly": "Hourly, daily or weekly paid",
+        "fortnightly": "Fortnightly paid"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "weekly": 1,
+            "fortnightly": 2
+          },
+          "fuente": {
+            "organismo": "Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Employment Rights Act, 2012-9 (corrected copy), section 22: Minimum period of notice",
+            "url": "https://labour.gov.bb/wp-content/uploads/PDF/Employment-Rights-Act-2012-9-Corrected-Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.employee-notice-months",
+      "nombre": "Minimum notice from a monthly paid employee",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Employment Rights Act, 2012-9 (corrected copy), section 22: Minimum period of notice",
+            "url": "https://labour.gov.bb/wp-content/uploads/PDF/Employment-Rights-Act-2012-9-Corrected-Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.severance-weeks",
+      "nombre": "Weeks of basic pay per complete year of employment",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "up-to-10": "Each year up to 10",
+        "11-20": "Each year from 11 to 20",
+        "21-33": "Each year from 21 to 33"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": {
+            "up-to-10": 2.5,
+            "11-20": 3,
+            "21-33": 3.5
+          },
+          "fuente": {
+            "organismo": "Barbados Law Courts (Laws of Barbados)",
+            "titulo": "Severance Payments Act, Cap. 355A, First Schedule, paragraphs 2, 3 and 6",
+            "url": "https://www.barbadoslawcourts.gov.bb/assets/content/pdfs/statutes/SeverancePaymentsCAP355A.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "A week's basic pay is total basic pay in the last 104 weeks divided by 104, and basic pay means insurable earnings under the National Insurance regulations."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.severance-max-years",
+      "nombre": "Most years counted for severance",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 33,
+          "fuente": {
+            "organismo": "Barbados Law Courts (Laws of Barbados)",
+            "titulo": "Severance Payments Act, Cap. 355A, First Schedule, paragraphs 2, 3 and 6",
+            "url": "https://www.barbadoslawcourts.gov.bb/assets/content/pdfs/statutes/SeverancePaymentsCAP355A.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "A week's basic pay is total basic pay in the last 104 weeks divided by 104, and basic pay means insurable earnings under the National Insurance regulations."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.severance-min-weeks",
+      "nombre": "Continuous employment needed for severance",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 104,
+          "fuente": {
+            "organismo": "Barbados Law Courts (Laws of Barbados)",
+            "titulo": "Severance Payments Act, Cap. 355A, section 3 and First Schedule",
+            "url": "https://www.barbadoslawcourts.gov.bb/assets/content/pdfs/statutes/SeverancePaymentsCAP355A.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.maternity-leave-weeks",
+      "nombre": "Minimum maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Barbados Law Courts (Laws of Barbados)",
+            "titulo": "Employment of Women (Maternity Leave) Act, Cap. 345A, section 3",
+            "url": "https://www.barbadoslawcourts.gov.bb/assets/content/pdfs/statutes/EmploymentofWomen(MaternityLeave)CAP345A.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.maternity-benefit-rate",
+      "nombre": "NIS maternity benefit (share of average insurable weekly earnings)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Maternity Benefit and Child Grant",
+            "url": "https://www.nis.gov.bb/maternity-grant-benefits/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.child-grant",
+      "nombre": "NIS Child Grant",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 1280,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Maternity Benefit and Child Grant",
+            "url": "https://www.nis.gov.bb/maternity-grant-benefits/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.sickness-benefit-rate",
+      "nombre": "NIS sickness benefit (share of average insurable weekly earnings)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 66.666667,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Sickness Benefit",
+            "url": "https://www.nis.gov.bb/sickness-benefits/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.sickness-max-weeks",
+      "nombre": "Longest sickness benefit in one continuous period of illness",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Sickness Benefit",
+            "url": "https://www.nis.gov.bb/sickness-benefits/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.unemployment-benefit-rate",
+      "nombre": "NIS unemployment benefit (share of average insurable weekly earnings)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Unemployment Benefit",
+            "url": "https://www.nis.gov.bb/unemployment-benefits/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.unemployment-max-weeks",
+      "nombre": "Longest unemployment benefit in a continuous period",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Unemployment Benefit",
+            "url": "https://www.nis.gov.bb/unemployment-benefits/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.paternity-benefit-rate",
+      "nombre": "NIS paternity benefit (share of average insurable weekly earnings)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Paternity Benefit",
+            "url": "https://www.nis.gov.bb/paternity-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.paternity-benefit-weeks",
+      "nombre": "Weeks of NIS paternity benefit",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Paternity Benefit",
+            "url": "https://www.nis.gov.bb/paternity-benefit/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.pension-rate-first-20",
+      "nombre": "NIS pension accrual for each of the first 20 contribution years (new basis)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 2,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Old-Age Contributory Benefits: New Basis",
+            "url": "https://www.nis.gov.bb/old-age-contributory-pension/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.pension-rate-after-20",
+      "nombre": "NIS pension accrual for each contribution year after 20 (new basis)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 1.25,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Old-Age Contributory Benefits: New Basis",
+            "url": "https://www.nis.gov.bb/old-age-contributory-pension/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.pension-max-rate",
+      "nombre": "Highest NIS pension as a share of average annual insurable earnings",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 60,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Old-Age Contributory Benefits: New Basis",
+            "url": "https://www.nis.gov.bb/old-age-contributory-pension/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.pensionable-age",
+      "nombre": "NIS pensionable age",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 67,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Old-Age Contributory Benefits: New Basis",
+            "url": "https://www.nis.gov.bb/old-age-contributory-pension/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.pension-min-contributions",
+      "nombre": "Contributions needed for an NIS pension (paid or credited)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 500,
+          "fuente": {
+            "organismo": "National Insurance and Social Security Service (NISSS)",
+            "titulo": "Old-Age Contributory Benefits: New Basis",
+            "url": "https://www.nis.gov.bb/old-age-contributory-pension/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.land-tax-residential",
+      "nombre": "Land tax on residential property (improved value)",
+      "tipo": "escala",
+      "unidad": "BBD",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 400000,
+              "tasa": 0
+            },
+            {
+              "desde": 400000.01,
+              "hasta": 550000,
+              "tasa": 0.1
+            },
+            {
+              "desde": 550000.01,
+              "hasta": 950000,
+              "tasa": 0.7
+            },
+            {
+              "desde": 950000.01,
+              "hasta": null,
+              "tasa": 1
+            }
+          ],
+          "fuente": {
+            "organismo": "Barbados Revenue Authority and Ministry of Finance",
+            "titulo": "Lower Land Tax Bills Coming for Residential Properties Valued Above $450,000 (August 24, 2026)",
+            "url": "https://bra.gov.bb/News/Press-Releases/Lower-Land-Tax-Bills-Coming-for-Re",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The 2026-2027 bills were issued in July 2026 with the zero band widened from $300,000 to $400,000."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.land-tax-non-residential",
+      "nombre": "Land tax on non-residential property and vacant land",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "building": "Land with a building other than a residence (improved value)",
+        "vacant-small": "Vacant land under 4,000 sq ft (site value)",
+        "vacant-large": "Vacant land over 4,000 sq ft valued up to $450,000 (site value)",
+        "vacant-large-high": "Vacant land over 4,000 sq ft valued over $450,000 (site value)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": {
+            "building": 0.95,
+            "vacant-small": 0.8,
+            "vacant-large": 0.9,
+            "vacant-large-high": 1
+          },
+          "fuente": {
+            "organismo": "Barbados Revenue Authority",
+            "titulo": "FAQs: Land Tax (How is Land Tax calculated?)",
+            "url": "https://www.bra.gov.bb/FAQs/Land-Tax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.usd-parity",
+      "nombre": "Official exchange rate, Barbados dollars per US dollar",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-07-05",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Central Bank of Barbados",
+            "titulo": "Fixed for Forty-One Years (press release on the US dollar peg)",
+            "url": "https://www.centralbank.org.bb/news/general-press-release/fixed-for-forty-one-years",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.foreign-exchange-fee",
+      "nombre": "Foreign Exchange Fee on purchases of foreign currency",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Central Bank of Barbados",
+            "titulo": "FAQs: Foreign Exchange Fee",
+            "url": "https://www.centralbank.org.bb/faqs/foreignexchangefee",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The FAQ does not give a start date; the tranche starts on the day we read it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.minimum-wage-hourly",
+      "nombre": "National minimum wage per hour",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "proximaRevision": "2027-01-21",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-01",
+          "hasta": "2026-01-20",
+          "valor": 10.5,
+          "fuente": {
+            "organismo": "Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Minimum Wage (National and Sectoral Minimum Wage) Order, 2025, First Schedule",
+            "url": "https://labour.gov.bb/wp-content/uploads/2025/04/Minimum-Wage-National-and-Sectoral-Minimum-Wage-Order-2025.2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Ministry published the Order (marked draft of April 30, 2025) with operation from June 1, 2025."
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-21",
+          "valor": 10.71,
+          "motivo": "The Ministry's notice of December 10, 2025 announces a 2% increase from January 21, 2026, but the Order it links to returns 404 and the gazetted Order could not be read. 10.71 is 10.50 plus 2%.",
+          "fuente": {
+            "organismo": "Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Notice of Intention to Make Minimum Wage Order 2025 (December 10, 2025)",
+            "url": "https://labour.gov.bb/notice-of-intention-to-make-minimum-wage-order-2025/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.minimum-wage-weekly",
+      "nombre": "National minimum wage for a 40-hour week",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "proximaRevision": "2027-01-21",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-06-01",
+          "hasta": "2026-01-20",
+          "valor": 420,
+          "fuente": {
+            "organismo": "Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Minimum Wage (National and Sectoral Minimum Wage) Order, 2025, First Schedule",
+            "url": "https://labour.gov.bb/wp-content/uploads/2025/04/Minimum-Wage-National-and-Sectoral-Minimum-Wage-Order-2025.2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Ministry published the Order (marked draft of April 30, 2025) with operation from June 1, 2025."
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-21",
+          "valor": 428.4,
+          "motivo": "Same as the hourly rate: only the notice of intention (2% increase) could be read, not the Order.",
+          "fuente": {
+            "organismo": "Ministry of Labour, Social Security and Third Sector",
+            "titulo": "Notice of Intention to Make Minimum Wage Order 2025 (December 10, 2025)",
+            "url": "https://labour.gov.bb/notice-of-intention-to-make-minimum-wage-order-2025/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.property-transfer-tax-rate",
+      "nombre": "Property transfer tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-27",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Barbados Law Courts (Laws of Barbados)",
+            "titulo": "Property Transfer Tax Act, Cap. 84A, section 5",
+            "url": "https://www.barbadoslawcourts.gov.bb/assets/content/pdfs/statutes/PropertyTransferTaxCAP084A.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bb.property-transfer-tax-exemption",
+      "nombre": "Property transfer tax: exempt part of the price when the land has a dwelling house",
+      "tipo": "numero",
+      "unidad": "BBD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-10-27",
+          "valor": 150000,
+          "motivo": "The consolidated Cap. 84A on the Laws of Barbados site (L.R.O. 2007) still says $125,000. Current guides say $150,000, but we could not read the amending Act in an official source.",
+          "fuente": {
+            "organismo": "Barbados Law Courts (Laws of Barbados)",
+            "titulo": "Property Transfer Tax Act, Cap. 84A, section 5",
+            "url": "https://www.barbadoslawcourts.gov.bb/assets/content/pdfs/statutes/PropertyTransferTaxCAP084A.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}

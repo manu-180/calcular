@@ -17,7 +17,7 @@ import "@/motor/embed/estilos-embed.css";
 // latin-ext trae la ő y la ű del húngaro; con unicode-range solo se baja si la página las usa.
 const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext"], display: "optional" });
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   if (!intlActivo()) return [];

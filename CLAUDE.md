@@ -8,3 +8,5 @@ aunque nombre solo uno: un arreglo, una mejora de diseño, un texto corregido o 
 también al otro sitio y a todos sus idiomas, con la misma calidad. Si algo de verdad no aplica al otro
 sitio, decirlo en el cierre con el porqué. (Pedido de Manuel, 2026-10-26: «Donde más te rendiría» se
 corrigió primero solo en calcular.ar.)
+
+- Costo: `revalidate` 86400 y nunca 3600, el mes cambia con `/api/cron/mes-nuevo`: `.claude/rules/costo-vercel.md`.

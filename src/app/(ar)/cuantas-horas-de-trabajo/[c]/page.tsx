@@ -3,7 +3,7 @@ import { metadataHorasAR, PaginaHorasAR } from "../horas-ar";
 
 type Props = { params: Promise<{ c: string }> };
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 // Ningún link compartido en el build: cada uno se pinta al primer pedido y queda en caché.
 export function generateStaticParams() {

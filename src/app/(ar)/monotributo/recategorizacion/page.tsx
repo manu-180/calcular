@@ -12,7 +12,7 @@ import { datosOferta } from "@/lib/oferta";
 // La ventana se deriva de la fecha (ver data/monotributo.ts). Revalidar cada hora hace que la
 // página cambie sola el día 6 de febrero/agosto (y que la cuenta regresiva sea del día correcto),
 // sin depender de que haya un deploy.
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   const v = ventanaRecategorizacion();

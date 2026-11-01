@@ -10,7 +10,7 @@ import { Migas } from "@/motor/ui/Sitio";
 import { registro } from "@/paises";
 import { precioIntl, textosPlanillas } from "./_textos";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Props = { params: Promise<{ mercado: string }> };
 

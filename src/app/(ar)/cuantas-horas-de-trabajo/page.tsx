@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { metadataHorasAR, PaginaHorasAR } from "./horas-ar";
 
 // Los precios vencen solos: cada hora se rearma y un precio viejo sale sin deploy.
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return metadataHorasAR();

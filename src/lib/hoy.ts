@@ -3,8 +3,8 @@
 // Servidor: CALCULAR_HOY (a mano, para ver el sitio como va a quedar otro día:
 // `CALCULAR_HOY=2026-11-01 npx tsx scripts/check-all.ts`) y si no, el reloj en hora argentina. NO
 // lee CALCULAR_HOY_BUILD: next.config.ts lo inlinea en el bundle y congelaría el mes al del build,
-// y las páginas AR se regeneran cada hora (revalidate del layout de (ar)) justamente para que el
-// día 1 el mes cambie sin redeploy.
+// y las páginas AR se regeneran cada 24 h (revalidate del layout de (ar)) y se purgan enteras el
+// día 1 (/api/cron/mes-nuevo) justamente para que el mes cambie sin redeploy.
 //
 // Cliente: lee la fecha con la que el servidor renderizó ESA página (la meta que pone el layout de
 // (ar)). Con el reloj del navegador o con la fecha del build, en el cambio de mes el HTML y el JS
