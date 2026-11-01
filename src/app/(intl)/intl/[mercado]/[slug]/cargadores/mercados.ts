@@ -28,7 +28,6 @@ export const MERCADOS: Readonly<Record<string, CargadoresMercado>> = {
   "cl": () => import("./cl"),
   "cm": () => import("./cm"),
   "cm-en": () => import("./cm-en"),
-  "cn": () => import("./cn"),
   "co": () => import("./co"),
   "cr": () => import("./cr"),
   "cv": () => import("./cv"),
