@@ -1123,6 +1123,8 @@ igual("gramática macedonia: en", ["Северна Македонија", "Ге�
 igual("gramática macedonia: de y para", [GRAMATICA.mk.de("Северна Македонија"), GRAMATICA.mk.para("Северна Македонија"), GRAMATICA.mk.de("Обединети Арапски Емирати"), GRAMATICA.mk.para("Доминиканска Република")], ["на Северна Македонија", "за Северна Македонија", "на Обединетите Арапски Емирати", "за Доминиканската Република"]);
 igual("reglas del macedonio: lo correcto pasa", problemasDeTexto("Внесете ја вашата плата и притиснете „Пресметај“. Вие плаќате 18 % ДДВ, а камата е 5 %.", "mk", "usted"), []);
 igual("reglas del macedonio: el botón «Пресметај» pasa solo", problemasDeTexto("Пресметај", "mk", "usted"), []);
+igual("reglas del macedonio: «ден.» en medio de la frase y «на ден.» pasan", problemasDeTexto("Ратата е 5.000 ден. месечно. Работите 8 часа на ден.", "mk", "usted"), []);
+verdad("reglas del macedonio: «ден..» y «ден.,» (D36)", ["Ратата е 5.000 ден..", "Цена од 5.000 ден., со попуст."].every((t) => problemasDeTexto(t, "mk", "usted").length > 0));
 verdad("reglas del macedonio: ajeno y «ти»", ["Изчислете заплатата", "Внеси број.", "можеш да платиш", "вашия калкулатор", "Внесете ја Вашата плата", "«плата»", "лихва", "порез на доход", "Пресметај го данокот", "Внесете!"].every((t) => problemasDeTexto(t, "mk", "usted").length > 0));
 igual("unidades en búlgaro", [1, 3].flatMap((n) => [formatearValorUnidad(n, "dias", "bg-BG"), formatearValorUnidad(n, "horas", "bg-BG"), formatearValorUnidad(n, "anios", "bg-BG")]), ["1 ден", "1 час", "1 година", "3 дни", "3 часа", "3 години"]);
 igual("euro en Bulgaria", formatearMoneda(1234.5, "bg-BG", "EUR").replace(/\s/g, " "), "1234,50 €");

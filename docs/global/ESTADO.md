@@ -21,6 +21,45 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 01/11/2026 · Tanda 7 de países: mk, vn, lb, kh (`claude/paises-tanda-7`)
+
+Sale de `origin/main` con la tanda 6. Publicados Macedonia del Norte (mk), Việt Nam (vn), Líbano (lb) y Camboya (kh), detrás de lv. Trae los
+motores macedonio (D36), vietnamita (D37) y jemer (D38). Informes en `scripts/paises/<m>/INFORME.md`. `mercados-registro.ts` regenerado: 147 mercados intl.
+
+| País | Locales | Publicables | Borrador | Universales |
+|---|---|---|---|---|
+| mk | 21 | 20 | minimalna-plata | todas (cae `iva`: 40) |
+| vn | 22 | 22 | ninguno | todas (cae `iva`: 40) |
+| lb | 15 | 11 | salary-calculator, nssf-contributions, employee-cost-calculator, lbp-usd-converter | todas (cae `iva`) |
+| kh | 25 | 22 | net-salary, nssf-contribution, employer-cost | todas (cae `vat`: 40) |
+
+Checks: `check-all` 156 de 159, más tsc en verde. En verde `check_motor` (6148), `check_universales` (20195 casos), `check_seo_intl` (21440 páginas),
+`check_hreflang` (23537), `check_paises_casos` (11255), `check_embed` (182 mercados), `check_fronteras` y `check_eol`. Fallan solo cosas viejas y ajenas, ninguna de
+estos cuatro países, sin tocar: `check_mundo` (be), `check_paises` (30 en 182: series vencidas y llaves de ca; en la tanda 6 eran 28) y `check_textos_paises` (6: bo, cr, mx, pe).
+
+Ajustes de la integración:
+- Motor mk: 26 líneas de universales cerraban con «ден..» o seguían con «ден.,», contra D36. Reescritas, y `reglasMk` ahora las rechaza. Sin hablante nativo que las revise.
+- Motor vi: el subset `vietnamese` precargaba un archivo más en TODOS los mercados y next/font no deja limitarlo por `[mercado]`. Ahora va `geistVi` (swap, sin precarga), solo
+  para idioma vi, en los layouts intl y embed. Comprobado en el compilado: 2 archivos precargados, ninguno vietnamita, y unos 1,4 KB más de `@font-face` en el CSS. Costo visual en vi: ver D37.
+- kh: `exchange-rate` queda publicado leído de tax.gov.kh, publicación propia de la GDT (decisión del coordinador). Si nbc.gov.kh sigue en 403, no hay contraste con el emisor.
+- `inferir.ts`: «nam» y «thang» junto a las listas de lv y las anteriores. Cuidado al mergear: las listas de una línea chocan en cada motor nuevo.
+
+Datos no verificados y motivo:
+- mk: `mk.minimalna-plata`: 38.507 y 26.046 solo en extractos y contadores; slvesnik.com.mk rechaza la conexión y economy.gov.mk llega a 2022.
+- vn: ninguno cargado. gdt.gov.vn y baohiemxahoi.gov.vn no abren: esos datos salen de leyes y decretos en vanban.chinhphu.vn. Salario mínimo 2027 es proyecto: aviso sin números.
+- lb: `lb.nssf-rates` (el decreto de aportes no se leyó) y `lb.usd-rate` (bdl.gov.lb da 403; el 89.500 del presupuesto es una estimación).
+- kh: `kh.nssf-*` (5 tramos: nssf.gov.kh rechaza el pedido; son pistas de guías privadas) y `kh.min-wage` desde 2027 (212 USD, solo prensa).
+
+Riesgos:
+- Todos: D36, D37 y D38 piden hablante nativo y no se hizo (el informe de kh pide revisar antes de publicar). **Decidir antes de mergear.** Slugs sin validar en el autocompletar de cada país. Ninguno de los cuatro se miró en `next dev` ni se probó el cálculo en navegador.
+- mk: la tasa del art. 25 vale hasta el sueldo de diciembre de 2026: sin actualizar, las calculadoras de plata se despublican el 1/1/2027. Regres, horas extra y боледување son del sector público, con aviso. El convenio privado no está en sitio oficial. `moj-ddv-povrat` sin condiciones ni topes leídos.
+- vn: GTGT 5 % del hộ en contenido digital y alquiler es inferencia (circular sin leer). El 30 % de NQ 43/2026 no se descuenta en alquiler. Los detectores de norma miran las últimas 50 publicaciones. El IVA 8 % cambia a 10 % el 1/1/2027.
+- lb: **fuente a decidir:** ley del trabajo y de renta leídas en la Universidad Libanesa, no en el Diario Oficial; si no se acepta, 7 calculadoras pasan a borrador o dependen de MoF. IVA 11 % con el MoF todavía diciendo 10 %, y aumento al 12 % pendiente (aviso y tasa manual). Ley 319/2023 reemplazará end-of-service.
+- kh: varias tasas de GDT con una sola lectura por WebFetch, que resume (transferencia, alquiler, tierra ociosa, patente, alojamiento, `tax-on-income`): conviene otra mirada humana. Ley de 1997 en traducción inglesa. Salario mínimo vence el 31/12/2026. Sin `net-salary`, Camboya queda fuera de «Tu sueldo en el mundo».
+- Series: kh, lb y vn tienen tipo de cambio o inflación que caen antes del 2/12/2026 sin cron o carga manual.
+
+**Build y memoria:** en curso: el build completo no termina en Windows con 147 mercados (EMFILE en `collectBuildTraces`). Pico hasta ahí: 4,09 GB.
+
 ## 01/11/2026 · Tanda 6 de países: am, al, si, ee, is, lv (`claude/paises-tanda-6`)
 
 Sale de `claude/paises-tanda-5`, ya en main, y lleva el `origin/main` con el build nuevo. Publicados Armenia (am), Albania (al),
