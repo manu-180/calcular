@@ -12,3 +12,5 @@ paths:
   Nadie los usaba: el CI de GitHub ya buildea cada rama y la verificación se hace en local.
 - Si hace falta un preview puntual: `vercel deploy` desde la rama (CLI), no reabrir el glob.
 - No sacar `ignoreCommand`: evita buildear producción cuando el commit sólo toca docs.
+- El commit de punta de main tiene que tener de autor a manu-180: con otro autor Vercel deja el deploy BLOCKED (lo
+  documentan datos-paises.yml y mensual.ts). El botón y la API de merge ponen de autor a quien mergea.
