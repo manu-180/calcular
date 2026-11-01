@@ -12,6 +12,7 @@ export default definirCalculadora({
     "hr.pausal-stopa": "numero",
     "hr.pausal-doprinosi": "mapa",
     "hr.pausal-doprinosi-uz-rad": "mapa",
+    "hr.osnovice-samostalni": "mapa",
   },
   campos: [
     { id: "primici", tipo: "moneda", etiqueta: "Godišnji primici obrta", min: 0, porDefecto: 30000 },

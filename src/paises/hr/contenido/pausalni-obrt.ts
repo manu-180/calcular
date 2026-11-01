@@ -7,7 +7,7 @@ export default definirContenido({
   description: "Izračunajte paušalni porez i doprinose obrta za svoj razred primitaka do {{hr.pausal-limit}}: dohodak, tromjesečni porez i godišnji iznos doprinosa.",
   intro: [
     "Paušalni obrt ne vodi stvarne troškove. Porez ovisi o razredu godišnjih primitaka: Porezna uprava određuje paušalni dohodak, a porez na njega je {{hr.pausal-stopa}}. Granica primitaka je {{hr.pausal-limit}} godišnje.",
-    "Doprinosi su za 2026. fiksni: osnovica je 797,20 eura mjesečno, a mjesečno se plaća {{hr.pausal-doprinosi[mio-i]}} za I. stup, {{hr.pausal-doprinosi[mio-ii]}} za II. stup i {{hr.pausal-doprinosi[zdravstveno]}} za zdravstveno.",
+    "Doprinosi su za 2026. fiksni: osnovica je {{hr.osnovice-samostalni[obrt-pausal]}} mjesečno, a mjesečno se plaća {{hr.pausal-doprinosi[mio-i]}} za I. stup, {{hr.pausal-doprinosi[mio-ii]}} za II. stup i {{hr.pausal-doprinosi[zdravstveno]}} za zdravstveno.",
   ],
   comoSeCalcula: [
     "Prema primicima odaberete razred iz tablice. Najniži razred ide do {{hr.pausal-ljestvica[0].hasta}} s dohotkom od {{hr.pausal-ljestvica[0].cuotaFija}}, a najviši s dohotkom od {{hr.pausal-ljestvica[-1].cuotaFija}}.",
