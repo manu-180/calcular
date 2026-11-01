@@ -5,6 +5,8 @@ import { DIAS_HE, pluralHe, prefijoHe, type FormasHe } from "./hebreo";
 import { conteoMn, formaRu, pluralBg, pluralCs, pluralEl, pluralPl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
 import { pluralHr } from "./plural";
+import { rasatSq } from "./gramatica";
+import { pluralSq } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import { PT_LUSOFONIA } from "./variantes";
 import type { Idioma, Trato } from "../tipos";
@@ -6513,7 +6515,169 @@ const hy: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy };
+// ───────────────────────────── sq ─────────────────────────────
+
+// Albanés (ADR 0002, D31).
+const gSq = GRAMATICA.sq;
+const SEO_SQ = "Dita e lirisë fiskale dhe paga neto në çdo vend";
+const ditetSq = (d: number) => pluralSq(d, "ditë", "ditë");
+const enVendeSq = (n: number) => `në ${pluralSq(n, "vend", "vende")}`;
+
+const sq: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Paga juaj në botë",
+    seo: {
+      titulo: (pais) => [`${SEO_SQ} | ${pais}`, SEO_SQ, "Paga juaj në botë"],
+      tituloGlobal: [SEO_SQ, "Paga juaj në botë"],
+      descripcion: (pais, n) => `Zbuloni deri në cilën ditë të vitit punoni për shtetin me një pagë ${gSq.en(pais)} dhe sa do të merrnit neto ${enVendeSq(n)}. Falas, pa llogari.`,
+      descripcionGlobal: (n) => `Zbuloni deri në cilën ditë të vitit punoni për shtetin dhe sa do të ishte paga juaj neto ${enVendeSq(n)}. Falas, pa llogari.`,
+    },
+    ceja: "Dita juaj e lirisë fiskale",
+    h1: "Deri në cilën ditë të vitit punoni për shtetin?",
+    bajada: (n) => `Vendosni pagën bruto për të parë datën. Pastaj krahasojeni ${enVendeSq(n)}, me të njëjtën fuqi blerëse dhe me rregullat tatimore të secilit vend.`,
+    form: {
+      titulo: "Paga juaj",
+      sueldo: "Paga bruto",
+      mes: "Në muaj",
+      anio: "Në vit",
+      periodo: "Periudha e pagës",
+      pais: "Vendi ku punoni",
+      ejemplo: "Shembull",
+      ejemploAyuda: "Kjo është një pagë shembull. Vendosni tuajën dhe të gjitha shifrat përditësohen menjëherë.",
+      propio: "Marrë nga llogaritja juaj.",
+      invalido: "Vendosni një shumë më të madhe se zero.",
+      pagas: "Paga mujore nga fletëpagesa juaj: pagesat shtesë të detyrueshme me ligj (paga e 13-të ose e 14-të) i shtojmë ne. Paga neto është mesatarja për 12 muaj.",
+    },
+    heroe: {
+      hasta: (fecha) => `Punoni për shtetin deri më ${fecha}`,
+      tasa: (pct) => `Nga paga juaj, ${pct} shkon për tatimin mbi të ardhurat dhe për kontributet e detyrueshme.`,
+      dias: (n, total) => `${n} nga ${ditetSq(total)}`,
+      enMano: "Neto",
+      porMes: "në muaj",
+      anio: (anio, n, total) => `${anio}: ${n} nga ${ditetSq(total)} për shtetin.`,
+      resto: "Nga dita tjetër, gjithçka që fitoni mbetet për ju.",
+    },
+    ranking: {
+      titulo: "E njëjta pagë në çdo vend",
+      bajada: "Kaq do të merrnit neto në çdo vend, me të njëjtën fuqi blerëse. Çdo rresht vjen nga kalkulatori zyrtar i atij vendi. Kudo është e njëjta pagë: ndryshojnë vetëm tatimet dhe kontributet, jo sa fitohet në secilin vend.",
+      lista: "Vendet sipas pagës neto",
+      buscar: "Kërkoni një vend",
+      filtrar: "Filtroni sipas rajonit",
+      todas: "Të gjitha",
+      regiones: { americas: "Amerikat", europa: "Evropa", asia: "Azia dhe Oqeania", africa: "Afrika dhe Lindja e Mesme" },
+      tuPais: "Vendi juaj",
+      mejor: "Taksat më të ulëta",
+      enMano: "Neto në muaj",
+      enTuMoneda: "Në monedhën tuaj",
+      vsTuPais: "Krahasuar me vendin tuaj",
+      verTodos: (n) => `Shikoni të gjitha vendet (${n})`,
+      verMenos: "Shikoni më pak",
+      sinResultados: (q) => `Asnjë vend nuk përputhet me kërkimin “${q}”.`,
+      abrir: (pais) => `Hapni kalkulatorin e ${rasatSq(pais).gjinore}`,
+      mas: (pct) => `${pct} më shumë`,
+      menos: (pct) => `${pct} më pak`,
+      igual: "Njësoj",
+      puesto: (p, total) => `Vendi juaj është në pozicionin ${p} nga ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Imazhi juaj për t'u shpërndarë",
+      bajada: "Tregon datën dhe përqindjet tuaja. Sa fitoni nuk shfaqet kurrë.",
+      hasta: (fecha) => `Punoj për shtetin deri më ${fecha}`,
+      tasa: (pct) => `${pct} e pagës sime shkon për tatime`,
+      mejor: (pais, pct) => `Me të njëjtën pagë, ${gSq.en(pais)} do të paguaja më pak taksa: ${pct} më shumë neto`,
+      mejorPropio: (pais) => `Me të njëjtën pagë, taksat më të ulëta i paguaj ${gSq.en(pais)}`,
+      yVos: "Po ju?",
+      cta: "Zbuloni datën tuaj:",
+      generica: "Deri në cilën ditë të vitit punoni për shtetin?",
+      genericaBajada: (n) => `Paga juaj ${enVendeSq(n)}, me kalkulatorin zyrtar të secilit`,
+      compartir: "Shpërndani imazhin",
+      compartirDuelo: "Pranoni sfidën",
+      descargar: "Shkarkoni imazhin",
+      copiado: "Lidhja u kopjua. Ngjiteni ku të dëshironi.",
+      compartido: "Gati, u dërgua.",
+      error: "Nuk u shpërnda dot. Provoni përsëri.",
+      texto: (fecha) => `Punoj për shtetin deri më ${fecha}. Po ju?`,
+      alt: "Pamje paraprake e imazhit tuaj",
+    },
+    duelo: {
+      amigo: (fecha) => `Personi që ju dërgoi sfidën punon për shtetin deri më ${fecha}.`,
+      yVos: "Po ju?",
+      invitacion: "Vendosni pagën për të krahasuar.",
+      vos: "Ju",
+      elAmigo: "Personi tjetër",
+      dia: "Punon për shtetin deri më",
+      tasa: "Tatime dhe kontribute",
+      mejorPais: "Taksat më të ulëta",
+      antes: (d) => `Çliroheni ${ditetSq(d)} më herët se personi tjetër.`,
+      despues: (d) => `Personi tjetër çlirohet ${ditetSq(d)} më herët se ju.`,
+      empate: "Keni të njëjtën ditë të lirisë fiskale.",
+      desde: (pais) => `Punon ${gSq.en(pais)}`,
+    },
+    cero: {
+      dia: "asnjë ditë",
+      heroeAntes: "Nuk punoni për shtetin",
+      tarjetaAntes: "Nuk punoj për shtetin",
+      motivo: "Nga kjo pagë nuk mbahet as tatim mbi të ardhurat, as kontribute të detyrueshme.",
+      texto: "Këtë vit nuk punoj asnjë ditë për shtetin. Po ju?",
+      amigo: "Personi që ju dërgoi sfidën nuk punon asnjë ditë për shtetin.",
+    },
+    metodo: {
+      titulo: "Si e llogaritim",
+      estimacion: "Kjo është një përllogaritje për të krahasuar vende, jo një fletëpagesë. Zbritjet, fëmijët ose bonuset mund ta ndryshojnë shifrën tuaj.",
+      supuestos: [
+        "Një person i pamartuar dhe pa fëmijë, me vlerat e paracaktuara të kalkulatorit të secilit vend.",
+        "Paga neto është ajo që mbetet pas tatimit mbi të ardhurat dhe kontributeve që paguan punëmarrësi. Taksat mbi konsumin dhe kontributet e punëdhënësit nuk përfshihen në llogaritje.",
+        "Paga e 13-të dhe pagesat e tjera shtesë të detyrueshme ndahen gjatë vitit siç e parashikon ligji i secilit vend.",
+        "Në Shtetet e Bashkuara nuk shtohen tatimi shtetëror dhe ai vendor: vetëm tatimi federal dhe kontributet mbi pagën.",
+        "Për ta çuar pagën tuaj në një vend tjetër përdorim paritetin e fuqisë blerëse (PFB): i njëjti nivel jetese, jo kursi i sotëm i këmbimit.",
+        "PFB-ja e Argjentinës përditësohet me indeksin e çmimeve të konsumit të INDEC, sepse Banka Botërore e publikon vetëm deri në vitin 2021.",
+        "Dita e lirisë i ndan tatimet gjatë gjithë vitit, duke filluar nga 1 janari. Nëse 30% e pagës shkon për tatime, punoni për shtetin 30% të vitit.",
+      ],
+      ppaTitulo: "Pariteti i fuqisë blerëse",
+      bancoMundial: "Banka Botërore",
+      ppa: (organismo, indicador, anio) => `${organismo}, treguesi ${indicador}, viti i fundit i disponueshëm: ${anio}.`,
+      consultado: (fecha) => `Konsultuar më ${fecha}.`,
+      verFuente: "Shikoni burimin",
+      fuentesTitulo: "Burimi i secilit vend",
+      fuentesBajada: "Çdo rresht përdor kalkulatorin e pagës neto të atij vendi dhe të dhënat e tij zyrtare.",
+      verificado: (fecha) => `Të dhëna të verifikuara më ${fecha}`,
+      sello: (fecha) => `Të dhëna zyrtare të verifikuara në burimin e secilit vend. Verifikimi më i vjetër: ${fecha}.`,
+    },
+    faqTitulo: "Pyetje të shpeshta",
+    faq: (n) => [
+      {
+        pregunta: "Çfarë është dita e lirisë fiskale?",
+        respuesta:
+          "Është dita e vitit kur mbaroni së paguari tatimet, sikur gjithçka që fitoni nga 1 janari të shkonte fillimisht te shteti. Këtu llogaritet me pagën tuaj, jo me mesataren e vendit.",
+      },
+      {
+        pregunta: "Pse krahasimi bëhet sipas fuqisë blerëse?",
+        respuesta: "Për shkak të kursit të këmbimit, një pagë mund të duket shumë e madhe ose shumë e vogël në varësi të ditës. PFB-ja krahason atë që mund të blihet vërtet me këto para në çdo vend.",
+      },
+      {
+        pregunta: "A ruhet paga ime?",
+        respuesta: "Jo. Llogaritja bëhet në shfletuesin tuaj. Ajo që shpërndani përmban vetëm data, përqindje dhe vende.",
+      },
+      {
+        pregunta: "Pse paga ime neto reale është ndryshe?",
+        respuesta:
+          "Nisemi nga një person i pamartuar, pa fëmijë dhe me vlerat e paracaktuara. Zbritjet, bonuset ose regjimet e veçanta e ndryshojnë shifrën. Për një llogaritje të saktë për rastin tuaj, hapni kalkulatorin e vendit ku punoni.",
+      },
+      {
+        pregunta: "Cilat vende përfshihen?",
+        respuesta: `Sot lista ka ${pluralSq(n, "vend", "vende")}, secili me kalkulatorin e vet të pagës neto dhe me të dhëna zyrtare. Shtojmë të tjera sapo t'ua verifikojmë rregullat tatimore.`,
+      },
+    ],
+    destacado: {
+      ceja: "Krahasim botëror",
+      titulo: "Deri në cilën ditë të vitit punoni për shtetin?",
+      texto: "Vendosni pagën dhe shikoni sa do të merrnit neto në vende të tjera.",
+      ir: "Zbuloni datën tuaj",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

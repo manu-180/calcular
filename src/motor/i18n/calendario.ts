@@ -3,7 +3,7 @@ import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { GRAMATICA, mayusculaHu } from "./gramatica";
-import { conteoMn, formaBg, formaCs, formaEl, formaRu, formaSk, formaUk, pluralBg, pluralCs, pluralEl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
+import { conteoMn, formaBg, formaCs, formaEl, formaRu, formaSk, formaUk, pluralBg, pluralCs, pluralEl, pluralRo, pluralRu, pluralSk, pluralSq, pluralUk } from "./plural";
 import { formaSr, pluralSr } from "./plural";
 import { formaHr, pluralHr } from "./plural";
 import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
@@ -2545,7 +2545,82 @@ const hy: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy };
+// Albanés (ADR 0002, D31)
+const gSq = GRAMATICA.sq;
+const diteSq = (n: number) => pluralSq(n, "ditë", "ditë");
+const sq: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Kalendari i pagave dhe tatimeve",
+    seo: {
+      titulo: (pais, anios) => [
+        `Kalendari i pagave dhe tatimeve ${anios} ${gSq.para(pais)}: datat kryesore`,
+        `Kalendari i pagave dhe tatimeve ${anios} ${gSq.para(pais)}`,
+        `Kalendari i pagave ${gSq.para(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Datat që ndryshojnë pagën ${gSq.en(pais)}, nga burime zyrtare: ${proximas}. Secila ka kalkulatorin e vet.`,
+      descripcionSin: (pais) => `Datat që ndryshojnë pagën ${gSq.en(pais)}, nga burime zyrtare dhe me kalkulatorin përkatës. Mund t'i shtoni në kalendarin e telefonit.`,
+    },
+    ceja: (anios) => `Kalendari ${anios}`,
+    h1: (pais) => `Kalendari i pagave dhe tatimeve ${gSq.para(pais)}`,
+    acento: "datat nga të cilat varet paga",
+    bajada: "Çdo datë vjen nga një burim zyrtar dhe lidhet me kalkulatorin mbi të cilin ndikon. Faqja përditësohet vetë kur publikohet një vlerë e re.",
+    proxima: "Data e radhës",
+    cuenta: {
+      hoy: "Sot",
+      manana: "Nesër",
+      ayer: "Dje",
+      en: (n) => `Për ${diteSq(n)}`,
+      hace: (n) => `${diteSq(n)} më parë`,
+      dias: () => "ditë",
+    },
+    queViene: "Çfarë vjen më pas",
+    yaRige: "Çfarë është në fuqi",
+    mesPorMes: "Viti muaj pas muaji",
+    sinFechas: "Nuk është njoftuar asnjë ndryshim",
+    filtro: "Filtroni sipas temës",
+    todo: "Të gjitha",
+    tipos: { pago: "Pagesa", "salario-minimo": "Paga minimale", impuestos: "Tatime", aportes: "Kontribute dhe pensione", laboral: "Rregulla pune", indices: "Vlera reference" },
+    pasa: (antes, despues) => `Ndryshon nga ${antes} në ${despues}`,
+    queda: (valor) => `Mbetet ${valor}`,
+    cambian: "Vlerat ndryshojnë",
+    zonas: (lista) => `Rajone: ${lista}`,
+    limite: "Afati i fundit",
+    agregar: "Shtojeni në kalendarin tim",
+    descargar: "Apple, Outlook dhe të tjera (skedar .ics)",
+    google: "Google Calendar",
+    calcular: "Llogaritni",
+    tambien: "Edhe në kalkulatorët",
+    fuente: (organismo, fecha) => `Burimi: ${organismo}. Verifikuar më ${fecha}.`,
+    verificado: (fecha) => `Verifikuar më ${fecha}`,
+    suscribir: {
+      titulo: "I gjithë kalendari, gjithmonë i përditësuar",
+      texto: "Me abonimin, datat e reja shfaqen vetë në kalendarin e telefonit ose të kompjuterit.",
+      boton: "Abonohuni në kalendar",
+      copiar: "Kopjoni lidhjen",
+      copiado: "Lidhja u kopjua",
+    },
+    fuentes: {
+      titulo: "Nga vjen çdo datë",
+      texto: "Këtu hyjnë vetëm datat e përcaktuara tashmë me një akt ligjor ose me një vlerë të publikuar nga institucioni zyrtar. Ajo që nuk është publikuar ende nuk shfaqet.",
+    },
+    vacio: "Për këtë temë nuk ka data në dymbëdhjetë muajt e ardhshëm.",
+    destacado: {
+      ceja: "Kalendari i pagave",
+      titulo: "Datat nga të cilat varet paga këtë vit",
+      ir: "Shikoni kalendarin",
+      proxima: (titulo, fecha) => `E radhës: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Kalendari i pagave dhe tatimeve ${gSq.para(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Datat e pagave dhe tatimeve ${gSq.en(pais)}, nga burime zyrtare.`,
+      calculadora: "Kalkulator",
+      fuente: "Burimi",
+    },
+    og: { proxima: "Data e radhës", mas: (n) => `Dhe ${pluralSq(n, "datë tjetër", "data të tjera")} këtë vit` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

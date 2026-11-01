@@ -84,6 +84,17 @@ Ajenas a esta tanda:
 - `check_textos_paises`: 6 de ancho en bo.salario-minimo (2), bo.finiquito-atrasado, cr.tipo-de-cambio, mx.tipo-de-cambio y
   pe.tipo-de-cambio.
 
+## 01/11/2026 · Motor albanés (`claude/mundo-motor-sq`)
+
+`sq` entra en `IDIOMAS` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en el mundo»
+(`paga-ne-bote`), rankings (`renditja-e-vendeve`), horas de trabajo (`sa-ore-pune`), calendario
+(`kalendari-i-pagave`), «Sueldos reales» (`pagat-reale`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con
+slug ASCII propio. «ju» en minúscula con 2.ª del plural («vendosni»), botón «Llogarit», mercados con `trato:
+"usted"`, formato `1 234 567 Lekë`, comillas “ ”. Plurales one/other (`pluralSq`) y casos del país (`GRAMATICA.sq`,
+`rasatSq`). Decisiones en ADR 0002, D31. Edición de prueba `zz-sq` (interna, `sq-001`).
+- Falta para publicar Albania: el país en sí, con datos verificados, y revisión por hablante nativo. `kalkulator-page`
+  queda libre para su local. `mercado.nombre` va indefinido: «Shqipëri».
+
 ## 01/11/2026 · Tanda 4 de países: rs, me, bg, tj, bt (`claude/paises-tanda-4`)
 
 Publicados: Serbia (rs), Montenegro (me), Bulgaria (bg), Tayikistán (tj) y Bután (bt), detrás de cn. Los cinco

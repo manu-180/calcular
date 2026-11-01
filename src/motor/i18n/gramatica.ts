@@ -1791,4 +1791,140 @@ const mn: GramaticaPais = (() => {
   return { nombre, de: (p) => sufijo(p, "ын", "ийн"), en, para: (p) => `${en(p)} зориулсан` };
 })();
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy };
+// Albanés (ADR 0002, D31): el nombre llega indefinido, como lo escribe Intl.DisplayNames en sq
+// («Shqipëri», «Francë», «Brazil»), y se declina. `nombre(p)` da el nominativo definido («Shqipëria»),
+// `de(p)` el genitivo con «të» («të Shqipërisë»), `en(p)` el lugar con «në» («në Shqipëri»; los compuestos
+// y los plurales van en acusativo definido: «në Zelandën e Re», «në Emiratet e Bashkuara Arabe») y
+// `para(p)` «për» + acusativo definido («për Shqipërinë»). El artículo del genitivo concuerda con lo que
+// tiene delante (Banka e Shqipërisë, Presidenti i Shqipërisë, pagat të Shqipërisë): `de` trae el «të»,
+// que es el que va tras un plural o un indefinido, y `rasatSq(p).gjinore` da el genitivo solo para las
+// frases que necesitan «e» o «i». La regla va por terminación: -ë (a/ës/ën), -i femenino (ia/isë/inë),
+// consonante (i/it/in, con k, g y h: u/ut/un), -o (oja/os/on), -u y -e (ja/së/në), -a (a/ës/ën) y -ia, -ua,
+// -oa (a/s/n). La tabla lleva los irregulares, MASC_I los masculinos en -i (Kili, Mali) y PLURAL los
+// plurales. «A dhe B» y «A e B» se declinan por partes; lo que va entre paréntesis queda igual.
+export interface RasatSq {
+  // nominativo definido: «Shqipëria»
+  emerore: string;
+  // genitivo sin artículo: «Shqipërisë»
+  gjinore: string;
+  // acusativo definido: «Shqipërinë»
+  kallezore: string;
+  // lo que va tras «në»: «Shqipëri», «Zelandën e Re»
+  vendore: string;
+}
+
+export const rasatSq: (pais: string) => RasatSq = (() => {
+  // [emerore, gjinore, kallezore, vendore]
+  type Formas = readonly [string, string, string, string];
+  const TABLA: Readonly<Record<string, Formas>> = {
+    "Shqipëria": ["Shqipëria", "Shqipërisë", "Shqipërinë", "Shqipëri"],
+    Zvicër: ["Zvicra", "Zvicrës", "Zvicrën", "Zvicër"],
+    Kanada: ["Kanadaja", "Kanadasë", "Kanadanë", "Kanada"],
+    Panama: ["Panamaja", "Panamasë", "Panamanë", "Panama"],
+    Brunei: ["Bruneji", "Bruneit", "Brunein", "Brunei"],
+    SHBA: ["SHBA-të", "SHBA-së", "SHBA-në", "SHBA"],
+    "Shtetet e Bashkuara": ["Shtetet e Bashkuara", "Shteteve të Bashkuara", "Shtetet e Bashkuara", "Shtetet e Bashkuara"],
+    "Mal i Zi": ["Mali i Zi", "Malit të Zi", "Malin e Zi", "Mal të Zi"],
+    "Mali i Zi": ["Mali i Zi", "Malit të Zi", "Malin e Zi", "Mal të Zi"],
+    "Maqedonia e Veriut": ["Maqedonia e Veriut", "Maqedonisë së Veriut", "Maqedoninë e Veriut", "Maqedoninë e Veriut"],
+    "Mbretëria e Bashkuar": ["Mbretëria e Bashkuar", "Mbretërisë së Bashkuar", "Mbretërinë e Bashkuar", "Mbretërinë e Bashkuar"],
+    "Zelandë e Re": ["Zelanda e Re", "Zelandës së Re", "Zelandën e Re", "Zelandën e Re"],
+    "Kaledoni e Re": ["Kaledonia e Re", "Kaledonisë së Re", "Kaledoninë e Re", "Kaledoninë e Re"],
+    "Kore e Veriut": ["Koreja e Veriut", "Koresë së Veriut", "Korenë e Veriut", "Korenë e Veriut"],
+    "Kore e Jugut": ["Koreja e Jugut", "Koresë së Jugut", "Korenë e Jugut", "Korenë e Jugut"],
+    "Afrika e Jugut": ["Afrika e Jugut", "Afrikës së Jugut", "Afrikën e Jugut", "Afrikën e Jugut"],
+    "Sudani i Jugut": ["Sudani i Jugut", "Sudanit të Jugut", "Sudanin e Jugut", "Sudanin e Jugut"],
+    "Arabi Saudite": ["Arabia Saudite", "Arabisë Saudite", "Arabinë Saudite", "Arabinë Saudite"],
+    "Republika Dominikane": ["Republika Dominikane", "Republikës Dominikane", "Republikën Dominikane", "Republikën Dominikane"],
+    "Republika e Afrikës Qendrore": ["Republika e Afrikës Qendrore", "Republikës së Afrikës Qendrore", "Republikën e Afrikës Qendrore", "Republikën e Afrikës Qendrore"],
+    "Emiratet e Bashkuara Arabe": ["Emiratet e Bashkuara Arabe", "Emirateve të Bashkuara Arabe", "Emiratet e Bashkuara Arabe", "Emiratet e Bashkuara Arabe"],
+    "Kepi i Gjelbër": ["Kepi i Gjelbër", "Kepit të Gjelbër", "Kepin e Gjelbër", "Kepin e Gjelbër"],
+    "Guineja Ekuatoriale": ["Guineja Ekuatoriale", "Guinesë Ekuatoriale", "Guinenë Ekuatoriale", "Guinenë Ekuatoriale"],
+    "Guineja e Re-Papua": ["Guineja e Re-Papua", "Guinesë së Re-Papua", "Guinenë e Re-Papua", "Guinenë e Re-Papua"],
+    "Saharaja Perëndimore": ["Saharaja Perëndimore", "Saharasë Perëndimore", "Saharanë Perëndimore", "Saharanë Perëndimore"],
+    "Samoa Amerikane": ["Samoa Amerikane", "Samoas Amerikane", "Samoan Amerikane", "Samoan Amerikane"],
+    "Guajana Franceze": ["Guajana Franceze", "Guajanës Franceze", "Guajanën Franceze", "Guajanën Franceze"],
+    "Polinezia Franceze": ["Polinezia Franceze", "Polinezisë Franceze", "Polinezinë Franceze", "Polinezinë Franceze"],
+    "Territoret Palestineze": ["Territoret Palestineze", "Territoreve Palestineze", "Territoret Palestineze", "Territoret Palestineze"],
+    "Territoret Jugore Franceze": ["Territoret Jugore Franceze", "Territoreve Jugore Franceze", "Territoret Jugore Franceze", "Territoret Jugore Franceze"],
+    "Karaibet holandeze": ["Karaibet holandeze", "Karaibeve holandeze", "Karaibet holandeze", "Karaibet holandeze"],
+    "Ishujt e Virgjër Britanikë": ["Ishujt e Virgjër Britanikë", "Ishujve të Virgjër Britanikë", "Ishujt e Virgjër Britanikë", "Ishujt e Virgjër Britanikë"],
+    "Ishujt e Virgjër të SHBA-së": ["Ishujt e Virgjër të SHBA-së", "Ishujve të Virgjër të SHBA-së", "Ishujt e Virgjër të SHBA-së", "Ishujt e Virgjër të SHBA-së"],
+    "Ishujt e Marianës Veriore": ["Ishujt e Marianës Veriore", "Ishujve të Marianës Veriore", "Ishujt e Marianës Veriore", "Ishujt e Marianës Veriore"],
+    "Ishulli i Krishtlindjes": ["Ishulli i Krishtlindjes", "Ishullit të Krishtlindjes", "Ishullin e Krishtlindjes", "Ishullin e Krishtlindjes"],
+    "Ishulli i Manit": ["Ishulli i Manit", "Ishullit të Manit", "Ishullin e Manit", "Ishullin e Manit"],
+    "Territori Britanik i Oqeanit Indian": ["Territori Britanik i Oqeanit Indian", "Territorit Britanik të Oqeanit Indian", "Territorin Britanik të Oqeanit Indian", "Territorin Britanik të Oqeanit Indian"],
+    "Bashkimi Evropian": ["Bashkimi Evropian", "Bashkimit Evropian", "Bashkimin Evropian", "Bashkimin Evropian"],
+  };
+  const MASC_I = new Set(["Kili", "Mali", "Haiti", "Fixhi", "Burundi", "Malavi", "Kiribati", "Uruguai", "Paraguai", "Surinami"]);
+  const PLURAL = new Set(["Filipine", "Bahama", "Bermude", "Maldive", "Sejshelle", "Komore", "Grenadine"]);
+  // Nombres de una palabra (o unidos con guion: declina la última parte).
+  const palabra = (w: string): Formas => {
+    if (TABLA[w]) return TABLA[w];
+    if (PLURAL.has(w)) {
+      // Bahama, Filipine: Bahamet, Bahameve, «në Bahama».
+      const raiz = /[ae]$/.test(w) ? w.slice(0, -1) : w;
+      return [`${raiz}et`, `${raiz}eve`, `${raiz}et`, w];
+    }
+    if (MASC_I.has(w)) return [w, `${w}t`, `${w}n`, w];
+    // -ë: Francë, Kinë, Ukrainë.
+    if (/ë$/.test(w)) {
+      const raiz = w.slice(0, -1);
+      return [`${raiz}a`, `${raiz}ës`, `${raiz}ën`, w];
+    }
+    // -i femenino: Shqipëri, Gjermani, Itali.
+    if (/i$/.test(w)) return [`${w}a`, `${w}së`, `${w}në`, w];
+    // Ya definido con -ia, -ua, -oa: Kenia, Kamboxhia, Nikaragua, Samoa.
+    if (/[iuo]a$/.test(w)) return [w, `${w}s`, `${w}n`, w];
+    // -a: Tonga, Barbuda.
+    if (/a$/.test(w)) {
+      const raiz = w.slice(0, -1);
+      return [w, `${raiz}ës`, `${raiz}ën`, w];
+    }
+    // -o: Monako, Togo, Porto-Riko.
+    if (/o$/.test(w)) return [`${w}ja`, `${w}s`, `${w}n`, w];
+    // -u y -e: Peru, Vanuatu, Guine, Eritre, Zimbabve.
+    if (/[ue]$/.test(w)) return [`${w}ja`, `${w}së`, `${w}në`, w];
+    // Consonante velar: Irak, Marok, Luksemburg, Mozambik.
+    if (/[kgh]$/.test(w) && !/sh$/.test(w)) return [`${w}u`, `${w}ut`, `${w}un`, w];
+    // Otra consonante: Brazil, Egjipt, Bangladesh, Katar.
+    return [`${w}i`, `${w}it`, `${w}in`, w];
+  };
+  const formas = (p: string): Formas => {
+    if (TABLA[p]) return TABLA[p];
+    const par = p.indexOf(" (");
+    if (par > 0) {
+      const f = formas(p.slice(0, par));
+      const cola = p.slice(par);
+      return [f[0] + cola, f[1] + cola, f[2] + cola, f[3] + cola];
+    }
+    for (const sep of [" dhe ", " e "]) {
+      const i = p.indexOf(sep);
+      if (i > 0 && /^\p{Lu}/u.test(p.slice(i + sep.length))) {
+        const a = formas(p.slice(0, i));
+        const b = formas(p.slice(i + sep.length));
+        return [a[0] + sep + b[0], a[1] + sep + b[1], a[2] + sep + b[2], a[3] + sep + b[3]];
+      }
+    }
+    const [primera, ...resto] = p.split(" ");
+    // Núcleo delante: «Ishujt Kajman», «Ishulli Norfolk».
+    if (resto.length && primera === "Ishujt") return [p, `Ishujve ${resto.join(" ")}`, p, p];
+    if (resto.length && primera === "Ishulli") return [p, `Ishullit ${resto.join(" ")}`, `Ishullin ${resto.join(" ")}`, `Ishullin ${resto.join(" ")}`];
+    // Lo que no se sabe declinar queda igual, con la preposición delante.
+    if (resto.length) return [p, p, p, p];
+    return palabra(p);
+  };
+  return (p: string): RasatSq => {
+    const [emerore, gjinore, kallezore, vendore] = formas(p);
+    return { emerore, gjinore, kallezore, vendore };
+  };
+})();
+
+const sq: GramaticaPais = {
+  nombre: (p) => rasatSq(p).emerore,
+  de: (p) => `të ${rasatSq(p).gjinore}`,
+  en: (p) => `në ${rasatSq(p).vendore}`,
+  para: (p) => `për ${rasatSq(p).kallezore}`,
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq };

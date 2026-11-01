@@ -173,6 +173,21 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Albanés: un solo registro, el de e-Albania, Tatime y Raiffeisen Albania («ju» en minúscula con la 2.ª
+  // del plural: «vendosni», «llogaritni»; ADR 0002, D31). Los botones van en la forma corta de las interfaces
+  // («Llogarit», «Kopjo», «Shpërndaj»), así que esos verbos no se atrapan; sí el «ti» y sus posesivos, los
+  // presentes de 2.ª del singular y los imperativos de formulario, y el «Ju» o «Juaj» con mayúscula a mitad
+  // de oración.
+  sq: {
+    informal: [
+      { re: palabras("ti|ty|yt|jot|jote|tënd|tënde|tëndë|tëndes|tëndin|tëndit"), nombre: "«ti» (va «ju»)" },
+      { re: /(?:^|[.?!:]\s+)(?:Vendos|Shkruaj|Kliko|Plotëso|Shiko|Provo|Zgjidh|Kontrollo|Zbulo|Krahaso)\s+\p{L}/u, nombre: "imperativo de «ti» en la prosa (va -ni)" },
+      { re: palabras("ke|je"), nombre: "2.ª del singular" },
+      { re: /(?<!\p{L})të (?!ardhurash|dhënash)\p{L}{3,}(?:ësh|ash|osh|ish)(?!\p{L})/iu, nombre: "subjuntivo de 2.ª del singular (va -ni)" },
+      { re: /[^.?!:“(\s]\s+(?:Ju|Juve|Jush|Juaj|Tuaj|Tuaja|Tuajat)(?!\p{L})/u, nombre: "«Ju» con mayúscula (va «ju»)" },
+    ],
+    formal: [],
+  },
   // Búlgaro: un solo registro, el de ДСК y НАП (2.ª del plural, «Вие», «Ви», «Вашият» con mayúscula;
   // ADR 0002, D24). Se atrapa el «ти» y sus formas, y el pronombre de cortesía con minúscula.
   // Armenio: un solo registro, el de ՊԵԿ, Ամերիաբանկ y Ակբա բանկ (Դուք, Ձեր, Ձեզ con mayúscula e imperativo
@@ -418,6 +433,18 @@ function reglasHy(texto: string): string[] {
   if (MEZCLA_HY.test(texto)) p.push("palabra que mezcla letras armenias con latinas o cirílicas");
   if (PLURAL_TRAS_NUMERO_HY.test(texto)) p.push("plural detrás de un número (en armenio va en singular: «3 օր»)");
   if (SUFIJO_TRAS_CIFRA_HY.test(texto)) p.push("sufijo pegado a una cifra o marcador (va con una palabra delante o tras «՝»)");
+  return p;
+}
+
+// Albanés: comillas “ ” (como Tatime y los títulos de ley), nada de «», „ ni rectas. Y las letras: un texto
+// sin ë ni ç delata un teclado sin albanés («per», «nje», «eshte», «Shqiperi», «te ardhurat»).
+const SIN_DIERESIS_SQ = palabras("per|nje|eshte|jane|nese|keto|kete|ketu|shqiperi\\p{L}*|te ardhurat|te dhenat|vleresim\\p{L}*|perqind\\p{L}*|kerkes\\p{L}*|perfshi\\p{L}*");
+function reglasSq(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»„"]/.test(texto)) p.push("comillas: en albanés van “ ”");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en albanés");
+  const s = SIN_DIERESIS_SQ.exec(texto);
+  if (s) p.push(`sin diacríticos «${s[0]}» (në, për, një, është)`);
   return p;
 }
 
@@ -810,5 +837,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "hr") p.push(...reglasHr(texto));
   if (idioma === "mn") p.push(...reglasMn(texto));
   if (idioma === "hy") p.push(...reglasHy(texto));
+  if (idioma === "sq") p.push(...reglasSq(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

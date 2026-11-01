@@ -964,6 +964,31 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "točaka", coma: "zareza" },
     },
   },
+  // Albanés (ADR 0002, D31): «ju» en minúscula, como e-Albania, Tatime y Raiffeisen Albania. El botón va en
+  // la forma corta de las interfaces albanesas («Llogarit»); las oraciones, en 2.ª del plural («vendosni»).
+  sq: {
+    base: {
+      calcular: "Llogarit",
+      resultado: "Rezultati",
+      si: "Po",
+      no: "Jo",
+      sinResultado: "Këtë rezultat nuk e shfaqim për momentin.",
+      errores: {
+        requerido: "Plotësoni këtë fushë.",
+        "numero-invalido": "Vendosni një numër, për shembull {ejemplo}.",
+        "entero-invalido": "Vendosni një numër të plotë, pa presje dhjetore.",
+        "menor-que-min": "Vlera më e ulët e lejuar është {min}.",
+        "mayor-que-max": "Vlera më e lartë e lejuar është {max}.",
+        "fecha-invalida": "Zgjidhni një datë të saktë.",
+        "hora-invalida": "Zgjidhni një orë të saktë.",
+        "opcion-invalida": "Zgjidhni një nga opsionet e dhëna.",
+        "region-invalida": "Zgjidhni një rajon.",
+        "calculo-fallido": "Me këto të dhëna llogaritja nuk u krye. Kontrolloni vlerat dhe provoni përsëri.",
+      },
+      milesAmbiguos: "Mos doni të thoni {sugerido}? Vendoseni numrin pa {signos}.",
+      separadores: { punto: "pika", coma: "presje" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

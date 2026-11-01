@@ -6,6 +6,7 @@ import { cifrasBn } from "./bengali";
 import { conteoMn, formaUk, pluralBg, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
 import { pluralHr } from "./plural";
+import { pluralSq } from "./plural";
 import { formaRu, pluralRu } from "./plural";
 import { formaCs, pluralCs } from "./plural";
 import { formaSk, pluralSk } from "./plural";
@@ -4340,7 +4341,125 @@ const hy: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy };
+// ───────────────────────────── sq ─────────────────────────────
+
+// Albanés (ADR 0002, D31).
+const enVendeSq = (n: number) => `në ${pluralSq(n, "vend", "vende")}`;
+
+const sq: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Renditjet e vendeve",
+    seo: {
+      titulo: ["Renditja e vendeve sipas pagës dhe tatimeve", "Renditja e vendeve"],
+      descripcion: (n) => `Ku vlen më shumë e njëjta pagë, dita e lirisë fiskale dhe sa mbetet nga një rritje page ${enVendeSq(n)}. Të dhëna zyrtare, të përditësuara.`,
+    },
+    ceja: "Të dhëna të hapura",
+    h1: "Paga dhe tatime, vend pas vendi",
+    bajada: (n) => `${pluralSq(n, "vend", "vende")} të krahasuara me të njëjtën fuqi blerëse dhe me kalkulatorin zyrtar të secilit. Renditjet përditësohen vetë çdo ditë.`,
+    actualizado: (f) => `Përditësuar më ${f}`,
+    ver: "Shikoni renditjen",
+    niveles: { titulo: "Paga e referencës", nombres: { bajo: "Pagë e ulët", medio: "Pagë mesatare", alto: "Pagë e lartë" }, anual: (m) => `${m} në vit` },
+    tramos: { titulo: "Madhësia e rritjes", nombre: (a, b) => `Nga ${a} në ${b}` },
+    referencia: {
+      nivel: (m) => `pagë bruto prej ${m} dollarësh ndërkombëtarë në vit`,
+      tramo: (a, b) => `rritje nga ${a} në ${b} dollarë ndërkombëtarë bruto në vit`,
+    },
+    posicion: (pais, p, total) => `${pais}, pozicioni ${p} nga ${total}`,
+    de: (t) => `nga ${t}`,
+    empate: (o) => (Number(o) === 1 ? "në barazim me një vend tjetër" : `në barazim me ${pluralSq(o, "vend", "vende")} të tjera`),
+    fuera: (pais) => `${pais} nuk shfaqet ende në këto renditje: për krahasimin mungon një kalkulator i pagës neto.`,
+    lider: "Në krye të renditjes",
+    global: (n) => `${pluralSq(n, "vend", "vende")}, nga i pari te i fundit`,
+    valores: {
+      porMes: (m) => `${m} në muaj`,
+      ningunDia: "Asnjë ditë",
+      deCada: (n) => `${n} nga 100`,
+      carga: (pct) => `${pct} për tatimin mbi të ardhurat dhe kontributet`,
+      cargaAumento: (pct) => `${pct} e rritjes shkon për tatim dhe kontribute`,
+    },
+    cambio: {
+      titulo: (mes) => `Ndryshimi krahasuar me ${mes}`,
+      sube: (n) => `Ngjitet ${pluralSq(n, "vend", "vende")}`,
+      baja: (n) => `Zbret ${pluralSq(n, "vend", "vende")}`,
+      igual: "Pa ndryshime",
+      nuevo: "Hyrje e re në renditje",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Pozicioni",
+      pais: "Vendi",
+      edicion: "Ky botim",
+      unidad: "Në dollarë ndërkombëtarë",
+    },
+    kit: {
+      titulo: "Për mediat",
+      bajada: "Një fjali, një grafik dhe lidhja për te kjo renditje, gati për publikim.",
+      compartir: "Shpërndani",
+      descargar: "Shkarkoni grafikun",
+      copiar: "Kopjoni citatin",
+      copiado: "Citati u kopjua",
+      enlace: "Lidhja u kopjua",
+      compartido: "U dërgua",
+      error: "Nuk u kopjua dot. Teksti më sipër mund të kopjohet me dorë.",
+      cita: (frase, ranking, ref, fecha) => `${frase} në renditjen “${ranking}” (${ref}). Burimi: CalcularYa, të dhëna më ${fecha}.`,
+      texto: (frase, ranking) => `${frase} në renditjen “${ranking}”.`,
+      alt: (ranking) => `Grafiku i renditjes “${ranking}”`,
+    },
+    metodo: {
+      titulo: "Si bëhet renditja",
+      bajada: "Çdo vend kalon nëpër kalkulatorin e vet zyrtar të pagës neto, me rregullat e sotme. Pastaj vendet krahasohen me të njëjtën fuqi blerëse.",
+      niveles: (b, m, a) => `Pagat e referencës: ${b}, ${m} dhe ${a} dollarë ndërkombëtarë bruto në vit.`,
+      empates: "Dy vende me të njëjtën vlerë në tabelë ndajnë të njëjtin pozicion, ndërsa vendi pasardhës kapërcen një (1, 2, 2, 4).",
+      historial: "Ndryshimi i pozicionit matet me pamjen e renditjes që ruhet çdo muaj. Pa pamjen e muajit të kaluar, ndryshimi nuk shfaqet.",
+      actualizacion: "Tabela rillogaritet çdo ditë me të dhënat në fuqi të secilit vend. Një vend i ri shfaqet sapo të funksionojë kalkulatori i tij.",
+      ver: "Metodologjia e plotë",
+    },
+    datos: {
+      titulo: "Të dhëna të hapura",
+      bajada: "Shifrat pas këtyre renditjeve, vend pas vendi, në JSON dhe CSV. Përditësohen çdo ditë.",
+      json: "Të dhëna në JSON",
+      csv: "Të dhëna në CSV",
+      licencia: "Licencë CC BY 4.0: të dhënat mund të përdoren, riprodhohen dhe publikohen lirisht, duke përmendur CalcularYa me një lidhje për te kjo faqe.",
+      atribucion: "Përmendje e rekomanduar",
+    },
+    mundo: { titulo: "Me një pagë të caktuar", texto: (n) => `Për llogaritjen me pagën vetjake dhe datën në secilin vend ekziston faqja “${n}”.`, ir: "Llogaritni" },
+    otros: "Renditje të tjera",
+    rankings: {
+      rinde: {
+        titulo: "Ku vlen më shumë e njëjta pagë",
+        corto: "Paga më e leverdishme",
+        seo: ["Ku vlen më shumë e njëjta pagë: renditje", "Ku vlen më shumë paga"],
+        descripcion: (n) => `E njëjta pagë, me të njëjtën fuqi blerëse, ${enVendeSq(n)}: sa mbetet neto sipas rregullave tatimore të secilit. Përditësohet çdo ditë.`,
+        bajada: "E njëjta pagë bruto, me të njëjtën fuqi blerëse, kalon nëpër rregullat e secilit vend. Lart janë ata ku mbetet më shumë neto.",
+        metrica: "Neto në muaj",
+        carga: "Tatim dhe kontribute",
+        como: "Paga neto mujore është mesatarja për 12 muaj, në dollarë ndërkombëtarë.",
+      },
+      libertad: {
+        titulo: "Dita e lirisë fiskale në çdo vend",
+        corto: "Dita e lirisë fiskale",
+        seo: ["Dita e lirisë fiskale në çdo vend: renditje", "Dita e lirisë fiskale sipas vendeve"],
+        descripcion: (n) => `Dita e vitit kur tatimi mbi të ardhurat dhe kontributet janë paguar, me të njëjtën pagë ${enVendeSq(n)}. Përditësohet çdo ditë.`,
+        bajada: "Dita e vitit kur tatimi mbi të ardhurat dhe kontributet janë paguar, me të njëjtën pagë në çdo vend. Lart janë ata ku vjen më herët.",
+        metrica: "Punë për shtetin deri më",
+        carga: "Tatim dhe kontribute",
+        como: "Data i ndan tatimet gjatë gjithë vitit, duke filluar nga 1 janari: me një barrë fiskale prej 30%, punohet për shtetin 30% të vitit.",
+      },
+      aumento: {
+        titulo: "Sa mbetet nga një rritje page",
+        corto: "Sa mbetet nga rritja",
+        seo: ["Sa mbetet nga një rritje page: renditje", "Sa mbetet nga një rritje page"],
+        descripcion: (n) => `Sa mbetet nga çdo 100 të shtuara në pagën bruto, pas tatimit mbi të ardhurat dhe kontributeve, ${enVendeSq(n)}. Përditësohet çdo ditë.`,
+        bajada: "Sa mbetet në xhep nga çdo 100 të shtuara në pagën bruto, pas tatimit mbi të ardhurat dhe kontributeve. Lart janë ata ku mbetet më shumë.",
+        metrica: "Mbeten nga 100",
+        carga: "Norma marxhinale",
+        como: "Është norma marxhinale midis dy pagave: pjesa e rritjes që shkon për tatim dhe kontribute.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

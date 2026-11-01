@@ -2,6 +2,7 @@ import type { Idioma, Trato } from "../tipos";
 import { cifrasBn } from "./bengali";
 import { formaRu } from "./plural";
 import { pluralRo } from "./plural";
+import { pluralSq } from "./plural";
 import { resolver, type Diccionarios } from "./resolver";
 
 // Textos de «Compartir» y de la línea que lleva a «Tu sueldo en el mundo». Viajan en el JS de la
@@ -644,6 +645,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       mensaje: (nombre) => `${nombre}. Besplatno, izračun traje minutu.`,
       puenteIntro: "A u drugim zemljama?",
       puenteEnlace: (n) => `Pogledajte koliko bi vam neto ostalo u više od ${n} zemalja`,
+    },
+  },
+  // Albanés (ADR 0002, D31)
+  sq: {
+    base: {
+      boton: "Shpërndani",
+      botonAria: "Shpërndani këtë kalkulator",
+      menuTitulo: "Shpërndani në",
+      copiar: "Kopjoni lidhjen",
+      copiado: "Lidhja u kopjua",
+      compartido: "U dërgua",
+      errorCorto: "Nuk u kopjua",
+      errorAyuda: "Nuk mundëm ta kopjojmë lidhjen. Kopjojeni nga shiriti i adresave të shfletuesit.",
+      nuevaPestana: "hapet në një skedë të re",
+      mensaje: (nombre) => `${nombre}. Falas, llogaritja zgjat një minutë.`,
+      puenteIntro: "Po në vende të tjera?",
+      puenteEnlace: (n) => `Shikoni sa do të merrnit neto në më shumë se ${pluralSq(n, "vend", "vende")}`,
     },
   },
 };

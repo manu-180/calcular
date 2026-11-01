@@ -1397,7 +1397,43 @@ const hy: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy };
+// Albanés (ADR 0002, D31)
+const sq: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulator CalcularYa",
+    marcaNuevaPestana: "(hapet në një skedë të re)",
+    noDisponible: { titulo: "Ky kalkulator nuk është i disponueshëm", texto: "Ndoshta i ka ndryshuar adresa." },
+    insertar: "Shtojeni në faqen tuaj",
+    pagina: {
+      titulo: (pais) => [`Kalkulatorë falas për faqen tuaj | ${pais}`, "Kalkulatorë falas për faqen tuaj"],
+      descripcion: (pais) => `Zgjidhni një kalkulator ${GRAMATICA.sq.para(pais)}, kopjoni kodin dhe ngjiteni në blogun ose në faqen tuaj. Falas, me të dhëna zyrtare gjithmonë të përditësuara.`,
+      h1: "Shtoni një kalkulator në faqen tuaj",
+      bajada: "Zgjidhni kalkulatorin, kopjoni kodin dhe ngjiteni ku të dëshironi. Falas, dhe të dhënat përditësohen vetë.",
+      calculadora: "Kalkulator",
+      buscar: "Kërkoni një kalkulator",
+      sinResultados: "Asnjë kalkulator nuk përputhet me kërkimin.",
+      tema: "Pamja",
+      claro: "E çelët",
+      oscuro: "E errët",
+      ancho: "Gjerësia",
+      anchoCompleto: "Në gjerësi të plotë",
+      acento: "Ngjyra e theksit",
+      colores: ["E gjelbër", "Blu", "Portokalli", "Rozë", "Gri plumbi"],
+      credito: "Shfaqni lidhjen drejt burimit poshtë kalkulatorit",
+      vistaPrevia: "Parapamje",
+      codigo: "Kodi për t'u ngjitur",
+      copiar: "Kopjoni kodin",
+      copiado: "Kodi u kopjua",
+      ayudaScript: "Skripti është opsional: ai e përshtat lartësinë e kalkulatorit sipas përmbajtjes.",
+      ventajas: ["Falas, pa regjistrim", "Të dhëna zyrtare gjithmonë të përditësuara", "Përshtatet me çdo gjerësi"],
+      nota: "Poshtë kalkulatorit shfaqet një lidhje drejt CalcularYa. Ju lutemi të mos e fshini.",
+      verTodas: (pais) => `Shikoni të gjithë kalkulatorët ${GRAMATICA.sq.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulator CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

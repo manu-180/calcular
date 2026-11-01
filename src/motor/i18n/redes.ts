@@ -757,6 +757,27 @@ export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
     celuImagen: "Kamerom telefona ovaj kod otvara sliku spremnu za dijeljenje u priči.",
     cerrar: "Zatvori",
   }),
+  // Albanés (ADR 0002, D31)
+  sq: base({
+    grupo: "Shpërndani në",
+    instagramSub: "Story",
+    copiar: "Kopjoni lidhjen",
+    mas: "Më shumë opsione",
+    nuevaPestana: "hapet në një skedë të re",
+    formato: "Formati i imazhit",
+    historia: "Story 9:16",
+    feed: "Postim 1:1",
+    descargar: "Shkarkoni imazhin",
+    copiado: "Lidhja u kopjua.",
+    compartido: "Gati, u shpërnda.",
+    enInstagram: "Gati. Lidhja u kopjua dhe mund ta ngjitni në story me stikerin Link.",
+    descargado: "Imazhi u shkarkua dhe lidhja u kopjua. Mund ta publikoni si story nga telefoni, me lidhjen e shtuar përmes stikerit Link.",
+    error: "Shpërndarja nuk është e disponueshme tani.",
+    alCelu: "Në Instagram publikohet nga telefoni",
+    celuPagina: "Me kamerën e telefonit, ky kod hap kartën gati për t'u dërguar në story me një prekje.",
+    celuImagen: "Me kamerën e telefonit, ky kod hap imazhin gati për t'u shpërndarë në story.",
+    cerrar: "Mbyllni",
+  }),
 };
 
 export function textosRedes(idioma: Idioma, trato: Trato, locale?: string): TextosRedes {

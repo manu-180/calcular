@@ -106,6 +106,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   // Búlgaro: «час» y «месец» van en forma numérica detrás de un número («5 часа», «3 месеца»).
   // Armenio: el sustantivo no cambia detrás de un número («3 օր», «1,5 տարի»); D30.
   hy: { dias: { uno: "օր", otros: "օր" }, semanas: { uno: "շաբաթ", otros: "շաբաթ" }, horas: { uno: "ժամ", otros: "ժամ" }, meses: { uno: "ամիս", otros: "ամիս" }, anios: { uno: "տարի", otros: "տարի" } },
+  // Albanés (ADR 0002, D31): «1 vit», «2 vjet»; ditë, javë, orë y muaj no cambian.
+  sq: { dias: { uno: "ditë", otros: "ditë" }, semanas: { uno: "javë", otros: "javë" }, horas: { uno: "orë", otros: "orë" }, meses: { uno: "muaj", otros: "muaj" }, anios: { uno: "vit", otros: "vjet" } },
   bg: { dias: { uno: "ден", otros: "дни" }, semanas: { uno: "седмица", otros: "седмици" }, horas: { uno: "час", otros: "часа" }, meses: { uno: "месец", otros: "месеца" }, anios: { uno: "година", otros: "години" } },
   // El mongol no pone plural después de un número («3 өдөр», «1.5 жил»): las dos formas son iguales.
   mn: { dias: { uno: "өдөр", otros: "өдөр" }, semanas: { uno: "долоо хоног", otros: "долоо хоног" }, horas: { uno: "цаг", otros: "цаг" }, meses: { uno: "сар", otros: "сар" }, anios: { uno: "жил", otros: "жил" } },

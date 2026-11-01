@@ -758,6 +758,27 @@ export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
     texto: "{en} me {producto} košta {horas} rada. A u drugim zemljama?",
     og: { antes: "{en}, s mojom plaćom,", producto: "{producto} me košta", de: "rada", deMes: "rada mjesečno", otros: "Ista razina plaće:", cta: "Koliko sati rada to košta?" },
   }),
+  // Albanés (ADR 0002, D31)
+  sq: base({
+    titulo: "E njëjta llogaritje, me një pagë reale",
+    bajada: "Me pagën bruto mujore, orët llogariten nga ajo pagë, jo nga paga minimale. Shuma mbetet në këtë shfletues: nuk kalon as në lidhje, as në imazh.",
+    campo: "Paga bruto mujore",
+    ayuda: "Në {moneda}, para mbajtjeve.",
+    traido: "Marrë nga kalkulatori i pagës.",
+    invalido: "Duhet një shumë më e madhe se zero.",
+    vacio: "Orët shfaqen pasi të vendoset paga.",
+    antes: "{en}, me këtë pagë, për {producto} duhen",
+    despues: "pune",
+    despuesMes: "pune, çdo muaj",
+    minimo: "Me pagën minimale: {horas}.",
+    veces: "{x} herë sa paga minimale",
+    rankingTitulo: "I njëjti nivel page në çdo vend",
+    rankingBajada: "{x} herë sa paga minimale e çdo vendi, e kthyer në orë pune.",
+    tarjetaTitulo: "Kartë me orët e mia",
+    tarjetaBajada: "Tregon vetëm orë dhe vende. Kurrë pagën.",
+    texto: "{en}, për {producto} më duhen {horas} pune. Po në vendet e tjera?",
+    og: { antes: "{en}, me pagën time,", producto: "për {producto} më duhen", de: "pune", deMes: "pune në muaj", otros: "I njëjti nivel page:", cta: "Sa orë pune duhen?" },
+  }),
 };
 
 export function textosHorasPropio(idioma: Idioma, trato: Trato, locale?: string): TextosHorasPropio {

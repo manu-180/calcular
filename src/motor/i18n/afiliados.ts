@@ -464,6 +464,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "otvara se u novoj kartici",
     },
   },
+  // Albanés (ADR 0002, D31)
+  sq: {
+    base: {
+      titulo: "Po shpërnguleni në një vend tjetër apo merrni para nga jashtë?",
+      etiqueta: "Lidhje partnere",
+      socios: {
+        wise: "Një llogari në disa monedha, për të marrë dhe dërguar para mes vendeve me kursin mesatar të tregut, me një tarifë që shfaqet paraprakisht.",
+        deel: "Kontrata dhe pagesa për ata që punojnë nga një vend për një kompani në një vend tjetër.",
+      },
+      nota: "Nëse hapni një llogari përmes këtyre lidhjeve, faqja mund të marrë një komision. Kush regjistrohet nuk paguan asgjë më shumë për këtë arsye.",
+      nuevaPestana: "hapet në një skedë të re",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {
