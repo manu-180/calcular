@@ -1,0 +1,149 @@
+{
+  "mercado": "sk",
+  "series": [
+    {
+      "id": "sk.usd",
+      "nombre": "Kurz NBS: americký dolár (USD)",
+      "unidad": "USD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Národná banka Slovenska",
+        "titulo": "Kurzový lístok NBS, 30. 10. 2026",
+        "url": "https://nbs.sk/export/sk/exchange-rate/2026-10-30/csv",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          1.113
+        ],
+        [
+          "2026-10-30",
+          1.1172
+        ]
+      ]
+    },
+    {
+      "id": "sk.czk",
+      "nombre": "Kurz NBS: česká koruna (CZK)",
+      "unidad": "CZK",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Národná banka Slovenska",
+        "titulo": "Kurzový lístok NBS, 30. 10. 2026",
+        "url": "https://nbs.sk/export/sk/exchange-rate/2026-10-30/csv",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          24.336
+        ],
+        [
+          "2026-10-30",
+          24.353
+        ]
+      ]
+    },
+    {
+      "id": "sk.gbp",
+      "nombre": "Kurz NBS: britská libra (GBP)",
+      "unidad": "GBP",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Národná banka Slovenska",
+        "titulo": "Kurzový lístok NBS, 30. 10. 2026",
+        "url": "https://nbs.sk/export/sk/exchange-rate/2026-10-30/csv",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          0.83578
+        ],
+        [
+          "2026-10-30",
+          0.8338
+        ]
+      ]
+    },
+    {
+      "id": "sk.huf",
+      "nombre": "Kurz NBS: maďarský forint (HUF)",
+      "unidad": "HUF",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Národná banka Slovenska",
+        "titulo": "Kurzový lístok NBS, 30. 10. 2026",
+        "url": "https://nbs.sk/export/sk/exchange-rate/2026-10-30/csv",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          365.95
+        ],
+        [
+          "2026-10-30",
+          366.33
+        ]
+      ]
+    },
+    {
+      "id": "sk.pln",
+      "nombre": "Kurz NBS: poľský zlotý (PLN)",
+      "unidad": "PLN",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Národná banka Slovenska",
+        "titulo": "Kurzový lístok NBS, 30. 10. 2026",
+        "url": "https://nbs.sk/export/sk/exchange-rate/2026-10-30/csv",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          4.3938
+        ],
+        [
+          "2026-10-30",
+          4.4038
+        ]
+      ]
+    },
+    {
+      "id": "sk.chf",
+      "nombre": "Kurz NBS: švajčiarsky frank (CHF)",
+      "unidad": "CHF",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Národná banka Slovenska",
+        "titulo": "Kurzový lístok NBS, 30. 10. 2026",
+        "url": "https://nbs.sk/export/sk/exchange-rate/2026-10-30/csv",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          0.9222
+        ],
+        [
+          "2026-10-30",
+          0.9194
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "mercado": "sk",
+  "avisos": [
+    {
+      "id": "sk.minimalna-mzda-2027",
+      "nivel": "info",
+      "desde": "2026-11-01",
+      "hasta": "2026-12-31",
+      "aplicaA": [
+        "sk.minimalna-mzda",
+        "sk.vypocet-cistej-mzdy",
+        "sk.celkova-cena-prace",
+        "sk.priplatky-za-pracu"
+      ],
+      "texto": "Od januára 2027 bude minimálna mzda 972 eur. Do konca roka 2026 kalkulačka počíta so sumami na rok 2026.",
+      "fuente": {
+        "organismo": "MPSVR SR",
+        "titulo": "Minimálna mzda sa opäť zvýši, na budúci rok sa priblíži k hranici 1000 eur",
+        "url": "https://www.employment.gov.sk/sk/uvodna-stranka/informacie-media/aktuality/minimalna-mzda-opat-zvysi-buduci-rok-priblizi-k-hranici-1000-eur.html",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      }
+    },
+    {
+      "id": "sk.davky-2027",
+      "nivel": "info",
+      "desde": "2026-11-01",
+      "hasta": "2026-12-31",
+      "aplicaA": [
+        "sk.kalkulacka-pn",
+        "sk.kalkulacka-materske",
+        "sk.tehotenske",
+        "sk.osetrovne"
+      ],
+      "texto": "Ak dôvod na dávku vznikne v roku 2027, platí vyšší strop denného vymeriavacieho základu. Kalkulačka ho používa podľa dátumu.",
+      "fuente": {
+        "organismo": "Sociálna poisťovňa",
+        "titulo": "Zmena 2027: vyššie maximálne sumy nemocenských dávok",
+        "url": "https://www.socpoist.sk/news/zmena-2027-socialna-poistovna-bude-vyplacat-vyssie-maximalne-sumy-davok-nemocenske-materske",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      }
+    }
+  ]
+}

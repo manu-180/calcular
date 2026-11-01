@@ -1,0 +1,1058 @@
+{
+  "mercado": "sk",
+  "datos": [
+    {
+      "id": "sk.minimalna-mzda",
+      "nombre": "Minimálna mzda mesačne",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 915,
+          "fuente": {
+            "organismo": "MPSVR SR",
+            "titulo": "Sumy minimálnej mzdy",
+            "url": "https://employment.gov.sk/sk/praca-zamestnanost/vztah-zamestnanca-zamestnavatela/odmenovanie/minimalna-mzda/sumy-minimalnej-mzdy.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.minimalna-mzda-hodinova",
+      "nombre": "Minimálna mzda za hodinu",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 5.259,
+          "fuente": {
+            "organismo": "MPSVR SR",
+            "titulo": "Sumy minimálnej mzdy",
+            "url": "https://employment.gov.sk/sk/praca-zamestnanost/vztah-zamestnanca-zamestnavatela/odmenovanie/minimalna-mzda/sumy-minimalnej-mzdy.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.minimalna-mzda-2020",
+      "nombre": "Minimálna mzda na rok 2020, základ minimálnych mzdových nárokov",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 580,
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Nariadenie vlády č. 324/2019 Z. z., suma minimálnej mzdy na rok 2020",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2019/324/20200101.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.koeficienty-stupnov",
+      "nombre": "Koeficienty minimálnej mzdy podľa stupňa náročnosti",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "s1": "1. stupeň",
+        "s2": "2. stupeň",
+        "s3": "3. stupeň",
+        "s4": "4. stupeň",
+        "s5": "5. stupeň",
+        "s6": "6. stupeň"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "s1": 1,
+            "s2": 1.2,
+            "s3": 1.4,
+            "s4": 1.6,
+            "s5": 1.8,
+            "s6": 2
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 311/2001 Z. z. Zákonník práce, znenie od 1. 9. 2026",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2001/311/20260901.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.odvody-zamestnanec",
+      "nombre": "Sociálne poistenie zamestnanca",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "nemocenske": "Nemocenské",
+        "starobne": "Starobné",
+        "invalidne": "Invalidné",
+        "nezamestnanost": "V nezamestnanosti"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "nemocenske": 1.4,
+            "starobne": 4,
+            "invalidne": 3,
+            "nezamestnanost": 1
+          },
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Tabuľky platenia poistného od 1. januára 2026",
+            "url": "https://www.socpoist.sk/socialne-poistenie/platenie-poistneho/tabulky-platenia-poistneho/tabulky-platenia-poistneho-od-1-6",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.odvody-zamestnavatel",
+      "nombre": "Sociálne poistenie zamestnávateľa",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "nemocenske": "Nemocenské",
+        "starobne": "Starobné",
+        "invalidne": "Invalidné",
+        "nezamestnanost": "V nezamestnanosti",
+        "garancne": "Garančné",
+        "rezervny": "Rezervný fond",
+        "urazove": "Úrazové"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "nemocenske": 1.4,
+            "starobne": 14,
+            "invalidne": 3,
+            "nezamestnanost": 1,
+            "garancne": 0.25,
+            "rezervny": 4.75,
+            "urazove": 0.8
+          },
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Tabuľky platenia poistného od 1. januára 2026",
+            "url": "https://www.socpoist.sk/socialne-poistenie/platenie-poistneho/tabulky-platenia-poistneho/tabulky-platenia-poistneho-od-1-6",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.odvody-szco",
+      "nombre": "Sociálne poistenie SZČO",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "nemocenske": "Nemocenské",
+        "starobne": "Starobné",
+        "invalidne": "Invalidné",
+        "rezervny": "Rezervný fond"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "nemocenske": 4.4,
+            "starobne": 18,
+            "invalidne": 6,
+            "rezervny": 4.75
+          },
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Tabuľky platenia poistného od 1. januára 2026",
+            "url": "https://www.socpoist.sk/socialne-poistenie/platenie-poistneho/tabulky-platenia-poistneho/tabulky-platenia-poistneho-od-1-6",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.max-vymeriavaci-zaklad",
+      "nombre": "Maximálny mesačný vymeriavací základ",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 16764,
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Tabuľky platenia poistného od 1. januára 2026",
+            "url": "https://www.socpoist.sk/socialne-poistenie/platenie-poistneho/tabulky-platenia-poistneho/tabulky-platenia-poistneho-od-1-6",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.min-vz-szco",
+      "nombre": "Minimálny vymeriavací základ SZČO",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 914.4,
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Tabuľky platenia poistného od 1. januára 2026",
+            "url": "https://www.socpoist.sk/socialne-poistenie/platenie-poistneho/tabulky-platenia-poistneho/tabulky-platenia-poistneho-od-1-6",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.osobitny-vz-szco",
+      "nombre": "Osobitný vymeriavací základ SZČO",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 396.24,
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Najdôležitejšie zmeny v sociálnom poistení od 1. januára 2026",
+            "url": "https://www.socpoist.sk/socialne-poistenie/zmeny-v-socialnom-poisteni/najdolezitejsie-zmeny-v-socialnom-poisteni-od-1-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.hranica-prijmu-szco",
+      "nombre": "Hranica príjmu SZČO pre osobitný vymeriavací základ",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 9144,
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Najdôležitejšie zmeny v sociálnom poistení od 1. januára 2026",
+            "url": "https://www.socpoist.sk/socialne-poistenie/zmeny-v-socialnom-poisteni/najdolezitejsie-zmeny-v-socialnom-poisteni-od-1-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.koeficient-szco",
+      "nombre": "Koeficient na výpočet vymeriavacieho základu SZČO",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.486,
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Najdôležitejšie zmeny v sociálnom poistení od 1. januára 2026",
+            "url": "https://www.socpoist.sk/socialne-poistenie/zmeny-v-socialnom-poisteni/najdolezitejsie-zmeny-v-socialnom-poisteni-od-1-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.zdravotne-odvody",
+      "nombre": "Zdravotné poistenie",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "zamestnanec": "Zamestnanec",
+        "zamestnavatel": "Zamestnávateľ",
+        "szco": "SZČO"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": {
+            "zamestnanec": 5,
+            "zamestnavatel": 11,
+            "szco": 16
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 580/2004 Z. z. o zdravotnom poistení, § 12, § 16 a § 38ezk",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2004/580/20260701.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.min-preddavok-szco",
+      "nombre": "Minimálny preddavok SZČO na zdravotné poistenie",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 121.92,
+          "fuente": {
+            "organismo": "Všeobecná zdravotná poisťovňa",
+            "titulo": "Zmeny od 1. 1. 2026",
+            "url": "https://www.vszp.sk/platitelia/platenie-poistneho/oznamenia-zmeny/zmeny-od-01-01.2026/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.zivotne-minimum",
+      "nombre": "Životné minimum k 1. januáru",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 284.13,
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Nezdaniteľná časť základu dane na daňovníka za rok 2026",
+            "url": "https://podpora.financnasprava.sk/214187-Nezdanite%C4%BEn%C3%A1-%C4%8Das%C5%A5-z%C3%A1kladu-dane-na-da%C5%88ovn%C3%ADka-za-rok-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.dan-z-prijmov",
+      "nombre": "Sadzby dane z príjmov fyzickej osoby",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 43983.32,
+              "tasa": 19
+            },
+            {
+              "desde": 43983.32,
+              "hasta": 60349.21,
+              "tasa": 25
+            },
+            {
+              "desde": 60349.21,
+              "hasta": 75010.32,
+              "tasa": 30
+            },
+            {
+              "desde": 75010.32,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Sadzba dane z príjmov fyzickej osoby za rok 2026",
+            "url": "https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.dan-znizena",
+      "nombre": "Znížená sadzba dane SZČO",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Sadzba dane z príjmov fyzickej osoby za rok 2026",
+            "url": "https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.hranica-zniz-dane",
+      "nombre": "Hranica príjmov pre sadzbu 15 %",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Sadzba dane z príjmov fyzickej osoby za rok 2026",
+            "url": "https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.nezdanitelna-cast",
+      "nombre": "Nezdaniteľná časť základu dane na daňovníka",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 5966.73,
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Nezdaniteľná časť základu dane na daňovníka za rok 2026",
+            "url": "https://podpora.financnasprava.sk/214187-Nezdanite%C4%BEn%C3%A1-%C4%8Das%C5%A5-z%C3%A1kladu-dane-na-da%C5%88ovn%C3%ADka-za-rok-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.nczd-hranica",
+      "nombre": "Základ dane, od ktorého sa nezdaniteľná časť znižuje",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 26083.13,
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Nezdaniteľná časť základu dane na daňovníka za rok 2026",
+            "url": "https://podpora.financnasprava.sk/214187-Nezdanite%C4%BEn%C3%A1-%C4%8Das%C5%A5-z%C3%A1kladu-dane-na-da%C5%88ovn%C3%ADka-za-rok-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.nczd-suma",
+      "nombre": "Suma, od ktorej sa odpočítava tretina základu dane",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 14661.11,
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Nezdaniteľná časť základu dane na daňovníka za rok 2026",
+            "url": "https://podpora.financnasprava.sk/214187-Nezdanite%C4%BEn%C3%A1-%C4%8Das%C5%A5-z%C3%A1kladu-dane-na-da%C5%88ovn%C3%ADka-za-rok-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.danovy-bonus",
+      "nombre": "Daňový bonus na dieťa mesačne",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "do15": "Dieťa do 15 rokov",
+        "od15": "Dieťa od 15 do 18 rokov"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "do15": 100,
+            "od15": 50
+          },
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Daňový bonus na vyživované dieťa v roku 2026",
+            "url": "https://podpora.financnasprava.sk/549090-Da%C5%88ov%C3%BD-bonus-na-vy%C5%BEivovan%C3%A9-die%C5%A5a-v-roku-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.bonus-limit",
+      "nombre": "Percentuálny limit základu dane pre daňový bonus",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "d1": 29,
+            "d2": 36,
+            "d3": 43,
+            "d4": 50,
+            "d5": 57,
+            "d6": 64
+          },
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Daňový bonus na vyživované dieťa v roku 2026",
+            "url": "https://podpora.financnasprava.sk/549090-Da%C5%88ov%C3%BD-bonus-na-vy%C5%BEivovan%C3%A9-die%C5%A5a-v-roku-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.bonus-hranica",
+      "nombre": "Ročný základ dane, od ktorého sa daňový bonus znižuje",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 27432,
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Daňový bonus na vyživované dieťa v roku 2026",
+            "url": "https://podpora.financnasprava.sk/549090-Da%C5%88ov%C3%BD-bonus-na-vy%C5%BEivovan%C3%A9-die%C5%A5a-v-roku-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.dph",
+      "nombre": "Sadzby DPH",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "zakladna": "Základná sadzba",
+        "znizena": "Znížená sadzba",
+        "najnizsia": "Najnižšia sadzba"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zakladna": 23,
+            "znizena": 19,
+            "najnizsia": 5
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 222/2004 Z. z. o dani z pridanej hodnoty, § 27",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2004/222/20260101.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.pausalne-percento",
+      "nombre": "Paušálne výdavky z príjmov",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Výdavky percentom z príjmov",
+            "url": "https://podpora.financnasprava.sk/270033-V%C3%BDdavky-percentom-z-pr%C3%ADjmov-",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.pausalne-max",
+      "nombre": "Paušálne výdavky najviac",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "Finančná správa SR",
+            "titulo": "Výdavky percentom z príjmov",
+            "url": "https://podpora.financnasprava.sk/270033-V%C3%BDdavky-percentom-z-pr%C3%ADjmov-",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.dovolenka",
+      "nombre": "Výmera dovolenky",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "zakladna": "Základná",
+        "zvysena": "Od 33 rokov alebo pri starostlivosti o dieťa",
+        "pedagog": "Pedagogickí a vedeckí zamestnanci"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zakladna": 4,
+            "zvysena": 5,
+            "pedagog": 8
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 311/2001 Z. z. Zákonník práce, znenie od 1. 9. 2026",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2001/311/20260901.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.odstupne",
+      "nombre": "Odstupné v násobkoch priemerného mesačného zárobku",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vypoved2": 1,
+            "vypoved5": 2,
+            "vypoved10": 3,
+            "vypoved20": 4,
+            "dohoda0": 1,
+            "dohoda2": 2,
+            "dohoda5": 3,
+            "dohoda10": 4,
+            "dohoda20": 5
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 311/2001 Z. z. Zákonník práce, znenie od 1. 9. 2026",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2001/311/20260901.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.odchodne",
+      "nombre": "Odchodné v násobkoch priemerného mesačného zárobku",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 311/2001 Z. z. Zákonník práce, znenie od 1. 9. 2026",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2001/311/20260901.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.vypovedna-doba",
+      "nombre": "Výpovedná doba v mesiacoch",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zaklad": 1,
+            "od1": 2,
+            "od5": 3
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 311/2001 Z. z. Zákonník práce, znenie od 1. 9. 2026",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2001/311/20260901.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.nadcas",
+      "nombre": "Mzdové zvýhodnenie za prácu nadčas",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "bezna": "Bežná práca",
+        "rizikova": "Riziková práca"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "bezna": 25,
+            "rizikova": 35
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 311/2001 Z. z. Zákonník práce, znenie od 1. 9. 2026",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2001/311/20260901.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.priplatky",
+      "nombre": "Mzdové zvýhodnenia",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sobota": 50,
+            "nedela": 100,
+            "noc": 40,
+            "noc-riziko": 50,
+            "sviatok": 100
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 311/2001 Z. z. Zákonník práce, znenie od 1. 9. 2026",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2001/311/20260901.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.max-dvz",
+      "nombre": "Maximálny denný vymeriavací základ pre nemocenské dávky",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 100.2083,
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Zmena 2026: vyššie maximálne sumy nemocenských dávok",
+            "url": "https://www.socpoist.sk/news/zmena-2026-socialna-poistovna-bude-vyplacat-vyssie-maximalne-sumy-davok-nemocenske-materske",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 106.5206,
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Zmena 2027: vyššie maximálne sumy nemocenských dávok",
+            "url": "https://www.socpoist.sk/news/zmena-2027-socialna-poistovna-bude-vyplacat-vyssie-maximalne-sumy-davok-nemocenske-materske",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.davky",
+      "nombre": "Výška nemocenských dávok z denného vymeriavacieho základu",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "nemocenske": 55,
+            "prve-dni": 25,
+            "materske": 75,
+            "tehotenske": 15,
+            "osetrovne": 55
+          },
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Ďalšie informácie: nemocenské",
+            "url": "https://www.socpoist.sk/socialne-poistenie/nemocenske-poistenie/nemocenske-davka-pocas-pn/dalsie-informacie-nemocenske",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.materske-tyzdne",
+      "nombre": "Dĺžka materského v týždňoch",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "bezne": "Bežne",
+        "osamela": "Osamelá matka",
+        "viac-deti": "Dve a viac detí naraz"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "bezne": 34,
+            "osamela": 37,
+            "viac-deti": 43
+          },
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Ďalšie informácie: materské",
+            "url": "https://www.socpoist.sk/socialne-poistenie/nemocenske-poistenie/materske/dalsie-informacie-materske",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.nahrada-prijmu",
+      "nombre": "Náhrada príjmu od zamestnávateľa",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "prve-dni": 25,
+            "dalsie-dni": 55
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 462/2003 Z. z. o náhrade príjmu pri dočasnej pracovnej neschopnosti, § 7 a § 8",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2003/462/20260101.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.rodicovsky",
+      "nombre": "Rodičovský príspevok mesačne",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "zakladny": "Bez materského",
+        "po-materskom": "Po materskom"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "zakladny": 364.8,
+            "po-materskom": 500.1
+          },
+          "fuente": {
+            "organismo": "MPSVR SR",
+            "titulo": "Rodičovský príspevok: výška príspevku",
+            "url": "https://www.employment.gov.sk/sk/rodina-socialna-pomoc/podpora-rodinam-detmi/penazna-pomoc/rodicovsky-prispevok/vyska-prispevku.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.rodicovsky-navysenie",
+      "nombre": "Zvýšenie rodičovského príspevku na ďalšie súčasne narodené dieťa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 571/2009 Z. z. o rodičovskom príspevku, § 4",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2009/571/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.adh",
+      "nombre": "Aktuálna dôchodková hodnota",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 19.7633,
+          "fuente": {
+            "organismo": "Sociálna poisťovňa",
+            "titulo": "Najdôležitejšie zmeny v sociálnom poistení od 1. januára 2026",
+            "url": "https://www.socpoist.sk/socialne-poistenie/zmeny-v-socialnom-poisteni/najdolezitejsie-zmeny-v-socialnom-poisteni-od-1-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.dochodok-koef",
+      "nombre": "Koeficienty priemerného osobného mzdového bodu",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "hranica": 1.25,
+            "nad-hranicou": 0.68,
+            "strop": 3,
+            "nizky-prijem": 0.2
+          },
+          "fuente": {
+            "organismo": "Slov-Lex",
+            "titulo": "Zákon č. 461/2003 Z. z. o sociálnom poistení, § 63 a § 66",
+            "url": "https://static.slov-lex.sk/static/SK/ZZ/2003/461/20260901.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sk.inflacia-rocna",
+      "nombre": "Medziročná inflácia",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 0,
+          "motivo": "Rozhranie data.statistics.sk odmietlo spojenie 1. 11. 2026 (ECONNREFUSED); index spotrebiteľských cien sa nedal prečítať."
+        }
+      ]
+    }
+  ]
+}
