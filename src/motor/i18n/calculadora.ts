@@ -284,6 +284,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Zdroj",
     },
   },
+  sk: {
+    base: {
+      datos: "Vaše údaje",
+      resultado: "Výsledok",
+      vacio: "Vyplňte údaje a kliknite na „Vypočítať“, výsledok sa zobrazí tu.",
+      sinResultado: "Tento výsledok zatiaľ nezobrazujeme.",
+      avisos: { info: "Dobré vedieť", cautela: "Pozor", bloquea: "Prečo výsledok nezobrazujeme" },
+      fuenteDelAviso: "Zdroj",
+    },
+  },
   el: {
     base: {
       datos: "Τα στοιχεία σας",
@@ -304,6 +314,17 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Forrás",
     },
   },
+  // Mongol (ADR 0002, D28): el botón es «Тооцоолох».
+  mn: {
+    base: {
+      datos: "Таны мэдээлэл",
+      resultado: "Үр дүн",
+      vacio: "Мэдээллээ оруулаад «Тооцоолох» товчийг дарж үр дүнгээ харна уу.",
+      sinResultado: "Энэ үр дүнг одоогоор харуулахгүй байна.",
+      avisos: { info: "Мэдэхэд хэрэгтэй", cautela: "Анхаарна уу", bloquea: "Үр дүнг яагаад харуулахгүй байна вэ" },
+      fuenteDelAviso: "Эх сурвалж",
+    },
+  },
   // Búlgaro (ADR 0002, D24): el botón es «Изчислете».
   bg: {
     base: {
@@ -313,6 +334,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       sinResultado: "В момента не показваме този резултат.",
       avisos: { info: "Добре е да знаете", cautela: "Обърнете внимание", bloquea: "Защо не показваме резултата" },
       fuenteDelAviso: "Източник",
+    },
+  },
+  ka: {
+    base: {
+      datos: "თქვენი მონაცემები",
+      resultado: "შედეგი",
+      vacio: "შეავსეთ მონაცემები და დააჭირეთ ღილაკს „გამოთვლა“: შედეგი აქ გამოჩნდება.",
+      sinResultado: "ამ შედეგს ჯერ არ ვაჩვენებთ.",
+      avisos: { info: "კარგია იცოდეთ", cautela: "ყურადღება", bloquea: "რატომ არ ვაჩვენებთ შედეგს" },
+      fuenteDelAviso: "წყარო",
     },
   },
   he: {
@@ -332,6 +363,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       vacio: "Unesite podatke i kliknite na „Izračunaj“. Rezultat će se pojaviti ovde.",
       sinResultado: "Ovaj rezultat za sada ne prikazujemo.",
       avisos: { info: "Dobro je da znate", cautela: "Pažnja", bloquea: "Zašto ne prikazujemo rezultat" },
+      fuenteDelAviso: "Izvor",
+    },
+  },
+  hr: {
+    base: {
+      datos: "Vaši podaci",
+      resultado: "Rezultat",
+      vacio: "Unesite podatke i kliknite na „Izračunaj”. Rezultat će se pojaviti ovdje.",
+      sinResultado: "Ovaj rezultat zasad ne prikazujemo.",
+      avisos: { info: "Dobro je znati", cautela: "Pažnja", bloquea: "Zašto ne prikazujemo rezultat" },
       fuenteDelAviso: "Izvor",
     },
   },

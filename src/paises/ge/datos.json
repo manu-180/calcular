@@ -1,0 +1,940 @@
+{
+  "mercado": "ge",
+  "datos": [
+    {
+      "id": "ge.sashemosavlo",
+      "nombre": "საშემოსავლო გადასახადის განაკვეთი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 81, ნაწილი 1 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.qira",
+      "nombre": "საცხოვრებელი ფართობის გაქირავების განაკვეთი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 81, ნაწილი 2 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.nameti",
+      "nombre": "ბინის ან ავტომობილის გაყიდვის ნამეტის განაკვეთი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 81, ნაწილი 3 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.binis-vada",
+      "nombre": "ბინის ფლობის ვადა გათავისუფლებისთვის",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 82, ნაწილი 1, „ვ.ა“ (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.avto-vada",
+      "nombre": "ავტომობილის ფლობის ვადა გათავისუფლებისთვის",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 82, ნაწილი 1, „ვ.ბ“ (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.dividendi",
+      "nombre": "დივიდენდის გადასახადი გადახდის წყაროსთან",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 130, ნაწილი 1 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.protsenti",
+      "nombre": "პროცენტის გადასახადი გადახდის წყაროსთან",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 131, ნაწილი 1 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "motivo": "საგადასახადო კოდექსის 131.5 მუხლით ლიცენზირებული ფინანსური ინსტიტუტის გადახდილი პროცენტი წყაროსთან არ იბეგრება, rs.ge-ს სახელმძღვანელო კი სხვა განაკვეთს ასახელებს: 5 %. წინააღმდეგობა გადაუწყვეტელია, matsne.gov.ge აქედან არ იხსნება."
+        }
+      ]
+    },
+    {
+      "id": "ge.mtsire",
+      "nombre": "მცირე ბიზნესის განაკვეთი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 90, ნაწილი 1 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.mtsire-gadacharbeba",
+      "nombre": "მცირე ბიზნესის განაკვეთი ზღვრის გადაჭარბებისას",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 90, ნაწილი 2 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.mtsire-zghvari",
+      "nombre": "მცირე ბიზნესის წლიური ზღვარი",
+      "tipo": "numero",
+      "unidad": "GEL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 88, ნაწილი 3; 90, ნაწილი 2 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.mtsire-zghvari-turizmi",
+      "nombre": "მცირე ბიზნესის ზღვარი ღვინისა და აგროტურიზმისთვის",
+      "tipo": "numero",
+      "unidad": "GEL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 700000,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 88, ნაწილი 3; 90, ნაწილი 2 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.mikro-zghvari",
+      "nombre": "მიკრო ბიზნესის წლიური ზღვარი",
+      "tipo": "numero",
+      "unidad": "GEL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 84, ნაწილი 1 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.dghg",
+      "nombre": "დღგ-ის განაკვეთი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 166 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.dghg-zghvari",
+      "nombre": "დღგ-ის სავალდებულო რეგისტრაციის ზღვარი",
+      "tipo": "numero",
+      "unidad": "GEL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 165, ნაწილი 1 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.mogeba",
+      "nombre": "მოგების გადასახადის განაკვეთი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 98, ნაწილი 1 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.mogeba-gamqopi",
+      "nombre": "განაწილებული მოგების გამყოფი",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.85,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 97, ნაწილი 10 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.mogeba-finansuri",
+      "nombre": "მოგების გადასახადი ბანკებისა და მსგავსი სუბიექტებისთვის",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 98, ნაწილი 4 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.qoneba-min",
+      "nombre": "ფიზიკური პირის ქონების გადასახადის ქვედა ზღვარი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.8,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 202, ნაწილი 5 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.qoneba-max",
+      "nombre": "ფიზიკური პირის ქონების გადასახადის ზედა ზღვარი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 202, ნაწილი 5 (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.qoneba-ojakhi",
+      "nombre": "ოჯახის შემოსავლის ზღვარი ქონების გადასახადისთვის",
+      "tipo": "numero",
+      "unidad": "GEL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "შემოსავლების სამსახური",
+            "titulo": "საქართველოს საგადასახადო კოდექსი, მუხლი 206, ნაწილი 1, „ა“ (კონსოლიდირებული ტექსტი)",
+            "url": "https://infohub.rs.ge/ka/workspace/document/800cbef0-32bf-4f06-94fe-8afd2bf144a0",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.pensia-dasaqmebuli",
+      "nombre": "დასაქმებულის საპენსიო შენატანი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "საპენსიო ფონდი",
+            "titulo": "კანონი „დაგროვებითი პენსიის შესახებ“, მუხლი 3, პუნქტი 6, „ბ“",
+            "url": "https://site-api.pensions.ge/uploads/docs/legislation/funded-pension-law-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.pensia-damsaqmebeli",
+      "nombre": "დამსაქმებლის საპენსიო შენატანი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "საპენსიო ფონდი",
+            "titulo": "კანონი „დაგროვებითი პენსიის შესახებ“, მუხლი 3, პუნქტი 6, „ა“",
+            "url": "https://site-api.pensions.ge/uploads/docs/legislation/funded-pension-law-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.pensia-sakhelmtsipo",
+      "nombre": "სახელმწიფოს შენატანი პირველ ზღვრამდე",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "საპენსიო ფონდი",
+            "titulo": "კანონი „დაგროვებითი პენსიის შესახებ“, მუხლი 3, პუნქტი 6, „ე.ა“",
+            "url": "https://site-api.pensions.ge/uploads/docs/legislation/funded-pension-law-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.pensia-sakhelmtsipo-2",
+      "nombre": "სახელმწიფოს შენატანი მეორე ზღვრამდე",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "საპენსიო ფონდი",
+            "titulo": "კანონი „დაგროვებითი პენსიის შესახებ“, მუხლი 3, პუნქტი 6, „ე.ბ“",
+            "url": "https://site-api.pensions.ge/uploads/docs/legislation/funded-pension-law-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.pensia-zghvari-1",
+      "nombre": "წლიური ხელფასის პირველი ზღვარი",
+      "tipo": "numero",
+      "unidad": "GEL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 24000,
+          "fuente": {
+            "organismo": "საპენსიო ფონდი",
+            "titulo": "კანონი „დაგროვებითი პენსიის შესახებ“, მუხლი 3, პუნქტი 6, „ე.ა“",
+            "url": "https://site-api.pensions.ge/uploads/docs/legislation/funded-pension-law-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.pensia-zghvari-2",
+      "nombre": "წლიური ხელფასის მეორე ზღვარი",
+      "tipo": "numero",
+      "unidad": "GEL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 60000,
+          "fuente": {
+            "organismo": "საპენსიო ფონდი",
+            "titulo": "კანონი „დაგროვებითი პენსიის შესახებ“, მუხლი 3, პუნქტი 6, „ე.ბ“, „ვ“",
+            "url": "https://site-api.pensions.ge/uploads/docs/legislation/funded-pension-law-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.kvira-saati",
+      "nombre": "ნორმირებული სამუშაო დრო კვირაში",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 24, პუნქტი 2",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.kvira-saati-spetsialuri",
+      "nombre": "სამუშაო დრო სპეციფიკური რეჟიმისას",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 48,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 24, პუნქტი 3",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.shvebuleba",
+      "nombre": "ანაზღაურებადი შვებულება წელიწადში",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 31, პუნქტი 1",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.shvebuleba-mdzime",
+      "nombre": "დამატებითი შვებულება მძიმე სამუშაოზე",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 31, პუნქტი 3",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.shvebuleba-ugasamrjelo",
+      "nombre": "ანაზღაურების გარეშე შვებულება წელიწადში",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 31, პუნქტი 2",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.kompensatsia-30",
+      "nombre": "კომპენსაცია 30 დღით ადრე გაფრთხილებისას",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 48, პუნქტი 1",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.kompensatsia-3",
+      "nombre": "კომპენსაცია 3 დღით ადრე გაფრთხილებისას",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 48, პუნქტი 2",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.gaprtkhileba-30",
+      "nombre": "გაფრთხილების ვადა, 30 დღიანი",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 48, პუნქტები 1 და 3",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.gaprtkhileba-3",
+      "nombre": "გაფრთხილების ვადა, 3 დღიანი",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 48, პუნქტი 2",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.angarishsworeba",
+      "nombre": "საბოლოო ანგარიშსწორების ვადა",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 44",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.dagvianeba",
+      "nombre": "დაყოვნებული ანაზღაურების დღიური პროცენტი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.07,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 41, პუნქტი 4",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.dekreti",
+      "nombre": "ორსულობისა და მშობიარობის შვებულება",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 126,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 37, პუნქტი 1",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.dekreti-gartuleba",
+      "nombre": "ორსულობისა და მშობიარობის შვებულება გართულებისას ან ტყუპისას",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 143,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 37, პუნქტი 1",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.bavshvis-movla-ananz",
+      "nombre": "ბავშვის მოვლის ანაზღაურებადი დღეები",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 57,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 37, პუნქტი 3",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.bavshvis-movla",
+      "nombre": "ბავშვის მოვლის შვებულება სულ",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 604,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 37, პუნქტი 3",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.bavshvis-movla-gartuleba",
+      "nombre": "ბავშვის მოვლის შვებულება გართულებისას ან ტყუპისას",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 587,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 37, პუნქტი 3",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.shromisuunaroba-zedized",
+      "nombre": "შეჩერება შრომისუუნარობისას, ზედიზედ",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 46, პუნქტი 2, „ი“",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.shromisuunaroba-6tve",
+      "nombre": "შეჩერება შრომისუუნარობისას, 6 თვეში სულ",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "საქართველოს ორგანული კანონი",
+            "titulo": "საქართველოს შრომის კოდექსი, მუხლი 46, პუნქტი 2, „ი“",
+            "url": "https://sla.gov.ge/Ge/Files/ViewFile/3236",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.mpr",
+      "nombre": "მონეტარული პოლიტიკის (რეფინანსირების) განაკვეთი",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-06",
+          "valor": 8.25,
+          "fuente": {
+            "organismo": "საქართველოს ეროვნული ბანკი",
+            "titulo": "მონეტარული პოლიტიკის კომიტეტის გადაწყვეტილებები",
+            "url": "https://nbg.gov.ge/en/monetary-policy/committee-decisions",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ge.dekretuli-dakhmareba",
+      "nombre": "დეკრეტული ფულადი დახმარება",
+      "tipo": "numero",
+      "unidad": "GEL",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 2000,
+          "motivo": "შრომის კოდექსის 39-ე მუხლი ოდენობას მთავრობის დადგენილებას ანდობს. matsne.gov.ge აქედან მიუწვდომელია (Access Denied) და დადგენილება ვერ წავიკითხეთ; თანხა მხოლოდ მინიშნებაა."
+        }
+      ]
+    },
+    {
+      "id": "ge.cpi-bazisi",
+      "nombre": "ფასების ინდექსის საბაზისო დონე (2010 წლის საშუალო)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "საქსტატი",
+            "titulo": "სამომხმარებლო ფასების ინდექსები, 2010 წლის საშუალო = 100",
+            "url": "https://www.geostat.ge/ka/modules/categories/26/samomkhmareblo-fasebis-indeksi-inflatsia",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    }
+  ]
+}

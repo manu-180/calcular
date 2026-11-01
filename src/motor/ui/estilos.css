@@ -131,6 +131,11 @@
      Windows, macOS, iOS y Android tiene griego completo, con Noto Sans de respaldo. Entero y no
      mezclado (Geist para las cifras y el sistema para las letras) para que los montos no cambien de
      fuente a mitad de la frase. text-transform: uppercase con lang="el" ya saca los tonos. */
+  /* Geist no trae georgiano: la fuente del sistema entera, como el griego. Sylfaen en Windows; macOS,
+     iOS y Android resuelven desde system-ui; Noto Sans Georgian de respaldo (ADR 0002, D26). */
+  .cy-cuerpo:lang(ka) {
+    font-family: system-ui, -apple-system, "Segoe UI", Sylfaen, "Noto Sans Georgian", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  }
   .cy-cuerpo:lang(el) {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
   }
@@ -2349,8 +2354,15 @@
 
 /* Fuera de @layer base a propósito: tiene que ganarle al tracking negativo de los títulos, que es
    de Geist y en CJK y tailandés y en hebreo amontona los caracteres (y los tonos apilados). */
-.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn), :lang(th), :lang(he)) :is(h1, h2, h3, h4) {
+.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn), :lang(th), :lang(he), :lang(ka)) :is(h1, h2, h3, h4) {
   letter-spacing: 0;
+}
+
+/* El georgiano de la interfaz no tiene mayúsculas: uppercase lo pasaría a mtavruli, que no se usa en
+   interfaz. Fuera de @layer e !important porque las etiquetas lo fijan con clases en varias hojas
+   (ADR 0002, D26). */
+:lang(ka) {
+  text-transform: none !important;
 }
 
 /* El tracking separa las letras árabes y rompe la escritura ligada: en árabe no hay letter-spacing en

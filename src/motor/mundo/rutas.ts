@@ -14,6 +14,7 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   ko: "segye-yeonbong",
   zh: "shijie-gongzi",
   bg: "zaplatata-po-sveta",
+  mn: "delkhiin-tsalin",
 
   pl: "wynagrodzenie-na-swiecie",
   sv: "lon-i-varlden",
@@ -35,6 +36,9 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   hu: "fizetes-a-vilagban",
   he: "sachar-baolam",
   sr: "plata-u-svetu",
+  sk: "mzda-vo-svete",
+  ka: "khelpasi-msoplioshi",
+  hr: "placa-u-svijetu",
 };
 
 export const RUTA_MUNDO_AR = "/sueldo-en-el-mundo";

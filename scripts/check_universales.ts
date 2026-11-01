@@ -149,6 +149,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   // Checo (ADR 0002, D19): koruna con «Kč» detrás y espacio de miles, un nombre largo que se declina
   // por partes («na Svatém Vincenci a Grenadinách») y uno plural con adjetivos delante («ve Spojených
   // arabských emirátech»).
+  // Eslovaco (ADR 0002, D25): euros con espacio de miles, un nombre largo que se declina por partes
+  // («na Svätom Vincente a Grenadínach») y uno plural con adjetivos delante.
+  sk: [
+    { mercado: "sk" as CodigoMercado, pais: "SK", nombrePais: "Slovensko", locale: "sk-SK", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Svätý Vincent a Grenadíny", locale: "sk-SK", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Spojené arabské emiráty", locale: "sk-SK", trato: "usted", moneda: "AED" as Moneda, escala: 4 },
+  ],
   cs: [
     { mercado: "cz" as CodigoMercado, pais: "CZ", nombrePais: "Česko", locale: "cs-CZ", trato: "usted", moneda: "CZK" as Moneda, escala: 23 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Svatý Vincenc a Grenadiny", locale: "cs-CZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
@@ -166,10 +173,26 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   // Húngaro (ADR 0002, D21): forintos sin decimales con «Ft» detrás y espacio de miles, un nombre largo
   // con artículo y sufijo de isla («a Saint Vincent és a Grenadine-szigeteken») y uno compuesto en
   // -ország («Németországban»).
+  // Mongol (ADR 0002, D28): tugrik con ₮ delante y coma de miles, un nombre largo que ya trae «Улс»
+  // («Бүгд Найрамдах Доминикан Улсад») y uno en plural («Соломоны арлуудад»).
+  mn: [
+    { mercado: "mn" as CodigoMercado, pais: "MN", nombrePais: "Монгол Улс", locale: "mn-MN", trato: "usted", moneda: "MNT" as Moneda, escala: 3400 },
+    { mercado: "do" as CodigoMercado, pais: "DO", nombrePais: "Бүгд Найрамдах Доминикан Улс", locale: "mn-MN", trato: "usted", moneda: "DOP" as Moneda, escala: 60 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент-Винсент ба Гренадин", locale: "mn-MN", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "sb" as CodigoMercado, pais: "SB", nombrePais: "Соломоны арлууд", locale: "mn-MN", trato: "usted", moneda: "SBD" as Moneda, escala: 8 },
+  ],
   bg: [
     { mercado: "bg" as CodigoMercado, pais: "BG", nombrePais: "България", locale: "bg-BG", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сейнт Винсънт и Гренадини", locale: "bg-BG", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Обединени арабски емирства", locale: "bg-BG", trato: "usted", moneda: "AED" as Moneda, escala: 4 },
+  ],
+  // Georgiano (ADR 0002, D26): lari con «₾» detrás, «სენტ-ვინსენტი და გრენადინები» por el nombre largo
+  // con «და» («სენტ-ვინსენტსა და გრენადინებში») y «ამერიკის შეერთებული შტატები» por el plural con
+  // adjetivo delante («ამერიკის შეერთებულ შტატებში»).
+  ka: [
+    { mercado: "ge" as CodigoMercado, pais: "GE", nombrePais: "საქართველო", locale: "ka-GE", trato: "usted", moneda: "GEL" as Moneda, escala: 2.7 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "სენტ-ვინსენტი და გრენადინები", locale: "ka-GE", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "ამერიკის შეერთებული შტატები", locale: "ka-GE", trato: "usted", moneda: "USD" as Moneda, escala: 1 },
   ],
   hu: [
     { mercado: "hu" as CodigoMercado, pais: "HU", nombrePais: "Magyarország", locale: "hu-HU", trato: "tu", moneda: "HUF" as Moneda, escala: 360 },
@@ -190,6 +213,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "me" as CodigoMercado, pais: "ME", nombrePais: "Crna Gora", locale: "sr-Latn-ME", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sent Vinsent i Grenadini", locale: "sr-Latn-RS", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Ujedinjeni Arapski Emirati", locale: "sr-Latn-RS", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Croata (ADR 0002, D27): euro detrás con punto de miles; un nombre largo que se declina por partes («na
+  // Svetom Vincentu i Grenadinima») y uno plural con adjetivos delante («u Ujedinjenim Arapskim Emiratima»).
+  hr: [
+    { mercado: "hr" as CodigoMercado, pais: "HR", nombrePais: "Hrvatska", locale: "hr-HR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sveti Vincent i Grenadini", locale: "hr-HR", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Ujedinjeni Arapski Emirati", locale: "hr-HR", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
   ],
 };
 

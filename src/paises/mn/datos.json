@@ -1,0 +1,1006 @@
+{
+  "mercado": "mn",
+  "datos": [
+    {
+      "id": "mn.khkhoat",
+      "nombre": "Хувь хүний орлогын албан татварын шатлал (жилийн орлого)",
+      "tipo": "escala",
+      "unidad": "MNT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 120000000,
+              "tasa": 10,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 120000000,
+              "hasta": 180000000,
+              "tasa": 15,
+              "cuotaFija": 12000000
+            },
+            {
+              "desde": 180000000,
+              "hasta": null,
+              "tasa": 20,
+              "cuotaFija": 21000000
+            }
+          ],
+          "fuente": {
+            "organismo": "Татварын ерөнхий газар",
+            "titulo": "ХХОАТ-ын тухай хуулийн зарим зүйл, заалтын хэрэгжилтийн үр дагаварт хийсэн үнэлгээ (2025), 21.1 ба 23.1 хэсгийн эх бичвэр",
+            "url": "https://mta.gov.mn/files/pdf/lhzoonk45qs//67b30afbbf86de42cc0553c7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "Хөнгөлөлтийн хүснэгтийг Татварын ерөнхий газрын цалингийн тооцоолуурын сонголттой тулгав: https://mta.gov.mn/tax-calculate/salarytax"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "motivo": "2026 оны 6 дугаар сард батлагдсан татварын багц хуулиар шатлал өөрчлөгдөж байна. Батлагдсан хуулийн эх бичвэр legalinfo.mn дээр байгаа ч энэ орчноос холбогдож чадсангүй; зөвхөн ikon.mn мэдээ уншсан."
+        }
+      ]
+    },
+    {
+      "id": "mn.khongololt",
+      "nombre": "Жилийн албан татварын хөнгөлөлт (орлогын хэмжээгээр)",
+      "tipo": "escala",
+      "unidad": "MNT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 6000000,
+              "tasa": 0,
+              "cuotaFija": 240000
+            },
+            {
+              "desde": 6000000,
+              "hasta": 12000000,
+              "tasa": 0,
+              "cuotaFija": 216000
+            },
+            {
+              "desde": 12000000,
+              "hasta": 18000000,
+              "tasa": 0,
+              "cuotaFija": 192000
+            },
+            {
+              "desde": 18000000,
+              "hasta": 24000000,
+              "tasa": 0,
+              "cuotaFija": 168000
+            },
+            {
+              "desde": 24000000,
+              "hasta": 30000000,
+              "tasa": 0,
+              "cuotaFija": 144000
+            },
+            {
+              "desde": 30000000,
+              "hasta": 36000000,
+              "tasa": 0,
+              "cuotaFija": 120000
+            },
+            {
+              "desde": 36000000,
+              "hasta": null,
+              "tasa": 0,
+              "cuotaFija": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "Татварын ерөнхий газар",
+            "titulo": "ХХОАТ-ын тухай хуулийн зарим зүйл, заалтын хэрэгжилтийн үр дагаварт хийсэн үнэлгээ (2025), 21.1 ба 23.1 хэсгийн эх бичвэр",
+            "url": "https://mta.gov.mn/files/pdf/lhzoonk45qs//67b30afbbf86de42cc0553c7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "Хөнгөлөлтийн хүснэгтийг Татварын ерөнхий газрын цалингийн тооцоолуурын сонголттой тулгав: https://mta.gov.mn/tax-calculate/salarytax"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "motivo": "Татварын багц хуулиар 2027 оноос өөрчлөгдөж болзошгүй; эх бичвэрийг уншиж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.hhdh-sar",
+      "nombre": "Хөдөлмөрийн хөлсний доод хэмжээ, сард",
+      "tipo": "numero",
+      "unidad": "MNT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-12-31",
+          "valor": 792000,
+          "fuente": {
+            "organismo": "Хөдөлмөр, нийгмийн түншлэлийн гурван талт үндэсний хороо",
+            "titulo": "2024 оны 10 дугаар сарын 7, дугаар 03 тогтоол",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2025/03/6.-HHDH_2025.04.01-nees.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": 1000000,
+          "motivo": "ЯАМ-ны mlsp.gov.mn/content/detail/4164 мэдээ PHP алдаа өгч, тогтоолын эх бичвэр олдоогүй. 1,000,000 төгрөг, 2027 оны 1 дүгээр сар гэдгийг ikon.mn мэдээнээс л уншсан."
+        }
+      ]
+    },
+    {
+      "id": "mn.hhdh-tsag",
+      "nombre": "Хөдөлмөрийн хөлсний доод хэмжээ, цагт",
+      "tipo": "numero",
+      "unidad": "MNT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-12-31",
+          "valor": 4715,
+          "fuente": {
+            "organismo": "Хөдөлмөр, нийгмийн түншлэлийн гурван талт үндэсний хороо",
+            "titulo": "2024 оны 10 дугаар сарын 7, дугаар 03 тогтоол",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2025/03/6.-HHDH_2025.04.01-nees.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": 5952.3,
+          "motivo": "Хайлтын товч хэсгээс л уншсан; тогтоолын эх бичвэр олдоогүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.ndsh-ajiltan",
+      "nombre": "Даатгуулагчийн нийгмийн даатгалын шимтгэл",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "tetgever": "Тэтгэврийн даатгал",
+        "tetgemj": "Тэтгэмжийн даатгал",
+        "ajilguidel": "Ажилгүйдлийн даатгал"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "tetgever": 8.5,
+            "tetgemj": 0.8,
+            "ajilguidel": 0.2
+          },
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын ерөнхий хууль, 18.1 ба 19.4 хэсэг (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%95%D0%A0%D3%A8%D0%9D%D0%A5%D0%98%D0%99-%D0%A5%D0%A3%D0%A3%D0%9B%D0%AC.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.ndsh-ajil-olgogch",
+      "nombre": "Ажил олгогчийн нийгмийн даатгалын шимтгэл (ҮОМШӨ-гүй)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "tetgever": "Тэтгэврийн даатгал",
+        "tetgemj": "Тэтгэмжийн даатгал",
+        "ajilguidel": "Ажилгүйдлийн даатгал"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "tetgever": 8.5,
+            "tetgemj": 1.0,
+            "ajilguidel": 0.5
+          },
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Ажил олгогчийн төлөх шимтгэлийн хувь хэмжээ буурлаа (2026.10.05): одоо мөрдөж байгаа ба шинэ хувь хэмжээний хүснэгт",
+            "url": "https://www.ndaatgal.mn/%D0%B0%D0%B6%D0%B8%D0%BB-%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%87%D0%B8%D0%B9%D0%BD-%D1%82%D3%A9%D0%BB%D3%A9%D1%85-%D1%88%D0%B8%D0%BC%D1%82%D0%B3%D1%8D%D0%BB%D0%B8%D0%B9%D0%BD-%D1%85%D1%83%D0%B2/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "tetgever": 8.5,
+            "tetgemj": 1.0,
+            "ajilguidel": 0.6
+          },
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын ерөнхий хууль, 18.1 ба 19.4 хэсэг (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%95%D0%A0%D3%A8%D0%9D%D0%A5%D0%98%D0%99-%D0%A5%D0%A3%D0%A3%D0%9B%D0%AC.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.uomsho",
+      "nombre": "Үйлдвэрлэлийн осол, мэргэжлээс шалтгаалсан өвчний даатгал",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1": "Эхний түвшин",
+        "2": "Хоёрдугаар түвшин",
+        "3": "Гуравдугаар түвшин"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "1": 0.5,
+            "2": 1.5,
+            "3": 2.5
+          },
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Ажил олгогчийн төлөх шимтгэлийн хувь хэмжээ буурлаа (2026.10.05): одоо мөрдөж байгаа ба шинэ хувь хэмжээний хүснэгт",
+            "url": "https://www.ndaatgal.mn/%D0%B0%D0%B6%D0%B8%D0%BB-%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%87%D0%B8%D0%B9%D0%BD-%D1%82%D3%A9%D0%BB%D3%A9%D1%85-%D1%88%D0%B8%D0%BC%D1%82%D0%B3%D1%8D%D0%BB%D0%B8%D0%B9%D0%BD-%D1%85%D1%83%D0%B2/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "1": 0.3,
+            "2": 1.2,
+            "3": 2.2
+          },
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын ерөнхий хууль, 18.1 ба 19.4 хэсэг (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%95%D0%A0%D3%A8%D0%9D%D0%A5%D0%98%D0%99-%D0%A5%D0%A3%D0%A3%D0%9B%D0%AC.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.emd-ajiltan",
+      "nombre": "Эрүүл мэндийн даатгалын шимтгэл, ажилтан",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Монгол Улсын Засгийн газар",
+            "titulo": "2026 оны 1 дүгээр сарын 7, дугаар 01 тогтоол: эрүүл мэндийн даатгалын шимтгэлийн 2026 оны хувь хэмжээ",
+            "url": "https://emd.gov.mn/storage/legals/March2026/ebyRESlE3FYifbLnCd0t.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "motivo": "Хувь хэмжээг Засгийн газар жил бүр тогтоодог; 2027 оны тогтоол хараахан гараагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.emd-ajil-olgogch",
+      "nombre": "Эрүүл мэндийн даатгалын шимтгэл, ажил олгогч",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Монгол Улсын Засгийн газар",
+            "titulo": "2026 оны 1 дүгээр сарын 7, дугаар 01 тогтоол: эрүүл мэндийн даатгалын шимтгэлийн 2026 оны хувь хэмжээ",
+            "url": "https://emd.gov.mn/storage/legals/March2026/ebyRESlE3FYifbLnCd0t.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "motivo": "Хувь хэмжээг Засгийн газар жил бүр тогтоодог; 2027 оны тогтоол хараахан гараагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.ndsh-dahin",
+      "nombre": "Шимтгэл ногдох сарын орлогын дээд хэмжээ (доод хэмжээний дахин тоо)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2026-12-31",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын ерөнхий хууль, 19.4 хэсэг (2026 оны өөрчлөлтөөс өмнөх найруулга)",
+            "url": "https://bayangol.ndaatgal.mn/wp-content/uploads/2025/06/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%95%D0%A0%D3%A8%D0%9D%D0%A5%D0%98%D0%99-%D0%A5%D0%A3%D0%A3%D0%9B%D0%AC-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын ерөнхий хууль, 18.1 ба 19.4 хэсэг (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%95%D0%A0%D3%A8%D0%9D%D0%A5%D0%98%D0%99-%D0%A5%D0%A3%D0%A3%D0%9B%D0%AC.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.ovchnii-khuvi",
+      "nombre": "Хөдөлмөрийн чадвар түр алдсаны тэтгэмжийн хувь",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "s3": "3-59 сар",
+        "s60": "60-119 сар",
+        "s120": "120-179 сар",
+        "s180": "180 ба түүнээс дээш сар"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "s3": 50,
+            "s60": 55,
+            "s120": 60,
+            "s180": 75
+          },
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэмжийн тухай хууль (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%9C%D0%96%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.ovchnii-ajil-olgogch-odor",
+      "nombre": "Тэтгэмжийг ажил олгогч олгох эхний ажлын өдөр",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэмжийн тухай хууль (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%9C%D0%96%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.ovchnii-deed-odor",
+      "nombre": "Нэг удаагийн дээд хугацаа, ажлын өдрөөр",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 66,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэмжийн тухай хууль (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%9C%D0%96%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.ovchnii-jiliin-odor",
+      "nombre": "Хуанлийн жилд олгох дээд хугацаа, ажлын өдрөөр",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 132,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэмжийн тухай хууль (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%9C%D0%96%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.tetgemj-huvaagch",
+      "nombre": "Нэг өдрийн дундаж цалин тооцох хуваагч",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэмжийн тухай хууль (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%9C%D0%96%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.jiremsnii-khuvi",
+      "nombre": "Жирэмсний болон амаржсаны тэтгэмжийн хувь",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэмжийн тухай хууль (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%9C%D0%96%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.jiremsnii-khonog",
+      "nombre": "Жирэмсний болон амаржсаны амралт, хоног",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 120,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэмжийн тухай хууль (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%9C%D0%96%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.jiremsnii-ikher-khonog",
+      "nombre": "Ихэр хүүхэд төрүүлсэн үеийн хоног",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 140,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэмжийн тухай хууль (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%9C%D0%96%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.jiremsnii-shimtgel-sar",
+      "nombre": "Шаардлагатай шимтгэл төлсөн нийт сар",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэмжийн тухай хууль (2026 оны 7 дугаар сарын өөрчлөлттэй)",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%9C%D0%96%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.eeljiin-undsen",
+      "nombre": "Ээлжийн үндсэн амралт, ажлын өдөр",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.eeljiin-buurungui",
+      "nombre": "Хөгжлийн бэрхшээлтэй, 18 насанд хүрээгүй ажилтны үндсэн амралт",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.eeljiin-nemelt-kheviin",
+      "nombre": "Нэмэгдэл амралт, хөдөлмөрийн хэвийн нөхцөл",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "j6": "6-10 дахь жил",
+        "j11": "11-15 дахь жил",
+        "j16": "16-20 дахь жил",
+        "j21": "21-25 дахь жил",
+        "j26": "26-31 дэх жил",
+        "j32": "32 дахь жилээс"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "j6": 3,
+            "j11": 5,
+            "j16": 7,
+            "j21": 9,
+            "j26": 11,
+            "j32": 14
+          },
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.eeljiin-nemelt-kheviin-bus",
+      "nombre": "Нэмэгдэл амралт, хөдөлмөрийн хэвийн бус нөхцөл",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "j6": "6-10 дахь жил",
+        "j11": "11-15 дахь жил",
+        "j16": "16-20 дахь жил",
+        "j21": "21-25 дахь жил",
+        "j26": "26-31 дэх жил",
+        "j32": "32 дахь жилээс"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "j6": 5,
+            "j11": 7,
+            "j16": 9,
+            "j21": 12,
+            "j26": 15,
+            "j32": 18
+          },
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.eeljiin-mongoor-koef",
+      "nombre": "Амралтаа эдэлж чадаагүй үеийн коэффициент",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.iluu-tsag-koef",
+      "nombre": "Илүү цагийн нэмэгдэл хөлсний доод коэффициент",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.amralt-odor-koef",
+      "nombre": "Долоо хоногийн амралтын өдрийн коэффициент",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.bayar-koef",
+      "nombre": "Нийтээр амрах баярын өдрийн коэффициент",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.shono-koef",
+      "nombre": "Шөнийн цагийн коэффициент",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 1.2,
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.doloo-khonog-tsag",
+      "nombre": "Долоо хоногийн ердийн ажлын цаг",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.tsutslalt-sar",
+      "nombre": "Цуцалсны тэтгэмжийн доод хэмжээ, сарын үндсэн цалингаар",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "j05": "6 сараас 2 жил хүртэл",
+        "j2": "2-5 жил",
+        "j5": "5-10 жил",
+        "j10": "10 ба түүнээс дээш жил"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "j05": 1,
+            "j2": 2,
+            "j5": 3,
+            "j10": 4
+          },
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.medegdel-khonog",
+      "nombre": "Цуцлах мэдэгдлийн хугацаа, хоног",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Монгол Улсын Их Хурал",
+            "titulo": "Хөдөлмөрийн тухай хууль (шинэчилсэн найруулга, 2021 оны 7 дугаар сарын 2)",
+            "url": "https://nczd.gov.mn/Legal/hudulmur_huuli_2021.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "2021 оны батлагдсан эх бичвэр. legalinfo.mn энэ орчноос нээгдэхгүй тул дараагийн нэмэлт, өөрчлөлтийг тулгаж чадаагүй; 109.2 хэсгийн томьёоллыг ЯАМ-ны тайлбараар тулгав: https://mlsp.gov.mn/content/detail/3116"
+          },
+          "motivo": "Хөдөлмөрийн тухай хуулийн зөвхөн 2021 оны анхны эх бичвэрийг уншсан. Дараагийн нэмэлт, өөрчлөлтийг legalinfo.mn энэ орчноос нээгдэхгүй тул тулгаж чадаагүй."
+        }
+      ]
+    },
+    {
+      "id": "mn.tetgever-suuri",
+      "nombre": "Бүрэн тэтгэврийн суурь хувь",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэврийн тухай хууль, 7.1 хэсэг",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%92%D0%A0%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.tetgever-nemelt",
+      "nombre": "241 дэх сараас хойш сар тутмын нэмэгдэл хувь",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.125,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэврийн тухай хууль, 7.1 хэсэг",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%92%D0%A0%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.tetgever-khuvi-tentsuulekh",
+      "nombre": "Хувь тэнцүүлэн тогтоох тэтгэврийн сарын хувь",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 0.1875,
+          "fuente": {
+            "organismo": "Нийгмийн даатгалын ерөнхий газар",
+            "titulo": "Нийгмийн даатгалын сангаас олгох тэтгэврийн тухай хууль, 7.1 хэсэг",
+            "url": "https://www.ndaatgal.mn/wp-content/uploads/2026/08/%D0%9D%D0%98%D0%99%D0%93%D0%9C%D0%98%D0%99%D0%9D-%D0%94%D0%90%D0%90%D0%A2%D0%93%D0%90%D0%9B%D0%AB%D0%9D-%D0%A1%D0%90%D0%9D%D0%93%D0%90%D0%90%D0%A1-%D0%9E%D0%9B%D0%93%D0%9E%D0%A5-%D0%A2%D0%AD%D0%A2%D0%93%D0%AD%D0%92%D0%A0%D0%98%D0%99%D0%9D-%D0%A2%D0%A3%D0%A5%D0%90%D0%99.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.bodlogyn-khuu",
+      "nombre": "Монголбанкны бодлогын хүү",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2026-12-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-17",
+          "valor": 12.5,
+          "fuente": {
+            "organismo": "Монголбанк",
+            "titulo": "Монгол Улсын Төв Банкны нүүр хуудас: бодлогын хүү, шинэчлэгдсэн 2026-09-17",
+            "url": "https://www.mongolbank.mn/mn/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mn.noat",
+      "nombre": "Нэмэгдсэн өртгийн албан татварын хувь",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2016-01-01",
+          "valor": 10,
+          "motivo": "НӨАТ-ын тухай хуулийн 11.1 хэсгийг legalinfo.mn (холбогдож чадсангүй), Сангийн яам mof.gov.mn (холболт татгалзсан) дээрээс уншиж чадсангүй. Зөвхөн хайлтын товч хэсэг, ТЕГ-ын түүхэн дурдлага уншсан."
+        }
+      ]
+    },
+    {
+      "id": "mn.ul-khodlokh-khuvi-dood",
+      "nombre": "Үл хөдлөх хөрөнгийн албан татварын доод хувь",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2021-01-01",
+          "valor": 0.6,
+          "motivo": "Хуулийн 6.1 хэсгийг зөвхөн хайлтын товч хэсгээс уншсан (legalinfo.mn/mn/detail/39 нээгдэхгүй). Хувийг аймаг, нийслэлийн хурал тогтоодог."
+        }
+      ]
+    },
+    {
+      "id": "mn.ul-khodlokh-khuvi-deed",
+      "nombre": "Үл хөдлөх хөрөнгийн албан татварын дээд хувь",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2021-01-01",
+          "valor": 2,
+          "motivo": "Хуулийн 6.1 хэсгийг зөвхөн хайлтын товч хэсгээс уншсан (legalinfo.mn/mn/detail/39 нээгдэхгүй)."
+        }
+      ]
+    }
+  ]
+}

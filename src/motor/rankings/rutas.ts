@@ -16,6 +16,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   ko: "gukgabyeol-sunwi",
   zh: "guojia-paiming",
   bg: "klasatsia-na-darzhavite",
+  mn: "ulsuudyn-jagsaalt",
 
   pl: "ranking-krajow",
   sv: "landsrankning",
@@ -37,6 +38,9 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   hu: "orszagok-rangsora",
   he: "dirug-medinot",
   sr: "rang-lista-zemalja",
+  sk: "rebricek-krajin",
+  ka: "kveqnebis-reitingi",
+  hr: "ljestvica-zemalja",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -57,6 +61,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   zh: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   // bg con la transliteración oficial búlgara (Закон за транслитерацията; ADR 0002, D24).
   bg: { rinde: "pokupatelna-sila-na-zaplatata", libertad: "den-na-danachnata-svoboda", aumento: "kolko-ostava-ot-uvelichenieto" },
+  // mn en ASCII: х = kh, ц = ts, ө = o, ү = u, ж = j, ы = y (ADR 0002, D28).
+  mn: { rinde: "tsalingiin-khudaldan-avakh-chadvar", libertad: "tatvaraas-choloot-odor", aumento: "nemegdlees-khed-uldekh" },
 
   pl: { rinde: "gdzie-pensja-daje-najwiecej", libertad: "dzien-wolnosci-podatkowej", aumento: "ile-zostaje-z-podwyzki" },
   sv: { rinde: "dar-lonen-racker-langst", libertad: "skattefrihetsdagen", aumento: "vad-som-blir-kvar-av-en-loneokning" },
@@ -86,6 +92,11 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   he: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   // sr en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D23).
   sr: { rinde: "gde-plata-vredi-najvise", libertad: "dan-poreske-slobode", aumento: "koliko-ostaje-od-povisice" },
+  // sk en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D25).
+  sk: { rinde: "kde-mzda-vystaci-najdalej", libertad: "den-danovej-slobody", aumento: "kolko-zostane-zo-zvysenia-mzdy" },
+  ka: { rinde: "khelpasis-msqidveloba", libertad: "sagadasakhado-tavisuplebis-dghe", aumento: "ramdeni-rcheba-momatebidan" },
+  // hr en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D27).
+  hr: { rinde: "gdje-placa-vrijedi-najvise", libertad: "dan-porezne-slobode", aumento: "koliko-ostaje-od-povisice" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

@@ -1,3 +1,4 @@
+import { mayusculasDe, transformeOg } from "@/motor/i18n/escritura";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
@@ -27,7 +28,9 @@ const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=6
 // el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
 // Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
 // bg va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D24).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", bg: "Noto Sans" };
+// Tampoco georgiano: la edición ka pide Noto Sans Georgian (ADR 0002, D26).
+// mn también: Geist no trae ө ni ү (ADR 0002, D28).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", bg: "Noto Sans", ka: "Noto Sans Georgian", mn: "Noto Sans" };
 
 async function fuente(familia: string, peso: number, texto: string): Promise<ArrayBuffer | null> {
   try {
@@ -72,7 +75,7 @@ export function crearOgCalendario(idioma: Idioma) {
     const cjk = FUENTE_CJK[m.idioma];
     const familiaCjk = cjk && m.idioma === "zh" && /^zh-(CN|SG)/i.test(m.locale) ? "Noto Sans SC" : cjk;
     // En mayúsculas con el locale (en griego, sin tonos), no con el textTransform de Satori.
-    const proxima = v.t.og.proxima.toLocaleUpperCase(m.locale);
+    const proxima = mayusculasDe(v.t.og.proxima, m.locale);
     const texto = [titulo, v.t.ceja(v.anios), proxima, e.dia, e.mesCorto, resumen, e.cambio ?? "", mas > 0 ? v.t.og.mas(mas) : "", "calcularya.com 0123456789…"].join(" ");
     const unicos = [...new Set(texto)].join("");
     const pedidas = await Promise.all([fuente("Geist", 400, unicos), fuente("Geist", 700, unicos), ...(familiaCjk ? [fuente(familiaCjk, 400, unicos), fuente(familiaCjk, 700, unicos)] : [])]);
@@ -114,7 +117,7 @@ export function crearOgCalendario(idioma: Idioma) {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: 430, padding: 36, borderRadius: 32, backgroundColor: "rgba(244,240,230,0.06)", border: "1px solid rgba(244,240,230,0.14)" }}>
-            <div style={{ display: "flex", fontSize: 22, color: SUAVE, letterSpacing: 2, textTransform: "uppercase" }}>
+            <div style={{ display: "flex", fontSize: 22, color: SUAVE, letterSpacing: 2, textTransform: transformeOg(m.locale) }}>
               <TextoOg texto={proxima} idioma={m.idioma} />
             </div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginTop: 10 }}>

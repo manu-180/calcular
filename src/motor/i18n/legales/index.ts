@@ -5,6 +5,7 @@ import { bn } from "./bn";
 import { cs } from "./cs";
 import { he } from "./he";
 import { bg } from "./bg";
+import { mn } from "./mn";
 import { de } from "./de";
 import { el } from "./el";
 import { en } from "./en";
@@ -14,6 +15,7 @@ import { fr } from "./fr";
 import { id } from "./id";
 import { it } from "./it";
 import { ja } from "./ja";
+import { ka } from "./ka";
 import { ko } from "./ko";
 import { nl } from "./nl";
 import { sv } from "./sv";
@@ -27,14 +29,16 @@ import { th } from "./th";
 import { uk } from "./uk";
 import { uz } from "./uz";
 import { ru } from "./ru";
+import { sk } from "./sk";
 import { ro } from "./ro";
 import { sr } from "./sr";
+import { hr } from "./hr";
 import type { DatosLegales, DiccionarioLegal, PaginasLegales } from "./tipos";
 import { zh } from "./zh";
 
 export type { BloqueLegal, DatosLegales, PaginaLegal, PaginasLegales } from "./tipos";
 
-export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
 
 export function resolverLegales(idioma: Idioma, trato: Trato, datos: DatosLegales, locale?: string): PaginasLegales {
   const dic = DICCIONARIOS_LEGALES[idioma](datos);

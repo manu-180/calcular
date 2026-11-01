@@ -1380,6 +1380,172 @@ Serbia en hreflang. `check_universales` prueba `sr-Latn-RS` con RSD, `sr-Latn-ME
 que se declina por partes («na Sent Vinsentu i Grenadinima») y uno plural con adjetivos («u Ujedinjenim
 Arapskim Emiratima»); `check_motor` prueba formato, plurales, parseo y gramática.
 
+### D25. Eslovaco (2026-10-31)
+
+D23 (sr) y D24 (bg) los usan ramas sin mergear (`claude/mundo-motor-sr`, `claude/mundo-motor-bg`); esta
+entrada toma el D25 para no chocar al mergear. Por la regla de `.claude/rules/build-vercel.md`, los slugs
+entran en `src/motor/secciones.ts` y no hay carpetas por idioma.
+
+`IDIOMAS` suma `sk`. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados,
+redes, «Tu sueldo en el mundo» (`mzda-vo-svete`), rankings (`rebricek-krajin`), horas de trabajo
+(`kolko-hodin-prace`), calendario (`vyplatny-kalendar`), sueldos reales (`skutocne-mzdy`), el diccionario
+de venta completo y las 41 universales están en eslovaco. El checo fue modelo de estructura; el texto se
+escribió en eslovaco, no se adaptó letra por letra.
+
+**Trato.** Un solo registro, el de Finančná správa, Slovenská sporiteľňa y Tatra banka: vykanie con «vy»
+en minúscula e imperativo cortés («zadajte», «vyberte», «vypočítajte»), nunca tykanie. Los botones van en
+infinitivo («Vypočítať», «Skopírovať odkaz»), como en esos sitios. Los mercados van con `trato: "usted"` y
+los diccionarios escriben solo `base`. Se evitan los participios con género sobre la persona. Vocabulario:
+výpočet čistej mzdy, hrubá mzda, daň z príjmov, odvody, sociálne a zdravotné poistenie, DPH, hypotéka,
+hypotekárna kalkulačka, úrok, RPMN, istina, splátka, fixácia. «Krajina» es el país. Las universales quedan
+neutrales de país (nada de Finančná správa, NBS ni SZČO en el texto visible; el sitio nombra SZČO solo
+en la categoría de negocio, donde el checo nombra OSVČ).
+
+**Plurales.** `Intl.PluralRules("sk")` tiene las categorías del checo: one (solo 1), few (2 a 4), other (0
+y 5 en adelante) y many (fracciones, en genitivo singular). `formaSk` y `pluralSk(n, uno, pocos, muchos,
+fracción?)` en `plural.ts`; unidades con `pocos` y `muchos` («1 rok», «2 roky», «5 rokov», «1,5 roka»; «1
+deň», «2 dni», «7 dní», «0,5 dňa»).
+
+**Gramática del país.** `GRAMATICA.sk` y `padySk` declinan por regla los ~250 nombres de Intl en sk, con
+reglas propias y no las del checo: el locativo de la -a dura no alterna consonante («na Jamajke», «v
+Kanade»); -sko y -ko dan -u («na Slovensku», «v Česku») y el resto de -o da -e («v Kosove», «v Spojenom
+kráľovstve»); -ia da -e/-i/-u («v Kolumbii»); -ea da -y/-i/-u («v Južnej Kórei»); -ua da -e en el locativo («v
+Nikarague»); los plurales femeninos siguen la ley rítmica («na Bahamách», «na Filipínach») y los masculinos
+van en -ov/-och («v Spojených štátoch»). Los adjetivos concuerdan («Dominikánskej republiky», «pre Českú
+republiku»). La preposición es «vo» ante v, f y «šv» («vo Francúzsku», «vo Švédsku»), «na» para Eslovaquia,
+Ucrania y las islas, «v» para lo demás; el destino es «pre» + acusativo. La tabla lleva los irregulares
+(Egypt, Izrael, Niger, Cyprus, Maurícius, Brunej, Burkina Faso, Papua-Nová Guinea, Pobrežie Slonoviny, los
+«Svätý...»). Lo que termina en -i, -u, -e o vocal + o (Čile, Peru, Haiti, Macao) no se declina.
+
+**Formato.** Intl de sk-SK: miles con espacio (U+00A0), decimal con coma, € detrás («1 234 567,50 €») y
+porcentaje con espacio («23 %»). Fechas «24. októbra 2026». `parsearNumero` no cambia (casos nuevos en
+`check_motor`). `inferir.ts` reconoce «mesačný» y «mesiac»; «ročný» entra por el prefijo «rocn» que ya
+estaba. Geist con `latin-ext` ya cubre ľ, ĺ, ŕ, ô y ä.
+
+**Slugs.** ASCII en kebab-case sin diacríticos, sobre la frase que busca la gente: `kalkulacka-uveru`,
+`kalkulacka-dph`, `hypotekarna-kalkulacka`, `vypocet-percent`, `vypocet-zlavy`, `zlozene-urocenie`,
+`hodinova-mzda`, `kalkulacka-bmi`, `termin-porodu` y las demás. Rankings: `kde-mzda-vystaci-najdalej`,
+`den-danovej-slobody`, `kolko-zostane-zo-zvysenia-mzdy`.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`): sin exclamaciones, rayas ni guion como pausa; se atrapa el
+tykanie (pronombres, imperativos y presentes de segunda del singular) y la «Vy» con mayúscula a mitad de
+oración; las comillas que no son „ “; las letras propias del checo (ř, ě, ů) y las palabras que delatan un
+texto checo adaptado (nebo, když, který, jsou, jste, kolik, pokud, sazba, výsledek, «pro», «co»...).
+
+**Prueba.** `zz-sk` (Zetalandia, locale `sk-001`, kraje Severný y Južný) es una edición interna.
+`check_universales` prueba sk-SK con EUR, «Svätý Vincent a Grenadíny» por el nombre largo que se declina por
+partes y «Spojené arabské emiráty» por el plural con adjetivos.
+
+### D26. Georgiano (2026-11-01)
+
+D23 (sr), D24 (bg) y D25 (sk) los usan ramas sin mergear; esta entrada toma el D26 para no chocar.
+
+`IDIOMAS` suma `ka`, para Georgia. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`khelpasi-msoplioshi`), rankings (`kveqnebis-reitingi`), horas de trabajo
+(`ramdeni-saatis-mushaoba`), calendario (`khelpasis-kalendari`), sueldos reales (`realuri-khelpasebi`), el
+diccionario de venta y las 41 universales están en georgiano. Los slugs de sección van en `SECCIONES`, sin carpetas.
+
+**Trato.** Un solo registro, el de rs.ge, TBC y Bank of Georgia: «თქვენ» con formas corteses («შეიყვანეთ»,
+«აირჩიეთ», «გამოთვალეთ», «გაქვთ»), nunca la segunda del singular. Los botones van como sustantivo verbal
+(«გამოთვლა», «კოპირება»). Mercados con `trato: "usted"`; los diccionarios escriben solo `base`. La herramienta es
+«კალკულატორი». Vocabulario real: ხელფასის კალკულატორი, საშემოსავლო გადასახადი, დღგ, იპოთეკური სესხი, პროცენტი,
+საპროცენტო განაკვეთი, საპენსიო. Las universales quedan neutrales de país. «ეფექტური საპროცენტო განაკვეთი» es el
+costo total de crédito en hipoteca, préstamo y tarjeta, como lo publican los bancos; en `tasa-efectiva`, donde el
+término es el matemático, la FAQ aclara la diferencia.
+
+**Sin mayúsculas.** El mkhedruli no tiene caja, pero JavaScript y CSS suben las letras a mtavruli (U+1C90 a U+1CBF:
+`"ა".toUpperCase()` da «Ა»), que no se usa en interfaz y no entra en la fuente pedida por subconjunto. Por eso:
+`:lang(ka) { text-transform: none !important }` fuera de capas; `mayusculaInicial` y las mayúsculas iniciales que
+llegan a páginas intl dejan la letra georgiana igual; `mayusculasDe` y `transformeOg` (`i18n/escritura.ts`) dejan
+neutras las cejas de las OG, donde Satori aplicaría `textTransform` sin saber el idioma. `reglas_idioma` rechaza el
+mtavruli y las escrituras antiguas.
+
+**Sin plural detrás de un número.** «3 დღე», «1,5 წელი», «41 ქვეყანა». `Intl.PluralRules("ka")` tiene one y other,
+pero las formas de las unidades son iguales y los diccionarios escriben `${n} ქვეყანა` sin elegir. `reglas_idioma`
+atrapa los plurales frecuentes detrás de una cifra.
+
+**Gramática del país.** Sin artículo ni género; el caso es un sufijo. `casosKa(p)` da `lugar` (dativo + «ში») y
+`genitivo` («ის» o «ს»); `GRAMATICA.ka`: `nombre` = nominativo, `en` = lugar, `de` = genitivo, `para` = genitivo +
+«თვის» («საქართველოსთვის»). La «ი» del nominativo se cae («საფრანგეთში», «საფრანგეთის»); la «ა» queda en el lugar y
+se cae en el genitivo («კანადაში», «კანადის»), salvo «ოა» («სამოას»); «ო», «უ», «ე» quedan («საქართველოს», «ჩილეს»),
+salvo «ეგვიპტის». La «ი» de raíz no se cae: tabla (მალი, ფიჯი, ჰაიტი, ჯიბუტი...) y regla para vocal + «ი» («ურუგვაიში»).
+El adjetivo delante pierde la «ი» solo en el lugar («ახალ ზელანდიაში», «ახალი ზელანდიის»). «X და Y» lleva «სა» en el
+primero («ბოსნიასა და ჰერცეგოვინაში», «ტრინიდადისა და ტობაგოს»). Los nombres de Intl con agregado van por su forma
+corta (tabla `KA_CORTOS`). Un nombre latino lleva guion («Zetaland-ში»), como «Google-ის». Revisado leyendo
+las formas de los ~250 nombres de Intl en ka.
+
+**Ningún sufijo pegado a cifras ni marcadores.** Las cifras, fechas y `{marcadores}` van tras dos puntos, entre
+paréntesis o con una palabra delante («თარიღი: {fecha}», «ადგილი 27»). Una cifra pasada a `GRAMATICA.ka` queda sin
+sufijo. Los `{pais}` del diccionario de venta van en nominativo y aislados. `reglas_idioma` rechaza el sufijo pegado;
+la excepción tolerada es el nombre latino fijo con guion y la unidad abreviada («100 კმ-ზე»).
+
+**Formato.** Intl de ka-GE: espacio de miles (U+00A0) desde cinco cifras («1234,5», «12 345,5»), coma decimal, lari
+con `₾` detrás («1 234 567,00 ₾»), porcentaje pegado («18%»), fecha larga «24 ოქტომბერი, 2026» en nominativo (por eso
+se introduce con dos puntos). `parsearNumero` no cambia. `inferir.ts` reconoce «წლიური», «ყოველწლიური», «თვიური»,
+«ყოველთვიური». Comillas „ “ (`reglas_idioma` rechaza «», ” y las rectas pegadas al texto).
+
+**Fuente.** Geist no trae georgiano. En la web, `:lang(ka)` usa la fuente del sistema entera (system-ui, Segoe UI,
+Sylfaen, Noto Sans Georgian...), para que las cifras no cambien de fuente en la frase. En las OG, Noto Sans Georgian de
+respaldo detrás de Geist. El buscador cuenta U+10A0 a U+10FF y U+1C90 a U+1CBF como letras.
+
+**Ancho SEO.** Medido con GDI a 20 px en Sylfaen, Segoe UI y Arial: una letra georgiana ocupa 1,4 latinas (11,5 a 12,8
+px contra 8,3 a 9,1). `anchoVisual` la cuenta así: 60 de ancho son unas 42 letras y 160 unas 114. Es una medición de
+escritorio, no del resultado real de Google.
+
+**Slugs.** Transliteración nacional de 2002 en ASCII y kebab-case (ყ→q, ღ→gh, ხ→kh, შ→sh, ჩ/ჭ→ch, ც/წ→ts, ძ→dz, ჟ→zh,
+ჯ→j; თ/ტ→t, კ/ქ→k, პ/ფ→p), sobre la frase que se busca: se lee, y el georgiano en la URL quedaría en porcentajes. No se
+usó el inglés del catálogo porque ningún slug quedó ilegible. Universales: `seskhis-kalkulatori`,
+`ipotekuri-seskhis-kalkulatori`, `dghg-kalkulatori`, `protsentis-kalkulatori`, `rtuli-protsenti`, `martivi-protsenti`,
+`epekturi-saprotsento-ganakveti`, `skheulis-masis-indeksi` y demás. `khelpasis-kalkulatori` queda libre para la
+calculadora local de sueldo neto de Georgia. Rankings: `khelpasis-msqidveloba`, `sagadasakhado-tavisuplebis-dghe`,
+`ramdeni-rcheba-momatebidan`.
+
+**Prueba.** `zz-ka` (ზეტალანდი, locale `ka-001`) es una edición interna, con el slug `nakhevartsliuri-premia`.
+`check_universales` prueba ka-GE con GEL, «სენტ-ვინსენტი და გრენადინები» y «ამერიკის შეერთებული შტატები». `check_motor`
+prueba parseo, unidades, lari, fecha, ancho, mayúscula neutra y casos del país. Los textos no tuvieron revisión de un
+hablante nativo: queda pendiente antes de publicar Georgia.
+
+### D27. Croata, para Croacia (2026-11-01)
+
+`IDIOMAS` suma `hr`. Motor, sitio, inicio, novedades, legales, errores, compartir (también el panel con
+imagen), embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»),
+rankings, «Sueldos reales», afiliados, el diccionario de venta y las 41 universales están en croata. El
+modelo es el serbio latino (D23, en otra rama): misma estructura, texto escrito de nuevo.
+
+**Lo que devuelve Intl (Node).** `hr-HR`: `1.234.567,50 €` y `1.234,50 USD`; `1. studenoga 2026.` (el mes ya
+viene en genitivo); PluralRules one/few/other. Croacia usa euro desde 2023. El parser no necesitó nada propio.
+
+**Registro.** Un solo registro, el de los bancos y los servicios del país (Porezna uprava y ePorezna, PBZ,
+Erste): «vi» en minúscula con imperativo de 2.ª del plural («unesite», «izračunajte», «odaberite»). Los
+mercados van con `trato: "usted"`. Los botones van en la forma corta («Izračunaj», «Podijeli»). Nada de «ti»
+ni del «Vi» con mayúscula.
+
+**Variante y vocabulario.** Ijekavski («mjesec», «cijena», «vrijeme») y vocabulario croata («plaća»,
+«tjedan», «tisuća», «postotak», «tečaj», «tvrtka», «obitelj», «poveznica», «preglednik», «računalo»). Sintaxis
+croata: infinitivo («možete unijeti», no «možete da unesete»), «je li» y no «da li», «s» y no «sa» salvo
+delante de s, š, z, ž o «mnom». `reglas_idioma` atrapa las formas ekavskas, los serbismos comunes, esa
+sintaxis y el tuteo. «košta» se queda en las horas de trabajo porque es lo que la gente busca.
+
+**Plurales y gramática.** Tres categorías: «1 godina», «2 godine», «5 godina», «21 godina», «1,5 godina»
+(`formaHr`, `pluralHr`; en `unidades.ts`, uno, pocos y otros). El nombre del país se declina: `GRAMATICA.hr` da
+genitivo («Hrvatske»), lugar con «u» o «na» («u Hrvatskoj», «na Cipru», «na Filipinima») y «za» con acusativo
+(«za Hrvatsku»), con reglas por terminación, adjetivos que concuerdan y una tabla de irregulares.
+
+**Comillas.** „ ” (abre abajo, cierra arriba, U+201E y U+201D). Ni «», ni "", ni “.
+
+**Universales neutrales.** Los textos no nombran organismos, leyes ni moneda de Croacia, salvo los genéricos
+«PDV» y «EKS». Lo propio del país queda para el agente de país.
+
+**Slugs.** ASCII sin diacríticos, con la «đ» como «dj»: `placa-u-svijetu`, `ljestvica-zemalja`,
+`koliko-radnih-sati`, `kalendar-placa`, `stvarne-place`, y las universales con su búsqueda real
+(`kalkulator-kredita`, `kalkulator-place`, `pdv-kalkulator`). Se suman en `secciones.ts` por los `SLUG_*`: sin
+carpetas por idioma. Los de sección no coinciden con los del serbio para que no choquen al integrar.
+
+**Prueba.** `zz-hr` (Zetalandija) es una edición interna en `hr-001`, para no compartir locale con Croacia en
+hreflang. `check_universales` prueba `hr-HR` con EUR, un nombre largo que se declina por partes («na Svetom
+Vincentu i Grenadinima») y uno plural con adjetivos («u Ujedinjenim Arapskim Emiratima»); `check_motor` prueba
+formato, plurales, parseo y gramática.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.
@@ -1474,3 +1640,43 @@ la moneda de prueba es EUR y los textos hablan de «цент», no de «стот
 
 **Fuente.** Geist no trae cirílico: la tarjeta OG usa Noto Sans de respaldo, como uk y ru. La edición
 interna es `zz-bg` («Зеталандия», bg-001).
+
+### D28. Mongol (2026-11-01)
+
+(D25 sk, D26 ka y D27 hr quedan para sus ramas, sin mergear todavía.)
+
+**Registro.** Uno solo, el de los bancos y los servicios (Хаан банк, e-Mongolia, Татварын ерөнхий газар):
+«та», «таны» con minúscula y pedidos en «-на уу», «-нэ үү» («оруулна уу», «тооцоолно уу»); botones en la
+forma «-х» («Тооцоолох», «Сонгох»). Nunca «чи». Los mercados van con trato `usted` y el diccionario se
+escribe en `base`. El registro sale del encargo: el 1/11/2026 khanbank.com cortó la conexión y la portada
+de e-mongolia.mn no trae frases dirigidas al usuario, así que no quedó confirmado en esas webs. Conviene
+que el agente de país lo contraste al leer las fuentes de Mongolia.
+
+**Gramática del país.** Mongol nativo, sin relación con la gramática del ruso. Los sufijos de caso dependen
+de la armonía vocálica y de la consonante final, y con nombres extranjeros una regla se equivoca
+fácil («Германд» pero «Францад», «Орост»). Por eso el sufijo nunca se pega al nombre, lo lleva «улс», que
+siempre declina igual: `GRAMATICA.mn` da `en` = «Герман улсад», `de` = «Герман улсын», `para` = «Герман
+улсад зориулсан». Si el nombre ya termina en «Улс» o «арлууд» el sufijo va sobre esa palabra («Монгол Улсад»,
+«Соломоны арлуудын»). Hong Kong, Macao, Puerto Rico y Taiwán van con «нутаг дэвсгэр», para no afirmar que son
+países. Intl.DisplayNames da «Монгол» y se normaliza a «Монгол Улс». Ningún sufijo se pega a una cifra ni a
+una interpolación: las frases se escriben para no necesitarlo, y `reglas_idioma` rechaza «5-д», «₮-ийн»,
+«20%-ийг» («12-р сар» sí, es ordinal).
+
+**Plural.** `Intl.PluralRules("mn")` da one/other, pero detrás de un número el sustantivo va en singular
+(«3 өдөр», «40 тооцоолуур»): las dos formas de `NOMBRES_UNIDAD` son iguales y los diccionarios usan `conteoMn`.
+
+**Formato y moneda.** mn-MN como lo da Intl: coma de miles, punto decimal, sin espacio antes de «%» («20%»), ₮
+delante con espacio («₮ 1,234,567»). Decimales los de Intl para MNT (2 si el importe los pide). Se usa ₮ y no
+«төгрөг» porque el símbolo no se declina. La prueba es MNT.
+
+**Reglas.** Comillas «». Se rechazan ъ (solo aparece en préstamos rusos), letras de otros cirílicos, exclamaciones,
+plural detrás de un número y rusismos («зарплата», «калькулятор»). ө y ү no se revisan palabra por palabra.
+
+**Slugs.** Transliteración ASCII legible, no la norma MNS 5217: х = kh, ц = ts, ч = ch, ш = sh, ж = j, ө = o, ү = u,
+э = e, ы = y, и/й = i, я = ya, ь se omite, la vocal larga queda doble («tsalingiin-nemegdel-tootsooluur»,
+«noat-tootsooluur», «delkhiin-tsalin»). Es como se teclea en un buscador sin teclado mongol. Van en
+`src/motor/secciones.ts` vía los `SLUG_*`, sin carpetas por idioma.
+
+**Fuente.** Geist no trae ө ni ү: la tarjeta OG usa Noto Sans de respaldo, como ru y bg. La edición interna es
+`zz-mn` («Зеталанд», mn-001). Mercados de prueba en `check_universales`: Монгол Улс con MNT y nombres largos
+(«Бүгд Найрамдах Доминикан Улс», «Сент-Винсент ба Гренадин», «Соломоны арлууд»).

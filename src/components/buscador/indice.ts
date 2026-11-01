@@ -23,17 +23,20 @@ export function normalizar(texto: string): string {
     .replace(/[̀-ͯ]/g, "")
     // La «đ» del serbio no se descompone con NFD: se escribe «dj», como en los slugs.
     .replace(/đ/g, "dj")
+    // La «đ» del croata no se descompone con NFD: se escribe «dj», como en los slugs.
+    .replace(/đ/g, "dj")
     // La ı del turco no se descompone en NFD: sin esto quedaría como separador («yıllık», «y ll k»).
     .replace(/ı/g, "i")
     // Uzbeko latino: oʻ, gʻ y la tutuq belgisi (ʼ) se buscan sin el signo, y quien escribe «o'» o «g'»
     // con el apóstrofo del teclado encuentra lo mismo («oʻrtacha», «o'rtacha» y «ortacha»).
     .replace(/[ʻʼ]/g, "")
     .replace(/([og])[‘’'`](?=[a-z])/g, "$1")
+    // El georgiano también (ADR 0002, D26).
     // El cirílico (ucraniano, ruso), el griego, el hebreo, el árabe, el bengalí y el tailandés cuentan
     // como letra: sin esto «кредит», «δάνειο» o «משכנתא» quedaban vacíos. La sigma final se busca como la otra: quien escribe «μισθ» o «μισθος» encuentra
     // «Μισθός».
     .replace(/ς/g, "σ")
-    .replace(/[^a-z0-9Ѐ-ӿͰ-Ͽ֐-׿؀-ۿঀ-৿฀-๿]+/g, " ")
+    .replace(/[^a-z0-9Ѐ-ӿͰ-Ͽ֐-׿؀-ۿঀ-৿฀-๿\u10A0-\u10FF\u1C90-\u1CBF]+/g, " ")
     .trim();
 }
 

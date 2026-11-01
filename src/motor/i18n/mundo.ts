@@ -2,8 +2,9 @@ import { pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { casosEl, GRAMATICA, mayusculaHu } from "./gramatica";
 import { DIAS_HE, pluralHe, prefijoHe, type FormasHe } from "./hebreo";
-import { formaRu, pluralBg, pluralCs, pluralEl, pluralPl, pluralRo, pluralRu, pluralUk } from "./plural";
+import { conteoMn, formaRu, pluralBg, pluralCs, pluralEl, pluralPl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
+import { pluralHr } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import { PT_LUSOFONIA } from "./variantes";
 import type { Idioma, Trato } from "../tipos";
@@ -5686,7 +5687,668 @@ const bg: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// ───────────────────────────── sk ─────────────────────────────
+
+// Eslovaco (ADR 0002, D25): vykanie con vy en minúscula, como Finančná správa y los bancos; la tarjeta
+// y el texto para compartir, en primera persona. Nada de participios ni adjetivos con género sobre la
+// persona: las frases van en presente o impersonales. El país se declina con GRAMATICA.sk y los días
+// con pluralSk.
+const gSk = GRAMATICA.sk;
+const SEO_SK = "Deň daňovej slobody a čistá mzda vo svete";
+const diasSk = (d: number) => pluralSk(d, "deň", "dni", "dní");
+
+const sk: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Vaša mzda vo svete",
+    seo: {
+      titulo: (pais) => [`${SEO_SK} | ${pais}`, SEO_SK, "Vaša mzda vo svete"],
+      tituloGlobal: [SEO_SK, "Vaša mzda vo svete"],
+      descripcion: (pais, n) => `Zistite, do ktorého dňa v roku pracujete so svojou mzdou ${gSk.en(pais)} pre štát a koľko by vám zostalo v čistom v ${n} krajinách. Zadarmo, bez registrácie.`,
+      descripcionGlobal: (n) => `Zistite, do ktorého dňa v roku pracujete pre štát a koľko by vám z vašej mzdy zostalo v čistom v ${n} krajinách. Zadarmo, bez registrácie.`,
+    },
+    ceja: "Váš Deň daňovej slobody",
+    h1: "Do ktorého dňa v roku pracujete pre štát?",
+    bajada: (n) => `Zadajte hrubú mzdu a uvidíte svoj dátum. Potom ho porovnajte v ${n} krajinách, pri rovnakej kúpnej sile a s daňovými pravidlami každej krajiny.`,
+    form: {
+      titulo: "Vaša mzda",
+      sueldo: "Hrubá mzda",
+      mes: "Mesačne",
+      anio: "Ročne",
+      periodo: "Obdobie mzdy",
+      pais: "Krajina, kde pracujete",
+      ejemplo: "Príklad",
+      ejemploAyuda: "Toto je ukážková mzda. Zadajte svoju a všetky čísla sa hneď prepočítajú.",
+      propio: "Prevzaté z vášho výpočtu.",
+      invalido: "Zadajte sumu väčšiu ako nula.",
+      pagas: "Mesačná mzda podľa výplatnej pásky: zákonné mzdy navyše (13. alebo 14. plat) pripočítame sami. Čistá mzda je priemer za 12 mesiacov.",
+    },
+    heroe: {
+      hasta: (fecha) => `Pre štát pracujete do ${fecha}`,
+      tasa: (pct) => `${pct} vašej mzdy ide na daň z príjmov a povinné odvody.`,
+      dias: (n, total) => `${n} z ${total} dní`,
+      enMano: "V čistom vám zostane",
+      porMes: "mesačne",
+      anio: (anio, n, total) => `Rok ${anio}: ${n} z ${total} dní pre štát.`,
+      resto: "Odo dňa, ktorý nasleduje, patrí všetko, čo zarobíte, vám.",
+    },
+    ranking: {
+      titulo: "Rovnaká mzda, krajina po krajine",
+      bajada: "Toľko by vám v čistom zostalo v každej krajine pri rovnakej kúpnej sile. Každý riadok pochádza z oficiálnej kalkulačky danej krajiny. Všade rovnaká mzda: menia sa len dane a odvody, nie to, koľko sa v danej krajine zarába.",
+      lista: "Krajiny zoradené podľa čistej mzdy",
+      buscar: "Hľadať krajinu",
+      filtrar: "Filtrovať podľa regiónu",
+      todas: "Všetky",
+      regiones: { americas: "Amerika", europa: "Európa", asia: "Ázia a Oceánia", africa: "Afrika a Blízky východ" },
+      tuPais: "Vaša krajina",
+      mejor: "Najnižšie dane",
+      enMano: "V čistom mesačne",
+      enTuMoneda: "Vo vašej mene",
+      vsTuPais: "V porovnaní s vašou krajinou",
+      verTodos: (n) => `Zobraziť všetky krajiny (${n})`,
+      verMenos: "Zobraziť menej",
+      sinResultados: (q) => `Hľadaniu „${q}“ nezodpovedá žiadna krajina.`,
+      abrir: (pais) => `Otvoriť kalkulačku ${gSk.para(pais)}`,
+      mas: (pct) => `o ${pct} viac`,
+      menos: (pct) => `o ${pct} menej`,
+      igual: "Rovnako",
+      puesto: (p, total) => `Vaša krajina je na ${p}. mieste z ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Vaša karta na zdieľanie",
+      bajada: "Ukazuje váš dátum a percentá. Koľko zarábate, na nej nikdy nie je.",
+      hasta: (fecha) => `Pre štát pracujem do ${fecha}`,
+      tasa: (pct) => `${pct} mojej mzdy ide na dane`,
+      mejor: (pais, pct) => `S rovnakou mzdou by mi ${gSk.en(pais)} po nižších daniach zostalo o ${pct} viac v čistom`,
+      mejorPropio: (pais) => `S mojou mzdou mi nikde nezostane viac ako ${gSk.en(pais)}`,
+      yVos: "A vy?",
+      cta: "Zistite svoj dátum:",
+      generica: "Do ktorého dňa v roku pracujete pre štát?",
+      genericaBajada: (n) => `Vaša mzda v ${n} krajinách, podľa oficiálnej kalkulačky každej z nich`,
+      compartir: "Zdieľať kartu",
+      compartirDuelo: "Odpovedať na výzvu",
+      descargar: "Stiahnuť obrázok",
+      copiado: "Odkaz je skopírovaný. Vložte ho, kam potrebujete.",
+      compartido: "Hotovo, odoslané.",
+      error: "Zdieľanie sa nepodarilo. Skúste to znova.",
+      texto: (fecha) => `Pre štát pracujem do ${fecha}. A vy?`,
+      alt: "Náhľad vašej karty",
+    },
+    duelo: {
+      amigo: (fecha) => `Ten, kto vám odkaz poslal, pracuje pre štát do ${fecha}.`,
+      yVos: "A vy?",
+      invitacion: "Zadajte svoju mzdu a porovnajte sa.",
+      vos: "Vy",
+      elAmigo: "Odosielateľ",
+      dia: "Pre štát pracuje do",
+      tasa: "Dane a odvody",
+      mejorPais: "Najnižšie dane",
+      antes: (d) => `Vaša sloboda začína o ${diasSk(d)} skôr ako u odosielateľa.`,
+      despues: (d) => `Odosielateľ má slobodu o ${diasSk(d)} skôr ako vy.`,
+      empate: "Sloboda vám obom začína v rovnaký deň.",
+      desde: (pais) => `Pracuje ${gSk.en(pais)}`,
+    },
+    cero: {
+      dia: "nula dní",
+      heroeAntes: "Pre štát pracujete",
+      tarjetaAntes: "Pre štát pracujem",
+      motivo: "Z tejto mzdy sa nezráža daň z príjmov ani povinné odvody.",
+      texto: "Tento rok nepracujem pre štát ani jeden deň. A vy?",
+      amigo: "Ten, kto vám odkaz poslal, nepracuje pre štát ani jeden deň.",
+    },
+    metodo: {
+      titulo: "Ako počítame",
+      estimacion: "Ide o odhad na porovnanie krajín, nie o výplatnú pásku. Daňové úľavy, deti alebo prémie môžu vaše číslo zmeniť.",
+      supuestos: [
+        "Slobodná osoba bez detí, s predvolenými hodnotami kalkulačky každej krajiny.",
+        "Čistá mzda je to, čo zostane po dani z príjmov a odvodoch, ktoré platí sám zamestnanec. Dane zo spotreby a odvody zamestnávateľa sa nezapočítavajú.",
+        "Trinásty plat alebo iné povinné mzdy navyše sa rozpočítajú do roka tak, ako to stanovuje zákon každej krajiny.",
+        "V Spojených štátoch sa nepripočítava daň jednotlivých štátov ani miestna daň: len federálna daň a odvody zo mzdy.",
+        "Na prevod vašej mzdy do inej krajiny používame paritu kúpnej sily (PPP): rovnaká životná úroveň, nie dnešný výmenný kurz.",
+        "PPP Argentíny sa aktualizuje indexom spotrebiteľských cien INDEC, pretože Svetová banka ju zverejňuje len do roku 2021.",
+        "Deň slobody rozkladá dane do roka od 1. januára. Keď na dane ide 30 % mzdy, pracujete pre štát 30 % roka.",
+      ],
+      ppaTitulo: "Parita kúpnej sily",
+      bancoMundial: "Svetová banka",
+      ppa: (organismo, indicador, anio) => `${organismo}, ukazovateľ ${indicador}, posledný dostupný rok: ${anio}.`,
+      consultado: (fecha) => `Overené ${fecha}.`,
+      verFuente: "Zobraziť zdroj",
+      fuentesTitulo: "Zdroj každej krajiny",
+      fuentesBajada: "Každý riadok používa kalkulačku čistej mzdy danej krajiny a jej oficiálne údaje.",
+      verificado: (fecha) => `Údaje overené ${fecha}`,
+      sello: (fecha) => `Oficiálne údaje overené v zdroji každej krajiny. Najstaršie overenie: ${fecha}.`,
+    },
+    faqTitulo: "Časté otázky",
+    faq: (n) => [
+      {
+        pregunta: "Čo je Deň daňovej slobody?",
+        respuesta:
+          "Je to deň v roku, keď by ste mali zaplatené dane a odvody, keby všetko, čo zarobíte od 1. januára, išlo najprv štátu. Tu ho počítame z vašej mzdy, nie z priemeru krajiny.",
+      },
+      {
+        pregunta: "Prečo porovnávame podľa kúpnej sily?",
+        respuesta: "Podľa výmenného kurzu môže mzda pôsobiť obrovsky alebo nepatrne, podľa toho, aký je deň. Parita kúpnej sily porovnáva, čo si za tie peniaze v každej krajine naozaj kúpite.",
+      },
+      {
+        pregunta: "Ukladá sa moja mzda?",
+        respuesta: "Nie. Výpočet prebieha vo vašom prehliadači. To, čo zdieľate, obsahuje len dátumy, percentá a krajiny.",
+      },
+      {
+        pregunta: "Prečo sa moja skutočná čistá mzda líši?",
+        respuesta:
+          "Počítame so slobodnou osobou bez detí a s predvolenými hodnotami. Daňové úľavy, prémie alebo osobitné režimy číslo menia. Na presný výpočet vašej situácie otvorte kalkulačku svojej krajiny.",
+      },
+      {
+        pregunta: "Ktoré krajiny tu sú?",
+        respuesta: `Dnes ${pluralSk(n, "krajina", "krajiny", "krajín")}, každá s vlastnou kalkulačkou čistej mzdy a oficiálnymi údajmi. Ďalšie pridávame, hneď ako overíme ich daňové pravidlá.`,
+      },
+    ],
+    destacado: {
+      ceja: "Svetové porovnanie",
+      titulo: "Do ktorého dňa v roku pracujete pre štát?",
+      texto: "Zadajte mzdu a pozrite sa, koľko by vám v čistom zostalo v iných krajinách.",
+      ir: "Zistiť svoj dátum",
+    },
+  },
+};
+
+// ───────────────────────────── ka ─────────────────────────────
+
+// Georgiano (ADR 0002, D26): «თქვენ» con formas corteses; la tarjeta y el texto para compartir, en
+// primera persona. El país va con GRAMATICA.ka («საქართველოში»). Ningún sufijo se pega a una cifra ni
+// a una fecha: la fecha va tras dos puntos, en nominativo («ამ თარიღამდე: 24 ოქტომბერი, 2026»), y las
+// cifras, delante de un sustantivo sin plural («3 დღე»).
+const gKa = GRAMATICA.ka;
+const SEO_KA = "საგადასახადო თავისუფლების დღე მსოფლიოში";
+const SEO_KA_CORTO = "საგადასახადო თავისუფლების დღე";
+
+const ka: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "თქვენი ხელფასი მსოფლიოში",
+    seo: {
+      titulo: (pais) => [`${SEO_KA_CORTO} | ${pais}`, SEO_KA, "თქვენი ხელფასი მსოფლიოში"],
+      tituloGlobal: [SEO_KA, "თქვენი ხელფასი მსოფლიოში"],
+      descripcion: (pais, n) =>
+        `წლის რომელ დღემდე მუშაობთ სახელმწიფოსთვის ${gKa.en(pais)}? შეადარეთ ხელზე ასაღები ხელფასი ${n} ქვეყანაში.`,
+      descripcionGlobal: (n) => `გაიგეთ, წლის რომელ დღემდე მუშაობთ სახელმწიფოსთვის და რამდენი დაგრჩებათ ხელფასიდან ${n} ქვეყანაში. უფასოდ.`,
+    },
+    ceja: "თქვენი საგადასახადო თავისუფლების დღე",
+    h1: "წლის რომელ დღემდე მუშაობთ სახელმწიფოსთვის?",
+    bajada: (n) => `შეიყვანეთ ხელფასი დაბეგვრამდე და მიიღეთ თქვენი თარიღი. შემდეგ შეადარეთ ${n} ქვეყანას, თანაბარი მსყიდველობითი უნარით და თითოეული ქვეყნის საგადასახადო წესებით.`,
+    form: {
+      titulo: "თქვენი ხელფასი",
+      sueldo: "ხელფასი დაბეგვრამდე",
+      mes: "თვეში",
+      anio: "წელიწადში",
+      periodo: "ხელფასის პერიოდი",
+      pais: "ქვეყანა, სადაც მუშაობთ",
+      ejemplo: "მაგალითი",
+      ejemploAyuda: "ეს სანიმუშო ხელფასია. შეიყვანეთ თქვენი და ყველა რიცხვი მაშინვე გადაითვლება.",
+      propio: "აღებულია თქვენი გამოთვლიდან.",
+      invalido: "შეიყვანეთ ნულზე მეტი თანხა.",
+      pagas: "თვიური ხელფასი დაბეგვრამდე, როგორც სახელფასო უწყისშია: კანონით გათვალისწინებულ დამატებით ანაზღაურებას (მე-13 ან მე-14 ხელფასი) ჩვენ ვამატებთ. ხელზე ასაღები თანხა 12 თვის საშუალოა.",
+    },
+    heroe: {
+      hasta: (fecha) => `სახელმწიფოსთვის მუშაობთ ამ თარიღამდე: ${fecha}`,
+      tasa: (pct) => `თქვენი ხელფასიდან საშემოსავლო გადასახადსა და სავალდებულო შენატანებს მიაქვს: ${pct}.`,
+      dias: (n, total) => `${n} დღე წლის ${total} დღიდან`,
+      enMano: "ხელზე გრჩებათ",
+      porMes: "თვეში",
+      anio: (anio, n, total) => `წელი ${anio}: ${n} დღე სახელმწიფოსთვის, წლის ${total} დღიდან.`,
+      resto: "მომდევნო დღიდან ყველაფერი, რასაც გამოიმუშავებთ, თქვენია.",
+    },
+    ranking: {
+      titulo: "ერთი ხელფასი სხვადასხვა ქვეყანაში",
+      bajada: "ამდენი დაგრჩებათ ხელზე თითოეულ ქვეყანაში, თანაბარი მსყიდველობითი უნარით. ყოველი სტრიქონი იმ ქვეყნის ოფიციალური კალკულატორიდან მოდის. ხელფასი ყველგან ერთია: იცვლება მხოლოდ გადასახადები და შენატანები და არა ის, რამდენს გამოიმუშავებენ ამ ქვეყანაში.",
+      lista: "ქვეყნები ხელზე ასაღები ხელფასის მიხედვით",
+      buscar: "ქვეყნის ძებნა",
+      filtrar: "გაფილტვრა რეგიონის მიხედვით",
+      todas: "ყველა",
+      regiones: { americas: "ამერიკა", europa: "ევროპა", asia: "აზია და ოკეანეთი", africa: "აფრიკა და ახლო აღმოსავლეთი" },
+      tuPais: "თქვენი ქვეყანა",
+      mejor: "აქ გადასახადი ყველაზე დაბალია",
+      enMano: "ხელზე, თვეში",
+      enTuMoneda: "თქვენს ვალუტაში",
+      vsTuPais: "თქვენს ქვეყანასთან შედარებით",
+      verTodos: (n) => `ყველა ქვეყანა (${n})`,
+      verMenos: "ნაკლების ჩვენება",
+      sinResultados: (q) => `ასეთი ქვეყანა ვერ მოიძებნა: „${q}“.`,
+      abrir: (pais) => `კალკულატორის გახსნა: ${gKa.nombre(pais)}`,
+      mas: (pct) => `მეტი: ${pct}`,
+      menos: (pct) => `ნაკლები: ${pct}`,
+      igual: "იგივე",
+      puesto: (p, total) => `თქვენი ქვეყნის ადგილი: ${p} (სულ ${total} ქვეყანა).`,
+    },
+    tarjeta: {
+      titulo: "თქვენი გასაზიარებელი ბარათი",
+      bajada: "აჩვენებს თქვენს თარიღსა და პროცენტს. იმას, რამდენს გამოიმუშავებთ, არასდროს.",
+      hasta: (fecha) => `სახელმწიფოსთვის ვმუშაობ ამ თარიღამდე: ${fecha}`,
+      tasa: (pct) => `ჩემი ხელფასიდან გადასახადებს მიაქვს: ${pct}`,
+      mejor: (pais, pct) => `იმავე ხელფასით ${gKa.en(pais)} ნაკლებ გადასახადს გადავიხდიდი: +${pct} ხელზე`,
+      mejorPropio: (pais) => `ამ ხელფასიდან ვერსად დამრჩებოდა იმაზე მეტი, ვიდრე ${gKa.en(pais)}`,
+      yVos: "და თქვენ?",
+      cta: "გაიგეთ თქვენი თარიღი:",
+      generica: "წლის რომელ დღემდე მუშაობთ სახელმწიფოსთვის?",
+      genericaBajada: (n) => `თქვენი ხელფასი ${n} ქვეყანაში, თითოეული ქვეყნის ოფიციალური კალკულატორით`,
+      compartir: "ბარათის გაზიარება",
+      compartirDuelo: "გამოწვევის მიღება",
+      descargar: "სურათის ჩამოტვირთვა",
+      copiado: "ბმული დაკოპირდა. ჩასვით, სადაც გსურთ.",
+      compartido: "მზადაა, გაგზავნილია.",
+      error: "გაზიარება ვერ მოხერხდა. სცადეთ თავიდან.",
+      texto: (fecha) => `წელს სახელმწიფოსთვის ვმუშაობ ამ თარიღამდე: ${fecha}. თქვენ?`,
+      alt: "თქვენი ბარათის წინასწარი ხედი",
+    },
+    duelo: {
+      amigo: (fecha) => `ვინც ეს გამოგიგზავნათ, სახელმწიფოსთვის მუშაობს ამ თარიღამდე: ${fecha}.`,
+      yVos: "და თქვენ?",
+      invitacion: "შეიყვანეთ თქვენი ხელფასი და შეეჯიბრეთ.",
+      vos: "თქვენ",
+      elAmigo: "გამომგზავნი",
+      dia: "სახელმწიფოსთვის მუშაობა ამ თარიღამდე",
+      tasa: "გადასახადები და შენატანები",
+      mejorPais: "აქ გადასახადი ყველაზე დაბალია",
+      antes: (d) => `თქვენი თავისუფლება ${d} დღით ადრე იწყება, ვიდრე გამომგზავნის.`,
+      despues: (d) => `გამომგზავნის თავისუფლება ${d} დღით ადრე იწყება, ვიდრე თქვენი.`,
+      empate: "ორივეს თავისუფლება ერთსა და იმავე დღეს იწყება.",
+      desde: (pais) => `მუშაობს ქვეყანაში: ${gKa.nombre(pais)}`,
+    },
+    cero: {
+      dia: "ნული დღე",
+      heroeAntes: "სახელმწიფოსთვის მუშაობთ:",
+      tarjetaAntes: "სახელმწიფოსთვის ვმუშაობ:",
+      motivo: "ამ ხელფასიდან არც საშემოსავლო გადასახადი იკავება და არც სავალდებულო შენატანები.",
+      texto: "წელს სახელმწიფოსთვის არც ერთ დღეს არ ვმუშაობ. თქვენ?",
+      amigo: "ვინც ეს გამოგიგზავნათ, სახელმწიფოსთვის არც ერთ დღეს არ მუშაობს.",
+    },
+    metodo: {
+      titulo: "როგორ ვითვლით",
+      estimacion: "ეს ქვეყნების შესადარებელი შეფასებაა და არა სახელფასო უწყისი. საგადასახადო შეღავათებმა, შვილებმა ან პრემიებმა შეიძლება თქვენი რიცხვი შეცვალოს.",
+      supuestos: [
+        "მარტოხელა ადამიანი შვილების გარეშე, თითოეული ქვეყნის კალკულატორის საბაზო მნიშვნელობებით.",
+        "ხელზე ასაღები ხელფასი ის თანხაა, რომელიც საშემოსავლო გადასახადისა და დასაქმებულის შენატანების შემდეგ რჩება. მოხმარების გადასახადებსა და დამსაქმებლის შენატანებს არ ვითვლით.",
+        "მე-13 ხელფასს და სხვა სავალდებულო დამატებით ანაზღაურებას წელიწადზე ისე ვანაწილებთ, როგორც ამას თითოეული ქვეყნის კანონი ითვალისწინებს.",
+        "ამერიკის შეერთებულ შტატებში არ ვითვლით ცალკეული შტატებისა და ადგილობრივი ხელისუფლების გადასახადებს: მხოლოდ ფედერალურ გადასახადს და ხელფასთან დაკავშირებულ შენატანებს.",
+        "თქვენი ხელფასის სხვა ქვეყანაში გადასაყვანად ვიყენებთ მსყიდველობითი უნარის პარიტეტს (PPP): ერთნაირ ცხოვრების დონეს და არა დღევანდელ გაცვლით კურსს.",
+        "არგენტინის მსყიდველობითი უნარის პარიტეტს ვაახლებთ INDEC-ის სამომხმარებლო ფასების ინდექსით, რადგან მსოფლიო ბანკი მას მხოლოდ 2021 წლამდე აქვეყნებს.",
+        "საგადასახადო თავისუფლების დღე გადასახადებს წელიწადზე 1 იანვრიდან ანაწილებს. თუ გადასახადებს ხელფასის 30 პროცენტი მიაქვს, წლის 30 პროცენტის განმავლობაში სახელმწიფოსთვის მუშაობთ.",
+      ],
+      ppaTitulo: "მსყიდველობითი უნარის პარიტეტი",
+      bancoMundial: "მსოფლიო ბანკი",
+      ppa: (organismo, indicador, anio) => `${organismo}, მაჩვენებელი: ${indicador}, ბოლო ხელმისაწვდომი წელი: ${anio}.`,
+      consultado: (fecha) => `შემოწმდა: ${fecha}.`,
+      verFuente: "წყაროს გახსნა",
+      fuentesTitulo: "თითოეული ქვეყნის წყაროები",
+      fuentesBajada: "ყოველი სტრიქონი იყენებს იმ ქვეყნის ხელფასის კალკულატორს და ოფიციალურ მონაცემებს.",
+      verificado: (fecha) => `მონაცემები შემოწმდა: ${fecha}`,
+      sello: (fecha) => `ოფიციალური მონაცემები, შემოწმებული თითოეული ქვეყნის წყაროში. ყველაზე ძველი შემოწმება: ${fecha}.`,
+    },
+    faqTitulo: "ხშირად დასმული კითხვები",
+    faq: (n) => [
+      {
+        pregunta: "რა არის საგადასახადო თავისუფლების დღე?",
+        respuesta:
+          "წლის ის დღე, როდესაც გადასახადებსა და შენატანებს დაფარავდით, თუ 1 იანვრიდან გამომუშავებული ყველაფერი ჯერ სახელმწიფოს მიუვიდოდა. აქ მას თქვენი ხელფასით ვითვლით და არა ქვეყნის საშუალო მაჩვენებლით.",
+      },
+      {
+        pregunta: "რატომ ვადარებთ მსყიდველობითი უნარით?",
+        respuesta: "გაცვლითი კურსით ერთი და იგივე ხელფასი დღის მიხედვით შეიძლება უზარმაზარი ან პატარა ჩანდეს. მსყიდველობითი უნარის პარიტეტი ადარებს, რისი ყიდვა შეგიძლიათ რეალურად ამ ფულით თითოეულ ქვეყანაში.",
+      },
+      {
+        pregunta: "ინახავთ ჩემს ხელფასს?",
+        respuesta: "არა. გამოთვლა თქვენს ბრაუზერში სრულდება. ის, რასაც აზიარებთ, მხოლოდ თარიღებს, პროცენტებსა და ქვეყნებს შეიცავს.",
+      },
+      {
+        pregunta: "რატომ განსხვავდება ჩემი რეალური ხელზე ასაღები ხელფასი?",
+        respuesta:
+          "ვითვლით მარტოხელა ადამიანისთვის, შვილების გარეშე და საბაზო მნიშვნელობებით. საგადასახადო შეღავათები, პრემიები ან განსაკუთრებული წესები შედეგს ცვლის. თქვენი სიტუაციის ზუსტად გამოსათვლელად გახსენით თქვენი ქვეყნის კალკულატორი.",
+      },
+      {
+        pregunta: "რომელი ქვეყნებია ჩართული?",
+        respuesta: `ამჟამად ${n} ქვეყანა, თითოეული საკუთარი ხელფასის კალკულატორითა და ოფიციალური მონაცემებით. ახალ ქვეყნებს ვამატებთ, როგორც კი მათ საგადასახადო წესებს შევამოწმებთ.`,
+      },
+    ],
+    destacado: {
+      ceja: "საერთაშორისო შედარება",
+      titulo: "წლის რომელ დღემდე მუშაობთ სახელმწიფოსთვის?",
+      texto: "შეიყვანეთ თქვენი ხელფასი და ნახეთ, რამდენი დაგრჩებათ ხელზე სხვა ქვეყნებში.",
+      ir: "თარიღის გაგება",
+    },
+  },
+};
+
+// ───────────────────────────── hr ─────────────────────────────
+
+// Croata (ADR 0002, D27): «vi» en minúscula, como los bancos y ePorezna; la tarjeta y el texto para
+// compartir, en primera persona. Nada de participios ni adjetivos con género sobre la persona («bio sam»,
+// «sama»): las frases van en presente o impersonales. El país se declina con GRAMATICA.hr y los días y las
+// zemlje con pluralHr. La fecha llega como la da Intl en hr («15. listopada», en genitivo) y se dibuja
+// aparte, así que la frase termina en «do».
+const gHr = GRAMATICA.hr;
+const SEO_HR = "Dan porezne slobode i neto plaća u svijetu";
+const danaHr = (d: number) => pluralHr(d, "dan", "dana", "dana");
+// Tras «u»: «u 21 zemlji», «u 22 zemlje», «u 25 zemalja».
+const zemljamaUHr = (n: number) => pluralHr(n, "zemlji", "zemlje", "zemalja");
+
+const hr: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Vaša plaća u svijetu",
+    seo: {
+      titulo: (pais) => [`${SEO_HR} | ${pais}`, SEO_HR, "Vaša plaća u svijetu"],
+      tituloGlobal: [SEO_HR, "Vaša plaća u svijetu"],
+      descripcion: (pais, n) => `Saznajte do kojeg dana u godini sa svojom plaćom ${gHr.en(pais)} radite za državu i koliko bi vam neto ostalo u ${zemljamaUHr(n)}. Besplatno, bez registracije.`,
+      descripcionGlobal: (n) => `Saznajte do kojeg dana u godini radite za državu i koliko bi vam od plaće neto ostalo u ${zemljamaUHr(n)}. Besplatno, bez registracije.`,
+    },
+    ceja: "Vaš Dan porezne slobode",
+    h1: "Do kojeg dana u godini radite za državu?",
+    bajada: (n) => `Unesite bruto plaću i vidjet ćete svoj datum. Zatim ga usporedite u ${zemljamaUHr(n)}, uz istu kupovnu moć i porezna pravila svake zemlje.`,
+    form: {
+      titulo: "Vaša plaća",
+      sueldo: "Bruto plaća",
+      mes: "Mjesečno",
+      anio: "Godišnje",
+      periodo: "Razdoblje plaće",
+      pais: "Zemlja u kojoj radite",
+      ejemplo: "Primjer",
+      ejemploAyuda: "Ovo je primjer plaće. Unesite svoju i svi će se brojevi odmah preračunati.",
+      propio: "Preuzeto iz vašeg izračuna.",
+      invalido: "Unesite iznos veći od nule.",
+      pagas: "Mjesečna plaća s platne liste: zakonske dodatne isplate (13. ili 14. plaća) dodajemo mi. Neto plaća je prosjek za 12 mjeseci.",
+    },
+    heroe: {
+      hasta: (fecha) => `Za državu radite do ${fecha}`,
+      tasa: (pct) => `${pct} vaše plaće odlazi na porez na dohodak i obvezne doprinose.`,
+      dias: (n, total) => `${n} od ${total} dana`,
+      enMano: "Neto vam ostaje",
+      porMes: "mjesečno",
+      anio: (anio, n, total) => `Godina ${anio}: ${n} od ${total} dana za državu.`,
+      resto: "Od sljedećeg dana sve što zaradite pripada vama.",
+    },
+    ranking: {
+      titulo: "Ista plaća, zemlja po zemlja",
+      bajada: "Toliko bi vam neto ostalo u svakoj zemlji uz istu kupovnu moć. Svaki redak dolazi iz službenog kalkulatora te zemlje.",
+      lista: "Zemlje poredane po neto plaći",
+      buscar: "Pretraži zemlju",
+      filtrar: "Filtriraj po regiji",
+      todas: "Sve",
+      regiones: { americas: "Amerika", europa: "Europa", asia: "Azija i Oceanija", africa: "Afrika i Bliski istok" },
+      tuPais: "Vaša zemlja",
+      mejor: "Najbolje prolazi",
+      enMano: "Neto mjesečno",
+      enTuMoneda: "U vašoj valuti",
+      vsTuPais: "U usporedbi s vašom zemljom",
+      verTodos: (n) => `Prikaži sve zemlje (${n})`,
+      verMenos: "Prikaži manje",
+      sinResultados: (q) => `Nijedna zemlja ne odgovara pretrazi „${q}”.`,
+      abrir: (pais) => `Otvori kalkulator ${gHr.para(pais)}`,
+      mas: (pct) => `${pct} više`,
+      menos: (pct) => `${pct} manje`,
+      igual: "Isto",
+      puesto: (p, total) => `Vaša zemlja je na ${p}. mjestu od ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Vaša kartica za dijeljenje",
+      bajada: "Prikazuje vaš datum i postotke. Koliko zarađujete, na njoj nikada ne piše.",
+      hasta: (fecha) => `Za državu radim do ${fecha}`,
+      tasa: (pct) => `${pct} moje plaće odlazi na poreze`,
+      mejor: (pais, pct) => `S mojom plaćom ${gHr.en(pais)} bi mi ostalo ${pct} više neto`,
+      mejorPropio: (pais) => `S mojom plaćom nigdje mi ne ostaje više nego ${gHr.en(pais)}`,
+      yVos: "A vi?",
+      cta: "Saznajte svoj datum:",
+      generica: "Do kojeg dana u godini radite za državu?",
+      genericaBajada: (n) => `Vaša plaća u ${zemljamaUHr(n)}, prema službenom kalkulatoru svake od njih`,
+      compartir: "Podijeli karticu",
+      compartirDuelo: "Odgovori na izazov",
+      descargar: "Preuzmi sliku",
+      copiado: "Poveznica je kopirana. Zalijepite je gdje vam treba.",
+      compartido: "Gotovo, poslano.",
+      error: "Dijeljenje nije uspjelo. Pokušajte ponovno.",
+      texto: (fecha) => `Za državu radim do ${fecha}. A vi?`,
+      alt: "Pregled vaše kartice",
+    },
+    duelo: {
+      amigo: (fecha) => `Osoba koja vam je poslala poveznicu radi za državu do ${fecha}`,
+      yVos: "A vi?",
+      invitacion: "Unesite svoju plaću i usporedite se.",
+      vos: "Vi",
+      elAmigo: "Pošiljatelj",
+      dia: "Za državu radi do",
+      tasa: "Porezi i doprinosi",
+      mejorPais: "Najbolje prolazi",
+      antes: (d) => `Vaša sloboda počinje ${danaHr(d)} ranije nego kod pošiljatelja.`,
+      despues: (d) => `Pošiljatelj ima slobodu ${danaHr(d)} ranije od vas.`,
+      empate: "Objema stranama sloboda počinje istog dana.",
+      desde: (pais) => `Radi ${gHr.en(pais)}`,
+    },
+    cero: {
+      dia: "nula dana",
+      heroeAntes: "Za državu radite",
+      tarjetaAntes: "Za državu radim",
+      motivo: "Od ove se plaće ne plaćaju ni porez na dohodak ni obvezni doprinosi.",
+      texto: "Ove godine ne radim za državu nijedan dan. A vi?",
+      amigo: "Osoba koja vam je poslala poveznicu ne radi za državu nijedan dan.",
+    },
+    metodo: {
+      titulo: "Kako računamo",
+      estimacion: "Ovo je procjena za usporedbu zemalja, a ne platna lista. Porezne olakšice, djeca ili bonusi mogu promijeniti vaš broj.",
+      supuestos: [
+        "Osoba bez partnera i djece, sa zadanim vrijednostima kalkulatora svake zemlje.",
+        "Neto plaća je ono što ostane nakon poreza na dohodak i doprinosa koje plaća sam zaposlenik. Porezi na potrošnju i doprinosi poslodavca ne računaju se.",
+        "Trinaesta plaća ili druge obvezne dodatne isplate raspoređuju se na godinu onako kako propisuje zakon svake zemlje.",
+        "U Sjedinjenim Državama ne dodaju se porezi pojedinih saveznih država ni lokalni porezi: samo savezni porez i doprinosi iz plaće.",
+        "Za preračun vaše plaće u drugu zemlju koristimo paritet kupovne moći (PPP): isti životni standard, a ne današnji devizni tečaj.",
+        "PPP Argentine ažurira se indeksom potrošačkih cijena INDEC-a jer ga Svjetska banka objavljuje samo do 2021.",
+        "Dan slobode raspoređuje poreze na godinu od 1. siječnja. Kada na poreze ode 30 % plaće, za državu radite 30 % godine.",
+      ],
+      ppaTitulo: "Paritet kupovne moći",
+      bancoMundial: "Svjetska banka",
+      ppa: (organismo, indicador, anio) => `${organismo}, pokazatelj ${indicador}, posljednja dostupna godina: ${anio}.`,
+      consultado: (fecha) => `Provjereno ${fecha}`,
+      verFuente: "Prikaži izvor",
+      fuentesTitulo: "Izvor za svaku zemlju",
+      fuentesBajada: "Svaki redak koristi kalkulator neto plaće te zemlje i njezine službene podatke.",
+      verificado: (fecha) => `Podaci provjereni ${fecha}`,
+      sello: (fecha) => `Službeni podaci provjereni u izvoru svake zemlje. Najstarija provjera: ${fecha}`,
+    },
+    faqTitulo: "Česta pitanja",
+    faq: (n) => [
+      {
+        pregunta: "Što je Dan porezne slobode?",
+        respuesta:
+          "To je dan u godini kada biste imali plaćene poreze i doprinose kada bi sve što zaradite od 1. siječnja najprije išlo državi. Ovdje ga računamo iz vaše plaće, a ne iz prosjeka zemlje.",
+      },
+      {
+        pregunta: "Zašto uspoređujemo po kupovnoj moći?",
+        respuesta: "Po deviznom tečaju plaća može izgledati ogromno ili sitno, ovisno o danu. Paritet kupovne moći uspoređuje što za taj novac zaista možete kupiti u svakoj zemlji.",
+      },
+      {
+        pregunta: "Čuva li se moja plaća?",
+        respuesta: "Ne. Izračun se radi u vašem pregledniku. Ono što dijelite sadrži samo datume, postotke i zemlje.",
+      },
+      {
+        pregunta: "Zašto se moja stvarna neto plaća razlikuje?",
+        respuesta:
+          "Računamo s osobom bez partnera i djece te sa zadanim vrijednostima. Porezne olakšice, bonusi ili posebni režimi mijenjaju broj. Za točan izračun svoje situacije otvorite kalkulator svoje zemlje.",
+      },
+      {
+        pregunta: "Koje su zemlje ovdje?",
+        respuesta: `Danas ${pluralHr(n, "zemlja", "zemlje", "zemalja")}, svaka sa svojim kalkulatorom neto plaće i službenim podacima. Dodajemo nove čim provjerimo njihova porezna pravila.`,
+      },
+    ],
+    destacado: {
+      ceja: "Svjetska usporedba",
+      titulo: "Do kojeg dana u godini radite za državu?",
+      texto: "Unesite plaću i pogledajte koliko bi vam neto ostalo u drugim zemljama.",
+      ir: "Izračunaj svoj datum",
+    },
+  },
+};
+
+// ───────────────────────────── mn ─────────────────────────────
+
+// Mongol (ADR 0002, D28): «та» de cortesía; la tarjeta y el texto para compartir van en primera
+// persona. El país va con GRAMATICA.mn («Монгол Улсад», «Герман улсад») y tras un número no hay plural
+// («3 өдрийн», «40 улсад»); ningún sufijo va pegado a una cifra o a una interpolación. El verbo va al
+// final: la fecha queda en medio de la frase y el caso cero se presenta como rótulo más «0 өдөр».
+const gMn = GRAMATICA.mn;
+const SEO_MN = "Татварын эрх чөлөөний өдөр ба гарт авах цалин, улс орноор";
+const diasMn = (d: number) => conteoMn(d, "өдрийн");
+const enPaisesMn = (n: number) => conteoMn(n, "улсад");
+
+const mn: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Дэлхий дахинд таны цалин",
+    seo: {
+      titulo: (pais) => [`${SEO_MN} | ${pais}`, SEO_MN, "Дэлхий дахинд таны цалин"],
+      tituloGlobal: [SEO_MN, "Дэлхий дахинд таны цалин"],
+      descripcion: (pais, n) => `${gMn.en(pais)} авах цалингаараа жилийн аль өдөр хүртэл төрийн төлөө ажилладгаа, ${enPaisesMn(n)} гарт хэдий хэмжээний мөнгө авахаа үзнэ үү. Үнэгүй, бүртгэлгүй.`,
+      descripcionGlobal: (n) => `Жилийн аль өдөр хүртэл төрийн төлөө ажилладгаа, ${enPaisesMn(n)} цалингаас тань гарт хэдий хэмжээний мөнгө үлдэхийг үзнэ үү. Үнэгүй, бүртгэлгүй.`,
+    },
+    ceja: "Таны татварын эрх чөлөөний өдөр",
+    h1: "Та жилийн аль өдөр хүртэл төрийн төлөө ажилладаг вэ?",
+    bajada: (n) => `Огноогоо харахын тулд нийт цалингаа оруулна уу. Дараа нь ижил худалдан авах чадвараар, улс бүрийн татварын дүрмийн дагуу ${enPaisesMn(n)} харьцуулна уу.`,
+    form: {
+      titulo: "Таны цалин",
+      sueldo: "Нийт цалин",
+      mes: "Сард",
+      anio: "Жилд",
+      periodo: "Цалингийн хугацаа",
+      pais: "Таны ажилладаг улс",
+      ejemplo: "Жишээ",
+      ejemploAyuda: "Энэ бол жишээ цалин. Өөрийн цалингаа оруулбал бүх тоо тэр дор шинэчлэгдэнэ.",
+      propio: "Таны тооцооллоос шилжүүлсэн.",
+      invalido: "Тэгээс их дүн оруулна уу.",
+      pagas: "Цалингийн хуудсан дээрх сарын цалин: хуулиар заавал олгох нэмэлт цалинг (13 эсвэл 14 дэх сарын) бид өөрсдөө нэмнэ. Гарт авах цалин нь 12 сарын дундаж юм.",
+    },
+    heroe: {
+      hasta: (fecha) => `Та ${fecha} хүртэл төрийн төлөө ажилладаг`,
+      tasa: (pct) => `Таны цалингийн ${pct} нь орлогын албан татвар болон заавал төлөх шимтгэлд зарцуулагддаг.`,
+      dias: (n, total) => `${total} өдрөөс ${n} өдөр`,
+      enMano: "Гарт авах",
+      porMes: "сард",
+      anio: (anio, n, total) => `${anio} онд: ${total} өдрөөс ${n} өдөр нь төрийн төлөө.`,
+      resto: "Дараагийн өдрөөс эхлэн таны олсон бүх мөнгө өөрт тань үлдэнэ.",
+    },
+    ranking: {
+      titulo: "Нэг цалин өөр өөр улсад",
+      bajada: "Ижил худалдан авах чадвартай бол улс бүрт гарт ийм хэмжээний мөнгө авах байсан. Мөр бүр тухайн улсын албан ёсны тооцоолуураас гардаг.",
+      lista: "Улсууд, гарт авах цалингаар",
+      buscar: "Улс хайх",
+      filtrar: "Бүс нутгаар шүүх",
+      todas: "Бүгд",
+      regiones: { americas: "Америк", europa: "Европ", asia: "Ази ба Номхон далай", africa: "Африк ба Ойрхи Дорнод" },
+      tuPais: "Таны улс",
+      mejor: "Хамгийн ашигтай",
+      enMano: "Сард гарт авах",
+      enTuMoneda: "Таны валютаар",
+      vsTuPais: "Таны улстай харьцуулахад",
+      verTodos: (n) => `Бүх улсыг харуулах (${n})`,
+      verMenos: "Цөөнийг харуулах",
+      sinResultados: (q) => `«${q}» гэсэн хайлтад тохирох улс олдсонгүй.`,
+      abrir: (pais) => `${gMn.para(pais)} тооцоолуурыг нээх`,
+      mas: (pct) => `${pct} илүү`,
+      menos: (pct) => `${pct} бага`,
+      igual: "Одоогийнхтой ижил",
+      puesto: (p, total) => `Таны улс ${total} улсын дотроос ${p} дугаар байранд орж байна.`,
+    },
+    tarjeta: {
+      titulo: "Хуваалцах карт",
+      bajada: "Дээр нь огноо, хувь л харагдана. Хэдий хэмжээний цалин авдаг нь хэзээ ч харагдахгүй.",
+      hasta: (fecha) => `Би ${fecha} хүртэл төрийн төлөө ажилладаг`,
+      tasa: (pct) => `Миний цалингийн ${pct} нь татварт явдаг`,
+      mejor: (pais, pct) => `Миний цалингаар ${gMn.en(pais)} гарт авах мөнгө ${pct} илүү байх байсан`,
+      mejorPropio: (pais) => `Миний цалингаар надад хамгийн ашигтай улс бол ${gMn.nombre(pais)}`,
+      yVos: "Харин та?",
+      cta: "Өөрийн огноогоо үзнэ үү:",
+      generica: "Та жилийн аль өдөр хүртэл төрийн төлөө ажилладаг вэ?",
+      genericaBajada: (n) => `${enPaisesMn(n)} таны цалин, улс бүрийн албан ёсны тооцоолуураар`,
+      compartir: "Картыг хуваалцах",
+      compartirDuelo: "Сорилтыг хүлээн авах",
+      descargar: "Зургийг татаж авах",
+      copiado: "Холбоосыг хууллаа. Хүссэн газартаа буулгана уу.",
+      compartido: "Амжилттай илгээлээ.",
+      error: "Хуваалцаж чадсангүй. Дахин оролдоно уу.",
+      texto: (fecha) => `Би ${fecha} хүртэл төрийн төлөө ажилладаг. Харин та?`,
+      alt: "Таны картын урьдчилсан харагдац",
+    },
+    duelo: {
+      amigo: (fecha) => `Таны найз ${fecha} хүртэл төрийн төлөө ажилладаг.`,
+      yVos: "Харин та?",
+      invitacion: "Харьцуулахын тулд цалингаа оруулна уу.",
+      vos: "Та",
+      elAmigo: "Таны найз",
+      dia: "Төрийн төлөө ажиллах хугацаа",
+      tasa: "Татвар ба шимтгэл",
+      mejorPais: "Хамгийн ашигтай улс",
+      antes: (d) => `Та найзаасаа ${diasMn(d)} өмнө чөлөөлөгдөнө.`,
+      despues: (d) => `Таны найз танаас ${diasMn(d)} өмнө чөлөөлөгдөнө.`,
+      empate: "Та хоёр нэг өдөр чөлөөлөгдөнө.",
+      desde: (pais) => `${gMn.en(pais)} ажилладаг`,
+    },
+    cero: {
+      dia: "0 өдөр",
+      heroeAntes: "Таны төрийн төлөө ажиллах хугацаа",
+      tarjetaAntes: "Миний төрийн төлөө ажиллах хугацаа",
+      motivo: "Энэ цалингаас орлогын албан татвар ч, заавал төлөх шимтгэл ч суутгагдахгүй.",
+      texto: "Би энэ жил төрийн төлөө нэг ч өдөр ажиллахгүй. Харин та?",
+      amigo: "Таны найз төрийн төлөө нэг ч өдөр ажилладаггүй.",
+    },
+    metodo: {
+      titulo: "Бид хэрхэн тооцоолдог вэ",
+      estimacion: "Энэ бол улс орнуудыг харьцуулах тооцоолол болохоос цалингийн хуудас биш. Хөнгөлөлт, хүүхэд, урамшуулал таны тоог өөрчилж болно.",
+      supuestos: [
+        "Ганц бие, хүүхэдгүй хүн гэж үзэж, улс бүрийн тооцоолуурын анхны утгуудыг ашигладаг.",
+        "Гарт авах цалин гэдэг нь орлогын албан татвар болон ажилтны өөрөө төлдөг шимтгэлийн дараа үлдэх дүн юм. Хэрэглээний татвар болон ажил олгогчийн төлдөг шимтгэлийг оруулдаггүй.",
+        "13 дахь сарын цалин болон бусад заавал олгох нэмэлт төлбөрийг улс бүрийн хуульд заасны дагуу жилд хуваарилдаг.",
+        "Америкийн Нэгдсэн Улсын хувьд муж болон орон нутгийн орлогын албан татварыг нэмдэггүй: зөвхөн холбооны татвар болон цалингаас суутгах шимтгэлийг тооцдог.",
+        "Таны цалинг өөр улсад шилжүүлэхдээ худалдан авах чадварын паритетыг (ХАЧП) ашигладаг: өнөөдрийн валютын ханшийг бус, ижил амьжиргааны түвшинг харгалздаг.",
+        "Аргентин улсын ХАЧП үзүүлэлтийг INDEC байгууллагын хэрэглээний үнийн индексээр шинэчилдэг, учир нь Дэлхийн банк үүнийг зөвхөн 2021 он хүртэл нийтэлсэн.",
+        "Эрх чөлөөний өдөр нь татварыг 1-р сарын 1 өдрөөс эхлэн жилд хуваарилдаг. Цалингийн 30 хувь нь татварт явдаг бол та жилийн 30 хувийг төрийн төлөө ажилладаг.",
+      ],
+      ppaTitulo: "Худалдан авах чадварын паритет",
+      bancoMundial: "Дэлхийн банк",
+      ppa: (organismo, indicador, anio) => `${organismo}, ${indicador} үзүүлэлт, хамгийн сүүлийн боломжит он: ${anio}.`,
+      consultado: (fecha) => `Шалгасан огноо: ${fecha}`,
+      verFuente: "Эх сурвалжийг үзэх",
+      fuentesTitulo: "Улс бүрийн эх сурвалж",
+      fuentesBajada: "Мөр бүр тухайн улсын гарт авах цалингийн тооцоолуур болон албан ёсны мэдээллийг ашигладаг.",
+      verificado: (fecha) => `Мэдээллийг шалгасан огноо: ${fecha}`,
+      sello: (fecha) => `Албан ёсны мэдээллийг улс бүрийн эх сурвалжаас шалгасан. Хамгийн эртний шалгалтын огноо: ${fecha}`,
+    },
+    faqTitulo: "Түгээмэл асуултууд",
+    faq: (n) => [
+      {
+        pregunta: "Татварын эрх чөлөөний өдөр гэж юу вэ?",
+        respuesta:
+          "Хэрэв 1-р сарын 1 өдрөөс хойш олсон бүх мөнгө тань эхлээд төрд очдог бол татвараа төлж дуусах өдөр юм. Энд үүнийг улсын дундаж цалингаар бус, таны цалингаар тооцоолсон.",
+      },
+      {
+        pregunta: "Яагаад худалдан авах чадвараар харьцуулдаг вэ?",
+        respuesta: "Валютын ханшаас болж нэг цалин тухайн өдрөөс хамааран асар их эсвэл өчүүхэн мэт харагдаж болно. ХАЧП нь тэр мөнгөөр улс бүрт үнэхээр юу худалдаж авч болохыг харьцуулдаг.",
+      },
+      {
+        pregunta: "Миний цалинг хадгалдаг уу?",
+        respuesta: "Үгүй. Тооцоолол таны хөтөч дотор хийгддэг. Таны хуваалцах зүйлд зөвхөн огноо, хувь, улсын нэр багтана.",
+      },
+      {
+        pregunta: "Миний бодит гарт авах цалин яагаад өөр байна вэ?",
+        respuesta:
+          "Бид ганц бие, хүүхэдгүй хүн болон анхны утгуудыг авч үздэг. Хөнгөлөлт, урамшуулал, тусгай дэглэм тоог өөрчилдөг. Өөрийн тохиолдлын яг тооцооллыг авахын тулд өөрийн улсын тооцоолуурыг нээнэ үү.",
+      },
+      {
+        pregunta: "Ямар улсууд багтсан бэ?",
+        respuesta: `Өнөөдөр ${conteoMn(n, "улс")} багтсан бөгөөд улс бүр гарт авах цалингийн өөрийн тооцоолуур, албан ёсны мэдээлэлтэй. Татварын дүрмийг нь шалгасны дараа шинэ улсуудыг нэмдэг.`,
+      },
+    ],
+    destacado: {
+      ceja: "Дэлхийн харьцуулалт",
+      titulo: "Та жилийн аль өдөр хүртэл төрийн төлөө ажилладаг вэ?",
+      texto: "Цалингаа оруулаад бусад улсад гарт хэдий хэмжээний мөнгө авахаа үзнэ үү.",
+      ir: "Өөрийн огноогоо үзэх",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

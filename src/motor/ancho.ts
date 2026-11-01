@@ -18,8 +18,13 @@ const SIN_ANCHO = /[\p{Mn}\p{Me}‌‍]/u;
 const MEDIO = /\p{Mc}/u;
 const BENGALI_RODEA = /[োৌ]/u;
 
+// Georgiano (ADR 0002, D26), medido en Sylfaen, Segoe UI y Arial a 20 px: una letra ocupa 1,4 latinas
+// (11,5 a 12,8 px contra 8,3 a 9,1). Con .length un título de 60 letras se cortaba en el resultado.
+const GEORGIANO = /\p{sc=Geor}/u;
+
 function anchoDe(c: string): number {
   if (SIN_ANCHO.test(c)) return 0;
+  if (GEORGIANO.test(c)) return 1.4;
   if (BENGALI.test(c)) {
     if (BENGALI_RODEA.test(c)) return 1.5;
     return MEDIO.test(c) ? 0.5 : 1.5;

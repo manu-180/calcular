@@ -162,6 +162,17 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Mongol: un solo registro, el de Хаан банк, e-Mongolia y Татварын ерөнхий газар («та», «таны» y las
+  // formas corteses «оруулна уу», «сонгоно уу»; ADR 0002, D28). Se atrapa el «чи» con sus formas, la raíz
+  // verbal sola como orden («Оруул.») y el imperativo amistoso de publicidad (-аарай, -ээрэй, -оорой, -өөрэй).
+  mn: {
+    informal: [
+      { re: palabras("чи|чиний|чамд|чамайг|чамаас|чамтай|чамруу|чинийх"), nombre: "«чи» (va «та», «таны»)" },
+      { re: /(?<!\p{L})(?:оруул|сонго|тооцоол|шалга|харьцуул|дар|бөглө|хуул|үз)(?=\s*(?:[.:;]|$))/iu, nombre: "raíz verbal como orden (va «оруулна уу», «сонгоно уу»; en un botón, «Тооцоолох»)" },
+      { re: /\p{L}{2,}(?:аарай|ээрэй|оорой|өөрэй)(?!\p{L})/u, nombre: "imperativo amistoso (va «-на уу», «-нэ үү»)" },
+    ],
+    formal: [],
+  },
   // Búlgaro: un solo registro, el de ДСК y НАП (2.ª del plural, «Вие», «Ви», «Вашият» con mayúscula;
   // ADR 0002, D24). Se atrapa el «ти» y sus formas, y el pronombre de cortesía con minúscula.
   bg: {
@@ -218,6 +229,22 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Eslovaco: un solo registro, el de Finančná správa, Slovenská sporiteľňa y Tatra banka (vykanie con
+  // «vy» en minúscula; ADR 0002, D25). Se atrapa el tykanie (pronombre y posesivos; «ti» no, porque
+  // también es el demostrativo), los imperativos y presentes de segunda del singular de un formulario
+  // y el «Vy» con mayúscula a mitad de oración.
+  sk: {
+    informal: [
+      { re: palabras("tebe|tebou|teba|tvoj|tvoja|tvoje|tvojho|tvojej|tvojmu|tvojom|tvojím|tvoju|tvoji|tvojich|tvojim|tvojimi"), nombre: "tykanie («ty»)" },
+      {
+        re: palabras("zadaj|vypočítaj|spočítaj|vyber|klikni|zisti|skontroluj|porovnaj|skús|vyplň|uveď|pozri|získaj|skopíruj|zdieľaj|stiahni|otvor|pridaj|ulož|začni|napíš|použi|nastav|zvoľ|zmeň|odpočítaj|pripočítaj"),
+        nombre: "imperativo de tykanie (va -te)",
+      },
+      { re: palabras("môžeš|máš|chceš|vieš|dostaneš|platíš|zarábaš|vidíš|pracuješ|miňaš|ušetríš|musíš|potrebuješ|zaplatíš|budeš|dáš|zadáš|vyberieš"), nombre: "segunda persona de tykanie" },
+      { re: /[^.?!:„(\s]\s+(?:Vy|Vás|Vám|Vami|Váš|Vaša|Vaše|Vášho|Vášmu|Vašom|Vaším|Vašu|Vaši|Vašich|Vašim|Vašimi)(?!\p{L})/u, nombre: "«Vy» con mayúscula (va «vy»)" },
+    ],
+    formal: [],
+  },
   // Griego: un solo registro, el πληθυντικός ευγενείας de myAADE, gov.gr y los bancos (ADR 0002,
   // D20). Se atrapan los pronombres de la segunda del singular («εσύ», «σου»; «σε» no, porque también
   // es la preposición), los imperativos del singular que no se escriben igual que el aoristo de
@@ -241,6 +268,18 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
   // (ADR 0002, D21). Se atrapa la magázás: el «Ön» con sus casos (con mayúscula, como lo escriben
   // NAV y Ügyfélkapu; en minúscula «önt» es un verbo) y los imperativos corteses de un formulario
   // («kattintson», «adja meg», «válassza ki»), que en tegezés son «kattints», «add meg», «válaszd ki».
+  // Georgiano: un solo registro, თქვენ con imperativo cortés, como rs.ge, TBC y Bank of Georgia
+  // (ADR 0002, D26). Se atrapa la segunda del singular.
+  ka: {
+    informal: [
+      { re: /(?<![\u10D0-\u10FF])(?:შენ|შენი|შენს|შენმა|შენთვის|შენზე|შენგან|შენთან)(?![\u10D0-\u10FF])/u, nombre: "«შენ» (va «თქვენ»)" },
+      {
+        re: /(?<![\u10D0-\u10FF])(?:შეიყვანე|აირჩიე|გამოთვალე|დააჭირე|დააწკაპუნე|შეამოწმე|ნახე|გადახედე|შეცვალე|გააზიარე|დაამატე|ჩაწერე|მიუთითე|შეავსე|გადაწყვიტე|გახსენი|გადმოწერე|იყიდე|სცადე|გაითვალისწინე|გაიგე|დაიმახსოვრე|შეინახე|დააკოპირე|აიღე|იცი|გაქვს|გინდა|შეგიძლია|გჭირდება|გეხმარება)(?![\u10D0-\u10FF])/u,
+        nombre: "segunda del singular (va la forma cortés: «შეიყვანეთ», «აირჩიეთ», «გაქვთ»)",
+      },
+    ],
+    formal: [],
+  },
   hu: {
     informal: [],
     formal: [
@@ -267,6 +306,25 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
         nombre: "imperativo de «ti» en la prosa (va -te)",
       },
       { re: palabras("možeš|imaš|želiš|dobiješ|dobijaš|plaćaš|zarađuješ|vidiš|radiš|trošiš|uštediš|moraš|ćeš|znaš|unosiš|biraš|računaš|jesi|nisi|treba ti"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Vi|Vas|Vama|Vaš|Vaša|Vaše|Vašeg|Vašem|Vašoj|Vašu|Vaši|Vaših|Vašim|Vašima)(?!\p{L})/u, nombre: "«Vi» con mayúscula (va «vi»)" },
+    ],
+    formal: [],
+  },
+  // Croata: un solo registro, el de los bancos y Porezna uprava (obraćanje na «vi», en minúscula, con
+  // imperativo de segunda del plural: «unesite», «odaberite»; ADR 0002, D27). Los botones van en la forma
+  // corta de las interfaces croatas («Izračunaj», «Kopiraj», «Podijeli», «Preuzmi», «Dodaj», «Otvori»,
+  // «Prikaži», «Pošalji», «Spremi»), así que esos verbos no se atrapan; sí el pronombre y los posesivos de
+  // «ti», los presentes de segunda del singular y los imperativos de un formulario que en la prosa van con
+  // -te, y el «Vi» con mayúscula a mitad de oración. Los imperativos que se escriben igual que la 3.ª
+  // persona del presente («promijeni», «koristi», «provjeri») o que un sustantivo no se buscan.
+  hr: {
+    informal: [
+      { re: palabras("ti|tebe|tebi|tobom|tvoj|tvoja|tvoje|tvog|tvoga|tvome|tvom|tvoju|tvoji|tvojih|tvojim|tvojima"), nombre: "obraćanje na «ti»" },
+      {
+        re: palabras("unesi|upiši|odaberi|izaberi|klikni|saznaj|oduzmi|zbroji|pogledaj"),
+        nombre: "imperativo de «ti» en la prosa (va -te)",
+      },
+      { re: palabras("možeš|imaš|želiš|dobiješ|dobivaš|plaćaš|zarađuješ|vidiš|radiš|trošiš|uštediš|moraš|ćeš|znaš|unosiš|biraš|računaš|jesi|nisi|treba ti"), nombre: "segunda persona del singular" },
       { re: /[^.?!:„(\s]\s+(?:Vi|Vas|Vama|Vaš|Vaša|Vaše|Vašeg|Vašem|Vašoj|Vašu|Vaši|Vaših|Vašim|Vašima)(?!\p{L})/u, nombre: "«Vi» con mayúscula (va «vi»)" },
     ],
     formal: [],
@@ -326,6 +384,23 @@ function reglasBg(texto: string): string[] {
   return p;
 }
 
+// Mongol (ADR 0002, D28): «ъ» solo aparece en préstamos rusos y aquí delata un texto copiado; letras de
+// otros cirílicos fuera; comillas «»; ningún sufijo de caso pegado a una cifra, a un símbolo o a un guion
+// («5-д», «₮-ийн», «20%-ийг»; «12-р сар» sí, es el ordinal); sin plural detrás de un número («3 өдрүүд»);
+// y las palabras que delatan ruso sin traducir. Las letras ө, ү no se revisan palabra por palabra.
+const RUSISMOS_MN = palabras("зарплата|зарплаты|сумма|суммы|расчет|рассчитать|калькулятор|калькулятора|налог|также|если|только|можно|для|будет|который|которая|которые|что|это");
+function reglasMn(texto: string): string[] {
+  const p: string[] = [];
+  if (/[ъЪ]/.test(texto)) p.push("«ъ»: no va en mongol nativo");
+  if (/[іїєґўқғңҳәұһјљњћџђІЇЄҐЎҚҒҢҲӘҰҺ]/.test(texto)) p.push("letra de otro alfabeto cirílico en un texto mongol");
+  if (/["“”„](?=\p{sc=Cyrillic})|(?<=\p{sc=Cyrillic}[.,?:;]?)["“”„]/u.test(texto)) p.push("comillas: en mongol van «»");
+  if (/[\d%₮][-‑]?(?:ийн|ын|ний|ны|ийг|ыг|д|т|г|ад|эд|од|өд|аас|ээс|оос|өөс|тай|тэй|той)(?!\p{L})/u.test(texto)) p.push("sufijo de caso pegado a una cifra (reescribir la frase, o «хувь», «төгрөг» con el sufijo)");
+  if (/\d\s+\p{L}+(?:ууд|үүд|нууд|нүүд)(?!\p{L})/u.test(texto)) p.push("plural detrás de un número (va singular: «3 өдөр»)");
+  const r = RUSISMOS_MN.exec(texto);
+  if (r) p.push(`«${r[0]}» es ruso, no mongol`);
+  return p;
+}
+
 function reglasRu(texto: string): string[] {
   const p: string[] = [];
   if (/[ёЁ]/.test(texto)) p.push("«ё»: en ruso se escribe «е» (ADR 0002, D17)");
@@ -360,6 +435,25 @@ function reglasCs(texto: string): string[] {
   const p: string[] = [];
   if (/[«»"”]/.test(texto)) p.push("comillas: en checo van „ “");
   if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en checo abren con „ (abajo)");
+  return p;
+}
+
+// Eslovaco (ADR 0002, D25): comillas „ “, ninguna letra propia del checo (ř, ě, ů) y ninguna palabra
+// que delate un texto checo adaptado. Las que también existen en eslovaco no se listan; «pro» y «co» se
+// miran con su caja exacta para no chocar con «iPhone 18 Pro» ni con CO2.
+const PALABRAS_CHECAS_SK = palabras(
+  "nebo|když|který|která|které|kterou|kterého|protože|jsou|jste|jsem|pouze|kolik|proč|částka|částku|sazba|sazby|sazbu|výsledek|jako|jak|pokud|jiný|jiná|jiné|zadejte|spočítejte|vypočítejte|zkopírujte|zkontrolujte|zkuste|spočítat|zdarma|týden|týdny|dny|tady|zde",
+);
+function reglasSk(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en eslovaco van „ “");
+  if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en eslovaco abren con „ (abajo)");
+  const sinUrls = texto.replace(/https?:\/\/\S+/g, "");
+  const checa = /[řěůŘĚŮ]/.exec(sinUrls);
+  if (checa) p.push(`letra checa «${checa[0]}» (en eslovaco no existe)`);
+  const palabra = PALABRAS_CHECAS_SK.exec(sinUrls);
+  if (palabra) p.push(`palabra checa «${palabra[0]}»`);
+  if (/(?<!\p{L})(?:pro|[Cc]o)(?!\p{L})/u.test(sinUrls)) p.push("palabra checa «pro» o «co» (en eslovaco «pre», «čo»)");
   return p;
 }
 
@@ -419,6 +513,55 @@ function reglasSr(texto: string, locale?: string): string[] {
   }
   const c = CROATA.exec(texto);
   if (c) p.push(`«${c[0]}» es del croata (en serbio: nedelja, hiljada, procenat, firma, porodica...)`);
+  return p;
+}
+
+// Georgiano: mkhedruli sin mayúsculas (mtavruli U+1C90 a U+1CBF y las escrituras antiguas U+10A0 a
+// U+10CF no van en la interfaz), comillas „ “, ningún sufijo pegado a una cifra o a un marcador y nada
+// de plural detrás de un número («3 დღე», nunca «3 დღეები»). Tampoco letras latinas o cirílicas
+// dentro de una palabra georgiana.
+const LETRA_KA = String.raw`[\u10D0-\u10FF]`;
+const PLURAL_TRAS_NUMERO_KA = new RegExp(String.raw`\d\s+(?:დღე|თვე|წლ|საათ|კვირ|წუთ|კალკულატორ|ქვეყნ|ლარ|დოლარ|ევრ|პროცენტ|ადამიან|შენატან|კილომეტრ|ლიტრ|მეტრ|კილოგრამ|კალორი)(?:ები|ებს|ების|ებში|ებით|ებმა|ებზე)(?!${LETRA_KA})`, "u");
+const SUFIJO_TRAS_CIFRA_KA = new RegExp(String.raw`(?:\d|%|\}|₾)-?(?:ში|ის|ს|თვის|ზე|დან|მდე|ით|მა)(?!${LETRA_KA})`, "u");
+const MEZCLA_KA = new RegExp(String.raw`${LETRA_KA}[a-zA-Z\u0400-\u04FF]|[a-zA-Z\u0400-\u04FF]${LETRA_KA}`, "u");
+
+function reglasKa(texto: string): string[] {
+  const p: string[] = [];
+  if (/[\u1C90-\u1CBF]/u.test(texto)) p.push("mtavruli: en la interfaz va mkhedruli, sin mayúsculas");
+  if (/[\u10A0-\u10CF\u2D00-\u2D2F]/u.test(texto)) p.push("escritura georgiana antigua (asomtavruli o nuskhuri)");
+  if (/[«»”]/.test(texto) || new RegExp(`"${LETRA_KA}|${LETRA_KA}"`, "u").test(texto)) p.push("comillas: en georgiano van „ “");
+  if (MEZCLA_KA.test(texto)) p.push("palabra que mezcla letras georgianas con latinas o cirílicas");
+  if (PLURAL_TRAS_NUMERO_KA.test(texto)) p.push("plural detrás de un número (en georgiano va en singular: «3 დღე»)");
+  if (SUFIJO_TRAS_CIFRA_KA.test(texto)) p.push("sufijo pegado a una cifra o marcador (va tras dos puntos o con una palabra delante)");
+  return p;
+}
+
+// Croata: comillas „ ” (abre abajo, cierra arriba), nada de «», "" ni “. Ijekavski siempre: una forma
+// ekavska («mesec», «vreme», «cena») delata un texto copiado del serbio. Y vocabulario croata: se atrapan
+// los serbismos comunes (plata por plaća, nedelja por tjedan, hiljada por tisuća, hleb por kruh, kurs por
+// tečaj, firma por tvrtka...), la sintaxis serbia con «da» («možete da unesete»; en croata, infinitivo) y
+// el «sa» delante de lo que no sea s, š, z, ž o «mnom» (en croata va «s»).
+const EKAVSKI_HR = palabras(
+  "mesec\\p{L}*|meseč\\p{L}*|cen[aeiu]|cenom|cenama|vreme|vredn\\p{L}*|vredi|vrede|svet|svetu|svetsk\\p{L}*|uvek|gde|ovde|negde|nigde|deo|delov\\p{L}*|deca|dece|dete|detet\\p{L}*|primer\\p{L}*|promen\\p{L}*|procen\\p{L}*|posle|ceo|cela|celo|celu|cele|mesto|mesta|reč|reči|mleko|lek|lekar\\p{L}*|telo|tela|belo|zahtev\\p{L}*|pre|podeli\\p{L}*|deli\\p{L}*|uspeo|uspelo|videti|hteti|razumeti|proveri\\p{L}*|provera|provere|uporedi\\p{L}*|poređen\\p{L}*",
+);
+const SERBISMOS_HR = palabras(
+  "plata|plate|platu|platom|platama|nedelj\\p{L}*|hiljad\\p{L}*|hleb\\p{L}*|procenat|procent\\p{L}*|firma|firme|firmu|firmi|firmom|firmama|porodic\\p{L}*|domaćinstv\\p{L}*|kurs|kursa|kursu|kursom|kursevi|uslov\\p{L}*|sajt\\p{L}*|saobraćaj\\p{L}*|bezbed\\p{L}*|takođe|šta|ko|niko|opšt\\p{L}*|opštin\\p{L}*|penzij\\p{L}*|penzioner\\p{L}*|poresk\\p{L}*|tačk\\p{L}*|tačn\\p{L}*|tačan|pregledač\\p{L}*|računar\\p{L}*|januar\\p{L}*|februar\\p{L}*|mart|avgust\\p{L}*|septembar|septembr\\p{L}*|oktobar|oktobr\\p{L}*|novembar|novembr\\p{L}*|decembar|decembr\\p{L}*|jul|jula|julu|jun|juna|junu|maj|maja|maju|evr[oa]|evrop\\p{L}*|ostrv\\p{L}*|okean\\p{L}*|nemačk\\p{L}*|ka|izveštaj\\p{L}*|obaveštenj\\p{L}*",
+);
+const DA_SERBIO_HR = /(?:^|[\s(])(?:možete|mogu|može|moraju|morate|mora|treba|trebate|trebaju|želite)\s+da\s+\p{L}/iu;
+const SA_HR = /(?:^|[\s(„])[Ss]a\s+(?!mnom)[aeiouAEIOUbcčćdđfghjklmnprtvBCČĆDĐFGHJKLMNPRTV]/u;
+const DA_LI_HR = /(?:^|[\s(„])[Dd]a li(?!\p{L})/u;
+function reglasHr(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"“]/.test(texto)) p.push("comillas: en croata van „ ”");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en croata");
+  const e = EKAVSKI_HR.exec(texto);
+  if (e) p.push(`ekavski «${e[0]}» (en croata, ijekavski)`);
+  // Topónimos reales que el detector leería como serbismos: Hlebine (Koprivnica) y Sveta Nedelja (dos unidades).
+  const s = SERBISMOS_HR.exec(texto.replace(/(?<!\p{L})(?:Hlebine|Sveta Nedelja)(?!\p{L})/gu, " "));
+  if (s) p.push(`serbismo «${s[0]}» (en croata: plaća, tjedan, tisuća, kruh, tečaj, tvrtka...)`);
+  if (DA_SERBIO_HR.test(texto)) p.push("«možete da» y similares: en croata va infinitivo («možete unijeti»)");
+  if (DA_LI_HR.test(texto)) p.push("«da li»: en croata, «je li», «jeste li»");
+  if (SA_HR.test(texto)) p.push("«sa»: en croata va «s», salvo delante de s, š, z, ž o «mnom»");
   return p;
 }
 
@@ -609,9 +752,13 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "ru") p.push(...reglasRu(texto));
   if (idioma === "ro") p.push(...reglasRo(texto));
   if (idioma === "cs") p.push(...reglasCs(texto));
+  if (idioma === "sk") p.push(...reglasSk(texto));
   if (idioma === "el") p.push(...reglasEl(texto));
   if (idioma === "hu") p.push(...reglasHu(texto));
   if (idioma === "sr") p.push(...reglasSr(texto, locale));
   if (idioma === "bg") p.push(...reglasBg(texto));
+  if (idioma === "ka") p.push(...reglasKa(texto));
+  if (idioma === "hr") p.push(...reglasHr(texto));
+  if (idioma === "mn") p.push(...reglasMn(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

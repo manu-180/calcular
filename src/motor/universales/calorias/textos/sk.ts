@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosSk: TextosUi<UiCalorias> = {
+  slug: "kalkulacka-kalorii",
+  ui: () => ({
+    sexo: "Pohlavie",
+    mujer: "Žena",
+    hombre: "Muž",
+    edad: "Vek",
+    peso: (u) => `Hmotnosť (${u})`,
+    altura: (u) => `Výška (${u})`,
+    pies: "Výška: stopy (ft)",
+    pulgadas: "Výška: palce (in)",
+    actividad: "Miera pohybovej aktivity",
+    sedentaria: "Minimálna (sedavý spôsob života)",
+    ligera: "Ľahká (1 až 3 dni v týždni)",
+    moderada: "Stredná (3 až 5 dní v týždni)",
+    alta: "Vysoká (6 až 7 dní v týždni)",
+    muyAlta: "Veľmi vysoká (náročný tréning alebo fyzická práca)",
+    objetivo: "Cieľ",
+    mantener: "Udržať hmotnosť",
+    bajar: "Postupne schudnúť",
+    subir: "Postupne pribrať",
+    basal: "Bazálny metabolizmus (kcal za deň)",
+    basalAyuda: "Energia, ktorú vaše telo spotrebuje v úplnom pokoji.",
+    mantenimiento: "Kalórie na udržanie hmotnosti (kcal za deň)",
+    calObjetivo: "Kalórie pre váš cieľ (kcal za deň)",
+    calObjetivoAyuda: "Mierna zmena: o 500 kcal denne menej na chudnutie a o 300 kcal viac na priberanie.",
+    errorEdad: "Vzorec je určený pre ľudí vo veku 15 až 100 rokov.",
+    errorPeso: "Hmotnosť musí byť väčšia ako nula.",
+    errorAltura: "Výška musí byť väčšia ako nula.",
+    notaMinimo: (kcal) => `Pri chudnutí neznižujeme denný príjem pod ${kcal} kcal. Ak chcete jesť menej, poraďte sa s odborníkom.`,
+    aviso: "Ide o odhad podľa vzorca Mifflin-St Jeor. Každé telo je iné: výpočet nenahrádza konzultáciu s lekárom ani výživovým poradcom.",
+  }),
+};

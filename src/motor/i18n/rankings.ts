@@ -3,10 +3,12 @@ import type { IdRanking } from "../rankings/rutas";
 import type { Idioma, Trato } from "../tipos";
 import { pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
-import { formaUk, pluralBg, pluralUk } from "./plural";
+import { conteoMn, formaUk, pluralBg, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
+import { pluralHr } from "./plural";
 import { formaRu, pluralRu } from "./plural";
 import { formaCs, pluralCs } from "./plural";
+import { formaSk, pluralSk } from "./plural";
 import { GRAMATICA } from "./gramatica";
 import { pluralEl } from "./plural";
 import { pluralHe, type FormasHe } from "./hebreo";
@@ -3744,7 +3746,482 @@ const bg: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// ───────────────────────────── sk ─────────────────────────────
+
+// Eslovaco (ADR 0002, D25): impersonal, como el resto de los rankings. La posición va con el ordinal
+// en cifra y punto (Slovensko: 27. miesto z 41), que en eslovaco no concuerda con nada.
+const krajinySk = (n: number | string) => pluralSk(n, "krajina", "krajiny", "krajín");
+
+const sk: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Rebríčky krajín",
+    seo: {
+      titulo: ["Rebríčky krajín podľa mzdy a daní", "Rebríčky krajín"],
+      descripcion: (n) => `Kde rovnaká mzda vystačí najďalej, Deň daňovej slobody a koľko zostane zo zvýšenia mzdy v ${n} krajinách. Oficiálne údaje, aktualizácia každý deň.`,
+    },
+    ceja: "Otvorené dáta",
+    h1: "Mzdy a dane, krajina po krajine",
+    bajada: (n) => `${krajinySk(n)} s rovnakou kúpnou silou, každá s vlastnou oficiálnou kalkulačkou. Rebríčky sa aktualizujú samy každý deň.`,
+    actualizado: (f) => `Aktualizované ${f}`,
+    ver: "Zobraziť rebríček",
+    niveles: { titulo: "Východisková mzda", nombres: { bajo: "Nízka mzda", medio: "Stredná mzda", alto: "Vysoká mzda" }, anual: (m) => `${m} ročne` },
+    tramos: { titulo: "Výška zvýšenia", nombre: (a, b) => `Z ${a} na ${b}` },
+    referencia: {
+      nivel: (m) => `hrubá mzda ${m} medzinárodných dolárov ročne`,
+      tramo: (a, b) => `zvýšenie hrubej mzdy z ${a} na ${b} medzinárodných dolárov ročne`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${p}. miesto z ${total}`,
+    de: (t) => `z ${t}`,
+    empate: (o) => (Number(o) === 1 ? "rovnako ako jedna ďalšia krajina" : `rovnako ako ${formaSk(o, "ďalšia", "ďalšie", "ďalších")} ${krajinySk(o)}`),
+    fuera: (pais) => `${pais} zatiaľ v týchto rebríčkoch nie je: na porovnanie je potrebná kalkulačka čistej mzdy, ktorá ešte nie je hotová.`,
+    lider: "Prvé miesto v rebríčku",
+    global: (n) => `${krajinySk(n)} od prvej po poslednú`,
+    valores: {
+      porMes: (m) => `${m} mesačne`,
+      ningunDia: "Ani jeden deň",
+      deCada: (n) => `${n} zo 100`,
+      carga: (pct) => `${pct} na daň z príjmov a odvody`,
+      cargaAumento: (pct) => `${pct} zvýšenia ide na dane a odvody`,
+    },
+    cambio: {
+      titulo: (mes) => `Zmena oproti mesiacu: ${mes}`,
+      sube: (n) => `O ${pluralSk(n, "priečku", "priečky", "priečok")} vyššie`,
+      baja: (n) => `O ${pluralSk(n, "priečku", "priečky", "priečok")} nižšie`,
+      igual: "Bez zmeny",
+      nuevo: "Novo v rebríčku",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Miesto",
+      pais: "Krajina",
+      edicion: "Táto verzia",
+      unidad: "V medzinárodných dolároch",
+    },
+    kit: {
+      titulo: "Pre médiá",
+      bajada: "Veta, graf a odkaz na tento rebríček, pripravené na zverejnenie.",
+      compartir: "Zdieľať",
+      descargar: "Stiahnuť graf",
+      copiar: "Skopírovať citáciu",
+      copiado: "Citácia je skopírovaná",
+      enlace: "Odkaz je skopírovaný",
+      compartido: "Odoslané",
+      error: "Kopírovanie sa nepodarilo. Text vyššie možno skopírovať ručne.",
+      cita: (frase, ranking, ref, fecha) => `${frase} v rebríčku „${ranking}“ (${ref}). Zdroj: CalcularYa, údaje k ${fecha}.`,
+      texto: (frase, ranking) => `${frase} v rebríčku „${ranking}“.`,
+      alt: (ranking) => `Graf rebríčka „${ranking}“`,
+    },
+    metodo: {
+      titulo: "Ako rebríček vzniká",
+      bajada: "Každá krajina prejde svojou oficiálnou kalkulačkou čistej mzdy s dnešnými pravidlami. Krajiny sa potom porovnajú pri rovnakej kúpnej sile.",
+      niveles: (b, m, a) => `Východiskové mzdy: ${b}, ${m} a ${a} medzinárodných dolárov v hrubom ročne.`,
+      empates: "Dve krajiny s rovnakou hodnotou v tabuľke zdieľajú miesto a ďalšie sa preskočí (1, 2, 2, 4).",
+      historial: "Zmena miesta sa meria oproti snímke rebríčka, ktorá sa ukladá každý mesiac. Bez snímky za minulý mesiac sa zmena nezobrazuje.",
+      actualizacion: "Tabuľka sa prepočítava každý deň s platnými údajmi každej krajiny. Nová krajina pribudne, hneď ako začne fungovať jej kalkulačka.",
+      ver: "Úplná metodika",
+    },
+    datos: {
+      titulo: "Otvorené dáta",
+      bajada: "Čísla, z ktorých tieto rebríčky vychádzajú, krajina po krajine, vo formátoch JSON a CSV. Aktualizujú sa každý deň.",
+      json: "Dáta v JSON",
+      csv: "Dáta v CSV",
+      licencia: "Licencia CC BY 4.0: dáta možno voľne používať, šíriť a zverejňovať s uvedením CalcularYa a odkazom na túto stránku.",
+      atribucion: "Odporúčaná citácia",
+    },
+    mundo: { titulo: "S konkrétnou mzdou", texto: (n) => `Na výpočet s vlastnou mzdou a dátumom každej krajiny slúži stránka „${n}“.`, ir: "Vypočítať" },
+    otros: "Ďalšie rebríčky",
+    rankings: {
+      rinde: {
+        titulo: "Kde rovnaká mzda vystačí najďalej",
+        corto: "Kde mzda vystačí najďalej",
+        seo: ["Kde rovnaká mzda vystačí najďalej: rebríček krajín", "Kde rovnaká mzda vystačí najďalej"],
+        descripcion: (n) => `Rovnaká mzda s rovnakou kúpnou silou v ${n} krajinách: koľko zostane v čistom po daňových pravidlách každej z nich. Aktualizácia každý deň.`,
+        bajada: "Rovnaká hrubá mzda s rovnakou kúpnou silou prejde pravidlami každej krajiny. Hore sú tie, kde zostane v čistom najviac.",
+        metrica: "V čistom mesačne",
+        carga: "Dane a odvody",
+        como: "Čistá mesačná mzda je priemer za 12 mesiacov, v medzinárodných dolároch.",
+      },
+      libertad: {
+        titulo: "Deň daňovej slobody podľa krajín",
+        corto: "Deň daňovej slobody",
+        seo: ["Deň daňovej slobody podľa krajín: rebríček", "Deň daňovej slobody podľa krajín"],
+        descripcion: (n) => `Deň v roku, keď sú zaplatené daň z príjmov a odvody, s rovnakou mzdou v ${n} krajinách. Aktualizácia každý deň.`,
+        bajada: "Deň v roku, keď sú zaplatené daň z príjmov a odvody, s rovnakou mzdou v každej krajine. Hore sú tie, kde príde najskôr.",
+        metrica: "Práca pre štát do",
+        carga: "Dane a odvody",
+        como: "Dátum rozkladá dane do roka od 1. januára: pri daňovom zaťažení 30 % sa pre štát pracuje 30 % roka.",
+      },
+      aumento: {
+        titulo: "Koľko zostane zo zvýšenia mzdy",
+        corto: "Čo zostane zo zvýšenia",
+        seo: ["Koľko zostane zo zvýšenia mzdy: rebríček krajín", "Koľko zostane zo zvýšenia mzdy"],
+        descripcion: (n) => `Zo 100 pridaných k hrubej mzde koľko zostane po dani z príjmov a odvodoch v ${n} krajinách. Aktualizácia každý deň.`,
+        bajada: "Zo 100 pridaných k hrubej mzde koľko sa skutočne dostane do peňaženky po dani z príjmov a odvodoch. Hore sú tie, kde zostane najviac.",
+        metrica: "Zostane zo 100",
+        carga: "Hraničná sadzba",
+        como: "Je to hraničná sadzba medzi dvoma mzdami: podiel zvýšenia, ktorý odíde na dane a odvody.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── ka ─────────────────────────────
+
+// Georgiano (ADR 0002, D26): impersonal, como el resto de los rankings. La posición va en aposición,
+// con el número tras la palabra («საქართველო: ადგილი 27, სულ 41 ქვეყანა»), y ningún sufijo se pega a
+// una cifra ni a un monto: dos puntos, paréntesis o un sustantivo detrás sin plural («2 ადგილით»).
+const ka: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "ქვეყნების რეიტინგი",
+    seo: {
+      titulo: ["ქვეყნების რეიტინგი: ხელფასი და გადასახადები", "ქვეყნების რეიტინგი"],
+      descripcion: (n) => `სად რჩება მეტი იმავე ხელფასიდან, თავისუფლების დღე და მომატების ნაშთი, ${n} ქვეყნის მონაცემებით. ყოველდღე ახლდება.`,
+    },
+    ceja: "ღია მონაცემები",
+    h1: "ხელფასები და გადასახადები ქვეყნების მიხედვით",
+    bajada: (n) => `${n} ქვეყანა თანაბარი მსყიდველობითი უნარით, თითოეული საკუთარი ოფიციალური კალკულატორით. რეიტინგები ყოველდღე ავტომატურად ახლდება.`,
+    actualizado: (f) => `განახლდა: ${f}`,
+    ver: "რეიტინგის გახსნა",
+    niveles: { titulo: "საწყისი ხელფასი", nombres: { bajo: "დაბალი ხელფასი", medio: "საშუალო ხელფასი", alto: "მაღალი ხელფასი" }, anual: (m) => `წელიწადში: ${m}` },
+    tramos: { titulo: "მომატების ოდენობა", nombre: (a, b) => `მომატება (იყო ${a}, გახდა ${b})` },
+    referencia: {
+      nivel: (m) => `ხელფასი დაბეგვრამდე: ${m} საერთაშორისო დოლარი წელიწადში`,
+      tramo: (a, b) => `ხელფასის მომატება დაბეგვრამდე: იყო ${a}, გახდა ${b} საერთაშორისო დოლარი წელიწადში`,
+    },
+    posicion: (pais, p, total) => `${pais}: ადგილი ${p}, სულ ${total} ქვეყანა`,
+    de: (t) => `${t} ქვეყნიდან`,
+    empate: (o) => (Number(o) === 1 ? "იგივე ადგილი კიდევ ერთ ქვეყანასთან" : `იგივე ადგილი კიდევ ${o} ქვეყანასთან`),
+    fuera: (pais) => `${pais}: ამ რეიტინგებში ჯერ არ მონაწილეობს. შედარებისთვის ხელფასის კალკულატორია საჭირო, ის კი ჯერ მზად არ არის.`,
+    lider: "რეიტინგის სათავეში",
+    global: (n) => `${n} ქვეყანა პირველიდან ბოლომდე`,
+    valores: {
+      porMes: (m) => `თვეში: ${m}`,
+      ningunDia: "არც ერთი დღე",
+      deCada: (n) => `${n} ერთეული ყოველი 100 ერთეულიდან`,
+      carga: (pct) => `საშემოსავლო გადასახადი და შენატანები: ${pct}`,
+      cargaAumento: (pct) => `მომატებიდან გადასახადებსა და შენატანებს მიაქვს: ${pct}`,
+    },
+    cambio: {
+      titulo: (mes) => `ცვლილება წინა გაზომვის შემდეგ (${mes})`,
+      sube: (n) => `${n} ადგილით ზემოთ`,
+      baja: (n) => `${n} ადგილით ქვემოთ`,
+      igual: "უცვლელი",
+      nuevo: "ახალია რეიტინგში",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "ადგილი",
+      pais: "ქვეყანა",
+      edicion: "ეს გამოცემა",
+      unidad: "საერთაშორისო დოლარში",
+    },
+    kit: {
+      titulo: "პრესისთვის",
+      bajada: "ფრაზა, დიაგრამა და ბმული ამ რეიტინგისთვის, გამოსაქვეყნებლად მზად.",
+      compartir: "გაზიარება",
+      descargar: "დიაგრამის ჩამოტვირთვა",
+      copiar: "ციტატის კოპირება",
+      copiado: "ციტატა დაკოპირდა",
+      enlace: "ბმული დაკოპირდა",
+      compartido: "გაგზავნილია",
+      error: "კოპირება ვერ მოხერხდა. ზემოთ მოცემული ტექსტი ხელითაც შეიძლება დაკოპირდეს.",
+      cita: (frase, ranking, ref, fecha) => `${frase}. რეიტინგი: „${ranking}“ (${ref}). წყარო: CalcularYa, მონაცემების თარიღი: ${fecha}.`,
+      texto: (frase, ranking) => `${frase}. რეიტინგი: „${ranking}“.`,
+      alt: (ranking) => `დიაგრამა: „${ranking}“`,
+    },
+    metodo: {
+      titulo: "როგორ დგება რეიტინგი",
+      bajada: "თითოეული ქვეყანა საკუთარ ოფიციალურ ხელფასის კალკულატორზე გადის, დღეს მოქმედი წესებით. შემდეგ მათ თანაბარი მსყიდველობითი უნარით ვადარებთ.",
+      niveles: (b, m, a) => `საწყისი ხელფასები დაბეგვრამდე, წელიწადში: ${b}, ${m} და ${a} საერთაშორისო დოლარი.`,
+      empates: "ორი ქვეყანა, რომელთაც ცხრილში ერთი და იგივე მნიშვნელობა აქვთ, ერთ ადგილს იკავებს, მომდევნო კი ერთ ადგილს ტოვებს (1, 2, 2, 4).",
+      historial: "ადგილის ცვლილებას ვზომავთ რეიტინგის ყოველთვიურად შენახულ ასლთან შედარებით. წინა თვის ასლის გარეშე ცვლილება არ ჩანს.",
+      actualizacion: "ცხრილი ყოველდღე ხელახლა ითვლება თითოეული ქვეყნის მოქმედი მონაცემებით. ახალი ქვეყანა მაშინ ემატება, როცა მისი კალკულატორი ამოქმედდება.",
+      ver: "სრული მეთოდოლოგია",
+    },
+    datos: {
+      titulo: "ღია მონაცემები",
+      bajada: "რეიტინგების მონაცემები ქვეყნების მიხედვით, JSON და CSV ფორმატში. ყოველდღე ახლდება.",
+      json: "მონაცემები JSON ფორმატში",
+      csv: "მონაცემები CSV ფორმატში",
+      licencia: "ლიცენზია CC BY 4.0: მონაცემების თავისუფლად გამოყენება, გავრცელება და გამოქვეყნება შეიძლება CalcularYa-ს მითითებით და ამ გვერდის ბმულით.",
+      atribucion: "რეკომენდებული ციტირება",
+    },
+    mundo: { titulo: "კონკრეტული ხელფასით", texto: (n) => `გვერდი, რომელიც საკუთარი ხელფასითა და თითოეული ქვეყნის თარიღით ითვლის: „${n}“.`, ir: "გამოთვლა" },
+    otros: "სხვა რეიტინგები",
+    rankings: {
+      rinde: {
+        titulo: "სად რჩება მეტი იმავე ხელფასიდან",
+        corto: "სად რჩება მეტი ხელფასიდან",
+        seo: ["სად რჩება მეტი იმავე ხელფასიდან: რეიტინგი", "სად რჩება მეტი იმავე ხელფასიდან"],
+        descripcion: (n) => `იგივე ხელფასი თანაბარი მსყიდველობითი უნარით ${n} ქვეყანაში: რა რჩება ხელზე თითოეულის წესებით. ყოველდღე ახლდება.`,
+        bajada: "იგივე ხელფასი დაბეგვრამდე, თანაბარი მსყიდველობითი უნარით, ყველა ქვეყნის წესებს გადის. სათავეში ის ქვეყნებია, სადაც ხელზე ყველაზე მეტი რჩება.",
+        metrica: "ხელზე, თვეში",
+        carga: "გადასახადები და შენატანები",
+        como: "ხელზე ასაღები თვიური ხელფასი 12 თვის საშუალოა, საერთაშორისო დოლარში.",
+      },
+      libertad: {
+        titulo: "საგადასახადო თავისუფლების დღე ქვეყნების მიხედვით",
+        corto: "თავისუფლების დღე",
+        seo: ["საგადასახადო თავისუფლების დღე: რეიტინგი", "საგადასახადო თავისუფლების დღე"],
+        descripcion: (n) => `წლის დღე, როცა საშემოსავლო გადასახადი და შენატანები იფარება, ერთი ხელფასით ${n} ქვეყანაში. ყოველდღე ახლდება.`,
+        bajada: "წლის დღე, როცა საშემოსავლო გადასახადი და შენატანები იფარება, ერთი და იმავე ხელფასით ყველა ქვეყანაში. სათავეში ის ქვეყნებია, სადაც ეს დღე ყველაზე ადრე დგება.",
+        metrica: "სახელმწიფოსთვის მუშაობა ამ თარიღამდე",
+        carga: "გადასახადები და შენატანები",
+        como: "თარიღი გადასახადებს წელიწადზე 1 იანვრიდან ანაწილებს: თუ გადასახადებს 30 პროცენტი მიაქვს, ადამიანი წლის 30 პროცენტის განმავლობაში სახელმწიფოსთვის მუშაობს.",
+      },
+      aumento: {
+        titulo: "რა რჩება ხელფასის მომატებიდან",
+        corto: "რა რჩება მომატებიდან",
+        seo: ["რა რჩება ხელფასის მომატებიდან: რეიტინგი", "რა რჩება ხელფასის მომატებიდან"],
+        descripcion: (n) => `ყოველი 100 ერთეული მომატებიდან რა რჩება საშემოსავლო გადასახადისა და შენატანების შემდეგ, ${n} ქვეყანაში.`,
+        bajada: "დაბეგვრამდე ყოველი 100 ერთეული მომატებიდან რა ხვდება რეალურად ჯიბეში საშემოსავლო გადასახადისა და შენატანების შემდეგ. სათავეში ის ქვეყნებია, სადაც ყველაზე მეტი რჩება.",
+        metrica: "რჩება 100 ერთეულიდან",
+        carga: "ზღვრული საგადასახადო განაკვეთი",
+        como: "ეს ზღვრული განაკვეთია ორ ხელფასს შორის: მომატების ის ნაწილი, რომელიც გადასახადებსა და შენატანებზე მიდის.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── hr ─────────────────────────────
+
+// Croata (ADR 0002, D27): impersonal, como el resto de los rankings. La posición va con el ordinal en cifra
+// y punto («Hrvatska: 27. mjesto od 41»), que no concuerda con nada.
+const zemljeHr = (n: number | string) => pluralHr(n, "zemlja", "zemlje", "zemalja");
+// Tras «u»: «u 21 zemlji», «u 22 zemlje», «u 25 zemalja».
+const zemljamaUHr = (n: number | string) => pluralHr(n, "zemlji", "zemlje", "zemalja");
+
+const hr: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Ljestvice zemalja",
+    seo: {
+      titulo: ["Ljestvice zemalja po plaći i porezima", "Ljestvice zemalja"],
+      descripcion: (n) => `Gdje ista plaća vrijedi najviše, Dan porezne slobode i koliko ostaje od povišice u ${zemljamaUHr(n)}. Službeni podaci, ažurirano svakog dana.`,
+    },
+    ceja: "Otvoreni podaci",
+    h1: "Plaće i porezi, zemlja po zemlja",
+    bajada: (n) => `${zemljeHr(n)} s istom kupovnom moći, svaka sa svojim službenim kalkulatorom. Ljestvice se ažuriraju same svakog dana.`,
+    actualizado: (f) => `Ažurirano ${f}`,
+    ver: "Prikaži ljestvicu",
+    niveles: { titulo: "Polazna plaća", nombres: { bajo: "Niska plaća", medio: "Srednja plaća", alto: "Visoka plaća" }, anual: (m) => `${m} godišnje` },
+    tramos: { titulo: "Iznos povišice", nombre: (a, b) => `S ${a} na ${b}` },
+    referencia: {
+      nivel: (m) => `bruto plaća od ${m} međunarodnih dolara godišnje`,
+      tramo: (a, b) => `povišica bruto plaće s ${a} na ${b} međunarodnih dolara godišnje`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${p}. mjesto od ${total}`,
+    de: (t) => `od ${t}`,
+    empate: (o) => (Number(o) === 1 ? "isto kao još jedna zemlja" : `isto kao još ${zemljeHr(o)}`),
+    fuera: (pais) => `${pais} još nije na ovim ljestvicama: za usporedbu je potreban kalkulator neto plaće, koji još nije gotov.`,
+    lider: "Prvo mjesto na ljestvici",
+    global: (n) => `${zemljeHr(n)} od prve do posljednje`,
+    valores: {
+      porMes: (m) => `${m} mjesečno`,
+      ningunDia: "Nijedan dan",
+      deCada: (n) => `${n} od 100`,
+      carga: (pct) => `${pct} na porez na dohodak i doprinose`,
+      cargaAumento: (pct) => `${pct} povišice odlazi na poreze i doprinose`,
+    },
+    cambio: {
+      titulo: (mes) => `Promjena u odnosu na mjesec: ${mes}`,
+      sube: (n) => `Više za ${pluralHr(n, "mjesto", "mjesta", "mjesta")}`,
+      baja: (n) => `Niže za ${pluralHr(n, "mjesto", "mjesta", "mjesta")}`,
+      igual: "Bez promjene",
+      nuevo: "Novo na ljestvici",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Mjesto",
+      pais: "Zemlja",
+      edicion: "Ovo izdanje",
+      unidad: "U međunarodnim dolarima",
+    },
+    kit: {
+      titulo: "Za medije",
+      bajada: "Rečenica, grafikon i poveznica na ovu ljestvicu, spremni za objavu.",
+      compartir: "Podijeli",
+      descargar: "Preuzmi grafikon",
+      copiar: "Kopiraj citat",
+      copiado: "Citat je kopiran",
+      enlace: "Poveznica je kopirana",
+      compartido: "Poslano",
+      error: "Kopiranje nije uspjelo. Tekst iznad može se kopirati ručno.",
+      cita: (frase, ranking, ref, fecha) => `${frase} na ljestvici „${ranking}” (${ref}). Izvor: CalcularYa, stanje podataka: ${fecha}`,
+      texto: (frase, ranking) => `${frase} na ljestvici „${ranking}”.`,
+      alt: (ranking) => `Grafikon ljestvice „${ranking}”`,
+    },
+    metodo: {
+      titulo: "Kako nastaje ljestvica",
+      bajada: "Svaka zemlja prolazi kroz svoj službeni kalkulator neto plaće s današnjim pravilima. Zemlje se zatim uspoređuju uz istu kupovnu moć.",
+      niveles: (b, m, a) => `Polazne plaće: ${b}, ${m} i ${a} međunarodnih dolara bruto godišnje.`,
+      empates: "Dvije zemlje s istom vrijednošću u tablici dijele mjesto, a sljedeće se preskače (1, 2, 2, 4).",
+      historial: "Promjena mjesta mjeri se u odnosu na snimku ljestvice koja se čuva svakog mjeseca. Bez snimke za prošli mjesec promjena se ne prikazuje.",
+      actualizacion: "Tablica se preračunava svakog dana s važećim podacima svake zemlje. Nova zemlja dodaje se čim proradi njezin kalkulator.",
+      ver: "Cijela metodologija",
+    },
+    datos: {
+      titulo: "Otvoreni podaci",
+      bajada: "Brojevi na kojima se temelje ove ljestvice, zemlja po zemlja, u formatima JSON i CSV. Ažuriraju se svakog dana.",
+      json: "Podaci u JSON-u",
+      csv: "Podaci u CSV-u",
+      licencia: "Licencija CC BY 4.0: podaci se mogu slobodno koristiti, dijeliti i objavljivati uz navođenje CalcularYa i poveznicu na ovu stranicu.",
+      atribucion: "Preporučeni citat",
+    },
+    mundo: { titulo: "S konkretnom plaćom", texto: (n) => `Za izračun s vlastitom plaćom i datumom svake zemlje služi stranica „${n}”.`, ir: "Izračunaj" },
+    otros: "Druge ljestvice",
+    rankings: {
+      rinde: {
+        titulo: "Gdje ista plaća vrijedi najviše",
+        corto: "Gdje plaća vrijedi najviše",
+        seo: ["Gdje ista plaća vrijedi najviše: ljestvica zemalja", "Gdje ista plaća vrijedi najviše"],
+        descripcion: (n) => `Ista plaća uz istu kupovnu moć u ${zemljamaUHr(n)}: koliko neto ostaje po poreznim pravilima svake od njih. Ažurirano svakog dana.`,
+        bajada: "Ista bruto plaća uz istu kupovnu moć prolazi kroz pravila svake zemlje. Na vrhu su one u kojima neto ostaje najviše.",
+        metrica: "Neto mjesečno",
+        carga: "Porezi i doprinosi",
+        como: "Neto mjesečna plaća je prosjek za 12 mjeseci, u međunarodnim dolarima.",
+      },
+      libertad: {
+        titulo: "Dan porezne slobode po zemljama",
+        corto: "Dan porezne slobode",
+        seo: ["Dan porezne slobode po zemljama: ljestvica", "Dan porezne slobode po zemljama"],
+        descripcion: (n) => `Dan u godini kada su plaćeni porez na dohodak i doprinosi, s istom plaćom u ${zemljamaUHr(n)}. Ažurirano svakog dana.`,
+        bajada: "Dan u godini kada su plaćeni porez na dohodak i doprinosi, s istom plaćom u svakoj zemlji. Na vrhu su one u kojima stiže najranije.",
+        metrica: "Rad za državu do",
+        carga: "Porezi i doprinosi",
+        como: "Datum raspoređuje poreze na godinu od 1. siječnja: uz porezno opterećenje od 30 % za državu se radi 30 % godine.",
+      },
+      aumento: {
+        titulo: "Koliko ostaje od povišice",
+        corto: "Što ostaje od povišice",
+        seo: ["Koliko ostaje od povišice: ljestvica zemalja", "Koliko ostaje od povišice"],
+        descripcion: (n) => `Od 100 dodanih na bruto plaću, koliko ostaje nakon poreza na dohodak i doprinosa u ${zemljamaUHr(n)}. Ažurirano svakog dana.`,
+        bajada: "Od 100 dodanih na bruto plaću, koliko zaista stiže u novčanik nakon poreza na dohodak i doprinosa. Na vrhu su one u kojima ostaje najviše.",
+        metrica: "Ostaje od 100",
+        carga: "Granična stopa",
+        como: "To je granična stopa između dviju plaća: dio povišice koji odlazi na poreze i doprinose.",
+      },
+    },
+  },
+};
+
+// Mongol (ADR 0002, D28): impersonal, como el resto de los rankings. Los países con conteoMn, sin plural
+// tras la cifra («40 улсад»); ningún sufijo va pegado a un número o a una interpolación.
+const enPaisesMnR = (n: number) => conteoMn(n, "улсад");
+
+const mn: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Улс орнуудын жагсаалт",
+    seo: {
+      titulo: ["Цалин, татвараар улс орнуудын жагсаалт", "Улс орнуудын жагсаалт"],
+      descripcion: (n) => `${enPaisesMnR(n)} ижил цалин хаана хамгийн их хүрэлцдэг, Татварын эрх чөлөөний өдөр хэзээ ирдэг, цалингийн нэмэгдлээс хэр их үлддэг вэ. Албан ёсны мэдээлэл, өдөр бүр шинэчлэгдэнэ.`,
+    },
+    ceja: "Нээлттэй мэдээлэл",
+    h1: "Цалин, татвар: улс бүрээр",
+    bajada: (n) => `${conteoMn(n, "улс")} ижил худалдан авах чадвараар, тус бүр өөрийн албан ёсны тооцоолууртай. Жагсаалт өдөр бүр автоматаар шинэчлэгдэнэ.`,
+    actualizado: (f) => `Шинэчилсэн огноо: ${f}`,
+    ver: "Жагсаалтыг үзэх",
+    niveles: { titulo: "Үндсэн цалин", nombres: { bajo: "Бага цалин", medio: "Дундаж цалин", alto: "Өндөр цалин" }, anual: (m) => `Жилд ${m}` },
+    tramos: { titulo: "Нэмэгдлийн хэмжээ", nombre: (a, b) => `${a} дүнгээс ${b} хүртэл` },
+    referencia: {
+      nivel: (m) => `жилийн нийт цалин ${m} олон улсын доллар`,
+      tramo: (a, b) => `жилийн нийт цалинг ${a} олон улсын доллараас ${b} олон улсын доллар хүртэл нэмэгдүүлэх`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${total} улсаас ${p}-р байр`,
+    de: (t) => `нийт ${t}`,
+    empate: (o) => (Number(o) === 1 ? "өөр нэг улстай тэнцүү" : `өөр ${conteoMn(o, "улстай")} тэнцүү`),
+    fuera: (pais) => `${pais} одоогоор эдгээр жагсаалтад ороогүй: харьцуулахад гарт авах цалингийн тооцоолуур хэрэгтэй бөгөөд энэ нь хараахан бэлэн болоогүй байна.`,
+    lider: "Жагсаалтын эхний байр",
+    global: (n) => `${conteoMn(n, "улс")}, эхнээс нь сүүл хүртэл`,
+    valores: {
+      porMes: (m) => `Сард ${m}`,
+      ningunDia: "Нэг ч өдөр биш",
+      deCada: (n) => `100 нэгжээс ${n}`,
+      carga: (pct) => `${pct} нь орлогын албан татвар, шимтгэлд`,
+      cargaAumento: (pct) => `Нэмэгдлийн ${pct} нь татвар, шимтгэлд очно`,
+    },
+    cambio: {
+      titulo: (mes) => `Сарын өөрчлөлт: ${mes}`,
+      sube: (n) => `${conteoMn(n, "байр")} дээшилсэн`,
+      baja: (n) => `${conteoMn(n, "байр")} доошилсон`,
+      igual: "Өөрчлөлтгүй",
+      nuevo: "Жагсаалтад шинээр орсон",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Байр",
+      pais: "Улс",
+      edicion: "Энэ хувилбар",
+      unidad: "Олон улсын доллараар",
+    },
+    kit: {
+      titulo: "Хэвлэл мэдээлэлд",
+      bajada: "Энэ жагсаалтын өгүүлбэр, график, холбоос нийтлэхэд бэлэн.",
+      compartir: "Хуваалцах",
+      descargar: "График татаж авах",
+      copiar: "Ишлэл хуулах",
+      copiado: "Ишлэл хуулагдлаа",
+      enlace: "Холбоос хуулагдлаа",
+      compartido: "Илгээгдлээ",
+      error: "Хуулж чадсангүй. Дээрх текстийг гараар хуулж болно.",
+      cita: (frase, ranking, ref, fecha) => `${frase}, «${ranking}» жагсаалт (${ref}). Эх сурвалж: CalcularYa, ${fecha} өдрийн мэдээлэл`,
+      texto: (frase, ranking) => `${frase}, «${ranking}» жагсаалт.`,
+      alt: (ranking) => `«${ranking}» жагсаалтын график`,
+    },
+    metodo: {
+      titulo: "Жагсаалтыг хэрхэн гаргасан бэ",
+      bajada: "Улс бүрийг өөрийн албан ёсны гарт авах цалингийн тооцоолуураар өнөөдрийн дүрмээр тооцоолдог. Дараа нь улсуудыг ижил худалдан авах чадвараар харьцуулдаг.",
+      niveles: (b, m, a) => `Үндсэн цалин: жилд нийт ${b}, ${m} ба ${a} олон улсын доллар.`,
+      empates: "Хүснэгтэд ижил утгатай хоёр улс нэг байрыг хуваалцах бөгөөд дараагийн улс нэг байр алгасна (1, 2, 2, 4).",
+      historial: "Байрны өөрчлөлтийг сар бүр хадгалдаг жагсаалтын агшин зургаас хэмждэг. Өмнөх сарын агшин зураг байхгүй бол өөрчлөлтийг харуулахгүй.",
+      actualizacion: "Хүснэгтийг улс бүрийн хүчин төгөлдөр мэдээллээр өдөр бүр дахин тооцоолдог. Шинэ улс тооцоолуур нь ажиллаж эхэлмэгц жагсаалтад гарна.",
+      ver: "Аргачлалыг бүрэн үзэх",
+    },
+    datos: {
+      titulo: "Нээлттэй мэдээлэл",
+      bajada: "Эдгээр жагсаалтын үндэс болсон тоо баримт улс бүрээр, JSON болон CSV хэлбэрээр. Өдөр бүр шинэчлэгдэнэ.",
+      json: "JSON мэдээлэл",
+      csv: "CSV мэдээлэл",
+      licencia: "CC BY 4.0 лиценз: CalcularYa сайтыг дурдаж, энэ хуудасны холбоосыг оруулсан тохиолдолд мэдээллийг чөлөөтэй ашиглаж, хуулбарлаж, нийтэлж болно.",
+      atribucion: "Санал болгох ишлэл",
+    },
+    mundo: { titulo: "Тодорхой цалингаар", texto: (n) => `Өөрийн цалин, огноогоор тооцоолохын тулд улс бүрт «${n}» хуудас бий.`, ir: "Тооцоолох" },
+    otros: "Бусад жагсаалт",
+    rankings: {
+      rinde: {
+        titulo: "Ижил цалин хаана хамгийн их хүрэлцдэг вэ",
+        corto: "Хамгийн ашигтай цалин",
+        seo: ["Ижил цалин хаана хамгийн их хүрэлцдэг вэ: улс орнуудын жагсаалт", "Цалин хаана хамгийн их хүрэлцдэг вэ"],
+        descripcion: (n) => `Ижил худалдан авах чадвартай нэг цалингаас ${enPaisesMnR(n)} татварын дүрмийн дараа хэр их үлддэг вэ. Өдөр бүр шинэчлэгдэнэ.`,
+        bajada: "Ижил худалдан авах чадвартай нэг нийт цалинг улс бүрийн дүрмээр тооцоолно. Гарт хамгийн их үлддэг улсууд дээд талд байна.",
+        metrica: "Сард гарт авах",
+        carga: "Татвар, шимтгэл",
+        como: "Сарын гарт авах цалин нь 12 сарын дундаж бөгөөд олон улсын доллараар илэрхийлсэн.",
+      },
+      libertad: {
+        titulo: "Татварын эрх чөлөөний өдөр: улс бүрээр",
+        corto: "Татварын эрх чөлөөний өдөр",
+        seo: ["Татварын эрх чөлөөний өдөр, улс бүрээр: жагсаалт", "Татварын эрх чөлөөний өдөр: улс бүрээр"],
+        descripcion: (n) => `${enPaisesMnR(n)} ижил цалинтай хүний орлогын албан татвар, шимтгэл төлөгдөж дуусах жилийн өдөр. Өдөр бүр шинэчлэгдэнэ.`,
+        bajada: "Улс бүрт ижил цалинтай хүний орлогын албан татвар, шимтгэл төлөгдөж дуусах жилийн өдөр. Энэ өдөр хамгийн эрт ирдэг улсууд дээд талд байна.",
+        metrica: "Улсын төлөө ажиллах эцсийн өдөр",
+        carga: "Татвар, шимтгэл",
+        como: "Татварыг жилийн эхний өдрөөс эхлэн хуваарилж огноог гаргадаг: татварын ачаалал 30 хувь бол жилийн 30 хувийг улсын төлөө ажилладаг.",
+      },
+      aumento: {
+        titulo: "Цалингийн нэмэгдлээс хэр их үлддэг вэ",
+        corto: "Нэмэгдлээс үлдэх нь",
+        seo: ["Цалингийн нэмэгдлээс хэр их үлддэг вэ: жагсаалт", "Нэмэгдлээс хэр их үлддэг вэ"],
+        descripcion: (n) => `${enPaisesMnR(n)} нийт цалинд нэмсэн 100 нэгж тутмаас орлогын албан татвар, шимтгэлийн дараа хэд нь үлддэг вэ. Өдөр бүр шинэчлэгдэнэ.`,
+        bajada: "Нийт цалинд нэмсэн 100 нэгж тутмаас орлогын албан татвар, шимтгэлийн дараа хэд нь гарт хүрдэг вэ. Хамгийн их үлддэг улсууд дээд талд байна.",
+        metrica: "100 нэгжээс үлдэх нь",
+        carga: "Ахиу хувь",
+        como: "Энэ нь хоёр цалингийн хоорондох ахиу хувь: нэмэгдлийн татвар, шимтгэлд очих хэсэг.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

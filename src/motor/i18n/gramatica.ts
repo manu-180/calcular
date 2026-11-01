@@ -1338,4 +1338,424 @@ const sr: GramaticaPais = {
   para: (p) => `za ${padezSr(p).akuzativ}`,
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Eslovaco (ADR 0002, D25): el nombre del país se declina con reglas propias, no las del checo. `de(p)`
+// da el genitivo suelto («Slovenska», «Nemecka», «Spojených štátov»), `en(p)` el lugar con su
+// preposición («na Slovensku», «v Česku», «vo Francúzsku», «na Filipínach») y `para(p)` «pre» +
+// acusativo («pre Slovensko», «pre Kanadu»). Los nombres llegan como los escribe Intl.DisplayNames en
+// sk: -sko y -ko dan -a/-u; el resto de -o da -a/-e («v Kosove», «v Spojenom kráľovstve»); -ia y -ya
+// dan -e/-i/-u («v Kolumbii»); -ea da -y/-i/-u («v Kórei»); -ua da -y/-e/-u («v Nikarague»); -a blanda
+// da -e/-i/-u («v Keni», «v Kambodži»); -a dura da -y/-e/-u, sin alternancia de consonante («na
+// Jamajke», «v Kanade»); la consonante dura da -u/-e, salvo k, g y ch que dan -u/-u («v Iraku»); la
+// blanda da -a/-i («v Bangladéši»). Los plurales femeninos dan el genitivo sin -y y -ách o -ach según
+// la ley rítmica («na Bahamách», «na Filipínach»); los masculinos -ov/-och. Los adjetivos delante
+// concuerdan (-á y -a: -ej, -ú y -u; -ý y -é: -ého, -om; plural -ých o -ych). «vo» va ante v, f y
+// «šv» («vo Švédsku»); «na» para Eslovaquia, Ucrania y las islas (CON_NA y todo nombre con «ostrov»).
+// `padySk` deja los tres casos y la preposición sueltos para las frases que los necesitan.
+export interface PadySk {
+  genitiv: string;
+  lokal: string;
+  akuzativ: string;
+  // «v», «vo» o «na»
+  predlozka: string;
+}
+
+export const padySk: (pais: string) => PadySk = (() => {
+  // [genitivo, locativo, acusativo] sin preposición.
+  type Formas = readonly [string, string, string];
+  const TABLA: Readonly<Record<string, Formas>> = {
+    Egypt: ["Egypta", "Egypte", "Egypt"],
+    Izrael: ["Izraela", "Izraeli", "Izrael"],
+    Niger: ["Nigeru", "Nigeri", "Niger"],
+    Cyprus: ["Cypru", "Cypre", "Cyprus"],
+    Maurícius: ["Maurícia", "Mauríciu", "Maurícius"],
+    Brunej: ["Bruneja", "Brunei", "Brunej"],
+    Samoa: ["Samoy", "Samoe", "Samou"],
+    "Americká Samoa": ["Americkej Samoy", "Americkej Samoe", "Americkú Samou"],
+    "Burkina Faso": ["Burkiny Faso", "Burkine Faso", "Burkinu Faso"],
+    "Guinea-Bissau": ["Guiney-Bissau", "Guinei-Bissau", "Guineu-Bissau"],
+    "Papua-Nová Guinea": ["Papuy-Novej Guiney", "Papue-Novej Guinei", "Papuu-Novú Guineu"],
+    "Pobrežie Slonoviny": ["Pobrežia Slonoviny", "Pobreží Slonoviny", "Pobrežie Slonoviny"],
+    "Palestínske územia": ["Palestínskych území", "Palestínskych územiach", "Palestínske územia"],
+    "Sierra Leone": ["Sierry Leone", "Sierre Leone", "Sierru Leone"],
+    "San Maríno": ["San Marína", "San Maríne", "San Maríno"],
+    "Svätý Vincent": ["Svätého Vincenta", "Svätom Vincente", "Svätý Vincent"],
+    "Svätý Krištof": ["Svätého Krištofa", "Svätom Krištofe", "Svätý Krištof"],
+    "Svätý Martin": ["Svätého Martina", "Svätom Martine", "Svätý Martin"],
+    "Svätý Bartolomej": ["Svätého Bartolomeja", "Svätom Bartolomeji", "Svätý Bartolomej"],
+    "Svätý Tomáš": ["Svätého Tomáša", "Svätom Tomášovi", "Svätý Tomáš"],
+    "Princov ostrov": ["Princovho ostrova", "Princovom ostrove", "Princov ostrov"],
+    "Bouvetov ostrov": ["Bouvetovho ostrova", "Bouvetovom ostrove", "Bouvetov ostrov"],
+    "Heardov ostrov": ["Heardovho ostrova", "Heardovom ostrove", "Heardov ostrov"],
+    "Ostrov Man": ["Ostrova Man", "Ostrove Man", "Ostrov Man"],
+    "Kajmanie ostrovy": ["Kajmaních ostrovov", "Kajmaních ostrovoch", "Kajmanie ostrovy"],
+    "Menšie odľahlé ostrovy USA": ["Menších odľahlých ostrovov USA", "Menších odľahlých ostrovoch USA", "Menšie odľahlé ostrovy USA"],
+    "Turks a Caicos": ["Turks a Caicos", "Turks a Caicos", "Turks a Caicos"],
+    "Tristan da Cunha": ["Tristana da Cunha", "Tristane da Cunha", "Tristan da Cunha"],
+    "Diego Garcia": ["Diega Garciu", "Diegu Garcii", "Diega Garciu"],
+    "Francúzske južné a antarktické územia": ["Francúzskych južných a antarktických území", "Francúzskych južných a antarktických územiach", "Francúzske južné a antarktické územia"],
+    "Britské indickooceánske územie": ["Britského indickooceánskeho územia", "Britskom indickooceánskom území", "Britské indickooceánske územie"],
+  };
+  // Las palabras con genitivo plural que alarga la vocal o que no sale de quitar la -y.
+  const GENITIVO_PLURAL: Readonly<Record<string, string>> = { Bahamy: "Bahám", Maldivy: "Maldív", Bermudy: "Bermúd" };
+  const CON_NA = new Set([
+    "Slovensko", "Ukrajina", "Cyprus", "Malta", "Kuba", "Island", "Filipíny", "Jamajka", "Madagaskar", "Nový Zéland",
+    "Srí Lanka", "Taiwan", "Bahamy", "Maldivy", "Seychely", "Maurícius", "Barbados", "Haiti", "Fidži", "Bermudy",
+    "Komory", "Kapverdy", "Dominika", "Grenada", "Trinidad a Tobago", "Antigua a Barbuda", "Svätá Lucia", "Svätá Helena",
+    "Svätý Vincent a Grenadíny", "Svätý Krištof a Nevis", "Svätý Tomáš a Princov ostrov", "Svätý Bartolomej", "Svätý Martin",
+    "Aruba", "Tonga", "Samoa", "Americká Samoa", "Alandy", "Falklandy", "Guam", "Martinik", "Guadeloupe", "Réunion",
+    "Nauru", "Tuvalu", "Palau", "Vanuatu", "Kiribati", "Severné Mariány", "Turks a Caicos", "Wallis a Futuna", "Curaçao",
+    "Svalbard a Jan Mayen", "Mayotte", "Nová Kaledónia", "Norfolk", "Francúzska Polynézia", "Palestínske územia",
+  ]);
+  const PLURAL_MASCULINO = /(?:ostrovy|štáty|emiráty|Falklandy|Alandy)$/;
+  // Ley rítmica: tras una sílaba larga la terminación va breve («Filipínach», no «Filipínách»).
+  const SILABA_LARGA = /(?:[áéíóúýô]|ia|ie|iu)[^aeiouyáéíóúýäô]*$/;
+  const BLANDA_DURA: Readonly<Record<string, string>> = { ň: "n", ť: "t", ď: "d", ľ: "l" };
+  type Genero = "f" | "n" | "m" | "pl";
+  const genero = (w: string): Genero => {
+    if (/y$/.test(w)) return "pl";
+    if (/[aá]$/.test(w)) return "f";
+    if (/o$/.test(w)) return "n";
+    return "m";
+  };
+  const sustantivo = (w: string): Formas => {
+    if (TABLA[w]) return TABLA[w];
+    const guion = w.lastIndexOf("-");
+    if (guion > 0) {
+      const [g, l, a] = sustantivo(w.slice(guion + 1));
+      const pre = w.slice(0, guion + 1);
+      return [pre + g, pre + l, pre + a];
+    }
+    if (/^[A-ZÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽ]{2,}$/.test(w)) return [w, w, w];
+    const raiz = w.slice(0, -1);
+    if (/ey$/.test(w)) return [w, w, w];
+    if (w === "ostrov") return ["ostrova", "ostrove", w];
+    if (PLURAL_MASCULINO.test(w)) return [`${raiz}ov`, `${raiz}och`, w];
+    if (/y$/.test(w)) return [GENITIVO_PLURAL[w] ?? raiz, `${raiz}${SILABA_LARGA.test(raiz) ? "ach" : "ách"}`, w];
+    if (/[iy]a$/.test(w)) return [`${raiz}e`, `${raiz}i`, `${raiz}u`];
+    if (/ua$/.test(w)) return [`${raiz}y`, `${raiz}e`, `${raiz}u`];
+    if (/[aeioyáéíóúý]a$/.test(w)) return [`${raiz}y`, `${raiz}i`, `${raiz}u`];
+    const blanda = /([žščľňťďcj])a$/.exec(w);
+    if (blanda) {
+      const dura = `${raiz.slice(0, -1)}${BLANDA_DURA[blanda[1]] ?? blanda[1]}`;
+      return [`${dura}e`, `${dura}i`, `${raiz}u`];
+    }
+    if (/a$/.test(w)) return [`${raiz}y`, `${raiz}e`, `${raiz}u`];
+    // Macao, Curaçao: vocal + o no se declina.
+    if (/[aeiou]o$/.test(w)) return [w, w, w];
+    if (/(?:k|g|ch)o$/.test(w)) return [`${raiz}a`, `${raiz}u`, w];
+    if (/o$/.test(w)) return [`${raiz}a`, `${raiz}e`, w];
+    if (/[žščľňťďcj]$/.test(w)) return [`${w}a`, `${w}i`, w];
+    if (/(?:k|g|ch)$/.test(w)) return [`${w}u`, `${w}u`, w];
+    if (/[bdfhlmnpqrstvwxz]$/.test(w)) return [`${w}u`, `${w}e`, w];
+    return [w, w, w];
+  };
+  // Un adjetivo delante del sustantivo, según el género del sustantivo.
+  const adjetivo = (w: string, g: Genero): Formas => {
+    const r = w.slice(0, -1);
+    if (g === "pl") {
+      if (/ove$/.test(w)) return [`${r.slice(0, -1)}vých`, `${r.slice(0, -1)}vých`, w];
+      if (/é$/.test(w)) return [`${r}ých`, `${r}ých`, w];
+      if (/e$/.test(w)) return [`${r}ych`, `${r}ych`, w];
+      return [w, w, w];
+    }
+    if (/á$/.test(w)) return [`${r}ej`, `${r}ej`, `${r}ú`];
+    if (/[a-zäôíúýčšžťďňľ]a$/.test(w) && g === "f") return [`${r}ej`, `${r}ej`, `${r}u`];
+    if (/[ýé]$/.test(w)) return [`${r}ého`, `${r}om`, w];
+    return [w, w, w];
+  };
+  const unir = (partes: readonly Formas[], sep: string): Formas => [
+    partes.map((f) => f[0]).join(sep),
+    partes.map((f) => f[1]).join(sep),
+    partes.map((f) => f[2]).join(sep),
+  ];
+  const frase = (p: string): Formas => {
+    const palabras = p.split(" ");
+    const g = genero(palabras[palabras.length - 1]);
+    return unir(palabras.map((w, i) => (i === palabras.length - 1 ? sustantivo(w) : adjetivo(w, g))), " ");
+  };
+  const formas = (p: string): Formas => {
+    if (TABLA[p]) return TABLA[p];
+    for (const sep of [" – ", " ("]) {
+      const i = p.indexOf(sep);
+      if (i > 0) {
+        const [g, l, a] = formas(p.slice(0, i));
+        return [g + p.slice(i), l + p.slice(i), a + p.slice(i)];
+      }
+    }
+    if (p.includes(" a ")) return unir(p.split(" a ").map(formas), " a ");
+    return frase(p);
+  };
+  const VO = /^(?:[VvFf]|Šv|šv)/;
+  return (p: string): PadySk => {
+    const [genitiv, lokal, akuzativ] = formas(p);
+    const base = p.split(" (")[0];
+    const predlozka = CON_NA.has(base) || /ostrov/i.test(p) ? "na" : VO.test(lokal) ? "vo" : "v";
+    return { genitiv, lokal, akuzativ, predlozka };
+  };
+})();
+
+const sk: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => padySk(p).genitiv,
+  en: (p) => {
+    const f = padySk(p);
+    return `${f.predlozka} ${f.lokal}`;
+  },
+  para: (p) => `pre ${padySk(p).akuzativ}`,
+};
+
+// Georgiano (ADR 0002, D26): sin artículo ni género. El país lleva sufijo. Lugar: dativo + «ში»
+// («საქართველოში», «საფრანგეთში», «კანადაში»). Genitivo: «ის» o «ს» («საფრანგეთის», «კანადის»,
+// «საქართველოს»). Destinatario: genitivo + «თვის» («საქართველოსთვის»). Se aplica solo a nombres,
+// nunca a cifras ni a marcadores. El adjetivo delante del nombre pierde la «ი» en el lugar y la
+// conserva en el genitivo («ახალ ზელანდიაში», «ახალი ზელანდიის»). En «X და Y» el primero lleva
+// «სა» en el lugar y «ისა» o «სა» en el genitivo («ტრინიდადსა და ტობაგოში», «ტრინიდადისა და ტობაგოს»).
+// La «ი» que es parte de la raíz no se cae: tabla KA_I_DE_RAIZ («მალიში», no «მალში»).
+const KA_I_DE_RAIZ = new Set(["ბურუნდი", "ბრუნეი", "ჯიბუტი", "ფიჯი", "ჰაიტი", "კირიბატი", "მალი", "მალავი", "სომალი", "ჯერსი", "გერნსი", "სარკი", "ტაიტი", "სენ-ბართელმი"]);
+// «ე» y «ა» que se caen en el genitivo salvo estos nombres, que la conservan.
+const KA_E_TRUNCA = new Set(["ეგვიპტე"]);
+
+function raizKa(palabra: string): { dativo: string; genitivo: string } {
+  const ultima = palabra.split("-").at(-1) ?? palabra;
+  if (KA_I_DE_RAIZ.has(palabra) || KA_I_DE_RAIZ.has(ultima) || /[აეოუ]ი$/.test(palabra)) return { dativo: palabra, genitivo: `${palabra}ს` };
+  if (palabra.endsWith("ი")) {
+    const tema = palabra.slice(0, -1);
+    return { dativo: tema, genitivo: `${tema}ის` };
+  }
+  if (palabra.endsWith("ა")) {
+    if (palabra.endsWith("ოა")) return { dativo: palabra, genitivo: `${palabra}ს` };
+    return { dativo: palabra, genitivo: `${palabra.slice(0, -1)}ის` };
+  }
+  if (KA_E_TRUNCA.has(palabra)) return { dativo: palabra, genitivo: `${palabra.slice(0, -1)}ის` };
+  return { dativo: palabra, genitivo: `${palabra}ს` };
+}
+
+// Las palabras delante del núcleo: las que ya están en genitivo («ამერიკის», «არაბთა») y las que no
+// llevan «ი» («სამხრეთ») quedan igual; los adjetivos pierden la «ი» solo en el lugar.
+function delanteKa(palabra: string, enLugar: boolean): string {
+  if (!enLugar || !palabra.endsWith("ი") || KA_I_DE_RAIZ.has(palabra)) return palabra;
+  return palabra.slice(0, -1);
+}
+
+function casosFraseKa(frase: string): { lugar: string; genitivo: string; primeroLugar: string; primeroGenitivo: string } {
+  const palabras = frase.split(" ");
+  const nucleo = palabras.pop() ?? frase;
+  const r = raizKa(nucleo);
+  const conDelante = (enLugar: boolean, fin: string) => [...palabras.map((p) => delanteKa(p, enLugar)), fin].join(" ");
+  return {
+    lugar: conDelante(true, `${r.dativo}ში`),
+    genitivo: conDelante(false, r.genitivo),
+    primeroLugar: conDelante(true, `${r.dativo}სა`),
+    primeroGenitivo: conDelante(false, `${r.genitivo}ა`),
+  };
+}
+
+// Nombres de Intl en ka que llevan un agregado: se declinan por la forma corta.
+const KA_CORTOS: Readonly<Record<string, string>> = {
+  "მიანმარი (ბირმა)": "მიანმარი",
+  "კონგო - კინშასა": "კონგოს დემოკრატიული რესპუბლიკა",
+  "კონგო - ბრაზავილი": "კონგოს რესპუბლიკა",
+  "ჰონკონგის სპეციალური ადმინისტრაციული რეგიონი, ჩინეთი": "ჰონკონგი",
+  "მაკაოს სპეციალური ადმინისტრაციული რეგიონი, ჩინეთი": "მაკაო",
+  "ქალაქი ვატიკანი": "ვატიკანი",
+  "ქოქოსის (კილინგის) კუნძულები": "ქოქოსის კუნძულები",
+};
+// «ცენტრალური აფრიკა» funciona como un nombre: el adjetivo no cambia delante de «რესპუბლიკა».
+const KA_FIJOS: Readonly<Record<string, { lugar: string; genitivo: string }>> = {
+  "ბრიტანეთის ტერიტორია ინდოეთის ოკეანეში": { lugar: "ბრიტანეთის ტერიტორიაზე ინდოეთის ოკეანეში", genitivo: "ბრიტანეთის ტერიტორიის ინდოეთის ოკეანეში" },
+  "ცენტრალური აფრიკის რესპუბლიკა": { lugar: "ცენტრალური აფრიკის რესპუბლიკაში", genitivo: "ცენტრალური აფრიკის რესპუბლიკის" },
+};
+
+export function casosKa(p: string): { lugar: string; genitivo: string } {
+  const nombre = KA_CORTOS[p] ?? p;
+  const fijo = KA_FIJOS[nombre];
+  if (fijo) return fijo;
+  // Una cifra nunca lleva sufijo; un nombre en letras latinas lo lleva con guion, como «Google-ის».
+  if (!/\p{L}/u.test(nombre)) return { lugar: nombre, genitivo: nombre };
+  if (!/[\u10D0-\u10FF]/.test(nombre)) return { lugar: `${nombre}-ში`, genitivo: `${nombre}-ის` };
+  const partes = nombre.split(" და ");
+  if (partes.length === 2) {
+    const uno = casosFraseKa(partes[0]);
+    const dos = casosFraseKa(partes[1]);
+    return { lugar: `${uno.primeroLugar} და ${dos.lugar}`, genitivo: `${uno.primeroGenitivo} და ${dos.genitivo}` };
+  }
+  const c = casosFraseKa(nombre);
+  return { lugar: c.lugar, genitivo: c.genitivo };
+}
+
+const ka: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => casosKa(p).genitivo,
+  en: (p) => casosKa(p).lugar,
+  para: (p) => (/\p{L}/u.test(p) ? `${casosKa(p).genitivo}თვის` : p),
+};
+
+// Croata (ADR 0002, D27): el nombre del país se declina. `de(p)` da el genitivo suelto («Hrvatske», «Crne
+// Gore», «Sjedinjenih Američkih Država»), `en(p)` el lugar con su preposición («u Hrvatskoj», «u Crnoj
+// Gori», «na Cipru», «na Filipinima») y `para(p)` «za» + acusativo («za Hrvatsku», «za Crnu Goru», «za
+// Japan»). Los nombres llegan como los escribe Intl.DisplayNames en hr, así que la regla cubre los de una
+// palabra por terminación (-a: -e/-i/-u, con -ka: -ci; los adjetivos sustantivados en -ska, -čka, -ška como
+// Hrvatska o Njemačka: -e/-oj/-u; consonante, -o, -e y -u: -a/-u; -i del singular, como Mali o Haiti:
+// -ja/-ju) y los compuestos (adjetivos delante, que concuerdan con el sustantivo; partes unidas con « i »
+// por separado; lo que va entre paréntesis o tras « - » queda igual). La tabla lleva los irregulares (a
+// móvil como Egipat o Cipar, nombres con el núcleo delante); CON_NA, los países e islas que van con «na».
+// `padezHr` deja los tres casos y la preposición sueltos.
+export interface PadeziHr {
+  genitiv: string;
+  lokativ: string;
+  akuzativ: string;
+  // «u» o «na»
+  predlog: string;
+}
+
+export const padezHr: (pais: string) => PadeziHr = (() => {
+  // [genitivo, locativo, acusativo] sin preposición.
+  type Formas = readonly [string, string, string];
+  const TABLA: Readonly<Record<string, Formas>> = {
+    Egipat: ["Egipta", "Egiptu", "Egipat"],
+    Cipar: ["Cipra", "Cipru", "Cipar"],
+    Petar: ["Petra", "Petru", "Petar"],
+    Kostarika: ["Kostarike", "Kostariki", "Kostariku"],
+    "Šri Lanka": ["Šri Lanke", "Šri Lanki", "Šri Lanku"],
+    "Papua Nova Gvineja": ["Papue Nove Gvineje", "Papui Novoj Gvineji", "Papuu Novu Gvineju"],
+    "Gvineja Bisau": ["Gvineje Bisau", "Gvineji Bisau", "Gvineju Bisau"],
+    "Burkina Faso": ["Burkine Faso", "Burkini Faso", "Burkinu Faso"],
+    "Sijera Leone": ["Sijere Leone", "Sijeri Leone", "Sijeru Leone"],
+    "Obala Bjelokosti": ["Obale Bjelokosti", "Obali Bjelokosti", "Obalu Bjelokosti"],
+    "Sveti Toma i Princip": ["Svetog Tome i Principa", "Svetom Tomi i Principu", "Sveti Toma i Princip"],
+    "Timor-Leste": ["Timor-Leste", "Timor-Leste", "Timor-Leste"],
+    "PUP Hong Kong Kina": ["PUP Hong Kong Kina", "PUP Hong Kong Kina", "PUP Hong Kong Kina"],
+    "PUP Makao Kina": ["PUP Makao Kina", "PUP Makao Kina", "PUP Makao Kina"],
+    "Tristan da Cunha": ["Tristana da Cunhe", "Tristanu da Cunhi", "Tristan da Cunhu"],
+    "Diego Garcia": ["Diega Garcije", "Diegu Garciji", "Diega Garciju"],
+    Guernsey: ["Guernseyja", "Guernseyju", "Guernsey"],
+    Jersey: ["Jerseyja", "Jerseyju", "Jersey"],
+    "Saint Barthélemy": ["Saint Barthélemyja", "Saint Barthélemyju", "Saint Barthélemy"],
+    "Palestinsko područje": ["Palestinskog područja", "Palestinskom području", "Palestinsko područje"],
+    "Vanjska područja Oceanije": ["Vanjskih područja Oceanije", "Vanjskim područjima Oceanije", "Vanjska područja Oceanije"],
+    "Kokosovi (Keelingovi) Otoci": ["Kokosovih (Keelingovih) Otoka", "Kokosovim (Keelingovim) Otocima", "Kokosove (Keelingove) Otoke"],
+    "Karipski otoci Nizozemske": ["Karipskih otoka Nizozemske", "Karipskim otocima Nizozemske", "Karipske otoke Nizozemske"],
+    "Mali udaljeni otoci SAD-a": ["Malih udaljenih otoka SAD-a", "Malim udaljenim otocima SAD-a", "Male udaljene otoke SAD-a"],
+    "Južna Georgia i Otoci Južni Sandwich": ["Južne Georgije i Otoka Južni Sandwich", "Južnoj Georgiji i Otocima Južni Sandwich", "Južnu Georgiju i Otoke Južni Sandwich"],
+  };
+  const CON_NA = new Set([
+    "Cipar", "Malta", "Kuba", "Island", "Jamajka", "Filipini", "Madagaskar", "Novi Zeland", "Šri Lanka", "Tajvan",
+    "Bahami", "Maldivi", "Sejšeli", "Mauricijus", "Barbados", "Haiti", "Fidži", "Bermudi", "Dominika", "Grenada",
+    "Trinidad i Tobago", "Antigva i Barbuda", "Sveta Lucija", "Sveti Vincent i Grenadini", "Sveti Kristofor i Nevis",
+    "Sveti Toma i Princip", "Aruba", "Tonga", "Samoa", "Američka Samoa", "Kosovo", "Grenland", "Martinik",
+    "Guadalupe", "Réunion", "Nauru", "Tuvalu", "Palau", "Vanuatu", "Kiribati", "Guam", "Curaçao", "Mayotte", "Sveta Helena",
+    "Saint Barthélemy", "Saint Martin", "Sint Maarten", "Guernsey", "Jersey", "Antarktika", "Svalbard i Jan Mayen", "Tokelau", "Niue",
+    "Sark", "Montserrat", "Angvila", "Tristan da Cunha", "Komori", "Kanari",
+    "Diego Garcia", "Palestinsko područje", "Sveti Petar i Mikelon", "Wallis i Futuna", "Vanjska područja Oceanije",
+  ]);
+  // Sustantivos plurales: masculinos en -i (Filipini, Otoci) y femeninos en -e (Države).
+  const PLURAL_M = new Set(["Filipini", "Bahami", "Maldivi", "Bermudi", "Sejšeli", "Grenadini", "Emirati", "Komori", "Kanari", "Teritoriji"]);
+  const OTOCI = new Set(["Otoci", "otoci"]);
+  const PLURAL_F = new Set(["Države"]);
+  const esPlural = (w: string) => PLURAL_M.has(w) || OTOCI.has(w) || PLURAL_F.has(w);
+  const sustantivo = (w: string): Formas => {
+    if (TABLA[w]) return TABLA[w];
+    if (/^[A-ZČĆŠŽĐ]{2,}$/.test(w)) return [w, w, w];
+    const raiz = w.slice(0, -1);
+    if (OTOCI.has(w)) {
+      const o = w[0];
+      return [`${o}toka`, `${o}tocima`, `${o}toke`];
+    }
+    if (PLURAL_M.has(w)) return [`${raiz}a`, `${raiz}ima`, `${raiz}e`];
+    if (PLURAL_F.has(w)) return [`${raiz}a`, `${raiz}ama`, w];
+    // Adjetivo sustantivado (Hrvatska, Francuska, Njemačka, Češka): se declina como adjetivo.
+    if (/(?:sk|čk|šk|ck)a$/.test(w)) return [`${raiz}e`, `${raiz}oj`, `${raiz}u`];
+    // -ka: Republika, Jamajka, Dominika, Antarktika (locativo en -ci).
+    if (/ka$/.test(w)) return [`${raiz}e`, `${w.slice(0, -2)}ci`, `${raiz}u`];
+    if (/a$/.test(w)) return [`${raiz}e`, `${raiz}i`, `${raiz}u`];
+    // Masculino en -i del singular (Mali, Haiti, Malavi, Burundi): Malija, u Maliju.
+    if (/i$/.test(w)) return [`${w}ja`, `${w}ju`, w];
+    // -o tras vocal (Curaçao): Curaçaoa, na Curaçaou.
+    if (/[aeiou]o$/.test(w)) return [`${w}a`, `${w}u`, w];
+    // -o (Maroko, Meksiko, Kosovo, Kraljevstvo): Maroka, u Maroku.
+    if (/o$/.test(w)) return [`${raiz}a`, `${raiz}u`, w];
+    // Consonante, -e y -u (Brazil, Zimbabve, Peru): Brazila, u Brazilu; Zimbabvea; Perua.
+    return [`${w}a`, `${w}u`, w];
+  };
+  // Un adjetivo delante del sustantivo, según el número del sustantivo. Lo que no termina como adjetivo
+  // (Saint, Sint, San) queda igual.
+  const ADJETIVO = /(?:sk|čk|šk|ck|n|t|v|j|l|r|d|k|ć)[aoie]$/;
+  const INVARIABLES = new Set(["Saint", "Sint", "San", "PUP", "da", "Jan"]);
+  const adjetivo = (w: string, plural: boolean): Formas => {
+    if (INVARIABLES.has(w) || !ADJETIVO.test(w)) return [w, w, w];
+    const r = w.slice(0, -1);
+    if (plural) return [`${r}ih`, `${r}im`, /i$/.test(w) ? `${r}e` : w];
+    if (/a$/.test(w)) return [`${r}e`, `${r}oj`, `${r}u`];
+    if (/[io]$/.test(w)) return [`${r}og`, `${r}om`, w];
+    return [w, w, w];
+  };
+  const unir = (partes: readonly Formas[], sep: string): Formas => [
+    partes.map((f) => f[0]).join(sep),
+    partes.map((f) => f[1]).join(sep),
+    partes.map((f) => f[2]).join(sep),
+  ];
+  const frase = (p: string): Formas => {
+    const palabras = p.split(" ");
+    const plural = esPlural(palabras[palabras.length - 1]);
+    return unir(palabras.map((w, i) => (i === palabras.length - 1 ? sustantivo(w) : adjetivo(w, plural))), " ");
+  };
+  const formas = (p: string): Formas => {
+    if (TABLA[p]) return TABLA[p];
+    for (const sep of [" - ", " ("]) {
+      const i = p.indexOf(sep);
+      if (i > 0) {
+        const [g, l, a] = formas(p.slice(0, i));
+        return [g + p.slice(i), l + p.slice(i), a + p.slice(i)];
+      }
+    }
+    // Núcleo delante: «Otok Man», «Otoci Turks i Caicos», «Otoci Heard i McDonald».
+    const [primera, ...resto] = p.split(" ");
+    if (resto.length && /^Oto(?:k|ci)$/.test(primera)) {
+      const [g, l, a] = sustantivo(primera);
+      const cola = ` ${resto.join(" ")}`;
+      return [g + cola, l + cola, a + cola];
+    }
+    if (p.includes(" i ")) return unir(p.split(" i ").map(formas), " i ");
+    return frase(p);
+  };
+  return (p: string): PadeziHr => {
+    const [genitiv, lokativ, akuzativ] = formas(p);
+    const base = p.split(" (")[0];
+    const predlog = CON_NA.has(base) || /(?:^|\s)[Oo]to(?:k|ci)(?:\s|$)/.test(p) ? "na" : "u";
+    return { genitiv, lokativ, akuzativ, predlog };
+  };
+})();
+
+const hr: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => padezHr(p).genitiv,
+  en: (p) => {
+    const f = padezHr(p);
+    return `${f.predlog} ${f.lokativ}`;
+  },
+  para: (p) => `za ${padezHr(p).akuzativ}`,
+};
+
+// Mongol (ADR 0002, D28): los sufijos de caso dependen de la armonía vocálica y de la consonante final, y
+// un nombre extranjero suelto se equivoca fácil («Германд» pero «Францад», «Орост», «Швейцарьт»). Por eso
+// el sufijo nunca se pega al nombre: lo lleva «улс», que siempre declina igual («Герман улсад», «Герман
+// улсын», «Герман улсад зориулсан»), como se escribe en la prensa y en los sitios del Estado. Si el
+// nombre ya termina en «Улс» o en «арлууд» el sufijo va sobre esa palabra, cuya armonía se conoce
+// («Монгол Улсад», «Соломоны арлуудын»). Hong Kong, Macao, Puerto Rico y Taiwán van con «нутаг
+// дэвсгэр»: «улс» diría algo que el sitio no quiere afirmar. Intl.DisplayNames da «Монгол» a secas y
+// el nombre oficial es «Монгол Улс».
+const mn: GramaticaPais = (() => {
+  const TERRITORIO = /(?:Хонг-Конг|Макао|Пуэрто-Рико|Тайвань)$/u;
+  const nombre = (p: string) => (p === "Монгол" ? "Монгол Улс" : p);
+  const sufijo = (p: string, adUlsArlad: string, tDevsger: string): string => {
+    const n = nombre(p);
+    if (/(?:Улс|улс|[аА]рлууд)$/u.test(n)) return `${n}${adUlsArlad}`;
+    if (/нутаг дэвсгэр$/u.test(n)) return `${n}${tDevsger}`;
+    if (TERRITORIO.test(n)) return `${n} нутаг дэвсгэр${tDevsger}`;
+    return `${n} улс${adUlsArlad}`;
+  };
+  const en = (p: string) => sufijo(p, "ад", "т");
+  return { nombre, de: (p) => sufijo(p, "ын", "ийн"), en, para: (p) => `${en(p)} зориулсан` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };

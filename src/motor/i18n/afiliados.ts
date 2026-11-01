@@ -362,6 +362,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "új lapon nyílik meg",
     },
   },
+  mn: {
+    base: {
+      titulo: "Гадаадад нүүж байна уу, эсвэл өөр улсаас цалин авдаг уу?",
+      etiqueta: "Түншийн холбоос",
+      socios: {
+        wise: "Олон валютын данс: улс хооронд мөнгөө дундаж ханшаар, урьдчилан мэдэгдсэн шимтгэлтэй авч, илгээнэ.",
+        deel: "Нэг улсаас өөр улсын компанид ажилладаг хүмүүсийн гэрээ, төлбөр.",
+      },
+      nota: "Эдгээр холбоосоор данс нээвэл сайт шимтгэл авч магадгүй. Танд ямар ч зардал гарахгүй.",
+      nuevaPestana: "шинэ табд нээгдэнэ",
+    },
+  },
   bg: {
     base: {
       titulo: "Местите се в чужбина или плащате от друга държава?",
@@ -397,6 +409,45 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
         deel: "Ugovori i isplate za one koji iz jedne zemlje rade za firmu iz druge.",
       },
       nota: "Ako preko ovih linkova otvorite račun, sajt može da dobije proviziju. Vi zbog toga ne plaćate ništa više.",
+      nuevaPestana: "otvara se u novoj kartici",
+    },
+  },
+  // Eslovaco (ADR 0002, D25): vykanie con vy en minúscula.
+  sk: {
+    base: {
+      titulo: "Sťahujete sa do zahraničia alebo platíte z inej krajiny?",
+      etiqueta: "Partnerské odkazy",
+      socios: {
+        wise: "Účet vo viacerých menách na príjem a odosielanie peňazí medzi krajinami za stredový trhový kurz, s poplatkom, ktorý vidíte vopred.",
+        deel: "Zmluvy a výplaty pre tých, ktorí pracujú z jednej krajiny pre firmu z inej.",
+      },
+      nota: "Ak si cez tieto odkazy otvoríte účet, web môže dostať províziu. Vy za to nezaplatíte nič navyše.",
+      nuevaPestana: "otvorí sa na novej karte",
+    },
+  },
+  // Georgiano: «თქვენ» con formas corteses.
+  ka: {
+    base: {
+      titulo: "საზღვარგარეთ გადადიხართ, ან ანაზღაურებას სხვა ქვეყნიდან იღებთ?",
+      etiqueta: "პარტნიორული ბმულები",
+      socios: {
+        wise: "მრავალვალუტიანი ანგარიში ქვეყნებს შორის ფულის მისაღებად და გასაგზავნად საშუალო საბაზრო კურსით, წინასწარ ცნობილი საკომისიოთი.",
+        deel: "ხელშეკრულებები და ანაზღაურება მათთვის, ვინც ერთი ქვეყნიდან მუშაობს მეორე ქვეყნის კომპანიისთვის.",
+      },
+      nota: "თუ ამ ბმულებით გახსნით ანგარიშს, საიტმა შესაძლოა საკომისიო მიიღოს. თქვენთვის ეს დამატებით არაფერი ღირს.",
+      nuevaPestana: "იხსნება ახალ ჩანართში",
+    },
+  },
+  // Croata (ADR 0002, D27): «vi» en minúscula.
+  hr: {
+    base: {
+      titulo: "Selite se u inozemstvo ili plaćate iz druge zemlje?",
+      etiqueta: "Partnerske poveznice",
+      socios: {
+        wise: "Račun u više valuta za primanje i slanje novca između zemalja po srednjem tržišnom tečaju, uz naknadu koju vidite unaprijed.",
+        deel: "Ugovori i isplate za one koji iz jedne zemlje rade za tvrtku iz druge.",
+      },
+      nota: "Ako preko ovih poveznica otvorite račun, stranica može dobiti proviziju. Vi zbog toga ne plaćate ništa više.",
       nuevaPestana: "otvara se u novoj kartici",
     },
   },
