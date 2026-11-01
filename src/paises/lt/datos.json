@@ -1,0 +1,736 @@
+{
+  "mercado": "lt",
+  "datos": [
+    {
+      "id": "lt.mma",
+      "nombre": "Minimalioji mėnesinė alga (MMA)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 1038,
+          "fuente": {
+            "organismo": "Eurostat",
+            "titulo": "Minimum wages (earn_mw_cur), Lietuva, EUR per mėnesį",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_mw_cur?geo=LT&sinceTimePeriod=2025&currency=EUR&format=JSON",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "Estadística oficial de la UE. socmin.lrv.lt y e-tar.lt no se pudieron leer (403 de Cloudflare): falta el nutarimas de la Vyriausybė."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1153,
+          "fuente": {
+            "organismo": "Eurostat",
+            "titulo": "Minimum wages (earn_mw_cur), Lietuva, EUR per mėnesį",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_mw_cur?geo=LT&sinceTimePeriod=2025&currency=EUR&format=JSON",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "Estadística oficial de la UE. socmin.lrv.lt y e-tar.lt no se pudieron leer (403 de Cloudflare): falta el nutarimas de la Vyriausybė."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.mma-ankstesne",
+      "nombre": "Ankstesnių metų MMA",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 1038,
+          "fuente": {
+            "organismo": "Eurostat",
+            "titulo": "Minimum wages (earn_mw_cur), Lietuva, EUR per mėnesį",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/earn_mw_cur?geo=LT&sinceTimePeriod=2025&currency=EUR&format=JSON",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "Estadística oficial de la UE. socmin.lrv.lt y e-tar.lt no se pudieron leer (403 de Cloudflare): falta el nutarimas de la Vyriausybė."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.vdu",
+      "nombre": "Šalies vidutinis darbo užmokestis (VDU) mokesčiams",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Las secundarias discrepan: 2312,15 € (GT, proyecto de presupuesto) y 2304,50 € (Eurofast; GT: previsión de Finmin); por eso sin valor. Falta leerlo en: nutarimas de la Vyriausybė sobre rodikliai 2026 (e-tar) y sodra.lt.",
+          "fuente": {
+            "organismo": "Grant Thornton Baltic",
+            "titulo": "Tax laws changes affecting payroll as of January 1, 2026",
+            "url": "https://www.grantthornton.lt/en/insights/tax-laws-changes-affecting-payroll-as-of-January-1-2026/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.gpm-tarifai",
+      "nombre": "GPM tarifai nuo darbo pajamų",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "iki-pirmos": "Iki pirmos ribos",
+        "iki-antros": "Tarp ribų",
+        "virs-antros": "Virš antros ribos"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: GPM įstatymas (e-seimas, TAIS.81997, suvestinė redakcija), 6 str..",
+          "valor": {
+            "iki-pirmos": 20,
+            "iki-antros": 25,
+            "virs-antros": 32
+          },
+          "fuente": {
+            "organismo": "Grant Thornton Baltic",
+            "titulo": "Tax laws changes affecting payroll as of January 1, 2026",
+            "url": "https://www.grantthornton.lt/en/insights/tax-laws-changes-affecting-payroll-as-of-January-1-2026/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.gpm-ribos-vdu",
+      "nombre": "GPM ribos, VDU skaičius per metus",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "pirma": "Pirma riba",
+        "antra": "Antra riba"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: GPM įstatymas (e-seimas, TAIS.81997, suvestinė redakcija), 6 str..",
+          "valor": {
+            "pirma": 36,
+            "antra": 60
+          },
+          "fuente": {
+            "organismo": "Grant Thornton Baltic",
+            "titulo": "Tax laws changes affecting payroll as of January 1, 2026",
+            "url": "https://www.grantthornton.lt/en/insights/tax-laws-changes-affecting-payroll-as-of-January-1-2026/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.npd-didziausias",
+      "nombre": "Didžiausias NPD per mėnesį",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: GPM įstatymas (e-seimas, TAIS.81997, suvestinė redakcija), 20 str..",
+          "valor": 747,
+          "fuente": {
+            "organismo": "Grant Thornton Baltic",
+            "titulo": "Tax laws changes affecting payroll as of January 1, 2026",
+            "url": "https://www.grantthornton.lt/en/insights/tax-laws-changes-affecting-payroll-as-of-January-1-2026/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.npd-koeficientas",
+      "nombre": "NPD mažinimo koeficientas",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Eurofast: la fórmula salió de un PDF con operadores ilegibles; GT cita además un límite de 2677,49 € que hay que contrastar. Falta leerlo en: GPM įstatymas (e-seimas, TAIS.81997, suvestinė redakcija), 20 str..",
+          "valor": 0.49,
+          "fuente": {
+            "organismo": "Eurofast",
+            "titulo": "Payroll Guide 2026 Lithuania",
+            "url": "https://eurofast.eu/wp-content/uploads/2026/02/PayrollGuide2026-Lithuania.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.vsd-darbuotojo",
+      "nombre": "VSD įmoka (darbuotojo)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Valstybinio socialinio draudimo įstatymas y sodra.lt.",
+          "valor": 12.52,
+          "fuente": {
+            "organismo": "Eurofast",
+            "titulo": "Payroll Guide 2026 Lithuania",
+            "url": "https://eurofast.eu/wp-content/uploads/2026/02/PayrollGuide2026-Lithuania.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.psd-darbuotojo",
+      "nombre": "PSD įmoka (darbuotojo)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Valstybinio socialinio draudimo įstatymas y sodra.lt.",
+          "valor": 6.98,
+          "fuente": {
+            "organismo": "Eurofast",
+            "titulo": "Payroll Guide 2026 Lithuania",
+            "url": "https://eurofast.eu/wp-content/uploads/2026/02/PayrollGuide2026-Lithuania.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.pensiju-kaupimas",
+      "nombre": "Papildomas pensijų kaupimas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Pensijų kaupimo įstatymas y sodra.lt.",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Grant Thornton Baltic",
+            "titulo": "Tax laws changes affecting payroll as of January 1, 2026",
+            "url": "https://www.grantthornton.lt/en/insights/tax-laws-changes-affecting-payroll-as-of-January-1-2026/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.vsd-darbdavio",
+      "nombre": "Darbdavio įmokos pagal sutartį",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "neterminuota": "Neterminuota sutartis",
+        "terminuota": "Terminuota sutartis"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Asignación por tipo de contrato inferida de un PDF desordenado. Falta leerlo en: Valstybinio socialinio draudimo įstatymas y sodra.lt.",
+          "valor": {
+            "neterminuota": 1.77,
+            "terminuota": 2.49
+          },
+          "fuente": {
+            "organismo": "Eurofast",
+            "titulo": "Payroll Guide 2026 Lithuania",
+            "url": "https://eurofast.eu/wp-content/uploads/2026/02/PayrollGuide2026-Lithuania.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.vsd-lubos-vdu",
+      "nombre": "VSD įmokų lubos, VDU skaičius per metus",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Las secundarias discrepan: 60 VDU (GT) y 43 VDU (resumen de buscador de una guía de Sodra para autónomos, quizá otro concepto); sin valor. Falta leerlo en: Valstybinio socialinio draudimo įstatymas y sodra.lt.",
+          "fuente": {
+            "organismo": "Grant Thornton Baltic",
+            "titulo": "Tax laws changes affecting payroll as of January 1, 2026",
+            "url": "https://www.grantthornton.lt/en/insights/tax-laws-changes-affecting-payroll-as-of-January-1-2026/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.iv-gpm-tarifai",
+      "nombre": "Individualios veiklos GPM tarifai",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "mazesnis": "Mažesnis tarifas",
+        "didesnis": "Didesnis tarifas"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: GPM įstatymas (e-seimas, TAIS.81997, suvestinė redakcija), 6 y 18 str.."
+        }
+      ]
+    },
+    {
+      "id": "lt.iv-gpm-ribos",
+      "nombre": "Individualios veiklos GPM kredito ribos",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "apatine": "Apatinė riba",
+        "virsutine": "Viršutinė riba"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: GPM įstatymas (e-seimas, TAIS.81997, suvestinė redakcija), 18-1 str.."
+        }
+      ]
+    },
+    {
+      "id": "lt.iv-sanaudu-norma",
+      "nombre": "Individualios veiklos pripažįstamų sąnaudų norma",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: GPM įstatymas (e-seimas, TAIS.81997, suvestinė redakcija), 18 str.."
+        }
+      ]
+    },
+    {
+      "id": "lt.iv-bazes-dalis",
+      "nombre": "Įmokų bazės dalis nuo apmokestinamojo pelno",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Valstybinio socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.iv-vsd",
+      "nombre": "Savarankiškai dirbančiųjų VSD įmoka",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Valstybinio socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.iv-psd",
+      "nombre": "Savarankiškai dirbančiųjų PSD įmoka",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Valstybinio socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.vl-pajamu-riba",
+      "nombre": "Verslo liudijimo pajamų riba",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: GPM įstatymas (e-seimas, TAIS.81997, suvestinė redakcija) (verslo liudijimas) y vmi.lt.",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Grant Thornton Baltic",
+            "titulo": "Tax laws changes affecting payroll as of January 1, 2026",
+            "url": "https://www.grantthornton.lt/en/insights/tax-laws-changes-affecting-payroll-as-of-January-1-2026/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.pelno-mokestis",
+      "nombre": "Pelno mokesčio tarifai",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standartinis": "Standartinis tarifas",
+        "mazas": "Lengvatinis tarifas mažai įmonei"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Pelno mokesčio įstatymas (e-seimas), 5 str.."
+        }
+      ]
+    },
+    {
+      "id": "lt.gpm-dividendai",
+      "nombre": "GPM tarifas nuo paskirstyto pelno",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Solo un resumen de buscador, no se abrió la página. Falta leerlo en: GPM įstatymas (e-seimas, TAIS.81997, suvestinė redakcija), 6 str..",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Finansų ministerija (resumen de buscador)",
+            "titulo": "Seimo priimti mokesčių įstatymų pakeitimai",
+            "url": "https://finmin.lrv.lt/lt/naujienos/seimo-priimti-mokesciu-istatymu-pakeitimai/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.pvm-tarifai",
+      "nombre": "PVM tarifai",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standartinis": "Standartinis tarifas",
+        "lengvatinis-12": "Lengvatinis tarifas 12 %",
+        "lengvatinis-9": "Lengvatinis tarifas 9 %",
+        "lengvatinis-5": "Lengvatinis tarifas 5 %"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Valores del encargo del coordinador, sin lectura propia. Falta leerlo en: PVM įstatymas (e-seimas), 19 str..",
+          "valor": {
+            "standartinis": 21,
+            "lengvatinis-12": 12,
+            "lengvatinis-9": 9,
+            "lengvatinis-5": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.atostogu-dienos",
+      "nombre": "Mažiausios kasmetinės atostogos, darbo dienos",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Darbo kodeksas (e-seimas, suvestinė redakcija), 126 str..",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Eurofast",
+            "titulo": "Payroll Guide 2026 Lithuania",
+            "url": "https://eurofast.eu/wp-content/uploads/2026/02/PayrollGuide2026-Lithuania.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.iseitine-menesiai",
+      "nombre": "Išeitinė išmoka, vidutinių darbo užmokesčių skaičius",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "iki-metu": "Dirbta trumpiau nei metus",
+        "nuo-metu": "Dirbta metus ar ilgiau"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. La tabla de la guía sale desordenada. Falta leerlo en: Darbo kodeksas (e-seimas, suvestinė redakcija), 57 str..",
+          "valor": {
+            "iki-metu": 1,
+            "nuo-metu": 2
+          },
+          "fuente": {
+            "organismo": "Eurofast",
+            "titulo": "Payroll Guide 2026 Lithuania",
+            "url": "https://eurofast.eu/wp-content/uploads/2026/02/PayrollGuide2026-Lithuania.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.ispejimo-dienos",
+      "nombre": "Įspėjimo terminas, kalendorinės dienos",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "iki-metu": "Dirbta trumpiau nei metus",
+        "nuo-metu": "Dirbta metus ar ilgiau"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. La guía dice dos semanas y un mes; 30 días es conversión propia a contrastar. Falta leerlo en: Darbo kodeksas (e-seimas, suvestinė redakcija), 57 str..",
+          "valor": {
+            "iki-metu": 14,
+            "nuo-metu": 30
+          },
+          "fuente": {
+            "organismo": "Eurofast",
+            "titulo": "Payroll Guide 2026 Lithuania",
+            "url": "https://eurofast.eu/wp-content/uploads/2026/02/PayrollGuide2026-Lithuania.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.ispejimo-daugiklis",
+      "nombre": "Ilgesnio įspėjimo daugiklis saugomiems darbuotojams",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Darbo kodeksas (e-seimas, suvestinė redakcija), 57 str.."
+        }
+      ]
+    },
+    {
+      "id": "lt.virsvalandziu-koeficientas",
+      "nombre": "Viršvalandžių apmokėjimo koeficientas",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Darbo kodeksas (e-seimas, suvestinė redakcija), 144 str.."
+        }
+      ]
+    },
+    {
+      "id": "lt.ligos-procentas",
+      "nombre": "Ligos pašalpos dydis nuo vidutinio užmokesčio",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Ligos ir motinystės socialinio draudimo įstatymas y sodra.lt.",
+          "valor": 62.06,
+          "fuente": {
+            "organismo": "Eurofast",
+            "titulo": "Payroll Guide 2026 Lithuania",
+            "url": "https://eurofast.eu/wp-content/uploads/2026/02/PayrollGuide2026-Lithuania.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.ligos-darbdavio-dienos",
+      "nombre": "Ligos dienos, kurias apmoka darbdavys",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Ligos ir motinystės socialinio draudimo įstatymas y sodra.lt.",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Eurofast",
+            "titulo": "Payroll Guide 2026 Lithuania",
+            "url": "https://eurofast.eu/wp-content/uploads/2026/02/PayrollGuide2026-Lithuania.pdf",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lt.motinystes-procentas",
+      "nombre": "Motinystės pašalpos dydis",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Ligos ir motinystės socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.motinystes-dienos",
+      "nombre": "Motinystės atostogų trukmė",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Ligos ir motinystės socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.tevystes-procentas",
+      "nombre": "Tėvystės pašalpos dydis",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Ligos ir motinystės socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.tevystes-dienos",
+      "nombre": "Tėvystės atostogų trukmė",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Ligos ir motinystės socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.vaiko-prieziuros-procentai",
+      "nombre": "Vaiko priežiūros pašalpos dydis pagal trukmę",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "iki-18": "Iki 18 mėnesių",
+        "iki-24": "Iki 24 mėnesių"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Ligos ir motinystės socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.nedarbo-fiksuota",
+      "nombre": "Nedarbo išmokos pastovioji dalis nuo MMA",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Nedarbo socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.nedarbo-kintama",
+      "nombre": "Nedarbo išmokos kintamoji dalis pagal laikotarpį",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pirmi": "Pirmieji mėnesiai",
+        "veliau": "Vėlesni mėnesiai"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Nedarbo socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.nedarbo-lubos",
+      "nombre": "Didžiausia nedarbo išmoka",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Nedarbo socialinio draudimo įstatymas y sodra.lt."
+        }
+      ]
+    },
+    {
+      "id": "lt.nt-tarifai",
+      "nombre": "Nekilnojamojo turto mokesčio tarifai",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "e-seimas.lrs.lt, e-tar.lt, vmi.lt, sodra.lt y *.lrv.lt responden 403 (desafío de Cloudflare a clientes automáticos) el 1/11/2026; no se eludió el control. Falta leerlo en: Nekilnojamojo turto mokesčio įstatymas (e-seimas) y vmi.lt."
+        }
+      ]
+    }
+  ]
+}
