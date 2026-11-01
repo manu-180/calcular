@@ -83,7 +83,7 @@ Checks (`check-all`, 1/11/2026): 156 de 159 suites. `check_motor` 5052 pruebas, 
 `check_hreflang` 20797 páginas, `check_ofertas_intl`, `check_guiones` y `check_fronteras` OK. Las tres que fallan
 no son de esta tanda:
 - `check_mundo`: be (neto de 24.000 da 23589,12 contra 23487,48 de la cuenta oficial).
-- `check_paises`: 26 fallas en 16 mercados. 22 son series vencidas (bo, ca, ca-fr, ch, ch-fr, ch-it, cr, gb, gt, hk,
+- `check_paises`: 26 fallas en 17 mercados. 22 son series vencidas (bo, ca, ca-fr, ch, ch-fr, ch-it, cr, gb, gt, hk,
   kr, kw, mx, ni, pe, pk, za). Las otras 4 son llaves anidadas en la `description` de `oas-clawback` y
   `tfsa-contribution-room` de ca y ca-fr (`{{ca.tfsa-annual-limits[{{anio}}]}}`): vienen de main y no están en la lista
   de fallas conocidas.
