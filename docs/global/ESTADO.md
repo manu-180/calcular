@@ -277,6 +277,15 @@ y servicios («та», «-на уу», botones en «-х»), sin confirmar en sus
 nunca el nombre ni una cifra. MNT como moneda de prueba. Listo para que un agente de país escriba Mongolia.
 Falla de main ajena al frente: `check_mundo` (be, neto).
 
+## 1/11/2026 · Motor letón (`claude/mundo-motor-lv`, ADR 0002 D35)
+
+`lv` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados, redes y las 41 universales; edición interna `zz-lv`. Registro
+de VID: «jūs» en minúscula, 2.ª del plural, botones en infinitivo («Aprēķināt»). Plurales one/other con el 0 en
+genitivo (`pluralLv`), país con genitivo, locativo sin preposición y dativo (`GRAMATICA.lv`). `algas-kalkulators`
+queda libre para la local. Listo para que un agente de país escriba Letonia (`lv`). Falla de main ajena al frente:
+`check_mundo` (be, neto). Falta revisión por hablante nativo.
+
 ## 31/10/2026 · Motor búlgaro (`claude/mundo-motor-bg`, ADR 0002 D24)
 
 `bg` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,

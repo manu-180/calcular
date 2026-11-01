@@ -23,6 +23,7 @@ import { contenidoJa } from "./contenido/ja";
 import { contenidoKa } from "./contenido/ka";
 import { contenidoKo } from "./contenido/ko";
 import { contenidoMn } from "./contenido/mn";
+import { contenidoLv } from "./contenido/lv";
 import { contenidoNb } from "./contenido/nb";
 import { contenidoNl } from "./contenido/nl";
 import { contenidoPl } from "./contenido/pl";
@@ -63,6 +64,7 @@ import { textosJa } from "./textos/ja";
 import { textosKa } from "./textos/ka";
 import { textosKo } from "./textos/ko";
 import { textosMn } from "./textos/mn";
+import { textosLv } from "./textos/lv";
 import { textosNb } from "./textos/nb";
 import { textosNl } from "./textos/nl";
 import { textosPl } from "./textos/pl";
@@ -84,7 +86,7 @@ export default definirUniversal<UiConsumoElectrico>({
   id: "consumo-electrico",
   concepto: "consumo-electrico",
   definir,
-  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, et: textosEt, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, is: textosIs, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mn: textosMn, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sl: textosSl, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, et: contenidoEt, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, is: contenidoIs, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mn: contenidoMn, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sl: contenidoSl, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, et: textosEt, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, is: textosIs, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mn: textosMn, lv: textosLv, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sl: textosSl, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, et: contenidoEt, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, is: contenidoIs, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mn: contenidoMn, lv: contenidoLv, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sl: contenidoSl, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });

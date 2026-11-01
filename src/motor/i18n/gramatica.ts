@@ -2255,4 +2255,90 @@ const is: GramaticaPais = {
   para: (p) => `fyrir ${fallIs(p).tholfall}`,
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is };
+// Letón (ADR 0002, D35): el nombre del país se declina y el lugar no lleva preposición. `de(p)` da el
+// genitivo («Latvijas», «Vācijas», «Amerikas Savienoto Valstu»), `en(p)` el locativo («Latvijā», «Vācijā»,
+// «Ēģiptē», «Vatikānā», «Filipīnās», «Apvienotajos Arābu Emirātos») y `para(p)` el dativo («Latvijai»,
+// «Ēģiptei», «Filipīnām»). Los nombres llegan como los escribe Intl.DisplayNames en lv: la regla cubre el
+// último sustantivo por terminación (-a, -e, -as plural, -s masculino), los adjetivos concordados de la
+// tabla ADJETIVOS («Apvienotajā Karalistē», «Ekvatoriālajā Gvinejā») y las partes unidas con « un », que se
+// declinan por separado. Las palabras de delante, que ya van en genitivo («Saūda», «Dienvidāfrikas»),
+// quedan igual, lo mismo que un paréntesis final. Lo que termina en otra letra (Peru, Haiti, Mali, Togo)
+// no se declina. Revisado con los nombres de Intl en lv.
+export interface LocijumiLv {
+  genitivs: string;
+  lokativs: string;
+  dativs: string;
+}
+
+export const locijumiLv: (pais: string) => LocijumiLv = (() => {
+  // [genitivo, locativo, dativo]
+  type Formas = readonly [string, string, string];
+  const ADJETIVOS: Readonly<Record<string, Formas>> = {
+    Apvienotā: ["Apvienotās", "Apvienotajā", "Apvienotajai"],
+    Apvienotie: ["Apvienoto", "Apvienotajos", "Apvienotajiem"],
+    Savienotās: ["Savienoto", "Savienotajās", "Savienotajām"],
+    Ekvatoriālā: ["Ekvatoriālās", "Ekvatoriālajā", "Ekvatoriālajai"],
+    Mazās: ["Mazo", "Mazajās", "Mazajām"],
+    attālās: ["attālo", "attālajās", "attālajām"],
+  };
+  // «Valstis» (femenino en -is) y «Emirāti» (masculino plural) no siguen la regla: los demás nombres en -i
+  // (Mali, Haiti, Kiribati) son indeclinables.
+  const SUSTANTIVOS: Readonly<Record<string, Formas>> = {
+    Valstis: ["Valstu", "Valstīs", "Valstīm"],
+    Emirāti: ["Emirātu", "Emirātos", "Emirātiem"],
+    Niue: ["Niue", "Niue", "Niue"],
+  };
+  const igual = (w: string): Formas => [w, w, w];
+  const TABLA: Readonly<Record<string, Formas>> = {
+    "Gvineja-Bisava": ["Gvinejas-Bisavas", "Gvinejā-Bisavā", "Gvinejai-Bisavai"],
+    "Santome un Prinsipi": igual("Santome un Prinsipi"),
+    "Tērksas un Kaikosas salas": ["Tērksas un Kaikosas salu", "Tērksas un Kaikosas salās", "Tērksas un Kaikosas salām"],
+    "Volisa un Futunas salas": ["Volisas un Futunas salu", "Volisas un Futunas salās", "Volisas un Futunas salām"],
+    "Ķīnas īpašās pārvaldes apgabals Honkonga": ["Honkongas", "Honkongā", "Honkongai"],
+    "ĶTR īpašais administratīvais reģions Makao": igual("Makao"),
+  };
+  const sustantivo = (w: string): Formas => {
+    if (/^\p{Lu}{2,}$/u.test(w)) return igual(w);
+    if (SUSTANTIVOS[w]) return SUSTANTIVOS[w];
+    const r2 = w.slice(0, -2);
+    const r1 = w.slice(0, -1);
+    if (/as$/.test(w)) return [`${r2}u`, `${r2}ās`, `${r2}ām`];
+    if (/a$/.test(w)) return [`${r1}as`, `${r1}ā`, `${r1}ai`];
+    if (/e$/.test(w)) return [`${r1}es`, `${r1}ē`, `${r1}ei`];
+    if (/s$/.test(w)) return [`${r1}a`, `${r1}ā`, `${r1}am`];
+    return igual(w);
+  };
+  const unir = (partes: readonly Formas[], sep: string): Formas => [
+    partes.map((f) => f[0]).join(sep),
+    partes.map((f) => f[1]).join(sep),
+    partes.map((f) => f[2]).join(sep),
+  ];
+  const frase = (p: string): Formas => {
+    const palabras = p.split(" ");
+    const ultima = palabras.length - 1;
+    return unir(palabras.map((w, i): Formas => (i === ultima ? sustantivo(w) : (ADJETIVOS[w] ?? igual(w)))), " ");
+  };
+  const formas = (p: string): Formas => {
+    if (TABLA[p]) return TABLA[p];
+    const i = p.indexOf(" (");
+    if (i > 0 && p.endsWith(")")) {
+      const [g, l, d] = formas(p.slice(0, i));
+      return [g + p.slice(i), l + p.slice(i), d + p.slice(i)];
+    }
+    if (p.includes(" un ")) return unir(p.split(" un ").map(formas), " un ");
+    return frase(p);
+  };
+  return (p: string): LocijumiLv => {
+    const [genitivs, lokativs, dativs] = formas(p);
+    return { genitivs, lokativs, dativs };
+  };
+})();
+
+const lv: GramaticaPais = {
+  nombre: (p) => p,
+  de: (p) => locijumiLv(p).genitivs,
+  en: (p) => locijumiLv(p).lokativs,
+  para: (p) => locijumiLv(p).dativs,
+};
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };

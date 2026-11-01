@@ -4,7 +4,7 @@ import { pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { casosEl, GRAMATICA, mayusculaHu } from "./gramatica";
 import { DIAS_HE, pluralHe, prefijoHe, type FormasHe } from "./hebreo";
-import { conteoMn, formaRu, pluralBg, pluralCs, pluralEl, pluralPl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
+import { conteoMn, formaRu, pluralBg, pluralCs, pluralEl, pluralLv, pluralPl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
 import { pluralHr } from "./plural";
 import { rasatSq } from "./gramatica";
@@ -7165,7 +7165,169 @@ const is: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is };
+// Letón (ADR 0002, D35): «jūs» en minúscula, como VID y los bancos; la tarjeta y el texto para compartir,
+// en primera persona. Sin participios sobre quien lee. El país va con GRAMATICA.lv y las cantidades con
+// pluralLv. Intl da la fecha en nominativo («12. maijs»), así que «līdz» no va pegado a ella: la frase
+// termina en «līdz dienai:» o similar. «Bruto alga» y «neto alga (uz rokas)» son las palabras del país.
+const gLv = GRAMATICA.lv;
+const SEO_LV = "Nodokļu brīvības diena un neto alga pasaulē";
+const diasLv = (d: number) => pluralLv(d, "diena", "dienas", "dienu");
+
+const lv: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Jūsu alga pasaulē",
+    seo: {
+      titulo: (pais) => [`${SEO_LV} | ${pais}`, SEO_LV, "Jūsu alga pasaulē"],
+      tituloGlobal: [SEO_LV, "Jūsu alga pasaulē"],
+      descripcion: (pais, n) => `Uzziniet, līdz kurai gada dienai ar savu algu ${gLv.en(pais)} strādājat valsts labā un cik saņemtu uz rokas citās valstīs (kopā: ${n}). Bez maksas, bez reģistrācijas.`,
+      descripcionGlobal: (n) => `Uzziniet, līdz kurai gada dienai strādājat valsts labā un cik no jūsu algas paliktu uz rokas citās valstīs (kopā: ${n}). Bez maksas, bez reģistrācijas.`,
+    },
+    ceja: "Jūsu nodokļu brīvības diena",
+    h1: "Līdz kurai gada dienai strādājat valsts labā?",
+    bajada: (n) => `Ievadiet bruto algu un redzēsiet savu datumu. Pēc tam salīdziniet to ar citām valstīm (kopā: ${n}): pirktspēja ir tā pati, nodokļu noteikumi katrai valstij savi.`,
+    form: {
+      titulo: "Jūsu alga",
+      sueldo: "Bruto alga",
+      mes: "Mēnesī",
+      anio: "Gadā",
+      periodo: "Algas periods",
+      pais: "Valsts, kurā strādājat",
+      ejemplo: "Piemērs",
+      ejemploAyuda: "Šī ir parauga alga. Ievadiet savu, un visi skaitļi uzreiz tiks pārrēķināti.",
+      propio: "Ņemts no jūsu aprēķina.",
+      invalido: "Ievadiet summu, kas lielāka par nulli.",
+      pagas: "Mēneša alga pēc algas lapiņas: likumā paredzētās papildu izmaksas (13. vai 14. algu) pieskaitām paši. Neto alga ir 12 mēnešu vidējais.",
+    },
+    heroe: {
+      hasta: (fecha) => `Valsts labā strādājat līdz dienai: ${fecha}`,
+      tasa: (pct) => `${pct} no jūsu algas aiziet ienākuma nodoklim un obligātajām iemaksām.`,
+      dias: (n, total) => `${n} no ${total} dienām`,
+      enMano: "Jums paliek uz rokas",
+      porMes: "mēnesī",
+      anio: (anio, n, total) => `${anio}. gadā: valsts labā ${n} no ${total} dienām.`,
+      resto: "No nākamās dienas viss, ko nopelnāt, pieder jums.",
+    },
+    ranking: {
+      titulo: "Tā pati alga, valsts pēc valsts",
+      bajada: "Tik jūs saņemtu uz rokas katrā valstī, ja pirktspēja ir tā pati. Katra rinda aprēķināta ar attiecīgās valsts oficiālo kalkulatoru. Alga visur ir vienāda: mainās tikai nodokļi un iemaksas, nevis tas, cik attiecīgajā valstī pelna.",
+      lista: "Valstis pēc neto algas",
+      buscar: "Meklēt valsti",
+      filtrar: "Filtrēt pēc reģiona",
+      todas: "Visas",
+      regiones: { americas: "Amerika", europa: "Eiropa", asia: "Āzija un Okeānija", africa: "Āfrika un Tuvie Austrumi" },
+      tuPais: "Jūsu valsts",
+      mejor: "Vismazākie nodokļi",
+      enMano: "Uz rokas mēnesī",
+      enTuMoneda: "Jūsu valūta",
+      vsTuPais: "Salīdzinot ar jūsu valsti",
+      verTodos: (n) => `Rādīt visas valstis (${n})`,
+      verMenos: "Rādīt mazāk",
+      sinResultados: (q) => `Pēc vaicājuma „${q}“ valsts nav atrasta.`,
+      abrir: (pais) => `Atvērt kalkulatoru: ${pais}`,
+      mas: (pct) => `par ${pct} vairāk`,
+      menos: (pct) => `par ${pct} mazāk`,
+      igual: "Tikpat",
+      puesto: (p, total) => `Jūsu valsts vieta: ${p} no ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Kartīte, ar kuru varat dalīties",
+      bajada: "Tajā redzams jūsu datums un procenti. Cik pelnāt, tajā nekad netiek rādīts.",
+      hasta: (fecha) => `Valsts labā strādāju līdz dienai: ${fecha}`,
+      tasa: (pct) => `${pct} no manas algas aiziet nodokļiem`,
+      mejor: (pais, pct) => `Ar tādu pašu algu ${gLv.en(pais)} nodokļos maksātu mazāk: uz rokas saņemtu par ${pct} vairāk`,
+      mejorPropio: (pais) => `Ar manu algu nekur nepaliktu vairāk nekā ${gLv.en(pais)}`,
+      yVos: "Un jūs?",
+      cta: "Uzziniet savu datumu:",
+      generica: "Līdz kurai gada dienai strādājat valsts labā?",
+      genericaBajada: (n) => `Jūsu alga pasaulē. Valstu kopā: ${n}, katrai savs oficiālais kalkulators`,
+      compartir: "Kopīgot kartīti",
+      compartirDuelo: "Atbildēt uz izaicinājumu",
+      descargar: "Lejupielādēt attēlu",
+      copiado: "Saite nokopēta. Ielīmējiet to, kur vajadzīgs.",
+      compartido: "Nosūtīts.",
+      error: "Kopīgot neizdevās. Mēģiniet vēlreiz.",
+      texto: (fecha) => `Valsts labā strādāju līdz dienai: ${fecha}. Un jūs?`,
+      alt: "Jūsu kartītes priekšskatījums",
+    },
+    duelo: {
+      amigo: (fecha) => `Persona, kas jums atsūtīja šo saiti, valsts labā strādā līdz dienai: ${fecha}.`,
+      yVos: "Un jūs?",
+      invitacion: "Ievadiet savu algu un salīdziniet.",
+      vos: "Jūs",
+      elAmigo: "Otra persona",
+      dia: "Valsts labā strādā līdz",
+      tasa: "Nodokļi un iemaksas",
+      mejorPais: "Vismazākie nodokļi",
+      antes: (d) => `Jūsu brīvības diena pienāk agrāk nekā personai, kas atsūtīja saiti. Starpība: ${diasLv(d)}.`,
+      despues: (d) => `Personas, kas atsūtīja saiti, brīvības diena pienāk agrāk nekā jums. Starpība: ${diasLv(d)}.`,
+      empate: "Jūsu brīvības dienas sakrīt.",
+      desde: (pais) => `Strādā ${gLv.en(pais)}`,
+    },
+    cero: {
+      dia: "0 dienu",
+      heroeAntes: "Valsts labā strādājat",
+      tarjetaAntes: "Valsts labā strādāju",
+      motivo: "No šīs algas neietur ne ienākuma nodokli, ne obligātās iemaksas.",
+      texto: "Šogad valsts labā nestrādāju nevienu dienu. Un jūs?",
+      amigo: "Persona, kas jums atsūtīja šo saiti, valsts labā nestrādā nevienu dienu.",
+    },
+    metodo: {
+      titulo: "Kā mēs rēķinām",
+      estimacion: "Tas ir novērtējums valstu salīdzināšanai, nevis algas lapiņa. Nodokļu atvieglojumi, bērni vai prēmijas var mainīt jūsu skaitli.",
+      supuestos: [
+        "Persona bez laulātā un bērniem, katras valsts kalkulatora noklusējuma vērtības.",
+        "Neto alga ir tas, kas paliek pēc ienākuma nodokļa un paša darbinieka iemaksām. Patēriņa nodokļi un darba devēja iemaksas netiek skaitītas.",
+        "Trīspadsmitā alga vai citas obligātas papildu izmaksas tiek sadalītas pa gadu tā, kā nosaka katras valsts likumi.",
+        "Amerikas Savienotajās Valstīs netiek pieskaitīti štatu un vietējie nodokļi: tikai federālais nodoklis un iemaksas no darba samaksas.",
+        "Lai pārrēķinātu jūsu algu citai valstij, izmantojam pirktspējas paritāti (PPP): tas pats dzīves līmenis, nevis šodienas valūtas kurss.",
+        "Argentīnas PPP tiek atjaunināta pēc INDEC patēriņa cenu indeksa, jo Pasaules Banka to publicē tikai līdz 2021. gadam.",
+        "Brīvības diena sadala nodokļus pa gadu no 1. janvāra. Ja nodokļiem aiziet 30% algas, valsts labā strādājat 30% gada.",
+      ],
+      ppaTitulo: "Pirktspējas paritāte",
+      bancoMundial: "Pasaules Banka",
+      ppa: (organismo, indicador, anio) => `${organismo}, rādītājs ${indicador}, jaunākais pieejamais gads: ${anio}.`,
+      consultado: (fecha) => `Pārbaudīts: ${fecha}.`,
+      verFuente: "Skatīt avotu",
+      fuentesTitulo: "Katras valsts avots",
+      fuentesBajada: "Katrā rindā izmantots attiecīgās valsts neto algas kalkulators un tā oficiālie dati.",
+      verificado: (fecha) => `Dati pārbaudīti: ${fecha}`,
+      sello: (fecha) => `Oficiālie dati, pārbaudīti katras valsts avotā. Vecākā pārbaude: ${fecha}.`,
+    },
+    faqTitulo: "Biežāk uzdotie jautājumi",
+    faq: (n) => [
+      {
+        pregunta: "Kas ir nodokļu brīvības diena?",
+        respuesta:
+          "Tā ir gada diena, kurā būtu samaksāti nodokļi un iemaksas, ja viss, ko nopelnāt no 1. janvāra, vispirms nonāktu pie valsts. Šeit to rēķinām pēc jūsu algas, nevis pēc valsts vidējā.",
+      },
+      {
+        pregunta: "Kāpēc salīdzinām pēc pirktspējas?",
+        respuesta: "Pēc valūtas kursa alga var izskatīties milzīga vai niecīga atkarībā no dienas. Pirktspējas paritāte parāda, ko par šo naudu katrā valstī patiešām var nopirkt.",
+      },
+      {
+        pregunta: "Vai mana alga tiek saglabāta?",
+        respuesta: "Nē. Aprēķins notiek jūsu pārlūkprogrammā. Tas, ar ko dalāties, ietver tikai datumus, procentus un valstis.",
+      },
+      {
+        pregunta: "Kāpēc mana īstā neto alga atšķiras?",
+        respuesta:
+          "Rēķinām personai bez laulātā un bērniem, ar noklusējuma vērtībām. Nodokļu atvieglojumi, prēmijas vai īpaši režīmi skaitli maina. Precīzam aprēķinam savai situācijai atveriet savas valsts kalkulatoru.",
+      },
+      {
+        pregunta: "Kuras valstis šeit ir?",
+        respuesta: `Šodien kopā: ${pluralLv(n, "valsts", "valstis", "valstu")}, katrai savs neto algas kalkulators un oficiālie dati. Jaunas pievienojam, kad esam pārbaudījuši to nodokļu noteikumus.`,
+      },
+    ],
+    destacado: {
+      ceja: "Pasaules salīdzinājums",
+      titulo: "Līdz kurai gada dienai strādājat valsts labā?",
+      texto: "Ievadiet algu un paskatieties, cik saņemtu uz rokas citās valstīs.",
+      ir: "Uzzināt savu datumu",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

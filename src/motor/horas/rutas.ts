@@ -21,6 +21,7 @@ export const SLUG_HORAS: Record<Idioma, string> = {
   sl: "koliko-ur-dela",
   et: "tootunnid",
   is: "hversu-margar-vinnustundir",
+  lv: "cik-stundas-jastrada",
 
   pl: "ile-godzin-pracy",
   sv: "arbetstimmar",

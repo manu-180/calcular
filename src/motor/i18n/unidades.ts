@@ -19,12 +19,15 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // En croata "uno" es 1, 21, 31... (no 11), "pocos" 2 a 4, 22 a 24... (no 12 a 14) y "otros" el resto,
 // fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
 // En esloveno, "dual" es la categoría "two" (2, 102...): «2 dneva», «2 leti»; ADR 0002, D32.
+// En letón "uno" es 1, 21, 31... (no 11) y "otros" el resto (2, 10, 11, 1,5), fracciones incluidas; "cero"
+// es la forma del 0 exacto, en genitivo plural: «1 gads», «2 gadi», «10 gadi», «21 gads», «0 gadu».
 export interface FormasUnidad {
   uno: string;
   dual?: string;
   otros: string;
   pocos?: string;
   muchos?: string;
+  cero?: string;
 }
 
 type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad | FormasAr | FormasHe>>;
@@ -117,6 +120,13 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   // El mongol no pone plural después de un número («3 өдөр», «1.5 жил»): las dos formas son iguales.
   mn: { dias: { uno: "өдөр", otros: "өдөр" }, semanas: { uno: "долоо хоног", otros: "долоо хоног" }, horas: { uno: "цаг", otros: "цаг" }, meses: { uno: "сар", otros: "сар" }, anios: { uno: "жил", otros: "жил" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
+  lv: {
+    dias: { uno: "diena", otros: "dienas", cero: "dienu" },
+    semanas: { uno: "nedēļa", otros: "nedēļas", cero: "nedēļu" },
+    horas: { uno: "stunda", otros: "stundas", cero: "stundu" },
+    meses: { uno: "mēnesis", otros: "mēneši", cero: "mēnešu" },
+    anios: { uno: "gads", otros: "gadi", cero: "gadu" },
+  },
   // Serbio en latinica y ekavski (ADR 0002, D23).
   sr: {
     dias: { uno: "dan", pocos: "dana", otros: "dana" },

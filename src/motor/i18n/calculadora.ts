@@ -22,6 +22,16 @@ const ZH_HANS_CALCULADORA: TextosCalculadora = {
 };
 
 export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
+  lv: {
+    base: {
+      datos: "Jūsu dati",
+      resultado: "Rezultāts",
+      vacio: "Aizpildiet datus un noklikšķiniet uz „Aprēķināt“, rezultāts parādīsies šeit.",
+      sinResultado: "Šo rezultātu pagaidām nerādām.",
+      avisos: { info: "Noderīgi zināt", cautela: "Pievērsiet uzmanību", bloquea: "Kāpēc rezultātu nerādām" },
+      fuenteDelAviso: "Avots",
+    },
+  },
   es: {
     base: {
       datos: "Tus datos",

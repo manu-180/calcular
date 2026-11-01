@@ -73,6 +73,26 @@ const ZH_HANS: TextosRedes = {
 const base = (t: TextosRedes): Diccionario<TextosRedes> => ({ base: t });
 
 export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
+  lv: base({
+    grupo: "Kopīgot",
+    instagramSub: "Stāsts",
+    copiar: "Kopēt saiti",
+    mas: "Citas iespējas",
+    nuevaPestana: "atveras jaunā cilnē",
+    formato: "Attēla formāts",
+    historia: "Stāsts 9:16",
+    feed: "Ieraksts 1:1",
+    descargar: "Lejupielādēt attēlu",
+    copiado: "Saite nokopēta.",
+    compartido: "Kopīgots.",
+    enInstagram: "Gatavs. Arī saite ir nokopēta, to var pievienot stāstam ar uzlīmi „Saite“.",
+    descargado: "Attēls lejupielādēts, saite nokopēta. Stāstu var publicēt no telefona, bet saiti pievienot ar uzlīmi „Saite“.",
+    error: "Kopīgot pašlaik nevar.",
+    alCelu: "Instagram augšupielāde notiek no telefona",
+    celuPagina: "Noskenējiet šo kodu ar telefona kameru: atvērsies kartīte, ko ar vienu pieskārienu var nosūtīt uz stāstu.",
+    celuImagen: "Noskenējiet šo kodu ar telefona kameru: atvērsies attēls, ko var kopīgot stāstā.",
+    cerrar: "Aizvērt",
+  }),
   es: base({
     grupo: "Compartir en",
     instagramSub: "Historia",

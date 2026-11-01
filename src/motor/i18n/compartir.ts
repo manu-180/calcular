@@ -40,6 +40,22 @@ const ZH_HANS_COMPARTIR: TextosCompartir = {
 };
 
 export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
+  lv: {
+    base: {
+      boton: "Kopīgot",
+      botonAria: "Kopīgot šo kalkulatoru",
+      menuTitulo: "Kopīgot ar",
+      copiar: "Kopēt saiti",
+      copiado: "Saite nokopēta",
+      compartido: "Nosūtīts",
+      errorCorto: "Nokopēt neizdevās",
+      errorAyuda: "Saiti nokopēt neizdevās. Nokopējiet to no pārlūkprogrammas adreses joslas.",
+      nuevaPestana: "atveras jaunā cilnē",
+      mensaje: (nombre) => `${nombre}. Bez maksas, aprēķins aizņem minūti.`,
+      puenteIntro: "Un citās valstīs?",
+      puenteEnlace: (n) => `Paskatieties, cik jums paliktu uz rokas citās valstīs (kopā: ${n})`,
+    },
+  },
   es: {
     base: {
       boton: "Compartir",

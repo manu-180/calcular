@@ -44,4 +44,5 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   sl: "koledar-plac",
   et: "palgakalender",
   is: "launadagatal",
+  lv: "algas-kalendars",
 };

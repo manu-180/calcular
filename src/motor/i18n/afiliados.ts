@@ -26,6 +26,18 @@ const ZH_HANS: TextosAfiliados = {
 };
 
 export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
+  lv: {
+    base: {
+      titulo: "Pārceļaties uz ārzemēm vai maksājat no citas valsts?",
+      etiqueta: "Partneru saites",
+      socios: {
+        wise: "Daudzvalūtu konts naudas saņemšanai un sūtīšanai starp valstīm pēc vidējā tirgus kursa, ar iepriekš redzamu maksu.",
+        deel: "Līgumi un izmaksas tiem, kas no vienas valsts strādā citas valsts uzņēmumam.",
+      },
+      nota: "Ja pa šīm saitēm atvērsiet kontu, vietne var saņemt komisijas maksu. Jums tas neko vairāk nemaksās.",
+      nuevaPestana: "atveras jaunā cilnē",
+    },
+  },
   es: {
     base: {
       titulo: "¿Mudarse o cobrar desde el exterior?",
