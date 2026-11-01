@@ -615,6 +615,26 @@ export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
     texto: "{en}, {producto} עולה לי {horas} של עבודה. ומה במדינות אחרות?",
     og: { antes: "{en}, במשכורת שלי,", producto: "{producto} עולה לי", de: "של עבודה", deMes: "של עבודה לחודש", otros: "אותה רמת שכר ב-", cta: "כמה שעות עבודה זה עולה?" },
   }),
+  ka: base({
+    titulo: "იგივე გამოთვლა, რეალური ხელფასით",
+    bajada: "ყოველთვიური ხელფასის მითითებისას საათები ამ ხელფასიდან გამოითვლება და არა მინიმალურიდან. თანხა ამ ბრაუზერში რჩება: ბმულსა და სურათში არ ხვდება.",
+    campo: "ყოველთვიური ხელფასი დაბეგვრამდე",
+    ayuda: "ვალუტა: {moneda}, დაქვითვებამდე.",
+    traido: "გადმოტანილია ხელფასის კალკულატორიდან.",
+    invalido: "საჭიროა ნულზე მეტი თანხა.",
+    vacio: "საათები ხელფასის მითითების შემდეგ გამოჩნდება.",
+    antes: "{en} ამ ხელფასით {producto} ღირს",
+    despues: "მუშაობა",
+    despuesMes: "მუშაობა, ყოველთვე",
+    minimo: "მინიმალური ხელფასით: {horas}.",
+    veces: "{x} × მინიმალური ხელფასი",
+    rankingTitulo: "ხელფასის იგივე დონე ყველა ქვეყანაში",
+    rankingBajada: "{x} × თითოეული ქვეყნის მინიმალური ხელფასი, სამუშაო საათებში.",
+    tarjetaTitulo: "ბარათი ჩემი საათებით",
+    tarjetaBajada: "აჩვენებს მხოლოდ საათებსა და ქვეყნებს. ხელფასს არასდროს.",
+    texto: "{en} {producto} მიჯდება {horas} მუშაობა. სხვა ქვეყნებში როგორ არის?",
+    og: { antes: "{en} ჩემი ხელფასით", producto: "{producto} მიჯდება", de: "მუშაობა", deMes: "მუშაობა თვეში", otros: "ხელფასის იგივე დონით:", cta: "რამდენი საათის მუშაობა ღირს?" },
+  }),
 };
 
 export function textosHorasPropio(idioma: Idioma, trato: Trato, locale?: string): TextosHorasPropio {

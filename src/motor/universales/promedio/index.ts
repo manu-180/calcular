@@ -15,6 +15,7 @@ import { contenidoHu } from "./contenido/hu";
 import { contenidoId } from "./contenido/id";
 import { contenidoIt } from "./contenido/it";
 import { contenidoJa } from "./contenido/ja";
+import { contenidoKa } from "./contenido/ka";
 import { contenidoKo } from "./contenido/ko";
 import { contenidoNb } from "./contenido/nb";
 import { contenidoNl } from "./contenido/nl";
@@ -44,6 +45,7 @@ import { textosHu } from "./textos/hu";
 import { textosId } from "./textos/id";
 import { textosIt } from "./textos/it";
 import { textosJa } from "./textos/ja";
+import { textosKa } from "./textos/ka";
 import { textosKo } from "./textos/ko";
 import { textosNb } from "./textos/nb";
 import { textosNl } from "./textos/nl";
@@ -62,7 +64,7 @@ export default definirUniversal<UiPromedio>({
   id: "promedio",
   concepto: "promedio",
   definir,
-  textos: { ar: textosAr, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hu: textosHu, id: textosId, it: textosIt, ja: textosJa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hu: contenidoHu, id: contenidoId, it: contenidoIt, ja: contenidoJa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hu: textosHu, id: textosId, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hu: contenidoHu, id: contenidoId, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });

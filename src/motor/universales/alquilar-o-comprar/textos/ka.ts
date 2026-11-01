@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosKa: TextosUi<UiAlquilarOComprar> = {
+  slug: "kira-tu-qidva",
+  ui: () => ({
+    precio: "ბინის ფასი",
+    entrada: "პირველადი შენატანი (ფასის პროცენტი)",
+    gastosCompra: "შეძენის ხარჯები (ფასის პროცენტი)",
+    gastosCompraAyuda: "მოსაკრებლები, იურიდიული მომსახურება, შეფასება და უძრავი ქონების აგენტის საკომისიო.",
+    tasa: "იპოთეკური სესხის განაკვეთი (წლიური %)",
+    aniosHipoteca: "სესხის ვადა (წელი)",
+    alquiler: "მსგავსი ბინის ყოველთვიური ქირა",
+    aumentoAlquiler: "ქირის წლიური ზრდა (%)",
+    gastosPropietario: "მესაკუთრის წლიური ხარჯები (ღირებულების პროცენტი)",
+    gastosPropietarioAyuda: "მოვლა, შეკეთება, ქონების გადასახადი და ბინის დაზღვევა. ჩვეულებრივ, 1 პროცენტიდან 2 პროცენტამდე.",
+    revalorizacion: "ბინის ღირებულების წლიური ზრდა (%)",
+    rendimiento: "ალტერნატიული ინვესტიციის უკუგება (წლიური %)",
+    rendimientoAyuda: "ამდენს მოიტანდა პირველადი შენატანი, ყიდვის ნაცვლად რომ დაგებანდებინათ.",
+    horizonte: "რამდენი წლით შევადაროთ",
+    veredicto: "შედეგი",
+    patrimonioComprar: "თქვენი ქონება ბოლოს, თუ იყიდით",
+    patrimonioAlquilar: "თქვენი ქონება ბოლოს, თუ იქირავებთ",
+    diferencia: "სხვაობა",
+    anioDesde: "წელი, რომლიდანაც ყიდვა უფრო მომგებიანია",
+    pagadoAlquilando: "გადახდილი ქირა ჯამში",
+    pagadoComprando: "შენატანები და მესაკუთრის ხარჯები ჯამში",
+    tabla: "შედარება წლების მიხედვით",
+    colAnio: "წელი",
+    colComprar: "ყიდვა",
+    colAlquilar: "ქირა",
+    colDiferencia: "სხვაობა",
+    errorPrecio: "შეიყვანეთ ბინის ფასი.",
+    errorAlquiler: "მიუთითეთ, რა დაჯდება მსგავსი ბინის ქირა.",
+    convieneComprar: (anios, diferencia) => `უკეთესია ყიდვა: ${anios} წლის შემდეგ მეტი ქონება გექნებათ. სხვაობა: ${diferencia}.`,
+    convieneAlquilar: (anios, diferencia) => `უკეთესია ქირა: ${anios} წლის შემდეგ მეტი ქონება გექნებათ. სხვაობა: ${diferencia}.`,
+    empate: (anios) => `${anios} წლის შემდეგ ორივე ვარიანტი ერთსა და იმავე შედეგს იძლევა.`,
+    observacionDesde: (anio) => `ყიდვა ქირაზე მომგებიანი ხდება და ასე რჩება ამ წლიდან: ${anio}.`,
+    observacionMetodo:
+      "შედარებულია, რამდენი ქონება გექნებათ თითოეულ შემთხვევაში. ქირის დროს პირველადი შენატანი და ყოველთვიურად დაზოგილი თანხა ინვესტირებული რჩება. გაყიდვის ხარჯები არ აკლდება.",
+  }),
+};
