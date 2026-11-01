@@ -2,11 +2,11 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "me.prekovremeni-rad",
-  h1: "Prekovremeni rad {{anio}}: obračun uz uvećanje od {{me.prekovremeni-uvecanje}}",
-  title: "Prekovremeni rad {{anio}}: uvećanje {{me.prekovremeni-uvecanje}}, noćni i praznični rad",
-  description: "Sat prekovremenog rada plaća se najmanje {{me.prekovremeni-uvecanje}} više, noć {{me.nocni-uvecanje}}, praznik {{me.praznik-uvecanje}}. Izračunajte bruto iznos za svoje časove i provjerite granicu od {{me.prekovremeni-sedmicno}}.",
+  h1: "Prekovremeni rad {{anio}}: obračun bruto iznosa",
+  title: "Prekovremeni rad {{anio}}: obračun uvećanja",
+  description: "Izračunajte bruto iznos za prekovremene časove. Procenat uvećanja provjerite u kolektivnom ugovoru ili ugovoru o radu koji se kod vas primjenjuje.",
   intro: [
-    "Opšti kolektivni ugovor, kako ga citira resorno ministarstvo, propisuje da se zarada po času uvećava najmanje {{me.prekovremeni-uvecanje}} za prekovremeni rad, {{me.nocni-uvecanje}} za noćni i {{me.praznik-uvecanje}} za rad na državni ili vjerski praznik. Zakon o radu samu visinu ostavlja kolektivnom ugovoru i ugovoru o radu.",
+    "Zakon o radu visinu uvećanja ostavlja kolektivnom ugovoru i ugovoru o radu. Provjerite koji se akt kod vas primjenjuje.",
     "Ako vaš ugovor daje više, unesite taj procenat. Kalkulator računa cijenu časa i bruto za te časove.",
   ],
   comoSeCalcula: [
@@ -15,8 +15,7 @@ export default definirContenido({
     "Puno radno vrijeme je {{me.puno-radno-vrijeme}} sedmično. Sa prekovremenim radom ne smije biti u prosjeku duže od {{me.prekovremeni-prosjek}} u periodu od četiri mjeseca, ni duže od {{me.prekovremeni-sedmicno}} u jednoj sedmici.",
   ],
   ejemplo: [
-    "Bruto 1.000 eura i 173 radna časa daju 5,78 eura po času. Deset prekovremenih časova vrijedi 57,80 eura, a uvećanje od 40 odsto još 23,12 eura. Ukupno 80,92 eura bruto.",
-    "Da je isti rad bio noću na praznik, uvećanje bi bilo 230 odsto, a ukupan iznos 190,74 eura.",
+    "Bruto 1.000 eura i 173 radna časa daju 5,78 eura po času. Deset prekovremenih časova vrijedi 57,80 eura po osnovnoj cijeni, a na to se dodaje uvećanje iz ugovora.",
   ],
   faq: [
     {
@@ -29,7 +28,7 @@ export default definirContenido({
     },
     {
       pregunta: "Koliko se plaća rad nedjeljom?",
-      respuesta: "Prema članu 15 Opšteg kolektivnog ugovora, kako ga navodi ministarstvo, najmanje {{me.nedjelja-uvecanje}}. Provjerite svoj granski ugovor: Opšti kolektivni ugovor je produžen do 30. aprila 2026, pa se za kasniji period oslonite na akt koji se kod vas primjenjuje.",
+      respuesta: "Provjerite svoj granski ugovor. Opšti kolektivni ugovor je produžen do 30. aprila 2026, pa se za kasniji period oslonite na akt koji se kod vas primjenjuje.",
     },
   ],
   glosario: [
