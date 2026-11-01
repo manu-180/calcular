@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.horas-extras",
   h1: "Calculadora de horas extras en Ecuador",
-  title: "Horas extras en Ecuador 2026: calcula cuánto te pagan",
+  title: "Horas extras en Ecuador {{anio}}: calcula cuánto te pagan",
   description: "Calcula tus horas extras: suplementarias con {{ec.recargo-suplementarias}} de recargo y extraordinarias con {{ec.recargo-extraordinarias}}, sobre el valor de tu hora según el Código del Trabajo.",
   intro: [
     "En Ecuador las horas extras se pagan con recargo sobre tu hora normal: {{ec.recargo-suplementarias}} las suplementarias, {{ec.recargo-madrugada}} las de madrugada y {{ec.recargo-extraordinarias}} las de sábado o domingo (extraordinarias).",

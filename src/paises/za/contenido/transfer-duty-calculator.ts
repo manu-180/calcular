@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "za.transfer-duty-calculator",
   h1: "Transfer duty calculator",
-  title: "Transfer duty calculator 2026: SARS rates",
+  title: "Transfer duty calculator {{anio}}: SARS rates",
   description: "Work out the transfer duty on a property purchase with the current SARS rates. No duty on properties up to R1 210 000.",
   intro: [
     "Enter the price of the property you are buying. You get the transfer duty and the total with the price.",

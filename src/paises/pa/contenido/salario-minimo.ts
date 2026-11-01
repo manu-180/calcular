@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pa.salario-minimo",
-  h1: "Salario mínimo 2026 en Panamá por región y actividad",
-  title: "Salario mínimo en Panamá 2026 por región y actividad",
+  h1: "Salario mínimo {{anio}} en Panamá por región y actividad",
+  title: "Salario mínimo en Panamá {{anio}} por región y actividad",
   description:
-    "Salario mínimo en Panamá 2026 por hora, según región, actividad y tamaño de empresa (Decreto Ejecutivo 13 de 2025). Con su valor semanal, quincenal y mensual.",
+    "Salario mínimo en Panamá {{anio}} por hora, según región, actividad y tamaño de empresa (Decreto Ejecutivo 13 de 2025). Con su valor semanal, quincenal y mensual.",
   intro: [
     "En Panamá el salario mínimo se fija por hora y cambia según la región, la actividad de la empresa y su tamaño. Las tasas de 2026 rigen desde el {{pa.salario-minimo-hora-region-1#desde}}.",
     "Elige tu región y la actividad de tu empresa. Te mostramos el mínimo por hora y cuánto da por semana, quincena y mes.",

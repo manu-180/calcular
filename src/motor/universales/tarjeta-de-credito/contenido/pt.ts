@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { saldar } from "../definicion";
 
@@ -9,7 +10,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const fijo = montoEjemplo(ctx, 100);
   const conFijo = saldar(saldo, 22, { modo: "fijo", fijo, porcentaje: 0, piso: 0 }, r2);
   const conMinimo = saldar(saldo, 22, { modo: "minimo", fijo: 0, porcentaje: 3, piso: montoEjemplo(ctx, 25) }, r2);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora para quitar o cartão de crédito",
     title: tituloQueEntre(`Quitar o cartão de crédito: calculadora (${ctx.nombrePais})`, "Calculadora para quitar o cartão de crédito", "Quitar o cartão de crédito"),

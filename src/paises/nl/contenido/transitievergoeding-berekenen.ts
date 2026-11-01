@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "nl.transitievergoeding-berekenen",
   h1: "Transitievergoeding berekenen",
-  title: "Transitievergoeding 2026: een derde maandloon per jaar",
+  title: "Transitievergoeding {{anio}}: een derde maandloon per jaar",
   description:
-    "Bereken je transitievergoeding bij ontslag: een derde maandloon per gewerkt jaar, inclusief vakantiegeld en vaste toeslagen. Maximaal {{nl.transitievergoeding-max}} in 2026.",
+    "Bereken je transitievergoeding bij ontslag: een derde maandloon per gewerkt jaar, inclusief vakantiegeld en vaste toeslagen. Maximaal {{nl.transitievergoeding-max}} in {{anio}}.",
   intro: [
     "Word je ontslagen of verlengt je werkgever je contract niet, dan heb je in de meeste gevallen recht op een transitievergoeding. Dat staat in artikel 7:673 van het Burgerlijk Wetboek.",
     "Je krijgt een derde maandloon voor elk jaar dat je in dienst was, en een evenredig deel voor de rest. Je bouwt de vergoeding op vanaf je eerste werkdag.",

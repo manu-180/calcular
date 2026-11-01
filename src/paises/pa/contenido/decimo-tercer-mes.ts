@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.decimo-tercer-mes",
   h1: "Calculadora del décimo tercer mes en Panamá",
-  title: "Décimo tercer mes en Panamá 2026: calcula tu partida",
+  title: "Décimo tercer mes en Panamá {{anio}}: calcula tu partida",
   description:
     "Calcula tu décimo tercer mes de abril, agosto o diciembre: lo ganado en la partida entre {{pa.decimo-divisor}}, menos el {{pa.css-decimo-trabajador}} de la CSS. Gratis y al instante.",
   intro: [

@@ -5,7 +5,7 @@
 // rutas coincidan con los slugs. También prueba la grilla vacía: nada tira y no hay páginas.
 //   npx tsx scripts/check_rankings.ts
 import "./sin-server-only";
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { construirInformeMundo } from "../src/lib/mundo/grilla";
 import { DICCIONARIOS_RANKINGS, textosRankings } from "../src/motor/i18n/rankings";
@@ -65,7 +65,8 @@ const prueba = clasificar([{ iso: "AA", clave: 9 }, { iso: "BB", clave: 7 }, { i
 if (prueba !== "1,2,2,4") fallas.push(`clasificar da ${prueba} en vez de 1,2,2,4`);
 
 // ---------- Frase de posición por edición ----------
-const numeros = (s: string) => (s.match(/\d+/g) ?? []).map(Number);
+// bn escribe las cifras con dígitos bengalíes (ADR 0002, D14): se leen como ASCII antes de buscarlas.
+const numeros = (s: string) => (s.replace(/[০-৯]/g, (d) => String(d.charCodeAt(0) - 0x09e6)).match(/\d+/g) ?? []).map(Number);
 let ediciones = 0;
 for (const modo of ["produccion", "interno"] as const) {
   for (const m of registro.mercados(modo)) {
@@ -105,21 +106,22 @@ for (const idioma of IDIOMAS) {
     const f = t.posicion("Zetaland", 27, 41);
     if (!numeros(f).includes(27) || !numeros(f).includes(41) || !f.includes("Zetaland")) fallas.push(`${locale ?? idioma}: posicion() da «${f}»`);
     if (!numeros(t.de(41)).includes(41)) fallas.push(`${locale ?? idioma}: de() no dice el total`);
-    if (!numeros(t.empate(2)).includes(2)) fallas.push(`${locale ?? idioma}: empate() no dice cuántos`);
+    // El dual árabe dice el 2 con la palabra («مع دولتين أخريين»): ahí se prueba con 3.
+    const otros = idioma === "ar" ? 3 : 2;
+    if (!numeros(t.empate(otros)).includes(otros)) fallas.push(`${locale ?? idioma}: empate() no dice cuántos`);
   }
   if (!DICCIONARIOS_RANKINGS[idioma]) fallas.push(`${idioma}: falta el diccionario de rankings`);
 }
 
 // ---------- Rutas ----------
 const indices = Object.values(SLUG_RANKINGS);
-if (new Set(indices).size !== indices.length) fallas.push("SLUG_RANKINGS repite un slug entre idiomas (comparten carpeta)");
+if (new Set(indices).size !== indices.length) fallas.push("SLUG_RANKINGS repite un slug entre idiomas (el rewrite no sabría el idioma)");
+// Una sola ruta para todos los idiomas (src/motor/secciones.ts): ya no hay carpeta por idioma.
+for (const archivo of ["page.tsx", path.join("[ranking]", "page.tsx"), path.join("og", "route.tsx")]) {
+  const ruta = path.join(APP, "i", "rankings", "[seccion]", archivo);
+  if (!existsSync(ruta)) fallas.push(`falta ${path.relative(RAIZ, ruta)}`);
+}
 for (const idioma of IDIOMAS) {
-  const carpeta = path.join(APP, SLUG_RANKINGS[idioma]);
-  for (const archivo of ["page.tsx", path.join("[ranking]", "page.tsx"), path.join("og", "route.tsx")]) {
-    const ruta = path.join(carpeta, archivo);
-    if (!existsSync(ruta)) fallas.push(`${idioma}: falta ${path.relative(RAIZ, ruta)}`);
-    else if (!readFileSync(ruta, "utf8").includes(`("${idioma}")`)) fallas.push(`${path.relative(RAIZ, ruta)}: no es la carpeta de ${idioma}`);
-  }
   const slugs = Object.values(SLUGS_RANKING[idioma]);
   if (new Set(slugs).size !== slugs.length) fallas.push(`${idioma}: dos rankings con el mismo slug`);
   if (slugs.includes("og")) fallas.push(`${idioma}: un ranking no puede llamarse «og»`);

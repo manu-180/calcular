@@ -1,9 +1,10 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, formatearNumero, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const imperial = ctx.unidades === "imperial";
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const ejemplo = imperial
     ? (() => {
         const precio = montoEjemplo(ctx, 3.5);

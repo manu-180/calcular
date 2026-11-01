@@ -2,7 +2,7 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.salario-por-hora",
-  h1: "Calculadora de salario por hora 2026",
+  h1: "Calculadora de salario por hora {{anio}}",
   title: "Salario por hora: calcula cuánto ganas por hora",
   description:
     "Convierte tu sueldo mensual, quincenal o semanal a salario por hora según tu jornada diurna, nocturna o mixta, y mira cuánto vale tu hora extra doble y triple.",

@@ -1,0 +1,41 @@
+{
+  "mercado": "jo",
+  "avisos": [
+    {
+      "id": "jo.labour-law-scope",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "aplicaA": [
+        "jo.end-of-service-calculator",
+        "jo.unfair-dismissal-compensation",
+        "jo.notice-period",
+        "jo.final-settlement",
+        "jo.annual-leave-calculator",
+        "jo.overtime-calculator",
+        "jo.sick-leave-calculator"
+      ],
+      "texto": "يتبع الحساب قانون العمل الأردني. لا يسري القانون على الموظفين العامين وموظفي البلديات، ويُنظَّم عمل عمال الزراعة والعاملين في المنازل بنظام خاص. وإذا منحك عقدك أو نظام المنشأة حقوقًا أفضل فهي التي تُطبَّق.",
+      "fuente": {
+        "organismo": "بوابة البيانات الحكومية المفتوحة",
+        "titulo": "قانون العمل رقم 8 لسنة 1996 وتعديلاته، المادتان 3 و4",
+        "url": "https://opendata.gov.jo/en/dataset/laws-related-to-employees-and-staff-3401-2022/resource/0b2eff4a-9aec-40b0-8efe-4f6c5affea55",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    },
+    {
+      "id": "jo.ssc-draft-2026",
+      "nivel": "cautela",
+      "desde": "2026-10-24",
+      "aplicaA": ["jo.retirement-pension-calculator", "jo.early-retirement-calculator"],
+      "texto": "نشرت الحكومة في شباط 2026 مشروع قانون معدل لقانون الضمان الاجتماعي يغير شروط التقاعد المبكر وطريقة احتساب الراتب على مراحل. الحساب هنا يتبع القانون النافذ إلى أن يُنشر أي تعديل في الجريدة الرسمية.",
+      "fuente": {
+        "organismo": "منصة تواصل الحكومية",
+        "titulo": "قانون معدل لقانون الضمان الاجتماعي لسنة 2026 (مشروع للاستشارة العامة)",
+        "url": "https://tawasal.gov.jo/Consultations/redirect/1411",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}

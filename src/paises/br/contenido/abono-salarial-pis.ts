@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "br.abono-salarial",
-  h1: "Calculadora do abono salarial PIS/Pasep 2026",
-  title: "Abono salarial PIS 2026: tem direito e quanto recebe",
-  description: "Veja se você tem direito ao abono salarial do calendário 2026 (média de até {{br.abono-limite}} no ano-base 2024) e o valor pelos meses trabalhados.",
+  h1: "Calculadora do abono salarial PIS/Pasep {{anio}}",
+  title: "Abono salarial PIS {{anio}}: tem direito e quanto recebe",
+  description: "Veja se você tem direito ao abono salarial do calendário {{anio}} (média de até {{br.abono-limite}} no ano-base 2024) e o valor pelos meses trabalhados.",
   intro: [
     "O abono salarial é um pagamento anual de até um salário mínimo para quem trabalhou com carteira e ganhou pouco no ano-base.",
     "No calendário de 2026, o ano-base é 2024. Informe a média mensal daquele ano e os meses trabalhados.",

@@ -1,0 +1,87 @@
+import { GRAMATICA } from "../gramatica";
+import type { Diccionario } from "../resolver";
+import type { TextosInicio } from "./tipos";
+
+const g = GRAMATICA.da;
+
+const base: TextosInicio = {
+  arranque: {
+    estasEn: (pais) => `Du er ${g.en(pais)}`,
+    resumen: (calculadoras) => `${calculadoras} med de gældende officielle værdier.`,
+    ultimoDato: "Senest indlæste værdi",
+    ir: (pais) => `Til ${g.nombre(pais)}`,
+    otro: "Vælg et andet land",
+    argentina: "Dine beregnere ligger på calcular.ar, med de officielle tal for Argentina.",
+    argentinaIr: "Til calcular.ar",
+    neutroTitulo: (paises) => `${paises} lande, hver med egne love og egen valuta`,
+    neutroTexto: "Vi gennemgår de officielle kilder hver dag.",
+    neutroIr: "Se landene",
+  },
+  selector: {
+    buscar: "Søg efter et land",
+    sinResultados: (q) => `Intet land fundet for “${q}”`,
+    ubicacion: "Nuværende placering",
+    mismaCalculadora: "Samme beregner",
+    paises: "Lande",
+  },
+  aviso: { mismaCalculadora: (pais) => `Regn det ud med tallene ${g.de(pais)}` },
+  vivo: {
+    titulo: "Officielle tal, der opdateres automatisk",
+    vigilado: "En automatisk proces gennemgår de officielle kilder hver dag. Ændrede regler lægger vi ind efter kontrol.",
+    sinVigilar: "Ved hver værdi står den officielle kilde og datoen, hvor vi tjekkede den.",
+    verificado: "Seneste kontrol af reglerne",
+    automatico: "Seneste automatiske værdi",
+    fuentes: "Officielle kilder",
+    nFuentes: (n) => (Number(n) === 1 ? "1 officielt dokument" : `${n} officielle dokumenter`),
+    verFuentes: "Se kilderne",
+    verNovedades: "Se ændringerne",
+    hoy: "i dag",
+    ayer: "i går",
+    elDia: (fecha) => `den ${fecha}`,
+    actualizadoSerie: (serie, cuando) => `${serie}, ${cuando}`,
+  },
+  sello: {
+    verificado: (fecha) => `Tallene blev tjekket mod den officielle kilde den ${fecha}.`,
+    serie: (serie, cuando, organismo) => `${serie}: opdateret ${cuando}, med den nyeste værdi fra ${organismo}.`,
+    diario: "Vi gennemgår de officielle kilder automatisk hver dag.",
+    actualizado: "Opdateret",
+  },
+  novedades: {
+    pildora: "Ændringer",
+    titulo: (pais) => `Hvad der er ændret i de officielle tal ${g.de(pais)}`,
+    acento: "samme dag som ændringen",
+    bajada: "Hver ny værdi, der kommer ind i beregnerne, noterer vi her: hvad der ændrede sig, hvornår det gælder fra, og hvor det kommer fra.",
+    ultimoCambio: "Seneste ændring",
+    revision: "Gennemgang af kilderne",
+    diaria: "Hver dag",
+    porNorma: "Ved hver ny regel",
+    siguiendo: "Kilder, vi følger",
+    masOrganismos: (n) => `og ${n} til`,
+    proximos: "Offentliggjort, gælder snart",
+    proximosTexto: "Officielle værdier, der allerede er indlæst og træder i kraft i de kommende dage.",
+    registro: "Ændringslog",
+    rss: "Følg via RSS",
+    vacio: "Der er endnu ikke registreret ændringer for dette land.",
+    etiqueta: { editorial: "Regel", dato: "Ny værdi", proximo: "Gælder snart", serie: "Automatisk", revision: "Kontrol" },
+    rige: (fecha) => `Gælder fra ${fecha}`,
+    rigeDesdeHasta: (desde, hasta) => `Gælder fra ${desde} til ${hasta}`,
+    antes: (valor, fecha) => `Før: ${valor} (${fecha})`,
+    revisados: (n) => (Number(n) === 1 ? "Vi tjekkede 1 værdi mod den officielle kilde" : `Vi tjekkede ${n} værdier mod den officielle kilde`),
+    revisadosTexto: (organismos) => `De gældende værdier er bekræftet hos ${organismos}.`,
+    verDatos: (n) => (Number(n) === 1 ? "Se værdien" : `Se alle ${n} værdier`),
+    calculadoras: "Bruges af",
+    rango: (min, max, zonas) => `fra ${min} til ${max} afhængigt af område (${zonas} områder)`,
+    tabla: (filas) => `tabel med ${filas} trin`,
+    valores: (n) => `${n} værdier`,
+    pasosTitulo: "Sådan holder vi det opdateret",
+    pasos: [
+      { titulo: "En myndighed offentliggør", texto: "En bekendtgørelse, et indeks eller en valutakurs dukker op i den officielle kilde." },
+      { titulo: "Tjekket før brug", texto: "Indeks og valutakurser kommer automatisk ind, med kontrol af, om de er rimelige. Regler lægger vi ind med det officielle dokument ved siden af." },
+      { titulo: "Beregnerne følger med", texto: "Beregnerne bruger den nye værdi, og ændringen står her sammen med kilden." },
+    ],
+    feedTitulo: (pais) => `Ændringer ${g.en(pais)} på CalcularYa`,
+    feedSubtitulo: (pais) => `Ændringer i de officielle tal bag beregnerne ${g.para(pais)}, med ikrafttrædelse og kilde.`,
+  },
+};
+
+export const da: Diccionario<TextosInicio> = { base };

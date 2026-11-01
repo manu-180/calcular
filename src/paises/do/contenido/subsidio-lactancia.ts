@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.subsidio-lactancia",
   h1: "Calculadora del subsidio por lactancia en República Dominicana",
-  title: "Subsidio por lactancia 2026: calcula cuánto te pagan",
+  title: "Subsidio por lactancia {{anio}}: calcula cuánto te pagan",
   description: "Calcula el subsidio por lactancia de la SISALRIL: {{do.lactancia-porcentaje[hasta-1]}}, {{do.lactancia-porcentaje[hasta-2]}} o {{do.lactancia-porcentaje[hasta-3]}} de tu salario cotizable, durante {{do.lactancia-meses}} meses.",
   intro: [
     "El subsidio por lactancia es un pago mensual de la Seguridad Social para las madres afiliadas que ganan hasta 3 salarios mínimos nacionales.",

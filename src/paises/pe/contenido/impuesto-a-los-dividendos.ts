@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.dividendos",
   h1: "Calculadora del impuesto a los dividendos",
-  title: "Impuesto a los dividendos 2026: {{pe.tasa-dividendos}} en Perú",
+  title: "Impuesto a los dividendos {{anio}}: {{pe.tasa-dividendos}} en Perú",
   description:
     "Los dividendos que recibe una persona natural pagan {{pe.tasa-dividendos}} de impuesto a la renta. Calcula la retención y cuánto te llega.",
   intro: [

@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ie.usc-calculator",
-  h1: "USC calculator 2026",
-  title: "USC calculator 2026: Universal Social Charge rates",
-  description: "Calculate your Universal Social Charge for 2026 with Revenue's bands, the {{ie.usc-exemption}} exemption and the reduced rates for over 70s and medical card holders.",
+  h1: "USC calculator {{anio}}",
+  title: "USC calculator {{anio}}: Universal Social Charge rates",
+  description: "Calculate your Universal Social Charge for {{anio}} with Revenue's bands, the {{ie.usc-exemption}} exemption and the reduced rates for over 70s and medical card holders.",
   intro: [
     "The Universal Social Charge (USC) is a tax on your total income, separate from Income Tax and PRSI. Enter your yearly income to see what you pay in 2026.",
     "If your income is {{ie.usc-exemption}} or less you pay nothing. Above that, USC is charged on all of it, band by band.",

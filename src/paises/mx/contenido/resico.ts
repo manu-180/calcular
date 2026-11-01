@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.resico",
-  h1: "Calculadora RESICO 2026: ISR mensual de personas físicas",
-  title: "Calculadora RESICO 2026: ISR mensual de personas físicas",
+  h1: "Calculadora RESICO {{anio}}: ISR mensual de personas físicas",
+  title: "Calculadora RESICO {{anio}}: ISR mensual de personas físicas",
   description:
     "Calcula tu pago mensual de ISR en el RESICO con la tabla de tasas del artículo 113-E y resta lo que te retuvieron empresas. Escribe lo que cobraste y listo.",
   intro: [

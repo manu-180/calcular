@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ie.employer-prsi-calculator",
   h1: "Employer PRSI calculator",
-  title: "Employer PRSI calculator 2026: cost of an employee",
+  title: "Employer PRSI calculator {{anio}}: cost of an employee",
   description: "See the employer PRSI on a salary and the total cost of an employee in Ireland, with the Class A rates of {{ie.prsi-employer-rates[lower]}} and {{ie.prsi-employer-rates[higher]}}.",
   intro: [
     "On top of the salary, an employer pays its own share of PRSI for each employee. Enter the gross pay to see that cost per week, month and year.",

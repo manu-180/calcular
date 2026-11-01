@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "at.lohnnebenkosten-rechner",
   h1: "Lohnnebenkostenrechner: was kostet ein Mitarbeiter?",
-  title: "Lohnnebenkosten 2026: Dienstgeberkosten berechnen",
+  title: "Lohnnebenkosten {{anio}}: Dienstgeberkosten berechnen",
   description: "Berechnen Sie die Kosten eines Mitarbeiters in Österreich: Dienstgeberanteil zur Sozialversicherung, DB, DZ, Kommunalsteuer und Betriebliche Vorsorge.",
   intro: [
     "Zum Bruttogehalt kommen für den Arbeitgeber in Österreich rund 30 % Lohnnebenkosten dazu. Der größte Teil ist der Dienstgeberanteil zur Sozialversicherung, dazu kommen der Dienstgeberbeitrag, die Kommunalsteuer für die Gemeinde und der Beitrag an die Vorsorgekasse.",

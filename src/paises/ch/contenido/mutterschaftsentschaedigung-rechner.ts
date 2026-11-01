@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch.mutterschaftsentschaedigung-rechner",
   h1: "Mutterschaftsentschädigung berechnen",
-  title: "Mutterschaftsentschädigung Rechner: Taggeld der EO 2026",
+  title: "Mutterschaftsentschädigung Rechner: Taggeld der EO {{anio}}",
   description:
     "Mutterschaftsentschädigung der EO: {{ch.eo-taggeld-satz}} des Einkommens, höchstens {{ch.eo-hoechstbetrag-taggeld}} pro Tag, während {{ch.mutterschaft-tage}} Tagen. Taggeld und Gesamtbetrag berechnen.",
   intro: [

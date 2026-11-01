@@ -1,0 +1,626 @@
+{
+  "mercado": "sr",
+  "datos": [
+    {
+      "id": "sr.belastingvrije-som",
+      "nombre": "Belastingvrije som loonbelasting per jaar",
+      "tipo": "numero",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 108000,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Loonbelasting (geldende tekst, laatstelijk gewijzigd bij S.B. 2024 no. 2)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Loonbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.forfaitaire-aftrek",
+      "nombre": "Vaste aftrek beroepskosten (percentage van het loon)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Loonbelasting (geldende tekst, laatstelijk gewijzigd bij S.B. 2024 no. 2)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Loonbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.forfaitaire-aftrek-max",
+      "nombre": "Vaste aftrek beroepskosten, maximum per jaar",
+      "tipo": "numero",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 4800,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Loonbelasting (geldende tekst, laatstelijk gewijzigd bij S.B. 2024 no. 2)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Loonbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.loonbelasting-tarief",
+      "nombre": "Tarief loonbelasting over het belastbaar loon per jaar",
+      "tipo": "escala",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 42000,
+              "tasa": 8
+            },
+            {
+              "desde": 42000,
+              "hasta": 84000,
+              "tasa": 18
+            },
+            {
+              "desde": 84000,
+              "hasta": 126000,
+              "tasa": 28
+            },
+            {
+              "desde": 126000,
+              "hasta": null,
+              "tasa": 38
+            }
+          ],
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Loonbelasting (geldende tekst, laatstelijk gewijzigd bij S.B. 2024 no. 2)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Loonbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.uitkering-ineens-tarief",
+      "nombre": "Tarief voor uitkeringen ineens (artikel 17a Wet Loonbelasting)",
+      "tipo": "escala",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 42000,
+              "tasa": 5
+            },
+            {
+              "desde": 42000,
+              "hasta": 84000,
+              "tasa": 15
+            },
+            {
+              "desde": 84000,
+              "hasta": 126000,
+              "tasa": 25
+            },
+            {
+              "desde": 126000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Loonbelasting (geldende tekst, laatstelijk gewijzigd bij S.B. 2024 no. 2)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Loonbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.overwerk-tarief",
+      "nombre": "Tarief loonbelasting op overwerk per maand (artikel 17c Wet Loonbelasting)",
+      "tipo": "escala",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2025-06-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 500,
+              "tasa": 5
+            },
+            {
+              "desde": 500,
+              "hasta": 1100,
+              "tasa": 15
+            },
+            {
+              "desde": 1100,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Loonbelasting (geldende tekst, laatstelijk gewijzigd bij S.B. 2024 no. 2)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Loonbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2500,
+              "tasa": 5
+            },
+            {
+              "desde": 2500,
+              "hasta": 7500,
+              "tasa": 15
+            },
+            {
+              "desde": 7500,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "SRiS (Staatsblad)",
+            "titulo": "S.B. 2025 no. 129, Staatsbesluit van 29 oktober 2025 ter uitvoering van artikel 18a Wet Loonbelasting",
+            "url": "https://www.sris.sr/wp-content/uploads/2025/11/S.B.-2025-no.-129-STAATSBESLUIT-ter-uitvoering-van-artikel-18a-van-de-Wet-Loonbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.vrijstelling-vakantie-bonus",
+      "nombre": "Vrijgesteld bedrag vakantie-uitkering en gratificatie per jaar (maximum)",
+      "tipo": "numero",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2024-12-31",
+          "valor": 10016,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Loonbelasting (geldende tekst, laatstelijk gewijzigd bij S.B. 2024 no. 2)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Loonbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 19500,
+          "fuente": {
+            "organismo": "SRiS (Staatsblad)",
+            "titulo": "S.B. 2025 no. 129, Staatsbesluit van 29 oktober 2025 ter uitvoering van artikel 18a Wet Loonbelasting",
+            "url": "https://www.sris.sr/wp-content/uploads/2025/11/S.B.-2025-no.-129-STAATSBESLUIT-ter-uitvoering-van-artikel-18a-van-de-Wet-Loonbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.aov-premie",
+      "nombre": "Premie AOV over het zuiver loon",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Algemeen Oudedagsvoorzieningsfonds (S.B. 1981 no. 30, laatstelijk gewijzigd bij S.B. 2002 no. 96), artikel 20",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-AOV.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.ib-tarief",
+      "nombre": "Tarief inkomstenbelasting natuurlijke personen over het zuiver inkomen per jaar",
+      "tipo": "escala",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 108000,
+              "tasa": 0
+            },
+            {
+              "desde": 108000,
+              "hasta": 150000,
+              "tasa": 8
+            },
+            {
+              "desde": 150000,
+              "hasta": 192000,
+              "tasa": 18
+            },
+            {
+              "desde": 192000,
+              "hasta": 234000,
+              "tasa": 28
+            },
+            {
+              "desde": 234000,
+              "hasta": null,
+              "tasa": 38
+            }
+          ],
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Inkomstenbelasting 1922 (geldende tekst, laatstelijk gewijzigd bij S.B. 2024 no. 3)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Inkomstenbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.hypotheek-max-schuld",
+      "nombre": "Maximale hypotheekschuld voor renteaftrek eigen woning",
+      "tipo": "numero",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 600000,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Inkomstenbelasting 1922 (geldende tekst, laatstelijk gewijzigd bij S.B. 2024 no. 3)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Inkomstenbelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.btw-algemeen",
+      "nombre": "Algemeen btw-tarief",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet BTW 2022 (S.B. 2022 no. 121), artikel 4",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2026/01/BTWS.B.-2022-no.-121-WET-BTW-2022.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.btw-verlaagd",
+      "nombre": "Verlaagd btw-tarief",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "S.B. 2022 no. 148, wijziging Wet BTW (artikel 4 lid 3, bijlage 4)",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2026/01/BTWS.B.-2022-no.-148-nadere-wijziging-WET-BTW-30-december-2022.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "De brochure BTW op hoofdlijnen 2025 van de Belastingdienst noemt water, elektriciteit, kookgas en binnenlands goederenvervoer onder het tarief van 5%."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.btw-verhoogd",
+      "nombre": "Verhoogd btw-tarief (bijlage 3)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet BTW 2022 (S.B. 2022 no. 121), artikel 4",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2026/01/BTWS.B.-2022-no.-121-WET-BTW-2022.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.minimumuurloon",
+      "nombre": "Algemeen minimum uurloon",
+      "tipo": "numero",
+      "unidad": "SRD",
+      "proximaRevision": "2027-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "hasta": "2026-06-30",
+          "valor": 52.47,
+          "fuente": {
+            "organismo": "SRiS (Staatsblad)",
+            "titulo": "S.B. 2025 no. 33, Beschikking van 24 maart 2025 no. 380/25, nieuw minimum uurloon",
+            "url": "https://www.sris.sr/wp-content/uploads/2025/03/S.B.-2025-no.-33-Beschikking-houdende-vaststelling-van-een-nieuw-minimum-uurloon.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 61.25,
+          "fuente": {
+            "organismo": "SRiS (Staatsblad)",
+            "titulo": "S.B. 2026 no. 63, Beschikking van 3 juli 2026 no. 777/26, nieuw minimum uurloon",
+            "url": "https://www.sris.sr/wp-content/uploads/2026/08/S.B.-2026-no.-63-Beschikking-houdende-vaststelling-van-een-nieuw-minimum-uurloon.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.vakantiedagen-basis",
+      "nombre": "Vakantiedagen na het eerste volle kalenderjaar",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-11-24",
+          "valor": 12,
+          "fuente": {
+            "organismo": "De Nationale Assemblée",
+            "titulo": "Vacantiewet 1975 (S.B. 1975 no. 164c), artikelen 7 en 10",
+            "url": "https://www.dna.sr/media/egnb5dhm/vakantiewet.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.vakantiedagen-stap",
+      "nombre": "Extra vakantiedagen per volgend kalenderjaar",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-11-24",
+          "valor": 2,
+          "fuente": {
+            "organismo": "De Nationale Assemblée",
+            "titulo": "Vacantiewet 1975 (S.B. 1975 no. 164c), artikelen 7 en 10",
+            "url": "https://www.dna.sr/media/egnb5dhm/vakantiewet.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.vakantiedagen-max",
+      "nombre": "Maximum aantal vakantiedagen",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-11-24",
+          "valor": 18,
+          "fuente": {
+            "organismo": "De Nationale Assemblée",
+            "titulo": "Vacantiewet 1975 (S.B. 1975 no. 164c), artikelen 7 en 10",
+            "url": "https://www.dna.sr/media/egnb5dhm/vakantiewet.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.vakantietoelage",
+      "nombre": "Vakantietoelage (deel van het loon over de vakantiedagen)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-11-24",
+          "valor": 50,
+          "fuente": {
+            "organismo": "De Nationale Assemblée",
+            "titulo": "Vacantiewet 1975 (S.B. 1975 no. 164c), artikelen 7 en 10",
+            "url": "https://www.dna.sr/media/egnb5dhm/vakantiewet.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.overwerk-factor",
+      "nombre": "Minimale vergoeding overwerk op een werkdag (maal het uurloon)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2001-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "De Nationale Assemblée",
+            "titulo": "Arbeidswet 1963 (G.B. 1963 no. 163), artikelen 12 en 13",
+            "url": "https://www.dna.sr/media/cwabf0np/arbeidswet.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.overwerk-factor-rustdag",
+      "nombre": "Minimale vergoeding overwerk op een rustdag of zondag (maal het uurloon)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2001-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "De Nationale Assemblée",
+            "titulo": "Arbeidswet 1963 (G.B. 1963 no. 163), artikelen 12 en 13",
+            "url": "https://www.dna.sr/media/cwabf0np/arbeidswet.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.huurwaardebelasting",
+      "nombre": "Tarief huurwaardebelasting",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Huurwaardebelasting 1995 (S.B. 1995 no. 108, laatstelijk gewijzigd bij S.B. 2002 no. 113), artikelen 5 en 6",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Huurwaardebelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.huurwaarde-eigen-gebruik",
+      "nombre": "Huurwaarde eigen woning (percentage van de verkoopwaarde)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Huurwaardebelasting 1995 (S.B. 1995 no. 108, laatstelijk gewijzigd bij S.B. 2002 no. 113), artikelen 5 en 6",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Huurwaardebelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.huurwaarde-aftrek",
+      "nombre": "Aftrek op de verkoopwaarde bij eigen gebruik",
+      "tipo": "numero",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Huurwaardebelasting 1995 (S.B. 1995 no. 108, laatstelijk gewijzigd bij S.B. 2002 no. 113), artikelen 5 en 6",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Huurwaardebelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sr.huurwaardebelasting-minimum",
+      "nombre": "Minimale huurwaardebelasting per jaar",
+      "tipo": "numero",
+      "unidad": "SRD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Belastingdienst Suriname",
+            "titulo": "Wet Huurwaardebelasting 1995 (S.B. 1995 no. 108, laatstelijk gewijzigd bij S.B. 2002 no. 113), artikelen 5 en 6",
+            "url": "https://belastingdienst.sr/wp-content/uploads/2024/10/Wet-Huurwaardebelasting.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}

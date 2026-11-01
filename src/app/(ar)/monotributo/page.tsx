@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangHeadAR } from "@/lib/hreflang-ar";
 import Link from "next/link";
 import { CalculadoraMonotributo } from "@/components/CalculadoraMonotributo";
 import { CATEGORIAS, RECATEGORIZACION, VIGENCIA } from "@/data/monotributo";
@@ -11,14 +12,17 @@ import { OtrosPaises } from "@/components/OtrosPaises";
 
 // RECATEGORIZACION.proximaVentana se deriva de la fecha (data/monotributo.ts): revalidar cada
 // hora evita que la FAQ quede hablando de una ventana ya cerrada entre deploys.
-export const revalidate = 3600;
+export const revalidate = 86400;
 
-export const metadata: Metadata = {
-  title: "Calculadora de monotributo 2026: categoría y cuota",
-  description:
-    "Calculá tu categoría de monotributo y cuánto pagás por mes en 2026, con los valores oficiales de ARCA y el desglose de impuesto, jubilación y obra social.",
-  alternates: { canonical: "/monotributo" },
-};
+// Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
+export function generateMetadata(): Metadata {
+  return {
+    title: "Calculadora de monotributo 2026: categoría y cuota",
+    description:
+      "Calculá tu categoría de monotributo y cuánto pagás por mes en 2026, con los valores oficiales de ARCA y el desglose de impuesto, jubilación y obra social.",
+    alternates: { canonical: "/monotributo", languages: hreflangHeadAR("/monotributo") },
+  };
+}
 
 const faqs = [
   {

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.riesgos-del-trabajo",
   h1: "Incapacidad del INS por riesgo del trabajo",
-  title: "Incapacidad INS 2026: subsidio por accidente de trabajo",
+  title: "Incapacidad INS {{anio}}: subsidio por accidente de trabajo",
   description:
     "Calcule el subsidio del INS por un accidente o enfermedad de trabajo: {{cr.riesgos-subsidio-inicial}} del salario los primeros {{cr.riesgos-dias-iniciales}}, con el piso del salario mínimo.",
   intro: [

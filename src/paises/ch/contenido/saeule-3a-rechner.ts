@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch.saeule-3a-rechner",
   h1: "Säule-3a-Rechner: Maximalbetrag und Steuerersparnis",
-  title: "Säule 3a Rechner 2026: Maximalbetrag und Steuerersparnis",
+  title: "Säule 3a Rechner {{anio}}: Maximalbetrag und Steuerersparnis",
   description:
-    "Säule 3a 2026: bis {{ch.saeule-3a-mit-pk}} mit Pensionskasse, bis {{ch.saeule-3a-ohne-pk}} ohne. Maximalbetrag und Ersparnis bei der Bundessteuer berechnen.",
+    "Säule 3a {{anio}}: bis {{ch.saeule-3a-mit-pk}} mit Pensionskasse, bis {{ch.saeule-3a-ohne-pk}} ohne. Maximalbetrag und Ersparnis bei der Bundessteuer berechnen.",
   intro: [
     "Einzahlungen in die Säule 3a dürfen Sie vom steuerbaren Einkommen abziehen, beim Bund, beim Kanton und bei der Gemeinde. Wer einer Pensionskasse angehört, kann {{ch.saeule-3a-mit-pk}} im Jahr einzahlen.",
     "Ohne Pensionskasse sind es {{ch.saeule-3a-ohne-pk-satz}} des Erwerbseinkommens, höchstens {{ch.saeule-3a-ohne-pk}}. Der Rechner zeigt Ihr Maximum und was die Einzahlung bei der direkten Bundessteuer spart.",

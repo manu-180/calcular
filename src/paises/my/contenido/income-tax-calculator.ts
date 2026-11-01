@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "my.income-tax-calculator",
-  h1: "Income tax calculator Malaysia (YA 2026)",
-  title: "Malaysia income tax calculator: YA 2026 rates and reliefs",
+  h1: "Income tax calculator Malaysia (YA {{anio}})",
+  title: "Malaysia income tax calculator: YA {{anio}} rates and reliefs",
   description: "Estimate your income tax with the HASiL rates for resident individuals, the main personal reliefs, the tax rebate and zakat.",
   intro: [
     "Enter your income for the year and the reliefs you can claim. You get your chargeable income, the tax for the year and your effective rate.",

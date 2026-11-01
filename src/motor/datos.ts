@@ -255,6 +255,9 @@ export function validarMercado(m: unknown): string[] {
     e.push(`mercado ${cod}: locale inválido`);
   }
   if (!(IDIOMAS as readonly unknown[]).includes(m.idioma)) e.push(`mercado ${cod}: idioma tiene que ser uno de ${IDIOMAS.join(", ")}`);
+  // Sin la extensión, Intl escribe ٣٬٥٠٠ en ar-EG y fechas de la Hégira en ar-SA (Chrome): los
+  // sitios financieros árabes usan dígitos latinos y calendario gregoriano (ADR 0002, D9).
+  if (m.idioma === "ar" && !String(m.locale).endsWith("-u-ca-gregory-nu-latn")) e.push(`mercado ${cod}: un locale árabe lleva -u-ca-gregory-nu-latn (por ejemplo "ar-EG-u-ca-gregory-nu-latn")`);
   if (!esCodigoMercado(cod)) e.push(`mercado ${cod}: el código tiene que ser global, zz o un ISO 3166-1 alfa-2 en minúscula con sufijo de idioma opcional`);
   else if (cod !== "global" && cod !== "zz") {
     const [pais, sufijo] = cod.split("-");

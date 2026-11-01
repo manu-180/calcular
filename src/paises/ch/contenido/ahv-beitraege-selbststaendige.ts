@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch.ahv-beitraege-selbststaendige",
   h1: "AHV-Beiträge für Selbstständige berechnen",
-  title: "AHV-Rechner Selbstständige 2026: sinkende Beitragsskala",
+  title: "AHV-Rechner Selbstständige {{anio}}: sinkende Beitragsskala",
   description:
-    "AHV/IV/EO-Beiträge für Selbstständigerwerbende 2026: sinkende Beitragsskala bis 60 500 Franken, voller Satz darüber und Mindestbeitrag von {{ch.ahv-mindestbeitrag-selbststaendige}}.",
+    "AHV/IV/EO-Beiträge für Selbstständigerwerbende {{anio}}: sinkende Beitragsskala bis 60 500 Franken, voller Satz darüber und Mindestbeitrag von {{ch.ahv-mindestbeitrag-selbststaendige}}.",
   intro: [
     "Selbstständigerwerbende zahlen ihre AHV-, IV- und EO-Beiträge allein. Bei tieferen Einkommen gilt ein reduzierter Satz, die sogenannte sinkende Beitragsskala.",
     "Wer sehr wenig verdient, zahlt den Mindestbeitrag von {{ch.ahv-mindestbeitrag-selbststaendige}} im Jahr.",

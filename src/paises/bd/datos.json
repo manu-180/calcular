@@ -1,0 +1,905 @@
+{
+  "mercado": "bd",
+  "datos": [
+    {
+      "id": "bd.income-tax-slabs",
+      "nombre": "স্বাভাবিক ব্যক্তি করদাতার আয়করের হার, করবর্ষ ২০২৬-২৭ ও ২০২৭-২৮ (সাধারণ করমুক্ত সীমা ধরে)",
+      "tipo": "escala",
+      "unidad": "BDT",
+      "proximaRevision": "2028-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2028-06-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 400000,
+              "tasa": 0
+            },
+            {
+              "desde": 400000,
+              "hasta": 700000,
+              "tasa": 10
+            },
+            {
+              "desde": 700000,
+              "hasta": 1100000,
+              "tasa": 15
+            },
+            {
+              "desde": 1100000,
+              "hasta": 1600000,
+              "tasa": 20
+            },
+            {
+              "desde": 1600000,
+              "hasta": 3600000,
+              "tasa": 25
+            },
+            {
+              "desde": 3600000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর পরিপত্র ২০২৬-২০২৭, অনুচ্ছেদ ১.১ (অর্থ আইন, ২০২৬ এর তফসিল-২)",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Poripothro_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "পরিপত্রের পৃষ্ঠা ১ ও ২। একই হার আয়কর নির্দেশিকা ২০২৬-২০২৭ এর পৃষ্ঠা ১১ তে আছে।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.tax-free-threshold",
+      "nombre": "করমুক্ত আয়ের সীমা, করবর্ষ ২০২৬-২৭ ও ২০২৭-২৮",
+      "tipo": "mapa",
+      "unidad": "BDT",
+      "etiquetas": {
+        "general": "সাধারণ করদাতা",
+        "women-senior": "নারী বা ৬৫ বছর ও তার বেশি বয়সী",
+        "disabled": "প্রতিবন্ধী বা তৃতীয় লিঙ্গের করদাতা",
+        "freedom-fighter": "গেজেটভুক্ত যুদ্ধাহত মুক্তিযোদ্ধা বা জুলাই যোদ্ধা"
+      },
+      "proximaRevision": "2028-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2028-06-30",
+          "valor": {
+            "general": 400000,
+            "women-senior": 450000,
+            "disabled": 525000,
+            "freedom-fighter": 550000
+          },
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর পরিপত্র ২০২৬-২০২৭, অনুচ্ছেদ ১.১",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Poripothro_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "পরিপত্রের পৃষ্ঠা ২।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.disabled-child-extra",
+      "nombre": "প্রতিবন্ধী সন্তানের পিতা বা মাতার জন্য বাড়তি করমুক্ত সীমা (প্রতি সন্তান)",
+      "tipo": "numero",
+      "unidad": "BDT",
+      "proximaRevision": "2028-07-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2028-06-30",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর পরিপত্র ২০২৬-২০২৭, অনুচ্ছেদ ১.১",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Poripothro_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "পরিপত্রের পৃষ্ঠা ২।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.minimum-tax",
+      "nombre": "করমুক্ত সীমার বেশি আয়ের স্বাভাবিক ব্যক্তির ন্যূনতম কর",
+      "tipo": "mapa",
+      "unidad": "BDT",
+      "etiquetas": {
+        "general": "সাধারণ",
+        "new": "নতুন করদাতা"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "general": 5000,
+            "new": 1000
+          },
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর নির্দেশিকা ২০২৬-২০২৭, ন্যূনতম কর",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Nirdashikha_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "নির্দেশিকার পৃষ্ঠা ৫৮।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.investment-rebate",
+      "nombre": "বিনিয়োগজনিত কর রেয়াত (আয়কর আইন, ২০২৩ এর ধারা ৭৮)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "income-pct": "মোট আয়ের শতাংশ",
+        "investment-pct": "বিনিয়োগের শতাংশ",
+        "max": "সর্বোচ্চ রেয়াত (টাকা)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "income-pct": 3,
+            "investment-pct": 10,
+            "max": 750000
+          },
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর নির্দেশিকা ২০২৬-২০২৭, বিনিয়োগজনিত কর রেয়াত",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Nirdashikha_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "নির্দেশিকার পৃষ্ঠা ৫৯ (তিনটির মধ্যে যা কম) এবং পৃষ্ঠা ৬১-৬২ এর উদাহরণ।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.salary-exempt-max",
+      "nombre": "চাকরি হতে আয়ের করমুক্ত অংশের সর্বোচ্চ সীমা (ষষ্ঠ তফসিল, অংশ ১, দফা ২৭)",
+      "tipo": "numero",
+      "unidad": "BDT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর নির্দেশিকা ২০২৬-২০২৭, চাকরি হতে আয়",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Nirdashikha_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "নির্দেশিকার পৃষ্ঠা ২৩: চাকরি হতে আয়ের এক-তৃতীয়াংশ বা ৫ লক্ষ টাকা, যা কম। পৃষ্ঠা ৯১ এর উদাহরণেও একই হিসাব।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.return-timing-rates",
+      "nombre": "রিটার্ন দাখিলের সময় অনুযায়ী কর প্রণোদনা ও অতিরিক্ত কর (শতাংশ)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "incentive": "১ জুলাই থেকে ৩০ সেপ্টেম্বর: প্রণোদনা",
+        "late-jan-mar": "১ জানুয়ারি থেকে ৩১ মার্চ: অতিরিক্ত কর",
+        "late-apr-jun": "১ এপ্রিল থেকে ৩০ জুন: অতিরিক্ত কর"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "incentive": 5,
+            "late-jan-mar": 2,
+            "late-apr-jun": 5
+          },
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর নির্দেশিকা ২০২৬-২০২৭, রিটার্ন দাখিলের সময়",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Nirdashikha_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "নির্দেশিকার পৃষ্ঠা ৪। ১ অক্টোবর থেকে ৩১ ডিসেম্বর প্রণোদনা বা অতিরিক্ত কর নেই।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.return-timing-amounts",
+      "nombre": "রিটার্ন দাখিলের সময় অনুযায়ী প্রণোদনার সর্বোচ্চ ও অতিরিক্ত করের সর্বনিম্ন পরিমাণ",
+      "tipo": "mapa",
+      "unidad": "BDT",
+      "etiquetas": {
+        "incentive-max": "প্রণোদনার সর্বোচ্চ",
+        "late-jan-mar-min": "জানুয়ারি থেকে মার্চ: সর্বনিম্ন অতিরিক্ত কর",
+        "late-apr-jun-min": "এপ্রিল থেকে জুন: সর্বনিম্ন অতিরিক্ত কর"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "incentive-max": 25000,
+            "late-jan-mar-min": 3000,
+            "late-apr-jun-min": 5000
+          },
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর নির্দেশিকা ২০২৬-২০২৭, রিটার্ন দাখিলের সময়",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Nirdashikha_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "নির্দেশিকার পৃষ্ঠা ৪।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.vat-standard",
+      "nombre": "মূল্য সংযোজন করের সাধারণ হার",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "মূল্য সংযোজন কর ও সম্পূরক শুল্ক আইন, ২০১২, ধারা ১৫(৩)",
+            "url": "https://nbr.gov.bd/uploads/acts/6.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "গেজেটের পৃষ্ঠা ১৯৭২১। অর্থ আইন, ২০২৬ এর ধারা ২০ এর প্রতিস্থাপনেও আমদানিকৃত সেবায় একই হার লেখা আছে।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.tds-services",
+      "nombre": "সেবার বিপরীতে পরিশোধ থেকে উৎসে কর (উৎসে কর বিধিমালা, ২০২৬ এর বিধি ৪)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "consultancy-individual": "উপদেষ্টা বা পরামর্শক ফি (স্বাভাবিক ব্যক্তি)",
+        "consultancy-other": "উপদেষ্টা বা পরামর্শক ফি (প্রতিষ্ঠান)",
+        "professional-individual": "পেশাদার সেবা ফি (স্বাভাবিক ব্যক্তি)",
+        "professional-other": "পেশাদার সেবা ফি (প্রতিষ্ঠান)",
+        "technical-individual": "কারিগরি সেবা বা সহায়তা ফি (স্বাভাবিক ব্যক্তি)",
+        "technical-other": "কারিগরি সেবা বা সহায়তা ফি (প্রতিষ্ঠান)",
+        "catering-event": "ক্যাটারিং, ইভেন্ট, প্রশিক্ষণ আয়োজন, কুরিয়ার বা প্যাকিং",
+        "indenting": "ইনডেন্টিং কমিশন",
+        "meeting-honorarium": "মিটিং ফি, ট্রেনিং ফি বা সম্মানী",
+        "mobile-operator": "মোবাইল নেটওয়ার্ক অপারেটরের সেবা বিল",
+        "credit-rating": "ক্রেডিট রেটিং এজেন্সির বিল",
+        "garage": "মোটর গ্যারেজ বা ওয়ার্কশপের বিল",
+        "container-port": "ব্যক্তিগত কন্টেইনার পোর্ট বা ডকইয়ার্ডের বিল",
+        "transport-repair": "পরিবহন, গাড়ি ভাড়া, মেরামত বা রাইড শেয়ারিং",
+        "wheeling": "বিদ্যুৎ সঞ্চালনের হুইলিং চার্জ",
+        "internet": "ইন্টারনেট সেবা বিল",
+        "mfs-agent": "মোবাইল ফাইন্যান্সিয়াল সেবার এজেন্ট কমিশন",
+        "other": "তালিকার বাইরে অন্য কোনো সেবা"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": {
+            "consultancy-individual": 15,
+            "consultancy-other": 7.5,
+            "professional-individual": 15,
+            "professional-other": 7.5,
+            "technical-individual": 15,
+            "technical-other": 10,
+            "catering-event": 2,
+            "indenting": 7.5,
+            "meeting-honorarium": 20,
+            "mobile-operator": 10,
+            "credit-rating": 10,
+            "garage": 5,
+            "container-port": 5,
+            "transport-repair": 2,
+            "wheeling": 3,
+            "internet": 5,
+            "mfs-agent": 10,
+            "other": 10
+          },
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর পরিপত্র ২০২৬-২০২৭, পরিশিষ্ট-১ (উৎসে কর বিধিমালা, ২০২৬, বিধি ৪ এর সারণী)",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Poripothro_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "পরিপত্রের পৃষ্ঠা ১২১ থেকে ১২৩। এসআরও নং ২৭৩, ৫ জুলাই ২০২৬, কার্যকর ১ জুলাই ২০২৬।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.tds-savings-certificate",
+      "nombre": "সঞ্চয়পত্রের মুনাফায় উৎসে কর (আয়কর আইন, ২০২৩ এর ধারা ১০৫)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর পরিপত্র ২০২৬-২০২৭, পরিশিষ্ট-৭ (উৎসে কর কর্তনের হার সারণী), ক্রমিক ১৮",
+            "url": "https://nbr.gov.bd/uploads/news-scroller/Aykor_Poripothro_2026-2027_BG_Press_Modify_Copy.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "পরিপত্রের পৃষ্ঠা ২১০।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.pensioner-tds-free-limit",
+      "nombre": "পেনশনার সঞ্চয়পত্রে উৎসে কর ছাড়া বিনিয়োগের সীমা (আয়কর আইন, ২০২৩ এর ধারা ১০৫(২))",
+      "tipo": "numero",
+      "unidad": "BDT",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর আইন, ২০২৩ এর প্রামাণিক ইংরেজি পাঠ (এসআরও নং ৪০৪, ১৬ অক্টোবর ২০২৫), ধারা ১০৫",
+            "url": "https://nbr.gov.bd/uploads/acts/3190-SRO-404-NBR-16_October_2025%2810455-10741%29.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.tds-bank-interest",
+      "nombre": "ব্যাংক আমানতের সুদে উৎসে কর, স্বাভাবিক ব্যক্তি (আয়কর আইন, ২০২৩ এর ধারা ১০২)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "জাতীয় রাজস্ব বোর্ড",
+            "titulo": "আয়কর আইন, ২০২৩ এর প্রামাণিক ইংরেজি পাঠ (এসআরও নং ৪০৪, ১৬ অক্টোবর ২০২৫), ধারা ১০২",
+            "url": "https://nbr.gov.bd/uploads/acts/3190-SRO-404-NBR-16_October_2025%2810455-10741%29.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "সারণীর ক্রমিক ৩। আয়কর পরিপত্র ২০২৬-২০২৭ এর পরিশিষ্ট-৭ এ ধারা ১০২ এর হার ২০% ও ১০%।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.sanchayapatra-rates",
+      "nombre": "জাতীয় সঞ্চয় স্কিমের মুনাফার হার (বছরান্তে নগদায়নে)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "b5-y1-a": 9.74,
+            "b5-y2-a": 10.21,
+            "b5-y3-a": 10.72,
+            "b5-y4-a": 11.26,
+            "b5-y5-a": 11.83,
+            "b5-y1-b": 9.72,
+            "b5-y2-b": 10.19,
+            "b5-y3-b": 10.7,
+            "b5-y4-b": 11.23,
+            "b5-y5-b": 11.8,
+            "q3-y1-a": 10.65,
+            "q3-y2-a": 11.22,
+            "q3-y3-a": 11.82,
+            "q3-y1-b": 10.6,
+            "q3-y2-b": 11.16,
+            "q3-y3-b": 11.77,
+            "pen-y1-a": 9.84,
+            "pen-y2-a": 10.32,
+            "pen-y3-a": 10.84,
+            "pen-y4-a": 11.39,
+            "pen-y5-a": 11.98,
+            "pen-y1-b": 9.72,
+            "pen-y2-b": 10.19,
+            "pen-y3-b": 10.7,
+            "pen-y4-b": 11.23,
+            "pen-y5-b": 11.8,
+            "fam-y1-a": 9.81,
+            "fam-y2-a": 10.29,
+            "fam-y3-a": 10.8,
+            "fam-y4-a": 11.35,
+            "fam-y5-a": 11.93,
+            "fam-y1-b": 9.72,
+            "fam-y2-b": 10.19,
+            "fam-y3-b": 10.7,
+            "fam-y4-b": 11.23,
+            "fam-y5-b": 11.8,
+            "post-y1-a": 10.65,
+            "post-y2-a": 11.22,
+            "post-y3-a": 11.82,
+            "post-y1-b": 10.6,
+            "post-y2-b": 11.16,
+            "post-y3-b": 11.77
+          },
+          "fuente": {
+            "organismo": "অভ্যন্তরীণ সম্পদ বিভাগ, জাতীয় সঞ্চয় অধিদপ্তর",
+            "titulo": "জাতীয় সঞ্চয় স্কিমসমূহের মুনাফার হার পুনঃনির্ধারণ, প্রজ্ঞাপন নং ০৮.০০.০০০০.০০০.০৪১.২২.০০০৬.২০.৮৫, ৩০ জুন ২০২৫",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-nationalsavings/2024/12/5123d60a893e49c2923d35d7e0c1b833.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "জাতীয় সঞ্চয় অধিদপ্তরের ‘বিদ্যমান সঞ্চয় স্কিমসমূহ’ পাতায় (হালনাগাদ ৯ আগস্ট ২০২৬) এই প্রজ্ঞাপনই মুনাফার হার হিসেবে দেওয়া আছে। ‘a’ মানে ৭.৫০ লক্ষ টাকা পর্যন্ত, ‘b’ মানে তার বেশি ক্রমপুঞ্জিভূত বিনিয়োগ।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.sanchayapatra-tier",
+      "nombre": "সঞ্চয়পত্রের মুনাফার হারের ধাপ নির্ধারণের বিনিয়োগ সীমা",
+      "tipo": "numero",
+      "unidad": "BDT",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 750000,
+          "fuente": {
+            "organismo": "অভ্যন্তরীণ সম্পদ বিভাগ, জাতীয় সঞ্চয় অধিদপ্তর",
+            "titulo": "জাতীয় সঞ্চয় স্কিমসমূহের মুনাফার হার পুনঃনির্ধারণ, ৩০ জুন ২০২৫",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-nationalsavings/2024/12/5123d60a893e49c2923d35d7e0c1b833.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.compensation-days",
+      "nombre": "চাকরি শেষে প্রতি পূর্ণ বছরের জন্য ক্ষতিপূরণের দিন (বাংলাদেশ শ্রম আইন, ২০০৬)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "retrenchment": "ছাঁটাই (ধারা ২০)",
+        "discharge": "ডিসচার্জ (ধারা ২২)",
+        "termination": "মালিক কর্তৃক অবসান (ধারা ২৬)",
+        "layoff-extra": "লে-অফের পর ছাঁটাইয়ে বাড়তি দিন (ধারা ২০(৩))"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-10",
+          "valor": {
+            "retrenchment": 30,
+            "discharge": 30,
+            "termination": 30,
+            "layoff-extra": 15
+          },
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম আইন, ২০০৬ (হালনাগাদ পাঠ), ধারা ২০, ২২ ও ২৬",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2024/12/50ada1e369cf41e598750a8a93ac3423.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "বাংলাদেশ শ্রম (সংশোধন) আইন, ২০২৬ এই ধারাগুলো বদলায়নি।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.resignation-days",
+      "nombre": "স্থায়ী শ্রমিকের ইস্তফায় প্রতি পূর্ণ বছরের ক্ষতিপূরণ (ধারা ২৭(৪))",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "short": "৩ বছর পর্যন্ত চাকরি",
+        "medium": "৩ বছরের বেশি কিন্তু ১০ বছরের কম",
+        "long": "১০ বছর বা তার বেশি"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-10",
+          "valor": {
+            "short": 7,
+            "medium": 15,
+            "long": 30
+          },
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম (সংশোধন) আইন, ২০২৬ (২০২৬ সনের ৪৩ নং আইন), ধারা ১৩",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2026/3/db5604f4-8cc4-40e0-aef3-88e50cdf4b51.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "বাংলাদেশ গেজেট, ১০ এপ্রিল ২০২৬, পৃষ্ঠা ১৫৭৯৩। আইনটি অবিলম্বে কার্যকর।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.notice-days",
+      "nombre": "চাকরির অবসানে নোটিশের মেয়াদ (ধারা ২৬ ও ২৭)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "employer-permanent-monthly": "মালিক: স্থায়ী, মাসিক মজুরির শ্রমিক",
+        "employer-permanent-other": "মালিক: স্থায়ী, অন্য শ্রমিক",
+        "employer-temporary-monthly": "মালিক: অস্থায়ী, মাসিক মজুরির শ্রমিক",
+        "employer-temporary-other": "মালিক: অস্থায়ী, অন্য শ্রমিক",
+        "worker-permanent": "শ্রমিক: স্থায়ী",
+        "worker-temporary-monthly": "শ্রমিক: অস্থায়ী, মাসিক মজুরি",
+        "worker-temporary-other": "শ্রমিক: অস্থায়ী, অন্য"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-10",
+          "valor": {
+            "employer-permanent-monthly": 120,
+            "employer-permanent-other": 60,
+            "employer-temporary-monthly": 30,
+            "employer-temporary-other": 14,
+            "worker-permanent": 60,
+            "worker-temporary-monthly": 30,
+            "worker-temporary-other": 14
+          },
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম আইন, ২০০৬ (হালনাগাদ পাঠ), ধারা ২৬(১), ২৬(২), ২৭(১) ও ২৭(২)",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2024/12/50ada1e369cf41e598750a8a93ac3423.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.gratuity-days",
+      "nombre": "গ্র্যাচুইটির ন্যূনতম দিন প্রতি পূর্ণ বছরে (ধারা ২(১০))",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "base": "সাধারণ",
+        "long": "১০ বছরের বেশি চাকরি"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-10",
+          "valor": {
+            "base": 30,
+            "long": 45
+          },
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম আইন, ২০০৬ (হালনাগাদ পাঠ), ধারা ২(১০)",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2024/12/50ada1e369cf41e598750a8a93ac3423.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.overtime-multiplier",
+      "nombre": "অধিকাল কাজের ভাতার হার (মূল মজুরি ও মহার্ঘ ভাতার সাধারণ হারের গুণ)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-10-11",
+          "valor": 2,
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম আইন, ২০০৬ (হালনাগাদ পাঠ), ধারা ১০৮(১)",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2024/12/50ada1e369cf41e598750a8a93ac3423.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.annual-leave-divisor",
+      "nombre": "প্রাপ্তবয়স্ক শ্রমিকের মজুরিসহ বাৎসরিক ছুটি: কত দিন কাজে এক দিন ছুটি (ধারা ১১৭(১))",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "general": "দোকান, বাণিজ্য বা শিল্প প্রতিষ্ঠান, কারখানা বা সড়ক পরিবহন",
+        "tea": "চা বাগান",
+        "newspaper": "সংবাদপত্র শ্রমিক"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-10-11",
+          "valor": {
+            "general": 18,
+            "tea": 22,
+            "newspaper": 11
+          },
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম আইন, ২০০৬ (হালনাগাদ পাঠ), ধারা ১১৭(১)",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2024/12/50ada1e369cf41e598750a8a93ac3423.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "২০২৬ সালের সংশোধন শুধু অপ্রাপ্তবয়স্ক শ্রমিকের কারখানার হার বদলেছে (ধারা ১১৭(২)(ক))।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.leave-days",
+      "nombre": "পূর্ণ মজুরিতে বছরে নৈমিত্তিক, পীড়া ও উৎসব ছুটি",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "casual": "নৈমিত্তিক ছুটি (ধারা ১১৫)",
+        "sick": "পীড়া ছুটি (ধারা ১১৬)",
+        "festival": "উৎসব ছুটি (ধারা ১১৮)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-10",
+          "valor": {
+            "casual": 10,
+            "sick": 14,
+            "festival": 13
+          },
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম আইন, ২০০৬ এর ধারা ১১৫ ও ১১৬ এবং বাংলাদেশ শ্রম (সংশোধন) আইন, ২০২৬ এর ধারা ২৮ (ধারা ১১৮ সংশোধন)",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2026/3/db5604f4-8cc4-40e0-aef3-88e50cdf4b51.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "উৎসব ছুটি ‘এগারো’ থেকে ‘১৩ (তের)’ দিন করা হয়েছে। নৈমিত্তিক ও পীড়া ছুটির দিন শ্রম আইনের হালনাগাদ পাঠে (মন্ত্রণালয়ের ওয়েবসাইট) পড়া হয়েছে।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.maternity-days",
+      "nombre": "প্রসূতি কল্যাণ সুবিধার মোট দিন (প্রসবের আগে ও পরে ষাট দিন করে)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-10",
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম (সংশোধন) আইন, ২০২৬, ধারা ১৬ থেকে ১৮ (ধারা ৪৬, ৪৭ ও ৪৮ সংশোধন)",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2026/3/db5604f4-8cc4-40e0-aef3-88e50cdf4b51.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "প্রসবের আগে ৬০ দিন ও পরে ৬০ দিন। দৈনিক গড় মজুরি হলো মাসিক মোট মজুরি ভাগ ২৬।"
+          },
+          "valor": 120
+        }
+      ]
+    },
+    {
+      "id": "bd.maternity-divisor",
+      "nombre": "প্রসূতি কল্যাণে দৈনিক গড় মজুরি বের করতে মাসিক মোট মজুরির ভাজক",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-10",
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম (সংশোধন) আইন, ২০২৬, ধারা ১৬ থেকে ১৮ (ধারা ৪৬, ৪৭ ও ৪৮ সংশোধন)",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2026/3/db5604f4-8cc4-40e0-aef3-88e50cdf4b51.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "প্রসবের আগে ৬০ দিন ও পরে ৬০ দিন। দৈনিক গড় মজুরি হলো মাসিক মোট মজুরি ভাগ ২৬।"
+          },
+          "valor": 26
+        }
+      ]
+    },
+    {
+      "id": "bd.provident-fund-rate",
+      "nombre": "বেসরকারি খাতের ভবিষ্য তহবিলে শ্রমিকের চাঁদা, মাসিক মূল মজুরির শতাংশ (ধারা ২৬৪(৯))",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "min": "সর্বনিম্ন",
+        "max": "সর্বোচ্চ"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-10",
+          "valor": {
+            "min": 7,
+            "max": 8
+          },
+          "fuente": {
+            "organismo": "শ্রম ও কর্মসংস্থান মন্ত্রণালয়",
+            "titulo": "বাংলাদেশ শ্রম আইন, ২০০৬ (হালনাগাদ পাঠ), ধারা ২৬৪(৯)",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mole/2024/12/50ada1e369cf41e598750a8a93ac3423.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "মালিকও একই হারে চাঁদা দেন। ২০২৬ সালের সংশোধন উপ-ধারা (৯) বদলায়নি।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.minimum-wage-total",
+      "nombre": "শিল্প সেক্টরভিত্তিক সর্বনিম্ন গ্রেডের শ্রমিকের নিম্নতম মোট মাসিক মজুরি",
+      "tipo": "mapa",
+      "unidad": "BDT",
+      "etiquetas": {
+        "garments": "গার্মেন্টস (তৈরি পোশাক)",
+        "cotton-textile": "কটন টেক্সটাইল",
+        "tailoring": "দর্জি কারখানা",
+        "hosiery": "হোসিয়ারি",
+        "tannery": "ট্যানারি",
+        "pharmaceuticals": "ফার্মাসিউটিক্যাল",
+        "paint-chemical": "রং ও কেমিক্যাল কারখানা",
+        "cement": "সিমেন্ট কারখানা",
+        "construction-wood": "নির্মাণ ও কাঠ",
+        "security-services": "সিকিউরিটি সার্ভিস",
+        "road-transport": "ব্যক্তিমালিকানাধীন সড়ক পরিবহন",
+        "hotel-restaurant": "হোটেল ও রেস্টুরেন্ট",
+        "bakery": "বেকারি, বিস্কুট ও কনফেকশনারি",
+        "poultry": "পোল্ট্রি",
+        "tea-packeting": "টি প্যাকেটিং",
+        "rice-mill": "রাইস মিল",
+        "plastic": "প্লাস্টিক",
+        "rubber": "রাবার ইন্ডাস্ট্রিজ",
+        "printing-press": "প্রিন্টিং প্রেস",
+        "saw-mills": "স মিলস",
+        "soap-cosmetics": "সোপ ও কসমেটিকস",
+        "cold-storage": "কোল্ড স্টোরেজ",
+        "ayurvedic": "আয়ুর্বেদিক কারখানা",
+        "homeopathy": "হোমিওপ্যাথ কারখানা",
+        "iron-foundry": "আয়রন ফাউন্ড্রি ও ইঞ্জিনিয়ারিং ওয়ার্কশপ",
+        "petrol-pump": "পেট্রোল পাম্প",
+        "battery": "ব্যাটারি প্রস্তুতকারক",
+        "cinema-hall": "সিনেমা হল"
+      },
+      "proximaRevision": "2027-06-30",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-11",
+          "valor": {
+            "garments": 12500,
+            "cotton-textile": 10001,
+            "tailoring": 7500,
+            "hosiery": 12080,
+            "tannery": 17048,
+            "pharmaceuticals": 13750,
+            "paint-chemical": 14750,
+            "cement": 12000,
+            "construction-wood": 16240,
+            "security-services": 9140,
+            "road-transport": 10100,
+            "hotel-restaurant": 13050,
+            "bakery": 13000,
+            "poultry": 13250,
+            "tea-packeting": 12000,
+            "rice-mill": 7810,
+            "plastic": 8000,
+            "rubber": 12910,
+            "printing-press": 8150,
+            "saw-mills": 17900,
+            "soap-cosmetics": 9500,
+            "cold-storage": 14000,
+            "ayurvedic": 11000,
+            "homeopathy": 11500,
+            "iron-foundry": 12600,
+            "petrol-pump": 16050,
+            "battery": 12610,
+            "cinema-hall": 12064
+          },
+          "fuente": {
+            "organismo": "নিম্নতম মজুরী বোর্ড",
+            "titulo": "সরকার কর্তৃক অদ্য পর্যন্ত ঘোষিত ব্যক্তিমালিকানাধীন শিল্প সেক্টরের তালিকা এবং নিম্নতম মোট মজুরি হার",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mwb/2026/8/0b34c4f3-ed20-4111-8719-9b056eef81b0.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "নিম্নতম মজুরী বোর্ডের ‘ঘোষিত নিম্নতম মজুরী হারের তালিকা (সর্বশেষ)’ পাতা, হালনাগাদ ২৩ সেপ্টেম্বর ২০২৬। প্রতিটি সেক্টরের শ্রমিক সারির সর্বমোট মজুরি; প্রতিটির গেজেটের তারিখ তালিকায় আছে।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.minimum-wage-basic",
+      "nombre": "শিল্প সেক্টরভিত্তিক সর্বনিম্ন গ্রেডের শ্রমিকের নিম্নতম মূল মজুরি",
+      "tipo": "mapa",
+      "unidad": "BDT",
+      "proximaRevision": "2027-06-30",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-11",
+          "valor": {
+            "garments": 6700,
+            "cotton-textile": 5162,
+            "tailoring": 4500,
+            "hosiery": 7200,
+            "tannery": 9530,
+            "pharmaceuticals": 7500,
+            "paint-chemical": 7500,
+            "cement": 6400,
+            "construction-wood": 11800,
+            "security-services": 5600,
+            "road-transport": 6500,
+            "hotel-restaurant": 7500,
+            "bakery": 8000,
+            "poultry": 7500,
+            "tea-packeting": 7500,
+            "rice-mill": 4650,
+            "plastic": 5000,
+            "rubber": 6600,
+            "printing-press": 5000,
+            "saw-mills": 11000,
+            "soap-cosmetics": 5000,
+            "cold-storage": 8400,
+            "ayurvedic": 6000,
+            "homeopathy": 6000,
+            "iron-foundry": 7000,
+            "petrol-pump": 9000,
+            "battery": 6650,
+            "cinema-hall": 7760
+          },
+          "fuente": {
+            "organismo": "নিম্নতম মজুরী বোর্ড",
+            "titulo": "সরকার কর্তৃক অদ্য পর্যন্ত ঘোষিত ব্যক্তিমালিকানাধীন শিল্প সেক্টরের তালিকা এবং নিম্নতম মোট মজুরি হার",
+            "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-mwb/2026/8/0b34c4f3-ed20-4111-8719-9b056eef81b0.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "প্রতিটি সেক্টরের শ্রমিক সারির মূল মজুরির কলাম।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bd.usd-bdt",
+      "nombre": "মার্কিন ডলার ও টাকার বিনিময় হার (বাংলাদেশ ব্যাংক)",
+      "tipo": "numero",
+      "unidad": "BDT",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-10-01",
+          "motivo": "বাংলাদেশ ব্যাংকের ওয়েবসাইট (bb.org.bd) আমাদের সার্ভার থেকে খোলেনি, তাই সরকারি হার পড়া যায়নি। হার যাচাই না হওয়া পর্যন্ত ক্যালকুলেটরটি খসড়া।"
+        }
+      ]
+    }
+  ]
+}

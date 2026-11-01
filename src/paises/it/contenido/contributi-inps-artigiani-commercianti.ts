@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "it.contributi-artigiani-commercianti",
   h1: "Calcolo contributi INPS artigiani e commercianti",
-  title: "Contributi INPS artigiani e commercianti 2026",
+  title: "Contributi INPS artigiani e commercianti {{anio}}",
   description:
-    "Calcola i contributi INPS 2026 di artigiani e commercianti: quota fissa sul minimale di {{it.minimale-autonomi}}, contributi sull'eccedenza e riduzione per il forfettario.",
+    "Calcola i contributi INPS {{anio}} di artigiani e commercianti: quota fissa sul minimale di {{it.minimale-autonomi}}, contributi sull'eccedenza e riduzione per il forfettario.",
   intro: [
     "Se hai un'impresa artigiana o commerciale sei iscritto alla gestione INPS di artigiani o commercianti. Paghi una quota fissa ogni anno e, se guadagni di più, contributi in percentuale sul reddito.",
     "Con questo calcolo vedi quanto versi in tutto, quanto va nelle quattro rate fisse e quanto con il saldo e gli acconti.",

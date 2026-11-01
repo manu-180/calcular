@@ -5,7 +5,7 @@ export default definirContenido({
   h1: "Kapitalbezug: Bundessteuer auf Pensionskasse und Säule 3a",
   title: "Kapitalbezug Steuer Rechner: Bundessteuer auf PK und 3a",
   description:
-    "Direkte Bundessteuer auf den Bezug von Pensionskassen- oder Säule-3a-Kapital: ein Fünftel des Tarifs nach Art. 38 DBG, mit den Tarifen 2026.",
+    "Direkte Bundessteuer auf den Bezug von Pensionskassen- oder Säule-3a-Kapital: ein Fünftel des Tarifs nach Art. 38 DBG, mit den Tarifen {{anio}}.",
   intro: [
     "Wer Kapital aus der Pensionskasse oder der Säule 3a bezieht, zahlt darauf eine eigene Steuer. Sie wird getrennt vom übrigen Einkommen erhoben, für das Jahr der Auszahlung.",
     "Der Rechner zeigt den Anteil des Bundes. Kanton und Gemeinde besteuern den Bezug zusätzlich.",

@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "us.mileage-reimbursement",
   h1: "Mileage reimbursement calculator",
-  title: "Mileage Reimbursement Calculator 2026: IRS rate per mile",
+  title: "Mileage Reimbursement Calculator {{anio}}: IRS rate per mile",
   description:
-    "Turn miles into dollars with the IRS standard mileage rates for 2026: {{us.mileage-business}} per business mile now, plus medical and charity rates.",
+    "Turn miles into dollars with the IRS standard mileage rates for {{anio}}: {{us.mileage-business}} per business mile now, plus medical and charity rates.",
   intro: [
     "The IRS sets standard mileage rates that employers use to reimburse driving and that self-employed people use to deduct it.",
     "In 2026 the IRS raised the business and medical rates from July 1 because of fuel prices, so the date of your trips matters.",

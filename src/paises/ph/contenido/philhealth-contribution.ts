@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ph.philhealth-contribution",
   h1: "PhilHealth contribution calculator",
-  title: "PhilHealth contribution calculator 2026 ({{ph.philhealth-rate}} premium)",
+  title: "PhilHealth contribution calculator {{anio}} ({{ph.philhealth-rate}} premium)",
   description:
     "Work out your PhilHealth premium at {{ph.philhealth-rate}} of your monthly income, with the {{ph.philhealth-floor}} floor and {{ph.philhealth-ceiling}} ceiling, for employees and self-paying members.",
   intro: [

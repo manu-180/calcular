@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ph.kasambahay-minimum-wage",
   h1: "Kasambahay minimum wage by region",
-  title: "Kasambahay minimum wage 2026 by region",
+  title: "Kasambahay minimum wage {{anio}} by region",
   description: "Check the monthly minimum wage for domestic workers (kasambahay) in your region, set by the regional wage boards.",
   intro: [
     "Domestic workers have their own monthly minimum wage, set region by region. Pick the region where the kasambahay works.",

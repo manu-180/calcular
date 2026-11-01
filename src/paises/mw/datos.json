@@ -1,0 +1,817 @@
+{
+  "mercado": "mw",
+  "datos": [
+    {
+      "id": "mw.paye-bands",
+      "nombre": "Monthly PAYE bands",
+      "tipo": "escala",
+      "unidad": "MWK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 170000,
+              "tasa": 0
+            },
+            {
+              "desde": 170000,
+              "hasta": 1570000,
+              "tasa": 30
+            },
+            {
+              "desde": 1570000,
+              "hasta": 10000000,
+              "tasa": 35
+            },
+            {
+              "desde": 10000000,
+              "hasta": null,
+              "tasa": 40
+            }
+          ],
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Public Notice: new tax measures under the amended Taxation and Value Added Tax laws (March 2026)",
+            "url": "https://www.mra.mw/admin/storage/download_files/1774423425_NEW%20TAX%20MEASURES%20UNDER%20AMENDED%20TAXATION%20AND%20VALUE%20ADDED%20TAX%20LAWS%20%20March%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Taxation (Amendment) and VAT (Amendment) (No. 2) Acts 2025 apply from 30 December 2025. The MRA PAYE calculator on mra.mw lists the same monthly bands."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.personal-tax-bands",
+      "nombre": "Annual personal income tax bands",
+      "tipo": "escala",
+      "unidad": "MWK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-30",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2040000,
+              "tasa": 0
+            },
+            {
+              "desde": 2040000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Public Notice: new tax measures under the amended Taxation and Value Added Tax laws (March 2026)",
+            "url": "https://www.mra.mw/admin/storage/download_files/1774423425_NEW%20TAX%20MEASURES%20UNDER%20AMENDED%20TAXATION%20AND%20VALUE%20ADDED%20TAX%20LAWS%20%20March%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Taxation (Amendment) and VAT (Amendment) (No. 2) Acts 2025 apply from 30 December 2025. The MRA PAYE calculator on mra.mw lists the same monthly bands."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-30",
+          "valor": 17.5,
+          "fuente": {
+            "organismo": "Parliament of Malawi (published by MRA)",
+            "titulo": "Value Added Tax (Amendment) (No. 2) Act, 2025 (Act No. 37 of 2025), published 30 December 2025",
+            "url": "https://www.mra.mw/admin/storage/download_files/1767960417_Value%20Adde%20Tax%20(Amendment)%20(NO.%202)%20ACT.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Section 9 of the VAT Act: 16.5 replaced by 17.5."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.transfer-levy-rate",
+      "nombre": "Levy on mobile money and bank transfers",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-30",
+          "valor": 0.05,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Public Notice: new tax measures under the amended Taxation and Value Added Tax laws (March 2026)",
+            "url": "https://www.mra.mw/admin/storage/download_files/1774423425_NEW%20TAX%20MEASURES%20UNDER%20AMENDED%20TAXATION%20AND%20VALUE%20ADDED%20TAX%20LAWS%20%20March%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Taxation (Amendment) and VAT (Amendment) (No. 2) Acts 2025 apply from 30 December 2025. The MRA PAYE calculator on mra.mw lists the same monthly bands."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.transfer-levy-threshold",
+      "nombre": "Mobile money transfers above this amount pay the levy",
+      "tipo": "numero",
+      "unidad": "MWK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-30",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Public Notice: new tax measures under the amended Taxation and Value Added Tax laws (March 2026)",
+            "url": "https://www.mra.mw/admin/storage/download_files/1774423425_NEW%20TAX%20MEASURES%20UNDER%20AMENDED%20TAXATION%20AND%20VALUE%20ADDED%20TAX%20LAWS%20%20March%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Taxation (Amendment) and VAT (Amendment) (No. 2) Acts 2025 apply from 30 December 2025. The MRA PAYE calculator on mra.mw lists the same monthly bands."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.winnings-tax",
+      "nombre": "Withholding tax on betting, gambling and lottery winnings",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-30",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Public Notice: new tax measures under the amended Taxation and Value Added Tax laws (March 2026)",
+            "url": "https://www.mra.mw/admin/storage/download_files/1774423425_NEW%20TAX%20MEASURES%20UNDER%20AMENDED%20TAXATION%20AND%20VALUE%20ADDED%20TAX%20LAWS%20%20March%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The Taxation (Amendment) and VAT (Amendment) (No. 2) Acts 2025 apply from 30 December 2025. The MRA PAYE calculator on mra.mw lists the same monthly bands."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.wht-rates",
+      "nombre": "Withholding tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "royalties": "Royalties",
+        "rent": "Rent",
+        "supplies": "Supplies to traders and institutions (food and other goods)",
+        "commission": "Commission",
+        "haulage": "Carriage and haulage",
+        "farm-produce": "Sale of farm produce (final tax)",
+        "building": "Contractors in the building industry",
+        "entertainment": "Public entertainment",
+        "services": "Services",
+        "interest": "Interest",
+        "fees": "Fees"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-01",
+          "valor": {
+            "royalties": 20,
+            "rent": 20,
+            "supplies": 3,
+            "commission": 20,
+            "haulage": 10,
+            "farm-produce": 1,
+            "building": 10,
+            "entertainment": 20,
+            "services": 20,
+            "interest": 20,
+            "fees": 20
+          },
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Withholding Tax: specified rates (Fourteenth Schedule to the Taxation Act)",
+            "url": "https://www.mra.mw/view/withholding-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Same rates as the MRA Withholding Tax brochure for April 2023 to March 2024. The winnings rows of the page predate the 2025 amendment and are not used."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.fbt-rate",
+      "nombre": "Fringe benefit tax rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Understanding Fringe Benefit Tax",
+            "url": "https://www.mra.mw/view/understanding-fringe-benefit-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.fbt-vehicle",
+      "nombre": "Taxable value of a motor vehicle a year, share of original cost",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Understanding Fringe Benefit Tax",
+            "url": "https://www.mra.mw/view/understanding-fringe-benefit-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.fbt-school-fees",
+      "nombre": "Taxable value of school fees paid to the school, share of cost",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Understanding Fringe Benefit Tax",
+            "url": "https://www.mra.mw/view/understanding-fringe-benefit-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.fbt-housing-owned",
+      "nombre": "Share of the taxable value for housing the employer owns",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Understanding Fringe Benefit Tax",
+            "url": "https://www.mra.mw/view/understanding-fringe-benefit-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.fbt-housing-unfurnished",
+      "nombre": "Minimum taxable value of unfurnished housing, share of salary",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Understanding Fringe Benefit Tax",
+            "url": "https://www.mra.mw/view/understanding-fringe-benefit-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.fbt-housing-furnished",
+      "nombre": "Minimum taxable value of furnished housing, share of salary",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Understanding Fringe Benefit Tax",
+            "url": "https://www.mra.mw/view/understanding-fringe-benefit-tax",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.tevet-rate",
+      "nombre": "TEVET levy, share of the basic payroll",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-11-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "TEVET Levy: employers remit 1% of the basic annual payroll",
+            "url": "https://www.mra.mw/view/tevet-levy",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "MRA has collected the levy for TEVETA since 1 November 2015."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.tevet-penalty",
+      "nombre": "Penalty on unpaid TEVET levy",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-11-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "TEVET Levy compliance: 20% penalty on unpaid levy (TEVET Act, section 21(1))",
+            "url": "https://www.mra.mw/view/tevet-levy-compliance",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.presumptive-tax",
+      "nombre": "Presumptive tax a year by annual turnover",
+      "tipo": "escala",
+      "unidad": "MWK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 4000000,
+              "tasa": 0,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 4000000,
+              "hasta": 7000000,
+              "tasa": 0,
+              "cuotaFija": 110000
+            },
+            {
+              "desde": 7000000,
+              "hasta": 10000000,
+              "tasa": 0,
+              "cuotaFija": 170000
+            },
+            {
+              "desde": 10000000,
+              "hasta": 12500000,
+              "tasa": 0,
+              "cuotaFija": 225000
+            }
+          ],
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Understanding Presumptive Tax brochure (April 2023 to March 2024)",
+            "url": "https://www.mra.mw/admin/storage/downloads/Presumptive_Tri-Fold_English_2023-2024.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "The current MRA page on presumptive tax (mra.mw/view/business-presumptive-tax) shows the same K12.5 million ceiling, K170,000 and K225,000 rows."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.cgt-provisional-rate",
+      "nombre": "Provisional tax on a capital gain",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-10-20",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Malawi Revenue Authority",
+            "titulo": "Public Notice: use of consumer price indices for adjusting the basis of a capital asset (CPIs to September 2026)",
+            "url": "https://www.mra.mw/admin/storage/download_files/1792486281_USE%20OF%20CONSUMER%20PRICE%20INDICES%20(CPIs)%20FOR%20ADJUSTING%20BASIS%20OF%20A%20CAPITAL%20ASSET%20UNDER%20SECTION%202%20OF%20THE%20TAXATION%20ACT%20-%20OCtober%202026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Continuous NSO CPI series with 1970 = 100, published by MRA on 20 October 2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.pension-employee",
+      "nombre": "Minimum pension contribution, employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-02-10",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Pension Act, 2023 (Act No. 6 of 2023), section 12: minimum contribution rates",
+            "url": "https://www.labour.gov.mw/images/documents/Malawi-Pension-Act_2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Section 12 of the Pension Act, 2011 (Cap. 55:02) set the same minimums of 10% and 5%."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.pension-employer",
+      "nombre": "Minimum pension contribution, employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-02-10",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Pension Act, 2023 (Act No. 6 of 2023), section 12: minimum contribution rates",
+            "url": "https://www.labour.gov.mw/images/documents/Malawi-Pension-Act_2023.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Section 12 of the Pension Act, 2011 (Cap. 55:02) set the same minimums of 10% and 5%."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.overtime-ordinary",
+      "nombre": "Ordinary overtime, times the hourly wage",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.overtime-day-off",
+      "nombre": "Day-off overtime, times the hourly wage",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.overtime-holiday",
+      "nombre": "Public holiday overtime, times the hourly wage",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.weekly-hours-limit",
+      "nombre": "Maximum normal hours a week, excluding overtime",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 48,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.leave-six-day-week",
+      "nombre": "Annual leave for a six-day week",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.leave-five-day-week",
+      "nombre": "Annual leave for a five-day week",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.sick-full-pay",
+      "nombre": "Sick leave on full pay a year",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.sick-half-pay",
+      "nombre": "Sick leave on half pay a year",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.sick-qualifying",
+      "nombre": "Continuous service before sick leave applies",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.maternity-weeks",
+      "nombre": "Maternity leave on full pay",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.maternity-cycle",
+      "nombre": "Maternity leave applies once in every",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.notice-long-service",
+      "nombre": "Years of service after which notice is one month for every pay period",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.notice-mid-service",
+      "nombre": "Years of service after which weekly and daily paid staff get a fortnight",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.notice-short-service",
+      "nombre": "Months of service after which daily and hourly paid staff get a week",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.notice-fixed-term",
+      "nombre": "Minimum notice for a fixed-term contract",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2000-05-19",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Ministry of Labour",
+            "titulo": "Employment Act, 2000 (Act No. 6 of 2000)",
+            "url": "https://www.labour.gov.mw/images/documents/employment-act.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Text of the Act as published on 19 May 2000 and posted by the Ministry of Labour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mw.severance-weeks",
+      "nombre": "Severance allowance, weeks of wages for each completed year",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "years-1-5": "Years 1 to 5",
+        "years-6-10": "Years 6 to 10",
+        "years-11-plus": "Year 11 onwards"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2010-01-01",
+          "valor": {
+            "years-1-5": 2,
+            "years-6-10": 3,
+            "years-11-plus": 4
+          },
+          "motivo": "The Ministry of Labour only posts the 2000 text of the Employment Act, whose First Schedule was later replaced. The amended schedule is on MalawiLII, which blocks every request from our environment behind a Cloudflare check; we only saw fragments of it in search results."
+        }
+      ]
+    }
+  ]
+}

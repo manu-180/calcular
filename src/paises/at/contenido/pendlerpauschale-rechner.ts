@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "at.pendlerpauschale-rechner",
   h1: "Pendlerpauschale und Pendlereuro berechnen",
-  title: "Pendlerpauschale 2026: Rechner mit Pendlereuro",
-  description: "Kleines oder großes Pendlerpauschale, Pendlereuro von {{at.pendlereuro}} je Kilometer und Ihre Steuerersparnis: der Pendlerrechner für Österreich 2026.",
+  title: "Pendlerpauschale {{anio}}: Rechner mit Pendlereuro",
+  description: "Kleines oder großes Pendlerpauschale, Pendlereuro von {{at.pendlereuro}} je Kilometer und Ihre Steuerersparnis: der Pendlerrechner für Österreich {{anio}}.",
   intro: [
     "Die Fahrten zur Arbeit sind in Österreich mit dem Verkehrsabsetzbetrag abgegolten. Wer weiter weg wohnt oder öffentliche Verkehrsmittel nicht zumutbar nutzen kann, bekommt zusätzlich das Pendlerpauschale und den Pendlereuro.",
     "Das Pendlerpauschale senkt die Bemessungsgrundlage der Lohnsteuer, der Pendlereuro zieht direkt von der Steuer ab.",

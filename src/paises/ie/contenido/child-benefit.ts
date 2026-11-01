@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ie.child-benefit",
-  h1: "Child Benefit calculator Ireland 2026",
-  title: "Child Benefit Ireland 2026: {{ie.child-benefit-monthly[single]}} a month per child",
+  h1: "Child Benefit calculator Ireland {{anio}}",
+  title: "Child Benefit Ireland {{anio}}: {{ie.child-benefit-monthly[single]}} a month per child",
   description: "Child Benefit is {{ie.child-benefit-monthly[single]}} a month for each child, with higher rates for twins and multiple births. See your monthly and yearly total.",
   intro: [
     "Child Benefit is a monthly payment for each child in your family. Enter the number of children to see what you get each month and each year.",

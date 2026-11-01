@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.desahucio",
   h1: "Calculadora de desahucio en Bolivia",
-  title: "Desahucio Bolivia 2026: calcule cuánto le corresponde",
+  title: "Desahucio Bolivia {{anio}}: calcule cuánto le corresponde",
   description: "Calcule el desahucio que le corresponde si lo despidieron sin causa justificada: {{bo.desahucio-sueldos}} sueldos promedio, además de la indemnización.",
   intro: [
     "El desahucio es la compensación que paga el empleador cuando lo despide sin causa justificada. Equivale a {{bo.desahucio-sueldos}} sueldos promedio y se suma a la indemnización por tiempo de servicios.",

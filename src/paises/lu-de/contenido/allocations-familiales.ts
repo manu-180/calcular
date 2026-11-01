@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu-de.allocations-familiales",
   h1: "Familienzulagen in Luxemburg berechnen (Zukunftskeess)",
-  title: "Familienzulagen Luxemburg 2026: Kindergeld der CAE",
+  title: "Familienzulagen Luxemburg {{anio}}: Kindergeld der CAE",
   description: "Familienzulagen in Luxemburg: {{lu.allocation-familiale}} pro Kind und Monat, Alterszuschläge und Schulanfangszulage der Zukunftskeess.",
   intro: [
     "Seit dem 1. Juni 2026 beträgt die Familienzulage {{lu.allocation-familiale}} pro Kind und Monat. Ab 6 Jahren und erneut ab 12 Jahren kommt ein Zuschlag hinzu.",

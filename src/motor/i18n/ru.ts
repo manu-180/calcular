@@ -1,0 +1,192 @@
+import { GRAMATICA } from "./gramatica";
+import { pluralRu } from "./plural";
+import type { Diccionario } from "./resolver";
+import type { TextosSitio } from "./tipos";
+
+const g = GRAMATICA.ru;
+const MUNDO = "Международная версия";
+
+// Ruso: un solo registro para la web, el de los bancos y los servicios digitales (Kaspi, Halyk,
+// egov.kz, Сбер). «вы» con minúscula y el imperativo cortés («введите», «выберите», «ваша
+// зарплата»), nunca «ты». Los botones van en infinitivo o en imperativo cortés breve («Рассчитать»,
+// «Выберите страну»), como en esos sitios. Sin «ё» (se escribe «е»). Los mercados van con trato
+// "usted" y el diccionario se escribe en base (ADR 0002, D17). El nombre del país se declina con
+// GRAMATICA.ru.
+const base: TextosSitio = {
+  marca: { nombre: "CalcularYa", lema: "Калькуляторы с официальными данными" },
+  saltar: "Перейти к содержанию",
+  header: {
+    inicio: "Главная",
+    elegirPais: "Выберите страну",
+    paisActual: (pais) => `Страна: ${pais}`,
+    cerrar: "Закрыть",
+    todos: "Все страны",
+    latinoamerica: MUNDO,
+  },
+  footer: {
+    paises: "Страны",
+    sitio: "CalcularYa",
+    fuentes: "Официальные источники",
+    novedades: "Обновления",
+    privacidad: "Конфиденциальность",
+    terminos: "Условия использования",
+    contacto: "Контакты",
+    sobre: "О нас",
+    argentina: "Вы в Аргентине? Ваши калькуляторы на calcular.ar",
+    descargo: "Результаты носят справочный характер. Перед важным решением проверьте их в официальном ведомстве или у специалиста.",
+    derechos: (anio) => `© ${anio} CalcularYa`,
+  },
+  sello: {
+    titulo: "Актуальные официальные данные",
+    verificado: (organismos, fecha) => `Данные сверены с источниками: ${organismos}. Обновлено ${fecha}.`,
+    serie: (nombre, organismo, fecha) => `${nombre} обновляется автоматически по данным: ${organismo}. Последнее значение: ${fecha}.`,
+    verTodas: "Посмотреть все источники",
+  },
+  calculadora: {
+    comoSeCalcula: "Как считается",
+    ejemplo: "Пример",
+    faq: "Частые вопросы",
+    glosario: "Термины",
+    relacionadas: "Другие калькуляторы",
+    otrosPaises: "Такой же расчет в других странах",
+  },
+  global: {
+    eyebrow: "Официальные данные для каждой страны",
+    titulo: "Калькуляторы для работы, денег и повседневных дел с данными вашей страны",
+    bajada: "Зарплата, кредиты, налоги, даты и многое другое. Если результат зависит от правила, число берется из официального источника, с датой и ссылкой, чтобы вы могли его проверить.",
+    elegir: "Выберите свою страну",
+    calculadoras: (n) => pluralRu(n, "калькулятор", "калькулятора", "калькуляторов"),
+    vacio: "Мы добавляем новые страны. Загляните чуть позже.",
+    promesaTitulo: "Как мы работаем",
+    promesas: [
+      { titulo: "Официальные цифры с источником", texto: "Рядом с каждым значением указано ведомство, которое его публикует, ссылка и дата нашей проверки." },
+      { titulo: "Всегда актуально", texto: "Когда значение меняется, калькулятор меняется вместе с ним. Каждое изменение записано в обновлениях." },
+      { titulo: "Бесплатно и без регистрации", texto: "Расчет выполняется в вашем браузере. Мы не запрашиваем личные данные." },
+    ],
+  },
+  pais: {
+    eyebrow: "Актуальные официальные данные",
+    titulo: (pais) => `Калькуляторы ${g.para(pais)}`,
+    bajada: (pais) => `Со значениями, которые действуют ${g.en(pais)}, источником каждого из них и датой нашей проверки.`,
+    novedades: "Последние обновления",
+    verNovedades: "Посмотреть все обновления",
+    sinCalculadoras: "Для этой страны калькуляторов пока нет.",
+    descripcion: (pais) => `Калькуляторы зарплаты, налогов, кредитов, накоплений, здоровья, дат и дома ${g.para(pais)}, с действующим официальным значением и его источником.`,
+    irASeccion: "Перейти к разделу",
+  },
+  fuentes: {
+    titulo: (pais) => `Источники и данные ${g.para(pais)}`,
+    bajada: "Каждое значение, которое используют калькуляторы, с датами действия и ссылкой на официальный источник.",
+    vigente: "Действующее значение",
+    desde: "С",
+    hasta: "По",
+    fuente: "Источник",
+    verificado: "Проверено",
+    region: "Регион",
+    series: "Значения, которые обновляются автоматически",
+    ultimoDato: "Последнее значение",
+    proximo: (valor, fecha) => `Уже опубликовано значение с ${fecha}: ${valor}.`,
+    sinVerificar: "На сегодня нет проверенного значения",
+    tramos: (n) => `Таблица: ${pluralRu(n, "диапазон", "диапазона", "диапазонов")}`,
+    description: (pais) => `Официальные данные ${g.para(pais)}, которые используют калькуляторы: действующее значение, дата вступления в силу, источник и дата проверки.`,
+  },
+  novedades: {
+    titulo: (pais) => `Обновления ${g.para(pais)}`,
+    bajada: "Изменения в правилах, которые используют калькуляторы, с датой вступления в силу.",
+    vigenteDesde: (fecha) => `Действует с ${fecha}`,
+    vacio: "Для этой страны обновлений пока нет.",
+    description: (pais) => `Изменения минимальной зарплаты, взносов и других правил ${g.en(pais)}, с датой вступления в силу и официальным источником.`,
+  },
+  avisoPais: {
+    texto: (pais) => `Похоже, вы ${g.en(pais)}.`,
+    ir: (pais) => `Посмотреть калькуляторы ${g.para(pais)}`,
+    cerrar: "Закрыть уведомление",
+  },
+  noEncontrada: {
+    titulo: "Мы не нашли эту страницу",
+    texto: "Возможно, в адресе ошибка или страницы больше нет.",
+    volver: "Вернуться на главную",
+    paises: "Или выберите страну",
+  },
+  categorias: {
+    sueldo: "Зарплата и выплаты",
+    fin: "Увольнение",
+    impuestos: "Взносы и налоги",
+    dinero: "Деньги и индексы",
+    finanzas: "Кредиты, накопления и инвестиции",
+    negocio: "Бизнес и самозанятость",
+    calculos: "Быстрые расчеты",
+    fechas: "Даты и возраст",
+    salud: "Здоровье и форма",
+    hogar: "Дом, авто и ремонт",
+    familia: "Семья и быт",
+    otras: "Другие калькуляторы",
+  },
+  migas: { inicio: "Главная", etiqueta: "Вы здесь" },
+  seo: {
+    tituloGlobal: "CalcularYa: бесплатные калькуляторы с официальными данными",
+    descripcionGlobal: "Бесплатные калькуляторы зарплаты, кредитов, налогов и многого другого для каждой страны, с действующим официальным значением и его источником.",
+    tituloPais: (pais, anio) => [
+      `Калькуляторы зарплаты и налогов ${g.para(pais)} ${anio}`,
+      `Калькуляторы ${g.para(pais)} ${anio}`,
+      `Калькуляторы ${g.para(pais)}`,
+    ],
+    tituloFuentes: (pais) => [`Действующие официальные данные ${g.para(pais)}: источники и даты`, `Источники и данные ${g.para(pais)}`],
+    tituloNovedades: (pais, anio) => [
+      `Изменения в зарплатах и налогах ${g.para(pais)} ${anio}`,
+      `Обновления ${g.para(pais)} ${anio}`,
+      `Обновления ${g.para(pais)}`,
+    ],
+  },
+  og: {
+    datosOficiales: "Официальные данные с источниками",
+    actualizado: (fecha) => `Обновлено ${fecha}`,
+    gratis: "Бесплатно и без регистрации",
+    paises: (n) => pluralRu(n, "страна", "страны", "стран"),
+  },
+  shell: {
+    irAlInicio: "на главную",
+    menu: { trabajo: "Зарплата и работа", impuestos: "Налоги", dinero: "Деньги и индексы", vida: "Повседневное", novedades: "Обновления", planillas: "Таблицы Excel" },
+    encabezado: {
+      principal: "Главное меню",
+      buscar: "Поиск",
+      buscarCalculadora: "Найдите калькулятор",
+      abrirMenu: "Открыть меню",
+      cerrarMenu: "Закрыть меню",
+      menu: "Меню",
+      todas: "Все калькуляторы",
+      pieCajon: "Данные из официальных источников · Сделано в Аргентине",
+    },
+    buscador: {
+      dialogo: "Поиск по CalcularYa",
+      pregunta: "Что вы хотите рассчитать?",
+      recientes: "Продолжите с того места, где остановились",
+      masUsado: "Самые популярные",
+      sinResultados: "По запросу «{q}» ничего не найдено",
+      sugerencia: "Попробуйте другое слово, например «зарплата», «кредит» или «налог».",
+      verTodas: "Посмотреть все калькуляторы",
+      borrar: "Очистить поиск",
+      cerrar: "Закрыть",
+      cerrarBuscador: "Закрыть поиск",
+      moverte: "чтобы перемещаться",
+      abrir: "чтобы открыть",
+      desdeCualquier: "с любой страницы",
+      resultados: "Результаты",
+      resultado: "результат",
+      resultadosPlural: "результатов",
+      resultadosPocos: "результата",
+    },
+    paises: { titulo: "Страна", cambiar: "Сменить страну" },
+    pie: {
+      bajada: (lugar) =>
+        `Понятные калькуляторы ${lugar === MUNDO ? "для каждой страны" : g.para(lugar)}. Каждое число берется из официального документа, который его устанавливает, и имеет дату нашей проверки.`,
+      todas: "Все калькуляторы",
+      cuenta: "Ваш аккаунт",
+      cuentaNota: "Он необязателен. С ним можно сохранять расчеты и держать их под рукой.",
+      hecho: "Сделано в Аргентине",
+      escrito: "Написали и проверили",
+    },
+  },
+};
+
+export const ru: Diccionario<TextosSitio> = { base };

@@ -1,6 +1,9 @@
+import { coma, etiquetaIdioma } from "../../i18n/direccion";
 import { formatearFecha } from "../../formato";
 import { GRAMATICA } from "../../i18n/gramatica";
 import { rellenarHoras, textosHoras, type TextosHoras } from "../../i18n/horas";
+import { textosHorasPropio } from "../../i18n/horas-propio";
+import { textosRedes } from "../../i18n/redes";
 import { grafo, ldFaq, ldPagina, origenPublicoIntl } from "../../seo";
 import type { ContextoSitio } from "../../ui/contexto";
 import { IconoExterno } from "../../ui/Iconos";
@@ -69,7 +72,9 @@ function FuentePais({ f, t, locale, idioma }: { f: FilaHoras; t: TextosHoras; lo
         <div>
           <dt>{t.metodo.salario}</dt>
           <dd>
-            {m.nombre} · {formatoPrecioConCodigo(locale, m.porHora, m.moneda)} / h · {conversionTexto(t, m.conversion, locale)} · {m.fuente.organismo}, {rellenarHoras(t.metodo.verificado, { fecha: fecha(m.fuente.verificadoEl) })}. <Enlace url={m.fuente.url} texto={t.metodo.verFuente} />
+            {m.nombre} · {formatoPrecioConCodigo(locale, m.porHora, m.moneda)} / h · {conversionTexto(t, m.conversion, locale)} · {m.fuente.organismo}
+            {coma(idioma)}
+            {rellenarHoras(t.metodo.verificado, { fecha: fecha(m.fuente.verificadoEl) })}. <Enlace url={m.fuente.url} texto={t.metodo.verFuente} />
           </dd>
         </div>
         {m.jornada ? (
@@ -120,7 +125,7 @@ export function PaginaHoras({ ctx, indice, producto, esIndice, pais, inicial, pr
     name: t.nombre,
     description: descripcion,
     url,
-    inLanguage: m.locale,
+    inLanguage: etiquetaIdioma(m.locale),
     ...(lecturas.length ? { dateModified: lecturas.at(-1), temporalCoverage: `${lecturas[0]}/${lecturas.at(-1)}` } : {}),
     isAccessibleForFree: true,
     creator: { "@type": "Organization", name: "CalcularYa", url: `${origenPublicoIntl()}/` },
@@ -140,7 +145,7 @@ export function PaginaHoras({ ctx, indice, producto, esIndice, pais, inicial, pr
         <p className="cy-horas-intro">{rellenarHoras(t.bajada, { n })}</p>
       </header>
 
-      <HorasCliente datos={datos} t={t} locale={m.locale} productoInicial={p.id} productoIndice={inicial} paisInicial={paisInicialDe(indice, ctx, pais)} base={base} slug={SLUG_HORAS[m.idioma]} />
+      <HorasCliente datos={datos} t={t} tp={textosHorasPropio(m.idioma, m.trato, m.locale)} tr={textosRedes(m.idioma, m.trato, m.locale)} locale={m.locale} productoInicial={p.id} productoIndice={inicial} paisInicial={paisInicialDe(indice, ctx, pais)} base={base} slug={SLUG_HORAS[m.idioma]} />
 
       <section className="cy-horas-metodo" aria-labelledby="cy-horas-metodo-titulo">
         <div className="cy-horas-seccion-cabeza">

@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "pk.property-transfer-tax-calculator",
   h1: "Property tax calculator: 236C and 236K",
   title: "236C and 236K calculator 2026-27: property advance tax",
-  description: "Advance tax when you sell or buy property: {{pk.wht-236c}} for the seller under 236C and {{pk.wht-236k}} for the buyer under 236K, from 1 July 2026.",
+  description: "Advance tax when you sell or buy property: {{pk.wht-236c}} for the seller under 236C and {{pk.wht-236k}} for the buyer under 236K, from 1 July {{anio}}.",
   intro: [
     "When a property transfer is registered, the seller and the buyer each pay advance income tax. Enter the price to see both amounts.",
     "The Finance Act 2026 replaced the old slabs with flat rates.",

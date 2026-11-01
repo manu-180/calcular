@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sv.indemnizacion",
   h1: "Cálculo de indemnización por despido en El Salvador",
-  title: "Cálculo de indemnización por despido en El Salvador 2026",
+  title: "Cálculo de indemnización por despido en El Salvador {{anio}}",
   description:
     "Calcule su indemnización por despido injustificado: {{sv.indemnizacion-dias-por-anio}} de salario por año, con el tope de {{sv.indemnizacion-tope}} salarios mínimos diarios del sector. Vea el monto exacto.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "py.irp",
   h1: "Calculadora de IRP (impuesto a la renta personal)",
-  title: "IRP Paraguay 2026: calculá tu impuesto a la renta personal",
+  title: "IRP Paraguay {{anio}}: calculá tu impuesto a la renta personal",
   description: "Calculá tu IRP por servicios personales con la escala de la DNIT y tus gastos deducibles. Se paga si tus ingresos del año pasan {{py.irp-monto-no-alcanzado}}.",
   intro: [
     "El IRP (impuesto a la renta personal) se paga cuando tus ingresos del año pasan {{py.irp-monto-no-alcanzado}}. Lo pagan quienes trabajan en relación de dependencia o por su cuenta, sobre la renta neta: ingresos menos gastos deducibles.",

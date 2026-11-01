@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "do.prestaciones-laborales",
   h1: "Calculadora de prestaciones laborales en República Dominicana",
-  title: "Prestaciones laborales en RD 2026: cesantía y preaviso",
+  title: "Prestaciones laborales en RD {{anio}}: cesantía y preaviso",
   description:
     "Calcula tus prestaciones laborales en RD: preaviso, cesantía, vacaciones y regalía proporcional. Por desahucio, despido o renuncia, según el Código de Trabajo.",
   intro: [

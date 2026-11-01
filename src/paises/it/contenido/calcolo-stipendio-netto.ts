@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "it.stipendio-netto",
   h1: "Calcolo stipendio netto dalla RAL",
-  title: "Calcolo stipendio netto 2026: dalla RAL al netto in busta",
+  title: "Calcolo stipendio netto {{anio}}: dalla RAL al netto in busta",
   description:
-    "Dalla RAL allo stipendio netto mensile con gli scaglioni IRPEF 2026, i contributi INPS del {{it.contributi-dipendente}} e il taglio del cuneo fiscale.",
+    "Dalla RAL allo stipendio netto mensile con gli scaglioni IRPEF {{anio}}, i contributi INPS del {{it.contributi-dipendente}} e il taglio del cuneo fiscale.",
   intro: [
     "Inserisci la tua RAL e scopri quanto ti arriva in busta paga ogni mese. Il calcolo segue le regole del 2026: contributi INPS, IRPEF a scaglioni, detrazioni per lavoro dipendente e taglio del cuneo fiscale.",
     "Se conosci le addizionali della tua regione e del tuo comune, aggiungile: così il risultato si avvicina ancora di più alla busta paga vera.",

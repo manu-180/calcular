@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.sueldo-minimo",
-  h1: "Sueldo mínimo en Chile 2026: {{cl.imm}}",
-  title: "Sueldo mínimo 2026 en Chile: {{cl.imm}}",
+  h1: "Sueldo mínimo en Chile {{anio}}: {{cl.imm}}",
+  title: "Sueldo mínimo {{anio}} en Chile: {{cl.imm}}",
   description:
     "El sueldo mínimo en Chile es {{cl.imm}} desde el {{cl.imm#desde}}. Calcula el mínimo para tu jornada parcial, el valor por día y por hora. Gratis.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "nl.ww-uitkering-berekenen",
   h1: "WW-uitkering berekenen: hoogte en duur",
-  title: "WW-uitkering berekenen 2026: hoeveel en hoelang?",
+  title: "WW-uitkering berekenen {{anio}}: hoeveel en hoelang?",
   description:
     "Bereken je WW-uitkering: {{nl.ww-percentages[eerste-twee-maanden]}} van je maandloon de eerste twee maanden, daarna {{nl.ww-percentages[daarna]}}. Met de duur op basis van je arbeidsverleden.",
   intro: [

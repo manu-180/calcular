@@ -19,7 +19,7 @@ import { precioIntl, textosPlanillas } from "../_textos";
 import { VistaPlanilla } from "../_vista";
 import "@/motor/ui/estilos-oferta.css";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Props = { params: Promise<{ mercado: string; producto: string }> };
 

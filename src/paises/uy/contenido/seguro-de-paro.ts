@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.seguro-de-paro",
   h1: "Calculadora del seguro de paro",
-  title: "Seguro de paro 2026: cuánto cobrás cada mes",
+  title: "Seguro de paro {{anio}}: cuánto cobrás cada mes",
   description:
-    "Calculá tu seguro de paro (subsidio por desempleo) mes a mes: porcentajes de ley, topes del BPS de 2026 y el 20 % extra si tenés familia a cargo.",
+    "Calculá tu seguro de paro (subsidio por desempleo) mes a mes: porcentajes de ley, topes del BPS de {{anio}} y el 20 % extra si tenés familia a cargo.",
   intro: [
     "El seguro de paro (en la ley, subsidio por desempleo) lo paga el BPS cuando te despiden o te suspenden. Se calcula sobre lo que cobraste en los últimos seis meses y baja mes a mes.",
     "Elegí si fue despido o suspensión, cómo cobrabas y tu promedio. Te mostramos cuánto cobrás cada mes y el total.",

@@ -1,3 +1,4 @@
+import { etiquetaIdioma } from "../i18n/direccion";
 import type { ModoPublicacion, Registro } from "../registro";
 import type { Idiomas } from "../seo";
 import type { Mercado } from "../tipos";
@@ -11,7 +12,7 @@ import { urlIndice, urlRanking } from "./urls";
 function cluster(registro: Registro, modo: ModoPublicacion, url: (m: Pick<Mercado, "codigo" | "idioma">) => string): Idiomas | undefined {
   const mercados = registro.mercados(modo);
   const idiomas: Idiomas = {};
-  for (const m of mercados) idiomas[m.locale] = url(m);
+  for (const m of mercados) idiomas[etiquetaIdioma(m.locale)] = url(m);
   if (Object.keys(idiomas).length < 2) return undefined;
   const global = mercados.find((m) => m.codigo === "global");
   if (global) idiomas["x-default"] = url(global);

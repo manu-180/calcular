@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "es.iprem",
-  h1: "IPREM 2026: calculadora de cuantías",
-  title: "IPREM 2026: cuánto es al mes, al año y en veces el IPREM",
+  h1: "IPREM {{anio}}: calculadora de cuantías",
+  title: "IPREM {{anio}}: cuánto es al mes, al año y en veces el IPREM",
   description:
-    "El IPREM de 2026 es de {{es.iprem-mensual}} al mes. Calcula cuánto son 1,5, 2 o cualquier número de veces el IPREM, al mes, al año y al día.",
+    "El IPREM de {{anio}} es de {{es.iprem-mensual}} al mes. Calcula cuánto son 1,5, 2 o cualquier número de veces el IPREM, al mes, al año y al día.",
   intro: [
     "El IPREM (Indicador Público de Renta de Efectos Múltiples) es la referencia que usan muchas ayudas, becas, subsidios y alquileres sociales para fijar sus límites de ingresos.",
     "En 2026 sigue en {{es.iprem-mensual}} al mes, porque los Presupuestos de 2023 están prorrogados.",

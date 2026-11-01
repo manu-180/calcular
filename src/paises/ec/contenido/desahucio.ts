@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.desahucio",
   h1: "Calculadora de desahucio en Ecuador",
-  title: "Desahucio Ecuador 2026: bonificación y plazos al renunciar",
+  title: "Desahucio Ecuador {{anio}}: bonificación y plazos al renunciar",
   description: "Calcula la bonificación por desahucio ({{ec.desahucio}} de tu sueldo por año), tu último día con el aviso de {{ec.desahucio-aviso-dias}} y hasta cuándo te deben liquidar.",
   intro: [
     "El desahucio es el aviso por escrito con el que le dices a tu empleador que dejas el trabajo. Te da derecho a una bonificación por cada año que trabajaste.",

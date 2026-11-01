@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.salario-vacacional",
   h1: "Calculadora de licencia y salario vacacional",
-  title: "Salario vacacional y licencia 2026: calculá días y monto",
+  title: "Salario vacacional y licencia {{anio}}: calculá días y monto",
   description:
-    "Calculá tus días de licencia ({{uy.licencia-dias}} más los de antigüedad) y tu salario vacacional sobre el jornal líquido, con los descuentos de 2026. Gratis.",
+    "Calculá tus días de licencia ({{uy.licencia-dias}} más los de antigüedad) y tu salario vacacional sobre el jornal líquido, con los descuentos de {{anio}}. Gratis.",
   intro: [
     "El salario vacacional es el {{uy.salario-vacacional}} de tu jornal líquido por cada día de licencia. La licencia mínima es de {{uy.licencia-dias}} por año trabajado y crece con la antigüedad.",
     "Te mostramos los días que generaste, lo que cobrás por esos días y el salario vacacional, que se calcula sobre tu sueldo líquido.",

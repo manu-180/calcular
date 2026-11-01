@@ -1,0 +1,31 @@
+{
+  "mercado": "lk",
+  "series": [
+    {
+      "id": "lk.usd",
+      "nombre": "Indicative rate of the USD/LKR spot exchange rate (rupees per US dollar)",
+      "unidad": "LKR",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Sri Lanka",
+        "titulo": "Daily indicative USD/LKR spot exchange rate",
+        "url": "https://www.cbsl.gov.lk/en/rates-and-indicators/exchange-rates/daily-indicative-usd-spot-exchange-rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-26"
+      },
+      "puntos": [
+        ["2026-10-13", 330.9786],
+        ["2026-10-14", 331.0482],
+        ["2026-10-15", 331.1235],
+        ["2026-10-16", 331.286],
+        ["2026-10-19", 331.2761],
+        ["2026-10-20", 331.5372],
+        ["2026-10-21", 331.7485],
+        ["2026-10-22", 331.9125],
+        ["2026-10-23", 332.025],
+        ["2026-10-26", 332.232]
+      ]
+    }
+  ]
+}

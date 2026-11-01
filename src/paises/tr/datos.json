@@ -1,0 +1,516 @@
+{
+  "mercado": "tr",
+  "datos": [
+    {
+      "id": "tr.asgari-ucret",
+      "nombre": "Aylık brüt asgari ücret",
+      "tipo": "numero",
+      "unidad": "TRY",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 26005.5,
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "Asgari ücretin hesabı (2021-2026)",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Fyardim-kaynaklar%2Fyararli-bilgiler%2FAsgariUcrettenYapilanKesintiler.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 33030,
+          "fuente": {
+            "organismo": "Çalışma ve Sosyal Güvenlik Bakanlığı",
+            "titulo": "Asgari ücretin net hesabı ve işverene maliyeti (01/01/2026 - 31/12/2026)",
+            "url": "https://www.csgb.gov.tr/poco-pages/asgari-ucret/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.gv-tarife-ucret",
+      "nombre": "Gelir vergisi tarifesi (ücret gelirleri)",
+      "tipo": "escala",
+      "unidad": "TRY",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            { "desde": 0, "hasta": 190000, "tasa": 15 },
+            { "desde": 190000, "hasta": 400000, "tasa": 20 },
+            { "desde": 400000, "hasta": 1500000, "tasa": 27 },
+            { "desde": 1500000, "hasta": 5300000, "tasa": 35 },
+            { "desde": 5300000, "hasta": null, "tasa": 40 }
+          ],
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "Gelir Vergisi Tarifesi 2026 (332 Seri No.lu Gelir Vergisi Genel Tebliği)",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Fyardim-kaynaklar%2Fyararli-bilgiler%2Fgelir-vergisi-tarifeleri%2Fgelir-vergisi-tarifesi-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.gv-tarife",
+      "nombre": "Gelir vergisi tarifesi (ücret dışı gelirler)",
+      "tipo": "escala",
+      "unidad": "TRY",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": [
+            { "desde": 0, "hasta": 190000, "tasa": 15 },
+            { "desde": 190000, "hasta": 400000, "tasa": 20 },
+            { "desde": 400000, "hasta": 1000000, "tasa": 27 },
+            { "desde": 1000000, "hasta": 5300000, "tasa": 35 },
+            { "desde": 5300000, "hasta": null, "tasa": 40 }
+          ],
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "Gelir Vergisi Tarifesi 2026 (332 Seri No.lu Gelir Vergisi Genel Tebliği)",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Fyardim-kaynaklar%2Fyararli-bilgiler%2Fgelir-vergisi-tarifeleri%2Fgelir-vergisi-tarifesi-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.sgk-oranlari",
+      "nombre": "SGK prim oranları (4/a, hizmet akdiyle çalışanlar)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "isci-myo": "Malullük, yaşlılık ve ölüm sigortası (işçi)",
+        "isci-gss": "Genel sağlık sigortası (işçi)",
+        "isci-issizlik": "İşsizlik sigortası (işçi)",
+        "isveren-myo": "Malullük, yaşlılık ve ölüm sigortası (işveren)",
+        "isveren-gss": "Genel sağlık sigortası (işveren)",
+        "isveren-kvsk": "Kısa vadeli sigorta kolları (işveren)",
+        "isveren-issizlik": "İşsizlik sigortası (işveren)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "isci-myo": 9,
+            "isci-gss": 5,
+            "isci-issizlik": 1,
+            "isveren-myo": 12,
+            "isveren-gss": 7.5,
+            "isveren-kvsk": 2.25,
+            "isveren-issizlik": 2
+          },
+          "fuente": {
+            "organismo": "Sosyal Güvenlik Kurumu",
+            "titulo": "İşveren prim oranları (7566 sayılı Kanunla 2026 Ocak ayından itibaren MYÖ işveren payı %12)",
+            "url": "https://www.sgk.gov.tr/Content/Post/c7812ea8-5087-413f-aeb5-d3c1d153e11a/Isveren-Prim-Oranlari-2026-01-13-04-52-38",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.sgk-tesvik",
+      "nombre": "MYÖ işveren hissesinde Hazine indirimi (5510 sayılı Kanun md. 81/ı)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "imalat": "İmalat sektörü",
+        "diger": "Diğer sektörler"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": { "imalat": 5, "diger": 2 },
+          "fuente": {
+            "organismo": "Sosyal Güvenlik Kurumu",
+            "titulo": "Sigorta primi teşvikleri 2026 (MYÖ işveren hissesinden 2 puan, imalatta 2026 sonuna kadar 5 puan)",
+            "url": "https://www.sgk.gov.tr/Download/DownloadFile?d=de85036d-ef64-49f1-834c-916a79f1a923&f=c94c643d-2190-4d85-9b14-a8c7c5d241e8.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.pek-sinirlari",
+      "nombre": "Prime esas kazanç alt ve üst sınırı (aylık, özel sektör)",
+      "tipo": "mapa",
+      "unidad": "TRY",
+      "etiquetas": { "alt": "Aylık alt sınır", "ust": "Aylık üst sınır" },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": { "alt": 33030, "ust": 297270 },
+          "fuente": {
+            "organismo": "Sosyal Güvenlik Kurumu",
+            "titulo": "Prime esas kazanç miktarları (1/1/2026 - 31/12/2026)",
+            "url": "https://www.sgk.gov.tr/Content/Post/2e0c9e1a-2cfe-4456-af10-49d3de0c58ba/Prime-Esas-Kazanc-Miktarlari-2026-01-14-10-35-39",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.damga-oranlari",
+      "nombre": "Damga vergisi oranları",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "mukavele": "Belli parayı içeren sözleşmeler (binde 9,48)",
+        "kira": "Kira sözleşmeleri (binde 1,89)",
+        "ucret": "Maaş, ücret ve tazminat makbuzları (binde 7,59)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-10-01",
+          "valor": { "mukavele": 0.948, "kira": 0.189, "ucret": 0.759 },
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "488 sayılı Damga Vergisi Kanunu, ekli (1) sayılı tablo",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFile?objectKey=MEVZUAT_TEBLIGLER%2FUNIVERSAL%2F2025%2F488_Tablo1_01102025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.damga-ust-sinir",
+      "nombre": "Bir kağıttan alınacak damga vergisinin üst sınırı",
+      "tipo": "numero",
+      "unidad": "TRY",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 29115961.1,
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "Damga Vergisi Kanunu Genel Tebliği (Seri No: 71)",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFile?objectKey=MEVZUAT_TEBLIGLER%2FUNIVERSAL%2F2025%2F488_Teblig71.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.kidem-tavan",
+      "nombre": "Kıdem tazminatı tavanı (bir hizmet yılı için)",
+      "tipo": "numero",
+      "unidad": "TRY",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2025-12-31",
+          "valor": 53919.68,
+          "fuente": {
+            "organismo": "Çalışma ve Sosyal Güvenlik Bakanlığı",
+            "titulo": "Kıdem tazminatı tavan miktarları (1980 - 2026)",
+            "url": "https://www.csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": 64948.77,
+          "fuente": {
+            "organismo": "Çalışma ve Sosyal Güvenlik Bakanlığı",
+            "titulo": "Kıdem tazminatı tavan miktarları (1980 - 2026)",
+            "url": "https://www.csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": 73729.87,
+          "fuente": {
+            "organismo": "Çalışma ve Sosyal Güvenlik Bakanlığı",
+            "titulo": "Kıdem tazminatı tavan miktarları (1980 - 2026)",
+            "url": "https://www.csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.kidem-gun",
+      "nombre": "Her tam hizmet yılı için kıdem tazminatı",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-06-10",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Çalışma ve Sosyal Güvenlik Bakanlığı",
+            "titulo": "İş Kanunu sıkça sorulan sorular: kıdem tazminatı tutarı nasıl hesaplanır (1475 sayılı Kanun md. 14)",
+            "url": "https://www.csgb.gov.tr/sikca-sorulan-sorular/calisma-genel-mudurlugu/%C4%B1s-kanunu/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.ihbar-sureleri",
+      "nombre": "İhbar (bildirim) süreleri, 4857 sayılı İş Kanunu md. 17",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "alti-ay-alti": "6 aydan az",
+        "alti-ay-bucuk-yil": "6 ay ile 1,5 yıl arası",
+        "bucuk-yil-uc-yil": "1,5 yıl ile 3 yıl arası",
+        "uc-yil-ustu": "3 yıldan fazla"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-06-10",
+          "valor": { "alti-ay-alti": 2, "alti-ay-bucuk-yil": 4, "bucuk-yil-uc-yil": 6, "uc-yil-ustu": 8 },
+          "fuente": {
+            "organismo": "Çalışma ve Sosyal Güvenlik Bakanlığı",
+            "titulo": "4857 sayılı İş Kanunu, madde 17",
+            "url": "https://www.csgb.gov.tr/Media/crldhi51/4857-say%C4%B1l%C4%B1-i%C5%9F-kanunu.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.yillik-izin",
+      "nombre": "Asgari yıllık ücretli izin süreleri, 4857 sayılı İş Kanunu md. 53",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "bir-bes": "1 yıldan 5 yıla kadar (5 yıl dahil)",
+        "bes-onbes": "5 yıldan fazla, 15 yıldan az",
+        "onbes-ustu": "15 yıl ve daha fazla",
+        "yas-siniri": "18 yaş ve altı ile 50 yaş ve üstü için en az",
+        "yeralti-ek": "Yer altı işlerinde ek gün"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2014-09-11",
+          "valor": { "bir-bes": 14, "bes-onbes": 20, "onbes-ustu": 26, "yas-siniri": 20, "yeralti-ek": 4 },
+          "fuente": {
+            "organismo": "Çalışma ve Sosyal Güvenlik Bakanlığı",
+            "titulo": "4857 sayılı İş Kanunu, madde 53",
+            "url": "https://www.csgb.gov.tr/Media/crldhi51/4857-say%C4%B1l%C4%B1-i%C5%9F-kanunu.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.fazla-mesai",
+      "nombre": "Fazla çalışma kuralları, 4857 sayılı İş Kanunu md. 41 ve 63",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "fazla-calisma-zam": "Fazla çalışma zammı (%)",
+        "fazla-sure-zam": "Fazla sürelerle çalışma zammı (%)",
+        "haftalik-sure": "Haftalık en çok çalışma süresi (saat)",
+        "yillik-azami": "Yılda en çok fazla çalışma (saat)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2003-06-10",
+          "valor": { "fazla-calisma-zam": 50, "fazla-sure-zam": 25, "haftalik-sure": 45, "yillik-azami": 270 },
+          "fuente": {
+            "organismo": "Çalışma ve Sosyal Güvenlik Bakanlığı",
+            "titulo": "4857 sayılı İş Kanunu, madde 41 ve 63",
+            "url": "https://www.csgb.gov.tr/Media/crldhi51/4857-say%C4%B1l%C4%B1-i%C5%9F-kanunu.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.kdv",
+      "nombre": "Katma değer vergisi oranları",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "genel": "Genel oran",
+        "indirimli": "(II) sayılı liste",
+        "dusuk": "(I) sayılı liste"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-10",
+          "valor": { "genel": 20, "indirimli": 10, "dusuk": 1 },
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "Güncel KDV oranları (2007/13033 sayılı Karar, 7346 sayılı Cumhurbaşkanı Kararıyla değişik)",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Fyardim-kaynaklar%2Fyararli-bilgiler%2Fkdv-oranlari.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.tapu-harci",
+      "nombre": "Tapu harcı (satışta alıcı ve satıcı için ayrı ayrı)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-19",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Tapu ve Kadastro Genel Müdürlüğü",
+            "titulo": "Sıkça sorulan sorular: 492 sayılı Harçlar Kanunu (4) sayılı tarife 20-a, binde 20",
+            "url": "https://www.tkgm.gov.tr/sss",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.emlak-vergisi",
+      "nombre": "Emlak vergisi oranları (büyükşehir dışı)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "mesken": "Mesken (konut)",
+        "diger-bina": "Diğer binalar (işyeri)",
+        "arsa": "Arsa",
+        "arazi": "Arazi"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": { "mesken": 0.1, "diger-bina": 0.2, "arsa": 0.3, "arazi": 0.1 },
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "Emlak Vergisi Rehberi: bina ve arazi vergisi oranları (1319 sayılı Kanun md. 8 ve 18)",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Fonceki-dokumanlar%2Femlak_ver_rehber_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.emlak-buyuksehir-artis",
+      "nombre": "Büyükşehir belediye sınırlarında emlak vergisi artırımı",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "Emlak Vergisi Rehberi: oranlar büyükşehir belediye sınırları ve mücavir alanlar içinde %100 artırımlı uygulanır",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Fonceki-dokumanlar%2Femlak_ver_rehber_2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.mevduat-stopaj",
+      "nombre": "Türk lirası mevduat faizinde gelir vergisi kesintisi (stopaj)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "alti-ay": "Vadesiz ve 6 aya kadar vadeli",
+        "bir-yil": "1 yıla kadar vadeli",
+        "bir-yil-ustu": "1 yıldan uzun vadeli"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-09",
+          "valor": { "alti-ay": 17.5, "bir-yil": 15, "bir-yil-ustu": 10 },
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "G.V.K. geçici 67 nci madde vergi rehberi (Şubat 2026), 10041 sayılı Cumhurbaşkanı Kararı",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFile?objectKey=DUYURU%2FUNIVERSAL%2F2026%2F2026_Gecici67.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr.gvk94",
+      "nombre": "Gelir vergisi kesinti (stopaj) oranları, GVK md. 94",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "serbest-meslek": "Serbest meslek ödemeleri",
+        "kira": "Gayrimenkul kira ödemeleri"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2009-01-01",
+          "valor": { "serbest-meslek": 20, "kira": 20 },
+          "fuente": {
+            "organismo": "Gelir İdaresi Başkanlığı",
+            "titulo": "Gelir Vergisi Kanununun 94. maddesinde yer alan kesinti oranları",
+            "url": "https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Fyardim-kaynaklar%2Fyararli-bilgiler%2Fgelir-vergisi-kanununun-94uncu-maddesinde-yer-alan-kesinti-oranlari.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}

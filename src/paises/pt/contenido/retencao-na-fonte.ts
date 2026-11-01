@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.retencao-na-fonte",
   h1: "Retenção na fonte de IRS",
-  title: "Retenção na fonte de IRS 2026: tabelas e simulador",
+  title: "Retenção na fonte de IRS {{anio}}: tabelas e simulador",
   description:
-    "Saiba quanto IRS é retido no salário com as tabelas de retenção na fonte de 2026 do continente: taxa marginal, parcela a abater e dependentes.",
+    "Saiba quanto IRS é retido no salário com as tabelas de retenção na fonte de {{anio}} do continente: taxa marginal, parcela a abater e dependentes.",
   intro: [
     "Todos os meses a entidade patronal retém uma parte do salário por conta do IRS. O valor sai das tabelas de retenção na fonte aprovadas por despacho para cada ano.",
     "Indique a remuneração mensal, a situação familiar e os dependentes para ver a linha da tabela, a taxa, a parcela a abater e o valor retido.",

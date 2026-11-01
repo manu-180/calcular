@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.employer-payroll-cost",
-  h1: "Calcul du coût d'un salarié pour l'employeur (2026)",
-  title: "Coût employeur d'un salarié au Québec en 2026",
-  description: "Voyez ce qu'un salaire coûte vraiment à l'employeur en 2026 : RRQ, assurance-emploi à {{ca.ei-rates[employer-qc]}} et RQAP au Québec. Chiffres de paie de l'ARC.",
+  h1: "Calcul du coût d'un salarié pour l'employeur ({{anio}})",
+  title: "Coût employeur d'un salarié au Québec en {{anio}}",
+  description: "Voyez ce qu'un salaire coûte vraiment à l'employeur en {{anio}} : RRQ, assurance-emploi à {{ca.ei-rates[employer-qc]}} et RQAP au Québec. Chiffres de paie de l'ARC.",
   intro: [
     "Inscrivez un salaire annuel pour voir la part de l'employeur au RRQ ou au RPC, à l'assurance-emploi et, au Québec, au RQAP, ainsi que le coût total du poste.",
     "C'est un point de départ pour budgéter une embauche. Les avantages sociaux, les cotisations provinciales de l'employeur pour la santé et les primes d'indemnisation des accidents du travail varient selon l'employeur et ne sont pas inclus.",

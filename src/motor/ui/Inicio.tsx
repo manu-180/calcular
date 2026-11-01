@@ -1,3 +1,4 @@
+import { coma } from "../i18n/direccion";
 import type { CSSProperties, ReactNode } from "react";
 import { formatearFecha } from "../formato";
 import { frescuraDePais, type FrescuraPais } from "../frescura";
@@ -201,7 +202,8 @@ function DatosVivos({ ctx, f }: { ctx: ContextoSitio; f: FrescuraPais }) {
             <div>
               <dt>{tv.automatico}</dt>
               <dd>
-                {automatica.nombre},{" "}
+                {automatica.nombre}
+                {coma(m.idioma)}
                 <FechaViva fecha={automatica.fecha} absoluta={tv.elDia(formatearFecha(automatica.fecha, m.locale))} hoy={tv.hoy} ayer={tv.ayer} />
               </dd>
             </div>

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "bo.feriado-trabajado",
   h1: "Calculadora de feriado trabajado",
-  title: "Feriado trabajado en Bolivia 2026: cuánto le pagan",
+  title: "Feriado trabajado en Bolivia {{anio}}: cuánto le pagan",
   description: "Calcule cuánto le deben por trabajar un feriado: un recargo del {{bo.recargo-feriado}} sobre el salario del día, además de su sueldo del mes.",
   intro: [
     "Si trabajó un feriado nacional, su empleador le debe un recargo del {{bo.recargo-feriado}} sobre el salario de ese día, o bien darle otro día de descanso en la semana.",

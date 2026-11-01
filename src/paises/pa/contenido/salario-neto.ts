@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pa.salario-neto",
   h1: "Calculadora de salario neto en Panamá",
-  title: "Salario neto en Panamá 2026: calcula tus descuentos de ley",
+  title: "Salario neto en Panamá {{anio}}: calcula tus descuentos de ley",
   description:
     "Pasa tu salario bruto a neto en Panamá: {{pa.css-trabajador}} de Seguro Social, {{pa.seguro-educativo-trabajador}} de seguro educativo e impuesto sobre la renta. Ve tu neto del mes y de la quincena.",
   intro: [

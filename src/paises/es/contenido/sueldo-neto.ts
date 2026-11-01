@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "es.sueldo-neto",
-  h1: "Calculadora de sueldo neto 2026",
-  title: "Sueldo neto 2026: calcula tu nómina de bruto a neto",
+  h1: "Calculadora de sueldo neto {{anio}}",
+  title: "Sueldo neto {{anio}}: calcula tu nómina de bruto a neto",
   description:
-    "Pasa tu sueldo bruto anual a neto mensual con la Seguridad Social y la retención de IRPF de 2026, en 12 o 14 pagas. Datos del BOE y de la Agencia Tributaria.",
+    "Pasa tu sueldo bruto anual a neto mensual con la Seguridad Social y la retención de IRPF de {{anio}}, en 12 o 14 pagas. Datos del BOE y de la Agencia Tributaria.",
   intro: [
     "El sueldo neto es lo que te llega a la cuenta cada mes. Sale de restar al bruto dos cosas: lo que cotizas a la Seguridad Social y la retención del IRPF.",
     "Esta calculadora usa los tipos de cotización de 2026 y el mismo procedimiento que la Agencia Tributaria para fijar tu tipo de retención según tu sueldo y tu familia.",

@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "lu-de.cotisations-sociales",
   h1: "Sozialversicherungsbeiträge des Arbeitnehmers in Luxemburg",
-  title: "Sozialversicherungsbeiträge Luxemburg 2026",
-  description: "Sozialversicherungsbeiträge 2026 des Arbeitnehmers in Luxemburg: Kranken-, Renten- und Pflegeversicherung mit der Beitragsbemessungsgrenze von {{lu.plafond-cotisable}}.",
+  title: "Sozialversicherungsbeiträge Luxemburg {{anio}}",
+  description: "Sozialversicherungsbeiträge {{anio}} des Arbeitnehmers in Luxemburg: Kranken-, Renten- und Pflegeversicherung mit der Beitragsbemessungsgrenze von {{lu.plafond-cotisable}}.",
   intro: [
     "Der Arbeitnehmer zahlt die Hälfte der Kranken- und Rentenversicherung und die ganze Pflegeversicherung. 2026 steigt der Rentenbeitrag auf insgesamt {{lu.cotisation-pension}}.",
     "Der Rechner zeigt die Beiträge pro Monat und für zwölf Monate.",

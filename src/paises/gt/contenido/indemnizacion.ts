@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "gt.indemnizacion",
   h1: "Cálculo de prestaciones laborales e indemnización en Guatemala",
-  title: "Cálculo de prestaciones e indemnización Guatemala 2026",
+  title: "Cálculo de prestaciones e indemnización Guatemala {{anio}}",
   description:
     "Calcule sus prestaciones laborales: indemnización con sextos, aguinaldo, Bono 14 y vacaciones proporcionales, por despido o renuncia. Gratis y al instante.",
   intro: [

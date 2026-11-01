@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "za.minimum-wage",
-  h1: "National minimum wage calculator 2026",
-  title: "Minimum wage 2026: {{za.minimum-wage[general]}} an hour",
-  description: "The national minimum wage is {{za.minimum-wage[general]}} an hour from 1 March 2026. Work out the weekly and monthly minimum, including domestic and farm workers.",
+  h1: "National minimum wage calculator {{anio}}",
+  title: "Minimum wage {{anio}}: {{za.minimum-wage[general]}} an hour",
+  description: "The national minimum wage is {{za.minimum-wage[general]}} an hour from 1 March {{anio}}. Work out the weekly and monthly minimum, including domestic and farm workers.",
   intro: [
     "Choose the type of work and your ordinary hours to see the legal minimum an hour, a week and a month. Add what you earn to check that it meets the minimum.",
     "The national minimum wage is {{za.minimum-wage[general]}} for each ordinary hour since {{za.minimum-wage#desde}}. Domestic and farm workers get the same rate.",

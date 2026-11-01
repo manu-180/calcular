@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "cl.boleta-honorarios",
-  h1: "Calculadora de boleta de honorarios 2026",
-  title: "Calculadora boleta de honorarios 2026: bruto y líquido",
+  h1: "Calculadora de boleta de honorarios {{anio}}",
+  title: "Calculadora boleta de honorarios {{anio}}: bruto y líquido",
   description:
     "Calcula el líquido de tu boleta de honorarios con la retención vigente de {{cl.retencion-honorarios}}, o el bruto que debes emitir para recibir un monto exacto. Gratis.",
   intro: [

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.liquidacion",
   h1: "Calculadora de liquidación laboral en Ecuador",
-  title: "Liquidación Ecuador 2026: calcula por renuncia o despido",
+  title: "Liquidación Ecuador {{anio}}: calcula por renuncia o despido",
   description: "Calcula tu liquidación por renuncia o despido intempestivo: desahucio del {{ec.desahucio}} por año, indemnización, décimos y vacaciones. Gratis y paso a paso.",
   intro: [
     "La liquidación laboral en Ecuador suma lo que te deben al terminar el trabajo: desahucio, indemnización por despido intempestivo si te despidieron, décimos proporcionales y vacaciones. Lo que entra depende de cómo terminó la relación laboral.",

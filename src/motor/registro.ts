@@ -3,8 +3,9 @@ import { esMercadoDePrueba, validarArchivoAvisos, validarArchivoDatos, validarAr
 import { aplicarTextos, faltantesDeTextos, type TextosEdicion } from "./edicion";
 import { formatearFecha, formatearValorUnidad } from "./formato";
 import { UNIVERSALES } from "./universales";
+import { PODADAS, type Podadas } from "./universales/poda";
 import { idiomasDe, instanciar, type ContextoUniversal, type Universal } from "./universales/tipos";
-import { avisosVigentes, hoyMasAdelantado, ultimoPunto, valorSerie, vigente, vigentePorRegion } from "./vigencia";
+import { avisosVigentes, hoyEn, hoyMasAdelantado, ultimoPunto, valorSerie, vigente, vigentePorRegion } from "./vigencia";
 import type {
   Aviso,
   CodigoMercado,
@@ -468,8 +469,12 @@ function filaDeEscala(valor: unknown, indice: string, campo: CampoFila): unknown
   return fila && typeof fila === "object" ? (fila as Record<string, unknown>)[campo] : undefined;
 }
 
+// {{anio}}: el año de la fecha del mercado. Va en title, description y h1 («Aguinaldo {{anio}}»): el
+// año que la gente escribe en la búsqueda cambia cada 1 de enero y 1.379 textos lo tenían tipeado.
+const RE_ANIO = /\{\{\s*anio\s*\}\}/g;
+
 export function hayLlavesSueltas(texto: string): boolean {
-  return /\{\{|\}\}/.test(texto.replace(RE_MARCADOR, ""));
+  return /\{\{|\}\}/.test(texto.replace(RE_MARCADOR, "").replace(RE_ANIO, ""));
 }
 
 interface ContextoRelleno {
@@ -478,12 +483,14 @@ interface ContextoRelleno {
   unidades: Readonly<Record<string, Unidad>>;
   locale: string;
   simbolos?: Mercado["simbolos"];
+  // Año de {{anio}}; sin él, el del reloj (checks y validaciones sin fecha de mercado).
+  anio?: number;
   // Sin esto, un marcador que no se resuelve queda en el texto y sale por console.error.
   alFallar?: (marcador: string) => void;
 }
 
 function rellenar(texto: string, ctx: ContextoRelleno): string {
-  return texto.replace(RE_MARCADOR, (todo, id: string, clave?: string, campo?: CampoFila, region?: string, desde?: string) => {
+  return texto.replace(RE_ANIO, String(ctx.anio ?? new Date().getFullYear())).replace(RE_MARCADOR, (todo, id: string, clave?: string, campo?: CampoFila, region?: string, desde?: string) => {
     let unidad: Unidad | undefined = ctx.unidades[id];
     let valor: unknown = ctx.valores[id];
     if (desde) {
@@ -555,6 +562,8 @@ export interface PaginaResuelta {
   equivalentes: Equivalente[];
   cliente: EntradaCalculadora["cliente"];
   universal?: OrigenUniversal;
+  // Universal podada (universales/poda.ts): noindex, fuera del sitemap y sin clúster.
+  podada?: true;
 }
 
 export interface FichaDato {
@@ -580,6 +589,10 @@ export interface Registro {
   publicabilidad(codigo: CodigoMercado, slug: string, fecha: FechaISO, modo?: ModoPublicacion): Publicabilidad;
   pagina(codigo: CodigoMercado, slug: string, fecha: FechaISO, modo?: ModoPublicacion): PaginaResuelta | null;
   equivalentes(concepto: string, fechaDe: (m: Mercado) => FechaISO, modo?: ModoPublicacion): Equivalente[];
+  // Universal sin tráfico sacada del índice; una local nunca da true aunque figure en la lista.
+  podada(codigo: CodigoMercado, slug: string): boolean;
+  // La fecha con la que se evalúa cada mercado del clúster de una página de `codigo` (la página en `fecha`).
+  fechaDelClusterDesde(codigo: CodigoMercado, fecha: FechaISO): (m: Mercado) => FechaISO;
   // La misma calculadora en las ediciones del país (ca/vacation-pay y ca-fr/paie-de-vacances),
   // incluida ella; vacío si no tiene. Es el clúster de una calculadora "propio" entre idiomas.
   hermanas(codigo: CodigoMercado, slug: string, fechaDe: (m: Mercado) => FechaISO, modo?: ModoPublicacion): Equivalente[];
@@ -605,7 +618,7 @@ export function opcionesDinamicas(pais: PaisDefinido, definicion: DefinicionCalc
 // el proceso (horas en un servidor con ISR) y la fecha avanza: sin tope crecería un día por vez.
 const MEMO_MAXIMO = 4096;
 
-export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
+export function crearRegistro(paises: readonly PaisDefinido[], podadas: Podadas = PODADAS): Registro {
   const porCodigo = new Map<CodigoMercado, PaisDefinido>();
   for (const p of paises) {
     if (porCodigo.has(p.mercado.codigo)) throw new Error(`Registro de países: el mercado ${p.mercado.codigo} está dos veces`);
@@ -633,6 +646,7 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
 
   const pais = (codigo: CodigoMercado) => porCodigo.get(codigo);
   const calculadora = (codigo: CodigoMercado, slug: string) => porSlug.get(codigo)?.get(slug);
+  const esPodada = (codigo: CodigoMercado, entrada: EntradaCalculadora) => esUniversal(entrada) && Boolean(podadas.mercados[codigo]?.[entrada.universal.id]);
 
   const memo = new Map<string, { lista: EntradaCalculadora[]; conjunto: ReadonlySet<EntradaCalculadora> }>();
   const publicablesDe = (p: PaisDefinido, fecha: FechaISO, modo: ModoPublicacion) => {
@@ -655,7 +669,7 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
     if (concepto === "propio") return [];
     const salida: Equivalente[] = [];
     for (const { pais: p, entrada } of porConcepto.get(concepto) ?? []) {
-      if (!publicablesDe(p, fechaDe(p.mercado), modo).conjunto.has(entrada)) continue;
+      if (!publicablesDe(p, fechaDe(p.mercado), modo).conjunto.has(entrada) || esPodada(p.mercado.codigo, entrada)) continue;
       salida.push({ mercado: p.mercado.codigo, locale: p.mercado.locale, slug: entrada.definicion.slug });
     }
     return salida;
@@ -678,6 +692,13 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
     for (const h of hermanasDe(entrada, fechaDe, modo)) if (!vistos.has(h.mercado)) salida.push(h);
     return salida;
   };
+
+  // Cada mercado del clúster se evalúa en SU fecha, no en la de la página: con la fecha de la página
+  // para todos, en el cruce de medianoche entre zonas una serie que vence (ni.ipc el 25/10/2026) dejaba
+  // a Nicaragua en el clúster de las páginas de América y afuera en las de Europa, y el hreflang dejaba
+  // de ser recíproco (1.850 fallas en check_hreflang). Así, en un mismo instante, todas las páginas
+  // describen el mismo clúster. La página misma sigue en la fecha que se le pasa.
+  const fechaDelClusterDesde = (codigo: CodigoMercado, fecha: FechaISO) => (x: Mercado): FechaISO => (x.codigo === codigo ? fecha : hoyEn(x));
 
   const unidadesPorPais = new WeakMap<PaisDefinido, Readonly<Record<string, Unidad>>>();
   const unidadesDe = (p: PaisDefinido) => {
@@ -716,7 +737,7 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
       return {
         mercado: m,
         calculadora: { id: def.id, slug: def.slug, concepto: def.concepto, ...(def.producto ? { producto: def.producto } : {}) },
-        contenido: rellenarContenido(entrada.contenido, { valores: r.valores, usados: r.usados, unidades: unidadesDe(p), locale: m.locale, simbolos: m.simbolos }),
+        contenido: rellenarContenido(entrada.contenido, { valores: r.valores, usados: r.usados, unidades: unidadesDe(p), locale: m.locale, simbolos: m.simbolos, anio: Number(fecha.slice(0, 4)) }),
         props: {
           valores: r.valores,
           contexto: {
@@ -735,12 +756,18 @@ export function crearRegistro(paises: readonly PaisDefinido[]): Registro {
         },
         sello: selloDe(r.usados),
         usados: r.usados,
-        equivalentes: equivalentesDe(entrada, () => fecha, modo),
+        equivalentes: esPodada(m.codigo, entrada) ? [] : equivalentesDe(entrada, fechaDelClusterDesde(m.codigo, fecha), modo),
         cliente: entrada.cliente,
         ...(esUniversal(entrada) ? { universal: entrada.universal } : {}),
+        ...(esPodada(m.codigo, entrada) ? { podada: true as const } : {}),
       };
     },
     equivalentes,
+    podada: (codigo, slug) => {
+      const entrada = calculadora(codigo, slug);
+      return Boolean(entrada && esPodada(codigo, entrada));
+    },
+    fechaDelClusterDesde,
     hermanas: (codigo, slug, fechaDe, modo = "produccion") => {
       const entrada = calculadora(codigo, slug);
       return entrada ? hermanasDe(entrada, fechaDe, modo) : [];

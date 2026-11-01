@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.isr",
-  h1: "Calculadora de ISR 2026 para sueldos y salarios",
-  title: "Calculadora ISR 2026: quincenal y mensual con tablas SAT",
+  h1: "Calculadora de ISR {{anio}} para sueldos y salarios",
+  title: "Calculadora ISR {{anio}}: quincenal y mensual con tablas SAT",
   description:
-    "Calcula el ISR que te retienen por quincena, semana o mes con las tablas 2026 del SAT y el subsidio para el empleo. Te mostramos la cuenta renglón por renglón.",
+    "Calcula el ISR que te retienen por quincena, semana o mes con las tablas {{anio}} del SAT y el subsidio para el empleo. Te mostramos la cuenta renglón por renglón.",
   intro: [
     "El ISR por sueldos se calcula con la tarifa del SAT: una cuota fija más un porcentaje de lo que tu sueldo pasa del límite inferior de su renglón. Tu empresa te lo retiene cada vez que te paga.",
     "Esta calculadora usa las tablas de ISR 2026 (Anexo 8 de la Resolución Miscelánea Fiscal) para quincena, semana, decena y mes, y resta el subsidio para el empleo cuando te toca.",

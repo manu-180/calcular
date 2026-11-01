@@ -11,7 +11,7 @@ import { registro } from "@/paises";
 import { grillaPublicada } from "./_mundo/datos";
 
 // Home del país: lista calculadoras según la fecha del mercado (ver revalidate en layout.tsx).
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 type Props = { params: Promise<{ mercado: string }> };
 

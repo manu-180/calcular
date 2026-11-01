@@ -1,0 +1,632 @@
+{
+  "mercado": "om",
+  "datos": [
+    {
+      "id": "om.vat",
+      "nombre": "النسبة الأساسية لضريبة القيمة المضافة",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-04-16",
+          "valor": 5,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون ضريبة القيمة المضافة الصادر بالمرسوم السلطاني رقم 121/2020، المادة (36)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book535783.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "تفرض الضريبة بواقع 5% من القيمة الخاضعة للضريبة. يعمل بالقانون بعد 180 يوما من نشر المرسوم الصادر في 12 أكتوبر 2020."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.spf-old-age",
+      "nombre": "اشتراكات فرع تأمين كبار السن والعجز والوفاة",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employer": "حصة جهة العمل",
+        "employee": "حصة المؤمن عليه"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "employer": 11,
+            "employee": 7.5
+          },
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (70)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "تحتسب من الأجر الشهري بما لا يجاوز سقف أجر الاشتراك، وتسري على العمانيين."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.spf-cap",
+      "nombre": "سقف أجر الاشتراك لفرعي كبار السن وإصابات العمل",
+      "tipo": "numero",
+      "unidad": "OMR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 3000,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (52)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.spf-injury",
+      "nombre": "اشتراك فرع تأمين إصابات العمل والأمراض المهنية على جهة العمل",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (90) والمادة السادسة من مرسوم الإصدار",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "يسري الفرع على غير العمانيين بعد خمسة أعوام من صدور المرسوم في 19 يوليو 2023."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.spf-job-security",
+      "nombre": "اشتراكات فرع تأمين الأمان الوظيفي",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employer": "حصة جهة العمل",
+        "employee": "حصة المؤمن عليه"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "employer": 0.5,
+            "employee": 0.5
+          },
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (116)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "تحتسب من الأجر الشهري دون سقف، وتسري على العمانيين."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.spf-maternity",
+      "nombre": "اشتراك فرع تأمين إجازات الأمومة على جهة العمل",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-07-19",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (128) والمادة السادسة من مرسوم الإصدار",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "الفصل السابع من الباب الثالث يعمل به بعد عام من صدور المرسوم في 19 يوليو 2023."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.spf-sick",
+      "nombre": "اشتراك فرع تأمين الإجازات المرضية والإجازات غير الاعتيادية على جهة العمل",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-19",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (123) والمادة السادسة من مرسوم الإصدار",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "الفصل السادس من الباب الثالث يعمل به بعد ثلاثة أعوام من صدور المرسوم في 19 يوليو 2023."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.sick-employer-days",
+      "nombre": "أيام الإجازة المرضية التي تغطيها جهة العمل بكامل الأجر",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-19",
+          "valor": 7,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (124)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.sick-leave",
+      "nombre": "نسب الأجر في الإجازة المرضية حسب أيام الإجازة في العام",
+      "tipo": "escala",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 21,
+              "tasa": 100
+            },
+            {
+              "desde": 21,
+              "hasta": 35,
+              "tasa": 75
+            },
+            {
+              "desde": 35,
+              "hasta": 70,
+              "tasa": 50
+            },
+            {
+              "desde": 70,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (82)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "إجازة مرضية لا تجاوز 182 يوما في العام بنسب من الأجر الشامل. قانون الحماية الاجتماعية (المادة 124) يكرر النسب نفسها."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.sick-leave-days",
+      "nombre": "أقصى مدة للإجازة المرضية في العام",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": 182,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (82)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.job-security-rate",
+      "nombre": "بدل الأمان الوظيفي من متوسط الأجر",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (119)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "60% من متوسط الأجور لآخر عامين بدون سقف."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.job-security-min",
+      "nombre": "الحد الأدنى لبدل الأمان الوظيفي",
+      "tipo": "numero",
+      "unidad": "OMR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 115,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (119)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.job-security-months",
+      "nombre": "أقصى مدة لصرف بدل الأمان الوظيفي",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (119)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.pension-accrual",
+      "nombre": "نسبة احتساب معاش كبار السن عن كل عام خدمة",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (73)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.old-age",
+      "nombre": "سن كبار السن",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (1)، البند 23",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.early-reduction",
+      "nombre": "نسب خصم التقاعد المبكر عن كل عام",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "first5": "عن كل عام من الأعوام الخمسة الأولى",
+        "beyond": "عن كل عام بعدها"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "first5": 5,
+            "beyond": 1
+          },
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (78)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.women-early-years",
+      "nombre": "الأعوام التي تسبق بها المرأة سن كبار السن للتقاعد دون خصم",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون الحماية الاجتماعية الصادر بالمرسوم السلطاني رقم 52/2023، المادة (75)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book595450.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.annual-leave",
+      "nombre": "الحد الأدنى للإجازة السنوية",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": 30,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (78)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.notice",
+      "nombre": "مدة الإخطار لإنهاء عقد العمل غير محدد المدة",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "monthly": "العامل بأجر شهري",
+        "other": "غيره"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": {
+            "monthly": 30,
+            "other": 15
+          },
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (38)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.overtime",
+      "nombre": "الزيادة على الأجر الأساسي عن العمل الإضافي",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "day": "ساعات النهار",
+        "night": "ساعات الليل",
+        "rest": "يوم الراحة أو الإجازة الرسمية"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": {
+            "day": 25,
+            "night": 50,
+            "rest": 100
+          },
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (71)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "في يوم الراحة أو الإجازة الرسمية يدفع 100% من الأجر الأساسي اليومي إضافة إلى أجر اليوم ذاته."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.overtime-urgent",
+      "nombre": "الزيادة على الأجر الأساسي عن العمل الإضافي دون موافقة العامل",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "day": "ساعات النهار",
+        "night": "ساعات الليل",
+        "rest": "يوم الراحة أو الإجازة الرسمية"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": {
+            "day": 50,
+            "night": 75,
+            "rest": 200
+          },
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (72)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.working-hours",
+      "nombre": "ساعات العمل القصوى",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "daily": "في اليوم",
+        "weekly": "في الأسبوع",
+        "ramadan-daily": "في اليوم في رمضان",
+        "ramadan-weekly": "في الأسبوع في رمضان",
+        "max-daily": "مع العمل الإضافي في اليوم"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": {
+            "daily": 8,
+            "weekly": 40,
+            "ramadan-daily": 6,
+            "ramadan-weekly": 30,
+            "max-daily": 12
+          },
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (70 و71)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.gratuity",
+      "nombre": "مكافأة نهاية الخدمة عن كل عام (بالأجر الأساسي الشهري)",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": 1,
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (61)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26",
+            "nota": "لا تقل عن أجر أساسي عن كل عام، وتستحق عن كسور العام بنسبة المدة، على أساس الأجر الأساسي الأخير، للعمال غير المنتفعين بقانون الحماية الاجتماعية."
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.unfair-dismissal",
+      "nombre": "التعويض عن الفصل التعسفي (بالأجر الشامل الشهري)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "min": "الحد الأدنى",
+        "max": "الحد الأقصى"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": {
+            "min": 3,
+            "max": 12
+          },
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (11)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.family-leave",
+      "nombre": "إجازات الوضع والأبوة",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "maternity": "إجازة الوضع",
+        "prenatal": "أقصى مدة قبل الولادة",
+        "paternity": "إجازة الأبوة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-31",
+          "valor": {
+            "maternity": 98,
+            "prenatal": 14,
+            "paternity": 7
+          },
+          "fuente": {
+            "organismo": "وزارة العدل والشؤون القانونية",
+            "titulo": "قانون العمل الصادر بالمرسوم السلطاني رقم 53/2023، المادة (84)",
+            "url": "https://www.mjla.gov.om/images/laws/file/Book524081.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "om.minimum-wage",
+      "nombre": "الحد الأدنى لأجور العمانيين في القطاع الخاص",
+      "tipo": "numero",
+      "unidad": "OMR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2013-07-01",
+          "valor": 325,
+          "motivo": "القرار الوزاري 222/2013 لم يُقرأ في مصدر رسمي (وزارة العدل أو وزارة العمل)، ولم نتأكد من عدم صدور قرار أحدث بعد قانون العمل 53/2023.",
+          "fuente": {
+            "organismo": "قانون (موقع غير حكومي)",
+            "titulo": "قرار وزاري رقم 222/2013 بشأن تحديد الحد الأدنى لأجور العمانيين في القطاع الخاص",
+            "url": "https://qanoon.om/p/2013/momp20130222/",
+            "tipo": "secundaria",
+            "verificadoEl": "2026-10-26"
+          }
+        }
+      ]
+    }
+  ]
+}

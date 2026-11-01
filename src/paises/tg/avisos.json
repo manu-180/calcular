@@ -1,0 +1,26 @@
+{
+  "mercado": "tg",
+  "avisos": [
+    {
+      "id": "tg.minimums-legaux",
+      "nivel": "info",
+      "desde": "2021-06-18",
+      "aplicaA": [
+        "tg.indemnite-licenciement",
+        "tg.preavis",
+        "tg.conges-payes",
+        "tg.indemnite-fin-de-contrat",
+        "tg.heures-supplementaires"
+      ],
+      "titulo": "Minimums légaux",
+      "texto": "Le calcul donne le minimum prévu par le Code du travail. Votre convention collective ou votre contrat peut prévoir davantage.",
+      "fuente": {
+        "organismo": "Journal officiel de la République togolaise",
+        "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+        "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27"
+      }
+    }
+  ]
+}

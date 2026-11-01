@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.intereses-sunat",
   h1: "Calculadora de intereses moratorios de SUNAT (TIM)",
-  title: "Intereses SUNAT 2026: calcula la TIM de tu deuda",
+  title: "Intereses SUNAT {{anio}}: calcula la TIM de tu deuda",
   description:
     "Calcula los intereses por pagar tarde un tributo a SUNAT con la TIM de {{pe.tim[soles]}} mensual en soles ({{pe.tim[dolares]}} en dólares). Días de atraso y total a pagar.",
   intro: [

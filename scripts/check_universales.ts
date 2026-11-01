@@ -1,13 +1,15 @@
 // Valida las calculadoras universales (src/motor/universales) en mercados de prueba de cada idioma y
 // trato: que la definición se arme, que los casos den, que el resultado se pueda mostrar y que los
 // textos cumplan lo básico (largo de title y description, FAQ, sin rayas ni emojis). En las variantes
-// de un idioma (es-ES, pt-PT, fr-CA, de-CH) revisa además que no se cuele el vocabulario de otra.
+// de un idioma (es-ES, pt-PT, pt-AO, fr-CA, de-CH) revisa además que no se cuele el vocabulario de otra
+// (pt-AO con el de pt-PT y el de la lusofonía, en el orden de variantesDeLocale).
 // Uso: npx tsx scripts/check_universales.ts [id]
 import { anchoVisual } from "../src/motor/ancho";
 import { ErrorEntrada, crearContexto } from "../src/motor/calculo";
 import { CONCEPTOS } from "../src/motor/conceptos";
 import { formatearFilas } from "../src/motor/formulario";
-import type { CodigoMercado, ContextoSerializado, Idioma, Moneda, ResultadoBase, TablaResultado, Trato } from "../src/motor/tipos";
+import { IDIOMAS, type CodigoMercado, type ContextoSerializado, type Idioma, type Moneda, type ResultadoBase, type TablaResultado, type Trato } from "../src/motor/tipos";
+import { variantesDeLocale, PT_LUSOFONIA } from "../src/motor/i18n/variantes";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe, instanciar, type ContextoUniversal } from "../src/motor/universales/tipos";
 import { problemasDeTexto } from "./reglas_idioma";
@@ -34,6 +36,8 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   pt: [
     { mercado: "br", pais: "BR", nombrePais: "Brasil", locale: "pt-BR", trato: "tu", moneda: "BRL", escala: 5 },
     { mercado: "pt" as CodigoMercado, pais: "PT", nombrePais: "Portugal", locale: "pt-PT", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    // Angola: norma europea (como todo pt-* menos pt-BR), sin lo que es propio de Portugal.
+    { mercado: "ao" as CodigoMercado, pais: "AO", nombrePais: "Angola", locale: "pt-AO", trato: "usted", moneda: "AOA" as Moneda, escala: 900 },
   ],
   fr: [
     { mercado: "fr" as CodigoMercado, pais: "FR", nombrePais: "France", locale: "fr-FR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
@@ -59,6 +63,119 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "cn" as CodigoMercado, pais: "CN", nombrePais: "中国", locale: "zh-CN", trato: "usted", moneda: "CNY" as Moneda, escala: 7 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "聖文森及格瑞那丁", locale: "zh-TW", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
   ],
+  pl: [
+    { mercado: "pl" as CodigoMercado, pais: "PL", nombrePais: "Polska", locale: "pl-PL", trato: "tu", moneda: "PLN" as Moneda, escala: 4 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent i Grenadyny", locale: "pl-PL", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  sv: [
+    { mercado: "se" as CodigoMercado, pais: "SE", nombrePais: "Sverige", locale: "sv-SE", trato: "tu", moneda: "SEK" as Moneda, escala: 10 },
+    { mercado: "fi-sv" as CodigoMercado, pais: "FI", nombrePais: "Finland", locale: "sv-FI", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent och Grenadinerna", locale: "sv-SE", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  da: [
+    { mercado: "dk" as CodigoMercado, pais: "DK", nombrePais: "Danmark", locale: "da-DK", trato: "tu", moneda: "DKK" as Moneda, escala: 7 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent og Grenadinerne", locale: "da-DK", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  nb: [
+    { mercado: "no" as CodigoMercado, pais: "NO", nombrePais: "Norge", locale: "nb-NO", trato: "tu", moneda: "NOK" as Moneda, escala: 10 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent og Grenadinene", locale: "nb-NO", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  // Finés: el país se declina (GRAMATICA.fi); Yhdysvallat prueba la tabla de plurales y Malta el adesivo.
+  fi: [
+    { mercado: "fi" as CodigoMercado, pais: "FI", nombrePais: "Suomi", locale: "fi-FI", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "mt" as CodigoMercado, pais: "MT", nombrePais: "Malta", locale: "fi-FI", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent ja Grenadiinit", locale: "fi-FI", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  ar: [
+    { mercado: "eg" as CodigoMercado, pais: "EG", nombrePais: "مصر", locale: "ar-EG-u-ca-gregory-nu-latn", trato: "usted", moneda: "EGP" as Moneda, escala: 50 },
+    { mercado: "sa" as CodigoMercado, pais: "SA", nombrePais: "السعودية", locale: "ar-SA-u-ca-gregory-nu-latn", trato: "usted", moneda: "SAR" as Moneda, escala: 4 },
+    { mercado: "ma-ar" as CodigoMercado, pais: "MA", nombrePais: "المغرب", locale: "ar-MA-u-ca-gregory-nu-latn", trato: "usted", moneda: "MAD" as Moneda, escala: 10 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "سانت فينسنت وجزر غرينادين", locale: "ar-EG-u-ca-gregory-nu-latn", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  // Indonesio (ADR 0002, D11): rupias sin decimales y en millones (escala de IDR), y un nombre largo.
+  id: [
+    { mercado: "id" as CodigoMercado, pais: "ID", nombrePais: "Indonesia", locale: "id-ID", trato: "usted", moneda: "IDR" as Moneda, escala: 16000 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent dan Grenadine", locale: "id-ID", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  // Turco (ADR 0002, D12): liras con «₺» delante y coma decimal, el nombre largo de siempre y uno
+  // largo con posesivo («Demokratik Kongo Cumhuriyeti», que pide «Cumhuriyeti'nde» en el locativo).
+  tr: [
+    { mercado: "tr" as CodigoMercado, pais: "TR", nombrePais: "Türkiye", locale: "tr-TR", trato: "usted", moneda: "TRY" as Moneda, escala: 40 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent ve Grenadinler", locale: "tr-TR", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "cd" as CodigoMercado, pais: "CD", nombrePais: "Demokratik Kongo Cumhuriyeti", locale: "tr-TR", trato: "usted", moneda: "CDF" as Moneda, escala: 2800 },
+  ],
+  // Bengalí (ADR 0002, D14): taka en la escala de BDT (cientos de miles y lakhs) y un nombre largo.
+  bn: [
+    { mercado: "bd" as CodigoMercado, pais: "BD", nombrePais: "বাংলাদেশ", locale: "bn-BD", trato: "usted", moneda: "BDT" as Moneda, escala: 120 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "সেন্ট ভিনসেন্ট ও গ্রেনাডিনস", locale: "bn-BD", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  // Tailandés (ADR 0002, D13): baht con escala de THB, fechas en พ.ศ. (th-TH) y un nombre de país largo.
+  th: [
+    { mercado: "th" as CodigoMercado, pais: "TH", nombrePais: "ไทย", locale: "th-TH", trato: "usted", moneda: "THB" as Moneda, escala: 35 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "เซนต์วินเซนต์และเกรนาดีนส์", locale: "th-TH", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
+  // Ucraniano (ADR 0002, D15): гривня con «₴» detrás y espacio de miles, un nombre largo que se declina
+  // por partes («на Сент-Вінсенті і Гренадинах») y uno con adjetivos delante («в Обʼєднаних Арабських
+  // Еміратах»).
+  uk: [
+    { mercado: "ua" as CodigoMercado, pais: "UA", nombrePais: "Україна", locale: "uk-UA", trato: "usted", moneda: "UAH" as Moneda, escala: 41 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент-Вінсент і Гренадіни", locale: "uk-UA", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Обʼєднані Арабські Емірати", locale: "uk-UA", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Uzbeko (ADR 0002, D16): soʻm con espacio de miles y coma decimal («1 234 567,50 soʻm»), el nombre
+  // largo de siempre y uno largo compuesto que toma el sufijo en la última palabra.
+  uz: [
+    { mercado: "uz" as CodigoMercado, pais: "UZ", nombrePais: "Oʻzbekiston", locale: "uz-UZ", trato: "usted", moneda: "UZS" as Moneda, escala: 12500 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sent-Vinsent va Grenadin", locale: "uz-UZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "cd" as CodigoMercado, pais: "CD", nombrePais: "Kongo Demokratik Respublikasi", locale: "uz-UZ", trato: "usted", moneda: "CDF" as Moneda, escala: 2800 },
+  ],
+  // Ruso (ADR 0002, D17): Kazajistán con el tenge («₸» detrás y espacio de miles), un nombre largo que
+  // se declina por partes («на Сент-Винсенте и Гренадинах») y uno con adjetivos delante («в
+  // Объединенных Арабских Эмиратах»).
+  ru: [
+    { mercado: "kz" as CodigoMercado, pais: "KZ", nombrePais: "Казахстан", locale: "ru-KZ", trato: "usted", moneda: "KZT" as Moneda, escala: 500 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент-Винсент и Гренадины", locale: "ru-KZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Объединенные Арабские Эмираты", locale: "ru-RU", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Rumano (ADR 0002, D18): Rumania con el leu (RON, punto de miles y coma decimal), Moldavia con el
+  // leu moldavo (MDL, ro-MD) y un nombre largo que no se declina y va con «din» («din Saint Vincent și
+  // Grenadinele»), más uno compuesto que sí («Statelor Unite ale Americii»).
+  ro: [
+    { mercado: "ro" as CodigoMercado, pais: "RO", nombrePais: "România", locale: "ro-RO", trato: "usted", moneda: "RON" as Moneda, escala: 4.6 },
+    { mercado: "md" as CodigoMercado, pais: "MD", nombrePais: "Republica Moldova", locale: "ro-MD", trato: "usted", moneda: "MDL" as Moneda, escala: 18 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent și Grenadinele", locale: "ro-RO", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "Statele Unite ale Americii", locale: "ro-RO", trato: "usted", moneda: "USD" as Moneda, escala: 1 },
+  ],
+  // Checo (ADR 0002, D19): koruna con «Kč» detrás y espacio de miles, un nombre largo que se declina
+  // por partes («na Svatém Vincenci a Grenadinách») y uno plural con adjetivos delante («ve Spojených
+  // arabských emirátech»).
+  cs: [
+    { mercado: "cz" as CodigoMercado, pais: "CZ", nombrePais: "Česko", locale: "cs-CZ", trato: "usted", moneda: "CZK" as Moneda, escala: 23 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Svatý Vincenc a Grenadiny", locale: "cs-CZ", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Spojené arabské emiráty", locale: "cs-CZ", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Griego (ADR 0002, D20): euro con «€» detrás y punto de miles en Grecia y en Chipre, el nombre
+  // largo masculino que se declina por partes («στον Άγιο Βικέντιο και Γρεναδίνες») y uno plural
+  // neutro («στα Ηνωμένα Αραβικά Εμιράτα»).
+  el: [
+    { mercado: "gr" as CodigoMercado, pais: "GR", nombrePais: "Ελλάδα", locale: "el-GR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "cy" as CodigoMercado, pais: "CY", nombrePais: "Κύπρος", locale: "el-CY", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Άγιος Βικέντιος και Γρεναδίνες", locale: "el-GR", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Ηνωμένα Αραβικά Εμιράτα", locale: "el-GR", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Húngaro (ADR 0002, D21): forintos sin decimales con «Ft» detrás y espacio de miles, un nombre largo
+  // con artículo y sufijo de isla («a Saint Vincent és a Grenadine-szigeteken») y uno compuesto en
+  // -ország («Németországban»).
+  hu: [
+    { mercado: "hu" as CodigoMercado, pais: "HU", nombrePais: "Magyarország", locale: "hu-HU", trato: "tu", moneda: "HUF" as Moneda, escala: 360 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent és a Grenadine-szigetek", locale: "hu-HU", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "de" as CodigoMercado, pais: "DE", nombrePais: "Németország", locale: "hu-HU", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
+  ],
+  he: [
+    { mercado: "il" as CodigoMercado, pais: "IL", nombrePais: "ישראל", locale: "he-IL", trato: "usted", moneda: "ILS" as Moneda, escala: 3.7 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "סנט וינסנט והגרנדינים", locale: "he-IL", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "gb" as CodigoMercado, pais: "GB", nombrePais: "הממלכה המאוחדת", locale: "he-001", trato: "usted", moneda: "GBP" as Moneda, escala: 1 },
+  ],
   // Serbio en latinica (ADR 0002, D23): dinar con «RSD» detrás y punto de miles; Montenegro con euro
   // (los textos de las universales son los mismos); un nombre largo que se declina por partes («na
   // Sent Vinsentu i Grenadinima») y uno plural con adjetivos delante («u Ujedinjenim Arapskim
@@ -71,9 +188,11 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   ],
 };
 
-// En ja, ko, zh y sr las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren
-// sobre toda la página: los traductores de los idiomas latinos no las necesitaban.
-const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(["ja", "ko", "zh", "sr"]);
+// En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)
+// las reglas de puntuación, registro y escritura (scripts/reglas_idioma.ts) corren sobre toda la página:
+// solo los traductores de los siete idiomas latinos del principio no las necesitaban.
+const IDIOMAS_LATINOS_INICIALES: readonly Idioma[] = ["es", "pt", "en", "fr", "de", "it", "nl"];
+const REGLAS_COMPLETAS: ReadonlySet<Idioma> = new Set<Idioma>(IDIOMAS.filter((i) => !IDIOMAS_LATINOS_INICIALES.includes(i)));
 
 // Palabras que delatan otra variante del idioma. `todo` revisa la página entera (contenido incluido);
 // si no, solo lo que sale de ui (etiquetas, opciones, observaciones y errores), que es lo que hoy
@@ -144,6 +263,19 @@ const VOCABULARIO: Readonly<Record<string, Vocabulario>> = {
       [/\bIPTU\b/, "IMI"],
       [/\busuário/i, "utilizador"],
       [/\bplanilha/i, "folha de cálculo"],
+    ],
+  },
+  // Lo que en la norma europea es propio de Portugal y no vale en Angola, Mozambique o Cabo Verde.
+  [PT_LUSOFONIA]: {
+    todo: true,
+    prohibidas: [
+      [/IRS/, "imposto sobre o rendimento"],
+      [/IM[IT]/, "imposto predial / impostos sobre a compra"],
+      [/IUC/, "impostos do veículo"],
+      [/PPR/, "poupança para a reforma"],
+      [/Segurança Social/, "segurança social"],
+      [/duodécimos/i, "salário de cada mês"],
+      [/Portugal/, "o país do mercado"],
     ],
   },
   "fr-CA": {
@@ -271,8 +403,7 @@ async function main() {
             for (const p of problemasDeTexto(t, idioma, ctx.trato, ctx.locale)) fallas.push(`${u.id} [${ctx.locale}]: ${p} en «${t.slice(0, 70)}»`);
           }
         }
-        const vocabulario = VOCABULARIO[ctx.locale];
-        if (vocabulario) {
+        for (const vocabulario of variantesDeLocale(ctx.locale).flatMap((k) => VOCABULARIO[k] ?? [])) {
           const ui = textosDeUi(u.textos[idioma]!.ui(ctx.trato, ctx.locale));
           const revisar = vocabulario.todo ? [...ui, ...textosVisibles(inst)] : ui;
           const vistas = new Set<string>();

@@ -1,0 +1,28 @@
+{
+  "mercado": "ci",
+  "avisos": [
+    {
+      "id": "ci.minimums-legaux",
+      "nivel": "info",
+      "desde": "2015-07-20",
+      "aplicaA": [
+        "ci.indemnite-licenciement",
+        "ci.indemnite-depart-retraite",
+        "ci.conges-payes",
+        "ci.heures-supplementaires",
+        "ci.preavis",
+        "ci.prime-anciennete",
+        "ci.prime-de-fin-d-annee"
+      ],
+      "titulo": "Minimums légaux",
+      "texto": "Le calcul donne le minimum prévu par les textes. Votre convention collective de branche ou votre contrat peut prévoir davantage.",
+      "fuente": {
+        "organismo": "UVCI (recueil des textes officiels du travail, édition 2025)",
+        "titulo": "Loi n° 2015-532 du 20 juillet 2015 portant Code du travail, et ses décrets d'application",
+        "url": "https://www.uvci.online/portail/externes/documents/textes_officiels/Le_code_du_travail_ivoirien_-_20251.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-23"
+      }
+    }
+  ]
+}

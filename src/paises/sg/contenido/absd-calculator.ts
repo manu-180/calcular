@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sg.absd-calculator",
   h1: "ABSD calculator: Additional Buyer's Stamp Duty",
-  title: "ABSD calculator Singapore 2026 for citizens, PRs, foreigners",
+  title: "ABSD calculator Singapore {{anio}} for citizens, PRs, foreigners",
   description: "Work out Additional Buyer's Stamp Duty on a home in Singapore: {{sg.absd[sc-2]}} for a citizen's second home, {{sg.absd[pr-1]}} for a PR's first and {{sg.absd[extranjero]}} for foreigners.",
   intro: [
     "Additional Buyer's Stamp Duty (ABSD) is paid on top of Buyer's Stamp Duty when you buy a residential property, depending on who you are and how many homes you already own.",

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ni.salario-neto",
   h1: "Calculadora de salario neto en Nicaragua",
-  title: "Salario neto en Nicaragua 2026: descontá INSS e IR",
+  title: "Salario neto en Nicaragua {{anio}}: descontá INSS e IR",
   description: "Calculá tu salario neto en Nicaragua: INSS laboral de {{ni.inss-laboral[integral]}} en el régimen integral y retención del IR con la tarifa de la Ley 822. Ves cada descuento.",
   intro: [
     "Tu salario neto en Nicaragua es el bruto menos el INSS laboral ({{ni.inss-laboral[integral]}} en el régimen integral) y la retención del IR. Son los dos descuentos de cada mes.",

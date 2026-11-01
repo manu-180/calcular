@@ -3,6 +3,7 @@ import { CONCEPTOS, esConcepto } from "./conceptos";
 import type { Equivalente } from "./registro";
 import { hreflangARActivo, NOMBRE_SITIO_INTL, origenAR, origenIntl } from "./sitio";
 import type { CodigoMercado, FechaISO, Mercado, PreguntaFrecuente } from "./tipos";
+import { etiquetaIdioma } from "./i18n/direccion";
 
 // Sin la variable el árbol intl no se genera, así que este valor solo se usa en checks y tipos.
 const ORIGEN_POR_DEFECTO = "https://calcularya.com";
@@ -39,7 +40,7 @@ export function urlImagenOg(mercado: CodigoMercado, slug?: string, version?: Fec
 // og:locale usa guion bajo y región de dos letras. es-419 (Latinoamérica) no tiene una: Facebook
 // usa es_LA para ese caso. La escritura (sr-Latn-RS) no va en og:locale: queda sr_RS.
 export function ogLocale(locale: string): string {
-  const [idioma, region] = locale.split("-").filter((p, i) => i === 0 || !/^[A-Za-z]{4}$/.test(p));
+  const [idioma, region] = etiquetaIdioma(locale).split("-").filter((p, i) => i === 0 || !/^[A-Za-z]{4}$/.test(p));
   if (!region) return idioma;
   return /^\d+$/.test(region) ? `${idioma}_LA` : `${idioma}_${region.toUpperCase()}`;
 }
@@ -70,7 +71,7 @@ export type Idiomas = Record<string, string>;
 export function hreflangDe(concepto: string, equivalentes: readonly Equivalente[]): Idiomas | undefined {
   if (!esConcepto(concepto)) return undefined;
   const idiomas: Idiomas = {};
-  for (const e of equivalentes) idiomas[e.locale] = urlIntl(e.mercado, e.slug);
+  for (const e of equivalentes) idiomas[etiquetaIdioma(e.locale)] = urlIntl(e.mercado, e.slug);
   const rutaAR = concepto === "propio" ? undefined : (CONCEPTOS[concepto] as { rutaAR?: string }).rutaAR;
   if (hreflangARActivo() && rutaAR) idiomas["es-AR"] = `${origenAR()}${rutaAR}`;
   if (Object.keys(idiomas).length < 2) return undefined;
@@ -122,6 +123,7 @@ export interface MetadataSeo {
     images: ImagenSeo[];
   };
   twitter: { card: "summary_large_image" };
+  robots?: { index: false; follow: true };
 }
 
 // Todo junto y por página: Next mezcla la metadata por clave y en forma plana, así que un
@@ -131,7 +133,7 @@ export interface MetadataSeo {
 // los 130 KB: sin og:locale:alternate (15 metas por clúster que solo lee Facebook) ni og:image:alt
 // ni :type (el alt repetía el título). :width y :height sí van: sin ellas las redes bajan la imagen
 // para medirla antes de mostrar la tarjeta.
-export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; description: string; idiomas?: Idiomas; imagen: string }): MetadataSeo {
+export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; description: string; idiomas?: Idiomas; imagen: string; noindex?: boolean }): MetadataSeo {
   const url = urlIntl(p.mercado.codigo, p.slug);
   const imagen: ImagenSeo = { url: p.imagen, ...MEDIDAS_OG };
   return {
@@ -149,6 +151,7 @@ export function metadataDe(p: { mercado: Mercado; slug?: string; title: string; 
     },
     // X toma título, descripción e imagen de og:* cuando faltan los suyos: repetirlos solo suma bytes.
     twitter: { card: "summary_large_image" },
+    ...(p.noindex ? { robots: { index: false, follow: true } as const } : {}),
   };
 }
 
@@ -175,7 +178,8 @@ export function ldSitio(): Ld[] {
       url: `${origen}/`,
       name: NOMBRE_SITIO_INTL,
       alternateName: "Calcular Ya",
-      inLanguage: "es",
+      // La home global está en inglés (ADR 0002, D2); cada edición declara el suyo en su WebPage.
+      inLanguage: "en",
       publisher: { "@id": idOrganizacion() },
     },
     {
@@ -184,10 +188,16 @@ export function ldSitio(): Ld[] {
       name: NOMBRE_SITIO_INTL,
       url: `${origen}/`,
       logo: { "@type": "ImageObject", url: `${origen}/og/marca`, width: 512, height: 512 },
-      founder: { "@type": "Person", name: "Manuel Navarro" },
+      founder: ldPersona(),
       sameAs: [origenAR()],
     },
   ];
+}
+
+// La persona que responde por los números, con nombre y url (Google no resuelve un @id contra otra
+// página). La misma entidad que firma calcular.ar (src/lib/schema.ts, AUTOR): sameAs las une.
+export function ldPersona(): Ld {
+  return { "@type": "Person", name: "Manuel Navarro", url: `${origenPublicoIntl()}/sobre`, sameAs: [`${origenAR()}/sobre`] };
 }
 
 function areaServida(mercado: Mercado): Ld | undefined {
@@ -209,7 +219,7 @@ export function ldWebApplication(p: { nombre: string; url: string; mercado: Merc
     url: p.url,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
-    inLanguage: p.mercado.locale,
+    inLanguage: etiquetaIdioma(p.mercado.locale),
     ...(area ? { areaServed: area } : {}),
     isAccessibleForFree: true,
     offers: { "@type": "Offer", price: "0", priceCurrency: p.mercado.monedas[0] },
@@ -233,7 +243,7 @@ export function ldPagina(p: {
     url: p.url,
     name: p.nombre,
     description: p.descripcion,
-    inLanguage: p.locale,
+    inLanguage: etiquetaIdioma(p.locale),
     ...(p.actualizado ? { dateModified: p.actualizado } : {}),
     ...(p.imagen ? { image: p.imagen } : {}),
     publisher: editor(),

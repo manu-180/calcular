@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.custo-trabalhador-empresa",
   h1: "Quanto custa um trabalhador à empresa",
-  title: "Custo de um trabalhador para a empresa em 2026",
+  title: "Custo de um trabalhador para a empresa em {{anio}}",
   description: "Calcule o custo anual e mensal de um trabalhador: 14 salários, a TSU de {{pt.ss-empregador}} paga pela empresa e outros custos fixos.",
   intro: [
     "O custo de um trabalhador vai além do salário bruto. A empresa paga a sua parte da Taxa Social Única e paga 14 salários por ano.",

@@ -92,7 +92,7 @@ function chequeosEstaticos() {
   const viva = (nombre: string) => todo.lastIndexOf(`create or replace function public.${nombre}(`) > todo.lastIndexOf(`drop function if exists public.${nombre}(`);
   const DEFINER = new Set(["ca_vincular_compras", "ca_sueldos_publicar", "ca_sueldos_al_dia", "ca_sueldos_sumar", "ca_sueldos_leer", "ca_sueldos_paises"]);
   const bloques = [...todo.matchAll(/create or replace function public\.(\w+)\(([\s\S]*?)\n\$\$;/g)];
-  igual(bloques.length, 49, "se encontraron las 49 definiciones de funciones");
+  igual(bloques.length, 50, "se encontraron las 50 definiciones de funciones");
   const revocadas = [...todo.matchAll(/revoke execute on function([\s\S]*?)from public, anon, authenticated;/g)].map((m) => m[1]).join("\n");
   for (const [, nombre, cuerpo] of bloques) {
     ok(/\nset search_path = ''\n/.test(cuerpo), `${nombre}: set search_path = ''`);

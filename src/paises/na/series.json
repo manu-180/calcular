@@ -1,0 +1,21 @@
+{
+  "mercado": "na",
+  "series": [
+    {
+      "id": "na.usd",
+      "nombre": "Bank of Namibia exchange rate, Namibia dollars per US dollar",
+      "unidad": "NAD",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Bank of Namibia",
+        "titulo": "Exchange rate of the day (US dollar), as shown on the Bank of Namibia home page",
+        "url": "https://services.bon.com.na/ratestable/api/rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-27",
+        "nota": "The Bank of Namibia publishes one rate per day on its home page. The Namibia dollar is pegged one to one to the South African rand."
+      },
+      "puntos": [["2026-10-27", 16.6406]]
+    }
+  ]
+}

@@ -7,7 +7,12 @@ import { catalogoIntl, type ProductoIntl } from "@/lib/pagos/catalogo-intl";
 import { generarLecturas } from "@/lib/panel/lecturas";
 import { extremos, sumarDias } from "@/lib/panel/fechas";
 import type {
+  BocaDatos,
+  BrazoPuente,
   Busqueda,
+  FilaBoca,
+  Sitio,
+  SueldosBoca,
   Compra,
   Cuentas,
   EmbudoMercado,
@@ -305,7 +310,125 @@ function armarMercados(crudo: unknown): FilaMercado[] | null {
     .filter((m) => FORMA_MERCADO.test(m.mercado));
 }
 
-export function armarPanel(rango: Rango, desde: Date, hasta: Date, crudo: unknown, generado: Date = new Date()): PanelDatos {
+const sitio = (v: unknown): Sitio => (v === "intl" ? "intl" : "ar");
+const mercadoDe = (v: unknown, s: Sitio): string => (typeof v === "string" && FORMA_MERCADO.test(v) ? v : s === "ar" ? "ar" : "global");
+const nulo = (v: unknown): string | null => (typeof v === "string" && v ? v : null);
+
+function filaBoca(f: Crudo): FilaBoca {
+  return {
+    clave: texto(f.clave) || "otro",
+    compartidos: num(f.compartidos),
+    personas: num(f.personas),
+    llegadas: num(f.llegadas),
+    nuevas: num(f.nuevas),
+    usaron: num(f.usaron),
+  };
+}
+
+function armarSueldos(crudo: unknown): SueldosBoca | null {
+  if (crudo === null || crudo === undefined) return null;
+  const s = objeto(crudo, "boca.sueldos");
+  return {
+    aportes: lista(s.aportes ?? [], "boca.sueldos.aportes").map((a) => ({ mercado: texto(a.mercado), aportes: num(a.aportes), pendientes: num(a.pendientes) })),
+    celdas: lista(s.celdas ?? [], "boca.sueldos.celdas").map((c) => ({
+      mercado: texto(c.mercado),
+      publicadas: num(c.publicadas),
+      cerca: num(c.cerca),
+      ocupaciones: num(c.ocupaciones),
+    })),
+    publicadoEl: nulo(s.publicadoEl),
+  };
+}
+
+// filtro = el mercado que se mira (null = todos): con un país elegido los títulos no llevan el país.
+export function armarBoca(crudo: unknown, filtro: string | null): BocaDatos {
+  const b = objeto(crudo, "ca_panel_boca");
+  const r = objeto(b.resumen, "boca.resumen");
+  const e = objeto(b.embebidos ?? {}, "boca.embebidos");
+  return {
+    granularidad: b.granularidad === "hora" ? "hora" : "dia",
+    resumen: {
+      compartidos: num(r.compartidos),
+      compartidosAntes: num(r.compartidosAntes),
+      personas: num(r.personas),
+      llegadas: num(r.llegadas),
+      nuevas: num(r.nuevas),
+      usaron: num(r.usaron),
+      nuevasUsaron: num(r.nuevasUsaron),
+      propias: num(r.propias),
+      sinCompartido: num(r.sinCompartido),
+    },
+    serie: lista(b.serie ?? [], "boca.serie").map((p) => ({ t: fecha(p.t), compartidos: num(p.compartidos), llegadas: num(p.llegadas), nuevas: num(p.nuevas) })),
+    canales: lista(b.canales ?? [], "boca.canales").map(filaBoca),
+    origenes: lista(b.origenes ?? [], "boca.origenes").map(filaBoca),
+    paginas: lista(b.paginas ?? [], "boca.paginas").map((p) => {
+      const s = sitio(p.sitio);
+      const path = texto(p.path);
+      return { ...filaBoca({ ...p, clave: path }), path, titulo: tituloDePagina(path, filtro), sitio: s, mercado: mercadoDe(p.mercado, s) };
+    }),
+    mercados: lista(b.mercados ?? [], "boca.mercados").map((m) => {
+      const s = sitio(m.sitio);
+      return { mercado: mercadoDe(m.mercado, s), sitio: s, compartidos: num(m.compartidos), personas: num(m.personas), llegadas: num(m.llegadas), nuevas: num(m.nuevas) };
+    }),
+    top: lista(b.top ?? [], "boca.top").map((t) => {
+      const s = sitio(t.sitio);
+      const path = texto(t.path);
+      return {
+        ref: texto(t.ref),
+        path,
+        titulo: path ? tituloDePagina(path, filtro) : "Página sin dato",
+        sitio: s,
+        mercado: mercadoDe(t.mercado, s),
+        canal: texto(t.canal) || "otro",
+        origen: texto(t.origen) || "otro",
+        fecha: t.fecha ? fecha(t.fecha) : null,
+        llegadas: num(t.llegadas),
+        nuevas: num(t.nuevas),
+        usaron: num(t.usaron),
+      };
+    }),
+    puente: lista(b.puente ?? [], "boca.puente")
+      .filter((x) => x.v === "con" || x.v === "sin")
+      .map(
+        (x): BrazoPuente => ({
+          v: x.v as BrazoPuente["v"],
+          exposiciones: num(x.exposiciones),
+          personas: num(x.personas),
+          clics: num(x.clics),
+          compartieron: num(x.compartieron),
+          siguieron: num(x.siguieron),
+        }),
+      ),
+    embebidos: {
+      vistas: num(e.vistas),
+      visitantes: num(e.visitantes),
+      usos: num(e.usos),
+      sitios: lista(e.sitios ?? [], "boca.embebidos.sitios").map((x) => ({ host: texto(x.host), vistas: num(x.vistas), visitantes: num(x.visitantes), usos: num(x.usos) })),
+      calculadoras: lista(e.calculadoras ?? [], "boca.embebidos.calculadoras").map((x) => {
+        const path = texto(x.path);
+        return { path, titulo: tituloDePagina(path.replace(/\/(embed|embebido)\//, "/"), filtro), mercado: texto(x.mercado), vistas: num(x.vistas), sitios: num(x.sitios), usos: num(x.usos) };
+      }),
+    },
+    afiliados: lista(b.afiliados ?? [], "boca.afiliados").map((a) => ({
+      socio: texto(a.socio),
+      pais: typeof a.pais === "string" && /^[A-Z]{2}$/.test(a.pais) ? a.pais : null,
+      mercado: texto(a.mercado),
+      clics: num(a.clics),
+      personas: num(a.personas),
+    })),
+    sueldos: armarSueldos(b.sueldos),
+    sociales: lista(b.sociales ?? [], "boca.sociales").map((x) => ({ fuente: texto(x.fuente), sesiones: num(x.sesiones), personas: num(x.personas), usaron: num(x.usaron) })),
+  };
+}
+
+export function armarPanel(
+  rango: Rango,
+  desde: Date,
+  hasta: Date,
+  crudo: unknown,
+  generado: Date = new Date(),
+  crudoBoca: unknown = null,
+): PanelDatos {
   const r = objeto(crudo, "ca_panel");
   const granularidad = r.granularidad === "hora" ? "hora" : r.granularidad === "dia" ? "dia" : null;
   if (!granularidad) throw new Error("ca_panel devolvió un formato inesperado: falta la granularidad");
@@ -331,6 +454,7 @@ export function armarPanel(rango: Rango, desde: Date, hasta: Date, crudo: unknow
     cuentas: armarCuentas(r.cuentas),
     vivo: armarVivo(r.vivo),
     mercados: armarMercados(r.mercados),
+    boca: crudoBoca === null || crudoBoca === undefined ? null : armarBoca(crudoBoca, mercado),
     sinDatos: r.hayVistas !== true,
   };
   return { ...sinLecturas, lecturas: generarLecturas(sinLecturas) };
@@ -340,10 +464,26 @@ export function leerMercado(valor: unknown): string | null {
   return typeof valor === "string" && esMercadoMedido(valor) ? valor : null;
 }
 
-async function llamarPanel(desde: Date, hasta: Date, mercado: string | null) {
+async function llamarPanel(desde: Date, hasta: Date, mercado: string | null, funcion = "ca_panel") {
   const args: Record<string, string> = { p_desde: desde.toISOString(), p_hasta: hasta.toISOString() };
   if (mercado) args.p_mercado = mercado;
-  return servicio().rpc("ca_panel", args).abortSignal(AbortSignal.timeout(20_000));
+  return servicio().rpc(funcion, args).abortSignal(AbortSignal.timeout(20_000));
+}
+
+// Boca en boca va en otra función y en paralelo con ca_panel: si falla o la base todavía no la tiene,
+// el panel sale igual y la sección lo dice, en vez de tumbar todo.
+async function llamarBoca(desde: Date, hasta: Date, mercado: string | null): Promise<unknown> {
+  try {
+    const { data, error } = await llamarPanel(desde, hasta, mercado, "ca_panel_boca");
+    if (error) {
+      if (error.code !== "PGRST202") console.error("[panel] ca_panel_boca falló", error.code, error.message);
+      return null;
+    }
+    return data;
+  } catch (e) {
+    console.error("[panel] ca_panel_boca se cortó", e);
+    return null;
+  }
 }
 
 // Sin la migración de mercado ca_panel no acepta p_mercado (PGRST202). Hasta entonces todo lo
@@ -351,6 +491,7 @@ async function llamarPanel(desde: Date, hasta: Date, mercado: string | null) {
 export async function cargarPanel(rango: Rango, mercado: string | null = null): Promise<PanelDatos> {
   const ahora = new Date();
   const { desde, hasta } = limitesDelRango(rango, ahora);
+  const boca = llamarBoca(desde, hasta, mercado);
   let { data, error } = await llamarPanel(desde, hasta, mercado);
   let sinMigracion = false;
   if (error?.code === "PGRST202" && mercado) {
@@ -361,6 +502,14 @@ export async function cargarPanel(rango: Rango, mercado: string | null = null): 
     const codigo = error.code ? ` [${error.code}]` : "";
     throw new Error(`No se pudieron leer los datos del panel (ca_panel): ${error.message}${codigo}`);
   }
-  const datos = armarPanel(rango, desde, hasta, data, ahora);
+  let datos = armarPanel(rango, desde, hasta, data, ahora);
+  const crudoBoca = await boca;
+  if (crudoBoca !== null) {
+    try {
+      datos = { ...datos, boca: armarBoca(crudoBoca, datos.mercado) };
+    } catch (e) {
+      console.error("[panel] ca_panel_boca devolvió algo que no se entiende", e);
+    }
+  }
   return sinMigracion && mercado === "ar" ? { ...datos, mercado: "ar" } : datos;
 }

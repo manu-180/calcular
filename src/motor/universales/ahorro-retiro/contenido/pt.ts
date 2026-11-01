@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { acumular, rentaMensual } from "../definicion";
 
@@ -9,7 +10,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const capital30 = a30[a30.length - 1].saldo;
   const a40 = acumular(40, 65, actual, aporte, 4);
   const capital40 = a40[a40.length - 1].saldo;
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   const reforma = pt ? "reforma" : "aposentadoria";
   return {
     h1: pt ? "Calculadora de poupança para a reforma" : "Calculadora de aposentadoria",

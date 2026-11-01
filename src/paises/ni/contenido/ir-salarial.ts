@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ni.ir-salarial",
   h1: "Calculadora del IR salarial en Nicaragua",
-  title: "IR salarial en Nicaragua 2026: tabla y retención mensual",
+  title: "IR salarial en Nicaragua {{anio}}: tabla y retención mensual",
   description: "Calculá cuánto IR te retienen cada mes en Nicaragua con la tabla progresiva de la Ley 822. Los primeros {{ni.ir-renta-exenta}} del año no pagan. Te mostramos tu tramo.",
   intro: [
     "En Nicaragua el IR salarial se calcula sobre tu salario menos el INSS, llevado a un año. Hasta {{ni.ir-renta-exenta}} al año no pagás, y arriba de eso cada tramo paga una base fija más un porcentaje.",

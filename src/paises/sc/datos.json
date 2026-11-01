@@ -1,0 +1,858 @@
+{
+  "mercado": "sc",
+  "datos": [
+    {
+      "id": "sc.income-tax-bands",
+      "nombre": "Monthly income tax bands for citizens",
+      "tipo": "escala",
+      "unidad": "SCR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-06-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 8555.5,
+              "tasa": 0
+            },
+            {
+              "desde": 8555.5,
+              "hasta": 10000,
+              "tasa": 15
+            },
+            {
+              "desde": 10000,
+              "hasta": 83333,
+              "tasa": 20
+            },
+            {
+              "desde": 83333,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Income and Non-Monetary Benefits Tax: income tax rates effective 1 June 2018",
+            "url": "https://src.gov.sc/income-and-non-monetary-benefits-tax/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.income-tax-bands-non-citizen",
+      "nombre": "Monthly income tax bands for non-citizens",
+      "tipo": "escala",
+      "unidad": "SCR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2018-06-01",
+          "motivo": "The SRC income tax page and the SRC FAQ print different non-citizen columns (15 % against 0 % in the first bracket and different fixed amounts), so the table cannot be read with confidence. Citizens only until the SRC clarifies."
+        }
+      ]
+    },
+    {
+      "id": "sc.vat-rate",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Seychelles Tax System: business tax, VAT, withholding and property tax",
+            "url": "https://src.gov.sc/seychelles-tax-system/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.vat-threshold",
+      "nombre": "Compulsory VAT registration threshold (taxable supplies)",
+      "tipo": "numero",
+      "unidad": "SCR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 2000000,
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Seychelles Tax System: business tax, VAT, withholding and property tax",
+            "url": "https://src.gov.sc/seychelles-tax-system/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.vat-voluntary-minimum",
+      "nombre": "Minimum taxable supplies for voluntary VAT registration",
+      "tipo": "numero",
+      "unidad": "SCR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Seychelles Tax System: business tax, VAT, withholding and property tax",
+            "url": "https://src.gov.sc/seychelles-tax-system/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.business-tax-sole-trader",
+      "nombre": "Business tax bands for sole traders and partnerships (a year)",
+      "tipo": "escala",
+      "unidad": "SCR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 102666,
+              "tasa": 0
+            },
+            {
+              "desde": 102666,
+              "hasta": 1000000,
+              "tasa": 15
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Frequently asked questions: business tax rates effective January 2022",
+            "url": "https://src.gov.sc/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.business-tax-company",
+      "nombre": "Business tax bands for companies (a year)",
+      "tipo": "escala",
+      "unidad": "SCR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1000000,
+              "tasa": 15
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Frequently asked questions: business tax rates effective January 2022",
+            "url": "https://src.gov.sc/faq/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.presumptive-tax-rate",
+      "nombre": "Presumptive tax rate on annual turnover",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Seychelles Tax System: business tax, VAT, withholding and property tax",
+            "url": "https://src.gov.sc/seychelles-tax-system/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.presumptive-tax-limit",
+      "nombre": "Presumptive tax: turnover must stay below",
+      "tipo": "numero",
+      "unidad": "SCR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2013-01-01",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Seychelles Tax System: business tax, VAT, withholding and property tax",
+            "url": "https://src.gov.sc/seychelles-tax-system/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.property-tax-rate",
+      "nombre": "Immovable property tax rate on market value",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Seychelles Tax System: business tax, VAT, withholding and property tax",
+            "url": "https://src.gov.sc/seychelles-tax-system/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.withholding-rates",
+      "nombre": "Withholding tax rates",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "non-resident-income": "Dividend, interest, royalty, natural resource amount or technical service fee paid to a non-resident",
+        "insurance-premium": "Insurance premium paid to a non-resident",
+        "entertainer": "Payment to a non-resident entertainer or sports person for a performance in Seychelles",
+        "deposit-interest": "Interest on current, fixed deposit and call deposit accounts",
+        "deduction-at-source": "Payment to a specified business (contractor, mechanic, hirer of plant or omnibus)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "non-resident-income": 15,
+            "insurance-premium": 5,
+            "entertainer": 5,
+            "deposit-interest": 5,
+            "deduction-at-source": 1.5
+          },
+          "fuente": {
+            "organismo": "Seychelles Revenue Commission",
+            "titulo": "Seychelles Tax System: business tax, VAT, withholding and property tax",
+            "url": "https://src.gov.sc/seychelles-tax-system/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.spf-employee-rate",
+      "nombre": "SPF contribution paid by the employee",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Seychelles Pension Fund",
+            "titulo": "Changes to the rates of contribution towards SPF (notice of 8 December 2022)",
+            "url": "https://pensionfund.sc/changes-to-the-rates-of-contribution-towards-spf/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.spf-employer-rate",
+      "nombre": "SPF contribution paid by the employer",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Seychelles Pension Fund",
+            "titulo": "Changes to the rates of contribution towards SPF (notice of 8 December 2022)",
+            "url": "https://pensionfund.sc/changes-to-the-rates-of-contribution-towards-spf/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.spf-self-employed-rate",
+      "nombre": "SPF contribution paid by a self-employed worker",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Seychelles Pension Fund",
+            "titulo": "Changes to the rates of contribution towards SPF (notice of 8 December 2022)",
+            "url": "https://pensionfund.sc/changes-to-the-rates-of-contribution-towards-spf/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.min-wage-hourly",
+      "nombre": "National minimum wage an hour (continuous, fixed-term and part-time workers)",
+      "tipo": "numero",
+      "unidad": "SCR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 40.95,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "S.I. 16 of 2025: Employment (National Minimum Wage) (Amendment) Regulations, 2025",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/si-16-2025-employment-national-minimum-wage-amendment-regulations-2025/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.min-wage-hourly-casual",
+      "nombre": "National minimum wage an hour (casual workers)",
+      "tipo": "numero",
+      "unidad": "SCR",
+      "proximaRevision": "2027-04-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-04-01",
+          "valor": 47.19,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "S.I. 16 of 2025: Employment (National Minimum Wage) (Amendment) Regulations, 2025",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/si-16-2025-employment-national-minimum-wage-amendment-regulations-2025/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.annual-leave-days",
+      "nombre": "Paid annual leave in a full year (working days)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.leave-days-per-month",
+      "nombre": "Annual leave earned for each month of employment (working days)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 1.75,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.leave-minimum-block",
+      "nombre": "Minimum consecutive days of leave an employer must see taken in a year",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.leave-accumulation-cap",
+      "nombre": "Accumulated leave days above which cash conversion pays one and a half times",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 42,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.sick-paid-days",
+      "nombre": "Paid sick leave in 12 months",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-31",
+          "valor": 21,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "S.I. 34 of 2019: Employment (Conditions of Employment) (Amendment) Regulations, 2019",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/official-gazette-si-34-of-2019/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.sick-unpaid-days",
+      "nombre": "Unpaid sick leave after paid sick leave runs out",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.sick-child-days",
+      "nombre": "Sick leave to care for a child under 12 years, on top of own sick leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-31",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "S.I. 34 of 2019: Employment (Conditions of Employment) (Amendment) Regulations, 2019",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/official-gazette-si-34-of-2019/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.maternity-paid-weeks",
+      "nombre": "Paid maternity leave",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-05-14",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "S.I. 32 of 2018: Employment (Conditions of Employment) (Amendment) Regulations, 2018",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/si-32-of-2018-employment-conditions-of-employment-amendment-regulations-2018-2/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.maternity-weeks-after-birth",
+      "nombre": "Weeks of paid maternity leave that must follow the birth",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.paternity-working-days",
+      "nombre": "Paid paternity leave (consecutive working days)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-05-14",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "S.I. 32 of 2018: Employment (Conditions of Employment) (Amendment) Regulations, 2018",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/si-32-of-2018-employment-conditions-of-employment-amendment-regulations-2018-2/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.paternity-window-months",
+      "nombre": "Months after the birth in which paternity leave must be taken",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-06-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "S.I. 26 of 2015: Employment (Conditions of Employment) (Amendment) Regulations, 2015",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/si-26-of-2015-employment-conditions-of-employment-amendment-regulations-2015-2/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.notice-months-standard",
+      "nombre": "Notice by employer or worker, standard contract",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment Act (Cap 69), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-act-1995-2010-edition/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.notice-days-probation",
+      "nombre": "Notice by employer or worker during probation",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment Act (Cap 69), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-act-1995-2010-edition/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.notice-days-casual",
+      "nombre": "Notice by employer or worker, casual worker",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment Act (Cap 69), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-act-1995-2010-edition/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.probation-max-months",
+      "nombre": "Longest probation without the competent officer's approval",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1995-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment Act (Cap 69), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-act-1995-2010-edition/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.compensation-days-per-month",
+      "nombre": "Compensation: days of wages for each completed month of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-08-02",
+          "valor": 0.8333333333333334,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment Act (Cap 69), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-act-1995-2010-edition/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.compensation-fixed-term-multiplier",
+      "nombre": "Compensation multiplier for fixed-term contracts",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-08-02",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment Act (Cap 69), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-act-1995-2010-edition/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.resignation-compensation-years",
+      "nombre": "Years of continuous service before resignation or retirement earns compensation",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-08-02",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment Act (Cap 69), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-act-1995-2010-edition/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.overtime-weekday-factor",
+      "nombre": "Overtime: hours' pay for one hour on a week-day",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.overtime-holiday-factor",
+      "nombre": "Overtime: hours' pay for one hour on a holiday (Sunday or public holiday)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.overtime-shift-public-holiday-factor",
+      "nombre": "Overtime for shift workers: hours' pay for one hour on a public holiday",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.overtime-monthly-cap",
+      "nombre": "Longest overtime in a month (hours)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.holiday-pay-factor",
+      "nombre": "Pay for a day worked on a holiday, as a multiple of the day's pay",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1991-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Ministry of Employment and Social Affairs",
+            "titulo": "Employment (Conditions of Employment) Regulations 1991 (S.I. 34 of 1991), 2010 edition",
+            "url": "https://www.employment.gov.sc/e-library/acts-and-regulations/employment-acts-and-regulations/employment-conditions-of-employment-regulations-1991-si-34-of-1991/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sc.thirteenth-limit",
+      "nombre": "Thirteenth month pay: basic monthly salary above which a worker is not eligible",
+      "tipo": "numero",
+      "unidad": "SCR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2017-01-19",
+          "valor": 45450,
+          "motivo": "Section 46D of the Employment Act conditioned the thirteenth month payment for 2023 to 2025, and we could not read an official text of the 2025 amendment, so we cannot confirm that the S.I. 3 of 2017 limit and the full-month rule still apply."
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.subsidio-de-desemprego",
   h1: "Simulador do subsídio de desemprego",
-  title: "Subsídio de desemprego 2026: simule o valor mensal",
+  title: "Subsídio de desemprego {{anio}}: simule o valor mensal",
   description: "Simule o valor do subsídio de desemprego com a remuneração de referência e os limites em vigor: mínimo, máximo de {{pt.desemprego-limites-ias[maximo]}} IAS e teto do líquido.",
   intro: [
     "O subsídio de desemprego substitui parte do salário de quem ficou desempregado involuntariamente. O valor depende das remunerações registadas no ano antes do desemprego.",

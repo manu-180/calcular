@@ -1,0 +1,1089 @@
+{
+  "mercado": "et",
+  "datos": [
+    {
+      "id": "et.employment-income-tax",
+      "nombre": "Monthly employment income tax (Schedule A)",
+      "tipo": "escala",
+      "unidad": "ETB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2000,
+              "tasa": 0
+            },
+            {
+              "desde": 2000,
+              "hasta": 4000,
+              "tasa": 15
+            },
+            {
+              "desde": 4000,
+              "hasta": 7000,
+              "tasa": 20
+            },
+            {
+              "desde": 7000,
+              "hasta": 10000,
+              "tasa": 25
+            },
+            {
+              "desde": 10000,
+              "hasta": 14000,
+              "tasa": 30
+            },
+            {
+              "desde": 14000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, Article 1(6), new Article 11",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.rental-income-tax",
+      "nombre": "Annual rental income tax for individuals (Schedule B)",
+      "tipo": "escala",
+      "unidad": "ETB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 24000,
+              "tasa": 0
+            },
+            {
+              "desde": 24000,
+              "hasta": 48000,
+              "tasa": 15
+            },
+            {
+              "desde": 48000,
+              "hasta": 84000,
+              "tasa": 20
+            },
+            {
+              "desde": 84000,
+              "hasta": 120000,
+              "tasa": 25
+            },
+            {
+              "desde": 120000,
+              "hasta": 168000,
+              "tasa": 30
+            },
+            {
+              "desde": 168000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, Article 1(8), new Article 14(2)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.business-income-tax",
+      "nombre": "Annual business income tax for individuals (Schedule C)",
+      "tipo": "escala",
+      "unidad": "ETB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 24000,
+              "tasa": 0
+            },
+            {
+              "desde": 24000,
+              "hasta": 48000,
+              "tasa": 15
+            },
+            {
+              "desde": 48000,
+              "hasta": 84000,
+              "tasa": 20
+            },
+            {
+              "desde": 84000,
+              "hasta": 120000,
+              "tasa": 25
+            },
+            {
+              "desde": 120000,
+              "hasta": 168000,
+              "tasa": 30
+            },
+            {
+              "desde": 168000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, Article 1(10), new Article 19(2)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.dividend-tax",
+      "nombre": "Tax on dividends paid to a resident",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, new Article 57(1)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.interest-tax",
+      "nombre": "Tax on interest earned by a resident",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, new Article 58(1)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.royalty-tax",
+      "nombre": "Tax on royalties earned by a resident",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, new Article 56(1)(a)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.royalty-art-tax",
+      "nombre": "Tax on royalties from art and culture",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, new Article 56(1)(b)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.winnings-tax",
+      "nombre": "Tax on winnings from games of chance",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, new Article 59(1)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.withholding-rate",
+      "nombre": "Withholding tax on supplies of goods and services",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-07",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, Article 1(36), new Article 97(1)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.withholding-goods-threshold",
+      "nombre": "Withholding threshold for goods (one transaction or contract)",
+      "tipo": "numero",
+      "unidad": "ETB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-07",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, new Article 97(1)(a)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.withholding-services-threshold",
+      "nombre": "Withholding threshold for services (one contract)",
+      "tipo": "numero",
+      "unidad": "ETB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-07",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, new Article 97(1)(b)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.withholding-no-tin-rate",
+      "nombre": "Withholding rate when the supplier gives no TIN or business licence",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Income Tax (Amendment) Proclamation No. 1395/2025, Federal Negarit Gazette No. 64, 1 September 2025, Article 1(37), new Article 97(4)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1786970364007-582645424-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-1395-2017.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.vat",
+      "nombre": "VAT standard rate",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-08-21",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Value Added Tax Proclamation No. 1341/2024, Federal Negarit Gazette No. 61, 21 August 2024, Article 8(2)(b)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1755160957456-480715100-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-341-2016.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.vat-threshold",
+      "nombre": "VAT registration threshold (12 months of taxable supplies)",
+      "tipo": "numero",
+      "unidad": "ETB",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-08-21",
+          "valor": 2000000,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (Ministry of Revenue)",
+            "titulo": "Value Added Tax Proclamation No. 1341/2024, Federal Negarit Gazette No. 61, 21 August 2024, Article 12(2)",
+            "url": "https://www.mor.gov.et/DomesticProclamations/1755160957456-480715100-pdf-%C3%A1%C2%8A%C2%A0%C3%A1%C2%8B%C2%8B%C3%A1%C2%8C%C2%85-%C3%A1%C2%89%C2%81%C3%A1%C2%8C%C2%A5%C3%A1%C2%88%C2%AD-341-2016.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.pension-employee",
+      "nombre": "Employee pension contribution (private sector)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Private Organizations Employees Social Security Administration (POESSA)",
+            "titulo": "Pension: contributions and service pension (Proclamation 1268/2014 E.C.), section 2",
+            "url": "https://www.poessa.gov.et/?page_id=443",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.pension-employer",
+      "nombre": "Employer pension contribution (private sector)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 11,
+          "fuente": {
+            "organismo": "Private Organizations Employees Social Security Administration (POESSA)",
+            "titulo": "Pension: contributions and service pension (Proclamation 1268/2014 E.C.), section 2",
+            "url": "https://www.poessa.gov.et/?page_id=443",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.pension-base-rate",
+      "nombre": "Service pension for the first 10 years of service",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Private Organizations Employees Social Security Administration (POESSA)",
+            "titulo": "Pension: contributions and service pension (Proclamation 1268/2014 E.C.), worked example of the service pension",
+            "url": "https://www.poessa.gov.et/?page_id=443",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.pension-yearly-rate",
+      "nombre": "Service pension for each year after the first 10",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 1.25,
+          "fuente": {
+            "organismo": "Private Organizations Employees Social Security Administration (POESSA)",
+            "titulo": "Pension: contributions and service pension (Proclamation 1268/2014 E.C.), worked example of the service pension",
+            "url": "https://www.poessa.gov.et/?page_id=443",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.pension-min-years",
+      "nombre": "Minimum service for a service pension",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Private Organizations Employees Social Security Administration (POESSA)",
+            "titulo": "Pension: contributions and service pension (Proclamation 1268/2014 E.C.), conditions for a service pension",
+            "url": "https://www.poessa.gov.et/?page_id=443",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.retirement-age",
+      "nombre": "Retirement age",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Private Organizations Employees Social Security Administration (POESSA)",
+            "titulo": "Pension: contributions and service pension (Proclamation 1268/2014 E.C.), conditions for a service pension",
+            "url": "https://www.poessa.gov.et/?page_id=443",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.pension-salary-months",
+      "nombre": "Months of salary averaged for the pension",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-08",
+          "valor": 36,
+          "fuente": {
+            "organismo": "Private Organizations Employees Social Security Administration (POESSA)",
+            "titulo": "Pension: contributions and service pension (Proclamation 1268/2014 E.C.), worked example of the service pension",
+            "url": "https://www.poessa.gov.et/?page_id=443",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.overtime-rates",
+      "nombre": "Overtime pay multipliers",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "day": "Overtime between 6 a.m. and 10 p.m.",
+        "night": "Overtime between 10 p.m. and 6 a.m.",
+        "rest-day": "Work on your weekly rest day",
+        "holiday": "Overtime on a public holiday"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": {
+            "day": 1.5,
+            "night": 1.75,
+            "rest-day": 2,
+            "holiday": 2.5
+          },
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 68(1)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.holiday-pay-rate",
+      "nombre": "Pay for each hour worked on a public holiday",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 75(1)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.weekly-hours",
+      "nombre": "Maximum normal hours a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 48,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 61(2)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.daily-hours",
+      "nombre": "Maximum normal hours a day",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 61(2)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.overtime-daily-cap",
+      "nombre": "Maximum overtime a day",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 67(2)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.overtime-weekly-cap",
+      "nombre": "Maximum overtime a week",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 67(2)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.annual-leave-base",
+      "nombre": "Annual leave for the first year of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 77(1)(a)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.annual-leave-step",
+      "nombre": "Years of service for each extra day of annual leave",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 77(1)(b)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.days-in-month",
+      "nombre": "Days of service counted as one month for leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 77(3)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.severance-first-year",
+      "nombre": "Severance pay for the first year of service",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 40(2)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.severance-extra-share",
+      "nombre": "Severance increase for each additional year (share of the first-year amount)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 0.3333333333333333,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 40(3)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.severance-cap",
+      "nombre": "Severance pay cap",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 40(3)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.severance-closure-extra",
+      "nombre": "Extra pay on closure or reduction of workforce",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 40(4)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.compensation-no-notice",
+      "nombre": "Compensation when the worker leaves under Article 32(1)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 41(1)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.compensation-harassment",
+      "nombre": "Compensation when the worker leaves under Article 32(1)(b)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 41(2)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.severance-min-years-resign",
+      "nombre": "Service needed for severance on resignation, sickness or death",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 39(1)(h)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.notice-first-year",
+      "nombre": "Employer notice: service up to one year",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 35(1)(a)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.notice-up-to-nine",
+      "nombre": "Employer notice: more than one and up to nine years",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 35(1)(b)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.notice-over-nine",
+      "nombre": "Employer notice: more than nine years",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 35(1)(c)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.notice-redundancy",
+      "nombre": "Employer notice: reduction of workforce",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 35(1)(d)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.probation-days",
+      "nombre": "Maximum probation period",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 11(3)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.sick-full-months",
+      "nombre": "Sick leave on full pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 86(1)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.sick-half-months",
+      "nombre": "Sick leave on half pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 86(2)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.sick-half-rate",
+      "nombre": "Pay during the half-pay months of sick leave",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 86(2)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.sick-unpaid-months",
+      "nombre": "Sick leave without pay",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 86(3)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.maternity-prenatal",
+      "nombre": "Paid prenatal leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 88(3)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.maternity-postnatal",
+      "nombre": "Paid postnatal leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 90,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 88(3)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "et.paternity-leave",
+      "nombre": "Paid paternity leave",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-09-05",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Federal Negarit Gazette (FAOLEX copy)",
+            "titulo": "Labour Proclamation No. 1156/2019, Federal Negarit Gazette No. 89, 5 September 2019, Article 81(2)",
+            "url": "https://faolex.fao.org/docs/pdf/eth204430.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}

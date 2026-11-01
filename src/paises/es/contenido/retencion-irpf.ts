@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "es.retencion-irpf",
-  h1: "Calculadora de retención de IRPF 2026",
-  title: "Retención IRPF 2026: calcula tu tipo en la nómina",
+  h1: "Calculadora de retención de IRPF {{anio}}",
+  title: "Retención IRPF {{anio}}: calcula tu tipo en la nómina",
   description:
-    "Calcula qué porcentaje de IRPF te tienen que retener en la nómina de 2026 con el procedimiento de la Agencia Tributaria. Con hijos, edad y tipo de contrato.",
+    "Calcula qué porcentaje de IRPF te tienen que retener en la nómina de {{anio}} con el procedimiento de la Agencia Tributaria. Con hijos, edad y tipo de contrato.",
   intro: [
     "La retención de IRPF es el porcentaje de tu sueldo que la empresa se queda cada mes y entrega a Hacienda a cuenta de tu declaración de la renta.",
     "No es un porcentaje fijo: depende de lo que ganas, de lo que cotizas y de tu familia. Esta calculadora sigue el algoritmo que publica la Agencia Tributaria para 2026.",

@@ -1,0 +1,1016 @@
+{
+  "mercado": "jo",
+  "datos": [
+    {
+      "id": "jo.income-tax",
+      "nombre": "نسب ضريبة الدخل على الشخص الطبيعي",
+      "tipo": "escala",
+      "unidad": "JOD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5000,
+              "tasa": 5
+            },
+            {
+              "desde": 5000,
+              "hasta": 10000,
+              "tasa": 10
+            },
+            {
+              "desde": 10000,
+              "hasta": 15000,
+              "tasa": 15
+            },
+            {
+              "desde": 15000,
+              "hasta": 20000,
+              "tasa": 20
+            },
+            {
+              "desde": 20000,
+              "hasta": 1000000,
+              "tasa": 25
+            },
+            {
+              "desde": 1000000,
+              "hasta": null,
+              "tasa": 30
+            }
+          ],
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته (آخرها القانون المعدل رقم 38 لسنة 2018)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/QRCODE/income2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 11 (أ): 5% عن الخمسة آلاف دينار الأولى، ثم 10% و15% و20% عن كل خمسة آلاف تالية، و25% حتى مليون دينار، و30% لما يزيد على مليون دينار."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.personal-exemption",
+      "nombre": "الإعفاء الشخصي للمكلف المقيم",
+      "tipo": "numero",
+      "unidad": "JOD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "hasta": "2019-12-31",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته (آخرها القانون المعدل رقم 38 لسنة 2018)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/QRCODE/income2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 9 (أ/1): عشرة آلاف دينار لسنة 2019."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 9000,
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته (آخرها القانون المعدل رقم 38 لسنة 2018)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/QRCODE/income2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 9 (أ/1): تسعة آلاف دينار لسنة 2020 وما يليها."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.dependents-exemption",
+      "nombre": "الإعفاء عن المعالين مهما كان عددهم",
+      "tipo": "numero",
+      "unidad": "JOD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "hasta": "2019-12-31",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته (آخرها القانون المعدل رقم 38 لسنة 2018)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/QRCODE/income2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 9 (أ/2): عشرة آلاف دينار لسنة 2019."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 9000,
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته (آخرها القانون المعدل رقم 38 لسنة 2018)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/QRCODE/income2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 9 (أ/2): تسعة آلاف دينار لسنة 2020 وما يليها."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.expense-exemption",
+      "nombre": "إعفاءات نفقات العلاج والتعليم والإيجار وفوائد قروض الإسكان",
+      "tipo": "mapa",
+      "unidad": "JOD",
+      "etiquetas": {
+        "taxpayer": "المكلف",
+        "spouse": "الزوج أو الزوجة",
+        "child": "كل ولد",
+        "children-max": "الحد الأقصى للأولاد"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "taxpayer": 1000,
+            "spouse": 1000,
+            "child": 1000,
+            "children-max": 3000
+          },
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته (آخرها القانون المعدل رقم 38 لسنة 2018)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/QRCODE/income2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 9 (أ/3): ألف دينار للمكلف، وألف لزوجه، وألف لكل ولد بحد أقصى ثلاثة آلاف، من سنة 2020."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.exemption-cap",
+      "nombre": "الحد الأعلى لمجموع الإعفاءات",
+      "tipo": "numero",
+      "unidad": "JOD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 23000,
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته (آخرها القانون المعدل رقم 38 لسنة 2018)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/QRCODE/income2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 9 (ب) و(ج): لا يتجاوز الإعفاء للمكلف ولمن يعيلهم 23000 دينار."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.national-contribution",
+      "nombre": "نسبة المساهمة الوطنية على الشخص الطبيعي",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته (آخرها القانون المعدل رقم 38 لسنة 2018)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/QRCODE/income2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 11 (و/1/و): 1% من الدخل الخاضع للضريبة مما يزيد على مائتي ألف دينار للشخص الطبيعي."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.national-contribution-threshold",
+      "nombre": "حد الدخل الخاضع الذي تبدأ بعده المساهمة الوطنية",
+      "tipo": "numero",
+      "unidad": "JOD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 200000,
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون ضريبة الدخل رقم 34 لسنة 2014 وتعديلاته (آخرها القانون المعدل رقم 38 لسنة 2018)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/QRCODE/income2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 11 (و/1/و)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.ssc-old-age",
+      "nombre": "اشتراك تأمين الشيخوخة والعجز والوفاة",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employee": "حصة المؤمن عليه",
+        "employer": "حصة المنشأة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "employee": 6.5,
+            "employer": 11
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 59 (أ): 11% تؤديها المنشأة و6.5% تقتطعها من أجر المؤمن عليه."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.ssc-unemployment",
+      "nombre": "اشتراك تأمين التعطل عن العمل",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "employee": "حصة المؤمن عليه",
+        "employer": "حصة المنشأة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "employee": 1,
+            "employer": 0.5
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 48: نصف بالمائة تؤديه المنشأة وواحد بالمائة يُقتطع من أجر المؤمن عليه."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.ssc-work-injury",
+      "nombre": "اشتراك تأمين إصابات العمل (على المنشأة)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": 2,
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 24 (أ): 2% تؤديها المنشأة من أجور المؤمن عليهم."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.ssc-maternity",
+      "nombre": "اشتراك تأمين الأمومة (على المنشأة)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": 0.75,
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 42 (أ/1): ثلاثة أرباع الواحد بالمائة تؤديها المنشأة من أجور المؤمن عليهم."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.ssc-wage-cap",
+      "nombre": "الحد الأعلى للأجر الخاضع للاقتطاع",
+      "tipo": "numero",
+      "unidad": "JOD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 3668,
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "الضمان: (3733) ديناراً الحد الأعلى للأجر المشمول بأحكام القانون الذي تُحتسب الاشتراكات على أساسه لعام 2026",
+            "url": "https://www.ssc.gov.jo/%d8%a7%d9%84%d8%b6%d9%85%d8%a7%d9%86-3733-%d8%af%d9%8a%d9%86%d8%a7%d8%b1%d8%a7%d9%8b-%d8%a7%d9%84%d8%ad%d8%af-%d8%a7%d9%84%d8%a3%d8%b9%d9%84%d9%89-%d9%84%d9%84%d8%a3%d8%ac%d8%b1-%d8%a7%d9%84%d9%85/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "بيان المؤسسة: الحد الأعلى 3733 دينارًا لعام 2026 وكان 3668 دينارًا في العام الماضي، مربوطًا بنسبة التضخم لعام 2025 (1.77%). المادة 20 من القانون تربط الحد بالتضخم في كانون الثاني من كل عام."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 3733,
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "الضمان: (3733) ديناراً الحد الأعلى للأجر المشمول بأحكام القانون الذي تُحتسب الاشتراكات على أساسه لعام 2026",
+            "url": "https://www.ssc.gov.jo/%d8%a7%d9%84%d8%b6%d9%85%d8%a7%d9%86-3733-%d8%af%d9%8a%d9%86%d8%a7%d8%b1%d8%a7%d9%8b-%d8%a7%d9%84%d8%ad%d8%af-%d8%a7%d9%84%d8%a3%d8%b9%d9%84%d9%89-%d9%84%d9%84%d8%a3%d8%ac%d8%b1-%d8%a7%d9%84%d9%85/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "بيان المؤسسة: الحد الأعلى 3733 دينارًا لعام 2026 وكان 3668 دينارًا في العام الماضي، مربوطًا بنسبة التضخم لعام 2025 (1.77%). المادة 20 من القانون تربط الحد بالتضخم في كانون الثاني من كل عام."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.minimum-wage",
+      "nombre": "الحد الأدنى للأجور الشهري",
+      "tipo": "numero",
+      "unidad": "JOD",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2027-12-31",
+          "valor": 290,
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "الضمان: تطبيق قرار الحد الأدنى للأجور (290) ديناراً بداية العام المقبل 2025",
+            "url": "https://www.ssc.gov.jo/%d8%a7%d9%84%d8%b6%d9%85%d8%a7%d9%86-%d8%aa%d8%b7%d8%a8%d9%8a%d9%82-%d9%82%d8%b1%d8%a7%d8%b1-%d8%a7%d9%84%d8%ad%d8%af-%d8%a7%d9%84%d8%a3%d8%af%d9%86%d9%89-%d9%84%d9%84%d8%a3%d8%ac%d9%88%d8%b1-290/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "قرار اللجنة الثلاثية لشؤون العمل للأعوام 2025 و2026 و2027: 290 دينارًا بدلًا من 260. يُستثنى منه عمال قطاع الألبسة المشمولون بعقد العمل الجماعي وعمال المنازل غير الأردنيين."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.notice",
+      "nombre": "مدة الإشعار لإنهاء العقد غير محدد المدة",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-16",
+          "valor": 1,
+          "fuente": {
+            "organismo": "بوابة البيانات الحكومية المفتوحة",
+            "titulo": "قانون العمل رقم 8 لسنة 1996 وتعديلاته (آخرها القانون المعدل رقم 14 لسنة 2019)",
+            "url": "https://opendata.gov.jo/en/dataset/laws-related-to-employees-and-staff-3401-2022/resource/0b2eff4a-9aec-40b0-8efe-4f6c5affea55",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 23 (أ): إشعار خطي قبل شهر واحد على الأقل."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.unfair-dismissal",
+      "nombre": "التعويض عن الفصل التعسفي",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "per-year": "عن كل سنة خدمة",
+        "minimum": "الحد الأدنى"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-16",
+          "valor": {
+            "per-year": 0.5,
+            "minimum": 2
+          },
+          "fuente": {
+            "organismo": "بوابة البيانات الحكومية المفتوحة",
+            "titulo": "قانون العمل رقم 8 لسنة 1996 وتعديلاته (آخرها القانون المعدل رقم 14 لسنة 2019)",
+            "url": "https://opendata.gov.jo/en/dataset/laws-related-to-employees-and-staff-3401-2022/resource/0b2eff4a-9aec-40b0-8efe-4f6c5affea55",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 25: أجر نصف شهر عن كل سنة خدمة وبحد أدنى أجر شهرين، إضافة إلى بدل الإشعار، على أساس آخر أجر."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.end-of-service",
+      "nombre": "مكافأة نهاية الخدمة لغير المشمول بالضمان الاجتماعي",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-16",
+          "valor": 1,
+          "fuente": {
+            "organismo": "بوابة البيانات الحكومية المفتوحة",
+            "titulo": "قانون العمل رقم 8 لسنة 1996 وتعديلاته (آخرها القانون المعدل رقم 14 لسنة 2019)",
+            "url": "https://opendata.gov.jo/en/dataset/laws-related-to-employees-and-staff-3401-2022/resource/0b2eff4a-9aec-40b0-8efe-4f6c5affea55",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 32: أجر شهر عن كل سنة من الخدمة الفعلية ومكافأة نسبية عن كسور السنة، على أساس آخر أجر."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.annual-leave",
+      "nombre": "أيام الإجازة السنوية بأجر كامل",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "base": "الإجازة العادية",
+        "long-service": "بعد خمس سنوات متصلة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-16",
+          "valor": {
+            "base": 14,
+            "long-service": 21
+          },
+          "fuente": {
+            "organismo": "بوابة البيانات الحكومية المفتوحة",
+            "titulo": "قانون العمل رقم 8 لسنة 1996 وتعديلاته (آخرها القانون المعدل رقم 14 لسنة 2019)",
+            "url": "https://opendata.gov.jo/en/dataset/laws-related-to-employees-and-staff-3401-2022/resource/0b2eff4a-9aec-40b0-8efe-4f6c5affea55",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 61 (أ): أربعة عشر يومًا عن كل سنة خدمة، وواحد وعشرون يومًا لمن أمضى خمس سنوات متصلة لدى صاحب العمل نفسه."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.annual-leave-years",
+      "nombre": "سنوات الخدمة المتصلة لاستحقاق الإجازة الأطول",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-16",
+          "valor": 5,
+          "fuente": {
+            "organismo": "بوابة البيانات الحكومية المفتوحة",
+            "titulo": "قانون العمل رقم 8 لسنة 1996 وتعديلاته (آخرها القانون المعدل رقم 14 لسنة 2019)",
+            "url": "https://opendata.gov.jo/en/dataset/laws-related-to-employees-and-staff-3401-2022/resource/0b2eff4a-9aec-40b0-8efe-4f6c5affea55",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 61 (أ)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.overtime-premium",
+      "nombre": "أجر العمل الإضافي نسبةً إلى الأجر المعتاد",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "regular": "الساعة الإضافية في يوم العمل",
+        "rest-day": "العطلة الأسبوعية والأعياد والعطل الرسمية"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-16",
+          "valor": {
+            "regular": 125,
+            "rest-day": 150
+          },
+          "fuente": {
+            "organismo": "بوابة البيانات الحكومية المفتوحة",
+            "titulo": "قانون العمل رقم 8 لسنة 1996 وتعديلاته (آخرها القانون المعدل رقم 14 لسنة 2019)",
+            "url": "https://opendata.gov.jo/en/dataset/laws-related-to-employees-and-staff-3401-2022/resource/0b2eff4a-9aec-40b0-8efe-4f6c5affea55",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 59: لا يقل عن 125% عن ساعة العمل الإضافية، ولا يقل عن 150% عن العمل يوم العطلة الأسبوعية أو الأعياد الدينية أو العطل الرسمية."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.working-hours",
+      "nombre": "ساعات العمل العادية",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "daily": "في اليوم",
+        "weekly": "في الأسبوع"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-16",
+          "valor": {
+            "daily": 8,
+            "weekly": 48
+          },
+          "fuente": {
+            "organismo": "بوابة البيانات الحكومية المفتوحة",
+            "titulo": "قانون العمل رقم 8 لسنة 1996 وتعديلاته (آخرها القانون المعدل رقم 14 لسنة 2019)",
+            "url": "https://opendata.gov.jo/en/dataset/laws-related-to-employees-and-staff-3401-2022/resource/0b2eff4a-9aec-40b0-8efe-4f6c5affea55",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 56 (أ): ثماني ساعات يوميًا أو ثمان وأربعون ساعة في الأسبوع."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.sick-leave",
+      "nombre": "الإجازة المرضية بأجر كامل",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "paid": "الإجازة المرضية",
+        "hospital": "التجديد عند دخول المستشفى"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-05-16",
+          "valor": {
+            "paid": 14,
+            "hospital": 14
+          },
+          "fuente": {
+            "organismo": "بوابة البيانات الحكومية المفتوحة",
+            "titulo": "قانون العمل رقم 8 لسنة 1996 وتعديلاته (آخرها القانون المعدل رقم 14 لسنة 2019)",
+            "url": "https://opendata.gov.jo/en/dataset/laws-related-to-employees-and-staff-3401-2022/resource/0b2eff4a-9aec-40b0-8efe-4f6c5affea55",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 65: أربعة عشر يومًا في السنة بأجر كامل، وتجدد أربعة عشر يومًا أخرى بأجر كامل إذا كان العامل نزيل أحد المستشفيات."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.pension-accrual",
+      "nombre": "نسبة احتساب راتب التقاعد عن كل سنة اشتراك",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "first-tier": "لأول شريحة من المتوسط",
+        "rest": "لما يزيد عليها"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "first-tier": 2.5,
+            "rest": 2
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 62 (ب) والمادة 64 (د/1): 2.5% لأول 1500 دينار من متوسط الأجر و2% من باقيه."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.pension-tier",
+      "nombre": "حد الشريحة الأولى من متوسط الأجر",
+      "tipo": "numero",
+      "unidad": "JOD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": 1500,
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 62 (ب)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.pension-dependents",
+      "nombre": "زيادة الراتب التقاعدي عن المعالين",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "first": "أول معال",
+        "second": "ثاني معال",
+        "third": "ثالث معال"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "first": 12,
+            "second": 6,
+            "third": 6
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 62 (ج) والمادة 64 (د/3): 12% لأول شخص معال، و6% لكل من الثاني والثالث."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.pension-dependents-limits",
+      "nombre": "حدود زيادة المعالين",
+      "tipo": "mapa",
+      "unidad": "JOD",
+      "etiquetas": {
+        "first-min": "أدنى زيادة للأول",
+        "first-max": "أعلى زيادة للأول",
+        "other-min": "أدنى زيادة للثاني والثالث",
+        "other-max": "أعلى زيادة للثاني والثالث"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "first-min": 10,
+            "first-max": 100,
+            "other-min": 10,
+            "other-max": 25
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 62 (ج): زيادة الأول لا تقل عن عشرة دنانير ولا تزيد على مائة، وزيادة كل من الثاني والثالث لا تقل عن عشرة ولا تزيد على خمسة وعشرين."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.pension-age",
+      "nombre": "سن تقاعد الشيخوخة",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "male": "الذكر",
+        "female": "الأنثى"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "male": 60,
+            "female": 55
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 62 (أ/1): سن الستين للذكر وسن الخامسة والخمسين للأنثى."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.pension-contributions",
+      "nombre": "الاشتراكات اللازمة لراتب تقاعد الشيخوخة",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "total": "مجموع الاشتراكات",
+        "actual": "منها اشتراكات فعلية"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "total": 180,
+            "actual": 84
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 62 (أ/2): 180 اشتراكًا منها 84 اشتراكًا فعليًا على الأقل."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.early-retirement",
+      "nombre": "شروط التقاعد المبكر",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "age": "السن الأدنى",
+        "male": "اشتراكات الذكر",
+        "female": "اشتراكات الأنثى",
+        "alt-contributions": "الاشتراكات في الحالة الثانية",
+        "alt-age": "السن الأدنى في الحالة الثانية"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "age": 50,
+            "male": 252,
+            "female": 228,
+            "alt-contributions": 300,
+            "alt-age": 45
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 64 (أ): سن الخمسين مع 252 اشتراكًا فعليًا للذكر و228 للأنثى، أو 300 اشتراك فعلي مع سن لا تقل عن 45 سنة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.early-retirement-reduction",
+      "nombre": "نسب الخصم في رواتب التقاعد المبكر",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "male-45": 20,
+            "male-46": 18,
+            "male-47": 16,
+            "male-48": 14,
+            "male-49": 12,
+            "male-50": 11,
+            "male-51": 10,
+            "male-52": 9,
+            "male-53": 8,
+            "male-54": 7,
+            "male-55": 6,
+            "male-56": 5,
+            "male-57": 4,
+            "male-58": 3,
+            "male-59": 2,
+            "female-45": 14,
+            "female-46": 12,
+            "female-47": 10,
+            "female-48": 8,
+            "female-49": 7,
+            "female-50": 6,
+            "female-51": 5,
+            "female-52": 4,
+            "female-53": 3,
+            "female-54": 2
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "الجدول رقم (5) الملحق بالقانون: نسبة الخصم حسب السن عند تخصيص الراتب، من 20% للذكر بين 45 و46 سنة حتى 2% بين 59 و60، ومن 14% للأنثى بين 45 و46 حتى 2% بين 54 و55."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.unemployment-benefit",
+      "nombre": "نسب بدل التعطل عن العمل من آخر أجر خاضع للاقتطاع",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "month-1": "الشهر الأول",
+        "month-2": "الشهر الثاني",
+        "month-3": "الشهر الثالث",
+        "month-4-6": "الأشهر من الرابع إلى السادس"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "month-1": 75,
+            "month-2": 65,
+            "month-3": 55,
+            "month-4-6": 45
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 53 (أ): 75% للشهر الأول، و65% للثاني، و55% للثالث، و45% لكل من الرابع والخامس والسادس."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.unemployment-benefit-terms",
+      "nombre": "شروط بدل التعطل ومدته",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "contributions": "الاشتراكات اللازمة",
+        "long-contributions": "اشتراكات المدة الأطول",
+        "short-months": "المدة القصيرة بالأشهر",
+        "long-months": "المدة الأطول بالأشهر"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": {
+            "contributions": 36,
+            "long-contributions": 180,
+            "short-months": 3,
+            "long-months": 6
+          },
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 50 (أ/1): 36 اشتراكًا على الأقل. المادة 52 (أ): ثلاثة أشهر إذا كانت الاشتراكات أقل من 180، وستة أشهر إذا كانت 180 فأكثر."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.ssc-optional-old-age",
+      "nombre": "اشتراك الشيخوخة والعجز والوفاة الذي يُخصم من بدل التعطل",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-04-16",
+          "valor": 17.5,
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي رقم 1 لسنة 2014 وفقًا لآخر التعديلات حتى 16/4/2023",
+            "url": "https://www.ssc.gov.jo/wp-content/uploads/2024/01/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D8%B1%D9%82%D9%85-%D9%A1-%D9%84%D8%B3%D9%86%D8%A9-%D9%A2%D9%A0%D9%A1%D9%A4-%D9%88%D9%81%D9%82%D8%A7%D9%8B-%D9%84%D8%A7%D9%93%D8%AE%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA-%D8%AD%D8%AA%D9%89-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%A1%D9%A6_%D9%A4_%D9%A2%D9%A0%D9%A2%D9%A3_compressed.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 59 (أ/3): 17.5% من الأجر. المادة 52 (ب) والمادة 53 (ب/2): تُخصم من أجر احتساب البدل ويُحسب صافي البدل بعد خصمها."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.unemployment-benefit-cap",
+      "nombre": "الحد الأعلى لصافي بدل التعطل الشهري",
+      "tipo": "numero",
+      "unidad": "JOD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 612,
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "الضمان: (3733) ديناراً الحد الأعلى للأجر المشمول بأحكام القانون الذي تُحتسب الاشتراكات على أساسه لعام 2026",
+            "url": "https://www.ssc.gov.jo/%d8%a7%d9%84%d8%b6%d9%85%d8%a7%d9%86-3733-%d8%af%d9%8a%d9%86%d8%a7%d8%b1%d8%a7%d9%8b-%d8%a7%d9%84%d8%ad%d8%af-%d8%a7%d9%84%d8%a3%d8%b9%d9%84%d9%89-%d9%84%d9%84%d8%a3%d8%ac%d8%b1-%d8%a7%d9%84%d9%85/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "بيان المؤسسة: الحد الأعلى لصافي بدل التعطل 623 دينارًا لعام 2026 وكان 612 دينارًا في العام الماضي، مربوطًا بالتضخم (المادة 53/ب/1)."
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 623,
+          "fuente": {
+            "organismo": "المؤسسة العامة للضمان الاجتماعي",
+            "titulo": "الضمان: (3733) ديناراً الحد الأعلى للأجر المشمول بأحكام القانون الذي تُحتسب الاشتراكات على أساسه لعام 2026",
+            "url": "https://www.ssc.gov.jo/%d8%a7%d9%84%d8%b6%d9%85%d8%a7%d9%86-3733-%d8%af%d9%8a%d9%86%d8%a7%d8%b1%d8%a7%d9%8b-%d8%a7%d9%84%d8%ad%d8%af-%d8%a7%d9%84%d8%a3%d8%b9%d9%84%d9%89-%d9%84%d9%84%d8%a3%d8%ac%d8%b1-%d8%a7%d9%84%d9%85/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "بيان المؤسسة: الحد الأعلى لصافي بدل التعطل 623 دينارًا لعام 2026 وكان 612 دينارًا في العام الماضي، مربوطًا بالتضخم (المادة 53/ب/1)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.gst",
+      "nombre": "النسبة العامة للضريبة العامة على المبيعات",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-09-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "دائرة ضريبة الدخل والمبيعات",
+            "titulo": "قانون الضريبة العامة على المبيعات رقم 6 لسنة 1994 وتعديلاته (أيلول 2022)",
+            "url": "https://istd.gov.jo/EBV4.0/Root_Storage/AR/EB_Legislation/%D9%82%D8%A7%D9%86%D9%88%D9%86_%D8%B1%D9%82%D9%85_6_%D9%84%D8%B3%D9%86%D8%A9_1994_-_%D9%82%D8%A7%D9%86%D9%88%D9%86_%D8%A7%D9%84%D8%B6%D8%B1%D9%8A%D8%A8%D8%A9_%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9_%D8%B9%D9%84%D9%89_%D8%A7%D9%84%D9%85%D8%A8%D9%8A%D8%B9%D8%A7%D8%AA_%D9%88%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA%D9%87_%D8%A7%D9%8A%D9%84%D9%88%D9%84_2022.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "المادة 6 (أ): ضريبة عامة على استيراد أي سلعة أو خدمة أو توريد أي منهما بنسبة 16% من قيمتها. والسلع والخدمات في الجدول رقم 1 تخضع لضريبة خاصة. التاريخ هو تاريخ النص الموحد الذي قرأناه."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jo.usd-peg",
+      "nombre": "سعر صرف الدينار مقابل الدولار الأمريكي (الوسطي الرسمي)",
+      "tipo": "numero",
+      "unidad": "JOD",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "1995-10-23",
+          "valor": 0.709,
+          "motivo": "موقع البنك المركزي الأردني (cbj.gov.jo) يرفض الطلبات من خارج الأردن (Request Rejected)، فلم نقرأ السعر في مصدر البنك. القيمة إرشادية فقط."
+        }
+      ]
+    },
+    {
+      "id": "jo.land-registration-fee",
+      "nombre": "رسوم تسجيل البيع لدى دائرة الأراضي والمساحة",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "motivo": "موقع دائرة الأراضي والمساحة (dls.gov.jo) لم يرد على الاتصال، ولم نقرأ قانون رسوم تسجيل الأراضي ولا قرارات الإعفاء للشقق في مصدر رسمي. القيمة إرشادية فقط."
+        }
+      ]
+    },
+    {
+      "id": "jo.property-sales-tax",
+      "nombre": "ضريبة بيع العقار",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "motivo": "لم نقرأ النسبة في نص رسمي: مواقع دائرة الأراضي والمساحة وديوان التشريع والرأي غير متاحة من خارج الأردن. القيمة إرشادية فقط."
+        }
+      ]
+    }
+  ]
+}

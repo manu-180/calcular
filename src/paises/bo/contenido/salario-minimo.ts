@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "bo.salario-minimo",
-  h1: "Salario mínimo en Bolivia 2026",
-  title: "Salario mínimo Bolivia 2026: {{bo.salario-minimo}}, por día y en dólares",
-  description: "El Salario Mínimo Nacional 2026 en Bolivia es {{bo.salario-minimo}} por mes desde el {{bo.salario-minimo#desde}}. Vea cuánto es por día, por hora y en dólares al cambio de hoy.",
+  h1: "Salario mínimo en Bolivia {{anio}}",
+  title: "Salario mínimo Bolivia {{anio}}: {{bo.salario-minimo}}, por día y en dólares",
+  description: "El Salario Mínimo Nacional {{anio}} en Bolivia es {{bo.salario-minimo}} por mes desde el {{bo.salario-minimo#desde}}. Vea cuánto es por día, por hora y en dólares al cambio de hoy.",
   intro: [
     "El salario mínimo en Bolivia es {{bo.salario-minimo}} por mes. Es el Salario Mínimo Nacional y rige desde el {{bo.salario-minimo#desde}} para el sector público y el privado.",
     "Si escribe su haber básico, le decimos si alcanza el mínimo.",

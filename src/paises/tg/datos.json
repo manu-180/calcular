@@ -1,0 +1,1269 @@
+{
+  "mercado": "tg",
+  "datos": [
+    {
+      "id": "tg.smig",
+      "nombre": "Salaire minimum interprofessionnel garanti (SMIG), mensuel",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 52500,
+          "fuente": {
+            "organismo": "CNSS Togo",
+            "titulo": "Présentation de la Caisse nationale de sécurité sociale du Togo (recouvrement des cotisations)",
+            "url": "https://cnss.tg/cnss-media/2023/03/CAISSE-NATIONALE-DE-SECURITE-SOCIALE-DU-TOGO_DEFINITIF-1.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "« Le plancher correspond au SMIG fixé à 52 500 FCFA à compter du 1er janvier 2023. »"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.duree-legale-travail",
+      "nombre": "Durée légale du travail par semaine (hors agriculture)",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 180 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.heures-sup-max-semaine",
+      "nombre": "Heures supplémentaires au plus par semaine",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 180 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.heures-sup-majorations",
+      "nombre": "Majorations des heures supplémentaires",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "jour": "Heures de jour en semaine",
+        "nuit": "Heures de nuit"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2011-01-01",
+          "motivo": "L'article 180 du Code du travail renvoie les taux aux conventions collectives. Le texte de la convention collective interprofessionnelle n'a été trouvé sur aucun site officiel ; seuls des guides privés le citent, avec des chiffres qui se contredisent."
+        }
+      ]
+    },
+    {
+      "id": "tg.cnss-taux",
+      "nombre": "Taux des cotisations à la CNSS (travailleur salarié)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pension-salarie": "Pensions de vieillesse, part du travailleur",
+        "pension-employeur": "Pensions de vieillesse, part de l'employeur",
+        "prestations-familiales": "Prestations familiales (employeur)",
+        "risques-professionnels": "Risques professionnels (employeur)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "pension-salarie": 4,
+            "pension-employeur": 12.5,
+            "prestations-familiales": 3,
+            "risques-professionnels": 2
+          },
+          "fuente": {
+            "organismo": "CNSS Togo",
+            "titulo": "Employeurs : cotisations sociales (taux, assiette et recouvrement)",
+            "url": "https://cnss.tg/employeurs/cotisations-sociales/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Assiette : l'ensemble des rémunérations, sans plafond, avec le SMIG comme plancher. Taux déjà en vigueur au 1er janvier 2023 selon la présentation de la CNSS de mars 2023."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.amu-taux",
+      "nombre": "Cotisation à l'assurance maladie universelle (AMU) des salariés",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "salarie": "Part du travailleur",
+        "employeur": "Part de l'employeur"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "salarie": 5,
+            "employeur": 5
+          },
+          "fuente": {
+            "organismo": "CNSS Togo",
+            "titulo": "Conditions générales de l'assurance maladie universelle obligatoire (CGAMU)",
+            "url": "https://cnss.tg/espace-assures/assurance-maladie-universelle/amu-conditions-generales-dacces-cgamu/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Décret n° 2023-096/PR, articles 12 et 29. La CNSS gère l'AMU des salariés du privé depuis le 1er janvier 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.irpp-bareme",
+      "nombre": "Barème annuel de l'IRPP (revenus d'emplois, pensions, revenus fonciers)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 900000,
+              "tasa": 0
+            },
+            {
+              "desde": 900000,
+              "hasta": 3000000,
+              "tasa": 3
+            },
+            {
+              "desde": 3000000,
+              "hasta": 6000000,
+              "tasa": 10
+            },
+            {
+              "desde": 6000000,
+              "hasta": 9000000,
+              "tasa": 15
+            },
+            {
+              "desde": 9000000,
+              "hasta": 12000000,
+              "tasa": 20
+            },
+            {
+              "desde": 12000000,
+              "hasta": 15000000,
+              "tasa": 25
+            },
+            {
+              "desde": 15000000,
+              "hasta": 20000000,
+              "tasa": 30
+            },
+            {
+              "desde": 20000000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 74 du CGI (barème issu de la loi de finances 2023). Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.irpp-abattement",
+      "nombre": "Déduction forfaitaire sur les revenus d'emplois",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 28,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 26 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.irpp-abattement-plafond",
+      "nombre": "Fraction du revenu annuel ouvrant droit à la déduction forfaitaire",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 10000000,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 26 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.irpp-retraite-plafond",
+      "nombre": "Limite de déduction des retenues pour la retraite",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 26, point 1, du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.irpp-charge-famille",
+      "nombre": "Réduction du revenu imposable par personne à charge et par mois",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 10000,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 73 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.irpp-charges-max",
+      "nombre": "Nombre maximal de personnes à charge",
+      "tipo": "numero",
+      "unidad": "numero",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 72 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.tva",
+      "nombre": "Taxe sur la valeur ajoutée (TVA), taux unique",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 195 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.is-taux",
+      "nombre": "Impôt sur les sociétés (IS), taux",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 27,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 113 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.mfp",
+      "nombre": "Minimum forfaitaire de perception (MFP)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "taux": "Taux général sur le chiffre d'affaires HT",
+        "taux-vehicules-occasion": "Importation de véhicules d'occasion pour la revente"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "taux": 1,
+            "taux-vehicules-occasion": 2
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 120 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.mfp-minimum",
+      "nombre": "Montant minimal du MFP au régime du réel",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 120 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.tpu-taux",
+      "nombre": "Taxe professionnelle unique (TPU), régime déclaratif",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "production-commerce": "Production et commerce",
+        "services": "Prestations de services"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "production-commerce": 2,
+            "services": 8
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 134 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.tpu-minimum",
+      "nombre": "Montant annuel minimal de la TPU au régime déclaratif",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 134 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.tpu-seuils",
+      "nombre": "Seuils de chiffre d'affaires annuel de la TPU",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "forfaitaire": "Plafond du régime forfaitaire",
+        "maximum": "Plafond de la TPU"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "forfaitaire": 30000000,
+            "maximum": 60000000
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Articles 130 et 131 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.tpu-forfait-commerce",
+      "nombre": "TPU forfaitaire des activités commerciales (montant annuel par tranche de chiffre d'affaires)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2500000,
+              "tasa": 0,
+              "cuotaFija": 10000
+            },
+            {
+              "desde": 2500000.01,
+              "hasta": 5000000,
+              "tasa": 0,
+              "cuotaFija": 40000
+            },
+            {
+              "desde": 5000000.01,
+              "hasta": 10000000,
+              "tasa": 0,
+              "cuotaFija": 115000
+            },
+            {
+              "desde": 10000000.01,
+              "hasta": 15000000,
+              "tasa": 0,
+              "cuotaFija": 190000
+            },
+            {
+              "desde": 15000000.01,
+              "hasta": 20000000,
+              "tasa": 0,
+              "cuotaFija": 265000
+            },
+            {
+              "desde": 20000000.01,
+              "hasta": 25000000,
+              "tasa": 0,
+              "cuotaFija": 340000
+            },
+            {
+              "desde": 25000000.01,
+              "hasta": 30000000,
+              "tasa": 0,
+              "cuotaFija": 415000
+            }
+          ],
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 135, point 5, du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.tpu-forfait-services",
+      "nombre": "TPU forfaitaire des prestations de services non artisanales (montant annuel par tranche de chiffre d'affaires)",
+      "tipo": "escala",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2500000,
+              "tasa": 0,
+              "cuotaFija": 20000
+            },
+            {
+              "desde": 2500000.01,
+              "hasta": 5000000,
+              "tasa": 0,
+              "cuotaFija": 187500
+            },
+            {
+              "desde": 5000000.01,
+              "hasta": 10000000,
+              "tasa": 0,
+              "cuotaFija": 375000
+            },
+            {
+              "desde": 10000000.01,
+              "hasta": 15000000,
+              "tasa": 0,
+              "cuotaFija": 625000
+            },
+            {
+              "desde": 15000000.01,
+              "hasta": 20000000,
+              "tasa": 0,
+              "cuotaFija": 875000
+            },
+            {
+              "desde": 20000000.01,
+              "hasta": 25000000,
+              "tasa": 0,
+              "cuotaFija": 1125000
+            },
+            {
+              "desde": 25000000.01,
+              "hasta": 30000000,
+              "tasa": 0,
+              "cuotaFija": 1375000
+            }
+          ],
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 135, point 5, du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.plus-value-taux",
+      "nombre": "Taxe sur les plus-values immobilières et de cession de titres",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 90 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.plus-value-reduction",
+      "nombre": "Réduction de la plus-value immobilière après cinq ans de détention",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "non-bati": "Immeubles ou terrains non bâtis",
+        "bati": "Autres immeubles"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "non-bati": 10,
+            "bati": 20
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 85 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.plus-value-duree",
+      "nombre": "Durée de détention ouvrant droit à la réduction",
+      "tipo": "numero",
+      "unidad": "anios",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 85 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.plus-value-forfait-travaux",
+      "nombre": "Forfait de frais et travaux ajouté au prix d'acquisition",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 87 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.plus-value-seuil",
+      "nombre": "Prix de cession en dessous duquel la plus-value est exonérée",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 2000000,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 84 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.ircm-taux",
+      "nombre": "Retenue sur les revenus de capitaux mobiliers (personnes physiques)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "distribues": "Revenus distribués (dividendes)",
+        "cotees": "Dividendes de sociétés cotées à la BRVM",
+        "interets": "Revenus de placements à revenu fixe"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "distribues": 13,
+            "cotees": 3,
+            "interets": 13
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Articles 79 et 80 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.retenue-prestations",
+      "nombre": "Retenue à la source sur les prestations des professions non commerciales",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "attestation": "Bénéficiaire avec attestation de régularité fiscale",
+        "nif": "Bénéficiaire avec numéro d'identification fiscale",
+        "autres": "Autres bénéficiaires"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "attestation": 3,
+            "nif": 5,
+            "autres": 20
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 99 du Livre des procédures fiscales. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.foncier-abattement",
+      "nombre": "Déduction forfaitaire sur les revenus fonciers bruts",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 16 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.loyers-retenue",
+      "nombre": "Retenue à la source sur les loyers",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "total": "Retenue sur les loyers bruts",
+        "taxe-fonciere": "Part imputée sur la taxe foncière",
+        "irpp": "Part imputée sur l'IRPP"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "total": 8.75,
+            "taxe-fonciere": 3.75,
+            "irpp": 5
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Articles 100 et 101 du Livre des procédures fiscales. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.tvm-tarifs",
+      "nombre": "Taxe sur les véhicules à moteur (vignette), tarif annuel",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "p-moins-5": "Personnes, moins de 5 CV",
+        "p-5-7": "Personnes, 5 à 7 CV",
+        "p-8-11": "Personnes, 8 à 11 CV",
+        "p-12-15": "Personnes, 12 à 15 CV",
+        "p-16-20": "Personnes, 16 à 20 CV",
+        "p-plus-20": "Personnes, plus de 20 CV",
+        "m-moins-5": "Marchandises, moins de 5 CV",
+        "m-5-7": "Marchandises, 5 à 7 CV",
+        "m-8-11": "Marchandises, 8 à 11 CV",
+        "m-12-15": "Marchandises, 12 à 15 CV",
+        "m-16-20": "Marchandises, 16 à 20 CV",
+        "m-plus-20": "Marchandises, plus de 20 CV",
+        "moto-125": "Motocyclette de plus de 125 cm3",
+        "moto-3-roues": "Motocyclette à trois roues"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "p-moins-5": 5000,
+            "p-5-7": 10000,
+            "p-8-11": 15000,
+            "p-12-15": 20000,
+            "p-16-20": 30000,
+            "p-plus-20": 40000,
+            "m-moins-5": 20000,
+            "m-5-7": 30000,
+            "m-8-11": 40000,
+            "m-12-15": 45000,
+            "m-16-20": 50000,
+            "m-plus-20": 55000,
+            "moto-125": 15000,
+            "moto-3-roues": 40000
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 162 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.tvm-reduction-tpu",
+      "nombre": "Réduction de la vignette pour les transporteurs à la TPU",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 162 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.taxe-fonciere",
+      "nombre": "Taxes foncières",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "bati": "Propriétés bâties, sur le revenu net cadastral",
+        "abattement-bati": "Déduction sur la valeur locative cadastrale",
+        "non-bati": "Propriétés non bâties, sur la valeur vénale"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "bati": 7.5,
+            "abattement-bati": 50,
+            "non-bati": 0.5
+          },
+          "fuente": {
+            "organismo": "Office Togolais des Recettes (OTR)",
+            "titulo": "Code général des impôts et Livre des procédures fiscales, mis à jour 2025",
+            "url": "https://otr.tg/index.php/fr/impots/reglementations-fiscales/code-general-des-impots/600-code-general-des-impots-livre-des-procedures-fiscales-mis-a-jour-2025/file.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Articles 270, 275 et 276 du CGI. Le Cahier fiscal 2026 de l'OTR (aperçu des modifications du CGI par la loi de finances 2026) ne modifie pas cet article."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.licenciement-taux",
+      "nombre": "Indemnité de licenciement : pourcentage du salaire par année de présence",
+      "tipo": "escala",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 5,
+              "tasa": 35
+            },
+            {
+              "desde": 5,
+              "hasta": 10,
+              "tasa": 40
+            },
+            {
+              "desde": 10,
+              "hasta": null,
+              "tasa": 45
+            }
+          ],
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 97 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.licenciement-anciennete-min",
+      "nombre": "Ancienneté minimale pour l'indemnité de licenciement",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 97 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.mesure-accompagnement",
+      "nombre": "Mesure d'accompagnement minimale du licenciement économique",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 95 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.preavis-jours-horaire",
+      "nombre": "Préavis minimal des travailleurs payés à l'heure",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 74 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.preavis-mois",
+      "nombre": "Préavis minimal des travailleurs payés au mois",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "employes": "Ouvriers, employés et assimilés",
+        "cadres": "Agents de maîtrise, cadres et assimilés"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": {
+            "employes": 1,
+            "cadres": 3
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 74 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.conges-jours-par-mois",
+      "nombre": "Congé payé acquis par mois de service effectif",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 200 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.conges-allocation-diviseur",
+      "nombre": "Diviseur de l'allocation de congé (un douzième)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 202 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.fin-de-contrat-duree",
+      "nombre": "Durée de CDD ouvrant droit à l'indemnité de fin de contrat",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 54 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.fin-de-contrat-mois",
+      "nombre": "Indemnité de fin de contrat, en mois du dernier salaire brut",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-06-18",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Journal officiel de la République togolaise",
+            "titulo": "Loi n° 2021-012 du 18 juin 2021 portant Code du travail (JORT, 66e année, n° 26 ter)",
+            "url": "https://jo.gouv.tg/sites/default/files/JO/JOS_18_06_2021%20-66E%20ANNEE%20N%C2%B0%2026%20TER.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Article 54 du Code du travail."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.allocations-familiales",
+      "nombre": "Allocations familiales de la CNSS",
+      "tipo": "mapa",
+      "unidad": "XOF",
+      "etiquetas": {
+        "par-enfant": "Par enfant et par mois",
+        "prenatales": "Allocations prénatales, total"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "par-enfant": 2000,
+            "prenatales": 18000
+          },
+          "fuente": {
+            "organismo": "CNSS Togo",
+            "titulo": "Prestations familiales : allocations prénatales et allocations familiales",
+            "url": "https://cnss.tg/prestations/prestations-familiales-et-maternite/prestations-familiales/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27",
+            "nota": "Montants en vigueur à la date de lecture ; la page ne donne pas leur date d'entrée en vigueur."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.allocations-enfants-max",
+      "nombre": "Nombre maximal d'enfants de l'assuré ouvrant droit aux allocations",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "CNSS Togo",
+            "titulo": "Prestations familiales : allocations prénatales et allocations familiales",
+            "url": "https://cnss.tg/prestations/prestations-familiales-et-maternite/prestations-familiales/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.parite-euro",
+      "nombre": "Parité fixe du franc CFA (XOF) avec l'euro",
+      "tipo": "numero",
+      "unidad": "XOF",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1999-01-01",
+          "valor": 655.957,
+          "fuente": {
+            "organismo": "BCEAO",
+            "titulo": "Histoire du franc CFA (parité fixe avec l'euro depuis le 1er janvier 1999)",
+            "url": "https://www.bceao.int/fr/content/histoire-du-franc-cfa",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tg.bceao-taux-directeurs",
+      "nombre": "Taux directeurs de la BCEAO",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "minimum-soumission": "Taux minimum de soumission aux appels d'offres",
+        "pret-marginal": "Taux du guichet de prêt marginal"
+      },
+      "proximaRevision": "2026-12-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-16",
+          "valor": {
+            "minimum-soumission": 3,
+            "pret-marginal": 5
+          },
+          "fuente": {
+            "organismo": "BCEAO",
+            "titulo": "Page d'accueil de la BCEAO : cours des devises et taux directeurs",
+            "url": "https://www.bceao.int/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}

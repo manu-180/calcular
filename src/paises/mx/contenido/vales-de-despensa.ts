@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "mx.vales-de-despensa",
   h1: "Vales de despensa: cuánto integra al salario del IMSS",
-  title: "Vales de despensa 2026: tope para el IMSS",
+  title: "Vales de despensa {{anio}}: tope para el IMSS",
   description:
     "Calcula qué parte de tus vales de despensa integra el salario base de cotización del IMSS: no integra hasta el {{mx.despensa-no-integra}} de la UMA por día.",
   intro: [

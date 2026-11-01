@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.licencia-maternidad",
   h1: "Calculadora de licencia por maternidad en Ecuador",
-  title: "Licencia de maternidad Ecuador 2026: fechas y lactancia",
+  title: "Licencia de maternidad Ecuador {{anio}}: fechas y lactancia",
   description: "Calcula cuándo termina tu licencia por maternidad de {{ec.maternidad-semanas}} semanas, cuándo vuelves al trabajo y hasta cuándo tienes la jornada de lactancia.",
   intro: [
     "En Ecuador toda trabajadora tiene una licencia pagada de {{ec.maternidad-semanas}} semanas por el nacimiento de su hija o hijo. Si el parto es múltiple, se suman {{ec.maternidad-multiple-dias}}.",

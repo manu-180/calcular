@@ -1,0 +1,47 @@
+import { contenidoArabe } from "../../comun/arabe";
+import { aDia, aFecha, fechaLarga } from "../../comun/fechas";
+import { tituloQueEntre, type ContenidoUniversal } from "../../tipos";
+import { FASE_LUTEA, ventana } from "../definicion";
+
+// Familia de embarazo: se le habla en femenino a la persona gestante (ADR 0002, D10).
+export const contenidoAr: ContenidoUniversal = contenidoArabe((ctx) => {
+  const f = (iso: string) => fechaLarga(ctx.locale, iso);
+  const fum = "2026-03-05";
+  const v = ventana(aDia(fum), 28);
+  return {
+    h1: "حاسبة الإباضة وأيام الخصوبة",
+    title: tituloQueEntre(`حاسبة الإباضة في ${ctx.nombrePais}`, "حاسبة الإباضة وأيام الخصوبة", "حاسبة الإباضة"),
+    description: "احسبي يوم الإباضة وأيام الخصوبة وموعد الدورة الشهرية التالية، مع مواعيد الدورات الثلاث القادمة.",
+    intro: [
+      "أدخلي أول يوم من آخر دورة شهرية وطول دورتك، فيظهر لكِ موعد الإباضة المتوقع وأيام الخصوبة وموعد الدورة التالية.",
+      "النتيجة تقدير للدورات المنتظمة. وهي ليست وسيلة لمنع الحمل، ولا تغني عن استشارة طبيبتك أو طبيبك.",
+    ],
+    comoSeCalcula: [
+      `تحدث الإباضة عادة قبل الدورة التالية بـ${FASE_LUTEA} يومًا: أول يوم من آخر دورة + طول الدورة − ${FASE_LUTEA}.`,
+      "تمتد أيام الخصوبة من 5 أيام قبل الإباضة إلى اليوم التالي لها، لأن الحيوانات المنوية قد تعيش حتى 5 أيام.",
+      "موعد الدورة التالية يأتي بعد دورة كاملة من آخر دورة.",
+    ],
+    ejemplo: [
+      `إذا كانت آخر دورة شهرية في ${f(fum)} وطول الدورة 28 يومًا، فموعد الإباضة المتوقع هو ${f(aFecha(v.ovulacion))}.`,
+      `وتمتد أيام الخصوبة من ${f(aFecha(v.desde))} إلى ${f(aFecha(v.hasta))}، وموعد الدورة التالية ${f(aFecha(v.proxima))}.`,
+    ],
+    faq: [
+      {
+        pregunta: "ما أكثر الأيام خصوبة؟",
+        respuesta: "اليومان أو الأيام الثلاثة التي تسبق الإباضة ويوم الإباضة نفسه. وتستمر فترة الخصوبة كلها نحو 6 أيام.",
+      },
+      {
+        pregunta: "هل تصلح الحاسبة إذا كانت دورتي غير منتظمة؟",
+        respuesta: "تعطيكِ فكرة عامة لكنها أقل دقة. فمع الدورات غير المنتظمة قد يتقدم موعد الإباضة أو يتأخر عدة أيام من شهر إلى آخر.",
+      },
+      {
+        pregunta: "هل يمكنني استخدامها لتجنب الحمل؟",
+        respuesta: "لا. التقدير تقريبي، وقد تأتي الإباضة مبكرة أو متأخرة. ولمنع الحمل استخدمي وسيلة لمنع الحمل واستشيري طبيبتك أو طبيبك.",
+      },
+    ],
+    glosario: [
+      { termino: "الإباضة", definicion: "خروج البويضة من المبيض." },
+      { termino: "أيام الخصوبة", definicion: "أيام الدورة التي يمكن أن يحدث فيها الحمل." },
+    ],
+  };
+});

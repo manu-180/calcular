@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "cr.aguinaldo",
   h1: "Calculadora de aguinaldo en Costa Rica",
-  title: "Calculadora de aguinaldo Costa Rica 2026: cuánto le toca",
+  title: "Calculadora de aguinaldo Costa Rica {{anio}}: cuánto le toca",
   description:
-    "Calcule su aguinaldo 2026: sume lo ganado de diciembre a noviembre y divídalo entre 12. Con horas extra, comisiones y proporcional. Gratis y al instante.",
+    "Calcule su aguinaldo {{anio}}: sume lo ganado de diciembre a noviembre y divídalo entre 12. Con horas extra, comisiones y proporcional. Gratis y al instante.",
   intro: [
     "El aguinaldo en Costa Rica es la suma de todo lo que usted ganó del 1 de diciembre al 30 de noviembre, dividida entre 12. El patrono lo paga a más tardar el 20 de diciembre.",
     "Escriba su salario, los meses trabajados y, si tuvo, las horas extra o comisiones. Le mostramos cuánto aguinaldo le toca, completo o proporcional.",

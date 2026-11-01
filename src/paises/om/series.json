@@ -1,0 +1,21 @@
+{
+  "mercado": "om",
+  "series": [
+    {
+      "id": "om.cpi-yoy",
+      "nombre": "التضخم السنوي (الرقم القياسي لأسعار المستهلكين)",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 90,
+      "fuente": {
+        "organismo": "المركز الوطني للإحصاء والمعلومات",
+        "titulo": "تقرير التضخم لأسعار المستهلكين، سبتمبر 2026",
+        "url": "https://api.ncsi.gov.om/uploads/pdfs/consumer_price_inflation__september_2026_ar_1791889556.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-26",
+        "nota": "التغير مقارنة بالشهر المماثل من العام السابق لسلطنة عمان. سنة الأساس 2018. التقرير يصدر في الشهر التالي، فالنقطة تُستخدم حتى 90 يومًا."
+      },
+      "puntos": [["2026-09-01", 3.2]]
+    }
+  ]
+}

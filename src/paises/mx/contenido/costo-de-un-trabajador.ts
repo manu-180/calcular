@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.costo-de-un-trabajador",
-  h1: "¿Cuánto cuesta un trabajador en México en 2026?",
-  title: "Costo de un trabajador 2026: IMSS, Infonavit y más",
+  h1: "¿Cuánto cuesta un trabajador en México en {{anio}}?",
+  title: "Costo de un trabajador {{anio}}: IMSS, Infonavit y más",
   description:
     "Calcula cuánto le cuesta a tu empresa un sueldo: cuotas patronales del IMSS, retiro y cesantía, Infonavit, aguinaldo, prima vacacional e impuesto sobre nómina.",
   intro: [

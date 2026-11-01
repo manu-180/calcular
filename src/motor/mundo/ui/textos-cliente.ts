@@ -1,3 +1,4 @@
+import { cifrasBn, valorPara } from "../../i18n/bengali";
 import type { TextosMundo } from "../../i18n/mundo";
 
 // Los textos que usa el navegador, ya resueltos y sin funciones (una función no cruza a un Client
@@ -10,10 +11,13 @@ const N = 987654;
 const T = 876543;
 const P = "\u0007pct\u0007";
 
-const conMarcas = (s: string) => s.replaceAll(String(N), "{n}").replaceAll(String(T), "{total}").replaceAll(P, "{pct}");
+// bn escribe los números con cifrasBn: el centinela llega en dígitos bengalíes (ADR 0002, D14).
+const conMarcas = (s: string) =>
+  s.replaceAll(String(N), "{n}").replaceAll(cifrasBn(N), "{n}").replaceAll(String(T), "{total}").replaceAll(cifrasBn(T), "{total}").replaceAll(P, "{pct}");
 
 export function rellenar(plantilla: string, valores: Readonly<Record<string, string | number>>): string {
-  return plantilla.replace(/\{(\w+)\}/g, (todo, clave: string) => (clave in valores ? String(valores[clave]) : todo));
+  const valor = valorPara(plantilla);
+  return plantilla.replace(/\{(\w+)\}/g, (todo, clave: string) => (clave in valores ? valor(valores[clave]) : todo));
 }
 
 // Parte una frase en la fecha: [antes, después]. La fecha se dibuja aparte, grande.
@@ -34,7 +38,7 @@ export function textosCliente(t: TextosMundo, paises: readonly { iso: string; no
       dias: conMarcas(t.heroe.dias(N, T)),
       enMano: t.heroe.enMano,
       porMes: t.heroe.porMes,
-      anio: conMarcas(t.heroe.anio(N - 1, N, T)).replaceAll(String(N - 1), "{anio}"),
+      anio: conMarcas(t.heroe.anio(N - 1, N, T)).replaceAll(String(N - 1), "{anio}").replaceAll(cifrasBn(N - 1), "{anio}"),
       resto: t.heroe.resto,
     },
     ranking: {

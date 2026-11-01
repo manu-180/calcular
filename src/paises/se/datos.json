@@ -1,0 +1,2530 @@
+{
+  "mercado": "se",
+  "datos": [
+    {
+      "id": "se.prisbasbelopp",
+      "nombre": "Prisbasbelopp",
+      "tipo": "numero",
+      "unidad": "SEK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 59200,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Belopp och procentsatser för inkomståret 2026",
+            "url": "https://skatteverket.se/download/18.1522bf3f19aea8075ba3285/1767885159120/belopp-och-procentsatser-for-inkomstaret-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.forhojt-prisbasbelopp",
+      "nombre": "Förhöjt prisbasbelopp",
+      "tipo": "numero",
+      "unidad": "SEK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60500,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Belopp och procentsatser för inkomståret 2026",
+            "url": "https://skatteverket.se/download/18.1522bf3f19aea8075ba3285/1767885159120/belopp-och-procentsatser-for-inkomstaret-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.inkomstbasbelopp",
+      "nombre": "Inkomstbasbelopp",
+      "tipo": "numero",
+      "unidad": "SEK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 83400,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Belopp och procentsatser för inkomståret 2026",
+            "url": "https://skatteverket.se/download/18.1522bf3f19aea8075ba3285/1767885159120/belopp-och-procentsatser-for-inkomstaret-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.skiktgrans",
+      "nombre": "Skiktgräns för statlig inkomstskatt",
+      "tipo": "numero",
+      "unidad": "SEK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 643000,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Belopp och procentsatser för inkomståret 2026",
+            "url": "https://skatteverket.se/download/18.1522bf3f19aea8075ba3285/1767885159120/belopp-och-procentsatser-for-inkomstaret-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.statlig-inkomstskatt",
+      "nombre": "Statlig inkomstskatt på förvärvsinkomst över skiktgränsen",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Teknisk beskrivning för skattetabeller 2026 (SKV 433, utgåva 36)",
+            "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba55c/1766385913260/teknisk-beskrivning-skv-433-2026-utgava-36.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.kommunalskatt",
+      "nombre": "Kommunal inkomstskatt per kommun (kommun och region)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ale": "Ale",
+        "alingsas": "Alingsås",
+        "alvesta": "Alvesta",
+        "aneby": "Aneby",
+        "arboga": "Arboga",
+        "arjeplog": "Arjeplog",
+        "arvidsjaur": "Arvidsjaur",
+        "arvika": "Arvika",
+        "askersund": "Askersund",
+        "avesta": "Avesta",
+        "bengtsfors": "Bengtsfors",
+        "berg": "Berg",
+        "bjurholm": "Bjurholm",
+        "bjuv": "Bjuv",
+        "boden": "Boden",
+        "bollebygd": "Bollebygd",
+        "bollnas": "Bollnäs",
+        "borgholm": "Borgholm",
+        "borlange": "Borlänge",
+        "boras": "Borås",
+        "botkyrka": "Botkyrka",
+        "boxholm": "Boxholm",
+        "bromolla": "Bromölla",
+        "bracke": "Bräcke",
+        "burlov": "Burlöv",
+        "bastad": "Båstad",
+        "dals-ed": "Dals-Ed",
+        "danderyd": "Danderyd",
+        "degerfors": "Degerfors",
+        "dorotea": "Dorotea",
+        "eda": "Eda",
+        "ekero": "Ekerö",
+        "eksjo": "Eksjö",
+        "emmaboda": "Emmaboda",
+        "enkoping": "Enköping",
+        "eskilstuna": "Eskilstuna",
+        "eslov": "Eslöv",
+        "essunga": "Essunga",
+        "fagersta": "Fagersta",
+        "falkenberg": "Falkenberg",
+        "falkoping": "Falköping",
+        "falun": "Falun",
+        "filipstad": "Filipstad",
+        "finspang": "Finspång",
+        "flen": "Flen",
+        "forshaga": "Forshaga",
+        "fargelanda": "Färgelanda",
+        "gagnef": "Gagnef",
+        "gislaved": "Gislaved",
+        "gnesta": "Gnesta",
+        "gnosjo": "Gnosjö",
+        "gotland": "Gotland",
+        "grums": "Grums",
+        "grastorp": "Grästorp",
+        "gullspang": "Gullspång",
+        "gallivare": "Gällivare",
+        "gavle": "Gävle",
+        "goteborg": "Göteborg",
+        "gotene": "Götene",
+        "habo": "Habo",
+        "hagfors": "Hagfors",
+        "hallsberg": "Hallsberg",
+        "hallstahammar": "Hallstahammar",
+        "halmstad": "Halmstad",
+        "hammaro": "Hammarö",
+        "haninge": "Haninge",
+        "haparanda": "Haparanda",
+        "heby": "Heby",
+        "hedemora": "Hedemora",
+        "helsingborg": "Helsingborg",
+        "herrljunga": "Herrljunga",
+        "hjo": "Hjo",
+        "hofors": "Hofors",
+        "huddinge": "Huddinge",
+        "hudiksvall": "Hudiksvall",
+        "hultsfred": "Hultsfred",
+        "hylte": "Hylte",
+        "haabo": "Håbo",
+        "hallefors": "Hällefors",
+        "harjedalen": "Härjedalen",
+        "harnosand": "Härnösand",
+        "harryda": "Härryda",
+        "hassleholm": "Hässleholm",
+        "hoganas": "Höganäs",
+        "hogsby": "Högsby",
+        "horby": "Hörby",
+        "hoor": "Höör",
+        "jokkmokk": "Jokkmokk",
+        "jarfalla": "Järfälla",
+        "jonkoping": "Jönköping",
+        "kalix": "Kalix",
+        "kalmar": "Kalmar",
+        "karlsborg": "Karlsborg",
+        "karlshamn": "Karlshamn",
+        "karlskoga": "Karlskoga",
+        "karlskrona": "Karlskrona",
+        "karlstad": "Karlstad",
+        "katrineholm": "Katrineholm",
+        "kil": "Kil",
+        "kinda": "Kinda",
+        "kiruna": "Kiruna",
+        "klippan": "Klippan",
+        "knivsta": "Knivsta",
+        "kramfors": "Kramfors",
+        "kristianstad": "Kristianstad",
+        "kristinehamn": "Kristinehamn",
+        "krokom": "Krokom",
+        "kumla": "Kumla",
+        "kungsbacka": "Kungsbacka",
+        "kungsor": "Kungsör",
+        "kungalv": "Kungälv",
+        "kavlinge": "Kävlinge",
+        "koping": "Köping",
+        "laholm": "Laholm",
+        "landskrona": "Landskrona",
+        "laxa": "Laxå",
+        "lekeberg": "Lekeberg",
+        "leksand": "Leksand",
+        "lerum": "Lerum",
+        "lessebo": "Lessebo",
+        "lidingo": "Lidingö",
+        "lidkoping": "Lidköping",
+        "lilla-edet": "Lilla Edet",
+        "lindesberg": "Lindesberg",
+        "linkoping": "Linköping",
+        "ljungby": "Ljungby",
+        "ljusdal": "Ljusdal",
+        "ljusnarsberg": "Ljusnarsberg",
+        "lomma": "Lomma",
+        "ludvika": "Ludvika",
+        "lulea": "Luleå",
+        "lund": "Lund",
+        "lycksele": "Lycksele",
+        "lysekil": "Lysekil",
+        "malmo": "Malmö",
+        "malung-salen": "Malung-Sälen",
+        "mala": "Malå",
+        "mariestad": "Mariestad",
+        "mark": "Mark",
+        "markaryd": "Markaryd",
+        "mellerud": "Mellerud",
+        "mjolby": "Mjölby",
+        "mora": "Mora",
+        "motala": "Motala",
+        "mullsjo": "Mullsjö",
+        "munkedal": "Munkedal",
+        "munkfors": "Munkfors",
+        "molndal": "Mölndal",
+        "monsteras": "Mönsterås",
+        "morbylanga": "Mörbylånga",
+        "nacka": "Nacka",
+        "nora": "Nora",
+        "norberg": "Norberg",
+        "nordanstig": "Nordanstig",
+        "nordmaling": "Nordmaling",
+        "norrkoping": "Norrköping",
+        "norrtalje": "Norrtälje",
+        "norsjo": "Norsjö",
+        "nybro": "Nybro",
+        "nykvarn": "Nykvarn",
+        "nykoping": "Nyköping",
+        "nynashamn": "Nynäshamn",
+        "nassjo": "Nässjö",
+        "ockelbo": "Ockelbo",
+        "olofstrom": "Olofström",
+        "orsa": "Orsa",
+        "orust": "Orust",
+        "osby": "Osby",
+        "oskarshamn": "Oskarshamn",
+        "ovanaker": "Ovanåker",
+        "oxelosund": "Oxelösund",
+        "pajala": "Pajala",
+        "partille": "Partille",
+        "perstorp": "Perstorp",
+        "pitea": "Piteå",
+        "ragunda": "Ragunda",
+        "robertsfors": "Robertsfors",
+        "ronneby": "Ronneby",
+        "rattvik": "Rättvik",
+        "sala": "Sala",
+        "salem": "Salem",
+        "sandviken": "Sandviken",
+        "sigtuna": "Sigtuna",
+        "simrishamn": "Simrishamn",
+        "sjobo": "Sjöbo",
+        "skara": "Skara",
+        "skelleftea": "Skellefteå",
+        "skinnskatteberg": "Skinnskatteberg",
+        "skurup": "Skurup",
+        "skovde": "Skövde",
+        "smedjebacken": "Smedjebacken",
+        "solleftea": "Sollefteå",
+        "sollentuna": "Sollentuna",
+        "solna": "Solna",
+        "sorsele": "Sorsele",
+        "sotenas": "Sotenäs",
+        "staffanstorp": "Staffanstorp",
+        "stenungsund": "Stenungsund",
+        "stockholm": "Stockholm",
+        "storfors": "Storfors",
+        "storuman": "Storuman",
+        "strangnas": "Strängnäs",
+        "stromstad": "Strömstad",
+        "stromsund": "Strömsund",
+        "sundbyberg": "Sundbyberg",
+        "sundsvall": "Sundsvall",
+        "sunne": "Sunne",
+        "surahammar": "Surahammar",
+        "svalov": "Svalöv",
+        "svedala": "Svedala",
+        "svenljunga": "Svenljunga",
+        "saffle": "Säffle",
+        "sater": "Säter",
+        "savsjo": "Sävsjö",
+        "soderhamn": "Söderhamn",
+        "soderkoping": "Söderköping",
+        "sodertalje": "Södertälje",
+        "solvesborg": "Sölvesborg",
+        "tanum": "Tanum",
+        "tibro": "Tibro",
+        "tidaholm": "Tidaholm",
+        "tierp": "Tierp",
+        "timra": "Timrå",
+        "tingsryd": "Tingsryd",
+        "tjorn": "Tjörn",
+        "tomelilla": "Tomelilla",
+        "torsby": "Torsby",
+        "torsas": "Torsås",
+        "tranemo": "Tranemo",
+        "tranas": "Tranås",
+        "trelleborg": "Trelleborg",
+        "trollhattan": "Trollhättan",
+        "trosa": "Trosa",
+        "tyreso": "Tyresö",
+        "taby": "Täby",
+        "toreboda": "Töreboda",
+        "uddevalla": "Uddevalla",
+        "ulricehamn": "Ulricehamn",
+        "umea": "Umeå",
+        "upplands-bro": "Upplands-Bro",
+        "upplands-vasby": "Upplands Väsby",
+        "uppsala": "Uppsala",
+        "uppvidinge": "Uppvidinge",
+        "vadstena": "Vadstena",
+        "vaggeryd": "Vaggeryd",
+        "valdemarsvik": "Valdemarsvik",
+        "vallentuna": "Vallentuna",
+        "vansbro": "Vansbro",
+        "vara": "Vara",
+        "varberg": "Varberg",
+        "vaxholm": "Vaxholm",
+        "vellinge": "Vellinge",
+        "vetlanda": "Vetlanda",
+        "vilhelmina": "Vilhelmina",
+        "vimmerby": "Vimmerby",
+        "vindeln": "Vindeln",
+        "vingaker": "Vingåker",
+        "vargarda": "Vårgårda",
+        "vanersborg": "Vänersborg",
+        "vannas": "Vännäs",
+        "varmdo": "Värmdö",
+        "varnamo": "Värnamo",
+        "vastervik": "Västervik",
+        "vasteras": "Västerås",
+        "vaxjo": "Växjö",
+        "ydre": "Ydre",
+        "ystad": "Ystad",
+        "amal": "Åmål",
+        "ange": "Ånge",
+        "are": "Åre",
+        "arjang": "Årjäng",
+        "asele": "Åsele",
+        "astorp": "Åstorp",
+        "atvidaberg": "Åtvidaberg",
+        "almhult": "Älmhult",
+        "alvdalen": "Älvdalen",
+        "alvkarleby": "Älvkarleby",
+        "alvsbyn": "Älvsbyn",
+        "angelholm": "Ängelholm",
+        "ockero": "Öckerö",
+        "odeshog": "Ödeshög",
+        "orebro": "Örebro",
+        "orkelljunga": "Örkelljunga",
+        "ornskoldsvik": "Örnsköldsvik",
+        "ostersund": "Östersund",
+        "osteraker": "Österåker",
+        "osthammar": "Östhammar",
+        "ostra-goinge": "Östra Göinge",
+        "overkalix": "Överkalix",
+        "overtornea": "Övertorneå"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ale": 32.8,
+            "alingsas": 32.84,
+            "alvesta": 33.42,
+            "aneby": 33.85,
+            "arboga": 33.29,
+            "arjeplog": 34.84,
+            "arvidsjaur": 34.14,
+            "arvika": 34.03,
+            "askersund": 34.15,
+            "avesta": 33.95,
+            "bengtsfors": 34.4,
+            "berg": 34.22,
+            "bjurholm": 35.0,
+            "bjuv": 32.17,
+            "boden": 33.94,
+            "bollebygd": 33.07,
+            "bollnas": 33.37,
+            "borgholm": 33.44,
+            "borlange": 34.4,
+            "boras": 32.79,
+            "botkyrka": 32.23,
+            "boxholm": 33.37,
+            "bromolla": 33.74,
+            "bracke": 35.09,
+            "burlov": 31.27,
+            "bastad": 31.41,
+            "dals-ed": 34.69,
+            "danderyd": 30.58,
+            "degerfors": 35.3,
+            "dorotea": 35.65,
+            "eda": 34.55,
+            "ekero": 31.45,
+            "eksjo": 34.02,
+            "emmaboda": 33.82,
+            "enkoping": 33.05,
+            "eskilstuna": 32.85,
+            "eslov": 31.72,
+            "essunga": 33.05,
+            "fagersta": 32.99,
+            "falkenberg": 32.5,
+            "falkoping": 33.43,
+            "falun": 34.05,
+            "filipstad": 34.55,
+            "finspang": 33.7,
+            "flen": 33.1,
+            "forshaga": 34.63,
+            "fargelanda": 34.39,
+            "gagnef": 34.27,
+            "gislaved": 33.75,
+            "gnesta": 32.95,
+            "gnosjo": 34.0,
+            "gotland": 33.6,
+            "grums": 34.78,
+            "grastorp": 33.47,
+            "gullspang": 33.97,
+            "gallivare": 33.89,
+            "gavle": 33.77,
+            "goteborg": 32.6,
+            "gotene": 33.6,
+            "habo": 33.93,
+            "hagfors": 34.3,
+            "hallsberg": 33.85,
+            "hallstahammar": 32.69,
+            "halmstad": 32.38,
+            "hammaro": 35.05,
+            "haninge": 31.28,
+            "haparanda": 33.84,
+            "heby": 34.21,
+            "hedemora": 34.15,
+            "helsingborg": 31.39,
+            "herrljunga": 33.62,
+            "hjo": 33.48,
+            "hofors": 34.37,
+            "huddinge": 31.71,
+            "hudiksvall": 33.12,
+            "hultsfred": 33.77,
+            "hylte": 33.85,
+            "haabo": 33.3,
+            "hallefors": 34.35,
+            "harjedalen": 34.17,
+            "harnosand": 34.63,
+            "harryda": 31.98,
+            "hassleholm": 32.38,
+            "hoganas": 30.91,
+            "hogsby": 34.07,
+            "horby": 32.26,
+            "hoor": 32.63,
+            "jokkmokk": 34.29,
+            "jarfalla": 31.52,
+            "jonkoping": 33.4,
+            "kalix": 33.89,
+            "kalmar": 33.67,
+            "karlsborg": 32.8,
+            "karlshamn": 33.8,
+            "karlskoga": 34.3,
+            "karlskrona": 33.69,
+            "karlstad": 33.55,
+            "katrineholm": 32.95,
+            "kil": 34.63,
+            "kinda": 33.0,
+            "kiruna": 34.39,
+            "klippan": 31.93,
+            "knivsta": 32.62,
+            "kramfors": 34.43,
+            "kristianstad": 32.64,
+            "kristinehamn": 34.25,
+            "krokom": 33.87,
+            "kumla": 33.84,
+            "kungsbacka": 32.58,
+            "kungsor": 32.91,
+            "kungalv": 32.92,
+            "kavlinge": 29.59,
+            "koping": 33.04,
+            "laholm": 32.8,
+            "landskrona": 31.42,
+            "laxa": 35.0,
+            "lekeberg": 33.73,
+            "leksand": 33.8,
+            "lerum": 32.03,
+            "lessebo": 33.81,
+            "lidingo": 29.67,
+            "lidkoping": 32.74,
+            "lilla-edet": 33.85,
+            "lindesberg": 34.6,
+            "linkoping": 31.75,
+            "ljungby": 33.07,
+            "ljusdal": 33.87,
+            "ljusnarsberg": 33.8,
+            "lomma": 30.72,
+            "ludvika": 34.05,
+            "lulea": 33.84,
+            "lund": 32.42,
+            "lycksele": 34.9,
+            "lysekil": 33.94,
+            "malmo": 32.42,
+            "malung-salen": 34.45,
+            "mala": 35.2,
+            "mariestad": 32.74,
+            "mark": 32.99,
+            "markaryd": 33.31,
+            "mellerud": 34.08,
+            "mjolby": 33.45,
+            "mora": 34.32,
+            "motala": 33.25,
+            "mullsjo": 34.1,
+            "munkedal": 34.86,
+            "munkfors": 34.3,
+            "molndal": 31.99,
+            "monsteras": 34.07,
+            "morbylanga": 34.07,
+            "nacka": 30.11,
+            "nora": 34.55,
+            "norberg": 33.54,
+            "nordanstig": 34.02,
+            "nordmaling": 35.1,
+            "norrkoping": 33.3,
+            "norrtalje": 32.05,
+            "norsjo": 35.2,
+            "nybro": 34.19,
+            "nykvarn": 32.3,
+            "nykoping": 32.25,
+            "nynashamn": 32.18,
+            "nassjo": 34.3,
+            "ockelbo": 34.27,
+            "olofstrom": 33.75,
+            "orsa": 34.3,
+            "orust": 33.69,
+            "osby": 33.99,
+            "oskarshamn": 34.21,
+            "ovanaker": 33.37,
+            "oxelosund": 33.05,
+            "pajala": 34.74,
+            "partille": 31.36,
+            "perstorp": 31.99,
+            "pitea": 33.59,
+            "ragunda": 34.92,
+            "robertsfors": 35.0,
+            "ronneby": 33.68,
+            "rattvik": 33.8,
+            "sala": 33.19,
+            "salem": 32.0,
+            "sandviken": 33.12,
+            "sigtuna": 31.83,
+            "simrishamn": 31.69,
+            "sjobo": 32.1,
+            "skara": 33.38,
+            "skelleftea": 34.45,
+            "skinnskatteberg": 33.34,
+            "skurup": 31.6,
+            "skovde": 33.09,
+            "smedjebacken": 34.44,
+            "solleftea": 34.68,
+            "sollentuna": 30.45,
+            "solna": 29.7,
+            "sorsele": 35.45,
+            "sotenas": 33.47,
+            "staffanstorp": 30.12,
+            "stenungsund": 33.12,
+            "stockholm": 30.55,
+            "storfors": 34.98,
+            "storuman": 34.95,
+            "strangnas": 32.5,
+            "stromstad": 33.39,
+            "stromsund": 34.92,
+            "sundbyberg": 31.58,
+            "sundsvall": 33.88,
+            "sunne": 33.75,
+            "surahammar": 33.19,
+            "svalov": 31.92,
+            "svedala": 31.42,
+            "svenljunga": 33.53,
+            "saffle": 33.8,
+            "sater": 34.3,
+            "savsjo": 33.68,
+            "soderhamn": 33.17,
+            "soderkoping": 33.53,
+            "sodertalje": 32.38,
+            "solvesborg": 33.86,
+            "tanum": 33.04,
+            "tibro": 33.19,
+            "tidaholm": 33.55,
+            "tierp": 33.0,
+            "timra": 34.38,
+            "tingsryd": 34.0,
+            "tjorn": 33.19,
+            "tomelilla": 31.79,
+            "torsby": 34.3,
+            "torsas": 33.79,
+            "tranemo": 32.98,
+            "tranas": 33.77,
+            "trelleborg": 31.58,
+            "trollhattan": 33.84,
+            "trosa": 32.03,
+            "tyreso": 31.83,
+            "taby": 29.88,
+            "toreboda": 33.2,
+            "uddevalla": 33.64,
+            "ulricehamn": 32.53,
+            "umea": 34.65,
+            "upplands-bro": 31.73,
+            "upplands-vasby": 31.75,
+            "uppsala": 32.85,
+            "uppvidinge": 33.8,
+            "vadstena": 34.35,
+            "vaggeryd": 33.25,
+            "valdemarsvik": 34.03,
+            "vallentuna": 31.23,
+            "vansbro": 34.28,
+            "vara": 33.25,
+            "varberg": 31.73,
+            "vaxholm": 31.63,
+            "vellinge": 29.68,
+            "vetlanda": 33.77,
+            "vilhelmina": 35.5,
+            "vimmerby": 34.22,
+            "vindeln": 35.2,
+            "vingaker": 33.5,
+            "vargarda": 33.09,
+            "vanersborg": 33.69,
+            "vannas": 35.2,
+            "varmdo": 31.31,
+            "varnamo": 33.28,
+            "vastervik": 33.02,
+            "vasteras": 31.24,
+            "vaxjo": 32.19,
+            "ydre": 34.1,
+            "ystad": 31.29,
+            "amal": 33.94,
+            "ange": 34.62,
+            "are": 33.92,
+            "arjang": 34.25,
+            "asele": 35.45,
+            "astorp": 31.47,
+            "atvidaberg": 33.94,
+            "almhult": 33.86,
+            "alvdalen": 34.77,
+            "alvkarleby": 34.4,
+            "alvsbyn": 33.79,
+            "angelholm": 31.35,
+            "ockero": 33.04,
+            "odeshog": 33.95,
+            "orebro": 33.65,
+            "orkelljunga": 30.24,
+            "ornskoldsvik": 33.85,
+            "ostersund": 33.72,
+            "osteraker": 28.93,
+            "osthammar": 33.3,
+            "ostra-goinge": 32.17,
+            "overkalix": 34.14,
+            "overtornea": 33.84
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Kommunala skattesatser 2026 (textfil)",
+            "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba428/1765291540367/skattesatser-kommuner-2026.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Kommunalskatt plus regionskatt (landstingsskatt) per kommun, utan begravningsavgift och kyrkoavgift."
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.begravningsavgift",
+      "nombre": "Begravningsavgift per kommun",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ale": "Ale",
+        "alingsas": "Alingsås",
+        "alvesta": "Alvesta",
+        "aneby": "Aneby",
+        "arboga": "Arboga",
+        "arjeplog": "Arjeplog",
+        "arvidsjaur": "Arvidsjaur",
+        "arvika": "Arvika",
+        "askersund": "Askersund",
+        "avesta": "Avesta",
+        "bengtsfors": "Bengtsfors",
+        "berg": "Berg",
+        "bjurholm": "Bjurholm",
+        "bjuv": "Bjuv",
+        "boden": "Boden",
+        "bollebygd": "Bollebygd",
+        "bollnas": "Bollnäs",
+        "borgholm": "Borgholm",
+        "borlange": "Borlänge",
+        "boras": "Borås",
+        "botkyrka": "Botkyrka",
+        "boxholm": "Boxholm",
+        "bromolla": "Bromölla",
+        "bracke": "Bräcke",
+        "burlov": "Burlöv",
+        "bastad": "Båstad",
+        "dals-ed": "Dals-Ed",
+        "danderyd": "Danderyd",
+        "degerfors": "Degerfors",
+        "dorotea": "Dorotea",
+        "eda": "Eda",
+        "ekero": "Ekerö",
+        "eksjo": "Eksjö",
+        "emmaboda": "Emmaboda",
+        "enkoping": "Enköping",
+        "eskilstuna": "Eskilstuna",
+        "eslov": "Eslöv",
+        "essunga": "Essunga",
+        "fagersta": "Fagersta",
+        "falkenberg": "Falkenberg",
+        "falkoping": "Falköping",
+        "falun": "Falun",
+        "filipstad": "Filipstad",
+        "finspang": "Finspång",
+        "flen": "Flen",
+        "forshaga": "Forshaga",
+        "fargelanda": "Färgelanda",
+        "gagnef": "Gagnef",
+        "gislaved": "Gislaved",
+        "gnesta": "Gnesta",
+        "gnosjo": "Gnosjö",
+        "gotland": "Gotland",
+        "grums": "Grums",
+        "grastorp": "Grästorp",
+        "gullspang": "Gullspång",
+        "gallivare": "Gällivare",
+        "gavle": "Gävle",
+        "goteborg": "Göteborg",
+        "gotene": "Götene",
+        "habo": "Habo",
+        "hagfors": "Hagfors",
+        "hallsberg": "Hallsberg",
+        "hallstahammar": "Hallstahammar",
+        "halmstad": "Halmstad",
+        "hammaro": "Hammarö",
+        "haninge": "Haninge",
+        "haparanda": "Haparanda",
+        "heby": "Heby",
+        "hedemora": "Hedemora",
+        "helsingborg": "Helsingborg",
+        "herrljunga": "Herrljunga",
+        "hjo": "Hjo",
+        "hofors": "Hofors",
+        "huddinge": "Huddinge",
+        "hudiksvall": "Hudiksvall",
+        "hultsfred": "Hultsfred",
+        "hylte": "Hylte",
+        "haabo": "Håbo",
+        "hallefors": "Hällefors",
+        "harjedalen": "Härjedalen",
+        "harnosand": "Härnösand",
+        "harryda": "Härryda",
+        "hassleholm": "Hässleholm",
+        "hoganas": "Höganäs",
+        "hogsby": "Högsby",
+        "horby": "Hörby",
+        "hoor": "Höör",
+        "jokkmokk": "Jokkmokk",
+        "jarfalla": "Järfälla",
+        "jonkoping": "Jönköping",
+        "kalix": "Kalix",
+        "kalmar": "Kalmar",
+        "karlsborg": "Karlsborg",
+        "karlshamn": "Karlshamn",
+        "karlskoga": "Karlskoga",
+        "karlskrona": "Karlskrona",
+        "karlstad": "Karlstad",
+        "katrineholm": "Katrineholm",
+        "kil": "Kil",
+        "kinda": "Kinda",
+        "kiruna": "Kiruna",
+        "klippan": "Klippan",
+        "knivsta": "Knivsta",
+        "kramfors": "Kramfors",
+        "kristianstad": "Kristianstad",
+        "kristinehamn": "Kristinehamn",
+        "krokom": "Krokom",
+        "kumla": "Kumla",
+        "kungsbacka": "Kungsbacka",
+        "kungsor": "Kungsör",
+        "kungalv": "Kungälv",
+        "kavlinge": "Kävlinge",
+        "koping": "Köping",
+        "laholm": "Laholm",
+        "landskrona": "Landskrona",
+        "laxa": "Laxå",
+        "lekeberg": "Lekeberg",
+        "leksand": "Leksand",
+        "lerum": "Lerum",
+        "lessebo": "Lessebo",
+        "lidingo": "Lidingö",
+        "lidkoping": "Lidköping",
+        "lilla-edet": "Lilla Edet",
+        "lindesberg": "Lindesberg",
+        "linkoping": "Linköping",
+        "ljungby": "Ljungby",
+        "ljusdal": "Ljusdal",
+        "ljusnarsberg": "Ljusnarsberg",
+        "lomma": "Lomma",
+        "ludvika": "Ludvika",
+        "lulea": "Luleå",
+        "lund": "Lund",
+        "lycksele": "Lycksele",
+        "lysekil": "Lysekil",
+        "malmo": "Malmö",
+        "malung-salen": "Malung-Sälen",
+        "mala": "Malå",
+        "mariestad": "Mariestad",
+        "mark": "Mark",
+        "markaryd": "Markaryd",
+        "mellerud": "Mellerud",
+        "mjolby": "Mjölby",
+        "mora": "Mora",
+        "motala": "Motala",
+        "mullsjo": "Mullsjö",
+        "munkedal": "Munkedal",
+        "munkfors": "Munkfors",
+        "molndal": "Mölndal",
+        "monsteras": "Mönsterås",
+        "morbylanga": "Mörbylånga",
+        "nacka": "Nacka",
+        "nora": "Nora",
+        "norberg": "Norberg",
+        "nordanstig": "Nordanstig",
+        "nordmaling": "Nordmaling",
+        "norrkoping": "Norrköping",
+        "norrtalje": "Norrtälje",
+        "norsjo": "Norsjö",
+        "nybro": "Nybro",
+        "nykvarn": "Nykvarn",
+        "nykoping": "Nyköping",
+        "nynashamn": "Nynäshamn",
+        "nassjo": "Nässjö",
+        "ockelbo": "Ockelbo",
+        "olofstrom": "Olofström",
+        "orsa": "Orsa",
+        "orust": "Orust",
+        "osby": "Osby",
+        "oskarshamn": "Oskarshamn",
+        "ovanaker": "Ovanåker",
+        "oxelosund": "Oxelösund",
+        "pajala": "Pajala",
+        "partille": "Partille",
+        "perstorp": "Perstorp",
+        "pitea": "Piteå",
+        "ragunda": "Ragunda",
+        "robertsfors": "Robertsfors",
+        "ronneby": "Ronneby",
+        "rattvik": "Rättvik",
+        "sala": "Sala",
+        "salem": "Salem",
+        "sandviken": "Sandviken",
+        "sigtuna": "Sigtuna",
+        "simrishamn": "Simrishamn",
+        "sjobo": "Sjöbo",
+        "skara": "Skara",
+        "skelleftea": "Skellefteå",
+        "skinnskatteberg": "Skinnskatteberg",
+        "skurup": "Skurup",
+        "skovde": "Skövde",
+        "smedjebacken": "Smedjebacken",
+        "solleftea": "Sollefteå",
+        "sollentuna": "Sollentuna",
+        "solna": "Solna",
+        "sorsele": "Sorsele",
+        "sotenas": "Sotenäs",
+        "staffanstorp": "Staffanstorp",
+        "stenungsund": "Stenungsund",
+        "stockholm": "Stockholm",
+        "storfors": "Storfors",
+        "storuman": "Storuman",
+        "strangnas": "Strängnäs",
+        "stromstad": "Strömstad",
+        "stromsund": "Strömsund",
+        "sundbyberg": "Sundbyberg",
+        "sundsvall": "Sundsvall",
+        "sunne": "Sunne",
+        "surahammar": "Surahammar",
+        "svalov": "Svalöv",
+        "svedala": "Svedala",
+        "svenljunga": "Svenljunga",
+        "saffle": "Säffle",
+        "sater": "Säter",
+        "savsjo": "Sävsjö",
+        "soderhamn": "Söderhamn",
+        "soderkoping": "Söderköping",
+        "sodertalje": "Södertälje",
+        "solvesborg": "Sölvesborg",
+        "tanum": "Tanum",
+        "tibro": "Tibro",
+        "tidaholm": "Tidaholm",
+        "tierp": "Tierp",
+        "timra": "Timrå",
+        "tingsryd": "Tingsryd",
+        "tjorn": "Tjörn",
+        "tomelilla": "Tomelilla",
+        "torsby": "Torsby",
+        "torsas": "Torsås",
+        "tranemo": "Tranemo",
+        "tranas": "Tranås",
+        "trelleborg": "Trelleborg",
+        "trollhattan": "Trollhättan",
+        "trosa": "Trosa",
+        "tyreso": "Tyresö",
+        "taby": "Täby",
+        "toreboda": "Töreboda",
+        "uddevalla": "Uddevalla",
+        "ulricehamn": "Ulricehamn",
+        "umea": "Umeå",
+        "upplands-bro": "Upplands-Bro",
+        "upplands-vasby": "Upplands Väsby",
+        "uppsala": "Uppsala",
+        "uppvidinge": "Uppvidinge",
+        "vadstena": "Vadstena",
+        "vaggeryd": "Vaggeryd",
+        "valdemarsvik": "Valdemarsvik",
+        "vallentuna": "Vallentuna",
+        "vansbro": "Vansbro",
+        "vara": "Vara",
+        "varberg": "Varberg",
+        "vaxholm": "Vaxholm",
+        "vellinge": "Vellinge",
+        "vetlanda": "Vetlanda",
+        "vilhelmina": "Vilhelmina",
+        "vimmerby": "Vimmerby",
+        "vindeln": "Vindeln",
+        "vingaker": "Vingåker",
+        "vargarda": "Vårgårda",
+        "vanersborg": "Vänersborg",
+        "vannas": "Vännäs",
+        "varmdo": "Värmdö",
+        "varnamo": "Värnamo",
+        "vastervik": "Västervik",
+        "vasteras": "Västerås",
+        "vaxjo": "Växjö",
+        "ydre": "Ydre",
+        "ystad": "Ystad",
+        "amal": "Åmål",
+        "ange": "Ånge",
+        "are": "Åre",
+        "arjang": "Årjäng",
+        "asele": "Åsele",
+        "astorp": "Åstorp",
+        "atvidaberg": "Åtvidaberg",
+        "almhult": "Älmhult",
+        "alvdalen": "Älvdalen",
+        "alvkarleby": "Älvkarleby",
+        "alvsbyn": "Älvsbyn",
+        "angelholm": "Ängelholm",
+        "ockero": "Öckerö",
+        "odeshog": "Ödeshög",
+        "orebro": "Örebro",
+        "orkelljunga": "Örkelljunga",
+        "ornskoldsvik": "Örnsköldsvik",
+        "ostersund": "Östersund",
+        "osteraker": "Österåker",
+        "osthammar": "Östhammar",
+        "ostra-goinge": "Östra Göinge",
+        "overkalix": "Överkalix",
+        "overtornea": "Övertorneå"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ale": 0.292,
+            "alingsas": 0.292,
+            "alvesta": 0.292,
+            "aneby": 0.292,
+            "arboga": 0.292,
+            "arjeplog": 0.292,
+            "arvidsjaur": 0.292,
+            "arvika": 0.292,
+            "askersund": 0.292,
+            "avesta": 0.292,
+            "bengtsfors": 0.292,
+            "berg": 0.292,
+            "bjurholm": 0.292,
+            "bjuv": 0.292,
+            "boden": 0.292,
+            "bollebygd": 0.292,
+            "bollnas": 0.292,
+            "borgholm": 0.292,
+            "borlange": 0.292,
+            "boras": 0.292,
+            "botkyrka": 0.292,
+            "boxholm": 0.292,
+            "bromolla": 0.292,
+            "bracke": 0.292,
+            "burlov": 0.292,
+            "bastad": 0.292,
+            "dals-ed": 0.292,
+            "danderyd": 0.292,
+            "degerfors": 0.292,
+            "dorotea": 0.292,
+            "eda": 0.292,
+            "ekero": 0.292,
+            "eksjo": 0.292,
+            "emmaboda": 0.292,
+            "enkoping": 0.292,
+            "eskilstuna": 0.292,
+            "eslov": 0.292,
+            "essunga": 0.292,
+            "fagersta": 0.292,
+            "falkenberg": 0.292,
+            "falkoping": 0.292,
+            "falun": 0.292,
+            "filipstad": 0.292,
+            "finspang": 0.292,
+            "flen": 0.292,
+            "forshaga": 0.292,
+            "fargelanda": 0.292,
+            "gagnef": 0.292,
+            "gislaved": 0.292,
+            "gnesta": 0.292,
+            "gnosjo": 0.292,
+            "gotland": 0.292,
+            "grums": 0.292,
+            "grastorp": 0.292,
+            "gullspang": 0.292,
+            "gallivare": 0.292,
+            "gavle": 0.292,
+            "goteborg": 0.292,
+            "gotene": 0.292,
+            "habo": 0.292,
+            "hagfors": 0.292,
+            "hallsberg": 0.292,
+            "hallstahammar": 0.292,
+            "halmstad": 0.292,
+            "hammaro": 0.292,
+            "haninge": 0.292,
+            "haparanda": 0.292,
+            "heby": 0.292,
+            "hedemora": 0.292,
+            "helsingborg": 0.292,
+            "herrljunga": 0.292,
+            "hjo": 0.292,
+            "hofors": 0.292,
+            "huddinge": 0.292,
+            "hudiksvall": 0.292,
+            "hultsfred": 0.292,
+            "hylte": 0.292,
+            "haabo": 0.292,
+            "hallefors": 0.292,
+            "harjedalen": 0.292,
+            "harnosand": 0.292,
+            "harryda": 0.292,
+            "hassleholm": 0.292,
+            "hoganas": 0.292,
+            "hogsby": 0.292,
+            "horby": 0.292,
+            "hoor": 0.292,
+            "jokkmokk": 0.292,
+            "jarfalla": 0.292,
+            "jonkoping": 0.292,
+            "kalix": 0.292,
+            "kalmar": 0.292,
+            "karlsborg": 0.292,
+            "karlshamn": 0.292,
+            "karlskoga": 0.292,
+            "karlskrona": 0.292,
+            "karlstad": 0.292,
+            "katrineholm": 0.292,
+            "kil": 0.292,
+            "kinda": 0.292,
+            "kiruna": 0.292,
+            "klippan": 0.292,
+            "knivsta": 0.292,
+            "kramfors": 0.292,
+            "kristianstad": 0.292,
+            "kristinehamn": 0.292,
+            "krokom": 0.292,
+            "kumla": 0.292,
+            "kungsbacka": 0.292,
+            "kungsor": 0.292,
+            "kungalv": 0.292,
+            "kavlinge": 0.292,
+            "koping": 0.292,
+            "laholm": 0.292,
+            "landskrona": 0.292,
+            "laxa": 0.292,
+            "lekeberg": 0.292,
+            "leksand": 0.292,
+            "lerum": 0.292,
+            "lessebo": 0.292,
+            "lidingo": 0.292,
+            "lidkoping": 0.292,
+            "lilla-edet": 0.292,
+            "lindesberg": 0.292,
+            "linkoping": 0.292,
+            "ljungby": 0.292,
+            "ljusdal": 0.292,
+            "ljusnarsberg": 0.292,
+            "lomma": 0.292,
+            "ludvika": 0.292,
+            "lulea": 0.292,
+            "lund": 0.292,
+            "lycksele": 0.292,
+            "lysekil": 0.292,
+            "malmo": 0.292,
+            "malung-salen": 0.292,
+            "mala": 0.292,
+            "mariestad": 0.292,
+            "mark": 0.292,
+            "markaryd": 0.292,
+            "mellerud": 0.292,
+            "mjolby": 0.292,
+            "mora": 0.292,
+            "motala": 0.292,
+            "mullsjo": 0.292,
+            "munkedal": 0.292,
+            "munkfors": 0.292,
+            "molndal": 0.292,
+            "monsteras": 0.292,
+            "morbylanga": 0.292,
+            "nacka": 0.292,
+            "nora": 0.292,
+            "norberg": 0.292,
+            "nordanstig": 0.292,
+            "nordmaling": 0.292,
+            "norrkoping": 0.292,
+            "norrtalje": 0.292,
+            "norsjo": 0.292,
+            "nybro": 0.292,
+            "nykvarn": 0.292,
+            "nykoping": 0.292,
+            "nynashamn": 0.292,
+            "nassjo": 0.292,
+            "ockelbo": 0.292,
+            "olofstrom": 0.292,
+            "orsa": 0.292,
+            "orust": 0.292,
+            "osby": 0.292,
+            "oskarshamn": 0.292,
+            "ovanaker": 0.292,
+            "oxelosund": 0.292,
+            "pajala": 0.292,
+            "partille": 0.292,
+            "perstorp": 0.292,
+            "pitea": 0.292,
+            "ragunda": 0.292,
+            "robertsfors": 0.292,
+            "ronneby": 0.292,
+            "rattvik": 0.292,
+            "sala": 0.292,
+            "salem": 0.292,
+            "sandviken": 0.292,
+            "sigtuna": 0.292,
+            "simrishamn": 0.292,
+            "sjobo": 0.292,
+            "skara": 0.292,
+            "skelleftea": 0.292,
+            "skinnskatteberg": 0.292,
+            "skurup": 0.292,
+            "skovde": 0.292,
+            "smedjebacken": 0.292,
+            "solleftea": 0.292,
+            "sollentuna": 0.292,
+            "solna": 0.292,
+            "sorsele": 0.292,
+            "sotenas": 0.292,
+            "staffanstorp": 0.292,
+            "stenungsund": 0.292,
+            "stockholm": 0.07,
+            "storfors": 0.292,
+            "storuman": 0.292,
+            "strangnas": 0.292,
+            "stromstad": 0.292,
+            "stromsund": 0.292,
+            "sundbyberg": 0.292,
+            "sundsvall": 0.292,
+            "sunne": 0.292,
+            "surahammar": 0.292,
+            "svalov": 0.292,
+            "svedala": 0.292,
+            "svenljunga": 0.292,
+            "saffle": 0.292,
+            "sater": 0.292,
+            "savsjo": 0.292,
+            "soderhamn": 0.292,
+            "soderkoping": 0.292,
+            "sodertalje": 0.292,
+            "solvesborg": 0.292,
+            "tanum": 0.292,
+            "tibro": 0.292,
+            "tidaholm": 0.292,
+            "tierp": 0.292,
+            "timra": 0.292,
+            "tingsryd": 0.292,
+            "tjorn": 0.292,
+            "tomelilla": 0.292,
+            "torsby": 0.292,
+            "torsas": 0.292,
+            "tranemo": 0.292,
+            "tranas": 0.285,
+            "trelleborg": 0.292,
+            "trollhattan": 0.292,
+            "trosa": 0.292,
+            "tyreso": 0.292,
+            "taby": 0.292,
+            "toreboda": 0.292,
+            "uddevalla": 0.292,
+            "ulricehamn": 0.292,
+            "umea": 0.292,
+            "upplands-bro": 0.292,
+            "upplands-vasby": 0.292,
+            "uppsala": 0.292,
+            "uppvidinge": 0.292,
+            "vadstena": 0.292,
+            "vaggeryd": 0.292,
+            "valdemarsvik": 0.292,
+            "vallentuna": 0.292,
+            "vansbro": 0.292,
+            "vara": 0.292,
+            "varberg": 0.292,
+            "vaxholm": 0.292,
+            "vellinge": 0.292,
+            "vetlanda": 0.292,
+            "vilhelmina": 0.292,
+            "vimmerby": 0.292,
+            "vindeln": 0.292,
+            "vingaker": 0.292,
+            "vargarda": 0.292,
+            "vanersborg": 0.292,
+            "vannas": 0.292,
+            "varmdo": 0.292,
+            "varnamo": 0.292,
+            "vastervik": 0.292,
+            "vasteras": 0.292,
+            "vaxjo": 0.292,
+            "ydre": 0.292,
+            "ystad": 0.292,
+            "amal": 0.292,
+            "ange": 0.292,
+            "are": 0.292,
+            "arjang": 0.292,
+            "asele": 0.292,
+            "astorp": 0.292,
+            "atvidaberg": 0.292,
+            "almhult": 0.292,
+            "alvdalen": 0.292,
+            "alvkarleby": 0.292,
+            "alvsbyn": 0.292,
+            "angelholm": 0.292,
+            "ockero": 0.292,
+            "odeshog": 0.292,
+            "orebro": 0.292,
+            "orkelljunga": 0.292,
+            "ornskoldsvik": 0.292,
+            "ostersund": 0.292,
+            "osteraker": 0.292,
+            "osthammar": 0.292,
+            "ostra-goinge": 0.292,
+            "overkalix": 0.292,
+            "overtornea": 0.292
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Kommunala skattesatser 2026 (textfil)",
+            "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba428/1765291540367/skattesatser-kommuner-2026.txt",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24",
+            "nota": "Begravningsavgift per kommun."
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.grundavdrag",
+      "nombre": "Grundavdrag (andelar av prisbasbeloppet)",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "bas": "Grundavdrag vid lägsta inkomst (PBB)",
+        "hogsta": "Högsta grundavdrag (PBB)",
+        "lagsta": "Grundavdrag vid höga inkomster (PBB)",
+        "steg1": "Första brytpunkt (PBB)",
+        "steg2": "Andra brytpunkt (PBB)",
+        "steg3": "Tredje brytpunkt (PBB)",
+        "steg4": "Fjärde brytpunkt (PBB)",
+        "okning": "Ökning över första brytpunkten (%)",
+        "minskning": "Minskning över tredje brytpunkten (%)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "bas": 0.423,
+            "hogsta": 0.77,
+            "lagsta": 0.293,
+            "steg1": 0.99,
+            "steg2": 2.72,
+            "steg3": 3.11,
+            "steg4": 7.88,
+            "okning": 20,
+            "minskning": 10
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Teknisk beskrivning för skattetabeller 2026 (SKV 433, utgåva 36)",
+            "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba55c/1766385913260/teknisk-beskrivning-skv-433-2026-utgava-36.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.jobbskatteavdrag",
+      "nombre": "Skattereduktion för arbetsinkomst, under 66 år (andelar av prisbasbeloppet)",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "steg1": "Första brytpunkt (PBB)",
+        "steg2": "Andra brytpunkt (PBB)",
+        "steg3": "Tredje brytpunkt (PBB)",
+        "sats2": "Andel av inkomsten mellan första och andra brytpunkten (%)",
+        "bas3": "Belopp vid andra brytpunkten (PBB)",
+        "sats3": "Andel av inkomsten mellan andra och tredje brytpunkten (%)",
+        "max": "Högsta underlag (PBB)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "steg1": 0.91,
+            "steg2": 3.24,
+            "steg3": 8.08,
+            "sats2": 38.74,
+            "bas3": 1.813,
+            "sats3": 25.1,
+            "max": 3.027
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Teknisk beskrivning för skattetabeller 2026 (SKV 433, utgåva 36)",
+            "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba55c/1766385913260/teknisk-beskrivning-skv-433-2026-utgava-36.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.allman-pensionsavgift",
+      "nombre": "Allmän pensionsavgift",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "sats": "Avgift (%)",
+        "tak": "Högsta underlag (inkomstbasbelopp)",
+        "golv": "Ingen avgift under (prisbasbelopp)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sats": 7,
+            "tak": 8.07,
+            "golv": 0.423
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Teknisk beskrivning för skattetabeller 2026 (SKV 433, utgåva 36)",
+            "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba55c/1766385913260/teknisk-beskrivning-skv-433-2026-utgava-36.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.public-service-avgift",
+      "nombre": "Public service-avgift",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "sats": "Avgift (%)",
+        "tak": "Högsta underlag (inkomstbasbelopp)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sats": 1,
+            "tak": 1.42
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Teknisk beskrivning för skattetabeller 2026 (SKV 433, utgåva 36)",
+            "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba55c/1766385913260/teknisk-beskrivning-skv-433-2026-utgava-36.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.skattereduktion-forvarvsinkomst",
+      "nombre": "Skattereduktion för förvärvsinkomst",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "golv": "Nedre gräns (kr)",
+        "tak": "Övre gräns (kr)",
+        "sats": "Andel (%)",
+        "max": "Högsta reduktion (kr)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "golv": 40000,
+            "tak": 240000,
+            "sats": 0.75,
+            "max": 1500
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Teknisk beskrivning för skattetabeller 2026 (SKV 433, utgåva 36)",
+            "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba55c/1766385913260/teknisk-beskrivning-skv-433-2026-utgava-36.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.tabell-begravning-trossamfund",
+      "nombre": "Begravningsavgift och avgift till trossamfund i skattetabellerna",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.16,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Teknisk beskrivning för skattetabeller 2026 (SKV 433, utgåva 36)",
+            "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba55c/1766385913260/teknisk-beskrivning-skv-433-2026-utgava-36.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.arbetsgivaravgift",
+      "nombre": "Arbetsgivaravgifter, full avgift",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 31.42,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Arbetsgivaravgifter",
+            "url": "https://skatteverket.se/arbetsgivaravgifter",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.alderspensionsavgift",
+      "nombre": "Ålderspensionsavgift (fyllt 67 år vid årets ingång)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10.21,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Arbetsgivaravgifter",
+            "url": "https://skatteverket.se/arbetsgivaravgifter",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.arbetsgivaravgift-unga",
+      "nombre": "Arbetsgivaravgifter för 19 till 23-åringar",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-03-31",
+          "valor": 31.42,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Arbetsgivaravgifter",
+            "url": "https://skatteverket.se/arbetsgivaravgifter",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-09-30",
+          "valor": 20.81,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Arbetsgivaravgifter",
+            "url": "https://skatteverket.se/arbetsgivaravgifter",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.unga-tak",
+      "nombre": "Högsta ersättning per månad med nedsatta avgifter för unga",
+      "tipo": "numero",
+      "unidad": "SEK",
+      "proximaRevision": "2027-10-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "hasta": "2027-09-30",
+          "valor": 25000,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Arbetsgivaravgifter",
+            "url": "https://skatteverket.se/arbetsgivaravgifter",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.egenavgifter",
+      "nombre": "Egenavgifter",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "full": "Född 1959 eller senare",
+        "aldre": "Fyllt 67 år vid årets ingång (bara ålderspensionsavgift)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "full": 28.97,
+            "aldre": 10.21
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Egenavgifter och särskild löneskatt",
+            "url": "https://www.skatteverket.se/foretag/drivaforetag/foretagsformer/enskildnaringsverksamhet/egenavgifterochsarskildloneskatt.4.361dc8c15312eff6fd1f678.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.schablonavdrag-egenavgifter",
+      "nombre": "Schablonavdrag för egenavgifter",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "full": "Född 1959 eller senare",
+        "aldre": "Fyllt 67 år vid årets ingång"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "full": 25,
+            "aldre": 10
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Egenavgifter och särskild löneskatt",
+            "url": "https://www.skatteverket.se/foretag/drivaforetag/foretagsformer/enskildnaringsverksamhet/egenavgifterochsarskildloneskatt.4.361dc8c15312eff6fd1f678.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.nedsattning-egenavgifter",
+      "nombre": "Nedsättning av egenavgifter",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "sats": "Avdrag (%)",
+        "max": "Högsta avdrag (kr)",
+        "golv": "Överskottet måste överstiga (kr)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "sats": 7.5,
+            "max": 15000,
+            "golv": 40000
+          },
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Lag (2023:748) om särskilt avdrag vid beräkning av egenavgifter och allmän löneavgift i vissa fall, 3 §",
+            "url": "https://data.riksdagen.se/dokument/sfs-2023-748.text",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.momssatser",
+      "nombre": "Momssatser",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "generell": "25 % (de flesta varor och tjänster)",
+        "livsmedel": "Livsmedel och mat för avhämtning",
+        "restaurang": "Restaurang och café (äta på plats)",
+        "bocker": "Böcker, tidningar och persontransporter"
+      },
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-04-01",
+          "valor": {
+            "generell": 25,
+            "livsmedel": 6,
+            "restaurang": 12,
+            "bocker": 6
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Momssatser och undantag från moms",
+            "url": "https://www.skatteverket.se/foretag/moms/saljavarorochtjanster/momssatserochundantagfranmoms.4.58d555751259e4d66168000409.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.uppsagningstid",
+      "nombre": "Uppsägningstid från arbetsgivaren enligt LAS",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "under-2": "Kortare än 2 år",
+        "2-4": "2 till 4 år",
+        "4-6": "4 till 6 år",
+        "6-8": "6 till 8 år",
+        "8-10": "8 till 10 år",
+        "over-10": "10 år eller mer"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-06-30",
+          "valor": {
+            "under-2": 1,
+            "2-4": 2,
+            "4-6": 3,
+            "6-8": 4,
+            "8-10": 5,
+            "over-10": 6
+          },
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Lag (1982:80) om anställningsskydd, 11 §",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-198280-om-anstallningsskydd_sfs-1982-80/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.semesterdagar",
+      "nombre": "Semesterdagar per semesterår",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Semesterlag (1977:480), 4, 7, 16 a och 16 b §§",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.semesterlon-procent",
+      "nombre": "Semesterlön enligt procentregeln",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Semesterlag (1977:480), 4, 7, 16 a och 16 b §§",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.semestertillagg",
+      "nombre": "Semestertillägg per betald semesterdag",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "manad": "Månadslön",
+        "vecka": "Veckolön"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": {
+            "manad": 0.43,
+            "vecka": 1.82
+          },
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Semesterlag (1977:480), 4, 7, 16 a och 16 b §§",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/semesterlag-1977480_sfs-1977-480/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.sjuklon",
+      "nombre": "Sjuklön",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Lag (1991:1047) om sjuklön, 6 §",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-19911047-om-sjuklon_sfs-1991-1047/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.karensavdrag",
+      "nombre": "Karensavdrag (andel av en genomsnittlig veckas sjuklön)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Lag (1991:1047) om sjuklön, 6 §",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-19911047-om-sjuklon_sfs-1991-1047/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.foraldrapenning",
+      "nombre": "Föräldrapenning",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "andel": "Sjukpenningnivå (% av SGI)",
+        "faktor": "Omräkningsfaktor för SGI",
+        "tak": "Tak för SGI (prisbasbelopp)",
+        "grundniva": "Grundnivå (kr per dag)",
+        "lagstaniva": "Lägstanivå (kr per dag)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "andel": 80,
+            "faktor": 0.97,
+            "tak": 10,
+            "grundniva": 250,
+            "lagstaniva": 180
+          },
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Socialförsäkringsbalk (2010:110), 12 kap. 22-26 §§ och 28 kap. 7 och 10 §§",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/socialforsakringsbalk-2010110_sfs-2010-110/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.sjukpenning",
+      "nombre": "Sjukpenning",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "normal": "Normalnivå (% av SGI)",
+        "fortsattning": "Fortsättningsnivå (% av SGI)",
+        "faktor": "Omräkningsfaktor för SGI",
+        "tak": "Tak för SGI (prisbasbelopp)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "normal": 80,
+            "fortsattning": 75,
+            "faktor": 0.97,
+            "tak": 10
+          },
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Socialförsäkringsbalk (2010:110), 25 kap. 5 § och 28 kap. 7 och 10 §§",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/socialforsakringsbalk-2010110_sfs-2010-110/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.barnbidrag",
+      "nombre": "Barnbidrag per barn och månad",
+      "tipo": "numero",
+      "unidad": "SEK",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-03-01",
+          "valor": 1250,
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Socialförsäkringsbalk (2010:110), 15 kap. 3 §",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/socialforsakringsbalk-2010110_sfs-2010-110/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.flerbarnstillagg",
+      "nombre": "Flerbarnstillägg per månad för varje barn",
+      "tipo": "mapa",
+      "unidad": "SEK",
+      "etiquetas": {
+        "2": "Andra barnet",
+        "3": "Tredje barnet",
+        "4": "Fjärde barnet",
+        "5": "Femte barnet och varje barn därefter"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-03-01",
+          "valor": {
+            "2": 150,
+            "3": 580,
+            "4": 1010,
+            "5": 1250
+          },
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Socialförsäkringsbalk (2010:110), 15 kap. 8 §",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/socialforsakringsbalk-2010110_sfs-2010-110/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.kapitalskatt",
+      "nombre": "Skatt på inkomst av kapital",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Avdrag för ränteutgifter",
+            "url": "https://www.skatteverket.se/privat/deklaration/avdragforprivatpersoner/avdragforranteutgifter.106.1b39a64a1919eabb488b87.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.ranteavdrag",
+      "nombre": "Skattereduktion för underskott av kapital",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "sats": "Upp till gränsen (%)",
+        "grans": "Gräns (kr)",
+        "over": "Över gränsen (%)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sats": 30,
+            "grans": 100000,
+            "over": 21
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Avdrag för ränteutgifter",
+            "url": "https://www.skatteverket.se/privat/deklaration/avdragforprivatpersoner/avdragforranteutgifter.106.1b39a64a1919eabb488b87.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.skatt-bostadsvinst",
+      "nombre": "Skatt på vinst vid försäljning av privatbostad",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Räkna ut vinst, förlust och skatt",
+            "url": "https://www.skatteverket.se/privat/fastigheterochbostad/forsaljningavbostad/raknautvinstforlustochskatt.4.233f91f71260075abe8800033595.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.bostadsforlust-avdrag",
+      "nombre": "Avdragsgill del av förlust på privatbostad",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Räkna ut vinst, förlust och skatt",
+            "url": "https://www.skatteverket.se/privat/fastigheterochbostad/forsaljningavbostad/raknautvinstforlustochskatt.4.233f91f71260075abe8800033595.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.isk-schablonranta",
+      "nombre": "Procentsats för schablonintäkt på investeringssparkonto",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 2.96,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Skatt på investeringssparkonto",
+            "url": "https://www.skatteverket.se/privat/skatter/vardepapper/investeringssparkontoisk.4.5fc8c94513259a4ba1d800037851.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3.55,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Skatt på investeringssparkonto",
+            "url": "https://www.skatteverket.se/privat/skatter/vardepapper/investeringssparkontoisk.4.5fc8c94513259a4ba1d800037851.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.isk-grundniva",
+      "nombre": "Skattefri grundnivå för ISK, kapitalförsäkring och PEPP",
+      "tipo": "numero",
+      "unidad": "SEK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Skatt på investeringssparkonto",
+            "url": "https://www.skatteverket.se/privat/skatter/vardepapper/investeringssparkontoisk.4.5fc8c94513259a4ba1d800037851.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 300000,
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Skatt på investeringssparkonto",
+            "url": "https://www.skatteverket.se/privat/skatter/vardepapper/investeringssparkontoisk.4.5fc8c94513259a4ba1d800037851.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.csn-ranta",
+      "nombre": "Ränta på studielån (annuitetslån)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.135,
+          "fuente": {
+            "organismo": "CSN",
+            "titulo": "Hur har ni räknat ut vad jag ska betala tillbaka på mitt studielån i år?",
+            "url": "https://www.csn.se/fragor-och-svar/hur-har-ni-raknat-ut-vad-jag-ska-betala-tillbaka-pa-mitt-studielan-i-ar.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.csn-aterbetalning",
+      "nombre": "Regler för återbetalning av annuitetslån",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "okning": "Årlig ökning av årsbeloppet (%)",
+        "minimum": "Lägsta årsbelopp (% av prisbasbeloppet)",
+        "tid": "Längsta återbetalningstid (år)",
+        "alder": "Betalas senast det år du fyller"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "okning": 2,
+            "minimum": 15,
+            "tid": 25,
+            "alder": 64
+          },
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Studiestödslag (1999:1395), 4 kap. 4, 8 och 10 §§",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/studiestodslag-19991395_sfs-1999-1395/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.csn-avgift",
+      "nombre": "Expeditionsavgift för studielån per år",
+      "tipo": "numero",
+      "unidad": "SEK",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "CSN",
+            "titulo": "Hur har ni räknat ut vad jag ska betala tillbaka på mitt studielån i år?",
+            "url": "https://www.csn.se/fragor-och-svar/hur-har-ni-raknat-ut-vad-jag-ska-betala-tillbaka-pa-mitt-studielan-i-ar.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.traktamente",
+      "nombre": "Skattefritt traktamente vid inrikes tjänsteresa",
+      "tipo": "mapa",
+      "unidad": "SEK",
+      "etiquetas": {
+        "heldag": "Hel dag",
+        "halvdag": "Halv dag",
+        "efter3": "Hel dag efter tre månader",
+        "efter2": "Hel dag efter två år",
+        "natt": "Nattraktamente"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "heldag": 300,
+            "halvdag": 150,
+            "efter3": 210,
+            "efter2": 150,
+            "natt": 150
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Traktamente",
+            "url": "https://www.skatteverket.se/privat/skatter/arbeteochinkomst/inkomster/traktamente.4.dfe345a107ebcc9baf80006547.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.traktamente-minskning",
+      "nombre": "Minskning av traktamente för fria måltider",
+      "tipo": "mapa",
+      "unidad": "SEK",
+      "etiquetas": {
+        "heldag-allt": "Hel dag: mat hela dagen",
+        "heldag-lunchmiddag": "Hel dag: lunch och middag",
+        "heldag-lunch": "Hel dag: lunch eller middag",
+        "heldag-frukost": "Hel dag: frukost",
+        "efter3-allt": "Efter tre månader: mat hela dagen",
+        "efter3-lunchmiddag": "Efter tre månader: lunch och middag",
+        "efter3-lunch": "Efter tre månader: lunch eller middag",
+        "efter3-frukost": "Efter tre månader: frukost",
+        "efter2-allt": "Efter två år: mat hela dagen",
+        "efter2-lunchmiddag": "Efter två år: lunch och middag",
+        "efter2-lunch": "Efter två år: lunch eller middag",
+        "efter2-frukost": "Efter två år: frukost"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "heldag-allt": 270,
+            "heldag-lunchmiddag": 210,
+            "heldag-lunch": 105,
+            "heldag-frukost": 60,
+            "efter3-allt": 189,
+            "efter3-lunchmiddag": 147,
+            "efter3-lunch": 74,
+            "efter3-frukost": 42,
+            "efter2-allt": 135,
+            "efter2-lunchmiddag": 105,
+            "efter2-lunch": 53,
+            "efter2-frukost": 30
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Belopp och procent 2026, kort version",
+            "url": "https://www.skatteverket.se/privat/skatter/beloppochprocent/2026.4.1522bf3f19aea8075ba89.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.reseavdrag",
+      "nombre": "Avdrag för resor till och från arbetet",
+      "tipo": "mapa",
+      "unidad": "SEK",
+      "etiquetas": {
+        "egen-bil": "Egen bil (även el- och hybridbil), kr per mil",
+        "formansbil": "Förmånsbil som inte drivs helt med el, kr per mil",
+        "formansbil-el": "Förmånsbil som drivs helt med el, kr per mil",
+        "motorcykel": "Motorcykel, kr per mil",
+        "grans": "Avdrag bara för kostnader över (kr)"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "egen-bil": 25,
+            "formansbil": 12,
+            "formansbil-el": 9.5,
+            "motorcykel": 12.5,
+            "grans": 15000
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Belopp och procentsatser för inkomståret 2026",
+            "url": "https://skatteverket.se/download/18.1522bf3f19aea8075ba3285/1767885159120/belopp-och-procentsatser-for-inkomstaret-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.fastighetsavgift",
+      "nombre": "Kommunal fastighetsavgift för småhus",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "sats": "Andel av taxeringsvärdet (%)",
+        "tak": "Högsta avgift (kr)",
+        "fria-ar": "Avgiftsfria år för nybyggda hus"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sats": 0.75,
+            "tak": 10425,
+            "fria-ar": 15
+          },
+          "fuente": {
+            "organismo": "Skatteverket",
+            "titulo": "Belopp och procentsatser för inkomståret 2026",
+            "url": "https://skatteverket.se/download/18.1522bf3f19aea8075ba3285/1767885159120/belopp-och-procentsatser-for-inkomstaret-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.stampelskatt",
+      "nombre": "Stämpelskatt",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "privat": "Lagfart, privatperson",
+        "juridisk": "Lagfart, juridisk person",
+        "pantbrev": "Nya pantbrev"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "privat": 1.5,
+            "juridisk": 4.25,
+            "pantbrev": 2
+          },
+          "fuente": {
+            "organismo": "Lantmäteriet",
+            "titulo": "Stämpelskatt och avgifter",
+            "url": "https://www.lantmateriet.se/sv/fastighet-och-mark/kopa-aga-salja-eller-ge-bort/Stampelskatt-och-avgifter/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.lantmateriet-avgift",
+      "nombre": "Expeditionsavgift hos Lantmäteriet",
+      "tipo": "mapa",
+      "unidad": "SEK",
+      "etiquetas": {
+        "lagfart": "Lagfart",
+        "pantbrev": "Per pantbrev"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "lagfart": 825,
+            "pantbrev": 375
+          },
+          "fuente": {
+            "organismo": "Lantmäteriet",
+            "titulo": "Stämpelskatt och avgifter",
+            "url": "https://www.lantmateriet.se/sv/fastighet-och-mark/kopa-aga-salja-eller-ge-bort/Stampelskatt-och-avgifter/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.referensranta",
+      "nombre": "Riksbankens referensränta",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "hasta": "2024-06-30",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Sveriges riksbank",
+            "titulo": "Referensränta (serie SECBREFEFF)",
+            "url": "https://api.riksbank.se/swea/v1/Observations/SECBREFEFF/2024-01-01/2026-10-24",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-07-01",
+          "hasta": "2024-12-31",
+          "valor": 4,
+          "fuente": {
+            "organismo": "Sveriges riksbank",
+            "titulo": "Referensränta (serie SECBREFEFF)",
+            "url": "https://api.riksbank.se/swea/v1/Observations/SECBREFEFF/2024-01-01/2026-10-24",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-06-30",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Sveriges riksbank",
+            "titulo": "Referensränta (serie SECBREFEFF)",
+            "url": "https://api.riksbank.se/swea/v1/Observations/SECBREFEFF/2024-01-01/2026-10-24",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2025-12-31",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Sveriges riksbank",
+            "titulo": "Referensränta (serie SECBREFEFF)",
+            "url": "https://api.riksbank.se/swea/v1/Observations/SECBREFEFF/2024-01-01/2026-10-24",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Sveriges riksbank",
+            "titulo": "Referensränta (serie SECBREFEFF)",
+            "url": "https://api.riksbank.se/swea/v1/Observations/SECBREFEFF/2024-01-01/2026-10-24",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Sveriges riksbank",
+            "titulo": "Referensränta (serie SECBREFEFF)",
+            "url": "https://api.riksbank.se/swea/v1/Observations/SECBREFEFF/2024-01-01/2026-10-24",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "se.drojsmalsranta-tillagg",
+      "nombre": "Tillägg till referensräntan för dröjsmålsränta",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2002-07-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Sveriges riksdag",
+            "titulo": "Räntelag (1975:635), 6 och 9 §§",
+            "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/rantelag-1975635_sfs-1975-635/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}

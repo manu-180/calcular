@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "co.uvt",
-  h1: "UVT 2026: valor y conversor de UVT a pesos",
-  title: "UVT 2026: {{co.uvt}}. Convierte UVT a pesos",
+  h1: "UVT {{anio}}: valor y conversor de UVT a pesos",
+  title: "UVT {{anio}}: {{co.uvt}}. Convierte UVT a pesos",
   description:
-    "La UVT 2026 vale {{co.uvt}} (Resolución DIAN 000238 de 2025). Convierte UVT a pesos y pesos a UVT, con el redondeo que pide la DIAN. Gratis y al instante.",
+    "La UVT {{anio}} vale {{co.uvt}} (Resolución DIAN 000238 de 2025). Convierte UVT a pesos y pesos a UVT, con el redondeo que pide la DIAN. Gratis y al instante.",
   intro: [
     "La UVT vale {{co.uvt}} desde el {{co.uvt#desde}}. Es la Unidad de Valor Tributario: la medida que usa la DIAN para fijar topes, sanciones y tarifas.",
     "Escribe una cantidad de UVT y te damos el valor en pesos, exacto y redondeado como lo pide el Estatuto Tributario.",

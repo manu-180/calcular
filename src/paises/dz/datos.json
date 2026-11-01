@@ -1,0 +1,1250 @@
+{
+  "mercado": "dz",
+  "datos": [
+    {
+      "id": "dz.tva-normal",
+      "nombre": "TVA, taux normal",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 21 du code des taxes sur le chiffre d'affaires.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": 19,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 16-14 du 28 décembre 2016 portant loi de finances pour 2017 (JO n° 77), article 26 modifiant l'article 21 du code des taxes sur le chiffre d'affaires",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2016/F2016077.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.tva-reduit",
+      "nombre": "TVA, taux réduit",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 23 du code des taxes sur le chiffre d'affaires. Le taux de 9 % date de la loi de finances pour 2017 ; la loi de finances pour 2026 le reprend et élargit la liste des opérations concernées.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 9,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 25-17 du 14 décembre 2025 portant loi de finances pour 2026 (JO n° 88), article 53 modifiant l'article 23 du code des taxes sur le chiffre d'affaires",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2025/F2025088.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-bareme",
+      "nombre": "Barème de l'impôt sur le revenu global (annuel)",
+      "tipo": "escala",
+      "unidad": "DZD",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-I du CIDTA. La loi de finances pour 2026 (article 11, JO n° 88 de 2025) laisse cette partie de l'article 104 sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 240000,
+              "tasa": 0
+            },
+            {
+              "desde": 240000,
+              "hasta": 480000,
+              "tasa": 23
+            },
+            {
+              "desde": 480000,
+              "hasta": 960000,
+              "tasa": 27
+            },
+            {
+              "desde": 960000,
+              "hasta": 1920000,
+              "tasa": 30
+            },
+            {
+              "desde": 1920000,
+              "hasta": 3840000,
+              "tasa": 33
+            },
+            {
+              "desde": 3840000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-abattement-taux",
+      "nombre": "IRG sur salaires : taux de l'abattement proportionnel",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-3-a du CIDTA : abattement égal à 40 % de l'impôt. La loi de finances pour 2026 (article 11, JO n° 88 de 2025) laisse cette partie de l'article 104 sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-abattement",
+      "nombre": "IRG sur salaires : bornes mensuelles de l'abattement",
+      "tipo": "mapa",
+      "unidad": "DZD",
+      "etiquetas": {
+        "minimum": "Abattement minimum mensuel",
+        "maximum": "Abattement maximum mensuel"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-3-a du CIDTA : entre 12 000 et 18 000 DA par an, soit entre 1 000 et 1 500 DA par mois. La loi de finances pour 2026 (article 11, JO n° 88 de 2025) laisse cette partie de l'article 104 sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "minimum": 1000,
+            "maximum": 1500
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-exoneration",
+      "nombre": "IRG sur salaires : seuil d'exonération totale (mensuel)",
+      "tipo": "numero",
+      "unidad": "DZD",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-3-a du CIDTA. La loi de finances pour 2026 (article 11, JO n° 88 de 2025) laisse cette partie de l'article 104 sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 30000,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-lissage-plafonds",
+      "nombre": "IRG sur salaires : plafonds mensuels du deuxième abattement",
+      "tipo": "mapa",
+      "unidad": "DZD",
+      "etiquetas": {
+        "general": "Lissage général",
+        "special": "Travailleurs handicapés et retraités du régime général"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-3-a du CIDTA. Le lissage général vaut entre 30 000 et 35 000 DA ; le lissage des travailleurs handicapés et des retraités du régime général, entre 30 000 et 42 500 DA. La loi de finances pour 2026 (article 11, JO n° 88 de 2025) laisse cette partie de l'article 104 sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "general": 35000,
+            "special": 42500
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-lissage",
+      "nombre": "IRG sur salaires : coefficients des formules de lissage",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "multiplicateur": "Coefficient 137/51",
+        "deduction": "Déduction 27 925/8",
+        "multiplicateur-special": "Coefficient 93/61",
+        "deduction-special": "Déduction 81 213/41"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-3-a du CIDTA : IRG × 137/51 − 27 925/8 et, pour le régime spécial, IRG × 93/61 − 81 213/41. Les déductions sont en dinars. La loi de finances pour 2026 (article 11, JO n° 88 de 2025) laisse cette partie de l'article 104 sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "multiplicateur": 2.6862745098039214,
+            "deduction": 3490.625,
+            "multiplicateur-special": 1.5245901639344261,
+            "deduction-special": 1980.8048780487804
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-primes",
+      "nombre": "IRG sur primes et rappels versés autrement que chaque mois",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-3-b du CIDTA. La loi de finances pour 2026 (article 11, JO n° 88 de 2025) laisse cette partie de l'article 104 sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-occasionnelles",
+      "nombre": "IRG sur activités occasionnelles à caractère intellectuel",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "enseignement": "Recherche, enseignement, surveillance ou assistanat à titre vacataire",
+        "autres": "Autres activités occasionnelles à caractère intellectuel"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-3-c du CIDTA, retenue libératoire. La loi de finances pour 2026 (article 11, JO n° 88 de 2025) laisse cette partie de l'article 104 sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "enseignement": 10,
+            "autres": 15
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-dividendes",
+      "nombre": "IRG sur les produits des actions et parts sociales",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-4-a du CIDTA : retenue à la source libératoire sur les produits visés aux articles 45 à 48.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 25-17 du 14 décembre 2025 portant loi de finances pour 2026 (JO n° 88), article 11 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2025/F2025088.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-loyers",
+      "nombre": "IRG sur revenus locatifs : taux",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "habitation": "Location à usage d'habitation",
+        "professionnel": "Local commercial ou professionnel non meublé, ou contrat avec une société",
+        "non-bati": "Propriété non bâtie",
+        "agricole": "Terrain à usage agricole"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-2 du CIDTA. Les taux viennent de la loi de finances pour 2022 et sont repris sans changement en 2023.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "habitation": 7,
+            "professionnel": 15,
+            "non-bati": 15,
+            "agricole": 10
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 22-24 du 25 décembre 2022 portant loi de finances pour 2023 (JO n° 89), article 5 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2022/F2022089.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-loyers-seuil",
+      "nombre": "IRG sur revenus locatifs : plafond de l'imposition libératoire (loyers bruts annuels)",
+      "tipo": "numero",
+      "unidad": "DZD",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 104-II-2 du CIDTA. Au-delà, la retenue de 7 % devient provisoire et s'impute sur l'IRG global.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 1800000,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 22-24 du 25 décembre 2022 portant loi de finances pour 2023 (JO n° 89), article 5 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2022/F2022089.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.cnas",
+      "nombre": "Cotisation de sécurité sociale des salariés : répartition",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "salarie": "Part du travailleur",
+        "employeur": "Part de l'employeur",
+        "oeuvres-sociales": "Quote-part du fonds des œuvres sociales"
+      },
+      "nota": "Taux global de 34,5 % de l'assiette de cotisation, réparti à partir du 1er octobre 2006.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2006-10-01",
+          "valor": {
+            "salarie": 9,
+            "employeur": 25,
+            "oeuvres-sociales": 0.5
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Décret exécutif n° 06-339 du 25 septembre 2006 fixant la répartition du taux de la cotisation de sécurité sociale (JO n° 60 de 2006)",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2006/F2006060.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.snmg",
+      "nombre": "Salaire national minimum garanti (mensuel)",
+      "tipo": "numero",
+      "unidad": "DZD",
+      "nota": "Pour une durée légale de 40 heures par semaine, soit 173,33 heures par mois.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24000,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Décret présidentiel n° 26-01 du 7 janvier 2026 fixant le salaire national minimum garanti (JO n° 1 de 2026)",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2026/F2026001.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.snmg-horaire",
+      "nombre": "Salaire national minimum garanti (taux horaire)",
+      "tipo": "numero",
+      "unidad": "DZD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 138.46,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Décret présidentiel n° 26-01 du 7 janvier 2026 fixant le salaire national minimum garanti (JO n° 1 de 2026)",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2026/F2026001.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.allocation-chomage",
+      "nombre": "Allocation chômage des primo-demandeurs d'emploi (mensuelle)",
+      "tipo": "numero",
+      "unidad": "DZD",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 7 du décret exécutif n° 22-70, modifié par le décret exécutif n° 26-87, qui prend effet le 1er janvier 2026.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18000,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Décret exécutif n° 26-87 du 21 janvier 2026 modifiant le décret exécutif n° 22-70 relatif à l'allocation chômage (JO n° 6 de 2026), articles 2 et 3",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2026/F2026006.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.allocation-chomage-duree",
+      "nombre": "Allocation chômage : durée de versement",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "initiale": "Durée initiale",
+        "renouvellement": "Renouvellement unique",
+        "supplementaire": "Année supplémentaire (article 7 bis)"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 7 : une année, renouvelable une seule fois. Article 7 bis : une année supplémentaire, dans les conditions d'ancienneté prévues.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "initiale": 12,
+            "renouvellement": 12,
+            "supplementaire": 12
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Décret exécutif n° 26-87 du 21 janvier 2026 modifiant le décret exécutif n° 22-70 relatif à l'allocation chômage (JO n° 6 de 2026), articles 2 et 3",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2026/F2026006.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.maternite",
+      "nombre": "Congé de maternité : durée indemnisée",
+      "tipo": "mapa",
+      "unidad": "semanas",
+      "etiquetas": {
+        "duree": "Durée indemnisée",
+        "avant-max": "Début au plus tôt avant la date présumée"
+      },
+      "nota": "Article 29 de la loi n° 83-11 : quatorze semaines consécutives, qui commencent au plus tôt six semaines avant la date présumée de l'accouchement. Un accouchement avant la date présumée ne réduit pas la période.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": {
+            "duree": 14,
+            "avant-max": 6
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), articles 11 et 12 modifiant les articles 28 et 29",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.maternite-taux",
+      "nombre": "Congé de maternité : indemnité journalière",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 28 de la loi n° 83-11 : 100 % du salaire journalier soumis à cotisation, après déduction de la cotisation de sécurité sociale et de l'impôt.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), articles 11 et 12 modifiant les articles 28 et 29",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.heures-mensuelles",
+      "nombre": "Durée mensuelle correspondant à la durée légale",
+      "tipo": "numero",
+      "unidad": "horas",
+      "nota": "Le décret fixant le SNMG retient 173,33 heures par mois pour 40 heures par semaine.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 173.33,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Décret présidentiel n° 26-01 du 7 janvier 2026 fixant le salaire national minimum garanti (JO n° 1 de 2026)",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2026/F2026001.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.duree-legale",
+      "nombre": "Durée légale hebdomadaire du travail",
+      "tipo": "numero",
+      "unidad": "horas",
+      "nota": "L'ordonnance prend effet deux mois après sa publication au JO du 12 janvier 1997.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-03-12",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 97-03 du 11 janvier 1997 fixant la durée légale du travail (JO n° 3 de 1997), article 2",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1997/F1997003.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.heures-supplementaires",
+      "nombre": "Heures supplémentaires : majoration minimale et plafond",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "majoration": "Majoration minimale",
+        "plafond": "Plafond en % de la durée légale"
+      },
+      "nota": "Article 32 : majoration d'au moins 50 % du salaire horaire normal. Article 31 : pas plus de 20 % de la durée légale. L'ordonnance 97-03 abroge les articles 22 à 26 et laisse les articles 31 et 32 en place.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1990-04-25",
+          "valor": {
+            "majoration": 50,
+            "plafond": 20
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 90-11 du 21 avril 1990 relative aux relations de travail (JO n° 17 de 1990, page 491), articles 31, 32, 41 et 42",
+            "url": "https://www.joradp.dz/Jo8499/1990/017/FP491.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.conges",
+      "nombre": "Congé annuel payé",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "par-mois": "Jours par mois de travail",
+        "plafond": "Plafond annuel",
+        "sud": "Congé supplémentaire minimum dans le Sud"
+      },
+      "nota": "Article 41 : deux jours et demi par mois de travail, trente jours calendaires au plus. Article 42 : au moins dix jours de plus dans les régions du Sud.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1990-04-25",
+          "valor": {
+            "par-mois": 2.5,
+            "plafond": 30,
+            "sud": 10
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 90-11 du 21 avril 1990 relative aux relations de travail (JO n° 17 de 1990, page 491), articles 31, 32, 41 et 42",
+            "url": "https://www.joradp.dz/Jo8499/1990/017/FP491.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.ibs",
+      "nombre": "Impôt sur les bénéfices des sociétés : taux",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "production": "Production de biens",
+        "btph-tourisme": "Bâtiment, travaux publics, hydraulique, tourisme et thermalisme",
+        "autres": "Autres activités"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 150-1 du CIDTA. La loi de finances pour 2022 (article 46) garde ces taux.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-07-23",
+          "valor": {
+            "production": 19,
+            "btph-tourisme": 23,
+            "autres": 26
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 15-01 du 23 juillet 2015 portant loi de finances complémentaire pour 2015 (JO n° 40), article 2 modifiant l'article 150 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2015/F2015040.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.ibs-reinvesti",
+      "nombre": "IBS : taux réduit sur les bénéfices réinvestis",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 150-1 du CIDTA, sous les conditions de l'article 142 bis, pour les exercices 2022 et suivants.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 46 modifiant l'article 150 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.ifu-taux",
+      "nombre": "Impôt forfaitaire unique : taux",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "biens": "Production et vente de biens",
+        "autres": "Autres activités",
+        "auto-entrepreneur": "Auto-entrepreneur"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 282 sexies du CIDTA. Les taux de 5 % et 12 % viennent de la loi de finances pour 2015 (production et vente de biens ; autres activités).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "biens": 5,
+            "autres": 12,
+            "auto-entrepreneur": 0.5
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 23-22 du 24 décembre 2023 portant loi de finances pour 2024 (JO n° 86), article 18 modifiant l'article 282 sexies du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2023/F2023086.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.ifu-plafond",
+      "nombre": "Impôt forfaitaire unique : plafond du chiffre d'affaires annuel",
+      "tipo": "numero",
+      "unidad": "DZD",
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 282 ter du CIDTA.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 8000000,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 24-08 du 24 novembre 2024 portant loi de finances pour 2025 (JO n° 84), article 22 modifiant l'article 282 ter du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2024/F2024084.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.ifu-minimum",
+      "nombre": "Impôt forfaitaire unique : minimum d'imposition annuel",
+      "tipo": "mapa",
+      "unidad": "DZD",
+      "etiquetas": {
+        "general": "Cas général",
+        "auto-entrepreneur": "Auto-entrepreneur"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 365 bis du CIDTA.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "general": 30000,
+            "auto-entrepreneur": 10000
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 24-08 du 24 novembre 2024 portant loi de finances pour 2025 (JO n° 84), article 29 modifiant l'article 365 bis du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2024/F2024084.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.vignette",
+      "nombre": "Vignette automobile : véhicules de tourisme jusqu'à 9 CV",
+      "tipo": "mapa",
+      "unidad": "DZD",
+      "etiquetas": {
+        "6cv-moins-3": "Jusqu'à 6 CV, moins de 3 ans",
+        "6cv-3-6": "Jusqu'à 6 CV, de 3 à 6 ans",
+        "6cv-6-10": "Jusqu'à 6 CV, plus de 6 et jusqu'à 10 ans",
+        "6cv-plus-10": "Jusqu'à 6 CV, plus de 10 ans",
+        "9cv-moins-3": "De 7 à 9 CV, moins de 3 ans",
+        "9cv-3-6": "De 7 à 9 CV, de 3 à 6 ans",
+        "9cv-6-10": "De 7 à 9 CV, plus de 6 et jusqu'à 10 ans",
+        "9cv-plus-10": "De 7 à 9 CV, plus de 10 ans"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 300 du code du timbre : véhicules de tourisme et véhicules aménagés en utilitaire, selon la puissance et l'âge.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": {
+            "6cv-moins-3": 2000,
+            "6cv-3-6": 1500,
+            "6cv-6-10": 1000,
+            "6cv-plus-10": 500,
+            "9cv-moins-3": 4000,
+            "9cv-3-6": 3000,
+            "9cv-6-10": 2000,
+            "9cv-plus-10": 1500
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 15-18 du 30 décembre 2015 portant loi de finances pour 2016 (JO n° 72), modification de l'article 300 du code du timbre",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2015/F2015072.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.vignette-10cv",
+      "nombre": "Vignette automobile : véhicules de tourisme de 10 CV et plus",
+      "tipo": "mapa",
+      "unidad": "DZD",
+      "etiquetas": {
+        "moins-3": "Moins de 3 ans",
+        "3-6": "De 3 à 6 ans",
+        "6-10": "Plus de 6 et jusqu'à 10 ans",
+        "plus-10": "Plus de 10 ans"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 300 du code du timbre, ligne des 10 CV et plus.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "moins-3": 25000,
+            "3-6": 20000,
+            "6-10": 15000,
+            "plus-10": 10000
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 24-08 du 24 novembre 2024 portant loi de finances pour 2025 (JO n° 84), article 55 modifiant l'article 300 du code du timbre",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2024/F2024084.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.droits-mutation",
+      "nombre": "Droits d'enregistrement sur les ventes d'immeubles",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vente": "Acte de vente",
+        "promesse": "Promesse de vente",
+        "concretisation": "Acte qui concrétise la promesse"
+      },
+      "proximaRevision": "2027-01-01",
+      "nota": "Article 252 du code de l'enregistrement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "vente": 5,
+            "promesse": 2.5,
+            "concretisation": 2.5
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 25-17 du 14 décembre 2025 portant loi de finances pour 2026 (JO n° 88), article 40 modifiant l'article 252 du code de l'enregistrement",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2025/F2025088.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-taux",
+      "nombre": "Plus-value de cession immobilière : taux de l'IRG",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 104-II-5-a du CIDTA : 15 %, libératoire d'impôt.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-reduction",
+      "nombre": "Plus-value immobilière : réduction pour l'unique logement",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 104-II-5-a du CIDTA : réduction d'impôt de 50 % pour la cession d'un logement, collectif ou individuel, qui constitue l'unique propriété et l'habitation principale.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 24-08 du 24 novembre 2024 portant loi de finances pour 2025 (JO n° 84), article 8 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2024/F2024084.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-abattement",
+      "nombre": "Plus-value immobilière : abattement pour durée de détention",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "annuel": "Abattement par année",
+        "plafond": "Abattement maximal"
+      },
+      "nota": "Article 79 du CIDTA : abattement de 5 % par an à compter de la troisième année d'entrée en possession du bien, dans la limite de 50 %.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": {
+            "annuel": 5,
+            "plafond": 50
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 20-16 du 31 décembre 2020 portant loi de finances pour 2021 (JO n° 83), article 10 modifiant les articles 77 à 80 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2020/F2020083.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-frais",
+      "nombre": "Plus-value immobilière : plafond des frais ajoutés au prix d'acquisition",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 78 du CIDTA : les frais d'acquisition, d'entretien et d'amélioration justifiés majorent le prix d'acquisition dans la limite de 30 % de ce prix.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 24 modifiant l'article 78 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-forfait",
+      "nombre": "Plus-value immobilière : valeur d'acquisition forfaitaire",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 78 du CIDTA : lorsque le prix d'acquisition ne peut être déterminé, il est fixé à 40 % du prix de vente.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 25-17 du 14 décembre 2025 portant loi de finances pour 2026 (JO n° 88), article 9 modifiant l'article 78 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2025/F2025088.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-immo-abattement-debut",
+      "nombre": "Plus-value immobilière : année à partir de laquelle l'abattement s'applique",
+      "tipo": "numero",
+      "unidad": "anios",
+      "nota": "Article 79 du CIDTA : l'abattement court à compter de la troisième année d'entrée en possession du bien cédé.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 20-16 du 31 décembre 2020 portant loi de finances pour 2021 (JO n° 83), article 10 modifiant les articles 77 à 80 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2020/F2020083.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-epargne",
+      "nombre": "Retenue à la source sur les intérêts des livrets d'épargne",
+      "tipo": "escala",
+      "unidad": "DZD",
+      "nota": "Article 104-II-4-b du CIDTA : 1 % libératoire jusqu'à 50 000 DA d'intérêts, 10 % au-delà, imputable sur l'imposition définitive. Les lois de finances pour 2023 à 2026 laissent ce point sans changement.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 50000,
+              "tasa": 1
+            },
+            {
+              "desde": 50000,
+              "hasta": null,
+              "tasa": 10
+            }
+          ],
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.irg-creances",
+      "nombre": "Retenue à la source sur les revenus des créances, dépôts et cautionnements",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Article 104-II-4-b du CIDTA : 10 %, crédit d'impôt imputable sur l'imposition définitive.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 21-16 du 30 décembre 2021 portant loi de finances pour 2022 (JO n° 100), article 31 modifiant l'article 104 du CIDTA",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2021/F2021100.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.pv-titres",
+      "nombre": "Plus-value de cession d'actions et parts sociales : taux de l'IRG",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "normal": "Taux libératoire",
+        "reinvesti": "Taux réduit en cas d'engagement de réinvestir",
+        "non-resident": "Retenue pour un cédant domicilié hors d'Algérie"
+      },
+      "nota": "Article 104-II-5-b et III du CIDTA. Le taux réduit suppose l'engagement de réinvestir la plus-value au plus tard le 31 décembre de l'année qui suit la cession, sous peine de rappel majoré de 25 %.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "normal": 15,
+            "reinvesti": 5,
+            "non-resident": 20
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 24-08 du 24 novembre 2024 portant loi de finances pour 2025 (JO n° 84), article 8 modifiant l'article 104 du CIDTA ; taux non-résidents de la loi n° 21-16 (loi de finances pour 2022, JO n° 100), article 31",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2024/F2024084.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.retraite",
+      "nombre": "Pension de retraite : annuité et taux maximal",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "annuite": "Taux par année validée",
+        "plafond": "Taux maximal"
+      },
+      "nota": "Articles 12 et 17 de la loi n° 83-12 : 2,5 % du salaire mensuel soumis à cotisation par année validée ; le montant net de la pension ne peut dépasser 80 % du salaire net de cotisations et d'impôt. Ni l'ordonnance n° 97-13 ni la loi n° 16-15 ne modifient ces articles.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": {
+            "annuite": 2.5,
+            "plafond": 80
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-18 du 6 juillet 1996 modifiant et complétant la loi n° 83-12 relative à la retraite (JO n° 42 de 1996), articles 7 et 10 modifiant les articles 12 et 17",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.retraite-conditions",
+      "nombre": "Pension de retraite : conditions d'âge et de durée",
+      "tipo": "mapa",
+      "unidad": "anios",
+      "etiquetas": {
+        "age": "Âge minimal",
+        "age-femme": "Âge minimal pour une femme, à sa demande",
+        "duree": "Durée de travail minimale"
+      },
+      "nota": "Article 6 de la loi n° 83-12 : 60 ans au moins (55 ans révolus pour une femme qui le demande) et 15 ans de travail, dont au moins sept ans et demi de travail effectif cotisé. La retraite sans condition d'âge est abrogée depuis le 1er janvier 2017.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2017-01-01",
+          "valor": {
+            "age": 60,
+            "age-femme": 55,
+            "duree": 15
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Loi n° 16-15 du 31 décembre 2016 modifiant et complétant la loi n° 83-12 relative à la retraite (JO n° 78 de 2016), article 2 modifiant l'article 6",
+            "url": "https://www.joradp.dz/FTP/jo-francais/2016/F2016078.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.maladie-taux",
+      "nombre": "Arrêt maladie : taux de l'indemnité journalière",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "reduit": "Du 1er au 15e jour",
+        "plein": "À partir du 16e jour, ou dès le 1er jour en cas de longue durée ou d'hospitalisation"
+      },
+      "nota": "Article 14 de la loi n° 83-11 : 50 % du salaire journalier net de cotisation et d'impôt du 1er au 15e jour (alinéa 2 modifié par l'ordonnance n° 96-17), 100 % à partir du 16e jour et dès le premier jour en cas de maladie de longue durée ou d'hospitalisation (alinéas 3 et 4 de 1983).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": {
+            "reduit": 50,
+            "plein": 100
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), article 7 modifiant l'article 14 ; loi n° 83-11 du 2 juillet 1983 (JO n° 28 de 1983), article 14",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.maladie-jours-reduits",
+      "nombre": "Arrêt maladie : jours indemnisés au taux réduit",
+      "tipo": "numero",
+      "unidad": "dias",
+      "nota": "Article 14 de la loi n° 83-11 modifié par l'ordonnance n° 96-17 : du premier au quinzième jour suivant l'arrêt de travail.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), article 7 modifiant l'article 14",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.indemnite-diviseur",
+      "nombre": "Indemnités journalières : diviseur du salaire mensuel",
+      "tipo": "numero",
+      "unidad": "factor",
+      "nota": "Article 15 de la loi n° 83-11 : l'indemnité journalière est due pour chaque jour, ouvrable ou non, et ne peut dépasser le trentième du salaire mensuel (le soixantième au taux de 50 %).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), article 8 modifiant l'article 15",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dz.capital-deces",
+      "nombre": "Capital décès : nombre de mois de salaire",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "salaire": "Fois le salaire mensuel le plus favorable",
+        "minimum": "Minimum en fois le SNMG"
+      },
+      "nota": "Article 48 de la loi n° 83-11 : douze fois le salaire mensuel le plus favorable perçu durant l'année précédant le décès et soumis à cotisation, sans pouvoir être inférieur à douze fois le SNMG. Versé en une seule fois aux ayants droit.",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1996-07-07",
+          "valor": {
+            "salaire": 12,
+            "minimum": 12
+          },
+          "fuente": {
+            "organismo": "Journal officiel de la République algérienne (SGG)",
+            "titulo": "Ordonnance n° 96-17 du 6 juillet 1996 modifiant la loi n° 83-11 relative aux assurances sociales (JO n° 42 de 1996), article 16 modifiant l'article 48",
+            "url": "https://www.joradp.dz/FTP/jo-francais/1996/F1996042.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-27"
+          }
+        }
+      ]
+    }
+  ]
+}

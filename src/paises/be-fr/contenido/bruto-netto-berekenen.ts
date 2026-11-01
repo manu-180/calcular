@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be-fr.bruto-netto-berekenen",
   h1: "Calcul du salaire brut en net en Belgique",
-  title: "Calcul salaire brut net 2026 : votre salaire net en Belgique",
+  title: "Calcul salaire brut net {{anio}} : votre salaire net en Belgique",
   description:
     "Calculez votre salaire net à partir du brut : cotisations ONSS, bonus à l'emploi, précompte professionnel et cotisation spéciale, selon les règles officielles.",
   intro: [

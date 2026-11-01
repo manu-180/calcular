@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ec.jubilacion-iess",
   h1: "Calculadora de jubilación del IESS",
-  title: "Jubilación IESS 2026: calcula tu pensión de vejez",
+  title: "Jubilación IESS {{anio}}: calcula tu pensión de vejez",
   description: "Estima tu pensión de vejez del IESS con tus años de aportes y el promedio de tus cinco mejores años de sueldo, con los mínimos y máximos del año.",
   intro: [
     "La pensión de vejez del IESS se calcula con el promedio de tus cinco años de mejores sueldos y un coeficiente que crece con tus años de aportes.",

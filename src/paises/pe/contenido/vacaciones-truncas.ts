@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pe.vacaciones-truncas",
   h1: "Calculadora de vacaciones truncas",
-  title: "Vacaciones truncas 2026: calcula cuánto te pagan",
+  title: "Vacaciones truncas {{anio}}: calcula cuánto te pagan",
   description:
     "Calcula tus vacaciones truncas con tus fechas de ingreso y salida. Régimen general de {{pe.vacaciones-por-regimen[general]}} por año y MYPE de {{pe.vacaciones-por-regimen[pequena]}}.",
   intro: [

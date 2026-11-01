@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "co.embargo-de-salario",
   h1: "Calculadora de embargo de salario",
-  title: "Embargo de salario 2026: cuánto te pueden quitar",
+  title: "Embargo de salario {{anio}}: cuánto te pueden quitar",
   description:
     "Calcula cuánto te pueden embargar del salario: el mínimo no se toca por deudas comunes y del resto solo una quinta parte. Para alimentos, hasta el 50 %.",
   intro: [

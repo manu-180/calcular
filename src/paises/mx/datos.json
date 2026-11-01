@@ -545,6 +545,17 @@
             "nota": "Texto vigente de la LFT compilado por la Secretaría de Gobernación (Orden Jurídico Nacional), última reforma incluida del 21/02/2025. La reforma del DOF 1/05/2026 (jornada) no tocó este artículo."
           }
         }
+      ],
+      "calendario": [
+        {
+          "id": "pago-aguinaldo",
+          "tipo": "pago",
+          "mes": 12,
+          "dia": 19,
+          "titulo": "Último día para pagar el aguinaldo",
+          "texto": "La Ley Federal del Trabajo (artículo 87) manda pagarlo antes del 20 de diciembre: al menos 15 días de salario, o la parte proporcional si no se cumplió el año.",
+          "calculadora": "mx.aguinaldo"
+        }
       ]
     },
     {

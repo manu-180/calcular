@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosSv: TextosUi<UiAlquilarOComprar> = {
+  slug: "hyra-eller-kopa",
+  ui: () => ({
+    precio: "Bostadens pris",
+    entrada: "Kontantinsats (% av priset)",
+    gastosCompra: "Kostnader vid köpet (% av priset)",
+    gastosCompraAyuda: "Lagfart, pantbrev, avgifter till banken och värdering.",
+    tasa: "Bolåneränta (% per år)",
+    aniosHipoteca: "Lånets löptid i år",
+    alquiler: "Månadshyra för en liknande bostad",
+    aumentoAlquiler: "Hyreshöjning per år (%)",
+    gastosPropietario: "Ägarkostnader per år (% av värdet)",
+    gastosPropietarioAyuda: "Underhåll, fastighetsavgift och hemförsäkring. Ofta mellan 1 % och 2 %.",
+    revalorizacion: "Värdeökning på bostaden per år (%)",
+    rendimiento: "Avkastning på annat sparande (% per år)",
+    rendimientoAyuda: "Det du skulle tjäna på att investera kontantinsatsen i stället för att köpa.",
+    horizonte: "Antal år att jämföra",
+    veredicto: "Resultat",
+    patrimonioComprar: "Förmögenhet vid slutet om du köper",
+    patrimonioAlquilar: "Förmögenhet vid slutet om du hyr",
+    diferencia: "Skillnad",
+    anioDesde: "År då köpet börjar löna sig",
+    pagadoAlquilando: "Total hyra",
+    pagadoComprando: "Totala lånebetalningar och ägarkostnader",
+    tabla: "Jämförelse år för år",
+    colAnio: "År",
+    colComprar: "Köpa",
+    colAlquilar: "Hyra",
+    colDiferencia: "Skillnad",
+    errorPrecio: "Fyll i bostadens pris.",
+    errorAlquiler: "Fyll i vad det skulle kosta att hyra en liknande bostad.",
+    convieneComprar: (anios, diferencia) => `Att köpa lönar sig bäst. Efter ${anios} år har du ${diferencia} mer.`,
+    convieneAlquilar: (anios, diferencia) => `Att hyra lönar sig bäst. Efter ${anios} år har du ${diferencia} mer.`,
+    empate: (anios) => `Efter ${anios} år blir det lika för båda alternativen.`,
+    observacionDesde: (anio) => `Köpet går om hyran år ${anio} och ligger kvar före efter det.`,
+    observacionMetodo:
+      "Kalkylen jämför vad du äger i varje fall. Om du hyr fortsätter kontantinsatsen och det du sparar varje månad att vara investerat. Kostnader vid en försäljning dras inte av.",
+  }),
+};

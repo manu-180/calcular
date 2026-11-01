@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "it.contributi-gestione-separata",
   h1: "Calcolo contributi Gestione separata INPS",
-  title: "Contributi Gestione separata INPS 2026: calcolo",
+  title: "Contributi Gestione separata INPS {{anio}}: calcolo",
   description:
-    "Calcola i contributi della Gestione separata INPS 2026 per professionisti, collaboratori e pensionati, con massimale di {{it.massimale-contributivo}} e mesi accreditati.",
+    "Calcola i contributi della Gestione separata INPS {{anio}} per professionisti, collaboratori e pensionati, con massimale di {{it.massimale-contributivo}} e mesi accreditati.",
   intro: [
     "La Gestione separata è la cassa INPS di chi lavora con partita IVA senza una cassa professionale propria e di chi ha un contratto di collaborazione.",
     "Scegli la tua posizione e inserisci il reddito: vedi quanto versi, quanto paga il committente se sei un collaboratore e quanti mesi ti vengono accreditati per la pensione.",

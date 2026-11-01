@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosUz: TextosUi<UiAlquilarOComprar> = {
+  slug: "ijara-yoki-uy-sotib-olish",
+  ui: () => ({
+    precio: "Uy narxi",
+    entrada: "Boshlangʻich toʻlov (narxdan %)",
+    gastosCompra: "Sotib olish xarajatlari (narxdan %)",
+    gastosCompraAyuda: "Notarius, roʻyxatdan oʻtkazish, rieltor xizmati va baholash.",
+    tasa: "Ipoteka foiz stavkasi (yillik %)",
+    aniosHipoteca: "Ipoteka muddati (yil)",
+    alquiler: "Shunga oʻxshash uyning oylik ijara haqi",
+    aumentoAlquiler: "Ijara haqining yillik oshishi (%)",
+    gastosPropietario: "Mulkdorning yillik xarajatlari (qiymatdan %)",
+    gastosPropietarioAyuda: "Taʼmirlash, mol-mulk soligʻi va uy sugʻurtasi. Odatda 1 foizdan 2 foizgacha.",
+    revalorizacion: "Uy narxining yillik oʻsishi (%)",
+    rendimiento: "Muqobil investitsiya daromadi (yillik %)",
+    rendimientoAyuda: "Uy sotib olish oʻrniga boshlangʻich toʻlovni investitsiya qilsangiz, olishingiz mumkin boʻlgan daromad.",
+    horizonte: "Solishtiriladigan yillar",
+    veredicto: "Natija",
+    patrimonioComprar: "Sotib olsangiz, oxiridagi mol-mulkingiz",
+    patrimonioAlquilar: "Ijarada yashasangiz, oxiridagi mol-mulkingiz",
+    diferencia: "Farq",
+    anioDesde: "Sotib olish foydaliroq boʻla boshlaydigan yil",
+    pagadoAlquilando: "Jami toʻlangan ijara haqi",
+    pagadoComprando: "Jami ipoteka toʻlovlari va mulkdor xarajatlari",
+    tabla: "Yilma-yil solishtirish",
+    colAnio: "Yil",
+    colComprar: "Sotib olish",
+    colAlquilar: "Ijara",
+    colDiferencia: "Farq",
+    errorPrecio: "Uy narxini kiriting.",
+    errorAlquiler: "Shunga oʻxshash uyni ijaraga olish qanchaga tushishini kiriting.",
+    convieneComprar: (anios, diferencia) => `Sotib olish foydaliroq: ${anios} yildan keyin sizda ${diferencia} koʻproq mablagʻ boʻladi.`,
+    convieneAlquilar: (anios, diferencia) => `Ijara foydaliroq: ${anios} yildan keyin sizda ${diferencia} koʻproq mablagʻ boʻladi.`,
+    empate: (anios) => `${anios} yildan keyin ikkala variant ham bir xil natija beradi.`,
+    observacionDesde: (anio) => `Sotib olish ${anio}-yildan boshlab ijaradan oʻzib ketadi va oldinda qoladi.`,
+    observacionMetodo:
+      "Har bir holatda sizda nima boʻlishi solishtiriladi. Ijarada yashasangiz, boshlangʻich toʻlov va har oy tejagan pulingiz investitsiyada qoladi. Uyni sotish xarajatlari ayirilmaydi.",
+  }),
+};

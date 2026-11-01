@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.income-tax-calculator",
-  h1: "Calcul de l'impôt sur le revenu 2026 au Québec",
-  title: "Calcul de l'impôt 2026 : fédéral et Québec",
-  description: "Estimez votre impôt fédéral et du Québec pour 2026, avec votre taux moyen et votre taux marginal. Aussi pour les autres provinces et territoires.",
+  h1: "Calcul de l'impôt sur le revenu {{anio}} au Québec",
+  title: "Calcul de l'impôt {{anio}} : fédéral et Québec",
+  description: "Estimez votre impôt fédéral et du Québec pour {{anio}}, avec votre taux moyen et votre taux marginal. Aussi pour les autres provinces et territoires.",
   intro: [
     "Inscrivez vos revenus et votre province ou votre territoire pour voir combien d'impôt vous payez en 2026, réparti entre le fédéral et le provincial.",
     "Au Québec, le calcul utilise la table d'impôt du ministère des Finances du Québec et réduit l'impôt fédéral de l'abattement du Québec de {{ca.qc-abatement}}.",

@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.netto-brutto-rechner",
-  h1: "Netto-Brutto-Rechner 2026",
-  title: "Netto-Brutto-Rechner 2026: welches Brutto brauche ich?",
+  h1: "Netto-Brutto-Rechner {{anio}}",
+  title: "Netto-Brutto-Rechner {{anio}}: welches Brutto brauche ich?",
   description:
-    "Sie wissen, wie viel netto ankommen soll? Der Rechner findet das nötige Bruttogehalt mit Lohnsteuer, Soli, Kirchensteuer und Sozialabgaben 2026.",
+    "Sie wissen, wie viel netto ankommen soll? Der Rechner findet das nötige Bruttogehalt mit Lohnsteuer, Soli, Kirchensteuer und Sozialabgaben {{anio}}.",
   intro: [
     "Für Gehaltsverhandlungen zählt oft das Netto. Geben Sie ein, wie viel im Monat auf Ihrem Konto ankommen soll. Der Rechner sucht das Bruttogehalt, das genau dieses Netto ergibt.",
     "Gerechnet wird mit denselben Regeln wie im Brutto-Netto-Rechner: Lohnsteuer nach dem Programmablaufplan 2026 und Sozialabgaben mit den Beitragssätzen 2026.",

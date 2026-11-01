@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "be.opzeggingstermijn-berekenen",
   h1: "Opzeggingstermijn berekenen volgens het eenheidsstatuut",
-  title: "Opzeggingstermijn berekenen 2026: ontslag en zelf ontslag",
+  title: "Opzeggingstermijn berekenen {{anio}}: ontslag en zelf ontslag",
   description:
-    "Bereken je opzeggingstermijn in weken bij ontslag door je werkgever, bij zelf ontslag of bij een tegenopzegging. Met de regels die sinds 1 augustus 2026 gelden.",
+    "Bereken je opzeggingstermijn in weken bij ontslag door je werkgever, bij zelf ontslag of bij een tegenopzegging. Met de regels die sinds 1 augustus {{anio}} gelden.",
   intro: [
     "Sinds het eenheidsstatuut gelden voor arbeiders en bedienden dezelfde opzeggingstermijnen. De termijn hangt af van je anciënniteit en van wie de overeenkomst opzegt.",
     "Vul je datum van indiensttreding in en de datum waarop de opzegging ter kennis wordt gegeven. Je ziet de termijn in weken, wanneer hij start en wanneer hij eindigt.",

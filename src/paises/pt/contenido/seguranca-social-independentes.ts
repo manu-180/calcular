@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "pt.seguranca-social-independentes",
   h1: "Segurança Social dos trabalhadores independentes",
-  title: "Segurança Social a recibos verdes: simulador 2026",
+  title: "Segurança Social a recibos verdes: simulador {{anio}}",
   description: "Calcule a contribuição mensal do trabalhador independente: {{pt.ss-independente-taxa}} sobre o rendimento relevante da declaração trimestral, com o limite máximo.",
   intro: [
     "Quem trabalha a recibos verdes declara à Segurança Social, de três em três meses, o que faturou. Com isso calcula-se a contribuição a pagar nos três meses seguintes.",

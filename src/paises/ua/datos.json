@@ -1,0 +1,1389 @@
+{
+  "mercado": "ua",
+  "datos": [
+    {
+      "id": "ua.pdfo",
+      "nombre": "Податок на доходи фізичних осіб (основна ставка)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: ставки податку на доходи фізичних осіб",
+            "url": "https://zir.tax.gov.ua/docs/stavki/podatok_na_dohody_fizychnyh_osib.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.viiskovyi-zbir",
+      "nombre": "Військовий збір з доходів фізичних осіб",
+      "tipo": "numero",
+      "unidad": "%",
+      "nota": "Ставка 5 % діє з 1 грудня 2024 року. Збір справляють до 31 грудня третього року після року, у якому припинять або скасують воєнний стан (Закон № 4835-IX від 07.04.2026).",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-12-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: ставки військового збору",
+            "url": "https://zir.tax.gov.ua/docs/stavki/viysjkoviy_zbir.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.yesv",
+      "nombre": "Єдиний внесок на загальнообовʼязкове державне соціальне страхування",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2016-01-01",
+          "valor": 22,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір єдиного внеску",
+            "url": "https://zir.tax.gov.ua/docs/stavki/esv.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.minimalna-zarplata",
+      "nombre": "Мінімальна заробітна плата (у місячному розмірі)",
+      "tipo": "numero",
+      "unidad": "UAH",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 8000,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір мінімальної заробітної плати (Закон про Державний бюджет України на 2026 рік № 4695-IX)",
+            "url": "https://zir.tax.gov.ua/docs/stavki/size_of_the_minimum_wage.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 8647,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір мінімальної заробітної плати (Закон про Державний бюджет України на 2026 рік № 4695-IX)",
+            "url": "https://zir.tax.gov.ua/docs/stavki/size_of_the_minimum_wage.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.minimalna-zarplata-hodynna",
+      "nombre": "Мінімальна заробітна плата (у погодинному розмірі)",
+      "tipo": "numero",
+      "unidad": "UAH",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 48,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір мінімальної заробітної плати (Закон про Державний бюджет України на 2026 рік № 4695-IX)",
+            "url": "https://zir.tax.gov.ua/docs/stavki/size_of_the_minimum_wage.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 52,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір мінімальної заробітної плати (Закон про Державний бюджет України на 2026 рік № 4695-IX)",
+            "url": "https://zir.tax.gov.ua/docs/stavki/size_of_the_minimum_wage.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.prozhytkovyi-minimum",
+      "nombre": "Прожитковий мінімум",
+      "tipo": "mapa",
+      "unidad": "UAH",
+      "etiquetas": {
+        "dity-do-6": "Діти віком до 6 років",
+        "dity-6-18": "Діти віком від 6 до 18 років",
+        "pratsezdatni": "Працездатні особи",
+        "nepratsezdatni": "Особи, які втратили працездатність",
+        "zahalnyi": "Загальний показник"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": {
+            "dity-do-6": 2563,
+            "dity-6-18": 3196,
+            "pratsezdatni": 3028,
+            "nepratsezdatni": 2361,
+            "zahalnyi": 2920
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір прожиткового мінімуму (Закон про Державний бюджет України на 2026 рік № 4695-IX)",
+            "url": "https://zir.tax.gov.ua/docs/stavki/size_of_the_subsistence_minimum.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "dity-do-6": 2817,
+            "dity-6-18": 3512,
+            "pratsezdatni": 3328,
+            "nepratsezdatni": 2595,
+            "zahalnyi": 3209
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір прожиткового мінімуму (Закон про Державний бюджет України на 2026 рік № 4695-IX)",
+            "url": "https://zir.tax.gov.ua/docs/stavki/size_of_the_subsistence_minimum.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.maks-baza-yesv",
+      "nombre": "Максимальна база нарахування ЄСВ (кількість мінімальних зарплат)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС, категорія 201.04: максимальний розмір доходу для нарахування єдиного внеску у 2025 і 2026 роках (ст. 32 Закону № 4695-IX)",
+            "url": "https://zir.tax.gov.ua/main/bz/search/?src=ques",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС, категорія 201.04: максимальний розмір доходу для нарахування єдиного внеску у 2025 і 2026 роках (ст. 32 Закону № 4695-IX)",
+            "url": "https://zir.tax.gov.ua/main/bz/search/?src=ques",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.psp",
+      "nombre": "Податкова соціальна пільга",
+      "tipo": "mapa",
+      "unidad": "UAH",
+      "etiquetas": {
+        "zvychaina": "100 % пільги",
+        "pidvyshchena": "150 % пільги",
+        "podviina": "200 % пільги"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": {
+            "zvychaina": 1514,
+            "pidvyshchena": 2271,
+            "podviina": 3028
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір податкової соціальної пільги",
+            "url": "https://zir.tax.gov.ua/docs/stavki/amount_of_the_tax_social_benefit.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "zvychaina": 1664,
+            "pidvyshchena": 2496,
+            "podviina": 3328
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір податкової соціальної пільги",
+            "url": "https://zir.tax.gov.ua/docs/stavki/amount_of_the_tax_social_benefit.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.limit-psp",
+      "nombre": "Граничний розмір доходу, що дає право на податкову соціальну пільгу",
+      "tipo": "numero",
+      "unidad": "UAH",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 4240,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір податкової соціальної пільги",
+            "url": "https://zir.tax.gov.ua/docs/stavki/amount_of_the_tax_social_benefit.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 4660,
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: розмір податкової соціальної пільги",
+            "url": "https://zir.tax.gov.ua/docs/stavki/amount_of_the_tax_social_benefit.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.pdv",
+      "nombre": "Ставки податку на додану вартість",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "osnovna": "Основна ставка",
+        "silhosp": "Сільськогосподарська продукція",
+        "likarski": "Лікарські засоби та медичні вироби"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "osnovna": 20,
+            "silhosp": 14,
+            "likarski": 7
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: ставки податку на додану вартість",
+            "url": "https://zir.tax.gov.ua/docs/stavki/pdv.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.yedynyi-podatok",
+      "nombre": "Ставки єдиного податку (для 1 і 2 групи це максимум)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "hrupa-1": "1 група, % прожиткового мінімуму",
+        "hrupa-2": "2 група, % мінімальної зарплати",
+        "hrupa-3": "3 група без ПДВ, % доходу",
+        "hrupa-3-pdv": "3 група з ПДВ, % доходу",
+        "perevyshchennia": "Сума перевищення ліміту доходу"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "hrupa-1": 10,
+            "hrupa-2": 20,
+            "hrupa-3": 5,
+            "hrupa-3-pdv": 3,
+            "perevyshchennia": 15
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: ставки та ліміти єдиного податку",
+            "url": "https://zir.tax.gov.ua/docs/stavki/sproshena_sistema_opodatkuvannya_(ediniy_podatok).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.limity-yedynyi-podatok",
+      "nombre": "Граничний річний дохід платника єдиного податку (кількість мінімальних зарплат)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "hrupa-1": "1 група",
+        "hrupa-2": "2 група",
+        "hrupa-3": "3 група"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "hrupa-1": 167,
+            "hrupa-2": 834,
+            "hrupa-3": 1167
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: ставки та ліміти єдиного податку",
+            "url": "https://zir.tax.gov.ua/docs/stavki/sproshena_sistema_opodatkuvannya_(ediniy_podatok).pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.vz-fop",
+      "nombre": "Військовий збір для ФОП на єдиному податку",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "hrupy-1-2": "1 і 2 група, % мінімальної зарплати на 1 січня",
+        "hrupa-3": "3 група, % доходу"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "hrupy-1-2": 10,
+            "hrupa-3": 1
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: ставки військового збору",
+            "url": "https://zir.tax.gov.ua/docs/stavki/viysjkoviy_zbir.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.dyvidendy",
+      "nombre": "Ставки ПДФО для дивідендів",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "rezydent": "Від резидента, платника податку на прибуток",
+        "inshi": "Від нерезидента, ІСІ або неплатника податку на прибуток"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rezydent": 5,
+            "inshi": 9
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: ставки податку на доходи фізичних осіб",
+            "url": "https://zir.tax.gov.ua/docs/stavki/podatok_na_dohody_fizychnyh_osib.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.pdfo-prodazh-maina",
+      "nombre": "Ставки ПДФО при продажу майна резидентом",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pilhova": "Другий продаж за рік або володіння менше трьох років",
+        "zahalna": "Третій і наступні продажі за рік"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "pilhova": 5,
+            "zahalna": 18
+          },
+          "fuente": {
+            "organismo": "Державна податкова служба України",
+            "titulo": "ЗІР ДПС: ставки податку на доходи фізичних осіб",
+            "url": "https://zir.tax.gov.ua/docs/stavki/podatok_na_dohody_fizychnyh_osib.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.likarniani",
+      "nombre": "Розмір допомоги по тимчасовій непрацездатності залежно від страхового стажу",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "do-3": "До трьох років",
+        "vid-3-do-5": "Від трьох до пʼяти років",
+        "vid-5-do-8": "Від пʼяти до восьми років",
+        "ponad-8": "Понад вісім років"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "do-3": 50,
+            "vid-3-do-5": 60,
+            "vid-5-do-8": 70,
+            "ponad-8": 100
+          },
+          "fuente": {
+            "organismo": "Пенсійний фонд України",
+            "titulo": "Розмір допомоги по тимчасовій непрацездатності (ст. 17 Закону № 1105-XIV)",
+            "url": "https://www.pfu.gov.ua/2163374-rozmir-dopomogy-po-tymchasovij-nepratsezdatnosti-2/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.dni-robotodavtsia",
+      "nombre": "Дні лікарняного, які оплачує роботодавець",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Пенсійний фонд України",
+            "titulo": "Алгоритм здійснення виплати за лікарняним",
+            "url": "https://www.pfu.gov.ua/2165537-algorytm-zdijsnennya-vyplaty-za-likarnyanym-2/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.serednia-kilkist-dniv",
+      "nombre": "Середньомісячна кількість календарних днів для обмеження допомоги",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30.44,
+          "fuente": {
+            "organismo": "Пенсійний фонд України",
+            "titulo": "Порядок визначення середньої заробітної плати та суми допомоги по тимчасовій непрацездатності, вагітності та пологах",
+            "url": "https://www.pfu.gov.ua/2163380-poryadok-vyznachennya-serednoyi-zarobitnoyi-platy-dohodu-ta-sumy-dopomogy-po-tymchasovij-nepratsezdatnosti-vagitnosti-ta-pologah/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.dekretni-dni",
+      "nombre": "Тривалість відпустки у звʼязку з вагітністю та пологами",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "zvychaini": "Звичайні пологи",
+        "uskladneni": "Ускладнені пологи або двоє і більше дітей",
+        "chornobyl": "Постраждалі від Чорнобильської катастрофи (1 до 3 категорії)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zvychaini": 126,
+            "uskladneni": 140,
+            "chornobyl": 180
+          },
+          "fuente": {
+            "organismo": "Пенсійний фонд України",
+            "titulo": "Допомога у звʼязку з вагітністю і пологами: тривалість відпустки",
+            "url": "https://www.pfu.gov.ua/rv/226108-dopomoga-u-zv-yazku-z-vagitnistyu-i-pologamy-3/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.vidpustka",
+      "nombre": "Тривалість щорічної основної відпустки в період воєнного стану",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "Міністерство економіки та довкілля України",
+            "titulo": "Відповіді на поширені питання зі сфери трудових відносин в умовах воєнного часу",
+            "url": "https://www.me.gov.ua/Documents/Detail?lang=uk-UA&id=10d196f4-2218-45bd-a6df-34048ce35032&title=VidpovidiNaPoshireniPitanniaZiSferiTrudovikhVidnosinVUmovakhVonnogoChasu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.nadurochni",
+      "nombre": "Коефіцієнт оплати надурочних робіт",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Державна служба України з питань праці",
+            "titulo": "Оплата понаднормових годин (ст. 106 КЗпП)",
+            "url": "https://dp.dsp.gov.ua/novyny/oplata-ponadnormovykh-hodyn-pratsivnykam-za-zminnym-hrafikom-iz-pidsumovanym-oblikom-robochoho-chasu/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.vykhidna-dopomoha",
+      "nombre": "Вихідна допомога (середніх місячних заробітків)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "zahalna": "Скорочення, ліквідація, невідповідність посаді та інші підстави",
+        "porushennia": "Порушення роботодавцем законодавства про працю або мобінг",
+        "posadovi": "Припинення повноважень посадових осіб"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zahalna": 1,
+            "porushennia": 3,
+            "posadovi": 6
+          },
+          "fuente": {
+            "organismo": "Державна служба України з питань праці",
+            "titulo": "В яких випадках працівнику виплачується вихідна допомога (ст. 44 КЗпП)",
+            "url": "https://dp.dsp.gov.ua/novyny/v-iakykh-vypadkakh-pratsivnyku-vyplachuietsia-vykhidna-dopomoha/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.vykhidna-viiskova",
+      "nombre": "Вихідна допомога при призові на військову службу (кількість мінімальних зарплат)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Державна служба України з питань праці",
+            "titulo": "В яких випадках працівнику виплачується вихідна допомога (ст. 44 КЗпП)",
+            "url": "https://dp.dsp.gov.ua/novyny/v-iakykh-vypadkakh-pratsivnyku-vyplachuietsia-vykhidna-dopomoha/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.richni-625",
+      "nombre": "Проценти річних за прострочення грошового зобовʼязання (ч. 2 ст. 625 ЦК України)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Верховний Суд",
+            "titulo": "Алгоритм розрахунку за ст. 625 ЦК України (постанова КЦС ВС від 16.04.2026 у справі № 751/4086/24)",
+            "url": "https://supreme.court.gov.ua/supreme/pres-centr/news/2034689/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.alimenty-minimum",
+      "nombre": "Мінімальний розмір аліментів на одну дитину (% прожиткового мінімуму для дитини відповідного віку)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Судова влада України (повідомлення Мінʼюсту)",
+            "titulo": "Аліменти на дитину у 2026 році: мінімальні суми та частка доходу",
+            "url": "https://nm.vn.court.gov.ua/sud0217/pres-centr/news/1961187/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.alimenty-chastky",
+      "nombre": "Частка доходу платника аліментів (1/n)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "odna": "Одна дитина",
+        "dvi": "Двоє дітей",
+        "try": "Троє і більше дітей"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "odna": 4,
+            "dvi": 3,
+            "try": 2
+          },
+          "fuente": {
+            "organismo": "Судова влада України (повідомлення Мінʼюсту)",
+            "titulo": "Аліменти на дитину у 2026 році: мінімальні суми та частка доходу",
+            "url": "https://nm.vn.court.gov.ua/sud0217/pres-centr/news/1961187/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.penia-mnozhnyk",
+      "nombre": "Граничний розмір пені (кратність облікової ставки НБУ)",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Верховний Суд",
+            "titulo": "Постанова ОП КГС ВС від 05.06.2020 у справі № 922/3578/18: пеня в межах подвійної облікової ставки НБУ",
+            "url": "https://supreme.court.gov.ua/supreme/pro_sud/rishennya_obedn_palati_kgs_vs/2020_06_05_922_3578_18",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ua.oblikova-stavka",
+      "nombre": "Облікова ставка Національного банку України",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 14,
+          "hasta": "2015-02-05",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2015-02-06",
+          "valor": 19.5,
+          "hasta": "2015-03-03",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2015-03-04",
+          "valor": 30,
+          "hasta": "2015-08-27",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2015-08-28",
+          "valor": 27,
+          "hasta": "2015-09-24",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2015-09-25",
+          "valor": 22,
+          "hasta": "2016-04-21",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-04-22",
+          "valor": 19,
+          "hasta": "2016-05-26",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-05-27",
+          "valor": 18,
+          "hasta": "2016-06-23",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-06-24",
+          "valor": 16.5,
+          "hasta": "2016-07-28",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-07-29",
+          "valor": 15.5,
+          "hasta": "2016-09-15",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-09-16",
+          "valor": 15,
+          "hasta": "2016-10-27",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2016-10-28",
+          "valor": 14,
+          "hasta": "2017-04-13",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2017-04-14",
+          "valor": 13,
+          "hasta": "2017-05-25",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2017-05-26",
+          "valor": 12.5,
+          "hasta": "2017-10-26",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2017-10-27",
+          "valor": 13.5,
+          "hasta": "2017-12-14",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2017-12-15",
+          "valor": 14.5,
+          "hasta": "2018-01-25",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2018-01-26",
+          "valor": 16,
+          "hasta": "2018-03-01",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2018-03-02",
+          "valor": 17,
+          "hasta": "2018-07-12",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2018-07-13",
+          "valor": 17.5,
+          "hasta": "2018-09-06",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2018-09-07",
+          "valor": 18,
+          "hasta": "2019-04-25",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2019-04-26",
+          "valor": 17.5,
+          "hasta": "2019-07-18",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2019-07-19",
+          "valor": 17,
+          "hasta": "2019-09-05",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2019-09-06",
+          "valor": 16.5,
+          "hasta": "2019-10-24",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2019-10-25",
+          "valor": 15.5,
+          "hasta": "2019-12-12",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2019-12-13",
+          "valor": 13.5,
+          "hasta": "2020-01-30",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-01-31",
+          "valor": 11,
+          "hasta": "2020-03-12",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-03-13",
+          "valor": 10,
+          "hasta": "2020-04-23",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-04-24",
+          "valor": 8,
+          "hasta": "2020-06-11",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2020-06-12",
+          "valor": 6,
+          "hasta": "2021-03-04",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-03-05",
+          "valor": 6.5,
+          "hasta": "2021-04-15",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-04-16",
+          "valor": 7.5,
+          "hasta": "2021-07-22",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-07-23",
+          "valor": 8,
+          "hasta": "2021-09-09",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-09-10",
+          "valor": 8.5,
+          "hasta": "2021-12-09",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2021-12-10",
+          "valor": 9,
+          "hasta": "2022-01-20",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-01-21",
+          "valor": 10,
+          "hasta": "2022-06-02",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2022-06-03",
+          "valor": 25,
+          "hasta": "2023-07-27",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2023-07-28",
+          "valor": 22,
+          "hasta": "2023-09-14",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2023-09-15",
+          "valor": 20,
+          "hasta": "2023-10-26",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2023-10-27",
+          "valor": 16,
+          "hasta": "2023-12-14",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2023-12-15",
+          "valor": 15,
+          "hasta": "2024-03-14",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-03-15",
+          "valor": 14.5,
+          "hasta": "2024-04-25",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-04-26",
+          "valor": 13.5,
+          "hasta": "2024-06-13",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-06-14",
+          "valor": 13,
+          "hasta": "2024-12-12",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2024-12-13",
+          "valor": 13.5,
+          "hasta": "2025-01-23",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-01-24",
+          "valor": 14.5,
+          "hasta": "2025-03-06",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2025-03-07",
+          "valor": 15.5,
+          "hasta": "2026-01-29",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-30",
+          "valor": 15,
+          "hasta": "2026-07-30",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-31",
+          "valor": 15.5,
+          "hasta": "2026-09-17",
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-09-18",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Національний банк України",
+            "titulo": "Облікова ставка Національного банку України (статистичний ряд)",
+            "url": "https://bank.gov.ua/NBUStatService/v1/statdirectory/key?json",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-24"
+          }
+        }
+      ]
+    }
+  ]
+}

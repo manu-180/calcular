@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 
 export const contenidoPt: ContenidoUniversal = (ctx) => {
@@ -5,7 +6,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const b = montoEjemplo(ctx, 30);
   const cuota = (a + b) / 3;
   const m = (n: number) => formatearMonto(ctx, n);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Calculadora para dividir contas",
     title: tituloQueEntre(`Dividir contas entre amigos (${ctx.nombrePais})`, "Calculadora para dividir contas"),

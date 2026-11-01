@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ch-it.lohnkosten-rechner",
   h1: "Costo del datore di lavoro in Svizzera: quanto costa un posto",
-  title: "Costo datore di lavoro Svizzera: contributi 2026",
+  title: "Costo datore di lavoro Svizzera: contributi {{anio}}",
   description: "Quanto costa un salario lordo al datore di lavoro? AVS/AI/IPG, AD, cassa pensioni, cassa per assegni familiari e infortuni professionali al mese e all'anno.",
   intro: [
     "Al salario lordo il datore di lavoro aggiunge i propri contributi sociali. Paga metà dell'AVS/AI/IPG e dell'AD, almeno metà della cassa pensioni e tutto il premio per gli infortuni professionali.",

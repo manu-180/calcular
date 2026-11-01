@@ -99,6 +99,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
     },
     usted: { datos: "Uw gegevens", vacio: "Vul de gegevens in en tik op Berekenen om de uitkomst te zien." },
   },
+  pl: {
+    base: {
+      datos: "Twoje dane",
+      resultado: "Wynik",
+      vacio: "Uzupełnij dane i naciśnij Oblicz, aby zobaczyć wynik.",
+      sinResultado: "Na razie nie pokazujemy tego wyniku.",
+      avisos: { info: "Dobrze wiedzieć", cautela: "Uwaga", bloquea: "Dlaczego nie pokazujemy wyniku" },
+      fuenteDelAviso: "Źródło",
+    },
+  },
   ja: {
     base: {
       datos: "入力項目",
@@ -131,6 +141,177 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
     regional: {
       "zh-CN": ZH_HANS_CALCULADORA,
       "zh-SG": ZH_HANS_CALCULADORA,
+    },
+  },
+  sv: {
+    base: {
+      datos: "Dina uppgifter",
+      resultado: "Resultat",
+      vacio: "Fyll i uppgifterna och tryck på Beräkna för att se resultatet.",
+      sinResultado: "Vi visar inte det här resultatet just nu.",
+      avisos: { info: "Bra att veta", cautela: "Observera", bloquea: "Därför visar vi inget resultat" },
+      fuenteDelAviso: "Källa",
+    },
+  },
+  da: {
+    base: {
+      datos: "Dine oplysninger",
+      resultado: "Resultat",
+      vacio: "Udfyld oplysningerne, og tryk på Beregn for at se resultatet.",
+      sinResultado: "Vi viser ikke dette resultat lige nu.",
+      avisos: { info: "Godt at vide", cautela: "Bemærk", bloquea: "Derfor viser vi ikke et resultat" },
+      fuenteDelAviso: "Kilde",
+    },
+  },
+  nb: {
+    base: {
+      datos: "Opplysningene dine",
+      resultado: "Resultat",
+      vacio: "Fyll ut opplysningene og trykk på Beregn for å se resultatet.",
+      sinResultado: "Vi viser ikke dette resultatet akkurat nå.",
+      avisos: { info: "Greit å vite", cautela: "Merk deg", bloquea: "Derfor viser vi ikke noe resultat" },
+      fuenteDelAviso: "Kilde",
+    },
+  },
+  fi: {
+    base: {
+      datos: "Tietosi",
+      resultado: "Tulos",
+      vacio: "Täytä tiedot ja paina Laske, niin näet tuloksen.",
+      sinResultado: "Emme näytä tätä tulosta juuri nyt.",
+      avisos: { info: "Hyvä tietää", cautela: "Huomaa", bloquea: "Siksi emme näytä tulosta" },
+      fuenteDelAviso: "Lähde",
+    },
+  },
+  ar: {
+    base: {
+      datos: "بياناتك",
+      resultado: "النتيجة",
+      vacio: "أدخل البيانات واضغط «احسب» لتظهر النتيجة.",
+      sinResultado: "لا نعرض هذه النتيجة في الوقت الحالي.",
+      avisos: { info: "معلومة مفيدة", cautela: "تنبيه", bloquea: "لماذا لا نعرض النتيجة" },
+      fuenteDelAviso: "المصدر",
+    },
+  },
+  id: {
+    base: {
+      datos: "Data Anda",
+      resultado: "Hasil",
+      vacio: "Isi data Anda, lalu ketuk Hitung untuk melihat hasilnya.",
+      sinResultado: "Hasil ini belum kami tampilkan untuk saat ini.",
+      avisos: { info: "Perlu diketahui", cautela: "Perhatian", bloquea: "Mengapa hasilnya tidak kami tampilkan" },
+      fuenteDelAviso: "Sumber",
+    },
+  },
+  tr: {
+    base: {
+      datos: "Bilgileriniz",
+      resultado: "Sonuç",
+      vacio: "Bilgilerinizi girin ve sonucu görmek için Hesapla'ya dokunun.",
+      sinResultado: "Bu sonucu şimdilik göstermiyoruz.",
+      avisos: { info: "Bilmenizde fayda var", cautela: "Dikkat", bloquea: "Sonucu neden göstermiyoruz" },
+      fuenteDelAviso: "Kaynak",
+    },
+  },
+  bn: {
+    base: {
+      datos: "আপনার তথ্য",
+      resultado: "ফলাফল",
+      vacio: "তথ্যগুলো লিখে ‘হিসাব করুন’ চাপুন, ফলাফল এখানে দেখা যাবে।",
+      sinResultado: "এই ফলাফলটি আপাতত দেখানো হচ্ছে না।",
+      avisos: { info: "জেনে রাখুন", cautela: "সতর্কতা", bloquea: "ফলাফল কেন দেখানো হচ্ছে না" },
+      fuenteDelAviso: "সূত্র",
+    },
+  },
+  th: {
+    base: {
+      datos: "ข้อมูลสำหรับคำนวณ",
+      resultado: "ผลการคำนวณ",
+      vacio: "กรอกข้อมูลแล้วกด “คำนวณ” เพื่อดูผลลัพธ์",
+      sinResultado: "ขณะนี้ยังไม่แสดงผลลัพธ์นี้",
+      avisos: { info: "ข้อควรทราบ", cautela: "โปรดระวัง", bloquea: "เหตุใดจึงไม่แสดงผลลัพธ์" },
+      fuenteDelAviso: "แหล่งที่มา",
+    },
+  },
+  uk: {
+    base: {
+      datos: "Ваші дані",
+      resultado: "Результат",
+      vacio: "Введіть дані й натисніть «Розрахувати», щоб побачити результат.",
+      sinResultado: "Наразі ми не показуємо цей результат.",
+      avisos: { info: "Варто знати", cautela: "Зверніть увагу", bloquea: "Чому ми не показуємо результат" },
+      fuenteDelAviso: "Джерело",
+    },
+  },
+  uz: {
+    base: {
+      datos: "Maʼlumotlaringiz",
+      resultado: "Natija",
+      vacio: "Maʼlumotlarni kiriting va natijani koʻrish uchun «Hisoblash» tugmasini bosing.",
+      sinResultado: "Bu natijani hozircha koʻrsatmaymiz.",
+      avisos: { info: "Eslatma", cautela: "Diqqat", bloquea: "Natija nega koʻrsatilmaydi" },
+      fuenteDelAviso: "Manba",
+    },
+  },
+  ru: {
+    base: {
+      datos: "Ваши данные",
+      resultado: "Результат",
+      vacio: "Введите данные и нажмите «Рассчитать», чтобы увидеть результат.",
+      sinResultado: "Сейчас мы не показываем этот результат.",
+      avisos: { info: "Полезно знать", cautela: "Обратите внимание", bloquea: "Почему мы не показываем результат" },
+      fuenteDelAviso: "Источник",
+    },
+  },
+  // Rumano (ADR 0002, D18): «dumneavoastră» implícito; el botón es «Calculați».
+  ro: {
+    base: {
+      datos: "Datele dumneavoastră",
+      resultado: "Rezultat",
+      vacio: "Completați datele și apăsați „Calculați” ca să vedeți rezultatul.",
+      sinResultado: "Deocamdată nu afișăm acest rezultat.",
+      avisos: { info: "Bine de știut", cautela: "Atenție", bloquea: "De ce nu afișăm rezultatul" },
+      fuenteDelAviso: "Sursa",
+    },
+  },
+  cs: {
+    base: {
+      datos: "Vaše údaje",
+      resultado: "Výsledek",
+      vacio: "Vyplňte údaje a klikněte na „Spočítat“, výsledek se zobrazí tady.",
+      sinResultado: "Tento výsledek zatím nezobrazujeme.",
+      avisos: { info: "Dobré vědět", cautela: "Pozor", bloquea: "Proč výsledek nezobrazujeme" },
+      fuenteDelAviso: "Zdroj",
+    },
+  },
+  el: {
+    base: {
+      datos: "Τα στοιχεία σας",
+      resultado: "Αποτέλεσμα",
+      vacio: "Συμπληρώστε τα στοιχεία και πατήστε «Υπολογισμός». Το αποτέλεσμα θα εμφανιστεί εδώ.",
+      sinResultado: "Αυτό το αποτέλεσμα δεν εμφανίζεται ακόμη.",
+      avisos: { info: "Καλό να γνωρίζετε", cautela: "Προσοχή", bloquea: "Γιατί δεν εμφανίζεται αποτέλεσμα" },
+      fuenteDelAviso: "Πηγή",
+    },
+  },
+  hu: {
+    base: {
+      datos: "Az adataid",
+      resultado: "Eredmény",
+      vacio: "Töltsd ki az adatokat, és kattints a „Kiszámítás” gombra: az eredmény itt jelenik meg.",
+      sinResultado: "Ezt az eredményt egyelőre nem mutatjuk.",
+      avisos: { info: "Jó tudni", cautela: "Figyelem", bloquea: "Miért nem mutatjuk az eredményt" },
+      fuenteDelAviso: "Forrás",
+    },
+  },
+  he: {
+    base: {
+      datos: "הנתונים שלכם",
+      resultado: "התוצאה",
+      vacio: "מלאו את הנתונים ולחצו על \"לחישוב\" כדי לראות את התוצאה.",
+      sinResultado: "התוצאה הזו לא מוצגת כרגע.",
+      avisos: { info: "כדאי לדעת", cautela: "שימו לב", bloquea: "למה התוצאה לא מוצגת" },
+      fuenteDelAviso: "מקור",
     },
   },
   sr: {

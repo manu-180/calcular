@@ -3,8 +3,8 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "sg.cpf-contribution-calculator",
   h1: "CPF contribution calculator",
-  title: "CPF contribution calculator 2026: employee and employer",
-  description: "Work out the monthly CPF for an employee: the employee's share, the employer's share and the total, with the 2026 rates and the {{sg.cpf-tope-ow}} wage ceiling.",
+  title: "CPF contribution calculator {{anio}}: employee and employer",
+  description: "Work out the monthly CPF for an employee: the employee's share, the employer's share and the total, with the {{anio}} rates and the {{sg.cpf-tope-ow}} wage ceiling.",
   intro: [
     "Every month, employers pay CPF for their Singapore Citizen and PR employees. Part of it is deducted from the employee's pay and the rest is paid by the employer.",
     "Enter the wages for the month and the employee's age group to see both shares, worked out the way the CPF Board's rate table says.",

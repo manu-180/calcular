@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { tarifa } from "../definicion";
 
@@ -6,7 +7,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const ingreso = montoEjemplo(ctx, 40000);
   const gastos = montoEjemplo(ctx, 5000);
   const r = tarifa({ ingreso, gastos, impuestos: 25, diasLibres: 30, diasSemana: 5, horasSemana: 25 });
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: "Quanto cobrar por hora como freelancer",
     title: tituloQueEntre(`Calculadora de valor da hora freelancer (${ctx.nombrePais})`, "Calculadora de valor da hora freelancer", "Valor da hora freelancer"),

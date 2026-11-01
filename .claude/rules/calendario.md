@@ -3,8 +3,7 @@ paths:
   - "src/motor/calendario/**"
   - "src/motor/i18n/calendario.ts"
   - "src/app/(intl)/intl/[mercado]/_calendario/**"
-  - "src/app/(intl)/intl/[mercado]/calendario-laboral/**"
-  - "src/app/(intl)/intl/[mercado]/pay-calendar/**"
+  - "src/app/(intl)/intl/[mercado]/i/calendario/**"
   - "scripts/check_calendario.ts"
 ---
 

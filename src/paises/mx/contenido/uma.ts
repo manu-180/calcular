@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "mx.uma",
-  h1: "Valor de la UMA 2026: convierte UMA a pesos",
-  title: "UMA 2026: {{mx.uma-diaria}} diarios. Convierte UMA a pesos",
+  h1: "Valor de la UMA {{anio}}: convierte UMA a pesos",
+  title: "UMA {{anio}}: {{mx.uma-diaria}} diarios. Convierte UMA a pesos",
   description:
-    "La UMA 2026 vale {{mx.uma-diaria}} diarios y {{mx.uma-mensual}} mensuales. Convierte multas, límites y créditos de UMA a pesos (o al revés) en un paso.",
+    "La UMA {{anio}} vale {{mx.uma-diaria}} diarios y {{mx.uma-mensual}} mensuales. Convierte multas, límites y créditos de UMA a pesos (o al revés) en un paso.",
   intro: [
     "La UMA vale {{mx.uma-diaria}} por día y {{mx.uma-mensual}} por mes desde el {{mx.uma-diaria#desde}}. Es la referencia en pesos que usan las leyes para multas, límites de impuestos y otros montos.",
     "Escribe cuántas UMA dice tu multa o tu norma y te decimos cuánto es en pesos.",

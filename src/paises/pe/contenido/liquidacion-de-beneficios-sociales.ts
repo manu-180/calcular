@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "pe.liquidacion",
-  h1: "Calculadora de liquidación de beneficios sociales 2026",
-  title: "Liquidación de beneficios sociales 2026: calculadora",
+  h1: "Calculadora de liquidación de beneficios sociales {{anio}}",
+  title: "Liquidación de beneficios sociales {{anio}}: calculadora",
   description:
     "Calcula tu liquidación al dejar el trabajo: CTS trunca, gratificación trunca con bonificación y vacaciones truncas. Pon tus fechas y ve el total.",
   intro: [

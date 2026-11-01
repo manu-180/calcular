@@ -2,8 +2,8 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "de.minijob-rechner",
-  h1: "Minijob-Rechner 2026",
-  title: "Minijob-Rechner 2026: Netto und Kosten für den Arbeitgeber",
+  h1: "Minijob-Rechner {{anio}}",
+  title: "Minijob-Rechner {{anio}}: Netto und Kosten für den Arbeitgeber",
   description:
     "Was bleibt Ihnen vom Minijob, und was kostet er den Arbeitgeber? Mit Minijob-Grenze, Rentenbeitrag, Pauschalabgaben und Stunden zum Mindestlohn.",
   intro: [

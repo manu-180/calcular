@@ -1,0 +1,193 @@
+{
+  "mercado": "ws",
+  "series": [
+    {
+      "id": "ws.usd",
+      "nombre": "Indicative rate, US dollar per tala",
+      "unidad": "factor",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Samoa",
+        "titulo": "Daily exchange rates (indicative, units of foreign currency per tala)",
+        "url": "https://www.cbs.gov.ws/daily-exchange-rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          0.36201
+        ]
+      ]
+    },
+    {
+      "id": "ws.nzd",
+      "nombre": "Indicative rate, New Zealand dollar per tala",
+      "unidad": "factor",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Samoa",
+        "titulo": "Daily exchange rates (indicative, units of foreign currency per tala)",
+        "url": "https://www.cbs.gov.ws/daily-exchange-rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          0.64306
+        ]
+      ]
+    },
+    {
+      "id": "ws.aud",
+      "nombre": "Indicative rate, Australian dollar per tala",
+      "unidad": "factor",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Samoa",
+        "titulo": "Daily exchange rates (indicative, units of foreign currency per tala)",
+        "url": "https://www.cbs.gov.ws/daily-exchange-rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          0.51316
+        ]
+      ]
+    },
+    {
+      "id": "ws.eur",
+      "nombre": "Indicative rate, euro per tala",
+      "unidad": "factor",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Samoa",
+        "titulo": "Daily exchange rates (indicative, units of foreign currency per tala)",
+        "url": "https://www.cbs.gov.ws/daily-exchange-rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          0.32454
+        ]
+      ]
+    },
+    {
+      "id": "ws.gbp",
+      "nombre": "Indicative rate, pound sterling per tala",
+      "unidad": "factor",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Samoa",
+        "titulo": "Daily exchange rates (indicative, units of foreign currency per tala)",
+        "url": "https://www.cbs.gov.ws/daily-exchange-rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          0.27175
+        ]
+      ]
+    },
+    {
+      "id": "ws.fjd",
+      "nombre": "Indicative rate, Fijian dollar per tala",
+      "unidad": "factor",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 10,
+      "fuente": {
+        "organismo": "Central Bank of Samoa",
+        "titulo": "Daily exchange rates (indicative, units of foreign currency per tala)",
+        "url": "https://www.cbs.gov.ws/daily-exchange-rates",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      },
+      "puntos": [
+        [
+          "2026-10-29",
+          0.81032
+        ]
+      ]
+    },
+    {
+      "id": "ws.cpi",
+      "nombre": "Consumer Price Index, all items",
+      "unidad": "numero",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 70,
+      "fuente": {
+        "organismo": "Samoa Bureau of Statistics",
+        "titulo": "Consumer Price Index tables, September 2026 (xlsx)",
+        "url": "https://www.sbs.gov.ws/documents/economics/CPI/2026/09_CPI_Tables.xlsx",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-29"
+      },
+      "puntos": [
+        [
+          "2025-09-01",
+          138.5099
+        ],
+        [
+          "2025-10-01",
+          137.0893
+        ],
+        [
+          "2025-11-01",
+          135.8583
+        ],
+        [
+          "2025-12-01",
+          135.4026
+        ],
+        [
+          "2026-01-01",
+          134.2948
+        ],
+        [
+          "2026-02-01",
+          134.7423
+        ],
+        [
+          "2026-03-01",
+          135.5274
+        ],
+        [
+          "2026-04-01",
+          136.8027
+        ],
+        [
+          "2026-05-01",
+          141.0991
+        ],
+        [
+          "2026-06-01",
+          145.0042
+        ],
+        [
+          "2026-07-01",
+          144.095
+        ],
+        [
+          "2026-08-01",
+          144.1626
+        ],
+        [
+          "2026-09-01",
+          143.2781
+        ]
+      ]
+    }
+  ]
+}

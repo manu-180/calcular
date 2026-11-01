@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "my.take-home-pay",
   h1: "Take-home pay calculator Malaysia",
   title: "Take-home pay calculator: salary after EPF, SOCSO and PCB",
-  description: "Work out your net salary after EPF, SOCSO, LINDUNG 24 Jam, EIS and PCB, with the 2026 PERKESO tables and the HASiL PCB formula.",
+  description: "Work out your net salary after EPF, SOCSO, LINDUNG 24 Jam, EIS and PCB, with the {{anio}} PERKESO tables and the HASiL PCB formula.",
   intro: [
     "Enter your gross monthly salary and your EPF contribution to see what reaches your bank account after every statutory deduction.",
     "SOCSO and EIS come from the PERKESO contribution tables, including the new LINDUNG 24 Jam share, and PCB from the HASiL computerised formula for 2026.",

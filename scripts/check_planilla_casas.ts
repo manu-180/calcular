@@ -7,7 +7,7 @@
 
 import path from "node:path";
 import { existsSync } from "node:fs";
-import { ESCALAS_POR_MES, escalaDe } from "../src/data/casas-particulares";
+import { ESCALAS_POR_MES, escalaDe, maxAniosAntiguedad } from "../src/data/casas-particulares";
 import { CONDICIONES, TABLA_APORTES } from "../src/data/aportes-casas-particulares";
 import { calcularCasasParticulares, diasDeVacaciones } from "../src/lib/casas-particulares";
 import { calcularAportes } from "../src/lib/aportes-casas-particulares";
@@ -98,6 +98,7 @@ async function main() {
                 [CELDAS.zona]: zona ? "Sí" : "No",
                 [CELDAS.extrasComunes]: ex1,
                 [CELDAS.extrasFinde]: ex2,
+                [CELDAS.antiguedad]: 0,
               });
               const r = calcularCasasParticulares({
                 mesId: mes.id,
@@ -136,6 +137,43 @@ async function main() {
     }
   }
   check(`Liquidador == calcularCasasParticulares() en ${casos} casos`, malLiq === 0);
+
+  // 2b. ANTIGÜEDAD (Res. CNTCP 2/2021, art. 3): 1% del básico por año, con el tope del mes (desde 1/9/2020).
+  let malAnt = 0;
+  let casosAnt = 0;
+  for (const mes of ESCALAS_POR_MES) {
+    for (const [cat, mod, horas, zona] of [[categorias[4], "con-retiro", 20, false], [categorias[3], "sin-retiro", 48, true], [categorias[0], "con-retiro", 48, false]] as const) {
+      for (const anios of [0, 1, 3, 4.7, 6, 7, 15]) {
+        casosAnt++;
+        libro.cargar(L, {
+          [CELDAS.mes]: mes.etiqueta,
+          [CELDAS.categoria]: cat.nombre,
+          [CELDAS.modalidad]: MODALIDADES[mod],
+          [CELDAS.horasSemanales]: horas,
+          [CELDAS.zona]: zona ? "Sí" : "No",
+          [CELDAS.extrasComunes]: 2,
+          [CELDAS.extrasFinde]: 0,
+          [CELDAS.antiguedad]: anios,
+        });
+        const r = calcularCasasParticulares({ mesId: mes.id, categoriaId: cat.id, modalidad: mod, horasSemanales: horas, zonaDesfavorable: zona, horasExtrasComunes: 2, horasExtrasFinDeSemana: 0, aniosAntiguedad: anios })!;
+        const esperado = Math.round(r.basico * Math.min(Math.floor(anios), maxAniosAntiguedad(mes.id))) / 100;
+        const pares: [string, number, number][] = [
+          ["adicional", libro.numero(L, CELDAS.montoAntiguedad), r.adicionalAntiguedad],
+          ["adicional = 1% × años con tope", r.adicionalAntiguedad, esperado],
+          ["total", libro.numero(L, CELDAS.total), r.total],
+          ["aguinaldo", libro.numero(L, CELDAS.aguinaldo), r.aguinaldoEstimado],
+        ];
+        for (const [campo, a, b] of pares)
+          if (!igual(a, b)) {
+            malAnt++;
+            if (malAnt <= 5) console.error(`     ${mes.id} ${cat.id} ${anios} años · ${campo}: ${a} ≠ ${b}`);
+          }
+      }
+    }
+  }
+  check(`antigüedad del Liquidador == calcularCasasParticulares() en ${casosAnt} casos (tope ${ESCALAS_POR_MES.map((m) => `${m.id}: ${maxAniosAntiguedad(m.id)}`).join(", ")})`, malAnt === 0);
+  check("tope de antigüedad: agosto 2026 = 5 años, septiembre 2026 = 6 (desde el 1/9/2020)", maxAniosAntiguedad("2026-08") === 5 && maxAniosAntiguedad("2026-09") === 6);
+  libro.cargar(L, { [CELDAS.antiguedad]: 0 });
 
   // 3. APORTES: el bloque de ARCA del Liquidador == calcularAportes().
   let malApo = 0;
@@ -181,7 +219,7 @@ async function main() {
   // 5. RECIBO: toma los importes del Liquidador (no quedó apuntando a una celda corrida).
   libro.cargar(L, { [CELDAS.horasSemanales]: 20, [CELDAS.extrasComunes]: 2, [CELDAS.categoria]: categorias[4].nombre, [CELDAS.modalidad]: "Con retiro" });
   const totalLiq = libro.numero(L, CELDAS.total);
-  const totalRecibo = libro.numero(HOJAS.recibo, "B15");
+  const totalRecibo = libro.numero(HOJAS.recibo, "B16");
   check("el recibo muestra el total del Liquidador", totalLiq > 0 && igual(totalLiq, totalRecibo), { totalLiq, totalRecibo });
 
   // 6. Los valores por defecto del Liquidador son opciones válidas de sus propios desplegables.

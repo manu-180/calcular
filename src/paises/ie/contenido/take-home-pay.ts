@@ -2,10 +2,10 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ie.take-home-pay",
-  h1: "Take-home pay calculator Ireland 2026",
-  title: "Take-home pay calculator Ireland 2026: salary after tax",
+  h1: "Take-home pay calculator Ireland {{anio}}",
+  title: "Take-home pay calculator Ireland {{anio}}: salary after tax",
   description:
-    "See your net pay after PAYE Income Tax, USC and PRSI for 2026. Uses Revenue's rate bands and tax credits, with the Rent Tax Credit if you rent.",
+    "See your net pay after PAYE Income Tax, USC and PRSI for {{anio}}. Uses Revenue's rate bands and tax credits, with the Rent Tax Credit if you rent.",
   intro: [
     "Enter your gross salary and see what reaches your bank account each year, month and week after Income Tax, the Universal Social Charge and PRSI.",
     "It uses the 2026 figures from Revenue: a standard rate band of {{ie.rate-bands[single]}} for a single person, the Single Person Tax Credit of {{ie.tax-credits[single]}} and the Employee Tax Credit of {{ie.tax-credits[employee]}}.",

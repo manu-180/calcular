@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.land-transfer-tax",
-  h1: "Calcul de la taxe de bienvenue (droits de mutation) 2026",
-  title: "Calcul de la taxe de bienvenue 2026 au Québec",
-  description: "Calculez la taxe de bienvenue (droits de mutation) au Québec avec les taux de 2026, ou les droits de cession en Ontario, à Toronto et en C.-B.",
+  h1: "Calcul de la taxe de bienvenue (droits de mutation) {{anio}}",
+  title: "Calcul de la taxe de bienvenue {{anio}} au Québec",
+  description: "Calculez la taxe de bienvenue (droits de mutation) au Québec avec les taux de {{anio}}, ou les droits de cession en Ontario, à Toronto et en C.-B.",
   intro: [
     "Inscrivez le prix d'achat d'une propriété pour voir les droits de mutation que vous payez à la municipalité après l'achat.",
     "Au Québec, on l'appelle aussi la taxe de bienvenue. Les taux de 2026 viennent de Québec.ca; Montréal a ses propres taux et n'est pas inclus.",

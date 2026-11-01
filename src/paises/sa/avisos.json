@@ -1,0 +1,29 @@
+{
+  "mercado": "sa",
+  "avisos": [
+    {
+      "id": "sa.labour-law-scope",
+      "nivel": "info",
+      "desde": "2026-10-24",
+      "aplicaA": [
+        "sa.end-of-service-calculator",
+        "sa.final-settlement",
+        "sa.annual-leave-calculator",
+        "sa.overtime-calculator",
+        "sa.ramadan-working-hours",
+        "sa.unfair-dismissal-compensation",
+        "sa.notice-period",
+        "sa.sick-leave-calculator",
+        "sa.maternity-leave-calculator"
+      ],
+      "texto": "يتبع الحساب نظام العمل في القطاع الخاص. لا يشمل العمالة المنزلية ولا الفئات الأخرى التي تستثنيها المادة السابعة من النظام.",
+      "fuente": {
+        "organismo": "هيئة الخبراء بمجلس الوزراء",
+        "titulo": "نظام العمل وتعديلاته (آخرها المرسوم الملكي م/44 وتاريخ 1446/2/8 للهجرة)",
+        "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+        "tipo": "primaria",
+        "verificadoEl": "2026-10-24"
+      }
+    }
+  ]
+}

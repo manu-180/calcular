@@ -2,9 +2,9 @@ import { definirContenido } from "@/motor/calculo";
 
 export default definirContenido({
   calculadora: "ca-fr.take-home-pay",
-  h1: "Calcul du salaire net 2026 au Québec",
-  title: "Calcul du salaire net 2026 : salaire après impôt",
-  description: "Passez du salaire brut au salaire net 2026 au Québec : impôt fédéral et du Québec, RRQ, assurance-emploi et RQAP. Par semaine, aux deux semaines ou par mois.",
+  h1: "Calcul du salaire net {{anio}} au Québec",
+  title: "Calcul du salaire net {{anio}} : salaire après impôt",
+  description: "Passez du salaire brut au salaire net {{anio}} au Québec : impôt fédéral et du Québec, RRQ, assurance-emploi et RQAP. Par semaine, aux deux semaines ou par mois.",
   intro: [
     "Inscrivez votre salaire brut et votre province ou votre territoire pour voir ce qui vous reste chaque année, chaque mois et à chaque paie.",
     "Au Québec, le calcul retire l'impôt fédéral, l'impôt du Québec, les cotisations au RRQ, à l'assurance-emploi et au RQAP avec les chiffres de 2026.",

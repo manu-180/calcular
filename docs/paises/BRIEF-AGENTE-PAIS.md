@@ -63,12 +63,35 @@ mal, contalo en el reporte. `scripts/paises_comun.ts` descubre tu país por carp
 ## Verificación antes de devolver (corrida, no supuesta)
 
 `npx tsc --noEmit`; `npx tsx scripts/check_paises.ts`, `check_paises_casos.ts`,
-`check_textos_paises.ts`, `check_fronteras.ts` verdes; detectores probados contra la red real.
+`check_textos_paises.ts`, `check_fronteras.ts`, `check_seo_pais.ts <m>` verdes; detectores probados contra la red real.
 Si tenés calculadora de `sueldo-neto`, declarás siempre `mundo` en ella (RECETA §7): la inferencia
 del motor no sabe si tu neto descuenta el impuesto a la renta, y un país mal leído publica una
 comparación falsa en todas las ediciones. Si el neto no lo descuenta, `mundo: { excluir: "…" }`.
 `npx tsx scripts/check_mundo.ts` confirma que entró y con qué tasa a 15k/50k/150k: compará esas tasas
 con las de la autoridad fiscal del país antes de entregar.
+
+## SEO del país (gate, no opcional)
+
+El motor pone solo canonical, hreflang, sitemap, schema, OG, legales en tu idioma y el sello de datos:
+no lo configurás. Lo que decide si tu país rankea es lo que vos escribís, y lo mide
+`scripts/check_seo_pais.ts <m>` (contrato completo: `docs/seo/ESTANDAR-SEO-MULTIPAIS.md`, §2):
+
+- **Slug = la consulta real del país** en su idioma y escritura, verificada en Google del país
+  (autocompletar y «otras preguntas»). No se cambia después de publicado.
+- **Año con `{{anio}}`** en `title`, `description` y `h1`, nunca tipeado. En el cuerpo va la vigencia
+  real del dato (`{{id#desde}}`), no el año del reloj. Ejercicios con rango («2026-27») y años de
+  normas («Employment Act 1955») se escriben tal cual.
+- **Title = la promesa del H1 con el dato que lo distingue**, sin marca ni país (los pone el motor),
+  description con el número vigente por marcador y una acción.
+- **≥ 3 datos propios del país por calculadora** (tramo, tope, aporte, mínimo, vigencia) citados a su
+  norma. Si solo cambia la moneda es una universal: no la dupliques como local.
+- **Cuerpo propio**: intro que da el número vigente primero, cómo se calcula, **ejemplo resuelto con un
+  monto concreto**, al menos 3 preguntas de la FAQ con la norma como respuesta, glosario. Mínimo 90
+  palabras por calculadora, objetivo 220 o más; p50 de los países publicados = 230.
+- **Con tus propias palabras**: dos países del mismo idioma y concepto no pueden compartir más del 65 %
+  de sus oraciones. Copiar el país modelo y cambiar nombres es un doorway para Google.
+- **Novedades reales** con fecha y fuente: son el `lastmod`, el feed y la sección «qué cambió» que un
+  competidor global no tiene.
 
 ## Formato de retorno (breve, sin pegar archivos)
 

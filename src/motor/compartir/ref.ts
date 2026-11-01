@@ -7,6 +7,8 @@ export const ORIGENES_COMPARTIR = ["calculadora", "mundo", "duelo", "ranking", "
 export type OrigenCompartir = (typeof ORIGENES_COMPARTIR)[number];
 const CORTOS: Readonly<Record<OrigenCompartir, string>> = { calculadora: "c", mundo: "m", duelo: "d", ranking: "r", horas: "h", sueldos: "s", calendario: "k" };
 export const ORIGENES_CORTOS: readonly string[] = Object.values(CORTOS);
+// Los canales de src/motor/compartir. /api/e les suma «link», el de la barra de calcular.ar.
+export const CANALES_COMPARTIR = ["nativo", "copiar", "whatsapp", "x", "telegram", "linkedin", "facebook", "instagram"] as const;
 export const VARIANTES_PUENTE = ["con", "sin"] as const;
 
 export type VariantePuente = (typeof VARIANTES_PUENTE)[number];

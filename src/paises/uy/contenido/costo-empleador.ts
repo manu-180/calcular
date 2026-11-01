@@ -3,7 +3,7 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "uy.costo-empleador",
   h1: "Costo de un empleado para la empresa",
-  title: "Aportes patronales BPS 2026: costo de un empleado",
+  title: "Aportes patronales BPS {{anio}}: costo de un empleado",
   description:
     "Calculá cuánto le cuesta a la empresa un sueldo: aporte jubilatorio patronal del {{uy.patronal-jubilatorio}}, Fonasa del {{uy.patronal-fonasa}}, FRL y fondo de garantía, más aguinaldo y licencia.",
   intro: [

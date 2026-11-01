@@ -1,3 +1,4 @@
+import { esPortuguesEuropeo } from "../../comun/locales";
 import { formatearMonto, montoEjemplo, tituloQueEntre, type ContenidoUniversal } from "../../tipos";
 import { aporteNecesario } from "../definicion";
 
@@ -5,7 +6,7 @@ export const contenidoPt: ContenidoUniversal = (ctx) => {
   const m = (n: number) => formatearMonto(ctx, n);
   const meta = montoEjemplo(ctx, 10000);
   const actual = montoEjemplo(ctx, 1000);
-  const pt = ctx.locale === "pt-PT";
+  const pt = esPortuguesEuropeo(ctx.locale);
   return {
     h1: pt ? "Calculadora de objetivo de poupança" : "Calculadora de meta financeira",
     title: pt

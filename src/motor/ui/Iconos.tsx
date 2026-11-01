@@ -3,7 +3,7 @@ const base = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strok
 
 export function IconoFlecha({ className }: { className?: string }) {
   return (
-    <svg {...base} className={className} width="16" height="16">
+    <svg {...base} className={className ? `cy-icono-flecha ${className}` : "cy-icono-flecha"} width="16" height="16">
       <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>
   );

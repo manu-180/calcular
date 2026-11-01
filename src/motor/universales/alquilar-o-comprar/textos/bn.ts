@@ -1,0 +1,42 @@
+import { cifrasBn } from "../../../i18n/bengali";
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosBn: TextosUi<UiAlquilarOComprar> = {
+  slug: "rent-vs-buy",
+  ui: () => ({
+    precio: "ফ্ল্যাট বা বাড়ির দাম",
+    entrada: "ডাউন পেমেন্ট (দামের %)",
+    gastosCompra: "কেনার আনুষঙ্গিক খরচ (দামের %)",
+    gastosCompraAyuda: "রেজিস্ট্রেশন, স্ট্যাম্প ও দালালি ফির মতো খরচ।",
+    tasa: "হোম লোনের সুদের হার (বার্ষিক %)",
+    aniosHipoteca: "হোম লোনের মেয়াদ (বছর)",
+    alquiler: "একই রকম বাসার মাসিক ভাড়া",
+    aumentoAlquiler: "বছরে ভাড়া বৃদ্ধি (%)",
+    gastosPropietario: "মালিকানার বার্ষিক খরচ (দামের %)",
+    gastosPropietarioAyuda: "মেরামত, হোল্ডিং ট্যাক্স ও বিমার মতো খরচ। সাধারণত দামের ১ থেকে ২%।",
+    revalorizacion: "বছরে দাম বৃদ্ধি (%)",
+    rendimiento: "অন্য বিনিয়োগে মুনাফা (বার্ষিক %)",
+    rendimientoAyuda: "বাড়ি না কিনে ডাউন পেমেন্টের টাকা বিনিয়োগ করলে যে মুনাফা পেতেন।",
+    horizonte: "কত বছরের তুলনা",
+    veredicto: "ফলাফল",
+    patrimonioComprar: "কিনলে শেষে নিট সম্পদ",
+    patrimonioAlquilar: "ভাড়া থাকলে শেষে নিট সম্পদ",
+    diferencia: "পার্থক্য",
+    anioDesde: "যে বছর থেকে কেনা লাভজনক",
+    pagadoAlquilando: "মোট ভাড়া",
+    pagadoComprando: "কিস্তি ও মালিকানার মোট খরচ",
+    tabla: "বছরভিত্তিক তুলনা",
+    colAnio: "বছর",
+    colComprar: "কেনা",
+    colAlquilar: "ভাড়া",
+    colDiferencia: "পার্থক্য",
+    errorPrecio: "ফ্ল্যাট বা বাড়ির দাম লিখুন।",
+    errorAlquiler: "একই রকম বাসা ভাড়া নিলে মাসে কত দিতেন, তা লিখুন।",
+    convieneComprar: (anios, diferencia) => `কেনাই লাভজনক। ${cifrasBn(anios)} বছর পর আপনার সম্পদ ${cifrasBn(diferencia)} বেশি থাকবে।`,
+    convieneAlquilar: (anios, diferencia) => `ভাড়া থাকাই লাভজনক। ${cifrasBn(anios)} বছর পর আপনার সম্পদ ${cifrasBn(diferencia)} বেশি থাকবে।`,
+    empate: (anios) => `${cifrasBn(anios)} বছর পর দুই পথেই ফল একই।`,
+    observacionDesde: (anio) => `${cifrasBn(anio)} নম্বর বছর থেকে কেনা ভাড়ার চেয়ে এগিয়ে যায় এবং পরেও এগিয়ে থাকে।`,
+    observacionMetodo: "দুই ক্ষেত্রে হাতে কত সম্পদ থাকে তা তুলনা করা হয়েছে। ভাড়ার ক্ষেত্রে ধরা হয়েছে ডাউন পেমেন্ট আর প্রতি মাসের বেঁচে যাওয়া টাকা বিনিয়োগে থাকবে। বিক্রির খরচ বাদ দেওয়া হয়নি।",
+  }),
+};
