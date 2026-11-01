@@ -1221,6 +1221,7 @@ const KA_CORTOS: Readonly<Record<string, string>> = {
 };
 // «ცენტრალური აფრიკა» funciona como un nombre: el adjetivo no cambia delante de «რესპუბლიკა».
 const KA_FIJOS: Readonly<Record<string, { lugar: string; genitivo: string }>> = {
+  "ბრიტანეთის ტერიტორია ინდოეთის ოკეანეში": { lugar: "ბრიტანეთის ტერიტორიაზე ინდოეთის ოკეანეში", genitivo: "ბრიტანეთის ტერიტორიის ინდოეთის ოკეანეში" },
   "ცენტრალური აფრიკის რესპუბლიკა": { lugar: "ცენტრალური აფრიკის რესპუბლიკაში", genitivo: "ცენტრალური აფრიკის რესპუბლიკის" },
 };
 
@@ -1228,7 +1229,8 @@ export function casosKa(p: string): { lugar: string; genitivo: string } {
   const nombre = KA_CORTOS[p] ?? p;
   const fijo = KA_FIJOS[nombre];
   if (fijo) return fijo;
-  // Un nombre en letras latinas lleva el sufijo con guion, como «Google-ის».
+  // Una cifra nunca lleva sufijo; un nombre en letras latinas lo lleva con guion, como «Google-ის».
+  if (!/\p{L}/u.test(nombre)) return { lugar: nombre, genitivo: nombre };
   if (!/[\u10D0-\u10FF]/.test(nombre)) return { lugar: `${nombre}-ში`, genitivo: `${nombre}-ის` };
   const partes = nombre.split(" და ");
   if (partes.length === 2) {
@@ -1244,7 +1246,7 @@ const ka: GramaticaPais = {
   nombre: (p) => p,
   de: (p) => casosKa(p).genitivo,
   en: (p) => casosKa(p).lugar,
-  para: (p) => `${casosKa(p).genitivo}თვის`,
+  para: (p) => (/\p{L}/u.test(p) ? `${casosKa(p).genitivo}თვის` : p),
 };
 
 export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, ka };

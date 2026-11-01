@@ -13,6 +13,7 @@ const anio = (p: Producto) => p.titulo.match(/20\d\d/)?.[0];
 
 const humanizar = (slug: string) => {
   const s = slug.replace(/[-_]+/g, " ").trim();
+  if (/^[\u10D0-\u10FF]/.test(s)) return s; // el georgiano no tiene mayúsculas (ADR 0002, D26)
   return s ? s.charAt(0).toUpperCase() + s.slice(1) : "Compra";
 };
 

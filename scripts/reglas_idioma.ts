@@ -371,7 +371,7 @@ function reglasHu(texto: string): string[] {
 // de plural detrás de un número («3 დღე», nunca «3 დღეები»). Tampoco letras latinas o cirílicas
 // dentro de una palabra georgiana.
 const LETRA_KA = String.raw`[\u10D0-\u10FF]`;
-const PLURAL_TRAS_NUMERO_KA = new RegExp(String.raw`(?:\d|\}\})\s+${LETRA_KA}+(?:ები|ებს|ების|ებში|ებით|ებმა|ებზე)(?!${LETRA_KA})`, "u");
+const PLURAL_TRAS_NUMERO_KA = new RegExp(String.raw`\d\s+(?:დღე|თვე|წლ|საათ|კვირ|წუთ|კალკულატორ|ქვეყნ|ლარ|დოლარ|ევრ|პროცენტ|ადამიან|შენატან|კილომეტრ|ლიტრ|მეტრ|კილოგრამ|კალორი)(?:ები|ებს|ების|ებში|ებით|ებმა|ებზე)(?!${LETRA_KA})`, "u");
 const SUFIJO_TRAS_CIFRA_KA = new RegExp(String.raw`(?:\d|%|\}|₾)-?(?:ში|ის|ს|თვის|ზე|დან|მდე|ით|მა)(?!${LETRA_KA})`, "u");
 const MEZCLA_KA = new RegExp(String.raw`${LETRA_KA}[a-zA-Z\u0400-\u04FF]|[a-zA-Z\u0400-\u04FF]${LETRA_KA}`, "u");
 

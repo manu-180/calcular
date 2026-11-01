@@ -837,6 +837,7 @@ igual(
   ["საქართველო", "საფრანგეთი", "გერმანია", "კანადა", "ჩილე", "მალი", "ეგვიპტე", "სამოა", "ახალი ზელანდია", "ამერიკის შეერთებული შტატები", "ბოსნია და ჰერცეგოვინა", "ტრინიდადი და ტობაგო"].map((p) => casosKa(p).genitivo),
   ["საქართველოს", "საფრანგეთის", "გერმანიის", "კანადის", "ჩილეს", "მალის", "ეგვიპტის", "სამოას", "ახალი ზელანდიის", "ამერიკის შეერთებული შტატების", "ბოსნიისა და ჰერცეგოვინის", "ტრინიდადისა და ტობაგოს"],
 );
+igual("gramática georgiana: una cifra no lleva sufijo", [casosKa("7").lugar, GRAMATICA.ka.para("7")], ["7", "7"]);
 igual("gramática georgiana: para", [GRAMATICA.ka.para("საქართველო"), GRAMATICA.ka.para("საფრანგეთი")], ["საქართველოსთვის", "საფრანგეთისთვის"]);
 igual("unidades en húngaro", [formatearValorUnidad(3, "dias", "hu-HU"), formatearValorUnidad(1, "anios", "hu-HU"), formatearValorUnidad(1.5, "anios", "hu-HU")], ["3 nap", "1 év", "1,5 év"]);
 igual("forint", formatearMoneda(1234567, "hu-HU", "HUF").replace(/\s/g, " "), "1 234 567 Ft");

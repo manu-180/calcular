@@ -1333,6 +1333,75 @@ compartir locale con Israel en hreflang. `check_universales` prueba he-IL con IL
 largo («סנט וינסנט והגרנדינים») y he-001 con GBP («הממלכה המאוחדת»); `check_motor` prueba el
 formato, los plurales, el parseo y la gramática.
 
+### D26. Georgiano (2026-11-01)
+
+D23 (sr), D24 (bg) y D25 (sk) los usan ramas sin mergear; esta entrada toma el D26 para no chocar.
+
+`IDIOMAS` suma `ka`, para Georgia. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed,
+afiliados, «Tu sueldo en el mundo» (`khelpasi-msoplioshi`), rankings (`kveqnebis-reitingi`), horas de trabajo
+(`ramdeni-saatis-mushaoba`), calendario (`khelpasis-kalendari`), sueldos reales (`realuri-khelpasebi`), el
+diccionario de venta y las 41 universales están en georgiano. Los slugs de sección van en `SECCIONES`, sin carpetas.
+
+**Trato.** Un solo registro, el de rs.ge, TBC y Bank of Georgia: «თქვენ» con formas corteses («შეიყვანეთ»,
+«აირჩიეთ», «გამოთვალეთ», «გაქვთ»), nunca la segunda del singular. Los botones van como sustantivo verbal
+(«გამოთვლა», «კოპირება»). Mercados con `trato: "usted"`; los diccionarios escriben solo `base`. La herramienta es
+«კალკულატორი». Vocabulario real: ხელფასის კალკულატორი, საშემოსავლო გადასახადი, დღგ, იპოთეკური სესხი, პროცენტი,
+საპროცენტო განაკვეთი, საპენსიო. Las universales quedan neutrales de país. «ეფექტური საპროცენტო განაკვეთი» es el
+costo total de crédito en hipoteca, préstamo y tarjeta, como lo publican los bancos; en `tasa-efectiva`, donde el
+término es el matemático, la FAQ aclara la diferencia.
+
+**Sin mayúsculas.** El mkhedruli no tiene caja, pero JavaScript y CSS suben las letras a mtavruli (U+1C90 a U+1CBF:
+`"ა".toUpperCase()` da «Ა»), que no se usa en interfaz y no entra en la fuente pedida por subconjunto. Por eso:
+`:lang(ka) { text-transform: none !important }` fuera de capas; `mayusculaInicial` y las mayúsculas iniciales que
+llegan a páginas intl dejan la letra georgiana igual; `mayusculasDe` y `transformeOg` (`i18n/escritura.ts`) dejan
+neutras las cejas de las OG, donde Satori aplicaría `textTransform` sin saber el idioma. `reglas_idioma` rechaza el
+mtavruli y las escrituras antiguas.
+
+**Sin plural detrás de un número.** «3 დღე», «1,5 წელი», «41 ქვეყანა». `Intl.PluralRules("ka")` tiene one y other,
+pero las formas de las unidades son iguales y los diccionarios escriben `${n} ქვეყანა` sin elegir. `reglas_idioma`
+atrapa los plurales frecuentes detrás de una cifra.
+
+**Gramática del país.** Sin artículo ni género; el caso es un sufijo. `casosKa(p)` da `lugar` (dativo + «ში») y
+`genitivo` («ის» o «ს»); `GRAMATICA.ka`: `nombre` = nominativo, `en` = lugar, `de` = genitivo, `para` = genitivo +
+«თვის» («საქართველოსთვის»). La «ი» del nominativo se cae («საფრანგეთში», «საფრანგეთის»); la «ა» queda en el lugar y
+se cae en el genitivo («კანადაში», «კანადის»), salvo «ოა» («სამოას»); «ო», «უ», «ე» quedan («საქართველოს», «ჩილეს»),
+salvo «ეგვიპტის». La «ი» de raíz no se cae: tabla (მალი, ფიჯი, ჰაიტი, ჯიბუტი...) y regla para vocal + «ი» («ურუგვაიში»).
+El adjetivo delante pierde la «ი» solo en el lugar («ახალ ზელანდიაში», «ახალი ზელანდიის»). «X და Y» lleva «სა» en el
+primero («ბოსნიასა და ჰერცეგოვინაში», «ტრინიდადისა და ტობაგოს»). Los nombres de Intl con agregado van por su forma
+corta (tabla `KA_CORTOS`). Un nombre latino lleva guion («Zetaland-ში»), como «Google-ის». Revisado leyendo
+las formas de los ~250 nombres de Intl en ka.
+
+**Ningún sufijo pegado a cifras ni marcadores.** Las cifras, fechas y `{marcadores}` van tras dos puntos, entre
+paréntesis o con una palabra delante («თარიღი: {fecha}», «ადგილი 27»). Una cifra pasada a `GRAMATICA.ka` queda sin
+sufijo. Los `{pais}` del diccionario de venta van en nominativo y aislados. `reglas_idioma` rechaza el sufijo pegado;
+la excepción tolerada es el nombre latino fijo con guion y la unidad abreviada («100 კმ-ზე»).
+
+**Formato.** Intl de ka-GE: espacio de miles (U+00A0) desde cinco cifras («1234,5», «12 345,5»), coma decimal, lari
+con `₾` detrás («1 234 567,00 ₾»), porcentaje pegado («18%»), fecha larga «24 ოქტომბერი, 2026» en nominativo (por eso
+se introduce con dos puntos). `parsearNumero` no cambia. `inferir.ts` reconoce «წლიური», «ყოველწლიური», «თვიური»,
+«ყოველთვიური». Comillas „ “ (`reglas_idioma` rechaza «», ” y las rectas pegadas al texto).
+
+**Fuente.** Geist no trae georgiano. En la web, `:lang(ka)` usa la fuente del sistema entera (system-ui, Segoe UI,
+Sylfaen, Noto Sans Georgian...), para que las cifras no cambien de fuente en la frase. En las OG, Noto Sans Georgian de
+respaldo detrás de Geist. El buscador cuenta U+10A0 a U+10FF y U+1C90 a U+1CBF como letras.
+
+**Ancho SEO.** Medido con GDI a 20 px en Sylfaen, Segoe UI y Arial: una letra georgiana ocupa 1,4 latinas (11,5 a 12,8
+px contra 8,3 a 9,1). `anchoVisual` la cuenta así: 60 de ancho son unas 42 letras y 160 unas 114. Es una medición de
+escritorio, no del resultado real de Google.
+
+**Slugs.** Transliteración nacional de 2002 en ASCII y kebab-case (ყ→q, ღ→gh, ხ→kh, შ→sh, ჩ/ჭ→ch, ც/წ→ts, ძ→dz, ჟ→zh,
+ჯ→j; თ/ტ→t, კ/ქ→k, პ/ფ→p), sobre la frase que se busca: se lee, y el georgiano en la URL quedaría en porcentajes. No se
+usó el inglés del catálogo porque ningún slug quedó ilegible. Universales: `seskhis-kalkulatori`,
+`ipotekuri-seskhis-kalkulatori`, `dghg-kalkulatori`, `protsentis-kalkulatori`, `rtuli-protsenti`, `martivi-protsenti`,
+`epekturi-saprotsento-ganakveti`, `skheulis-masis-indeksi` y demás. `khelpasis-kalkulatori` queda libre para la
+calculadora local de sueldo neto de Georgia. Rankings: `khelpasis-msqidveloba`, `sagadasakhado-tavisuplebis-dghe`,
+`ramdeni-rcheba-momatebidan`.
+
+**Prueba.** `zz-ka` (ზეტალანდი, locale `ka-001`) es una edición interna, con el slug `nakhevartsliuri-premia`.
+`check_universales` prueba ka-GE con GEL, «სენტ-ვინსენტი და გრენადინები» y «ამერიკის შეერთებული შტატები». `check_motor`
+prueba parseo, unidades, lari, fecha, ancho, mayúscula neutra y casos del país. Los textos no tuvieron revisión de un
+hablante nativo: queda pendiente antes de publicar Georgia.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.
