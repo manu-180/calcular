@@ -179,6 +179,19 @@ const parseos: [string, string, number | null][] = [
   ["bn-BD", "-১২.৫", -12.5],
   ["bn-BD", "১,২৩৪.৫", 1234.5],
   ["bn-BD", "১২,৩৪৫,৬৭", null],
+  // Jemer (ADR 0002, D38): miles con coma, cifras jemeres y palabras de unidad.
+  ["km-KH", "1,234.50", 1234.5],
+  ["km-KH", "1,500,000៛", 1500000],
+  ["km-KH", "៤០,០០០", 40000],
+  ["km-KH", "១,២០០ រៀល", 1200],
+  ["km-KH", "2.5 លាន", 2500000],
+  ["km-KH", "២.៥ លាន", 2500000],
+  ["km-KH", "1 លាន 5 សែន", 1500000],
+  ["km-KH", "3 ម៉ឺនរៀល", 30000],
+  ["km-KH", "3 មុឺន", 30000],
+  ["km-KH", "1 កោដិ", 10000000],
+  ["km-KH", "1 លាន 250,000", 1250000],
+  ["km-KH", "5 សែន 2 លាន", null],
   // Tailandés (ADR 0002, D13): miles con coma, palabras de unidad (ล้าน, แสน, หมื่น) y dígitos tailandeses.
   ["th-TH", "1,234.50", 1234.5],
   ["th-TH", "฿1,500,000", 1500000],
@@ -235,6 +248,12 @@ const parseos: [string, string, number | null][] = [
   ["el-GR", "24%", 24],
   // Húngaro: miles con espacio (U+00A0, y sin espacio con cuatro cifras, como lo da Intl: «1234,5»),
   // decimal con coma y «Ft» detrás.
+  // Vietnamita: miles con punto, decimal con coma y ₫ detrás.
+  ["vi-VN", "1.234,50", 1234.5],
+  ["vi-VN", "1234,5", 1234.5],
+  ["vi-VN", "1.500.000 ₫", 1500000],
+  ["vi-VN", "-250,75", -250.75],
+  ["vi-VN", "20%", 20],
   // Mongol: como en inglés, coma de miles y punto decimal, ₮ delante con espacio.
   ["mn-MN", "1,234.50", 1234.5],
   ["mn-MN", "1234.5", 1234.5],
@@ -269,6 +288,12 @@ const parseos: [string, string, number | null][] = [
   ["is-IS", "25.000 kr.", 25000],
   ["is-IS", "-250,75", -250.75],
   ["is-IS", "20%", 20],
+  // Macedonio: punto de miles y coma decimal, «ден.» detrás con espacio.
+  ["mk-MK", "1.234,50", 1234.5],
+  ["mk-MK", "1234,5", 1234.5],
+  ["mk-MK", "1.500.000 ден.", 1500000],
+  ["mk-MK", "-250,75", -250.75],
+  ["mk-MK", "20 %", 20],
   ["bg-BG", "1 234,50", 1234.5],
   ["bg-BG", "1234,5", 1234.5],
   ["bg-BG", "1 500 000 €", 1500000],
@@ -333,6 +358,8 @@ const ambiguos: [string, string, number | null][] = [
   ["tr-TR", "5,000", null],
   ["bn-BD", "৫.০০০", null],
   ["bn-BD", "৫,০০০", 5000],
+  ["km-KH", "5,000", 5000],
+  ["km-KH", "5.000", null],
   ["th-TH", "5,000", 5000],
   ["th-TH", "5.000", null],
   ["uk-UA", "5 000", 5000],
@@ -351,6 +378,8 @@ const ambiguos: [string, string, number | null][] = [
   ["cs-CZ", "5,000", null],
   ["el-GR", "5.000", 5000],
   ["el-GR", "5,000", null],
+  ["vi-VN", "5.000", 5000],
+  ["vi-VN", "5,000", null],
   ["mn-MN", "5,000", 5000],
   ["mn-MN", "5.000", null],
   ["hy-AM", "5 000", 5000],
@@ -361,6 +390,8 @@ const ambiguos: [string, string, number | null][] = [
   ["et-EE", "5,000", null],
   ["is-IS", "5.000", 5000],
   ["is-IS", "5,000", null],
+  ["mk-MK", "5.000", 5000],
+  ["mk-MK", "5,000", null],
   ["bg-BG", "5 000", 5000],
   ["bg-BG", "5,000", null],
   ["ka-GE", "5 000", 5000],
@@ -711,8 +742,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal", "zz-hy/kisamyakayin-pargev", "zz-sq/bonus-gjashtemujor", "zz-sl/polletna-nagrada", "zz-et/poolaasta-preemia", "zz-is/halfsarsbonus", "zz-lv/pusgada-premija"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-mn", "zz-hy", "zz-sq", "zz-sl", "zz-et", "zz-is", "zz-lv"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal", "zz-hy/kisamyakayin-pargev", "zz-sq/bonus-gjashtemujor", "zz-sl/polletna-nagrada", "zz-et/poolaasta-preemia", "zz-is/halfsarsbonus", "zz-lv/pusgada-premija", "zz-mk/polugodishen-bonus", "zz-vi/thuong-nua-nam", "zz-km/half-year-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-mn", "zz-hy", "zz-sq", "zz-sl", "zz-et", "zz-is", "zz-lv", "zz-mk", "zz-vi", "zz-km"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -793,6 +824,16 @@ igual("minúscula inicial en turco", minusculaInicial("Isparta", "tr-TR"), "ısp
 igual("días en bengalí", formatearValorUnidad(3, "dias", "bn-BD"), "৩ দিন");
 igual("un año en bengalí", formatearValorUnidad(1, "anios", "bn-BD"), "১ বছর");
 igual("fracción de año en bengalí", formatearValorUnidad(1.5, "anios", "bn-BD"), "১.৫ বছর");
+// Jemer: sin plural, unidad separada por un espacio, riel sin decimales, cifras latinas y país con «ប្រទេស».
+igual("días en jemer", formatearValorUnidad(3, "dias", "km-KH"), "3 ថ្ងៃ");
+igual("fracción de año en jemer", formatearValorUnidad(1.5, "anios", "km-KH"), "1.5 ឆ្នាំ");
+igual("riel en jemer", formatearMoneda(1234567.5, "km-KH", "KHR"), "1,234,568៛");
+igual("dólar en jemer", formatearMoneda(1234.5, "km-KH", "USD"), "1,234.50$");
+igual("fecha larga en jemer", formatearFecha("2026-11-01", "km-KH"), "1 វិច្ឆិកា 2026");
+igual("gramática jemer: lugar", ["កម្ពុជា", "សហរដ្ឋអាមេរិក", "ហុងកុង", "ប្រទេសថៃ"].map((p) => GRAMATICA.km.en(p)), ["នៅប្រទេសកម្ពុជា", "នៅសហរដ្ឋអាមេរិក", "នៅហុងកុង", "នៅប្រទេសថៃ"]);
+igual("gramática jemer: para", GRAMATICA.km.para("កម្ពុជា"), "សម្រាប់ប្រទេសកម្ពុជា");
+igual("gramática jemer: de", GRAMATICA.km.de("កម្ពុជា"), "នៃប្រទេសកម្ពុជា");
+igual("ancho visual del jemer: coeng y vocales de arriba", [anchoVisual("ក"), anchoVisual("ក្រ"), anchoVisual("កា"), anchoVisual("កិ")], [1.6, 2.2, 3.1, 1.6]);
 // Tailandés: sin plural, la unidad separada por un espacio y las fechas en พ.ศ. (calendario de th-TH).
 igual("días en tailandés", formatearValorUnidad(3, "dias", "th-TH"), "3 วัน");
 igual("fracción de año en tailandés", formatearValorUnidad(1.5, "anios", "th-TH"), "1.5 ปี");
@@ -960,6 +1001,11 @@ igual("gramática griega: nombre", ["Ελλάδα", "Καναδάς", "Περο�
 // Mayúsculas sostenidas sin tono: lo hace toLocaleUpperCase("el") (toUpperCase() los deja).
 igual("mayúsculas griegas sin tono", "Υπολογισμός μισθού".toLocaleUpperCase("el"), "ΥΠΟΛΟΓΙΣΜΟΣ ΜΙΣΘΟΥ");
 // Húngaro: sin plural detrás del número («3 nap», «1,5 év») y moneda con «Ft» detrás, sin decimales.
+igual("unidades en vietnamita, sin plural", [1, 3].flatMap((n) => [formatearValorUnidad(n, "dias", "vi-VN"), formatearValorUnidad(n, "horas", "vi-VN"), formatearValorUnidad(n, "anios", "vi-VN")]), ["1 ngày", "1 giờ", "1 năm", "3 ngày", "3 giờ", "3 năm"]);
+igual("đồng", formatearMoneda(1234567, "vi-VN", "VND", 0).replace(/\s/g, " "), "1.234.567 ₫");
+igual("gramática vietnamita", [GRAMATICA.vi.en("Việt Nam"), GRAMATICA.vi.de("Việt Nam"), GRAMATICA.vi.para("Saint Vincent và Grenadines")], ["tại Việt Nam", "của Việt Nam", "cho Saint Vincent và Grenadines"]);
+igual("reglas del vietnamita: lo correcto pasa", problemasDeTexto("Nhập lương của bạn rồi bấm “Tính”. Bạn nghỉ 3 ngày, trả 1.500.000 ₫ hằng tháng, lãi suất 7,5%. Hóa đơn tại Việt Nam. Maraton 42,195 km, giấy phép CC BY 4.0, Bồ Đào Nha.", "vi", "usted"), []);
+verdad("reglas del vietnamita: NFD, comillas, tono viejo, hàng tháng, plural, formato inglés, moneda, sin diacríticos, trato y exclamación", ["Nhập lương".normalize("NFD"), "Bấm «Tính».", "hoá đơn", "trả hàng tháng", "3 các ngày", "1,500,000", "7.5%", "1.000₫", "tinh luong", "Mày nhập", "Nhập nhé", "Nhập đi nha", "Quý khách nhập", "Tính ngay!"].every((t) => problemasDeTexto(t, "vi", "usted").length > 0));
 igual("unidades en mongol, sin plural detrás del número", [1, 3].flatMap((n) => [formatearValorUnidad(n, "dias", "mn-MN"), formatearValorUnidad(n, "horas", "mn-MN"), formatearValorUnidad(n, "anios", "mn-MN")]), ["1 өдөр", "1 цаг", "1 жил", "3 өдөр", "3 цаг", "3 жил"]);
 igual("tugrik", formatearMoneda(1234567, "mn-MN", "MNT", 0).replace(/\s/g, " "), "₮ 1,234,567");
 igual("gramática mongola: en", ["Монгол", "Монгол Улс", "Герман", "Бүгд Найрамдах Доминикан Улс", "Соломоны арлууд", "Хонг-Конг"].map(GRAMATICA.mn.en), ["Монгол Улсад", "Монгол Улсад", "Герман улсад", "Бүгд Найрамдах Доминикан Улсад", "Соломоны арлуудад", "Хонг-Конг нутаг дэвсгэрт"]);
@@ -1071,6 +1117,15 @@ igual("gramática islandesa: para", ["Ísland", "Noregur", "Spánn", "Bandaríki
 // Reglas del islandés: atrapan la «þérun», las comillas y los textos de otro idioma nórdico.
 for (const t of ["Reiknið launin.", "Þetta er fyrir yður.", "Þér getið reiknað.", "Sagði «þetta».", "Beregn lånet.", "Greiðir 500 kr á mánuði."]) verdad(`reglas is atrapan «${t}»`, problemasIs(t, "is", "tu").length > 0);
 for (const t of ["Sláðu inn launin og reiknaðu staðgreiðsluna.", "Það er gott fyrir þér.", "Þú borgar 500 kr. á mánuði.", "Hvað er „þetta“?"]) igual(`reglas is dejan «${t}»`, problemasIs(t, "is", "tu"), []);
+igual("unidades en macedonio", [1, 2, 21].flatMap((n) => [formatearValorUnidad(n, "dias", "mk-MK"), formatearValorUnidad(n, "horas", "mk-MK"), formatearValorUnidad(n, "anios", "mk-MK")]), ["1 ден", "1 час", "1 година", "2 дена", "2 часа", "2 години", "21 ден", "21 час", "21 година"]);
+igual("denar", formatearMoneda(1234567.5, "mk-MK", "MKD").replace(/\s/g, " "), "1.234.567,50 ден.");
+igual("gramática macedonia: en", ["Северна Македонија", "Германија", "Франција", "Соединети Американски Држави", "Обединето Кралство", "Малдиви", "Филипини", "Соломонски Острови"].map(GRAMATICA.mk.en), ["во Северна Македонија", "во Германија", "во Франција", "во Соединетите Американски Држави", "во Обединетото Кралство", "на Малдивите", "на Филипините", "на Соломонските Острови"]);
+igual("gramática macedonia: de y para", [GRAMATICA.mk.de("Северна Македонија"), GRAMATICA.mk.para("Северна Македонија"), GRAMATICA.mk.de("Обединети Арапски Емирати"), GRAMATICA.mk.para("Доминиканска Република")], ["на Северна Македонија", "за Северна Македонија", "на Обединетите Арапски Емирати", "за Доминиканската Република"]);
+igual("reglas del macedonio: lo correcto pasa", problemasDeTexto("Внесете ја вашата плата и притиснете „Пресметај“. Вие плаќате 18 % ДДВ, а камата е 5 %.", "mk", "usted"), []);
+igual("reglas del macedonio: el botón «Пресметај» pasa solo", problemasDeTexto("Пресметај", "mk", "usted"), []);
+igual("reglas del macedonio: «ден.» en medio de la frase y «на ден.» pasan", problemasDeTexto("Ратата е 5.000 ден. месечно. Работите 8 часа на ден.", "mk", "usted"), []);
+verdad("reglas del macedonio: «ден..» y «ден.,» (D36)", ["Ратата е 5.000 ден..", "Цена од 5.000 ден., со попуст."].every((t) => problemasDeTexto(t, "mk", "usted").length > 0));
+verdad("reglas del macedonio: ajeno y «ти»", ["Изчислете заплатата", "Внеси број.", "можеш да платиш", "вашия калкулатор", "Внесете ја Вашата плата", "«плата»", "лихва", "порез на доход", "Пресметај го данокот", "Внесете!"].every((t) => problemasDeTexto(t, "mk", "usted").length > 0));
 igual("unidades en búlgaro", [1, 3].flatMap((n) => [formatearValorUnidad(n, "dias", "bg-BG"), formatearValorUnidad(n, "horas", "bg-BG"), formatearValorUnidad(n, "anios", "bg-BG")]), ["1 ден", "1 час", "1 година", "3 дни", "3 часа", "3 години"]);
 igual("euro en Bulgaria", formatearMoneda(1234.5, "bg-BG", "EUR").replace(/\s/g, " "), "1234,50 €");
 igual("gramática búlgara: en", ["България", "Германия", "Франция", "Виетнам", "Съединени щати", "Малдиви", "Бахамски острови", "Филипини"].map(GRAMATICA.bg.en), ["в България", "в Германия", "във Франция", "във Виетнам", "в Съединените щати", "на Малдивите", "на Бахамските острови", "във Филипините"]);

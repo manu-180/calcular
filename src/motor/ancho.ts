@@ -26,8 +26,16 @@ const GEORGIANO = /\p{sc=Geor}/u;
 // letra ocupa 1,3 latinas (11,5 a 12,5 px contra 8,5 a 9,7). Con .length un título de 60 letras se cortaba.
 const ARMENIO = /\p{sc=Armenian}/u;
 
+// Jemer (ADR 0002, D38), medido con GDI a 20 px en Leelawadee UI y Segoe UI, que traen la escritura, contra
+// sus latinas (8,5 px). Una consonante o vocal independiente ocupa 1,6 latinas y un signo vocálico al costado
+// (ា, ើ, ះ...) 1,5. El coeng (U+17D2) no ocupa, y la consonante que lo sigue se dibuja debajo de la anterior,
+// por eso cuenta 0,6 (algunas asoman al costado, como ្រ). Con .length el título se cortaba mucho antes de 60.
+const JEMER = /[\u1780-\u17dd]/u;
+const COENG = "\u17d2";
+
 function anchoDe(c: string): number {
   if (SIN_ANCHO.test(c)) return 0;
+  if (JEMER.test(c)) return MEDIO.test(c) ? 1.5 : 1.6;
   if (GEORGIANO.test(c)) return 1.4;
   if (ARMENIO.test(c)) return 1.3;
   if (BENGALI.test(c)) {
@@ -39,6 +47,10 @@ function anchoDe(c: string): number {
 
 export function anchoVisual(texto: string): number {
   let ancho = 0;
-  for (const c of texto) ancho += anchoDe(c);
+  let anterior = "";
+  for (const c of texto) {
+    ancho += anterior === COENG ? 0.6 : anchoDe(c);
+    anterior = c;
+  }
   return ancho;
 }

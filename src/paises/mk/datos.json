@@ -1,0 +1,733 @@
+{
+  "mercado": "mk",
+  "datos": [
+    {
+      "id": "mk.pridonesi",
+      "nombre": "Стапки на придонесите од плата",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "pio": "Пензиско и инвалидско осигурување",
+        "zdravstvo": "Здравствено осигурување",
+        "dopolnitelen": "Дополнителен придонес за повреда на работа и професионално заболување",
+        "nevrabotenost": "Осигурување во случај на невработеност"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "hasta": "2026-06-30",
+          "valor": {
+            "pio": 18.8,
+            "zdravstvo": 7.5,
+            "dopolnitelen": 0.5,
+            "nevrabotenost": 1.2
+          },
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Стапки по видови социјални придонеси и просечна плата по работник",
+            "url": "https://www.ujp.gov.mk/mk/vodic/category/641",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "pio": 19.9,
+            "zdravstvo": 7.5,
+            "dopolnitelen": 0.5,
+            "nevrabotenost": 0.1
+          },
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Закон за придонеси од задолжително социјално осигурување, пречистен текст 07/2026, член 25",
+            "url": "https://www.ujp.gov.mk/files/attachment/0000/1616/Precisten_tekst_na_ZPZSO_07_2026______________.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.prosechna-plata-osnovica",
+      "nombre": "Просечна плата по работник за основицата на придонесите",
+      "tipo": "numero",
+      "unidad": "MKD",
+      "proximaRevision": "2027-01-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "hasta": "2025-12-31",
+          "valor": 63154,
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Стапки по видови социјални придонеси и просечна плата по работник",
+            "url": "https://www.ujp.gov.mk/mk/vodic/category/641",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 69141,
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Стапки по видови социјални придонеси и просечна плата по работник",
+            "url": "https://www.ujp.gov.mk/mk/vodic/category/641",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.osnovica-limiti",
+      "nombre": "Најниска и највисока основица за придонеси",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "najniska": "Најниска основица, процент од просечната плата",
+        "najvisoka": "Највисока основица, број на просечни плати",
+        "najvisoka-samovraboten": "Највисока основица за самовработен, број на просечни плати"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": {
+            "najniska": 50,
+            "najvisoka": 16,
+            "najvisoka-samovraboten": 12
+          },
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Закон за придонеси од задолжително социјално осигурување, пречистен текст 07/2026, членови 15 и 16",
+            "url": "https://www.ujp.gov.mk/files/attachment/0000/1616/Precisten_tekst_na_ZPZSO_07_2026______________.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.personalen-danok",
+      "nombre": "Стапка на данокот на доход од работа",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Доход од работа",
+            "url": "https://www.ujp.gov.mk/mk/vodic/category/144",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.licno-osloboduvanje",
+      "nombre": "Лично ослободување",
+      "tipo": "mapa",
+      "unidad": "MKD",
+      "etiquetas": {
+        "mesechno": "Месечно",
+        "godishno": "Годишно"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "mesechno": 10932,
+            "godishno": 131184
+          },
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Преглед на лично ослободување",
+            "url": "https://www.ujp.gov.mk/mk/plakjanje/licno_osloboduvanje",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.ddv",
+      "nombre": "Стапки на ДДВ",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "opshta": "Општа стапка",
+        "povlastena10": "Повластена стапка од 10 %",
+        "povlastena5": "Повластена стапка од 5 %"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-30",
+          "valor": {
+            "opshta": 18,
+            "povlastena10": 10,
+            "povlastena5": 5
+          },
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Закон за данокот на додадена вредност, Службен весник бр. 267 од 30.12.2025",
+            "url": "https://www.ujp.gov.mk/files/attachment/0000/0986/______________________________________.____________267____30.12.2025.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.ddv-prag",
+      "nombre": "Вкупен оданочив промет за задолжителна регистрација за ДДВ",
+      "tipo": "numero",
+      "unidad": "MKD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-12-30",
+          "valor": 2000000,
+          "fuente": {
+            "organismo": "Министерство за финансии",
+            "titulo": "Данок на додадена вредност",
+            "url": "https://finance.gov.mk/mk-MK/oblasti/danok-na-dodadena-vrednost",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.moj-ddv",
+      "nombre": "Поврат на ДДВ преку #МојДДВ",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "makedonski": "Македонски добра и услуги",
+        "drugi": "Други добра и услуги"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "makedonski": 20,
+            "drugi": 10
+          },
+          "fuente": {
+            "organismo": "Министерство за финансии",
+            "titulo": "#МојДДВ, поврат на ДДВ",
+            "url": "https://finance.gov.mk/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.danok-na-dobivka",
+      "nombre": "Стапка на данокот на добивка",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2008-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Обврзник, даночна стапка и даночен период кај данокот на добивка",
+            "url": "https://www.ujp.gov.mk/mk/vodic/category/286",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.danok-vkupen-prihod",
+      "nombre": "Годишен данок на вкупен приход",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Годишен данок на вкупен приход",
+            "url": "https://www.ujp.gov.mk/mk/vodic/category/537",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.prihod-pragovi",
+      "nombre": "Прагови на вкупниот годишен приход кај данокот на добивка",
+      "tipo": "mapa",
+      "unidad": "MKD",
+      "etiquetas": {
+        "osloboduvanje": "Ослободување до",
+        "godishen": "Годишен данок на вкупен приход до"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "osloboduvanje": 3000000,
+            "godishen": 6000000
+          },
+          "fuente": {
+            "organismo": "Управа за јавни приходи",
+            "titulo": "Годишен данок на вкупен приход",
+            "url": "https://www.ujp.gov.mk/mk/vodic/category/537",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.godishen-odmor",
+      "nombre": "Годишен одмор во работни денови",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "minimum": "Најмалку",
+        "maksimum": "Најмногу со договор",
+        "dopolnitelni": "Дополнителни денови",
+        "po-mesec": "За секој месец работа"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "minimum": 20,
+            "maksimum": 26,
+            "dopolnitelni": 3,
+            "po-mesec": 2
+          },
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Закон за работните односи, пречистен текст, членови 137 и 140",
+            "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-met-file-LaRm.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.ispratnina",
+      "nombre": "Испратнина по години работен однос, во нето плати",
+      "tipo": "mapa",
+      "unidad": "factor",
+      "etiquetas": {
+        "do5": "До 5 години",
+        "do10": "Од 5 до 10 години",
+        "do15": "Од 10 до 15 години",
+        "do20": "Од 15 до 20 години",
+        "do25": "Од 20 до 25 години",
+        "nad25": "Над 25 години"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "do5": 1,
+            "do10": 2.5,
+            "do15": 3.5,
+            "do20": 4.5,
+            "do25": 6,
+            "nad25": 7
+          },
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Закон за работните односи, пречистен текст, член 97",
+            "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-met-file-LaRm.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.ispratnina-minimum",
+      "nombre": "Најниска основица за испратнина, процент од просечната нето-плата",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Закон за работните односи, пречистен текст, член 97, став 2",
+            "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-met-file-LaRm.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.otkazen-rok",
+      "nombre": "Отказен рок",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "rabotnik": "Отказ од работникот",
+        "rabotnik-maks": "Најдолг договорен рок",
+        "rabotodavach": "Отказ од работодавачот",
+        "kolektivno": "Над 150 работници или 5 % од вработените"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "rabotnik": 1,
+            "rabotnik-maks": 3,
+            "rabotodavach": 1,
+            "kolektivno": 2
+          },
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Закон за работните односи, пречистен текст, член 88",
+            "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-met-file-LaRm.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.otkazen-rok-sezonski",
+      "nombre": "Отказен рок за сезонска работа",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Закон за работните односи, пречистен текст, член 88, став 3",
+            "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-met-file-LaRm.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.prekuvremena-limiti",
+      "nombre": "Граници на прекувремената работа",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "etiquetas": {
+        "nedelno": "Часови неделно",
+        "godishno": "Часови годишно",
+        "bonus-od": "Часови за бонус"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "nedelno": 8,
+            "godishno": 190,
+            "bonus-od": 150
+          },
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Закон за работните односи, пречистен текст, член 117",
+            "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-met-file-LaRm.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.dodatoci-javen",
+      "nombre": "Додатоци на плата во јавниот сектор",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "prekuvremena": "Прекувремена работа",
+        "nokjna": "Работа ноќе",
+        "smeni": "Работа во смени",
+        "nedela": "Работа во недела"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-28",
+          "valor": {
+            "prekuvremena": 35,
+            "nokjna": 35,
+            "smeni": 5,
+            "nedela": 50
+          },
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Општ колективен договор за јавниот сектор, бр. 154/2023, член 16",
+            "url": "https://portal.mdt.gov.mk/post-body-files/socijalno-partnerstvo-file-kXFT.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.regres-javen",
+      "nombre": "Регрес за годишен одмор во јавниот сектор, процент од основицата",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-28",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Општ колективен договор за јавниот сектор, бр. 154/2023, член 21",
+            "url": "https://portal.mdt.gov.mk/post-body-files/socijalno-partnerstvo-file-kXFT.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.boleduvanje-javen",
+      "nombre": "Надоместок за боледување во јавниот сектор",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "do7": "До 7 дена",
+        "do15": "До 15 дена",
+        "nad15": "Над 15 дена"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-07-28",
+          "valor": {
+            "do7": 70,
+            "do15": 80,
+            "nad15": 90
+          },
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Општ колективен договор за јавниот сектор, бр. 154/2023, член 19",
+            "url": "https://portal.mdt.gov.mk/post-body-files/socijalno-partnerstvo-file-kXFT.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.boleduvanje-na-tovar",
+      "nombre": "Денови боледување на товар на работодавачот",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Закон за работните односи, пречистен текст, член 112, став 3",
+            "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-met-file-LaRm.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.porodilno",
+      "nombre": "Отсуство поради бременост, раѓање и родителство",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "edno": "Едно дете",
+        "poveke": "Повеќе деца одеднаш"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "edno": 9,
+            "poveke": 15
+          },
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Закон за работните односи, пречистен текст, член 165",
+            "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-met-file-LaRm.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.porodilno-denovi",
+      "nombre": "Денови пред и по раѓањето",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "najrano": "Најрано пред раѓањето",
+        "zadolzhitelno": "Задолжително пред раѓањето",
+        "vrakjanje": "Најрано враќање по раѓањето"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "najrano": 45,
+            "zadolzhitelno": 28,
+            "vrakjanje": 45
+          },
+          "fuente": {
+            "organismo": "Службен весник",
+            "titulo": "Закон за работните односи, пречистен текст, членови 165 и 166",
+            "url": "https://portal.mdt.gov.mk/post-body-files/zakoni-met-file-LaRm.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.danok-na-imot",
+      "nombre": "Стапка на данокот на имот",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "min": "Најниска",
+        "max": "Највисока"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "min": 0.1,
+            "max": 0.2
+          },
+          "fuente": {
+            "organismo": "Министерство за финансии",
+            "titulo": "Закон за даноците на имот, член 6",
+            "url": "https://portal.mdt.gov.mk/post-body-files/propisi-od-oblasta-na-danocite-taksite-i-drugite-javni-prixodi-file-y1mD.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.danok-na-promet",
+      "nombre": "Стапка на данокот на промет на недвижности",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "min": "Најниска",
+        "max": "Највисока"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "min": 2,
+            "max": 4
+          },
+          "fuente": {
+            "organismo": "Министерство за финансии",
+            "titulo": "Закон за даноците на имот, член 22",
+            "url": "https://portal.mdt.gov.mk/post-body-files/propisi-od-oblasta-na-danocite-taksite-i-drugite-javni-prixodi-file-y1mD.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.danok-na-nasledstvo",
+      "nombre": "Стапка на данокот на наследство и подарок",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "vtor-min": "Втор наследен ред, најниска",
+        "vtor-max": "Втор наследен ред, највисока",
+        "tret-min": "Трет наследен ред, најниска",
+        "tret-max": "Трет наследен ред, највисока"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-01-01",
+          "valor": {
+            "vtor-min": 2,
+            "vtor-max": 3,
+            "tret-min": 4,
+            "tret-max": 5
+          },
+          "fuente": {
+            "organismo": "Министерство за финансии",
+            "titulo": "Закон за даноците на имот, член 16",
+            "url": "https://portal.mdt.gov.mk/post-body-files/propisi-od-oblasta-na-danocite-taksite-i-drugite-javni-prixodi-file-y1mD.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mk.minimalna-plata",
+      "nombre": "Минимална плата во бруто износ",
+      "tipo": "numero",
+      "unidad": "MKD",
+      "proximaRevision": "2027-03-01",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-03-01",
+          "valor": 38507,
+          "motivo": "Износот се појавува само во извадоци од пребарувач и кај приватни сметководители. Објавата во Службен весник (slvesnik.com.mk без врска) и табелата на economy.gov.mk (завршува во март 2022) не го содржат."
+        }
+      ]
+    }
+  ]
+}

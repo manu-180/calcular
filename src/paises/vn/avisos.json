@@ -1,0 +1,44 @@
+{
+  "mercado": "vn",
+  "avisos": [
+    {
+      "id": "vn.lttv-2027",
+      "nivel": "info",
+      "desde": "2026-11-01",
+      "hasta": "2026-12-31",
+      "aplicaA": [
+        "vn.luong-toi-thieu-vung",
+        "vn.tinh-luong-gross-net",
+        "vn.tinh-luong-net-sang-gross",
+        "vn.tinh-chi-phi-luong-doanh-nghiep",
+        "vn.tinh-bao-hiem-xa-hoi",
+        "vn.tinh-bao-hiem-that-nghiep"
+      ],
+      "texto": "Bộ Tư pháp đang thẩm định dự thảo nghị định về lương tối thiểu. Dự thảo chưa có hiệu lực, nên trang này vẫn dùng mức của Nghị định số 293/2025/NĐ-CP.",
+      "fuente": {
+        "organismo": "Cổng Thông tin điện tử Chính phủ",
+        "titulo": "Dự thảo Nghị định quy định mức lương tối thiểu",
+        "url": "https://xaydungchinhsach.chinhphu.vn/du-thao-nghi-dinh-quy-dinh-muc-luong-toi-thieu-voi-hop-dong-lao-dong-119260928090358876.htm",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      }
+    },
+    {
+      "id": "vn.gtgt-het-giam",
+      "nivel": "info",
+      "desde": "2026-11-01",
+      "hasta": "2026-12-31",
+      "aplicaA": [
+        "vn.tinh-thue-gtgt"
+      ],
+      "texto": "Mức giảm 2% thuế GTGT theo Nghị quyết số 204/2025/QH15 áp dụng đến hết ngày 31/12/2026. Từ ngày 1/1/2027, nếu chưa có quy định mới, nhóm hàng này trở lại mức 10%.",
+      "fuente": {
+        "organismo": "Quốc hội",
+        "titulo": "Nghị quyết số 204/2025/QH15 về giảm thuế giá trị gia tăng",
+        "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214209",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      }
+    }
+  ]
+}

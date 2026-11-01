@@ -21,6 +21,56 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 01/11/2026 · Tanda 7 de países: mk, vn, lb, kh (`claude/paises-tanda-7`)
+
+Sale de `origin/main` con la tanda 6. Publicados Macedonia del Norte (mk), Việt Nam (vn), Líbano (lb) y Camboya (kh), detrás de lv. Trae los
+motores macedonio (D36), vietnamita (D37) y jemer (D38). Informes en `scripts/paises/<m>/INFORME.md`. `mercados-registro.ts` regenerado: 147 mercados intl.
+
+| País | Locales | Publicables | Borrador | Universales |
+|---|---|---|---|---|
+| mk | 21 | 20 | minimalna-plata | todas (cae `iva`: 40) |
+| vn | 22 | 22 | ninguno | todas (cae `iva`: 40) |
+| lb | 15 | 11 | salary-calculator, nssf-contributions, employee-cost-calculator, lbp-usd-converter | todas (cae `iva`) |
+| kh | 25 | 22 | net-salary, nssf-contribution, employer-cost | todas (cae `vat`: 40) |
+
+Checks: `check-all` 156 de 159, más tsc en verde. En verde `check_motor` (6148), `check_universales` (20195 casos), `check_seo_intl` (21440 páginas),
+`check_hreflang` (23537), `check_paises_casos` (11255), `check_embed` (182 mercados), `check_fronteras` y `check_eol`. Fallan solo cosas viejas y ajenas, ninguna de
+estos cuatro países, sin tocar: `check_mundo` (be), `check_paises` (30 en 182: series vencidas y llaves de ca; en la tanda 6 eran 28) y `check_textos_paises` (6: bo, cr, mx, pe).
+
+Ajustes de la integración:
+- Motor mk: 26 líneas de universales cerraban con «ден..» o seguían con «ден.,», contra D36. Reescritas, y `reglasMk` ahora las rechaza. Sin hablante nativo que las revise.
+- Motor vi: el subset `vietnamese` precargaba un archivo más en TODOS los mercados y next/font no deja limitarlo por `[mercado]`. Ahora va `geistVi` (swap, sin precarga), solo
+  para idioma vi, en los layouts intl y embed. Comprobado en el compilado: 2 archivos precargados, ninguno vietnamita, y unos 1,4 KB más de `@font-face` en el CSS. Costo visual en vi: ver D37.
+- kh: `exchange-rate` queda publicado leído de tax.gov.kh, publicación propia de la GDT (decisión del coordinador). Si nbc.gov.kh sigue en 403, no hay contraste con el emisor.
+- `inferir.ts`: «nam» y «thang» junto a las listas de lv y las anteriores. Cuidado al mergear: las listas de una línea chocan en cada motor nuevo.
+
+Datos no verificados y motivo:
+- mk: `mk.minimalna-plata`: 38.507 y 26.046 solo en extractos y contadores; slvesnik.com.mk rechaza la conexión y economy.gov.mk llega a 2022.
+- vn: ninguno cargado. gdt.gov.vn y baohiemxahoi.gov.vn no abren: esos datos salen de leyes y decretos en vanban.chinhphu.vn. Salario mínimo 2027 es proyecto: aviso sin números.
+- lb: `lb.nssf-rates` (el decreto de aportes no se leyó) y `lb.usd-rate` (bdl.gov.lb da 403; el 89.500 del presupuesto es una estimación).
+- kh: `kh.nssf-*` (5 tramos: nssf.gov.kh rechaza el pedido; son pistas de guías privadas) y `kh.min-wage` desde 2027 (212 USD, solo prensa).
+
+Riesgos:
+- Todos: D36, D37 y D38 piden hablante nativo y no se hizo (el informe de kh pide revisar antes de publicar). **Decidir antes de mergear.** Slugs sin validar en el autocompletar de cada país. Ninguno de los cuatro se miró en `next dev` ni se probó el cálculo en navegador.
+- mk: la tasa del art. 25 vale hasta el sueldo de diciembre de 2026: sin actualizar, las calculadoras de plata se despublican el 1/1/2027. Regres, horas extra y боледување son del sector público, con aviso. El convenio privado no está en sitio oficial. `moj-ddv-povrat` sin condiciones ni topes leídos.
+- vn: GTGT 5 % del hộ en contenido digital y alquiler es inferencia (circular sin leer). El 30 % de NQ 43/2026 no se descuenta en alquiler. Los detectores de norma miran las últimas 50 publicaciones. El IVA 8 % cambia a 10 % el 1/1/2027.
+- lb: **fuente a decidir:** ley del trabajo y de renta leídas en la Universidad Libanesa, no en el Diario Oficial; si no se acepta, 7 calculadoras pasan a borrador o dependen de MoF. IVA 11 % con el MoF todavía diciendo 10 %, y aumento al 12 % pendiente (aviso y tasa manual). Ley 319/2023 reemplazará end-of-service.
+- kh: varias tasas de GDT con una sola lectura por WebFetch, que resume (transferencia, alquiler, tierra ociosa, patente, alojamiento, `tax-on-income`): conviene otra mirada humana. Ley de 1997 en traducción inglesa. Salario mínimo vence el 31/12/2026. Sin `net-salary`, Camboya queda fuera de «Tu sueldo en el mundo».
+- Series: kh, lb y vn tienen tipo de cambio o inflación que caen antes del 2/12/2026 sin cron o carga manual.
+
+**Build y memoria: el pico pasa de 5 GB. Decidir antes de sumar más países.** Memoria privada, suma de los `next/dist` de este build (raíz y descendientes, sin los `next dev` de otras sesiones), `BUILD_CPUS=2`, muestreo cada 5 s.
+
+| Corrida | Chunks | Compilado | Final | Resultado |
+|---|---|---|---|---|
+| 147 mercados (esta rama), 2 veces | 8222 | 3,40 GB | 4,09 GB, transitorio al arrancar los workers | EMFILE antes de generar páginas: **pico de la generación sin medir** |
+| 143 mercados (solo local: mk, vn, lb, kh fuera del registro) | 8052 | 3,44 GB | **5,82 GB** (principal 2,12 + workers 2,03 y 1,67) al final de la generación | exit 0, 11.700 páginas, 23 min 48 s |
+
+- **Riesgo de memoria:** los workers crecen parejo durante toda la generación. Para 147 mercados estimo unos 6 GB (estimación, no medición). El tope de Vercel es 8 GB y la memoria en Linux no es la misma que acá. Si se acerca: `build-vercel.md` manda sacar páginas del prerender, no agrandar la máquina.
+- **La referencia de 3,44 GB no compara:** es igual al pico del compilado de esta corrida. No sé si aquella medición (133 mercados) llegó a generar páginas, así que esto no prueba que la memoria haya subido de 3,44 a 5,82 por sumar 10 mercados. Con muestreo cada minuto el pico de 143 da 5,77 GB.
+- **En Windows el build ya no termina con esta rama.** Después de «Collecting page data», `collectBuildTraces` corre en el proceso principal (`next/dist/build/index.js:1661`) y lee los chunks de `.next/server/chunks` casi todos a la vez. Pasa el tope de ~8192 descriptores por proceso: con 147 mercados saltó de 322 a 2703 handles en 5 s y murió; con 143 llegó a 7366 y pasó. No es memoria, ni la junction (`npm ci` no cambia los chunks: no se corrió).
+- **Vercel sin comprobar:** Linux no tiene ese tope de Windows, pero no sé el límite de descriptores de su contenedor y no hay credenciales para mirar. **Hay que leer el log del preview (EMFILE, SIGKILL) antes de mergear.** Cada tanda suma chunks: 170 en esta.
+- Sin medir 147 completo porque: el entorno rechaza un preload por `NODE_OPTIONS` para limitar lecturas (no se buscó otra forma de inyectarlo, ni se parcheó Next) y `--experimental-build-mode generate` muere con EISDIR en `inlineStaticEnv` (la ruta `data/country-rankings.json` es una carpeta).
+
 ## 01/11/2026 · Tanda 6 de países: am, al, si, ee, is, lv (`claude/paises-tanda-6`)
 
 Sale de `claude/paises-tanda-5`, ya en main, y lleva el `origin/main` con el build nuevo. Publicados Armenia (am), Albania (al),
@@ -277,6 +327,15 @@ reusa con EUR. Cirílico: edición futura (`rs-cyrl`). Decisiones en ADR 0002, D
 (interna, `sr-Latn-001`).
 - Falta para publicar Serbia y Montenegro: los países en sí, con datos verificados, y revisión por hablante nativo.
 
+## 1/11/2026 · Motor vietnamita (`claude/mundo-motor-vi`, ADR 0002 D37)
+
+`vi` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición interna `zz-vi`. Registro de bancos y
+servicios («bạn», botón «Tính»), sin contrastar en sus webs (ver D37). Geist aparte para vi, con swap y sin precarga (tanda 7, D37),
+y Noto Sans en OG por el ₫. `tinh-luong-gross-net` queda libre. Listo para que un agente de país escriba Vietnam.
+Fuentes el 1/11/2026: abren vanban.chinhphu.vn y sbv.gov.vn; gdt.gov.vn rechaza la conexión y baohiemxahoi.gov.vn la corta;
+mof.gov.vn y nso.gov.vn sin probar. Falla de main ajena al frente: `check_mundo` (be, neto).
+
 ## 1/11/2026 · Motor mongol (`claude/mundo-motor-mn`, ADR 0002 D28)
 
 `mn` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
@@ -284,6 +343,14 @@ calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición 
 y servicios («та», «-на уу», botones en «-х»), sin confirmar en sus webs (ver D28). El sufijo de caso lo lleva «улс»,
 nunca el nombre ni una cifra. MNT como moneda de prueba. Listo para que un agente de país escriba Mongolia.
 Falla de main ajena al frente: `check_mundo` (be, neto).
+
+## 1/11/2026 · Motor jemer (`claude/mundo-motor-km`, ADR 0002 D38)
+
+`km` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas, calendario,
+sueldos, embed, compartir, afiliados, redes y las 41 universales; edición interna `zz-km`. Registro de ABA, ACLEDA y la GDT:
+«អ្នក» o sin pronombre, «។» al cerrar. Cifras latinas (el parser acepta ០ a ៩ y លាន, សែន, ម៉ឺន), riel sin decimales, slugs en inglés.
+Fuentes oficiales: abren tax.gov.kh, mlvt.gov.kh y nis.gov.kh; rechazan nbc.gov.kh, mef.gov.kh y nssf.gov.kh. Falla de main ajena al
+frente: `check_mundo` (be, neto). Falta revisión por hablante nativo.
 
 ## 1/11/2026 · Motor letón (`claude/mundo-motor-lv`, ADR 0002 D35)
 
@@ -293,6 +360,13 @@ de VID: «jūs» en minúscula, 2.ª del plural, botones en infinitivo («Aprē�
 genitivo (`pluralLv`), país con genitivo, locativo sin preposición y dativo (`GRAMATICA.lv`). `algas-kalkulators`
 queda libre para la local. Listo para que un agente de país escriba Letonia (`lv`). Falla de main ajena al frente:
 `check_mundo` (be, neto). Falta revisión por hablante nativo.
+
+## 1/11/2026 · Motor macedonio (`claude/mundo-motor-mk`, ADR 0002 D36)
+
+`mk` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición interna `zz-mk`. Registro de bancos
+(«вие» en minúscula, 2.ª del plural, botón «Пресметај»). MKD como moneda de prueba. Falta revisión por hablante nativo.
+Listo para que un agente de país escriba Macedonia del Norte (`kalkulator-za-plata` libre).
 
 ## 31/10/2026 · Motor búlgaro (`claude/mundo-motor-bg`, ADR 0002 D24)
 

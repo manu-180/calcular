@@ -233,6 +233,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "সূত্র",
     },
   },
+  km: {
+    base: {
+      datos: "ទិន្នន័យសម្រាប់គណនា",
+      resultado: "លទ្ធផល",
+      vacio: "បំពេញទិន្នន័យ រួចចុច «គណនា» ដើម្បីមើលលទ្ធផល។",
+      sinResultado: "បច្ចុប្បន្នយើងមិនបង្ហាញលទ្ធផលនេះទេ។",
+      avisos: { info: "គួរដឹង", cautela: "សូមប្រយ័ត្ន", bloquea: "ហេតុអ្វីមិនបង្ហាញលទ្ធផល" },
+      fuenteDelAviso: "ប្រភព",
+    },
+  },
   th: {
     base: {
       datos: "ข้อมูลสำหรับคำนวณ",
@@ -324,6 +334,17 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Forrás",
     },
   },
+  // Vietnamita (ADR 0002, D37): el botón es «Tính».
+  vi: {
+    base: {
+      datos: "Thông tin của bạn",
+      resultado: "Kết quả",
+      vacio: "Nhập thông tin và bấm “Tính” để xem kết quả.",
+      sinResultado: "Hiện chưa thể hiển thị kết quả này.",
+      avisos: { info: "Nên biết", cautela: "Lưu ý", bloquea: "Vì sao chưa có kết quả" },
+      fuenteDelAviso: "Nguồn",
+    },
+  },
   // Mongol (ADR 0002, D28): el botón es «Тооцоолох».
   mn: {
     base: {
@@ -344,6 +365,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       sinResultado: "В момента не показваме този резултат.",
       avisos: { info: "Добре е да знаете", cautela: "Обърнете внимание", bloquea: "Защо не показваме резултата" },
       fuenteDelAviso: "Източник",
+    },
+  },
+  mk: {
+    base: {
+      datos: "Вашите податоци",
+      resultado: "Резултат",
+      vacio: "Внесете ги податоците и притиснете „Пресметај“ за да го видите резултатот.",
+      sinResultado: "Во моментов не го прикажуваме овој резултат.",
+      avisos: { info: "Добро е да знаете", cautela: "Обрнете внимание", bloquea: "Зошто не го прикажуваме резултатот" },
+      fuenteDelAviso: "Извор",
     },
   },
   ka: {

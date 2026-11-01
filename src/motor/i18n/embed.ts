@@ -1580,7 +1580,116 @@ const lv: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+// Macedonio (ADR 0002, D36): 2.ª del plural con «вашиот» en minúscula; el país va con «за» (GRAMATICA.mk).
+const mk: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Калкулатор од CalcularYa",
+    marcaNuevaPestana: "(се отвора во нов таб)",
+    noDisponible: { titulo: "Овој калкулатор не е достапен", texto: "Можно е неговата адреса да се променила." },
+    insertar: "Ставете го на вашиот сајт",
+    pagina: {
+      titulo: (pais) => [`Бесплатни калкулатори за вашиот сајт | ${pais}`, "Бесплатни калкулатори за вашиот сајт"],
+      descripcion: (pais) => `Изберете калкулатор ${GRAMATICA.mk.para(pais)}, копирајте го кодот и ставете го на вашиот блог или сајт. Бесплатно, со официјални податоци што се секогаш ажурни.`,
+      h1: "Ставете калкулатор на вашиот сајт",
+      bajada: "Изберете калкулатор, копирајте го кодот и ставете го каде што сакате. Бесплатно е, а податоците се ажурираат сами.",
+      calculadora: "Калкулатор",
+      buscar: "Пребарување калкулатор",
+      sinResultados: "Нема калкулатор што одговара на пребарувањето.",
+      tema: "Тема",
+      claro: "Светла",
+      oscuro: "Темна",
+      ancho: "Ширина",
+      anchoCompleto: "Цела ширина",
+      acento: "Акцентна боја",
+      colores: ["Зелена", "Сина", "Портокалова", "Розова", "Графитна"],
+      credito: "Врска до изворот под калкулаторот",
+      vistaPrevia: "Преглед",
+      codigo: "Код за вметнување",
+      copiar: "Копирање на кодот",
+      copiado: "Кодот е копиран",
+      ayudaScript: "Скриптата не е задолжителна: таа само ја прилагодува висината на калкулаторот.",
+      ventajas: ["Бесплатно и без регистрација", "Секогаш ажурни официјални податоци", "Се прилагодува на секоја ширина"],
+      nota: "Под калкулаторот има врска до CalcularYa. Ве молиме да не ја отстранувате.",
+      verTodas: (pais) => `Сите калкулатори ${GRAMATICA.mk.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Калкулатор од CalcularYa`,
+    },
+  },
+};
+
+// Vietnamita (ADR 0002, D37): «bạn» neutro y frases cortas; el país va con GRAMATICA.vi («cho Việt Nam»).
+const gVi = GRAMATICA.vi;
+const vi: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Công cụ tính của CalcularYa",
+    marcaNuevaPestana: "(mở trong thẻ mới)",
+    noDisponible: { titulo: "Công cụ tính này không khả dụng", texto: "Địa chỉ có thể đã thay đổi." },
+    insertar: "Nhúng vào trang của bạn",
+    pagina: {
+      titulo: (pais) => [`Công cụ tính miễn phí cho trang của bạn | ${pais}`, "Công cụ tính miễn phí cho trang của bạn"],
+      descripcion: (pais) => `Chọn công cụ tính ${gVi.para(pais)}, sao chép mã rồi dán vào blog hoặc trang của bạn. Miễn phí, dữ liệu chính thức luôn được cập nhật.`,
+      h1: "Nhúng công cụ tính vào trang của bạn",
+      bajada: "Chọn công cụ tính, sao chép mã rồi dán vào bất cứ đâu. Miễn phí, dữ liệu tự cập nhật.",
+      calculadora: "Công cụ tính",
+      buscar: "Tìm công cụ tính",
+      sinResultados: "Không có công cụ tính nào khớp với nội dung bạn tìm.",
+      tema: "Giao diện",
+      claro: "Sáng",
+      oscuro: "Tối",
+      ancho: "Chiều rộng",
+      anchoCompleto: "Toàn bộ chiều rộng",
+      acento: "Màu nhấn",
+      colores: ["Xanh lá", "Xanh dương", "Cam", "Hồng", "Xám đá"],
+      credito: "Thêm liên kết nguồn bên dưới công cụ tính",
+      vistaPrevia: "Xem trước",
+      codigo: "Mã để dán",
+      copiar: "Sao chép mã",
+      copiado: "Đã sao chép mã",
+      ayudaScript: "Đoạn script này không bắt buộc: chiều cao của công cụ tính sẽ tự khớp với nội dung.",
+      ventajas: ["Miễn phí, không cần đăng ký", "Dữ liệu chính thức luôn mới nhất", "Vừa với mọi chiều rộng"],
+      nota: "Bên dưới công cụ tính có liên kết đến CalcularYa. Xin giữ nguyên liên kết này.",
+      verTodas: (pais) => `Xem tất cả công cụ tính ${gVi.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Công cụ tính của CalcularYa`,
+    },
+  },
+};
+
+// Jemer (ADR 0002, D38): «អ្នក» o sin pronombre, «។» al cerrar la oración; el país con GRAMATICA.km.
+const km: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "ម៉ាស៊ីនគណនាពី CalcularYa",
+    marcaNuevaPestana: "(បើកក្នុងផ្ទាំងថ្មី)",
+    noDisponible: { titulo: "ម៉ាស៊ីនគណនានេះមិនអាចប្រើបានទេ", texto: "អាសយដ្ឋានប្រហែលជាបានផ្លាស់ប្តូរ។" },
+    insertar: "បង្កប់ក្នុងគេហទំព័រ",
+    pagina: {
+      titulo: (pais) => [`ម៉ាស៊ីនគណនាឥតគិតថ្លៃសម្រាប់គេហទំព័រ | ${pais}`, "ម៉ាស៊ីនគណនាឥតគិតថ្លៃសម្រាប់គេហទំព័រ"],
+      descripcion: (pais) => `ជ្រើសរើសម៉ាស៊ីនគណនា${GRAMATICA.km.para(pais)} ចម្លងកូដ ហើយបិទភ្ជាប់ក្នុងប្លុក ឬគេហទំព័រ។ ឥតគិតថ្លៃ ជាមួយទិន្នន័យផ្លូវការ។`,
+      h1: "បង្កប់ម៉ាស៊ីនគណនាក្នុងគេហទំព័រ",
+      bajada: "ជ្រើសរើសម៉ាស៊ីនគណនា ចម្លងកូដ ហើយបិទភ្ជាប់គ្រប់ទីកន្លែង។ ឥតគិតថ្លៃ ហើយទិន្នន័យធ្វើបច្ចុប្បន្នភាពដោយខ្លួនឯង។",
+      calculadora: "ម៉ាស៊ីនគណនា",
+      buscar: "ស្វែងរកម៉ាស៊ីនគណនា",
+      sinResultados: "គ្មានម៉ាស៊ីនគណនាត្រូវនឹងការស្វែងរកទេ។",
+      tema: "រចនាប័ទ្ម",
+      claro: "ភ្លឺ",
+      oscuro: "ងងឹត",
+      ancho: "ទទឹង",
+      anchoCompleto: "ពេញទទឹង",
+      acento: "ពណ៌សង្កត់",
+      colores: ["បៃតង", "ខៀវ", "ទឹកក្រូច", "ផ្កាឈូក", "ប្រផេះ"],
+      credito: "បន្ថែមតំណប្រភពនៅក្រោមម៉ាស៊ីនគណនា",
+      vistaPrevia: "មើលជាមុន",
+      codigo: "កូដសម្រាប់បិទភ្ជាប់",
+      copiar: "ចម្លងកូដ",
+      copiado: "បានចម្លងកូដ។",
+      ayudaScript: "ស្គ្រីបនេះមិនចាំបាច់ទេ។ វាជួយឱ្យកម្ពស់ម៉ាស៊ីនគណនាសមនឹងខ្លឹមសារ។",
+      ventajas: ["ឥតគិតថ្លៃ មិនចាំបាច់ចុះឈ្មោះ", "ទិន្នន័យផ្លូវការថ្មីបំផុតជានិច្ច", "បង្ហាញបានគ្រប់ទទឹង"],
+      nota: "នៅក្រោមម៉ាស៊ីនគណនាមានតំណទៅ CalcularYa។ សូមកុំលុបវាចេញ។",
+      verTodas: (pais) => `មើលម៉ាស៊ីនគណនាទាំងអស់${GRAMATICA.km.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | ម៉ាស៊ីនគណនាពី CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi, km };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

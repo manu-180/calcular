@@ -2003,3 +2003,143 @@ espacio y palabras frecuentes sin diacríticos. Se dejaron fuera a propósito la
 **Prueba.** `zz-lv` (Zetalande, `lv-001`) es una edición interna. `check_universales` prueba lv-LV con EUR,
 «Sentvinsenta un Grenadīnas» por el nombre largo que se declina por partes y «Apvienotie Arābu Emirāti» por el plural
 con adjetivo. El texto no lo revisó un hablante nativo.
+
+### D36. Macedonio, para Macedonia del Norte (2026-11-01)
+
+(D30 a D35 quedan para ramas sin mergear.)
+
+**Registro.** Uno solo, el de los bancos y los servicios: «вие» con 2.ª del plural («внесете», «пресметајте»), nunca
+«ти». Los mercados van con trato `usted` y el diccionario se escribe en `base`. El botón de calcular es «Пресметај»,
+suelto, y es la única forma en singular que aceptan las reglas; los demás botones van en sustantivo verbal («Копирање
+на врската») o en 2.ª del plural («Купете»).
+
+**«вие» con minúscula.** «вие», «ве», «ви», «вашиот», «вашата», «вашите» en minúscula a mitad de oración.
+Комерцијална банка escribe «Освежете го вашиот бизнис» (kb.mk, leído el 1/11/2026). УЈП mezcla: «Вашата даночна пријава»
+y «ве информира» en la misma portada (ujp.gov.mk, leído el 1/11/2026). La minúscula es una sola regla y no es una carta
+personal; `reglas_idioma` rechaza la mayúscula a mitad de oración.
+
+**Nativo, no búlgaro ni serbio adaptados.** Sin casos y con artículo pospuesto. `GRAMATICA.mk`: `en` = «во», «на» en
+archipiélagos («на Малдивите», «на Соломонските Острови»); `de` = «на»; `para` = «за». «во» y «од» no cambian de forma.
+Los nombres que son frase con sustantivo común o plural llevan artículo en la primera palabra («во Соединетите
+Американски Држави», «во Обединетото Кралство»); «Северна Македонија» no. Las reglas atrapan ы э ё ъ я ю щ й ь, letras
+de otros cirílicos, « » y palabras ajenas: «заплата», «данък», «лихва», «порез», «ПДВ», «ДДС», «че», «са», «от», «в», «с».
+Vocabulario: плата, персонален данок, придонеси, ДДВ, станбен кредит, камата, рата.
+
+**Plural.** `Intl.PluralRules("mk")` da «one» para 1, 21, 31 (no 11) y fracciones en 1, «other» para el resto. `otros` es
+la forma detrás de número, con la forma numérica de los masculinos: «2 дена», «5 часа», «2 калкулатора». «месец» queda
+en «месеци», que es lo que escriben bancos y leyes, no «месеца».
+
+**Formato y moneda.** mk-MK: punto de miles, coma decimal, «1.234.567,50 ден.», «20 %» con espacio. El símbolo trae punto:
+una oración no debe cerrar con un monto («ден..»). La moneda de prueba es MKD, escala 55.
+
+**Slugs.** Transliteración oficial en ASCII: ж = zh, ч = ch, ш = sh, ќ = kj, ѓ = gj, ј = j, љ = lj, њ = nj, ц = c, ѕ = dz, џ = dj
+(«kalkulator-za-kredit», «kalkulator-ddv», «platata-niz-svetot», «rang-lista-na-drzhavite»). `kalkulator-za-plata` queda
+libre para la calculadora local de sueldo. Van en `src/motor/secciones.ts` vía los `SLUG_*`, sin carpetas por idioma.
+
+**Fuentes para el país.** El 1/11/2026 abrieron ujp.gov.mk, stat.gov.mk, finance.gov.mk y mtsp.gov.mk. Este motor no usa
+ningún dato de ellas: tasas y montos los verifica el agente de país. nbrm.mk (403) y slvesnik.com.mk (sin conexión) no se
+reintentaron.
+
+**Fuente tipográfica.** La tarjeta OG usa Noto Sans de respaldo, como uk, ru y bg. La edición interna es `zz-mk`
+(«Зеталандија», mk-001). Mercados de prueba en `check_universales`: Северна Македонија con MKD y nombres largos («Сент
+Винсент и Гренадини», «Обединети Арапски Емирати»). Falta revisión por hablante nativo.
+
+### D37. Vietnamita, para Vietnam (2026-11-01)
+
+(Hasta D36 se usan en ramas sin mergear.)
+
+**Registro.** Uno solo, el de los bancos y los servicios (Vietcombank, Techcombank, eTax): «bạn» neutro y cortés,
+frases cortas («Nhập», «Chọn»), botón «Tính». Nunca «quý khách» ni «anh/chị» (ventanilla), «mày» o «cậu» (confianza), ni
+partículas de chat («nhé»). Los mercados van con trato `usted` y el diccionario se escribe en `base`. El registro sale
+del encargo: no se contrastó en las webs de esos bancos, así que conviene que el agente de país lo mire.
+
+**Gramática del país.** Sin artículos ni casos: el nombre no cambia y la preposición va delante. `GRAMATICA.vi` da
+`en` = «tại Việt Nam», `de` = «của Việt Nam», `para` = «cho Việt Nam». «tại» va en minúscula: ninguna frase empieza con
+`en`, se reescribe.
+
+**Plural.** No hay: «3 ngày», «1,5 năm». Las dos formas de `NOMBRES_UNIDAD` son iguales y los diccionarios escriben el
+conteo literal, como el indonesio.
+
+**Formato y moneda.** vi-VN como lo da Intl: punto de miles, coma decimal, «1.234.567 ₫» con espacio y sin decimales. En
+texto corrido, «₫» o «đồng». «5.000» se lee 5000 y «5,000» se rechaza por ambiguo. La prueba es VND.
+
+**Reglas.** `reglas_idioma` exige NFC (la forma descompuesta no iguala en búsquedas y Satori la arma mal), comillas “ ”,
+el tono en la vocal de los textos oficiales («hóa», «hòa», «khỏe», «tùy», «thủy»), «hằng tháng» y no «hàng tháng» para que el
+sitio diga siempre lo mismo. Rechaza marca de plural tras un número, «1,500,000», «7.5%», «VNĐ», «1.000₫» y palabras sin
+diacríticos («luong», «thue»). «tinh», «thang», «ngay» y «nam» no se atrapan porque existen así. «nha» solo al final de frase,
+porque está en «Bồ Đào Nha». Excepciones de número: «42,195 km» y «CC BY 4.0».
+
+**Slugs.** ASCII sin diacríticos y con đ = d (`tinh-lai-vay`, `tinh-thue-gtgt`, `luong-tren-the-gioi`, `lich-tra-luong`). La
+conversión de sueldos usa `quy-doi-luong`: `tinh-luong-gross-net` queda libre para la calculadora local de Vietnam.
+
+**Período en la inferencia.** «năm» y «tháng» llegan a `inferir.ts` como «nam» y «thang». «Việt Nam» se une antes en una
+palabra: si no, el nombre del país contaría como «año» en una etiqueta.
+
+**Fuente.** Geist trae las letras vietnamitas pero no el ₫ (se miró el TTF que entrega Google Fonts). En las tarjetas OG va
+Noto Sans de respaldo. En la web, con `display: optional`, un archivo sin precarga deja en la primera visita ơ y ư en la
+fallback, en medio de una palabra en Geist. Sumar el subset `vietnamese` a la instancia de todos precargaba un archivo más en
+todos los mercados, y next/font precarga por archivo de ruta, no por valor de `[mercado]`: no se puede limitar a vi. Por eso
+los layouts intl y embed declaran una segunda instancia, `geistVi` (`display: swap`, `preload: false`), que solo toman los
+mercados con idioma vi. **Costo visual, solo en vi:** en una visita nueva el texto pinta con la fallback ajustada y cambia a
+Geist cuando llega el archivo (también el H1, que es el LCP), con un repintado que los demás idiomas no tienen. Además la
+precarga de latin de `geist` queda sin usar en esas páginas: el navegador baja latin otra vez bajo el nombre sin precarga y
+puede avisar en consola. El resto de los mercados no paga ningún archivo más, solo unas líneas de `@font-face` en el CSS. El
+₫ en la web sale de la fallback del navegador.
+
+La edición interna es `zz-vi` (Zetaland, vi-001). Mercados de prueba en `check_universales`: Việt Nam con VND y «Saint
+Vincent và Grenadines» con XCD.
+
+### D38. Jemer, para Camboya (2026-11-01)
+
+D36 y D37 los usan `claude/mundo-motor-mk` y `claude/mundo-motor-vi`, sin mergear; esta entrada toma el D38 para no
+chocar. Modelo: tailandés (D13), la otra escritura sin espacios con signos combinantes.
+
+`IDIOMAS` suma `km`. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed, redes, afiliados, mundo,
+rankings, horas, calendario, sueldos, venta completa y las 41 universales están en jemer. Edición interna `zz-km`.
+
+**Fuentes, comprobadas el 1/11/2026 con un pedido común.** Abren `tax.gov.kh` (GDT, portada; las tasas están en
+secciones internas que hay que leer), `mlvt.gov.kh` (remite a `minimumwage.gov.kh`, no probado) y `nis.gov.kh`
+(publica inflación en portada). Rechazan `nbc.gov.kh` y `mef.gov.kh` (403) y `nssf.gov.kh` («Rejected Request»). No se
+intentó pasar esos bloqueos. Alcanza para considerar el país, pero el agente tendrá borradores: NSSF y tipo de cambio
+del NBC quedan sin fuente primaria mientras sigan bloqueados.
+
+**Registro.** Uno solo, el de ABA, ACLEDA y la GDT: cortés y neutro, «អ្នក» cuando hace falta y si no, sin pronombre.
+Sin «លោកអ្នក», sin «បាទ» ni «ចាស». «សូម» para pedir («សូមបញ្ចូលលេខ»), verbo corto en botones («គណនា»). Sí y no: «មែន» y «ទេ».
+La carta del informe usa «ខ្ញុំ». Mercados con `trato: "usted"` y diccionarios en `base`.
+
+**Gramática del país.** Sin artículos ni declinación: «នៅ», «សម្រាប់» y «នៃ» pegados, con «ប្រទេស» delante
+(«នៅប្រទេសកម្ពុជា», «សម្រាប់ប្រទេសកម្ពុជា»), salvo los nombres que ya dicen qué son (សហរដ្ឋ, ចក្រភព, សាធារណរដ្ឋ, ដែនដី...)
+y los territorios (ហុងកុង, តៃវ៉ាន់). `Intl.DisplayNames` de km trae U+200B dentro de varios nombres: el nombre de un mercado
+se escribe a mano, sin copiar de ahí.
+
+**Puntuación y espacios.** Sin espacios entre palabras: el espacio separa frases. «។» pegado a la palabra al cerrar la
+oración, sin «!». «?» pegado. Comillas « ». `reglasKm` rechaza además U+200B, «េ» + «ា» en lugar de «ោ», signos sueltos
+tras un espacio y los caracteres que Unicode desaconseja. Permite el espacio duro detrás de una cifra, que es lo que
+Intl pone en «12,000 EC$».
+
+**Formato.** Intl de km-KH: cifras latinas, miles con coma, decimales con punto y símbolo detrás («40,000៛», «1,234.50$»).
+Los sitios de gobierno y sus documentos usan a menudo ០ a ៩, ABA y ACLEDA las latinas; se eligen las latinas porque son
+las de Intl, las de los bancos y las que se comparan a simple vista. El parser acepta las dos («៤០,០០០») y las palabras de
+unidad («2.5 លាន», «1 លាន 5 សែន», «3 ម៉ឺនរៀល», «1 កោដិ»): sin eso «2 លាន» daba 2. El riel va sin decimales
+(`DECIMALES_DE_USO`, como AMD): CLDR le da dos, pero no circula nada menor a 50 ៛. Fechas gregorianas con mes jemer,
+como en la web de servicios («1 វិច្ឆិកា 2026»); la era budista queda para encabezados de documentos oficiales. Sin plural.
+
+**Slugs.** El slug en inglés del catálogo, como D8 y D13: la romanización del jemer no tiene una norma de uso común y
+casi nadie busca así. Las secciones van en romanización simple porque no pueden repetir la del inglés: `prak-khae-lok`,
+`pratitin-prak-khae`, `maong-thveu-kar`, `chomnat-thnak-prateh`, `prak-khae-pit`. Rankings de adentro en inglés.
+
+**Fuente y corte de línea.** Sistema, sin descargar: «Khmer OS», Noto Sans Khmer, Khmer Sangam MN, Leelawadee UI. Interlineado
+1,8 por los subíndices. `word-break: normal` y `overflow-wrap: break-word`, sin U+200B a mano: `Intl.Segmenter` de ICU corta bien
+las palabras; no se miró en un navegador real con la página armada. La tarjeta OG pide Noto Sans Khmer, y Satori no arma
+los subíndices ni reordena «េ», así que puede salir con algún conjunto mal armado, como bn en D14.
+
+**Ancho SEO.** Medido con GDI a 20 px en Leelawadee UI y Segoe UI (Khmer UI y Noto Sans Khmer no están instaladas en la
+máquina de medida): consonante 1,6 latinas, vocal al costado 1,5, coeng 0 y consonante subíndice 0,6. Con ese ancho un título
+de 60 unidades son unas 35 letras, de ahí los títulos cortos.
+
+**Período en `mundo/inferir`.** `palabras()` corta el jemer en cada signo vocálico, así que se busca adentro del texto:
+«ឆ្នាំ» anual, «ប្រចាំខែ», «ក្នុងមួយខែ» y «មួយខែ» mensual. «ខែ» solo no alcanza: lo lleva «ប្រាក់ខែ», salario.
+
+**Prueba.** `zz-km` (ហ្សេតាឡង់, `km-001`) es interna. `check_universales` prueba km-KH con KHR a 4000 y «សាំងវ៉ាំងសង់ និងហ្គ្រេណាឌីន»
+con XCD. El texto no lo revisó un hablante nativo; hay términos de finanzas elegidos sin esa revisión («អត្រាបន្ទាប់បង្ហាញ» para tasa
+nominal es el más dudoso, y «ចំណុចរួចថ្លៃដើម» para punto de equilibrio).

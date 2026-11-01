@@ -21,8 +21,9 @@ no entra en 8 GB se achica el build, nunca se agranda la máquina. Lo que hoy lo
   production build" desde la tanda 4 (1/11/2026, deploys f4e8e669, 57fee561 y 1d142789). Medido en Windows, sin tope de
   contenedor: pico de 5,02 GB con heap de 3072 y 1 worker; 5,83 GB con 4096 o 6144 y 2 workers. No subir este número.
 - **Webpack sin caché, con `parallelism: 2` y sin minificar el server** (`next.config.ts`, solo en build). Bajar el heap no
-  alcanzó (deploy 33a4d8b1 también murió). Medido en memoria privada con estos tres cambios: pico de 3,44 GB y
-  compilación de 7,5 min en local. No volver a prender `serverMinification` sin medir. Turbopack pasaba los 8 GB
+  alcanzó (deploy 33a4d8b1 también murió). Medido en memoria privada con estos tres cambios y 143 mercados: 3,44 GB al compilar y
+  5,82 GB de pico al final (compilación de 7,5 min en local). Con 147 mercados el build local muere en Windows por
+  EMFILE (`collectBuildTraces` lee 8.222 chunks contra ~8.192 descriptores): no es memoria y no se sabe si en Vercel pasa. No volver a prender `serverMinification` sin medir. Turbopack pasaba los 8 GB
   compilando los ~146 países. Dev sigue con Turbopack: toda regla de `turbopack.rules` tiene su
   par en `webpack()` de `next.config.ts`.
 - **Dos workers en el build** (`BUILD_CPUS=2`, variable de entorno del proyecto en Vercel, production
