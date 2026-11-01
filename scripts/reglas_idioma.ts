@@ -299,6 +299,25 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Croata: un solo registro, el de los bancos y Porezna uprava (obraćanje na «vi», en minúscula, con
+  // imperativo de segunda del plural: «unesite», «odaberite»; ADR 0002, D27). Los botones van en la forma
+  // corta de las interfaces croatas («Izračunaj», «Kopiraj», «Podijeli», «Preuzmi», «Dodaj», «Otvori»,
+  // «Prikaži», «Pošalji», «Spremi»), así que esos verbos no se atrapan; sí el pronombre y los posesivos de
+  // «ti», los presentes de segunda del singular y los imperativos de un formulario que en la prosa van con
+  // -te, y el «Vi» con mayúscula a mitad de oración. Los imperativos que se escriben igual que la 3.ª
+  // persona del presente («promijeni», «koristi», «provjeri») o que un sustantivo no se buscan.
+  hr: {
+    informal: [
+      { re: palabras("ti|tebe|tebi|tobom|tvoj|tvoja|tvoje|tvog|tvoga|tvome|tvom|tvoju|tvoji|tvojih|tvojim|tvojima"), nombre: "obraćanje na «ti»" },
+      {
+        re: palabras("unesi|upiši|odaberi|izaberi|klikni|saznaj|oduzmi|zbroji|pogledaj"),
+        nombre: "imperativo de «ti» en la prosa (va -te)",
+      },
+      { re: palabras("možeš|imaš|želiš|dobiješ|dobivaš|plaćaš|zarađuješ|vidiš|radiš|trošiš|uštediš|moraš|ćeš|znaš|unosiš|biraš|računaš|jesi|nisi|treba ti"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Vi|Vas|Vama|Vaš|Vaša|Vaše|Vašeg|Vašem|Vašoj|Vašu|Vaši|Vaših|Vašim|Vašima)(?!\p{L})/u, nombre: "«Vi» con mayúscula (va «vi»)" },
+    ],
+    formal: [],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -486,6 +505,34 @@ function reglasKa(texto: string): string[] {
   if (MEZCLA_KA.test(texto)) p.push("palabra que mezcla letras georgianas con latinas o cirílicas");
   if (PLURAL_TRAS_NUMERO_KA.test(texto)) p.push("plural detrás de un número (en georgiano va en singular: «3 დღე»)");
   if (SUFIJO_TRAS_CIFRA_KA.test(texto)) p.push("sufijo pegado a una cifra o marcador (va tras dos puntos o con una palabra delante)");
+  return p;
+}
+
+// Croata: comillas „ ” (abre abajo, cierra arriba), nada de «», "" ni “. Ijekavski siempre: una forma
+// ekavska («mesec», «vreme», «cena») delata un texto copiado del serbio. Y vocabulario croata: se atrapan
+// los serbismos comunes (plata por plaća, nedelja por tjedan, hiljada por tisuća, hleb por kruh, kurs por
+// tečaj, firma por tvrtka...), la sintaxis serbia con «da» («možete da unesete»; en croata, infinitivo) y
+// el «sa» delante de lo que no sea s, š, z, ž o «mnom» (en croata va «s»).
+const EKAVSKI_HR = palabras(
+  "mesec\\p{L}*|meseč\\p{L}*|cen[aeiu]|cenom|cenama|vreme|vredn\\p{L}*|vredi|vrede|svet|svetu|svetsk\\p{L}*|uvek|gde|ovde|negde|nigde|deo|delov\\p{L}*|deca|dece|dete|detet\\p{L}*|primer\\p{L}*|promen\\p{L}*|procen\\p{L}*|posle|ceo|cela|celo|celu|cele|mesto|mesta|reč|reči|mleko|lek|lekar\\p{L}*|telo|tela|belo|zahtev\\p{L}*|pre|podeli\\p{L}*|deli\\p{L}*|uspeo|uspelo|videti|hteti|razumeti|proveri\\p{L}*|provera|provere|uporedi\\p{L}*|poređen\\p{L}*",
+);
+const SERBISMOS_HR = palabras(
+  "plata|plate|platu|platom|platama|nedelj\\p{L}*|hiljad\\p{L}*|hleb\\p{L}*|procenat|procent\\p{L}*|firma|firme|firmu|firmi|firmom|firmama|porodic\\p{L}*|domaćinstv\\p{L}*|kurs|kursa|kursu|kursom|kursevi|uslov\\p{L}*|sajt\\p{L}*|saobraćaj\\p{L}*|bezbed\\p{L}*|takođe|šta|ko|niko|opšt\\p{L}*|opštin\\p{L}*|penzij\\p{L}*|penzioner\\p{L}*|poresk\\p{L}*|tačk\\p{L}*|tačn\\p{L}*|tačan|pregledač\\p{L}*|računar\\p{L}*|januar\\p{L}*|februar\\p{L}*|mart|avgust\\p{L}*|septembar|septembr\\p{L}*|oktobar|oktobr\\p{L}*|novembar|novembr\\p{L}*|decembar|decembr\\p{L}*|jul|jula|julu|jun|juna|junu|maj|maja|maju|evr[oa]|evrop\\p{L}*|ostrv\\p{L}*|okean\\p{L}*|nemačk\\p{L}*|ka|izveštaj\\p{L}*|obaveštenj\\p{L}*",
+);
+const DA_SERBIO_HR = /(?:^|[\s(])(?:možete|mogu|može|moraju|morate|mora|treba|trebate|trebaju|želite)\s+da\s+\p{L}/iu;
+const SA_HR = /(?:^|[\s(„])[Ss]a\s+(?!mnom)[aeiouAEIOUbcčćdđfghjklmnprtvBCČĆDĐFGHJKLMNPRTV]/u;
+const DA_LI_HR = /(?:^|[\s(„])[Dd]a li(?!\p{L})/u;
+function reglasHr(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"“]/.test(texto)) p.push("comillas: en croata van „ ”");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en croata");
+  const e = EKAVSKI_HR.exec(texto);
+  if (e) p.push(`ekavski «${e[0]}» (en croata, ijekavski)`);
+  const s = SERBISMOS_HR.exec(texto);
+  if (s) p.push(`serbismo «${s[0]}» (en croata: plaća, tjedan, tisuća, kruh, tečaj, tvrtka...)`);
+  if (DA_SERBIO_HR.test(texto)) p.push("«možete da» y similares: en croata va infinitivo («možete unijeti»)");
+  if (DA_LI_HR.test(texto)) p.push("«da li»: en croata, «je li», «jeste li»");
+  if (SA_HR.test(texto)) p.push("«sa»: en croata va «s», salvo delante de s, š, z, ž o «mnom»");
   return p;
 }
 
@@ -682,5 +729,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "sr") p.push(...reglasSr(texto, locale));
   if (idioma === "bg") p.push(...reglasBg(texto));
   if (idioma === "ka") p.push(...reglasKa(texto));
+  if (idioma === "hr") p.push(...reglasHr(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

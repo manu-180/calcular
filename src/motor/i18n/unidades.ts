@@ -16,6 +16,8 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // FormasAr y el hebreo FormasHe (uno, dual y plural: «יום אחד», «יומיים», «{n} ימים»).
 // En serbio "uno" es 1, 21, 31... (no 11), "pocos" 2 a 4, 22 a 24... (no 12 a 14) y "otros" el resto,
 // fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
+// En croata "uno" es 1, 21, 31... (no 11), "pocos" 2 a 4, 22 a 24... (no 12 a 14) y "otros" el resto,
+// fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
 export interface FormasUnidad {
   uno: string;
   otros: string;
@@ -120,6 +122,14 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     horas: { uno: "hodina", pocos: "hodiny", muchos: "hodiny", otros: "hodín" },
     meses: { uno: "mesiac", pocos: "mesiace", muchos: "mesiaca", otros: "mesiacov" },
     anios: { uno: "rok", pocos: "roky", muchos: "roka", otros: "rokov" },
+  },
+  // Croata (ADR 0002, D27).
+  hr: {
+    dias: { uno: "dan", pocos: "dana", otros: "dana" },
+    semanas: { uno: "tjedan", pocos: "tjedna", otros: "tjedana" },
+    horas: { uno: "sat", pocos: "sata", otros: "sati" },
+    meses: { uno: "mjesec", pocos: "mjeseca", otros: "mjeseci" },
+    anios: { uno: "godina", pocos: "godine", otros: "godina" },
   },
 };
 

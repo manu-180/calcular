@@ -1505,6 +1505,47 @@ calculadora local de sueldo neto de Georgia. Rankings: `khelpasis-msqidveloba`, 
 prueba parseo, unidades, lari, fecha, ancho, mayúscula neutra y casos del país. Los textos no tuvieron revisión de un
 hablante nativo: queda pendiente antes de publicar Georgia.
 
+### D27. Croata, para Croacia (2026-11-01)
+
+`IDIOMAS` suma `hr`. Motor, sitio, inicio, novedades, legales, errores, compartir (también el panel con
+imagen), embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»),
+rankings, «Sueldos reales», afiliados, el diccionario de venta y las 41 universales están en croata. El
+modelo es el serbio latino (D23, en otra rama): misma estructura, texto escrito de nuevo.
+
+**Lo que devuelve Intl (Node).** `hr-HR`: `1.234.567,50 €` y `1.234,50 USD`; `1. studenoga 2026.` (el mes ya
+viene en genitivo); PluralRules one/few/other. Croacia usa euro desde 2023. El parser no necesitó nada propio.
+
+**Registro.** Un solo registro, el de los bancos y los servicios del país (Porezna uprava y ePorezna, PBZ,
+Erste): «vi» en minúscula con imperativo de 2.ª del plural («unesite», «izračunajte», «odaberite»). Los
+mercados van con `trato: "usted"`. Los botones van en la forma corta («Izračunaj», «Podijeli»). Nada de «ti»
+ni del «Vi» con mayúscula.
+
+**Variante y vocabulario.** Ijekavski («mjesec», «cijena», «vrijeme») y vocabulario croata («plaća»,
+«tjedan», «tisuća», «postotak», «tečaj», «tvrtka», «obitelj», «poveznica», «preglednik», «računalo»). Sintaxis
+croata: infinitivo («možete unijeti», no «možete da unesete»), «je li» y no «da li», «s» y no «sa» salvo
+delante de s, š, z, ž o «mnom». `reglas_idioma` atrapa las formas ekavskas, los serbismos comunes, esa
+sintaxis y el tuteo. «košta» se queda en las horas de trabajo porque es lo que la gente busca.
+
+**Plurales y gramática.** Tres categorías: «1 godina», «2 godine», «5 godina», «21 godina», «1,5 godina»
+(`formaHr`, `pluralHr`; en `unidades.ts`, uno, pocos y otros). El nombre del país se declina: `GRAMATICA.hr` da
+genitivo («Hrvatske»), lugar con «u» o «na» («u Hrvatskoj», «na Cipru», «na Filipinima») y «za» con acusativo
+(«za Hrvatsku»), con reglas por terminación, adjetivos que concuerdan y una tabla de irregulares.
+
+**Comillas.** „ ” (abre abajo, cierra arriba, U+201E y U+201D). Ni «», ni "", ni “.
+
+**Universales neutrales.** Los textos no nombran organismos, leyes ni moneda de Croacia, salvo los genéricos
+«PDV» y «EKS». Lo propio del país queda para el agente de país.
+
+**Slugs.** ASCII sin diacríticos, con la «đ» como «dj»: `placa-u-svijetu`, `ljestvica-zemalja`,
+`koliko-radnih-sati`, `kalendar-placa`, `stvarne-place`, y las universales con su búsqueda real
+(`kalkulator-kredita`, `kalkulator-place`, `pdv-kalkulator`). Se suman en `secciones.ts` por los `SLUG_*`: sin
+carpetas por idioma. Los de sección no coinciden con los del serbio para que no choquen al integrar.
+
+**Prueba.** `zz-hr` (Zetalandija) es una edición interna en `hr-001`, para no compartir locale con Croacia en
+hreflang. `check_universales` prueba `hr-HR` con EUR, un nombre largo que se declina por partes («na Svetom
+Vincentu i Grenadinima») y uno plural con adjetivos («u Ujedinjenim Arapskim Emiratima»); `check_motor` prueba
+formato, plurales, parseo y gramática.
+
 ## 3. Catálogo de universales
 
 Slug por idioma: el que busca la gente. Familia de oferta: la del producto que se ofrece.

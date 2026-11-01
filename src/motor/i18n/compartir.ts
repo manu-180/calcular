@@ -596,6 +596,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `ნახეთ, რამდენი დაგრჩებოდათ ხელზე ${n} ქვეყანაზე მეტში`,
     },
   },
+  // Croata (ADR 0002, D27): «vi» en minúscula; botones en la forma corta.
+  hr: {
+    base: {
+      boton: "Podijeli",
+      botonAria: "Podijeli ovaj kalkulator",
+      menuTitulo: "Podijeli putem",
+      copiar: "Kopiraj poveznicu",
+      copiado: "Poveznica je kopirana",
+      compartido: "Poslano",
+      errorCorto: "Kopiranje nije uspjelo",
+      errorAyuda: "Poveznicu nije bilo moguće kopirati. Kopirajte je iz adresne trake preglednika.",
+      nuevaPestana: "otvara se u novoj kartici",
+      mensaje: (nombre) => `${nombre}. Besplatno, izračun traje minutu.`,
+      puenteIntro: "A u drugim zemljama?",
+      puenteEnlace: (n) => `Pogledajte koliko bi vam neto ostalo u više od ${n} zemalja`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

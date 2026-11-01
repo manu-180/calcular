@@ -14,10 +14,11 @@ export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; mo
 // con la preposición pegada («לשנה», «בחודש»): palabras() corta por letra y no la separa. En búlgaro,
 // En serbio «godišnja», «godišnje» y «mesečna», «mesečno» (y el ijekavski «mjesečno») van por prefijo.
 // «година», «месец» y los prefijos «годиш» y «месеч» («годишна», «месечна»; ADR 0002, D24).
+// En croata «godišnja», «godišnje» y «mjesečna», «mjesečno» van por prefijo.
 const ANUAL = ["година", "anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "yillik", "yil", "рік", "року", "год", "года", "anuala", "anuale", "anuali", "rok", "roku", "rocne", "ετος", "ετη", "წელი", "წელიწადი", "წელიწადში", "eves", "evi", "evente", "שנתי", "שנתית", "לשנה", "בשנה", "年", "연", "연봉", "年収", "年薪"];
-const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "річн", "годов", "ежегодн", "rocn", "ετησι", "godisnj", "годиш", "წლიურ", "ყოველწლიურ"];
+const PREFIJO_ANUAL = ["jahr", "jahres", "jährlich", "jaarsalaris", "year", "річн", "годов", "ежегодн", "rocn", "ετησι", "godisnj", "годиш", "წლიურ", "ყოველწლიურ", "godisnj"];
 const MENSUAL = ["месец", "mesiac", "mesiace", "mesiaca", "mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "mensal", "aylik", "oylik", "місяць", "місяця", "месяц", "месяца", "luna", "lunii", "mesic", "mesice", "mesicne", "μηνα", "μηνας", "μηνες", "თვე", "თვეში", "havi", "havonta", "חודשי", "חודשית", "לחודש", "בחודש", "月", "월", "월급", "月給", "月薪"];
-const PREFIJO_MENSUAL = ["mesacn", "monat", "maand", "month", "mensu", "mensil", "місячн", "месячн", "ежемесячн", "lunar", "mesicn", "μηνιαι", "mesecn", "mjesecn", "месеч", "თვიურ", "ყოველთვიურ"];
+const PREFIJO_MENSUAL = ["mesacn", "monat", "maand", "month", "mensu", "mensil", "місячн", "месячн", "ежемесячн", "lunar", "mesicn", "μηνιαι", "mesecn", "mjesecn", "месеч", "თვიურ", "ყოველთვიურ", "mjesecn"];
 
 function palabras(texto: string): string[] {
   return texto

@@ -695,6 +695,27 @@ export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
     celuImagen: "ტელეფონის კამერით ეს კოდი გახსნის სურათს, სთორიში გასაზიარებლად.",
     cerrar: "დახურვა",
   }),
+  // Croata (ADR 0002, D27): impersonal; «priča» es la historia de Instagram.
+  hr: base({
+    grupo: "Podijeli putem:",
+    instagramSub: "Priča",
+    copiar: "Kopiraj poveznicu",
+    mas: "Još opcija",
+    nuevaPestana: "otvara se u novoj kartici",
+    formato: "Format slike",
+    historia: "Priča 9:16",
+    feed: "Objava 1:1",
+    descargar: "Preuzmi sliku",
+    copiado: "Poveznica je kopirana.",
+    compartido: "Poslano.",
+    enInstagram: "Gotovo. Poveznica je također kopirana i može se zalijepiti u priču pomoću naljepnice Poveznica.",
+    descargado: "Slika je preuzeta, a poveznica kopirana. S telefona se može objaviti kao priča, a poveznica se dodaje naljepnicom Poveznica.",
+    error: "Dijeljenje trenutačno nije dostupno.",
+    alCelu: "Na Instagram se objavljuje s telefona",
+    celuPagina: "Kamerom telefona ovaj kod otvara karticu spremnu da se jednim dodirom pošalje u priču.",
+    celuImagen: "Kamerom telefona ovaj kod otvara sliku spremnu za dijeljenje u priči.",
+    cerrar: "Zatvori",
+  }),
 };
 
 export function textosRedes(idioma: Idioma, trato: Trato, locale?: string): TextosRedes {

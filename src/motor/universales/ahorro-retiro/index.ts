@@ -12,6 +12,7 @@ import { contenidoEs } from "./contenido/es";
 import { contenidoFi } from "./contenido/fi";
 import { contenidoFr } from "./contenido/fr";
 import { contenidoHe } from "./contenido/he";
+import { contenidoHr } from "./contenido/hr";
 import { contenidoHu } from "./contenido/hu";
 import { contenidoId } from "./contenido/id";
 import { contenidoIt } from "./contenido/it";
@@ -45,6 +46,7 @@ import { textosEs } from "./textos/es";
 import { textosFi } from "./textos/fi";
 import { textosFr } from "./textos/fr";
 import { textosHe } from "./textos/he";
+import { textosHr } from "./textos/hr";
 import { textosHu } from "./textos/hu";
 import { textosId } from "./textos/id";
 import { textosIt } from "./textos/it";
@@ -70,7 +72,7 @@ export default definirUniversal<UiAhorroRetiro>({
   id: "ahorro-retiro",
   concepto: "ahorro-retiro",
   definir,
-  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hu: textosHu, id: textosId, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hu: contenidoHu, id: contenidoId, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, id: textosId, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, id: contenidoId, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });

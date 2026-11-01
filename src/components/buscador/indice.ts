@@ -23,6 +23,8 @@ export function normalizar(texto: string): string {
     .replace(/[̀-ͯ]/g, "")
     // La «đ» del serbio no se descompone con NFD: se escribe «dj», como en los slugs.
     .replace(/đ/g, "dj")
+    // La «đ» del croata no se descompone con NFD: se escribe «dj», como en los slugs.
+    .replace(/đ/g, "dj")
     // La ı del turco no se descompone en NFD: sin esto quedaría como separador («yıllık», «y ll k»).
     .replace(/ı/g, "i")
     // Uzbeko latino: oʻ, gʻ y la tutuq belgisi (ʼ) se buscan sin el signo, y quien escribe «o'» o «g'»

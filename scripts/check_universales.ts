@@ -206,6 +206,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sent Vinsent i Grenadini", locale: "sr-Latn-RS", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Ujedinjeni Arapski Emirati", locale: "sr-Latn-RS", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
   ],
+  // Croata (ADR 0002, D27): euro detrás con punto de miles; un nombre largo que se declina por partes («na
+  // Svetom Vincentu i Grenadinima») y uno plural con adjetivos delante («u Ujedinjenim Arapskim Emiratima»).
+  hr: [
+    { mercado: "hr" as CodigoMercado, pais: "HR", nombrePais: "Hrvatska", locale: "hr-HR", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sveti Vincent i Grenadini", locale: "hr-HR", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Ujedinjeni Arapski Emirati", locale: "hr-HR", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
 };
 
 // En ja, ko, zh y todos los idiomas que entraron después (pl, sv, da, nb, fi, ar, id, tr, bn, th...)
