@@ -1,0 +1,12 @@
+import { definirCasos } from "@/motor/calculo";
+import izracunPlace from "./izracun-place";
+
+export default definirCasos(izracunPlace, [
+  { nombre: "2.500 brez otrok", origen: { tipo: "recalculado", detalle: "23,1 % = 577,50; OZP 39,36; olajšava 5551,93/12 = 462,66; osnova 1420,48 × 12 = 17045,76; (1555,43 + 26 % × 7324,33) / 12 = 288,31; neto 1594,83" }, fecha: "2026-10-31", entrada: { bruto: 2500, otroci: 0, do29: false, delez: 100 }, esperado: { neto: 1594.83, akontacija: 288.31, olajsave: 462.66 } },
+  { nombre: "2.500 z dvema otrokoma", origen: { tipo: "recalculado", detalle: "(2995,83 + 3256,77)/12 = 521,05; olajšave 983,71; osnova 899,43; 899,43 × 12 = 10793,16; (1555,43 + 26 % × 1071,73)/12 = 152,84" }, fecha: "2026-10-31", entrada: { bruto: 2500, otroci: 2, do29: false, delez: 100 }, esperado: { neto: 1730.3, akontacija: 152.84 } },
+  { nombre: "Minimalna plača pod najnižjo osnovo", origen: { tipo: "recalculado", detalle: "PIZ, ZZ, DO od 1481,88; starševsko in zaposlovanje od 1521,62; 342,41 + 39,36 = 381,77; 16 % × 637,45 = 101,99" }, fecha: "2026-10-31", entrada: { bruto: 1481.88, otroci: 0, do29: false, delez: 100 }, esperado: { neto: 998.12, akontacija: 101.99 } },
+  { nombre: "Dodatna splošna olajšava pri 1.400", origen: { tipo: "oficial", url: "https://www.fu.gov.si/davki_in_druge_dajatve/podrocja/dohodnina/dohodnina_dohodek_iz_zaposlitve/pripomocek_za_izracun_splosne_olajsave_v_letu_2026_pri_izracunu_akontacije_dohodnine_od_mesecnega_dohodka_iz_delovnega_razmerja/", detalle: "Enačba pripomočka FURS: 462,66 + (1736,03 − 1,17259 × bruto) = 557,07" }, fecha: "2026-10-31", entrada: { bruto: 1400, otroci: 0, do29: false, delez: 100 }, esperado: { olajsave: 557.07, neto: 960.17 } },
+  { nombre: "Višja plača v tretjem razredu", origen: { tipo: "recalculado", detalle: "6000: prispevki 1425,36; osnova 4111,98 × 12 = 49343,76; (6461,89 + 33 % × 20751,32)/12 = 1109,15" }, fecha: "2026-10-31", entrada: { bruto: 6000, otroci: 0, do29: false, delez: 100 }, esperado: { akontacija: 1109.15, neto: 3465.49 } },
+  { nombre: "Olajšava do 29 let in en otrok", origen: { tipo: "recalculado", detalle: "3000: olajšave 462,66 + 249,65 + 120,29 = 832,61; akontacija 292,10" }, fecha: "2026-10-31", entrada: { bruto: 3000, otroci: 1, do29: true, delez: 100 }, esperado: { neto: 1975.54 } },
+  { nombre: "Ničelna plača", origen: { tipo: "recalculado", detalle: "Bruto mora biti večji od nič." }, fecha: "2026-10-31", entrada: { bruto: 0, otroci: 0, do29: false, delez: 100 }, esperaError: true },
+]);
