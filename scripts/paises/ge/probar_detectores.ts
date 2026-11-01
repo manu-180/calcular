@@ -4,11 +4,11 @@ import { detectores } from "@/paises/ge/fuentes";
 import type { Http } from "@/motor/tipos";
 
 const http: Http = {
-  async json(url) {
-    return (await fetch(url)).json();
+  async json(url, op) {
+    return (await fetch(url, { headers: { ...op?.encabezados } })).json();
   },
-  async texto(url) {
-    return (await fetch(url)).text();
+  async texto(url, op) {
+    return (await fetch(url, { headers: { ...op?.encabezados } })).text();
   },
 };
 

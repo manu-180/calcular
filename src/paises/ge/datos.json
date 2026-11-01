@@ -914,6 +914,26 @@
           "motivo": "შრომის კოდექსის 39-ე მუხლი ოდენობას მთავრობის დადგენილებას ანდობს. matsne.gov.ge აქედან მიუწვდომელია (Access Denied) და დადგენილება ვერ წავიკითხეთ; თანხა მხოლოდ მინიშნებაა."
         }
       ]
+    },
+    {
+      "id": "ge.cpi-bazisi",
+      "nombre": "ფასების ინდექსის საბაზისო დონე (2010 წლის საშუალო)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2010-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "საქსტატი",
+            "titulo": "სამომხმარებლო ფასების ინდექსები, 2010 წლის საშუალო = 100",
+            "url": "https://www.geostat.ge/ka/modules/categories/26/samomkhmareblo-fasebis-indeksi-inflatsia",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
     }
   ]
 }

@@ -48,7 +48,7 @@ export const detectores: readonly Detector[] = [
   {
     id: "ge.cpi-geostat",
     carril: "norma",
-    datos: [],
+    datos: ["ge.cpi-bazisi"],
     metodo: "html",
     url: "https://www.geostat.ge/ka/modules/categories/26/samomkhmareblo-fasebis-indeksi-inflatsia",
     async traer(http): Promise<HallazgoNorma[] | null> {
@@ -79,7 +79,8 @@ export const detectores: readonly Detector[] = [
     metodo: "html",
     url: "https://infohubapi.rs.ge/api/documents/800cbef0-32bf-4f06-94fe-8afd2bf144a0/details-by-key?openFromSearch=false",
     async traer(http): Promise<HallazgoNorma[] | null> {
-      const texto = await http.texto(this.url);
+      // La API del hub exige el idioma en este encabezado propio y devuelve el código entero (6 MB).
+      const texto = await http.texto(this.url, { encabezados: { languageCode: "ka" } });
       // Cada enmienda queda al pie del artículo como «ვებგვერდი, 16.10.2026წ.»: la más nueva manda.
       const fechas = [...texto.matchAll(/ვებგვერდი,\s*(\d{2})\.(\d{2})\.(\d{4})/g)].map((m) => `${m[3]}-${m[2]}-${m[1]}`).sort();
       const ultima = fechas.at(-1);
