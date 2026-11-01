@@ -392,6 +392,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
     },
   },
   // Tailandés (ADR 0002, D13): sin pronombre ni ครับ/ค่ะ.
+  km: {
+    base: {
+      boton: "ចែករំលែក",
+      botonAria: "ចែករំលែកម៉ាស៊ីនគណនានេះ",
+      menuTitulo: "ចែករំលែកតាម",
+      copiar: "ចម្លងតំណ",
+      copiado: "បានចម្លងតំណ",
+      compartido: "បានចែករំលែក",
+      errorCorto: "ចម្លងមិនបាន",
+      errorAyuda: "មិនអាចចម្លងតំណបានទេ។ សូមចម្លងពីរបារអាសយដ្ឋាននៃកម្មវិធីរុករក។",
+      nuevaPestana: "បើកក្នុងផ្ទាំងថ្មី",
+      mensaje: (nombre) => `${nombre} ឥតគិតថ្លៃ គណនារួចក្នុងមួយនាទី។`,
+      puenteIntro: "ចុះប្រទេសផ្សេងវិញ?",
+      puenteEnlace: (n) => `មើលប្រាក់ខែសុទ្ធនៅជាង ${n} ប្រទេស`,
+    },
+  },
   th: {
     base: {
       boton: "แชร์",

@@ -39,10 +39,15 @@ function separarCamel(id: string): string {
   return id.replace(/([a-z])([A-Z])/g, "$1 $2");
 }
 
+// El jemer no separa palabras con espacios y palabras() lo cortaría en cada signo vocálico: se busca adentro del
+// texto. «ខែ» suelto no alcanza, porque «ប្រាក់ខែ» (salario) lo lleva sin hablar del período (ADR 0002, D38).
+const ANUAL_KM = /ឆ្នាំ/u;
+const MENSUAL_KM = /ប្រចាំខែ|ក្នុងមួយខែ|មួយខែ/u;
+
 function periodoDe(...textos: string[]): PeriodoMundo | null {
   const ps = textos.flatMap((t) => palabras(separarCamel(t)));
-  const anual = ps.some((p) => ANUAL.includes(p) || PREFIJO_ANUAL.some((x) => p.startsWith(x)));
-  const mensual = ps.some((p) => MENSUAL.includes(p) || PREFIJO_MENSUAL.some((x) => p.startsWith(x)));
+  const anual = textos.some((t) => ANUAL_KM.test(t)) || ps.some((p) => ANUAL.includes(p) || PREFIJO_ANUAL.some((x) => p.startsWith(x)));
+  const mensual = textos.some((t) => MENSUAL_KM.test(t)) || ps.some((p) => MENSUAL.includes(p) || PREFIJO_MENSUAL.some((x) => p.startsWith(x)));
   if (anual === mensual) return null;
   return anual ? "anio" : "mes";
 }

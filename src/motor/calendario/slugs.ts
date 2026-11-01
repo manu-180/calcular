@@ -45,4 +45,5 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   et: "palgakalender",
   is: "launadagatal",
   lv: "algas-kalendars",
+  km: "pratitin-prak-khae",
 };

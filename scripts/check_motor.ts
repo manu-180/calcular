@@ -179,6 +179,19 @@ const parseos: [string, string, number | null][] = [
   ["bn-BD", "-১২.৫", -12.5],
   ["bn-BD", "১,২৩৪.৫", 1234.5],
   ["bn-BD", "১২,৩৪৫,৬৭", null],
+  // Jemer (ADR 0002, D38): miles con coma, cifras jemeres y palabras de unidad.
+  ["km-KH", "1,234.50", 1234.5],
+  ["km-KH", "1,500,000៛", 1500000],
+  ["km-KH", "៤០,០០០", 40000],
+  ["km-KH", "១,២០០ រៀល", 1200],
+  ["km-KH", "2.5 លាន", 2500000],
+  ["km-KH", "២.៥ លាន", 2500000],
+  ["km-KH", "1 លាន 5 សែន", 1500000],
+  ["km-KH", "3 ម៉ឺនរៀល", 30000],
+  ["km-KH", "3 មុឺន", 30000],
+  ["km-KH", "1 កោដិ", 10000000],
+  ["km-KH", "1 លាន 250,000", 1250000],
+  ["km-KH", "5 សែន 2 លាន", null],
   // Tailandés (ADR 0002, D13): miles con coma, palabras de unidad (ล้าน, แสน, หมื่น) y dígitos tailandeses.
   ["th-TH", "1,234.50", 1234.5],
   ["th-TH", "฿1,500,000", 1500000],
@@ -333,6 +346,8 @@ const ambiguos: [string, string, number | null][] = [
   ["tr-TR", "5,000", null],
   ["bn-BD", "৫.০০০", null],
   ["bn-BD", "৫,০০০", 5000],
+  ["km-KH", "5,000", 5000],
+  ["km-KH", "5.000", null],
   ["th-TH", "5,000", 5000],
   ["th-TH", "5.000", null],
   ["uk-UA", "5 000", 5000],
@@ -711,8 +726,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal", "zz-hy/kisamyakayin-pargev", "zz-sq/bonus-gjashtemujor", "zz-sl/polletna-nagrada", "zz-et/poolaasta-preemia", "zz-is/halfsarsbonus", "zz-lv/pusgada-premija"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-mn", "zz-hy", "zz-sq", "zz-sl", "zz-et", "zz-is", "zz-lv"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal", "zz-hy/kisamyakayin-pargev", "zz-sq/bonus-gjashtemujor", "zz-sl/polletna-nagrada", "zz-et/poolaasta-preemia", "zz-is/halfsarsbonus", "zz-lv/pusgada-premija", "zz-km/half-year-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-mn", "zz-hy", "zz-sq", "zz-sl", "zz-et", "zz-is", "zz-lv", "zz-km"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -793,6 +808,16 @@ igual("minúscula inicial en turco", minusculaInicial("Isparta", "tr-TR"), "ısp
 igual("días en bengalí", formatearValorUnidad(3, "dias", "bn-BD"), "৩ দিন");
 igual("un año en bengalí", formatearValorUnidad(1, "anios", "bn-BD"), "১ বছর");
 igual("fracción de año en bengalí", formatearValorUnidad(1.5, "anios", "bn-BD"), "১.৫ বছর");
+// Jemer: sin plural, unidad separada por un espacio, riel sin decimales, cifras latinas y país con «ប្រទេស».
+igual("días en jemer", formatearValorUnidad(3, "dias", "km-KH"), "3 ថ្ងៃ");
+igual("fracción de año en jemer", formatearValorUnidad(1.5, "anios", "km-KH"), "1.5 ឆ្នាំ");
+igual("riel en jemer", formatearMoneda(1234567.5, "km-KH", "KHR"), "1,234,568៛");
+igual("dólar en jemer", formatearMoneda(1234.5, "km-KH", "USD"), "1,234.50$");
+igual("fecha larga en jemer", formatearFecha("2026-11-01", "km-KH"), "1 វិច្ឆិកា 2026");
+igual("gramática jemer: lugar", ["កម្ពុជា", "សហរដ្ឋអាមេរិក", "ហុងកុង", "ប្រទេសថៃ"].map((p) => GRAMATICA.km.en(p)), ["នៅប្រទេសកម្ពុជា", "នៅសហរដ្ឋអាមេរិក", "នៅហុងកុង", "នៅប្រទេសថៃ"]);
+igual("gramática jemer: para", GRAMATICA.km.para("កម្ពុជា"), "សម្រាប់ប្រទេសកម្ពុជា");
+igual("gramática jemer: de", GRAMATICA.km.de("កម្ពុជា"), "នៃប្រទេសកម្ពុជា");
+igual("ancho visual del jemer: coeng y vocales de arriba", [anchoVisual("ក"), anchoVisual("ក្រ"), anchoVisual("កា"), anchoVisual("កិ")], [1.6, 2.2, 3.1, 1.6]);
 // Tailandés: sin plural, la unidad separada por un espacio y las fechas en พ.ศ. (calendario de th-TH).
 igual("días en tailandés", formatearValorUnidad(3, "dias", "th-TH"), "3 วัน");
 igual("fracción de año en tailandés", formatearValorUnidad(1.5, "anios", "th-TH"), "1.5 ปี");

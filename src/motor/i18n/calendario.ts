@@ -2921,7 +2921,74 @@ const lv: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+// Jemer (ADR 0002, D38): «អ្នក» o sin pronombre, «។» al cerrar la oración, años gregorianos (`anios` llega así).
+const gKm = GRAMATICA.km;
+const km: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "ប្រតិទិនប្រាក់ខែ និងពន្ធ",
+    seo: {
+      titulo: (pais, anios) => [
+        `ប្រតិទិនប្រាក់ខែ និងពន្ធ${gKm.de(pais)} ${anios}`,
+        `ប្រតិទិនប្រាក់ខែ${gKm.de(pais)} ${anios}`,
+        `ប្រតិទិនប្រាក់ខែ ${anios}`,
+      ],
+      descripcion: (pais, proximas) => `កាលបរិច្ឆេទដែលប្តូរប្រាក់ខែ${gKm.en(pais)} ពីប្រភពផ្លូវការ: ${proximas}។ ភ្ជាប់ទៅម៉ាស៊ីនគណនា។`,
+      descripcionSin: (pais) => `កាលបរិច្ឆេទដែលប្តូរប្រាក់ខែ${gKm.en(pais)} ពីប្រភពផ្លូវការ ជាមួយម៉ាស៊ីនគណនា។ បន្ថែមក្នុងប្រតិទិនទូរស័ព្ទបាន។`,
+    },
+    ceja: (anios) => `ប្រតិទិន ${anios}`,
+    h1: (pais) => `ប្រតិទិនប្រាក់ខែ និងពន្ធ${gKm.para(pais)}`,
+    acento: "កាលបរិច្ឆេទដែលប្រាក់ខែប្តូរ",
+    bajada: "កាលបរិច្ឆេទទាំងអស់មកពីប្រភពផ្លូវការ និងភ្ជាប់ទៅម៉ាស៊ីនគណនាដែលពាក់ព័ន្ធ។ ទំព័រនេះធ្វើបច្ចុប្បន្នភាពដោយខ្លួនឯង នៅពេលមានតួលេខថ្មី។",
+    proxima: "កាលបរិច្ឆេទបន្ទាប់",
+    cuenta: { hoy: "ថ្ងៃនេះ", manana: "ថ្ងៃស្អែក", ayer: "ថ្ងៃម្សិលមិញ", en: (n) => `ក្នុងរយៈពេល ${n} ថ្ងៃទៀត`, hace: (n) => `${n} ថ្ងៃមុន`, dias: () => "ថ្ងៃ" },
+    queViene: "ខាងមុខ",
+    yaRige: "ជាធរមានហើយ",
+    mesPorMes: "ពេញមួយឆ្នាំ តាមខែ",
+    sinFechas: "មិនទាន់មានការប្រកាសការផ្លាស់ប្តូរទេ។",
+    filtro: "ច្រោះតាមប្រធានបទ",
+    todo: "ទាំងអស់",
+    tipos: { pago: "ការបើកប្រាក់", "salario-minimo": "ប្រាក់ឈ្នួលអប្បបរមា", impuestos: "ពន្ធ", aportes: "ការរួមចំណែក និងសោធន", laboral: "ច្បាប់ការងារ", indices: "តម្លៃយោង" },
+    pasa: (antes, despues) => `ប្តូរពី ${antes} ទៅ ${despues}`,
+    queda: (valor) => `កំណត់ត្រឹម ${valor}`,
+    cambian: "តួលេខប្តូរ",
+    zonas: (lista) => `នៅ${lista}`,
+    limite: "ថ្ងៃផុតកំណត់",
+    agregar: "បន្ថែមក្នុងប្រតិទិន",
+    descargar: "Apple Outlook និងផ្សេងៗ (ឯកសារ .ics)",
+    google: "Google Calendar",
+    calcular: "គណនា",
+    tambien: "ពាក់ព័ន្ធ",
+    fuente: (organismo, fecha) => `ប្រភព: ${organismo} បានផ្ទៀងផ្ទាត់នៅ ${fecha}`,
+    verificado: (fecha) => `បានផ្ទៀងផ្ទាត់នៅ ${fecha}`,
+    suscribir: {
+      titulo: "ប្រតិទិនទាំងមូល តែងតែទាន់សម័យ",
+      texto: "ជាវតែម្តង កាលបរិច្ឆេទថ្មីនឹងបង្ហាញក្នុងប្រតិទិនលើទូរស័ព្ទ ឬកុំព្យូទ័រដោយខ្លួនឯង។",
+      boton: "ជាវប្រតិទិន",
+      copiar: "ចម្លងតំណ",
+      copiado: "បានចម្លងតំណ។",
+    },
+    fuentes: {
+      titulo: "កាលបរិច្ឆេទនីមួយៗមកពីណា",
+      texto: "យើងបង្ហាញតែកាលបរិច្ឆេទដែលកំណត់ក្នុងច្បាប់ ឬក្នុងតួលេខដែលស្ថាប័នផ្លូវការបានប្រកាស។ អ្វីដែលមិនទាន់ប្រកាសមិនបង្ហាញទេ។",
+    },
+    vacio: "មិនមានកាលបរិច្ឆេទក្នុងប្រធានបទនេះក្នុង 12 ខែខាងមុខទេ។",
+    destacado: {
+      ceja: "ប្រតិទិនប្រាក់ខែ",
+      titulo: "កាលបរិច្ឆេទដែលប្រាក់ខែប្តូរក្នុងឆ្នាំនេះ",
+      ir: "មើលប្រតិទិន",
+      proxima: (titulo, fecha) => `បន្ទាប់: ${titulo} ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `ប្រតិទិនប្រាក់ខែ និងពន្ធ${gKm.de(pais)} (CalcularYa)`,
+      descripcion: (pais) => `កាលបរិច្ឆេទអំពីប្រាក់ខែ និងពន្ធ${gKm.en(pais)} ពីប្រភពផ្លូវការ។`,
+      calculadora: "ម៉ាស៊ីនគណនា",
+      fuente: "ប្រភព",
+    },
+    og: { proxima: "កាលបរិច្ឆេទបន្ទាប់", mas: (n) => `និង ${n} កាលបរិច្ឆេទទៀតក្នុងឆ្នាំនេះ` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, km };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

@@ -120,6 +120,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   // El mongol no pone plural después de un número («3 өдөр», «1.5 жил»): las dos formas son iguales.
   mn: { dias: { uno: "өдөр", otros: "өдөр" }, semanas: { uno: "долоо хоног", otros: "долоо хоног" }, horas: { uno: "цаг", otros: "цаг" }, meses: { uno: "сар", otros: "сар" }, anios: { uno: "жил", otros: "жил" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
+  // Jemer: sin plural, la unidad separada por un espacio («3 ថ្ងៃ»; ADR 0002, D38).
+  km: { dias: { uno: "ថ្ងៃ", otros: "ថ្ងៃ" }, semanas: { uno: "សប្តាហ៍", otros: "សប្តាហ៍" }, horas: { uno: "ម៉ោង", otros: "ម៉ោង" }, meses: { uno: "ខែ", otros: "ខែ" }, anios: { uno: "ឆ្នាំ", otros: "ឆ្នាំ" } },
   lv: {
     dias: { uno: "diena", otros: "dienas", cero: "dienu" },
     semanas: { uno: "nedēļa", otros: "nedēļas", cero: "nedēļu" },
