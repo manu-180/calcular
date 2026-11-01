@@ -333,16 +333,17 @@ const RUSISMOS_BG = palabras("зарплата|зарплаты|сумма|су�
 // Sin plural detrás de un número («3 օր»), sin sufijo pegado a una cifra o marcador, sin formas clásicas
 // («իւ», «եւ», «-ութիւն», «ոյ» final) ni del armenio occidental («կը», «մը», «պիտի»).
 const HY = String.raw`\p{sc=Armenian}`;
-const FIN_HY = String.raw`(?![\u0531-\u0587])`;
+// Solo letras: U+0559 a U+055F son signos («՝», «՞», «՛») y no pueden contar como letra.
+const FIN_HY = String.raw`(?![\u0531-\u0556\u0560-\u0588])`;
 const PLURAL_TRAS_NUMERO_HY = new RegExp(String.raw`\d\s+(?:օրեր|ամիսներ|տարիներ|ժամեր|շաբաթներ|րոպեներ|երկրներ|հաշվիչներ|դրամներ|դոլարներ|եվրոներ|տոկոսներ|մարդիկ|անձինք|կիլոմետրեր|լիտրեր|մետրեր|կիլոգրամներ|կալորիաներ|վճարումներ)(?:ի|ում|ով|ից|ը|ն)?${FIN_HY}`, "u");
 const SUFIJO_TRAS_CIFRA_HY = new RegExp(String.raw`(?:\d|%|\}|֏)-?(?:ում|ից|ով|ին|ի|ը|ն|ու|րդ|երորդ)${FIN_HY}`, "u");
-const MEZCLA_HY = new RegExp(String.raw`[\u0531-\u0587][a-zA-Z\u0400-\u04FF]|[a-zA-Z\u0400-\u04FF][\u0531-\u0587]`, "u");
-const PUNTO_HY = new RegExp(String.raw`(?<!(?<![\u0531-\u0587])(?:թ|հազ))(?<=[\u0531-\u0587])\.(?=\s|$|["»)])`, "u");
-const CLASICO_HY = /իւ|եւ|ութիւն|ոյ(?![\u0531-\u0587])/u;
-const OCCIDENTAL_HY = new RegExp(String.raw`(?<![\u0531-\u0587])(?:կը|մը|պիտի)${FIN_HY}`, "u");
+const MEZCLA_HY = new RegExp(String.raw`[\u0531-\u0556\u0560-\u0588][a-zA-Z\u0400-\u04FF]|[a-zA-Z\u0400-\u04FF][\u0531-\u0556\u0560-\u0588]`, "u");
+const PUNTO_HY = new RegExp(String.raw`(?<!(?<![\u0531-\u0556\u0560-\u0588])(?:թ|հազ))(?<=[\u0531-\u0556\u0560-\u0588])\.(?=\s|$|["»)])`, "u");
+const CLASICO_HY = /իւ|եւ|ութիւն|ոյ(?![\u0531-\u0556\u0560-\u0588])/u;
+const OCCIDENTAL_HY = new RegExp(String.raw`(?<![\u0531-\u0556\u0560-\u0588])(?:կը|մը|պիտի)${FIN_HY}`, "u");
 
 function palabrasHy(lista: string, banderas = "iu"): RegExp {
-  return new RegExp(String.raw`(?<![\u0531-\u0587\u0561-\u0587])(?:${lista})(?![\u0531-\u0587])`, banderas);
+  return new RegExp(String.raw`(?<![\u0531-\u0556\u0560-\u0588])(?:${lista})(?![\u0531-\u0556\u0560-\u0588])`, banderas);
 }
 
 function reglasHy(texto: string): string[] {
@@ -352,8 +353,8 @@ function reglasHy(texto: string): string[] {
   if (/[^աեէըիոօւԱԵԷԸԻՈՕ]\u055B/u.test(texto)) p.push("«՛» que no está sobre una vocal");
   if (PUNTO_HY.test(texto)) p.push("punto latino: el punto final armenio es «։»");
   if (/\d\.(?:\s|$)/u.test(texto) && new RegExp(HY, "u").test(texto)) p.push("punto latino detrás de una cifra: el punto final armenio es «։»");
-  if (new RegExp(String.raw`[\u0531-\u0587]:`, "u").test(texto)) p.push("«:» detrás de una palabra armenia (va «՝» o «։»)");
-  if (/[„“”]/.test(texto) || new RegExp(String.raw`"[\u0531-\u0587]|[\u0531-\u0587]"`, "u").test(texto)) p.push("comillas: en armenio van « »");
+  if (new RegExp(String.raw`[\u0531-\u0556\u0560-\u0588]:`, "u").test(texto)) p.push("«:» detrás de una palabra armenia (va «՝» o «։»)");
+  if (/[„“”]/.test(texto) || new RegExp(String.raw`"[\u0531-\u0556\u0560-\u0588]|[\u0531-\u0556\u0560-\u0588]"`, "u").test(texto)) p.push("comillas: en armenio van « »");
   if (CLASICO_HY.test(texto)) p.push("ortografía clásica (va la reformada de Armenia)");
   if (OCCIDENTAL_HY.test(texto)) p.push("armenio occidental («կը», «մը», «պիտի»)");
   if (MEZCLA_HY.test(texto)) p.push("palabra que mezcla letras armenias con latinas o cirílicas");

@@ -528,6 +528,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Вижте колко нето бихте получавали в над ${n} държави`,
     },
   },
+  // Armenio (ADR 0002, D30): registro Դուք; el número sin plural detrás.
+  hy: {
+    base: {
+      boton: "Կիսվել",
+      botonAria: "Կիսվել այս հաշվիչով",
+      menuTitulo: "Կիսվել՝",
+      copiar: "Պատճենել հղումը",
+      copiado: "Հղումը պատճենվեց",
+      compartido: "Ուղարկված է",
+      errorCorto: "Չհաջողվեց պատճենել",
+      errorAyuda: "Չհաջողվեց պատճենել հղումը։ Պատճենեք այն դիտարկիչի հասցեի տողից։",
+      nuevaPestana: "բացվում է նոր ներդիրում",
+      mensaje: (nombre) => `${nombre}։ Անվճար է, հաշվարկը տևում է մեկ րոպե։`,
+      puenteIntro: "Իսկ այլ երկրներո՞ւմ",
+      puenteEnlace: (n) => `Տեսեք, թե որքան զուտ գումար կստանայիք ավելի քան ${n} երկրում`,
+    },
+  },
   // Hebreo (ADR 0002, D22): plural inclusivo donde se le habla a la persona.
   he: {
     base: {

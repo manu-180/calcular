@@ -2165,7 +2165,82 @@ const bg: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Armenio (ADR 0002, D30): impersonal como los demás; el país va con GRAMATICA.hy y detrás del
+// número el sustantivo queda en singular («3 օր»).
+const gHy = GRAMATICA.hy;
+const hy: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Աշխատանքային և հարկային օրացույց",
+    seo: {
+      titulo: (pais, anios) => [
+        `${gHy.de(pais)} աշխատանքային և հարկային օրացույց, ${anios}, կարևոր ամսաթվեր`,
+        `${gHy.de(pais)} աշխատանքային և հարկային օրացույց, ${anios}`,
+        `${gHy.de(pais)} աշխատանքային օրացույց`,
+      ],
+      descripcion: (pais, proximas) => `Ամսաթվեր, որոնք փոխում են աշխատավարձը ${gHy.en(pais)}, պաշտոնական աղբյուրով և իրենց հաշվիչով։ Մոտակաները՝ ${proximas}`,
+      descripcionSin: (pais) => `Ամսաթվեր, որոնք փոխում են աշխատավարձը ${gHy.en(pais)}, պաշտոնական աղբյուրով և իրենց հաշվիչով։ Կարելի է ավելացնել հեռախոսի օրացույցին։`,
+    },
+    ceja: (anios) => `Օրացույց, ${anios}`,
+    h1: (pais) => `${gHy.de(pais)} աշխատանքային և հարկային օրացույց`,
+    acento: "ամսաթվերը, որոնցից կախված է աշխատավարձը",
+    bajada: "Յուրաքանչյուր ամսաթիվ գալիս է պաշտոնական աղբյուրից և տանում է դեպի իրեն առնչվող հաշվիչը։ Էջը թարմացվում է ինքնաշխատ, երբ նոր արժեք է հրապարակվում։",
+    proxima: "Հաջորդ ամսաթիվը",
+    cuenta: {
+      hoy: "Այսօր",
+      manana: "Վաղը",
+      ayer: "Երեկ",
+      en: (n) => `${n} օրից`,
+      hace: (n) => `${n} օր առաջ`,
+      dias: () => "օր",
+    },
+    queViene: "Առջևում",
+    yaRige: "Արդեն գործում է",
+    mesPorMes: "Տարին՝ ամիս առ ամիս",
+    sinFechas: "Հայտարարված փոփոխություններ չկան",
+    filtro: "Զտել ըստ թեմայի",
+    todo: "Բոլորը",
+    tipos: { pago: "Վճարումներ", "salario-minimo": "Նվազագույն աշխատավարձ", impuestos: "Հարկեր", aportes: "Սոցիալական վճարներ և կենսաթոշակ", laboral: "Աշխատանքային կանոններ", indices: "Հղումային արժեքներ" },
+    pasa: (antes, despues) => `Նախկինում՝ ${antes}, այսուհետ՝ ${despues}`,
+    queda: (valor) => `Սահմանված է՝ ${valor}`,
+    cambian: "Գումարները փոխվում են",
+    zonas: (lista) => `Տարածաշրջաններ՝ ${lista}`,
+    limite: "Վերջնաժամկետ",
+    agregar: "Ավելացնել իմ օրացույցին",
+    descargar: "Apple, Outlook և այլն (.ics ֆայլ)",
+    google: "Google Օրացույց",
+    calcular: "Հաշվարկել",
+    tambien: "Նաև հաշվիչներում",
+    fuente: (organismo, fecha) => `Աղբյուր՝ ${organismo}։ Ստուգվել է՝ ${fecha}`,
+    verificado: (fecha) => `Ստուգվել է՝ ${fecha}`,
+    suscribir: {
+      titulo: "Ամբողջ օրացույցը՝ միշտ թարմ",
+      texto: "Բաժանորդագրությամբ նոր ամսաթվերն ինքնաշխատ հայտնվում են հեռախոսի կամ համակարգչի օրացույցում։",
+      boton: "Բաժանորդագրվել օրացույցին",
+      copiar: "Պատճենել հղումը",
+      copiado: "Հղումը պատճենվեց",
+    },
+    fuentes: {
+      titulo: "Որտեղի՞ց է գալիս յուրաքանչյուր ամսաթիվ",
+      texto: "Այստեղ ներառվում են միայն այն ամսաթվերը, որոնք արդեն սահմանված են իրավական ակտով կամ պաշտոնական մարմնի հրապարակած արժեքով։ Այն, ինչ դեռ հրապարակված չէ, այստեղ չկա։",
+    },
+    vacio: "Առաջիկա տասներկու ամսում այս թեմայով ամսաթվեր չկան։",
+    destacado: {
+      ceja: "Վճարումների օրացույց",
+      titulo: "Ամսաթվերը, որոնցից այս տարի կախված է աշխատավարձը",
+      ir: "Տեսնել օրացույցը",
+      proxima: (titulo, fecha) => `Հաջորդը՝ ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `${gHy.de(pais)} աշխատանքային և հարկային օրացույց (CalcularYa)`,
+      descripcion: (pais) => `Վճարումների և հարկերի ամսաթվեր ${gHy.en(pais)}, պաշտոնական աղբյուրներից։`,
+      calculadora: "Հաշվիչ",
+      fuente: "Աղբյուր",
+    },
+    og: { proxima: "Հաջորդ ամսաթիվը", mas: (n) => `Եվս ${n} ամսաթիվ այս տարի` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, hy };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

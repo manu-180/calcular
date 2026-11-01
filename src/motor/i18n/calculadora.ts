@@ -315,6 +315,17 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Източник",
     },
   },
+  // Armenio (ADR 0002, D30): el botón es «Հաշվարկել».
+  hy: {
+    base: {
+      datos: "Ձեր տվյալները",
+      resultado: "Արդյունք",
+      vacio: "Մուտքագրեք տվյալները և սեղմեք «Հաշվարկել», որպեսզի տեսնեք արդյունքը։",
+      sinResultado: "Այս արդյունքը առայժմ չենք ցուցադրում։",
+      avisos: { info: "Լավ է իմանալ", cautela: "Ուշադրություն դարձրեք", bloquea: "Ինչո՞ւ չենք ցուցադրում արդյունքը" },
+      fuenteDelAviso: "Աղբյուր",
+    },
+  },
   he: {
     base: {
       datos: "הנתונים שלכם",
