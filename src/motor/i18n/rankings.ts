@@ -4,6 +4,7 @@ import type { Idioma, Trato } from "../tipos";
 import { pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { formaUk, pluralUk } from "./plural";
+import { pluralHr } from "./plural";
 import { formaRu, pluralRu } from "./plural";
 import { formaCs, pluralCs } from "./plural";
 import { GRAMATICA } from "./gramatica";
@@ -3503,7 +3504,128 @@ const he: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he };
+// ───────────────────────────── hr ─────────────────────────────
+
+// Croata (ADR 0002, D27): impersonal, como el resto de los rankings. La posición va con el ordinal en cifra
+// y punto («Hrvatska: 27. mjesto od 41»), que no concuerda con nada.
+const zemljeHr = (n: number | string) => pluralHr(n, "zemlja", "zemlje", "zemalja");
+// Tras «u»: «u 21 zemlji», «u 22 zemlje», «u 25 zemalja».
+const zemljamaUHr = (n: number | string) => pluralHr(n, "zemlji", "zemlje", "zemalja");
+
+const hr: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Ljestvice zemalja",
+    seo: {
+      titulo: ["Ljestvice zemalja po plaći i porezima", "Ljestvice zemalja"],
+      descripcion: (n) => `Gdje ista plaća vrijedi najviše, Dan porezne slobode i koliko ostaje od povišice u ${zemljamaUHr(n)}. Službeni podaci, ažurirano svakog dana.`,
+    },
+    ceja: "Otvoreni podaci",
+    h1: "Plaće i porezi, zemlja po zemlja",
+    bajada: (n) => `${zemljeHr(n)} s istom kupovnom moći, svaka sa svojim službenim kalkulatorom. Ljestvice se ažuriraju same svakog dana.`,
+    actualizado: (f) => `Ažurirano ${f}`,
+    ver: "Prikaži ljestvicu",
+    niveles: { titulo: "Polazna plaća", nombres: { bajo: "Niska plaća", medio: "Srednja plaća", alto: "Visoka plaća" }, anual: (m) => `${m} godišnje` },
+    tramos: { titulo: "Iznos povišice", nombre: (a, b) => `S ${a} na ${b}` },
+    referencia: {
+      nivel: (m) => `bruto plaća od ${m} međunarodnih dolara godišnje`,
+      tramo: (a, b) => `povišica bruto plaće s ${a} na ${b} međunarodnih dolara godišnje`,
+    },
+    posicion: (pais, p, total) => `${pais}: ${p}. mjesto od ${total}`,
+    de: (t) => `od ${t}`,
+    empate: (o) => (Number(o) === 1 ? "isto kao još jedna zemlja" : `isto kao još ${zemljeHr(o)}`),
+    fuera: (pais) => `${pais} još nije na ovim ljestvicama: za usporedbu je potreban kalkulator neto plaće, koji još nije gotov.`,
+    lider: "Prvo mjesto na ljestvici",
+    global: (n) => `${zemljeHr(n)} od prve do posljednje`,
+    valores: {
+      porMes: (m) => `${m} mjesečno`,
+      ningunDia: "Nijedan dan",
+      deCada: (n) => `${n} od 100`,
+      carga: (pct) => `${pct} na porez na dohodak i doprinose`,
+      cargaAumento: (pct) => `${pct} povišice odlazi na poreze i doprinose`,
+    },
+    cambio: {
+      titulo: (mes) => `Promjena u odnosu na mjesec: ${mes}`,
+      sube: (n) => `Više za ${pluralHr(n, "mjesto", "mjesta", "mjesta")}`,
+      baja: (n) => `Niže za ${pluralHr(n, "mjesto", "mjesta", "mjesta")}`,
+      igual: "Bez promjene",
+      nuevo: "Novo na ljestvici",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Mjesto",
+      pais: "Zemlja",
+      edicion: "Ovo izdanje",
+      unidad: "U međunarodnim dolarima",
+    },
+    kit: {
+      titulo: "Za medije",
+      bajada: "Rečenica, grafikon i poveznica na ovu ljestvicu, spremni za objavu.",
+      compartir: "Podijeli",
+      descargar: "Preuzmi grafikon",
+      copiar: "Kopiraj citat",
+      copiado: "Citat je kopiran",
+      enlace: "Poveznica je kopirana",
+      compartido: "Poslano",
+      error: "Kopiranje nije uspjelo. Tekst iznad može se kopirati ručno.",
+      cita: (frase, ranking, ref, fecha) => `${frase} na ljestvici „${ranking}” (${ref}). Izvor: CalcularYa, stanje podataka: ${fecha}`,
+      texto: (frase, ranking) => `${frase} na ljestvici „${ranking}”.`,
+      alt: (ranking) => `Grafikon ljestvice „${ranking}”`,
+    },
+    metodo: {
+      titulo: "Kako nastaje ljestvica",
+      bajada: "Svaka zemlja prolazi kroz svoj službeni kalkulator neto plaće s današnjim pravilima. Zemlje se zatim uspoređuju uz istu kupovnu moć.",
+      niveles: (b, m, a) => `Polazne plaće: ${b}, ${m} i ${a} međunarodnih dolara bruto godišnje.`,
+      empates: "Dvije zemlje s istom vrijednošću u tablici dijele mjesto, a sljedeće se preskače (1, 2, 2, 4).",
+      historial: "Promjena mjesta mjeri se u odnosu na snimku ljestvice koja se čuva svakog mjeseca. Bez snimke za prošli mjesec promjena se ne prikazuje.",
+      actualizacion: "Tablica se preračunava svakog dana s važećim podacima svake zemlje. Nova zemlja dodaje se čim proradi njezin kalkulator.",
+      ver: "Cijela metodologija",
+    },
+    datos: {
+      titulo: "Otvoreni podaci",
+      bajada: "Brojevi na kojima se temelje ove ljestvice, zemlja po zemlja, u formatima JSON i CSV. Ažuriraju se svakog dana.",
+      json: "Podaci u JSON-u",
+      csv: "Podaci u CSV-u",
+      licencia: "Licencija CC BY 4.0: podaci se mogu slobodno koristiti, dijeliti i objavljivati uz navođenje CalcularYa i poveznicu na ovu stranicu.",
+      atribucion: "Preporučeni citat",
+    },
+    mundo: { titulo: "S konkretnom plaćom", texto: (n) => `Za izračun s vlastitom plaćom i datumom svake zemlje služi stranica „${n}”.`, ir: "Izračunaj" },
+    otros: "Druge ljestvice",
+    rankings: {
+      rinde: {
+        titulo: "Gdje ista plaća vrijedi najviše",
+        corto: "Gdje plaća vrijedi najviše",
+        seo: ["Gdje ista plaća vrijedi najviše: ljestvica zemalja", "Gdje ista plaća vrijedi najviše"],
+        descripcion: (n) => `Ista plaća uz istu kupovnu moć u ${zemljamaUHr(n)}: koliko neto ostaje po poreznim pravilima svake od njih. Ažurirano svakog dana.`,
+        bajada: "Ista bruto plaća uz istu kupovnu moć prolazi kroz pravila svake zemlje. Na vrhu su one u kojima neto ostaje najviše.",
+        metrica: "Neto mjesečno",
+        carga: "Porezi i doprinosi",
+        como: "Neto mjesečna plaća je prosjek za 12 mjeseci, u međunarodnim dolarima.",
+      },
+      libertad: {
+        titulo: "Dan porezne slobode po zemljama",
+        corto: "Dan porezne slobode",
+        seo: ["Dan porezne slobode po zemljama: ljestvica", "Dan porezne slobode po zemljama"],
+        descripcion: (n) => `Dan u godini kada su plaćeni porez na dohodak i doprinosi, s istom plaćom u ${zemljamaUHr(n)}. Ažurirano svakog dana.`,
+        bajada: "Dan u godini kada su plaćeni porez na dohodak i doprinosi, s istom plaćom u svakoj zemlji. Na vrhu su one u kojima stiže najranije.",
+        metrica: "Rad za državu do",
+        carga: "Porezi i doprinosi",
+        como: "Datum raspoređuje poreze na godinu od 1. siječnja: uz porezno opterećenje od 30 % za državu se radi 30 % godine.",
+      },
+      aumento: {
+        titulo: "Koliko ostaje od povišice",
+        corto: "Što ostaje od povišice",
+        seo: ["Koliko ostaje od povišice: ljestvica zemalja", "Koliko ostaje od povišice"],
+        descripcion: (n) => `Od 100 dodanih na bruto plaću, koliko ostaje nakon poreza na dohodak i doprinosa u ${zemljamaUHr(n)}. Ažurirano svakog dana.`,
+        bajada: "Od 100 dodanih na bruto plaću, koliko zaista stiže u novčanik nakon poreza na dohodak i doprinosa. Na vrhu su one u kojima ostaje najviše.",
+        metrica: "Ostaje od 100",
+        carga: "Granična stopa",
+        como: "To je granična stopa između dviju plaća: dio povišice koji odlazi na poreze i doprinose.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, hr };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

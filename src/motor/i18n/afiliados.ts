@@ -375,6 +375,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "נפתח בכרטיסייה חדשה",
     },
   },
+  // Croata (ADR 0002, D27): «vi» en minúscula.
+  hr: {
+    base: {
+      titulo: "Selite se u inozemstvo ili plaćate iz druge zemlje?",
+      etiqueta: "Partnerske poveznice",
+      socios: {
+        wise: "Račun u više valuta za primanje i slanje novca između zemalja po srednjem tržišnom tečaju, uz naknadu koju vidite unaprijed.",
+        deel: "Ugovori i isplate za one koji iz jedne zemlje rade za tvrtku iz druge.",
+      },
+      nota: "Ako preko ovih poveznica otvorite račun, stranica može dobiti proviziju. Vi zbog toga ne plaćate ništa više.",
+      nuevaPestana: "otvara se u novoj kartici",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

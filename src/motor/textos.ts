@@ -792,6 +792,32 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "נקודות", coma: "פסיקים" },
     },
   },
+  // Croata (ADR 0002, D27): «vi» en minúscula, como los bancos y ePorezna. El botón va en la forma corta
+  // de las interfaces croatas («Izračunaj»); las oraciones, en imperativo de segunda del plural
+  // («unesite», «odaberite»).
+  hr: {
+    base: {
+      calcular: "Izračunaj",
+      resultado: "Rezultat",
+      si: "Da",
+      no: "Ne",
+      sinResultado: "Ovaj rezultat zasad ne prikazujemo.",
+      errores: {
+        requerido: "Ispunite ovo polje.",
+        "numero-invalido": "Unesite broj, na primjer {ejemplo}.",
+        "entero-invalido": "Unesite cijeli broj, bez decimala.",
+        "menor-que-min": "Najmanja dopuštena vrijednost je {min}.",
+        "mayor-que-max": "Najveća dopuštena vrijednost je {max}.",
+        "fecha-invalida": "Odaberite ispravan datum.",
+        "hora-invalida": "Odaberite ispravno vrijeme.",
+        "opcion-invalida": "Odaberite jednu od ponuđenih opcija.",
+        "region-invalida": "Odaberite regiju.",
+        "calculo-fallido": "S ovim podacima izračun nije uspio. Provjerite vrijednosti i pokušajte ponovno.",
+      },
+      milesAmbiguos: "Jeste li mislili {sugerido}? Unesite broj bez {signos}.",
+      separadores: { punto: "točaka", coma: "zareza" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

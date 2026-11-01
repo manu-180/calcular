@@ -4,6 +4,7 @@ import { formaAr, pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { GRAMATICA, mayusculaHu } from "./gramatica";
 import { formaCs, formaEl, formaRu, formaUk, pluralCs, pluralEl, pluralRo, pluralRu, pluralUk } from "./plural";
+import { formaHr, pluralHr } from "./plural";
 import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
@@ -2014,7 +2015,82 @@ const he: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he };
+// Croata (ADR 0002, D27): impersonal como los demás; el país se declina con GRAMATICA.hr («u Hrvatskoj»)
+// y los días con formaHr/pluralHr (one/few/other: «za 3 dana», «prije 21 dan»).
+const gHr = GRAMATICA.hr;
+const hr: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Kalendar plaća i poreza",
+    seo: {
+      titulo: (pais, anios) => [
+        `Kalendar plaća i poreza ${anios} ${gHr.en(pais)}: važni datumi`,
+        `Kalendar plaća i poreza ${anios} ${gHr.en(pais)}`,
+        `Kalendar plaća ${gHr.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Datumi koji mijenjaju plaću ${gHr.en(pais)}, iz službenih izvora: ${proximas}. Uz svaki datum ide kalkulator.`,
+      descripcionSin: (pais) => `Datumi koji mijenjaju plaću ${gHr.en(pais)}, iz službenih izvora, a uz svaki i kalkulator. Dodajte ih u kalendar na telefonu.`,
+    },
+    ceja: (anios) => `Kalendar ${anios}`,
+    h1: (pais) => `Kalendar plaća i poreza ${gHr.en(pais)}`,
+    acento: "datumi o kojima ovisi plaća",
+    bajada: "Svaki datum dolazi iz službenog izvora i vodi do kalkulatora na koji utječe. Stranica se ažurira sama čim se objavi nova vrijednost.",
+    proxima: "Sljedeći datum",
+    cuenta: {
+      hoy: "Danas",
+      manana: "Sutra",
+      ayer: "Jučer",
+      en: (n) => `Za ${pluralHr(n, "dan", "dana", "dana")}`,
+      hace: (n) => `Prije ${pluralHr(n, "dan", "dana", "dana")}`,
+      dias: (n) => formaHr(n, "dan", "dana", "dana"),
+    },
+    queViene: "Uskoro",
+    yaRige: "Već vrijedi",
+    mesPorMes: "Godina po mjesecima",
+    sinFechas: "Nisu najavljene promjene",
+    filtro: "Filtriraj po temi",
+    todo: "Sve",
+    tipos: { pago: "Isplate", "salario-minimo": "Minimalna plaća", impuestos: "Porezi", aportes: "Doprinosi i mirovine", laboral: "Pravila rada", indices: "Referentne vrijednosti" },
+    pasa: (antes, despues) => `Mijenja se s ${antes} na ${despues}`,
+    queda: (valor) => `Vrijedi: ${valor}`,
+    cambian: "Iznosi se mijenjaju",
+    zonas: (lista) => `Regije: ${lista}`,
+    limite: "Krajnji rok",
+    agregar: "Dodaj u moj kalendar",
+    descargar: "Apple, Outlook i drugi (datoteka .ics)",
+    google: "Google kalendar",
+    calcular: "Izračunaj",
+    tambien: "Također u kalkulatorima",
+    fuente: (organismo, fecha) => `Izvor: ${organismo}. Provjereno ${fecha}`,
+    verificado: (fecha) => `Provjereno ${fecha}`,
+    suscribir: {
+      titulo: "Cijeli kalendar, uvijek ažuran",
+      texto: "Pretplatite se jednom i novi datumi sami će se pojavljivati u kalendaru na telefonu ili računalu.",
+      boton: "Pretplati se na kalendar",
+      copiar: "Kopiraj poveznicu",
+      copiado: "Poveznica je kopirana",
+    },
+    fuentes: {
+      titulo: "Odakle dolazi svaki datum",
+      texto: "Ovdje su samo datumi koje je već utvrdio propis ili vrijednost koju je objavilo službeno tijelo. Ono što još nije objavljeno, ovdje nije.",
+    },
+    vacio: "U sljedećih dvanaest mjeseci za ovu temu nema datuma.",
+    destacado: {
+      ceja: "Kalendar plaća",
+      titulo: "Datumi o kojima ove godine ovisi plaća",
+      ir: "Prikaži kalendar",
+      proxima: (titulo, fecha) => `Sljedeće: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Kalendar plaća i poreza ${gHr.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Rokovi za isplate i poreze ${gHr.en(pais)}, iz službenih izvora.`,
+      calculadora: "Kalkulator",
+      fuente: "Izvor",
+    },
+    og: { proxima: "Sljedeći datum", mas: (n) => `I još ${pluralHr(n, "rok", "roka", "rokova")} ove godine` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, hr };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

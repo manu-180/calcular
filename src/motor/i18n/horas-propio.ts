@@ -615,6 +615,27 @@ export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
     texto: "{en}, {producto} עולה לי {horas} של עבודה. ומה במדינות אחרות?",
     og: { antes: "{en}, במשכורת שלי,", producto: "{producto} עולה לי", de: "של עבודה", deMes: "של עבודה לחודש", otros: "אותה רמת שכר ב-", cta: "כמה שעות עבודה זה עולה?" },
   }),
+  // Croata (ADR 0002, D27): impersonal; la tarjeta, en primera persona.
+  hr: base({
+    titulo: "Isti izračun, sa stvarnom plaćom",
+    bajada: "S bruto plaćom za mjesec dana sati se računaju prema toj plaći, a ne prema minimalnoj. Iznos ostaje u ovom pregledniku: ne ide u poveznicu ni na sliku.",
+    campo: "Bruto plaća mjesečno",
+    ayuda: "U valuti {moneda}, prije odbitaka.",
+    traido: "Preuzeto iz kalkulatora plaće.",
+    invalido: "Iznos mora biti veći od nule.",
+    vacio: "Sati se prikazuju kada se unese plaća.",
+    antes: "{en}, s ovom plaćom, {producto} košta",
+    despues: "rada",
+    despuesMes: "rada, svakog mjeseca",
+    minimo: "Uz minimalnu plaću: {horas}.",
+    veces: "{x} × minimalna plaća",
+    rankingTitulo: "Ista razina plaće u svakoj zemlji",
+    rankingBajada: "{x} × minimalna plaća svake zemlje, preračunato u sate rada.",
+    tarjetaTitulo: "Kartica s mojim satima",
+    tarjetaBajada: "Prikazuje samo sate i zemlje. Plaću nikad.",
+    texto: "{en} me {producto} košta {horas} rada. A u drugim zemljama?",
+    og: { antes: "{en}, s mojom plaćom,", producto: "{producto} me košta", de: "rada", deMes: "rada mjesečno", otros: "Ista razina plaće:", cta: "Koliko sati rada to košta?" },
+  }),
 };
 
 export function textosHorasPropio(idioma: Idioma, trato: Trato, locale?: string): TextosHorasPropio {

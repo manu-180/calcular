@@ -32,6 +32,7 @@ export const SLUG_HORAS: Record<Idioma, string> = {
   el: "poses-ores-douleias",
   hu: "hany-ora-munka",
   he: "kama-shaot-avoda",
+  hr: "koliko-radnih-sati",
 };
 
 export function rutaHoras(mercado: string, idioma: Idioma, producto?: string, iso?: string): string {

@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosHr: TextosUi<UiCalorias> = {
+  slug: "kalkulator-kalorija",
+  ui: () => ({
+    sexo: "Spol",
+    mujer: "Žena",
+    hombre: "Muškarac",
+    edad: "Dob (godine)",
+    peso: (u) => `Tjelesna težina (${u})`,
+    altura: (u) => `Visina (${u})`,
+    pies: "Visina: stope (ft)",
+    pulgadas: "Visina: inči (in)",
+    actividad: "Razina tjelesne aktivnosti",
+    sedentaria: "Minimalna (sjedilački način života)",
+    ligera: "Lagana (1 do 3 dana tjedno)",
+    moderada: "Umjerena (3 do 5 dana tjedno)",
+    alta: "Visoka (6 do 7 dana tjedno)",
+    muyAlta: "Vrlo visoka (naporan trening ili fizički posao)",
+    objetivo: "Cilj",
+    mantener: "Održavanje tjelesne težine",
+    bajar: "Postupno mršavljenje",
+    subir: "Postupno dobivanje na težini",
+    basal: "Bazalni metabolizam (kcal dnevno)",
+    basalAyuda: "Energija koju tijelo troši u potpunom mirovanju.",
+    mantenimiento: "Kalorije za održavanje tjelesne težine (kcal dnevno)",
+    calObjetivo: "Kalorije za vaš cilj (kcal dnevno)",
+    calObjetivoAyuda: "Umjerena promjena: 500 kcal dnevno manje za mršavljenje i 300 kcal više za dobivanje na težini.",
+    errorEdad: "Formula vrijedi za osobe od 15 do 100 godina.",
+    errorPeso: "Tjelesna težina mora biti veća od nule.",
+    errorAltura: "Visina mora biti veća od nule.",
+    notaMinimo: (kcal) => `Za mršavljenje ne spuštamo dnevni unos ispod ${kcal} kcal. Ako želite jesti manje, posavjetujte se sa stručnjakom.`,
+    aviso: "Ovo je procjena prema formuli Mifflin-St Jeor. Svako je tijelo drukčije: izračun ne zamjenjuje savjet liječnika ni nutricionista.",
+  }),
+};

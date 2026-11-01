@@ -314,6 +314,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "מקור",
     },
   },
+  hr: {
+    base: {
+      datos: "Vaši podaci",
+      resultado: "Rezultat",
+      vacio: "Unesite podatke i kliknite na „Izračunaj”. Rezultat će se pojaviti ovdje.",
+      sinResultado: "Ovaj rezultat zasad ne prikazujemo.",
+      avisos: { info: "Dobro je znati", cautela: "Pažnja", bloquea: "Zašto ne prikazujemo rezultat" },
+      fuenteDelAviso: "Izvor",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

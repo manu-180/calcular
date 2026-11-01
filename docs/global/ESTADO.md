@@ -21,6 +21,16 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 01/11/2026 · Motor croata (`claude/mundo-motor-hr`)
+
+`hr` entra en `IDIOMAS` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en el
+mundo» (`placa-u-svijetu`), rankings (`ljestvica-zemalja`), horas de trabajo (`koliko-radnih-sati`), calendario
+(`kalendar-placa`), «Sueldos reales» (`stvarne-place`), venta completa (`IDIOMAS_VENTA`) y las 41 universales
+con slug ASCII propio. Ijekavski, «vi» en minúscula con 2.ª del plural («unesite»), mercados con `trato:
+"usted"`, formato `1.234,50 €`. Plurales one/few/other (`pluralHr`) y declinación del país (`GRAMATICA.hr`).
+Decisiones en ADR 0002, D27. Edición de prueba `zz-hr` (interna, `hr-001`).
+- Falta para publicar Croacia: el país en sí, con datos verificados, y revisión por hablante nativo.
+
 ## 29/10/2026 · Tanda 2 de países (grupo A): ag, bz, ne, bn, np, sc, ws (`claude/paises-tanda-2`)
 
 Publicados: Antigua y Barbuda (ag), Belice (bz), Níger (ne), Brunéi (bn), Nepal (np), Seychelles (sc) y
