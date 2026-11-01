@@ -4,6 +4,7 @@ import { PRODUCTO_INICIAL, productoDe } from "./productos";
 // Slug del índice por idioma: el mismo en todas las ediciones de un idioma, así el clúster hreflang se
 // arma solo para cualquier país nuevo. Una carpeta por slug en src/app/(intl)/intl/[mercado]/.
 export const SLUG_HORAS: Record<Idioma, string> = {
+  sq: "sa-ore-pune",
   es: "cuantas-horas-de-trabajo",
   pt: "quantas-horas-de-trabalho",
   en: "hours-of-work",
@@ -16,6 +17,11 @@ export const SLUG_HORAS: Record<Idioma, string> = {
   zh: "gongzuo-shijian",
   bg: "kolko-chasa-rabota",
   mn: "kheden-tsag-ajillakh",
+  hy: "kani-zham-ashkhatank",
+  sl: "koliko-ur-dela",
+  et: "tootunnid",
+  is: "hversu-margar-vinnustundir",
+  lv: "cik-stundas-jastrada",
 
   pl: "ile-godzin-pracy",
   sv: "arbetstimmar",

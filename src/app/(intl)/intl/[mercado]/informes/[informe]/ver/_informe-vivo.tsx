@@ -36,6 +36,7 @@ export type TextosInforme = {
     etiquetaEnMinuscula: boolean;
     anchoCompleto: boolean;
     puntoFinal: string;
+    dosPuntos: string;
   } | null;
 };
 
@@ -286,12 +287,12 @@ export function InformeVivo({
           <div className="cy-informe-nota">
             <p>
               {textos.nota.lugar}
-              {textos.nota.anchoCompleto ? "：" : ": "}
+              {textos.nota.dosPuntos}
               <span className="cy-informe-raya" />
             </p>
             <p>
               {textos.nota.destinatario}
-              {textos.nota.anchoCompleto ? "：" : ": "}
+              {textos.nota.dosPuntos}
               <span className="cy-informe-raya" />
             </p>
             {textos.nota.anchoCompleto ? (

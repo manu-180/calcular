@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosIs: TextosUi<UiAlquilarOComprar> = {
+  slug: "leigja-eda-kaupa",
+  ui: () => ({
+    precio: "Verð eignarinnar",
+    entrada: "Útborgun (% af verði)",
+    gastosCompra: "Kostnaður við kaupin (% af verði)",
+    gastosCompraAyuda: "Þinglýsing, lántökugjald, önnur gjöld og verðmat.",
+    tasa: "Vextir á húsnæðisláni (% á ári)",
+    aniosHipoteca: "Lánstími í árum",
+    alquiler: "Mánaðarleiga fyrir sambærilega eign",
+    aumentoAlquiler: "Hækkun leigu á ári (%)",
+    gastosPropietario: "Kostnaður við að eiga á ári (% af verðmæti)",
+    gastosPropietarioAyuda: "Viðhald, fasteignagjöld og heimilistrygging. Oft á bilinu 1% til 2%.",
+    revalorizacion: "Verðhækkun eignarinnar á ári (%)",
+    rendimiento: "Ávöxtun af öðrum sparnaði (% á ári)",
+    rendimientoAyuda: "Það sem þú myndir fá með því að fjárfesta útborgunina í staðinn fyrir að kaupa.",
+    horizonte: "Fjöldi ára til samanburðar",
+    veredicto: "Niðurstaða",
+    patrimonioComprar: "Hrein eign í lokin ef þú kaupir",
+    patrimonioAlquilar: "Hrein eign í lokin ef þú leigir",
+    diferencia: "Munur",
+    anioDesde: "Árið sem kaupin fara að borga sig",
+    pagadoAlquilando: "Leiga samtals",
+    pagadoComprando: "Lánagreiðslur og kostnaður við að eiga samtals",
+    tabla: "Samanburður ár fyrir ár",
+    colAnio: "Ár",
+    colComprar: "Kaupa",
+    colAlquilar: "Leigja",
+    colDiferencia: "Munur",
+    errorPrecio: "Sláðu inn verð eignarinnar.",
+    errorAlquiler: "Sláðu inn hvað kostar að leigja sambærilega eign.",
+    convieneComprar: (anios, diferencia) => `Það borgar sig betur að kaupa. Eftir ${anios} ár áttu ${diferencia} meira.`,
+    convieneAlquilar: (anios, diferencia) => `Það borgar sig betur að leigja. Eftir ${anios} ár áttu ${diferencia} meira.`,
+    empate: (anios) => `Eftir ${anios} ár kemur það út á eitt.`,
+    observacionDesde: (anio) => `Frá og með ári ${anio} standa kaupin betur en leigan og það breytist ekki eftir það.`,
+    observacionMetodo:
+      "Reiknivélin ber saman hvað þú átt í hvoru tilviki. Ef þú leigir er útborgunin áfram í fjárfestingu og líka það sem þú sparar í hverjum mánuði. Kostnaður við sölu er ekki dreginn frá.",
+  }),
+};

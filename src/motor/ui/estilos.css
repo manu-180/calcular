@@ -136,6 +136,11 @@
   .cy-cuerpo:lang(ka) {
     font-family: system-ui, -apple-system, "Segoe UI", Sylfaen, "Noto Sans Georgian", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
   }
+  /* Geist no trae armenio: la fuente del sistema entera, como el griego. Sylfaen y Segoe UI en Windows;
+     macOS, iOS y Android resuelven desde system-ui; Noto Sans Armenian de respaldo (ADR 0002, D30). */
+  .cy-cuerpo:lang(hy) {
+    font-family: system-ui, -apple-system, "Segoe UI", Sylfaen, "Noto Sans Armenian", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  }
   .cy-cuerpo:lang(el) {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
   }
@@ -2354,7 +2359,7 @@
 
 /* Fuera de @layer base a propósito: tiene que ganarle al tracking negativo de los títulos, que es
    de Geist y en CJK y tailandés y en hebreo amontona los caracteres (y los tonos apilados). */
-.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn), :lang(th), :lang(he), :lang(ka)) :is(h1, h2, h3, h4) {
+.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn), :lang(th), :lang(he), :lang(ka), :lang(hy)) :is(h1, h2, h3, h4) {
   letter-spacing: 0;
 }
 
@@ -2362,6 +2367,13 @@
    interfaz. Fuera de @layer e !important porque las etiquetas lo fijan con clases en varias hojas
    (ADR 0002, D26). */
 :lang(ka) {
+  text-transform: none !important;
+}
+
+/* Armenio reformado: uppercase sube «և» a «ԵՒ», la forma clásica (la reformada es «ԵՎ»), y CSS no se puede
+   corregir. Sin mayúsculas sostenidas. Fuera de @layer e !important porque las etiquetas lo fijan con
+   clases en varias hojas (ADR 0002, D30). */
+:lang(hy) {
   text-transform: none !important;
 }
 

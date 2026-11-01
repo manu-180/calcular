@@ -1,0 +1,758 @@
+{
+  "mercado": "al",
+  "datos": [
+    {
+      "id": "al.paga-minimale",
+      "nombre": "Paga bazë minimale mujore",
+      "tipo": "numero",
+      "unidad": "ALL",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "Inspektorati Shtetëror i Punës",
+            "titulo": "VKM nr. 776, datë 19.12.2025, “Për përcaktimin e pagës minimale në shkallë vendi”",
+            "url": "https://inspektoriatipunes.gov.al/wp-content/uploads/2026/01/vendim-2025-12-19-776.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.paga-minimale-orare",
+      "nombre": "Paga bazë minimale orare",
+      "tipo": "numero",
+      "unidad": "ALL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 287.3,
+          "fuente": {
+            "organismo": "Inspektorati Shtetëror i Punës",
+            "titulo": "VKM nr. 776, datë 19.12.2025, “Për përcaktimin e pagës minimale në shkallë vendi”",
+            "url": "https://inspektoriatipunes.gov.al/wp-content/uploads/2026/01/vendim-2025-12-19-776.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.ore-mujore",
+      "nombre": "Orë pune në muaj për pagën minimale",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 174,
+          "fuente": {
+            "organismo": "Inspektorati Shtetëror i Punës",
+            "titulo": "VKM nr. 776, datë 19.12.2025, “Për përcaktimin e pagës minimale në shkallë vendi”",
+            "url": "https://inspektoriatipunes.gov.al/wp-content/uploads/2026/01/vendim-2025-12-19-776.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.paga-maksimale-kontribute",
+      "nombre": "Paga maksimale për kontributet shoqërore",
+      "tipo": "numero",
+      "unidad": "ALL",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 186416,
+          "motivo": "La noticia de Tatime responde con un bloqueo a nuestras lecturas: la cifra salió de un extracto del buscador, que no es lectura de la fuente. Además PwC publica 220 520 lekë. Falta abrir la noticia o el VKM. Mientras tanto, las calculadoras la piden como campo opcional."
+        }
+      ]
+    },
+    {
+      "id": "al.paga-mesatare",
+      "nombre": "Paga mesatare mujore bruto (tremujori I 2026)",
+      "tipo": "numero",
+      "unidad": "ALL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 90119,
+          "fuente": {
+            "organismo": "INSTAT",
+            "titulo": "Statistikat e pagave, tremujori I 2026",
+            "url": "https://www.instat.gov.al/media/nxshgser/statistikat-e-pagave-t1-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.kontribute",
+      "nombre": "Kontributet e të punësuarit",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "shoqerore-punonjes": "Shoqërore, punonjësi",
+        "shoqerore-punedhenes": "Shoqërore, punëdhënësi",
+        "shendetesore-punonjes": "Shëndetësore, punonjësi",
+        "shendetesore-punedhenes": "Shëndetësore, punëdhënësi"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": {
+            "shoqerore-punonjes": 9.5,
+            "shoqerore-punedhenes": 15,
+            "shendetesore-punonjes": 1.7,
+            "shendetesore-punedhenes": 1.7
+          },
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "VKM nr. 77, datë 28.1.2015, për kontributet e detyrueshme, e ndryshuar",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/VKM-Nr.-77-date-28.1.2015-_Per-kontributet-e-detyrueshme-dhe-perfitimet-nga-sistemi-i-sigurimeve-shoqerore-dhe-sigurimi-i-kujdesit-shendetesor_-ndryshuar_.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.kontribute-vetepunesuar",
+      "nombre": "Kontributet e të vetëpunësuarit",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "shoqerore": "Shoqërore",
+        "shendetesore": "Shëndetësore"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "shoqerore": 23,
+            "shendetesore": 3.4
+          },
+          "fuente": {
+            "organismo": "ISSH",
+            "titulo": "Sigurimi i detyruar",
+            "url": "https://www.issh.gov.al/sigurimi-i-detyruar/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.zbritje-personale",
+      "nombre": "Zbritja nga baza tatimore në muaj (neni 22)",
+      "tipo": "mapa",
+      "unidad": "ALL",
+      "etiquetas": {
+        "kufi-1": "Paga deri në",
+        "kufi-2": "Paga deri në (shkalla e dytë)",
+        "zbritje-1": "Zbritja e parë",
+        "zbritje-2": "Zbritja e dytë",
+        "zbritje-3": "Zbritja e tretë"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": {
+            "kufi-1": 50000,
+            "kufi-2": 60000,
+            "zbritje-1": 50000,
+            "zbritje-2": 35000,
+            "zbritje-3": 30000
+          },
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.tatim-punesim",
+      "nombre": "Tatimi mbi të ardhurat nga punësimi, në vit (neni 24)",
+      "tipo": "escala",
+      "unidad": "ALL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 2040000,
+              "tasa": 13
+            },
+            {
+              "desde": 2040000,
+              "hasta": null,
+              "tasa": 23
+            }
+          ],
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.kompensim-femije",
+      "nombre": "Kompensimi vjetor për fëmijë në ngarkim",
+      "tipo": "numero",
+      "unidad": "ALL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 48000,
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.zbritje-arsim",
+      "nombre": "Zbritja maksimale për arsimin e fëmijëve",
+      "tipo": "numero",
+      "unidad": "ALL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 100000,
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.kufi-arsim",
+      "nombre": "Kufiri i të ardhurave për zbritjen e arsimit",
+      "tipo": "numero",
+      "unidad": "ALL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 1200000,
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.tvsh",
+      "nombre": "Shkallët e TVSH-së",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "standarde": "20% (shkalla standarde)",
+        "reduktuar-10": "10% (inputet bujqësore)",
+        "reduktuar-6": "6% (akomodim, libra, reklama audiovizive)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-01-01",
+          "valor": {
+            "standarde": 20,
+            "reduktuar-10": 10,
+            "reduktuar-6": 6
+          },
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 92/2014 “Për tatimin mbi vlerën e shtuar”, i ndryshuar",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligji-Nr.-92-2014-Per-tatimin-mbi-vleren-e-shtuar-ne-Republiken-e-Shqiperise-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.tatim-korporate",
+      "nombre": "Tatimi mbi të ardhurat e korporatave",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.kufi-zero",
+      "nombre": "Të ardhurat bruto deri te të cilat norma është 0%",
+      "tipo": "numero",
+      "unidad": "ALL",
+      "proximaRevision": "2029-12-31",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 14000000,
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2029-12-31"
+        }
+      ]
+    },
+    {
+      "id": "al.tatim-biznes",
+      "nombre": "Tatimi mbi fitimin e individit tregtar dhe të vetëpunësuarit",
+      "tipo": "escala",
+      "unidad": "ALL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 14000000,
+              "tasa": 15
+            },
+            {
+              "desde": 14000000,
+              "hasta": null,
+              "tasa": 23
+            }
+          ],
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.regjim-vecante",
+      "nombre": "Shpenzimet e supozuara, regjimi i veçantë (neni 14)",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "prodhim": "Veprimtari prodhuese",
+        "shumice": "Tregtim me shumicë",
+        "pakice": "Tregtim me pakicë, transport individual",
+        "bar": "Bare, restorante",
+        "sherbime": "Shërbime, artizanat, zejtari",
+        "vetepunesuar": "I vetëpunësuar"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "prodhim": 60,
+            "shumice": 90,
+            "pakice": 70,
+            "bar": 60,
+            "sherbime": 50,
+            "vetepunesuar": 30
+          },
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.kufi-regjim",
+      "nombre": "Qarkullimi maksimal për regjimin e veçantë",
+      "tipo": "numero",
+      "unidad": "ALL",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 10000000,
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.tatim-dividend",
+      "nombre": "Tatimi mbi dividendin",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.tatim-investim",
+      "nombre": "Tatimi mbi të ardhurat e tjera nga investimi",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.tatim-dhurate",
+      "nombre": "Tatimi mbi dhuratat dhe trashëgiminë",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.perjashtim-dhurate",
+      "nombre": "Vlera e përjashtuar nga tatimi për dhuratat dhe trashëgiminë",
+      "tipo": "mapa",
+      "unidad": "ALL",
+      "etiquetas": {
+        "paluajtshme": "Pasuri e paluajtshme",
+        "luajtshme": "Pasuri e luajtshme"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "paluajtshme": 5000000,
+            "luajtshme": 1000000
+          },
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 29/2023 “Për tatimin mbi të ardhurat”, i ndryshuar (i përditësuar)",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/09/Ligj-Nr.-29-2023-Per-Tatimin-mbi-te-Ardhurat-i-ndryshuar.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.taksa-ndertese",
+      "nombre": "Shkalla e taksës mbi ndërtesat",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "banim": "Banim",
+        "ekonomike": "Veprimtari ekonomike"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": {
+            "banim": 0.05,
+            "ekonomike": 0.2
+          },
+          "fuente": {
+            "organismo": "Administrata Tatimore",
+            "titulo": "Ligji nr. 9632, datë 30.10.2006, “Për sistemin e taksave vendore”, i përditësuar",
+            "url": "https://tatime.gov.al/wp-content/uploads/2026/10/LigjNr-9632-Dt-30.10.2006-i-perditesuar-23.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.semundje",
+      "nombre": "E ardhura për sëmundje",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "deri-10": "Deri në 10 vjet sigurim",
+        "mbi-10": "Mbi 10 vjet sigurim",
+        "spital": "Në spital, pa njeri në ngarkim"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": {
+            "deri-10": 70,
+            "mbi-10": 80,
+            "spital": 50
+          },
+          "fuente": {
+            "organismo": "ISSH",
+            "titulo": "Ligji nr. 7703, datë 11.5.1993, “Për sigurimet shoqërore”, i ndryshuar",
+            "url": "https://www.issh.gov.al/wp-content/uploads/2026/08/LIGJ-NR.-7703-DATE-11.5.1993-PER-SIGURIMET-SHOQERORE-NE-REPUBLIKEN-E-SHQIPERISE-I-NDRYSHUAR.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.semundje-dite-punedhenes",
+      "nombre": "Ditët e sëmundjes që paguan punëdhënësi",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "ISSH",
+            "titulo": "Ligji nr. 7703, datë 11.5.1993, “Për sigurimet shoqërore”, i ndryshuar",
+            "url": "https://www.issh.gov.al/wp-content/uploads/2026/08/LIGJ-NR.-7703-DATE-11.5.1993-PER-SIGURIMET-SHOQERORE-NE-REPUBLIKEN-E-SHQIPERISE-I-NDRYSHUAR.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.barni",
+      "nombre": "E ardhura për barrëlindje",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "e-larte": "Para lindjes dhe 150 ditë pas saj",
+        "e-ulet": "Periudha në vazhdim"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": {
+            "e-larte": 80,
+            "e-ulet": 50
+          },
+          "fuente": {
+            "organismo": "ISSH",
+            "titulo": "Ligji nr. 7703, datë 11.5.1993, “Për sigurimet shoqërore”, i ndryshuar",
+            "url": "https://www.issh.gov.al/wp-content/uploads/2026/08/LIGJ-NR.-7703-DATE-11.5.1993-PER-SIGURIMET-SHOQERORE-NE-REPUBLIKEN-E-SHQIPERISE-I-NDRYSHUAR.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.barni-dite",
+      "nombre": "Ditët e përfitimit për barrëlindje",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "gjithsej": "Gjithsej",
+        "gjithsej-shume": "Gjithsej, disa fëmijë",
+        "para": "Para lindjes",
+        "para-shume": "Para lindjes, disa fëmijë",
+        "pas-e-larte": "Pas lindjes me normën e lartë"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": {
+            "gjithsej": 365,
+            "gjithsej-shume": 390,
+            "para": 35,
+            "para-shume": 60,
+            "pas-e-larte": 150
+          },
+          "fuente": {
+            "organismo": "ISSH",
+            "titulo": "Ligji nr. 7703, datë 11.5.1993, “Për sigurimet shoqërore”, i ndryshuar",
+            "url": "https://www.issh.gov.al/wp-content/uploads/2026/08/LIGJ-NR.-7703-DATE-11.5.1993-PER-SIGURIMET-SHOQERORE-NE-REPUBLIKEN-E-SHQIPERISE-I-NDRYSHUAR.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.shperblim-lindje",
+      "nombre": "Shpërblimi për lindje fëmije, pjesë e pagës minimale",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2015-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "ISSH",
+            "titulo": "Ligji nr. 7703, datë 11.5.1993, “Për sigurimet shoqërore”, i ndryshuar",
+            "url": "https://www.issh.gov.al/wp-content/uploads/2026/08/LIGJ-NR.-7703-DATE-11.5.1993-PER-SIGURIMET-SHOQERORE-NE-REPUBLIKEN-E-SHQIPERISE-I-NDRYSHUAR.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "al.leje-vjetore",
+      "nombre": "Leja vjetore minimale",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 22,
+          "motivo": "El Kodi i Punës consolidado (inspektoriatipunes.gov.al, idp.al) responde con un bloqueo a nuestras lecturas y qbz.gov.al solo carga con JavaScript: el valor salió de extractos del buscador que mezclan versiones. Falta abrir el texto vigente."
+        }
+      ]
+    },
+    {
+      "id": "al.ore-shtese",
+      "nombre": "Shtesa për orët shtesë",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "zakonshme": "Ditë pune",
+        "pushim": "Pushim javor ose festë",
+        "maks-vit": "Orë në vit"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zakonshme": 25,
+            "pushim": 50,
+            "maks-vit": 200
+          },
+          "motivo": "El Kodi i Punës consolidado (inspektoriatipunes.gov.al, idp.al) responde con un bloqueo a nuestras lecturas y qbz.gov.al solo carga con JavaScript: el valor salió de extractos del buscador que mezclan versiones. Falta abrir el texto vigente."
+        }
+      ]
+    },
+    {
+      "id": "al.afat-njoftimi",
+      "nombre": "Afati i njoftimit",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "deri-6m": "Deri në 6 muaj",
+        "deri-2v": "6 muaj deri 2 vjet",
+        "deri-5v": "2 deri 5 vjet",
+        "mbi-5v": "Mbi 5 vjet"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "deri-6m": 14,
+            "deri-2v": 30,
+            "deri-5v": 60,
+            "mbi-5v": 90
+          },
+          "motivo": "El Kodi i Punës consolidado (inspektoriatipunes.gov.al, idp.al) responde con un bloqueo a nuestras lecturas y qbz.gov.al solo carga con JavaScript: el valor salió de extractos del buscador que mezclan versiones. Falta abrir el texto vigente."
+        }
+      ]
+    },
+    {
+      "id": "al.shperblim-vjetersi",
+      "nombre": "Shpërblimi për vjetërsi, ditë page për çdo vit",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "motivo": "El Kodi i Punës consolidado (inspektoriatipunes.gov.al, idp.al) responde con un bloqueo a nuestras lecturas y qbz.gov.al solo carga con JavaScript: el valor salió de extractos del buscador que mezclan versiones. Falta abrir el texto vigente."
+        }
+      ]
+    }
+  ]
+}

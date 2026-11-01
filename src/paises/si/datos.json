@@ -1,0 +1,1141 @@
+{
+  "mercado": "si",
+  "datos": [
+    {
+      "id": "si.dohodnina",
+      "nombre": "Lestvica za odmero dohodnine",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 9721.43,
+              "tasa": 16,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 9721.43,
+              "hasta": 28592.44,
+              "tasa": 26,
+              "cuotaFija": 1555.43
+            },
+            {
+              "desde": 28592.44,
+              "hasta": 57184.88,
+              "tasa": 33,
+              "cuotaFija": 6461.89
+            },
+            {
+              "desde": 57184.88,
+              "hasta": 82346.23,
+              "tasa": 39,
+              "cuotaFija": 15897.4
+            },
+            {
+              "desde": 82346.23,
+              "hasta": null,
+              "tasa": 50,
+              "cuotaFija": 25710.33
+            }
+          ],
+          "fuente": {
+            "organismo": "Uradni list RS",
+            "titulo": "Pravilnik o določitvi usklajenih zneskov olajšav in lestvice za odmero dohodnine za leto 2026 (Ur. l. RS, št. 104/25)",
+            "url": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3538/pravilnik-o-dolocitvi-usklajenih-zneskov-olajsav-enacbe-za-dolocitev-olajsave-in-lestvice-za-odmero-dohodnine-za-leto-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "si.splosna-olajsava",
+      "nombre": "Splošna olajšava (letno)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5551.93,
+          "fuente": {
+            "organismo": "Uradni list RS",
+            "titulo": "Pravilnik o določitvi usklajenih zneskov olajšav in lestvice za odmero dohodnine za leto 2026 (Ur. l. RS, št. 104/25)",
+            "url": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3538/pravilnik-o-dolocitvi-usklajenih-zneskov-olajsav-enacbe-za-dolocitev-olajsave-in-lestvice-za-odmero-dohodnine-za-leto-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "si.dodatna-olajsava-prag",
+      "nombre": "Skupni dohodek, do katerega velja dodatna splošna olajšava",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 17766.18,
+          "fuente": {
+            "organismo": "Uradni list RS",
+            "titulo": "Pravilnik o določitvi usklajenih zneskov olajšav in lestvice za odmero dohodnine za leto 2026 (Ur. l. RS, št. 104/25)",
+            "url": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3538/pravilnik-o-dolocitvi-usklajenih-zneskov-olajsav-enacbe-za-dolocitev-olajsave-in-lestvice-za-odmero-dohodnine-za-leto-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "si.dodatna-olajsava-znesek",
+      "nombre": "Stalni znesek v enačbi dodatne splošne olajšave",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20832.39,
+          "fuente": {
+            "organismo": "Uradni list RS",
+            "titulo": "Pravilnik o določitvi usklajenih zneskov olajšav in lestvice za odmero dohodnine za leto 2026 (Ur. l. RS, št. 104/25)",
+            "url": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3538/pravilnik-o-dolocitvi-usklajenih-zneskov-olajsav-enacbe-za-dolocitev-olajsave-in-lestvice-za-odmero-dohodnine-za-leto-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "si.dodatna-olajsava-faktor",
+      "nombre": "Faktor v enačbi dodatne splošne olajšave",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1.17259,
+          "fuente": {
+            "organismo": "Uradni list RS",
+            "titulo": "Pravilnik o določitvi usklajenih zneskov olajšav in lestvice za odmero dohodnine za leto 2026 (Ur. l. RS, št. 104/25)",
+            "url": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3538/pravilnik-o-dolocitvi-usklajenih-zneskov-olajsav-enacbe-za-dolocitev-olajsave-in-lestvice-za-odmero-dohodnine-za-leto-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "si.olajsava-do-29",
+      "nombre": "Posebna osebna olajšava za zaposlene do 29. leta (letno)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1443.5,
+          "fuente": {
+            "organismo": "Uradni list RS",
+            "titulo": "Pravilnik o določitvi usklajenih zneskov olajšav in lestvice za odmero dohodnine za leto 2026 (Ur. l. RS, št. 104/25)",
+            "url": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3538/pravilnik-o-dolocitvi-usklajenih-zneskov-olajsav-enacbe-za-dolocitev-olajsave-in-lestvice-za-odmero-dohodnine-za-leto-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "si.olajsava-otroci",
+      "nombre": "Olajšava za vzdrževane otroke (letno)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "etiquetas": {
+        "prvi": "Prvi otrok",
+        "drugi": "Povečanje za drugega otroka",
+        "tretji": "Povečanje za tretjega otroka",
+        "cetrti": "Povečanje za četrtega otroka",
+        "peti": "Povečanje za petega otroka",
+        "nadaljnji": "Povečanje za vsakega nadaljnjega otroka"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "prvi": 2995.83,
+            "drugi": 260.94,
+            "tretji": 2436.19,
+            "cetrti": 4611.44,
+            "peti": 6786.68,
+            "nadaljnji": 2175.25
+          },
+          "fuente": {
+            "organismo": "Uradni list RS",
+            "titulo": "Pravilnik o določitvi usklajenih zneskov olajšav in lestvice za odmero dohodnine za leto 2026 (Ur. l. RS, št. 104/25)",
+            "url": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-3538/pravilnik-o-dolocitvi-usklajenih-zneskov-olajsav-enacbe-za-dolocitev-olajsave-in-lestvice-za-odmero-dohodnine-za-leto-2026",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "si.prispevki-delavec",
+      "nombre": "Prispevki delavca",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "piz": "Pokojninsko in invalidsko zavarovanje",
+        "zz": "Zdravstveno zavarovanje",
+        "do": "Dolgotrajna oskrba",
+        "starsevsko": "Starševsko varstvo",
+        "zaposlovanje": "Zaposlovanje"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "piz": 15.5,
+            "zz": 6.36,
+            "do": 1,
+            "starsevsko": 0.1,
+            "zaposlovanje": 0.14
+          },
+          "fuente": {
+            "organismo": "SPOT",
+            "titulo": "Stopnje in zneski prispevkov delodajalca in delavca",
+            "url": "https://spot.gov.si/sl/poslovanje/zaposlovanje-in-delovno-razmerje/socialna-varnost-in-zavarovanja/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.prispevki-delodajalec",
+      "nombre": "Prispevki delodajalca",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "piz": "Pokojninsko in invalidsko zavarovanje",
+        "zz": "Zdravstveno zavarovanje",
+        "pd": "Poškodbe pri delu in poklicne bolezni",
+        "do": "Dolgotrajna oskrba",
+        "starsevsko": "Starševsko varstvo",
+        "zaposlovanje": "Zaposlovanje"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "piz": 8.85,
+            "zz": 6.56,
+            "pd": 0.53,
+            "do": 1,
+            "starsevsko": 0.1,
+            "zaposlovanje": 0.06
+          },
+          "fuente": {
+            "organismo": "SPOT",
+            "titulo": "Stopnje in zneski prispevkov delodajalca in delavca",
+            "url": "https://spot.gov.si/sl/poslovanje/zaposlovanje-in-delovno-razmerje/socialna-varnost-in-zavarovanja/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.ozp",
+      "nombre": "Obvezni zdravstveni prispevek (mesečno)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "valor": 37.17,
+          "fuente": {
+            "organismo": "FURS",
+            "titulo": "Obvezni zdravstveni prispevek (OZP)",
+            "url": "https://www.fu.gov.si/fileadmin/Internet/Davki_in_druge_dajatve/Podrocja/Prispevki_za_socialno_varnost/Opis/Obvezni_zdravstveni_prispevek_-_OZP.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-02-28"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": 39.36,
+          "fuente": {
+            "organismo": "FURS",
+            "titulo": "Obvezni zdravstveni prispevek (OZP)",
+            "url": "https://www.fu.gov.si/fileadmin/Internet/Davki_in_druge_dajatve/Podrocja/Prispevki_za_socialno_varnost/Opis/Obvezni_zdravstveni_prispevek_-_OZP.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2027-02-28"
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "si.najnizja-osnova",
+      "nombre": "Najnižja mesečna osnova za prispevke",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": 1521.62,
+          "fuente": {
+            "organismo": "FURS",
+            "titulo": "Najnižja osnova za obračun prispevkov za osebe v delovnem razmerju",
+            "url": "https://www.fu.gov.si/novica/najnizja_osnova_za_obracun_prispevkov_za_socialno_varnost_za_osebe_v_delovnem_razmerju_1-16145/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2027-02-28"
+        }
+      ],
+      "proximaRevision": "2027-03-01"
+    },
+    {
+      "id": "si.najvisja-osnova-sp",
+      "nombre": "Najvišja mesečna zavarovalna osnova samozaposlenih",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": 8876.11,
+          "fuente": {
+            "organismo": "FURS",
+            "titulo": "Prispevki za socialno varnost samozaposlenih, oktober 2026",
+            "url": "https://www.fu.gov.si/fileadmin/Internet/Davki_in_druge_dajatve/Podrocja/Prispevki_za_socialno_varnost/Samozaposleni/SZ_10_2026.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2027-02-28"
+        }
+      ]
+    },
+    {
+      "id": "si.povprecna-letna-placa",
+      "nombre": "Povprečna mesečna bruto plača v letu 2025",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": 2536.03,
+          "fuente": {
+            "organismo": "FURS",
+            "titulo": "Najnižja osnova za obračun prispevkov za osebe v delovnem razmerju",
+            "url": "https://www.fu.gov.si/novica/najnizja_osnova_za_obracun_prispevkov_za_socialno_varnost_za_osebe_v_delovnem_razmerju_1-16145/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2027-02-28"
+        }
+      ]
+    },
+    {
+      "id": "si.minimalna-placa",
+      "nombre": "Minimalna plača (bruto, mesečno)",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-01-01",
+          "valor": 1277.72,
+          "fuente": {
+            "organismo": "GOV.SI",
+            "titulo": "Minimalna plača: višina po letih",
+            "url": "https://www.gov.si/teme/minimalna-placa/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2025-12-31"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1481.88,
+          "fuente": {
+            "organismo": "GOV.SI",
+            "titulo": "Minimalna plača: višina po letih",
+            "url": "https://www.gov.si/teme/minimalna-placa/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ],
+      "proximaRevision": "2027-01-31"
+    },
+    {
+      "id": "si.regres-najmanj",
+      "nombre": "Regres za letni dopust, najmanj v deležu minimalne plače",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o delovnih razmerjih (ZDR-1), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO5944",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ],
+      "calendario": [
+        {
+          "id": "izplacilo-regresa",
+          "tipo": "pago",
+          "mes": 7,
+          "dia": 1,
+          "titulo": "Zadnji dan za izplačilo regresa",
+          "texto": "Po 131. členu ZDR-1 mora biti regres za letni dopust izplačan najkasneje na ta dan.",
+          "calculadora": "si.izracun-regresa"
+        }
+      ]
+    },
+    {
+      "id": "si.zimski-regres-delez",
+      "nombre": "Zimski regres v deležu minimalne plače",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o pravici do zimskega regresa ter prenovi ugotavljanja davčne osnove z upoštevanjem normiranih odhodkov (ZPZR)",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO9359",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ],
+      "calendario": [
+        {
+          "id": "izplacilo-zimskega-regresa",
+          "tipo": "pago",
+          "mes": 12,
+          "dia": 18,
+          "titulo": "Zadnji dan za izplačilo zimskega regresa",
+          "texto": "Po 3. členu ZPZR se zimski regres izplača najpozneje 18 dni po preteku plačilnega obdobja za novembrsko plačo.",
+          "calculadora": "si.zimski-regres"
+        }
+      ]
+    },
+    {
+      "id": "si.prispevki-sp",
+      "nombre": "Prispevki samozaposlenih",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "piz-zav": 15.5,
+            "piz-del": 8.85,
+            "zz-zav": 6.36,
+            "zz-del": 6.56,
+            "pd": 0.53,
+            "do": 2,
+            "star-zav": 0.1,
+            "star-del": 0.1,
+            "zap-zav": 0.14,
+            "zap-del": 0.06
+          },
+          "fuente": {
+            "organismo": "SPOT",
+            "titulo": "Prispevki za socialno varnost: samozaposleni",
+            "url": "https://spot.gov.si/sl/teme/prispevki-za-socialno-varnost/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.znizanje-osnove-sp",
+      "nombre": "Znižanje dobička za zavarovalno osnovo samostojnih podjetnikov",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25,
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o pokojninskem in invalidskem zavarovanju (ZPIZ-2), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO6280",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.pavsalni-prispevki",
+      "nombre": "Pavšalni prispevki pri postranskem poklicu (mesečno)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zz": 40.9,
+            "pd": 13.63,
+            "do": 6.43
+          },
+          "fuente": {
+            "organismo": "FURS",
+            "titulo": "Zneski pavšalnih prispevkov 2026",
+            "url": "https://www.fu.gov.si/fileadmin/Internet/Davki_in_druge_dajatve/Podrocja/Prispevki_za_socialno_varnost/Opis/Pavsalni_prispevki_2026.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "si.normirani-odhodki-polni",
+      "nombre": "Normirani odhodki pri polni samozaposlitvi (odstotek prihodkov)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 60000,
+              "tasa": 80
+            },
+            {
+              "desde": 60000,
+              "hasta": null,
+              "tasa": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o dohodnini (ZDoh-2), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO4697",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.normirani-odhodki-popoldan",
+      "nombre": "Normirani odhodki pri postranskem s.p. (odstotek prihodkov)",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 12500,
+              "tasa": 80
+            },
+            {
+              "desde": 12500,
+              "hasta": 30000,
+              "tasa": 40
+            },
+            {
+              "desde": 30000,
+              "hasta": null,
+              "tasa": 0
+            }
+          ],
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o dohodnini (ZDoh-2), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO4697",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.dohodnina-normiranci-polni",
+      "nombre": "Dohodnina normirancev pri polni samozaposlitvi",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 72000,
+              "tasa": 20,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 72000,
+              "hasta": null,
+              "tasa": 35,
+              "cuotaFija": 14400
+            }
+          ],
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o pravici do zimskega regresa ter prenovi ugotavljanja davčne osnove z upoštevanjem normiranih odhodkov (ZPZR)",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO9359",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.dohodnina-normiranci-popoldan",
+      "nombre": "Dohodnina normirancev pri postranskem s.p.",
+      "tipo": "escala",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 33000,
+              "tasa": 20,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 33000,
+              "hasta": null,
+              "tasa": 35,
+              "cuotaFija": 6600
+            }
+          ],
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o pravici do zimskega regresa ter prenovi ugotavljanja davčne osnove z upoštevanjem normiranih odhodkov (ZPZR)",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO9359",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.normiranci-limiti",
+      "nombre": "Povprečni prihodki, do katerih se lahko uporabljajo normirani odhodki",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "polni": 120000,
+            "mesani": 85000,
+            "popoldan": 50000
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o pravici do zimskega regresa ter prenovi ugotavljanja davčne osnove z upoštevanjem normiranih odhodkov (ZPZR)",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO9359",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.ddv",
+      "nombre": "Stopnje DDV",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "splosna": "Splošna stopnja",
+        "nizja": "Nižja stopnja",
+        "posebna": "Posebna nižja stopnja"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "splosna": 22,
+            "nizja": 9.5,
+            "posebna": 5
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o davku na dodano vrednost (ZDDV-1), 41. člen",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO4701",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.davek-promet-nepremicnin",
+      "nombre": "Davek na promet nepremičnin",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o davku na promet nepremičnin (ZDPN-2)",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO4709",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.dopust",
+      "nombre": "Letni dopust: najmanjši obseg",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "tedni": 4,
+            "dodatni": 3,
+            "na-otroka": 1
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o delovnih razmerjih (ZDR-1), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO5944",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.odpravnina",
+      "nombre": "Odpravnina: delež osnove na leto (imenovalec) in zgornja meja",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "do10": 5,
+            "do20": 4,
+            "nad20": 3,
+            "najvec": 10,
+            "davcno-najvec": 10
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o delovnih razmerjih (ZDR-1), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO5944",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.odpovedni-rok",
+      "nombre": "Najkrajši odpovedni roki v dneh",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "poskusno": 7,
+            "do1": 15,
+            "do2": 30,
+            "prirastek": 2,
+            "najvec": 60,
+            "nad25": 80,
+            "krivdni": 15,
+            "delavec-do1": 15,
+            "delavec-nad1": 30
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o delovnih razmerjih (ZDR-1), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO5944",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.nadure-meje",
+      "nombre": "Najdaljše dovoljeno nadurno delo v urah",
+      "tipo": "mapa",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "teden": 8,
+            "mesec": 20,
+            "leto": 170,
+            "soglasje": 230
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o delovnih razmerjih (ZDR-1), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO5944",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.bolniska",
+      "nombre": "Nadomestilo med bolniško v odstotku osnove",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "bolezen-do90": 80,
+            "bolezen-nad90": 90,
+            "poskodba-do90": 70,
+            "poskodba-nad90": 80,
+            "nega": 80,
+            "poklicna": 100,
+            "najmanj": 60
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o zdravstvenem varstvu in zdravstvenem zavarovanju (ZZVZZ), 31. člen",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO213",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.dnevi-bolniska",
+      "nombre": "Nadomestilo iz sredstev delodajalca",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "posamezna": 30,
+            "letno": 80
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o delovnih razmerjih (ZDR-1), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO5944",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.starsevski-dopust",
+      "nombre": "Trajanje dopustov v dneh",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "materinski": 105,
+            "obvezni": 15,
+            "ocetovski": 15,
+            "starsevski": 160,
+            "neprenosljivi": 60,
+            "prenosljivi": 100,
+            "dodatni-otrok": 90,
+            "dodatni-oce": 10
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o starševskem varstvu in družinskih prejemkih (ZSDP-1), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO6688",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.starsevsko-nadomestilo",
+      "nombre": "Nadomestilo v odstotku osnove",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "materinsko": 100,
+            "drugo": 90
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o starševskem varstvu in družinskih prejemkih (ZSDP-1), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO6688",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.pokojnina-odstotek",
+      "nombre": "Odmerni odstotek za pokojnino, uveljavljeno v letih 2026 in 2027",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "zacetek": 29.5,
+            "na-leto": 1.36
+          },
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o pokojninskem in invalidskem zavarovanju (ZPIZ-2), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO6280",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2027-12-31"
+        }
+      ]
+    },
+    {
+      "id": "si.pokojninska-osnova",
+      "nombre": "Najnižja in najvišja pokojninska osnova od 1. 3. 2026",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": {
+            "najnizja": 1289.78,
+            "najvisja": 5159.12
+          },
+          "fuente": {
+            "organismo": "ZPIZ",
+            "titulo": "Sporočilo za javnost: 3. seja Sveta ZPIZ",
+            "url": "https://www.zpiz.si/cms/content2019/sporoilo-za-javnost-3-seja-svet",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "si.pokojnina-doba",
+      "nombre": "Najkrajša zavarovalna doba za starostno pokojnino",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o pokojninskem in invalidskem zavarovanju (ZPIZ-2), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO6280",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.pokojnina-starost",
+      "nombre": "Starost za starostno pokojnino v letu 2026",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 65,
+          "fuente": {
+            "organismo": "PISRS",
+            "titulo": "Zakon o pokojninskem in invalidskem zavarovanju (ZPIZ-2), neuradno prečiščeno besedilo",
+            "url": "https://pisrs.si/pregledPredpisa?id=ZAKO6280",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          },
+          "hasta": "2027-12-31"
+        }
+      ]
+    },
+    {
+      "id": "si.otroski-dodatek",
+      "nombre": "Otroški dodatek po razredih",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": {
+            "o1-1": 147.69,
+            "o1-2": 162.45,
+            "o1-3": 177.24,
+            "o2-1": 126.26,
+            "o2-2": 139.58,
+            "o2-3": 152.82,
+            "o3-1": 96.24,
+            "o3-2": 107.56,
+            "o3-3": 118.85,
+            "o4-1": 75.91,
+            "o4-2": 86.61,
+            "o4-3": 97.51,
+            "o5-1": 62.06,
+            "o5-2": 72.42,
+            "o5-3": 82.72,
+            "o6-1": 39.32,
+            "o6-2": 49.21,
+            "o6-3": 59.05,
+            "o7-1": 29.52,
+            "o7-2": 39.32,
+            "o7-3": 49.21,
+            "o8-1": 25.7,
+            "o8-2": 35.53,
+            "o8-3": 45.35,
+            "s1-1": 147.69,
+            "s1-2": 162.45,
+            "s1-3": 177.24,
+            "s2-1": 126.26,
+            "s2-2": 139.58,
+            "s2-3": 152.82,
+            "s3-1": 96.24,
+            "s3-2": 107.56,
+            "s3-3": 118.85,
+            "s4-1": 75.91,
+            "s4-2": 86.61,
+            "s4-3": 97.51,
+            "s5-1": 62.06,
+            "s5-2": 72.42,
+            "s5-3": 82.72,
+            "s6-1": 39.32,
+            "s6-2": 49.21,
+            "s6-3": 59.05,
+            "s7-1": 37.25,
+            "s7-2": 47.07,
+            "s7-3": 64.14,
+            "s8-1": 29.57,
+            "s8-2": 39.41,
+            "s8-3": 51.53
+          },
+          "fuente": {
+            "organismo": "GOV.SI",
+            "titulo": "Otroški dodatek: višina po dohodkovnih razredih",
+            "url": "https://www.gov.si/teme/otroski-dodatek/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "si.otroski-dodatek-meje",
+      "nombre": "Zgornje meje dohodkovnih razredov (povprečni mesečni dohodek na osebo)",
+      "tipo": "mapa",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-03-01",
+          "valor": {
+            "r1": 241.49,
+            "r2": 402.5,
+            "r3": 483.01,
+            "r4": 563.5,
+            "r5": 711.12,
+            "r6": 858.67,
+            "r7": 1100.2,
+            "r8": 1328.28
+          },
+          "fuente": {
+            "organismo": "GOV.SI",
+            "titulo": "Otroški dodatek: višina po dohodkovnih razredih",
+            "url": "https://www.gov.si/teme/otroski-dodatek/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    }
+  ]
+}

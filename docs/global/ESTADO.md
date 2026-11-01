@@ -21,6 +21,65 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 01/11/2026 · Tanda 6 de países: am, al, si, ee, is, lv (`claude/paises-tanda-6`)
+
+Sale de `claude/paises-tanda-5`, ya en main, y lleva el `origin/main` con el build nuevo. Publicados Armenia (am), Albania (al),
+Eslovenia (si), Estonia (ee), Islandia (is) y Letonia (lv), detrás de mn. Trae los motores armenio (D30), albanés (D31), esloveno
+(D32), estonio (D33), islandés (D34) y letón (D35). Informes en `scripts/paises/<m>/INFORME.md`. `mercados-registro.ts` regenerado: 143 mercados intl. Mercado `ee` =
+Estonia con idioma `et`; mercado `et` = Etiopía con idioma `en` (`zz-et` es la edición de prueba en estonio): no se cruzan.
+
+| País | Locales | Publicables | Borrador | Universales |
+|---|---|---|---|---|
+| am | 21 | 21 | ninguno | todas (41, `iva` con `am.aah`) |
+| al | 23 | 19 | leja-vjetore, oret-shtese, afati-i-njoftimit, shperblimi-per-vjetersi | todas (cae IVA) |
+| si | 24 | 24 | ninguno | todas (cae IVA) |
+| ee | 21 | 21 | ninguno | todas (cae IVA) |
+| is | 25 | 23 | desemberuppbot, orlofsuppbot | todas (cae IVA) |
+| lv | 21 | 20 | uzteikuma-termins | todas (cae IVA) |
+
+Checks: `check-all` 156 de 159 antes de sumar main y lv; después, en verde tsc, `check_motor` (5889), `check_seo_intl` (20774 páginas), `check_hreflang` (22803) y `check_eol`. Fallan solo cosas viejas y ajenas: `check_mundo` (be), `check_paises` (28 en 175: series vencidas y llaves de ca) y `check_textos_paises` (6: bo, cr, mx, pe). `check_mundo` no volvió a correr con lv.
+
+Ajustes de la integración:
+- `sinMayusculas` une ka y hy en un solo regex.
+- Descripciones de país, fuentes y novedades en armenio acortadas: `check_seo_intl` daba 174 de ancho contra un máximo de 160.
+- Tarjetas: `tieneMarcadores` (registro) también cuenta `{{anio}}`. Antes un h1 con solo ese marcador y un primer párrafo sin dato
+  mostraba `{{anio}}` crudo en la tarjeta. Prueba en `check_motor`.
+- Dram: `DECIMALES_DE_USO = { AMD: 0 }` en `decimalesDeMoneda`, y `formatearMonto` lo respeta. Tabla y universales de Armenia ya
+  no dicen «75 000,00 ֏». No se hizo con `mercado.redondeo.decimales` porque ese camino cambia dos mercados publicados: pk (Intl 0,
+  redondeo 2) y uz (Intl 2, redondeo 0). **Pedido abierto:** uz tiene el mismo problema que tenía am; decidir si UZS va a la tabla.
+- ISK: `is` ya tenía `simbolos: { ISK: "kr." }`; `check_motor` exige símbolo propio en todo mercado con ISK (Node da «kr.»,
+  Chromium «ISK»; el check corre en Node, no ve el error de hidratación en sí). `zz-is` no lo lleva: hereda XTS de zz y el registro
+  rechaza símbolos de otra moneda, lo que la deja fuera del registro.
+
+Datos no verificados y motivo:
+- am: ninguno. `cba.am` corta la conexión; el tipo de cambio se leyó en el CSV oficial de `api.cba.am`.
+- al: `al.paga-maksimale-kontribute`: la noticia de Tatime responde con bloqueo y solo hay extracto (186 416, PwC dice 220 520); las
+  4 calculadoras que cotizan piden el tope en un campo opcional y, sin él, exageran la cotización en sueldos altos.
+  `al.leje-vjetore`, `al.ore-shtese`, `al.afat-njoftimi`, `al.shperblim-vjetersi`: Kodi i Punës bloqueado por firewall o solo con JavaScript.
+- si: ningún dato cargado sin verificar. Fuera del cálculo por eso: tope del nadomestilo parental (112.a ZSDP-1, avisado en pantalla)
+  y porcentaje de nadure (lo fija la convención colectiva; el 30 es un valor inicial editable).
+- ee: ninguno. `ee.fie-sotsiaalmaksu-lagi` (111 720) es derivado de SMS § 2; el PDF de EMTA no se pudo leer. `tkh-max-*` de Töötukassa, sin recalcular.
+- is: `is.desemberuppbot` (solo SA, parte del convenio) e `is.orlofsuppbot` (solo extracto). Decisión pendiente: si se acepta el
+  convenio como fuente, se verifican y publican. althingi.is responde 403: ley 30/1987 y ley del stimpilgjald sin leer.
+- lv: `lv.uzteikums` (10 días e inmediato): solo el art. 103 de 2001 en vestnesis.lv; `likumi.lv` caído todo el día y sin redacción vigente.
+
+Riesgos:
+- Todos: D30 a D35 piden revisión de hablante nativo antes de publicar y no se hizo (el informe de is dice que «bloquea la
+  publicación»). Se publica en la rama por encargo: **decidir antes de mergear**. Slugs sin validar en el autocompletar de Google de cada país.
+- Cálculo en el navegador sin probar en ninguno de los seis. am, al, ee y lv ni miraron `next dev`; si e is lo miraron sin apretar calcular (en is, webpack no carga el cálculo).
+- am: mínimo de la ley de prestaciones tomado literal (90 000; podría ser 93 750): riesgo principal de cálculo. Seguro de salud 2026
+  como si-no. Art. 150 con cambios desde 2027 sin leer en detalle: revisar en enero.
+- al: fuentes leídas al principio con User-Agent de navegador, contra la regla; el 1/11 se releyeron con uno propio los seis PDF y el
+  texto es idéntico. Divisor de 30 días y exención de dhurata son lecturas propias. Compensación del 16,7 % sin modelar. El neto baja
+  en 50 000 y 60 000 lekë (es la ley). `al.ick` sin detector (xlsx): carga a mano, se cae hacia fines de noviembre. `kufi-zero` vence el 31/12/2029.
+- si: referendo ZIURS del **6/12/2026**: revisar después (normiranci con efecto 1/1/2026, zimski regres, tope de contribuciones). Series caen antes del 1/12 sin cron.
+- ee: FIE sin II pilar y haigushüvitis sin embarazo o donación, **sin aviso** en la página. Töötuskindlustus termina el 31/12/2026: falta el decreto 2027. THI cae el 1/12 sin cron.
+- is: `orlofslaun` publicable con porcentajes de una guía de 1993 (art. 7 sin leer). `drattarvextir` cubre solo noviembre y queda sin
+  `hasta`: revisar cada mes. `meginvextir` decide el 18/11. Pedido abierto: prueba de formato en Chromium.
+- lv: leyes leídas en extractos de LM y VDI de 2020 a 2023, sin contrastar con likumi.lv (horas extra al 100 %: en 2017 hubo un proyecto
+  para bajarla). Solidaritātes nodoklis y su deducción, 3 % sobre 200 000 y vecāku pabalsts son lecturas o aproximaciones propias. VSAA
+  leída en inglés con traducción automática. Reforma de cuidado infantil del 3/11/2026: revisar vecāku pabalsts. Serie de inflación cae el 1/12 sin cron.
+
 ## 01/11/2026 · Tanda 5 de países: sk, ge, hr, mn (`claude/paises-tanda-5`)
 
 Publicados: Eslovaquia (sk), Georgia (ge), Croacia (hr) y Mongolia (mn), detrás de bt. Los cuatro con
@@ -83,6 +142,48 @@ Ajenas a esta tanda:
   za) y 4 las llaves anidadas de `oas-clawback` y `tfsa-contribution-room` de ca y ca-fr.
 - `check_textos_paises`: 6 de ancho en bo.salario-minimo (2), bo.finiquito-atrasado, cr.tipo-de-cambio, mx.tipo-de-cambio y
   pe.tipo-de-cambio.
+
+## 01/11/2026 · Motor albanés (`claude/mundo-motor-sq`)
+
+`sq` entra en `IDIOMAS` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en el mundo»
+(`paga-ne-bote`), rankings (`renditja-e-vendeve`), horas de trabajo (`sa-ore-pune`), calendario
+(`kalendari-i-pagave`), «Sueldos reales» (`pagat-reale`), venta completa (`IDIOMAS_VENTA`) y las 41 universales con
+slug ASCII propio. «ju» en minúscula con 2.ª del plural («vendosni»), botón «Llogarit», mercados con `trato:
+"usted"`, formato `1 234 567 Lekë`, comillas “ ”. Plurales one/other (`pluralSq`) y casos del país (`GRAMATICA.sq`,
+`rasatSq`). Decisiones en ADR 0002, D31. Edición de prueba `zz-sq` (interna, `sq-001`).
+- Falta para publicar Albania: el país en sí, con datos verificados, y revisión por hablante nativo. `kalkulator-page`
+  queda libre para su local. `mercado.nombre` va indefinido: «Shqipëri».
+
+## 01/11/2026 · Motor esloveno (`claude/mundo-motor-sl`, ADR 0002 D32)
+
+`sl` entra en `IDIOMAS` e `IDIOMAS_VENTA` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo
+en el mundo» (`placa-po-svetu`), rankings (`lestvice-drzav`), horas de trabajo (`koliko-ur-dela`), calendario
+(`koledar-plac`), «Sueldos reales» (`dejanske-place`), venta completa y las 41 universales con slug ASCII propio.
+Vikanje con «vi» en minúscula y 2.ª del plural («vnesite»), mercados con `trato: "usted"`, formato `1.234,50 €`.
+Plurales one/two/few/other (`pluralSl`) y declinación del país (`GRAMATICA.sl`). Edición de prueba `zz-sl` (interna, `sl-001`).
+Fuentes oficiales: fu.gov.si, gov.si, pisrs.si y bsi.si abren desde este entorno (1/11/2026), buena noticia para el
+agente de país.
+- Falta para publicar Eslovenia: el país en sí, con datos verificados, y revisión por hablante nativo.
+
+## 01/11/2026 · Motor estonio (`claude/mundo-motor-et`, ADR 0002 D33)
+
+`et` entra en `IDIOMAS` e `IDIOMAS_VENTA` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo
+en el mundo» (`palk-maailmas`), rankings (`riikide-vordlus`), horas de trabajo (`tootunnid`), calendario
+(`palgakalender`), «Sueldos reales» (`tegelikud-palgad`), venta completa y las 41 universales con slug ASCII propio.
+Registro «sina» con imperativo de segunda del singular, mercados con `trato: "tu"`, formato `1 234,50 €`. Plurales
+one/other con partitivo singular y declinación del país (`GRAMATICA.et`). Edición de prueba `zz-et` (interna, `et-001`).
+Estonia será el mercado `ee`; `et` como mercado sigue siendo Etiopía.
+- Falta para publicar Estonia: el país en sí, con datos verificados, y revisión por hablante nativo.
+
+## 01/11/2026 · Motor islandés (`claude/mundo-motor-is`, ADR 0002 D34)
+
+`is` entra en `IDIOMAS` e `IDIOMAS_VENTA` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo
+en el mundo» (`laun-um-allan-heim`), rankings (`rodun-landa`), horas de trabajo (`hversu-margar-vinnustundir`),
+calendario (`launadagatal`), «Sueldos reales» (`raunveruleg-laun`), venta completa y las 41 universales con slug ASCII
+propio. «þú» e imperativo de singular, mercados con `trato: "tu"`, formato `1.234.568 kr.`. Plurales one/other
+(`pluralIs`: «21 dagur») y país con caso y preposición (`GRAMATICA.is`: «á Íslandi», «í Þýskalandi»). Edición de prueba
+`zz-is` (interna, `is-001`).
+- Falta para publicar Islandia: el país en sí, con datos verificados, y revisión por hablante nativo.
 
 ## 01/11/2026 · Tanda 4 de países: rs, me, bg, tj, bt (`claude/paises-tanda-4`)
 
@@ -157,6 +258,13 @@ se volvieron a correr `check_paises me`, `check_seo_pais me`, `check_textos_pais
 `tsc`, sin fallas nuevas (`check-all` completo no se repitió). Arreglada la raya de hu en `check_guiones`.
 Avisos de series de la tanda antes del 1/12/2026: rs (4 calculadoras), me, bg y tj (1 cada una).
 
+## 01/11/2026 · Motor armenio (`claude/mundo-motor-hy`, ADR 0002 D30)
+
+Armenio oriental reformado completo: núcleo, venta, secciones globales, las 41 universales y `zz-hy`. Registro Դուք con mayúscula, «։» y «՞»,
+sin plural detrás de un número, sufijos del país con `casosHy`, sin mayúsculas sostenidas («և» subiría a «ԵՒ»), ֏ detrás y una letra armenia
+= 1,3 latinas en `anchoVisual`. Fuentes del país al 01/11: abren src.am, arlis.am, armstat.am y mlsa.am (redirige a welfare.gov.am); cba.am
+cortó la conexión dos veces. Falta el país (`am`) y una revisión nativa.
+
 ## 31/10/2026 · Motor serbio latino (`claude/mundo-motor-sr`)
 
 `sr` entra en `IDIOMAS` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en el
@@ -176,6 +284,15 @@ calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición 
 y servicios («та», «-на уу», botones en «-х»), sin confirmar en sus webs (ver D28). El sufijo de caso lo lleva «улс»,
 nunca el nombre ni una cifra. MNT como moneda de prueba. Listo para que un agente de país escriba Mongolia.
 Falla de main ajena al frente: `check_mundo` (be, neto).
+
+## 1/11/2026 · Motor letón (`claude/mundo-motor-lv`, ADR 0002 D35)
+
+`lv` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados, redes y las 41 universales; edición interna `zz-lv`. Registro
+de VID: «jūs» en minúscula, 2.ª del plural, botones en infinitivo («Aprēķināt»). Plurales one/other con el 0 en
+genitivo (`pluralLv`), país con genitivo, locativo sin preposición y dativo (`GRAMATICA.lv`). `algas-kalkulators`
+queda libre para la local. Listo para que un agente de país escriba Letonia (`lv`). Falla de main ajena al frente:
+`check_mundo` (be, neto). Falta revisión por hablante nativo.
 
 ## 31/10/2026 · Motor búlgaro (`claude/mundo-motor-bg`, ADR 0002 D24)
 

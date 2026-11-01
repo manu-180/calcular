@@ -9,18 +9,20 @@ import path from "node:path";
 import { aplicarEscala, aplicarEscalaMarginal, definirCalculadora, ErrorEntrada } from "../src/motor/calculo";
 import { revisarPuntos } from "../src/motor/bandas";
 import { validarArchivoDatos, validarArchivoSeries, validarUrl } from "../src/motor/datos";
+import { normalizar } from "../src/components/buscador/indice";
 import { anchoVisual } from "../src/motor/ancho";
 import { decimalesDeMoneda, formatearFecha, formatearMoneda, formatearNumero, formatearPorcentaje, formatearValorUnidad, mayusculaInicial, minusculaInicial, parsearNumero, redondear, sugerenciaMiles } from "../src/motor/formato";
 import { cifrasBn } from "../src/motor/i18n/bengali";
-import { casosKa, esetekHu, GRAMATICA, neveloHu } from "../src/motor/i18n/gramatica";
+import { problemasDeTexto } from "./reglas_idioma";
+import { casosKa, casosHy, esetekHu, fechaGenSl, GRAMATICA, neveloHu } from "../src/motor/i18n/gramatica";
 import { campoVisible, ejecutar, mensajeDeError, opcionesDe, parsearEntrada, valoresIniciales } from "../src/motor/formulario";
 import { textosSitio } from "../src/motor/i18n";
-import { problemasDeTexto } from "./reglas_idioma";
-import { formaRo, pluralCs, pluralSk, pluralEl, pluralRo, pluralRu, pluralUk } from "../src/motor/i18n/plural";
+import { formaRo, pluralCs, pluralSk, pluralEl, pluralLv, pluralRo, pluralRu, pluralUk } from "../src/motor/i18n/plural";
 import { pluralHe, prefijoHe } from "../src/motor/i18n/hebreo";
-import { pluralSr } from "../src/motor/i18n/plural";
+import { pluralSq, pluralSl, formaIs, pluralIs, pluralSr } from "../src/motor/i18n/plural";
 import { pluralHr } from "../src/motor/i18n/plural";
-import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores } from "../src/motor/registro";
+import { problemasDeTexto as problemasIs } from "./reglas_idioma";
+import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores, tieneMarcadores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
 import { textosMotor } from "../src/motor/textos";
@@ -240,6 +242,33 @@ const parseos: [string, string, number | null][] = [
   ["mn-MN", "-250.75", -250.75],
   ["mn-MN", "20%", 20],
   // Búlgaro: miles con espacio, decimal con coma y € detrás (Bulgaria en el euro desde el 1/1/2026).
+  // Armenio: miles con espacio (U+00A0) desde cinco cifras, decimal con coma y ֏ detrás (D30).
+  ["hy-AM", "1 234,50", 1234.5],
+  ["hy-AM", "1234,5", 1234.5],
+  ["hy-AM", "1 500 000 ֏", 1500000],
+  ["hy-AM", "-250,75", -250.75],
+  ["hy-AM", "20%", 20],
+  // Esloveno (sl-SI): punto de miles, coma decimal y € detrás.
+  ["sl-SI", "1.234,50", 1234.5],
+  ["sl-SI", "1234,50", 1234.5],
+  ["sl-SI", "1.234.567,25 €", 1234567.25],
+  ["sl-SI", "25.000 €", 25000],
+  ["sl-SI", "-250,75", -250.75],
+  ["sl-SI", "20 %", 20],
+  // Estonio (et-EE): miles con espacio (también U+00A0), coma decimal, € detrás y menos de Unicode.
+  ["et-EE", "1 234,50", 1234.5],
+  ["et-EE", "1234,50", 1234.5],
+  ["et-EE", "1\u00a0234\u00a0567,25 €", 1234567.25],
+  ["et-EE", "25 000 €", 25000],
+  ["et-EE", "−250,75", -250.75],
+  ["et-EE", "20%", 20],
+  // Islandés (is-IS): punto de miles, coma decimal y «kr.» detrás.
+  ["is-IS", "1.234,50", 1234.5],
+  ["is-IS", "1234,5", 1234.5],
+  ["is-IS", "1.234.567 kr.", 1234567],
+  ["is-IS", "25.000 kr.", 25000],
+  ["is-IS", "-250,75", -250.75],
+  ["is-IS", "20%", 20],
   ["bg-BG", "1 234,50", 1234.5],
   ["bg-BG", "1234,5", 1234.5],
   ["bg-BG", "1 500 000 €", 1500000],
@@ -261,6 +290,13 @@ const parseos: [string, string, number | null][] = [
   ["he-IL", "3.5", 3.5],
   ["he-IL", "1,2,3", null],
   ["he-001", "2,000", 2000],
+  // Albanés (sq-AL): espacio duro de miles, coma decimal y «Lekë» detrás, sin miles en 4 cifras.
+  ["sq-AL", "1 234,50", 1234.5],
+  ["sq-AL", "1234,5", 1234.5],
+  ["sq-AL", "1\u00a0500\u00a0000\u00a0Lekë", 1500000],
+  ["sq-AL", "25 000 Lekë", 25000],
+  ["sq-AL", "-250,75", -250.75],
+  ["sq-AL", "20%", 20],
   // Serbio (sr-Latn-RS): punto de miles, coma decimal y «RSD» o «din.» detrás.
   ["sr-Latn-RS", "1.234,50", 1234.5],
   ["sr-Latn-RS", "1.234.567,25 RSD", 1234567.25],
@@ -309,18 +345,30 @@ const ambiguos: [string, string, number | null][] = [
   ["ro-RO", "5,000", null],
   ["sk-SK", "5 000", 5000],
   ["sk-SK", "5,000", null],
+  ["lv-LV", "5 000", 5000],
+  ["lv-LV", "5,000", null],
   ["cs-CZ", "5 000", 5000],
   ["cs-CZ", "5,000", null],
   ["el-GR", "5.000", 5000],
   ["el-GR", "5,000", null],
   ["mn-MN", "5,000", 5000],
   ["mn-MN", "5.000", null],
+  ["hy-AM", "5 000", 5000],
+  ["hy-AM", "5,000", null],
+  ["sl-SI", "5.000", 5000],
+  ["sl-SI", "5,000", null],
+  ["et-EE", "5 000", 5000],
+  ["et-EE", "5,000", null],
+  ["is-IS", "5.000", 5000],
+  ["is-IS", "5,000", null],
   ["bg-BG", "5 000", 5000],
   ["bg-BG", "5,000", null],
   ["ka-GE", "5 000", 5000],
   ["ka-GE", "5,000", null],
   ["hu-HU", "5 000", 5000],
   ["hu-HU", "5,000", null],
+  ["sq-AL", "5 000", 5000],
+  ["sq-AL", "5,000", null],
   ["sr-Latn-RS", "5.000", 5000],
   ["sr-Latn-RS", "5,000", null],
   ["hr-HR", "5.000", 5000],
@@ -663,8 +711,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-mn"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus", "zz-sk/polrocna-premia", "zz-ka/nakhevartsliuri-premia", "zz-hr/polugodisnja-nagrada", "zz-mn/khagas-jiliin-uramshuulal", "zz-hy/kisamyakayin-pargev", "zz-sq/bonus-gjashtemujor", "zz-sl/polletna-nagrada", "zz-et/poolaasta-preemia", "zz-is/halfsarsbonus", "zz-lv/pusgada-premija"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg", "zz-sk", "zz-ka", "zz-hr", "zz-mn", "zz-hy", "zz-sq", "zz-sl", "zz-et", "zz-is", "zz-lv"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -871,6 +919,27 @@ igual("reglas sk: texto bueno", reglasSk("Zadajte sumu a kliknite na „Vypočí
 for (const malo of ["Výše úvěru", "Zadejte částku", "alebo nebo", "Zadaj sumu", "Môžeš to zmeniť.", "pro Slovensko", "Co je to?", "Suma «nová»", "Toto je pre Vás."]) {
   verdad(`reglas sk: atrapa «${malo}»`, reglasSk(malo).length > 0);
 }
+// Letón: one/other de Intl.PluralRules, y el 0 exacto en genitivo plural («1 gads», «2 gadi», «10 gadi», «21 gads», «0 gadu»).
+igual(
+  "años en letón",
+  [0, 1, 2, 9, 10, 11, 20, 21, 22, 1.5].map((n) => formatearValorUnidad(n, "anios", "lv-LV")),
+  ["0 gadu", "1 gads", "2 gadi", "9 gadi", "10 gadi", "11 gadi", "20 gadi", "21 gads", "22 gadi", "1,5 gadi"],
+);
+igual("días en letón", [0, 1, 2, 10, 21, 1.5].map((n) => formatearValorUnidad(n, "dias", "lv-LV")), ["0 dienu", "1 diena", "2 dienas", "10 dienas", "21 diena", "1,5 dienas"]);
+igual("meses en letón", [0, 1, 2, 11, 21].map((n) => formatearValorUnidad(n, "meses", "lv-LV")), ["0 mēnešu", "1 mēnesis", "2 mēneši", "11 mēneši", "21 mēnesis"]);
+igual("pluralLv", [0, 1, 3, 10, 11, 21, 24].map((n) => pluralLv(n, "kalkulators", "kalkulatori", "kalkulatoru")), ["0 kalkulatoru", "1 kalkulators", "3 kalkulatori", "10 kalkulatori", "11 kalkulatori", "21 kalkulators", "24 kalkulatori"]);
+// Casos del nombre del país, sin preposición en el locativo.
+igual(
+  "gramática letona: lugar",
+  ["Latvija", "Vācija", "Ēģipte", "Vatikāns", "Filipīnas", "Bahamu salas", "Amerikas Savienotās Valstis", "Apvienotā Karaliste", "Ekvatoriālā Gvineja", "Jaunzēlande", "Dienvidāfrikas Republika", "Peru", "Bosnija un Hercegovina", "Mjanma (Birma)", "Apvienotie Arābu Emirāti", "Sentvinsenta un Grenadīnas", "Trinidāda un Tobāgo", "Mali", "Gvineja-Bisava"].map((p) => GRAMATICA.lv.en(p)),
+  ["Latvijā", "Vācijā", "Ēģiptē", "Vatikānā", "Filipīnās", "Bahamu salās", "Amerikas Savienotajās Valstīs", "Apvienotajā Karalistē", "Ekvatoriālajā Gvinejā", "Jaunzēlandē", "Dienvidāfrikas Republikā", "Peru", "Bosnijā un Hercegovinā", "Mjanmā (Birma)", "Apvienotajos Arābu Emirātos", "Sentvinsentā un Grenadīnās", "Trinidādā un Tobāgo", "Mali", "Gvinejā-Bisavā"],
+);
+igual(
+  "gramática letona: genitivo",
+  ["Latvija", "Vācija", "Ēģipte", "Filipīnas", "Amerikas Savienotās Valstis", "Apvienotā Karaliste", "Sentvinsenta un Grenadīnas", "Haiti"].map((p) => GRAMATICA.lv.de(p)),
+  ["Latvijas", "Vācijas", "Ēģiptes", "Filipīnu", "Amerikas Savienoto Valstu", "Apvienotās Karalistes", "Sentvinsentas un Grenadīnu", "Haiti"],
+);
+igual("gramática letona: para", ["Latvija", "Čīle", "Vatikāns", "Filipīnas", "Apvienotie Arābu Emirāti"].map((p) => GRAMATICA.lv.para(p)), ["Latvijai", "Čīlei", "Vatikānam", "Filipīnām", "Apvienotajiem Arābu Emirātiem"]);
 // Griego: one/other de Intl.PluralRules («1 έτος», «3 έτη», «1,5 έτη»).
 igual("años en griego", [1, 3, 1.5].map((n) => formatearValorUnidad(n, "anios", "el-GR")), ["1 έτος", "3 έτη", "1,5 έτη"]);
 igual("días en griego", [1, 2, 0.5].map((n) => formatearValorUnidad(n, "dias", "el-GR")), ["1 ημέρα", "2 ημέρες", "0,5 ημέρες"]);
@@ -897,6 +966,111 @@ igual("gramática mongola: en", ["Монгол", "Монгол Улс", "Гер�
 igual("gramática mongola: de y para", [GRAMATICA.mn.de("Монгол Улс"), GRAMATICA.mn.de("Франц"), GRAMATICA.mn.de("Соломоны арлууд"), GRAMATICA.mn.para("Монгол Улс"), GRAMATICA.mn.para("Сент-Винсент ба Гренадин")], ["Монгол Улсын", "Франц улсын", "Соломоны арлуудын", "Монгол Улсад зориулсан", "Сент-Винсент ба Гренадин улсад зориулсан"]);
 igual("reglas del mongol: lo correcto pasa", problemasDeTexto("Цалингаа оруулна уу. Та 3 өдөр амарна, 12-р сард 40 тооцоолуур.", "mn", "usted"), []);
 verdad("reglas del mongol: «чи», «ъ», exclamación, sufijo en cifra y plural tras número", ["Чи оруул.", "объект", "Тооцоолно уу!", "5-д нэмнэ", "20%-ийг хасна", "3 өдрүүд", "Тооцоолоорой", "зарплата"].every((t) => problemasDeTexto(t, "mn", "usted").length > 0));
+// Armenio (ADR 0002, D30).
+igual("unidades en armenio", [formatearValorUnidad(3, "dias", "hy-AM"), formatearValorUnidad(1, "anios", "hy-AM"), formatearValorUnidad(1.5, "anios", "hy-AM")], ["3 օր", "1 տարի", "1,5 տարի"]);
+igual("tieneMarcadores: {{anio}} solo, dato y texto sin nada", [tieneMarcadores("Aguinaldo {{anio}}"), tieneMarcadores("Aguinaldo {{ anio }}"), tieneMarcadores("Tope {{zz.tope}}"), tieneMarcadores("Sin nada")], [true, true, true, false]);
+igual("dram sin decimales de uso", [formatearMoneda(1234567.5, "hy-AM", "AMD").replace(/\s/g, " "), formatearMoneda(75000, "hy-AM", "AMD").replace(/\s/g, " "), decimalesDeMoneda("AMD", "hy-AM")], ["1 234 568 ֏", "75 000 ֏", 0]);
+igual("dram con decimales pedidos", formatearMoneda(1234567.5, "hy-AM", "AMD", 2).replace(/\s/g, " "), "1 234 567,50 ֏");
+igual("fecha larga en armenio", formatearFecha("2026-03-05", "hy-AM"), "5 մարտի, 2026 թ.");
+igual("ancho SEO del armenio", Math.round(anchoVisual("հաշվիչ") * 10) / 10, 7.8);
+igual("«և» inicial reformada", [mayusculaInicial("և ահա", "hy-AM"), mayusculaInicial("հաշվիչ", "hy-AM")], ["Եվ ահա", "Հաշվիչ"]);
+igual(
+  "gramática armenia: lugar",
+  ["Հայաստան", "Ֆրանսիա", "Կանադա", "Չիլի", "Պերու", "Մոնակո", "Զիմբաբվե", "Եգիպտոս", "Միացյալ Թագավորություն", "Միացյալ Նահանգներ", "Ֆիլիպիններ", "Բոսնիա և Հերցեգովինա", "Սենթ Վինսենթ և Գրենադիններ", "Մյանմա (Բիրմա)", "Հոնկոնգի ՀՎՇ", "Մեն կղզի", "Ուրուգվայ", "Zetaland"].map((p) => casosHy(p).lugar),
+  ["Հայաստանում", "Ֆրանսիայում", "Կանադայում", "Չիլիում", "Պերուում", "Մոնակոյում", "Զիմբաբվեում", "Եգիպտոսում", "Միացյալ Թագավորությունում", "Միացյալ Նահանգներում", "Ֆիլիպիններում", "Բոսնիա և Հերցեգովինայում", "Սենթ Վինսենթ և Գրենադիններում", "Մյանմայում", "Հոնկոնգում", "Մեն կղզում", "Ուրուգվայում", "Zetaland-ում"],
+);
+igual(
+  "gramática armenia: genitivo",
+  ["Հայաստան", "Ֆրանսիա", "Չիլի", "Մոնակո", "Միացյալ Թագավորություն", "Միացյալ Նահանգներ", "Բոսնիա և Հերցեգովինա", "Մեն կղզի", "Zetaland"].map((p) => casosHy(p).genitivo),
+  ["Հայաստանի", "Ֆրանսիայի", "Չիլիի", "Մոնակոյի", "Միացյալ Թագավորության", "Միացյալ Նահանգների", "Բոսնիա և Հերցեգովինայի", "Մեն կղզու", "Zetaland-ի"],
+);
+igual("gramática armenia: artículo", ["Հայաստան", "Կանադա", "Միացյալ Նահանգներ", "Zetaland"].map((p) => GRAMATICA.hy.nombre(p)), ["Հայաստանը", "Կանադան", "Միացյալ Նահանգները", "Zetaland-ը"]);
+igual("gramática armenia: para", [GRAMATICA.hy.para("Հայաստան"), GRAMATICA.hy.para("Ֆրանսիա")], ["Հայաստանի համար", "Ֆրանսիայի համար"]);
+igual("gramática armenia: una cifra no lleva sufijo", [casosHy("7").lugar, GRAMATICA.hy.para("7")], ["7", "7 համար"]);
+igual("buscador: armenio con signos", [normalizar("Ինչպե՞ս հաշվարկել եկամուտը։"), normalizar("Ձեր և մեր")], ["ինչպես հաշվարկել եկամուտը", "ձեր եվ մեր"]);
+// Albanés (ADR 0002, D31): one/other; lek sin decimales, con espacio duro de miles y sin miles en 4 cifras.
+igual("años en albanés", [1, 2, 5, 21, 1.5].map((n) => formatearValorUnidad(n, "anios", "sq-AL")), ["1 vit", "2 vjet", "5 vjet", "21 vjet", "1,5 vjet"]);
+igual("días, meses y horas en albanés", [formatearValorUnidad(1, "dias", "sq-AL"), formatearValorUnidad(2, "dias", "sq-AL"), formatearValorUnidad(2, "meses", "sq-AL"), formatearValorUnidad(3, "horas", "sq-AL")], ["1 ditë", "2 ditë", "2 muaj", "3 orë"]);
+igual("pluralSq", [1, 3, 21].map((n) => pluralSq(n, "kalkulator", "kalkulatorë")), ["1 kalkulator", "3 kalkulatorë", "21 kalkulatorë"]);
+igual("lek", [formatearMoneda(1234567, "sq-AL", "ALL"), formatearMoneda(1234, "sq-AL", "ALL")].map((x) => x.replace(/\s/g, " ")), ["1 234 567 Lekë", "1234 Lekë"]);
+igual("gramática albanesa: lugar", ["Shqipëri", "Francë", "Kili", "Brazil", "Mal i Zi", "Filipine", "SHBA", "Mbretëria e Bashkuar", "Zelandë e Re", "Kore e Jugut", "Maqedonia e Veriut", "Emiratet e Bashkuara Arabe", "Shën-Vincent dhe Grenadine"].map((p) => GRAMATICA.sq.en(p)), ["në Shqipëri", "në Francë", "në Kili", "në Brazil", "në Mal të Zi", "në Filipine", "në SHBA", "në Mbretërinë e Bashkuar", "në Zelandën e Re", "në Korenë e Jugut", "në Maqedoninë e Veriut", "në Emiratet e Bashkuara Arabe", "në Shën-Vincent dhe Grenadine"]);
+igual("gramática albanesa: de", ["Shqipëri", "Francë", "Zvicër", "Kili", "Irak", "Kanada", "Peru", "Monako", "Kenia", "Mal i Zi", "SHBA", "Filipine", "Afrika e Jugut", "Emiratet e Bashkuara Arabe", "Bosnjë-Hercegovinë", "Shën-Vincent dhe Grenadine"].map((p) => GRAMATICA.sq.de(p)), ["të Shqipërisë", "të Francës", "të Zvicrës", "të Kilit", "të Irakut", "të Kanadasë", "të Perusë", "të Monakos", "të Kenias", "të Malit të Zi", "të SHBA-së", "të Filipineve", "të Afrikës së Jugut", "të Emirateve të Bashkuara Arabe", "të Bosnjë-Hercegovinës", "të Shën-Vincentit dhe Grenadineve"]);
+igual("gramática albanesa: para", ["Shqipëri", "Gjermani", "Kosovë", "Brazil", "Mal i Zi", "SHBA", "Filipine", "Zelandë e Re"].map((p) => GRAMATICA.sq.para(p)), ["për Shqipërinë", "për Gjermaninë", "për Kosovën", "për Brazilin", "për Malin e Zi", "për SHBA-në", "për Filipinet", "për Zelandën e Re"]);
+igual("gramática albanesa: nombre", ["Shqipëri", "Kanada", "Irak", "Mal i Zi", "Filipine", "Shqipëria"].map((p) => GRAMATICA.sq.nombre(p)), ["Shqipëria", "Kanadaja", "Iraku", "Mali i Zi", "Filipinet", "Shqipëria"]);
+// Esloveno: one/two/few/other de Intl.PluralRules, con dual («1 leto», «2 leti», «3 leta», «5 let»).
+igual(
+  "años en esloveno",
+  [1, 2, 3, 4, 5, 11, 21, 101, 102, 103, 105, 1.5].map((n) => formatearValorUnidad(n, "anios", "sl-SI")),
+  ["1 leto", "2 leti", "3 leta", "4 leta", "5 let", "11 let", "21 let", "101 leto", "102 leti", "103 leta", "105 let", "1,5 leta"],
+);
+igual("días en esloveno", [1, 2, 3, 5, 21, 0.5].map((n) => formatearValorUnidad(n, "dias", "sl-SI")), ["1 dan", "2 dneva", "3 dni", "5 dni", "21 dni", "0,5 dni"]);
+igual("meses en esloveno", [1, 2, 3, 5, 12].map((n) => formatearValorUnidad(n, "meses", "sl-SI")), ["1 mesec", "2 meseca", "3 meseci", "5 mesecev", "12 mesecev"]);
+igual("semanas en esloveno", [1, 2, 3, 5].map((n) => formatearValorUnidad(n, "semanas", "sl-SI")), ["1 teden", "2 tedna", "3 tedni", "5 tednov"]);
+igual("horas en esloveno", [1, 2, 3, 5].map((n) => formatearValorUnidad(n, "horas", "sl-SI")), ["1 ura", "2 uri", "3 ure", "5 ur"]);
+igual("pluralSl", [1, 2, 3, 5, 101, 102].map((n) => pluralSl(n, "država", "državi", "države", "držav")), ["1 država", "2 državi", "3 države", "5 držav", "101 država", "102 državi"]);
+igual("euro en Eslovenia", [formatearMoneda(1234567.5, "sl-SI", "EUR").replace(/\s/g, " "), formatearMoneda(1234.5, "sl-SI", "EUR").replace(/\s/g, " ")], ["1.234.567,50 €", "1234,50 €"]);
+// Casos del nombre del país: genitivo, lugar con «v/na» y «za» + acusativo.
+igual(
+  "gramática eslovena: lugar",
+  ["Slovenija", "Hrvaška", "Nemčija", "Švica", "Črna gora", "Združene države Amerike", "Združeno kraljestvo", "Filipini", "Kanada", "Jamajka", "Ciper", "Nova Zelandija", "Bosna in Hercegovina", "Sveti Vincencij in Grenadine", "Združeni arabski emirati", "Peru", "Mali", "Cookovi otoki", "Južnoafriška republika", "Katar", "Japonska", "Maroko", "Otoki Turks in Caicos"].map((p) => GRAMATICA.sl.en(p)),
+  ["v Sloveniji", "na Hrvaškem", "v Nemčiji", "v Švici", "v Črni gori", "v Združenih državah Amerike", "v Združenem kraljestvu", "na Filipinih", "v Kanadi", "na Jamajki", "na Cipru", "na Novi Zelandiji", "v Bosni in Hercegovini", "na Svetem Vincenciju in Grenadinah", "v Združenih arabskih emiratih", "v Peruju", "v Maliju", "na Cookovih otokih", "v Južnoafriški republiki", "v Katarju", "na Japonskem", "v Maroku", "na Otokih Turks in Caicos"],
+);
+igual(
+  "gramática eslovena: genitivo",
+  ["Slovenija", "Hrvaška", "Črna gora", "Egipt", "Maroko", "Združene države Amerike", "Cookovi otoki", "Južnoafriška republika", "Singapur", "Mjanmar (Burma)"].map((p) => GRAMATICA.sl.de(p)),
+  ["Slovenije", "Hrvaške", "Črne gore", "Egipta", "Maroka", "Združenih držav Amerike", "Cookovih otokov", "Južnoafriške republike", "Singapurja", "Mjanmarja (Burma)"],
+);
+igual("gramática eslovena: para", ["Slovenija", "Hrvaška", "Črna gora", "Japonska", "Filipini", "Egipt"].map((p) => GRAMATICA.sl.para(p)), ["za Slovenijo", "za Hrvaško", "za Črno goro", "za Japonsko", "za Filipine", "za Egipt"]);
+// Reglas del esloveno: atrapan croatismos, tikanje y comillas; dejan pasar el esloveno de banco.
+for (const t of ["Unesite plaću.", "Mjesečna cijena.", "Plača i prispevki.", "Vnesi svojo plačo.", "To je za Vas in družino.", "dva meseci", "Rekel je «to»."]) verdad(`reglas sl atrapan «${t}»`, problemasDeTexto(t, "sl", "usted").length > 0);
+for (const t of ["Vnesite plačo in izračunajte dohodnino.", "Ti podatki so od kod?", "Debelost I. stopnje.", "Površina zemljišča."]) igual(`reglas sl dejan «${t}»`, problemasDeTexto(t, "sl", "usted"), []);
+igual("fecha en genitivo", [fechaGenSl("15. oktober 2026"), fechaGenSl("1. marec"), fechaGenSl("2026")], ["15. oktobra 2026", "1. marca", "2026"]);
+// Estonio: one/other con partitivo singular detrás del número (fracciones incluidas).
+igual(
+  "unidades en estonio",
+  [1, 2, 5, 21, 1.5].flatMap((n) => [formatearValorUnidad(n, "anios", "et-EE"), formatearValorUnidad(n, "dias", "et-EE")]),
+  ["1 aasta", "1 päev", "2 aastat", "2 päeva", "5 aastat", "5 päeva", "21 aastat", "21 päeva", "1,5 aastat", "1,5 päeva"],
+);
+igual("meses, semanas y horas en estonio", [1, 3].flatMap((n) => [formatearValorUnidad(n, "meses", "et-EE"), formatearValorUnidad(n, "semanas", "et-EE"), formatearValorUnidad(n, "horas", "et-EE")]), ["1 kuu", "1 nädal", "1 tund", "3 kuud", "3 nädalat", "3 tundi"]);
+igual("euro en Estonia", [formatearMoneda(1234567.5, "et-EE", "EUR").replace(/\s/g, " "), formatearMoneda(1234.5, "et-EE", "EUR").replace(/\s/g, " ")], ["1 234 567,50 €", "1234,50 €"]);
+igual(
+  "gramática estonia: lugar",
+  ["Eesti", "Soome", "Saksamaa", "Prantsusmaa", "Läti", "Hispaania", "Šveits", "Portugal", "Jaapan", "Egiptus", "Laos", "Malta", "Küpros", "Island", "Uus-Meremaa", "Filipiinid", "Maldiivid", "Ameerika Ühendriigid", "Araabia Ühendemiraadid", "Ühendkuningriik", "Dominikaani Vabariik", "Lõuna-Aafrika Vabariik", "Saalomoni Saared", "Cooki saared", "Kongo DV", "Myanmar (Birma)", "Bosnia ja Hertsegoviina", "Saint Vincent ja Grenadiinid", "Trinidad ja Tobago", "Uruguay", "Iraak"].map((p) => GRAMATICA.et.en(p)),
+  ["Eestis", "Soomes", "Saksamaal", "Prantsusmaal", "Lätis", "Hispaanias", "Šveitsis", "Portugalis", "Jaapanis", "Egiptuses", "Laoses", "Maltal", "Küprosel", "Islandil", "Uus-Meremaal", "Filipiinidel", "Maldiividel", "Ameerika Ühendriikides", "Araabia Ühendemiraatides", "Ühendkuningriigis", "Dominikaani Vabariigis", "Lõuna-Aafrika Vabariigis", "Saalomoni Saartel", "Cooki saartel", "Kongo DV-s", "Myanmaris (Birma)", "Bosnias ja Hertsegoviinas", "Saint Vincentil ja Grenadiinidel", "Trinidadil ja Tobagol", "Uruguays", "Iraagis"],
+);
+igual(
+  "gramática estonia: genitivo",
+  ["Eesti", "Saksamaa", "Portugal", "Egiptus", "Küpros", "Filipiinid", "Ameerika Ühendriigid", "Dominikaani Vabariik", "Saint Vincent ja Grenadiinid", "Kongo DV"].map((p) => GRAMATICA.et.de(p)),
+  ["Eesti", "Saksamaa", "Portugali", "Egiptuse", "Küprose", "Filipiinide", "Ameerika Ühendriikide", "Dominikaani Vabariigi", "Saint Vincenti ja Grenadiinide", "Kongo DV"],
+);
+igual("gramática estonia: para", ["Eesti", "Saksamaa", "Portugal"].map((p) => GRAMATICA.et.para(p)), ["Eesti jaoks", "Saksamaa jaoks", "Portugali jaoks"]);
+// Reglas del estonio: atrapan «teie», comillas, finés y sufijos en cifras; dejan pasar el estonio de banco.
+for (const t of ["Sisestage summa.", "Teie kuumakse on väiksem.", "Palkka ja verot.", "Ta ütles «see».", "Summa 100-ga.", "Laen 1 aastat."]) verdad(`reglas et atrapan «${t}»`, problemasDeTexto(t, "et", "tu").length > 0);
+for (const t of ["Sisesta palk ja arvuta netopalk.", "Laen 21 kuud.", "Laenu tähtaeg: 1 aasta.", "Vali „Arvuta“.", "Laen 11 aastat.", "Tulumaks ja sotsiaalmaks."]) igual(`reglas et dejan «${t}»`, problemasDeTexto(t, "et", "tu"), []);
+// Islandés: one/other de Intl.PluralRules (lo que termina en 1 salvo 11) y corona sin decimales con «kr.».
+igual("años en islandés", [1, 2, 11, 21].map((n) => formatearValorUnidad(n, "anios", "is-IS")), ["1 ár", "2 ár", "11 ár", "21 ár"]);
+igual("días en islandés", [1, 2, 11, 21, 31, 101, 111, 1.5].map((n) => formatearValorUnidad(n, "dias", "is-IS")), ["1 dagur", "2 dagar", "11 dagar", "21 dagur", "31 dagur", "101 dagur", "111 dagar", "1,5 dagar"]);
+igual("meses en islandés", [1, 2, 21].map((n) => formatearValorUnidad(n, "meses", "is-IS")), ["1 mánuður", "2 mánuðir", "21 mánuður"]);
+igual("pluralIs", [1, 2, 11, 21].map((n) => pluralIs(n, "land", "lönd")), ["1 land", "2 lönd", "11 lönd", "21 land"]);
+igual("formaIs con texto", formaIs("21", "dagur", "dagar"), "dagur");
+// Node da «kr.» y Chromium «ISK» (la página de Islandia no hidrataba): el símbolo tiene que ser propio.
+igual("mercados en ISK con simbolos propios", registroReal.paises.filter((p) => p.mercado.monedas.includes("ISK")).map((p) => [p.mercado.codigo, p.mercado.simbolos?.ISK]), [["is", "kr."]]);
+igual("corona con simbolo propio", formatearMoneda(1234567.5, "is-IS", "ISK", undefined, "kr.").replace(/\s/g, " "), "1.234.568 kr.");
+igual("corona en Islandia", [formatearMoneda(1234567.5, "is-IS", "ISK").replace(/\s/g, " "), formatearMoneda(1234.5, "is-IS", "ISK").replace(/\s/g, " ")], ["1.234.568 kr.", "1.235 kr."]);
+igual(
+  "gramática islandesa: lugar",
+  ["Ísland", "Þýskaland", "Noregur", "Spánn", "Danmörk", "Svíþjóð", "Bandaríkin", "Sameinuðu arabísku furstadæmin", "Sankti Vinsent og Grenadíneyjar", "Færeyjar", "Filippseyjar", "Ítalía", "Kenía", "Kanada", "Perú", "Pakistan", "Nýja-Sjáland", "Kýpur", "Dóminíska lýðveldið", "Suður-Kórea", "Fílabeinsströndin", "Bosnía og Hersegóvína", "Mjanmar (Búrma)", "Jólaey"].map((p) => GRAMATICA.is.en(p)),
+  ["á Íslandi", "í Þýskalandi", "í Noregi", "á Spáni", "í Danmörku", "í Svíþjóð", "í Bandaríkjunum", "í Sameinuðu arabísku furstadæmunum", "á Sankti Vinsent og Grenadíneyjum", "í Færeyjum", "á Filippseyjum", "á Ítalíu", "í Keníu", "í Kanada", "í Perú", "í Pakistan", "á Nýja-Sjálandi", "á Kýpur", "í Dóminíska lýðveldinu", "í Suður-Kóreu", "á Fílabeinsströndinni", "í Bosníu og Hersegóvínu", "í Mjanmar (Búrma)", "á Jólaey"],
+);
+igual(
+  "gramática islandesa: genitivo",
+  ["Ísland", "Þýskaland", "Noregur", "Spánn", "Danmörk", "Svíþjóð", "Bandaríkin", "Sviss", "Japan", "Grænhöfðaeyjar", "Kenía", "Dóminíska lýðveldið"].map((p) => GRAMATICA.is.de(p)),
+  ["Íslands", "Þýskalands", "Noregs", "Spánar", "Danmerkur", "Svíþjóðar", "Bandaríkjanna", "Sviss", "Japans", "Grænhöfðaeyja", "Keníu", "Dóminíska lýðveldisins"],
+);
+igual("gramática islandesa: para", ["Ísland", "Noregur", "Spánn", "Bandaríkin", "Kenía", "Danmörk"].map((p) => GRAMATICA.is.para(p)), ["fyrir Ísland", "fyrir Noreg", "fyrir Spán", "fyrir Bandaríkin", "fyrir Keníu", "fyrir Danmörku"]);
+// Reglas del islandés: atrapan la «þérun», las comillas y los textos de otro idioma nórdico.
+for (const t of ["Reiknið launin.", "Þetta er fyrir yður.", "Þér getið reiknað.", "Sagði «þetta».", "Beregn lånet.", "Greiðir 500 kr á mánuði."]) verdad(`reglas is atrapan «${t}»`, problemasIs(t, "is", "tu").length > 0);
+for (const t of ["Sláðu inn launin og reiknaðu staðgreiðsluna.", "Það er gott fyrir þér.", "Þú borgar 500 kr. á mánuði.", "Hvað er „þetta“?"]) igual(`reglas is dejan «${t}»`, problemasIs(t, "is", "tu"), []);
 igual("unidades en búlgaro", [1, 3].flatMap((n) => [formatearValorUnidad(n, "dias", "bg-BG"), formatearValorUnidad(n, "horas", "bg-BG"), formatearValorUnidad(n, "anios", "bg-BG")]), ["1 ден", "1 час", "1 година", "3 дни", "3 часа", "3 години"]);
 igual("euro en Bulgaria", formatearMoneda(1234.5, "bg-BG", "EUR").replace(/\s/g, " "), "1234,50 €");
 igual("gramática búlgara: en", ["България", "Германия", "Франция", "Виетнам", "Съединени щати", "Малдиви", "Бахамски острови", "Филипини"].map(GRAMATICA.bg.en), ["в България", "в Германия", "във Франция", "във Виетнам", "в Съединените щати", "на Малдивите", "на Бахамските острови", "във Филипините"]);

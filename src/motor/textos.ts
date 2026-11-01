@@ -50,6 +50,30 @@ const ZH_HANS_MOTOR: TextosMotor = {
 
 // Solo texto con {marcadores}, sin funciones: así el diccionario se puede serializar.
 export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
+  // Letón (ADR 0002, D35): imperativo de segunda del plural; el botón en infinitivo, como VID EDS y los bancos.
+  lv: {
+    base: {
+      calcular: "Aprēķināt",
+      resultado: "Rezultāts",
+      si: "Jā",
+      no: "Nē",
+      sinResultado: "Šo rezultātu pagaidām nerādām.",
+      errores: {
+        requerido: "Aizpildiet šo lauku.",
+        "numero-invalido": "Ievadiet skaitli, piemēram, {ejemplo}.",
+        "entero-invalido": "Ievadiet veselu skaitli bez decimāldaļas.",
+        "menor-que-min": "Mazākā atļautā vērtība: {min}.",
+        "mayor-que-max": "Lielākā atļautā vērtība: {max}.",
+        "fecha-invalida": "Izvēlieties derīgu datumu.",
+        "hora-invalida": "Izvēlieties derīgu laiku.",
+        "opcion-invalida": "Izvēlieties vienu no iespējām.",
+        "region-invalida": "Izvēlieties reģionu.",
+        "calculo-fallido": "Ar šiem datiem aprēķināt neizdevās. Pārbaudiet vērtības un mēģiniet vēlreiz.",
+      },
+      milesAmbiguos: "Vai domājāt {sugerido}? Ievadiet skaitli bez {signos}.",
+      separadores: { punto: "punktiem", coma: "komatiem" },
+    },
+  },
   es: {
     base: {
       calcular: "Calcular",
@@ -796,6 +820,29 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
     },
   },
   // Búlgaro (ADR 0002, D24): 2.ª del plural, como ДСК y НАП. El botón va en imperativo cortés.
+  hy: {
+    base: {
+      calcular: "Հաշվարկել",
+      resultado: "Արդյունք",
+      si: "Այո",
+      no: "Ոչ",
+      sinResultado: "Այս արդյունքը դեռ չենք ցուցադրում։",
+      errores: {
+        requerido: "Լրացրեք այս դաշտը։",
+        "numero-invalido": "Մուտքագրեք թիվ, օրինակ՝ {ejemplo}։",
+        "entero-invalido": "Մուտքագրեք ամբողջ թիվ՝ առանց տասնորդականների։",
+        "menor-que-min": "Նվազագույն թույլատրելի արժեքը՝ {min}։",
+        "mayor-que-max": "Առավելագույն թույլատրելի արժեքը՝ {max}։",
+        "fecha-invalida": "Ընտրեք ճիշտ ամսաթիվ։",
+        "hora-invalida": "Ընտրեք ճիշտ ժամ։",
+        "opcion-invalida": "Ընտրեք տարբերակներից մեկը։",
+        "region-invalida": "Ընտրեք մարզը։",
+        "calculo-fallido": "Այս տվյալներով հնարավոր չեղավ հաշվարկել։ Ստուգեք արժեքները և փորձեք նորից։",
+      },
+      milesAmbiguos: "Գուցե նկատի ունեի՞ք՝ {sugerido}։ Մուտքագրեք թիվն առանց այս նշանների՝ {signos}։",
+      separadores: { punto: "կետերի", coma: "ստորակետերի" },
+    },
+  },
   bg: {
     base: {
       calcular: "Изчислете",
@@ -939,6 +986,105 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       },
       milesAmbiguos: "Jeste li mislili {sugerido}? Unesite broj bez {signos}.",
       separadores: { punto: "točaka", coma: "zareza" },
+    },
+  },
+  // Albanés (ADR 0002, D31): «ju» en minúscula, como e-Albania, Tatime y Raiffeisen Albania. El botón va en
+  // la forma corta de las interfaces albanesas («Llogarit»); las oraciones, en 2.ª del plural («vendosni»).
+  sq: {
+    base: {
+      calcular: "Llogarit",
+      resultado: "Rezultati",
+      si: "Po",
+      no: "Jo",
+      sinResultado: "Këtë rezultat nuk e shfaqim për momentin.",
+      errores: {
+        requerido: "Plotësoni këtë fushë.",
+        "numero-invalido": "Vendosni një numër, për shembull {ejemplo}.",
+        "entero-invalido": "Vendosni një numër të plotë, pa presje dhjetore.",
+        "menor-que-min": "Vlera më e ulët e lejuar është {min}.",
+        "mayor-que-max": "Vlera më e lartë e lejuar është {max}.",
+        "fecha-invalida": "Zgjidhni një datë të saktë.",
+        "hora-invalida": "Zgjidhni një orë të saktë.",
+        "opcion-invalida": "Zgjidhni një nga opsionet e dhëna.",
+        "region-invalida": "Zgjidhni një rajon.",
+        "calculo-fallido": "Me këto të dhëna llogaritja nuk u krye. Kontrolloni vlerat dhe provoni përsëri.",
+      },
+      milesAmbiguos: "Mos doni të thoni {sugerido}? Vendoseni numrin pa {signos}.",
+      separadores: { punto: "pika", coma: "presje" },
+    },
+  },
+  // Esloveno (ADR 0002, D32): vikanje con «vi» en minúscula, como los bancos y eDavki. El botón va en la
+  // forma corta («Izračunaj»); las oraciones, en imperativo de segunda del plural («vnesite», «izberite»).
+  sl: {
+    base: {
+      calcular: "Izračunaj",
+      resultado: "Rezultat",
+      si: "Da",
+      no: "Ne",
+      sinResultado: "Tega rezultata zaenkrat ne prikazujemo.",
+      errores: {
+        requerido: "Izpolnite to polje.",
+        "numero-invalido": "Vnesite število, na primer {ejemplo}.",
+        "entero-invalido": "Vnesite celo število, brez decimalk.",
+        "menor-que-min": "Najmanjša dovoljena vrednost je {min}.",
+        "mayor-que-max": "Največja dovoljena vrednost je {max}.",
+        "fecha-invalida": "Izberite veljaven datum.",
+        "hora-invalida": "Izberite veljaven čas.",
+        "opcion-invalida": "Izberite eno od ponujenih možnosti.",
+        "region-invalida": "Izberite regijo.",
+        "calculo-fallido": "S temi podatki izračun ni uspel. Preverite vrednosti in poskusite znova.",
+      },
+      milesAmbiguos: "Ste mislili {sugerido}? Vnesite število brez {signos}.",
+      separadores: { punto: "pik", coma: "vejic" },
+    },
+  },
+  // Estonio (ADR 0002, D33): «sina», como las calculadoras de los bancos; el botón es «Arvuta».
+  et: {
+    base: {
+      calcular: "Arvuta",
+      resultado: "Tulemus",
+      si: "Jah",
+      no: "Ei",
+      sinResultado: "Seda tulemust me praegu ei näita.",
+      errores: {
+        requerido: "Täida see väli.",
+        "numero-invalido": "Sisesta arv, näiteks {ejemplo}.",
+        "entero-invalido": "Sisesta täisarv, ilma komakohtadeta.",
+        "menor-que-min": "Väikseim lubatud väärtus: {min}.",
+        "mayor-que-max": "Suurim lubatud väärtus: {max}.",
+        "fecha-invalida": "Vali kehtiv kuupäev.",
+        "hora-invalida": "Vali kehtiv kellaaeg.",
+        "opcion-invalida": "Vali üks pakutud valikutest.",
+        "region-invalida": "Vali piirkond.",
+        "calculo-fallido": "Nende andmetega arvutus ei õnnestunud. Kontrolli väärtusi ja proovi uuesti.",
+      },
+      milesAmbiguos: "Kas mõtlesid {sugerido}? Sisesta arv nii, et selles pole {signos}.",
+      separadores: { punto: "punkte", coma: "komasid" },
+    },
+  },
+  // Islandés (ADR 0002, D34): «þú» e imperativo de singular, como Skatturinn y los bancos. El botón va en
+  // infinitivo («Reikna»).
+  is: {
+    base: {
+      calcular: "Reikna",
+      resultado: "Niðurstaða",
+      si: "Já",
+      no: "Nei",
+      sinResultado: "Við sýnum ekki þessa niðurstöðu að svo stöddu.",
+      errores: {
+        requerido: "Fylltu út þennan reit.",
+        "numero-invalido": "Sláðu inn tölu, til dæmis {ejemplo}.",
+        "entero-invalido": "Sláðu inn heila tölu, án aukastafa.",
+        "menor-que-min": "Lægsta leyfilega gildið er {min}.",
+        "mayor-que-max": "Hæsta leyfilega gildið er {max}.",
+        "fecha-invalida": "Veldu gilda dagsetningu.",
+        "hora-invalida": "Veldu gildan tíma.",
+        "opcion-invalida": "Veldu einn af möguleikunum.",
+        "region-invalida": "Veldu svæði.",
+        "calculo-fallido": "Ekki tókst að reikna með þessum gögnum. Athugaðu gildin og reyndu aftur.",
+      },
+      milesAmbiguos: "Áttir þú við {sugerido}? Sláðu inn töluna án {signos}.",
+      separadores: { punto: "punkta", coma: "kommu" },
     },
   },
 };

@@ -194,9 +194,11 @@ export default async function VerInformeIntl({ params, searchParams }: Props) {
             <ul className="cy-informe-fuentes">
               {pagina.sello.fuentes.map((f) => (
                 <li key={f.url}>
-                  <strong>{f.organismo}</strong>. {f.titulo}
+                  <strong>{f.organismo}</strong>{m.idioma === "hy" ? "։" : "."} {f.titulo}
                   {coma(m.idioma)}
-                  {tv.verificado} {formatearFecha(f.verificadoEl, m.locale)}.{" "}
+                  {tv.verificado} {formatearFecha(f.verificadoEl, m.locale)}
+                  {/* En armenio la fecha de Intl ya cierra con «թ.» (ADR 0002, D30). */}
+                  {m.idioma === "hy" ? "" : "."}{" "}
                   <a href={f.url} rel="noopener" target="_blank">
                     {f.url}
                   </a>

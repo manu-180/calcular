@@ -24,7 +24,8 @@ const CABECERAS_INCOMPLETA = { "cache-control": "public, max-age=300, s-maxage=6
 // el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
 // Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
 // Tampoco georgiano: la edición ka pide Noto Sans Georgian (ADR 0002, D26).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uz: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", ka: "Noto Sans Georgian" };
+// Tampoco armenio: la edición hy pide Noto Sans Armenian (ADR 0002, D30).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uz: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", ka: "Noto Sans Georgian", hy: "Noto Sans Armenian" };
 const ESPERA_MS = 3000;
 
 async function fuente(familia: string, peso: number, texto: string): Promise<ArrayBuffer | null> {

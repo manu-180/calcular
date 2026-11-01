@@ -3,6 +3,7 @@ import type { Idioma } from "../tipos";
 // Slug de «Sueldos reales» por idioma, igual en todas las ediciones de un idioma (como SLUG_MUNDO).
 // check_sueldos falla si alguno choca con una calculadora o una página del registro.
 export const SLUG_SUELDOS: Record<Idioma, string> = {
+  sq: "pagat-reale",
   es: "sueldos-reales",
   pt: "salarios-reais",
   en: "real-salaries",
@@ -15,6 +16,11 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   zh: "zhenshi-xinzi",
   bg: "realni-zaplati",
   mn: "bodit-tsalin",
+  hy: "irakan-ashkhatavardzer",
+  sl: "dejanske-place",
+  et: "tegelikud-palgad",
+  is: "raunveruleg-laun",
+  lv: "realas-algas",
 
   pl: "prawdziwe-zarobki",
   sv: "verkliga-loner",

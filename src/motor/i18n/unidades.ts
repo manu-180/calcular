@@ -18,11 +18,16 @@ export type UnidadDeTiempo = "dias" | "semanas" | "horas" | "meses" | "anios";
 // fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
 // En croata "uno" es 1, 21, 31... (no 11), "pocos" 2 a 4, 22 a 24... (no 12 a 14) y "otros" el resto,
 // fracciones incluidas: «1 dan», «2 dana», «5 dana», «21 dan», «1,5 godina».
+// En esloveno, "dual" es la categoría "two" (2, 102...): «2 dneva», «2 leti»; ADR 0002, D32.
+// En letón "uno" es 1, 21, 31... (no 11) y "otros" el resto (2, 10, 11, 1,5), fracciones incluidas; "cero"
+// es la forma del 0 exacto, en genitivo plural: «1 gads», «2 gadi», «10 gadi», «21 gads», «0 gadu».
 export interface FormasUnidad {
   uno: string;
+  dual?: string;
   otros: string;
   pocos?: string;
   muchos?: string;
+  cero?: string;
 }
 
 type Formas = Readonly<Record<UnidadDeTiempo, FormasUnidad | FormasAr | FormasHe>>;
@@ -51,6 +56,9 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   nb: { dias: { uno: "dag", otros: "dager" }, semanas: { uno: "uke", otros: "uker" }, horas: { uno: "time", otros: "timer" }, meses: { uno: "måned", otros: "måneder" }, anios: { uno: "år", otros: "år" } },
   // Finés: tras un número distinto de 1 (fracciones incluidas) el sustantivo va en partitivo singular.
   fi: { dias: { uno: "päivä", otros: "päivää" }, semanas: { uno: "viikko", otros: "viikkoa" }, horas: { uno: "tunti", otros: "tuntia" }, meses: { uno: "kuukausi", otros: "kuukautta" }, anios: { uno: "vuosi", otros: "vuotta" } },
+  // Estonio: tras un número distinto de 1 (fracciones incluidas) el sustantivo va en partitivo singular
+  // («1 aasta», «2 aastat», «5 päeva», «1,5 tundi»; ADR 0002, D33).
+  et: { dias: { uno: "päev", otros: "päeva" }, semanas: { uno: "nädal", otros: "nädalat" }, horas: { uno: "tund", otros: "tundi" }, meses: { uno: "kuu", otros: "kuud" }, anios: { uno: "aasta", otros: "aastat" } },
   ar: {
     dias: { uno: "يوم واحد", dos: "يومان", pocos: "{n} أيام", muchos: "{n} يومًا", otros: "{n} يوم" },
     semanas: { uno: "أسبوع واحد", dos: "أسبوعان", pocos: "{n} أسابيع", muchos: "{n} أسبوعًا", otros: "{n} أسبوع" },
@@ -104,10 +112,21 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   ka: { dias: { uno: "დღე", otros: "დღე" }, semanas: { uno: "კვირა", otros: "კვირა" }, horas: { uno: "საათი", otros: "საათი" }, meses: { uno: "თვე", otros: "თვე" }, anios: { uno: "წელი", otros: "წელი" } },
   hu: { dias: { uno: "nap", otros: "nap" }, semanas: { uno: "hét", otros: "hét" }, horas: { uno: "óra", otros: "óra" }, meses: { uno: "hónap", otros: "hónap" }, anios: { uno: "év", otros: "év" } },
   // Búlgaro: «час» y «месец» van en forma numérica detrás de un número («5 часа», «3 месеца»).
+  // Armenio: el sustantivo no cambia detrás de un número («3 օր», «1,5 տարի»); D30.
+  hy: { dias: { uno: "օր", otros: "օր" }, semanas: { uno: "շաբաթ", otros: "շաբաթ" }, horas: { uno: "ժամ", otros: "ժամ" }, meses: { uno: "ամիս", otros: "ամիս" }, anios: { uno: "տարի", otros: "տարի" } },
+  // Albanés (ADR 0002, D31): «1 vit», «2 vjet»; ditë, javë, orë y muaj no cambian.
+  sq: { dias: { uno: "ditë", otros: "ditë" }, semanas: { uno: "javë", otros: "javë" }, horas: { uno: "orë", otros: "orë" }, meses: { uno: "muaj", otros: "muaj" }, anios: { uno: "vit", otros: "vjet" } },
   bg: { dias: { uno: "ден", otros: "дни" }, semanas: { uno: "седмица", otros: "седмици" }, horas: { uno: "час", otros: "часа" }, meses: { uno: "месец", otros: "месеца" }, anios: { uno: "година", otros: "години" } },
   // El mongol no pone plural después de un número («3 өдөр», «1.5 жил»): las dos formas son iguales.
   mn: { dias: { uno: "өдөр", otros: "өдөр" }, semanas: { uno: "долоо хоног", otros: "долоо хоног" }, horas: { uno: "цаг", otros: "цаг" }, meses: { uno: "сар", otros: "сар" }, anios: { uno: "жил", otros: "жил" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
+  lv: {
+    dias: { uno: "diena", otros: "dienas", cero: "dienu" },
+    semanas: { uno: "nedēļa", otros: "nedēļas", cero: "nedēļu" },
+    horas: { uno: "stunda", otros: "stundas", cero: "stundu" },
+    meses: { uno: "mēnesis", otros: "mēneši", cero: "mēnešu" },
+    anios: { uno: "gads", otros: "gadi", cero: "gadu" },
+  },
   // Serbio en latinica y ekavski (ADR 0002, D23).
   sr: {
     dias: { uno: "dan", pocos: "dana", otros: "dana" },
@@ -132,6 +151,23 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
     horas: { uno: "sat", pocos: "sata", otros: "sati" },
     meses: { uno: "mjesec", pocos: "mjeseca", otros: "mjeseci" },
     anios: { uno: "godina", pocos: "godine", otros: "godina" },
+  },
+  // Esloveno (ADR 0002, D32): con dual. «uno» es 1, 101..., «dual» 2, 102..., «pocos» 3, 4, 103... y las
+  // fracciones («1,5 leta»), «otros» el resto: «1 dan», «2 dneva», «3 dni», «5 dni»; «1 leto», «2 leti», «3 leta», «5 let».
+  sl: {
+    dias: { uno: "dan", dual: "dneva", pocos: "dni", otros: "dni" },
+    semanas: { uno: "teden", dual: "tedna", pocos: "tedni", otros: "tednov" },
+    horas: { uno: "ura", dual: "uri", pocos: "ure", otros: "ur" },
+    meses: { uno: "mesec", dual: "meseca", pocos: "meseci", otros: "mesecev" },
+    anios: { uno: "leto", dual: "leti", pocos: "leta", otros: "let" },
+  },
+  // Islandés (ADR 0002, D34): one/other de Intl.PluralRules («1 dagur», «2 dagar», «21 dagur», «11 dagar»).
+  is: {
+    dias: { uno: "dagur", otros: "dagar" },
+    semanas: { uno: "vika", otros: "vikur" },
+    horas: { uno: "klukkustund", otros: "klukkustundir" },
+    meses: { uno: "mánuður", otros: "mánuðir" },
+    anios: { uno: "ár", otros: "ár" },
   },
 };
 

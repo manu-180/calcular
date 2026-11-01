@@ -181,6 +181,48 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент-Винсент ба Гренадин", locale: "mn-MN", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "sb" as CodigoMercado, pais: "SB", nombrePais: "Соломоны арлууд", locale: "mn-MN", trato: "usted", moneda: "SBD" as Moneda, escala: 8 },
   ],
+  // Armenio (ADR 0002, D30): dram con «֏» detrás, «Սենթ Վինսենթ և Գրենադիններ» por el nombre largo con «և»
+  // («Սենթ Վինսենթ և Գրենադիններում») y «Միացյալ Նահանգներ» por el plural.
+  hy: [
+    { mercado: "am" as CodigoMercado, pais: "AM", nombrePais: "Հայաստան", locale: "hy-AM", trato: "usted", moneda: "AMD" as Moneda, escala: 400 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Սենթ Վինսենթ և Գրենադիններ", locale: "hy-AM", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "Միացյալ Նահանգներ", locale: "hy-AM", trato: "usted", moneda: "USD" as Moneda, escala: 1 },
+  ],
+  // Albanés (ADR 0002, D31): lek sin decimales detrás; un nombre largo que se declina por partes («të
+  // Shën-Vincentit dhe Grenadineve») y uno plural con adjetivos («në Emiratet e Bashkuara Arabe»).
+  sq: [
+    { mercado: "al" as CodigoMercado, pais: "AL", nombrePais: "Shqipëri", locale: "sq-AL", trato: "usted", moneda: "ALL" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Shën-Vincent dhe Grenadine", locale: "sq-AL", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Emiratet e Bashkuara Arabe", locale: "sq-AL", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Esloveno (ADR 0002, D32): euro detrás con punto de miles; un nombre largo que se declina por partes («na
+  // Svetem Vincenciju in Grenadinah») y uno plural con adjetivos delante («v Združenih arabskih emiratih»).
+  sl: [
+    { mercado: "si" as CodigoMercado, pais: "SI", nombrePais: "Slovenija", locale: "sl-SI", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sveti Vincencij in Grenadine", locale: "sl-SI", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Združeni arabski emirati", locale: "sl-SI", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Estonio (ADR 0002, D33): euro detrás con espacio de miles; un nombre largo que se declina por partes
+  // («Saint Vincentil ja Grenadiinidel») y uno plural de tabla («Araabia Ühendemiraatides»).
+  et: [
+    { mercado: "ee" as CodigoMercado, pais: "EE", nombrePais: "Eesti", locale: "et-EE", trato: "tu", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent ja Grenadiinid", locale: "et-EE", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Araabia Ühendemiraadid", locale: "et-EE", trato: "tu", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Islandés (ADR 0002, D34): coronas sin decimales con «kr.» detrás y punto de miles; un nombre largo con
+  // «á» y plural («á Sankti Vinsent og Grenadíneyjum») y uno plural con adjetivos («í Sameinuðu arabísku furstadæmunum»).
+  is: [
+    { mercado: "is" as CodigoMercado, pais: "IS", nombrePais: "Ísland", locale: "is-IS", trato: "tu", moneda: "ISK" as Moneda, escala: 150 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sankti Vinsent og Grenadíneyjar", locale: "is-IS", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Sameinuðu arabísku furstadæmin", locale: "is-IS", trato: "tu", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Letón (ADR 0002, D35): euro detrás, con espacio de miles desde 5 cifras; un nombre largo que se declina
+  // por partes («Sentvinsentā un Grenadīnās») y uno plural con adjetivo («Apvienotajos Arābu Emirātos»).
+  lv: [
+    { mercado: "lv" as CodigoMercado, pais: "LV", nombrePais: "Latvija", locale: "lv-LV", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sentvinsenta un Grenadīnas", locale: "lv-LV", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Apvienotie Arābu Emirāti", locale: "lv-LV", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
   bg: [
     { mercado: "bg" as CodigoMercado, pais: "BG", nombrePais: "България", locale: "bg-BG", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сейнт Винсънт и Гренадини", locale: "bg-BG", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },

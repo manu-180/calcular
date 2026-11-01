@@ -1680,3 +1680,326 @@ plural detrás de un número y rusismos («зарплата», «калькул�
 **Fuente.** Geist no trae ө ni ү: la tarjeta OG usa Noto Sans de respaldo, como ru y bg. La edición interna es
 `zz-mn` («Зеталанд», mn-001). Mercados de prueba en `check_universales`: Монгол Улс con MNT y nombres largos
 («Бүгд Найрамдах Доминикан Улс», «Сент-Винсент ба Гренадин», «Соломоны арлууд»).
+
+### D30. Armenio (2026-11-01)
+
+D25 a D29 los usan ramas sin mergear; esta entrada toma el D30 para no chocar.
+
+`IDIOMAS` suma `hy`, para Armenia. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados,
+«Tu sueldo en el mundo» (`ashkhatavardzy-ashkharhum`), rankings (`yerkrneri-varkanish`), horas de trabajo
+(`kani-zham-ashkhatank`), calendario (`ashkhatankayin-oratsuyts`), sueldos reales (`irakan-ashkhatavardzer`), el
+diccionario de venta y las 41 universales están en armenio oriental, ortografía reformada de Armenia. Los slugs de
+sección van en `SECCIONES`, sin carpetas.
+
+**Registro.** Uno solo, el de los bancos y servicios: «Դուք» con formas corteses («մուտքագրեք», «հաշվարկեք», «ունեք»),
+botones en infinitivo («Հաշվարկել»). «Դուք», «Ձեր», «Ձեզ» siempre con mayúscula, como Ակբա բանկ («Ապահովեք Ձեր
+ներդրումների...», acba.am, leído el 01/11/2026). ameriabank.am no se pudo leer (redirecciones) y la portada de src.am
+solo dio el menú, sin frases al contribuyente: el registro de ՊԵԿ y Ամերիաբանկ queda por confirmar. La herramienta es
+«հաշվիչ». `reglas_idioma` rechaza «դու», los imperativos en -իր y el pronombre cortés en minúscula.
+
+**Puntuación.** «։» como punto final; «՝» presenta un valor («Ամսաթիվ՝ {fecha}»); «՞» y «՛» sobre la vocal; «,»; comillas
+« ». `reglas_idioma` rechaza «?», «!», «.» y «:» detrás de palabra armenia (salvo «թ.» de la fecha de Intl y «հազ.»), los
+signos que no están sobre vocal, las formas clásicas («իւ», «եւ», «-ութիւն», «ոյ» final) y las occidentales («կը», «մը»,
+«պիտի»). Solo U+0531 a U+0556 y U+0560 a U+0588 cuentan como letra: U+0559 a U+055F son signos. La carta del informe
+usa `nota.dosPuntos` («՝ ») y la lista de fuentes no pone «.» tras la fecha, que ya cierra con «թ.».
+
+**Sin plural detrás de un número.** «3 օր», «41 երկիր», «1,5 տարի». `Intl.PluralRules("hy")` da one/other, pero las dos formas
+de las unidades son iguales. `reglas_idioma` atrapa los plurales frecuentes detrás de una cifra.
+
+**Gramática del país.** Sin preposición: el caso es un sufijo en la última palabra. `casosHy(p)`: lugar -ում, genitivo -ի,
+artículo -ը o -ն; `GRAMATICA.hy`: `nombre` = artículo («Հայաստանը»), `en` = lugar («Հայաստանում»), `de` = genitivo
+(«Հայաստանի»), `para` = genitivo + «համար». «ա» y «ո» toman «յ» («Կանադայում», «Մոնակոյի»); «-ություն» hace «-ության»;
+«կղզի» hace «կղզու», «կղզում». Los nombres compuestos solo declinan el último («Բոսնիա և Հերցեգովինայում», «Սենթ Վինսենթ և
+Գրենադիններում»). Lo no armenio lleva guion («Zetaland-ում»); una cifra queda sin sufijo. Tabla corta para los nombres de Intl con
+agregado («Հոնկոնգի ՀՎՇ», «Կոնգո - Կինշասա»). Las reglas se revisaron sobre los ~250 nombres de Intl en hy, sin hablante nativo.
+
+**Ningún sufijo pegado a cifras ni marcadores.** Nada de «5%-ով», «2026-ին», «{pais}ում», «1-ին»: se reescribe («2026 թվականին»,
+«առաջին», «100 ֏ գումարի»). Los `{pais}` de la venta van en nominativo y aislados. `reglas_idioma` lo rechaza.
+
+**Mayúsculas sostenidas no.** JavaScript y CSS suben «և» a «ԵՒ», la forma clásica; la reformada es «ԵՎ», y CSS no se puede
+corregir. Por eso `:lang(hy) { text-transform: none !important }` y `mayusculasDe` y `transformeOg` (`i18n/escritura.ts`) dejan las
+cejas de las OG como en el diccionario. `mayusculaInicial` da «Եվ».
+
+**Formato.** Intl de hy-AM: espacio duro de miles desde cinco cifras («1234», «12 345»), coma decimal, «֏» detrás, porcentaje pegado
+(«18%»), fecha «5 մարտի, 2026 թ.». `parsearNumero` no cambia. Intl da 2 decimales al dram («1250,00 ֏»); si Armenia los quiere sin
+decimales, lo decide el país. `inferir.ts` reconoce «տարի», «տարեկան», «ամիս», «ամսական».
+
+**Fuente.** Geist no trae armenio. En la web, `:lang(hy)` usa la fuente del sistema entera (system-ui, Segoe UI, Sylfaen, Noto Sans
+Armenian...). En las OG, Noto Sans Armenian de respaldo. El buscador cuenta U+0531 a U+0587 como letras, busca «և» como «եվ» y saca
+los signos que van dentro de la palabra («ինչպե՞ս» es «ինչպես»).
+
+**Ancho SEO.** Medido con GDI a 20 px en Sylfaen, Segoe UI, Arial y Noto Sans Armenian: una letra armenia ocupa 1,3 latinas (11,5 a 12,5
+px contra 8,5 a 9,7). 60 de ancho son unas 46 letras y 160 unas 123. Es una medición de escritorio, no del resultado real de Google.
+
+**Slugs.** Transliteración ASCII legible en kebab-case, sobre la frase que se busca: շ=sh, չ/ճ=ch, ջ=j, ժ=zh, խ=kh, ձ=dz, ծ/ց=ts, ղ=gh,
+թ/տ=t, փ/պ=p, ք/կ=k, ռ/ր=r, ու=u, ը=y, ե inicial=ye, և=ev. Universales: `vark-hashvich`, `hipotekayi-hashvich`, `aah-hashvich`,
+`tokosi-hashvich`, `bard-tokos`, `parz-tokos`, `pastatsi-tokosadruyk`, `marmni-zangvatsi-indeks` y demás. `ashkhatavardzi-hashvich` queda
+libre para la calculadora local de sueldo neto de Armenia. Rankings: `ashkhatavardzi-gnoghunakutyun`, `harkayin-azatutyan-or`,
+`inchkan-e-mnum-barcratsumits`.
+
+**Prueba.** `zz-hy` (Զետալանդիա, locale `hy-001`) es una edición interna, con el slug `kisamyakayin-pargev`. `check_universales` prueba
+hy-AM con AMD, «Սենթ Վինսենթ և Գրենադիններ» y «Միացյալ Նահանգներ». `check_motor` prueba parseo, unidades, dram, fecha, ancho, «և» inicial,
+buscador y casos del país. Los textos no tuvieron revisión de un hablante nativo: queda pendiente antes de publicar Armenia.
+
+Nota de la tanda 6: el dram quedó sin decimales (`DECIMALES_DE_USO` en `formato.ts`), por moneda y no por mercado.
+
+### D31. Albanés, para Albania (2026-11-01)
+
+`IDIOMAS` suma `sq`. Motor, sitio, inicio, novedades, legales, errores, compartir, embed, «Tu sueldo en el
+mundo», calendario, horas de trabajo, rankings, «Sueldos reales», afiliados, el diccionario de venta y las 41
+universales están en albanés. El modelo es el rumano (D18), por el mismo registro: misma estructura, texto escrito
+de nuevo. D25 a D30 están en ramas sin mergear; por eso este número, sin hueco que llenar en main.
+
+**Lo que devuelve Intl (Node).** `sq-AL`: `1 234 567,50` con espacio duro y coma; cuatro cifras sin separador
+(`1234`); `1 234 568 Lekë` (el lek sale sin decimales); `1234,50 €`; `20%`; `1 nëntor 2026`; PluralRules
+one/other. El parser no necesitó nada propio.
+
+**Registro.** Un solo registro, el de e-Albania, Tatime y Raiffeisen Albania: «ju» en minúscula con 2.ª del
+plural («vendosni», «llogaritni», «zgjidhni»). Los mercados van con `trato: "usted"`. El botón de calcular va en
+la forma corta de esas interfaces («Llogarit»); el resto de los enlaces y botones, en 2.ª del plural.
+
+**Plurales y gramática.** Dos categorías: «1 vit», «2 vjet», «1,5 vjet»; ditë, javë, orë y muaj no cambian
+(`formaSq`, `pluralSq`). `mercado.nombre` se escribe indefinido, como `Intl.DisplayNames` en sq («Shqipëri»,
+«Francë», «Mal i Zi»). `GRAMATICA.sq` da `nombre` «Shqipëria», `de` «të Shqipërisë», `en` «në Shqipëri» y `para`
+«për Shqipërinë», por terminación y con tabla para irregulares, compuestos y plurales («në Mal të Zi», «në
+Zelandën e Re», «të SHBA-së», «të Shën-Vincentit dhe Grenadineve»). El artículo del genitivo concuerda con lo que
+tiene delante: `de` trae «të», y `rasatSq(p).gjinore` da la forma sola para escribir «e» o «i». Un nombre compuesto
+que no está en la tabla queda sin declinar, con la preposición delante. Un nombre definido nuevo también va a la
+tabla, porque la regla lo tomaría por indefinido.
+
+**Comillas.** “ ” (U+201C y U+201D), las que usa Tatime en el título de una ley: «Ligji i ri për “Tatimin mbi të
+ardhurat”» (tatime.gov.al, leído el 2026-11-01). `reglas_idioma` rechaza «», „ y las rectas.
+
+**Vocabulario.** «paga neto», «tatim mbi të ardhurat», «sigurime shoqërore», «TVSH», «kredi për shtëpi», «këst»,
+«interes». Sin sigla para el costo anual de un crédito (no se verificó una): «norma vjetore e kostos». Las
+universales no nombran organismos, leyes ni moneda de Albania, salvo el genérico «TVSH». `reglas_idioma` atrapa
+el «ti» y sus posesivos, la 2.ª del singular, el «Ju» con mayúscula a mitad de oración y las palabras sin ë.
+
+**Slugs.** ASCII sin diacríticos (ë→e, ç→c): `paga-ne-bote`, `renditja-e-vendeve`, `sa-ore-pune`,
+`kalendari-i-pagave`, `pagat-reale`, y las universales con su búsqueda real (`kalkulator-kredie`, `kalkulator-tvsh`,
+`kalkulator-kredi-per-shtepi`). `kalkulator-page` queda libre para la local de Albania: la universal de sueldo es
+`paga-per-ore`. Se suman en `secciones.ts` por los `SLUG_*`, sin carpetas por idioma.
+
+**Prueba.** `zz-sq` («Zetalandë») es una edición interna en `sq-001`. `check_universales` prueba `sq-AL` con ALL,
+un nombre largo que se declina por partes («Shën-Vincent dhe Grenadine») y uno plural con adjetivos («Emiratet e
+Bashkuara Arabe»); `check_motor` prueba formato, plurales, parseo y gramática. El texto no pasó por un hablante
+nativo: conviene una revisión antes de publicar Albania.
+
+### D32. Esloveno, para Eslovenia (2026-11-01)
+
+`IDIOMAS` suma `sl`. Motor, sitio, inicio, novedades, legales, errores, compartir (también el panel con
+imagen), embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»),
+rankings, «Sueldos reales», afiliados, el diccionario de venta y las 41 universales están en esloveno. Modelos:
+checo (D19, en main) y croata (D27, en otra rama): misma estructura, texto escrito de nuevo en esloveno, no
+croata adaptado. D25 a D31 están en ramas sin mergear; por eso este número.
+
+**Lo que devuelve Intl (Node).** `sl-SI`: `1.234.567,50 €`, y con cuatro cifras `1234,50 €` (CLDR da
+`minimumGroupingDigits: 2` para sl; no se fuerza el punto, y el parser acepta `1.234,50`). Fechas `15. oktober
+2026`, con el mes en **nominativo**: tras «od» o «do» pediría genitivo («od 15. oktobra»), así que `fechaGenSl`
+(gramatica.ts) lo convierte donde la frase lo exige y el resto de las frases lleva la fecha tras dos puntos
+(«Za državo delate do tega dne: 15. oktober»), también las que se parten para dibujar la fecha aparte.
+PluralRules one/two/few/other. El parser no necesitó nada propio.
+
+**Registro.** Un solo registro, el de los bancos y los servicios del país (FURS y eDavki, NLB, SKB): vikanje con
+«vi» en minúscula e imperativo de 2.ª del plural («vnesite», «izračunajte», «izberite»). Los mercados van con
+`trato: "usted"`. Los botones van en la forma corta («Izračunaj», «Deli»). Nada de tikanje ni del «Vi» con
+mayúscula a mitad de oración, que es de carta personal.
+
+**Vocabulario.** «izračun neto plače», «dohodnina», «prispevki», «DDV», «stanovanjski kredit», «obresti», «EOM»,
+«država» (no «zemlja»), «povezava», «brskalnik», «podjetje», «odstotek», «lastna sredstva» para la entrada de una
+vivienda. `reglas_idioma` atrapa los croatismos comunes (plaća, porez, mjesec, godina, tjedan, cijena, «i» por
+«in», što, ako, još...), las letras ć y đ, el dual olvidado y el tikanje. La «i» de las fórmulas se escribe «r»
+(«r» de obrestna mera) para no chocar con la regla de la conjunción.
+
+**Plurales y gramática.** Cuatro categorías con dual: «1 leto», «2 leti», «3 leta», «5 let», «1,5 leta», «21 let»,
+«101 leto», «102 leti» (`formaSl`, `pluralSl`; en `unidades.ts` el campo nuevo `dual` de `FormasUnidad`, y en el
+buscador `resultadosDos`). El país se declina: `GRAMATICA.sl` da genitivo («Slovenije»), lugar con «v» o «na» («v
+Sloveniji», «na Hrvaškem», «na Cipru», «na Filipinih», «v Združenih državah Amerike») y «za» con acusativo («za
+Slovenijo»), con reglas por terminación, adjetivos que concuerdan y una tabla de irregulares. Los adjetivos
+sustantivados en -ska, -ška, -čka van siempre con «na» y locativo en -em. Nunca se pega un sustantivo declinado a
+una cifra sin pasar por `pluralSl`: el número va tras dos puntos («Število vnosov: {n}»).
+
+**Comillas.** „ “ (abre abajo, cierra arriba, U+201E y U+201C). Ni «», ni "", ni ”. Decisión del encargo del frente, en lugar de las
+»…« tradicionales; a confirmar con la revisión nativa.
+
+**Universales neutrales.** Los textos no nombran organismos, leyes ni moneda de Eslovenia, salvo los genéricos
+«DDV» y «EOM». Lo propio del país queda para el agente de país.
+
+**Slugs.** ASCII sin diacríticos: `placa-po-svetu`, `lestvice-drzav`, `koliko-ur-dela`, `koledar-plac`,
+`dejanske-place`, y las universales con su búsqueda real (`kalkulator-kredita`, `izracun-ddv`,
+`stanovanjski-kredit`, `pretvornik-place`). `izracun-place` queda libre para la calculadora de sueldo neto del país.
+Se suman en `secciones.ts` por los `SLUG_*`: sin carpetas por idioma.
+
+**Prueba.** `zz-sl` (Zetalandija) es una edición interna en `sl-001`, para no compartir locale con Eslovenia en
+hreflang. `check_universales` prueba `sl-SI` con EUR y nombres largos que se declinan por partes («na Svetem
+Vincenciju in Grenadinah», «v Združenih arabskih emiratih»); `check_motor` prueba formato, plurales, parseo y
+gramática. Falta revisión por hablante nativo.
+
+### D33. Estonio, para Estonia (2026-11-01)
+
+`IDIOMAS` suma `et`. Motor, sitio, inicio, novedades, legales, errores, compartir (también el panel con imagen),
+embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»), rankings, «Sueldos
+reales», afiliados, el diccionario de venta y las 41 universales están en estonio. Modelo: finés (D9), misma
+estructura y texto escrito de nuevo en estonio, no finés adaptado. D25 a D32 están en ramas sin mergear; por eso
+este número. El código de idioma `et` convive con el mercado `et` (Etiopía, en inglés): uno es idioma y otro
+mercado, no se cruzan. Estonia será el mercado `ee`.
+
+**Lo que devuelve Intl (Node).** `et-EE`: `1 234 567,50 €` con espacio duro de miles, `1234,50 €` con cuatro cifras
+(mínimo de agrupación 2) y el negativo con el menos de Unicode (U+2212), que el parser ya normalizaba por sv, nb y
+fi. Porcentaje pegado, `20%`. Fechas `15. oktoober 2026`, con el mes en **nominativo**: tras «alates» o «kuni»
+pediría otro caso, así que la fecha va tras dos puntos («Kehtib alates: 15. oktoober 2026»). PluralRules one/other,
+con las fracciones en other. El parser no necesitó nada propio.
+
+**Registro.** Un solo registro, «sina»: imperativo de segunda del singular («sisesta», «vali», «arvuta») y «sinu».
+Los mercados van con `trato: "tu"`. Decisión de criterio: en Estonia el Estado (e-MTA) trata de «teie» y la mayoría
+de los bancos (LHV, Swedbank, SEB) de «sina» en la web; una web de calculadoras se parece a la herramienta del banco y no al
+trámite, y coincide con lo decidido para fi. No se relevó sitio por sitio: a confirmar con la revisión nativa.
+`reglas_idioma` atrapa «teie», el imperativo plural y la segunda del plural. No se busca «saate» (también es
+genitivo de «saade»).
+
+**Vocabulario.** «palgakalkulaator», «netopalk», «brutopalk», «tulumaks», «sotsiaalmaks», «töötuskindlustus»,
+«käibemaks», «kodulaen», «intress», «kuumakse», «põhiosa», «krediidi kulukuse määr», «riik» para país (nunca «maa»).
+Botón «Arvuta». `reglas_idioma` atrapa también las palabras finesas que delatan un calco (palkka, laskuri, vuotta, korko...). No se
+buscan «ja», «tai» (Tailandia) ni «ole», que existen en las dos lenguas.
+
+**Plurales y gramática.** «1 aasta», «2 aastat», «5 päeva», «1,5 tundi»: partitivo singular detrás del número, en
+`NOMBRES_UNIDAD` y en las funciones de los diccionarios. El país se declina y no lleva preposición: `GRAMATICA.et`
+da genitivo delante del sustantivo («Eesti kalkulaatorid», «Saksamaa»), lugar con inesivo o adesivo («Eestis»,
+«Soomes», «Saksamaal», «Maltal», «Küprosel», «Filipiinidel», «Ameerika Ühendriikides») y `para` con la posposición («Eesti jaoks»), con
+reglas por terminación y una tabla para las gradaciones («Iraagis», «Kuveidis»). Los nombres con «ja» se declinan
+por partes («Saint Vincentil ja Grenadiinidel»). Los nombres salen de `Intl.DisplayNames("et")`.
+
+**Nunca un caso pegado a una cifra o interpolación.** Nada de `${x}-ga` ni `100-st`: el monto, la fecha o la
+ocupación van tras dos puntos, entre paréntesis o donde el nominativo sea correcto. `reglas_idioma` atrapa el sufijo
+tras una cifra y «1 aastat». Con «jooksul» y «kuni» entre montos el número queda como está, sin sufijo.
+
+**Comillas.** „ “ (abre abajo, cierra arriba, U+201E y U+201C). Ni «», ni "", ni ”.
+
+**Universales neutrales.** Los textos no nombran organismos, leyes ni bancos de Estonia, salvo los genéricos «käibemaks», «KM» y
+«krediidi kulukuse määr». `tasa-efectiva` usa este último en slug y título porque es la búsqueda real, y aclara en
+la FAQ y el glosario que también suma costos; la calculadora convierte nominal a efectivo.
+
+**Slugs.** ASCII sin diacríticos: `palk-maailmas`, `riikide-vordlus`, `tootunnid`, `palgakalender`, `tegelikud-palgad`, y
+las universales con su búsqueda real (`laenukalkulaator`, `kaibemaksu-kalkulaator`, `kodulaenu-kalkulaator`,
+`tunnipalk-kuupalgaks`). `palgakalkulaator` queda libre para la calculadora de sueldo neto del país. Se suman por los `SLUG_*`: sin carpetas por idioma.
+
+**Prueba.** `zz-et` (Zetamaa) es una edición interna en `et-001`, para no compartir locale con Estonia en hreflang.
+`check_universales` prueba `et-EE` con EUR, un nombre largo que se declina por partes («Saint Vincent ja Grenadiinid») y uno plural de tabla («Araabia Ühendemiraadid»);
+`check_motor` prueba formato, plurales, parseo, gramática y reglas. Falta revisión por hablante nativo.
+
+### D34. Islandés, para Islandia (2026-11-01)
+
+`IDIOMAS` suma `is`. Motor, sitio, inicio, novedades, legales, errores, compartir (también el panel con imagen),
+embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»), rankings, «Sueldos
+reales», afiliados, el diccionario de venta y las 41 universales están en islandés. Modelos: nb, da y sv (D9), con
+la estructura del esloveno (D32, en otra rama). D25 a D33 están en ramas sin mergear; por eso este número.
+
+Nota de la tanda 6: Chromium da «ISK» donde Node da «kr.», así que todo mercado en ISK lleva `simbolos: { ISK: "kr." }`.
+
+**Lo que devuelve Intl (Node).** `is-IS`: `1.234.568 kr.` (corona sin decimales, con punto de miles y «kr.» detrás;
+Intl ya da el símbolo con punto), `1.234,5` en números, `20%` sin espacio, fechas `15. október 2026`. El parser no
+necesitó nada propio. Otras monedas salen con el código («1.234,50 EUR»), como las da CLDR.
+
+**Registro.** Un solo registro, el de los bancos y los servicios del país (Skatturinn, Landsbankinn, Arion banki):
+«þú» informal e imperativo de singular («sláðu inn», «reiknaðu», «veldu»). Botones en infinitivo («Reikna», «Afrita»,
+«Deila»). Los mercados van con `trato: "tu"`. La «þérun» no se usa en la web islandesa; `reglas_idioma` atrapa «yður»,
+«þér» con verbo en plural y los imperativos en -ið. «þér» suelto no se atrapa: también es el dativo de «þú» («hjá þér»).
+
+**Vocabulario.** «launareiknivél», «staðgreiðsla», «tekjuskattur», «lífeyrissjóður», «iðgjald», «virðisaukaskattur
+(VSK)», «húsnæðislán», «vextir», «árleg hlutfallstala kostnaðar (ÁHK)», «heildarlaun» y «útborguð laun», «hlekkur»,
+«vafri». Las reglas atrapan å, ø, ä, las palabras comunes del noruego y del danés (ikke, eller, beregn...), los textos
+sin letras islandesas y la corona sin punto («500 kr»).
+
+**Plurales y gramática.** Dos categorías de `Intl.PluralRules("is")`, con la regla islandesa: lo que termina en 1
+salvo en 11 va en singular («1 dagur», «21 dagur», «2 dagar», «11 dagar», «1 ár», «21 ár», «2 ár»; `formaIs`,
+`pluralIs`). Tras preposición se le pasan las formas del caso que rige («eftir 3 daga», «fyrir 3 dögum síðan», «í 21
+landi», «í 2 löndum»). El buscador elige con `resultadosPocos`, igual a la forma plural, para pasar por PluralRules
+sin código nuevo («21 niðurstaða»). El país se declina y elige preposición: `GRAMATICA.is` da genitivo («Íslands»,
+«Bandaríkjanna»), lugar con «á» o «í» y dativo («á Íslandi», «í Þýskalandi», «á Spáni», «í Bandaríkjunum», «á Sankti
+Vinsent og Grenadíneyjum») y «fyrir» con acusativo («fyrir Ísland», «fyrir Noreg»), con reglas por terminación y una
+tabla de irregulares (`fallIs`). «í Bretlandi» y «í Taílandi» por decisión: conviven con «á», son las formas más
+actuales; a confirmar con la revisión nativa. Las fechas tras «til» y «frá» no cambian («til 15. október»). Nunca se
+pega un sustantivo a una cifra sin `pluralIs`: si no, el número va tras dos puntos («Fjöldi færslna: {n}»).
+
+**Comillas.** „ “ (U+201E y U+201C), las de la ortografía islandesa. Ni «», ni "", ni ”.
+
+**Universales neutrales.** Los textos no nombran organismos, leyes ni moneda de Islandia, salvo el genérico «VSK». Lo
+propio del país queda para el agente de país. `informe.documento` del diccionario de venta dice «Kennitala», como sv
+dice «Personnummer»: es el nombre del documento, no un organismo.
+
+**Slugs.** ASCII: þ→th, ð→d, æ→ae, ö→o, tildes sin tilde. `laun-um-allan-heim`, `rodun-landa`,
+`hversu-margar-vinnustundir`, `launadagatal`, `raunveruleg-laun`, y las universales con su búsqueda real
+(`lanareiknivel`, `vsk-reiknivel`, `husnaedislan`, `thrilida`, `launaumreikningur`). `launareiknivel` queda libre para
+la calculadora de sueldo neto del país. Se suman en `secciones.ts` por los `SLUG_*`: sin carpetas por idioma.
+
+**Fuente.** þ, ð, æ, ö y las vocales con tilde están en Latin-1 (U+00C0 a U+00FF), dentro del subset `latin` de Geist,
+que el layout ya baja: no hace falta nada nuevo.
+
+**Prueba.** `zz-is` (Zetaland) es una edición interna en `is-001`, para no compartir locale con Islandia en hreflang.
+`check_universales` prueba `is-IS` con ISK y nombres largos («á Sankti Vinsent og Grenadíneyjum», «í Sameinuðu
+arabísku furstadæmunum»); `check_motor` prueba formato, plurales, parseo, gramática y reglas. Falta revisión por
+hablante nativo.
+
+### D35. Letón, para Letonia (2026-11-01)
+
+(D25 a D34 están en ramas sin mergear; esta entrada toma el D35 para no chocar al mergear.)
+
+`IDIOMAS` e `IDIOMAS_VENTA` suman `lv`. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed,
+afiliados, redes, «Tu sueldo en el mundo» (`alga-pasaule`), rankings (`valstu-reitings`), horas
+(`cik-stundas-jastrada`), calendario (`algas-kalendars`), sueldos reales (`realas-algas`), venta completa y las
+41 universales.
+
+**Registro.** Uno solo, el de los servicios del Estado: «jūs» e imperativo de 2.ª del plural («ievadiet»,
+«aprēķiniet», «izvēlieties»), botones cortos en infinitivo («Aprēķināt», «Kopēt saiti»), nunca «tu». Mercados
+con `trato: "usted"` y diccionario en `base`. Leído el 1/11/2026: vid.gov.lv usa el plural de cortesía e
+imperativos en -iet («izvērtējiet», «izvēlieties»), casi siempre con «Jūs» y «Jūsu» en mayúscula, aunque no de
+forma pareja. swedbank.lv/private/credit/loans/home confirma los botones en infinitivo («Aprēķināt»,
+«Aizpildīt pieteikumu»), pero su página comercial le habla de «tu» al cliente («Aizpildi pieteikumu», «Tev»)
+y reserva «Jūs» con mayúscula para algunas frases formales. Se sigue a VID y no a esa página. SEB y latvija.gov.lv
+no se leyeron. **Minúscula:** se escribe «jūs» y «jūsu» en minúscula salvo al inicio de oración. La mayúscula
+es la cortesía de una carta a una persona concreta y aquí el texto le habla a cualquiera; además da una sola
+regla que `reglas_idioma` puede hacer cumplir. Es una decisión, no algo leído en una norma. Se evitan participios
+y adjetivos con género sobre la persona («ievadījis», «ievadījusi»).
+
+**Plural.** `Intl.PluralRules("lv")` da one (1, 21, 31; no 11), other (2 a 9, 22 a 29, fracciones) y zero (0, 10
+a 20, 30...). La categoría zero mezcla dos casos: el 0 exacto va en genitivo plural («0 gadu») y 10, 11 o 20 en
+nominativo plural («10 gadi»). Por eso `formaLv` y `pluralLv(n, uno, otros, cero)` miran el 0 y no la categoría,
+y `FormasUnidad` suma el `cero` opcional que usa `nombreDeUnidad` en `formato.ts` (los demás idiomas no lo
+traen y no cambian): «1 gads», «2 gadi», «10 gadi», «21 gads», «0 gadu», «1,5 gadi». Excepción conocida: las
+horas del índice (`horas/ui/formato.ts`) salen del `style: "unit"` de Intl, que da «10 stundu» por CLDR; es
+correcto y se deja. Tras «pēc» y «pirms» el singular va en genitivo y el plural en dativo: «pēc 1 dienas», «pēc
+3 dienām».
+
+**Gramática del país.** Se declina y el lugar no lleva preposición. `GRAMATICA.lv`: `nombre` nominativo, `de`
+genitivo («Latvijas», «Amerikas Savienoto Valstu»), `en` locativo («Latvijā», «Vācijā», «Ēģiptē», «Vatikānā»,
+«Filipīnās», «Apvienotajos Arābu Emirātos»), `para` dativo («Latvijai», «Filipīnām»). `locijumiLv` deja los tres
+casos sueltos. Regla por terminación del último sustantivo (-a, -e, -as plural, -s masculino), tabla de adjetivos
+concordados («Apvienotajā Karalistē», «Ekvatoriālajā Gvinejā»), partes unidas con « un » declinadas por separado,
+sin cambios las palabras de delante («Saūda Arābijā») y lo que termina en otra letra (Peru, Haiti, Mali, Togo).
+Tabla para los compuestos que la regla no resuelve. Revisado con los nombres de Intl en lv. Como «X kalkulatori
+Latvijai» suena forzado, los títulos usan el locativo, y si la frase pide otro caso el país va en nominativo tras
+dos puntos. Los marcadores `{pais}` de venta no pasan por esta función: ahí va en nominativo entre paréntesis.
+
+**Formato.** Intl de lv-LV: coma decimal, «€» detrás, espacio de miles desde 5 cifras («1234,50 €», «25 000 €»,
+«1 234 567,25 €»), por el `minimumGroupingDigits` de CLDR; `parsearNumero` acepta también «1 234,50» (casos nuevos
+en `check_motor`). El porcentaje va sin espacio («21%»), como lo da Intl: `reglas_idioma` atrapa «21 %». Las fechas
+de Intl vienen en nominativo («2026. gada 1. novembris», «12. maijs»), y «līdz» o «no» pedirían otro caso: la fecha
+va siempre tras dos puntos («Spēkā no: ...», «līdz dienai: ...»). Posiciones con el punto del ordinal («27. vieta no
+41»). `inferir.ts` reconoce «gads», «gada», «gadu», «ikgadēj-» y «mēnes-», «ikmēnes-». Comillas „ “: el uso letón
+trae también „ ” y « », y las páginas leídas no son parejas; se elige una sola forma, la misma de lt y cs, para que la
+regla sea verificable. El subconjunto `latin-ext` de Geist ya está desde el checo.
+
+**Vocabulario y slugs.** alga, bruto alga, neto alga, «uz rokas», IIN, VSAOI, PVN, mājokļa kredīts, procenti, procentu
+likme, ikmēneša maksājums. Slugs ASCII sin diacríticos: `kredita-kalkulators`, `pvn-kalkulators`,
+`majokla-kredita-kalkulators`, `kmi-kalkulators`, etc. `algas-kalkulators` queda libre para la local del país. En
+mundo y rankings va «ienākuma nodoklis» y no IIN, porque cubren muchos países. Universales neutrales de país, con
+la oración de salud donde corresponde. Las secciones van por `src/motor/secciones.ts`, sin carpetas.
+
+**Reglas de texto** (`scripts/reglas_idioma.ts`): pronombres y posesivos de «tu», imperativos del singular de un
+formulario, formas de 2.ª del singular, «Jūs» con mayúscula a mitad de oración, comillas que no son „ “, «%» con
+espacio y palabras frecuentes sin diacríticos. Se dejaron fuera a propósito las formas que coinciden con otra cosa:
+«aprēķini» (plural de «aprēķins»), «pārbaudi» y «norādi» (acusativos), «maksā», «saņem», «atver» (3.ª persona).
+
+**Prueba.** `zz-lv` (Zetalande, `lv-001`) es una edición interna. `check_universales` prueba lv-LV con EUR,
+«Sentvinsenta un Grenadīnas» por el nombre largo que se declina por partes y «Apvienotie Arābu Emirāti» por el plural
+con adjetivo. El texto no lo revisó un hablante nativo.

@@ -12,8 +12,11 @@ export function escrituraZh(locale: string | undefined): EscrituraZh {
 // El georgiano de la interfaz (mkhedruli) no tiene mayúsculas. JavaScript y CSS sí suben las letras a
 // mtavruli (U+1C90 a U+1CBF), que es otra forma de escribir y además no entra en las fuentes pedidas
 // por subconjunto: toda mayúscula automática tiene que quedar neutra en georgiano (ADR 0002, D26).
+// Armenio reformado: la mayúscula de «և» es «ԵՎ», pero JavaScript y CSS la suben a «ԵՒ», la forma de la
+// ortografía clásica. En CSS no se puede corregir, así que las etiquetas en armenio van sin mayúsculas
+// sostenidas y las cejas de las OG quedan como en el diccionario (ADR 0002, D30).
 export function sinMayusculas(locale: string | undefined): boolean {
-  return Boolean(locale && /^ka(?:-|$)/i.test(locale));
+  return Boolean(locale && /^(?:ka|hy)(?:-|$)/i.test(locale));
 }
 
 export function mayusculasDe(texto: string, locale: string): string {

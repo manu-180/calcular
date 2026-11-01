@@ -35,7 +35,8 @@ const ESPERA_FUENTE_MS = 3000;
 // bg va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D24).
 // Tampoco georgiano: la edición ka pide Noto Sans Georgian (ADR 0002, D26).
 // mn también: Geist no trae ө ni ү (ADR 0002, D28).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", bg: "Noto Sans", ka: "Noto Sans Georgian", mn: "Noto Sans" };
+// Tampoco armenio: la edición hy pide Noto Sans Armenian (ADR 0002, D30).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", bg: "Noto Sans", ka: "Noto Sans Georgian", mn: "Noto Sans", hy: "Noto Sans Armenian" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 

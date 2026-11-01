@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosHy: TextosUi<UiAlquilarOComprar> = {
+  slug: "vardzakalel-te-gnel",
+  ui: () => ({
+    precio: "Բնակարանի արժեք",
+    entrada: "Կանխավճար (արժեքի %)",
+    gastosCompra: "Գնման ծախսեր (արժեքի %)",
+    gastosCompraAyuda: "Նոտարական վճարներ, ձեռքբերման տեղական հարկ, գրանցում, գնահատում և գործակալության միջնորդավճար։",
+    tasa: "Հիփոթեքի տոկոսադրույք (տարեկան %)",
+    aniosHipoteca: "Հիփոթեքի ժամկետ (տարի)",
+    alquiler: "Նմանատիպ բնակարանի ամսական վարձ",
+    aumentoAlquiler: "Վարձի տարեկան աճ (%)",
+    gastosPropietario: "Սեփականատիրոջ տարեկան ծախսեր (արժեքի %)",
+    gastosPropietarioAyuda: "Պահպանում, գույքահարկ և ապահովագրություն։ Սովորաբար 1% մինչև 2%։",
+    revalorizacion: "Բնակարանի արժեքի տարեկան աճ (%)",
+    rendimiento: "Այլընտրանքային ներդրման եկամտաբերություն (տարեկան %)",
+    rendimientoAyuda: "Որքան կվաստակեիք, եթե կանխավճարը ներդնեիք՝ գնելու փոխարեն։",
+    horizonte: "Քանի՞ տարվա համար համեմատել",
+    veredicto: "Արդյունք",
+    patrimonioComprar: "Զուտ կարողությունը վերջում, եթե գնեք",
+    patrimonioAlquilar: "Զուտ կարողությունը վերջում, եթե վարձակալեք",
+    diferencia: "Տարբերություն",
+    anioDesde: "Տարին, որից գնելն ավելի շահավետ է դառնում",
+    pagadoAlquilando: "Ընդամենը վճարված վարձ",
+    pagadoComprando: "Ընդամենը վարկի մարումներ և սեփականատիրոջ ծախսեր",
+    tabla: "Համեմատություն տարի առ տարի",
+    colAnio: "Տարի",
+    colComprar: "Գնում",
+    colAlquilar: "Վարձակալություն",
+    colDiferencia: "Տարբերություն",
+    errorPrecio: "Մուտքագրեք բնակարանի արժեքը։",
+    errorAlquiler: "Մուտքագրեք, թե որքան կարժենար նմանատիպ բնակարանի վարձը։",
+    convieneComprar: (n, diferencia) => `Ավելի շահավետ է գնել։ ${n} տարի անց կունենաք ${diferencia} ավելի։`,
+    convieneAlquilar: (n, diferencia) => `Ավելի շահավետ է վարձակալել։ ${n} տարի անց կունենաք ${diferencia} ավելի։`,
+    empate: (n) => `${n} տարի անց երկու տարբերակներն էլ նույն արդյունքն են տալիս։`,
+    observacionDesde: (anio) => `Գնելը սկսում է առաջ անցնել վարձակալությունից ${anio} տարի անց և այդպես էլ մնում է։`,
+    observacionMetodo:
+      "Համեմատվում է, թե ինչ կունենաք երկու դեպքում էլ։ Վարձակալելիս կանխավճարը և ամեն ամիս խնայած գումարը մնում են ներդրված։ Վաճառքի ծախսերը չեն հանվում։",
+  }),
+};

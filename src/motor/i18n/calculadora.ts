@@ -22,6 +22,16 @@ const ZH_HANS_CALCULADORA: TextosCalculadora = {
 };
 
 export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
+  lv: {
+    base: {
+      datos: "Jūsu dati",
+      resultado: "Rezultāts",
+      vacio: "Aizpildiet datus un noklikšķiniet uz „Aprēķināt“, rezultāts parādīsies šeit.",
+      sinResultado: "Šo rezultātu pagaidām nerādām.",
+      avisos: { info: "Noderīgi zināt", cautela: "Pievērsiet uzmanību", bloquea: "Kāpēc rezultātu nerādām" },
+      fuenteDelAviso: "Avots",
+    },
+  },
   es: {
     base: {
       datos: "Tus datos",
@@ -346,6 +356,17 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "წყარო",
     },
   },
+  // Armenio (ADR 0002, D30): el botón es «Հաշվարկել».
+  hy: {
+    base: {
+      datos: "Ձեր տվյալները",
+      resultado: "Արդյունք",
+      vacio: "Մուտքագրեք տվյալները և սեղմեք «Հաշվարկել», որպեսզի տեսնեք արդյունքը։",
+      sinResultado: "Այս արդյունքը առայժմ չենք ցուցադրում։",
+      avisos: { info: "Լավ է իմանալ", cautela: "Ուշադրություն դարձրեք", bloquea: "Ինչո՞ւ չենք ցուցադրում արդյունքը" },
+      fuenteDelAviso: "Աղբյուր",
+    },
+  },
   he: {
     base: {
       datos: "הנתונים שלכם",
@@ -374,6 +395,47 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       sinResultado: "Ovaj rezultat zasad ne prikazujemo.",
       avisos: { info: "Dobro je znati", cautela: "Pažnja", bloquea: "Zašto ne prikazujemo rezultat" },
       fuenteDelAviso: "Izvor",
+    },
+  },
+  // Albanés (ADR 0002, D31).
+  sq: {
+    base: {
+      datos: "Të dhënat tuaja",
+      resultado: "Rezultati",
+      vacio: "Vendosni të dhënat dhe klikoni “Llogarit”. Rezultati do të shfaqet këtu.",
+      sinResultado: "Këtë rezultat nuk e shfaqim për momentin.",
+      avisos: { info: "Mirë ta dini", cautela: "Kujdes", bloquea: "Pse nuk e shfaqim rezultatin" },
+      fuenteDelAviso: "Burimi",
+    },
+  },
+  sl: {
+    base: {
+      datos: "Vaši podatki",
+      resultado: "Rezultat",
+      vacio: "Vnesite podatke in kliknite „Izračunaj“. Rezultat se bo prikazal tukaj.",
+      sinResultado: "Tega rezultata zaenkrat ne prikazujemo.",
+      avisos: { info: "Dobro je vedeti", cautela: "Pozor", bloquea: "Zakaj rezultata ne prikazujemo" },
+      fuenteDelAviso: "Vir",
+    },
+  },
+  et: {
+    base: {
+      datos: "Sinu andmed",
+      resultado: "Tulemus",
+      vacio: "Sisesta andmed ja vajuta „Arvuta“. Tulemus ilmub siia.",
+      sinResultado: "Seda tulemust me praegu ei näita.",
+      avisos: { info: "Hea teada", cautela: "Tähelepanu", bloquea: "Miks me tulemust ei näita" },
+      fuenteDelAviso: "Allikas",
+    },
+  },
+  is: {
+    base: {
+      datos: "Gögnin þín",
+      resultado: "Niðurstaða",
+      vacio: "Sláðu inn gögnin og smelltu á „Reikna“. Niðurstaðan birtist hér.",
+      sinResultado: "Við sýnum ekki þessa niðurstöðu að svo stöddu.",
+      avisos: { info: "Gott að vita", cautela: "Athugaðu", bloquea: "Af hverju við sýnum ekki niðurstöðuna" },
+      fuenteDelAviso: "Heimild",
     },
   },
 };

@@ -1,0 +1,192 @@
+import { GRAMATICA } from "./gramatica";
+import { pluralIs } from "./plural";
+import type { Diccionario } from "./resolver";
+import type { TextosSitio } from "./tipos";
+
+const g = GRAMATICA.is;
+const MUNDO = "Alþjóðleg útgáfa";
+
+// Islandés: un solo registro para la web, el de los bancos y los servicios del país (Skatturinn,
+// Landsbankinn, Arion banki): «þú» informal e imperativo de singular en la prosa («sláðu inn», «veldu»,
+// «launin þín»); los botones van en infinitivo («Reikna», «Sýna allt»). Los mercados van con trato "tu" y el
+// diccionario se escribe en base (ADR 0002, D34). El país se declina con GRAMATICA.is («á Íslandi», «í
+// Þýskalandi», «fyrir Ísland», «Íslands») y los números con pluralIs (one/other: «21 land», «2 lönd»).
+const base: TextosSitio = {
+  marca: { nombre: "CalcularYa", lema: "Reiknivélar með opinberum gögnum" },
+  saltar: "Fara beint í efnið",
+  header: {
+    inicio: "Forsíða",
+    elegirPais: "Veldu land",
+    paisActual: (pais) => `Land: ${pais}`,
+    cerrar: "Loka",
+    todos: "Öll lönd",
+    latinoamerica: MUNDO,
+  },
+  footer: {
+    paises: "Lönd",
+    sitio: "CalcularYa",
+    fuentes: "Opinberar heimildir",
+    novedades: "Nýjungar",
+    privacidad: "Persónuvernd",
+    terminos: "Notkunarskilmálar",
+    contacto: "Hafa samband",
+    sobre: "Um okkur",
+    argentina: "Ertu í Argentínu? Reiknivélarnar þínar eru á calcular.ar",
+    descargo: "Niðurstöðurnar eru til upplýsingar. Fyrir stóra ákvörðun skaltu staðfesta þær hjá viðkomandi stofnun eða fagmanni.",
+    derechos: (anio) => `© ${anio} CalcularYa`,
+  },
+  sello: {
+    titulo: "Opinber gögn, alltaf uppfærð",
+    verificado: (organismos, fecha) => `Gögn staðfest hjá: ${organismos}. Uppfært: ${fecha}.`,
+    serie: (nombre, organismo, fecha) => `${nombre}: uppfærist sjálfkrafa eftir gögnum sem þessi aðili birtir: ${organismo}. Síðasta gildi: ${fecha}.`,
+    verTodas: "Sýna allar heimildir",
+  },
+  calculadora: {
+    comoSeCalcula: "Hvernig þetta er reiknað",
+    ejemplo: "Dæmi",
+    faq: "Algengar spurningar",
+    glosario: "Orðskýringar",
+    relacionadas: "Aðrar reiknivélar",
+    otrosPaises: "Sami útreikningur í öðrum löndum",
+  },
+  global: {
+    eyebrow: "Opinber gögn fyrir hvert land",
+    titulo: "Reiknivélar fyrir vinnu, peninga og daglegt líf með gögnum þíns lands",
+    bajada: "Laun, lán, skattar, dagsetningar og margt fleira. Þegar niðurstaðan ræðst af reglum kemur talan úr opinberri heimild, með dagsetningu og hlekk svo þú getir staðfest hana.",
+    elegir: "Veldu landið þitt",
+    calculadoras: (n) => pluralIs(n, "reiknivél", "reiknivélar"),
+    vacio: "Við erum að bæta við nýjum löndum. Kíktu aftur fljótlega.",
+    promesaTitulo: "Svona vinnum við",
+    promesas: [
+      { titulo: "Opinberar tölur með heimild", texto: "Með hverju gildi sýnum við hver birtir það, hlekk á heimildina og hvenær við staðfestum það." },
+      { titulo: "Alltaf uppfært", texto: "Þegar gildi breytist breytist reiknivélin líka. Hverja breytingu skráum við undir nýjungum." },
+      { titulo: "Ókeypis og án skráningar", texto: "Útreikningurinn fer fram í vafranum þínum. Við biðjum ekki um neinar persónuupplýsingar." },
+    ],
+  },
+  pais: {
+    eyebrow: "Opinber gögn, alltaf uppfærð",
+    titulo: (pais) => `Reiknivélar ${g.para(pais)}`,
+    bajada: (pais) => `Með þeim gildum sem eru í gildi ${g.en(pais)}, heimild fyrir hverju þeirra og dagsetningu staðfestingar.`,
+    novedades: "Nýjustu breytingar",
+    verNovedades: "Sýna allar nýjungar",
+    sinCalculadoras: "Við erum ekki enn með reiknivélar fyrir þetta land.",
+    descripcion: (pais) => `Reiknivélar fyrir laun, skatta, lán, sparnað, heilsu, dagsetningar og heimilið ${g.para(pais)}, með gildandi opinberu gildi og heimild.`,
+    irASeccion: "Fara í hluta",
+  },
+  fuentes: {
+    titulo: (pais) => `Heimildir og gögn ${g.para(pais)}`,
+    bajada: "Hvert gildi sem reiknivélarnar nota, með gildistíma og hlekk á opinbera heimild.",
+    vigente: "Gildandi gildi",
+    desde: "Frá",
+    hasta: "Til",
+    fuente: "Heimild",
+    verificado: "Staðfest",
+    region: "Svæði",
+    series: "Gildi sem uppfærast sjálfkrafa",
+    ultimoDato: "Síðasta gildi",
+    proximo: (valor, fecha) => `Búið er að birta gildi sem tekur gildi á þessum degi (${fecha}): ${valor}.`,
+    sinVerificar: "Við erum ekki með staðfest gildi fyrir daginn í dag",
+    tramos: (n) => `Tafla: ${pluralIs(n, "þrep", "þrep")}`,
+    description: (pais) => `Opinber gögn ${g.para(pais)} sem reiknivélarnar nota: gildandi gildi, gildistökudagur, heimild og dagsetning staðfestingar.`,
+  },
+  novedades: {
+    titulo: (pais) => `Nýjungar ${g.para(pais)}`,
+    bajada: "Breytingar á reglum sem reiknivélarnar nota, með gildistökudegi.",
+    vigenteDesde: (fecha) => `Gildistaka: ${fecha}`,
+    vacio: "Engar nýjungar enn fyrir þetta land.",
+    description: (pais) => `Breytingar á lágmarkslaunum, iðgjöldum og öðrum reglum ${g.en(pais)}, með gildistökudegi og opinberri heimild.`,
+  },
+  avisoPais: {
+    texto: (pais) => `Það lítur út fyrir að þú sért ${g.en(pais)}.`,
+    ir: (pais) => `Sýna reiknivélar ${g.para(pais)}`,
+    cerrar: "Loka tilkynningu",
+  },
+  noEncontrada: {
+    titulo: "Við fundum ekki þessa síðu",
+    texto: "Kannski er villa í slóðinni eða síðan er ekki lengur til.",
+    volver: "Aftur á forsíðu",
+    paises: "Eða veldu land",
+  },
+  categorias: {
+    sueldo: "Laun og vinna",
+    fin: "Starfslok",
+    impuestos: "Skattar og iðgjöld",
+    dinero: "Peningar og vísitölur",
+    finanzas: "Lán, sparnaður og fjárfestingar",
+    negocio: "Sjálfstætt starfandi og fyrirtæki",
+    calculos: "Fljótlegir útreikningar",
+    fechas: "Dagsetningar og aldur",
+    salud: "Heilsa og hreyfing",
+    hogar: "Heimili, bíll og framkvæmdir",
+    familia: "Fjölskylda og heimilishald",
+    otras: "Aðrar reiknivélar",
+  },
+  migas: { inicio: "Forsíða", etiqueta: "Þú ert hér" },
+  seo: {
+    tituloGlobal: "CalcularYa: ókeypis reiknivélar með opinberum gögnum",
+    descripcionGlobal: "Ókeypis reiknivélar fyrir laun, lán, skatta og aðra útreikninga í hverju landi, með gildandi opinberu gildi og heimild.",
+    tituloPais: (pais, anio) => [
+      `Launa- og skattareiknivélar ${g.para(pais)} ${anio}`,
+      `Reiknivélar ${g.para(pais)} ${anio}`,
+      `Reiknivélar ${g.para(pais)}`,
+    ],
+    tituloFuentes: (pais) => [`Gildandi opinber gögn ${g.para(pais)}: heimildir og dagsetningar`, `Heimildir og gögn ${g.para(pais)}`],
+    tituloNovedades: (pais, anio) => [
+      `Breytingar á launum og sköttum ${g.en(pais)} ${anio}`,
+      `Nýjungar ${g.para(pais)} ${anio}`,
+      `Nýjungar ${g.para(pais)}`,
+    ],
+  },
+  og: {
+    datosOficiales: "Opinber gögn með heimildum",
+    actualizado: (fecha) => `Uppfært: ${fecha}`,
+    gratis: "Ókeypis og án skráningar",
+    paises: (n) => pluralIs(n, "land", "lönd"),
+  },
+  shell: {
+    irAlInicio: "á forsíðu",
+    menu: { trabajo: "Laun og vinna", impuestos: "Skattar", dinero: "Peningar og vísitölur", vida: "Reiknivélar fyrir daglegt líf", novedades: "Nýjungar", planillas: "Excel-sniðmát" },
+    encabezado: {
+      principal: "Aðalvalmynd",
+      buscar: "Leita",
+      buscarCalculadora: "Leita að reiknivél",
+      abrirMenu: "Opna valmynd",
+      cerrarMenu: "Loka valmynd",
+      menu: "Valmynd",
+      todas: "Allar reiknivélar",
+      pieCajon: "Gögn úr opinberum heimildum · Gert í Argentínu",
+    },
+    buscador: {
+      dialogo: "Leit á CalcularYa",
+      pregunta: "Hvað viltu reikna?",
+      recientes: "Haltu áfram þar sem frá var horfið",
+      masUsado: "Mest notað",
+      sinResultados: "Ekkert fannst fyrir „{q}“",
+      sugerencia: "Prófaðu annað orð, til dæmis „laun“, „lán“ eða „skattur“.",
+      verTodas: "Sýna allar reiknivélar",
+      borrar: "Hreinsa leit",
+      cerrar: "Loka",
+      cerrarBuscador: "Loka leit",
+      moverte: "til að færa þig",
+      abrir: "til að opna",
+      desdeCualquier: "af hvaða síðu sem er",
+      resultados: "Niðurstöður",
+      resultado: "niðurstaða",
+      // Con esta clave el buscador elige por Intl.PluralRules: «21 niðurstaða», «2 niðurstöður» (islandés sin «few»).
+      resultadosPocos: "niðurstöður",
+      resultadosPlural: "niðurstöður",
+    },
+    paises: { titulo: "Lönd", cambiar: "Skipta um land" },
+    pie: {
+      bajada: (lugar) =>
+        `Skýrar reiknivélar ${lugar === MUNDO ? "fyrir hvert land" : g.para(lugar)}. Hver tala kemur úr opinberu skjali sem ákvarðar hana og henni fylgir dagsetning staðfestingar.`,
+      todas: "Allar reiknivélar",
+      cuenta: "Reikningurinn þinn",
+      cuentaNota: "Ekki nauðsynlegur. Með honum geturðu vistað útreikninga og haft þá við höndina.",
+      hecho: "Gert í Argentínu",
+      escrito: "Skrifað og yfirfarið af",
+    },
+  },
+};
+
+export const is: Diccionario<TextosSitio> = { base };

@@ -5,6 +5,7 @@ import type { Idioma } from "../tipos";
 // de calculadora: una carpeta estática le gana a [slug]. Es el mismo en todas las ediciones de un
 // idioma, así el clúster hreflang se arma solo para un país nuevo.
 export const SLUG_RANKINGS: Record<Idioma, string> = {
+  sq: "renditja-e-vendeve",
   es: "ranking-de-paises",
   pt: "ranking-dos-paises",
   en: "country-rankings",
@@ -17,6 +18,10 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   zh: "guojia-paiming",
   bg: "klasatsia-na-darzhavite",
   mn: "ulsuudyn-jagsaalt",
+  hy: "yerkrneri-varkanish",
+  sl: "lestvice-drzav",
+  et: "riikide-vordlus",
+  is: "rodun-landa",
 
   pl: "ranking-krajow",
   sv: "landsrankning",
@@ -41,6 +46,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   sk: "rebricek-krajin",
   ka: "kveqnebis-reitingi",
   hr: "ljestvica-zemalja",
+  lv: "valstu-reitings",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -59,10 +65,20 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   ja: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   ko: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   zh: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
+  // sq en ASCII sin diacríticos (ë→e, ç→c), con las palabras que se buscan (ADR 0002, D31).
+  sq: { rinde: "ku-vlen-me-shume-paga", libertad: "dita-e-lirise-tatimore", aumento: "sa-mbetet-nga-rritja-e-pages" },
   // bg con la transliteración oficial búlgara (Закон за транслитерацията; ADR 0002, D24).
   bg: { rinde: "pokupatelna-sila-na-zaplatata", libertad: "den-na-danachnata-svoboda", aumento: "kolko-ostava-ot-uvelichenieto" },
   // mn en ASCII: х = kh, ц = ts, ө = o, ү = u, ж = j, ы = y (ADR 0002, D28).
   mn: { rinde: "tsalingiin-khudaldan-avakh-chadvar", libertad: "tatvaraas-choloot-odor", aumento: "nemegdlees-khed-uldekh" },
+  // hy con la transliteración ASCII de ADR 0002, D30.
+  hy: { rinde: "ashkhatavardzi-gnoghunakutyun", libertad: "harkayin-azatutyan-or", aumento: "inchkan-e-mnum-barcratsumits" },
+  // sl en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D32).
+  sl: { rinde: "kje-placa-najvec-zaleze", libertad: "dan-davcne-svobode", aumento: "koliko-ostane-od-povisice" },
+  // et en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D33).
+  et: { rinde: "kus-palk-kestab-kauem", libertad: "maksuvabaduse-paev", aumento: "kui-palju-palgatousust-jaab" },
+  // is en ASCII (þ→th, ð→d, æ→ae, ö→o, sin tildes), con las palabras que se buscan (ADR 0002, D34).
+  is: { rinde: "hvar-launin-duga-best", libertad: "skattfrelsisdagurinn", aumento: "hvad-verdur-eftir-af-launahaekkun" },
 
   pl: { rinde: "gdzie-pensja-daje-najwiecej", libertad: "dzien-wolnosci-podatkowej", aumento: "ile-zostaje-z-podwyzki" },
   sv: { rinde: "dar-lonen-racker-langst", libertad: "skattefrihetsdagen", aumento: "vad-som-blir-kvar-av-en-loneokning" },
@@ -97,6 +113,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   ka: { rinde: "khelpasis-msqidveloba", libertad: "sagadasakhado-tavisuplebis-dghe", aumento: "ramdeni-rcheba-momatebidan" },
   // hr en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D27).
   hr: { rinde: "gdje-placa-vrijedi-najvise", libertad: "dan-porezne-slobode", aumento: "koliko-ostaje-od-povisice" },
+  // lv en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D35).
+  lv: { rinde: "kur-no-algas-paliek-visvairak", libertad: "nodoklu-brivibas-diena", aumento: "cik-paliek-no-algas-pielikuma" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

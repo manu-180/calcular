@@ -54,15 +54,15 @@ function esEditable(t: EventTarget | null): boolean {
   return t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName);
 }
 
-// «1 resultado», «5 resultados». Con la forma «few» de los idiomas eslavos (resultadosPocos: uk, ru, cs)
+// «1 resultado», «5 resultados». El esloveno suma el dual (resultadosDos: «2 rezultata», «3 rezultati», «5 rezultatov»). Con la forma «few» de los idiomas eslavos (resultadosPocos: uk, ru, cs)
 // la categoría sale de Intl.PluralRules con el idioma de la página: «3 результати», «21 результат»,
 // «3 výsledky», «5 výsledků». En rumano la forma con «de» va del 20 en adelante (resultadosDe:
 // «20 de rezultate», pero «101 rezultate»).
-function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "resultadosPlural" | "resultadosPocos" | "resultadosDe">): string {
+function cuantosResultados(n: number, t: Pick<TextosBuscador, "resultado" | "resultadosPlural" | "resultadosPocos" | "resultadosDos" | "resultadosDe">): string {
   if (t.resultadosPocos !== undefined) {
     const lang = typeof document === "undefined" ? "" : document.documentElement.lang;
     const categoria = lang ? new Intl.PluralRules(lang).select(n) : n === 1 ? "one" : "other";
-    return `${n} ${categoria === "one" ? t.resultado : categoria === "few" ? t.resultadosPocos : t.resultadosPlural}`;
+    return `${n} ${categoria === "one" ? t.resultado : categoria === "two" ? (t.resultadosDos ?? t.resultadosPlural) : categoria === "few" ? t.resultadosPocos : t.resultadosPlural}`;
   }
   if (n === 1) return `${n} ${t.resultado}`;
   const c = n % 100;
@@ -81,9 +81,9 @@ function plano(s: string): string {
 function resaltar(titulo: string, q: string): ReactNode {
   const base = plano(titulo);
   const marcas: Array<[number, number]> = [];
-  for (const t of new Set(plano(q).split(/[^a-z0-9\u0400-\u04ffͰ-Ͽ\u10A0-\u10FF\u1C90-\u1CBF]+/).filter((x) => x.length >= 2))) {
+  for (const t of new Set(plano(q).split(/[^a-z0-9\u0400-\u04ffͰ-Ͽ\u10A0-\u10FF\u1C90-\u1CBF\u0531-\u0587]+/).filter((x) => x.length >= 2))) {
     let i = base.indexOf(t);
-    while (i > 0 && /[a-z0-9\u0400-\u04ffͰ-Ͽ\u10A0-\u10FF\u1C90-\u1CBF]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
+    while (i > 0 && /[a-z0-9\u0400-\u04ffͰ-Ͽ\u10A0-\u10FF\u1C90-\u1CBF\u0531-\u0587]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
     if (i >= 0) marcas.push([i, i + t.length]);
   }
   if (!marcas.length) return titulo;

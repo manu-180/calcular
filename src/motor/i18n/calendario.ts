@@ -1,9 +1,11 @@
+import { formaSl, pluralSl } from "./plural";
+import { formaIs, pluralIs } from "./plural";
 import type { TipoEvento } from "../calendario/eventos";
 import type { Idioma, Trato } from "../tipos";
 import { formaAr, pluralAr } from "./arabe";
 import { cifrasBn } from "./bengali";
 import { GRAMATICA, mayusculaHu } from "./gramatica";
-import { conteoMn, formaBg, formaCs, formaEl, formaRu, formaSk, formaUk, pluralBg, pluralCs, pluralEl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
+import { conteoMn, formaBg, formaCs, formaEl, formaLv, formaRu, formaSk, formaUk, pluralBg, pluralCs, pluralEl, pluralLv, pluralRo, pluralRu, pluralSk, pluralSq, pluralUk } from "./plural";
 import { formaSr, pluralSr } from "./plural";
 import { formaHr, pluralHr } from "./plural";
 import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
@@ -2470,7 +2472,456 @@ const mn: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
+// Armenio (ADR 0002, D30): impersonal como los demás; el país va con GRAMATICA.hy y detrás del
+// número el sustantivo queda en singular («3 օր»).
+const gHy = GRAMATICA.hy;
+const hy: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Աշխատանքային և հարկային օրացույց",
+    seo: {
+      titulo: (pais, anios) => [
+        `${gHy.de(pais)} աշխատանքային և հարկային օրացույց, ${anios}, կարևոր ամսաթվեր`,
+        `${gHy.de(pais)} աշխատանքային և հարկային օրացույց, ${anios}`,
+        `${gHy.de(pais)} աշխատանքային օրացույց`,
+      ],
+      descripcion: (pais, proximas) => `Ամսաթվեր, որոնք փոխում են աշխատավարձը ${gHy.en(pais)}, պաշտոնական աղբյուրով և իրենց հաշվիչով։ Մոտակաները՝ ${proximas}`,
+      descripcionSin: (pais) => `Ամսաթվեր, որոնք փոխում են աշխատավարձը ${gHy.en(pais)}, պաշտոնական աղբյուրով և իրենց հաշվիչով։ Կարելի է ավելացնել հեռախոսի օրացույցին։`,
+    },
+    ceja: (anios) => `Օրացույց, ${anios}`,
+    h1: (pais) => `${gHy.de(pais)} աշխատանքային և հարկային օրացույց`,
+    acento: "ամսաթվերը, որոնցից կախված է աշխատավարձը",
+    bajada: "Յուրաքանչյուր ամսաթիվ գալիս է պաշտոնական աղբյուրից և տանում է դեպի իրեն առնչվող հաշվիչը։ Էջը թարմացվում է ինքնաշխատ, երբ նոր արժեք է հրապարակվում։",
+    proxima: "Հաջորդ ամսաթիվը",
+    cuenta: {
+      hoy: "Այսօր",
+      manana: "Վաղը",
+      ayer: "Երեկ",
+      en: (n) => `${n} օրից`,
+      hace: (n) => `${n} օր առաջ`,
+      dias: () => "օր",
+    },
+    queViene: "Առջևում",
+    yaRige: "Արդեն գործում է",
+    mesPorMes: "Տարին՝ ամիս առ ամիս",
+    sinFechas: "Հայտարարված փոփոխություններ չկան",
+    filtro: "Զտել ըստ թեմայի",
+    todo: "Բոլորը",
+    tipos: { pago: "Վճարումներ", "salario-minimo": "Նվազագույն աշխատավարձ", impuestos: "Հարկեր", aportes: "Սոցիալական վճարներ և կենսաթոշակ", laboral: "Աշխատանքային կանոններ", indices: "Հղումային արժեքներ" },
+    pasa: (antes, despues) => `Նախկինում՝ ${antes}, այսուհետ՝ ${despues}`,
+    queda: (valor) => `Սահմանված է՝ ${valor}`,
+    cambian: "Գումարները փոխվում են",
+    zonas: (lista) => `Տարածաշրջաններ՝ ${lista}`,
+    limite: "Վերջնաժամկետ",
+    agregar: "Ավելացնել իմ օրացույցին",
+    descargar: "Apple, Outlook և այլն (.ics ֆայլ)",
+    google: "Google Օրացույց",
+    calcular: "Հաշվարկել",
+    tambien: "Նաև հաշվիչներում",
+    fuente: (organismo, fecha) => `Աղբյուր՝ ${organismo}։ Ստուգվել է՝ ${fecha}`,
+    verificado: (fecha) => `Ստուգվել է՝ ${fecha}`,
+    suscribir: {
+      titulo: "Ամբողջ օրացույցը՝ միշտ թարմ",
+      texto: "Բաժանորդագրությամբ նոր ամսաթվերն ինքնաշխատ հայտնվում են հեռախոսի կամ համակարգչի օրացույցում։",
+      boton: "Բաժանորդագրվել օրացույցին",
+      copiar: "Պատճենել հղումը",
+      copiado: "Հղումը պատճենվեց",
+    },
+    fuentes: {
+      titulo: "Որտեղի՞ց է գալիս յուրաքանչյուր ամսաթիվ",
+      texto: "Այստեղ ներառվում են միայն այն ամսաթվերը, որոնք արդեն սահմանված են իրավական ակտով կամ պաշտոնական մարմնի հրապարակած արժեքով։ Այն, ինչ դեռ հրապարակված չէ, այստեղ չկա։",
+    },
+    vacio: "Առաջիկա տասներկու ամսում այս թեմայով ամսաթվեր չկան։",
+    destacado: {
+      ceja: "Վճարումների օրացույց",
+      titulo: "Ամսաթվերը, որոնցից այս տարի կախված է աշխատավարձը",
+      ir: "Տեսնել օրացույցը",
+      proxima: (titulo, fecha) => `Հաջորդը՝ ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `${gHy.de(pais)} աշխատանքային և հարկային օրացույց (CalcularYa)`,
+      descripcion: (pais) => `Վճարումների և հարկերի ամսաթվեր ${gHy.en(pais)}, պաշտոնական աղբյուրներից։`,
+      calculadora: "Հաշվիչ",
+      fuente: "Աղբյուր",
+    },
+    og: { proxima: "Հաջորդ ամսաթիվը", mas: (n) => `Եվս ${n} ամսաթիվ այս տարի` },
+  },
+};
+
+// Albanés (ADR 0002, D31)
+const gSq = GRAMATICA.sq;
+const diteSq = (n: number) => pluralSq(n, "ditë", "ditë");
+const sq: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Kalendari i pagave dhe tatimeve",
+    seo: {
+      titulo: (pais, anios) => [
+        `Kalendari i pagave dhe tatimeve ${anios} ${gSq.para(pais)}: datat kryesore`,
+        `Kalendari i pagave dhe tatimeve ${anios} ${gSq.para(pais)}`,
+        `Kalendari i pagave ${gSq.para(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Datat që ndryshojnë pagën ${gSq.en(pais)}, nga burime zyrtare: ${proximas}. Secila ka kalkulatorin e vet.`,
+      descripcionSin: (pais) => `Datat që ndryshojnë pagën ${gSq.en(pais)}, nga burime zyrtare dhe me kalkulatorin përkatës. Mund t'i shtoni në kalendarin e telefonit.`,
+    },
+    ceja: (anios) => `Kalendari ${anios}`,
+    h1: (pais) => `Kalendari i pagave dhe tatimeve ${gSq.para(pais)}`,
+    acento: "datat nga të cilat varet paga",
+    bajada: "Çdo datë vjen nga një burim zyrtar dhe lidhet me kalkulatorin mbi të cilin ndikon. Faqja përditësohet vetë kur publikohet një vlerë e re.",
+    proxima: "Data e radhës",
+    cuenta: {
+      hoy: "Sot",
+      manana: "Nesër",
+      ayer: "Dje",
+      en: (n) => `Për ${diteSq(n)}`,
+      hace: (n) => `${diteSq(n)} më parë`,
+      dias: () => "ditë",
+    },
+    queViene: "Çfarë vjen më pas",
+    yaRige: "Çfarë është në fuqi",
+    mesPorMes: "Viti muaj pas muaji",
+    sinFechas: "Nuk është njoftuar asnjë ndryshim",
+    filtro: "Filtroni sipas temës",
+    todo: "Të gjitha",
+    tipos: { pago: "Pagesa", "salario-minimo": "Paga minimale", impuestos: "Tatime", aportes: "Kontribute dhe pensione", laboral: "Rregulla pune", indices: "Vlera reference" },
+    pasa: (antes, despues) => `Ndryshon nga ${antes} në ${despues}`,
+    queda: (valor) => `Mbetet ${valor}`,
+    cambian: "Vlerat ndryshojnë",
+    zonas: (lista) => `Rajone: ${lista}`,
+    limite: "Afati i fundit",
+    agregar: "Shtojeni në kalendarin tim",
+    descargar: "Apple, Outlook dhe të tjera (skedar .ics)",
+    google: "Google Calendar",
+    calcular: "Llogaritni",
+    tambien: "Edhe në kalkulatorët",
+    fuente: (organismo, fecha) => `Burimi: ${organismo}. Verifikuar më ${fecha}.`,
+    verificado: (fecha) => `Verifikuar më ${fecha}`,
+    suscribir: {
+      titulo: "I gjithë kalendari, gjithmonë i përditësuar",
+      texto: "Me abonimin, datat e reja shfaqen vetë në kalendarin e telefonit ose të kompjuterit.",
+      boton: "Abonohuni në kalendar",
+      copiar: "Kopjoni lidhjen",
+      copiado: "Lidhja u kopjua",
+    },
+    fuentes: {
+      titulo: "Nga vjen çdo datë",
+      texto: "Këtu hyjnë vetëm datat e përcaktuara tashmë me një akt ligjor ose me një vlerë të publikuar nga institucioni zyrtar. Ajo që nuk është publikuar ende nuk shfaqet.",
+    },
+    vacio: "Për këtë temë nuk ka data në dymbëdhjetë muajt e ardhshëm.",
+    destacado: {
+      ceja: "Kalendari i pagave",
+      titulo: "Datat nga të cilat varet paga këtë vit",
+      ir: "Shikoni kalendarin",
+      proxima: (titulo, fecha) => `E radhës: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Kalendari i pagave dhe tatimeve ${gSq.para(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Datat e pagave dhe tatimeve ${gSq.en(pais)}, nga burime zyrtare.`,
+      calculadora: "Kalkulator",
+      fuente: "Burimi",
+    },
+    og: { proxima: "Data e radhës", mas: (n) => `Dhe ${pluralSq(n, "datë tjetër", "data të tjera")} këtë vit` },
+  },
+};
+
+// Esloveno (ADR 0002, D32): impersonal como los demás; el país se declina con GRAMATICA.sl («v Sloveniji») y
+// los días con formaSl/pluralSl: «čez» lleva acusativo («čez 3 dni») y «pred» instrumental («pred 3 dnevi»).
+const gSl = GRAMATICA.sl;
+const sl: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Koledar plač in davkov",
+    seo: {
+      titulo: (pais, anios) => [
+        `Koledar plač in davkov ${anios} ${gSl.en(pais)}: pomembni datumi`,
+        `Koledar plač in davkov ${anios} ${gSl.en(pais)}`,
+        `Koledar plač ${gSl.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Datumi, ki spreminjajo plačo ${gSl.en(pais)}, iz uradnih virov: ${proximas}. Pri vsakem datumu je kalkulator.`,
+      descripcionSin: (pais) => `Datumi, ki spreminjajo plačo ${gSl.en(pais)}, iz uradnih virov, pri vsakem pa kalkulator. Dodajte jih v koledar na telefonu.`,
+    },
+    ceja: (anios) => `Koledar ${anios}`,
+    h1: (pais) => `Koledar plač in davkov ${gSl.en(pais)}`,
+    acento: "datumi, od katerih je odvisna plača",
+    bajada: "Vsak datum prihaja iz uradnega vira in vodi do kalkulatorja, na katerega vpliva. Stran se sama posodobi, takoj ko je objavljena nova vrednost.",
+    proxima: "Naslednji datum",
+    cuenta: {
+      hoy: "Danes",
+      manana: "Jutri",
+      ayer: "Včeraj",
+      en: (n) => `Čez ${pluralSl(n, "dan", "dneva", "dni", "dni")}`,
+      hace: (n) => `Pred ${pluralSl(n, "dnem", "dnevoma", "dnevi", "dnevi")}`,
+      dias: (n) => formaSl(n, "dan", "dneva", "dni", "dni"),
+    },
+    queViene: "Kmalu",
+    yaRige: "Že velja",
+    mesPorMes: "Leto po mesecih",
+    sinFechas: "Sprememb ni napovedanih",
+    filtro: "Filtriraj po temi",
+    todo: "Vse",
+    tipos: { pago: "Izplačila", "salario-minimo": "Minimalna plača", impuestos: "Davki", aportes: "Prispevki in pokojnine", laboral: "Pravila dela", indices: "Referenčne vrednosti" },
+    pasa: (antes, despues) => `Sprememba: ${antes} postane ${despues}`,
+    queda: (valor) => `Velja: ${valor}`,
+    cambian: "Zneski se spreminjajo",
+    zonas: (lista) => `Regije: ${lista}`,
+    limite: "Skrajni rok",
+    agregar: "Dodaj v moj koledar",
+    descargar: "Apple, Outlook in drugi (datoteka .ics)",
+    google: "Google Koledar",
+    calcular: "Izračunaj",
+    tambien: "Tudi v kalkulatorjih",
+    fuente: (organismo, fecha) => `Vir: ${organismo}. Preverjeno: ${fecha}`,
+    verificado: (fecha) => `Preverjeno: ${fecha}`,
+    suscribir: {
+      titulo: "Celoten koledar, vedno ažuren",
+      texto: "Naročite se enkrat in novi datumi se bodo sami pojavljali v koledarju na telefonu ali računalniku.",
+      boton: "Naroči se na koledar",
+      copiar: "Kopiraj povezavo",
+      copiado: "Povezava je kopirana",
+    },
+    fuentes: {
+      titulo: "Od kod prihaja vsak datum",
+      texto: "Tukaj so samo datumi, ki jih je že določil predpis, ali vrednost, ki jo je objavil uradni organ. Česar še ni objavljeno, tukaj ni.",
+    },
+    vacio: "V naslednjih dvanajstih mesecih za to temo ni datumov.",
+    destacado: {
+      ceja: "Koledar plač",
+      titulo: "Datumi, od katerih je letos odvisna plača",
+      ir: "Prikaži koledar",
+      proxima: (titulo, fecha) => `Naslednje: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Koledar plač in davkov ${gSl.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Roki za izplačila in davke ${gSl.en(pais)}, iz uradnih virov.`,
+      calculadora: "Kalkulator",
+      fuente: "Vir",
+    },
+    og: { proxima: "Naslednji datum", mas: (n) => `In še ${pluralSl(n, "rok", "roka", "roki", "rokov")} letos` },
+  },
+};
+
+// ───────────────────────────── et ─────────────────────────────
+
+// Estonio: gEt.de da el genitivo que va delante del sustantivo («Eesti palgakalender») y gEt.en el caso
+// de lugar completo («Eestis»). Las fechas van tras dos puntos o entre paréntesis, en nominativo.
+const gEt = GRAMATICA.et;
+const et: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Palga- ja maksukalender",
+    seo: {
+      titulo: (pais, anios) => [`${gEt.de(pais)} palga- ja maksukalender ${anios}: olulised kuupäevad`, `${gEt.de(pais)} palgakalender ${anios}`, `${gEt.de(pais)} palgakalender`],
+      descripcion: (pais, proximas) => `Kuupäevad, mis muudavad palka ${gEt.en(pais)}, koos ametlike allikatega: ${proximas}. Igaühel oma kalkulaator.`,
+      descripcionSin: (pais) => `Kuupäevad, mis muudavad palka ${gEt.en(pais)}, koos ametlike allikate ja kalkulaatoritega. Lisa need telefoni kalendrisse.`,
+    },
+    ceja: (anios) => `Kalender ${anios}`,
+    h1: (pais) => `${gEt.de(pais)} palga- ja maksukalender`,
+    acento: "kuupäevad, mis mõjutavad palka",
+    bajada: "Iga kuupäev tuleb ametlikust allikast ja viib sellega seotud kalkulaatorini. Leht uueneb ise, kui avaldatakse uus väärtus.",
+    proxima: "Järgmine kuupäev",
+    cuenta: {
+      hoy: "Täna",
+      manana: "Homme",
+      ayer: "Eile",
+      en: (n) => `${n} päeva pärast`,
+      hace: (n) => (n === 1 ? "1 päev tagasi" : `${n} päeva tagasi`),
+      dias: (n) => (n === 1 ? "päev" : "päeva"),
+    },
+    queViene: "Tulemas",
+    yaRige: "Juba kehtib",
+    mesPorMes: "Aasta kuude kaupa",
+    sinFechas: "Teatatud muudatusi ei ole",
+    filtro: "Filtreeri teema järgi",
+    todo: "Kõik",
+    tipos: { pago: "Väljamaksed", "salario-minimo": "Miinimumpalk", impuestos: "Maksud", aportes: "Maksed ja pensionid", laboral: "Töösuhte reeglid", indices: "Indeksid" },
+    pasa: (antes, despues) => `Muutub: ${antes} → ${despues}`,
+    queda: (valor) => `Uus väärtus: ${valor}`,
+    cambian: "Väärtused muutuvad",
+    zonas: (lista) => `Puudutab: ${lista}`,
+    limite: "Tähtaeg",
+    agregar: "Lisa minu kalendrisse",
+    descargar: "Apple, Outlook ja teised (.ics-fail)",
+    google: "Google'i kalender",
+    calcular: "Arvuta",
+    tambien: "Ka siin",
+    fuente: (organismo, fecha) => `Allikas: ${organismo}. Kontrollitud: ${fecha}.`,
+    verificado: (fecha) => `Kontrollitud: ${fecha}`,
+    suscribir: {
+      titulo: "Kogu kalender, alati ajakohane",
+      texto: "Pärast tellimist ilmuvad uued kuupäevad ise telefoni või arvuti kalendrisse.",
+      boton: "Telli kalender",
+      copiar: "Kopeeri link",
+      copiado: "Link on kopeeritud",
+    },
+    fuentes: {
+      titulo: "Kust kuupäevad pärinevad",
+      texto: "Kaasas on ainult kuupäevad, mis on juba kirjas õigusaktis või ametiasutuse avaldatud väärtuses. Mida pole veel avaldatud, seda siin ei näe.",
+    },
+    vacio: "Sellel teemal ei ole järgmise kaheteistkümne kuu jooksul kuupäevi.",
+    destacado: {
+      ceja: "Palgakalender",
+      titulo: "Selle aasta kuupäevad, mis mõjutavad palka",
+      ir: "Vaata kalendrit",
+      proxima: (titulo, fecha) => `Järgmine: ${titulo} (${fecha})`,
+    },
+    ics: {
+      nombre: (pais) => `${gEt.de(pais)} palgakalender (CalcularYa)`,
+      descripcion: (pais) => `${gEt.de(pais)} palga- ja maksukuupäevad koos ametlike allikatega.`,
+      calculadora: "Kalkulaator",
+      fuente: "Allikas",
+    },
+    og: { proxima: "Järgmine kuupäev", mas: (n) => (n === 1 ? "Ja veel 1 kuupäev sel aastal" : `Ja veel ${n} kuupäeva sel aastal`) },
+  },
+};
+
+// Islandés (ADR 0002, D34): impersonal como los demás; el país se declina con GRAMATICA.is («á Íslandi») y los
+// días con pluralIs: «eftir» lleva acusativo («eftir 3 daga») y «fyrir ... síðan» dativo («fyrir 3 dögum síðan»).
+const gIs = GRAMATICA.is;
+const is: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Launa- og skattadagatal",
+    seo: {
+      titulo: (pais, anios) => [
+        `Launa- og skattadagatal ${anios} ${gIs.en(pais)}: mikilvægar dagsetningar`,
+        `Launa- og skattadagatal ${anios} ${gIs.en(pais)}`,
+        `Launadagatal ${gIs.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Dagsetningar sem breyta launum ${gIs.en(pais)}, úr opinberum heimildum: ${proximas}. Reiknivél fylgir hverri dagsetningu.`,
+      descripcionSin: (pais) => `Dagsetningar sem breyta launum ${gIs.en(pais)}, úr opinberum heimildum, og reiknivél með hverri. Bættu þeim í dagatalið í símanum.`,
+    },
+    ceja: (anios) => `Dagatal ${anios}`,
+    h1: (pais) => `Launa- og skattadagatal ${gIs.en(pais)}`,
+    acento: "dagsetningar sem launin ráðast af",
+    bajada: "Hver dagsetning kemur úr opinberri heimild og vísar á reiknivélina sem hún hefur áhrif á. Síðan uppfærist sjálfkrafa um leið og nýtt gildi er birt.",
+    proxima: "Næsta dagsetning",
+    cuenta: {
+      hoy: "Í dag",
+      manana: "Á morgun",
+      ayer: "Í gær",
+      en: (n) => `Eftir ${pluralIs(n, "dag", "daga")}`,
+      hace: (n) => `Fyrir ${pluralIs(n, "degi", "dögum")} síðan`,
+      dias: (n) => formaIs(n, "dagur", "dagar"),
+    },
+    queViene: "Fram undan",
+    yaRige: "Þegar í gildi",
+    mesPorMes: "Árið mánuð fyrir mánuð",
+    sinFechas: "Engar breytingar boðaðar",
+    filtro: "Sía eftir efni",
+    todo: "Allt",
+    tipos: { pago: "Greiðslur", "salario-minimo": "Lágmarkslaun", impuestos: "Skattar", aportes: "Iðgjöld og lífeyrir", laboral: "Vinnureglur", indices: "Viðmiðunargildi" },
+    pasa: (antes, despues) => `Breyting: ${antes} verður ${despues}`,
+    queda: (valor) => `Gildir: ${valor}`,
+    cambian: "Upphæðirnar breytast",
+    zonas: (lista) => `Svæði: ${lista}`,
+    limite: "Lokafrestur",
+    agregar: "Bæta við dagatalið mitt",
+    descargar: "Apple, Outlook og fleiri (.ics-skrá)",
+    google: "Google Calendar",
+    calcular: "Reikna",
+    tambien: "Einnig í reiknivélum",
+    fuente: (organismo, fecha) => `Heimild: ${organismo}. Staðfest: ${fecha}`,
+    verificado: (fecha) => `Staðfest: ${fecha}`,
+    suscribir: {
+      titulo: "Allt dagatalið, alltaf uppfært",
+      texto: "Gerstu áskrifandi einu sinni og nýjar dagsetningar birtast sjálfkrafa í dagatalinu í símanum eða tölvunni.",
+      boton: "Gerast áskrifandi að dagatali",
+      copiar: "Afrita hlekk",
+      copiado: "Hlekkurinn var afritaður",
+    },
+    fuentes: {
+      titulo: "Hvaðan hver dagsetning kemur",
+      texto: "Hér eru aðeins dagsetningar sem regla hefur þegar ákveðið eða gildi sem opinber aðili hefur birt. Það sem ekki hefur verið birt er ekki hér.",
+    },
+    vacio: "Engar dagsetningar um þetta efni næstu tólf mánuði.",
+    destacado: {
+      ceja: "Launadagatal",
+      titulo: "Dagsetningar sem launin ráðast af í ár",
+      ir: "Sýna dagatal",
+      proxima: (titulo, fecha) => `Næst: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Launa- og skattadagatal ${gIs.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Frestir fyrir greiðslur og skatta ${gIs.en(pais)}, úr opinberum heimildum.`,
+      calculadora: "Reiknivél",
+      fuente: "Heimild",
+    },
+    og: { proxima: "Næsta dagsetning", mas: (n) => `Og ${pluralIs(n, "frestur", "frestir")} til viðbótar í ár` },
+  },
+};
+
+// Letón (ADR 0002, D35): impersonal como los demás, imperativo con «jūs» donde se le habla a quien lee.
+// El país con GRAMATICA.lv («Latvijā»); los días con formaLv/pluralLv: «pēc» y «pirms» piden genitivo en
+// singular y dativo en plural («pēc 1 dienas», «pēc 3 dienām»). Las fechas de Intl van tras dos puntos.
+const gLv = GRAMATICA.lv;
+const lv: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Algas un nodokļu kalendārs",
+    seo: {
+      titulo: (pais, anios) => [
+        `Algas un nodokļu kalendārs ${anios}. gadam ${gLv.en(pais)}: svarīgi datumi`,
+        `Algas un nodokļu kalendārs ${anios}. gadam ${gLv.en(pais)}`,
+        `Algas kalendārs ${gLv.en(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Datumi, kas maina algu ${gLv.en(pais)}, no oficiāliem avotiem: ${proximas}. Pie katra ir kalkulators.`,
+      descripcionSin: (pais) => `Datumi, kas maina algu ${gLv.en(pais)}, no oficiāliem avotiem, pie katra kalkulators. Pievienojiet tos kalendāram telefonā.`,
+    },
+    ceja: (anios) => `Kalendārs: ${anios}`,
+    h1: (pais) => `Algas un nodokļu kalendārs ${gLv.en(pais)}`,
+    acento: "datumi, no kuriem atkarīga alga",
+    bajada: "Katrs datums ņemts no oficiāla avota un ved uz kalkulatoru, kuram tas ir svarīgs. Lapa atjaunojas pati, kad tiek publicēta jauna vērtība.",
+    proxima: "Tuvākais datums",
+    cuenta: {
+      hoy: "Šodien",
+      manana: "Rīt",
+      ayer: "Vakar",
+      en: (n) => `Pēc ${pluralLv(n, "dienas", "dienām", "dienām")}`,
+      hace: (n) => `Pirms ${pluralLv(n, "dienas", "dienām", "dienām")}`,
+      dias: (n) => formaLv(n, "diena", "dienas", "dienu"),
+    },
+    queViene: "Drīzumā",
+    yaRige: "Jau spēkā",
+    mesPorMes: "Gads pa mēnešiem",
+    sinFechas: "Izmaiņas nav publicētas",
+    filtro: "Filtrēt pēc tēmas",
+    todo: "Visi",
+    tipos: { pago: "Izmaksas", "salario-minimo": "Minimālā alga", impuestos: "Nodokļi", aportes: "Iemaksas un pensijas", laboral: "Darba noteikumi", indices: "Atskaites lielumi" },
+    pasa: (antes, despues) => `Mainās: bija ${antes}, būs ${despues}`,
+    queda: (valor) => `Spēkā: ${valor}`,
+    cambian: "Summas mainās",
+    zonas: (lista) => `Reģioni: ${lista}`,
+    limite: "Pēdējais termiņš",
+    agregar: "Pievienot manam kalendāram",
+    descargar: "Apple, Outlook un citi (.ics fails)",
+    google: "Google kalendārs",
+    calcular: "Aprēķināt",
+    tambien: "Arī kalkulatoros",
+    fuente: (organismo, fecha) => `Avots: ${organismo}. Pārbaudīts: ${fecha}.`,
+    verificado: (fecha) => `Pārbaudīts: ${fecha}`,
+    suscribir: {
+      titulo: "Viss kalendārs, vienmēr aktuāls",
+      texto: "Abonējiet vienreiz, un jaunie datumi paši parādīsies jūsu telefona vai datora kalendārā.",
+      boton: "Abonēt kalendāru",
+      copiar: "Kopēt saiti",
+      copiado: "Saite nokopēta",
+    },
+    fuentes: {
+      titulo: "No kurienes ņemts katrs datums",
+      texto: "Šeit nonāk tikai datumi, ko jau noteicis normatīvais akts vai oficiālas iestādes publicēta vērtība. Tā, kas vēl nav publicēts, šeit nav.",
+    },
+    vacio: "Tuvāko divpadsmit mēnešu laikā par šo tēmu datumu nav.",
+    destacado: {
+      ceja: "Algas kalendārs",
+      titulo: "Datumi, no kuriem šogad atkarīga alga",
+      ir: "Skatīt kalendāru",
+      proxima: (titulo, fecha) => `Tuvākais: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Algas un nodokļu kalendārs ${gLv.en(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Algas un nodokļu termiņi ${gLv.en(pais)} no oficiāliem avotiem.`,
+      calculadora: "Kalkulators",
+      fuente: "Avots",
+    },
+    og: { proxima: "Tuvākais datums", mas: (n) => `Un vēl šogad: ${pluralLv(n, "datums", "datumi", "datumu")}` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

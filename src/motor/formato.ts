@@ -24,8 +24,13 @@ function fechaFmt(locale: string, opciones: Intl.DateTimeFormatOptions): Intl.Da
   return f;
 }
 
+// Monedas cuyo uso real no coincide con Intl. El dram tiene dos decimales en CLDR, pero nóminas, facturas y
+// precios no llevan luma: sin esto la tabla y las universales de Armenia decían «75 000,00 ֏». Va por moneda
+// y no por mercado.redondeo porque ese camino también cambiaría pk (PKR) y uz (UZS), hoy publicados.
+const DECIMALES_DE_USO: Readonly<Partial<Record<Moneda, number>>> = { AMD: 0 };
+
 export function decimalesDeMoneda(moneda: Moneda, locale: string): number {
-  return numero(locale, { style: "currency", currency: moneda }).resolvedOptions().maximumFractionDigits ?? 2;
+  return DECIMALES_DE_USO[moneda] ?? numero(locale, { style: "currency", currency: moneda }).resolvedOptions().maximumFractionDigits ?? 2;
 }
 
 // Redondeo decimal sin el error binario de Math.round(x * 100) / 100 (1.005 da 1.00 con el truco
@@ -72,8 +77,10 @@ export function formatearMoneda(n: number, locale: string, moneda: Moneda, decim
 // Mayúscula o minúscula en la primera letra con las reglas del locale: en turco «i» sube a «İ» e «I»
 // baja a «ı» (toUpperCase daría «Iş» en vez de «İş»).
 // En georgiano no hay mayúsculas: la letra queda igual aunque el locale no lo diga (ADR 0002, D26).
+// En armenio reformado «և» a principio de frase es «Եվ» (Intl la sube a «ԵՒ», la forma clásica; D30).
 export function mayusculaInicial(s: string, locale: string): string {
   if (/^[\u10D0-\u10FF]/.test(s)) return s;
+  if (s.startsWith("և")) return `Եվ${s.slice(1)}`;
   return s ? s.charAt(0).toLocaleUpperCase(locale) + s.slice(1) : s;
 }
 
@@ -112,7 +119,7 @@ function nombreDeUnidad(n: number, unidad: string, locale: string): string | nul
   // Dual: el árabe trae además "pocos" y "muchos" (FormasAr); el hebreo, solo uno, dos y otros (FormasHe).
   if ("dos" in formas) return "pocos" in formas ? formaAr(n, formas) : formaHe(n, formas);
   const categoria = new Intl.PluralRules(locale).select(n);
-  const forma = categoria === "one" ? formas.uno : categoria === "few" ? (formas.pocos ?? formas.otros) : categoria === "many" ? (formas.muchos ?? formas.otros) : formas.otros;
+  const forma = n === 0 && formas.cero ? formas.cero : categoria === "one" ? formas.uno : categoria === "two" ? (formas.dual ?? formas.otros) : categoria === "few" ? (formas.pocos ?? formas.otros) : categoria === "many" ? (formas.muchos ?? formas.otros) : formas.otros;
   const pegada = UNIDAD_PEGADA.has(idiomaDeLocale(locale) ?? "es");
   return `{n}${pegada ? "" : " "}${forma}`;
 }
@@ -150,7 +157,7 @@ export function separadoresDe(locale: string): Separadores {
 }
 
 const ESPACIOS = /[\s   ]/g;
-// sv, nb y fi escriben el negativo con el signo menos de Unicode (U+2212) y el formulario muestra los
+// sv, nb, fi y et escriben el negativo con el signo menos de Unicode (U+2212) y el formulario muestra los
 // valores así: sin normalizarlo, «−12 345» se leía como 12345.
 const MENOS = /−/g;
 const normalizar = (texto: string) => texto.replace(ESPACIOS, "").replace(MENOS, "-");

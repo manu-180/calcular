@@ -26,6 +26,18 @@ const ZH_HANS: TextosAfiliados = {
 };
 
 export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
+  lv: {
+    base: {
+      titulo: "Pārceļaties uz ārzemēm vai maksājat no citas valsts?",
+      etiqueta: "Partneru saites",
+      socios: {
+        wise: "Daudzvalūtu konts naudas saņemšanai un sūtīšanai starp valstīm pēc vidējā tirgus kursa, ar iepriekš redzamu maksu.",
+        deel: "Līgumi un izmaksas tiem, kas no vienas valsts strādā citas valsts uzņēmumam.",
+      },
+      nota: "Ja pa šīm saitēm atvērsiet kontu, vietne var saņemt komisijas maksu. Jums tas neko vairāk nemaksās.",
+      nuevaPestana: "atveras jaunā cilnē",
+    },
+  },
   es: {
     base: {
       titulo: "¿Mudarse o cobrar desde el exterior?",
@@ -386,6 +398,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "отваря се в нов раздел",
     },
   },
+  // Armenio (ADR 0002, D30): «Դուք» de cortesía con mayúscula.
+  hy: {
+    base: {
+      titulo: "Տեղափոխվո՞ւմ եք արտերկիր կամ վճարում այլ երկրից",
+      etiqueta: "Գործընկերային հղումներ",
+      socios: {
+        wise: "Բազմարժութային հաշիվ, որով երկրների միջև գումար եք ստանում և ուղարկում միջին փոխարժեքով և նախապես հայտնի միջնորդավճարով։",
+        deel: "Պայմանագրեր և վճարումներ նրանց համար, ովքեր մի երկրից աշխատում են մեկ այլ երկրի ընկերության համար։",
+      },
+      nota: "Եթե այս հղումներով հաշիվ բացեք, կայքը կարող է միջնորդավճար ստանալ։ Ձեզ համար դա անվճար է։",
+      nuevaPestana: "բացվում է նոր ներդիրում",
+    },
+  },
   // Hebreo (ADR 0002, D22), impersonal como los demás.
   he: {
     base: {
@@ -449,6 +474,58 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       },
       nota: "Ako preko ovih poveznica otvorite račun, stranica može dobiti proviziju. Vi zbog toga ne plaćate ništa više.",
       nuevaPestana: "otvara se u novoj kartici",
+    },
+  },
+  // Albanés (ADR 0002, D31)
+  sq: {
+    base: {
+      titulo: "Po shpërnguleni në një vend tjetër apo merrni para nga jashtë?",
+      etiqueta: "Lidhje partnere",
+      socios: {
+        wise: "Një llogari në disa monedha, për të marrë dhe dërguar para mes vendeve me kursin mesatar të tregut, me një tarifë që shfaqet paraprakisht.",
+        deel: "Kontrata dhe pagesa për ata që punojnë nga një vend për një kompani në një vend tjetër.",
+      },
+      nota: "Nëse hapni një llogari përmes këtyre lidhjeve, faqja mund të marrë një komision. Kush regjistrohet nuk paguan asgjë më shumë për këtë arsye.",
+      nuevaPestana: "hapet në një skedë të re",
+    },
+  },
+  // Esloveno (ADR 0002, D32): «vi» en minúscula.
+  sl: {
+    base: {
+      titulo: "Se selite v tujino ali plačujete iz druge države?",
+      etiqueta: "Partnerske povezave",
+      socios: {
+        wise: "Račun v več valutah za prejemanje in pošiljanje denarja med državami po srednjem tržnem tečaju, s provizijo, ki jo vidite vnaprej.",
+        deel: "Pogodbe in izplačila za tiste, ki iz ene države delajo za podjetje iz druge.",
+      },
+      nota: "Če prek teh povezav odprete račun, lahko stran prejme provizijo. Vi zato ne plačate nič več.",
+      nuevaPestana: "odpre se v novem zavihku",
+    },
+  },
+  // Estonio (ADR 0002, D33): «sina».
+  et: {
+    base: {
+      titulo: "Kolid välismaale või maksad teisest riigist?",
+      etiqueta: "Partnerlingid",
+      socios: {
+        wise: "Mitme valuutaga konto, millega saad raha riikide vahel vastu võtta ja saata turu keskmise kursiga. Tasu näed ette.",
+        deel: "Lepingud ja väljamaksed neile, kes töötavad ühest riigist teise riigi ettevõttele.",
+      },
+      nota: "Kui avad nende linkide kaudu konto, võib see leht saada vahendustasu. Sina selle eest rohkem ei maksa.",
+      nuevaPestana: "avaneb uuel vahelehel",
+    },
+  },
+  // Islandés (ADR 0002, D34).
+  is: {
+    base: {
+      titulo: "Ertu að flytja til útlanda eða borga frá öðru landi?",
+      etiqueta: "Samstarfshlekkir",
+      socios: {
+        wise: "Reikningur í mörgum gjaldmiðlum til að taka við og senda peninga milli landa á miðgengi, með þóknun sem þú sérð fyrir fram.",
+        deel: "Samningar og launagreiðslur fyrir þá sem vinna frá einu landi fyrir fyrirtæki í öðru.",
+      },
+      nota: "Ef þú stofnar reikning í gegnum þessa hlekki getur vefurinn fengið þóknun. Þú borgar ekkert aukalega fyrir það.",
+      nuevaPestana: "opnast í nýjum flipa",
     },
   },
 };

@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosIs: TextosUi<UiCalorias> = {
+  slug: "kaloriureiknivel",
+  ui: () => ({
+    sexo: "Kyn",
+    mujer: "Kona",
+    hombre: "Karl",
+    edad: "Aldur (ár)",
+    peso: (u) => `Þyngd (${u})`,
+    altura: (u) => `Hæð (${u})`,
+    pies: "Hæð: fet (ft)",
+    pulgadas: "Hæð: tommur (in)",
+    actividad: "Hreyfing",
+    sedentaria: "Lítil eða engin",
+    ligera: "Létt (1 til 3 daga í viku)",
+    moderada: "Hófleg (3 til 5 daga í viku)",
+    alta: "Mikil (6 eða 7 daga í viku)",
+    muyAlta: "Mjög mikil (erfiðar æfingar eða líkamleg vinna)",
+    objetivo: "Markmið",
+    mantener: "Halda þyngdinni",
+    bajar: "Léttast rólega",
+    subir: "Þyngjast rólega",
+    basal: "Grunnefnaskipti (kcal á dag)",
+    basalAyuda: "Það sem líkaminn brennir í algjörri hvíld.",
+    mantenimiento: "Hitaeiningar til að halda þyngdinni (kcal á dag)",
+    calObjetivo: "Hitaeiningar fyrir markmiðið þitt (kcal á dag)",
+    calObjetivoAyuda: "Hófleg breyting: 500 kcal minna á dag til að léttast, 300 meira til að þyngjast.",
+    errorEdad: "Formúlan á við um fólk á aldrinum 15 til 100 ára.",
+    errorPeso: "Þyngdin þarf að vera meiri en 0.",
+    errorAltura: "Hæðin þarf að vera meiri en 0.",
+    notaMinimo: (kcal) => `Þegar markmiðið er að léttast fer útreikningurinn ekki niður fyrir ${kcal} kcal á dag. Ef þú vilt borða minna en það skaltu gera það í samráði við heilbrigðisstarfsfólk.`,
+    aviso: "Þetta er áætlun byggð á formúlu Mifflin-St Jeor. Líkamar eru ólíkir. Þetta kemur ekki í stað mats næringarfræðings, læknis eða annars heilbrigðisstarfsfólks.",
+  }),
+};

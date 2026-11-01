@@ -1,0 +1,1283 @@
+{
+  "mercado": "am",
+  "datos": [
+    {
+      "id": "am.aah",
+      "nombre": "Ավելացված արժեքի հարկի դրույքաչափը",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 63, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.aah-shem",
+      "nombre": "ԱԱՀ-ի շեմ (տարեկան իրացման շրջանառություն)",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 115000000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 254, մաս 2",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.yekamtayin-hark",
+      "nombre": "Եկամտային հարկի դրույքաչափը",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 150, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.yekamut-dedq",
+      "nombre": "Եկամտային հարկի դրույքաչափերը՝ ըստ եկամտի տեսակի",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "ashkhatavardz": "Աշխատավարձ և հավասարեցված վճարումներ",
+        "avand": "Բանկային ավանդի տոկոս",
+        "tokos": "Այլ տոկոսներ",
+        "royalti": "Ռոյալթի",
+        "vardz": "Վարձակալական վճար",
+        "shahabazhin": "Շահաբաժին",
+        "guyq": "Գույքի օտարում",
+        "karutsapatogh": "Կառուցապատողի կողմից օտարում"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "ashkhatavardz": 20,
+            "avand": 10,
+            "tokos": 20,
+            "royalti": 10,
+            "vardz": 10,
+            "shahabazhin": 5,
+            "guyq": 10,
+            "karutsapatogh": 20
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 150, մասեր 1, 5, 5.1, 6, 7, 8, 9, 11",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.shahabazhni-dedq",
+      "nombre": "Շահաբաժնի եկամտային հարկի դրույքաչափը",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 150, մաս 8",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.shahutahark",
+      "nombre": "Շահութահարկի դրույքաչափը",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 125, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.vardz-dedq",
+      "nombre": "Վարձակալական վճարի եկամտային հարկի դրույքաչափը",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 150, մաս 7",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.vardz-lrats",
+      "nombre": "Լրացուցիչ եկամտային հարկը՝ շեմը գերազանցող վարձակալական վճարի համար",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 150, մաս 7",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.vardz-shem",
+      "nombre": "Վարձակալական վճարի տարեկան շեմը",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60000000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 150, մաս 7",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.aha-tarekan-shem",
+      "nombre": "Պասիվ եկամուտների տարեկան շեմը առողջության ապահովագրության համար",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2400000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Առողջության համընդհանուր ապահովագրության մասին» ՀՕ-459-Ն, հոդված 11, մաս 2, կետ 13",
+            "url": "https://www.arlis.am/hy/acts/218650/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.shrjanarutyan-dedq",
+      "nombre": "Շրջանառության հարկի դրույքաչափերը",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "arevtur": "Առևտուր (առք ու վաճառք)",
+        "erkrordayin": "Երկրորդային հումքի առևտուր (կառավարության ցանկով)",
+        "tert": "Թերթերի օտարում խմբագրության կողմից",
+        "artadrutyun": "Արտադրություն",
+        "vardz": "Վարձակալական վճար, տոկոս, ռոյալթի",
+        "snund": "Հանրային սնունդ",
+        "bartsr-tekh": "Բարձր տեխնոլոգիաներ (կառավարության ցանկով)",
+        "aktiv": "Այլ ակտիվների, այդ թվում՝ անշարժ գույքի օտարում",
+        "ayl": "Այլ գործունեություն (ծառայություններ)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "arevtur": 10,
+            "erkrordayin": 5,
+            "tert": 1.5,
+            "artadrutyun": 7,
+            "vardz": 10,
+            "snund": 12,
+            "bartsr-tekh": 1,
+            "aktiv": 10,
+            "ayl": 10
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 258, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.shrjanarutyan-nvazetsum",
+      "nombre": "Ծախսերից նվազեցվող տոկոսը",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "arevtur": "Առևտուր (առք ու վաճառք)",
+        "artadrutyun": "Արտադրություն",
+        "snund": "Հանրային սնունդ",
+        "ayl": "Այլ գործունեություն (ծառայություններ)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "arevtur": 9.5,
+            "artadrutyun": 5,
+            "snund": 9,
+            "ayl": 6
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 258, մասեր 2-5",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.shrjanarutyan-nvazaguyn",
+      "nombre": "Շրջանառության հարկի նվազագույն մասը նվազեցումից հետո",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "arevtur": "Առևտուր (առք ու վաճառք)",
+        "artadrutyun": "Արտադրություն",
+        "snund": "Հանրային սնունդ",
+        "ayl": "Այլ գործունեություն (ծառայություններ)"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "arevtur": 1,
+            "artadrutyun": 3,
+            "snund": 3.5,
+            "ayl": 4.5
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 258, մասեր 2-5",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.shrjanarutyan-shem",
+      "nombre": "Շրջանառության հարկի համակարգի շեմը",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 115000000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 254, մաս 2",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.mikro-shem",
+      "nombre": "Միկրոձեռնարկատիրության շեմը",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24000000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 267, մաս 3",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.guyq-bnakaran",
+      "nombre": "Անշարժ գույքի հարկ՝ բնակարան և բազմաբնակարան շենքի տարածք",
+      "tipo": "escala",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 10000000,
+              "tasa": 0.05,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 10000000,
+              "hasta": 25000000,
+              "tasa": 0.1,
+              "cuotaFija": 5000
+            },
+            {
+              "desde": 25000000,
+              "hasta": 47000000,
+              "tasa": 0.2,
+              "cuotaFija": 20000
+            },
+            {
+              "desde": 47000000,
+              "hasta": 75000000,
+              "tasa": 0.4,
+              "cuotaFija": 64000
+            },
+            {
+              "desde": 75000000,
+              "hasta": 100000000,
+              "tasa": 0.6,
+              "cuotaFija": 176000
+            },
+            {
+              "desde": 100000000,
+              "hasta": 200000000,
+              "tasa": 1,
+              "cuotaFija": 326000
+            },
+            {
+              "desde": 200000000,
+              "hasta": null,
+              "tasa": 1.5,
+              "cuotaFija": 1326000
+            }
+          ],
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 229, մաս 1, կետ 3",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.guyq-tun",
+      "nombre": "Անշարժ գույքի հարկ՝ անհատական բնակելի տուն և այգետնակ",
+      "tipo": "escala",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 7000000,
+              "tasa": 0.05,
+              "cuotaFija": 0
+            },
+            {
+              "desde": 7000000,
+              "hasta": 23000000,
+              "tasa": 0.1,
+              "cuotaFija": 3500
+            },
+            {
+              "desde": 23000000,
+              "hasta": 50000000,
+              "tasa": 0.2,
+              "cuotaFija": 19500
+            },
+            {
+              "desde": 50000000,
+              "hasta": 85000000,
+              "tasa": 0.4,
+              "cuotaFija": 73500
+            },
+            {
+              "desde": 85000000,
+              "hasta": 120000000,
+              "tasa": 0.6,
+              "cuotaFija": 213500
+            },
+            {
+              "desde": 120000000,
+              "hasta": 200000000,
+              "tasa": 1,
+              "cuotaFija": 423500
+            },
+            {
+              "desde": 200000000,
+              "hasta": null,
+              "tasa": 1.5,
+              "cuotaFija": 1223500
+            }
+          ],
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ հարկային օրենսգիրք, հոդված 229, մաս 1, կետ 4",
+            "url": "https://www.arlis.am/hy/acts/123521/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.nvazaguyn",
+      "nombre": "Նվազագույն ամսական աշխատավարձ",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Նվազագույն ամսական աշխատավարձի մասին» ՀՕ-66-Ն, հոդված 1",
+            "url": "https://www.arlis.am/hy/acts/94713/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.nvazaguyn-zham",
+      "nombre": "Ժամային տարիֆային դրույքի նվազագույն չափը",
+      "tipo": "mapa",
+      "unidad": "AMD",
+      "etiquetas": {
+        "40": "40-ժամյա աշխատանքային շաբաթ",
+        "36": "36-ժամյա աշխատանքային շաբաթ",
+        "24": "Մինչև 24-ժամյա աշխատանքային շաբաթ"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "40": 450,
+            "36": 500,
+            "24": 750
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Նվազագույն ամսական աշխատավարձի մասին» ՀՕ-66-Ն, հոդված 2",
+            "url": "https://www.arlis.am/hy/acts/94713/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.mijin-ashkhatavardz",
+      "nombre": "Միջին ամսական անվանական աշխատավարձ",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "proximaRevision": "2026-12-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 387612,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "Armstat, Economic and Financial Data, Wages/Earnings, 2026 սեպտեմբեր, նախնական",
+            "url": "https://www.armstat.am/nsdp/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.kutakayin-tsatsr",
+      "nombre": "Սոցիալական վճարը՝ մինչև շեմը",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Կուտակային կենսաթոշակների մասին» ՀՕ-244-Ն, հոդված 6, մաս 2",
+            "url": "https://www.arlis.am/hy/acts/64546/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.kutakayin-bardzr",
+      "nombre": "Սոցիալական վճարը՝ շեմից բարձր",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Կուտակային կենսաթոշակների մասին» ՀՕ-244-Ն, հոդված 6, մաս 2",
+            "url": "https://www.arlis.am/hy/acts/64546/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.kutakayin-shem",
+      "nombre": "Սոցիալական վճարի աշխատավարձի շեմը",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Կուտակային կենսաթոշակների մասին» ՀՕ-244-Ն, հոդված 6, մաս 2",
+            "url": "https://www.arlis.am/hy/acts/64546/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.kutakayin-nvazetsum",
+      "nombre": "Սոցիալական վճարից հանվող գումարը",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 25000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Կուտակային կենսաթոշակների մասին» ՀՕ-244-Ն, հոդված 6, մաս 2",
+            "url": "https://www.arlis.am/hy/acts/64546/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.kutakayin-bazmapatik",
+      "nombre": "Առավելագույն շեմը՝ նվազագույն աշխատավարձի քանի՞ պատիկը",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Կուտակային կենսաթոշակների մասին» ՀՕ-244-Ն, հոդված 6, մաս 6",
+            "url": "https://www.arlis.am/hy/acts/64546/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.drosh-tsatsr",
+      "nombre": "Դրոշմանիշային վճարը՝ մինչև 1 000 000 դրամ",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-245-Ն, հոդված 12, մաս 1, կետ 1, ՀՕ-477-Ն",
+            "url": "https://www.arlis.am/hy/acts/218669/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.drosh-bardzr",
+      "nombre": "Դրոշմանիշային վճարը՝ 1 000 001 դրամից",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-245-Ն, հոդված 12, մաս 1, կետ 1",
+            "url": "https://www.arlis.am/hy/acts/218669/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.drosh-shem",
+      "nombre": "Դրոշմանիշային վճարի շեմը՝ աշխատավարձի դեպքում",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-245-Ն, հոդված 12, մաս 1, կետ 1",
+            "url": "https://www.arlis.am/hy/acts/218669/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.drosh-dz-tsatsr",
+      "nombre": "Տարեկան դրոշմանիշային վճարը՝ անհատ ձեռնարկատեր, մինչև 12 000 000 դրամ",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-245-Ն, հոդված 12, մաս 1, կետ 2, ՀՕ-477-Ն",
+            "url": "https://www.arlis.am/hy/acts/218669/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.drosh-dz-bardzr",
+      "nombre": "Տարեկան դրոշմանիշային վճարը՝ անհատ ձեռնարկատեր, 12 000 001 դրամից",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 120000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-245-Ն, հոդված 12, մաս 1, կետ 2",
+            "url": "https://www.arlis.am/hy/acts/218669/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.drosh-dz-shem",
+      "nombre": "Անհատ ձեռնարկատիրոջ դրոշմանիշային վճարի շեմը",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12000000,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-245-Ն, հոդված 12, մաս 1, կետ 2",
+            "url": "https://www.arlis.am/hy/acts/218669/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.aha-vchar",
+      "nombre": "Առողջության համընդհանուր ապահովագրավճարի ամսական չափը՝ վարձու աշխատողի համար",
+      "tipo": "mapa",
+      "unidad": "AMD",
+      "etiquetas": {
+        "tsatsr": "Աշխատավարձը մինչև 200 000 դրամ",
+        "mijin": "200 001 դրամից մինչև 500 000 դրամ",
+        "bardzr": "500 001 դրամ և ավելի"
+      },
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": {
+            "tsatsr": 0,
+            "mijin": 4800,
+            "bardzr": 10800
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Առողջության համընդհանուր ապահովագրության մասին» ՀՕ-459-Ն, հոդված 45, մաս 1, կետեր 3, 4, 6, հոդված 46, մաս 9",
+            "url": "https://www.arlis.am/hy/acts/218650/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": {
+            "tsatsr": 10800,
+            "mijin": 10800,
+            "bardzr": 10800
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Առողջության համընդհանուր ապահովագրության մասին» ՀՕ-459-Ն, հոդված 13, մաս 1, հոդված 14, մաս 3, հոդված 45, մաս 1, կետ 6",
+            "url": "https://www.arlis.am/hy/acts/218650/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.aha-amsakan",
+      "nombre": "Ապահովագրավճարի ամսական դրույքաչափը",
+      "tipo": "numero",
+      "unidad": "AMD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10800,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "«Առողջության համընդհանուր ապահովագրության մասին» ՀՕ-459-Ն, հոդված 13, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/218650/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.ardzakurd-orer",
+      "nombre": "Ամենամյա նվազագույն արձակուրդ",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "hing": "Հնգօրյա աշխատանքային շաբաթ",
+        "vets": "Վեցօրյա աշխատանքային շաբաթ"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "hing": 20,
+            "vets": 24
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 159, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.orakan-bazhanarar",
+      "nombre": "Միջին օրական աշխատավարձի բաժանարարը",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "hing": "Հնգօրյա աշխատանքային շաբաթ",
+        "vets": "Վեցօրյա աշխատանքային շաբաթ"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "hing": 21,
+            "vets": 25
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 195, մաս 3",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.artazhamya-havelum",
+      "nombre": "Արտաժամյա աշխատանքի հավելում",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 184, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.gisher-havelum",
+      "nombre": "Գիշերային աշխատանքի հավելում",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 184, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.ton-gortakits",
+      "nombre": "Տոնական օրվա աշխատանքի գործակիցը",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 185, մասեր 1, 2",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.artazhamya-sahman",
+      "nombre": "Արտաժամյա աշխատանքի տարեկան սահմանը",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 180,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 146, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.shabatakan-zhamer",
+      "nombre": "Աշխատաժամանակի նորմալ տևողությունը շաբաթական",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 139, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.ardzakman-orer",
+      "nombre": "Արձակման նպաստը՝ միջին օրական աշխատավարձի քանի՞ պատիկը",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "minchev1": "Մինչև 1 տարի",
+        "1-5": "1 տարուց մինչև 5 տարի",
+        "5-10": "5 տարուց մինչև 10 տարի",
+        "10-15": "10 տարուց մինչև 15 տարի",
+        "15": "15 տարի և ավելի"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "minchev1": 10,
+            "1-5": 25,
+            "5-10": 30,
+            "10-15": 35,
+            "15": 44
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 129, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.tsanutsman-orer",
+      "nombre": "Գործատուի ծանուցման ժամկետը՝ ըստ ստաժի",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "minchev1": "Մինչև 1 տարի",
+        "1-5": "1 տարուց մինչև 5 տարի",
+        "5-10": "5 տարուց մինչև 10 տարի",
+        "10-15": "10 տարուց մինչև 15 տարի",
+        "15": "Ավելի քան 15 տարի"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "minchev1": 14,
+            "1-5": 35,
+            "5-10": 42,
+            "10-15": 49,
+            "15": 60
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 115, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.tsanutsman-krchatum-amis",
+      "nombre": "Ծանուցում լուծարման կամ կրճատման դեպքում",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 115, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.tsanutsman-ashkhatogh",
+      "nombre": "Աշխատողի ծանուցման ժամկետը",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 112, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.tsanutsman-ashkhatogh-hargeli",
+      "nombre": "Աշխատողի ծանուցումը հարգելի պատճառով",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 112, մաս 2",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.hivandutyan-tokos",
+      "nombre": "Հիվանդության նպաստի հիմքը՝ միջին աշխատավարձի տոկոսը",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-160-Ն, հոդված 22, մաս 2",
+            "url": "https://www.arlis.am/hy/acts/205733/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.npast-orer",
+      "nombre": "Մեկ ամսվա միջին օրերը",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30.4,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-160-Ն, հոդված 22, մասեր 15, 19",
+            "url": "https://www.arlis.am/hy/acts/205733/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.hivandutyan-gortatu-orer",
+      "nombre": "Գործատուի վճարած առաջին օրերը",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 7,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-160-Ն, հոդված 6, մաս 2",
+            "url": "https://www.arlis.am/hy/acts/205733/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.hivandutyan-bazmapatik",
+      "nombre": "Հիվանդության նպաստի հիմքի առավելագույնը՝ նվազագույն աշխատավարձի պատիկ",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-160-Ն, հոդված 22, մաս 3",
+            "url": "https://www.arlis.am/hy/acts/205733/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.mayrutyan-bazmapatik",
+      "nombre": "Մայրության նպաստի հիմքի առավելագույնը՝ նվազագույն աշխատավարձի պատիկ",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-160-Ն, հոդված 22, մաս 5",
+            "url": "https://www.arlis.am/hy/acts/205733/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.npast-nvazaguyn",
+      "nombre": "Նպաստի հիմքի նվազագույնը՝ նվազագույն աշխատավարձի տոկոս",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՕ-160-Ն, հոդված 22, մաս 6",
+            "url": "https://www.arlis.am/hy/acts/205733/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "am.mayrutyan-orer",
+      "nombre": "Հղիության և ծննդաբերության արձակուրդի օրերը",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "sovorakan": "Սովորական ծննդաբերություն",
+        "bard": "Բարդ ծննդաբերություն",
+        "bazmaptugh": "Մեկից ավելի երեխա"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sovorakan": 140,
+            "bard": 155,
+            "bazmaptugh": 180
+          },
+          "fuente": {
+            "organismo": "ARLIS, ՀՀ արդարադատության նախարարություն",
+            "titulo": "ՀՀ աշխատանքային օրենսգիրք, հոդված 172, մաս 1",
+            "url": "https://www.arlis.am/hy/acts/66489/latest",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -29,6 +29,7 @@ export function textosInforme(idioma: Idioma, trato: Trato, clave: ClaveFamilia,
           etiquetaEnMinuscula: i.etiquetaEnMinuscula,
           anchoCompleto: i.anchoCompleto ?? false,
           puntoFinal: i.puntoFinal ?? ".",
+          dosPuntos: i.dosPuntos ?? (i.anchoCompleto ? "：" : ": "),
         }
       : null,
   };

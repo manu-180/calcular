@@ -183,3 +183,66 @@ export function pluralHr(n: number | string, uno: string, pocos: string, muchos:
 export function conteoMn(n: number | string, palabra: string): string {
   return `${n} ${palabra}`;
 }
+
+// Albanés (ADR 0002, D31): Intl.PluralRules("sq") tiene «one» (solo el 1) y «other» (también 0 y las
+// fracciones): «1 vit», «2 vjet», «1,5 vjet», «1 kalkulator», «3 kalkulatorë». Recibe number o string
+// porque check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
+const REGLAS_SQ = new Intl.PluralRules("sq");
+
+export function formaSq(n: number | string, uno: string, otros: string): string {
+  return REGLAS_SQ.select(Math.abs(Number(n))) === "one" ? uno : otros;
+}
+
+export function pluralSq(n: number | string, uno: string, otros: string): string {
+  return `${n} ${formaSq(n, uno, otros)}`;
+}
+
+// Esloveno (ADR 0002, D32): las categorías de Intl.PluralRules("sl"), con dual. «one» es 1, 101, 201 (no
+// 11), «two» 2, 102, 202, «few» 3, 4, 103, 104 y las fracciones («1,5 leta»), y «other» el resto, también
+// 0, 5 a 100 y 21 («21 let»). Recibe number o string porque check_i18n llama a las funciones de los
+// diccionarios con argumentos de muestra.
+const REGLAS_SL = new Intl.PluralRules("sl");
+
+export function formaSl(n: number | string, uno: string, dos: string, pocos: string, otros: string): string {
+  const categoria = REGLAS_SL.select(Math.abs(Number(n)));
+  if (categoria === "one") return uno;
+  if (categoria === "two") return dos;
+  if (categoria === "few") return pocos;
+  return otros;
+}
+
+// El número y la palabra: «1 leto», «2 leti», «3 leta», «5 let»; «1 dan», «2 dneva», «3 dni», «5 dni».
+export function pluralSl(n: number | string, uno: string, dos: string, pocos: string, otros: string): string {
+  return `${n} ${formaSl(n, uno, dos, pocos, otros)}`;
+}
+
+// Islandés (ADR 0002, D34): las categorías de Intl.PluralRules("is"). «one» es lo que termina en 1 salvo en
+// 11 (1, 21, 31, 101, no 11 ni 111) y «other» el resto: «1 dagur», «2 dagar», «11 dagar», «21 dagur». Recibe
+// number o string porque check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
+const REGLAS_IS = new Intl.PluralRules("is");
+
+export function formaIs(n: number | string, uno: string, otros: string): string {
+  return REGLAS_IS.select(Math.abs(Number(n))) === "one" ? uno : otros;
+}
+
+// El número y la palabra: «1 land», «21 land», «2 lönd»; «1 dagur», «21 dagur», «2 dagar».
+export function pluralIs(n: number | string, uno: string, otros: string): string {
+  return `${n} ${formaIs(n, uno, otros)}`;
+}
+
+// Letón (ADR 0002, D35): Intl.PluralRules("lv") da one (1, 21, 31; no 11), other (2 a 9, 22 a 29, fracciones)
+// y zero (0, 10 a 20, 30...). Solo el cero real va en genitivo plural («0 gadu»): 10, 11 o 20 van en
+// nominativo plural como el resto («10 gadi»), así que la categoría zero no decide sola. Recibe number o
+// string porque check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
+const REGLAS_LV = new Intl.PluralRules("lv");
+
+export function formaLv(n: number | string, uno: string, otros: string, cero: string): string {
+  const v = Math.abs(Number(n));
+  if (v === 0) return cero;
+  return REGLAS_LV.select(v) === "one" ? uno : otros;
+}
+
+// El número y la palabra: «1 kalkulators», «3 kalkulatori», «10 kalkulatori», «21 kalkulators», «0 kalkulatoru».
+export function pluralLv(n: number | string, uno: string, otros: string, cero: string): string {
+  return `${n} ${formaLv(n, uno, otros, cero)}`;
+}

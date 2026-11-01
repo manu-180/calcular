@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosSq: TextosUi<UiCalorias> = {
+  slug: "kalkulator-kalorish",
+  ui: () => ({
+    sexo: "Gjinia",
+    mujer: "Femër",
+    hombre: "Mashkull",
+    edad: "Mosha (vjet)",
+    peso: (u) => `Pesha (${u})`,
+    altura: (u) => `Gjatësia (${u})`,
+    pies: "Gjatësia: këmbë (ft)",
+    pulgadas: "Gjatësia: inç",
+    actividad: "Niveli i aktivitetit",
+    sedentaria: "Pak ose aspak",
+    ligera: "I lehtë (1 deri në 3 ditë në javë)",
+    moderada: "I moderuar (3 deri në 5 ditë në javë)",
+    alta: "I lartë (6 ose 7 ditë në javë)",
+    muyAlta: "Shumë i lartë (stërvitje të rënda ose punë fizike)",
+    objetivo: "Objektivi",
+    mantener: "Ta mbaj peshën",
+    bajar: "Të humb peshë gradualisht",
+    subir: "Të shtoj peshë gradualisht",
+    basal: "Metabolizmi bazal (kcal në ditë)",
+    basalAyuda: "Sa djeg trupi në qetësi të plotë.",
+    mantenimiento: "Kalori për mbajtjen e peshës (kcal në ditë)",
+    calObjetivo: "Kalori për objektivin (kcal në ditë)",
+    calObjetivoAyuda: "Një ndryshim i moderuar: 500 kcal më pak në ditë për të humbur peshë, 300 më shumë për të shtuar peshë.",
+    errorEdad: "Formula është për persona nga 15 deri në 100 vjeç.",
+    errorPeso: "Pesha duhet të jetë më e madhe se 0.",
+    errorAltura: "Gjatësia duhet të jetë më e madhe se 0.",
+    notaMinimo: (kcal) => `Për humbjen e peshës, shifra nuk zbret nën ${kcal} kcal në ditë. Një ushqyerje nën këtë nivel bëhet me mbështetjen e një specialisti.`,
+    aviso: "Është një përllogaritje me ekuacionin Mifflin-St Jeor. Çdo trup është i ndryshëm: nuk zëvendëson konsultën me një mjek ose nutricionist.",
+  }),
+};

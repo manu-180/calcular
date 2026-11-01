@@ -1361,7 +1361,226 @@ const hr: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
+// Armenio (ADR 0002, D30): registro Դուք con «Ձեր» en mayúscula; el país va con GRAMATICA.hy.
+const hy: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa հաշվիչ",
+    marcaNuevaPestana: "(բացվում է նոր ներդիրում)",
+    noDisponible: { titulo: "Այս հաշվիչը հասանելի չէ", texto: "Հնարավոր է, որ դրա հասցեն փոխվել է։" },
+    insertar: "Տեղադրել Ձեր կայքում",
+    pagina: {
+      titulo: (pais) => [`Անվճար հաշվիչներ Ձեր կայքի համար | ${pais}`, "Անվճար հաշվիչներ Ձեր կայքի համար"],
+      descripcion: (pais) => `Ընտրեք հաշվիչ ${GRAMATICA.hy.para(pais)}, պատճենեք կոդը և տեղադրեք Ձեր կայքում։ Անվճար է՝ պաշտոնական և թարմ տվյալներով։`,
+      h1: "Տեղադրեք հաշվիչ Ձեր կայքում",
+      bajada: "Ընտրեք հաշվիչը, պատճենեք կոդը և տեղադրեք այն, որտեղ ցանկանում եք։ Անվճար է, իսկ տվյալները թարմացվում են ինքնաշխատ։",
+      calculadora: "Հաշվիչ",
+      buscar: "Փնտրել հաշվիչ",
+      sinResultados: "Որոնմանը համապատասխանող հաշվիչ չկա։",
+      tema: "Թեմա",
+      claro: "Բաց",
+      oscuro: "Մուգ",
+      ancho: "Լայնություն",
+      anchoCompleto: "Ամբողջ լայնությամբ",
+      acento: "Շեշտադրման գույն",
+      colores: ["Կանաչ", "Կապույտ", "Նարնջագույն", "Վարդագույն", "Գրաֆիտ"],
+      credito: "Հղում աղբյուրին՝ հաշվիչի տակ",
+      vistaPrevia: "Նախադիտում",
+      codigo: "Ներկառուցման կոդ",
+      copiar: "Պատճենել կոդը",
+      copiado: "Կոդը պատճենվեց",
+      ayudaScript: "Սկրիպտը պարտադիր չէ, այն միայն կարգավորում է հաշվիչի բարձրությունը։",
+      ventajas: ["Անվճար և առանց գրանցման", "Միշտ թարմ պաշտոնական տվյալներ", "Հարմարվում է ցանկացած լայնության"],
+      nota: "Հաշվիչի տակ կա հղում դեպի CalcularYa։ Խնդրում ենք չհեռացնել այն։",
+      verTodas: (pais) => `Բոլոր հաշվիչները ${GRAMATICA.hy.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa հաշվիչ`,
+    },
+  },
+};
+
+// Albanés (ADR 0002, D31)
+const sq: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulator CalcularYa",
+    marcaNuevaPestana: "(hapet në një skedë të re)",
+    noDisponible: { titulo: "Ky kalkulator nuk është i disponueshëm", texto: "Ndoshta i ka ndryshuar adresa." },
+    insertar: "Shtojeni në faqen tuaj",
+    pagina: {
+      titulo: (pais) => [`Kalkulatorë falas për faqen tuaj | ${pais}`, "Kalkulatorë falas për faqen tuaj"],
+      descripcion: (pais) => `Zgjidhni një kalkulator ${GRAMATICA.sq.para(pais)}, kopjoni kodin dhe ngjiteni në blogun ose në faqen tuaj. Falas, me të dhëna zyrtare gjithmonë të përditësuara.`,
+      h1: "Shtoni një kalkulator në faqen tuaj",
+      bajada: "Zgjidhni kalkulatorin, kopjoni kodin dhe ngjiteni ku të dëshironi. Falas, dhe të dhënat përditësohen vetë.",
+      calculadora: "Kalkulator",
+      buscar: "Kërkoni një kalkulator",
+      sinResultados: "Asnjë kalkulator nuk përputhet me kërkimin.",
+      tema: "Pamja",
+      claro: "E çelët",
+      oscuro: "E errët",
+      ancho: "Gjerësia",
+      anchoCompleto: "Në gjerësi të plotë",
+      acento: "Ngjyra e theksit",
+      colores: ["E gjelbër", "Blu", "Portokalli", "Rozë", "Gri plumbi"],
+      credito: "Shfaqni lidhjen drejt burimit poshtë kalkulatorit",
+      vistaPrevia: "Parapamje",
+      codigo: "Kodi për t'u ngjitur",
+      copiar: "Kopjoni kodin",
+      copiado: "Kodi u kopjua",
+      ayudaScript: "Skripti është opsional: ai e përshtat lartësinë e kalkulatorit sipas përmbajtjes.",
+      ventajas: ["Falas, pa regjistrim", "Të dhëna zyrtare gjithmonë të përditësuara", "Përshtatet me çdo gjerësi"],
+      nota: "Poshtë kalkulatorit shfaqet një lidhje drejt CalcularYa. Ju lutemi të mos e fshini.",
+      verTodas: (pais) => `Shikoni të gjithë kalkulatorët ${GRAMATICA.sq.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulator CalcularYa`,
+    },
+  },
+};
+
+// Esloveno (ADR 0002, D32): «vi» en minúscula, como los bancos y eDavki; el país va con «za» y acusativo
+// (GRAMATICA.sl: «za Slovenijo»). Botones en la forma corta («Kopiraj kodo»).
+const sl: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Kalkulator CalcularYa",
+    marcaNuevaPestana: "(odpre se v novem zavihku)",
+    noDisponible: { titulo: "Ta kalkulator ni na voljo", texto: "Morda se mu je spremenil naslov." },
+    insertar: "Vstavite na svojo stran",
+    pagina: {
+      titulo: (pais) => [`Brezplačni kalkulatorji za vašo stran | ${pais}`, "Brezplačni kalkulatorji za vašo stran"],
+      descripcion: (pais) => `Izberite kalkulator ${GRAMATICA.sl.para(pais)}, kopirajte kodo in ga vstavite na svoj blog ali stran. Brezplačno, z uradnimi podatki, ki so vedno ažurni.`,
+      h1: "Vstavite kalkulator na svojo stran",
+      bajada: "Izberite kalkulator, kopirajte kodo in jo prilepite, kamor želite. Brezplačno, podatki pa se posodabljajo sami.",
+      calculadora: "Kalkulator",
+      buscar: "Poiščite kalkulator",
+      sinResultados: "Noben kalkulator ne ustreza vašemu iskanju.",
+      tema: "Videz",
+      claro: "Svetel",
+      oscuro: "Temen",
+      ancho: "Širina",
+      anchoCompleto: "Polna širina",
+      acento: "Poudarna barva",
+      colores: ["Zelena", "Modra", "Oranžna", "Rožnata", "Grafitna"],
+      credito: "Prikaži povezavo na vir pod kalkulatorjem",
+      vistaPrevia: "Predogled",
+      codigo: "Koda za vstavljanje",
+      copiar: "Kopiraj kodo",
+      copiado: "Koda je kopirana",
+      ayudaScript: "Skripta ni obvezna: višino kalkulatorja prilagodi njegovi vsebini.",
+      ventajas: ["Brezplačno in brez registracije", "Uradni podatki, vedno ažurni", "Prilagodi se vsaki širini"],
+      nota: "Pod kalkulatorjem je povezava na CalcularYa. Prosimo, ne odstranjujte je.",
+      verTodas: (pais) => `Vsi kalkulatorji ${GRAMATICA.sl.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Kalkulator CalcularYa`,
+    },
+  },
+};
+
+// Estonio (ADR 0002, D33): «sina»; el país en genitivo delante del sustantivo.
+const gEt = GRAMATICA.et;
+const et: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa kalkulaator",
+    marcaNuevaPestana: "(avaneb uuel vahelehel)",
+    noDisponible: { titulo: "See kalkulaator pole saadaval", texto: "Selle aadress võib olla muutunud." },
+    insertar: "Lisa oma veebilehele",
+    pagina: {
+      titulo: (pais) => [`Tasuta kalkulaatorid sinu veebilehele | ${pais}`, "Tasuta kalkulaatorid sinu veebilehele"],
+      descripcion: (pais) => `Vali ${gEt.de(pais)} kalkulaator, kopeeri kood ja kleebi see oma blogisse või veebilehele. Tasuta ja ametlikud andmed on alati ajakohased.`,
+      h1: "Lisa kalkulaator oma veebilehele",
+      bajada: "Vali kalkulaator, kopeeri kood ja kleebi see sinna, kuhu soovid. Tasuta ja andmed uuenevad ise.",
+      calculadora: "Kalkulaator",
+      buscar: "Otsi kalkulaatorit",
+      sinResultados: "Kalkulaatorit ei leitud.",
+      tema: "Teema",
+      claro: "Hele",
+      oscuro: "Tume",
+      ancho: "Laius",
+      anchoCompleto: "Täislaius",
+      acento: "Rõhuvärv",
+      colores: ["Roheline", "Sinine", "Oranž", "Roosa", "Kiltkivihall"],
+      credito: "Lisa allikaviide kalkulaatori alla",
+      vistaPrevia: "Eelvaade",
+      codigo: "Kleebitav kood",
+      copiar: "Kopeeri kood",
+      copiado: "Kood on kopeeritud",
+      ayudaScript: "Skript pole kohustuslik: see sobitab kalkulaatori kõrguse ise.",
+      ventajas: ["Tasuta ja ilma kontota", "Ametlikud andmed alati ajakohased", "Sobib igasse laiusesse"],
+      nota: "Kalkulaatori all on link CalcularYa lehele. Palun jäta see alles.",
+      verTodas: (pais) => `Vaata kõiki ${gEt.de(pais)} kalkulaatoreid`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa kalkulaator`,
+    },
+  },
+};
+
+// Islandés (ADR 0002, D34): «þú» e imperativo de singular; el país va con «fyrir» y acusativo (GRAMATICA.is:
+// «fyrir Ísland»). Botones en infinitivo («Afrita kóða»).
+const is: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "Reiknivél frá CalcularYa",
+    marcaNuevaPestana: "(opnast í nýjum flipa)",
+    noDisponible: { titulo: "Þessi reiknivél er ekki í boði", texto: "Kannski hefur slóðin breyst." },
+    insertar: "Settu hana á síðuna þína",
+    pagina: {
+      titulo: (pais) => [`Ókeypis reiknivélar fyrir síðuna þína | ${pais}`, "Ókeypis reiknivélar fyrir síðuna þína"],
+      descripcion: (pais) => `Veldu reiknivél ${GRAMATICA.is.para(pais)}, afritaðu kóðann og settu hana á bloggið þitt eða vefinn. Ókeypis, með opinberum gögnum sem eru alltaf uppfærð.`,
+      h1: "Settu reiknivél á síðuna þína",
+      bajada: "Veldu reiknivél, afritaðu kóðann og límdu hann þar sem þú vilt. Ókeypis og gögnin uppfærast sjálfkrafa.",
+      calculadora: "Reiknivél",
+      buscar: "Leita að reiknivél",
+      sinResultados: "Engin reiknivél passar við leitina.",
+      tema: "Útlit",
+      claro: "Ljóst",
+      oscuro: "Dökkt",
+      ancho: "Breidd",
+      anchoCompleto: "Full breidd",
+      acento: "Áherslulitur",
+      colores: ["Grænn", "Blár", "Appelsínugulur", "Bleikur", "Grafítgrár"],
+      credito: "Sýna hlekk á heimild undir reiknivélinni",
+      vistaPrevia: "Forskoðun",
+      codigo: "Kóði til að setja inn",
+      copiar: "Afrita kóða",
+      copiado: "Kóðinn var afritaður",
+      ayudaScript: "Skriftan er valfrjáls: hún lagar hæð reiknivélarinnar að efninu.",
+      ventajas: ["Ókeypis og án skráningar", "Opinber gögn, alltaf uppfærð", "Lagar sig að hvaða breidd sem er"],
+      nota: "Undir reiknivélinni er hlekkur á CalcularYa. Við biðjum þig að fjarlægja hann ekki.",
+      verTodas: (pais) => `Allar reiknivélar ${GRAMATICA.is.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | Reiknivél frá CalcularYa`,
+    },
+  },
+};
+
+// Letón (ADR 0002, D35): imperativo de segunda del plural; el país en locativo (GRAMATICA.lv: «Latvijā»).
+const lv: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa kalkulators",
+    marcaNuevaPestana: "(atveras jaunā cilnē)",
+    noDisponible: { titulo: "Šis kalkulators nav pieejams", texto: "Iespējams, ir mainījusies tā adrese." },
+    insertar: "Ievietojiet savā vietnē",
+    pagina: {
+      titulo: (pais) => [`Bezmaksas kalkulatori jūsu vietnei | ${pais}`, "Bezmaksas kalkulatori jūsu vietnei"],
+      descripcion: (pais) => `Izvēlieties kalkulatoru (${pais}), nokopējiet kodu un ievietojiet to savā emuārā vai vietnē. Bez maksas, ar vienmēr aktuāliem oficiāliem datiem.`,
+      h1: "Ievietojiet kalkulatoru savā vietnē",
+      bajada: "Izvēlieties kalkulatoru, nokopējiet kodu un ievietojiet to vajadzīgajā vietā. Bez maksas, un dati atjaunojas paši.",
+      calculadora: "Kalkulators",
+      buscar: "Atrodiet kalkulatoru",
+      sinResultados: "Pēc jūsu vaicājuma kalkulators nav atrasts.",
+      tema: "Izskats",
+      claro: "Gaišs",
+      oscuro: "Tumšs",
+      ancho: "Platums",
+      anchoCompleto: "Pilnā platumā",
+      acento: "Akcenta krāsa",
+      colores: ["Zaļa", "Zila", "Oranža", "Rozā", "Grafīta"],
+      credito: "Rādīt avota saiti zem kalkulatora",
+      vistaPrevia: "Priekšskatījums",
+      codigo: "Ievietošanas kods",
+      copiar: "Kopēt kodu",
+      copiado: "Kods nokopēts",
+      ayudaScript: "Skripts nav obligāts: tas pielāgo kalkulatora augstumu saturam.",
+      ventajas: ["Bez maksas un bez reģistrācijas", "Vienmēr aktuāli oficiālie dati", "Pielāgojas jebkuram platumam"],
+      nota: "Zem kalkulatora ir saite uz CalcularYa. Lūdzu, nenoņemiet to.",
+      verTodas: (pais) => `Rādīt visus kalkulatorus ${GRAMATICA.lv.en(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa kalkulators`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

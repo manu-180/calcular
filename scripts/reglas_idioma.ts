@@ -102,6 +102,17 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
       { re: palabras("laskekaa|valitkaa|tarkistakaa|syöttäkää|kirjoittakaa|painakaa|täyttäkää|katsokaa|lukekaa|ottakaa|pyytäkää|säilyttäkää|vertailkaa|ostakaa|avatkaa|ladatkaa"), nombre: "imperativo plural cortés" },
     ],
   },
+  // Estonio: un solo registro, «sina» (ADR 0002, D33): imperativo de segunda del singular y «sinu». Se atrapa
+  // el «teie» que se cuela: el pronombre, el imperativo plural de los verbos de formulario y el presente de
+  // segunda del plural («saate» no se busca: también es genitivo de «saade»).
+  et: {
+    informal: [],
+    formal: [
+      { re: palabras("teie|teile|teid|teil|teilt|teiega|teieni"), nombre: "teietamine («teie»)" },
+      { re: palabras("sisestage|valige|arvutage|kontrollige|vaadake|klõpsake|vajutage|täitke|kopeerige|laadige|lisage|võrrelge|kasutage|lugege|jagage"), nombre: "imperativo plural (va «sisesta», «vali»)" },
+      { re: palabras("sisestate|valite|maksate|teenite|soovite|näete|arvutate|peate"), nombre: "segunda persona del plural" },
+    ],
+  },
   pl: { informal: [], formal: [{ re: /(?<!\p{L})(?:Pan|Pani|Pana|Panu|Panią|Państwo|Państwa|Pańsk\p{L}*)(?!\p{L})/u, nombre: "forma Pan/Pani" }] },
   // Indonesio: un solo registro, el de los bancos y servicios digitales («Anda» con mayúscula; ADR 0002,
   // D11). Se atrapa el trato informal (kamu, aku, gue/lo), la jerga de chat y «anda» en minúscula, que
@@ -173,8 +184,53 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Albanés: un solo registro, el de e-Albania, Tatime y Raiffeisen Albania («ju» en minúscula con la 2.ª
+  // del plural: «vendosni», «llogaritni»; ADR 0002, D31). Los botones van en la forma corta de las interfaces
+  // («Llogarit», «Kopjo», «Shpërndaj»), así que esos verbos no se atrapan; sí el «ti» y sus posesivos, los
+  // presentes de 2.ª del singular y los imperativos de formulario, y el «Ju» o «Juaj» con mayúscula a mitad
+  // de oración.
+  sq: {
+    informal: [
+      { re: palabras("ti|ty|yt|jot|jote|tënd|tënde|tëndë|tëndes|tëndin|tëndit"), nombre: "«ti» (va «ju»)" },
+      { re: /(?:^|[.?!:]\s+)(?:Vendos|Shkruaj|Kliko|Plotëso|Shiko|Provo|Zgjidh|Kontrollo|Zbulo|Krahaso)\s+\p{L}/u, nombre: "imperativo de «ti» en la prosa (va -ni)" },
+      { re: palabras("ke|je"), nombre: "2.ª del singular" },
+      { re: /(?<!\p{L})të (?!ardhurash|dhënash)\p{L}{3,}(?:ësh|ash|osh|ish)(?!\p{L})/iu, nombre: "subjuntivo de 2.ª del singular (va -ni)" },
+      { re: /[^.?!:“(\s]\s+(?:Ju|Juve|Jush|Juaj|Tuaj|Tuaja|Tuajat)(?!\p{L})/u, nombre: "«Ju» con mayúscula (va «ju»)" },
+    ],
+    formal: [],
+  },
+  // Letón: un solo registro, el de VID (EDS) y latvija.gov.lv: «jūs» en minúscula e imperativo de segunda del
+  // plural («ievadiet», «aprēķiniet», «izvēlieties»); los botones cortos van en infinitivo («Aprēķināt»;
+  // ADR 0002, D35). Se atrapan los pronombres y posesivos de «tu», los imperativos de segunda del singular
+  // de un formulario, los presentes y futuros de segunda del singular y el «Jūs» con mayúscula a mitad de
+  // oración. «maksā», «saņem» o «strādā» coinciden con la tercera y no se atrapan.
+  lv: {
+    informal: [
+      { re: palabras("tu|tavs|tava|tavu|tavi|tavas|tavam|tavai|tavā|tavos|tavām|taviem|tev|tevi|tevis"), nombre: "trato de «tu» (va «jūs»)" },
+      {
+        re: palabras("ievadi|izvēlies|nospied|noklikšķini|uzzini|salīdzini|sāc|paskaties|aizpildi|mēģini|pamēģini|maini|pērc|ietaupi"),
+        nombre: "imperativo de segunda del singular (va -iet)",
+      },
+      { re: palabras("esi|vari|nopelni|gribi|vēlies|saņemsi|maksāsi|nopelnīsi|varēsi|redzēsi|būsi|ietaupīsi|strādāsi"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Jūs|Jūsu|Jums|Jūsos)(?!\p{L})/u, nombre: "«Jūs» con mayúscula (va «jūs»)" },
+    ],
+    formal: [],
+  },
   // Búlgaro: un solo registro, el de ДСК y НАП (2.ª del plural, «Вие», «Ви», «Вашият» con mayúscula;
   // ADR 0002, D24). Se atrapa el «ти» y sus formas, y el pronombre de cortesía con minúscula.
+  // Armenio: un solo registro, el de ՊԵԿ, Ամերիաբանկ y Ակբա բանկ (Դուք, Ձեր, Ձեզ con mayúscula e imperativo
+  // cortés; ADR 0002, D30). Se atrapa la segunda del singular y el pronombre cortés con minúscula.
+  hy: {
+    informal: [
+      { re: palabrasHy("դու|քո|քեզ|քեզնից|քեզանից|քոնը"), nombre: "«դու» (va «Դուք», «Ձեր»)" },
+      {
+        re: palabrasHy("մուտքագրիր|ընտրիր|հաշվիր|հաշվարկիր|սեղմիր|ստուգիր|փորձիր|նայիր|տես|լրացրու|համեմատիր|ներբեռնիր|պատճենիր|կիսվիր|իմացիր|գրիր|ավելացրու|գնիր|ունես|գիտես|կարող ես|ուզում ես|վճարում ես|ստանում ես|աշխատում ես"),
+        nombre: "segunda del singular (va la forma cortés: «մուտքագրեք», «ընտրեք», «ունեք»)",
+      },
+      { re: palabrasHy("դուք|ձեր|ձեզ|ձեզնից|ձերը", "u"), nombre: "pronombre cortés con minúscula (va «Դուք», «Ձեր», «Ձեզ»)" },
+    ],
+    formal: [],
+  },
   bg: {
     informal: [
       { re: palabras("ти|теб|тебе|твой|твоя|твоят|твоята|твоето|твоите|твои"), nombre: "«ти»" },
@@ -329,6 +385,33 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Esloveno: un solo registro, el de los bancos y FURS (vikanje con «vi», en minúscula, e imperativo de
+  // segunda del plural: «vnesite», «izberite»; ADR 0002, D32). Los botones van en la forma corta de las
+  // interfaces eslovenas («Izračunaj», «Kopiraj», «Deli», «Prenesi», «Dodaj», «Odpri», «Prikaži», «Pošlji»,
+  // «Shrani», «Zapri»), así que esos verbos no se atrapan; sí los posesivos de «ti», los pronombres que no
+  // se confunden («ti» y «te» también son demostrativos: «ti podatki»), los presentes de segunda del
+  // singular y los imperativos de un formulario que en la prosa van con -te, y el «Vi» con mayúscula a
+  // mitad de oración.
+  sl: {
+    informal: [
+      { re: palabras("tebe|tebi|tabo|tvoj|tvoja|tvoje|tvojo|tvoji|tvojega|tvojemu|tvojem|tvojih|tvojim|tvojimi"), nombre: "tikanje («ti»)" },
+      { re: palabras("vnesi|izberi|klikni|preveri|poglej|oglej|izračunaj si|primerjaj"), nombre: "imperativo de «ti» en la prosa (va -te)" },
+      { re: palabras("moreš|imaš|želiš|dobiš|plačaš|zaslužiš|vidiš|delaš|porabiš|prihraniš|moraš|boš|veš|vneseš|izbereš|izračunaš|nisi"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Vi|Vas|Vam|Vami|Vaš|Vaša|Vaše|Vašo|Vaši|Vašega|Vašemu|Vašem|Vaših|Vašim|Vašimi)(?!\p{L})/u, nombre: "«Vi» con mayúscula (va «vi»)" },
+    ],
+    formal: [],
+  },
+  // Islandés: un solo registro, el de Skatturinn, Landsbankinn y Arion: «þú» informal e imperativo de
+  // singular («sláðu inn», «reiknaðu», «veldu»; ADR 0002, D34). «þér» no se atrapa suelto, porque también es
+  // el dativo de «þú» («hjá þér»): sí «yður» y «yðar», «þér» con verbo en plural y los imperativos en -ið.
+  is: {
+    informal: [],
+    formal: [
+      { re: palabras("yður|yðar|yðvar"), nombre: "«þérun» («yður»)" },
+      { re: /(?<!\p{L})þér\s+(?:getið|eigið|hafið|viljið|þurfið|fáið|sjáið|greiðið|eruð|munið|skuluð)(?!\p{L})/iu, nombre: "«þérun» («þér» con verbo en plural)" },
+      { re: palabras("reiknið|sláið|veljið|smellið|skoðið|bætið|afritið|sækið|deilið|athugið|kannið|setjið|berið"), nombre: "imperativo en plural (va «reiknaðu», «sláðu», «veldu»)" },
+    ],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -372,6 +455,54 @@ function reglasUz(texto: string): string[] {
 // Búlgaro (ADR 0002, D24): sin ы, э ni ё; letras de otros alfabetos cirílicos fuera; comillas „ “;
 // «във» delante de в/ф y «със» delante de с/з; y las palabras que delatan un texto copiado del ruso.
 const RUSISMOS_BG = palabras("зарплата|зарплаты|сумма|суммы|расчет|рассчитать|также|который|которая|которые|будет|если|только|можно|это|что|для");
+// Armenio oriental en ortografía reformada de Armenia (ADR 0002, D30). «։» como punto final, nunca «.» ni
+// «:» detrás de una palabra armenia (lo que presenta un valor va con «՝»: «Ամսաթիվ՝ {fecha}»; se toleran las
+// abreviaturas «թ.» de la fecha de Intl y «հազ.»); «՞» y «՛» sobre la vocal, nunca «?» ni «!»; comillas «».
+// Sin plural detrás de un número («3 օր»), sin sufijo pegado a una cifra o marcador, sin formas clásicas
+// («իւ», «եւ», «-ութիւն», «ոյ» final) ni del armenio occidental («կը», «մը», «պիտի»).
+const HY = String.raw`\p{sc=Armenian}`;
+// Solo letras: U+0559 a U+055F son signos («՝», «՞», «՛») y no pueden contar como letra.
+const FIN_HY = String.raw`(?![\u0531-\u0556\u0560-\u0588])`;
+const PLURAL_TRAS_NUMERO_HY = new RegExp(String.raw`\d\s+(?:օրեր|ամիսներ|տարիներ|ժամեր|շաբաթներ|րոպեներ|երկրներ|հաշվիչներ|դրամներ|դոլարներ|եվրոներ|տոկոսներ|մարդիկ|անձինք|կիլոմետրեր|լիտրեր|մետրեր|կիլոգրամներ|կալորիաներ|վճարումներ)(?:ի|ում|ով|ից|ը|ն)?${FIN_HY}`, "u");
+const SUFIJO_TRAS_CIFRA_HY = new RegExp(String.raw`(?:\d|%|\}|֏)-?(?:ում|ից|ով|ին|ի|ը|ն|ու|րդ|երորդ)${FIN_HY}`, "u");
+const MEZCLA_HY = new RegExp(String.raw`[\u0531-\u0556\u0560-\u0588][a-zA-Z\u0400-\u04FF]|[a-zA-Z\u0400-\u04FF][\u0531-\u0556\u0560-\u0588]`, "u");
+const PUNTO_HY = new RegExp(String.raw`(?<!(?<![\u0531-\u0556\u0560-\u0588])(?:թ|հազ))(?<=[\u0531-\u0556\u0560-\u0588])\.(?=\s|$|["»)])`, "u");
+const CLASICO_HY = /իւ|եւ|ութիւն|ոյ(?![\u0531-\u0556\u0560-\u0588])/u;
+const OCCIDENTAL_HY = new RegExp(String.raw`(?<![\u0531-\u0556\u0560-\u0588])(?:կը|մը|պիտի)${FIN_HY}`, "u");
+
+function palabrasHy(lista: string, banderas = "iu"): RegExp {
+  return new RegExp(String.raw`(?<![\u0531-\u0556\u0560-\u0588])(?:${lista})(?![\u0531-\u0556\u0560-\u0588])`, banderas);
+}
+
+function reglasHy(texto: string): string[] {
+  const p: string[] = [];
+  if (/[?!\u037E\uFF01\uFF1F]/u.test(texto) && new RegExp(HY, "u").test(texto)) p.push("«?» o «!»: en armenio van «՞» y «՛» sobre la vocal");
+  if (/[^աեէըիոօւԱԵԷԸԻՈՕ]\u055E/u.test(texto)) p.push("«՞» que no está sobre una vocal");
+  if (/[^աեէըիոօւԱԵԷԸԻՈՕ]\u055B/u.test(texto)) p.push("«՛» que no está sobre una vocal");
+  if (PUNTO_HY.test(texto)) p.push("punto latino: el punto final armenio es «։»");
+  if (/\d\.(?:\s|$)/u.test(texto) && new RegExp(HY, "u").test(texto)) p.push("punto latino detrás de una cifra: el punto final armenio es «։»");
+  if (new RegExp(String.raw`[\u0531-\u0556\u0560-\u0588]:`, "u").test(texto)) p.push("«:» detrás de una palabra armenia (va «՝» o «։»)");
+  if (/[„“”]/.test(texto) || new RegExp(String.raw`"[\u0531-\u0556\u0560-\u0588]|[\u0531-\u0556\u0560-\u0588]"`, "u").test(texto)) p.push("comillas: en armenio van « »");
+  if (CLASICO_HY.test(texto)) p.push("ortografía clásica (va la reformada de Armenia)");
+  if (OCCIDENTAL_HY.test(texto)) p.push("armenio occidental («կը», «մը», «պիտի»)");
+  if (MEZCLA_HY.test(texto)) p.push("palabra que mezcla letras armenias con latinas o cirílicas");
+  if (PLURAL_TRAS_NUMERO_HY.test(texto)) p.push("plural detrás de un número (en armenio va en singular: «3 օր»)");
+  if (SUFIJO_TRAS_CIFRA_HY.test(texto)) p.push("sufijo pegado a una cifra o marcador (va con una palabra delante o tras «՝»)");
+  return p;
+}
+
+// Albanés: comillas “ ” (como Tatime y los títulos de ley), nada de «», „ ni rectas. Y las letras: un texto
+// sin ë ni ç delata un teclado sin albanés («per», «nje», «eshte», «Shqiperi», «te ardhurat»).
+const SIN_DIERESIS_SQ = palabras("per|nje|eshte|jane|nese|keto|kete|ketu|shqiperi\\p{L}*|te ardhurat|te dhenat|vleresim\\p{L}*|perqind\\p{L}*|kerkes\\p{L}*|perfshi\\p{L}*");
+function reglasSq(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»„"]/.test(texto)) p.push("comillas: en albanés van “ ”");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en albanés");
+  const s = SIN_DIERESIS_SQ.exec(texto);
+  if (s) p.push(`sin diacríticos «${s[0]}» (në, për, një, është)`);
+  return p;
+}
+
 function reglasBg(texto: string): string[] {
   const p: string[] = [];
   if (/[ыэёЫЭЁ]/.test(texto)) p.push("«ы», «э» o «ё»: no existen en búlgaro");
@@ -431,6 +562,17 @@ function reglasRo(texto: string): string[] {
 
 // Checo: comillas „ “ (abre abajo, cierra arriba), nada de «», "" ni ” (las del inglés o el
 // francés).
+// Letón (ADR 0002, D35): comillas „ “, «%» sin espacio (como Intl lv y la norma letona) y las palabras
+// frecuentes escritas sin diacríticos.
+function reglasLv(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en letón van „ “");
+  if (/(?:^|[\s(])“/.test(texto)) p.push("comillas: en letón abren con „ (abajo)");
+  if (/\d[\s\u00a0\u202f]%/.test(texto)) p.push("porcentaje: en letón va sin espacio (21%)");
+  if (palabras("aprekinat|aprekiniet|aprekins|aprekina|izvelieties|menesi|menesa|menesu|nodoklu|majokla|kredita|sanemt|sanemsiet").test(texto)) p.push("letón sin diacríticos");
+  return p;
+}
+
 function reglasCs(texto: string): string[] {
   const p: string[] = [];
   if (/[«»"”]/.test(texto)) p.push("comillas: en checo van „ “");
@@ -562,6 +704,65 @@ function reglasHr(texto: string): string[] {
   if (DA_SERBIO_HR.test(texto)) p.push("«možete da» y similares: en croata va infinitivo («možete unijeti»)");
   if (DA_LI_HR.test(texto)) p.push("«da li»: en croata, «je li», «jeste li»");
   if (SA_HR.test(texto)) p.push("«sa»: en croata va «s», salvo delante de s, š, z, ž o «mnom»");
+  return p;
+}
+
+// Esloveno: comillas „ “ (abre abajo, cierra arriba, U+201E y U+201C), nada de «», "" ni ”. Y esloveno, no
+// croata adaptado: se atrapan los croatismos comunes de un texto copiado (plaća por plača, porez por davek,
+// mjesec por mesec, godina por leto, tjedan por teden, cijena por cena, «i» por «in», što por kaj,
+// također por tudi, ako por če...) y el dual olvidado tras «dva» o «dve» («dva meseci», «dve leta»). La
+// «ć» y la «đ» no existen en esloveno: delatan el croata sobre todo en nombres comunes, salvo en los nombres
+// propios, que no aparecen en estos textos.
+const CROATISMOS_SL = palabras(
+  "plaća\\p{L}*|plać\\p{L}*|porez\\p{L}*|doprinos\\p{L}*|godin\\p{L}*|godišnj\\p{L}*|mjesec\\p{L}*|mjeseč\\p{L}*|tjed\\p{L}*|cijen\\p{L}*|vrijednost\\p{L}*|vrijeme|tvrtk\\p{L}*|obitelj\\p{L}*|poveznic\\p{L}*|preglednik\\p{L}*|računal[oua]|postot\\p{L}*|novac|novca|novcu|štednj\\p{L}*|ušted\\p{L}*|ulaganj\\p{L}*|unesite|unesi|odaberite|odaberi|izaberite|što|također|kuća|kuće|kući|nije|nisu|jest|sati|sata|koji|koja|koje|kojeg|kojem|ako|kada|kad|može|možete|mogu|još|ili|zemlja|zemalja|hrvatsk\\p{L}*|ovaj|ova|ovo|ove|taj|preuzmi\\p{L}*|podijeli\\p{L}*|naknad\\p{L}*|kupnj\\p{L}*"
+);
+const CONJUNCION_I_SL = /(?<!\p{L})i(?!\p{L})/u;
+const DUAL_SL = /(?<!\p{L})(?:dva\s+(?:meseci|mesecev|dni|tedni|tednov|let|leta)|dve\s+(?:leta|let|ure|ur))(?!\p{L})/iu;
+function reglasSl(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en esloveno van „ “");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en esloveno");
+  if (/[ćđĆĐ]/.test(texto)) p.push("«ć» o «đ»: no existen en esloveno");
+  const c = CROATISMOS_SL.exec(texto);
+  if (c) p.push(`croatismo «${c[0]}» (en esloveno: plača, davek, mesec, leto, teden, cena, in, kaj, tudi, če...)`);
+  if (CONJUNCION_I_SL.test(texto)) p.push("«i» minúscula: en esloveno la conjunción es «in»");
+  if (DUAL_SL.test(texto)) p.push("dual: «dva meseca», «dva dneva», «dve uri», «dve leti»");
+  return p;
+}
+
+// Estonio: comillas „ “; estonio y no finés adaptado (las dos lenguas se parecen y el modelo fue fi); el
+// singular tras «1» («1 aasta», no «1 aastat»); y ningún sufijo de caso pegado a una cifra («100-ga», «5%-st»):
+// la cifra va tras dos puntos o en una frase que no la decline. «ja», «tai» (Tailandia) y «ole» existen en
+// las dos lenguas y no se buscan.
+const FINES_ET = palabras("laskuri\\p{L}*|palkk\\p{L}*|palkan|lainan|lainaa|vuotta|vuosi|kuukau\\p{L}*|päivää|päivä|tuntia|tunti|viikko\\p{L}*|korko\\p{L}*|verot|vero|syötä|hinta|hinnan|että|sekä|ovat|sinun");
+const SUFIJO_EN_CIFRA_ET = /\d\s?%?-(?:ga|ni|st|le|lt|l|s|ks|ta|sse|sena)(?!\p{L})/u;
+const UNO_PARTITIVO_ET = /(?<![\d.,])1\s+(?:aastat|kuud|nädalat|tundi)(?!\p{L})/u;
+function reglasEt(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en estonio van „ “");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en estonio");
+  const f = FINES_ET.exec(texto);
+  if (f) p.push(`finés «${f[0]}» (en estonio: kalkulaator, palk, laen, aasta, kuu, päev, tund, nädal, intress, maks, sisesta, hind, et, ning, sinu)`);
+  if (SUFIJO_EN_CIFRA_ET.test(texto)) p.push("sufijo de caso pegado a una cifra");
+  if (UNO_PARTITIVO_ET.test(texto)) p.push("tras «1» va el singular («1 aasta», «1 kuu»)");
+  return p;
+}
+
+// Islandés: comillas „ “ (abre abajo, cierra arriba), nada de «», "" ni ”. Las letras å, ø, ä y las palabras
+// comunes del noruego y del danés delatan un texto copiado de otro idioma nórdico. La corona va «kr.» con
+// punto, y una palabra frecuente sin sus letras («thetta», «manudur») delata un texto sin letras islandesas.
+const NORDICO_IS = palabras("ikke|eller|lønn|løn|lön|også|mellom|beregn\\p{L}*|kalkulator\\p{L}*|skriv inn");
+const SIN_LETRAS_IS = palabras("thu|thad|thetta|manudur|manadar|reiknivel");
+function reglasIs(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en islandés van „ “");
+  if (/[åøäÅØÄ]/.test(texto)) p.push("«å», «ø» o «ä»: no existen en islandés");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en islandés");
+  const n = NORDICO_IS.exec(texto);
+  if (n) p.push(`palabra de otro idioma nórdico «${n[0]}»`);
+  const s = SIN_LETRAS_IS.exec(texto);
+  if (s) p.push(`sin letras islandesas «${s[0]}»`);
+  if (/\d\s?kr(?![.\p{L}])/u.test(texto)) p.push("corona: va «kr.», con punto");
   return p;
 }
 
@@ -760,5 +961,11 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "ka") p.push(...reglasKa(texto));
   if (idioma === "hr") p.push(...reglasHr(texto));
   if (idioma === "mn") p.push(...reglasMn(texto));
+  if (idioma === "hy") p.push(...reglasHy(texto));
+  if (idioma === "sq") p.push(...reglasSq(texto));
+  if (idioma === "sl") p.push(...reglasSl(texto));
+  if (idioma === "et") p.push(...reglasEt(texto));
+  if (idioma === "is") p.push(...reglasIs(texto));
+  if (idioma === "lv") p.push(...reglasLv(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

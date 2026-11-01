@@ -2,6 +2,7 @@ import type { Idioma, Trato } from "../tipos";
 import { cifrasBn } from "./bengali";
 import { formaRu } from "./plural";
 import { pluralRo } from "./plural";
+import { pluralSq } from "./plural";
 import { resolver, type Diccionarios } from "./resolver";
 
 // Textos de «Compartir» y de la línea que lleva a «Tu sueldo en el mundo». Viajan en el JS de la
@@ -39,6 +40,22 @@ const ZH_HANS_COMPARTIR: TextosCompartir = {
 };
 
 export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
+  lv: {
+    base: {
+      boton: "Kopīgot",
+      botonAria: "Kopīgot šo kalkulatoru",
+      menuTitulo: "Kopīgot ar",
+      copiar: "Kopēt saiti",
+      copiado: "Saite nokopēta",
+      compartido: "Nosūtīts",
+      errorCorto: "Nokopēt neizdevās",
+      errorAyuda: "Saiti nokopēt neizdevās. Nokopējiet to no pārlūkprogrammas adreses joslas.",
+      nuevaPestana: "atveras jaunā cilnē",
+      mensaje: (nombre) => `${nombre}. Bez maksas, aprēķins aizņem minūti.`,
+      puenteIntro: "Un citās valstīs?",
+      puenteEnlace: (n) => `Paskatieties, cik jums paliktu uz rokas citās valstīs (kopā: ${n})`,
+    },
+  },
   es: {
     base: {
       boton: "Compartir",
@@ -544,6 +561,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Вижте колко нето бихте получавали в над ${n} държави`,
     },
   },
+  // Armenio (ADR 0002, D30): registro Դուք; el número sin plural detrás.
+  hy: {
+    base: {
+      boton: "Կիսվել",
+      botonAria: "Կիսվել այս հաշվիչով",
+      menuTitulo: "Կիսվել՝",
+      copiar: "Պատճենել հղումը",
+      copiado: "Հղումը պատճենվեց",
+      compartido: "Ուղարկված է",
+      errorCorto: "Չհաջողվեց պատճենել",
+      errorAyuda: "Չհաջողվեց պատճենել հղումը։ Պատճենեք այն դիտարկիչի հասցեի տողից։",
+      nuevaPestana: "բացվում է նոր ներդիրում",
+      mensaje: (nombre) => `${nombre}։ Անվճար է, հաշվարկը տևում է մեկ րոպե։`,
+      puenteIntro: "Իսկ այլ երկրներո՞ւմ",
+      puenteEnlace: (n) => `Տեսեք, թե որքան զուտ գումար կստանայիք ավելի քան ${n} երկրում`,
+    },
+  },
   // Hebreo (ADR 0002, D22): plural inclusivo donde se le habla a la persona.
   he: {
     base: {
@@ -627,6 +661,74 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       mensaje: (nombre) => `${nombre}. Besplatno, izračun traje minutu.`,
       puenteIntro: "A u drugim zemljama?",
       puenteEnlace: (n) => `Pogledajte koliko bi vam neto ostalo u više od ${n} zemalja`,
+    },
+  },
+  // Albanés (ADR 0002, D31)
+  sq: {
+    base: {
+      boton: "Shpërndani",
+      botonAria: "Shpërndani këtë kalkulator",
+      menuTitulo: "Shpërndani në",
+      copiar: "Kopjoni lidhjen",
+      copiado: "Lidhja u kopjua",
+      compartido: "U dërgua",
+      errorCorto: "Nuk u kopjua",
+      errorAyuda: "Nuk mundëm ta kopjojmë lidhjen. Kopjojeni nga shiriti i adresave të shfletuesit.",
+      nuevaPestana: "hapet në një skedë të re",
+      mensaje: (nombre) => `${nombre}. Falas, llogaritja zgjat një minutë.`,
+      puenteIntro: "Po në vende të tjera?",
+      puenteEnlace: (n) => `Shikoni sa do të merrnit neto në më shumë se ${pluralSq(n, "vend", "vende")}`,
+    },
+  },
+  // Esloveno (ADR 0002, D32): «vi» en minúscula; botones en la forma corta.
+  sl: {
+    base: {
+      boton: "Deli",
+      botonAria: "Deli ta kalkulator",
+      menuTitulo: "Deli prek",
+      copiar: "Kopiraj povezavo",
+      copiado: "Povezava je kopirana",
+      compartido: "Poslano",
+      errorCorto: "Kopiranje ni uspelo",
+      errorAyuda: "Povezave ni bilo mogoče kopirati. Kopirajte jo iz naslovne vrstice brskalnika.",
+      nuevaPestana: "odpre se v novem zavihku",
+      mensaje: (nombre) => `${nombre}. Brezplačno, izračun traja minuto.`,
+      puenteIntro: "Kaj pa v drugih državah?",
+      puenteEnlace: (n) => `Oglejte si, koliko neto bi vam ostalo v več državah (število držav: ${n})`,
+    },
+  },
+  // Estonio (ADR 0002, D33): «sina».
+  et: {
+    base: {
+      boton: "Jaga",
+      botonAria: "Jaga seda kalkulaatorit",
+      menuTitulo: "Jaga kanalis",
+      copiar: "Kopeeri link",
+      copiado: "Link on kopeeritud",
+      compartido: "Jagatud",
+      errorCorto: "Kopeerimine ei õnnestunud",
+      errorAyuda: "Linki ei õnnestunud kopeerida. Kopeeri see brauseri aadressiribalt.",
+      nuevaPestana: "avaneb uuel vahelehel",
+      mensaje: (nombre) => `${nombre}. Tasuta ja arvutus on minutiga valmis.`,
+      puenteIntro: "Aga teistes riikides?",
+      puenteEnlace: (n) => `Vaata, kui palju netopalka jääb rohkem kui ${n} riigis`,
+    },
+  },
+  // Islandés (ADR 0002, D34): «þú»; botones en infinitivo.
+  is: {
+    base: {
+      boton: "Deila",
+      botonAria: "Deila þessari reiknivél",
+      menuTitulo: "Deila með",
+      copiar: "Afrita hlekk",
+      copiado: "Hlekkurinn var afritaður",
+      compartido: "Sent",
+      errorCorto: "Ekki tókst að afrita",
+      errorAyuda: "Ekki tókst að afrita hlekkinn. Afritaðu hann úr veffangastiku vafrans.",
+      nuevaPestana: "opnast í nýjum flipa",
+      mensaje: (nombre) => `${nombre}. Ókeypis og tekur mínútu að reikna.`,
+      puenteIntro: "En í öðrum löndum?",
+      puenteEnlace: (n) => `Sjáðu hvað þú fengir útborgað í fleiri löndum (fjöldi landa: ${n})`,
     },
   },
 };
