@@ -413,6 +413,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "otvorí sa na novej karte",
     },
   },
+  // Georgiano: «თქვენ» con formas corteses.
+  ka: {
+    base: {
+      titulo: "საზღვარგარეთ გადადიხართ, ან ანაზღაურებას სხვა ქვეყნიდან იღებთ?",
+      etiqueta: "პარტნიორული ბმულები",
+      socios: {
+        wise: "მრავალვალუტიანი ანგარიში ქვეყნებს შორის ფულის მისაღებად და გასაგზავნად საშუალო საბაზრო კურსით, წინასწარ ცნობილი საკომისიოთი.",
+        deel: "ხელშეკრულებები და ანაზღაურება მათთვის, ვინც ერთი ქვეყნიდან მუშაობს მეორე ქვეყნის კომპანიისთვის.",
+      },
+      nota: "თუ ამ ბმულებით გახსნით ანგარიშს, საიტმა შესაძლოა საკომისიო მიიღოს. თქვენთვის ეს დამატებით არაფერი ღირს.",
+      nuevaPestana: "იხსნება ახალ ჩანართში",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

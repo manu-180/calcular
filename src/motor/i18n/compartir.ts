@@ -579,6 +579,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Pozrite sa, koľko by vám v čistom zostalo vo viac ako ${n} krajinách`,
     },
   },
+  // Georgiano: «თქვენ» con formas corteses; los botones como sustantivo verbal.
+  ka: {
+    base: {
+      boton: "გაზიარება",
+      botonAria: "კალკულატორის გაზიარება",
+      menuTitulo: "გაზიარება:",
+      copiar: "ბმულის კოპირება",
+      copiado: "ბმული დაკოპირდა",
+      compartido: "გაიგზავნა",
+      errorCorto: "კოპირება ვერ მოხერხდა",
+      errorAyuda: "ბმულის კოპირება ვერ მოხერხდა. დააკოპირეთ ის ბრაუზერის მისამართის ზოლიდან.",
+      nuevaPestana: "იხსნება ახალ ჩანართში",
+      mensaje: (nombre) => `${nombre}. უფასოა, გამოთვლას ერთი წუთი სჭირდება.`,
+      puenteIntro: "სხვა ქვეყნებში როგორ არის?",
+      puenteEnlace: (n) => `ნახეთ, რამდენი დაგრჩებოდათ ხელზე ${n} ქვეყანაზე მეტში`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

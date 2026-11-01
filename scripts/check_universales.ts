@@ -178,6 +178,14 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сейнт Винсънт и Гренадини", locale: "bg-BG", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Обединени арабски емирства", locale: "bg-BG", trato: "usted", moneda: "AED" as Moneda, escala: 4 },
   ],
+  // Georgiano (ADR 0002, D26): lari con «₾» detrás, «სენტ-ვინსენტი და გრენადინები» por el nombre largo
+  // con «და» («სენტ-ვინსენტსა და გრენადინებში») y «ამერიკის შეერთებული შტატები» por el plural con
+  // adjetivo delante («ამერიკის შეერთებულ შტატებში»).
+  ka: [
+    { mercado: "ge" as CodigoMercado, pais: "GE", nombrePais: "საქართველო", locale: "ka-GE", trato: "usted", moneda: "GEL" as Moneda, escala: 2.7 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "სენტ-ვინსენტი და გრენადინები", locale: "ka-GE", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "ამერიკის შეერთებული შტატები", locale: "ka-GE", trato: "usted", moneda: "USD" as Moneda, escala: 1 },
+  ],
   hu: [
     { mercado: "hu" as CodigoMercado, pais: "HU", nombrePais: "Magyarország", locale: "hu-HU", trato: "tu", moneda: "HUF" as Moneda, escala: 360 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent és a Grenadine-szigetek", locale: "hu-HU", trato: "tu", moneda: "XCD" as Moneda, escala: 2.5 },

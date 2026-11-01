@@ -1251,7 +1251,44 @@ const sk: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk };
+// Georgiano: «თქვენ» con formas corteses; el país va con GRAMATICA.ka y, en el título, aislado tras «|».
+const gKa = GRAMATICA.ka;
+const ka: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa კალკულატორი",
+    marcaNuevaPestana: "(იხსნება ახალ ჩანართში)",
+    noDisponible: { titulo: "ეს კალკულატორი მიუწვდომელია", texto: "შესაძლოა, მისი მისამართი შეიცვალა." },
+    insertar: "თქვენს საიტზე ჩასმა",
+    pagina: {
+      titulo: (pais) => [`უფასო კალკულატორები საიტისთვის | ${pais}`, "უფასო კალკულატორები თქვენი საიტისთვის"],
+      descripcion: (pais) => `აირჩიეთ კალკულატორი ${gKa.para(pais)}, დააკოპირეთ კოდი და ჩასვით საიტზე. უფასოა, ახალი მონაცემებით.`,
+      h1: "დაამატეთ კალკულატორი თქვენს საიტზე",
+      bajada: "აირჩიეთ კალკულატორი, დააკოპირეთ კოდი და ჩასვით სასურველ ადგილას. უფასოა, მონაცემები კი თავად ახლდება.",
+      calculadora: "კალკულატორი",
+      buscar: "კალკულატორის ძებნა",
+      sinResultados: "ასეთი კალკულატორი ვერ მოიძებნა.",
+      tema: "გაფორმება",
+      claro: "ღია",
+      oscuro: "მუქი",
+      ancho: "სიგანე",
+      anchoCompleto: "სრული სიგანე",
+      acento: "აქცენტის ფერი",
+      colores: ["მწვანე", "ლურჯი", "ნარინჯისფერი", "ვარდისფერი", "გრაფიტისფერი"],
+      credito: "წყაროს ბმული კალკულატორის ქვემოთ",
+      vistaPrevia: "გადახედვა",
+      codigo: "ჩასასმელი კოდი",
+      copiar: "კოდის კოპირება",
+      copiado: "კოდი დაკოპირდა",
+      ayudaScript: "სკრიპტი არასავალდებულოა: ის კალკულატორის სიმაღლეს შინაარსს არგებს.",
+      ventajas: ["უფასოდ და რეგისტრაციის გარეშე", "ყოველთვის განახლებული ოფიციალური მონაცემები", "ერგება ნებისმიერ სიგანეს"],
+      nota: "კალკულატორის ქვემოთ არის ბმული CalcularYa-ზე. გთხოვთ, არ წაშალოთ.",
+      verTodas: (pais) => `ყველა კალკულატორი ${gKa.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa კალკულატორი`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

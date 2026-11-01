@@ -36,4 +36,5 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   sr: "kalendar-isplata",
   bg: "raboten-kalendar",
   sk: "vyplatny-kalendar",
+  ka: "khelpasis-kalendari",
 };

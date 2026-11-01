@@ -675,6 +675,26 @@ export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
     celuImagen: "Fotoaparátom telefónu tento kód otvorí obrázok pripravený na zdieľanie v príbehu.",
     cerrar: "Zavrieť",
   }),
+  ka: base({
+    grupo: "გაზიარება:",
+    instagramSub: "სთორი",
+    copiar: "ბმულის კოპირება",
+    mas: "სხვა ვარიანტები",
+    nuevaPestana: "იხსნება ახალ ჩანართში",
+    formato: "სურათის ფორმატი",
+    historia: "სთორი 9:16",
+    feed: "პოსტი 1:1",
+    descargar: "სურათის ჩამოტვირთვა",
+    copiado: "ბმული დაკოპირდა.",
+    compartido: "მზადაა, გაზიარებულია.",
+    enInstagram: "მზადაა. ბმულიც დაკოპირდა და სთორიში ბმულის სტიკერით შეგიძლიათ ჩასვათ.",
+    descargado: "სურათი ჩამოიტვირთა, ბმული დაკოპირდა. ტელეფონიდან გამოაქვეყნეთ სთორიში და ბმული სტიკერით დაამატეთ.",
+    error: "გაზიარება ახლა ვერ ხერხდება.",
+    alCelu: "Instagram-ზე გამოქვეყნება ტელეფონიდან ხდება",
+    celuPagina: "ტელეფონის კამერით ეს კოდი გახსნის ბარათს, სთორიში ერთი შეხებით გასაზიარებლად.",
+    celuImagen: "ტელეფონის კამერით ეს კოდი გახსნის სურათს, სთორიში გასაზიარებლად.",
+    cerrar: "დახურვა",
+  }),
 };
 
 export function textosRedes(idioma: Idioma, trato: Trato, locale?: string): TextosRedes {

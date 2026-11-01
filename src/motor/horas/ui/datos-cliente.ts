@@ -42,7 +42,8 @@ export interface DatosHorasCliente {
   paises: readonly PaisHorasCliente[];
 }
 
-const mayuscula = (s: string) => (s ? s[0].toLocaleUpperCase() + s.slice(1) : s);
+// En georgiano no hay mayúscula inicial (ADR 0002, D26).
+const mayuscula = (s: string) => (s && !/^[\u10D0-\u10FF]/.test(s) ? s[0].toLocaleUpperCase() + s.slice(1) : s);
 
 export function nombreEnPagina(iso: string, idioma: Idioma, locale: string): string {
   return nombreDePais({ codigo: iso.toLowerCase(), pais: iso, nombre: iso, idioma }, locale);

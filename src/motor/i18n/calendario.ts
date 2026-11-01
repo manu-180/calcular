@@ -2240,7 +2240,86 @@ const sk: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk };
+// ───────────────────────────── ka ─────────────────────────────
+
+// Georgiano, impersonal como el resto del calendario (ADR 0002, D26). El país pasa por GRAMATICA.ka.
+// Las fechas y los montos salen en nominativo: van tras dos puntos, nunca con sufijo pegado. «{n} დღეში» y
+// «{n} დღის წინ» llevan el sufijo en la palabra, que no cambia con el número.
+const gKa = GRAMATICA.ka;
+const ka: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "სახელფასო და საგადასახადო კალენდარი",
+    seo: {
+      titulo: (pais, anios) => [
+        `${gKa.de(pais)} სახელფასო და საგადასახადო კალენდარი, ${anios}`,
+        `${gKa.de(pais)} სახელფასო კალენდარი, ${anios}`,
+        `${gKa.de(pais)} სახელფასო კალენდარი`,
+        "სახელფასო და საგადასახადო კალენდარი",
+      ],
+      descripcion: (pais, proximas) => `ხელფასზე მოქმედი თარიღები ${gKa.en(pais)}: ${proximas}. ოფიციალური წყაროები და კალკულატორები.`,
+      descripcionSin: (pais) => `ხელფასზე მოქმედი თარიღები ${gKa.en(pais)}: ოფიციალური წყაროები, კალკულატორები და ტელეფონის კალენდარი.`,
+    },
+    ceja: (anios) => `კალენდარი: ${anios}`,
+    h1: (pais) => `${gKa.de(pais)} სახელფასო და საგადასახადო კალენდარი`,
+    acento: "თარიღები, რომლებზეც ხელფასია დამოკიდებული",
+    bajada: "თითოეული თარიღი ოფიციალური წყაროდან მოდის და იმ კალკულატორთან მიდის, რომელზეც გავლენას ახდენს. ახალი მნიშვნელობის გამოქვეყნებისთანავე გვერდი თავად ახლდება.",
+    proxima: "შემდეგი თარიღი",
+    cuenta: {
+      hoy: "დღეს",
+      manana: "ხვალ",
+      ayer: "გუშინ",
+      en: (n) => `${n} დღეში`,
+      hace: (n) => `${n} დღის წინ`,
+      dias: () => "დღე",
+    },
+    queViene: "მალე",
+    yaRige: "უკვე მოქმედებს",
+    mesPorMes: "წელი თვეების მიხედვით",
+    sinFechas: "ცვლილება არ გამოცხადებულა",
+    filtro: "გაფილტვრა თემის მიხედვით",
+    todo: "ყველა",
+    tipos: { pago: "გადახდები", "salario-minimo": "მინიმალური ხელფასი", impuestos: "გადასახადები", aportes: "შენატანები და პენსია", laboral: "შრომითი წესები", indices: "საორიენტაციო მნიშვნელობები" },
+    pasa: (antes, despues) => `ძველი: ${antes}. ახალი: ${despues}`,
+    queda: (valor) => `მნიშვნელობა: ${valor}`,
+    cambian: "თანხები იცვლება",
+    zonas: (lista) => `რეგიონები: ${lista}`,
+    limite: "ბოლო ვადა",
+    agregar: "კალენდარში დამატება",
+    descargar: "Apple, Outlook და სხვა კალენდრები (.ics ფაილი)",
+    google: "Google Calendar",
+    calcular: "გამოთვლა",
+    tambien: "ასევე კალკულატორებში",
+    fuente: (organismo, fecha) => `წყარო: ${organismo}. შემოწმდა: ${fecha}`,
+    verificado: (fecha) => `შემოწმდა: ${fecha}`,
+    suscribir: {
+      titulo: "სრული კალენდარი, ყოველთვის განახლებული",
+      texto: "ერთი გამოწერის შემდეგ ახალი თარიღები თავად გამოჩნდება ტელეფონის ან კომპიუტერის კალენდარში.",
+      boton: "კალენდრის გამოწერა",
+      copiar: "ბმულის კოპირება",
+      copiado: "ბმული დაკოპირდა",
+    },
+    fuentes: {
+      titulo: "საიდან მოდის თარიღები",
+      texto: "აქ მხოლოდ ისეთი თარიღი ხვდება, რომელიც ნორმატიულმა აქტმა უკვე დაადგინა, ან რომელიც ოფიციალური უწყების გამოქვეყნებულ მნიშვნელობას ეკუთვნის. რაც ჯერ არ გამოქვეყნებულა, აქაც არ არის.",
+    },
+    vacio: "მომდევნო თორმეტ თვეში ამ თემაზე თარიღი არ არის.",
+    destacado: {
+      ceja: "სახელფასო კალენდარი",
+      titulo: "წლევანდელი თარიღები, რომლებზეც ხელფასია დამოკიდებული",
+      ir: "კალენდრის გახსნა",
+      proxima: (titulo, fecha) => `შემდეგი: ${titulo}. თარიღი: ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `${gKa.de(pais)} სახელფასო და საგადასახადო კალენდარი (CalcularYa)`,
+      descripcion: (pais) => `სახელფასო და საგადასახადო ვადები ${gKa.en(pais)}, ოფიციალური წყაროებიდან.`,
+      calculadora: "კალკულატორი",
+      fuente: "წყარო",
+    },
+    og: { proxima: "შემდეგი თარიღი", mas: (n) => `და კიდევ ${n} ვადა წელს` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

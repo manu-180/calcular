@@ -511,6 +511,12 @@ Falta para publicar Hungría:
   esperas de `check_motor` sobre las hermanas de zz/bono; se resuelven sumando los idiomas de las dos
   ramas. El cambio de Geist a `latin-ext` es el mismo que el de cs.
 
+## 01/11/2026 · Motor georgiano (`claude/mundo-motor-ka`)
+
+Georgiano completo (ADR 0002, D26): núcleo, venta, secciones globales, las 41 universales y `zz-ka`. Registro
+თქვენ, sin plural detrás de un número, sufijos del país con `casosKa`, mayúsculas neutras (mtavruli fuera de la
+interfaz), ₾ detrás y una letra georgiana = 1,4 latinas en `anchoVisual`. Falta el país (`ge`) y una revisión nativa.
+
 ## 24/10/2026 · Motor hebreo RTL (`claude/mundo-motor-he`, sobre `claude/mundo-motor-ar`)
 
 `he` entra en `IDIOMAS` con motor, sitio, inicio, novedades, legales, errores, compartir, embed,
@@ -563,6 +569,7 @@ varias veces por límite de uso.
 | Motor rumano (ro) | claude/mundo-motor-ro | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales); listo para Rumania y Moldavia |
 | Motor checo (cs) | claude/mundo-motor-cs | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Motor griego (el) | claude/mundo-motor-el | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
+| Motor georgiano (ka) | claude/mundo-motor-ka | terminado el 01/11 (núcleo, venta, páginas globales y las 41 universales) |
 | Motor húngaro (hu) | claude/mundo-motor-hu | terminado el 24/10 (núcleo, venta, páginas globales y las 41 universales) |
 | Uganda | (no empezada) | se asignó y se canceló antes de escribir código |
 
