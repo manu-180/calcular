@@ -166,6 +166,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   // Húngaro (ADR 0002, D21): forintos sin decimales con «Ft» detrás y espacio de miles, un nombre largo
   // con artículo y sufijo de isla («a Saint Vincent és a Grenadine-szigeteken») y uno compuesto en
   // -ország («Németországban»).
+  // Esloveno (ADR 0002, D32): euro detrás con punto de miles; un nombre largo que se declina por partes («na
+  // Svetem Vincenciju in Grenadinah») y uno plural con adjetivos delante («v Združenih arabskih emiratih»).
+  sl: [
+    { mercado: "si" as CodigoMercado, pais: "SI", nombrePais: "Slovenija", locale: "sl-SI", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sveti Vincencij in Grenadine", locale: "sl-SI", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Združeni arabski emirati", locale: "sl-SI", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
   bg: [
     { mercado: "bg" as CodigoMercado, pais: "BG", nombrePais: "България", locale: "bg-BG", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сейнт Винсънт и Гренадини", locale: "bg-BG", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },

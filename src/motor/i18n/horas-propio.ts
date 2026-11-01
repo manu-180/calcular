@@ -656,6 +656,27 @@ export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
     texto: "{en} me {producto} košta {horas} rada. A u drugim zemljama?",
     og: { antes: "{en}, sa mojom platom,", producto: "{producto} me košta", de: "rada", deMes: "rada mesečno", otros: "Isti nivo plate:", cta: "Koliko sati rada to košta?" },
   }),
+  // Esloveno (ADR 0002, D32): impersonal; la tarjeta, en primera persona.
+  sl: base({
+    titulo: "Isti izračun, z dejansko plačo",
+    bajada: "Z bruto plačo za en mesec se ure izračunajo po tej plači, ne po minimalni. Znesek ostane v tem brskalniku: ne gre v povezavo in ne na sliko.",
+    campo: "Bruto plača na mesec",
+    ayuda: "V valuti {moneda}, pred odbitki.",
+    traido: "Prevzeto iz kalkulatorja plače.",
+    invalido: "Znesek mora biti večji od nič.",
+    vacio: "Ure se prikažejo, ko se vnese plača.",
+    antes: "{en} s to plačo {producto} stane",
+    despues: "dela",
+    despuesMes: "dela vsak mesec",
+    minimo: "Pri minimalni plači: {horas}.",
+    veces: "{x} × minimalna plača",
+    rankingTitulo: "Enaka raven plače v vsaki državi",
+    rankingBajada: "{x} × minimalna plača vsake države, preračunano v ure dela.",
+    tarjetaTitulo: "Kartica z mojimi urami",
+    tarjetaBajada: "Prikazuje samo ure in države. Plače nikoli.",
+    texto: "{en} me {producto} stane {horas} dela. Kaj pa v drugih državah?",
+    og: { antes: "{en} z mojo plačo", producto: "me {producto} stane", de: "dela", deMes: "dela na mesec", otros: "Enaka raven plače:", cta: "Koliko ur dela je to?" },
+  }),
 };
 
 export function textosHorasPropio(idioma: Idioma, trato: Trato, locale?: string): TextosHorasPropio {

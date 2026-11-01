@@ -1474,3 +1474,53 @@ la moneda de prueba es EUR y los textos hablan de «цент», no de «стот
 
 **Fuente.** Geist no trae cirílico: la tarjeta OG usa Noto Sans de respaldo, como uk y ru. La edición
 interna es `zz-bg` («Зеталандия», bg-001).
+
+### D32. Esloveno, para Eslovenia (2026-11-01)
+
+`IDIOMAS` suma `sl`. Motor, sitio, inicio, novedades, legales, errores, compartir (también el panel con
+imagen), embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»),
+rankings, «Sueldos reales», afiliados, el diccionario de venta y las 41 universales están en esloveno. Modelos:
+checo (D19, en main) y croata (D27, en otra rama): misma estructura, texto escrito de nuevo en esloveno, no
+croata adaptado. D25 a D31 están en ramas sin mergear; por eso este número.
+
+**Lo que devuelve Intl (Node).** `sl-SI`: `1.234.567,50 €`, y con cuatro cifras `1234,50 €` (CLDR da
+`minimumGroupingDigits: 2` para sl; no se fuerza el punto, y el parser acepta `1.234,50`). Fechas `15. oktober
+2026`, con el mes en **nominativo**: tras «od» o «do» pediría genitivo («od 15. oktobra»), así que `fechaGenSl`
+(gramatica.ts) lo convierte donde la frase lo exige y el resto de las frases lleva la fecha tras dos puntos
+(«Za državo delate do tega dne: 15. oktober»), también las que se parten para dibujar la fecha aparte.
+PluralRules one/two/few/other. El parser no necesitó nada propio.
+
+**Registro.** Un solo registro, el de los bancos y los servicios del país (FURS y eDavki, NLB, SKB): vikanje con
+«vi» en minúscula e imperativo de 2.ª del plural («vnesite», «izračunajte», «izberite»). Los mercados van con
+`trato: "usted"`. Los botones van en la forma corta («Izračunaj», «Deli»). Nada de tikanje ni del «Vi» con
+mayúscula a mitad de oración, que es de carta personal.
+
+**Vocabulario.** «izračun neto plače», «dohodnina», «prispevki», «DDV», «stanovanjski kredit», «obresti», «EOM»,
+«država» (no «zemlja»), «povezava», «brskalnik», «podjetje», «odstotek», «lastna sredstva» para la entrada de una
+vivienda. `reglas_idioma` atrapa los croatismos comunes (plaća, porez, mjesec, godina, tjedan, cijena, «i» por
+«in», što, ako, još...), las letras ć y đ, el dual olvidado y el tikanje. La «i» de las fórmulas se escribe «r»
+(«r» de obrestna mera) para no chocar con la regla de la conjunción.
+
+**Plurales y gramática.** Cuatro categorías con dual: «1 leto», «2 leti», «3 leta», «5 let», «1,5 leta», «21 let»,
+«101 leto», «102 leti» (`formaSl`, `pluralSl`; en `unidades.ts` el campo nuevo `dual` de `FormasUnidad`, y en el
+buscador `resultadosDos`). El país se declina: `GRAMATICA.sl` da genitivo («Slovenije»), lugar con «v» o «na» («v
+Sloveniji», «na Hrvaškem», «na Cipru», «na Filipinih», «v Združenih državah Amerike») y «za» con acusativo («za
+Slovenijo»), con reglas por terminación, adjetivos que concuerdan y una tabla de irregulares. Los adjetivos
+sustantivados en -ska, -ška, -čka van siempre con «na» y locativo en -em. Nunca se pega un sustantivo declinado a
+una cifra sin pasar por `pluralSl`: el número va tras dos puntos («Število vnosov: {n}»).
+
+**Comillas.** „ “ (abre abajo, cierra arriba, U+201E y U+201C). Ni «», ni "", ni ”. Decisión del encargo del frente, en lugar de las
+»…« tradicionales; a confirmar con la revisión nativa.
+
+**Universales neutrales.** Los textos no nombran organismos, leyes ni moneda de Eslovenia, salvo los genéricos
+«DDV» y «EOM». Lo propio del país queda para el agente de país.
+
+**Slugs.** ASCII sin diacríticos: `placa-po-svetu`, `lestvice-drzav`, `koliko-ur-dela`, `koledar-plac`,
+`dejanske-place`, y las universales con su búsqueda real (`kalkulator-kredita`, `izracun-ddv`,
+`stanovanjski-kredit`, `pretvornik-place`). `izracun-place` queda libre para la calculadora de sueldo neto del país.
+Se suman en `secciones.ts` por los `SLUG_*`: sin carpetas por idioma.
+
+**Prueba.** `zz-sl` (Zetalandija) es una edición interna en `sl-001`, para no compartir locale con Eslovenia en
+hreflang. `check_universales` prueba `sl-SI` con EUR y nombres largos que se declinan por partes («na Svetem
+Vincenciju in Grenadinah», «v Združenih arabskih emiratih»); `check_motor` prueba formato, plurales, parseo y
+gramática. Falta revisión por hablante nativo.

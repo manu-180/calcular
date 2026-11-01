@@ -271,6 +271,22 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Esloveno: un solo registro, el de los bancos y FURS (vikanje con «vi», en minúscula, e imperativo de
+  // segunda del plural: «vnesite», «izberite»; ADR 0002, D32). Los botones van en la forma corta de las
+  // interfaces eslovenas («Izračunaj», «Kopiraj», «Deli», «Prenesi», «Dodaj», «Odpri», «Prikaži», «Pošlji»,
+  // «Shrani», «Zapri»), así que esos verbos no se atrapan; sí los posesivos de «ti», los pronombres que no
+  // se confunden («ti» y «te» también son demostrativos: «ti podatki»), los presentes de segunda del
+  // singular y los imperativos de un formulario que en la prosa van con -te, y el «Vi» con mayúscula a
+  // mitad de oración.
+  sl: {
+    informal: [
+      { re: palabras("tebe|tebi|tabo|tvoj|tvoja|tvoje|tvojo|tvoji|tvojega|tvojemu|tvojem|tvojih|tvojim|tvojimi"), nombre: "tikanje («ti»)" },
+      { re: palabras("vnesi|izberi|klikni|preveri|poglej|oglej|izračunaj si|primerjaj"), nombre: "imperativo de «ti» en la prosa (va -te)" },
+      { re: palabras("moreš|imaš|želiš|dobiš|plačaš|zaslužiš|vidiš|delaš|porabiš|prihraniš|moraš|boš|veš|vneseš|izbereš|izračunaš|nisi"), nombre: "segunda persona del singular" },
+      { re: /[^.?!:„(\s]\s+(?:Vi|Vas|Vam|Vami|Vaš|Vaša|Vaše|Vašo|Vaši|Vašega|Vašemu|Vašem|Vaših|Vašim|Vašimi)(?!\p{L})/u, nombre: "«Vi» con mayúscula (va «vi»)" },
+    ],
+    formal: [],
+  },
 };
 
 // En turco el sufijo del nombre propio va con apóstrofo recto («Türkiye'de», como escribe GRAMATICA)
@@ -419,6 +435,29 @@ function reglasSr(texto: string, locale?: string): string[] {
   }
   const c = CROATA.exec(texto);
   if (c) p.push(`«${c[0]}» es del croata (en serbio: nedelja, hiljada, procenat, firma, porodica...)`);
+  return p;
+}
+
+// Esloveno: comillas „ “ (abre abajo, cierra arriba, U+201E y U+201C), nada de «», "" ni ”. Y esloveno, no
+// croata adaptado: se atrapan los croatismos comunes de un texto copiado (plaća por plača, porez por davek,
+// mjesec por mesec, godina por leto, tjedan por teden, cijena por cena, «i» por «in», što por kaj,
+// također por tudi, ako por če...) y el dual olvidado tras «dva» o «dve» («dva meseci», «dve leta»). La
+// «ć» y la «đ» no existen en esloveno: delatan el croata sobre todo en nombres comunes, salvo en los nombres
+// propios, que no aparecen en estos textos.
+const CROATISMOS_SL = palabras(
+  "plaća\\p{L}*|plać\\p{L}*|porez\\p{L}*|doprinos\\p{L}*|godin\\p{L}*|godišnj\\p{L}*|mjesec\\p{L}*|mjeseč\\p{L}*|tjed\\p{L}*|cijen\\p{L}*|vrijednost\\p{L}*|vrijeme|tvrtk\\p{L}*|obitelj\\p{L}*|poveznic\\p{L}*|preglednik\\p{L}*|računal[oua]|postot\\p{L}*|novac|novca|novcu|štednj\\p{L}*|ušted\\p{L}*|ulaganj\\p{L}*|unesite|unesi|odaberite|odaberi|izaberite|što|također|kuća|kuće|kući|nije|nisu|jest|sati|sata|koji|koja|koje|kojeg|kojem|ako|kada|kad|može|možete|mogu|još|ili|zemlja|zemalja|hrvatsk\\p{L}*|ovaj|ova|ovo|ove|taj|preuzmi\\p{L}*|podijeli\\p{L}*|naknad\\p{L}*|kupnj\\p{L}*"
+);
+const CONJUNCION_I_SL = /(?<!\p{L})i(?!\p{L})/u;
+const DUAL_SL = /(?<!\p{L})(?:dva\s+(?:meseci|mesecev|dni|tedni|tednov|let|leta)|dve\s+(?:leta|let|ure|ur))(?!\p{L})/iu;
+function reglasSl(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en esloveno van „ “");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en esloveno");
+  if (/[ćđĆĐ]/.test(texto)) p.push("«ć» o «đ»: no existen en esloveno");
+  const c = CROATISMOS_SL.exec(texto);
+  if (c) p.push(`croatismo «${c[0]}» (en esloveno: plača, davek, mesec, leto, teden, cena, in, kaj, tudi, če...)`);
+  if (CONJUNCION_I_SL.test(texto)) p.push("«i» minúscula: en esloveno la conjunción es «in»");
+  if (DUAL_SL.test(texto)) p.push("dual: «dva meseca», «dva dneva», «dve uri», «dve leti»");
   return p;
 }
 
@@ -613,5 +652,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "hu") p.push(...reglasHu(texto));
   if (idioma === "sr") p.push(...reglasSr(texto, locale));
   if (idioma === "bg") p.push(...reglasBg(texto));
+  if (idioma === "sl") p.push(...reglasSl(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

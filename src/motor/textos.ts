@@ -842,6 +842,31 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "tačaka", coma: "zareza" },
     },
   },
+  // Esloveno (ADR 0002, D32): vikanje con «vi» en minúscula, como los bancos y eDavki. El botón va en la
+  // forma corta («Izračunaj»); las oraciones, en imperativo de segunda del plural («vnesite», «izberite»).
+  sl: {
+    base: {
+      calcular: "Izračunaj",
+      resultado: "Rezultat",
+      si: "Da",
+      no: "Ne",
+      sinResultado: "Tega rezultata zaenkrat ne prikazujemo.",
+      errores: {
+        requerido: "Izpolnite to polje.",
+        "numero-invalido": "Vnesite število, na primer {ejemplo}.",
+        "entero-invalido": "Vnesite celo število, brez decimalk.",
+        "menor-que-min": "Najmanjša dovoljena vrednost je {min}.",
+        "mayor-que-max": "Največja dovoljena vrednost je {max}.",
+        "fecha-invalida": "Izberite veljaven datum.",
+        "hora-invalida": "Izberite veljaven čas.",
+        "opcion-invalida": "Izberite eno od ponujenih možnosti.",
+        "region-invalida": "Izberite regijo.",
+        "calculo-fallido": "S temi podatki izračun ni uspel. Preverite vrednosti in poskusite znova.",
+      },
+      milesAmbiguos: "Ste mislili {sugerido}? Vnesite število brez {signos}.",
+      separadores: { punto: "pik", coma: "vejic" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

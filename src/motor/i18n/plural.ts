@@ -142,3 +142,22 @@ export function formaSr(n: number | string, uno: string, pocos: string, muchos: 
 export function pluralSr(n: number | string, uno: string, pocos: string, muchos: string): string {
   return `${n} ${formaSr(n, uno, pocos, muchos)}`;
 }
+
+// Esloveno (ADR 0002, D32): las categorías de Intl.PluralRules("sl"), con dual. «one» es 1, 101, 201 (no
+// 11), «two» 2, 102, 202, «few» 3, 4, 103, 104 y las fracciones («1,5 leta»), y «other» el resto, también
+// 0, 5 a 100 y 21 («21 let»). Recibe number o string porque check_i18n llama a las funciones de los
+// diccionarios con argumentos de muestra.
+const REGLAS_SL = new Intl.PluralRules("sl");
+
+export function formaSl(n: number | string, uno: string, dos: string, pocos: string, otros: string): string {
+  const categoria = REGLAS_SL.select(Math.abs(Number(n)));
+  if (categoria === "one") return uno;
+  if (categoria === "two") return dos;
+  if (categoria === "few") return pocos;
+  return otros;
+}
+
+// El número y la palabra: «1 leto», «2 leti», «3 leta», «5 let»; «1 dan», «2 dneva», «3 dni», «5 dni».
+export function pluralSl(n: number | string, uno: string, dos: string, pocos: string, otros: string): string {
+  return `${n} ${formaSl(n, uno, dos, pocos, otros)}`;
+}
