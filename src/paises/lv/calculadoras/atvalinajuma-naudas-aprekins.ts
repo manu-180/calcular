@@ -5,22 +5,22 @@ export default definirCalculadora({
   mercado: "lv",
   concepto: "vacaciones",
   slug: "atvalinajuma-naudas-aprekins",
-  estado: "borrador",
-  requiere: { "lv.atvalinajums-nedelas": "numero", "lv.videja-izpelna-menesi": "numero" },
+  estado: "publicado",
+  requiere: { "lv.atvalinajums-nedelas": "numero", "lv.videja-izpelna-periods": "numero" },
   campos: [
-    { id: "samaksa", tipo: "moneda", etiqueta: "Darba samaksa pēdējos sešos mēnešos kopā", min: 0, porDefecto: 10500 },
-    { id: "dienasPeriode", tipo: "entero", etiqueta: "Kalendāra dienas šajos mēnešos", min: 1, max: 190, porDefecto: 181 },
-    { id: "dienas", tipo: "entero", etiqueta: "Atvaļinājuma kalendāra dienas", min: 1, max: 60, porDefecto: 28 },
+    { id: "samaksa", tipo: "moneda", etiqueta: "Darba samaksa pēdējos sešos kalendāra mēnešos kopā", min: 0, porDefecto: 10500, ayuda: "Alga, piemaksas un prēmijas." },
+    { id: "nostradatas", tipo: "entero", etiqueta: "Nostrādātās dienas šajos mēnešos", min: 1, max: 190, porDefecto: 125 },
+    { id: "dienas", tipo: "entero", etiqueta: "Darba dienas atvaļinājuma laikā", min: 1, max: 60, porDefecto: 20, ayuda: "Četras nedēļas piecu dienu darba nedēļā ir 20 darba dienas. Svētku dienas neskaita." },
   ],
   calcular(e, v, { redondear }) {
     if (e.samaksa <= 0) throw new ErrorEntrada("Ievadiet darba samaksu, kas lielāka par nulli.", "samaksa");
-    const dienas = v["lv.atvalinajums-nedelas"] * 7;
-    const videjaDiena = e.samaksa / e.dienasPeriode;
-    return { nauda: redondear(videjaDiena * e.dienas), videjaDiena: redondear(videjaDiena), obligatasDienas: dienas };
+    if (e.nostradatas <= 0) throw new ErrorEntrada("Ievadiet nostrādāto dienu skaitu.", "nostradatas");
+    const diena = e.samaksa / e.nostradatas;
+    return { nauda: redondear(diena * e.dienas), diena: redondear(diena), minimums: v["lv.atvalinajums-nedelas"] };
   },
   resultado: [
     { clave: "nauda", etiqueta: "Atvaļinājuma nauda (bruto)", formato: "moneda", destacada: true },
-    { clave: "videjaDiena", etiqueta: "Vidējā izpeļņa dienā", formato: "moneda" },
-    { clave: "obligatasDienas", etiqueta: "Likumā noteiktais minimums", formato: "dias" },
+    { clave: "diena", etiqueta: "Dienas vidējā izpeļņa", formato: "moneda" },
+    { clave: "minimums", etiqueta: "Likumā noteiktais atvaļinājuma minimums", formato: "semanas" },
   ],
 });

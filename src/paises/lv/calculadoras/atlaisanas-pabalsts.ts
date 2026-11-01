@@ -5,10 +5,10 @@ export default definirCalculadora({
   mercado: "lv",
   concepto: "indemnizacion-despido",
   slug: "atlaisanas-pabalsts",
-  estado: "borrador",
-  requiere: { "lv.atlaisanas-pabalsts": "mapa" },
+  estado: "publicado",
+  requiere: { "lv.atlaisanas-pabalsts": "mapa", "lv.videja-izpelna-periods": "numero" },
   campos: [
-    { id: "izpelna", tipo: "moneda", etiqueta: "Mēneša vidējā izpeļņa", min: 0, porDefecto: 1500 },
+    { id: "izpelna", tipo: "moneda", etiqueta: "Mēneša vidējā izpeļņa", min: 0, porDefecto: 1500, ayuda: "Darba samaksas vidējais par pēdējiem sešiem kalendāra mēnešiem." },
     { id: "stazs", tipo: "opcion-dato", dato: "lv.atlaisanas-pabalsts", etiqueta: "Nodarbinātības ilgums pie šī darba devēja", porDefecto: "lidz-5" },
   ],
   calcular(e, v, { redondear }) {

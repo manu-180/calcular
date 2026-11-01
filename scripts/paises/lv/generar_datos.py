@@ -47,8 +47,7 @@ def mapa(id_, nombre, unidad, valor, fuente, etiquetas, desde="2026-01-01"):
 
 
 # Lo no leído en fuente primaria vigente: lleva el valor como pista, nunca llega a una página.
-GUIA = "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
-LEY_2001 = "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas."
+LEY_2001 = "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019, art. 103). likumi.lv rechazó la conexión todo el 1/11/2026 y las páginas de lm.gov.lv y vdi.gov.lv solo confirman el plazo de un mes (art. 103, punto 3), no los otros dos: falta la redacción vigente."
 
 
 def pista(id_, nombre, tipo, unidad, valor, motivo, etiquetas=None):
@@ -57,6 +56,20 @@ def pista(id_, nombre, tipo, unidad, valor, motivo, etiquetas=None):
         d["etiquetas"] = etiquetas
     d["tramos"] = [{"estado": "no-verificado", "desde": "2026-01-01", "valor": valor, "motivo": motivo}]
     return d
+
+
+def vsaa(titulo, ruta):
+    return {"organismo": "Valsts sociālās apdrošināšanas aģentūra", "titulo": titulo, "url": "https://www.vsaa.gov.lv/en/services/" + ruta, "tipo": "primaria", "verificadoEl": HOY}
+
+
+SLI_V = vsaa("Slimības pabalsta piešķiršana un izmaksa", "granting-and-disbursement-sickness-benefit")
+MAT_V = vsaa("Maternitātes pabalsta piešķiršana un izmaksa", "granting-and-disbursement-maternity-benefit")
+VEC_V = vsaa("Vecāku pabalsta piešķiršana un izmaksa", "granting-and-disbursement-parental-benefit")
+BEZ_V = vsaa("Bezdarbnieka pabalsta piešķiršana un izmaksa", "granting-and-disbursement-unemployment-benefit")
+VDI_PIE = {"organismo": "Valsts darba inspekcija", "titulo": "Piemaksas (Darba likuma 68. pants)", "url": "https://www.vdi.gov.lv/lv/piemaksas", "tipo": "primaria", "verificadoEl": HOY}
+VDI_ATV = {"organismo": "Valsts darba inspekcija", "titulo": "Ikgadējais apmaksātais atvaļinājums (Darba likuma 149. pants)", "url": "https://www.vdi.gov.lv/lv/ikgadejais-apmaksatais-atvalinajums", "tipo": "primaria", "verificadoEl": HOY}
+LM_IZV = {"organismo": "Labklājības ministrija", "titulo": "Izvilkums no Darba likuma (75. pants)", "url": "https://www.lm.gov.lv/lv/media/10361/download", "tipo": "primaria", "verificadoEl": HOY}
+LM_UZT = {"organismo": "Labklājības ministrija", "titulo": "Biežāk uzdotie jautājumi par darba uzteikšanu (atlaišanas pabalsts)", "url": "https://www.lm.gov.lv/lv/biezak-uzdotie-jautajumi-par-darba-uzteiksanu", "tipo": "primaria", "verificadoEl": HOY}
 
 
 datos = [
@@ -98,20 +111,22 @@ datos = [
     mapa("pvn", "PVN likmes", "%", {"standarta": 21, "samazinata": 12, "gramatas": 5}, PVN, {"standarta": "Standarta likme", "samazinata": "Samazinātā likme (zāles, atsevišķa pārtika, pasažieru pārvadājumi)", "gramatas": "Samazinātā likme (grāmatas un preses izdevumi)"}),
     numero("nin-min", "Nekustamā īpašuma nodokļa zemākā likme", "%", 0.2, NIN),
     numero("nin-max", "Nekustamā īpašuma nodokļa augstākā likme", "%", 3, NIN),
-    # Borradores
-    pista("atvalinajums-nedelas", "Ikgadējais apmaksātais atvaļinājums", "numero", "semanas", 4, LEY_2001),
-    pista("videja-izpelna-menesi", "Vidējās izpeļņas aprēķina periods", "numero", "meses", 6, LEY_2001),
-    pista("virsstundu-piemaksa", "Piemaksa par virsstundu darbu", "numero", "%", 100, LEY_2001),
-    pista("atlaisanas-pabalsts", "Atlaišanas pabalsts (vidējās izpeļņas mēneši)", "mapa", "meses", {"lidz-5": 1, "5-10": 2, "10-20": 3, "virs-20": 4}, LEY_2001 + " El art. 112 tuvo además una reforma de 2018 (vestnesis.lv/op/2018/225.8).", {"lidz-5": "Mazāk nekā 5 gadi", "5-10": "No 5 līdz 10 gadiem", "10-20": "No 10 līdz 20 gadiem", "virs-20": "Vairāk nekā 20 gadi"}),
+    numero("atvalinajums-nedelas", "Ikgadējais apmaksātais atvaļinājums", "semanas", 4, VDI_ATV),
+    numero("videja-izpelna-periods", "Vidējās izpeļņas aprēķina periods", "meses", 6, LM_IZV),
+    numero("virsstundu-piemaksa", "Piemaksa par virsstundu darbu", "%", 100, VDI_PIE),
+    mapa("atlaisanas-pabalsts", "Atlaišanas pabalsts (vidējās izpeļņas mēneši)", "meses", {"lidz-5": 1, "5-10": 2, "10-20": 3, "virs-20": 4}, LM_UZT, {"lidz-5": "Mazāk nekā 5 gadi", "5-10": "No 5 līdz 10 gadiem", "10-20": "No 10 līdz 20 gadiem", "virs-20": "Vairāk nekā 20 gadi"}),
+    numero("slimibas-nauda-2-3", "Slimības nauda par 2. un 3. dienu", "%", 75, SLI_V),
+    numero("slimibas-nauda-4-9", "Slimības nauda no 4. līdz 9. dienai", "%", 80, SLI_V),
+    numero("slimibas-pabalsts", "Slimības pabalsts no 10. dienas", "%", 80, SLI_V),
+    numero("slimibas-nedelas", "Slimības pabalsta ilgākais periods pēc kārtas", "semanas", 26, SLI_V),
+    numero("maternitates-pabalsts", "Maternitātes pabalsts", "%", 80, MAT_V),
+    numero("maternitates-max-dienas", "Maternitātes pabalsta ilgākais periods", "dias", 140, MAT_V),
+    mapa("vecaku-pabalsts", "Vecāku pabalsts", "%", {"m13": 60, "m19": 43.75}, VEC_V, {"m13": "13 mēneši", "m19": "19 mēneši"}),
+    numero("vecaku-pabalsts-stradajot", "Vecāku pabalsta pamata daļa, ja ir ienākumi", "%", 75, VEC_V),
+    mapa("bezdarbnieka-stazs", "Bezdarbnieka pabalsts pēc apdrošināšanas stāža", "%", {"1-9": 50, "10-19": 55, "20-29": 60, "30": 65}, BEZ_V, {"1-9": "No 1 līdz 9 gadiem", "10-19": "No 10 līdz 19 gadiem", "20-29": "No 20 līdz 29 gadiem", "30": "30 gadi un vairāk"}),
+    mapa("bezdarbnieka-posmi", "Bezdarbnieka pabalsta izmaksas daļa pa mēnešiem", "%", {"1-2": 100, "3-4": 75, "5-6": 50, "7-8": 45}, BEZ_V, {"1-2": "1. un 2. mēnesis", "3-4": "3. un 4. mēnesis", "5-6": "5. un 6. mēnesis", "7-8": "7. un 8. mēnesis"}),
+    # Borrador
     pista("uzteikums", "Darba devēja uzteikuma termiņš", "mapa", "dias", {"nekavejoties": 0, "desmit-dienas": 10, "menesis": 30}, LEY_2001, {"nekavejoties": "Nekavējoties (101. panta 1. daļas 2. vai 4. punkts)", "desmit-dienas": "10 dienas (1., 3. vai 5. punkts)", "menesis": "Viens mēnesis (6. līdz 10. punkts)"}),
-    pista("slimibas-nauda-2-3", "Slimības nauda par 2. un 3. dienu", "numero", "%", 75, GUIA),
-    pista("slimibas-nauda-4-9", "Slimības nauda no 4. līdz 9. dienai", "numero", "%", 80, GUIA),
-    pista("slimibas-pabalsts", "Slimības pabalsts no 10. dienas", "numero", "%", 80, GUIA),
-    pista("maternitates-pabalsts", "Maternitātes pabalsts", "numero", "%", 80, GUIA),
-    pista("vecaku-pabalsts", "Vecāku pabalsts", "mapa", "%", {"13-menesi": 60, "19-menesi": 43.75}, GUIA, {"13-menesi": "13 mēneši", "19-menesi": "19 mēneši"}),
-    pista("vecaku-pabalsts-stradajot", "Vecāku pabalsta daļa, ja strādājat", "numero", "%", 75, GUIA),
-    pista("bezdarbnieka-stazs", "Bezdarbnieka pabalsts pēc apdrošināšanas stāža", "mapa", "%", {"1-9": 50, "10-19": 55, "20-29": 60, "30": 65}, GUIA, {"1-9": "No 1 līdz 9 gadiem", "10-19": "No 10 līdz 19 gadiem", "20-29": "No 20 līdz 29 gadiem", "30": "30 gadi un vairāk"}),
-    pista("bezdarbnieka-posmi", "Bezdarbnieka pabalsta izmaksas daļa pa mēnešiem", "mapa", "%", {"1-2": 100, "3-4": 75, "5-6": 50, "7-8": 45}, GUIA, {"1-2": "1. un 2. mēnesis", "3-4": "3. un 4. mēnesis", "5-6": "5. un 6. mēnesis", "7-8": "7. un 8. mēnesis"}),
 ]
 
 

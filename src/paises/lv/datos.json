@@ -494,24 +494,36 @@
       "unidad": "semanas",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-01-01",
           "valor": 4,
-          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas."
+          "fuente": {
+            "organismo": "Valsts darba inspekcija",
+            "titulo": "Ikgadējais apmaksātais atvaļinājums (Darba likuma 149. pants)",
+            "url": "https://www.vdi.gov.lv/lv/ikgadejais-apmaksatais-atvalinajums",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
         }
       ]
     },
     {
-      "id": "lv.videja-izpelna-menesi",
+      "id": "lv.videja-izpelna-periods",
       "nombre": "Vidējās izpeļņas aprēķina periods",
       "tipo": "numero",
       "unidad": "meses",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-01-01",
           "valor": 6,
-          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas."
+          "fuente": {
+            "organismo": "Labklājības ministrija",
+            "titulo": "Izvilkums no Darba likuma (75. pants)",
+            "url": "https://www.lm.gov.lv/lv/media/10361/download",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
         }
       ]
     },
@@ -522,10 +534,16 @@
       "unidad": "%",
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-01-01",
           "valor": 100,
-          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas."
+          "fuente": {
+            "organismo": "Valsts darba inspekcija",
+            "titulo": "Piemaksas (Darba likuma 68. pants)",
+            "url": "https://www.vdi.gov.lv/lv/piemaksas",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
         }
       ]
     },
@@ -542,7 +560,7 @@
       },
       "tramos": [
         {
-          "estado": "no-verificado",
+          "estado": "verificado",
           "desde": "2026-01-01",
           "valor": {
             "lidz-5": 1,
@@ -550,7 +568,242 @@
             "10-20": 3,
             "virs-20": 4
           },
-          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas. El art. 112 tuvo además una reforma de 2018 (vestnesis.lv/op/2018/225.8)."
+          "fuente": {
+            "organismo": "Labklājības ministrija",
+            "titulo": "Biežāk uzdotie jautājumi par darba uzteikšanu (atlaišanas pabalsts)",
+            "url": "https://www.lm.gov.lv/lv/biezak-uzdotie-jautajumi-par-darba-uzteiksanu",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.slimibas-nauda-2-3",
+      "nombre": "Slimības nauda par 2. un 3. dienu",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Slimības pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-sickness-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.slimibas-nauda-4-9",
+      "nombre": "Slimības nauda no 4. līdz 9. dienai",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Slimības pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-sickness-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.slimibas-pabalsts",
+      "nombre": "Slimības pabalsts no 10. dienas",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Slimības pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-sickness-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.slimibas-nedelas",
+      "nombre": "Slimības pabalsta ilgākais periods pēc kārtas",
+      "tipo": "numero",
+      "unidad": "semanas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Slimības pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-sickness-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.maternitates-pabalsts",
+      "nombre": "Maternitātes pabalsts",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 80,
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Maternitātes pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-maternity-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.maternitates-max-dienas",
+      "nombre": "Maternitātes pabalsta ilgākais periods",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 140,
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Maternitātes pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-maternity-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.vecaku-pabalsts",
+      "nombre": "Vecāku pabalsts",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "m13": "13 mēneši",
+        "m19": "19 mēneši"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "m13": 60,
+            "m19": 43.75
+          },
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Vecāku pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-parental-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.vecaku-pabalsts-stradajot",
+      "nombre": "Vecāku pabalsta pamata daļa, ja ir ienākumi",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Vecāku pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-parental-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.bezdarbnieka-stazs",
+      "nombre": "Bezdarbnieka pabalsts pēc apdrošināšanas stāža",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1-9": "No 1 līdz 9 gadiem",
+        "10-19": "No 10 līdz 19 gadiem",
+        "20-29": "No 20 līdz 29 gadiem",
+        "30": "30 gadi un vairāk"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1-9": 50,
+            "10-19": 55,
+            "20-29": 60,
+            "30": 65
+          },
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Bezdarbnieka pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-unemployment-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lv.bezdarbnieka-posmi",
+      "nombre": "Bezdarbnieka pabalsta izmaksas daļa pa mēnešiem",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "1-2": "1. un 2. mēnesis",
+        "3-4": "3. un 4. mēnesis",
+        "5-6": "5. un 6. mēnesis",
+        "7-8": "7. un 8. mēnesis"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "1-2": 100,
+            "3-4": 75,
+            "5-6": 50,
+            "7-8": 45
+          },
+          "fuente": {
+            "organismo": "Valsts sociālās apdrošināšanas aģentūra",
+            "titulo": "Bezdarbnieka pabalsta piešķiršana un izmaksa",
+            "url": "https://www.vsaa.gov.lv/en/services/granting-and-disbursement-unemployment-benefit",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
         }
       ]
     },
@@ -573,148 +826,7 @@
             "desmit-dienas": 10,
             "menesis": 30
           },
-          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019). likumi.lv, lm.gov.lv y vdi.gov.lv cortaron la conexión el 1/11/2026, así que no se pudo comprobar la redacción vigente con sus reformas."
-        }
-      ]
-    },
-    {
-      "id": "lv.slimibas-nauda-2-3",
-      "nombre": "Slimības nauda par 2. un 3. dienu",
-      "tipo": "numero",
-      "unidad": "%",
-      "tramos": [
-        {
-          "estado": "no-verificado",
-          "desde": "2026-01-01",
-          "valor": 75,
-          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
-        }
-      ]
-    },
-    {
-      "id": "lv.slimibas-nauda-4-9",
-      "nombre": "Slimības nauda no 4. līdz 9. dienai",
-      "tipo": "numero",
-      "unidad": "%",
-      "tramos": [
-        {
-          "estado": "no-verificado",
-          "desde": "2026-01-01",
-          "valor": 80,
-          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
-        }
-      ]
-    },
-    {
-      "id": "lv.slimibas-pabalsts",
-      "nombre": "Slimības pabalsts no 10. dienas",
-      "tipo": "numero",
-      "unidad": "%",
-      "tramos": [
-        {
-          "estado": "no-verificado",
-          "desde": "2026-01-01",
-          "valor": 80,
-          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
-        }
-      ]
-    },
-    {
-      "id": "lv.maternitates-pabalsts",
-      "nombre": "Maternitātes pabalsts",
-      "tipo": "numero",
-      "unidad": "%",
-      "tramos": [
-        {
-          "estado": "no-verificado",
-          "desde": "2026-01-01",
-          "valor": 80,
-          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
-        }
-      ]
-    },
-    {
-      "id": "lv.vecaku-pabalsts",
-      "nombre": "Vecāku pabalsts",
-      "tipo": "mapa",
-      "unidad": "%",
-      "etiquetas": {
-        "13-menesi": "13 mēneši",
-        "19-menesi": "19 mēneši"
-      },
-      "tramos": [
-        {
-          "estado": "no-verificado",
-          "desde": "2026-01-01",
-          "valor": {
-            "13-menesi": 60,
-            "19-menesi": 43.75
-          },
-          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
-        }
-      ]
-    },
-    {
-      "id": "lv.vecaku-pabalsts-stradajot",
-      "nombre": "Vecāku pabalsta daļa, ja strādājat",
-      "tipo": "numero",
-      "unidad": "%",
-      "tramos": [
-        {
-          "estado": "no-verificado",
-          "desde": "2026-01-01",
-          "valor": 75,
-          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
-        }
-      ]
-    },
-    {
-      "id": "lv.bezdarbnieka-stazs",
-      "nombre": "Bezdarbnieka pabalsts pēc apdrošināšanas stāža",
-      "tipo": "mapa",
-      "unidad": "%",
-      "etiquetas": {
-        "1-9": "No 1 līdz 9 gadiem",
-        "10-19": "No 10 līdz 19 gadiem",
-        "20-29": "No 20 līdz 29 gadiem",
-        "30": "30 gadi un vairāk"
-      },
-      "tramos": [
-        {
-          "estado": "no-verificado",
-          "desde": "2026-01-01",
-          "valor": {
-            "1-9": 50,
-            "10-19": 55,
-            "20-29": 60,
-            "30": 65
-          },
-          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
-        }
-      ]
-    },
-    {
-      "id": "lv.bezdarbnieka-posmi",
-      "nombre": "Bezdarbnieka pabalsta izmaksas daļa pa mēnešiem",
-      "tipo": "mapa",
-      "unidad": "%",
-      "etiquetas": {
-        "1-2": "1. un 2. mēnesis",
-        "3-4": "3. un 4. mēnesis",
-        "5-6": "5. un 6. mēnesis",
-        "7-8": "7. un 8. mēnesis"
-      },
-      "tramos": [
-        {
-          "estado": "no-verificado",
-          "desde": "2026-01-01",
-          "valor": {
-            "1-2": 100,
-            "3-4": 75,
-            "5-6": 50,
-            "7-8": 45
-          },
-          "motivo": "Solo leído en la guía de seguridad social para Letonia de la Comisión Europea (manuscrito de julio de 2026), que aclara que refleja la opinión de sus autores. vsaa.gov.lv, lm.gov.lv y likumi.lv cortaron la conexión el 1/11/2026 (ECONNRESET y ECONNREFUSED, con reintentos): falta leerlo en VSAA o en la ley."
+          "motivo": "Solo leído en la publicación original de 2001 del Darba likums en vestnesis.lv (https://www.vestnesis.lv/ta/id/26019, art. 103). likumi.lv rechazó la conexión todo el 1/11/2026 y las páginas de lm.gov.lv y vdi.gov.lv solo confirman el plazo de un mes (art. 103, punto 3), no los otros dos: falta la redacción vigente."
         }
       ]
     }

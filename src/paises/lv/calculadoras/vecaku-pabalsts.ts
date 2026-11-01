@@ -5,19 +5,25 @@ export default definirCalculadora({
   mercado: "lv",
   concepto: "propio",
   slug: "vecaku-pabalsts",
-  estado: "borrador",
+  estado: "publicado",
   requiere: { "lv.vecaku-pabalsts": "mapa", "lv.vecaku-pabalsts-stradajot": "numero" },
   campos: [
     { id: "alga", tipo: "moneda", etiqueta: "Vidējā apdrošināšanas iemaksu alga mēnesī", min: 0, porDefecto: 1500 },
-    { id: "variants", tipo: "opcion-dato", dato: "lv.vecaku-pabalsts", etiqueta: "Pabalsta periods", porDefecto: "13-menesi" },
-    { id: "stradajat", tipo: "si-no", etiqueta: "Strādājat bērna kopšanas laikā", porDefecto: false },
+    { id: "variants", tipo: "opcion-dato", dato: "lv.vecaku-pabalsts", etiqueta: "Pabalsta periods", porDefecto: "m13" },
+    { id: "ienakumi", tipo: "si-no", etiqueta: "Pamata daļas laikā strādājat vai gūstat ienākumus", porDefecto: false },
   ],
   calcular(e, v, { redondear }) {
     if (e.alga <= 0) throw new ErrorEntrada("Ievadiet algu, kas lielāka par nulli.", "alga");
-    const pilns = porcentaje(e.alga, enMapa(v["lv.vecaku-pabalsts"], e.variants));
-    return { pabalsts: redondear(e.stradajat ? porcentaje(pilns, v["lv.vecaku-pabalsts-stradajot"]) : pilns) };
+    const pilns = redondear(porcentaje(e.alga, enMapa(v["lv.vecaku-pabalsts"], e.variants)));
+    const menesi = e.variants === "m13" ? 13 : 19;
+    const pamataMenesi = menesi - 4;
+    const mazaks = e.ienakumi ? redondear(porcentaje(pilns, v["lv.vecaku-pabalsts-stradajot"])) : pilns;
+    return { pabalsts: mazaks, pilns, kopa: redondear(mazaks * pamataMenesi + pilns * 4), menesi };
   },
   resultado: [
-    { clave: "pabalsts", etiqueta: "Vecāku pabalsts mēnesī", formato: "moneda", destacada: true },
+    { clave: "pabalsts", etiqueta: "Pamata daļa mēnesī", formato: "moneda", destacada: true },
+    { clave: "pilns", etiqueta: "Nenododamā daļa mēnesī", formato: "moneda" },
+    { clave: "kopa", etiqueta: "Kopā par visu periodu", formato: "moneda" },
+    { clave: "menesi", etiqueta: "Pabalsta periods", formato: "meses" },
   ],
 });
