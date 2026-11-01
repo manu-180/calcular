@@ -49,6 +49,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   ka: "kveqnebis-reitingi",
   hr: "ljestvica-zemalja",
   lv: "valstu-reitings",
+  km: "chomnat-thnak-prateh",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -121,6 +122,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   hr: { rinde: "gdje-placa-vrijedi-najvise", libertad: "dan-porezne-slobode", aumento: "koliko-ostaje-od-povisice" },
   // lv en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D35).
   lv: { rinde: "kur-no-algas-paliek-visvairak", libertad: "nodoklu-brivibas-diena", aumento: "cik-paliek-no-algas-pielikuma" },
+  // km con el slug en inglés del catálogo, como th (ADR 0002, D38).
+  km: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

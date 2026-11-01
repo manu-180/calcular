@@ -2083,3 +2083,58 @@ como el árabe, a cambio de ese cambio de fuente. El ₫ en la web sale de la fa
 
 La edición interna es `zz-vi` (Zetaland, vi-001). Mercados de prueba en `check_universales`: Việt Nam con VND y «Saint
 Vincent và Grenadines» con XCD.
+
+### D38. Jemer, para Camboya (2026-11-01)
+
+D36 y D37 los usan `claude/mundo-motor-mk` y `claude/mundo-motor-vi`, sin mergear; esta entrada toma el D38 para no
+chocar. Modelo: tailandés (D13), la otra escritura sin espacios con signos combinantes.
+
+`IDIOMAS` suma `km`. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed, redes, afiliados, mundo,
+rankings, horas, calendario, sueldos, venta completa y las 41 universales están en jemer. Edición interna `zz-km`.
+
+**Fuentes, comprobadas el 1/11/2026 con un pedido común.** Abren `tax.gov.kh` (GDT, portada; las tasas están en
+secciones internas que hay que leer), `mlvt.gov.kh` (remite a `minimumwage.gov.kh`, no probado) y `nis.gov.kh`
+(publica inflación en portada). Rechazan `nbc.gov.kh` y `mef.gov.kh` (403) y `nssf.gov.kh` («Rejected Request»). No se
+intentó pasar esos bloqueos. Alcanza para considerar el país, pero el agente tendrá borradores: NSSF y tipo de cambio
+del NBC quedan sin fuente primaria mientras sigan bloqueados.
+
+**Registro.** Uno solo, el de ABA, ACLEDA y la GDT: cortés y neutro, «អ្នក» cuando hace falta y si no, sin pronombre.
+Sin «លោកអ្នក», sin «បាទ» ni «ចាស». «សូម» para pedir («សូមបញ្ចូលលេខ»), verbo corto en botones («គណនា»). Sí y no: «មែន» y «ទេ».
+La carta del informe usa «ខ្ញុំ». Mercados con `trato: "usted"` y diccionarios en `base`.
+
+**Gramática del país.** Sin artículos ni declinación: «នៅ», «សម្រាប់» y «នៃ» pegados, con «ប្រទេស» delante
+(«នៅប្រទេសកម្ពុជា», «សម្រាប់ប្រទេសកម្ពុជា»), salvo los nombres que ya dicen qué son (សហរដ្ឋ, ចក្រភព, សាធារណរដ្ឋ, ដែនដី...)
+y los territorios (ហុងកុង, តៃវ៉ាន់). `Intl.DisplayNames` de km trae U+200B dentro de varios nombres: el nombre de un mercado
+se escribe a mano, sin copiar de ahí.
+
+**Puntuación y espacios.** Sin espacios entre palabras: el espacio separa frases. «។» pegado a la palabra al cerrar la
+oración, sin «!». «?» pegado. Comillas « ». `reglasKm` rechaza además U+200B, «េ» + «ា» en lugar de «ោ», signos sueltos
+tras un espacio y los caracteres que Unicode desaconseja. Permite el espacio duro detrás de una cifra, que es lo que
+Intl pone en «12,000 EC$».
+
+**Formato.** Intl de km-KH: cifras latinas, miles con coma, decimales con punto y símbolo detrás («40,000៛», «1,234.50$»).
+Los sitios de gobierno y sus documentos usan a menudo ០ a ៩, ABA y ACLEDA las latinas; se eligen las latinas porque son
+las de Intl, las de los bancos y las que se comparan a simple vista. El parser acepta las dos («៤០,០០០») y las palabras de
+unidad («2.5 លាន», «1 លាន 5 សែន», «3 ម៉ឺនរៀល», «1 កោដិ»): sin eso «2 លាន» daba 2. El riel va sin decimales
+(`DECIMALES_DE_USO`, como AMD): CLDR le da dos, pero no circula nada menor a 50 ៛. Fechas gregorianas con mes jemer,
+como en la web de servicios («1 វិច្ឆិកា 2026»); la era budista queda para encabezados de documentos oficiales. Sin plural.
+
+**Slugs.** El slug en inglés del catálogo, como D8 y D13: la romanización del jemer no tiene una norma de uso común y
+casi nadie busca así. Las secciones van en romanización simple porque no pueden repetir la del inglés: `prak-khae-lok`,
+`pratitin-prak-khae`, `maong-thveu-kar`, `chomnat-thnak-prateh`, `prak-khae-pit`. Rankings de adentro en inglés.
+
+**Fuente y corte de línea.** Sistema, sin descargar: «Khmer OS», Noto Sans Khmer, Khmer Sangam MN, Leelawadee UI. Interlineado
+1,8 por los subíndices. `word-break: normal` y `overflow-wrap: break-word`, sin U+200B a mano: `Intl.Segmenter` de ICU corta bien
+las palabras; no se miró en un navegador real con la página armada. La tarjeta OG pide Noto Sans Khmer, y Satori no arma
+los subíndices ni reordena «េ», así que puede salir con algún conjunto mal armado, como bn en D14.
+
+**Ancho SEO.** Medido con GDI a 20 px en Leelawadee UI y Segoe UI (Khmer UI y Noto Sans Khmer no están instaladas en la
+máquina de medida): consonante 1,6 latinas, vocal al costado 1,5, coeng 0 y consonante subíndice 0,6. Con ese ancho un título
+de 60 unidades son unas 35 letras, de ahí los títulos cortos.
+
+**Período en `mundo/inferir`.** `palabras()` corta el jemer en cada signo vocálico, así que se busca adentro del texto:
+«ឆ្នាំ» anual, «ប្រចាំខែ», «ក្នុងមួយខែ» y «មួយខែ» mensual. «ខែ» solo no alcanza: lo lleva «ប្រាក់ខែ», salario.
+
+**Prueba.** `zz-km` (ហ្សេតាឡង់, `km-001`) es interna. `check_universales` prueba km-KH con KHR a 4000 y «សាំងវ៉ាំងសង់ និងហ្គ្រេណាឌីន»
+con XCD. El texto no lo revisó un hablante nativo; hay términos de finanzas elegidos sin esa revisión («អត្រាបន្ទាប់បង្ហាញ» para tasa
+nominal es el más dudoso, y «ចំណុចរួចថ្លៃដើម» para punto de equilibrio).

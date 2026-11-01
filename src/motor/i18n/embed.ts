@@ -1653,7 +1653,43 @@ const vi: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi };
+// Jemer (ADR 0002, D38): «អ្នក» o sin pronombre, «។» al cerrar la oración; el país con GRAMATICA.km.
+const km: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "ម៉ាស៊ីនគណនាពី CalcularYa",
+    marcaNuevaPestana: "(បើកក្នុងផ្ទាំងថ្មី)",
+    noDisponible: { titulo: "ម៉ាស៊ីនគណនានេះមិនអាចប្រើបានទេ", texto: "អាសយដ្ឋានប្រហែលជាបានផ្លាស់ប្តូរ។" },
+    insertar: "បង្កប់ក្នុងគេហទំព័រ",
+    pagina: {
+      titulo: (pais) => [`ម៉ាស៊ីនគណនាឥតគិតថ្លៃសម្រាប់គេហទំព័រ | ${pais}`, "ម៉ាស៊ីនគណនាឥតគិតថ្លៃសម្រាប់គេហទំព័រ"],
+      descripcion: (pais) => `ជ្រើសរើសម៉ាស៊ីនគណនា${GRAMATICA.km.para(pais)} ចម្លងកូដ ហើយបិទភ្ជាប់ក្នុងប្លុក ឬគេហទំព័រ។ ឥតគិតថ្លៃ ជាមួយទិន្នន័យផ្លូវការ។`,
+      h1: "បង្កប់ម៉ាស៊ីនគណនាក្នុងគេហទំព័រ",
+      bajada: "ជ្រើសរើសម៉ាស៊ីនគណនា ចម្លងកូដ ហើយបិទភ្ជាប់គ្រប់ទីកន្លែង។ ឥតគិតថ្លៃ ហើយទិន្នន័យធ្វើបច្ចុប្បន្នភាពដោយខ្លួនឯង។",
+      calculadora: "ម៉ាស៊ីនគណនា",
+      buscar: "ស្វែងរកម៉ាស៊ីនគណនា",
+      sinResultados: "គ្មានម៉ាស៊ីនគណនាត្រូវនឹងការស្វែងរកទេ។",
+      tema: "រចនាប័ទ្ម",
+      claro: "ភ្លឺ",
+      oscuro: "ងងឹត",
+      ancho: "ទទឹង",
+      anchoCompleto: "ពេញទទឹង",
+      acento: "ពណ៌សង្កត់",
+      colores: ["បៃតង", "ខៀវ", "ទឹកក្រូច", "ផ្កាឈូក", "ប្រផេះ"],
+      credito: "បន្ថែមតំណប្រភពនៅក្រោមម៉ាស៊ីនគណនា",
+      vistaPrevia: "មើលជាមុន",
+      codigo: "កូដសម្រាប់បិទភ្ជាប់",
+      copiar: "ចម្លងកូដ",
+      copiado: "បានចម្លងកូដ។",
+      ayudaScript: "ស្គ្រីបនេះមិនចាំបាច់ទេ។ វាជួយឱ្យកម្ពស់ម៉ាស៊ីនគណនាសមនឹងខ្លឹមសារ។",
+      ventajas: ["ឥតគិតថ្លៃ មិនចាំបាច់ចុះឈ្មោះ", "ទិន្នន័យផ្លូវការថ្មីបំផុតជានិច្ច", "បង្ហាញបានគ្រប់ទទឹង"],
+      nota: "នៅក្រោមម៉ាស៊ីនគណនាមានតំណទៅ CalcularYa។ សូមកុំលុបវាចេញ។",
+      verTodas: (pais) => `មើលម៉ាស៊ីនគណនាទាំងអស់${GRAMATICA.km.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | ម៉ាស៊ីនគណនាពី CalcularYa`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi, km };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

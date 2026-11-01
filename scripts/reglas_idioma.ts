@@ -933,6 +933,31 @@ function reglasBn(original: string): string[] {
   return p;
 }
 
+// Jemer (ADR 0002, D38). Se escribe sin espacios entre palabras: el espacio separa frases, y la oración cierra con
+// «។» pegado a la última palabra. Registro de ABA, ACLEDA y la GDT: cortés y neutro, «អ្នក» o sin pronombre.
+// Cifras latinas, como Intl km-KH. Las abreviaturas con punto (គ.ស., ព.ស., គ.ម.) tienen como mucho dos letras.
+const LETRA_KM = String.raw`[ក-៓]`;
+const PUNTO_ASCII_KM = new RegExp(`${LETRA_KM}{3,}\\.(?=\\s|$|["»)])`, "u");
+
+function reglasKm(texto: string): string[] {
+  const p: string[] = [];
+  if (/[!！]/.test(texto)) p.push("signo de exclamación");
+  if (/[​-‍⁠﻿]/.test(texto)) p.push("espacio invisible (U+200B y parecidos): el navegador ya corta el jemer por palabras");
+  // Intl km-KH pone un espacio duro entre la cifra y un símbolo con letras («12,000 EC$»): ese sí va.
+  if (/(?<!\d) |[  　]/.test(texto)) p.push("espacio raro (duro o fino): va el espacio común");
+  if (/ {2,}/.test(texto)) p.push("doble espacio");
+  if (/[០-៩]/.test(texto)) p.push("dígitos jemeres (van cifras latinas, como Intl km-KH)");
+  if (PUNTO_ASCII_KM.test(texto)) p.push("punto latino al final de una oración jemer (va «។»)");
+  if (/\s[។៕]/.test(texto)) p.push("espacio antes de «។» (va pegado a la palabra)");
+  if (/។(?!ល។)[ក-ឳ]/u.test(texto)) p.push("falta el espacio después de «។»");
+  if (/\s[ា-៓]/.test(texto)) p.push("signo vocálico o coeng suelto después de un espacio");
+  if (/េា/.test(texto)) p.push("«េ» + «ា» en vez de «ោ» (U+17C4)");
+  if (/េី/.test(texto)) p.push("«េ» + «ី» en vez de «ើ» (U+17BE)");
+  if (/[ឣឤ឴឵៓៘]/.test(texto)) p.push("carácter jemer desaconsejado por Unicode (U+17A3, U+17A4, U+17B4, U+17B5, U+17D3, U+17D8)");
+  if (/លោកអ្នក|អ្នកឯង|ញ៉ុំ|អញ(?=\s|$)|(?:^|\s)(?:បាទ|ចាស)(?=\s|$)/u.test(texto)) p.push("registro fuera de lugar (va «អ្នក» o sin pronombre, sin បាទ/ចាស)");
+  return p;
+}
+
 // Tailandés (ADR 0002, D13). Se escribe sin espacios entre palabras: el espacio separa frases y
 // oraciones, y la oración no lleva punto ni signo de pregunta al final. Registro cortés y neutro de
 // los bancos y servicios digitales: sin partículas de cortesía (ครับ, ค่ะ), sin pronombre de segunda
@@ -1006,6 +1031,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   }
   if (idioma === "ar") return [...p, ...reglasAr(texto)];
   if (idioma === "th") return [...p, ...reglasTh(texto)];
+  if (idioma === "km") return [...p, ...reglasKm(texto)];
   if (idioma === "he") return [...p, ...reglasHe(texto)];
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
   if (idioma === "tr") p.push(...reglasTr(texto));

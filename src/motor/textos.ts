@@ -587,6 +587,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
     },
   },
   // Tailandés (ADR 0002, D13): sin punto final, «กรุณา» para pedir y sin ครับ/ค่ะ.
+  // Jemer (ADR 0002, D38): cortés y neutro, «សូម» para pedir y «។» al cerrar la oración.
+  km: {
+    base: {
+      calcular: "គណនា",
+      resultado: "លទ្ធផល",
+      si: "មែន",
+      no: "ទេ",
+      sinResultado: "បច្ចុប្បន្នយើងមិនបង្ហាញលទ្ធផលនេះទេ។",
+      errores: {
+        requerido: "សូមបំពេញប្រអប់នេះ។",
+        "numero-invalido": "សូមបញ្ចូលលេខ ឧទាហរណ៍ {ejemplo}។",
+        "entero-invalido": "សូមបញ្ចូលចំនួនគត់ ដោយគ្មានទសភាគ។",
+        "menor-que-min": "តម្លៃអប្បបរមាគឺ {min}។",
+        "mayor-que-max": "តម្លៃអតិបរមាគឺ {max}។",
+        "fecha-invalida": "សូមជ្រើសរើសកាលបរិច្ឆេទត្រឹមត្រូវ។",
+        "hora-invalida": "សូមជ្រើសរើសម៉ោងត្រឹមត្រូវ។",
+        "opcion-invalida": "សូមជ្រើសរើសជម្រើសមួយ។",
+        "region-invalida": "សូមជ្រើសរើសតំបន់។",
+        "calculo-fallido": "មិនអាចគណនាពីទិន្នន័យនេះបានទេ។ សូមពិនិត្យតម្លៃដែលបានបញ្ចូល ហើយសាកល្បងម្តងទៀត។",
+      },
+      milesAmbiguos: "តើអ្នកចង់សំដៅលើ {sugerido} ឬ? សូមសរសេរដោយគ្មាន{signos}។",
+      separadores: { punto: "ចុច", coma: "ក្បៀស" },
+    },
+  },
   th: {
     base: {
       calcular: "คำนวณ",

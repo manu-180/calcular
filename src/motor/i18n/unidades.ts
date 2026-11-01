@@ -124,6 +124,8 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   // Macedonio: forma numérica de los masculinos («2 дена», «5 часа»); «месеци» es lo que escriben bancos y leyes.
   mk: { dias: { uno: "ден", otros: "дена" }, semanas: { uno: "недела", otros: "недели" }, horas: { uno: "час", otros: "часа" }, meses: { uno: "месец", otros: "месеци" }, anios: { uno: "година", otros: "години" } },
   he: { dias: DIAS_HE, semanas: SEMANAS_HE, horas: HORAS_HE, meses: MESES_HE, anios: ANIOS_HE },
+  // Jemer: sin plural, la unidad separada por un espacio («3 ថ្ងៃ»; ADR 0002, D38).
+  km: { dias: { uno: "ថ្ងៃ", otros: "ថ្ងៃ" }, semanas: { uno: "សប្តាហ៍", otros: "សប្តាហ៍" }, horas: { uno: "ម៉ោង", otros: "ម៉ោង" }, meses: { uno: "ខែ", otros: "ខែ" }, anios: { uno: "ឆ្នាំ", otros: "ឆ្នាំ" } },
   lv: {
     dias: { uno: "diena", otros: "dienas", cero: "dienu" },
     semanas: { uno: "nedēļa", otros: "nedēļas", cero: "nedēļu" },

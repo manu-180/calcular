@@ -223,6 +223,11 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   ],
   // Letón (ADR 0002, D35): euro detrás, con espacio de miles desde 5 cifras; un nombre largo que se declina
   // por partes («Sentvinsentā un Grenadīnās») y uno plural con adjetivo («Apvienotajos Arābu Emirātos»).
+  // Jemer (ADR 0002, D38): riel sin decimales con «៛» detrás, cifras latinas y un nombre de país largo.
+  km: [
+    { mercado: "kh" as CodigoMercado, pais: "KH", nombrePais: "កម្ពុជា", locale: "km-KH", trato: "usted", moneda: "KHR" as Moneda, escala: 4000 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "សាំងវ៉ាំងសង់ និងហ្គ្រេណាឌីន", locale: "km-KH", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
   lv: [
     { mercado: "lv" as CodigoMercado, pais: "LV", nombrePais: "Latvija", locale: "lv-LV", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sentvinsenta un Grenadīnas", locale: "lv-LV", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },

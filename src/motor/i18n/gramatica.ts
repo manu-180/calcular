@@ -2373,4 +2373,14 @@ const lv: GramaticaPais = {
 // («tại Việt Nam», «của Việt Nam», «cho Việt Nam»).
 const vi: GramaticaPais = { nombre: (p) => p, de: (p) => `của ${p}`, en: (p) => `tại ${p}`, para: (p) => `cho ${p}` };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi };
+// Jemer (ADR 0002, D38): sin artículos ni declinación. «នៅ» para el lugar, «សម្រាប់» para el destino y «នៃ»
+// para el poseedor, pegados como se escribe. Delante de un país va «ប្រទេស» («នៅប្រទេសកម្ពុជា»), salvo en los
+// nombres que ya dicen qué son (សហរដ្ឋ, ចក្រភព, សាធារណរដ្ឋ, ព្រះរាជាណាចក្រ, កោះ) y en los territorios que no se
+// nombran como país (ហុងកុង, តៃវ៉ាន់, ម៉ាកាវ, ព័រតូរីកូ).
+const km: GramaticaPais = (() => {
+  const SIN_PRATES = /^(?:ប្រទេស|ដែនដី|សហរដ្ឋ|ចក្រភព|សាធារណរដ្ឋ|ព្រះរាជាណាចក្រ|កោះ|អេមីរ៉ាត|ហុងកុង|តៃវ៉ាន់|ម៉ាកាវ|ព័រតូរីកូ)/u;
+  const pais = (p: string) => (SIN_PRATES.test(p) ? p : `ប្រទេស${p}`);
+  return { nombre: (p) => p, de: (p) => `នៃ${pais(p)}`, en: (p) => `នៅ${pais(p)}`, para: (p) => `សម្រាប់${pais(p)}` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi, km };

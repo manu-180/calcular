@@ -233,6 +233,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "সূত্র",
     },
   },
+  km: {
+    base: {
+      datos: "ទិន្នន័យសម្រាប់គណនា",
+      resultado: "លទ្ធផល",
+      vacio: "បំពេញទិន្នន័យ រួចចុច «គណនា» ដើម្បីមើលលទ្ធផល។",
+      sinResultado: "បច្ចុប្បន្នយើងមិនបង្ហាញលទ្ធផលនេះទេ។",
+      avisos: { info: "គួរដឹង", cautela: "សូមប្រយ័ត្ន", bloquea: "ហេតុអ្វីមិនបង្ហាញលទ្ធផល" },
+      fuenteDelAviso: "ប្រភព",
+    },
+  },
   th: {
     base: {
       datos: "ข้อมูลสำหรับคำนวณ",
