@@ -16,6 +16,7 @@ export const SLUG_HORAS: Record<Idioma, string> = {
   zh: "gongzuo-shijian",
   bg: "kolko-chasa-rabota",
   mn: "kheden-tsag-ajillakh",
+  mk: "kolku-chasovi-rabota",
 
   pl: "ile-godzin-pracy",
   sv: "arbetstimmar",

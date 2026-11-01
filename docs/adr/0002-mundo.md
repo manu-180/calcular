@@ -1680,3 +1680,43 @@ plural detrás de un número y rusismos («зарплата», «калькул�
 **Fuente.** Geist no trae ө ni ү: la tarjeta OG usa Noto Sans de respaldo, como ru y bg. La edición interna es
 `zz-mn` («Зеталанд», mn-001). Mercados de prueba en `check_universales`: Монгол Улс con MNT y nombres largos
 («Бүгд Найрамдах Доминикан Улс», «Сент-Винсент ба Гренадин», «Соломоны арлууд»).
+
+### D36. Macedonio, para Macedonia del Norte (2026-11-01)
+
+(D30 a D35 quedan para ramas sin mergear.)
+
+**Registro.** Uno solo, el de los bancos y los servicios: «вие» con 2.ª del plural («внесете», «пресметајте»), nunca
+«ти». Los mercados van con trato `usted` y el diccionario se escribe en `base`. El botón de calcular es «Пресметај»,
+suelto, y es la única forma en singular que aceptan las reglas; los demás botones van en sustantivo verbal («Копирање
+на врската») o en 2.ª del plural («Купете»).
+
+**«вие» con minúscula.** «вие», «ве», «ви», «вашиот», «вашата», «вашите» en minúscula a mitad de oración.
+Комерцијална банка escribe «Освежете го вашиот бизнис» (kb.mk, leído el 1/11/2026). УЈП mezcla: «Вашата даночна пријава»
+y «ве информира» en la misma portada (ujp.gov.mk, leído el 1/11/2026). La minúscula es una sola regla y no es una carta
+personal; `reglas_idioma` rechaza la mayúscula a mitad de oración.
+
+**Nativo, no búlgaro ni serbio adaptados.** Sin casos y con artículo pospuesto. `GRAMATICA.mk`: `en` = «во», «на» en
+archipiélagos («на Малдивите», «на Соломонските Острови»); `de` = «на»; `para` = «за». «во» y «од» no cambian de forma.
+Los nombres que son frase con sustantivo común o plural llevan artículo en la primera palabra («во Соединетите
+Американски Држави», «во Обединетото Кралство»); «Северна Македонија» no. Las reglas atrapan ы э ё ъ я ю щ й ь, letras
+de otros cirílicos, « » y palabras ajenas: «заплата», «данък», «лихва», «порез», «ПДВ», «ДДС», «че», «са», «от», «в», «с».
+Vocabulario: плата, персонален данок, придонеси, ДДВ, станбен кредит, камата, рата.
+
+**Plural.** `Intl.PluralRules("mk")` da «one» para 1, 21, 31 (no 11) y fracciones en 1, «other» para el resto. `otros` es
+la forma detrás de número, con la forma numérica de los masculinos: «2 дена», «5 часа», «2 калкулатора». «месец» queda
+en «месеци», que es lo que escriben bancos y leyes, no «месеца».
+
+**Formato y moneda.** mk-MK: punto de miles, coma decimal, «1.234.567,50 ден.», «20 %» con espacio. El símbolo trae punto:
+una oración no debe cerrar con un monto («ден..»). La moneda de prueba es MKD, escala 55.
+
+**Slugs.** Transliteración oficial en ASCII: ж = zh, ч = ch, ш = sh, ќ = kj, ѓ = gj, ј = j, љ = lj, њ = nj, ц = c, ѕ = dz, џ = dj
+(«kalkulator-za-kredit», «kalkulator-ddv», «platata-niz-svetot», «rang-lista-na-drzhavite»). `kalkulator-za-plata` queda
+libre para la calculadora local de sueldo. Van en `src/motor/secciones.ts` vía los `SLUG_*`, sin carpetas por idioma.
+
+**Fuentes para el país.** El 1/11/2026 abrieron ujp.gov.mk, stat.gov.mk, finance.gov.mk y mtsp.gov.mk. Este motor no usa
+ningún dato de ellas: tasas y montos los verifica el agente de país. nbrm.mk (403) y slvesnik.com.mk (sin conexión) no se
+reintentaron.
+
+**Fuente tipográfica.** La tarjeta OG usa Noto Sans de respaldo, como uk, ru y bg. La edición interna es `zz-mk`
+(«Зеталандија», mk-001). Mercados de prueba en `check_universales`: Северна Македонија con MKD y nombres largos («Сент
+Винсент и Гренадини», «Обединети Арапски Емирати»). Falta revisión por hablante nativo.

@@ -6,6 +6,7 @@ import { GRAMATICA, mayusculaHu } from "./gramatica";
 import { conteoMn, formaBg, formaCs, formaEl, formaRu, formaSk, formaUk, pluralBg, pluralCs, pluralEl, pluralRo, pluralRu, pluralSk, pluralUk } from "./plural";
 import { formaSr, pluralSr } from "./plural";
 import { formaHr, pluralHr } from "./plural";
+import { formaMk, pluralMk } from "./plural";
 import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
@@ -2470,7 +2471,82 @@ const mn: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
+// Macedonio (ADR 0002, D36): impersonal como los demás; el país va con GRAMATICA.mk y los días con
+// formaMk/pluralMk («1 ден», «3 дена»).
+const gMk = GRAMATICA.mk;
+const mk: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Работен и даночен календар",
+    seo: {
+      titulo: (pais, anios) => [
+        `Работен и даночен календар ${gMk.para(pais)} ${anios}: важни датуми`,
+        `Работен и даночен календар ${gMk.para(pais)} ${anios}`,
+        `Работен календар ${gMk.para(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Датумите што ја менуваат платата ${gMk.en(pais)}, со официјален извор: ${proximas}. Секој со свој калкулатор.`,
+      descripcionSin: (pais) => `Датумите што ја менуваат платата ${gMk.en(pais)}, со официјален извор и калкулатор за секој од нив. Можат да се додадат во календарот на телефонот.`,
+    },
+    ceja: (anios) => `Календар ${anios}`,
+    h1: (pais) => `Работен и даночен календар ${gMk.para(pais)}`,
+    acento: "датумите од кои зависи платата",
+    bajada: "Секој датум доаѓа од официјален извор и води до калкулаторот на кој влијае. Страницата се ажурира сама кога ќе се објави нова вредност.",
+    proxima: "Следен датум",
+    cuenta: {
+      hoy: "Денес",
+      manana: "Утре",
+      ayer: "Вчера",
+      en: (n) => `За ${pluralMk(n, "ден", "дена")}`,
+      hace: (n) => `Пред ${pluralMk(n, "ден", "дена")}`,
+      dias: (n) => formaMk(n, "ден", "дена"),
+    },
+    queViene: "Претстои",
+    yaRige: "Веќе е во сила",
+    mesPorMes: "Годината месец по месец",
+    sinFechas: "Нема најавени промени",
+    filtro: "Филтер по тема",
+    todo: "Сите",
+    tipos: { pago: "Исплати", "salario-minimo": "Минимална плата", impuestos: "Даноци", aportes: "Придонеси и пензии", laboral: "Работни правила", indices: "Референтни вредности" },
+    pasa: (antes, despues) => `Се менува од ${antes} на ${despues}`,
+    queda: (valor) => `Утврдено: ${valor}`,
+    cambian: "Износите се менуваат",
+    zonas: (lista) => `Региони: ${lista}`,
+    limite: "Краен рок",
+    agregar: "Додавање во мојот календар",
+    descargar: "Apple, Outlook и други (датотека .ics)",
+    google: "Google Календар",
+    calcular: "Пресметај",
+    tambien: "Исто така во калкулаторите",
+    fuente: (organismo, fecha) => `Извор: ${organismo}. Проверено на ${fecha}`,
+    verificado: (fecha) => `Проверено на ${fecha}`,
+    suscribir: {
+      titulo: "Целиот календар, секогаш ажурен",
+      texto: "Со една претплата новите датуми се појавуваат сами во календарот на телефонот или компјутерот.",
+      boton: "Претплатете се на календарот",
+      copiar: "Копирање на врската",
+      copiado: "Врската е копирана",
+    },
+    fuentes: {
+      titulo: "Од каде доаѓа секој датум",
+      texto: "Овде влегуваат само датуми што се веќе утврдени со пропис или со вредност објавена од официјална институција. Она што сè уште не е објавено, го нема овде.",
+    },
+    vacio: "Во следните дванаесет месеци нема датуми на оваа тема.",
+    destacado: {
+      ceja: "Календар на исплати",
+      titulo: "Датумите од кои зависи платата оваа година",
+      ir: "Видете го календарот",
+      proxima: (titulo, fecha) => `Следен: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Работен и даночен календар ${gMk.para(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Датуми за исплати и даноци ${gMk.en(pais)} од официјални извори.`,
+      calculadora: "Калкулатор",
+      fuente: "Извор",
+    },
+    og: { proxima: "Следен датум", mas: (n) => `И уште ${pluralMk(n, "датум", "датума")} оваа година` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, mk };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

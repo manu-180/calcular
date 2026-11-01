@@ -5,6 +5,7 @@ import { bn } from "./bn";
 import { cs } from "./cs";
 import { he } from "./he";
 import { bg } from "./bg";
+import { mk } from "./mk";
 import { mn } from "./mn";
 import { de } from "./de";
 import { el } from "./el";
@@ -38,7 +39,7 @@ import { zh } from "./zh";
 
 export type { BloqueLegal, DatosLegales, PaginaLegal, PaginasLegales } from "./tipos";
 
-export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
+export const DICCIONARIOS_LEGALES: Readonly<Record<Idioma, DiccionarioLegal>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, mk };
 
 export function resolverLegales(idioma: Idioma, trato: Trato, datos: DatosLegales, locale?: string): PaginasLegales {
   const dic = DICCIONARIOS_LEGALES[idioma](datos);

@@ -336,6 +336,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Източник",
     },
   },
+  mk: {
+    base: {
+      datos: "Вашите податоци",
+      resultado: "Резултат",
+      vacio: "Внесете ги податоците и притиснете „Пресметај“ за да го видите резултатот.",
+      sinResultado: "Во моментов не го прикажуваме овој резултат.",
+      avisos: { info: "Добро е да знаете", cautela: "Обрнете внимание", bloquea: "Зошто не го прикажуваме резултатот" },
+      fuenteDelAviso: "Извор",
+    },
+  },
   ka: {
     base: {
       datos: "თქვენი მონაცემები",

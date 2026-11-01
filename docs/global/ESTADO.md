@@ -177,6 +177,13 @@ y servicios («та», «-на уу», botones en «-х»), sin confirmar en sus
 nunca el nombre ni una cifra. MNT como moneda de prueba. Listo para que un agente de país escriba Mongolia.
 Falla de main ajena al frente: `check_mundo` (be, neto).
 
+## 1/11/2026 · Motor macedonio (`claude/mundo-motor-mk`, ADR 0002 D36)
+
+`mk` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,
+calendario, sueldos, embed, compartir, afiliados y las 41 universales; edición interna `zz-mk`. Registro de bancos
+(«вие» en minúscula, 2.ª del plural, botón «Пресметај»). MKD como moneda de prueba. Falta revisión por hablante nativo.
+Listo para que un agente de país escriba Macedonia del Norte (`kalkulator-za-plata` libre).
+
 ## 31/10/2026 · Motor búlgaro (`claude/mundo-motor-bg`, ADR 0002 D24)
 
 `bg` en `IDIOMAS` e `IDIOMAS_VENTA`: textos del motor, sitio, inicio, legales, venta, mundo, rankings, horas,

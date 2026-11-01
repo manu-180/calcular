@@ -19,6 +19,7 @@ import { contenidoIt } from "./contenido/it";
 import { contenidoJa } from "./contenido/ja";
 import { contenidoKa } from "./contenido/ka";
 import { contenidoKo } from "./contenido/ko";
+import { contenidoMk } from "./contenido/mk";
 import { contenidoMn } from "./contenido/mn";
 import { contenidoNb } from "./contenido/nb";
 import { contenidoNl } from "./contenido/nl";
@@ -54,6 +55,7 @@ import { textosIt } from "./textos/it";
 import { textosJa } from "./textos/ja";
 import { textosKa } from "./textos/ka";
 import { textosKo } from "./textos/ko";
+import { textosMk } from "./textos/mk";
 import { textosMn } from "./textos/mn";
 import { textosNb } from "./textos/nb";
 import { textosNl } from "./textos/nl";
@@ -74,7 +76,7 @@ export default definirUniversal<UiMargenDeGanancia>({
   id: "margen-de-ganancia",
   concepto: "margen-de-ganancia",
   definir,
-  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, id: textosId, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mn: textosMn, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, id: contenidoId, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mn: contenidoMn, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, id: textosId, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mk: textosMk, mn: textosMn, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
+  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, id: contenidoId, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mk: contenidoMk, mn: contenidoMn, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
   casos,
 });
