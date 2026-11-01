@@ -2057,7 +2057,7 @@ const bg: Diccionario<TextosCalendario> = {
     agregar: "Добави в моя календар",
     descargar: "Apple, Outlook и други (файл .ics)",
     google: "Google Календар",
-    calcular: "Изчисли",
+    calcular: "Изчислете",
     tambien: "Също и в калкулаторите",
     fuente: (organismo, fecha) => `Източник: ${organismo}. Проверено на ${fecha}`,
     verificado: (fecha) => `Проверено на ${fecha}`,
@@ -2076,7 +2076,7 @@ const bg: Diccionario<TextosCalendario> = {
     destacado: {
       ceja: "Календар на плащанията",
       titulo: "Датите, от които зависи заплатата тази година",
-      ir: "Виж календара",
+      ir: "Вижте календара",
       proxima: (titulo, fecha) => `Следваща: ${titulo}, ${fecha}`,
     },
     ics: {

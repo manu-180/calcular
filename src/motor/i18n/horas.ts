@@ -3224,7 +3224,7 @@ const bg: Diccionario<TextosHoras> = {
       titulo: "Карта за споделяне",
       bajada: "На нея има само публични данни: официалната цена и часовете работа на минимална заплата.",
       boton: "Сподели картата",
-      descargar: "Изтегли за Stories",
+      descargar: "Изтеглете за Stories",
       copiado: "Линкът е копиран.",
       compartido: "Готово, изпратено.",
       error: "Този път споделянето не успя.",
@@ -3251,7 +3251,7 @@ const bg: Diccionario<TextosHoras> = {
       cambio: "Валутен курс",
       consultado: "Прегледано на {fecha}",
       verificado: "Проверено на {fecha}",
-      verFuente: "Виж източника",
+      verFuente: "Вижте източника",
       sello: "Цените са отчетени от {desde} до {hasta}. Цена, по-стара от 120 дни, вече не се показва.",
       conversion: {
         hora: "Законът определя ставка на час.",

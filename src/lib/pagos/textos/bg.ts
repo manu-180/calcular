@@ -4,7 +4,7 @@ import type { DiccionarioVenta, TextosFamilia } from "./tipos";
 // Búlgaro (ADR 0002, D24): un solo registro, el de los servicios digitales y los bancos. «Вие» de
 // cortesía con mayúscula en los pronombres que se dirigen al lector («Вашите данни», «ще Ви
 // изпратим») y el verbo en 2.ª persona del plural («изберете», «получавате»); nunca «ти». Los botones
-// van en imperativo singular breve, como en las webs búlgaras («Купи», «Изтегли таблицата»). Comillas
+// van en imperativo cortés («Купете», «Изтеглете таблицата»). Comillas
 // „“. Las cartas del informe van en primera persona formal. Los textos de las familias sirven a
 // cualquier país: nada de organismos de un solo país. El país llega en el marcador {pais} sin
 // artículo, así que va entre paréntesis o después de dos puntos.
@@ -681,7 +681,7 @@ export const bg: DiccionarioVenta = {
     comprarInforme: "Вземи справката",
     comprarPlanilla: "Вземи таблицата",
     confianza: "Плащане с PayPal или с карта. Ако не Ви е от полза, връщаме парите до 7 дни.",
-    verDetalle: "Виж какво съдържа",
+    verDetalle: "Вижте какво съдържа",
     tambien: "Може да Ви е полезно и това:",
     tablasOficiales: "Официални таблици",
     bajadaInforme: "Справката го показва стъпка по стъпка с Вашите числа и източника на всяка стойност, готово за печат или за запазване като PDF.",
@@ -749,8 +749,8 @@ export const bg: DiccionarioVenta = {
     seccionPlanillas: "Excel таблици",
     seccionInformes: "PDF справки",
     catalogoVacio: "Скоро ще има таблици и за тази държава ({pais}). Дотогава калкулаторите са безплатни.",
-    verCalculadoras: "Виж калкулаторите",
-    comprar: "Купи за {precio}",
+    verCalculadoras: "Вижте калкулаторите",
+    comprar: "Купете за {precio}",
     pronto: "Очаквайте скоро",
     incluye: "Какво включва",
     incluyeInforme: [
@@ -764,7 +764,7 @@ export const bg: DiccionarioVenta = {
       "Ако не Ви е от полза, връщаме парите до 7 дни.",
     ],
     pagoUnico: "Еднократно плащане с PayPal. Можете да платите с профила си или с карта.",
-    comprarPlanilla: "Купи: {titulo}",
+    comprarPlanilla: "Купете: {titulo}",
     comprarBajadaInforme: "Ще изпратим връзката към справката на този имейл веднага щом плащането бъде потвърдено.",
     comprarBajadaPlanilla: "Ще изпратим таблицата на този имейл веднага щом плащането бъде потвърдено.",
     etiquetaEmail: "Вашият имейл",
@@ -806,8 +806,8 @@ export const bg: DiccionarioVenta = {
       devolucion: { pregunta: "Мога ли да си върна парите?", respuesta: "Да. Ако таблицата не Ви е от полза, отговорете на имейла с доставката до 7 дни и ще Ви върнем парите." },
       actualiza: { pregunta: "Обновява ли се, когато се променят официалните стойности?", respuesta: "Да. {disparador}, обновяваме таблицата и същата връзка изтегля новата версия." },
     },
-    descargar: "Изтегли таблицата (.xlsx)",
-    abrirInforme: "Отвори справката",
+    descargar: "Изтеглете таблицата (.xlsx)",
+    abrirInforme: "Отворете справката",
     fuentes: "Официални източници, които използва",
     calculadoras: "Работи с тези калкулатори",
     muestra: "Как изглежда",
@@ -821,7 +821,7 @@ export const bg: DiccionarioVenta = {
     informe: {
       encabezado: "Справката Ви е готова за отваряне",
       intro: "Благодарим Ви за покупката: {titulo}. Отворете я тук:",
-      boton: "Отвори справката",
+      boton: "Отворете справката",
       abre: "Отваря се в браузъра. Оттам можете да я разпечатате или да я запазите като PDF.",
       guarda: "Запазете този имейл",
       vence: "Връзката е Ваша и не изтича. Справката използва официалните стойности, действащи в деня на покупката, и можете да коригирате данните си и да я разпечатате отново, когато пожелаете.",
@@ -831,7 +831,7 @@ export const bg: DiccionarioVenta = {
     planilla: {
       encabezado: "Таблицата Ви е готова",
       intro: "Благодарим Ви, че купихте: {titulo}. Изтеглете я тук:",
-      boton: "Изтегли таблицата (.xlsx)",
+      boton: "Изтеглете таблицата (.xlsx)",
       abre: "Отваря се в Excel и Google Sheets.",
       guarda: "Запазете този имейл",
       vence: "Връзката е Ваша и не изтича. {disparador}, обновяваме таблицата и същата връзка Ви дава актуалната версия. Не е нужно да плащате отново.",

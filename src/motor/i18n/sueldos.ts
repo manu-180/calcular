@@ -3527,7 +3527,7 @@ const bg: TextosSueldos = {
     copiado: "Линкът е копиран.",
     compartido: "Изпратено.",
     errorCompartir: "Споделянето не успя.",
-    verPagina: "Виж всички реални заплати {enPais}",
+    verPagina: "Вижте всички реални заплати {enPais}",
     cargando: "Зареждаме заплатите…",
   },
   pagina: {
