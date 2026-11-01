@@ -31,6 +31,10 @@ export default definirContenido({
       pregunta: "Kas ülesütlemisavaldus peab olema kirjalik?",
       respuesta: "See peab olema vormis, mis võimaldab kirjalikku taasesitamist (näiteks e-kiri). Vorminõuet rikkudes on avaldus tühine (§ 95).",
     },
+    {
+      pregunta: "Kas tähtaega võib kollektiivlepinguga muuta?",
+      respuesta: "Jah, töölepingu seaduse § 97 lõike 4 järgi võib kollektiivlepinguga ette näha teistsugused tööandja etteteatamistähtajad.",
+    },
   ],
   glosario: [
     { termino: "Korraline ülesütlemine", definicion: "Töötaja ütleb tähtajatu lepingu üles ilma mõjuva põhjuseta." },

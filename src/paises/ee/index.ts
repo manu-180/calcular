@@ -14,7 +14,7 @@ import maamaks from "./calculadoras/maamaks";
 import miinimumpalk from "./calculadoras/miinimumpalk";
 import palgakalkulaator from "./calculadoras/palgakalkulaator";
 import pensionikalkulaator from "./calculadoras/pensionikalkulaator";
-import puhkusetasu from "./calculadoras/puhkusetasu";
+import puhkusetasu from "./calculadoras/puhkusetasu-arvutamine";
 import sotsiaalmaks from "./calculadoras/sotsiaalmaks";
 import tooandjaKulu from "./calculadoras/tooandja-kulu";
 import tootuskindlustushuvitis from "./calculadoras/tootuskindlustushuvitis";
@@ -35,7 +35,7 @@ import cMaamaks from "./contenido/maamaks";
 import cMiinimumpalk from "./contenido/miinimumpalk";
 import cPalgakalkulaator from "./contenido/palgakalkulaator";
 import cPensionikalkulaator from "./contenido/pensionikalkulaator";
-import cPuhkusetasu from "./contenido/puhkusetasu";
+import cPuhkusetasu from "./contenido/puhkusetasu-arvutamine";
 import cSotsiaalmaks from "./contenido/sotsiaalmaks";
 import cTooandjaKulu from "./contenido/tooandja-kulu";
 import cTootuskindlustushuvitis from "./contenido/tootuskindlustushuvitis";
@@ -63,7 +63,7 @@ export default definirPais({
     { definicion: fieMaksud, contenido: cFieMaksud, cliente: () => import("./calculadoras/fie-maksud.cliente") },
     { definicion: ettevotluskonto, contenido: cEttevotluskonto, cliente: () => import("./calculadoras/ettevotluskonto.cliente") },
     { definicion: kaibemaks, contenido: cKaibemaks, cliente: () => import("./calculadoras/kaibemaksu-kalkulaator.cliente") },
-    { definicion: puhkusetasu, contenido: cPuhkusetasu, cliente: () => import("./calculadoras/puhkusetasu.cliente") },
+    { definicion: puhkusetasu, contenido: cPuhkusetasu, cliente: () => import("./calculadoras/puhkusetasu-arvutamine.cliente") },
     { definicion: haigushuvitis, contenido: cHaigushuvitis, cliente: () => import("./calculadoras/haigushuvitis.cliente") },
     { definicion: vanemahuvitis, contenido: cVanemahuvitis, cliente: () => import("./calculadoras/vanemahuvitis.cliente") },
     { definicion: lastetoetus, contenido: cLastetoetus, cliente: () => import("./calculadoras/lastetoetus.cliente") },

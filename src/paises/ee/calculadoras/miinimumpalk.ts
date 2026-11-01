@@ -30,7 +30,7 @@ export default definirCalculadora({
       { tulumaks: v["ee.tulumaks"], tootuskindlustus: v["ee.tootuskindlustus-tootaja"], kogumispension: enMapa(v["ee.kogumispension"], e.sammas), maksuvaba: v["ee.maksuvaba-kuu"] },
       redondear,
     );
-    const k = tooandjaKulu(kuu, v["ee.sotsiaalmaks"], v["ee.tootuskindlustus-tooandja"], e.tunnid === 40 ? v["ee.sotsiaalmaksu-miinimum"] : null, redondear);
+    const k = tooandjaKulu(kuu, v["ee.sotsiaalmaks"], v["ee.tootuskindlustus-tooandja"], v["ee.sotsiaalmaksu-miinimum"], redondear);
     return { kuu, neto: p.neto, tund: v["ee.miinimumpalk-tund"], aastas: redondear(kuu * 12), tooandjaKulu: k.kulu };
   },
   resultado: [

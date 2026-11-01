@@ -1,5 +1,5 @@
 import { definirCasos } from "@/motor/calculo";
-import puhkusetasu from "./puhkusetasu";
+import puhkusetasu from "./puhkusetasu-arvutamine";
 
 const KORD = "https://www.riigiteataja.ee/akt/122052024004";
 

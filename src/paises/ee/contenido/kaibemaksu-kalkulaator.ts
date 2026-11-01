@@ -13,6 +13,7 @@ export default definirContenido({
     "Lisamisel korrutatakse summa määraga.",
     "Eemaldamisel jagatakse summa arvuga, mis on 1 pluss määr sajandikes. Tavamääraga on see 1,24.",
     "Käibemaks on nende kahe summa vahe.",
+    "Kui müüd midagi vähendatud määraga, vali õige määr rippmenüüst. Vale määr annab arvel vale summa, sest erinevus {{ee.kaibemaks[tavamaar]}} ja {{ee.kaibemaks[vahendatud]}} vahel on suur.",
   ],
   ejemplo: [
     "Arve 100 eurot pluss käibemaks tavamääraga: käibemaks 24 eurot, kokku 124 eurot.",
@@ -30,6 +31,14 @@ export default definirContenido({
     {
       pregunta: "Millal tuleb registreerida käibemaksukohustuslaseks?",
       respuesta: "Kui Eestis tekkiv käive ületab kalendriaasta algusest {{ee.kaibemaksu-piir}} (käibemaksuseadus, § 19). Registreerida võib ka vabatahtlikult.",
+    },
+    {
+      pregunta: "Mis määr kehtib, kui kaup pole nimekirjas?",
+      respuesta: "Tavamäär {{ee.kaibemaks[tavamaar]}}. Seadus sätestab, et see kehtib maksustatavale väärtusele alati, kui § 15 ei näe ette muud määra. Hommikusöögi puhul kuulub madalama määra alla ainult majutus koos hommikusöögiga, mitte teenusega kaasnev muu kaup või teenus.",
+    },
+    {
+      pregunta: "Kas käibemaks on hinna sees?",
+      respuesta: "Tarbijale näidatud hind on tavaliselt koos käibemaksuga. Ettevõtete arvetel näidatakse summad eraldi. Kui tead lõpphinda, vali suund „Eemalda käibemaks summast“ ja näed, kui suur on maksu osa.",
     },
   ],
   glosario: [

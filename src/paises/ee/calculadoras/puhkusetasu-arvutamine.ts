@@ -5,7 +5,7 @@ export default definirCalculadora({
   id: "ee.puhkusetasu",
   mercado: "ee",
   concepto: "vacaciones",
-  slug: "puhkusetasu",
+  slug: "puhkusetasu-arvutamine",
   estado: "publicado",
   requiere: { "ee.pohipuhkus": "numero", "ee.pohipuhkus-pikk": "numero" },
   campos: [

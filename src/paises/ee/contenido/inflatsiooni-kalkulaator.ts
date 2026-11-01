@@ -32,6 +32,10 @@ export default definirContenido({
       pregunta: "Kas tulemus on täpne minu ostude kohta?",
       respuesta: "See on keskmine ostukorv. Sinu enda kulud võivad muutuda teisiti, näiteks kui suur osa rahast läheb kodule või toidule.",
     },
+    {
+      pregunta: "Mis seos on THI-l pensioniga?",
+      respuesta: "Pensionide indekseerimisel moodustab 20 protsenti tarbijahinnaindeksi aastane kasv. Ülejäänu tuleb sotsiaalmaksu laekumisest.",
+    },
   ],
   glosario: [
     { termino: "THI", definicion: "Tarbijahinnaindeks: mõõdab tarbekaupade ja teenuste hinna muutust." },

@@ -32,6 +32,10 @@ export default definirContenido({
       pregunta: "Kuidas pensione indekseeritakse?",
       respuesta: "Igal aastal 1. aprilliks: indeks koosneb 20 protsendi ulatuses tarbijahinnaindeksi kasvust ja 80 protsendi ulatuses sotsiaalmaksu pensionikindlustuse osa laekumise kasvust (§ 26).",
     },
+    {
+      pregunta: "Mis vahe on rahvapensionil ja vanaduspensionil?",
+      respuesta: "Vanaduspension sõltub sinu staažist ja osakutest. Rahvapension on kindel summa {{ee.rahvapension}} kuus. See on mõeldud neile, kelle staažist vanaduspensioniks ei piisa.",
+    },
   ],
   glosario: [
     { termino: "Kindlustusosak", definicion: "Sinu sotsiaalmaksu osa jagatud Eesti keskmisega antud aastal." },

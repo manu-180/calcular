@@ -26,7 +26,7 @@ export default definirContenido({
     },
     {
       pregunta: "Kas FIE maksab sotsiaalmaksu ka siis, kui kasumit pole?",
-      respuesta: "Üldjuhul jah: sotsiaalmaksuseaduse § 2 lõike 5 järgi vähemalt kuumäära 12-kordselt summalt. Seaduses on erandid, näiteks pensionärile või isikule, kelle eest kohustus on mujal täidetud. Kalkulaator erandeid ei arvesta.",
+      respuesta: "Üldjuhul jah: sotsiaalmaksuseaduse § 2 lõike 5 järgi vähemalt kuumäära 12-kordselt summalt. Seaduses on erandid, näiteks riikliku pensioni saaja või osalise või puuduva töövõimega isik. Kalkulaator erandeid ei arvesta.",
     },
     {
       pregunta: "Kas FIE võib kasutada ka ettevõtluskontot?",

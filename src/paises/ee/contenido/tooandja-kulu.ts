@@ -22,15 +22,15 @@ export default definirContenido({
   faq: [
     {
       pregunta: "Millal minimaalne sotsiaalmaks ei kehti?",
-      respuesta: "Seadus lubab erandeid, näiteks kui sama isiku eest on kohustus teise tööandja juures juba täidetud või kui töötaja on riikliku pensioni saaja. Vaata sotsiaalmaksuseaduse § 2 ja kontrolli oma juhtum Maksu- ja Tolliametist.",
+      respuesta: "Kui inimene töötab mitme tööandja juures, tasub kuumäärast sotsiaalmaksu see, kes arvestab maksuvaba tulu (sotsiaalmaksuseadus, § 2 lõige 21). Seadus näeb ette ka muid erandeid, nii et kontrolli oma juhtumit Maksu- ja Tolliametist.",
     },
     {
       pregunta: "Mis on sotsiaalmaksu kuumäär?",
       respuesta: "Riigieelarvega igaks aastaks kehtestatud summa, millelt minimaalne kohustus arvutatakse. See ei tohi olla väiksem kui eelneva aasta 1. juulil kehtinud töötasu alammäär (sotsiaalmaksuseadus, § 21).",
     },
     {
-      pregunta: "Kas puhkusetasult ja haigushüvitiselt makstakse samad maksud?",
-      respuesta: "Puhkusetasu on töötasu ja maksustatakse samamoodi. Tööandja makstud haigushüvitiselt peetakse kinni tulumaks, kuid sotsiaalmaksu ja töötuskindlustusmakset nii ei arvestata.",
+      pregunta: "Kas minimaalne kohustus kehtib ka osalise tööajaga?",
+      respuesta: "Üldjuhul jah. Sotsiaalmaksu makstakse kuu eest makstud tasult, kuid mitte vähem kui kuumääralt (§ 2 lõige 2). Seepärast on väike koormus tööandjale suhteliselt kallis.",
     },
   ],
   glosario: [

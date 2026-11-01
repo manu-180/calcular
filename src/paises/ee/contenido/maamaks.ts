@@ -29,7 +29,11 @@ export default definirContenido({
     },
     {
       pregunta: "Kas maamaks võib järsult tõusta?",
-      respuesta: "Seadusel on maamaksu tõusu piirmäär ja omavalitsus saab seda määrata (§ 81). Kalkulaator seda ei arvesta, sest piir sõltub sinu eelmise aasta maksust.",
+      respuesta: "Volikogu kehtestab maamaksu aastase suurenemise piirmäära vahemikus 10 kuni 100 protsenti (§ 81). Kalkulaator seda ei arvesta, sest piir sõltub sinu eelmise aasta maksust.",
+    },
+    {
+      pregunta: "Kes kodualuse maa soodustust saab?",
+      respuesta: "Maa omanik või kasutaja, kelle rahvastikuregistri järgne elukoht on sellel maal asuvas hoones. Soodustus kehtib elamumaa või maatulundusmaa õuemaa kohta. Selle suuruse otsustab volikogu, kuid see ei saa ületada summat {{ee.maamaks-soodustus}} (§ 11).",
     },
   ],
   glosario: [

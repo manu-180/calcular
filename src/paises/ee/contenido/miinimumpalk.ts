@@ -31,6 +31,10 @@ export default definirContenido({
       pregunta: "Kas tööandja võib maksta alammäärast vähem?",
       respuesta: "Ei. Töölepingu seaduse § 29 lõike 6 järgi ei või alammäärast madalamat töötasu maksta. Kollektiivlepinguga võib kokku leppida suurema, aga mitte väiksema tasu.",
     },
+    {
+      pregunta: "Kuidas mõjutab miinimumpalk osalise tööajaga töötajat?",
+      respuesta: "Tunnitasu ei tohi olla väiksem kui {{ee.miinimumpalk-tund}} ja kuusumma on tunnide järgi väiksem. Tööandja maksab sotsiaalmaksu üldjuhul vähemalt kuumäärast, seega on tema kulu kuus suhteliselt suurem.",
+    },
   ],
   glosario: [
     { termino: "Töötasu alammäär", definicion: "Väikseim lubatud töötasu ajaühiku kohta." },

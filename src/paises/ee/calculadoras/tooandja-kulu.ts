@@ -14,7 +14,7 @@ export default definirCalculadora({
   },
   campos: [
     { id: "bruto", tipo: "moneda", etiqueta: "Brutopalk kuus", min: 0, porDefecto: 2000 },
-    { id: "miinimum", tipo: "si-no", etiqueta: "Selle töötaja eest kehtib sotsiaalmaksu minimaalne kohustus", ayuda: "Tavaliselt peamine töökoht. Erandid on seaduses: näiteks pensionär või teine töökoht, mille eest kohustus on juba täidetud.", porDefecto: true },
+    { id: "miinimum", tipo: "si-no", etiqueta: "Selle töötaja eest kehtib sotsiaalmaksu minimaalne kohustus", ayuda: "Mitme töökoha korral kehtib see tööandjal, kes arvestab maksuvaba tulu. Erandid on sotsiaalmaksuseaduses.", porDefecto: true },
     { id: "kuud", tipo: "entero", etiqueta: "Mitme kuu kulu arvutan", min: 1, max: 60, porDefecto: 12 },
   ],
   calcular(e, v, { redondear }) {

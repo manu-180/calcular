@@ -31,6 +31,10 @@ export default definirContenido({
       pregunta: "Kas palgalt peetakse kinni ka töötuskindlustust?",
       respuesta: "Jah. Töötaja makse on {{ee.tootuskindlustus-tootaja}} ja tööandja makse {{ee.tootuskindlustus-tooandja}}. Need on sotsiaalmaksust eraldi maksed, mis lähevad Töötukassale.",
     },
+    {
+      pregunta: "Kes maksab miinimumi, kui mul on mitu tööandjat?",
+      respuesta: "See tööandja, kes arvestab sinu maksuvaba tulu (§ 2 lõige 21). Kui tal on tõend teise tööandja makstud tasu kohta, võib ta tasuda sotsiaalmaksu kuumäära ja selle tasu vahelt, kuid vähemalt summalt, mille ta sulle ise maksis.",
+    },
   ],
   glosario: [
     { termino: "Minimaalne kohustus", definicion: "Väikseim sotsiaalmaks kuus, mis arvutatakse kuumäärast." },

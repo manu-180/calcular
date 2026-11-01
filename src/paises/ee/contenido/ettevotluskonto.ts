@@ -31,6 +31,10 @@ export default definirContenido({
       pregunta: "Kas kulud saab maha arvata?",
       respuesta: "Ei saa. Kui kulud on suured, võib FIE või osaühing tulla odavam. Arvuta võrdluseks ka FIE maksud.",
     },
+    {
+      pregunta: "Kuidas maks jaguneb?",
+      respuesta: "Maksu- ja Tolliamet jagab kinni peetud summa tulumaksuks ja sotsiaalmaksuks ning II samba korral ka pensionimakseks. Sina teed ainult ühe valiku: kas {{ee.ettevotluskonto[0]}}, {{ee.ettevotluskonto[2]}}, {{ee.ettevotluskonto[4]}} või {{ee.ettevotluskonto[6]}}.",
+    },
   ],
   glosario: [
     { termino: "Ettevõtluskonto", definicion: "Pangakonto, kust maks makstakse laekumise pealt automaatselt." },
