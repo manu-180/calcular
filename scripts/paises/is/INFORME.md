@@ -75,7 +75,22 @@ basta leerlo, marcar los tramos como verificados, pasar a `publicado` y agregar 
 | check_ofertas_intl is | OK |
 | check_fronteras | OK |
 | check_eol | OK |
-| check_mundo | 1 falla ajena al país (`be`, Bélgica) |
+| check_motor | OK: 5120 pruebas |
+| check_mundo | `is` no entra mientras esté interno. Con `publicado` local entra: tasa 4,0 / 25,4 / 37,8 %, 12 pagas. 1 falla ajena al país (`be`, Bélgica) |
+
+## Mirada en `next dev`
+
+Con `--webpack` (Turbopack no acepta la junction de node_modules) y `NEXT_PUBLIC_SITIO_INTL_URL`:
+
+- `/is`, `/is/launareiknivel`, `/is/vsk-reiknivel`, `/is/lanareiknivel` (universal) y `/is/novedades` responden 200, con
+  `lang="is-IS"` y marcadores resueltos. `/is/desemberuppbot` da 404, como corresponde a un borrador.
+- **Hallazgo corregido**: Node formatea la corona como `kr.` y Chromium como `ISK`, y la página no hidrataba. Se
+  arregló con `simbolos: { ISK: "kr." }` en `mercado.ts`. Sin error de hidratación después del cambio.
+- **Pedido al motor**: esta diferencia no la ve `check_motor`, que solo corre en Node, y afecta a cualquier mercado
+  en ISK sin `simbolos`, incluida la edición `zz-is`. La afirmación de D34 de que Intl da `kr.` vale para Node.
+- **No verificado**: el cálculo en el navegador. Con webpack falla el cargador de desarrollo (`{}.glob is not a
+  function`, usa un glob de Turbopack), así que no se pudo apretar «Reikna». Las fórmulas sí están cubiertas por los
+  60 casos. Falta mirarlo con `npm ci` real y Turbopack, o en un preview.
 
 ## Riesgos y pendientes
 
@@ -90,4 +105,4 @@ basta leerlo, marcar los tramos como verificados, pasar a `publicado` y agregar 
   calcula tekjutengdar con bótaréttur parcial; ellilifeyrir no reduce heimilisuppbót; drattarvextir es interés
   simple con la tasa vigente; launakostnadur no suma cargas de convenio.
 - **Slugs**: elegidos por criterio, no comprobados en el autocompletar de Google de Islandia (no hay acceso).
-- **Pedidos al motor**: ninguno.
+- **Pedidos al motor**: el de la corona en Chromium, arriba.
