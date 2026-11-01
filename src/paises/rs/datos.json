@@ -1,0 +1,798 @@
+{
+  "mercado": "rs",
+  "datos": [
+    {
+      "id": "rs.minimalna-cena-rada",
+      "nombre": "Minimalna cena rada po radnom času, neto",
+      "tipo": "numero",
+      "unidad": "RSD",
+      "proximaRevision": "2027-09-15",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 371,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Saopštenje od 18. 8. 2026: minimalna cena rada raste sa 371 na 405 dinara od 1. januara",
+            "url": "https://www.mfin.gov.rs/sr/aktivnosti-1/-mali-minimalna-zarada-od-1-januara-bie-600-evra-1",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "hasta": "2027-12-31",
+          "valor": 405,
+          "fuente": {
+            "organismo": "Vlada Republike Srbije",
+            "titulo": "Saopštenje od 20. 8. 2026: Odluka o visini minimalne cene rada za period januar-decembar 2027",
+            "url": "https://www.srbija.gov.rs/vest/994489/vlada-usvojila-predlog-zakona-o-rebalansu-budzeta-za-2026-godinu.php",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.neoporezivi-iznos",
+      "nombre": "Neoporezivi iznos zarade, mesečno",
+      "tipo": "numero",
+      "unidad": "RSD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 34221,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezu na dohodak građana (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 7 Zakona o izmenama, „Sl. glasnik RS“ 109/2025",
+            "url": "https://www.mfin.gov.rs//upload/media/MOq4eO_6aa14ac8c7a47.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 37369,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezu na dohodak građana (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 15a st. 2, „Sl. glasnik RS“ 80/2026, primena od 1. 1. 2027",
+            "url": "https://www.mfin.gov.rs//upload/media/MOq4eO_6aa14ac8c7a47.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.porez-na-zarade",
+      "nombre": "Stopa poreza na zarade",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezu na dohodak građana (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 16",
+            "url": "https://www.mfin.gov.rs//upload/media/MOq4eO_6aa14ac8c7a47.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.pio-zaposleni",
+      "nombre": "Doprinos za PIO na teret zaposlenog",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 44 st. 2",
+            "url": "https://www.mfin.gov.rs//upload/media/c59gCf_6aa14bd2e2c04.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.pio-poslodavac",
+      "nombre": "Doprinos za PIO na teret poslodavca",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 44 st. 2",
+            "url": "https://www.mfin.gov.rs//upload/media/c59gCf_6aa14bd2e2c04.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.zdravstvo",
+      "nombre": "Doprinos za zdravstveno osiguranje (i zaposleni i poslodavac)",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5.15,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 44 st. 2",
+            "url": "https://www.mfin.gov.rs//upload/media/c59gCf_6aa14bd2e2c04.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.nezaposlenost",
+      "nombre": "Doprinos za slučaj nezaposlenosti na teret zaposlenog",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.75,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 44 st. 3",
+            "url": "https://www.mfin.gov.rs//upload/media/c59gCf_6aa14bd2e2c04.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.pio-samostalni",
+      "nombre": "Doprinos za PIO, jedinstvena stopa",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 44 st. 1",
+            "url": "https://www.mfin.gov.rs//upload/media/c59gCf_6aa14bd2e2c04.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.zdravstvo-samostalni",
+      "nombre": "Doprinos za zdravstveno osiguranje, jedinstvena stopa",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10.3,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o doprinosima za obavezno socijalno osiguranje (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 44 st. 1",
+            "url": "https://www.mfin.gov.rs//upload/media/c59gCf_6aa14bd2e2c04.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.najniza-osnovica",
+      "nombre": "Najniža mesečna osnovica doprinosa",
+      "tipo": "numero",
+      "unidad": "RSD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 51297,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Iznos najniže mesečne osnovice doprinosa za 2026, „Sl. glasnik RS“ 112/2025",
+            "url": "https://www.mfin.gov.rs//upload/media/nATlw2_69429ec84247a.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.najvisa-osnovica",
+      "nombre": "Najviša mesečna osnovica doprinosa",
+      "tipo": "numero",
+      "unidad": "RSD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 732820,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Iznos najviše mesečne osnovice doprinosa za 2026, „Sl. glasnik RS“ 112/2025",
+            "url": "https://www.mfin.gov.rs//upload/media/mYTnAm_6942704946245.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.porez-samostalna-delatnost",
+      "nombre": "Stopa poreza na prihode od samostalne delatnosti",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezu na dohodak građana (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 38",
+            "url": "https://www.mfin.gov.rs//upload/media/MOq4eO_6aa14ac8c7a47.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.pausal-limit-prometa",
+      "nombre": "Najveći godišnji promet za paušalno oporezivanje",
+      "tipo": "numero",
+      "unidad": "RSD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6000000,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezu na dohodak građana (prečišćen tekst, do „Sl. glasnik RS“ 80/2026), čl. 40 st. 2 tač. 4",
+            "url": "https://www.mfin.gov.rs//upload/media/MOq4eO_6aa14ac8c7a47.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.pdv-limit-prometa",
+      "nombre": "Granica prometa za malog obveznika PDV",
+      "tipo": "numero",
+      "unidad": "RSD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8000000,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o porezu na dodatu vrednost, čl. 33",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2004/84/4/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.pdv-opsta",
+      "nombre": "Opšta stopa PDV",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o porezu na dodatu vrednost, čl. 23 st. 1",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2004/84/4/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.pdv-posebna",
+      "nombre": "Posebna stopa PDV",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o porezu na dodatu vrednost, čl. 23 st. 2",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2004/84/4/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.prekovremeni-uvecanje",
+      "nombre": "Najmanje uvećanje zarade za prekovremeni rad",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 108 st. 1 tač. 3",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.nocni-uvecanje",
+      "nombre": "Najmanje uvećanje zarade za rad noću",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 26,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 108 st. 1 tač. 2",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.praznik-uvecanje",
+      "nombre": "Najmanje uvećanje zarade za rad na praznik",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 110,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 108 st. 1 tač. 1",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.prekovremeni-limit",
+      "nombre": "Najviše prekovremenog rada nedeljno",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 53 st. 2",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.godisnji-odmor-minimum",
+      "nombre": "Najkraći godišnji odmor",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 69",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.otpremnina-razlomak",
+      "nombre": "Otpremnina za višak: deo zarade po godini rada",
+      "tipo": "numero",
+      "unidad": "factor",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.3333333333333333,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 158 st. 2",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.otpremnina-penzija-zarada",
+      "nombre": "Otpremnina pri odlasku u penziju: broj prosečnih zarada",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 119 st. 1 tač. 1",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.otkazni-zaposleni-min",
+      "nombre": "Otkazni rok kad otkazuje zaposleni, najmanje",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 178 st. 2",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.otkazni-zaposleni-max",
+      "nombre": "Otkazni rok kad otkazuje zaposleni, najviše",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 178 st. 3",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.otkazni-poslodavac-min",
+      "nombre": "Otkazni rok za rezultate rada, najmanje",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 189 st. 1",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.otkazni-poslodavac-max",
+      "nombre": "Otkazni rok za rezultate rada, najviše",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o radu, čl. 189 st. 1",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2005/24/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.bolovanje-bolest",
+      "nombre": "Naknada zarade za bolest ili povredu van rada",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 65,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o zdravstvenom osiguranju, odredbe o visini naknade zarade; Zakon o radu, čl. 115",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2019/25/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.bolovanje-povreda",
+      "nombre": "Naknada zarade za povredu na radu, profesionalnu bolest i održavanje trudnoće",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o zdravstvenom osiguranju, odredbe o visini naknade zarade; Zakon o radu, čl. 115",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2019/25/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.bolovanje-poslodavac-dana",
+      "nombre": "Dani bolovanja koje plaća poslodavac",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Pravno-informacioni sistem RS",
+            "titulo": "Zakon o zdravstvenom osiguranju, odredbe o isplatiocu naknade zarade",
+            "url": "https://pravno-informacioni-sistem.rs/eli/rep/sgrs/skupstina/zakon/2019/25/1/reg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.porodiljsko-gornja-granica",
+      "nombre": "Najviša naknada zarade za porodiljsko, broj prosečnih zarada",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "motivo": "Pet prosečnih zarada piše u tekstu iz 2017 na parlament.gov.rs. Prečišćen tekst Zakona o finansijskoj podršci porodici sa decom nije pročitan, a zakon je menjan posle toga."
+        }
+      ]
+    },
+    {
+      "id": "rs.prenos-apsolutnih-prava",
+      "nombre": "Stopa poreza na prenos apsolutnih prava",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2.5,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezima na imovinu (prečišćen tekst, do „Sl. glasnik RS“ 94/2024), čl. 30",
+            "url": "https://www.mfin.gov.rs//upload/media/bxqPJF_675ab24783517.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.prvi-stan-kupac",
+      "nombre": "Prvi stan: oslobođena površina za kupca",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezima na imovinu (prečišćen tekst, do „Sl. glasnik RS“ 94/2024), čl. 31a st. 1",
+            "url": "https://www.mfin.gov.rs//upload/media/bxqPJF_675ab24783517.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.prvi-stan-clan",
+      "nombre": "Prvi stan: oslobođena površina po članu domaćinstva",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezima na imovinu (prečišćen tekst, do „Sl. glasnik RS“ 94/2024), čl. 31a st. 1",
+            "url": "https://www.mfin.gov.rs//upload/media/bxqPJF_675ab24783517.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.porez-na-imovinu",
+      "nombre": "Najviše stope poreza na imovinu za obveznika koji ne vodi poslovne knjige",
+      "tipo": "escala",
+      "unidad": "RSD",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 10000000,
+              "tasa": 0.4
+            },
+            {
+              "desde": 10000000,
+              "hasta": 25000000,
+              "tasa": 0.6
+            },
+            {
+              "desde": 25000000,
+              "hasta": 50000000,
+              "tasa": 1
+            },
+            {
+              "desde": 50000000,
+              "hasta": null,
+              "tasa": 2
+            }
+          ],
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezima na imovinu (prečišćen tekst, do „Sl. glasnik RS“ 94/2024), čl. 11 st. 1 tač. 3",
+            "url": "https://www.mfin.gov.rs//upload/media/bxqPJF_675ab24783517.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.porez-imovina-knjige",
+      "nombre": "Najviša stopa poreza na imovinu za obveznika koji vodi poslovne knjige",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.4,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezima na imovinu (prečišćen tekst, do „Sl. glasnik RS“ 94/2024), čl. 11 st. 1 tač. 1",
+            "url": "https://www.mfin.gov.rs//upload/media/bxqPJF_675ab24783517.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rs.porez-imovina-zemljiste",
+      "nombre": "Najviša stopa poreza na zemljište bez poslovnih knjiga",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 0.3,
+          "fuente": {
+            "organismo": "Ministarstvo finansija",
+            "titulo": "Zakon o porezima na imovinu (prečišćen tekst, do „Sl. glasnik RS“ 94/2024), čl. 11 st. 1 tač. 2",
+            "url": "https://www.mfin.gov.rs//upload/media/bxqPJF_675ab24783517.docx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    }
+  ]
+}
