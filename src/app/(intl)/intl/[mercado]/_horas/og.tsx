@@ -40,7 +40,8 @@ const ESPERA_FUENTE_MS = 3000;
 // el va con Noto Sans de respaldo: Geist no trae el griego (ADR 0002, D20).
 // Geist no trae hebreo: la edición he pide Noto Sans Hebrew, como las CJK piden su Noto.
 // bg va con Noto Sans de respaldo por si Geist no trae algún glifo del cirílico (ADR 0002, D24).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", bg: "Noto Sans" };
+// Tampoco armenio: la edición hy pide Noto Sans Armenian (ADR 0002, D30).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", bg: "Noto Sans", hy: "Noto Sans Armenian" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 
@@ -117,7 +118,7 @@ interface FilaOg {
 function Ranking({ filas, ancho, tam, t, max, idioma }: { filas: FilaOg[]; ancho: number; tam: number; t: TextosHoras; max: number; idioma: Idioma }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: tam * 0.55, width: ancho }}>
-      <div style={{ display: "flex", fontSize: tam * 0.8, color: SUAVE, textTransform: "uppercase", letterSpacing: 2 }}>
+      <div style={{ display: "flex", fontSize: tam * 0.8, color: SUAVE, textTransform: idioma === "hy" ? "none" : "uppercase", letterSpacing: 2 }}>
         <TextoOg texto={t.og.menos} idioma={idioma} />
       </div>
       {filas.map((f) => (
@@ -331,7 +332,7 @@ function Historia(d: Datos) {
       </div>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, padding: "60px 84px 230px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
-          <div style={{ display: "flex", fontSize: 30, color: SUAVE, textTransform: "uppercase", letterSpacing: 3 }}><TextoOg texto={d.etiquetaRanking} idioma={d.idioma} /></div>
+          <div style={{ display: "flex", fontSize: 30, color: SUAVE, textTransform: d.idioma === "hy" ? "none" : "uppercase", letterSpacing: 3 }}><TextoOg texto={d.etiquetaRanking} idioma={d.idioma} /></div>
           <FilasRedes filas={d.filas.slice(0, 4)} tam={34} max={d.max} />
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -382,7 +383,7 @@ function Cuadrado(d: Datos) {
       </div>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, padding: "40px 72px 48px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div style={{ display: "flex", fontSize: 22, color: SUAVE, textTransform: "uppercase", letterSpacing: 2.5 }}><TextoOg texto={d.etiquetaRanking} idioma={d.idioma} /></div>
+          <div style={{ display: "flex", fontSize: 22, color: SUAVE, textTransform: d.idioma === "hy" ? "none" : "uppercase", letterSpacing: 2.5 }}><TextoOg texto={d.etiquetaRanking} idioma={d.idioma} /></div>
           <FilasRedes filas={d.filas.slice(0, 3)} tam={28} max={d.max} />
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 26 }}>

@@ -164,6 +164,19 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
   },
   // Búlgaro: un solo registro, el de ДСК y НАП (2.ª del plural, «Вие», «Ви», «Вашият» con mayúscula;
   // ADR 0002, D24). Se atrapa el «ти» y sus formas, y el pronombre de cortesía con minúscula.
+  // Armenio: un solo registro, el de ՊԵԿ, Ամերիաբանկ y Ակբա բանկ (Դուք, Ձեր, Ձեզ con mayúscula e imperativo
+  // cortés; ADR 0002, D30). Se atrapa la segunda del singular y el pronombre cortés con minúscula.
+  hy: {
+    informal: [
+      { re: palabrasHy("դու|քո|քեզ|քեզնից|քեզանից|քոնը"), nombre: "«դու» (va «Դուք», «Ձեր»)" },
+      {
+        re: palabrasHy("մուտքագրիր|ընտրիր|հաշվիր|հաշվարկիր|սեղմիր|ստուգիր|փորձիր|նայիր|տես|լրացրու|համեմատիր|ներբեռնիր|պատճենիր|կիսվիր|իմացիր|գրիր|ավելացրու|գնիր|ունես|գիտես|կարող ես|ուզում ես|վճարում ես|ստանում ես|աշխատում ես"),
+        nombre: "segunda del singular (va la forma cortés: «մուտքագրեք», «ընտրեք», «ունեք»)",
+      },
+      { re: palabrasHy("դուք|ձեր|ձեզ|ձեզնից|ձերը", "u"), nombre: "pronombre cortés con minúscula (va «Դուք», «Ձեր», «Ձեզ»)" },
+    ],
+    formal: [],
+  },
   bg: {
     informal: [
       { re: palabras("ти|теб|тебе|твой|твоя|твоят|твоята|твоето|твоите|твои"), nombre: "«ти»" },
@@ -314,6 +327,41 @@ function reglasUz(texto: string): string[] {
 // Búlgaro (ADR 0002, D24): sin ы, э ni ё; letras de otros alfabetos cirílicos fuera; comillas „ “;
 // «във» delante de в/ф y «със» delante de с/з; y las palabras que delatan un texto copiado del ruso.
 const RUSISMOS_BG = palabras("зарплата|зарплаты|сумма|суммы|расчет|рассчитать|также|который|которая|которые|будет|если|только|можно|это|что|для");
+// Armenio oriental en ortografía reformada de Armenia (ADR 0002, D30). «։» como punto final, nunca «.» ni
+// «:» detrás de una palabra armenia (lo que presenta un valor va con «՝»: «Ամսաթիվ՝ {fecha}»; se toleran las
+// abreviaturas «թ.» de la fecha de Intl y «հազ.»); «՞» y «՛» sobre la vocal, nunca «?» ni «!»; comillas «».
+// Sin plural detrás de un número («3 օր»), sin sufijo pegado a una cifra o marcador, sin formas clásicas
+// («իւ», «եւ», «-ութիւն», «ոյ» final) ni del armenio occidental («կը», «մը», «պիտի»).
+const HY = String.raw`\p{sc=Armenian}`;
+const FIN_HY = String.raw`(?![\u0531-\u0587])`;
+const PLURAL_TRAS_NUMERO_HY = new RegExp(String.raw`\d\s+(?:օրեր|ամիսներ|տարիներ|ժամեր|շաբաթներ|րոպեներ|երկրներ|հաշվիչներ|դրամներ|դոլարներ|եվրոներ|տոկոսներ|մարդիկ|անձինք|կիլոմետրեր|լիտրեր|մետրեր|կիլոգրամներ|կալորիաներ|վճարումներ)(?:ի|ում|ով|ից|ը|ն)?${FIN_HY}`, "u");
+const SUFIJO_TRAS_CIFRA_HY = new RegExp(String.raw`(?:\d|%|\}|֏)-?(?:ում|ից|ով|ին|ի|ը|ն|ու|րդ|երորդ)${FIN_HY}`, "u");
+const MEZCLA_HY = new RegExp(String.raw`[\u0531-\u0587][a-zA-Z\u0400-\u04FF]|[a-zA-Z\u0400-\u04FF][\u0531-\u0587]`, "u");
+const PUNTO_HY = new RegExp(String.raw`(?<!(?<![\u0531-\u0587])(?:թ|հազ))(?<=[\u0531-\u0587])\.(?=\s|$|["»)])`, "u");
+const CLASICO_HY = /իւ|եւ|ութիւն|ոյ(?![\u0531-\u0587])/u;
+const OCCIDENTAL_HY = new RegExp(String.raw`(?<![\u0531-\u0587])(?:կը|մը|պիտի)${FIN_HY}`, "u");
+
+function palabrasHy(lista: string, banderas = "iu"): RegExp {
+  return new RegExp(String.raw`(?<![\u0531-\u0587\u0561-\u0587])(?:${lista})(?![\u0531-\u0587])`, banderas);
+}
+
+function reglasHy(texto: string): string[] {
+  const p: string[] = [];
+  if (/[?!\u037E\uFF01\uFF1F]/u.test(texto) && new RegExp(HY, "u").test(texto)) p.push("«?» o «!»: en armenio van «՞» y «՛» sobre la vocal");
+  if (/[^աեէըիոօւԱԵԷԸԻՈՕ]\u055E/u.test(texto)) p.push("«՞» que no está sobre una vocal");
+  if (/[^աեէըիոօւԱԵԷԸԻՈՕ]\u055B/u.test(texto)) p.push("«՛» que no está sobre una vocal");
+  if (PUNTO_HY.test(texto)) p.push("punto latino: el punto final armenio es «։»");
+  if (/\d\.(?:\s|$)/u.test(texto) && new RegExp(HY, "u").test(texto)) p.push("punto latino detrás de una cifra: el punto final armenio es «։»");
+  if (new RegExp(String.raw`[\u0531-\u0587]:`, "u").test(texto)) p.push("«:» detrás de una palabra armenia (va «՝» o «։»)");
+  if (/[„“”]/.test(texto) || new RegExp(String.raw`"[\u0531-\u0587]|[\u0531-\u0587]"`, "u").test(texto)) p.push("comillas: en armenio van « »");
+  if (CLASICO_HY.test(texto)) p.push("ortografía clásica (va la reformada de Armenia)");
+  if (OCCIDENTAL_HY.test(texto)) p.push("armenio occidental («կը», «մը», «պիտի»)");
+  if (MEZCLA_HY.test(texto)) p.push("palabra que mezcla letras armenias con latinas o cirílicas");
+  if (PLURAL_TRAS_NUMERO_HY.test(texto)) p.push("plural detrás de un número (en armenio va en singular: «3 օր»)");
+  if (SUFIJO_TRAS_CIFRA_HY.test(texto)) p.push("sufijo pegado a una cifra o marcador (va con una palabra delante o tras «՝»)");
+  return p;
+}
+
 function reglasBg(texto: string): string[] {
   const p: string[] = [];
   if (/[ыэёЫЭЁ]/.test(texto)) p.push("«ы», «э» o «ё»: no existen en búlgaro");
@@ -613,5 +661,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "hu") p.push(...reglasHu(texto));
   if (idioma === "sr") p.push(...reglasSr(texto, locale));
   if (idioma === "bg") p.push(...reglasBg(texto));
+  if (idioma === "hy") p.push(...reglasHy(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

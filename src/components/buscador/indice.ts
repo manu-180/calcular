@@ -33,7 +33,11 @@ export function normalizar(texto: string): string {
     // como letra: sin esto «кредит», «δάνειο» o «משכנתא» quedaban vacíos. La sigma final se busca como la otra: quien escribe «μισθ» o «μισθος» encuentra
     // «Μισθός».
     .replace(/ς/g, "σ")
-    .replace(/[^a-z0-9Ѐ-ӿͰ-Ͽ֐-׿؀-ۿঀ-৿฀-๿]+/g, " ")
+    // Armenio (ADR 0002, D30): las letras cuentan, «և» se busca como «եվ» y los signos que van sobre la
+    // vocal o después de la palabra («՞», «՛», «՜», «՝», «՚») no parten la palabra: «ինչպե՞ս» es «ինչպես».
+    .replace(/և/g, "եվ")
+    .replace(/[\u055A-\u055F]/g, "")
+    .replace(/[^a-z0-9Ѐ-ӿͰ-Ͽ֐-׿؀-ۿঀ-৿฀-๿\u0531-\u0587]+/g, " ")
     .trim();
 }
 

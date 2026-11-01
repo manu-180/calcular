@@ -81,9 +81,9 @@ function plano(s: string): string {
 function resaltar(titulo: string, q: string): ReactNode {
   const base = plano(titulo);
   const marcas: Array<[number, number]> = [];
-  for (const t of new Set(plano(q).split(/[^a-z0-9\u0400-\u04ffͰ-Ͽ]+/).filter((x) => x.length >= 2))) {
+  for (const t of new Set(plano(q).split(/[^a-z0-9\u0400-\u04ffͰ-Ͽ\u0531-\u0587]+/).filter((x) => x.length >= 2))) {
     let i = base.indexOf(t);
-    while (i > 0 && /[a-z0-9\u0400-\u04ffͰ-Ͽ]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
+    while (i > 0 && /[a-z0-9\u0400-\u04ffͰ-Ͽ\u0531-\u0587]/.test(base[i - 1])) i = base.indexOf(t, i + 1);
     if (i >= 0) marcas.push([i, i + t.length]);
   }
   if (!marcas.length) return titulo;

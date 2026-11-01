@@ -18,8 +18,13 @@ const SIN_ANCHO = /[\p{Mn}\p{Me}‌‍]/u;
 const MEDIO = /\p{Mc}/u;
 const BENGALI_RODEA = /[োৌ]/u;
 
+// Armenio (ADR 0002, D30), medido con GDI a 20 px en Sylfaen, Segoe UI, Arial y Noto Sans Armenian: una
+// letra ocupa 1,3 latinas (11,5 a 12,5 px contra 8,5 a 9,7). Con .length un título de 60 letras se cortaba.
+const ARMENIO = /\p{sc=Armenian}/u;
+
 function anchoDe(c: string): number {
   if (SIN_ANCHO.test(c)) return 0;
+  if (ARMENIO.test(c)) return 1.3;
   if (BENGALI.test(c)) {
     if (BENGALI_RODEA.test(c)) return 1.5;
     return MEDIO.test(c) ? 0.5 : 1.5;
