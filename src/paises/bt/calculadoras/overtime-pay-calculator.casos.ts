@@ -1,7 +1,7 @@
 import { definirCasos } from "@/motor/calculo";
 import calculadora from "./overtime-pay-calculator";
 
-const ACT = "https://lpr.adb.org/sites/default/files/resource/%5Bnid%5D/bhutan-labour-and-employement-act-2007-english.pdf" as const;
+const ACT = "https://www.moice.gov.bt/wp-content/uploads/2022/08/labouract.pdf" as const;
 
 export default definirCasos(calculadora, [
   {

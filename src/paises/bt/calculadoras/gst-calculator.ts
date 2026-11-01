@@ -1,14 +1,14 @@
 import { definirCalculadora, ErrorEntrada, porcentaje } from "@/motor/calculo";
 
-// Borrador: la tasa de GST (5 % desde el 1/1/2026) no se pudo leer en la ley ni en el DRC (ver datos.json).
 export default definirCalculadora({
   id: "bt.gst-calculator",
   mercado: "bt",
   concepto: "iva",
   slug: "gst-calculator",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "bt.gst-rate": "numero",
+    "bt.gst-threshold": "numero",
   },
   campos: [
     {

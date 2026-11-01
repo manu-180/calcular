@@ -1,12 +1,11 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
 
-// Borrador: la paridad 1:1 con la rupia india no se pudo leer en una página del RMA (ver datos.json).
 export default definirCalculadora({
   id: "bt.ngultrum-to-rupee",
   mercado: "bt",
-  concepto: "tipo-de-cambio",
+  concepto: "propio",
   slug: "ngultrum-to-rupee",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "bt.inr-per-btn": "numero",
   },
