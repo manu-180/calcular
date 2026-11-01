@@ -1,5 +1,5 @@
 import { definirCalculadora, ErrorEntrada } from "@/motor/calculo";
-import { CAMPOS_ENTITET, obracunaj, REQUIERE_PLATA } from "../lib/plata";
+import { CAMPO_REGION, CAMPO_SPREMA, obracunaj, REQUIERE_PLATA } from "../lib/plata";
 
 export default definirCalculadora({
   id: "ba.doprinosi",
@@ -8,7 +8,7 @@ export default definirCalculadora({
   slug: "doprinosi",
   estado: "publicado",
   requiere: REQUIERE_PLATA,
-  campos: [{ id: "bruto", tipo: "moneda", etiqueta: "Mjesečna bruto plata", min: 0, porDefecto: 2000 }, ...CAMPOS_ENTITET],
+  campos: [{ id: "bruto", tipo: "moneda", etiqueta: "Mjesečna bruto plata", min: 0, porDefecto: 2000 }, CAMPO_REGION, CAMPO_SPREMA],
   calcular(e, v, { redondear }) {
     if (e.bruto <= 0) throw new ErrorEntrada("Unesite bruto platu veću od nule.", "bruto");
     const o = obracunaj(e.bruto, { ...e, faktor: 1, izdrzavani: 0 }, v, redondear);

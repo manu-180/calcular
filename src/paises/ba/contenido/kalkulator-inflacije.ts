@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Kalkulator inflacije {{anio}}: indeks cijena {{ba.ipc}}",
   description: "Preračunajte stari iznos po indeksu potrošačkih cijena u RS, koji je {{ba.ipc}} (2015 = 100). Vidite koliko vam danas treba za istu kupovnu moć.",
   intro: [
-    "Indeks potrošačkih cijena u Republici Srpskoj, s bazom 2015 = 100, iznosi {{ba.ipc}} za mjesec {{ba.ipc#desde}}. Računamo s njim, jer je to jedini mjesečni indeks s bazom koji smo mogli pročitati u službenom izvoru.",
+    "Indeks potrošačkih cijena u Republici Srpskoj, s bazom 2015 = 100 i datumom {{ba.ipc#desde}} iznosi {{ba.ipc}}. Računamo s njim, jer je to jedini mjesečni indeks s bazom koji smo mogli pročitati u službenom izvoru.",
     "Agencija za statistiku BiH nije bila dostupna pri provjeri, a Federalni zavod na početnoj stranici daje mjesečnu i godišnju promjenu. Zato kalkulator pokazuje kretanje u RS i dobar je samo kao procjena za cijelu zemlju.",
   ],
   comoSeCalcula: [

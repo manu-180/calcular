@@ -1100,7 +1100,7 @@
       "id": "ba.kurs-eur",
       "nombre": "Kurs konvertibilne marke prema euru",
       "tipo": "numero",
-      "unidad": "numero",
+      "unidad": "BAM",
       "tramos": [
         {
           "estado": "verificado",

@@ -6,7 +6,7 @@ export default definirContenido({
   title: "Minimalna plata {{anio}}: {{ba.minimalna-fbih}} FBiH, {{ba.minimalna-rs-neto[osnovna]}} RS",
   description: "Najniža neto plata je {{ba.minimalna-fbih}} u FBiH i od {{ba.minimalna-rs-neto[osnovna]}} u RS, po spremi. Pogledajte bruto iznos i trošak poslodavca po entitetu.",
   intro: [
-    "Bosna i Hercegovina nema jednu minimalnu platu. U Federaciji BiH najniža plata od {{ba.minimalna-fbih#desde}} je {{ba.minimalna-fbih}} neto, za sve poslove. U Republici Srpskoj iznos zavisi od obrazovanja koje posao traži: od {{ba.minimalna-rs-neto[osnovna]}} do {{ba.minimalna-rs-neto[visoka]}} neto.",
+    "Bosna i Hercegovina nema jednu minimalnu platu. U Federaciji BiH najniža plata je {{ba.minimalna-fbih}} neto, za sve poslove (datum primjene: {{ba.minimalna-fbih#desde}}). U Republici Srpskoj iznos zavisi od obrazovanja koje posao traži: od {{ba.minimalna-rs-neto[osnovna]}} do {{ba.minimalna-rs-neto[visoka]}} neto.",
     "Izaberite entitet, a za RS i obrazovanje, pa ćete vidjeti neto, bruto i šta to znači za poslodavca.",
   ],
   comoSeCalcula: [

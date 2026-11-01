@@ -3,11 +3,11 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ba.kursna-lista",
   h1: "Kursna lista {{anio}}: euro, dolar i franak u KM",
-  title: "Kursna lista {{anio}}: 1 euro je {{ba.kurs-eur}} KM",
-  description: "Euro vrijedi tačno {{ba.kurs-eur}} KM, a dolar {{ba.usd}}. Pretvorite EUR, USD, GBP, CHF ili RSD u KM po srednjem kursu Centralne banke.",
+  title: "Kursna lista {{anio}}: 1 euro je {{ba.kurs-eur}}",
+  description: "Euro vrijedi tačno {{ba.kurs-eur}}, a dolar {{ba.usd}}. Pretvorite EUR, USD, GBP, CHF ili RSD u KM po srednjem kursu Centralne banke.",
   intro: [
-    "Konvertibilna marka je vezana za euro. Kurs Centralne banke BiH je fiksan, {{ba.kurs-eur}} KM za jedan euro, pa se ne mijenja iz dana u dan.",
-    "Ostali kursevi kreću se s eurom na svjetskom tržištu. Na listi od {{ba.usd#desde}} dolar je {{ba.usd}}, funta {{ba.gbp}} i franak {{ba.chf}}.",
+    "Konvertibilna marka je vezana za euro. Kurs Centralne banke BiH je fiksan, {{ba.kurs-eur}} za jedan euro, pa se ne mijenja iz dana u dan.",
+    "Ostali kursevi kreću se s eurom na svjetskom tržištu. Na zadnjoj unesenoj listi (datum: {{ba.usd#desde}}) dolar je {{ba.usd}}, funta {{ba.gbp}} i franak {{ba.chf}}.",
   ],
   comoSeCalcula: [
     "Iz valute u KM: iznos puta srednji kurs. Iz KM u valutu: iznos podijeljen srednjim kursom.",
@@ -21,7 +21,7 @@ export default definirContenido({
   faq: [
     {
       pregunta: "Da li se kurs eura mijenja?",
-      respuesta: "Na kursnoj listi CBBiH euro ima isti kupovni, srednji i prodajni kurs: {{ba.kurs-eur}} KM. Ostale valute imaju tri različita broja, koja se mijenjaju svakog radnog dana.",
+      respuesta: "Na kursnoj listi CBBiH euro ima isti kupovni, srednji i prodajni kurs: {{ba.kurs-eur}}. Ostale valute imaju tri različita broja, koja se mijenjaju svakog radnog dana.",
     },
     {
       pregunta: "Kada izlazi nova lista?",

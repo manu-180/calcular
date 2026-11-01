@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "ba.otpremnina",
   h1: "Otpremnina {{anio}}: najmanji iznos po zakonu o radu",
   title: "Otpremnina {{anio}}: trećina plate za svaku godinu rada",
-  description: "Otpremnina je najmanje trećina prosječne plate po godini rada, najviše {{ba.otpremnina-tope@fbih}} plata, poslije {{ba.otpremnina-godine@fbih}} godine rada. Obračun za FBiH i RS.",
+  description: "Otpremnina je najmanje trećina prosječne plate po godini rada, najviše {{ba.otpremnina-tope@fbih}} plata, poslije {{ba.otpremnina-godine@fbih}} rada. Obračun za FBiH i RS.",
   intro: [
     "Ako vam poslodavac otkaže ugovor na neodređeno vrijeme nakon najmanje {{ba.otpremnina-godine@fbih}} neprekidnog rada, imate pravo na otpremninu. U oba entiteta minimum je jedna trećina prosječne plate za svaku navršenu godinu.",
     "Gornja granica je {{ba.otpremnina-tope@fbih}} prosječnih plata iz zadnja tri mjeseca, a u RS je osnova neto plata. Kolektivni ugovor ili ugovor o radu mogu odrediti više u okviru te granice.",
