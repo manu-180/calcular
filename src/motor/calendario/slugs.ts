@@ -34,4 +34,5 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   hu: "fizetesi-naptar",
   he: "luach-maskorot",
   sr: "kalendar-isplata",
+  bg: "raboten-kalendar",
 };

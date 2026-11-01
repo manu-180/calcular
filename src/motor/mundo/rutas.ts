@@ -13,6 +13,8 @@ export const SLUG_MUNDO: Record<Idioma, string> = {
   ja: "sekai-no-kyuyo",
   ko: "segye-yeonbong",
   zh: "shijie-gongzi",
+  bg: "zaplatata-po-sveta",
+
   pl: "wynagrodzenie-na-swiecie",
   sv: "lon-i-varlden",
   da: "lon-i-verden",

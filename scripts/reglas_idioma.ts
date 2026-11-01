@@ -162,6 +162,17 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Búlgaro: un solo registro, el de ДСК y НАП (2.ª del plural, «Вие», «Ви», «Вашият» con mayúscula;
+  // ADR 0002, D24). Se atrapa el «ти» y sus formas, y el pronombre de cortesía con minúscula.
+  bg: {
+    informal: [
+      { re: palabras("ти|теб|тебе|твой|твоя|твоят|твоята|твоето|твоите|твои"), nombre: "«ти»" },
+      { re: /(?:^|[.?!:]\s+)(?:въведи|избери|изчисли|провери|сравни|разбери|попълни|натисни|виж|опитай|купи|изтегли|започни|отвори|плати|покажи|скрий|затвори|потърси|копирай|сподели|добави|запази|продължи|върни|нулирай|напиши|изпрати|научи|пробвай|получи|влез|кликни|прегледай|изчисти|прочети|използвай|поръчай)(?!\p{L})/iu, nombre: "imperativo de «ти» (va -ете/-йте)" },
+      { re: palabras("можеш|искаш|знаеш|получаваш|плащаш|печелиш|работиш|спестяваш|имаш"), nombre: "2.ª del singular" },
+      { re: /(?<!\p{L})(?:вие|ви|ваш|ваша|ваше|ваши|вашия|вашият|вашата|вашето|вашите)(?!\p{L})/u, nombre: "pronombre de cortesía con minúscula (va «Вие», «Ви», «Вашият»)" },
+    ],
+    formal: [],
+  },
   // Ruso: un solo registro, el de Kaspi, Halyk, egov.kz y Сбер («вы» con minúscula y el imperativo
   // cortés; ADR 0002, D17). Se atrapa el «ты» (pronombre y posesivos), los imperativos y presentes de
   // segunda del singular que aparecen en un formulario y el «Вы» con mayúscula a mitad de oración,
@@ -300,6 +311,21 @@ function reglasUz(texto: string): string[] {
 // Ruso: comillas «», sin «ё» (se escribe «е», como en la mayoría de los sitios de servicio; ADR 0002,
 // D17) y sin letras de otros alfabetos cirílicos (ucraniano і, ї, є, ґ; kazajo ә, ғ, қ, ң, ө, ұ, ү,
 // һ; bielorruso ў), que delatan un texto copiado de otra lengua.
+// Búlgaro (ADR 0002, D24): sin ы, э ni ё; letras de otros alfabetos cirílicos fuera; comillas „ “;
+// «във» delante de в/ф y «със» delante de с/з; y las palabras que delatan un texto copiado del ruso.
+const RUSISMOS_BG = palabras("зарплата|зарплаты|сумма|суммы|расчет|рассчитать|также|который|которая|которые|будет|если|только|можно|это|что|для");
+function reglasBg(texto: string): string[] {
+  const p: string[] = [];
+  if (/[ыэёЫЭЁ]/.test(texto)) p.push("«ы», «э» o «ё»: no existen en búlgaro");
+  if (/[іїєґўІЇЄҐЎ]/.test(texto)) p.push("letra de otro alfabeto cirílico en un texto búlgaro");
+  if (/[«»]|"(?=\p{sc=Cyrillic})|(?<=\p{sc=Cyrillic}[.,?:;]?)"/u.test(texto)) p.push("comillas: en búlgaro van „ “");
+  if (/(?<!\p{L})[Вв] [ВвФф]\p{L}/u.test(texto)) p.push("delante de в o ф va «във»");
+  if (/(?<!\p{L})[Сс] [СсЗз]\p{L}/u.test(texto)) p.push("delante de с o з va «със»");
+  const r = RUSISMOS_BG.exec(texto);
+  if (r) p.push(`«${r[0]}» es ruso, no búlgaro`);
+  return p;
+}
+
 function reglasRu(texto: string): string[] {
   const p: string[] = [];
   if (/[ёЁ]/.test(texto)) p.push("«ё»: en ruso se escribe «е» (ADR 0002, D17)");
@@ -586,5 +612,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "el") p.push(...reglasEl(texto));
   if (idioma === "hu") p.push(...reglasHu(texto));
   if (idioma === "sr") p.push(...reglasSr(texto, locale));
+  if (idioma === "bg") p.push(...reglasBg(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

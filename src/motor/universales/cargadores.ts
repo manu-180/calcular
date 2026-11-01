@@ -18,6 +18,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./ahorro-retiro/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./ahorro-retiro/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./ahorro-retiro/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./ahorro-retiro/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./ahorro-retiro/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./ahorro-retiro/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -52,6 +53,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./alquilar-o-comprar/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./alquilar-o-comprar/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./alquilar-o-comprar/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./alquilar-o-comprar/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./alquilar-o-comprar/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./alquilar-o-comprar/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -86,6 +88,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./aumento-de-sueldo/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./aumento-de-sueldo/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./aumento-de-sueldo/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./aumento-de-sueldo/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./aumento-de-sueldo/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./aumento-de-sueldo/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -120,6 +123,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./calorias/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./calorias/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./calorias/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./calorias/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./calorias/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./calorias/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -154,6 +158,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./ceramicos/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./ceramicos/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./ceramicos/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./ceramicos/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./ceramicos/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./ceramicos/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -188,6 +193,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./combustible/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./combustible/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./combustible/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./combustible/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./combustible/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./combustible/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -222,6 +228,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./consumo-electrico/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./consumo-electrico/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./consumo-electrico/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./consumo-electrico/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./consumo-electrico/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./consumo-electrico/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -256,6 +263,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./conversor-sueldo/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./conversor-sueldo/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./conversor-sueldo/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./conversor-sueldo/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./conversor-sueldo/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./conversor-sueldo/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -290,6 +298,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./costo-de-un-auto/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./costo-de-un-auto/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./costo-de-un-auto/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./costo-de-un-auto/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./costo-de-un-auto/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./costo-de-un-auto/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -324,6 +333,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./descuento/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./descuento/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./descuento/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./descuento/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./descuento/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./descuento/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -358,6 +368,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./dias-entre-fechas/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./dias-entre-fechas/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./dias-entre-fechas/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./dias-entre-fechas/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./dias-entre-fechas/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./dias-entre-fechas/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -392,6 +403,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./dividir-gastos/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./dividir-gastos/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./dividir-gastos/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./dividir-gastos/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./dividir-gastos/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./dividir-gastos/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -426,6 +438,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./edad/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./edad/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./edad/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./edad/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./edad/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./edad/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -460,6 +473,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./fecha-de-parto/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./fecha-de-parto/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./fecha-de-parto/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./fecha-de-parto/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./fecha-de-parto/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./fecha-de-parto/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -494,6 +508,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./fondo-de-emergencia/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./fondo-de-emergencia/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./fondo-de-emergencia/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./fondo-de-emergencia/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./fondo-de-emergencia/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./fondo-de-emergencia/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -528,6 +543,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./hipoteca/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./hipoteca/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./hipoteca/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./hipoteca/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./hipoteca/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./hipoteca/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -562,6 +578,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./horas-trabajadas/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./horas-trabajadas/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./horas-trabajadas/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./horas-trabajadas/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./horas-trabajadas/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./horas-trabajadas/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -596,6 +613,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./hormigon/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./hormigon/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./hormigon/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./hormigon/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./hormigon/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./hormigon/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -630,6 +648,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./imc/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./imc/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./imc/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./imc/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./imc/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./imc/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -664,6 +683,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./interes-compuesto/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./interes-compuesto/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./interes-compuesto/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./interes-compuesto/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./interes-compuesto/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./interes-compuesto/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -698,6 +718,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./interes-simple/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./interes-simple/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./interes-simple/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./interes-simple/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./interes-simple/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./interes-simple/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -732,6 +753,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./iva/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./iva/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./iva/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./iva/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./iva/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./iva/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -766,6 +788,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./margen-de-ganancia/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./margen-de-ganancia/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./margen-de-ganancia/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./margen-de-ganancia/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./margen-de-ganancia/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./margen-de-ganancia/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -800,6 +823,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./meta-de-ahorro/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./meta-de-ahorro/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./meta-de-ahorro/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./meta-de-ahorro/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./meta-de-ahorro/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./meta-de-ahorro/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -834,6 +858,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./metros-cuadrados/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./metros-cuadrados/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./metros-cuadrados/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./metros-cuadrados/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./metros-cuadrados/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./metros-cuadrados/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -868,6 +893,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./ovulacion/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./ovulacion/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./ovulacion/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./ovulacion/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./ovulacion/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./ovulacion/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -902,6 +928,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./pintura/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./pintura/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./pintura/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./pintura/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./pintura/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./pintura/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -936,6 +963,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./porcentaje/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./porcentaje/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./porcentaje/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./porcentaje/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./porcentaje/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./porcentaje/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -970,6 +998,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./prestamo/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./prestamo/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./prestamo/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./prestamo/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./prestamo/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./prestamo/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1004,6 +1033,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./presupuesto/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./presupuesto/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./presupuesto/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./presupuesto/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./presupuesto/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./presupuesto/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1038,6 +1068,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./promedio/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./promedio/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./promedio/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./promedio/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./promedio/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./promedio/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1072,6 +1103,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./propina/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./propina/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./propina/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./propina/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./propina/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./propina/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1106,6 +1138,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./punto-de-equilibrio/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./punto-de-equilibrio/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./punto-de-equilibrio/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./punto-de-equilibrio/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./punto-de-equilibrio/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./punto-de-equilibrio/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1140,6 +1173,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./regla-de-tres/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./regla-de-tres/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./regla-de-tres/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./regla-de-tres/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./regla-de-tres/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./regla-de-tres/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1174,6 +1208,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./rendimiento-inversion/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./rendimiento-inversion/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./rendimiento-inversion/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./rendimiento-inversion/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./rendimiento-inversion/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./rendimiento-inversion/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1208,6 +1243,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./ritmo-de-carrera/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./ritmo-de-carrera/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./ritmo-de-carrera/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./ritmo-de-carrera/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./ritmo-de-carrera/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./ritmo-de-carrera/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1242,6 +1278,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./sumar-dias/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./sumar-dias/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./sumar-dias/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./sumar-dias/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./sumar-dias/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./sumar-dias/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1276,6 +1313,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./tarifa-freelance/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./tarifa-freelance/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./tarifa-freelance/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./tarifa-freelance/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./tarifa-freelance/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./tarifa-freelance/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1310,6 +1348,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./tarjeta-de-credito/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./tarjeta-de-credito/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./tarjeta-de-credito/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./tarjeta-de-credito/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./tarjeta-de-credito/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./tarjeta-de-credito/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1344,6 +1383,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./tasa-efectiva/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./tasa-efectiva/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./tasa-efectiva/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./tasa-efectiva/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./tasa-efectiva/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./tasa-efectiva/textos/da").then((m) => m.textosDa as TextosUi<never>),
@@ -1378,6 +1418,7 @@ const CARGADORES: Readonly<Record<string, CargadorUniversal>> = {
     definir: () => import("./variacion-porcentual/definicion").then((m) => m.definir as Definir),
     textos: {
       "ar": () => import("./variacion-porcentual/textos/ar").then((m) => m.textosAr as TextosUi<never>),
+      "bg": () => import("./variacion-porcentual/textos/bg").then((m) => m.textosBg as TextosUi<never>),
       "bn": () => import("./variacion-porcentual/textos/bn").then((m) => m.textosBn as TextosUi<never>),
       "cs": () => import("./variacion-porcentual/textos/cs").then((m) => m.textosCs as TextosUi<never>),
       "da": () => import("./variacion-porcentual/textos/da").then((m) => m.textosDa as TextosUi<never>),

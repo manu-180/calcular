@@ -226,6 +226,12 @@ const parseos: [string, string, number | null][] = [
   ["el-GR", "24%", 24],
   // Húngaro: miles con espacio (U+00A0, y sin espacio con cuatro cifras, como lo da Intl: «1234,5»),
   // decimal con coma y «Ft» detrás.
+  // Búlgaro: miles con espacio, decimal con coma y € detrás (Bulgaria en el euro desde el 1/1/2026).
+  ["bg-BG", "1 234,50", 1234.5],
+  ["bg-BG", "1234,5", 1234.5],
+  ["bg-BG", "1 500 000 €", 1500000],
+  ["bg-BG", "-250,75", -250.75],
+  ["bg-BG", "20 %", 20],
   ["hu-HU", "1 234,50", 1234.5],
   ["hu-HU", "1234,5", 1234.5],
   ["hu-HU", "1 500 000 Ft", 1500000],
@@ -281,6 +287,8 @@ const ambiguos: [string, string, number | null][] = [
   ["cs-CZ", "5,000", null],
   ["el-GR", "5.000", 5000],
   ["el-GR", "5,000", null],
+  ["bg-BG", "5 000", 5000],
+  ["bg-BG", "5,000", null],
   ["hu-HU", "5 000", 5000],
   ["hu-HU", "5,000", null],
   ["sr-Latn-RS", "5.000", 5000],
@@ -623,8 +631,8 @@ if (zzEn) {
   const trad = zzEn.calculadoras.find((c) => c.definicion.slug === "half-year-bonus");
   igual("edición: traducción con id y origen", [trad?.definicion.id, trad?.traduccion], ["zz-en.bono", { mercado: "zz", archivo: "bono", id: "zz.bono" }]);
   verdad("edición: universales en inglés", zzEn.calculadoras.some((c) => esUniversal(c) && c.definicion.slug === "loan"));
-  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus"]);
-  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr"]);
+  igual("edición: hermanas de zz/bono", registroReal.hermanas("zz", "bono", () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`), ["zz/bono", "zz-en/half-year-bonus", "zz-ja/half-year-bonus", "zz-pl/premia-polroczna", "zz-sv/halvarsbonus", "zz-da/halvaarsbonus", "zz-nb/halvarsbonus", "zz-fi/puolivuotisbonus", "zz-ar/half-year-bonus", "zz-id/bonus-semesteran", "zz-tr/yariyil-ikramiyesi", "zz-bn/half-year-bonus", "zz-th/half-year-bonus", "zz-uk/pivrichna-premiia", "zz-uz/yarim-yillik-mukofot", "zz-ru/polugodovaya-premiya", "zz-ro/prima-semestriala", "zz-cs/pololetni-premie", "zz-el/examiniaio-epidoma", "zz-hu/felevi-premium", "zz-he/half-year-bonus", "zz-sr/polugodisnji-bonus", "zz-bg/polugodishen-bonus"]);
+  igual("edición: ediciones de zz", registroReal.ediciones("zz", "interno").map((m) => m.codigo), ["zz", "zz-en", "zz-ja", "zz-pl", "zz-sv", "zz-da", "zz-nb", "zz-fi", "zz-ar", "zz-id", "zz-tr", "zz-bn", "zz-th", "zz-uk", "zz-uz", "zz-ru", "zz-ro", "zz-cs", "zz-el", "zz-hu", "zz-he", "zz-sr", "zz-bg"]);
   igual("edición: nunca en producción", registroReal.ediciones("zz", "produccion").length, 0);
   const pEn = registroReal.pagina("zz-en", "half-year-bonus", "2026-10-15", "interno");
   verdad("edición: página resuelta con marcadores de los datos del país", Boolean(pEn) && pEn!.contenido.faq[0].respuesta.includes("1,100") && pEn!.contenido.faq[0].respuesta.includes("1 October 2026"), pEn?.contenido.faq[0].respuesta);
@@ -825,6 +833,10 @@ igual("gramática griega: nombre", ["Ελλάδα", "Καναδάς", "Περο�
 // Mayúsculas sostenidas sin tono: lo hace toLocaleUpperCase("el") (toUpperCase() los deja).
 igual("mayúsculas griegas sin tono", "Υπολογισμός μισθού".toLocaleUpperCase("el"), "ΥΠΟΛΟΓΙΣΜΟΣ ΜΙΣΘΟΥ");
 // Húngaro: sin plural detrás del número («3 nap», «1,5 év») y moneda con «Ft» detrás, sin decimales.
+igual("unidades en búlgaro", [1, 3].flatMap((n) => [formatearValorUnidad(n, "dias", "bg-BG"), formatearValorUnidad(n, "horas", "bg-BG"), formatearValorUnidad(n, "anios", "bg-BG")]), ["1 ден", "1 час", "1 година", "3 дни", "3 часа", "3 години"]);
+igual("euro en Bulgaria", formatearMoneda(1234.5, "bg-BG", "EUR").replace(/\s/g, " "), "1234,50 €");
+igual("gramática búlgara: en", ["България", "Германия", "Франция", "Виетнам", "Съединени щати", "Малдиви", "Бахамски острови", "Филипини"].map(GRAMATICA.bg.en), ["в България", "в Германия", "във Франция", "във Виетнам", "в Съединените щати", "на Малдивите", "на Бахамските острови", "във Филипините"]);
+igual("gramática búlgara: de y para", [GRAMATICA.bg.de("Обединени арабски емирства"), GRAMATICA.bg.para("България"), GRAMATICA.bg.para("Доминиканска република")], ["на Обединените арабски емирства", "за България", "за Доминиканската република"]);
 igual("unidades en húngaro", [formatearValorUnidad(3, "dias", "hu-HU"), formatearValorUnidad(1, "anios", "hu-HU"), formatearValorUnidad(1.5, "anios", "hu-HU")], ["3 nap", "1 év", "1,5 év"]);
 igual("forint", formatearMoneda(1234567, "hu-HU", "HUF").replace(/\s/g, " "), "1 234 567 Ft");
 igual("fecha larga en húngaro", formatearFecha("2026-10-24", "hu-HU"), "2026. október 24.");
