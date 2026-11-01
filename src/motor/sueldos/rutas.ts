@@ -18,6 +18,7 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   mn: "bodit-tsalin",
   hy: "irakan-ashkhatavardzer",
   sl: "dejanske-place",
+  et: "tegelikud-palgad",
 
   pl: "prawdziwe-zarobki",
   sv: "verkliga-loner",

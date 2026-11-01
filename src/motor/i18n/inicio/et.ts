@@ -1,0 +1,87 @@
+import { GRAMATICA } from "../gramatica";
+import type { Diccionario } from "../resolver";
+import type { TextosInicio } from "./tipos";
+
+const g = GRAMATICA.et;
+
+const base: TextosInicio = {
+  arranque: {
+    estasEn: (pais) => `Oled ${g.en(pais)}`,
+    resumen: (calculadoras) => `${calculadoras} kehtivate ametlike väärtustega.`,
+    ultimoDato: "Viimati laaditud väärtus",
+    ir: (pais) => `${g.de(pais)} kalkulaatorid`,
+    otro: "Vali teine riik",
+    argentina: "Sinu kalkulaatorid on aadressil calcular.ar, Argentina ametlike numbritega.",
+    argentinaIr: "Mine aadressile calcular.ar",
+    neutroTitulo: (paises) => `${paises} riiki, igaühel oma seadused ja oma valuuta`,
+    neutroTexto: "Vaatame ametlikud allikad iga päev üle.",
+    neutroIr: "Vaata riike",
+  },
+  selector: {
+    buscar: "Otsi riiki",
+    sinResultados: (q) => `Otsingule „${q}“ ei leitud ühtegi riiki`,
+    ubicacion: "Praegune asukoht",
+    mismaCalculadora: "Sama kalkulaator",
+    paises: "Riigid",
+  },
+  aviso: { mismaCalculadora: (pais) => `Arvuta ${g.de(pais)} numbritega` },
+  vivo: {
+    titulo: "Ametlikud numbrid, mis uuenevad ise",
+    vigilado: "Automaatne protsess vaatab ametlikud allikad iga päev üle. Muutunud reeglid lisatakse pärast kontrollimist.",
+    sinVigilar: "Iga väärtuse juures on näha ametlik allikas ja päev, mil me seda kontrollisime.",
+    verificado: "Reeglite viimane kontroll",
+    automatico: "Viimane automaatne väärtus",
+    fuentes: "Ametlikud allikad",
+    nFuentes: (n) => (Number(n) === 1 ? "1 ametlik dokument" : `${n} ametlikku dokumenti`),
+    verFuentes: "Vaata allikaid",
+    verNovedades: "Vaata muudatusi",
+    hoy: "täna",
+    ayer: "eile",
+    elDia: (fecha) => `${fecha}`,
+    actualizadoSerie: (serie, cuando) => `${serie}, ${cuando}`,
+  },
+  sello: {
+    verificado: (fecha) => `Numbrid on võetud ametlikust allikast. Kontrollitud: ${fecha}.`,
+    serie: (serie, cuando, organismo) => `${serie} (uuendatud: ${cuando}). Viimase väärtuse allikas: ${organismo}.`,
+    diario: "Vaatame ametlikud allikad iga päev automaatselt üle.",
+    actualizado: "Uuendatud",
+  },
+  novedades: {
+    pildora: "Muudatused",
+    titulo: (pais) => `Mis on ${g.de(pais)} ametlikes numbrites muutunud`,
+    acento: "samal päeval, kui muudatus tuleb",
+    bajada: "Kirjutame siia iga uue väärtuse, mis kalkulaatoritesse jõuab: mis muutus, millest alates see kehtib ja kust see tuleb.",
+    ultimoCambio: "Viimane muudatus",
+    revision: "Allikate kontroll",
+    diaria: "Iga päev",
+    porNorma: "Iga uue reegli puhul",
+    siguiendo: "Allikad, mida jälgime",
+    masOrganismos: (n) => `ja veel ${n}`,
+    proximos: "Avaldatud, jõustub peagi",
+    proximosTexto: "Ametlikud väärtused, mis on juba laaditud ja jõustuvad lähipäevil.",
+    registro: "Muudatuste logi",
+    rss: "Jälgi RSS-i kaudu",
+    vacio: "Selle riigi kohta pole veel muudatusi kirja pandud.",
+    etiqueta: { editorial: "Reegel", dato: "Uus väärtus", proximo: "Jõustub peagi", serie: "Automaatne", revision: "Kontroll" },
+    rige: (fecha) => `Kehtib alates: ${fecha}`,
+    rigeDesdeHasta: (desde, hasta) => `Kehtib alates: ${desde}. Kehtib kuni: ${hasta}`,
+    antes: (valor, fecha) => `Varem: ${valor} (${fecha})`,
+    revisados: (n) => (Number(n) === 1 ? "Kontrollisime ametlikust allikast 1 väärtuse" : `Kontrollisime ametlikust allikast ${n} väärtust`),
+    revisadosTexto: (organismos) => `Kehtivad väärtused on kinnitatud. Allikas: ${organismos}.`,
+    verDatos: (n) => (Number(n) === 1 ? "Vaata väärtust" : `Vaata kõiki ${n} väärtust`),
+    calculadoras: "Kalkulaatorid, mis seda kasutavad",
+    rango: (min, max, zonas) => `${min} kuni ${max} olenevalt piirkonnast (${zonas} piirkonda)`,
+    tabla: (filas) => `tabel (astmeid: ${filas})`,
+    valores: (n) => (Number(n) === 1 ? "1 väärtus" : `${n} väärtust`),
+    pasosTitulo: "Nii hoiame numbrid ajakohasena",
+    pasos: [
+      { titulo: "Ametiasutus avaldab", texto: "Määrus, indeks või valuutakurss ilmub ametlikku allikasse." },
+      { titulo: "Kontrollime enne kasutamist", texto: "Indeksid ja valuutakursid tulevad automaatselt ning nende mõistlikkust kontrollitakse. Reeglid lisame koos ametliku dokumendiga." },
+      { titulo: "Kalkulaatorid uuenevad", texto: "Kalkulaatorid kasutavad uut väärtust ja muudatus on siin koos allikaga näha." },
+    ],
+    feedTitulo: (pais) => `CalcularYa: muudatused ${g.en(pais)}`,
+    feedSubtitulo: (pais) => `Muudatused ametlikes numbrites, millel ${g.de(pais)} kalkulaatorid põhinevad, koos jõustumise kuupäeva ja allikaga.`,
+  },
+};
+
+export const et: Diccionario<TextosInicio> = { base };

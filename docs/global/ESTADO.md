@@ -106,6 +106,16 @@ Fuentes oficiales: fu.gov.si, gov.si, pisrs.si y bsi.si abren desde este entorno
 agente de país.
 - Falta para publicar Eslovenia: el país en sí, con datos verificados, y revisión por hablante nativo.
 
+## 01/11/2026 · Motor estonio (`claude/mundo-motor-et`, ADR 0002 D33)
+
+`et` entra en `IDIOMAS` e `IDIOMAS_VENTA` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo
+en el mundo» (`palk-maailmas`), rankings (`riikide-vordlus`), horas de trabajo (`tootunnid`), calendario
+(`palgakalender`), «Sueldos reales» (`tegelikud-palgad`), venta completa y las 41 universales con slug ASCII propio.
+Registro «sina» con imperativo de segunda del singular, mercados con `trato: "tu"`, formato `1 234,50 €`. Plurales
+one/other con partitivo singular y declinación del país (`GRAMATICA.et`). Edición de prueba `zz-et` (interna, `et-001`).
+Estonia será el mercado `ee`; `et` como mercado sigue siendo Etiopía.
+- Falta para publicar Estonia: el país en sí, con datos verificados, y revisión por hablante nativo.
+
 ## 01/11/2026 · Tanda 4 de países: rs, me, bg, tj, bt (`claude/paises-tanda-4`)
 
 Publicados: Serbia (rs), Montenegro (me), Bulgaria (bg), Tayikistán (tj) y Bután (bt), detrás de cn. Los cinco

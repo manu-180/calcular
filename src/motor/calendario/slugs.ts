@@ -42,4 +42,5 @@ export const SLUG_CALENDARIO: Record<Idioma, string> = {
   mn: "ajlyn-khuanli",
   hy: "ashkhatankayin-oratsuyts",
   sl: "koledar-plac",
+  et: "palgakalender",
 };

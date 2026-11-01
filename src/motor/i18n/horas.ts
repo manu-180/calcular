@@ -4144,7 +4144,112 @@ const sl: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl };
+// ───────────────────────────── et ─────────────────────────────
+
+// Estonio (ADR 0002, D33): {en} llega en caso de lugar y con mayúscula («Eestis», «Maltal»), {producto}
+// en nominativo y {horas} con la unidad en partitivo («12 tundi»). Las fechas y montos van tras dos puntos.
+const et: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Mitu töötundi see maksab?",
+    seo: {
+      titulo: ["Mitu töötundi maksab iPhone {en}", "iPhone töötundides {en}", "Mitu töötundi see maksab?"],
+      tituloGlobal: ["Mitu töötundi maksab iPhone eri riikides", "Mitu töötundi see maksab?"],
+      tituloProducto: ["Mitu töötundi maksab {producto} {en}", "{producto} töötundides {en}", "Mitu töötundi maksab {producto}"],
+      tituloProductoGlobal: ["Mitu töötundi maksab {producto} eri riikides", "Mitu töötundi maksab {producto}"],
+      descripcion: "iPhone, MacBook või Spotify miinimumpalga töötundides {en} ja {n} riigis. Ametlikud hinnad ja iga arvu allikas.",
+      descripcionGlobal: "iPhone, MacBook või Spotify miinimumpalga töötundides {n} riigis. Ametlikud hinnad ja iga arvu allikas.",
+      descripcionProducto: "{en} maksab {producto} {horas} tööd miinimumpalga eest. Võrdluses on {n} riiki koos ametlike hindade ja allikatega.",
+      descripcionProductoGlobal: "Mitu tundi tööd miinimumpalga eest maksab {producto} {n} riigis. Ametliku poe hinnad ja iga arvu allikas.",
+    },
+    ceja: "Indeks, {mes}",
+    h1: "Mitu töötundi see maksab?",
+    h1Producto: "Mitu töötundi maksab {producto}?",
+    bajada: "Sama toote ametlik hind, arvutatud miinimumpalga töötundideks {n} riigis.",
+    form: { producto: "Toode", pais: "Riik", porMes: "kuus" },
+    heroe: {
+      antes: "{en} maksab {producto}",
+      despues: "tööd miinimumpalga eest",
+      despuesMes: "tööd miinimumpalga eest iga kuu",
+      jornadaUno: "{n} kaheksatunnine tööpäev",
+      jornadaOtras: "{n} kaheksatunnist tööpäeva",
+      precio: "Ametlik hind: {precio}",
+      salario: "Miinimumpalk tunnis: {monto}",
+      sinPrecio: "{en} seda toodet ametlikus poes ei müüda.",
+      mejor: "{en} kulub selleks {horas}.",
+      mejorPropio: "Üheski võrdluse riigis ei kulu selleks vähem tööd.",
+      puesto: "Koht {p}/{total}",
+      escalaHoras: "Üks ruut on üks töötund",
+      escalaSemanas: "Üks ruut on 40-tunnine töönädal",
+      masDeUnAnio: "Üle aasta tööd",
+    },
+    ranking: {
+      titulo: "Riikide kaupa",
+      bajada: "Väikseimast tundide arvust suurimani. Iga hind on tootja ametlik hind selles riigis.",
+      lista: "Riigid töötundide järgi",
+      verTodos: "Näita kõiki {n} riiki",
+      verMenos: "Näita vähem",
+      elegido: "Valitud",
+      sinPrecio: "{n} võrdluse riigi kohta andmeid pole, sest toodet ei müüda seal ametlikus poes.",
+      horas: "Tunnid",
+      precio: "Ametlik hind",
+    },
+    compartir: {
+      titulo: "Jagatav kaart",
+      bajada: "Sellel on ainult avalikud andmed: ametlik hind ja miinimumpalga töötunnid.",
+      boton: "Jaga kaarti",
+      descargar: "Laadi alla loo jaoks",
+      copiado: "Link kopeeritud.",
+      compartido: "Valmis, jagatud.",
+      error: "Jagamine seekord ei õnnestunud.",
+      texto: "{en} maksab {producto} {horas} tööd miinimumpalga eest. Aga teistes riikides?",
+      alt: "Kaardi eelvaade",
+    },
+    metodo: {
+      titulo: "Kuidas me arvutame",
+      estimacion: "Tunnid = ametlik hind ÷ miinimumpalk tunnis. Võrdlus puudutab ametlikke hindu, see ei ole ostupakkumine.",
+      supuestos: [
+        "Hind on tootja ametliku poe loeteluhind kõige odavama mudeli kohta, loetud iga riigi lehelt.",
+        "Spotify Premium on ühe inimese kuutellimus ilma tutvumispakkumisteta.",
+        "Miinimumpalk on täna kehtiv üldine tase täistööajaga täiskasvanud töötajale. Kui tasemeid on valdkonna või piirkonna järgi mitu, kasutatakse peamise majanduspiirkonna jaekaubanduse taset.",
+        "Kui seadus määrab miinimumpalga kuu või päeva kohta, arvutatakse see tundideks riigi seadusliku töönädala järgi.",
+        "Hispaanias ja Portugalis makstakse miinimumpalka 14 korda aastas: see jagatakse 12 kuu peale, nagu teeb Eurostat.",
+        "Kui pood esitab arve USA dollarites, arvutatakse hind ümber riigi ametliku vahetuskursiga.",
+        "Tööpäev on kõigis riikides 8 tundi, et päevad oleksid võrreldavad.",
+      ],
+      fuentesTitulo: "Iga arvu allikas",
+      fuentesBajada: "Iga riigi miinimumpalk, töönädala pikkus, poest loetud hinnad ja iga lugemise kuupäev.",
+      salario: "Miinimumpalk",
+      jornada: "Töönädal",
+      precio: "Hind",
+      cambio: "Vahetuskurss",
+      consultado: "Vaadatud: {fecha}",
+      verificado: "Kontrollitud: {fecha}",
+      verFuente: "Vaata allikat",
+      sello: "Esimene hinnalugemine: {desde}. Viimane: {hasta}. Üle 120 päeva vanust hinda enam ei näidata.",
+      conversion: {
+        hora: "Seadus määrab tunnipalga.",
+        mes: "Kuupalk × 12 ÷ 52 nädalat ÷ {h} tundi nädalas.",
+        mesPagas: "Kuupalk × {p} väljamakset ÷ 52 nädalat ÷ {h} tundi nädalas.",
+        anio: "Aastapalk ÷ 52 nädalat ÷ {h} tundi nädalas.",
+        semana: "Nädalapalk ÷ {h} tundi.",
+        dia: "Päevapalk ÷ {h} tundi tööpäevas.",
+        diaPagado: "Päevapalk × {d} tasustatud päeva ÷ {h} tundi nädalas.",
+        divisor: "Kuupalk ÷ {d}, seadusega määratud tunnijagaja.",
+      },
+    },
+    faqTitulo: "Korduma kippuvad küsimused",
+    faq: [
+      { pregunta: "Kuidas tunnid arvutatakse?", respuesta: "Toote ametlik hind jagatakse riigi miinimumpalgaga tunnis. Kui seadus määrab miinimumpalga kuu või päeva kohta, arvutatakse see tundideks riigi seadusliku töönädala järgi." },
+      { pregunta: "Miks just miinimumpalk?", respuesta: "See on palk, mille seadus määrab peaaegu igas riigis, ja seda saab kontrollida ametlikust allikast. Keskmist palka mõõdetakse riigiti eri moodi, nii et see ei ole samamoodi võrreldav." },
+      { pregunta: "Kas hinnad sisaldavad makse?", respuesta: "Hind on ametliku poe loeteluhind igas riigis. USA-s ja Kanadas ei sisalda see müügimaksu ning teistes riikides võib pood makse kassas lisada." },
+      { pregunta: "Miks mõni riik puudub?", respuesta: "Võrdluses on ainult riigid, millel on kontrollitud ja kehtiv miinimumpalk ning ametlikust poest loetud hind. Kui ametlikku veebipoodi pole, pole ka toote kohta andmeid. Edasimüüjate hindu ei kasutata kunagi." },
+      { pregunta: "Kui sageli andmed uuenevad?", respuesta: "Hinnad loetakse iga riigi poest ja need aeguvad 120 päevaga: vanemat hinda enam ei näidata. Miinimumpalk tuleb iga riigi ametlikest andmetest ja muutub koos seadusega." },
+    ],
+    og: { de: "tööd miinimumpalga eest", deMes: "tööd miinimumpalga eest kuus", generica: "Mitu töötundi maksab {producto}?", genericaBajada: "Ametlik hind miinimumpalga tundides {n} riigis", menos: "Kõige vähem tunde", cta: "Kõik riigid aadressil" },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

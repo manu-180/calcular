@@ -6844,7 +6844,162 @@ const sl: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl };
+// ───────────────────────────── et ─────────────────────────────
+
+// «Sina», como LHV y Swedbank: imperativo de 2.ª singular. Solo base.
+// GRAMATICA.et: `de` es el genitivo que va delante del sustantivo, `en` el caso de lugar completo.
+// Las fechas van tras dos puntos porque Intl las da en nominativo y «kuni» pediría otro caso.
+const gEt = GRAMATICA.et;
+const SEO_ET = "Maksuvabaduse päev ja netopalk maailmas";
+const paevadEt = (n: number) => (n === 1 ? "1 päev" : `${n} päeva`);
+
+const et: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Sinu palk maailmas",
+    seo: {
+      titulo: (pais) => [`${SEO_ET} | ${pais}`, SEO_ET, "Sinu palk maailmas"],
+      tituloGlobal: [SEO_ET, "Sinu palk maailmas"],
+      descripcion: (pais, n) => `Vaata, millise kuupäevani töötad oma palgaga ${gEt.en(pais)} riigi heaks ja kui palju jääb kätte ${n} riigis. Tasuta ja ilma kontota.`,
+      descripcionGlobal: (n) => `Vaata, millise kuupäevani töötad riigi heaks ja kui palju jääb palgast kätte ${n} riigis. Tasuta ja ilma kontota.`,
+    },
+    ceja: "Sinu maksuvabaduse päev",
+    h1: "Millise kuupäevani töötad igal aastal riigi heaks?",
+    bajada: (n) => `Sisesta oma brutopalk ja vaata oma kuupäeva. Seejärel võrdle seda ${n} riigiga sama ostujõu ja iga riigi reeglite järgi.`,
+    form: {
+      titulo: "Sinu palk",
+      sueldo: "Brutopalk",
+      mes: "Kuus",
+      anio: "Aastas",
+      periodo: "Palgaperiood",
+      pais: "Riik, kus töötad",
+      ejemplo: "Näide",
+      ejemploAyuda: "See on näidispalk. Sisesta oma palk ja kõik arvutatakse kohe ümber.",
+      propio: "Võetud sinu arvutusest.",
+      invalido: "Sisesta nullist suurem summa.",
+      pagas: "Sinu kuupalk palgateatise järgi: lisame sellele seadusega ette nähtud lisapalgad. Netopalk on 12 kuu keskmine.",
+    },
+    heroe: {
+      hasta: (fecha) => `Töötad riigi heaks selle kuupäevani: ${fecha}`,
+      tasa: (pct) => `Sinu palgast läheb ${pct} tulumaksuks ja maksedeks.`,
+      dias: (n, total) => `${paevadEt(n)} ${total} päevast`,
+      enMano: "Kätte jääb",
+      porMes: "kuus",
+      anio: (anio, n, total) => `${anio}. aastal riigile ${paevadEt(n)} ${total} päevast.`,
+      resto: "Järgmisest päevast alates on kõik, mida teenid, sinu oma.",
+    },
+    ranking: {
+      titulo: "Sama palk eri riikides",
+      bajada: "Sama ostujõu juures jääb igas riigis kätte nii palju. Iga rida tuleb selle riigi ametlikust kalkulaatorist. Palk on igal pool sama: muutuvad ainult maksud ja maksed, mitte riigi tegelikud palgad.",
+      lista: "Riigid netopalga järgi",
+      buscar: "Otsi riiki",
+      filtrar: "Filtreeri piirkonna järgi",
+      todas: "Kõik riigid",
+      regiones: { americas: "Ameerika", europa: "Euroopa", asia: "Aasia ja Okeaania", africa: "Aafrika ja Lähis-Ida" },
+      tuPais: "Sinu riik",
+      mejor: "Madalaim maksukoormus",
+      enMano: "Neto kuus",
+      enTuMoneda: "Sinu valuutas",
+      vsTuPais: "Võrreldes sinu riigiga",
+      verTodos: (n) => `Näita kõiki ${n} riiki`,
+      verMenos: "Näita vähem",
+      sinResultados: (q) => `Otsingule „${q}“ ei leitud ühtegi riiki.`,
+      abrir: (pais) => `Ava ${gEt.de(pais)} kalkulaator`,
+      mas: (pct) => `${pct} rohkem`,
+      menos: (pct) => `${pct} vähem`,
+      igual: "Sama",
+      puesto: (p, total) => `Sinu riik on ${total} riigi seas ${p}. kohal.`,
+    },
+    tarjeta: {
+      titulo: "Sinu jagatav kaart",
+      bajada: "Sellel on sinu kuupäev ja protsent. Mitte kunagi see, kui palju teenid.",
+      hasta: (fecha) => `Töötan riigi heaks selle kuupäevani: ${fecha}`,
+      tasa: (pct) => `Minu palgast läheb ${pct} riigile`,
+      mejor: (pais, pct) => `Sama palgaga maksaksin ${gEt.en(pais)} vähem makse: ${pct} rohkem kätte`,
+      mejorPropio: (pais) => `Minu palgaga ei jää kusagil rohkem kätte kui ${gEt.en(pais)}`,
+      yVos: "Aga sina?",
+      cta: "Arvuta oma kuupäev:",
+      generica: "Millise kuupäevani töötad riigi heaks?",
+      genericaBajada: (n) => `Sinu palk ${n} riigis, iga riigi ametliku kalkulaatoriga`,
+      compartir: "Jaga minu kaarti",
+      compartirDuelo: "Esita vastuväljakutse",
+      descargar: "Laadi pilt alla",
+      copiado: "Link on kopeeritud. Kleebi see, kuhu soovid.",
+      compartido: "Valmis, jagatud.",
+      error: "Jagamine ei õnnestunud. Proovi uuesti.",
+      texto: (fecha) => `Töötan riigi heaks selle kuupäevani: ${fecha}. Aga sina?`,
+      alt: "Sinu kaardi eelvaade",
+    },
+    duelo: {
+      amigo: (fecha) => `Sinu sõber töötab riigi heaks selle kuupäevani: ${fecha}.`,
+      yVos: "Aga sina?",
+      invitacion: "Sisesta oma palk ja võrdle.",
+      vos: "Sina",
+      elAmigo: "Sinu sõber",
+      dia: "Maksuvabaduse päev",
+      tasa: "Maksud ja maksed",
+      mejorPais: "Madalaim maksukoormus",
+      antes: (d) => (d === 1 ? "Saad vabaks ühe päeva varem kui su sõber." : `Saad vabaks ${d} päeva varem kui su sõber.`),
+      despues: (d) => (d === 1 ? "Su sõber saab vabaks ühe päeva varem kui sina." : `Su sõber saab vabaks ${d} päeva varem kui sina.`),
+      empate: "Mõlemad saavad vabaks samal päeval.",
+      desde: (pais) => `Töötab ${gEt.en(pais)}`,
+    },
+    cero: { dia: "null päeva", heroeAntes: "Riigi heaks töötad", tarjetaAntes: "Riigi heaks töötan", motivo: "Selle palga pealt ei peeta kinni tulumaksu ega makseid.", texto: "Sel aastal ei tööta ma ühtegi päeva riigi heaks. Aga sina?", amigo: "Sinu sõber ei tööta ühtegi päeva riigi heaks." },
+    metodo: {
+      titulo: "Kuidas me arvutame",
+      estimacion: "See on hinnang riikide võrdlemiseks, mitte palgateatis. Mahaarvamised, lapsed või preemiad võivad sinu numbrit muuta.",
+      supuestos: [
+        "Arvutus tehakse üksi elavale lasteta inimesele, iga riigi kalkulaatori vaikeväärtustega.",
+        "Netopalk on see, mis jääb järele pärast tulumaksu ja inimese enda tasutavaid makseid. Käibemaksu ja tööandja osa arvesse ei võeta.",
+        "Kolmeteistkümnes palk või kohustuslik puhkuseraha jaotatakse kogu aastale iga riigi seaduse järgi.",
+        "Ameerika Ühendriikides ei arvestata osariigi ega kohalikke makse: ainult föderaalmaksu ja makseid.",
+        "Sinu palk viiakse teise riiki ostujõu pariteedi (PPP) järgi: sama elatustase, mitte päevane valuutakurss.",
+        "Argentina ostujõu pariteeti uuendatakse INDECi hinnaindeksiga, sest Maailmapank avaldab seda ainult 2021. aastani.",
+        "Maksuvabaduse päev jaotab sinu maksukoormuse alates 1. jaanuarist. Kui 30% palgast läheb riigile, töötad 30% aastast riigi heaks.",
+      ],
+      ppaTitulo: "Ostujõu pariteet", bancoMundial: "Maailmapank",
+      ppa: (organismo, indicador, anio) => `${organismo}, näitaja ${indicador}, viimane saadaolev aasta: ${anio}.`,
+      consultado: (fecha) => `Vaadatud: ${fecha}.`,
+      verFuente: "Vaata allikat",
+      fuentesTitulo: "Iga riigi allikas",
+      fuentesBajada: "Iga rida kasutab selle riigi enda netopalga kalkulaatorit ja ametlikke andmeid.",
+      verificado: (fecha) => `Andmed kontrollitud: ${fecha}`,
+      sello: (fecha) => `Ametlikud andmed, kontrollitud iga riigi allikast. Vanim kontroll: ${fecha}.`,
+    },
+    faqTitulo: "Korduma kippuvad küsimused",
+    faq: (n) => [
+      {
+        pregunta: "Mis on maksuvabaduse päev?",
+        respuesta:
+          "See on aasta päev, mil sinu maksud ja maksed oleksid tasutud, kui kõik 1. jaanuarist alates teenitu läheks kõigepealt riigile. Siin arvutame selle sinu palga, mitte riigi keskmise põhjal.",
+      },
+      {
+        pregunta: "Miks võrreldakse ostujõu järgi?",
+        respuesta: "Valuutakursi järgi näib sama palk olenevalt päevast tohutu või tilluke. Ostujõu pariteet võrdleb seda, mida raha eest igas riigis tegelikult saab.",
+      },
+      {
+        pregunta: "Kas minu palk salvestatakse?",
+        respuesta: "Ei. Arvutus tehakse sinu brauseris. Jagatud kaardil on ainult kuupäevad, protsendid ja riigid.",
+      },
+      {
+        pregunta: "Miks on minu tegelik netopalk teistsugune?",
+        respuesta:
+          "Arvutame üksi elavale lasteta inimesele ja vaikeväärtustega. Mahaarvamised, preemiad või erikorrad muudavad numbrit. Täpse olukorra jaoks ava oma riigi kalkulaator.",
+      },
+      {
+        pregunta: "Millised riigid on kaasatud?",
+        respuesta: `Praegu ${n} riiki, igaühel oma netopalga kalkulaator ja ametlikud andmed. Lisame riike siis, kui oleme nende reeglid üle kontrollinud.`,
+      },
+    ],
+    destacado: {
+      ceja: "Ülemaailmne võrdlus",
+      titulo: "Millise kuupäevani töötad riigi heaks?",
+      texto: "Sisesta oma palk ja vaata, kui palju jääb kätte teistes riikides.",
+      ir: "Arvuta minu kuupäev",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

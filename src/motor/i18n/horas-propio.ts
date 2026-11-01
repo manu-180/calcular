@@ -800,6 +800,27 @@ export const DICCIONARIOS_HORAS_PROPIO: Diccionarios<TextosHorasPropio> = {
     texto: "{en} me {producto} stane {horas} dela. Kaj pa v drugih državah?",
     og: { antes: "{en} z mojo plačo", producto: "me {producto} stane", de: "dela", deMes: "dela na mesec", otros: "Enaka raven plače:", cta: "Koliko ur dela je to?" },
   }),
+  // Estonio (ADR 0002, D33): {en} llega en caso de lugar («Eestis»); {horas} en nominativo tras «maksab».
+  et: base({
+    titulo: "Sama arvutus päris palgaga",
+    bajada: "Kui sisestad oma brutokuupalga, arvutatakse tunnid selle järgi, mitte miinimumpalga järgi. Summa jääb sellesse brauserisse: see ei jõua kunagi linki ega pilti.",
+    campo: "Brutopalk kuus",
+    ayuda: "Valuuta: {moneda}. Enne mahaarvamisi.",
+    traido: "Toodud palgakalkulaatorist.",
+    invalido: "Summa peab olema suurem kui null.",
+    vacio: "Tunnid ilmuvad, kui oled palga sisestanud.",
+    antes: "{en} maksab {producto} selle palgaga",
+    despues: "tööd",
+    despuesMes: "tööd igas kuus",
+    minimo: "Miinimumpalgaga: {horas}.",
+    veces: "Miinimumpalk korda {x}",
+    rankingTitulo: "Sama palgatase igas riigis",
+    rankingBajada: "Iga riigi miinimumpalk korda {x}, töötundideks arvutatuna.",
+    tarjetaTitulo: "Kaart minu tundidega",
+    tarjetaBajada: "Näitab ainult tunde ja riike. Palka mitte kunagi.",
+    texto: "{en} maksab {producto} mulle {horas} tööd. Aga teistes riikides?",
+    og: { antes: "{en} minu palgaga", producto: "{producto} maksab mulle", de: "tööd", deMes: "tööd kuus", otros: "Sama palgatase:", cta: "Mitu tundi see maksab?" },
+  }),
 };
 
 export function textosHorasPropio(idioma: Idioma, trato: Trato, locale?: string): TextosHorasPropio {

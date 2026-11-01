@@ -681,6 +681,23 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Oglejte si, koliko neto bi vam ostalo v več državah (število držav: ${n})`,
     },
   },
+  // Estonio (ADR 0002, D33): «sina».
+  et: {
+    base: {
+      boton: "Jaga",
+      botonAria: "Jaga seda kalkulaatorit",
+      menuTitulo: "Jaga kanalis",
+      copiar: "Kopeeri link",
+      copiado: "Link on kopeeritud",
+      compartido: "Jagatud",
+      errorCorto: "Kopeerimine ei õnnestunud",
+      errorAyuda: "Linki ei õnnestunud kopeerida. Kopeeri see brauseri aadressiribalt.",
+      nuevaPestana: "avaneb uuel vahelehel",
+      mensaje: (nombre) => `${nombre}. Tasuta ja arvutus on minutiga valmis.`,
+      puenteIntro: "Aga teistes riikides?",
+      puenteEnlace: (n) => `Vaata, kui palju netopalka jääb rohkem kui ${n} riigis`,
+    },
+  },
 };
 
 export function textosCompartir(idioma: Idioma, trato: Trato, locale?: string): TextosCompartir {

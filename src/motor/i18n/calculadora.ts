@@ -408,6 +408,16 @@ export const DICCIONARIOS_CALCULADORA: Diccionarios<TextosCalculadora> = {
       fuenteDelAviso: "Vir",
     },
   },
+  et: {
+    base: {
+      datos: "Sinu andmed",
+      resultado: "Tulemus",
+      vacio: "Sisesta andmed ja vajuta „Arvuta“. Tulemus ilmub siia.",
+      sinResultado: "Seda tulemust me praegu ei näita.",
+      avisos: { info: "Hea teada", cautela: "Tähelepanu", bloquea: "Miks me tulemust ei näita" },
+      fuenteDelAviso: "Allikas",
+    },
+  },
 };
 
 export function textosCalculadora(idioma: Idioma, trato: Trato, locale?: string): TextosCalculadora {

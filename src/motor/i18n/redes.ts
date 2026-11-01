@@ -799,6 +799,27 @@ export const DICCIONARIOS_REDES: Diccionarios<TextosRedes> = {
     celuImagen: "S kamero telefona ta koda odpre sliko, pripravljeno za deljenje v zgodbi.",
     cerrar: "Zapri",
   }),
+  // Estonio (ADR 0002, D33): impersonal; «lugu» es la historia de Instagram.
+  et: base({
+    grupo: "Jaga:",
+    instagramSub: "Lugu",
+    copiar: "Kopeeri link",
+    mas: "Rohkem valikuid",
+    nuevaPestana: "avaneb uuel vahelehel",
+    formato: "Pildi kuju",
+    historia: "Lugu 9:16",
+    feed: "Postitus 1:1",
+    descargar: "Laadi pilt alla",
+    copiado: "Link on kopeeritud.",
+    compartido: "Valmis, jagatud.",
+    enInstagram: "Valmis. Link on ka kopeeritud, nii et selle saab lisada loole lingikleebisega.",
+    descargado: "Pilt on alla laaditud ja link kopeeritud. Pildi saab telefonist looks postitada ja lingi lisada lingikleebisega.",
+    error: "Jagamine ei ole praegu võimalik.",
+    alCelu: "Instagrami postitatakse telefonist",
+    celuPagina: "Telefoni kaameraga avab see kood kaardi, mille saab ühe puudutusega loole saata.",
+    celuImagen: "Telefoni kaameraga avab see kood pildi, mida saab loos jagada.",
+    cerrar: "Sulge",
+  }),
 };
 
 export function textosRedes(idioma: Idioma, trato: Trato, locale?: string): TextosRedes {

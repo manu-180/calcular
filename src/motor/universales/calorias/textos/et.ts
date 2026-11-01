@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosEt: TextosUi<UiCalorias> = {
+  slug: "kalorikalkulaator",
+  ui: () => ({
+    sexo: "Sugu",
+    mujer: "Naine",
+    hombre: "Mees",
+    edad: "Vanus (aastat)",
+    peso: (u) => `Kaal (${u})`,
+    altura: (u) => `Pikkus (${u})`,
+    pies: "Pikkus: jalad (ft)",
+    pulgadas: "Pikkus: tollid (in)",
+    actividad: "Aktiivsuse tase",
+    sedentaria: "Vähe liikumist või üldse mitte",
+    ligera: "Kerge (trenn 1-3 päeval nädalas)",
+    moderada: "Mõõdukas (trenn 3-5 päeval nädalas)",
+    alta: "Kõrge (trenn 6-7 päeval nädalas)",
+    muyAlta: "Väga kõrge (raske treening või füüsiline töö)",
+    objetivo: "Eesmärk",
+    mantener: "Hoia kaal samana",
+    bajar: "Langeta kaalu mõõdukalt",
+    subir: "Tõsta kaalu mõõdukalt",
+    basal: "Põhiainevahetus (kcal ööpäevas)",
+    basalAyuda: "Energia, mida keha kulutab täielikus puhkeolekus.",
+    mantenimiento: "Kaalu säilitamine (kcal ööpäevas)",
+    calObjetivo: "Kalorid sinu eesmärgi jaoks (kcal ööpäevas)",
+    calObjetivoAyuda: "Mõõdukas muutus: kaalu langetades 500 kcal vähem ööpäevas ja kaalu tõstes 300 kcal rohkem.",
+    errorEdad: "Valem sobib vanusele 15 kuni 100 aastat.",
+    errorPeso: "Kaal peab olema suurem kui 0.",
+    errorAltura: "Pikkus peab olema suurem kui 0.",
+    notaMinimo: (kcal) => `Kaalu langetades ei lase arvutus päevast kogust alla ${kcal} kcal. Kui tahad süüa vähem, tee seda tervishoiutöötaja toel.`,
+    aviso: "See on hinnang Mifflin-St Jeori valemi järgi. Iga keha on erinev. Hinnang ei asenda toitumisnõustaja, arsti ega õe hinnangut.",
+  }),
+};
