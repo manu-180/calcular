@@ -169,8 +169,8 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
   // de oración.
   sq: {
     informal: [
-      { re: palabras("ti|ty|yt|jot|tënd|tënde|tëndë|tëndes|tëndin|tëndit"), nombre: "«ti» (va «ju»)" },
-      { re: /(?:^|[.?!:]\s+)(?:Vendos|Shkruaj|Kliko|Plotëso|Shiko|Provo|Zgjidh|Kontrollo|Zbuloni?|Krahaso)\s+\p{L}/u, nombre: "imperativo de «ti» en la prosa (va -ni)" },
+      { re: palabras("ti|ty|yt|jot|jote|tënd|tënde|tëndë|tëndes|tëndin|tëndit"), nombre: "«ti» (va «ju»)" },
+      { re: /(?:^|[.?!:]\s+)(?:Vendos|Shkruaj|Kliko|Plotëso|Shiko|Provo|Zgjidh|Kontrollo|Zbulo|Krahaso)\s+\p{L}/u, nombre: "imperativo de «ti» en la prosa (va -ni)" },
       { re: palabras("ke|je"), nombre: "2.ª del singular" },
       { re: /(?<!\p{L})të (?!ardhurash|dhënash)\p{L}{3,}(?:ësh|ash|osh|ish)(?!\p{L})/iu, nombre: "subjuntivo de 2.ª del singular (va -ni)" },
       { re: /[^.?!:“(\s]\s+(?:Ju|Juve|Jush|Juaj|Tuaj|Tuaja|Tuajat)(?!\p{L})/u, nombre: "«Ju» con mayúscula (va «ju»)" },
@@ -331,7 +331,7 @@ function reglasUz(texto: string): string[] {
 const RUSISMOS_BG = palabras("зарплата|зарплаты|сумма|суммы|расчет|рассчитать|также|который|которая|которые|будет|если|только|можно|это|что|для");
 // Albanés: comillas “ ” (como Tatime y los títulos de ley), nada de «», „ ni rectas. Y las letras: un texto
 // sin ë ni ç delata un teclado sin albanés («per», «nje», «eshte», «Shqiperi», «te ardhurat»).
-const SIN_DIERESIS_SQ = palabras("per|nje|eshte|jane|nese|keto|kete|ketu|shqiperi\\p{L}*|te ardhurat|te dhenat|pagese|vleresim\\p{L}*|perqind\\p{L}*|kerkes\\p{L}*|perfshi\\p{L}*");
+const SIN_DIERESIS_SQ = palabras("per|nje|eshte|jane|nese|keto|kete|ketu|shqiperi\\p{L}*|te ardhurat|te dhenat|vleresim\\p{L}*|perqind\\p{L}*|kerkes\\p{L}*|perfshi\\p{L}*");
 function reglasSq(texto: string): string[] {
   const p: string[] = [];
   if (/[«»„"]/.test(texto)) p.push("comillas: en albanés van “ ”");

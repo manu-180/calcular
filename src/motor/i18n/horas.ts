@@ -3383,7 +3383,133 @@ const bg: Diccionario<TextosHoras> = {
   },
 };
 
-export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// ───────────────────────────── sq ─────────────────────────────
+
+// Albanés (ADR 0002, D31)
+const sq: Diccionario<TextosHoras> = {
+  base: {
+    nombre: "Sa orë pune duhen?",
+    seo: {
+      titulo: ["Sa orë pune duhen për një iPhone {en}", "Orë pune për një iPhone {en}", "Sa orë pune duhen?"],
+      tituloGlobal: ["Sa orë pune duhen për një iPhone në botë", "Sa orë pune duhen?"],
+      tituloProducto: ["Sa orë pune duhen për {producto} {en}", "Orë pune për {producto} {en}", "Sa orë pune duhen për {producto}"],
+      tituloProductoGlobal: ["Sa orë pune duhen për {producto} në botë", "Sa orë pune duhen për {producto}"],
+      descripcion: "Një iPhone, një MacBook ose Spotify, të kthyera në orë pune me pagën minimale {en} dhe në vende të tjera (gjithsej {n}). Çmime zyrtare dhe burimi i çdo shifre.",
+      descripcionGlobal: "Një iPhone, një MacBook ose Spotify, të kthyera në orë pune me pagën minimale, vend pas vendi (gjithsej {n}). Çmime zyrtare dhe burimi i çdo shifre.",
+      descripcionProducto: "Për {producto} {en} duhen {horas} pune me pagën minimale. Renditja e vendeve (gjithsej {n}), me çmimin zyrtar dhe burimin e çdo shifre.",
+      descripcionProductoGlobal: "Sa orë pune me pagën minimale duhen për {producto}, vend pas vendi (gjithsej {n}). Çmimi zyrtar i çdo dyqani dhe burimi i çdo shifre.",
+    },
+    ceja: "Indeksi: {mes}",
+    h1: "Sa orë pune duhen?",
+    h1Producto: "Sa orë pune duhen për {producto}?",
+    bajada: "Çmimi zyrtar i të njëjtit produkt, i kthyer në orë pune me pagën minimale. Vende në indeks: {n}.",
+    form: { producto: "Produkti", pais: "Vendi", porMes: "në muaj" },
+    heroe: {
+      antes: "{en}, për {producto} duhen",
+      despues: "pune me pagën minimale",
+      despuesMes: "pune me pagën minimale, çdo muaj",
+      jornadaUno: "{n} ditë pune prej 8 orësh",
+      jornadaOtras: "{n} ditë pune prej 8 orësh",
+      precio: "Çmimi zyrtar {precio}",
+      salario: "Paga minimale: {monto} në orë",
+      sinPrecio: "{en} nuk ka dyqan zyrtar që e shet këtë produkt.",
+      mejor: "{en} mjafton kaq: {horas}.",
+      mejorPropio: "Në asnjë vend të indeksit nuk duhen më pak orë.",
+      puesto: "Vendi {p} nga {total}",
+      escalaHoras: "Çdo kuadrat është një orë pune",
+      escalaSemanas: "Çdo kuadrat është një javë prej 40 orësh",
+      masDeUnAnio: "Më shumë se një vit pune",
+    },
+    ranking: {
+      titulo: "Vend pas vendi",
+      bajada: "Nga më pak orë te më shumë. Çdo çmim është çmimi zyrtar i prodhuesit në vendin përkatës.",
+      lista: "Vendet të renditura sipas orëve të punës",
+      verTodos: "Shikoni të gjitha vendet ({n})",
+      verMenos: "Shikoni më pak",
+      elegido: "I zgjedhur",
+      sinPrecio: "Vende të indeksit pa të dhëna: {n}. Atje asnjë dyqan zyrtar nuk e shet këtë produkt.",
+      horas: "Orë",
+      precio: "Çmimi zyrtar",
+    },
+    compartir: {
+      titulo: "Imazh për ta shpërndarë",
+      bajada: "Përmban vetëm të dhëna publike: çmimin zyrtar dhe orët e punës me pagën minimale.",
+      boton: "Shpërndani imazhin",
+      descargar: "Shkarkoni për Stories",
+      copiado: "Lidhja u kopjua.",
+      compartido: "Gati, u dërgua.",
+      error: "Këtë herë shpërndarja nuk u krye.",
+      texto: "{en}, për {producto} duhen {horas} pune me pagën minimale. Po në vendet e tjera?",
+      alt: "Pamje paraprake e imazhit",
+    },
+    metodo: {
+      titulo: "Si e llogaritim",
+      estimacion: "Orë = çmimi zyrtar ÷ paga minimale për orë. Është krahasim i çmimeve zyrtare, jo ofertë blerjeje.",
+      supuestos: [
+        "Çmimi është ai i listës për versionin më të lirë në dyqanin zyrtar të prodhuesit, i lexuar në faqen e çdo vendi.",
+        "Spotify Premium është abonimi individual për një muaj, pa oferta fillestare.",
+        "Paga minimale është ajo e përgjithshme në fuqi sot, për një të rritur me kohë të plotë pune. Kur ka disa sipas sektorit ose rajonit, merret ajo e tregtisë në rajonin kryesor.",
+        "Kur ligji e cakton minimumin për muaj ose për ditë, ai kthehet në orë sipas kohëzgjatjes ligjore të javës së punës në vendin përkatës.",
+        "Në Spanjë dhe në Portugali paga minimale paguhet 14 herë në vit: ndahet në 12 muaj, siç bën Eurostat.",
+        "Kur dyqani e shfaq çmimin në dollarë amerikanë, ai kthehet në monedhën vendase me kursin zyrtar të vendit.",
+        "Një ditë pune ka 8 orë në të gjitha vendet, që ditët të mund të krahasohen.",
+      ],
+      fuentesTitulo: "Burimi i çdo shifre",
+      fuentesBajada: "Çdo vend me pagën minimale, kohëzgjatjen e javës së punës dhe çmimet e lexuara në dyqan, me datën e çdo leximi.",
+      salario: "Paga minimale",
+      jornada: "Java e punës",
+      precio: "Çmimi",
+      cambio: "Kurs këmbimi",
+      consultado: "Konsultuar më {fecha}",
+      verificado: "Verifikuar më {fecha}",
+      verFuente: "Shikoni burimin",
+      sello: "Çmime të lexuara nga {desde} deri më {hasta}. Një çmim më i vjetër se 120 ditë nuk shfaqet më.",
+      conversion: {
+        hora: "Ligji e cakton vlerën për orë.",
+        mes: "Mujore × 12 ÷ 52 javë ÷ {h} orë në javë.",
+        mesPagas: "Mujore × {p} (pagesa në vit) ÷ 52 javë ÷ {h} orë në javë.",
+        anio: "Vjetore ÷ 52 javë ÷ {h} orë në javë.",
+        semana: "Javore ÷ {h} orë.",
+        dia: "Ditore ÷ {h} orë të ditës së punës.",
+        diaPagado: "Ditore × {d} (ditë të paguara) ÷ {h} orë në javë.",
+        divisor: "Mujore ÷ {d}, pjesëtuesi për orë i caktuar me ligj.",
+      },
+    },
+    faqTitulo: "Pyetje të shpeshta",
+    faq: [
+      {
+        pregunta: "Si llogariten orët?",
+        respuesta: "Çmimi zyrtar i produktit pjesëtohet me pagën minimale për orë të vendit përkatës. Kur ligji e cakton minimumin për muaj ose për ditë, ai kthehet në orë sipas kohëzgjatjes ligjore të javës së punës në atë vend.",
+      },
+      {
+        pregunta: "Pse paga minimale?",
+        respuesta: "Është paga e caktuar me ligj në pothuajse të gjitha vendet dhe mund të verifikohet në burimin zyrtar. Paga mesatare matet ndryshe në çdo vend, ndaj nuk krahasohet po aq mirë.",
+      },
+      {
+        pregunta: "A i përfshijnë çmimet taksat?",
+        respuesta: "Është çmimi i listës që shfaq dyqani zyrtar në çdo vend. Në Shtetet e Bashkuara dhe në Kanada nuk e përfshin taksën e shitjes, ndërsa në vende të tjera dyqani mund të shtojë taksa në fund të porosisë.",
+      },
+      {
+        pregunta: "Pse mungon një vend?",
+        respuesta: "Në indeks hyjnë vetëm vendet me një pagë minimale në fuqi të verifikuar dhe me çmimin nga dyqani zyrtar. Pa një dyqan zyrtar në internet për këtë produkt nuk ka të dhëna. Çmimet e rishitësve nuk përdoren kurrë.",
+      },
+      {
+        pregunta: "Sa shpesh përditësohen të dhënat?",
+        respuesta: "Çmimet lexohen në çdo dyqan dhe skadojnë pas 120 ditësh: një çmim më i vjetër nuk shfaqet më. Paga minimale vjen nga të dhënat zyrtare të çdo vendi dhe ndryshon kur ndryshon ligji.",
+      },
+    ],
+    og: {
+      de: "pune me pagën minimale",
+      deMes: "pune me pagën minimale në muaj",
+      generica: "Sa orë pune duhen për {producto}?",
+      genericaBajada: "Çmimi zyrtar në orë pune me pagën minimale, vende: {n}",
+      menos: "Më pak orë",
+      cta: "Të gjitha vendet në",
+    },
+  },
+};
+
+export const DICCIONARIOS_HORAS: Diccionarios<TextosHoras> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sq };
 
 export function textosHoras(idioma: Idioma, trato: Trato, locale?: string): TextosHoras {
   return resolver(DICCIONARIOS_HORAS, idioma, trato, locale);

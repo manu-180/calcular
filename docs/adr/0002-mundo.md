@@ -1474,3 +1474,45 @@ la moneda de prueba es EUR y los textos hablan de «цент», no de «стот
 
 **Fuente.** Geist no trae cirílico: la tarjeta OG usa Noto Sans de respaldo, como uk y ru. La edición
 interna es `zz-bg` («Зеталандия», bg-001).
+
+### D31. Albanés, para Albania (2026-11-01)
+
+`IDIOMAS` suma `sq`. Motor, sitio, inicio, novedades, legales, errores, compartir, embed, «Tu sueldo en el
+mundo», calendario, horas de trabajo, rankings, «Sueldos reales», afiliados, el diccionario de venta y las 41
+universales están en albanés. El modelo es el rumano (D18), por el mismo registro: misma estructura, texto escrito
+de nuevo. D25 a D30 están en ramas sin mergear; por eso este número, sin hueco que llenar en main.
+
+**Lo que devuelve Intl (Node).** `sq-AL`: `1 234 567,50` con espacio duro y coma; cuatro cifras sin separador
+(`1234`); `1 234 568 Lekë` (el lek sale sin decimales); `1234,50 €`; `20%`; `1 nëntor 2026`; PluralRules
+one/other. El parser no necesitó nada propio.
+
+**Registro.** Un solo registro, el de e-Albania, Tatime y Raiffeisen Albania: «ju» en minúscula con 2.ª del
+plural («vendosni», «llogaritni», «zgjidhni»). Los mercados van con `trato: "usted"`. El botón de calcular va en
+la forma corta de esas interfaces («Llogarit»); el resto de los enlaces y botones, en 2.ª del plural.
+
+**Plurales y gramática.** Dos categorías: «1 vit», «2 vjet», «1,5 vjet»; ditë, javë, orë y muaj no cambian
+(`formaSq`, `pluralSq`). `mercado.nombre` se escribe indefinido, como `Intl.DisplayNames` en sq («Shqipëri»,
+«Francë», «Mal i Zi»). `GRAMATICA.sq` da `nombre` «Shqipëria», `de` «të Shqipërisë», `en` «në Shqipëri» y `para`
+«për Shqipërinë», por terminación y con tabla para irregulares, compuestos y plurales («në Mal të Zi», «në
+Zelandën e Re», «të SHBA-së», «të Shën-Vincentit dhe Grenadineve»). El artículo del genitivo concuerda con lo que
+tiene delante: `de` trae «të», y `rasatSq(p).gjinore` da la forma sola para escribir «e» o «i». Un nombre compuesto
+que no está en la tabla queda sin declinar, con la preposición delante. Un nombre definido nuevo también va a la
+tabla, porque la regla lo tomaría por indefinido.
+
+**Comillas.** “ ” (U+201C y U+201D), las que usa Tatime en el título de una ley: «Ligji i ri për “Tatimin mbi të
+ardhurat”» (tatime.gov.al, leído el 2026-11-01). `reglas_idioma` rechaza «», „ y las rectas.
+
+**Vocabulario.** «paga neto», «tatim mbi të ardhurat», «sigurime shoqërore», «TVSH», «kredi për shtëpi», «këst»,
+«interes». Sin sigla para el costo anual de un crédito (no se verificó una): «norma vjetore e kostos». Las
+universales no nombran organismos, leyes ni moneda de Albania, salvo el genérico «TVSH». `reglas_idioma` atrapa
+el «ti» y sus posesivos, la 2.ª del singular, el «Ju» con mayúscula a mitad de oración y las palabras sin ë.
+
+**Slugs.** ASCII sin diacríticos (ë→e, ç→c): `paga-ne-bote`, `renditja-e-vendeve`, `sa-ore-pune`,
+`kalendari-i-pagave`, `pagat-reale`, y las universales con su búsqueda real (`kalkulator-kredie`, `kalkulator-tvsh`,
+`kalkulator-kredi-per-shtepi`). `kalkulator-page` queda libre para la local de Albania: la universal de sueldo es
+`paga-per-ore`. Se suman en `secciones.ts` por los `SLUG_*`, sin carpetas por idioma.
+
+**Prueba.** `zz-sq` («Zetalandë») es una edición interna en `sq-001`. `check_universales` prueba `sq-AL` con ALL,
+un nombre largo que se declina por partes («Shën-Vincent dhe Grenadine») y uno plural con adjetivos («Emiratet e
+Bashkuara Arabe»); `check_motor` prueba formato, plurales, parseo y gramática. El texto no pasó por un hablante
+nativo: conviene una revisión antes de publicar Albania.
