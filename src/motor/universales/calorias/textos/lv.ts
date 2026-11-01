@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosLv: TextosUi<UiCalorias> = {
+  slug: "kaloriju-kalkulators",
+  ui: () => ({
+    sexo: "Dzimums",
+    mujer: "Sieviete",
+    hombre: "Vīrietis",
+    edad: "Vecums",
+    peso: (u) => `Svars (${u})`,
+    altura: (u) => `Augums (${u})`,
+    pies: "Augums: pēdas (ft)",
+    pulgadas: "Augums: collas (in)",
+    actividad: "Fiziskās aktivitātes līmenis",
+    sedentaria: "Minimāls (mazkustīgs dzīvesveids)",
+    ligera: "Viegls (no 1 līdz 3 dienām nedēļā)",
+    moderada: "Vidējs (no 3 līdz 5 dienām nedēļā)",
+    alta: "Augsts (no 6 līdz 7 dienām nedēļā)",
+    muyAlta: "Ļoti augsts (intensīvi treniņi vai fizisks darbs)",
+    objetivo: "Mērķis",
+    mantener: "Saglabāt svaru",
+    bajar: "Pakāpeniski samazināt svaru",
+    subir: "Pakāpeniski palielināt svaru",
+    basal: "Bazālā vielmaiņa (kcal dienā)",
+    basalAyuda: "Enerģija, ko organisms patērē pilnīgā miera stāvoklī.",
+    mantenimiento: "Kalorijas svara saglabāšanai (kcal dienā)",
+    calObjetivo: "Kalorijas jūsu mērķim (kcal dienā)",
+    calObjetivoAyuda: "Neliela izmaiņa: par 500 kcal dienā mazāk svara samazināšanai un par 300 kcal vairāk svara palielināšanai.",
+    errorEdad: "Formula paredzēta cilvēkiem vecumā no 15 līdz 100 gadiem.",
+    errorPeso: "Svaram jābūt lielākam par nulli.",
+    errorAltura: "Augumam jābūt lielākam par nulli.",
+    notaMinimo: (kcal) => `Samazinot svaru, dienas normu nesamazina zem ${kcal} kcal. Ja vēlaties ēst mazāk, konsultējieties ar speciālistu.`,
+    aviso: "Tas ir aptuvens novērtējums pēc Mifflina-Sentžora formulas. Katrs organisms ir atšķirīgs: šis aprēķins neaizstāj ārsta vai uztura speciālista konsultāciju.",
+  }),
+};
