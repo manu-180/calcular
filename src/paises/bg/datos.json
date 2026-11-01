@@ -1,0 +1,800 @@
+{
+  "mercado": "bg",
+  "datos": [
+    {
+      "id": "bg.minimalna-zaplata",
+      "nombre": "Минимална месечна работна заплата за страната",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 620.2,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Осигуряване на лицата, работещи без трудови правоотношения (минимална заплата от 01.01.2026 г.)",
+            "url": "https://noi.bg/osiguriteli/osiguryavane_osiguriteli/osiguryavane-na-litsata-raboteshti-bez-trudovi-pravootnosheniya/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.maks-osig-dohod",
+      "nombre": "Максимален месечен осигурителен доход",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-07-31",
+          "valor": 2111.64,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Закон за бюджета на ДОО за 2026 г. (ДВ, бр. 68 от 28.07.2026 г.), чл. 9, т. 1, б. „в“ и т. 2, б. „в“",
+            "url": "https://www.noi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": 2300,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Закон за бюджета на ДОО за 2026 г. (ДВ, бр. 68 от 28.07.2026 г.), чл. 9, т. 1, б. „в“ и т. 2, б. „в“",
+            "url": "https://www.noi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.min-dohod-samoosig",
+      "nombre": "Минимален месечен осигурителен доход за самоосигуряващите се",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-07-31",
+          "valor": 550.66,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Закон за бюджета на ДОО за 2026 г. (ДВ, бр. 68 от 28.07.2026 г.), чл. 9, т. 1, б. „б“ и т. 2, б. „б“",
+            "url": "https://www.noi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": 620.2,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Закон за бюджета на ДОО за 2026 г. (ДВ, бр. 68 от 28.07.2026 г.), чл. 9, т. 1, б. „б“ и т. 2, б. „б“",
+            "url": "https://www.noi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.danak-dohodi",
+      "nombre": "Данък върху доходите на физическите лица",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Министерство на икономиката",
+            "titulo": "Данъци и социални осигуровки, свързани със служителите",
+            "url": "https://www.mi.government.bg/en/general/danaci-i-socialni-osigurovki-svarzani-sas-slujitelite/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.vnoski-rabotnik",
+      "nombre": "Осигурителни вноски за сметка на работника",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "pensii": 6.58,
+            "pensii-predi-1960": 8.78,
+            "ozm": 1.4,
+            "bezrabotitsa": 0.4,
+            "dzpo": 2.2
+          },
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 6, ал. 1 и 3, чл. 157",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.vnoski-rabotodatel",
+      "nombre": "Осигурителни вноски за сметка на работодателя",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "pensii": 8.22,
+            "pensii-predi-1960": 11.02,
+            "ozm": 2.1,
+            "bezrabotitsa": 0.6,
+            "dzpo": 2.8
+          },
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 6, ал. 1 и 3, чл. 157",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.zdravna-vnoska",
+      "nombre": "Здравноосигурителна вноска",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "obshto": 8,
+            "rabotnik": 3.2,
+            "rabotodatel": 4.8
+          },
+          "fuente": {
+            "organismo": "НЗОК",
+            "titulo": "Закон за бюджета на НЗОК за 2026 г., чл. 2, и Закон за здравното осигуряване, чл. 40, ал. 1 (съотношение 60:40)",
+            "url": "https://www.nhif.bg/upload/32276/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD%20%D0%B7%D0%B0%20%D0%B1%D1%8E%D0%B4%D0%B6%D0%B5%D1%82%D0%B0%20%D0%BD%D0%B0%20%D0%9D%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D0%BD%D0%B0%D1%82%D0%B0%20%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%BD%D0%BE%D0%BE%D1%81%D0%B8%D0%B3%D1%83%D1%80%D0%B8%D1%82%D0%B5%D0%BB%D0%BD%D0%B0%20%D0%BA%D0%B0%D1%81%D0%B0%20%D0%B7%D0%B0%202026%20%D0%B3..pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.vnoski-samoosig",
+      "nombre": "Вноски на самоосигуряващите се върху избрания доход",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "pensii": 14.8,
+            "pensii-predi-1960": 19.8,
+            "dzpo": 5,
+            "ozm": 3.5
+          },
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 6, ал. 1, чл. 157",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.tzpb",
+      "nombre": "Вноска за фонд „Трудова злополука и професионална болест“",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-01",
+          "valor": {
+            "r04": 0.4,
+            "r05": 0.5,
+            "r07": 0.7,
+            "r09": 0.9,
+            "r11": 1.1
+          },
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Закон за бюджета на ДОО за 2026 г. (ДВ, бр. 68 от 28.07.2026 г.), приложение № 2А (от 1 август до 31 декември 2026 г.)",
+            "url": "https://www.noi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "etiquetas": {
+        "r04": "0,4 % (ИТ услуги, издателска дейност и др.)",
+        "r05": "0,5 % (производство на облекло, печатна дейност и др.)",
+        "r07": "0,7 % (производство на напитки, електрически съоръжения и др.)",
+        "r09": "0,9 % (метални изделия, превозни средства и др.)",
+        "r11": "1,1 % (добив, горско стопанство и др.)"
+      },
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.otpusk-osnoven",
+      "nombre": "Основен платен годишен отпуск",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс на труда, чл. 155, ал. 4",
+            "url": "https://www.noi.bg/wp-content/uploads/KT-2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.otpusk-min-mesetsi",
+      "nombre": "Трудов стаж при първо постъпване, за да се ползва отпуск",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс на труда, чл. 155, ал. 2",
+            "url": "https://www.noi.bg/wp-content/uploads/KT-2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.bolnichni",
+      "nombre": "Обезщетение при общо заболяване",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "rabotodatel": 70,
+            "noi": 80,
+            "zlopoluka": 90
+          },
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 40, ал. 5 и чл. 41, ал. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.bolnichni-dni-rabotodatel",
+      "nombre": "Работни дни, платени от работодателя при болест",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 40, ал. 5",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.bolnichni-period",
+      "nombre": "Период за изчисляване на обезщетението при болест",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 18,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 41, ал. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.maychinstvo-protsent",
+      "nombre": "Дневно обезщетение при бременност и раждане",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 90,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 49, ал. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.maychinstvo-dni",
+      "nombre": "Срок на обезщетението при бременност и раждане",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 410,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 50, ал. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.maychinstvo-period",
+      "nombre": "Период за изчисляване на обезщетението при бременност и раждане",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 24,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 49, ал. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.otglezhdane-dete",
+      "nombre": "Обезщетение за отглеждане на дете до 2-годишна възраст",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 398.81,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Закон за бюджета на ДОО за 2026 г. (ДВ, бр. 68 от 28.07.2026 г.), чл. 12",
+            "url": "https://www.noi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.bezrabotitsa-protsent",
+      "nombre": "Дневно обезщетение за безработица",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 54б, ал. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.bezrabotitsa-min",
+      "nombre": "Минимално дневно обезщетение за безработица",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 9.21,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Закон за бюджета на ДОО за 2026 г. (ДВ, бр. 68 от 28.07.2026 г.), чл. 11, т. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.bezrabotitsa-maks",
+      "nombre": "Максимално дневно обезщетение за безработица",
+      "tipo": "numero",
+      "unidad": "EUR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 54.78,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Закон за бюджета на ДОО за 2026 г. (ДВ, бр. 68 от 28.07.2026 г.), чл. 11, т. 2",
+            "url": "https://www.noi.bg/wp-content/uploads/zbdoo-2026.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.bezrabotitsa-srok",
+      "nombre": "Срок на обезщетението за безработица според стажа",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "do3": 4,
+            "do7": 6,
+            "do11": 8,
+            "do15": 10,
+            "nad15": 12
+          },
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 54в, ал. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "etiquetas": {
+        "do3": "до 3 години",
+        "do7": "от 3 години и 1 ден до 7 години",
+        "do11": "от 7 години и 1 ден до 11 години",
+        "do15": "от 11 години и 1 ден до 15 години",
+        "nad15": "над 15 години"
+      }
+    },
+    {
+      "id": "bg.bezrabotitsa-min-srok",
+      "nombre": "Срок при напускане по собствено желание",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 4,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс за социално осигуряване, чл. 54б, ал. 3",
+            "url": "https://www.noi.bg/wp-content/uploads/KCO-7.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.izvanreden-trud",
+      "nombre": "Минимално увеличение за извънреден труд",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "raboten": 50,
+            "pochiven": 75,
+            "praznik": 100,
+            "sumirano": 50
+          },
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс на труда, чл. 262, ал. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/KT-2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "etiquetas": {
+        "raboten": "работен ден",
+        "pochiven": "почивен ден",
+        "praznik": "официален празник",
+        "sumirano": "сумирано изчисляване на работното време"
+      }
+    },
+    {
+      "id": "bg.predizvestie-bezsrochen",
+      "nombre": "Срок на предизвестието при безсрочен договор",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс на труда, чл. 326, ал. 2",
+            "url": "https://www.noi.bg/wp-content/uploads/KT-2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.predizvestie-srochen",
+      "nombre": "Срок на предизвестието при срочен договор",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс на труда, чл. 326, ал. 2",
+            "url": "https://www.noi.bg/wp-content/uploads/KT-2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.predizvestie-maks",
+      "nombre": "Най-дълъг уговорен срок на предизвестието",
+      "tipo": "numero",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс на труда, чл. 326, ал. 2",
+            "url": "https://www.noi.bg/wp-content/uploads/KT-2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bg.obezshtenie-uvolnenie",
+      "nombre": "Обезщетение при прекратяване на трудовия договор (месеци брутна заплата, най-много)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "sakrashtavane": 1,
+            "bolest": 2,
+            "pensia": 2,
+            "pensia10": 6,
+            "nezakonno": 6
+          },
+          "fuente": {
+            "organismo": "НОИ",
+            "titulo": "Кодекс на труда, чл. 222, ал. 1, 2 и 3, чл. 225, ал. 1",
+            "url": "https://www.noi.bg/wp-content/uploads/KT-2.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "etiquetas": {
+        "sakrashtavane": "съкращаване, закриване или намален обем работа (чл. 222, ал. 1)",
+        "bolest": "болест (чл. 222, ал. 2)",
+        "pensia": "придобито право на пенсия (чл. 222, ал. 3)",
+        "pensia10": "право на пенсия и 10 години при същия работодател (чл. 222, ал. 3)",
+        "nezakonno": "незаконно уволнение (чл. 225, ал. 1)"
+      }
+    },
+    {
+      "id": "bg.dds",
+      "nombre": "Ставки на ДДС",
+      "tipo": "mapa",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "osnovna": 20,
+            "namalena": 9
+          },
+          "fuente": {
+            "organismo": "Министерство на икономиката",
+            "titulo": "Отчитане и възстановяване на ДДС",
+            "url": "https://www.mi.government.bg/en/general/otchitane-i-vazstanovyavane-na-dds/",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "etiquetas": {
+        "osnovna": "20 % (основна ставка)",
+        "namalena": "9 % (настаняване в хотели, книги, детски храни)"
+      }
+    },
+    {
+      "id": "bg.danak-pridobivane-sofia",
+      "nombre": "Данък при възмездно придобиване на имот в Столична община",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Столичен общински съвет",
+            "titulo": "Решение № 1036 от 18.12.2025 г. (чл. 35, ал. 2 от Наредбата за местните данъци)",
+            "url": "https://council.sofia.bg/documents/d/guest/r-1036-2025",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.ecb-mro",
+      "nombre": "Лихвен процент на ЕЦБ по основните операции по рефинансиране към 1 януари и 1 юли",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-06-30",
+          "valor": 2.15,
+          "fuente": {
+            "organismo": "ЕЦБ",
+            "titulo": "Основни лихвени проценти на ЕЦБ",
+            "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.bg.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 2.4,
+          "fuente": {
+            "organismo": "ЕЦБ",
+            "titulo": "Основни лихвени проценти на ЕЦБ",
+            "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.bg.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-10-31"
+          }
+        }
+      ],
+      "proximaRevision": "2027-01-01"
+    },
+    {
+      "id": "bg.danak-dividenti",
+      "nombre": "Окончателен данък върху дивиденти на физически лица",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "motivo": "nra.bg, parliament.bg и dv.parliament.bg отказаха връзка на 31.10.2026 г., minfin.bg върна 403. В проекта за бюджет 2026 имаше 10 %; без текста на ЗДДФЛ след ДВ бр. 68/2026 ставката остава непроверена."
+        }
+      ]
+    },
+    {
+      "id": "bg.zakonna-lihva-nadbavka",
+      "nombre": "Надбавка към лихвата на ЕЦБ за законната лихва (ПМС № 426 от 2014 г.)",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "valor": 8,
+          "motivo": "Текстът на ПМС № 347 от 29.12.2025 г. е в dv.parliament.bg, който отказа връзка на 31.10.2026 г. Прочетено само като откъс от търсачка."
+        }
+      ]
+    },
+    {
+      "id": "bg.danak-nedvizhimi-sofia",
+      "nombre": "Годишен данък върху недвижимите имоти в Столична община (на хиляда)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-01-01",
+          "motivo": "Действащата редакция на Наредбата за местните данъци и ЗМДТ не можаха да се прочетат в официален източник на 31.10.2026 г."
+        }
+      ]
+    }
+  ]
+}
