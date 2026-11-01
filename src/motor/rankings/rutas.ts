@@ -16,6 +16,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   ko: "gukgabyeol-sunwi",
   zh: "guojia-paiming",
   bg: "klasatsia-na-darzhavite",
+  mn: "ulsuudyn-jagsaalt",
 
   pl: "ranking-krajow",
   sv: "landsrankning",
@@ -57,6 +58,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   zh: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
   // bg con la transliteración oficial búlgara (Закон за транслитерацията; ADR 0002, D24).
   bg: { rinde: "pokupatelna-sila-na-zaplatata", libertad: "den-na-danachnata-svoboda", aumento: "kolko-ostava-ot-uvelichenieto" },
+  // mn en ASCII: х = kh, ц = ts, ө = o, ү = u, ж = j, ы = y (ADR 0002, D28).
+  mn: { rinde: "tsalingiin-khudaldan-avakh-chadvar", libertad: "tatvaraas-choloot-odor", aumento: "nemegdlees-khed-uldekh" },
 
   pl: { rinde: "gdzie-pensja-daje-najwiecej", libertad: "dzien-wolnosci-podatkowej", aumento: "ile-zostaje-z-podwyzki" },
   sv: { rinde: "dar-lonen-racker-langst", libertad: "skattefrihetsdagen", aumento: "vad-som-blir-kvar-av-en-loneokning" },

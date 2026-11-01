@@ -142,3 +142,9 @@ export function formaSr(n: number | string, uno: string, pocos: string, muchos: 
 export function pluralSr(n: number | string, uno: string, pocos: string, muchos: string): string {
   return `${n} ${formaSr(n, uno, pocos, muchos)}`;
 }
+// Mongol (ADR 0002, D28): detrás de un número el sustantivo va siempre en singular («3 өдөр», «40
+// тооцоолуур»), aunque Intl.PluralRules("mn") distinga one/other. Recibe number o string porque check_i18n
+// llama a las funciones de los diccionarios con argumentos de muestra.
+export function conteoMn(n: number | string, palabra: string): string {
+  return `${n} ${palabra}`;
+}

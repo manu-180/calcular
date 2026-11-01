@@ -512,6 +512,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Nézd meg, mennyi maradna nettóban több mint ${n} országban`,
     },
   },
+  mn: {
+    base: {
+      boton: "Хуваалцах",
+      botonAria: "Энэ тооцоолуурыг хуваалцах",
+      menuTitulo: "Хуваалцах суваг",
+      copiar: "Холбоос хуулах",
+      copiado: "Холбоосыг хууллаа",
+      compartido: "Хуваалцлаа",
+      errorCorto: "Хуулж чадсангүй",
+      errorAyuda: "Холбоосыг хуулж чадсангүй. Хөтчийн хаягийн мөрнөөс хуулна уу.",
+      nuevaPestana: "шинэ табд нээгдэнэ",
+      mensaje: (nombre) => `${nombre}. Үнэгүй, нэг минутын тооцоо.`,
+      puenteIntro: "Бусад улсад хэд вэ?",
+      puenteEnlace: (n) => `${n} гаруй улсад гарт хэдэн мөнгө авахаа үзэх`,
+    },
+  },
   bg: {
     base: {
       boton: "Споделяне",

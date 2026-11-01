@@ -1338,4 +1338,26 @@ const sr: GramaticaPais = {
   para: (p) => `za ${padezSr(p).akuzativ}`,
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Mongol (ADR 0002, D28): los sufijos de caso dependen de la armonía vocálica y de la consonante final, y
+// un nombre extranjero suelto se equivoca fácil («Германд» pero «Францад», «Орост», «Швейцарьт»). Por eso
+// el sufijo nunca se pega al nombre: lo lleva «улс», que siempre declina igual («Герман улсад», «Герман
+// улсын», «Герман улсад зориулсан»), como se escribe en la prensa y en los sitios del Estado. Si el
+// nombre ya termina en «Улс» o en «арлууд» el sufijo va sobre esa palabra, cuya armonía se conoce
+// («Монгол Улсад», «Соломоны арлуудын»). Hong Kong, Macao, Puerto Rico y Taiwán van con «нутаг
+// дэвсгэр»: «улс» diría algo que el sitio no quiere afirmar. Intl.DisplayNames da «Монгол» a secas y
+// el nombre oficial es «Монгол Улс».
+const mn: GramaticaPais = (() => {
+  const TERRITORIO = /(?:Хонг-Конг|Макао|Пуэрто-Рико|Тайвань)$/u;
+  const nombre = (p: string) => (p === "Монгол" ? "Монгол Улс" : p);
+  const sufijo = (p: string, adUlsArlad: string, tDevsger: string): string => {
+    const n = nombre(p);
+    if (/(?:Улс|улс|[аА]рлууд)$/u.test(n)) return `${n}${adUlsArlad}`;
+    if (/нутаг дэвсгэр$/u.test(n)) return `${n}${tDevsger}`;
+    if (TERRITORIO.test(n)) return `${n} нутаг дэвсгэр${tDevsger}`;
+    return `${n} улс${adUlsArlad}`;
+  };
+  const en = (p: string) => sufijo(p, "ад", "т");
+  return { nombre, de: (p) => sufijo(p, "ын", "ийн"), en, para: (p) => `${en(p)} зориулсан` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, mn };

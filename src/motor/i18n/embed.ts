@@ -1178,6 +1178,42 @@ const sr: Diccionario<TextosEmbed> = {
   },
 };
 
+// Mongol (ADR 0002, D28): «та» y botones en «-х»; el país va con GRAMATICA.mn.
+const mn: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa-ийн тооцоолуур",
+    marcaNuevaPestana: "(шинэ табд нээгдэнэ)",
+    noDisponible: { titulo: "Энэ тооцоолуур боломжгүй байна", texto: "Хаяг нь өөрчлөгдсөн байж магадгүй." },
+    insertar: "Сайтдаа байршуулах",
+    pagina: {
+      titulo: (pais) => [`Таны сайтад зориулсан үнэгүй тооцоолуур | ${pais}`, "Таны сайтад зориулсан үнэгүй тооцоолуур"],
+      descripcion: (pais) => `${GRAMATICA.mn.para(pais)} тооцоолуур сонгож, кодыг хуулаад блог эсвэл сайтдаа байршуулна уу. Үнэгүй, үргэлж шинэчлэгддэг албан ёсны мэдээлэлтэй.`,
+      h1: "Сайтдаа тооцоолуур байршуулах",
+      bajada: "Тооцоолуур сонгож, кодыг хуулаад хүссэн газраа байршуулна уу. Үнэгүй бөгөөд мэдээлэл нь өөрөө шинэчлэгддэг.",
+      calculadora: "Тооцоолуур",
+      buscar: "Тооцоолуур хайх",
+      sinResultados: "Хайлтад тохирох тооцоолуур алга.",
+      tema: "Загвар",
+      claro: "Цайвар",
+      oscuro: "Бараан",
+      ancho: "Өргөн",
+      anchoCompleto: "Бүтэн өргөн",
+      acento: "Онцлох өнгө",
+      colores: ["Ногоон", "Цэнхэр", "Улбар шар", "Ягаан", "Бараан саарал"],
+      credito: "Тооцоолуурын доор эх сурвалжийн холбоос",
+      vistaPrevia: "Урьдчилан харах",
+      codigo: "Байршуулах код",
+      copiar: "Код хуулах",
+      copiado: "Кодыг хууллаа",
+      ayudaScript: "Скрипт заавал биш: зөвхөн тооцоолуурын өндрийг тохируулдаг.",
+      ventajas: ["Үнэгүй, бүртгэлгүй", "Үргэлж шинэчлэгддэг албан ёсны мэдээлэл", "Ямар ч өргөнд тохирно"],
+      nota: "Тооцоолуурын доор CalcularYa-ийн холбоос байдаг. Үүнийг хасахгүй байхыг хүсье.",
+      verTodas: (pais) => `${GRAMATICA.mn.para(pais)} бүх тооцоолуур`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa-ийн тооцоолуур`,
+    },
+  },
+};
+
 // Búlgaro (ADR 0002, D24): 2.ª del plural con «Вашия» en mayúscula; el país va con «за» (GRAMATICA.bg).
 const bg: Diccionario<TextosEmbed> = {
   base: {
@@ -1214,7 +1250,7 @@ const bg: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, mn };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);
