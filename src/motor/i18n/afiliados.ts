@@ -400,6 +400,19 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "otvara se u novoj kartici",
     },
   },
+  // Estonio (ADR 0002, D33): «sina».
+  et: {
+    base: {
+      titulo: "Kolid välismaale või maksad teisest riigist?",
+      etiqueta: "Partnerlingid",
+      socios: {
+        wise: "Mitme valuutaga konto, millega saad raha riikide vahel vastu võtta ja saata turu keskmise kursiga. Tasu näed ette.",
+        deel: "Lepingud ja väljamaksed neile, kes töötavad ühest riigist teise riigi ettevõttele.",
+      },
+      nota: "Kui avad nende linkide kaudu konto, võib see leht saada vahendustasu. Sina selle eest rohkem ei maksa.",
+      nuevaPestana: "avaneb uuel vahelehel",
+    },
+  },
 };
 
 export function textosAfiliados(idioma: Idioma, locale?: string, trato: Trato = "tu"): TextosAfiliados {

@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosEt: TextosUi<UiAlquilarOComprar> = {
+  slug: "uur-voi-oma-kodu",
+  ui: () => ({
+    precio: "Kodu hind",
+    entrada: "Sissemakse (% hinnast)",
+    gastosCompra: "Ostukulud (% hinnast)",
+    gastosCompraAyuda: "Riigilõiv, notari- ja pangatasud ning maakleritasu.",
+    tasa: "Kodulaenu intress (% aastas)",
+    aniosHipoteca: "Laenuperiood aastates",
+    alquiler: "Samaväärse kodu üür kuus",
+    aumentoAlquiler: "Üüri tõus aastas (%)",
+    gastosPropietario: "Omaniku kulud aastas (% väärtusest)",
+    gastosPropietarioAyuda: "Remont, kinnisvaramaks ja kodukindlustus. Sageli 1-2%.",
+    revalorizacion: "Kodu väärtuse kasv aastas (%)",
+    rendimiento: "Muude investeeringute tootlus (% aastas)",
+    rendimientoAyuda: "See, mida teeniksid, kui investeeriksid sissemakse kodu ostmise asemel.",
+    horizonte: "Võrreldavate aastate arv",
+    veredicto: "Tulemus",
+    patrimonioComprar: "Vara lõpus, kui ostad",
+    patrimonioAlquilar: "Vara lõpus, kui üürid",
+    diferencia: "Vahe",
+    anioDesde: "Aasta, millest alates on ostmine kasulikum",
+    pagadoAlquilando: "Üür kokku",
+    pagadoComprando: "Laenumaksed ja omaniku kulud kokku",
+    tabla: "Võrdlus aasta aastalt",
+    colAnio: "Aasta",
+    colComprar: "Ostmine",
+    colAlquilar: "Üürimine",
+    colDiferencia: "Vahe",
+    errorPrecio: "Sisesta kodu hind.",
+    errorAlquiler: "Sisesta, kui suur oleks samaväärse kodu üür.",
+    convieneComprar: (anios, diferencia) => `Ostmine on kasulikum. ${anios} aasta pärast on sul rohkem vara, vahe on ${diferencia}.`,
+    convieneAlquilar: (anios, diferencia) => `Üürimine on kasulikum. ${anios} aasta pärast on sul rohkem vara, vahe on ${diferencia}.`,
+    empate: (anios) => `${anios} aasta pärast on mõlema valiku tulemus sama.`,
+    observacionDesde: (anio) => `Ostmine läheb üürimisest ette ${anio}. aastal ja püsib seejärel eespool.`,
+    observacionMetodo:
+      "Kalkulaator võrdleb, mis sul mõlemal juhul alles on. Kui üürid, jäävad sissemakse ja igakuiselt säästetud raha investeerituks. Müügikulusid maha ei arvata.",
+  }),
+};

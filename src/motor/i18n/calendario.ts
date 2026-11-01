@@ -2165,7 +2165,80 @@ const bg: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// ───────────────────────────── et ─────────────────────────────
+
+// Estonio: gEt.de da el genitivo que va delante del sustantivo («Eesti palgakalender») y gEt.en el caso
+// de lugar completo («Eestis»). Las fechas van tras dos puntos o entre paréntesis, en nominativo.
+const gEt = GRAMATICA.et;
+const et: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Palga- ja maksukalender",
+    seo: {
+      titulo: (pais, anios) => [`${gEt.de(pais)} palga- ja maksukalender ${anios}: olulised kuupäevad`, `${gEt.de(pais)} palgakalender ${anios}`, `${gEt.de(pais)} palgakalender`],
+      descripcion: (pais, proximas) => `Kuupäevad, mis muudavad palka ${gEt.en(pais)}, koos ametlike allikatega: ${proximas}. Igaühel oma kalkulaator.`,
+      descripcionSin: (pais) => `Kuupäevad, mis muudavad palka ${gEt.en(pais)}, koos ametlike allikate ja kalkulaatoritega. Lisa need telefoni kalendrisse.`,
+    },
+    ceja: (anios) => `Kalender ${anios}`,
+    h1: (pais) => `${gEt.de(pais)} palga- ja maksukalender`,
+    acento: "kuupäevad, mis mõjutavad palka",
+    bajada: "Iga kuupäev tuleb ametlikust allikast ja viib sellega seotud kalkulaatorini. Leht uueneb ise, kui avaldatakse uus väärtus.",
+    proxima: "Järgmine kuupäev",
+    cuenta: {
+      hoy: "Täna",
+      manana: "Homme",
+      ayer: "Eile",
+      en: (n) => `${n} päeva pärast`,
+      hace: (n) => (n === 1 ? "1 päev tagasi" : `${n} päeva tagasi`),
+      dias: (n) => (n === 1 ? "päev" : "päeva"),
+    },
+    queViene: "Tulemas",
+    yaRige: "Juba kehtib",
+    mesPorMes: "Aasta kuude kaupa",
+    sinFechas: "Teatatud muudatusi ei ole",
+    filtro: "Filtreeri teema järgi",
+    todo: "Kõik",
+    tipos: { pago: "Väljamaksed", "salario-minimo": "Miinimumpalk", impuestos: "Maksud", aportes: "Maksed ja pensionid", laboral: "Töösuhte reeglid", indices: "Indeksid" },
+    pasa: (antes, despues) => `Muutub: ${antes} → ${despues}`,
+    queda: (valor) => `Uus väärtus: ${valor}`,
+    cambian: "Väärtused muutuvad",
+    zonas: (lista) => `Puudutab: ${lista}`,
+    limite: "Tähtaeg",
+    agregar: "Lisa minu kalendrisse",
+    descargar: "Apple, Outlook ja teised (.ics-fail)",
+    google: "Google'i kalender",
+    calcular: "Arvuta",
+    tambien: "Ka siin",
+    fuente: (organismo, fecha) => `Allikas: ${organismo}. Kontrollitud: ${fecha}.`,
+    verificado: (fecha) => `Kontrollitud: ${fecha}`,
+    suscribir: {
+      titulo: "Kogu kalender, alati ajakohane",
+      texto: "Pärast tellimist ilmuvad uued kuupäevad ise telefoni või arvuti kalendrisse.",
+      boton: "Telli kalender",
+      copiar: "Kopeeri link",
+      copiado: "Link on kopeeritud",
+    },
+    fuentes: {
+      titulo: "Kust kuupäevad pärinevad",
+      texto: "Kaasas on ainult kuupäevad, mis on juba kirjas õigusaktis või ametiasutuse avaldatud väärtuses. Mida pole veel avaldatud, seda siin ei näe.",
+    },
+    vacio: "Sellel teemal ei ole järgmise kaheteistkümne kuu jooksul kuupäevi.",
+    destacado: {
+      ceja: "Palgakalender",
+      titulo: "Selle aasta kuupäevad, mis mõjutavad palka",
+      ir: "Vaata kalendrit",
+      proxima: (titulo, fecha) => `Järgmine: ${titulo} (${fecha})`,
+    },
+    ics: {
+      nombre: (pais) => `${gEt.de(pais)} palgakalender (CalcularYa)`,
+      descripcion: (pais) => `${gEt.de(pais)} palga- ja maksukuupäevad koos ametlike allikatega.`,
+      calculadora: "Kalkulaator",
+      fuente: "Allikas",
+    },
+    og: { proxima: "Järgmine kuupäev", mas: (n) => (n === 1 ? "Ja veel 1 kuupäev sel aastal" : `Ja veel ${n} kuupäeva sel aastal`) },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, et };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

@@ -1214,7 +1214,44 @@ const bg: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Estonio (ADR 0002, D33): «sina»; el país en genitivo delante del sustantivo.
+const gEt = GRAMATICA.et;
+const et: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa kalkulaator",
+    marcaNuevaPestana: "(avaneb uuel vahelehel)",
+    noDisponible: { titulo: "See kalkulaator pole saadaval", texto: "Selle aadress võib olla muutunud." },
+    insertar: "Lisa oma veebilehele",
+    pagina: {
+      titulo: (pais) => [`Tasuta kalkulaatorid sinu veebilehele | ${pais}`, "Tasuta kalkulaatorid sinu veebilehele"],
+      descripcion: (pais) => `Vali ${gEt.de(pais)} kalkulaator, kopeeri kood ja kleebi see oma blogisse või veebilehele. Tasuta ja ametlikud andmed on alati ajakohased.`,
+      h1: "Lisa kalkulaator oma veebilehele",
+      bajada: "Vali kalkulaator, kopeeri kood ja kleebi see sinna, kuhu soovid. Tasuta ja andmed uuenevad ise.",
+      calculadora: "Kalkulaator",
+      buscar: "Otsi kalkulaatorit",
+      sinResultados: "Kalkulaatorit ei leitud.",
+      tema: "Teema",
+      claro: "Hele",
+      oscuro: "Tume",
+      ancho: "Laius",
+      anchoCompleto: "Täislaius",
+      acento: "Rõhuvärv",
+      colores: ["Roheline", "Sinine", "Oranž", "Roosa", "Kiltkivihall"],
+      credito: "Lisa allikaviide kalkulaatori alla",
+      vistaPrevia: "Eelvaade",
+      codigo: "Kleebitav kood",
+      copiar: "Kopeeri kood",
+      copiado: "Kood on kopeeritud",
+      ayudaScript: "Skript pole kohustuslik: see sobitab kalkulaatori kõrguse ise.",
+      ventajas: ["Tasuta ja ilma kontota", "Ametlikud andmed alati ajakohased", "Sobib igasse laiusesse"],
+      nota: "Kalkulaatori all on link CalcularYa lehele. Palun jäta see alles.",
+      verTodas: (pais) => `Vaata kõiki ${gEt.de(pais)} kalkulaatoreid`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa kalkulaator`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, et };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);

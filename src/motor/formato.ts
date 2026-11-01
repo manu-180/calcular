@@ -148,7 +148,7 @@ export function separadoresDe(locale: string): Separadores {
 }
 
 const ESPACIOS = /[\s   ]/g;
-// sv, nb y fi escriben el negativo con el signo menos de Unicode (U+2212) y el formulario muestra los
+// sv, nb, fi y et escriben el negativo con el signo menos de Unicode (U+2212) y el formulario muestra los
 // valores así: sin normalizarlo, «−12 345» se leía como 12345.
 const MENOS = /−/g;
 const normalizar = (texto: string) => texto.replace(ESPACIOS, "").replace(MENOS, "-");

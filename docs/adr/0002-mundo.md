@@ -1474,3 +1474,55 @@ la moneda de prueba es EUR y los textos hablan de «цент», no de «стот
 
 **Fuente.** Geist no trae cirílico: la tarjeta OG usa Noto Sans de respaldo, como uk y ru. La edición
 interna es `zz-bg` («Зеталандия», bg-001).
+
+### D33. Estonio, para Estonia (2026-11-01)
+
+`IDIOMAS` suma `et`. Motor, sitio, inicio, novedades, legales, errores, compartir (también el panel con imagen),
+embed, «Tu sueldo en el mundo», calendario, horas de trabajo (también «con un sueldo real»), rankings, «Sueldos
+reales», afiliados, el diccionario de venta y las 41 universales están en estonio. Modelo: finés (D9), misma
+estructura y texto escrito de nuevo en estonio, no finés adaptado. D25 a D32 están en ramas sin mergear; por eso
+este número. El código de idioma `et` convive con el mercado `et` (Etiopía, en inglés): uno es idioma y otro
+mercado, no se cruzan. Estonia será el mercado `ee`.
+
+**Lo que devuelve Intl (Node).** `et-EE`: `1 234 567,50 €` con espacio duro de miles, `1234,50 €` con cuatro cifras
+(mínimo de agrupación 2) y el negativo con el menos de Unicode (U+2212), que el parser ya normalizaba por sv, nb y
+fi. Porcentaje pegado, `20%`. Fechas `15. oktoober 2026`, con el mes en **nominativo**: tras «alates» o «kuni»
+pediría otro caso, así que la fecha va tras dos puntos («Kehtib alates: 15. oktoober 2026»). PluralRules one/other,
+con las fracciones en other. El parser no necesitó nada propio.
+
+**Registro.** Un solo registro, «sina»: imperativo de segunda del singular («sisesta», «vali», «arvuta») y «sinu».
+Los mercados van con `trato: "tu"`. Decisión de criterio: en Estonia el Estado (e-MTA) trata de «teie» y la mayoría
+de los bancos (LHV, Swedbank, SEB) de «sina» en la web; una web de calculadoras se parece a la herramienta del banco y no al
+trámite, y coincide con lo decidido para fi. No se relevó sitio por sitio: a confirmar con la revisión nativa.
+`reglas_idioma` atrapa «teie», el imperativo plural y la segunda del plural. No se busca «saate» (también es
+genitivo de «saade»).
+
+**Vocabulario.** «palgakalkulaator», «netopalk», «brutopalk», «tulumaks», «sotsiaalmaks», «töötuskindlustus»,
+«käibemaks», «kodulaen», «intress», «kuumakse», «põhiosa», «krediidi kulukuse määr», «riik» para país (nunca «maa»).
+Botón «Arvuta». `reglas_idioma` atrapa también las palabras finesas que delatan un calco (palkka, laskuri, vuotta, korko...). No se
+buscan «ja», «tai» (Tailandia) ni «ole», que existen en las dos lenguas.
+
+**Plurales y gramática.** «1 aasta», «2 aastat», «5 päeva», «1,5 tundi»: partitivo singular detrás del número, en
+`NOMBRES_UNIDAD` y en las funciones de los diccionarios. El país se declina y no lleva preposición: `GRAMATICA.et`
+da genitivo delante del sustantivo («Eesti kalkulaatorid», «Saksamaa»), lugar con inesivo o adesivo («Eestis»,
+«Soomes», «Saksamaal», «Maltal», «Küprosel», «Filipiinidel», «Ameerika Ühendriikides») y `para` con la posposición («Eesti jaoks»), con
+reglas por terminación y una tabla para las gradaciones («Iraagis», «Kuveidis»). Los nombres con «ja» se declinan
+por partes («Saint Vincentil ja Grenadiinidel»). Los nombres salen de `Intl.DisplayNames("et")`.
+
+**Nunca un caso pegado a una cifra o interpolación.** Nada de `${x}-ga` ni `100-st`: el monto, la fecha o la
+ocupación van tras dos puntos, entre paréntesis o donde el nominativo sea correcto. `reglas_idioma` atrapa el sufijo
+tras una cifra y «1 aastat». Con «jooksul» y «kuni» entre montos el número queda como está, sin sufijo.
+
+**Comillas.** „ “ (abre abajo, cierra arriba, U+201E y U+201C). Ni «», ni "", ni ”.
+
+**Universales neutrales.** Los textos no nombran organismos, leyes ni bancos de Estonia, salvo los genéricos «käibemaks», «KM» y
+«krediidi kulukuse määr». `tasa-efectiva` usa este último en slug y título porque es la búsqueda real, y aclara en
+la FAQ y el glosario que también suma costos; la calculadora convierte nominal a efectivo.
+
+**Slugs.** ASCII sin diacríticos: `palk-maailmas`, `riikide-vordlus`, `tootunnid`, `palgakalender`, `tegelikud-palgad`, y
+las universales con su búsqueda real (`laenukalkulaator`, `kaibemaksu-kalkulaator`, `kodulaenu-kalkulaator`,
+`tunnipalk-kuupalgaks`). `palgakalkulaator` queda libre para la calculadora de sueldo neto del país. Se suman por los `SLUG_*`: sin carpetas por idioma.
+
+**Prueba.** `zz-et` (Zetamaa) es una edición interna en `et-001`, para no compartir locale con Estonia en hreflang.
+`check_universales` prueba `et-EE` con EUR, un nombre largo que se declina por partes («Saint Vincent ja Grenadiinid») y uno plural de tabla («Araabia Ühendemiraadid»);
+`check_motor` prueba formato, plurales, parseo, gramática y reglas. Falta revisión por hablante nativo.

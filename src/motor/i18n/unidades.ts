@@ -49,6 +49,9 @@ export const NOMBRES_UNIDAD: Readonly<Record<Idioma, Formas>> = {
   nb: { dias: { uno: "dag", otros: "dager" }, semanas: { uno: "uke", otros: "uker" }, horas: { uno: "time", otros: "timer" }, meses: { uno: "måned", otros: "måneder" }, anios: { uno: "år", otros: "år" } },
   // Finés: tras un número distinto de 1 (fracciones incluidas) el sustantivo va en partitivo singular.
   fi: { dias: { uno: "päivä", otros: "päivää" }, semanas: { uno: "viikko", otros: "viikkoa" }, horas: { uno: "tunti", otros: "tuntia" }, meses: { uno: "kuukausi", otros: "kuukautta" }, anios: { uno: "vuosi", otros: "vuotta" } },
+  // Estonio: tras un número distinto de 1 (fracciones incluidas) el sustantivo va en partitivo singular
+  // («1 aasta», «2 aastat», «5 päeva», «1,5 tundi»; ADR 0002, D33).
+  et: { dias: { uno: "päev", otros: "päeva" }, semanas: { uno: "nädal", otros: "nädalat" }, horas: { uno: "tund", otros: "tundi" }, meses: { uno: "kuu", otros: "kuud" }, anios: { uno: "aasta", otros: "aastat" } },
   ar: {
     dias: { uno: "يوم واحد", dos: "يومان", pocos: "{n} أيام", muchos: "{n} يومًا", otros: "{n} يوم" },
     semanas: { uno: "أسبوع واحد", dos: "أسبوعان", pocos: "{n} أسابيع", muchos: "{n} أسبوعًا", otros: "{n} أسبوع" },

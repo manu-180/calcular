@@ -3744,7 +3744,124 @@ const bg: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// ───────────────────────────── et ─────────────────────────────
+
+// Estonio (ADR 0002, D33): impersonal como el resto de los rankings. El país va en nominativo y en
+// aposición («Eesti, koht 27/41»); los valores variables van tras dos puntos o donde el nominativo sirve.
+const et: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Riikide edetabelid",
+    seo: {
+      titulo: ["Palkade ja maksude võrdlus riigiti", "Riikide edetabelid"],
+      descripcion: (n) => `Kus samast palgast jääb kõige rohkem kätte, maksuvabaduse päev ja kui palju palgatõusust kätte jääb: ${n} riiki. Ametlikud andmed, uuendus iga päev.`,
+    },
+    ceja: "Avatud andmed",
+    h1: "Palk ja maksud riigiti",
+    bajada: (n) => `${n} riiki sama ostujõuga, igaüks arvutatud oma riigi ametliku kalkulaatoriga. Edetabelid uuenevad iga päev iseenesest.`,
+    actualizado: (f) => `Uuendatud: ${f}`,
+    ver: "Vaata edetabelit",
+    niveles: { titulo: "Võrdluspalk", nombres: { bajo: "Madal palk", medio: "Keskmine palk", alto: "Kõrge palk" }, anual: (m) => `${m} aastas` },
+    tramos: { titulo: "Palgatõusu suurus", nombre: (a, b) => `${a} → ${b}` },
+    referencia: {
+      nivel: (m) => `brutopalk ${m} rahvusvahelist dollarit aastas`,
+      tramo: (a, b) => `brutopalga tõus ${a} → ${b} rahvusvahelist dollarit aastas`,
+    },
+    posicion: (pais, p, total) => `${pais}, koht ${p}/${total}`,
+    de: (t) => `${t} riigist`,
+    empate: (o) => (o === 1 ? "jagab kohta ühe teise riigiga" : `jagab kohta ${o} teise riigiga`),
+    fuera: (pais) => `${pais} ei ole nendes edetabelites veel kaasatud: sellel puudub võrdluseks sobiv netopalga kalkulaator.`,
+    lider: "Esikohal",
+    global: (n) => `${n} riiki esimesest viimaseni`,
+    valores: {
+      porMes: (m) => `${m} kuus`,
+      ningunDia: "Mitte ühtegi päeva",
+      deCada: (n) => `${n} iga 100 kohta`,
+      carga: (pct) => `${pct} tulumaksu ja makseid`,
+      cargaAumento: (pct) => `${pct} palgatõusust läheb maksudeks ja makseteks`,
+    },
+    cambio: {
+      titulo: (mes) => `Muutus (võrdlus: ${mes})`,
+      sube: (n) => (n === 1 ? "Tõusis 1 koha võrra" : `Tõusis ${n} koha võrra`),
+      baja: (n) => (n === 1 ? "Langes 1 koha võrra" : `Langes ${n} koha võrra`),
+      igual: "Sama koht",
+      nuevo: "Uus edetabelis",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}: ${ref}`,
+      puesto: "Koht",
+      pais: "Riik",
+      edicion: "See väljaanne",
+      unidad: "Rahvusvahelistes dollarites",
+    },
+    kit: {
+      titulo: "Meediale",
+      bajada: "Selle edetabeli lause, diagramm ja link, valmis avaldamiseks.",
+      compartir: "Jaga",
+      descargar: "Laadi diagramm alla",
+      copiar: "Kopeeri tsitaat",
+      copiado: "Tsitaat kopeeritud",
+      enlace: "Link kopeeritud",
+      compartido: "Jagatud",
+      error: "Kopeerimine ei õnnestunud. Tekst on üleval, kopeeri see käsitsi.",
+      cita: (frase, ranking, ref, fecha) => `${frase}, edetabel „${ranking}“ (${ref}). Allikas: CalcularYa, andmed: ${fecha}.`,
+      texto: (frase, ranking) => `${frase}, edetabel „${ranking}“.`,
+      alt: (ranking) => `Diagramm: „${ranking}“`,
+    },
+    metodo: {
+      titulo: "Kuidas edetabel koostatakse",
+      bajada: "Iga riik arvutatakse tema ametliku netopalga kalkulaatoriga ja tänaste reeglite järgi. Seejärel võrreldakse riike sama ostujõu juures.",
+      niveles: (b, m, a) => `Võrdluspalgad: ${b}, ${m} ja ${a} rahvusvahelist dollarit brutopalka aastas.`,
+      empates: "Kui kahel riigil on tabelis sama väärtus, jagavad nad sama kohta ja järgmine koht jääb vahele (1, 2, 2, 4).",
+      historial: "Koha muutust mõõdetakse iga kuu salvestatava hetkeseisu põhjal. Kui eelmise kuu hetkeseisu pole, muutust ei näidata.",
+      actualizacion: "Tabel arvutatakse iga päev uuesti iga riigi kehtivate andmetega. Uus riik lisandub kohe, kui tema kalkulaator on kasutusel.",
+      ver: "Vaata kogu metoodikat",
+    },
+    datos: {
+      titulo: "Avatud andmed",
+      bajada: "Edetabelite arvud riikide kaupa JSON- ja CSV-vormingus. Uueneb iga päev.",
+      json: "Andmed JSON-vormingus",
+      csv: "Andmed CSV-vormingus",
+      licencia: "Litsents CC BY 4.0: võib vabalt kasutada, kopeerida ja avaldada, kui allikana on märgitud CalcularYa ja lisatud link sellele lehele.",
+      atribucion: "Soovitatav viide allikale",
+    },
+    mundo: { titulo: "Sinu palgaga", texto: (n) => `Kui tahad arvutada oma palgaga ja näha iga riigi kuupäeva, kasuta tööriista „${n}“.`, ir: "Arvuta" },
+    otros: "Veel edetabeleid",
+    rankings: {
+      rinde: {
+        titulo: "Kus samast palgast jääb kõige rohkem kätte",
+        corto: "Kõige rohkem kätte",
+        seo: ["Kus samast palgast jääb kõige rohkem kätte: riikide võrdlus", "Kus samast palgast jääb kõige rohkem kätte"],
+        descripcion: (n) => `Sama palk sama ostujõuga, ${n} riiki: kui palju jääb järele iga riigi maksureeglite järgi. Uueneb iga päev.`,
+        bajada: "Sama brutopalk sama ostujõuga läbib iga riigi reeglid. Esikohal on riik, kus kätte jääb kõige rohkem.",
+        metrica: "Kätte kuus",
+        carga: "Maksud ja maksed",
+        como: "Kuu netopalk on 12 kuu keskmine rahvusvahelistes dollarites.",
+      },
+      libertad: {
+        titulo: "Maksuvabaduse päev riigiti",
+        corto: "Maksuvabaduse päev",
+        seo: ["Maksuvabaduse päev riigiti: võrdlus", "Maksuvabaduse päev riigiti"],
+        descripcion: (n) => `Aasta päev, mil tulumaks ja maksed on tasutud, sama palga juures, ${n} riiki. Uueneb iga päev.`,
+        bajada: "Aasta päev, mil tulumaks ja maksed on tasutud, sama palga juures igas riigis. Esikohal on riik, kus see päev saabub kõige varem.",
+        metrica: "Maksuvabaduse päev",
+        carga: "Maksud ja maksed",
+        como: "Kuupäev jaotab maksud aastale alates 1. jaanuarist: kui maksukoormus on 30%, kulub 30% aastast riigi heaks töötamisele.",
+      },
+      aumento: {
+        titulo: "Kui palju palgatõusust kätte jääb",
+        corto: "Palgatõusust kätte",
+        seo: ["Kui palju palgatõusust kätte jääb: riikide võrdlus", "Kui palju palgatõusust kätte jääb"],
+        descripcion: (n) => `Kui palju jääb iga brutopalgale lisatud 100 ühiku kohta järele pärast tulumaksu ja makseid, ${n} riiki. Uueneb iga päev.`,
+        bajada: "Iga brutopalgale lisatud 100 ühiku kohta jõuab pärast tulumaksu ja makseid tasku just nii palju. Esikohal on riik, kus kätte jääb kõige rohkem.",
+        metrica: "Kätte iga 100 kohta",
+        carga: "Piirmaksumäär",
+        como: "See on kahe palga vaheline piirmaksumäär: osa palgatõusust, mis läheb maksudeks ja makseteks.",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, et };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

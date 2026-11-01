@@ -102,6 +102,17 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
       { re: palabras("laskekaa|valitkaa|tarkistakaa|syöttäkää|kirjoittakaa|painakaa|täyttäkää|katsokaa|lukekaa|ottakaa|pyytäkää|säilyttäkää|vertailkaa|ostakaa|avatkaa|ladatkaa"), nombre: "imperativo plural cortés" },
     ],
   },
+  // Estonio: un solo registro, «sina» (ADR 0002, D33): imperativo de segunda del singular y «sinu». Se atrapa
+  // el «teie» que se cuela: el pronombre, el imperativo plural de los verbos de formulario y el presente de
+  // segunda del plural («saate» no se busca: también es genitivo de «saade»).
+  et: {
+    informal: [],
+    formal: [
+      { re: palabras("teie|teile|teid|teil|teilt|teiega|teieni"), nombre: "teietamine («teie»)" },
+      { re: palabras("sisestage|valige|arvutage|kontrollige|vaadake|klõpsake|vajutage|täitke|kopeerige|laadige|lisage|võrrelge|kasutage|lugege|jagage"), nombre: "imperativo plural (va «sisesta», «vali»)" },
+      { re: palabras("sisestate|valite|maksate|teenite|soovite|näete|arvutate|peate"), nombre: "segunda persona del plural" },
+    ],
+  },
   pl: { informal: [], formal: [{ re: /(?<!\p{L})(?:Pan|Pani|Pana|Panu|Panią|Państwo|Państwa|Pańsk\p{L}*)(?!\p{L})/u, nombre: "forma Pan/Pani" }] },
   // Indonesio: un solo registro, el de los bancos y servicios digitales («Anda» con mayúscula; ADR 0002,
   // D11). Se atrapa el trato informal (kamu, aku, gue/lo), la jerga de chat y «anda» en minúscula, que
@@ -422,6 +433,24 @@ function reglasSr(texto: string, locale?: string): string[] {
   return p;
 }
 
+// Estonio: comillas „ “; estonio y no finés adaptado (las dos lenguas se parecen y el modelo fue fi); el
+// singular tras «1» («1 aasta», no «1 aastat»); y ningún sufijo de caso pegado a una cifra («100-ga», «5%-st»):
+// la cifra va tras dos puntos o en una frase que no la decline. «ja», «tai» (Tailandia) y «ole» existen en
+// las dos lenguas y no se buscan.
+const FINES_ET = palabras("laskuri\\p{L}*|palkk\\p{L}*|palkan|lainan|lainaa|vuotta|vuosi|kuukau\\p{L}*|päivää|päivä|tuntia|tunti|viikko\\p{L}*|korko\\p{L}*|verot|vero|syötä|hinta|hinnan|että|sekä|ovat|sinun");
+const SUFIJO_EN_CIFRA_ET = /\d\s?%?-(?:ga|ni|st|le|lt|l|s|ks|ta|sse|sena)(?!\p{L})/u;
+const UNO_PARTITIVO_ET = /(?<![\d.,])1\s+(?:aastat|kuud|nädalat|tundi)(?!\p{L})/u;
+function reglasEt(texto: string): string[] {
+  const p: string[] = [];
+  if (/[«»"”]/.test(texto)) p.push("comillas: en estonio van „ “");
+  if (/[Ѐ-ӿ]/.test(texto)) p.push("cirílico en estonio");
+  const f = FINES_ET.exec(texto);
+  if (f) p.push(`finés «${f[0]}» (en estonio: kalkulaator, palk, laen, aasta, kuu, päev, tund, nädal, intress, maks, sisesta, hind, et, ning, sinu)`);
+  if (SUFIJO_EN_CIFRA_ET.test(texto)) p.push("sufijo de caso pegado a una cifra");
+  if (UNO_PARTITIVO_ET.test(texto)) p.push("tras «1» va el singular («1 aasta», «1 kuu»)");
+  return p;
+}
+
 function registro(texto: string, idioma: Idioma, trato: Trato): string[] {
   const r = REGISTRO[idioma];
   if (!r) return [];
@@ -613,5 +642,6 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "hu") p.push(...reglasHu(texto));
   if (idioma === "sr") p.push(...reglasSr(texto, locale));
   if (idioma === "bg") p.push(...reglasBg(texto));
+  if (idioma === "et") p.push(...reglasEt(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

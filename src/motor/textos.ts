@@ -842,6 +842,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "tačaka", coma: "zareza" },
     },
   },
+  // Estonio (ADR 0002, D33): «sina», como las calculadoras de los bancos; el botón es «Arvuta».
+  et: {
+    base: {
+      calcular: "Arvuta",
+      resultado: "Tulemus",
+      si: "Jah",
+      no: "Ei",
+      sinResultado: "Seda tulemust me praegu ei näita.",
+      errores: {
+        requerido: "Täida see väli.",
+        "numero-invalido": "Sisesta arv, näiteks {ejemplo}.",
+        "entero-invalido": "Sisesta täisarv, ilma komakohtadeta.",
+        "menor-que-min": "Väikseim lubatud väärtus: {min}.",
+        "mayor-que-max": "Suurim lubatud väärtus: {max}.",
+        "fecha-invalida": "Vali kehtiv kuupäev.",
+        "hora-invalida": "Vali kehtiv kellaaeg.",
+        "opcion-invalida": "Vali üks pakutud valikutest.",
+        "region-invalida": "Vali piirkond.",
+        "calculo-fallido": "Nende andmetega arvutus ei õnnestunud. Kontrolli väärtusi ja proovi uuesti.",
+      },
+      milesAmbiguos: "Kas mõtlesid {sugerido}? Sisesta arv nii, et selles pole {signos}.",
+      separadores: { punto: "punkte", coma: "komasid" },
+    },
+  },
 };
 
 export function textosMotor(idioma: Idioma, trato: Trato, locale?: string): TextosMotor {

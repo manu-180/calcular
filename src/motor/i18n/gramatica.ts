@@ -1338,4 +1338,66 @@ const sr: GramaticaPais = {
   para: (p) => `za ${padezSr(p).akuzativ}`,
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg };
+// Estonio (ADR 0002, D33): el nombre se declina y no lleva preposición. `de` da el genitivo, que va DELANTE
+// del sustantivo («Eesti kalkulaatorid», «Saksamaa andmed»); `en` el caso de lugar entero, inesivo -s
+// («Eestis», «Soomes», «Hispaanias») o adesivo -l (los -maa y las islas: «Saksamaal», «Maltal», «Küprosel»,
+// «Filipiinidel»); `para` el genitivo con la posposición («Eesti jaoks»). Por regla: vocal final, genitivo
+// igual; consonante, -i («Portugali», «Jaapani»); -us, -os, -as, -se («Egiptuse», «Laose», «Hondurase»);
+// plurales -id, -ide; -saared, -saarte; -vabariik, -vabariigi. Los compuestos con «ja» se declinan por partes
+// y lo que va entre paréntesis queda igual. Una sigla lleva el caso con guion («Kongo DV-s»). La tabla
+// cubre las gradaciones que la regla no adivina.
+const et: GramaticaPais = (() => {
+  const TABLA: Readonly<Record<string, readonly [string, string]>> = {
+    "Ameerika Ühendriigid": ["Ameerika Ühendriikide", "Ameerika Ühendriikides"],
+    "Araabia Ühendemiraadid": ["Araabia Ühendemiraatide", "Araabia Ühendemiraatides"],
+    Ühendkuningriik: ["Ühendkuningriigi", "Ühendkuningriigis"],
+    "Kongo Demokraatlik Vabariik": ["Kongo Demokraatliku Vabariigi", "Kongo Demokraatlikus Vabariigis"],
+    Iraak: ["Iraagi", "Iraagis"],
+    Kuveit: ["Kuveidi", "Kuveidis"],
+    Mosambiik: ["Mosambiigi", "Mosambiigis"],
+    Elevandiluurannik: ["Elevandiluuranniku", "Elevandiluurannikul"],
+    "Hongkongi erihalduspiirkond": ["Hongkongi erihalduspiirkonna", "Hongkongi erihalduspiirkonnas"],
+    "Macau erihalduspiirkond": ["Macau erihalduspiirkonna", "Macau erihalduspiirkonnas"],
+    "Palestiina alad": ["Palestiina alade", "Palestiina aladel"],
+    Madalmaad: ["Madalmaade", "Madalmaades"],
+  };
+  // Islas y lo que va con adesivo aunque no termine en -maa.
+  const ADESIVO = new Set(["Malta", "Küpros", "Island", "Kuuba", "Jamaica", "Haiti", "Sri Lanka", "Bahama", "Barbados", "Mauritius", "Madagaskar", "Fidži", "Grenada", "Dominica", "Saint Lucia", "Samoa", "Tonga", "Vanuatu", "Tuvalu", "Nauru", "Kiribati", "Aruba", "Bermuda", "Guam", "Taiwan", "Saint Vincent", "Saint Kitts", "Nevis", "Trinidad", "Tobago", "Antigua", "Barbuda", "São Tomé", "Príncipe", "Turks", "Caicos"]);
+  const uno = (p: string): readonly [string, string] => {
+    const fila = TABLA[p];
+    if (fila) return fila;
+    if (/[A-ZÕÄÖÜŠŽ]{2,}$/.test(p)) return [p, `${p}-s`];
+    let gen: string;
+    let adesivo = /maa$/.test(p) || ADESIVO.has(p);
+    if (/saared$/i.test(p)) {
+      gen = p.replace(/saared$/i, (m) => (m[0] === "S" ? "Saarte" : "saarte"));
+      adesivo = true;
+    } else if (/id$/.test(p)) {
+      gen = `${p.slice(0, -1)}de`;
+      adesivo = true;
+    } else if (/[Vv]abariik$/.test(p)) {
+      gen = `${p.slice(0, -2)}igi`;
+    } else if (/[aeiouõäöüyéí]$/.test(p)) {
+      gen = p;
+    } else if (/[aou]s$/.test(p)) {
+      gen = `${p}e`;
+    } else {
+      gen = `${p}i`;
+    }
+    return [gen, `${gen}${adesivo ? "l" : "s"}`];
+  };
+  const formas = (p: string): readonly [string, string] => {
+    if (TABLA[p]) return TABLA[p];
+    // Lo que va entre paréntesis no se declina: «Myanmari (Birma)», «Myanmaris (Birma)».
+    const par = /^(.*?)( \(.*\))$/.exec(p);
+    if (par) {
+      const [g, l] = formas(par[1]);
+      return [`${g}${par[2]}`, `${l}${par[2]}`];
+    }
+    const partes = p.split(" ja ").map(uno);
+    return [partes.map((f) => f[0]).join(" ja "), partes.map((f) => f[1]).join(" ja ")];
+  };
+  return { nombre: (p) => p, de: (p) => formas(p)[0], en: (p) => formas(p)[1], para: (p) => `${formas(p)[0]} jaoks` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, et };

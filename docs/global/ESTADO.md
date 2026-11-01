@@ -21,6 +21,16 @@ gt py do sv pa hn ni ve bo us br gb fr de es it ca nl ie at pt au nz za ch sg be
 lu ke tz gh sn pk jp ae li, más las ediciones ch-fr ch-it ca-fr be-fr lu-de. Se puede reconstruir
 desde `PAISES` en `src/paises/index.ts`.
 
+## 01/11/2026 · Motor estonio (`claude/mundo-motor-et`, ADR 0002 D33)
+
+`et` entra en `IDIOMAS` e `IDIOMAS_VENTA` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo
+en el mundo» (`palk-maailmas`), rankings (`riikide-vordlus`), horas de trabajo (`tootunnid`), calendario
+(`palgakalender`), «Sueldos reales» (`tegelikud-palgad`), venta completa y las 41 universales con slug ASCII propio.
+Registro «sina» con imperativo de segunda del singular, mercados con `trato: "tu"`, formato `1 234,50 €`. Plurales
+one/other con partitivo singular y declinación del país (`GRAMATICA.et`). Edición de prueba `zz-et` (interna, `et-001`).
+Estonia será el mercado `ee`; `et` como mercado sigue siendo Etiopía.
+- Falta para publicar Estonia: el país en sí, con datos verificados, y revisión por hablante nativo.
+
 ## 01/11/2026 · Tanda 4 de países: rs, me, bg, tj, bt (`claude/paises-tanda-4`)
 
 Publicados: Serbia (rs), Montenegro (me), Bulgaria (bg), Tayikistán (tj) y Bután (bt), detrás de cn. Los cinco
