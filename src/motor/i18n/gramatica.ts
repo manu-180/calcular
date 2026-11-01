@@ -310,6 +310,39 @@ const zh: GramaticaPais = { nombre: (p) => p, de: (p) => `${p}的`, en: (p) => `
 // «Филипините»). `de(p)` = «на» + nombre; `en(p)` = «в» + nombre, «във» delante de в o ф («във
 // Франция», «във Виетнам») y «на» en los archipiélagos («на Малдивите», «на Бахамските острови»);
 // `para(p)` = «за» + nombre. Los nombres llegan como los escribe Intl.DisplayNames en bg.
+// Armenio oriental (ADR 0002, D30). Sin preposición: el caso es un sufijo que va solo en la última palabra
+// del nombre («Բոսնիա և Հերցեգովինայում», «Միացյալ Նահանգների»). Lugar -ում, genitivo -ի, artículo -ը
+// tras consonante y -ն tras vocal. «ա» y «ո» finales toman «յ» antes del sufijo que empieza por vocal
+// («Կանադայում», «Կանադայի», «Մոնակոյի»), «ի», «ու», «ե», «է» no («Չիլիում», «Պերուի», «Զիմբաբվեում»).
+// «-ություն» hace el genitivo en «-ության»; «կղզի» en «կղզու» y «կղզում». Lo que no es armenio lleva guion
+// («Zetaland-ում», como «Google-ի»); una cifra queda sin sufijo. `para` = genitivo + «համար».
+export function casosHy(pais: string): { nombre: string; lugar: string; genitivo: string } {
+  const CORTOS: Readonly<Record<string, string>> = {
+    "Հոնկոնգի ՀՎՇ": "Հոնկոնգ",
+    "Չինաստանի Մակաո ՀՎՇ": "Մակաո",
+    "Կոնգո - Կինշասա": "Կոնգոյի Դեմոկրատական Հանրապետություն",
+    "Կոնգո - Բրազավիլ": "Կոնգոյի Հանրապետություն",
+  };
+  const p = CORTOS[pais] ?? pais.replace(/\s*\([^)]*\)$/, "");
+  if (!/\p{L}/u.test(p)) return { nombre: p, lugar: p, genitivo: p };
+  if (!/\p{sc=Armenian}$/u.test(p)) return { nombre: `${p}-ը`, lugar: `${p}-ում`, genitivo: `${p}-ի` };
+  if (/(?:^|\s)կղզի$/.test(p)) {
+    const raiz = p.slice(0, -1);
+    return { nombre: `${p}ն`, lugar: `${raiz}ում`, genitivo: `${raiz}ու` };
+  }
+  const vocal = /[աեէիոօւ]$/.test(p);
+  const puente = /[աո]$/.test(p) ? "յ" : "";
+  const genitivo = /ություն$/.test(p) ? p.replace(/ություն$/, "ության") : `${p}${puente}ի`;
+  return { nombre: `${p}${vocal ? "ն" : "ը"}`, lugar: `${p}${puente}ում`, genitivo };
+}
+
+const hy: GramaticaPais = {
+  nombre: (p) => casosHy(p).nombre,
+  de: (p) => casosHy(p).genitivo,
+  en: (p) => casosHy(p).lugar,
+  para: (p) => `${casosHy(p).genitivo} համար`,
+};
+
 const bg: GramaticaPais = (() => {
   const SUSTANTIVO_COMUN = new Set(["щати", "емирства", "република", "острови", "кралство", "федерация"]);
   const PLURALES = new Set(["Филипини", "Малдиви", "Сейшели", "Бахами", "Комори"]);
@@ -1758,4 +1791,4 @@ const mn: GramaticaPais = (() => {
   return { nombre, de: (p) => sufijo(p, "ын", "ийн"), en, para: (p) => `${en(p)} зориулсан` };
 })();
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy };

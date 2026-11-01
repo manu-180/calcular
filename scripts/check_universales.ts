@@ -181,6 +181,13 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент-Винсент ба Гренадин", locale: "mn-MN", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "sb" as CodigoMercado, pais: "SB", nombrePais: "Соломоны арлууд", locale: "mn-MN", trato: "usted", moneda: "SBD" as Moneda, escala: 8 },
   ],
+  // Armenio (ADR 0002, D30): dram con «֏» detrás, «Սենթ Վինսենթ և Գրենադիններ» por el nombre largo con «և»
+  // («Սենթ Վինսենթ և Գրենադիններում») y «Միացյալ Նահանգներ» por el plural.
+  hy: [
+    { mercado: "am" as CodigoMercado, pais: "AM", nombrePais: "Հայաստան", locale: "hy-AM", trato: "usted", moneda: "AMD" as Moneda, escala: 400 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Սենթ Վինսենթ և Գրենադիններ", locale: "hy-AM", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "us" as CodigoMercado, pais: "US", nombrePais: "Միացյալ Նահանգներ", locale: "hy-AM", trato: "usted", moneda: "USD" as Moneda, escala: 1 },
+  ],
   bg: [
     { mercado: "bg" as CodigoMercado, pais: "BG", nombrePais: "България", locale: "bg-BG", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сейнт Винсънт и Гренадини", locale: "bg-BG", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },

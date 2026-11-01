@@ -1680,3 +1680,63 @@ plural detrás de un número y rusismos («зарплата», «калькул�
 **Fuente.** Geist no trae ө ni ү: la tarjeta OG usa Noto Sans de respaldo, como ru y bg. La edición interna es
 `zz-mn` («Зеталанд», mn-001). Mercados de prueba en `check_universales`: Монгол Улс con MNT y nombres largos
 («Бүгд Найрамдах Доминикан Улс», «Сент-Винсент ба Гренадин», «Соломоны арлууд»).
+
+### D30. Armenio (2026-11-01)
+
+D25 a D29 los usan ramas sin mergear; esta entrada toma el D30 para no chocar.
+
+`IDIOMAS` suma `hy`, para Armenia. Motor, errores, calculadora, sitio, inicio, legales, compartir, embed, afiliados,
+«Tu sueldo en el mundo» (`ashkhatavardzy-ashkharhum`), rankings (`yerkrneri-varkanish`), horas de trabajo
+(`kani-zham-ashkhatank`), calendario (`ashkhatankayin-oratsuyts`), sueldos reales (`irakan-ashkhatavardzer`), el
+diccionario de venta y las 41 universales están en armenio oriental, ortografía reformada de Armenia. Los slugs de
+sección van en `SECCIONES`, sin carpetas.
+
+**Registro.** Uno solo, el de los bancos y servicios: «Դուք» con formas corteses («մուտքագրեք», «հաշվարկեք», «ունեք»),
+botones en infinitivo («Հաշվարկել»). «Դուք», «Ձեր», «Ձեզ» siempre con mayúscula, como Ակբա բանկ («Ապահովեք Ձեր
+ներդրումների...», acba.am, leído el 01/11/2026). ameriabank.am no se pudo leer (redirecciones) y la portada de src.am
+solo dio el menú, sin frases al contribuyente: el registro de ՊԵԿ y Ամերիաբանկ queda por confirmar. La herramienta es
+«հաշվիչ». `reglas_idioma` rechaza «դու», los imperativos en -իր y el pronombre cortés en minúscula.
+
+**Puntuación.** «։» como punto final; «՝» presenta un valor («Ամսաթիվ՝ {fecha}»); «՞» y «՛» sobre la vocal; «,»; comillas
+« ». `reglas_idioma` rechaza «?», «!», «.» y «:» detrás de palabra armenia (salvo «թ.» de la fecha de Intl y «հազ.»), los
+signos que no están sobre vocal, las formas clásicas («իւ», «եւ», «-ութիւն», «ոյ» final) y las occidentales («կը», «մը»,
+«պիտի»). Solo U+0531 a U+0556 y U+0560 a U+0588 cuentan como letra: U+0559 a U+055F son signos. La carta del informe
+usa `nota.dosPuntos` («՝ ») y la lista de fuentes no pone «.» tras la fecha, que ya cierra con «թ.».
+
+**Sin plural detrás de un número.** «3 օր», «41 երկիր», «1,5 տարի». `Intl.PluralRules("hy")` da one/other, pero las dos formas
+de las unidades son iguales. `reglas_idioma` atrapa los plurales frecuentes detrás de una cifra.
+
+**Gramática del país.** Sin preposición: el caso es un sufijo en la última palabra. `casosHy(p)`: lugar -ում, genitivo -ի,
+artículo -ը o -ն; `GRAMATICA.hy`: `nombre` = artículo («Հայաստանը»), `en` = lugar («Հայաստանում»), `de` = genitivo
+(«Հայաստանի»), `para` = genitivo + «համար». «ա» y «ո» toman «յ» («Կանադայում», «Մոնակոյի»); «-ություն» hace «-ության»;
+«կղզի» hace «կղզու», «կղզում». Los nombres compuestos solo declinan el último («Բոսնիա և Հերցեգովինայում», «Սենթ Վինսենթ և
+Գրենադիններում»). Lo no armenio lleva guion («Zetaland-ում»); una cifra queda sin sufijo. Tabla corta para los nombres de Intl con
+agregado («Հոնկոնգի ՀՎՇ», «Կոնգո - Կինշասա»). Las reglas se revisaron sobre los ~250 nombres de Intl en hy, sin hablante nativo.
+
+**Ningún sufijo pegado a cifras ni marcadores.** Nada de «5%-ով», «2026-ին», «{pais}ում», «1-ին»: se reescribe («2026 թվականին»,
+«առաջին», «100 ֏ գումարի»). Los `{pais}` de la venta van en nominativo y aislados. `reglas_idioma` lo rechaza.
+
+**Mayúsculas sostenidas no.** JavaScript y CSS suben «և» a «ԵՒ», la forma clásica; la reformada es «ԵՎ», y CSS no se puede
+corregir. Por eso `:lang(hy) { text-transform: none !important }` y `mayusculasDe` y `transformeOg` (`i18n/escritura.ts`) dejan las
+cejas de las OG como en el diccionario. `mayusculaInicial` da «Եվ».
+
+**Formato.** Intl de hy-AM: espacio duro de miles desde cinco cifras («1234», «12 345»), coma decimal, «֏» detrás, porcentaje pegado
+(«18%»), fecha «5 մարտի, 2026 թ.». `parsearNumero` no cambia. Intl da 2 decimales al dram («1250,00 ֏»); si Armenia los quiere sin
+decimales, lo decide el país. `inferir.ts` reconoce «տարի», «տարեկան», «ամիս», «ամսական».
+
+**Fuente.** Geist no trae armenio. En la web, `:lang(hy)` usa la fuente del sistema entera (system-ui, Segoe UI, Sylfaen, Noto Sans
+Armenian...). En las OG, Noto Sans Armenian de respaldo. El buscador cuenta U+0531 a U+0587 como letras, busca «և» como «եվ» y saca
+los signos que van dentro de la palabra («ինչպե՞ս» es «ինչպես»).
+
+**Ancho SEO.** Medido con GDI a 20 px en Sylfaen, Segoe UI, Arial y Noto Sans Armenian: una letra armenia ocupa 1,3 latinas (11,5 a 12,5
+px contra 8,5 a 9,7). 60 de ancho son unas 46 letras y 160 unas 123. Es una medición de escritorio, no del resultado real de Google.
+
+**Slugs.** Transliteración ASCII legible en kebab-case, sobre la frase que se busca: շ=sh, չ/ճ=ch, ջ=j, ժ=zh, խ=kh, ձ=dz, ծ/ց=ts, ղ=gh,
+թ/տ=t, փ/պ=p, ք/կ=k, ռ/ր=r, ու=u, ը=y, ե inicial=ye, և=ev. Universales: `vark-hashvich`, `hipotekayi-hashvich`, `aah-hashvich`,
+`tokosi-hashvich`, `bard-tokos`, `parz-tokos`, `pastatsi-tokosadruyk`, `marmni-zangvatsi-indeks` y demás. `ashkhatavardzi-hashvich` queda
+libre para la calculadora local de sueldo neto de Armenia. Rankings: `ashkhatavardzi-gnoghunakutyun`, `harkayin-azatutyan-or`,
+`inchkan-e-mnum-barcratsumits`.
+
+**Prueba.** `zz-hy` (Զետալանդիա, locale `hy-001`) es una edición interna, con el slug `kisamyakayin-pargev`. `check_universales` prueba
+hy-AM con AMD, «Սենթ Վինսենթ և Գրենադիններ» y «Միացյալ Նահանգներ». `check_motor` prueba parseo, unidades, dram, fecha, ancho, «և» inicial,
+buscador y casos del país. Los textos no tuvieron revisión de un hablante nativo: queda pendiente antes de publicar Armenia.

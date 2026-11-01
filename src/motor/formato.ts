@@ -72,8 +72,10 @@ export function formatearMoneda(n: number, locale: string, moneda: Moneda, decim
 // Mayúscula o minúscula en la primera letra con las reglas del locale: en turco «i» sube a «İ» e «I»
 // baja a «ı» (toUpperCase daría «Iş» en vez de «İş»).
 // En georgiano no hay mayúsculas: la letra queda igual aunque el locale no lo diga (ADR 0002, D26).
+// En armenio reformado «և» a principio de frase es «Եվ» (Intl la sube a «ԵՒ», la forma clásica; D30).
 export function mayusculaInicial(s: string, locale: string): string {
   if (/^[\u10D0-\u10FF]/.test(s)) return s;
+  if (s.startsWith("և")) return `Եվ${s.slice(1)}`;
   return s ? s.charAt(0).toLocaleUpperCase(locale) + s.slice(1) : s;
 }
 

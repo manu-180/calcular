@@ -796,6 +796,29 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
     },
   },
   // Búlgaro (ADR 0002, D24): 2.ª del plural, como ДСК y НАП. El botón va en imperativo cortés.
+  hy: {
+    base: {
+      calcular: "Հաշվարկել",
+      resultado: "Արդյունք",
+      si: "Այո",
+      no: "Ոչ",
+      sinResultado: "Այս արդյունքը դեռ չենք ցուցադրում։",
+      errores: {
+        requerido: "Լրացրեք այս դաշտը։",
+        "numero-invalido": "Մուտքագրեք թիվ, օրինակ՝ {ejemplo}։",
+        "entero-invalido": "Մուտքագրեք ամբողջ թիվ՝ առանց տասնորդականների։",
+        "menor-que-min": "Նվազագույն թույլատրելի արժեքը՝ {min}։",
+        "mayor-que-max": "Առավելագույն թույլատրելի արժեքը՝ {max}։",
+        "fecha-invalida": "Ընտրեք ճիշտ ամսաթիվ։",
+        "hora-invalida": "Ընտրեք ճիշտ ժամ։",
+        "opcion-invalida": "Ընտրեք տարբերակներից մեկը։",
+        "region-invalida": "Ընտրեք մարզը։",
+        "calculo-fallido": "Այս տվյալներով հնարավոր չեղավ հաշվարկել։ Ստուգեք արժեքները և փորձեք նորից։",
+      },
+      milesAmbiguos: "Գուցե նկատի ունեի՞ք՝ {sugerido}։ Մուտքագրեք թիվն առանց այս նշանների՝ {signos}։",
+      separadores: { punto: "կետերի", coma: "ստորակետերի" },
+    },
+  },
   bg: {
     base: {
       calcular: "Изчислете",

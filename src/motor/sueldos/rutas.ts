@@ -15,6 +15,7 @@ export const SLUG_SUELDOS: Record<Idioma, string> = {
   zh: "zhenshi-xinzi",
   bg: "realni-zaplati",
   mn: "bodit-tsalin",
+  hy: "irakan-ashkhatavardzer",
 
   pl: "prawdziwe-zarobki",
   sv: "verkliga-loner",

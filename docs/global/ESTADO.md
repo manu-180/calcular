@@ -157,6 +157,13 @@ se volvieron a correr `check_paises me`, `check_seo_pais me`, `check_textos_pais
 `tsc`, sin fallas nuevas (`check-all` completo no se repitió). Arreglada la raya de hu en `check_guiones`.
 Avisos de series de la tanda antes del 1/12/2026: rs (4 calculadoras), me, bg y tj (1 cada una).
 
+## 01/11/2026 · Motor armenio (`claude/mundo-motor-hy`, ADR 0002 D30)
+
+Armenio oriental reformado completo: núcleo, venta, secciones globales, las 41 universales y `zz-hy`. Registro Դուք con mayúscula, «։» y «՞»,
+sin plural detrás de un número, sufijos del país con `casosHy`, sin mayúsculas sostenidas («և» subiría a «ԵՒ»), ֏ detrás y una letra armenia
+= 1,3 latinas en `anchoVisual`. Fuentes del país al 01/11: abren src.am, arlis.am, armstat.am y mlsa.am (redirige a welfare.gov.am); cba.am
+cortó la conexión dos veces. Falta el país (`am`) y una revisión nativa.
+
 ## 31/10/2026 · Motor serbio latino (`claude/mundo-motor-sr`)
 
 `sr` entra en `IDIOMAS` con motor, sitio, inicio, legales, compartir, embed, afiliados, «Tu sueldo en el

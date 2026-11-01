@@ -1361,7 +1361,43 @@ const hr: Diccionario<TextosEmbed> = {
   },
 };
 
-export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn };
+// Armenio (ADR 0002, D30): registro Դուք con «Ձեր» en mayúscula; el país va con GRAMATICA.hy.
+const hy: Diccionario<TextosEmbed> = {
+  base: {
+    marca: "CalcularYa հաշվիչ",
+    marcaNuevaPestana: "(բացվում է նոր ներդիրում)",
+    noDisponible: { titulo: "Այս հաշվիչը հասանելի չէ", texto: "Հնարավոր է, որ դրա հասցեն փոխվել է։" },
+    insertar: "Տեղադրել Ձեր կայքում",
+    pagina: {
+      titulo: (pais) => [`Անվճար հաշվիչներ Ձեր կայքի համար | ${pais}`, "Անվճար հաշվիչներ Ձեր կայքի համար"],
+      descripcion: (pais) => `Ընտրեք հաշվիչ ${GRAMATICA.hy.para(pais)}, պատճենեք կոդը և տեղադրեք Ձեր կայքում։ Անվճար է՝ պաշտոնական և թարմ տվյալներով։`,
+      h1: "Տեղադրեք հաշվիչ Ձեր կայքում",
+      bajada: "Ընտրեք հաշվիչը, պատճենեք կոդը և տեղադրեք այն, որտեղ ցանկանում եք։ Անվճար է, իսկ տվյալները թարմացվում են ինքնաշխատ։",
+      calculadora: "Հաշվիչ",
+      buscar: "Փնտրել հաշվիչ",
+      sinResultados: "Որոնմանը համապատասխանող հաշվիչ չկա։",
+      tema: "Թեմա",
+      claro: "Բաց",
+      oscuro: "Մուգ",
+      ancho: "Լայնություն",
+      anchoCompleto: "Ամբողջ լայնությամբ",
+      acento: "Շեշտադրման գույն",
+      colores: ["Կանաչ", "Կապույտ", "Նարնջագույն", "Վարդագույն", "Գրաֆիտ"],
+      credito: "Հղում աղբյուրին՝ հաշվիչի տակ",
+      vistaPrevia: "Նախադիտում",
+      codigo: "Ներկառուցման կոդ",
+      copiar: "Պատճենել կոդը",
+      copiado: "Կոդը պատճենվեց",
+      ayudaScript: "Սկրիպտը պարտադիր չէ, այն միայն կարգավորում է հաշվիչի բարձրությունը։",
+      ventajas: ["Անվճար և առանց գրանցման", "Միշտ թարմ պաշտոնական տվյալներ", "Հարմարվում է ցանկացած լայնության"],
+      nota: "Հաշվիչի տակ կա հղում դեպի CalcularYa։ Խնդրում ենք չհեռացնել այն։",
+      verTodas: (pais) => `Բոլոր հաշվիչները ${GRAMATICA.hy.para(pais)}`,
+      tituloIframe: (nombre) => `${nombre} | CalcularYa հաշվիչ`,
+    },
+  },
+};
+
+export const DICCIONARIOS_EMBED: Diccionarios<TextosEmbed> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy };
 
 export function textosEmbed(idioma: Idioma, trato: Trato, locale?: string): TextosEmbed {
   return resolver(DICCIONARIOS_EMBED, idioma, trato, locale);
