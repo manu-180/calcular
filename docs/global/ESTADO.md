@@ -58,7 +58,18 @@ Riesgos:
 - kh: varias tasas de GDT con una sola lectura por WebFetch, que resume (transferencia, alquiler, tierra ociosa, patente, alojamiento, `tax-on-income`): conviene otra mirada humana. Ley de 1997 en traducción inglesa. Salario mínimo vence el 31/12/2026. Sin `net-salary`, Camboya queda fuera de «Tu sueldo en el mundo».
 - Series: kh, lb y vn tienen tipo de cambio o inflación que caen antes del 2/12/2026 sin cron o carga manual.
 
-**Build y memoria:** en curso: el build completo no termina en Windows con 147 mercados (EMFILE en `collectBuildTraces`). Pico hasta ahí: 4,09 GB.
+**Build y memoria: el pico pasa de 5 GB. Decidir antes de sumar más países.** Memoria privada, suma de los `next/dist` de este build (raíz y descendientes, sin los `next dev` de otras sesiones), `BUILD_CPUS=2`, muestreo cada 5 s.
+
+| Corrida | Chunks | Compilado | Final | Resultado |
+|---|---|---|---|---|
+| 147 mercados (esta rama), 2 veces | 8222 | 3,40 GB | 4,09 GB, transitorio al arrancar los workers | EMFILE antes de generar páginas: **pico de la generación sin medir** |
+| 143 mercados (solo local: mk, vn, lb, kh fuera del registro) | 8052 | 3,44 GB | **5,82 GB** (principal 2,12 + workers 2,03 y 1,67) al final de la generación | exit 0, 11.700 páginas, 23 min 48 s |
+
+- **Riesgo de memoria:** los workers crecen parejo durante toda la generación. Para 147 mercados estimo unos 6 GB (estimación, no medición). El tope de Vercel es 8 GB y la memoria en Linux no es la misma que acá. Si se acerca: `build-vercel.md` manda sacar páginas del prerender, no agrandar la máquina.
+- **La referencia de 3,44 GB no compara:** es igual al pico del compilado de esta corrida. No sé si aquella medición (133 mercados) llegó a generar páginas, así que esto no prueba que la memoria haya subido de 3,44 a 5,82 por sumar 10 mercados. Con muestreo cada minuto el pico de 143 da 5,77 GB.
+- **En Windows el build ya no termina con esta rama.** Después de «Collecting page data», `collectBuildTraces` corre en el proceso principal (`next/dist/build/index.js:1661`) y lee los chunks de `.next/server/chunks` casi todos a la vez. Pasa el tope de ~8192 descriptores por proceso: con 147 mercados saltó de 322 a 2703 handles en 5 s y murió; con 143 llegó a 7366 y pasó. No es memoria, ni la junction (`npm ci` no cambia los chunks: no se corrió).
+- **Vercel sin comprobar:** Linux no tiene ese tope de Windows, pero no sé el límite de descriptores de su contenedor y no hay credenciales para mirar. **Hay que leer el log del preview (EMFILE, SIGKILL) antes de mergear.** Cada tanda suma chunks: 170 en esta.
+- Sin medir 147 completo porque: el entorno rechaza un preload por `NODE_OPTIONS` para limitar lecturas (no se buscó otra forma de inyectarlo, ni se parcheó Next) y `--experimental-build-mode generate` muere con EISDIR en `inlineStaticEnv` (la ruta `data/country-rankings.json` es una carpeta).
 
 ## 01/11/2026 · Tanda 6 de países: am, al, si, ee, is, lv (`claude/paises-tanda-6`)
 
