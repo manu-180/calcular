@@ -82,4 +82,8 @@ No verificado:
 
 ## Checks
 
-Ver el último commit y el retorno al coordinador para los números de la corrida final.
+Corrida final con sk registrado localmente: `tsc` sin errores; `check_paises sk` OK (42 datos, 65 calculadoras, 1
+aviso: la serie NBS envejece sin cron); `check_paises_casos sk` 71 casos en 24 archivos; `check_textos_paises sk` 999
+textos, 0 avisos; `check_seo_pais sk` OK con 17 avisos (páginas bajo el objetivo de 220 palabras, todas sobre el mínimo
+de 90); `check_ofertas_intl sk` OK; `check_fronteras` 15 230 archivos; `check_eol` OK; `check_motor` 4 891 pruebas.
+`check_mundo`: 1 falla ajena (`be`); SK no figura entre los excluidos.
