@@ -8,6 +8,7 @@
 // escala de febrero 2026 — así aplica ARCA la actualización semestral por IPC. Los 22 totales
 // (servicios y venta de las 11 categorías) reconcilian exacto contra
 // impuesto integrado + aportes SIPA + aportes obra social.
+import { enHoraAR } from "@/lib/hora-argentina";
 
 export const VIGENCIA = {
   desde: "1 de agosto de 2026",
@@ -63,9 +64,9 @@ export type VentanaRecategorizacion = {
   dozeMeses: string;
 };
 
-/** Componentes de la fecha en hora argentina (UTC-3), sin depender del TZ del server. */
+/** Componentes de la fecha en hora argentina (del tzdata), sin depender del TZ del server. */
 function fechaAR(d: Date): { anio: number; mes: number; dia: number } {
-  const t = new Date(d.getTime() - 3 * 60 * 60 * 1000);
+  const t = enHoraAR(d);
   return { anio: t.getUTCFullYear(), mes: t.getUTCMonth() + 1, dia: t.getUTCDate() };
 }
 

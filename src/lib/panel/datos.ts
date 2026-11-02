@@ -6,6 +6,7 @@ import { FORMA_MERCADO, MERCADO_AR, esMercadoIntl, esMercadoMedido, mercadoMedid
 import { catalogoIntl, type ProductoIntl } from "@/lib/pagos/catalogo-intl";
 import { generarLecturas } from "@/lib/panel/lecturas";
 import { extremos, sumarDias } from "@/lib/panel/fechas";
+import { diaAR, medianocheAR } from "@/lib/hora-argentina";
 import type {
   BocaDatos,
   BrazoPuente,
@@ -31,7 +32,6 @@ import type {
   Reparto,
 } from "@/lib/panel/tipos";
 
-const ZONA = "America/Argentina/Buenos_Aires";
 const KPIS: KpiClave[] = ["visitantes", "usos", "tiempo", "interes", "checkouts", "ventas", "ingresos"];
 const PASOS: PasoEmbudo["paso"][] = ["vio_oferta", "abrio_compra", "fue_a_pagar", "pago"];
 const ESTADOS: Compra["estado"][] = ["aprobado", "reembolsado", "contracargo"];
@@ -39,22 +39,13 @@ const ESTADOS: Compra["estado"][] = ["aprobado", "reembolsado", "contracargo"];
 type Crudo = Record<string, unknown>;
 
 export function limitesDelRango(rango: Rango, ahora: Date = new Date()): { desde: Date; hasta: Date } {
-  const partes = new Intl.DateTimeFormat("en-CA", {
-    timeZone: ZONA,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    timeZoneName: "longOffset",
-  }).formatToParts(ahora);
-  const parte = (tipo: Intl.DateTimeFormatPartTypes) => partes.find((p) => p.type === tipo)?.value ?? "";
-  const zona = parte("timeZoneName").replace("GMT", "");
-  const offset = /^[+-]\d{2}:\d{2}$/.test(zona) ? zona : zona === "" ? "+00:00" : "-03:00";
-  const hoy = `${parte("year")}-${parte("month")}-${parte("day")}`;
+  // Cada borde con su propia medianoche: si en el medio hubo un cambio de huso, no se arrastra el offset de hoy.
+  const hoy = diaAR(ahora.getTime());
   const { inicio, fin } = extremos(rango, hoy);
-  const desde = new Date(`${inicio}T00:00:00${offset}`);
+  const desde = medianocheAR(inicio);
   if (Number.isNaN(desde.getTime())) throw new Error(`No se pudo calcular la medianoche argentina para ${ahora.toISOString()}`);
   if (fin >= hoy) return { desde, hasta: ahora };
-  return { desde, hasta: new Date(`${sumarDias(fin, 1)}T00:00:00${offset}`) };
+  return { desde, hasta: medianocheAR(sumarDias(fin, 1)) };
 }
 
 function objeto(valor: unknown, campo: string): Crudo {
