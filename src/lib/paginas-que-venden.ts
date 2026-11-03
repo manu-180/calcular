@@ -35,6 +35,8 @@ export const RUTAS_QUE_VENDEN = [
   "/blog/como-liquidar-sueldo-empleado-de-comercio",
   "/blog/modelo-recibo-de-sueldo-empleado-de-comercio",
   "/blog/nuevo-recibo-de-sueldo-2026",
+  "/libro-de-sueldos",
+  "/certificado-de-trabajo",
 ] as const;
 
 /** Rutas que venden sólo en la página misma: `/cuota-alimentaria/[mes]` es la serie mensual, sin CTA,
