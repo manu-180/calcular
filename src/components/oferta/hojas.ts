@@ -22,7 +22,7 @@ import { CATEGORIAS as CATEGORIAS_MONO } from "@/data/monotributo";
 // Orden real de las pestañas de cada libro (check_prefill_planillas.ts lo compara con el archivo).
 export const PESTANAS = {
   "planilla-monotributo": ["Instrucciones", "Mi monotributo", "Categorías 2026", "Fuentes"],
-  "planilla-comercio": ["Liquidación", "Escala 2026", "SAC (Aguinaldo)", "Changelog"],
+  "planilla-comercio": ["Liquidación", "Recibo", "Escala 2026", "SAC (Aguinaldo)", "Changelog"],
   "planilla-uocra": ["Instrucciones", "Escalas", "Liquidador", "Diferencias", "Fuentes"],
   "planilla-casas-particulares": [
     "Instrucciones",

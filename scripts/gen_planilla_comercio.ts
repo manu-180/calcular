@@ -73,6 +73,15 @@ export const CELDAS_COMERCIO = {
   bruto: "B17",
   neto: "B19",
 } as const;
+// Celdas de la hoja «Recibo» que lee scripts/check_planilla_comercio.ts: el recibo tiene que mostrar
+// el mismo bruto y neto que la Liquidación (y que calcular.ar).
+export const HOJA_RECIBO_COMERCIO = "Recibo";
+export const CELDAS_RECIBO_COMERCIO = {
+  periodo: "B11",
+  categoria: "B12",
+  bruto: "B20",
+  neto: "B22",
+} as const;
 // Las opciones del desplegable de jornada, por id de JORNADAS_COMERCIO.
 export const JORNADAS_PLANILLA_COMERCIO = {
   "8": "Jornada completa (8hs)",
@@ -302,6 +311,103 @@ function buildLiquidacion(wb: ExcelJS.Workbook) {
   ws.views = [{ state: "frozen", ySplit: 4 }];
 }
 
+// ─── Hoja: RECIBO ────────────────────────────────────────────────────────────
+// Lo que pedían los lectores del post «modelo de recibo de sueldo» (77 vieron la oferta, 11
+// tocaron, 0 compras hasta el 3/11/2026): un recibo imprimible. Lee la fila de liquidación de la
+// hoja principal; los datos de las partes se cargan una vez en las celdas amarillas.
+
+function buildRecibo(wb: ExcelJS.Workbook) {
+  const ws = wb.addWorksheet(HOJA_RECIBO_COMERCIO, {
+    properties: { tabColor: { argb: "FF455A64" } },
+    pageSetup: { paperSize: 9, orientation: "portrait", fitToPage: true, fitToWidth: 1, fitToHeight: 1 },
+  });
+  ws.columns = [{ width: 44 }, { width: 40 }];
+  const L = `'${HOJA_LIQUIDACION_COMERCIO}'!`;
+
+  ws.mergeCells("A1:B1");
+  const t = ws.getCell("A1");
+  t.value = "Recibo de sueldo — Empleados de Comercio (CCT 130/75)";
+  t.font = { bold: true, size: 14, color: { argb: "FFFFFFFF" } };
+  t.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF455A64" } };
+  t.alignment = { horizontal: "center", vertical: "middle" };
+  ws.getRow(1).height = 30;
+
+  ws.mergeCells("A2:B2");
+  ws.getCell("A2").value =
+    "Modelo para imprimir por duplicado: una copia firmada queda para cada parte. Las celdas amarillas se completan una sola vez; los importes salen de la hoja «Liquidación».";
+  ws.getCell("A2").font = { italic: true, size: 9, color: { argb: "FF555555" } };
+  ws.getCell("A2").alignment = { wrapText: true, vertical: "top" };
+  ws.getRow(2).height = 30;
+
+  type Fila = [string, { input?: string | number; formula?: string; formato?: string; total?: boolean }];
+  const filas: Fila[] = [
+    ["Empleador (razón social)", { input: "" }],
+    ["CUIT del empleador", { input: "" }],
+    ["Domicilio del empleador", { input: "" }],
+    ["Trabajador/a (nombre y apellido)", { input: "" }],
+    ["CUIL del trabajador/a", { input: "" }],
+    ["Legajo", { input: "" }],
+    ["Fecha de ingreso", { input: "" }],
+    ["Período", { formula: `${L}${CELDAS_COMERCIO.mes}` }],
+    ["Categoría", { formula: `${L}${CELDAS_COMERCIO.categoria}` }],
+    ["Jornada", { formula: `${L}${CELDAS_COMERCIO.jornada}` }],
+    ["Antigüedad (años)", { formula: `${L}${CELDAS_COMERCIO.antiguedad}`, formato: "0" }],
+    ["Básico convencional", { formula: `${L}B12`, formato: ARS_FMT }],
+    ["Adicional por antigüedad", { formula: `${L}B14`, formato: ARS_FMT }],
+    ["Presentismo (8,33%)", { formula: `${L}B15`, formato: ARS_FMT }],
+    ["Sumas no remunerativas", { formula: `${L}B13`, formato: ARS_FMT }],
+    ["Asignación extraordinaria", { formula: `${L}B16`, formato: ARS_FMT }],
+    ["TOTAL BRUTO", { formula: `${L}${CELDAS_COMERCIO.bruto}`, formato: ARS_FMT, total: true }],
+    ["Aportes del trabajador (jubilación, PAMI y obra social)", { formula: `${L}B18`, formato: ARS_FMT }],
+    ["NETO A COBRAR", { formula: `${L}${CELDAS_COMERCIO.neto}`, formato: ARS_FMT, total: true }],
+    ["Fecha de pago", { input: "" }],
+  ];
+  // CELDAS_RECIBO_COMERCIO sigue este orden: fila 4 + índice. La guarda de abajo lo verifica.
+  filas.forEach(([etq, v], i) => {
+    const r = 4 + i;
+    const lc = ws.getCell(`A${r}`);
+    lc.value = etq;
+    lc.fill = S.label;
+    lc.border = BORDER_THIN;
+    lc.alignment = { horizontal: "left", indent: 1 };
+    if (v.total) lc.font = { bold: true };
+
+    const c = ws.getCell(`B${r}`);
+    c.border = BORDER_THIN;
+    if (v.formula) {
+      c.value = { formula: v.formula };
+      c.fill = v.total ? S.total : S.output;
+      if (v.total) c.font = { bold: true };
+      if (v.formato) c.numFmt = v.formato;
+      c.alignment = { horizontal: v.formato ? "right" : "left", indent: v.formato ? 0 : 1 };
+    } else {
+      c.value = v.input ?? "";
+      c.fill = S.input;
+      c.alignment = { horizontal: "left", indent: 1 };
+    }
+  });
+  const fila = (etq: string) => `B${4 + filas.findIndex(([e]) => e === etq)}`;
+  const esperado = { periodo: fila("Período"), categoria: fila("Categoría"), bruto: fila("TOTAL BRUTO"), neto: fila("NETO A COBRAR") };
+  for (const [k, ref] of Object.entries(esperado)) {
+    if (CELDAS_RECIBO_COMERCIO[k as keyof typeof CELDAS_RECIBO_COMERCIO] !== ref)
+      throw new Error(`CELDAS_RECIBO_COMERCIO.${k} (${CELDAS_RECIBO_COMERCIO[k as keyof typeof CELDAS_RECIBO_COMERCIO]}) no coincide con el layout del recibo (${ref})`);
+  }
+
+  const r = 4 + filas.length + 2;
+  ws.getCell(`A${r}`).value = "Recibí conforme el importe neto indicado, según la liquidación detallada.";
+  ws.getCell(`A${r}`).font = { italic: true };
+  ws.getCell(`A${r + 3}`).value = "Firma del trabajador/a";
+  ws.getCell(`B${r + 3}`).value = "Firma y sello del empleador";
+  for (const ref of [`A${r + 3}`, `B${r + 3}`]) {
+    ws.getCell(ref).border = { top: { style: "thin", color: { argb: "FF455A64" } } };
+    ws.getCell(ref).alignment = { horizontal: "center" };
+  }
+  ws.mergeCells(`A${r + 5}:B${r + 5}`);
+  ws.getCell(`A${r + 5}`).value =
+    "* El neto es estimado: no incluye cuota sindical, Ganancias ni descuentos por deuda. Completá esos conceptos si corresponden antes de imprimir.";
+  ws.getCell(`A${r + 5}`).font = { italic: true, size: 9, color: { argb: "FF777777" } };
+}
+
 // ─── Hoja 2: ESCALA 2026 ─────────────────────────────────────────────────────
 // Una columna por mes cargado en calcular.ar. Debajo de las 21 categorías van dos filas
 // más: las sumas no remunerativas y la asignación extraordinaria del mes. La Liquidación
@@ -514,6 +620,11 @@ function buildChangelog(wb: ExcelJS.Workbook) {
       "Circular FAECYS «ACUERDO 07/2026» del 28/7/2026 (PDF oficial, 56 páginas, leído completo).",
     ],
     [
+      "03/11/2026",
+      "Nueva hoja «Recibo»: el recibo de sueldo del mes para imprimir por duplicado, que lee la liquidación de la hoja principal (categoría, período, haberes, aportes y neto). Las cifras y las fórmulas de la liquidación no cambian.",
+      "calcular.ar",
+    ],
+    [
       "(próxima actualización)",
       "Se actualizará cuando FAECYS publique la paritaria del último trimestre de 2026.",
       "faecys.org.ar",
@@ -542,12 +653,13 @@ export async function generarPlanillaComercio(): Promise<string> {
   const wb = new ExcelJS.Workbook();
   wb.creator = "CalculAR (calcular.ar)";
   wb.created = new Date("2026-06-12");
-  wb.modified = new Date("2026-07-30");
+  wb.modified = new Date("2026-11-03");
   wb.title = "Planilla de sueldos Empleados de Comercio 2026 — CCT 130/75";
   wb.subject = "Liquidación de sueldos según la circular oficial de FAECYS";
   wb.keywords = "comercio, sueldo, cct 130/75, faecys, planilla, liquidación";
 
   buildLiquidacion(wb);
+  buildRecibo(wb);
   buildEscala(wb);
   buildSac(wb);
   buildChangelog(wb);
@@ -565,7 +677,7 @@ if (process.argv[1] && /gen_planilla_comercio\.ts$/.test(process.argv[1])) {
   generarPlanillaComercio()
     .then((salida) => {
       console.log(`Planilla Comercio generada: ${salida}`);
-      console.log(`   Hojas: Liquidación | ${ESC} | SAC (Aguinaldo) | Changelog`);
+      console.log(`   Hojas: Liquidación | Recibo | ${ESC} | SAC (Aguinaldo) | Changelog`);
       console.log(`   ${MESES.length} meses: ${MESES.map((m) => m.etiqueta).join(" · ")}`);
       console.log(`   Fuente: ${COMERCIO_FUENTES.escalas.nombre}`);
     })

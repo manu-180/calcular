@@ -14,6 +14,52 @@ Formato:
 - Evaluado: <cambio anterior> → <resultado con números> · <se queda | se revierte>
 ```
 
+## 2026-11-03 (Comercio: ofrecerle la planilla al que paga, no al que cobra)
+- **/convenios/comercio** · fuga accion sobre la oferta (654 vieron la oferta de la planilla en
+  30 días, 10 la tocaron: 1,5 %, contra 9,7 % en `/convenios/uocra` y 7,9 % en
+  `/convenios/camioneros` con el mismo componente)
+  - Cambio: encabezar la oferta con la pregunta que separa públicos. «b» = dos tarjetas arriba de la
+    oferta: «¿Liquidás sueldos de comercio?» (la planilla es para vos) y «¿Sos empleado de comercio?»
+    (lo tuyo es gratis: copiá o compartí el resultado, o mirá `/sueldo-neto/comercio`). La oferta y
+    su botón quedan iguales en las dos variantes · experimento `comercio-quien`
+    (`^/convenios/comercio$`, métrica `acciones`, hasta 2026-12-15)
+  - Hipótesis: a esta página entran empleados mirando su sueldo («cuánto cobra un empleado de
+    comercio por 8 horas», 11.488 impresiones en 14 días) y la planilla liquida sueldos. Si el que
+    paga se reconoce antes de la oferta, la toca más; el empleado deja de rebotar contra ella.
+  - Antes: 654 vieron / 10 tocaron Comprar (1,5 %), 0 compras desde esta página en 60 días.
+  - Se evalúa: cuando el informe dé veredicto (≥ 200 por variante, P ≥ 95 %) o el 2026-12-15. Leer
+    `acciones` por variante y, aparte, `cta_compra` y `checkout` por variante en `ca_eventos`: el
+    link a `/sueldo-neto/comercio` no lleva `data-evento` a propósito, para que un toque del
+    empleado no cuente como acción de la «b».
+- **/convenios/comercio/[mes], blog de comercio, /libro-de-sueldos, /certificado-de-trabajo**
+  (`PlanillaComercioCTA`) · fuga accion (233 vieron / 26 tocaron «Ver la planilla» / 0 ventas en
+  `/convenios/comercio/octubre-2026`; 77 / 11 / 0 en el post del modelo de recibo)
+  - Cambio: el CTA dice para quién es antes del botón («Para quien paga sueldos · ¿Liquidás sueldos
+    de comercio?»), nombra el recibo imprimible, y al pie manda al empleado a lo gratis
+    (`/sueldo-neto/comercio`). El mismo CTA se suma a `/libro-de-sueldos` y `/certificado-de-trabajo`
+    (páginas del que paga, antes de «Fuentes») · directo
+  - No se sumó a `/aguinaldo`: su calculadora no sabe el convenio de la persona (no hay selector), así
+    que no se puede ofrecer la planilla de Comercio sólo a quien liquida comercio.
+  - Antes: 233 / 26 / 0 en `octubre-2026`; 77 / 11 / 0 en el post del recibo (30 días al 3/11).
+  - Se evalúa: 2026-12-15, con `tools/embudo-planillas.ts --dias 40`: toques de `cta_compra` con
+    `ubicacion=calculadora` desde los meses y el blog, y checkouts desde las dos páginas nuevas.
+- **/planillas** · fuga buscador (rankea por «calculadora faecys», «calcular sueldo empleado de
+  comercio», posición 63: consultas de calculadora, no de planilla)
+  - Cambio: title «Planilla de liquidación de sueldos de Comercio 2026 en Excel» y description con
+    «liquidar sueldos de empleados de comercio (CCT 130/75)», escala, antigüedad, presentismo, jornada
+    parcial y recibo; sin la palabra «calculadora». «Qué trae el archivo» suma la hoja Recibo · directo
+  - Antes: posición 63 en consultas de calculadora; sin impresiones registradas para «planilla
+    liquidación sueldos comercio excel» en `ultimo.json`.
+  - Se evalúa: 2026-12-01 en Search Console: impresiones y posición de «planilla liquidación sueldos
+    comercio excel», «planilla sueldos comercio excel», «liquidar sueldo empleado de comercio».
+- **Planilla de Comercio** · hoja «Recibo» nueva (`scripts/gen_planilla_comercio.ts`): recibo
+  imprimible por duplicado que lee la liquidación del mes (categoría, período, haberes, aportes,
+  neto); el check `check_planilla_comercio` evalúa el .xlsx real y exige el mismo bruto y neto que la
+  Liquidación y que calcular.ar. Changelog de la planilla con la entrada del 03/11/2026 · directo
+  - Hipótesis: los lectores del post «modelo de recibo de sueldo» piden un recibo (14 % de toques,
+    0 ventas), y Casas particulares, que lo tiene, vende 5 de 5 checkouts.
+  - Se evalúa: 2026-12-15, ventas de Comercio iniciadas desde el post del recibo y desde los meses.
+
 ## 2026-11-03 (sesión con Manuel: por qué ven la planilla y no compran)
 - **Todas las ofertas de planillas e informes** · fuga accion (2271 vieron una oferta en 30 días,
   128 tocaron Comprar, 27 abrieron el diálogo del mail, 13 llegaron a MercadoPago)

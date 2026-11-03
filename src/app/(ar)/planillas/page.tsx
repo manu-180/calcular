@@ -10,14 +10,14 @@ import { openGraphDe } from "@/lib/seo";
 // sitemap, tiene tráfico orgánico y es la landing de la campaña de Google Ads (la conversión
 // de compra apunta a este embudo). La planilla de UOCRA vive en /planillas/uocra.
 export const metadata: Metadata = {
-  title: "Planilla de sueldos de Comercio 2026 en Excel",
+  title: "Planilla de liquidación de sueldos de Comercio 2026 en Excel",
   description:
-    "Planilla de Excel y Google Sheets para liquidar el CCT 130/75 con la escala de FAECYS: antigüedad, presentismo y jornada parcial. Pago único.",
+    "Excel y Google Sheets para liquidar sueldos de empleados de comercio (CCT 130/75): escala de FAECYS cargada, antigüedad, presentismo, jornada parcial y recibo para imprimir. Pago único.",
   alternates: { canonical: "/planillas" },
   openGraph: openGraphDe({
     ruta: "/planillas",
-    titulo: "Planilla de sueldos Comercio 2026",
-    bajada: "CCT 130/75 · los mismos números que la calculadora",
+    titulo: "Planilla de liquidación de sueldos Comercio 2026",
+    bajada: "CCT 130/75 · liquidación, recibo y escala de FAECYS",
   }),
 };
 
@@ -74,6 +74,11 @@ export default function PlanillasPage() {
             "El liquidador: elegís categoría, mes, antigüedad y jornada, y te desglosa básico, sumas no remunerativas, antigüedad, presentismo, aportes y neto.",
         },
         {
+          titulo: "Recibo",
+          descripcion:
+            "El recibo de sueldo del mes para imprimir por duplicado: toma la liquidación de la hoja principal y vos completás una sola vez empleador, trabajador, CUIL y legajo.",
+        },
+        {
           titulo: `Escala ${MESES_COMERCIO.length} meses`,
           descripcion: `Las ${CATEGORIAS_COMERCIO.length} categorías del CCT 130/75 con el básico de cada mes publicado, las sumas no remunerativas y la asignación extraordinaria. Es la tabla que el liquidador consulta.`,
         },
@@ -101,7 +106,7 @@ export default function PlanillasPage() {
         },
         {
           q: "¿Qué tiene la planilla que no tenga la calculadora gratis?",
-          a: "La calculadora resuelve un caso por vez y no guarda nada. La planilla queda en tu computadora: la abrís cada mes, cambiás el mes o la categoría y tenés la liquidación desglosada, con la hoja de aguinaldo y sin depender de internet. Y cuando FAECYS publica una escala nueva, te llega actualizada sin pagar de nuevo.",
+          a: "La calculadora resuelve un caso por vez y no guarda nada. La planilla queda en tu computadora: la abrís cada mes, cambiás el mes o la categoría y tenés la liquidación desglosada, el recibo para imprimir y la hoja de aguinaldo, sin depender de internet. Y cuando FAECYS publica una escala nueva, te llega actualizada sin pagar de nuevo.",
         },
         {
           q: "¿Viene con mis datos o la tengo que completar?",
