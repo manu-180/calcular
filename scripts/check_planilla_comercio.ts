@@ -23,6 +23,16 @@ import {
   MESES_COMERCIO,
 } from "../src/data/convenios/comercio";
 import { calcularComercio } from "../src/lib/convenios";
+import path from "node:path";
+import { existsSync } from "node:fs";
+import { abrirLibro } from "./evaluar_xlsx";
+import {
+  CELDAS_COMERCIO,
+  CELDAS_RECIBO_COMERCIO,
+  HOJA_LIQUIDACION_COMERCIO,
+  HOJA_RECIBO_COMERCIO,
+  JORNADAS_PLANILLA_COMERCIO,
+} from "./gen_planilla_comercio";
 
 let fallas = 0;
 
@@ -179,5 +189,55 @@ check(
   );
 }
 
-console.log(fallas === 0 ? "\nTODO OK" : `\n${fallas} FALLAS`);
-process.exit(fallas === 0 ? 0 : 1);
+// ===========================================================================
+// Hoja «Recibo» del archivo real (3/11/2026): tiene que mostrar el mismo bruto y neto que la
+// Liquidación y que calcular.ar. Se evalúa el .xlsx que se vende, no una réplica.
+// ===========================================================================
+async function checkRecibo() {
+  const archivo = path.join(process.cwd(), "private", "planilla-comercio-2026.xlsx");
+  check("el archivo entregable existe", existsSync(archivo), archivo);
+  if (!existsSync(archivo)) return;
+  const libro = await abrirLibro(archivo);
+  check(`tiene la hoja «${HOJA_RECIBO_COMERCIO}»`, libro.hojas.includes(HOJA_RECIBO_COMERCIO), libro.hojas);
+  if (!libro.hojas.includes(HOJA_RECIBO_COMERCIO)) return;
+
+  const L = HOJA_LIQUIDACION_COMERCIO;
+  const R = HOJA_RECIBO_COMERCIO;
+  const mes = MESES_COMERCIO.at(-1)!;
+  const cat = CATEGORIAS_COMERCIO.find((c) => c.id === "vendedor-b")!;
+  libro.cargar(L, {
+    [CELDAS_COMERCIO.categoria]: cat.nombre,
+    [CELDAS_COMERCIO.mes]: mes.etiqueta,
+    [CELDAS_COMERCIO.antiguedad]: 5,
+    [CELDAS_COMERCIO.jornada]: JORNADAS_PLANILLA_COMERCIO["8"],
+    [CELDAS_COMERCIO.presentismo]: "Sí",
+  });
+  const web = calcularComercio({ mesId: mes.id, categoriaId: cat.id, aniosAntiguedad: 5, jornadaFactor: 1, conPresentismo: true })!;
+  const bruto = libro.numero(R, CELDAS_RECIBO_COMERCIO.bruto);
+  const neto = libro.numero(R, CELDAS_RECIBO_COMERCIO.neto);
+  check(
+    "el recibo muestra el bruto de la Liquidación (== calcular.ar)",
+    bruto > 0 && aprox(bruto, libro.numero(L, CELDAS_COMERCIO.bruto)) && aprox(bruto, web.bruto),
+    { recibo: bruto, liquidacion: libro.numero(L, CELDAS_COMERCIO.bruto), web: web.bruto },
+  );
+  check(
+    "el recibo muestra el neto de la Liquidación (== calcular.ar)",
+    neto > 0 && aprox(neto, libro.numero(L, CELDAS_COMERCIO.neto)) && aprox(neto, web.neto),
+    { recibo: neto, liquidacion: libro.numero(L, CELDAS_COMERCIO.neto), web: web.neto },
+  );
+  check(
+    "el recibo repite categoría y período de la Liquidación",
+    libro.valor(R, CELDAS_RECIBO_COMERCIO.categoria) === cat.nombre && libro.valor(R, CELDAS_RECIBO_COMERCIO.periodo) === mes.etiqueta,
+    { categoria: libro.valor(R, CELDAS_RECIBO_COMERCIO.categoria), periodo: libro.valor(R, CELDAS_RECIBO_COMERCIO.periodo) },
+  );
+}
+
+checkRecibo()
+  .catch((e) => {
+    fallas++;
+    console.error("FAIL hoja «Recibo»", e);
+  })
+  .then(() => {
+    console.log(fallas === 0 ? "\nTODO OK" : `\n${fallas} FALLAS`);
+    process.exit(fallas === 0 ? 0 : 1);
+  });

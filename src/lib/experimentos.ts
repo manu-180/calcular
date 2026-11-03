@@ -14,7 +14,17 @@ export type Experimento = {
   metrica: "usos" | "resultados" | "acciones" | "compras" | "rebotes";
 };
 
-export const EXPERIMENTOS: readonly Experimento[] = [];
+export const EXPERIMENTOS: readonly Experimento[] = [
+  {
+    id: "comercio-quien",
+    rutas: "^/convenios/comercio$",
+    variantes: ["a", "b"],
+    hasta: "2026-12-15",
+    hipotesis:
+      "A /convenios/comercio entran empleados; la planilla es para quien liquida. Encabezar la oferta con «¿Liquidás sueldos de comercio?» y mandar al empleado a lo gratis sube los toques del que paga.",
+    metrica: "acciones",
+  },
+];
 
 export const ID_EXPERIMENTO = /^[a-z0-9-]{1,24}$/;
 export const VARIANTE = /^[a-z]$/;

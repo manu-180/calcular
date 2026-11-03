@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculadoraCertificadoTrabajo } from "@/components/CalculadoraCertificadoTrabajo";
 import { JsonLd } from "@/components/JsonLd";
+import { PlanillaComercioCTA } from "@/components/PlanillaComercioCTA";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
 import {
@@ -286,6 +287,8 @@ export default function CertificadoDeTrabajoPage() {
           .
         </p>
       </section>
+
+      <PlanillaComercioCTA />
 
       <section className="space-y-2 border-t border-zinc-200 pt-6 text-sm text-zinc-500">
         <h2 className="text-base font-semibold text-zinc-700">Fuentes</h2>

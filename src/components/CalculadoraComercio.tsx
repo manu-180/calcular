@@ -11,6 +11,8 @@ import {
 import { calcularComercio } from "@/lib/convenios";
 import { formatARS, parseDecimal } from "@/lib/formato";
 import { CompartirWhatsApp } from "@/components/CompartirWhatsApp";
+import Link from "next/link";
+import { Variante } from "@/components/Experimentos";
 import { OfertaPlanilla } from "@/components/OfertaPlanilla";
 import { hojaComercio } from "@/components/oferta/hojas";
 import { prefill } from "@/lib/prefill/comercio";
@@ -342,34 +344,74 @@ Escala oficial CCT 130/75: https://calcular.ar/convenios/comercio`);
       </div>
 
       {oferta && previa && datosCompra && categoria && (
-        <OfertaPlanilla
-          producto={oferta}
-          desde="cta-comercio"
-          hoja={previa.hoja}
-          titulo="Tu liquidación, lista en Excel"
-          bajada={
-            <>
-              La planilla te llega con <strong className="font-semibold text-zinc-800">{categoria.nombre}</strong>,{" "}
-              {datosCompra.anios} {datosCompra.anios === 1 ? "año" : "años"} de antigüedad y{" "}
-              {jornada.etiqueta.toLowerCase()} ya cargados. El mes que viene elegís el mes nuevo y la liquidación
-              sale sola.
-            </>
-          }
-          incluye={[
-            {
-              titulo: "Tus datos, ya cargados",
-              texto: "Categoría, mes, antigüedad, jornada y presentismo, en las mismas celdas que ves acá.",
-            },
-            {
-              titulo: "Toda la escala oficial de FAECYS",
-              texto: `Las ${CATEGORIAS_COMERCIO.length} categorías de ${MESES_COMERCIO[0].etiqueta.toLowerCase()} a ${MESES_COMERCIO.at(-1)!.etiqueta.toLowerCase()}, con las sumas no remunerativas de cada mes.`,
-            },
-            {
-              titulo: "Aguinaldo y actualizaciones",
-              texto: "Una hoja para el aguinaldo, y cuando FAECYS publica una escala nueva te llega la planilla al día, sin pagar de nuevo.",
-            },
-          ]}
-        />
+        <>
+          {/* Experimento comercio-quien (docs/medicion/BITACORA.md, 2026-11-03): a esta página entran
+              empleados mirando su sueldo y la planilla es para quien lo paga. La «b» separa los dos
+              públicos antes de la oferta; la oferta y su botón quedan iguales en las dos variantes. */}
+          <Variante exp="comercio-quien" v="b">
+            <div className="mb-6 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl bg-emerald-50 p-5 ring-1 ring-emerald-700/10">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-emerald-800">
+                  Si pagás sueldos
+                </p>
+                <p className="mt-1.5 text-lg font-bold leading-snug tracking-tight text-zinc-900">
+                  ¿Liquidás sueldos de comercio?
+                </p>
+                <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">
+                  La planilla de abajo es para vos: liquidás a todo el personal, mes a mes, con la escala
+                  oficial ya cargada y el recibo listo para imprimir.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white p-5 ring-1 ring-zinc-900/[0.06]">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-500">
+                  Si cobrás un sueldo
+                </p>
+                <p className="mt-1.5 text-lg font-bold leading-snug tracking-tight text-zinc-900">
+                  ¿Sos empleado de comercio?
+                </p>
+                <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">
+                  Lo tuyo ya está, y es gratis: copiá o compartí el resultado de arriba, y mirá cuánto te
+                  queda en mano en{" "}
+                  <Link
+                    href="/sueldo-neto/comercio"
+                    className="font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-4 hover:text-emerald-900"
+                  >
+                    sueldo neto de comercio
+                  </Link>
+                  .
+                </p>
+              </div>
+            </div>
+          </Variante>
+          <OfertaPlanilla
+            producto={oferta}
+            desde="cta-comercio"
+            hoja={previa.hoja}
+            titulo="Tu liquidación, lista en Excel"
+            bajada={
+              <>
+                La planilla te llega con <strong className="font-semibold text-zinc-800">{categoria.nombre}</strong>,{" "}
+                {datosCompra.anios} {datosCompra.anios === 1 ? "año" : "años"} de antigüedad y{" "}
+                {jornada.etiqueta.toLowerCase()} ya cargados. El mes que viene elegís el mes nuevo y la liquidación
+                sale sola.
+              </>
+            }
+            incluye={[
+              {
+                titulo: "Tus datos, ya cargados",
+                texto: "Categoría, mes, antigüedad, jornada y presentismo, en las mismas celdas que ves acá.",
+              },
+              {
+                titulo: "Toda la escala oficial de FAECYS",
+                texto: `Las ${CATEGORIAS_COMERCIO.length} categorías de ${MESES_COMERCIO[0].etiqueta.toLowerCase()} a ${MESES_COMERCIO.at(-1)!.etiqueta.toLowerCase()}, con las sumas no remunerativas de cada mes.`,
+              },
+              {
+                titulo: "Recibo, aguinaldo y actualizaciones",
+                texto: "Una hoja de recibo para imprimir con la liquidación del mes, otra para el aguinaldo, y cuando FAECYS publica una escala nueva te llega la planilla al día, sin pagar de nuevo.",
+              },
+            ]}
+          />
+        </>
       )}
     </div>
   );
