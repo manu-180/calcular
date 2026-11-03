@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useRef, useState, type KeyboardEvent } from "react";
-import { CompraDialogo, abrirCompra } from "@/components/CompraDialogo";
+import { useComprar } from "@/components/compra/directa";
 import { HojaCalculo } from "@/components/HojaCalculo";
 import { RegistroPrevia } from "@/components/plazo-fijo/RegistroPrevia";
 import type { PreviaPlazoFijo } from "@/components/plazo-fijo/hojas";
@@ -21,6 +21,7 @@ export function OfertaPlazoFijo({ producto, previa }: { producto: DatosOferta; p
   const base = useId();
   const refs = useRef<Record<Pestana, HTMLButtonElement | null>>({ registro: null, renovacion: null, uva: null });
   const precio = `$${producto.precio.toLocaleString("es-AR")}`;
+  const { enviando, onClick } = useComprar(producto.slug, producto.precio);
   const r = previa.resultado;
   const meses = Math.round(r.diasTotales / 30);
 
@@ -55,8 +56,6 @@ export function OfertaPlazoFijo({ producto, previa }: { producto: DatosOferta; p
       aria-labelledby={`${base}-titulo`}
       className="rounded-[1.75rem] bg-zinc-900/[0.035] p-1.5 ring-1 ring-zinc-900/[0.06]"
     >
-      <CompraDialogo producto={{ slug: producto.slug, tituloCorto: producto.tituloCorto, precio: producto.precio }} />
-
       <div className="grid grid-cols-[minmax(0,1fr)] gap-6 rounded-[1.375rem] bg-white p-4 shadow-[var(--shadow-apoyo)] sm:p-7 md:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] md:gap-x-8">
         <header className="md:col-start-2 md:row-start-1">
           <p className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-emerald-800 ring-1 ring-emerald-700/10">
@@ -172,12 +171,11 @@ export function OfertaPlazoFijo({ producto, previa }: { producto: DatosOferta; p
               data-evento="cta_compra"
               data-producto={producto.slug}
               data-ubicacion="calculadora"
-              onClick={(e) => {
-                if (abrirCompra(producto.slug)) e.preventDefault();
-              }}
+              aria-busy={enviando || undefined}
+              onClick={onClick}
               className="group mt-4 flex min-h-12 w-full items-center justify-between gap-3 rounded-xl bg-emerald-600 py-1.5 pr-1.5 pl-5 text-base font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.16)] transition-[background-color,transform,box-shadow] duration-200 ease-[var(--ease-snappy)] hover:bg-emerald-700 hover:shadow-[0_8px_20px_-10px_rgba(0,0,0,0.35)] active:scale-[0.99]"
             >
-              Comprar mi planilla
+              {enviando ? "Te llevamos a MercadoPago…" : "Comprar mi planilla"}
               <span
                 aria-hidden
                 className="grid size-9 place-items-center rounded-lg bg-white/15 transition-transform duration-200 ease-[var(--ease-snappy)] group-hover:translate-x-0.5"

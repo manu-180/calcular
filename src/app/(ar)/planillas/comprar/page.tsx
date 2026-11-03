@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FormularioCompra } from "@/components/CompraDialogo";
+import { FormularioCompra } from "@/components/compra/FormularioCompra";
 import { productoPorSlug } from "@/lib/mp";
 
-// La misma compra que el diálogo de las landings, como página: es el destino del botón cuando
-// no hay JS (o el diálogo no está montado), y adonde vuelve el POST si el mail vino mal.
+// La compra como página: es el destino del botón «Comprar» cuando no hay JS (con JS el botón manda
+// el mismo POST derecho a MercadoPago), y adonde vuelve el POST si el mail vino mal.
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
@@ -38,7 +38,6 @@ export default async function ComprarPage({ searchParams }: { searchParams: Prom
           }}
           errorEmail={sp.error === "email"}
           autoFocus
-          enPagina
         />
       </div>
       <p className="mt-4 text-center text-sm">
