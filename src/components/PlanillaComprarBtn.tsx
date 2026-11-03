@@ -1,11 +1,10 @@
 "use client";
 
-import { abrirCompra } from "@/components/CompraDialogo";
+import { useComprar } from "@/components/compra/directa";
 
-// Abre el diálogo de compra (pide el mail antes de ir a MercadoPago). Sin JS, o en una página
-// que no monta el diálogo, sigue el href a /planillas/comprar, que tiene el mismo formulario.
-// El pago se hace en la MISMA pestaña a propósito: con target="_blank" el auto_return de MP a
-// /planillas/gracias deja al comprador con la descarga en la pestaña que no está mirando.
+// Manda el POST a /api/mp/checkout y lleva a MercadoPago en la MISMA pestaña a propósito: con
+// target="_blank" el auto_return de MP a /planillas/gracias deja al comprador con la descarga en la
+// pestaña que no está mirando. Sin JS sigue el href a /planillas/comprar, que tiene el mismo formulario.
 export function PlanillaComprarBtn({
   producto,
   precio,
@@ -21,6 +20,7 @@ export function PlanillaComprarBtn({
   etiqueta?: string;
   compacto?: boolean;
 }) {
+  const { enviando, onClick } = useComprar(producto, precio);
   const texto = etiqueta ?? `Comprar ahora · $${precio.toLocaleString("es-AR")}`;
   return (
     <a
@@ -29,16 +29,15 @@ export function PlanillaComprarBtn({
       data-evento="cta_compra"
       data-producto={producto}
       data-ubicacion={id ?? "sin-id"}
+      aria-busy={enviando || undefined}
       className={
         compacto
-          ? "block shrink-0 rounded-lg bg-emerald-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.16)] transition-[background-color,transform] duration-200 hover:bg-emerald-700 active:translate-y-px"
-          : "block rounded-lg bg-emerald-600 px-5 py-3.5 text-center text-base font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.16)] transition-[background-color,transform,box-shadow] duration-200 ease-[var(--ease-snappy)] hover:-translate-y-px hover:bg-emerald-700 hover:shadow-[0_6px_16px_-6px_rgba(0,0,0,0.22)] active:translate-y-px"
+          ? "block shrink-0 rounded-lg bg-emerald-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.16)] transition-[background-color,transform] duration-200 hover:bg-emerald-700 active:translate-y-px aria-busy:cursor-wait aria-busy:bg-emerald-700"
+          : "block rounded-lg bg-emerald-600 px-5 py-3.5 text-center text-base font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.16)] transition-[background-color,transform,box-shadow] duration-200 ease-[var(--ease-snappy)] hover:-translate-y-px hover:bg-emerald-700 hover:shadow-[0_6px_16px_-6px_rgba(0,0,0,0.22)] active:translate-y-px aria-busy:cursor-wait aria-busy:bg-emerald-700"
       }
-      onClick={(e) => {
-        if (abrirCompra(producto)) e.preventDefault();
-      }}
+      onClick={onClick}
     >
-      {texto}
+      {enviando ? (compacto ? "Un momento…" : "Te llevamos a MercadoPago…") : texto}
     </a>
   );
 }

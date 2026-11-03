@@ -150,11 +150,13 @@ export async function GET(req: NextRequest) {
   });
 }
 
-// POST (form del diálogo de compra) → con el email del comprador. Un POST además no lo dispara
-// un crawler que siga links: con el GET, cada bot que ignoraba robots.txt creaba una preferencia
-// y ensuciaba la medición del embudo.
-// El mail que se deja acá recibe, un día después, el recordatorio del cron de recupero. Sin estas
-// dos barreras, cualquiera podría cargar mails ajenos y hacer que calcular.ar les escriba:
+// POST (el botón «Comprar», o el formulario de /planillas/comprar sin JS). Un POST además no lo
+// dispara un crawler que siga links: con el GET, cada bot que ignoraba robots.txt creaba una
+// preferencia y ensuciaba la medición del embudo.
+// El mail es opcional desde el 3/11/2026 (docs/decisiones/compra-directa.md): MercadoPago lo pide
+// en su checkout y lo devuelve en el pago, que es de donde sale la entrega. Si viene, recibe un día
+// después el recordatorio del cron de recupero. Sin estas dos barreras, cualquiera podría cargar
+// mails ajenos y hacer que calcular.ar les escriba:
 //   · Origin: un navegador lo manda siempre en un POST de formulario; si viene de otro sitio, no.
 //   · `sitio`: campo trampa oculto; un humano no lo ve y lo deja vacío, un bot lo completa.
 // En los dos casos se sigue al pago igual, pero SIN guardar el mail.
@@ -174,8 +176,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.redirect(`${SITE}/planillas?pago=error`, 303);
   }
 
-  const email = emailValido(String(datos.get("email") ?? ""));
-  if (!email) {
+  // Vacío es válido (sin mail); algo que no es un mail vuelve al formulario para corregirlo.
+  const crudoEmail = String(datos.get("email") ?? "").trim();
+  const email = crudoEmail ? emailValido(crudoEmail) : null;
+  if (crudoEmail && !email) {
     return NextResponse.redirect(`${SITE}/planillas/comprar?p=${producto.slug}&error=email`, 303);
   }
 

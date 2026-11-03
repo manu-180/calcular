@@ -4,7 +4,7 @@ const CLAVE = (slug: string) => `ca:compra:${slug}`;
 const VIGENCIA_MS = 7 * 24 * 3600 * 1000;
 const EVENTO = "ca:datos-compra";
 
-// El diálogo de compra puede estar montado en la misma página que la calculadora (OfertaPlanilla):
+// El formulario de compra puede estar montado en la misma página que la calculadora (OfertaPlanilla):
 // sin este aviso leería lo guardado un render tarde y ofrecería datos que ya no están.
 function avisar(): void {
   try {
@@ -22,7 +22,7 @@ export function suscribirDatosCompra(cb: () => void): () => void {
   };
 }
 
-// La calculadora deja acá lo que la persona cargó; el diálogo de compra lo levanta y lo manda
+// La calculadora deja acá lo que la persona cargó; el botón de compra lo levanta y lo manda
 // con el checkout. localStorage y no estado de React: la compra pasa en otra página (la landing).
 export function recordarDatosCompra(slug: string, datos: unknown): void {
   try {

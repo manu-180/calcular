@@ -14,6 +14,23 @@ Formato:
 - Evaluado: <cambio anterior> → <resultado con números> · <se queda | se revierte>
 ```
 
+## 2026-11-03 (sesión con Manuel: por qué ven la planilla y no compran)
+- **Todas las ofertas de planillas e informes** · fuga accion (2271 vieron una oferta en 30 días,
+  128 tocaron Comprar, 27 abrieron el diálogo del mail, 13 llegaron a MercadoPago)
+  - Cambio: «Comprar» va derecho a MercadoPago, sin el diálogo que pedía el mail; el mail queda
+    opcional en `/planillas/comprar` (sin JS) y en el POST · directo (`docs/decisiones/compra-directa.md`)
+  - Hipótesis: el diálogo perdía a la mitad (27 → 13) y el recordatorio que justificaba pedir el
+    mail no recuperó ninguna de las 16 ventas de 90 días (todas pagadas a los minutos). MP devuelve
+    el mail en el pago: la entrega no lo necesita antes.
+  - Antes: 13 checkouts / 128 toques de Comprar (10 %) · MP 4/9 → 3/11: 35 preferencias, 13 pagos
+    (37 %) · ~5 ventas/mes.
+  - Se evalúa: 2026-12-01 con `tools/embudo-planillas.ts --dias 28` y el informe: checkouts por
+    toque, ventas/mes y tasa checkout → pago en MP (si baja de 25 % sin más ventas, se revierte).
+- Sin cambio, anotado para el agente (`docs/medicion/analisis-planillas-2026-11-03.md` § Qué sigue):
+  Comercio es el 46 % de las vistas de oferta y el 8 % de las ventas; las páginas que la ofrecen
+  (`/convenios/comercio`, los meses, el blog de recibos) reciben empleados, no empleadores. No
+  gastar experimentos de copy en `/planillas`: el problema es a quién se le ofrece.
+
 ## 2026-10-24 (calcular.ar → calcularya: links por concepto)
 - **13 calculadoras de calcular.ar** (`/sueldo-neto`, `/aguinaldo`, `/indemnizacion`, `/vacaciones`,
   `/horas-extras`, `/salario-minimo`, `/empleada-domestica`, `/ganancias`, `/monotributo`,

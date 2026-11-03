@@ -19,7 +19,6 @@ import type { ReactNode } from "react";
 import { AvisoPago } from "@/components/AvisoPago";
 import { BarraCompraMovil } from "@/components/BarraCompraMovil";
 import { CatalogoPlanillas, OtrasPlanillas } from "@/components/CatalogoPlanillas";
-import { CompraDialogo } from "@/components/CompraDialogo";
 import { HojaCalculo, type FilaHoja, type HojaPrevia } from "@/components/HojaCalculo";
 import { AvisoDatosCargados, PreviaPersonal, type SlugPersonalizable } from "@/components/oferta/PreviaPersonal";
 import { JsonLd } from "@/components/JsonLd";
@@ -186,10 +185,6 @@ export function PlanillaLanding(c: ConfigLanding) {
     <>
       <JsonLd data={jsonLd} />
       <JsonLd data={faqLd} />
-      <CompraDialogo
-        producto={{ slug: producto.slug, tituloCorto: producto.tituloCorto, precio: producto.precio }}
-      />
-
       <CatalogoPlanillas actual={producto.slug} />
       <AvisoPago />
 
@@ -203,9 +198,11 @@ export function PlanillaLanding(c: ConfigLanding) {
         <h1 className="mb-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">{c.h1}</h1>
         <p className="max-w-2xl text-lg text-zinc-600">{c.bajada}</p>
 
+        {/* #comprar: ancla del mail de recupero (api/cron/recuperar-compras). */}
         <div
+          id="comprar"
           data-oferta={producto.slug}
-          className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50/60 p-5 sm:flex sm:items-center sm:gap-6"
+          className="mt-6 scroll-mt-6 rounded-xl border border-emerald-200 bg-emerald-50/60 p-5 sm:flex sm:items-center sm:gap-6"
         >
           <div className="shrink-0">
             <p className="text-3xl font-bold text-zinc-900">{precio}</p>

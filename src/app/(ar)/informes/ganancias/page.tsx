@@ -9,7 +9,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BarraCompraMovil } from "@/components/BarraCompraMovil";
-import { CompraDialogo } from "@/components/CompraDialogo";
 import { JsonLd } from "@/components/JsonLd";
 import { PlanillaComprarBtn } from "@/components/PlanillaComprarBtn";
 import { InformeGananciasVistaPrevia } from "@/components/informe-ganancias/VistaPrevia";
@@ -163,7 +162,6 @@ export default function InformeGananciasLanding() {
     <>
       <JsonLd data={jsonLd} />
       <JsonLd data={faqLd} />
-      <CompraDialogo producto={{ slug: SLUG_INFORME, tituloCorto, precio, entrega: "informe" }} />
 
       <div className="space-y-20 sm:space-y-24">
         {/* ── Hero ── */}

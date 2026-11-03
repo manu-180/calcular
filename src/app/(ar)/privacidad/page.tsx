@@ -140,9 +140,10 @@ export default function PrivacidadPage() {
           producto, el monto, el número de operación y si el pago se aprobó.
         </p>
         <p>
-          Si al comprar dejás tildado «Usar los datos que cargué en la calculadora», los valores de esa
-          calculadora viajan con el pago a MercadoPago y vuelven cuando abrís tu enlace, para armarte el
-          archivo o el informe con tus números. Son sólo estos, según lo que compres:
+          Si usaste la calculadora en los últimos 7 días desde el mismo navegador, los valores que
+          cargaste viajan con el pago a MercadoPago y vuelven cuando abrís tu enlace, para armarte el
+          archivo o el informe con tus números. No llevan tu nombre ni ningún dato personal; son sólo
+          estos, según lo que compres:
         </p>
         <ul className="list-disc space-y-1.5 pl-5">
           <li>planilla de Comercio: mes, categoría, años de antigüedad, jornada y si cobra presentismo;</li>
