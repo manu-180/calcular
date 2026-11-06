@@ -1,17 +1,17 @@
 import { RANGOS, type Preset, type Rango } from "@/lib/panel/tipos";
+import { diaAR } from "@/lib/hora-argentina";
 
-// Fecha argentina "AAAA-MM-DD". Argentina está fija en UTC-3 (ver formato.ts).
+// Fecha argentina "AAAA-MM-DD", del tzdata (ver hora-argentina.ts).
 export type Dia = string;
 
 const DIA_MS = 86_400_000;
-const OFFSET_AR_MS = 3 * 3600 * 1000;
 const FORMA_DIA = /^\d{4}-\d{2}-\d{2}$/;
 const DIAS_PRESET: Record<Preset, number> = { hoy: 1, "7d": 7, "30d": 30, "90d": 90 };
 // ca_panel rechaza rangos de más de 400 días.
 export const MAX_DIAS = 400;
 
 export function hoyAR(ahora: number = Date.now()): Dia {
-  return new Date(ahora - OFFSET_AR_MS).toISOString().slice(0, 10);
+  return diaAR(ahora);
 }
 
 export function sumarDias(d: Dia, n: number): Dia {
