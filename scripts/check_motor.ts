@@ -22,7 +22,7 @@ import { pluralHe, prefijoHe } from "../src/motor/i18n/hebreo";
 import { pluralSq, pluralSl, formaIs, pluralIs, pluralSr } from "../src/motor/i18n/plural";
 import { pluralHr } from "../src/motor/i18n/plural";
 import { problemasDeTexto as problemasIs } from "./reglas_idioma";
-import { crearRegistro, definirEdicion, definirPais, esUniversal, marcadoresDe, publicabilidad, rellenarContenido, resolverValores, tieneMarcadores } from "../src/motor/registro";
+import { crearRegistro, definirEdicion, definirPais, esUniversal, hayLlavesSueltas, marcadoresDe, publicabilidad, rellenarContenido, resolverValores, tieneMarcadores } from "../src/motor/registro";
 import { UNIVERSALES } from "../src/motor/universales";
 import { idiomasDe } from "../src/motor/universales/tipos";
 import { textosMotor } from "../src/motor/textos";
@@ -761,6 +761,7 @@ if (rM.ok) {
   verdad("fila fuera de la escala queda sin resolver", c.comoSeCalcula[0].includes("{{"), c.comoSeCalcula[0]);
 }
 igual("marcadoresDe con fila de escala y región", marcadoresDe("{{ca.x[2].tasa@on}}").map((m) => [m.id, m.clave, m.campo, m.region]), [["ca.x", "2", "tasa", "on"]]);
+igual("marcador con {{anio}} adentro: no son llaves sueltas y marcadoresDe lo ve", [hayLlavesSueltas("Tope {{ca.limites[{{anio}}]}} hoy"), hayLlavesSueltas("Tope {{ca.limites[{{anio}}] hoy"), marcadoresDe("{{ca.limites[{{anio}}]}}").map((m) => m.id)], [false, true, ["ca.limites"]]);
 
 // Semanas, regiones de un campo y diccionarios por locale.
 igual("semanas en inglés", formatearValorUnidad(2, "semanas", "en-CA"), "2 weeks");

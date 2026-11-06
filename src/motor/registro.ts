@@ -452,7 +452,7 @@ export interface Marcador {
 }
 
 export function marcadoresDe(texto: string): Marcador[] {
-  return [...texto.matchAll(RE_MARCADOR)].map((m) => ({
+  return [...conAnio(texto).matchAll(RE_MARCADOR)].map((m) => ({
     texto: m[0],
     id: m[1],
     ...(m[2] ? { clave: m[2] } : {}),
@@ -473,6 +473,14 @@ function filaDeEscala(valor: unknown, indice: string, campo: CampoFila): unknown
 // año que la gente escribe en la búsqueda cambia cada 1 de enero y 1.379 textos lo tenían tipeado.
 const RE_ANIO = /\{\{\s*anio\s*\}\}/g;
 
+// `rellenar` resuelve {{anio}} ANTES que los datos, así que «{{ca.tope[{{anio}}]}}» es un marcador válido.
+// Quien mira el texto crudo (validar, hayLlavesSueltas) tiene que hacer el mismo orden: si no, ese texto
+// se ve como llaves sueltas, check-all queda rojo y el cron de datos revierte TODAS las series de TODOS los
+// mercados (pasó desde el 27/10 con ca.oas-clawback y ca.tfsa-contribution-room).
+export function conAnio(texto: string, anio: number = new Date().getFullYear()): string {
+  return texto.replace(RE_ANIO, String(anio));
+}
+
 // ¿Hay algo que resolver en el texto? Un dato o {{anio}}, que no es un marcador de dato (search no
 // depende del lastIndex de la regex global).
 export function tieneMarcadores(texto: string): boolean {
@@ -480,7 +488,7 @@ export function tieneMarcadores(texto: string): boolean {
 }
 
 export function hayLlavesSueltas(texto: string): boolean {
-  return /\{\{|\}\}/.test(texto.replace(RE_MARCADOR, "").replace(RE_ANIO, ""));
+  return /\{\{|\}\}/.test(conAnio(texto).replace(RE_MARCADOR, ""));
 }
 
 interface ContextoRelleno {
