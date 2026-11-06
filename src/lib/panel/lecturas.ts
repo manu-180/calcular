@@ -1,3 +1,5 @@
+import registro from "../../../docs/medicion/oportunidades.json";
+import { aOportunidad, ENFRIAMIENTO_DIAS, yaHechas, type Registro } from "@/lib/medicion/oportunidades";
 import { contra, plata } from "@/lib/panel/formato";
 import type { EmbudoProducto, FilaPagina, Kpi, KpiClave, Lectura, PanelDatos, Rango } from "@/lib/panel/tipos";
 
@@ -6,7 +8,7 @@ type Datos = Omit<PanelDatos, "lecturas">;
 // `peso` estima la plata en juego si se actúa (compradores perdidos × precio, usos que podrían
 // convertir al ~0,4 %, etc.). No es un pronóstico: sólo sirve para ordenar reglas distintas en
 // una misma escala y que arriba quede lo que más mueve la aguja.
-type Candidata = Lectura & { peso: number; familia: string };
+export type Candidata = Lectura & { peso: number; familia: string };
 
 const MAXIMO = 6;
 const POR_FAMILIA = 2;
@@ -224,19 +226,35 @@ function reglasVariacion(datos: Datos): Candidata[] {
   return salida;
 }
 
-export function generarLecturas(datos: Datos): Lectura[] {
-  if (datos.sinDatos) return [];
-  const candidatas = [
+export function candidatas(datos: Datos): Candidata[] {
+  return [
     ...reglasEmbudo(datos),
     ...reglasPaginas(datos),
     ...reglasBusquedas(datos),
     ...reglasFuentes(datos),
     ...reglasVariacion(datos),
   ].sort((a, b) => b.peso - a.peso || a.id.localeCompare(b.id));
+}
+
+// Lo que el agente de oportunidades ya trabajó deja de pedir atención: la tarjeta seguiría igual
+// durante los 30 días que tardan en renovarse los números que la dispararon.
+function sinTrabajar(lista: Candidata[], hoy: Date): Candidata[] {
+  const { entradas } = registro as Registro;
+  const desde = hoy.getTime() - ENFRIAMIENTO_DIAS * 86_400_000;
+  const trabajadas = new Set(entradas.filter((e) => new Date(e.fecha).getTime() > desde).map((e) => e.id));
+  return lista.filter((c) => {
+    const id = aOportunidad(c)?.id;
+    return !id || !trabajadas.has(id);
+  });
+}
+
+export function generarLecturas(datos: Datos): Lectura[] {
+  if (datos.sinDatos) return [];
+  const hoy = new Date(datos.generado);
 
   const porFamilia = new Map<string, number>();
-  const elegidas: Lectura[] = [];
-  for (const c of candidatas) {
+  const elegidas: Lectura[] = yaHechas(registro as Registro, hoy);
+  for (const c of sinTrabajar(candidatas(datos), hoy)) {
     const usadas = porFamilia.get(c.familia) ?? 0;
     if (usadas >= POR_FAMILIA) continue;
     porFamilia.set(c.familia, usadas + 1);
