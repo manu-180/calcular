@@ -130,13 +130,18 @@ console.log(`Solo con inferencia entrarían ${conInf.grilla.paises.length} de ${
 // algemene heffingskorting + arbeidskorting (NL, Belastingdienst 2026) se comen casi todo el box 1.
 // Netos calculados a mano con las fórmulas oficiales el 2026-10-24 (detalle en docs/decisiones/mundo.md).
 // Rigen para 2026: con los tramos de 2027 la ancla se recalcula.
-const ANCLAS_2026: { mercado: string; brutoAnual: number; neto: number; cuenta: string }[] = [
+// Las anclas rigen en una ventana de fechas: el 1/11/2026 Bélgica cambió el mínimo exento y los hijos en la
+// bedrijfsvoorheffing (be.bv-gezin) y la ancla del 24/10 empezó a dar rojo, con check-all y el cron de datos de
+// todos los mercados detrás (06/11). Un cambio de tramo dentro de 2026 es una ancla nueva con su ventana.
+const ANCLAS_2026: { mercado: string; brutoAnual: number; neto: number; cuenta: string; desde?: string; hasta?: string }[] = [
   { mercado: "nl", brutoAnual: 23_000, neto: 22_310.34, cuenta: "35,75 % × 23.000 = 8.222,50 − AHK 3.115 − AK (996 + 31,009 % × 11.035) = 689,66" },
   { mercado: "nl", brutoAnual: 57_500, neto: 42_855.23, cuenta: "13.900,67 + 37,56 % × 18.617 − AHK 1.338,66 − AK 4.909,79 = 14.644,77" },
-  { mercado: "be", brutoAnual: 24_000, neto: 23_487.48, cuenta: "2.000/maand: RSZ 261,40 − werkbonus 261,40; BV 167,01 − fiscale werkbonus 126,60 = 40,41; BBSZ 2,30; × 12" },
+  { mercado: "be", brutoAnual: 24_000, neto: 23_487.48, hasta: "2026-10-31", cuenta: "2.000/maand: RSZ 261,40 − werkbonus 261,40; BV 167,01 − fiscale werkbonus 126,60 = 40,41; BBSZ 2,30; × 12" },
+  { mercado: "be", brutoAnual: 24_000, neto: 23_589.12, desde: "2026-11-01", cuenta: "2.000/maand: RSZ 261,40 − werkbonus 261,40; BV vanaf 1/11/2026 (24.000 − forfait 6.070 = 17.930; 4.469,93 + 42,80 % × 1.220 = 4.992,09 − 3.089,63 = 1.902,46 ÷ 12 = 158,54) − fiscale werkbonus 126,60 = 31,94; BBSZ (kwartaal 6.000: 4,22 % × 163,86 = 6,91) ÷ 3 = 2,30; × 12" },
 ];
 if (grilla.generadoEl < "2027-01-01") {
   for (const a of ANCLAS_2026) {
+    if ((a.desde && grilla.generadoEl < a.desde) || (a.hasta && grilla.generadoEl > a.hasta)) continue;
     const c = candidatos.find((x) => x.mercado === a.mercado);
     const r = c?.netoAnual(a.brutoAnual);
     if (!r?.ok) fallas.push(`${a.mercado}: la ancla de ${a.brutoAnual} € no corre${r && !r.ok ? ` (${r.motivo})` : ""}`);
