@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosKm: TextosUi<UiAlquilarOComprar> = {
+  slug: "rent-vs-buy",
+  ui: () => ({
+    precio: "តម្លៃផ្ទះ",
+    entrada: "ប្រាក់កក់ដំបូង (% នៃតម្លៃ)",
+    gastosCompra: "ថ្លៃចំណាយលើការទិញ (% នៃតម្លៃ)",
+    gastosCompraAyuda: "ថ្លៃផ្ទេរកម្មសិទ្ធិ ពន្ធ ថ្លៃចុះបញ្ជីបញ្ចាំ និងថ្លៃវាយតម្លៃ។",
+    tasa: "អត្រាការប្រាក់កម្ចីទិញផ្ទះ (% ក្នុងមួយឆ្នាំ)",
+    aniosHipoteca: "រយៈពេលសងប្រាក់កម្ចី (ឆ្នាំ)",
+    alquiler: "ថ្លៃជួលផ្ទះស្រដៀងគ្នាក្នុងមួយខែ",
+    aumentoAlquiler: "ការកើនឡើងថ្លៃជួលក្នុងមួយឆ្នាំ (%)",
+    gastosPropietario: "ចំណាយម្ចាស់ផ្ទះក្នុងមួយឆ្នាំ (% នៃតម្លៃ)",
+    gastosPropietarioAyuda: "ថ្លៃជួសជុល ពន្ធលើអចលនទ្រព្យ និងការធានារាប់រងផ្ទះ។ ជាទូទៅចន្លោះពី 1% ដល់ 2%។",
+    revalorizacion: "ការកើនឡើងតម្លៃផ្ទះក្នុងមួយឆ្នាំ (%)",
+    rendimiento: "ផលចំណេញពីការវិនិយោគជំនួស (% ក្នុងមួយឆ្នាំ)",
+    rendimientoAyuda: "ផលចំណេញដែលនឹងបាន បើយកប្រាក់កក់ដំបូងទៅវិនិយោគជំនួសការទិញផ្ទះ។",
+    horizonte: "ចំនួនឆ្នាំដែលចង់ប្រៀបធៀប",
+    veredicto: "លទ្ធផល",
+    patrimonioComprar: "ទ្រព្យសម្បត្តិសុទ្ធនៅចុងគ្រាបើទិញ",
+    patrimonioAlquilar: "ទ្រព្យសម្បត្តិសុទ្ធនៅចុងគ្រាបើជួល",
+    diferencia: "ភាពខុសគ្នា",
+    anioDesde: "ឆ្នាំដែលការទិញចាប់ផ្តើមចំណេញជាង",
+    pagadoAlquilando: "ថ្លៃជួលដែលបានបង់សរុប",
+    pagadoComprando: "ប្រាក់សងនិងចំណាយម្ចាស់ផ្ទះសរុប",
+    tabla: "ការប្រៀបធៀបតាមឆ្នាំ",
+    colAnio: "ឆ្នាំទី",
+    colComprar: "ទិញ",
+    colAlquilar: "ជួល",
+    colDiferencia: "ភាពខុសគ្នា",
+    errorPrecio: "សូមបញ្ចូលតម្លៃផ្ទះ។",
+    errorAlquiler: "សូមបញ្ចូលថ្លៃជួលផ្ទះស្រដៀងគ្នា។",
+    convieneComprar: (anios, diferencia) => `ការទិញចំណេញជាង។ នៅចុងឆ្នាំទី ${anios} នឹងមានទ្រព្យសម្បត្តិច្រើនជាង ${diferencia}។`,
+    convieneAlquilar: (anios, diferencia) => `ការជួលចំណេញជាង។ នៅចុងឆ្នាំទី ${anios} នឹងមានទ្រព្យសម្បត្តិច្រើនជាង ${diferencia}។`,
+    empate: (anios) => `នៅចុងឆ្នាំទី ${anios} ជម្រើសទាំងពីរផ្តល់លទ្ធផលស្មើគ្នា។`,
+    observacionDesde: (anio) => `ការទិញចាប់ផ្តើមចំណេញជាងការជួលពីឆ្នាំទី ${anio} ហើយនៅតែចំណេញជាងតាំងពីពេលនោះមក។`,
+    observacionMetodo:
+      "ការគណនាប្រៀបធៀបអ្វីដែលនឹងមានក្នុងករណីនីមួយៗ។ បើជួល ប្រាក់កក់ដំបូងនិងប្រាក់ដែលនៅសល់រៀងរាល់ខែត្រូវយកទៅវិនិយោគបន្ត។ មិនទាន់ដកថ្លៃចំណាយលើការលក់ផ្ទះទេ។",
+  }),
+};

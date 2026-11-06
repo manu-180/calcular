@@ -172,6 +172,18 @@
     line-height: 1.65;
   }
 
+  /* El jemer tampoco separa las palabras con espacios: el navegador corta por diccionario con word-break:
+     normal, y overflow-wrap evita que se salga de la caja donde el navegador no trae ese diccionario. Los
+     subíndices (coeng) y las vocales se apilan arriba y abajo, así que necesita más interlineado que el
+     tailandés. Fuente del sistema, sin descargar nada (ADR 0002, D38). */
+  .cy-cuerpo:lang(km) {
+    font-family: var(--font-geist), "Khmer OS", "Noto Sans Khmer", "Khmer Sangam MN", "Khmer MN", "Leelawadee UI", "Khmer UI", sans-serif;
+    word-break: normal;
+    line-break: auto;
+    overflow-wrap: break-word;
+    line-height: 1.8;
+  }
+
   /* Hebreo (ADR 0002, D22): sin descargar fuente. Geist sigue para el latín y las cifras, y las letras
      hebreas caen en la del sistema (Segoe UI y Arial en Windows, Arial Hebrew en Apple, Noto Sans
      Hebrew en Android y Linux), que es lo que usan los sitios israelíes. */
@@ -2359,7 +2371,7 @@
 
 /* Fuera de @layer base a propósito: tiene que ganarle al tracking negativo de los títulos, que es
    de Geist y en CJK y tailandés y en hebreo amontona los caracteres (y los tonos apilados). */
-.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn), :lang(th), :lang(he), :lang(ka), :lang(hy)) :is(h1, h2, h3, h4) {
+.cy-cuerpo:is(:lang(ja), :lang(ko), :lang(zh), :lang(bn), :lang(th), :lang(km), :lang(he), :lang(ka), :lang(hy)) :is(h1, h2, h3, h4) {
   letter-spacing: 0;
 }
 

@@ -1,0 +1,60 @@
+{
+  "mercado": "mk",
+  "series": [
+    {
+      "id": "mk.inflacija-godishna",
+      "nombre": "Годишна инфлација мерена со индексот на трошоците на живот",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 100,
+      "fuente": {
+        "organismo": "Државен завод за статистика",
+        "titulo": "Индекси на трошоците на животот и на цените на мало, септември 2026 година",
+        "url": "https://www.stat.mk/mk/stat/економија-и-финансии/feni/indeksi-na-troshofite-na-zhivotot-i-na-fenite-na-malo/indeksi-na-troshofite-na-zhivotot-i-na-fenite-na-malo-septemvri-2026-godina/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        ["2026-03-01", 4.9],
+        ["2026-04-01", 5.7],
+        ["2026-08-01", 2.6],
+        ["2026-09-01", 2.7]
+      ]
+    },
+    {
+      "id": "mk.neto-plata",
+      "nombre": "Просечна месечна исплатена нето-плата по вработен",
+      "unidad": "MKD",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 150,
+      "fuente": {
+        "organismo": "Државен завод за статистика",
+        "titulo": "Просечна месечна исплатена нето-плата по вработен, август 2026 година",
+        "url": "https://www.stat.mk/mk/stat/население-и-услови-за-живеење/pazar-na-trudot/prosechna-mesechna-isplatena-neto-plata-po-vraboten/prosechna-mesechna-isplatena-neto-plata-po-vraboten-avgust-2026-godina/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        ["2025-12-01", 46889],
+        ["2026-08-01", 48733]
+      ]
+    },
+    {
+      "id": "mk.bruto-plata",
+      "nombre": "Просечна месечна исплатена бруто-плата по вработен",
+      "unidad": "MKD",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 150,
+      "fuente": {
+        "organismo": "Државен завод за статистика",
+        "titulo": "Просечна месечна исплатена бруто-плата по вработен, август 2026 година",
+        "url": "https://www.stat.mk/mk/stat/население-и-услови-за-живеење/pazar-na-trudot/prosechna-mesechna-isplatena-bruto-plata-po-vraboten/prosechna-mesechna-isplatena-bruto-plata-po-vraboten-avgust-2026-godina/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        ["2026-08-01", 73336]
+      ]
+    }
+  ]
+}

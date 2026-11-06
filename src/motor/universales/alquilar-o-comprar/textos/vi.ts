@@ -1,0 +1,42 @@
+import type { TextosUi } from "../../tipos";
+import type { UiAlquilarOComprar } from "../definicion";
+
+export const textosVi: TextosUi<UiAlquilarOComprar> = {
+  slug: "thue-hay-mua-nha",
+  ui: () => ({
+    precio: "Giá nhà",
+    entrada: "Vốn trả trước (% giá nhà)",
+    gastosCompra: "Chi phí mua nhà (% giá nhà)",
+    gastosCompraAyuda: "Phí công chứng, thuế và lệ phí sang tên, phí thẩm định.",
+    tasa: "Lãi suất vay mua nhà (% mỗi năm)",
+    aniosHipoteca: "Thời hạn vay (năm)",
+    alquiler: "Tiền thuê mỗi tháng cho căn nhà tương đương",
+    aumentoAlquiler: "Mức tăng tiền thuê mỗi năm (%)",
+    gastosPropietario: "Chi phí của chủ nhà mỗi năm (% giá trị nhà)",
+    gastosPropietarioAyuda: "Bảo trì, thuế đất và bảo hiểm nhà. Thường từ 1% đến 2%.",
+    revalorizacion: "Mức tăng giá nhà mỗi năm (%)",
+    rendimiento: "Lợi suất của khoản đầu tư khác (% mỗi năm)",
+    rendimientoAyuda: "Khoản lời bạn có được nếu đem vốn trả trước đi đầu tư thay vì mua nhà.",
+    horizonte: "Khoảng thời gian so sánh (năm)",
+    veredicto: "Kết quả",
+    patrimonioComprar: "Tài sản ròng cuối kỳ nếu mua",
+    patrimonioAlquilar: "Tài sản ròng cuối kỳ nếu thuê",
+    diferencia: "Chênh lệch",
+    anioDesde: "Năm mua nhà bắt đầu có lợi hơn",
+    pagadoAlquilando: "Tổng tiền thuê đã trả",
+    pagadoComprando: "Tổng tiền trả vay mua nhà và chi phí chủ nhà",
+    tabla: "So sánh theo năm",
+    colAnio: "Năm",
+    colComprar: "Mua",
+    colAlquilar: "Thuê",
+    colDiferencia: "Chênh lệch",
+    errorPrecio: "Nhập giá nhà.",
+    errorAlquiler: "Nhập tiền thuê của căn nhà tương đương.",
+    convieneComprar: (anios, diferencia) => `Mua nhà có lợi hơn: sau ${anios} năm, tài sản của bạn nhiều hơn ${diferencia}.`,
+    convieneAlquilar: (anios, diferencia) => `Thuê nhà có lợi hơn: sau ${anios} năm, tài sản của bạn nhiều hơn ${diferencia}.`,
+    empate: (anios) => `Sau ${anios} năm, hai lựa chọn cho kết quả như nhau.`,
+    observacionDesde: (anio) => `Mua nhà bắt đầu có lợi hơn thuê từ năm thứ ${anio} và giữ lợi thế đó về sau.`,
+    observacionMetodo:
+      "Phép tính so sánh tài sản của bạn ở hai lựa chọn. Nếu thuê, vốn trả trước và phần chi tiêu chênh lệch mỗi tháng được đem đi đầu tư. Chưa trừ chi phí khi bán nhà.",
+  }),
+};

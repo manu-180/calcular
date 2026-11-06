@@ -27,7 +27,8 @@ function fechaFmt(locale: string, opciones: Intl.DateTimeFormatOptions): Intl.Da
 // Monedas cuyo uso real no coincide con Intl. El dram tiene dos decimales en CLDR, pero nóminas, facturas y
 // precios no llevan luma: sin esto la tabla y las universales de Armenia decían «75 000,00 ֏». Va por moneda
 // y no por mercado.redondeo porque ese camino también cambiaría pk (PKR) y uz (UZS), hoy publicados.
-const DECIMALES_DE_USO: Readonly<Partial<Record<Moneda, number>>> = { AMD: 0 };
+// Lo mismo el riel: no circula nada menor a 50 ៛ y ni bancos ni nóminas muestran centavos (ADR 0002, D38).
+const DECIMALES_DE_USO: Readonly<Partial<Record<Moneda, number>>> = { AMD: 0, KHR: 0 };
 
 export function decimalesDeMoneda(moneda: Moneda, locale: string): number {
   return DECIMALES_DE_USO[moneda] ?? numero(locale, { style: "currency", currency: moneda }).resolvedOptions().maximumFractionDigits ?? 2;
@@ -174,9 +175,11 @@ const DIGITO_ARABE = /[٠-٩۰-۹]/g;
 const DIGITO_BENGALI = /[০-৯]/g;
 const HAY_BENGALI = /[০-৯]/;
 const DIGITO_TAILANDES = /[๐-๙]/g;
+// Los sitios de gobierno de Camboya escriben ០ a ៩; km-KH formatea con los latinos, como ABA y ACLEDA (ADR 0002, D38).
+const DIGITO_JEMER = /[០-៩]/g;
 
 function aLatino(texto: string, seps: Separadores = { decimal: ".", grupo: "," }): string {
-  const t = texto.replace(DIGITO_BENGALI, (d) => String(d.charCodeAt(0) - 0x09e6)).replace(DIGITO_TAILANDES, (d) => String(d.charCodeAt(0) - 0x0e50));
+  const t = texto.replace(DIGITO_BENGALI, (d) => String(d.charCodeAt(0) - 0x09e6)).replace(DIGITO_TAILANDES, (d) => String(d.charCodeAt(0) - 0x0e50)).replace(DIGITO_JEMER, (d) => String(d.charCodeAt(0) - 0x17e0));
   if (!/[؀-ۿ]/.test(t)) return t;
   return t
     .replace(DIGITO_ARABE, (d) => String(d.charCodeAt(0) & 0xf))
@@ -269,13 +272,15 @@ function conUnidadesCjk(texto: string, locale: string, opciones: OpcionesParseo)
 // En tailandés se escriben montos con palabras de unidad («2.5 ล้าน», «1 ล้าน 5 แสน», «3 หมื่น»): igual que
 // con 万, sin esto «2 ล้าน» daría 2 en vez de 2.000.000. Van de mayor a menor y la cola puede ir sin
 // unidad. Los dígitos tailandeses (๐ a ๙) ya llegan pasados a ASCII (aLatino).
-const UNIDADES_TH: Readonly<Record<string, number>> = { ล้าน: 1e6, แสน: 1e5, หมื่น: 1e4, พัน: 1e3 };
-const RE_UNIDAD_TH = /ล้าน|แสน|หมื่น|พัน/;
+// El jemer hace lo mismo («2.5 លាន», «1 លាន 5 សែន», «3 ម៉ឺនរៀល»; ADR 0002, D38), con dos grafías de ម៉ឺន de uso común
+// y កោដិ, diez millones, que se ve en montos grandes.
+const UNIDADES_TH: Readonly<Record<string, number>> = { ล้าน: 1e6, แสน: 1e5, หมื่น: 1e4, พัน: 1e3, កោដិ: 1e7, លាន: 1e6, សែន: 1e5, ម៉ឺន: 1e4, មុឺន: 1e4, ពាន់: 1e3 };
+const RE_UNIDAD_TH = /ล้าน|แสน|หมื่น|พัน|កោដិ|លាន|សែន|ម៉ឺន|មុឺន|ពាន់/;
 
 function conUnidadesTh(texto: string, locale: string, opciones: OpcionesParseo): number | null {
   const negativo = /^[^\d]*-/.test(texto);
   // Solo cuentan las cifras y las palabras de unidad: «บาท», espacios y signos se ignoran.
-  const fichas = [...texto.matchAll(/ล้าน|แสน|หมื่น|พัน|[\d.,]+/g)].map((m) => m[0]);
+  const fichas = [...texto.matchAll(/ล้าน|แสน|หมื่น|พัน|កោដិ|លាន|សែន|ម៉ឺន|មុឺន|ពាន់|[\d.,]+/g)].map((m) => m[0]);
   let total = 0;
   let anterior = Infinity;
   for (let i = 0; i < fichas.length; i++) {

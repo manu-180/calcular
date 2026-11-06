@@ -22,6 +22,9 @@ export const SLUG_HORAS: Record<Idioma, string> = {
   et: "tootunnid",
   is: "hversu-margar-vinnustundir",
   lv: "cik-stundas-jastrada",
+  mk: "kolku-chasovi-rabota",
+  vi: "bao-nhieu-gio-lam-viec",
+  km: "maong-thveu-kar",
 
   pl: "ile-godzin-pracy",
   sv: "arbetstimmar",

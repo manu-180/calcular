@@ -246,3 +246,18 @@ export function formaLv(n: number | string, uno: string, otros: string, cero: st
 export function pluralLv(n: number | string, uno: string, otros: string, cero: string): string {
   return `${n} ${formaLv(n, uno, otros, cero)}`;
 }
+
+// Macedonio (ADR 0002, D36): Intl.PluralRules("mk") da «one» para 1, 21, 31 (salvo 11) y las fracciones
+// terminadas en 1, «other» para el resto. Los masculinos que no son de persona van en forma numérica
+// detrás de un número, así que «otros» es esa forma: «2 дена», «5 часа», «3 калкулатора». Recibe number
+// o string porque check_i18n llama a las funciones de los diccionarios con argumentos de muestra.
+const REGLAS_MK = new Intl.PluralRules("mk");
+
+export function formaMk(n: number | string, uno: string, otros: string): string {
+  return REGLAS_MK.select(Math.abs(Number(n))) === "one" ? uno : otros;
+}
+
+// El número y la palabra: «1 калкулатор», «2 калкулатора», «21 година», «40 држави».
+export function pluralMk(n: number | string, uno: string, otros: string): string {
+  return `${n} ${formaMk(n, uno, otros)}`;
+}

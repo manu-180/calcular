@@ -1,0 +1,1757 @@
+{
+  "mercado": "vn",
+  "datos": [
+    {
+      "id": "vn.bieu-tncn",
+      "nombre": "Biểu thuế lũy tiến từng phần theo tháng",
+      "tipo": "escala",
+      "unidad": "VND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 10000000,
+              "tasa": 5
+            },
+            {
+              "desde": 10000000,
+              "hasta": 30000000,
+              "tasa": 10
+            },
+            {
+              "desde": 30000000,
+              "hasta": 60000000,
+              "tasa": 20
+            },
+            {
+              "desde": 60000000,
+              "hasta": 100000000,
+              "tasa": 30
+            },
+            {
+              "desde": 100000000,
+              "hasta": null,
+              "tasa": 35
+            }
+          ],
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 9 và khoản 2 Điều 29",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.giam-tru-ban-than",
+      "nombre": "Giảm trừ cho người nộp thuế mỗi tháng",
+      "tipo": "numero",
+      "unidad": "VND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15500000,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 10; Nghị quyết số 110/2025/UBTVQH15",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.giam-tru-phu-thuoc",
+      "nombre": "Giảm trừ cho mỗi người phụ thuộc mỗi tháng",
+      "tipo": "numero",
+      "unidad": "VND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 6200000,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 10; Nghị quyết số 110/2025/UBTVQH15",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.muc-tham-chieu",
+      "nombre": "Mức tham chiếu (bằng mức lương cơ sở)",
+      "tipo": "numero",
+      "unidad": "VND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-07-01",
+          "valor": 2530000,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 161/2026/NĐ-CP, Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=218107",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "Khoản 13 Điều 141 Luật Bảo hiểm xã hội 2024: khi chưa bãi bỏ mức lương cơ sở thì mức tham chiếu bằng mức lương cơ sở."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.he-so-tran-bhxh",
+      "nombre": "Số lần mức tham chiếu làm trần đóng bảo hiểm xã hội",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 31",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.he-so-tran-bhtn",
+      "nombre": "Số lần lương tối thiểu vùng làm trần đóng bảo hiểm thất nghiệp",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Việc làm số 74/2025/QH15, khoản 2 Điều 34",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214560",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bhxh-nld",
+      "nombre": "Người lao động đóng bảo hiểm xã hội",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 33",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bhxh-om-dau-dn",
+      "nombre": "Doanh nghiệp đóng quỹ ốm đau và thai sản",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 34",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bhxh-huu-tri-dn",
+      "nombre": "Doanh nghiệp đóng quỹ hưu trí và tử tuất",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 34",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tnld-dn",
+      "nombre": "Doanh nghiệp đóng quỹ tai nạn lao động, bệnh nghề nghiệp",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-07-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 58/2020/NĐ-CP, điểm a khoản 1 Điều 4",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=200108",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bhyt-nld",
+      "nombre": "Người lao động đóng bảo hiểm y tế",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-15",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 188/2025/NĐ-CP, điểm a khoản 1 Điều 6",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214515",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "Tổng mức đóng là 4,5% tiền lương tháng làm căn cứ đóng bảo hiểm xã hội bắt buộc; người lao động đóng một phần ba, người sử dụng lao động đóng hai phần ba."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bhyt-dn",
+      "nombre": "Doanh nghiệp đóng bảo hiểm y tế",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-15",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 188/2025/NĐ-CP, điểm a khoản 1 Điều 6",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214515",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "Tổng mức đóng là 4,5% tiền lương tháng làm căn cứ đóng bảo hiểm xã hội bắt buộc; người lao động đóng một phần ba, người sử dụng lao động đóng hai phần ba."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bhtn-nld",
+      "nombre": "Người lao động đóng bảo hiểm thất nghiệp",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 374/2025/NĐ-CP, Điều 4",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216493",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bhtn-dn",
+      "nombre": "Doanh nghiệp đóng bảo hiểm thất nghiệp",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 374/2025/NĐ-CP, Điều 4",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216493",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.cong-doan",
+      "nombre": "Kinh phí công đoàn",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Công đoàn số 50/2024/QH15, điểm b khoản 1 Điều 29",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212478",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.lttv-thang",
+      "nombre": "Lương tối thiểu tháng theo vùng",
+      "tipo": "numero",
+      "unidad": "VND",
+      "regiones": [
+        "vung-1",
+        "vung-2",
+        "vung-3",
+        "vung-4"
+      ],
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "vung-1",
+          "desde": "2026-01-01",
+          "valor": 5310000,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 293/2025/NĐ-CP, Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=215832",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "vung-2",
+          "desde": "2026-01-01",
+          "valor": 4730000,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 293/2025/NĐ-CP, Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=215832",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "vung-3",
+          "desde": "2026-01-01",
+          "valor": 4140000,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 293/2025/NĐ-CP, Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=215832",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "vung-4",
+          "desde": "2026-01-01",
+          "valor": 3700000,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 293/2025/NĐ-CP, Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=215832",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.lttv-gio",
+      "nombre": "Lương tối thiểu giờ theo vùng",
+      "tipo": "numero",
+      "unidad": "VND",
+      "regiones": [
+        "vung-1",
+        "vung-2",
+        "vung-3",
+        "vung-4"
+      ],
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "region": "vung-1",
+          "desde": "2026-01-01",
+          "valor": 25500,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 293/2025/NĐ-CP, Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=215832",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "vung-2",
+          "desde": "2026-01-01",
+          "valor": 22700,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 293/2025/NĐ-CP, Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=215832",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "vung-3",
+          "desde": "2026-01-01",
+          "valor": 20000,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 293/2025/NĐ-CP, Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=215832",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "region": "vung-4",
+          "desde": "2026-01-01",
+          "valor": 17800,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 293/2025/NĐ-CP, Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=215832",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.gtgt-pho-thong",
+      "nombre": "Thuế suất GTGT phổ thông theo luật",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Văn phòng Quốc hội",
+            "titulo": "Văn bản hợp nhất số 12/VBHN-VPQH (Luật Thuế giá trị gia tăng), Điều 9",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216941",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.gtgt-uu-dai",
+      "nombre": "Thuế suất GTGT ưu đãi",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Văn phòng Quốc hội",
+            "titulo": "Văn bản hợp nhất số 12/VBHN-VPQH (Luật Thuế giá trị gia tăng), Điều 9",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216941",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.gtgt-giam",
+      "nombre": "Thuế suất GTGT áp dụng cho nhóm được giảm",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "hasta": "2026-12-31",
+          "valor": 8,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Nghị quyết số 204/2025/QH15 về giảm thuế giá trị gia tăng",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214209",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-01-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Văn phòng Quốc hội",
+            "titulo": "Văn bản hợp nhất số 12/VBHN-VPQH (Luật Thuế giá trị gia tăng), Điều 9",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216941",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-nguong",
+      "nombre": "Doanh thu năm không phải nộp GTGT và TNCN",
+      "tipo": "numero",
+      "unidad": "VND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 1000000000,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 141/2026/NĐ-CP, sửa Điều 3, Điều 4 Nghị định số 68/2026/NĐ-CP",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=217960",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-nguong-3-ty",
+      "nombre": "Mức doanh thu chuyển phương pháp tính thuế TNCN",
+      "tipo": "numero",
+      "unidad": "VND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3000000000,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 7",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-nguong-50-ty",
+      "nombre": "Mức doanh thu của thuế suất cao nhất",
+      "tipo": "numero",
+      "unidad": "VND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 50000000000,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 7",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-ts-15",
+      "nombre": "Thuế suất trên thu nhập, doanh thu đến 3 tỷ đồng",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 7",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-ts-17",
+      "nombre": "Thuế suất trên thu nhập, doanh thu trên 3 tỷ đến 50 tỷ đồng",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 17,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 7",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-ts-20",
+      "nombre": "Thuế suất trên thu nhập, doanh thu trên 50 tỷ đồng",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 7",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-tncn",
+      "nombre": "Thuế suất TNCN trên doanh thu vượt ngưỡng",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "hang-hoa": "Phân phối, cung cấp hàng hóa",
+        "dich-vu": "Dịch vụ, xây dựng không bao thầu nguyên vật liệu",
+        "tai-san-dai-ly": "Cho thuê tài sản, đại lý bảo hiểm, xổ số, bán hàng đa cấp",
+        "san-xuat": "Sản xuất, vận tải, dịch vụ gắn với hàng hóa, xây dựng có bao thầu",
+        "noi-dung-so": "Nội dung số: giải trí, trò chơi điện tử, phim, ảnh, nhạc, quảng cáo số",
+        "khac": "Hoạt động kinh doanh khác"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": {
+            "hang-hoa": 0.5,
+            "dich-vu": 2,
+            "tai-san-dai-ly": 5,
+            "san-xuat": 1.5,
+            "noi-dung-so": 5,
+            "khac": 1
+          },
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 7",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-gtgt",
+      "nombre": "Tỷ lệ GTGT trên doanh thu",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "hang-hoa": "Phân phối, cung cấp hàng hóa",
+        "dich-vu": "Dịch vụ, xây dựng không bao thầu nguyên vật liệu",
+        "san-xuat": "Sản xuất, vận tải, dịch vụ gắn với hàng hóa, xây dựng có bao thầu",
+        "khac": "Hoạt động kinh doanh khác"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": {
+            "hang-hoa": 1,
+            "dich-vu": 5,
+            "san-xuat": 3,
+            "khac": 2
+          },
+          "fuente": {
+            "organismo": "Văn phòng Quốc hội",
+            "titulo": "Văn bản hợp nhất số 12/VBHN-VPQH (Luật Thuế giá trị gia tăng), khoản 2 Điều 11",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216941",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-giam-tncn",
+      "nombre": "Mức giảm thuế TNCN của hộ kinh doanh",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2028-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Nghị quyết số 43/2026/QH16, khoản 1 Điều 1 và Điều 2",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=219330",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2028-01-01",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Nghị quyết số 43/2026/QH16, khoản 1 Điều 1 và Điều 2",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=219330",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.hkd-tran-giam",
+      "nombre": "Doanh thu năm tối đa để được giảm thuế TNCN",
+      "tipo": "numero",
+      "unidad": "VND",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 10000000000,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Nghị quyết số 43/2026/QH16, khoản 1 Điều 1 và Điều 2",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=219330",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.nha-tncn",
+      "nombre": "Thuế TNCN khi cho thuê bất động sản",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Thuế thu nhập cá nhân số 109/2025/QH15, Điều 7",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.thoi-viec-moi-nam",
+      "nombre": "Trợ cấp thôi việc mỗi năm làm việc (tháng lương)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 46",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.mat-viec-moi-nam",
+      "nombre": "Trợ cấp mất việc mỗi năm làm việc (tháng lương)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 47",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.mat-viec-toi-thieu",
+      "nombre": "Trợ cấp mất việc tối thiểu (tháng lương)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 47",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tctn-ty-le",
+      "nombre": "Mức hưởng trợ cấp thất nghiệp",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Việc làm số 74/2025/QH15, Điều 39",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214560",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tctn-tran",
+      "nombre": "Trần trợ cấp thất nghiệp (số lần lương tối thiểu vùng)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Việc làm số 74/2025/QH15, Điều 39",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214560",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tctn-thang-goc",
+      "nombre": "Số tháng hưởng khi đóng đủ 12 đến đủ 36 tháng",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Việc làm số 74/2025/QH15, Điều 39",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214560",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tctn-thang-toi-da",
+      "nombre": "Số tháng hưởng tối đa",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Việc làm số 74/2025/QH15, Điều 39",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214560",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tctn-thang-toi-thieu-dong",
+      "nombre": "Số tháng đóng tối thiểu trong 24 tháng trước khi nghỉ",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Việc làm số 74/2025/QH15, Điều 38",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214560",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.thai-san-thang",
+      "nombre": "Thời gian nghỉ thai sản khi sinh một con (tháng)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 6,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, khoản 1 Điều 139",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.thai-san-them",
+      "nombre": "Số tháng nghỉ thêm cho mỗi con từ con thứ hai",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, khoản 1 Điều 139",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.thai-san-ty-le",
+      "nombre": "Trợ cấp thai sản một tháng so với lương bình quân 6 tháng",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 100,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 59",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.thai-san-mot-lan",
+      "nombre": "Trợ cấp một lần cho mỗi con (số lần mức tham chiếu)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 58",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.thai-san-nam-ngay",
+      "nombre": "Lao động nam nghỉ khi vợ sinh thường (ngày làm việc)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 53",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-nam-nam",
+      "nombre": "Số năm đóng của lao động nam ứng với 45%",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 66",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-nam-nu",
+      "nombre": "Số năm đóng của lao động nữ ứng với 45%",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 66",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-nam-toi-thieu",
+      "nombre": "Số năm đóng tối thiểu để hưởng lương hưu",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 64",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-ty-le-goc",
+      "nombre": "Tỷ lệ hưởng ban đầu",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 66",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-ty-le-tang",
+      "nombre": "Tỷ lệ tăng cho mỗi năm đóng thêm",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 66",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-ty-le-toi-da",
+      "nombre": "Tỷ lệ hưởng tối đa",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 75,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 66",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-nam-15-goc",
+      "nombre": "Tỷ lệ của lao động nam đóng đủ 15 năm",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 40,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 66",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-nam-15-tang",
+      "nombre": "Tỷ lệ tăng mỗi năm của lao động nam dưới 20 năm",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 66",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-mot-lan-nam",
+      "nombre": "Số năm đóng của nam để có trợ cấp một lần",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 35,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 68",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-mot-lan-nu",
+      "nombre": "Số năm đóng của nữ để có trợ cấp một lần",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 68",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.huu-mot-lan-he-so",
+      "nombre": "Trợ cấp một lần cho mỗi năm đóng cao hơn (lần lương bình quân)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, Điều 68",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bhxh-1-lan-truoc-2014",
+      "nombre": "Mỗi năm đóng trước năm 2014 (tháng lương bình quân)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, khoản 3 Điều 70",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bhxh-1-lan-tu-2014",
+      "nombre": "Mỗi năm đóng từ năm 2014 (tháng lương bình quân)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Luật Bảo hiểm xã hội số 41/2024/QH15, khoản 3 Điều 70",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=211199",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.them-gio-ngay-thuong",
+      "nombre": "Làm thêm vào ngày thường",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 150,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 98",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.them-gio-ngay-nghi",
+      "nombre": "Làm thêm vào ngày nghỉ hằng tuần",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 200,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 98",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.them-gio-ngay-le",
+      "nombre": "Làm thêm vào ngày lễ, tết, ngày nghỉ có hưởng lương",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 300,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 98",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.lam-dem",
+      "nombre": "Trả thêm khi làm việc ban đêm",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 98",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.them-gio-dem",
+      "nombre": "Trả thêm khi làm thêm giờ vào ban đêm",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 20,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 98",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.phep-binh-thuong",
+      "nombre": "Nghỉ hằng năm, điều kiện bình thường",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 12,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 113",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.phep-nang-nhoc",
+      "nombre": "Nghỉ hằng năm, chưa thành niên, khuyết tật, nặng nhọc, độc hại",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 14,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 113",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.phep-dac-biet",
+      "nombre": "Nghỉ hằng năm, đặc biệt nặng nhọc, độc hại",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 16,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 113",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.phep-tham-nien-nam",
+      "nombre": "Số năm làm việc để được thêm một ngày nghỉ",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, Điều 114",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bao-truoc-vo-han",
+      "nombre": "Báo trước, hợp đồng không xác định thời hạn",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 45,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, khoản 1 Điều 35",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bao-truoc-12-36",
+      "nombre": "Báo trước, hợp đồng từ 12 đến 36 tháng",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 30,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, khoản 1 Điều 35",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bao-truoc-duoi-12",
+      "nombre": "Báo trước, hợp đồng dưới 12 tháng (ngày làm việc)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 3,
+          "fuente": {
+            "organismo": "Quốc hội",
+            "titulo": "Bộ luật Lao động số 45/2019/QH14, khoản 1 Điều 35",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=198540",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.bao-truoc-dac-thu",
+      "nombre": "Báo trước, ngành nghề đặc thù từ 12 tháng trở lên",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2021-01-01",
+          "valor": 120,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 145/2020/NĐ-CP, khoản 2 Điều 7",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=201967",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tb-nha-dat",
+      "nombre": "Lệ phí trước bạ nhà, đất",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2022-03-01",
+          "valor": 0.5,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 10/2022/NĐ-CP, Điều 8",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=205090",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tb-xe-may",
+      "nombre": "Lệ phí trước bạ xe máy",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 175/2025/NĐ-CP, sửa khoản 4, khoản 5 Điều 8 Nghị định số 10/2022/NĐ-CP",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214313",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tb-xe-may-lan-2",
+      "nombre": "Lệ phí trước bạ xe máy từ lần thứ hai",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 175/2025/NĐ-CP, sửa khoản 4, khoản 5 Điều 8 Nghị định số 10/2022/NĐ-CP",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214313",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tb-o-to",
+      "nombre": "Lệ phí trước bạ ô tô dưới 9 chỗ, lần đầu",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 10,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 175/2025/NĐ-CP, sửa khoản 4, khoản 5 Điều 8 Nghị định số 10/2022/NĐ-CP",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214313",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tb-o-to-tang-toi-da",
+      "nombre": "Mức tỉnh được tăng tối đa so với mức chung",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 50,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 175/2025/NĐ-CP, sửa khoản 4, khoản 5 Điều 8 Nghị định số 10/2022/NĐ-CP",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214313",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tb-pickup-he-so",
+      "nombre": "Pick-up chở hàng cabin kép, tải VAN, so với mức của ô tô",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 60,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 175/2025/NĐ-CP, sửa khoản 4, khoản 5 Điều 8 Nghị định số 10/2022/NĐ-CP",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214313",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tb-o-to-lan-2",
+      "nombre": "Lệ phí trước bạ ô tô từ lần thứ hai",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-07-01",
+          "valor": 2,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 175/2025/NĐ-CP, sửa khoản 4, khoản 5 Điều 8 Nghị định số 10/2022/NĐ-CP",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214313",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn.tb-o-to-dien",
+      "nombre": "Lệ phí trước bạ ô tô điện chạy pin, lần đầu",
+      "tipo": "numero",
+      "unidad": "%",
+      "proximaRevision": "2031-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-03-01",
+          "hasta": "2027-02-28",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 51/2025/NĐ-CP, Điều 1",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212984",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2027-03-01",
+          "hasta": "2030-12-31",
+          "valor": 0,
+          "fuente": {
+            "organismo": "Chính phủ",
+            "titulo": "Nghị định số 202/2026/NĐ-CP, Điều 1 và Điều 3",
+            "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=218368",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    }
+  ]
+}
