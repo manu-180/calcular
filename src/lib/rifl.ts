@@ -1,3 +1,4 @@
+import { enHoraAR } from "@/lib/hora-argentina";
 import {
   ALICUOTA_RIFL_INSSJP,
   ALICUOTA_RIFL_SIPA_FNE_AAFF,
@@ -41,9 +42,9 @@ const MESES_ES = [
   "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
 ] as const;
 
-/** Componentes de la fecha en hora argentina (UTC-3), sin depender del TZ del server. */
+/** Componentes de la fecha en hora argentina (del tzdata), sin depender del TZ del server. */
 function fechaAR(d: Date): { anio: number; mes: number; dia: number } {
-  const t = new Date(d.getTime() - 3 * 60 * 60 * 1000);
+  const t = enHoraAR(d);
   return { anio: t.getUTCFullYear(), mes: t.getUTCMonth() + 1, dia: t.getUTCDate() };
 }
 

@@ -1,5 +1,6 @@
 import type { KpiClave, Preset, Rango } from "@/lib/panel/tipos";
 import { diasEntre, esPreset, extremos, type Dia } from "@/lib/panel/fechas";
+import { enHoraAR } from "@/lib/hora-argentina";
 
 const NBSP = " ";
 
@@ -114,11 +115,11 @@ export function haceCuanto(iso: string, ahora: number): string {
 const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
 const DIAS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
 
-// Argentina está fija en UTC-3 (sin horario de verano desde 2009). Correr el reloj a mano en vez
-// de usar Intl con timeZone da el mismo texto en el servidor y en cualquier navegador: si el ICU
-// de uno dice «sept.» y el del otro «sep», la hidratación se queja.
+// El texto se arma a mano con partes numéricas en vez de pedirle el mes a Intl: si el ICU
+// de uno dice «sept.» y el del otro «sep», la hidratación se queja. La hora argentina sí
+// sale del tzdata (hora-argentina.ts), no de restar 3 h.
 function enArgentina(iso: string): Date {
-  return new Date(Date.parse(iso) - 3 * 3600 * 1000);
+  return enHoraAR(Date.parse(iso));
 }
 
 export function diaCorto(iso: string): string {
