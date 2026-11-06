@@ -15,7 +15,8 @@
         "verificadoEl": "2026-10-24",
         "nota": "The BOJ home page shows the weighted average rates of the last trading day in its Foreign Exchange Rates table."
       },
-      "puntos": [["2026-10-23", 159.6487]]
+      "puntos": [["2026-10-23", 159.6487],
+["2026-11-05", 159.4886]]
     },
     {
       "id": "jm.usd-buy",
@@ -31,7 +32,8 @@
         "verificadoEl": "2026-10-24",
         "nota": "The BOJ home page shows the weighted average rates of the last trading day in its Foreign Exchange Rates table."
       },
-      "puntos": [["2026-10-23", 158.1879]]
+      "puntos": [["2026-10-23", 158.1879],
+["2026-11-05", 157.9578]]
     },
     {
       "id": "jm.inflation",
