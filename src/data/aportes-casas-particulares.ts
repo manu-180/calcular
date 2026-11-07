@@ -9,7 +9,7 @@
 // jubilación, y puede completar la diferencia de su bolsillo.
 //
 // LOS IMPORTES NO SE COPIAN DE UN MEDIO. Salen del PDF oficial que ARCA publica cada mes:
-//   https://www.arca.gob.ar/casasparticulares/aportes-contribuciones-ART/documentos/2026/Casas-particulares-aportes-y-contribuciones-09-26.pdf
+//   https://www.arca.gob.ar/casasparticulares/aportes-contribuciones-ART/documentos/2026/Casas-particulares-aportes-y-contribuciones-10-26.pdf
 //
 // MINA QUE MORDIÓ AL CARGARLOS (11/8/2026): el texto plano del PDF devuelve los encabezados en un
 // orden que NO es el de las columnas. Leído así, la "Cuota ART" quedaba con $25.694,55 (que en
@@ -70,34 +70,34 @@ export const CONDICIONES: { id: CondicionTrabajador; etiqueta: string; detalle: 
 ];
 
 /**
- * TABLA OFICIAL — "Valores vigentes para septiembre 2026, con vencimiento en octubre 2026", por cada
+ * TABLA OFICIAL — "Valores vigentes para octubre 2026, con vencimiento en noviembre 2026", por cada
  * trabajador. Fuente: el PDF de ARCA citado arriba, leído con coordenadas el 5/9/2026.
  */
 export const TABLA_APORTES: Record<CondicionTrabajador, FilaAportes[]> = {
   "activo-mayor-18": [
-    { rango: "menos-12", total: 10569.57, obraSocial: 2084.85, sipa: 729.9, art: 7754.82 },
-    { rango: "12-a-16", total: 16627.46, obraSocial: 3863.3, sipa: 1459.48, art: 11304.68 },
-    { rango: "16-o-mas", total: 44270.19, obraSocial: 25694.55, sipa: 2128.79, art: 16446.85 },
+    { rango: "menos-12", total: 10856.52, obraSocial: 2084.85, sipa: 729.9, art: 8041.77 },
+    { rango: "12-a-16", total: 17007.37, obraSocial: 3863.3, sipa: 1459.48, art: 11684.59 },
+    { rango: "16-o-mas", total: 44784.77, obraSocial: 25694.55, sipa: 2128.79, art: 16961.43 },
   ],
   "activo-menor-18": [
-    { rango: "menos-12", total: 9839.67, obraSocial: 2084.85, sipa: null, art: 7754.82 },
-    { rango: "12-a-16", total: 15167.98, obraSocial: 3863.3, sipa: null, art: 11304.68 },
-    { rango: "16-o-mas", total: 42141.4, obraSocial: 25694.55, sipa: null, art: 16446.85 },
+    { rango: "menos-12", total: 10126.62, obraSocial: 2084.85, sipa: null, art: 8041.77 },
+    { rango: "12-a-16", total: 15547.89, obraSocial: 3863.3, sipa: null, art: 11684.59 },
+    { rango: "16-o-mas", total: 42655.98, obraSocial: 25694.55, sipa: null, art: 16961.43 },
   ],
   jubilado: [
-    { rango: "menos-12", total: 8484.72, obraSocial: null, sipa: 729.9, art: 7754.82 },
-    { rango: "12-a-16", total: 12764.16, obraSocial: null, sipa: 1459.48, art: 11304.68 },
-    { rango: "16-o-mas", total: 18575.64, obraSocial: null, sipa: 2128.79, art: 16446.85 },
+    { rango: "menos-12", total: 8771.67, obraSocial: null, sipa: 729.9, art: 8041.77 },
+    { rango: "12-a-16", total: 13144.07, obraSocial: null, sipa: 1459.48, art: 11684.59 },
+    { rango: "16-o-mas", total: 19090.22, obraSocial: null, sipa: 2128.79, art: 16961.43 },
   ],
 };
 
 export const VIGENCIA_APORTES = {
   /** Mes de devengamiento que cubren los importes. */
-  mesVigente: "septiembre de 2026",
+  mesVigente: "octubre de 2026",
   /** Mes en que se pagan (el régimen es a mes vencido, salvo la ART). */
-  mesDeVencimiento: "octubre de 2026",
+  mesDeVencimiento: "noviembre de 2026",
   /** Nombre del archivo del PDF, para armar la URL del mes siguiente. */
-  archivoPdf: "Casas-particulares-aportes-y-contribuciones-09-26.pdf",
+  archivoPdf: "Casas-particulares-aportes-y-contribuciones-10-26.pdf",
 } as const;
 
 /**
@@ -121,13 +121,13 @@ export const REGLAS_APORTES = {
 export type FuenteAportes = { nombre: string; url: string; detalle: string };
 
 export const APORTES_FUENTES: { consultadoEl: string; lista: FuenteAportes[] } = {
-  consultadoEl: "2026-10-07",
+  consultadoEl: "2026-11-06",
   lista: [
     {
       nombre: "ARCA: Aportes, contribuciones y ART de casas particulares (tabla oficial)",
       url: "https://www.arca.gob.ar/casasparticulares/aportes-contribuciones-ART/documentos/2026/Casas-particulares-aportes-y-contribuciones-08-26.pdf",
       detalle:
-        "PDF oficial con los importes vigentes para septiembre de 2026 (vencimiento en octubre). Trae las tres tablas (activo mayor de 18, de 16 a 17 años y jubilado) con el desglose de obra social, SIPA y cuota ART. De acá salen todos los números de esta página.",
+        "PDF oficial con los importes vigentes para octubre de 2026 (vencimiento en noviembre). Trae las tres tablas (activo mayor de 18, de 16 a 17 años y jubilado) con el desglose de obra social, SIPA y cuota ART. De acá salen todos los números de esta página.",
     },
     {
       nombre: "ARCA: Conceptos y valores del pago mensual",
