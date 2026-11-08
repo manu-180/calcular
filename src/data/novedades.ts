@@ -7,6 +7,23 @@ import type { Novedad } from "@/lib/novedades";
 
 export const NOVEDADES_REGISTRADAS: Novedad[] = [
   {
+    "id": "aportes-casas-2026-11",
+    "serie": "aportes-casas",
+    "organismo": "ARCA",
+    "tipo": "dato",
+    "cargadoEl": "2026-11-07",
+    "titulo": "Aportes de casas particulares de noviembre",
+    "detalle": "ARCA publicó lo que se paga por mes por una trabajadora registrada en noviembre de 2026. Con 16 horas semanales o más son $ 45.024,63, entre obra social, jubilación y ART.",
+    "fuente": {
+      "nombre": "ARCA · Aportes, contribuciones y ART de casas particulares",
+      "url": "https://www.arca.gob.ar/casasparticulares/aportes-contribuciones-ART/documentos/2026/Casas-particulares-aportes-y-contribuciones-08-26.pdf"
+    },
+    "rutas": [
+      "/aportes-empleada-domestica",
+      "/deduccion-empleada-domestica"
+    ]
+  },
+  {
     "id": "aportes-casas-2026-10",
     "serie": "aportes-casas",
     "organismo": "ARCA",
