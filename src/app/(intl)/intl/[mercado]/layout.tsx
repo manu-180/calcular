@@ -31,10 +31,17 @@ const arabe = Noto_Sans_Arabic({ variable: "--font-arabe", subsets: ["arabic"], 
 
 // La fecha de referencia (hoyEn, en la zona del mercado) decide tramos, avisos y qué calculadoras
 // se publican. Sin esto la página quedaba con el día del build hasta el próximo deploy. Next toma el
-// revalidate más bajo entre layout y página, así que alcanza con este para todo el árbol intl; las
-// páginas lo repiten para que nadie lo pierda al mover el layout. Son 24 h y no 1 h por costo: ver el
-// layout de (ar) y /api/cron/mes-nuevo, que purga todo el día 1.
-export const revalidate = 86400;
+// revalidate más bajo entre layout y página, así que este es el techo de todo el árbol intl; las
+// páginas lo repiten para que nadie lo pierda al mover el layout, y las que sí cambian todos los días
+// (i/calendario, i/horas, i/mundo, i/rankings, i/sueldos) se quedan en 86400, que gana por ser menor.
+//
+// Son 3 días y no 24 h por costo (9/11/2026). Cada regeneración es una escritura ISR que Vercel cobra
+// aunque el HTML salga idéntico, y medido con scripts/medir_dia_a_dia.ts sobre las 8.594 páginas de
+// calculadora, de un día al otro cambian entre 3 y 37 (0,04 %-0,43 %): con 24 h se pagaban las 10.353
+// todos los días para reescribir lo mismo. La frescura la da /api/cron/dia-nuevo, que purga a diario
+// el subárbol de los mercados que de verdad se movieron (src/motor/purga.ts); este plazo es la red por
+// si ese cron falla. El cambio de mes lo sigue cubriendo /api/cron/mes-nuevo, que purga todo el día 1.
+export const revalidate = 259200;
 
 // Sin dynamicParams = false a propósito: anularía el de las hojas y un slug desconocido caería en
 // el 404 de la raíz (marca de calcular.ar) en vez del not-found intl (docs/adr/0001-spike-next16.md).
