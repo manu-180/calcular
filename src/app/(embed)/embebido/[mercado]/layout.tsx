@@ -19,7 +19,9 @@ import "@/motor/embed/estilos-embed.css";
 // latin-ext trae la ő y la ű del húngaro; con unicode-range solo se baja si la página las usa.
 const geist = Geist({ variable: "--font-geist", subsets: ["latin", "latin-ext", "latin-ext"], display: "optional" });
 
-export const revalidate = 86400;
+// Mismo plazo que el árbol intl (ver su layout): 3 días de red, y la frescura la da la purga
+// diaria de /api/cron/dia-nuevo, que incluye /embebido/<mercado>.
+export const revalidate = 259200;
 
 export function generateStaticParams() {
   if (!intlActivo()) return [];

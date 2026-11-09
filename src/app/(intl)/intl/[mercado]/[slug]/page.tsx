@@ -13,8 +13,9 @@ import { hoyEn } from "@/motor/vigencia";
 import { registro } from "@/paises";
 import { CalculadoraIntl } from "./calculadora-intl";
 
-// Calculadora, fuentes y novedades dependen de la fecha del mercado (ver revalidate en layout.tsx).
-export const revalidate = 86400;
+// Calculadora, fuentes y novedades dependen de la fecha del mercado (ver revalidate en layout.tsx:
+// 3 días de red + purga diaria fina en /api/cron/dia-nuevo).
+export const revalidate = 259200;
 
 type Props = { params: Promise<{ mercado: string; slug: string }> };
 
