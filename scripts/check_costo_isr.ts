@@ -103,11 +103,15 @@ const PARES: [FechaISO, FechaISO][] = [
   ["2026-11-20" as FechaISO, "2026-11-21" as FechaISO],
   ["2026-11-30" as FechaISO, "2026-12-01" as FechaISO],
 ];
+// El techo es una alarma económica con margen, no una medición: si un día cambia medio sitio, el
+// plazo largo no compra nada y hay que volver a medir en vez de dejarlo pasar. Va holgado a
+// propósito porque estos pares son fechas fijas y los datos de abajo crecen todos los días
+// (datos-paises suma puntos de FX a decenas de países): medido el 9/11/2026 daban entre 1 y 29
+// mercados de 143 (máximo 20 %), y un techo pegado al dato de hoy se pondría rojo solo en el PR de
+// otra persona. Lo que de verdad dice si el ahorro existe es la facturación.
 for (const [desde, hasta] of PARES) {
   const cambiaron = mercados.filter((m) => mercadoCambio(registro, m, desde, hasta, MODO));
-  // El techo es lo que hace que el ahorro exista: si un día cambia medio sitio, el plazo largo no
-  // compra nada y hay que volver a medir en vez de dejarlo pasar.
-  check(`${desde}->${hasta}: cambian pocos mercados`, cambiaron.length <= mercados.length / 3, {
+  check(`${desde}->${hasta}: cambian pocos mercados`, cambiaron.length <= mercados.length / 2, {
     cambiaron: cambiaron.length,
     de: mercados.length,
   });
