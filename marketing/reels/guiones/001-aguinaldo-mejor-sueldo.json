@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "clave": "001-aguinaldo-mejor-sueldo",
+  "titulo": "Cómo se calcula el aguinaldo",
+  "categoria": "tecnico",
+  "formato": "explicador",
+  "paleta": "papel",
+  "hooks": [
+    "Así se calcula tu aguinaldo",
+    "Tu aguinaldo no sale del último sueldo",
+    "La cuenta del aguinaldo, sin vueltas"
+  ],
+  "voz": "El aguinaldo se paga en dos cuotas, en junio y en diciembre. Cada cuota es la mitad de tu mejor sueldo del semestre, no del último. Si entraste a mitad de semestre, cobrás la parte proporcional. Y como es sueldo, lleva los mismos descuentos.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "en junio y en diciembre",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "30 de junio y 18 de diciembre"
+        }
+      },
+      {
+        "frase": "la mitad de tu mejor sueldo",
+        "visual": {
+          "tipo": "cuenta",
+          "filas": [
+            {
+              "concepto": "Tu mejor sueldo del semestre",
+              "valor": "100 %"
+            },
+            {
+              "concepto": "Dividido",
+              "valor": "÷ 2"
+            }
+          ],
+          "total": {
+            "concepto": "Cada cuota de aguinaldo",
+            "valor": "50 %"
+          }
+        }
+      },
+      {
+        "frase": "cobrás la parte proporcional",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Proporcional a lo que trabajaste"
+        }
+      },
+      {
+        "frase": "lleva los mismos descuentos",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Es sueldo: lleva aportes"
+        }
+      }
+    ]
+  },
+  "captions": [
+    "El aguinaldo no es medio sueldo cualquiera: es la mitad del mejor sueldo que cobraste en el semestre. Si tuviste horas extra o un mes más alto, cuenta ese.",
+    "Dos cuotas por año: vencen el 30 de junio y el 18 de diciembre. Si empezaste a trabajar en el medio, igual te toca la parte proporcional.",
+    "Antes de que te liquiden, hacé la cuenta vos. Así sabés si lo que te depositan está bien.",
+    "Guardalo para diciembre: el aguinaldo se calcula con tu mejor sueldo del semestre, no con el último."
+  ],
+  "hashtags": [
+    "aguinaldo",
+    "sac",
+    "sueldo",
+    "medioaguinaldo",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "finanzaspersonales",
+    "rrhh",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 23.041: Sueldo Anual Complementario",
+      "url": "https://www.argentina.gob.ar/normativa/nacional/ley-23041-1983-28165",
+      "consultado": "2026-06-11"
+    }
+  ]
+}

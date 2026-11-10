@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "clave": "017-chat-bruto-neto",
+  "titulo": "Bruto no es lo que cobrás",
+  "categoria": "comedia",
+  "formato": "chat",
+  "paleta": "selva",
+  "hooks": [
+    "Me depositaron menos de lo que arreglamos",
+    "Bruto o neto: la pregunta del millón",
+    "Nadie te explica esto del sueldo"
+  ],
+  "voz": null,
+  "contenido": {
+    "contacto": "Tomi",
+    "mensajes": [
+      {
+        "de": "ellos",
+        "texto": "Me depositaron menos de lo que arreglamos"
+      },
+      {
+        "de": "yo",
+        "texto": "¿Arreglaron bruto o neto?"
+      },
+      {
+        "de": "ellos",
+        "texto": "¿Hay dos sueldos?"
+      },
+      {
+        "de": "yo",
+        "texto": "El bruto es antes de los descuentos de ley"
+      },
+      {
+        "de": "ellos",
+        "texto": "¿Qué descuentos?"
+      },
+      {
+        "de": "yo",
+        "texto": "Jubilación, PAMI y obra social"
+      },
+      {
+        "de": "ellos",
+        "texto": "O sea que el mío es el chiquito"
+      }
+    ],
+    "remate": "El bruto no es lo que cobrás"
+  },
+  "captions": [
+    "Cuando hablás de sueldo, preguntá siempre si es bruto o neto. Del bruto salen los aportes de jubilación, PAMI y obra social.",
+    "Tu recibo muestra el bruto arriba y el neto abajo. Lo que te depositan es el neto.",
+    "Etiquetá a quien negoció su sueldo sin preguntar esto.",
+    "Antes de aceptar una oferta, pasá el bruto a neto y mirá cuánto te queda de verdad."
+  ],
+  "hashtags": [
+    "sueldo",
+    "sueldobruto",
+    "sueldoneto",
+    "recibodesueldo",
+    "humorlaboral",
+    "trabajo",
+    "argentina",
+    "empleados",
+    "finanzaspersonales",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    }
+  ]
+}

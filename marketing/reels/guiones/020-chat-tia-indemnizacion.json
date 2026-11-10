@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "clave": "020-chat-tia-indemnizacion",
+  "titulo": "Cuatro años y cinco meses",
+  "categoria": "comedia",
+  "formato": "chat",
+  "paleta": "selva",
+  "hooks": [
+    "Mi tía cobró un sueldo menos de indemnización",
+    "Cuatro años y cinco meses no son cuatro",
+    "Le revisé la indemnización a mi tía"
+  ],
+  "voz": null,
+  "contenido": {
+    "contacto": "Tía Marta",
+    "mensajes": [
+      {
+        "de": "ellos",
+        "texto": "Me echaron después de 4 años y 5 meses"
+      },
+      {
+        "de": "yo",
+        "texto": "¿Te pagaron la indemnización?"
+      },
+      {
+        "de": "ellos",
+        "texto": "Me dieron 4 sueldos"
+      },
+      {
+        "de": "yo",
+        "texto": "Tía, más de 3 meses cuenta como un año"
+      },
+      {
+        "de": "ellos",
+        "texto": "¿O sea que me deben uno más?"
+      },
+      {
+        "de": "yo",
+        "texto": "Un sueldo más, sí"
+      },
+      {
+        "de": "ellos",
+        "texto": "Le mando este chat al abogado"
+      }
+    ],
+    "remate": "Más de 3 meses cuenta como un año entero"
+  },
+  "captions": [
+    "En la indemnización por antigüedad, la fracción de más de tres meses cuenta como un año entero. 4 años y 5 meses son 5 sueldos.",
+    "La base es el mejor sueldo mensual, normal y habitual del último año, no el último que cobraste.",
+    "Etiquetá a quien le tocó revisar la liquidación de alguien de la familia.",
+    "Antes de firmar la liquidación, hacé la cuenta con tus números."
+  ],
+  "hashtags": [
+    "indemnizacion",
+    "despido",
+    "humorlaboral",
+    "liquidacionfinal",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "familia",
+    "empleados",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    }
+  ]
+}

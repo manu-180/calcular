@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "clave": "tres-mitos-de-la-web",
+  "titulo": "Tres mitos que frenan a tener web",
+  "categoria": "mito",
+  "formato": "mito",
+  "paleta": "noche",
+  "hooks": [
+    "Tres mitos que te frenan la web",
+    "Lo que creés de las webs es mentira",
+    "Dejá de creer esto sobre tu página"
+  ],
+  "voz": "Si tengo redes, no necesito web. Mentira: en redes estás de prestado, tu web es tuya. Una web tarda meses. Tampoco: una web bien hecha puede estar en días. Con que se vea en la compu alcanza. No, la mayoría te mira desde el celular.",
+  "contenido": {
+    "tarjetas": [
+      { "mito": "Si tengo redes, no necesito web", "realidad": "En redes estás de prestado. Tu web es tuya." },
+      { "mito": "Una web tarda meses", "realidad": "Una web bien hecha puede estar en días." },
+      { "mito": "Con que se vea en la compu alcanza", "realidad": "La mayoría te mira desde el celular." }
+    ]
+  },
+  "captions": [
+    "Tres cosas que escuchamos todas las semanas y que te alejan de tener tu página. ¿Cuál creías vos?",
+    "Las redes te ayudan a que te descubran, pero tu web es el único lugar que es tuyo de verdad.",
+    "Una web no tiene que tardar meses ni verse rara en el celular. Se puede hacer bien y rápido.",
+    "Si alguna vez dijiste alguna de estas, este video es para vos."
+  ],
+  "hashtags": ["diseñoweb", "paginaweb", "emprendedores", "pymes", "negociolocal", "marketingdigital", "sitioweb", "emprender", "webprofesional", "argentina"]
+}

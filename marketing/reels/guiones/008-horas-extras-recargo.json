@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "clave": "008-horas-extras-recargo",
+  "titulo": "Cuánto se paga una hora extra",
+  "categoria": "tecnico",
+  "formato": "explicador",
+  "paleta": "noche",
+  "hooks": [
+    "Cuánto se paga una hora extra",
+    "Tus horas extra no valen lo mismo",
+    "El sábado a la tarde vale doble"
+  ],
+  "voz": "Una hora extra no se paga como una hora común. En días comunes lleva un recargo del cincuenta por ciento. Los sábados después de las trece, domingos y feriados, el recargo es del cien por ciento. Y desde la reforma, se pueden compensar con francos si lo acuerdan por escrito.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "Una hora extra no",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "No vale lo mismo"
+        }
+      },
+      {
+        "frase": "En días comunes lleva",
+        "visual": {
+          "tipo": "cuenta",
+          "filas": [
+            {
+              "concepto": "Hora común",
+              "valor": "100 %"
+            },
+            {
+              "concepto": "Recargo de día común",
+              "valor": "+ 50 %"
+            }
+          ],
+          "total": {
+            "concepto": "Hora extra",
+            "valor": "150 %"
+          }
+        }
+      },
+      {
+        "frase": "Los sábados después de las trece",
+        "visual": {
+          "tipo": "cuenta",
+          "filas": [
+            {
+              "concepto": "Hora común",
+              "valor": "100 %"
+            },
+            {
+              "concepto": "Sábado desde las 13 y domingo",
+              "valor": "+ 100 %"
+            }
+          ],
+          "total": {
+            "concepto": "Hora extra",
+            "valor": "200 %"
+          }
+        }
+      },
+      {
+        "frase": "se pueden compensar con francos",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "O francos, acordados por escrito"
+        }
+      }
+    ]
+  },
+  "captions": [
+    "La hora extra en día común se paga con 50 % de recargo. Los sábados después de las 13, domingos y feriados, con 100 %.",
+    "Desde la reforma laboral de 2026, las horas extra se pueden compensar con francos o banco de horas, pero tiene que estar acordado por escrito.",
+    "Si hacés horas extra, anotalas. Después hacé la cuenta y compará con tu recibo.",
+    "El recargo se calcula sobre tu salario habitual. Una hora del domingo vale el doble que una común."
+  ],
+  "hashtags": [
+    "horasextras",
+    "sueldo",
+    "recibodesueldo",
+    "reformalaboral",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "rrhh",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

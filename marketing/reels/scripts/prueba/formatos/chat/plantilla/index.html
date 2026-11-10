@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Reel de prueba: chat</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/datos.js"></script>
+<style>
+{{css}}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--fondo); }
+#root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--fondo); font-family: "Geist", sans-serif; color: var(--tinta); }
+
+
+#titulo { position: absolute; left: 70px; top: 236px; width: 860px; height: 280px; display: flex; align-items: center; justify-content: center; }
+#hook { font-family: "Geist"; font-weight: 800; font-size: 88px; line-height: 1.0; letter-spacing: -0.03em; text-align: center; text-wrap: balance; color: var(--tinta); }
+
+#telefono { position: absolute; left: 90px; top: 548px; width: 820px; height: 1440px; border-radius: 108px; background: #0b0c0f; padding: 16px;
+  box-shadow: 0 0 0 2px var(--canto), 0 60px 120px rgba(0,0,0,0.34), 0 18px 40px rgba(0,0,0,0.22); }
+#pantalla { position: relative; width: 788px; height: 1408px; border-radius: 92px; overflow: hidden; background: var(--pantalla); }
+
+#estado { position: absolute; left: 0; top: 0; width: 788px; height: 64px; background: var(--cabecera); }
+#hora { position: absolute; left: 74px; top: 20px; font-weight: 600; font-size: 28px; color: var(--tinta); letter-spacing: 0.01em; }
+#isla { position: absolute; left: 304px; top: 14px; width: 180px; height: 50px; border-radius: 26px; background: #050506; }
+#iconos { position: absolute; right: 64px; top: 22px; display: flex; gap: 10px; align-items: center; }
+#iconos svg { display: block; }
+#cabecera { position: absolute; left: 0; top: 64px; width: 788px; height: 112px; background: var(--cabecera); border-bottom: 2px solid var(--linea); }
+#volver { position: absolute; left: 22px; top: 32px; width: 34px; height: 48px; }
+#avatar { position: absolute; left: 70px; top: 18px; width: 76px; height: 76px; border-radius: 50%; background: var(--avatar); display: flex; align-items: center; justify-content: center;
+  font-family: "Geist"; font-weight: 800; font-size: 36px; color: var(--tinta); }
+#quien { position: absolute; left: 166px; top: 18px; width: 440px; height: 80px; }
+#nombre { display: block; font-weight: 600; font-size: 36px; line-height: 44px; color: var(--tinta); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#en-linea, #escribe { position: absolute; left: 0; top: 46px; font-weight: 500; font-size: 26px; line-height: 32px; color: var(--tenue); white-space: nowrap; }
+#escribe { opacity: 0; }
+#acciones { position: absolute; right: 26px; top: 34px; display: flex; gap: 30px; }
+
+#vista { position: absolute; left: 0; top: 176px; width: 788px; height: 642px; overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0px, #000 46px); mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0px, #000 46px); }
+#lista { position: absolute; left: 0; top: 0; width: 788px; padding: 0 24px; display: flex; flex-direction: column; }
+.burbuja { position: relative; max-width: 560px; padding: 19px 28px 21px; border-radius: 36px; font-weight: 500; font-size: 38px; line-height: 1.3; letter-spacing: -0.006em; margin-top: 12px; opacity: 0; }
+.burbuja.ellos { align-self: flex-start; background: var(--burbuja); color: var(--tinta); border-bottom-left-radius: 12px; box-shadow: var(--sombra-burbuja); transform-origin: 0% 100%; }
+.burbuja.yo { align-self: flex-end; background: var(--acento); color: var(--acento-tinta); border-bottom-right-radius: 12px; transform-origin: 100% 100%; }
+.burbuja.cambio { margin-top: 26px; }
+#puntos { position: absolute; left: 24px; top: 0; width: 126px; height: 78px; border-radius: 39px; border-bottom-left-radius: 12px; background: var(--burbuja); box-shadow: var(--sombra-burbuja);
+  display: flex; align-items: center; justify-content: center; gap: 11px; opacity: 0; transform-origin: 0% 100%; }
+#puntos i { display: block; width: 15px; height: 15px; border-radius: 50%; background: var(--tenue); opacity: 0.4; }
+
+/* El inset va con 3 valores, como lo devuelve getComputedStyle: con 4, GSAP interpola número por número y desarma el recorte. */
+#campo-fondo { position: absolute; left: 96px; top: 712px; width: 580px; height: 200px; border-radius: 42px; background: var(--campo); clip-path: inset(116px 0px 0px round 42px); }
+#pista { position: absolute; left: 124px; top: 848px; font-weight: 500; font-size: 34px; line-height: 44px; color: var(--tenue); }
+.borrador { position: absolute; left: 124px; bottom: 516px; width: 524px; font-weight: 500; font-size: 34px; line-height: 44px; color: var(--tinta); }
+.borrador span { opacity: 0; }
+#mas { position: absolute; left: 22px; top: 838px; width: 60px; height: 60px; }
+#boton { position: absolute; left: 692px; top: 832px; width: 74px; height: 74px; }
+#mic, #enviar { position: absolute; inset: 0; }
+#enviar { border-radius: 50%; background: var(--acento); opacity: 0; display: flex; align-items: center; justify-content: center; }
+
+#teclado { position: absolute; left: 0; top: 936px; width: 788px; height: 472px; background: var(--teclado); border-top: 2px solid var(--linea); padding: 22px 10px 0; }
+.fila { display: flex; justify-content: center; gap: 10px; margin-bottom: 18px; }
+.tecla { width: 66px; height: 88px; border-radius: 14px; background: var(--tecla); box-shadow: 0 2px 0 rgba(0,0,0,0.22); display: flex; align-items: center; justify-content: center;
+  font-weight: 500; font-size: 34px; color: var(--tinta); }
+.tecla.ancha { width: 104px; font-size: 24px; }
+.tecla.espacio { width: 380px; font-size: 26px; color: var(--tenue); }
+
+#remate { position: absolute; left: 70px; top: 660px; width: 860px; height: 640px; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+#remate-t { font-family: "Geist"; font-weight: 800; font-size: 104px; line-height: 1.0; letter-spacing: -0.03em; text-align: center; text-wrap: balance; color: var(--tinta); }
+#remate-t span { display: inline-block; opacity: 0; }
+#remate-t span.ultima { color: var(--acento-texto); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="{{duracion}}">
+  {{fondo}}
+
+  <div id="titulo"><h1 id="hook"></h1></div>
+
+  <div id="telefono" data-layout-allow-overflow>
+    <div id="pantalla">
+      <div id="estado">
+        <span id="hora">21:14</span>
+        <i id="isla"></i>
+        <div id="iconos">
+          <svg width="34" height="22" viewBox="0 0 34 22"><g fill="currentColor" style="color:var(--tinta)"><rect x="0" y="14" width="6" height="8" rx="1.5"/><rect x="9" y="10" width="6" height="12" rx="1.5"/><rect x="18" y="5" width="6" height="17" rx="1.5"/><rect x="27" y="0" width="6" height="22" rx="1.5"/></g></svg>
+          <svg width="30" height="22" viewBox="0 0 30 22"><path d="M15 21 l-4.2-4.6a6 6 0 0 1 8.4 0z M5.4 11.2a13.6 13.6 0 0 1 19.2 0l-2.9 3.1a9.4 9.4 0 0 0-13.4 0z M1 6.4a20 20 0 0 1 28 0l-2.9 3.1a15.8 15.8 0 0 0-22.2 0z" fill="currentColor" style="color:var(--tinta)"/></svg>
+          <svg width="52" height="24" viewBox="0 0 52 24"><rect x="1" y="1" width="44" height="22" rx="7" fill="none" stroke="currentColor" stroke-opacity="0.45" stroke-width="2" style="color:var(--tinta)"/><rect x="4.5" y="4.5" width="31" height="15" rx="4" fill="currentColor" style="color:var(--tinta)"/><rect x="47.5" y="8" width="3" height="8" rx="1.5" fill="currentColor" fill-opacity="0.45" style="color:var(--tinta)"/></svg>
+        </div>
+      </div>
+      <div id="cabecera">
+        <svg id="volver" viewBox="0 0 34 48"><path d="M26 4 L8 24 L26 44" fill="none" stroke="var(--acento-texto)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div id="avatar"><span id="inicial"></span></div>
+        <div id="quien" data-layout-allow-overlap><b id="nombre"></b><span id="en-linea" data-layout-allow-overlap>en línea</span><span id="escribe" data-layout-allow-overlap>escribiendo…</span></div>
+        <div id="acciones">
+          <svg width="48" height="44" viewBox="0 0 48 44"><rect x="2" y="9" width="30" height="26" rx="7" fill="none" stroke="var(--acento-texto)" stroke-width="4"/><path d="M32 18 L45 10 V34 L32 26 Z" fill="none" stroke="var(--acento-texto)" stroke-width="4" stroke-linejoin="round"/></svg>
+          <svg width="44" height="44" viewBox="0 0 44 44"><path d="M12 4 L18 4 L21 13 L16 17 C18.5 23 21 25.5 27 28 L31 23 L40 26 L40 32 C40 36 37 40 32 40 C17 39 5 27 4 12 C4 7 8 4 12 4 Z" fill="none" stroke="var(--acento-texto)" stroke-width="4" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <div id="vista"><div id="lista" data-layout-ignore><div id="puntos"><i></i><i></i><i></i></div></div></div>
+
+      <div id="campo-fondo"></div>
+      <span id="pista" data-layout-allow-overlap>Mensaje</span>
+      <div id="borradores" data-layout-allow-overlap></div>
+      <svg id="mas" viewBox="0 0 60 60"><path d="M30 14 V46 M14 30 H46" stroke="var(--acento-texto)" stroke-width="5" stroke-linecap="round"/></svg>
+      <div id="boton">
+        <svg id="mic" viewBox="0 0 74 74"><rect x="28" y="14" width="18" height="30" rx="9" fill="none" stroke="var(--tenue)" stroke-width="4.5"/><path d="M20 36 C20 46 27 52 37 52 C47 52 54 46 54 36 M37 52 V60" fill="none" stroke="var(--tenue)" stroke-width="4.5" stroke-linecap="round"/></svg>
+        <div id="enviar"><svg width="40" height="40" viewBox="0 0 40 40"><path d="M20 33 V8 M9 18 L20 7 L31 18" fill="none" stroke="var(--acento-tinta)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div id="teclado"></div>
+    </div>
+  </div>
+
+  <div id="remate"><p id="remate-t"></p></div>
+
+  {{audio}}
+</div>
+
+<script>
+(function () {
+  const D = window.REEL;
+  const C = D.colores;
+  const raiz = document.documentElement.style;
+  const vars = {
+    "acento-tinta": C.acento_tinta, pantalla: C.pantalla, cabecera: C.cabecera,
+    burbuja: C.burbuja, campo: C.campo, teclado: C.teclado, tecla: C.tecla, avatar: C.avatar,
+    canto: C.oscuro ? "rgba(255,255,255,0.14)" : "rgba(0,0,0,0.06)",
+    "sombra-burbuja": C.oscuro ? "none" : "0 1px 2px rgba(0,0,0,0.08)",
+    // El acento como texto o trazo fino sobre la pantalla: si no separa 3:1, la tinta.
+    "acento-texto": C.acento_texto || C.acento,
+  };
+  for (const k in vars) raiz.setProperty("--" + k, vars[k]);
+
+  const VISTA = 642, AIRE = 22, PUNTOS = 78;
+  // Sin render perezoso: el cuadro que se captura tiene que tener ya los valores del seek.
+  gsap.defaults({ lazy: false });
+  const tl = gsap.timeline({ paused: true });
+
+  function lineas(el) {
+    const r = el.getBoundingClientRect();
+    const lh = parseFloat(getComputedStyle(el).lineHeight);
+    return Math.round(r.height / lh);
+  }
+
+  function teclado() {
+    const filas = [["q","w","e","r","t","y","u","i","o","p"], ["a","s","d","f","g","h","j","k","l","ñ"], ["⇧","z","x","c","v","b","n","m","⌫"], ["123","espacio","listo"]];
+    const t = document.getElementById("teclado");
+    filas.forEach(function (f) {
+      const fila = document.createElement("div");
+      fila.className = "fila";
+      f.forEach(function (k) {
+        const b = document.createElement("div");
+        b.className = "tecla" + (k.length > 1 ? (k === "espacio" ? " espacio" : " ancha") : "");
+        b.textContent = k;
+        fila.appendChild(b);
+      });
+      t.appendChild(fila);
+    });
+  }
+
+  function construir() {
+    teclado();
+    const hook = document.getElementById("hook");
+    hook.textContent = D.hook;
+    let tam = 88;
+    while (lineas(hook) > 2 && tam > 60) { tam -= 4; hook.style.fontSize = tam + "px"; }
+    document.getElementById("nombre").textContent = D.contacto;
+    document.getElementById("inicial").textContent = D.contacto.trim().charAt(0).toUpperCase();
+
+    const lista = document.getElementById("lista");
+    const puntos = document.getElementById("puntos");
+    const borradores = document.getElementById("borradores");
+    const burbujas = D.mensajes.map(function (m, i) {
+      const b = document.createElement("div");
+      b.className = "burbuja " + m.de + (i > 0 && D.mensajes[i - 1].de !== m.de ? " cambio" : "");
+      b.textContent = m.texto;
+      lista.appendChild(b);
+      return b;
+    });
+    const borrador = D.mensajes.map(function (m) {
+      if (m.de !== "yo") return null;
+      const el = document.createElement("div");
+      el.className = "borrador";
+      const spans = m.texto.split(/\s+/).map(function (w, k) {
+        if (k) el.appendChild(document.createTextNode(" "));
+        const s = document.createElement("span");
+        s.textContent = w;
+        el.appendChild(s);
+        return s;
+      });
+      borradores.appendChild(el);
+      return { el: el, spans: spans, alto: el.offsetHeight };
+    });
+
+    const cajas = burbujas.map(function (b) { return { top: b.offsetTop, alto: b.offsetHeight }; });
+    const pie = function (k) { return k < 0 ? 0 : cajas[k].top + cajas[k].alto; };
+    const ir = function (y) { return VISTA - AIRE - y; };
+
+    const scroll = function (y, t, dur) { tl.to(lista, { y: ir(y), duration: dur || 0.42, ease: "power3.out" }, t); };
+
+    // Entrada: el teléfono ya se está acomodando en el cuadro 0; el título se lee desde el primer cuadro.
+    tl.fromTo("#telefono", { y: 70, scale: 1.025, transformOrigin: "50% 0%" }, { y: 0, scale: 1, duration: 1.1, ease: "expo.out" }, 0);
+
+    function ondas(desde, hasta) {
+      const dots = puntos.querySelectorAll("i");
+      for (let c = desde; c < hasta - 0.2; c += 0.9) {
+        dots.forEach(function (d, k) {
+          const t = c + k * 0.15;
+          if (t + 0.44 > hasta) return;
+          tl.fromTo(d, { opacity: 0.4, y: 0 }, { opacity: 1, y: -7, duration: 0.22, ease: "sine.out" }, t);
+          tl.to(d, { opacity: 0.4, y: 0, duration: 0.22, ease: "sine.in" }, t + 0.22);
+        });
+      }
+    }
+    function mostrarPuntos(top, t) {
+      tl.set(puntos, { y: top }, t);
+      tl.fromTo(puntos, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.7)" }, t);
+    }
+    function escribe(t, si) {
+      tl.to("#en-linea", { opacity: si ? 0 : 1, duration: 0.14, ease: "power1.out" }, t);
+      tl.to("#escribe", { opacity: si ? 1 : 0, duration: 0.14, ease: "power1.out" }, t);
+    }
+
+    let inicio = { lista: ir(0), puntos: { y: 0, opacity: 0, scale: 1 }, escribe: false };
+    D.mensajes.forEach(function (m, i) {
+      const b = burbujas[i];
+      const caja = cajas[i];
+      if (m.de === "ellos") {
+        const arranca = m.duda ? m.duda.aparece : m.escribe;
+        const primera = arranca <= 0.001;
+        if (primera) inicio = { lista: ir(caja.top + PUNTOS), puntos: { y: caja.top, opacity: 1, scale: 1 }, escribe: true };
+        else { mostrarPuntos(caja.top, arranca); scroll(caja.top + PUNTOS, arranca); escribe(arranca, true); }
+        if (m.duda) {
+          // Escribe, se arrepiente y vuelve: el silencio antes del remate.
+          ondas(m.duda.aparece, m.duda.calla);
+          tl.to(puntos, { opacity: 0, scale: 0.7, duration: 0.18, ease: "power2.in" }, m.duda.calla);
+          scroll(pie(i - 1), m.duda.calla + 0.04, 0.36);
+          escribe(m.duda.calla, false);
+          mostrarPuntos(caja.top, m.duda.vuelve);
+          scroll(caja.top + PUNTOS, m.duda.vuelve);
+          escribe(m.duda.vuelve, true);
+        }
+        ondas(m.escribe, m.llega);
+        tl.to(puntos, { opacity: 0, scale: 0.85, duration: 0.1, ease: "power1.in" }, m.llega);
+        tl.fromTo(b, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "none" }, m.llega);
+        tl.fromTo(b, { scale: 0.55 }, { scale: 1, duration: 0.44, ease: "back.out(1.5)" }, m.llega);
+        scroll(pie(i), m.llega);
+        escribe(m.llega, false);
+      } else {
+        const bo = borrador[i];
+        const sube = Math.max(0, bo.alto + 40 - 84);
+        const escribeT = Math.max(0.0, m.escribe);
+        const paso = (m.llega - escribeT - 0.1) / bo.spans.length;
+        tl.to("#pista", { opacity: 0, duration: 0.08, ease: "none" }, escribeT);
+        tl.to("#mic", { opacity: 0, duration: 0.1, ease: "none" }, escribeT);
+        tl.fromTo("#enviar", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.24, ease: "back.out(2)" }, escribeT);
+        bo.spans.forEach(function (s, k) { tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, escribeT + k * paso); });
+        if (sube > 0) {
+          // El borrador ya tiene su alto final (las palabras ocupan su lugar invisibles): el campo crece
+          // de una al empezar a escribir y la conversación sube con él.
+          tl.to("#campo-fondo", { clipPath: "inset(" + (116 - sube) + "px 0px 0px round 42px)", duration: 0.2, ease: "power2.out" }, escribeT);
+          tl.to(lista, { y: ir(pie(i - 1)) - sube, duration: 0.2, ease: "power2.out" }, escribeT);
+        }
+        // Se manda: el botón se hunde, el texto se va del campo y la burbuja sube desde la barra.
+        tl.to("#enviar", { scale: 0.84, duration: 0.07, ease: "power2.in" }, m.llega - 0.07);
+        tl.to("#enviar", { scale: 1, duration: 0.24, ease: "back.out(2)" }, m.llega);
+        tl.to(bo.spans, { opacity: 0, duration: 0.06, ease: "none" }, m.llega);
+        if (sube > 0) tl.to("#campo-fondo", { clipPath: "inset(116px 0px 0px round 42px)", duration: 0.26, ease: "power3.out" }, m.llega);
+        tl.fromTo(b, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none" }, m.llega);
+        tl.fromTo(b, { y: 120 + sube, scale: 0.94 }, { y: 0, scale: 1, duration: 0.42, ease: "power3.out" }, m.llega);
+        scroll(pie(i), m.llega);
+        tl.to("#enviar", { opacity: 0, scale: 0.6, duration: 0.18, ease: "power2.in" }, m.llega + 0.34);
+        tl.to("#mic", { opacity: 1, duration: 0.18, ease: "none" }, m.llega + 0.4);
+        tl.to("#pista", { opacity: 1, duration: 0.18, ease: "none" }, m.llega + 0.4);
+      }
+    });
+
+    if (D.remate) {
+      const R = D.remate;
+      const p = document.getElementById("remate-t");
+      const ws = R.texto.split(/\s+/);
+      const spans = ws.map(function (w, k) {
+        if (k) p.appendChild(document.createTextNode(" "));
+        const s = document.createElement("span");
+        s.textContent = w;
+        if (k === ws.length - 1 && ws.length > 1) s.className = "ultima";
+        p.appendChild(s);
+        return s;
+      });
+      let tr = 104;
+      while (lineas(p) > 3 && tr > 68) { tr -= 4; p.style.fontSize = tr + "px"; }
+      // Zoom inverso = llegada: el chat se va al fondo y el remate cae encima, también achicándose.
+      tl.to("#telefono", { scale: 0.88, y: 50, opacity: 0.07, filter: "blur(14px)", duration: 0.7, ease: "power3.inOut", transformOrigin: "50% 30%" }, R.t);
+      tl.to("#titulo", { opacity: 0.5, duration: 0.5, ease: "power2.out" }, R.t);
+      spans.forEach(function (s, k) {
+        const t = R.golpe + k * 0.075;
+        tl.fromTo(s, { opacity: 0, scale: 1.18, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.28, ease: "power3.out" }, t);
+      });
+    }
+
+    // El estado del cuadro 0 va como un fromTo de 1 ms en t = 0 y no como gsap.set: HyperFrames arma
+    // las tweens recién al primer seek (sus fromTo pisan cualquier set hecho antes) y un set en 0 se
+    // revierte cuando el seek llega a 0 desde 0,001.
+    const estado = function (el, v) { tl.fromTo(el, v, Object.assign({}, v, { duration: 0.001, ease: "none" }), 0); };
+    estado(lista, { y: inicio.lista });
+    estado(puntos, inicio.puntos);
+    estado("#en-linea", { opacity: inicio.escribe ? 0 : 1 });
+    estado("#escribe", { opacity: inicio.escribe ? 1 : 0 });
+    tl.set({}, {}, D.duracion);
+    window.__timelines["main"] = tl;
+  }
+
+  // fonts.ready no espera a una fuente que todavía nada usa: sin cargarlas antes, las burbujas se miden con la de reemplazo.
+  Promise.all([
+    document.fonts.load('800 88px "Geist"'),
+    document.fonts.load('500 38px "Geist"'),
+    document.fonts.load('600 36px "Geist"'),
+  ]).then(function () { return document.fonts.ready; }).then(construir, construir);
+})();
+</script>
+</body>
+</html>

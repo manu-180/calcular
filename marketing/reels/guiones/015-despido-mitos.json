@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "clave": "015-despido-mitos",
+  "titulo": "Tres mitos del despido",
+  "categoria": "mito",
+  "formato": "mito",
+  "paleta": "noche",
+  "hooks": [
+    "Tres mitos del despido",
+    "Te despidieron: no creas esto",
+    "Despido sin causa: lo que creés mal"
+  ],
+  "voz": "Te pueden echar sin pagarte nada. No: sin causa y pasado el período de prueba, hay indemnización. El preaviso es siempre de un mes. Es un mes hasta cinco años de antigüedad, y dos después. La indemnización paga Ganancias. La de antigüedad está exenta; el preaviso, no.",
+  "contenido": {
+    "tarjetas": [
+      {
+        "mito": "Te pueden echar sin pagarte nada",
+        "realidad": "Sin causa y pasado el período de prueba, hay indemnización."
+      },
+      {
+        "mito": "El preaviso es siempre de un mes",
+        "realidad": "Un mes hasta 5 años de antigüedad, y dos meses después."
+      },
+      {
+        "mito": "La indemnización paga Ganancias",
+        "realidad": "La de antigüedad está exenta. El preaviso, no."
+      }
+    ]
+  },
+  "captions": [
+    "Un despido sin causa, pasado el período de prueba, paga indemnización por antigüedad: un sueldo por año o fracción de más de tres meses.",
+    "El preaviso del empleador es de un mes hasta 5 años de antigüedad y de dos meses con más. Si no lo da, lo tiene que pagar.",
+    "La indemnización por antigüedad está exenta de Ganancias. La que reemplaza al preaviso, no.",
+    "Si te despidieron, hacé la cuenta completa antes de firmar nada."
+  ],
+  "hashtags": [
+    "despido",
+    "indemnizacion",
+    "preaviso",
+    "liquidacionfinal",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "abogadolaboral",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley de Impuesto a las Ganancias, art. 26 inc. i (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/330000-334999/332890/texact.htm",
+      "consultado": "2026-09-21"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "papel-buscador",
+    "paleta": "papel",
+    "estilo": "buscador",
+    "archivo": "clips/papel-buscador.mp4",
+    "duracion_s": 4.9
+  },
+  {
+    "id": "papel-tipografico",
+    "paleta": "papel",
+    "estilo": "tipografico",
+    "archivo": "clips/papel-tipografico.mp4",
+    "duracion_s": 4.9
+  },
+  {
+    "id": "selva-buscador",
+    "paleta": "selva",
+    "estilo": "buscador",
+    "archivo": "clips/selva-buscador.mp4",
+    "duracion_s": 4.9
+  },
+  {
+    "id": "selva-tipografico",
+    "paleta": "selva",
+    "estilo": "tipografico",
+    "archivo": "clips/selva-tipografico.mp4",
+    "duracion_s": 4.9
+  },
+  {
+    "id": "noche-buscador",
+    "paleta": "noche",
+    "estilo": "buscador",
+    "archivo": "clips/noche-buscador.mp4",
+    "duracion_s": 4.9
+  },
+  {
+    "id": "noche-tipografico",
+    "paleta": "noche",
+    "estilo": "tipografico",
+    "archivo": "clips/noche-tipografico.mp4",
+    "duracion_s": 4.9
+  },
+  {
+    "id": "menta-buscador",
+    "paleta": "menta",
+    "estilo": "buscador",
+    "archivo": "clips/menta-buscador.mp4",
+    "duracion_s": 4.9
+  },
+  {
+    "id": "menta-tipografico",
+    "paleta": "menta",
+    "estilo": "tipografico",
+    "archivo": "clips/menta-tipografico.mp4",
+    "duracion_s": 4.9
+  },
+  {
+    "id": "pizarra-buscador",
+    "paleta": "pizarra",
+    "estilo": "buscador",
+    "archivo": "clips/pizarra-buscador.mp4",
+    "duracion_s": 4.9
+  },
+  {
+    "id": "pizarra-tipografico",
+    "paleta": "pizarra",
+    "estilo": "tipografico",
+    "archivo": "clips/pizarra-tipografico.mp4",
+    "duracion_s": 4.9
+  }
+]

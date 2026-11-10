@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "clave": "010-monotributo-recategorizacion",
+  "titulo": "Monotributo: cuándo recategorizarte",
+  "categoria": "negocio",
+  "formato": "explicador",
+  "paleta": "pizarra",
+  "hooks": [
+    "Monotributo: dos fechas que no podés olvidar",
+    "¿Te toca recategorizarte en el monotributo?",
+    "Febrero y agosto: ojo con el monotributo"
+  ],
+  "voz": "En el monotributo te recategorizás dos veces por año, en febrero y en agosto. Se miran tus ingresos de los últimos doce meses. El trámite se hace hasta el día cinco. Y si seguís en la misma categoría, no tenés que hacer nada.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "en febrero y en agosto",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Febrero y agosto"
+        }
+      },
+      {
+        "frase": "los últimos doce meses",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Tus ingresos de los últimos 12 meses"
+        }
+      },
+      {
+        "frase": "hasta el día cinco",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Hasta el día 5"
+        }
+      },
+      {
+        "frase": "en la misma categoría",
+        "visual": {
+          "tipo": "comparacion",
+          "izq": {
+            "titulo": "Cambió tu categoría",
+            "items": [
+              "Hacés el trámite",
+              "Hasta el día 5"
+            ]
+          },
+          "der": {
+            "titulo": "Misma categoría",
+            "items": [
+              "No hacés nada",
+              "Seguís como estás"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "captions": [
+    "La recategorización del monotributo es dos veces por año: en febrero y en agosto, mirando los últimos 12 meses de actividad.",
+    "Si tus ingresos, la superficie o la energía que usás no cambian tu categoría, no tenés que hacer ningún trámite.",
+    "Si cambiaste de categoría, el trámite se hace hasta el día 5 de febrero o de agosto. Agendalo.",
+    "Antes de recategorizarte, sumá lo que facturaste en los últimos 12 meses y fijate dónde caés."
+  ],
+  "hashtags": [
+    "monotributo",
+    "recategorizacion",
+    "arca",
+    "emprendedores",
+    "pymes",
+    "impuestos",
+    "contador",
+    "argentina",
+    "independientes",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "ARCA: recategorización del Monotributo",
+      "url": "https://www.afip.gob.ar/monotributo/ayuda/recategorizacion.asp",
+      "consultado": "2026-11-10"
+    }
+  ]
+}

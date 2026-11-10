@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "clave": "022-aguinaldo-proporcional",
+  "titulo": "Aguinaldo si entraste hace poco",
+  "categoria": "tecnico",
+  "formato": "explicador",
+  "paleta": "noche",
+  "hooks": [
+    "Entraste hace poco y te toca aguinaldo",
+    "Aguinaldo proporcional: la cuenta",
+    "No trabajaste todo el semestre, ¿y?"
+  ],
+  "voz": "Si no trabajaste el semestre completo, igual cobrás aguinaldo. Es proporcional: la mitad de tu mejor sueldo, por los días que trabajaste, sobre los días del semestre. Y si te vas antes de junio o diciembre, te lo pagan en la liquidación final.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "Si no trabajaste el semestre",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Igual hay aguinaldo"
+        }
+      },
+      {
+        "frase": "la mitad de tu mejor sueldo",
+        "visual": {
+          "tipo": "cuenta",
+          "filas": [
+            {
+              "concepto": "Mitad del mejor sueldo",
+              "valor": "50 %"
+            },
+            {
+              "concepto": "Por días trabajados",
+              "valor": "× días"
+            },
+            {
+              "concepto": "Sobre días del semestre",
+              "valor": "÷ semestre"
+            }
+          ],
+          "total": {
+            "concepto": "Tu aguinaldo",
+            "valor": "proporcional"
+          }
+        }
+      },
+      {
+        "frase": "en la liquidación final",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Va en la liquidación final"
+        }
+      }
+    ]
+  },
+  "captions": [
+    "Aunque hayas entrado en el medio del semestre, cobrás aguinaldo en proporción a los días que trabajaste.",
+    "Si te vas antes de junio o de diciembre, el aguinaldo proporcional va en tu liquidación final, sea renuncia o despido.",
+    "La cuenta es la mitad de tu mejor sueldo del semestre, multiplicada por los días trabajados y dividida por los días del semestre.",
+    "Mandáselo a quien empezó a trabajar hace poco."
+  ],
+  "hashtags": [
+    "aguinaldo",
+    "aguinaldoproporcional",
+    "sac",
+    "trabajonuevo",
+    "sueldo",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 23.041: Sueldo Anual Complementario",
+      "url": "https://www.argentina.gob.ar/normativa/nacional/ley-23041-1983-28165",
+      "consultado": "2026-06-11"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "clave": "019-preaviso-empleador",
+  "titulo": "Si vas a despedir, el preaviso",
+  "categoria": "negocio",
+  "formato": "explicador",
+  "paleta": "selva",
+  "hooks": [
+    "Si vas a despedir, mirá esto antes",
+    "Preaviso: cuánto antes hay que avisar",
+    "¿Cuánto antes se avisa un despido?"
+  ],
+  "voz": "Para despedir sin causa hay que avisar con tiempo. El preaviso es de un mes hasta cinco años de antigüedad y de dos meses si tiene más. Si no avisás, lo pagás. Y si el despido no cae a fin de mes, se suman los días que faltan.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "hay que avisar con tiempo",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Primero, el preaviso"
+        }
+      },
+      {
+        "frase": "un mes hasta cinco años",
+        "visual": {
+          "tipo": "comparacion",
+          "izq": {
+            "titulo": "Hasta 5 años",
+            "items": [
+              "1 mes de preaviso",
+              "Corre desde el día siguiente"
+            ]
+          },
+          "der": {
+            "titulo": "Más de 5 años",
+            "items": [
+              "2 meses de preaviso",
+              "Corre desde el día siguiente"
+            ]
+          }
+        }
+      },
+      {
+        "frase": "Si no avisás, lo pagás",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Sin aviso, se paga"
+        }
+      },
+      {
+        "frase": "se suman los días que faltan",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Más los días hasta fin de mes"
+        }
+      }
+    ]
+  },
+  "captions": [
+    "Si tenés empleados: el preaviso es de un mes hasta 5 años de antigüedad y de dos meses con más. Corre desde el día siguiente a la notificación.",
+    "Si despedís sin preaviso, se paga la indemnización sustitutiva. Y si no es fin de mes, se suma la integración de los días que faltan.",
+    "Antes de tomar una decisión, hacé la cuenta completa del costo de un despido.",
+    "En período de prueba no hay preaviso desde marzo de 2026."
+  ],
+  "hashtags": [
+    "pymes",
+    "empleadores",
+    "despido",
+    "preaviso",
+    "rrhh",
+    "recursoshumanos",
+    "emprendedores",
+    "argentina",
+    "contador",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

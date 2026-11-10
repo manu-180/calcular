@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "clave": "web-lenta-pierde-clientes",
+  "titulo": "Por qué una web lenta pierde clientes",
+  "categoria": "tecnico",
+  "formato": "explicador",
+  "paleta": "tinta",
+  "hooks": [
+    "Tu web lenta te está costando clientes",
+    "Nadie espera a que tu web cargue",
+    "Lo que pasa cuando tu web tarda"
+  ],
+  "voz": "Cuando una página tarda en cargar, la gente se va antes de verla. Y los buscadores también lo notan: las webs rápidas aparecen más arriba. Una web liviana carga al instante. Y se ve perfecta en el celular y en la compu. Optimizar imágenes y código es la diferencia.",
+  "contenido": {
+    "bloques": [
+      { "frase": "una página tarda en cargar", "visual": { "tipo": "navegador", "url": "tunegocio.com", "estado": "lento" } },
+      { "frase": "las webs rápidas aparecen más arriba", "visual": { "tipo": "busqueda", "consulta": "panadería cerca mío", "resultados": ["Panadería del Barrio", "Horno de la Esquina", "Panadería Rulo"], "destacado": 2 } },
+      { "frase": "carga al instante", "visual": { "tipo": "navegador", "url": "panaderiarulo.com", "estado": "rapido" } },
+      { "frase": "el celular y en la compu", "visual": { "tipo": "celular-vs-compu", "celular": "Se acomoda a la pantalla", "compu": "Se ve completa y prolija" } },
+      { "frase": "Optimizar imágenes y código", "visual": { "tipo": "codigo", "lineas": ["<img src=\"pan.webp\"", "     alt=\"Pan de campo\"", "     loading=\"lazy\"", "     width=\"800\" height=\"600\">"] } }
+    ]
+  },
+  "captions": [
+    "Si tu página tarda, la gente no espera: se va a la de al lado. Por eso cuidamos cada imagen y cada línea de código.",
+    "Una web rápida no es un lujo: es lo que hace que te elijan antes que a otro.",
+    "Celular o compu, tu web tiene que abrir al toque y verse bien en los dos.",
+    "Lo técnico no se ve, pero se nota: cuando la web vuela, la gente se queda."
+  ],
+  "hashtags": ["diseñoweb", "paginaweb", "velocidadweb", "seo", "pymes", "emprendedores", "desarrolloweb", "marketingdigital", "negociolocal", "sitioweb"]
+}

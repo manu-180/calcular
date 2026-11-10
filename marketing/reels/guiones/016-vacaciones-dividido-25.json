@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "clave": "016-vacaciones-dividido-25",
+  "titulo": "Por qué las vacaciones rinden más",
+  "categoria": "tecnico",
+  "formato": "explicador",
+  "paleta": "pizarra",
+  "hooks": [
+    "Por qué tu sueldo de vacaciones rinde más",
+    "Las vacaciones se pagan dividido 25",
+    "El plus vacacional, explicado fácil"
+  ],
+  "voz": "Las vacaciones no se pagan como un mes normal. Cada día de vacaciones vale tu sueldo dividido veinticinco, no treinta. Por eso, ese mes cobrás un poco más. Y si te vas sin tomarlas, te las tienen que pagar en proporción.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "como un mes normal",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "No es un mes común"
+        }
+      },
+      {
+        "frase": "tu sueldo dividido veinticinco",
+        "visual": {
+          "tipo": "cuenta",
+          "filas": [
+            {
+              "concepto": "Tu sueldo mensual",
+              "valor": "100 %"
+            },
+            {
+              "concepto": "Dividido",
+              "valor": "÷ 25"
+            }
+          ],
+          "total": {
+            "concepto": "Cada día de vacaciones",
+            "valor": "4 %"
+          }
+        }
+      },
+      {
+        "frase": "ese mes cobrás un poco",
+        "visual": {
+          "tipo": "comparacion",
+          "izq": {
+            "titulo": "Día común",
+            "items": [
+              "Sueldo ÷ 30",
+              "3,3 % del sueldo"
+            ]
+          },
+          "der": {
+            "titulo": "Día de vacaciones",
+            "items": [
+              "Sueldo ÷ 25",
+              "4 % del sueldo"
+            ]
+          }
+        }
+      },
+      {
+        "frase": "si te vas sin tomarlas",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Si te vas, te las pagan"
+        }
+      }
+    ]
+  },
+  "captions": [
+    "Cada día de vacaciones se paga dividiendo tu sueldo mensual por 25, no por 30. Por eso ese mes el recibo da un poco más.",
+    "Si dejás el trabajo sin haberte tomado las vacaciones, te las tienen que pagar en proporción al tiempo trabajado del año.",
+    "Las vacaciones no se cambian por plata mientras seguís trabajando: sólo se pagan así cuando termina la relación.",
+    "Antes de salir de vacaciones, hacé la cuenta y compará con tu recibo."
+  ],
+  "hashtags": [
+    "vacaciones",
+    "plusvacacional",
+    "recibodesueldo",
+    "sueldo",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "rrhh",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    }
+  ]
+}
