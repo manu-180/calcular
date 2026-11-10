@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "clave": "009-aguinaldo-mitos",
+  "titulo": "Tres mitos del aguinaldo",
+  "categoria": "mito",
+  "formato": "mito",
+  "paleta": "papel",
+  "hooks": [
+    "Tres mitos del aguinaldo",
+    "Lo que creés del aguinaldo está mal",
+    "Antes de diciembre, revisá esto"
+  ],
+  "voz": "Cada cuota es un sueldo entero. No: es la mitad de tu mejor sueldo del semestre. Se calcula con el último sueldo. Tampoco: se toma el mejor, no el último. Si entraste hace poco, no cobrás. Falso: cobrás la parte proporcional a lo que trabajaste.",
+  "contenido": {
+    "tarjetas": [
+      {
+        "mito": "Cada cuota es un sueldo entero",
+        "realidad": "Es la mitad del mejor sueldo del semestre."
+      },
+      {
+        "mito": "Se calcula con el último sueldo",
+        "realidad": "Se toma el mejor sueldo del semestre, no el último."
+      },
+      {
+        "mito": "Si entraste hace poco, no cobrás",
+        "realidad": "Cobrás la parte proporcional a lo que trabajaste."
+      }
+    ]
+  },
+  "captions": [
+    "Cada cuota de aguinaldo es el 50 % de la mayor remuneración mensual del semestre. Si un mes cobraste más, cuenta ese.",
+    "Entraste en octubre: en diciembre igual cobrás aguinaldo, en proporción a los días que trabajaste.",
+    "¿Cuál de estos creías? Antes de que llegue diciembre, hacé la cuenta con tus números.",
+    "El aguinaldo es parte del sueldo: también te lo tienen que pagar si te vas antes de diciembre."
+  ],
+  "hashtags": [
+    "aguinaldo",
+    "sac",
+    "diciembre",
+    "sueldo",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "finanzaspersonales",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 23.041: Sueldo Anual Complementario",
+      "url": "https://www.argentina.gob.ar/normativa/nacional/ley-23041-1983-28165",
+      "consultado": "2026-06-11"
+    }
+  ]
+}

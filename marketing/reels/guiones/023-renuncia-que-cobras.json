@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "clave": "023-renuncia-que-cobras",
+  "titulo": "Qué cobrás si renunciás",
+  "categoria": "tecnico",
+  "formato": "explicador",
+  "paleta": "papel",
+  "hooks": [
+    "Qué cobrás si renunciás",
+    "Renunciar no es irse sin nada",
+    "Tu liquidación final si renunciás"
+  ],
+  "voz": "Si renunciás, no hay indemnización, pero tampoco te vas con las manos vacías. Te pagan los días trabajados del mes, el aguinaldo proporcional y las vacaciones que no te tomaste. Y la renuncia va por telegrama, que es gratis.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "no hay indemnización",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Sin indemnización, pero..."
+        }
+      },
+      {
+        "frase": "Te pagan los días trabajados",
+        "visual": {
+          "tipo": "comparacion",
+          "izq": {
+            "titulo": "No cobrás",
+            "items": [
+              "Indemnización",
+              "Preaviso del empleador"
+            ]
+          },
+          "der": {
+            "titulo": "Sí cobrás",
+            "items": [
+              "Días trabajados del mes",
+              "Aguinaldo proporcional",
+              "Vacaciones no tomadas"
+            ]
+          }
+        }
+      },
+      {
+        "frase": "va por telegrama",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Telegrama gratis, físico o digital"
+        }
+      }
+    ]
+  },
+  "captions": [
+    "Al renunciar cobrás los días trabajados del mes, el aguinaldo proporcional y las vacaciones proporcionales que no te tomaste.",
+    "Lo que no hay es indemnización por antigüedad ni preaviso del empleador.",
+    "La renuncia vale por telegrama, físico o digital, y es gratis. Un audio o un mail no alcanzan.",
+    "Antes de mandar el telegrama, hacé la cuenta de tu liquidación final."
+  ],
+  "hashtags": [
+    "renuncia",
+    "liquidacionfinal",
+    "telegrama",
+    "aguinaldo",
+    "vacaciones",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

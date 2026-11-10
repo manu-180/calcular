@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "clave": "011-chat-mama-telegrama",
+  "titulo": "La renuncia no va por audio",
+  "categoria": "comedia",
+  "formato": "chat",
+  "paleta": "pizarra",
+  "hooks": [
+    "Renuncié por audio de WhatsApp",
+    "Le conté a mi vieja cómo renuncié",
+    "La renuncia más moderna del mundo"
+  ],
+  "voz": null,
+  "contenido": {
+    "contacto": "Mamá",
+    "mensajes": [
+      {
+        "de": "ellos",
+        "texto": "¿Al final renunciaste?"
+      },
+      {
+        "de": "yo",
+        "texto": "Sí, le mandé un audio al jefe"
+      },
+      {
+        "de": "ellos",
+        "texto": "¿Un audio? La renuncia va por telegrama"
+      },
+      {
+        "de": "yo",
+        "texto": "¿Telegrama? ¿Estamos en 1950?"
+      },
+      {
+        "de": "ellos",
+        "texto": "Ahora puede ser digital y es gratis"
+      },
+      {
+        "de": "yo",
+        "texto": "¿Y lo que me deben?"
+      },
+      {
+        "de": "ellos",
+        "texto": "Aguinaldo y vacaciones proporcionales. Hacé la cuenta"
+      }
+    ],
+    "remate": "La renuncia va por telegrama, y es gratis"
+  },
+  "captions": [
+    "Para que la renuncia valga, va por telegrama, físico o digital, y es gratis. Un audio o un mail no alcanzan.",
+    "Al renunciar te tienen que pagar los días trabajados, el aguinaldo y las vacaciones proporcionales.",
+    "Las madres siempre saben. Etiquetá a la tuya.",
+    "Antes de mandar el telegrama, hacé la cuenta de tu liquidación final."
+  ],
+  "hashtags": [
+    "renuncia",
+    "telegrama",
+    "humorlaboral",
+    "liquidacionfinal",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "mama",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

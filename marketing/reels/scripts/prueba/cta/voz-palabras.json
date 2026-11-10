@@ -1,0 +1,61 @@
+{
+  "texto": "Hacé la cuenta con tus números, gratis, en calcular punto ar.",
+  "voz": "p7AwDmKvTdoHTBuueGvP",
+  "palabras": [
+    {
+      "texto": "Hacé",
+      "inicio_s": 0,
+      "fin_s": 0.244
+    },
+    {
+      "texto": "la",
+      "inicio_s": 0.279,
+      "fin_s": 0.325
+    },
+    {
+      "texto": "cuenta",
+      "inicio_s": 0.36,
+      "fin_s": 0.534
+    },
+    {
+      "texto": "con",
+      "inicio_s": 0.557,
+      "fin_s": 0.662
+    },
+    {
+      "texto": "tus",
+      "inicio_s": 0.697,
+      "fin_s": 0.813
+    },
+    {
+      "texto": "números,",
+      "inicio_s": 0.848,
+      "fin_s": 1.382
+    },
+    {
+      "texto": "gratis,",
+      "inicio_s": 1.463,
+      "fin_s": 2.043
+    },
+    {
+      "texto": "en",
+      "inicio_s": 2.2,
+      "fin_s": 2.351
+    },
+    {
+      "texto": "calcular",
+      "inicio_s": 2.397,
+      "fin_s": 2.78
+    },
+    {
+      "texto": "punto",
+      "inicio_s": 2.827,
+      "fin_s": 3.071
+    },
+    {
+      "texto": "ar.",
+      "inicio_s": 3.129,
+      "fin_s": 3.43
+    }
+  ]
+}

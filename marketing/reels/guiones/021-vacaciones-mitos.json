@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "clave": "021-vacaciones-mitos",
+  "titulo": "Mitos de las vacaciones",
+  "categoria": "mito",
+  "formato": "mito",
+  "paleta": "pizarra",
+  "hooks": [
+    "Vacaciones: tres cosas que cambiaron",
+    "Lo que creés de tus vacaciones",
+    "Antes de pedir vacaciones, mirá esto"
+  ],
+  "voz": "Te avisan las vacaciones con 45 días. Ya no: desde 2026 son 30, y por escrito. Las vacaciones no se pueden partir. Sí, de común acuerdo, en tramos de siete días o más. Si no me las tomo, me las pagan. No: solo cuando termina la relación.",
+  "contenido": {
+    "tarjetas": [
+      {
+        "mito": "Te avisan las vacaciones con 45 días",
+        "realidad": "Desde 2026 el aviso es por escrito y con 30 días de anticipación."
+      },
+      {
+        "mito": "Las vacaciones no se pueden partir",
+        "realidad": "Se pueden fraccionar de común acuerdo, en tramos de 7 días o más."
+      },
+      {
+        "mito": "Si no me las tomo, me las pagan",
+        "realidad": "No se cambian por plata, salvo cuando termina el trabajo."
+      }
+    ]
+  },
+  "captions": [
+    "Con la reforma de 2026, la fecha de tus vacaciones te la tienen que avisar por escrito con al menos 30 días de anticipación.",
+    "Ahora las vacaciones se pueden partir si los dos están de acuerdo, siempre en tramos de 7 días o más.",
+    "Se dan entre el 1 de octubre y el 30 de abril, salvo que se acuerde otra cosa.",
+    "Las vacaciones no se pagan en lugar de tomarlas: sólo se cobran así cuando termina la relación laboral."
+  ],
+  "hashtags": [
+    "vacaciones",
+    "reformalaboral",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "leydecontratodetrabajo",
+    "rrhh",
+    "verano",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

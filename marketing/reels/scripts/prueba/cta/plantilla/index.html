@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Cierre: calcular.ar</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/datos.js"></script>
+<style>
+{{css}}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--fondo); }
+#root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--fondo); font-family: "Geist", sans-serif; color: var(--tinta); }
+.capa { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+.titular { position: absolute; left: 70px; width: 860px; text-align: center; font-family: "Geist"; font-weight: 800; font-size: 118px; letter-spacing: -0.045em; line-height: 1; color: var(--tinta); }
+.frase { position: absolute; left: 70px; width: 860px; text-align: center; text-wrap: balance; font-family: "Geist"; font-weight: 600; font-size: 58px; line-height: 1.12; letter-spacing: -0.025em; color: var(--tenue); }
+.frase span { display: inline-block; opacity: 0; }
+.dominio { display: flex; justify-content: center; align-items: baseline; font-family: "Geist"; font-weight: 800; letter-spacing: -0.05em; line-height: 1; white-space: nowrap; }
+.dominio span { display: inline-block; opacity: 0; }
+.dominio .ar { color: var(--tinta); }
+
+/* Tipográfico: el isotipo, "Hacé la cuenta", la frase con la voz y calcular.ar enorme. */
+#t-icono { position: absolute; left: 450px; top: 440px; width: 180px; height: 180px; }
+#t-titular { top: 680px; }
+#t-frase { top: 820px; }
+#t-dominio { position: absolute; left: 60px; top: 992px; width: 880px; font-size: 176px; color: var(--acento); }
+#t-pie { position: absolute; left: 70px; top: 1240px; width: 860px; display: flex; justify-content: center; gap: 16px; opacity: 0; }
+#t-pie i { font-style: normal; font-weight: 600; font-size: 32px; letter-spacing: 0.01em; color: var(--tenue); padding: 14px 26px; border-radius: 999px; box-shadow: inset 0 0 0 2px var(--linea-fuerte); }
+
+/* Buscador: se escribe calcular.ar en la barra, se entra y llega la cuenta lista. */
+#b-aviso { position: absolute; left: 100px; top: 290px; width: 800px; height: 150px; border-radius: 46px; background: var(--aviso); opacity: 0;
+  box-shadow: 0 0 0 2px var(--linea), 0 24px 60px var(--sombra-1), 0 6px 16px var(--sombra-2); display: flex; align-items: center; gap: 24px; padding: 0 30px 0 26px; }
+#b-aviso img { display: block; flex: 0 0 92px; width: 92px; height: 92px; }
+#b-aviso .txt { flex: 1; min-width: 0; }
+#b-aviso .arriba { display: flex; justify-content: space-between; align-items: baseline; }
+#b-aviso b { font-weight: 700; font-size: 34px; letter-spacing: -0.01em; color: var(--tinta); }
+#b-aviso i { font-style: normal; font-weight: 500; font-size: 26px; color: var(--tenue); }
+#b-aviso p { margin-top: 6px; font-weight: 500; font-size: 38px; color: var(--tinta); white-space: nowrap; }
+#b-titular { top: 720px; }
+#b-barra { position: absolute; left: 70px; top: 890px; width: 860px; height: 180px; border-radius: 90px; background: var(--superficie);
+  box-shadow: 0 0 0 2px var(--linea-fuerte), 0 26px 60px var(--sombra-2); }
+#b-lupa { position: absolute; left: 34px; top: 34px; width: 112px; height: 112px; border-radius: 50%; background: var(--lupa); }
+#b-lupa svg { position: absolute; left: 30px; top: 30px; width: 52px; height: 52px; overflow: visible; }
+#b-pista { position: absolute; left: 182px; top: 62px; font-weight: 500; font-size: 42px; line-height: 56px; color: var(--tenue); white-space: nowrap; }
+#b-dominio { position: absolute; left: 178px; top: 0; height: 180px; align-items: center; font-size: 92px; color: var(--acento); }
+#b-ir { position: absolute; left: 710px; top: 30px; width: 120px; height: 120px; border-radius: 50%; background: var(--acento); opacity: 0.32; }
+#b-ir svg { position: absolute; left: 30px; top: 30px; width: 60px; height: 60px; overflow: visible; }
+#b-tilde { opacity: 0; }
+#b-frase { top: 1140px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="{{duracion}}">
+  {{fondo}}
+
+  <div id="tipografico" class="capa">
+    <img id="t-icono" src="assets/calcular-icon.svg" alt="">
+    <h1 id="t-titular" class="titular">Hacé la cuenta</h1>
+    <p id="t-frase" class="frase"></p>
+    <div id="t-dominio" class="dominio"></div>
+    <div id="t-pie"><i>Gratis</i><i>Al instante</i><i>Datos oficiales</i></div>
+  </div>
+  <!-- /tipografico -->
+
+  <div id="buscador" class="capa">
+    <div id="b-aviso" data-layout-allow-overflow>
+      <img src="assets/calcular-icon.svg" alt="">
+      <div class="txt"><div class="arriba"><b>calcular.ar</b><i>ahora</i></div><p>Tu cuenta, lista y con tus números</p></div>
+    </div>
+    <h1 id="b-titular" class="titular">Hacé la cuenta</h1>
+    <div id="b-barra" data-layout-allow-overlap>
+      <div id="b-lupa"><svg viewBox="0 0 52 52"><circle cx="22" cy="22" r="15" fill="none" stroke="var(--acento)" stroke-width="6"/><path d="M33.5 33.5 L46 46" fill="none" stroke="var(--acento)" stroke-width="6.5" stroke-linecap="round"/></svg></div>
+      <span id="b-pista">¿Cuánto me toca?</span>
+      <div id="b-dominio" class="dominio"></div>
+      <div id="b-ir">
+        <svg viewBox="0 0 60 60"><path id="b-flecha" d="M12 30 H47 M31 14 L47 30 L31 46" fill="none" stroke="var(--sobre-acento)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path id="b-tilde" d="M12 31 L25 44 L49 17" fill="none" stroke="var(--sobre-acento)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+    <p id="b-frase" class="frase"></p>
+  </div>
+  <!-- /buscador -->
+
+  {{audio}}
+</div>
+
+<script>
+(function () {
+  const R = window.REEL;
+  gsap.defaults({ lazy: false });
+  const raiz = document.documentElement.style;
+  for (const k in R.vars) raiz.setProperty("--" + k, R.vars[k]);
+  const tl = gsap.timeline({ paused: true });
+  const ANTES = 2 / 30;
+  const P = R.palabras;
+  const limpio = function (t) { return t.replace(/[.,]/g, ""); };
+  const cuando = function (texto) { return P.find(function (p) { return limpio(p.texto) === texto; }); };
+
+  // "con tus números, gratis": lo que se dice entre el titular y el dominio.
+  function frase(el) {
+    const desde = P.indexOf(cuando("cuenta")) + 1;
+    const hasta = P.indexOf(cuando("en"));
+    const resto = P.slice(desde, hasta);
+    const spans = resto.map(function (p, k) {
+      if (k) el.appendChild(document.createTextNode(" "));
+      const s = document.createElement("span");
+      s.textContent = k === resto.length - 1 ? limpio(p.texto) : p.texto;
+      el.appendChild(s);
+      return s;
+    });
+    resto.forEach(function (p, k) {
+      tl.fromTo(spans[k], { opacity: 0, y: 22, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.26, ease: "power3.out" }, Math.max(0, p.inicio - ANTES));
+    });
+  }
+
+  // calcular.ar letra por letra; ".ar" en tinta para que el dominio se lea de un vistazo.
+  function dominio(el, max) {
+    const letras = "calcular.ar".split("").map(function (c, k) {
+      const s = document.createElement("span");
+      s.textContent = c;
+      if (k >= 8) s.className = "ar";
+      el.appendChild(s);
+      return s;
+    });
+    let tam = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth > max && tam > 60) { tam -= 4; el.style.fontSize = tam + "px"; }
+    return letras;
+  }
+
+  function dibujar(path, t, dur) {
+    const largo = path.getTotalLength();
+    tl.fromTo(path, { strokeDasharray: largo, strokeDashoffset: largo }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, t);
+  }
+
+  function tipografico() {
+    const letras = dominio(document.getElementById("t-dominio"), 880);
+    const tc = cuando("calcular").inicio - ANTES;
+    const tp = cuando("punto").inicio - ANTES;
+    // El corte entra a mitad de movimiento: el isotipo y el titular ya vienen subiendo en el cuadro 0.
+    tl.fromTo("#t-icono", { opacity: 0.4, y: 40, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "expo.out" }, 0);
+    tl.fromTo("#t-titular", { opacity: 0.45, y: 34, filter: "blur(5px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.34, ease: "expo.out" }, 0);
+    frase(document.getElementById("t-frase"));
+    tl.fromTo(letras.slice(0, 8), { opacity: 0, y: 46, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: "power4.out", stagger: 0.035 }, tc);
+    tl.fromTo(letras.slice(8), { opacity: 0, y: 46, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: "power4.out", stagger: 0.05 }, tp);
+    // El golpe cuando cae el ".ar": el bloque cede y vuelve, y el isotipo responde.
+    const golpe = cuando("ar").inicio;
+    tl.to("#t-dominio", { scale: 0.972, duration: 0.07, ease: "power2.out", transformOrigin: "50% 50%" }, golpe);
+    tl.to("#t-dominio", { scale: 1, duration: 0.38, ease: "back.out(2)" }, golpe + 0.07);
+    tl.to("#t-icono", { y: -10, duration: 0.12, ease: "power2.out" }, golpe);
+    tl.to("#t-icono", { y: 0, duration: 0.5, ease: "back.out(2.4)" }, golpe + 0.12);
+    tl.fromTo("#t-pie", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, R.firma);
+  }
+
+  function buscador() {
+    const letras = dominio(document.getElementById("b-dominio"), 510);
+    const tc = cuando("calcular").inicio - ANTES;
+    const fin = cuando("ar").fin;
+    tl.fromTo("#b-titular", { opacity: 0.45, y: 34, filter: "blur(5px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.34, ease: "expo.out" }, 0);
+    tl.fromTo("#b-barra", { opacity: 0.55, y: 96 }, { opacity: 1, y: 0, duration: 0.46, ease: "expo.out" }, 0);
+    frase(document.getElementById("b-frase"));
+    // Se escribe mientras la voz lo dice, una tecla por letra.
+    tl.to("#b-pista", { opacity: 0, duration: 0.08, ease: "none" }, tc);
+    const paso = (fin - 0.1 - tc) / letras.length;
+    letras.forEach(function (s, k) { tl.fromTo(s, { opacity: 0, y: 10, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: "back.out(2.2)", transformOrigin: "50% 80%" }, tc + k * paso); });
+    tl.fromTo("#b-ir", { opacity: 0.32, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.24, ease: "back.out(2)" }, tc + 3 * paso);
+    // Enter: el botón se hunde, la flecha se vuelve tilde.
+    const envio = R.envio;
+    tl.to("#b-ir", { scale: 0.84, duration: 0.07, ease: "power2.in" }, envio - 0.07);
+    tl.to("#b-ir", { scale: 1, duration: 0.28, ease: "back.out(2)" }, envio);
+    tl.to("#b-flecha", { opacity: 0, duration: 0.08, ease: "none" }, envio);
+    tl.set("#b-tilde", { opacity: 1 }, envio + 0.04);
+    dibujar(document.getElementById("b-tilde"), envio + 0.04, 0.26);
+    // La cuenta llega después de un respiro: es la consecuencia del enter.
+    tl.fromTo("#b-aviso", { opacity: 0, y: -190, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out", transformOrigin: "50% 0%" }, R.aviso);
+  }
+
+  function construir() {
+    if (R.estilo === "tipografico") tipografico(); else buscador();
+    tl.set({}, {}, R.duracion);
+    window.__timelines["main"] = tl;
+  }
+
+  Promise.all([
+    document.fonts.load('800 118px "Geist"'),
+    document.fonts.load('700 34px "Geist"'),
+    document.fonts.load('600 58px "Geist"'),
+    document.fonts.load('500 40px "Geist"'),
+  ]).then(function () { return document.fonts.ready; }).then(construir, construir);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "clave": "018-horas-extras-mitos",
+  "titulo": "Mitos de las horas extra",
+  "categoria": "mito",
+  "formato": "mito",
+  "paleta": "menta",
+  "hooks": [
+    "Tres mitos de las horas extra",
+    "Tus horas extra valen más que eso",
+    "Horas extra: lo que cambió en 2026"
+  ],
+  "voz": "Las horas extra se pagan igual. No: llevan cincuenta por ciento de recargo, o cien el sábado a la tarde, domingos y feriados. El sábado entero vale doble. Solo después de las trece. Siempre se cobran en plata. Desde 2026 pueden compensarse con francos, si se acuerda por escrito.",
+  "contenido": {
+    "tarjetas": [
+      {
+        "mito": "Las horas extra se pagan igual",
+        "realidad": "Llevan 50 % de recargo, y 100 % sábado tarde, domingo y feriado."
+      },
+      {
+        "mito": "El sábado entero vale doble",
+        "realidad": "El 100 % corre el sábado después de las 13, no antes."
+      },
+      {
+        "mito": "Siempre se cobran en plata",
+        "realidad": "Desde 2026 pueden ser francos, si se acuerda por escrito."
+      }
+    ]
+  },
+  "captions": [
+    "El recargo de la hora extra es del 50 % en días comunes y del 100 % los sábados después de las 13, domingos y feriados.",
+    "La reforma laboral de 2026 permite compensar horas extra con francos o banco de horas, siempre por escrito y con control de las horas.",
+    "Si hacés horas extra, anotalas: es la única forma de saber si te las pagan bien.",
+    "El sábado a la mañana es un día común. Desde las 13, vale doble."
+  ],
+  "hashtags": [
+    "horasextras",
+    "reformalaboral",
+    "sueldo",
+    "francos",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "rrhh",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

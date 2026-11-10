@@ -1,0 +1,204 @@
+name: Reels de prueba
+
+# Un creativo por día (banco marketing/reels/guiones/) en ~12 variaciones hechas con
+# ffmpeg, subidas a Vercel Blob y publicadas a lo largo del día como reels de
+# prueba de la cuenta de Instagram de calcular.ar (sólo los ven quienes no la siguen).
+# Apagado hasta que la variable REELS_PRUEBA_ACTIVOS valga 1: cómo se prende y por qué
+# funciona así en docs/decisiones/reels-prueba.md.
+
+on:
+  schedule:
+    # 5:05 de Buenos Aires (UTC-3 todo el año): produce el creativo del día.
+    - cron: '5 8 * * *'
+    # 9:17 a 21:17 de Buenos Aires cada 2 h (00:17 UTC es 21:17), y 22:47: publica lo vencido y mide.
+    # La agenda (9:00 a 22:45) reparte según estos tics: si se mueven, mover
+    # TICS_PUBLICAR en marketing/reels/scripts/prueba/lib.mjs (lo controla workflow.test.mjs).
+    # Un tic sin nada que hacer (o con todo apagado) termina en segundos.
+    - cron: '17 0,12-22/2 * * *'
+    - cron: '47 1 * * *'
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: 'Qué hacer'
+        type: choice
+        options: [todo, producir, publicar]
+        default: todo
+      guion:
+        description: 'Producir este guion (clave de marketing/reels/guiones/), aunque hoy ya haya creativo'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Probar sin Blob, Instagram ni commit (los mp4 quedan como artefacto)'
+        type: boolean
+        default: false
+      ahora:
+        description: 'Publicar ya la próxima variante de hoy'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reels-prueba
+  cancel-in-progress: false
+
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    # Los secretos van sólo en el paso que los usa: npm, pip y npx corren código de terceros.
+    env:
+      REELS_PRUEBA_ACTIVOS: ${{ vars.REELS_PRUEBA_ACTIVOS }}
+      REELS_PRUEBA_PAUSADOS: ${{ vars.REELS_PRUEBA_PAUSADOS }}
+      REELS_PRUEBA_POR_DIA: ${{ vars.REELS_PRUEBA_POR_DIA }}
+      ACCION: ${{ inputs.accion || 'todo' }}
+      GUION: ${{ inputs.guion }}
+      SECO: ${{ inputs.dry_run && '1' || '' }}
+      AHORA: ${{ inputs.ahora && 'true' || '' }}
+      HYPERFRAMES_VERSION: '0.8.140'
+      REEL_WHISPER_MODELO: small
+    steps:
+      # La punta de la rama, no el commit que disparó la corrida: una corrida que
+      # esperó en la cola de `concurrency` arrancaría con un estado viejo.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Sólo node: con nada pendiente (o apagado) la corrida termina acá.
+      - name: Planear
+        id: plan
+        run: node marketing/reels/scripts/prueba/correr.mjs planear
+
+      # Desde otra rama el código no es el de producción: no se gastan voz ni minutos en producir,
+      # no se publica en la cuenta y no se commitea. dry_run sí produce (no sube ni publica nada).
+      - name: Avisar que no es main
+        if: github.ref != 'refs/heads/main' && env.SECO != '1'
+        run: |
+          echo "::warning::Corrida desde ${GITHUB_REF_NAME}: producir y publicar sólo corren desde main (dry_run sí produce, sin subir ni publicar). Lanzala desde main."
+
+      # Del sitio no hace falta nada: sólo @vercel/blob para subir los mp4, instalado al lado del pipeline.
+      - name: Instalar dependencias y ffmpeg
+        if: steps.plan.outputs.producir == '1' && (env.SECO == '1' || github.ref == 'refs/heads/main')
+        run: |
+          npm install --no-save --no-audit --no-fund --prefix marketing/reels/scripts/prueba @vercel/blob@2.8.1
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-color-emoji fonts-liberation > /dev/null
+
+      - uses: actions/setup-python@v5
+        if: steps.plan.outputs.producir == '1' && (env.SECO == '1' || github.ref == 'refs/heads/main')
+        with:
+          python-version: '3.12'
+
+      # Sólo se usa si la voz sale de Gemini (respaldo): con ElevenLabs los tiempos vienen en la respuesta.
+      - name: Instalar faster-whisper
+        if: steps.plan.outputs.producir == '1' && (env.SECO == '1' || github.ref == 'refs/heads/main')
+        run: pip install -q 'faster-whisper==1.2.1'
+
+      - name: Cache del modelo de whisper
+        if: steps.plan.outputs.producir == '1' && (env.SECO == '1' || github.ref == 'refs/heads/main')
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-${{ env.REEL_WHISPER_MODELO }}-v1
+
+      - name: Cache de HyperFrames
+        if: steps.plan.outputs.producir == '1' && (env.SECO == '1' || github.ref == 'refs/heads/main')
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/hyperframes
+          key: hyperframes-${{ env.HYPERFRAMES_VERSION }}-v1
+
+      - name: Preparar HyperFrames
+        if: steps.plan.outputs.producir == '1' && (env.SECO == '1' || github.ref == 'refs/heads/main')
+        run: npx --yes "hyperframes@${HYPERFRAMES_VERSION}" browser ensure
+
+      # Con tope propio: si se cuelga, publicar y commitear corren igual y el intento queda contado.
+      - name: Producir el creativo
+        id: producir
+        if: steps.plan.outputs.producir == '1' && (env.SECO == '1' || github.ref == 'refs/heads/main')
+        timeout-minutes: 80
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID_ES: ${{ vars.ELEVENLABS_VOICE_ID_ES }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          REEL_RENDER_DEBUG: ${{ inputs.dry_run && format('{0}/depurar', runner.temp) || '' }}
+        run: node marketing/reels/scripts/prueba/correr.mjs producir
+
+      - name: Guardar las variantes de prueba
+        if: always() && env.SECO == '1' && steps.plan.outputs.producir == '1'
+        uses: actions/upload-artifact@v4
+        with:
+          name: reels-prueba
+          path: |
+            ${{ runner.temp }}/reels-prueba/estado.json
+            ${{ runner.temp }}/reels-prueba/*/variantes/*.mp4
+            ${{ runner.temp }}/reels-prueba/*/cuerpo-*.mp4
+            ${{ runner.temp }}/depurar/*.log
+          if-no-files-found: ignore
+          retention-days: 3
+
+      # always(): si producir falló o se colgó, lo que tocaba publicar sale igual.
+      - name: Publicar en Instagram
+        id: publicar
+        if: always() && steps.plan.outputs.publicar == '1' && env.SECO != '1' && github.ref == 'refs/heads/main'
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: |
+          if [ "$AHORA" = "true" ]; then
+            node marketing/reels/scripts/prueba/correr.mjs publicar --ahora
+          else
+            node marketing/reels/scripts/prueba/correr.mjs publicar
+          fi
+
+      - name: Medir
+        if: always() && steps.plan.outputs.medir == '1' && env.SECO != '1' && github.ref == 'refs/heads/main'
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_INSIGHTS_TOKEN: ${{ secrets.IG_INSIGHTS_TOKEN }}
+        run: node marketing/reels/scripts/prueba/correr.mjs medir
+
+      # Sólo el estado, que vive en marketing/ (vercel-ignorar.sh no construye por eso). El autor
+      # tiene que ser el noreply del dueño del proyecto en Vercel: con otro el deploy queda BLOCKED.
+      # Nunca force push: si main avanzó, rebase y otra vez; un choque en el estado se fusiona por variante.
+      # Sólo desde main: un dispatch desde otra rama pushearía esa rama a producción.
+      - name: Commitear a main
+        id: commit
+        if: always() && env.SECO != '1' && github.ref == 'refs/heads/main'
+        env:
+          CREATIVO: ${{ steps.producir.outputs.creativo }}
+          PUBLICADAS: ${{ steps.publicar.outputs.publicadas }}
+        run: |
+          git add -A -- marketing/reels/estado.json
+          if git diff --cached --quiet; then
+            echo "Nada que commitear."
+            exit 0
+          fi
+          MENSAJE="[reels-prueba]"
+          if [ -n "$CREATIVO" ]; then MENSAJE="$MENSAJE producido: $CREATIVO"; fi
+          if [ -n "$PUBLICADAS" ] && [ "$PUBLICADAS" != "0" ]; then MENSAJE="$MENSAJE publicadas: $PUBLICADAS"; fi
+          if [ "$MENSAJE" = "[reels-prueba]" ]; then MENSAJE="[reels-prueba] estado"; fi
+          export GIT_AUTHOR_NAME="manu-180" GIT_AUTHOR_EMAIL="157671390+manu-180@users.noreply.github.com"
+          export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME" GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL" GIT_EDITOR=true
+          git commit -q -m "$MENSAJE"
+          # main recibe commits de datos-vivos, datos-paises y sesiones: 8 vueltas con espera creciente y algo de azar.
+          for intento in 1 2 3 4 5 6 7 8; do
+            if git push -q origin HEAD:main; then
+              echo "cambio=1" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git fetch -q origin main
+            if ! git rebase -q origin/main; then
+              if git diff --name-only --diff-filter=U | grep -qvx 'marketing/reels/estado.json'; then git rebase --abort; exit 1; fi
+              node marketing/reels/scripts/prueba/correr.mjs fusionar && git add marketing/reels/estado.json && git rebase --continue || { git rebase --abort; exit 1; }
+            fi
+            sleep $((intento * 5 + RANDOM % 5))
+          done
+          exit 1

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "clave": "014-chat-contadora-monotributo",
+  "titulo": "Monotributo: el día 6 es tarde",
+  "categoria": "comedia",
+  "formato": "chat",
+  "paleta": "papel",
+  "hooks": [
+    "Le pregunté a mi contadora por el monotributo",
+    "Monotributista preguntando el día equivocado",
+    "¿Me tengo que recategorizar?"
+  ],
+  "voz": null,
+  "contenido": {
+    "contacto": "Contadora",
+    "mensajes": [
+      {
+        "de": "yo",
+        "texto": "¿Me tengo que recategorizar?"
+      },
+      {
+        "de": "ellos",
+        "texto": "En febrero y agosto toca mirar tus últimos 12 meses"
+      },
+      {
+        "de": "yo",
+        "texto": "¿Y si facturé parecido?"
+      },
+      {
+        "de": "ellos",
+        "texto": "Si seguís en la misma categoría, no hacés nada"
+      },
+      {
+        "de": "yo",
+        "texto": "¿Y si subí?"
+      },
+      {
+        "de": "ellos",
+        "texto": "Hacés el trámite hasta el día 5"
+      },
+      {
+        "de": "yo",
+        "texto": "¿Y hoy qué día es?"
+      },
+      {
+        "de": "ellos",
+        "texto": "6"
+      }
+    ],
+    "remate": "La recategorización vence el día 5"
+  },
+  "captions": [
+    "La recategorización del monotributo es en febrero y en agosto, y el trámite se hace hasta el día 5. No dejes la cuenta para el 6.",
+    "Si tu categoría no cambia, no hay que hacer nada. Si cambia, hay que avisar a tiempo.",
+    "Etiquetá a ese monotributista que siempre se acuerda tarde.",
+    "Sumá lo que facturaste en los últimos 12 meses y fijate en qué categoría caés."
+  ],
+  "hashtags": [
+    "monotributo",
+    "recategorizacion",
+    "humor",
+    "contador",
+    "emprendedores",
+    "pymes",
+    "arca",
+    "impuestos",
+    "argentina",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "ARCA: recategorización del Monotributo",
+      "url": "https://www.afip.gob.ar/monotributo/ayuda/recategorizacion.asp",
+      "consultado": "2026-11-10"
+    }
+  ]
+}

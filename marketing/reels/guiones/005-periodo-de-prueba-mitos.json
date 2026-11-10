@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "clave": "005-periodo-de-prueba-mitos",
+  "titulo": "Mitos del período de prueba",
+  "categoria": "mito",
+  "formato": "mito",
+  "paleta": "pizarra",
+  "hooks": [
+    "Período de prueba: lo que cambió en 2026",
+    "Te echan en período de prueba, ¿y?",
+    "Tres mitos del período de prueba"
+  ],
+  "voz": "El período de prueba son tres meses. No: son seis, y en empresas chicas un convenio puede estirarlo. Te tienen que preavisar quince días. Ya no: desde marzo de 2026 no hay preaviso. Si te echan, no cobrás nada. Falso: cobrás días trabajados, aguinaldo y vacaciones proporcionales.",
+  "contenido": {
+    "tarjetas": [
+      {
+        "mito": "El período de prueba son tres meses",
+        "realidad": "Son seis. En empresas chicas, un convenio puede estirarlo."
+      },
+      {
+        "mito": "Te tienen que preavisar quince días",
+        "realidad": "Desde marzo de 2026, en período de prueba no hay preaviso."
+      },
+      {
+        "mito": "Si te echan, no cobrás nada",
+        "realidad": "Cobrás días trabajados, aguinaldo y vacaciones proporcionales."
+      }
+    ]
+  },
+  "captions": [
+    "El período de prueba dura seis meses desde 2024. Un convenio puede llevarlo a ocho meses en empresas de hasta cien trabajadores, y a un año en las de hasta cinco.",
+    "Con la reforma laboral de marzo de 2026 desapareció el preaviso de 15 días para quien está en período de prueba. Mucha gente todavía lo da por hecho.",
+    "Aunque te desvinculen en período de prueba, los días trabajados, el aguinaldo y las vacaciones proporcionales se pagan igual.",
+    "Si recién empezás un trabajo, esto te conviene saberlo desde el primer día."
+  ],
+  "hashtags": [
+    "periododeprueba",
+    "reformalaboral",
+    "trabajonuevo",
+    "despido",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "rrhh",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

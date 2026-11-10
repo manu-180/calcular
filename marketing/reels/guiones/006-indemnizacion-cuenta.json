@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "clave": "006-indemnizacion-cuenta",
+  "titulo": "Cómo se calcula la indemnización",
+  "categoria": "tecnico",
+  "formato": "explicador",
+  "paleta": "selva",
+  "hooks": [
+    "Cómo se calcula una indemnización por despido",
+    "Un sueldo por año: así de simple",
+    "¿Te despidieron? Hacé esta cuenta"
+  ],
+  "voz": "La indemnización por despido es un sueldo por cada año trabajado. Si la fracción pasa de tres meses, cuenta como un año más. Se toma tu mejor sueldo mensual del último año. El aguinaldo y las vacaciones no entran en esa base.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "un sueldo por cada año",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Un sueldo por año trabajado"
+        }
+      },
+      {
+        "frase": "Si la fracción pasa",
+        "visual": {
+          "tipo": "cuenta",
+          "filas": [
+            {
+              "concepto": "Años completos",
+              "valor": "4"
+            },
+            {
+              "concepto": "Fracción de más de 3 meses",
+              "valor": "+ 1"
+            }
+          ],
+          "total": {
+            "concepto": "Sueldos de indemnización",
+            "valor": "5"
+          }
+        }
+      },
+      {
+        "frase": "tu mejor sueldo mensual",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "El mejor sueldo del último año"
+        }
+      },
+      {
+        "frase": "El aguinaldo y las vacaciones",
+        "visual": {
+          "tipo": "comparacion",
+          "izq": {
+            "titulo": "No entran",
+            "items": [
+              "Aguinaldo",
+              "Vacaciones"
+            ]
+          },
+          "der": {
+            "titulo": "Sí entran",
+            "items": [
+              "Sueldo mensual",
+              "Horas extra habituales"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "captions": [
+    "Cuatro años y cuatro meses de antigüedad son cinco sueldos de indemnización: la fracción de más de tres meses cuenta como un año entero.",
+    "La base es la mejor remuneración mensual, normal y habitual del último año. El aguinaldo, las vacaciones y los premios que no son mensuales quedan afuera.",
+    "Además de la indemnización por antigüedad, un despido sin causa suma preaviso, integración del mes y lo proporcional. Hacé la cuenta completa.",
+    "Ojo: la base tiene un tope según tu convenio, aunque nunca puede bajar del 67 % de tu sueldo real."
+  ],
+  "hashtags": [
+    "indemnizacion",
+    "despido",
+    "despidosincausa",
+    "liquidacionfinal",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "abogadolaboral",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

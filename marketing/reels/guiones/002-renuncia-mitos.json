@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "clave": "002-renuncia-mitos",
+  "titulo": "Tres mitos de la renuncia",
+  "categoria": "mito",
+  "formato": "mito",
+  "paleta": "selva",
+  "hooks": [
+    "Si renunciás, ¿te vas sin nada?",
+    "Tres mitos de la renuncia",
+    "Antes de renunciar, mirá esto"
+  ],
+  "voz": "Si renuncio no me pagan nada. Falso: cobrás los días trabajados, el aguinaldo y las vacaciones proporcionales. Puedo renunciar de palabra. No: va por telegrama, que es gratis, o ante la autoridad del trabajo. Me tienen que indemnizar igual. Tampoco: renunciando no hay indemnización por antigüedad.",
+  "contenido": {
+    "tarjetas": [
+      {
+        "mito": "Si renuncio no me pagan nada",
+        "realidad": "Cobrás días trabajados, aguinaldo y vacaciones proporcionales."
+      },
+      {
+        "mito": "Puedo renunciar de palabra",
+        "realidad": "Va por telegrama gratuito o ante la autoridad del trabajo."
+      },
+      {
+        "mito": "Me tienen que indemnizar igual",
+        "realidad": "Al renunciar no hay indemnización por antigüedad."
+      }
+    ]
+  },
+  "captions": [
+    "Renunciar no es irse con las manos vacías: los días trabajados, el aguinaldo y las vacaciones proporcionales te los tienen que pagar.",
+    "La renuncia no vale de palabra ni por WhatsApp: va por telegrama, que es gratis y ahora puede ser digital, o ante la autoridad del trabajo.",
+    "Si estás pensando en renunciar, primero hacé la cuenta de lo que te toca en la liquidación final.",
+    "Lo que no hay al renunciar es indemnización por antigüedad. Lo demás, sí."
+  ],
+  "hashtags": [
+    "renuncia",
+    "liquidacionfinal",
+    "telegrama",
+    "aguinaldo",
+    "vacaciones",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "rrhh",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

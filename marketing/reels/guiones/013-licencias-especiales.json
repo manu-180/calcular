@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "clave": "013-licencias-especiales",
+  "titulo": "Licencias que casi nadie conoce",
+  "categoria": "tecnico",
+  "formato": "explicador",
+  "paleta": "menta",
+  "hooks": [
+    "Licencias que casi nadie sabe que tiene",
+    "¿Te casás? Tenés diez días",
+    "Días pagos que te corresponden"
+  ],
+  "voz": "La ley te da licencias pagas además de las vacaciones. Si te casás, tenés diez días corridos. Por nacimiento de un hijo, dos días. Si fallece tu cónyuge, un hijo o tus padres, tres. Y para rendir un examen, dos días por examen, hasta diez por año.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "licencias pagas además de las vacaciones",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Licencias pagas, aparte de vacaciones"
+        }
+      },
+      {
+        "frase": "Si te casás, tenés",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Matrimonio: 10 días corridos"
+        }
+      },
+      {
+        "frase": "Si fallece tu cónyuge",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Duelo: 3 días corridos"
+        }
+      },
+      {
+        "frase": "para rendir un examen",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Examen: 2 días, hasta 10 por año"
+        }
+      }
+    ]
+  },
+  "captions": [
+    "Matrimonio 10 días, nacimiento de un hijo 2, fallecimiento de cónyuge, hijo o padres 3, de hermano 1, y examen 2 por examen hasta 10 al año.",
+    "Son licencias pagas: se cobran igual que un día de vacaciones. Tu convenio puede mejorarlas.",
+    "La de matrimonio se puede sumar a las vacaciones, y el empleador tiene que aceptarlo.",
+    "Mandáselo a quien se casa este año."
+  ],
+  "hashtags": [
+    "licencias",
+    "licenciapormatrimonio",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "leydecontratodetrabajo",
+    "rrhh",
+    "estudiantes",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    }
+  ]
+}

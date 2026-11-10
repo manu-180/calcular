@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "clave": "sobrino-hace-webs",
+  "titulo": "El sobrino que hace webs",
+  "categoria": "comedia",
+  "formato": "chat",
+  "paleta": "crema",
+  "hooks": [
+    "Cuando tu sobrino te hace la página web",
+    "La web que te hizo tu sobrino",
+    "POV: tu sobrino es tu diseñador web"
+  ],
+  "voz": null,
+  "contenido": {
+    "contacto": "Marta · Peluquería",
+    "mensajes": [
+      { "de": "ellos", "texto": "Hola! Mi sobrino me hizo la web de la peluquería. ¿Qué te parece?" },
+      { "de": "yo", "texto": "Obvio, pasame el link" },
+      { "de": "ellos", "texto": "Link no tiene. Me la mandó en un PDF" },
+      { "de": "yo", "texto": "¿Y cómo hacen los clientes para sacar turno?" },
+      { "de": "ellos", "texto": "Me llaman al fijo y atiende mi sobrino" },
+      { "de": "yo", "texto": "¿Y si él no está?" },
+      { "de": "ellos", "texto": "Siempre está. Hace años que no sale de su cuarto" }
+    ],
+    "remate": "El sobrino no es un plan de negocios"
+  },
+  "captions": [
+    "Todos tenemos un sobrino que sabe de computadoras. Tu negocio merece una web de verdad: que aparezca cuando te buscan y que tome turnos sola, aunque nadie atienda el fijo.",
+    "Si para sacar un turno en tu negocio alguien tiene que atender el teléfono, esto es para vos.",
+    "Etiquetá al sobrino. Sin rencores, eh."
+  ],
+  "hashtags": ["diseñoweb", "paginaweb", "emprendedores", "pymes", "negociolocal", "peluqueria", "humor", "turnosonline", "marketingdigital", "emprendimiento"]
+}

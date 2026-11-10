@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "clave": "003-chat-jefe-aguinaldo",
+  "titulo": "Cuándo vence el aguinaldo",
+  "categoria": "comedia",
+  "formato": "chat",
+  "paleta": "noche",
+  "hooks": [
+    "Le pregunté al jefe por el aguinaldo",
+    "¿Cuándo sale el aguinaldo, jefe?",
+    "El aguinaldo tiene fecha, no es cuando pinte"
+  ],
+  "voz": null,
+  "contenido": {
+    "contacto": "Jefe",
+    "mensajes": [
+      {
+        "de": "yo",
+        "texto": "Jefe, ¿el aguinaldo cuándo sale?"
+      },
+      {
+        "de": "ellos",
+        "texto": "En diciembre, tranqui"
+      },
+      {
+        "de": "yo",
+        "texto": "¿Pero qué día?"
+      },
+      {
+        "de": "ellos",
+        "texto": "Cuando se pueda, vemos"
+      },
+      {
+        "de": "yo",
+        "texto": "Vence el 18, y hay 4 días hábiles de margen"
+      },
+      {
+        "de": "ellos",
+        "texto": "¿Y vos cómo sabés eso?"
+      },
+      {
+        "de": "yo",
+        "texto": "Ya hice la cuenta y sé cuánto me toca"
+      },
+      {
+        "de": "ellos",
+        "texto": "Pasame el link"
+      }
+    ],
+    "remate": "El aguinaldo vence el 18 de diciembre"
+  },
+  "captions": [
+    "El aguinaldo no se paga cuando se pueda: la segunda cuota vence el 18 de diciembre, con el margen de 4 días hábiles que la ley da para pagar el sueldo.",
+    "Si tu jefe te dice vemos, vos ya sabés la fecha. Y la cuenta también.",
+    "Diciembre llega rápido. Mejor saber cuánto te toca antes de que llegue el depósito.",
+    "Etiquetá a alguien que todavía espera su aguinaldo para cuando se pueda."
+  ],
+  "hashtags": [
+    "aguinaldo",
+    "humorlaboral",
+    "jefe",
+    "sueldo",
+    "diciembre",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "oficina",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    }
+  ]
+}

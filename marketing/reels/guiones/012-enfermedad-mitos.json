@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "clave": "012-enfermedad-mitos",
+  "titulo": "Mitos de la licencia por enfermedad",
+  "categoria": "mito",
+  "formato": "mito",
+  "paleta": "selva",
+  "hooks": [
+    "Licencia por enfermedad: tres mitos",
+    "¿Cuánto te pagan si te enfermás?",
+    "Lo que nadie dice de la licencia médica"
+  ],
+  "voz": "Por enfermedad te pagan solo tres meses. Depende: son tres o seis según tu antigüedad, y el doble con cargas de familia. Si recaés, arranca un plazo nuevo. No siempre: si una enfermedad crónica vuelve antes de dos años, no. Al terminar la licencia te pueden echar. Antes te guardan el puesto un año.",
+  "contenido": {
+    "tarjetas": [
+      {
+        "mito": "Por enfermedad te pagan solo tres meses",
+        "realidad": "Tres o seis según antigüedad, y el doble con cargas de familia."
+      },
+      {
+        "mito": "Si recaés, arranca un plazo nuevo",
+        "realidad": "Si una enfermedad crónica vuelve antes de dos años, no."
+      },
+      {
+        "mito": "Al terminar la licencia te pueden echar",
+        "realidad": "Antes te guardan el puesto un año, sin sueldo."
+      }
+    ]
+  },
+  "captions": [
+    "La licencia paga por enfermedad inculpable es de 3 meses con menos de 5 años de antigüedad y de 6 con más. Con cargas de familia, 6 y 12.",
+    "Cuando se terminan los meses pagos, el empleador te tiene que conservar el puesto un año más, sin goce de sueldo.",
+    "Desde 2026 el certificado médico tiene que decir diagnóstico, tratamiento y días de reposo, con firma digital.",
+    "Guardalo: es de esas cosas que conviene saber antes de necesitarlas."
+  ],
+  "hashtags": [
+    "licenciamedica",
+    "enfermedad",
+    "certificadomedico",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "salud",
+    "rrhh",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

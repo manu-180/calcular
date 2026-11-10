@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "clave": "024-chat-compa-sabado",
+  "titulo": "El sábado a la tarde vale doble",
+  "categoria": "comedia",
+  "formato": "chat",
+  "paleta": "noche",
+  "hooks": [
+    "Me pidieron venir el sábado a la tarde",
+    "Trabajar el sábado a la tarde: ojo",
+    "El jefe me pidió unas horitas"
+  ],
+  "voz": null,
+  "contenido": {
+    "contacto": "Compañero",
+    "mensajes": [
+      {
+        "de": "ellos",
+        "texto": "El jefe pidió que vengamos el sábado de 14 a 18"
+      },
+      {
+        "de": "yo",
+        "texto": "Son horas extra con el 100 %"
+      },
+      {
+        "de": "ellos",
+        "texto": "¿No era 50?"
+      },
+      {
+        "de": "yo",
+        "texto": "50 en día común. Sábado después de las 13, 100"
+      },
+      {
+        "de": "ellos",
+        "texto": "Me dijo que me las compensa con francos"
+      },
+      {
+        "de": "yo",
+        "texto": "Puede, pero tiene que estar por escrito"
+      },
+      {
+        "de": "ellos",
+        "texto": "Le voy a pedir el papel"
+      }
+    ],
+    "remate": "Sábado después de las 13: recargo del 100 %"
+  },
+  "captions": [
+    "Las horas extra del sábado después de las 13, del domingo y de los feriados llevan un recargo del 100 %. En días comunes, del 50 %.",
+    "Desde 2026 las horas extra se pueden compensar con francos, pero el acuerdo tiene que estar por escrito.",
+    "Etiquetá a ese compañero que siempre dice que sí a las horitas del sábado.",
+    "Anotá tus horas extra y hacé la cuenta antes de que llegue el recibo."
+  ],
+  "hashtags": [
+    "horasextras",
+    "sabado",
+    "humorlaboral",
+    "francos",
+    "sueldo",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    },
+    {
+      "nombre": "Ley 27.802 de Modernización Laboral (B.O. 6/3/2026)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/420000-424999/423680/norma.htm",
+      "consultado": "2026-08-20"
+    }
+  ]
+}

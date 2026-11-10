@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "clave": "007-chat-amiga-vacaciones",
+  "titulo": "Siete años y 14 días de vacaciones",
+  "categoria": "comedia",
+  "formato": "chat",
+  "paleta": "menta",
+  "hooks": [
+    "Mi amiga tenía 7 días de vacaciones regalados",
+    "Siete años en la empresa y 14 días",
+    "¿Cuántos días te dieron a vos?"
+  ],
+  "voz": null,
+  "contenido": {
+    "contacto": "Caro",
+    "mensajes": [
+      {
+        "de": "ellos",
+        "texto": "Me dieron 14 días de vacaciones y llevo 7 años"
+      },
+      {
+        "de": "yo",
+        "texto": "Con más de 5 años te tocan 21"
+      },
+      {
+        "de": "ellos",
+        "texto": "¿En serio? ¿Dónde dice?"
+      },
+      {
+        "de": "yo",
+        "texto": "Ley de Contrato de Trabajo, artículo 150"
+      },
+      {
+        "de": "ellos",
+        "texto": "O sea que me deben 7 días"
+      },
+      {
+        "de": "yo",
+        "texto": "Y desde hace dos años"
+      },
+      {
+        "de": "ellos",
+        "texto": "Mañana voy a RRHH con la cuenta hecha"
+      }
+    ],
+    "remate": "Más de 5 años de antigüedad: 21 días"
+  },
+  "captions": [
+    "Con más de cinco años de antigüedad, la ley te da 21 días corridos de vacaciones como mínimo. Tu convenio puede darte más.",
+    "Siete años en la empresa y 14 días de vacaciones no cierra. Fijate cuántos te tocan antes de firmar.",
+    "Mandáselo a esa persona que nunca revisó sus días de vacaciones.",
+    "Más de 10 años son 28 días, y más de 20 son 35. El piso lo pone la ley."
+  ],
+  "hashtags": [
+    "vacaciones",
+    "humorlaboral",
+    "rrhh",
+    "antiguedad",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "oficina",
+    "empleados",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>APEX · mito</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/datos.js"></script>
+<script src="assets/comun/subtitulos.js"></script>
+<style>
+{{css}}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--fondo); caret-color: transparent; }
+#root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--fondo); font-family: "Geist", sans-serif; color: var(--tinta); }
+#camara { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 10; }
+#portada, #portada-hook, #mazo { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+#subs { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 50; pointer-events: none; }
+
+.pastillas { position: absolute; left: 110px; top: 560px; display: flex; align-items: center; gap: 18px; }
+.pastilla { height: 64px; padding: 0 26px; border-radius: 999px; display: flex; align-items: center; gap: 12px;
+  font-family: "Geist Mono"; font-weight: 500; font-size: 27px; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; }
+.pastilla.mito { color: var(--tenue); border: 2px solid var(--linea-fuerte); }
+.pastilla.real { color: var(--sobre-acento); background: var(--acento); }
+.pastilla svg { width: 30px; height: 30px; display: block; }
+.pastilla svg path { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.flecha { width: 46px; height: 24px; display: block; }
+.flecha path { fill: none; stroke: var(--tenue); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+
+.tarjeta { position: absolute; left: 110px; top: 330px; width: 860px; height: 700px; perspective: 2600px; }
+.giro { position: absolute; left: 0; top: 0; width: 860px; height: 100%; transform-style: preserve-3d; }
+.cara { position: absolute; left: 0; top: 0; width: 860px; height: 100%; border-radius: 46px; padding: 60px 64px 64px; overflow: hidden;
+  -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.frente { background: var(--superficie); border: 2px solid var(--linea-fuerte);
+  box-shadow: 0 46px 90px var(--sombra-1), 0 10px 26px var(--sombra-2); }
+.dorso { visibility: hidden; background: var(--acento); color: var(--sobre-acento); transform: rotateY(180deg);
+  box-shadow: 0 46px 90px var(--sombra-1), 0 10px 26px var(--sombra-2); }
+.etiqueta { display: inline-flex; height: 64px; padding: 0 26px; border-radius: 999px; align-items: center; gap: 12px;
+  font-family: "Geist Mono"; font-weight: 500; font-size: 27px; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; }
+.frente .etiqueta { color: var(--tenue); border: 2px solid var(--linea-fuerte); }
+.dorso .etiqueta { color: var(--sobre-acento); border: 2px solid color-mix(in srgb, var(--sobre-acento) 34%, transparent); }
+.etiqueta svg { width: 30px; height: 30px; display: block; }
+.etiqueta svg path { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.texto { position: relative; margin-top: 44px; font-family: "Geist"; font-weight: 800; line-height: 1.02; letter-spacing: -0.028em; text-wrap: balance; }
+.texto span { display: inline-block; }
+.frente .texto { color: var(--tinta); }
+.dorso .texto { color: var(--sobre-acento); }
+.tacha { position: absolute; left: 0; top: 0; height: 10px; border-radius: 6px; background: var(--acento); transform-origin: 0 50%; }
+.antes { position: absolute; left: 64px; right: 64px; bottom: 60px; padding-top: 30px;
+  border-top: 2px solid color-mix(in srgb, var(--sobre-acento) 24%, transparent);
+  font-family: "Geist"; font-weight: 500; font-size: 32px; line-height: 1.3; color: color-mix(in srgb, var(--sobre-acento) 66%, transparent); }
+.antes span { text-decoration: line-through; text-decoration-thickness: 3px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="{{duracion}}" data-width="1080" data-height="1920">
+{{fondo}}
+<div id="camara">
+  <div id="portada">
+    <div class="pastillas">
+      <span class="pastilla mito">Mito</span>
+      <svg class="flecha" viewBox="0 0 48 24"><path d="M3 12h38M31 4l10 8-10 8"/></svg>
+      <span class="pastilla real"><svg viewBox="0 0 30 30"><path d="M7.5 15.5l5 5 10-11"/></svg>Realidad</span>
+    </div>
+    <div id="portada-hook"></div>
+  </div>
+  <div id="mazo"></div>
+</div>
+<div id="subs"></div>
+{{audio}}
+</div>
+
+<script>
+(function () {
+  var R = window.REEL;
+  var FUERA = 1180;
+
+  function div(clase, padre) {
+    var d = document.createElement("div");
+    d.className = clase;
+    if (padre) padre.appendChild(d);
+    return d;
+  }
+  // Si son dos oraciones, cada una arranca su renglón.
+  function palabras(contenedor, texto) {
+    var lista = texto.split(/\s+/).filter(Boolean);
+    return lista.map(function (t, i) {
+      if (i > 0) contenedor.appendChild(/[.!?]$/.test(lista[i - 1]) ? document.createElement("br") : document.createTextNode(" "));
+      var s = document.createElement("span");
+      s.textContent = t;
+      contenedor.appendChild(s);
+      return s;
+    });
+  }
+  function ajustar(el, max, min, alto) {
+    var t = max;
+    el.style.fontSize = t + "px";
+    while (el.offsetHeight > alto && t > min) { t -= 4; el.style.fontSize = t + "px"; }
+    return t;
+  }
+  // Una raya por renglón del mito, del ancho real de sus palabras.
+  function tachas(texto, spans) {
+    var renglones = [];
+    spans.forEach(function (s) {
+      var top = s.offsetTop;
+      var r = renglones.filter(function (x) { return Math.abs(x.top - top) < 8; })[0];
+      if (!r) { r = { top: top, izq: s.offsetLeft, der: s.offsetLeft + s.offsetWidth, alto: s.offsetHeight }; renglones.push(r); }
+      r.izq = Math.min(r.izq, s.offsetLeft);
+      r.der = Math.max(r.der, s.offsetLeft + s.offsetWidth);
+    });
+    return renglones.map(function (r) {
+      var b = div("tacha", texto);
+      b.style.left = (r.izq - 6) + "px";
+      b.style.width = (r.der - r.izq + 12) + "px";
+      b.style.top = Math.round(r.top + r.alto * 0.54 - 5) + "px";
+      return b;
+    });
+  }
+  function tarjeta(c, k, padre) {
+    var el = div("tarjeta", padre);
+    el.id = "tarjeta-" + k;
+    var giro = div("giro", el);
+    var frente = div("cara frente", giro);
+    var dorso = div("cara dorso", giro);
+    var et = div("etiqueta", frente);
+    et.textContent = "Mito";
+    var tm = div("texto", frente);
+    var spansM = palabras(tm, c.mito);
+    var et2 = div("etiqueta", dorso);
+    et2.innerHTML = '<svg viewBox="0 0 30 30"><path d="M7.5 15.5l5 5 10-11"/></svg>Realidad';
+    var tr = div("texto", dorso);
+    var spansR = palabras(tr, c.realidad);
+    var antes = div("antes", dorso);
+    var a = document.createElement("span");
+    a.textContent = c.mito;
+    antes.appendChild(a);
+    ajustar(tm, 124, 72, 480);
+    ajustar(tr, 108, 64, 430);
+    var alto = Math.max(60 + 64 + 44 + tm.offsetHeight + 80, 60 + 64 + 44 + tr.offsetHeight + 56 + antes.offsetHeight + 60, 620);
+    alto = Math.min(alto, 880);
+    el.style.height = alto + "px";
+    // Centrada en el escenario (y 280-1180, arriba de los subtítulos).
+    el.style.top = Math.round(Math.max(280, Math.min(1180 - alto, 780 - alto / 2))) + "px";
+    return { el: el, giro: giro, frente: frente, dorso: dorso, spansM: spansM, spansR: spansR, tachas: tachas(tm, spansM), tm: tm, alto: alto, arriba: parseInt(el.style.top, 10) };
+  }
+
+  function construir() {
+    var tl = gsap.timeline({ paused: true });
+    var E = R.empuje;
+    var mazo = document.getElementById("mazo");
+    var T = R.tarjetas.map(function (c, k) { return tarjeta(c, k, mazo); });
+
+    var hook = Subtitulos.montar(tl, { contenedor: document.getElementById("portada-hook"), grupos: [R.hook], tono: R.tono, resalte: R.resalte, tinta: R.tinta, prefijo: "hook" })[0];
+    // Portada centrada: pastillas arriba del hook, el bloque entero alrededor de y 820.
+    var pastillas = document.querySelector(".pastillas");
+    var arriba = Math.round(820 - (64 + 40 + hook.el.offsetHeight) / 2);
+    pastillas.style.top = arriba + "px";
+    hook.el.style.top = (arriba + 64 + 40) + "px";
+    Subtitulos.montar(tl, { contenedor: document.getElementById("subs"), grupos: R.grupos, tono: R.tono, resalte: R.resalte, tinta: R.tinta, prefijo: "sub" });
+
+    // Cuadro 0: el texto ya está quieto y legible; lo que se acomoda es la luz del mundo de atrás.
+    tl.fromTo("#fondo-luz", { x: 170, y: -70 }, { x: 0, y: 0, duration: 2.2, ease: "expo.out" }, 0);
+    tl.fromTo("#fondo-grilla", { backgroundPosition: "0px 48px, 0px 48px" }, { backgroundPosition: "0px 0px, 0px 0px", duration: 1.8, ease: "expo.out" }, 0);
+
+    R.tarjetas.forEach(function (c, k) {
+      var t = T[k];
+      var sale = k === 0 ? document.getElementById("portada") : T[k - 1].el;
+      var mitad = E / 2;
+      // Un solo movimiento de cámara hacia la izquierda: la que sale y la que entra viajan juntas.
+      tl.fromTo(t.el, { x: FUERA }, { x: 0, duration: E, ease: "power3.inOut" }, c.entra);
+      tl.fromTo(sale, { x: 0 }, { x: -FUERA, duration: E, ease: "power3.inOut", immediateRender: false }, c.entra);
+      tl.fromTo([t.el, sale], { filter: "blur(0px)" }, { filter: "blur(7px)", duration: mitad, ease: "power2.in", immediateRender: false }, c.entra);
+      tl.to([t.el, sale], { filter: "blur(0px)", duration: mitad, ease: "power2.out" }, c.entra + mitad);
+      tl.set([t.el, sale], { filter: "none" }, c.entra + E);
+      var px = -96 * (k + 1);
+      tl.to("#fondo-grilla", { backgroundPosition: px + "px 0px, " + px + "px 0px", duration: E, ease: "power3.inOut" }, c.entra);
+      tl.to("#fondo-luz", { x: -64 * (k + 1), duration: E, ease: "power3.inOut" }, c.entra);
+
+      // El mito se lee a medida que la voz lo dice.
+      t.spansM.forEach(function (s, i) {
+        var en = c.lucesMito ? c.lucesMito[i] - 2 / 30 : c.entra + E * 0.7;
+        tl.fromTo(s, { opacity: 0.3 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, Math.max(c.entra, en));
+      });
+      t.tachas.forEach(function (b, i) {
+        tl.fromTo(b, { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power3.inOut" }, c.tacha + i * 0.1);
+      });
+      tl.to(t.spansM, { opacity: 0.5, duration: 0.3, ease: "power2.out" }, c.tacha + 0.12);
+
+      // La tarjeta se da vuelta hacia el mismo lado al que corre la cámara, y se levanta apenas.
+      tl.fromTo(t.giro, { rotationY: 0 }, { rotationY: -180, duration: R.giro, ease: "power3.inOut" }, c.gira);
+      // A los 90° se cambia de cara: así nunca hay dos textos superpuestos, aunque el navegador ignore backface-visibility.
+      tl.set(t.frente, { visibility: "hidden" }, c.gira + R.giro / 2);
+      tl.set(t.dorso, { visibility: "visible" }, c.gira + R.giro / 2);
+      tl.fromTo(t.el, { scale: 1 }, { scale: 1.035, duration: R.giro / 2, ease: "power2.out", immediateRender: false }, c.gira);
+      tl.to(t.el, { scale: 1, duration: R.giro / 2, ease: "power2.in" }, c.gira + R.giro / 2);
+
+      t.spansR.forEach(function (s, i) {
+        var en = c.lucesRealidad ? c.lucesRealidad[i] - 2 / 30 : c.gira + R.giro * 0.8;
+        tl.fromTo(s, { opacity: 0.38 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, Math.max(c.gira + R.giro * 0.5, en));
+      });
+    });
+
+    // Punch-in sobre la última realidad: la que cierra el argumento.
+    if (R.punch != null) {
+      var ult = T[T.length - 1];
+      tl.set("#camara", { transformOrigin: "540px " + Math.round(ult.arriba + ult.alto / 2) + "px" }, R.punch);
+      tl.fromTo("#camara", { scale: 1 }, { scale: 1.045, duration: 0.6, ease: "power3.out", immediateRender: false }, R.punch);
+    }
+
+    tl.set({}, {}, R.duracion);
+    window.__timelines["main"] = tl;
+  }
+
+  Subtitulos.fuentes().then(construir, construir);
+})();
+</script>
+</body>
+</html>

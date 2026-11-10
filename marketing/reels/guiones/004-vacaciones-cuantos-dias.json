@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "clave": "004-vacaciones-cuantos-dias",
+  "titulo": "Cuántos días de vacaciones te tocan",
+  "categoria": "tecnico",
+  "formato": "explicador",
+  "paleta": "menta",
+  "hooks": [
+    "¿Cuántos días de vacaciones te tocan?",
+    "Tus vacaciones dependen de tu antigüedad",
+    "No todos tienen 14 días de vacaciones"
+  ],
+  "voz": "Los días de vacaciones dependen de tu antigüedad. Hasta cinco años te tocan catorce días corridos. Con más de cinco, veintiuno. Con más de diez, veintiocho. Y con más de veinte, treinta y cinco. La antigüedad se cuenta al treinta y uno de diciembre.",
+  "contenido": {
+    "bloques": [
+      {
+        "frase": "Los días de vacaciones",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Más años, más días"
+        }
+      },
+      {
+        "frase": "Hasta cinco años te tocan",
+        "visual": {
+          "tipo": "cuenta",
+          "filas": [
+            {
+              "concepto": "Hasta 5 años",
+              "valor": "14 días"
+            },
+            {
+              "concepto": "Más de 5 años",
+              "valor": "21 días"
+            },
+            {
+              "concepto": "Más de 10 años",
+              "valor": "28 días"
+            }
+          ],
+          "total": {
+            "concepto": "Más de 20 años",
+            "valor": "35 días"
+          }
+        }
+      },
+      {
+        "frase": "al treinta y uno de diciembre",
+        "visual": {
+          "tipo": "titulo",
+          "texto": "Se cuenta al 31 de diciembre"
+        }
+      }
+    ]
+  },
+  "captions": [
+    "La ley fija un piso de vacaciones según tu antigüedad: 14, 21, 28 o 35 días corridos. Tu convenio puede darte más, nunca menos.",
+    "La antigüedad se mide al 31 de diciembre del año de las vacaciones. Si en diciembre ya pasaste los 5 años, te tocan 21.",
+    "Antes de pedir tus vacaciones, fijate cuántos días te corresponden de verdad.",
+    "Si trabajaste menos de medio año, te toca un día de vacaciones por cada 20 días trabajados."
+  ],
+  "hashtags": [
+    "vacaciones",
+    "diasdevacaciones",
+    "antiguedad",
+    "trabajo",
+    "derechoslaborales",
+    "argentina",
+    "empleados",
+    "leydecontratodetrabajo",
+    "rrhh",
+    "calcularar"
+  ],
+  "fuentes": [
+    {
+      "nombre": "Ley de Contrato de Trabajo 20.744, texto actualizado con la Ley 27.802 (InfoLEG)",
+      "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "consultado": "2026-11-10"
+    }
+  ]
+}
