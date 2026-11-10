@@ -221,6 +221,14 @@ export function validarArchivoSeries(json: unknown, mercado: Mercado, hoy: Fecha
       if (p[0] <= anterior) e.push(`${id}.puntos[${j}]: fechas repetidas o fuera de orden (${p[0]})`);
       anterior = p[0];
     });
+    if (s.altas !== undefined) {
+      if (!Array.isArray(s.altas)) return void e.push(`${id}.altas tiene que ser una lista`);
+      const fechas = new Set(s.puntos.map((p: unknown) => (Array.isArray(p) ? p[0] : null)));
+      s.altas.forEach((a: unknown, j: number) => {
+        if (!Array.isArray(a) || a.length !== 2 || !esFechaISO(a[0]) || !esFechaISO(a[1])) return void e.push(`${id}.altas[${j}]: tiene que ser ["día del alta", "primer punto"]`);
+        if (!fechas.has(a[1])) e.push(`${id}.altas[${j}]: el punto ${a[1]} no está en puntos`);
+      });
+    }
   });
   return { valor: e.length ? null : (json as ArchivoSeries), errores: e.map((x) => `series.json: ${x}`) };
 }

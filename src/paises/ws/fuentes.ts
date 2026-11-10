@@ -24,7 +24,7 @@ function cotizacion(nombre: string): (http: Http, url: string) => Promise<readon
   };
 }
 
-const CBS = "https://www.cbs.gov.ws/daily-exchange-rates";
+const CBS = "https://cbs.gov.ws/daily-exchange-rates";
 
 function detectorTasa(codigo: string, nombre: string, min: number, max: number): Detector {
   const leer = cotizacion(nombre);

@@ -133,7 +133,7 @@ async function correrMercado(m: string, pais: PaisDefinido, previos: IssuePrevio
   }
   const ruta = path.join(RAIZ, archivoSeries);
   try {
-    const escritura = agregarPuntos(readFileSync(ruta, "utf8"), new Map(conPuntos));
+    const escritura = agregarPuntos(readFileSync(ruta, "utf8"), new Map(conPuntos), hoy);
     const v = validarArchivoSeries(JSON.parse(escritura.texto), pais.mercado, hoyMasAdelantado());
     if (v.errores.length) throw new Error(v.errores.slice(0, 3).join("; "));
     writeFileSync(ruta, escritura.texto);

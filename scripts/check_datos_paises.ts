@@ -18,7 +18,7 @@ import { agregarPuntos } from "./datos-paises/lib/series-json";
 import { leerParche, validarParche } from "./datos-paises/validar-parche.mjs";
 import { redireccionPermitida } from "./datos-paises/lib/http";
 import { revisarPuntos } from "../src/motor/bandas";
-import { sumarDias } from "../src/motor/vigencia";
+import { serieConocidaAl, sumarDias } from "../src/motor/vigencia";
 
 delete process.env.CALCULAR_HOY;
 delete process.env.CALCULAR_HOY_BUILD;
@@ -135,6 +135,21 @@ async function main() {
       lanzo = true;
     }
     verdad("agregarPuntos nunca pisa un punto publicado", lanzo);
+
+    // 2b. Altas: cada tanda publicada anota su día, y un caso fechado antes no ve esos puntos.
+    const conAlta = agregarPuntos(TEXTO_SERIES, enBanda.puntosNuevos, "2026-11-09");
+    const jAlta = JSON.parse(conAlta.texto);
+    igual("altas: inserción sin reescribir", conAlta.modo, "insercion");
+    igual("altas: la tanda queda anotada", jAlta.series[0].altas, [["2026-11-09", "2026-10-08"]]);
+    igual("altas: series.json valida", validarArchivoSeries(jAlta, zz.mercado, HOY).errores, []);
+    const otraAlta = agregarPuntos(conAlta.texto, new Map([["zz.indice", [{ fecha: "2026-10-09" as const, valor: 100.11 }]]]), "2026-11-10");
+    igual("altas: la segunda se suma a la lista", JSON.parse(otraAlta.texto).series[0].altas, [["2026-11-09", "2026-10-08"], ["2026-11-10", "2026-10-09"]]);
+    const serieAlta = JSON.parse(otraAlta.texto).series[0];
+    igual("altas: un caso del 08/10 no ve lo que entró el 09/11", serieConocidaAl(serieAlta, "2026-10-08").puntos.at(-1)?.[0], original.series[0].puntos.at(-1)[0]);
+    igual("altas: un caso del 09/11 ve la primera tanda y no la segunda", serieConocidaAl(serieAlta, "2026-11-09").puntos.at(-1)?.[0], "2026-10-08");
+    igual("altas: hoy se ve todo", serieConocidaAl(serieAlta, "2026-11-10").puntos.length, serieAlta.puntos.length);
+    const reescrita = agregarPuntos(TEXTO_SERIES, new Map([["zz.indice", [{ fecha: "2000-01-01" as const, valor: 1 }]]]), "2026-11-09");
+    igual("altas: también en modo reescritura", [reescrita.modo, JSON.parse(reescrita.texto).series[0].altas], ["reescritura", [["2026-11-09", "2000-01-01"]]]);
 
     // 3. Fuente caída (error, timeout o forma rota): no escribe y lo reporta.
     const caida = await correrDetectores(zz, httpFalso({ [URL_INDICE]: new Error("HTTP 503"), [URL_DIARIO]: [] }), { hoy: HOY, vistos: new Set() });

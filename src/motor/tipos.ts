@@ -181,6 +181,11 @@ export interface Serie {
   maxAntiguedadDias: number;
   fuente: FuenteVerificada;
   puntos: readonly PuntoSerieTupla[];
+  // [día en que entraron al repo, primer punto de esa tanda]. Lo escribe datos-paises al publicar y
+  // sólo lo leen los casos: un caso fechado antes del alta no ve esos puntos. Sin esto, el IPC de
+  // octubre (fechado 2026-10-01, publicado en noviembre) cambiaba un caso del 8/10 que decía "usa el
+  // último, el de setiembre" y la puerta de checks frenaba todos los datos nuevos del país.
+  altas?: readonly (readonly [FechaISO, FechaISO])[];
 }
 
 export interface PuntoSerie {

@@ -4,7 +4,7 @@ export default definirContenido({
   calculadora: "py.cotizacion-peso-argentino",
   h1: "Cotización del peso argentino hoy en Paraguay",
   title: "Peso argentino hoy en Paraguay: cotización y conversor",
-  description: "El peso argentino hoy cotiza a {{py.peso-argentino}} según el BCP. Convertí pesos argentinos a guaraníes y guaraníes a pesos argentinos con la cotización de cada día hábil.",
+  description: "El peso argentino hoy cotiza a {{py.peso-argentino}} según el BCP. Convertí pesos argentinos a guaraníes y al revés con la cotización de cada día hábil.",
   intro: [
     "El peso argentino hoy en Paraguay cotiza a {{py.peso-argentino}}, según la cotización referencial del Banco Central del Paraguay (BCP).",
     "Sirve para compras en la frontera con Argentina, viajes y envíos de plata. Elegí hacia qué moneda querés convertir y poné el monto.",
