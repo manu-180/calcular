@@ -3,9 +3,9 @@ import { definirContenido } from "@/motor/calculo";
 export default definirContenido({
   calculadora: "ve.salario-minimo",
   h1: "Salario mínimo en Venezuela",
-  title: "Salario mínimo en Venezuela: {{ve.salario-minimo}} al mes y en dólares",
+  title: "Salario mínimo en Venezuela hoy, en bolívares y dólares",
   description:
-    "El salario mínimo en Venezuela es {{ve.salario-minimo}} al mes desde el {{ve.salario-minimo#desde}}. Míralo por día y en dólares con la tasa oficial del BCV de hoy.",
+    "El salario mínimo en Venezuela es {{ve.salario-minimo}} al mes desde el {{ve.salario-minimo#desde}}. Míralo por día y en dólares con la tasa oficial del BCV.",
   intro: [
     "El salario mínimo mensual en Venezuela es {{ve.salario-minimo}}, fijado por el Decreto 4.653 de marzo de 2022. Para adolescentes aprendices es {{ve.salario-minimo-aprendiz}}.",
     "Desde entonces los aumentos se hicieron con bonos (cestaticket y bono de guerra económica), no con el salario. Por eso el ingreso mínimo que anuncia el Gobierno es mucho mayor que el salario mínimo.",

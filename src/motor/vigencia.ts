@@ -148,6 +148,14 @@ export function ultimoPunto(serie: Pick<Serie, "puntos">): PuntoSerie | null {
   return p ? { fecha: p[0], valor: p[1] } : null;
 }
 
+export function serieConocidaAl(serie: Serie, fecha: FechaISO): Serie {
+  let corte: FechaISO | null = null;
+  for (const [alta, primero] of serie.altas ?? []) if (alta > fecha && (corte === null || primero < corte)) corte = primero;
+  if (corte === null) return serie;
+  const hasta = corte;
+  return { ...serie, puntos: serie.puntos.filter(([f]) => f < hasta) };
+}
+
 export function valorSerie(serie: Serie, fecha: FechaISO): PuntoSerie | null {
   let elegido: PuntoSerie | null = null;
   for (const [f, v] of serie.puntos) {

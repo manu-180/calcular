@@ -8,10 +8,15 @@ import { crearContexto, ErrorEntrada, type CasosCalculadora } from "../src/motor
 import { formatearFilas } from "../src/motor/formulario";
 import { esUniversal, resolverValores } from "../src/motor/registro";
 import type { ContextoSerializado, DefinicionCalculadora, PaisDefinido, ResultadoBase, ValorResuelto } from "../src/motor/tipos";
-import { esFechaISO } from "../src/motor/vigencia";
+import { esFechaISO, serieConocidaAl } from "../src/motor/vigencia";
 import { archivosBajo, cargarPaises, DIR_PAISES, importar, rel } from "./paises_comun";
 
 const TOLERANCIA = 0.005;
+
+// Cada caso ve las series como estaban el día del caso: sin los puntos que entraron después.
+function paisAl(pais: PaisDefinido, fecha: string): PaisDefinido {
+  return esFechaISO(fecha) ? { ...pais, series: pais.series.map((s) => serieConocidaAl(s, fecha)) } : pais;
+}
 
 // Calculadoras cuyo resultado sale de un sueldo y que con sueldo 0 tienen que pedirlo en vez de
 // calcular un piso legal o un auxilio sin base (en Colombia daba neto 109.023 y liquidación 284.043).
@@ -91,7 +96,7 @@ async function main() {
     if (campoCero && base) {
       total++;
       const id = `${donde} con ${campoCero} = 0`;
-      const resueltos = resolverValores(pais, def, base.fecha);
+      const resueltos = resolverValores(paisAl(pais, base.fecha), def, base.fecha);
       const valores: Record<string, ValorResuelto> = resueltos.ok ? { ...resueltos.valores, ...((base.valores ?? {}) as Record<string, ValorResuelto>) } : {};
       try {
         def.calcular({ ...(base.entrada as object), [campoCero]: 0 } as never, valores as never, crearContexto(pais.mercado, base.fecha, def));
@@ -112,7 +117,7 @@ async function main() {
       if (o?.tipo === "oficial" && !String(o.url).startsWith("https://")) fallas.push(`${id}: un caso oficial necesita la url https del ejemplo`);
       if (!caso.esperaError && (!caso.esperado || Object.keys(caso.esperado).length === 0)) fallas.push(`${id}: sin esperado`);
 
-      const resueltos = resolverValores(pais, def, caso.fecha);
+      const resueltos = resolverValores(paisAl(pais, caso.fecha), def, caso.fecha);
       const pisados = (caso.valores ?? {}) as Record<string, ValorResuelto>;
       const valores: Record<string, ValorResuelto> = resueltos.ok ? { ...resueltos.valores, ...pisados } : { ...pisados };
       const faltan = Object.keys(def.requiere).filter((k) => !(k in valores));
@@ -203,7 +208,7 @@ function revisarTraduccion(pais: PaisDefinido, def: DefinicionCalculadora, modul
   for (const caso of modulo.casos) {
     n++;
     const id = `${def.id} con el caso «${caso.nombre}» de ${base.id}`;
-    const r = resolverValores(pais, def, caso.fecha);
+    const r = resolverValores(paisAl(pais, caso.fecha), def, caso.fecha);
     const valores = { ...(r.ok ? r.valores : {}), ...((caso.valores ?? {}) as Record<string, ValorResuelto>) };
     if (Object.keys(def.requiere).some((k) => !(k in valores))) continue;
     const correr = (d: DefinicionCalculadora) => {

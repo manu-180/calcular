@@ -1,7 +1,7 @@
 import { definirCasos } from "@/motor/calculo";
 import calculadora from "./usd-to-wst";
 
-const URL = "https://www.cbs.gov.ws/daily-exchange-rates";
+const URL = "https://cbs.gov.ws/daily-exchange-rates";
 
 export default definirCasos(calculadora, [
   {
