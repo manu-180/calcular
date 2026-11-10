@@ -15,6 +15,7 @@
         "verificadoEl": "2026-10-26",
         "nota": "The same data feeds the exchange rate page of bnr.rw. The average rate is the midpoint of the BNR buying and selling rates."
       },
+      "altas": [["2026-11-10", "2026-11-09"]],
       "puntos": [
         [
           "2026-10-01",
@@ -96,7 +97,9 @@
         ["2026-11-03", 1476.515],
         ["2026-11-04", 1476.575],
         ["2026-11-05", 1476.69],
-        ["2026-11-06", 1476.825]
+        ["2026-11-06", 1476.825],
+        ["2026-11-09", 1476.99],
+        ["2026-11-10", 1477.02]
       ]
     },
     {
@@ -113,6 +116,7 @@
         "verificadoEl": "2026-10-26",
         "nota": "The same data feeds the exchange rate page of bnr.rw. The average rate is the midpoint of the BNR buying and selling rates."
       },
+      "altas": [["2026-11-10", "2026-11-09"]],
       "puntos": [
         [
           "2026-10-01",
@@ -194,7 +198,9 @@
         ["2026-11-03", 1652.884717],
         ["2026-11-04", 1658.046068],
         ["2026-11-05", 1663.122113],
-        ["2026-11-06", 1653.748635]
+        ["2026-11-06", 1653.748635],
+        ["2026-11-09", 1648.32084],
+        ["2026-11-10", 1658.324205]
       ]
     },
     {

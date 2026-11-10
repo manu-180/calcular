@@ -15,6 +15,7 @@
         "verificadoEl": "2026-10-07",
         "nota": "Cada punto es el TCO que rige ese día calendario, leído en la tabla del BCB por fecha (otras_imprimir.php?qdd=DD&qmm=MM&qaa=AAAA). Sábados, domingos y feriados rige el publicado el día hábil anterior (R.D. BCB N° 142/2026)."
       },
+      "altas": [["2026-11-10", "2026-11-10"]],
       "puntos": [
         ["2026-09-01", 12.12],
         ["2026-09-02", 12.26],
@@ -78,7 +79,8 @@
         ["2026-11-06", 11.89],
         ["2026-11-07", 11.81],
         ["2026-11-08", 11.81],
-        ["2026-11-09", 11.81]
+        ["2026-11-09", 11.81],
+        ["2026-11-10", 11.75]
       ]
     },
     {
@@ -95,6 +97,7 @@
         "verificadoEl": "2026-10-07",
         "nota": "Valores leídos día por día en la tabla del BCB por fecha (otras_imprimir.php?qdd=DD&qmm=MM&qaa=AAAA)."
       },
+      "altas": [["2026-11-10", "2026-11-10"]],
       "puntos": [
         ["2026-09-01", 3.33816],
         ["2026-09-02", 3.33861],
@@ -158,7 +161,8 @@
         ["2026-11-06", 3.36943],
         ["2026-11-07", 3.36995],
         ["2026-11-08", 3.37047],
-        ["2026-11-09", 3.37099]
+        ["2026-11-09", 3.37099],
+        ["2026-11-10", 3.37151]
       ]
     },
     {
@@ -175,6 +179,7 @@
         "verificadoEl": "2026-10-08",
         "nota": "Valores con todos sus decimales, de la planilla del INE. Coinciden con la tabla de indicadores de inflación del BCB (septiembre 2026: 152,85). Los meses que suma el detector salen de esa tabla del BCB, con dos decimales."
       },
+      "altas": [["2026-11-10", "2026-10-01"]],
       "puntos": [
         ["2018-01-01", 101.16761583],
         ["2018-02-01", 101.49050476],
@@ -280,7 +285,8 @@
         ["2026-06-01", 154.22390634],
         ["2026-07-01", 149.92031936],
         ["2026-08-01", 151.56915429],
-        ["2026-09-01", 152.85022278]
+        ["2026-09-01", 152.85022278],
+        ["2026-10-01", 156.01]
       ]
     }
   ]

@@ -15,6 +15,7 @@
         "verificadoEl": "2026-10-14",
         "nota": "Cada punto es el primer dia del trimestre (2026-04-01 = junio 2026 quarter). La API informa BASE_PERIOD 25 (nueva base del indice)."
       },
+      "altas": [["2026-11-10", "2026-07-01"]],
       "puntos": [
         [
           "2000-01-01",
@@ -439,7 +440,8 @@
         [
           "2026-04-01",
           102.31
-        ]
+        ],
+        ["2026-07-01", 103.64]
       ]
     }
   ]

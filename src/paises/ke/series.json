@@ -113,6 +113,7 @@
         "verificadoEl": "2026-10-17",
         "nota": "Each month is stored on its first day. The rate is the 12-month change in the CPI published by the Kenya National Bureau of Statistics."
       },
+      "altas": [["2026-11-10", "2026-10-01"]],
       "puntos": [
         [
           "2005-01-01",
@@ -1157,7 +1158,8 @@
         [
           "2026-09-01",
           6.76
-        ]
+        ],
+        ["2026-10-01", 7.32]
       ]
     }
   ]
