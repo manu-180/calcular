@@ -15,6 +15,7 @@
         "verificadoEl": "2026-10-07",
         "nota": "Hasta el 5/10/2026 sale del archivo XLSX (hoja Diaria). El 6/10/2026 sale del recuadro «Tipo de cambio» de la portada de bancentral.gov.do, que es lo que lee el detector."
       },
+      "altas": [["2026-11-10", "2026-11-10"]],
       "puntos": [
         ["2026-08-03", 58.3111],
         ["2026-08-04", 58.076],
@@ -73,7 +74,8 @@
         ["2026-10-22", 60.8324],
         ["2026-10-23", 60.3454],
         ["2026-11-05", 60.5876],
-        ["2026-11-06", 60.4617]
+        ["2026-11-06", 60.4617],
+        ["2026-11-10", 60.477]
       ]
     },
     {
@@ -90,6 +92,7 @@
         "verificadoEl": "2026-10-07",
         "nota": "Hasta el 5/10/2026 sale del archivo XLSX (hoja Diaria). El 6/10/2026 sale del recuadro «Tipo de cambio» de la portada de bancentral.gov.do, que es lo que lee el detector."
       },
+      "altas": [["2026-11-10", "2026-11-10"]],
       "puntos": [
         ["2026-08-03", 58.5397],
         ["2026-08-04", 58.4424],
@@ -148,7 +151,8 @@
         ["2026-10-22", 61.1865],
         ["2026-10-23", 60.7345],
         ["2026-11-05", 60.9038],
-        ["2026-11-06", 60.7601]
+        ["2026-11-06", 60.7601],
+        ["2026-11-10", 60.9073]
       ]
     },
     {

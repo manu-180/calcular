@@ -15,13 +15,15 @@
         "verificadoEl": "2026-10-27",
         "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
       },
+      "altas": [["2026-11-11", "2026-11-10"]],
       "puntos": [
         [
           "2026-10-26",
           6.7135
         ],
         ["2026-11-05", 6.7224],
-        ["2026-11-06", 6.7203]
+        ["2026-11-06", 6.7203],
+        ["2026-11-10", 6.7161]
       ]
     },
     {
@@ -38,13 +40,15 @@
         "verificadoEl": "2026-10-27",
         "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
       },
+      "altas": [["2026-11-11", "2026-11-10"]],
       "puntos": [
         [
           "2026-10-26",
           6.7879
         ],
         ["2026-11-05", 6.7534],
-        ["2026-11-06", 6.7986]
+        ["2026-11-06", 6.7986],
+        ["2026-11-10", 6.7992]
       ]
     },
     {
@@ -61,13 +65,15 @@
         "verificadoEl": "2026-10-27",
         "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
       },
+      "altas": [["2026-11-11", "2026-11-10"]],
       "puntos": [
         [
           "2026-10-26",
           4.8195
         ],
         ["2026-11-05", 4.8444],
-        ["2026-11-06", 4.8719]
+        ["2026-11-06", 4.8719],
+        ["2026-11-10", 4.7667]
       ]
     },
     {
@@ -84,13 +90,15 @@
         "verificadoEl": "2026-10-27",
         "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
       },
+      "altas": [["2026-11-11", "2026-11-10"]],
       "puntos": [
         [
           "2026-10-26",
           5.4339
         ],
         ["2026-11-05", 5.3463],
-        ["2026-11-06", 5.2657]
+        ["2026-11-06", 5.2657],
+        ["2026-11-10", 5.2219]
       ]
     },
     {
@@ -107,13 +115,15 @@
         "verificadoEl": "2026-10-27",
         "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
       },
+      "altas": [["2026-11-11", "2026-11-10"]],
       "puntos": [
         [
           "2026-10-26",
           9.0078
         ],
         ["2026-11-05", 9.0703],
-        ["2026-11-06", 9.0262]
+        ["2026-11-06", 9.0262],
+        ["2026-11-10", 9.0285]
       ]
     },
     {
@@ -151,13 +161,15 @@
         "verificadoEl": "2026-10-27",
         "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
       },
+      "altas": [["2026-11-11", "2026-11-10"]],
       "puntos": [
         [
           "2026-10-26",
           7.7475
         ],
         ["2026-11-05", 7.4752],
-        ["2026-11-06", 7.7529]
+        ["2026-11-06", 7.7529],
+        ["2026-11-10", 7.6876]
       ]
     },
     {
@@ -174,13 +186,15 @@
         "verificadoEl": "2026-10-27",
         "nota": "The Central Bank home page shows the buying and selling rates of the last business day in its Exchange Rates table."
       },
+      "altas": [["2026-11-11", "2026-11-10"]],
       "puntos": [
         [
           "2026-10-26",
           8.2831
         ],
         ["2026-11-05", 8.3095],
-        ["2026-11-06", 8.5455]
+        ["2026-11-06", 8.5455],
+        ["2026-11-10", 8.3483]
       ]
     }
   ]

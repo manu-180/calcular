@@ -79,6 +79,7 @@
         "verificadoEl": "2026-10-08",
         "nota": "El BCH no expone el nivel del IPC sin clave de API. Cada mes se calcula como el diciembre anterior por (1 + inflación acumulada publicada); diciembre 2020 = 100. Contra la inflación interanual publicada, la diferencia máxima es 0,014 puntos porcentuales (enero 2021 a agosto 2026)."
       },
+      "altas": [["2026-11-10", "2026-10-01"]],
       "puntos": [
         ["2020-12-01", 100],
         ["2021-01-01", 100.4],
@@ -149,7 +150,8 @@
         ["2026-06-01", 137.6967],
         ["2026-07-01", 137.9089],
         ["2026-08-01", 138.9967],
-        ["2026-09-01", 139.6733]
+        ["2026-09-01", 139.6733],
+        ["2026-10-01", 140.9468]
       ]
     }
   ]
