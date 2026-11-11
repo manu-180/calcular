@@ -37,4 +37,7 @@ next-env.d.ts
 # vigia: caché diaria de "¿la fuente publicó?"
 scripts/vigia/.cache/
 
+# oportunidades: lo elegido del día, con texto del buscador; no va al repo público
+.oportunidad-actual.json
+
 /supabase/.temp
