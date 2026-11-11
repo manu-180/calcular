@@ -587,6 +587,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
     },
   },
   // Tailandés (ADR 0002, D13): sin punto final, «กรุณา» para pedir y sin ครับ/ค่ะ.
+  // Jemer (ADR 0002, D38): cortés y neutro, «សូម» para pedir y «។» al cerrar la oración.
+  km: {
+    base: {
+      calcular: "គណនា",
+      resultado: "លទ្ធផល",
+      si: "មែន",
+      no: "ទេ",
+      sinResultado: "បច្ចុប្បន្នយើងមិនបង្ហាញលទ្ធផលនេះទេ។",
+      errores: {
+        requerido: "សូមបំពេញប្រអប់នេះ។",
+        "numero-invalido": "សូមបញ្ចូលលេខ ឧទាហរណ៍ {ejemplo}។",
+        "entero-invalido": "សូមបញ្ចូលចំនួនគត់ ដោយគ្មានទសភាគ។",
+        "menor-que-min": "តម្លៃអប្បបរមាគឺ {min}។",
+        "mayor-que-max": "តម្លៃអតិបរមាគឺ {max}។",
+        "fecha-invalida": "សូមជ្រើសរើសកាលបរិច្ឆេទត្រឹមត្រូវ។",
+        "hora-invalida": "សូមជ្រើសរើសម៉ោងត្រឹមត្រូវ។",
+        "opcion-invalida": "សូមជ្រើសរើសជម្រើសមួយ។",
+        "region-invalida": "សូមជ្រើសរើសតំបន់។",
+        "calculo-fallido": "មិនអាចគណនាពីទិន្នន័យនេះបានទេ។ សូមពិនិត្យតម្លៃដែលបានបញ្ចូល ហើយសាកល្បងម្តងទៀត។",
+      },
+      milesAmbiguos: "តើអ្នកចង់សំដៅលើ {sugerido} ឬ? សូមសរសេរដោយគ្មាន{signos}។",
+      separadores: { punto: "ចុច", coma: "ក្បៀស" },
+    },
+  },
   th: {
     base: {
       calcular: "คำนวณ",
@@ -866,6 +890,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       separadores: { punto: "точки", coma: "запетаи" },
     },
   },
+  // Macedonio (ADR 0002, D36): «вие» de cortesía con minúscula, como Комерцијална банка; el botón es «Пресметај».
+  mk: {
+    base: {
+      calcular: "Пресметај",
+      resultado: "Резултат",
+      si: "Да",
+      no: "Не",
+      sinResultado: "Во моментов не го прикажуваме овој резултат.",
+      errores: {
+        requerido: "Пополнете го ова поле.",
+        "numero-invalido": "Внесете број, на пример {ejemplo}.",
+        "entero-invalido": "Внесете цел број, без децимали.",
+        "menor-que-min": "Најмалата вредност е {min}.",
+        "mayor-que-max": "Највисоката вредност е {max}.",
+        "fecha-invalida": "Изберете важечки датум.",
+        "hora-invalida": "Изберете важечко време.",
+        "opcion-invalida": "Изберете една од можностите.",
+        "region-invalida": "Изберете регион.",
+        "calculo-fallido": "Со овие податоци пресметката не успеа. Проверете ги вредностите и обидете се повторно.",
+      },
+      milesAmbiguos: "Дали мислевте на {sugerido}? Внесете го бројот без {signos}.",
+      separadores: { punto: "точки", coma: "запирки" },
+    },
+  },
   ka: {
     base: {
       calcular: "გამოთვლა",
@@ -887,6 +935,30 @@ export const DICCIONARIOS_MOTOR: Diccionarios<TextosMotor> = {
       },
       milesAmbiguos: "ხომ არ გულისხმობდით: {sugerido}? შეიყვანეთ რიცხვი ამ ნიშნების გარეშე: {signos}.",
       separadores: { punto: "წერტილები", coma: "მძიმეები" },
+    },
+  },
+  // Vietnamita (ADR 0002, D37): frases cortas como Vietcombank y eTax, «bạn» neutro y botón «Tính».
+  vi: {
+    base: {
+      calcular: "Tính",
+      resultado: "Kết quả",
+      si: "Có",
+      no: "Không",
+      sinResultado: "Hiện chưa thể hiển thị kết quả này.",
+      errores: {
+        requerido: "Vui lòng điền trường này.",
+        "numero-invalido": "Nhập một số, ví dụ {ejemplo}.",
+        "entero-invalido": "Nhập số nguyên, không có phần thập phân.",
+        "menor-que-min": "Giá trị nhỏ nhất: {min}.",
+        "mayor-que-max": "Giá trị lớn nhất: {max}.",
+        "fecha-invalida": "Chọn một ngày hợp lệ.",
+        "hora-invalida": "Chọn một giờ hợp lệ.",
+        "opcion-invalida": "Chọn một trong các lựa chọn.",
+        "region-invalida": "Chọn một khu vực.",
+        "calculo-fallido": "Không tính được với dữ liệu này. Kiểm tra lại các giá trị và thử lại.",
+      },
+      milesAmbiguos: "Có phải bạn muốn nhập {sugerido}? Nhập số không có {signos}.",
+      separadores: { punto: "dấu chấm", coma: "dấu phẩy" },
     },
   },
   // Mongol (ADR 0002, D28): botón en «-х» («Тооцоолох») y pedidos en «-на уу», como Хаан банк.

@@ -1,0 +1,514 @@
+{
+  "mercado": "lb",
+  "datos": [
+    {
+      "id": "lb.minimum-wage",
+      "nombre": "الحد الأدنى الرسمي للأجر الشهري",
+      "tipo": "numero",
+      "unidad": "LBP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "valor": 28000000,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي",
+            "titulo": "مذكرة إعلامية رقم 801 تاريخ 1 آب 2025: تطبيق المرسوم 699 تاريخ 18 تموز 2025",
+            "url": "https://drive.google.com/file/d/1O5iJmz9fbXKtl-3zCSTziPqMp5kDKU4K/view?usp=sharing",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "النص منشور على cnss.gov.lb (المذكرات الإعلامية 2025). المرسوم نُشر في الجريدة الرسمية عدد 32 تاريخ 24/7/2025 ويُعمل به من أول الشهر الذي يلي نشره."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.minimum-wage-daily",
+      "nombre": "الحد الأدنى الرسمي للأجر اليومي",
+      "tipo": "numero",
+      "unidad": "LBP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "valor": 1300000,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي",
+            "titulo": "مذكرة إعلامية رقم 801 تاريخ 1 آب 2025: تطبيق المرسوم 699 تاريخ 18 تموز 2025",
+            "url": "https://drive.google.com/file/d/1O5iJmz9fbXKtl-3zCSTziPqMp5kDKU4K/view?usp=sharing",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "النص منشور على cnss.gov.lb (المذكرات الإعلامية 2025). المرسوم نُشر في الجريدة الرسمية عدد 32 تاريخ 24/7/2025 ويُعمل به من أول الشهر الذي يلي نشره."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.nssf-ceiling-health",
+      "nombre": "الحد الأقصى للكسب الخاضع للحسومات في فرع ضمان المرض والأمومة",
+      "tipo": "numero",
+      "unidad": "LBP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-08-01",
+          "valor": 120000000,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي",
+            "titulo": "مذكرة إعلامية رقم 805 تاريخ 22 آب 2025: تطبيق المرسوم 887 تاريخ 14 آب 2025",
+            "url": "https://drive.google.com/file/d/1dSUCcvmIH3619EdCEyBwaGoa3ptnY-6-/view?usp=sharing",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "الحد الأقصى لفرع ضمان المرض والأمومة، المادة 68 (الفقرة 2). المذكرة تلغي البند 2 من المذكرة 801 وتعتمد 120 مليونًا من 1/8/2025."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.nssf-ceiling-family",
+      "nombre": "الحد الأقصى للكسب الخاضع للحسومات في فرع التقديمات العائلية والتعليمية",
+      "tipo": "numero",
+      "unidad": "LBP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 28000000,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي",
+            "titulo": "مذكرة إعلامية رقم 831 تاريخ 4 أيار 2026: تطبيق المرسوم 2923 تاريخ 24/4/2026",
+            "url": "https://drive.google.com/file/d/1LXzz54n5z6hZ7fajiek3aZr6EadZqShk/view?usp=sharing",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "المرسوم نُشر في الجريدة الرسمية عدد 19 تاريخ 30/4/2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.family-allowance",
+      "nombre": "التقديمات العائلية الشهرية",
+      "tipo": "mapa",
+      "unidad": "LBP",
+      "etiquetas": {
+        "spouse": "عن الزوج أو الزوجة",
+        "child": "عن كل ولد",
+        "max": "الحد الأقصى في الشهر"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": {
+            "spouse": 2100000,
+            "child": 1155000,
+            "max": 7875000
+          },
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي",
+            "titulo": "مذكرة إعلامية رقم 831 تاريخ 4 أيار 2026: تطبيق المرسوم 2923 تاريخ 24/4/2026",
+            "url": "https://drive.google.com/file/d/1LXzz54n5z6hZ7fajiek3aZr6EadZqShk/view?usp=sharing",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "المرسوم نُشر في الجريدة الرسمية عدد 19 تاريخ 30/4/2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.family-allowance-children",
+      "nombre": "أقصى عدد للأولاد في التقديمات العائلية",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-05-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي",
+            "titulo": "مذكرة إعلامية رقم 831 تاريخ 4 أيار 2026: تطبيق المرسوم 2923 تاريخ 24/4/2026",
+            "url": "https://drive.google.com/file/d/1LXzz54n5z6hZ7fajiek3aZr6EadZqShk/view?usp=sharing",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "المرسوم نُشر في الجريدة الرسمية عدد 19 تاريخ 30/4/2026."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.salary-tax",
+      "nombre": "ضريبة الرواتب والأجور (المادة 58)",
+      "tipo": "escala",
+      "unidad": "LBP",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 360000000,
+              "tasa": 2
+            },
+            {
+              "desde": 360000000,
+              "hasta": 900000000,
+              "tasa": 4
+            },
+            {
+              "desde": 900000000,
+              "hasta": 1800000000,
+              "tasa": 7
+            },
+            {
+              "desde": 1800000000,
+              "hasta": 3600000000,
+              "tasa": 11
+            },
+            {
+              "desde": 3600000000,
+              "hasta": 7200000000,
+              "tasa": 15
+            },
+            {
+              "desde": 7200000000,
+              "hasta": 13500000000,
+              "tasa": 20
+            },
+            {
+              "desde": 13500000000,
+              "hasta": null,
+              "tasa": 25
+            }
+          ],
+          "fuente": {
+            "organismo": "الجامعة اللبنانية، مركز المعلوماتية القانونية",
+            "titulo": "قانون ضريبة الدخل (المرسوم الاشتراعي 144/1959)، المواد 31 و47 و50 و56 و58 كما عدلها القانون 324/2024",
+            "url": "https://legallaw.ul.edu.lb/LawView.aspx?opt=view&LawID=185603",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "الأرقام نفسها في موازنة المواطن 2024 من وزارة المالية (Article 47 وArticle 48-49): https://www.finance.gov.lb/en-us/Finance/BI/ABDP/Annual%20Budget%20Documents%20and%20Process/Citizen%20Budget%202024-ENG.pdf . تسري الشطور اعتبارًا من 1/1/2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.family-deduction",
+      "nombre": "التنزيل العائلي السنوي (المادة 31)",
+      "tipo": "mapa",
+      "unidad": "LBP",
+      "etiquetas": {
+        "self": "للمكلف",
+        "spouse": "إضافة للمتزوج",
+        "child": "عن كل ولد"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": {
+            "self": 450000000,
+            "spouse": 225000000,
+            "child": 45000000
+          },
+          "fuente": {
+            "organismo": "الجامعة اللبنانية، مركز المعلوماتية القانونية",
+            "titulo": "قانون ضريبة الدخل (المرسوم الاشتراعي 144/1959)، المواد 31 و47 و50 و56 و58 كما عدلها القانون 324/2024",
+            "url": "https://legallaw.ul.edu.lb/LawView.aspx?opt=view&LawID=185603",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "الأرقام نفسها في موازنة المواطن 2024 من وزارة المالية (Article 47 وArticle 48-49): https://www.finance.gov.lb/en-us/Finance/BI/ABDP/Annual%20Budget%20Documents%20and%20Process/Citizen%20Budget%202024-ENG.pdf . تسري الشطور اعتبارًا من 1/1/2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.deduction-children",
+      "nombre": "أقصى عدد للأولاد في التنزيل العائلي",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-01-01",
+          "valor": 5,
+          "fuente": {
+            "organismo": "الجامعة اللبنانية، مركز المعلوماتية القانونية",
+            "titulo": "قانون ضريبة الدخل (المرسوم الاشتراعي 144/1959)، المواد 31 و47 و50 و56 و58 كما عدلها القانون 324/2024",
+            "url": "https://legallaw.ul.edu.lb/LawView.aspx?opt=view&LawID=185603",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "الأرقام نفسها في موازنة المواطن 2024 من وزارة المالية (Article 47 وArticle 48-49): https://www.finance.gov.lb/en-us/Finance/BI/ABDP/Annual%20Budget%20Documents%20and%20Process/Citizen%20Budget%202024-ENG.pdf . تسري الشطور اعتبارًا من 1/1/2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.vat",
+      "nombre": "الضريبة على القيمة المضافة",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-01-01",
+          "valor": 11,
+          "fuente": {
+            "organismo": "الجامعة اللبنانية، مركز المعلوماتية القانونية",
+            "titulo": "القانون 379 تاريخ 14/12/2001 (الضريبة على القيمة المضافة)، المادة 25 المعدلة بالقانون 64 تاريخ 20/10/2017",
+            "url": "https://legallaw.ul.edu.lb/LawView.aspx?LawID=203155&opt=view",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "النص: يطبق المعدل 11% من بداية الفصل الذي يلي فصل نشر القانون، ولذلك 1/1/2018. صفحة وزارة المالية Taxation/Individuals/VAT/Pages/Tax-Rate.aspx ما زالت تعرض 10% من النص الأصلي قبل التعديل، فاعتُمد نص المادة المعدلة."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.vat-thresholds",
+      "nombre": "حدود التسجيل في الضريبة على القيمة المضافة",
+      "tipo": "mapa",
+      "unidad": "LBP",
+      "etiquetas": {
+        "mandatory": "التسجيل الإلزامي",
+        "optional": "التسجيل الاختياري"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-02-15",
+          "valor": {
+            "mandatory": 5000000000,
+            "optional": 1000000000
+          },
+          "fuente": {
+            "organismo": "وزارة المالية",
+            "titulo": "موازنة المواطن 2024: Article 14 Value Added Tax",
+            "url": "https://www.finance.gov.lb/en-us/Finance/BI/ABDP/Annual%20Budget%20Documents%20and%20Process/Citizen%20Budget%202024-ENG.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "قانون موازنة 2024 نُشر في الجريدة الرسمية في 15 شباط 2024."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.working-time",
+      "nombre": "مدة العمل والعمل الإضافي (المادتان 31 و33)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "etiquetas": {
+        "weekly": "الحد الأعلى للساعات في الأسبوع",
+        "daily-emergency": "الحد اليومي في الأحوال الاضطرارية",
+        "premium": "زيادة الساعة الإضافية بالمئة"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1946-09-23",
+          "valor": {
+            "weekly": 48,
+            "daily-emergency": 12,
+            "premium": 50
+          },
+          "fuente": {
+            "organismo": "الجامعة اللبنانية، مركز المعلوماتية القانونية",
+            "titulo": "قانون العمل الصادر في 23 أيلول 1946، المواد 31 و33 و36",
+            "url": "https://legallaw.ul.edu.lb/LawView.aspx?opt=view&LawID=190374",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.annual-leave",
+      "nombre": "الإجازة السنوية (المادتان 39 و41)",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "etiquetas": {
+        "days": "الأيام بأجر كامل",
+        "reduced": "الحد الأدنى عند تجاوز الإجازة المرضية شهرًا"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1946-09-23",
+          "valor": {
+            "days": 15,
+            "reduced": 8
+          },
+          "fuente": {
+            "organismo": "الجامعة اللبنانية، مركز المعلوماتية القانونية",
+            "titulo": "قانون العمل الصادر في 23 أيلول 1946، المادتان 39 و41",
+            "url": "https://legallaw.ul.edu.lb/LawView.aspx?opt=view&LawID=190374",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.sick-leave",
+      "nombre": "الإجازة المرضية بالأشهر (المادة 40)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1974-01-01",
+          "valor": {
+            "t3m2y": 0.5,
+            "t2y4y": 1,
+            "t4y6y": 1.5,
+            "t6y10y": 2,
+            "t10y": 2.5
+          },
+          "fuente": {
+            "organismo": "الجامعة اللبنانية، مركز المعلوماتية القانونية",
+            "titulo": "قانون العمل الصادر في 23 أيلول 1946، المادة 40 المعدلة بالمرسوم 7607/1974",
+            "url": "https://legallaw.ul.edu.lb/LawView.aspx?opt=view&LawID=190374",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "كل قيمة هي المدة بأجر كامل، وتليها مدة مساوية بنصف أجر. اليوم والشهر في 1974 غير مذكورين في النص المقروء، فالتاريخ هو بداية سنة التعديل."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.notice",
+      "nombre": "مهلة الإنذار بالأشهر (المادة 50 ج)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "up-to-3": "حتى 3 سنوات",
+        "up-to-6": "أكثر من 3 وأقل من 6 سنوات",
+        "up-to-12": "من 6 وأقل من 12 سنة",
+        "from-12": "12 سنة فأكثر"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": {
+            "up-to-3": 1,
+            "up-to-6": 2,
+            "up-to-12": 3,
+            "from-12": 4
+          },
+          "fuente": {
+            "organismo": "الجامعة اللبنانية، مركز المعلوماتية القانونية",
+            "titulo": "قانون العمل الصادر في 23 أيلول 1946، المادة 50 (ج) المعدلة بالمرسوم 9640/1975",
+            "url": "https://legallaw.ul.edu.lb/LawView.aspx?opt=view&LawID=190374",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "اليوم والشهر في 1975 غير مذكورين في النص المقروء، فالتاريخ هو بداية سنة التعديل."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.abusive-dismissal",
+      "nombre": "تعويض الفسخ التعسفي بأجر الأشهر (المادة 50 آ)",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "etiquetas": {
+        "employer-min": "حد أدنى، الفسخ من صاحب العمل",
+        "employer-max": "حد أقصى، الفسخ من صاحب العمل",
+        "worker-min": "حد أدنى، الفسخ من العامل",
+        "worker-max": "حد أقصى، الفسخ من العامل"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1975-01-01",
+          "valor": {
+            "employer-min": 2,
+            "employer-max": 12,
+            "worker-min": 1,
+            "worker-max": 4
+          },
+          "fuente": {
+            "organismo": "الجامعة اللبنانية، مركز المعلوماتية القانونية",
+            "titulo": "قانون العمل الصادر في 23 أيلول 1946، المادة 50 (آ) المعدلة بالمرسوم 9640/1975",
+            "url": "https://legallaw.ul.edu.lb/LawView.aspx?opt=view&LawID=190374",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "اليوم والشهر في 1975 غير مذكورين في النص المقروء، فالتاريخ هو بداية سنة التعديل."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.end-of-service",
+      "nombre": "تعويض نهاية الخدمة (المواد 50 إلى 52)",
+      "tipo": "mapa",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-08-31",
+          "valor": {
+            "months-per-year": 1,
+            "extra-after-20": 0.5,
+            "full-years": 20,
+            "death-min-months": 6,
+            "disability-months": 20,
+            "up-to-5": 50,
+            "up-to-10": 65,
+            "up-to-15": 75,
+            "under-20": 85
+          },
+          "fuente": {
+            "organismo": "الصندوق الوطني للضمان الاجتماعي",
+            "titulo": "قانون الضمان الاجتماعي مع تعديلاته لغاية 31/8/2026",
+            "url": "https://drive.google.com/file/d/1863bHiheT1K7POttwoqQ2v9vFV_xZQ2u/view?usp=sharing",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01",
+            "nota": "النص منشور على cnss.gov.lb (القوانين والأنظمة). المواد 49 إلى 52. الحاشية على الباب الرابع: يستمر العمل بفرع تعويض نهاية الخدمة إلى حين وضع نظام التقاعد موضع التنفيذ الفعلي (القانون 319 تاريخ 22/12/2023)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lb.nssf-rates",
+      "nombre": "نسب اشتراكات الضمان بالمئة",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "health-worker": "مرض وأمومة، الأجير",
+        "health-employer": "مرض وأمومة، صاحب العمل",
+        "family": "التقديمات العائلية، صاحب العمل",
+        "eos": "نهاية الخدمة، صاحب العمل"
+      },
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-11-01",
+          "valor": {
+            "health-worker": 3,
+            "health-employer": 11,
+            "family": 6,
+            "eos": 8.5
+          },
+          "motivo": "المادة 71 من قانون الضمان تحيل النسب إلى مرسوم في مجلس الوزراء، ولم نقرأ نص المرسوم النافذ على cnss.gov.lb ولا في الجريدة الرسمية. القيم هنا مؤشر فقط من مصادر ثانوية، وموقع الجامعة اللبنانية يعرضها في دراسة قديمة. الحاسبات التي تحتاجها تبقى مسودة."
+        }
+      ]
+    },
+    {
+      "id": "lb.usd-rate",
+      "nombre": "سعر صرف الدولار الرسمي",
+      "tipo": "numero",
+      "unidad": "LBP",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2026-11-01",
+          "valor": 89500,
+          "motivo": "موقع مصرف لبنان (bdl.gov.lb) يرد بالخطأ 403 على الطلبات، فلم نقرأ السعر الرسمي. الرقم 89,500 قرأناه في موازنة المواطن 2026 من معهد باسل فليحان المالي على أنه سعر تقديري للموازنة فقط، وليس سعرًا رسميًا منشورًا بتاريخ."
+        }
+      ]
+    }
+  ]
+}

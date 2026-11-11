@@ -1,0 +1,36 @@
+import type { TextosUi } from "../../tipos";
+import type { UiCalorias } from "../definicion";
+
+export const textosVi: TextosUi<UiCalorias> = {
+  slug: "tinh-calo",
+  ui: () => ({
+    sexo: "Giới tính",
+    mujer: "Nữ",
+    hombre: "Nam",
+    edad: "Tuổi (năm)",
+    peso: (u) => `Cân nặng (${u})`,
+    altura: (u) => `Chiều cao (${u})`,
+    pies: "Chiều cao: feet (ft)",
+    pulgadas: "Chiều cao: inch (in)",
+    actividad: "Mức độ vận động",
+    sedentaria: "Ít hoặc không vận động",
+    ligera: "Nhẹ (1 đến 3 ngày mỗi tuần)",
+    moderada: "Vừa (3 đến 5 ngày mỗi tuần)",
+    alta: "Nhiều (6 hoặc 7 ngày mỗi tuần)",
+    muyAlta: "Rất nhiều (tập nặng hoặc lao động chân tay)",
+    objetivo: "Mục tiêu",
+    mantener: "Giữ cân",
+    bajar: "Giảm cân từ từ",
+    subir: "Tăng cân từ từ",
+    basal: "Tỷ lệ trao đổi chất cơ bản (kcal mỗi ngày)",
+    basalAyuda: "Năng lượng cơ thể đốt khi nghỉ ngơi hoàn toàn.",
+    mantenimiento: "Lượng calo để giữ cân (kcal mỗi ngày)",
+    calObjetivo: "Lượng calo theo mục tiêu (kcal mỗi ngày)",
+    calObjetivoAyuda: "Thay đổi vừa phải: ít hơn 500 kcal mỗi ngày để giảm cân, nhiều hơn 300 kcal để tăng cân.",
+    errorEdad: "Công thức này áp dụng cho người từ 15 đến 100 tuổi.",
+    errorPeso: "Cân nặng phải lớn hơn 0.",
+    errorAltura: "Chiều cao phải lớn hơn 0.",
+    notaMinimo: (kcal) => `Khi giảm cân, kết quả không xuống dưới ${kcal} kcal mỗi ngày. Nếu ăn ít hơn mức đó, bạn nên có nhân viên y tế theo dõi.`,
+    aviso: "Đây là ước tính theo công thức Mifflin-St Jeor. Cơ thể mỗi người khác nhau, nên kết quả này không thay thế việc khám với bác sĩ hoặc chuyên gia dinh dưỡng.",
+  }),
+};

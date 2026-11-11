@@ -21,9 +21,11 @@ import { contenidoIs } from "./contenido/is";
 import { contenidoIt } from "./contenido/it";
 import { contenidoJa } from "./contenido/ja";
 import { contenidoKa } from "./contenido/ka";
+import { contenidoKm } from "./contenido/km";
 import { contenidoKo } from "./contenido/ko";
-import { contenidoMn } from "./contenido/mn";
+import { contenidoMk } from "./contenido/mk";
 import { contenidoLv } from "./contenido/lv";
+import { contenidoMn } from "./contenido/mn";
 import { contenidoNb } from "./contenido/nb";
 import { contenidoNl } from "./contenido/nl";
 import { contenidoPl } from "./contenido/pl";
@@ -31,14 +33,15 @@ import { contenidoPt } from "./contenido/pt";
 import { contenidoRo } from "./contenido/ro";
 import { contenidoRu } from "./contenido/ru";
 import { contenidoSk } from "./contenido/sk";
-import { contenidoSq } from "./contenido/sq";
 import { contenidoSl } from "./contenido/sl";
+import { contenidoSq } from "./contenido/sq";
 import { contenidoSr } from "./contenido/sr";
 import { contenidoSv } from "./contenido/sv";
 import { contenidoTh } from "./contenido/th";
 import { contenidoTr } from "./contenido/tr";
 import { contenidoUk } from "./contenido/uk";
 import { contenidoUz } from "./contenido/uz";
+import { contenidoVi } from "./contenido/vi";
 import { contenidoZh } from "./contenido/zh";
 import { definir, type UiConversorSueldo } from "./definicion";
 import { textosAr } from "./textos/ar";
@@ -62,9 +65,11 @@ import { textosIs } from "./textos/is";
 import { textosIt } from "./textos/it";
 import { textosJa } from "./textos/ja";
 import { textosKa } from "./textos/ka";
+import { textosKm } from "./textos/km";
 import { textosKo } from "./textos/ko";
-import { textosMn } from "./textos/mn";
+import { textosMk } from "./textos/mk";
 import { textosLv } from "./textos/lv";
+import { textosMn } from "./textos/mn";
 import { textosNb } from "./textos/nb";
 import { textosNl } from "./textos/nl";
 import { textosPl } from "./textos/pl";
@@ -72,21 +77,22 @@ import { textosPt } from "./textos/pt";
 import { textosRo } from "./textos/ro";
 import { textosRu } from "./textos/ru";
 import { textosSk } from "./textos/sk";
-import { textosSq } from "./textos/sq";
 import { textosSl } from "./textos/sl";
+import { textosSq } from "./textos/sq";
 import { textosSr } from "./textos/sr";
 import { textosSv } from "./textos/sv";
 import { textosTh } from "./textos/th";
 import { textosTr } from "./textos/tr";
 import { textosUk } from "./textos/uk";
 import { textosUz } from "./textos/uz";
+import { textosVi } from "./textos/vi";
 import { textosZh } from "./textos/zh";
 
 export default definirUniversal<UiConversorSueldo>({
   id: "conversor-sueldo",
   concepto: "conversor-sueldo",
   definir,
-  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, et: textosEt, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, is: textosIs, it: textosIt, ja: textosJa, ka: textosKa, ko: textosKo, mn: textosMn, lv: textosLv, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sl: textosSl, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, zh: textosZh },
-  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, et: contenidoEt, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, is: contenidoIs, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, ko: contenidoKo, mn: contenidoMn, lv: contenidoLv, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sl: contenidoSl, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, zh: contenidoZh },
+  textos: { ar: textosAr, bg: textosBg, bn: textosBn, cs: textosCs, da: textosDa, de: textosDe, el: textosEl, en: textosEn, es: textosEs, et: textosEt, fi: textosFi, fr: textosFr, he: textosHe, hr: textosHr, hu: textosHu, hy: textosHy, id: textosId, is: textosIs, it: textosIt, ja: textosJa, ka: textosKa, km: textosKm, ko: textosKo, mk: textosMk, mn: textosMn, lv: textosLv, nb: textosNb, nl: textosNl, pl: textosPl, pt: textosPt, ro: textosRo, ru: textosRu, sk: textosSk, sq: textosSq, sl: textosSl, sr: textosSr, sv: textosSv, th: textosTh, tr: textosTr, uk: textosUk, uz: textosUz, vi: textosVi, zh: textosZh },
+  contenido: { ar: contenidoAr, bg: contenidoBg, bn: contenidoBn, cs: contenidoCs, da: contenidoDa, de: contenidoDe, el: contenidoEl, en: contenidoEn, es: contenidoEs, et: contenidoEt, fi: contenidoFi, fr: contenidoFr, he: contenidoHe, hr: contenidoHr, hu: contenidoHu, hy: contenidoHy, id: contenidoId, is: contenidoIs, it: contenidoIt, ja: contenidoJa, ka: contenidoKa, km: contenidoKm, ko: contenidoKo, mk: contenidoMk, mn: contenidoMn, lv: contenidoLv, nb: contenidoNb, nl: contenidoNl, pl: contenidoPl, pt: contenidoPt, ro: contenidoRo, ru: contenidoRu, sk: contenidoSk, sq: contenidoSq, sl: contenidoSl, sr: contenidoSr, sv: contenidoSv, th: contenidoTh, tr: contenidoTr, uk: contenidoUk, uz: contenidoUz, vi: contenidoVi, zh: contenidoZh },
   casos,
 });

@@ -1,0 +1,85 @@
+{
+  "mercado": "vn",
+  "series": [
+    {
+      "id": "vn.usd",
+      "nombre": "Tỷ giá trung tâm Đồng Việt Nam với Đô la Mỹ",
+      "unidad": "VND",
+      "frecuencia": "diaria",
+      "maxAntiguedadDias": 14,
+      "fuente": {
+        "organismo": "Ngân hàng Nhà nước Việt Nam",
+        "titulo": "Tỷ giá trung tâm áp dụng cho ngày 31/10/2026",
+        "url": "https://sbv.gov.vn/t%E1%BB%B7-gi%C3%A1",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-10-31",
+          25637
+        ]
+      ]
+    },
+    {
+      "id": "vn.cpi-nam",
+      "nombre": "CPI so với cùng kỳ năm trước",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 70,
+      "fuente": {
+        "organismo": "Cục Thống kê (Bộ Tài chính)",
+        "titulo": "Thông cáo báo chí về tình hình giá tháng Chín, quý III và 9 tháng năm 2026",
+        "url": "https://www.nso.gov.vn/tin-tuc-thong-ke/2026/10/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-chin-quy-iii-va-9-thang-nam-2026/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-09-01",
+          5.08
+        ]
+      ]
+    },
+    {
+      "id": "vn.cpi-thang",
+      "nombre": "CPI so với tháng trước",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 70,
+      "fuente": {
+        "organismo": "Cục Thống kê (Bộ Tài chính)",
+        "titulo": "Thông cáo báo chí về tình hình giá tháng Chín, quý III và 9 tháng năm 2026",
+        "url": "https://www.nso.gov.vn/tin-tuc-thong-ke/2026/10/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-chin-quy-iii-va-9-thang-nam-2026/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-09-01",
+          0.62
+        ]
+      ]
+    },
+    {
+      "id": "vn.cpi-binh-quan",
+      "nombre": "CPI bình quân từ đầu năm so với cùng kỳ",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 70,
+      "fuente": {
+        "organismo": "Cục Thống kê (Bộ Tài chính)",
+        "titulo": "Thông cáo báo chí về tình hình giá tháng Chín, quý III và 9 tháng năm 2026",
+        "url": "https://www.nso.gov.vn/tin-tuc-thong-ke/2026/10/thong-cao-bao-chi-ve-tinh-hinh-gia-thang-chin-quy-iii-va-9-thang-nam-2026/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      },
+      "puntos": [
+        [
+          "2026-09-01",
+          4.52
+        ]
+      ]
+    }
+  ]
+}

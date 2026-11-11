@@ -1,0 +1,1018 @@
+{
+  "mercado": "kh",
+  "datos": [
+    {
+      "id": "kh.tos-brackets",
+      "nombre": "កម្រិតពន្ធលើប្រាក់បៀវត្សប្រចាំខែ",
+      "tipo": "escala",
+      "unidad": "KHR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-11",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 1500000,
+              "tasa": 0
+            },
+            {
+              "desde": 1500000,
+              "hasta": 2000000,
+              "tasa": 5
+            },
+            {
+              "desde": 2000000,
+              "hasta": 8500000,
+              "tasa": 10
+            },
+            {
+              "desde": 8500000,
+              "hasta": 12500000,
+              "tasa": 15
+            },
+            {
+              "desde": 12500000,
+              "hasta": null,
+              "tasa": 20
+            }
+          ],
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "អនុក្រឹត្យលេខ 48 អនក្រ.បក ស្តីពីកម្រិតប្រាក់បៀវត្សជាប់ពន្ធប្រចាំខែ និងកម្រិតប្រាក់ចំណូលជាប់ពន្ធប្រចាំឆ្នាំ (11/3/2024)",
+            "url": "https://www.tax.gov.kh/u6rhf7ogbi6/gdtstream/1f25fa42-ed6e-4757-a15f-94ec109aae35",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.dependent-allowance",
+      "nombre": "ការកាត់បន្ថយសម្រាប់កូន ឬសហព័ទ្ធមេផ្ទះម្នាក់ក្នុងមួយខែ",
+      "tipo": "numero",
+      "unidad": "KHR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-11",
+          "valor": 150000,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "អនុក្រឹត្យលេខ 48 អនក្រ.បក ស្តីពីកម្រិតប្រាក់បៀវត្សជាប់ពន្ធប្រចាំខែ និងកម្រិតប្រាក់ចំណូលជាប់ពន្ធប្រចាំឆ្នាំ (11/3/2024)",
+            "url": "https://www.tax.gov.kh/u6rhf7ogbi6/gdtstream/1f25fa42-ed6e-4757-a15f-94ec109aae35",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.nonresident-salary-rate",
+      "nombre": "អត្រាពន្ធលើប្រាក់បៀវត្សនិយោជិតអនិវាសនជន",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 20,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើប្រាក់បៀវត្ស",
+            "url": "https://www.tax.gov.kh/kh/article?key=PaLNfxjn4349583040",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.fringe-benefit-rate",
+      "nombre": "អត្រាពន្ធលើអត្ថប្រយោជន៍បន្ថែម",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 20,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើប្រាក់បៀវត្ស",
+            "url": "https://www.tax.gov.kh/kh/article?key=PaLNfxjn4349583040",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.ti-brackets",
+      "nombre": "កម្រិតពន្ធលើប្រាក់ចំណូលសហគ្រាសឯកបុគ្គលប្រចាំឆ្នាំ",
+      "tipo": "escala",
+      "unidad": "KHR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2024-03-11",
+          "valor": [
+            {
+              "desde": 0,
+              "hasta": 18000000,
+              "tasa": 0
+            },
+            {
+              "desde": 18000000,
+              "hasta": 24000000,
+              "tasa": 5
+            },
+            {
+              "desde": 24000000,
+              "hasta": 102000000,
+              "tasa": 10
+            },
+            {
+              "desde": 102000000,
+              "hasta": 150000000,
+              "tasa": 15
+            },
+            {
+              "desde": 150000000,
+              "hasta": null,
+              "tasa": 20
+            }
+          ],
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "អនុក្រឹត្យលេខ 48 អនក្រ.បក ស្តីពីកម្រិតប្រាក់បៀវត្សជាប់ពន្ធប្រចាំខែ និងកម្រិតប្រាក់ចំណូលជាប់ពន្ធប្រចាំឆ្នាំ (11/3/2024)",
+            "url": "https://www.tax.gov.kh/u6rhf7ogbi6/gdtstream/1f25fa42-ed6e-4757-a15f-94ec109aae35",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.ti-rates",
+      "nombre": "អត្រាពន្ធលើប្រាក់ចំណូលតាមប្រភេទសហគ្រាស",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "legal": "សហគ្រាសនីតិបុគ្គល",
+        "resource": "ធនធានធម្មជាតិ ប្រេងកាត និងឧស្ម័ន",
+        "insurance": "ការធានារ៉ាប់រងលើទ្រព្យសម្បត្តិ ឬហានិភ័យ"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": {
+            "legal": 20,
+            "resource": 30,
+            "insurance": 5
+          },
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើប្រាក់ចំណូល",
+            "url": "https://www.tax.gov.kh/kh/article?key=dVrD52Y70649951557",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.minimum-tax-rate",
+      "nombre": "អត្រាពន្ធអប្បបរមាលើផលរបរប្រចាំឆ្នាំ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើប្រាក់ចំណូល",
+            "url": "https://www.tax.gov.kh/kh/article?key=dVrD52Y70649951557",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.prepayment-rate",
+      "nombre": "អត្រាប្រាក់រំដោះពន្ធលើប្រាក់ចំណូលប្រចាំខែ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-01-01",
+          "valor": 1,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើប្រាក់ចំណូល",
+            "url": "https://www.tax.gov.kh/kh/article?key=dVrD52Y70649951557",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.vat-rate",
+      "nombre": "អត្រាអាករលើតម្លៃបន្ថែមទូទៅ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 10,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "អាករលើតម្លៃបន្ថែម",
+            "url": "https://www.tax.gov.kh/kh/article?key=7w9R@j6n45500U5L32",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.vat-export-rate",
+      "nombre": "អត្រាអាករលើតម្លៃបន្ថែមលើការនាំចេញ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 0,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "អាករលើតម្លៃបន្ថែម",
+            "url": "https://www.tax.gov.kh/kh/article?key=7w9R@j6n45500U5L32",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.wht-rates",
+      "nombre": "អត្រាពន្ធកាត់ទុក",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "service": "សេវា កម្រៃ និងសិទ្ធិអាជីវកម្ម (និវាសនជន)",
+        "rent": "ការជួលចលនទ្រព្យ ឬអចលនទ្រព្យ (និវាសនជន)",
+        "fixed-deposit": "ការប្រាក់គណនីមានកាលកំណត់ (និវាសនជន)",
+        "savings": "ការប្រាក់គណនីគ្មានកាលកំណត់ (និវាសនជន)",
+        "nonresident": "ការទូទាត់ឱ្យអនិវាសនជន"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-05-16",
+          "valor": {
+            "service": 15,
+            "rent": 10,
+            "fixed-deposit": 6,
+            "savings": 4,
+            "nonresident": 14
+          },
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "សំណួរដែលសួរញឹកញាប់ (មាត្រា 25 និង 26 នៃច្បាប់ស្តីពីសារពើពន្ធ)",
+            "url": "https://www.tax.gov.kh/en/faq",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.specific-rates",
+      "nombre": "អត្រាអាករពិសេស",
+      "tipo": "mapa",
+      "unidad": "%",
+      "etiquetas": {
+        "soft-drink": "ភេសជ្ជៈគ្មានជាតិអាល់កុល",
+        "wine": "ស្រា",
+        "beer": "ស្រាបៀរ",
+        "cigar": "ស៊ីហ្គា",
+        "cigarette": "បារី",
+        "air-ticket": "សំបុត្រយន្តហោះ",
+        "entertainment": "សេវាកម្សាន្ត",
+        "telecom": "សេវាទូរគមនាគមន៍"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2023-05-16",
+          "valor": {
+            "soft-drink": 10,
+            "wine": 35,
+            "beer": 30,
+            "cigar": 25,
+            "cigarette": 20,
+            "air-ticket": 10,
+            "entertainment": 10,
+            "telecom": 3
+          },
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "សំណួរដែលសួរញឹកញាប់ (មាត្រា 25 និង 26 នៃច្បាប់ស្តីពីសារពើពន្ធ)",
+            "url": "https://www.tax.gov.kh/en/faq",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.property-rate",
+      "nombre": "អត្រាពន្ធលើអចលនទ្រព្យ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-09-13",
+          "valor": 0.1,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើអចលនទ្រព្យ",
+            "url": "https://www.tax.gov.kh/kh/article?key=Rk1yM6013i68510741",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.property-base-share",
+      "nombre": "ចំណែកតម្លៃអចលនទ្រព្យដែលយកមកគិតពន្ធ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-09-13",
+          "valor": 80,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើអចលនទ្រព្យ",
+            "url": "https://www.tax.gov.kh/kh/article?key=Rk1yM6013i68510741",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.property-allowance",
+      "nombre": "ចំនួនកាត់ចេញពីមូលដ្ឋានពន្ធលើអចលនទ្រព្យ",
+      "tipo": "numero",
+      "unidad": "KHR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-09-13",
+          "valor": 100000000,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើអចលនទ្រព្យ",
+            "url": "https://www.tax.gov.kh/kh/article?key=Rk1yM6013i68510741",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.transfer-rate",
+      "nombre": "អត្រាពន្ធប្រថាប់ត្រាលើការផ្ទេរអចលនទ្រព្យ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 4,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធប្រថាប់ត្រា (ពន្ធលើការផ្ទេរកម្មសិទ្ធិ)",
+            "url": "https://www.tax.gov.kh/kh/article?key=V@gid2894250474499",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.transfer-allowance-gift",
+      "nombre": "ចំនួនកាត់ចេញសម្រាប់ការប្រគល់ជូនក្នុងរង្វង់គ្រួសារ",
+      "tipo": "numero",
+      "unidad": "KHR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 100000000,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធប្រថាប់ត្រា (ពន្ធលើការផ្ទេរកម្មសិទ្ធិ)",
+            "url": "https://www.tax.gov.kh/kh/article?key=V@gid2894250474499",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.transfer-allowance-inherit",
+      "nombre": "ចំនួនកាត់ចេញសម្រាប់មរតករវាងបងប្អូន ឬសាច់ថ្លៃ",
+      "tipo": "numero",
+      "unidad": "KHR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 200000000,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធប្រថាប់ត្រា (ពន្ធលើការផ្ទេរកម្មសិទ្ធិ)",
+            "url": "https://www.tax.gov.kh/kh/article?key=V@gid2894250474499",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.rental-rate",
+      "nombre": "អត្រាពន្ធលើការជួលអចលនទ្រព្យ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 10,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើការជួលអចលនទ្រព្យ",
+            "url": "https://www.tax.gov.kh/kh/article?key=cj5ja4223j502i0479",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.rental-exempt",
+      "nombre": "ថ្លៃឈ្នួលប្រចាំខែដែលរួចពីពន្ធ (ក្រោមចំនួននេះ)",
+      "tipo": "numero",
+      "unidad": "KHR",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 500000,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើការជួលអចលនទ្រព្យ",
+            "url": "https://www.tax.gov.kh/kh/article?key=cj5ja4223j502i0479",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.unused-land-rate",
+      "nombre": "អត្រាពន្ធលើដីធ្លីមិនបានប្រើប្រាស់",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 2,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើដីធ្លីមិនបានប្រើប្រាស់",
+            "url": "https://www.tax.gov.kh/kh/article?key=@XN6c3i1925056x7W7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.unused-land-exempt-m2",
+      "nombre": "ផ្ទៃដីដែលកាត់ចេញ (ម៉ែត្រការ៉េ)",
+      "tipo": "numero",
+      "unidad": "numero",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 50000,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធលើដីធ្លីមិនបានប្រើប្រាស់",
+            "url": "https://www.tax.gov.kh/kh/article?key=@XN6c3i1925056x7W7",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.patent-tax",
+      "nombre": "ពន្ធប៉ាតង់ប្រចាំឆ្នាំ",
+      "tipo": "mapa",
+      "unidad": "KHR",
+      "etiquetas": {
+        "small": "អ្នកជាប់ពន្ធតូច",
+        "medium": "អ្នកជាប់ពន្ធមធ្យម",
+        "large": "អ្នកជាប់ពន្ធធំ",
+        "large-10b": "អ្នកជាប់ពន្ធធំ ផលរបរលើស 10,000 លានរៀល"
+      },
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": {
+            "small": 400000,
+            "medium": 1200000,
+            "large": 3000000,
+            "large-10b": 5000000
+          },
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "ពន្ធប៉ាតង់",
+            "url": "https://www.tax.gov.kh/kh/article?key=xGkI6376525034Ux97",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.accommodation-rate",
+      "nombre": "អត្រាអាករលើការស្នាក់នៅ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2020-03-31",
+          "valor": 2,
+          "fuente": {
+            "organismo": "អគ្គនាយកដ្ឋានពន្ធដារ",
+            "titulo": "អាករលើការស្នាក់នៅ",
+            "url": "https://www.tax.gov.kh/kh/article?key=XI5lj452L2507L919i",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.min-wage",
+      "nombre": "ប្រាក់ឈ្នួលអប្បបរមាវិស័យកាត់ដេរ ស្បែកជើង និងផលិតផលធ្វើដំណើរ",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 210,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ប្រកាសលេខ 214/25 ស្តីពីប្រាក់ឈ្នួលអប្បបរមាសម្រាប់ឆ្នាំ2026",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/43-%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/3340.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        },
+        {
+          "estado": "no-verificado",
+          "desde": "2027-01-01",
+          "valor": 212,
+          "motivo": "Solo en prensa (Phnom Penh Post, 1/10/2026, orden del primer ministro). MLVT no publica el prakas de 2027 en la lista leída el 1/11/2026; minimumwage.gov.kh da 403."
+        }
+      ]
+    },
+    {
+      "id": "kh.min-wage-probation",
+      "nombre": "ប្រាក់ឈ្នួលអប្បបរមានិយោជិតសាកល្បង",
+      "tipo": "numero",
+      "unidad": "USD",
+      "proximaRevision": "2027-01-01",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-01-01",
+          "hasta": "2026-12-31",
+          "valor": 208,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ប្រកាសលេខ 214/25 ស្តីពីប្រាក់ឈ្នួលអប្បបរមាសម្រាប់ឆ្នាំ2026",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/43-%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/3340.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.overtime-day-rate",
+      "nombre": "ប្រាក់ម៉ោងបន្ថែមពេលថ្ងៃ ធៀបនឹងម៉ោងធម្មតា",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-08",
+          "valor": 150,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ប្រកាសលេខ 112/25 ស្តីពីការធ្វើការបន្ថែមម៉ោង ថ្ងៃឈប់បុណ្យ និងការឈប់សម្រាកប្រចាំសប្តាហ៍",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/43-%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/3243.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.overtime-night-rate",
+      "nombre": "ប្រាក់ម៉ោងបន្ថែមពេលយប់ ធៀបនឹងម៉ោងធម្មតា",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-08",
+          "valor": 200,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ប្រកាសលេខ 112/25 ស្តីពីការធ្វើការបន្ថែមម៉ោង ថ្ងៃឈប់បុណ្យ និងការឈប់សម្រាកប្រចាំសប្តាហ៍",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/43-%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/3243.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.weekly-rest-rate",
+      "nombre": "ប្រាក់ឈ្នួលថ្ងៃឈប់សម្រាកប្រចាំសប្តាហ៍ ធៀបនឹងថ្ងៃធម្មតា",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-08",
+          "valor": 200,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ប្រកាសលេខ 112/25 ស្តីពីការធ្វើការបន្ថែមម៉ោង ថ្ងៃឈប់បុណ្យ និងការឈប់សម្រាកប្រចាំសប្តាហ៍",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/43-%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/3243.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.holiday-allowance-days",
+      "nombre": "ប្រាក់បំណាច់ការធ្វើការថ្ងៃឈប់បុណ្យ (គិតជាថ្ងៃឈ្នួល)",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2025-05-08",
+          "valor": 1,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ប្រកាសលេខ 112/25 ស្តីពីការធ្វើការបន្ថែមម៉ោង ថ្ងៃឈប់បុណ្យ និងការឈប់សម្រាកប្រចាំសប្តាហ៍",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/43-%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/3243.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.work-hours-week",
+      "nombre": "ម៉ោងធ្វើការអតិបរមាក្នុងមួយសប្តាហ៍",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-03-13",
+          "valor": 48,
+          "fuente": {
+            "organismo": "ក្រុមប្រឹក្សាអភិវឌ្ឍន៍កម្ពុជា",
+            "titulo": "The Labor Law of Cambodia (13/3/1997)",
+            "url": "https://cdc.gov.kh/wp-content/uploads/2022/05/THE-LABOR-LAW-OF-CAMBODIA_970313-.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.work-hours-day",
+      "nombre": "ម៉ោងធ្វើការអតិបរមាក្នុងមួយថ្ងៃ",
+      "tipo": "numero",
+      "unidad": "horas",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-03-13",
+          "valor": 8,
+          "fuente": {
+            "organismo": "ក្រុមប្រឹក្សាអភិវឌ្ឍន៍កម្ពុជា",
+            "titulo": "The Labor Law of Cambodia (13/3/1997)",
+            "url": "https://cdc.gov.kh/wp-content/uploads/2022/05/THE-LABOR-LAW-OF-CAMBODIA_970313-.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.leave-days-month",
+      "nombre": "ថ្ងៃឈប់សម្រាកប្រចាំឆ្នាំក្នុងមួយខែ",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-03-13",
+          "valor": 1.5,
+          "fuente": {
+            "organismo": "ក្រុមប្រឹក្សាអភិវឌ្ឍន៍កម្ពុជា",
+            "titulo": "The Labor Law of Cambodia (13/3/1997)",
+            "url": "https://cdc.gov.kh/wp-content/uploads/2022/05/THE-LABOR-LAW-OF-CAMBODIA_970313-.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.leave-seniority-years",
+      "nombre": "ឆ្នាំអតីតភាពសម្រាប់ថែមថ្ងៃឈប់មួយថ្ងៃ",
+      "tipo": "numero",
+      "unidad": "anios",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-03-13",
+          "valor": 3,
+          "fuente": {
+            "organismo": "ក្រុមប្រឹក្សាអភិវឌ្ឍន៍កម្ពុជា",
+            "titulo": "The Labor Law of Cambodia (13/3/1997)",
+            "url": "https://cdc.gov.kh/wp-content/uploads/2022/05/THE-LABOR-LAW-OF-CAMBODIA_970313-.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.notice-days",
+      "nombre": "រយៈពេលជូនដំណឹងជាមុនគិតជាថ្ងៃ",
+      "tipo": "mapa",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-03-13",
+          "valor": {
+            "under-6m": 7,
+            "6m-2y": 15,
+            "fixed-6m": 10,
+            "fixed-1y": 15
+          },
+          "fuente": {
+            "organismo": "ក្រុមប្រឹក្សាអភិវឌ្ឍន៍កម្ពុជា",
+            "titulo": "The Labor Law of Cambodia (13/3/1997)",
+            "url": "https://cdc.gov.kh/wp-content/uploads/2022/05/THE-LABOR-LAW-OF-CAMBODIA_970313-.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.notice-months",
+      "nombre": "រយៈពេលជូនដំណឹងជាមុនគិតជាខែ",
+      "tipo": "mapa",
+      "unidad": "meses",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "1997-03-13",
+          "valor": {
+            "2y-5y": 1,
+            "5y-10y": 2,
+            "over-10y": 3
+          },
+          "fuente": {
+            "organismo": "ក្រុមប្រឹក្សាអភិវឌ្ឍន៍កម្ពុជា",
+            "titulo": "The Labor Law of Cambodia (13/3/1997)",
+            "url": "https://cdc.gov.kh/wp-content/uploads/2022/05/THE-LABOR-LAW-OF-CAMBODIA_970313-.pdf",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.seniority-days-year",
+      "nombre": "ប្រាក់បំណាច់អតីតភាពការងារក្នុងមួយឆ្នាំ",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 15,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ប្រកាសលេខ 443 ស្តីពីការទូទាត់ប្រាក់បំណាច់អតីតភាពការងារ (21/9/2018)",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/43-%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/998.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.seniority-days-half",
+      "nombre": "ប្រាក់បំណាច់អតីតភាពការងារក្នុងមួយឆមាស",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2019-01-01",
+          "valor": 7.5,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ប្រកាសលេខ 443 ស្តីពីការទូទាត់ប្រាក់បំណាច់អតីតភាពការងារ (21/9/2018)",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/43-%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/998.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.short-service-days",
+      "nombre": "ប្រាក់បំណាច់បញ្ឈប់សេវា 1 ខែដល់ក្រោម 6 ខែ",
+      "tipo": "numero",
+      "unidad": "dias",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-06-26",
+          "valor": 7,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ច្បាប់ស្តីពីវិសោធនកម្មមាត្រា 87 មាត្រា 89 មាត្រា 90 មាត្រា 91 នៃច្បាប់ការងារ (2018)",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%96%E1%9F%92%E1%9E%9A%E1%9F%87%E1%9E%9A%E1%9E%B6%E1%9E%87%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%98/86-2025-03-24-06-32-19-2/2765.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.fixed-term-rate",
+      "nombre": "ប្រាក់បំណាច់បញ្ចប់កិច្ចសញ្ញាមានថិរវេលាកំណត់ យ៉ាងតិច",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2018-09-21",
+          "valor": 5,
+          "fuente": {
+            "organismo": "ក្រសួងការងារ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ",
+            "titulo": "ប្រកាសលេខ 443 ស្តីពីការទូទាត់ប្រាក់បំណាច់អតីតភាពការងារ (21/9/2018)",
+            "url": "https://www.mlvt.gov.kh/index.php/%E1%9E%AF%E1%9E%80%E1%9E%9F%E1%9E%B6%E1%9E%9A%E1%9E%95%E1%9F%92%E1%9E%9B%E1%9E%BC%E1%9E%9C%E1%9E%80%E1%9E%B6%E1%9E%9A/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/43-%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%80%E1%9E%B6%E1%9E%9F/998.html",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.cpi-yoy",
+      "nombre": "អតិផរណារយៈពេល 12 ខែ",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "verificado",
+          "desde": "2026-09-01",
+          "valor": 5.3,
+          "fuente": {
+            "organismo": "វិទ្យាស្ថានជាតិស្ថិតិ",
+            "titulo": "CPI September 2026, Table 2",
+            "url": "https://nis.gov.kh/wp-content/uploads/2026/10/CPI-12-group-Sep-2026.xls",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kh.nssf-pension-employee",
+      "nombre": "ភាគទានសោធននិវត្តន៍ ផ្នែកនិយោជិត",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-10-01",
+          "valor": 2,
+          "motivo": "nssf.gov.kh rechaza el pedido (Rejected Request) y el compendio de MLVT (244 MB) respondió 500. El valor es una pista de guías privadas de nómina, no leída en la norma: no se eludió el bloqueo."
+        }
+      ]
+    },
+    {
+      "id": "kh.nssf-pension-employer",
+      "nombre": "ភាគទានសោធននិវត្តន៍ ផ្នែកនិយោជក",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-10-01",
+          "valor": 2,
+          "motivo": "nssf.gov.kh rechaza el pedido (Rejected Request) y el compendio de MLVT (244 MB) respondió 500. El valor es una pista de guías privadas de nómina, no leída en la norma: no se eludió el bloqueo."
+        }
+      ]
+    },
+    {
+      "id": "kh.nssf-health-employer",
+      "nombre": "ភាគទានថែទាំសុខភាព ផ្នែកនិយោជក",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-10-01",
+          "valor": 2.6,
+          "motivo": "nssf.gov.kh rechaza el pedido (Rejected Request) y el compendio de MLVT (244 MB) respondió 500. El valor es una pista de guías privadas de nómina, no leída en la norma: no se eludió el bloqueo."
+        }
+      ]
+    },
+    {
+      "id": "kh.nssf-risk-employer",
+      "nombre": "ភាគទានហានិភ័យការងារ ផ្នែកនិយោជក",
+      "tipo": "numero",
+      "unidad": "%",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-10-01",
+          "valor": 0.8,
+          "motivo": "nssf.gov.kh rechaza el pedido (Rejected Request) y el compendio de MLVT (244 MB) respondió 500. El valor es una pista de guías privadas de nómina, no leída en la norma: no se eludió el bloqueo."
+        }
+      ]
+    },
+    {
+      "id": "kh.nssf-wage-ceiling",
+      "nombre": "ប្រាក់ឈ្នួលគោលអតិបរមាសម្រាប់ភាគទាន បសស",
+      "tipo": "numero",
+      "unidad": "KHR",
+      "tramos": [
+        {
+          "estado": "no-verificado",
+          "desde": "2022-10-01",
+          "valor": 1200000,
+          "motivo": "nssf.gov.kh rechaza el pedido (Rejected Request) y el compendio de MLVT (244 MB) respondió 500. El valor es una pista de guías privadas de nómina, no leída en la norma: no se eludió el bloqueo."
+        }
+      ]
+    }
+  ]
+}

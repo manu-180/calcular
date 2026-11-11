@@ -9,6 +9,7 @@ import { conteoMn, formaUk, pluralBg, pluralUk } from "./plural";
 import { pluralSr } from "./plural";
 import { pluralHr } from "./plural";
 import { pluralSq } from "./plural";
+import { pluralMk } from "./plural";
 import { formaRu, pluralRu } from "./plural";
 import { formaCs, pluralCs, pluralLv } from "./plural";
 import { formaSk, pluralSk } from "./plural";
@@ -4938,7 +4939,359 @@ const lv: Diccionario<TextosRankings> = {
   },
 };
 
-export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+// ───────────────────────────── mk ─────────────────────────────
+
+// Macedonio (ADR 0002, D36): impersonal, como el resto de los rankings. La posición va sin ordinal
+// («Северна Македонија: место 27 од 41») y los países con pluralMk («во 1 држава», «во 40 држави»).
+const enPaisesMkR = (n: number) => `во ${pluralMk(n, "држава", "држави")}`;
+
+const mk: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Рангирања на државите",
+    seo: {
+      titulo: ["Рангирања на државите по плата и даноци", "Рангирања на државите"],
+      descripcion: (n) => `Каде истата плата вреди најмногу, Денот на даночна слобода и колку останува од покачувањето ${enPaisesMkR(n)}. Официјални податоци, ажурирани секој ден.`,
+    },
+    ceja: "Отворени податоци",
+    h1: "Платите и даноците, држава по држава",
+    bajada: (n) => `${pluralMk(n, "држава", "држави")} со иста куповна моќ, секоја со свој официјален калкулатор. Рангирањата сами се ажурираат секој ден.`,
+    actualizado: (f) => `Ажурирано на ${f}`,
+    ver: "Видете го рангирањето",
+    niveles: { titulo: "Основна плата", nombres: { bajo: "Ниска плата", medio: "Средна плата", alto: "Висока плата" }, anual: (m) => `${m} годишно` },
+    tramos: { titulo: "Големина на покачувањето", nombre: (a, b) => `Од ${a} на ${b}` },
+    referencia: {
+      nivel: (m) => `бруто плата од ${m} меѓународни долари годишно`,
+      tramo: (a, b) => `покачување од ${a} на ${b} меѓународни долари бруто годишно`,
+    },
+    posicion: (pais, p, total) => `${pais}: место ${p} од ${total}`,
+    de: (t) => `од ${t}`,
+    empate: (o) => (Number(o) === 1 ? "изедначено со уште една држава" : `изедначено со уште ${pluralMk(o, "држава", "држави")}`),
+    fuera: (pais) => `${pais} сè уште не е во овие рангирања: за споредбата е потребен калкулатор за нето плата, кој сè уште не е готов.`,
+    lider: "Прво место на рангирањето",
+    global: (n) => `${pluralMk(n, "држава", "држави")}, од првата до последната`,
+    valores: {
+      porMes: (m) => `${m} месечно`,
+      ningunDia: "Ниту еден ден",
+      deCada: (n) => `${n} од 100`,
+      carga: (pct) => `${pct} за персонален данок и придонеси`,
+      cargaAumento: (pct) => `${pct} од покачувањето оди на даноци и придонеси`,
+    },
+    cambio: {
+      titulo: (mes) => `Промена во однос на месецот: ${mes}`,
+      sube: (n) => `Нагоре за ${pluralMk(n, "позиција", "позиции")}`,
+      baja: (n) => `Надолу за ${pluralMk(n, "позиција", "позиции")}`,
+      igual: "Без промена",
+      nuevo: "Нова на рангирањето",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "Место",
+      pais: "Држава",
+      edicion: "Оваа верзија",
+      unidad: "Во меѓународни долари",
+    },
+    kit: {
+      titulo: "За медиумите",
+      bajada: "Реченица, графикон и врска до ова рангирање, подготвени за објавување.",
+      compartir: "Споделување",
+      descargar: "Преземање на графиконот",
+      copiar: "Копирање на цитатот",
+      copiado: "Цитатот е копиран",
+      enlace: "Врската е копирана",
+      compartido: "Испратено",
+      error: "Копирањето не успеа. Текстот погоре може да се копира рачно.",
+      cita: (frase, ranking, ref, fecha) => `${frase} на рангирањето „${ranking}“ (${ref}). Извор: CalcularYa, податоци заклучно со ${fecha}`,
+      texto: (frase, ranking) => `${frase} на рангирањето „${ranking}“.`,
+      alt: (ranking) => `Графикон на рангирањето „${ranking}“`,
+    },
+    metodo: {
+      titulo: "Како е составено рангирањето",
+      bajada: "Секоја држава поминува низ својот официјален калкулатор за нето плата со денешните правила. Потоа државите се споредуваат со иста куповна моќ.",
+      niveles: (b, m, a) => `Основни плати: ${b}, ${m} и ${a} меѓународни долари бруто годишно.`,
+      empates: "Две држави со иста вредност во табелата го делат местото, а следната го прескокнува (1, 2, 2, 4).",
+      historial: "Промената на местото се мери во однос на снимката на рангирањето што се зачувува секој месец. Без снимка од претходниот месец, промена не се прикажува.",
+      actualizacion: "Табелата се пресметува повторно секој ден со важечките податоци на секоја држава. Нова држава се појавува штом ќе проработи нејзиниот калкулатор.",
+      ver: "Целосната методологија",
+    },
+    datos: {
+      titulo: "Отворени податоци",
+      bajada: "Бројките врз кои се темелат овие рангирања, држава по држава, во формат JSON и CSV. Се ажурираат секој ден.",
+      json: "Податоци во JSON",
+      csv: "Податоци во CSV",
+      licencia: "Лиценца CC BY 4.0: податоците може слободно да се користат, репродуцираат и објавуваат со наведување на CalcularYa и врска до оваа страница.",
+      atribucion: "Препорачано цитирање",
+    },
+    mundo: { titulo: "Со конкретна плата", texto: (n) => `За пресметка со сопствената плата и датумот за секоја држава постои страницата „${n}“.`, ir: "Пресметајте" },
+    otros: "Други рангирања",
+    rankings: {
+      rinde: {
+        titulo: "Каде истата плата вреди најмногу",
+        corto: "Најисплатлива плата",
+        seo: ["Каде истата плата вреди најмногу: рангирање на државите", "Каде платата вреди најмногу"],
+        descripcion: (n) => `Иста плата со иста куповна моќ ${enPaisesMkR(n)}: колку останува по даночните правила на секоја. Се ажурира секој ден.`,
+        bajada: "Иста бруто плата со иста куповна моќ поминува низ правилата на секоја држава. Најгоре се оние во кои останува најмногу нето.",
+        metrica: "Нето месечно",
+        carga: "Даноци и придонеси",
+        como: "Нето платата месечно е просекот за 12 месеци, во меѓународни долари.",
+      },
+      libertad: {
+        titulo: "Ден на даночна слобода по држави",
+        corto: "Ден на даночна слобода",
+        seo: ["Ден на даночна слобода по држави: рангирање", "Ден на даночна слобода по држави"],
+        descripcion: (n) => `Денот од годината кога персоналниот данок и придонесите се платени, со иста плата ${enPaisesMkR(n)}. Се ажурира секој ден.`,
+        bajada: "Денот од годината кога персоналниот данок и придонесите се платени, со иста плата во секоја држава. Најгоре се оние во кои доаѓа најрано.",
+        metrica: "Работа за државата до",
+        carga: "Даноци и придонеси",
+        como: "Датумот ги распределува даноците во годината почнувајќи од 1 јануари: при даночен товар од 30 % се работи за државата 30 % од годината.",
+      },
+      aumento: {
+        titulo: "Колку останува од покачувањето на платата",
+        corto: "Што останува од покачувањето",
+        seo: ["Колку останува од покачувањето на платата: рангирање", "Колку останува од покачувањето"],
+        descripcion: (n) => `Колку од секои 100 додадени на бруто платата остануваат по персоналниот данок и придонесите ${enPaisesMkR(n)}. Се ажурира секој ден.`,
+        bajada: "Колку од секои 100 додадени на бруто платата стигнуваат до џебот по персоналниот данок и придонесите. Најгоре се оние во кои останува најмногу.",
+        metrica: "Остануваат од 100",
+        carga: "Гранична стапка",
+        como: "Тоа е граничната стапка меѓу две плати: делот од покачувањето што оди на даноци и придонеси.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── vi ─────────────────────────────
+
+// Vietnamita (ADR 0002, D37): impersonal, como el resto de los rankings. La posición va en aposición
+// («Việt Nam, xếp thứ 27 trên 41») y tras un número no hay plural («3 quốc gia»).
+const vi: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "Bảng xếp hạng quốc gia",
+    seo: {
+      titulo: ["Bảng xếp hạng lương và thuế theo quốc gia", "Bảng xếp hạng quốc gia"],
+      descripcion: (n) => `Nơi cùng mức lương có giá trị nhất, Ngày Tự do Thuế và phần còn lại khi tăng lương ở ${n} quốc gia. Dữ liệu chính thức, cập nhật hằng ngày.`,
+    },
+    ceja: "Dữ liệu mở",
+    h1: "Lương và thuế, từng quốc gia",
+    bajada: (n) => `${n} quốc gia được so sánh với cùng sức mua, mỗi quốc gia qua công cụ tính chính thức của mình. Bảng xếp hạng tự cập nhật hằng ngày.`,
+    actualizado: (f) => `Cập nhật vào ${f}`,
+    ver: "Xem bảng xếp hạng",
+    niveles: { titulo: "Mức lương tham chiếu", nombres: { bajo: "Lương thấp", medio: "Lương trung bình", alto: "Lương cao" }, anual: (m) => `${m} mỗi năm` },
+    tramos: { titulo: "Mức tăng lương", nombre: (a, b) => `Từ ${a} lên ${b}` },
+    referencia: {
+      nivel: (m) => `lương gross ${m} đô la quốc tế mỗi năm`,
+      tramo: (a, b) => `tăng lương gross từ ${a} lên ${b} đô la quốc tế mỗi năm`,
+    },
+    posicion: (pais, p, total) => `${pais}, xếp thứ ${p} trên ${total}`,
+    de: (t) => `trên ${t}`,
+    empate: (o) => (o === 1 ? "đồng hạng với một quốc gia khác" : `đồng hạng với ${o} quốc gia khác`),
+    fuera: (pais) => `${pais} chưa có trong bảng xếp hạng này: vẫn cần công cụ tính lương net phù hợp với phép so sánh.`,
+    lider: "Đứng đầu bảng xếp hạng",
+    global: (n) => `${n} quốc gia, từ vị trí đầu đến vị trí cuối`,
+    valores: {
+      porMes: (m) => `${m} mỗi tháng`,
+      ningunDia: "Không ngày nào",
+      deCada: (n) => `${n} trên mỗi 100`,
+      carga: (pct) => `${pct} cho thuế TNCN và các khoản đóng`,
+      cargaAumento: (pct) => `${pct} phần tăng lương cho thuế và các khoản đóng`,
+    },
+    cambio: {
+      titulo: (mes) => `Thay đổi so với ${mes}`,
+      sube: (n) => `Tăng ${n} bậc`,
+      baja: (n) => `Giảm ${n} bậc`,
+      igual: "Giữ nguyên hạng",
+      nuevo: "Mới vào bảng xếp hạng",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo}, với ${ref}`,
+      puesto: "Hạng",
+      pais: "Quốc gia",
+      edicion: "Kỳ này",
+      unidad: "Tính bằng đô la quốc tế",
+    },
+    kit: {
+      titulo: "Dành cho báo chí",
+      bajada: "Câu trích dẫn, biểu đồ và liên kết của bảng xếp hạng này, sẵn sàng để đăng.",
+      compartir: "Chia sẻ",
+      descargar: "Tải xuống biểu đồ",
+      copiar: "Sao chép trích dẫn",
+      copiado: "Đã sao chép trích dẫn",
+      enlace: "Đã sao chép liên kết",
+      compartido: "Đã chia sẻ",
+      error: "Không sao chép được. Nội dung ở phía trên, bạn có thể sao chép thủ công.",
+      cita: (frase, ranking, ref, fecha) => `${frase} trong “${ranking}” (${ref}). Nguồn: CalcularYa, dữ liệu tính đến ${fecha}.`,
+      texto: (frase, ranking) => `${frase} trong “${ranking}”.`,
+      alt: (ranking) => `Biểu đồ bảng xếp hạng “${ranking}”`,
+    },
+    metodo: {
+      titulo: "Cách xây dựng",
+      bajada: "Mỗi quốc gia được tính bằng công cụ tính lương net chính thức của mình, theo quy định hiện hành. Sau đó tất cả được so sánh với cùng sức mua.",
+      niveles: (b, m, a) => `Mức lương tham chiếu: ${b}, ${m} và ${a} đô la quốc tế gross mỗi năm.`,
+      empates: "Hai quốc gia có cùng giá trị trong bảng sẽ đồng hạng, và hạng kế tiếp bị bỏ qua (1, 2, 2, 4).",
+      historial: "Thay đổi thứ hạng được đo so với bản lưu bảng xếp hạng hằng tháng. Nếu không có bản lưu của tháng trước, thay đổi sẽ không hiển thị.",
+      actualizacion: "Bảng được tính lại hằng ngày với dữ liệu mới nhất của từng quốc gia. Quốc gia mới được thêm ngay khi công cụ tính của quốc gia đó ra mắt.",
+      ver: "Xem toàn bộ phương pháp",
+    },
+    datos: {
+      titulo: "Dữ liệu mở",
+      bajada: "Số liệu đằng sau bảng xếp hạng này, theo từng quốc gia, ở định dạng JSON và CSV. Cập nhật hằng ngày.",
+      json: "Dữ liệu JSON",
+      csv: "Dữ liệu CSV",
+      licencia: "Giấy phép CC BY 4.0: được tự do sử dụng, sao chép và đăng lại, với điều kiện ghi nguồn CalcularYa và dẫn liên kết đến trang này.",
+      atribucion: "Trích dẫn đề xuất",
+    },
+    mundo: { titulo: "Với một mức lương cụ thể", texto: (n) => `Để tính với lương của mình và xem ngày của từng quốc gia, hãy dùng trang “${n}”.`, ir: "Tính" },
+    otros: "Các bảng xếp hạng khác",
+    rankings: {
+      rinde: {
+        titulo: "Nơi cùng mức lương có giá trị nhất",
+        corto: "Lương có giá trị nhất",
+        seo: ["Lương có giá trị nhất ở đâu: xếp hạng quốc gia", "Nơi cùng mức lương có giá trị nhất"],
+        descripcion: (n) => `Cùng mức lương, với cùng sức mua, ở ${n} quốc gia: phần còn lại sau khi áp dụng quy định thuế của từng nước. Cập nhật hằng ngày.`,
+        bajada: "Cùng mức lương gross, với cùng sức mua, được tính theo quy định của từng quốc gia. Đứng đầu là quốc gia có phần lương còn lại lớn nhất.",
+        metrica: "Net mỗi tháng",
+        carga: "Thuế và các khoản đóng",
+        como: "Lương net mỗi tháng là mức trung bình của 12 tháng, tính bằng đô la quốc tế.",
+      },
+      libertad: {
+        titulo: "Ngày Tự do Thuế theo quốc gia",
+        corto: "Ngày Tự do Thuế",
+        seo: ["Ngày Tự do Thuế theo quốc gia: bảng xếp hạng", "Ngày Tự do Thuế theo quốc gia"],
+        descripcion: (n) => `Ngày trong năm khi thuế TNCN và các khoản đóng được trả xong, với cùng mức lương ở ${n} quốc gia. Cập nhật hằng ngày.`,
+        bajada: "Ngày trong năm khi thuế TNCN và các khoản đóng được trả xong, với cùng mức lương ở mọi quốc gia. Đứng đầu là quốc gia có ngày sớm nhất.",
+        metrica: "Làm việc cho nhà nước đến",
+        carga: "Thuế và các khoản đóng",
+        como: "Ngày này phân bổ gánh nặng thuế trên cả năm, bắt đầu từ ngày 1 tháng 1: với mức 30%, 30% thời gian của năm là làm việc cho nhà nước.",
+      },
+      aumento: {
+        titulo: "Tăng lương còn lại bao nhiêu",
+        corto: "Phần còn lại khi tăng lương",
+        seo: ["Tăng lương còn lại bao nhiêu: xếp hạng quốc gia", "Tăng lương còn lại bao nhiêu"],
+        descripcion: (n) => `Với mỗi 100 lương gross tăng thêm, còn lại bao nhiêu sau thuế TNCN và các khoản đóng, ở ${n} quốc gia. Cập nhật hằng ngày.`,
+        bajada: "Với mỗi 100 lương gross tăng thêm, bao nhiêu thực sự về tay sau thuế TNCN và các khoản đóng. Đứng đầu là quốc gia có phần còn lại lớn nhất.",
+        metrica: "Còn lại trên mỗi 100",
+        carga: "Thuế suất biên",
+        como: "Đây là thuế suất biên giữa hai mức lương: phần tăng lương dành cho thuế và các khoản đóng.",
+      },
+    },
+  },
+};
+
+// ───────────────────────────── km ─────────────────────────────
+
+// Jemer (ADR 0002, D38): impersonal como los demás, «។» al cerrar la oración y sin plural.
+const km: Diccionario<TextosRankings> = {
+  base: {
+    nombre: "ចំណាត់ថ្នាក់ប្រទេស",
+    seo: {
+      titulo: ["ចំណាត់ថ្នាក់ប្រាក់ខែ និងពន្ធតាមប្រទេស", "ចំណាត់ថ្នាក់ប្រទេស"],
+      descripcion: (n) => `ប្រទេសដែលប្រាក់ខែនៅសល់ច្រើនបំផុត ថ្ងៃសេរីភាពពន្ធ និងផ្នែកនៅសល់ពីការដំឡើងប្រាក់ខែក្នុង ${n} ប្រទេស។ ទិន្នន័យផ្លូវការ។`,
+    },
+    ceja: "ទិន្នន័យបើកចំហ",
+    h1: "ប្រាក់ខែ និងពន្ធ ប្រៀបធៀបតាមប្រទេស",
+    bajada: (n) => `ប្រៀបធៀប ${n} ប្រទេស ដោយមានអំណាចទិញដូចគ្នា និងម៉ាស៊ីនគណនារបស់ប្រទេសនីមួយៗ។ ចំណាត់ថ្នាក់ធ្វើបច្ចុប្បន្នភាពដោយស្វ័យប្រវត្តិរាល់ថ្ងៃ។`,
+    actualizado: (f) => `ធ្វើបច្ចុប្បន្នភាពនៅ ${f}`,
+    ver: "មើលចំណាត់ថ្នាក់",
+    niveles: { titulo: "ប្រាក់ខែយោង", nombres: { bajo: "ប្រាក់ខែកម្រិតទាប", medio: "ប្រាក់ខែកម្រិតមធ្យម", alto: "ប្រាក់ខែកម្រិតខ្ពស់" }, anual: (m) => `${m} ក្នុងមួយឆ្នាំ` },
+    tramos: { titulo: "ចន្លោះនៃការដំឡើងប្រាក់ខែ", nombre: (a, b) => `ពី ${a} ទៅ ${b}` },
+    referencia: {
+      nivel: (m) => `ប្រាក់ខែសរុប ${m} ដុល្លារអន្តរជាតិក្នុងមួយឆ្នាំ`,
+      tramo: (a, b) => `ការដំឡើងប្រាក់ខែសរុបពី ${a} ទៅ ${b} ដុល្លារអន្តរជាតិក្នុងមួយឆ្នាំ`,
+    },
+    posicion: (pais, p, total) => `${pais} លេខ ${p} ក្នុងចំណោម ${total}`,
+    de: (t) => `ក្នុងចំណោម ${t}`,
+    empate: (o) => (o === 1 ? "ចំណាត់ថ្នាក់ស្មើនឹងប្រទេសមួយទៀត" : `ចំណាត់ថ្នាក់ស្មើនឹង ${o} ប្រទេសទៀត`),
+    fuera: (pais) => `${pais} មិនទាន់ស្ថិតក្នុងចំណាត់ថ្នាក់នេះទេ ព្រោះមិនទាន់មានម៉ាស៊ីនគណនាប្រាក់ខែសុទ្ធដែលអាចប្រៀបធៀបបាន។`,
+    lider: "លេខមួយ",
+    global: (n) => `${n} ប្រទេស ពីលេខមួយដល់លេខចុងក្រោយ`,
+    valores: {
+      porMes: (m) => `${m} ក្នុងមួយខែ`,
+      ningunDia: "គ្មានសូម្បីតែមួយថ្ងៃ",
+      deCada: (n) => `${n} ក្នុងរាល់ 100`,
+      carga: (pct) => `ពន្ធ និងវិភាគទាន ${pct}`,
+      cargaAumento: (pct) => `${pct} នៃប្រាក់ដែលដំឡើងជាពន្ធ និងវិភាគទាន`,
+    },
+    cambio: {
+      titulo: (mes) => `ការប្រែប្រួលចាប់ពី ${mes}`,
+      sube: (n) => `ឡើង ${n} ថ្នាក់`,
+      baja: (n) => `ចុះ ${n} ថ្នាក់`,
+      igual: "ថ្នាក់ដដែល",
+      nuevo: "ចូលថ្មី",
+    },
+    tabla: {
+      caption: (titulo, ref) => `${titulo} (${ref})`,
+      puesto: "លេខរៀង",
+      pais: "ប្រទេស",
+      edicion: "ការបោះផ្សាយនេះ",
+      unidad: "គិតជាដុល្លារអន្តរជាតិ",
+    },
+    kit: {
+      titulo: "សម្រាប់ដកស្រង់",
+      bajada: "អត្ថបទ ក្រាហ្វិក និងតំណនៃចំណាត់ថ្នាក់នេះ រួចរាល់សម្រាប់ចុះផ្សាយ។",
+      compartir: "ចែករំលែក",
+      descargar: "ទាញយកក្រាហ្វិក",
+      copiar: "ចម្លងអត្ថបទដកស្រង់",
+      copiado: "បានចម្លងអត្ថបទដកស្រង់។",
+      enlace: "បានចម្លងតំណ។",
+      compartido: "បានចែករំលែក។",
+      error: "មិនអាចចម្លងបានទេ។ សូមចម្លងអត្ថបទខាងលើដោយខ្លួនឯង។",
+      cita: (frase, ranking, ref, fecha) => `${frase} ក្នុង «${ranking}» (${ref})។ ប្រភព: CalcularYa ទិន្នន័យគិតត្រឹម ${fecha}។`,
+      texto: (frase, ranking) => `${frase} ក្នុង «${ranking}»`,
+      alt: (ranking) => `ក្រាហ្វិកចំណាត់ថ្នាក់ «${ranking}»`,
+    },
+    metodo: {
+      titulo: "របៀបចាត់ថ្នាក់",
+      bajada: "ប្រទេសនីមួយៗគណនាដោយម៉ាស៊ីនគណនាប្រាក់ខែសុទ្ធរបស់ខ្លួន តាមច្បាប់ជាធរមានថ្ងៃនេះ។ បន្ទាប់មកប្រៀបធៀបដោយអំណាចទិញដូចគ្នា។",
+      niveles: (b, m, a) => `ប្រាក់ខែយោង: ${b} ${m} និង ${a} ដុល្លារអន្តរជាតិសរុបក្នុងមួយឆ្នាំ។`,
+      empates: "ប្រទេសដែលមានតម្លៃស្មើគ្នាក្នុងតារាងទទួលបានលេខដូចគ្នា ហើយលេខបន្ទាប់ត្រូវរំលង (1, 2, 2, 4)។",
+      historial: "ការប្រែប្រួលថ្នាក់វាស់ធៀបនឹងចំណាត់ថ្នាក់ដែលកត់ត្រារាល់ខែ។ បើគ្មានកំណត់ត្រាខែមុន នឹងមិនបង្ហាញទេ។",
+      actualizacion: "ទិន្នន័យបង្កើតឡើងវិញរាល់ថ្ងៃ ដោយប្រើតម្លៃជាធរមានរបស់ប្រទេសនីមួយៗ។ ប្រទេសថ្មីចូលដោយខ្លួនឯងភ្លាមៗនៅពេលមានម៉ាស៊ីនគណនា។",
+      ver: "មើលរបៀបចាត់ថ្នាក់ទាំងអស់",
+    },
+    datos: {
+      titulo: "ទិន្នន័យបើកចំហ",
+      bajada: "តួលេខនៃចំណាត់ថ្នាក់ទាំងនេះតាមប្រទេស ជា JSON និង CSV ធ្វើបច្ចុប្បន្នភាពរាល់ថ្ងៃ។",
+      json: "ទិន្នន័យ JSON",
+      csv: "ទិន្នន័យ CSV",
+      licencia: "អាជ្ញាប័ណ្ណ CC BY 4.0: អាចប្រើ ចម្លង និងចុះផ្សាយបាន ដោយដកស្រង់ CalcularYa ជាមួយតំណមកកាន់ទំព័រនេះ។",
+      atribucion: "ឧទាហរណ៍នៃការដកស្រង់",
+    },
+    mundo: { titulo: "គណនាដោយប្រាក់ខែដែលអ្នកចង់បាន", texto: (n) => `បើចង់គណនាដោយប្រាក់ខែរបស់អ្នក និងមើលកាលបរិច្ឆេទនៃប្រទេសនីមួយៗ សូមប្រើ «${n}»។`, ir: "គណនា" },
+    otros: "ចំណាត់ថ្នាក់ផ្សេងៗ",
+    rankings: {
+      rinde: {
+        titulo: "ប្រទេសដែលប្រាក់ខែដូចគ្នានៅសល់ច្រើនបំផុត",
+        corto: "ប្រាក់ទទួលបានពិត",
+        seo: ["ប្រទេសដែលប្រាក់ខែនៅសល់ច្រើនបំផុត", "ប្រាក់ខែនៅសល់ច្រើនបំផុត"],
+        descripcion: (n) => `ប្រាក់ខែ និងអំណាចទិញដូចគ្នាក្នុង ${n} ប្រទេស: នៅសល់ប៉ុន្មានតាមច្បាប់នៃប្រទេសនីមួយៗ។ ធ្វើបច្ចុប្បន្នភាពរាល់ថ្ងៃ។`,
+        bajada: "ប្រាក់ខែសរុបដូចគ្នា អំណាចទិញដូចគ្នា គណនាតាមច្បាប់នៃប្រទេសនីមួយៗ។ លេខមួយគឺប្រទេសដែលនៅសល់ច្រើនបំផុត។",
+        metrica: "ប្រាក់ទទួលបានពិតក្នុងមួយខែ",
+        carga: "ពន្ធ និងវិភាគទាន",
+        como: "ប្រាក់ទទួលបានពិតក្នុងមួយខែជាមធ្យមនៃ 12 ខែ គិតជាដុល្លារអន្តរជាតិ។",
+      },
+      libertad: {
+        titulo: "ថ្ងៃសេរីភាពពន្ធតាមប្រទេស",
+        corto: "ថ្ងៃសេរីភាពពន្ធ",
+        seo: ["ចំណាត់ថ្នាក់ថ្ងៃសេរីភាពពន្ធតាមប្រទេស", "ថ្ងៃសេរីភាពពន្ធតាមប្រទេស"],
+        descripcion: (n) => `ក្នុងមួយឆ្នាំត្រូវធ្វើការដល់ថ្ងៃណា ដើម្បីបង់ពន្ធ និងវិភាគទាន។ ប្រៀបធៀបដោយប្រាក់ខែដូចគ្នាក្នុង ${n} ប្រទេស។`,
+        bajada: "ក្នុងមួយឆ្នាំត្រូវធ្វើការដល់ថ្ងៃណា ដើម្បីបង់ពន្ធលើប្រាក់បៀវត្សរ៍ និងវិភាគទាន ដោយប្រាក់ខែដូចគ្នាគ្រប់ប្រទេស។ លេខមួយគឺប្រទេសដែលបង់គ្រប់មុនគេ។",
+        metrica: "ធ្វើការឱ្យរដ្ឋដល់ថ្ងៃទី",
+        carga: "ពន្ធ និងវិភាគទាន",
+        como: "កាលបរិច្ឆេទគណនាដោយចែកបន្ទុកចាប់ពីថ្ងៃទី 1 ខែមករា។ បើបន្ទុកស្មើនឹង 30% គឺស្មើនឹងធ្វើការឱ្យរដ្ឋ 30% នៃឆ្នាំ។",
+      },
+      aumento: {
+        titulo: "ប្រាក់នៅសល់ពីការដំឡើងប្រាក់ខែ",
+        corto: "ផ្នែកនៅសល់ពីការដំឡើង",
+        seo: ["ដំឡើងប្រាក់ខែ នៅសល់ប៉ុន្មានតាមប្រទេស", "ដំឡើងប្រាក់ខែ នៅសល់ប៉ុន្មាន"],
+        descripcion: (n) => `ប្រាក់ខែសរុបដែលដំឡើងរាល់ 100 នៅសល់ប៉ុន្មានក្រោយកាត់ពន្ធ និងវិភាគទាន។ ប្រៀបធៀបក្នុង ${n} ប្រទេស។`,
+        bajada: "ប្រាក់ខែសរុបដែលដំឡើងរាល់ 100 នៅសល់ប៉ុន្មានក្រោយកាត់ពន្ធ និងវិភាគទាន។ លេខមួយគឺប្រទេសដែលនៅសល់ច្រើនបំផុត។",
+        metrica: "នៅសល់ពីរាល់ 100",
+        carga: "អត្រាពន្ធបន្ថែម",
+        como: "គឺជាអត្រាពន្ធបន្ថែមរវាងប្រាក់ខែពីរកម្រិត ពោលគឺផ្នែកនៃប្រាក់ដែលដំឡើងដែលជាពន្ធ និងវិភាគទាន។",
+      },
+    },
+  },
+};
+
+export const DICCIONARIOS_RANKINGS: Diccionarios<TextosRankings> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi, km };
 
 export function textosRankings(idioma: Idioma, trato: Trato, locale?: string): TextosRankings {
   return resolver(DICCIONARIOS_RANKINGS, idioma, trato, locale);

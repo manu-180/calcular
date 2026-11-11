@@ -2,9 +2,11 @@ import type { Idioma, Trato } from "@/motor/tipos";
 import type { ClaveFamilia, CopyTarjeta, TextosTarjeta } from "../ofertas-intl";
 import { ar } from "./ar";
 import { bg } from "./bg";
+import { mk } from "./mk";
 import { mn } from "./mn";
 import { hy } from "./hy";
 import { sq } from "./sq";
+import { vi } from "./vi";
 import { bn } from "./bn";
 import { cs } from "./cs";
 import { de } from "./de";
@@ -39,6 +41,7 @@ import { sl } from "./sl";
 import { et } from "./et";
 import { is } from "./is";
 import { lv } from "./lv";
+import { km } from "./km";
 import type { DiccionarioVenta, TextosFamilia } from "./tipos";
 import { uz } from "./uz";
 import { zh } from "./zh";
@@ -49,10 +52,10 @@ export { rellenar, segunTrato, type DiccionarioVenta, type TextosFamilia, type V
 // Todo idioma de IDIOMAS que tenga mercados reales necesita su diccionario de venta: sin él, sus
 // mercados no generan informes ni ofertas (catalogo-intl, ofertas-servidor) y check_ofertas_intl
 // falla al registrar un país. Un idioma nuevo del motor entra acá cuando tiene el suyo.
-export const IDIOMAS_VENTA = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "pl", "sv", "da", "nb", "fi", "ar", "id", "tr", "bn", "th", "uk", "uz", "ru", "ro", "cs", "el", "hu", "he", "sr", "bg", "sk", "ka", "hr", "mn", "hy", "sq", "sl", "et", "is", "lv"] as const satisfies readonly Idioma[];
+export const IDIOMAS_VENTA = ["es", "pt", "en", "fr", "de", "it", "nl", "ja", "ko", "zh", "pl", "sv", "da", "nb", "fi", "ar", "id", "tr", "bn", "th", "uk", "uz", "ru", "ro", "cs", "el", "hu", "he", "sr", "bg", "sk", "ka", "hr", "mn", "hy", "sq", "sl", "et", "is", "lv", "mk", "vi", "km"] as const satisfies readonly Idioma[];
 export type IdiomaVenta = (typeof IDIOMAS_VENTA)[number];
 
-export const DICCIONARIOS: Readonly<Record<IdiomaVenta, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+export const DICCIONARIOS: Readonly<Record<IdiomaVenta, DiccionarioVenta>> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi, km };
 
 // La escritura del chino cambia el diccionario entero, no solo palabras: zh.ts es tradicional
 // (zh-TW, zh-HK) y zh-hans.ts simplificado. Por eso las funciones de abajo reciben el locale.

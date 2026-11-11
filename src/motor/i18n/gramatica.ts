@@ -371,6 +371,34 @@ const bg: GramaticaPais = (() => {
   return { nombre, de: (p) => `на ${nombre(p)}`, en, para: (p) => `за ${nombre(p)}` };
 })();
 
+// Macedonio (ADR 0002, D36): sin casos y con artículo pospuesto, como el búlgaro, pero «во», «од» y «со» no
+// cambian de forma delante de ninguna letra. Los nombres propios van sin artículo («Северна Македонија»,
+// «Германија»); los que son una frase con sustantivo común o un plural lo llevan en la primera palabra
+// («Соединетите Американски Држави», «Обединетото Кралство», «Филипините»). `en(p)` = «во» + nombre y «на» en
+// los archipiélagos («на Малдивите», «на Соломонските Острови»); `de(p)` = «на» + nombre; `para(p)` = «за» +
+// nombre. Los nombres llegan como los escribe Intl.DisplayNames en mk.
+const mk: GramaticaPais = (() => {
+  const SUSTANTIVO_COMUN = new Set(["држави", "емирати", "република", "острови", "кралство", "федерација"]);
+  const ARCHIPIELAGOS = new Set(["Филипини", "Малдиви", "Сејшели", "Бахами"]);
+  const articular = (w: string): string => {
+    if (/(?:ите|ата|тото)$/.test(w)) return w;
+    if (/и$/.test(w)) return `${w}те`;
+    if (/а$/.test(w)) return `${w}та`;
+    if (/о$/.test(w)) return `${w}то`;
+    return w;
+  };
+  const nombre = (p: string): string => {
+    if (ARCHIPIELAGOS.has(p)) return `${p}те`;
+    const palabras = p.split(" ");
+    if (palabras.length >= 2 && !/[,(]/.test(p) && SUSTANTIVO_COMUN.has(palabras[palabras.length - 1].toLowerCase())) {
+      return [articular(palabras[0]), ...palabras.slice(1)].join(" ");
+    }
+    return p;
+  };
+  const en = (p: string): string => (ARCHIPIELAGOS.has(p) || / [Оо]строви$/.test(p) ? `на ${nombre(p)}` : `во ${nombre(p)}`);
+  return { nombre, de: (p) => `на ${nombre(p)}`, en, para: (p) => `за ${nombre(p)}` };
+})();
+
 // Sueco, danés y noruego no declinan el nombre del país: «i Sverige», «för Sverige».
 const sv: GramaticaPais = { nombre: (p) => p, de: (p) => `för ${p}`, en: (p) => `i ${p}`, para: (p) => `för ${p}` };
 const da: GramaticaPais = { nombre: (p) => p, de: (p) => `for ${p}`, en: (p) => `i ${p}`, para: (p) => `for ${p}` };
@@ -2341,4 +2369,18 @@ const lv: GramaticaPais = {
   para: (p) => locijumiLv(p).dativs,
 };
 
-export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+// Vietnamita (ADR 0002, D37): sin artículos ni casos; el país no cambia y la preposición va delante
+// («tại Việt Nam», «của Việt Nam», «cho Việt Nam»).
+const vi: GramaticaPais = { nombre: (p) => p, de: (p) => `của ${p}`, en: (p) => `tại ${p}`, para: (p) => `cho ${p}` };
+
+// Jemer (ADR 0002, D38): sin artículos ni declinación. «នៅ» para el lugar, «សម្រាប់» para el destino y «នៃ»
+// para el poseedor, pegados como se escribe. Delante de un país va «ប្រទេស» («នៅប្រទេសកម្ពុជា»), salvo en los
+// nombres que ya dicen qué son (សហរដ្ឋ, ចក្រភព, សាធារណរដ្ឋ, ព្រះរាជាណាចក្រ, កោះ) y en los territorios que no se
+// nombran como país (ហុងកុង, តៃវ៉ាន់, ម៉ាកាវ, ព័រតូរីកូ).
+const km: GramaticaPais = (() => {
+  const SIN_PRATES = /^(?:ប្រទេស|ដែនដី|សហរដ្ឋ|ចក្រភព|សាធារណរដ្ឋ|ព្រះរាជាណាចក្រ|កោះ|អេមីរ៉ាត|ហុងកុង|តៃវ៉ាន់|ម៉ាកាវ|ព័រតូរីកូ)/u;
+  const pais = (p: string) => (SIN_PRATES.test(p) ? p : `ប្រទេស${p}`);
+  return { nombre: (p) => p, de: (p) => `នៃ${pais(p)}`, en: (p) => `នៅ${pais(p)}`, para: (p) => `សម្រាប់${pais(p)}` };
+})();
+
+export const GRAMATICA: Readonly<Record<Idioma, GramaticaPais>> = { es, en, fr, pt, it, de, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi, km };

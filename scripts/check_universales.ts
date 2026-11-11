@@ -173,6 +173,11 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   // Húngaro (ADR 0002, D21): forintos sin decimales con «Ft» detrás y espacio de miles, un nombre largo
   // con artículo y sufijo de isla («a Saint Vincent és a Grenadine-szigeteken») y uno compuesto en
   // -ország («Németországban»).
+  // Vietnamita (ADR 0002, D37): đồng sin decimales y un nombre de país largo.
+  vi: [
+    { mercado: "vn" as CodigoMercado, pais: "VN", nombrePais: "Việt Nam", locale: "vi-VN", trato: "usted", moneda: "VND" as Moneda, escala: 25000 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Saint Vincent và Grenadines", locale: "vi-VN", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
   // Mongol (ADR 0002, D28): tugrik con ₮ delante y coma de miles, un nombre largo que ya trae «Улс»
   // («Бүгд Найрамдах Доминикан Улсад») y uno en plural («Соломоны арлуудад»).
   mn: [
@@ -218,10 +223,21 @@ const PRUEBA: Readonly<Record<Idioma, readonly Partial<ContextoUniversal>[]>> = 
   ],
   // Letón (ADR 0002, D35): euro detrás, con espacio de miles desde 5 cifras; un nombre largo que se declina
   // por partes («Sentvinsentā un Grenadīnās») y uno plural con adjetivo («Apvienotajos Arābu Emirātos»).
+  // Jemer (ADR 0002, D38): riel sin decimales con «៛» detrás, cifras latinas y un nombre de país largo.
+  km: [
+    { mercado: "kh" as CodigoMercado, pais: "KH", nombrePais: "កម្ពុជា", locale: "km-KH", trato: "usted", moneda: "KHR" as Moneda, escala: 4000 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "សាំងវ៉ាំងសង់ និងហ្គ្រេណាឌីន", locale: "km-KH", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+  ],
   lv: [
     { mercado: "lv" as CodigoMercado, pais: "LV", nombrePais: "Latvija", locale: "lv-LV", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
     { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Sentvinsenta un Grenadīnas", locale: "lv-LV", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
     { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Apvienotie Arābu Emirāti", locale: "lv-LV", trato: "usted", moneda: "AED" as Moneda, escala: 3.67 },
+  ],
+  // Macedonio (ADR 0002, D36): denar con «ден.», punto de miles; nombres largos y artículo pospuesto.
+  mk: [
+    { mercado: "mk" as CodigoMercado, pais: "MK", nombrePais: "Северна Македонија", locale: "mk-MK", trato: "usted", moneda: "MKD" as Moneda, escala: 55 },
+    { mercado: "vc" as CodigoMercado, pais: "VC", nombrePais: "Сент Винсент и Гренадини", locale: "mk-MK", trato: "usted", moneda: "XCD" as Moneda, escala: 2.5 },
+    { mercado: "ae" as CodigoMercado, pais: "AE", nombrePais: "Обединети Арапски Емирати", locale: "mk-MK", trato: "usted", moneda: "AED" as Moneda, escala: 4 },
   ],
   bg: [
     { mercado: "bg" as CodigoMercado, pais: "BG", nombrePais: "България", locale: "bg-BG", trato: "usted", moneda: "EUR" as Moneda, escala: 1 },
