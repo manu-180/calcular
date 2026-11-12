@@ -56,6 +56,46 @@ export function camposCompra(slug: string): Record<string, string> {
   };
 }
 
+// «Fue a pagar»: se anota justo antes de salir a MercadoPago y la lee VueltaDePago cuando la
+// persona vuelve al sitio sin haber pagado (con «atrás» o reabriendo la página). Con la compra
+// directa ya no hay mail para un recordatorio: el único momento para destrabar una duda es ese.
+// sessionStorage y no local: es de esta pestaña y de esta visita, no un recuerdo para otro día.
+const CLAVE_IDA = "ca_ida_pago";
+/** Pasada una hora ya no es «volvió de pagar»: es otra visita. */
+const VENTANA_IDA_MS = 60 * 60 * 1000;
+
+export function anotarIda(slug: string): void {
+  try {
+    sessionStorage.setItem(CLAVE_IDA, `${slug}.${Date.now()}`);
+  } catch {
+    // modo privado estricto: sin la marca no hay aviso al volver, la compra sigue igual
+  }
+}
+
+export function olvidarIda(): void {
+  try {
+    sessionStorage.removeItem(CLAVE_IDA);
+  } catch {
+    // nada que borrar
+  }
+}
+
+/** El producto que la persona salió a pagar hace menos de una hora, o null. */
+export function idaPendiente(ahora: number = Date.now()): string | null {
+  let crudo: string | null = null;
+  try {
+    crudo = sessionStorage.getItem(CLAVE_IDA);
+  } catch {
+    return null;
+  }
+  const corte = crudo?.lastIndexOf(".") ?? -1;
+  if (!crudo || corte < 1) return null;
+  const slug = crudo.slice(0, corte);
+  const t = Number(crudo.slice(corte + 1));
+  if (!/^[a-z0-9-]{1,60}$/.test(slug) || !Number.isFinite(t) || ahora - t > VENTANA_IDA_MS || ahora < t) return null;
+  return slug;
+}
+
 /** Manda el POST a /api/mp/checkout con un formulario armado al vuelo. Devuelve false si no hay DOM:
  *  el botón sigue entonces su href a /planillas/comprar, que tiene el mismo formulario. */
 export function comprar(slug: string, precio?: number): boolean {
@@ -76,6 +116,7 @@ export function comprar(slug: string, precio?: number): boolean {
   // que el checkout, que la vacía de un saque porque la página se va a MercadoPago.
   setTimeout(() => {
     rastrear("checkout", { producto: slug, valor: precio });
+    anotarIda(slug);
     f.submit();
   }, 0);
   return true;

@@ -17,6 +17,17 @@ import { hojaCasas } from "@/components/oferta/hojas";
 import { prefill } from "@/lib/prefill/casas";
 import { olvidarDatosCompra, recordarDatosCompra } from "@/lib/prefill/cliente";
 import type { DatosOferta } from "@/lib/oferta";
+import { hoyAR } from "@/lib/hoy";
+
+// En casas particulares el aguinaldo se paga con el sueldo de junio y con el de diciembre
+// (Ley 26.844, art. 27). En esos meses y el anterior es la cuenta que el empleador tiene encima:
+// la oferta lo pone primero. Fuera de temporada queda al final, como estaba.
+function aguinaldoQueViene(hoy: string): "junio" | "diciembre" | null {
+  const mes = Number(hoy.slice(5, 7));
+  if (mes === 5 || mes === 6) return "junio";
+  if (mes === 11 || mes === 12) return "diciembre";
+  return null;
+}
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -33,6 +44,7 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
   const [extrasFinde, setExtrasFinde] = useState("");
   const [anios, setAnios] = useState("");
   const [tocado, setTocado] = useState(false);
+  const aguinaldo = aguinaldoQueViene(hoyAR());
 
   const categoria = categoriaPorId(categoriaId);
   const soloSinRetiro = categoria?.horaConRetiro === null;
@@ -337,6 +349,15 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
             </>
           }
           incluye={[
+            ...(aguinaldo
+              ? [
+                  {
+                    titulo: `El aguinaldo de ${aguinaldo}, ya calculado`,
+                    texto:
+                      "Anotás lo que le pagaste cada mes y te da el aguinaldo: la mitad del mejor sueldo del semestre. También los días de vacaciones.",
+                  },
+                ]
+              : []),
             {
               titulo: "Recibo de sueldo listo para imprimir",
               texto: "Se completa solo con el mes liquidado. Lo imprimís por duplicado y cada parte firma su copia.",
@@ -348,10 +369,15 @@ export function CalculadoraCasasParticulares({ oferta }: { oferta?: DatosOferta 
                   ? `Aportes, contribuciones y ART según sus horas. Con menos de 16 por semana, también cuánto falta para que tenga obra social (en este caso, ${formatARS(previa.resumen.faltaObraSocial, 0)}).`
                   : "Aportes, contribuciones y ART según las horas que trabaja, y el costo total del mes.",
             },
-            {
-              titulo: "Aguinaldo y vacaciones del año",
-              texto: "Anotás lo que pagaste cada mes y te calcula el aguinaldo de junio y diciembre y los días de vacaciones.",
-            },
+            ...(aguinaldo
+              ? []
+              : [
+                  {
+                    titulo: "Aguinaldo y vacaciones del año",
+                    texto:
+                      "Anotás lo que pagaste cada mes y te calcula el aguinaldo de junio y diciembre y los días de vacaciones.",
+                  },
+                ]),
           ]}
         />
       )}

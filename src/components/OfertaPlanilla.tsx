@@ -117,8 +117,8 @@ export function OfertaPlanilla({
             </a>
 
             <p className="mt-3 text-xs leading-relaxed text-zinc-500">
-              Pagás con MercadoPago y te llega al mail al instante. Si no te sirve, tenés 7 días para pedir la
-              devolución.
+              Pagás con tarjeta, débito o dinero en cuenta por MercadoPago (no hace falta tener cuenta) y te llega
+              al mail al instante. Si no te sirve, tenés 7 días para pedir la devolución.
             </p>
             <a
               href={`${producto.rutaLanding}?desde=${desde}`}

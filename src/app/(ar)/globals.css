@@ -804,6 +804,19 @@ html:has(dialog.ca-bloquea[open]) {
   transform: none;
 }
 
+/* Aviso de «¿no pudiste terminar la compra?» (VueltaDePago): baja desde el header. */
+@media (prefers-reduced-motion: no-preference) {
+  .ca-vuelta {
+    animation: ca-vuelta-baja 0.42s var(--ease-snappy) both;
+  }
+}
+@keyframes ca-vuelta-baja {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+}
+
 .ca-acordeon {
   cursor: pointer;
   transition:
