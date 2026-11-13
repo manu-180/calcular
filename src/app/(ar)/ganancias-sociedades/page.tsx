@@ -18,6 +18,7 @@ import {
 } from "@/data/ganancias-sociedades";
 import { calcularGananciasSociedades } from "@/lib/ganancias-sociedades";
 import { formatARS } from "@/lib/formato";
+import { datosOferta } from "@/lib/oferta";
 
 const ANIO = ULTIMO_ANIO_ESCALA;
 const ESCALA = escalaDe(ANIO)!;
@@ -150,7 +151,7 @@ export default function GananciasSociedadesPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraGananciasSociedades />
+      <CalculadoraGananciasSociedades oferta={datosOferta("planilla-ganancias-sociedades")} />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">La escala, año por año</h2>

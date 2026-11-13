@@ -33,6 +33,7 @@ export type ProductoSlug =
   | "planilla-camioneros"
   | "planilla-vacaciones"
   | "planilla-plazo-fijo"
+  | "planilla-ganancias-sociedades"
   | "informe-indemnizacion"
   | "informe-ganancias"
   | "informe-inflacion"
@@ -215,6 +216,24 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     rutaDescarga: "/api/planilla-plazo-fijo/download",
     rutaLanding: "/planillas/plazo-fijo",
   },
+  // El único producto del catálogo que liquida un impuesto de la sociedad y no un sueldo: lo compra
+  // un contador o el administrador de la SA/SAS/SRL. Vale como los de liquidación por convenio
+  // porque es gasto del negocio, no del bolsillo de una familia.
+  "planilla-ganancias-sociedades": {
+    slug: "planilla-ganancias-sociedades",
+    titulo: "Planilla de Ganancias de sociedades 2026",
+    tituloCorto: "Planilla Ganancias de sociedades 2026",
+    convenio: "Impuesto a las Ganancias, art. 73 (sociedades)",
+    paraQuien: "Para la SA, SAS o SRL (o su contador) que liquida Ganancias y arrastra quebrantos",
+    disparadorActualizacion:
+      "cada vez que el INDEC publica el IPC de octubre y aparece la escala de los ejercicios que empiezan el año siguiente",
+    precio: 14900,
+    moneda: "ARS",
+    entrega: "xlsx",
+    archivo: "planilla-ganancias-sociedades-2026.xlsx",
+    rutaDescarga: "/api/planilla-ganancias-sociedades/download",
+    rutaLanding: "/planillas/ganancias-sociedades",
+  },
   "informe-indemnizacion": {
     slug: "informe-indemnizacion",
     titulo: "Informe de liquidación final por despido",
@@ -283,6 +302,7 @@ export const CATALOGO: Producto[] = [
   PRODUCTOS["informe-cuota-alimentaria"],
   PRODUCTOS["planilla-camioneros"],
   PRODUCTOS["planilla-vacaciones"],
+  PRODUCTOS["planilla-ganancias-sociedades"],
   PRODUCTOS["planilla-mi-sueldo"],
   PRODUCTOS["planilla-plazo-fijo"],
   PRODUCTOS["informe-indemnizacion"],

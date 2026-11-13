@@ -49,6 +49,7 @@ export const RUTAS_QUE_VENDEN_EXACTAS = [
   "/indemnizacion",
   "/inflacion",
   "/ganancias",
+  "/ganancias-sociedades",
   "/plazo-fijo",
   "/actualizacion-creditos-laborales",
   "/vacaciones",

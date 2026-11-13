@@ -137,6 +137,7 @@ const DESPIDO = "informe-indemnizacion";
 const GANANCIAS = "informe-ganancias";
 const INFLACION = "informe-inflacion";
 const CREDITO = "informe-credito-laboral";
+const SOCIEDADES = "planilla-ganancias-sociedades";
 
 const DEFS: Record<GrupoId, Def[]> = {
   monotributo: [
@@ -379,6 +380,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/ganancias-sociedades",
       titulo: "Ganancias de sociedades",
       descripcion: "La escala del 25, 30 y 35 %",
+      vende: SOCIEDADES,
       claves: ["sociedades", "sa", "sas", "srl", "empresa", "dividendos"],
     },
     {
@@ -856,6 +858,15 @@ const DEFS: Record<GrupoId, Def[]> = {
       vende: VACACIONES,
       tipo: "planilla",
       claves: ["excel", "vacaciones", "notificacion de vacaciones", "plus vacacional", "empleador"],
+    },
+    {
+      href: "/planillas/ganancias-sociedades",
+      titulo: "Planilla de Ganancias de sociedades",
+      corto: "Ganancias de sociedades",
+      descripcion: "El impuesto de tu SA, SAS o SRL con la tabla que le toca",
+      vende: SOCIEDADES,
+      tipo: "planilla",
+      claves: ["excel", "ganancias sociedades", "art 73", "sa", "sas", "srl", "dividendos", "quebrantos", "balance impositivo"],
     },
     {
       href: "/planillas/mi-sueldo",

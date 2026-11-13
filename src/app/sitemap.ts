@@ -63,6 +63,7 @@ const PAGINAS: readonly (readonly [string, string])[] = [
   [`${BASE}/planillas/mi-sueldo`, '2026-10-06'],
   [`${BASE}/planillas/plazo-fijo`, '2026-10-06'],
   [`${BASE}/planillas/vacaciones`, '2026-10-06'],
+  [`${BASE}/planillas/ganancias-sociedades`, '2026-11-13'],
   [`${BASE}/informes/cuota-alimentaria`, '2026-10-06'],
   [`${BASE}/informes/indemnizacion`, '2026-10-06'],
   [`${BASE}/informes/ganancias`, '2026-10-06'],
