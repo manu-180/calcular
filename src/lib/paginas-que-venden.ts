@@ -47,6 +47,7 @@ export const RUTAS_QUE_VENDEN_EXACTAS = [
   "/empleada-domestica",
   "/sueldo-neto",
   "/indemnizacion",
+  "/desempleo",
   "/inflacion",
   "/ganancias",
   "/plazo-fijo",

@@ -724,11 +724,51 @@ html:has(dialog.ca-bloquea[open]) {
 }
 }
 
+/* Oferta de /desempleo: la entrada escalonada y la llegada de la cifra.
+   Sólo opacity/transform. El bloque global de prefers-reduced-motion de más abajo las apaga,
+   y la oferta se ve igual quieta: la animación no trae ni esconde información. */
+@keyframes ca-oferta-entra {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hasta que la sección entra en pantalla sus partes están ocultas; `backwards` las deja en el
+   estado inicial sin una regla aparte, y sin JS no se animan pero tampoco desaparecen. */
+.ca-oferta[data-visible="si"] > * > * {
+  animation: ca-oferta-entra 0.5s var(--ease-sereno) calc(var(--i, 0) * 0.07s) backwards;
+}
+
+/* La cifra cambia cada vez que la persona corrige su sueldo: llega, no parpadea. */
+@keyframes ca-cifra-entra {
+  from {
+    opacity: 0;
+    transform: translateY(0.12em) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ca-cifra {
+  display: inline-block;
+  transform-origin: left bottom;
+  animation: ca-cifra-entra 0.42s var(--ease-fluid);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ca-dropdown,
   .ca-col,
   .ca-menu-cuenta,
-  .ca-menu-cuenta-lista > * {
+  .ca-menu-cuenta-lista > *,
+  .ca-oferta[data-visible="si"] > * > *,
+  .ca-cifra {
     animation: none;
   }
   .ca-underline {

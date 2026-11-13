@@ -15,6 +15,11 @@ import {
 } from "@/data/desempleo";
 import { calcularDesempleo, etiquetaMes, smvmVigente } from "@/lib/desempleo";
 import { formatARS } from "@/lib/formato";
+import { InformeIndemnizacionMiniatura } from "@/components/informe-indemnizacion/Miniatura";
+import { CASO_EJEMPLO } from "@/app/(ar)/informes/indemnizacion/_modelo";
+import { entradaDelMotor } from "@/lib/prefill/indemnizacion";
+import { calcularIndemnizacion } from "@/lib/indemnizacion";
+import { productoPorSlug } from "@/lib/mp";
 
 function datosDelMes() {
   const { mes: SMVM } = smvmVigente();
@@ -105,6 +110,11 @@ const crearFaqs = ({ MES, PISO, TECHO }: DatosDelMes) => [
   },
 ];
 
+function miniaturaInforme() {
+  const r = calcularIndemnizacion(entradaDelMotor(CASO_EJEMPLO));
+  return r ? <InformeIndemnizacionMiniatura r={r} /> : null;
+}
+
 export default function DesempleoPage() {
   const datos = datosDelMes();
   const { SMVM, MES, PISO, TECHO, EJEMPLO, ESCALA_VISIBLE, MES_FIN } = datos;
@@ -180,7 +190,10 @@ export default function DesempleoPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraDesempleo />
+      <CalculadoraDesempleo
+        precioInforme={productoPorSlug("informe-indemnizacion")?.precio}
+        miniaturaInforme={miniaturaInforme()}
+      />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
