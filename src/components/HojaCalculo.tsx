@@ -57,7 +57,7 @@ export function HojaCalculo({ hoja, className = "" }: { hoja: HojaPrevia; classN
         <colgroup>
           <col className="w-8" />
           <col />
-          <col className="w-[42%]" />
+          <col className="w-[46%]" />
         </colgroup>
         <thead>
           <tr className="bg-zinc-100 text-[11px] font-medium text-zinc-500">
@@ -104,7 +104,13 @@ export function HojaCalculo({ hoja, className = "" }: { hoja: HojaPrevia; classN
                     tono === "input" ? "text-left font-semibold" : "text-right tabular-nums"
                   } ${fuerte ? "font-semibold" : ""}`}
                 >
-                  <span className="block [overflow-wrap:anywhere]">{valorTexto(f.valor)}</span>
+                  {/* Un importe NUNCA se parte entre dígitos: «$ 500.000.00 / 0» se lee como un
+                      error de la planilla, no como una celda angosta (visto a 390 px en la oferta de
+                      Ganancias de sociedades, que trabaja en cientos de millones). El texto largo sí
+                      sigue cortando donde haga falta. */}
+                  <span className={`block ${typeof f.valor === "number" ? "whitespace-nowrap" : "[overflow-wrap:anywhere]"}`}>
+                    {valorTexto(f.valor)}
+                  </span>
                 </td>
               </tr>
             );

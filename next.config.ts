@@ -146,6 +146,7 @@ const nextConfig: NextConfig = {
     "/api/planilla-mi-sueldo/download": ["./private/**"],
     "/api/planilla-vacaciones/download": ["./private/**"],
     "/api/planilla-plazo-fijo/download": ["./private/**"],
+    "/api/planilla-ganancias-sociedades/download": ["./private/**"],
     "/api/cuenta/descargar/[id]": ["./private/**"],
     "/api/pagos/descarga": ["./private/intl/**"],
     // El mapa de cada planilla intl (qué calculadora tiene hoja y en qué celda va cada dato) lo leen

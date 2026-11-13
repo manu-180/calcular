@@ -54,6 +54,14 @@ export const COMPLEMENTO: Record<ProductoSlug, Complemento> = {
     titulo: "¿Vas a reclamar?",
     texto: "El informe de crédito laboral actualiza la liquidación rubro por rubro y con fuentes, para llevarle al abogado.",
   },
+  // Quien liquida Ganancias de la sociedad casi siempre le paga sueldos a alguien, y Comercio es
+  // el convenio más usado del país: es el complemento que de verdad le sirve a una SA, SAS o SRL.
+  "planilla-ganancias-sociedades": {
+    para: "planilla-comercio",
+    titulo: "¿La sociedad tiene empleados?",
+    texto:
+      "La planilla de Comercio trae la escala de FAECYS cargada: elegís la categoría y te da el bruto, los aportes y el neto de cada mes, con el recibo para imprimir.",
+  },
   "planilla-vacaciones": {
     para: "planilla-comercio",
     titulo: "¿Liquidás sueldos de comercio?",

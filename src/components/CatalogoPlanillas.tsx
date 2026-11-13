@@ -12,6 +12,7 @@ const CORTO: Record<ProductoSlug, string> = {
   "planilla-vacaciones": "Vacaciones",
   "planilla-mi-sueldo": "Mi sueldo",
   "planilla-plazo-fijo": "Plazo fijo",
+  "planilla-ganancias-sociedades": "Ganancias de sociedades",
   "informe-indemnizacion": "Despido",
   "informe-ganancias": "Ganancias",
   "informe-credito-laboral": "Crédito laboral",

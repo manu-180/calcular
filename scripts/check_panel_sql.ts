@@ -773,6 +773,7 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
       "informe-cuota-alimentaria",
       "planilla-camioneros",
       "planilla-vacaciones",
+      "planilla-ganancias-sociedades",
       "planilla-mi-sueldo",
       "planilla-plazo-fijo",
       "informe-indemnizacion",
