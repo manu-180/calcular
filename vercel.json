@@ -28,6 +28,10 @@
     {
       "path": "/api/cron/dia-nuevo",
       "schedule": "25 3 * * *"
+    },
+    {
+      "path": "/api/cron/oportunidades",
+      "schedule": "40 13 * * *"
     }
   ],
   "ignoreCommand": "bash scripts/vercel-ignorar.sh"
