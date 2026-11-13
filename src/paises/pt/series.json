@@ -609,6 +609,7 @@
         "verificadoEl": "2026-10-14",
         "nota": "O INE publica o IPC; o Banco de Portugal difunde a mesma série no BPstat, que é a API usada pelo detector."
       },
+      "altas": [["2026-11-13", "2026-10-01"]],
       "puntos": [
         [
           "2010-01-01",
@@ -1413,7 +1414,8 @@
         [
           "2026-09-01",
           104.6
-        ]
+        ],
+        ["2026-10-01", 104.8]
       ]
     }
   ]
