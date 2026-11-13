@@ -176,7 +176,7 @@ jobs:
           CREATIVO: ${{ steps.producir.outputs.creativo }}
           PUBLICADAS: ${{ steps.publicar.outputs.publicadas }}
         run: |
-          git add -A -- marketing/reels/estado.json
+          if [ -f marketing/reels/estado.json ]; then git add -A -- marketing/reels/estado.json; fi
           if git diff --cached --quiet; then
             echo "Nada que commitear."
             exit 0
