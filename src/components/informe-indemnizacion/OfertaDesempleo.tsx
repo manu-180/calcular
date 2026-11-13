@@ -140,8 +140,9 @@ export function OfertaInformeDesempleo({
                 <strong className="font-semibold text-zinc-800">
                   La liquidación final la paga la empresa, de una sola vez y sin techo
                 </strong>
-                : antigüedad, preaviso, integración del mes, aguinaldos y vacaciones. Es la única de
-                las dos que se discute antes de firmar.
+                , y es la única de las dos que se discute antes de firmar. El informe la abre rubro
+                por rubro —antigüedad, preaviso, integración del mes, aguinaldos y vacaciones— y
+                deja a la vista cuáles te corresponden y de qué artículo sale cada uno.
               </>
             ) : (
               <>
