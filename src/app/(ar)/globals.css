@@ -744,8 +744,10 @@ html:has(dialog.ca-bloquea[open]) {
   animation: ca-oferta-entra 0.5s var(--ease-sereno) calc(var(--i, 0) * 0.07s) backwards;
 }
 
-/* La cifra cambia cada vez que la persona corrige su sueldo: llega, no parpadea. */
-@keyframes ca-cifra-entra {
+/* La cifra de la oferta cambia cada vez que la persona corrige su sueldo: llega, no parpadea.
+   El nombre lleva `oferta` porque `.ca-cifra` ya es la tarjeta de la home (línea ~506) y este
+   bloque, al venir después en el archivo, le pisaba el `display: flex` y le metía la animación. */
+@keyframes ca-oferta-cifra-entra {
   from {
     opacity: 0;
     transform: translateY(0.12em) scale(0.96);
@@ -756,10 +758,10 @@ html:has(dialog.ca-bloquea[open]) {
   }
 }
 
-.ca-cifra {
+.ca-oferta-cifra {
   display: inline-block;
   transform-origin: left bottom;
-  animation: ca-cifra-entra 0.42s var(--ease-fluid);
+  animation: ca-oferta-cifra-entra 0.42s var(--ease-fluid);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -768,7 +770,7 @@ html:has(dialog.ca-bloquea[open]) {
   .ca-menu-cuenta,
   .ca-menu-cuenta-lista > *,
   .ca-oferta[data-visible="si"] > * > *,
-  .ca-cifra {
+  .ca-oferta-cifra {
     animation: none;
   }
   .ca-underline {

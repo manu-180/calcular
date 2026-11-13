@@ -118,7 +118,7 @@ export function OfertaInformeDesempleo({
                 aria-hidden
               >
                 {/* `key` por valor: cada corrección del sueldo vuelve a disparar la llegada. */}
-                <span key={tasa} className="ca-cifra">
+                <span key={tasa} className="ca-oferta-cifra">
                   {tasa}%
                 </span>
               </p>
@@ -138,21 +138,21 @@ export function OfertaInformeDesempleo({
                 La prestación la liquida ANSES, viene en cuotas y ninguna puede superar el salario
                 mínimo del mes.{" "}
                 <strong className="font-semibold text-zinc-800">
-                  La liquidación final la paga la empresa, de una sola vez y sin techo
-                </strong>
-                , y es la única de las dos que se discute antes de firmar. El informe la abre rubro
-                por rubro —antigüedad, preaviso, integración del mes, aguinaldos y vacaciones— y
-                deja a la vista cuáles te corresponden y de qué artículo sale cada uno.
+                  La liquidación final la paga la empresa, de una sola vez y sin techo.
+                </strong>{" "}
+                Es la única de las dos que se discute antes de firmar. El informe la abre rubro por
+                rubro: antigüedad, preaviso, integración del mes, aguinaldos y vacaciones. Te
+                muestra cuáles te corresponden y de qué artículo sale cada uno.
               </>
             ) : (
               <>
                 Cobrabas {formatARS(neto, 0)} por mes y el seguro arranca en{" "}
-                {formatARS(primera.monto, 0)}: lo liquida ANSES, viene en cuotas y cada una está
-                topeada por el salario mínimo.{" "}
+                {formatARS(primera.monto, 0)}. Lo liquida ANSES, viene en cuotas y ninguna puede
+                superar el salario mínimo del mes.{" "}
                 <strong className="font-semibold text-zinc-800">
-                  La liquidación final la paga la empresa, de una sola vez y sin techo
-                </strong>
-                , y es la única de las dos que se discute antes de firmar.
+                  La liquidación final la paga la empresa, de una sola vez y sin techo.
+                </strong>{" "}
+                Es la única de las dos que se discute antes de firmar.
               </>
             )}
           </p>
