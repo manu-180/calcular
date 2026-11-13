@@ -10,6 +10,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { RUTAS_QUE_VENDEN, RUTAS_QUE_VENDEN_EXACTAS, vendeAlgo } from "../src/lib/paginas-que-venden";
+import { PAGINAS } from "../src/data/navegacion";
 
 let fallas = 0;
 function check(nombre: string, cond: boolean, detalle?: unknown) {
@@ -62,9 +63,19 @@ check(
 
 // Las páginas informativas SÍ tienen que poder monetizar: si el guard se generalizara por error,
 // el sitio se quedaría sin anuncios en todos lados y nadie lo notaría hasta fin de mes.
-for (const ruta of ["/", "/desempleo", "/canasta-basica/agosto-2026", "/inflacion/2026", "/jubilacion", "/cuota-alimentaria/agosto-2026"]) {
+for (const ruta of ["/", "/renuncia", "/canasta-basica/agosto-2026", "/inflacion/2026", "/jubilacion", "/cuota-alimentaria/agosto-2026"]) {
   check(`${ruta} puede servir anuncios`, !vendeAlgo(ruta));
 }
+
+const declaranVende = PAGINAS.filter((p) => p.vende).map((p) => p.href);
+check(`hay páginas que declaran \`vende\` en navegacion.ts (${declaranVende.length})`, declaranVende.length > 0);
+
+const vendenYSirvenAds = declaranVende.filter((href) => !vendeAlgo(href));
+check(
+  "NINGUNA página que declara `vende` sirve anuncios",
+  vendenYSirvenAds.length === 0,
+  vendenYSirvenAds.length ? { faltanEnPAGINAS_QUE_VENDEN: vendenYSirvenAds } : undefined,
+);
 
 console.log("");
 if (fallas > 0) {

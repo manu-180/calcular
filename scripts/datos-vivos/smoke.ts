@@ -29,6 +29,10 @@ const CASOS: Caso[] = [
   { ruta: "/monotributo" },
   { ruta: "/aguinaldo" },
   { ruta: "/planillas" },
+  // Que /desempleo siga ofreciendo el informe de liquidación final. Es lo único que el
+  // contenedor de una sesión de Kairo no puede comprobar (la política de red no llega a
+  // calcular.ar): si la oferta se cae de producción, esto abre el issue solo.
+  { ruta: "/desempleo", debeContener: ['data-oferta="informe-indemnizacion"'] },
   { ruta: "/sitemap.xml", debeContener: ["<loc>"] },
   { ruta: "/jubilacion", debeContener: [prestacionesVigentes().resolucion.replace("Resolución ANSES ", ""), bonoVigente().norma, miles(prestacionesVigentes().haberMinimo)] },
   { ruta: "/asignaciones-familiares", debeContener: [asignacionesVigentes().resolucion.replace("Resolución ANSES ", ""), miles(asignacionesVigentes().universales.hijo.general)] },

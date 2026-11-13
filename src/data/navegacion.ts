@@ -444,6 +444,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/desempleo",
       titulo: "Prestación por desempleo",
       descripcion: "Cuánto cobrás de seguro y por cuántos meses",
+      vende: DESPIDO,
       claves: ["seguro de desempleo", "fondo de desempleo", "anses", "despido"],
     },
     {
