@@ -19,6 +19,9 @@ const miles = (n: number) => Math.round(n).toLocaleString("es-AR");
 type Caso = { ruta: string; debeContener?: string[] };
 
 const UOCRA = vigenteEn(MESES_UOCRA, periodoDeMes);
+/** Slug del producto cuya oferta se comprueba en vivo. Escrito, no importado de src/lib/mp: ese
+ *  módulo lee el .xlsx del disco y este script corre contra producción, sin el repo entero. */
+const SOCIEDADES = "planilla-ganancias-sociedades";
 
 const CASOS: Caso[] = [
   { ruta: "/" },
@@ -30,6 +33,11 @@ const CASOS: Caso[] = [
   { ruta: "/jubilacion", debeContener: [prestacionesVigentes().resolucion.replace("Resolución ANSES ", ""), bonoVigente().norma, miles(prestacionesVigentes().haberMinimo)] },
   { ruta: "/asignaciones-familiares", debeContener: [asignacionesVigentes().resolucion.replace("Resolución ANSES ", ""), miles(asignacionesVigentes().universales.hijo.general)] },
   { ruta: "/convenios/uocra", debeContener: [UOCRA.etiqueta.toLowerCase(), miles(UOCRA.jornales.oficial.a)] },
+  // La oferta de una página que vende puede dejar de pintarse sin que nada dé 404: el CTA vive en
+  // un componente de cliente y basta con que su rama deje de cumplirse. Se chequea el marcador del
+  // producto, no un texto de copy, para que un cambio de redacción no ponga esto en rojo.
+  { ruta: "/ganancias-sociedades", debeContener: [`data-oferta="${SOCIEDADES}"`] },
+  { ruta: "/planillas/ganancias-sociedades", debeContener: [`data-producto="${SOCIEDADES}"`] },
 ];
 
 async function traer(url: string): Promise<{ status: number; html: string }> {
