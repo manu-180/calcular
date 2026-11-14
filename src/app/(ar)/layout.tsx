@@ -7,6 +7,8 @@ import { ScriptExperimentos } from "@/components/Experimentos";
 import { Rastreador } from "@/components/Rastreador";
 import { AcordeonesFluidos } from "@/components/AcordeonesFluidos";
 import { HerramientasCalculo } from "@/components/herramientas/HerramientasCalculo";
+import { VueltaDePago, type ProductoVuelta } from "@/components/compra/VueltaDePago";
+import { PRODUCTOS } from "@/lib/mp";
 import { tabsDelEncabezado } from "@/data/navegacion";
 import { JsonLd } from "@/components/JsonLd";
 import { grafoDelSitio } from "@/lib/seo";
@@ -70,6 +72,11 @@ export const revalidate = 86400;
 // el modelo de navegación entero en el JS de cada página.
 const TABS = tabsDelEncabezado();
 const GRAFO_DEL_SITIO = grafoDelSitio();
+// Nombre y precio de cada producto para el aviso de «¿no pudiste terminar la compra?»: el catálogo
+// (mp.ts) es de servidor, así que viaja como prop.
+const PRODUCTOS_VUELTA: Record<string, ProductoVuelta> = Object.fromEntries(
+  Object.values(PRODUCTOS).map((p) => [p.slug, { titulo: p.tituloCorto, precio: p.precio }]),
+);
 
 export default function RootLayout({
   children,
@@ -103,6 +110,7 @@ export default function RootLayout({
         <Rastreador />
         <AcordeonesFluidos />
         <HerramientasCalculo />
+        <VueltaDePago productos={PRODUCTOS_VUELTA} />
         <AdSense />
       </body>
     </html>

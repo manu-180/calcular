@@ -386,6 +386,29 @@ function observarOfertas() {
   document.querySelectorAll("[data-oferta]").forEach((el) => io!.observe(el));
 }
 
+// Las ofertas que se montan recién con el resultado (alquiler, plazo fijo, vacaciones) no existen
+// cuando se abre la vista ni 2,5 s después: nadie las observaba y su `vista_oferta` no se contaba
+// (en /inflacion/alquiler, 16 «vieron» y 16 tocaron). Cada vez que cambia el contenido de <main>
+// se vuelven a buscar; observar dos veces el mismo elemento no hace nada.
+let moOfertas: MutationObserver | undefined;
+let buscarOfertas: ReturnType<typeof setTimeout> | undefined;
+
+function vigilarOfertas() {
+  moOfertas?.disconnect();
+  clearTimeout(buscarOfertas);
+  buscarOfertas = undefined;
+  if (typeof MutationObserver === "undefined") return;
+  const main = document.querySelector("main");
+  if (!main) return;
+  moOfertas ??= new MutationObserver(() => {
+    buscarOfertas ??= setTimeout(() => {
+      buscarOfertas = undefined;
+      observarOfertas();
+    }, 400);
+  });
+  moOfertas.observe(main, { childList: true, subtree: true });
+}
+
 export function iniciar(): void {
   if (estado) return;
   const forzado = location.search.includes("rastreo=1");
@@ -505,4 +528,5 @@ export function abrirVista(pathname: string, ctx: ContextoVista = CONTEXTO_AR): 
   io?.disconnect();
   observarOfertas();
   setTimeout(observarOfertas, 2500);
+  vigilarOfertas();
 }
