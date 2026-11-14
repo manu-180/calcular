@@ -319,6 +319,25 @@ async function main() {
     malas.slice(0, 12),
   );
 
+  // ── 2b. Ninguna celda del libro queda en error ─────────────────────────────
+  // Una referencia a una hoja que se renombró, un rango corrido o un INDEX fuera de tabla dan
+  // #REF! o #VALUE! en el Excel del comprador, y los checks de arriba sólo miran las celdas que
+  // nombran. Esta pasada recorre el libro entero con el último caso cargado.
+  const conError: string[] = [];
+  for (const hoja of libro.hojas) {
+    const id = libro.hf.getSheetId(hoja)!;
+    const { height, width } = libro.hf.getSheetDimensions(id);
+    for (let row = 0; row < height; row++) {
+      for (let col = 0; col < width; col++) {
+        const v = libro.hf.getCellValue({ sheet: id, row, col });
+        if (v !== null && typeof v === "object" && "value" in v) {
+          conError.push(`${hoja}!r${row + 1}c${col + 1}: ${String((v as { value: unknown }).value)}`);
+        }
+      }
+    }
+  }
+  check("ninguna celda del libro queda en error (#REF!, #VALUE!, #DIV/0!)", conError.length === 0, conError.slice(0, 10));
+
   // ── 3. El control contra los recibos ───────────────────────────────────────
   const conRecibos: Caso = {
     nombre: "control contra recibos",
