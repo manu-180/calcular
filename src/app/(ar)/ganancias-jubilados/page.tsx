@@ -14,6 +14,7 @@ import {
   haberesMinimosProyectados,
 } from "@/lib/ganancias-jubilados";
 import { formatARS } from "@/lib/formato";
+import { datosOferta } from "@/lib/oferta";
 
 function datosDelMes() {
   const BASE = calcularGananciasJubilados({ haberBruto: 3_500_000 });
@@ -158,7 +159,7 @@ export default function GananciasJubiladosPage() {
         </p>
       </RespuestaPrimero>
 
-      <CalculadoraGananciasJubilados />
+      <CalculadoraGananciasJubilados oferta={datosOferta("planilla-ganancias-jubilados")} />
 
       <section className="space-y-3">
         <h2 className="text-xl font-bold text-zinc-900">
