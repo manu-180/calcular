@@ -48,6 +48,7 @@ export const RUTAS_QUE_VENDEN_EXACTAS = [
   "/sueldo-neto",
   "/indemnizacion",
   "/desempleo",
+  "/despido-de-delegado-gremial",
   "/inflacion",
   "/ganancias",
   "/ganancias-sociedades",
