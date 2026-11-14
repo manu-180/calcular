@@ -43,6 +43,11 @@ const CASOS: Caso[] = [
   // producto, no un texto de copy, para que un cambio de redacción no ponga esto en rojo.
   { ruta: "/ganancias-sociedades", debeContener: [`data-oferta="${SOCIEDADES}"`] },
   { ruta: "/planillas/ganancias-sociedades", debeContener: [`data-producto="${SOCIEDADES}"`] },
+  // Lo mismo para /despido-de-delegado-gremial. Acá la oferta se pinta aunque la persona no haya
+  // cargado nada, así que el marcador tiene que estar en el HTML del server: si alguien la vuelve
+  // a condicionar al resultado de la calculadora, la mayoría de las visitas deja de verla y esto
+  // se pone en rojo en el primer deploy.
+  { ruta: "/despido-de-delegado-gremial", debeContener: ['data-oferta="informe-indemnizacion"'] },
   // En /ganancias-jubilados la oferta sólo se pinta si con el haber que la calculadora trae por
   // defecto hay impuesto: si las deducciones suben y ese haber deja de pagar, la página deja de
   // vender y esto lo dice, que es justo lo que hay que saber.

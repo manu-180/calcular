@@ -4,6 +4,11 @@ import { CalculadoraTutelaSindical } from "@/components/CalculadoraTutelaSindica
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
+import { InformeIndemnizacionMiniatura } from "@/components/informe-indemnizacion/Miniatura";
+import { CASO_EJEMPLO } from "@/app/(ar)/informes/indemnizacion/_modelo";
+import { entradaDelMotor } from "@/lib/prefill/indemnizacion";
+import { calcularIndemnizacion } from "@/lib/indemnizacion";
+import { productoPorSlug } from "@/lib/mp";
 import {
   CAMBIOS,
   CONGRESALES_CON_TUTELA,
@@ -37,6 +42,13 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+/** La primera hoja del informe con el caso de ejemplo. Se arma en el servidor: así el motor de la
+ *  indemnización no se suma al JS que baja esta página. */
+function miniaturaInforme() {
+  const r = calcularIndemnizacion(entradaDelMotor(CASO_EJEMPLO));
+  return r ? <InformeIndemnizacionMiniatura r={r} /> : null;
+}
 
 export default function DespidoDelegadoGremialPage() {
   const faqs = [
@@ -155,7 +167,10 @@ export default function DespidoDelegadoGremialPage() {
           , porque dos páginas de calcular.ar no pueden dar dos montos distintos para el mismo caso.
           Lo que se suma acá es el extra del art. 52.
         </p>
-        <CalculadoraTutelaSindical />
+        <CalculadoraTutelaSindical
+          precioInforme={productoPorSlug("informe-indemnizacion")?.precio}
+          miniaturaInforme={miniaturaInforme()}
+        />
       </section>
 
       <section className="space-y-3">
