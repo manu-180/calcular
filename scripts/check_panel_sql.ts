@@ -16,6 +16,7 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Lectura, PanelDatos } from "../src/lib/panel/tipos";
+import { CATALOGO } from "../src/lib/mp";
 
 type Fila = Record<string, unknown>;
 type Resultado = { rows: Fila[]; affectedRows?: number };
@@ -762,25 +763,14 @@ async function probarPanel(db: Db, mods: { datos: ModDatos; lecturas: ModLectura
   igual(armado.kpis[0].serie[0].t, "2026-09-01T03:00:00.000Z", "las fechas salen en ISO UTC");
   ok(armado.paginas.every((x) => x.serieUsos.length === 7 && x.titulo.length > 0), "páginas con título y serie completa");
   igual(armado.paginas[0].tasaUso, 0.5, "tasaUso = usos / vistas");
+  // La lista sale de CATALOGO y no de un literal: lo que se prueba es que estén TODOS y en el
+  // orden del catálogo, aunque no tengan movimiento. Con el literal, cada producto nuevo ponía
+  // esta suite en rojo sin que el panel tuviera nada mal (pasó con la planilla de jubilados).
+  // Que el catálogo sea el que corresponde lo prueba check_catalogo.ts, que fija los slugs uno
+  // por uno.
   igual(
     armado.embudos.map((e) => e.producto),
-    [
-      "planilla-comercio",
-      "planilla-casas-particulares",
-      "planilla-monotributo",
-      "planilla-alquileres",
-      "planilla-uocra",
-      "informe-cuota-alimentaria",
-      "planilla-camioneros",
-      "planilla-vacaciones",
-      "planilla-ganancias-sociedades",
-      "planilla-mi-sueldo",
-      "planilla-plazo-fijo",
-      "informe-indemnizacion",
-      "informe-ganancias",
-      "informe-credito-laboral",
-      "informe-inflacion",
-    ],
+    CATALOGO.map((p) => p.slug),
     "siempre todos los productos del catálogo, aunque no tengan movimiento",
   );
   const cuota = mods.datos.armarPanel("7d", desde, hasta, {

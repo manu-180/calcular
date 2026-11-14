@@ -22,7 +22,6 @@ import { formatARS } from "@/lib/formato";
 
 const PRODUCTO = PRODUCTOS["planilla-ganancias-jubilados"];
 const PRECIO = PRODUCTO.precio.toLocaleString("es-AR");
-const MESES_PUBLICADOS = haberesMinimosProyectados().filter((m) => m.publicado).length;
 
 export const metadata: Metadata = {
   title: `Planilla de Ganancias para jubilados ${ANIO_JUBILADOS} en Excel`,
@@ -40,17 +39,21 @@ export const metadata: Metadata = {
 // calcula el propio motor del sitio. check_planilla_ganancias_jubilados.ts exige que el archivo
 // dé estos mismos números.
 function datosDelCaso() {
+  // Cuántos haberes mínimos del año publicó ANSES. Se cuenta acá y no al cargar el módulo: el mes
+  // cambia y la página se regenera, pero el módulo puede seguir vivo con el conteo de otro mes
+  // (scripts/check_mes_en_render.ts lo frena).
+  const MESES_PUBLICADOS = haberesMinimosProyectados().filter((m) => m.publicado).length;
   const ARCHIVO = datosOferta("planilla-ganancias-jubilados").archivo;
   const UMBRAL = calcularGananciasJubilados({ haberBruto: 1 }).umbralHaber;
   const CASO = casoDeLanding(UMBRAL);
   const EJEMPLO = previaJubilados(ARCHIVO, CASO)!;
   const PROMEDIO = calcularGananciasJubilados({ haberBruto: CASO.haberMensual }).retencionMensual;
   const MAS_BAJO = EJEMPLO.resultado.filas.reduce((a, b) => (b.retencionMes < a.retencionMes ? b : a));
-  return { ARCHIVO, UMBRAL, CASO, EJEMPLO, PROMEDIO, MAS_BAJO };
+  return { ARCHIVO, MESES_PUBLICADOS, UMBRAL, CASO, EJEMPLO, PROMEDIO, MAS_BAJO };
 }
 
 export default function PlanillaGananciasJubiladosPage() {
-  const { UMBRAL, CASO, EJEMPLO, PROMEDIO, MAS_BAJO } = datosDelCaso();
+  const { MESES_PUBLICADOS, UMBRAL, CASO, EJEMPLO, PROMEDIO, MAS_BAJO } = datosDelCaso();
   const HABER = formatARS(CASO.haberMensual, 0);
 
   return (
