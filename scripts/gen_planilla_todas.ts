@@ -19,6 +19,7 @@ import { generarPlanillaMiSueldo } from "./gen_planilla_mi_sueldo";
 import { generarPlanillaVacaciones } from "./gen_planilla_vacaciones";
 import { generarPlanillaPlazoFijo } from "./gen_planilla_plazo_fijo";
 import { generarPlanillaGananciasSociedades } from "./gen_planilla_ganancias_sociedades";
+import { generarPlanillaGananciasJubilados } from "./gen_planilla_ganancias_jubilados";
 import { generarPlanillasIntl } from "./paises/gen_planillas_intl";
 
 async function main() {
@@ -33,6 +34,7 @@ async function main() {
     ["Vacaciones", await generarPlanillaVacaciones()],
     ["Plazos fijos", await generarPlanillaPlazoFijo()],
     ["Ganancias de sociedades", await generarPlanillaGananciasSociedades()],
+    ["Ganancias de jubilados", await generarPlanillaGananciasJubilados()],
   ] as const;
 
   for (const [nombre, ruta] of salidas) {

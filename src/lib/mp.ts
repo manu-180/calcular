@@ -34,6 +34,7 @@ export type ProductoSlug =
   | "planilla-vacaciones"
   | "planilla-plazo-fijo"
   | "planilla-ganancias-sociedades"
+  | "planilla-ganancias-jubilados"
   | "informe-indemnizacion"
   | "informe-ganancias"
   | "informe-inflacion"
@@ -234,6 +235,23 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     rutaDescarga: "/api/planilla-ganancias-sociedades/download",
     rutaLanding: "/planillas/ganancias-sociedades",
   },
+  // La única planilla del catálogo que la compra una persona para controlar lo que el Estado le
+  // descuenta de su propio haber, no para liquidarle a otro. Vale como las de audiencia masiva:
+  // la paga un jubilado de su bolsillo.
+  "planilla-ganancias-jubilados": {
+    slug: "planilla-ganancias-jubilados",
+    titulo: "Planilla de Ganancias para jubilados 2026",
+    tituloCorto: "Planilla Ganancias jubilados 2026",
+    convenio: "Impuesto a las Ganancias, art. 30 (deducción específica de jubilados y pensionados)",
+    paraQuien: "Para el jubilado o pensionado al que le retienen Ganancias y quiere controlar mes a mes si le retienen bien",
+    disparadorActualizacion: "cada vez que ANSES publica el haber mínimo de un mes nuevo o ARCA actualiza la escala y las deducciones",
+    precio: 6900,
+    moneda: "ARS",
+    entrega: "xlsx",
+    archivo: "planilla-ganancias-jubilados-2026.xlsx",
+    rutaDescarga: "/api/planilla-ganancias-jubilados/download",
+    rutaLanding: "/planillas/ganancias-jubilados",
+  },
   "informe-indemnizacion": {
     slug: "informe-indemnizacion",
     titulo: "Informe de liquidación final por despido",
@@ -303,6 +321,7 @@ export const CATALOGO: Producto[] = [
   PRODUCTOS["planilla-camioneros"],
   PRODUCTOS["planilla-vacaciones"],
   PRODUCTOS["planilla-ganancias-sociedades"],
+  PRODUCTOS["planilla-ganancias-jubilados"],
   PRODUCTOS["planilla-mi-sueldo"],
   PRODUCTOS["planilla-plazo-fijo"],
   PRODUCTOS["informe-indemnizacion"],

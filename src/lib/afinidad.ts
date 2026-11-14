@@ -62,6 +62,15 @@ export const COMPLEMENTO: Record<ProductoSlug, Complemento> = {
     texto:
       "La planilla de Comercio trae la escala de FAECYS cargada: elegís la categoría y te da el bruto, los aportes y el neto de cada mes, con el recibo para imprimir.",
   },
+  // El segundo ingreso más común de un jubilado con un haber alto es un inmueble alquilado, y es
+  // justo lo que le puede hacer perder la deducción específica de los ocho haberes mínimos: el
+  // complemento le sirve para el alquiler y para saber cuánto le cuesta esa pérdida.
+  "planilla-ganancias-jubilados": {
+    para: "planilla-alquileres",
+    titulo: "¿Alquilás una propiedad?",
+    texto:
+      "La planilla de alquileres lleva hasta seis contratos con el IPC del INDEC cargado: te dice cuándo toca el aumento y de cuánto, y te arma el recibo y el aviso para el inquilino.",
+  },
   "planilla-vacaciones": {
     para: "planilla-comercio",
     titulo: "¿Liquidás sueldos de comercio?",

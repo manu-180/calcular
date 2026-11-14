@@ -5,6 +5,9 @@ import { REGIMENES } from "@/data/descuento-pami";
 import { calcularGananciasJubilados } from "@/lib/ganancias-jubilados";
 import { formatARS, parseMonto, errorMonto, primerError, CANTIDAD_MAXIMA } from "@/lib/formato";
 import { ErrorCalculo } from "@/components/ErrorCalculo";
+import { OfertaPlanilla } from "@/components/OfertaPlanilla";
+import { previaJubilados } from "@/components/ganancias-jubilados/previa";
+import type { DatosOferta } from "@/lib/oferta";
 
 const claseInput =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
@@ -19,7 +22,7 @@ const MOTIVOS = {
     "Este año los ocho haberes mínimos no superan al mínimo no imponible más la deducción especial, así que se usa lo más alto.",
 } as const;
 
-export function CalculadoraGananciasJubilados() {
+export function CalculadoraGananciasJubilados({ oferta }: { oferta?: DatosOferta }) {
   const [haber, setHaber] = useState("3500000");
   const [regimen, setRegimen] = useState("dependencia");
   const [conyuge, setConyuge] = useState(false);
@@ -43,6 +46,24 @@ export function CalculadoraGananciasJubilados() {
         bienesPersonales,
       }),
     [haber, regimen, conyuge, hijos, otrosIngresos, bienesPersonales],
+  );
+
+  // La previa sale del mismo caso que el resultado de arriba, y es null cuando con ese haber no
+  // hay impuesto: a quien no paga Ganancias no se le ofrece una planilla para controlar una
+  // retención que no existe.
+  const previa = useMemo(
+    () =>
+      oferta
+        ? previaJubilados(oferta.archivo, {
+            haberMensual: parseMonto(haber),
+            regimenPamiId: regimen,
+            conyuge,
+            hijos: parseMonto(hijos),
+            otrosIngresos,
+            bienesPersonales,
+          })
+        : null,
+    [oferta, haber, regimen, conyuge, hijos, otrosIngresos, bienesPersonales],
   );
 
   const regimenesConAporte = REGIMENES.filter((r) => r.tramos !== null);
@@ -199,6 +220,44 @@ export function CalculadoraGananciasJubilados() {
             algo menor. La retención mes a mes la hace ANSES (o tu caja) con el método acumulado.
           </p>
         </div>
+
+        {oferta && previa && (
+          <div className="mt-7">
+            <OfertaPlanilla
+              producto={oferta}
+              desde="cta-ganancias-jubilados"
+              hoja={previa.hoja}
+              titulo="La retención no es la misma todos los meses"
+              bajada={
+                <>
+                  Tu caja no reparte el impuesto en doce partes iguales: liquida con el método acumulado. Con tu
+                  haber, en enero te retiene <strong className="font-semibold text-zinc-800">{formatARS(previa.primerMes, 0)}</strong> y en{" "}
+                  {previa.mesMasAlto.nombre}{" "}
+                  <strong className="font-semibold text-zinc-800">{formatARS(previa.mesMasAlto.monto, 0)}</strong>. La
+                  planilla hace esa cuenta con tus doce haberes reales y la compara con lo que dice cada recibo.
+                </>
+              }
+              incluye={[
+                {
+                  titulo: "Los doce meses, no un promedio",
+                  texto:
+                    "Cargás el haber bruto de cada recibo (cambia todos los meses con la movilidad) y la planilla hace el método acumulado de la RG 4003: la retención que corresponde en cada mes, con el aguinaldo de junio y diciembre.",
+                },
+                {
+                  titulo: "La diferencia contra tus recibos",
+                  texto:
+                    "Una columna para lo que dice cada recibo y otra con la diferencia, mes por mes y en el total del año. Si te retuvieron de más, te queda el número para reclamarlo.",
+                },
+                {
+                  titulo: "La deducción de los ocho haberes mínimos, mes a mes",
+                  texto:
+                    "La serie oficial de ANSES cargada: la específica crece todos los meses, y cuando ANSES publica uno nuevo lo cargás vos o te llega la versión al día al mismo enlace.",
+                },
+              ]}
+              notaHoja="La previa es un ejemplo con tu haber. La planilla llega en blanco, para que cargues tus doce meses."
+            />
+          </div>
+        )}
         </>
       )}
     </div>

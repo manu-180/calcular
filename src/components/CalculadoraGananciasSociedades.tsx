@@ -180,11 +180,11 @@ export function CalculadoraGananciasSociedades({ oferta }: { oferta?: DatosOfert
             titulo="Toda la liquidación de la sociedad en Excel"
             bajada={
               <>
-                La planilla te llega con{" "}
+                Así se ve tu caso adentro de la planilla, con{" "}
                 <strong className="font-semibold text-zinc-800">{formatARS(parseMonto(ganancia), 0)}</strong> y el
-                ejercicio iniciado en <strong className="font-semibold text-zinc-800">{anio}</strong> ya cargados.
-                Cambiás el mes de cierre y ella sola elige la tabla que te toca, suma los quebrantos actualizados y
-                te deja el impuesto determinado para el balance.
+                ejercicio iniciado en <strong className="font-semibold text-zinc-800">{anio}</strong>. Cargás el mes
+                de cierre y ella sola elige la tabla que te toca, suma los quebrantos actualizados y te deja el
+                impuesto determinado para el balance.
               </>
             }
             incluye={[
@@ -207,7 +207,6 @@ export function CalculadoraGananciasSociedades({ oferta }: { oferta?: DatosOfert
                 texto: `Las ${ANIOS.length} escalas publicadas, con los dos límites, los importes fijos y de dónde sale cada una. Cuando el INDEC publica el IPC de octubre y queda definida la del año que viene, te llega al mismo enlace sin pagar de nuevo.`,
               },
             ]}
-            notaHoja="Las celdas amarillas ya vienen con tus datos. Cambiás una y se recalcula todo."
           />
         </div>
       )}

@@ -15,6 +15,8 @@ process.env.MP_ACCESS_TOKEN = "APP_USR-token-de-prueba-no-es-el-real";
 
 import { NextRequest } from "next/server";
 import { servirArchivoProducto, servirPlanilla } from "../src/lib/entrega";
+import { personalizable } from "../src/lib/prefill/servidor";
+import { datosOferta } from "../src/lib/oferta";
 import { informeEntregaHtml } from "../src/lib/email";
 import {
   CATALOGO,
@@ -57,12 +59,13 @@ const GENERADOR: Record<string, string> = {
   "planilla-vacaciones": "generarPlanillaVacaciones",
   "planilla-plazo-fijo": "generarPlanillaPlazoFijo",
   "planilla-ganancias-sociedades": "generarPlanillaGananciasSociedades",
+  "planilla-ganancias-jubilados": "generarPlanillaGananciasJubilados",
 };
 
 // ── 1. Cada producto del catálogo está completo ───────────────────────────────────────
 check("CATALOGO lista todos los productos, sin repetir", new Set(CATALOGO.map((p) => p.slug)).size === Object.keys(PRODUCTOS).length);
 check(
-  "el catálogo tiene los 15 productos (10 planillas y 5 informes)",
+  "el catálogo tiene los 16 productos (11 planillas y 5 informes)",
   JSON.stringify(Object.keys(PRODUCTOS).sort()) ===
     JSON.stringify([
       "informe-credito-laboral",
@@ -74,6 +77,7 @@ check(
       "planilla-camioneros",
       "planilla-casas-particulares",
       "planilla-comercio",
+      "planilla-ganancias-jubilados",
       "planilla-ganancias-sociedades",
       "planilla-mi-sueldo",
       "planilla-monotributo",
@@ -104,6 +108,18 @@ for (const p of Object.values(PRODUCTOS)) {
     check(`${p.slug}: se entrega en una página, no en /api`, !p.rutaDescarga.startsWith("/api/"), p.rutaDescarga);
     check(`${p.slug}: existe la página de entrega ${p.rutaDescarga}`, existsSync(path.join("src/app/(ar)", p.rutaDescarga, "page.tsx")));
   }
+}
+
+// ── 1b. Lo que la oferta promete == lo que la entrega hace ────────────────────────────
+// La Planilla de Ganancias de sociedades decía «te llega con tus datos ya cargados» y se
+// entregaba genérica: pasaba todos los checks porque nadie comparaba la promesa con la entrega.
+for (const p of Object.values(PRODUCTOS)) {
+  if (p.entrega !== "xlsx") continue;
+  check(
+    `${p.slug}: la oferta promete datos cargados sólo si la entrega los pone`,
+    datosOferta(p.slug).llegaConDatos === personalizable(p),
+    { oferta: datosOferta(p.slug).llegaConDatos, entrega: personalizable(p) },
+  );
 }
 
 // ── 2. La referencia lleva el origen sin romper la resolución del producto ─────────────

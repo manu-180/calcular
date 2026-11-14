@@ -138,6 +138,7 @@ const GANANCIAS = "informe-ganancias";
 const INFLACION = "informe-inflacion";
 const CREDITO = "informe-credito-laboral";
 const SOCIEDADES = "planilla-ganancias-sociedades";
+const JUBILADOS = "planilla-ganancias-jubilados";
 
 const DEFS: Record<GrupoId, Def[]> = {
   monotributo: [
@@ -368,6 +369,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/ganancias-jubilados",
       titulo: "Ganancias para jubilados",
       descripcion: "Desde qué haber se paga",
+      vende: JUBILADOS,
       claves: ["jubilados", "pensionados", "8 haberes", "jubilacion"],
     },
     {
@@ -869,6 +871,15 @@ const DEFS: Record<GrupoId, Def[]> = {
       vende: SOCIEDADES,
       tipo: "planilla",
       claves: ["excel", "ganancias sociedades", "art 73", "sa", "sas", "srl", "dividendos", "quebrantos", "balance impositivo"],
+    },
+    {
+      href: "/planillas/ganancias-jubilados",
+      titulo: "Planilla de Ganancias para jubilados",
+      corto: "Ganancias de jubilados",
+      descripcion: "Controlá mes a mes si te retienen bien",
+      vende: JUBILADOS,
+      tipo: "planilla",
+      claves: ["excel", "ganancias jubilados", "pensionados", "deduccion especifica", "8 haberes minimos", "retencion", "siradig", "recibo de haberes"],
     },
     {
       href: "/planillas/mi-sueldo",

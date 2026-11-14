@@ -22,6 +22,7 @@ const UOCRA = vigenteEn(MESES_UOCRA, periodoDeMes);
 /** Slug del producto cuya oferta se comprueba en vivo. Escrito, no importado de src/lib/mp: ese
  *  módulo lee el .xlsx del disco y este script corre contra producción, sin el repo entero. */
 const SOCIEDADES = "planilla-ganancias-sociedades";
+const JUBILADOS = "planilla-ganancias-jubilados";
 
 const CASOS: Caso[] = [
   { ruta: "/" },
@@ -47,6 +48,11 @@ const CASOS: Caso[] = [
   // a condicionar al resultado de la calculadora, la mayoría de las visitas deja de verla y esto
   // se pone en rojo en el primer deploy.
   { ruta: "/despido-de-delegado-gremial", debeContener: ['data-oferta="informe-indemnizacion"'] },
+  // En /ganancias-jubilados la oferta sólo se pinta si con el haber que la calculadora trae por
+  // defecto hay impuesto: si las deducciones suben y ese haber deja de pagar, la página deja de
+  // vender y esto lo dice, que es justo lo que hay que saber.
+  { ruta: "/ganancias-jubilados", debeContener: [`data-oferta="${JUBILADOS}"`] },
+  { ruta: "/planillas/ganancias-jubilados", debeContener: [`data-producto="${JUBILADOS}"`] },
 ];
 
 async function traer(url: string): Promise<{ status: number; html: string }> {

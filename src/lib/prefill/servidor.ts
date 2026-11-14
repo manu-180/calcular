@@ -1,6 +1,11 @@
 import "server-only";
 import ExcelJS from "exceljs";
 import { PREFILLS } from "./index";
+// La lista y la regla viven en entrega-con-datos.ts: la lee también el copy de cada oferta, y con
+// dos copias una se queda atrás prometiendo lo que la entrega no hace.
+import { ROUNDTRIP_VERIFICADO, entregaConDatos } from "./entrega-con-datos";
+
+export { ROUNDTRIP_VERIFICADO };
 import { productoDePago, type MpPayment, type Producto, type ProductoSlug } from "@/lib/mp";
 
 // Lado servidor del prefill: lo que el navegador manda al checkout y lo que vuelve en el pago se
@@ -10,20 +15,6 @@ import { productoDePago, type MpPayment, type Producto, type ProductoSlug } from
 
 /** Tope del JSON de datos, en el form y en la metadata (MP corta la metadata entera en 4000). */
 export const DATOS_MAX = 2048;
-
-/** Productos cuyo .xlsx pasa intacto por exceljs load→write (scripts/check_xlsx_roundtrip.ts).
- *  Uno que no esté acá sale genérico aunque su prefill tenga `aplicar`. */
-export const ROUNDTRIP_VERIFICADO: ReadonlySet<ProductoSlug> = new Set<ProductoSlug>([
-  "planilla-comercio",
-  "planilla-uocra",
-  "planilla-casas-particulares",
-  "planilla-monotributo",
-  "planilla-alquileres",
-  "planilla-camioneros",
-  "planilla-mi-sueldo",
-  "planilla-vacaciones",
-  "planilla-plazo-fijo",
-]);
 
 function validar(slug: string, raw: unknown): unknown | null {
   const prefill = PREFILLS[slug];
@@ -75,7 +66,7 @@ export function datosDelPago(pago: MpPayment, producto: Producto): unknown | nul
 
 /** ¿Este producto puede salir con los datos del comprador cargados? */
 export function personalizable(producto: Producto): boolean {
-  return producto.entrega === "xlsx" && ROUNDTRIP_VERIFICADO.has(producto.slug) && !!PREFILLS[producto.slug]?.aplicar;
+  return producto.entrega === "xlsx" && entregaConDatos(producto.slug);
 }
 
 /** El .xlsx con los datos cargados. Tira ante cualquier problema: quien llama sirve el genérico. */
