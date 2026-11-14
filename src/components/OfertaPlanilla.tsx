@@ -22,7 +22,12 @@ export function OfertaPlanilla({
   titulo,
   bajada,
   incluye,
-  notaHoja = "Las celdas amarillas ya vienen con tus datos. Cambiás una y se recalcula todo.",
+  // Por defecto la nota la decide la ENTREGA, no el copy: `llegaConDatos` sale de
+  // prefill/entrega-con-datos.ts, el mismo dato que elige si el archivo sale con los datos del
+  // comprador o genérico. Una planilla que no es personalizable no puede prometer que lo es.
+  notaHoja = producto.llegaConDatos
+    ? "Las celdas amarillas ya vienen con tus datos. Cambiás una y se recalcula todo."
+    : "La previa es un ejemplo con tus números. La planilla llega en blanco: cargás tus datos en las celdas amarillas y se recalcula todo.",
 }: {
   producto: DatosOferta;
   /** Marca `?desde=` del link a la landing: de ahí sale qué calculadora vende. */
@@ -31,7 +36,8 @@ export function OfertaPlanilla({
   titulo: string;
   bajada: ReactNode;
   incluye: PuntoOferta[];
-  /** Debajo de la vista previa: cambia cuando la previa es un ejemplo y no el caso de la persona. */
+  /** Debajo de la vista previa. Si no se pasa, la escribe `producto.llegaConDatos`. Lo que se
+   *  pase acá no puede prometer datos ya cargados si el producto no los entrega. */
   notaHoja?: ReactNode;
 }) {
   const precio = `$${producto.precio.toLocaleString("es-AR")}`;
