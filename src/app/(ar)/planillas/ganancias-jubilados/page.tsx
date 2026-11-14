@@ -74,7 +74,7 @@ export default function PlanillaGananciasJubiladosPage() {
           familia y la escala del art. 94. Con un haber de {HABER} el impuesto del año es{" "}
           <strong>{formatARS(EJEMPLO.resultado.impuestoAnual, 0)}</strong>, pero no se reparte en doce partes iguales:
           en enero son {formatARS(EJEMPLO.primerMes, 0)}, en {EJEMPLO.mesMasAlto.nombre}{" "}
-          <strong>{formatARS(EJEMPLO.mesMasAlto.monto, 0)}</strong> y en {MESES_PUBLICADOS > 0 ? MAS_BAJO.nombreMes : ""}{" "}
+          <strong>{formatARS(EJEMPLO.mesMasAlto.monto, 0)}</strong> y en {MAS_BAJO.nombreMes}{" "}
           {formatARS(MAS_BAJO.retencionMes, 0)}. Cargás lo que te retuvieron y ves la diferencia. Pago único de{" "}
           <strong>${PRECIO}</strong>, con las actualizaciones del año y 7 días para pedir la devolución.
         </p>
