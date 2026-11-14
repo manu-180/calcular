@@ -637,6 +637,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/despido-de-delegado-gremial",
       titulo: "Despido de delegado gremial",
       descripcion: "Cuánto se cobra con el art. 52 nuevo",
+      vende: DESPIDO,
       claves: ["delegado", "tutela sindical", "gremio", "sindicato"],
     },
     {

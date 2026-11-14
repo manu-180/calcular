@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { ROLES, type RolSindical } from "@/data/tutela-sindical";
 import { calcularTutelaSindical } from "@/lib/tutela-sindical";
 import { formatARS, parseDecimal, parseMonto } from "@/lib/formato";
+import { OfertaInformeDelegadoGremial } from "@/components/informe-indemnizacion/OfertaDelegadoGremial";
 
 const claseInput =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
@@ -27,7 +28,16 @@ function Fila({ label, monto, detalle }: { label: string; monto: number; detalle
   );
 }
 
-export function CalculadoraTutelaSindical() {
+export function CalculadoraTutelaSindical({
+  precioInforme,
+  miniaturaInforme,
+}: {
+  /** Precio del informe de liquidación final, leído del catálogo en el servidor. Sin él no se
+   *  monta la oferta: un precio escrito a mano acá podría no ser el que cobra MercadoPago. */
+  precioInforme?: number;
+  /** La primera hoja del informe, armada en el servidor para no traer su motor al bundle. */
+  miniaturaInforme?: ReactNode;
+} = {}) {
   const [rol, setRol] = useState<RolSindical>("titular");
   const [sueldoInput, setSueldoInput] = useState("");
   const [ingresoISO, setIngresoISO] = useState("");
@@ -67,6 +77,7 @@ export function CalculadoraTutelaSindical() {
   ]);
 
   return (
+    <>
     <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="space-y-5">
         <div>
@@ -381,5 +392,14 @@ export function CalculadoraTutelaSindical() {
         </div>
       )}
     </div>
+
+      {/* Fuera de la tarjeta de la calculadora, como en /desempleo: la oferta es otra pieza, no una
+          fila más del resultado. Se muestra SIEMPRE, no sólo con resultado: quien no completa el
+          formulario es la mayoría de las visitas y si no, no se entera de que hay algo a la venta.
+          Con resultado, el titular suma la cifra. */}
+      {precioInforme !== undefined && (
+        <OfertaInformeDelegadoGremial res={res} precio={precioInforme} miniatura={miniaturaInforme} />
+      )}
+    </>
   );
 }
