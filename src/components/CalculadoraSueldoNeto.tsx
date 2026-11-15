@@ -354,9 +354,8 @@ export function CalculadoraSueldoNeto({ oferta }: { oferta?: DatosOferta }) {
       )}
     </div>
 
-      {oferta && datosCompra && (
-        <OfertaMiSueldo producto={oferta} datos={datosCompra} onUltimoAumento={setUltimoAumento} />
-      )}
+      {/* `datosCompra` null = versión corta de la oferta, no ausencia: ver OfertaMiSueldo. */}
+      {oferta && <OfertaMiSueldo producto={oferta} datos={datosCompra} onUltimoAumento={setUltimoAumento} />}
     </div>
   );
 }

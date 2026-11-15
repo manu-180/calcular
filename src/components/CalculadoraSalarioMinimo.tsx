@@ -219,7 +219,8 @@ export function CalculadoraSalarioMinimo({ oferta }: { oferta?: DatosOferta }) {
       </p>
     </div>
 
-      {oferta && datosCompra && (
+      {/* `datosCompra` null = versión corta de la oferta, no ausencia: ver OfertaMiSueldo. */}
+      {oferta && (
         <OfertaMiSueldo
           producto={oferta}
           datos={datosCompra}
@@ -227,12 +228,14 @@ export function CalculadoraSalarioMinimo({ oferta }: { oferta?: DatosOferta }) {
           desde="salario-minimo"
           titulo="Tu sueldo, mes a mes, frente a la inflación"
           bajada={
-            <>
-              Ya sabés cómo está tu sueldo de{" "}
-              <strong className="font-semibold text-zinc-800">{formatARS(datosCompra.bruto, 0)}</strong> frente al
-              mínimo. La planilla Mi Sueldo lo sigue cada mes: revisa los descuentos de cada recibo y te dice si le
-              gana a la inflación desde tu último aumento.
-            </>
+            datosCompra ? (
+              <>
+                Ya sabés cómo está tu sueldo de{" "}
+                <strong className="font-semibold text-zinc-800">{formatARS(datosCompra.bruto, 0)}</strong> frente al
+                mínimo. La planilla Mi Sueldo lo sigue cada mes: revisa los descuentos de cada recibo y te dice si le
+                gana a la inflación desde tu último aumento.
+              </>
+            ) : undefined
           }
         />
       )}

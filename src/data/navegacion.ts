@@ -201,6 +201,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/aguinaldo",
       titulo: "Aguinaldo (SAC)",
       descripcion: "Cuánto cobrás en junio y diciembre",
+      vende: MI_SUELDO,
       claves: ["sac", "medio aguinaldo", "sueldo anual complementario", "proporcional", "junio", "diciembre"],
     },
     {
@@ -234,6 +235,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/salario-minimo",
       titulo: "Salario mínimo",
       descripcion: "El SMVM de este mes y la escala hasta 2027",
+      vende: MI_SUELDO,
       claves: ["smvm", "salario minimo vital y movil", "minimo", "por hora"],
     },
     {
@@ -246,6 +248,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/descuentos-del-sueldo",
       titulo: "Descuentos y embargo",
       descripcion: "Hasta cuánto te pueden descontar del sueldo",
+      vende: MI_SUELDO,
       claves: ["embargo", "embargo de sueldo", "cuota sindical", "retencion", "art 133"],
     },
     {
@@ -696,6 +699,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/asignaciones-familiares",
       titulo: "Asignaciones familiares",
       descripcion: "Cuánto cobrás por hijo según lo que suma tu casa",
+      vende: MI_SUELDO,
       claves: ["auh", "asignacion universal", "salario familiar", "hijo", "ayuda escolar", "anses", "tope"],
     },
     {

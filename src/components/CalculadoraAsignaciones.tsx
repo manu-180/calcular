@@ -543,7 +543,11 @@ export function CalculadoraAsignaciones({ oferta }: { oferta?: DatosOferta }) {
       )}
     </div>
 
-      {oferta && datosCompra && regimen === "suaf" && (
+      {/* Sigue atada al régimen SUAF —la planilla es de un sueldo en relación de dependencia, no
+          de la AUH ni del monotributo— pero ya no al dato cargado: `datosCompra` null es la
+          versión corta de la oferta. SUAF es el régimen por defecto, así que el marcador
+          `data-oferta` está en el HTML del server. */}
+      {oferta && regimen === "suaf" && (
         <OfertaMiSueldo
           producto={oferta}
           datos={datosCompra}
@@ -551,11 +555,13 @@ export function CalculadoraAsignaciones({ oferta }: { oferta?: DatosOferta }) {
           desde="asignaciones-familiares"
           titulo="Tu sueldo y tus recibos, en orden"
           bajada={
-            <>
-              Lo que cobrás de asignaciones depende de tu bruto. La planilla Mi Sueldo lo sigue mes a mes: revisa los
-              descuentos de cada recibo y te dice si tu sueldo le gana a la inflación. Viene con tus{" "}
-              <strong className="font-semibold text-zinc-800">{formatARS(datosCompra.bruto, 0)}</strong> ya cargados.
-            </>
+            datosCompra ? (
+              <>
+                Lo que cobrás de asignaciones depende de tu bruto. La planilla Mi Sueldo lo sigue mes a mes: revisa los
+                descuentos de cada recibo y te dice si tu sueldo le gana a la inflación. Viene con tus{" "}
+                <strong className="font-semibold text-zinc-800">{formatARS(datosCompra.bruto, 0)}</strong> ya cargados.
+              </>
+            ) : undefined
           }
         />
       )}

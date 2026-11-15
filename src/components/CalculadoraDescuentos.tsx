@@ -262,7 +262,8 @@ export function CalculadoraDescuentos({ oferta }: { oferta?: DatosOferta }) {
       </p>
     </div>
 
-      {oferta && datosCompra && (
+      {/* `datosCompra` null = versión corta de la oferta, no ausencia: ver OfertaMiSueldo. */}
+      {oferta && (
         <OfertaMiSueldo
           producto={oferta}
           datos={datosCompra}
@@ -271,11 +272,13 @@ export function CalculadoraDescuentos({ oferta }: { oferta?: DatosOferta }) {
           insignia="Tus recibos, controlados"
           titulo="Cada descuento de tu recibo, revisado"
           bajada={
-            <>
-              Cargás lo que dice cada recibo y la planilla Mi Sueldo te marca, línea por línea, si la jubilación, la obra
-              social y la cuota sindical están bien descontadas. Viene con tu sueldo de{" "}
-              <strong className="font-semibold text-zinc-800">{formatARS(datosCompra.bruto, 0)}</strong> ya cargado.
-            </>
+            datosCompra ? (
+              <>
+                Cargás lo que dice cada recibo y la planilla Mi Sueldo te marca, línea por línea, si la jubilación, la
+                obra social y la cuota sindical están bien descontadas. Viene con tu sueldo de{" "}
+                <strong className="font-semibold text-zinc-800">{formatARS(datosCompra.bruto, 0)}</strong> ya cargado.
+              </>
+            ) : undefined
           }
         />
       )}
