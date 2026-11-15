@@ -23,12 +23,20 @@ const UOCRA = vigenteEn(MESES_UOCRA, periodoDeMes);
  *  módulo lee el .xlsx del disco y este script corre contra producción, sin el repo entero. */
 const SOCIEDADES = "planilla-ganancias-sociedades";
 const JUBILADOS = "planilla-ganancias-jubilados";
+const MI_SUELDO = "planilla-mi-sueldo";
 
 const CASOS: Caso[] = [
   { ruta: "/" },
-  { ruta: "/sueldo-neto" },
+  // Las cinco calculadoras del empleado venden la Planilla Mi Sueldo, y desde el 15/11/2026 la
+  // oferta se pinta aunque la persona no haya cargado nada: el marcador tiene que estar en el HTML
+  // del server. Si alguien la vuelve a condicionar al dato cargado, la mayoría de las visitas deja
+  // de verla, `vista_oferta` deja de medirse (el observador de rastreo.ts barre `[data-oferta]` al
+  // cargar y a los 2,5 s, nunca después) y esto se pone en rojo en el primer deploy.
+  { ruta: "/sueldo-neto", debeContener: [`data-oferta="${MI_SUELDO}"`] },
   { ruta: "/monotributo" },
-  { ruta: "/aguinaldo" },
+  { ruta: "/aguinaldo", debeContener: [`data-oferta="${MI_SUELDO}"`] },
+  { ruta: "/salario-minimo", debeContener: [`data-oferta="${MI_SUELDO}"`] },
+  { ruta: "/descuentos-del-sueldo", debeContener: [`data-oferta="${MI_SUELDO}"`] },
   { ruta: "/planillas" },
   // Que /desempleo siga ofreciendo el informe de liquidación final. Es lo único que el
   // contenedor de una sesión de Kairo no puede comprobar (la política de red no llega a
@@ -36,7 +44,7 @@ const CASOS: Caso[] = [
   { ruta: "/desempleo", debeContener: ['data-oferta="informe-indemnizacion"'] },
   { ruta: "/sitemap.xml", debeContener: ["<loc>"] },
   { ruta: "/jubilacion", debeContener: [prestacionesVigentes().resolucion.replace("Resolución ANSES ", ""), bonoVigente().norma, miles(prestacionesVigentes().haberMinimo)] },
-  { ruta: "/asignaciones-familiares", debeContener: [asignacionesVigentes().resolucion.replace("Resolución ANSES ", ""), miles(asignacionesVigentes().universales.hijo.general)] },
+  { ruta: "/asignaciones-familiares", debeContener: [asignacionesVigentes().resolucion.replace("Resolución ANSES ", ""), miles(asignacionesVigentes().universales.hijo.general), `data-oferta="${MI_SUELDO}"`] },
   { ruta: "/convenios/uocra", debeContener: [UOCRA.etiqueta.toLowerCase(), miles(UOCRA.jornales.oficial.a)] },
   // La oferta de una página que vende puede dejar de pintarse sin que nada dé 404: el CTA vive en
   // un componente de cliente y basta con que su rama deje de cumplirse. Se chequea el marcador del

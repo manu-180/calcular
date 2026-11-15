@@ -235,7 +235,10 @@ export function CalculadoraAguinaldo({ oferta }: { oferta?: DatosOferta }) {
       )}
     </div>
 
-      {oferta && datosCompra && resultado && resultado.diasTrabajados > 0 && (
+      {/* Sin `datosCompra` la oferta igual se pinta, en versión corta: así está en el HTML del
+          server y la ve también quien no completa el formulario. La bajada con la cifra sólo se
+          arma cuando hay un aguinaldo que afirmar. */}
+      {oferta && (
         <OfertaMiSueldo
           producto={oferta}
           datos={datosCompra}
@@ -244,12 +247,14 @@ export function CalculadoraAguinaldo({ oferta }: { oferta?: DatosOferta }) {
           insignia="Aguinaldo, recibos e inflación"
           titulo="Tu aguinaldo de cada semestre, en tu Excel"
           bajada={
-            <>
-              Cobrás <strong className="font-semibold text-zinc-800">{formatARS(resultado.netoEstimado, 0)}</strong> en
-              mano, a más tardar el {semestre.fechaPago}. La planilla Mi Sueldo recalcula tu aguinaldo con cada recibo
-              que cargás y te marca si los descuentos están bien. Abajo ves, con tu sueldo de{" "}
-              {formatARS(datosCompra.bruto, 0)}, si le gana a la inflación.
-            </>
+            datosCompra && resultado && resultado.diasTrabajados > 0 ? (
+              <>
+                Cobrás <strong className="font-semibold text-zinc-800">{formatARS(resultado.netoEstimado, 0)}</strong> en
+                mano, a más tardar el {semestre.fechaPago}. La planilla Mi Sueldo recalcula tu aguinaldo con cada recibo
+                que cargás y te marca si los descuentos están bien. Abajo ves, con tu sueldo de{" "}
+                {formatARS(datosCompra.bruto, 0)}, si le gana a la inflación.
+              </>
+            ) : undefined
           }
         />
       )}
