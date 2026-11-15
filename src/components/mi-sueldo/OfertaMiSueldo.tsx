@@ -113,7 +113,9 @@ function OfertaCorta({
         <Beneficios className="mt-1" />
       </div>
 
-      <div className="md:col-start-2 md:border-l md:border-zinc-100 md:pl-8">
+      {/* El bloque de compra se separa del listado: con una línea al costado en escritorio y una
+          arriba en celular, donde la grilla lo deja pegado al último punto. */}
+      <div className="border-t border-zinc-100 pt-5 md:col-start-2 md:border-t-0 md:border-l md:pt-0 md:pl-8">
         <BloqueCompra producto={producto} desde={desde} />
       </div>
     </div>
