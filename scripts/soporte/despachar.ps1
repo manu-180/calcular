@@ -16,6 +16,17 @@ $stamp = Get-Date -Format "yyyyMMdd-HHmmss"
 $WLOG  = Join-Path $LOGS "despachar.log"
 function L($m) { Add-Content -Path $WLOG -Value ("[{0}] {1}" -f (Get-Date -Format "yyyy-MM-dd HH:mm:ss"), $m) -Encoding UTF8 }
 
+# Fallas seguidas del agente. Lo lee ~/.claude/scripts/pulso-tareas.ps1, que avisa en Kairo:
+# sin esto un agente caido no se nota (nadie mira estos logs).
+$FALLAS = Join-Path $BASE "fallas-seguidas.txt"
+function Anotar-Falla($motivo) {
+    $n = 0
+    if (Test-Path $FALLAS) { $n = [int]((Get-Content $FALLAS -TotalCount 1) -replace '\D', '') }
+    $m = ("$motivo" -replace '\s+', ' ')
+    if ($m.Length -gt 300) { $m = $m.Substring(0, 300) }
+    Set-Content -Path $FALLAS -Value @(($n + 1), (Get-Date -Format "yyyy-MM-dd HH:mm:ss"), $m) -Encoding ASCII
+}
+
 if (Test-Path $FLAG) {
     $viejoPid = Get-Content $FLAG -ErrorAction SilentlyContinue
     if ($viejoPid -and (Get-Process -Id $viejoPid -ErrorAction SilentlyContinue)) { exit 0 }
@@ -63,20 +74,50 @@ try {
 
     Remove-Item Env:\CLAUDECODE -ErrorAction SilentlyContinue
     Remove-Item Env:\CLAUDE_CODE_ENTRYPOINT -ErrorAction SilentlyContinue
-    $LOG = Join-Path $LOGS "agente-$stamp.log"
-    L "pendientes -> lanzando claude $VER (log $LOG)"
-    $proc = Start-Process -FilePath $CLAUDE `
-        -ArgumentList '--dangerously-skip-permissions', '--model', 'opus', '-p' `
-        -RedirectStandardInput (Join-Path $WT "scripts\soporte\AGENTE.md") `
-        -RedirectStandardOutput $LOG -RedirectStandardError "$LOG.err" `
-        -WorkingDirectory $WT -NoNewWindow -PassThru
-    try { $null = $proc.Handle } catch { }
-    if (-not $proc.WaitForExit($TimeoutMin * 60 * 1000)) {
-        L "timeout de $TimeoutMin min, se corta pid $($proc.Id)"
-        Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
-    } else {
-        L "claude termino exit=$($proc.ExitCode)"
+    # El agente contesta mails de clientes: es un producto que llama a Claude por cuenta de
+    # terceros, asi que va por API key y no por el login de suscripcion del CLI (terminos de
+    # Anthropic, ver ~/.claude/docs/cuentas-claude.md). Ademas ese login vence: el 14/11/2026
+    # caduco el refresh token y el agente fallo 232 veces seguidas sin que nadie se entere.
+    # Principal y respaldo salen de envkit (namespace calcular-ar); si la principal no tiene
+    # saldo o esta revocada, se reintenta con la de respaldo.
+    Remove-Item Env:\CLAUDE_CODE_OAUTH_TOKEN -ErrorAction SilentlyContinue
+    $LLAVES = @()
+    foreach ($n in @('ANTHROPIC_API_KEY', 'ANTHROPIC_API_KEY_RESPALDO')) {
+        $v = envkit run --only $n '--' node -e "process.stdout.write(process.env.$n||'')" 2>$null
+        if ($LASTEXITCODE -eq 0 -and "$v".Trim()) { $LLAVES += , @($n, "$v".Trim()) }
     }
+    if ($LLAVES.Count -eq 0) { L "sin ANTHROPIC_API_KEY en envkit (calcular-ar): no se lanza"; Anotar-Falla "sin API key en envkit"; exit 1 }
+
+    $ok = $false
+    $motivo = ""
+    $intento = 0
+    foreach ($par in $LLAVES) {
+        $intento++
+        $LOG = Join-Path $LOGS "agente-$stamp-$intento.log"
+        $env:ANTHROPIC_API_KEY = $par[1]
+        L "pendientes -> lanzando claude $VER con $($par[0]) (log $LOG)"
+        $proc = Start-Process -FilePath $CLAUDE `
+            -ArgumentList '--dangerously-skip-permissions', '--model', 'opus', '-p' `
+            -RedirectStandardInput (Join-Path $WT "scripts\soporte\AGENTE.md") `
+            -RedirectStandardOutput $LOG -RedirectStandardError "$LOG.err" `
+            -WorkingDirectory $WT -NoNewWindow -PassThru
+        try { $null = $proc.Handle } catch { }
+        if (-not $proc.WaitForExit($TimeoutMin * 60 * 1000)) {
+            L "timeout de $TimeoutMin min, se corta pid $($proc.Id)"
+            Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
+            $motivo = "timeout de $TimeoutMin min"
+            break
+        }
+        L "claude termino exit=$($proc.ExitCode)"
+        if ($proc.ExitCode -eq 0) { $ok = $true; break }
+        $cola = (Get-Content $LOG -Tail 5 -ErrorAction SilentlyContinue) -join " "
+        $motivo = "exit=$($proc.ExitCode) $cola"
+        # Solo se salta de llave si el problema es de la llave; un error del agente no se repite.
+        if ($cola -notmatch 'credit balance|Invalid API key|authentication|Failed to authenticate|OAuth|401|403') { break }
+        L "la llave $($par[0]) no sirve, se prueba la siguiente"
+    }
+    Remove-Item Env:\ANTHROPIC_API_KEY -ErrorAction SilentlyContinue
+    if ($ok) { Remove-Item $FALLAS -Force -ErrorAction SilentlyContinue } else { Anotar-Falla $motivo }
     Get-ChildItem $LOGS -Filter "agente-*" | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-30) } | Remove-Item -Force -ErrorAction SilentlyContinue
 } catch {
     L "ERROR: $_"

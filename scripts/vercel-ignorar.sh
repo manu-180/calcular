@@ -5,7 +5,8 @@
 # Un build de calcular rearma 10.308 páginas: ~6 min de máquina de 4 núcleos que Vercel cobra.
 # Por eso los previews son opt-in: una rama sólo construye si el commit dice [preview] en el
 # mensaje (las ramas claude/** ya no construyen por vercel.json). Producción construye siempre
-# que el push toque algo que no sea documentación, marketing, .github o .claude.
+# que el push toque algo que no sea documentación, marketing, .github, .claude o scripts/soporte
+# (el agente de soporte corre en la PC de Manuel; nada de esa carpeta entra al build).
 if [ "$VERCEL_ENV" != "production" ]; then
   case "$VERCEL_GIT_COMMIT_MESSAGE" in
     *"[preview]"*) ;;
@@ -16,7 +17,7 @@ base="${VERCEL_GIT_PREVIOUS_SHA:-}"
 if [ -z "$base" ] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then
   base=$(git rev-parse -q --verify HEAD^ 2>/dev/null) || exit 1
 fi
-if git diff --quiet "$base" HEAD -- . ':(exclude)*.md' ':(exclude)docs' ':(exclude)marketing' ':(exclude).github' ':(exclude).claude'; then
+if git diff --quiet "$base" HEAD -- . ':(exclude)*.md' ':(exclude)docs' ':(exclude)marketing' ':(exclude).github' ':(exclude).claude' ':(exclude)scripts/soporte'; then
   exit 0
 fi
 exit 1
