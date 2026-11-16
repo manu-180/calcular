@@ -8,4 +8,9 @@ $accion   = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProf
 $disparo  = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Minutes 5) -RepetitionDuration (New-TimeSpan -Days 3650)
 $ajustes  = New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Hours 1) -MultipleInstances IgnoreNew -StartWhenAvailable -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 Register-ScheduledTask -TaskName "CalculAR-Soporte" -Action $accion -Trigger $disparo -Settings $ajustes -RunLevel Limited -Force | Out-Null
+# Una tarea que ejecuta powershell.exe directo dibuja la consola ~1 s cada 5 minutos y le roba
+# el foco del teclado a Manuel aunque lleve -WindowStyle Hidden. El corrector la envuelve en
+# wscript (~/.claude/rules/tareas-sin-ventana.md). Si no esta (otra PC sin el sync), no rompe.
+$corrector = Join-Path $env:USERPROFILE ".claude\scripts\tareas-sin-ventana.ps1"
+if (Test-Path $corrector) { & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $corrector | Out-Null }
 Write-Host "Tarea CalculAR-Soporte registrada (cada 5 min) -> $boot"
