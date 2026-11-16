@@ -14,6 +14,78 @@ Formato:
 - Evaluado: <cambio anterior> → <resultado con números> · <se queda | se revierte>
 ```
 
+## 2026-11-12 (ventas en Argentina: el paso que sobra en alquileres y el que vuelve de MercadoPago)
+Sin acceso a la base ni a MercadoPago desde esta máquina: la línea de base sale de
+`analisis-planillas-2026-11-03.md` y de `ultimo.json` (ventana 26/10 → 9/11). Recorrido en vivo en
+celular y escritorio, y la pantalla de pago de MercadoPago abierta sin pagar (se ve bien: marca
+CalculAR, cuenta, tarjeta sin cuenta y efectivo).
+- **/inflacion/alquiler** · fuga accion sobre la oferta (la página más vista del sitio: 901
+  personas y 905 usos en 14 días; 14 toques de compra, 0 ventas de la planilla en 60 días)
+  - Cambio: el botón de la oferta pasa de «Ver la planilla» (iba a la landing) a «Comprar mi
+    planilla», que va derecho a MercadoPago con el contrato ya cargado. La landing queda como link
+    secundario («Ver todo lo que trae la planilla», ubicación `calculadora-landing`) · directo
+  - Hipótesis: era la única oferta de calculadora que todavía hacía pasar por la landing a quien ya
+    vio su contrato cargado y el precio. La landing no retenía a nadie.
+  - Antes: 16 toques de «Ver la planilla» en 30 días (4/10 → 3/11), 0 checkouts; landing
+    `/planillas/alquileres` 27 visitas, 0 toques, 54 % de rebote, 9 s de mediana.
+  - Se evalúa: 2026-12-15, con `tools/embudo-planillas.ts --dias 30`: checkouts y pagos de
+    `planilla-alquileres` con ruta `/inflacion/alquiler`. Si hay 20 checkouts o más y 0 pagos, el
+    problema es el producto o el precio para este público y no el camino: pasa a kill criteria
+    junto con Monotributo.
+- **Todas las compras de calcular.ar** · fuga entre MercadoPago y el pago (4/9 → 3/11: 35 idas a
+  MercadoPago, 13 pagos; 37 %)
+  - Cambio: quien sale a pagar y vuelve al sitio sin pagar (con «atrás» o reabriendo la página, en
+    la hora siguiente) ve una vez un aviso arriba: «¿No pudiste terminar la compra?», con el producto y
+    el precio, que se puede pagar con tarjeta sin tener cuenta de MercadoPago o en efectivo, la
+    devolución de 7 días, un botón que reintenta la misma compra y un link a contacto
+    (`VueltaDePago`, en el layout de `(ar)`). Aclara que si ya pagó no tiene que hacer nada. No
+    aparece en gracias, en `/planillas/comprar` ni cuando MercadoPago devuelve con `?pago=`, y se va
+    al pasar a otra página · directo
+  - Además: la letra chica de las ofertas de calculadora dice ahora «con tarjeta, débito o dinero en
+    cuenta por MercadoPago (no hace falta tener cuenta)».
+  - Hipótesis: con la compra directa ya no hay mail para un recordatorio. El único momento para
+    contestar la duda que frenó el pago es cuando la persona vuelve.
+  - Antes: 37 % de checkout a pago, medido con el diálogo del mail (que filtraba curiosos). Con la
+    compra directa del 3/11 todavía no hay dato: se lee junto con la evaluación del 1/12.
+  - Se evalúa: 2026-12-15. Toques de `cta_compra` con ubicación `vuelta-de-pago` en `ca_eventos` y
+    cuántos de esos checkouts terminan en pago. Si en 30 días hay menos de 3 toques, el aviso no le
+    habla a nadie: se saca.
+- **/empleada-domestica** · fuga accion sobre la oferta (394 personas en 14 días, 2 toques de
+  compra; Casas particulares es el producto que mejor cierra: 5 checkouts, 5 ventas)
+  - Cambio: en mayo, junio, noviembre y diciembre la oferta abre con «El aguinaldo de
+    <junio | diciembre>, ya calculado» en vez de dejarlo último (en casas particulares se paga con
+    el sueldo de junio y de diciembre). El resto del año queda igual · directo
+  - Antes: 2 toques de compra sobre 394 personas (26/10 → 9/11).
+  - Se evalúa: 2026-12-31, toques de compra y ventas desde `/empleada-domestica` en noviembre y
+    diciembre contra octubre.
+- **/aportes-empleada-domestica** · fuga buscador (0,2 % vs 2,9 %, 982 impresiones, 26 perdidas)
+  - Cambio: title «Aportes casas particulares <mes>: $ 45.025 por mes» (antes terminaba en «tabla
+    de ARCA») y description que abre con lo que paga el empleador con 16 horas o más y con menos de
+    12. Sale de la tabla de ARCA del mes: rota sola · directo
+  - Por qué esta página: es la del que paga. Con `/deduccion-empleada-domestica` dio 3 inicios y 3
+    ventas de la planilla de Casas particulares.
+  - Antes: «aportes y contribuciones casas particulares septiembre 2026» 0/94 (pos 6,3); «aportes
+    empleada domestica» 0/71 (pos 9,5); «cargas sociales empleadas domesticas» 0/66 (pos 7,1).
+  - Se evalúa: 2026-12-10 (4 semanas en Search Console).
+- **Medición** · `vista_oferta` de las ofertas que se montan con el resultado
+  - Cambio: `rastreo.ts` vuelve a buscar `[data-oferta]` cada vez que cambia el contenido de
+    `<main>` (pendiente 4 del análisis del 3/11). Alquiler, plazo fijo y vacaciones empiezan a
+    contar vistas de oferta: su tasa de toque va a bajar en el informe, y esa es la real.
+- No se tocó, y por qué: los informes (cuota alimentaria, despido, ganancias, crédito laboral)
+  siguen yendo a su landing, porque ahí la persona ve el informe con sus números antes de pagar;
+  `PlanillaCTA` en las páginas de aportes y deducción sigue con «Ver la planilla», que es el camino
+  que hoy vende; `/convenios/comercio` tiene el experimento `comercio-quien` corriendo.
+- Verificación: `tsc` limpio y `check-all` con 158 de 160 suites verdes. Las dos rojas son de
+  calcularya y no tocan estos archivos: `check_paises` (series de IPC de 38 países sin dato en 70
+  días) y `check_textos_paises` (títulos de `ch.mietzinsrechner` y una description de `ve`). No se
+  corrió `next build` en local.
+- Para mirar aparte: la serie de IPC de datos.gob.ar sigue en agosto de 2026 al 12/11, así que
+  `/inflacion/alquiler` (la página más vista) calcula con dos meses menos de los que ya publicó el
+  INDEC. `gen_ipc_serie.ts` nombra el xls del INDEC como fuente alternativa.
+- calcularya: el arreglo de `vista_oferta` vale para los dos sitios. El aviso de vuelta de pago y
+  el botón de alquileres son del flujo de MercadoPago de calcular.ar; calcularya cobra por otro
+  camino (`src/motor/ui/Oferta.tsx`) y queda pendiente llevarle el aviso con sus textos por idioma.
+
 ## 2026-11-03 (Comercio: ofrecerle la planilla al que paga, no al que cobra)
 - **/convenios/comercio** · fuga accion sobre la oferta (654 vieron la oferta de la planilla en
   30 días, 10 la tocaron: 1,5 %, contra 9,7 % en `/convenios/uocra` y 7,9 % en
