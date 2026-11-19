@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "rs",
   concepto: "propio",
   slug: "prosecna-plata",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "rs.prosecna-neto": "serie", "rs.prosecna-bruto": "serie", "rs.minimalna-cena-rada": "numero" },
   campos: [{ id: "neto", tipo: "moneda", etiqueta: "Vaša mesečna neto plata", min: 0, porDefecto: 100000 }],
   calcular(e, v, { redondear }) {

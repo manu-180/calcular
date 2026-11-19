@@ -7,7 +7,7 @@ export default definirCalculadora({
   mercado: "jm",
   concepto: "inflacion",
   slug: "inflation-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "jm.inflation": "serie",
   },

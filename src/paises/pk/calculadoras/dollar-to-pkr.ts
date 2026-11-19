@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "pk",
   concepto: "tipo-de-cambio",
   slug: "dollar-to-pkr",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "pk.usd-pkr": "serie",
   },

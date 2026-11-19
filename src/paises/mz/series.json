@@ -180,7 +180,7 @@
       "nombre": "Inflação mensal em Moçambique (variação do índice de preços no consumidor)",
       "unidad": "%",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 100,
+      "maxAntiguedadDias": 140,
       "fuente": {
         "organismo": "Banco de Moçambique",
         "titulo": "Taxa de inflação mensal (serviço de dados do Banco de Moçambique)",

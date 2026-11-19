@@ -7,7 +7,7 @@ export default definirCalculadora({
   mercado: "id",
   concepto: "inflacion",
   slug: "kalkulator-inflasi",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "id.inflasi-tahunan": "serie" },
   campos: [
     { id: "jumlah", tipo: "moneda", etiqueta: "Jumlah uang hari ini", min: 0, porDefecto: 10000000 },

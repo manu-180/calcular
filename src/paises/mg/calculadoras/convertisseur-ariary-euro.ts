@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "mg",
   concepto: "tipo-de-cambio",
   slug: "convertisseur-ariary-euro",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "mg.eur": "serie",
     "mg.usd": "serie",

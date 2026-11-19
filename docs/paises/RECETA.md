@@ -234,7 +234,10 @@ serie con los últimos puntos que leíste.
 
 - `puntos`: `["AAAA-MM-DD", valor]`, ordenados y sin fechas repetidas. Mensual: el día 1 del mes.
 - `maxAntiguedadDias`: si el último punto es más viejo que esto, la serie no se usa (la
-  calculadora sale de lo publicable). Diaria: 7 a 10. Mensual: 45 a 70.
+  calculadora sale de lo publicable). Diaria: 7 a 10. Mensual: cadencia + rezago real de la fuente + margen,
+  medido en la fuente y no supuesto: un IPC con el punto en el día 1 y publicado 6 semanas después del
+  cierre necesita ~100; con 70 la página se apaga sola cada mes (19/11/2026: SNB, Stats Mauritius,
+  Banco de Moçambique y SURS publicaban recién agosto o septiembre y 6 calculadoras quedaron afuera).
 - Solo fuente primaria.
 
 ## 6. `avisos.json`

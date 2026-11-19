@@ -14,7 +14,7 @@ export default definirCalculadora({
   mercado: "kw",
   concepto: "inflacion",
   slug: "inflation-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "kw.cpi": "serie",
   },
