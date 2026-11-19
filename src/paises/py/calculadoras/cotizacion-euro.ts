@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "py",
   concepto: "propio",
   slug: "cotizacion-euro",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "py.euro": "serie",
   },

@@ -10,7 +10,7 @@ export default definirCalculadora({
   mercado: "ge",
   concepto: "inflacion",
   slug: "inflatsiis-kalkulatori",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "ge.cpi": "serie" },
   campos: [
     { id: "tanxa", tipo: "moneda", etiqueta: "თანხა", min: 0, porDefecto: 1000 },

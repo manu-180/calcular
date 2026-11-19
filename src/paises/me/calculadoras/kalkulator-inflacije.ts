@@ -10,7 +10,7 @@ export default definirCalculadora({
   mercado: "me",
   concepto: "inflacion",
   slug: "kalkulator-inflacije",
-  estado: "publicado",
+  estado: "borrador",
   requiere: { "me.ipc": "serie" },
   campos: [
     { id: "iznos", tipo: "moneda", etiqueta: "Iznos", min: 0, porDefecto: 1000 },

@@ -20,7 +20,7 @@ export default definirCalculadora({
   mercado: "do",
   concepto: "inflacion",
   slug: "inflacion",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "do.ipc": "serie",
   },

@@ -6,7 +6,7 @@
       "nombre": "Landesindex der Konsumentenpreise (Dezember 2025 = 100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 70,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Schweizerische Nationalbank (SNB-Datenportal)",
         "titulo": "Landesindex der Konsumentenpreise (Daten des Bundesamts für Statistik), Würfel plkopr",

@@ -369,7 +369,7 @@
       "nombre": "Consumer Price Index, all divisions (January to December 2023 = 100)",
       "unidad": "numero",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 70,
+      "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Statistics Mauritius",
         "titulo": "Monthly Consumer Price Index",

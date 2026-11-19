@@ -10,7 +10,7 @@ export default definirCalculadora({
   mercado: "zm",
   concepto: "inflacion",
   slug: "inflation-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "zm.cpi": "serie",
   },

@@ -495,7 +495,7 @@
       "nombre": "Povprečna mesečna bruto plača",
       "unidad": "EUR",
       "frecuencia": "mensual",
-      "maxAntiguedadDias": 100,
+      "maxAntiguedadDias": 130,
       "fuente": {
         "organismo": "SURS",
         "titulo": "SiStat, tabela H285S: povprečne mesečne plače",

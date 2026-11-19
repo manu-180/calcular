@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "rs",
   concepto: "indemnizacion-despido",
   slug: "obracun-otpremnine",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "rs.otpremnina-razlomak": "numero",
     "rs.otpremnina-penzija-zarada": "numero",

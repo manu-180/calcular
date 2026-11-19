@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "ug",
   concepto: "tipo-de-cambio",
   slug: "dollar-to-shilling",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "ug.usd": "serie",
   },

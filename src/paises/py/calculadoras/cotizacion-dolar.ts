@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "py",
   concepto: "tipo-de-cambio",
   slug: "cotizacion-dolar",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "py.dolar": "serie",
   },
