@@ -3,11 +3,11 @@ import calculadora from "./inflation-calculator";
 
 export default definirCasos(calculadora, [
   {
-    nombre: "10,000 a 5 años con la inflación de septiembre de 2026",
-    origen: { tipo: "recalculado", detalle: "BBS: 8.34 % (septiembre de 2026). 1.0834^5 = 1.49260; 10,000 × 1.49260 = 14,926.02; 10,000 / 1.49260 = 6,699.71." },
-    fecha: "2026-10-24",
+    nombre: "10,000 a 5 años con la inflación de octubre de 2026",
+    origen: { tipo: "recalculado", detalle: "BBS: 8.27 % (octubre de 2026). 1.0827^5 = 1.48779; 10,000 × 1.48779 = 14,877.87; 10,000 / 1.48779 = 6,721.39." },
+    fecha: "2026-11-19",
     entrada: { monto: 10000, anios: 5, tasaPropia: null },
-    esperado: { futuro: 14926.02, poder: 6699.71, tasa: 8.34, mesDato: "সেপ্টেম্বর ২০২৬" },
+    esperado: { futuro: 14877.87, poder: 6721.39, tasa: 8.27, mesDato: "অক্টোবর ২০২৬" },
   },
   {
     nombre: "Tasa propia del 10 %",
