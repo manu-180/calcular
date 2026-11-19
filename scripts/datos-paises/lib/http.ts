@@ -124,7 +124,8 @@ function pedir(url: string, opciones: OpcionesEfectivas, timeoutMs: number, orig
           ...(opciones.encabezados ?? {}),
         },
         timeout: timeoutMs,
-        autoSelectFamilyAttemptTimeout: ESPERA_POR_IP_MS,
+        // @types/node 20 todavía no lo declara en RequestOptions; Node 20+ lo pasa a net.connect.
+        ...({ autoSelectFamilyAttemptTimeout: ESPERA_POR_IP_MS } as object),
         ...(u.protocol === "https:" && opciones.tlsTolerante ? { agent: agenteTolerante() } : {}),
       },
       (res) => {
