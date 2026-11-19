@@ -7,7 +7,7 @@ export default definirCalculadora({
   mercado: "tt",
   concepto: "tipo-de-cambio",
   slug: "usd-to-ttd",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "tt.usd-buy": "serie",
     "tt.usd-sell": "serie",
