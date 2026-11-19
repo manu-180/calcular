@@ -10,7 +10,7 @@ export default definirCalculadora({
   mercado: "pl",
   concepto: "inflacion",
   slug: "kalkulator-inflacji",
-  estado: "borrador",
+  estado: "publicado",
   requiere: { "pl.cpi": "serie" },
   campos: [
     { id: "kwota", tipo: "moneda", etiqueta: "Kwota", min: 0, porDefecto: 1000 },

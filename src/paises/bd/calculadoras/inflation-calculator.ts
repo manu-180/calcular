@@ -8,7 +8,7 @@ export default definirCalculadora({
   mercado: "bd",
   concepto: "propio",
   slug: "inflation-calculator",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "bd.inflation": "serie",
   },
