@@ -65,6 +65,8 @@ function detecteurBfm(devise: "usd" | "eur", cle: "dataUsd" | "dataEuro", min: n
     serie: `mg.${devise}`,
     metodo: "api-json",
     url: BFM,
+    // banky-foibe.mg ne sert pas l'intermédiaire SSL.com TLS Issuing RSA CA R1 (certs/).
+    tlsTolerante: true,
     // L'ariary flotte : quelques dixièmes de pour cent par jour en temps normal. Au-delà de 5 %, revue manuelle.
     banda: { min, max, saltoRelativoMax: 0.05 },
     async traer(http) {

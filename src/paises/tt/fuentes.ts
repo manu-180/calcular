@@ -60,11 +60,16 @@ async function cambioBcc(http: Http, url: string, moneda: keyof typeof MONEDAS, 
   return Number.isFinite(valor) ? [{ fecha, valor }] : null;
 }
 
+// El salto diario se midió en la tabla oficial «Exchange Rates (Daily)» (nov 2024 a nov 2026): el
+// dólar no pasó de 1,7 %, pero las otras son promedios ponderados de pocas operaciones y saltan solas
+// (libra venta hasta 10,6 %, dólar canadiense 25 %, euro 30 %, con 36 de 63 días hábiles arriba de 5 %
+// en el euro). Con 5 % el guardián rechazaba valores oficiales reales y la serie quedaba trabada contra
+// un día atípico (tt.gbp-sell, 26/10/2026). min y max siguen frenando lo absurdo.
 const BANDAS = {
-  usd: { min: 6, max: 8.5 },
-  cad: { min: 4, max: 7 },
-  gbp: { min: 7.5, max: 12.5 },
-  eur: { min: 6.5, max: 10.5 },
+  usd: { min: 6, max: 8.5, saltoRelativoMax: 0.02 },
+  cad: { min: 4, max: 7, saltoRelativoMax: 0.3 },
+  gbp: { min: 7.5, max: 12.5, saltoRelativoMax: 0.15 },
+  eur: { min: 6.5, max: 10.5, saltoRelativoMax: 0.35 },
 } as const;
 
 const detectoresCambio: Detector[] = (Object.keys(MONEDAS) as (keyof typeof MONEDAS)[]).flatMap((m) =>
@@ -76,9 +81,7 @@ const detectoresCambio: Detector[] = (Object.keys(MONEDAS) as (keyof typeof MONE
       metodo: "html",
       url: "https://www.central-bank.org.tt/",
       userAgentNavegador: true,
-      // El dólar estadounidense se mueve muy poco (régimen administrado); las otras monedas siguen al
-      // mercado internacional.
-      banda: { ...BANDAS[m], saltoRelativoMax: m === "usd" ? 0.02 : 0.05 },
+      banda: BANDAS[m],
       async traer(http) {
         return cambioBcc(http, this.url, m, lado === "buy" ? 0 : 1);
       },

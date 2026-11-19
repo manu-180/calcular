@@ -49,15 +49,16 @@ export function enlaceCuadro3(html: string): string | null {
   return m ? `https://www.inec.gob.pa/${m[1].replace(/ /g, "%20")}` : null;
 }
 
+// El mes llega como «ago-25» o, desde noviembre de 2026, como «25-dic».
 export function parsearCuadro3(csv: string): PuntoSerie[] | null {
   const puntos: PuntoSerie[] = [];
   for (const linea of csv.split(/\r?\n/)) {
-    const m = /^\s*([a-z]{3,4})-(\d{2});\s*(\d+(?:\.\d+)?)\s*;/i.exec(linea);
+    const m = /^\s*(?:([a-z]{3,4})-(\d{2})|(\d{2})-([a-z]{3,4}));\s*(\d+(?:\.\d+)?)\s*;/i.exec(linea);
     if (!m) continue;
-    const mes = MESES_CORTOS[m[1].toLowerCase()];
-    const fecha = `20${m[2]}-${String(mes).padStart(2, "0")}-01`;
+    const mes = MESES_CORTOS[(m[1] ?? m[4]).toLowerCase()];
+    const fecha = `20${m[2] ?? m[3]}-${String(mes).padStart(2, "0")}-01`;
     if (!mes || !esFechaISO(fecha)) return null;
-    puntos.push({ fecha, valor: seisDecimales(Number(m[3])) });
+    puntos.push({ fecha, valor: seisDecimales(Number(m[5])) });
   }
   return puntos.length ? puntos.sort((a, b) => (a.fecha < b.fecha ? -1 : 1)) : null;
 }

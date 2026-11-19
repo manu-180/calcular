@@ -81,6 +81,8 @@ function bom(id: string, serie: string, par: string, min: number, max: number): 
     metodo: "html",
     url: BOM,
     userAgentNavegador: true,
+    // bom.mu no manda el intermedio Sectigo EV R36 (certs/): sin él, "unable to verify the first certificate".
+    tlsTolerante: true,
     banda: { min, max, saltoRelativoMax: 0.05 },
     traer(http) {
       return tipoBom(http, this.url, par);
