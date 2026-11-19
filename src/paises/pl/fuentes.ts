@@ -36,11 +36,17 @@ const GUS_STRONA =
 // z każdą aktualizacją, więc najpierw szukamy linku na stronie. Indeks łączymy grudniami od 2000 r.,
 // tak samo jak w series.json (grudzień 1999 = 100). CSV jest w cp1250: dopasowujemy tylko liczby.
 // Bez nagłówka przeglądarki: z nim stat.gov.pl odpowiada 503 (ochrona przed botami).
-async function cpiGus(http: Http): Promise<readonly PuntoSerie[] | null> {
-  const html = await http.texto(GUS_STRONA);
-  const link = /href="([^"]*miesiecznewskaznikicen[^"]*\.csv)"/.exec(html)?.[1];
+// Od listopada 2026 plik nazywa się «miesieczne_wskazniki_cen_...» (wcześniej bez podkreśleń).
+export function enlaceCsvGus(html: string): string | null {
+  const link = /href="([^"]*miesieczne_?wskazniki_?cen[^"]*\.csv)"/.exec(html)?.[1];
   if (!link) return null;
-  const csv = await http.texto(link.startsWith("http") ? link : `https://stat.gov.pl${link}`);
+  return link.startsWith("http") ? link : `https://stat.gov.pl${link}`;
+}
+
+async function cpiGus(http: Http): Promise<readonly PuntoSerie[] | null> {
+  const link = enlaceCsvGus(await http.texto(GUS_STRONA));
+  if (!link) return null;
+  const csv = await http.texto(link);
   const wskazniki = new Map<string, number>();
   for (const linia of csv.split(/\r?\n/)) {
     const m = /;Grudzie[^;]*;(\d{4});(\d{1,2});(\d+),(\d)/.exec(linia);

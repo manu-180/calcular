@@ -10,6 +10,10 @@ export const UA_PROPIO = "CalcularYa/datos-paises (+https://calcularya.com)";
 
 const MAX_BYTES = 25 * 1024 * 1024;
 const MAX_REDIRECCIONES = 5;
+// Node prueba cada IP del host 250 ms y pasa a la siguiente (happy eyeballs): con un RTT de ~500 ms
+// (banky-foibe.mg desde Sudamérica o desde GitHub) aborta todas y sale ETIMEDOUT sin haber esperado
+// nada. 2,5 s por IP sigue saltando rápido una IP muerta.
+const ESPERA_POR_IP_MS = 2500;
 
 // bcu.gub.uy, funcionpublica.gov.co, asamblea.gob.sv y bcv.org.ve no mandan el intermedio de su
 // cadena (Node no lo baja solo por AIA, curl y los navegadores sí). tlsTolerante NO apaga la
@@ -120,6 +124,7 @@ function pedir(url: string, opciones: OpcionesEfectivas, timeoutMs: number, orig
           ...(opciones.encabezados ?? {}),
         },
         timeout: timeoutMs,
+        autoSelectFamilyAttemptTimeout: ESPERA_POR_IP_MS,
         ...(u.protocol === "https:" && opciones.tlsTolerante ? { agent: agenteTolerante() } : {}),
       },
       (res) => {

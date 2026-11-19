@@ -5,7 +5,7 @@ export default definirCalculadora({
   mercado: "mu",
   concepto: "tipo-de-cambio",
   slug: "rupee-exchange-rate",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "mu.usd": "serie",
     "mu.eur": "serie",

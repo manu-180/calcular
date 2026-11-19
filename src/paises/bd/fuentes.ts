@@ -43,6 +43,8 @@ export const detectores: readonly Detector[] = [
     metodo: "html",
     url: "https://bbs.gov.bd/",
     userAgentNavegador: true,
+    // bbs.gov.bd no manda el intermedio Sectigo DV R36 (certs/): sin él, "unable to verify the first certificate".
+    tlsTolerante: true,
     banda: { min: 0, max: 30, saltoRelativoMax: 0.35 },
     async traer(http) {
       const p = puntoInflacionBbs(await http.texto(this.url, { userAgentNavegador: true }));
