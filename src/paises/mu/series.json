@@ -152,6 +152,7 @@
         "verificadoEl": "2026-10-24",
         "nota": "Simple average of the indicative selling rates submitted by all banks, rupees per EUR 1, as charted by the Bank to two decimals. On 23 October 2026 the buying rate for notes was lower."
       },
+      "altas": [["2026-11-20", "2026-11-19"]],
       "puntos": [
         [
           "2026-09-18",
@@ -272,7 +273,9 @@
         ["2026-11-13", 53.44],
         ["2026-11-16", 53.45],
         ["2026-11-17", 53.45],
-        ["2026-11-18", 52.1]
+        ["2026-11-18", 52.1],
+        ["2026-11-19", 52.1],
+        ["2026-11-20", 52.11]
       ]
     },
     {
@@ -289,6 +292,7 @@
         "verificadoEl": "2026-10-24",
         "nota": "Simple average of the indicative selling rates submitted by all banks, rupees per GBP 1, as charted by the Bank to two decimals. On 23 October 2026 the buying rate for notes was lower."
       },
+      "altas": [["2026-11-20", "2026-11-19"]],
       "puntos": [
         [
           "2026-09-18",
@@ -409,7 +413,9 @@
         ["2026-11-13", 63.95],
         ["2026-11-16", 64.09],
         ["2026-11-17", 64.08],
-        ["2026-11-18", 62.59]
+        ["2026-11-18", 62.59],
+        ["2026-11-19", 62.43],
+        ["2026-11-20", 62.23]
       ]
     },
     {
