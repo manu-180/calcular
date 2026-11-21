@@ -15,6 +15,7 @@
         "verificadoEl": "2026-10-24",
         "nota": "Simple average of the indicative selling rates submitted by all banks, rupees per US$ 1, as charted by the Bank to two decimals. On 23 October 2026 the buying rate for notes was lower."
       },
+      "altas": [["2026-11-21", "2026-11-19"]],
       "puntos": [
         [
           "2026-09-18",
@@ -135,7 +136,9 @@
         ["2026-11-13", 48.33],
         ["2026-11-16", 48.53],
         ["2026-11-17", 48.57],
-        ["2026-11-18", 47.45]
+        ["2026-11-18", 47.45],
+        ["2026-11-19", 47.54],
+        ["2026-11-20", 47.48]
       ]
     },
     {
