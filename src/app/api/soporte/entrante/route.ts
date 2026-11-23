@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { firmaValida, ingerir, traerRecibido } from "@/lib/soporte/ingesta";
+import { esParaCalcular, firmaValida, ingerir, traerRecibido } from "@/lib/soporte/ingesta";
 import { servicio } from "@/lib/supabase/servicio";
 
 export const runtime = "nodejs";
@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const rec = await traerRecibido(evento.data.email_id);
+    if (!esParaCalcular(rec)) return NextResponse.json({ ok: true, ignorado: "otro dominio" });
     const r = await ingerir(servicio(), rec);
     return NextResponse.json({ ok: true, hilo: r.hiloId, nuevo: r.nuevo });
   } catch (e) {
