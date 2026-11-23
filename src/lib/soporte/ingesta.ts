@@ -75,6 +75,13 @@ export function esAutomatico(rec: Recibido): boolean {
   return !!prec && /bulk|junk|list|auto_reply/i.test(prec);
 }
 
+// La cuenta de Resend recibe también los dominios de APEX y Kairo (theapexweb.com, kairocon.com,
+// assistify.lat, botlode.com) y su webhook llega acá igual: sin este filtro, un lead de APEX abre
+// un hilo y el agente de soporte le contesta como CalculAR.
+export function esParaCalcular(rec: Pick<Recibido, "to" | "cc">): boolean {
+  return [...(rec.to ?? []), ...(rec.cc ?? [])].some((d) => /@(calcular\.ar|calcularya\.com)>?\s*$/i.test(d.trim()));
+}
+
 export const MAIL_MANUEL = "manunv97@gmail.com";
 
 // Las respuestas de Manuel a un aviso ("#<hilo>" en el asunto) son instrucciones para el agente. El From

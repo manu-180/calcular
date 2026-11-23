@@ -3,7 +3,7 @@
 //   npx tsx scripts/check_soporte.ts
 
 import { createHmac } from "node:crypto";
-import { asuntoBase, direccion, esAutomatico, esDeManuel, firmaValida, type Recibido } from "../src/lib/soporte/ingesta";
+import { asuntoBase, direccion, esAutomatico, esParaCalcular, esDeManuel, firmaValida, type Recibido } from "../src/lib/soporte/ingesta";
 
 let fallas = 0;
 function check(nombre: string, ok: boolean) {
@@ -29,6 +29,10 @@ check("sin headers no pasa", !firmaValida(secreto, null, null, null, cuerpo));
 const rec = (p: Partial<Recibido>): Recibido => ({ id: "x", from: "Ana Pérez <ana@gmail.com>", to: ["soporte@calcular.ar"], ...p });
 check("direccion con nombre", JSON.stringify(direccion("Ana Pérez <Ana@Gmail.com>")) === JSON.stringify({ email: "ana@gmail.com", nombre: "Ana Pérez" }));
 check("direccion sola", direccion("ana@gmail.com").email === "ana@gmail.com");
+check("soporte@calcular.ar es de calcular", esParaCalcular({ to: ["Soporte <soporte@calcular.ar>"] }));
+check("calcularya.com en copia es de calcular", esParaCalcular({ to: ["x@theapexweb.com"], cc: ["hola@calcularya.com"] }));
+check("soporte@theapexweb.com no es de calcular", !esParaCalcular({ to: ["soporte@theapexweb.com"] }));
+check("un dominio que termina parecido no cuela", !esParaCalcular({ to: ["a@nocalcular.ar.evil.com"] }));
 check("cliente común no es automático", !esAutomatico(rec({})));
 check("mailer-daemon es automático", esAutomatico(rec({ from: "MAILER-DAEMON@mx.google.com" })));
 check("noreply es automático", esAutomatico(rec({ from: "MercadoPago <no-reply@mercadopago.com>" })));

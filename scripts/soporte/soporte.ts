@@ -15,7 +15,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { basename, join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { BUZON_SOPORTE, ingerir, traerRecibido } from "../../src/lib/soporte/ingesta";
+import { BUZON_SOPORTE, esParaCalcular, ingerir, traerRecibido } from "../../src/lib/soporte/ingesta";
 
 const RESEND = "https://api.resend.com";
 const MANUEL = "manunv97@gmail.com";
@@ -118,7 +118,7 @@ async function sincronizar() {
   let nuevos = 0;
   for (const e of data) {
     const { data: ya } = await db.from("ca_soporte_mensajes").select("id").eq("resend_id", e.id).maybeSingle();
-    if (ya) continue;
+    if (ya || !esParaCalcular(e)) continue;
     const res = await ingerir(db, await traerRecibido(e.id, KEY));
     if (!res.duplicado) nuevos++;
   }
