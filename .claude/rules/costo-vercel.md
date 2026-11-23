@@ -29,9 +29,19 @@ Con 10.308 páginas prerenderizadas, `revalidate` manda el costo del sitio, no s
   suma un cron que la purgue, no se baja el plazo de todas.
 - **Nada de `fetch` sin cache ni `dynamic = "force-dynamic"` en páginas públicas**: cada pedido
   sería una invocación más transferencia. Lo dinámico queda en cuenta, informes y planillas.
-- **Un deploy de producción cuesta ~6 min de máquina y rearma las 10k páginas.** Los commits se
-  juntan; no se pushea a `main` por cada ajuste. Docs, `.github` y `.claude` no construyen
-  (`scripts/vercel-ignorar.sh`).
+- **Un deploy de producción cuesta 10 a 13 min de build y rearma las 10k páginas** (medido el
+  21 y 22/11/2026: 800 s y 603 s). Vercel lo cobra redondeado al minuto de arriba, por núcleo. Los
+  commits se juntan; no se pushea a `main` por cada ajuste. Docs, `.github` y `.claude` no
+  construyen (`scripts/vercel-ignorar.sh`).
+- **Máquina de build `basic` (2 núcleos), fija** desde el 23/11/2026; la mantiene el guardián diario
+  (`~/.claude/scripts/vercel-ahorro.mjs`). Nunca standard, enhanced, turbo ni elastic: con elastic
+  Vercel subió solo a turbo y fueron US$27 en 4 días (24-27/10). Si el build no entra en 8 GB se
+  achica el build, no se agranda la máquina.
+- **El deploy del día ya está gastado: es el de `datos-paises`** (23:50 UTC, un commit a `main` con
+  las series de todos los países). Es más de la mitad de los builds del mes (11 de 20 entre el 12 y
+  el 22/11) y cada deploy guarda ~4 GB. Ningún otro workflow commitea a `main` por su cuenta: sus
+  datos viajan en el commit de `datos-paises`, o se leen en runtime y se purgan con un cron. Un
+  arreglo que no es urgente se mergea a la noche, antes de esa corrida, para compartir el build.
 - **Los previews son opt-in**: una rama sólo construye si el mensaje del commit lleva `[preview]`.
   Para probar un cambio alcanza con `npm run build` local o el CI; el preview es para cuando hace
   falta una URL.
