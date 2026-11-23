@@ -9,4 +9,7 @@ también al otro sitio y a todos sus idiomas, con la misma calidad. Si algo de v
 sitio, decirlo en el cierre con el porqué. (Pedido de Manuel, 2026-10-26: «Donde más te rendiría» se
 corrigió primero solo en calcular.ar.)
 
-- Costo: `revalidate` 86400 y nunca 3600, el mes cambia con `/api/cron/mes-nuevo`: `.claude/rules/costo-vercel.md`.
+- Costo de Vercel (`.claude/rules/costo-vercel.md`): `revalidate` 86400 y nunca 3600, el mes cambia con
+  `/api/cron/mes-nuevo`. Cada deploy son 10-13 min de build que se cobran: los commits se juntan y se
+  mergean a la noche para compartir el deploy diario de `datos-paises`; ningún workflow nuevo commitea
+  a `main`. Previews sólo con `[preview]`. Máquina de build `basic` fija, sin add-ons pagos.
