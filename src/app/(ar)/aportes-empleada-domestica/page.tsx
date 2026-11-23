@@ -23,12 +23,16 @@ const JORNADA_COMPLETA = ACTIVO.find((f) => f.rango === "16-o-mas")!;
 const FALTA_OS_MENOS12 = JORNADA_COMPLETA.obraSocial! - MENOS12.obraSocial!;
 const PROPORCION_ART_MENOS12 = Math.round((MENOS12.art / MENOS12.total) * 100);
 
-const TITULO = `Aportes casas particulares ${VIGENCIA_APORTES.mesVigente.replace(" de ", " ")}: tabla de ARCA`;
+// La cifra va en el título y abre la descripción (12/11/2026): la página salía en Google en
+// posición 8 para «aportes y contribuciones casas particulares <mes>», «aportes empleada doméstica»
+// y «cargas sociales empleadas domésticas» y la elegían 2 de 982 (0,2 % contra 2,9 % esperable).
+// Es la página del que paga, la que más vende la planilla de casas particulares. Mismo arreglo
+// que /convenios/comercio el 25/10. Rota sola con la tabla de ARCA de cada mes.
+const TITULO = `Aportes casas particulares ${VIGENCIA_APORTES.mesVigente.replace(" de ", " ")}: ${formatARS(JORNADA_COMPLETA.total, 0)} por mes`;
 
 export const metadata: Metadata = {
   title: TITULO,
-  description:
-    "Cuánto paga el empleador por mes según las horas semanales: obra social, jubilación y ART con la tabla oficial de ARCA. Incluye menores y jubilados.",
+  description: `Aportes de empleada doméstica en ${VIGENCIA_APORTES.mesVigente}: el empleador paga ${formatARS(JORNADA_COMPLETA.total, 0)} por mes con 16 horas o más por semana y ${formatARS(MENOS12.total, 0)} con menos de 12. Tabla oficial de ARCA.`,
   alternates: { canonical: "/aportes-empleada-domestica" },
   openGraph: {
     images: [

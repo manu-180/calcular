@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { rastrear } from "@/lib/rastreo";
 import { leerDatosCompra, suscribirDatosCompra } from "@/lib/prefill/cliente";
-import { camposCompra } from "@/components/compra/directa";
+import { camposCompra, anotarIda } from "@/components/compra/directa";
 
 export type DatosCompra = {
   slug: string;
@@ -71,6 +71,7 @@ export function FormularioCompra({
       onSubmit={() => {
         setEnviando(true);
         rastrear("checkout", { producto: producto.slug, valor: producto.precio });
+        anotarIda(producto.slug);
       }}
       className="space-y-4"
     >

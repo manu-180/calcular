@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useComprar } from "@/components/compra/directa";
 import { formatARS, formatPct } from "@/lib/formato";
 import { nombrePeriodo, sumarMeses, ULTIMO_PERIODO, type Periodo, type ResultadoAlquiler } from "@/lib/inflacion";
 import { PLANILLA_ALQ } from "@/lib/prefill/alquileres";
@@ -12,6 +15,12 @@ export type OfertaAlquileres = { precio: number; rutaLanding: string };
 //
 // Precio y ruta llegan por props desde la página (server): src/lib/mp.ts lee el disco y no puede
 // entrar al bundle del navegador.
+//
+// «Comprar» va derecho a MercadoPago desde acá (12/11/2026). Hasta hoy el botón era «Ver la
+// planilla» y mandaba a la landing: en 30 días (4/10 → 3/11) lo tocaron 16 personas y ninguna
+// llegó a pagar; la landing tuvo 27 visitas, 0 toques y 9 s de mediana. Era la única oferta de
+// una calculadora que todavía hacía pasar por la landing a quien ya había visto su contrato
+// cargado y el precio. La landing queda como link secundario para el que quiere ver más.
 export function AlquilerPlanillaCTA({
   oferta,
   resultado,
@@ -26,6 +35,7 @@ export function AlquilerPlanillaCTA({
   /** El prefill lo acepta: un contrato más largo que la planilla sale en blanco. */
   cargado: boolean;
 }) {
+  const { enviando, onClick } = useComprar("planilla-alquileres", oferta.precio);
   const ultimo = resultado.ajustes.at(-1);
   const mesRecibo = sumarMeses(ULTIMO_PERIODO, 1);
   const filas: { etiqueta: string; valor: string; tono: "dato" | "resultado" | "total" }[] = [
@@ -76,28 +86,40 @@ export function AlquilerPlanillaCTA({
           </ul>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
-            <Link
-              href={`${oferta.rutaLanding}?desde=alquiler`}
+            <a
+              href="/planillas/comprar?p=planilla-alquileres"
+              rel="nofollow"
               data-evento="cta_compra"
               data-producto="planilla-alquileres"
-              data-ubicacion="calculadora-resultado"
-              className="group inline-flex min-h-12 items-center justify-between gap-3 rounded-full bg-emerald-600 py-1.5 pl-6 pr-1.5 text-[15px] font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.16)] transition-[background-color,transform,box-shadow] duration-300 ease-[var(--ease-snappy)] hover:bg-emerald-700 hover:shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 active:scale-[0.98]"
+              data-ubicacion="calculadora"
+              aria-busy={enviando || undefined}
+              onClick={onClick}
+              className="group inline-flex min-h-12 shrink-0 whitespace-nowrap items-center justify-between gap-3 rounded-full bg-emerald-600 py-1.5 pl-6 pr-1.5 text-[15px] font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.16)] transition-[background-color,transform,box-shadow] duration-300 ease-[var(--ease-snappy)] hover:bg-emerald-700 hover:shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 active:scale-[0.98] aria-busy:cursor-wait aria-busy:bg-emerald-700"
             >
-              Ver la planilla
+              {enviando ? "Te llevamos a MercadoPago…" : "Comprar mi planilla"}
               <span
                 aria-hidden
-                className="grid size-9 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-[var(--ease-snappy)] group-hover:translate-x-0.5 group-hover:-translate-y-px"
+                className="grid size-9 place-items-center rounded-full bg-white/15 transition-transform duration-300 ease-[var(--ease-snappy)] group-hover:translate-x-0.5"
               >
                 <svg viewBox="0 0 20 20" fill="none" className="size-4">
-                  <path d="M7 13l6-6M8 7h5v5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-            </Link>
+            </a>
             <p className="text-sm text-zinc-600">
               <span className="font-semibold tabular-nums text-zinc-900">${oferta.precio.toLocaleString("es-AR")}</span> pago
               único · devolución dentro de los 7 días
             </p>
           </div>
+          <Link
+            href={`${oferta.rutaLanding}?desde=alquiler`}
+            data-evento="cta_compra"
+            data-producto="planilla-alquileres"
+            data-ubicacion="calculadora-landing"
+            className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-4 transition-colors hover:text-emerald-900"
+          >
+            Ver todo lo que trae la planilla
+          </Link>
         </div>
 
         <figure className="overflow-hidden rounded-2xl ring-1 ring-zinc-200">
@@ -139,7 +161,8 @@ export function AlquilerPlanillaCTA({
           {cargado
             ? "Si la comprás ahora, este contrato viene cargado en la planilla."
             : `Este contrato empezó hace más de ${PLANILLA_ALQ.duracionMax / 12} años, más de lo que abarca la planilla: te llega lista para que cargues el contrato actual.`}{" "}
-          Pagás con MercadoPago y te llega al mail al instante.
+          Pagás con tarjeta, débito o dinero en cuenta por MercadoPago (no hace falta tener cuenta) y te llega al mail al
+          instante.
         </p>
       </div>
     </section>
