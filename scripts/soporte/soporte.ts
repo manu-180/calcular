@@ -9,6 +9,7 @@
 //   responder <hilo> <cuerpo.md> [--marca ar|intl] [--idioma xx] [--adjunto ruta]...
 //   escalar <hilo> <motivo.md>          mail a Manuel con el hilo entero; estado escalado
 //   informar <hilo> <resumen.md>        mail a Manuel sólo para que sepa (deploy, cambio); no cambia estado
+//   reembolsar <hilo> <mp_payment_id> <motivo>  devolución total por la API de MercadoPago
 //   nota <hilo> <texto>                 nota interna en el hilo
 //   cerrar <hilo> [ignorado]            cierra sin responder (spam, robots, gracias sin pregunta)
 
@@ -242,6 +243,35 @@ ${cmp.length ? `<p><strong>Compras:</strong><br>${cmp.map((c) => `${esc(c.produc
   console.log(JSON.stringify({ ok: true, tipo }));
 }
 
+// Devolución total de un pago de MercadoPago. Sólo un pago que el ca_compras del hilo atribuye al
+// mail del cliente y que sigue "aprobado": el agente no puede devolverle a nadie lo que pagó otro.
+// La clave de idempotencia es el id del pago: dos corridas no devuelven dos veces.
+async function reembolsar(id: number, paymentId: string, motivo: string) {
+  const { h } = await hilo(id);
+  if (!/^\d{6,}$/.test(paymentId ?? "")) throw new Error("id de pago de MP inválido");
+  const compra = (await compras(h.email)).find((c) => String(c.mp_payment_id) === paymentId);
+  if (!compra) throw new Error(`el pago ${paymentId} no es de ${h.email}`);
+  if (compra.estado !== "aprobado") throw new Error(`el pago ${paymentId} está ${compra.estado}, no se devuelve`);
+  const token = process.env.MP_ACCESS_TOKEN;
+  if (!token) throw new Error("falta MP_ACCESS_TOKEN");
+  const r = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}/refunds`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Idempotency-Key": `soporte-reembolso-${paymentId}` },
+    body: "{}",
+  });
+  const j = (await r.json().catch(() => ({}))) as { id?: number; status?: string; amount?: number; message?: string };
+  if (!r.ok) throw new Error(`MP no devolvió el pago ${paymentId}: HTTP ${r.status} ${j.message ?? ""}`.trim());
+  await db.from("ca_compras").update({ estado: "reembolsado" }).eq("mp_payment_id", paymentId);
+  await db.from("ca_soporte_mensajes").insert({
+    hilo_id: id,
+    direccion: "interno",
+    remitente: "agente",
+    asunto: "reembolso",
+    texto: `Devolución de ${compra.moneda} ${compra.monto} (${compra.producto}, MP ${paymentId}), reembolso MP ${j.id ?? "?"} ${j.status ?? ""}. Motivo: ${motivo}`,
+  });
+  console.log(JSON.stringify({ ok: true, reembolso: j.id ?? null, estado: j.status ?? null, monto: j.amount ?? compra.monto }));
+}
+
 async function main() {
   const [cmd, a1, a2] = process.argv.slice(2);
   const id = Number(a1);
@@ -261,6 +291,8 @@ async function main() {
       return aManuel(id, a2, "escalado");
     case "informar":
       return aManuel(id, a2, "informe");
+    case "reembolsar":
+      return reembolsar(id, a2, process.argv.slice(5).join(" ").replace(/\^([()&|<>^])/g, "$1") || "sin motivo");
     case "nota": {
       // envkit run pasa por cmd.exe, que escapa paréntesis y demás con ^.
       const { h } = await hilo(id);
@@ -272,7 +304,7 @@ async function main() {
       await db.from("ca_soporte_hilos").update({ estado: a2 === "ignorado" ? "ignorado" : "cerrado", updated_at: new Date().toISOString() }).eq("id", id);
       return console.log(JSON.stringify({ ok: true }));
     default:
-      console.error("comandos: sincronizar | pendientes | tomar | adjuntos | responder | escalar | informar | nota | cerrar");
+      console.error("comandos: sincronizar | pendientes | tomar | adjuntos | responder | escalar | informar | reembolsar | nota | cerrar");
       process.exit(2);
   }
 }
