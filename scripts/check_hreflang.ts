@@ -70,6 +70,7 @@ async function main() {
   const registro = mod.registro ?? mod.default!.registro;
   const seo = await import("../src/motor/seo");
   const mapa = await import("../src/motor/mapa");
+  const modPaginas = await import("../src/motor/paginas");
   const sitio = await import("../src/motor/sitio");
   const { hoyEn } = await import("../src/motor/vigencia");
   const { publicacionHoras } = await import("../src/lib/horas/indice");
@@ -250,7 +251,7 @@ async function main() {
     // Legales (sobre, contacto, privacidad, términos): una por edición en su idioma, clúster de todas con
     // la versión en inglés de global como x-default; casi siempre va por sitemap.
     for (const slug of ["privacidad", "terminos", "contacto", "sobre"] as const) {
-      const legales: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: seo.urlIntl(m.codigo, slug), locale: etiquetaIdioma(m.locale), concepto: `legal-${slug}`, idiomas: mapa.hreflangLegal(registro, slug, modo) }));
+      const legales: PaginaConIdiomas[] = registro.mercados(modo).filter((m) => modPaginas.legalIndexable(m.codigo, slug)).map((m) => ({ url: seo.urlIntl(m.codigo, slug), locale: etiquetaIdioma(m.locale), concepto: `legal-${slug}`, idiomas: mapa.hreflangLegal(registro, slug, modo) }));
       for (const p of legales) {
         if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: legal sin entrada en el sitemap del mercado`);
         const sitemap = enSitemap.get(p.url);

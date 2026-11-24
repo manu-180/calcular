@@ -687,12 +687,12 @@ verdad("universal que choca no entra", !zzChoque.calculadoras.some(esUniversal))
 const zzExcepto = definirPais({ mercado: mercadoZz, datos: datosZz, calculadoras: localesZz, universales: { todas: true, excepto: ["descuento"] } });
 verdad("universales todas con excepto", !zzExcepto.calculadoras.some((c) => esUniversal(c) && c.universal.id === "descuento"));
 
-// Registro: equivalentes por índice de concepto, iguales a recorrer todo.
+// Registro: equivalentes por índice de concepto, iguales a recorrer todo (menos las universales podadas).
 for (const concepto of ["bono-semestral", "iva", "descuento"]) {
   const directo = registroReal.paises.flatMap((p) =>
     registroReal
       .calculadorasPublicables(p.mercado.codigo, "2026-10-15", "interno")
-      .filter((c) => c.definicion.concepto === concepto)
+      .filter((c) => c.definicion.concepto === concepto && !registroReal.podada(p.mercado.codigo, c.definicion.slug))
       .map((c) => `${p.mercado.codigo}/${c.definicion.slug}`),
   );
   const indexado = registroReal.equivalentes(concepto, () => "2026-10-15", "interno").map((e) => `${e.mercado}/${e.slug}`);

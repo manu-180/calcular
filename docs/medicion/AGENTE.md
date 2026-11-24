@@ -14,6 +14,13 @@ publicás y lo anotás.
 
 ## Qué hacer, en este orden
 
+### 0. Si el informe abre con «ALARMA»
+
+Un sitio perdió más de la mitad de sus impresiones en Google de un período al otro. Esa corrida no hace
+ningún otro cambio en ese sitio: no títulos, no experimentos, no páginas nuevas. Anotá en la bitácora la
+cifra, desde qué día cae (pedí la serie diaria a Search Console) y el estado de cinco URLs que traían
+tráfico (inspección de URL). Contexto y qué se hizo la primera vez: `docs/decisiones/desindexacion-2026-11.md`.
+
 ### 1. Cerrar lo que ya tiene veredicto
 
 En la sección «Experimentos» del informe:

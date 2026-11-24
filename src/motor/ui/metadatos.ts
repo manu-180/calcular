@@ -1,5 +1,5 @@
 import { actualizacionDeFuentes, actualizacionDeInicioPais, actualizacionDeNovedades, actualizacionDePagina, hreflangLegal } from "../mapa";
-import { ACTUALIZACION_PAGINAS_GLOBALES, esPaginaGlobal, type PaginaGlobal } from "../paginas";
+import { ACTUALIZACION_PAGINAS_GLOBALES, esPaginaGlobal, legalIndexable, type PaginaGlobal } from "../paginas";
 import type { PaginaResuelta } from "../registro";
 import type { FechaISO } from "../tipos";
 import { etiquetaIdioma } from "../i18n/direccion";
@@ -108,6 +108,7 @@ export function hreflangDeEdiciones(ctx: ContextoSitio, slug?: "fuentes" | "nove
 // El clúster de una legal son todas las ediciones (hreflangLegal): casi siempre pasa el tope del <head> y
 // va en el sitemap de cada mercado, como las universales.
 function hreflangDelHeadLegal(ctx: ContextoSitio, slug: PaginaGlobal): Idiomas | undefined {
+  if (!legalIndexable(ctx.mercado.codigo, slug)) return undefined;
   const idiomas = hreflangLegal(ctx.registro, slug, ctx.modo);
   return idiomas && !hreflangVaAlSitemap(idiomas) ? idiomas : undefined;
 }
@@ -127,7 +128,7 @@ export function metadatosDe(ctx: ContextoSitio, r: PaginaIntl | null): MetadataS
     description,
     ...(idiomas ? { idiomas } : {}),
     imagen: imagenDe(ctx, r),
-    ...(r?.tipo === "calculadora" && r.pagina.podada ? { noindex: true } : {}),
+    ...((r?.tipo === "calculadora" && r.pagina.podada) || (r?.tipo === "legal" && !legalIndexable(ctx.mercado.codigo, r.slug)) ? { noindex: true } : {}),
   });
 }
 

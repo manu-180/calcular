@@ -1,6 +1,24 @@
 {
  "fecha": "2026-11-22",
  "ventanaDias": 14,
+ "salud": [
+  {
+   "sitio": "calcular.ar",
+   "impresiones": 111787,
+   "antes": 130282,
+   "clics": 1555,
+   "clicsAntes": 2197,
+   "alarma": false
+  },
+  {
+   "sitio": "calcularya.com",
+   "impresiones": 549,
+   "antes": 124093,
+   "clics": 19,
+   "clicsAntes": 709,
+   "alarma": true
+  }
+ ],
  "analisis": {
   "fugas": [
    {

@@ -93,6 +93,35 @@ async function buscador(sitio: "ar" | "intl", propiedad: string, desde: Date, ha
   }));
 }
 
+// Caída de un sitio entero en Google: el 2/11/2026 calcularya pasó de ~19.000 impresiones por día a
+// menos de 200 y los informes del 8 y del 15 no lo dijeron, porque las fugas se miden página por página
+// contra la mediana del sitio (docs/decisiones/desindexacion-2026-11.md). Esto compara el total.
+export interface SaludBuscador {
+  sitio: string;
+  impresiones: number;
+  antes: number;
+  clics: number;
+  clicsAntes: number;
+  alarma: boolean;
+}
+const PISO_ALARMA = 500;
+async function saludBuscador(sitio: string, propiedad: string, antes: Date, desde: Date, hasta: Date, token: string): Promise<SaludBuscador | null> {
+  const f = (d: Date) => new Date(d.getTime() - 3 * DIA).toISOString().slice(0, 10);
+  const total = async (a: Date, b: Date) => {
+    const r = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(propiedad)}/searchAnalytics/query`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "content-type": "application/json" },
+      body: JSON.stringify({ startDate: f(a), endDate: f(new Date(b.getTime() - DIA)) }),
+    });
+    if (!r.ok) return null;
+    const j = (await r.json()) as { rows?: Array<{ clicks: number; impressions: number }> };
+    return { clics: j.rows?.[0]?.clicks ?? 0, impresiones: j.rows?.[0]?.impressions ?? 0 };
+  };
+  const [ahora, previo] = await Promise.all([total(desde, hasta), total(antes, desde)]);
+  if (!ahora || !previo) return null;
+  return { sitio, impresiones: ahora.impresiones, antes: previo.impresiones, clics: ahora.clics, clicsAntes: previo.clics, alarma: previo.impresiones >= PISO_ALARMA && ahora.impresiones < previo.impresiones / 2 };
+}
+
 const pct = (x: number) => `${(x * 100).toFixed(x < 0.1 ? 1 : 0)} %`;
 const tasa = (x: number, n: number) => (n >= MIN_VISTAS ? pct(x / n) : n ? `${pct(x / n)}*` : "—");
 const nombre = (sitio: string, mercado: string) => (sitio === "ar" ? "calcular.ar" : `calcularya · ${mercado}`);
@@ -103,9 +132,12 @@ function valor(f: Fuga): string {
   return `${pct(f.tasa)} vs ${pct(f.referencia)}`;
 }
 
-function markdown(d: DatosFugas, a: Analisis, gsc: boolean, fecha: string): string {
+function markdown(d: DatosFugas, a: Analisis, gsc: boolean, fecha: string, salud: readonly SaludBuscador[] = []): string {
   const l: string[] = [];
   l.push(`# Informe de fugas · ${fecha}`, "");
+  for (const s of salud.filter((x) => x.alarma)) {
+    l.push(`> **ALARMA: ${s.sitio} perdió el ${Math.round((1 - s.impresiones / s.antes) * 100)} % de sus impresiones en Google** (${s.impresiones} contra ${s.antes} del período anterior; clics ${s.clics} contra ${s.clicsAntes}). Antes que cualquier otra cosa: Search Console → Acciones manuales, Indexación de páginas e inspección de las URLs que más traían. No publicar páginas nuevas en ese sitio hasta entenderlo.`, "");
+  }
   l.push(`Ventana: ${d.desde.slice(0, 10)} → ${d.hasta.slice(0, 10)} (${VENTANA} días), comparada con los ${VENTANA} anteriores. Search Console: ${gsc ? "sí" : "no"}.`);
   l.push(`Una tasa con * tiene menos de ${MIN_VISTAS} casos: es orientativa, no entra en el ranking.`, "");
 
@@ -174,6 +206,10 @@ function markdown(d: DatosFugas, a: Analisis, gsc: boolean, fecha: string): stri
 
   const medidas = d.paginas.reduce((s, p) => s + (p.usos_medidos ?? 0), 0);
   const usos = d.paginas.reduce((s, p) => s + p.usos, 0);
+  if (salud.length) {
+    l.push("", "## Google, sitio entero", "", "| Sitio | Impresiones | Período anterior | Clics | Período anterior |", "|---|---:|---:|---:|---:|");
+    for (const s of salud) l.push(`| ${s.sitio} | ${s.impresiones} | ${s.antes} | ${s.clics} | ${s.clicsAntes} |`);
+  }
   l.push("", "## Calidad del dato", "");
   l.push(`- Usos con el paso «resultado» medido: ${medidas} de ${usos} (${usos ? pct(medidas / usos) : "—"}). Lo que falta es anterior al 24/10/2026, cuando empezó esta medición.`);
   l.push(`- Cargas con Web Vitals: ${d.paginas.reduce((s, p) => s + p.con_vitals, 0)}.`);
@@ -190,14 +226,18 @@ async function main() {
   const gsc = token
     ? (await Promise.all([buscador("ar", "sc-domain:calcular.ar", desde, hasta, token), buscador("intl", "sc-domain:calcularya.com", desde, hasta, token)])).flat()
     : [];
+  const salud = token
+    ? (await Promise.all([saludBuscador("calcular.ar", "sc-domain:calcular.ar", antes, desde, hasta, token), saludBuscador("calcularya.com", "sc-domain:calcularya.com", antes, desde, hasta, token)])).filter((x): x is SaludBuscador => x !== null)
+    : [];
   const vigentes = Object.fromEntries(EXPERIMENTOS.map((e) => [e.id, { hasta: e.hasta, metrica: e.metrica }]));
   const fecha = new Date(hasta.getTime() - DIA).toISOString().slice(0, 10);
   const analisis = analizar(actual, anterior, gsc, fecha, vigentes);
 
   const dir = path.join(raiz, "docs", "medicion");
   mkdirSync(path.join(dir, "informes"), { recursive: true });
-  writeFileSync(path.join(dir, "informes", `${fecha}.md`), markdown(actual, analisis, !!token, fecha));
-  writeFileSync(path.join(dir, "ultimo.json"), `${JSON.stringify({ fecha, ventanaDias: VENTANA, analisis, actual, buscador: gsc.slice(0, 200) }, null, 1)}\n`);
+  writeFileSync(path.join(dir, "informes", `${fecha}.md`), markdown(actual, analisis, !!token, fecha, salud));
+  writeFileSync(path.join(dir, "ultimo.json"), `${JSON.stringify({ fecha, ventanaDias: VENTANA, salud, analisis, actual, buscador: gsc.slice(0, 200) }, null, 1)}\n`);
+  for (const s of salud.filter((x) => x.alarma)) console.log(`::error::${s.sitio}: impresiones en Google ${s.impresiones} contra ${s.antes} del período anterior`);
   console.log(`docs/medicion/informes/${fecha}.md · ${analisis.fugas.length} fugas · ${analisis.cambios.length} cambios · ${analisis.experimentos.length} experimentos`);
 }
 

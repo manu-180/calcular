@@ -225,3 +225,11 @@ Formato:
 - Primer informe (`informes/2026-10-23.md`): la fuga más grande está antes de entrar, en Google.
   `/convenios/comercio` sale para «cuánto cobra un empleado de comercio por 8 / 4 horas» y casi nadie
   la elige (0/214, 2/198). En el sitio, la home rebota 57 % contra 20 % de referencia.
+
+## 2026-11-23
+- **calcularya.com está fuera de Google desde el 2/11** (18.911 impresiones el 30/10, 198 el 2/11, 9 el
+  20/11). Sin acción manual. Detalle y causa probable en `docs/decisiones/desindexacion-2026-11.md`.
+- Cambios: 5.017 universales podadas (quedan 649), legales por edición a noindex, alarma de sitio entero
+  en el informe, países nuevos frenados.
+- Se evalúa cada lunes en «Google, sitio entero». Valor de antes: 549 impresiones y 19 clics en 14 días
+  (6/11 a 19/11). No tocar títulos de calcularya mientras tanto: sin impresiones no hay cómo medirlos.

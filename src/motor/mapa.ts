@@ -1,5 +1,5 @@
 import { feedDe } from "./novedades";
-import { ACTUALIZACION_PAGINAS_GLOBALES, PAGINAS_GLOBALES, PAGINAS_MERCADO, type PaginaGlobal } from "./paginas";
+import { ACTUALIZACION_PAGINAS_GLOBALES, legalIndexable, PAGINAS_GLOBALES, PAGINAS_MERCADO, type PaginaGlobal } from "./paginas";
 import { etiquetaIdioma } from "./i18n/direccion";
 import { resolverValores, type DatoUsado, type PaginaResuelta, type Registro } from "./registro";
 import { hreflangDe, hreflangVaAlSitemap, origenPublicoIntl, urlIntl, type Idiomas } from "./seo";
@@ -63,14 +63,14 @@ export function actualizacionDeNovedades(registro: Registro, codigo: CodigoMerca
 // quién responde por el sitio), en el idioma de quien la lee.
 export function hreflangLegal(registro: Registro, slug: PaginaGlobal, modo: ReturnType<typeof modoPublicacion>): Idiomas | undefined {
   const idiomas: Idiomas = {};
-  for (const m of registro.mercados(modo)) idiomas[etiquetaIdioma(m.locale)] = urlIntl(m.codigo, slug);
+  for (const m of registro.mercados(modo)) if (legalIndexable(m.codigo, slug)) idiomas[etiquetaIdioma(m.locale)] = urlIntl(m.codigo, slug);
   if (Object.keys(idiomas).length < 2) return undefined;
   idiomas["x-default"] = urlIntl("global", slug);
   return idiomas;
 }
 
 function entradasLegales(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean): EntradaSitemap[] {
-  return PAGINAS_GLOBALES.map((slug) => {
+  return PAGINAS_GLOBALES.filter((slug) => legalIndexable(m.codigo, slug)).map((slug) => {
     const idiomas = conAlternos ? hreflangLegal(registro, slug, modo) : undefined;
     return { url: urlIntl(m.codigo, slug), lastmod: ACTUALIZACION_PAGINAS_GLOBALES, ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
   });

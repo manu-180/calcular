@@ -3,6 +3,11 @@
 Plan y decisiones: `docs/adr/0002-mundo.md`. Receta de universales: `docs/global/RECETA-UNIVERSAL.md`.
 Rama de integración: `claude/global-calculators-multipa-s-dfbec3` (incluye el PR #30 de auditoría).
 
+## 23/11/2026 · FRENO: no se publican países nuevos
+
+Google sacó calcularya del índice el 2/11 (`docs/decisiones/desindexacion-2026-11.md`). El plan de
+abajo queda en pausa hasta que vuelva la señal; regla en `.claude/rules/paises-freno.md`.
+
 ## PLAN DE PAÍSES (Manuel, 23/10/2026): hay que hacerlos todos
 
 `docs/global/plan-paises/2026-10-23-tope-paises-calcular.md` (y el `.csv` con los portales probados
