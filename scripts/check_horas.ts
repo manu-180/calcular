@@ -17,6 +17,7 @@ import { MINIMO_PAISES_PRODUCTO, paginasHoras, publicacionDe } from "../src/moto
 import { urlHoras } from "../src/motor/horas/ui/seo";
 import type { ArchivoPrecios } from "../src/motor/horas/tipos";
 import { entradasDelMercado } from "../src/motor/mapa";
+import { edicionesDeReferencia } from "../src/motor/referencia";
 import type { FechaISO } from "../src/motor/tipos";
 import { construirInformeHoras } from "../src/lib/horas/indice";
 import precios from "../src/lib/horas/precios.json";
@@ -97,10 +98,14 @@ const pub = publicacionDe(indice);
 console.log(`\nPUBLICACIÓN: ${pub.inicial ? `índice con ${pub.inicial}; productos ${pub.productos.join(", ")}` : "nada (las páginas dan 404 y no están en el sitemap)"}`);
 process.env.NEXT_PUBLIC_SITIO_INTL_URL ||= "https://calcularya.com";
 process.env.VERCEL_ENV = "production";
-const revisar = registro.mercados("produccion").filter((m, i) => m.codigo === "global" || i < 4);
+// Horas se indexa en una edición por idioma (src/motor/referencia.ts): se revisan global, dos de
+// referencia y dos que no lo son, que no tienen que listar nada.
+const referencia = edicionesDeReferencia(registro, "produccion");
+const noReferencia = registro.mercados("produccion").filter((m) => !referencia.includes(m));
+const revisar = [...referencia.filter((m, i) => m.codigo === "global" || i < 3), ...noReferencia.slice(0, 2)];
 for (const m of revisar) {
   const todas = new Set([undefined, ...PRODUCTOS.map((p) => p.id)].map((p) => urlHoras(m, p)));
-  const esperadas = new Set(paginasHoras(pub).map((p) => urlHoras(m, p)));
+  const esperadas = new Set(referencia.includes(m) ? paginasHoras(pub).map((p) => urlHoras(m, p)) : []);
   const listadas = new Set((entradasDelMercado(registro, m.codigo, { horas: pub }) ?? []).map((e) => e.url).filter((u) => todas.has(u)));
   for (const u of listadas) if (!esperadas.has(u)) fallas.push(`sitemap ${m.codigo}: lista ${u} y no se publica (o es el producto del índice)`);
   for (const u of esperadas) if (!listadas.has(u)) fallas.push(`sitemap ${m.codigo}: falta ${u}`);

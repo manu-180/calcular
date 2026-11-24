@@ -1,3 +1,4 @@
+import { esDeReferencia } from "@/motor/referencia";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { GRAMATICA } from "@/motor/i18n/gramatica";
@@ -83,7 +84,7 @@ export function crearPaginaHoras(idioma: Idioma) {
       slug: ruta,
       title,
       description,
-      ...(idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}),
+      ...(esDeReferencia(registro, m, r.ctx.modo) ? (idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}) : { noindex: true }),
       imagen: `${base}/og?p=${prod.id}${r.ruta.pais ? `&pais=${r.ruta.pais}` : ""}`,
     });
     if (!r.ruta.pais) return meta;

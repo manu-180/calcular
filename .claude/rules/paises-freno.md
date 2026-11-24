@@ -14,6 +14,8 @@ semana (`docs/decisiones/desindexacion-2026-11.md`). Hasta que el informe de los
 
 - Ningún mercado nuevo pasa a `estado: "publicado"`. Se puede construir y dejar en borrador.
 - No se despoda nada de `src/motor/universales/podadas.json`.
+- Rankings, horas y mundo se indexan en una edición por idioma (`src/motor/referencia.ts`). No volver a
+  recorrer `registro.mercados()` para armar su clúster o su sitemap: va por `clusterDeReferencia`.
 - Mantener datos, arreglar locales y corregir textos sigue igual.
 
 Cuando vuelva: un país por semana, y sus universales nacen podadas (se indexan solo si juntan

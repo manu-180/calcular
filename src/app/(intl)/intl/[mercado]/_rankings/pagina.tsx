@@ -1,3 +1,4 @@
+import { esDeReferencia } from "@/motor/referencia";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { textosRankings } from "@/motor/i18n/rankings";
@@ -44,7 +45,7 @@ export function crearIndiceRankings(idioma: Idioma) {
       slug: SLUG_RANKINGS[idioma],
       title: elegirTitulo(conPais(t.seo.titulo, m.codigo === "global" ? null : m.nombre)),
       description: t.seo.descripcion(r.grilla.paises.length),
-      ...(idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}),
+      ...(esDeReferencia(registro, m, r.ctx.modo) ? (idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}) : { noindex: true }),
       imagen: `${urlIntl(m.codigo, SLUG_RANKINGS[idioma])}/og?r=${r.vistas[0].id}&v=${v.id}`,
     });
   }
@@ -83,7 +84,7 @@ export function crearPaginaRanking(idioma: Idioma) {
       slug: slugRanking(idioma, r.vista.id),
       title: elegirTitulo(conPais(tr.seo, m.codigo === "global" ? null : m.nombre)),
       description: descripcionCon(v.esPropia ? v.frase : null, tr.descripcion(r.vista.total)),
-      ...(idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}),
+      ...(esDeReferencia(registro, m, r.ctx.modo) ? (idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}) : { noindex: true }),
       imagen: `${urlIntl(m.codigo, SLUG_RANKINGS[idioma])}/og?r=${r.vista.id}&v=${v.id}`,
     });
   }

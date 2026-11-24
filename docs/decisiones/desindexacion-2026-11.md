@@ -51,11 +51,16 @@ de páginas repetidas.
    período anterior y abre el informe con el aviso si cae más de la mitad.
 4. **Freno a países nuevos** (`.claude/rules/paises-freno.md`).
 
+## 24/11: rankings, horas y mundo, una edición por idioma
+
+Esas tres secciones muestran la misma tabla de países en las 142 ediciones (1.136 URLs, 611 impresiones
+en total antes de la caída). Ahora se indexan solo en la edición de referencia de cada idioma
+(`src/motor/referencia.ts`: inglés en global, español en México, portugués en Brasil, francés en
+Francia; 40 ediciones). Las demás siguen vivas y enlazadas con `noindex, follow`, fuera del sitemap. El
+clúster hreflang pasa a ser por idioma (`es`, `fr`), no por país. Un idioma nuevo entra solo.
+
 ## Qué falta y cómo se juzga
 
-- Rankings, horas y «tu sueldo en el mundo» siguen indexables en las 142 ediciones (1.136 URLs, 611
-  impresiones en total). Son las páginas que un medio puede citar: lo que corresponde es dejarlas
-  indexables en una edición por idioma. No se hizo el 23/11 porque toca tres subsistemas con sus checks.
 - Las locales sin impresiones (2.050 de 2.937) no se tocan: se arreglan, no se podan.
 - La recuperación de una baja así tarda semanas o meses y no está garantizada. Se mira cada lunes en
   «Google, sitio entero» del informe. Señal de vuelta: más de 5.000 impresiones por día durante 14 días.
