@@ -1309,7 +1309,7 @@
       "nombre": "SNB-Leitzins",
       "unidad": "%",
       "frecuencia": "diaria",
-      "maxAntiguedadDias": 10,
+      "maxAntiguedadDias": 14,
       "fuente": {
         "organismo": "Schweizerische Nationalbank (SNB-Datenportal)",
         "titulo": "Leitzins der SNB und ausgewählte Geldmarktsätze, Würfel snbgwdzid",
@@ -1556,7 +1556,7 @@
       "nombre": "SARON (Swiss Average Rate Overnight)",
       "unidad": "%",
       "frecuencia": "diaria",
-      "maxAntiguedadDias": 10,
+      "maxAntiguedadDias": 14,
       "fuente": {
         "organismo": "Schweizerische Nationalbank (SNB-Datenportal)",
         "titulo": "Leitzins der SNB und ausgewählte Geldmarktsätze, Würfel snbgwdzid",
