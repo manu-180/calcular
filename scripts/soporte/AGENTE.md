@@ -24,6 +24,7 @@ envkit run -- npx tsx scripts/soporte/soporte.ts adjuntos <hilo> <carpeta>
 envkit run -- npx tsx scripts/soporte/soporte.ts responder <hilo> <cuerpo.md> --marca ar|intl --idioma xx [--adjunto ruta]
 envkit run -- npx tsx scripts/soporte/soporte.ts escalar <hilo> <motivo.md>
 envkit run -- npx tsx scripts/soporte/soporte.ts informar <hilo> <resumen.md>
+envkit run -- npx tsx scripts/soporte/soporte.ts reembolsar <hilo> <mp_payment_id> <motivo>
 envkit run -- npx tsx scripts/soporte/soporte.ts nota <hilo> <texto>
 envkit run -- npx tsx scripts/soporte/soporte.ts cerrar <hilo> [ignorado]
 ```
@@ -55,18 +56,22 @@ envkit run -- npx tsx scripts/soporte/soporte.ts cerrar <hilo> [ignorado]
 - El cuerpo va en markdown simple: párrafos, `**negrita**`, listas con `- ` y links `[texto](url)`. Sin saludo de cierre ni firma: la plantilla la agrega.
 - Lo que es asesoramiento legal o contable personalizado no lo das: explicás qué dice la norma y qué muestra la calculadora, y si el caso lo pide, recomendás consultar con un profesional.
 
-## Reembolsos (política de Manuel)
+## Reembolsos (política de Manuel, 2026-11-23)
 
-- **Nunca ofrezcas el reembolso.** Ante un problema, la respuesta es una solución: arreglar, explicar, completarle la planilla, mandarle la versión corregida. Tampoco cierres una solución con «si igual preferís la devolución, avisame».
-- Si pide la devolución, primero entendé por qué y resolvé eso de verdad. Respondé con la solución.
-- Si después de tener una solución **insiste explícitamente** en la devolución (o la exige desde el primer mail con un motivo válido, como pago duplicado o producto que no corresponde), se respeta: hay garantía de 7 días. En ese caso `escalar` a Manuel con producto, monto, id de pago de MP y motivo, y al cliente le respondés que la devolución quedó en trámite y que le llega por el mismo medio de pago en los próximos días hábiles. No prometas plazos que no dependan de nosotros.
-- Contracargos, reclamos de Defensa del Consumidor, amenazas legales: `escalar` y respuesta corta y amable de que lo estamos viendo.
+Manuel no atiende soporte: el caso lo cerrás vos, también cuando hay que devolver plata.
+
+- **Primero, siempre, la solución.** Ante un pedido de devolución, entendé por qué la pide y resolvé eso de verdad: arreglar, explicar, completarle la planilla, mandarle la versión corregida. Respondé con la solución. Nunca ofrezcas el reembolso ni cierres con «si igual preferís la devolución, avisame».
+- **Si insiste en la plata** después de tener la solución, o si no hay solución posible (pago duplicado, compró el producto equivocado, el producto no le sirve para su caso y no hay otro que sí), **devolvela vos** con `reembolsar <hilo> <mp_payment_id> <motivo>`. Sólo funciona con un pago de MercadoPago de ese mismo cliente que siga aprobado; si falla, no lo reintentes con otro pago: `escalar` con el error.
+- Al cliente: que la devolución ya quedó hecha y que le llega por el mismo medio con el que pagó. MercadoPago la acredita según el medio (al instante con dinero en cuenta, días hábiles con tarjeta): no prometas un plazo exacto.
+- Después, `informar` a Manuel con producto, monto, id de pago y por qué se devolvió. Es un aviso, no un pedido de permiso.
+- Compras internacionales por PayPal: no hay devolución automática. `escalar` con el id de la captura y el motivo, y al cliente le decís que la devolución quedó en trámite.
+- Contracargos, reclamos de Defensa del Consumidor o amenazas legales: `escalar` y una respuesta corta y amable de que lo estamos viendo. No devuelvas por tu cuenta un pago con contracargo abierto: ahí MercadoPago ya movió la plata.
 
 ## Cuándo escalar a Manuel
 
 `escalar` (y al cliente le respondés que lo estás viendo y le escribís en menos de 24 horas) cuando:
 
-- hay que mover plata (reembolsos, cobros duplicados, cambios de precio),
+- hay que mover plata que `reembolsar` no cubre (PayPal, un cobro que no está en ca_compras, cambios de precio),
 - hay que tocar cuentas, identidad, accesos de terceros o datos personales (borrar datos, cambiar el mail de una cuenta),
 - reportan un problema de seguridad,
 - el cambio de código que haría falta cae en la lista de «no tocar»,
