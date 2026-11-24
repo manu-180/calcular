@@ -14,6 +14,73 @@ Formato:
 - Evaluado: <cambio anterior> → <resultado con números> · <se queda | se revierte>
 ```
 
+## 2026-11-24 (corrida del agente)
+- **66 calculadoras de calcular.ar** (entre ellas `/empleada-domestica`, `/renuncia`, `/reingreso`,
+  `/aportes-empleada-domestica`, `/ganancias-jubilados`, `/licencia-por-maternidad`,
+  `/actualizacion-creditos-laborales`) · fuga resultado (`/empleada-domestica` 0 % vs 98 %, 42
+  perdidas, 2.ª del sitio; `/renuncia` 0 % vs 98 %, 22 perdidas, 4.ª)
+  - Diagnóstico: no era la gente, era la medición. Esas calculadoras mostraban el resultado fuera de
+    una región `aria-live` y `rastreo.ts` sólo detecta el resultado ahí: daban 0 % siempre. En la
+    ventana, 26 páginas con usos medidos tenían 0 resultados (380 de los 2011 usos medidos del
+    sitio). calcularya no tiene el problema: `PielCalculadora` ya tenía la región (0 páginas en
+    cero).
+  - Cambio: `aria-live="polite"` en el bloque de resultado de las 66, la misma forma que ya usaban
+    indemnización o aguinaldo (un lector de pantalla además lee el resultado al cambiar). Sin tocar
+    textos, cifras ni lógica. `check_medicion_fugas` suma una prueba: toda calculadora importada por
+    una página de `(ar)` tiene que llegar a una región `aria-live` (la de una `Oferta*` no cuenta),
+    probada en las dos direcciones · directo
+  - Antes: 0 resultados en las 26 páginas con datos (`/empleada-domestica` 0/58, `/renuncia` 0/35).
+  - Se evalúa: informe del 2026-12-08 (primera ventana completa con el cambio). La tasa real de
+    esas páginas reemplaza el 0 %: `/empleada-domestica` y `/renuncia` salen del ranking o quedan con
+    su fuga real, y recién ahí se mira qué campo traba («Años completos de antigüedad» 17,
+    «Último día trabajado» 19).
+- **/cuota-alimentaria** · fuga buscador (1.1 % vs 4.9 %, 3567 impresiones, 135 perdidas, 2.ª de
+  Google)
+  - Cambio: title «¿Cuánto corresponde de cuota alimentaria por hijo en 2026?» (antes «Cuota
+    alimentaria por hijo 2026: de $ 557.303 a $ 713.070», con montos desde el 16/10 y el CTR igual
+    de bajo). La description pasa a llevar los montos y la respuesta al porcentaje: «Criar a un
+    hijo cuesta de $ 557.303 a $ 713.070 por mes (INDEC, agosto 2026). No hay porcentaje fijo:
+    calculá cuánto le toca a cada progenitor, con 1, 2 o más hijos.» (montos y mes salen del dato,
+    rotan solos) · directo
+  - Antes: «cuanto es la cuota alimentaria por hijo 2026» 6/309 (pos 4.4); «cuanto corresponde de
+    cuota alimentaria por hijo 2026 argentina» 2/272 (pos 5.5); «porcentaje de cuota alimentaria
+    por 2 hijos 2026» 1/224 (pos 5.6). Página: 40/3567.
+  - Se evalúa: 2026-12-22 (4 semanas desde que llegue a producción) en Search Console, esas tres
+    consultas.
+- Evaluado: **/convenios/comercio** title con la cifra de 8 horas (24/10) → «cuanto cobra un
+  empleado de comercio por 8 horas» 0/214 pos 7.6 → 9/410 pos 2.4; «cuánto cobra… por 4 horas
+  2026» 2/198 pos 4.2 → 12/218 pos 1.5; «cuanto cobra… por 4 horas» 1/180 pos 7.1 → 3/207 pos 2.9.
+  Página: 0.9 % de 4610 → 1.0 % de 10283 (106 clics en 14 días). Subió mucho de posición y de
+  clics, pero el CTR en posición 1,5-2,9 sigue muy abajo de lo típico · se queda. Sigue primera
+  fuga de Google (430 perdidas), ahora con «sueldo empleado de comercio noviembre 2026» 22/802 y
+  «cuanto gana un empleado de comercio» 1/409. No se tocó hoy: corre `comercio-quien` en la misma
+  página y cambiar el title cambia quién entra a mitad del experimento. Candidata para cuando el
+  experimento cierre.
+- Evaluado: **/convenios/comercio/[mes]** title «desde <mínimo>» (24/10) → sin dato comparable:
+  `octubre-2026` quedó en 0/48 (pos 10.3) porque el mes pasó, y `noviembre-2026` no tiene
+  impresiones; Google manda las consultas del mes a `/convenios/comercio` · se queda (no hay
+  señal de daño).
+- Evaluado a medias: **links calcular.ar → calcularya** (24/10, ventana 21/11-5/12) → primer dato
+  de Search Console de calcularya en el informe: 66 páginas con impresiones, 313 impresiones y 7
+  clics en 14 días (antes, sin propiedad). Cierre el 2026-12-05.
+- Experimentos: `comercio-quien` **sigue** (a 2.3 % n=306, b 0.8 % n=250, P=11 %): no se toca.
+- Sin cambio, anotado: **/cuota-alimentaria** fuga resultado (64 % vs 98 %, 42 perdidas, «Hijo 1»
+  20). La calculadora no muestra nada hasta que se carga el ingreso, así que quien elige la edad
+  no ve respuesta. Idea de experimento: mostrar el costo de crianza apenas se elige la edad. Ojo al
+  armarlo: un número nuevo en la región `aria-live` contaría solo como «resultado» y la «b» ganaría
+  por construcción; medir con `acciones` o dejar la vista previa fuera de la región. No se hizo hoy
+  porque la página ya tiene el cambio de title (dos cambios a la vez en la misma página no se
+  pueden separar).
+- Publicación: por la regla de costo de `CLAUDE.md` (23/11: ningún workflow commitea código a
+  `main`, se mergea a la noche para compartir el build de `datos-paises`) el código quedó en la rama
+  `mejora/2026-11-24`, sin `[preview]`, para mergear antes de las 23:50 UTC. Esta bitácora (docs,
+  no construye) va a `main`. Las fechas de evaluación cuentan desde el merge. `AGENTE.md` todavía
+  dice «push a `main`»: hay que alinearlo (yo no puedo tocarlo).
+- Línea de base: `check-all` en `main` limpio 165/167, rojas heredadas `check_paises` (`ch`, `ch-fr`,
+  `ch-it`: `saron-hypothek-rechner` publicada sin dato de SARON ni tasa del BNS en 10 días) y
+  `check_planillas_intl` (`cl/sueldo-y-liquidacion` a la venta con un problema de catálogo). Con el
+  cambio, las mismas dos y nada más; `npm run build` verde, las páginas tocadas siguen estáticas (`○`).
+
 ## 2026-11-03 (Comercio: ofrecerle la planilla al que paga, no al que cobra)
 - **/convenios/comercio** · fuga accion sobre la oferta (654 vieron la oferta de la planilla en
   30 días, 10 la tocaron: 1,5 %, contra 9,7 % en `/convenios/uocra` y 7,9 % en
