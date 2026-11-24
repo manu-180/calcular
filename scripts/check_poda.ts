@@ -91,6 +91,20 @@ async function main() {
     const ctxB = contextoSitio(reg, caso.b);
     const mdB = ctxB && pb ? metadatosDe(ctxB, { tipo: "calculadora", pagina: pb }) : null;
     verdad("una no podada no lleva robots", mdB !== null && mdB.robots === undefined);
+
+    // Legales repetidas por edición (src/motor/paginas.ts, legalIndexable).
+    const urlsReales = (mapa.entradasDelMercado(real, caso.a) ?? []).map((e) => e.url);
+    const global = (mapa.entradasDelMercado(real, "global") ?? []).map((e) => e.url);
+    const ctxReal = contextoSitio(real, caso.a);
+    for (const slug of ["privacidad", "terminos", "contacto"] as const) {
+      const md = ctxReal ? metadatosDe(ctxReal, { tipo: "legal", slug }) : null;
+      verdad(`${slug} del país lleva noindex, follow`, md?.robots?.index === false && md?.robots?.follow === true, JSON.stringify(md?.robots));
+      verdad(`${slug} del país no lleva hreflang`, !md?.alternates.languages);
+      verdad(`${slug} del país no está en su sitemap`, !urlsReales.includes(seo.urlIntl(caso.a, slug)));
+      verdad(`${slug} de global sigue en el sitemap`, global.includes(seo.urlIntl("global", slug)));
+    }
+    const sobre = ctxReal ? metadatosDe(ctxReal, { tipo: "legal", slug: "sobre" }) : null;
+    verdad("«Quiénes somos» del país sigue indexable y en el sitemap", sobre !== null && sobre.robots === undefined && urlsReales.includes(seo.urlIntl(caso.a, "sobre")));
   }
 
   console.log(`check_poda: ${enLista} universales en podadas.json${caso ? ` · caso de prueba ${caso.a}/${caso.slugA}` : ""}`);

@@ -39,6 +39,12 @@ const DIA = 86_400_000;
 const seco = process.argv.includes("--dry");
 // Diagnóstico: cuántas saldrían si todos los mercados ya tuvieran 90 días. Solo con --dry.
 const sinEdad = seco && process.argv.includes("--sin-edad");
+// Rescate (23/11/2026): el 2/11 Google sacó del índice casi todo calcularya de un día para el otro
+// (docs/decisiones/desindexacion-2026-11.md). Con --rescate la poda no espera los 90 días y exige un
+// piso de impresiones (--min, 10 por defecto) en vez de una sola: queda indexable solo la universal
+// que Google ya mostró de verdad en ese país. Se corre a mano, no en la ronda mensual.
+const rescate = process.argv.includes("--rescate");
+const minimo = rescate ? Number(process.argv[process.argv.indexOf("--min") + 1]) || 10 : 1;
 
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 const hoy = iso(new Date()) as FechaISO;
@@ -68,10 +74,10 @@ async function tokenGoogle(crudo: string): Promise<string> {
 
 // Paths con al menos una impresión en la ventana. Search Console va 2-3 días atrasado: la ventana se
 // corre 3 días para no contar como cero lo que todavía no cargó.
-async function conImpresiones(token: string): Promise<{ paths: Set<string>; filas: number; desde: string; hasta: string }> {
+async function conImpresiones(token: string): Promise<{ paths: Map<string, number>; filas: number; desde: string; hasta: string }> {
   const hasta = iso(new Date(Date.now() - 3 * DIA));
   const desde = iso(new Date(Date.now() - (3 + DIAS) * DIA));
-  const paths = new Set<string>();
+  const paths = new Map<string, number>();
   let filas = 0;
   for (let startRow = 0; ; startRow += 25000) {
     const r = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(PROPIEDAD)}/searchAnalytics/query`, {
@@ -83,7 +89,10 @@ async function conImpresiones(token: string): Promise<{ paths: Set<string>; fila
     const j = (await r.json()) as { rows?: { keys: string[]; impressions: number }[] };
     const rows = j.rows ?? [];
     filas += rows.length;
-    for (const x of rows) if (x.impressions > 0) paths.add(decodeURIComponent(new URL(x.keys[0]).pathname).replace(/\/+$/, "") || "/");
+    for (const x of rows) {
+      const p = decodeURIComponent(new URL(x.keys[0]).pathname).replace(/\/+$/, "") || "/";
+      paths.set(p, (paths.get(p) ?? 0) + x.impressions);
+    }
     if (rows.length < 25000) break;
   }
   return { paths, filas, desde, hasta };
@@ -135,7 +144,7 @@ async function main(): Promise<number> {
   let evaluadas = 0;
   for (const m of registro.mercados("produccion")) {
     if (m.codigo === "global") continue;
-    const desdePais = sinEdad ? "2000-01-01" : superficial ? hoy : (publicadoEl.get(m.codigo) ?? creadoEl.get(m.codigo));
+    const desdePais = sinEdad || rescate ? "2000-01-01" : superficial ? hoy : (publicadoEl.get(m.codigo) ?? creadoEl.get(m.codigo));
     if (!desdePais) {
       resumen.push(`  ${m.codigo}: sin fecha de publicación en git, se saltea`);
       continue;
@@ -147,22 +156,22 @@ async function main(): Promise<number> {
     const sinTrafico: string[] = [];
     for (const c of registro.calculadorasPublicables(m.codigo, hoyEn(m), "produccion")) {
       if (!esUniversal(c) || nuevas[m.codigo]?.[c.universal.id]) continue;
-      const nacio = sinEdad ? desdePais : superficial ? hoy : (nacioEl.get(c.universal.id) ?? desdePais);
+      const nacio = sinEdad || rescate ? desdePais : superficial ? hoy : (nacioEl.get(c.universal.id) ?? desdePais);
       if (diasDesde(nacio > desdePais ? nacio : desdePais) < DIAS) continue;
       evaluadas++;
-      if (paths.has(`/${m.codigo}/${c.definicion.slug}`)) continue;
+      if ((paths.get(`/${m.codigo}/${c.definicion.slug}`) ?? 0) >= minimo) continue;
       sinTrafico.push(c.universal.id);
     }
     if (!sinTrafico.length) continue;
     nuevas[m.codigo] = { ...(nuevas[m.codigo] ?? {}), ...Object.fromEntries(sinTrafico.map((id) => [id, hoy])) };
     agregadas += sinTrafico.length;
-    resumen.push(`  ${m.codigo}${sinEdad ? "" : ` (publicado ${desdePais})`}: ${sinTrafico.length} → ${sinTrafico.join(", ")}`);
+    resumen.push(`  ${m.codigo}${sinEdad || rescate ? "" : ` (publicado ${desdePais})`}: ${sinTrafico.length}${rescate ? "" : ` → ${sinTrafico.join(", ")}`}`);
   }
 
   const total = Object.values(nuevas).reduce((n, x) => n + Object.keys(x ?? {}).length, 0);
-  console.log(`poda ${hoy} · Search Console ${desde} a ${hasta}: ${filas} páginas, ${paths.size} con impresiones · ${jovenes} mercados con menos de ${DIAS} días`);
+  console.log(`poda ${hoy} · Search Console ${desde} a ${hasta}: ${filas} páginas con impresiones${rescate ? ` · rescate, piso ${minimo}` : ""} · ${jovenes} mercados con menos de ${DIAS} días`);
   for (const l of resumen) console.log(l);
-  console.log(`poda: ${agregadas} de ${evaluadas} universales evaluadas sin impresiones · ${total} podadas en total`);
+  console.log(`poda: ${agregadas} de ${evaluadas} universales evaluadas bajo el piso · ${total} podadas en total`);
   if (!agregadas) return 0;
   if (seco) {
     console.log("(seco) no se escribe podadas.json");

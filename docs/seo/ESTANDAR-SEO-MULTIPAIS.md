@@ -12,6 +12,11 @@ colapsa las variantes de un mismo idioma que dicen lo mismo y las guías de cali
 «Lowest» a las páginas intercambiables. Lo que rankea en cada país es la escala oficial propia, con fecha,
 fuente y un ejemplo resuelto, en el idioma del país y con alguien que responde por los números.
 
+> **23/11/2026: el sitio está desindexado desde el 2/11 y los países nuevos están frenados.** Qué pasó,
+> qué se podó y cómo se juzga la vuelta: [desindexacion-2026-11.md](../decisiones/desindexacion-2026-11.md).
+> La regla de §3 «1 a 3 países por semana» no se cumplió (42 en una semana) y es la primera sospecha.
+> Privacidad, términos y contacto ya no se indexan por edición (solo en global); «Quiénes somos» sí.
+
 ## 1. Lo que el motor hace solo (ningún país lo configura)
 
 | Qué | Cómo | Vigilado por |
