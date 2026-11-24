@@ -163,7 +163,7 @@ export function CalculadoraReservaEmpleo() {
           fin de la función y, por último, el despido o la no reincorporación.
         </p>
       ) : (
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">
             Lo que se juega en el cómputo del período de reserva
           </p>

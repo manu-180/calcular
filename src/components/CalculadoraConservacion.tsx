@@ -60,7 +60,7 @@ export function CalculadoraConservacion() {
           Revisá la fecha del recibo.
         </p>
       ) : (
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">Hay que conservarlo hasta</p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
             {fechaLarga(res.limiteQueMandaISO)}

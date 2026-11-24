@@ -133,7 +133,7 @@ export function CalculadoraDespidoPlazoFijo() {
           al fin del plazo pactado.
         </p>
       ) : (
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">
             Total a cobrar por el despido anticipado (art. {ARTICULO_REFORMADO}, texto vigente)
           </p>

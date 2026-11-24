@@ -94,7 +94,7 @@ export function CalculadoraRifl() {
         </span>
       </label>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+      <div className="mt-6 grid gap-4 sm:grid-cols-3" aria-live="polite">
         <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
           <p className="text-sm font-semibold text-zinc-700">Sin RIFL, por mes</p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">

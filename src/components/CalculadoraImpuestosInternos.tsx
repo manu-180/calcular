@@ -90,7 +90,7 @@ export function CalculadoraImpuestosInternos() {
           Cargá un importe mayor que cero.
         </p>
       ) : (
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">Impuesto interno contenido en ese importe</p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-emerald-700">
             {pesos(res.impuestoContenido)}

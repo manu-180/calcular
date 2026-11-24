@@ -152,7 +152,7 @@ export function CalculadoraViajante() {
       )}
 
       {res && (
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 space-y-4" aria-live="polite">
           {res.clientela.corresponde ? (
             <div className="rounded-xl border-2 border-emerald-500 bg-emerald-50/70 p-5">
               <p className="text-sm font-semibold text-emerald-900">

@@ -203,7 +203,7 @@ export function CalculadoraTrabajoAgrario() {
           remuneración, mayor que cero.
         </p>
       ) : res.modalidad === "permanente" ? (
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">
             Total a cobrar por el despido (Ley 26.727 art. 16 → Título XII de la LCT)
           </p>
@@ -377,7 +377,7 @@ export function CalculadoraTrabajoAgrario() {
           </p>
         </div>
       ) : (
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">
             Total a cobrar al concluir la temporada (Ley 26.727, arts. 17 y 20)
           </p>

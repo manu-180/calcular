@@ -75,7 +75,7 @@ export function CalculadoraPlataformas() {
         </div>
       ) : (
         <>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:grid-cols-3" aria-live="polite">
             <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-5 sm:col-span-2">
               <p className="text-sm font-semibold text-emerald-900">Te queda por mes</p>
               <p className="mt-1 text-4xl font-bold tracking-tight text-emerald-900">

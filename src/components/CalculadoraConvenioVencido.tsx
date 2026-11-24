@@ -152,7 +152,7 @@ export function CalculadoraConvenioVencido() {
               Cargá una fecha válida.
             </p>
           ) : (
-            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
               <p className="text-sm text-zinc-600">
                 {ultra.clausula.etiqueta} · {ultra.clausula.tipo === "normativa" ? "cláusula normativa" : "cláusula obligacional"}
               </p>
@@ -215,7 +215,7 @@ export function CalculadoraConvenioVencido() {
               Cargá una fecha válida.
             </p>
           ) : (
-            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
               <p className="text-sm text-zinc-600">Al {fechaLarga(prel.fechaIso)} prevalece</p>
               <p className="mt-1 text-3xl font-bold tracking-tight text-emerald-700">
                 {prel.prevalece === "menor"

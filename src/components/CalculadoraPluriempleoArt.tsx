@@ -241,7 +241,7 @@ export function CalculadoraPluriempleoArt() {
             Agregar empleo
           </button>
 
-          <div className="mt-6 rounded-xl border border-emerald-300 bg-emerald-50/70 p-4">
+          <div className="mt-6 rounded-xl border border-emerald-300 bg-emerald-50/70 p-4" aria-live="polite">
             <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">ART obligada</p>
             <p className="mt-0.5 text-lg font-bold text-zinc-900">
               {resultadoPluriempleo.responsable
@@ -359,7 +359,7 @@ export function CalculadoraPluriempleoArt() {
             </label>
           </div>
 
-          <div className="mt-6 rounded-xl border border-emerald-300 bg-emerald-50/70 p-4">
+          <div className="mt-6 rounded-xl border border-emerald-300 bg-emerald-50/70 p-4" aria-live="polite">
             <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Resultado</p>
             <p className="mt-0.5 text-lg font-bold text-zinc-900">{PAGOS[resultadoSucesion.quienPaga].titulo}</p>
             <p className="mt-1 text-sm text-zinc-700">{PAGOS[resultadoSucesion.quienPaga].detalle}</p>

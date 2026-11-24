@@ -138,7 +138,7 @@ export function CalculadoraServiciosEsenciales() {
       </div>
 
       {res && (
-        <div className="mt-6 space-y-5 border-t border-zinc-200 pt-6">
+        <div className="mt-6 space-y-5 border-t border-zinc-200 pt-6" aria-live="polite">
           <div className="flex flex-wrap items-center gap-3">
             <span
               className={`rounded-full px-3 py-1 text-sm font-semibold ${COLOR_CATEGORIA[res.categoria]}`}

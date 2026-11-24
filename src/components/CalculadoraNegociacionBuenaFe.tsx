@@ -131,7 +131,7 @@ export function CalculadoraNegociacionBuenaFe() {
         {error ? (
           <ErrorCalculo mensaje={error} />
         ) : multa && (
-          <div className="mt-6 space-y-5 border-t border-zinc-200 pt-6">
+          <div className="mt-6 space-y-5 border-t border-zinc-200 pt-6" aria-live="polite">
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4">
                 <p className="text-xs font-medium uppercase tracking-wide text-zinc-500">

@@ -153,7 +153,7 @@ export function CalculadoraActualizacionCreditos({
               "Cargá un monto mayor que cero para ver la actualización."}
           </div>
         ) : (
-          <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+          <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
             <p className="text-sm text-zinc-600">
               Crédito actualizado al {nombrePeriodo(res.hastaPedido)}, art. 276 LCT
             </p>

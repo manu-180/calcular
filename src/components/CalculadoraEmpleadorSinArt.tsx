@@ -173,7 +173,7 @@ export function CalculadoraEmpleadorSinArt() {
         </label>
       </fieldset>
 
-      <div className={`mt-6 rounded-xl border p-4 ${MARCO[res.responsable]}`}>
+      <div className={`mt-6 rounded-xl border p-4 ${MARCO[res.responsable]}`} aria-live="polite">
         <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Responde</p>
         <p className="mt-0.5 text-lg font-bold text-zinc-900">{QUIEN[res.responsable]}</p>
         <p className="mt-2 text-sm font-semibold text-zinc-900">{res.titulo}</p>

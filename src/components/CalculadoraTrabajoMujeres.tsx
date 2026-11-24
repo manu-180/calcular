@@ -159,7 +159,7 @@ export function CalculadoraTrabajoMujeres() {
         <ErrorCalculo mensaje={error} />
       ) : (
         <>
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">
             Horas de tu día que dejan de estar comprometidas si te pasan a horario continuo
           </p>

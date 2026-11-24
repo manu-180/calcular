@@ -208,7 +208,7 @@ export function CalculadoraRechazoArt() {
         </div>
       ) : (
         <>
-          <div className={"mt-6 rounded-xl border p-4 " + MARCO[res.veredicto]}>
+          <div className={"mt-6 rounded-xl border p-4 " + MARCO[res.veredicto]} aria-live="polite">
             <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Resultado</p>
             <p className="mt-0.5 text-lg font-bold text-zinc-900">{VEREDICTOS[res.veredicto]}</p>
             {res.veredicto === "en-plazo-todavia" && (
@@ -219,7 +219,7 @@ export function CalculadoraRechazoArt() {
             )}
           </div>
 
-          <dl className="mt-3 grid gap-3 sm:grid-cols-2">
+          <dl className="mt-3 grid gap-3 sm:grid-cols-2" aria-live="polite">
             <div className="rounded-xl border border-zinc-200 bg-zinc-50/60 p-4">
               <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
                 Vencimiento base

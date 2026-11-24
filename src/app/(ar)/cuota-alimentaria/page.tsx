@@ -21,11 +21,11 @@ import { OtrosPaises } from "@/components/OtrosPaises";
 // Función y no constante: el clúster hreflang se evalúa con la fecha del día (check_mes_en_render).
 export function generateMetadata(): Metadata {
   return {
-    // Con el monto en el título: "cuota alimentaria por hijo 2026" tenía 0,4-0,6% de CTR en posición
-    // 7-8 con el título genérico (Search Console, 2026-10-16).
-    title: `Cuota alimentaria por hijo 2026: de ${formatARS(CANASTA_CRIANZA_ULTIMO.valores["menor-1"].total, 0)} a ${formatARS(CANASTA_CRIANZA_ULTIMO.valores["6-a-12"].total, 0)}`,
-    description:
-      "Calculá la cuota alimentaria de referencia con el último dato del INDEC: cuánto cuesta criar a cada hijo por mes y cómo se reparte entre los progenitores.",
+    // El título con el rango de montos (16/10) seguía en 1,1% de CTR en posición 6 (3567 impresiones,
+    // 9/11-23/11). La gente pregunta «cuánto corresponde» y «qué porcentaje»: el título responde a esa
+    // pregunta y la description lleva los montos y que no hay porcentaje fijo (mejora continua, 24/11).
+    title: "¿Cuánto corresponde de cuota alimentaria por hijo en 2026?",
+    description: `Criar a un hijo cuesta de ${formatARS(CANASTA_CRIANZA_ULTIMO.valores["menor-1"].total, 0)} a ${formatARS(CANASTA_CRIANZA_ULTIMO.valores["6-a-12"].total, 0)} por mes (INDEC, ${CANASTA_CRIANZA_ULTIMO.etiqueta}). No hay porcentaje fijo: calculá cuánto le toca a cada progenitor, con 1, 2 o más hijos.`,
     alternates: { canonical: "/cuota-alimentaria", languages: hreflangHeadAR("/cuota-alimentaria") },
   };
 }

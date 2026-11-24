@@ -4,6 +4,9 @@
 
 import assert from "node:assert/strict";
 import vm from "node:vm";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { limpiarCampo, limpiarExp, limpiarSelector, validarLote, type Lote } from "../src/app/api/e/protocolo";
 import {
   EXPERIMENTOS,
@@ -162,6 +165,44 @@ prueba("analizar ordena fugas por gente perdida y no alarma con muestras chicas"
   const uso = r.fugas.filter((f) => f.paso === "uso");
   assert.equal(uso[0]?.path, "/a");
   assert.ok(!r.fugas.some((f) => f.path === "/chica"), "una página con 8 vistas no genera fuga");
+});
+
+// El paso «resultado» se detecta en la región aria-live de <main> (src/lib/rastreo.ts). Una calculadora
+// de calcular.ar sin esa región da 0 % de resultado y el informe la pone primera como fuga: pasó con 66
+// calculadoras hasta el 24/11/2026 (/empleada-domestica y /renuncia salían 2.ª y 4.ª fuga del sitio).
+prueba("toda calculadora de calcular.ar muestra el resultado en una región aria-live", () => {
+  const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+  const resolver = (spec: string) => {
+    const base = path.join(raiz, "src/components", spec.slice("@/components/".length));
+    return [`${base}.tsx`, `${base}.ts`, path.join(base, "index.tsx")].find((f) => existsSync(f)) ?? null;
+  };
+  const conRegion = (archivo: string, vistos = new Set<string>()): boolean => {
+    if (vistos.has(archivo)) return false;
+    vistos.add(archivo);
+    const s = readFileSync(archivo, "utf8");
+    if (/aria-live|<output|role="status"/.test(s)) return true;
+    // La región de una oferta (OfertaMiSueldo tiene una) no cambia con el resultado: no cuenta.
+    return [...s.matchAll(/from\s+"(@\/components\/[^"]+)"/g)].some((m) => {
+      if (/\/Oferta[^/]*$/.test(m[1])) return false;
+      const r = resolver(m[1]);
+      return r !== null && conRegion(r, vistos);
+    });
+  };
+  const paginas = (readdirSync(path.join(raiz, "src/app/(ar)"), { recursive: true }) as string[])
+    .filter((f) => path.basename(f) === "page.tsx")
+    .map((f) => path.join(raiz, "src/app/(ar)", f));
+  const ciegas = new Set<string>();
+  let vistas = 0;
+  for (const p of paginas) {
+    for (const m of readFileSync(p, "utf8").matchAll(/from\s+"(@\/components\/[^"]*Calculadora[^"]*)"/g)) {
+      const r = resolver(m[1]);
+      if (!r) continue;
+      vistas++;
+      if (!conRegion(r)) ciegas.add(path.relative(raiz, r));
+    }
+  }
+  assert.ok(vistas > 50, `sólo encontré ${vistas} calculadoras: ¿cambió la estructura de src/app/(ar)?`);
+  assert.deepEqual([...ciegas].sort(), [], "calculadoras sin aria-live: el informe no ve si llegan a un resultado");
 });
 
 console.log(`${fallas === 0 ? "✅" : "❌"} check_medicion_fugas: ${total - fallas}/${total}`);

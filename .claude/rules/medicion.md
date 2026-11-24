@@ -13,7 +13,8 @@ paths:
 # Medición de fugas y experimentos
 
 - El resultado se detecta por cambio de número en `main [aria-live]` tras un input de la persona: una
-  calculadora nueva que muestre el resultado fuera de una región `aria-live` queda sin medir.
+  calculadora nueva que muestre el resultado fuera de una región `aria-live` queda sin medir (en
+  `(ar)` lo frena `check_medicion_fugas`).
 - `campo_ult` es el texto del label, nunca el valor; `limpiarCampo` y `limpiarSelector` son la
   barrera del servidor. No mandar montos ni texto libre por ahí.
 - Un experimento vive en `EXPERIMENTOS` + `<Variante>`; máximo 3 activos, uno por página, la «a» es

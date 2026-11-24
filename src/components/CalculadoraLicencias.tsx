@@ -122,7 +122,7 @@ export function CalculadoraLicencias() {
       {error ? (
         <ErrorCalculo mensaje={error} />
       ) : res && (
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">Tu licencia por maternidad</p>
           <p className="mt-1 text-2xl font-bold tracking-tight text-zinc-900">
             Del {fechaLarga(res.inicio)}

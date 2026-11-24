@@ -110,7 +110,7 @@ export function CalculadoraLicenciasEspeciales() {
           Esa fecha no existe. Revisá el día que cargaste.
         </p>
       ) : (
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">Volvés a trabajar el</p>
           <p className="mt-1 text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl">
             {fechaLarga(parseFechaISO(res.reintegro)!)}

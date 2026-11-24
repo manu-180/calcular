@@ -123,7 +123,7 @@ export function CalculadoraMultasArca() {
           </label>
         ) : null}
 
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4">
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4" aria-live="polite">
           <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
             {res.reduccion ? "Con la reducción aplicada" : "Sanción prevista"}
           </p>

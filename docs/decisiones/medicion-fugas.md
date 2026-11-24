@@ -10,7 +10,7 @@ scroll, uso, eventos) sin cookies ni IP. Se le sumó lo que faltaba para ver el 
 
 | Dato | Cómo se obtiene | Columna |
 |---|---|---|
-| Llegó a un resultado | Cambia el número en la región `aria-live` de `<main>` después de que la persona tocó un campo (todas las calculadoras de calcular.ar y `PielCalculadora` del motor la tienen) | `resultado_ms` |
+| Llegó a un resultado | Cambia el número en la región `aria-live` de `<main>` después de que la persona tocó un campo (todas las calculadoras de calcular.ar y `PielCalculadora` del motor la tienen; desde el 24/11/2026 `check_medicion_fugas` falla si una calculadora de `(ar)` no la tiene: 66 no la tenían y salían con 0 % de resultado) | `resultado_ms` |
 | Dónde se trabó | Texto del label del último campo tocado (nunca el valor) | `campo_ult` |
 | Frustración | 3 toques en < 800 ms en el mismo lugar, fuera de campos y `[data-repetible]` | `rabia`, `rabia_el` |
 | Velocidad real | `web-vitals/attribution` 5 en la página de entrada, carga diferida | `lcp_ms`, `inp_ms`, `cls_milli`, `ttfb_ms`, `lcp_el`, `inp_el` |

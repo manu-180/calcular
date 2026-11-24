@@ -182,7 +182,7 @@ export function CalculadoraIusVariandi() {
         <ErrorCalculo mensaje={error} />
       ) : (
         <>
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <div className="grid gap-3 sm:grid-cols-2">
             <div
               className={`rounded-xl border p-4 ${

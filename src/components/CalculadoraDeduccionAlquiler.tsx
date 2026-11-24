@@ -163,7 +163,7 @@ export function CalculadoraDeduccionAlquiler() {
         <ErrorCalculo mensaje={error} />
       ) : (
         <>
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <p className="text-sm text-zinc-600">Lo que te vuelve en el año por deducir el alquiler</p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
             {formatARS(res.ahorroAnual, 2)}

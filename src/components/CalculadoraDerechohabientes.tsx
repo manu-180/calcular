@@ -292,7 +292,7 @@ export function CalculadoraDerechohabientes() {
         </fieldset>
       )}
 
-      <div className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50/70 p-4">
+      <div className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50/70 p-4" aria-live="polite">
         <p className="text-sm font-semibold text-emerald-950">
           {ESCALON_TITULO[res.escalonLrt]}
         </p>

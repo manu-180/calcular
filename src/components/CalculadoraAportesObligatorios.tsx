@@ -285,7 +285,7 @@ export function CalculadoraAportesObligatorios() {
         </fieldset>
       )}
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+      <div className="mt-6 grid gap-3 sm:grid-cols-2" aria-live="polite">
         <Puerta
           titulo="Como trabajador en relación de dependencia"
           subtitulo="Inciso a) del art. 2º · inciso a) del art. 3º"

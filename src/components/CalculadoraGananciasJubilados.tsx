@@ -149,7 +149,7 @@ export function CalculadoraGananciasJubilados({ oferta }: { oferta?: DatosOferta
         <ErrorCalculo mensaje={error} />
       ) : (
         <>
-        <div className="mt-6 space-y-4 border-t border-zinc-100 pt-5">
+        <div className="mt-6 space-y-4 border-t border-zinc-100 pt-5" aria-live="polite">
           <div
             className={`rounded-xl p-4 ${res.pagaGanancias ? "bg-amber-50 text-amber-900" : "bg-emerald-50 text-emerald-900"}`}
           >

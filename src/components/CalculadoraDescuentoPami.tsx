@@ -116,7 +116,7 @@ export function CalculadoraDescuentoPami() {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2" aria-live="polite">
         <div
           className={`rounded-xl border p-5 ${
             aporta ? "border-emerald-200 bg-emerald-50/60" : "border-zinc-200 bg-zinc-50"

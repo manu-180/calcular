@@ -80,7 +80,7 @@ export function CalculadoraContratacionDiscapacidad() {
         <ErrorCalculo mensaje={error} />
       ) : (
         <>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2" aria-live="polite">
           <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">
             <p className="text-sm font-semibold text-emerald-900">
               Ahorro en los {EXENCION_ANIOS} años del beneficio

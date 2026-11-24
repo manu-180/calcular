@@ -155,7 +155,7 @@ export function CalculadoraDeduccionesGenerales() {
         <ErrorCalculo mensaje={error} />
       ) : (
         <>
-        <div className="mt-6 space-y-4 border-t border-zinc-100 pt-5">
+        <div className="mt-6 space-y-4 border-t border-zinc-100 pt-5" aria-live="polite">
           <p className="text-sm text-zinc-600">
             Base del 5% estimada: <strong>{formatARS(res.baseCincoPorCiento, 0)}</strong> al año → cada límite del 5% es{" "}
             <strong>{formatARS(res.topeCincoPorCiento, 2)}</strong>, por separado para prepaga, honorarios y donaciones.

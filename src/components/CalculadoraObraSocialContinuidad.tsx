@@ -127,7 +127,7 @@ export function CalculadoraObraSocialContinuidad() {
 
       {res ? (
         <>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2" aria-live="polite">
             <div
               className={`rounded-xl border p-5 ${
                 res.bloqueadoPorAntiguedad

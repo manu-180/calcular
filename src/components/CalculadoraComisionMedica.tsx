@@ -181,7 +181,7 @@ export function CalculadoraComisionMedica() {
           consultar.
         </p>
       ) : (
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 space-y-4" aria-live="polite">
           <div
             className={`rounded-xl border px-4 py-3 ${
               res.vencido ? TONOS.atencion : TONOS.ok

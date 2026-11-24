@@ -126,7 +126,7 @@ export function CalculadoraObraSocialMonotributo() {
           Revisá las fechas: la de alta no puede ser posterior a la que querés consultar.
         </p>
       ) : (
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 space-y-4" aria-live="polite">
           <div className="rounded-xl bg-emerald-50 px-4 py-3">
             <p className="text-sm font-semibold text-emerald-950">{res.veredicto}</p>
           </div>

@@ -233,7 +233,7 @@ export function CalculadoraArtCasas() {
           Revisá los datos: la categoría, la modalidad o las horas no forman una combinación válida.
         </p>
       ) : (
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 space-y-4" aria-live="polite">
           <div className="rounded-xl bg-emerald-50 px-4 py-3">
             <p className="text-sm text-emerald-950">
               Base de cálculo que manda el reglamento:{" "}

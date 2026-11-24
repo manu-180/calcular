@@ -169,7 +169,7 @@ export function CalculadoraPracticasDesleales() {
         <ErrorCalculo mensaje={error} />
       ) : (
         <>
-        <div className="mt-6 rounded-xl border-2 border-emerald-500 bg-white p-5">
+        <div className="mt-6 rounded-xl border-2 border-emerald-500 bg-white p-5" aria-live="polite">
           <p className="text-sm font-semibold text-zinc-700">La multa, según el art. 55</p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-emerald-700">
             {formatARS(res.minimoFinal, 0)} — {formatARS(res.maximoFinal, 0)}

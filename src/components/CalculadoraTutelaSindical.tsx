@@ -234,7 +234,7 @@ export function CalculadoraTutelaSindical({
       )}
 
       {res && (
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 space-y-4" aria-live="polite">
           <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
             <p className="text-sm font-semibold text-zinc-700">
               Indemnización común (la que cobra cualquier trabajador)

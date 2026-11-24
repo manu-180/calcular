@@ -155,7 +155,7 @@ export function CalculadoraCertificadoTrabajo() {
       )}
 
       {!error && res && rotulo && (
-        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+        <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
           <span
             className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${rotulo.clase}`}
           >

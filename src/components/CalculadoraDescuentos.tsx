@@ -101,7 +101,7 @@ export function CalculadoraDescuentos({ oferta }: { oferta?: DatosOferta }) {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2" aria-live="polite">
         <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
           <p className="text-sm font-semibold text-zinc-700">
             Tope de descuentos del empleador ({pct(TOPE_GENERAL)})

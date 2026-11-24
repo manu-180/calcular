@@ -146,7 +146,7 @@ export function CalculadoraART() {
           no es un accidente fatal, la incapacidad va de 0 a 100.
         </p>
       ) : (
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 space-y-4" aria-live="polite">
           <div className="rounded-xl bg-emerald-50 px-4 py-4">
             <p className="text-xs font-medium uppercase tracking-wide text-emerald-900">
               Total a cobrar

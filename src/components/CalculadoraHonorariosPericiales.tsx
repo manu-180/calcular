@@ -166,7 +166,7 @@ export function CalculadoraHonorariosPericiales() {
               .
             </p>
           ) : (
-            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
               <p className="text-sm text-zinc-600">
                 {piso.totalPesos > 0
                   ? "Piso legal: por debajo de esto el juez no puede regular"
@@ -267,7 +267,7 @@ export function CalculadoraHonorariosPericiales() {
               que es donde arranca la serie que verificamos resolución por resolución.
             </p>
           ) : (
-            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5" aria-live="polite">
               <p className="text-sm text-zinc-600">
                 Lo que hay que pagar hoy para que el pago sea cancelatorio
               </p>

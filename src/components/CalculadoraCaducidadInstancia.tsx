@@ -74,7 +74,7 @@ export function CalculadoraCaducidadInstancia() {
       </div>
 
       {res && (
-        <div className="mt-6 space-y-5 border-t border-zinc-200 pt-6">
+        <div className="mt-6 space-y-5 border-t border-zinc-200 pt-6" aria-live="polite">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-xl border border-rose-200 bg-rose-50/60 p-4">
               <p className="text-xs font-medium uppercase tracking-wide text-rose-700">
