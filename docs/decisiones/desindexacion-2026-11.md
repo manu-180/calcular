@@ -44,7 +44,7 @@ de páginas repetidas.
 
 1. **Poda de rescate** (`scripts/poda-universales.ts --rescate`): 5.017 universales con menos de 10
    impresiones en toda su historia pasan a `noindex, follow`, fuera del sitemap y de los clústeres
-   hreflang. Quedan indexables 649. El sitemap baja de 10.300 a unas 4.850 URLs.
+   hreflang. Quedan indexables 649. El sitemap bajó de 10.300 a 5.492 URLs (contado en producción el 23/11).
 2. **Legales**: privacidad, términos y contacto se indexan solo en la edición global
    (`legalIndexable` en `src/motor/paginas.ts`). «Quiénes somos» sigue indexable en cada edición.
 3. **Alarma**: `scripts/medicion/informe.ts` compara el total de impresiones de cada sitio contra el
