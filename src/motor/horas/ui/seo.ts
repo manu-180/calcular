@@ -1,4 +1,4 @@
-import { etiquetaIdioma } from "../../i18n/direccion";
+import { clusterDeReferencia } from "../../referencia";
 import type { ModoPublicacion, Registro } from "../../registro";
 import { urlIntl, type Idiomas } from "../../seo";
 import type { Mercado } from "../../tipos";
@@ -13,11 +13,5 @@ export function urlHoras(m: Pick<Mercado, "codigo" | "idioma">, producto?: strin
 }
 
 export function hreflangHoras(registro: Registro, modo: ModoPublicacion, producto?: string): Idiomas | undefined {
-  const mercados = registro.mercados(modo);
-  const idiomas: Idiomas = {};
-  for (const m of mercados) idiomas[etiquetaIdioma(m.locale)] = urlHoras(m, producto);
-  if (Object.keys(idiomas).length < 2) return undefined;
-  const global = mercados.find((m) => m.codigo === "global");
-  if (global) idiomas["x-default"] = urlHoras(global, producto);
-  return idiomas;
+  return clusterDeReferencia(registro, modo, (m) => urlHoras(m, producto));
 }

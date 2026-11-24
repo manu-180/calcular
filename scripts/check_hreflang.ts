@@ -175,8 +175,18 @@ async function main() {
 
     // «Tu sueldo en el mundo»: una página por edición, todas en un clúster, x-default en la de global.
     const mundoSeo = await import("../src/motor/mundo/ui/seo");
+    // Mundo, rankings y horas se indexan en una edición por idioma (src/motor/referencia.ts): las demás
+    // no van al sitemap ni al clúster.
+    const { edicionesDeReferencia } = await import("../src/motor/referencia");
+    const referencia = edicionesDeReferencia(registro, modo);
+    const idiomasRef = referencia.map((m) => m.idioma);
+    if (new Set(idiomasRef).size !== idiomasRef.length) fallas.push(`[${modo}] dos ediciones de referencia comparten idioma`);
+    for (const m of registro.mercados(modo)) {
+      if (!idiomasRef.includes(m.idioma)) fallas.push(`[${modo}] ${m.codigo}: su idioma (${m.idioma}) no tiene edición de referencia`);
+      if (!referencia.includes(m) && publicadas.has(mundoSeo.urlMundo(m))) fallas.push(`[${modo}] ${mundoSeo.urlMundo(m)}: no es edición de referencia y está en el sitemap`);
+    }
     const idiomasMundo = mundoSeo.hreflangMundo(registro, modo);
-    const mundo: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: mundoSeo.urlMundo(m), locale: etiquetaIdioma(m.locale), concepto: "mundo", idiomas: idiomasMundo }));
+    const mundo: PaginaConIdiomas[] = referencia.map((m) => ({ url: mundoSeo.urlMundo(m), locale: m.idioma, concepto: "mundo", idiomas: idiomasMundo }));
     for (const p of mundo) {
       if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «sueldo en el mundo» no está en el sitemap del mercado`);
       const sitemap = enSitemap.get(p.url);
@@ -197,7 +207,7 @@ async function main() {
       ...rutasRk.IDS_RANKING.map((id) => ({ concepto: `ranking-${id}`, idiomas: rk.hreflangRanking(registro, modo, id), url: (m: (typeof mercados)[number]) => urlsRk.urlRanking(m, id) })),
     ];
     for (const c of clusteresRk) {
-      const paginasRk: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: c.url(m), locale: etiquetaIdioma(m.locale), concepto: c.concepto, idiomas: c.idiomas }));
+      const paginasRk: PaginaConIdiomas[] = referencia.map((m) => ({ url: c.url(m), locale: m.idioma, concepto: c.concepto, idiomas: c.idiomas }));
       for (const p of paginasRk) {
         if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «${c.concepto}» no está en el sitemap del mercado`);
         const sitemap = enSitemap.get(p.url);
@@ -219,7 +229,7 @@ async function main() {
         continue;
       }
       const idiomasHoras = horasSeo.hreflangHoras(registro, modo, producto);
-      const horas: PaginaConIdiomas[] = registro.mercados(modo).map((m) => ({ url: horasSeo.urlHoras(m, producto), locale: etiquetaIdioma(m.locale), concepto: `horas:${producto ?? "indice"}`, idiomas: idiomasHoras }));
+      const horas: PaginaConIdiomas[] = referencia.map((m) => ({ url: horasSeo.urlHoras(m, producto), locale: m.idioma, concepto: `horas:${producto ?? "indice"}`, idiomas: idiomasHoras }));
       for (const p of horas) {
         if (!publicadas.has(p.url)) fallas.push(`[${modo}] ${p.url}: «horas de trabajo» no está en el sitemap del mercado`);
         const sitemap = enSitemap.get(p.url);

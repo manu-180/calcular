@@ -16,6 +16,7 @@ fuente y un ejemplo resuelto, en el idioma del país y con alguien que responde 
 > qué se podó y cómo se juzga la vuelta: [desindexacion-2026-11.md](../decisiones/desindexacion-2026-11.md).
 > La regla de §3 «1 a 3 países por semana» no se cumplió (42 en una semana) y es la primera sospecha.
 > Privacidad, términos y contacto ya no se indexan por edición (solo en global); «Quiénes somos» sí.
+> Rankings, horas y «tu sueldo en el mundo» se indexan en una edición por idioma (`src/motor/referencia.ts`).
 
 ## 1. Lo que el motor hace solo (ningún país lo configura)
 

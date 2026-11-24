@@ -1,3 +1,4 @@
+import { esDeReferencia } from "@/motor/referencia";
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import { textosMundo } from "@/motor/i18n/mundo";
@@ -69,7 +70,7 @@ export function crearPaginaMundo(idioma: Idioma) {
       slug,
       title,
       description,
-      ...(idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}),
+      ...(esDeReferencia(registro, m, r.ctx.modo) ? (idiomas && !hreflangVaAlSitemap(idiomas) ? { idiomas } : {}) : { noindex: true }),
       imagen: `${base}/og${codigo ? `?c=${codigo}` : ""}`,
     });
     if (!r.carga) return meta;

@@ -7,6 +7,7 @@ import { intlActivo, modoPublicacion } from "./sitio";
 import type { CodigoMercado, EntradaCalculadora, FechaISO, Mercado } from "./tipos";
 import { hoyEn } from "./vigencia";
 import { hreflangMundo, urlMundo } from "./mundo/ui/seo";
+import { esDeReferencia } from "./referencia";
 import { hreflangIndice, hreflangRanking, urlsRankings } from "./rankings/seo";
 import { paginasHoras, SIN_HORAS, type PublicacionHoras } from "./horas/publicacion";
 import { hreflangHoras, urlHoras } from "./horas/ui/seo";
@@ -93,14 +94,16 @@ function alternosEnSitemap(registro: Registro, codigo: CodigoMercado, c: Entrada
 // «Tu sueldo en el mundo» de la edición. Su clúster (todas las ediciones) pasa de MAX_HREFLANG_HEAD,
 // así que con conAlternos va acá entero y no en el <head>. Sin lastmod: la fecha es la de la grilla, que
 // vive del lado del servidor (server-only) y este módulo lo usan también los checks.
-function entradaMundo(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean): EntradaSitemap {
+function entradaMundo(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean): EntradaSitemap[] {
+  if (!esDeReferencia(registro, m, modo)) return [];
   const idiomas = conAlternos ? hreflangMundo(registro, modo) : undefined;
-  return { url: urlMundo(m), ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
+  return [{ url: urlMundo(m), ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) }];
 }
 
 // Rankings de países de la edición: el índice y cada ranking, como «Tu sueldo en el mundo» (sin
 // lastmod y con el clúster entero acá cuando pasa de MAX_HREFLANG_HEAD).
 function entradasRankings(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean): EntradaSitemap[] {
+  if (!esDeReferencia(registro, m, modo)) return [];
   return urlsRankings(m).map(({ url, id }) => {
     const idiomas = conAlternos ? (id ? hreflangRanking(registro, modo, id) : hreflangIndice(registro, modo)) : undefined;
     return { url, ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
@@ -112,6 +115,7 @@ function entradasRankings(registro: Registro, m: Mercado, modo: ReturnType<typeo
 // `horas` (publicacionHoras() de src/lib/horas, del lado del servidor): sin eso no se lista nada, así un
 // precio vencido nunca deja en el sitemap una página que da 404. Sin lastmod por la misma razón.
 function entradasHoras(registro: Registro, m: Mercado, modo: ReturnType<typeof modoPublicacion>, conAlternos: boolean, horas: PublicacionHoras): EntradaSitemap[] {
+  if (!esDeReferencia(registro, m, modo)) return [];
   return paginasHoras(horas).map((producto) => {
     const idiomas = conAlternos ? hreflangHoras(registro, modo, producto) : undefined;
     return { url: urlHoras(m, producto), ...(idiomas && hreflangVaAlSitemap(idiomas) ? { alternos: idiomas } : {}) };
@@ -148,7 +152,7 @@ function entradasDePais(registro: Registro, m: Mercado, modo: ReturnType<typeof 
   const inicio = masNueva([...calculadoras.map((c) => c.lastmod), novedades], fecha);
   return [
     { url: urlIntl(m.codigo), lastmod: inicio },
-    entradaMundo(registro, m, modo, conAlternos),
+    ...entradaMundo(registro, m, modo, conAlternos),
     ...entradasRankings(registro, m, modo, conAlternos),
     ...entradasHoras(registro, m, modo, conAlternos, horas),
     ...entradaCalendario(registro, m, modo),
@@ -183,7 +187,7 @@ export function entradasDelMercado(registro: Registro, codigo: CodigoMercado, op
   );
   return [
     { url: urlIntl("global"), lastmod: inicio },
-    entradaMundo(registro, m, modo, opciones.conAlternos ?? false),
+    ...entradaMundo(registro, m, modo, opciones.conAlternos ?? false),
     ...entradasRankings(registro, m, modo, opciones.conAlternos ?? false),
     ...entradasHoras(registro, m, modo, opciones.conAlternos ?? false, horas),
     ...entradasLegales(registro, m, modo, opciones.conAlternos ?? false),
