@@ -173,6 +173,19 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
     ],
     formal: [],
   },
+  // Vietnamita: un solo registro, el de Vietcombank, Techcombank y eTax («bạn» neutro y frases cortas; ADR 0002,
+  // D37). Se atrapan los pronombres de confianza y las partículas de chat, y el otro extremo: «quý khách», de
+  // ventanilla, que el resto del sitio no usa. «em» y «anh» no se atrapan: son también palabras comunes.
+  vi: {
+    informal: [
+      { re: palabras("mày|tao|cậu|bạn ơi"), nombre: "pronombre de confianza (va «bạn»)" },
+      { re: palabras("nhé|nhen|nhá|nè|đi nào"), nombre: "partícula de chat" },
+      // «nha» solo al final de la frase y en minúscula: «Bồ Đào Nha» y «nha khoa» sí van.
+      { re: /(?<!\p{L})nha(?=[.?]?\s*$)/u, nombre: "partícula de chat" },
+      { re: palabras("quý khách|quý vị|anh/chị|anh chị"), nombre: "trato de ventanilla (va «bạn»)" },
+    ],
+    formal: [],
+  },
   // Mongol: un solo registro, el de Хаан банк, e-Mongolia y Татварын ерөнхий газар («та», «таны» y las
   // formas corteses «оруулна уу», «сонгоно уу»; ADR 0002, D28). Se atrapa el «чи» con sus formas, la raíz
   // verbal sola como orden («Оруул.») y el imperativo amistoso de publicidad (-аарай, -ээрэй, -оорой, -өөрэй).
@@ -213,6 +226,20 @@ const REGISTRO: Partial<Record<Idioma, { informal: Detector[]; formal: Detector[
       },
       { re: palabras("esi|vari|nopelni|gribi|vēlies|saņemsi|maksāsi|nopelnīsi|varēsi|redzēsi|būsi|ietaupīsi|strādāsi"), nombre: "segunda persona del singular" },
       { re: /[^.?!:„(\s]\s+(?:Jūs|Jūsu|Jums|Jūsos)(?!\p{L})/u, nombre: "«Jūs» con mayúscula (va «jūs»)" },
+    ],
+    formal: [],
+  },
+  // Macedonio: un solo registro, el de Комерцијална банка y УЈП (2.ª del plural, «внесете», «пресметајте»;
+  // ADR 0002, D36). «вие», «ве», «ви», «вашиот» con minúscula a mitad de oración, como escribe Комерцијална;
+  // УЈП mezcla. Se atrapa el «ти», los imperativos y presentes de 2.ª del singular y el pronombre con
+  // mayúscula a mitad de oración. La única forma en singular permitida es el botón «Пресметај», sola.
+  mk: {
+    informal: [
+      { re: palabras("ти|те|тебе|твој|твоја|твое|твои|твојот|твојата|твоето|твоите"), nombre: "«ти»" },
+      { re: /(?:^|[.?!:]\s+)(?:внеси|избери|провери|спореди|дознај|пополни|притисни|види|обиди|купи|преземи|започни|отвори|прикажи|скриј|затвори|побарај|копирај|сподели|додај|зачувај|продолжи|напиши|испрати|научи|добиј|влези|кликни|прегледај|исчисти|прочитај|користи|нарачај)(?!\p{L})/iu, nombre: "imperativo de «ти» (va -ете/-јте)" },
+      { re: /(?<!\p{L})пресметај(?=\s+\p{L})/iu, nombre: "«пресметај» con complemento (solo el botón va en singular; va «пресметајте»)" },
+      { re: palabras("можеш|сакаш|знаеш|добиваш|плаќаш|заработуваш|работиш|штедиш|имаш|добиеш|платиш|внесуваш"), nombre: "2.ª del singular" },
+      { re: /[^.?!:„(\s\p{Script=Latin}]\s+(?:Вие|Вас|Ве|Ви|Ваш|Ваша|Ваше|Ваши|Вашиот|Вашата|Вашето|Вашите)(?!\p{L})/u, nombre: "pronombre de cortesía con mayúscula a mitad de oración (va «вие», «ве», «вашиот»)" },
     ],
     formal: [],
   },
@@ -512,6 +539,41 @@ function reglasBg(texto: string): string[] {
   if (/(?<!\p{L})[Сс] [СсЗз]\p{L}/u.test(texto)) p.push("delante de с o з va «със»");
   const r = RUSISMOS_BG.exec(texto);
   if (r) p.push(`«${r[0]}» es ruso, no búlgaro`);
+  return p;
+}
+
+// Macedonio (ADR 0002, D36): fuera las letras que el alfabeto no tiene (ы э ё ъ я ю щ й ь) y las de otros
+// cirílicos; comillas „ “; y las palabras que delatan búlgaro, serbio o ruso sin adaptar.
+const AJENAS_MK = palabras("заплата|заплатата|зарплата|сумма|данък|данъци|лихва|лихви|лихвата|порез|порези|пдв|ддс|когато|който|които|също|че|са|от|във|със|в|с|у|је|су|који|које|једна|једно|такође|само че|ќе бъде");
+function reglasMk(texto: string): string[] {
+  const p: string[] = [];
+  if (/[ыэёъяющйьЫЭЁЪЯЮЩЙЬ]/.test(texto)) p.push("«ы э ё ъ я ю щ й ь»: no existen en macedonio");
+  if (/[іїєґўћђІЇЄҐЎЋЂ]/.test(texto)) p.push("letra de otro alfabeto cirílico en un texto macedonio");
+  if (/ден\.[.,]/.test(texto)) p.push("«ден..» o «ден.,»: la frase no cierra con un monto (D36)");
+  if (/[«»]|"(?=\p{sc=Cyrillic})|(?<=\p{sc=Cyrillic}[.,?:;]?)"/u.test(texto)) p.push("comillas: en macedonio van „ “");
+  const a = AJENAS_MK.exec(texto);
+  if (a) p.push(`«${a[0]}» no es macedonio (búlgaro, serbio o ruso)`);
+  return p;
+}
+
+// Vietnamita (ADR 0002, D37): diacríticos en forma compuesta (NFC; Satori y las búsquedas no igualan la
+// descompuesta); comillas “ ”; el tono en la vocal que marca la norma de los textos oficiales («hóa», «hòa», «khỏe»,
+// «tùy», «thủy»); «hằng tháng» y no «hàng tháng» para que el sitio diga siempre lo mismo; sin marca de plural
+// detrás de un número («3 ngày»); miles con punto y decimales con coma; y palabras sin diacríticos, que delatan
+// un texto mal copiado. «tinh», «thang», «ngay» y «nam» no se atrapan: existen también así.
+const TONO_VIEJO_VI = palabras("hoá|hoà|hoả|khoá|khoà|khoẻ|khoả|thoả|toà|toá|loà|tuỳ|thuỷ|thuý|luỹ|quí|qui định");
+const SIN_DIACRITICOS_VI = palabras("luong|thue|nhap|khong|duoc|nguoi|tien|bao hiem|lai suat");
+function reglasVi(texto: string): string[] {
+  const p: string[] = [];
+  if (texto !== texto.normalize("NFC")) p.push("diacríticos descompuestos (va NFC)");
+  if (/[«»]/.test(texto)) p.push("comillas: en vietnamita van “ ”");
+  if (TONO_VIEJO_VI.test(texto)) p.push("tono en la vocal antigua (va «hóa», «hòa», «khỏe», «tùy», «thủy»)");
+  if (palabras("hàng tháng|hàng năm|hàng ngày|hàng tuần").test(texto)) p.push("va «hằng tháng», «hằng năm», «hằng ngày», «hằng tuần»");
+  if (/\d\s+(?:các|những)\s/u.test(texto)) p.push("marca de plural detrás de un número (va «3 ngày»)");
+  if (/\d,\d{3}(?!\d)(?!\s*km)/.test(texto) || /(?<![\d.]|CC BY )\d{1,3}\.\d{1,2}(?![\d.])/.test(texto)) p.push("número con formato inglés (miles con punto, decimales con coma)");
+  if (/\d₫/.test(texto) || palabras("VNĐ").test(texto)) p.push("moneda: va «1.000 ₫» o «đồng»");
+  const r = SIN_DIACRITICOS_VI.exec(texto);
+  if (r) p.push(`«${r[0]}» sin diacríticos`);
   return p;
 }
 
@@ -872,6 +934,31 @@ function reglasBn(original: string): string[] {
   return p;
 }
 
+// Jemer (ADR 0002, D38). Se escribe sin espacios entre palabras: el espacio separa frases, y la oración cierra con
+// «។» pegado a la última palabra. Registro de ABA, ACLEDA y la GDT: cortés y neutro, «អ្នក» o sin pronombre.
+// Cifras latinas, como Intl km-KH. Las abreviaturas con punto (គ.ស., ព.ស., គ.ម.) tienen como mucho dos letras.
+const LETRA_KM = String.raw`[ក-៓]`;
+const PUNTO_ASCII_KM = new RegExp(`${LETRA_KM}{3,}\\.(?=\\s|$|["»)])`, "u");
+
+function reglasKm(texto: string): string[] {
+  const p: string[] = [];
+  if (/[!！]/.test(texto)) p.push("signo de exclamación");
+  if (/[​-‍⁠﻿]/.test(texto)) p.push("espacio invisible (U+200B y parecidos): el navegador ya corta el jemer por palabras");
+  // Intl km-KH pone un espacio duro entre la cifra y un símbolo con letras («12,000 EC$»): ese sí va.
+  if (/(?<!\d) |[  　]/.test(texto)) p.push("espacio raro (duro o fino): va el espacio común");
+  if (/ {2,}/.test(texto)) p.push("doble espacio");
+  if (/[០-៩]/.test(texto)) p.push("dígitos jemeres (van cifras latinas, como Intl km-KH)");
+  if (PUNTO_ASCII_KM.test(texto)) p.push("punto latino al final de una oración jemer (va «។»)");
+  if (/\s[។៕]/.test(texto)) p.push("espacio antes de «។» (va pegado a la palabra)");
+  if (/។(?!ល។)[ក-ឳ]/u.test(texto)) p.push("falta el espacio después de «។»");
+  if (/\s[ា-៓]/.test(texto)) p.push("signo vocálico o coeng suelto después de un espacio");
+  if (/េា/.test(texto)) p.push("«េ» + «ា» en vez de «ោ» (U+17C4)");
+  if (/េី/.test(texto)) p.push("«េ» + «ី» en vez de «ើ» (U+17BE)");
+  if (/[ឣឤ឴឵៓៘]/.test(texto)) p.push("carácter jemer desaconsejado por Unicode (U+17A3, U+17A4, U+17B4, U+17B5, U+17D3, U+17D8)");
+  if (/លោកអ្នក|អ្នកឯង|ញ៉ុំ|អញ(?=\s|$)|(?:^|\s)(?:បាទ|ចាស)(?=\s|$)/u.test(texto)) p.push("registro fuera de lugar (va «អ្នក» o sin pronombre, sin បាទ/ចាស)");
+  return p;
+}
+
 // Tailandés (ADR 0002, D13). Se escribe sin espacios entre palabras: el espacio separa frases y
 // oraciones, y la oración no lleva punto ni signo de pregunta al final. Registro cortés y neutro de
 // los bancos y servicios digitales: sin partículas de cortesía (ครับ, ค่ะ), sin pronombre de segunda
@@ -945,6 +1032,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   }
   if (idioma === "ar") return [...p, ...reglasAr(texto)];
   if (idioma === "th") return [...p, ...reglasTh(texto)];
+  if (idioma === "km") return [...p, ...reglasKm(texto)];
   if (idioma === "he") return [...p, ...reglasHe(texto)];
   if (EXCLAMACION.test(texto)) p.push("signo de exclamación de vendedor");
   if (idioma === "tr") p.push(...reglasTr(texto));
@@ -967,5 +1055,7 @@ export function problemasDeTexto(texto: string, idioma: Idioma, trato: Trato, lo
   if (idioma === "et") p.push(...reglasEt(texto));
   if (idioma === "is") p.push(...reglasIs(texto));
   if (idioma === "lv") p.push(...reglasLv(texto));
+  if (idioma === "mk") p.push(...reglasMk(texto));
+  if (idioma === "vi") p.push(...reglasVi(texto));
   return [...p, ...registro(texto, idioma, trato)];
 }

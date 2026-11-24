@@ -275,6 +275,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
     },
   },
   // Tailandés (ADR 0002, D13): sin pronombre ni ครับ/ค่ะ, sin punto final.
+  km: {
+    base: {
+      titulo: "កំពុងផ្លាស់ទៅបរទេស ឬទទួលប្រាក់ពីបរទេសមែនទេ?",
+      etiqueta: "តំណឧបត្ថម្ភ",
+      socios: {
+        wise: "គណនីច្រើនរូបិយប័ណ្ណសម្រាប់ទទួល និងផ្ញើប្រាក់អន្តរជាតិ ជាមួយអត្រាប្តូរប្រាក់កណ្តាលទីផ្សារ និងកម្រៃដែលបង្ហាញច្បាស់។",
+        deel: "កិច្ចសញ្ញា និងការទទួលប្រាក់សម្រាប់អ្នកធ្វើការពីប្រទេសមួយឱ្យក្រុមហ៊ុននៅប្រទេសមួយទៀត។",
+      },
+      nota: "បើអ្នកបើកគណនីតាមតំណទាំងនេះ គេហទំព័រអាចទទួលបានកម្រៃជើងសារ។ អ្នកមិនបង់បន្ថែមទេ។",
+      nuevaPestana: "បើកក្នុងផ្ទាំងថ្មី",
+    },
+  },
   th: {
     base: {
       titulo: "กำลังจะย้ายไปต่างประเทศ หรือรับเงินจากต่างประเทศอยู่หรือไม่",
@@ -374,6 +386,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       nuevaPestana: "új lapon nyílik meg",
     },
   },
+  vi: {
+    base: {
+      titulo: "Bạn sắp ra nước ngoài hay nhận lương từ quốc gia khác?",
+      etiqueta: "Liên kết đối tác",
+      socios: {
+        wise: "Tài khoản đa tiền tệ: nhận và gửi tiền giữa các quốc gia theo tỷ giá trung bình, phí được báo trước.",
+        deel: "Hợp đồng và thanh toán cho người làm việc từ một quốc gia cho công ty ở quốc gia khác.",
+      },
+      nota: "Nếu bạn mở tài khoản qua các liên kết này, trang có thể nhận hoa hồng. Bạn không mất thêm chi phí.",
+      nuevaPestana: "mở trong thẻ mới",
+    },
+  },
   mn: {
     base: {
       titulo: "Гадаадад нүүж байна уу, эсвэл өөр улсаас цалин авдаг уу?",
@@ -409,6 +433,18 @@ export const DICCIONARIOS_AFILIADOS: Diccionarios<TextosAfiliados> = {
       },
       nota: "Եթե այս հղումներով հաշիվ բացեք, կայքը կարող է միջնորդավճար ստանալ։ Ձեզ համար դա անվճար է։",
       nuevaPestana: "բացվում է նոր ներդիրում",
+    },
+  },
+  mk: {
+    base: {
+      titulo: "Се селите во странство или примате плата од друга држава?",
+      etiqueta: "Партнерски врски",
+      socios: {
+        wise: "Повеќевалутна сметка за примање и испраќање пари меѓу држави по среден курс и со провизија што ја знаете однапред.",
+        deel: "Договори и исплати за луѓе што од една држава работат за фирма во друга.",
+      },
+      nota: "Ако отворите сметка преку овие врски, сајтот може да добие провизија. За вас тоа не чини ништо.",
+      nuevaPestana: "се отвора во нов таб",
     },
   },
   // Hebreo (ADR 0002, D22), impersonal como los demás.

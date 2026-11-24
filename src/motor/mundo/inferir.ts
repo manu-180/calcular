@@ -15,13 +15,15 @@ export type Inferencia = { ok: true; mundo: MundoCalculadora } | { ok: false; mo
 // En serbio «godišnja», «godišnje» y «mesečna», «mesečno» (y el ijekavski «mjesečno») van por prefijo.
 // Armenio: «տարի», «ամիս» y los prefijos «տարեկան» y «ամսական» (ADR 0002, D30).
 // En albanés «vit», «vjet», «vjetor» y «muaj», «mujor» (ya sin diacríticos; ADR 0002, D31).
+// En vietnamita «năm» y «tháng» llegan como «nam» y «thang»; «Việt Nam» se une antes para que el nombre
+// del país no cuente como «año» (ADR 0002, D37).
 // «година», «месец» y los prefijos «годиш» y «месеч» («годишна», «месечна»; ADR 0002, D24).
 // En croata «godišnja», «godišnje» y «mjesečna», «mjesečno» van por prefijo.
 // En letón «gads», «gada», «gadā», «gadu» y el prefijo «ikgadej» («ikgadējā»), y el prefijo «menes» («mēnesis»,
 // «mēneša», «mēnesī», «mēnešalga») con «ikmenes» («ikmēneša»; ADR 0002, D35).
-const ANUAL = ["տարի", "տարվա", "տարում", "vit", "viti", "vjet", "vjetor", "vjetore", "leto", "letu", "letno", "letna", "aasta", "aastas", "aastane", "aastapalk", "ar", "ari", "ars", "arlega", "gads", "gada", "gadu", "година", "anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "жилийн", "yillik", "yil", "рік", "року", "год", "года", "anuala", "anuale", "anuali", "rok", "roku", "rocne", "ετος", "ετη", "წელი", "წელიწადი", "წელიწადში", "eves", "evi", "evente", "שנתי", "שנתית", "לשנה", "בשנה", "年", "연", "연봉", "年収", "年薪"];
+const ANUAL = ["nam", "տարի", "տարվա", "տարում", "vit", "viti", "vjet", "vjetor", "vjetore", "leto", "letu", "letno", "letna", "aasta", "aastas", "aastane", "aastapalk", "ar", "ari", "ars", "arlega", "gads", "gada", "gadu", "година", "anual", "anuales", "annual", "annually", "year", "yearly", "annuel", "annuelle", "annee", "an", "ans", "ano", "anos", "anno", "annuo", "annua", "annuale", "ral", "ctc", "jaar", "jaarlijks", "жилийн", "yillik", "yil", "рік", "року", "год", "года", "anuala", "anuale", "anuali", "rok", "roku", "rocne", "ετος", "ετη", "წელი", "წელიწადი", "წელიწადში", "eves", "evi", "evente", "שנתי", "שנתית", "לשנה", "בשנה", "年", "연", "연봉", "年収", "年薪"];
 const PREFIJO_ANUAL = ["letn", "arslaun", "arstekj", "arleg", "jahr", "jahres", "jährlich", "jaarsalaris", "year", "річн", "годов", "ежегодн", "rocn", "ετησι", "godisnj", "годиш", "წლიურ", "ყოველწლიურ", "godisnj", "жил", "տարեկան", "ikgadej"];
-const MENSUAL = ["manuður", "manuði", "mesec", "meseca", "mesecu", "ամիս", "ամսվա", "ամսում", "muaj", "muajin", "mujor", "mujore", "kuu", "kuine", "igakuine", "kuupalk", "месец", "mesiac", "mesiace", "mesiaca", "mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "сар", "сарын", "mensal", "aylik", "oylik", "місяць", "місяця", "месяц", "месяца", "luna", "lunii", "mesic", "mesice", "mesicne", "μηνα", "μηνας", "μηνες", "თვე", "თვეში", "havi", "havonta", "חודשי", "חודשית", "לחודש", "בחודש", "月", "월", "월급", "月給", "月薪"];
+const MENSUAL = ["thang", "manuður", "manuði", "mesec", "meseca", "mesecu", "ամիս", "ամսվա", "ամսում", "muaj", "muajin", "mujor", "mujore", "kuu", "kuine", "igakuine", "kuupalk", "месец", "mesiac", "mesiace", "mesiaca", "mensual", "mensuales", "monthly", "month", "mes", "mois", "mensuel", "mensuelle", "mese", "mensile", "maand", "maandelijks", "сар", "сарын", "mensal", "aylik", "oylik", "місяць", "місяця", "месяц", "месяца", "luna", "lunii", "mesic", "mesice", "mesicne", "μηνα", "μηνας", "μηνες", "თვე", "თვეში", "havi", "havonta", "חודשי", "חודשית", "לחודש", "בחודש", "月", "월", "월급", "月給", "月薪"];
 const PREFIJO_MENSUAL = ["mesacn", "mesecn", "manað", "monat", "maand", "month", "mensu", "mensil", "місячн", "месячн", "ежемесячн", "lunar", "mesicn", "μηνιαι", "mesecn", "mjesecn", "месеч", "თვიურ", "ყოველთვიურ", "mjesecn", "сарын", "ամսական", "menes", "ikmenes"];
 
 function palabras(texto: string): string[] {
@@ -31,6 +33,7 @@ function palabras(texto: string): string[] {
     .toLowerCase()
     // La ı del turco no se descompone: «yıllık» y «aylık» se comparan como «yillik» y «aylik».
     .replace(/ı/g, "i")
+    .replace(/viet\s+nam/g, "vietnam")
     .split(/[^\p{L}]+/u)
     .filter(Boolean);
 }
@@ -39,10 +42,15 @@ function separarCamel(id: string): string {
   return id.replace(/([a-z])([A-Z])/g, "$1 $2");
 }
 
+// El jemer no separa palabras con espacios y palabras() lo cortaría en cada signo vocálico: se busca adentro del
+// texto. «ខែ» suelto no alcanza, porque «ប្រាក់ខែ» (salario) lo lleva sin hablar del período (ADR 0002, D38).
+const ANUAL_KM = /ឆ្នាំ/u;
+const MENSUAL_KM = /ប្រចាំខែ|ក្នុងមួយខែ|មួយខែ/u;
+
 function periodoDe(...textos: string[]): PeriodoMundo | null {
   const ps = textos.flatMap((t) => palabras(separarCamel(t)));
-  const anual = ps.some((p) => ANUAL.includes(p) || PREFIJO_ANUAL.some((x) => p.startsWith(x)));
-  const mensual = ps.some((p) => MENSUAL.includes(p) || PREFIJO_MENSUAL.some((x) => p.startsWith(x)));
+  const anual = textos.some((t) => ANUAL_KM.test(t)) || ps.some((p) => ANUAL.includes(p) || PREFIJO_ANUAL.some((x) => p.startsWith(x)));
+  const mensual = textos.some((t) => MENSUAL_KM.test(t)) || ps.some((p) => MENSUAL.includes(p) || PREFIJO_MENSUAL.some((x) => p.startsWith(x)));
   if (anual === mensual) return null;
   return anual ? "anio" : "mes";
 }

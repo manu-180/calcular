@@ -8,6 +8,7 @@ import { GRAMATICA, mayusculaHu } from "./gramatica";
 import { conteoMn, formaBg, formaCs, formaEl, formaLv, formaRu, formaSk, formaUk, pluralBg, pluralCs, pluralEl, pluralLv, pluralRo, pluralRu, pluralSk, pluralSq, pluralUk } from "./plural";
 import { formaSr, pluralSr } from "./plural";
 import { formaHr, pluralHr } from "./plural";
+import { formaMk, pluralMk } from "./plural";
 import { DIAS_HE, formaHe, pluralHe, type FormasHe } from "./hebreo";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 
@@ -2921,7 +2922,217 @@ const lv: Diccionario<TextosCalendario> = {
   },
 };
 
-export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+// Macedonio (ADR 0002, D36): impersonal como los demás; el país va con GRAMATICA.mk y los días con
+// formaMk/pluralMk («1 ден», «3 дена»).
+const gMk = GRAMATICA.mk;
+const mk: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Работен и даночен календар",
+    seo: {
+      titulo: (pais, anios) => [
+        `Работен и даночен календар ${gMk.para(pais)} ${anios}: важни датуми`,
+        `Работен и даночен календар ${gMk.para(pais)} ${anios}`,
+        `Работен календар ${gMk.para(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Датумите што ја менуваат платата ${gMk.en(pais)}, со официјален извор: ${proximas}. Секој со свој калкулатор.`,
+      descripcionSin: (pais) => `Датумите што ја менуваат платата ${gMk.en(pais)}, со официјален извор и калкулатор за секој од нив. Можат да се додадат во календарот на телефонот.`,
+    },
+    ceja: (anios) => `Календар ${anios}`,
+    h1: (pais) => `Работен и даночен календар ${gMk.para(pais)}`,
+    acento: "датумите од кои зависи платата",
+    bajada: "Секој датум доаѓа од официјален извор и води до калкулаторот на кој влијае. Страницата се ажурира сама кога ќе се објави нова вредност.",
+    proxima: "Следен датум",
+    cuenta: {
+      hoy: "Денес",
+      manana: "Утре",
+      ayer: "Вчера",
+      en: (n) => `За ${pluralMk(n, "ден", "дена")}`,
+      hace: (n) => `Пред ${pluralMk(n, "ден", "дена")}`,
+      dias: (n) => formaMk(n, "ден", "дена"),
+    },
+    queViene: "Претстои",
+    yaRige: "Веќе е во сила",
+    mesPorMes: "Годината месец по месец",
+    sinFechas: "Нема најавени промени",
+    filtro: "Филтер по тема",
+    todo: "Сите",
+    tipos: { pago: "Исплати", "salario-minimo": "Минимална плата", impuestos: "Даноци", aportes: "Придонеси и пензии", laboral: "Работни правила", indices: "Референтни вредности" },
+    pasa: (antes, despues) => `Се менува од ${antes} на ${despues}`,
+    queda: (valor) => `Утврдено: ${valor}`,
+    cambian: "Износите се менуваат",
+    zonas: (lista) => `Региони: ${lista}`,
+    limite: "Краен рок",
+    agregar: "Додавање во мојот календар",
+    descargar: "Apple, Outlook и други (датотека .ics)",
+    google: "Google Календар",
+    calcular: "Пресметај",
+    tambien: "Исто така во калкулаторите",
+    fuente: (organismo, fecha) => `Извор: ${organismo}. Проверено на ${fecha}`,
+    verificado: (fecha) => `Проверено на ${fecha}`,
+    suscribir: {
+      titulo: "Целиот календар, секогаш ажурен",
+      texto: "Со една претплата новите датуми се појавуваат сами во календарот на телефонот или компјутерот.",
+      boton: "Претплатете се на календарот",
+      copiar: "Копирање на врската",
+      copiado: "Врската е копирана",
+    },
+    fuentes: {
+      titulo: "Од каде доаѓа секој датум",
+      texto: "Овде влегуваат само датуми што се веќе утврдени со пропис или со вредност објавена од официјална институција. Она што сè уште не е објавено, го нема овде.",
+    },
+    vacio: "Во следните дванаесет месеци нема датуми на оваа тема.",
+    destacado: {
+      ceja: "Календар на исплати",
+      titulo: "Датумите од кои зависи платата оваа година",
+      ir: "Видете го календарот",
+      proxima: (titulo, fecha) => `Следен: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Работен и даночен календар ${gMk.para(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Датуми за исплати и даноци ${gMk.en(pais)} од официјални извори.`,
+      calculadora: "Калкулатор",
+      fuente: "Извор",
+    },
+    og: { proxima: "Следен датум", mas: (n) => `И уште ${pluralMk(n, "датум", "датума")} оваа година` },
+  },
+};
+
+// Vietnamita (ADR 0002, D37): impersonal como los demás, frases cortas. El país va con GRAMATICA.vi, nunca
+// al inicio de una frase («tại» en minúscula), y tras un número no hay plural («3 ngày»).
+const gVi = GRAMATICA.vi;
+const vi: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "Lịch lương và thuế",
+    seo: {
+      titulo: (pais, anios) => [
+        `Lịch lương và thuế ${gVi.de(pais)} ${anios}: các ngày quan trọng`,
+        `Lịch lương và thuế ${gVi.de(pais)} ${anios}`,
+        `Lịch lương ${gVi.de(pais)}`,
+      ],
+      descripcion: (pais, proximas) => `Những ngày làm thay đổi lương ${gVi.en(pais)}, từ nguồn chính thức: ${proximas}. Mỗi ngày đều có công cụ tính đi kèm.`,
+      descripcionSin: (pais) => `Những ngày làm thay đổi lương ${gVi.en(pais)}, từ nguồn chính thức, kèm công cụ tính. Sẵn sàng thêm vào lịch điện thoại.`,
+    },
+    ceja: (anios) => `Lịch ${anios}`,
+    h1: (pais) => `Lịch lương và thuế ${gVi.de(pais)}`,
+    acento: "những ngày ảnh hưởng đến lương",
+    bajada: "Mỗi ngày đều lấy từ nguồn chính thức và liên kết đến công cụ tính tương ứng. Trang tự cập nhật khi có số liệu mới được công bố.",
+    proxima: "Ngày tiếp theo",
+    cuenta: { hoy: "Hôm nay", manana: "Ngày mai", ayer: "Hôm qua", en: (n) => `Còn ${n} ngày`, hace: (n) => `${n} ngày trước`, dias: () => "ngày" },
+    queViene: "Sắp tới",
+    yaRige: "Đang áp dụng",
+    mesPorMes: "Cả năm, theo từng tháng",
+    sinFechas: "Chưa có thay đổi nào được công bố",
+    filtro: "Lọc theo chủ đề",
+    todo: "Tất cả",
+    tipos: { pago: "Trả lương", "salario-minimo": "Lương tối thiểu", impuestos: "Thuế", aportes: "Các khoản đóng và hưu trí", laboral: "Quy định lao động", indices: "Giá trị tham chiếu" },
+    pasa: (antes, despues) => `Thay đổi từ ${antes} thành ${despues}`,
+    queda: (valor) => `Ấn định ở mức ${valor}`,
+    cambian: "Số liệu thay đổi",
+    zonas: (lista) => `Áp dụng tại ${lista}`,
+    limite: "Hạn cuối",
+    agregar: "Thêm vào lịch của tôi",
+    descargar: "Apple, Outlook và ứng dụng khác (tệp .ics)",
+    google: "Lịch Google",
+    calcular: "Tính",
+    tambien: "Cũng có tại",
+    fuente: (organismo, fecha) => `Nguồn: ${organismo}. Đã kiểm tra: ${fecha}.`,
+    verificado: (fecha) => `Đã kiểm tra: ${fecha}`,
+    suscribir: {
+      titulo: "Toàn bộ lịch, luôn mới nhất",
+      texto: "Chỉ cần đăng ký một lần, các ngày mới sẽ tự xuất hiện trong lịch trên điện thoại hoặc máy tính.",
+      boton: "Đăng ký lịch",
+      copiar: "Sao chép liên kết",
+      copiado: "Đã sao chép liên kết",
+    },
+    fuentes: {
+      titulo: "Mỗi ngày đến từ đâu",
+      texto: "Chỉ có những ngày đã được ấn định trong quy định hoặc trong số liệu do cơ quan chính thức công bố. Ngày chưa công bố sẽ không hiển thị.",
+    },
+    vacio: "Không có ngày nào cho chủ đề này trong mười hai tháng tới.",
+    destacado: {
+      ceja: "Lịch lương",
+      titulo: "Những ngày ảnh hưởng đến lương trong năm nay",
+      ir: "Xem lịch",
+      proxima: (titulo, fecha) => `Tiếp theo: ${titulo}, ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `Lịch lương và thuế ${gVi.de(pais)} (CalcularYa)`,
+      descripcion: (pais) => `Các ngày về lương và thuế ${gVi.en(pais)}, từ nguồn chính thức.`,
+      calculadora: "Công cụ tính",
+      fuente: "Nguồn",
+    },
+    og: { proxima: "Ngày tiếp theo", mas: (n) => `Và ${n} ngày khác trong năm nay` },
+  },
+};
+
+// Jemer (ADR 0002, D38): «អ្នក» o sin pronombre, «។» al cerrar la oración, años gregorianos (`anios` llega así).
+const gKm = GRAMATICA.km;
+const km: Diccionario<TextosCalendario> = {
+  base: {
+    nombre: "ប្រតិទិនប្រាក់ខែ និងពន្ធ",
+    seo: {
+      titulo: (pais, anios) => [
+        `ប្រតិទិនប្រាក់ខែ និងពន្ធ${gKm.de(pais)} ${anios}`,
+        `ប្រតិទិនប្រាក់ខែ${gKm.de(pais)} ${anios}`,
+        `ប្រតិទិនប្រាក់ខែ ${anios}`,
+      ],
+      descripcion: (pais, proximas) => `កាលបរិច្ឆេទដែលប្តូរប្រាក់ខែ${gKm.en(pais)} ពីប្រភពផ្លូវការ: ${proximas}។ ភ្ជាប់ទៅម៉ាស៊ីនគណនា។`,
+      descripcionSin: (pais) => `កាលបរិច្ឆេទដែលប្តូរប្រាក់ខែ${gKm.en(pais)} ពីប្រភពផ្លូវការ ជាមួយម៉ាស៊ីនគណនា។ បន្ថែមក្នុងប្រតិទិនទូរស័ព្ទបាន។`,
+    },
+    ceja: (anios) => `ប្រតិទិន ${anios}`,
+    h1: (pais) => `ប្រតិទិនប្រាក់ខែ និងពន្ធ${gKm.para(pais)}`,
+    acento: "កាលបរិច្ឆេទដែលប្រាក់ខែប្តូរ",
+    bajada: "កាលបរិច្ឆេទទាំងអស់មកពីប្រភពផ្លូវការ និងភ្ជាប់ទៅម៉ាស៊ីនគណនាដែលពាក់ព័ន្ធ។ ទំព័រនេះធ្វើបច្ចុប្បន្នភាពដោយខ្លួនឯង នៅពេលមានតួលេខថ្មី។",
+    proxima: "កាលបរិច្ឆេទបន្ទាប់",
+    cuenta: { hoy: "ថ្ងៃនេះ", manana: "ថ្ងៃស្អែក", ayer: "ថ្ងៃម្សិលមិញ", en: (n) => `ក្នុងរយៈពេល ${n} ថ្ងៃទៀត`, hace: (n) => `${n} ថ្ងៃមុន`, dias: () => "ថ្ងៃ" },
+    queViene: "ខាងមុខ",
+    yaRige: "ជាធរមានហើយ",
+    mesPorMes: "ពេញមួយឆ្នាំ តាមខែ",
+    sinFechas: "មិនទាន់មានការប្រកាសការផ្លាស់ប្តូរទេ។",
+    filtro: "ច្រោះតាមប្រធានបទ",
+    todo: "ទាំងអស់",
+    tipos: { pago: "ការបើកប្រាក់", "salario-minimo": "ប្រាក់ឈ្នួលអប្បបរមា", impuestos: "ពន្ធ", aportes: "ការរួមចំណែក និងសោធន", laboral: "ច្បាប់ការងារ", indices: "តម្លៃយោង" },
+    pasa: (antes, despues) => `ប្តូរពី ${antes} ទៅ ${despues}`,
+    queda: (valor) => `កំណត់ត្រឹម ${valor}`,
+    cambian: "តួលេខប្តូរ",
+    zonas: (lista) => `នៅ${lista}`,
+    limite: "ថ្ងៃផុតកំណត់",
+    agregar: "បន្ថែមក្នុងប្រតិទិន",
+    descargar: "Apple Outlook និងផ្សេងៗ (ឯកសារ .ics)",
+    google: "Google Calendar",
+    calcular: "គណនា",
+    tambien: "ពាក់ព័ន្ធ",
+    fuente: (organismo, fecha) => `ប្រភព: ${organismo} បានផ្ទៀងផ្ទាត់នៅ ${fecha}`,
+    verificado: (fecha) => `បានផ្ទៀងផ្ទាត់នៅ ${fecha}`,
+    suscribir: {
+      titulo: "ប្រតិទិនទាំងមូល តែងតែទាន់សម័យ",
+      texto: "ជាវតែម្តង កាលបរិច្ឆេទថ្មីនឹងបង្ហាញក្នុងប្រតិទិនលើទូរស័ព្ទ ឬកុំព្យូទ័រដោយខ្លួនឯង។",
+      boton: "ជាវប្រតិទិន",
+      copiar: "ចម្លងតំណ",
+      copiado: "បានចម្លងតំណ។",
+    },
+    fuentes: {
+      titulo: "កាលបរិច្ឆេទនីមួយៗមកពីណា",
+      texto: "យើងបង្ហាញតែកាលបរិច្ឆេទដែលកំណត់ក្នុងច្បាប់ ឬក្នុងតួលេខដែលស្ថាប័នផ្លូវការបានប្រកាស។ អ្វីដែលមិនទាន់ប្រកាសមិនបង្ហាញទេ។",
+    },
+    vacio: "មិនមានកាលបរិច្ឆេទក្នុងប្រធានបទនេះក្នុង 12 ខែខាងមុខទេ។",
+    destacado: {
+      ceja: "ប្រតិទិនប្រាក់ខែ",
+      titulo: "កាលបរិច្ឆេទដែលប្រាក់ខែប្តូរក្នុងឆ្នាំនេះ",
+      ir: "មើលប្រតិទិន",
+      proxima: (titulo, fecha) => `បន្ទាប់: ${titulo} ${fecha}`,
+    },
+    ics: {
+      nombre: (pais) => `ប្រតិទិនប្រាក់ខែ និងពន្ធ${gKm.de(pais)} (CalcularYa)`,
+      descripcion: (pais) => `កាលបរិច្ឆេទអំពីប្រាក់ខែ និងពន្ធ${gKm.en(pais)} ពីប្រភពផ្លូវការ។`,
+      calculadora: "ម៉ាស៊ីនគណនា",
+      fuente: "ប្រភព",
+    },
+    og: { proxima: "កាលបរិច្ឆេទបន្ទាប់", mas: (n) => `និង ${n} កាលបរិច្ឆេទទៀតក្នុងឆ្នាំនេះ` },
+  },
+};
+
+export const DICCIONARIOS_CALENDARIO: Diccionarios<TextosCalendario> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi, km };
 
 export function textosCalendario(idioma: Idioma, trato: Trato, locale?: string): TextosCalendario {
   return resolver(DICCIONARIOS_CALENDARIO, idioma, trato, locale);

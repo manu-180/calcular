@@ -22,6 +22,8 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   sl: "lestvice-drzav",
   et: "riikide-vordlus",
   is: "rodun-landa",
+  mk: "rang-lista-na-drzhavite",
+  vi: "xep-hang-quoc-gia",
 
   pl: "ranking-krajow",
   sv: "landsrankning",
@@ -47,6 +49,7 @@ export const SLUG_RANKINGS: Record<Idioma, string> = {
   ka: "kveqnebis-reitingi",
   hr: "ljestvica-zemalja",
   lv: "valstu-reitings",
+  km: "chomnat-thnak-prateh",
 };
 
 export const IDS_RANKING = ["rinde", "libertad", "aumento"] as const;
@@ -79,6 +82,10 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   et: { rinde: "kus-palk-kestab-kauem", libertad: "maksuvabaduse-paev", aumento: "kui-palju-palgatousust-jaab" },
   // is en ASCII (þ→th, ð→d, æ→ae, ö→o, sin tildes), con las palabras que se buscan (ADR 0002, D34).
   is: { rinde: "hvar-launin-duga-best", libertad: "skattfrelsisdagurinn", aumento: "hvad-verdur-eftir-af-launahaekkun" },
+  // mk en ASCII con la transliteración oficial: ж = zh, ч = ch, ќ = kj, њ = nj, ј = j (ADR 0002, D36).
+  mk: { rinde: "kupovna-mokj-na-platata", libertad: "den-na-danochna-sloboda", aumento: "kolku-ostanuva-od-pokachuvanjeto" },
+  // vi en ASCII, sin diacríticos y con đ = d (ADR 0002, D37).
+  vi: { rinde: "suc-mua-cua-luong", libertad: "ngay-tu-do-thue", aumento: "tang-luong-con-lai-bao-nhieu" },
 
   pl: { rinde: "gdzie-pensja-daje-najwiecej", libertad: "dzien-wolnosci-podatkowej", aumento: "ile-zostaje-z-podwyzki" },
   sv: { rinde: "dar-lonen-racker-langst", libertad: "skattefrihetsdagen", aumento: "vad-som-blir-kvar-av-en-loneokning" },
@@ -115,6 +122,8 @@ export const SLUGS_RANKING: Record<Idioma, Record<IdRanking, string>> = {
   hr: { rinde: "gdje-placa-vrijedi-najvise", libertad: "dan-porezne-slobode", aumento: "koliko-ostaje-od-povisice" },
   // lv en ASCII sin diacríticos, con las palabras que se buscan (ADR 0002, D35).
   lv: { rinde: "kur-no-algas-paliek-visvairak", libertad: "nodoklu-brivibas-diena", aumento: "cik-paliek-no-algas-pielikuma" },
+  // km con el slug en inglés del catálogo, como th (ADR 0002, D38).
+  km: { rinde: "take-home-pay", libertad: "tax-freedom-day", aumento: "pay-raise" },
 };
 
 export function rankingDeSlug(idioma: Idioma, slug: string): IdRanking | null {

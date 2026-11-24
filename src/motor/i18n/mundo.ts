@@ -9,6 +9,7 @@ import { pluralSr } from "./plural";
 import { pluralHr } from "./plural";
 import { rasatSq } from "./gramatica";
 import { pluralSq } from "./plural";
+import { pluralMk } from "./plural";
 import { resolver, type Diccionario, type Diccionarios } from "./resolver";
 import { PT_LUSOFONIA } from "./variantes";
 import type { Idioma, Trato } from "../tipos";
@@ -7327,7 +7328,483 @@ const lv: Diccionario<TextosMundo> = {
   },
 };
 
-export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv };
+// ───────────────────────────── mk ─────────────────────────────
+
+// Macedonio (ADR 0002, D36): «вие» de cortesía en minúscula y 2.ª persona del plural; la tarjeta y el
+// texto para compartir van en primera persona. El país va con GRAMATICA.mk («во Северна Македонија») y
+// los días y países con pluralMk («1 ден», «3 дена», «во 40 држави»).
+const gMk = GRAMATICA.mk;
+const SEO_MK = "Ден на даночна слобода и нето плата по држави";
+const diasMk = (d: number) => pluralMk(d, "ден", "дена");
+const enPaisesMk = (n: number) => `во ${pluralMk(n, "држава", "држави")}`;
+
+const mk: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Вашата плата низ светот",
+    seo: {
+      titulo: (pais) => [`${SEO_MK} | ${pais}`, SEO_MK, "Вашата плата низ светот"],
+      tituloGlobal: [SEO_MK, "Вашата плата низ светот"],
+      descripcion: (pais, n) => `Видете до кој ден од годината работите за државата со плата ${gMk.en(pais)} и колку нето би добивале ${enPaisesMk(n)}. Бесплатно и без регистрација.`,
+      descripcionGlobal: (n) => `Видете до кој ден од годината работите за државата и колку нето би ви останувало од платата ${enPaisesMk(n)}. Бесплатно и без регистрација.`,
+    },
+    ceja: "Вашиот Ден на даночна слобода",
+    h1: "До кој ден од годината работите за државата?",
+    bajada: (n) => `Внесете ја вашата бруто плата за да го видите вашиот датум. Потоа споредете ја ${enPaisesMk(n)} со иста куповна моќ и со даночните правила на секоја држава.`,
+    form: {
+      titulo: "Вашата плата",
+      sueldo: "Бруто плата",
+      mes: "Месечно",
+      anio: "Годишно",
+      periodo: "Период на платата",
+      pais: "Државата каде што работите",
+      ejemplo: "Пример",
+      ejemploAyuda: "Ова е примерна плата. Внесете ја вашата и сите бројки веднаш се ажурираат.",
+      propio: "Префрлено од вашата пресметка.",
+      invalido: "Внесете износ поголем од нула.",
+      pagas: "Месечната плата од вашиот платен лист: задолжителните дополнителни плати според законот (13-та или 14-та) ги додаваме ние. Нето платата е просекот за 12 месеци.",
+    },
+    heroe: {
+      hasta: (fecha) => `Работите за државата до ${fecha}`,
+      tasa: (pct) => `${pct} од вашата плата оди на персонален данок и задолжителни придонеси.`,
+      dias: (n, total) => `${n} од ${total} дена`,
+      enMano: "Нето",
+      porMes: "месечно",
+      anio: (anio, n, total) => `${anio}: ${n} од ${total} дена за државата.`,
+      resto: "Од следниот ден, сè што заработувате останува за вас.",
+    },
+    ranking: {
+      titulo: "Иста плата во различни држави",
+      bajada: "Толку нето би добивале во секоја држава со иста куповна моќ. Секој ред доаѓа од официјалниот калкулатор на таа држава.",
+      lista: "Држави по нето плата",
+      buscar: "Пребарајте држава",
+      filtrar: "Филтер по регион",
+      todas: "Сите",
+      regiones: { americas: "Америка", europa: "Европа", asia: "Азија и Океанија", africa: "Африка и Блискиот Исток" },
+      tuPais: "Вашата држава",
+      mejor: "Најисплатлива",
+      enMano: "Нето месечно",
+      enTuMoneda: "Во вашата валута",
+      vsTuPais: "Во однос на вашата држава",
+      verTodos: (n) => `Прикажете ги сите држави (${n})`,
+      verMenos: "Прикажете помалку",
+      sinResultados: (q) => `Нема држава што одговара на „${q}“.`,
+      abrir: (pais) => `Отворете го калкулаторот ${gMk.para(pais)}`,
+      mas: (pct) => `${pct} повеќе`,
+      menos: (pct) => `${pct} помалку`,
+      igual: "Исто како сега",
+      puesto: (p, total) => `Вашата држава е на место ${p} од ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Вашата картичка за споделување",
+      bajada: "На неа се гледаат датумот и процентите. Колку заработувате никогаш не се гледа.",
+      hasta: (fecha) => `Работам за државата до ${fecha}`,
+      tasa: (pct) => `${pct} од мојата плата оди на даноци`,
+      mejor: (pais, pct) => `Со мојата плата, ${gMk.en(pais)} нето би ми останувало ${pct} повеќе`,
+      mejorPropio: (pais) => `Со мојата плата, најисплатлива држава за мене е ${gMk.nombre(pais)}`,
+      yVos: "А вие?",
+      cta: "Видете го вашиот датум:",
+      generica: "До кој ден од годината работите за државата?",
+      genericaBajada: (n) => `Вашата плата ${enPaisesMk(n)}, според официјалниот калкулатор на секоја од нив`,
+      compartir: "Споделување на картичката",
+      compartirDuelo: "Прифатете го предизвикот",
+      descargar: "Преземање на сликата",
+      copiado: "Врската е копирана. Залепете ја каде што сакате.",
+      compartido: "Готово, испратено.",
+      error: "Споделувањето не успеа. Обидете се повторно.",
+      texto: (fecha) => `Работам за државата до ${fecha}. А вие?`,
+      alt: "Преглед на вашата картичка",
+    },
+    duelo: {
+      amigo: (fecha) => `Вашиот пријател работи за државата до ${fecha}.`,
+      yVos: "А вие?",
+      invitacion: "Внесете ја вашата плата за да споредите.",
+      vos: "Вие",
+      elAmigo: "Вашиот пријател",
+      dia: "Работи за државата до",
+      tasa: "Даноци и придонеси",
+      mejorPais: "Најисплатливата држава",
+      antes: (d) => `Вие се ослободувате ${diasMk(d)} пред вашиот пријател.`,
+      despues: (d) => `Вашиот пријател се ослободува ${diasMk(d)} пред вас.`,
+      empate: "И двајцата се ослободувате истиот ден.",
+      desde: (pais) => `Работи ${gMk.en(pais)}`,
+    },
+    cero: {
+      dia: "ниту еден ден",
+      heroeAntes: "Работите за државата",
+      tarjetaAntes: "Работам за државата",
+      motivo: "Од оваа плата не се одбиваат ниту персонален данок ниту задолжителни придонеси.",
+      texto: "Оваа година не работам за државата ниту еден ден. А вие?",
+      amigo: "Вашиот пријател не работи за државата ниту еден ден.",
+    },
+    metodo: {
+      titulo: "Како пресметуваме",
+      estimacion: "Ова е проценка за споредба меѓу држави, а не платен лист. Олеснувања, деца или бонуси можат да ја променат вашата бројка.",
+      supuestos: [
+        "Лице без брачен партнер и без деца, со стандардните вредности во калкулаторот на секоја држава.",
+        "Нето платата е она што останува по персоналниот данок и придонесите што ги плаќа самиот вработен. Даноците на потрошувачка и придонесите на товар на работодавачот не се вклучени.",
+        "13-тата плата и другите задолжителни дополнителни исплати се распределуваат во текот на годината како што предвидува законот на секоја држава.",
+        "За Соединетите Американски Држави не се додаваат државниот и локалниот данок на доход: само федералниот данок и одбивањата од платата.",
+        "За да ја пренесеме вашата плата во друга држава, користиме паритет на куповната моќ (ПКМ): ист животен стандард, а не денешниот девизен курс.",
+        "ПКМ на Аргентина се ажурира со индексот на потрошувачки цени на INDEC, бидејќи Светската банка го објавува само до 2021 година.",
+        "Денот на слободата ги распределува даноците во годината почнувајќи од 1 јануари. Ако 30 % од платата оди на даноци, работите за државата 30 % од годината.",
+      ],
+      ppaTitulo: "Паритет на куповната моќ",
+      bancoMundial: "Светската банка",
+      ppa: (organismo, indicador, anio) => `${organismo}, показател ${indicador}, последна достапна година: ${anio}.`,
+      consultado: (fecha) => `Проверено на ${fecha}`,
+      verFuente: "Видете го изворот",
+      fuentesTitulo: "Изворот за секоја држава",
+      fuentesBajada: "Секој ред го користи калкулаторот за нето плата на таа држава и нејзините официјални податоци.",
+      verificado: (fecha) => `Податоците се проверени на ${fecha}`,
+      sello: (fecha) => `Официјалните податоци се проверени во изворот на секоја држава. Најстарата проверка е од ${fecha}`,
+    },
+    faqTitulo: "Често поставувани прашања",
+    faq: (n) => [
+      {
+        pregunta: "Што е Денот на даночна слобода?",
+        respuesta:
+          "Тоа е денот од годината кога ќе завршите со плаќањето на даноците, ако сè што сте заработиле од 1 јануари прво одело кај државата. Овде е пресметан со вашата плата, а не со просечната за земјата.",
+      },
+      {
+        pregunta: "Зошто споредбата е според куповната моќ?",
+        respuesta: "Поради девизниот курс, една плата може да изгледа огромна или ништожна зависно од денот. ПКМ споредува што навистина може да се купи со тие пари во секоја држава.",
+      },
+      {
+        pregunta: "Дали мојата плата се зачувува?",
+        respuesta: "Не. Пресметката се прави во вашиот прелистувач. Она што го споделувате содржи само датуми, проценти и држави.",
+      },
+      {
+        pregunta: "Зошто мојата реална нето плата е различна?",
+        respuesta:
+          "Претпоставуваме лице без брачен партнер и без деца, со стандардните вредности. Олеснувања, бонуси или посебни режими ја менуваат бројката. За точна пресметка за вашиот случај, отворете го калкулаторот на вашата држава.",
+      },
+      {
+        pregunta: "Кои држави се вклучени?",
+        respuesta: `Денес ${pluralMk(n, "држава", "држави")}, секоја со свој калкулатор за нето плата и официјални податоци. Додаваме нови штом ќе ги провериме нивните даночни правила.`,
+      },
+    ],
+    destacado: {
+      ceja: "Споредба низ светот",
+      titulo: "До кој ден од годината работите за државата?",
+      texto: "Внесете ја вашата плата и видете колку нето би добивале во други држави.",
+      ir: "Видете го вашиот датум",
+    },
+  },
+};
+
+// ───────────────────────────── vi ─────────────────────────────
+
+// Vietnamita (ADR 0002, D37): «bạn», frases cortas, sin plural después de un número. `en` da «tại ...»
+// en minúscula: nunca va al inicio de una oración.
+const gVi = GRAMATICA.vi;
+const SEO_VI = "Ngày Tự do Thuế và lương net trên toàn thế giới";
+
+const vi: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "Lương của bạn trên toàn thế giới",
+    seo: {
+      titulo: (pais) => [`${SEO_VI} | ${pais}`, SEO_VI, "Lương của bạn trên toàn thế giới"],
+      tituloGlobal: [SEO_VI, "Lương của bạn trên toàn thế giới"],
+      descripcion: (pais, n) => `Xem bạn làm việc để đóng thuế đến ngày nào với mức lương ${gVi.en(pais)}, và lương net của bạn ở ${n} quốc gia. Miễn phí, không cần đăng ký.`,
+      descripcionGlobal: (n) => `Xem bạn làm việc để đóng thuế đến ngày nào, và lương net của bạn ở ${n} quốc gia. Miễn phí, không cần đăng ký.`,
+    },
+    ceja: "Ngày Tự do Thuế của bạn",
+    h1: "Bạn làm việc cho nhà nước đến ngày nào?",
+    bajada: (n) => `Nhập lương gross (trước thuế) của bạn để xem ngày đó. Sau đó so sánh ở ${n} quốc gia, với cùng sức mua và quy định thuế của từng quốc gia.`,
+    form: {
+      titulo: "Lương của bạn",
+      sueldo: "Lương gross",
+      mes: "Mỗi tháng",
+      anio: "Mỗi năm",
+      periodo: "Kỳ lương",
+      pais: "Quốc gia bạn làm việc",
+      ejemplo: "Ví dụ",
+      ejemploAyuda: "Đây là mức lương ví dụ. Nhập lương của bạn và mọi con số sẽ cập nhật ngay.",
+      propio: "Lấy từ phép tính trước đó của bạn.",
+      invalido: "Nhập số tiền lớn hơn 0.",
+      pagas: "Lương tháng theo phiếu lương của bạn: chúng tôi cộng thêm khoản lương bổ sung theo luật định (lương tháng 13 hoặc tháng 14). Lương net là mức trung bình của 12 tháng.",
+    },
+    heroe: {
+      hasta: (fecha) => `Bạn làm việc cho nhà nước đến ${fecha}`,
+      tasa: (pct) => `${pct} lương của bạn dành cho thuế thu nhập cá nhân và các khoản đóng bắt buộc.`,
+      dias: (n, total) => `${n} trên ${total} ngày`,
+      enMano: "Lương net của bạn",
+      porMes: "mỗi tháng",
+      anio: (anio, n, total) => `Năm ${anio}: ${n} trên ${total} ngày cho nhà nước.`,
+      resto: "Từ ngày hôm sau, thu nhập của bạn hoàn toàn thuộc về bạn.",
+    },
+    ranking: {
+      titulo: "Cùng mức lương, từng quốc gia",
+      bajada: "Với cùng sức mua, đây là lương net của bạn ở từng quốc gia. Mỗi dòng lấy từ công cụ tính chính thức của quốc gia đó. Mức lương ở mọi quốc gia là như nhau: chỉ thuế và các khoản đóng thay đổi, không phải số tiền người dân mỗi nước kiếm được.",
+      lista: "Các quốc gia xếp theo lương net",
+      buscar: "Tìm quốc gia",
+      filtrar: "Lọc theo khu vực",
+      todas: "Tất cả",
+      regiones: { americas: "Châu Mỹ", europa: "Châu Âu", asia: "Châu Á và Châu Đại Dương", africa: "Châu Phi và Trung Đông" },
+      tuPais: "Quốc gia của bạn",
+      mejor: "Thuế thấp nhất",
+      enMano: "Lương net mỗi tháng",
+      enTuMoneda: "Theo đơn vị tiền tệ của bạn",
+      vsTuPais: "So với quốc gia của bạn",
+      verTodos: (n) => `Xem tất cả ${n} quốc gia`,
+      verMenos: "Thu gọn",
+      sinResultados: (q) => `Không có quốc gia nào khớp với “${q}”.`,
+      abrir: (pais) => `Mở công cụ tính ${gVi.para(pais)}`,
+      mas: (pct) => `Nhiều hơn ${pct}`,
+      menos: (pct) => `Ít hơn ${pct}`,
+      igual: "Bằng nhau",
+      puesto: (p, total) => `Quốc gia của bạn xếp thứ ${p} trên ${total}.`,
+    },
+    tarjeta: {
+      titulo: "Thẻ của bạn để chia sẻ",
+      bajada: "Thẻ này hiển thị ngày và tỷ lệ phần trăm của bạn. Mức lương của bạn không bao giờ hiển thị.",
+      hasta: (fecha) => `Tôi làm việc cho nhà nước đến ${fecha}`,
+      tasa: (pct) => `${pct} lương của tôi dành cho thuế`,
+      mejor: (pais, pct) => `Với cùng mức lương, ${gVi.en(pais)} tôi đóng thuế ít hơn: nhận về nhiều hơn ${pct}`,
+      mejorPropio: (pais) => `Với cùng mức lương, không quốc gia nào có thuế thấp hơn ${gVi.nombre(pais)}`,
+      yVos: "Còn bạn thì sao?",
+      cta: "Xem ngày của bạn tại",
+      generica: "Bạn làm việc cho nhà nước đến ngày nào?",
+      genericaBajada: (n) => `Lương của bạn ở ${n} quốc gia, tính bằng công cụ tính chính thức của từng quốc gia`,
+      compartir: "Chia sẻ thẻ của tôi",
+      compartirDuelo: "Đáp lại thử thách",
+      descargar: "Tải xuống ảnh",
+      copiado: "Đã sao chép liên kết. Dán vào bất kỳ đâu.",
+      compartido: "Đã chia sẻ xong.",
+      error: "Không chia sẻ được. Vui lòng thử lại.",
+      texto: (fecha) => `Tôi làm việc cho nhà nước đến ${fecha}. Còn bạn thì sao?`,
+      alt: "Xem trước thẻ của bạn",
+    },
+    duelo: {
+      amigo: (fecha) => `Bạn của bạn làm việc cho nhà nước đến ${fecha}.`,
+      yVos: "Còn bạn thì sao?",
+      invitacion: "Nhập lương của bạn để so sánh.",
+      vos: "Bạn",
+      elAmigo: "Bạn của bạn",
+      dia: "Làm việc cho nhà nước đến",
+      tasa: "Thuế và các khoản đóng",
+      mejorPais: "Thuế thấp nhất tại",
+      antes: (d) => `Bạn được tự do sớm hơn bạn của mình ${d} ngày.`,
+      despues: (d) => `Bạn của bạn được tự do sớm hơn bạn ${d} ngày.`,
+      empate: "Bạn và bạn của mình được tự do cùng một ngày.",
+      desde: (pais) => `Làm việc ${gVi.en(pais)}`,
+    },
+    cero: {
+      dia: "0 ngày",
+      heroeAntes: "Bạn làm việc cho nhà nước",
+      tarjetaAntes: "Tôi làm việc cho nhà nước",
+      motivo: "Với mức lương này, không có khoản trừ thuế thu nhập cá nhân hay khoản đóng bắt buộc nào.",
+      texto: "Năm nay tôi không làm việc ngày nào cho nhà nước. Còn bạn thì sao?",
+      amigo: "Bạn của bạn không làm việc ngày nào cho nhà nước.",
+    },
+    metodo: {
+      titulo: "Cách chúng tôi tính",
+      estimacion: "Đây là ước tính để so sánh các quốc gia, không phải phiếu lương. Các khoản khấu trừ, người phụ thuộc là con hoặc tiền thưởng có thể làm thay đổi con số của bạn.",
+      supuestos: [
+        "Một người độc thân, không có con, với giá trị mặc định của công cụ tính từng quốc gia.",
+        "Lương net là phần lương còn lại sau thuế thu nhập cá nhân và các khoản đóng do người lao động chịu. Không tính thuế tiêu dùng và các khoản đóng do người sử dụng lao động trả.",
+        "Lương tháng 13 hoặc các khoản bổ sung bắt buộc khác được chia đều cho cả năm theo luật của từng quốc gia.",
+        "Với Hoa Kỳ, không cộng thuế thu nhập của tiểu bang hoặc địa phương: chỉ tính thuế liên bang và các khoản đóng trên lương.",
+        "Để quy đổi lương của bạn sang quốc gia khác, chúng tôi dùng ngang giá sức mua (PPP): cùng mức sống, không phải tỷ giá hôm nay.",
+        "PPP của Argentina được cập nhật theo chỉ số giá tiêu dùng của INDEC, vì Ngân hàng Thế giới chỉ công bố đến năm 2021.",
+        "Ngày tự do của bạn phân bổ số thuế của bạn trên cả năm, bắt đầu từ ngày 1 tháng 1. Nếu 30% lương của bạn dành cho thuế, bạn làm việc cho nhà nước trong 30% thời gian của năm.",
+      ],
+      ppaTitulo: "Ngang giá sức mua",
+      bancoMundial: "Ngân hàng Thế giới",
+      ppa: (organismo, indicador, anio) => `${organismo}, chỉ số ${indicador}, năm gần nhất có dữ liệu: ${anio}.`,
+      consultado: (fecha) => `Đã kiểm tra vào ${fecha}.`,
+      verFuente: "Xem nguồn",
+      fuentesTitulo: "Nguồn của từng quốc gia",
+      fuentesBajada: "Mỗi dòng dùng công cụ tính lương net của quốc gia đó và dữ liệu chính thức của quốc gia ấy.",
+      verificado: (fecha) => `Dữ liệu được xác minh vào ${fecha}`,
+      sello: (fecha) => `Dữ liệu chính thức được kiểm tra tại nguồn của từng quốc gia. Lần kiểm tra cũ nhất vào ${fecha}.`,
+    },
+    faqTitulo: "Câu hỏi thường gặp",
+    faq: (n) => [
+      {
+        pregunta: "Ngày Tự do Thuế là gì?",
+        respuesta:
+          "Ngày Tự do Thuế là ngày trong năm bạn đóng xong thuế, nếu toàn bộ thu nhập từ ngày 1 tháng 1 được nộp trước cho nhà nước. Ở đây, ngày đó được tính theo lương của bạn, không theo mức trung bình quốc gia.",
+      },
+      {
+        pregunta: "Vì sao so sánh theo sức mua?",
+        respuesta: "Tỷ giá có thể khiến mức lương trông lớn hay nhỏ tùy theo ngày. PPP so sánh những gì thực sự mua được bằng số tiền đó ở từng quốc gia.",
+      },
+      {
+        pregunta: "Lương của tôi có được lưu lại không?",
+        respuesta: "Không. Phép tính chạy trong trình duyệt của bạn. Nội dung bạn chia sẻ chỉ gồm ngày, tỷ lệ phần trăm và quốc gia.",
+      },
+      {
+        pregunta: "Vì sao lương net thực tế của tôi khác?",
+        respuesta:
+          "Chúng tôi giả định bạn độc thân, không có con, với giá trị mặc định. Các khoản khấu trừ, tiền thưởng hoặc chế độ đặc biệt có thể làm thay đổi con số. Để có kết quả chính xác cho trường hợp của bạn, hãy mở công cụ tính của quốc gia bạn.",
+      },
+      {
+        pregunta: "Có những quốc gia nào?",
+        respuesta: `Hiện có ${n} quốc gia, mỗi quốc gia có công cụ tính lương net và dữ liệu chính thức riêng. Chúng tôi thêm quốc gia mới sau khi xác minh quy định thuế của quốc gia đó.`,
+      },
+    ],
+    destacado: {
+      ceja: "So sánh toàn cầu",
+      titulo: "Bạn làm việc cho nhà nước đến ngày nào?",
+      texto: "Nhập lương của bạn và xem bạn thực nhận bao nhiêu ở các quốc gia khác.",
+      ir: "Xem ngày của tôi",
+    },
+  },
+};
+
+// ───────────────────────────── km ─────────────────────────────
+
+// Jemer (ADR 0002, D38): cortés y neutro, con «អ្នក» o sin pronombre, «។» al cerrar la oración, sin «!» y años
+// gregorianos. El país va con GRAMATICA.km («នៅប្រទេសកម្ពុជា»).
+const gKm = GRAMATICA.km;
+const SEO_KM = "ថ្ងៃសេរីភាពពន្ធ និងប្រាក់ខែសុទ្ធ";
+
+const km: Diccionario<TextosMundo> = {
+  base: {
+    nombre: "ប្រាក់ខែទូទាំងពិភពលោក",
+    seo: {
+      titulo: (pais) => [`${SEO_KM} | ${pais}`, SEO_KM, "ប្រាក់ខែទូទាំងពិភពលោក"],
+      tituloGlobal: [SEO_KM, "ប្រាក់ខែទូទាំងពិភពលោក"],
+      descripcion: (pais, n) => `មើលថាត្រូវធ្វើការឱ្យរដ្ឋដល់ថ្ងៃណា${gKm.en(pais)} និងប្រាក់ខែដូចគ្នានៅសល់ប៉ុន្មានក្នុង ${n} ប្រទេស។ ឥតគិតថ្លៃ។`,
+      descripcionGlobal: (n) => `មើលថាត្រូវធ្វើការឱ្យរដ្ឋដល់ថ្ងៃណា និងប្រាក់ខែដូចគ្នានៅសល់ប៉ុន្មានក្នុង ${n} ប្រទេស។ ឥតគិតថ្លៃ។`,
+    },
+    ceja: "ថ្ងៃសេរីភាពពន្ធ",
+    h1: "ក្នុងមួយឆ្នាំ អ្នកធ្វើការឱ្យរដ្ឋដល់ថ្ងៃណា?",
+    bajada: (n) => `បញ្ចូលប្រាក់ខែសរុបដើម្បីមើលកាលបរិច្ឆេទ។ បន្ទាប់មកប្រៀបធៀបក្នុង ${n} ប្រទេស ដោយមានអំណាចទិញដូចគ្នា និងច្បាប់ពន្ធរបស់ប្រទេសនីមួយៗ។`,
+    form: {
+      titulo: "ប្រាក់ខែរបស់អ្នក",
+      sueldo: "ប្រាក់ខែសរុប",
+      mes: "ប្រចាំខែ",
+      anio: "ប្រចាំឆ្នាំ",
+      periodo: "រយៈពេលបើកប្រាក់",
+      pais: "ប្រទេសដែលអ្នកធ្វើការ",
+      ejemplo: "ឧទាហរណ៍",
+      ejemploAyuda: "នេះជាប្រាក់ខែឧទាហរណ៍។ បញ្ចូលប្រាក់ខែពិតរបស់អ្នក ហើយអ្វីៗទាំងអស់នឹងគណនាឡើងវិញភ្លាមៗ។",
+      propio: "យកពីការគណនាមុន",
+      invalido: "សូមបញ្ចូលចំនួនទឹកប្រាក់ធំជាងសូន្យ។",
+      pagas: "ប្រើប្រាក់ខែតាមប័ណ្ណបើកប្រាក់ប្រចាំខែ។ យើងបន្ថែមប្រាក់ដែលច្បាប់តម្រូវឱ្យបើកបន្ថែម (ដូចជាប្រាក់ខែទី 13 ឬទី 14)។ ប្រាក់ដែលទទួលបានជាមធ្យមក្នុង 12 ខែ។",
+    },
+    heroe: {
+      hasta: (fecha) => `អ្នកធ្វើការឱ្យរដ្ឋដល់ថ្ងៃទី ${fecha}`,
+      tasa: (pct) => `${pct} នៃប្រាក់ខែរបស់អ្នកជាពន្ធលើប្រាក់បៀវត្សរ៍ និងវិភាគទាន`,
+      dias: (n, total) => `${n} ក្នុងចំណោម ${total} ថ្ងៃ`,
+      enMano: "ប្រាក់ទទួលបានពិត",
+      porMes: "ក្នុងមួយខែ",
+      anio: (anio, n, total) => `ឆ្នាំ ${anio}: ${n} ក្នុងចំណោម ${total} ថ្ងៃ ជាការធ្វើការឱ្យរដ្ឋ`,
+      resto: "ចាប់ពីថ្ងៃបន្ទាប់ ប្រាក់ចំណូលទាំងអស់ជារបស់អ្នក។",
+    },
+    ranking: {
+      titulo: "ប្រាក់ខែដូចគ្នា ប្រៀបធៀបតាមប្រទេស",
+      bajada: "ដោយមានអំណាចទិញដូចគ្នា នេះជាប្រាក់ដែលទទួលបានពិតនៅប្រទេសនីមួយៗ។ ជួរនីមួយៗបានមកពីម៉ាស៊ីនគណនារបស់ប្រទេសនោះ ដោយប្រើតួលេខផ្លូវការ។ គ្រប់ប្រទេសប្រើប្រាក់ខែដូចគ្នា ខុសគ្នាតែពន្ធ និងវិភាគទាន។ នេះមិនមែនជាប្រាក់ចំណូលពិតនៅប្រទេសនោះទេ។",
+      lista: "ប្រទេសតម្រៀបតាមប្រាក់ទទួលបានពិត",
+      buscar: "ស្វែងរកប្រទេស",
+      filtrar: "ច្រោះតាមតំបន់",
+      todas: "ទាំងអស់",
+      regiones: { americas: "អាមេរិក", europa: "អឺរ៉ុប", asia: "អាស៊ី និងអូសេអានី", africa: "អាហ្វ្រិក និងមជ្ឈិមបូព៌ា" },
+      tuPais: "ប្រទេសរបស់អ្នក",
+      mejor: "ពន្ធទាបបំផុត",
+      enMano: "ប្រាក់ទទួលបានពិតក្នុងមួយខែ",
+      enTuMoneda: "ជារូបិយប័ណ្ណរបស់អ្នក",
+      vsTuPais: "ធៀបនឹងប្រទេសរបស់អ្នក",
+      verTodos: (n) => `មើលទាំង ${n} ប្រទេស`,
+      verMenos: "បង្ហាញតិចជាង",
+      sinResultados: (q) => `រកមិនឃើញប្រទេសដែលត្រូវនឹង «${q}»`,
+      abrir: (pais) => `បើកម៉ាស៊ីនគណនា${gKm.para(pais)}`,
+      mas: (pct) => `ច្រើនជាង ${pct}`,
+      menos: (pct) => `តិចជាង ${pct}`,
+      igual: "ដូចគ្នា",
+      puesto: (p, total) => `ប្រទេសរបស់អ្នកស្ថិតនៅលេខ ${p} ក្នុងចំណោម ${total}`,
+    },
+    tarjeta: {
+      titulo: "ប័ណ្ណសម្រាប់ចែករំលែក",
+      bajada: "ប័ណ្ណបង្ហាញតែកាលបរិច្ឆេទ និងភាគរយ មិនបង្ហាញចំនួនប្រាក់ខែទេ។",
+      hasta: (fecha) => `ខ្ញុំធ្វើការឱ្យរដ្ឋដល់ថ្ងៃទី ${fecha}`,
+      tasa: (pct) => `${pct} នៃប្រាក់ខែខ្ញុំជាពន្ធ`,
+      mejor: (pais, pct) => `ជាមួយប្រាក់ខែដូចគ្នា ពន្ធទាបជាង${gKm.en(pais)} ហើយប្រាក់ទទួលបានពិតច្រើនជាង ${pct}`,
+      mejorPropio: (pais) => `ជាមួយប្រាក់ខែនេះ គ្មានប្រទេសណានៅសល់ច្រើនជាង${gKm.nombre(pais)}ទេ`,
+      yVos: "ចុះអ្នកវិញដល់ថ្ងៃណា?",
+      cta: "សាកគណនានៅ",
+      generica: "អ្នកធ្វើការឱ្យរដ្ឋដល់ថ្ងៃណា?",
+      genericaBajada: (n) => `ប្រាក់ខែដូចគ្នាក្នុង ${n} ប្រទេស គណនាដោយម៉ាស៊ីនគណនារបស់ប្រទេសនីមួយៗ`,
+      compartir: "ចែករំលែកប័ណ្ណ",
+      compartirDuelo: "ផ្ញើការប្រកួតត្រឡប់ទៅវិញ",
+      descargar: "ទាញយករូបភាព",
+      copiado: "បានចម្លងតំណ។ អាចបិទភ្ជាប់បានគ្រប់ទីកន្លែង។",
+      compartido: "បានចែករំលែករួចរាល់។",
+      error: "មិនអាចចែករំលែកបានទេ។ សូមសាកម្តងទៀត។",
+      texto: (fecha) => `ខ្ញុំធ្វើការឱ្យរដ្ឋដល់ថ្ងៃទី ${fecha}។ ចុះអ្នកវិញដល់ថ្ងៃណា?`,
+      alt: "គំរូប័ណ្ណ",
+    },
+    duelo: {
+      amigo: (fecha) => `មិត្តភក្តិរបស់អ្នកធ្វើការឱ្យរដ្ឋដល់ថ្ងៃទី ${fecha}`,
+      yVos: "ចុះអ្នកវិញដល់ថ្ងៃណា?",
+      invitacion: "បញ្ចូលប្រាក់ខែរបស់អ្នកដើម្បីប្រៀបធៀប",
+      vos: "អ្នក",
+      elAmigo: "មិត្តភក្តិ",
+      dia: "ធ្វើការឱ្យរដ្ឋដល់",
+      tasa: "ពន្ធ និងវិភាគទាន",
+      mejorPais: "ពន្ធទាបបំផុតនៅ",
+      antes: (d) => `អ្នកមានសេរីភាពមុនមិត្តភក្តិ ${d} ថ្ងៃ`,
+      despues: (d) => `មិត្តភក្តិមានសេរីភាពមុនអ្នក ${d} ថ្ងៃ`,
+      empate: "មានសេរីភាពនៅថ្ងៃតែមួយ",
+      desde: (pais) => `ធ្វើការ${gKm.en(pais)}`,
+    },
+    cero: { dia: "0 ថ្ងៃ", heroeAntes: "អ្នកធ្វើការឱ្យរដ្ឋ", tarjetaAntes: "ខ្ញុំធ្វើការឱ្យរដ្ឋ", motivo: "ប្រាក់ខែកម្រិតនេះមិនមានកាត់ពន្ធលើប្រាក់បៀវត្សរ៍ ឬវិភាគទានទេ។", texto: "ឆ្នាំនេះខ្ញុំមិនធ្វើការឱ្យរដ្ឋសូម្បីតែមួយថ្ងៃ។ ចុះអ្នកវិញដល់ថ្ងៃណា?", amigo: "មិត្តភក្តិរបស់អ្នកមិនធ្វើការឱ្យរដ្ឋសូម្បីតែមួយថ្ងៃ" },
+    metodo: {
+      titulo: "របៀបគណនា",
+      estimacion: "នេះជាការប៉ាន់ស្មានសម្រាប់ប្រៀបធៀបរវាងប្រទេស មិនមែនជាប័ណ្ណបើកប្រាក់ទេ។ ការកាត់បន្ថយពន្ធ កូន ឬប្រាក់រង្វាន់អាចធ្វើឱ្យតួលេខប្រែប្រួល។",
+      supuestos: [
+        "អ្នកនៅលីវ គ្មានកូន និងប្រើតម្លៃដើមនៃម៉ាស៊ីនគណនារបស់ប្រទេសនីមួយៗ។",
+        "ប្រាក់ទទួលបានពិតគឺជាផ្នែកដែលនៅសល់ក្រោយកាត់ពន្ធលើប្រាក់បៀវត្សរ៍ និងវិភាគទានផ្នែកនិយោជិត។ មិនរាប់បញ្ចូលអាករលើតម្លៃបន្ថែម (VAT) និងផ្នែកដែលនិយោជកបង់ទេ។",
+        "ប្រាក់ខែទី 13 ឬប្រាក់ដែលច្បាប់តម្រូវឱ្យបើកបន្ថែម ត្រូវបានចែកជាមធ្យមពេញមួយឆ្នាំតាមច្បាប់របស់ប្រទេសនីមួយៗ។",
+        "សហរដ្ឋអាមេរិកមិនរាប់បញ្ចូលពន្ធរដ្ឋ និងពន្ធមូលដ្ឋានទេ គឺប្រើតែពន្ធសហព័ន្ធ និងវិភាគទាន។",
+        "ការប្រៀបធៀបប្រាក់ខែជាមួយប្រទេសផ្សេងប្រើអំណាចទិញស្មើគ្នា (PPP) គឺកម្រិតជីវភាពដូចគ្នា មិនមែនអត្រាប្តូរប្រាក់ថ្ងៃនេះទេ។",
+        "PPP របស់អាហ្សង់ទីនត្រូវបានធ្វើបច្ចុប្បន្នភាពដោយសន្ទស្សន៍ថ្លៃទំនិញប្រើប្រាស់របស់ INDEC ព្រោះធនាគារពិភពលោកចុះផ្សាយត្រឹមឆ្នាំ 2021 ប៉ុណ្ណោះ។",
+        "ថ្ងៃសេរីភាពពន្ធចែកពន្ធពេញមួយឆ្នាំ ដោយចាប់ផ្តើមពីថ្ងៃទី 1 ខែមករា។ បើពន្ធស្មើនឹង 30% នៃប្រាក់ខែ គឺស្មើនឹងធ្វើការឱ្យរដ្ឋ 30% នៃឆ្នាំ។",
+      ],
+      ppaTitulo: "អំណាចទិញស្មើគ្នា", bancoMundial: "ធនាគារពិភពលោក",
+      ppa: (organismo, indicador, anio) => `${organismo} សូចនាករ ${indicador} ឆ្នាំចុងក្រោយដែលមានទិន្នន័យ ${anio}`,
+      consultado: (fecha) => `ពិនិត្យនៅ ${fecha}`,
+      verFuente: "មើលប្រភព",
+      fuentesTitulo: "ប្រភពរបស់ប្រទេសនីមួយៗ",
+      fuentesBajada: "ជួរនីមួយៗប្រើម៉ាស៊ីនគណនាប្រាក់ខែសុទ្ធ និងទិន្នន័យផ្លូវការរបស់ប្រទេសនោះ។",
+      verificado: (fecha) => `បានផ្ទៀងផ្ទាត់ទិន្នន័យនៅ ${fecha}`,
+      sello: (fecha) => `ទិន្នន័យផ្លូវការបានផ្ទៀងផ្ទាត់ជាមួយប្រភពរបស់ប្រទេសនីមួយៗ។ ការផ្ទៀងផ្ទាត់ចាស់បំផុតគឺនៅ ${fecha}។`,
+    },
+    faqTitulo: "សំណួរដែលសួរញឹកញាប់",
+    faq: (n) => [
+      {
+        pregunta: "តើថ្ងៃសេរីភាពពន្ធជាអ្វី?",
+        respuesta: "គឺជាថ្ងៃក្នុងឆ្នាំដែលអ្នកបង់ពន្ធគ្រប់ ប្រសិនបើប្រាក់ចំណូលទាំងអស់ចាប់ពីថ្ងៃទី 1 ខែមករាត្រូវបានប្រគល់ឱ្យរដ្ឋមុន។ នៅទីនេះគណនាតាមប្រាក់ខែដែលអ្នកបញ្ចូល មិនមែនតាមមធ្យមភាគរបស់ប្រទេសទេ។",
+      },
+      {
+        pregunta: "ហេតុអ្វីប្រៀបធៀបដោយអំណាចទិញ?",
+        respuesta: "អត្រាប្តូរប្រាក់ធ្វើឱ្យប្រាក់ខែមើលទៅច្រើន ឬតិចជាងការពិតតាមថ្ងៃនីមួយៗ។ PPP ប្រៀបធៀបថាប្រាក់ចំនួននោះទិញអ្វីបានពិតនៅប្រទេសនីមួយៗ។",
+      },
+      {
+        pregunta: "តើប្រាក់ខែរបស់ខ្ញុំត្រូវបានរក្សាទុកទេ?",
+        respuesta: "ទេ។ ការគណនាដំណើរការនៅក្នុងកម្មវិធីរុករក។ អ្វីដែលចែករំលែកមានតែកាលបរិច្ឆេទ ភាគរយ និងប្រទេសប៉ុណ្ណោះ។",
+      },
+      {
+        pregunta: "ហេតុអ្វីប្រាក់ទទួលបានពិតខុសពីតួលេខនេះ?",
+        respuesta: "ការគណនាសន្មតថាអ្នកនៅលីវ គ្មានកូន និងប្រើតម្លៃដើម។ ការកាត់បន្ថយពន្ធ ប្រាក់រង្វាន់ ឬសិទ្ធិពិសេសធ្វើឱ្យតួលេខប្រែប្រួល។ បើចង់បានតួលេខត្រឹមត្រូវតាមករណីរបស់អ្នក សូមបើកម៉ាស៊ីនគណនានៃប្រទេសដែលអ្នកធ្វើការ។",
+      },
+      {
+        pregunta: "តើមានប្រទេសណាខ្លះ?",
+        respuesta: `បច្ចុប្បន្នមាន ${n} ប្រទេស។ ប្រទេសនីមួយៗមានម៉ាស៊ីនគណនាប្រាក់ខែសុទ្ធ និងទិន្នន័យផ្លូវការរបស់ខ្លួន។ យើងបន្ថែមប្រទេសថ្មីនៅពេលផ្ទៀងផ្ទាត់ច្បាប់ពន្ធរួច។`,
+      },
+    ],
+    destacado: {
+      ceja: "ប្រៀបធៀបទូទាំងពិភពលោក",
+      titulo: "អ្នកធ្វើការឱ្យរដ្ឋដល់ថ្ងៃណា?",
+      texto: "បញ្ចូលប្រាក់ខែរបស់អ្នក ហើយមើលថានឹងទទួលបានពិតប៉ុន្មាននៅប្រទេសផ្សេង។",
+      ir: "គណនាថ្ងៃរបស់អ្នក",
+    },
+  },
+};
+
+export const DICCIONARIOS_MUNDO: Diccionarios<TextosMundo> = { es, pt, en, fr, de, it, nl, ja, ko, zh, pl, sv, da, nb, fi, ar, id: idn, tr, bn, th, uk, uz, ru, ro, cs, el, hu, he, sr, bg, sk, ka, hr, mn, hy, sq, sl, et, is, lv, mk, vi, km };
 
 export function textosMundo(idioma: Idioma, trato: Trato, locale?: string): TextosMundo {
   return resolver(DICCIONARIOS_MUNDO, idioma, trato, locale);

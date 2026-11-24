@@ -44,7 +44,10 @@ const ESPERA_FUENTE_MS = 3000;
 // Tampoco georgiano: la edición ka pide Noto Sans Georgian (ADR 0002, D26).
 // mn también: Geist no trae ө ni ү (ADR 0002, D28).
 // Tampoco armenio: la edición hy pide Noto Sans Armenian (ADR 0002, D30).
-const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", th: "Noto Sans Thai", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", bg: "Noto Sans", ka: "Noto Sans Georgian", mn: "Noto Sans", hy: "Noto Sans Armenian" };
+// vi también: Geist trae las letras pero no el ₫ (ADR 0002, D37).
+// Tampoco jemer: la edición km pide Noto Sans Khmer. Satori no arma los subíndices ni reordena «េ», así que,
+// como en bn, la tarjeta puede salir con algún conjunto mal armado (ADR 0002, D38).
+const FUENTE_CJK: Partial<Record<Idioma, string>> = { ja: "Noto Sans JP", ko: "Noto Sans KR", zh: "Noto Sans TC", bn: "Noto Sans Bengali", th: "Noto Sans Thai", uk: "Noto Sans", uz: "Noto Sans", ru: "Noto Sans", ro: "Noto Sans", el: "Noto Sans", he: "Noto Sans Hebrew", bg: "Noto Sans", ka: "Noto Sans Georgian", mn: "Noto Sans", hy: "Noto Sans Armenian", mk: "Noto Sans", vi: "Noto Sans", km: "Noto Sans Khmer" };
 
 const fuentes = new Map<string, Promise<ArrayBuffer | null>>();
 

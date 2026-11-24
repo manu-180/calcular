@@ -392,6 +392,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
     },
   },
   // Tailandés (ADR 0002, D13): sin pronombre ni ครับ/ค่ะ.
+  km: {
+    base: {
+      boton: "ចែករំលែក",
+      botonAria: "ចែករំលែកម៉ាស៊ីនគណនានេះ",
+      menuTitulo: "ចែករំលែកតាម",
+      copiar: "ចម្លងតំណ",
+      copiado: "បានចម្លងតំណ",
+      compartido: "បានចែករំលែក",
+      errorCorto: "ចម្លងមិនបាន",
+      errorAyuda: "មិនអាចចម្លងតំណបានទេ។ សូមចម្លងពីរបារអាសយដ្ឋាននៃកម្មវិធីរុករក។",
+      nuevaPestana: "បើកក្នុងផ្ទាំងថ្មី",
+      mensaje: (nombre) => `${nombre} ឥតគិតថ្លៃ គណនារួចក្នុងមួយនាទី។`,
+      puenteIntro: "ចុះប្រទេសផ្សេងវិញ?",
+      puenteEnlace: (n) => `មើលប្រាក់ខែសុទ្ធនៅជាង ${n} ប្រទេស`,
+    },
+  },
   th: {
     base: {
       boton: "แชร์",
@@ -529,6 +545,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       puenteEnlace: (n) => `Nézd meg, mennyi maradna nettóban több mint ${n} országban`,
     },
   },
+  vi: {
+    base: {
+      boton: "Chia sẻ",
+      botonAria: "Chia sẻ công cụ tính này",
+      menuTitulo: "Chia sẻ qua",
+      copiar: "Sao chép liên kết",
+      copiado: "Đã sao chép liên kết",
+      compartido: "Đã chia sẻ",
+      errorCorto: "Không sao chép được",
+      errorAyuda: "Không sao chép được liên kết. Hãy sao chép từ thanh địa chỉ của trình duyệt.",
+      nuevaPestana: "mở trong thẻ mới",
+      mensaje: (nombre) => `${nombre}. Miễn phí, tính trong một phút.`,
+      puenteIntro: "Ở các quốc gia khác thì sao?",
+      puenteEnlace: (n) => `Xem lương thực nhận tại hơn ${n} quốc gia`,
+    },
+  },
   mn: {
     base: {
       boton: "Хуваалцах",
@@ -576,6 +608,22 @@ export const DICCIONARIOS_COMPARTIR: Diccionarios<TextosCompartir> = {
       mensaje: (nombre) => `${nombre}։ Անվճար է, հաշվարկը տևում է մեկ րոպե։`,
       puenteIntro: "Իսկ այլ երկրներո՞ւմ",
       puenteEnlace: (n) => `Տեսեք, թե որքան զուտ գումար կստանայիք ավելի քան ${n} երկրում`,
+    },
+  },
+  mk: {
+    base: {
+      boton: "Споделување",
+      botonAria: "Споделување на овој калкулатор",
+      menuTitulo: "Споделување преку",
+      copiar: "Копирање на врската",
+      copiado: "Врската е копирана",
+      compartido: "Споделено",
+      errorCorto: "Копирањето не успеа",
+      errorAyuda: "Не успеавме да ја копираме врската. Копирајте ја од лентата за адреса на прелистувачот.",
+      nuevaPestana: "се отвора во нов таб",
+      mensaje: (nombre) => `${nombre}. Бесплатно, пресметката трае една минута.`,
+      puenteIntro: "А во другите држави?",
+      puenteEnlace: (n) => `Видете колку нето би добивале во над ${n} држави`,
     },
   },
   // Hebreo (ADR 0002, D22): plural inclusivo donde se le habla a la persona.

@@ -1,0 +1,26 @@
+{
+  "mercado": "lb",
+  "series": [
+    {
+      "id": "lb.cpi-yoy",
+      "nombre": "التضخم السنوي (مؤشر أسعار الاستهلاك)",
+      "unidad": "%",
+      "frecuencia": "mensual",
+      "maxAntiguedadDias": 90,
+      "fuente": {
+        "organismo": "إدارة الإحصاء المركزي",
+        "titulo": "Consumer Prices, September 2026",
+        "url": "https://www.cas.gov.lb/new/consumer-prices-september-2026/",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01",
+        "nota": "نُشر في 21 تشرين الأول 2026. مؤشر أيلول 2026 مقارنةً بأيلول 2025. تقول الإدارة إن جمع الأسعار ما زال صعبًا خصوصًا في النبطية."
+      },
+      "puntos": [
+        [
+          "2026-09-01",
+          17.53
+        ]
+      ]
+    }
+  ]
+}

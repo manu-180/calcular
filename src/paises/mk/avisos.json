@@ -1,0 +1,19 @@
+{
+  "mercado": "mk",
+  "avisos": [
+    {
+      "id": "mk.kolektiven-dogovor-javen",
+      "nivel": "cautela",
+      "desde": "2026-11-01",
+      "aplicaA": ["mk.prekuvremena-rabota", "mk.kalkulator-za-regres", "mk.kalkulator-za-boleduvanje"],
+      "texto": "Процентите се од Општиот колективен договор за јавниот сектор. Во приватниот сектор важи колективниот договор што ве опфаќа, затоа проверете го кај вашиот работодавач.",
+      "fuente": {
+        "organismo": "Службен весник",
+        "titulo": "Општ колективен договор за јавниот сектор, бр. 154 од 20.7.2023",
+        "url": "https://portal.mdt.gov.mk/post-body-files/socijalno-partnerstvo-file-kXFT.pdf",
+        "tipo": "primaria",
+        "verificadoEl": "2026-11-01"
+      }
+    }
+  ]
+}
