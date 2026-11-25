@@ -673,13 +673,14 @@ export async function generarPlanillaUocra(): Promise<string> {
       UOCRA_FUENTES.acuerdoTramo1,
       UOCRA_FUENTES.acuerdoTramo2,
       UOCRA_FUENTES.anexoTramo2,
+      UOCRA_FUENTES.acuerdoTramo3,
       UOCRA_FUENTES.cct,
       UOCRA_FUENTES.ley22250,
       UOCRA_FUENTES.uocra,
       ...UOCRA_FUENTES_HISTORICO,
     ],
     UOCRA_FUENTES.consultadoEl,
-    [UOCRA_HOMOLOGACIONES.tramo1, UOCRA_HOMOLOGACIONES.tramo2],
+    [UOCRA_HOMOLOGACIONES.tramo1, UOCRA_HOMOLOGACIONES.tramo2, UOCRA_HOMOLOGACIONES.tramo3],
   );
 
   const dir = path.join(process.cwd(), "private");
