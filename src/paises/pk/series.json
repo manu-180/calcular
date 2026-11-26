@@ -12,13 +12,16 @@
         "titulo": "USD/PKR M2M revaluation rate",
         "url": "https://www.sbp.org.pk/",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-17"
+        "verificadoEl": "2026-11-26",
+        "nota": "M2M Revaluation Rate de la portada de sbp.org.pk (USD/PKR as on 25-Nov-2026). Cloudflare responde 403 al cron (Node): el punto se carga a mano y la portada solo muestra el día actual."
       },
+      "altas": [["2026-11-26", "2026-11-25"]],
       "puntos": [
         [
           "2026-10-16",
           276.9115
-        ]
+        ],
+        ["2026-11-25", 276.4644]
       ]
     }
   ]

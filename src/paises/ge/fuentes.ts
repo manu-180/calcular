@@ -35,7 +35,7 @@ function detectorKursi(valuta: string, banda: DetectorSerie["banda"]): Detector 
 
 // El IPC de Geostat solo se publica en xlsx y `Http` no lee binarios: se vigila el id del archivo en
 // la página y el hallazgo abre el PR para cargar el mes nuevo a mano.
-const CPI_ACTUAL = 83216;
+const CPI_ACTUAL = 83805;
 const PENSIA_NAKHULI = "2026-09-21";
 const KODEKSI_NAKHULI = "2026-10-16";
 

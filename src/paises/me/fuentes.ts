@@ -88,7 +88,7 @@ export const detectores: readonly Detector[] = [
     metodo: "html",
     url: CPI_STRANICA,
     traer(http) {
-      return novoCpi(http, "2026-09");
+      return novoCpi(http, "2026-10");
     },
   },
   {

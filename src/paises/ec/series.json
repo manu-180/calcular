@@ -9,12 +9,13 @@
       "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Instituto Nacional de Estadística y Censos (INEC)",
-        "titulo": "Tabulados y series históricas del IPC, agosto 2026: serie histórica del IPC nacional general desde enero de 1969 (cuadro 1)",
-        "url": "https://www.ecuadorencifras.gob.ec/documentos/web-inec/Inflacion/2026/agosto/Tabulados_y_series_historicas_Excel.zip",
+        "titulo": "Tabulados y series históricas del IPC, octubre 2026: serie histórica del IPC nacional general (cuadro 1)",
+        "url": "https://www.ecuadorencifras.gob.ec/documentos/web-inec/Inflacion/2026/octubre/Tabulados_y_series_historicas_Excel.zip",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-08",
-        "nota": "Serie empalmada por el INEC con la base nueva (julio 2025 a junio 2026 = 100). Agosto 2026 recalculado: 1,12 % anual y 1,34 % acumulado, igual que el INEC. Los meses que suma el detector se reconstruyen con la variación anual publicada sobre el índice de 12 meses antes."
+        "verificadoEl": "2026-11-26",
+        "nota": "Serie empalmada por el INEC con la base nueva (julio 2025 a junio 2026 = 100). Septiembre y octubre de 2026 leídos del cuadro 1 de la planilla nacional del ZIP de octubre (octubre: variación mensual 0,33 %). Los meses que suma el detector se reconstruyen con la variación anual publicada sobre el índice de 12 meses antes."
       },
+      "altas": [["2026-11-26", "2026-09-01"]],
       "puntos": [
         ["2000-01-01", 24.06681834],
         ["2000-02-01", 26.48185052],
@@ -335,7 +336,9 @@
         ["2026-05-01", 100.09539548],
         ["2026-06-01", 100.88486971],
         ["2026-07-01", 100.79474503],
-        ["2026-08-01", 100.83802381]
+        ["2026-08-01", 100.83802381],
+        ["2026-09-01", 101.14126992],
+        ["2026-10-01", 101.47775645]
       ]
     }
   ]

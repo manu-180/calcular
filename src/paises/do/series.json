@@ -184,9 +184,10 @@
         "titulo": "Índice de precios al consumidor, serie nacional (consulta del IPC y archivo ipc_base_2019-2020.xls)",
         "url": "https://www.bancentral.gov.do/a/ipc-consulta",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-08",
-        "nota": "Leído de la consulta oficial del BCRD (enero 2000 a agosto 2026). Agosto 2026 = 140,7598, igual al archivo ipc_base_2019-2020.xls. Se actualiza con scripts/paises/do/actualizar_ipc.ts --escribir: el Http del cron no hace POST ni lee el XLS binario."
+        "verificadoEl": "2026-11-26",
+        "nota": "Leído de la consulta oficial del BCRD (enero 2000 a octubre 2026). Agosto 2026 = 140,7598, igual al archivo ipc_base_2019-2020.xls. Se actualiza con scripts/paises/do/actualizar_ipc.ts --escribir: el Http del cron no hace POST ni lee el XLS binario."
       },
+      "altas": [["2026-11-26", "2026-09-01"]],
       "puntos": [
         ["2000-01-01", 22.1604],
         ["2000-02-01", 22.1709],
@@ -507,7 +508,9 @@
         ["2026-05-01", 139.2489],
         ["2026-06-01", 139.9613],
         ["2026-07-01", 140.2234],
-        ["2026-08-01", 140.7598]
+        ["2026-08-01", 140.7598],
+        ["2026-09-01", 141.2217],
+        ["2026-10-01", 142.0376]
       ]
     }
   ]

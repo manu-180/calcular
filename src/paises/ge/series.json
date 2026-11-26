@@ -375,10 +375,12 @@
       "fuente": {
         "organismo": "საქსტატი",
         "titulo": "სამომხმარებლო ფასების ინდექსები, 2010 წლის საშუალო = 100",
-        "url": "https://www.geostat.ge/ka/modules/categories/26/samomkhmareblo-fasebis-indeksi-inflatsia",
+        "url": "https://www.geostat.ge/media/83805/samomxmareblo-fasebis-indeqsebi-2010-wlis-sashualo%3D100.xlsx",
         "tipo": "primaria",
-        "verificadoEl": "2026-11-01"
+        "verificadoEl": "2026-11-26",
+        "nota": "Octubre 2026 = 198,6685, hoja nacional (საქართველო) del archivo de Geostat; septiembre 2026 coincide con el valor ya cargado."
       },
+      "altas": [["2026-11-26", "2026-10-01"]],
       "puntos": [
         [
           "2000-01-01",
@@ -1663,7 +1665,8 @@
         [
           "2026-09-01",
           196.9341
-        ]
+        ],
+        ["2026-10-01", 198.6685]
       ]
     }
   ]

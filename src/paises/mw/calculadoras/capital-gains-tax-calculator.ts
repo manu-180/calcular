@@ -11,7 +11,7 @@ export default definirCalculadora({
   mercado: "mw",
   concepto: "propio",
   slug: "capital-gains-tax-calculator",
-  estado: "publicado",
+  estado: "borrador",
   requiere: {
     "mw.cpi": "serie",
     "mw.cgt-provisional-rate": "numero",
