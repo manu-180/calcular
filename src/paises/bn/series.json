@@ -15,6 +15,7 @@
         "verificadoEl": "2026-10-29",
         "nota": "Each month is stored on its first day. December 2024 is left out: the value printed on the DEPS table does not match its own year-on-year change."
       },
+      "altas": [["2026-11-26", "2026-10-01"]],
       "puntos": [
         [
           "2021-01-01",
@@ -283,7 +284,8 @@
         [
           "2026-09-01",
           106.2
-        ]
+        ],
+        ["2026-10-01", 106.4]
       ]
     }
   ]

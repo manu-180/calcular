@@ -595,6 +595,7 @@
         "verificadoEl": "2026-10-16",
         "nota": "Cada punto es una reunión del MPC con el nivel de la OPR que quedó. Entre mayo y septiembre de 2026 no hubo reunión publicada."
       },
+      "altas": [["2026-11-26", "2026-11-05"]],
       "puntos": [
         ["2025-01-22", 3],
         ["2025-03-06", 3],
@@ -605,7 +606,8 @@
         ["2026-01-22", 2.75],
         ["2026-03-05", 2.75],
         ["2026-05-07", 2.75],
-        ["2026-09-03", 2.75]
+        ["2026-09-03", 2.75],
+        ["2026-11-05", 2.75]
       ]
     }
   ]
