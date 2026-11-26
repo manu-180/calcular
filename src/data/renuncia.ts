@@ -142,7 +142,7 @@ export const RENUNCIA_FUENTES: { consultadoEl: string; lista: FuenteRenuncia[] }
       nombre: "Ley de Contrato de Trabajo 20.744, texto actualizado (InfoLEG)",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
       detalle:
-        "Art. 240 (forma de la renuncia) y art. 241 (mutuo acuerdo), los dos con su nota de sustitución por la Ley 27.802; art. 123 (SAC proporcional «por cualquier causa»), art. 156 (indemnización por vacaciones no gozadas), art. 155 inc. a) (el día de vacaciones es el sueldo dividido 25), art. 150/151/153 (días por antigüedad y licencia proporcional), art. 231 (preaviso) y art. 235 (prueba por escrito).",
+        "Art. 240 (forma de la renuncia) y art. 241 (mutuo acuerdo), los dos con su nota de sustitución por la Ley 27.802; art. 123 (SAC proporcional «por cualquier causa»), art. 156 (indemnización por vacaciones no gozadas), art. 155 inc. a) (el día de vacaciones es el sueldo dividido 25), art. 150/151/153 (días por antigüedad y licencia proporcional), art. 231 (preaviso) y art. 235 (prueba por escrito). Para la comparación entre las tres salidas: art. 246 (despido indirecto, que remite a los arts. 232, 233 y 245) y art. 66 con su texto vigente, que es el que exige «previa intimación y si ésta fuere desoída».",
     },
     {
       nombre: "Ley 27.802, texto oficial (InfoLEG)",
