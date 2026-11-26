@@ -92,7 +92,7 @@ export const PRODUCTOS: Record<ProductoSlug, Producto> = {
     slug: "planilla-uocra",
     titulo: "Planilla de sueldos UOCRA 2026",
     tituloCorto: "Planilla UOCRA 2026",
-    convenio: "CCT 76/75, Construcción (UOCRA)",
+    convenio: "CCT 76/75 y 577/10, Construcción (UOCRA)",
     paraQuien: "Para liquidar jornales de la construcción en las cuatro zonas",
     disparadorActualizacion: "cada vez que UOCRA y CAMARCO firman un tramo nuevo",
     precio: 14900,

@@ -38,6 +38,13 @@ import {
   UOCRA_FUENTES_HISTORICO,
   UOCRA_HISTORICO_CONSULTADO_EL,
 } from "../src/data/convenios/uocra-historico";
+import {
+  CATEGORIAS_UOCRA_577,
+  MESES_UOCRA_577,
+  RAMAS_UOCRA_577,
+  UOCRA_577_ANTIGUEDAD_POR_ANIO,
+  UOCRA_577_FUENTES,
+} from "../src/data/convenios/uocra-577";
 import { textoProximaParitaria } from "../src/lib/convenios";
 import {
   ARS_FMT,
@@ -56,6 +63,20 @@ import {
 
 const ESC = "Escalas";
 export const HOJA_DIFERENCIAS_UOCRA = "Diferencias";
+export const HOJA_LIQUIDADOR_577 = "Liquidador 577-10";
+export const HOJA_ESCALAS_577 = "Escalas 577-10";
+export const CELDAS_577 = {
+  rama: "B5",
+  categoria: "B6",
+  zona: "B7",
+  mes: "B8",
+  horas: "B9",
+  antiguedad: "B10",
+  asistencia: "B11",
+  solidario: "B12",
+  bruto: "B23",
+  neto: "B25",
+} as const;
 
 // La escala del archivo arranca en junio 2024 para poder reclamar diferencias salariales; la
 // calculadora del sitio sigue usando sólo MESES_UOCRA.
@@ -135,7 +156,8 @@ function buildInstrucciones(wb: ExcelJS.Workbook) {
     ["3", "Las celdas verdes son el resultado: básico, asistencia perfecta, suma no remunerativa, bruto y neto estimado. No las toques ni las pises con números."],
     ["4", `La hoja «Diferencias» calcula lo que se le debe a un trabajador mal registrado o mal pagado: elegís la categoría que le corresponde, la que figura en el recibo (o cargás lo que cobró) y el período, desde ${MESES[0].etiqueta}. Suma sueldo, suma no remunerativa, aguinaldo y fondo de cese.`],
     ["5", `La hoja «${ESC}» tiene los jornales oficiales por categoría y zona, mes por mes, de ${MESES[0].etiqueta} a ${MESES.at(-1)!.etiqueta}. Es de donde salen todos los valores.`],
-    ["6", "La hoja «Fuentes» tiene el link a cada acuerdo paritario firmado y la fecha en que se verificó. Si alguien te discute un número, ahí está el PDF."],
+    ["6", `¿Trabajás en obras de redes de telefonía, internet o cable (canalización, líneas e instalación o empalme)? Tu convenio es el CCT 577/10: usá la hoja «${HOJA_LIQUIDADOR_577}», que tiene sus propios jornales por rama, la antigüedad y la asistencia perfecta. Los jornales están en «${HOJA_ESCALAS_577}».`],
+    ["7", "La hoja «Fuentes» tiene el link a cada acuerdo paritario firmado y la fecha en que se verificó. Si alguien te discute un número, ahí está el PDF."],
   ];
   pasos.forEach(([n, t], i) => {
     const r = 3 + i;
@@ -159,7 +181,7 @@ function buildInstrucciones(wb: ExcelJS.Workbook) {
     `Asistencia perfecta (art. 52): ${UOCRA_ASISTENCIA_PERFECTA * 100}% sobre el básico, por quincena. No se pierde por vacaciones, licencias, feriados ni suspensiones por lluvia.`,
     "Suma no remunerativa (SNR): monto fijo por categoría y zona, se paga 50% con cada quincena y solo descuenta el 3% de obra social.",
     "En agosto de 2026 la SNR se absorbió al jornal: por eso ese mes figura en cero. No es un dato faltante, es el dato correcto.",
-    "En la construcción NO hay adicional por antigüedad (Ley 22.250). En lugar de indemnización por despido está el fondo de cese laboral: 12% de la remuneración el primer año, 8% después. No es un descuento del sueldo del trabajador.",
+    "Con el CCT 76/75 NO hay adicional por antigüedad (Ley 22.250). Con el CCT 577/10 sí: 0,5% del jornal básico por cada año con el mismo empleador (art. 13). En lugar de indemnización por despido está el fondo de cese laboral: 12% de la remuneración el primer año, 8% después. No es un descuento del sueldo del trabajador.",
     `Aportes del trabajador: ${UOCRA_APORTES_REMUNERATIVO * 100}% sobre lo remunerativo (11% jubilación + 3% PAMI + 3% obra social) más ${UOCRA_APORTE_SOLIDARIO * 100}% de aporte solidario donde corresponde. La SNR solo aporta ${UOCRA_APORTES_SNR * 100}% de obra social.`,
     `${textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, new Date().toISOString().slice(0, 10))} Cuando se firme y publique la escala, actualizamos la planilla y te llega la versión nueva por email.`,
   ];
@@ -654,19 +676,234 @@ function buildDiferencias(wb: ExcelJS.Workbook) {
 
 }
 
+// ─── CCT 577/10: ESCALAS Y LIQUIDADOR ────────────────────────────────────────
+// Misma idea que la hoja Escalas del 76/75 (clave + INDEX/MATCH), con la rama en la clave:
+// "J|Rama|Categoría|Zona" para el jornal y "S|Categoría|Zona" para la SNR, que no depende de la rama.
+
+const COMBOS_577 = RAMAS_UOCRA_577.length * CATEGORIAS_UOCRA_577.length * ZONAS_UOCRA.length;
+const E577 = {
+  header: 2,
+  jIni: 3,
+  jFin: 3 + COMBOS_577 - 1,
+  sIni: 3 + COMBOS_577 + 1,
+  sFin: 3 + COMBOS_577 + CATEGORIAS_UOCRA_577.length * ZONAS_UOCRA.length,
+  colMesIni: 5,
+};
+const L577_MES_INI = letraCol(E577.colMesIni);
+const L577_MES_FIN = letraCol(E577.colMesIni + MESES_UOCRA_577.length - 1);
+
+function buildEscalas577(wb: ExcelJS.Workbook) {
+  const ws = wb.addWorksheet(HOJA_ESCALAS_577, { properties: { tabColor: { argb: "FF00838F" } } });
+  ws.columns = [{ width: 44 }, { width: 22 }, { width: 22 }, { width: 16 }, ...MESES_UOCRA_577.map(() => ({ width: 15 }))];
+
+  titulo(
+    ws,
+    `A1:${L577_MES_FIN}1`,
+    `CCT 577/10 (obras de redes) — jornales oficiales ${MESES_UOCRA_577[0].etiqueta} a ${MESES_UOCRA_577.at(-1)!.etiqueta}`,
+    "FF00838F",
+  );
+
+  ["Clave", "Rama", "Categoría", "Zona", ...MESES_UOCRA_577.map((m) => m.etiqueta)].forEach((h, i) => {
+    const c = ws.getCell(E577.header, i + 1);
+    c.value = h;
+    c.font = { bold: true, color: { argb: "FFFFFFFF" } };
+    c.fill = relleno("FF0097A7");
+    c.border = BORDE;
+    c.alignment = { horizontal: "center" };
+  });
+  ws.getRow(E577.header).height = 22;
+
+  const fila = (r: number, i: number, clave: string, rama: string, cat: string, zona: string, valores: number[]) => {
+    const fill = i % 2 === 0 ? S.white : S.cebra;
+    const celdas: Array<[number, string | number]> = [[1, clave], [2, rama], [3, cat], [4, zona]];
+    for (const [col, v] of celdas) {
+      const c = ws.getCell(r, col);
+      c.value = v;
+      c.fill = fill;
+      c.border = BORDE;
+      if (col === 1) c.font = { size: 9, color: { argb: "FF9E9E9E" } };
+    }
+    valores.forEach((v, j) => {
+      const c = ws.getCell(r, E577.colMesIni + j);
+      c.value = v;
+      c.numFmt = ARS_FMT;
+      c.fill = fill;
+      c.border = BORDE;
+      c.alignment = { horizontal: "right" };
+    });
+  };
+
+  let i = 0;
+  for (const rama of RAMAS_UOCRA_577) {
+    for (const cat of CATEGORIAS_UOCRA_577) {
+      for (const zona of ZONAS_UOCRA) {
+        fila(
+          E577.jIni + i,
+          i,
+          `J|${rama.nombre}|${cat.nombre}|${zona.nombre}`,
+          rama.nombre,
+          cat.nombre,
+          zona.nombre,
+          MESES_UOCRA_577.map((m) => m.jornales[rama.id][cat.id][zona.id]),
+        );
+        i++;
+      }
+    }
+  }
+
+  const rotulo = ws.getCell(E577.sIni - 1, 1);
+  rotulo.value = "SUMA NO REMUNERATIVA (mensual, por categoría y zona; igual en las tres ramas)";
+  rotulo.font = { bold: true, size: 10, color: { argb: "FF1B5E20" } };
+  ws.mergeCells(E577.sIni - 1, 1, E577.sIni - 1, E577.colMesIni + MESES_UOCRA_577.length - 1);
+
+  i = 0;
+  for (const cat of CATEGORIAS_UOCRA_577) {
+    for (const zona of ZONAS_UOCRA) {
+      fila(E577.sIni + i, i, `S|${cat.nombre}|${zona.nombre}`, "Todas", cat.nombre, zona.nombre, MESES_UOCRA_577.map((m) => m.snr[cat.id][zona.id]));
+      i++;
+    }
+  }
+
+  let r = E577.sFin + 2;
+  nota(
+    ws,
+    `A${r}:${L577_MES_FIN}${r}`,
+    "Jornales por hora del Anexo II de cada acuerdo UOCRA-CAMARCO-FAEC. El adicional por zona desfavorable ya está incluido; el valor de la Zona A es el jornal básico, sobre el que se calcula la antigüedad.",
+  );
+  r++;
+  nota(
+    ws,
+    `A${r}:${L577_MES_FIN}${r}`,
+    `Verificado el ${UOCRA_577_FUENTES.consultadoEl} contra los Anexos II firmados (ver hoja Fuentes). De agosto 2026 en adelante no hay suma no remunerativa: se absorbió al jornal, igual que en el CCT 76/75.`,
+  );
+  r++;
+  nota(ws, `A${r}:${L577_MES_FIN}${r}`, `La columna «Clave» la usa el «${HOJA_LIQUIDADOR_577}» para buscar los valores. No la borres ni la edites.`);
+
+  ws.views = [{ state: "frozen", xSplit: 4, ySplit: E577.header }];
+}
+
+function buildLiquidador577(wb: ExcelJS.Workbook) {
+  const ws = wb.addWorksheet(HOJA_LIQUIDADOR_577, { properties: { tabColor: { argb: "FF006064" } } });
+  ws.columns = [{ width: 40 }, { width: 26 }, { width: 4 }, { width: 18 }, { width: 18 }];
+
+  titulo(ws, "A1:B1", "Liquidación de sueldos — CCT 577/10 (obras de redes)", "FF006064");
+  ws.mergeCells("A2:B2");
+  const sub = ws.getCell("A2");
+  sub.value = `Canalización, líneas e instalación y empalme · Escalas oficiales UOCRA-CAMARCO-FAEC · Verificadas el ${UOCRA_577_FUENTES.consultadoEl}`;
+  sub.font = { italic: true, size: 10, color: { argb: "FF555555" } };
+  sub.fill = S.label;
+  sub.alignment = { horizontal: "center", wrapText: true };
+  ws.getRow(2).height = 28;
+
+  bandaSeccion(ws, "A4:B4", "DATOS DEL TRABAJADOR");
+  const C = CELDAS_577;
+  const COL_LISTA = "G";
+  const inputs: Array<[string, string, string | number, ExcelJS.DataValidation]> = [
+    [C.rama, "Rama", RAMAS_UOCRA_577[0].nombre, desplegable(RAMAS_UOCRA_577.map((x) => x.nombre), "Elegí una rama de la lista.")],
+    [C.categoria, "Categoría", "Oficial", desplegable(CATEGORIAS_UOCRA_577.map((c) => c.nombre), "Elegí una categoría de la lista.")],
+    [C.zona, "Zona", "Zona A", desplegable(ZONAS_UOCRA.map((z) => z.nombre), "Elegí una zona de la lista.")],
+    [C.mes, "Mes a liquidar", MESES_UOCRA_577.at(-1)!.etiqueta, {
+      type: "list",
+      allowBlank: false,
+      formulae: [`'${HOJA_LIQUIDADOR_577}'!${COL_LISTA}5:${COL_LISTA}${5 + MESES_UOCRA_577.length - 1}`],
+      showErrorMessage: true,
+      error: "Elegí un mes de la lista.",
+    }],
+    [C.horas, "Horas trabajadas en el mes", Number(UOCRA_HORAS_MES_PROMEDIO.toFixed(2)), {
+      type: "decimal", operator: "between", showErrorMessage: true, formulae: [1, 300],
+      error: "Ingresá las horas del mes (entre 1 y 300). Mes completo = 190,67.",
+    }],
+    [C.antiguedad, "Años de antigüedad con este empleador", 0, {
+      type: "whole", operator: "between", showErrorMessage: true, formulae: [0, 60],
+      error: "Ingresá los años completos (0 si tiene menos de un año).",
+    }],
+    [C.asistencia, "¿Cobró asistencia perfecta?", "Sí", desplegable(["Sí", "No"], "Elegí Sí o No.")],
+    [C.solidario, "¿Aporte solidario / cuota sindical 2%?", "Sí", desplegable(["Sí", "No"], "Elegí Sí o No.")],
+  ];
+  for (const [ref, etiqueta, valor, val] of inputs) {
+    celdaEtiqueta(ws, ref.replace("B", "A"), etiqueta);
+    const c = celdaInput(ws, ref, valor);
+    c.dataValidation = val;
+    if (typeof valor === "number") c.alignment = { horizontal: "right" };
+  }
+  ws.getCell(C.horas).numFmt = "0.00";
+
+  MESES_UOCRA_577.forEach((m, i) => {
+    ws.getCell(`${COL_LISTA}${5 + i}`).value = m.etiqueta;
+  });
+  ws.getColumn(COL_LISTA).hidden = true;
+
+  const E = `'${HOJA_ESCALAS_577}'`;
+  const hdr = `${E}!$${L577_MES_INI}$${E577.header}:$${L577_MES_FIN}$${E577.header}`;
+  const escJ = `${E}!$${L577_MES_INI}$${E577.jIni}:$${L577_MES_FIN}$${E577.jFin}`;
+  const keyJ = `${E}!$A$${E577.jIni}:$A$${E577.jFin}`;
+  const escS = `${E}!$${L577_MES_INI}$${E577.sIni}:$${L577_MES_FIN}$${E577.sFin}`;
+  const keyS = `${E}!$A$${E577.sIni}:$A$${E577.sFin}`;
+  const zonaA = ZONAS_UOCRA.find((z) => z.id === "a")!.nombre;
+  const aux: Array<[string, string]> = [
+    ["D5", `MATCH(${C.mes},${hdr},0)`],
+    ["D6", `CONCATENATE("J|",${C.rama},"|",${C.categoria},"|",${C.zona})`],
+    ["D7", `INDEX(${escJ},MATCH(D6,${keyJ},0),D5)`],
+    ["D8", `CONCATENATE("J|",${C.rama},"|",${C.categoria},"|","${zonaA}")`],
+    ["D9", `INDEX(${escJ},MATCH(D8,${keyJ},0),D5)`],
+    ["D10", `CONCATENATE("S|",${C.categoria},"|",${C.zona})`],
+    ["D11", `INDEX(${escS},MATCH(D10,${keyS},0),D5)`],
+  ];
+  for (const [ref, f] of aux) ws.getCell(ref).value = { formula: f };
+  ws.getColumn("D").hidden = true;
+  ws.getColumn("E").hidden = true;
+
+  ws.getRow(13).height = 6;
+  bandaSeccion(ws, "A14:B14", "LIQUIDACIÓN DEL MES");
+  celdaResultado(ws, 15, "Jornal por hora (con el adicional de zona)", "=D7");
+  celdaResultado(ws, 16, "Horas del mes", `=${C.horas}`, { formato: "0.00" });
+  celdaResultado(ws, 17, "Básico del mes", `=D7*${C.horas}`);
+  celdaResultado(ws, 18, `Antigüedad (${UOCRA_577_ANTIGUEDAD_POR_ANIO * 100}% del jornal básico por año)`, `=D9*${C.horas}*${UOCRA_577_ANTIGUEDAD_POR_ANIO}*${C.antiguedad}`);
+  celdaResultado(ws, 19, `Asistencia perfecta (${UOCRA_ASISTENCIA_PERFECTA * 100}%)`, `=IF(${C.asistencia}="Sí",B17*${UOCRA_ASISTENCIA_PERFECTA},0)`);
+  celdaResultado(ws, 20, "Total remunerativo", "=B17+B18+B19");
+  celdaResultado(ws, 21, "Suma no remunerativa", "=D11");
+  ws.getRow(22).height = 6;
+  celdaResultado(ws, 23, "TOTAL BRUTO", "=B20+B21", { total: true });
+  celdaResultado(
+    ws,
+    24,
+    "Aportes del trabajador",
+    `=-(B20*(${UOCRA_APORTES_REMUNERATIVO}+IF(${C.solidario}="Sí",${UOCRA_APORTE_SOLIDARIO},0))+B21*${UOCRA_APORTES_SNR})`,
+  );
+  celdaResultado(ws, 25, "NETO ESTIMADO", "=B23+B24", { total: true });
+
+  ws.getRow(26).height = 6;
+  bandaSeccion(ws, "A27:B27", "COSTO PARA EL EMPLEADOR (referencia)");
+  celdaResultado(ws, 28, "Fondo de cese laboral · 1er año (12%)", "=B20*0.12");
+  celdaResultado(ws, 29, "Fondo de cese laboral · desde el 2do año (8%)", "=B20*0.08");
+
+  const notas = [
+    "* Las tres ramas del convenio tienen jornales distintos: elegí la de las tareas que hace el trabajador (art. 12 del CCT 577/10).",
+    `* Antigüedad (art. 13): ${UOCRA_577_ANTIGUEDAD_POR_ANIO * 100}% del jornal básico de la categoría, sin el adicional por zona, por cada año con el mismo empleador.`,
+    `* Asistencia perfecta (art. 11): ${UOCRA_ASISTENCIA_PERFECTA * 100}% por quincena sin faltas, calculada igual que en el Liquidador del 76/75.`,
+    `* Aportes = ${UOCRA_APORTES_REMUNERATIVO * 100}% (11% jubilación + 3% PAMI + 3% obra social) sobre lo remunerativo, más ${UOCRA_APORTE_SOLIDARIO * 100}% de aporte solidario si corresponde. La suma no remunerativa solo aporta ${UOCRA_APORTES_SNR * 100}% de obra social.`,
+    "* El neto es estimado: no incluye Ganancias, embargos, horas extra, viáticos ni descuentos particulares del recibo.",
+  ];
+  notas.forEach((t, k) => nota(ws, `A${31 + k}:B${31 + k}`, t));
+
+  ws.views = [{ state: "frozen", ySplit: 4 }];
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 export async function generarPlanillaUocra(): Promise<string> {
   const wb = new ExcelJS.Workbook();
   wb.creator = "CalculAR (calcular.ar)";
-  wb.title = "Planilla de sueldos UOCRA 2026 — CCT 76/75";
+  wb.title = "Planilla de sueldos UOCRA 2026 — CCT 76/75 y CCT 577/10";
   wb.subject = "Liquidación de sueldos de la construcción según los acuerdos paritarios oficiales";
-  wb.keywords = "uocra, construcción, sueldo, cct 76/75, jornal, planilla, liquidación";
+  wb.keywords = "uocra, construcción, sueldo, cct 76/75, cct 577/10, redes, jornal, planilla, liquidación";
 
   buildInstrucciones(wb);
   buildEscala(wb);
   buildLiquidador(wb);
   buildDiferencias(wb);
+  buildLiquidador577(wb);
+  buildEscalas577(wb);
   hojaFuentes(
     wb,
     [
@@ -675,6 +912,9 @@ export async function generarPlanillaUocra(): Promise<string> {
       UOCRA_FUENTES.anexoTramo2,
       UOCRA_FUENTES.acuerdoTramo3,
       UOCRA_FUENTES.cct,
+      ...[UOCRA_577_FUENTES.cct, UOCRA_577_FUENTES.abrilMayo, UOCRA_577_FUENTES.junioAgosto, UOCRA_577_FUENTES.septiembreNoviembre].map(
+        (f) => ({ ...f, nombre: `${f.nombre} (verificado el ${UOCRA_577_FUENTES.consultadoEl})` }),
+      ),
       UOCRA_FUENTES.ley22250,
       UOCRA_FUENTES.uocra,
       ...UOCRA_FUENTES_HISTORICO,
@@ -695,7 +935,7 @@ if (process.argv[1] && /gen_planilla_uocra\.ts$/.test(process.argv[1])) {
   generarPlanillaUocra()
     .then((salida) => {
       console.log(`Planilla UOCRA generada: ${salida}`);
-      console.log(`   Hojas: Instrucciones | ${ESC} | Liquidador | ${HOJA_DIFERENCIAS_UOCRA} | Fuentes`);
+      console.log(`   Hojas: Instrucciones | ${ESC} | Liquidador | ${HOJA_DIFERENCIAS_UOCRA} | ${HOJA_LIQUIDADOR_577} | ${HOJA_ESCALAS_577} | Fuentes`);
       console.log(`   ${MESES.length} meses: ${MESES[0].etiqueta} a ${MESES.at(-1)!.etiqueta}`);
       console.log(`   ${COMBOS} combinaciones categoría × zona`);
     })
