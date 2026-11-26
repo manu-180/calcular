@@ -3,7 +3,7 @@
 # hilos pendientes, lanza claude con scripts/soporte/AGENTE.md en un worktree propio (HEAD suelto
 # en origin/main). Sin pendientes no gasta un token.
 
-param([int]$TimeoutMin = 50)
+param([int]$TimeoutMin = 90)
 
 $ErrorActionPreference = "Continue"
 $REPO  = "C:\MisProyectos\Armagedon\libre_albedrio\calcular-ar"
