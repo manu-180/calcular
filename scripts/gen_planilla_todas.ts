@@ -25,7 +25,7 @@ import { generarPlanillasIntl } from "./paises/gen_planillas_intl";
 async function main() {
   const salidas = [
     ["Comercio (CCT 130/75)", await generarPlanillaComercio()],
-    ["UOCRA (CCT 76/75)", await generarPlanillaUocra()],
+    ["UOCRA (CCT 76/75 y 577/10)", await generarPlanillaUocra()],
     ["Casas Particulares", await generarPlanillaCasas()],
     ["Monotributo", await generarPlanillaMonotributo()],
     ["Alquileres", await generarPlanillaAlquileres()],

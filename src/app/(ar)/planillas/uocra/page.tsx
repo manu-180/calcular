@@ -11,20 +11,21 @@ import {
   ZONAS_UOCRA,
 } from "@/data/convenios/uocra";
 import { MESES_UOCRA_HISTORICO } from "@/data/convenios/uocra-historico";
+import { MESES_UOCRA_577 } from "@/data/convenios/uocra-577";
 import { textoProximaParitaria } from "@/lib/convenios";
 import { PRODUCTOS } from "@/lib/mp";
 import { openGraphDe } from "@/lib/seo";
 import { hoyAR } from "@/lib/hoy";
 
 export const metadata: Metadata = {
-  title: "Planilla de sueldos UOCRA 2026 en Excel (CCT 76/75)",
+  title: "Planilla de sueldos UOCRA 2026 en Excel (CCT 76/75 y 577/10)",
   description:
-    "Excel y Google Sheets para la construcción: jornales de UOCRA por categoría y zona desde junio 2024, liquidación del mes y cálculo de diferencias salariales. Pago único.",
+    "Excel y Google Sheets para la construcción: jornales de UOCRA por categoría y zona del CCT 76/75 (desde junio 2024) y del CCT 577/10 de obras de redes, liquidación del mes y diferencias salariales. Pago único.",
   alternates: { canonical: "/planillas/uocra" },
   openGraph: openGraphDe({
     ruta: "/planillas/uocra",
     titulo: "Planilla de sueldos UOCRA 2026",
-    bajada: "CCT 76/75 · jornales por categoría y zona",
+    bajada: "CCT 76/75 y 577/10 · jornales por categoría y zona",
   }),
 };
 
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
 const MES = MESES_UOCRA.at(-1)!;
 const MESES_ARCHIVO = [...MESES_UOCRA_HISTORICO, ...MESES_UOCRA];
 const DESDE = MESES_ARCHIVO[0].etiqueta.toLowerCase();
+const DESDE_577 = MESES_UOCRA_577[0].etiqueta.toLowerCase();
 const CATEGORIA = CATEGORIAS_UOCRA.find((c) => c.id === "oficial")!;
 const ZONA = ZONAS_UOCRA.find((z) => z.id === "a")!;
 const EJEMPLO = hojaUocra(datosOferta("planilla-uocra").archivo, {
@@ -50,7 +52,7 @@ export default function PlanillaUocraPage() {
   return (
     <PlanillaLanding
       producto={PRODUCTOS["planilla-uocra"]}
-      etiquetaConvenio="CCT 76/75 · Construcción (UOCRA)"
+      etiquetaConvenio="CCT 76/75 y 577/10 · Construcción (UOCRA)"
       h1={
         <>
           Liquidá sueldos de UOCRA con los jornales oficiales
@@ -76,6 +78,17 @@ export default function PlanillaUocraPage() {
           para pedir la devolución si no te sirve.
         </p>
       }
+      convenios={
+        <p>
+          <strong>Sirve para los dos convenios de UOCRA.</strong> El <strong>CCT 76/75</strong> es el
+          de la obra en general: edificios, viviendas, refacciones. El <strong>CCT 577/10</strong> es
+          el de las redes de telefonía, internet, cable y datos:{" "}
+          <strong>canalización, líneas e instalación y empalme</strong>. Si no sabés cuál es el tuyo, fijate en tu recibo de
+          sueldo: el número de convenio figura ahí. El 577/10 tiene su propio liquidador, con los
+          jornales de cada rama desde {DESDE_577} y la antigüedad del 0,5% por año que el 76/75 no
+          tiene.
+        </p>
+      }
       previewTitulo={`${CATEGORIA.nombre} · ${ZONA.nombre} · ${MES.etiqueta} · mes completo`}
       previewSubtitulo="Cambiás la categoría, la zona, el mes o las horas y todo lo demás se recalcula solo."
       hoja={EJEMPLO.hoja}
@@ -90,6 +103,10 @@ export default function PlanillaUocraPage() {
             "Elegís categoría, zona, mes y horas. Te desglosa jornal, básico del mes, asistencia perfecta, suma no remunerativa, aportes y neto. Incluye el fondo de cese laboral como referencia del costo del empleador.",
         },
         {
+          titulo: "Liquidador 577-10",
+          descripcion: `Para obras de redes (CCT 577/10). Elegís rama, categoría, zona, mes, horas y años de antigüedad, y te da básico, antigüedad, asistencia perfecta, suma no remunerativa, aportes y neto, con los jornales oficiales de ${MESES_UOCRA_577[0].etiqueta.toLowerCase()} a ${MESES_UOCRA_577.at(-1)!.etiqueta.toLowerCase()}.`,
+        },
+        {
           titulo: "Diferencias",
           descripcion: `Para el que cobra como ayudante y trabaja de oficial, o al revés: elegís la categoría que le corresponde, la que figura en el recibo y el período desde ${DESDE}. Te da mes por mes lo que se le debe de sueldo y no remunerativo, más el aguinaldo y el fondo de cese. Si tenés los recibos, cargás lo cobrado y queda exacto.`,
         },
@@ -100,7 +117,7 @@ export default function PlanillaUocraPage() {
         {
           titulo: "Fuentes",
           descripcion:
-            "El link a cada acuerdo paritario firmado, el texto del CCT 76/75, la Ley 22.250 y las disposiciones de homologación, con la fecha en que se verificó cada uno.",
+            "El link a cada acuerdo paritario firmado, el texto de los CCT 76/75 y 577/10, la Ley 22.250 y las disposiciones de homologación, con la fecha en que se verificó cada uno.",
         },
         {
           titulo: "Instrucciones",
@@ -115,6 +132,10 @@ export default function PlanillaUocraPage() {
       }}
       actualizacion={`En la construcción las escalas se renegocian por tramos, así que la tabla cambia varias veces al año. ${textoProximaParitaria(UOCRA_PROXIMA_PARITARIA, hoyAR())} Cuando se firme y se publique el anexo con las tablas, las cargamos, regeneramos la planilla y te llega la versión nueva por mail, sin costo.`}
       faqs={[
+        {
+          q: "¿Sirve si mi convenio es el CCT 577/10?",
+          a: `Sí. Si trabajás en obras de redes de telefonía, internet o cable (canalización, líneas e instalación o empalme), tu convenio es el 577/10 y la planilla trae una hoja para liquidarlo, con los jornales de las tres ramas, las cuatro categorías y las cuatro zonas desde ${DESDE_577}. Los sacamos del anexo de tablas que UOCRA firma para el 577/10 en cada acuerdo, no del 76/75 con un porcentaje encima. La hoja de diferencias salariales, por ahora, es solo del 76/75.`,
+        },
         {
           q: "¿Cómo la recibo?",
           a: "Apenas MercadoPago confirma el pago te llega un mail con el enlace de descarga. Es inmediato. Guardá ese mail: el enlace es permanente y siempre te baja la última versión, así que también es por ahí que te llegan las actualizaciones.",
@@ -145,7 +166,7 @@ export default function PlanillaUocraPage() {
         },
         {
           q: "¿Calcula la antigüedad?",
-          a: "No, porque el CCT 76/75 no la tiene: el régimen de la construcción (Ley 22.250) la reemplaza por el fondo de cese laboral, que sí aparece en la planilla como referencia del costo del empleador (12% el primer año, 8% después). La antigüedad en la construcción mejora las vacaciones, no el sueldo mensual.",
+          a: "Depende del convenio. El CCT 76/75 no tiene adicional por antigüedad: el régimen de la construcción (Ley 22.250) lo reemplaza por el fondo de cese laboral, que aparece en la planilla como referencia del costo del empleador (12% el primer año, 8% después). El CCT 577/10 sí la paga: 0,5% del jornal básico por cada año con el mismo empleador, y el liquidador del 577/10 la calcula.",
         },
         {
           q: "¿Los números son los mismos que los de la calculadora gratis del sitio?",

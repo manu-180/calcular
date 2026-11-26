@@ -41,6 +41,8 @@ export type ConfigLanding = {
   h1: ReactNode;
   bajada: string;
   respuestaPrimero: ReactNode;
+  /** Qué convenios cubre, cuando el producto sirve para más de uno. */
+  convenios?: ReactNode;
   /** Encabezado de la vista previa: qué caso concreto se está liquidando. */
   previewTitulo: string;
   previewSubtitulo: string;
@@ -232,6 +234,11 @@ export function PlanillaLanding(c: ConfigLanding) {
 
       <div className="mb-10">
         <RespuestaPrimero>{c.respuestaPrimero}</RespuestaPrimero>
+        {c.convenios ? (
+          <div className="mt-4 rounded-xl border border-zinc-200 bg-white p-4 text-sm leading-relaxed text-zinc-700">
+            {c.convenios}
+          </div>
+        ) : null}
       </div>
 
       <div className="grid gap-10 lg:grid-cols-3">
