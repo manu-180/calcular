@@ -9,7 +9,8 @@
 //   responder <hilo> <cuerpo.md> [--marca ar|intl] [--idioma xx] [--adjunto ruta]...
 //   escalar <hilo> <motivo.md>          mail a Manuel con el hilo entero; estado escalado
 //   informar <hilo> <resumen.md>        mail a Manuel sólo para que sepa (deploy, cambio); no cambia estado
-//   reembolsar <hilo> <mp_payment_id> <motivo>  devolución total por la API de MercadoPago
+//   reembolsar <hilo> <mp_payment_id> --cita "<lo que escribió el cliente>" | --duplicado <motivo>
+//       devolución total por MercadoPago; la guarda de src/lib/soporte/reembolso.ts decide si se puede
 //   nota <hilo> <texto>                 nota interna en el hilo
 //   cerrar <hilo> [ignorado]            cierra sin responder (spam, robots, gracias sin pregunta)
 
@@ -17,6 +18,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { basename, join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { BUZON_SOPORTE, esParaCalcular, ingerir, traerRecibido } from "../../src/lib/soporte/ingesta";
+import { puedeReembolsar } from "../../src/lib/soporte/reembolso";
 
 const RESEND = "https://api.resend.com";
 const MANUEL = "manunv97@gmail.com";
@@ -246,12 +248,14 @@ ${cmp.length ? `<p><strong>Compras:</strong><br>${cmp.map((c) => `${esc(c.produc
 // Devolución total de un pago de MercadoPago. Sólo un pago que el ca_compras del hilo atribuye al
 // mail del cliente y que sigue "aprobado": el agente no puede devolverle a nadie lo que pagó otro.
 // La clave de idempotencia es el id del pago: dos corridas no devuelven dos veces.
-async function reembolsar(id: number, paymentId: string, motivo: string) {
-  const { h } = await hilo(id);
+async function reembolsar(id: number, paymentId: string, motivo: string, cita: string | undefined, duplicado: boolean) {
+  const { h, msgs } = await hilo(id);
   if (!/^\d{6,}$/.test(paymentId ?? "")) throw new Error("id de pago de MP inválido");
-  const compra = (await compras(h.email)).find((c) => String(c.mp_payment_id) === paymentId);
+  const todas = await compras(h.email);
+  const compra = todas.find((c) => String(c.mp_payment_id) === paymentId);
   if (!compra) throw new Error(`el pago ${paymentId} no es de ${h.email}`);
-  if (compra.estado !== "aprobado") throw new Error(`el pago ${paymentId} está ${compra.estado}, no se devuelve`);
+  const v = puedeReembolsar({ msgs, compra, otras: todas, cita, duplicado });
+  if (!v.ok) throw new Error(`no se devuelve: ${v.motivo}`);
   const token = process.env.MP_ACCESS_TOKEN;
   if (!token) throw new Error("falta MP_ACCESS_TOKEN");
   const r = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}/refunds`, {
@@ -291,8 +295,14 @@ async function main() {
       return aManuel(id, a2, "escalado");
     case "informar":
       return aManuel(id, a2, "informe");
-    case "reembolsar":
-      return reembolsar(id, a2, process.argv.slice(5).join(" ").replace(/\^([()&|<>^])/g, "$1") || "sin motivo");
+    case "reembolsar": {
+      const resto = process.argv.slice(5).map((x) => x.replace(/\^([()&|<>^])/g, "$1"));
+      const i = resto.indexOf("--cita");
+      const cita = i >= 0 ? resto[i + 1] : undefined;
+      const duplicado = resto.includes("--duplicado");
+      const motivo = resto.filter((x, j) => x !== "--duplicado" && !(i >= 0 && (j === i || j === i + 1))).join(" ");
+      return reembolsar(id, a2, motivo || "sin motivo", cita, duplicado);
+    }
     case "nota": {
       // envkit run pasa por cmd.exe, que escapa paréntesis y demás con ^.
       const { h } = await hilo(id);

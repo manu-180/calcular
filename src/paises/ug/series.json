@@ -12,10 +12,11 @@
         "titulo": "Exchange rates, opening (interbank average middle rate)",
         "url": "https://bou.or.ug/interest_rates_exchange_rates",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-24",
-        "nota": "Read from the daily OPENING RATES file the page links to (https://bou.or.ug/uploads/OPENING_RATES_4ffc75da06.xlsx)."
+        "verificadoEl": "2026-11-26",
+        "nota": "Read from the daily OPENING RATES file the page links to (https://bou.or.ug/uploads/OPENING_RATES_92f29d42db.xlsx, exchange rates for 25 Nov 2026, interbank middle rate). The file name changes and the file only holds the current day, so the point is loaded by hand."
       },
-      "puntos": [["2026-10-22", 4209.76]]
+      "altas": [["2026-11-26", "2026-11-25"]],
+      "puntos": [["2026-10-22", 4209.76], ["2026-11-25", 4259.52]]
     },
     {
       "id": "ug.inflation",

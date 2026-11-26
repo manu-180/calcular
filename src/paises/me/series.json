@@ -9,11 +9,12 @@
       "maxAntiguedadDias": 70,
       "fuente": {
         "organismo": "MONSTAT",
-        "titulo": "Indeks potrošačkih cijena: baza podataka, septembar 2026",
-        "url": "https://monstat.org/uploads/files/cijene/CPI/2026/9/Podaci_Data%20base%20(CPI)%202026.xls",
+        "titulo": "Indeks potrošačkih cijena: baza podataka, oktobar 2026",
+        "url": "https://monstat.org/uploads/files/cijene/CPI/2026/10/Podaci_Data%20base%20(CPI)%202026.xls",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-31"
+        "verificadoEl": "2026-11-26"
       },
+      "altas": [["2026-11-26", "2026-10-01"]],
       "puntos": [
         [
           "2016-01-01",
@@ -530,7 +531,8 @@
         [
           "2026-09-01",
           106.6345
-        ]
+        ],
+        ["2026-10-01", 107.1216]
       ]
     },
     {

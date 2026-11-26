@@ -23,7 +23,7 @@ import { CATEGORIAS as CATEGORIAS_MONO } from "@/data/monotributo";
 export const PESTANAS = {
   "planilla-monotributo": ["Instrucciones", "Mi monotributo", "Categorías 2026", "Fuentes"],
   "planilla-comercio": ["Liquidación", "Recibo", "Escala 2026", "SAC (Aguinaldo)", "Changelog"],
-  "planilla-uocra": ["Instrucciones", "Escalas", "Liquidador", "Diferencias", "Fuentes"],
+  "planilla-uocra": ["Instrucciones", "Escalas", "Liquidador", "Diferencias", "Liquidador 577-10", "Escalas 577-10", "Fuentes"],
   "planilla-casas-particulares": [
     "Instrucciones",
     "Liquidador",

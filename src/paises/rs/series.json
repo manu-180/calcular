@@ -899,16 +899,18 @@
       "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Republički zavod za statistiku",
-        "titulo": "Saopštenje: Prosečne zarade po zaposlenom, avgust 2026",
-        "url": "https://publikacije.stat.gov.rs/G2026/Html/G20261285.html",
+        "titulo": "Saopštenje: Prosečne zarade po zaposlenom, septembar 2026",
+        "url": "https://publikacije.stat.gov.rs/G2026/Html/G20261314.html",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-31"
+        "verificadoEl": "2026-11-26"
       },
+      "altas": [["2026-11-26", "2026-09-01"]],
       "puntos": [
         [
           "2026-08-01",
           161953
-        ]
+        ],
+        ["2026-09-01", 164746]
       ]
     },
     {
@@ -919,16 +921,18 @@
       "maxAntiguedadDias": 100,
       "fuente": {
         "organismo": "Republički zavod za statistiku",
-        "titulo": "Saopštenje: Prosečne zarade po zaposlenom, avgust 2026",
-        "url": "https://publikacije.stat.gov.rs/G2026/Html/G20261285.html",
+        "titulo": "Saopštenje: Prosečne zarade po zaposlenom, septembar 2026",
+        "url": "https://publikacije.stat.gov.rs/G2026/Html/G20261314.html",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-31"
+        "verificadoEl": "2026-11-26"
       },
+      "altas": [["2026-11-26", "2026-09-01"]],
       "puntos": [
         [
           "2026-08-01",
           117282
-        ]
+        ],
+        ["2026-09-01", 119335]
       ]
     }
   ]
