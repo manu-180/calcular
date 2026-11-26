@@ -443,6 +443,7 @@ const DEFS: Record<GrupoId, Def[]> = {
       href: "/renuncia",
       titulo: "Renuncia",
       descripcion: "Qué te tienen que pagar si te vas",
+      vende: DESPIDO,
       claves: ["renunciar", "me voy", "telegrama", "liquidacion final", "renuncia voluntaria"],
     },
     {

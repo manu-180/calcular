@@ -42,6 +42,11 @@ const CASOS: Caso[] = [
   // contenedor de una sesión de Kairo no puede comprobar (la política de red no llega a
   // calcular.ar): si la oferta se cae de producción, esto abre el issue solo.
   { ruta: "/desempleo", debeContener: ['data-oferta="informe-indemnizacion"'] },
+  // Lo mismo en /renuncia, y acá el marcador prueba dos cosas: que la oferta sigue en producción y
+  // que sigue pintándose con los valores con los que ARRANCA la calculadora. Si alguien cambia esos
+  // valores por otros que no dan resultado, la oferta se va del HTML del server, el observador de
+  // rastreo.ts deja de medir `vista_oferta` y la página vuelve a figurar como que no vende.
+  { ruta: "/renuncia", debeContener: ['data-oferta="informe-indemnizacion"'] },
   { ruta: "/sitemap.xml", debeContener: ["<loc>"] },
   { ruta: "/jubilacion", debeContener: [prestacionesVigentes().resolucion.replace("Resolución ANSES ", ""), bonoVigente().norma, miles(prestacionesVigentes().haberMinimo)] },
   { ruta: "/asignaciones-familiares", debeContener: [asignacionesVigentes().resolucion.replace("Resolución ANSES ", ""), miles(asignacionesVigentes().universales.hijo.general), `data-oferta="${MI_SUELDO}"`] },

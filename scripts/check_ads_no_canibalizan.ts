@@ -63,7 +63,11 @@ check(
 
 // Las páginas informativas SÍ tienen que poder monetizar: si el guard se generalizara por error,
 // el sitio se quedaría sin anuncios en todos lados y nadie lo notaría hasta fin de mes.
-for (const ruta of ["/", "/renuncia", "/canasta-basica/agosto-2026", "/inflacion/2026", "/jubilacion", "/cuota-alimentaria/agosto-2026"]) {
+// `/renuncia` estaba en esta lista y salió el 26/11/2026, cuando pasó a ofrecer el informe de
+// liquidación final: dejó de ser una página informativa. No es aflojar el candado (sigue con seis
+// testigos, y los dos checks de arriba lo cubren por derivación del código); es que el testigo ya
+// no era uno. La reemplaza `/periodo-de-prueba`, que es su vecina de grupo y no vende nada.
+for (const ruta of ["/", "/periodo-de-prueba", "/canasta-basica/agosto-2026", "/inflacion/2026", "/jubilacion", "/cuota-alimentaria/agosto-2026"]) {
   check(`${ruta} puede servir anuncios`, !vendeAlgo(ruta));
 }
 

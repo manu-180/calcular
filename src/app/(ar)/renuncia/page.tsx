@@ -4,6 +4,12 @@ import { CalculadoraRenuncia } from "@/components/CalculadoraRenuncia";
 import { JsonLd } from "@/components/JsonLd";
 import { RespuestaPrimero } from "@/components/RespuestaPrimero";
 import { articleSchema, ORGANIZACION } from "@/lib/schema";
+import { InformeIndemnizacionMiniatura } from "@/components/informe-indemnizacion/Miniatura";
+import { CASO_EJEMPLO } from "@/app/(ar)/informes/indemnizacion/_modelo";
+import { entradaDelMotor } from "@/lib/prefill/indemnizacion";
+import { calcularIndemnizacion } from "@/lib/indemnizacion";
+import { productoPorSlug } from "@/lib/mp";
+import { IUS_VARIANDI_TEXTOS } from "@/data/ius-variandi";
 import {
   ARTICULO_SUSTITUTIVO_240,
   ARTICULO_SUSTITUTIVO_241,
@@ -62,6 +68,10 @@ const faqs = [
     a: `El artículo ${ARTICULO_SUSTITUTIVO_241} de la Ley 27.802 le sumó un párrafo nuevo: «En un contrato de trabajo de prestaciones continuas y permanentes, se considera configurado este supuesto luego de transcurridos dos (2) meses calendarios sin que alguna de las partes manifieste su voluntad de continuidad de éste». Ese «supuesto» es el abandono recíproco: el contrato termina porque ninguna de las dos partes lo siguió. Antes había que probarlo caso por caso; ahora hay un plazo fijo de ${MESES_ABANDONO_RECIPROCO} meses. Si la relación quedó en silencio de los dos lados durante ese tiempo, la ley la da por terminada por voluntad de ambos.`,
   },
   {
+    q: "Me voy porque la empresa me debe sueldos (o me cambió las condiciones). ¿Me conviene renunciar?",
+    a: "Son dos cosas distintas y la diferencia es toda la indemnización por antigüedad. Si te vas por tu voluntad, aplica el artículo 240 y cobrás solo la liquidación final. Si te vas porque la empresa incumplió, el artículo 246 dice que «cuando el trabajador hiciese denuncia del contrato de trabajo fundado en justa causa, tendrá derecho a las indemnizaciones previstas en los artículos 232, 233 y 245»: o sea preaviso, integración del mes y antigüedad, igual que un despido sin causa. Además es el inciso c) del artículo 114 de la Ley 24.013, así que también da derecho a la prestación por desempleo. Dos recaudos antes de decidir: para los casos del artículo 66 (un cambio en las condiciones que el artículo veda) el texto vigente exige «previa intimación y si ésta fuere desoída», y el artículo 242 pide que el incumplimiento sea de gravedad tal que no consienta la prosecución de la relación, algo que se decide caso por caso y con pruebas. Si estás en esa situación, no mandes el telegrama de renuncia sin consultar: la renuncia cierra esa puerta.",
+  },
+  {
     q: "¿Cuántos días de vacaciones me pagan?",
     a: "Depende de cuánto trabajaste en el año. Si llegaste a la mitad de los días hábiles del año (artículo 151), te tocan los días de la escala del artículo 150 según tu antigüedad, en proporción a la parte del año que trabajaste (es lo que dice el artículo 156). Si no llegaste a esa mitad, rige el artículo 153: un día de vacaciones por cada veinte de trabajo efectivo. En los dos casos se pagan según el artículo 155 inciso a), o sea el sueldo dividido veinticinco, no treinta. Cada día de vacaciones vale un 20% más que un día común.",
   },
@@ -70,6 +80,13 @@ const faqs = [
     a: "De la parte remunerativa, sí: los días del mes y el aguinaldo proporcional pagan el 17% del trabajador (11% jubilación + 3% obra social + 3% PAMI). Las vacaciones no gozadas no: el artículo 156 las llama «indemnización» y por eso no llevan aportes. Ganancias va aparte y depende de todo lo que cobraste en el año, así que la calculadora no la estima.",
   },
 ];
+
+// La primera hoja del informe con un caso de ejemplo, armada en el servidor: así el calendario de
+// feriados y el resto del motor del informe no viajan en el bundle de esta página.
+function miniaturaInforme() {
+  const r = calcularIndemnizacion(entradaDelMotor(CASO_EJEMPLO));
+  return r ? <InformeIndemnizacionMiniatura r={r} /> : null;
+}
 
 export default function RenunciaPage() {
   const jsonLd = {
@@ -142,7 +159,10 @@ export default function RenunciaPage() {
           misma fórmula que usa la calculadora de aguinaldo, y para las vacaciones se elige sola la
           regla que te toca (la escala del art. 150 o un día cada veinte del art. 153).
         </p>
-        <CalculadoraRenuncia />
+        <CalculadoraRenuncia
+          precioInforme={productoPorSlug("informe-indemnizacion")?.precio}
+          miniaturaInforme={miniaturaInforme()}
+        />
       </section>
 
       <section className="space-y-3">
@@ -215,6 +235,56 @@ export default function RenunciaPage() {
             la prestación por desempleo
           </Link>
           ; con una renuncia común, no.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-bold text-zinc-900">
+          La tercera salida: el art. 246, la única que paga antigüedad
+        </h2>
+        <p className="text-zinc-600">
+          Las dos de arriba las decide tu voluntad, y ninguna paga indemnización por antigüedad. Hay
+          una tercera que sí, y casi nunca aparece al lado de la renuncia: cuando el que se va lo
+          hace <strong>porque la empresa incumplió</strong>, la ley no lo trata como una renuncia
+          sino como un despido.
+        </p>
+        <blockquote className="rounded-xl border-l-4 border-emerald-400 bg-emerald-50/50 p-4">
+          <p className="text-sm font-semibold text-zinc-800">LCT, art. 246 (texto vigente)</p>
+          <p className="mt-1 text-sm italic text-zinc-700">«{IUS_VARIANDI_TEXTOS.art246}»</p>
+          <p className="mt-2 text-xs text-zinc-500">
+            Los tres artículos que menciona son los del despido sin causa: el 232 (indemnización
+            sustitutiva de preaviso), el 233 (integración del mes) y el 245 (antigüedad). La Ley
+            27.802 no tocó este artículo: no lleva nota de sustitución.
+          </p>
+        </blockquote>
+        <p className="rounded-xl border border-amber-200 bg-amber-50/60 p-4 text-sm text-zinc-700">
+          <span className="font-semibold text-zinc-900">El requisito que sí cambió: </span>
+          para los casos que entran por el art. 66 (un cambio en las condiciones de trabajo que el
+          artículo veda), el texto vigente desde el {VIGENCIA_REFORMA} exige{" "}
+          <strong>«{IUS_VARIANDI_TEXTOS.requisitoNuevo}»</strong> antes de poder considerarse
+          despedido. Hasta esa fecha también se podía pedir que se restablecieran las condiciones
+          alteradas; esa opción ya no está en el texto. Qué cambió exactamente, artículo por
+          artículo, está en{" "}
+          <Link href="/ius-variandi" className="font-medium text-emerald-700 hover:underline">
+            la página del ius variandi
+          </Link>
+          .
+        </p>
+        <p className="text-sm text-zinc-600">
+          Y hay un segundo efecto que se pasa por alto: el despido indirecto es el{" "}
+          <strong>inciso c) del art. 114 de la Ley 24.013</strong>, así que (igual que el acuerdo
+          del 241, y a diferencia de la renuncia) es situación legal de desempleo. O sea que suma
+          las dos cosas: las indemnizaciones del despido y{" "}
+          <Link href="/desempleo" className="font-medium text-emerald-700 hover:underline">
+            la prestación por desempleo
+          </Link>
+          . Lo que la ley no define en una tabla es qué incumplimiento alcanza: el art. 242 pide que
+          sea de gravedad tal que no consienta la prosecución de la relación, y eso se decide caso
+          por caso, con pruebas. Si creés estar en esa situación, la cuenta que te conviene mirar es{" "}
+          <Link href="/indemnizacion" className="font-medium text-emerald-700 hover:underline">
+            la de la indemnización por despido
+          </Link>
+          , no la de esta página.
         </p>
       </section>
 

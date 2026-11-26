@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { PREAVISO_DEL_TRABAJADOR_DIAS } from "@/data/renuncia";
 import { calcularRenuncia } from "@/lib/renuncia";
 import { formatARS, parseMonto, errorMonto, primerError } from "@/lib/formato";
 import { ErrorCalculo } from "@/components/ErrorCalculo";
+import { OfertaInformeRenuncia } from "@/components/informe-indemnizacion/OfertaRenuncia";
 
 const TONOS = {
   ok: "border-emerald-200 bg-emerald-50/70 text-emerald-900",
@@ -22,7 +23,15 @@ const claseSelect =
 const dias = (n: number) =>
   n.toLocaleString("es-AR", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 
-export function CalculadoraRenuncia() {
+export function CalculadoraRenuncia({
+  precioInforme,
+  miniaturaInforme,
+}: {
+  /** Precio del informe de liquidación final, del catálogo. Sin él la oferta no se pinta: antes
+   *  de mostrar un CTA sin precio es mejor no mostrar ninguno. */
+  precioInforme?: number;
+  miniaturaInforme?: ReactNode;
+} = {}) {
   const [sueldo, setSueldo] = useState("1.200.000");
   const [ingreso, setIngreso] = useState("2021-03-15");
   const [egreso, setEgreso] = useState("2026-08-31");
@@ -115,6 +124,7 @@ export function CalculadoraRenuncia() {
           ingreso).
         </div>
       ) : (
+        <>
         <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-5">
           <p className="text-sm text-zinc-600">Tu liquidación final por renuncia, en bruto</p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-zinc-900">
@@ -240,6 +250,22 @@ export function CalculadoraRenuncia() {
             .
           </p>
         </div>
+
+        {/* La oferta va acá y no en la página: necesita el sueldo y las fechas que la persona
+            cargó para comparar las dos salidas. Con los valores con los que arranca la
+            calculadora ya se pinta, así que el `data-oferta` viaja en el HTML del servidor (que es
+            lo único que ve el observador de rastreo.ts y el smoke de post-deploy). */}
+        {precioInforme !== undefined && (
+          <OfertaInformeRenuncia
+            res={res}
+            sueldoMensual={parseMonto(sueldo)}
+            ingresoISO={ingreso}
+            egresoISO={egreso}
+            precio={precioInforme}
+            miniatura={miniaturaInforme}
+          />
+        )}
+        </>
       )}
     </div>
   );
