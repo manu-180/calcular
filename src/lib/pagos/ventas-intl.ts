@@ -1,5 +1,6 @@
 import { createHmac } from "node:crypto";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { idParaFiltro } from "./filtro";
 import { emailValido } from "@/lib/mp";
 import { asentarUnaVez, idsConLaMarca, marcarEntrega, type DepsVenta } from "@/lib/mp-webhook";
 import { leerReferenciaIntl, type ProductoIntl } from "./catalogo-intl";
@@ -215,7 +216,7 @@ export async function sincronizarPagoIntl(db: SupabaseClient, pago: PagoVerifica
         .from("ca_checkouts")
         .update({ estado, mp_payment_id: idUnico, updated_at: new Date().toISOString() })
         .eq("id", checkoutId)
-        .or(`estado.is.null,estado.in.(iniciado,pendiente,rechazado),mp_payment_id.eq."${idUnico}"`)
+        .or(`estado.is.null,estado.in.(iniciado,pendiente,rechazado),mp_payment_id.eq."${idParaFiltro(idUnico)}"`)
         .select("email, user_id")
         .abortSignal(tope());
       if (error) console.error("[pagos] ca_checkouts (pago):", error.code, error.message);

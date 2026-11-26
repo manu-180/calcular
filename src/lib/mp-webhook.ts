@@ -16,6 +16,7 @@
 // re-consulta (un id inventado devuelve 404 y no inserta nada).
 
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { idParaFiltro } from "./pagos/filtro";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import {
   checkoutIdDeReferencia,
@@ -470,7 +471,7 @@ async function sincronizarCheckout(
     .from("ca_checkouts")
     .update({ estado, mp_payment_id: paymentId, updated_at: ahora })
     .eq("id", id)
-    .or(`estado.is.null,estado.in.(iniciado,pendiente,rechazado),mp_payment_id.eq.${paymentId}`)
+    .or(`estado.is.null,estado.in.(iniciado,pendiente,rechazado),mp_payment_id.eq.${idParaFiltro(paymentId)}`)
     .select("email")
     .abortSignal(tope());
   if (error) {
