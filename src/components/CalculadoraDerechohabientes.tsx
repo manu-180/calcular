@@ -14,6 +14,8 @@ import {
   EDAD_TOPE_LRT,
   EDAD_TOPE_LRT_ESTUDIANTE,
 } from "@/data/derechohabientes-art";
+import { insertarEn, quitarEn } from "@/lib/deshacer";
+import { DeshacerToast, useDeshacer } from "@/components/ui/DeshacerToast";
 
 const claseInput =
   "mt-2 w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-zinc-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200";
@@ -74,8 +76,18 @@ export function CalculadoraDerechohabientes() {
 
   const actualizar = (id: string, cambio: Partial<Persona>) =>
     setPersonas((prev) => prev.map((p) => (p.id === id ? { ...p, ...cambio } : p)));
-  const quitar = (id: string) => setPersonas((prev) => prev.filter((p) => p.id !== id));
-  const agregar = (v: Vinculo) => setPersonas((prev) => [...prev, nuevaPersona(v)]);
+  const deshacer = useDeshacer<Persona>((q) => setPersonas((prev) => insertarEn(prev, q.indice, q.item)));
+  const quitar = (id: string) => {
+    const { lista, quitada } = quitarEn(personas, personas.findIndex((p) => p.id === id));
+    if (!quitada) return;
+    setPersonas(lista);
+    const fila = `«${ETIQUETA_VINCULO[quitada.item.vinculo]}»`;
+    deshacer.registrar(quitada, `Quitaste ${fila}`, `Volvió ${fila}`);
+  };
+  const agregar = (v: Vinculo) => {
+    deshacer.descartar();
+    setPersonas((prev) => [...prev, nuevaPersona(v)]);
+  };
 
   const hayConyuge = personas.some((p) => p.vinculo === "conyuge");
   const hayConviviente = personas.some((p) => p.vinculo === "conviviente");
@@ -386,6 +398,7 @@ export function CalculadoraDerechohabientes() {
         de {EDAD_TOPE_LRT} ya no, salvo que estudie a cargo exclusivo del trabajador (ahí el corte es
         a los {EDAD_TOPE_LRT_ESTUDIANTE}) o estuviera incapacitado.
       </p>
+      <DeshacerToast control={deshacer.control} />
     </div>
   );
 }

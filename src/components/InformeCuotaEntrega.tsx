@@ -6,6 +6,8 @@ import { parseMonto } from "@/lib/formato";
 import { MAX_HIJOS_INFORME, datosDeLaCalculadora, type Datos, type TramoHijo } from "@/lib/prefill/cuota";
 import { armarInforme } from "@/app/(ar)/informes/cuota-alimentaria/_modelo";
 import { InformeCuotaDocumento } from "@/components/InformeCuotaDocumento";
+import { insertarEn, quitarEn } from "@/lib/deshacer";
+import { DeshacerToast, useDeshacer } from "@/components/ui/DeshacerToast";
 
 const OPCIONES: { valor: TramoHijo; texto: string }[] = [
   ...TRAMOS_CRIANZA.map((t) => ({ valor: t.id as TramoHijo, texto: t.nombre })),
@@ -71,11 +73,22 @@ export function InformeCuotaEntrega({
   const informe = useMemo(() => armarInforme(datos), [datos]);
   const todosMayores = hijos.every((t) => t === "mayor-12");
 
+  const deshacer = useDeshacer<{ tramo: TramoHijo; nombre: string }>((q) => {
+    setHijos((p) => insertarEn(p, q.indice, q.item.tramo));
+    setNombresHijos((p) => insertarEn(p, q.indice, q.item.nombre));
+  });
   const quitarHijo = (i: number) => {
-    setHijos((p) => p.filter((_, j) => j !== i));
+    const { lista, quitada } = quitarEn(hijos, i);
+    if (!quitada) return;
+    const nombre = nombresHijos[i] ?? "";
+    setHijos(lista);
     setNombresHijos((p) => p.filter((_, j) => j !== i));
+    const fila = nombre.trim() ? `a ${nombre.trim()}` : `al hijo ${i + 1}`;
+    const vuelta = nombre.trim() ? `Volvió ${nombre.trim()}` : `Volvió el hijo ${i + 1}`;
+    deshacer.registrar({ indice: i, item: { tramo: quitada.item, nombre } }, `Quitaste ${fila}`, vuelta);
   };
   const agregarHijo = () => {
+    deshacer.descartar();
     setHijos((p) => [...p, "6-a-12"]);
     setNombresHijos((p) => [...p, ""]);
   };
@@ -317,6 +330,7 @@ export function InformeCuotaEntrega({
           )}
         </div>
       </div>
+      <DeshacerToast control={deshacer.control} />
     </div>
   );
 }
