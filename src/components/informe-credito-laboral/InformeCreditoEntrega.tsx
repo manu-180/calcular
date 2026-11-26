@@ -7,6 +7,8 @@ import { PRIMER_PERIODO, ULTIMO_PERIODO, mesesEntre, nombrePeriodo, sumarMeses, 
 import { CONCEPTOS, MAX_RUBROS, type ConceptoId, type Datos } from "@/lib/prefill/credito-laboral";
 import { armarInforme } from "@/app/(ar)/informes/credito-laboral/_modelo";
 import { InformeCreditoDocumento, type DatosCausa } from "@/components/informe-credito-laboral/InformeCreditoDocumento";
+import { insertarEn, quitarEn } from "@/lib/deshacer";
+import { DeshacerToast, useDeshacer } from "@/components/ui/DeshacerToast";
 
 // La hoja impresa tiene que ser sólo el informe: sin header, footer, anuncios ni widgets del sitio.
 // Mismos selectores que el informe de cuota alimentaria: dependen del layout raíz
@@ -84,9 +86,19 @@ export function InformeCreditoEntrega({
 
   const cambiar = (i: number, cambio: Partial<RubroEditable>) =>
     setRubros((p) => p.map((r, j) => (j === i ? { ...r, ...cambio } : r)));
-  const quitar = (i: number) => setRubros((p) => p.filter((_, j) => j !== i));
-  const agregar = () =>
+  const deshacer = useDeshacer<RubroEditable>((q) => setRubros((p) => insertarEn(p, q.indice, q.item)));
+  const quitar = (i: number) => {
+    const { lista, quitada } = quitarEn(rubros, i);
+    if (!quitada) return;
+    setRubros(lista);
+    const nombre = quitada.item.etiqueta.trim();
+    const fila = nombre ? `el rubro «${nombre}»` : `el rubro ${i + 1}`;
+    deshacer.registrar(quitada, `Quitaste ${fila}`, `Volvió ${fila}`);
+  };
+  const agregar = () => {
+    deshacer.descartar();
     setRubros((p) => [...p, { concepto: "otro", etiqueta: "", monto: "", desde: p[p.length - 1]?.desde ?? hasta }]);
+  };
 
   return (
     <div className="space-y-6">
@@ -310,6 +322,7 @@ export function InformeCreditoEntrega({
           )}
         </div>
       </div>
+      <DeshacerToast control={deshacer.control} />
     </div>
   );
 }
