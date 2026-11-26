@@ -127,12 +127,13 @@
       "maxAntiguedadDias": 70,
       "fuente": {
         "organismo": "Zambia Statistics Agency",
-        "titulo": "The Monthly, Volume 282 (September 2026), Annex 1, Table 1.1",
-        "url": "https://www.zamstats.gov.zm/wp-content/uploads/2026/09/Vol-282-of-2026-The-Monthly-September-Flnal.pdf",
+        "titulo": "The Monthly, Volume 283 (October 2026), Annex 1, Table 1.1",
+        "url": "https://www.zamstats.gov.zm/wp-content/uploads/2026/10/Vol-283-of-2026-The-Monthly-October.pdf",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-26",
-        "nota": "Points from January 2023 come from Volume 282. Earlier points come from Annex 1, Table 1.1 of Volume 225 (December 2021) and Volume 249 (December 2023), same 2009 = 100 base."
+        "verificadoEl": "2026-11-26",
+        "nota": "Points from January 2023 come from Volume 283 (annual inflation October 2026: 6.3 per cent). Earlier points come from Annex 1, Table 1.1 of Volume 225 (December 2021) and Volume 249 (December 2023), same 2009 = 100 base."
       },
+      "altas": [["2026-11-26", "2026-10-01"]],
       "puntos": [
         ["2018-01-01", 203.15],
         ["2018-02-01", 204.91],
@@ -238,7 +239,8 @@
         ["2026-06-01", 556.62],
         ["2026-07-01", 557.46],
         ["2026-08-01", 558.72],
-        ["2026-09-01", 560.73]
+        ["2026-09-01", 560.73],
+        ["2026-10-01", 564.62]
       ]
     }
   ]

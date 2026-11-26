@@ -195,11 +195,12 @@
       "maxAntiguedadDias": 70,
       "fuente": {
         "organismo": "Samoa Bureau of Statistics",
-        "titulo": "Consumer Price Index tables, September 2026 (xlsx)",
-        "url": "https://www.sbs.gov.ws/documents/economics/CPI/2026/09_CPI_Tables.xlsx",
+        "titulo": "Consumer Price Index tables, October 2026 (xlsx; October is marked provisional (P))",
+        "url": "https://www.sbs.gov.ws/documents/economics/CPI/2026/10_CPI_Tables.xlsx",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-29"
+        "verificadoEl": "2026-11-26"
       },
+      "altas": [["2026-11-26", "2026-10-01"]],
       "puntos": [
         [
           "2025-09-01",
@@ -252,7 +253,8 @@
         [
           "2026-09-01",
           143.2781
-        ]
+        ],
+        ["2026-10-01", 143.3172]
       ]
     }
   ]

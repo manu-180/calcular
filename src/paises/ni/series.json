@@ -148,12 +148,13 @@
       "maxAntiguedadDias": 115,
       "fuente": {
         "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
-        "titulo": "Cuadros estadísticos del IPC, julio 2026 (cuadro 2-1-06, IPC nacional)",
-        "url": "https://www.inide.gob.ni/docs/ipc/ipc_2026/ipc_jul26/Cuadros_Estadisticas_IPC_julio_2026.xls",
+        "titulo": "Cuadros estadísticos del IPC, octubre 2026 (cuadro 2-1-06, IPC nacional)",
+        "url": "https://www.inide.gob.ni/docs/ipc/ipc_2026/ipc_oct26/Cuadros_Estadisticas_IPC_octubre_2026.xls",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-08",
-        "nota": "Serie cargada a mano desde el XLS del INIDE (el cron no lee XLS). El INIDE publica cada mes con unas seis semanas de rezago; por eso la antigüedad máxima es mayor que en otros países. El cuadro no trae los meses de 2008 a 2010."
+        "verificadoEl": "2026-11-26",
+        "nota": "Serie cargada a mano desde el XLS del INIDE (el cron no lee XLS). El cuadro de octubre trae agosto, septiembre y octubre de 2026. El INIDE publica cada mes con unas seis semanas de rezago; por eso la antigüedad máxima es mayor que en otros países. El cuadro no trae los meses de 2008 a 2010."
       },
+      "altas": [["2026-11-26", "2026-08-01"]],
       "puntos": [
         ["2011-01-01", 144.8171],
         ["2011-02-01", 145.846],
@@ -341,7 +342,10 @@
         ["2026-04-01", 326.2461],
         ["2026-05-01", 325.9822],
         ["2026-06-01", 326.3909],
-        ["2026-07-01", 326.1628]
+        ["2026-07-01", 326.1628],
+        ["2026-08-01", 328.3303],
+        ["2026-09-01", 328.6157],
+        ["2026-10-01", 329.3182]
       ]
     }
   ]
