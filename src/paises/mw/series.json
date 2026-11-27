@@ -121,12 +121,13 @@
       "maxAntiguedadDias": 85,
       "fuente": {
         "organismo": "Malawi Revenue Authority",
-        "titulo": "Public Notice: use of consumer price indices for adjusting the basis of a capital asset (CPIs to September 2026)",
-        "url": "https://www.mra.mw/admin/storage/download_files/1792486281_USE%20OF%20CONSUMER%20PRICE%20INDICES%20(CPIs)%20FOR%20ADJUSTING%20BASIS%20OF%20A%20CAPITAL%20ASSET%20UNDER%20SECTION%202%20OF%20THE%20TAXATION%20ACT%20-%20OCtober%202026.pdf",
+        "titulo": "Public Notice: use of consumer price indices for adjusting the basis of a capital asset (CPIs to October 2026)",
+        "url": "https://www.mra.mw/admin/storage/download_files/1794914665_USE%20OF%20CONSUMER%20PRICE%20INDICES%20(CPIs)%20FOR%20ADJUSTING%20BASIS%20OF%20A%20CAPITAL%20ASSET%20UNDER%20SECTION%202%20OF%20THE%20TAXATION%20ACT%20-%2017%20nov%202026.pdf",
         "tipo": "primaria",
-        "verificadoEl": "2026-10-27",
-        "nota": "Continuous NSO CPI series with 1970 = 100, published by MRA on 20 October 2026."
+        "verificadoEl": "2026-11-27",
+        "nota": "Continuous NSO CPI series with 1970 = 100, published by MRA on 17 November 2026. The notice header says TO JUN 2026 by mistake: the 2026 row has ten values (January to October) and the first nine match the October notice."
       },
+      "altas": [["2026-11-27", "2026-10-01"]],
       "puntos": [
         ["1991-01-01", 1576.28],
         ["1991-02-01", 1588.37],
@@ -556,7 +557,8 @@
         ["2026-06-01", 1058968.99],
         ["2026-07-01", 1080315.16],
         ["2026-08-01", 1101806.08],
-        ["2026-09-01", 1120336.6]
+        ["2026-09-01", 1120336.6],
+        ["2026-10-01", 1137676.13]
       ]
     }
   ]

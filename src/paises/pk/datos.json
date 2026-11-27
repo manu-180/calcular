@@ -285,7 +285,7 @@
         "stsc1y": "Short Term Savings Certificate, 1 year",
         "sa": "Savings Account"
       },
-      "proximaRevision": "2026-11-01",
+      "proximaRevision": "2026-12-15",
       "tramos": [
         {
           "estado": "verificado",
@@ -306,6 +306,28 @@
             "url": "https://savings.gov.pk/latest-profit-rates/",
             "tipo": "primaria",
             "verificadoEl": "2026-10-17"
+          },
+          "hasta": "2026-11-17"
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-11-18",
+          "valor": {
+            "ric": 12.12,
+            "bsc": 12.96,
+            "ssc": 11.8,
+            "ssc3": 12.8,
+            "stsc3m": 11.56,
+            "stsc6m": 11.9,
+            "stsc1y": 12.14,
+            "sa": 10.5
+          },
+          "fuente": {
+            "organismo": "Central Directorate of National Savings",
+            "titulo": "Summary of NSS profit rates w.e.f. 18-11-2026",
+            "url": "https://savings.gov.pk/wp-content/uploads/2026/11/NSProfitwef181126.jpeg",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-27"
           }
         }
       ]

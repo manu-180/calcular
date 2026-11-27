@@ -3,13 +3,24 @@ import canastaBasica from "./canasta-basica";
 
 export default definirCasos(canastaBasica, [
   {
+    nombre: "Salario mínimo de la industria contra la canasta de octubre 2026",
+    origen: {
+      tipo: "oficial",
+      url: "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBOct2026.xlsx",
+      detalle: "INIDE, canasta básica de octubre 2026 (fila TOTAL CANASTA BÁSICA): C$21,787.61. Salario mínimo de la industria manufacturera (Acuerdo 02-2026): C$8,320.48. Cubre 38.19 %; faltan 13467.13; la canasta cuesta 2.62 salarios mínimos.",
+    },
+    fecha: "2026-11-27",
+    entrada: { ingreso: null, sector: "industria-manufacturera" },
+    esperado: { canasta: 21787.61, ingreso: 8320.48, cobertura: 38.19, falta: 13467.13, sobra: 0, salariosMinimos: 2.62 },
+  },
+  {
     nombre: "Salario mínimo de la industria contra la canasta de julio 2026",
     origen: {
       tipo: "oficial",
       url: "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBJul2026.xlsx",
       detalle: "INIDE, canasta básica de julio 2026: C$21,474.94. Salario mínimo de la industria manufacturera (Acuerdo 02-2026): C$8,320.48. Cubre 38.75 %; faltan 13154.46; la canasta cuesta 2.58 salarios mínimos.",
     },
-    fecha: "2026-10-12",
+    fecha: "2026-09-15",
     entrada: { ingreso: null, sector: "industria-manufacturera" },
     esperado: { canasta: 21474.94, ingreso: 8320.48, cobertura: 38.75, falta: 13154.46, sobra: 0, salariosMinimos: 2.58 },
   },

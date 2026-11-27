@@ -10,7 +10,7 @@ export default definirCalculadora({
   mercado: "mw",
   concepto: "inflacion",
   slug: "inflation-calculator",
-  estado: "borrador",
+  estado: "publicado",
   requiere: {
     "mw.cpi": "serie",
   },
