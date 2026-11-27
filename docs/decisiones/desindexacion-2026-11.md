@@ -66,3 +66,44 @@ clúster hreflang pasa a ser por idioma (`es`, `fr`), no por país. Un idioma nu
   «Google, sitio entero» del informe. Señal de vuelta: más de 5.000 impresiones por día durante 14 días.
 - Si al 1/2/2027 no hay señal, la decisión es de Manuel: seguir esperando, o concentrar las locales
   que funcionaban (Bolivia, Paraguay, Centroamérica) y soltar el resto.
+
+## 27/11: sigue afuera; la palanca que queda es concentrar ediciones
+
+- Serie diaria (`gsc.mjs dia`): 9.855 impresiones el 1/11, 198 el 2/11, entre 2 y 19 por día del 15 al
+  24/11. La poda del 23/11 y el cambio de rankings del 24/11 están en vivo (verificado: `/py/ranking-de-paises`
+  da `noindex, follow`, `/mx/ranking-de-paises` sigue indexable) y el sitemap tiene 4.566 URLs en 143
+  sitemaps. Google todavía no reaccionó.
+- Inspección: `/py/salario-por-hora`, `/ec/jornada-parcial`, `/cr/trabajo-domestico` y `/bo/jubilacion`
+  siguen «rastreada, sin indexar»; `/py` figura como «Google no reconoce esta URL» aunque está en el
+  sitemap. La home está indexada. Googlebot recibe 200, `index, follow` y canonical propio.
+- La página típica no es pobre: ~960 palabras, dato oficial con norma y fecha, cómo se calcula, ejemplo y
+  preguntas frecuentes. El problema no es una página, es la escala: 142 ediciones, muchas en idiomas que
+  nadie revisó, publicadas en tandas de hasta 42 países por semana.
+
+Impresiones del 1/9 al 1/11 (antes de la caída) por edición, contra URLs que hoy tiene en el sitemap:
+
+| Edición | Impresiones | Clics | URLs |
+|---|---:|---:|---:|
+| py | 9.744 | 75 | 61 |
+| bo | 7.233 | 59 | 61 |
+| ph | 5.453 | 13 | 45 |
+| cr | 5.287 | 45 | 59 |
+| pe | 4.809 | 17 | 54 |
+| ni | 4.803 | 37 | 47 |
+| ec | 4.601 | 39 | 57 |
+| hn | 4.221 | 24 | 55 |
+| gt | 4.197 | 35 | 53 |
+| sv | 4.114 | 47 | 48 |
+| do | 3.926 | 20 | 57 |
+| pa | 2.980 | 37 | 62 |
+| uy | 2.845 | 27 | 55 |
+
+Las 20 primeras ediciones juntan el 69 % de las impresiones y casi todos los clics (el 85 % de los clics
+es de las 13 de arriba, todas de habla hispana). Las últimas 70 ediciones suman menos del 3 % y unas 25
+(sk, ge, hr, mn, am, al, si, ee, is, lv, cn, rs, bt, …) no tuvieron ni una impresión.
+
+Lo que queda es decisión de Manuel, porque cambia el plan de «hacerlos todos» del 23/10: adelantar el
+corte del 1/2/2027 y dejar indexables sólo las ediciones con señal (las 13 de la tabla y, si se quiere
+margen, las que pasaron 1.000 impresiones), con el resto vivo en `noindex, follow` y fuera del sitemap. Es
+reversible (se vuelve a indexar edición por edición cuando vuelva la señal). Cada semana de espera es una
+semana más que Google evalúa el sitio con ~3.000 URLs que nunca rindieron.
