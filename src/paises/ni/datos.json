@@ -1532,8 +1532,8 @@
       "nombre": "Costo mensual de la canasta básica (53 productos)",
       "tipo": "numero",
       "unidad": "NIO",
-      "proximaRevision": "2026-10-31",
-      "nota": "Alimentos, usos del hogar y vestuario. El INIDE la publica cada mes con unas seis a ocho semanas de rezago. Cada tramo rige hasta que sale el mes siguiente.",
+      "proximaRevision": "2026-12-31",
+      "nota": "Alimentos, usos del hogar y vestuario. El INIDE la publica cada mes con unas seis a ocho semanas de rezago, y a veces saltea meses (de julio pasó a octubre de 2026 sin publicar agosto ni septiembre). Cada tramo rige hasta que sale el mes siguiente.",
       "tramos": [
         {
           "estado": "verificado",
@@ -1616,6 +1616,7 @@
         {
           "estado": "verificado",
           "desde": "2026-07-01",
+          "hasta": "2026-09-30",
           "valor": 21474.94,
           "fuente": {
             "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
@@ -1623,6 +1624,18 @@
             "url": "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBJul2026.xlsx",
             "tipo": "primaria",
             "verificadoEl": "2026-10-12"
+          }
+        },
+        {
+          "estado": "verificado",
+          "desde": "2026-10-01",
+          "valor": 21787.61,
+          "fuente": {
+            "organismo": "Instituto Nacional de Información de Desarrollo (INIDE)",
+            "titulo": "Canasta básica de octubre de 2026 (53 productos), fila TOTAL CANASTA BÁSICA",
+            "url": "https://www.inide.gob.ni/docs/CanastaB/canastab/CB2026/CBOct2026.xlsx",
+            "tipo": "primaria",
+            "verificadoEl": "2026-11-27"
           }
         }
       ]
