@@ -30,11 +30,13 @@ const RAIZ = resolve(import.meta.dirname, "..", "..");
 const SALIDA = resolve(RAIZ, ".datos-vivos");
 const DIAS_REFRESCO_FECHA = 7;
 
-type Paso = { id: string; que: string; script: string; args?: string[]; checks: string[]; timeoutS?: number };
+// dependeDe: pasos que leen lo que escribió otro (plazofijo deriva la inflación de IPC_SERIE). Si la
+// puerta descarta ese otro, se descartan con él: si no, publicarían un dato hecho con uno que no salió.
+type Paso = { id: string; que: string; script: string; args?: string[]; checks: string[]; timeoutS?: number; dependeDe?: string[] };
 
 const PASOS: Paso[] = [
   { id: "ipc", que: "Serie del IPC (INDEC vía datos.gob.ar)", script: "scripts/gen_ipc_serie.ts", checks: ["check_inflacion"] },
-  { id: "plazofijo", que: "TNA (BCRA) e inflación de referencia de /plazo-fijo", script: "scripts/datos-vivos/rotar_plazofijo.ts", checks: ["check_plazofijo", "check_datos-vivos"] },
+  { id: "plazofijo", que: "TNA (BCRA) e inflación de referencia de /plazo-fijo", script: "scripts/datos-vivos/rotar_plazofijo.ts", checks: ["check_plazofijo", "check_datos-vivos"], dependeDe: ["ipc"] },
   { id: "canasta-basica", que: "Canasta básica CBA/CBT (INDEC)", script: "scripts/gen_canasta_basica.ts", checks: ["check_canasta_basica"] },
   { id: "canasta-crianza", que: "Canasta de crianza (INDEC)", script: "scripts/gen_canasta_crianza.ts", checks: ["check_canasta_crianza", "check_cuota_alimentaria"] },
   {
@@ -131,10 +133,16 @@ const suitesRojas = (salida: string) => [...new Set([...salida.matchAll(/❌\s+(
 
 // Reaplica los pasos de a uno sobre `base` y deja afuera los que ponen roja alguna de `suites`.
 function rearmar(base: string, pasos: { id: string; commit: string }[], suites: string[]) {
+  const dependencias = new Map(PASOS.map((p) => [p.id, p.dependeDe ?? []]));
   git(["reset", "-q", "--hard", base]);
   const quedan: string[] = [];
   const afuera: { id: string; motivo: string }[] = [];
   for (const p of pasos) {
+    const caida = (dependencias.get(p.id) ?? []).find((d) => afuera.some((a) => a.id === d));
+    if (caida) {
+      afuera.push({ id: p.id, motivo: `depende de ${caida}, que quedó afuera` });
+      continue;
+    }
     try {
       git(["cherry-pick", "--allow-empty", "--keep-redundant-commits", p.commit]);
     } catch {
