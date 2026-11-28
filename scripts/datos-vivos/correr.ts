@@ -38,7 +38,7 @@ const PASOS: Paso[] = [
   { id: "ipc", que: "Serie del IPC (INDEC vía datos.gob.ar)", script: "scripts/gen_ipc_serie.ts", checks: ["check_inflacion"] },
   { id: "plazofijo", que: "TNA (BCRA) e inflación de referencia de /plazo-fijo", script: "scripts/datos-vivos/rotar_plazofijo.ts", checks: ["check_plazofijo", "check_datos-vivos"], dependeDe: ["ipc"] },
   { id: "canasta-basica", que: "Canasta básica CBA/CBT (INDEC)", script: "scripts/gen_canasta_basica.ts", checks: ["check_canasta_basica"] },
-  { id: "canasta-crianza", que: "Canasta de crianza (INDEC)", script: "scripts/gen_canasta_crianza.ts", checks: ["check_canasta_crianza", "check_cuota_alimentaria"] },
+  { id: "canasta-crianza", que: "Canasta de crianza (INDEC)", script: "scripts/gen_canasta_crianza.ts", checks: ["check_canasta_crianza", "check_cuota_alimentaria"], dependeDe: ["ipc"] },
   {
     id: "anses",
     que: "Resoluciones de ANSES y decreto del bono (Boletín Oficial)",
@@ -257,7 +257,9 @@ function main(): void {
         }
       } else {
         puerta = "roja";
-        puertaDetalle = detalle;
+        const otra = segunda ? segunda.salida.split("\n").filter((l) => /❌|FAIL/.test(l)).slice(0, 10).join("\n") : "";
+        puertaDetalle = otra ? `${detalle}\n\nSin ${afuera.map((a) => a.id).join(", ")}, siguió rojo:\n${otra}` : detalle;
+        if (otra) console.log(`\n── la segunda pasada también salió roja\n${otra}`);
         revertir([...cambiados()]);
         git(["reset", "-q", "--hard", base]);
       }
