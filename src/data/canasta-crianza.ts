@@ -13,8 +13,8 @@
 //
 // Fuente: INDEC — serie "Canasta de crianza, por tramo de edad" (enero 2020 en adelante).
 // https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_canasta_crianza.xlsx
-// Última modificación de la planilla en el servidor del INDEC: Mon, 14 Sep 2026 18:53:02 GMT
-// Consultado: 2026-10-15 · último período disponible: agosto 2026
+// Última modificación de la planilla en el servidor del INDEC: Tue, 17 Nov 2026 13:20:32 GMT
+// Consultado: 2026-11-28 · último período disponible: octubre 2026
 
 export type TramoCrianzaId = "menor-1" | "1-a-3" | "4-a-5" | "6-a-12";
 
@@ -117,6 +117,8 @@ export const CANASTA_CRIANZA: MesCrianza[] = [
   { periodo: "2026-06", etiqueta: "junio 2026", valores: { "menor-1": { bienes: 173467.8, cuidado: 356071.18, total: 529538.98 }, "1-a-3": { bienes: 223987.56, cuidado: 406938.49, total: 630926.05 }, "4-a-5": { bienes: 285275, cuidado: 254336.55, total: 539611.56 }, "6-a-12": { bienes: 353884.74, cuidado: 324423.12, total: 678307.86 } } },
   { periodo: "2026-07", etiqueta: "julio 2026", valores: { "menor-1": { bienes: 177233.19, cuidado: 368449.92, total: 545683.12 }, "1-a-3": { bienes: 228849.55, cuidado: 421085.63, total: 649935.19 }, "4-a-5": { bienes: 291467.34, cuidado: 263178.52, total: 554645.86 }, "6-a-12": { bienes: 361566.35, cuidado: 335701.8, total: 697268.15 } } },
   { periodo: "2026-08", etiqueta: "agosto 2026", valores: { "menor-1": { bienes: 181852.45, cuidado: 375450.47, total: 557302.92 }, "1-a-3": { bienes: 234814.1, cuidado: 429086.25, total: 663900.36 }, "4-a-5": { bienes: 299063.9, cuidado: 268178.91, total: 567242.81 }, "6-a-12": { bienes: 370989.92, cuidado: 342079.92, total: 713069.84 } } },
+  { periodo: "2026-09", etiqueta: "septiembre 2026", valores: { "menor-1": { bienes: 184911.53, cuidado: 385920.04, total: 570831.58 }, "1-a-3": { bienes: 238764.09, cuidado: 441051.48, total: 679815.57 }, "4-a-5": { bienes: 304094.69, cuidado: 275657.17, total: 579751.87 }, "6-a-12": { bienes: 377230.63, cuidado: 351618.96, total: 728849.59 } } },
+  { periodo: "2026-10", etiqueta: "octubre 2026", valores: { "menor-1": { bienes: 191423.99, cuidado: 399896.31, total: 591320.3 }, "1-a-3": { bienes: 247173.2, cuidado: 457024.35, total: 704197.56 }, "4-a-5": { bienes: 314804.7, cuidado: 285640.22, total: 600444.93 }, "6-a-12": { bienes: 390516.44, cuidado: 364352.52, total: 754868.96 } } },
 ];
 
 /** Último mes publicado por el INDEC. */
@@ -126,6 +128,6 @@ export const CANASTA_CRIANZA_FUENTE = {
   nombre: "INDEC: Valorización mensual de la canasta de crianza (serie mensual por tramo de edad)",
   url: "https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_canasta_crianza.xlsx",
   informe: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-173",
-  consultadoEl: "2026-10-15",
-  ultimoPeriodo: "2026-08",
+  consultadoEl: "2026-11-28",
+  ultimoPeriodo: "2026-10",
 };

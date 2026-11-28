@@ -1,7 +1,7 @@
 // Canasta básica alimentaria (CBA) y canasta básica total (CBT) del ADULTO EQUIVALENTE,
 // Gran Buenos Aires (INDEC). GENERADO por scripts/gen_canasta_basica.ts — NO editar a mano.
 //   https://apis.datos.gob.ar/series/api/series/?ids=150.1_CSTA_BARIA_0_D_26,150.1_CSTA_BATAL_0_D_20,150.1_LA_INDICIA_0_D_16,150.1_LA_POBREZA_0_D_13&format=json&limit=1000
-// Descargado el 2026-11-07. Último período: agosto 2026 (CBA 235103.36 · CBT 519578.43).
+// Descargado el 2026-11-28. Último período: septiembre 2026 (CBA 239058.22 · CBT 528318.67).
 //
 // QUÉ SIGNIFICAN (metodología INDEC N° 22):
 //   · CBA = costo mensual de los alimentos que cubren los requerimientos kilocalóricos y proteicos
@@ -115,7 +115,7 @@ export const CANASTA_BASICA: MesCanastaBasica[] = [
   { periodo: "2023-06", cba: 33730.51, cbt: 75219.04 },
   { periodo: "2023-07", cba: 36130.15, cbt: 80570.23 },
   { periodo: "2023-08", cba: 42262.25, cbt: 92131.7 },
-  { periodo: "2023-09", cba: 47858.79, cbt: 103372.83 },
+  { periodo: "2023-09", cba: 47857.79, cbt: 103372.83 },
   { periodo: "2023-10", cba: 51974.93, cbt: 111746.1 },
   { periodo: "2023-11", cba: 59886.86, cbt: 126361.27 },
   { periodo: "2023-12", cba: 77889.58, cbt: 160452.53 },
@@ -151,6 +151,7 @@ export const CANASTA_BASICA: MesCanastaBasica[] = [
   { periodo: "2026-06", cba: 223253.29, cbt: 495622.3 },
   { periodo: "2026-07", cba: 229131.47, cbt: 506380.55 },
   { periodo: "2026-08", cba: 235103.36, cbt: 519578.43 },
+  { periodo: "2026-09", cba: 239058.22, cbt: 528318.67 },
 ];
 
 /** Último mes publicado por el INDEC. */
@@ -163,6 +164,6 @@ export const CANASTA_BASICA_FUENTE = {
   informe: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149",
   serie: "https://www.indec.gob.ar/ftp/cuadros/sociedad/serie_cba_cbt.xls",
   metodologia: "https://www.indec.gob.ar/ftp/cuadros/sociedad/EPH_metodologia_22_pobreza.pdf",
-  consultadoEl: "2026-11-07",
-  ultimoPeriodo: "2026-08",
+  consultadoEl: "2026-11-28",
+  ultimoPeriodo: "2026-09",
 };
