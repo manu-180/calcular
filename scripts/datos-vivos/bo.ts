@@ -24,20 +24,36 @@ export function leerAviso(id: string, fechaIso: string): Promise<string | null> 
   return leerAvisoBO("primera", id, fechaIso);
 }
 
-const PAUSA_MS = Number(process.env.BO_PAUSA_MS ?? 2500);
+const PAUSA_MS = Number(process.env.BO_PAUSA_MS ?? 4000);
 
-/** Barre los últimos `dias` días hasta `hastaIso` y devuelve los avisos cuyo título matchea. */
+/** Días que no se pudieron leer en el último `buscar` (429 que no cedió, fuente caída). */
+export const diasSinLeer: string[] = [];
+
+/**
+ * Barre los últimos `dias` días hasta `hastaIso` y devuelve los avisos cuyo título matchea. Saltea
+ * sábados y domingos (el B.O. no publica: devuelve la edición del viernes). Un día que no responde no
+ * tira el barrido entero: queda en `diasSinLeer` y se sigue. null sólo si no respondió ninguno.
+ */
 export async function buscar(hastaIso: string, dias: number, patron: RegExp): Promise<Aviso[] | null> {
   const out: Aviso[] = [];
+  diasSinLeer.length = 0;
+  let leidos = 0;
   for (let i = 0; i < dias; i++) {
+    const dia = restarDias(hastaIso, i);
+    const semana = new Date(`${dia}T12:00:00Z`).getUTCDay();
+    if (semana === 0 || semana === 6) continue;
     // El B.O. responde 429 después de unas 20 ediciones seguidas (28/11/2026, desde una PC y desde
-    // el runner de Actions). Espaciados, 45 días son ~2 minutos y no corta.
-    if (i > 0) await new Promise((ok) => setTimeout(ok, PAUSA_MS));
-    const avisos = await avisosDelDia(restarDias(hastaIso, i));
-    if (avisos === null) return null;
+    // el runner de Actions): se espacian los pedidos.
+    if (leidos + diasSinLeer.length > 0) await new Promise((ok) => setTimeout(ok, PAUSA_MS));
+    const avisos = await avisosDelDia(dia);
+    if (avisos === null) {
+      diasSinLeer.push(dia);
+      continue;
+    }
+    leidos++;
     out.push(...avisos.filter((a) => patron.test(normalizar(a.titulo))));
   }
-  return out;
+  return leidos === 0 ? null : out;
 }
 
 /** "$435.748,51" → 435748.51 */
