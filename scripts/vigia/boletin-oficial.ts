@@ -136,12 +136,21 @@ async function bajar(url: string): Promise<{ ok: boolean; status: number; html: 
   // El `fetch` de Node corta la conexión contra este host por rachas ("fetch failed", sin status),
   // mientras `curl` a la misma URL en el mismo segundo responde 200. Reintentar no alcanza: el
   // fallback a curl es el que hace que la herramienta sea confiable para un cron.
-  for (let intento = 0; intento < 2; intento++) {
+  // El B.O. corta con 429 por rachas cuando se le piden muchas ediciones seguidas (28/11/2026: el
+  // cargador de ANSES pasó a barrer 45 días). Ahí se espera lo que pide Retry-After y se reintenta.
+  for (let intento = 0, esperas = 0; intento < 2; intento++) {
     try {
       const r = await fetch(url, {
         headers: { "User-Agent": UA, Accept: "text/html" },
         redirect: "follow",
       });
+      if ((r.status === 429 || r.status === 503) && esperas < 4) {
+        const pide = Number(r.headers.get("retry-after"));
+        await new Promise((ok) => setTimeout(ok, (Number.isFinite(pide) && pide > 0 ? Math.min(pide, 120) : 20 * 2 ** esperas) * 1000));
+        esperas++;
+        intento--;
+        continue;
+      }
       const buf = Buffer.from(await r.arrayBuffer());
       return { ok: r.ok, status: r.status, html: decodificar(buf) };
     } catch {

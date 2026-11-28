@@ -328,5 +328,5 @@ export const UOCRA_PROXIMA_PARITARIA = {
   /** ¿Ya se publicó el acuerdo con las tablas? Mientras sea false, la escala cargada es la última vigente. */
   publicada: false,
   /** Última vez que se COMPROBÓ contra la fuente que el acuerdo sigue sin publicarse. */
-  comprobadoEl: "2026-11-27",
+  comprobadoEl: "2026-11-28",
 } as const;

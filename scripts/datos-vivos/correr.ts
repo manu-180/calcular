@@ -10,7 +10,9 @@
 //      redeploya todos los días por nada.
 //   4. Si quedó algún cambio real, lo anota en el registro de /novedades (scripts/datos-vivos/
 //      novedades.ts), regenera las planillas y corre check-all completo (la puerta de siempre).
-//      Rojo → revierte todo, novedades incluidas, y avisa.
+//      Rojo → vuelve a armar la corrida paso por paso (cada paso aceptado quedó en un commit local)
+//      y descarta sólo los pasos que ponen rojas las suites que fallaron; con el resto corre
+//      check-all otra vez. Si sigue rojo, revierte todo y avisa.
 //   5. Corre el semáforo (scripts/vigia/check-datos-vencen.ts), que mira lo que NO se puede cargar
 //      solo (circulares de gremios, PDFs de ARCA, resoluciones que no pasaron el ancla).
 //   6. Deja .datos-vivos/resumen.json, .datos-vivos/alerta.md (vacío si no hay nada que avisar) y
@@ -28,11 +30,13 @@ const RAIZ = resolve(import.meta.dirname, "..", "..");
 const SALIDA = resolve(RAIZ, ".datos-vivos");
 const DIAS_REFRESCO_FECHA = 7;
 
-type Paso = { id: string; que: string; script: string; args?: string[]; checks: string[]; timeoutS?: number };
+// dependeDe: pasos que leen lo que escribió otro (plazofijo deriva la inflación de IPC_SERIE). Si la
+// puerta descarta ese otro, se descartan con él: si no, publicarían un dato hecho con uno que no salió.
+type Paso = { id: string; que: string; script: string; args?: string[]; checks: string[]; timeoutS?: number; dependeDe?: string[] };
 
 const PASOS: Paso[] = [
   { id: "ipc", que: "Serie del IPC (INDEC vía datos.gob.ar)", script: "scripts/gen_ipc_serie.ts", checks: ["check_inflacion"] },
-  { id: "plazofijo", que: "TNA (BCRA) e inflación de referencia de /plazo-fijo", script: "scripts/datos-vivos/rotar_plazofijo.ts", checks: ["check_plazofijo", "check_datos-vivos"] },
+  { id: "plazofijo", que: "TNA (BCRA) e inflación de referencia de /plazo-fijo", script: "scripts/datos-vivos/rotar_plazofijo.ts", checks: ["check_plazofijo", "check_datos-vivos"], dependeDe: ["ipc"] },
   { id: "canasta-basica", que: "Canasta básica CBA/CBT (INDEC)", script: "scripts/gen_canasta_basica.ts", checks: ["check_canasta_basica"] },
   { id: "canasta-crianza", que: "Canasta de crianza (INDEC)", script: "scripts/gen_canasta_crianza.ts", checks: ["check_canasta_crianza", "check_cuota_alimentaria"] },
   {
@@ -116,6 +120,45 @@ function correrChecks(checks: string[]): string[] {
   return rojos;
 }
 
+// Cada paso aceptado queda en un commit local que nunca se pushea: al final se deshace con reset --soft
+// y el workflow commitea el árbol como siempre. Sirve para la puerta: del 12/10 al 28/11/2026 un solo
+// check rojo (el IPC nuevo contra un haber de ANSES sin cargar) tiraba la corrida entera, IPC,
+// canastas y ANSES incluidos, y lo descartado salía de la ventana de búsqueda del B.O. sin publicarse.
+function commitPaso(id: string): void {
+  git(["add", "-A", "--", "src", "scripts", "private"]);
+  git(["-c", "user.name=datos-vivos", "-c", "user.email=datos-vivos@localhost", "commit", "-q", "--allow-empty", "-m", `datos-vivos: paso ${id}`]);
+}
+
+const suitesRojas = (salida: string) => [...new Set([...salida.matchAll(/❌\s+(check[\w-]+)\.ts/g)].map((m) => m[1]))];
+
+// Reaplica los pasos de a uno sobre `base` y deja afuera los que ponen roja alguna de `suites`.
+function rearmar(base: string, pasos: { id: string; commit: string }[], suites: string[]) {
+  const dependencias = new Map(PASOS.map((p) => [p.id, p.dependeDe ?? []]));
+  git(["reset", "-q", "--hard", base]);
+  const quedan: string[] = [];
+  const afuera: { id: string; motivo: string }[] = [];
+  for (const p of pasos) {
+    const caida = (dependencias.get(p.id) ?? []).find((d) => afuera.some((a) => a.id === d));
+    if (caida) {
+      afuera.push({ id: p.id, motivo: `depende de ${caida}, que quedó afuera` });
+      continue;
+    }
+    try {
+      git(["cherry-pick", "--allow-empty", "--keep-redundant-commits", p.commit]);
+    } catch {
+      try { git(["cherry-pick", "--abort"]); } catch { /* no había nada a medias */ }
+      afuera.push({ id: p.id, motivo: "choca con un paso anterior" });
+      continue;
+    }
+    const rojos = correrChecks(suites);
+    if (rojos.length) {
+      git(["reset", "-q", "--hard", "HEAD~1"]);
+      afuera.push({ id: p.id, motivo: rojos.join(" · ") });
+    } else quedan.push(p.id);
+  }
+  return { quedan, afuera };
+}
+
 function main(): void {
   mkdirSync(SALIDA, { recursive: true });
   const hoy = hoyAR();
@@ -125,6 +168,8 @@ function main(): void {
     console.error(`❌ El árbol ya tiene cambios antes de empezar (${[...sucioAntes].join(", ")}): no mezclo.`);
     process.exit(1);
   }
+  const base = git(["rev-parse", "HEAD"]).trim();
+  const aceptados: { id: string; commit: string }[] = [];
 
   for (const p of PASOS) {
     const antes = cambiados();
@@ -154,6 +199,8 @@ function main(): void {
       resultados.push({ id: p.id, que: p.que, estado: "rechazado", detalle: `El dato nuevo NO pasó sus checks y se descartó: ${rojos.join(" · ")}`, archivos });
       continue;
     }
+    commitPaso(p.id);
+    aceptados.push({ id: p.id, commit: git(["rev-parse", "HEAD"]).trim() });
     resultados.push({
       id: p.id,
       que: p.que,
@@ -166,7 +213,8 @@ function main(): void {
   let puerta: "sin-cambios" | "verde" | "roja" = "sin-cambios";
   let puertaDetalle = "";
   let novedadesRegistradas: string[] = [];
-  if (cambiados().size) {
+  const hayPasos = () => git(["rev-parse", "HEAD"]).trim() !== base;
+  const generar = () => {
     // Antes de check-all: si la puerta sale roja, el revert de abajo se lleva también estas entradas
     // y /novedades nunca anuncia un dato que no se publicó.
     const n = tsx("scripts/datos-vivos/novedades.ts");
@@ -177,18 +225,42 @@ function main(): void {
     // publicó nada (TNA y aportes de ARCA de septiembre listos y descartados). Se commitean con el dato.
     const g = tsx("scripts/gen_planilla_todas.ts", [], 600);
     if (g.code !== 0) console.log(`\n── planillas: gen_planilla_todas salió ${g.code}\n${g.salida.split("\n").slice(-6).join("\n")}`);
-  }
-  const tocados = [...cambiados()];
-  if (tocados.length) {
+  };
+  if (hayPasos()) {
+    generar();
     const r = tsx("scripts/check-all.ts", [], 1500);
     if (r.code === 0) {
       puerta = "verde";
     } else {
-      puerta = "roja";
-      puertaDetalle = r.salida.split("\n").filter((l) => /❌|FAIL/.test(l)).slice(0, 10).join("\n");
+      const detalle = r.salida.split("\n").filter((l) => /❌|FAIL/.test(l)).slice(0, 10).join("\n");
+      const suites = suitesRojas(r.salida);
       revertir([...cambiados()]);
+      const { quedan, afuera } = suites.length ? rearmar(base, aceptados, suites) : { quedan: [] as string[], afuera: [] as { id: string; motivo: string }[] };
+      let segunda: ReturnType<typeof tsx> | null = null;
+      if (quedan.length && hayPasos()) {
+        console.log(`\n── puerta roja (${suites.join(", ")}): sigo con ${quedan.join(", ")}; afuera: ${afuera.map((a) => a.id).join(", ") || "nada"}`);
+        novedadesRegistradas = [];
+        generar();
+        segunda = tsx("scripts/check-all.ts", [], 1500);
+      }
+      if (segunda?.code === 0) {
+        puerta = "verde";
+        puertaDetalle = `La primera pasada salió roja:\n${detalle}\n\nSe publicó el resto, sin: ${afuera.map((a) => a.id).join(", ")}`;
+        for (const a of afuera) {
+          const res = resultados.find((x) => x.id === a.id);
+          if (res) Object.assign(res, { estado: "rechazado", detalle: `Pasó sus checks pero pone rojo check-all, se descartó: ${a.motivo}`, archivos: [] });
+        }
+      } else {
+        puerta = "roja";
+        puertaDetalle = detalle;
+        revertir([...cambiados()]);
+        git(["reset", "-q", "--hard", base]);
+      }
     }
   }
+  // Los commits de cada paso son sólo andamio: el árbol queda con los cambios sin commitear, como antes.
+  git(["reset", "-q", "--soft", base]);
+  git(["reset", "-q"]);
 
   const semaforo = tsx("scripts/vigia/check-datos-vencen.ts", [], 900).salida;
   console.log(`\n── semáforo\n${semaforo}`);
