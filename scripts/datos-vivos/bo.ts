@@ -24,10 +24,15 @@ export function leerAviso(id: string, fechaIso: string): Promise<string | null> 
   return leerAvisoBO("primera", id, fechaIso);
 }
 
+const PAUSA_MS = Number(process.env.BO_PAUSA_MS ?? 2500);
+
 /** Barre los últimos `dias` días hasta `hastaIso` y devuelve los avisos cuyo título matchea. */
 export async function buscar(hastaIso: string, dias: number, patron: RegExp): Promise<Aviso[] | null> {
   const out: Aviso[] = [];
   for (let i = 0; i < dias; i++) {
+    // El B.O. responde 429 después de unas 20 ediciones seguidas (28/11/2026, desde una PC y desde
+    // el runner de Actions). Espaciados, 45 días son ~2 minutos y no corta.
+    if (i > 0) await new Promise((ok) => setTimeout(ok, PAUSA_MS));
     const avisos = await avisosDelDia(restarDias(hastaIso, i));
     if (avisos === null) return null;
     out.push(...avisos.filter((a) => patron.test(normalizar(a.titulo))));

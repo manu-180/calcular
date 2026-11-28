@@ -257,7 +257,9 @@ function main(): void {
         }
       } else {
         puerta = "roja";
-        puertaDetalle = detalle;
+        const otra = segunda ? segunda.salida.split("\n").filter((l) => /❌|FAIL/.test(l)).slice(0, 10).join("\n") : "";
+        puertaDetalle = otra ? `${detalle}\n\nSin ${afuera.map((a) => a.id).join(", ")}, siguió rojo:\n${otra}` : detalle;
+        if (otra) console.log(`\n── la segunda pasada también salió roja\n${otra}`);
         revertir([...cambiados()]);
         git(["reset", "-q", "--hard", base]);
       }

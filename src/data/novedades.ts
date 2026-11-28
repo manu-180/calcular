@@ -7,6 +7,56 @@ import type { Novedad } from "@/lib/novedades";
 
 export const NOVEDADES_REGISTRADAS: Novedad[] = [
   {
+    "id": "canasta-basica-2026-09",
+    "serie": "canasta-basica",
+    "organismo": "INDEC",
+    "tipo": "dato",
+    "cargadoEl": "2026-11-28",
+    "titulo": "Canasta básica de septiembre: $ 528.319 por adulto",
+    "detalle": "Es la línea de pobreza que marca el INDEC para una persona adulta en el Gran Buenos Aires en septiembre de 2026. La de indigencia quedó en $ 239.058.",
+    "fuente": {
+      "nombre": "INDEC · Canasta básica alimentaria y total",
+      "url": "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-149"
+    },
+    "rutas": [
+      "/canasta-basica"
+    ]
+  },
+  {
+    "id": "canasta-crianza-2026-10",
+    "serie": "canasta-crianza",
+    "organismo": "INDEC",
+    "tipo": "dato",
+    "cargadoEl": "2026-11-28",
+    "titulo": "Canasta de crianza de octubre",
+    "detalle": "Criar a un chico de 6 a 12 años costó $ 754.869 en octubre de 2026, sumando bienes y tiempo de cuidado. Es la referencia que usa la cuenta de cuota alimentaria.",
+    "fuente": {
+      "nombre": "INDEC · Canasta de crianza",
+      "url": "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-43-173"
+    },
+    "rutas": [
+      "/cuota-alimentaria"
+    ]
+  },
+  {
+    "id": "uma-2026-10",
+    "serie": "uma",
+    "organismo": "Corte Suprema",
+    "tipo": "dato",
+    "publicadoEl": "2026-11-20",
+    "cargadoEl": "2026-11-28",
+    "rigeDesde": "2026-10-01",
+    "titulo": "UMA de octubre: $ 110.381",
+    "detalle": "La Corte Suprema fijó el valor de la unidad que se usa para regular honorarios desde octubre de 2026 (Resolución 3006/2026).",
+    "fuente": {
+      "nombre": "Corte Suprema · Resolución 3006/2026",
+      "url": "https://www.csjn.gov.ar/documentos/descargar?ID=183642"
+    },
+    "rutas": [
+      "/honorarios-periciales"
+    ]
+  },
+  {
     "id": "aportes-casas-2026-11",
     "serie": "aportes-casas",
     "organismo": "ARCA",
