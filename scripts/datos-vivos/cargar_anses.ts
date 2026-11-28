@@ -31,6 +31,7 @@ import {
   normalizar,
   periodoEnTexto,
   vigenciaDe,
+  diasSinLeer,
   type Aviso,
 } from "./bo";
 
@@ -235,6 +236,7 @@ async function main(): Promise<void> {
   for (const c of cargados) console.log(`🔄 ${c}`);
   for (const e of esperando) console.log(`⏳ ${e}`);
   for (const r of rechazados) console.log(`🔴 ${r}`);
+  if (diasSinLeer.length) console.log(`⚠️  ${diasSinLeer.length} edición(es) del B.O. no respondieron y quedaron sin leer: ${diasSinLeer.join(", ")} (las barre la próxima corrida)`);
   if (!cargados.length && !rechazados.length) console.log("✓ Nada nuevo: todo lo publicado ya está cargado.");
   if (SECO && cargados.length) console.log("(--seco: no se escribió nada)");
   // 2 = algo publicado no pasó el ancla: el workflow lo convierte en aviso para una sesión.
