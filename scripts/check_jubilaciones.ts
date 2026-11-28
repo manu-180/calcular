@@ -369,20 +369,31 @@ if (V.periodo === "2026-09") {
   const r = actualizarHaber(300_000, "2024-05", HABER_MINIMO_ULTIMO.periodo);
   check("el coeficiente del tramo es > 1", r !== null && r.coeficiente > 1);
 
-  // La movilidad usa el IPC de dos meses antes (Dec. 274/2024), así que el haber vigente SIEMPRE
-  // va por delante del último IPC publicado. Si deja de cumplirse, lo dice acá y no en un null raro.
-  check(
-    `el haber vigente (${HABER_MINIMO_ULTIMO.periodo}) va por delante del último IPC publicado (${ultimoIpcPub})`,
-    HABER_MINIMO_ULTIMO.periodo > ultimoIpcPub,
-  );
-
-  // La comparación contra inflación sólo existe si el IPC de AMBOS extremos ya se publicó. Para el
-  // mes vigente todavía no salió: tiene que dar null, no un número.
-  check(
-    "sin IPC del mes final, la inflación acumulada es null (no se estima)",
-    r !== null && r.inflacionAcumulada === null && r.brechaReal === null,
-    { inflacion: r?.inflacionAcumulada, brecha: r?.brechaReal },
-  );
+  // La movilidad usa el IPC de dos meses antes (Dec. 274/2024), así que con ANSES al día el haber
+  // vigente va por delante del último IPC publicado. Si no, es que falta cargar la resolución de
+  // ANSES: eso lo avisa el semáforo (check-datos-vencen). Antes este check exigía el orden y frenaba
+  // la publicación del IPC entero: del 13/11 al 28/11/2026 el IPC de octubre no salió por eso.
+  const ansesAlDia = HABER_MINIMO_ULTIMO.periodo > ultimoIpcPub;
+  if (ansesAlDia) {
+    // La comparación contra inflación sólo existe si el IPC de AMBOS extremos ya se publicó. Para el
+    // mes vigente todavía no salió: tiene que dar null, no un número.
+    check(
+      "sin IPC del mes final, la inflación acumulada es null (no se estima)",
+      r !== null && r.inflacionAcumulada === null && r.brechaReal === null,
+      { inflacion: r?.inflacionAcumulada, brecha: r?.brechaReal },
+    );
+  } else {
+    console.log(`⚠️  el haber cargado (${HABER_MINIMO_ULTIMO.periodo}) no va por delante del último IPC (${ultimoIpcPub}): falta la resolución de ANSES del mes siguiente`);
+    check(
+      `el haber cargado nunca queda más de un mes detrás del IPC (${HABER_MINIMO_ULTIMO.periodo} vs ${ultimoIpcPub})`,
+      HABER_MINIMO_ULTIMO.periodo === ultimoIpcPub,
+    );
+    check(
+      "con IPC de los dos extremos publicado, la inflación acumulada se informa",
+      r !== null && r.inflacionAcumulada !== null && r.brechaReal !== null,
+      { inflacion: r?.inflacionAcumulada, brecha: r?.brechaReal },
+    );
+  }
 
   // Con ambos extremos publicados, sí informa y la brecha cierra.
   const rr = actualizarHaber(300_000, "2024-05", ultimoIpcPub);
