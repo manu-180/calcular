@@ -144,9 +144,9 @@ async function bajar(url: string): Promise<{ ok: boolean; status: number; html: 
         headers: { "User-Agent": UA, Accept: "text/html" },
         redirect: "follow",
       });
-      if ((r.status === 429 || r.status === 503) && esperas < 4) {
+      if ((r.status === 429 || r.status === 503) && esperas < 3) {
         const pide = Number(r.headers.get("retry-after"));
-        await new Promise((ok) => setTimeout(ok, (Number.isFinite(pide) && pide > 0 ? Math.min(pide, 120) : 20 * 2 ** esperas) * 1000));
+        await new Promise((ok) => setTimeout(ok, (Number.isFinite(pide) && pide > 0 ? Math.min(pide, 120) : 15 * 2 ** esperas) * 1000));
         esperas++;
         intento--;
         continue;

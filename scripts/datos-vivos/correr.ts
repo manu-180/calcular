@@ -44,7 +44,8 @@ const PASOS: Paso[] = [
     que: "Resoluciones de ANSES y decreto del bono (Boletín Oficial)",
     script: "scripts/datos-vivos/cargar_anses.ts",
     checks: ["check_jubilaciones", "check_asignaciones", "check_puam", "check_pnc", "check_edad_avanzada", "check_descuento_pami", "check_garantia_82", "check_sueldo"],
-    timeoutS: 600,
+    // 45 ediciones del B.O. con esperas por 429: con 600 s se cortó el 28/11/2026 (exit 124).
+    timeoutS: 1500,
   },
   { id: "aportes-casas", que: "Aportes, contribuciones y ART de casas particulares (PDF de ARCA)", script: "scripts/gen_aportes_casas.ts", args: ["--escribir"], checks: ["check_aportes_casas", "check_art_casas_particulares", "check_deduccion_domestica"] },
   { id: "uma", que: "UMA de honorarios (resoluciones de la CSJN)", script: "scripts/gen_uma.ts", args: ["--escribir"], checks: ["check_honorarios_periciales"], timeoutS: 600 },
@@ -60,8 +61,12 @@ type Resultado = {
   archivos: string[];
 };
 
+// Identidad fija para los commits de andamio de la puerta: el runner de Actions no tiene una, y sin
+// ella el cherry-pick del rearmado falla y la puerta deja todo afuera (corrida del 28/11/2026).
+const IDENTIDAD = { GIT_AUTHOR_NAME: "datos-vivos", GIT_AUTHOR_EMAIL: "datos-vivos@localhost", GIT_COMMITTER_NAME: "datos-vivos", GIT_COMMITTER_EMAIL: "datos-vivos@localhost" };
+
 function git(args: string[]): string {
-  return execFileSync("git", args, { cwd: RAIZ, encoding: "utf8" });
+  return execFileSync("git", args, { cwd: RAIZ, encoding: "utf8", env: { ...process.env, ...IDENTIDAD } });
 }
 
 function tsx(script: string, args: string[] = [], timeoutS = 300) {
@@ -126,7 +131,7 @@ function correrChecks(checks: string[]): string[] {
 // canastas y ANSES incluidos, y lo descartado salía de la ventana de búsqueda del B.O. sin publicarse.
 function commitPaso(id: string): void {
   git(["add", "-A", "--", "src", "scripts", "private"]);
-  git(["-c", "user.name=datos-vivos", "-c", "user.email=datos-vivos@localhost", "commit", "-q", "--allow-empty", "-m", `datos-vivos: paso ${id}`]);
+  git(["commit", "-q", "--allow-empty", "-m", `datos-vivos: paso ${id}`]);
 }
 
 const suitesRojas = (salida: string) => [...new Set([...salida.matchAll(/❌\s+(check[\w-]+)\.ts/g)].map((m) => m[1]))];
