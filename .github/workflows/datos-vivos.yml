@@ -28,7 +28,7 @@ permissions:
 jobs:
   actualizar:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 80
     env:
       PAISES_TOLERANTE: "1"
     steps:
