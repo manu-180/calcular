@@ -40,7 +40,7 @@ const F_ASIGNACIONES = resolve(RAIZ, "src/data/asignaciones.ts");
 const F_GEN_JUB = resolve(RAIZ, "scripts/gen_jubilaciones.ts");
 
 const SECO = process.argv.includes("--seco");
-const DIAS = Number(process.argv[process.argv.indexOf("--dias") + 1]) || 14;
+const DIAS = Number(process.argv[process.argv.indexOf("--dias") + 1]) || 45;
 
 const cargados: string[] = [];
 const rechazados: string[] = [];
